@@ -17,7 +17,8 @@ Sections:
 	.CRT$XCU    type:data vaddr:0x1001D008 end:0x1001D010
 	.CRT$XCZ    type:data vaddr:0x1001D010 end:0x1001D014
 	.CRT$XIA    type:data vaddr:0x1001D014 end:0x1001D018
-	.CRT$XIC    type:data vaddr:0x1001D018 end:0x1001D028
+	.CRT$XIC    type:data vaddr:0x1001D018 end:0x1001D024
+	.CRT$XIY    type:data vaddr:0x1001D024 end:0x1001D028
 	.CRT$XIZ    type:data vaddr:0x1001D028 end:0x1001D02C
 	.CRT$XPA    type:data vaddr:0x1001D02C end:0x1001D030
 	.CRT$XPX    type:data vaddr:0x1001D030 end:0x1001D034
@@ -27,6 +28,16 @@ Sections:
 	.CRT$XTZ    type:data vaddr:0x1001D040 end:0x1001D050
 	.bss        type:bss vaddr:0x1001ED80 end:0x1002A5DC
 	.rsrc       type:rodata align:4096
+
+LHLog/lib/libcmt_lhlog/crt0init.obj:
+	.CRT$XCA    start:0x1001D000 end:0x1001D004
+	.CRT$XCZ    start:0x1001D010 end:0x1001D014
+	.CRT$XIA    start:0x1001D014 end:0x1001D018
+	.CRT$XIZ    start:0x1001D028 end:0x1001D02C
+	.CRT$XPA    start:0x1001D02C end:0x1001D030
+	.CRT$XPZ    start:0x1001D034 end:0x1001D038
+	.CRT$XTA    start:0x1001D038 end:0x1001D03C
+	.CRT$XTZ    start:0x1001D040 end:0x1001D044
 
 Lionhead/LHLog/ver4.0/ErrorCodes.cpp:
 	.text       start:0x10001000 end:0x10001220
@@ -78,8 +89,519 @@ Lionhead/LHLog/ver4.0/LogUtils.cpp:
 	.text       start:0x10008D00 end:0x100094A0
 	.rdata      start:0x10018E44 end:0x10018F2C
 	.data       start:0x1001DEE0 end:0x1001DEF0
-	.bss        start:0x10028DA8 end:0x10028DB0
+	.bss        start:0x10028DA8 end:0x10028DAC
 
-LHLog/lib/libcmt/exsup.obj:
-	.text       start:0x100099C0 end:0x10009AAE align:1
+LHLog/lib/libcmt_lhlog/delete.obj:
+	.text       start:0x100094A0 end:0x100094A5 align:1
+
+LHLog/lib/libcmt_lhlog/new.obj:
+	.text       start:0x100094A5 end:0x100094C0 align:1
+
+LHLog/lib/libcmt_lhlog/chkstk.obj:
+	.text       start:0x100094C0 end:0x100094FD align:1
+
+LHLog/lib/libcmt_lhlog/fclose.obj:
+	.text       start:0x100094FD end:0x1000959A align:1
+	.rdata      start:0x10018F30 end:0x10018F40
+
+LHLog/lib/libcmt_lhlog/fflush.obj:
+	.text       start:0x1000959A end:0x10009753 align:1
+	.rdata      start:0x10018F40 end:0x10018F68
+
+LHLog/lib/libcmt_lhlog/fprintf.obj:
+	.text       start:0x10009753 end:0x100097B1 align:1
+	.rdata      start:0x10018F68 end:0x10018F78
+
+LHLog/lib/libcmt_lhlog/fopen.obj:
+	.text       start:0x100097B1 end:0x10009820 align:1
+	.rdata      start:0x10018F78 end:0x10018F88
+
+LHLog/lib/libcmt_lhlog/sprintf.obj:
+	.text       start:0x10009820 end:0x10009878 align:1
+
+LHLog/lib/libcmt_lhlog/splitpat.obj:
+	.text       start:0x10009878 end:0x100099C0 align:1
+
+LHLog/lib/libcmt_lhlog/exsup.obj:
+	.text       start:0x100099C0 end:0x10009AB0 align:1
 	.data       start:0x1001DEF0 end:0x1001DF00
+
+LHLog/lib/libcmt_lhlog/exsup3.obj:
+	.text       start:0x10009AB0 end:0x10009B90 align:1
+
+LHLog/lib/libcmt_lhlog/strstr.obj:
+	.text       start:0x10009B90 end:0x10009C16 align:1
+
+LHLog/lib/libcmt_lhlog/fpinit.obj:
+	.text       start:0x10009C16 end:0x10009C68 align:1
+	.data       start:0x1001DF00 end:0x1001DF14
+	.bss        start:0x10028DAC end:0x10028DB4
+
+LHLog/lib/libcmt_lhlog/ftol2.obj:
+	.text       start:0x10009C68 end:0x10009CDD align:1
+
+LHLog/lib/libcmt_lhlog/wcslen.obj:
+	.text       start:0x10009CDD end:0x10009CF3 align:1
+
+LHLog/lib/libcmt_lhlog/wcscat.obj:
+	.text       start:0x10009CF3 end:0x10009D1D align:1
+
+LHLog/lib/libcmt_lhlog/_ctype.obj:
+	.text       start:0x10009D1D end:0x10009E0F align:1
+
+LHLog/lib/libcmt_lhlog/vsprintf.obj:
+	.text       start:0x10009E0F end:0x10009E70 align:1
+
+LHLog/lib/libcmt_lhlog/strncpy.obj:
+	.text       start:0x10009E70 end:0x10009F94 align:1
+	.data       start:0x1001DF14 end:0x1001DF20
+
+LHLog/lib/libcmt_lhlog/wcsncpy.obj:
+	.text       start:0x10009F94 end:0x10009FD1 align:1
+
+LHLog/lib/libcmt_lhlog/unlink.obj:
+	.text       start:0x10009FD1 end:0x1000A000 align:1
+
+LHLog/lib/libcmt_lhlog/trnsctrl.obj:
+	.text       start:0x1000A000 end:0x1000A363 align:1
+
+LHLog/lib/libcmt_lhlog/fputs.obj:
+	.text       start:0x1000A363 end:0x1000A3D4 align:1
+	.rdata      start:0x10018F88 end:0x10018F98
+
+LHLog/lib/libcmt_lhlog/getpid.obj:
+	.text       start:0x1000A3D4 end:0x1000A3DA align:1
+
+LHLog/lib/libcmt_lhlog/free.obj:
+	.text       start:0x1000A3DA end:0x1000A44B align:1
+	.rdata      start:0x10018F98 end:0x10018FA8
+
+LHLog/lib/libcmt_lhlog/thread.obj:
+	.text       start:0x1000A44B end:0x1000A5BA align:1
+	.rdata      start:0x10018FA8 end:0x10018FB8
+
+LHLog/lib/libcmt_lhlog/malloc.obj:
+	.text       start:0x1000A5BA end:0x1000A673 align:1
+	.rdata      start:0x10018FB8 end:0x10018FC8
+
+LHLog/lib/libcmt_lhlog/onexit.obj:
+	.text       start:0x1000A673 end:0x1000A765 align:1
+	.rdata      start:0x10018FC8 end:0x10018FD4
+	.CRT$XIC    start:0x1001D018 end:0x1001D01C
+
+LHLog/lib/libcmt_lhlog/atox.obj:
+	.text       start:0x1000A765 end:0x1000A7ED align:1
+
+LHLog/lib/libcmt_lhlog/rand.obj:
+	.text       start:0x1000A7ED end:0x1000A81C align:1
+
+LHLog/lib/libcmt_lhlog/crt0dat.obj:
+	.text       start:0x1000A81C end:0x1000A9C7 align:1
+	.rdata      start:0x10018FD4 end:0x10018FF0 align:1
+	.bss        start:0x10028DB4 end:0x10028DFC
+
+LHLog/lib/libcmt_lhlog/sscanf.obj:
+	.text       start:0x1000A9C7 end:0x1000A9FB align:1
+
+LHLog/lib/libcmt_lhlog/ehvecdtr.obj:
+	.text       start:0x1000A9FB end:0x1000AAB9 align:1
+	.rdata      start:0x10018FF0 end:0x10019010
+
+LHLog/lib/libcmt_lhlog/ehvecctr.obj:
+	.text       start:0x1000AAB9 end:0x1000AB1B align:1
+	.rdata      start:0x10019010 end:0x10019020
+
+LHLog/lib/libcmt_lhlog/dllcrt0.obj:
+	.text       start:0x1000AB1B end:0x1000AD69 align:1
+	.data       start:0x1001DF20 end:0x1001DF28
+	.bss        start:0x10028DFC end:0x10028E10
+
+LHLog/lib/libcmt_lhlog/close.obj:
+	.text       start:0x1000AD69 end:0x1000AE87 align:1
+	.rdata      start:0x10019020 end:0x10019030
+
+LHLog/lib/libcmt_lhlog/_freebuf.obj:
+	.text       start:0x1000AE87 end:0x1000AEB2 align:1
+
+LHLog/lib/libcmt_lhlog/_file.obj:
+	.text       start:0x1000AEB2 end:0x1000B014 align:1
+	.CRT$XIC    start:0x1001D01C end:0x1001D020
+	.CRT$XPX    start:0x1001D030 end:0x1001D034
+	.data       start:0x1001DF28 end:0x1001E1A8
+	.bss        start:0x10028E10 end:0x10028E18
+
+LHLog/lib/libcmt_lhlog/sehprolg.obj:
+	.text       start:0x1000B014 end:0x1000B060 align:1
+
+LHLog/lib/libcmt_lhlog/write.obj:
+	.text       start:0x1000B060 end:0x1000B2B0 align:1
+	.rdata      start:0x10019030 end:0x10019040
+
+LHLog/lib/libcmt_lhlog/commit.obj:
+	.text       start:0x1000B2B0 end:0x1000B36C align:1
+	.rdata      start:0x10019040 end:0x10019050
+
+LHLog/lib/libcmt_lhlog/mlock.obj:
+	.text       start:0x1000B36C end:0x1000B4CF align:1
+	.data       start:0x1001E1A8 end:0x1001E2C8
+	.bss        start:0x10028E18 end:0x10028F68
+
+LHLog/lib/libcmt_lhlog/_sftbuf.obj:
+	.text       start:0x1000B4CF end:0x1000B581 align:1
+	.bss        start:0x10028F68 end:0x10028F70
+
+LHLog/lib/libcmt_lhlog/output.obj:
+	.text       start:0x1000B581 end:0x1000BDA4 align:1
+	.rdata      start:0x10019050 end:0x100190C8
+	.data       start:0x1001E2C8 end:0x1001E2D0
+
+LHLog/lib/libcmt_lhlog/_open.obj:
+	.text       start:0x1000BDA4 end:0x1000BF0C align:1
+
+LHLog/lib/libcmt_lhlog/dosmap.obj:
+	.text       start:0x1000BF0C end:0x1000BF91 align:1
+	.data       start:0x1001E2D0 end:0x1001E438
+
+LHLog/lib/libcmt_lhlog/stream.obj:
+	.text       start:0x1000BF91 end:0x1000C0B3 align:1
+	.rdata      start:0x100190C8 end:0x100190D8
+
+LHLog/lib/libcmt_lhlog/_flsbuf.obj:
+	.text       start:0x1000C0B3 end:0x1000C1CC align:1
+
+LHLog/lib/libcmt_lhlog/mbctype.obj:
+	.text       start:0x1000C1CC end:0x1000C729 align:1
+	.rdata      start:0x100190D8 end:0x100190F8
+	.CRT$XIC    start:0x1001D020 end:0x1001D024
+	.data       start:0x1001E438 end:0x1001E530
+	.bss        start:0x10028F70 end:0x10028F74
+
+LHLog/lib/libcmt_lhlog/mbsnbcpy.obj:
+	.text       start:0x1000C729 end:0x1000C7C0 align:1
+
+LHLog/lib/libcmt_lhlog/strlen.obj:
+	.text       start:0x1000C7C0 end:0x1000C850 align:1
+
+LHLog/lib/libcmt_lhlog/strchr.obj:
+	.text       start:0x1000C850 end:0x1000C91E align:1
+
+LHLog/lib/libcmt_lhlog/cvt.obj:
+	.text       start:0x1000C91E end:0x1000CD31 align:1
+	.rdata      start:0x100190F8 end:0x10019108
+
+LHLog/lib/libcmt_lhlog/fp8.obj:
+	.text       start:0x1000CD31 end:0x1000CD43 align:1
+
+LHLog/lib/libcmt_lhlog/testfdiv.obj:
+	.text       start:0x1000CD43 end:0x1000CDAC align:1
+	.rdata      start:0x10019108 end:0x10019148
+
+LHLog/lib/libcmt_lhlog/isctype.obj:
+	.text       start:0x1000CDAC end:0x1000CE23 align:1
+
+LHLog/lib/libcmt_lhlog/cmiscdat.obj:
+	.data       start:0x1001E530 end:0x1001E548
+
+LHLog/lib/libcmt_lhlog/setlocal.obj:
+	.text       start:0x1000CE23 end:0x1000CFEA align:1
+	.rdata      start:0x10019148 end:0x100192D8
+	.data       start:0x1001E548 end:0x1001E6DC
+	.bss        start:0x10028F74 end:0x10028F80
+
+LHLog/lib/libcmt_lhlog/tidtable.obj:
+	.text       start:0x1000CFEA end:0x1000D266 align:1
+	.rdata      start:0x100192D8 end:0x100192F0
+	.data       start:0x1001E6DC end:0x1001E6E0
+
+LHLog/lib/libcmt_lhlog/frame.obj:
+	.text       start:0x1000D266 end:0x1000DAD1 align:1
+	.rdata      start:0x100192F0 end:0x10019340
+	.data       start:0x1001E6E0 end:0x1001E6E4
+
+LHLog/lib/libcmt_lhlog/hooks.obj:
+	.text       start:0x1000DAD1 end:0x1000DB40 align:1
+	.rdata      start:0x10019340 end:0x10019360
+	.data       start:0x1001E6E4 end:0x1001E6E8
+
+LHLog/lib/libcmt_lhlog/lowhelpr.obj:
+	.text       start:0x1000DB40 end:0x1000DB8C align:1
+	.data       start:0x1001E6E8 end:0x1001E6F0
+
+LHLog/lib/libcmt_lhlog/fwrite.obj:
+	.text       start:0x1000DB8C end:0x1000DC93 align:1
+
+LHLog/lib/libcmt_lhlog/heapinit.obj:
+	.text       start:0x1000DC93 end:0x1000DD7D align:1
+	.data       start:0x1001E6F0 end:0x1001E6F8
+
+LHLog/lib/libcmt_lhlog/sbheap.obj:
+	.text       start:0x1000DD7D end:0x1000E8A0 align:1
+
+LHLog/lib/libcmt_lhlog/winxfltr.obj:
+	.text       start:0x1000E8A0 end:0x1000EA04 align:1
+	.data       start:0x1001E6F8 end:0x1001E780
+
+LHLog/lib/libcmt_lhlog/calloc.obj:
+	.text       start:0x1000EA04 end:0x1000EABF align:1
+	.rdata      start:0x10019360 end:0x10019370
+
+LHLog/lib/libcmt_lhlog/handler.obj:
+	.text       start:0x1000EABF end:0x1000EADA align:1
+	.bss        start:0x10028F80 end:0x10028F84
+
+LHLog/lib/libcmt_lhlog/realloc.obj:
+	.text       start:0x1000EADA end:0x1000EC87 align:1
+	.rdata      start:0x10019370 end:0x10019380
+
+LHLog/lib/libcmt_lhlog/msize.obj:
+	.text       start:0x1000EC87 end:0x1000ED00 align:1
+	.rdata      start:0x10019380 end:0x10019390
+
+LHLog/lib/libcmt_lhlog/llmul.obj:
+	.text       start:0x1000ED00 end:0x1000ED34 align:1
+
+LHLog/lib/libcmt_lhlog/input.obj:
+	.text       start:0x1000EDBC end:0x1000F87A align:1
+	.rdata      start:0x100193B0 end:0x100193BC
+
+LHLog/lib/libcmt_lhlog/ioinit.obj:
+	.text       start:0x1000F87A end:0x1000FAC4 align:1
+	.data       start:0x1001E780 end:0x1001E7A8
+
+LHLog/lib/libcmt_lhlog/stdenvp.obj:
+	.text       start:0x1000FAC4 end:0x1000FB8B align:1
+
+LHLog/lib/libcmt_lhlog/_newmode.obj:
+	.bss        start:0x10028F84 end:0x10028F88
+
+LHLog/lib/libcmt_lhlog/stdargv.obj:
+	.text       start:0x1000FB8B end:0x1000FD99 align:1
+	.bss        start:0x10028F88 end:0x10029090
+
+LHLog/lib/libcmt_lhlog/a_env.obj:
+	.text       start:0x1000FD99 end:0x1000FEBB align:1
+	.bss        start:0x10029090 end:0x10029094
+
+LHLog/lib/libcmt_lhlog/crt0msg.obj:
+	.text       start:0x1000FEBB end:0x1001006B align:1
+	.rdata      start:0x100193BC end:0x10019728 align:1
+	.data       start:0x1001E7A8 end:0x1001E838
+	.bss        start:0x10029094 end:0x10029098
+
+LHLog/lib/libcmt_lhlog/osfinfo.obj:
+	.text       start:0x1001006B end:0x10010389 align:1
+
+LHLog/lib/libcmt_lhlog/closeall.obj:
+	.text       start:0x10010389 end:0x10010424 align:1
+	.rdata      start:0x10019728 end:0x10019738
+
+LHLog/lib/libcmt_lhlog/lseeki64.obj:
+	.text       start:0x10010424 end:0x100104A7 align:1
+
+LHLog/lib/libcmt_lhlog/seccook.obj:
+	.text       start:0x100104A7 end:0x100104E6 align:1
+	.rdata      start:0x10019738 end:0x10019744
+	.CRT$XCAA   start:0x1001D004 end:0x1001D008
+	.data       start:0x1001E838 end:0x1001E83C
+
+LHLog/lib/libcmt_lhlog/initcrit.obj:
+	.text       start:0x100104E6 end:0x10010581 align:1
+	.rdata      start:0x10019744 end:0x10019790 align:1
+	.bss        start:0x10029098 end:0x1002909C
+
+LHLog/lib/libcmt_lhlog/isatty.obj:
+	.text       start:0x10010581 end:0x100105AB align:1
+
+LHLog/lib/libcmt_lhlog/wctomb.obj:
+	.text       start:0x100105AB end:0x10010640 align:1
+
+LHLog/lib/libcmt_lhlog/ctype.obj:
+	.rdata      start:0x10019790 end:0x10019BA0
+	.data       start:0x1001E83C end:0x1001E844
+
+LHLog/lib/libcmt_lhlog/ulldvrm.obj:
+	.text       start:0x10010640 end:0x100106D5 align:1
+	.data       start:0x1001E844 end:0x1001E850
+
+LHLog/lib/libcmt_lhlog/open.obj:
+	.text       start:0x100106D5 end:0x10010A11 align:1
+	.rdata      start:0x10019BA0 end:0x10019BB0
+
+LHLog/lib/libcmt_lhlog/lseek.obj:
+	.text       start:0x10010A11 end:0x10010B30 align:1
+	.rdata      start:0x10019BB0 end:0x10019BBC
+
+LHLog/lib/libcmt_lhlog/_getbuf.obj:
+	.text       start:0x10010B30 end:0x10010B74 align:1
+
+LHLog/lib/libcmt_lhlog/ncommode.obj:
+	.bss        start:0x1002909C end:0x100290A0
+
+LHLog/lib/libcmt_lhlog/nlsdata2.obj:
+	.data       start:0x1001E850 end:0x1001E854
+	.bss        start:0x100290A0 end:0x100290C0
+
+LHLog/lib/libcmt_lhlog/a_map.obj:
+	.text       start:0x10010B74 end:0x10010F30 align:1
+	.rdata      start:0x10019BBC end:0x10019BE8 align:1
+	.bss        start:0x100290C0 end:0x100290C4
+
+LHLog/lib/libcmt_lhlog/a_str.obj:
+	.text       start:0x10010F30 end:0x100110EA align:1
+	.rdata      start:0x10019BE8 end:0x10019BF4
+	.bss        start:0x100290C4 end:0x100290C8
+
+LHLog/lib/libcmt_lhlog/tolower.obj:
+	.text       start:0x100110EA end:0x100111D4 align:1
+
+LHLog/lib/libcmt_lhlog/nlsdata1.obj:
+	.data       start:0x1001E854 end:0x1001E860
+
+LHLog/lib/libcmt_lhlog/intrncvt.obj:
+	.text       start:0x100111D4 end:0x10011580 align:1
+	.data       start:0x1001E860 end:0x1001E890
+
+LHLog/lib/libcmt_lhlog/memmove.obj:
+	.text       start:0x10011580 end:0x100118C0 align:1
+
+LHLog/lib/libcmt_lhlog/strcat.obj:
+	.text       start:0x100118C0 end:0x100119B8 align:1
+
+LHLog/lib/libcmt_lhlog/_fptostr.obj:
+	.text       start:0x100119B8 end:0x10011A2F align:1
+
+LHLog/lib/libcmt_lhlog/cfout.obj:
+	.text       start:0x10011A2F end:0x10011B60 align:1
+
+LHLog/lib/libcmt_lhlog/memset.obj:
+	.text       start:0x10011B60 end:0x10011BC0 align:1
+
+LHLog/lib/libcmt_lhlog/crt0fp.obj:
+	.text       start:0x10011BC0 end:0x10011BC9 align:1
+
+LHLog/lib/libcmt_lhlog/ieee87.obj:
+	.text       start:0x10011BC9 end:0x10011D31 align:1
+
+LHLog/lib/libcmt_lhlog/inittime.obj:
+	.text       start:0x10011D31 end:0x10011EC1 align:1
+	.bss        start:0x100290CC end:0x100290D0
+
+LHLog/lib/libcmt_lhlog/initnum.obj:
+	.text       start:0x10011EC1 end:0x10011F20 align:1
+
+LHLog/lib/libcmt_lhlog/initmon.obj:
+	.text       start:0x10011F20 end:0x10012000 align:1
+	.bss        start:0x100290D0 end:0x100290D4
+
+LHLog/lib/libcmt_lhlog/strcspn.obj:
+	.text       start:0x10012000 end:0x10012050 align:1
+
+LHLog/lib/libcmt_lhlog/strcmp.obj:
+	.text       start:0x10012050 end:0x100120E0 align:1
+
+LHLog/lib/libcmt_lhlog/memcpy.obj:
+	.text       start:0x100120E0 end:0x10012420 align:1
+
+LHLog/lib/libcmt_lhlog/memcmp.obj:
+	.text       start:0x10012420 end:0x100124E0 align:1
+
+LHLog/lib/libcmt_lhlog/strncmp.obj:
+	.text       start:0x100124E0 end:0x10012520 align:1
+
+LHLog/lib/libcmt_lhlog/strpbrk.obj:
+	.text       start:0x10012520 end:0x10012560 align:1
+
+LHLog/lib/libcmt_lhlog/unhandld.obj:
+	.text       start:0x10012560 end:0x100125C6 align:1
+	.CRT$XIY    start:0x1001D024 end:0x1001D028
+	.CRT$XTB    start:0x1001D03C end:0x1001D040
+	.bss        start:0x1002911C end:0x10029120
+
+LHLog/lib/libcmt_lhlog/validate.obj:
+	.text       start:0x100125C6 end:0x10012616 align:1
+
+LHLog/lib/libcmt_lhlog/abort.obj:
+	.text       start:0x10012616 end:0x1001262E align:1
+
+LHLog/lib/libcmt_lhlog/_filbuf.obj:
+	.text       start:0x1001262E end:0x1001270F align:1
+
+LHLog/lib/libcmt_lhlog/ungetc.obj:
+	.text       start:0x1001270F end:0x1001277B align:1
+
+LHLog/lib/libcmt_lhlog/mbtowc.obj:
+	.text       start:0x1001277B end:0x10012866 align:1
+
+LHLog/lib/libcmt_lhlog/resetstk.obj:
+	.text       start:0x10012866 end:0x10012937 align:1
+
+LHLog/lib/libcmt_lhlog/strftime.obj:
+	.rdata      start:0x10019BF4 end:0x10019D20 align:1
+	.data       start:0x1001E890 end:0x1001E950
+
+LHLog/lib/libcmt_lhlog/crtmbox.obj:
+	.text       start:0x10012937 end:0x10012A30 align:1
+	.rdata      start:0x10019D20 end:0x10019D90
+	.bss        start:0x10029120 end:0x10029134
+
+LHLog/lib/libcmt_lhlog/seccinit.obj:
+	.text       start:0x10012A30 end:0x10012A86 align:1
+
+LHLog/lib/libcmt_lhlog/secfail.obj:
+	.text       start:0x10012A86 end:0x10012BD0 align:1
+	.rdata      start:0x10019D90 end:0x10019F48
+	.bss        start:0x10029134 end:0x10029138
+
+LHLog/lib/libcmt_lhlog/chsize.obj:
+	.text       start:0x10012BD0 end:0x10012D0B align:1
+
+LHLog/lib/libcmt_lhlog/read.obj:
+	.text       start:0x10012D0B end:0x10012F83 align:1
+	.rdata      start:0x10019F48 end:0x10019F58
+
+LHLog/lib/libcmt_lhlog/convrtcp.obj:
+	.text       start:0x10012F83 end:0x1001319B align:1
+	.rdata      start:0x10019F58 end:0x10019F64
+
+LHLog/lib/libcmt_lhlog/mantold.obj:
+	.text       start:0x1001319B end:0x10013359 align:1
+
+LHLog/lib/libcmt_lhlog/strgtold.obj:
+	.text       start:0x10013359 end:0x10013793 align:1
+
+LHLog/lib/libcmt_lhlog/x10fout.obj:
+	.text       start:0x10013793 end:0x10013A27 align:1
+	.rdata      start:0x10019F64 end:0x10019F88 align:1
+
+LHLog/lib/libcmt_lhlog/txtmode.obj:
+	.bss        start:0x10029138 end:0x1002913C
+
+LHLog/lib/libcmt_lhlog/winsig.obj:
+	.text       start:0x10013A27 end:0x10013BD0 align:1
+	.rdata      start:0x10019F88 end:0x10019F94
+	.bss        start:0x1002913C end:0x10029150
+
+LHLog/lib/libcmt_lhlog/_stricmp.obj:
+	.text       start:0x10013BD0 end:0x10013C1E align:1
+
+LHLog/lib/libcmt_lhlog/stricmp.obj:
+	.text       start:0x10013C1E end:0x10013C87 align:1
+
+LHLog/lib/libcmt_lhlog/setmode.obj:
+	.text       start:0x10013C87 end:0x10013CE9 align:1
+
+LHLog/lib/libcmt_lhlog/tenpow.obj:
+	.text       start:0x10013CE9 end:0x10013FB0 align:1
+
+LHLog/lib/libcmt_lhlog/_strnicm.obj:
+	.text       start:0x10013FB0 end:0x10014011 align:1
+
+LHLog/lib/libcmt_lhlog/strdup.obj:
+	.text       start:0x10014011 end:0x1001403C align:1
+
+LHLog/lib/libcmt_lhlog/timeset.obj:
+	.rdata      start:0x10019F94 end:0x10019FD8 align:1
+	.data       start:0x1001E990 end:0x1001EA28
+
+LHLog/lib/libcmt_lhlog/constpow.obj:
+	.data       start:0x1001EAB0 end:0x1001ED70

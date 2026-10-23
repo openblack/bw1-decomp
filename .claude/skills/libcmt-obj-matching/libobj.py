@@ -278,7 +278,7 @@ def list_libobjects():
         # still missing, e.g. for a backport.
         mfor = None
         if match.startswith("MatchingFor"):
-            mfor = re.findall(r'"(BW1W\d+)"', match)
+            mfor = re.findall(r'"(BW1W\w+)"', match)
         mod = re.search(r'module="([^"]+)"', m.group("rest") or "")
         out.append({
             "matching": match == "Matching" or mfor is not None,

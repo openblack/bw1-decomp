@@ -12,3 +12,4 @@
 05f7c53a28401bfa36cf3367142cde169aba330a  build/lib/libcmt64.lib
 ef4fbf0eba7b3b91febb5aec91138c7517d0757d  build/lib/msvcrtd.lib
 bffeaaf36e3b656efb924d46eb11ae04b2fae5d1  build/lib/libcpmt.lib
+05f7c53a28401bfa36cf3367142cde169aba330a  build/lib/libcmt_lhlog.lib
