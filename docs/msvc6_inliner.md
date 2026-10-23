@@ -395,8 +395,11 @@ The step-by-step procedure, with build budgets and stop rules, is the
 ## Tie-breaks in x87 operand order
 
 With `/Og`, `m[0] *= c; m[0] += m[6] * s;` fuses into one expression. Which product is
-computed first is a tie that c2 breaks using how much IL the inliner has already built in
-the current function.
+computed first is a tie that c2 breaks by sorting the operands of every commutative node by a
+weight whose low 16 bits are a hash of the operand, for a symbol its number; those numbers come
+from a pool whose slots are recycled, so they depend on how many symbols the inliner has already
+created in the current function. [`msvc6_operand_order.md`](msvc6_operand_order.md) has the rule
+and the addresses; the rest of this section is the earlier, black-box view.
 
 **What moves it:**
 - unused parameters;

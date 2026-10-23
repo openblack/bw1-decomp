@@ -4052,8 +4052,11 @@ Lionhead/LH3DLib/development/LH3DMesh.cpp:
 	.text$x     start:0x008A7E10 end:0x008A7F90 align:4
 
 Lionhead/LH3DLib/development/LH3DTech.cpp:
-	.text       start:0x00818C60 end:0x0081D1B0
-	.CRT$XCU    start:0x009C7D64 end:0x009C7D70 align:4
+	.text       start:0x00818900 end:0x0081E320
+	.rdata      start:0x009A3700 end:0x009A3704
+	.CRT$XCU    start:0x009C7D4C end:0x009C7D68 align:4
+	.data       start:0x00C3812C end:0x00C38150
+	.bss        start:0x00EA1B28 end:0x00EA9ED0 align:8
 
 Lionhead/LH3DLib/development/LH3DCameraChecker.cpp:
 	.text       start:0x0081F9E0 end:0x008212E0

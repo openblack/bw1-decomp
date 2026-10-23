@@ -52,10 +52,12 @@ static const LH3DP3Mask kMaskW = {{0, 0, 0, -1}};
 // BW1W120 00fc0030
 static const LH3DP3Mask kMaskXYW = {{-1, -1, 0, -1}};
 
+#ifndef VERSION_BW1W100
 float         LH3DTech::g_max_screen[2] = {639.0f, 479.0f};
 InfoTransform LH3DTech::g_info_transform;
 Vertex3D      LH3DTech::g_cache_t_points[LH3D_MAX_POINTS];
 unsigned long LH3DTech::g_cache_flags[LH3D_MAX_POINTS];
+#endif
 unsigned long LH3DLandscape::g_coeff[LH3D_LANDSCAPE_CELL_TEXELS * LH3D_LANDSCAPE_CELL_TEXELS][4];
 
 volatile bool LH3DP3::IsPentium;
@@ -67,14 +69,16 @@ volatile int  LH3DP3::HasMMX;
 volatile int  LH3DP3::HasSSE;
 volatile int  LH3DP3::HasSSE2;
 
+#ifndef VERSION_BW1W100
 void LH3DP3::Init()
 {
 	CheckCPU();
 	LH3DTech::g_b_P3 = IsPentium4;
 }
+#endif
 
-__declspec(cpu_dispatch(generic, pentium, pentium_pro, pentium_mmx, pentium_ii, pentium_iii, pentium_4)) void LH3DP3::
-	CheckCPU()
+__declspec(cpu_dispatch(generic, pentium, pentium_pro, pentium_mmx, pentium_ii, pentium_iii,
+                        pentium_4)) void LH3DP3::CheckCPU()
 {
 }
 

@@ -3525,11 +3525,15 @@ Lionhead/LH3DLib/development/LH3DIsland.cpp:
 	.text$x     start:0x00897C60 end:0x00897C90 align:4
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
-	.text       start:0x007F6270 end:0x00808A70
+	.text       start:0x007F6270 end:0x00808710
 	.text$x     start:0x00897C90 end:0x00897E10 align:4
 
 Lionhead/LH3DLib/development/LH3DTech.cpp:
-	.text       start:0x00808A70 end:0x0080CFC0
+	.text       start:0x00808710 end:0x0080E130
+	.rdata      start:0x00993600 end:0x00993604
+	.CRT$XCU    start:0x009B7508 end:0x009B7524 align:4
+	.data       start:0x00C26F7C end:0x00C26FA0
+	.bss        start:0x00E904F0 end:0x00E98898 align:8
 
 Lionhead/LH3DLib/development/LH3DCameraChecker.cpp:
 	.text       start:0x0080F7F0 end:0x008110F0

@@ -26,10 +26,8 @@ struct LH3DCameraChecker
 	// BW1W120 00821270 BW1M119 0100aa50 (LHCombined Release)
 	static void Process();
 
-	// Non-virtual methods
-
-	// BW1W120 00437e70 BW1M119 0103c750 (LHCombined Release)
-	void AdjustCameraPosTarget(LHPoint* pos, LHPoint* target);
+	// BW1W120 008210c0 BW1M119 0103c750 (LHCombined Release)
+	static void AdjustCameraPosTarget(LHPoint* pos, LHPoint* target);
 };
 
 #endif /* BW1_DECOMP_LH3D_CAMERA_CHECKER_INCLUDED_H */

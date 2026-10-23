@@ -5,6 +5,8 @@
 
 #include <re_common.h> /* For bool32_t */
 
+struct Vertex3D;
+
 // Draws the outline of an object that is being built.
 struct LH3DInBuild
 {
@@ -19,6 +21,8 @@ struct LH3DInBuild
 
 	// BW1W120 00820b20 BW1M119 010c0b00 (LHCombined Release)
 	static void Draw();
+	// BW1W120 00820ec0 BW1M119 010868b0 (LHCombined Release)
+	static void AddEdge(Vertex3D* a, Vertex3D* b);
 };
 
 #endif /* BW1_DECOMP_LH3D_IN_BUILD_INCLUDED_H */
