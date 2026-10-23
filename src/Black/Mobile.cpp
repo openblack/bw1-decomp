@@ -36,3 +36,13 @@ bool32_t Mobile::BlocksTownClearArea() const
 {
 	return false;
 }
+
+#ifdef VERSION_BW1WCI
+bool32_t Mobile::AreWeThere(const MapCoords& coords, float extra_distance)
+{
+	float dx = (float)(Pos.WholeX() - coords.WholeX());
+	float dz = (float)(Pos.WholeZ() - coords.WholeZ());
+	float r = (float)GetSpeed() + extra_distance;
+	return dx * dx + dz * dz < r * r;
+}
+#endif

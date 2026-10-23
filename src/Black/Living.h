@@ -326,13 +326,13 @@ public:
 	virtual bool32_t LookAtFlyingObjectReaction();
 #ifdef VERSION_BW1WCI
 	// BW1WCI 0047e0c0 BW1M119 null
-	virtual int CreatureIsleVirtual0x92c() { return 0; }
+	virtual uint32_t GetScriptULData1() { return 0; }
 	// BW1WCI 0047e0d0 BW1M119 null
-	virtual void CreatureIsleVirtual0x930(uint32_t param_1) {}
+	virtual void SetScriptULData1(unsigned long data) {}
 	// BW1WCI 0047e0e0 BW1M119 null
-	virtual int CreatureIsleVirtual0x934() { return 0; }
+	virtual uint32_t GetScriptULData2() { return 0; }
 	// BW1WCI 0047e0f0 BW1M119 null
-	virtual void CreatureIsleVirtual0x938(uint32_t param_1) {}
+	virtual void SetScriptULData2(unsigned long data) {}
 #endif
 	// BW1W120 005f2980 BW1M119 01078700
 	virtual int SetCurrentAndDestinationState(uint8_t current, uint8_t destination);
@@ -680,6 +680,10 @@ public:
 	void DrawScaleWithPlayerColor(float scale);
 	// BW1W120 005ec1d0 BW1M119 0138b420
 	bool32_t InvalidState();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 006064d0 BW1M119 null
+	bool32_t ScriptPlayAnim();
+#endif
 	// BW1W120 005ec270 BW1M119 0104f900
 	int MoveToPos();
 	// BW1W120 005ec2c0 BW1M119 0138af80

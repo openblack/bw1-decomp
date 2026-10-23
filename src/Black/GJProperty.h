@@ -63,12 +63,12 @@ struct PersistenceStreamer
 };
 static_assert(sizeof(PersistenceStreamer) == 0x14, "Data type is of wrong size");
 
-// The original header is GJProperty.h: the templated property helpers below allocate with
-// operator new(<path of this header>, line), and the paths and line numbers survive in every build.
-#if defined(VERSION_BW1W100)
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define GJ_PROPERTY_FILE "C:\\dev\\black\\GJProperty.h"
 #elif defined(VERSION_BW1W110)
 #define GJ_PROPERTY_FILE "C:\\dev\\Black\\GJProperty.h"
+#elif defined(VERSION_BW1W130)
+#define GJ_PROPERTY_FILE "D:\\Work\\Games\\dd\\Black\\GJProperty.h"
 #else
 #define GJ_PROPERTY_FILE "C:\\dev\\MP\\Black\\GJProperty.h"
 #endif

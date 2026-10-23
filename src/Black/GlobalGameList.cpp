@@ -12,6 +12,14 @@
 #include "PuzzleGame.h" /* For PuzzleGame::AppliedMapPos */
 #include "Script.h"     /* For GScript::DeleteAllScriptCreatedGameThings */
 #include "Waterfall.h"  /* For GWaterfall::DesignedWaterFallNeedsReset */
+#ifdef VERSION_BW1WCI
+#include "Abode.h"          /* For class Abode */
+#include "Cannon.h"         /* For class Cannon */
+#include "Die.h"            /* For class Die */
+#include "Dolphin.h"        /* For class Dolphin */
+#include "MobileStatic.h"   /* For class GBaseOnly */
+#include "SpotVisualAlex.h" /* For class SpotVisualAlex */
+#endif
 
 static float unused;
 
@@ -51,11 +59,40 @@ void GlobalGameLists::Process()
 	{
 		food->ProcessPileFood();
 	}
+#ifdef VERSION_BW1WCI
+	FOREACH_LH_LIST_HEAD(Die, die, GGame::g_game->GameLists.dice)
+	{
+		die->Process();
+	}
+	FOREACH_LH_LIST_HEAD(Dolphin, dolphin, GGame::g_game->GameLists.dolphins)
+	{
+		dolphin->Process();
+	}
+	FOREACH_LH_LIST_HEAD(Cannon, cannon, GGame::g_game->GameLists.cannons)
+	{
+		cannon->Process();
+	}
+#endif
 	FOREACH_LH_LIST_HEAD(PuzzleGame, game, GGame::g_game->GameLists.puzzle_game)
 	{
 		game->Process();
 	}
 	PuzzleGame::AppliedMapPos = LH3DMapCoords();
+#ifdef VERSION_BW1WCI
+	for (LHLinkedNode<Abode*>* abodeNode = abodes.GetStart(); abodeNode != NULL;)
+	{
+		LHLinkedNode<Abode*>* nextNode = abodeNode->next.Get();
+		if (abodeNode->payload->IsAvailable())
+		{
+			abodeNode->payload->Process();
+		}
+		else
+		{
+			abodes.Remove(abodeNode->payload);
+		}
+		abodeNode = nextNode;
+	}
+#endif
 	for (LHLinkedNode<GFootpathFinder*>* node = footpath_finder.head.Get(); node != NULL;)
 	{
 		LHLinkedNode<GFootpathFinder*>* next = node->next.Get();
@@ -211,6 +248,20 @@ void GlobalGameLists::ClearMap()
 	}
 	GGame::g_game->climate = NULL;
 	LH3DStorm::ReallyKillAll();
+#ifdef VERSION_BW1WCI
+	dice.ToBeDeletedAvailable();
+	dolphins.ToBeDeletedAvailable();
+	for (LHLinkedNode<GBaseOnly*>* baseNode = BaseOnlys.GetStart(); baseNode != NULL; baseNode = baseNode->next.Get())
+	{
+		if (baseNode->payload->IsAvailable())
+		{
+			baseNode->payload->ToBeDeleted(0);
+		}
+	}
+	cannons.ToBeDeletedAvailable();
+	abodes.RemoveAll();
+	SpotVisualAlexes.ToBeDeletedAvailable();
+#endif
 	footpath_finder.ToBeDeletedAll();
 	GGame::g_game->map.Clean();
 	ClearMapStage(TRUE);
@@ -264,6 +315,14 @@ bool32_t GlobalGameLists::Save(GameOSFile& file)
 	file.WriteSafe(TownArtifacts);
 	file.WriteSafe(fragments);
 	file.WriteSafe(footpath_finder);
+#ifdef VERSION_BW1WCI
+	file.WriteSafe(dice);
+	file.WriteSafe(dolphins);
+	file.WriteSafe(BaseOnlys);
+	file.WriteSafe(cannons);
+	file.WriteSafe(abodes);
+	file.WriteSafe(SpotVisualAlexes);
+#endif
 	return TRUE;
 }
 
@@ -313,5 +372,13 @@ bool32_t GlobalGameLists::Load(GameOSFile& file)
 	file.ReadSafe(TownArtifacts);
 	file.ReadSafe(fragments);
 	file.ReadSafe(footpath_finder);
+#ifdef VERSION_BW1WCI
+	file.ReadSafe(dice);
+	file.ReadSafe(dolphins);
+	file.ReadSafe(BaseOnlys);
+	file.ReadSafe(cannons);
+	file.ReadSafe(abodes);
+	file.ReadSafe(SpotVisualAlexes);
+#endif
 	return TRUE;
 }

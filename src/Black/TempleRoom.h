@@ -29,6 +29,7 @@ enum TempleRoomsEnum
 // Forward Declares
 
 class CPController;
+class Creature;
 struct GatheringText;
 class GlowManager;
 struct InnerCamera;
@@ -134,6 +135,10 @@ public:
 	virtual void PostToolTipProcess();
 	// BW1W120 0079a800 BW1M119 015453c0
 	virtual void OnEnterRoom();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0079a1d0 BW1M119 null
+	virtual void DrawPostDoor() {}
+#endif
 
 	char             name[0x20];
 	uint32_t         field_0x24;
@@ -163,8 +168,13 @@ public:
 	static void EndText(wchar_t* text);
 	// BW1W120 0079a640 BW1M119 01545710
 	static void AddNewLine(wchar_t* text);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 007b3120 BW1M119 null
+	static void AddText(wchar_t* text, unsigned long help_text, unsigned long param_3, Creature* creature = NULL);
+#else
 	// BW1W120 0079a910 BW1M119 01549350
 	static void AddText(wchar_t* text, unsigned long help_text, unsigned long param_3);
+#endif
 	// BW1W120 0079a6a0 BW1M119 015455f0
 	static long FindProperTextOffset(unsigned long num_lines, long offset);
 	// BW1W120 007991c0 BW1M119 015469c0

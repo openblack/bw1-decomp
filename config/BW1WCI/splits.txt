@@ -140,17 +140,20 @@ Black/Arrow.cpp:
 	.CRT$XCU    start:0x00A360D0 end:0x00A360D4 align:4
 	.data       start:0x00A38EDC end:0x00A38F38
 
-Black/AudioAnalyse.cpp:
-	.text       start:0x00429BD0 end:0x0042A270
-
 Black/Artifact.cpp:
 	.rdata      start:0x008F0540 end:0x008F0664
 	.data       start:0x00A38F38 end:0x00A38F58
 	.bss        start:0x00CC9E08 end:0x00CC9E24
 
 Black/Audio.cpp:
+	.text       start:0x00427CF0 end:0x00429BD0
+	.rdata      start:0x008F0664 end:0x008F079C
+	.CRT$XCU    start:0x00A360E0 end:0x00A360E8 align:4
 	.data       start:0x00A38F58 end:0x00A3AA80
 	.bss        start:0x00CC9E24 end:0x00CC9E30
+
+Black/AudioAnalyse.cpp:
+	.text       start:0x00429BD0 end:0x0042A270
 
 Black/AudioAtmos.cpp:
 	.text       start:0x0042A270 end:0x0042A4D0
@@ -258,11 +261,13 @@ Black/CameraModeCitadel.cpp:
 
 Black/CameraModeCtrInteract.cpp:
 	.rdata$r    start:0x00A18F88 end:0x00A18FD8
+	.data       start:0x00A3DB58 end:0x00A3DB88
 
 Black/CameraModeDance.cpp:
 	.text       start:0x00451F90 end:0x00452130
-	.rdata      start:0x008F3728 end:0x008F3774
+	.rdata      start:0x008F3728 end:0x008F378C
 	.rdata$r    start:0x00A18FD8 end:0x00A19028
+	.data       start:0x00A3DB88 end:0x00A3DBD8
 
 Black/CameraModeFlyAndClick.cpp:
 	.rdata      start:0x008F378C end:0x008F3800
@@ -281,7 +286,7 @@ Black/CameraModeFollowHeading.cpp:
 	.rdata      start:0x008F38CC end:0x008F3940
 	.rdata$r    start:0x00A190C8 end:0x00A19118
 	.data       start:0x00A3DC80 end:0x00A3DCF8
-	.bss        start:0x00CCED28 end:0x00CCED34
+	.bss        start:0x00CCED28 end:0x00CCED2C
 
 Black/CameraModeFree.cpp:
 	.text       start:0x00455870 end:0x00456B50
@@ -289,6 +294,7 @@ Black/CameraModeFree.cpp:
 	.rdata$r    start:0x00A19118 end:0x00A19164
 	.CRT$XCU    start:0x00A3619C end:0x00A361A4 align:4
 	.data       start:0x00A3DCF8 end:0x00A3DD00
+	.bss        start:0x00CCED2C end:0x00CCED34
 
 Black/CameraModeNew1.cpp:
 	.text       start:0x00456B50 end:0x00459A20
@@ -308,19 +314,22 @@ Black/CameraModeNew3.cpp:
 	.data       start:0x00A3E120 end:0x00A3E240
 	.bss        start:0x00CCED38 end:0x00CD1EB4
 
-Black/CarriedObject.cpp:
-	.text       start:0x0046C130 end:0x0046C520
-	.bss        start:0x00CD46E4 end:0x00CD4724
-
 Black/CameraModePath.cpp:
 	.rdata      start:0x008F3DCC end:0x008F3E20
 	.rdata$r    start:0x00A192F8 end:0x00A19348
 	.data       start:0x00A3E240 end:0x00A3E268
 
 Black/CameraModeScript.cpp:
-	.rdata      start:0x008F3E38 end:0x008F3E90
+	.text       start:0x00468FE0 end:0x00469A60
+	.rdata      start:0x008F3E38 end:0x008F3EA8
 	.rdata$r    start:0x00A19348 end:0x00A19398
+	.CRT$XCU    start:0x00A361BC end:0x00A361C0 align:4
 	.data       start:0x00A3E268 end:0x00A3E298
+	.bss        start:0x00CD1EBC end:0x00CD1EC0
+
+Black/CarriedObject.cpp:
+	.text       start:0x0046C130 end:0x0046C520
+	.bss        start:0x00CD46E4 end:0x00CD4724
 
 Black/CameraModeTwoObjects.cpp:
 	.rdata      start:0x008F3EA8 end:0x008F5204
@@ -359,7 +368,9 @@ Black/Config.cpp:
 	.bss        start:0x00CD4B1C end:0x00CD4B28
 
 Black/Container.cpp:
+	.text       start:0x00475260 end:0x00475470
 	.rdata      start:0x008F8F6C end:0x008F94E8
+	.CRT$XCU    start:0x00A36210 end:0x00A3621C align:4
 	.bss        start:0x00CD4B28 end:0x00CD4B88
 
 Black/ControlHand.cpp:
@@ -395,7 +406,9 @@ Black/CreatureAction.cpp:
 	.data       start:0x00A413E0 end:0x00A49860
 
 Black/CreatureAttitudeToCreature.cpp:
+	.text       start:0x004D3E00 end:0x004D41A0
 	.rdata      start:0x008FCB98 end:0x008FCBAC
+	.CRT$XCU    start:0x00A362C8 end:0x00A362D0 align:4
 	.data       start:0x00A498B0 end:0x00A498DC
 	.bss        start:0x00CF9DB4 end:0x00CF9DBC
 
@@ -978,21 +991,22 @@ Black/GatheringText.cpp:
 	.data       start:0x00C5FD48 end:0x00C5FD58
 
 Black/GenerateCreatureHTML.cpp:
-	.text       start:0x0058C140 end:0x0058D260
+	.text       start:0x0058C140 end:0x0058D230
 	.rdata      start:0x00932660 end:0x0093266C
-	.CRT$XCU    start:0x00A36700 end:0x00A36710 align:4
+	.CRT$XCU    start:0x00A36700 end:0x00A3670C align:4
 	.data       start:0x00C5FD58 end:0x00C5FE4C
 
 Black/GestureSystem.cpp:
-	.text       start:0x0058D260 end:0x0058D800
+	.text       start:0x0058D230 end:0x0058D800
 	.rdata      start:0x0093266C end:0x00932674
-	.CRT$XCU    start:0x00A36710 end:0x00A36720 align:4
+	.CRT$XCU    start:0x00A3670C end:0x00A36720 align:4
+	.bss        start:0x00D84650 end:0x00D84668
 
 Black/GestureSystemData.cpp:
 	.text       start:0x0058D800 end:0x0058E060
 	.rdata      start:0x00932674 end:0x00932678
 	.CRT$XCU    start:0x00A36720 end:0x00A36734 align:4
-	.bss        start:0x00D8466C end:0x00D84688
+	.bss        start:0x00D8466C end:0x00D84684
 
 Black/GestureSystemDataList.cpp:
 	.text       start:0x0058E060 end:0x0058E9D0
@@ -1018,7 +1032,7 @@ Black/GestureSystemSamples.cpp:
 	.bss        start:0x00D846DC end:0x00D846F8
 
 Black/GJBaseUtils.cpp:
-	.text       start:0x005915D0 end:0x005954D0
+	.text       start:0x005915D0 end:0x005954E0
 	.text$x     start:0x008D1520 end:0x008D1530 align:4
 	.CRT$XCU    start:0x00A3678C end:0x00A367A0 align:4
 	.bss        start:0x00D846F8 end:0x00D84798
@@ -1055,7 +1069,9 @@ Black/GJVnoise.cpp:
 	.bss        start:0x00D848C0 end:0x00D84CC4
 
 Black/GlobalGameList.cpp:
+	.text       start:0x005A5EC0 end:0x005AB220
 	.rdata      start:0x00932944 end:0x00932950
+	.CRT$XCU    start:0x00A367D0 end:0x00A367DC align:4
 	.bss        start:0x00D84CC4 end:0x00D84CD4
 
 Black/GraveYard.cpp:
@@ -1084,6 +1100,7 @@ Black/GSLobbybox.cpp:
 Black/GStates.cpp:
 	.text       start:0x005B2530 end:0x005C5840
 	.CRT$XCU    start:0x00A367F0 end:0x00A367F8 align:4
+	.bss        start:0x00D87380 end:0x00D92150
 
 Black/HandStateCamera.cpp:
 	.text       start:0x005C5840 end:0x005C6150 align:16
@@ -1593,7 +1610,9 @@ Black/Object3D.cpp:
 	.bss        start:0x00DC5704 end:0x00DC5710
 
 Black/OnMapTrajectory.cpp:
+	.text       start:0x00651890 end:0x00651BB0
 	.rdata      start:0x00989528 end:0x0098953C
+	.CRT$XCU    start:0x00A36C28 end:0x00A36C30 align:4
 	.bss        start:0x00DC5710 end:0x00DC571C
 
 Black/OOSDebug.cpp:
@@ -2515,7 +2534,7 @@ Black/WeatherThing.cpp:
 Black/Whale.cpp:
 	.text       start:0x00790C50 end:0x00794EF0
 	.text$x     start:0x008D1630 end:0x008D1640 align:16
-	.rdata      start:0x00A0B478 end:0x00A0EEDC
+	.rdata      start:0x00A0B478 end:0x00A0C3FC
 	.CRT$XCU    start:0x00A37358 end:0x00A3737C align:4
 
 Black/Workshop.cpp:
@@ -2526,12 +2545,15 @@ Black/Worship.cpp:
 	.bss        start:0x00E54590 end:0x00E552B0
 
 Black/WorshipSiteUpgrade.cpp:
-	.text       start:0x007971C0 end:0x00797660
-	.CRT$XCU    start:0x00A3737C end:0x00A37384 align:4
+	.text       start:0x007971C0 end:0x00797630
+	.rdata      start:0x00A0C3FC end:0x00A0D300
+	.CRT$XCU    start:0x00A3737C end:0x00A37380 align:4
 	.data       start:0x00C98230 end:0x00C982C8
+	.bss        start:0x00E552B0 end:0x00E553E4
 
 Black/WorshipSpellIcon.cpp:
-	.text       start:0x00797660 end:0x00798CD0
+	.text       start:0x00797630 end:0x00798CD0
+	.CRT$XCU    start:0x00A37380 end:0x00A37384 align:4
 	.data       start:0x00C982C8 end:0x00C98300
 
 Black/WorshipTotem.cpp:
@@ -2607,15 +2629,17 @@ Black/TempleRoomAddText.cpp:
 	.bss        start:0x00EBEA64 end:0x00EBEA70
 
 Black/UniverseRoom.cpp:
-	.text       start:0x007B4E80 end:0x007B52B0
-	.CRT$XCU    start:0x00A37430 end:0x00A3743C align:4
+	.text       start:0x007B4E80 end:0x007B5280
+	.CRT$XCU    start:0x00A37430 end:0x00A37438 align:4
 	.data       start:0x00C9D948 end:0x00C9DA64
 	.bss        start:0x00EBEA70 end:0x00EBEA78
 
 Black/WorldRoom.cpp:
-	.text       start:0x007B52E0 end:0x007B7A80
+	.text       start:0x007B5280 end:0x007B7A80
+	.rdata      start:0x00A0EAB0 end:0x00A0EB4C
+	.CRT$XCU    start:0x00A37438 end:0x00A37444 align:4
 	.data       start:0x00C9DA68 end:0x00C9DD74
-	.bss        start:0x00EBEA78 end:0x00EC2AD8
+	.bss        start:0x00EBEA78 end:0x00EC2AD4
 
 Black/WorldRoomCamera.cpp:
 	.data       start:0x00C9DD74 end:0x00C9DD94

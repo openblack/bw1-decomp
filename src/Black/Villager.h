@@ -2045,6 +2045,8 @@ public:
 	uint32_t FootballDefenderAnimation();
 	// BW1W120 00423d20 BW1M119 010ac380
 	uint32_t FootballMatchPausedAnimation();
+	// BW1W120 00423da0 BW1M119 null
+	uint32_t FootballWonGoalAnimation();
 	// BW1W120 00423e20 BW1M119 010ac170
 	uint32_t BuildingAnimation();
 	// BW1W120 00423eb0 BW1M119 010ac060

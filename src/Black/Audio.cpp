@@ -9,6 +9,7 @@
 #include "Audio.h"
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>     /* For LH3DIsland::GetAltitude */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>       /* For SquareRoot */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>       /* For LH3DTech */
 #include <Lionhead/LHAudio/ver7.0/LH_AudioBank.h>        /* For class LH_AudioBank */
 #include <Lionhead/LHAudio/ver7.0/LH_AudioSystem.h>      /* For class LH_AudioSystem */
@@ -47,10 +48,12 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 
-#if defined(VERSION_BW1W100)
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define AUDIO_FILE "C:\\dev\\black\\Audio.cpp"
 #elif defined(VERSION_BW1W110)
 #define AUDIO_FILE "C:\\dev\\Black\\Audio.cpp"
+#elif defined(VERSION_BW1W130)
+#define AUDIO_FILE "D:\\Work\\Games\\dd\\Black\\Audio.cpp"
 #else
 #define AUDIO_FILE "C:\\dev\\MP\\Black\\Audio.cpp"
 #endif
@@ -85,6 +88,10 @@
 
 // GInterface::ResetActionState picks this while the player's creature fights.
 #define INTERFACE_ACTION_STATE_CREATURE_FIGHT 16
+#ifdef VERSION_BW1WCI
+#define INTERFACE_ACTION_STATE_FIGHT_SELECT 22
+#define INTERFACE_ACTION_STATE_FIGHT_APPLY  23
+#endif
 // Creature fights from this land on use the big fight music.
 #define BIG_FIGHT_MUSIC_FIRST_LAND 4
 #define FIGHT_MUSIC_DISTANCE       100.0f
@@ -202,6 +209,15 @@ static MusicTypeInfo MusicTypes[MUSIC_TYPE_LAST] = {
 	{"audio/music/script/circus.sad", "MUSIC_TYPE_SCRIPT_CIRCUS"},
 	{"audio/music/script/circus3d.sad", "MUSIC_TYPE_SCRIPT_CIRCUS_3D"},
 	{"audio/music/script/creatureendsequence.sad", "MUSIC_TYPE_SCRIPT_CREATURE_END_SEQUENCE"},
+#ifdef VERSION_BW1WCI
+	{"audio/music/script/missionariesareback.sad", "MUSIC_TYPE_SCRIPT_MISSIONARIES_INTRO"},
+	{"audio/music/script/campfire.sad", "MUSIC_TYPE_SCRIPT_MISSIONARIES_CAMP_FIRE"},
+	{"audio/music/script/CreatureGuide.sad", "MUSIC_TYPE_SCRIPT_BROTHERHOOD_INTRO"},
+	{"audio/music/script/Chase.sad", "MUSIC_TYPE_SCRIPT_RACE"},
+	{"audio/music/script/Skeleton.sad", "MUSIC_TYPE_SCRIPT_SKELETON_GRAB"},
+	{"audio/music/chant/marauder_chant.sad", "MUSIC_TYPE_SCRIPT_MARAUDER_CHANT"},
+	{"audio/music/script/MissionariesBackgroundBlowScript.sad", "MUSIC_TYPE_SCRIPT_MISSIONARIES_BLOW_SCRIPT"},
+#endif
 };
 
 static MUSIC_ALIGNMENT AlignmentMusicAlignments[NUM_DISCRETE_ALIGNMENTS] = {
@@ -347,7 +363,11 @@ GAudio::GAudio()
 	char          filename[MAX_PATH];
 	OSVERSIONINFO versionInfo;
 
+#ifdef VERSION_BW1WCI
+	AudioSystem = new (AUDIO_FILE, 333) LH_AudioSystem;
+#else
 	AudioSystem = new (AUDIO_FILE, 325) LH_AudioSystem;
+#endif
 	AudioSystem->EnableWave = true;
 	AudioSystem->EnableMidi = false;
 	AudioSystem->EnableMusic = true;
@@ -363,6 +383,9 @@ GAudio::GAudio()
 	GetVersionEx(&versionInfo);
 	CurrentTown = NULL;
 	AudioSystem->Window = LHSys::TheSystem.screen.MsWindowHandle;
+#ifdef VERSION_BW1WCI
+	AudioSystem->RedirectFileAccess = true;
+#endif
 	AudioSystem->Create();
 	if (AudioSystem->LHWaveIsInstalled() == true)
 	{
@@ -467,39 +490,57 @@ void GAudio::Update3DAudioPositions()
 	AudioSystem->LHListenerUpdate((LHAudioPoint*)&position, (LHAudioPoint*)&focus, (LHAudioPoint*)&up);
 }
 
+static inline bool32_t IsValidCoordinate(float value)
+{
+	return fabs(value) <= SOUND_EFFECT_MAX_COORDINATE;
+}
+
 // BW1W120 00427200 BW1M119 01183ff0
 unsigned long sound_effect_callback_function(LH_SampleInfo* info, float* x, float* y, float* z, float* distance,
                                              bool32_t* valid)
 {
-	LHPoint pos(info->X, info->Y, info->Z);
-	LHPoint camera;
-	Base*   object = info->AttachedObject;
+	Base*   attachedObject = info->AttachedObject;
+	LHPoint soundPos(info->X, info->Y, info->Z);
+	LHPoint cameraPos;
 
-	if (fabs(info->X) > SOUND_EFFECT_MAX_COORDINATE)
+	if (!IsValidCoordinate(info->X))
 	{
 		info->X = 0.0f;
 	}
-	if (fabs(info->Y) > SOUND_EFFECT_MAX_COORDINATE)
+	if (!IsValidCoordinate(info->Y))
 	{
 		info->Y = 0.0f;
 	}
-	if (fabs(info->Z) > SOUND_EFFECT_MAX_COORDINATE)
+	if (!IsValidCoordinate(info->Z))
 	{
 		info->Z = 0.0f;
 	}
-	if (object == LH_SAMPLE_OBJECT_GONE)
+	if (attachedObject == LH_SAMPLE_OBJECT_GONE)
 	{
 		*valid = false;
 		return 0;
 	}
-	if (object != NULL)
+	if (attachedObject != NULL)
 	{
-		GameThing* thing = dynamic_cast<GameThing*>(object);
+#ifdef VERSION_BW1WCI
+		GameThing* thing;
+		__try
+		{
+			thing = dynamic_cast<GameThing*>(attachedObject);
+		}
+		__except (EXCEPTION_EXECUTE_HANDLER)
+		{
+			*valid = false;
+			return 0;
+		}
+#else
+		GameThing* thing = dynamic_cast<GameThing*>(attachedObject);
+#endif
 		if (thing != NULL)
 		{
 			if (thing->IsAvailable())
 			{
-				if (thing->Get3DSoundPos(&pos) != true)
+				if (thing->Get3DSoundPos(&soundPos) != true)
 				{
 					*valid = false;
 					return 0;
@@ -511,7 +552,7 @@ unsigned long sound_effect_callback_function(LH_SampleInfo* info, float* x, floa
 				return 0;
 			}
 		}
-		else if (object->Get3DSoundPos(&pos) != true)
+		else if (attachedObject->Get3DSoundPos(&soundPos) != true)
 		{
 			*valid = false;
 			return 0;
@@ -519,29 +560,30 @@ unsigned long sound_effect_callback_function(LH_SampleInfo* info, float* x, floa
 	}
 	else
 	{
-		GGame::g_game->GetCamera()->GetPosition(pos);
+		GGame::g_game->GetCamera()->GetPosition(soundPos);
 	}
 	*valid = true;
-	*x = pos.x;
-	*y = pos.y;
-	*z = pos.z;
-	if (fabs(*x) > SOUND_EFFECT_MAX_COORDINATE)
+	*x = soundPos.x;
+	*y = soundPos.y;
+	*z = soundPos.z;
+	if (!IsValidCoordinate(*x))
 	{
 		*x = 0.0f;
 	}
-	if (fabs(*y) > SOUND_EFFECT_MAX_COORDINATE)
+	if (!IsValidCoordinate(*y))
 	{
 		*y = 0.0f;
 	}
-	if (fabs(*z) > SOUND_EFFECT_MAX_COORDINATE)
+	if (!IsValidCoordinate(*z))
 	{
 		*z = 0.0f;
 	}
-	GGame::g_game->GetCamera()->GetPosition(camera);
-	pos.x += info->OffsetX;
-	pos.y += info->OffsetY;
-	pos.z += info->OffsetZ;
-	*distance = camera.GetDistance(pos);
+	GGame::g_game->GetCamera()->GetPosition(cameraPos);
+	soundPos.x += info->OffsetX;
+	soundPos.y += info->OffsetY;
+	soundPos.z += info->OffsetZ;
+	LHPoint delta = cameraPos - soundPos;
+	*distance = SquareRoot(delta.x * delta.x + delta.y * delta.y + delta.z * delta.z);
 	return 0;
 }
 
@@ -573,6 +615,9 @@ MUSIC_TYPE GAudio::GetMusicType(const MapCoords& coords)
 	float           value = Alignment;
 	MUSIC_ALIGNMENT alignment = GetMusicAlignment(GAlignment::GetDiscreteAlignmentValue(value));
 	Town*           town = coords.GetNearestTownWithTownCentre(GSoundInfo::Info.TownMusicFarDistance);
+#ifdef VERSION_BW1WCI
+	if (town != NULL && coords.Altitude() < GSoundInfo::Info.TownMusicFarDistance)
+#else
 	// A reference to the copy keeps it in memory: the target copies through fld/fstp, not eax.
 	const float& altitude = coords.Altitude();
 	if (CurrentTown != NULL && !CurrentTown->IsAvailable())
@@ -580,6 +625,7 @@ MUSIC_TYPE GAudio::GetMusicType(const MapCoords& coords)
 		CurrentTown = NULL;
 	}
 	if (town != NULL && altitude < GSoundInfo::Info.TownMusicFarDistance)
+#endif
 	{
 		if (GUtils::GetDistanceInMetres(GGame::g_game->GetCamera()->Pos, town->Pos) >
 		    GSoundInfo::Info.TownMusicNearDistance)
@@ -588,7 +634,8 @@ MUSIC_TYPE GAudio::GetMusicType(const MapCoords& coords)
 			    GUtils::GetDistanceInMetres(GGame::g_game->GetCamera()->Pos, CurrentTown->Pos) <
 			        GSoundInfo::Info.TownMusicFarDistance)
 			{
-				return GetTownMusicType(alignment, CurrentTown->tribe_type);
+				TRIBE_TYPE tribe = CurrentTown->tribe_type;
+				return GetTownMusicType(alignment, tribe);
 			}
 		}
 		else
@@ -638,7 +685,13 @@ bool32_t GAudio::ProcessFightMusic()
 	GGame::g_game->GetCamera()->GetPosition(camera);
 	if (creature != NULL)
 	{
+#ifdef VERSION_BW1WCI
+		int state = GGame::g_game->MyInterface()->ActionState;
+		if (state == INTERFACE_ACTION_STATE_CREATURE_FIGHT || state == INTERFACE_ACTION_STATE_FIGHT_SELECT ||
+		    state == INTERFACE_ACTION_STATE_FIGHT_APPLY)
+#else
 		if (GGame::g_game->MyInterface()->ActionState == INTERFACE_ACTION_STATE_CREATURE_FIGHT)
+#endif
 		{
 			PlayFightMusic();
 			return true;
@@ -864,6 +917,12 @@ bool32_t GAudio::ProcessScriptMusic()
 
 void GAudio::ProcessMusic()
 {
+#ifdef VERSION_BW1WCI
+	if (CurrentTown != NULL && !CurrentTown->IsAvailable())
+	{
+		CurrentTown = NULL;
+	}
+#endif
 	if (GGame::g_game->VideoPlayer == NULL)
 	{
 		if (!AudioSystem->LHMusicIsInstalled() || GGame::g_game->LandNumber == NO_MUSIC_LAND_NUMBER)
@@ -1020,6 +1079,37 @@ void GAudio::StartScriptMusic(MUSIC_TYPE type)
 		ScriptMusicPlaying = false;
 	}
 }
+
+#ifdef VERSION_BW1WCI
+void GAudio::StartScriptMusic(MUSIC_TYPE type, unsigned long start_chunk)
+{
+	ScriptMusicType = type;
+	if (type != MUSIC_TYPE_NONE)
+	{
+		LH_MusicPlayOptions options;
+		float               value = Alignment;
+		MUSIC_TYPE          music = GetScriptMusicType(GetMusicAlignment(GAlignment::GetDiscreteAlignmentValue(value)));
+		if (MusicBanks[music] != NULL)
+		{
+			options.Loop = false;
+			options.StartChunk = start_chunk;
+			options.Bank = MusicBanks[music];
+			options.Volume = LH_MUSIC_VOLUME_MAX;
+			options.FadeIn = false;
+			options.Positional = false;
+			options.Pitch = LH_MUSIC_PITCH_NORMAL;
+			options.FinishedCallback = script_music_finished_callback;
+			options.CallbackParam = ScriptMusicType;
+			options.MarkerCallback = script_music_marker_callback;
+			StoreMusicStyleChunks();
+			AudioSystem->LHMusicPlay(&options);
+			ScriptMusicPlaying = true;
+			GGlobal::Global.debug.SetMessage(MUSIC_DEBUG_CATEGORY, "Music Playing=%s",
+			                                 MusicTypes[ScriptMusicType].Name);
+		}
+	}
+}
+#endif
 
 void GAudio::RegistrySetup()
 {

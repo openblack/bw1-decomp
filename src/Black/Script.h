@@ -179,32 +179,44 @@ public:
 	// BW1W120 00c0c740
 	static ScriptObjectDispatch g_scriptObjectDispatch[SCRIPT_OBJECT_TYPE_LAST - 1];
 
-	uint32_t  CountDownTimerEnabled;
-	uint32_t  CountDownTimerRemaining;
-	uint32_t  CountDownTimerVisible;
+	uint32_t CountDownTimerEnabled;
+	uint32_t CountDownTimerRemaining;
+	uint32_t CountDownTimerVisible;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x14;
+#endif
 	MapCoords FindPos;
 	float     FindRadius;
 	uint32_t  LoopValue;
 	uint32_t  LoopValue2;
-	uint8_t   field_0x2c[0x8];
-	uint32_t  LoopCount;
-	uint32_t  LoopParam;
-	bool32_t  LoopSetControlledByScript;
-	LHPoint   FocusPos;
-	uint8_t   field_0x4c[0x20];
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x30;
+#endif
+	uint8_t  field_0x2c[0x8];
+	uint32_t LoopCount;
+	uint32_t LoopParam;
+	bool32_t LoopSetControlledByScript;
+	LHPoint  FocusPos;
+	uint8_t  field_0x4c[0x20];
 	int(__cdecl* LoopCallback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t);
 	GameThingWithPos* HitObject;
 	GameThingWithPos* ObjectWhichHit;
-	uint8_t           field_0x78[0xc];
-	uint32_t          field_0x84;
-	uint8_t           field_0x88[0xc];
-	bool32_t          AlignmentMusic;
-	long              LastMusicLine;
-	long              LastMusicWord;
-	uint32_t          CitadelInteract;
-	uint8_t           field_0xa4[0x8];
-	uint32_t          GameSpeedTask;
-	uint8_t           field_0xb0[0xc];
+#ifdef VERSION_BW1WCI
+	GameThingWithPos* ci_field_0x80;
+#endif
+	uint8_t  field_0x78[0xc];
+	uint32_t field_0x84;
+	uint8_t  field_0x88[0xc];
+	bool32_t AlignmentMusic;
+	long     LastMusicLine;
+	long     LastMusicWord;
+	uint32_t CitadelInteract;
+	uint8_t  field_0xa4[0x8];
+	uint32_t GameSpeedTask;
+	uint8_t  field_0xb0[0xc];
+#ifdef VERSION_BW1WCI
+	uint8_t ci_field_0xc8[0x10];
+#endif
 
 	// Override methods
 
@@ -1347,6 +1359,11 @@ public:
 	static int FindNearInStateCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
 	                                                      uint32_t subtype);
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(GScript) == 0xd8, "Data type is of wrong size");
+#else
+static_assert(sizeof(GScript) == 0xbc, "Data type is of wrong size");
+#endif
 
 class GScriptOpposingCreature : public GBaseInfo
 {

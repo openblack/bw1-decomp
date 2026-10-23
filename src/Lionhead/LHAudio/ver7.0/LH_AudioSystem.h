@@ -51,6 +51,9 @@ public:
 	uint8_t       field_0x0[0x84];
 	LH_MusicInfo* MusicInfos;
 	uint8_t       field_0x88[0x4];
+#ifdef VERSION_BW1WCI
+	bool32_t RedirectFileAccess;
+#endif
 	bool32_t      EnableWave;
 	uint8_t       field_0x90[0x4];
 	bool32_t      EnableMidi;
@@ -194,6 +197,10 @@ public:
 	// BW1W120 10015df0 BW1M119 01130530 (LHCombined Release)
 	LH_AUDIO_API void* LHWaveGetQMixerDirectSoundObject();
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(LH_AudioSystem) == 0x1f0, "Data type is of wrong size");
+#else
 static_assert(sizeof(LH_AudioSystem) == 0x1ec, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_LH_AUDIO_SYSTEM_INCLUDED_H */

@@ -371,7 +371,7 @@ Black/CameraModePath.cpp:
 	.rdata      start:0x008CCD04 end:0x008CCD58
 	.rdata$r    start:0x00A28EE0 end:0x00A28F2C
 	.CRT$XCU    start:0x00A4627C end:0x00A46284 align:4
-	.data       start:0x00A4EB18 end:0x00A4EB4B
+	.data       start:0x00A4EB18 end:0x00A4EB4C
 	.bss        start:0x00CDF0D4 end:0x00CDF0D8
 
 Black/CameraModeScript.cpp:
@@ -379,6 +379,7 @@ Black/CameraModeScript.cpp:
 	.rdata      start:0x008CCD58 end:0x008CCDB0
 	.rdata$r    start:0x00A28F30 end:0x00A28F7C
 	.CRT$XCU    start:0x00A46284 end:0x00A4628C align:4
+	.data       start:0x00A4EB4C end:0x00A4EB80
 	.bss        start:0x00CDF0DC end:0x00CDF0E0
 
 Black/CameraModeTwoObjects.cpp:
@@ -2975,7 +2976,7 @@ lib/libcpmt/xstrcoll.obj:
 	.text       start:0x007C1518 end:0x007C1668 align:1
 
 Lionhead/LHFile/ver3.0/LHOSFile.cpp:
-	.text       start:0x007C1668 end:0x007C2350
+	.text       start:0x007C1670 end:0x007C2350
 	.text$x     start:0x008ACA68 end:0x008ACAD0 align:4
 	.rdata      start:0x00A1F25C end:0x00A1F268
 	.data       start:0x00CAC8A0 end:0x00CAC934

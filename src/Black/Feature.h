@@ -60,6 +60,15 @@ public:
 	virtual void Draw();
 	// BW1W120 005275b0 BW1M119 010d57e0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0053c520 BW1M119 null
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
+	// BW1WCI 0053c630 BW1M119 null
+	virtual void AddToRoutePlan(RPHolder* holder, Creature* creature, bool32_t update,
+	                            void(__cdecl* add_function)(int, Point2D, float, int));
+	// BW1WCI 0053c5b0 BW1M119 null
+	virtual float GetRoutePlanRadius(Creature* creature);
+#endif
 
 	// BW1W120 inlined BW1M119 0130dbd0
 	Feature() {}

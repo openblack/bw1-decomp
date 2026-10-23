@@ -81,7 +81,11 @@ VillagerStateTableEntry VillagerStateTableEntry::StateTable[VILLAGER_STATE_LAST_
 	{&Villager::FootballAttacker, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, &Villager::FootballAttackerAnimation, 0, 0},
 	{&Villager::FootballGoalie, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, &Villager::FootballGoalKeeperAnimation, 0, 0},
 	{&Villager::FootballDefender, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, &Villager::FootballDefenderAnimation, 0, 0},
+#ifdef VERSION_BW1WCI
+	{&Villager::FootballWonGoal, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, &Villager::FootballWonGoalAnimation, 0, 0},
+#else
 	{&Villager::FootballWonGoal, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, 0, 0, 0},
+#endif
 	{&Villager::FootballLostGoal, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, 0, 0, 0},
 	{&Villager::StartMoveToPickUpBallForDeadBall, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, &Villager::MoveToPosAnimation, &Villager::MoveToPosIntoOutofAnimation, 0},
 	{&Villager::ArrivedAtPickUpBallForDeadBall, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, 0, 0, 0},
@@ -205,7 +209,11 @@ VillagerStateTableEntry VillagerStateTableEntry::StateTable[VILLAGER_STATE_LAST_
 	{&Villager::AfterTapOnAbode, 0, 0, 0, 0, &Villager::AlwaysReactToTownEmergency, &Villager::YawnAnimation, 0, 0},
 	{&Villager::WeakOnGround, 0, &Living::ExitNoChangeState, 0, 0, 0, 0, 0, 0},
 	{&Villager::ScriptWanderAroundPos, &Living::EnterScriptWander, &Living::ExitScriptWander, &Villager::SaveScriptPos, &Villager::LoadScriptPos, 0, 0, 0, 0},
+#ifdef VERSION_BW1WCI
+	{&Living::ScriptPlayAnim, &Living::EnterPlayAnim, &Living::ExitPlayAnim, &Villager::SaveScriptPos, &Villager::LoadScriptPos, 0, &Villager::ScriptAnimation, 0, 0},
+#else
 	{&Villager::ScriptPlayAnim, &Living::EnterPlayAnim, &Living::ExitPlayAnim, &Villager::SaveScriptPos, &Villager::LoadScriptPos, 0, &Villager::ScriptAnimation, 0, 0},
+#endif
 	{&Villager::GoToTeleportReaction, 0, &Villager::ExitReactToTeleport, &Villager::SaveReaction, &Villager::LoadReaction, &Villager::AlwaysReactToTownEmergency, 0, 0, &Villager::ReactionValidate},
 	{&Villager::TeleportReaction, 0, &Villager::ExitReactToTeleport, &Villager::SaveReaction, &Villager::LoadReaction, &Villager::AlwaysReactToTownEmergency, 0, 0, &Villager::ReactionValidate},
 	{&Villager::DanceWhileReacting, 0, &Living::ExitReaction, &Villager::SaveReaction, &Villager::LoadReaction, &Villager::AlwaysReactToTownEmergency, &Villager::DanceAnimation, 0, &Villager::ReactionValidate},
@@ -320,5 +328,8 @@ AnimalStateTableEntry Animal::StateTable[ANIMAL_STATE_LAST_STATE] = {
 	{&Animal::GivesBirth, 0, 0, 0, 0, 0, &Animal::StandAnimation, 0, 0},
 	{&Animal::HideInLair, &Animal::EnterHideInLair, 0, 0, 0, 0, &Animal::SleepAnimation, 0, 0},
 	{&Animal::SeekFood, &Animal::EnterSeekFood, 0, 0, 0, 0, &Animal::MoveAnimation, 0, 0},
+#ifdef VERSION_BW1WCI
+	{&Living::ScriptPlayAnim, &Living::EnterPlayAnim, &Living::ExitPlayAnim, &Animal::SaveScriptPos, &Animal::LoadScriptPos, 0, &Animal::ScriptAnimation, 0, 0},
+#endif
 };
 // clang-format on

@@ -44,7 +44,7 @@ public:
 	// BW1WCI 0061f540 BW1M119 null
 	virtual bool32_t AreWeThere(const MapCoords& coords, float extra_distance);
 	// BW1WCI 00426d40 BW1M119 null
-	virtual int CreatureIsleVirtual0x8a8() { return 0; }
+	virtual int GetSpeed() const { return 0; }
 #endif
 
 	// Constructors

@@ -411,6 +411,14 @@ public:
 	void SetTown(Town* town);
 	// BW1W120 0041b1f0 BW1M119 01034ef0
 	void DebugShowText();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0041c950 BW1M119 null
+	bool32_t SaveScriptPos(GameOSFile& file);
+	// BW1WCI 0041c9f0 BW1M119 null
+	bool32_t LoadScriptPos(GameOSFile& file);
+	// BW1WCI 0041c8e0 BW1M119 null
+	uint32_t ScriptAnimation();
+#endif
 
 	// State-table handlers reached only through the villager/animal state
 	// tables in GStates.cpp. Names are placeholders keyed on the address;

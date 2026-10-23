@@ -29,14 +29,17 @@ class ScriptHighlight : public SingleMapFixed
 {
 public:
 	// BW1W120 007096e0 BW1M119 015035c0
-	static void                 OnClearMap();
-	uint32_t                    field_0x5c;
-	uint32_t                    field_0x60;
-	uint8_t                     field_0x64[0x14];
-	uint32_t                    field_0x78;
-	uint32_t                    field_0x7c;
-	uint32_t                    field_0x80;
-	uint32_t                    field_0x84;
+	static void OnClearMap();
+	uint32_t    field_0x5c;
+	uint32_t    field_0x60;
+	uint8_t     field_0x64[0x14];
+	uint32_t    field_0x78;
+	uint32_t    field_0x7c;
+	uint32_t    field_0x80;
+	uint32_t    field_0x84;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x88;
+#endif
 	LHListNode<ScriptHighlight> next;
 
 	// Override methods

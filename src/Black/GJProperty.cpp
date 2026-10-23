@@ -24,10 +24,12 @@ static double unused;
 #include "Persistent.h"      /* For class Persistent, class PersistentOwner */
 #include "PSysSoundAction.h" /* For class PSysSoundAction */
 
-#if defined(VERSION_BW1W100)
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define GJ_PROPERTY_SOURCE_FILE "C:\\dev\\black\\GJProperty.cpp"
 #elif defined(VERSION_BW1W110)
 #define GJ_PROPERTY_SOURCE_FILE "C:\\dev\\Black\\GJProperty.cpp"
+#elif defined(VERSION_BW1W130)
+#define GJ_PROPERTY_SOURCE_FILE "D:\\Work\\Games\\dd\\Black\\GJProperty.cpp"
 #else
 #define GJ_PROPERTY_SOURCE_FILE "C:\\dev\\MP\\Black\\GJProperty.cpp"
 #endif

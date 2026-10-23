@@ -10,7 +10,7 @@
 #include "CreatureMentalDesire.h"
 #include "CreaturePlan.h"
 
-#if defined(VERSION_BW1W100)
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define FILEPATH "C:\\dev\\black\\CreatureAttitudeToCreature.cpp"
 #elif defined(VERSION_BW1W110)
 #define FILEPATH "C:\\dev\\Black\\CreatureAttitudeToCreature.cpp"
