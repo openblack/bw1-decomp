@@ -93,21 +93,32 @@ name (C2858), and the file must be that PDB or a copy of it (C2859). The directo
 
 ## 2. How the build models it
 
-`configure.py` defines the game code's PCH, `src/Black/BlackPCH.h` (built from
-`src/Black/BlackPCH.cpp`, which compiles nothing else, like a StdAfx.cpp), in `gamecode_pch`.
-`GameCodeObject` compiles every game unit with `/FIBlackPCH.h /YuBlackPCH.h` against it; the
-PCH is built once per version at `build/<version>/src/Black/BlackPCH.pch`, and the header is
-forced in, so the unit's source does not change. Its `pch` argument marks the exceptions (§4):
-`False` where the target shows a compile without it, `PCH_EXCEPT_NO_STRING` or
-`PCHExceptNoStringIn(...)` where the `<string>` in ours keeps a unit off it in 1.20 and 1.30, and
-`PCH_PENDING` for units whose sources still reproduce the layout of a compile without it.
+`configure.py` declares each precompiled header with `PrecompiledHeader(header, source)`, where
+`source` compiles nothing but the header, like a StdAfx.cpp. Each library's object helper
+takes a `pch` argument that selects its library's PCH:
 
-`tools/project.py` implements it with the `pch` object option (`force_include`, `shared`):
+- `GameCodeObject` uses `gamecode_pch`, `src/Black/BlackPCH.h` (built from
+  `src/Black/BlackPCH.cpp`), by default, since the game was built with it in nearly every unit.
+  Its `pch` argument marks the exceptions (§4): `False` where the target shows a compile without
+  it, `PCH_EXCEPT_NO_STRING` or `PCHExceptNoStringIn(...)` where the `<string>` in ours keeps a
+  unit off it in 1.20 and 1.30, and `PCH_PENDING` for units whose sources still reproduce the
+  layout of a compile without it.
+- `LH3DLibObject` uses `lh3dlib_pch`, `src/Lionhead/LH3DLib/development/LH3DLibPCH.h`, with
+  `pch=True`. The units using it are those whose `.bss` only reproduces with `/Yu`.
 
-- The PCH is built with the units' flags, `/Zi` included, and `/Fd` naming
-  `blackpch.pdb`. Each `/Yu` unit compiles with `/Fd` naming its own copy of that PDB,
-  `build/<version>/src/Black/<unit>/blackpch.pdb`. Units with other flags (`/vmg`) cannot
-  share it: `configure.py` fails instead of building a mismatched PCH.
+Every unit using a PCH is compiled with `/FI<header> /Yu<header>`: the header is forced in,
+so the unit's source does not include it. The PCH is built once per version at the source's
+path, for example `build/<version>/src/Black/BlackPCH.pch`.
+
+`tools/project.py` implements it with the `pch` object option (`header`, `source`):
+
+- The PCH is built with the units' `cflags`, `/Zi` included, and `/Fd` naming
+  `blackpch.pdb` (`lh3dlibpch.pdb`). Each `/Yu` unit compiles with `/Fd` naming its own copy of
+  that PDB, `build/<version>/src/Black/<unit>/blackpch.pdb`. Units with other `cflags` cannot
+  share it: `configure.py` fails instead of building a mismatched PCH. A unit's `extra_cflags`
+  are not part of the PCH's flags. Where they differ from them, as `/GX` does for `LH3DIsland`,
+  cl warns (C4652) and the unit's option overrides the PCH's, as with a per-file setting in a
+  Visual C++ project.
 - The PCH compiles with `cl` like every unit, and like them has no header dependencies: cl 6
   cannot list the files a compile reads. After editing a header the PCH reads, delete the
   `.pch`; Ninja then rebuilds it, and every unit using it, since they depend on it.
@@ -295,8 +306,9 @@ shares it) or of our sources.
 
 - **`/vmg`: `Fixed`, `Town` and `VillagerHome`.** cl only warns (C4652) when a `/Yu` compile's
   pointer-to-member representation differs from the PCH's, so under `/Yu` they could have used
-  it, and `/YX` would rebuild it for them. They are out because `project.py` shares one PCH
-  only between units with the same flags, not because of their targets.
+  it, and `/YX` would rebuild it for them. They are out because `project.py` once shared a PCH
+  only between units with all the same flags, not because of their targets. Their `extra_cflags`
+  now override the PCH's, so whether they used it is open.
 - **`PCH_PENDING`**: sources fitted to the layout of a compile without the PCH, whose targets
   do not rule it out. This is not a property of the original build, and they are follow-up
   work: `/Yu` puts their statics in the reverse order of their first mention, so the

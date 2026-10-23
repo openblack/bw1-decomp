@@ -72,13 +72,11 @@ class Object:
             # Executable to invoke, relative to the compiler directory. Defaults
             # to cl.exe; hand-supplied compilers may keep their own name/layout.
             "compiler_exe": None,
-            # MSVC precompiled header: {"header": name in the source's first
-            # #include, "source": .cpp that only includes it}. The unit is built
-            # with /Yu against a PCH compiled from that source with its own flags.
-            # Optional keys: "force_include" compiles the unit with /FI<header>
-            # (its source does not include the header); "shared" builds the PCH
-            # once, at the source's path under the build directory, for every
-            # unit naming it.
+            # MSVC precompiled header: {"header": header to precompile, "source":
+            # .cpp that only includes it}. The PCH is built once, at the source's
+            # path under the build directory, with the cflags of the units naming
+            # it (not their extra_cflags), and each unit is built with /FI<header>
+            # /Yu<header> against it, so its source does not include the header.
             "pch": None,
             "progress_category": None,
             "scratch_preset_id": None,
@@ -1305,21 +1303,17 @@ def generate_build_ninja(
                 pch = obj.options["pch"]
                 if pch is not None:
                     header = pch["header"]
-                    pch_flags = [f"/FI{header}"] if pch.get("force_include") else []
-                    if pch.get("shared"):
-                        pch_out = config.out_path() / Path(pch["source"]).with_suffix(".pch")
-                    else:
-                        pch_out = obj.src_obj_path.with_suffix(".pch")
+                    pch_out = config.out_path() / Path(pch["source"]).with_suffix(".pch")
                     # A /Zi unit needs its own copy of the PDB that built the PCH (C2858, C2859).
                     # cl writes PDB file names in lower case.
-                    pch_pdb = pch_out.with_name(pch_out.stem.lower() + ".pdb") if "/Zi" in all_cflags else None
-                    pch_cflags_str = make_flags_str(all_cflags + ([f"/Fd{pch_pdb}"] if pch_pdb else []))
+                    pch_pdb = pch_out.with_name(pch_out.stem.lower() + ".pdb") if "/Zi" in cflags else None
+                    pch_cflags_str = make_flags_str(cflags + ([f"/Fd{pch_pdb}"] if pch_pdb else []))
                     if pch_out in shared_pchs:
                         if shared_pchs[pch_out] != pch_cflags_str:
                             sys.exit(f"{obj.name}: precompiled header {pch_out} is shared by units with other flags")
                     else:
                         shared_pchs[pch_out] = pch_cflags_str
-                        n.comment(f"{obj.name if not pch.get('shared') else pch['source']}: precompiled header {header}")
+                        n.comment(f"{pch['source']}: precompiled header {header}")
                         n.build(
                             outputs=pch_out,
                             rule="cl_pch",
@@ -1338,7 +1332,8 @@ def generate_build_ninja(
                         pdb = obj.src_obj_path.with_suffix("") / pch_pdb.name
                         n.build(outputs=pdb, rule="copy_pdb", inputs=pch_pdb)
                         unit_order_only.append(pdb)
-                    pch_flags += [f"/Yu{header}", f"/Fp{pch_out}"]
+                    # extra_cflags differing from the PCH's flags override them (cl warns C4652).
+                    pch_flags = [f"/FI{header}", f"/Yu{header}", f"/Fp{pch_out}"]
                     unit_implicit.append(pch_out)
                     cflags_str = make_flags_str(all_cflags + pch_flags)
                 n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
