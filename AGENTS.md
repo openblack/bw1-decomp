@@ -505,6 +505,13 @@ further; leave the function nonmatching or ask the human about a fakematch.
 The Ninja `cl` rule has no header dependencies. After editing a header, delete the objects
 you rely on before rebuilding. For shared headers, delete every object, then compare full
 reports (`decomp-regress.py --refresh --baseline <saved report>`) before keeping the change.
+Nor does the precompiled header: after editing a header it reads, delete it as well
+(`build/<version>/src/Black/BlackPCH.pch`), and Ninja rebuilds it and every unit using it
+(see [`docs/msvc6_pch.md`](docs/msvc6_pch.md)).
+Game units are built with the game code's PCH unless their `configure.py` entry says
+otherwise (`pch=`). With it, `cl` lays out a unit's uninitialised statics in reverse order of
+their first mention, not by name hash: order the definitions, or initialise to zero, rather
+than picking names or adding filler statics.
 
 ### Signatures, function boundaries and layouts
 

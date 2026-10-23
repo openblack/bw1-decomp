@@ -504,11 +504,51 @@ def GameSpyObject(completed, name, **options):
     return Object(completed, name, source=source, cflags=cflags_gamespy, **options)
 
 
+# The game code's precompiled header (docs/msvc6_pch.md). It is built once per
+# version and forced in with /FI, so the sources of the units using it do not
+# change. With /Yu, cl emits the inline bodies of the classes it declares after
+# the scalar deleting destructor of a class derived from them, and lays out a
+# unit's uninitialised statics in reverse order of their first mention instead
+# of in the order of their name hashes.
+gamecode_pch = {
+    "header": "BlackPCH.h",
+    "source": "src/Black/BlackPCH.cpp",
+    "force_include": True,
+    "shared": True,
+}
+
+
+# For a game-code object's `pch`: the precompiled header, except in the versions named, in
+# which the unit's target has no <string> while ours brings it in through GameThingWithPos.h
+# (1.20 and 1.30; the original PCH did not carry it, docs/msvc6_pch.md §3). The target shows
+# this by lacking the std::ctype<unsigned short> guard or, LoadingScreen, by calling iswspace
+# as compiled before the standard library. These units used the PCH and get it back once
+# <string> moves to the header that gave the other units the guard.
+def PCHExceptNoStringIn(*versions):
+    return config.version not in versions
+
+
+PCH_EXCEPT_NO_STRING = PCHExceptNoStringIn("BW1W120", "BW1W130")
+
+
+# Units whose sources were fitted to the .bss layout of a compile without the precompiled
+# header (filler statics, names picked by their hash, definition order) before it was
+# modeled, although their target objects do not rule it out.
+PCH_PENDING = False
+
+
 # A game-code object (Black/), compiled with cflags_gamecode (Pentium Pro, /G6)
 # instead of the plain cflags_base used for the static libraries. Per-object
-# extra_cflags still apply on top, as with Object.
-def GameCodeObject(completed, name, **options):
-    return Object(completed, name, cflags=cflags_gamecode, **options)
+# extra_cflags still apply on top, as with Object. The game was built with its
+# precompiled header in nearly every unit, so it is built with /Yu against
+# gamecode_pch unless `pch` says otherwise: False where the target objects show
+# the unit was built without it (or with /vmg, which the shared header was not),
+# PCH_EXCEPT_NO_STRING or PCHExceptNoStringIn where the <string> in ours keeps a
+# unit off it, PCH_PENDING as above.
+def GameCodeObject(completed, name, pch=True, **options):
+    if pch is True:
+        pch = gamecode_pch
+    return Object(completed, name, cflags=cflags_gamecode, pch=pch or None, **options)
 
 
 # An LH3DLib object, compiled with cflags_lh3dlib (Pentium Pro, /G6) and counted
@@ -552,7 +592,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Abode.cpp"),
             GameCodeObject(NonMatching, "Black/AbodeInfo.cpp"),
             GameCodeObject(NonMatching, "Black/alexmfc.cpp"),
-            GameCodeObject(NonMatching, "Black/Alignment.cpp"),
+            GameCodeObject(NonMatching, "Black/Alignment.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/AlignmentInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Animal.cpp"),
             GameCodeObject(NonMatching, "Black/AnimalAnimation.cpp"),
@@ -586,16 +626,16 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ArrowInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Artifact.cpp"),
             GameCodeObject(Matching, "Black/Audio.cpp"),
-            GameCodeObject(NonMatching, "Black/AudioAnalyse.cpp"),
+            GameCodeObject(NonMatching, "Black/AudioAnalyse.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/AudioAtmos.cpp"),
             GameCodeObject(NonMatching, "Black/AudioMusicThing.cpp"),
             GameCodeObject(NonMatching, "Black/audiotag.cpp"),
             GameCodeObject(NonMatching, "Black/Balance.cpp"),
             GameCodeObject(NonMatching, "Black/Ball.cpp"),
             GameCodeObject(NonMatching, "Black/BallInfo.cpp"),
-            GameCodeObject(Matching, "Black/Base.cpp"),
+            GameCodeObject(Matching, "Black/Base.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/BaseInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/Belief.cpp"),
+            GameCodeObject(NonMatching, "Black/Belief.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/BeliefInfo.cpp"),
             GameCodeObject(NonMatching, "Black/BigForest.cpp"),
             GameCodeObject(NonMatching, "Black/BigForestInfo.cpp"),
@@ -604,7 +644,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Bookmark.cpp"),
             GameCodeObject(NonMatching, "Black/Bubble.cpp"),
             GameCodeObject(NonMatching, "Black/BuildingSite.cpp"),
-            GameCodeObject(NonMatching, "Black/BWGameSpy.cpp"),
+            GameCodeObject(NonMatching, "Black/BWGameSpy.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/BWLan.cpp"),
             GameCodeObject(NonMatching, "Black/Camera.cpp"),
             GameCodeObject(NonMatching, "Black/CameraEditor.cpp"),
@@ -621,11 +661,11 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CameraModeNew.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeNew1.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeNew2.cpp"),
-            GameCodeObject(NonMatching, "Black/CameraModeNew3.cpp"),
+            GameCodeObject(NonMatching, "Black/CameraModeNew3.cpp", pch=PCH_PENDING),
             GameCodeObject(MatchingFor("BW1W120"), "Black/CameraModePath.cpp"),
             GameCodeObject(Matching, "Black/CameraModeScript.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeTwoObjects.cpp"),
-            GameCodeObject(Matching, "Black/CarriedObject.cpp"),
+            GameCodeObject(Matching, "Black/CarriedObject.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/CDBox.cpp"),
             GameCodeObject(NonMatching, "Black/Chain.cpp"),
             GameCodeObject(NonMatching, "Black/ChallengeRoom.cpp"),
@@ -644,12 +684,12 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ClimateRainInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Collide.cpp"),
             GameCodeObject(NonMatching, "Black/Config.cpp"),
-            GameCodeObject(Matching, "Black/Container.cpp"),
+            GameCodeObject(Matching, "Black/Container.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/ContainerInfo.cpp"),
             GameCodeObject(NonMatching, "Black/ControlHand.cpp"),
             GameCodeObject(NonMatching, "Black/ControlMap.cpp"),
             GameCodeObject(NonMatching, "Black/Cow.cpp"),
-            GameCodeObject(Matching, "Black/CPUCheck.cpp"),
+            GameCodeObject(Matching, "Black/CPUCheck.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/Creature.cpp"),
             GameCodeObject(NonMatching, "Black/Creature3D.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureAction.cpp"),
@@ -674,7 +714,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureInitialSourceInfo.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureLearning.cpp"),
             GameCodeObject(Matching, "Black/CreatureLeash.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureLessonChooser.cpp"),
+            GameCodeObject(MatchingFor("BW1W110", "BW1WCI"), "Black/CreatureLessonChooser.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureLook.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMental.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalActionTests.cpp"),
@@ -685,7 +725,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/CreatureMentalBeliefs.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDebug.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDesire.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureMentalDesireSource.cpp"),
+            GameCodeObject(NonMatching, "Black/CreatureMentalDesireSource.cpp", pch=PCH_PENDING),
             GameCodeObject(Matching, "Black/CreatureMentalDesireSourceValues.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalDesireTests.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalEditor.cpp"),
@@ -732,11 +772,11 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/DanceShape.cpp"),
             GameCodeObject(NonMatching, "Black/Data.cpp"),
             GameCodeObject(NonMatching, "Black/DeadTree.cpp"),
-            GameCodeObject(NonMatching, "Black/Debug.cpp"),
+            GameCodeObject(NonMatching, "Black/Debug.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/DefensiveSphere.cpp"),
             GameCodeObject(NonMatching, "Black/DialogBoxBase.cpp"),
             GameCodeObject(NonMatching, "Black/DialogBoxImmersion.cpp"),
-            GameCodeObject(NonMatching, "Black/DialogBoxKeyBinding.cpp"),
+            GameCodeObject(NonMatching, "Black/DialogBoxKeyBinding.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/DialogBoxMain.cpp"),
             GameCodeObject(NonMatching, "Black/DialogBoxOptions.cpp"),
             GameCodeObject(NonMatching, "Black/DialogBoxSaveMessage.cpp"),
@@ -747,7 +787,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/EditorAnim.cpp"),
             GameCodeObject(NonMatching, "Black/EditorHug.cpp"),
             GameCodeObject(NonMatching, "Black/EditorIcon.cpp"),
-            GameCodeObject(NonMatching, "Black/EditorIconBase.cpp"),
+            GameCodeObject(NonMatching, "Black/EditorIconBase.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/EditorIconGraph.cpp"),
             GameCodeObject(NonMatching, "Black/EditorIconPDM.cpp"),
             GameCodeObject(NonMatching, "Black/EditorIconPlace.cpp"),
@@ -771,7 +811,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/FishFarm.cpp"),
             GameCodeObject(NonMatching, "Black/FishFarmInfo.cpp"),
             # EndPhysics passes a 16-byte member-function pointer to MapCoords::FindObject.
-            GameCodeObject(Matching, "Black/Fixed.cpp", extra_cflags=["/vmg"]),
+            GameCodeObject(Matching, "Black/Fixed.cpp", extra_cflags=["/vmg"], pch=False),
             GameCodeObject(NonMatching, "Black/Flock.cpp"),
             GameCodeObject(NonMatching, "Black/Flower.cpp"),
             GameCodeObject(NonMatching, "Black/FlowersInfo.cpp"),
@@ -795,30 +835,30 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Game.cpp"),
             GameCodeObject(NonMatching, "Black/GameArea.cpp"),
             GameCodeObject(NonMatching, "Black/GameInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/GameOptionsRoom.cpp"),
+            GameCodeObject(NonMatching, "Black/GameOptionsRoom.cpp", pch=PCHExceptNoStringIn("BW1W130")),
             GameCodeObject(NonMatching, "Black/GameOSFile.cpp"),
             GameCodeObject(NonMatching, "Black/GameStats.cpp"),
             GameCodeObject(NonMatching, "Black/GameStatsFrontEnd.cpp"),
             GameCodeObject(NonMatching, "Black/GameStatsList.cpp"),
-            GameCodeObject(Matching, "Black/GameThing.cpp"),
+            GameCodeObject(Matching, "Black/GameThing.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/GatheringBox.cpp"),
-            GameCodeObject(NonMatching, "Black/GatheringInterface.cpp"),
+            GameCodeObject(NonMatching, "Black/GatheringInterface.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/GatheringText.cpp"),
             GameCodeObject(NonMatching, "Black/GenerateCreatureHTML.cpp"),
-            GameCodeObject(Matching, "Black/GestureSystem.cpp"),
-            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/GestureSystemData.cpp"),
-            GameCodeObject(Matching, "Black/GestureSystemDataList.cpp"),
-            GameCodeObject(NonMatching, "Black/GestureSystemMatch.cpp"),
+            GameCodeObject(Matching, "Black/GestureSystem.cpp", pch=False),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/GestureSystemData.cpp", pch=False),
+            GameCodeObject(Matching, "Black/GestureSystemDataList.cpp", pch=False),
+            GameCodeObject(NonMatching, "Black/GestureSystemMatch.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/GestureSystemResult.cpp"),
-            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/GestureSystemSamples.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/GestureSystemSamples.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/GJBaseUtils.cpp"),
             GameCodeObject(NonMatching, "Black/GJPersistent.cpp"),
-            GameCodeObject(Matching, "Black/GJProperty.cpp"),
+            GameCodeObject(Matching, "Black/GJProperty.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/GJSpline.cpp"),
             GameCodeObject(NonMatching, "Black/GJUtils.cpp"),
             GameCodeObject(NonMatching, "Black/GJVnoise.cpp"),
             GameCodeObject(NonMatching, "Black/Global.cpp"),
-            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "Black/GlobalGameList.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "Black/GlobalGameList.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/GlobalGameLists.cpp"),
             GameCodeObject(NonMatching, "Black/GraveYard.cpp"),
             GameCodeObject(NonMatching, "Black/GroupBehaviour.cpp"),
@@ -841,9 +881,9 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/HandStateTug.cpp"),
             GameCodeObject(NonMatching, "Black/HanoiBlock.cpp"),
             GameCodeObject(NonMatching, "Black/helpdude.cpp"),
-            GameCodeObject(NonMatching, "Black/HelpDudeControl.cpp"),
+            GameCodeObject(NonMatching, "Black/HelpDudeControl.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/HelpDudeLipSync.cpp"),
-            GameCodeObject(NonMatching, "Black/HelpEditor.cpp"),
+            GameCodeObject(NonMatching, "Black/HelpEditor.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/HelpProfile.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSpirit.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSpiritInfo.cpp"),
@@ -877,7 +917,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/LandBalance.cpp"),
             GameCodeObject(NonMatching, "Black/LandFeature.cpp"),
             GameCodeObject(NonMatching, "Black/Landscape.cpp"),
-            GameCodeObject(NonMatching, "Black/Language.cpp"),
+            GameCodeObject(NonMatching, "Black/Language.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/LayerCommunication.cpp"),
             GameCodeObject(NonMatching, "Black/Leash.cpp"),
             GameCodeObject(NonMatching, "Black/LeashSelectorInfo.cpp"),
@@ -892,10 +932,10 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/LivingInfo.cpp"),
             GameCodeObject(NonMatching, "Black/LivingProjectile.cpp"),
             GameCodeObject(NonMatching, "Black/LivingReaction.cpp"),
-            GameCodeObject(NonMatching, "Black/LivingStates.cpp"),
+            GameCodeObject(NonMatching, "Black/LivingStates.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/LoaderAnon.cpp"),
             GameCodeObject(NonMatching, "Black/LoadingBox.cpp"),
-            GameCodeObject(NonMatching, "Black/LoadingScreen.cpp"),
+            GameCodeObject(NonMatching, "Black/LoadingScreen.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/Lobbybox.cpp"),
             GameCodeObject(NonMatching, "Black/LocalBase.cpp"),
             GameCodeObject(NonMatching, "Black/LoginBox.cpp"),
@@ -912,7 +952,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MagicHealInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MagicInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MagicLivingInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/MagicObjectInfo.cpp"),
+            GameCodeObject(NonMatching, "Black/MagicObjectInfo.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/MagicRadiusSpellInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MagicResourceInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MagicShield.cpp"),
@@ -934,7 +974,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Mist.cpp"),
             GameCodeObject(Matching, "Black/Mobile.cpp"),
             GameCodeObject(NonMatching, "Black/MobileInfo.cpp"),
-            GameCodeObject(Matching, "Black/MobileObject.cpp"),
+            GameCodeObject(Matching, "Black/MobileObject.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/MobileObjectInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MobileStatic.cpp"),
             GameCodeObject(NonMatching, "Black/MobileStaticInfo.cpp"),
@@ -953,9 +993,9 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFEChooseConnection.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEClanDetails.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEClanList.cpp"),
-            GameCodeObject(NonMatching, "Black/MPFEConditionMessages.cpp"),
+            GameCodeObject(NonMatching, "Black/MPFEConditionMessages.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/MPFECondtionUpdateMessage.cpp"),
-            GameCodeObject(NonMatching, "Black/MPFEConnectionStatus.cpp"),
+            GameCodeObject(NonMatching, "Black/MPFEConnectionStatus.cpp", pch=PCHExceptNoStringIn("BW1W130")),
             GameCodeObject(NonMatching, "Black/MPFECreateGame.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEDatabase.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEDatabaseID.cpp"),
@@ -992,9 +1032,9 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Name.cpp"),
             GameCodeObject(NonMatching, "Black/Network.cpp"),
             GameCodeObject(NonMatching, "Black/NewProfileBox.cpp"),
-            GameCodeObject(Matching, "Black/Object.cpp"),
-            GameCodeObject(Matching, "Black/Object3D.cpp"),
-            GameCodeObject(Matching, "Black/OnMapTrajectory.cpp"),
+            GameCodeObject(Matching, "Black/Object.cpp", pch=PCH_PENDING),
+            GameCodeObject(Matching, "Black/Object3D.cpp", pch=PCH_PENDING),
+            GameCodeObject(Matching, "Black/OnMapTrajectory.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/OOSDebug.cpp"),
             GameCodeObject(NonMatching, "Black/Packet.cpp"),
             GameCodeObject(NonMatching, "Black/Particle3DAnim.cpp"),
@@ -1012,7 +1052,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/PathCreator.cpp"),
             GameCodeObject(NonMatching, "Black/PBall.cpp"),
             GameCodeObject(NonMatching, "Black/PCInput.cpp"),
-            GameCodeObject(NonMatching, "Black/PCMain.cpp"),
+            GameCodeObject(NonMatching, "Black/PCMain.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/Persistent.cpp"),
             GameCodeObject(NonMatching, "Black/PFootball.cpp"),
             GameCodeObject(NonMatching, "Black/PhysicalShield.cpp"),
@@ -1043,7 +1083,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/PlayerComputerSpell.cpp"),
             GameCodeObject(NonMatching, "Black/PlayerComputerTown.cpp"),
             GameCodeObject(NonMatching, "Black/PlayerInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/PlayerMessage.cpp"),
+            GameCodeObject(NonMatching, "Black/PlayerMessage.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/PlayerProfile.cpp"),
             GameCodeObject(NonMatching, "Black/Playtime.cpp"),
             GameCodeObject(NonMatching, "Black/PlaytimeDance.cpp"),
@@ -1060,9 +1100,9 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Property.cpp"),
             GameCodeObject(NonMatching, "Black/PSys3d.cpp"),
             GameCodeObject(NonMatching, "Black/PSysAtomCore.cpp"),
-            GameCodeObject(NonMatching, "Black/PSysBase.cpp"),
+            GameCodeObject(NonMatching, "Black/PSysBase.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/PSysBaseModifiers.cpp"),
-            GameCodeObject(NonMatching, "Black/PSysBeam.cpp"),
+            GameCodeObject(NonMatching, "Black/PSysBeam.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/PSysCreature.cpp"),
             GameCodeObject(NonMatching, "Black/PSysDraw.cpp"),
             GameCodeObject(NonMatching, "Black/PSysEditor.cpp"),
@@ -1081,7 +1121,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/PSysModifiers.cpp"),
             GameCodeObject(NonMatching, "Black/PSysPCreator.cpp"),
             GameCodeObject(NonMatching, "Black/PSysProcessInfo.cpp"),
-            GameCodeObject(Matching, "Black/PSysProperties.cpp"),
+            GameCodeObject(Matching, "Black/PSysProperties.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/PSysRenderParticle.cpp"),
             GameCodeObject(NonMatching, "Black/PSysSave.cpp"),
             GameCodeObject(NonMatching, "Black/PSysShield.cpp"),
@@ -1089,7 +1129,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/PSysTornado.cpp"),
             GameCodeObject(NonMatching, "Black/puzzlegame.cpp"),
             GameCodeObject(NonMatching, "Black/Rand.cpp"),
-            GameCodeObject(NonMatching, "Black/RandomBuildingPlacement.cpp"),
+            GameCodeObject(NonMatching, "Black/RandomBuildingPlacement.cpp", pch=PCHExceptNoStringIn("BW1W120")),
             GameCodeObject(NonMatching, "Black/RandomBuildingPlacementDefence.cpp"),
             GameCodeObject(NonMatching, "Black/Rank.cpp"),
             GameCodeObject(NonMatching, "Black/RankInfo.cpp"),
@@ -1109,18 +1149,18 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ScriptContainer.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptCreateOrCall.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptCreatureCurse.cpp"),
-            GameCodeObject(NonMatching, "Black/ScriptDLL.cpp"),
+            GameCodeObject(NonMatching, "Black/ScriptDLL.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/ScriptedCamera.cpp"),
-            GameCodeObject(MatchingFor("BW1W120"), "Black/ScriptFind.cpp"),
+            GameCodeObject(MatchingFor("BW1W120"), "Black/ScriptFind.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/ScriptFunctions.cpp"),
             GameCodeObject(MatchingFor("BW1W120"), "Black/ScriptFunctionTable.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptGFX.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptHighlight.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptHighlightInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/ScriptManage.cpp"),
-            GameCodeObject(NonMatching, "Black/ScriptMarker.cpp"),
+            GameCodeObject(NonMatching, "Black/ScriptManage.cpp", pch=False),
+            GameCodeObject(NonMatching, "Black/ScriptMarker.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/ScriptTimer.cpp"),
-            GameCodeObject(NonMatching, "Black/SecretCreature.cpp"),
+            GameCodeObject(NonMatching, "Black/SecretCreature.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/Serialise.cpp"),
             GameCodeObject(NonMatching, "Black/ServerLandscapeMap.cpp"),
             GameCodeObject(NonMatching, "Black/Settings.cpp"),
@@ -1161,7 +1201,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/SpellSeedGraphic.cpp"),
             GameCodeObject(NonMatching, "Black/SpellSeedInfo.cpp"),
             GameCodeObject(NonMatching, "Black/SpellSetupBox"),
-            GameCodeObject(NonMatching, "Black/SpellShield.cpp"),
+            GameCodeObject(NonMatching, "Black/SpellShield.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/SpellStormAndTornado"),
             GameCodeObject(NonMatching, "Black/SpellSystemInfo.cpp"),
             GameCodeObject(NonMatching, "Black/SpellTeleport"),
@@ -1197,9 +1237,9 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/TOMnavigator.cpp"),
             GameCodeObject(NonMatching, "Black/ToolTipsInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Totem.cpp"),
-            GameCodeObject(NonMatching, "Black/TotemStatue.cpp"),
+            GameCodeObject(NonMatching, "Black/TotemStatue.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/TotemStatueInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/Town.cpp", extra_cflags=["/vmg"]),
+            GameCodeObject(NonMatching, "Black/Town.cpp", extra_cflags=["/vmg"], pch=False),
             GameCodeObject(NonMatching, "Black/TownAttitudeToCreature.cpp"),
             GameCodeObject(NonMatching, "Black/TownCentre.cpp"),
             GameCodeObject(NonMatching, "Black/TownCreatureInfo.cpp"),
@@ -1227,7 +1267,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/VillagerFood.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerFootball.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerForester.cpp"),
-            GameCodeObject(Matching, "Black/VillagerHome.cpp", extra_cflags=["/vmg"]),
+            GameCodeObject(Matching, "Black/VillagerHome.cpp", extra_cflags=["/vmg"], pch=False),
             GameCodeObject(NonMatching, "Black/VillagerHousewife.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerInfo.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerLeader.cpp"),
@@ -1237,7 +1277,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/VillagerReactionToCreature.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerScript.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerShepherd.cpp"),
-            GameCodeObject(NonMatching, "Black/VillagerStates.cpp"),
+            GameCodeObject(NonMatching, "Black/VillagerStates.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/VillagerStateTableInfo.cpp"),
             GameCodeObject(Matching, "Black/VillagerTrader.cpp"),
             GameCodeObject(Matching, "Black/VillagerWorshipper.cpp"),
@@ -1265,8 +1305,8 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/WorshipSiteUpgradeInfo.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpell.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpellIcon.cpp"),
-            GameCodeObject(NonMatching, "Black/WorshipTotem.cpp"),
-            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/WorldRoom.cpp"),
+            GameCodeObject(NonMatching, "Black/WorshipTotem.cpp", pch=False),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/WorldRoom.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/WorldRoomCamera.cpp"),
 
             # Contains SSE instructions, could be result of compiling with intel compiler

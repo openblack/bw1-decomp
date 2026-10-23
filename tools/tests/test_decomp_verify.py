@@ -71,6 +71,28 @@ class CommandTests(Fixture):
         with self.assertRaisesRegex(ValueError, 'Conflicting'):
             verify.compile_edges([record, dict(record, command=record['command'] + ' /O2')], self.root, True)
 
+    def test_precompiled_header_users_read_it_and_creators_fail(self):
+        use = {'file': 'a.cpp', 'directory': str(self.root), 'output': 'a.o',
+               'command': 'cl /FIpch.h /Yupch.h /Fpbuild/pch.pch /Zi /c a.cpp /Foa.o /Fda/pch.pdb'}
+        (a,) = verify.compile_edges([use], self.root, True)
+        self.assertEqual(a.forced, ('pch.h',))
+        self.assertEqual(a.pch, verify.canonical('build/pch.pch', self.root))
+        self.assertEqual(a.shared_outputs, (verify.canonical('a/pch.pdb', self.root),))
+        create = dict(use, file='b.cpp', output='b.o', command='cl /Ycpch.h /Fpbuild/pch.pch /c b.cpp /Fob.o')
+        with self.assertRaisesRegex(ValueError, 'PCH-producing'):
+            verify.compile_edges([use, create], self.root, True)
+
+    def test_precompiled_header_older_than_a_file_it_reads_is_stale(self):
+        a = self.edge('a', flags='/FIpch.h /Yupch.h /Fpbuild/pch.pch')
+        pch = self.write('build/pch.pch')
+        header = self.write('src/pch.h')
+        os.utime(pch, ns=(2_000_000_000, 2_000_000_000))
+        os.utime(header, ns=(1_000_000_000, 1_000_000_000))
+        self.assertEqual(verify.stale_pchs([a], self.root, lambda p: ['src/pch.h']), [])
+        os.utime(header, ns=(3_000_000_000, 3_000_000_000))
+        self.assertEqual(verify.stale_pchs([a], self.root, lambda p: ['src/pch.h']), [pch])
+        self.assertEqual(verify.stale_pchs([a], self.root, lambda p: ['src/other.h']), [])
+
     def test_unsupported_response_and_environment_fail_before_replay(self):
         with self.assertRaisesRegex(ValueError, 'Response file'):
             self.edge('a', flags='@flags.rsp')
@@ -160,6 +182,16 @@ class IncludeTests(Fixture):
         self.assertEqual(selected, [a])
         self.assertTrue(any('Unregistered' in p for p in problems))
         self.assertTrue(any('Deleted' in p for p in problems))
+
+    def test_changed_precompiled_header_source_selects_its_users(self):
+        a = self.edge('a', flags='/FIpch.h /Yupch.h /Fpbuild/pch.pch')
+        b = self.edge('b')
+        pch_source = self.write('src/pch.cpp', '#include "pch.h"\n')
+        pchs = {pch_source: verify.canonical('build/pch.pch', self.root)}
+        selected, _, problems = verify.select_edges([a, b], self.root, {pch_source}, pchs=pchs)
+        self.assertEqual(selected, [a])
+        self.assertEqual(a.reasons, ['changed precompiled header source'])
+        self.assertEqual(problems, [])
 
     def test_explicit_unit_uses_common_contract_and_formats_only_source(self):
         a = self.edge('a', '#include "other.h"\n')

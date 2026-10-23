@@ -138,6 +138,7 @@ class Edge:
     roots: tuple = ()
     forced: tuple = ()
     shared_outputs: tuple = ()
+    pch: Path = None
     reasons: list = field(default_factory=list)
 
 
@@ -152,14 +153,14 @@ def compile_edges(records, root, windows=None):
         if source.suffix.lower() not in SOURCE_SUFFIXES:
             raise ValueError(f'Unexpected CL input: {source}')
         words = command_words(record['command'], windows)
-        roots, forced, shared = [], [], []
+        roots, forced, shared, pchs = [], [], [], []
         i = 0
         while i < len(words):
             token = words[i]
             if token.startswith('@'):
                 raise ValueError(f'Response file is not supported for exact replay: {token}')
             for flag, dest in (('/FI', forced), ('-FI', forced), ('/I', roots), ('-I', roots),
-                               ('/Fd', shared), ('/Fp', shared)):
+                               ('/Fd', shared), ('/Fp', pchs)):
                 if token.startswith(flag):
                     value = token[len(flag):]
                     if not value:
@@ -175,13 +176,20 @@ def compile_edges(records, root, windows=None):
         if (any(w in ('/Zi', '/ZI', '-Zi', '-ZI') for w in words)
                 and not any(w.startswith(('/Fd', '-Fd')) for w in words)):
             shared.append('vc60.pdb')
+        # A /Yu edge reads its precompiled header (built by Ninja); any other
+        # edge naming one writes it.
+        pch = None
+        if any(w.startswith(('/Yu', '-Yu')) for w in words):
+            pch = canonical(pchs[-1], directory) if pchs else None
+        else:
+            shared += pchs
         if any(w.startswith(('/Yc', '-Yc')) for w in words):
             raise ValueError('PCH-producing edges require Ninja scheduling; exact parallel replay is unsupported.')
         # Ninja node names remain case-sensitive even on Windows. Never derive
         # them from a normcase filesystem key (nor rewrite their slash spelling).
         edge = Edge(source, output, directory, record['command'], record['output'],
                     tuple(dict.fromkeys(canonical(p, directory) for p in roots)), tuple(forced),
-                    tuple(canonical(p, directory) for p in shared))
+                    tuple(canonical(p, directory) for p in shared), pch)
         if output in outputs:
             if outputs[output] != edge:
                 raise ValueError(f'Conflicting compiler edges for {output}')
@@ -304,7 +312,13 @@ class IncludeScanner:
         return [edge for edge in edges if edge.reasons]
 
 
-def select_edges(edges, root, changed=None, unit=None, source=None):
+def pch_sources(records, root):
+    """Precompiled header source -> the header it builds, from the cl_pch compdb."""
+    return {canonical(r['file'], absolute_path(r['directory'], root)):
+            canonical(r['output'], absolute_path(r['directory'], root)) for r in records}
+
+
+def select_edges(edges, root, changed=None, unit=None, source=None, pchs=None):
     if unit or source:
         try:
             from decomp_common import resolve_unit
@@ -321,9 +335,11 @@ def select_edges(edges, root, changed=None, unit=None, source=None):
             edge.reasons.append('explicit unit/source')
         return selected, {edge.source for edge in selected}, []
     changed = changed or set()
+    pchs = pchs or {}
     sources = {p for p in changed if p.suffix.lower() in SOURCE_SUFFIXES}
     headers = {p for p in changed if p.suffix.lower() in HEADER_SUFFIXES}
-    problems = [f'Unregistered changed/new source: {p}' for p in sorted(sources - {e.source for e in edges})]
+    problems = [f'Unregistered changed/new source: {p}'
+                for p in sorted(sources - {e.source for e in edges} - set(pchs))]
     problems += [f'Deleted source: {p}' for p in sorted(sources) if not p.is_file()]
     # No need to scan the tree when only source files changed.
     if headers:
@@ -332,7 +348,35 @@ def select_edges(edges, root, changed=None, unit=None, source=None):
         selected = [edge for edge in edges if edge.source in sources]
         for edge in selected:
             edge.reasons.append('changed source')
+    rebuilt = {pchs[p] for p in sources if p in pchs}
+    for edge in edges:
+        if edge.pch in rebuilt:
+            edge.reasons.append('changed precompiled header source')
+            if edge not in selected:
+                selected.append(edge)
     return selected, sources | headers, problems
+
+
+def pch_reads(ninja, pch, root):
+    """The files a precompiled header's compile reads, from a preprocessor run of its command."""
+    from msvc_probe import files_read
+
+    command = capture([ninja, '-t', 'commands', '-s', pch.relative_to(root).as_posix()], root).splitlines()[-1]
+    return files_read(command_words(command), root)
+
+
+def stale_pchs(edges, root, reads):
+    """The precompiled headers the edges read that are older than a file they read.
+
+    Ninja does not rebuild a precompiled header when a header it reads changes: cl 6 cannot
+    list them. reads(pch) lists them.
+    """
+    stale = []
+    for pch in sorted({edge.pch for edge in edges if edge.pch and edge.pch.is_file()}):
+        built = pch.stat().st_mtime_ns
+        if any((root / name).is_file() and (root / name).stat().st_mtime_ns > built for name in reads(pch)):
+            stale.append(pch)
+    return stale
 
 
 def prerequisites(ninja, edge, root):
@@ -448,6 +492,7 @@ def execute(args, root, selected, files):
             raise ValueError('tools/decomp-regress.py is required for full verification.')
     # Resolve exact commands and dependencies before any mutation.
     deps = sorted({dep for edge in selected for dep in prerequisites(args.ninja, edge, root)})
+    stale = stale_pchs(selected, root, lambda pch: pch_reads(args.ninja, pch, root))
     jobs = args.jobs
     owners = {}
     for edge in selected:
@@ -470,6 +515,10 @@ def execute(args, root, selected, files):
         flags = ['-i'] if args.format else ['--dry-run', '--Werror']
         if not step(f'format-{index:04d}-{path.name}', [args.clang_format, *flags, str(path)]):
             return 1
+    # A precompiled header older than a file it reads is rebuilt with the prerequisites.
+    for pch in stale:
+        print(f'Rebuilding {pch}: a file it reads is newer.')
+        pch.unlink()
     # Build only prerequisite targets, not the selected objects: otherwise an
     # ordinary dirty object would be compiled twice. Ninja owns generated files.
     for start in range(0, len(deps), 64):
@@ -536,8 +585,9 @@ def main(argv=None):
     if args.log_dir:
         args.log_dir = canonical(args.log_dir, root)
     edges = compile_edges(json.loads(capture([args.ninja, '-t', 'compdb', 'cl'], root)), root)
+    pchs = pch_sources(json.loads(capture([args.ninja, '-t', 'compdb', 'cl_pch'], root)), root)
     changed = None if args.unit or args.source else changed_paths(root, args.since)
-    selected, inputs, problems = select_edges(edges, root, changed, args.unit, args.source)
+    selected, inputs, problems = select_edges(edges, root, changed, args.unit, args.source, pchs)
     files = format_files(inputs, root)
     print(f'{"RUN" if args.run else "PLAN (read-only)"}: {len(selected)} / {len(edges)} original CL edges')
     for edge in selected:
