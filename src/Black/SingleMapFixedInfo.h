@@ -12,6 +12,8 @@
 class Base;
 class GBaseInfo;
 
+#define SINGLE_MAP_FIXED_INFO_COUNT 4
+
 class GSingleMapFixedInfo : public GObjectInfo
 {
 public:
@@ -20,16 +22,16 @@ public:
 	// Static data
 
 	// BW1W120 00ccfdb8
-	static GSingleMapFixedInfo Infos[4];
+	static GSingleMapFixedInfo Infos[SINGLE_MAP_FIXED_INFO_COUNT];
 
 	// Override methods
 
 	// BW1W120 0052dcd0 BW1M119 010c68e0
 	virtual MESH_LIST GetMesh() const { return Mesh; }
 	// BW1W120 0052dce0 BW1M119 010e75b0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1)
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
 	{
-		param_1 = 4;
+		num_infos = SINGLE_MAP_FIXED_INFO_COUNT;
 		return Infos;
 	}
 
@@ -38,7 +40,6 @@ public:
 	// BW1W120 inlined BW1M119 010e7050
 	static GSingleMapFixedInfo* GetInfo() { return Infos; }
 
-	// TODO(#377): The original declared this class in Fixed.h.
 	// Out of line: LoadBinary at 0042de00, Load at 0042dd90.
 	INFO_DATA_BLOCK(Mesh, Mesh)
 	INFO_DERIVED_LOADERS(GObjectInfo, "Fixed.h", 283)

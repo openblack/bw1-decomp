@@ -6,6 +6,8 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#define DATA_PATH_FRAMES_PER_TURN 100.0f
+
 // Forward Declares
 
 class Base;
@@ -17,10 +19,10 @@ class DataPath : public GameThing
 public:
 	ScriptedCamera* scripted_camera; /* 0x14 */
 	int32_t         TrackNo;
-	float           field_0x1c;
-	uint32_t        field_0x20;
-	float           field_0x24;
-	float           field_0x28;
+	float           EndPercentage;
+	bool32_t        Reverse;
+	float           Frame;
+	float           FramesPerTurn;
 	float           field_0x2c;
 
 	// Override methods

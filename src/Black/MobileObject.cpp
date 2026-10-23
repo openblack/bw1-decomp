@@ -29,12 +29,20 @@
 #include "Setup.h"
 #include "re_common.h"
 
-#if defined(VERSION_BW1W100)
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define MOBILE_OBJECT_SOURCE_FILE "C:\\dev\\black\\MobileObject.cpp"
 #elif defined(VERSION_BW1W110)
 #define MOBILE_OBJECT_SOURCE_FILE "C:\\dev\\Black\\MobileObject.cpp"
+#elif defined(VERSION_BW1W130)
+#define MOBILE_OBJECT_SOURCE_FILE "D:\\Work\\Games\\dd\\Black\\MobileObject.cpp"
 #else
 #define MOBILE_OBJECT_SOURCE_FILE "C:\\dev\\MP\\Black\\MobileObject.cpp"
+#endif
+
+#ifdef VERSION_BW1WCI
+#define MOBILE_OBJECT_LINE(line) ((line) < 109 ? (line) : (line) + 4)
+#else
+#define MOBILE_OBJECT_LINE(line) (line)
 #endif
 
 GMobileObjectInfo GMobileObjectInfo::InfoList[MOBILE_OBJECT_INFO_LAST];
@@ -62,14 +70,14 @@ MobileObject::~MobileObject()
 	}
 }
 
-void MobileObject::ToBeDeleted(int param_1)
+void MobileObject::ToBeDeleted(bool32_t delete_now)
 {
 	GGame::g_game->GameLists.MobileObjects.Remove(this);
 	if (GGame::g_game->GameLists.objects.Contains(this))
 	{
 		GGame::g_game->GameLists.objects.Remove(this);
 	}
-	Object::ToBeDeleted(param_1);
+	Object::ToBeDeleted(delete_now);
 }
 
 void MobileObject::AddMobileObjectCheckSum()
@@ -86,23 +94,33 @@ void MobileObject::AddMobileObjectCheckSum()
 MobileObject* MobileObject::Create(const MapCoords& coords, const GMobileObjectInfo* info, Object* parent,
                                    float y_angle, float scale)
 {
-	MobileObject* mobileObject;
+	MobileObject* mobileObject = NULL;
 	if (info == &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_LUMP_OF_POO])
 	{
-		mobileObject = new (MOBILE_OBJECT_SOURCE_FILE, 97) Poo(coords, info, parent, y_angle, scale);
+		mobileObject =
+			new (MOBILE_OBJECT_SOURCE_FILE, MOBILE_OBJECT_LINE(97)) Poo(coords, info, parent, y_angle, scale);
 	}
 	else if (info->MobileObjectType == MOBILE_OBJECT_INFO_CROP)
 	{
-		mobileObject = new (MOBILE_OBJECT_SOURCE_FILE, 101) FieldCrop(coords, info, parent, y_angle, scale);
+		mobileObject =
+			new (MOBILE_OBJECT_SOURCE_FILE, MOBILE_OBJECT_LINE(101)) FieldCrop(coords, info, parent, y_angle, scale);
 	}
 	else if (info->MobileObjectType == MOBILE_OBJECT_INFO_CREED)
 	{
-		mobileObject = new (MOBILE_OBJECT_SOURCE_FILE, 105) Creed(coords, info, parent, y_angle, scale);
+		mobileObject =
+			new (MOBILE_OBJECT_SOURCE_FILE, MOBILE_OBJECT_LINE(105)) Creed(coords, info, parent, y_angle, scale);
 	}
+#ifdef VERSION_BW1WCI
+	else if (info->MobileObjectType != MOBILE_OBJECT_DOLPHIN)
+	{
+		mobileObject = new (MOBILE_OBJECT_SOURCE_FILE, 113) MobileObject(coords, info, parent, y_angle, scale);
+	}
+#else
 	else
 	{
 		mobileObject = new (MOBILE_OBJECT_SOURCE_FILE, 109) MobileObject(coords, info, parent, y_angle, scale);
 	}
+#endif
 	if (mobileObject != NULL)
 	{
 		mobileObject->CallVirtualFunctionsForCreation(coords);
@@ -142,7 +160,7 @@ void MobileObject::CallVirtualFunctionsForCreation(const MapCoords& coords)
 void MobileObject::Create3DObject()
 {
 	Object::Create3DObject();
-	Game3dObject->SetShadowOnTexture(1);
+	Game3dObject->SetShadowOnTexture(true);
 }
 
 GPlayer* MobileObject::GetPlayer()
@@ -181,7 +199,7 @@ uint32_t MobileObject::SaveObject(LHOSFile& file, const MapCoords* origin)
 			float yAngle = GetYAngle();
 			sprintf(text, GSetup::GetCommandAsText(SCRIPT_FEATURE_COMMANDS_CREATE_MOBILEOBJECT),
 			        relative.ConvertToText(coordText), GetInfo() - GMobileObjectInfo::GetInfo(),
-			        (int)(yAngle * 1000.0f), (int)(scale * 1000.0f));
+			        (int)(yAngle * MOBILE_OBJECT_SCRIPT_SCALE), (int)(scale * MOBILE_OBJECT_SCRIPT_SCALE));
 			GSetup::WriteToFile(this, file, text, strlen(text));
 			other = dynamic_cast<MobileObject*>(Pos.FindType(OBJECT_TYPE_MOBILE_OBJECT, NULL));
 			while (other != NULL)
@@ -277,104 +295,73 @@ void MobileObject::GetWorldMatrix(LHMatrix* matrix)
 	matrix->SetTranslateOnly(pos);
 }
 
-int MobileObject::SetupMoveAlongPath(SCRIPT_PATH path, float start, float end, int reverse)
+bool32_t MobileObject::SetupMoveAlongPath(SCRIPT_PATH path, float start, float end, bool32_t reverse)
 {
 	if (!GGame::g_game->GameLists.objects.Contains(this))
 	{
 		GGame::g_game->GameLists.objects.Add(this);
 	}
-	Path = new (MOBILE_OBJECT_SOURCE_FILE, 312) DataPath();
+	Path = new (MOBILE_OBJECT_SOURCE_FILE, MOBILE_OBJECT_LINE(312)) DataPath();
 	Path->scripted_camera = ScriptedCamera::Create(path);
-	Path->field_0x1c = end;
-	Path->field_0x20 = reverse;
-	Path->field_0x28 = 100.0f;
+	Path->EndPercentage = end;
+	Path->Reverse = reverse;
+	Path->FramesPerTurn = DATA_PATH_FRAMES_PER_TURN;
 	Path->field_0x2c = 1.0f;
-	Path->field_0x24 = (float)Path->scripted_camera->field_0x4->way->NumFrames * start;
-	return 1;
+	Path->Frame = Path->scripted_camera->GetDuration() * start;
+	return true;
 }
 
 bool32_t MobileObject::MoveAlongPath()
 {
-	LHPoint         position;
-	LHPoint         unused;
-	ScriptedCamera* camera;
-	int             index;
-	if (Path->field_0x20)
+	LHPoint position;
+	LHPoint focus;
+	if (Path->Reverse)
 	{
-		index = (int)Path->field_0x24;
-		camera = Path->scripted_camera;
-		if (index < 0)
-		{
-			index = 0;
-		}
-		else if (index >= camera->field_0x4->way->NumFrames)
-		{
-			index = camera->field_0x4->way->NumFrames;
-		}
-		camera->field_0x4->GetPosAtTime(index, &unused);
-		if (&position != NULL)
-		{
-			camera->field_0x8->way->GetPosAtSegment(camera->field_0x4->field_0x0, camera->field_0x4->field_0x204,
-			                                        &position);
-		}
+		Path->scripted_camera->GetPositionAndFocus((int)Path->Frame, &focus, &position);
 	}
 	else
 	{
-		index = (int)((float)Path->scripted_camera->GetDuration() - Path->field_0x24);
-		camera = Path->scripted_camera;
-		if (index < 0)
-		{
-			index = 0;
-		}
-		else if (index >= camera->field_0x4->way->NumFrames)
-		{
-			index = camera->field_0x4->way->NumFrames;
-		}
-		camera->field_0x4->GetPosAtTime(index, &unused);
-		if (&position != NULL)
-		{
-			camera->field_0x8->way->GetPosAtSegment(camera->field_0x4->field_0x0, camera->field_0x4->field_0x204,
-			                                        &position);
-		}
+		Path->scripted_camera->GetPositionAndFocus((int)(Path->scripted_camera->GetDuration() - Path->Frame), &focus,
+		                                           &position);
 	}
-	if (GetWalkPathPercentage() < Path->field_0x1c)
+	if (GetWalkPathPercentage() < Path->EndPercentage)
 	{
-		Path->field_0x24 += Path->field_0x28;
-		if ((float)Path->scripted_camera->field_0x4->way->NumFrames < Path->field_0x24)
+		Path->Frame += Path->FramesPerTurn;
+		if (Path->scripted_camera->GetDuration() < Path->Frame)
 		{
-			Path->field_0x24 = (float)Path->scripted_camera->field_0x4->way->NumFrames;
+			Path->Frame = Path->scripted_camera->GetDuration();
 		}
 		MapCoords coords;
 		GLandscape::ConvertLandscapePointToMapCoord(position, coords);
 		SetPos(coords);
 		Game3dObject->SetPosition(coords, 0.0f, 0.0f, 0.0f, 1.0f);
-		return 1;
+		return true;
 	}
 	GGame::g_game->GameLists.objects.Remove(this);
-	return 1;
+	return true;
 }
 
-int MobileObject::HasReachedPathPercentage(float percentage)
+bool32_t MobileObject::HasReachedPathPercentage(float percentage)
 {
 	if (Path == NULL)
 	{
-		return 1;
+		return true;
 	}
 	if (GetWalkPathPercentage() >= percentage)
 	{
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 float MobileObject::GetWalkPathPercentage()
 {
-	return Path->field_0x24 / (float)Path->scripted_camera->field_0x4->way->NumFrames;
+	return Path->Frame / Path->scripted_camera->GetDuration();
 }
 
-int MobileObject::HasFinishedPath()
+bool32_t MobileObject::HasFinishedPath()
 {
-	return HasReachedPathPercentage(Path->field_0x1c);
+	return HasReachedPathPercentage(Path->EndPercentage);
 }
 
 PHYSICS_CONSTANTS_TYPE Poo::GetPhysicsConstantsType()
@@ -514,7 +501,6 @@ bool32_t MobileObject::Save(GameOSFile& file)
 	if (Mobile::Save(file))
 	{
 		file.WritePtr(object.Get());
-		// TODO: GameOSFile has no float overloads; the angles are saved as raw 32-bit words
 		WRITE_SAFE(file, (uint32_t&)XAngle);
 		WRITE_SAFE(file, (uint32_t&)ZAngle);
 		file.WritePtr(Path);
@@ -536,13 +522,6 @@ bool32_t MobileObject::Load(GameOSFile& file)
 	return false;
 }
 
-// FieldCrop (and some Poo) methods were written in this file, not FieldCrop.cpp: FieldCrop::Create passes
-// __FILE__ "C:\dev\MP\Black\MobileObject.cpp" line 634 to operator new.
-// Additionally, if these functions were inlined in a header, GameOSFile.obj and FieldCrop.obj would be
-// linked before MobileObject.obj so they wouldn't show up here.
-// GameOSFile.obj emits the FieldCrop vtable, yet only PhysicsEditorCreate/GetSaveType/GetDebugText/dtor have copies
-// there, so only those are inline. BW1M119 interleaves FieldCrop, Poo and MobileObject in the same order.
-
 HOLD_TYPE FieldCrop::GetHoldType()
 {
 	return HOLD_TYPE_SIDE;
@@ -556,7 +535,7 @@ FieldCrop::FieldCrop(const MapCoords& coords, const GMobileObjectInfo* info, Obj
 
 FieldCrop::~FieldCrop() {}
 
-void FieldCrop::ToBeDeleted(int delete_now)
+void FieldCrop::ToBeDeleted(bool32_t delete_now)
 {
 	RemoveFromField();
 	MobileObject::ToBeDeleted(delete_now);
@@ -565,27 +544,27 @@ void FieldCrop::ToBeDeleted(int delete_now)
 FieldCrop* FieldCrop::Create(const MapCoords& coords, const GMobileObjectInfo* info, Object* field, float y_angle,
                              float scale)
 {
-	FieldCrop* crop = new (MOBILE_OBJECT_SOURCE_FILE, 634) FieldCrop(coords, info, field, y_angle, scale);
+	FieldCrop* crop =
+		new (MOBILE_OBJECT_SOURCE_FILE, MOBILE_OBJECT_LINE(634)) FieldCrop(coords, info, field, y_angle, scale);
 	if (crop != NULL)
 	{
 		crop->CallVirtualFunctionsForCreation(coords);
-		crop->Game3dObject->SetDynamicLighting(0);
-		crop->Game3dObject->SetShadowOnTextureChroma(0);
-		crop->Game3dObject->SetShadowOnTexture(0);
-		crop->Game3dObject->SetCastDynamicShadow(0);
+		crop->Game3dObject->SetDynamicLighting(false);
+		crop->Game3dObject->SetShadowOnTextureChroma(false);
+		crop->Game3dObject->SetShadowOnTexture(false);
+		crop->Game3dObject->SetCastDynamicShadow(false);
 		scale = crop->GetScale();
 		y_angle = crop->GetYAngle();
 		LH3DObject* object3d = crop->Game3dObject;
 		LHPoint     unused0;
 		LHPoint     unused1;
 		LHPoint     unused2;
-		// The block scope lets pos.x load ahead of the inlined SetScale stores, as in Object::SetXYZAngles.
 		{
 			LHPoint pos;
 			GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 			object3d->LH3DObject::SetPosition(pos, y_angle, scale);
 		}
-		crop->Game3dObject->SetPaper(1);
+		crop->Game3dObject->SetPaper(true);
 	}
 	return crop;
 }
@@ -615,7 +594,7 @@ float FieldCrop::TakeFood(EffectValues& effect)
 	return 0.0f;
 }
 
-void FieldCrop::RemoveFromFieldAndDelete(int unused)
+void FieldCrop::RemoveFromFieldAndDelete(bool32_t delete_now)
 {
 	RemoveFromField();
 }
@@ -624,11 +603,11 @@ void FieldCrop::SetLife(float life)
 {
 	if (life <= 0.0f)
 	{
-		ToBeDeleted(0);
+		ToBeDeleted(false);
 		return;
 	}
 	Object::SetLife(life);
-	SetScale(GetLife() * GetInfo()->field_0x110);
+	SetScale(GetLife() * GetInfo()->ScalePerLife);
 }
 
 void FieldCrop::RemoveFromField()
@@ -720,18 +699,18 @@ bool32_t FieldCrop::InterfaceSetInMagicHand(GInterfaceStatus* status)
 {
 	const GPotInfo* potInfo = &GPotInfo::GetInfo()[POT_INFO_HAND_FOOD];
 	unsigned long   resource = (long)potInfo->GetResourceValue();
-	Pot*            pot = Pot::Create(Pos, potInfo, resource, NULL, GetTown(), 0, 0.0f, 1.0f, 0);
+	Pot*            pot = Pot::Create(Pos, potInfo, resource, NULL, GetTown(), 0, 0.0f, 1.0f, false);
 	if (pot != NULL)
 	{
 		status->PlaceObjectInMagicHand(pot);
 	}
-	ToBeDeleted(0);
+	ToBeDeleted(false);
 	return false;
 }
 
 static inline bool IsNotControlledByScript(const GameThingWithPos* thing)
 {
-	return ((uint16_t)~thing->Flags >> 10) & 1;
+	return ((uint16_t)~thing->Flags >> GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT_BIT) & 1;
 }
 
 bool32_t FieldCrop::CreatureMustAvoid(Creature* creature)

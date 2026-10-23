@@ -41,9 +41,9 @@ public:
 	// BW1W120 00416f60 BW1M119 010b08d0
 	virtual uint32_t ApplyOnlyAfterReleased() { return 1; }
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 0061f540 BW1M119 null
+	// BW1WCI 0061f540 BW1M119 null
 	virtual bool32_t AreWeThere(const MapCoords& coords, float extra_distance);
-	// BW1W120 null BW1WCI 00426d40 BW1M119 null
+	// BW1WCI 00426d40 BW1M119 null
 	virtual int CreatureIsleVirtual0x8a8() { return 0; }
 #endif
 

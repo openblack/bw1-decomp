@@ -207,14 +207,21 @@ Black/Ball.cpp:
 	.text       start:0x004358D0 end:0x00436400
 	.rdata      start:0x008C4F24 end:0x008C57D4
 	.CRT$XCU    start:0x009C6164 end:0x009C6170 align:4
-	.data       start:0x009CD058 end:0x009CD284
-	.bss        start:0x00C5848C end:0x00C585F8
+	.data       start:0x009CD058 end:0x009CD0A8
+	.bss        start:0x00C5848C end:0x00C585E0
+
+Black/Base.cpp:
+	.text       start:0x00436400 end:0x00437150
+	.rdata      start:0x008C57D4 end:0x008C57E4
+	.CRT$XCU    start:0x009C6170 end:0x009C6180 align:4
+	.data       start:0x009CD0A8 end:0x009CD220
+	.bss        start:0x00C585E0 end:0x00C58614
 
 Black/BaseInfo.cpp:
-	.text       start:0x00436400 end:0x00437C90
-	.rdata      start:0x008C57D4 end:0x008C5850
-	.CRT$XCU    start:0x009C6170 end:0x009C618C align:4
-	.bss        start:0x00C585F8 end:0x00C58624
+	.text       start:0x00437150 end:0x00437C90
+	.rdata      start:0x008C57E4 end:0x008C5850
+	.CRT$XCU    start:0x009C6180 end:0x009C618C align:4
+	.bss        start:0x00C58614 end:0x00C58624
 
 Black/Belief.cpp:
 	.text       start:0x00437C90 end:0x00438BE0

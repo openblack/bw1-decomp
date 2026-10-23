@@ -843,7 +843,7 @@ public:
 	// BW1W120 004cf120 BW1M119 01243410
 	GameThingWithPos* GetObjectWhichLeashIsAttachedTo();
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 004d6940 BW1M119 null
+	// BW1WCI 004d6940 BW1M119 null
 	void ForceGoToMapCoords(const MapCoords& coords, float speed);
 #else
 	// BW1W120 004c7220 BW1M119 01237e00
@@ -1150,7 +1150,7 @@ public:
 	// BW1W120 0047b1c0 BW1M119 011dc140
 	bool32_t IsFighting();
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 00487e00 BW1M119 null
+	// BW1WCI 00487e00 BW1M119 null
 	bool32_t NeedsHelp();
 #endif // VERSION_BW1WCI
 	// BW1W120 004d8bb0 BW1M119 01255f50

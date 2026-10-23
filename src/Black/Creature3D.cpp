@@ -6091,13 +6091,14 @@ void LH3DCreature::DoStandingAction()
 void LH3DCreature::DoMovingAction()
 {
 	ReverseAnim = 0;
-	bool wasMoving = RpFollow->field_0x64054 == 1 || RpFollow->field_0x64054 == 2;
+	bool wasStationary =
+		RpFollow->FollowState == RPFOLLOW_STATE_STOPPED || RpFollow->FollowState == RPFOLLOW_STATE_PLANNING;
 	if (field_0x519c)
 	{
 		field_0x519c = 0;
 		NumObjectsEncountered = 0;
 		RpFollow->GameTurnUpdate(FollowerCallbackObjectEncountered, 0x100);
-		if (RpFollow->field_0x64054 == 6)
+		if (RpFollow->FollowState == RPFOLLOW_STATE_TRAPPED)
 		{
 			MoveState = LH3D_CREATURE_STATE_STANDING;
 			field_0x5190 = 0;
@@ -6112,9 +6113,9 @@ void LH3DCreature::DoMovingAction()
 			}
 			return;
 		}
-		if (RpFollow->field_0x64054 == 5)
+		if (RpFollow->FollowState == RPFOLLOW_STATE_UNREACHABLE)
 		{
-			RpFollow->field_0x64054 = 1;
+			RpFollow->FollowState = RPFOLLOW_STATE_STOPPED;
 		}
 	}
 	else
@@ -6122,9 +6123,10 @@ void LH3DCreature::DoMovingAction()
 		RpFollow->GameTurnUpdate(NULL, 0x80);
 	}
 	UpdateMotion();
-	bool isMoving = RpFollow->field_0x64054 == 1 || RpFollow->field_0x64054 == 2;
+	bool isStationary =
+		RpFollow->FollowState == RPFOLLOW_STATE_STOPPED || RpFollow->FollowState == RPFOLLOW_STATE_PLANNING;
 	position.y = LH3DIsland::GetAltitude(LH3DMapCoords(position.x, position.z));
-	if (isMoving && !wasMoving)
+	if (isStationary && !wasStationary)
 	{
 		for (LHLinkedNode<Creature*>* node = Creature::CreatureList.GetStart(); node != NULL; node = node->next.Get())
 		{
@@ -6132,14 +6134,15 @@ void LH3DCreature::DoMovingAction()
 			LH3DCreature* other3d = other->GetCreature3D();
 			if (other3d != this && creature->CreatureMustAvoid(other))
 			{
-				if (other3d->RpFollow->field_0x64054 >= 2 && other3d->RpFollow->field_0x64054 <= 4)
+				if (other3d->RpFollow->FollowState >= RPFOLLOW_STATE_PLANNING &&
+				    other3d->RpFollow->FollowState <= RPFOLLOW_STATE_REPLANNING)
 				{
-					creature->AddToRoutePlan(other3d->RpFollow, other, 1, NULL);
+					creature->AddToRoutePlan(other3d->RpFollow, other, true, NULL);
 				}
 			}
 		}
 	}
-	if (RpFollow->field_0x64054 == 1)
+	if (RpFollow->FollowState == RPFOLLOW_STATE_STOPPED)
 	{
 		switch (field_0x5190)
 		{
@@ -7369,7 +7372,7 @@ void LH3DCreature::UpdateMotion()
 	switch (field_0x5190)
 	{
 	case 0:
-		if (RpFollow->field_0x64054 == 3 || RpFollow->field_0x64054 == 4)
+		if (RpFollow->FollowState == RPFOLLOW_STATE_MOVING || RpFollow->FollowState == RPFOLLOW_STATE_REPLANNING)
 		{
 			float length = RpFollow->CurrentNode->GetLength(RpFollow->AvoidArray);
 			if (length < 0.01f)
@@ -7579,16 +7582,16 @@ void LH3DCreature::UpdateMotion()
 
 void LH3DCreature::ProcessMoveStraight()
 {
-	switch (RpFollow->field_0x64054)
+	switch (RpFollow->FollowState)
 	{
-	case 0:
-	case 1:
-	case 2:
+	case RPFOLLOW_STATE_UNPLACED:
+	case RPFOLLOW_STATE_STOPPED:
+	case RPFOLLOW_STATE_PLANNING:
 		field_0x5190 = 0;
 		DoStandingAction();
 		break;
-	case 3:
-	case 4: {
+	case RPFOLLOW_STATE_MOVING:
+	case RPFOLLOW_STATE_REPLANNING: {
 		float      maxSpeed = RpFollow->field_0x6403c;
 		RouteNode* next = RpFollow->CurrentNode->Next;
 		if (!next)

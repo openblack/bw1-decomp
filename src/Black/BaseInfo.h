@@ -9,6 +9,10 @@
 
 #include "Base.h" /* For struct Base, struct BaseVftable */
 
+#define BASE_INFO_INVALID 1
+
+#define GBASE_INFO_NO_INDEX -1
+
 // Forward Declares
 
 struct LH3DColor;
@@ -40,11 +44,25 @@ public:
 
 	// Constructors
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0043a330 BW1M119 null
+	GBaseInfo();
+
+	// Destructors
+
+	// BW1WCI 0043a370 BW1M119 null
+	virtual ~GBaseInfo();
+#else
 	// BW1W120 0042e5e0 BW1M119 010affb0
 	GBaseInfo() {}
+#endif
 
 	// Non-virtual methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0043a400 BW1M119 null
+	void SetInfoID(unsigned long id);
+#endif
 	// BW1W120 00436bd0 BW1M119 01519580
 	void SetInfoID();
 	// BW1W120 00436c00 BW1M119 01342090
@@ -73,8 +91,20 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00436b50 BW1M119 010460a0
+	bool32_t IsValid() const;
+	// BW1W120 00436b80 BW1M119 01046120
+	Base* GetBase() const;
+	// BW1W120 00436ba0 BW1M119 01337b50
+	void SetInvalid();
 	// BW1W120 00436bb0 BW1M119 01001410
 	void Set(Base* base);
+	// BW1W120 inlined BW1M119 01081af0
+	void Clear()
+	{
+		AddressOffset = 0;
+		UniqueId = 0;
+	}
 };
 
 #endif /* BW1_DECOMP_BASE_INFO_INCLUDED_H */

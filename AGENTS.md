@@ -515,7 +515,7 @@ Each function and global declaration in a header carries an address comment:
 // BW1W120 0054cbd0 BW1M119 010cca10
 // BW1W120 00c386e0 BW1M119 011d0df8 (LHCombined Release)
 // BW1W120 0051f180 BW1M119 inlined
-// BW1W120 null BW1WCI 00401830 BW1M119 null
+// BW1WCI 00401830 BW1MCI119 null
 ```
 
 The Mac address comes from `config/BW1M119/symbols.txt`, or from a module's own

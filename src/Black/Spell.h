@@ -39,22 +39,27 @@ public:
 	static void ProcessSpells();
 	static void DrawSpells(); // 007203f0
 
-	LHPTR<Reaction>   SpellReaction;
-	float             field_0x2c;
-	uint32_t          field_0x30;
-	uint32_t          field_0x34;
-	float             Life;
-	uint32_t          field_0x3c;
-	uint32_t          field_0x40;
-	uint32_t          field_0x44;
-	uint32_t          field_0x48;
-	uint32_t          field_0x4c;
-	float             field_0x50;
-	float             field_0x54;
-	float             field_0x58;
-	uint8_t           field_0x5c;
-	uint8_t           field_0x5d;
+	LHPTR<Reaction> SpellReaction;
+	float           field_0x2c;
+	uint32_t        field_0x30;
+	uint32_t        field_0x34;
+	float           Life;
+	uint32_t        field_0x3c;
+	uint32_t        field_0x40;
+	uint32_t        field_0x44;
+	uint32_t        field_0x48;
+	uint32_t        field_0x4c;
+	float           field_0x50;
+	float           field_0x54;
+	float           field_0x58;
+	uint8_t         field_0x5c;
+#ifndef VERSION_BW1WCI
+	uint8_t field_0x5d;
+#endif
 	SpellSeedGraphic* SeedGraphic;
+#ifdef VERSION_BW1WCI
+	bool32_t CreatesReaction;
+#endif
 	LHPoint           field_0x64;
 	LHPoint           field_0x70;
 	LHPoint           field_0x7c;

@@ -309,12 +309,6 @@ class Town;
 class Tree;
 class Villager;
 
-// fabricated: bit meanings of GameThing::Flags. Both bits are only ever read inverted, so they
-// are named for the state that having them set denotes. The enum cannot be used as the member's
-// type because MSVC6 makes every enum int-sized and the field is one byte.
-// fabricated: PSYS_FLYING is set by RenderParticleGameObject::InitialisePSysFlying when it
-// starts physics on the object and cleared by StopFlying. NO_BURN_DAMAGE is named after its
-// only reader, Object::ReduceLifeDueToBurning; nothing in the Windows binary sets it.
 enum GAME_THING_FLAGS
 {
 	GAME_THING_FLAG_UNAVAILABLE = 1 << 0,
@@ -322,7 +316,7 @@ enum GAME_THING_FLAGS
 	GAME_THING_FLAG_NO_BURN_DAMAGE = 1 << 2,
 	GAME_THING_FLAG_FIREPROOF = 1 << 3,
 	GAME_THING_FLAG_PSYS_FLYING = 1 << 4,
-	GAME_THING_FLAG_0x00000020 = 1 << 5,
+	GAME_THING_FLAG_REAPPEARED = 1 << 5,
 	GAME_THING_FLAG_NAME_HIDDEN = 1 << 6,
 };
 
@@ -338,8 +332,6 @@ public:
 
 	// Static data
 
-	// TODO: which TU carries the definition is unresolved; dtk puts the symbol in Abode.cpp's
-	// .rdata, which is where the first user of it lands.
 	// BW1W120 008aa394
 	static const float    maxAlignmentChangePerGameTurn;
 	uint16_t              CurrentSaveCount;
@@ -348,7 +340,7 @@ public:
 	// Override methods
 
 	// BW1W120 0056fb70 BW1M119 01375f80
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00570130 BW1M119 010bfbd0
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00570150 BW1M119 010bfc20
@@ -364,7 +356,7 @@ public:
 	// BW1W120 00401830 BW1M119 01574ee0
 	virtual bool32_t IsCreature(Creature* creature) { return false; }
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 00401830 BW1M119 null
+	// BW1WCI 00401830 BW1M119 null
 	virtual bool32_t CreatureIsleVirtual0x38(uint32_t param_1) { return false; }
 #endif
 	// BW1W120 00401840 BW1M119 01480930
@@ -378,7 +370,7 @@ public:
 	// BW1W120 0056ff10 BW1M119 01387ea0
 	virtual Town* GetTown();
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 00401870 BW1M119 null
+	// BW1WCI 00401870 BW1M119 null
 	virtual bool CreatureIsleVirtual0x50() { return false; }
 #endif
 	// BW1W120 00401870 BW1M119 01575490
@@ -388,7 +380,7 @@ public:
 	// BW1W120 00401890 BW1M119 013e5ad0
 	virtual uint32_t UpdateVillagerActivityEffect(Villager* villager) { return 0; }
 	// BW1W120 0056fed0 BW1M119 0157f120
-	virtual float MaintainSpell(uint32_t param_1, float param_2);
+	virtual float MaintainSpell(uint32_t spell, float amount);
 	// BW1W120 0056fee0 BW1M119 01433210
 	virtual void UpdateSpellInfo(Spell* spell, PSysProcessInfo* info);
 	// BW1W120 00405140 BW1M119 013e5910
@@ -396,7 +388,7 @@ public:
 	// BW1W120 00405150 BW1M119 01502990
 	virtual float Get2DRadius();
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 004018b0 BW1M119 null
+	// BW1WCI 004018b0 BW1M119 null
 	virtual void CreatureIsleVirtual0x70(uint32_t param_1) {}
 #endif
 	// BW1W120 004018a0 BW1M119 01187f90
@@ -410,7 +402,7 @@ public:
 	// BW1W120 004018c0 BW1M119 011a7300
 	virtual uint32_t AddFootpathLink(GFootpath* footpath) { return 0; }
 	// BW1W120 00405180 BW1M119 010af4e0
-	virtual uint32_t GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3);
+	virtual uint32_t GetNearestPathTo(const MapCoords& coords, float max_distance, bool32_t backwards);
 	// BW1W120 00570330 BW1M119 011c2750
 	virtual void UseFootpathIfNecessary(Living* living, const MapCoords& coords, uint8_t state);
 	// BW1W120 00405190 BW1M119 011a3bd0
@@ -418,18 +410,18 @@ public:
 	// BW1W120 004051a0 BW1M119 011a2f70
 	virtual bool32_t RemoveFootpath(GFootpath* footpath);
 	// BW1W120 005705f0 BW1M119 0111a5c0
-	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
+	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool poisoned);
 	// BW1W120 00570600 BW1M119 010e8c60
-	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3);
+	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* poisoned);
 	// BW1W120 00570610 BW1M119 0151aca0
-	virtual uint32_t JustGetResource(RESOURCE_TYPE param_1, uint32_t amount, bool* param_3);
+	virtual uint32_t JustGetResource(RESOURCE_TYPE type, uint32_t amount, bool* poisoned);
 	// BW1W120 004051b0 BW1M119 011a2fc0
 	virtual uint32_t GetResource(RESOURCE_TYPE type);
 	// BW1W120 004051c0 BW1M119 010b6040
-	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* coords, int param_6);
+	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool poisoned,
+	                             const MapCoords* coords, int from_other_player);
 	// BW1W120 004051d0 BW1M119 01344990
-	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
+	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* poisoned);
 	// BW1W120 004018d0 BW1M119 01183ae0
 	virtual Creature* CastCreature() { return NULL; }
 	// BW1W120 004018e0 BW1M119 0159bec0
@@ -453,7 +445,7 @@ public:
 	// BW1W120 00405220 BW1M119 0116fb50
 	virtual bool CanBecomeArtifact() { return false; }
 	// BW1W120 00405230 BW1M119 0116ebe0
-	virtual void DrawInHand(GInterfaceStatus* param_1) {}
+	virtual void DrawInHand(GInterfaceStatus* status) {}
 	// BW1W120 00405240 BW1M119 0106a010
 	virtual bool32_t IsFunctional();
 	// BW1W120 00425da0 BW1M119 014a3120
@@ -475,14 +467,14 @@ public:
 	// BW1W120 00405250 BW1M119 013e3d10
 	virtual void ResolveLoad();
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 004051f0 BW1M119 null
+	// BW1WCI 004051f0 BW1M119 null
 	virtual void CreatureIsleVirtual0x108();
 #endif
 
 	// Static methods
 
 	// BW1W120 0056fb10 BW1M119 01090850
-	static void ProcessDeadList(int param_1);
+	static void ProcessDeadList(bool32_t delete_now);
 
 	// Constructors
 
@@ -499,7 +491,7 @@ public:
 	// BW1W120 0056fa70 BW1M119 014c5580
 	void SetScriptNameOfCreate(char* name);
 	// BW1W120 0056faa0 BW1M119 014adc30
-	void ProcessDead(int param_1);
+	void ProcessDead(bool32_t delete_now);
 	// BW1W120 0056fef0 BW1M119 011a5db0
 	bool32_t CheckAndSetSaved();
 	// BW1W120 inlined BW1M119 inlined
