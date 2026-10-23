@@ -1730,7 +1730,7 @@ void LH3DCreature::UpdateTime(int time)
 
 void LH3DCreature::SetLookPoint(LHPoint* point)
 {
-	if (GGlobal::Global.debug.field_0x14c && (!creature || !(creature->Flags & GAME_THING_WITH_POS_FLAG_INTERACTING)))
+	if (GGlobal::Global.debug.LogCreatures && (!creature || !(creature->Flags & GAME_THING_WITH_POS_FLAG_INTERACTING)))
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "SetLookPoint x:%20.20f, y:%20.20f, z:%20.20f\n", point->x, point->y,
 		        point->z);
@@ -6945,268 +6945,268 @@ uint32_t getint(float value)
 
 uint32_t LH3DCreature::GetInteractionCheckSum()
 {
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "----------------------------------GameTurn %lu\n",
 		        GGame::g_game->data.GameTurn);
 	}
 	uint32_t checkSum = getint(CurrentSpeed);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "CurrentSpeed %lu\n", getint(CurrentSpeed));
 	}
 	checkSum += getint(RequiredSpeed);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "RequiredSpeed:%lu\n", getint(RequiredSpeed));
 	}
 	checkSum += getint(RequiredHeading);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "RequiredHeading:%lu\n", getint(RequiredHeading));
 	}
 	checkSum += getint(Heading);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "Heading:%lu\n", getint(Heading));
 	}
 	checkSum += getint(WalkSpeed);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "WalkSpeed:%lu\n", getint(WalkSpeed));
 	}
 	checkSum += getint(RunSpeed);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "RunSpeed:%lu\n", getint(RunSpeed));
 	}
 	checkSum += getint(Acceleration);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "Acceleration:%lu\n", getint(Acceleration));
 	}
 	checkSum += getint(BodyTurnAccel);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "BodyTurnAccel:%lu\n", getint(BodyTurnAccel));
 	}
 	checkSum += getint(BodyTurnRate);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "BodyTurnRate:%lu\n", getint(BodyTurnRate));
 	}
 	checkSum += IntTimeInc;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "IntTimeInc:%lu\n", IntTimeInc);
 	}
 	checkSum += getint(FloatTimeInc);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "FloatTimeInc:%lu\n", getint(FloatTimeInc));
 	}
 	checkSum += AnimTimeInc;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "AnimTimeInc:%lu\n", AnimTimeInc);
 	}
 	checkSum += DiscardTime;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "DiscardTime:%lu\n", DiscardTime);
 	}
 	checkSum += getint(DiscardVelocity.x);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "DiscardVelocity.x:%lu\n", getint(DiscardVelocity.x));
 	}
 	checkSum += getint(DiscardVelocity.y);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "DiscardVelocity.y:%lu\n", getint(DiscardVelocity.y));
 	}
 	checkSum += getint(DiscardVelocity.z);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "DiscardVelocity.z:%lu\n", getint(DiscardVelocity.z));
 	}
 	checkSum += getint(DiscardPosition.x);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "DiscardPosition.x:%lu\n", getint(DiscardPosition.x));
 	}
 	checkSum += getint(DiscardPosition.y);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "DiscardPosition.y:%lu\n", getint(DiscardPosition.y));
 	}
 	checkSum += getint(DiscardPosition.z);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "DiscardPosition.z:%lu\n", getint(DiscardPosition.z));
 	}
 	checkSum += getint(ThrowPosHigh.x);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosHigh.x:%lu\n", getint(ThrowPosHigh.x));
 	}
 	checkSum += getint(ThrowPosHigh.y);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosHigh.y:%lu\n", getint(ThrowPosHigh.y));
 	}
 	checkSum += getint(ThrowPosHigh.z);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosHigh.z:%lu\n", getint(ThrowPosHigh.z));
 	}
 	checkSum += getint(ThrowPosFlat.x);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosFlat.x:%lu\n", getint(ThrowPosFlat.x));
 	}
 	checkSum += getint(ThrowPosFlat.y);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosFlat.y:%lu\n", getint(ThrowPosFlat.y));
 	}
 	checkSum += getint(ThrowPosFlat.z);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosFlat.z:%lu\n", getint(ThrowPosFlat.z));
 	}
 	checkSum += EatTime;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "EatTime:%lu\n", EatTime);
 	}
 	checkSum += ThrowTime;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowTime:%lu\n", ThrowTime);
 	}
 	checkSum += getint(ThrowZL);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowZL:%lu\n", getint(ThrowZL));
 	}
 	checkSum += getint(ThrowYL);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowYL:%lu\n", getint(ThrowYL));
 	}
 	checkSum += getint(ThrowZH);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowZH:%lu\n", getint(ThrowZH));
 	}
 	checkSum += getint(ThrowYH);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowYH:%lu\n", getint(ThrowYH));
 	}
 	checkSum += getint(ThrowZR);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowZR:%lu\n", getint(ThrowZR));
 	}
 	checkSum += getint(ThrowYR);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ThrowYR:%lu\n", getint(ThrowYR));
 	}
 	checkSum += GameThrowingAngle;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "GameThrowingAngle:%lu\n", GameThrowingAngle);
 	}
 	checkSum += ObjectActionStatus;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ObjectActionStatus:%lu\n", ObjectActionStatus);
 	}
 	checkSum += PickUpTime;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "PickUpTime:%lu\n", PickUpTime);
 	}
 	checkSum += PutDownTime;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "PutDownTime:%lu\n", PutDownTime);
 	}
 	checkSum += DestroyTime;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "DestroyTime:%lu\n", DestroyTime);
 	}
 	checkSum += getint(field_0x5168.x);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "m_lrb:%lu\n", getint(field_0x5168.x));
 	}
 	checkSum += getint(field_0x5168.y);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "m_lrf:%lu\n", getint(field_0x5168.y));
 	}
 	checkSum += getint(field_0x5168.z);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "m_bf:%lu\n", getint(field_0x5168.z));
 	}
 	checkSum += TurningCompleted;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "TurningCompleted:%lu\n", TurningCompleted);
 	}
 	checkSum += HeadBone;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "HeadBone:%lu\n", HeadBone);
 	}
 	checkSum += BellyBone;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "BellyBone:%lu\n", BellyBone);
 	}
 	checkSum += RightArmpit;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "RightArmpit:%lu\n", RightArmpit);
 	}
 	checkSum += RightHand;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "RightHand:%lu\n", RightHand);
 	}
 	checkSum += RightFoot;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "RightFoot:%lu\n", RightFoot);
 	}
 	checkSum += Anus;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "Anus:%lu\n", Anus);
 	}
 	checkSum += ImpactTime;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ImpactTime:%lu\n", ImpactTime);
 	}
 	checkSum += (FightCreature != NULL);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "FightCreature:%lu\n", (FightCreature != NULL));
 	}
 	checkSum += FightMove;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "FightMove:%lu\n", FightMove);
 	}
 	checkSum += getint(Size1);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "UserSize:%lu\n", getint(Size1));
 	}
@@ -7215,7 +7215,7 @@ uint32_t LH3DCreature::GetInteractionCheckSum()
 
 uint32_t LH3DCreature::GetNormalCheckSum()
 {
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "----------------------------------GameTurn %lu\n",
 		        GGame::g_game->data.GameTurn);
@@ -7224,67 +7224,67 @@ uint32_t LH3DCreature::GetNormalCheckSum()
 	LH3DAnim::GetGraspPoint(SafeBuffer0, meshes[CurrentMesh], graspPoint,
 	                        field_0x5230 ? GetMirrorBone(RightHand) : RightHand);
 	uint32_t checkSum = getint(graspPoint.x);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "GetGraspPoint.x:%lu\n", getint(graspPoint.x));
 	}
 	checkSum += getint(graspPoint.y);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "GetGraspPoint.y:%lu\n", getint(graspPoint.y));
 	}
 	checkSum += getint(graspPoint.z);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "GetGraspPoint.z:%lu\n", getint(graspPoint.z));
 	}
 	checkSum += MoveState;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "MoveState:%lu\n", MoveState);
 	}
 	checkSum += (uint32_t)(LookRelativeHeading * 1000.0f);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "LookRelativeHeading:%lu\n", getint(LookRelativeHeading));
 	}
 	checkSum += getint(LookPitchRate);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "LookPitchRate:%lu\n", getint(LookPitchRate));
 	}
 	checkSum += getint(LookRelativePitch);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "LookRelativePitch:%lu\n", getint(LookRelativePitch));
 	}
 	checkSum += getint(LookHeadingRate);
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "LookHeadingRate:%lu\n", getint(LookHeadingRate));
 	}
 	checkSum += ReverseAnim;
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "ReverseAnim:%lu\n", ReverseAnim);
 	}
 	checkSum += CycleTime[0];
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "CycleTime[0]:%lu\n", CycleTime[0]);
 	}
 	checkSum += CycleTime[1];
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "CycleTime[1]:%lu\n", CycleTime[1]);
 	}
 	checkSum += CycleTime[2];
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "CycleTime[2]:%lu\n", CycleTime[2]);
 	}
 	checkSum += CycleTime[3];
-	if (GGlobal::Global.debug.field_0x14c)
+	if (GGlobal::Global.debug.LogCreatures)
 	{
 		fprintf(GGame::g_game->field_0x2502d0, "CycleTime[3]:%lu\n", CycleTime[3]);
 	}

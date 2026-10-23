@@ -12,7 +12,6 @@ class CellBox;
 
 #define GDEBUG_NUM_CATEGORIES        12
 #define GDEBUG_MESSAGES_PER_CATEGORY 60
-#define GDEBUG_MESSAGE_SIZE          0x100
 // Drawn first, ahead of the enabled categories, and skipped among them.
 #define GDEBUG_FIRST_DRAWN_CATEGORY 6
 
@@ -28,20 +27,20 @@ struct GDebug
 	uint32_t field_0x128;
 	uint32_t field_0x12c;
 	uint32_t field_0x130;
-	uint32_t field_0x134;
+	bool32_t ShowHowImpressed;
 	uint32_t field_0x138;
 	uint32_t field_0x13c;
 	bool32_t ShowIndirectFeedbackLessons;
-	uint32_t field_0x144;
+	bool32_t ShowCreatureStatistics;
 	bool32_t LogVillagers;
-	uint32_t field_0x14c;
+	bool32_t LogCreatures;
 	bool32_t LogTownDesire;
-	uint32_t field_0x154;
+	bool32_t LogCollide;
 	bool32_t LogAllocations;
-	uint32_t field_0x15c;
+	bool32_t LogRand;
 	uint8_t  field_0x160[0x40];
-	char     Messages[GDEBUG_NUM_CATEGORIES][GDEBUG_MESSAGES_PER_CATEGORY][GDEBUG_MESSAGE_SIZE]; /* 0x1a0 */
-	bool32_t CategoryEnabled[GDEBUG_NUM_CATEGORIES];                                             /* 0x2d1a0 */
+	char     Messages[GDEBUG_NUM_CATEGORIES][GDEBUG_MESSAGES_PER_CATEGORY][0x100]; /* 0x1a0 */
+	bool32_t CategoryEnabled[GDEBUG_NUM_CATEGORIES];                               /* 0x2d1a0 */
 	uint8_t  field_0x2d1d0[0xb4];
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x2d284;
