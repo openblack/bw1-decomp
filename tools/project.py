@@ -75,6 +75,10 @@ class Object:
             # MSVC precompiled header: {"header": name in the source's first
             # #include, "source": .cpp that only includes it}. The unit is built
             # with /Yu against a PCH compiled from that source with its own flags.
+            # Optional keys: "force_include" compiles the unit with /FI<header>
+            # (its source does not include the header); "shared" builds the PCH
+            # once, at the source's path under the build directory, for every
+            # unit naming it.
             "pch": None,
             "progress_category": None,
             "scratch_preset_id": None,
@@ -913,15 +917,24 @@ def generate_build_ninja(
         n.comment("CL build (MSVC / clang-cl)")
         n.rule(
             name="cl",
-            command=f"${{env}}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out /Fd$out.pdb",
+            command=f"${{env}}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out /Fd$pdb",
             description="CL $out",
         )
         n.newline()
-        n.comment("Precompiled header for one unit (MSVC /Yc)")
+        n.comment("Precompiled header (MSVC /Yc)")
         n.rule(
             name="cl_pch",
             command=f"${{env}}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /Yc$pch_header /Fp$out /c $in /Fo$pch_obj",
             description="PCH $out",
+        )
+        n.newline()
+        # With /Zi, /Yu needs a PDB with the name of the one that built the PCH,
+        # holding its types: each unit gets its own copy to write to.
+        n.comment("Copy of a precompiled header's PDB for one unit")
+        n.rule(
+            name="copy_pdb",
+            command=f'$python -c "import shutil,sys;shutil.copyfile(sys.argv[1],sys.argv[2])" $in $out',
+            description="COPY $out",
         )
         n.newline()
         n.comment("Fold a recompiled unit's shared COMDATs onto the image's copies (see add_unit)")
@@ -1227,6 +1240,8 @@ def generate_build_ninja(
         used_compiler_versions: Set[str] = set()
         source_inputs: List[Path] = []
         source_added: Set[Path] = set()
+        # Precompiled header outputs already emitted -> the flags they were built with
+        shared_pchs: Dict[Path, str] = {}
         lib_extracted_added: Set[Path] = set()
         missing_source: List[str] = []
         missing_config: List[str] = []
@@ -1285,37 +1300,55 @@ def generate_build_ninja(
                     "cl_exe": obj.options["compiler_exe"] or "cl.exe",
                 }
                 unit_implicit = list(cl_implicit)
+                unit_order_only: List[Union[str, Path]] = ["pre-compile"]
+                pdb = Path(f"{obj.src_obj_path}.pdb")
                 pch = obj.options["pch"]
                 if pch is not None:
-                    # With /Zi, /Yu would need the PDB that built the PCH (C2858),
-                    # which tools that recompile elsewhere cannot provide: give
-                    # such units cflags without /Zi (the code is unchanged).
-                    pch_out = obj.src_obj_path.with_suffix(".pch")
-                    n.comment(f"{obj.name}: precompiled header {pch['header']}")
-                    n.build(
-                        outputs=pch_out,
-                        rule="cl_pch",
-                        inputs=pch["source"],
-                        implicit_outputs=pch_out.with_suffix(".pch.o"),
-                        variables={
-                            **cl_variables,
-                            "cflags": cflags_str,
-                            "pch_header": pch["header"],
-                            "pch_obj": pch_out.with_suffix(".pch.o"),
-                        },
-                        implicit=cl_implicit,
-                        order_only="pre-compile",
-                    )
-                    cflags_str = make_flags_str(all_cflags + [f"/Yu{pch['header']}", f"/Fp{pch_out}"])
+                    header = pch["header"]
+                    pch_flags = [f"/FI{header}"] if pch.get("force_include") else []
+                    if pch.get("shared"):
+                        pch_out = config.out_path() / Path(pch["source"]).with_suffix(".pch")
+                    else:
+                        pch_out = obj.src_obj_path.with_suffix(".pch")
+                    # A /Zi unit needs its own copy of the PDB that built the PCH (C2858, C2859).
+                    # cl writes PDB file names in lower case.
+                    pch_pdb = pch_out.with_name(pch_out.stem.lower() + ".pdb") if "/Zi" in all_cflags else None
+                    pch_cflags_str = make_flags_str(all_cflags + ([f"/Fd{pch_pdb}"] if pch_pdb else []))
+                    if pch_out in shared_pchs:
+                        if shared_pchs[pch_out] != pch_cflags_str:
+                            sys.exit(f"{obj.name}: precompiled header {pch_out} is shared by units with other flags")
+                    else:
+                        shared_pchs[pch_out] = pch_cflags_str
+                        n.comment(f"{obj.name if not pch.get('shared') else pch['source']}: precompiled header {header}")
+                        n.build(
+                            outputs=pch_out,
+                            rule="cl_pch",
+                            inputs=pch["source"],
+                            implicit_outputs=[pch_out.with_suffix(".pch.o"), *([pch_pdb] if pch_pdb else [])],
+                            variables={
+                                **cl_variables,
+                                "cflags": pch_cflags_str,
+                                "pch_header": header,
+                                "pch_obj": pch_out.with_suffix(".pch.o"),
+                            },
+                            implicit=cl_implicit,
+                            order_only="pre-compile",
+                        )
+                    if pch_pdb:
+                        pdb = obj.src_obj_path.with_suffix("") / pch_pdb.name
+                        n.build(outputs=pdb, rule="copy_pdb", inputs=pch_pdb)
+                        unit_order_only.append(pdb)
+                    pch_flags += [f"/Yu{header}", f"/Fp{pch_out}"]
                     unit_implicit.append(pch_out)
+                    cflags_str = make_flags_str(all_cflags + pch_flags)
                 n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
                 n.build(
                     outputs=obj.src_obj_path,
                     rule="cl",
                     inputs=src_path,
-                    variables={**cl_variables, "cflags": cflags_str},
+                    variables={**cl_variables, "cflags": cflags_str, "pdb": pdb},
                     implicit=unit_implicit,
-                    order_only="pre-compile",
+                    order_only=unit_order_only,
                 )
                 used_compiler_versions.add(obj.options["compiler_version"])
             else:

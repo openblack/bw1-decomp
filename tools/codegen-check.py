@@ -30,6 +30,7 @@ import os
 from pathlib import Path
 import re
 import shlex
+import shutil
 import struct
 import subprocess
 import sys
@@ -62,25 +63,46 @@ def select(verify, args):
     return selected
 
 
-def redirected(verify, edge, outdir):
-    """The edge's exact command with /Fo and /Fd pointing into outdir."""
+def redirected(verify, edge, outdir, pchs):
+    """The edge's exact command with /Fo and /Fd pointing into outdir.
+
+    A /Yu compile reads the copy of its precompiled header in pchs; with /Zi it keeps the
+    name of its PDB, which must be a copy of the one that built the header.
+    """
     digest = hashlib.md5(str(edge.output).encode()).hexdigest()[:8]
     obj = outdir / (edge.output.stem + "-" + digest + ".o")
-    words = []
-    for word in verify.command_words(edge.command):
+    words = verify.command_words(edge.command)
+    pch, pch_pdb = pchs.get(edge.pch, (None, None))
+    result = []
+    for word in words:
         if word.startswith(("/Fo", "-Fo")):
             word = "/Fo" + str(obj)
+        elif word.startswith(("/Fd", "-Fd")) and pch_pdb:
+            pdb = obj.with_suffix("") / Path(word[3:]).name
+            pdb.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(pch_pdb, pdb)
+            word = "/Fd" + str(pdb)
         elif word.startswith(("/Fd", "-Fd")):
             word = "/Fd" + str(obj) + ".pdb"
-        words.append(word)
-    return obj, words
+        elif word.startswith(("/Fp", "-Fp")) and pch:
+            word = "/Fp" + str(pch)
+        result.append(word)
+    return obj, result
 
 
 def compile_all(verify, edges, outdir):
     outdir.mkdir(parents=True, exist_ok=True)
+    # Ninja does not rebuild a precompiled header when a header it reads changes:
+    # compile each one the edges read from the current sources, into outdir.
+    pchs = {}
+    for pch in sorted({edge.pch for edge in edges if edge.pch}):
+        import msvc_probe
+
+        private, pdb = msvc_probe.private_pch(pch.relative_to(ROOT).as_posix(), str(outdir / "pch"))
+        pchs[pch] = (ROOT / private, ROOT / pdb if pdb else None)
 
     def one(edge):
-        obj, words = redirected(verify, edge, outdir)
+        obj, words = redirected(verify, edge, outdir, pchs)
         argv = words if os.name == "nt" else ["/bin/sh", "-c", " ".join(shlex.quote(w) for w in words)]
         result = subprocess.run(argv, cwd=edge.directory, capture_output=True, text=True, errors="replace")
         errors = [line for line in (result.stdout + result.stderr).splitlines() if "error" in line]

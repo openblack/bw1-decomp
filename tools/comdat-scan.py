@@ -14,16 +14,36 @@ See docs/msvc6_comdat.md for the rules this tool helps to apply.
                    "extra" functions. Select with --unit, --source, or --complete
                    (every unit with metadata.complete, optionally filtered by --prefix).
 
+  order SELECTOR   Compare the emission order of a unit's compiled object with its target
+                   object (docs/msvc6_pch.md): of the names both define, how many are in
+                   target order (the longest such subsequence), for .text functions, .bss
+                   symbols, RTTI type descriptors and .CRT$XCU initializers (named after
+                   the data they initialise), and whether each registers the
+                   std::ctype<unsigned short> guard. Select with --unit, --source or
+                   --prefix; --base DIR reads the compiled objects from another build of
+                   the same paths; --runs prints the .text order as runs of classes.
+
+  initializers     For the statics several units initialise dynamically (header statics),
+                   whether each target object holds them in .bss in reverse .CRT$XCU order,
+                   as /Yu lays them out (docs/msvc6_pch.md), or not, as a compile without a
+                   PCH may. Statics are matched across units by name, or by their
+                   initializer's code where unnamed. Select with --prefix; --skip NAME leaves
+                   a static out; --units lists each unit.
+
 Examples:
   python tools/comdat-scan.py dump build/BW1W120/src/Black/GameThing.o
   python tools/comdat-scan.py where --unit WorshipSiteUpgrade
   python tools/comdat-scan.py where --complete --prefix runblack/Black/ --summary
+  python tools/comdat-scan.py order --unit Abode --runs
+  python tools/comdat-scan.py initializers --prefix runblack/Black/ --skip _EighthScale --skip _PI_OVER_2
 
 Only external (storage class 2) function definitions are compared; per-unit statics
 such as _$E initializers are numbered independently in each object and skipped.
 """
 
 import argparse
+import bisect
+import hashlib
 import collections
 from pathlib import Path
 import re
@@ -177,6 +197,212 @@ def where(units, project, summary, limit):
         print(f"  {count:5} ({100 * count / max(copies, 1):5.1f}%)  {keeper}")
 
 
+# std::ctype<unsigned short>::id's atexit registration and the flag guarding it in every unit.
+CTYPE_GUARD = "?id@?$ctype@G@std@@$E"
+CTYPE_GUARD_FLAG = "??_B?1???id@?$ctype@G@std@@$D@@9@51"
+# Labels the target objects give unnamed code and data, and compiler-numbered locals.
+UNNAMED = ("fn_", "crt_xc", "gap_", "pad_", "lbl_", "data_", "jumptable_", "$", "_$", ".", "??_C@", "__real@")
+
+
+def in_order(target, compiled):
+    """How many of the names both lists hold appear in target order: (in order, shared)."""
+    position = {name: index for index, name in enumerate(compiled)}
+    tails = []
+    for index in (position[name] for name in target if name in position):
+        slot = bisect.bisect_left(tails, index)
+        tails[slot:slot + 1] = [index]
+    return len(tails), sum(name in position for name in target)
+
+
+def emission_order(path):
+    """Names in emission order: .text functions, .bss symbols, RTTI, .CRT$XCU initializers."""
+    coff = Coff.read(path)
+    defined = collections.defaultdict(list)
+    for sym in coff.symbols.values():
+        if sym.section > 0 and not (sym.storage == STORAGE_STATIC and sym.name == coff.section(sym.section).name):
+            defined[sym.section].append(sym)
+    order = {"text": [], "bss": [], "rtti": [], "crt": []}
+    function_at = {}
+    guard = False
+    for sec in coff.sections:
+        for sym in sorted(defined[sec.index], key=lambda s: s.value):
+            guard |= sym.name == CTYPE_GUARD
+            if sec.name == ".text" and sym.type & 0x20:
+                function_at[sym.index] = sec, sym
+                if sym.storage == STORAGE_EXTERNAL and not sym.name.startswith(UNNAMED):
+                    order["text"].append(sym.name)
+            elif sec.name == ".bss" and not sym.name.startswith(UNNAMED):
+                order["bss"].append(sym.name)
+            elif sec.name == ".data" and sym.name.startswith("??_R0"):
+                order["rtti"].append(sym.name)
+        guard |= any(coff.symbols[r.symbol_index].name in (CTYPE_GUARD, CTYPE_GUARD_FLAG) for r in sec.relocations)
+
+    def initialised(index, depth=0):
+        """The first named symbol an initializer refers to, through its thunks."""
+        if index not in function_at:
+            return None
+        sec, sym = function_at[index]
+        ends = [s.value for s in defined[sec.index] if s.value > sym.value and s.type & 0x20]
+        end = min(ends, default=sec.size)
+        for reloc in sorted(sec.relocations, key=lambda r: r.offset):
+            target = coff.symbols[reloc.symbol_index]
+            name = target.name
+            if not sym.value <= reloc.offset < end:
+                continue
+            if target.section > 0 and name == coff.section(target.section).name and reloc.width == 4:
+                # cl refers to a unit's statics through their section: name the one at the addend.
+                offset = coff.addend(sec.index, reloc)
+                named = [s for s in defined[target.section] if s.value <= offset and not s.name.startswith("$")]
+                name = max(named, key=lambda s: s.value).name if named else name
+            if "ctype@G" in name:
+                return "<ctype guard>"
+            if name.startswith(("_$E", "fn_", "crt_xc", "??__E")) and depth < 3:
+                found = initialised(reloc.symbol_index, depth + 1)
+                if found or name.startswith("??__E"):
+                    return found or name
+            elif not name.startswith(UNNAMED + ("_atexit", "__imp", "??_7")):
+                return name
+        return None
+
+    for sec in coff.sections:
+        if sec.name == ".CRT$XCU":
+            for reloc in sorted(sec.relocations, key=lambda r: r.offset):
+                name = initialised(reloc.symbol_index)
+                if name and name not in order["crt"]:
+                    order["crt"].append(name)
+    order["text"] = list(dict.fromkeys(order["text"]))
+    return order, guard
+
+
+def class_runs(names):
+    """Function names as runs of their classes, with each scalar deleting destructor shown."""
+    runs = []
+    for name in names:
+        match = re.match(r"\?\?_([GE])(\w+)@@", name)
+        if match:
+            runs.append([f"??_{match.group(1)}{match.group(2)}", 0])
+            continue
+        match = re.match(r"\?(?:\?[0-9A-Z]|[^?@]+@)(\?\$)?([^@]+)@", name)
+        owner = (match.group(2) + ("<>" if match.group(1) else "")) if match else "-"
+        if runs and runs[-1][0] == owner and runs[-1][1]:
+            runs[-1][1] += 1
+        else:
+            runs.append([owner, 1])
+    return " ".join(owner if not count else f"{owner}({count})" for owner, count in runs)
+
+
+def order(units, base, runs):
+    print(f"{'unit':40} {'.text':>11} {'.bss':>7} {'RTTI':>7} {'CRT':>7}  ctype guard (target/ours)")
+    for entry in units:
+        compiled_path = ROOT / entry["base_path"]
+        if base:
+            compiled_path = Path(base) / Path(entry["base_path"]).name
+        if not compiled_path.is_file():
+            continue
+        target, target_guard = emission_order(ROOT / entry["target_path"])
+        compiled, guard = emission_order(compiled_path)
+        cells = [f"{a}/{b}" for a, b in (in_order(target[k], compiled[k]) for k in ("text", "bss", "rtti", "crt"))]
+        print(f"{entry['name'].rsplit('/', 1)[-1]:40} {cells[0]:>11} {cells[1]:>7} {cells[2]:>7} {cells[3]:>7}  "
+              f"{'yes' if target_guard else 'no'}/{'yes' if guard else 'no'}")
+        if runs:
+            print("  target:   " + class_runs(target["text"]))
+            print("  compiled: " + class_runs(compiled["text"]))
+
+
+def crt_statics(coff):
+    """(.bss offset, symbol name at it, initializer signature) of each static the .CRT$XCU
+    initializers store to, in .CRT$XCU order. The signature is the initializer's code with
+    its relocations blanked, plus what it refers to besides .bss (constants by value)."""
+    symbols = coff.symbols
+    defined = collections.defaultdict(list)
+    for sym in symbols.values():
+        if sym.section > 0 and not (sym.storage == STORAGE_STATIC and sym.name == coff.section(sym.section).name):
+            defined[sym.section].append(sym)
+    functions = {}
+    for sec in coff.sections:
+        if sec.name == ".text":
+            starts = sorted((sym for sym in defined[sec.index] if sym.type & 0x20), key=lambda sym: sym.value)
+            for index, sym in enumerate(starts):
+                end = starts[index + 1].value if index + 1 < len(starts) else sec.size
+                functions[sym.index] = (sec, sym, end)
+    bss = {sec.index for sec in coff.sections if sec.name == ".bss" and not sec.flags & IMAGE_SCN_LNK_COMDAT}
+
+    def store(index, depth=0):
+        if index not in functions:
+            return None
+        sec, sym, end = functions[index]
+        relocations = [r for r in sorted(sec.relocations, key=lambda r: r.offset) if sym.value <= r.offset < end]
+        for reloc in relocations:
+            target = symbols[reloc.symbol_index]
+            if "ctype@G" in target.name:
+                return "guard"
+            if target.section in bss:
+                base = 0 if target.name == coff.section(target.section).name else target.value
+                offset = base + (coff.addend(sec.index, reloc) if reloc.width == 4 else 0)
+                named = [s.name for s in defined[target.section] if s.value == offset and not s.name.startswith("$")]
+                code = bytearray(coff.bytes(sec.index, sym.value, end - sym.value))
+                refers = []
+                for other in relocations:
+                    start = other.offset - sym.value
+                    code[start:start + other.width] = bytes(other.width)
+                    referred = symbols[other.symbol_index]
+                    if referred.section in bss:
+                        continue
+                    if referred.section > 0 and coff.section(referred.section).name.startswith(".rdata"):
+                        value = referred.value
+                        if referred.name == coff.section(referred.section).name:
+                            value = coff.addend(sec.index, other)
+                        refers.append(coff.bytes(referred.section, value, 4).hex())
+                    else:
+                        refers.append(referred.name)
+                signature = hashlib.md5(bytes(code).rstrip(b"\x90\xcc") + repr(refers).encode()).hexdigest()
+                return offset, named[0] if named else None, signature
+            if reloc.symbol_index in functions and depth < 3:
+                found = store(reloc.symbol_index, depth + 1)
+                if found:
+                    return found
+        return None
+
+    statics = []
+    for sec in coff.sections:
+        if sec.name == ".CRT$XCU":
+            for reloc in sorted(sec.relocations, key=lambda r: r.offset):
+                found = store(reloc.symbol_index)
+                if found and found != "guard" and found[0] not in [s[0] for s in statics]:
+                    statics.append(found)
+    return statics
+
+
+def initializers(units, skip, list_units):
+    found = {unit["name"]: crt_statics(Coff.read(ROOT / unit["target_path"]))
+             for unit in units if (ROOT / unit["target_path"]).is_file()}
+    counts = collections.Counter(name for statics in found.values() for _, name, _ in statics if name)
+    shared = {name for name, count in counts.items()
+              if count >= 3 and name.startswith("_") and not name.startswith(("_?", "_$")) and name not in skip}
+    by_signature = collections.defaultdict(set)
+    for statics in found.values():
+        for _, name, signature in statics:
+            if name in shared:
+                by_signature[signature].add(name)
+    named = {signature: names.pop() for signature, names in by_signature.items() if len(names) == 1}
+    reverse, other = [], []
+    for unit, statics in found.items():
+        kept = []
+        for offset, name, signature in statics:
+            key = name if name in shared else named.get(signature)
+            if key and key not in [k for _, k in kept]:
+                kept.append((offset, key))
+        if len(kept) < 2:
+            continue
+        reversed_order = all(a > b for (a, _), (b, _) in zip(kept, kept[1:]))
+        (reverse if reversed_order else other).append(unit.rsplit("/", 1)[-1])
+        if list_units:
+            print(f"{unit.rsplit('/', 1)[-1]:32} {'reverse' if reversed_order else 'not reverse':12} "
+                  + " ".join(f"{key}@{offset:#x}" for offset, key in kept))
+    print(f"{len(reverse)} of {len(reverse) + len(other)} units hold their shared initialised statics in reverse "
+          f".CRT$XCU order; not: {', '.join(sorted(other, key=str.lower)) or '-'}")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -191,6 +417,17 @@ def main():
     p_where.add_argument("--prefix", default="", help="with --complete: only unit names with this prefix")
     p_where.add_argument("--summary", action="store_true", help="one line per unit plus totals")
     p_where.add_argument("--limit", type=int, default=40, help="functions listed per unit")
+    p_order = sub.add_parser("order", help="compare a unit's emission order with its target object")
+    selector = p_order.add_mutually_exclusive_group(required=True)
+    selector.add_argument("--unit")
+    selector.add_argument("--source")
+    selector.add_argument("--prefix", help="every unit whose name starts with this prefix")
+    p_order.add_argument("--base", help="directory holding the compiled objects instead of their base_path")
+    p_order.add_argument("--runs", action="store_true", help="print the .text order as runs of classes")
+    p_init = sub.add_parser("initializers", help="whether targets hold initialised statics in reverse .CRT$XCU order")
+    p_init.add_argument("--prefix", default="", help="unit names with this prefix")
+    p_init.add_argument("--skip", action="append", default=[], help="leave out a static (repeatable)")
+    p_init.add_argument("--units", action="store_true", help="list each unit")
     args = parser.parse_args()
 
     if args.command == "dump":
@@ -198,6 +435,18 @@ def main():
             dump(path, args.debug)
         return 0
     project = load_project()
+    if args.command == "initializers":
+        units = [unit for unit in project["units"] if unit["name"].startswith(args.prefix) and unit.get("target_path")]
+        initializers(units, set(args.skip), args.units)
+        return 0
+    if args.command == "order":
+        if args.prefix:
+            units = [unit for unit in project["units"] if unit["name"].startswith(args.prefix)
+                     and unit.get("base_path") and unit.get("target_path")]
+        else:
+            units = [resolve_unit(unit=args.unit, source=args.source)]
+        order(units, args.base, args.runs)
+        return 0
     if args.complete:
         units = [unit for unit in project["units"]
                  if unit.get("metadata", {}).get("complete") and unit["name"].startswith(args.prefix)]

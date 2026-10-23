@@ -64,8 +64,8 @@ const float ConfinedCreatureNeedsHelpLevel = 0.4f;
 
 uint32_t CreaturePlanSettings::NumGoalsToPlanPerTurn = 2;
 
-static TOWN_DESIRE_INFO TownDesireOfNthAction;
-static uint32_t         ContextsPushed;
+static TOWN_DESIRE_INFO TownDesireOfNthAction = TOWN_DESIRE_INFO_FIRST;
+static uint32_t         ContextsPushed = 0;
 
 // BW1W120 004f1e10 BW1M119 inlined
 float LimitActionPriority(float priority);
