@@ -2172,6 +2172,29 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00835116, jmp_run(0x008350D4)),  # LH3DRender
     (0x00835188, copy_run(0x00835116)),  # LH3DRender
     (0x008351D2, jmp_run(0x00835188)),  # LH3DRender
+    (0x0086E7C1, copy_run(0x0086E774)),  # LH3DSky
+    (0x0086E7E1, copy_run(0x0086E7E1)),  # LH3DSky
+    (0x0086E80B, call_rel32(0x004034F9)),  # LH3DSky
+    (0x0086E901, copy_run(0x0086E80B)),  # LH3DSky
+    (0x0086E9C5, copy_run(0x0086E901)),  # LH3DSky
+    (0x0086F147, copy_run(0x0086E9C5)),  # LH3DSky
+    (0x0086F2D3, jmp_run(0x0086F147)),  # LH3DSky
+    (0x0086F323, copy_run(0x0086F2D3)),  # LH3DSky
+    (0x0086F4A6, copy_run(0x0086F323)),  # LH3DSky
+    (0x0086F523, copy_run(0x0086F4A6)),  # LH3DSky
+    (0x0086F8E9, copy_run(0x0086F523)),  # LH3DSky
+    (0x0086F963, copy_run(0x0086F8E9)),  # LH3DSky
+    (0x0086FAAB, call_rel32(0x004034F9)),  # LH3DSky
+    (0x0086FDD1, jmp_run(0x0086FAAB)),  # LH3DSky
+    (0x0087082B, call_rel32(0x004034F9)),  # LH3DSky
+    (0x00870967, copy_run(0x0087082B)),  # LH3DSky
+    (0x00870B19, jmp_run(0x00870967)),  # LH3DSky
+    (0x00870CD1, jmp_run(0x00870B19)),  # LH3DSky
+    (0x00870E72, jmp_run(0x00870CD1)),  # LH3DSky
+    (0x00871193, jmp_run(0x00870E72)),  # LH3DSky
+    (0x008712B8, jmp_run(0x00871193)),  # LH3DSky
+    (0x00871399, jmp_run(0x008712B8)),  # LH3DSky
+    (0x00871447, copy_run(0x00871399)),  # LH3DSky
 )
 
 
