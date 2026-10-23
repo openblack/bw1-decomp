@@ -471,13 +471,13 @@ void LH3DSky::Init(float time, float alignment)
 				for (int row = 0; row < halfHeight; ++row)
 				{
 					uint16_t* firstLeft = data + row * width;
-					uint16_t* firstRight = data + (row + 1) * width - 1;
-					uint16_t* secondLeft = data + (row + halfHeight) * width;
 					uint16_t* secondRight = data + (row + halfHeight + 1) * width - 1;
+					uint16_t* secondLeft = data + (row + halfHeight) * width;
+					uint16_t* firstRight = data + (row + 1) * width - 1;
 					for (int column = 0; column < width; ++column)
 					{
-						*firstLeft = *secondRight = AverageSky555(*firstLeft, *secondRight);
-						*firstRight = *secondLeft = AverageSky555(*firstRight, *secondLeft);
+						*firstLeft = *secondRight = AverageSky555(*secondRight, *firstLeft);
+						*firstRight = *secondLeft = AverageSky555(*secondLeft, *firstRight);
 					}
 				}
 			}
@@ -486,13 +486,17 @@ void LH3DSky::Init(float time, float alignment)
 				for (int row = 0; row < halfHeight; ++row)
 				{
 					uint16_t* firstLeft = data + row * width;
-					uint16_t* firstRight = data + (row + 1) * width - 1;
-					uint16_t* secondLeft = data + (row + halfHeight) * width;
 					uint16_t* secondRight = data + (row + halfHeight + 1) * width - 1;
+					uint16_t* secondLeft = data + (row + halfHeight) * width;
+					uint16_t* firstRight = data + (row + 1) * width - 1;
 					for (int column = 0; column < width; ++column)
 					{
-						*firstLeft = *secondRight = AverageSky565(*firstLeft, *secondRight);
-						*firstRight = *secondLeft = AverageSky565(*firstRight, *secondLeft);
+						uint16_t firstPixel = *firstLeft;
+						uint16_t secondPixel = *secondRight;
+						*firstLeft = *secondRight = AverageSky565(firstPixel, secondPixel);
+						firstPixel = *firstRight;
+						secondPixel = *secondLeft;
+						*firstRight = *secondLeft = AverageSky565(firstPixel, secondPixel);
 					}
 				}
 			}
@@ -1007,7 +1011,7 @@ void LH3DSky::Draw()
 	}
 	int alignmentAlpha;
 	int firstSky, secondSky;
-	if (evil < SKY_ALIGNMENT_NEUTRAL)
+	if (!(evil > SKY_ALIGNMENT_NEUTRAL))
 	{
 		alignmentAlpha = (int)(evil * SKY_COLOUR_ALPHA_MAX);
 		firstSky = SKY_ALIGNMENT_GOOD;
@@ -1053,38 +1057,39 @@ void LH3DSky::Draw()
 	fogColour |= (int)fogg;
 	fogColour <<= SKY_COLOUR_CHANNEL_BITS;
 	fogColour |= (int)fogb;
+	uint32_t diffuse;
 	uint32_t specular;
 	if (LH3DIsland::g_b_use_fog)
 	{
-		topColour = LH3D_BLEND_COLOR(topColour, fogColour, fog);
-		specular = LH3D_BLEND_COLOR(0, fogColour, fog);
+		diffuse = LH3D_BLEND_COLOR(topColour, fogColour, fog);
 	}
 	else
 	{
-		specular = 0;
+		diffuse = topColour;
 	}
+	specular = LH3DIsland::g_b_use_fog ? LH3D_BLEND_COLOR(0, fogColour, fog) : 0;
 	if (LH3DAtmos::flags & LH3D_ATMOS_ALIGNMENT_TRANSITION)
 	{
 		int fade = LH3DAtmos::glowlevel * LH3DAtmos::glowlevel / LH3D_ATMOS_ALIGNMENT_FADE_DIVISOR;
-		topColour = LH3D_BLEND_COLOR(topColour, 0, fade);
+		diffuse = LH3D_BLEND_COLOR(diffuse, 0, fade);
 		specular = LH3D_BLEND_COLOR(specular, 0, fade);
 	}
 	if (LightningGlow)
 	{
-		topColour = LH3D_BLEND_COLOR(topColour, SKY_COLOUR_WHITE, LightningGlow);
+		diffuse = LH3D_BLEND_COLOR(diffuse, SKY_COLOUR_WHITE, LightningGlow);
 		specular = LH3D_BLEND_COLOR(specular, SKY_COLOUR_WHITE, LightningGlow / SKY_LIGHTNING_SPECULAR_DIVISOR);
 	}
 	if (inverseAlpha > 0)
 	{
-		DrawSky(firstSky, SKY_COLOUR_ALPHA_MAX, topColour, specular);
+		DrawSky(firstSky, SKY_COLOUR_ALPHA_MAX, diffuse, specular);
 		if (alignmentAlpha > 0)
 		{
-			DrawSky(secondSky, alignmentAlpha, topColour, specular);
+			DrawSky(secondSky, alignmentAlpha, diffuse, specular);
 		}
 	}
 	else
 	{
-		DrawSky(secondSky, SKY_COLOUR_ALPHA_MAX, topColour, specular);
+		DrawSky(secondSky, SKY_COLOUR_ALPHA_MAX, diffuse, specular);
 	}
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
 	DrawSun();
