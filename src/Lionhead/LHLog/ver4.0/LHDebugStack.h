@@ -1,10 +1,10 @@
 #ifndef BW1_DECOMP_LH_DEBUG_STACK_INCLUDED_H
 #define BW1_DECOMP_LH_DEBUG_STACK_INCLUDED_H
 
+#include "LHLogger.h" /* For LH_LOG_API */
+
 #include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint8_t */
-
-#include "LHLogExport.h"
 
 struct HINSTANCE__;
 struct _EXCEPTION_POINTERS;
@@ -38,10 +38,8 @@ private:
 	// BW1W120 10002380 BW1M119 01171a40 (LHCombined Release)
 	int UpdateStack(_EXCEPTION_POINTERS* exception);
 
-#ifdef _LH_LOG_LIB_
 	// BW1W120 10022df0 BW1M119 0138e2ca (LHCombined Release)
 	static short BeenInitialisedCount;
-#endif
 
 	char    FunctionNames[LH_DEBUG_STACK_MAX_FUNCTIONS][LH_DEBUG_STACK_FUNCTION_NAME_SIZE]; /* 0x0 */
 	uint8_t FunctionCount;                                                                  /* 0x4000 */

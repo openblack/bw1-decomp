@@ -6,7 +6,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#include "LHLogExport.h"
+#include "LHLogger.h" /* For LH_LOG_API */
 
 #define LH_LOG_PROPS_MAX_MESSAGES  200
 #define LH_LOG_PROPS_FILENAME_SIZE 128

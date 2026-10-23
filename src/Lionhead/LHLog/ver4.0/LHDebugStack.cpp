@@ -48,7 +48,7 @@ int LHDebugStack::Initialise()
 			_splitpath(path, drive, dir, NULL, NULL);
 			sprintf(path, "%s%s", drive, dir);
 			lstrcatA(path, ";.;");
-			if (!SymInitialize(process, path, FALSE))
+			if (!SymInitialize(process, path, false))
 			{
 				return false;
 			}
@@ -139,8 +139,8 @@ int LHDebugStack::UpdateStack(_EXCEPTION_POINTERS* exception)
 	frame.AddrFrame.Mode = AddrModeFlat;
 	frame.AddrFrame.Offset = exception->ContextRecord->Ebp;
 
-	BOOL walking = TRUE;
-	for (int i = 0; i < LH_DEBUG_STACK_SKIPPED_FRAMES && walking == TRUE; i++)
+	bool32_t walking = true;
+	for (int i = 0; i < LH_DEBUG_STACK_SKIPPED_FRAMES && walking == true; i++)
 	{
 		walking = StackWalk(IMAGE_FILE_MACHINE_I386, GetCurrentProcess(), GetCurrentThread(), &frame,
 		                    exception->ContextRecord, NULL, SymFunctionTableAccess, SymGetModuleBase, NULL);

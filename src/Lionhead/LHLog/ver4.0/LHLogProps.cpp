@@ -492,7 +492,7 @@ void LHLogPropsSet::Initialise()
 {
 	InitializeCriticalSection(&MessageLock);
 	Uninitialised = false;
-	DialogClosedEvent = CreateEventA(NULL, FALSE, FALSE, NULL);
+	DialogClosedEvent = CreateEventA(NULL, false, false, NULL);
 	ReadFromRegistry();
 }
 
@@ -584,8 +584,8 @@ BOOL CALLBACK LogDialogProc(HWND dialog, UINT message, WPARAM wparam, LPARAM lpa
 		ShowWindow(dialog, SW_SHOW);
 		if (IsDlgButtonChecked(dialog, IDC_ASSERT_FILTER_AS_LOG_FLAG))
 		{
-			EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), FALSE);
-			EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), FALSE);
+			EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), false);
+			EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), false);
 			strcpy(props->ActiveAssertFilter, props->LogFilter);
 			props->InvertActiveAssertFilterFlag = props->InvertLogFilterFlag;
 		}
@@ -596,11 +596,11 @@ BOOL CALLBACK LogDialogProc(HWND dialog, UINT message, WPARAM wparam, LPARAM lpa
 		}
 		if (IsDlgButtonChecked(dialog, IDC_DISABLE_FILTER_FLAG))
 		{
-			EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER_AS_LOG_FLAG), FALSE);
-			EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), FALSE);
-			EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), FALSE);
-			EnableWindow(GetDlgItem(dialog, IDC_LOG_FILTER), FALSE);
-			EnableWindow(GetDlgItem(dialog, IDC_INVERT_LOG_FILTER_FLAG), FALSE);
+			EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER_AS_LOG_FLAG), false);
+			EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), false);
+			EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), false);
+			EnableWindow(GetDlgItem(dialog, IDC_LOG_FILTER), false);
+			EnableWindow(GetDlgItem(dialog, IDC_INVERT_LOG_FILTER_FLAG), false);
 		}
 		ready = true;
 		break;
@@ -614,7 +614,7 @@ BOOL CALLBACK LogDialogProc(HWND dialog, UINT message, WPARAM wparam, LPARAM lpa
 			props->WriteToRegistry();
 		case IDCANCEL:
 		case IDC_CLOSE:
-			EndDialog(dialog, TRUE);
+			EndDialog(dialog, true);
 			break;
 
 		case IDC_CLEAR_MESSAGES:
@@ -635,40 +635,40 @@ BOOL CALLBACK LogDialogProc(HWND dialog, UINT message, WPARAM wparam, LPARAM lpa
 				ready = true;
 				if (IsDlgButtonChecked(dialog, IDC_ASSERT_FILTER_AS_LOG_FLAG))
 				{
-					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), FALSE);
-					EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), FALSE);
+					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), false);
+					EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), false);
 					strcpy(props->ActiveAssertFilter, props->LogFilter);
 					props->InvertActiveAssertFilterFlag = props->InvertLogFilterFlag;
 				}
 				else
 				{
-					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), TRUE);
-					EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), TRUE);
+					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), true);
+					EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), true);
 					strcpy(props->ActiveAssertFilter, props->AssertFilter);
 					props->InvertActiveAssertFilterFlag = props->InvertAssertFilterFlag;
 				}
 				if (IsDlgButtonChecked(dialog, IDC_DISABLE_FILTER_FLAG))
 				{
-					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER_AS_LOG_FLAG), FALSE);
-					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), FALSE);
-					EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), FALSE);
-					EnableWindow(GetDlgItem(dialog, IDC_LOG_FILTER), FALSE);
-					EnableWindow(GetDlgItem(dialog, IDC_INVERT_LOG_FILTER_FLAG), FALSE);
+					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER_AS_LOG_FLAG), false);
+					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), false);
+					EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), false);
+					EnableWindow(GetDlgItem(dialog, IDC_LOG_FILTER), false);
+					EnableWindow(GetDlgItem(dialog, IDC_INVERT_LOG_FILTER_FLAG), false);
 				}
 				else
 				{
-					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER_AS_LOG_FLAG), TRUE);
-					EnableWindow(GetDlgItem(dialog, IDC_LOG_FILTER), TRUE);
-					EnableWindow(GetDlgItem(dialog, IDC_INVERT_LOG_FILTER_FLAG), TRUE);
+					EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER_AS_LOG_FLAG), true);
+					EnableWindow(GetDlgItem(dialog, IDC_LOG_FILTER), true);
+					EnableWindow(GetDlgItem(dialog, IDC_INVERT_LOG_FILTER_FLAG), true);
 					if (IsDlgButtonChecked(dialog, IDC_ASSERT_FILTER_AS_LOG_FLAG))
 					{
-						EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), FALSE);
-						EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), FALSE);
+						EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), false);
+						EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), false);
 					}
 					else
 					{
-						EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), TRUE);
-						EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), TRUE);
+						EnableWindow(GetDlgItem(dialog, IDC_ASSERT_FILTER), true);
+						EnableWindow(GetDlgItem(dialog, IDC_INVERT_ASSERT_FILTER_FLAG), true);
 					}
 				}
 			}
@@ -678,10 +678,10 @@ BOOL CALLBACK LogDialogProc(HWND dialog, UINT message, WPARAM wparam, LPARAM lpa
 
 	case WM_LH_LOG_CLOSE_DIALOG:
 		SetEvent(props->DialogClosedEvent);
-		EndDialog(dialog, TRUE);
+		EndDialog(dialog, true);
 		break;
 	}
-	return FALSE;
+	return false;
 }
 
 // BW1W120 100062a0 BW1M119 null

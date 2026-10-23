@@ -82,7 +82,7 @@ static LHErrorCode LHAssertErrors[] = {
 static LHErrorCode* LHAssertErrorCodes = LHAssertErrors;
 
 static bool32_t     Forced;
-int                 LHAssertIgnoreAllAsserts;
+bool32_t            LHAssertIgnoreAllAsserts;
 static bool32_t     IgnoreNonLibraryAsserts;
 static bool32_t     IgnoreLibraryAsserts;
 static bool32_t     ExitPressed;
@@ -305,8 +305,8 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 
 		if (Forced)
 		{
-			EnableWindow(GetDlgItem(dialog, IDC_IGNORE_FILE), FALSE);
-			EnableWindow(GetDlgItem(dialog, IDC_IGNORE_THIS_ASSERTION), FALSE);
+			EnableWindow(GetDlgItem(dialog, IDC_IGNORE_FILE), false);
+			EnableWindow(GetDlgItem(dialog, IDC_IGNORE_THIS_ASSERTION), false);
 		}
 
 		if (PriorityBitmap != NULL)
@@ -332,15 +332,15 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 		SetDlgItemTextA(dialog, IDC_LINE, LHSPrintf("%d", CurrentAssertion->Line));
 		SetDlgItemTextA(dialog, IDC_CODE, CurrentAssertion->Code);
 		SetDlgItemTextA(dialog, IDC_TEXT, CurrentAssertion->Text);
-		CheckDlgButton(dialog, IDC_IGNORE_NON_LIBRARY, IgnoreNonLibraryAsserts != 0);
-		CheckDlgButton(dialog, IDC_IGNORE_LIBRARY, IgnoreLibraryAsserts != 0);
-		CheckDlgButton(dialog, IDC_IGNORE_ALL, LHAssertIgnoreAllAsserts != 0);
+		CheckDlgButton(dialog, IDC_IGNORE_NON_LIBRARY, IgnoreNonLibraryAsserts != false);
+		CheckDlgButton(dialog, IDC_IGNORE_LIBRARY, IgnoreLibraryAsserts != false);
+		CheckDlgButton(dialog, IDC_IGNORE_ALL, LHAssertIgnoreAllAsserts != false);
 
 		for (int i = 1; i < AssertDebugStack.GetFunctionCount() - 1; i++)
 		{
 			SendDlgItemMessageA(dialog, IDC_CALL_STACK, LB_ADDSTRING, 0, (LPARAM)AssertDebugStack.GetFunctionName(i));
 		}
-		return FALSE;
+		return false;
 	}
 
 	case WM_COMMAND:
@@ -348,8 +348,8 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 		{
 		case IDC_DEBUG:
 			DebugPressed = true;
-			EndDialog(dialog, TRUE);
-			return FALSE;
+			EndDialog(dialog, true);
+			return false;
 
 		case IDCANCEL:
 		case IDC_IGNORE_AND_CONTINUE:
@@ -367,13 +367,13 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 			}
 			DialogX = (uint16_t)rect.left;
 			DialogY = (uint16_t)rect.top;
-			EndDialog(dialog, TRUE);
-			return FALSE;
+			EndDialog(dialog, true);
+			return false;
 
 		case IDC_EXIT_PROGRAM:
 			ExitPressed = true;
-			EndDialog(dialog, TRUE);
-			return FALSE;
+			EndDialog(dialog, true);
+			return false;
 
 		case IDC_IGNORE_FILE:
 			if (IsDlgButtonChecked(dialog, IDC_IGNORE_FILE) && FileIgnoreInfo == NULL)
@@ -392,7 +392,7 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 				FileIgnoreInfo = NULL;
 				FillIgnoreList(dialog);
 			}
-			return FALSE;
+			return false;
 
 		case IDC_IGNORE_THIS_ASSERTION:
 			if (IsDlgButtonChecked(dialog, IDC_IGNORE_THIS_ASSERTION) && AssertIgnoreInfo == NULL)
@@ -408,7 +408,7 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 				AssertIgnoreInfo = NULL;
 				FillIgnoreList(dialog);
 			}
-			return FALSE;
+			return false;
 
 		case IDC_IGNORE_LIST:
 			if (HIWORD(wparam) == LBN_DBLCLK)
@@ -427,15 +427,15 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 				DeleteAssertion(index);
 				FillIgnoreList(dialog);
 			}
-			return FALSE;
+			return false;
 
 		case IDC_IGNORE_ALL_GREEN:
 			IgnoreAllGreen = !IgnoreAllGreen;
-			return FALSE;
+			return false;
 
 		case IDC_LOG_PROPERTIES:
 			LHSyslog.ShowLogPropsDialog();
-			return FALSE;
+			return false;
 
 		case IDC_DETAILS: {
 			char text[LH_ASSERT_DETAILS_SIZE];
@@ -443,24 +443,24 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 			GetDlgItemTextA(dialog, IDC_TEXT, text, sizeof(text));
 			GetDlgItemTextA(dialog, IDC_CODE, code, sizeof(code));
 			MessageBoxA(NULL, LHSPrintf("Text:%s\nCode:%s\n", text, code), "Assert Details", MB_TASKMODAL);
-			return FALSE;
+			return false;
 		}
 
 		case IDC_IGNORE_NON_LIBRARY:
 			IgnoreNonLibraryAsserts = IsDlgButtonChecked(dialog, IDC_IGNORE_NON_LIBRARY);
-			return FALSE;
+			return false;
 
 		case IDC_IGNORE_LIBRARY:
 			IgnoreLibraryAsserts = IsDlgButtonChecked(dialog, IDC_IGNORE_LIBRARY);
-			return FALSE;
+			return false;
 
 		case IDC_IGNORE_ALL:
 			LHAssertIgnoreAllAsserts = IsDlgButtonChecked(dialog, IDC_IGNORE_ALL);
-			return FALSE;
+			return false;
 		}
 		break;
 	}
-	return FALSE;
+	return false;
 }
 
 LH_ASSERT_RETURN LHAssertStatement(char* library, unsigned long ignore, char* text, char* file, uint16_t line,
