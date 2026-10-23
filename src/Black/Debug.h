@@ -68,12 +68,8 @@ struct GDebug
 	void SetMessage(char* fmt, ...);
 	// BW1W120 00511da0 BW1M119 0102f280
 	void SetMessage(uint16_t category, char* fmt, ...);
-	// fabricated name: SetMessage's body, stores the formatted text in the category's first free
-	// slot. The Mac build inlines it into both overloads.
 	// BW1W120 00511dd0 BW1M119 inlined
 	void AddMessage(uint16_t category, char* fmt, va_list args);
-	// fabricated name: draws category 6, then every other enabled category, a line per message.
-	// Nothing calls it in 1.20, and the Mac build has no copy.
 	// BW1W120 00511e30 BW1M119 null
 	void DrawMessages(long x, long y);
 	// BW1W120 00511f50 BW1M119 01090b10

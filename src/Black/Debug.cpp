@@ -10,7 +10,6 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 
-// fabricated name: the field's initial value, read from .rdata rather than folded
 static const float GDebugInitialValue2d284 = 1000.0f;
 
 GDebug::GDebug()
