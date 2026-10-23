@@ -1,5 +1,3 @@
-#include "LH3DLibPCH.h"
-
 #include "LH3DTech.h"
 
 #include <stdarg.h> /* For va_list */

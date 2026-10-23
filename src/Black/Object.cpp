@@ -1,5 +1,3 @@
-#include "BlackPCH.h"
-
 #include "MapCellConstants.h"          /* For MetresPerMapCell */
 #include "GameTimeConstants.h"         /* For SecondsPerYear */
 #include "CreatureAttitudeConstants.h" /* For AttitudeFeedbackDecay */

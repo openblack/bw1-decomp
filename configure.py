@@ -525,18 +525,17 @@ def GameSpyObject(completed, name, **options):
     return Object(completed, name, source=source, cflags=cflags_gamespy, **options)
 
 
-# The game code's precompiled header (docs/msvc6_pch.md). It is built once per
-# version and forced in with /FI, so the sources of the units using it do not
-# change. With /Yu, cl emits the inline bodies of the classes it declares after
-# the scalar deleting destructor of a class derived from them, and lays out a
-# unit's uninitialised statics in reverse order of their first mention instead
-# of in the order of their name hashes.
-gamecode_pch = {
-    "header": "BlackPCH.h",
-    "source": "src/Black/BlackPCH.cpp",
-    "force_include": True,
-    "shared": True,
-}
+# A precompiled header (docs/msvc6_pch.md), for an object's `pch`: `header`, built once per
+# version from `source`, which compiles nothing else (like a StdAfx.cpp), with the cflags of
+# the units using it. It is forced in with /FI, so their sources do not change. With /Yu, cl
+# emits the inline bodies of the classes it declares after the scalar deleting destructor of
+# a class derived from them, and lays out a unit's uninitialised statics in reverse order of
+# their first mention instead of in the order of their name hashes.
+def PrecompiledHeader(header, source):
+    return {"header": header, "source": source}
+
+
+gamecode_pch = PrecompiledHeader("BlackPCH.h", "src/Black/BlackPCH.cpp")
 
 
 # For a game-code object's `pch`: the precompiled header, except in the versions named, in
@@ -563,44 +562,24 @@ PCH_PENDING = False
 # extra_cflags still apply on top, as with Object. The game was built with its
 # precompiled header in nearly every unit, so it is built with /Yu against
 # gamecode_pch unless `pch` says otherwise: False where the target objects show
-# the unit was built without it (or with /vmg, which the shared header was not),
+# the unit was built without it (and the /vmg units, docs/msvc6_pch.md §4),
 # PCH_EXCEPT_NO_STRING or PCHExceptNoStringIn where the <string> in ours keeps a
 # unit off it, PCH_PENDING as above.
 def GameCodeObject(completed, name, pch=True, **options):
-    if pch is True:
-        pch = gamecode_pch
-    return Object(completed, name, cflags=cflags_gamecode, pch=pch or None, **options)
+    return Object(completed, name, cflags=cflags_gamecode, pch=gamecode_pch if pch else None, **options)
 
 
-def GameCodePCHObject(completed, name, **options):
-    options.setdefault("cflags", [flag for flag in cflags_gamecode if flag != "/Zi"])
-    options.setdefault("pch", {
-        "header": "BlackPCH.h",
-        "source": "src/Black/BlackPCH.cpp",
-    })
-    return Object(completed, name, **options)
+# LH3DLib's precompiled header. Its contents are those the units built with it need: the
+# reverse first-mention .bss order of /Yu is the only thing that reproduces their .bss.
+lh3dlib_pch = PrecompiledHeader("LH3DLibPCH.h", "src/Lionhead/LH3DLib/development/LH3DLibPCH.cpp")
 
 
 # An LH3DLib object, compiled with cflags_lh3dlib (Pentium Pro, /G6) and counted
-# in the "sdk" progress category.
-def LH3DLibObject(completed, name, **options):
+# in the "sdk" progress category. Built against lh3dlib_pch when `pch` is True.
+def LH3DLibObject(completed, name, pch=False, **options):
     options.setdefault("progress_category", "sdk")
     options.setdefault("cflags", cflags_lh3dlib)
-    return Object(completed, name, **options)
-
-
-# An LH3DLib object built against the LH3DLibPCH.h precompiled header. With /Yu,
-# cl lays out zero-initialised and dynamically initialised globals in reverse
-# order of their first mention in the unit instead of in its name-hash order,
-# and only that reproduces the .bss of these units. /Zi is left out because a
-# /Yu build with it needs the PDB that built the PCH; the code is the same.
-def LH3DLibPCHObject(completed, name, **options):
-    options.setdefault("cflags", [flag for flag in cflags_lh3dlib if flag != "/Zi"])
-    options.setdefault("pch", {
-        "header": "LH3DLibPCH.h",
-        "source": "src/Lionhead/LH3DLib/development/LH3DLibPCH.cpp",
-    })
-    return LH3DLibObject(completed, name, **options)
+    return Object(completed, name, pch=lh3dlib_pch if pch else None, **options)
 
 
 # An object built with Intel C++ 5.0 instead of MSVC. MSVC's bin stays on PATH
@@ -811,7 +790,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/DialogBoxOptions.cpp"),
             GameCodeObject(NonMatching, "Black/DialogBoxSaveMessage.cpp"),
             GameCodeObject(NonMatching, "Black/DifferentCreatureInfo.cpp"),
-            GameCodePCHObject(NonMatching, "Black/DrawingObject.cpp"),
+            GameCodeObject(NonMatching, "Black/DrawingObject.cpp"),
             GameCodeObject(NonMatching, "Black/EarthQuake.cpp"),
             GameCodeObject(NonMatching, "Black/EditingDebugBox.cpp"),
             GameCodeObject(NonMatching, "Black/EditorAnim.cpp"),
@@ -1062,7 +1041,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Name.cpp"),
             GameCodeObject(NonMatching, "Black/Network.cpp"),
             GameCodeObject(NonMatching, "Black/NewProfileBox.cpp"),
-            GameCodePCHObject(Matching, "Black/Object.cpp"),
+            GameCodeObject(Matching, "Black/Object.cpp"),
             GameCodeObject(Matching, "Black/Object3D.cpp", pch=PCH_PENDING),
             GameCodeObject(Matching, "Black/OnMapTrajectory.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/OOSDebug.cpp"),
@@ -1336,7 +1315,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/WorshipSpell.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpellIcon.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipTotem.cpp", pch=False),
-            GameCodePCHObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/WorldRoom.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/WorldRoom.cpp"),
             GameCodeObject(NonMatching, "Black/WorldRoomCamera.cpp"),
 
             # Contains SSE instructions, could be result of compiling with intel compiler
@@ -1641,12 +1620,12 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHConvert.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSprite.cpp", progress_category="sdk"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSmoke.cpp"),
-            LH3DLibPCHObject(NonMatching, "Lionhead/LH3DLib/development/LH3DIsland.cpp", extra_cflags=["/GX"]),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DIsland.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMesh.cpp"),
-            LH3DLibPCHObject(Matching, "Lionhead/LH3DLib/development/LH3DTech.cpp"),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DTech.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Fish.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHCollide.cpp", progress_category="sdk"),
-            LH3DLibPCHObject(Matching, "Lionhead/LH3DLib/development/LH3DRender.cpp"),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DRender.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DText.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/ValueSpinner.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DLightningSheet.cpp"),
@@ -1667,7 +1646,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPrimitive.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DVRAMTex.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp"),
-            LH3DLibPCHObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSky.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSky.cpp", pch=True),
 
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\_ios.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\fstream.obj", progress_category="sdk"),

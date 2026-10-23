@@ -1,5 +1,3 @@
-#include "LH3DLibPCH.h"
-
 #include "LH3DIsland.h"
 
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h> /* For LHSaveData */

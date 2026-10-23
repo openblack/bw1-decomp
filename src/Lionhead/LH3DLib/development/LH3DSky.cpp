@@ -1,5 +1,3 @@
-#include "LH3DLibPCH.h"
-
 #include "LH3DSky.h"
 
 #include <string.h>

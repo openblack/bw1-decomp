@@ -214,7 +214,7 @@ static inline void LogAllocation(size_t size, bool32_t array)
 void* Base::operator new(size_t size)
 {
 	LogAllocation(size, false);
-	void* result = ObjectHeap->New(size);
+	Base* result = (Base*)ObjectHeap->New(size);
 	ObjectAllocations.Add(result, size);
 	memset(result, 0, size);
 	GameStats::NumBaseAllocations++;
