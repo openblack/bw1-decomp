@@ -68,6 +68,20 @@ public:
 	virtual void Delete() {}
 	// BW1W120 00441700 BW1M119 010236d0
 	virtual bool32_t Arrived();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00450610 BW1M119 null
+	virtual bool32_t CanSaveGameInThisMode() { return !IsScriptedMode(); }
+	// BW1WCI 004504e0 BW1M119 null
+	virtual bool32_t IsLockedForMovement() { return IsScriptedMode(); }
+	// BW1WCI 00449cf0 BW1M119 null
+	virtual bool32_t IsScriptedMode();
+	// BW1WCI 004504f0 BW1M119 null
+	virtual bool32_t IsCameraModeScript() { return false; }
+	// BW1WCI 00450620 BW1M119 null
+	virtual bool32_t IsCameraModeCannon() { return false; }
+	// BW1WCI 00449ce0 BW1M119 null
+	virtual int GetCameraImmersion();
+#endif
 	// BW1W120 0044a330 BW1M119 011a2260
 	virtual int GetSaveID() { return 0; }
 	// BW1W120 0044a340 BW1M119 011a1db0

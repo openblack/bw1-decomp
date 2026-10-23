@@ -71,6 +71,10 @@ block_relocations:
   - source: 0x0040C28E
   - source: 0x0040CCDB
 add_relocations:
+# Audio's sound_effect_callback_function: the __except handler restores the SEH chain.
+  - source: 0x00428590
+    type: x86_abs32
+    target: '__except_list'
 # LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
   - source: 0x0084D2B3
     type: x86_abs32

@@ -63,6 +63,14 @@ class Villager;
 class WayPoint;
 class WeatherThing;
 class Whale;
+#ifdef VERSION_BW1WCI
+class Abode;
+class Cannon;
+class Die;
+class Dolphin;
+class GBaseOnly;
+class SpotVisualAlex;
+#endif
 
 class GlobalGameLists : public Base
 {
@@ -122,7 +130,12 @@ public:
 	LHLinkedList<TownArtifact*> TownArtifacts;
 	LHLinkedList<Fragment*>     fragments;
 #ifdef VERSION_BW1WCI
-	uint8_t ci_field_0x194[0x30];
+	LHListHead<Die>            dice;
+	LHListHead<Dolphin>        dolphins;
+	LHLinkedList<GBaseOnly*>   BaseOnlys;
+	LHListHead<Cannon>         cannons;
+	LHLinkedList<Abode*>       abodes;
+	LHListHead<SpotVisualAlex> SpotVisualAlexes;
 #endif
 
 	// Override methods

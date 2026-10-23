@@ -15,8 +15,12 @@
 #include "WorshipSiteInfo.h"
 
 #ifndef VERSION_BW1W100
-#if defined(VERSION_BW1W110)
+#if defined(VERSION_BW1WCI)
+#define FILEPATH "C:\\dev\\black\\WorshipSiteUpgrade.cpp"
+#elif defined(VERSION_BW1W110)
 #define FILEPATH "C:\\dev\\Black\\WorshipSiteUpgrade.cpp"
+#elif defined(VERSION_BW1W130)
+#define FILEPATH "D:\\Work\\Games\\dd\\Black\\WorshipSiteUpgrade.cpp"
 #else
 #define FILEPATH "C:\\dev\\MP\\Black\\WorshipSiteUpgrade.cpp"
 #endif

@@ -7,10 +7,12 @@
 #include "GroupBehaviour.h"
 #include "Interface.h"
 
-#if defined(VERSION_BW1W100)
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define CAMERA_MODE_DANCE_FILE "C:\\dev\\black\\CameraModeDance.cpp"
 #elif defined(VERSION_BW1W110)
 #define CAMERA_MODE_DANCE_FILE "C:\\dev\\Black\\CameraModeDance.cpp"
+#elif defined(VERSION_BW1W130)
+#define CAMERA_MODE_DANCE_FILE "D:\\Work\\Games\\dd\\Black\\CameraModeDance.cpp"
 #else
 #define CAMERA_MODE_DANCE_FILE "C:\\dev\\MP\\Black\\CameraModeDance.cpp"
 #endif

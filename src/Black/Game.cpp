@@ -185,7 +185,11 @@ static_assert(offsetof(PowerSpinRunner, Next) == 0x9b4, "PowerSpinRunner link of
 static_assert(offsetof(ValueSpinner, point) == 8, "ValueSpinner position offset is incorrect");
 static_assert(offsetof(VillagerName, next) == 0x460, "VillagerName link offset is incorrect");
 static_assert(offsetof(TempleRoom, name) == 4, "TempleRoom vptr is missing");
+#ifdef VERSION_BW1WCI
+static_assert(offsetof(GScript, FocusPos) == 0x48, "Script timer fields changed its layout");
+#else
 static_assert(offsetof(GScript, FocusPos) == 0x40, "Script timer fields changed its layout");
+#endif
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(GPlayer, Conditions) == 0xf8, "GPlayer condition map offset is incorrect");
 static_assert(offsetof(GPlayer, type) == 0x8e0, "GPlayer condition map changed its layout");

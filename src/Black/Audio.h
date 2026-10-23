@@ -222,6 +222,10 @@ public:
 	void StoreMusicStyleChunks();
 	// BW1W120 00428230 BW1M119 011832d0
 	void StartScriptMusic(MUSIC_TYPE type);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00429510 BW1M119 null
+	void StartScriptMusic(MUSIC_TYPE type, unsigned long start_chunk);
+#endif
 	// BW1W120 00428250 BW1M119 01183210
 	void RegistrySetup();
 	// BW1W120 004282b0 BW1M119 01183160
@@ -337,6 +341,8 @@ public:
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(GAudio) == 0x3fc, "Data type is of wrong size");
+#elif defined(VERSION_BW1W130)
+static_assert(sizeof(GAudio) == 0x3d8, "Data type is of wrong size");
 #else
 static_assert(sizeof(GAudio) == 0x3d4, "Data type is of wrong size");
 #endif

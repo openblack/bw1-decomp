@@ -32,9 +32,11 @@ class Pot : public MobileObject
 {
 public:
 	RESOURCE_TYPE ResourceType;
-	LHPTR<Town>   ParentTown;
-	uint32_t      ResourceAmount;
-	uint8_t       Poisoned : 1;
+#ifndef VERSION_BW1WCI
+	LHPTR<Town> ParentTown;
+#endif
+	uint32_t ResourceAmount;
+	uint8_t  Poisoned : 1;
 	uint8_t : 2;
 	uint8_t FromBuildingSite : 1;
 	uint8_t SpeedUp : 1;

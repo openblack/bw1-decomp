@@ -339,7 +339,7 @@ public:
 			ReadPtr((GameThing**)&element);
 			element->next = NULL;
 			list.AddToLast(element);
-			count--;
+			count = count - 1;
 		}
 		return true;
 	}
@@ -360,9 +360,7 @@ public:
 				WriteEnabled = false;
 			}
 			if (!WriteEnabled)
-			{
 				break;
-			}
 			WritePtr(element);
 		}
 		return true;

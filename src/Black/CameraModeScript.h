@@ -39,6 +39,12 @@ public:
 	virtual long GetComputerPlayerFollow() { return ComputerPlayerFollow; }
 	// BW1W120 00461220 BW1M119 011b26c0
 	virtual bool32_t CanPlayerGestureWhenCameraMoving() { return false; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI 004690f0 BW1M119 null
+	virtual bool32_t IsScriptedMode() { return true; }
+	// BW1WCI 00469100 BW1M119 null
+	virtual bool32_t IsCameraModeScript() { return true; }
+#endif
 	// BW1W120 00461230 BW1M119 011b2720
 	virtual const char* GetDebugName() { return "Script"; }
 	// BW1W120 00461240 BW1M119 011b22a0
