@@ -2252,7 +2252,7 @@ void GGame::Process3dEngine()
 				for (ValueSpinner* spinner = ValueSpinner::first; spinner; spinner = spinner->next)
 					spinner->AddDrawing();
 			}
-			if (GGlobal::Global.debug.field_0x2d1b0)
+			if (GGlobal::Global.debug.CategoryEnabled[4])
 			{
 				LH3DStorm::DebugDrawAll();
 				LH3DAtmos::DrawWindField();
