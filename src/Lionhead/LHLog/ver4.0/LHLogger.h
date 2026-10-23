@@ -2,8 +2,7 @@
 #define BW1_DECOMP_LH_LOGGER_INCLUDED_H
 
 #include <re_common.h> /* For bool32_t */
-
-#include <stddef.h> /* For NULL */
+#include <stddef.h>    /* For NULL */
 
 #include "LHLogExport.h"
 #include "LHSPrintf.h"
@@ -95,9 +94,6 @@ public:
 	void LogT(char* library, char* file, unsigned long line, char* format, char* args);
 	// BW1W120 100039c0 BW1M119 null
 	static void LogS(char* library, char* file, unsigned long line, char* format, ...);
-	// BW1W120 10003a00 BW1M119 null
-	static bool32_t LogErrorCodeS(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
-	                              ...);
 
 	// BW1W120 10002bd0 BW1M119 null
 	bool32_t __cdecl CreateLogTextT(LHSPrintf* output, char* library, char* file, unsigned long line, char* format,
@@ -113,6 +109,9 @@ public:
 	// BW1W120 10003850 BW1M119 null
 	bool32_t LogErrorCodeT(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
 	                       char* args);
+	// BW1W120 10003a00 BW1M119 null
+	static bool32_t LogErrorCodeS(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
+	                              ...);
 
 	// BW1W120 10002f50 BW1M119 null
 	static LH_LOG_LEVEL GetLevel();
@@ -125,7 +124,6 @@ public:
 	// BW1W120 10002b60 BW1M119 null
 	static LHLogger* FindLHLogger(char* name, unsigned long id);
 
-#ifdef _LH_LOG_LIB_
 	// BW1W120 10001100 BW1M119 null
 	void* GetDLLHModule() { return DLLHModule; }
 	// BW1W120 10001110 BW1M119 null
@@ -137,14 +135,6 @@ public:
 	static unsigned long TlsIndex;
 	// BW1W120 100279d4 BW1M119 null
 	static void* DLLHModule;
-#else
-	// BW1W120 10001100 BW1M119 null
-	void* GetDLLHModule();
-	// BW1W120 10001110 BW1M119 null
-	static void SetDLLModule(void* module);
-	// BW1W120 10001120 BW1M119 null
-	LHLogPropsSet* GetLogProps();
-#endif
 
 private:
 	// BW1W120 100037c0 BW1M119 null
@@ -154,14 +144,12 @@ private:
 	// BW1W120 100033d0 BW1M119 null
 	static void SetLocalError(char* file, unsigned long line, unsigned long error);
 
-#ifdef _LH_LOG_LIB_
 	// BW1W120 100279c8 BW1M119 null
 	static LHTimer* LogTime;
 	// BW1W120 100279d0 BW1M119 null
 	static LHLogPropsSet* LogProps;
 	// BW1W120 100279c4 BW1M119 null
 	static bool32_t InitFlag;
-#endif
 
 	LH_LOG_LEVEL  Level;
 	LHSPrintf     Text;       /* 0x4 */
@@ -174,13 +162,13 @@ private:
 
 static_assert(sizeof(LHLogger) == 0x818, "LHLogger size is incorrect");
 
-// BW1W120 100279e0 BW1M119 null
+// BW1W120 100279e0 BW1M119 0138951c (LHCombined Release)
 LH_LOG_API extern LHLogger LHSyslog;
 // BW1W120 1001dd04 BW1M119 null
 LH_LOG_API extern char* LH_LOG_NO_MEMORY_TEXT;
 
 // BW1W120 10003b00 BW1M119 0116daa0 (LHCombined Release)
-LH_LOG_API unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), uint32_t stack_size, void* argument,
+LH_LOG_API unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), unsigned int stack_size, void* argument,
                                         long priority);
 
 #endif /* BW1_DECOMP_LH_LOGGER_INCLUDED_H */

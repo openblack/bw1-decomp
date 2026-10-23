@@ -252,7 +252,7 @@ void LHLogger::TruncateLog()
 BOOL WINAPI DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved)
 {
 	LHLogger::SetDLLModule(instance);
-	return TRUE;
+	return true;
 }
 
 bool32_t LHLogger::CreateLogTextT(LHSPrintf* output, char* library, char* file, unsigned long line, char* format, ...)
@@ -516,7 +516,8 @@ void LHLogger::SetLocalError(char* file, unsigned long line, unsigned long error
 	{
 	}
 	char* description;
-	if (LocalErrors[i].Code == 0 || (description = LocalErrors[i].Text) == NULL || i >= LH_LOG_MAX_ERROR_CODES)
+	if (LocalErrors[i].Code == LH_LOG_LOCAL_ERROR_NONE || (description = LocalErrors[i].Text) == NULL ||
+	    i >= LH_LOG_MAX_ERROR_CODES)
 	{
 		description = "Unknown";
 	}

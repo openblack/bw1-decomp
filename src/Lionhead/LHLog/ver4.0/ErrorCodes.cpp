@@ -4,8 +4,8 @@
 #include <dinput.h>
 #include <dmerror.h>
 
-#include "LHSPrintf.h"
 #include "LHLogger.h"
+#include "LHSPrintf.h"
 #include "LHLogProps.h"
 #include "LHDebugStack.h"
 #include "ErrorCodes.h"
@@ -362,7 +362,7 @@ LHErrorCode LH_DX_Errors[] = {
 	{DIERR_EFFECTPLAYING, "DIERR_EFFECTPLAYING             "},
 	{DIERR_UNPLUGGED, "DIERR_UNPLUGGED                 "},
 	{DIERR_REPORTFULL, "DIERR_REPORTFULL                "},
-	{0, NULL} /* sentinel */
+	{0, NULL},
 };
 
 LHErrorCode LH_WS_Errors[] = {
@@ -418,5 +418,5 @@ LHErrorCode LH_WS_Errors[] = {
 	{WSATRY_AGAIN, "WSATRY_AGAIN"},
 	{WSANO_RECOVERY, "WSANO_RECOVERY"},
 	{WSANO_DATA, "WSANO_DATA"},
-	{0, NULL} /* sentinel */
+	{0, NULL},
 };

@@ -60,13 +60,8 @@ public:
 	// BW1W120 10008350 BW1M119 0116ef10 (LHCombined Release)
 	~LHVersion();
 
-#if defined(_LH_MULTIPLAYER_LIB_) || defined(_LH_LOG_LIB_)
 	// BW1W120 10002740 BW1M119 null
 	static char* GetModuleChecksumString() { return ModuleChecksumString; }
-#else
-	// BW1W120 10002740 BW1M119 null
-	static char* GetModuleChecksumString();
-#endif
 	// BW1W120 10002750 BW1M119 null
 	static unsigned long GetModuleChecksum() { return ModuleChecksum; }
 
@@ -113,22 +108,20 @@ private:
 	// BW1W120 10008420 BW1M119 0116eca0 (LHCombined Release)
 	static void RepopulateList(HWND__* hwnd, unsigned long state);
 
-#if defined(_LH_MULTIPLAYER_LIB_) || defined(_LH_LOG_LIB_)
 public:
-	// BW1W120 10028be0 BW1M119 null
+	// BW1W120 10028be0 BW1M119 01389550 (LHCombined Release)
 	static int VersionDialogRunning;
 
 private:
-	// BW1W120 10028be4 BW1M119 null
+	// BW1W120 10028be4 BW1M119 01389554 (LHCombined Release)
 	static unsigned long CurrentListState;
-	// BW1W120 10028be8 BW1M119 null
+	// BW1W120 10028be8 BW1M119 01389560 (LHCombined Release)
 	static LHLinkedList<LHVersion*>* VersionInfo;
-	// BW1W120 10028bf0 BW1M119 null
+	// BW1W120 10028bf0 BW1M119 01389558 (LHCombined Release)
 	static char* ModuleChecksumString;
-#endif
 
 private:
-	// BW1W120 10028bec BW1M119 null
+	// BW1W120 10028bec BW1M119 0138955c (LHCombined Release)
 	static unsigned long ModuleChecksum;
 
 	LHVersionBlock* Block;

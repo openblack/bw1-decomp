@@ -339,9 +339,10 @@ icc_version = "ICC/5.0.1"
 config.extra_compilers = {icc_version: ("icc", "main")}
 # LHLogR.dll was rebuilt for 1.20 with Visual Studio .NET 2002: its Rich header
 # lists 18 C++ objects from cl 13.00.9466 (Utc13_CPP), where 1.00 and 1.10 used
-# VC6 SP4 (Utc12_CPP 8799) like the rest of the game.
+# VC6 SP4 (Utc12_CPP 8799) like the rest of the game. 1.30 ships the same DLL,
+# Creature Isle the 1.10 one.
 msvc70_version = "MSVC/7.0"
-lhlog_compiler_version = msvc70_version if config.version == "BW1W120" else config.linker_version
+lhlog_compiler_version = msvc70_version if config.version in ("BW1W120", "BW1W130") else config.linker_version
 if lhlog_compiler_version == msvc70_version:
     config.extra_compilers[msvc70_version] = ("compilers_msvc70", "release")
 includes_project = [
@@ -497,7 +498,6 @@ cflags_lhlog = [
     *(f.replace(config.linker_version, lhlog_compiler_version) for f in cflags_base if f != "/GR"),
     "/GX",
     "/DLH_LOG_EXPORTS",
-    "/D_LH_LOG_LIB_",
 ]
 # cl 7.0's PDB writer (mspdb70.dll) delay-loads RPCRT4!UuidCreate, which wibo does not
 # provide, so /Zi aborts the compile on Linux. /Z7 keeps the debug info in the object
@@ -1884,6 +1884,9 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LHLogProps.cpp"),
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LHVersion.cpp"),
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LogUtils.cpp"),
+            # exsup.obj's code is the same in SP4, SP5 and VS.NET 2002; it defines
+            # __except_list for the EH and SEH frames.
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\exsup.obj", module="LHLog", progress_category="sdk"),
         ],
     },
     {
