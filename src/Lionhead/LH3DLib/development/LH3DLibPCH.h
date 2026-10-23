@@ -6,4 +6,6 @@
 #include <stdlib.h> /* For abs */
 #include <string.h> /* For memset, strncpy */
 
+#include "LH3DTech.h" /* For LH3DTech */
+
 #endif /* BW1_DECOMP_LH3D_LIB_PCH_INCLUDED_H */

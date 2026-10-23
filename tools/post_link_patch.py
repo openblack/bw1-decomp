@@ -2106,6 +2106,33 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00783C74, jmp_run(0x00783BA2)),  # WorshipSiteUpgrade
     (0x00783D03, copy_run(0x00783C74)),  # WorshipSiteUpgrade
     (0x00783D9B, call_rel32(0x004034F9)),  # WorshipSiteUpgrade
+    (0x0081DAA1, copy_run(0x0081D919)),  # LH3DTech
+    (0x0081DB13, jmp_run(0x0081DAA1)),  # LH3DTech
+    (0x0081DDE7, copy_run(0x0081DB13)),  # LH3DTech
+    (0x0081E1B2, jmp_run(0x0081DDE7)),  # LH3DTech
+    (0x0081E3B1, jmp_run(0x0081E1B2)),  # LH3DTech
+    (0x0081E517, jmp_run(0x0081E3B1)),  # LH3DTech
+    (0x0081E61A, jmp_run(0x0081E517)),  # LH3DTech
+    (0x0081E736, jmp_run(0x0081E61A)),  # LH3DTech
+    (0x0081E811, jmp_run(0x0081E736)),  # LH3DTech
+    (0x0081EAA1, copy_run(0x0081E811)),  # LH3DTech
+    (0x0081F8E1, copy_run(0x0081EAA1)),  # LH3DTech
+    (0x0081FC3A, jmp_run(0x0081F8E1)),  # LH3DTech
+    (0x0081FF72, jmp_run(0x0081FC3A)),  # LH3DTech
+    (0x008205D5, jmp_run(0x0081FF72)),  # LH3DTech
+    (0x00820828, copy_run(0x008205D5)),  # LH3DTech
+    (0x00820928, copy_run(0x00820828)),  # LH3DTech
+    (0x008209E3, copy_run(0x00820928)),  # LH3DTech
+    (0x00820B45, copy_run(0x008209E3)),  # LH3DTech
+    (0x00820D57, jmp_run(0x00820B45)),  # LH3DTech
+    (0x00820D92, jmp_run(0x00820D57)),  # LH3DTech
+    (0x00821218, jmp_run(0x00820D92)),  # LH3DTech
+    (0x00821902, copy_run(0x00821218)),  # LH3DTech
+    (0x00821E51, jmp_run(0x00821902)),  # LH3DTech
+    (0x00822336, jmp_run(0x00821E51)),  # LH3DTech
+    (0x00822677, jmp_run(0x00822336)),  # LH3DTech
+    (0x0082291B, call_rel32(0x004034F9)),  # LH3DTech
+    (0x00822F13, jmp_run(0x0082291B)),  # LH3DTech
     (0x00830379, jmp_run(0x00830053)),  # LH3DRender
     (0x008303A9, copy_run(0x00830379)),  # LH3DRender
     (0x00830413, jmp_run(0x008303A9)),  # LH3DRender
