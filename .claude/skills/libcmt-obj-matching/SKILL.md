@@ -227,6 +227,7 @@ python3 configure.py --version BW1W120 <usual tool flags>
 ninja build/lib/libcmt.lib build/lib/libcmt64.lib        # this version's copies
 python3 .claude/skills/libcmt-obj-matching/modlib.py locate --version BW1W120 --module LHAudio --archive libcmt64 --summary
 python3 .claude/skills/libcmt-obj-matching/modlib.py apply  --version BW1W120 --module LHAudio --archive libcmt64
+# a module linked with /OPT:REF (configure.py's module_ldflags): add --dead-strip to both
 ninja; ninja                                             # dtk rewrites symbols.txt on the first run
 build/tools/dtk shasum -c config/BW1W120/build.sha1
 ```
@@ -243,14 +244,73 @@ Which libcmt each DLL used comes from its Rich header (`@comp.id` build numbers:
 |---|---|---|---|---|
 | LHAudio (one binary in every version) | SP4 | SP4 | SP4 | `libcmt64` (`"msvc6.4:libcmt"`) |
 | LHMultiplayer | SP4 | SP4 | SP5 | `libcmt` |
-| LHLog | SP4, `/OPT:REF` | SP4, `/OPT:REF` | VC7 linker | skipped |
+| LHLog | SP4, `/OPT:REF /OPT:ICF` | SP4, `/OPT:REF /OPT:ICF` | VS.NET 2002's (VC7), `/OPT:REF /OPT:ICF` | `libcmt_lhlog` (`msvc6.4` or `msvc7.0`), `--dead-strip` |
 | LHDialog | MSVCRTD.dll (dynamic), but the DLL startup objects `atonexit.obj` + `crtdll.obj` are static (identical in every version) | same | same | `msvcrtd` (`msvc6.5`'s msvcrtd.lib) |
 
-LHLog 1.00/1.10 drop unreferenced COMDATs (dozens of members are partial:
-`crt0msg`, `crt0dat`, `mlock`, `sbheap`...). Placing only the complete members
-breaks link order: a partial member's data becomes a pure-data auto unit that
-dtk cannot tie to its code. That needs module `dead_strip` and partial-member
-placement. It isn't done.
+### Dead-stripped modules (LHLog): `--dead-strip`
+
+LHLogR.dll's project links without `/DEBUG` (it alone of the DLLs has no debug
+directory, in any version), so link.exe defaulted to `/OPT:REF /OPT:ICF`: most libcmt members only keep the functions something
+references (`crt0msg`, `crt0dat`, `mlock`, `sbheap`...), and identical COMDATs
+with the same checksum share one copy. Reproducing that takes both a link and
+a placement change:
+
+- **The link.** dtk applies config.yml's `dead_strip` to the base image only and
+  links every module with `/includeglob:*` (every symbol a GC root) `/OPT:NOREF
+  /OPT:NOICF`; it ignores module-level `dead_strip`, `function_comdat` and
+  `ldscript_template`. `configure.py`'s `config.module_ldflags` gives a module its
+  own flags after dtk's response file, and with `/OPT:REF` project.py links it
+  from a copy of that file without `/includeglob:*`. LHLog uses `/OPT:REF
+  /OPT:ICF /OPT:NOLLDTAILMERGE` (lld-link's ICF otherwise moves `??_C@` string
+  literals to the end of .rdata to merge their tails), `/includeglob:gap_*
+  /includeglob:pad_*` (dtk's padding units are COMDATs), plus `/alternatename`s
+  for what only dropped functions reference, as runblack 1.00 does: lld reports
+  undefined symbols before it discards dead COMDATs.
+- **The placement.** `modlib.py locate|apply ... --dead-strip` tiles the code left
+  between the complete members with partial ones (an object's surviving `.text`
+  COMDATs back to back in object order), by a search over every way to explain
+  each gap, checked by relocations: an import must go through its own IAT slot
+  (`rmdir`, `remove` and `wrmdir`, `getpid` and `drivemap` differ only there), a
+  name another member calls must be defined where the call lands, and short
+  "complete" stubs no placed definition confirms are retiled (spawnv's `__spawnv`
+  is strtol's `_strtol`). A dropped function that something still calls must be
+  folded (ICF) into an identical earlier copy with the same COMDAT checksum
+  (aux record): lld-link keeps the first of identical COMDATs. 1.00's link kept
+  frame.obj's later `FrameUnwindFilter` for ehvecdtr.obj's `ArrayUnwindFilter`,
+  so 1.00's ehvecdtr.obj stays extracted; 1.10 kept the earlier one.
+- **What else changes.** A static COMDAT (a function's `$T` scope table) is never
+  foreign. A `.bss` gap is another object's `.bss` unless the next piece's
+  alignment explains it. COMMONs the link dropped (`___sbh_initialized`) get an
+  `alias` at the next one of their object, or anywhere in the COMMON block, so
+  lld-link does not allocate them. Where config.yml does not say
+  `function_comdat: false` (1.10), dtk emits the module's own functions as
+  COMDATs that `/OPT:REF` would collect: `apply` marks them, and the padding
+  before an import thunk, `nocomdat` in symbols.txt.
+- **Members with no code left** (strftime, timeset, days) keep their data: found
+  by their bytes in dependency order (strftime's day names, then `___lc_time_c`,
+  then `___lc_time_curr`), a COMDAT only when a section that is there references
+  it, `.bss` in the one unexplained gap it fills. setlocal and lconv are left
+  out: the zeros after their data are padding from a masm object's empty
+  16-aligned `.data` placed between them in the original link order, which
+  their missing code leaves unknown, unless exactly one masm object with code
+  between the units around the gap can hold it: its empty section then gets the
+  gap (1.20: ulldvrm.obj after ctype.obj). tzset's `.bss` has no unique place.
+- **A member's data no relocation reaches** (1.20 heapinit's `__amblksiz`) is
+  found by its bytes between its link-order neighbours, or with relocations
+  resolved, once in the unexplained data; before the data-only search, so
+  throw.obj cannot claim frame.obj's identical `__pMyUnhandledExceptionFilter`.
+
+1.20's LHLog links Visual Studio .NET 2002's libcmt (`orig/libs/msvc7.0`, Rich
+header Utc13_C 9466, masm 9162); `libcmt_lhlog` resolves to it there and to SP4's
+in 1.00/1.10, and `lhlog_eh` gives the C++ EH objects' member paths (`..\build\...`
+in VS.NET 2002's). Its `.CRT$XCAA` (seccook.obj) sorts between `.CRT$XCA` and
+`.CRT$XCU`. initsect.obj stays extracted: its `.rtc$*` tables reach .rdata by a
+`/MERGE:.rtc=.rdata` in the object, and lld-link puts sections merged into
+.rdata ahead of .rdata's own where link.exe put them after.
+
+`apply` over an already applied module is not idempotent: check out the
+module's config from before the first `apply` (and redo hand fixes such as 1.00
+and 1.10's LogUtils `.bss` end, which overlapped fpinit.obj's) before rerunning.
 
 What the tool does, and why (each one cost a failed link):
 

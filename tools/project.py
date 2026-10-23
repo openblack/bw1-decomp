@@ -197,6 +197,11 @@ class ProjectConfig:
         self.linker_provided_units: Optional[List[str]] = None
         # Linker flags for the base image only; modules link without them (PE).
         self.base_ldflags: Optional[List[str]] = None
+        # Linker flags for one module DLL, by module name (PE). They follow dtk's
+        # response file, whose /OPT:NOREF and /OPT:NOICF they can override; with
+        # /OPT:REF the module links without its /includeglob:*, which would make
+        # every symbol a GC root (dtk applies dead_strip to the base image only).
+        self.module_ldflags: Dict[str, List[str]] = {}
         self.asflags: Optional[List[str]] = None  # Assembler flags
         self.ldflags: Optional[List[str]] = None  # Linker flags
         self.libs: Optional[List[Library]] = None  # List of libraries
@@ -419,6 +424,13 @@ def make_flags_str(flags: Optional[List[str]]) -> str:
     if flags is None:
         return ""
     return " ".join(flags)
+
+
+# Writes dtk's link response file `src` to `dst` without /includeglob:*, for a
+# module linked with /OPT:REF (see module_ldflags).
+def write_dead_strip_rsp(src: str, dst: str) -> None:
+    lines = Path(src).read_text(encoding="utf-8").splitlines()
+    Path(dst).write_text("".join(f"{l}\n" for l in lines if l != "/includeglob:*"), encoding="utf-8")
 
 
 def get_pch_out_name(config: ProjectConfig, pch: PrecompiledHeader) -> str:
@@ -902,6 +914,14 @@ def generate_build_ninja(
             rspfile_content="$in_newline",
         )
         n.newline()
+        n.comment("Link response file of a module linked with /OPT:REF (see module_ldflags)")
+        n.rule(
+            name="dead_strip_rsp",
+            command='$python -c "import sys;from tools.project import write_dead_strip_rsp;'
+            'write_dead_strip_rsp(*sys.argv[1:])" $in $out',
+            description="RSP $out",
+        )
+        n.newline()
 
         # CL (MSVC-compatible: MSVC cl.exe or clang-cl)
         compiler_path = compilers / "$compiler_version" if compilers is not None else None
@@ -1159,17 +1179,28 @@ def generate_build_ninja(
                 if config.generate_map:
                     map_path = build_path / f"{stem}.map"
                     pe_ldflags.append(f"/MAP:{serialize_path(map_path)}")
+                ldscript = self.ldscript
+                if self.module_id != 0:
+                    pe_ldflags.extend(config.module_ldflags.get(self.name, []))
+                    if "/OPT:REF" in (f.upper() for f in pe_ldflags) and ldscript is not None:
+                        ldscript = ldscript.with_name(f"{ldscript.stem}_ref{ldscript.suffix}")
+                        n.build(
+                            outputs=ldscript,
+                            rule="dead_strip_rsp",
+                            inputs=self.ldscript,
+                            implicit=python_lib,
+                        )
                 n.build(
                     outputs=exe_path,
                     rule="link",
                     inputs=self.inputs,
                     implicit=[
-                        self.ldscript,
+                        ldscript,
                         *lld_link_implicit,
                     ],
                     implicit_outputs=map_path,
                     variables={
-                        "ldscript": serialize_path(self.ldscript),
+                        "ldscript": serialize_path(ldscript),
                         "ldflags": make_flags_str(pe_ldflags),
                     },
                     order_only="post-compile",

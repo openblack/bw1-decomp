@@ -16,7 +16,7 @@ See [Dependencies](dependencies.md) first.
 
    The Windows builds expect a **decrypted** exe. The original retail discs ship the executable wrapped in SafeDisc 2 / Macrovision protection. Decrypting it is currently undocumented tribal knowledge — if you don't already have a decrypted copy, ask in the project's Discord/issue tracker rather than guessing at a tool name.
 
-3. Place the MSVC 6.0 static CRT libraries and the DirectX 7.0 SDK headers under `orig/` (they are not committed and not downloaded).
+3. Place the MSVC 6.0 static CRT libraries (and Visual Studio .NET 2002's `libcmt.lib`) and the DirectX 7.0 SDK headers under `orig/` (they are not committed and not downloaded).
 
    BW1W120 was built with VC6 **SP5**; BW1W100/BW1W110 with VC6 **SP4** (confirmed via Rich header build-number comparison — see `configure.py`). BW1W130 and BW1WCI use BW1W120's libraries. `configure.py` picks the right package automatically based on `--version`, so both sets need to be present side by side if you plan to work on more than one version.
 
@@ -47,6 +47,19 @@ See [Dependencies](dependencies.md) first.
    1. Download Disc 1 (`...(X03-78941)(Microsoft Corporation)(August 1998).iso`, a plain ISO).
    2. Extract `VC98/LIB/LIBCPMT.LIB` and `VC98/LIB/LIBCIMT.LIB` with `7z e <iso> "*LIBCPMT.LIB" "*LIBCIMT.LIB" -r`, or mount directly.
    3. Copy them to `orig/libs/msvc6.0/libcpmt.lib` and `orig/libs/msvc6.0/libcimt.lib`.
+
+   **Visual Studio .NET 2002 `libcmt.lib` → `orig/libs/msvc7.0/`** (BW1W120/BW1W130)
+
+   `LHLogR.dll` was rebuilt for 1.20 with Visual Studio .NET 2002 and links that version's static CRT (its Rich header lists `Utc13_C` 9466 and masm 9162 objects); 1.30 ships the same DLL. If you have a Visual Studio .NET 2002 install, copy `Vc7\lib\libcmt.lib`. Otherwise take it from the Internet Archive item [`X08-65717`](https://archive.org/details/X08-65717) (Microsoft Visual Studio .NET 2002 Professional Edition, Disc 1, RTM, January 2002):
+
+   1. Download `2002-02_X08-65717_X08-65353_VSPROD1.7z` (311497891 bytes, md5 `c1763dcd16f5e8b03cf3ac844e17175f`) and extract `image/VSPROD1.mdf` from it with `7z e 2002-02_X08-65717_X08-65353_VSPROD1.7z image/VSPROD1.mdf`.
+   2. The image is an Alcohol 120% MDF that 7z cannot read as is: raw 2448-byte sectors (2352 bytes of Mode 1 data plus 96 of subchannel), each holding its 2048 bytes of user data at offset 16. Convert it to a plain ISO:
+
+      ```
+      python3 -c "import sys;f=open(sys.argv[1],'rb');o=open(sys.argv[2],'wb');[o.write(s[16:2064]) for s in iter(lambda:f.read(2448),b'')]" VSPROD1.mdf VSPROD1.iso
+      ```
+   3. Extract `Program Files/Microsoft Visual Studio .NET/Vc7/lib/libcmt.lib` with `7z e VSPROD1.iso "Program Files/Microsoft Visual Studio .NET/Vc7/lib/libcmt.lib"`, or mount the ISO directly.
+   4. Copy it to `orig/libs/msvc7.0/libcmt.lib`. Its SHA-1 is `c4c2b278697318c7289f50a73faf7cd47d01814e`.
 
    **DirectX 7.0 DDK → `orig/directx7.0/`**
 

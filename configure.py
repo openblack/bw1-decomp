@@ -187,12 +187,18 @@ config.lld_link_tag = "bw1-decomp-024"
 # A "<package>:<lib>" value reads orig/libs/<package>/<lib>.lib under another id:
 # LHAudio was linked against the SP4 libcmt (Rich header build 8797) in every
 # version, including 1.20 whose runblack and LHMultiplayer use SP5's.
+# libcmt_lhlog is the libcmt LHLogR.dll linked: SP4's in 1.00 and 1.10, and in
+# 1.20, rebuilt with Visual Studio .NET 2002, that one's (Utc13_C 9466). The two
+# libraries name their objects alike, so one LibObject per object serves every
+# version that has it; VS.NET 2002 keeps the C++ exception handling ones one
+# directory up (lhlog_eh).
+lhlog_eh = "..\\build\\intel\\mt_obj\\" if config.version in ("BW1W120", "BW1W130") else "build\\intel\\mt_obj\\"
 config.static_libs = {
-    "BW1W100": {"msvcrtd": "msvc6.5", "libcmt": "msvc6.4", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.0", "amaths": "amaths-2.0"},
-    "BW1W110": {"msvcrtd": "msvc6.5", "libcmt": "msvc6.4", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.0", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
-    "BW1W120": {"msvcrtd": "msvc6.5", "libcmt": "msvc6.5", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
-    "BW1W130": {"msvcrtd": "msvc6.5", "libcmt": "msvc6.5", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
-    "BW1WCI": {"msvcrtd": "msvc6.5", "libcmt": "msvc6.5", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
+    "BW1W100": {"msvcrtd": "msvc6.5", "libcmt_lhlog": "msvc6.4:libcmt", "libcmt": "msvc6.4", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.0", "amaths": "amaths-2.0"},
+    "BW1W110": {"msvcrtd": "msvc6.5", "libcmt_lhlog": "msvc6.4:libcmt", "libcmt": "msvc6.4", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.0", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
+    "BW1W120": {"msvcrtd": "msvc6.5", "libcmt_lhlog": "msvc7.0:libcmt", "libcmt": "msvc6.5", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
+    "BW1W130": {"msvcrtd": "msvc6.5", "libcmt_lhlog": "msvc7.0:libcmt", "libcmt": "msvc6.5", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
+    "BW1WCI": {"msvcrtd": "msvc6.5", "libcmt_lhlog": "msvc6.4:libcmt", "libcmt": "msvc6.5", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
 }[config.version]
 
 config.context_keep_dirs = [
@@ -274,6 +280,46 @@ if config.version == "BW1W100":
         "__imp_?LHSampleSet3DPosition@LH_AudioSystem@@QAEPAULH_SampleInfo@@PAVLH_AudioBank@@KKMMMH@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_import}=__imp__ExitProcess@4")
+# LHLogR.dll is the one module whose project links without /DEBUG: unlike
+# LHAudio, LHMultiplayer, LHDialog (and runblack from 1.10 on) it has no debug
+# directory in any version. Without /DEBUG, link.exe (6.0 and VS.NET 2002's 7.0
+# alike) defaults to /OPT:REF and /OPT:ICF: only the functions of its libcmt
+# objects something references are in the image, and identical ones with the
+# same COMDAT checksum share one copy (trnsctrl.obj's _CallMemberFunction1 is
+# _CallMemberFunction0). lld-link would also move string literals to the end of
+# .rdata to merge their tails. As in runblack 1.00, what only the dropped
+# functions reference is aliased onto something the DLL has; lld-link resolves
+# symbols before it discards dead code.
+_lhlog_dead_imports = {
+    # mlock.obj's _lockerr_exit, tidtable.obj's ___threadhandle, winsig.obj's signal
+    "BW1W100": ["__imp__FatalAppExitA@8", "__imp__GetCurrentThread@0", "__imp__SetConsoleCtrlHandler@8"],
+    # mlock.obj's _lockerr_exit, winsig.obj's signal, and strftime.obj's
+    # _Strftime (it is linked for its data)
+    "BW1W120": ["__imp__FatalAppExitA@8", "__imp__SetConsoleCtrlHandler@8",
+                "__imp__GetDateFormatA@24", "__imp__GetTimeFormatA@24"],
+}
+_lhlog_dead_functions = {
+    # tzset, which strftime.obj's _Strftime calls: tzset.obj is not linked
+    "BW1W100": ["___tzset"],
+    # the same tzset; the dropped setlocale and ___lc_category of setlocal.obj
+    # and __init_time of inittime.obj call into getqloc, inithelp, initctyp,
+    # initcoll and nlsdata3, which are not linked
+    "BW1W120": ["___tzset", "___ctype1", "___get_qualified_locale", "___getlocaleinfo", "___init_collate", "___init_ctype", "___lc_id"],
+}
+_lhlog_version = {"BW1W110": "BW1W100", "BW1WCI": "BW1W100", "BW1W130": "BW1W120"}.get(config.version, config.version)
+config.module_ldflags = {
+    "LHLog": [
+        "/OPT:REF",
+        "/OPT:ICF",
+        "/OPT:NOLLDTAILMERGE",
+        # dtk's padding between the DLL's own data (VS.NET 2002 aligned strings
+        # to 8) and before its import thunk: COMDATs nothing references
+        "/includeglob:gap_*",
+        "/includeglob:pad_*",
+        *(f"/alternatename:{_name}=__imp__ExitProcess@4" for _name in _lhlog_dead_imports[_lhlog_version]),
+        *(f"/alternatename:{_name}=_abort" for _name in _lhlog_dead_functions[_lhlog_version]),
+    ],
+}
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
@@ -1872,9 +1918,158 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LHLogProps.cpp"),
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LHVersion.cpp"),
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LogUtils.cpp"),
-            # exsup.obj's code is the same in SP4, SP5 and VS.NET 2002; it defines
-            # __except_list for the EH and SEH frames.
-            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\exsup.obj", module="LHLog", progress_category="sdk"),
+            # libcmt_lhlog: SP4's libcmt in 1.00 and 1.10, Visual Studio .NET 2002's in 1.20.
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\new.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\fclose.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\fflush.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\fprintf.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\fopen.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\chkstk.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\delete.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\sprintf.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\splitpat.obj", module="LHLog", progress_category="sdk"),
+            # exsup.obj defines __except_list for the EH and SEH frames.
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\exsup.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\exsup3.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strstr.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\onexit.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\wcslen.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\wcscat.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_ctype.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\fpinit.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\vsprintf.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strncpy.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\wcsncpy.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", lhlog_eh + "trnsctrl.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "..\\build\\intel\\mt_obj\\ftol.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\unlink.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\fputs.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\getpid.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\free.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\thread.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\malloc.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\atox.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\crt0dat.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\sscanf.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", lhlog_eh + "ehvecctr.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "libcmt_lhlog", lhlog_eh + "ehvecdtr.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\rand.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\dllcrt0.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_file.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\close.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_freebuf.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\commit.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\write.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\mlock.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_sftbuf.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\output.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_open.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\stream.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_flsbuf.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\mbctype.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\mbsnbcpy.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strlen.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strchr.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\realloc.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\msize.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\isctype.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\fp8.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\testfdiv.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\cvt.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", lhlog_eh + "frame.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", lhlog_eh + "lowhelpr.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\tidtable.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", lhlog_eh + "hooks.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\dosmap.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\fwrite.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\heapinit.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\sbheap.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\calloc.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\winxfltr.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\handler.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\llmul.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\input.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\ioinit.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\stdenvp.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\stdargv.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\a_env.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\crt0msg.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\closeall.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\osfinfo.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\lseek.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\isatty.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\wctomb.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\ulldiv.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\ullrem.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\open.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_getbuf.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\a_map.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\a_str.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\memcpy.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\ieee87.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\tolower.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\intrncvt.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_fptostr.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\cfout.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strcat.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\memset.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\memmove.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\crt0fp.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", lhlog_eh + "unhandld.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", lhlog_eh + "validate.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strcmp.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\abort.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\strtol.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strncmp.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\mbtowc.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\llshl.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_filbuf.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\ungetc.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\crtmbox.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\chsize.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\read.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\winsig.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\mantold.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\strgtold.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\x10fout.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\toupper.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strcspn.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strpbrk.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\setmode.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\tenpow.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\stricmp.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\strnicmp.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\mbsdup.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\crt0init.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\ctype.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\nlsdata1.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\cmiscdat.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\constpow.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\_newmode.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\ncommode.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\nlsdata2.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\txtmode.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strftime.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\timeset.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\days.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "..\\build\\intel\\mt_obj\\ftol2.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\sehprolg.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\setlocal.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\lseeki64.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\initcrit.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\ulldvrm.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\inittime.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\initnum.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\initmon.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\memcmp.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\resetstk.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\seccinit.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\secfail.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\convrtcp.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\_stricmp.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\_strnicm.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\strdup.obj", module="LHLog", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\seccook.obj", module="LHLog", progress_category="sdk"),
         ],
     },
     {
