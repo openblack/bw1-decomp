@@ -22,7 +22,7 @@ public:
 	MOBILE_OBJECT_INFO MobileObjectType; /* 0x104 */
 	uint32_t           field_0x108;
 	uint32_t           field_0x10c;
-	float              field_0x110;
+	float              ScalePerLife;
 
 	// Static data
 
@@ -45,8 +45,7 @@ public:
 	// BW1W120 inlined BW1M119 013c5e40
 	static GMobileObjectInfo* GetInfo() { return InfoList; }
 
-	// TODO(#377): The original declared this class in MobileObject.h.
-	INFO_DATA_BLOCK(MobileObjectType, field_0x110)
+	INFO_DATA_BLOCK(MobileObjectType, ScalePerLife)
 	INFO_DERIVED_LOADERS(GMobileInfo, "MobileObject.h", 21)
 };
 

@@ -142,6 +142,26 @@ struct LHListHead
 		++count;
 	}
 
+	// BW1W120 inlined BW1M119 011ce3f0
+	long GetIndexFromTHead(T* element) const
+	{
+		long index = 0;
+		T*   walker;
+		for (walker = head; walker != NULL; walker = walker->next)
+		{
+			if (walker == element)
+			{
+				break;
+			}
+			index++;
+		}
+		if (walker == NULL)
+		{
+			return -1;
+		}
+		return index;
+	}
+
 	T* Get(uint32_t index) const
 	{
 		T* walker = head;
@@ -235,6 +255,16 @@ template <typename T> struct LHListHeadTail : public LHListHead<T>
 
 	// BW1W120 inlined BW1M119 inlined
 	LHListHeadTail() : tail(NULL) {}
+
+	// BW1W120 inlined BW1M119 inlined
+	void AddToFirst(T* element)
+	{
+		LHListHead<T>::AddToFirst(element);
+		if (tail == NULL)
+		{
+			tail = element;
+		}
+	}
 
 	// BW1W120 inlined BW1M119 inlined
 	void AddToTail(T* element)

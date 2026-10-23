@@ -3,7 +3,8 @@
 #include "Base.h"
 
 // The heap checkpoint is constructed and attached to ObjectHeap by start_system.
-HeapStore* Base::ObjectHeapStore;
+HeapStore*     Base::ObjectHeapStore;
+UniqueKeyHeap* Base::ObjectHeap;
 
 #include "ColourConstants.h" /* For White */
 

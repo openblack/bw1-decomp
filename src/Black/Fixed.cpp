@@ -31,6 +31,7 @@
 #include "MobileWallHug.h"
 #include "MultiMapFixed.h"
 #include "MultiMapFixedInfo.h"
+#include "ObjectMovementConstants.h"
 #include "PhysicsObject.h"
 #include "Player.h"
 #include "Reaction.h"
@@ -39,12 +40,17 @@
 #include "Town.h"
 #include "WorshipSite.h"
 
-// The 1.0 source is one line shorter between AllocateMultiChild and AddFootpath.
 #if defined(VERSION_BW1W100)
 #define FIXED_SOURCE_FILE "C:\\dev\\black\\Fixed.cpp"
 #define FIXED_LINE_SHIFT  1
 #elif defined(VERSION_BW1W110)
 #define FIXED_SOURCE_FILE "C:\\dev\\Black\\Fixed.cpp"
+#define FIXED_LINE_SHIFT  0
+#elif defined(VERSION_BW1WCI)
+#define FIXED_SOURCE_FILE "C:\\dev\\black\\Fixed.cpp"
+#define FIXED_LINE_SHIFT  0
+#elif defined(VERSION_BW1W130)
+#define FIXED_SOURCE_FILE "D:\\Work\\Games\\dd\\Black\\Fixed.cpp"
 #define FIXED_LINE_SHIFT  0
 #else
 #define FIXED_SOURCE_FILE "C:\\dev\\MP\\Black\\Fixed.cpp"
@@ -83,7 +89,7 @@ MultiChild* MultiMapFixed::SortedMultiChildFind(const MapCell& cell)
 	                            CompareMultiChilds);
 }
 
-GSingleMapFixedInfo GSingleMapFixedInfo::Infos[4];
+GSingleMapFixedInfo GSingleMapFixedInfo::Infos[SINGLE_MAP_FIXED_INFO_COUNT];
 
 Fixed::Fixed() {}
 
@@ -101,7 +107,7 @@ Fixed::~Fixed() {}
 void Fixed::Create3DObject()
 {
 	Object::Create3DObject();
-	Game3dObject->SetShadowOnTexture(1);
+	Game3dObject->SetShadowOnTexture(true);
 }
 
 bool32_t Fixed::GetSpecialPos(uint32_t index, MapCoords* pos)
@@ -151,17 +157,21 @@ Object* Fixed::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_m
 	    !physics_object->GetPlayer()->IsNeutral() && (physics_object->Flags & PHYSICS_OBJECT_FLAG_FROM_HAND) &&
 	    (physics_object->Flags & PHYSICS_OBJECT_FLAG_LANDED))
 	{
-		Object* object = Pos.FindObject(&Object::IsSuitableForArtifact, 50.0f, NULL);
+		Object* object = Pos.FindObject(&Object::IsSuitableForArtifact, FIXED_ARTIFACT_SEARCH_RADIUS, NULL);
 		if (object != NULL)
 		{
 			if (object->IsAbode())
 			{
 				Town* town = object->GetTown();
+#ifdef VERSION_BW1WCI
+				if (town != NULL && !town->Uninhabitable)
+#else
 				if (town != NULL)
+#endif
 				{
 					if (GetTownArtifact() != NULL && static_cast<TownArtifact*>(GetTownArtifact())->WillImpress(town))
 					{
-						Reaction::CreateReaction(this, REACTION_LOOK_AT_OBJECT, physics_object->GetPlayer(), 1);
+						Reaction::CreateReaction(this, REACTION_LOOK_AT_OBJECT, physics_object->GetPlayer(), true);
 					}
 					town->AddArtifact(this, physics_object->GetPlayer());
 				}
@@ -171,7 +181,7 @@ Object* Fixed::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_m
 				WorshipSite* site = object->GetWorshipSite();
 				if (GetTownArtifact() != NULL && static_cast<TownArtifact*>(GetTownArtifact())->WillImpress(site))
 				{
-					Reaction::CreateReaction(this, REACTION_LOOK_AT_OBJECT, physics_object->GetPlayer(), 1);
+					Reaction::CreateReaction(this, REACTION_LOOK_AT_OBJECT, physics_object->GetPlayer(), true);
 				}
 				site->AddArtifact(this, physics_object->GetPlayer());
 			}
@@ -251,12 +261,12 @@ MultiMapFixed::~MultiMapFixed()
 	}
 }
 
-void MultiMapFixed::ToBeDeleted(int param_1)
+void MultiMapFixed::ToBeDeleted(bool32_t delete_now)
 {
 	Reaction::RemoveAllReactionsInitiatedByObject(this);
 	if (GetFootpathLink() != NULL)
 	{
-		GetFootpathLink()->ToBeDeleted(0);
+		GetFootpathLink()->ToBeDeleted(false);
 		FootpathLink = NULL;
 	}
 	GGame::g_game->GameLists.multi_map_fixed.Remove(this);
@@ -266,10 +276,10 @@ void MultiMapFixed::ToBeDeleted(int param_1)
 	}
 	if (building_site != NULL)
 	{
-		building_site->ToBeDeleted(param_1);
+		building_site->ToBeDeleted(delete_now);
 		SetBuildingSite(NULL);
 	}
-	Object::ToBeDeleted(param_1);
+	Object::ToBeDeleted(delete_now);
 }
 
 MapCoords MultiMapFixed::GetDoorPos()
@@ -341,9 +351,9 @@ int MultiMapFixed::MoveMapObject(const MapCoords& coords)
 	if (!(coords == Pos))
 	{
 		ActualMoveMapObject(coords);
-		return 7;
+		return OBJECT_MOVE_RESULT_CHANGED_CELL;
 	}
-	return 6;
+	return OBJECT_MOVE_RESULT_SAME_CELL;
 }
 
 void Fixed::InsertMapObject()
@@ -360,9 +370,9 @@ void Fixed::InsertMapObject()
 		if (CreatureMustAvoid(creature))
 		{
 			RPFollow* follow = creature3d->RpFollow;
-			if (follow->field_0x64054 >= 2 && follow->field_0x64054 <= 4)
+			if (follow->FollowState >= RPFOLLOW_STATE_PLANNING && follow->FollowState <= RPFOLLOW_STATE_REPLANNING)
 			{
-				AddToRoutePlan(follow, creature, 1, NULL);
+				AddToRoutePlan(follow, creature, true, NULL);
 			}
 		}
 	}
@@ -435,9 +445,9 @@ void MultiMapFixed::InsertMapObject()
 		if (CreatureMustAvoid(creature))
 		{
 			RPFollow* follow = creature3d->RpFollow;
-			if (follow->field_0x64054 >= 2 && follow->field_0x64054 <= 4)
+			if (follow->FollowState >= RPFOLLOW_STATE_PLANNING && follow->FollowState <= RPFOLLOW_STATE_REPLANNING)
 			{
-				AddToRoutePlan(follow, creature, 1, NULL);
+				AddToRoutePlan(follow, creature, true, NULL);
 			}
 		}
 	}
@@ -481,7 +491,6 @@ void MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	float       scale = GetScale();
 	float       yAngle = GetYAngle();
 	LH3DObject* object = Game3dObject;
-	// The block scope lets point.x load ahead of the inlined SetScale stores, as in Object::SetXYZAngles.
 	{
 		LHPoint point;
 		GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(coords, point);
@@ -497,8 +506,8 @@ void MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	}
 	if (IsBuilt() != TRUE)
 	{
-		Game3dObject->SetFootPrintOnTexture(1);
-		Game3dObject->SetShadowOnTexture(0);
+		Game3dObject->SetFootPrintOnTexture(true);
+		Game3dObject->SetShadowOnTexture(false);
 	}
 }
 
@@ -536,21 +545,20 @@ bool32_t MultiMapFixed::Built()
 {
 	if (building_site != NULL)
 	{
-		building_site->ToBeDeleted(0);
+		building_site->ToBeDeleted(false);
 	}
 #if defined(VERSION_BW1W100)
-	// 1.00 asks IsCivic first and does not exclude the football pitch.
 	if (IsCivic() && GetAbodeType() != ABODE_TYPE_CITADEL && GetTown() != NULL)
 #else
 	ABODE_TYPE abodeType = GetAbodeType();
 	if (IsCivic() && abodeType != ABODE_TYPE_CITADEL && abodeType != ABODE_TYPE_FOOTBALL_PITCH && GetTown() != NULL)
 #endif
 	{
-		Reaction::CreateReaction(this, REACTION_REACT_TO_NEW_BUILDING, GetPlayer(), 0);
+		Reaction::CreateReaction(this, REACTION_REACT_TO_NEW_BUILDING, GetPlayer(), false);
 	}
 	if (Game3dObject != NULL && !IsField())
 	{
-		Game3dObject->SetShadowOnTexture(1);
+		Game3dObject->SetShadowOnTexture(true);
 		RequestChangeTexture(this);
 	}
 	UnderConstruction = false;
@@ -568,7 +576,7 @@ bool32_t MultiMapFixed::Repaired()
 {
 	if (building_site != NULL)
 	{
-		building_site->ToBeDeleted(0);
+		building_site->ToBeDeleted(false);
 	}
 	RemoveDamage();
 	Damaged = false;
@@ -651,7 +659,7 @@ bool32_t MultiMapFixed::RemoveFootpath(GFootpath* footpath)
 	return true;
 }
 
-uint32_t MultiMapFixed::GetNearestPathTo(const MapCoords& coords, float param_2, int param_3)
+uint32_t MultiMapFixed::GetNearestPathTo(const MapCoords& coords, float max_distance, bool32_t backwards)
 {
 	return 0;
 }
@@ -718,7 +726,7 @@ float MultiMapFixed::GetPercentRepairedFromWhenDamaged()
 			}
 			return result;
 		}
-		return GetPercentRepaired() * 0.98f;
+		return GetPercentRepaired() * MULTI_MAP_FIXED_UNDAMAGED_REPAIRED_SCALE;
 	}
 	return 1.0f;
 }
@@ -759,21 +767,21 @@ void MultiMapFixed::RemovePotFromStructure(PotStructure* structure)
 	}
 }
 
-uint32_t MultiMapFixed::AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool param_4,
-                                    const MapCoords* coords, int param_6)
+uint32_t MultiMapFixed::AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool poisoned,
+                                    const MapCoords* coords, int from_other_player)
 {
 	if (building_site != NULL)
 	{
-		return building_site->AddResource(type, amount, status, param_4, coords, 0);
+		return building_site->AddResource(type, amount, status, poisoned, coords, 0);
 	}
 	return 0;
 }
 
-uint32_t MultiMapFixed::RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* param_4)
+uint32_t MultiMapFixed::RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* poisoned)
 {
 	if (building_site != NULL)
 	{
-		return building_site->RemoveResource(type, amount, status, param_4);
+		return building_site->RemoveResource(type, amount, status, poisoned);
 	}
 	return 0;
 }
@@ -822,8 +830,8 @@ bool32_t MultiMapFixed::Load(GameOSFile& file)
 
 bool MultiMapFixed::InteractsWithPhysicsObjects()
 {
-	bool built = GetPercentBuilt() > 0.1f;
-	bool alive = GetLife() > 0.01f;
+	bool built = GetPercentBuilt() > MULTI_MAP_FIXED_SOLID_PERCENT_BUILT;
+	bool alive = GetLife() > OBJECT_MIN_LIFE;
 	return built && alive;
 }
 
@@ -831,7 +839,7 @@ uint32_t SingleMapFixed::ApplyThisToMapCoord(GInterfaceStatus* status, const Map
                                              GestureSystemPacketData* packet)
 {
 	ThrowObjectFromHand(status, false);
-	return 0x16;
+	return OBJECT_APPLY_RESULT_THROWN;
 }
 
 void SingleMapFixed::InsertMapObjectToCell(MapCell* cell)
@@ -856,8 +864,9 @@ bool32_t MultiMapFixed::DeleteObjectAndTakeResource(Object* object, GInterfaceSt
 
 bool32_t MultiMapFixed::CreatureMustAvoid(Creature* creature)
 {
-	bool32_t solid = GetPercentBuilt() > 0.01f || building_site == NULL || building_site->ScaffoldList.count > 0;
-	if (creature == NULL || (solid && GetHeight() >= creature->GetHeight() * 0.1f))
+	bool32_t solid = GetPercentBuilt() > MULTI_MAP_FIXED_MIN_PERCENT_BUILT || building_site == NULL ||
+	                 building_site->ScaffoldList.count > 0;
+	if (creature == NULL || (solid && GetHeight() >= creature->GetHeight() * OBJECT_CREATURE_AVOID_HEIGHT_RATIO))
 	{
 		return true;
 	}

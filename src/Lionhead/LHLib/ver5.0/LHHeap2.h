@@ -35,8 +35,11 @@ static_assert(sizeof(FreeList) == 0xc, "Data type is of wrong size");
 // begin at offset 0x8. Free blocks are threaded through an intrusive free list.
 struct LHPool
 {
-	LHPool* Next;     /* 0x0 next chunk in the bucket's list */
-	void*   FreeHead; /* 0x4 head of the intrusive free-block list */
+	LHPool* Next;
+	void*   FreeHead;
+#ifdef VERSION_BW1WCI
+	unsigned int Size;
+#endif
 
 	// Static methods
 
@@ -49,7 +52,11 @@ struct LHPool
 	// BW1W120 inlined BW1M119 011383c0 (LHCombined Release)
 	static int GetSize(int blockSize);
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(LHPool) == 0xc, "Data type is of wrong size");
+#else
 static_assert(sizeof(LHPool) == 0x8, "Data type is of wrong size");
+#endif
 
 // The 4-byte key header that sits immediately before every UniqueKeyHeap
 // allocation.
@@ -143,13 +150,16 @@ struct Heap
 };
 static_assert(sizeof(Heap) == 0x2c, "Data type is of wrong size");
 
+#define HEAP_POOL_COUNT     32
+#define HEAP_POOL_SIZE_STEP 8
+
 // Adds size-bucketed object pools (LHPool) on top of Heap. Requests smaller than
 // 256 bytes are rounded up to a multiple of 8 and served from a per-bucket
 // LHPool free list; larger requests fall through to Heap.
 struct HeapWithPools : Heap
 {
-	std::map<int, LHPool*> PoolMap;   /* 0x2c opaque std::map<int,LHPool*> */
-	LHPool*                Pools[32]; /* 0x3c buckets 8,16,..,256 */
+	std::map<int, LHPool*> PoolMap;
+	LHPool*                Pools[HEAP_POOL_COUNT];
 
 	// Constructors
 

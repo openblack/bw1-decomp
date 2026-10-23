@@ -12,6 +12,8 @@
 #include "LHPTR.h"    /* For class LHPTR */
 #include "Mobile.h"   /* For struct Mobile, struct MobileVftable */
 
+#define MOBILE_OBJECT_SCRIPT_SCALE 1000.0f
+
 // Forward Declares
 
 class Base;
@@ -45,7 +47,7 @@ public:
 	// BW1W120 0055d080 BW1M119 013c5b00
 	virtual ~MobileObject();
 	// BW1W120 00606f00 BW1M119 013c5900
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00607230 BW1M119 013c51d0
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00425be0 BW1M119 010b07e0
@@ -145,14 +147,13 @@ public:
 	const GMobileObjectInfo* GetInfo() const { return (const GMobileObjectInfo*)info; }
 
 	// BW1W120 006076c0 BW1M119 013c4630
-	int SetupMoveAlongPath(SCRIPT_PATH path, float start, float end, int reverse);
+	bool32_t SetupMoveAlongPath(SCRIPT_PATH path, float start, float end, bool32_t reverse);
 	// BW1W120 00607990 BW1M119 013c4260
 	float GetWalkPathPercentage();
 	// BW1W120 00607960 BW1M119 null
-	int HasReachedPathPercentage(float percentage);
-	// fabricated name
+	bool32_t HasReachedPathPercentage(float percentage);
 	// BW1W120 006079b0 BW1M119 null
-	int HasFinishedPath();
+	bool32_t HasFinishedPath();
 
 	// Constructors
 

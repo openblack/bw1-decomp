@@ -2,13 +2,17 @@
 #define BW1_DECOMP_LH_MEMORY_LEAK_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <io.h>     /* For _unlink */
 #include <stddef.h> /* For offsetof */
 #include <stdint.h> /* For uint32_t */
+#include <stdio.h>  /* For FILE, fclose, fopen, fprintf */
 #include <string.h> /* For strcpy */
 
 #include <map>
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
+
+#define MEMORY_LEAK_LOG_FILE_NAME "MemoryLeaks.txt"
 
 // Forward declares
 class LHDebugStack;
@@ -65,10 +69,47 @@ public:
 		void GrabFunctionNamesFromDebugStack(LHDebugStack* debugStack, bool allocStack);
 	};
 
-	std::map<void*, LeakNode*> Map;       /* 0x00 tracked allocations */
-	unsigned char              ShouldLog; /* 0x10 */
-	bool                       field_11;  /* 0x11 dump reporting flag */
-	int                        Tag;       /* 0x14 */
+	// BW1W120 00e905f0
+	static LHLinkedList<LHMemoryLeak*> Instances;
+	// BW1W120 00e905ec
+	static FILE* LogFile;
+
+	std::map<void*, LeakNode*> Map;           /* 0x00 tracked allocations */
+	unsigned char              ShouldLog;     /* 0x10 */
+	bool                       LogLeakStacks; /* 0x11 */
+	int                        Tag;           /* 0x14 */
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	LHMemoryLeak()
+	{
+		Tag = 0;
+		LogLeakStacks = false;
+		ShouldLog = 0;
+		Instances.Add(this);
+		if (LogFile == NULL)
+		{
+			_unlink(MEMORY_LEAK_LOG_FILE_NAME);
+			LogFile = fopen(MEMORY_LEAK_LOG_FILE_NAME, "wt");
+			if (LogFile != NULL)
+			{
+				fprintf(LogFile, "Memory leak log:\n\n");
+			}
+		}
+	}
+
+	// Destructors
+
+	// BW1W120 inlined BW1M119 inlined
+	~LHMemoryLeak()
+	{
+		Instances.Remove(this);
+		if (Instances.count == 0 && LogFile != NULL)
+		{
+			fclose(LogFile);
+		}
+	}
 
 	// Non-virtual methods
 

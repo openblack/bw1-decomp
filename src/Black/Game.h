@@ -309,7 +309,7 @@ public:
 	FILE*                 field_0x2502d4;
 	FILE*                 TownDesireLogFile;
 	FILE*                 field_0x2502dc;
-	FILE*                 field_0x2502e0;
+	FILE*                 AllocationLogFile;
 	FILE*                 field_0x2502e4;
 	uint32_t              field_0x2502e8;
 	uint32_t              field_0x2502ec;

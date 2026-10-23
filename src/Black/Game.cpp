@@ -1169,7 +1169,7 @@ void GGame::ClearVariables()
 	field_0x2502d4 = NULL;
 	TownDesireLogFile = NULL;
 	field_0x2502dc = NULL;
-	field_0x2502e0 = NULL;
+	AllocationLogFile = NULL;
 	field_0x2502e4 = NULL;
 	GameFlags = GAME_FLAG_UNKNOWN_0x20;
 	SkirmishGame = false;
@@ -1196,7 +1196,7 @@ void GGame::ToBeDeleted(int delete_now)
 	fclose(field_0x2502d4);
 	fclose(TownDesireLogFile);
 	fclose(field_0x2502dc);
-	fclose(field_0x2502e0);
+	fclose(AllocationLogFile);
 	fclose(field_0x2502e4);
 	GWater::g_sprite_circle->Release();
 	LHSys::TheSystem.keyboard.Callback = NULL;

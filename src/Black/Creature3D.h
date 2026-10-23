@@ -111,66 +111,69 @@ enum LH3D_CREATURE_STATE
 class LH3DCreature : public Morphable
 {
 public:
-	Creature*           creature;
-	float               CurrentSpeed;
-	float               RequiredSpeed;
-	float               RequiredHeading;
-	float               WalkSpeed;
-	float               RunSpeed;
-	float               Acceleration;
-	float               BodyTurnAccel;
-	float               BodyTurnRate;
-	float               field_0x4858;
-	float               field_0x485c;
-	float               LookHeadingRate;
-	float               LookRelativeHeading;
-	float               LookPitchRate;
-	float               LookRelativePitch;
-	LHPoint             Forces[2];
-	LHPoint             field_0x4888[2];
-	LHPoint             field_0x48a0;
-	bool                ForceApplied;
-	uint8_t             field_0x48ad[0x3];
-	float               LeashForce;
-	int                 IntTimeInc;
-	float               FloatTimeInc;
-	int                 AnimTimeInc;
-	LHPoint             LookPoint;
-	Object*             ActionObject;
-	Object*             HeldObject;
-	float               field_0x48d4;
-	LHPoint             field_0x48d8;
-	float               field_0x48e4;
-	LHPoint             field_0x48e8;
-	float               field_0x48f4;
-	LHPoint             field_0x48f8;
-	int                 field_0x4904;
-	int                 DiscardTime;
-	LHPoint             DiscardVelocity;
-	LHPoint             DiscardPosition;
-	int                 field_0x4924;
-	uint8_t             field_0x4928[0x4];
-	float               field_0x492c;
-	LHPoint             ThrowPosHigh;
-	LHPoint             ThrowPosFlat;
-	LHPoint             KissPositionA;
-	LHPoint             KissPositionB;
-	int                 EatTime;
-	int                 ThrowTime;
-	float               ThrowZL;
-	float               ThrowYL;
-	float               ThrowZH;
-	float               ThrowYH;
-	float               ThrowZR;
-	float               ThrowYR;
-	float               KissFraction;
-	int16_t             GameThrowingAngle;
-	uint8_t             field_0x4986[0x2];
-	float               field_0x4988;
-	float               field_0x498c;
-	float               field_0x4990;
-	int                 MoveState;
-	int                 ObjectActionStatus;
+	Creature* creature;
+	float     CurrentSpeed;
+	float     RequiredSpeed;
+	float     RequiredHeading;
+	float     WalkSpeed;
+	float     RunSpeed;
+	float     Acceleration;
+	float     BodyTurnAccel;
+	float     BodyTurnRate;
+	float     field_0x4858;
+	float     field_0x485c;
+	float     LookHeadingRate;
+	float     LookRelativeHeading;
+	float     LookPitchRate;
+	float     LookRelativePitch;
+	LHPoint   Forces[2];
+	LHPoint   field_0x4888[2];
+	LHPoint   field_0x48a0;
+	bool      ForceApplied;
+	uint8_t   field_0x48ad[0x3];
+	float     LeashForce;
+	int       IntTimeInc;
+	float     FloatTimeInc;
+	int       AnimTimeInc;
+	LHPoint   LookPoint;
+	Object*   ActionObject;
+	Object*   HeldObject;
+	float     field_0x48d4;
+	LHPoint   field_0x48d8;
+	float     field_0x48e4;
+	LHPoint   field_0x48e8;
+	float     field_0x48f4;
+	LHPoint   field_0x48f8;
+	int       field_0x4904;
+	int       DiscardTime;
+	LHPoint   DiscardVelocity;
+	LHPoint   DiscardPosition;
+	int       field_0x4924;
+	uint8_t   field_0x4928[0x4];
+	float     field_0x492c;
+	LHPoint   ThrowPosHigh;
+	LHPoint   ThrowPosFlat;
+	LHPoint   KissPositionA;
+	LHPoint   KissPositionB;
+	int       EatTime;
+	int       ThrowTime;
+	float     ThrowZL;
+	float     ThrowYL;
+	float     ThrowZH;
+	float     ThrowYH;
+	float     ThrowZR;
+	float     ThrowYR;
+	float     KissFraction;
+	int16_t   GameThrowingAngle;
+	uint8_t   field_0x4986[0x2];
+	float     field_0x4988;
+	float     field_0x498c;
+	float     field_0x4990;
+	int       MoveState;
+	int       ObjectActionStatus;
+#ifdef VERSION_BW1WCI
+	int BowlTime;
+#endif
 	int                 field_0x499c;
 	int                 CurrentAnim;
 	float               field_0x49a4;
@@ -820,7 +823,9 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	float GetRequiredBreathTime() { return field_0x4990; }
 };
+#ifndef VERSION_BW1WCI
 static_assert(sizeof(LH3DCreature) == 0x57b8, "LH3DCreature size is incorrect");
+#endif
 
 // Free functions
 

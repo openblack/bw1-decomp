@@ -52,7 +52,7 @@ public:
 	float TakeFood(EffectValues& effect);
 	// fabricated name
 	// BW1W120 006081d0 BW1M119 null
-	void RemoveFromFieldAndDelete(int param_1);
+	void RemoveFromFieldAndDelete(bool32_t delete_now);
 	// fabricated name
 	// BW1W120 00608280 BW1M119 null
 	bool32_t IsPlacedInField();
@@ -62,7 +62,7 @@ public:
 	// BW1W120 00607e10 BW1M119 013c35e0
 	virtual ~FieldCrop();
 	// BW1W120 00607e20 BW1M119 013c3570
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00608270 BW1M119 013c32e0
 	virtual bool32_t IsFunctional();
 	// BW1W120 0055d100 BW1M119 013c2c60

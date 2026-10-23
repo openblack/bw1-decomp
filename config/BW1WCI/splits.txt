@@ -176,12 +176,19 @@ Black/Balance.cpp:
 
 Black/Ball.cpp:
 	.rdata      start:0x008F0C34 end:0x008F1534
-	.data       start:0x00A3CAA0 end:0x00A3CD74
+	.data       start:0x00A3CAA0 end:0x00A3CAEC
+
+Black/Base.cpp:
+	.text       start:0x00438E10 end:0x0043D4C0
+	.rdata      start:0x008F1534 end:0x008F1590
+	.CRT$XCU    start:0x00A36100 end:0x00A36114 align:4
+	.data       start:0x00A3CAEC end:0x00A3CD10
+	.bss        start:0x00CCC2B0 end:0x00CCC318
 
 Black/BaseInfo.cpp:
-	.text       start:0x00438E10 end:0x0043E000
-	.rdata      start:0x008F1534 end:0x008F1600
-	.CRT$XCU    start:0x00A36100 end:0x00A36124 align:4
+	.text       start:0x0043D4C0 end:0x0043E000
+	.rdata      start:0x008F1590 end:0x008F1600
+	.CRT$XCU    start:0x00A36114 end:0x00A36124 align:4
 
 Black/Belief.cpp:
 	.text       start:0x0043E000 end:0x0043EEE0
@@ -860,8 +867,10 @@ Black/FishFarm.cpp:
 	.bss        start:0x00D49CA0 end:0x00D49DD8
 
 Black/Fixed.cpp:
+	.text       start:0x00542910 end:0x00544510
 	.rdata      start:0x0090B814 end:0x0090D31C
 	.rdata$r    start:0x00A1CD48 end:0x00A1CE84
+	.CRT$XCU    start:0x00A365F8 end:0x00A36608 align:4
 	.data       start:0x00C5A9D8 end:0x00C5AA38
 	.bss        start:0x00D49DD8 end:0x00D4A208
 
@@ -952,8 +961,11 @@ Black/GameStatsFrontEnd.cpp:
 	.CRT$XCU    start:0x00A366D0 end:0x00A366D4 align:4
 
 Black/GameThing.cpp:
+	.text       start:0x00584670 end:0x00585400
 	.rdata      start:0x00932494 end:0x009325BC
 	.rdata$r    start:0x00A20FC8 end:0x00A20FFC
+	.CRT$XCU    start:0x00A366D4 end:0x00A366E0 align:4
+	.bss        start:0x00D8425C end:0x00D84270
 
 Black/GatheringInterface.cpp:
 	.rdata      start:0x009325BC end:0x0093263C
@@ -1571,6 +1583,7 @@ Black/Object.cpp:
 	.text       start:0x0064C2E0 end:0x00650BA0
 	.rdata      start:0x00988C14 end:0x00989520
 	.CRT$XCU    start:0x00A36C0C end:0x00A36C20 align:4
+	.data       start:0x00C6EA98 end:0x00C6EAB0
 	.bss        start:0x00DC266C end:0x00DC5704
 
 Black/Object3D.cpp:

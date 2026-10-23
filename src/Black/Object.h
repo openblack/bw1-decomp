@@ -55,14 +55,41 @@ class SpellWater;
 class Town;
 class Villager;
 
+#define OBJECT_GRAVITY                      9.81f
+#define OBJECT_THROWN_SPEED_SQUARED         4.0f
+#define OBJECT_MIN_LANDING_NORMAL_Y         0.7f
+#define OBJECT_MAX_REPLANT_TILT             0.2f
+#define OBJECT_MIN_PHYSICS_MASS             0.01f
+#define OBJECT_MIN_CRUSH_DAMAGE             0.01f
+#define OBJECT_MIN_LIFE                     0.01f
+#define OBJECT_IN_FLIGHT_SPEED              3.0f
+#define OBJECT_IN_FLIGHT_HEIGHT             0.2f
+#define OBJECT_HOLD_ABOVE_HEIGHT_RATIO      0.75f
+#define OBJECT_CREATURE_AVOID_HEIGHT_RATIO  0.1f
+#define OBJECT_ROUTE_PLAN_TALL_HEIGHT_RATIO 0.8f
+#define OBJECT_ROUTE_PLAN_TALL_FACTOR       0.4f
+#define OBJECT_ROUTE_PLAN_SHORT_FACTOR      0.7f
+#define OBJECT_ROUTE_PLAN_FACTOR_RANGE      0.3f
+#define OBJECT_ROUTE_PLAN_FIRE_MARGIN       5.0f
+#define OBJECT_ROUTE_PLAN_ELONGATION        1.2f
+#define OBJECT_ROUTE_PLAN_MAX_SEGMENTS      5
+#define OBJECT_TREE_VERTEX_COUNT            16
+#define OBJECT_TREE_FACE_COUNT              24
+#define OBJECT_TREE_RING_CORNERS            4
+#define OBJECT_TREE_ROOTED_CENTRE_OF_MASS   0.4f
+#define OBJECT_TREE_ROOTED_HALF_HEIGHT      0.6f
+#define OBJECT_TREE_NARROW_RING_RADIUS      0.2f
+#define OBJECT_TREE_WIDE_RING_RADIUS        0.65f
+#define OBJECT_TREE_RING_HEIGHT             0.6f
+#define OBJECT_TREE_BASE_RADIUS             0.1f
+#define OBJECT_TREE_INERTIA_SCALE           0.3f
+
 enum OBJECT_TASTINESS
 {
 	OBJECT_TASTINESS_NONE = 0,
 	OBJECT_TASTINESS_LIVING = 2
 };
 
-// fabricated names: results observed in MobileObject and FieldCrop's ApplyThisTo... methods.
-// TODO: recover the full result protocol and whether these values encode separate flags.
 enum OBJECT_APPLY_RESULT
 {
 	OBJECT_APPLY_RESULT_NONE = 0,
@@ -96,7 +123,7 @@ public:
 	// BW1W120 006366a0 BW1M119 013e0d20
 	virtual void Delete();
 	// BW1W120 00636670 BW1M119 013e0d80
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00639b70 BW1M119 013d9d30
 	virtual float GetDrawImportance();
 	// BW1W120 00419950 BW1M119 010ad7a0
@@ -117,6 +144,10 @@ public:
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0063a020 BW1M119 013d94f0
 	virtual void ResolveLoad();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00650b80 BW1M119 null
+	virtual void CreatureIsleVirtual0x108();
+#endif
 	// BW1W120 00639200 BW1M119 013dbbd0
 	virtual void SetScale(float scale);
 	// BW1W120 006394e0 BW1M119 013db590
@@ -124,9 +155,9 @@ public:
 	// BW1W120 0063a780 BW1M119 013d8a80
 	virtual bool32_t IsDrowning();
 	// BW1W120 006377f0 BW1M119 013dec60
-	virtual void CleanupWhenDeleted(int param_1);
+	virtual void CleanupWhenDeleted(bool32_t delete_now);
 	// BW1W120 00639940 BW1M119 013dac90
-	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
+	virtual float GetUpdateOfBoredomValue(Reaction* reaction, GameThingWithPos* reactor);
 	// BW1W120 00638550 BW1M119 013dced0
 	virtual bool32_t IsBuildingMaterial();
 	// BW1W120 004e48c0 BW1M119 015ec660
@@ -160,7 +191,7 @@ public:
 	// BW1W120 00638120 BW1M119 010330e0
 	virtual float GetHeight();
 	// BW1W120 00639b20 BW1M119 013d9e40
-	virtual void SetInScript(int param_1);
+	virtual void SetInScript(bool32_t in_script);
 	// BW1W120 00638580 BW1M119 013dce10
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 00638590 BW1M119 013dcdb0
@@ -201,8 +232,7 @@ public:
 	virtual bool32_t BlocksTownClearArea() const;
 	// BW1W120 006365f0 BW1M119 013e0ee0
 	virtual void Create3DObject();
-	// fabricated: nothing in either binary references BW1W120 00636b20, so its name is unrecoverable.
-	// TODO: creates the 3D object, gives it its meshes and places it at Pos.
+	// BW1W120 00636b20 BW1M119 null
 	void Create3DObjectAtPos();
 	// BW1W120 00418c90 BW1M119 01056a80
 	virtual Object* GetMapChild(const MapCell& cell);
@@ -221,7 +251,7 @@ public:
 	// BW1W120 006366b0 BW1M119 013e0be0
 	virtual bool32_t IsObjectInMapCheck();
 	// BW1W120 00636a40 BW1M119 0104fa00
-	virtual int MoveMapObject(const MapCoords& param_2);
+	virtual int MoveMapObject(const MapCoords& coords);
 	// BW1W120 00638040 BW1M119 01057b90
 	virtual void ActualMoveMapObject(const MapCoords& coords);
 	// BW1W120 00402570 BW1M119 0136d060
@@ -243,7 +273,7 @@ public:
 	// BW1W120 00402590 BW1M119 0110bbf0
 	virtual float GetSpotEffectPower() { return 0.0f; }
 	// BW1W120 00639610 BW1M119 013db2b0
-	virtual float GetAggressorValueFromDamage(float param_1);
+	virtual float GetAggressorValueFromDamage(float damage);
 	// BW1W120 00638bf0 BW1M119 013dc180
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 00638c00 BW1M119 01097300
@@ -275,19 +305,19 @@ public:
 	// BW1W120 0063aaf0 BW1M119 013d8190
 	virtual float GetSacrificeValue();
 	// BW1W120 00637c20 BW1M119 013de2f0
-	virtual float ReduceLifeDueToBurning(float param_1, GPlayer* param_2);
+	virtual float ReduceLifeDueToBurning(float damage, GPlayer* player);
 	// BW1W120 00637900 BW1M119 013de930
 	virtual void FillInEffectDefenceMultiplier(EffectNumbers& numbers);
 	// BW1W120 00637980 BW1M119 013de440
-	virtual float ApplyEffect(EffectValues& param_1, int param_2);
+	virtual float ApplyEffect(EffectValues& values, int param_2);
 	// BW1W120 00637d00 BW1M119 013de0d0
 	virtual float GetDamageEffect(EffectValues& values);
 	// BW1W120 00637d80 BW1M119 013de000
 	virtual float GetHealEffect(EffectValues& values);
 	// BW1W120 00637cf0 BW1M119 013de1d0
-	virtual void* GetActualObjectToEffect(GPlayer* player, bool param_2);
+	virtual void* GetActualObjectToEffect(GPlayer* player, bool show_effect);
 	// BW1W120 006392c0 BW1M119 013db820
-	virtual void DrawValue(int param_1, float param_2);
+	virtual void DrawValue(int text_type, float value);
 	// BW1W120 00402640 BW1M119 01370bf0
 	virtual void ScaffoldMoved(Scaffold* scaffold) {}
 	// BW1W120 00637ce0 BW1M119 013de220
@@ -301,13 +331,13 @@ public:
 	// BW1W120 00639ac0 BW1M119 013d9f30
 	virtual float GetDefaultFireRadius();
 	// BW1W120 006378e0 BW1M119 013dea00
-	virtual uint32_t DestroyedByEffect(GPlayer* player, float param_2);
+	virtual uint32_t DestroyedByEffect(GPlayer* player, float damage);
 	// BW1W120 00418fc0 BW1M119 010ad670
 	virtual uint32_t Process();
 	// BW1W120 00402650 BW1M119 01370d40
 	virtual uint32_t ProcessBySpell(Spell* spell) { return 1; }
 	// BW1W120 00637ff0 BW1M119 013dd790
-	virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords& param_4);
+	virtual void ApplySingleEffect(EFFECT_TYPE type, float amount, GameThing* applied_by, const MapCoords& coords);
 	// BW1W120 00425340 BW1M119 011d37e0
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00402660 BW1M119 011d33d0
@@ -337,12 +367,12 @@ public:
 	// BW1W120 00638200 BW1M119 01080d70
 	virtual void GetWorldMatrix(LHMatrix* out);
 	// BW1W120 00639b60 BW1M119 013d9d90
-	virtual bool32_t CanBeSuckedIntoVortex(LandscapeVortex* param_1);
+	virtual bool32_t CanBeSuckedIntoVortex(LandscapeVortex* vortex);
 	// BW1W120 00639b80 BW1M119 013d9cc0
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager);
 	// BW1W120 00639550 BW1M119 013db400
 	// Rule 2 (hidden retbuf): comment shows one param (Object*), so returns MapCoords by value.
-	virtual MapCoords GetWorkingPos(Object* param_1);
+	virtual MapCoords GetWorkingPos(Object* object);
 	// BW1W120 00638150 BW1M119 013dd3c0
 	virtual float GetHeightForHandAboveInteractObject();
 	// BW1W120 006385c0 BW1M119 013dcc50
@@ -381,7 +411,7 @@ public:
 	// BW1W120 004192d0 BW1M119 010ad6e0
 	virtual bool32_t IsResourceStore(RESOURCE_TYPE type);
 	// BW1W120 0063a930 BW1M119 013d85b0
-	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status);
 	// BW1W120 0063aad0 BW1M119 013d82a0
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
 	// BW1W120 0063aae0 BW1M119 013d8230
@@ -403,28 +433,28 @@ public:
 		return true;
 	}
 	// BW1W120 00636ab0 BW1M119 013e0710
-	virtual bool32_t IsAttackable(Object* param_1);
+	virtual bool32_t IsAttackable(Object* other);
 	// BW1W120 00636af0 BW1M119 013e0660
-	virtual bool32_t IsAllied(Object* param_1);
+	virtual bool32_t IsAllied(Object* other);
 	// BW1W120 00637e00 BW1M119 013ddf20
 	virtual bool32_t IsTouching(Object* target, float epsilon);
 	// BW1W120 00637e30 BW1M119 013ddea0
 	virtual bool32_t IsTouching(const MapCoords& coords);
 	// BW1W120 00637e60 BW1M119 013dd920
-	virtual bool32_t IsTouching(const MapCoords& param_1, const MapCoords& param_2);
+	virtual bool32_t IsTouching(const MapCoords& corner1, const MapCoords& corner2);
 	// BW1W120 00419300 BW1M119 010ad730
 	virtual void StartOnFire() {}
 	// BW1W120 004027b0 BW1M119 011776b0
 	virtual void EndOnFire() {}
 	// BW1W120 00637fb0 BW1M119 013dd850
-	virtual float GetDistanceFromObject(Object* param_1);
+	virtual float GetDistanceFromObject(Object* other);
 	// BW1W120 004027c0 BW1M119 01176a00
 	virtual float GetDistanceFromObject(const MapCoords& coords)
 	{
 		return GameThingWithPos::GetDistanceFromObject(coords);
 	}
 	// BW1W120 006399d0 BW1M119 01003b10
-	virtual float GetTribalPower(TRIBE_TYPE param_1);
+	virtual float GetTribalPower(TRIBE_TYPE tribe);
 	// BW1W120 00419330 BW1M119 010b0950
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status);
 	// BW1W120 004193d0 BW1M119 010b09b0
@@ -521,21 +551,21 @@ public:
 	// BW1W120 004029f0 BW1M119 01024540
 	virtual bool32_t IsObject() const { return true; }
 	// BW1W120 00639960 BW1M119 013dab40
-	virtual bool32_t CanBeDestroyedBySpell(Spell* param_1);
+	virtual bool32_t CanBeDestroyedBySpell(Spell* spell);
 	// BW1W120 00638cf0 BW1M119 013dbec0
 	virtual float GetImportance();
 	// BW1W120 00636f00 BW1M119 013df650
 	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
 	                                                 GInterfaceStatus* status, Object* thrower, bool32_t dont_replant);
 	// BW1W120 00637480 BW1M119 013df3b0
-	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
-	                                                bool param_4, GInterfaceStatus* param_5);
+	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& velocity, const LHPoint& angular_velocity,
+	                                                Object* thrower, bool create_physics, GInterfaceStatus* status);
 	// BW1W120 006376a0 BW1M119 013df0a0
 	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 006376b0 BW1M119 013defa0
-	virtual void SetUpPhysOb(PhysOb* param_1);
+	virtual void SetUpPhysOb(PhysOb* phys_ob);
 	// BW1W120 006375a0 BW1M119 013df240
-	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map);
 	// BW1W120 0063a7b0 BW1M119 013d8a50
 	virtual uint32_t DropSfx();
 	// BW1W120 00637730 BW1M119 013dee60
@@ -545,13 +575,13 @@ public:
 	// BW1W120 00419890 BW1M119 010ad760
 	virtual bool ChecksVerticesVObjects() { return true; }
 	// BW1W120 006377d0 BW1M119 013ded30
-	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
+	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* object);
 	// BW1W120 00402a00 BW1M119 013ed5b0
 	virtual bool PhysicallyDestroysAbodes() { return false; }
 	// BW1W120 006377c0 BW1M119 013dedc0
-	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+	virtual void ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage);
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 0064d810 BW1M119 null
+	// BW1WCI 0064d810 BW1M119 null
 	virtual void CreatureIsleVirtual0x7f0();
 #endif
 	// BW1W120 006377e0 BW1M119 013decf0
@@ -581,14 +611,14 @@ public:
 	// BW1W120 00637470 BW1M119 013df620
 	virtual bool32_t HasSunk();
 	// BW1W120 00638740 BW1M119 013dc880
-	virtual bool32_t CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* creature);
 	// BW1W120 00638790 BW1M119 013dc390
-	virtual void AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
+	virtual void AddToRoutePlan(RPHolder* holder, Creature* creature, bool32_t update,
 	                            void(__cdecl* add_function)(int, Point2D, float, int));
 	// BW1W120 006384c0 BW1M119 013dcf30
-	virtual float GetRoutePlanRadius(Creature* param_1);
+	virtual float GetRoutePlanRadius(Creature* creature);
 	// BW1W120 00638be0 BW1M119 013dc1c0
-	virtual bool32_t VillagerMustAvoid(Villager* param_1);
+	virtual bool32_t VillagerMustAvoid(Villager* villager);
 	// BW1W120 00639a00 BW1M119 013da210
 	virtual bool32_t IsFireMan();
 	// BW1W120 00638730 BW1M119 01099690
@@ -602,13 +632,13 @@ public:
 	// BW1W120 00638430 BW1M119 013dd160
 	virtual int GetLandingPointCount();
 	// BW1W120 00638450 BW1M119 013dd0f0
-	virtual bool32_t GetLandingPoint(uint8_t param_1, LHPoint* param_2);
+	virtual bool32_t GetLandingPoint(uint8_t index, LHPoint* point);
 	// BW1W120 00402ab0 BW1M119 010a33c0
 	virtual uint32_t GetTastiness() { return OBJECT_TASTINESS_NONE; }
 	// BW1W120 00402ac0 BW1M119 010a3400
 	virtual bool32_t IsScary() { return false; }
 	// BW1W120 00638cb0 BW1M119 013dbf70
-	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* pos);
+	virtual bool32_t GetInspectObjectPos(Villager* villager, MapCoords* pos);
 	// BW1W120 0063ab10 BW1M119 013d8140
 	virtual void DiscipleInHandNear(Villager& villager, GInterfaceStatus& status);
 	// BW1W120 00638cd0 BW1M119 013dbf00
@@ -624,13 +654,13 @@ public:
 	// BW1W120 00402ad0 BW1M119 010a3430
 	virtual uint32_t GetObjectCollide() { return 0; }
 	// BW1W120 00639620 BW1M119 013db230
-	virtual float CalculateForceAppliedBy(Living* param_1);
+	virtual float CalculateForceAppliedBy(Living* living);
 	// BW1W120 00402ae0 BW1M119 010a3470
 	virtual bool32_t IsPushable() { return false; }
 	// BW1W120 00639640 BW1M119 013db090
-	virtual float PushObject(Living* param_1);
+	virtual float PushObject(Living* living);
 	// BW1W120 006397c0 BW1M119 013daf30
-	virtual float PushObject(Living* param_1, MapCoords& param_2);
+	virtual float PushObject(Living* living, MapCoords& destination);
 	// BW1W120 00402af0 BW1M119 010a34a0
 	virtual uint32_t GetCarriedTreeType() { return 0; }
 	// BW1W120 00402b00 BW1M119 010a34e0
@@ -644,7 +674,7 @@ public:
 	// BW1W120 00636cd0 BW1M119 013e0230
 	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 00636d30 BW1M119 013e0140
-	virtual MapCoords GetNearestPosOfObject(Object* param_1);
+	virtual MapCoords GetNearestPosOfObject(Object* object);
 	// BW1W120 00636da0 BW1M119 013e0080
 	virtual MapCoords GetNearestEdgeToPos(const MapCoords& pos);
 	// BW1W120 00636df0 BW1M119 013dffd0
@@ -662,7 +692,7 @@ public:
 	// BW1W120 00402b50 BW1M119 010a3610
 	virtual uint32_t StandAnimation() { return ANM_INVALID; }
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 00402c40 BW1M119 null
+	// BW1WCI 00402c40 BW1M119 null
 	virtual void CreatureIsleVirtual0x89c(uint32_t param_1) {}
 #endif
 	// BW1W120 00419b30 BW1M119 0109ea50
@@ -673,13 +703,10 @@ public:
 	// BW1W120 006392b0 BW1M119 0103a2a0
 	virtual bool32_t IsObjectInMap();
 	// BW1W120 00639860 BW1M119 013dadd0
-	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
+	virtual float GetImpressiveValue(Living* living, Reaction* reaction);
 
 	// Static data
 
-	// fabricated name: write-only copy of a thrown tree's PhysicsObject matrix, taken by
-	// Tree::ReactToPhysicsImpact just before a wood store deletes the tree; nothing reads it
-	// in any shipped build. Its .bss hash has to sort ahead of InsertMapObject's message.
 	// BW1W120 00d414a8 BW1M119 01b3db78
 	static LHMatrix StoredMatrix;
 
@@ -711,11 +738,11 @@ public:
 	// BW1W120 00638560 BW1M119 0105e730
 	Object* GetMapChild(const MapCoords& coord);
 	// BW1W120 0063a810 BW1M119 013d8700
-	SmokyStuff* CreateSmokyStuff(long param_1, float param_2, LH3DColor color);
+	SmokyStuff* CreateSmokyStuff(long count, float radius, LH3DColor color);
 	// BW1W120 00637930 BW1M119 013de840
 	EffectNumbers GetDefenseMultiplier();
 	// BW1W120 00638b00 BW1M119 013dc200
-	void SimpleAddToRoutePlan(RPHolder* holder, Creature* creature, int update,
+	void SimpleAddToRoutePlan(RPHolder* holder, Creature* creature, bool32_t update,
 	                          void(__cdecl* add_function)(int, Point2D, float, int));
 	// BW1W120 00639410 BW1M119 013db630
 	bool32_t IsActuallyInTheAir();
@@ -730,7 +757,7 @@ public:
 	// BW1W120 00638070 BW1M119 null
 	bool32_t IsCitadelPartOfPlayer(GPlayer* player);
 	// BW1W120 006384a0 BW1M119 null
-	float GetWeightForce(Living* param_1);
+	float GetWeightForce(Living* living);
 	// BW1W120 00638c70 BW1M119 null
 	void SetPackedAnim(int anim);
 	// BW1W120 00639a10 BW1M119 013da190
@@ -742,9 +769,9 @@ public:
 	// BW1W120 00637de0 BW1M119 null
 	void SendDrawCollision();
 	// BW1W120 00639a40 BW1M119 013da0e0
-	void SetOnFire(float param_1);
+	void SetOnFire(float temperature);
 	// BW1W120 00639a60 BW1M119 013da080
-	void SetTemperature(float param_1, GameThing* param_2);
+	void SetTemperature(float temperature, GameThing* source);
 	// BW1W120 0063a1b0 BW1M119 01089340
 	GInterfaceStatus* GetInterfaceStatusHoldingThis();
 	// BW1W120 0063a190 BW1M119 0108c890
@@ -760,7 +787,7 @@ public:
 	// BW1W120 006399f0 BW1M119 null
 	const char* GetInfoDebugString();
 	// BW1W120 0063a940 BW1M119 013d82f0
-	void DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	void DoDeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status);
 	// BW1W120 004eaab0 BW1M119 012722f0
 	void ConsiderCreatureMimickingWhenObjectLands();
 	// BW1W120 00516510 BW1M119 010554a0

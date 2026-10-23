@@ -17,11 +17,8 @@ struct HeapStore;
 class Base
 {
 public:
-	// Used by Base allocation/deletion; created by PCMain.
-	// TODO: Original global name and declaration scope are unrecovered.
 	// BW1W120 00cd3b1c
 	static UniqueKeyHeap* ObjectHeap;
-	// Descriptive name; initialized with ObjectHeap by PCMain.
 	// BW1W120 00cd3b18
 	static HeapStore* ObjectHeapStore;
 
@@ -30,15 +27,15 @@ public:
 	// Override methods
 
 	// BW1W120 004011b0 BW1M119 015772e0
-	virtual void Serialise(Archive& param_1) {}
+	virtual void Serialise(Archive& archive) {}
 	// BW1W120 00436960 BW1M119 01084b50
 	virtual ~Base();
 	// BW1W120 004011c0 BW1M119 01333120
 	virtual void Delete() { delete this; }
 	// BW1W120 004011d0 BW1M119 01333480
-	virtual void ToBeDeleted(int param_1) { Delete(); }
+	virtual void ToBeDeleted(bool32_t delete_now) { Delete(); }
 	// BW1W120 004011e0 BW1M119 01334c10
-	virtual int Get3DSoundPos(LHPoint* param_1) { return 0; }
+	virtual bool32_t Get3DSoundPos(LHPoint* pos) { return false; }
 	// BW1W120 004011f0 BW1M119 013348b0
 	virtual void CleanUpForSerialisation() {}
 	// BW1W120 00401200 BW1M119 01090c70
@@ -46,14 +43,34 @@ public:
 
 	// Static methods
 
-	// BW1W120 004366f0 BW1M119 010a08d0
+	// BW1W120 004366f0 BW1M119 null
 	static void* operator new(size_t size, const char* file_name, uint32_t line);
-	// BW1W120 00436970 BW1M119 015abc70
-	static void operator delete(void* ptr, size_t size);
+	// BW1W120 00436760 BW1M119 null
+	static void* operator new[](size_t size, const char* file_name, uint32_t line);
+	// BW1W120 00436870 BW1M119 010a08d0
+	static void* operator new(size_t size);
 	// BW1W120 004368e0 BW1M119 01353e10
 	static void* operator new[](size_t size);
+	// BW1W120 00436970 BW1M119 015abc70
+	static void operator delete(void* ptr, size_t size);
 	// BW1W120 004369d0 BW1M119 01514e50
 	static void operator delete[](void* ptr, size_t size);
+#ifndef VERSION_BW1W100
+	// BW1W120 00436a30 BW1M119 null
+	static int GetIndexOffset(void* address);
+#endif
+	// BW1W120 00436a50 BW1M119 010b9e40
+	static Base* GetIndexPtr(unsigned long offset);
+	// BW1W120 00436a90 BW1M119 0115ef00
+	static int GetUniqueId(void* address);
+	// BW1W120 00436ab0 BW1M119 011a2e70
+	static int GetUniqueId(unsigned long offset);
+#ifndef VERSION_BW1W100
+	// BW1W120 00436ad0 BW1M119 null
+	static bool32_t IsUniqueIdAtAddressTheSame(void* address, unsigned long id);
+#endif
+	// BW1W120 00436af0 BW1M119 01045ff0
+	static bool32_t IsUniqueIdAtOffsetTheSame(unsigned long offset, unsigned long id);
 
 	// Constructors
 
@@ -62,20 +79,10 @@ public:
 
 	// Non-virtual methods
 
-#ifndef VERSION_BW1W100
 	// BW1W120 00436a70 BW1M119 010b9de0
 	int GetIndexOffset() const;
-#endif // VERSION_BW1W100
 	// BW1W120 00436a80 BW1M119 01036380
 	int GetUniqueId() const;
-#ifndef VERSION_BW1W100
-	// BW1W120 00436a90 BW1M119 0115ef00
-	static int GetUniqueId(void* address);
-	// BW1W120 00436ab0 BW1M119 011a2e70
-	static int GetUniqueId(unsigned long offset);
-	// BW1W120 00436af0 BW1M119 01045ff0
-	static bool32_t IsUniqueIdAtOffsetTheSame(unsigned long offset, unsigned long id);
-#endif // VERSION_BW1W100
 	// BW1W120 00436b20 BW1M119 01001480
 	void SetInfo(BaseInfo* info) const;
 };

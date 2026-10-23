@@ -2108,7 +2108,7 @@ uint16_t Villager::GetResourceFrom(Object* object, RESOURCE_TYPE resource_type, 
 	if (got != 0)
 	{
 		PickupResource(resource_type, got, object->GetCarriedTreeType());
-		if ((uint8_t)object->IsSpeedUp())
+		if (object->IsSpeedUp())
 		{
 			SetFoodSpeedup(true);
 		}

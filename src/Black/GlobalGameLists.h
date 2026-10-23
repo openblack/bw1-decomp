@@ -108,15 +108,22 @@ public:
 	LHLinkedList<Object*>           objects;
 	LHLinkedList<Tree*>             trees;
 	LHListHead<BigForest>           BigForests;
-	LHListHead<GBaseInfo>           BaseInfos;
-	LHLinkedList<GClimate*>         climates;
-	LHLinkedList<TownCentre*>       TownCentres;
-	LHListHead<Whale>               whales;
-	LHListHead<FireFly>             FireFlies;
-	LHListHead<PuzzleGame>          puzzle_game;
-	LHListHead<GameThing>           GameThings;
-	LHLinkedList<TownArtifact*>     TownArtifacts;
-	LHLinkedList<Fragment*>         fragments;
+#ifdef VERSION_BW1WCI
+	LHListHeadTail<GBaseInfo> BaseInfos;
+#else
+	LHListHead<GBaseInfo> BaseInfos;
+#endif
+	LHLinkedList<GClimate*>     climates;
+	LHLinkedList<TownCentre*>   TownCentres;
+	LHListHead<Whale>           whales;
+	LHListHead<FireFly>         FireFlies;
+	LHListHead<PuzzleGame>      puzzle_game;
+	LHListHead<GameThing>       GameThings;
+	LHLinkedList<TownArtifact*> TownArtifacts;
+	LHLinkedList<Fragment*>     fragments;
+#ifdef VERSION_BW1WCI
+	uint8_t ci_field_0x194[0x30];
+#endif
 
 	// Override methods
 

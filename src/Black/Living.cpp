@@ -36,10 +36,10 @@ bool32_t DataPath::Load(GameOSFile& file)
 	if (GameThing::Load(file))
 	{
 		file.ReadIt(TrackNo);
-		file.ReadIt(field_0x1c);
-		file.ReadIt(field_0x20);
-		file.ReadIt(field_0x24);
-		file.ReadIt(field_0x28);
+		file.ReadIt(EndPercentage);
+		file.ReadIt(Reverse);
+		file.ReadIt(Frame);
+		file.ReadIt(FramesPerTurn);
 		file.ReadIt(field_0x2c);
 		return true;
 	}
@@ -51,10 +51,10 @@ bool32_t DataPath::Save(GameOSFile& file)
 	if (GameThing::Save(file))
 	{
 		file.WriteIt(TrackNo);
-		file.WriteIt(field_0x1c);
-		file.WriteIt(field_0x20);
-		file.WriteIt(field_0x24);
-		file.WriteIt(field_0x28);
+		file.WriteIt(EndPercentage);
+		file.WriteIt(Reverse);
+		file.WriteIt(Frame);
+		file.WriteIt(FramesPerTurn);
 		file.WriteIt(field_0x2c);
 		return true;
 	}

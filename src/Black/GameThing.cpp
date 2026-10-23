@@ -18,7 +18,6 @@
 #include "BeliefInfo.h"
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 
-// fabricated: unreferenced 4-byte .bss slot at 0x00d0607c; real name unknown
 static float unused;
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
@@ -47,9 +46,9 @@ GameThing::~GameThing()
 	--NumActiveGameThings;
 }
 
-void GameThing::ProcessDead(int param_1)
+void GameThing::ProcessDead(bool32_t delete_now)
 {
-	if ((Flags & GAME_THING_FLAG_DEAD) == 0 && param_1 == 0)
+	if ((Flags & GAME_THING_FLAG_DEAD) == 0 && !delete_now)
 	{
 		Flags |= GAME_THING_FLAG_DEAD;
 		return;
@@ -80,33 +79,61 @@ void GameThing::ProcessDead(int param_1)
 	Delete();
 }
 
-void GameThing::ProcessDeadList(int param_1)
+void GameThing::ProcessDeadList(bool32_t delete_now)
 {
+	GameThing* gameThing;
+	GameThing* next;
 	while (true)
 	{
-		GameThing* thing = GGame::g_game->GameLists.GameThings.Get();
-		while (thing != NULL)
+		gameThing = GGame::g_game->GameLists.GameThings.Get();
+		while (gameThing != NULL)
 		{
-			GameThing* thingNext = thing->next.Get();
-			if (dynamic_cast<GameThing*>(thing))
+			next = gameThing->next.Get();
+#ifdef VERSION_BW1WCI
+			LHListHead<GameThing>* list;
+			bool                   corrupt = false;
+			__try
 			{
-				thing->ProcessDead(param_1);
+				GameThing* checked = dynamic_cast<GameThing*>(gameThing);
+				if (checked != NULL)
+				{
+					checked->ProcessDead(delete_now);
+				}
+				else
+				{
+					corrupt = true;
+				}
 			}
-			thing = thingNext;
+			__except (EXCEPTION_EXECUTE_HANDLER)
+			{
+				corrupt = true;
+			}
+			if (corrupt)
+			{
+				list = &GGame::g_game->GameLists.GameThings;
+				list->Remove(gameThing);
+			}
+#else
+			if (dynamic_cast<GameThing*>(gameThing))
+			{
+				gameThing->ProcessDead(delete_now);
+			}
+#endif
+			gameThing = next;
 		}
-		if (param_1 == 0 || GGame::g_game->GameLists.GameThings.count == 0)
+		if (!delete_now || GGame::g_game->GameLists.GameThings.count == 0)
 		{
 			return;
 		}
-	};
+	}
 }
 
-void GameThing::ToBeDeleted(int param_1)
+void GameThing::ToBeDeleted(bool32_t delete_now)
 {
 	if ((Flags & GAME_THING_FLAG_UNAVAILABLE) == 0)
 	{
 		Flags |= GAME_THING_FLAG_UNAVAILABLE;
-		if (param_1)
+		if (delete_now)
 		{
 			Delete();
 			return;
@@ -147,6 +174,13 @@ bool32_t GameThing::Load(GameOSFile& file)
 
 	file.ReadSafe(destroyed);
 	file.ReadSafe(Flags);
+#ifdef VERSION_BW1WCI
+	GameThing* listed = GGame::g_game->GameLists.GameThings.Find(this);
+	if ((Flags & GAME_THING_FLAG_UNAVAILABLE) != 0 && listed == NULL)
+	{
+		GGame::g_game->GameLists.GameThings.AddToFirst(this);
+	}
+#endif
 
 	return true;
 }
@@ -162,16 +196,16 @@ void GameThing::SaveExtraData(GameOSFile& file)
 	file.WriteSafe(zero);
 }
 
-void GameThingWithPos::ToBeDeleted(int param_1)
+void GameThingWithPos::ToBeDeleted(bool32_t delete_now)
 {
-	CleanupWhenDeleted(param_1);
-	GameThing::ToBeDeleted(param_1);
+	CleanupWhenDeleted(delete_now);
+	GameThing::ToBeDeleted(delete_now);
 }
 
-int GameThingWithPos::Get3DSoundPos(LHPoint* pos)
+bool32_t GameThingWithPos::Get3DSoundPos(LHPoint* pos)
 {
 	GLandscape::ConvertMapCoordToLandscapePoint(Pos, *pos);
-	return 1;
+	return true;
 }
 
 float GameThingWithPos::GetPower() const
@@ -179,18 +213,18 @@ float GameThingWithPos::GetPower() const
 	return 1.0f;
 }
 
-float GameThingWithPos::GetBoredomMultiplier(Reaction* param_1)
+float GameThingWithPos::GetBoredomMultiplier(Reaction* reaction)
 {
 	if (GetTown() != NULL)
 	{
-		REACTION index = param_1->GetFunctionIndex();
+		REACTION index = reaction->GetFunctionIndex();
 		GBelief* belief = &GetTown()->belief;
 		return belief->BoredomMultiplier[index];
 	}
 	return 1.0f;
 }
 
-float GameThingWithPos::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2)
+float GameThingWithPos::GetUpdateOfBoredomValue(Reaction* reaction, GameThingWithPos* reactor)
 {
 	return GBeliefInfo::Info.UpdateOfBoredomValue;
 }
@@ -200,9 +234,9 @@ float GameThingWithPos::GetPSysPower() const
 	return 1.0f;
 }
 
-float GameThing::MaintainSpell(uint32_t param_1, float param_2)
+float GameThing::MaintainSpell(uint32_t spell, float amount)
 {
-	return param_2;
+	return amount;
 }
 
 void GameThing::UpdateSpellInfo(Spell* spell, PSysProcessInfo* info) {}
@@ -246,20 +280,19 @@ IMPRESSIVE_TYPE GameThingWithPos::GetImpressiveType()
 
 bool32_t GameThingWithPos::IsThingMovingTowards(GameThingWithPos* target, GameThingWithPos* moving_thing)
 {
-	LHPoint target_pos;
-	LHPoint moving_pos;
-	GLandscape::ConvertMapCoordToLandscapePoint(target->Pos, target_pos);
-	GLandscape::ConvertMapCoordToLandscapePoint(moving_thing->Pos, moving_pos);
-	LHPoint target_to_moving = target_pos - moving_pos;
+	LHPoint targetPos;
+	LHPoint movingPos;
+	GLandscape::ConvertMapCoordToLandscapePoint(target->Pos, targetPos);
+	GLandscape::ConvertMapCoordToLandscapePoint(moving_thing->Pos, movingPos);
+	LHPoint targetToMoving = targetPos - movingPos;
 
-	// Needed for 100%: Dead read of target_to_moving.x raises its x87 scheduling weight
-	float unused = target_to_moving.x;
+	float unused = targetToMoving.x;
 
-	target_to_moving.FastNormalizeInline();
-	LHPoint moving_direction;
-	moving_thing->GetMovementDirection(&moving_direction);
-	moving_direction.FastNormalizeInline();
-	return target_to_moving.DotProductInline(moving_direction) >= 0.0f;
+	targetToMoving.FastNormalizeInline();
+	LHPoint movingDirection;
+	moving_thing->GetMovementDirection(&movingDirection);
+	movingDirection.FastNormalizeInline();
+	return targetToMoving.DotProductInline(movingDirection) >= 0.0f;
 }
 
 GPlayer* GameThing::GetPlayer()
@@ -449,17 +482,17 @@ void GameThingWithPos::SetToZero()
 	Pos.altitude = 0.0;
 }
 
-uint32_t GameThing::JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3)
+uint32_t GameThing::JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool poisoned)
 {
 	return 0;
 }
 
-uint32_t GameThing::JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3)
+uint32_t GameThing::JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* poisoned)
 {
 	return 0;
 }
 
-uint32_t GameThing::JustGetResource(RESOURCE_TYPE param_1, uint32_t amount, bool* param_3)
+uint32_t GameThing::JustGetResource(RESOURCE_TYPE type, uint32_t amount, bool* poisoned)
 {
 	return 0;
 }

@@ -10,23 +10,34 @@ struct RPlan;
 
 #define RPFOLLOW_MAX_PLANS 5
 
+enum RPFOLLOW_STATE
+{
+	RPFOLLOW_STATE_UNPLACED,
+	RPFOLLOW_STATE_STOPPED,
+	RPFOLLOW_STATE_PLANNING,
+	RPFOLLOW_STATE_MOVING,
+	RPFOLLOW_STATE_REPLANNING,
+	RPFOLLOW_STATE_UNREACHABLE,
+	RPFOLLOW_STATE_TRAPPED,
+};
+
 // TODO: Original member names are unrecovered. Constructor and route-update code
 // establish the RPHolder prefix and the typed state below; no opaque size padding.
 class RPFollow : public RPHolder
 {
 public:
-	Point2D field_0x6402c; // Current position.
-	float   field_0x64034;
-	float   field_0x64038;
-	float   field_0x6403c;
-	float   field_0x64040;
-	Point2D field_0x64044;
-	float   field_0x6404c;
-	float   field_0x64050;
-	int     field_0x64054;
-	int     field_0x64058;
-	int     field_0x6405c;
-	int     field_0x64060; // Generic callback context; Black passes a Creature* as an int.
+	Point2D        field_0x6402c; // Current position.
+	float          field_0x64034;
+	float          field_0x64038;
+	float          field_0x6403c;
+	float          field_0x64040;
+	Point2D        field_0x64044;
+	float          field_0x6404c;
+	float          field_0x64050;
+	RPFOLLOW_STATE FollowState;
+	int            field_0x64058;
+	int            field_0x6405c;
+	int            field_0x64060; // Generic callback context; Black passes a Creature* as an int.
 	void(__cdecl* field_0x64064)(int, int);
 	void(__cdecl* field_0x64068)(int, float, float);
 	float(__cdecl* field_0x6406c)(int);

@@ -30,7 +30,7 @@ struct GDebug
 	uint32_t field_0x14c;
 	bool32_t LogTownDesire;
 	uint32_t field_0x154;
-	uint32_t field_0x158;
+	bool32_t LogAllocations;
 	uint32_t field_0x15c;
 	uint8_t  field_0x160[0x2d040];
 	uint32_t field_0x2d1a0;

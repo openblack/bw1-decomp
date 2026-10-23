@@ -63,22 +63,25 @@ struct PhysOb
 	uint8_t     field_0x138[0x14];
 	float       Inertia;
 	float       Radius;
-	uint32_t    NumVertices;
-	uint32_t    field_0x158;
-	Vertex*     Vertices;
-	uint32_t    NumFaces;
-	Face*       Faces;
-	uint8_t     field_0x168[0x8];
-	int         field_0x170;
-	uint32_t    field_0x174;
-	uint32_t    field_0x178;
+#ifdef VERSION_BW1WCI
+	float RestSpeedMultiplier;
+#endif
+	uint32_t NumVertices;
+	uint32_t field_0x158;
+	Vertex*  Vertices;
+	uint32_t NumFaces;
+	Face*    Faces;
+	uint8_t  field_0x168[0x8];
+	int      field_0x170;
+	uint32_t field_0x174;
+	uint32_t field_0x178;
 
 	// Non-virtual methods
 
 	// BW1W120 007fb780 BW1M119 01086460 (LHCombined Release)
 	void Initialise(LH3DObject* obj, float param_3);
 	// BW1W120 007fb810 BW1M119 01086390 (LHCombined Release)
-	void SetUpConstants(float mass, PhysicsData* data, int param_3);
+	void SetUpConstants(float mass, PhysicsData* data, bool32_t movable);
 	// BW1W120 007fbac0 BW1M119 01086040 (LHCombined Release)
 	void BuildFromVertices();
 	// BW1W120 007fb730 BW1M119 01086550 (LHCombined Release)
@@ -91,6 +94,10 @@ struct PhysOb
 	void SetUpMoi();
 	// BW1W120 007fc760 BW1M119 01084d60 (LHCombined Release)
 	void SetUpPos();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00818500 BW1M119 null
+	void SetRestSpeedMultiplier(float multiplier);
+#endif
 };
 
 #endif /* BW1_DECOMP_PHYS_OB_INCLUDED_H */

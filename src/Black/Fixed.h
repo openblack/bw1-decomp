@@ -8,6 +8,8 @@
 
 #include "Object.h" /* For struct Object, struct ObjectVftable */
 
+#define FIXED_ARTIFACT_SEARCH_RADIUS 50.0f
+
 // Forward Declares
 
 class Base;
@@ -52,7 +54,7 @@ public:
 	// BW1W120 00401450 BW1M119 015a06c0
 	virtual bool32_t CanBeCrushed() { return true; }
 	// BW1W120 00401460 BW1M119 014190e0
-	virtual bool32_t VillagerMustAvoid(Villager* param_1) { return true; }
+	virtual bool32_t VillagerMustAvoid(Villager* villager) { return true; }
 	// BW1W120 00401470 BW1M119 010b41c0
 	virtual GameThing* GetTownArtifact() { return town_artifact; }
 	// BW1W120 00401480 BW1M119 013e07d0
@@ -74,7 +76,7 @@ public:
 	// BW1W120 0052e0e0 BW1M119 010e6790
 	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* status);
 	// BW1W120 0052df50 BW1M119 010e68a0
-	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map);
 	// BW1W120 0052de50 BW1M119 010e6d40
 	virtual bool32_t GetSpecialPos(uint32_t index, MapCoords* pos);
 	// BW1W120 0052dee0 BW1M119 010e6bc0
@@ -114,22 +116,22 @@ public:
 	// BW1W120 0052e600 BW1M119 010e59e0
 	virtual void RemoveMapObject();
 	// BW1W120 0052f440 BW1M119 010e3790
-	virtual void InsertMapObjectToCell(MapCell* param_1);
+	virtual void InsertMapObjectToCell(MapCell* cell);
 	// BW1W120 0052f450 BW1M119 010e3720
-	virtual void RemoveMapObjectFromCell(MapCell* param_1);
+	virtual void RemoveMapObjectFromCell(MapCell* cell);
 	// BW1W120 00518100 BW1M119 0103aba0
 	virtual void Draw();
 	// BW1W120 0052e880 BW1M119 010e5430
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0052eaf0 BW1M119 010e7670
-	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1) { return true; }
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* status) { return true; }
 	// BW1W120 0052eb00 BW1M119 010e76d0
 	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return true; }
 	// BW1W120 0052eb10 BW1M119 010e7740
 	virtual MESH_LIST GetMesh() const { return info->GetMesh(); }
 	// BW1W120 0052f420 BW1M119 010e3800
 	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
-	                                     GestureSystemPacketData* param_3);
+	                                     GestureSystemPacketData* packet);
 	// BW1W120 0052eb20 BW1M119 010e77b0
 	virtual uint32_t ApplyOnlyAfterReleased() { return true; }
 	// BW1W120 0052eb30 BW1M119 01097980

@@ -75,7 +75,7 @@ public:
 	// BW1W120 0055d4e0 BW1M119 01011560
 	virtual bool IsPoisoned() { return Poisoned != 0; }
 	// BW1W120 0055d4f0 BW1M119 0111fc50
-	virtual bool32_t IsSpeedUp() { return SpeedUp; }
+	virtual bool IsSpeedUp() { return SpeedUp != 0; }
 	// BW1W120 0055d500 BW1M119 0111fc90
 	virtual bool32_t IsPot() { return true; }
 	// BW1W120 0066f530 BW1M119 01120250
@@ -153,9 +153,16 @@ public:
 
 	// Static methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00681f30 BW1M119 null
+	static Pot* Create(const MapCoords& coords, const GPotInfo* info, unsigned long resource, MultiMapFixed* parent,
+	                   Town* town, int param_6, float y_angle, float scale, bool32_t from_building_site,
+	                   int param_10 = 0);
+#else
 	// BW1W120 0066cf10 BW1M119 01125c80
-	static Pot* Create(const MapCoords& coords, const GPotInfo* info, unsigned long resource, MultiMapFixed* param_4,
-	                   Town* town, int param_6, float param_7, float param_8, int param_9);
+	static Pot* Create(const MapCoords& coords, const GPotInfo* info, unsigned long resource, MultiMapFixed* parent,
+	                   Town* town, int param_6, float y_angle, float scale, bool32_t from_building_site);
+#endif
 
 	// Non-virtual methods
 

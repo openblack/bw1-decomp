@@ -13,6 +13,10 @@
 #include "MapCoords.h"        /* For struct JustMapXZ */
 #include "Object.h"           /* For struct Object */
 
+#define MULTI_MAP_FIXED_SOLID_PERCENT_BUILT      0.1f
+#define MULTI_MAP_FIXED_MIN_PERCENT_BUILT        0.01f
+#define MULTI_MAP_FIXED_UNDAMAGED_REPAIRED_SCALE 0.98f
+
 // Forward Declares
 
 class Base;
@@ -94,20 +98,20 @@ public:
 	// Virtual methods
 
 	// BW1W120 0052e2b0 BW1M119 010e60f0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0052eeb0 BW1M119 010e4630
-	virtual uint32_t GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3);
+	virtual uint32_t GetNearestPathTo(const MapCoords& coords, float max_distance, bool32_t backwards);
 	// BW1W120 0052eec0 BW1M119 0109d350
-	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3);
+	virtual void UseFootpathIfNecessary(Living* living, const MapCoords& coords, unsigned char state);
 	// BW1W120 0052ee10 BW1M119 010e4730
 	virtual bool32_t AddFootpath(GFootpath* footpath);
 	// BW1W120 0052ee80 BW1M119 010e4680
 	virtual bool32_t RemoveFootpath(GFootpath* footpath);
 	// BW1W120 0052f180 BW1M119 010e3e80
-	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool param_4,
-	                             const MapCoords* coords, int param_6);
+	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool poisoned,
+	                             const MapCoords* coords, int from_other_player);
 	// BW1W120 0052f1c0 BW1M119 010e3de0
-	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* param_4);
+	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* poisoned);
 	// BW1W120 0052ef70 BW1M119 010622d0
 	virtual bool32_t IsFunctional();
 	// BW1W120 0052f310 BW1M119 010e3990
@@ -131,7 +135,7 @@ public:
 	// BW1W120 0052e7b0 BW1M119 010e5540
 	virtual void RemoveMapObject();
 	// BW1W120 0052e4f0 BW1M119 010e5c80
-	virtual int MoveMapObject(const MapCoords& param_2);
+	virtual int MoveMapObject(const MapCoords& coords);
 	// BW1W120 0052f5e0 BW1M119 0109b760
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0052f700 BW1M119 010529b0
@@ -145,7 +149,7 @@ public:
 	// BW1W120 0052f1f0 BW1M119 010e3d70
 	virtual bool32_t IsResourceStore(RESOURCE_TYPE type);
 	// BW1W120 0052f460 BW1M119 010e3680
-	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status);
 	// BW1W120 0052f210 BW1M119 010e3c60
 	virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status);
 	// BW1W120 0052ec60 BW1M119 010e4d00
@@ -153,7 +157,7 @@ public:
 	// BW1W120 0052f3d0 BW1M119 010e38b0
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0052f490 BW1M119 010e3550
-	virtual bool32_t CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* creature);
 	// BW1W120 0052ef10 BW1M119 010e4500
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 	// BW1W120 0052e490 BW1M119 010e5d30
@@ -276,15 +280,15 @@ public:
 	// Static methods
 
 	// BW1W120 0052dbc0 BW1M119 0103a9d0
-	static int CompareMultiChilds(const void* param_1, const void* param_2);
+	static int CompareMultiChilds(const void* first, const void* second);
 
 	// Constructors
 
 	// BW1W120 0052e1a0 BW1M119 010e65f0
 	MultiMapFixed();
 	// BW1W120 0052e1e0 BW1M119 010e63f0
-	MultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float y_angle, float scale, float param_5,
-	              int param_6);
+	MultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float y_angle, float scale,
+	              float percent_built, int under_construction);
 
 	// Non-virtual Destructors
 

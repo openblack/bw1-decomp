@@ -37,8 +37,6 @@ class Reaction;
 class SpellShield;
 class WorshipSite;
 
-// fabricated: selector returned by GetCreatureBeliefListType, which picks which of a creature's
-// belief lists an object belongs in.
 enum CREATURE_BELIEF_LIST_TYPE
 {
 	CREATURE_BELIEF_LIST_TYPE_OBJECT = 1
@@ -75,15 +73,10 @@ enum OBJECT_ORIGIN
 	OBJECT_ORIGIN_MAGIC = 2
 };
 
-// fabricated: bit meanings of GameThingWithPos::Flags. ON_STRUCTURE is set by the
-// MOVE_ON_STRUCTURE state handler (BW1W120 005ecd00) when a structure is found under the
-// position, together with snapping the altitude onto it. IN_PHYSICS tracks ownership by the
-// physics system. IMMOVABLE, set only by puzzlegame.cpp, makes the object refuse to be moved.
-// INTERACTING gates GInterface::GetInteractObject. LOCKED_SELECT is set and cleared by
-// Creature::NetworkFriendlyStartLockedSelect/EndLockedSelect. INDESTRUCTIBLE is set on puzzle
-// objects and stops both death (Object::SetLife) and destruction by spells.
-// The rest are named after the accessor that reads them; UNAVAILABLE_FOR_STATE_CHANGE is only
-// ever read inverted.
+#define GAME_THING_WITH_POS_FLAG_IN_SCRIPT_BIT            9
+#define GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT_BIT 10
+#define GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST_BIT   15
+
 enum GAME_THING_WITH_POS_FLAGS
 {
 	GAME_THING_WITH_POS_FLAG_IN_MAP = 1 << 0,
@@ -95,13 +88,13 @@ enum GAME_THING_WITH_POS_FLAGS
 	GAME_THING_WITH_POS_FLAG_IN_PHYSICS = 1 << 6,
 	GAME_THING_WITH_POS_FLAG_ON_STRUCTURE = 1 << 7,
 	GAME_THING_WITH_POS_FLAG_0x00000100 = 1 << 8,
-	GAME_THING_WITH_POS_FLAG_IN_SCRIPT = 1 << 9,
-	GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT = 1 << 10,
+	GAME_THING_WITH_POS_FLAG_IN_SCRIPT = 1 << GAME_THING_WITH_POS_FLAG_IN_SCRIPT_BIT,
+	GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT = 1 << GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT_BIT,
 	GAME_THING_WITH_POS_FLAG_DRAGGED_BY_LEASH = 1 << 11,
 	GAME_THING_WITH_POS_FLAG_IMMOVABLE = 1 << 12,
 	GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP = 1 << 13,
 	GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE = 1 << 14,
-	GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST = 1 << 15
+	GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST = 1 << GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST_BIT
 };
 
 class GameThingWithPos : public GameThing
@@ -125,9 +118,9 @@ public:
 	// Override methods
 
 	// BW1W120 0056fe00 BW1M119 0157be90
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0056fe20 BW1M119 01052ad0
-	virtual int Get3DSoundPos(LHPoint* pos);
+	virtual bool32_t Get3DSoundPos(LHPoint* pos);
 	// BW1W120 00570350 BW1M119 01005470
 	virtual void UseFootpathIfNecessary(Living* living, const MapCoords& coords, uint8_t state);
 	// BW1W120 004178f0 BW1M119 011c6dc0
@@ -177,11 +170,11 @@ public:
 	// BW1W120 004019b0 BW1M119 01389fb0
 	virtual void SetHeight(float height) {}
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 004019e0 BW1M119 null
+	// BW1WCI 004019e0 BW1M119 null
 	virtual void CreatureIsleVirtual0x158(uint32_t param_1) {}
-	// BW1W120 null BW1WCI 004019f0 BW1M119 null
+	// BW1WCI 004019f0 BW1M119 null
 	virtual void CreatureIsleVirtual0x15c(uint32_t param_1) {}
-	// BW1W120 null BW1WCI 00401a00 BW1M119 null
+	// BW1WCI 00401a00 BW1M119 null
 	virtual float CreatureIsleVirtual0x160() { return 1.0f; }
 #endif
 	// BW1W120 004019c0 BW1M119 01568be0
@@ -234,15 +227,15 @@ public:
 	// BW1W120 004052e0 BW1M119 013e0a50
 	virtual bool32_t IsCastShadowAtNight() { return false; }
 	// BW1W120 004052f0 BW1M119 010c66d0
-	virtual void CleanupWhenDeleted(int param_1) {}
+	virtual void CleanupWhenDeleted(bool32_t delete_now) {}
 	// BW1W120 0056ff70 BW1M119 01388a80
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
 	// BW1W120 00401a40 BW1M119 0111bb10
 	virtual float GetImpressiveIntensity(IMPRESSIVE_TYPE type) { return 1.0f; }
 	// BW1W120 00405300 BW1M119 010026e0
-	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
+	virtual float GetImpressiveValue(Living* living, Reaction* reaction);
 	// BW1W120 0056feb0 BW1M119 01002740
-	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
+	virtual float GetUpdateOfBoredomValue(Reaction* reaction, GameThingWithPos* reactor);
 	// BW1W120 00401a50 BW1M119 015efff0
 	virtual bool32_t IsTown(Creature* creature) { return false; }
 	// BW1W120 00401a60 BW1M119 01568460
@@ -254,7 +247,7 @@ public:
 	// BW1W120 00401a90 BW1M119 01576280
 	virtual bool32_t IsTownBelongingToAnotherPlayer(Creature* creature) { return false; }
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 00401af0 BW1M119 null
+	// BW1WCI 00401af0 BW1M119 null
 	virtual bool32_t CreatureIsleVirtual0x1ec(uint32_t param_1) { return false; }
 #endif
 	// BW1W120 00401aa0 BW1M119 014ae2b0
@@ -546,7 +539,7 @@ public:
 	// BW1W120 004021e0 BW1M119 013d0440
 	virtual bool32_t IsActive() const { return false; }
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 00402250 BW1M119 null
+	// BW1WCI 00402250 BW1M119 null
 	virtual bool32_t CreatureIsleVirtual0x430() { return false; }
 #endif
 	// BW1W120 004021f0 BW1M119 010b9410
@@ -572,7 +565,7 @@ public:
 	// BW1W120 005702a0 BW1M119 01575170
 	virtual bool ForDrawFXGetVertexPos(int index, LHPoint* pos);
 	// BW1W120 00405510 BW1M119 01003450
-	virtual void SetInScript(int param_1);
+	virtual void SetInScript(bool32_t in_script);
 	// BW1W120 00402240 BW1M119 01057c40
 	virtual void SetControlledByScript(int controlled)
 	{
@@ -633,7 +626,7 @@ public:
 	// BW1W120 004023e0 BW1M119 010a2610
 	virtual bool32_t IsScaffold() { return false; }
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 00402460 BW1M119 null
+	// BW1WCI 00402460 BW1M119 null
 	virtual bool32_t CreatureIsleVirtual0x4c4() { return false; }
 #endif
 	// BW1W120 004023f0 BW1M119 01568cf0
@@ -641,7 +634,7 @@ public:
 	// BW1W120 00402400 BW1M119 01106540
 	virtual bool IsPoisoned() { return false; }
 	// BW1W120 00402410 BW1M119 01162350
-	virtual bool32_t IsSpeedUp() { return false; }
+	virtual bool IsSpeedUp() { return false; }
 	// BW1W120 00402420 BW1M119 011c3600
 	virtual bool32_t IsParticleContainer() { return false; }
 	// BW1W120 00402430 BW1M119 01162300
@@ -651,13 +644,13 @@ public:
 	// BW1W120 00402450 BW1M119 014f81c0
 	virtual bool32_t IsComputerPlayer() { return false; }
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 004024e0 BW1M119 null
+	// BW1WCI 004024e0 BW1M119 null
 	virtual bool CreatureIsleVirtual0x4e4() { return false; }
-	// BW1W120 null BW1WCI 004024f0 BW1M119 null
+	// BW1WCI 004024f0 BW1M119 null
 	virtual bool CreatureIsleVirtual0x4e8() { return false; }
-	// BW1W120 null BW1WCI 00402500 BW1M119 null
+	// BW1WCI 00402500 BW1M119 null
 	virtual bool CreatureIsleVirtual0x4ec() { return false; }
-	// BW1W120 null BW1WCI 00402510 BW1M119 null
+	// BW1WCI 00402510 BW1M119 null
 	virtual bool CreatureIsleVirtual0x4f0() { return false; }
 #endif
 	// BW1W120 005701c0 BW1M119 01381500
@@ -665,7 +658,7 @@ public:
 	// BW1W120 00402460 BW1M119 01553e40
 	virtual void SetSkeleton(bool32_t skeleton) {}
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 00402530 BW1M119 null
+	// BW1WCI 00402530 BW1M119 null
 	virtual void CreatureIsleVirtual0x4fc(uint32_t param_1) {}
 #endif
 	// BW1W120 00402470 BW1M119 0107d710
@@ -677,7 +670,7 @@ public:
 	// BW1W120 004024a0 BW1M119 013f97d0
 	virtual bool32_t IsScriptTimer() { return false; }
 #ifdef VERSION_BW1WCI
-	// BW1W120 null BW1WCI 00402580 BW1M119 null
+	// BW1WCI 00402580 BW1M119 null
 	virtual bool32_t CreatureIsleVirtual0x510() { return false; }
 #endif
 	// BW1W120 004178e0 BW1M119 013e3d40
@@ -729,7 +722,7 @@ public:
 	// BW1W120 004e3ee0 BW1M119 015ee310
 	bool32_t IsInsideCreatureHome(Creature* creature);
 	// BW1W120 0056fe70 BW1M119 013cb710
-	float GetBoredomMultiplier(Reaction* param_1);
+	float GetBoredomMultiplier(Reaction* reaction);
 	// BW1W120 00570160 BW1M119 010bf3e0
 	void SetPos(const LHPoint& pos);
 	// BW1W120 005705d0 BW1M119 0109a960

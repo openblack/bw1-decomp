@@ -36,40 +36,11 @@ extern LHDebugStack gDebugStack;
 // BW1W120 00e905e8
 extern int gDebugStackDepth;
 
-// BW1W120 00e905ec
-// Global (not static): also referenced directly from Black/BaseInfo.cpp (Base::operator new/delete).
-FILE* gMemoryLeakLogFile;
+FILE* LHMemoryLeak::LogFile;
 // BW1W120 00e905f8
 static bool gDebugStackInitialised;
-// BW1W120 00e905ea
-static unsigned char gMemoryLeakListCleaned;
 
-class MemoryLeakRegistry
-{
-public:
-	LHLinkedNode<LHMemoryLeak*>* Head;  /* 0x00e905f0 */
-	uint32_t                     Count; /* 0x00e905f4 */
-
-	MemoryLeakRegistry();
-	~MemoryLeakRegistry()
-	{
-		if ((gMemoryLeakListCleaned & 1) == 0)
-		{
-			gMemoryLeakListCleaned |= 1;
-		}
-	}
-};
-
-MemoryLeakRegistry::MemoryLeakRegistry()
-{
-	Count = 0;
-	Head = NULL;
-}
-
-// Head at 00e905f0, count at 00e905f4.
-// Global (not static): also referenced directly from Black/BaseInfo.cpp (Base::operator new/delete).
-// BW1W120 00e905f0
-MemoryLeakRegistry gMemoryLeakList;
+LHLinkedList<LHMemoryLeak*> LHMemoryLeak::Instances;
 
 template <> int LHLinkedList<char*>::AddToEnd(char* val)
 {
@@ -101,9 +72,9 @@ fail:
 
 void LHMemoryLeak::LeakNode::LogError(const char* msg, bool logStack, bool allocStack)
 {
-	if (gMemoryLeakLogFile)
+	if (LogFile)
 	{
-		fprintf(gMemoryLeakLogFile, "%s(%u): %s\n", FileName, Line, msg);
+		fprintf(LogFile, "%s(%u): %s\n", FileName, Line, msg);
 	}
 	if (logStack)
 	{
@@ -117,28 +88,28 @@ void LHMemoryLeak::LeakNode::LogCallStack(bool allocStack)
 	if (allocStack)
 	{
 		node = AllocStack.head.Get();
-		if (gMemoryLeakLogFile)
+		if (LogFile)
 		{
-			fprintf(gMemoryLeakLogFile, "Allocation call stack:\n");
+			fprintf(LogFile, "Allocation call stack:\n");
 		}
 	}
 	else
 	{
 		node = DeleteStack.head.Get();
-		if (gMemoryLeakLogFile)
+		if (LogFile)
 		{
-			fprintf(gMemoryLeakLogFile, "Deletion call stack:\n");
+			fprintf(LogFile, "Deletion call stack:\n");
 		}
 	}
 	while (node)
 	{
-		if (gMemoryLeakLogFile)
+		if (LogFile)
 		{
-			fprintf(gMemoryLeakLogFile, "     |->%s\n", node->payload);
+			fprintf(LogFile, "     |->%s\n", node->payload);
 		}
 		node = node->next.Get();
 	}
-	fprintf(gMemoryLeakLogFile, "\n");
+	fprintf(LogFile, "\n");
 }
 
 void LHMemoryLeak::LeakNode::GrabFunctionNamesFromDebugStack(LHDebugStack* debugStack, bool allocStack)
@@ -166,10 +137,6 @@ void LHMemoryLeak::LogAllocation(const char* file, int line, void* ptr, int size
 	Map[ptr] = node;
 }
 
-// TODO: nonmatching (99.3%) - the find-in-map body compiles with different register
-// allocation / instruction scheduling than the original (e.g. the gDebugStackDepth and
-// gMemoryLeakLogFile loads are emitted in swapped order), plus the LHLogR
-// UpdateStackInformation import thunk name differs. Not a data/split issue.
 void LHMemoryLeak::LogDeletion(const char* file, int line, void* ptr)
 {
 	gDebugStack.UpdateStackInformation();
@@ -180,26 +147,26 @@ void LHMemoryLeak::LogDeletion(const char* file, int line, void* ptr)
 		if (node->DeletionLogged)
 		{
 			node->LogError("This memory has already been deleted!!.", false, true);
-			if (gMemoryLeakLogFile)
+			if (LogFile)
 			{
-				fprintf(gMemoryLeakLogFile, "First ");
+				fprintf(LogFile, "First ");
 			}
 			node->LogCallStack(false);
-			if (gMemoryLeakLogFile)
+			if (LogFile)
 			{
-				fprintf(gMemoryLeakLogFile, "Second deletion call stack:\n");
+				fprintf(LogFile, "Second deletion call stack:\n");
 			}
 			for (int i = 1; i < (unsigned char)gDebugStackDepth - 3; ++i)
 			{
-				if (gMemoryLeakLogFile)
+				if (LogFile)
 				{
 					const char* name = (unsigned char)i < (unsigned char)gDebugStackDepth
 					                       ? (const char*)&gDebugStack + 512 * (unsigned char)i
 					                       : NULL;
-					fprintf(gMemoryLeakLogFile, "     |->%s\n", name);
+					fprintf(LogFile, "     |->%s\n", name);
 				}
 			}
-			fprintf(gMemoryLeakLogFile, "\n");
+			fprintf(LogFile, "\n");
 		}
 		else
 		{
@@ -216,7 +183,7 @@ void LHMemoryLeak::DumpLeaks()
 		LeakNode* node = (*it).second;
 		if (!node->DeletionLogged && node->ShouldLog)
 		{
-			node->LogError("Memory leak!!", field_11, true);
+			node->LogError("Memory leak!!", LogLeakStacks, true);
 		}
 	}
 }
