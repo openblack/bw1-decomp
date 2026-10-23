@@ -7,6 +7,8 @@ splits: config/BW1W120/splits.txt
 generate_imports: true
 
 block_relocations:
+  - source: 0x0086C1F8
+  - source: 0x0086BC60
 # A 0x009C009B in .data that reads as a pointer into the import lookup tables.
   - source: 0x00C3107C
 # Text in Creature3D.cpp's .data that reads as code addresses: "tic" of PhysicalActionNames' "StartStatic" and
@@ -190,6 +192,48 @@ add_relocations:
     type: x86_abs32
     target: '?page@FontCache@@2PAUCachePage@@A'
     addend: 0x4B9
+  - source: 0x00869C1F
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x00869CB2
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x0086A7A5
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x0086A7D0
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x0086B987
+    type: x86_abs32
+    target: '_sky_texture'
+    addend: 0xC
+  - source: 0x0086A0FC
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD3
+  - source: 0x0086A100
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD9
+  - source: 0x0086A104
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xE9
+  - source: 0x0086A108
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xF9
+  - source: 0x0086A10C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0x109
+  - source: 0x0086A0DB
+    type: x86_abs32
+    target: '__real@4@4002c000000000000000'
 # CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
   - source: 0x004628EC
     type: x86_abs32

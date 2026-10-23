@@ -94,18 +94,10 @@ static inline int RoundPhysicsCell(float value)
 
 static const float RouteMinRadius = 0.05f;
 
-LHMatrix Object::StoredMatrix;
-
 static uint32_t UnusedStatic0 = 0;
 static uint32_t UnusedStatic1 = 0;
 
 GObjectInfo GObjectInfo::Definitions[OBJECT_TYPE_LAST];
-
-struct ObjectCounterPadBetween
-{
-	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8, Pad9, Pad10, Pad11, Pad12, Pad13, Pad14, Pad15,
-		Pad16, Pad17, Pad18;
-};
 
 GObjectInfo GObjectInfo::DefaultAIPlayerObjectInfo;
 
@@ -2309,3 +2301,5 @@ void Object::CreatureIsleVirtual0x108()
 	}
 }
 #endif
+
+LHMatrix Object::StoredMatrix;

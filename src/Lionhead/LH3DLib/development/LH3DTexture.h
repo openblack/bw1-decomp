@@ -7,9 +7,17 @@
 
 #include <re_common.h> /* For bool32_t */
 
+enum TEXTURE_FORMAT_TYPE
+{
+	TEXTURE_FORMAT_DEFAULT = 0,
+	TEXTURE_FORMAT_ADAPTIVE = 1,
+	TEXTURE_FORMAT_FIXED_32 = 2,
+	TEXTURE_FORMAT_FIXED_256 = 3,
+};
+
 struct TextureFormat
 {
-	uint32_t Type; /* 0x0 */
+	TEXTURE_FORMAT_TYPE Type; /* 0x0 */
 
 	// BW1W120 00838500 BW1M119 01034c80 (LHCombined Release)
 	int GetWidth();
@@ -32,7 +40,7 @@ public:
 	void*         Surface; /* 0x0 */
 	long          Pitch;   /* 0x4 */
 	unsigned long Width;   /* 0x8 */
-	unsigned long Height;  /* 0xc */
+	long          Height;
 };
 static_assert(sizeof(LH3DSurfDesc) == 0x10, "Data type is of wrong size");
 
@@ -50,6 +58,8 @@ struct LH3DSRAMTex
 
 struct LH3DTexture
 {
+	// BW1W120 00edd46c BW1M119 013404c4 (LHCombined Release)
+	static bool32_t g_b_use_565;
 	// BW1W120 00edd470 BW1M119 013404c0 (LHCombined Release)
 	static int g_b_use_low_res;
 	// BW1W120 00edd460 BW1M119 013404d0 (LHCombined Release)

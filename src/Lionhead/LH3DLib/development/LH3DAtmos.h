@@ -1,10 +1,22 @@
 #ifndef BW1_DECOMP_LH3D_ATMOS_INCLUDED_H
 #define BW1_DECOMP_LH3D_ATMOS_INCLUDED_H
 
+#include <stdint.h>
+
 #include "LHPoint.h"
 #include "WeatherInfo.h"
 
 struct LH3DMaterial;
+struct LH3DColor;
+
+#define LH3D_ATMOS_COLOUR_SAMPLES         32
+#define LH3D_ATMOS_VERTEX_BUFFERS         3
+#define LH3D_ATMOS_ALIGNMENT_FADE_DIVISOR 150
+
+enum LH3D_ATMOS_ALIGNMENT_FLAGS
+{
+	LH3D_ATMOS_ALIGNMENT_TRANSITION = 1,
+};
 
 // Original free callback; storage remains in the extracted LH3DAtmos TU.
 // BW1W120 00edd3a0
@@ -13,11 +25,26 @@ extern void(__stdcall* g_water_drop_cb)(LHPoint&, float, unsigned long);
 class LH3DAtmos
 {
 public:
+	// BW1W120 00edc35c BW1M119 013453f8 (LHCombined Release)
+	static uint32_t* scv;
+	// BW1W120 00edc304 BW1M119 013453ac (LHCombined Release)
+	static float* v_uv[LH3D_ATMOS_VERTEX_BUFFERS];
+	// BW1W120 00edc310 BW1M119 013453b8 (LHCombined Release)
+	static long* v_idx[LH3D_ATMOS_VERTEX_BUFFERS];
+	// BW1W120 00edc31c BW1M119 013453c4 (LHCombined Release)
+	static LHPoint* v_pnt[LH3D_ATMOS_VERTEX_BUFFERS];
+	// BW1W120 00edc328 BW1M119 013453d0 (LHCombined Release)
+	static LH3DColor* v_col[LH3D_ATMOS_VERTEX_BUFFERS];
+	// BW1W120 00edc360 BW1M119 01345414 (LHCombined Release)
+	static uint32_t flags;
+	// BW1W120 00edc374 BW1M119 0134543c (LHCombined Release)
+	static int glowlevel;
 	// Descriptive names for original atmosphere-owned storage, initialized by 00835ad0.
 	// Declaration only: storage remains in the extracted LH3DAtmos unit.
-	static unsigned int  IsOpen;           // 00edd38c
-	static LH3DMaterial* AdditiveMaterial; // 00edc364, render mode 0xd
-	static LH3DMaterial* AtmosMaterial;    // 00edc368, render mode 6
+	static unsigned int IsOpen; // 00edd38c
+	// BW1W120 00edc364 BW1M119 01345420 (LHCombined Release)
+	static LH3DMaterial* mat1;
+	static LH3DMaterial* AtmosMaterial; // 00edc368, render mode 6
 
 	// BW1W120 00834f80 BW1M119 010231f0 (LHCombined Release)
 	static WeatherInfo GetWeather(const LHPoint& point, int recalc);

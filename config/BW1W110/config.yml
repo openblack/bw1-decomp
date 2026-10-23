@@ -6,6 +6,8 @@ symbols: config/BW1W110/symbols.txt
 splits: config/BW1W110/splits.txt
 
 block_relocations:
+  - source: 0x0085BA70
+  - source: 0x0085C008
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.
   - source: 0x009BAE44
   - source: 0x009BAEA8
@@ -57,6 +59,48 @@ add_relocations:
     type: x86_abs32
     target: '?page@FontCache@@2PAUCachePage@@A'
     addend: 0x4B9
+  - source: 0x00859A2F
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x00859AC2
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x0085A5B5
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x0085A5E0
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x0085B797
+    type: x86_abs32
+    target: '_sky_texture'
+    addend: 0xC
+  - source: 0x00859F0C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD3
+  - source: 0x00859F10
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD9
+  - source: 0x00859F14
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xE9
+  - source: 0x00859F18
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xF9
+  - source: 0x00859F1C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0x109
+  - source: 0x00859EEB
+    type: x86_abs32
+    target: '__real@4@4002c000000000000000'
 # CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
   - source: 0x00461B2C
     type: x86_abs32
