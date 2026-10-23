@@ -78,12 +78,12 @@ int   LH3DSky::LightningGlow = 0;
 Bitmap16B* LoadTextureCitadel(char* name, unsigned char* data);
 
 // BW1W120 00869670 BW1M119 inlined
-static bool UseDayAndNight();
+bool UseDayAndNight();
 
 // BW1W120 00869770 BW1M119 inlined
-static uint32_t ClampSkyChannel(uint32_t value);
+uint32_t ClampSkyChannel(uint32_t value);
 // BW1W120 00869790 BW1M119 01038270 (LHCombined Release)
-static unsigned long BRIGHTENINTERP(unsigned long from, unsigned long to, unsigned long amount);
+unsigned long BRIGHTENINTERP(unsigned long from, unsigned long to, unsigned long amount);
 
 #if defined(VERSION_BW1WCI)
 // BW1W120 null BW1WCI inlined BW1M119 null
@@ -114,12 +114,54 @@ static inline uint16_t AverageSky565(uint16_t first, uint16_t second)
 }
 #endif
 
-static bool UseDayAndNight()
+bool UseDayAndNight()
 {
 	return LH3DLevelOfDetail::g_b_use_day_and_night && !LH3DTexture::g_b_use_low_res;
 }
 
-static uint32_t ClampSkyChannel(uint32_t value)
+#if !defined(VERSION_BW1W100)
+LH3DColor LH3DSky::Interpolate444Colour(uint16_t from, uint16_t to, int amount)
+{
+	LH3DColor result;
+	if (amount <= 0)
+	{
+		int red = (from >> SKY_444_RED_SHIFT) & SKY_444_CHANNEL_MASK;
+		int green = (from >> SKY_444_CHANNEL_BITS) & SKY_444_CHANNEL_MASK;
+		int blue = from & SKY_444_CHANNEL_MASK;
+		int rgb = (((red << SKY_COLOUR_CHANNEL_BITS) + green) << SKY_COLOUR_CHANNEL_BITS) + blue;
+		result = LH3DColor(rgb << SKY_444_CHANNEL_BITS);
+	}
+	else if (amount >= SKY_BLEND_SCALE)
+	{
+		int red = (to >> SKY_444_RED_SHIFT) & SKY_444_CHANNEL_MASK;
+		int green = (to >> SKY_444_CHANNEL_BITS) & SKY_444_CHANNEL_MASK;
+		int blue = to & SKY_444_CHANNEL_MASK;
+		int rgb = (((red << SKY_COLOUR_CHANNEL_BITS) + green) << SKY_COLOUR_CHANNEL_BITS) + blue;
+		result = LH3DColor(rgb << SKY_444_CHANNEL_BITS);
+	}
+	else
+	{
+		int red = (from >> SKY_444_RED_SHIFT) & SKY_444_CHANNEL_MASK;
+		int green = (from >> SKY_444_CHANNEL_BITS) & SKY_444_CHANNEL_MASK;
+		int blue = from & SKY_444_CHANNEL_MASK;
+		red =
+			((((to >> SKY_444_RED_SHIFT) & SKY_444_CHANNEL_MASK) - red) * amount + (red << SKY_BLEND_FRACTION_BITS)) >>
+			SKY_444_CHANNEL_BITS;
+		green = ((((to >> SKY_444_CHANNEL_BITS) & SKY_444_CHANNEL_MASK) - green) * amount +
+		         (green << SKY_BLEND_FRACTION_BITS)) >>
+		        SKY_444_CHANNEL_BITS;
+		blue =
+			(((to & SKY_444_CHANNEL_MASK) - blue) * amount + (blue << SKY_BLEND_FRACTION_BITS)) >> SKY_444_CHANNEL_BITS;
+		result.r = red;
+		result.g = green;
+		result.b = blue;
+	}
+	result.a = SKY_COLOUR_ALPHA_MAX;
+	return result;
+}
+#endif
+
+uint32_t ClampSkyChannel(uint32_t value)
 {
 	if (value > SKY_COLOUR_ALPHA_MAX)
 	{
@@ -128,7 +170,7 @@ static uint32_t ClampSkyChannel(uint32_t value)
 	return value;
 }
 
-static unsigned long BRIGHTENINTERP(unsigned long from, unsigned long to, unsigned long amount)
+unsigned long BRIGHTENINTERP(unsigned long from, unsigned long to, unsigned long amount)
 {
 	uint32_t divisor = (uint32_t)(SKY_COLOUR_BOOST_BASE - LH3DLevelOfDetail::g_colour_boost * SKY_COLOUR_BOOST_SCALE);
 	unsigned long inverse = SKY_COLOUR_ALPHA_MAX - amount;
@@ -682,7 +724,7 @@ void LH3DSky::DrawMoonPost(LH3DColor& colour, LHMatrix& matrix, LHMatrix& moon_m
 	vertex = LH3DAtmos::v_pnt[0] + SKY_MOON_CORNER_UPPER_RIGHT;
 	LHMATRIX_TRANSFORM_POINT(*vertex, upperRight, matrix);
 	LH3DTech::Draw3DWorldTriangle(SKY_MOON_CORNER_LAST, LH3DAtmos::v_pnt[0], LH3DAtmos::v_col[0], LH3DAtmos::v_uv[0],
-	                              SKY_MOON_TRIANGLE_COUNT, LH3DAtmos::v_idx[0], LH3DAtmos::AdditiveMaterial, false);
+	                              SKY_MOON_TRIANGLE_COUNT, LH3DAtmos::v_idx[0], LH3DAtmos::mat1, false);
 	moonobj->matrix.Set(moon_matrix);
 	moonobj->SetColorSpecular(colour.GetColor(), 0);
 	moonobj->SetDrawWithGlobalAlpha(true);
@@ -732,255 +774,6 @@ void LH3DSky::CalcMoonMat(LHPoint& pos, LHMatrix& matrix, LHMatrix& moon_matrix)
 	moon_matrix.RotateZ((moonflip ? -1 : 1) * SKY_MOON_TILT_ANGLE);
 	moon_matrix.RotateY(moonphase + PI_F);
 	moon_matrix.ScaleMatrixOnly(SKY_MOON_SHADING_SCALE);
-}
-
-LH3DColor LH3DSky::Interpolate444Colour(uint16_t from, uint16_t to, int amount)
-{
-	LH3DColor result;
-	if (amount <= 0)
-	{
-		int red = (from >> SKY_444_RED_SHIFT) & SKY_444_CHANNEL_MASK;
-		int green = (from >> SKY_444_CHANNEL_BITS) & SKY_444_CHANNEL_MASK;
-		int blue = from & SKY_444_CHANNEL_MASK;
-		int rgb = (((red << SKY_COLOUR_CHANNEL_BITS) + green) << SKY_COLOUR_CHANNEL_BITS) + blue;
-		result = LH3DColor(rgb << SKY_444_CHANNEL_BITS);
-	}
-	else if (amount >= SKY_BLEND_SCALE)
-	{
-		int red = (to >> SKY_444_RED_SHIFT) & SKY_444_CHANNEL_MASK;
-		int green = (to >> SKY_444_CHANNEL_BITS) & SKY_444_CHANNEL_MASK;
-		int blue = to & SKY_444_CHANNEL_MASK;
-		int rgb = (((red << SKY_COLOUR_CHANNEL_BITS) + green) << SKY_COLOUR_CHANNEL_BITS) + blue;
-		result = LH3DColor(rgb << SKY_444_CHANNEL_BITS);
-	}
-	else
-	{
-		int red = (from >> SKY_444_RED_SHIFT) & SKY_444_CHANNEL_MASK;
-		int green = (from >> SKY_444_CHANNEL_BITS) & SKY_444_CHANNEL_MASK;
-		int blue = from & SKY_444_CHANNEL_MASK;
-		red =
-			((((to >> SKY_444_RED_SHIFT) & SKY_444_CHANNEL_MASK) - red) * amount + (red << SKY_BLEND_FRACTION_BITS)) >>
-			SKY_444_CHANNEL_BITS;
-		green = ((((to >> SKY_444_CHANNEL_BITS) & SKY_444_CHANNEL_MASK) - green) * amount +
-		         (green << SKY_BLEND_FRACTION_BITS)) >>
-		        SKY_444_CHANNEL_BITS;
-		blue =
-			(((to & SKY_444_CHANNEL_MASK) - blue) * amount + (blue << SKY_BLEND_FRACTION_BITS)) >> SKY_444_CHANNEL_BITS;
-		result.r = red;
-		result.g = green;
-		result.b = blue;
-	}
-	result.a = SKY_COLOUR_ALPHA_MAX;
-	return result;
-}
-
-float LH3DSky::GetSunVisibility()
-{
-	static float sampleOffset = SKY_SUN_SAMPLE_OFFSET;
-	LHPoint      samples[] = {
-		LHPoint(0.0f, 0.0f, 0.0f),
-		LHPoint(-sampleOffset, -sampleOffset, 0.0f),
-		LHPoint(-sampleOffset, sampleOffset, 0.0f),
-		LHPoint(sampleOffset, -sampleOffset, 0.0f),
-		LHPoint(sampleOffset, sampleOffset, 0.0f),
-	};
-	LHPoint direction = g_sun_pos;
-	direction -= LH3DTech::g_camera.pos;
-	direction.SetSize(LH3DTech::g_info_transform.NearClip);
-	HRESULT        lockResult = S_FALSE;
-	bool32_t       readDepth = g_b_zbuffer_16b;
-	DDSURFACEDESC2 surface;
-	if (LH3DLevelOfDetail::g_detail_idx != LH3DLevelOfDetail::DETAIL_PRESET_CONFIG_3 &&
-	    LH3DLevelOfDetail::g_detail_idx != LH3DLevelOfDetail::DETAIL_PRESET_CONFIG_4 &&
-	    LH3DLevelOfDetail::g_detail_idx != LH3DLevelOfDetail::DETAIL_PRESET_CONFIG_6)
-	{
-		readDepth = false;
-	}
-	if (readDepth)
-	{
-		memset(&surface, 0, sizeof(surface));
-		surface.dwSize = sizeof(surface);
-		lockResult =
-			LH3DRender::ZBufferSurface->Lock(NULL, &surface, DDLOCK_WAIT | DDLOCK_READONLY | DDLOCK_NOSYSLOCK, NULL);
-	}
-	float occludedSamples = 0.0f;
-	for (int i = 0; i < ARRAY_SIZE(samples); ++i)
-	{
-		samples[i] += g_sun_pos;
-		samples[i] += direction;
-		if (samples[i].y < SKY_SUN_MIN_HEIGHT)
-		{
-			samples[i].y = SKY_SUN_MIN_HEIGHT;
-		}
-		float    hitX, hitZ;
-		bool32_t occluded = LH3DIsland::RayCast(LH3DTech::g_camera.pos, samples[i], &hitX, &hitZ);
-		if (!occluded && lockResult == DD_OK && readDepth)
-		{
-			int x, y;
-			if (LH3DTech::ProjectPoint(&samples[i], &x, &y) == LH3D_PROJECT_ON_SCREEN)
-			{
-				if (x < 0)
-				{
-					x = 0;
-				}
-				if (y < 0)
-				{
-					y = 0;
-				}
-				if (x >= surface.dwWidth)
-				{
-					x = surface.dwWidth - 1;
-				}
-				if (y >= surface.dwHeight)
-				{
-					y = surface.dwHeight - 1;
-				}
-				uint16_t* depth = (uint16_t*)surface.lpSurface;
-				if (depth[x + surface.lPitch * y / (int)sizeof(*depth)] < SKY_SUN_DEPTH_THRESHOLD)
-				{
-					occluded = true;
-				}
-			}
-		}
-		occludedSamples += (occluded != false);
-	}
-	if (readDepth)
-	{
-		LH3DRender::ZBufferSurface->Unlock(NULL);
-	}
-	return (1.0f - occludedSamples / ARRAY_SIZE(samples)) * SKY_SUN_ALPHA_MAX;
-}
-
-float LH3DSky::GetSunAltitude()
-{
-	float time = Time2OldSkoolTime(curtime);
-	float foldedTime = time;
-	if (foldedTime > SKY_SUNSET_TIME)
-	{
-		foldedTime = SKY_SUNSET_TIME;
-	}
-	else if (foldedTime < SKY_SUNRISE_TIME)
-	{
-		foldedTime = SKY_SUNRISE_TIME;
-	}
-	if (foldedTime > SKY_NOON_TIME)
-	{
-		foldedTime = SKY_NOON_TIME - (foldedTime - SKY_NOON_TIME);
-	}
-	float altitude = (foldedTime - SKY_SUNRISE_TIME) * SKY_SUN_ALTITUDE_SCALE;
-	g_alpha_sun = SKY_SUN_ALPHA_MAX;
-	if (time < SKY_SUNRISE_TIME)
-	{
-		if (time < SKY_SUN_FADE_START)
-		{
-			g_alpha_sun = 0.0f;
-		}
-		else
-		{
-			g_alpha_sun = (time - SKY_SUN_FADE_START) * SKY_SUN_FADE_SCALE;
-		}
-	}
-	if (time > SKY_SUNSET_TIME)
-	{
-		if (time > SKY_SUN_FADE_END)
-		{
-			g_alpha_sun = 0.0f;
-		}
-		else
-		{
-			g_alpha_sun = SKY_SUN_ALPHA_MAX - (time - SKY_SUNSET_TIME) * SKY_SUN_FADE_SCALE;
-		}
-	}
-	return altitude * SKY_SUN_ALTITUDE_MAX;
-}
-
-void LH3DSky::DrawSun()
-{
-	if (g_b_we_are_inside_citadel)
-	{
-		return;
-	}
-	g_sun_pos.y = GetSunAltitude();
-	if (g_alpha_sun == 0.0f)
-	{
-		return;
-	}
-	sunobj->SetPosition(g_sun_pos, PI_F - QUARTER_PI_F, 1.0f);
-	sunobj->SetNeedClipping(true);
-	int alpha = (int)g_alpha_sun;
-	if (overcast > 0.0f && LH3DIsland::g_b_use_fog)
-	{
-		alpha = (int)(alpha / (overcast * SKY_SUN_OVERCAST_SCALE + 1.0f));
-	}
-	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_DISC_COLOUR, 0);
-#if defined(VERSION_BW1WCI)
-	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
-#endif
-	sunobj->Draw();
-#if defined(VERSION_BW1WCI)
-	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
-#endif
-	g_b_pre_draw = true;
-}
-
-float LH3DSky::ComputeAlphaEclairagePublique()
-{
-	static float eveningStart = SKY_PUBLIC_LIGHTS_DUSK;
-	static float morningEnd = SKY_PUBLIC_LIGHTS_DAWN;
-	static float fadeDuration = SKY_PUBLIC_LIGHTS_FADE;
-	float        time = Time2OldSkoolTime(curtime);
-	if (time > eveningStart)
-	{
-		if (time > eveningStart + fadeDuration)
-		{
-			return SKY_SUN_ALPHA_MAX;
-		}
-		return (time - eveningStart) * SKY_SUN_ALPHA_MAX / fadeDuration;
-	}
-	if (time > morningEnd)
-	{
-		return 0.0f;
-	}
-	if (time < morningEnd - fadeDuration)
-	{
-		return SKY_SUN_ALPHA_MAX;
-	}
-	return (morningEnd - time) * SKY_SUN_ALPHA_MAX / fadeDuration;
-}
-
-void LH3DSky::PostDrawSun()
-{
-	if (g_alpha_sun == 0.0f || !g_b_pre_draw || g_b_we_are_inside_citadel)
-	{
-		return;
-	}
-	g_b_pre_draw = false;
-	static float visibility = 0.0f;
-	float        newVisibility = GetSunVisibility();
-	float        response = LH3DTech::GetGameTimeInc() / SKY_SUN_RESPONSE_TIME;
-	visibility += (newVisibility - visibility) * response;
-	if (visibility > SKY_SUN_ALPHA_MAX)
-	{
-		visibility = SKY_SUN_ALPHA_MAX;
-	}
-	else if (visibility < 0.0f)
-	{
-		visibility = 0.0f;
-	}
-	int alpha = (int)(visibility * g_alpha_sun * SKY_SUN_ALPHA_SCALE);
-	if (overcast > 0.0f && LH3DIsland::g_b_use_fog)
-	{
-		alpha = (int)(alpha / (overcast * SKY_SUN_OVERCAST_SCALE + 1.0f));
-	}
-#if defined(VERSION_BW1WCI)
-	alpha = (int)((1.0f - LH3DWideScreen::g_fvalue) * alpha);
-#endif
-	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_COLOUR, 0);
-	sunobj->SetPosition(g_sun_pos, PI_F - QUARTER_PI_F, SKY_SUN_SCALE);
-	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
-	sunobj->SetNeedClipping(true);
-	sunobj->Draw();
-	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
 }
 
 void LH3DSky::Draw()
@@ -1323,4 +1116,213 @@ void LH3DSky::Interpolate555Texture(uint16_t* dest, uint16_t* source1, uint16_t*
 			pop ebp
 		}
 	}
+}
+
+void LH3DSky::PostDrawSun()
+{
+	if (g_alpha_sun == 0.0f || !g_b_pre_draw || g_b_we_are_inside_citadel)
+	{
+		return;
+	}
+	g_b_pre_draw = false;
+	static float visibility = 0.0f;
+	float        newVisibility = GetSunVisibility();
+	float        response = LH3DTech::GetGameTimeInc() / SKY_SUN_RESPONSE_TIME;
+	visibility += (newVisibility - visibility) * response;
+	if (visibility > SKY_SUN_ALPHA_MAX)
+	{
+		visibility = SKY_SUN_ALPHA_MAX;
+	}
+	else if (visibility < 0.0f)
+	{
+		visibility = 0.0f;
+	}
+	int alpha = (int)(visibility * g_alpha_sun * SKY_SUN_ALPHA_SCALE);
+	if (overcast > 0.0f && LH3DIsland::g_b_use_fog)
+	{
+		alpha = (int)(alpha / (overcast * SKY_SUN_OVERCAST_SCALE + 1.0f));
+	}
+#if defined(VERSION_BW1WCI)
+	alpha = (int)((1.0f - LH3DWideScreen::g_fvalue) * alpha);
+#endif
+	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_COLOUR, 0);
+	sunobj->SetPosition(g_sun_pos, PI_F - QUARTER_PI_F, SKY_SUN_SCALE);
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
+	sunobj->SetNeedClipping(true);
+	sunobj->Draw();
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
+}
+
+float LH3DSky::GetSunVisibility()
+{
+	static float sampleOffset = SKY_SUN_SAMPLE_OFFSET;
+	LHPoint      samples[] = {
+		LHPoint(0.0f, 0.0f, 0.0f),
+		LHPoint(-sampleOffset, -sampleOffset, 0.0f),
+		LHPoint(-sampleOffset, sampleOffset, 0.0f),
+		LHPoint(sampleOffset, -sampleOffset, 0.0f),
+		LHPoint(sampleOffset, sampleOffset, 0.0f),
+	};
+	LHPoint direction = g_sun_pos;
+	direction -= LH3DTech::g_camera.pos;
+	direction.SetSize(LH3DTech::g_info_transform.NearClip);
+	HRESULT        lockResult = S_FALSE;
+	bool32_t       readDepth = g_b_zbuffer_16b;
+	DDSURFACEDESC2 surface;
+	if (LH3DLevelOfDetail::g_detail_idx != LH3DLevelOfDetail::DETAIL_PRESET_CONFIG_3 &&
+	    LH3DLevelOfDetail::g_detail_idx != LH3DLevelOfDetail::DETAIL_PRESET_CONFIG_4 &&
+	    LH3DLevelOfDetail::g_detail_idx != LH3DLevelOfDetail::DETAIL_PRESET_CONFIG_6)
+	{
+		readDepth = false;
+	}
+	if (readDepth)
+	{
+		memset(&surface, 0, sizeof(surface));
+		surface.dwSize = sizeof(surface);
+		lockResult =
+			LH3DRender::ZBufferSurface->Lock(NULL, &surface, DDLOCK_WAIT | DDLOCK_READONLY | DDLOCK_NOSYSLOCK, NULL);
+	}
+	float occludedSamples = 0.0f;
+	for (int i = 0; i < ARRAY_SIZE(samples); ++i)
+	{
+		samples[i] += g_sun_pos;
+		samples[i] += direction;
+		if (samples[i].y < SKY_SUN_MIN_HEIGHT)
+		{
+			samples[i].y = SKY_SUN_MIN_HEIGHT;
+		}
+		float    hitX, hitZ;
+		bool32_t occluded = LH3DIsland::RayCast(LH3DTech::g_camera.pos, samples[i], &hitX, &hitZ);
+		if (!occluded && lockResult == DD_OK && readDepth)
+		{
+			int x, y;
+			if (LH3DTech::ProjectPoint(&samples[i], &x, &y) == LH3D_PROJECT_ON_SCREEN)
+			{
+				if (x < 0)
+				{
+					x = 0;
+				}
+				if (y < 0)
+				{
+					y = 0;
+				}
+				if (x >= surface.dwWidth)
+				{
+					x = surface.dwWidth - 1;
+				}
+				if (y >= surface.dwHeight)
+				{
+					y = surface.dwHeight - 1;
+				}
+				uint16_t* depth = (uint16_t*)surface.lpSurface;
+				if (depth[x + surface.lPitch * y / (int)sizeof(*depth)] < SKY_SUN_DEPTH_THRESHOLD)
+				{
+					occluded = true;
+				}
+			}
+		}
+		occludedSamples += (occluded != false);
+	}
+	if (readDepth)
+	{
+		LH3DRender::ZBufferSurface->Unlock(NULL);
+	}
+	return (1.0f - occludedSamples / ARRAY_SIZE(samples)) * SKY_SUN_ALPHA_MAX;
+}
+
+float LH3DSky::GetSunAltitude()
+{
+	float time = Time2OldSkoolTime(curtime);
+	float foldedTime = time;
+	if (foldedTime > SKY_SUNSET_TIME)
+	{
+		foldedTime = SKY_SUNSET_TIME;
+	}
+	else if (foldedTime < SKY_SUNRISE_TIME)
+	{
+		foldedTime = SKY_SUNRISE_TIME;
+	}
+	if (foldedTime > SKY_NOON_TIME)
+	{
+		foldedTime = SKY_NOON_TIME - (foldedTime - SKY_NOON_TIME);
+	}
+	float altitude = (foldedTime - SKY_SUNRISE_TIME) * SKY_SUN_ALTITUDE_SCALE;
+	g_alpha_sun = SKY_SUN_ALPHA_MAX;
+	if (time < SKY_SUNRISE_TIME)
+	{
+		if (time < SKY_SUN_FADE_START)
+		{
+			g_alpha_sun = 0.0f;
+		}
+		else
+		{
+			g_alpha_sun = (time - SKY_SUN_FADE_START) * SKY_SUN_FADE_SCALE;
+		}
+	}
+	if (time > SKY_SUNSET_TIME)
+	{
+		if (time > SKY_SUN_FADE_END)
+		{
+			g_alpha_sun = 0.0f;
+		}
+		else
+		{
+			g_alpha_sun = SKY_SUN_ALPHA_MAX - (time - SKY_SUNSET_TIME) * SKY_SUN_FADE_SCALE;
+		}
+	}
+	return altitude * SKY_SUN_ALTITUDE_MAX;
+}
+
+void LH3DSky::DrawSun()
+{
+	if (g_b_we_are_inside_citadel)
+	{
+		return;
+	}
+	g_sun_pos.y = GetSunAltitude();
+	if (g_alpha_sun == 0.0f)
+	{
+		return;
+	}
+	sunobj->SetPosition(g_sun_pos, PI_F - QUARTER_PI_F, 1.0f);
+	sunobj->SetNeedClipping(true);
+	int alpha = (int)g_alpha_sun;
+	if (overcast > 0.0f && LH3DIsland::g_b_use_fog)
+	{
+		alpha = (int)(alpha / (overcast * SKY_SUN_OVERCAST_SCALE + 1.0f));
+	}
+	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_DISC_COLOUR, 0);
+#if defined(VERSION_BW1WCI)
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
+#endif
+	sunobj->Draw();
+#if defined(VERSION_BW1WCI)
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
+#endif
+	g_b_pre_draw = true;
+}
+
+float LH3DSky::ComputeAlphaEclairagePublique()
+{
+	static float eveningStart = SKY_PUBLIC_LIGHTS_DUSK;
+	static float morningEnd = SKY_PUBLIC_LIGHTS_DAWN;
+	static float fadeDuration = SKY_PUBLIC_LIGHTS_FADE;
+	float        time = Time2OldSkoolTime(curtime);
+	if (time > eveningStart)
+	{
+		if (time > eveningStart + fadeDuration)
+		{
+			return SKY_SUN_ALPHA_MAX;
+		}
+		return (time - eveningStart) * SKY_SUN_ALPHA_MAX / fadeDuration;
+	}
+	if (time > morningEnd)
+	{
+		return 0.0f;
+	}
+	if (time < morningEnd - fadeDuration)
+	{
+		return SKY_SUN_ALPHA_MAX;
+	}
+	return (morningEnd - time) * SKY_SUN_ALPHA_MAX / fadeDuration;
 }
