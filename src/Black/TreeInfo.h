@@ -39,7 +39,7 @@ public:
 	// BW1W120 00749d60 BW1M119 0115d890
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 	// BW1W120 0074c5c0 BW1M119 0115de10
-	virtual void UpdateValue(float value, unsigned long offset, unsigned long param_3);
+	virtual void UpdateValue(float value, unsigned long offset, unsigned long unused);
 
 	// Static data
 
@@ -56,6 +56,10 @@ public:
 	INFO_DATA_BLOCK(GrowingMesh, MaxNumTreesCanProduce)
 	INFO_DERIVED_LOADERS(GSingleMapFixedInfo, "Tree.h", 23)
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(GTreeInfo) == 0x144, "Data type is of wrong size");
+#else
 static_assert(sizeof(GTreeInfo) == 0x140, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_TREE_INFO_INCLUDED_H */
