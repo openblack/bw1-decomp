@@ -62,6 +62,7 @@ struct LH3DMesh;
 #define SKY_COLOUR_BOOST_BASE      200.0f
 #define SKY_COLOUR_BOOST_SCALE     130.0f
 #define SKY_OVERCAST_COLOUR_LOSS   96.0f
+#define SKY_COLOUR_BLACK           0x00000000
 #define SKY_COLOUR_WHITE           0xffffffff
 #define SKY_FOG_RED_WEIGHT         1
 #define SKY_FOG_GREEN_WEIGHT       4

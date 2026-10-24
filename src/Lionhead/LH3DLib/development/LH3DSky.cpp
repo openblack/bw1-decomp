@@ -730,12 +730,12 @@ void LH3DSky::DrawMoonPost(LH3DColor& colour, LHMatrix& matrix, LHMatrix& moon_m
 	LH3DTech::Draw3DWorldTriangle(SKY_MOON_CORNER_LAST, LH3DAtmos::v_pnt[0], LH3DAtmos::v_col[0], LH3DAtmos::v_uv[0],
 	                              SKY_MOON_TRIANGLE_COUNT, LH3DAtmos::v_idx[0], LH3DAtmos::mat1, false);
 	moonobj->matrix.Set(moon_matrix);
-	moonobj->SetColorSpecular(colour.GetColor(), 0);
+	moonobj->SetColorSpecular(colour.GetColor(), SKY_COLOUR_BLACK);
 	moonobj->SetDrawWithGlobalAlpha(true);
 	if (!moonflip)
 	{
 		moonobj->Draw();
-		moonobj->SetColorSpecular(colour.GetColor(), 0);
+		moonobj->SetColorSpecular(colour.GetColor(), SKY_COLOUR_BLACK);
 		moonobj->SetDrawWithGlobalAlpha(true);
 		moonobj->DrawUnderWater();
 	}
@@ -839,8 +839,8 @@ void LH3DSky::Draw()
 	{
 		evil = SKY_ALIGNMENT_EVIL;
 	}
-	int alignmentAlpha;
-	int firstSky, secondSky;
+	int           alignmentAlpha;
+	SKY_ALIGNMENT firstSky, secondSky;
 	if (!(evil > SKY_ALIGNMENT_NEUTRAL))
 	{
 		alignmentAlpha = (int)(evil * SKY_COLOUR_ALPHA_MAX);
@@ -897,12 +897,12 @@ void LH3DSky::Draw()
 	{
 		diffuse = topColour;
 	}
-	specular = LH3DIsland::g_b_use_fog ? LH3D_BLEND_COLOR(0, fogColour, fog) : 0;
+	specular = LH3DIsland::g_b_use_fog ? LH3D_BLEND_COLOR(SKY_COLOUR_BLACK, fogColour, fog) : SKY_COLOUR_BLACK;
 	if (LH3DAtmos::flags & LH3D_ATMOS_ALIGNMENT_TRANSITION)
 	{
 		int fade = LH3DAtmos::glowlevel * LH3DAtmos::glowlevel / LH3D_ATMOS_ALIGNMENT_FADE_DIVISOR;
-		diffuse = LH3D_BLEND_COLOR(diffuse, 0, fade);
-		specular = LH3D_BLEND_COLOR(specular, 0, fade);
+		diffuse = LH3D_BLEND_COLOR(diffuse, SKY_COLOUR_BLACK, fade);
+		specular = LH3D_BLEND_COLOR(specular, SKY_COLOUR_BLACK, fade);
 	}
 	if (LightningGlow)
 	{
@@ -1182,7 +1182,7 @@ void LH3DSky::PostDrawSun()
 #if defined(VERSION_BW1WCI)
 	alpha = (int)((1.0f - LH3DWideScreen::g_fvalue) * alpha);
 #endif
-	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_COLOUR, 0);
+	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_COLOUR, SKY_COLOUR_BLACK);
 	sunobj->SetPosition(g_sun_pos, PI_F - QUARTER_PI_F, SKY_SUN_SCALE);
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
 	sunobj->SetNeedClipping(true);
@@ -1328,7 +1328,7 @@ void LH3DSky::DrawSun()
 	{
 		alpha = (int)(alpha / (overcast * SKY_SUN_OVERCAST_SCALE + 1.0f));
 	}
-	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_DISC_COLOUR, 0);
+	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_DISC_COLOUR, SKY_COLOUR_BLACK);
 #if defined(VERSION_BW1WCI)
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
 #endif

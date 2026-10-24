@@ -39,12 +39,12 @@ public:
 	static uint32_t flags;
 	// BW1W120 00edc374 BW1M119 0134543c (LHCombined Release)
 	static int glowlevel;
-	// Descriptive names for original atmosphere-owned storage, initialized by 00835ad0.
-	// Declaration only: storage remains in the extracted LH3DAtmos unit.
-	static unsigned int IsOpen; // 00edd38c
+	// BW1W120 00edd38c
+	static unsigned int IsOpen;
 	// BW1W120 00edc364 BW1M119 01345420 (LHCombined Release)
 	static LH3DMaterial* mat1;
-	static LH3DMaterial* AtmosMaterial; // 00edc368, render mode 6
+	// BW1W120 00edc368
+	static LH3DMaterial* AtmosMaterial;
 
 	// BW1W120 00834f80 BW1M119 010231f0 (LHCombined Release)
 	static WeatherInfo GetWeather(const LHPoint& point, int recalc);

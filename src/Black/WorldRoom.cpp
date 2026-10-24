@@ -43,13 +43,10 @@
 #include "Temple.h"           /* For struct Temple */
 #include "WorldRoomCamera.h"  /* For struct WorldRoomCamera, enum WORLD_ROOM_DOOR */
 
-#include "MapCellConstants.h"  /* For MetresPerMapCell, ahead of the GameTimeConstants.h pair in .rdata */
+#include "MapCellConstants.h"  /* For MetresPerMapCell */
 #include "GameTimeConstants.h" /* For SecondsPerYear */
 #include "ColourConstants.h"   /* For White */
 
-// The name is a guess, but not a free one: cl6 orders .bss by a hash of the symbol name, and this
-// unit's .bss has the constant between Draw's sign_texts guard and White. PSysProperties.cpp and
-// Player.cpp hold the same constant as OneOverLogHalf, which sorts after White.
 static float OneOnLogHalf = 1.0f / (float)log(0.5);
 
 #if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
