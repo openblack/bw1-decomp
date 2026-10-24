@@ -22,6 +22,17 @@ struct SRTextured
 {
 	SubCollideDataRender* Target; /* 0x0 */
 
+	// Static methods
+
+	// BW1W120 008815d0 BW1M119 010b8520 (LHCombined Release)
+	static SRTextured* Create();
+
+	// Non-virtual methods
+
+	// BW1W120 008815f0 BW1M119 010b8490 (LHCombined Release)
+	void Release();
+	// BW1W120 008816f0 BW1M119 010b81f0 (LHCombined Release)
+	void StartRendering(SubCollideDataRender* target);
 	// BW1W120 00881de0 BW1M119 010b71c0 (LHCombined Release)
 	void AddTriangle(SRVertex* a, SRVertex* b, SRVertex* c);
 };

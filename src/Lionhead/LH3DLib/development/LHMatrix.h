@@ -274,21 +274,21 @@ struct LHMatrix
 		_23 *= c;
 		_23 += t;
 	}
-	// BW1W120 inlined BW1M119 01055f60
-	void SetBlend(const LHMatrix& a, const LHMatrix& b, float t)
+	// BW1W120 00679c30 BW1M119 01055f60
+	void __fastcall SetBlend(const LHMatrix& a, const LHMatrix& b, float t)
 	{
-		_11 = (b._11 - a._11) * t + a._11;
-		_12 = (b._12 - a._12) * t + a._12;
-		_13 = (b._13 - a._13) * t + a._13;
-		_21 = (b._21 - a._21) * t + a._21;
-		_22 = (b._22 - a._22) * t + a._22;
-		_23 = (b._23 - a._23) * t + a._23;
-		_31 = (b._31 - a._31) * t + a._31;
-		_32 = (b._32 - a._32) * t + a._32;
-		_33 = (b._33 - a._33) * t + a._33;
-		_41 = (b._41 - a._41) * t + a._41;
-		_42 = (b._42 - a._42) * t + a._42;
-		_43 = (b._43 - a._43) * t + a._43;
+		m[0] = (b.m[0] - a.m[0]) * t + a.m[0];
+		m[1] = (b.m[1] - a.m[1]) * t + a.m[1];
+		m[2] = (b.m[2] - a.m[2]) * t + a.m[2];
+		m[3] = (b.m[3] - a.m[3]) * t + a.m[3];
+		m[4] = (b.m[4] - a.m[4]) * t + a.m[4];
+		m[5] = (b.m[5] - a.m[5]) * t + a.m[5];
+		m[6] = (b.m[6] - a.m[6]) * t + a.m[6];
+		m[7] = (b.m[7] - a.m[7]) * t + a.m[7];
+		m[8] = (b.m[8] - a.m[8]) * t + a.m[8];
+		m[9] = (b.m[9] - a.m[9]) * t + a.m[9];
+		m[10] = (b.m[10] - a.m[10]) * t + a.m[10];
+		m[11] = (b.m[11] - a.m[11]) * t + a.m[11];
 	}
 	// BW1W120 007fb290 BW1M119 0102fff0 (LHCombined Release)
 	void __fastcall SetInverse(const LHMatrix& r);

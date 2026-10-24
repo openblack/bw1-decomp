@@ -40,6 +40,14 @@
 #include "Town.h"
 #include "WorshipSite.h"
 
+// cl6 orders .bss by a hash of the symbol name, and the $S<n> guard lands in the original's slot
+// only for some n. The headers above declare a different number of static data members than the
+// original's did, so this pads the guard onto one of them.
+struct FixedCounterPad
+{
+	static int Pad0;
+};
+
 #if defined(VERSION_BW1W100)
 #define FIXED_SOURCE_FILE "C:\\dev\\black\\Fixed.cpp"
 #define FIXED_LINE_SHIFT  1
