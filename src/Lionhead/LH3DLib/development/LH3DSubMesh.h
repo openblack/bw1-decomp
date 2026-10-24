@@ -16,13 +16,20 @@ enum LH3D_SUB_MESH_FLAGS
 	LH3D_SUB_MESH_FLAGS_SKINNED = 0x1,
 };
 
+struct LH3DBone
+{
+	long    Parent; /* 0x0 */
+	uint8_t field_0x4[0x38];
+};
+static_assert(sizeof(LH3DBone) == 0x3c, "Data type is of wrong size");
+
 struct LH3DSubMesh
 {
 	uint32_t        flags_; /* 0x0 */
 	int             NumPrimitives;
 	LH3DPrimitive** primitives_;
 	int             NumBones;
-	uint8_t*        Bones; /* 0x10 */
+	LH3DBone*       Bones; /* 0x10 */
 
 	// BW1W120 00fa93bc BW1M119 012d3e1c (LHCombined Release)
 	static LH3DSubMesh* g_current_sub_mesh;
