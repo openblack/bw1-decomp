@@ -239,7 +239,7 @@ void LHFile::FreeLastSeg()
 	}
 }
 
-uint32_t LHFile::WriteSegment(char* segment)
+uint32_t LHFile::WriteSegment(LHSegment* segment)
 {
 	if (!opened)
 		return 3;
@@ -247,9 +247,9 @@ uint32_t LHFile::WriteSegment(char* segment)
 		return 3;
 	if (SegmentOpened)
 		CloseSegment();
-	if (OpenSegment(segment))
+	if (OpenSegment((char*)segment->name))
 		return 3;
-	if (WriteSegmentData(((LHSegment*)segment)->buffer, ((LHSegment*)segment)->size))
+	if (WriteSegmentData(segment->buffer, segment->size))
 		return 3;
 	return CloseSegment() != 0 ? 3 : 0;
 }

@@ -150,13 +150,15 @@ struct LH3DPrimitive
 	// Non-virtual methods
 
 	// BW1W120 00807f30 BW1M119 01068ba0 (LHCombined Release)
-	void ComputeBoundingBox(LHPoint& maxima, LHPoint& minima, int& initialized);
+	void __fastcall ComputeBoundingBox(LHPoint& maxima, LHPoint& minima, int& initialized);
 	// BW1W120 inlined BW1M119 0100e160 (LHCombined Release)
 	LH3DMaterial* GetMaterial() { return &Material; }
 	// BW1W120 inlined BW1M119 01067ea0 (LHCombined Release)
 	LH3DVertex* GetListVertex() { return Vertices; }
 	// BW1W120 inlined BW1M119 010165f0 (LHCombined Release)
 	int GetVerticesCount() { return NumVertices; }
+	// BW1W120 inlined BW1M119 010cfea0 (LHCombined Release)
+	int GetTriangleCount() { return NumTriangles; }
 	// BW1W120 0084a400 BW1M119 0109f120 (LHCombined Release)
 	void ReverseTriangles();
 	// BW1W120 0084a6d0 BW1M119 0109e780 (LHCombined Release)

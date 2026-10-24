@@ -4,6 +4,8 @@
 // A software triangle rasteriser.
 struct SoftTri
 {
+	// BW1W120 00c39b08 BW1M119 011d1198 (LHCombined Release)
+	static int CLIPX;
 	// BW1W120 00c39b0c BW1M119 011d119c (LHCombined Release)
 	static int CLIPY;
 	// BW1W120 00faa7cc BW1M119 012d236c (LHCombined Release)

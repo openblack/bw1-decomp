@@ -25,6 +25,9 @@ enum LH_FILE_MODE
 	LH_FILE_MODE_READ_ONLY = 2,
 };
 
+// Opens an existing file to add segments to it.
+#define LH_FILE_MODE_UPDATE ((LH_FILE_MODE)3)
+
 enum LH_SEEK_MODE
 {
 	LH_SEEK_BEGIN = 0,
@@ -102,7 +105,7 @@ public:
 	// BW1W120 007bda70 BW1M119 01169b50 (LHCombined Release)
 	void FreeLastSeg();
 	// BW1W120 007bda90 BW1M119 01169a50 (LHCombined Release)
-	uint32_t WriteSegment(char* segment);
+	uint32_t WriteSegment(LHSegment* segment);
 	// BW1W120 007bdb20 BW1M119 01169810 (LHCombined Release)
 	uint32_t WriteSegmentHeader(char* segment_name);
 	// BW1W120 007bdbc0 BW1M119 011695e0 (LHCombined Release)
