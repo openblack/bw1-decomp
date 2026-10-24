@@ -6,6 +6,7 @@
 
 #include <chlasm/AllMeshes.h> /* For MAX_COUNT_3D_ANIMS */
 
+#include "CAnim.h"   /* For struct CAnim */
 #include "LHPoint.h" /* For struct LHPoint */
 
 enum AnimInfoType
@@ -29,69 +30,6 @@ struct LHFilePath;
 struct LHMatrix;
 
 typedef char ANM_Name[0x20];
-
-struct CFrame
-{
-	LHPoint* field_0x0;
-	LHPoint* Positions;
-
-	// Non-virtual methods
-
-	// BW1W120 00860c30 BW1M119 010dbac0 (LHCombined Release)
-	void ReadBinary(LHFile* file, long param_3, long param_4);
-};
-
-struct CAnim
-{
-	int      Duration;
-	uint32_t field_0x4;
-	float    field_0x8[0x2];
-	LHPoint  Movement;
-	int      FrameCount;
-	uint32_t field_0x20;
-	int      FrameField0x0Count;
-	int      FrameField0x4Count;
-	int*     FrameField0x0Indices;
-	int*     FrameField0x4Indices; /* 0x30 */
-	CFrame** frames;
-
-	// Constructors
-
-	// BW1W120 0085e480 BW1M119 011c2c38 (LHCombined Release)
-	CAnim();
-	// BW1W120 0085e4c0 BW1M119 0112eff0 (LHCombined Release)
-	CAnim(CAnim* param_2);
-	// BW1W120 0085e9d0 BW1M119 01096f70 (LHCombined Release)
-	CAnim(CAnim* param_2, CFrame* param_3, CAnim* param_4, CFrame* param_5, float param_6);
-	// BW1W120 0085ef40 BW1M119 010b9180 (LHCombined Release)
-	CAnim(CAnim* param_2, CFrame* param_3, CAnim* param_4, CFrame* param_5, float param_6, CAnim* param_7,
-	      CFrame* param_8, float param_9);
-	// BW1W120 0085f690 BW1M119 inlined
-	CAnim(CAnim* anim, CFrame* frame);
-	// BW1W120 0085fd00 BW1M119 inlined
-	CAnim(LH3DMesh* mesh, LHMatrix* base, LHMatrix* inverse_base, LH3DAnim* anim);
-
-	// Non-virtual methods
-
-	// BW1W120 0085e490 BW1M119 011299e0 (LHCombined Release)
-	~CAnim();
-	// BW1W120 0085e4a0 BW1M119 0112ef90 (LHCombined Release)
-	void Release();
-	// BW1W120 00860be0 BW1M119 0110eaf0 (LHCombined Release)
-	int GetWriteSize();
-	// BW1W120 00860a70 BW1M119 01078820 (LHCombined Release)
-	void WriteBinary(LHFile* file);
-	// BW1W120 00861a00 BW1M119 010fbf90 (LHCombined Release)
-	void AdjustForNewBasedOnStand(CAnim* param_2, CAnim* param_3);
-	// BW1W120 00860e00 BW1M119 01031bd0 (LHCombined Release)
-	void FillBuffer(LHMatrix* buffer, LH3DMesh* mesh, LHMatrix* param_3, LHMatrix* param_4, long frame, CFrame* param_6,
-	                long* param_7, int param_8);
-	// BW1W120 00861ee0 BW1M119 010328b0 (LHCombined Release)
-	void ModifyBufferByDifferenceFromFrame(LHMatrix* buffer, CFrame* base_frame, LH3DMesh* mesh, LHMatrix* param_4,
-	                                       LHMatrix* param_5, long frame, CFrame* param_7, long* param_8);
-	// BW1W120 00860860 BW1M119 010950e0 (LHCombined Release)
-	void ReadBinary(LHFile* file);
-};
 
 struct LH3DAnimSet
 {
@@ -146,6 +84,18 @@ struct LH3DAnimSound
 	LH3DAnimSound* Next;
 };
 
+// The bone matrices of one sub-mesh in a frame of an animation.
+struct LH3DAnimSubMeshFrame
+{
+	long      NumMatrices;
+	LHMatrix* Matrices;
+};
+
+struct LH3DAnimFrame
+{
+	LH3DAnimSubMeshFrame** SubMeshes;
+};
+
 struct LH3DAnimPack
 {
 	int       AnimCount; /* 0x0 */
@@ -160,38 +110,24 @@ enum LH3D_ANIM_FLAGS
 
 struct LH3DAnim
 {
-	ANM_Name       name; /* 0x0 */
-	int            Duration;
-	uint8_t        field_0x24;
-	uint8_t        field_0x25;
-	uint8_t        field_0x26;
-	uint8_t        field_0x27;
-	float          Distance;
-	uint8_t        field_0x2c;
-	uint8_t        field_0x2d;
-	uint8_t        field_0x2e;
-	uint8_t        field_0x2f;
-	uint8_t        field_0x30;
-	uint8_t        field_0x31;
-	uint8_t        field_0x32;
-	uint8_t        field_0x33;
-	uint8_t        field_0x34;
-	uint8_t        field_0x35;
-	uint8_t        field_0x36;
-	uint8_t        field_0x37;
-	int            NumFrames;
-	int            field_0x3c;
-	uint8_t        field_0x40;
-	uint8_t        field_0x41;
-	uint8_t        field_0x42;
-	uint8_t        field_0x43;
-	int            SoundType;
-	LH3DAnimSound* Sounds; /* 0x48 */
-	int**          ListPtrFrames;
-	uint32_t       Flags; /* 0x50 */
-	uint32_t       CurrentTimeMaybe;
-	uint32_t       field_0x58;
-	uint32_t       PackIndex2;
+	ANM_Name        name; /* 0x0 */
+	int             Duration;
+	float           field_0x24;
+	float           Distance;
+	LHPoint         Movement; /* 0x2c */
+	int             NumFrames;
+	int             field_0x3c;
+	uint8_t         field_0x40;
+	uint8_t         field_0x41;
+	uint8_t         field_0x42;
+	uint8_t         field_0x43;
+	int             SoundType;
+	LH3DAnimSound*  Sounds; /* 0x48 */
+	LH3DAnimFrame** ListPtrFrames;
+	uint32_t        Flags; /* 0x50 */
+	uint32_t        CurrentTimeMaybe;
+	uint32_t        field_0x58;
+	uint32_t        PackIndex2;
 
 	// Static data
 
@@ -232,7 +168,7 @@ struct LH3DAnim
 	// BW1W120 00839980 BW1M119 010281a0 (LHCombined Release)
 	float SetTransform(LHMatrix* bones, LH3DMesh* mesh, long time, LHMatrix& transform);
 	// BW1W120 0083a6a0 BW1M119 0101f950 (LHCombined Release)
-	int GetListPtrFrames();
+	LH3DAnimFrame** GetListPtrFrames();
 	// BW1W120 0083add0 BW1M119 01033790 (LHCombined Release)
 	int GetIndexInCache();
 	// BW1W120 inlined BW1M119 01018c60
