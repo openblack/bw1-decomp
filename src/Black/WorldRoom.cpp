@@ -1,5 +1,3 @@
-#include "BlackPCH.h"
-
 #include "WorldRoom.h"
 
 #include <math.h>    /* For cos, log, sin */

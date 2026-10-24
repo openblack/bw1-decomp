@@ -1,5 +1,3 @@
-#include "LH3DLibPCH.h"
-
 #include "LH3DSky.h"
 
 #include <string.h>
@@ -502,12 +500,12 @@ void LH3DSky::Init(float time, float alignment)
 			{
 				strcat(g_sky_texture_name, "_night.555");
 			}
-			Bitmap16B* bitmap = LoadTextureCitadel(g_sky_texture_name, NULL);
-			bitmaps[type][side] = bitmap;
+			bitmaps[type][side] = LoadTextureCitadel(g_sky_texture_name, NULL);
 #if defined(VERSION_BW1WCI)
-			int       width = bitmap->Width;
-			int       halfHeight = bitmap->Height / 2;
-			uint16_t* data = bitmap->Data;
+			Bitmap16B* bitmap = bitmaps[type][side];
+			int        width = bitmap->Width;
+			int        halfHeight = bitmap->Height / 2;
+			uint16_t*  data = bitmap->Data;
 			if (!LH3DTexture::g_b_use_565)
 			{
 				for (int row = 0; row < halfHeight; ++row)
@@ -687,6 +685,12 @@ void LH3DSky::CalcMoonPhase()
 
 bool moonflip = false;
 
+#define TRANSFORM_MOON_VERTEX(result, point, matrix)                                                                   \
+	(result).x =                                                                                                       \
+		(matrix).m[0] * (point).x + (matrix).m[3] * (point).y + ((float)((matrix).m[6] * (point).z)) + (matrix).m[9];  \
+	(result).y = (matrix).m[1] * (point).x + (matrix).m[4] * (point).y + (matrix).m[7] * (point).z + (matrix).m[10];   \
+	(result).z = (matrix).m[2] * (point).x + (matrix).m[5] * (point).y + (matrix).m[8] * (point).z + (matrix).m[11]
+
 void LH3DSky::DrawMoonPost(LH3DColor& colour, LHMatrix& matrix, LHMatrix& moon_matrix)
 {
 	LH3DAtmos::v_idx[0][0] = SKY_MOON_CORNER_LOWER_LEFT;
@@ -713,16 +717,16 @@ void LH3DSky::DrawMoonPost(LH3DColor& colour, LHMatrix& matrix, LHMatrix& moon_m
 	LH3DAtmos::v_col[0][SKY_MOON_CORNER_UPPER_RIGHT] = moonColour;
 	LHPoint  lowerLeft(-SKY_MOON_QUAD_SIZE, -SKY_MOON_QUAD_SIZE, 0.0f);
 	LHPoint* vertex = LH3DAtmos::v_pnt[0] + SKY_MOON_CORNER_LOWER_LEFT;
-	LHMATRIX_TRANSFORM_POINT(*vertex, lowerLeft, matrix);
+	TRANSFORM_MOON_VERTEX(*vertex, lowerLeft, matrix);
 	LHPoint lowerRight(SKY_MOON_QUAD_SIZE, -SKY_MOON_QUAD_SIZE, 0.0f);
 	vertex = LH3DAtmos::v_pnt[0] + SKY_MOON_CORNER_LOWER_RIGHT;
-	LHMATRIX_TRANSFORM_POINT(*vertex, lowerRight, matrix);
+	TRANSFORM_MOON_VERTEX(*vertex, lowerRight, matrix);
 	LHPoint upperLeft(-SKY_MOON_QUAD_SIZE, SKY_MOON_QUAD_SIZE, 0.0f);
 	vertex = LH3DAtmos::v_pnt[0] + SKY_MOON_CORNER_UPPER_LEFT;
-	LHMATRIX_TRANSFORM_POINT(*vertex, upperLeft, matrix);
+	TRANSFORM_MOON_VERTEX(*vertex, upperLeft, matrix);
 	LHPoint upperRight(SKY_MOON_QUAD_SIZE, SKY_MOON_QUAD_SIZE, 0.0f);
 	vertex = LH3DAtmos::v_pnt[0] + SKY_MOON_CORNER_UPPER_RIGHT;
-	LHMATRIX_TRANSFORM_POINT(*vertex, upperRight, matrix);
+	TRANSFORM_MOON_VERTEX(*vertex, upperRight, matrix);
 	LH3DTech::Draw3DWorldTriangle(SKY_MOON_CORNER_LAST, LH3DAtmos::v_pnt[0], LH3DAtmos::v_col[0], LH3DAtmos::v_uv[0],
 	                              SKY_MOON_TRIANGLE_COUNT, LH3DAtmos::v_idx[0], LH3DAtmos::mat1, false);
 	moonobj->matrix.Set(moon_matrix);
@@ -737,12 +741,45 @@ void LH3DSky::DrawMoonPost(LH3DColor& colour, LHMatrix& matrix, LHMatrix& moon_m
 	}
 }
 
+#undef TRANSFORM_MOON_VERTEX
+
+// BW1W120 null BW1M119 null
+static inline void ProjectMoonOutput(const LHMatrix& matrix, const LHPoint& point, LHPoint& result);
+
+static inline void ProjectMoonOutput(const LHMatrix& matrix, const LHPoint& point, LHPoint& result)
+{
+	result.x = point.x * matrix.m[0] + point.y * matrix.m[3] + point.z * matrix.m[6] + matrix.m[9];
+	result.y = point.x * matrix.m[1] + point.y * matrix.m[4] + point.z * matrix.m[7] + matrix.m[10];
+	result.z = point.x * matrix.m[2] + point.y * matrix.m[5] + point.z * matrix.m[8] + matrix.m[11];
+}
+
+// BW1W120 null BW1M119 null
+static inline float NormaliseMoonPoint(LHPoint& point);
+
+static inline float NormaliseMoonPoint(LHPoint& point)
+{
+	float px = point.x;
+	float py = point.y;
+	float pz = point.z;
+	if (px == 0.0f && py == 0.0f && pz == 0.0f)
+	{
+		return 0.0f;
+	}
+	float length = sqrt(pz * pz + py * py + px * px);
+	float scale = 1.0f / length;
+	point.x = scale * px;
+	point.y = scale * (py * 1.0f);
+	point.z = scale * pz;
+	return length;
+}
+
 void LH3DSky::CalcMoonMat(LHPoint& pos, LHMatrix& matrix, LHMatrix& moon_matrix)
 {
-	LHPoint cameraPos = LH3DTech::g_world_to_camera * pos;
+	LHPoint cameraPos;
+	ProjectMoonOutput(LH3DTech::g_world_to_camera, pos, cameraPos);
 	LHPoint forward;
 	forward = cameraPos;
-	forward.Normalise();
+	NormaliseMoonPoint(forward);
 	LHPoint right;
 	LHPoint up(0.0f, 1.0f, 0.0f);
 	right.CrossProduct(up, forward);
