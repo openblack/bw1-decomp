@@ -9,6 +9,7 @@
 
 // Forward Declares
 
+struct LH3DMesh;
 class LH3DObject;
 struct PhysicsData;
 
@@ -94,6 +95,26 @@ struct PhysOb
 	void SetUpMoi();
 	// BW1W120 007fc760 BW1M119 01084d60 (LHCombined Release)
 	void SetUpPos();
+	// BW1W120 007fbae0 BW1M119 01085a90 (LHCombined Release)
+	void BuildFromMesh(LH3DMesh* mesh);
+	// BW1W120 007fbf80 BW1M119 010857f0 (LHCombined Release)
+	bool32_t GetImpactPoint(LHPoint& param_1, LHPoint& param_2, float param_3, LHPoint& param_4, LHPoint& param_5);
+	// BW1W120 007fc310 BW1M119 01085340 (LHCombined Release)
+	bool32_t GetSpecialImpactPoint(LHPoint& param_1, LHPoint& param_2, LHPoint& param_3, LHPoint& param_4);
+	// BW1W120 007fce80 BW1M119 010846a0 (LHCombined Release)
+	void PrepareForDraw(LH3DObject* object, float param_2);
+	// BW1W120 007fd140 BW1M119 01084510 (LHCombined Release)
+	void FillPositionMatrixGameFriendly(LHMatrix& matrix);
+	// BW1W120 007fd4d0 BW1M119 01083960 (LHCombined Release)
+	void CheckVGround();
+	// BW1W120 007fda60 BW1M119 01083640 (LHCombined Release)
+	void CheckVFaces(PhysOb* other);
+	// BW1W120 007fdd60 BW1M119 01083510 (LHCombined Release)
+	float GetMaxCompression(PhysOb* other, LHPoint& param_2);
+	// BW1W120 007fde40 BW1M119 010830c0 (LHCombined Release)
+	void UpdateForces();
+	// BW1W120 007fe260 BW1M119 01082a10 (LHCombined Release)
+	int UpdateMotion();
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00818500 BW1M119 null
 	void SetRestSpeedMultiplier(float multiplier);
