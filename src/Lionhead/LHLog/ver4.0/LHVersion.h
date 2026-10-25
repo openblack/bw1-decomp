@@ -136,7 +136,7 @@ private:
 #define LH_VERSION_BUILD     "RELEASE"
 #define LH_VERSION_NONE      "NULL"
 
-#define LH_VERSION_INFO(name, major, minor, author, date, expiry, comments)                                            \
+#define LH_VERSION_INFO_STORAGE(name, major, minor, author, date, expiry, comments, pointer)                           \
 	static LHVersionBlock VersionBlock = {LH_VERSION_START_TAG,                                                        \
 	                                      LH_VERSION_BUILD,                                                            \
 	                                      name,                                                                        \
@@ -151,6 +151,12 @@ private:
 	                                      "",                                                                          \
 	                                      LH_VERSION_END_TAG};                                                         \
 	static LHVersion      VersionInformation(&VersionBlock);                                                           \
-	static LHVersion*     VersionPointer = &VersionInformation
+	pointer = &VersionInformation
+
+#define LH_VERSION_INFO(name, major, minor, author, date, expiry, comments)                                            \
+	LH_VERSION_INFO_STORAGE(name, major, minor, author, date, expiry, comments, static LHVersion* VersionPointer)
+
+#define LH_VERSION_INFO_NAMED(pointer_name, name, major, minor, author, date, expiry, comments)                        \
+	LH_VERSION_INFO_STORAGE(name, major, minor, author, date, expiry, comments, LHVersion* pointer_name)
 
 #endif /* BW1_DECOMP_LH_VERSION_INCLUDED_H */
