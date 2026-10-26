@@ -2,7 +2,6 @@
 #include "Tree.h"
 
 #include "ColourConstants.h"      /* For White */
-#include "ColourConstants.h"      /* For White */
 #include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
 #include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 #include "Climate.h"
@@ -70,6 +69,13 @@
 #define TREE_RUSTLE_DISTANCE    10.0f
 #define TREE_RUSTLE_HEIGHT      18.0f
 #define TREE_RUSTLE_MIN_HEIGHT  10.0f
+
+#define TREE_OUT_OF_MAP_MAX_SNOW_LEVEL   0x40
+#define TREE_OUT_OF_MAP_SNOW_LEVEL_SCALE 0x80
+
+#define TREE_SHELTER_SEARCH_CELLS 9
+#define TREE_SHELTER_DISTANCE     4.0f
+#define TREE_SLEEP_DISTANCE       2.0f
 
 #define FILEPATH "C:\\dev\\MP\\Black\\Tree.cpp"
 
@@ -374,8 +380,8 @@ void Tree::DrawOutOfMap(bool selectable)
 			DeadTree::DrawRoots(Game3dObject);
 		}
 		LH3DIsland::GetColorAndSpecularWithFog(Pos, &Game3dObject->color, &Game3dObject->specular);
-		Game3dObject->field_0x5c = 0x40;
-		Game3dObject->field_0x60 = 0x80;
+		Game3dObject->MaxSnowLevel = TREE_OUT_OF_MAP_MAX_SNOW_LEVEL;
+		Game3dObject->SnowLevelScale = TREE_OUT_OF_MAP_SNOW_LEVEL_SCALE;
 		if (GetFireEffect() != NULL)
 		{
 			SpecialDrawOnFire(selectable);
@@ -440,46 +446,45 @@ bool32_t Tree::IsARootedObject()
 
 bool32_t Tree::GetPosForVillagerToSleepUnder(Villager* villager, MapCoords& pos)
 {
-	MapCoords coords = Pos;
+	MapCoords cell = Pos;
 	MapCoords shelterPos;
 	bool32_t  foundShelter = false;
-	int       count = 9;
+	int       count = TREE_SHELTER_SEARCH_CELLS;
 	long      spiralX = 1;
 	long      spiralZ = 1;
-	for (; count != 0;)
+	for (; count != 0; count--, cell += *GUtils::Spiral(spiralX, spiralZ))
 	{
-		for (MapCellIterator it = coords.GetFirstIterator(); it.object != NULL;
+		for (MapCellIterator it = cell.GetFirstIterator(); it.object != NULL;
 		     it.object = it.object->GetMapChild(*it.cell), it.MoveToMobileObsIfNeededAndPoss())
 		{
 			Object* object = it.object;
-			if (Pos.GetDistance(object->Pos) - object->Get2DRadius() < 4.0f)
+			if (Pos.GetDistance(object->Pos) - object->Get2DRadius() >= TREE_SHELTER_DISTANCE)
 			{
-				if (it.object->IsVillager(NULL))
-				{
-					if (((Villager*)it.object)->action.GetState(0) != VILLAGER_STATE_SLEEP_IN_TENT)
-					{
-						continue;
-					}
-				}
-				else if (!(it.object->Flags & GAME_THING_WITH_POS_FLAG_FIXED))
+				continue;
+			}
+			if (it.object->IsVillager(NULL))
+			{
+				if (((Villager*)it.object)->action.GetState(0) != VILLAGER_STATE_SLEEP_IN_TENT)
 				{
 					continue;
 				}
-				if (foundShelter)
-				{
-					return false;
-				}
-				foundShelter = true;
-				shelterPos = it.object->Pos;
 			}
+			else if (!(it.object->Flags & GAME_THING_WITH_POS_FLAG_FIXED))
+			{
+				continue;
+			}
+			if (foundShelter)
+			{
+				return false;
+			}
+			foundShelter = true;
+			shelterPos = it.object->Pos;
 		}
-		count--;
-		coords += *GUtils::Spiral(spiralX, spiralZ);
 	}
 	pos.Set(Pos);
 	float angle =
 		foundShelter ? GUtils::Get3DAngleFromXZ(shelterPos, Pos) : GUtils::Get3DAngleFromXZ(Pos, villager->Pos);
-	pos += GUtils::GetPosFromAngle(angle, 2.0f);
+	pos += GUtils::GetPosFromAngle(angle, TREE_SLEEP_DISTANCE);
 	return true;
 }
 
