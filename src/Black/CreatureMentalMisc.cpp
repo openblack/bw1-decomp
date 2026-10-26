@@ -1,17 +1,21 @@
+#include "CreatureMentalLearnAction.h"
+
 #include "CreatureAttitudeConstants.h"
 #include "GameTimeConstants.h"
 
 #include "ColourConstants.h" /* For White */
 
-#include <windows.h> /* For min, max */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <windows.h>                              /* For min, max */
 
 #include "CreatureInfo.h"
 #include "CreatureMental.h"
-#include "CreatureMentalLearnAction.h"
 #include "CreatureObjectsInspected.h"
 #include "CreaturePlan.h"
+#include "DanceShape.h" /* For DanceShapePoints, enum DANCE_SHAPE */
 #include "Global.h"
 #include "Rand.h"
+#include "Utils.h" /* For class GUtils */
 
 #if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define FILEPATH "C:\\dev\\black\\CreatureMentalMisc.cpp"
@@ -32,10 +36,27 @@
 	     ? min(max(GRand::GameFloatRand(2.0f * (variation), FILEPATH, line) + (value) - (variation), 0.0f), 1.0f)      \
 	     : (value))
 
+struct UnknownDanceShapeUser
+{
+	uint32_t      field_0x0;
+	uint32_t      field_0x4;
+	DANCE_SHAPE   Shape;
+	uint8_t       field_0xc[0x10c];
+	unsigned long PointIndex;
+
+	// BW1W120 004e3440 BW1M119 null
+	LHPoint GetDanceShapePoint();
+};
+
 CreatureActionKnownAboutEntry
 	CreatureActionKnownAboutEntry::NormalActionKnownAboutInfo[CREATURE_ACTION_KNOWN_ABOUT_LAST];
 
 CreatureMagicActionKnownAboutEntry CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[MAGIC_TYPE_LAST];
+
+inline CreatureMagicActionKnownAboutEntry* CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()
+{
+	return MagicActionKnownAboutInfo;
+}
 
 CreatureInnatePersonality::CreatureInnatePersonality(const CreatureInfo* info)
 {
@@ -50,6 +71,16 @@ CreatureInnatePersonality::CreatureInnatePersonality(const CreatureInfo* info)
 		InterestInThingToLookAt[type] =
 			RANDOMISED_PERSONALITY(info->InterestInThingToLookAt[type], INTEREST_IN_LOOKING_VARIATION, 28);
 	}
+}
+
+LHPoint UnknownDanceShapeUser::GetDanceShapePoint()
+{
+	JustXZ  point = DanceShapePoints[Shape][GUtils::Spread(PointIndex, DANCE_SHAPE_NUM_POINTS)];
+	LHPoint result;
+	result.x = GUtils::ConvertWholeDistanceToMeters(point.x);
+	result.y = 0.0f;
+	result.z = GUtils::ConvertWholeDistanceToMeters(point.z);
+	return result;
 }
 
 CreatureTimeToWait::CreatureTimeToWait(const CreatureInfo* info)

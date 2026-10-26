@@ -885,7 +885,7 @@ float CreatureMental::HowMuchCreatureKnowsAboutSatisfyingDesire(CREATURE_DESIRES
 	case CREATURE_DESIRE_TO_IMPRESS: {
 		for (unsigned long magic = 0; magic < MAGIC_TYPE_LAST; magic++)
 		{
-			if (CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[magic].CanBeTaughtByComputerPlayer)
+			if (CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[magic].CanBeTaughtByComputerPlayer)
 			{
 				GMagicInfo* info = GMagicInfo::Infos[magic];
 				if (info->GetSpellSeedInfo() != NULL && info->GetSpellSeedInfo()->Enabled)
@@ -903,7 +903,7 @@ float CreatureMental::HowMuchCreatureKnowsAboutSatisfyingDesire(CREATURE_DESIRES
 	case CREATURE_DESIRE_COMPASSION: {
 		for (unsigned long magic = 0; magic < MAGIC_TYPE_LAST; magic++)
 		{
-			if (CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[magic].CanBeTaughtByComputerPlayer &&
+			if (CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[magic].CanBeTaughtByComputerPlayer &&
 			    GMagicEffectInfo::GetInfo()[magic].PerceivedPlayerDesire == CREATURE_DESIRE_COMPASSION)
 			{
 				GMagicInfo* info = GMagicInfo::Infos[magic];
@@ -922,7 +922,7 @@ float CreatureMental::HowMuchCreatureKnowsAboutSatisfyingDesire(CREATURE_DESIRES
 	case CREATURE_DESIRE_ANGER: {
 		for (unsigned long magic = 0; magic < MAGIC_TYPE_LAST; magic++)
 		{
-			if (CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[magic].CanBeTaughtByComputerPlayer &&
+			if (CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[magic].CanBeTaughtByComputerPlayer &&
 			    GMagicEffectInfo::GetInfo()[magic].PerceivedPlayerDesire == CREATURE_DESIRE_ANGER)
 			{
 				GMagicInfo* info = GMagicInfo::Infos[magic];

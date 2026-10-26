@@ -60,7 +60,7 @@ public:
 	// Static methods
 
 	// BW1W120 inlined BW1M119 0126b240
-	static CreatureMagicActionKnownAboutEntry* GetMagicActionKnownAboutInfo() { return MagicActionKnownAboutInfo; }
+	static CreatureMagicActionKnownAboutEntry* GetMagicActionKnownAboutInfo();
 
 	INFO_DATA_BLOCK(MimickingAction, field_0x6c)
 	INFO_DERIVED_LOADERS(CreatureActionKnownAboutEntry, "CreatureMentalLearnAction.h", 27)

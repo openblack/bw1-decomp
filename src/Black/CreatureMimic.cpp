@@ -187,7 +187,7 @@ CREATURE_ACTION Creature::GetMimickingAction(DETECTED_PLAYER_ACTION action, unsi
 {
 	if (action == DETECTED_PLAYER_ACTION_DAMAGE_WITH_MAGIC)
 	{
-		return CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[magic_type].MimickingAction;
+		return CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[magic_type].MimickingAction;
 	}
 	return CreatureMimicInfo::GetInfo()[action].CopyingActions[index];
 }
