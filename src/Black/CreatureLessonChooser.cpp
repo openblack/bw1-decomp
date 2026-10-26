@@ -69,12 +69,10 @@ CreatureLessonChooser::~CreatureLessonChooser()
 {
 	GGame::g_game->MyInterface()->GetRenderHand()->Show(true);
 	ReleaseIcons();
-#ifndef VERSION_BW1W100
 	if (Mental != NULL)
 	{
 		GGame::g_game->SetPacket(PACKET_TYPE_CLOSE_LESSON_CHOOSER, Mental->creature.Get()->GetIndexOffset());
 	}
-#endif // VERSION_BW1W100
 }
 
 inline void CreatureLessonChooser::GetFeedbackText(char* text)
