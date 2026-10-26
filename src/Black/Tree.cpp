@@ -71,6 +71,9 @@
 #define TREE_RUSTLE_HEIGHT      18.0f
 #define TREE_RUSTLE_MIN_HEIGHT  10.0f
 
+#define TREE_OUT_OF_MAP_MAX_SNOW_LEVEL   0x40
+#define TREE_OUT_OF_MAP_SNOW_LEVEL_SCALE 0x80
+
 #define FILEPATH "C:\\dev\\MP\\Black\\Tree.cpp"
 
 GTreeInfo GTreeInfo::Infos[TREE_INFO_LAST];
@@ -374,8 +377,8 @@ void Tree::DrawOutOfMap(bool selectable)
 			DeadTree::DrawRoots(Game3dObject);
 		}
 		LH3DIsland::GetColorAndSpecularWithFog(Pos, &Game3dObject->color, &Game3dObject->specular);
-		Game3dObject->field_0x5c = 0x40;
-		Game3dObject->field_0x60 = 0x80;
+		Game3dObject->MaxSnowLevel = TREE_OUT_OF_MAP_MAX_SNOW_LEVEL;
+		Game3dObject->SnowLevelScale = TREE_OUT_OF_MAP_SNOW_LEVEL_SCALE;
 		if (GetFireEffect() != NULL)
 		{
 			SpecialDrawOnFire(selectable);

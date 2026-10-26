@@ -57,8 +57,8 @@ public:
 	unsigned long specular;
 	LH3DColor     WindowColor;
 	int           SnowLevel;
-	int           field_0x5c;
-	uint32_t      field_0x60;
+	int           MaxSnowLevel;
+	int           SnowLevelScale;
 	bool32_t      DrawAsFence;
 	float         u;
 	float         v;
