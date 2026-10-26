@@ -59,7 +59,7 @@ public:
 	static CreatureGlobalExplorationMap GlobalMap;
 
 	// BW1W120 inlined BW1M119 inlined
-	CreatureGlobalExplorationMap() : HighestAltitude(0.0f) {}
+	CreatureGlobalExplorationMap() { HighestAltitude = 0.0f; }
 
 	// BW1W120 004dfbd0 BW1M119 01264c90
 	virtual void Dump();

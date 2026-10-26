@@ -564,6 +564,7 @@ Black/CreatureMentalEditor.cpp:
 Black/CreatureMentalExploration.cpp:
 	.text       start:0x004EFAF0 end:0x004F0980
 	.rdata      start:0x008FE2AC end:0x008FE320
+	.rdata$r    start:0x00A1B628 end:0x00A1B718
 	.CRT$XCU    start:0x00A363C4 end:0x00A363D0 align:4
 	.data       start:0x00C4FA28 end:0x00C4FD28
 	.bss        start:0x00D05BB8 end:0x00D21BD4

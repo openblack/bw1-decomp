@@ -271,16 +271,16 @@ bool32_t ClearAreaState::FindClearArea(const MapCoords& pos, Creature* creature,
 		delete ClearCells;
 	}
 	ClearCells = new (FILEPATH, 439) char[bytes];
-	uint32_t i;
-	for (i = 0; i < bytes; i++)
-	{
-		ClearCells[i] = 0;
-	}
-
 	uint32_t x;
 	uint32_t z;
-	long     startX = pos.MapX() - (Size / 2);
-	long     startZ = pos.MapZ() - (Size / 2);
+	for (x = 0; x < bytes; x++)
+	{
+		ClearCells[x] = 0;
+	}
+
+	const MapCoords& p = pos;
+	long             startX = p.MapX() - (Size / 2);
+	long             startZ = p.MapZ() - (Size / 2);
 	for (x = 0; x < Size; x++)
 	{
 		for (z = 0; z < Size; z++)
@@ -305,7 +305,7 @@ bool32_t ClearAreaState::FindClearArea(const MapCoords& pos, Creature* creature,
 		for (z = 0; z < Size - cells; z++)
 		{
 			bool32_t clear = true;
-			for (i = 0; i < cells; i++)
+			for (uint32_t i = 0; i < cells; i++)
 			{
 				for (uint32_t j = 0; j < cells; j++)
 				{
@@ -329,8 +329,8 @@ bool32_t ClearAreaState::FindClearArea(const MapCoords& pos, Creature* creature,
 			if (clear)
 			{
 				candidate.SetToZero();
-				candidate.SetMapX(pos.MapX() - (Size / 2) + x);
-				candidate.SetMapZ(pos.MapZ() - (Size / 2) + z);
+				candidate.SetMapX(p.MapX() - (Size / 2) + x);
+				candidate.SetMapZ(p.MapZ() - (Size / 2) + z);
 				candidate.SetMetersX(candidate.MetersX() + Radius / 2);
 				candidate.SetMetersZ(candidate.MetersZ() + Radius / 2);
 				float distance = GUtils::GetDistanceInMetres(&pos, &candidate);
@@ -351,19 +351,20 @@ bool32_t ClearAreaState::FindClearArea(const MapCoords& pos, Creature* creature,
 
 void ClearAreaState::Draw()
 {
-	uint32_t  x;
-	uint32_t  z;
-	long      startX = Centre.MapX() - (Size / 2);
-	long      startZ = Centre.MapZ() - (Size / 2);
-	MapCoords cell;
+	uint32_t         x;
+	uint32_t         z;
+	const MapCoords& centre = Centre;
+	long             startX = centre.MapX() - (Size / 2);
+	long             startZ = centre.MapZ() - (Size / 2);
+	MapCoords        cell;
 	for (x = 0; x < Size; x++)
 	{
 		for (z = 0; z < Size; z++)
 		{
 			uint32_t index = Size * x + z;
 			bool32_t clear = ClearCells[index / CHAR_BIT] & (1 << (index % CHAR_BIT));
-			cell.SetMapX(startX + x);
-			cell.SetMapZ(startZ + z);
+			cell.SetMapX(x + startX);
+			cell.SetMapZ(z + startZ);
 			if (!clear)
 			{
 				LH3DColor blocked;
@@ -387,8 +388,10 @@ void ClearAreaState::Draw()
 				cell.SetToZero();
 				cell.SetMapX(Pos.MapX() - (cells / 2) + x);
 				cell.SetMapZ(Pos.MapZ() - (cells / 2) + z);
-				float dx = Pos.MetersX() - (cell.MetersX() + MAP_COORDS_METRES_PER_CELL / 2);
-				float dz = Pos.MetersZ() - (cell.MetersZ() + MAP_COORDS_METRES_PER_CELL / 2);
+				float dx = (Pos.WholeX() * MetresPerMapCell) / MAP_COORDS_UNITS_PER_CELL -
+				           (cell.MetersX() + MAP_COORDS_METRES_PER_CELL / 2);
+				float dz = (Pos.WholeZ() * MetresPerMapCell) / MAP_COORDS_UNITS_PER_CELL -
+				           (cell.MetersZ() + MAP_COORDS_METRES_PER_CELL / 2);
 				if (dx * dx + dz * dz <= Radius * Radius / 4)
 				{
 					LH3DColor inside(0xff, 0xff, 0xff, 0xff);
