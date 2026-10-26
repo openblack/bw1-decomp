@@ -769,7 +769,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureInitialSourceInfo.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureLearning.cpp"),
             GameCodeObject(Matching, "Black/CreatureLeash.cpp"),
-            GameCodeObject(MatchingFor("BW1W110", "BW1WCI"), "Black/CreatureLessonChooser.cpp"),
+            GameCodeObject(Matching, "Black/CreatureLessonChooser.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureLook.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMental.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalActionTests.cpp"),

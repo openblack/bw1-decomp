@@ -665,6 +665,14 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004CF09A, call_indirect(0x008A935C)),  # CreatureLeash: __imp_??0LHSPrintf@@QAA@PADZZ
     (0x004CF0DA, call_indirect(0x008A9124)),  # CreatureLeash: __imp__ImmGetCandidateListA@4
     (0x004CF11A, call_indirect(0x008A905C)),  # CreatureLeash: __imp__GetDeviceCaps@4
+    (0x004CF1EB, call_rel32(0x00401879)),  # CreatureLessonChooser
+    (0x004CF21B, call_rel32(0x00401879)),  # CreatureLessonChooser
+    (0x004CF8EB, call_rel32(0x00401879)),  # CreatureLessonChooser
+    (0x004CFC6A, call_indirect(0x008A9328)),  # CreatureLessonChooser: __imp_LHEditBox...
+    (0x004CFC7A, call_indirect(0x008A901C)),  # CreatureLessonChooser: __imp__TrackMouseEvent@4
+    (0x004CFE8A, call_indirect(0x008A97AC)),  # CreatureLessonChooser: __imp__ShellExecuteA@4
+    (0x004D021B, call_rel32(0x00401879)),  # CreatureLessonChooser
+    (0x004D02BB, call_rel32(0x00401879)),  # CreatureLessonChooser
     (0x004D293B, call_rel32(0x00401879)),  # CreatureMentalActionTests
     (0x004D2A1A, call_indirect(0x008A93CC)),  # CreatureMentalActionTests: __imp___0LHVersion__QAE_PAULHVersionBlock___Z@4
     (0x004D2C7B, call_rel32(0x00401879)),  # CreatureMentalActionTests
@@ -956,6 +964,23 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004D146A, call_indirect(0x008AE828)),  # CreatureLeash
     (0x004D14AA, call_indirect(0x008AE090)),  # CreatureLeash
     (0x004D14F5, jmp_run(0x004D14AA)),  # CreatureLeash
+    (0x004D1553, jmp_run(0x004D14F5)),  # CreatureLessonChooser
+    (0x004D157B, call_rel32(0x00403C49)),  # CreatureLessonChooser
+    (0x004D15AB, call_rel32(0x00403C49)),  # CreatureLessonChooser
+    (0x004D15F4, jmp_run(0x004D15AB)),  # CreatureLessonChooser
+    (0x004D1C84, copy_run(0x004D15F4)),  # CreatureLessonChooser
+    (0x004D1D6C, copy_run(0x004D1C84)),  # CreatureLessonChooser
+    (0x004D1D81, copy_run(0x004D1D68)),  # CreatureLessonChooser
+    (0x004D1F44, copy_run(0x004D1D81)),  # CreatureLessonChooser
+    (0x004D1F93, jmp_run(0x004D1F44)),  # CreatureLessonChooser
+    (0x004D200A, call_indirect(0x008AE02C)),  # CreatureLessonChooser
+    (0x004D21E9, copy_run(0x004D200A)),  # CreatureLessonChooser
+    (0x004D221A, call_indirect(0x008AE0FC)),  # CreatureLessonChooser
+    (0x004D2277, jmp_run(0x004D221A)),  # CreatureLessonChooser
+    (0x004D23B2, jmp_run(0x004D2277)),  # CreatureLessonChooser
+    (0x004D2461, copy_run(0x004D23B2)),  # CreatureLessonChooser
+    (0x004D25AB, call_rel32(0x00403C49)),  # CreatureLessonChooser
+    (0x004D264B, call_rel32(0x00403C49)),  # CreatureLessonChooser
     (0x004D4CA3, copy_run(0x004D4BF3)),  # CreatureMentalActionTests
     (0x004D4CCB, call_rel32(0x00403C49)),  # CreatureMentalActionTests
     (0x004D4DAA, call_indirect(0x008AE050)),  # CreatureMentalActionTests
