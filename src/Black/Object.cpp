@@ -2265,9 +2265,9 @@ void Object::DoDeleteObjectAndTakeResource(Object* object, GInterfaceStatus* sta
 		options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 		options.SampleNumber = LH_SAMPLE_G_TREEMULCH_01 + mulchSample;
 		options.AttachedObject = object;
-		options.Positional = 1;
+		options.Positional = true;
 		options.Pos = pos;
-		options.Looping = 0;
+		options.Follow = false;
 		GGlobal::Global.audio->PlaySoundEffect(&options);
 	}
 	GoolooGooloo(object);

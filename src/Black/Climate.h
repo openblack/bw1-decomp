@@ -47,6 +47,8 @@ public:
 	static void ProcessAll();
 	// BW1W120 007714b0 BW1M119 01026110
 	static bool IsRaining(const LHPoint& point);
+	// BW1W120 00771600 BW1M119 015a9070
+	static float GetMaxRainingOrSnowing(const LHPoint& point);
 	// BW1W120 00771b10 BW1M119 015a8970
 	static LHPoint GetWindAtPoint(const LHPoint* point, bool recalc);
 

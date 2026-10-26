@@ -1796,7 +1796,7 @@ void GGame::Loop()
 	if (playLogoOnFirstLoop)
 	{
 		LH_SamplePlayOptions options;
-		options.Positional = 0;
+		options.Positional = false;
 		options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 		options.AttachedObject = NULL;
 		options.SampleNumber = LH_SAMPLE_LOGO;

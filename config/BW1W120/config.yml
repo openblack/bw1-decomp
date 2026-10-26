@@ -1005,6 +1005,37 @@ add_relocations:
     target: '?g_fog_table@LH3DPrimitive@@2PAY01KA'
     addend: 0x2000
 
+# GTreeInfo::UpdateValue indexes Infos (dtk leaves the lea displacement unrelocated).
+  - source: 0x0074C5D9
+    type: x86_abs32
+    target: '?Infos@GTreeInfo@@2PAV1@A'
+# Tree's GTreeInfo::Infos destructor loop starts at the end of Infos, not the next .bss item.
+  - source: 0x00749DA7
+    type: x86_abs32
+    target: '?Infos@GTreeInfo@@2PAV1@A'
+    addend: 0x1CC0
+# Tree::PreDraw walks the sway tables with a base one element before each table.
+  - source: 0x0074A839
+    type: x86_abs32
+    target: '_SwaySpeed'
+    addend: -0x4
+  - source: 0x0074A845
+    type: x86_abs32
+    target: '_SwayPhase'
+    addend: -0x4
+  - source: 0x0074A84B
+    type: x86_abs32
+    target: '_SwayPhase'
+    addend: -0x4
+  - source: 0x0074A85F
+    type: x86_abs32
+    target: '_SwayX'
+    addend: -0x4
+  - source: 0x0074A86B
+    type: x86_abs32
+    target: '_SwayZ'
+    addend: -0x4
+
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
 linker_version: "6.0"

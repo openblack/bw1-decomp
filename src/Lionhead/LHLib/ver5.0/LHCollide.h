@@ -114,6 +114,8 @@ public:
 
 	// BW1W120 00829390 BW1M119 0112f210 (LHCombined Release)
 	NewCollide(LH3DObject* obj);
+	// BW1W120 00829590 BW1M119 010b9a30 (LHCombined Release)
+	NewCollide(LHPoint* position, float radius);
 
 	// Destructors
 

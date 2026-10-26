@@ -1150,9 +1150,9 @@ void Scaffold::DrawInHand(GInterfaceStatus* status)
 				                    : SCAFFOLD_APPEAR_ABODE_PITCH - abodeNumber * SCAFFOLD_APPEAR_PITCH_STEP;
 				options.Bank = GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_IN_GAME);
 				options.SampleNumber = LH_SAMPLE_G_SCAFFOLDAPPEAR_01;
-				options.Looping = 0;
+				options.Follow = false;
 				options.AttachedObject = NULL;
-				options.Positional = 0;
+				options.Positional = false;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
 				appearSoundPlayed = true;
 			}
