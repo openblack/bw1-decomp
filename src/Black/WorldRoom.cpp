@@ -1105,4 +1105,4 @@ void WorldRoom::LoadButtonConfig(GameOSFile& file)
 	ShowInfluence = DisplayInfluence;
 }
 
-wchar_t WorldRoom::WorldStatisticsText[WORLD_ROOM_STATISTICS_TEXT_CAPACITY];
+wchar_t WorldRoom::WorldStatisticsText[8192];

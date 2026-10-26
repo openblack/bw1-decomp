@@ -17,19 +17,8 @@ static_assert(sizeof(LH3DCitadelLevelOfDetail) == 0x8, "Data type is of wrong si
 
 struct LH3DLevelOfDetail
 {
-	enum DETAIL_PRESET
-	{
-		DETAIL_PRESET_CONFIG_0,
-		DETAIL_PRESET_CONFIG_1,
-		DETAIL_PRESET_CONFIG_2,
-		DETAIL_PRESET_CONFIG_3,
-		DETAIL_PRESET_CONFIG_4,
-		DETAIL_PRESET_CUSTOM,
-		DETAIL_PRESET_CONFIG_6,
-	};
-
 	// BW1W120 00c381ec BW1M119 011ce858 (LHCombined Release)
-	static DETAIL_PRESET g_detail_idx;
+	static int g_detail_idx;
 	// BW1W120 00c381e0 BW1M119 011ce84c (LHCombined Release)
 	static LH3DCitadelLevelOfDetail g_citadellod;
 	// BW1W120 00c38200 BW1M119 011ce86c (LHCombined Release)

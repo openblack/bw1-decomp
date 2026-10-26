@@ -9,18 +9,13 @@
 struct LH3DMaterial;
 struct LH3DColor;
 
-#define LH3D_ATMOS_COLOUR_SAMPLES         32
-#define LH3D_ATMOS_VERTEX_BUFFERS         3
-#define LH3D_ATMOS_ALIGNMENT_FADE_DIVISOR 150
+#define LH3D_ATMOS_COLOUR_SAMPLES 32
+#define LH3D_ATMOS_VERTEX_BUFFERS 3
 
 enum LH3D_ATMOS_ALIGNMENT_FLAGS
 {
 	LH3D_ATMOS_ALIGNMENT_TRANSITION = 1,
 };
-
-// Original free callback; storage remains in the extracted LH3DAtmos TU.
-// BW1W120 00edd3a0
-extern void(__stdcall* g_water_drop_cb)(LHPoint&, float, unsigned long);
 
 class LH3DAtmos
 {

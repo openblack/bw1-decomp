@@ -312,11 +312,6 @@ extern LHPoint DEFAULT_SUN;
 // Set by LHScreen when one of the display devices is a 3dfx Voodoo.
 // BW1W120 00ea9e9c BW1M119 012dc174 (LHCombined Release)
 extern bool32_t g_b_any_voodoo;
-// BW1W120 00eb9958 BW1M119 011f24b0 (LHCombined Release)
-extern LH3DTexture* g_sun_texture;
-// BW1W120 00eb9954 BW1M119 011f24b4 (LHCombined Release)
-extern LH3DTexture* g_weather_texture;
-
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void __cdecl Report3D__FPCce(const char* fmt, ...);
 // BW1W120 0081f1a0 BW1M119 01013fc0 (LHCombined Release)

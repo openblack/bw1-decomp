@@ -1698,7 +1698,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DVRAMTex.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp"),
             LH3DLibObject(
-                MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130", "BW1WCI"),
+                NonMatching,
                 "Lionhead/LH3DLib/development/LH3DSky.cpp",
                 pch=True,
             ),

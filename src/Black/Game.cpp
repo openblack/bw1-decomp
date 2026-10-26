@@ -254,7 +254,6 @@ void             fn_0054B190();
 void             fn_0054B180(); // Real emitted empty function; original name unrecovered.
 void             LoadAllAnimations();
 void __stdcall   camera_editor_callback(unsigned long message, unsigned long param_1, unsigned long param_2);
-void __stdcall   water_drop_cb(LHPoint& position, float size, unsigned long type);
 
 // Original comparator name; equal team/member keys intentionally collide in the set.
 struct LHPlayerPointer_less
@@ -780,7 +779,6 @@ uint32_t GGame::InitOneTimeOnly()
 	MPFEData::CreatureFileChecksum = GetCreatureFileChecksum();
 	Report3D__FPCce("LHNetUseProfile\n");
 	LHSys::TheSystem.MessageHook = camera_editor_callback;
-	g_water_drop_cb = water_drop_cb;
 	LHNetUseProfile(LHNetGetCurrentProfileNameFromRegistry());
 	Report3D__FPCce("ReinitLoadingScreen\n");
 	RenderLoadingFrame(true);

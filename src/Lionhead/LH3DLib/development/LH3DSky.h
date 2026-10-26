@@ -13,11 +13,8 @@ class LH3DObject;
 struct LH3DMesh;
 
 #define SKY_BLEND_TABLE_SIZE       64
-#define SKY_BLEND_FRACTION_BITS    8
-#define SKY_BLEND_AMOUNT_MAX       255
-#define SKY_BLEND_SCALE            (1 << SKY_BLEND_FRACTION_BITS)
+#define SKY_BLEND_SCALE            256
 #define SKY_444_CHANNEL_BITS       4
-#define SKY_444_CHANNEL_MASK       0xf
 #define SKY_444_RED_SHIFT          8
 #define SKY_COLOUR_CHANNEL_BITS    8
 #define SKY_RGB_CHANNEL_BITS       5
@@ -26,8 +23,7 @@ struct LH3DMesh;
 #define SKY_RGB565_RED_SHIFT       11
 #define SKY_RGB565_GREEN_BITS      6
 #define SKY_RGB565_GREEN_MASK      0x3f
-#define SKY_SUN_ALPHA_MAX          255.0f
-#define SKY_SUN_ALPHA_SCALE        (1.0f / SKY_SUN_ALPHA_MAX)
+#define SKY_SUN_ALPHA_SCALE        (1.0f / 255.0f)
 #define SKY_COLOUR_ALPHA_SHIFT     24
 #define SKY_COLOUR_RGB_MASK        0x00ffffff
 #define SKY_COLOUR_ALPHA_MAX       0xff
@@ -41,7 +37,7 @@ struct LH3DMesh;
 #define SKY_SUN_FADE_DURATION      3.0f
 #define SKY_SUN_FADE_START         (SKY_SUNRISE_TIME - SKY_SUN_FADE_DURATION)
 #define SKY_SUN_FADE_END           (SKY_SUNSET_TIME + SKY_SUN_FADE_DURATION)
-#define SKY_SUN_FADE_SCALE         (SKY_SUN_ALPHA_MAX / SKY_SUN_FADE_DURATION)
+#define SKY_SUN_FADE_SCALE         (255.0f / SKY_SUN_FADE_DURATION)
 #define SKY_SUN_ALTITUDE_MAX       7500.0f
 #define SKY_SUN_INITIAL_COORDINATE (-30000.0f)
 #define SKY_SUN_ALTITUDE_SCALE     (1.0f / (SKY_NOON_TIME - SKY_SUNRISE_TIME))
@@ -97,7 +93,6 @@ struct LH3DMesh;
 #define SKY_DEFAULT_DAY_TIME       8.25f
 #define SKY_DEFAULT_MOON_SIZE      3.0f
 #define SKY_MOON_SIZE              4.0f
-#define SKY_TEXTURE_NAME_CAPACITY  256
 #define SKY_TEXTURE_CREATE_FLAGS   0x104
 #define SKY_POSITION               2560.0f
 #define SKY_SCALE                  5.0f
