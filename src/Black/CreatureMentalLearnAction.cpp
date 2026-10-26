@@ -182,7 +182,7 @@ bool32_t CreatureMental::ConsiderLearningAction(CREATURE_ACTION_LEARNING_TYPE ty
 		break;
 	case CREATURE_ACTION_LEARNING_TYPE_MAGIC:
 		if (creature.Get()->DevelopmentPhase >=
-		    CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[action].DevelopmentPhase)
+		    CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[action].DevelopmentPhase)
 		{
 			if (GGame::g_game->data.GameTurn - learning.GameTurnMagicActionLastSeen[action] >
 			        MAGIC_ACTION_SEEN_AGAIN_GAME_TURNS ||
@@ -348,7 +348,7 @@ uint32_t CreatureMental::GetNumMagicActionsLeftToLearnWhichCanBeTaughtByComputer
 	uint32_t count = 0;
 	for (unsigned long action = 0; action < MAGIC_TYPE_LAST; action++)
 	{
-		if (CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[action].CanBeTaughtByComputerPlayer &&
+		if (CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[action].CanBeTaughtByComputerPlayer &&
 		    !ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_MAGIC, action))
 		{
 			count++;
@@ -377,7 +377,7 @@ bool32_t CreatureMental::FillInFirstAggressiveMagicActionLeftToLearn(CREATURE_AC
 {
 	for (unsigned long i = 0; i < MAGIC_TYPE_LAST; i++)
 	{
-		if (CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[i].CanBeTaughtByComputerPlayer &&
+		if (CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[i].CanBeTaughtByComputerPlayer &&
 		    !ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_MAGIC, i) &&
 		    GMagicEffectInfo::GetInfo()[i].PerceivedPlayerDesire == CREATURE_DESIRE_ANGER)
 		{
@@ -398,7 +398,7 @@ bool32_t CreatureMental::FillInFirstCompassionateMagicActionLeftToLearn(CREATURE
 {
 	for (unsigned long i = 0; i < MAGIC_TYPE_LAST; i++)
 	{
-		if (CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[i].CanBeTaughtByComputerPlayer &&
+		if (CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[i].CanBeTaughtByComputerPlayer &&
 		    !ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_MAGIC, i) &&
 		    GMagicEffectInfo::GetInfo()[i].PerceivedPlayerDesire == CREATURE_DESIRE_COMPASSION)
 		{
@@ -419,7 +419,7 @@ bool32_t CreatureMental::FillInFirstImpressiveMagicActionLeftToLearn(CREATURE_AC
 {
 	for (unsigned long i = 0; i < MAGIC_TYPE_LAST; i++)
 	{
-		if (CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[i].CanBeTaughtByComputerPlayer &&
+		if (CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[i].CanBeTaughtByComputerPlayer &&
 		    !ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_MAGIC, i))
 		{
 			GMagicInfo* info = GMagicInfo::Infos[i];

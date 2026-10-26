@@ -695,6 +695,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004E028B, call_rel32(0x00401879)),  # CreatureMentalLearn
     (0x004E0FBB, call_rel32(0x00401879)),  # CreatureMentalLearn
     (0x004E152A, call_indirect(0x008A9024)),  # CreatureMentalLearn: __imp__DirectDrawCreateEx@4
+    (0x004E2D0B, call_rel32(0x00401879)),  # CreatureMentalMisc
     (0x004E35BB, call_rel32(0x00401879)),  # CreatureMentalObjectMultipliers
     (0x004F036B, call_rel32(0x00401879)),  # CreaturePlan
     (0x004F11AB, call_rel32(0x00401879)),  # CreaturePlan
@@ -1084,6 +1085,10 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004E41D3, jmp_run(0x004E41A7)),  # CreatureMentalLearn
     (0x004E42F3, jmp_run(0x004E41D3)),  # CreatureMentalLearn
     (0x004E44F9, jmp_run(0x004E42F3)),  # CreatureMentalLearn
+    (0x004E5073, jmp_run(0x004E5014)),  # CreatureMentalMisc
+    (0x004E509B, call_rel32(0x00403C49)),  # CreatureMentalMisc
+    (0x004E57C5, copy_run(0x004E509B)),  # CreatureMentalMisc
+    (0x004E5861, copy_run(0x004E57C2)),  # CreatureMentalMisc
     (0x004E5923, copy_run(0x004E5861)),  # CreatureMentalObjectMultipliers
     (0x004E594B, call_rel32(0x00403C49)),  # CreatureMentalObjectMultipliers
     (0x004E5973, jmp_run(0x004E594B)),  # CreatureMentalObjectMultipliers
