@@ -2,7 +2,6 @@
 #include "Tree.h"
 
 #include "ColourConstants.h"      /* For White */
-#include "ColourConstants.h"      /* For White */
 #include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
 #include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 #include "Climate.h"
