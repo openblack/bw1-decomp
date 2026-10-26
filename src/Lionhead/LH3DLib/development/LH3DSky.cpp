@@ -89,42 +89,42 @@ LH3DColor LH3DSky::Interpolate444Colour(uint16_t from, uint16_t to, int amount)
 	LH3DColor result;
 	if (amount <= 0)
 	{
-		int red = (from >> SKY_444_RED_SHIFT) & 0xf;
-		int green = (from >> SKY_444_CHANNEL_BITS) & 0xf;
+		int red = (from >> 8) & 0xf;
+		int green = (from >> 4) & 0xf;
 		int blue = from & 0xf;
-		int rgb = (((red << SKY_COLOUR_CHANNEL_BITS) + green) << SKY_COLOUR_CHANNEL_BITS) + blue;
-		result = LH3DColor(rgb << SKY_444_CHANNEL_BITS);
+		int rgb = (((red << 8) + green) << 8) + blue;
+		result = LH3DColor(rgb << 4);
 	}
 	else if (amount >= SKY_BLEND_SCALE)
 	{
-		int red = (to >> SKY_444_RED_SHIFT) & 0xf;
-		int green = (to >> SKY_444_CHANNEL_BITS) & 0xf;
+		int red = (to >> 8) & 0xf;
+		int green = (to >> 4) & 0xf;
 		int blue = to & 0xf;
-		int rgb = (((red << SKY_COLOUR_CHANNEL_BITS) + green) << SKY_COLOUR_CHANNEL_BITS) + blue;
-		result = LH3DColor(rgb << SKY_444_CHANNEL_BITS);
+		int rgb = (((red << 8) + green) << 8) + blue;
+		result = LH3DColor(rgb << 4);
 	}
 	else
 	{
-		int red = (from >> SKY_444_RED_SHIFT) & 0xf;
-		int green = (from >> SKY_444_CHANNEL_BITS) & 0xf;
+		int red = (from >> 8) & 0xf;
+		int green = (from >> 4) & 0xf;
 		int blue = from & 0xf;
-		red = ((((to >> SKY_444_RED_SHIFT) & 0xf) - red) * amount + (red << 8)) >> SKY_444_CHANNEL_BITS;
-		green = ((((to >> SKY_444_CHANNEL_BITS) & 0xf) - green) * amount + (green << 8)) >> SKY_444_CHANNEL_BITS;
-		blue = (((to & 0xf) - blue) * amount + (blue << 8)) >> SKY_444_CHANNEL_BITS;
+		red = ((((to >> 8) & 0xf) - red) * amount + (red << 8)) >> 4;
+		green = ((((to >> 4) & 0xf) - green) * amount + (green << 8)) >> 4;
+		blue = (((to & 0xf) - blue) * amount + (blue << 8)) >> 4;
 		result.r = red;
 		result.g = green;
 		result.b = blue;
 	}
-	result.a = SKY_COLOUR_ALPHA_MAX;
+	result.a = 0xff;
 	return result;
 }
 #endif
 
 uint32_t ClampSkyChannel(uint32_t value)
 {
-	if (value > SKY_COLOUR_ALPHA_MAX)
+	if (value > 0xff)
 	{
-		value = SKY_COLOUR_ALPHA_MAX;
+		value = 0xff;
 	}
 	return value;
 }
@@ -132,7 +132,7 @@ uint32_t ClampSkyChannel(uint32_t value)
 unsigned long BRIGHTENINTERP(unsigned long from, unsigned long to, unsigned long amount)
 {
 	uint32_t divisor = (uint32_t)(SKY_COLOUR_BOOST_BASE - LH3DLevelOfDetail::g_colour_boost * SKY_COLOUR_BOOST_SCALE);
-	unsigned long inverse = SKY_COLOUR_ALPHA_MAX - amount;
+	unsigned long inverse = 0xff - amount;
 	LH3DColor     fromColour(from);
 	LH3DColor     toColour(to);
 	LH3DColor     result;
@@ -176,7 +176,7 @@ void LH3DSky::CalculateColours()
 	uint32_t goodColour = lightcols[SKY_LIGHT_COLOUR_GOOD].GetColor();
 	uint32_t neutralColour = lightcols[SKY_LIGHT_COLOUR_NEUTRAL].GetColor();
 	uint32_t evilColour = lightcols[SKY_LIGHT_COLOUR_EVIL].GetColor();
-	int      amount = (int)(evil * SKY_COLOUR_ALPHA_MAX);
+	int      amount = (int)(evil * 0xff);
 	if (evil < SKY_ALIGNMENT_NEUTRAL)
 	{
 		topcol = LH3DColor(LH3D_BLEND_COLOR(goodColour, neutralColour, amount));
@@ -186,7 +186,7 @@ void LH3DSky::CalculateColours()
 		int evilAmount = amount - SKY_BLEND_SCALE;
 		topcol = LH3DColor(LH3D_BLEND_COLOR(neutralColour, evilColour, evilAmount));
 	}
-	int maximum = (int)(SKY_COLOUR_ALPHA_MAX - overcast * SKY_OVERCAST_COLOUR_LOSS);
+	int maximum = (int)(0xff - overcast * SKY_OVERCAST_COLOUR_LOSS);
 	topcol.r = min(topcol.r, maximum);
 	topcol.g = min(topcol.g, maximum);
 	topcol.b = min(topcol.b, maximum);
@@ -212,15 +212,15 @@ void LH3DSky::CalculateColours()
 		for (i = 0; i < LAND_CELL_MAX_DARKNESS + 1; ++i)
 		{
 			LandCell::g_darkness_to_color[i] =
-				LH3D_BLEND_COLOR(LandCell::g_darkness_to_color[i], SKY_COLOUR_WHITE, LightningGlow);
+				LH3D_BLEND_COLOR(LandCell::g_darkness_to_color[i], 0xffffffff, LightningGlow);
 		}
 	}
 	int fade = (topcol.r * SKY_FOG_RED_WEIGHT + topcol.g * SKY_FOG_GREEN_WEIGHT + topcol.b * SKY_FOG_BLUE_WEIGHT) /
 	               SKY_FOG_WEIGHT_SUM +
 	           SKY_FOG_ALPHA_OFFSET;
-	if (fade > SKY_COLOUR_ALPHA_MAX)
+	if (fade > 0xff)
 	{
-		fade = SKY_COLOUR_ALPHA_MAX;
+		fade = 0xff;
 	}
 	fogr = topcol.r / SKY_FOG_COLOUR_DIVISOR;
 	fogg = topcol.g / SKY_FOG_COLOUR_DIVISOR;
@@ -245,9 +245,9 @@ void LH3DSky::CalculateColours()
 		{
 			overcast = 1.0f;
 		}
-		fogr += (((topcol.r >> SKY_FOG_OVERCAST_SHIFT) + SKY_FOG_OVERCAST_OFFSET) - fogr) * overcast;
-		fogg += (((topcol.g >> SKY_FOG_OVERCAST_SHIFT) + SKY_FOG_OVERCAST_OFFSET) - fogg) * overcast;
-		fogb += (((topcol.b >> SKY_FOG_OVERCAST_SHIFT) + SKY_FOG_OVERCAST_OFFSET) - fogb) * overcast;
+		fogr += (((topcol.r >> 3) + SKY_FOG_OVERCAST_OFFSET) - fogr) * overcast;
+		fogg += (((topcol.g >> 3) + SKY_FOG_OVERCAST_OFFSET) - fogg) * overcast;
+		fogb += (((topcol.b >> 3) + SKY_FOG_OVERCAST_OFFSET) - fogb) * overcast;
 		foga += (int)((SKY_FOG_OVERCAST_ALPHA - fade) * overcast);
 		float overcastNear = SKY_FOG_OVERCAST_NEAR;
 		nearDensity += (1.0f / overcastNear - nearDensity) * overcast;
@@ -255,10 +255,10 @@ void LH3DSky::CalculateColours()
 	}
 	if (LightningGlow)
 	{
-		fogr += (SKY_COLOUR_ALPHA_MAX - fogr) * LightningGlow * SKY_BLEND_INVERSE_SCALE;
-		fogg += (SKY_COLOUR_ALPHA_MAX - fogg) * LightningGlow * SKY_BLEND_INVERSE_SCALE;
-		fogb += (SKY_COLOUR_ALPHA_MAX - fogb) * LightningGlow * SKY_BLEND_INVERSE_SCALE;
-		foga += (int)((SKY_COLOUR_ALPHA_MAX - foga) * LightningGlow * SKY_BLEND_INVERSE_SCALE);
+		fogr += (0xff - fogr) * LightningGlow * SKY_BLEND_INVERSE_SCALE;
+		fogg += (0xff - fogg) * LightningGlow * SKY_BLEND_INVERSE_SCALE;
+		fogb += (0xff - fogb) * LightningGlow * SKY_BLEND_INVERSE_SCALE;
+		foga += (int)((0xff - foga) * LightningGlow * SKY_BLEND_INVERSE_SCALE);
 	}
 	LH3DIsland::SetFogMinMax(1.0f / nearDensity, 1.0f / farDensity);
 	LH3DIsland::SetFogColor(fogr, fogg, fogb, foga);
@@ -513,7 +513,7 @@ void LH3DSky::DrawMoonPost(LH3DColor& colour, LHMatrix& matrix, LHMatrix& moon_m
 	LH3DColor moonColour = colour;
 	moonColour.r = moonColour.r / SKY_MOON_RED_DIVISOR;
 	moonColour.g = moonColour.g / SKY_MOON_GREEN_DIVISOR;
-	moonColour.b /= (1 << SKY_MOON_BLUE_SHIFT);
+	moonColour.b /= 4;
 	LH3DAtmos::v_col[0][SKY_MOON_CORNER_LOWER_LEFT] = moonColour;
 	LH3DAtmos::v_col[0][SKY_MOON_CORNER_LOWER_RIGHT] = moonColour;
 	LH3DAtmos::v_col[0][SKY_MOON_CORNER_UPPER_LEFT] = moonColour;
@@ -533,12 +533,12 @@ void LH3DSky::DrawMoonPost(LH3DColor& colour, LHMatrix& matrix, LHMatrix& moon_m
 	LH3DTech::Draw3DWorldTriangle(SKY_MOON_CORNER_LAST, LH3DAtmos::v_pnt[0], LH3DAtmos::v_col[0], LH3DAtmos::v_uv[0],
 	                              SKY_MOON_TRIANGLE_COUNT, LH3DAtmos::v_idx[0], LH3DAtmos::mat1, false);
 	moonobj->matrix.Set(moon_matrix);
-	moonobj->SetColorSpecular(colour.GetColor(), SKY_COLOUR_BLACK);
+	moonobj->SetColorSpecular(colour.GetColor(), 0);
 	moonobj->SetDrawWithGlobalAlpha(true);
 	if (!moonflip)
 	{
 		moonobj->Draw();
-		moonobj->SetColorSpecular(colour.GetColor(), SKY_COLOUR_BLACK);
+		moonobj->SetColorSpecular(colour.GetColor(), 0);
 		moonobj->SetDrawWithGlobalAlpha(true);
 		moonobj->DrawUnderWater();
 	}
@@ -617,20 +617,20 @@ void LH3DSky::Draw()
 	SKY_ALIGNMENT firstSky, secondSky;
 	if (!(evil > SKY_ALIGNMENT_NEUTRAL))
 	{
-		alignmentAlpha = (int)(evil * SKY_COLOUR_ALPHA_MAX);
+		alignmentAlpha = (int)(evil * 0xff);
 		firstSky = SKY_ALIGNMENT_GOOD;
 		secondSky = SKY_ALIGNMENT_NEUTRAL;
 	}
 	else
 	{
-		alignmentAlpha = (int)((evil - SKY_ALIGNMENT_NEUTRAL) * SKY_COLOUR_ALPHA_MAX);
+		alignmentAlpha = (int)((evil - SKY_ALIGNMENT_NEUTRAL) * 0xff);
 		firstSky = SKY_ALIGNMENT_NEUTRAL;
 		secondSky = SKY_ALIGNMENT_EVIL;
 	}
-	int inverseAlpha = SKY_COLOUR_ALPHA_MAX - alignmentAlpha;
+	int inverseAlpha = 0xff - alignmentAlpha;
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
-	int      fog = (int)(overcast * SKY_COLOUR_ALPHA_MAX);
-	uint32_t topColour = SKY_COLOUR_WHITE;
+	int      fog = (int)(overcast * 0xff);
+	uint32_t topColour = 0xffffffff;
 	if (!UseDayAndNight())
 	{
 		LH3DColor colour = topcol;
@@ -653,13 +653,13 @@ void LH3DSky::Draw()
 		colour.r = (uint8_t)(colour.r * redScale);
 		colour.g = (uint8_t)(colour.g * greenScale);
 		colour.b = (uint8_t)(colour.b * blueScale);
-		colour.a = SKY_COLOUR_ALPHA_MAX;
+		colour.a = 0xff;
 		topColour = colour.GetColor();
 	}
-	uint32_t fogColour = (int)fogr | (SKY_COLOUR_WHITE ^ SKY_COLOUR_ALPHA_MAX);
-	fogColour <<= SKY_COLOUR_CHANNEL_BITS;
+	uint32_t fogColour = (int)fogr | (0xffffffff ^ 0xff);
+	fogColour <<= 8;
 	fogColour |= (int)fogg;
-	fogColour <<= SKY_COLOUR_CHANNEL_BITS;
+	fogColour <<= 8;
 	fogColour |= (int)fogb;
 	uint32_t diffuse;
 	uint32_t specular;
@@ -671,21 +671,21 @@ void LH3DSky::Draw()
 	{
 		diffuse = topColour;
 	}
-	specular = LH3DIsland::g_b_use_fog ? LH3D_BLEND_COLOR(SKY_COLOUR_BLACK, fogColour, fog) : SKY_COLOUR_BLACK;
+	specular = LH3DIsland::g_b_use_fog ? LH3D_BLEND_COLOR(0, fogColour, fog) : 0;
 	if (LH3DAtmos::flags & LH3D_ATMOS_ALIGNMENT_TRANSITION)
 	{
 		int fade = LH3DAtmos::glowlevel * LH3DAtmos::glowlevel / 150;
-		diffuse = LH3D_BLEND_COLOR(diffuse, SKY_COLOUR_BLACK, fade);
-		specular = LH3D_BLEND_COLOR(specular, SKY_COLOUR_BLACK, fade);
+		diffuse = LH3D_BLEND_COLOR(diffuse, 0, fade);
+		specular = LH3D_BLEND_COLOR(specular, 0, fade);
 	}
 	if (LightningGlow)
 	{
-		diffuse = LH3D_BLEND_COLOR(diffuse, SKY_COLOUR_WHITE, LightningGlow);
-		specular = LH3D_BLEND_COLOR(specular, SKY_COLOUR_WHITE, LightningGlow / SKY_LIGHTNING_SPECULAR_DIVISOR);
+		diffuse = LH3D_BLEND_COLOR(diffuse, 0xffffffff, LightningGlow);
+		specular = LH3D_BLEND_COLOR(specular, 0xffffffff, LightningGlow / SKY_LIGHTNING_SPECULAR_DIVISOR);
 	}
 	if (inverseAlpha > 0)
 	{
-		DrawSky(firstSky, SKY_COLOUR_ALPHA_MAX, diffuse, specular);
+		DrawSky(firstSky, 0xff, diffuse, specular);
 		if (alignmentAlpha > 0)
 		{
 			DrawSky(secondSky, alignmentAlpha, diffuse, specular);
@@ -693,7 +693,7 @@ void LH3DSky::Draw()
 	}
 	else
 	{
-		DrawSky(secondSky, SKY_COLOUR_ALPHA_MAX, diffuse, specular);
+		DrawSky(secondSky, 0xff, diffuse, specular);
 	}
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
 	DrawSun();
@@ -714,7 +714,7 @@ void LH3DSky::Draw()
 
 void LH3DSky::DrawSky(int index, int alpha, int colour, int specular)
 {
-	sky->SetColorSpecular((colour & SKY_COLOUR_RGB_MASK) + (alpha << SKY_COLOUR_ALPHA_SHIFT), specular);
+	sky->SetColorSpecular((colour & SKY_COLOUR_RGB_MASK) + (alpha << 24), specular);
 	LH3DSubMesh*    submesh = skymesh->submeshes[0];
 	int             count = submesh->NumPrimitives;
 	LH3DPrimitive** primitives = submesh->primitives_;
@@ -723,7 +723,7 @@ void LH3DSky::DrawSky(int index, int alpha, int colour, int specular)
 		memcpy(&primitives[i]->Material, sky_material[index], sizeof(LH3DMaterial));
 	}
 	sky->SetNeedClipping(true);
-	if (alpha != SKY_COLOUR_ALPHA_MAX)
+	if (alpha != 0xff)
 	{
 		sky->SetDrawWithGlobalAlpha(true);
 		if (g_b_any_voodoo)
@@ -836,13 +836,13 @@ void LH3DSky::Interpolate555Texture(uint16_t* dest, uint16_t* source1, uint16_t*
 	int greenMask;
 	if (LH3DTexture::g_b_use_565)
 	{
-		redShift = SKY_RGB565_RED_SHIFT;
-		greenMask = SKY_RGB565_GREEN_MASK;
+		redShift = 11;
+		greenMask = 0x3f;
 	}
 	else
 	{
-		redShift = SKY_RGB555_RED_SHIFT;
-		greenMask = SKY_RGB_CHANNEL_MASK;
+		redShift = 10;
+		greenMask = 0x1f;
 	}
 
 	for (int row = 0; row < num_lines; ++row)
@@ -854,12 +854,10 @@ void LH3DSky::Interpolate555Texture(uint16_t* dest, uint16_t* source1, uint16_t*
 		{
 			uint16_t source1Pixel = source1Row[column];
 			uint16_t source2Pixel = source2Row[column];
-			int      red = multab0[(source1Pixel >> redShift) & SKY_RGB_CHANNEL_MASK] +
-			               multab1[(source2Pixel >> redShift) & SKY_RGB_CHANNEL_MASK];
-			int      green = multab0[(source1Pixel >> SKY_RGB_CHANNEL_BITS) & greenMask] +
-			                 multab1[(source2Pixel >> SKY_RGB_CHANNEL_BITS) & greenMask];
-			int      blue = multab0[source1Pixel & SKY_RGB_CHANNEL_MASK] + multab1[source2Pixel & SKY_RGB_CHANNEL_MASK];
-			destRow[column] = (uint16_t)((red << redShift) | (green << SKY_RGB_CHANNEL_BITS) | blue);
+			int      red = multab0[(source1Pixel >> redShift) & 0x1f] + multab1[(source2Pixel >> redShift) & 0x1f];
+			int      green = multab0[(source1Pixel >> 5) & greenMask] + multab1[(source2Pixel >> 5) & greenMask];
+			int      blue = multab0[source1Pixel & 0x1f] + multab1[source2Pixel & 0x1f];
+			destRow[column] = (uint16_t)((red << redShift) | (green << 5) | blue);
 		}
 	}
 }
@@ -891,7 +889,7 @@ void LH3DSky::PostDrawSun()
 #if defined(VERSION_BW1WCI)
 	alpha = (int)((1.0f - LH3DWideScreen::g_fvalue) * alpha);
 #endif
-	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_COLOUR, SKY_COLOUR_BLACK);
+	sunobj->SetColorSpecular((alpha << 24) | SKY_SUN_COLOUR, 0);
 	sunobj->SetPosition(g_sun_pos, PI_F - QUARTER_PI_F, SKY_SUN_SCALE);
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
 	sunobj->SetNeedClipping(true);
@@ -960,7 +958,7 @@ void LH3DSky::DrawSun()
 	{
 		alpha = (int)(alpha / (overcast * SKY_SUN_OVERCAST_SCALE + 1.0f));
 	}
-	sunobj->SetColorSpecular((alpha << SKY_COLOUR_ALPHA_SHIFT) | SKY_SUN_DISC_COLOUR, SKY_COLOUR_BLACK);
+	sunobj->SetColorSpecular((alpha << 24) | SKY_SUN_DISC_COLOUR, 0);
 #if defined(VERSION_BW1WCI)
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
 #endif

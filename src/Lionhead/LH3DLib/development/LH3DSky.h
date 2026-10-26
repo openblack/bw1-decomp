@@ -14,19 +14,8 @@ struct LH3DMesh;
 
 #define SKY_BLEND_TABLE_SIZE       64
 #define SKY_BLEND_SCALE            256
-#define SKY_444_CHANNEL_BITS       4
-#define SKY_444_RED_SHIFT          8
-#define SKY_COLOUR_CHANNEL_BITS    8
-#define SKY_RGB_CHANNEL_BITS       5
-#define SKY_RGB_CHANNEL_MASK       0x1f
-#define SKY_RGB555_RED_SHIFT       10
-#define SKY_RGB565_RED_SHIFT       11
-#define SKY_RGB565_GREEN_BITS      6
-#define SKY_RGB565_GREEN_MASK      0x3f
 #define SKY_SUN_ALPHA_SCALE        (1.0f / 255.0f)
-#define SKY_COLOUR_ALPHA_SHIFT     24
 #define SKY_COLOUR_RGB_MASK        0x00ffffff
-#define SKY_COLOUR_ALPHA_MAX       0xff
 #define SKY_SUN_COLOUR             0x00a06a35
 #define SKY_SUN_SCALE              1.8f
 #define SKY_SUN_RESPONSE_TIME      100.0f
@@ -58,15 +47,12 @@ struct LH3DMesh;
 #define SKY_COLOUR_BOOST_BASE      200.0f
 #define SKY_COLOUR_BOOST_SCALE     130.0f
 #define SKY_OVERCAST_COLOUR_LOSS   96.0f
-#define SKY_COLOUR_BLACK           0x00000000
-#define SKY_COLOUR_WHITE           0xffffffff
 #define SKY_FOG_RED_WEIGHT         1
 #define SKY_FOG_GREEN_WEIGHT       4
 #define SKY_FOG_BLUE_WEIGHT        3
 #define SKY_FOG_WEIGHT_SUM         (SKY_FOG_RED_WEIGHT + SKY_FOG_GREEN_WEIGHT + SKY_FOG_BLUE_WEIGHT)
 #define SKY_FOG_ALPHA_OFFSET       8
 #define SKY_FOG_COLOUR_DIVISOR     3
-#define SKY_FOG_OVERCAST_SHIFT     3
 #define SKY_FOG_OVERCAST_OFFSET    32
 #define SKY_FOG_OVERCAST_ALPHA     48
 #define SKY_FOG_DAY_NEAR           400.0f
@@ -102,7 +88,6 @@ struct LH3DMesh;
 #define SKY_MOON_UV_MAX                0.49375f
 #define SKY_MOON_RED_DIVISOR           6
 #define SKY_MOON_GREEN_DIVISOR         5
-#define SKY_MOON_BLUE_SHIFT            2
 #define SKY_MOON_TRIANGLE_COUNT        2
 #define SKY_MOON_FOG_SCALE             0.5f
 #define SKY_MOON_FOG_OFFSET            110.0f
