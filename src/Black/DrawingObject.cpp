@@ -2279,19 +2279,6 @@ void Animal::Draw()
 	DebugShowText();
 }
 
-static inline int FloatToInt(float value)
-{
-	int  result;
-	int* resultPtr = &result;
-	__asm
-	{
-		fld value
-		mov edx, resultPtr
-		fistp dword ptr [edx]
-	}
-	return result;
-}
-
 void SpellWolf::Draw()
 {
 	PreDrawScale(GetScale());

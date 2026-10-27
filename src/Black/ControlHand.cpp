@@ -113,7 +113,7 @@ uint32_t CHand::LoadBinary(char* filename, int param_1)
 	uint32_t result;
 
 	result = file.SetName(filename);
-	result = file.Open(static_cast<LH_FILE_MODE>(2)); /* read mode */
+	result = file.Open(LH_FILE_MODE_READ_ONLY);
 	result = file.OpenSegment("Hand");
 
 	int32_t data;

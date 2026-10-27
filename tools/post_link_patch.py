@@ -2136,6 +2136,47 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00783C74, jmp_run(0x00783BA2)),  # WorshipSiteUpgrade
     (0x00783D03, copy_run(0x00783C74)),  # WorshipSiteUpgrade
     (0x00783D9B, call_rel32(0x004034F9)),  # WorshipSiteUpgrade
+    (0x0080A011, jmp_run(0x00809FF4)),  # LH3DMesh
+    (0x0080A031, jmp_run(0x0080A011)),  # LH3DMesh
+    (0x0080AE16, jmp_run(0x0080A031)),  # LH3DMesh
+    (0x0080AE32, jmp_run(0x0080AE16)),  # LH3DMesh
+    (0x0080B951, jmp_run(0x0080AE32)),  # LH3DMesh
+    (0x0080BC2B, call_rel32(0x004034F9)),  # LH3DMesh
+    (0x0080BD45, copy_run(0x0080BC2B)),  # LH3DMesh
+    (0x0080BE62, copy_run(0x0080BD45)),  # LH3DMesh
+    (0x0080CA25, copy_run(0x0080BE62)),  # LH3DMesh
+    (0x0080CAD3, jmp_run(0x0080CA25)),  # LH3DMesh
+    (0x0080CD46, copy_run(0x0080CAD3)),  # LH3DMesh
+    (0x0080CDC8, copy_run(0x0080CD46)),  # LH3DMesh
+    (0x0080CF79, jmp_run(0x0080CDC8)),  # LH3DMesh
+    (0x0080CFA5, copy_run(0x0080CF79)),  # LH3DMesh
+    (0x0080CFE6, copy_run(0x0080CFA5)),  # LH3DMesh
+    (0x0080D098, jmp_run(0x0080CFE6)),  # LH3DMesh
+    (0x0080D312, jmp_run(0x0080D098)),  # LH3DMesh
+    (0x0080D4F7, jmp_run(0x0080D312)),  # LH3DMesh
+    (0x0080D554, jmp_run(0x0080D4F7)),  # LH3DMesh
+    (0x0080D644, copy_run(0x0080D554)),  # LH3DMesh
+    (0x0080D6D1, jmp_run(0x0080D644)),  # LH3DMesh
+    (0x0080D716, jmp_run(0x0080D6D1)),  # LH3DMesh
+    (0x0080D779, jmp_run(0x0080D716)),  # LH3DMesh
+    (0x0080D834, jmp_run(0x0080D779)),  # LH3DMesh
+    (0x0080D8F4, jmp_run(0x0080D834)),  # LH3DMesh
+    (0x0080D976, jmp_run(0x0080D8F4)),  # LH3DMesh
+    (0x0080D9F6, jmp_run(0x0080D976)),  # LH3DMesh
+    (0x0080E7FB, call_rel32(0x004034F9)),  # LH3DMesh
+    (0x0080EA71, jmp_run(0x0080E7FB)),  # LH3DMesh
+    (0x0080EC06, copy_run(0x0080EA71)),  # LH3DMesh
+    (0x0080ED98, jmp_run(0x0080EC06)),  # LH3DMesh
+    (0x0080EEE4, copy_run(0x0080ED98)),  # LH3DMesh
+    (0x0080FEE2, copy_run(0x0080EEE4)),  # LH3DMesh
+    (0x0080FF15, jmp_run(0x0080FEE2)),  # LH3DMesh
+    (0x0080FFC8, copy_run(0x0080FF15)),  # LH3DMesh
+    (0x00810109, copy_run(0x0080FFC8)),  # LH3DMesh
+    (0x008101D9, jmp_run(0x00810109)),  # LH3DMesh
+    (0x008102D9, jmp_run(0x008101D9)),  # LH3DMesh
+    (0x008103D9, jmp_run(0x008102D9)),  # LH3DMesh
+    (0x00810427, copy_run(0x008103D9)),  # LH3DMesh
+    (0x00810469, copy_run(0x00810427)),  # LH3DMesh
     (0x0081DAA1, copy_run(0x0081D919)),  # LH3DTech
     (0x0081DB13, jmp_run(0x0081DAA1)),  # LH3DTech
     (0x0081DDE7, copy_run(0x0081DB13)),  # LH3DTech

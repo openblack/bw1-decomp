@@ -3629,8 +3629,13 @@ Lionhead/LH3DLib/development/LH3DIsland.cpp:
 	.text$x     start:0x008D2EE0 end:0x008D2F10 align:4
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
-	.text       start:0x00823150 end:0x00825080
+	.text       start:0x00821B80 end:0x00828040
 	.text$x     start:0x008D2F10 end:0x008D3090 align:4
+	.rdata      start:0x00A12F40 end:0x00A12F4C
+	.xdata$x    start:0x00A2F4D0 end:0x00A2F530 align:4
+	.CRT$XCU    start:0x00A37578 end:0x00A37580 align:4
+	.data       start:0x00CAB30C end:0x00CAB40C
+	.bss        start:0x00F21700 end:0x00F247D8 align:8
 
 Lionhead/LH3DLib/development/LH3DTech.cpp:
 	.text       start:0x00835AF0 end:0x0083B510

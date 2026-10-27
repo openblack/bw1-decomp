@@ -109,7 +109,7 @@ long LH3DSubMesh::GetTriangleCount()
 	long count = 0;
 	for (int i = 0; i < NumPrimitives; i++)
 	{
-		count += primitives_[i]->NumTriangles;
+		count += primitives_[i]->GetTriangleCount();
 	}
 	return count;
 }

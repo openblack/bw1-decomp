@@ -150,13 +150,15 @@ struct LH3DPrimitive
 	// Non-virtual methods
 
 	// BW1W120 00807f30 BW1M119 01068ba0 (LHCombined Release)
-	void ComputeBoundingBox(LHPoint& maxima, LHPoint& minima, int& initialized);
+	void __fastcall ComputeBoundingBox(LHPoint& maxima, LHPoint& minima, int& initialized);
 	// BW1W120 inlined BW1M119 0100e160 (LHCombined Release)
 	LH3DMaterial* GetMaterial() { return &Material; }
 	// BW1W120 inlined BW1M119 01067ea0 (LHCombined Release)
 	LH3DVertex* GetListVertex() { return Vertices; }
 	// BW1W120 inlined BW1M119 010165f0 (LHCombined Release)
 	int GetVerticesCount() { return NumVertices; }
+	// BW1W120 inlined BW1M119 010cfea0 (LHCombined Release)
+	int GetTriangleCount() { return NumTriangles; }
 	// BW1W120 0084a400 BW1M119 0109f120 (LHCombined Release)
 	void ReverseTriangles();
 	// BW1W120 0084a6d0 BW1M119 0109e780 (LHCombined Release)
@@ -265,5 +267,35 @@ static_assert(sizeof(LH3DPrimitive) == 0x30, "Data type is of wrong size");
 // BW1W120 0084ca00 BW1M119 0109d360 (LHCombined Release)
 void __cdecl Draw3DClipTriangle(long num_points, Vertex3D* points, long num_triangles, long* indices,
                                 LH3DMaterial* material);
+
+// Inliner IL size: 51
+// BW1W120 inlined BW1M119 inlined
+inline unsigned long ScaleColor(unsigned long color, int scale)
+{
+	return ((color & 0xff00) * scale & 0xff0000 | (color & 0xff0000) * scale & 0xff0000ff |
+	        (color & 0xff) * scale & 0xff00) >>
+	           8 |
+	       color & 0xff000000;
+}
+
+// Inliner IL size: 42
+// BW1W120 inlined BW1M119 inlined
+inline int GetLightLevel(int intensity)
+{
+	if (intensity < 0)
+	{
+		return LH3DPrimitive::MIN_LIGHT;
+	}
+	return ((LH3D_LIGHT_MAX - LH3DPrimitive::MIN_LIGHT) * intensity >> 8) + LH3DPrimitive::MIN_LIGHT;
+}
+
+// Inliner IL size: 180
+// BW1W120 inlined BW1M119 inlined
+inline void TransformPointBy(LHPoint* out, const LHPoint& in, const LHMatrix* m)
+{
+	out->x = m->m[0] * in.x + m->m[3] * in.y + m->m[6] * in.z + m->m[9];
+	out->y = m->m[1] * in.x + m->m[4] * in.y + m->m[7] * in.z + m->m[10];
+	out->z = m->m[2] * in.x + m->m[5] * in.y + m->m[8] * in.z + m->m[11];
+}
 
 #endif /* BW1_DECOMP_LH3D_PRIMITIVE_INCLUDED_H */

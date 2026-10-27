@@ -37,19 +37,6 @@ void NewClipLine(uint16_t a, uint16_t b, unsigned long code);
 // BW1W120 0081d1b0 BW1M119 010bc340 (LHCombined Release)
 void AddEdge(long a, long b);
 
-static inline int FloatToInt(float value)
-{
-	int  result;
-	int* resultPtr = &result;
-	__asm
-	{
-		fld value
-		mov edx, resultPtr
-		fistp dword ptr [edx]
-	}
-	return result;
-}
-
 static inline unsigned long BlendColor(unsigned long a, unsigned long b, int blend, int inverse)
 {
 	return ((a & 0xff0000) * blend + (b & 0xff0000) * inverse & 0xff0000ff |

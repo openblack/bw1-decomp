@@ -143,7 +143,7 @@ uint32_t LHReleasedFile::Open(LH_FILE_MODE mode)
 		{
 			sprintf(v4, "%c:\\%s", g_GameDriveCharacter, file_name);
 			strcpy(file_name, v4);
-			return LHFile::Open((LH_FILE_MODE)2);
+			return LHFile::Open(LH_FILE_MODE_READ_ONLY);
 		}
 		return 2;
 	}
@@ -239,7 +239,7 @@ void LHFile::FreeLastSeg()
 	}
 }
 
-uint32_t LHFile::WriteSegment(char* segment)
+uint32_t LHFile::WriteSegment(LHSegment* segment)
 {
 	if (!opened)
 		return 3;
@@ -247,9 +247,9 @@ uint32_t LHFile::WriteSegment(char* segment)
 		return 3;
 	if (SegmentOpened)
 		CloseSegment();
-	if (OpenSegment(segment))
+	if (OpenSegment((char*)segment->name))
 		return 3;
-	if (WriteSegmentData(((LHSegment*)segment)->buffer, ((LHSegment*)segment)->size))
+	if (WriteSegmentData(segment->buffer, segment->size))
 		return 3;
 	return CloseSegment() != 0 ? 3 : 0;
 }
@@ -526,7 +526,7 @@ uint32_t LHFile::TruncateFromSegment(const char* segment_name)
 		return 3;
 	if (custom_write_function)
 		return 3;
-	if (Open((LH_FILE_MODE)3))
+	if (Open(LH_FILE_MODE_UPDATE))
 		return 2;
 	if (!Lookup((char*)segment_name))
 		return 2;

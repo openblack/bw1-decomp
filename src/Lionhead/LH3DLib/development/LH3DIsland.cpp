@@ -4,6 +4,7 @@
 
 #include "LH3DColor.h"     /* For LH3DColor */
 #include "LH3DLandscape.h" /* For LH3DLandscape */
+#include "LH3DMath.h"      /* For FloatToInt */
 #include "LH3DMaterial.h"  /* For LH3DMaterial */
 #include "LH3DMem.h"       /* For LH3DMem */
 #include "LH3DP3.h"        /* For LH3DP3 */
@@ -479,19 +480,6 @@ LH3DColor     LH3DIsland::g_max_color_fog((uint8_t)g_max_fogr, (uint8_t)g_max_fo
 bool32_t      g_b_dont_do_d3d_activated_texture = false;
 MeshLodInfo   MeshLodInfo::g_mesh_lod_info[MESH_LOD_TYPE_COUNT];
 LandBlock*    LH3DIsland::g_ptr_blocks[LAND_MAX_BLOCKS];
-
-static inline int FloatToInt(float value)
-{
-	int  result;
-	int* resultPtr = &result;
-	__asm
-	{
-		fld value
-		mov edx, resultPtr
-		fistp dword ptr [edx]
-	}
-	return result;
-}
 
 static inline void* AllocClear(long size)
 {

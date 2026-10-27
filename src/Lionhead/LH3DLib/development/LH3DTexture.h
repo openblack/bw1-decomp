@@ -18,12 +18,15 @@ struct TextureFormat
 };
 static_assert(sizeof(TextureFormat) == 0x4, "Data type is of wrong size");
 
+#define LH3D_TEXTURE_FORMAT_MESH_SKIN 1
+
 enum LH3D_TEXTURE_TYPE
 {
 	LH3D_TEXTURE_TYPE_SYSTEM_MEMORY = 0x4,
 	LH3D_TEXTURE_TYPE_NAMED = 0x8,
 };
 
+class LHReleasedFile;
 struct LH3DVRAMTex;
 
 class LH3DSurfDesc
@@ -44,6 +47,10 @@ struct LH3DSRAMTex
 	uint32_t      field_0xc;   /* 0xc */
 	TextureFormat Format;      /* 0x10 */
 
+	// BW1W120 00870640 BW1M119 010b5bb0 (LHCombined Release)
+	void __fastcall Blend(unsigned long blend, LH3DSRAMTex* from, LH3DSRAMTex* to);
+	// BW1W120 008707a0 BW1M119 010b5a50 (LHCombined Release)
+	void __fastcall OrganicBlend(LH3DSRAMTex* from, LH3DSRAMTex* to, float blend);
 	// BW1W120 00870910 BW1M119 01034cf0 (LHCombined Release)
 	uint16_t* GetSoftSurface();
 };
@@ -83,6 +90,10 @@ struct LH3DTexture
 	static void SetPackedTexture();
 	// BW1W120 00838480 BW1M119 010c8ce0 (LHCombined Release)
 	static LH3DTexture* GetThisTexture(unsigned long id);
+#ifndef VERSION_BW1W100
+	// BW1W120 00838660 BW1M119 null
+	static void __fastcall SavePack(void* textures, const char* filename);
+#endif
 
 	// Non-virtual methods
 
@@ -100,6 +111,8 @@ struct LH3DTexture
 	bool32_t Lock(LH3DSurfDesc* desc);
 	// BW1W120 00838eb0 BW1M119 01034db0 (LHCombined Release)
 	void Unlock();
+	// BW1W120 00839010 BW1M119 01034800 (LHCombined Release)
+	LH3DSRAMTex* GetSRamTex();
 	// BW1W120 00839020 BW1M119 010c8480 (LHCombined Release)
 	void Compress();
 	// BW1W120 inlined BW1M119 010107b0 (LHCombined Release)
@@ -111,6 +124,8 @@ struct LH3DTexture
 extern bool32_t g_b_voodoo2;
 // BW1W120 00edd44c BW1M119 013404e4 (LHCombined Release)
 extern bool32_t g_b_banshee;
+// BW1W120 00edd3e0 BW1M119 013404e8 (LHCombined Release)
+extern LHReleasedFile g_cached_tex_file;
 
 // BW1W120 00871170 BW1M119 010b4fb0 (LHCombined Release)
 HRESULT GLock(IDirectDrawSurface7* surface, RECT* rect, DDSURFACEDESC2* desc, unsigned long flags, HANDLE event);

@@ -51,43 +51,6 @@ LHMatrix       LH3DPrimitive::g_froz_wiggle_mat;
 float wiggle_speed = 2.0f;
 float wiggle_amp = 0.02f;
 
-static inline int FloatToInt(float value)
-{
-	int  result;
-	int* resultPtr = &result;
-	__asm
-	{
-		fld value
-		mov edx, resultPtr
-		fistp dword ptr [edx]
-	}
-	return result;
-}
-
-static inline unsigned long ScaleColor(unsigned long color, int scale)
-{
-	return ((color & 0xff00) * scale & 0xff0000 | (color & 0xff0000) * scale & 0xff0000ff |
-	        (color & 0xff) * scale & 0xff00) >>
-	           8 |
-	       color & 0xff000000;
-}
-
-static inline int GetLightLevel(int intensity)
-{
-	if (intensity < 0)
-	{
-		return LH3DPrimitive::MIN_LIGHT;
-	}
-	return ((LH3D_LIGHT_MAX - LH3DPrimitive::MIN_LIGHT) * intensity >> 8) + LH3DPrimitive::MIN_LIGHT;
-}
-
-static inline void TransformPointBy(LHPoint* out, const LHPoint& in, const LHMatrix* m)
-{
-	out->x = m->m[0] * in.x + m->m[3] * in.y + m->m[6] * in.z + m->m[9];
-	out->y = m->m[1] * in.x + m->m[4] * in.y + m->m[7] * in.z + m->m[10];
-	out->z = m->m[2] * in.x + m->m[5] * in.y + m->m[8] * in.z + m->m[11];
-}
-
 static inline void RotatePointBy(LHPoint* out, const LHPoint& in, const LHMatrix* m)
 {
 	out->x = m->m[0] * in.x + m->m[3] * in.y + m->m[6] * in.z;
