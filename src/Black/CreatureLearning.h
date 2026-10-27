@@ -133,6 +133,8 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
+	CreatureLearningEpisode() {}
+	// BW1W120 inlined BW1M119 inlined
 	CreatureLearningEpisode(CreatureLearningContext* context, float feedback)
 	{
 		Context = context;
@@ -161,6 +163,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	CreatureLearningContext() {}
 	// BW1W120 004e1cf0 BW1M119 01266820
 	CreatureLearningContext(LESSON_TYPE type, CREATURE_DESIRES goal, CreatureBelief* belief, CREATURE_ACTION action);
 

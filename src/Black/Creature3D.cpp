@@ -820,7 +820,7 @@ float LH3DCreature::GetNavRadius()
 {
 	if (creature && !creature->Trapped)
 	{
-		return creature->physical->field_0x6c / Size1 * field_0x5228;
+		return creature->physical->Size / Size1 * field_0x5228;
 	}
 	return field_0x5228;
 }

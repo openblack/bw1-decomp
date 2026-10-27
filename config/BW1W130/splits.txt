@@ -680,14 +680,14 @@ Black/CreatureMentalObjectTests.cpp:
 	.text       start:0x004E5A00 end:0x004E71B0
 	.rdata      start:0x008D5578 end:0x008D5598
 	.CRT$XCU    start:0x00A46570 end:0x00A4657C align:4
-	.bss        start:0x00D2C118 end:0x00D2C124
+	.bss        start:0x00D2C118 end:0x00D2C120
 
 Black/CreatureMentalSaveAndLoad.cpp:
 	.text       start:0x004E71B0 end:0x004EBC40
 	.rdata      start:0x008D5598 end:0x008D55A4
 	.CRT$XCU    start:0x00A4657C end:0x00A4658C align:4
 	.data       start:0x00C60510 end:0x00C60640
-	.bss        start:0x00D2C124 end:0x00D2C138
+	.bss        start:0x00D2C120 end:0x00D2C138
 
 Black/CreatureMentalUsefulness.cpp:
 	.text       start:0x004EBC40 end:0x004EBF80

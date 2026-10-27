@@ -1325,7 +1325,7 @@ void GGame::ClearMap()
 	startCoords.z = 0;
 	startCoords.altitude = 0.0f;
 	if (players[PlayerIndex].creature.Get() != NULL && players[PlayerIndex].GetLeaderInterfaceStatus() != NULL &&
-	    players[PlayerIndex].creature->field_0x1058 == 0)
+	    players[PlayerIndex].creature->RemoteCreature == false)
 	{
 		char mindPath[256];
 		char physiquePath[256];

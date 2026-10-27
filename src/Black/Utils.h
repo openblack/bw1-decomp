@@ -95,6 +95,8 @@ struct GUtils
 	static float SigmoidThreshold(float param_1, float param_2);
 	// BW1W120 0074f210 BW1M119 01506a90
 	static char* GetFilenameFromPath(char* path);
+	// BW1W120 0074de90 BW1M119 null
+	static char* GetFileNameFromDialog(bool32_t open, char* title, char* filter, char* directory);
 	// BW1W120 0074f250 BW1M119 012f8540
 	static int GetPathFromPath(char* path, char* out);
 	// BW1W120 0074f290 BW1M119 01069b80

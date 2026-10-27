@@ -164,6 +164,7 @@ enum CREATURE_SUB_STATE_ACTIONS
 
 // Forward Declares
 
+class Archive;
 class CreatureInfo;
 class Creature;
 class CreatureAgenda;
@@ -234,6 +235,10 @@ struct CreatureActionOpinions
 
 	// BW1W120 inlined BW1M119 inlined
 	float GetOpinion(CREATURE_ACTION action) { return entries[action]; }
+	// BW1W120 004e91e0 BW1M119 inlined
+	void Save(Archive& archive);
+	// BW1W120 004e9210 BW1M119 inlined
+	void Load(Archive& archive);
 };
 
 class CreaturePreviousActions : public Base

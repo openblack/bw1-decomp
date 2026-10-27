@@ -29,6 +29,7 @@
 
 // Forward Declares
 
+class Archive;
 class Creature;
 class CreatureAttitudeToCreature;
 class CreatureBelief;
@@ -77,7 +78,15 @@ public:
 	static bool32_t DebugDrawObjectToActOn;
 
 	// BW1W120 004e7820 BW1M119 0126dfb0
-	void                                      SaveMind(char* path);
+	void SaveMind(char* path);
+	// BW1W120 004e79d0 BW1M119 0126d750
+	void SaveMind(Archive& archive);
+	// BW1W120 004e7090 BW1M119 null
+	void SaveMindToChosenFile();
+	// BW1W120 004e84a0 BW1M119 0126c590
+	void LoadMind(Archive& archive);
+	// BW1W120 004e8440 BW1M119 0126cf90
+	void                                      LoadMindIntoPreexistingCreature(Archive& archive);
 	CreatureDesires                           desires;
 	CreatureAgenda                            agenda;
 	CreatureBeliefs                           beliefs;

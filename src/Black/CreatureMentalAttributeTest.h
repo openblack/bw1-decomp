@@ -91,6 +91,7 @@ enum ATTRIBUTE_BOOL
 #define ATTRIBUTE_FOREST_SIZE_SMALL_TREES         10
 #define ATTRIBUTE_FOREST_SIZE_MEDIUM_TREES        20
 
+class Archive;
 class Attribute;
 class CreatureBelief;
 class GameThingWithPos;
@@ -172,12 +173,11 @@ struct DecisionTree
 
 struct DecisionTreeAgenda
 {
-	DECISION_TREE_TYPE tree_type; /* 0x0 */
-	CREATURE_DESIRES   creature_desires;
-	uint32_t           field_0x8;
-	uint32_t           field_0xc;
-	uint32_t           field_0x10;
-	DecisionTree       trees[0x2];
+	DECISION_TREE_TYPE                     tree_type; /* 0x0 */
+	CREATURE_DESIRES                       creature_desires;
+	uint32_t                               field_0x8;
+	LHLinkedList<CreatureLearningEpisode*> Examples;
+	DecisionTree                           trees[0x2];
 
 	// Constructors
 
@@ -190,6 +190,14 @@ struct DecisionTreeAgenda
 	void AddExample(CreatureLearningEpisode* episode);
 	// BW1W120 004d4340 BW1M119 01254e20
 	void ConstructBestTreeForExamples();
+	// BW1W120 004e9250 BW1M119 0126bad0
+	void Save(Archive& archive);
+	// BW1W120 004e9290 BW1M119 inlined
+	void Load(Archive& archive);
+	// BW1W120 004e92d0 BW1M119 0126b9d0
+	void SaveExamples(Archive& archive);
+	// BW1W120 004e9340 BW1M119 0126b7d0
+	void LoadExamples(Archive& archive);
 
 	// Static methods
 
@@ -215,6 +223,12 @@ struct DecisionTreeCollection
 
 	// BW1W120 004d7670 BW1M119 01250390
 	float ConvertUtilityToUsefulness(float utility);
+	// BW1W120 004d72e0 BW1M119 012506c0
+	void CleanUp();
+	// BW1W120 004e9150 BW1M119 0126bc90
+	void Save(Archive& archive);
+	// BW1W120 004e9190 BW1M119 0126bb70
+	void Load(Archive& archive);
 	// BW1W120 004e1530 BW1M119 012672a0
 	DecisionTreeAgenda* GetDecisionTreeFromContext(CreatureLearningContext* context);
 	// BW1W120 inlined BW1M119 01272140

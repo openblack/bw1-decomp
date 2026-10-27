@@ -15,6 +15,8 @@
 
 class Creature;
 class CreatureBelief;
+class GameOSFile;
+class GameThing;
 class SubArgument;
 
 class CreatureSubAction : public Base
@@ -22,11 +24,13 @@ class CreatureSubAction : public Base
 public:
 	CREATURE_SUB_STATE_ACTIONS Action;
 	CreatureBelief*            Belief;
-	uint8_t                    field_0x10[0x4];
+	uint32_t                   field_0x10;
 	LHPoint                    field_0x14;
-	uint8_t                    field_0x20[0xc];
-	uint32_t                   field_0x2c;
-	uint8_t                    field_0x30[0x10];
+	float                      field_0x20;
+	uint32_t                   field_0x24;
+	int                        field_0x28;
+	GameThing*                 field_0x2c;
+	unsigned long              field_0x30;
 	int (Creature::*LookFunction)(MapCoords* destination);
 	void (Creature::*FaceFunction)();
 
@@ -45,13 +49,12 @@ class CreatureSubActionAgenda : public Base
 {
 public:
 	uint32_t          field_0x8;
-	unsigned long     CurrentSubAction;
+	uint32_t          CurrentSubAction;
 	int               SubActionState;
-	unsigned long     NumSubActions;
+	uint32_t          NumSubActions;
 	uint32_t          field_0x18;
-	unsigned long     MainSubAction;
+	uint32_t          MainSubAction;
 	uint32_t          field_0x20;
-	uint32_t          field_0x24;
 	CreatureSubAction SubActions[0x20];
 	Creature*         creature; /* 0xc28 */
 	bool32_t          GoesOutsideConfinedArea;
@@ -62,7 +65,6 @@ public:
 	Creature*         Partner;
 	uint32_t          field_0xc44;
 	uint32_t          field_0xc48;
-	uint32_t          field_0xc4c;
 
 	// Constructors
 
@@ -80,6 +82,10 @@ public:
 	unsigned long GetSubActionIndex() const { return CurrentSubAction; }
 	// BW1W120 004ff5c0 BW1M119 012902d0
 	void ClearSubActionAgenda();
+	// BW1W120 004e5940 BW1M119 012702f0
+	bool32_t Save(GameOSFile& file);
+	// BW1W120 004e5c80 BW1M119 0126fdf0
+	bool32_t Load(GameOSFile& file);
 	// BW1W120 004ff240 BW1M119 012908a0
 	void AddSubAction(CREATURE_SUB_STATE_ACTIONS action, SubArgument* argument,
 	                  int (Creature::*look_function)(MapCoords* destination), void (Creature::*face_function)());

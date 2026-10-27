@@ -11,6 +11,7 @@
 
 #include "Base.h" /* For struct Base */
 
+class Archive;
 class Creature;
 class CreatureActionKnownAbout;
 class CreatureInfo;
@@ -38,6 +39,10 @@ public:
 	void SetKnowsAction(Creature* creature, CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, bool32_t knows);
 	// BW1W120 004e2890 BW1M119 01269ec0
 	bool32_t KnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action);
+	// BW1W120 004e8c50 BW1M119 0126c4c0
+	void Save(Archive& archive);
+	// BW1W120 004e8ca0 BW1M119 0126c340
+	void Load(Archive& archive);
 	// BW1W120 004e28c0 BW1M119 01269ab0
 	CreatureActionKnownAbout* AddActionLearnt(Creature* creature, CREATURE_ACTION_LEARNING_TYPE type,
 	                                          unsigned long action, bool32_t show_help);
