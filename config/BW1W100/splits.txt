@@ -1873,13 +1873,15 @@ Black/ScriptMarker.cpp:
 Black/ScriptTimer.cpp:
 	.text       start:0x006AA990 end:0x006AAC70
 	.rdata      start:0x0088E3B8 end:0x0088E3C0
-	.data       start:0x00B43D10 end:0x00B43D98
-	.bss        start:0x00CB9DC8 end:0x00CB9DE0
+	.data       start:0x00B43D0C end:0x00B43D30
+	.bss        start:0x00CB9DC8 end:0x00CB9DCC
 
 Black/SecretCreature.cpp:
 	.text       start:0x006AAC70 end:0x006AB1A0
 	.rdata      start:0x0088E3C0 end:0x0088E3E8
 	.CRT$XCU    start:0x008F7038 end:0x008F703C align:4
+	.data       start:0x00B43D30 end:0x00B43D98
+	.bss        start:0x00CB9DCC end:0x00CB9DE0
 
 Black/ExtraFeatures.cpp:
 	.data       start:0x00B43D98 end:0x00B43D9C

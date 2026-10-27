@@ -2287,13 +2287,15 @@ Black/ScriptTimer.cpp:
 	.text       start:0x00715EC0 end:0x007161E0
 	.rdata      start:0x00999748 end:0x00999750
 	.CRT$XCU    start:0x00A47708 end:0x00A47710 align:4
-	.data       start:0x00CA184C end:0x00CA18E0
-	.bss        start:0x00E1A1E0 end:0x00E1A1F8
+	.data       start:0x00CA184C end:0x00CA1878
+	.bss        start:0x00E1A1E0 end:0x00E1A1E4
 
 Black/SecretCreature.cpp:
 	.text       start:0x007161E0 end:0x00716710
 	.rdata      start:0x00999750 end:0x00999778
 	.CRT$XCU    start:0x00A47710 end:0x00A47714 align:4
+	.data       start:0x00CA1878 end:0x00CA18E0
+	.bss        start:0x00E1A1E4 end:0x00E1A1F8
 
 Black/Serialise.cpp:
 	.text       start:0x00716710 end:0x00717190

@@ -2016,12 +2016,14 @@ Black/ScriptMarker.cpp:
 Black/ScriptTimer.cpp:
 	.text       start:0x00706160 end:0x00706450
 	.rdata      start:0x009471B8 end:0x009471C0
-	.data       start:0x00C0FCC8 end:0x00C0FD50
-	.bss        start:0x00D87D00 end:0x00D87D18
+	.data       start:0x00C0FCC4 end:0x00C0FCE8
+	.bss        start:0x00D87D00 end:0x00D87D04
 
 Black/SecretCreature.cpp:
 	.text       start:0x00706450 end:0x00706980
 	.rdata      start:0x009471C0 end:0x009471E8
+	.data       start:0x00C0FCE8 end:0x00C0FD50
+	.bss        start:0x00D87D04 end:0x00D87D18
 
 Black/Serialise.cpp:
 	.text       start:0x00706980 end:0x00707070
