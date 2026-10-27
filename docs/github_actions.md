@@ -43,9 +43,9 @@ The upstream decomp.dev page and bot are separate from this fork's Actions setup
 
 `automatic-review.yml` reviews ready PRs with the upstream `AGENTS.md` as its
 source guide. It reads patches through the GitHub API and checks out only the
-trusted base revision; it never checks out or runs PR code. Review text is sent
-to the configured OpenAI-compatible API, so enable it only if that provider may
-receive repository diffs.
+trusted revision that supplied the workflow; it never checks out or runs PR
+code. Review text is sent to the configured OpenAI-compatible API, so enable it
+only if that provider may receive repository diffs.
 
 Set the Actions variable `AI_PR_REVIEW_ENABLED` to `true` and the secret
 `PR_REVIEW_API_KEY` to an OpenAI API key. The workflow defaults to `gpt-6-luna`;
