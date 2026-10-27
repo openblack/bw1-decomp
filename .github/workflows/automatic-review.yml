@@ -21,12 +21,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      # Run only trusted code from the PR base. The PR head is read through the
-      # GitHub API below and is never checked out or executed.
-      - name: Checkout trusted base
+      # Run the exact trusted revision that supplied this workflow. The PR head
+      # is read through the GitHub API below and is never checked out or executed.
+      - name: Checkout trusted workflow revision
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.base.sha }}
+          ref: ${{ github.workflow_sha }}
           persist-credentials: false
 
       - name: Checkout upstream review guide
