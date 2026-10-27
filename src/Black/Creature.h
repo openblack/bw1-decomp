@@ -12,6 +12,7 @@
 #include <chlasm/Enum.h>          /* For enum CREATURE_DESIRES, enum EFFECT_TYPE, enum IMPRESSIVE_TYPE, enum REACTION */
 #include <chlasm/GStates.h>       /* For enum VILLAGER_STATES */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
+#include <Lionhead/LHFile/ver3.0/LHFile.h>      /* For enum LH_FILE_RESULT */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 #include <re_common.h>                          /* For bool32_t */
 
@@ -19,6 +20,7 @@
 #include "CreatureHelp.h"      /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
 #include "CreaturePlan.h"      /* For CreatureActionsTried */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */
+#include "HandGlowType.h"      /* For enum HAND_GLOW_TYPE */
 #include "Living.h"            /* For struct Living */
 #include "MapCoords.h"         /* For struct MapCoords */
 #include "MobileObject.h"      /* For struct MobileObject */
@@ -44,6 +46,7 @@ enum LEASH_CONTROL
 class Base;
 struct BookmarkGraphic;
 struct Bubble;
+class Archive;
 class CreatureInfo;
 class LHPlayer;
 class Citadel;
@@ -68,6 +71,8 @@ class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 class LH3DCreature;
+struct MPFEStartGameData;
+class Villager;
 class LH3DObject;
 struct LH3DColor;
 struct LH3DSmoke;
@@ -112,6 +117,16 @@ public:
 	static void DrawLeashInfo();
 	// BW1W120 004e70c0 BW1M119 0126e740
 	void Save3D(char* path);
+	// BW1W120 004e72d0 BW1M119 0126e6b0
+	static bool CanLoad3D(char* name);
+	// BW1W120 004e7310 BW1M119 0126e300
+	static LH3DCreature* Load3D(char* name);
+	// BW1W120 004e7ff0 BW1M119 0126d680
+	static void Load(char* name, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data);
+	// BW1W120 004e8040 BW1M119 0126d200
+	static void LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data);
+	// BW1W120 004e8330 BW1M119 0126d080
+	bool32_t CheckValidation(Archive& archive);
 	// BW1W120 0047d830 BW1M119 011d6c10
 	static void OnClearMap();
 	// BW1W120 00c5fcf8 BW1M119 01a7e57c
@@ -165,8 +180,8 @@ public:
 	uint32_t ci_field_0x374;
 	uint32_t ci_field_0x378;
 #endif
-	float                    field_0x374;
-	float                    field_0x378;
+	uint32_t                 field_0x374;
+	uint32_t                 field_0x378;
 	uint8_t                  field_0x37c;
 	uint8_t                  field_0x37d;
 	uint8_t                  field_0x37e;
@@ -186,7 +201,7 @@ public:
 	uint8_t                  field_0x406;
 	uint8_t                  field_0x407;
 	CreatureSubActionAgenda  SubActionAgenda;
-	int                      field_0x1058;
+	bool32_t                 RemoteCreature;
 #ifdef VERSION_BW1WCI
 	bool32_t CanDrop;
 	uint32_t ci_field_0x1068;
@@ -199,63 +214,68 @@ public:
 	uint8_t  Tattoos;
 	uint8_t  ci_field_0x1085[0x3];
 #endif
-	uint32_t            ActionForced;
-	bool32_t            ReactionsEnabled;
-	bool32_t            LearningEnabled;
-	uint32_t            field_0x1068;
-	bool32_t            Invisible;
-	GPlayer*            owner;
-	Dance*              dance;
-	uint32_t            field_0x1078;
-	GParticleContainer* ParticleContainer0x107c;
-	GParticleContainer* ParticleContainer0x1080;
-	uint32_t            field_0x1084;
-	uint32_t            field_0x1088;
-	uint32_t            field_0x108c;
-	uint32_t            field_0x1090;
-	uint32_t            field_0x1094;
-	int                 ActionPriorityUpdateIndex;
-	LH3DSmoke*          smoke;
-	GArena*             arena;
-	uint32_t            field_0x10a4;
-	uint32_t            field_0x10a8;
-	bool32_t            FightStarted;
-	bool32_t            FightEnded;
-	bool32_t            TouchedByLeash;
-	bool32_t            DirectedByLeash;
-	uint32_t            field_0x10bc;
-	uint32_t            field_0x10c0;
-	uint8_t             field_0x10c4[0x8];
-	uint32_t            field_0x10cc;
-	uint32_t            field_0x10d0;
-	uint32_t            field_0x10d4;
-	uint8_t             field_0x10d8[0x10];
-	uint32_t            TurnsBeforeConsideringDecision;
-	uint32_t            field_0x10ec;
-	uint32_t            field_0x10f0;
-	bool32_t            RespondingToEmergency;
-	Town*               LastTownImpressed;
-	uint32_t            LastImpressiveDanceTurn;
-	DANCE_INFO          LastImpressiveDanceType;
-	uint32_t            field_0x1104;
-	bool32_t            LeashEnabled[LEASH_TYPE_LAST + 1];
-	uint32_t            field_0x1118;
-	uint32_t            field_0x111c;
-	uint32_t            field_0x1120;
-	int                 GameTurn;
-	CreatureRecentTrees RecentTrees;
-	uint32_t            field_0x1158;
-	uint32_t            field_0x115c;
-	uint32_t            field_0x1160;
-	MapCoords           field_0x1164;
+	uint32_t                ActionForced;
+	bool32_t                ReactionsEnabled;
+	bool32_t                LearningEnabled;
+	uint32_t                field_0x1068;
+	bool32_t                Invisible;
+	GPlayer*                owner;
+	Dance*                  dance;
+	GameThing*              field_0x1078;
+	GParticleContainer*     ParticleContainer0x107c;
+	GParticleContainer*     ParticleContainer0x1080;
+	GameThing*              field_0x1084;
+	GameThing*              field_0x1088;
+	uint32_t                field_0x108c;
+	LHLinkedList<Villager*> ControlledVillagers;
+	int                     ActionPriorityUpdateIndex;
+	LH3DSmoke*              smoke;
+	GArena*                 arena;
+	uint32_t                field_0x10a4;
+	uint32_t                field_0x10a8;
+	bool32_t                FightStarted;
+	bool32_t                FightEnded;
+	bool32_t                TouchedByLeash;
+	bool32_t                DirectedByLeash;
+	uint32_t                field_0x10bc;
+	uint32_t                field_0x10c0;
+	uint8_t                 SavedCreatureIndex;
+	uint8_t                 SavedPlayerNumber;
+	uint8_t                 field_0x10c6[0x6];
+	uint32_t                field_0x10cc;
+	uint32_t                field_0x10d0;
+	uint32_t                field_0x10d4;
+	uint8_t                 field_0x10d8[0x10];
+	uint32_t                TurnsBeforeConsideringDecision;
+	uint32_t                field_0x10ec;
+	uint32_t                field_0x10f0;
+	bool32_t                RespondingToEmergency;
+	Town*                   LastTownImpressed;
+	uint32_t                LastImpressiveDanceTurn;
+	DANCE_INFO              LastImpressiveDanceType;
+	bool32_t                SubActionAgendaSaved;
+	bool32_t                LeashEnabled[LEASH_TYPE_LAST + 1];
+	uint32_t                field_0x1118;
+	uint32_t                field_0x111c;
+	uint32_t                field_0x1120;
+	int                     GameTurn;
+	CreatureRecentTrees     RecentTrees;
+	uint32_t                field_0x1158;
+	uint32_t                field_0x115c;
+	uint32_t                field_0x1160;
+	MapCoords               field_0x1164;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x119c;
 	uint32_t ci_field_0x11a0;
 	uint32_t ci_field_0x11a4;
 #endif
 	uint32_t                          field_0x1170[0x8];
-	uint32_t                          field_0x1190;
-	uint8_t                           field_0x1194[0x14];
+	uint32_t*                         TattooData;
+	CREATURE_DESIRES                  SavedPlanDesire;
+	CREATURE_ACTION                   SavedPlanAction;
+	GameThingWithPos*                 SavedActivityObject;
+	GameThingWithPos*                 SavedObjectToActOn;
+	GameThingWithPos*                 SavedObjectToUse;
 	MapCoords                         ConfinementCentre;
 	float                             ConfinementRadius;
 	bool32_t                          GoingBackToConfinedArea;
@@ -264,9 +284,9 @@ public:
 	uint32_t                          field_0x11c4;
 	uint32_t                          field_0x11c8;
 	MapCoords                         DestPosBeforeTeleport;
-	uint8_t                           field_0x11d8[0xc];
+	MapCoords                         field_0x11d8;
 	GParticleContainer*               ParticleContainer0x11e4;
-	uint32_t                          field_0x11e8;
+	GameThing*                        field_0x11e8;
 	BookmarkGraphic*                  bookmark_graphic;
 	uint8_t                           field_0x11f0;
 	uint8_t                           field_0x11f1;
@@ -280,7 +300,7 @@ public:
 	uint32_t                          field_0x1210;
 	MapCoords                         DestPos;
 	LHLinkedList<LHPoint*>            DebugPath;
-	uint8_t                           field_0x1228[0x40];
+	char                              MindFileName[0x40];
 	DEVELOPMENT_PHASE                 DevelopmentPhase;
 	uint32_t                          field_0x126c;
 	uint32_t                          field_0x1270;
@@ -690,6 +710,18 @@ public:
 	void TrappedInEnclosedSpace(unsigned long num_objects, Object** objects);
 	// BW1W120 00477850 BW1M119 011e26b0
 	LH3DCreature* GetCreature3D();
+	// BW1W120 00474350 BW1M119 011e8360
+	void Initialise(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
+	// BW1W120 00477210 BW1M119 011e3040
+	void Update3DCreatureFromAttributes();
+	// BW1W120 0047d2f0 BW1M119 011d7820
+	void SetAutoFightStatus(uint32_t status);
+	// BW1W120 0047d310 BW1M119 011d77c0
+	uint32_t GetAutoFightStatus();
+	// BW1W120 004f8a40 BW1M119 0128e7d0
+	void SetCreedPower(HAND_GLOW_TYPE type, float scale, float power, float time);
+	// BW1W120 004f8ae0 BW1M119 0128e710
+	void GetCreedPower(HAND_GLOW_TYPE type, float* scale, float* power);
 	// BW1W120 0047cce0 BW1M119 011d82c0
 	bool32_t IsConfinedToArea();
 	// BW1W120 0047cd20 BW1M119 011d81d0

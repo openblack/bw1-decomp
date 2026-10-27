@@ -8,6 +8,7 @@
 
 // Forward Declares
 
+class Archive;
 class Creature;
 class CreatureInfo;
 class LH3DCreature;
@@ -26,13 +27,15 @@ public:
 	virtual ~CreatureDamageMap();
 };
 
+#define CREATURE_HEIGHT_TO_SIZE (1.0f / 15.0f)
+
 class CreaturePhysical : public Base
 {
 public:
 	uint32_t          Age;
 	float             strength;
 	float             Warmth;
-	float             field_0x14;
+	float             Fatness;
 	float             field_0x18;
 	float             Energy;
 	float             Itchiness;
@@ -43,23 +46,37 @@ public:
 	float             AmountOfPoo;
 	float             Exhaustion;
 	float             Dehydration;
-	uint32_t          field_0x38;
+	float             field_0x38;
 	float             DefaultSpeedInMetres;
 	float             RunningSpeedInMetres;
 	uint32_t          field_0x44;
 	float             field_0x48;
 	uint32_t          field_0x4c;
-	uint32_t          field_0x50;
+	int               EnvMapped;
 	Creature*         creature;
 	LH3DCreature*     Creature3d;
 	CreatureDamageMap DamageMap;
-	float             field_0x6c;
+	float             Size;
 	uint32_t          field_0x70;
 
 	// Override methods
 
 	// BW1W120 004ef4c0 BW1M119 011e6790
 	virtual ~CreaturePhysical();
+	// BW1W120 inlined BW1M119 011e3230
+	float GetStrength() { return strength; }
+	// BW1W120 inlined BW1M119 01509280
+	float GetFatness() { return Fatness; }
+	// BW1W120 004e8e70 BW1M119 0126bf30
+	void SaveBody(Archive& archive);
+	// BW1W120 004e8ff0 BW1M119 0126bd40
+	void LoadBody(Archive& archive);
+	// BW1W120 004f0100 BW1M119 01279740
+	void SetStrength(float strength);
+	// BW1W120 004f0210 BW1M119 01279500
+	void SetEnvMapped(int env_mapped);
+	// BW1W120 004f02b0 BW1M119 01279450
+	static float ConvertStrengthTo3D(float strength, unsigned long creature_type);
 
 	// Constructors
 

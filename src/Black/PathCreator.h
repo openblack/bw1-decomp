@@ -32,6 +32,8 @@ struct PathCreator
 	// BW1W120 0078ea20 BW1M119 010e0520
 	void GetCurrentUserPath(char* path);
 
+	// BW1W120 0078ea60 BW1M119 013ea490
+	void GetSaveGamePath(char* path);
 	// BW1W120 0078eaa0 BW1M119 014de1d0
 	void GetSaveGamePicturesPath(char* path);
 	// BW1W120 0078eae0 BW1M119 011d06f0

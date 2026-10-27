@@ -1894,7 +1894,7 @@ bool32_t GameOSFile::AutoSave(bool32_t force)
 		{
 			slot = 0;
 		}
-		SaveGameRoom::InstantSaveGame(slot % SAVE_GAME_ROOM_CIRCLE_SLOT_COUNT + SAVE_GAME_ROOM_CIRCLE_FIRST_SLOT);
+		SaveGameRoom::InstantSaveGame(slot % SAVE_GAME_ROOM_CIRCLE_SLOT_COUNT + SAVE_GAME_ROOM_FIRST_CIRCLE_SLOT);
 		++slot;
 		LHNetSetCurrentProfileUlong(key, slot);
 		return true;

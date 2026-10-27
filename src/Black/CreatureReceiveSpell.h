@@ -14,6 +14,8 @@
 class Creature;
 class GameThing;
 
+#define CREATURE_RECEIVE_SPELL_SLOTS 16
+
 struct CreatureReceiveSpell
 {
 	class TPerSpellData
@@ -33,10 +35,13 @@ struct CreatureReceiveSpell
 		uint32_t   SpellType;
 		uint32_t   Intensity;
 		GameThing* Caster;
+
+		// BW1W120 004f46c0 BW1M119 inlined
+		QueueData();
 	};
 
 	Creature*           creature;
-	TPerSpellData       data[0x10];
+	TPerSpellData       data[CREATURE_RECEIVE_SPELL_SLOTS];
 	GJVector<QueueData> queueData;
 	uint32_t            field_0x198;
 	LHPoint             field_0x19c;
@@ -58,6 +63,18 @@ struct CreatureReceiveSpell
 	bool IsQueueFull();
 	// BW1W120 004f4c50 BW1M119 01284d30
 	void Draw();
+	// BW1W120 004f5e60 BW1M119 01282160
+	float GetPhysicalHeightToMentalSave();
+	// BW1W120 004f5ea0 BW1M119 01282090
+	void SetPhysicalHeightMentalLoaded(float height);
+	// BW1W120 004f5f00 BW1M119 01281fd0
+	float GetPhysicalStrengthToMentalSave();
+	// BW1W120 004f5f40 BW1M119 01281f00
+	void SetPhysicalStrengthMentalLoaded(float strength);
+	// BW1W120 004f5fa0 BW1M119 01281e20
+	float GetAlignmentToMentalSave();
+	// BW1W120 004f5fe0 BW1M119 01281d80
+	void SetAlignmentMentalLoaded(float alignment);
 };
 
 // Constructor stores: 004f5240; allocation of 0x1d8 bytes: 0047472c.

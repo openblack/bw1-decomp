@@ -6,7 +6,7 @@
 // Used through GPlayer's existing pointer, not as an allocation model.
 struct MPFEStartGameData
 {
-	bool     field_0x0;
+	bool     LocalCreature;
 	char*    CreatureData;
 	char*    MemoryData;
 	char*    field_0xc;

@@ -22,6 +22,8 @@ struct MusicMoodPacket
 	MusicMoodPacket();
 };
 
+class Archive;
+
 class MusicMoodController
 {
 public:
@@ -34,6 +36,10 @@ public:
 	static void UpdateOnGameTurn(float delta_time, bool reset);
 	// BW1W120 00634370 BW1M119 01113bf0
 	static MusicEmotion* GetCurrentMusicEmotion();
+	// BW1W120 00634230 BW1M119 01113d80
+	static void WriteDatabase(Archive* archive);
+	// BW1W120 006340e0 BW1M119 01113ef0
+	static void ReadDatabase(Archive* archive, bool local_player);
 };
 
 #endif /* BW1_DECOMP_MUSIC_MOOD_INCLUDED_H */

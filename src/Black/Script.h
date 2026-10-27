@@ -173,6 +173,10 @@ public:
 	int StartScript(char* name);
 	// BW1W120 00d95c10
 	static ScriptDLL* g_scriptDLL;
+	// BW1W120 006eb760 BW1M119 014ddfe0
+	bool32_t IsScriptRunning(char* name) const;
+	// BW1W120 006eb790 BW1M119 014ddf60
+	float GetGlobalVariableValue(char* name);
 	// TODO: Original name unknown; Reset/LoadBinary own this loaded-binary flag.
 	// BW1W120 00d95c0c
 	static bool32_t Dat_00D95C0C;
