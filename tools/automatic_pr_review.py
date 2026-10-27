@@ -125,7 +125,22 @@ class GitHub:
             page += 1
         return files[:MAX_FILES], len(files) > MAX_FILES
 
-    def list_issue_comments(self, number):
+    def list_reviews(self, number):
+        reviews = []
+        page = 1
+        while True:
+            query = urllib.parse.urlencode({"per_page": 100, "page": page})
+            rows = self.request(
+                "GET", "/repos/{}/pulls/{}/reviews?{}".format(self.repository, number, query)
+            )
+            if not isinstance(rows, list):
+                raise ReviewError("GitHub returned an invalid reviews response")
+            reviews.extend(rows)
+            if len(rows) < 100:
+                return reviews
+            page += 1
+
+    def remove_legacy_comments(self, number):
         comments = []
         page = 1
         while True:
@@ -137,31 +152,44 @@ class GitHub:
                 raise ReviewError("GitHub returned an invalid comments response")
             comments.extend(rows)
             if len(rows) < 100:
-                return comments
+                break
             page += 1
+        for comment in comments:
+            if (
+                comment.get("user", {}).get("login") == "github-actions[bot]"
+                and MARKER in comment.get("body", "")
+            ):
+                self.request(
+                    "DELETE",
+                    "/repos/{}/issues/comments/{}".format(self.repository, comment["id"]),
+                )
 
-    def publish_comment(self, number, body):
-        comments = self.list_issue_comments(number)
+    def submit_review(self, number, commit_sha, event, body):
+        review_states = {
+            "APPROVE": "APPROVED",
+            "REQUEST_CHANGES": "CHANGES_REQUESTED",
+            "COMMENT": "COMMENTED",
+        }
+        if event not in review_states:
+            raise ReviewError("Invalid GitHub review event")
         existing = next(
             (
-                comment
-                for comment in comments
-                if comment.get("user", {}).get("login") == "github-actions[bot]"
-                and MARKER in comment.get("body", "")
+                review
+                for review in self.list_reviews(number)
+                if review.get("user", {}).get("login") == "github-actions[bot]"
+                and review.get("commit_id") == commit_sha
+                and MARKER in (review.get("body") or "")
+                and review.get("state") == review_states[event]
             ),
             None,
         )
-        if existing:
-            return self.request(
-                "PATCH",
-                "/repos/{}/issues/comments/{}".format(self.repository, existing["id"]),
-                {"body": body},
+        if existing is None:
+            self.request(
+                "POST",
+                "/repos/{}/pulls/{}/reviews".format(self.repository, number),
+                {"commit_id": commit_sha, "event": event, "body": body},
             )
-        return self.request(
-            "POST",
-            "/repos/{}/issues/{}/comments".format(self.repository, number),
-            {"body": body},
-        )
+        self.remove_legacy_comments(number)
 
 
 def added_line_numbers(patch):
@@ -319,6 +347,7 @@ def response_output_text(envelope):
 
 def valid_findings(result, changed_lines):
     findings = []
+    invalid_findings = 0
     allowed_severities = {"high", "medium", "low"}
     allowed_classes = {
         "correctness defect",
@@ -327,19 +356,25 @@ def valid_findings(result, changed_lines):
     }
     for item in result.get("findings", [])[:MAX_FINDINGS]:
         if not isinstance(item, dict):
+            invalid_findings += 1
             continue
         path = item.get("path")
         line = item.get("line")
         if not isinstance(path, str) or not isinstance(line, int) or isinstance(line, bool):
+            invalid_findings += 1
             continue
         if line not in changed_lines.get(path, set()):
+            invalid_findings += 1
             continue
         if item.get("severity") not in allowed_severities:
+            invalid_findings += 1
             continue
         if item.get("classification") not in allowed_classes:
+            invalid_findings += 1
             continue
         text_fields = ("title", "evidence", "why_it_matters", "suggestion")
         if any(not isinstance(item.get(field), str) or not item[field].strip() for field in text_fields):
+            invalid_findings += 1
             continue
         findings.append(
             {
@@ -353,7 +388,7 @@ def valid_findings(result, changed_lines):
                 "suggestion": item["suggestion"].strip()[:500],
             }
         )
-    return findings
+    return findings, invalid_findings
 
 
 def safe_markdown(text):
@@ -370,36 +405,65 @@ def safe_markdown(text):
     )
 
 
-def make_comment(findings, head_sha, limited_files, omitted_files):
-    lines = [MARKER, "Automated review for `{}`.".format(head_sha[:12]), ""]
+def choose_review_event(findings, limited_files, omitted_files, invalid_findings=0):
+    if limited_files or omitted_files or invalid_findings:
+        return "COMMENT"
     if not findings:
-        lines.append("No actionable findings were identified on added lines.")
+        return "APPROVE"
+    if any(
+        finding["classification"] == "correctness defect"
+        and finding["severity"] in ("high", "medium")
+        for finding in findings
+    ):
+        return "REQUEST_CHANGES"
+    return "COMMENT"
+
+
+def make_review_body(
+    findings, head_sha, event, limited_files, omitted_files, invalid_findings=0
+):
+    lines = [MARKER, "Automated review for `{}`.".format(head_sha[:12]), ""]
+    if event == "APPROVE":
+        lines.append("Approved. No actionable findings were identified on added lines.")
+    elif not findings:
+        lines.append(
+            "No actionable findings were identified on the added lines that were available to review."
+        )
+    elif event == "REQUEST_CHANGES":
+        lines.append("Changes requested for the following correctness findings:")
     else:
-        for finding in findings:
-            lines.extend(
-                [
-                    "`{}:{}` ({}, {}): {}".format(
-                        safe_markdown(finding["path"]),
-                        finding["line"],
-                        finding["severity"],
-                        finding["classification"],
-                        safe_markdown(finding["title"]),
-                    ),
-                    "Evidence: {}".format(safe_markdown(finding["evidence"])),
-                    "Why it matters: {}".format(safe_markdown(finding["why_it_matters"])),
-                    "Suggestion: {}".format(safe_markdown(finding["suggestion"])),
-                    "",
-                ]
-            )
-    if limited_files or omitted_files:
+        lines.append("Review comments:")
+
+    for finding in findings:
+        lines.extend(
+            [
+                "`{}:{}` ({}, {}): {}".format(
+                    safe_markdown(finding["path"]),
+                    finding["line"],
+                    finding["severity"],
+                    finding["classification"],
+                    safe_markdown(finding["title"]),
+                ),
+                "Evidence: {}".format(safe_markdown(finding["evidence"])),
+                "Why it matters: {}".format(safe_markdown(finding["why_it_matters"])),
+                "Suggestion: {}".format(safe_markdown(finding["suggestion"])),
+                "",
+            ]
+        )
+    if limited_files or omitted_files or invalid_findings:
         lines.extend(
             [
                 "Coverage was limited: {} file patch(es) were truncated or unavailable and {} file(s) were omitted by size limits.".format(
                     limited_files, omitted_files
-                )
+                ),
+                "{} model finding(s) did not validate against added lines and were not used to decide this review.".format(
+                    invalid_findings
+                ),
             ]
         )
-    lines.extend(["", "This review is advisory. Maintainers make the final call."])
+    lines.extend(
+        ["", "Submitted automatically by GitHub Actions. Maintainers make the final call."]
+    )
     return "\n".join(lines)
 
 
@@ -432,7 +496,7 @@ def main():
     github = GitHub(repository, token)
     files, file_list_truncated = github.list_changed_files(int(number))
     if not files:
-        comment = make_comment([], pull_request["head"]["sha"], 0, 0)
+        raise ReviewError("Pull request has no changed files to review")
     else:
         diff_context, changed_lines, limited_files = build_diff_context(files)
         model_result = call_model(
@@ -449,14 +513,22 @@ def main():
                 limited_files,
             ),
         )
-        findings = valid_findings(model_result, changed_lines)
-        comment = make_comment(
+        findings, invalid_findings = valid_findings(model_result, changed_lines)
+        event = choose_review_event(
             findings,
-            pull_request["head"]["sha"],
             limited_files,
             int(file_list_truncated),
+            invalid_findings,
         )
-    github.publish_comment(int(number), comment)
+        body = make_review_body(
+            findings,
+            pull_request["head"]["sha"],
+            event,
+            limited_files,
+            int(file_list_truncated),
+            invalid_findings,
+        )
+        github.submit_review(int(number), pull_request["head"]["sha"], event, body)
 
 
 if __name__ == "__main__":

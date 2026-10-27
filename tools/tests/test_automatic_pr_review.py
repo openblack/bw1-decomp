@@ -6,7 +6,8 @@ from tools.automatic_pr_review import (
     GitHub,
     added_line_numbers,
     build_diff_context,
-    make_comment,
+    choose_review_event,
+    make_review_body,
     response_output_text,
     safe_markdown,
     valid_findings,
@@ -14,6 +15,20 @@ from tools.automatic_pr_review import (
 
 
 class AutomaticReviewTests(unittest.TestCase):
+    def test_submit_review_uses_github_review_event(self):
+        github = GitHub("owner/repository", "token")
+        with (
+            mock.patch.object(github, "list_reviews", return_value=[]),
+            mock.patch.object(github, "request") as request,
+            mock.patch.object(github, "remove_legacy_comments"),
+        ):
+            github.submit_review(7, "head-sha", "REQUEST_CHANGES", "body")
+        request.assert_called_once_with(
+            "POST",
+            "/repos/owner/repository/pulls/7/reviews",
+            {"commit_id": "head-sha", "event": "REQUEST_CHANGES", "body": "body"},
+        )
+
     def test_file_pagination_reports_when_the_review_limit_omits_files(self):
         github = GitHub("owner/repository", "token")
         pages = [
@@ -109,9 +124,10 @@ class AutomaticReviewTests(unittest.TestCase):
                 },
             ]
         }
-        findings = valid_findings(result, {"src/example.cpp": {9}})
+        findings, invalid_count = valid_findings(result, {"src/example.cpp": {9}})
         self.assertEqual(len(findings), 1)
         self.assertEqual(findings[0]["line"], 9)
+        self.assertEqual(invalid_count, 1)
 
     def test_comment_escapes_mentions_and_html(self):
         escaped = safe_markdown("notify @team <tag> & keep")
@@ -119,8 +135,30 @@ class AutomaticReviewTests(unittest.TestCase):
         self.assertIn("&lt;tag&gt;", escaped)
         self.assertIn("&amp;", escaped)
 
-    def test_no_finding_comment_is_advisory(self):
-        body = make_comment([], "0123456789abcdef", 0, 0)
+    def test_complete_clean_review_is_approved(self):
+        self.assertEqual(choose_review_event([], 0, 0), "APPROVE")
+
+    def test_partial_coverage_never_approves(self):
+        self.assertEqual(choose_review_event([], 1, 0), "COMMENT")
+        self.assertEqual(choose_review_event([], 0, 1), "COMMENT")
+        self.assertEqual(choose_review_event([], 0, 0, 1), "COMMENT")
+        finding = {"classification": "correctness defect", "severity": "high"}
+        self.assertEqual(choose_review_event([finding], 1, 0), "COMMENT")
+
+    def test_correctness_findings_request_changes(self):
+        findings = [
+            {"classification": "correctness defect", "severity": "medium"}
+        ]
+        self.assertEqual(choose_review_event(findings, 0, 0), "REQUEST_CHANGES")
+
+    def test_other_findings_are_comments(self):
+        findings = [
+            {"classification": "unconfirmed risk", "severity": "high"}
+        ]
+        self.assertEqual(choose_review_event(findings, 0, 0), "COMMENT")
+
+    def test_no_finding_review_body_is_advisory(self):
+        body = make_review_body([], "0123456789abcdef", "APPROVE", 0, 0)
         self.assertIn("No actionable findings", body)
         self.assertIn("Maintainers make the final call", body)
 
