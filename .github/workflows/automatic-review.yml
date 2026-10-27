@@ -50,6 +50,6 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_REVIEW_API_KEY: ${{ secrets.PR_REVIEW_API_KEY }}
           PR_REVIEW_API_BASE: ${{ vars.PR_REVIEW_API_BASE || 'https://api.openai.com/v1' }}
-          PR_REVIEW_MODEL: ${{ vars.PR_REVIEW_MODEL }}
+          PR_REVIEW_MODEL: ${{ vars.PR_REVIEW_MODEL || 'gpt-6-luna' }}
           PR_REVIEW_GUIDE: upstream-guide/AGENTS.md
         run: python tools/automatic_pr_review.py

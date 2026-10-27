@@ -47,9 +47,9 @@ trusted base revision; it never checks out or runs PR code. Review text is sent
 to the configured OpenAI-compatible API, so enable it only if that provider may
 receive repository diffs.
 
-Set the Actions variable `AI_PR_REVIEW_ENABLED` to `true`, the variable
-`PR_REVIEW_MODEL` to a model name, and the secret `PR_REVIEW_API_KEY` to an API
-key accepted by that endpoint. `PR_REVIEW_API_BASE` is optional and defaults to
-`https://api.openai.com/v1`. The bot updates one summary comment per PR and
-posts only findings anchored to added lines. It leaves approval decisions to
-maintainers.
+Set the Actions variable `AI_PR_REVIEW_ENABLED` to `true` and the secret
+`PR_REVIEW_API_KEY` to an OpenAI API key. The workflow defaults to `gpt-6-luna`;
+override it with the `PR_REVIEW_MODEL` variable if needed. `PR_REVIEW_API_BASE`
+defaults to `https://api.openai.com/v1`; a custom endpoint must support the
+OpenAI Responses API. The bot updates one summary comment per PR and posts only
+findings anchored to added lines. It leaves approval decisions to maintainers.

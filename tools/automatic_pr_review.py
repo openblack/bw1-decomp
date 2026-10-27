@@ -20,6 +20,47 @@ MAX_FINDINGS = 12
 MAX_RESPONSE_BYTES = 1_000_000
 MAX_RETRIES = 3
 HUNK_RE = re.compile(r"^@@ -\d+(?:,\d+)? \+(\d+)(?:,\d+)? @@")
+REVIEW_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "findings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "path": {"type": "string"},
+                    "line": {"type": "integer"},
+                    "severity": {"type": "string", "enum": ["high", "medium", "low"]},
+                    "classification": {
+                        "type": "string",
+                        "enum": [
+                            "correctness defect",
+                            "maintainability/readability issue",
+                            "unconfirmed risk",
+                        ],
+                    },
+                    "title": {"type": "string"},
+                    "evidence": {"type": "string"},
+                    "why_it_matters": {"type": "string"},
+                    "suggestion": {"type": "string"},
+                },
+                "required": [
+                    "path",
+                    "line",
+                    "severity",
+                    "classification",
+                    "title",
+                    "evidence",
+                    "why_it_matters",
+                    "suggestion",
+                ],
+                "additionalProperties": False,
+            },
+        }
+    },
+    "required": ["findings"],
+    "additionalProperties": False,
+}
 
 
 class ReviewError(Exception):
@@ -212,15 +253,22 @@ def call_model(api_base, api_key, model, system, user):
         raise ReviewError("PR_REVIEW_API_BASE must be an HTTPS URL")
     payload = {
         "model": model,
-        "temperature": 0,
-        "response_format": {"type": "json_object"},
-        "messages": [
+        "max_output_tokens": 4_000,
+        "input": [
             {"role": "system", "content": system},
             {"role": "user", "content": user},
         ],
+        "text": {
+            "format": {
+                "type": "json_schema",
+                "name": "bw1_pr_review",
+                "strict": True,
+                "schema": REVIEW_SCHEMA,
+            }
+        },
     }
     request = urllib.request.Request(
-        api_base.rstrip("/") + "/chat/completions",
+        api_base.rstrip("/") + "/responses",
         data=json.dumps(payload).encode("utf-8"),
         method="POST",
         headers={
@@ -237,7 +285,7 @@ def call_model(api_base, api_key, model, system, user):
             if len(raw) > MAX_RESPONSE_BYTES:
                 raise ReviewError("Model response exceeded the size limit")
             envelope = json.loads(raw.decode("utf-8"))
-            content = envelope["choices"][0]["message"]["content"]
+            content = response_output_text(envelope)
             result = json.loads(content)
             if not isinstance(result, dict) or not isinstance(result.get("findings"), list):
                 raise ReviewError("Model returned an invalid review object")
@@ -254,6 +302,19 @@ def call_model(api_base, api_key, model, system, user):
         except (KeyError, IndexError, TypeError, json.JSONDecodeError) as error:
             raise ReviewError("Model returned an invalid JSON response") from error
     raise ReviewError("Model API request failed after retries")
+
+
+def response_output_text(envelope):
+    output = envelope.get("output")
+    if not isinstance(output, list):
+        raise ReviewError("Responses API returned no output list")
+    for item in output:
+        if item.get("type") != "message" or item.get("role") != "assistant":
+            continue
+        for content in item.get("content", []):
+            if content.get("type") == "output_text" and isinstance(content.get("text"), str):
+                return content["text"]
+    raise ReviewError("Responses API returned no assistant text")
 
 
 def valid_findings(result, changed_lines):

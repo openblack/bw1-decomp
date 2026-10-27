@@ -7,6 +7,7 @@ from tools.automatic_pr_review import (
     added_line_numbers,
     build_diff_context,
     make_comment,
+    response_output_text,
     safe_markdown,
     valid_findings,
 )
@@ -122,6 +123,19 @@ class AutomaticReviewTests(unittest.TestCase):
         body = make_comment([], "0123456789abcdef", 0, 0)
         self.assertIn("No actionable findings", body)
         self.assertIn("Maintainers make the final call", body)
+
+    def test_responses_api_text_extraction_skips_non_message_items(self):
+        envelope = {
+            "output": [
+                {"type": "reasoning", "summary": []},
+                {
+                    "type": "message",
+                    "role": "assistant",
+                    "content": [{"type": "output_text", "text": '{"findings": []}'}],
+                },
+            ]
+        }
+        self.assertEqual(response_output_text(envelope), '{"findings": []}')
 
 
 if __name__ == "__main__":
