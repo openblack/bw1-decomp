@@ -1,0 +1,55 @@
+name: Automatic review
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+concurrency:
+  group: automatic-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    if: >-
+      !github.event.pull_request.draft &&
+      vars.AI_PR_REVIEW_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # Run only trusted code from the PR base. The PR head is read through the
+      # GitHub API below and is never checked out or executed.
+      - name: Checkout trusted base
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+
+      - name: Checkout upstream review guide
+        uses: actions/checkout@v4
+        with:
+          repository: openblack/bw1-decomp
+          ref: main
+          path: upstream-guide
+          sparse-checkout: AGENTS.md
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Review pull request
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_REVIEW_API_KEY: ${{ secrets.PR_REVIEW_API_KEY }}
+          PR_REVIEW_API_BASE: ${{ vars.PR_REVIEW_API_BASE || 'https://api.openai.com/v1' }}
+          PR_REVIEW_MODEL: ${{ vars.PR_REVIEW_MODEL || 'gpt-6-luna' }}
+          PR_REVIEW_GUIDE: upstream-guide/AGENTS.md
+        run: python tools/automatic_pr_review.py
