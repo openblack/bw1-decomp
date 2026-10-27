@@ -18,6 +18,9 @@ struct LH3DMaterial;
 struct LH3DMesh;
 struct LHBoundingBox;
 struct LHPoint;
+struct SRTextured;
+struct SubCollideDataRender;
+struct TShadowInfo;
 
 // The materials an object drawn with DrawTriangleFastBlending can blend into, one per primitive.
 #define LH3D_OBJECT_FAST_BLENDING_MATERIALS 256
@@ -227,13 +230,13 @@ public:
 	virtual void CreatureIsleVirtual0x164(uint32_t param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4,
 	                                      uint32_t param_5, uint32_t param_6);
 #endif
-	virtual void                DrawTextureShadow(uint32_t param_1, uint32_t param_2);
-	virtual void                DrawTextureShadow32x32(void* param_1);
-	virtual void                DrawMorphLand();
-	virtual void                DrawBlendBaseCitadelle(); /* 0x170 */
-	virtual void                DrawIntoSprite(void* sprite_data);
-	virtual void                DrawForMouse();
-	virtual void                Blend(LH3DObject* obj1, LH3DObject* obj2);
+	virtual void DrawTextureShadow(uint32_t param_1, uint32_t param_2);
+	virtual void DrawTextureShadow32x32(SubCollideDataRender* collide, SRTextured* rasterizer, TShadowInfo* shadow);
+	virtual void DrawMorphLand();
+	virtual void DrawBlendBaseCitadelle(); /* 0x170 */
+	virtual void DrawIntoSprite(void* sprite_data);
+	virtual void DrawForMouse();
+	virtual void Blend(LH3DObject* obj1, LH3DObject* obj2);
 	virtual void __fastcall     SetCurrentAnim(LH3DAnim* anim); /* 0x180 */
 	virtual LH3DAnim*           GetCurrentAnim();
 	virtual void __fastcall     SetCurrentCycleTime(long time);

@@ -54,6 +54,12 @@ struct LH3DColor
 	void operator=(const LH3DColor& other) { *(uint32_t*)this = *(uint32_t*)&other; }
 	// BW1W120 inlined BW1M119 0101f500 (LHCombined Release)
 	uint32_t GetColor() { return *(uint32_t*)this; }
+	// BW1W120 inlined BW1M119 012bb8c0
+	uint8_t GetR() { return r; }
+	// BW1W120 inlined BW1M119 012bb8f0
+	uint8_t GetG() { return g; }
+	// BW1W120 inlined BW1M119 012bb920
+	uint8_t GetB() { return b; }
 };
 
 // Moves each channel of from amount/256 of the way towards to; alpha is taken from to.

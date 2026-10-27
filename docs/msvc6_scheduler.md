@@ -185,6 +185,33 @@ How many stores of the same constant it takes before c2 keeps the constant in a 
 The field-store columns match byte-tactics' MSVC 5 table. A store to a global by name has a longer
 immediate form, so two stores are already enough.
 
+### Symbol-numbering tie-break [measured]
+
+Which register gets which constant, and the order of the stores that use them, can depend on
+the number the front end gives one symbol, that is, on how many declarations come before it. It
+does not depend on what the declarations mean. `Object::SetUpPhysObAsATree` (`src/Black/Object.cpp`,
+BW1WCI) writes the `PhysOb::Face` indices with `xor edi,edi`, `mov edx,1` and `mov esi,2` in the
+target. With 11 more declarations in shared headers it chose `xor esi,esi` and `mov edi,2`, and
+three pairs of stores swapped places. The probes with `tools/tiebreak-probe.py --variants` found:
+
+- The result follows the count of declarations: an enumerator and a member function
+  declaration each count as one in these probes. An inline member function with a body counts
+  for more: seven one-line accessors moved the result by 22. Measure a candidate change with the
+  enumerator sweep instead of counting its lines. Renaming an enumerator, or making its
+  name longer or shorter, has no effect. So have `#define`s.
+- Only declarations before one symbol count. Here it is `EditorPhysics::PhysicsConstants`, which
+  the function reads. Inserts at the top of `EditorPhysics.h`, or in any header included before
+  it, move the result. Inserts after its declaration, or in `Object.cpp` after the includes, do not.
+- The pattern repeats every 64 declarations. Counting from the regressed state, BW1WCI matched
+  when 6–21 or 30–37 declarations were added (mod 64). The BW1W120 build of the same function
+  matched for every count except 14.
+
+How c2 turns the symbol number into a register choice was not traced. The 64-cycle suggests a
+hash table indexed by symbol number. The fix added real inline accessors from the Mac symbols
+(`LH3DColor::GetR/GetG/GetB`, `LandCell::IsLand/IsCoastal`) to headers before the sensitive
+symbol (see AGENTS.md, Inline expansion). Other units that include those headers shift too, so
+their functions were checked with `tools/variant-sweep.py` before the set was chosen.
+
 ## Using the logger
 
 ```bash

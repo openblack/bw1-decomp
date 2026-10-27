@@ -69,4 +69,19 @@ float __cdecl heading_from_direction_vector(const LHPoint& direction);
 // BW1W120 007faaf0 BW1M119 01030540 (LHCombined Release)
 float __cdecl angle_correct(float angle);
 
+// Inliner IL size: <= 40, always inlined and never charged
+// BW1W120 inlined BW1M119 inlined
+inline int FloatToInt(float value)
+{
+	int  result;
+	int* resultPtr = &result;
+	__asm
+	{
+		fld value
+		mov edx, resultPtr
+		fistp dword ptr [edx]
+	}
+	return result;
+}
+
 #endif /* BW1_DECOMP_LH3D_MATH_INCLUDED_H */

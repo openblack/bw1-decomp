@@ -29,8 +29,11 @@ Experiment discipline, learned the expensive way:
   inline-budget problem; the same x87 operations in a different operand order inside inlined
   bodies is a tie-break; the same integer instructions in a different order around the x87
   chain is a scheduling problem (`tools/c2-sched-log.py`, see
-  [`docs/msvc6_scheduler.md`](docs/msvc6_scheduler.md)); anything else is a real source
-  difference. Each class has its own procedure.
+  [`docs/msvc6_scheduler.md`](docs/msvc6_scheduler.md)); registers or store order that move
+  when unrelated declarations are added to a header is a symbol-numbering tie-break (see
+  [Inline expansion](#inline-expansion)); anything else is a real source difference. Each
+  class has its own procedure. Read the whole diff before naming the class: integer stores
+  are not an x87 tie-break.
 - **Prove that a knob moves the output before you sweep it.** A 5,000-build sweep over knobs
   that never touch the differing instructions finds nothing.
 - **Rank assumptions by evidence.** Mac bodies and signatures, and target call sets across
@@ -39,6 +42,12 @@ Experiment discipline, learned the expensive way:
 - **Bound the search and escalate early.** Once a residual is shown to be an x87 operand-order
   tie-break (see [Inline expansion](#inline-expansion)), stop hunting and ask the human
   whether to accept a fakematch. Reverse-engineering that tie-break rule has not paid off.
+- **A regression is not a version divergence.** When a change stops an already-linked unit
+  matching in one version (a hash fails after a header, PCH or merge change), never propose
+  dropping that version from `MatchingFor(...)` as the first fix. Doing so unlinks matched code
+  and hides the regression. Find the change that broke it, classify the difference, and
+  fix it in the source or headers. If that fails, take the evidence to the human. Remove a
+  version only with the human's approval, and record it in the PR.
 
 ## Repository Layout
 
@@ -142,6 +151,8 @@ BW1W130 was ported from BW1W120 by `tools/port_version.py`. It was built from
 and stale bytes fill some of its function padding. A unit matched for 1.20 is therefore not
 automatically matched for 1.30: list the versions it really matches in an inclusive
 `MatchingFor(...)`, and keep a version out of that list rather than changing source for it.
+This is for code that really differs in that version's binary, not for a unit that matched
+there before your change (see [Mindset](#mindset)).
 The same applies when matching a new unit: check BW1W130 and BW1WCI before using plain `Matching`.
 
 BW1WCI (Creature Isle) was ported from BW1W120 the same way (see
@@ -501,6 +512,27 @@ inlined bodies, it is a c2 tie-break. It depends on how much IL the inliner has 
 in the same function, not on anything the source means. `tools/tiebreak-probe.py --dummies`
 confirms this in one batch: some counts of unused locals match and others do not. Don't hunt
 further; leave the function nonmatching or ask the human about a fakematch.
+
+A second c2 tie-break depends on the number the front end gives a symbol: how many
+declarations come before it in the unit. Register choice and store order can change with it.
+Names, name lengths and macros have no effect. The output repeats over a cycle of 64
+declarations, and only the declarations before one sensitive symbol count. Because the inputs
+are declaration counts, a merge that adds unrelated declarations to shared headers can break a
+matched unit. Localize it with `tools/tiebreak-probe.py --variants`:
+
+1. Add N unused enumerators to an existing enum in a header the unit includes, for N from 0 to
+   about 130. Record which N match.
+2. Put a fixed number of matching declarations at points along the unit's include order (get
+   the order from a `/E` preprocess). Bisect down to the declaration after which inserts stop
+   having an effect. That declaration is the sensitive symbol.
+
+The fix is a real change to the headers before that symbol: add the members, enumerators or
+methods that the Mac symbols show they are missing. The count must land in a matching
+window for every version that links the unit. An inline body counts for more than one, so
+measure each candidate set with the same sweep. Every other unit that includes the edited
+headers is renumbered as well: build all five versions and compare their reports before
+choosing a set. Padding declarations without such evidence make a fakematch, so ask the
+human before adding them.
 
 The Ninja `cl` rule has no header dependencies. After editing a header, delete the objects
 you rely on before rebuilding. For shared headers, delete every object, then compare full

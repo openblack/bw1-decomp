@@ -116,9 +116,9 @@ path, for example `build/<version>/src/Black/BlackPCH.pch`.
   `blackpch.pdb` (`lh3dlibpch.pdb`). Each `/Yu` unit compiles with `/Fd` naming its own copy of
   that PDB, `build/<version>/src/Black/<unit>/blackpch.pdb`. Units with other `cflags` cannot
   share it: `configure.py` fails instead of building a mismatched PCH. A unit's `extra_cflags`
-  are not part of the PCH's flags. Where they differ from them, as `/GX` does for `LH3DIsland`,
-  cl warns (C4652) and the unit's option overrides the PCH's, as with a per-file setting in a
-  Visual C++ project.
+  are not part of the PCH's flags. Where they differ from them, as `/GX` does for `LH3DIsland`
+  and `LH3DMesh`, cl warns (C4652) and the unit's option overrides the PCH's, as with a per-file
+  setting in a Visual C++ project.
 - The PCH compiles with `cl` like every unit, and like them has no header dependencies: cl 6
   cannot list the files a compile reads. After editing a header the PCH reads, delete the
   `.pch`; Ninja then rebuilds it, and every unit using it, since they depend on it.
@@ -200,9 +200,9 @@ compiler names for a local static.
 
 The sources fitted before the PCH was modeled reproduce the `/Yu` layout with names instead:
 `LandscapeExtent` was picked among 22 candidates for its hash, `WhiteColour.h` defines a
-lowercase twin of `White` for the units that include the colours first, `Object.cpp` declares
-fabricated static members to move `$S` guard names into the right hash buckets, and several
-units define an unused `static float` to fill a slot.
+lowercase twin of `White` for the units that include the colours first, `Object.cpp` declared
+fabricated static members to move `$S` guard names into the right hash buckets (it is built with
+the PCH now), and several units define an unused `static float` to fill a slot.
 
 ### The `std::ctype<unsigned short>` guard [measured]
 
@@ -308,7 +308,9 @@ shares it) or of our sources.
   pointer-to-member representation differs from the PCH's, so under `/Yu` they could have used
   it, and `/YX` would rebuild it for them. They are out because `project.py` once shared a PCH
   only between units with all the same flags, not because of their targets. Their `extra_cflags`
-  now override the PCH's, so whether they used it is open.
+  now override the PCH's, so whether they used it is open. `Fixed`'s `.bss` guard follows the
+  name hash of its `$S` number, which every static data member its headers declare bumps:
+  `FixedCounterPad` keeps the guard in the original's slot.
 - **`PCH_PENDING`**: sources fitted to the layout of a compile without the PCH, whose targets
   do not rule it out. This is not a property of the original build, and they are follow-up
   work: `/Yu` puts their statics in the reverse order of their first mention, so the
@@ -321,7 +323,6 @@ shares it) or of our sources.
 | `Container` | includes of `Creature.h` and `Game.h` to move a `$S` guard's number; filler `spare` |
 | `GameThing`, `GlobalGameList`, `Object3D`, `OnMapTrajectory` | filler `static float unused;` |
 | `GJProperty` | `OriginVector` and `PersistenceRegistry` named for their hashes; filler `static double unused;` |
-| `Object` | the `ObjectCounterPadBetween` members moving `$S` guard numbers; `UnusedStatic0`..`2` |
 | `PSysProperties` | `ParticleZeroPoint` named for its hash; filler `unused` |
 | `ScriptFind` | `WhiteColour.h`'s lowercase `white`; filler `Unused` |
 | `WorldRoom` | the `WorldRoomCounterPad` members; `OneOnLogHalf`, a second spelling named for its hash; `UnusedStatic` |

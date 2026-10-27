@@ -63,19 +63,6 @@
 #include "ValueSpinner.h"
 #include "VirtualInfluence.h"
 
-static inline int RoundPhysicsCell(float value)
-{
-	int  result;
-	int* resultPtr = &result;
-	__asm
-	{
-		fld value
-		mov edx, resultPtr
-		fistp dword ptr [edx]
-	}
-	return result;
-}
-
 #if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define OBJECT_SOURCE_FILE "C:\\dev\\black\\Object.cpp"
 #elif defined(VERSION_BW1W110)
@@ -94,18 +81,10 @@ static inline int RoundPhysicsCell(float value)
 
 static const float RouteMinRadius = 0.05f;
 
-LHMatrix Object::StoredMatrix;
-
 static uint32_t UnusedStatic0 = 0;
 static uint32_t UnusedStatic1 = 0;
 
 GObjectInfo GObjectInfo::Definitions[OBJECT_TYPE_LAST];
-
-struct ObjectCounterPadBetween
-{
-	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8, Pad9, Pad10, Pad11, Pad12, Pad13, Pad14, Pad15,
-		Pad16, Pad17, Pad18;
-};
 
 GObjectInfo GObjectInfo::DefaultAIPlayerObjectInfo;
 
@@ -119,7 +98,7 @@ Object::Object() : info(NULL), coords()
 
 LH3DObject::ObjectType Object::Get3DType(MESH_LIST index)
 {
-	LH3DMeshPack& meshPack = *LH3DMesh::MeshPack;
+	LH3DMeshPack& meshPack = *LH3DMesh::g_pack;
 
 	if (index < MSH_DUMMY || index >= meshPack.MeshCount)
 	{
@@ -131,7 +110,7 @@ LH3DObject::ObjectType Object::Get3DType(MESH_LIST index)
 LH3DObject::ObjectType Object::Get3DType()
 {
 	MESH_LIST     mesh = GetMesh();
-	LH3DMeshPack& meshPack = *LH3DMesh::MeshPack;
+	LH3DMeshPack& meshPack = *LH3DMesh::g_pack;
 
 	if (mesh < MSH_DUMMY || mesh >= meshPack.MeshCount)
 	{
@@ -573,8 +552,8 @@ PhysicsObject* Object::InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& ang
 		}
 		else
 		{
-			LandCell* cell = LH3DIsland::GetCell(RoundPhysicsCell(physicsObject->Physics.Matrix.GetPos().x / 10.0f),
-			                                     RoundPhysicsCell(physicsObject->Physics.Matrix.GetPos().z / 10.0f));
+			LandCell* cell = LH3DIsland::GetCell(FloatToInt(physicsObject->Physics.Matrix.GetPos().x / 10.0f),
+			                                     FloatToInt(physicsObject->Physics.Matrix.GetPos().z / 10.0f));
 			if (cell != NULL && cell->altitude > 1)
 			{
 				landed = true;
@@ -2309,3 +2288,5 @@ void Object::CreatureIsleVirtual0x108()
 	}
 }
 #endif
+
+LHMatrix Object::StoredMatrix;

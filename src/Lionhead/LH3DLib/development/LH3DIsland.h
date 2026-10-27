@@ -108,6 +108,10 @@ struct LandCell
 
 	// BW1W120 inlined BW1M119 0100f850
 	bool32_t IsWater() { return Flags & LAND_CELL_WATER; }
+	// BW1W120 inlined BW1M119 0106a4f0
+	bool IsLand() { return !(Flags & LAND_CELL_WATER); }
+	// BW1W120 inlined BW1M119 013e9470
+	bool IsCoastal() { return !IsWater() && (Flags & LAND_CELL_COAST); }
 	// BW1W120 inlined BW1M119 0104b470 (LHCombined Release)
 	void SetLand() { Flags &= ~(LAND_CELL_WATER | LAND_CELL_COAST); }
 	// BW1W120 inlined BW1M119 inlined
