@@ -7,7 +7,10 @@ from tools.automatic_pr_review import (
     added_line_numbers,
     build_diff_context,
     choose_review_event,
+    collect_configure_status,
+    collect_source_context,
     make_review_body,
+    make_prompt,
     response_output_text,
     safe_markdown,
     valid_findings,
@@ -51,6 +54,49 @@ class AutomaticReviewTests(unittest.TestCase):
         self.assertEqual(len(files), 200)
         self.assertFalse(truncated)
 
+    def test_check_run_limit_reports_truncated_coverage(self):
+        github = GitHub("owner/repository", "token")
+        pages = [
+            {"check_runs": [{"name": "check", "status": "completed"} for _ in range(100)]},
+            {"check_runs": [{"name": "extra", "status": "completed"}]},
+        ]
+        with mock.patch.object(github, "request", side_effect=pages):
+            checks, truncated = github.list_check_runs("head-sha")
+        self.assertEqual(len(checks), automatic_pr_review.MAX_CHECK_RUNS)
+        self.assertTrue(truncated)
+
+    def test_source_context_includes_only_changed_source_files(self):
+        github = GitHub("owner/repository", "token")
+        files = [
+            {"filename": "src/example.cpp", "status": "modified"},
+            {"filename": "docs/readme.md", "status": "modified"},
+        ]
+        with mock.patch.object(github, "get_text_file", return_value="source text") as get_file:
+            contexts, limited = collect_source_context(github, files, "head-sha")
+        self.assertEqual(contexts, [{"path": "src/example.cpp", "status": "complete", "text": "source text"}])
+        self.assertEqual(limited, 0)
+        get_file.assert_called_once_with("src/example.cpp", "head-sha")
+
+    def test_truncated_source_context_is_reported(self):
+        github = GitHub("owner/repository", "token")
+        files = [{"filename": "src/example.cpp", "status": "modified"}]
+        with (
+            mock.patch.object(github, "get_text_file", return_value="source text"),
+            mock.patch.object(automatic_pr_review, "MAX_SOURCE_CONTEXT_CHARS", 6),
+        ):
+            contexts, limited = collect_source_context(github, files, "head-sha")
+        self.assertEqual(contexts[0]["status"], "truncated")
+        self.assertEqual(contexts[0]["text"], "source")
+        self.assertEqual(limited, 1)
+
+    def test_missing_configure_status_is_unknown(self):
+        github = GitHub("owner/repository", "token")
+        with mock.patch.object(github, "get_text_file", return_value=None):
+            status = collect_configure_status(
+                github, [{"filename": "src/example.cpp", "status": "modified"}], "head-sha"
+            )
+        self.assertEqual(status, [{"source": "example.cpp", "status": "unknown", "entries": []}])
+
     def test_added_line_numbers_tracks_new_side_only(self):
         patch = "@@ -4,3 +4,4 @@\n context\n-old line\n+new line\n+another line\n tail\n"
         self.assertEqual(added_line_numbers(patch), {5, 6})
@@ -85,6 +131,28 @@ class AutomaticReviewTests(unittest.TestCase):
         self.assertEqual(changed_lines, {"src/example.cpp": {1}})
         self.assertEqual(truncated, 1)
 
+    def test_large_cpp_and_symbol_patches_fit_review_limits(self):
+        files = [
+            {
+                "filename": "config/BW1W120/symbols.txt",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 0,
+                "patch": "@@ -0,0 +1 @@\n+" + ("s" * 8_900),
+            },
+            {
+                "filename": "src/Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp",
+                "status": "added",
+                "additions": 1,
+                "deletions": 0,
+                "patch": "@@ -0,0 +1 @@\n+" + ("c" * 26_900),
+            },
+        ]
+        _, changed_lines, limited = build_diff_context(files)
+        self.assertEqual(limited, 0)
+        self.assertEqual(changed_lines[files[0]["filename"]], {1})
+        self.assertEqual(changed_lines[files[1]["filename"]], {1})
+
     def test_missing_patch_is_reported_as_limited_coverage(self):
         files = [
             {
@@ -105,27 +173,39 @@ class AutomaticReviewTests(unittest.TestCase):
                 {
                     "path": "src/example.cpp",
                     "line": 9,
+                    "function": "",
                     "severity": "high",
                     "classification": "correctness defect",
                     "title": "Out-of-bounds access",
                     "evidence": "The index is unchecked.",
+                    "assumptions": "",
                     "why_it_matters": "It can read past the buffer.",
                     "suggestion": "Validate the index.",
+                    "matching_effect": "",
+                    "source_linking": "",
+                    "checks": "",
+                    "unresolved_decision": "",
                 },
                 {
                     "path": "src/example.cpp",
                     "line": 8,
+                    "function": "",
                     "severity": "high",
                     "classification": "correctness defect",
                     "title": "Not an added line",
                     "evidence": "No evidence.",
+                    "assumptions": "",
                     "why_it_matters": "No reason.",
                     "suggestion": "No change.",
+                    "matching_effect": "",
+                    "source_linking": "",
+                    "checks": "",
+                    "unresolved_decision": "",
                 },
             ]
         }
         findings, invalid_count, omitted_count = valid_findings(
-            result, {"src/example.cpp": {9}}
+            result, {"src/example.cpp": {9}}, {"src/example.cpp": ""}
         )
         self.assertEqual(len(findings), 1)
         self.assertEqual(findings[0]["line"], 9)
@@ -147,21 +227,48 @@ class AutomaticReviewTests(unittest.TestCase):
         self.assertEqual(choose_review_event([], 0, 0, 1), "COMMENT")
         finding = {"classification": "correctness defect", "severity": "high"}
         self.assertEqual(choose_review_event([finding], 1, 0), "COMMENT")
+        self.assertEqual(choose_review_event([], 0, 0, limited_context_files=1), "COMMENT")
+
+    def test_prompt_marks_context_as_untrusted_and_reports_tool_limits(self):
+        system, user = make_prompt(
+            "instructions",
+            "guide",
+            "title",
+            "body",
+            [],
+            "diff",
+            0,
+            0,
+            [],
+            0,
+            [],
+            [],
+            [],
+            False,
+        )
+        self.assertIn("RepoScout", system)
+        self.assertIn("untrusted review input", user)
 
     def test_findings_beyond_limit_prevent_approval(self):
         finding = {
             "path": "src/example.cpp",
             "line": 1,
+            "function": "",
             "severity": "low",
             "classification": "maintainability/readability issue",
             "title": "Finding",
             "evidence": "Evidence",
+            "assumptions": "",
             "why_it_matters": "Impact",
             "suggestion": "Suggestion",
+            "matching_effect": "",
+            "source_linking": "",
+            "checks": "",
+            "unresolved_decision": "",
         }
         result = {"findings": [dict(finding) for _ in range(13)]}
         findings, invalid_count, omitted_count = valid_findings(
-            result, {"src/example.cpp": {1}}
+            result, {"src/example.cpp": {1}}, {"src/example.cpp": ""}
         )
         self.assertEqual(len(findings), automatic_pr_review.MAX_FINDINGS)
         self.assertEqual(invalid_count, 0)
@@ -169,6 +276,59 @@ class AutomaticReviewTests(unittest.TestCase):
         self.assertEqual(
             choose_review_event(findings, 0, 0, invalid_count, omitted_count), "COMMENT"
         )
+
+    def test_finding_can_anchor_to_a_changed_function(self):
+        finding = {
+            "path": "src/example.cpp",
+            "line": 0,
+            "function": "MeshIntersect::GetImpactPointAlex",
+            "severity": "high",
+            "classification": "correctness defect",
+            "title": "Incorrect miss handling",
+            "evidence": "The function reads an unset result.",
+            "assumptions": "",
+            "why_it_matters": "The output is undefined.",
+            "suggestion": "Return before using the result.",
+            "matching_effect": "The TU is NonMatching.",
+            "source_linking": "Normal links use extracted code.",
+            "checks": "Build checks are pending.",
+            "unresolved_decision": "Original binary behavior is unknown.",
+        }
+        findings, invalid_count, omitted_count = valid_findings(
+            {"findings": [finding]},
+            {"src/example.cpp": set()},
+            {
+                "src/example.cpp": "@@ -0,0 +1,2 @@\n+bool MeshIntersect::GetImpactPointAlex() {\n+    return false;\n"
+            },
+        )
+        self.assertEqual(invalid_count, 0)
+        self.assertEqual(omitted_count, 0)
+        self.assertEqual(findings[0]["function"], "MeshIntersect::GetImpactPointAlex")
+
+    def test_function_anchor_must_appear_in_a_changed_hunk(self):
+        finding = {
+            "path": "src/example.cpp",
+            "line": 0,
+            "function": "MeshIntersect::UnchangedFunction",
+            "severity": "high",
+            "classification": "correctness defect",
+            "title": "Finding",
+            "evidence": "Evidence",
+            "assumptions": "",
+            "why_it_matters": "Impact",
+            "suggestion": "Suggestion",
+            "matching_effect": "",
+            "source_linking": "",
+            "checks": "",
+            "unresolved_decision": "",
+        }
+        findings, invalid_count, _ = valid_findings(
+            {"findings": [finding]},
+            {"src/example.cpp": set()},
+            {"src/example.cpp": "@@ -4 +4 @@\n+changed line\n"},
+        )
+        self.assertEqual(findings, [])
+        self.assertEqual(invalid_count, 1)
 
     def test_correctness_findings_request_changes(self):
         findings = [

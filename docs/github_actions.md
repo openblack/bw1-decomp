@@ -47,6 +47,12 @@ trusted revision that supplied the workflow; it never checks out or runs PR
 code. Review text is sent to the configured OpenAI-compatible API, so enable it
 only if that provider may receive repository diffs.
 
+The reviewer instructions are in `tools/automatic_pr_review_instructions.md`.
+The job supplies changed source files, matching configure entries, base-source
+method-name matches as caller candidates, and the check-run states available
+when review starts. RepoScout is not available in GitHub Actions, so the bot
+states that it was not used.
+
 Set the Actions variable `AI_PR_REVIEW_ENABLED` to `true` and the secret
 `PR_REVIEW_API_KEY` to an OpenAI API key. The workflow defaults to `gpt-6-luna`;
 override it with the `PR_REVIEW_MODEL` variable if needed. `PR_REVIEW_API_BASE`
