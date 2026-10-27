@@ -399,7 +399,7 @@ includes_project = [
 ]
 cflags_base = [
     "/nologo",
-    "/W3",
+    "/W0",
     "/O2",
     "/Og",
     "/Ob1",
@@ -462,7 +462,7 @@ if config.version == "BW1W100":
 cflags_lhdialog = [
     "/nologo",
     "/MDd",
-    "/W3",
+    "/W0",
     "/GX",
     "/ZI",
     "/Od",
@@ -481,7 +481,7 @@ cflags_lhdialog = [
 cflags_mfcs42d = [
     "/nologo",
     "/MDd",
-    "/W3",
+    "/W0",
     "/GX",
     "/GR",
     "/GF",
