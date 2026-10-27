@@ -45,6 +45,12 @@ struct GGlobal
 	void AddPlayerTextMessage(long player, char* text);
 	// BW1W120 005910f0 BW1M119 013353e0
 	void DisplayPlayerTextMessages();
+	// BW1W120 005910a0 BW1M119 013356d0
+	void ShuntMessages();
+	// BW1W120 00590fd0 BW1M119 01335890
+	void InitialiseAudio();
+	// BW1W120 00590fb0 BW1M119 01335940
+	void CloseAudio();
 };
 
 #endif /* BW1_DECOMP_GLOBAL_INCLUDED_H */

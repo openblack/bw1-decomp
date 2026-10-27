@@ -2,6 +2,7 @@
 #include "GameTimeConstants.h"         /* For SecondsPerYear */
 #include "CreatureAttitudeConstants.h" /* For AttitudeFeedbackDecay */
 #include "Object.h"
+#include "EditorPhysics.h"
 #include "ObjectMovementConstants.h"
 
 #include <math.h>  /* For sqrt */
@@ -14,7 +15,6 @@
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
 #include <Lionhead/LH3DLib/development/LHPoint.h>
 #include <Lionhead/LH3DLib/development/PhysOb.h>
-#include "EditorPhysics.h"
 #include <Lionhead/LH3DLib/development/SmokyStuff.h>
 #include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
@@ -155,7 +155,7 @@ Object::~Object()
 void Object::ToBeDeleted(bool32_t delete_now)
 {
 	GameThingWithPos::ToBeDeleted(delete_now);
-	if (fire_effect != NULL)
+	if (fire_effect.Get() != NULL)
 	{
 		fire_effect->ToBeDeleted(false);
 		fire_effect = NULL;
@@ -679,7 +679,7 @@ PhysicsInitialisation Object::InitialisePhysics(const LHPoint& velocity, const L
 			Creature::CheckAllCreaturesForCatching(this, physicsObject);
 		}
 	}
-	if (fire_effect != NULL && (GGame::g_game->GameFlags & GAME_FLAG_CLEARING_MAP) == 0)
+	if (fire_effect.Get() != NULL && (GGame::g_game->GameFlags & GAME_FLAG_CLEARING_MAP) == 0)
 	{
 		fire_effect->StartedMoving(0);
 	}
@@ -728,7 +728,7 @@ bool32_t Object::InterfaceSetInMagicHand(GInterfaceStatus* status)
 
 bool32_t Object::InterfaceSetOutMagicHand(GInterfaceStatus* status)
 {
-	if (fire_effect != NULL)
+	if (fire_effect.Get() != NULL)
 	{
 		fire_effect->SetOutMagicHand();
 	}
@@ -943,7 +943,7 @@ float Object::ReduceLifeDueToBurning(float damage, GPlayer* player)
 
 bool32_t Object::IsOnFire()
 {
-	if (fire_effect != NULL)
+	if (fire_effect.Get() != NULL)
 	{
 		return fire_effect->IsOnFire() != false;
 	}
@@ -1775,7 +1775,7 @@ bool32_t Object::IsFireMan()
 
 float Object::GetTemperature()
 {
-	if (fire_effect != NULL)
+	if (fire_effect.Get() != NULL)
 	{
 		return fire_effect->GetObjectTemperature();
 	}
@@ -1864,7 +1864,7 @@ bool32_t Object::Save(GameOSFile& file)
 		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(life));
 		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(scale));
 		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(y_angle));
-		file.WritePtr(fire_effect);
+		file.WritePtr(fire_effect.Get());
 		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & GAME_THING_FLAG_PSYS_FLYING) == 0)
 		{
 			LHPoint  velocity;

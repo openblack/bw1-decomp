@@ -25,6 +25,7 @@ class Creature;
 class Game3DObject;
 class GameThingWithPos;
 struct LH3DColor;
+class WorshipSite;
 struct LHPoint;
 struct MapCell;
 struct MapCellIterator;
@@ -205,6 +206,10 @@ struct MapCoords : public LH3DMapCoords
 	bool32_t IsDryLand() const;
 	// BW1W120 00603720 BW1M119 0106a480
 	bool32_t IsLand() const;
+	// BW1W120 006036a0 BW1M119 01513b20
+	bool32_t IsCoastal() const;
+	// BW1W120 00603790 BW1M119 01300ff0
+	bool32_t IsFixed() const;
 	// BW1W120 00603840 BW1M119 015aa980
 	bool32_t IsNavigable() const;
 	// BW1W120 00603860 BW1M119 015a8790
@@ -219,6 +224,30 @@ struct MapCoords : public LH3DMapCoords
 	Object* FindType(OBJECT_TYPE type, Object* object) const;
 	// BW1W120 00604af0 BW1M119 013c9d50
 	Object* FindObject(bool32_t (Object::*is_suitable)(), float radius, Object* exclude) const;
+	// BW1W120 00604f40 BW1M119 013d1550
+	bool32_t IsEqual(MapCell* cell);
+	// BW1W120 inlined BW1M119 0136d180
+	bool32_t IsField() const;
+	// BW1W120 inlined BW1M119 01365e00
+	float GetLandscapeAltitude() const;
+	// BW1W120 006022c0 BW1M119 01175440
+	float GetAltitudeOfHighestObjectExcluding(Object* exclude, bool ignore_living_and_moving) const;
+	// BW1W120 00604250 BW1M119 011241f0
+	void MakeInBounds();
+	// BW1W120 00601f40 BW1M119 01045bf0
+	void SetupMapXZ(long x, long z);
+	// BW1W120 inlined BW1M119 011dd7c0
+	void SetMapMetersX(float x);
+	// BW1W120 inlined BW1M119 011dd770
+	void SetMapMetersZ(float z);
+	// BW1W120 00603500 BW1M119 0132d1c0
+	MapCellIterator GetFirstSafeIterator() const;
+	// BW1W120 00605120 BW1M119 01361a40
+	Object* GetMapChild(Object* object);
+	// BW1W120 00602bd0 BW1M119 01575890
+	bool32_t DoesRegionContainMapCellSatisfyingTest(int (MapCoords::*test)(const void*, const void*));
+	// BW1W120 00602e80 BW1M119 01362ff0
+	bool32_t GetExactMapSquareSatisfyingTest(int (MapCoords::*test)(const void*, const void*));
 	// BW1W120 00605660 BW1M119 01089f30
 	// NOTE: mangled ??8MapCoords@@QBEIABU0@@Z proves const MapCoords& + const method (Rule 1);
 	// zero existing call sites depend on the old (wrong) pointer signature.
@@ -227,6 +256,14 @@ struct MapCoords : public LH3DMapCoords
 	LHPoint GetLHPoint() const;
 	// BW1W120 00605cd0 BW1M119 01053320
 	float GetDistance(const MapCoords& other) const;
+	// BW1W120 00605cf0 BW1M119 01389430
+	float GetAngle(const MapCoords& other) const;
+	// BW1W120 006050d0 BW1M119 013b5350
+	LHPoint Get3DPoint() const;
+	// BW1W120 00602460 BW1M119 011adcc0
+	WorshipSite* FindWorshipSite() const;
+	// BW1W120 006045f0 BW1M119 013ea0d0
+	Object* FindNearType(OBJECT_TYPE type, float radius) const;
 	// BW1W120 006057b0 BW1M119 0106b8f0
 	float GetAlignment() const;
 	// BW1W120 00605250 BW1M119 011ab0a0
@@ -295,8 +332,6 @@ struct MapCoords : public LH3DMapCoords
 	static bool32_t IsSquareClearForActivity(Creature* creature, long x, long z, bool32_t avoid_living);
 };
 
-#pragma inline_depth(2)
 inline MapCoords::MapCoords() {}
-#pragma inline_depth()
 
 #endif /* BW1_DECOMP_MAP_COORDS_INCLUDED_H */

@@ -505,7 +505,7 @@ uint32_t Abode::DestroyedByEffect(GPlayer* player, float damage)
 		{
 			SetLife(1.0f);
 		}
-		if (fire_effect != NULL)
+		if (fire_effect.Get() != NULL)
 		{
 			fire_effect->ToBeDeleted(0);
 			fire_effect = NULL;

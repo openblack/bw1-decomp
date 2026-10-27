@@ -30,6 +30,8 @@ public:
 	bool32_t Init(unsigned short capacity);
 	// BW1W120 005e1bf0 BW1M119 011843b0
 	void AddKeyIfDifferentToPrevious(LH_KEY key, unsigned short modifier);
+	// BW1W120 005e1bb0 BW1M119 0135bde0
+	bool32_t AddKey(LH_KEY key, unsigned short modifier);
 };
 
 class GKeyInput : public Base

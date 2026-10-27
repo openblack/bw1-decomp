@@ -44,6 +44,8 @@ public:
 	static InfluenceRing* Create(const MapCoords& coords, GPlayer* player, float radius, int anti);
 	// BW1W120 005cd990 BW1M119 01105bb0
 	static InfluenceRing* Create(GameThingWithPos* thing, GPlayer* player, float radius, int anti);
+	// BW1W120 005cda60 BW1M119 01035970
+	bool32_t IsInInfluence(const MapCoords& coords) const;
 
 	BaseInfo                  info;
 	LHPTR<GPlayer>            player;

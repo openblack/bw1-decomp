@@ -13,6 +13,7 @@
 #include <re_common.h>                               /* For bool32_t */
 
 #include "GameThingWithPos.h"     /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "LHPTR.h"                /* For class LHPTR */
 #include "MapCoords.h"            /* For struct MapCoords */
 #include "ObjectInfo.h"           /* For class GObjectInfo, needed by the inline getters below */
 #include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
@@ -113,7 +114,7 @@ public:
 	LHFastPointer<Object> MapParent;           /* 0x38 */
 	uint32_t              ObjectCreationIndex; /* 0x3c */
 	Game3DObject*         Game3dObject;        /* 0x40 */
-	FireEffect*           fire_effect;
+	LHPTR<FireEffect>     fire_effect;
 	float                 life;
 	float                 y_angle;
 	float                 scale; /* 0x50 */
@@ -730,7 +731,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 01047620
-	FireEffect* GetFireEffect() { return fire_effect; }
+	FireEffect* GetFireEffect() { return fire_effect.Get(); }
 	// BW1W120 00639900 BW1M119 013dad10
 	float GetArtifactImpressiveModifier();
 	// BW1W120 00637cc0 BW1M119 0102dd80
@@ -784,6 +785,8 @@ public:
 	GInterfaceStatus* GetInterfaceStatusWhoLastDroppedMe();
 	// BW1W120 0063a6a0 BW1M119 013d8c10
 	GInterfaceStatus* GetInterfaceStatusWhoLastPickedMeUp();
+	// BW1W120 004e3960 BW1M119 015ef140
+	bool32_t CanBePickedUpByCreatureIgnoringWhetherItIsInTheMap(Creature* creature);
 	// BW1W120 006399f0 BW1M119 null
 	const char* GetInfoDebugString();
 	// BW1W120 0063a940 BW1M119 013d82f0

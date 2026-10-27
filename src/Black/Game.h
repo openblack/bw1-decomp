@@ -369,6 +369,10 @@ public:
 	// BW1W120 0054ec80 BW1M119 013bd6a0
 	// Both targets return 1 in the full result register; original Boolean spelling is unknown.
 	bool32_t Close();
+	// BW1W120 005539a0 BW1M119 011cfd20
+	void KickOffFallingSpellVideo();
+	// BW1W120 00555a30 BW1M119 011c6b70
+	bool32_t CurrentProfileHasACreature();
 	// BW1W120 005557a0 BW1M119 010cc4c0
 	void ResetState();
 	// BW1W120 0054c180 BW1M119 0103cd90
