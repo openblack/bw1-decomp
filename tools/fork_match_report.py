@@ -50,6 +50,19 @@ def report_block(version, base, current, base_sha, head_sha):
     lines = ["### Report for {} ({} - {})".format(version, base_sha[:7], head_sha[:7]), ""]
     base_measures = base["measures"]
     current_measures = current["measures"]
+    compared_keys = (
+        "total_code",
+        "total_functions",
+        "matched_code",
+        "matched_code_percent",
+        "total_data",
+        "matched_data",
+        "matched_data_percent",
+    )
+    if all(base_measures.get(key) == current_measures.get(key) for key in compared_keys):
+        lines.append("No changes.")
+        return "\n".join(lines)
+
     metrics = (
         ("total_code", None, "Total code", "bytes"),
         ("total_functions", None, "Total functions", ""),
