@@ -5,14 +5,49 @@ on:
     branches:
       - main
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+concurrency:
+  group: build-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  check-image:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check fork package permission
+        if: github.repository == 'boltz/bw1-decomp'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api /users/boltz/packages/container/bw1-build --jq '{visibility, repository:.repository.full_name}'
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check build image access
+        env:
+          BUILD_IMAGE: ${{ vars.BW1_BUILD_IMAGE || 'ghcr.io/openblack/bw1-build:main' }}
+        run: docker manifest inspect "$BUILD_IMAGE" > /dev/null
+
   build:
+    needs: check-image
     # This is a *private* build container.
     # See docs/github_actions.md for more information.
-    container: ghcr.io/openblack/bw1-build:main
+    container:
+      image: ${{ vars.BW1_BUILD_IMAGE || 'ghcr.io/openblack/bw1-build:main' }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix:
@@ -25,6 +60,7 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
+        persist-credentials: false
 
     # Set Git config
     - name: Git config
