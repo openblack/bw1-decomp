@@ -124,10 +124,13 @@ class AutomaticReviewTests(unittest.TestCase):
                 },
             ]
         }
-        findings, invalid_count = valid_findings(result, {"src/example.cpp": {9}})
+        findings, invalid_count, omitted_count = valid_findings(
+            result, {"src/example.cpp": {9}}
+        )
         self.assertEqual(len(findings), 1)
         self.assertEqual(findings[0]["line"], 9)
         self.assertEqual(invalid_count, 1)
+        self.assertEqual(omitted_count, 0)
 
     def test_comment_escapes_mentions_and_html(self):
         escaped = safe_markdown("notify @team <tag> & keep")
@@ -145,6 +148,28 @@ class AutomaticReviewTests(unittest.TestCase):
         finding = {"classification": "correctness defect", "severity": "high"}
         self.assertEqual(choose_review_event([finding], 1, 0), "COMMENT")
 
+    def test_findings_beyond_limit_prevent_approval(self):
+        finding = {
+            "path": "src/example.cpp",
+            "line": 1,
+            "severity": "low",
+            "classification": "maintainability/readability issue",
+            "title": "Finding",
+            "evidence": "Evidence",
+            "why_it_matters": "Impact",
+            "suggestion": "Suggestion",
+        }
+        result = {"findings": [dict(finding) for _ in range(13)]}
+        findings, invalid_count, omitted_count = valid_findings(
+            result, {"src/example.cpp": {1}}
+        )
+        self.assertEqual(len(findings), automatic_pr_review.MAX_FINDINGS)
+        self.assertEqual(invalid_count, 0)
+        self.assertEqual(omitted_count, 1)
+        self.assertEqual(
+            choose_review_event(findings, 0, 0, invalid_count, omitted_count), "COMMENT"
+        )
+
     def test_correctness_findings_request_changes(self):
         findings = [
             {"classification": "correctness defect", "severity": "medium"}
@@ -161,6 +186,11 @@ class AutomaticReviewTests(unittest.TestCase):
         body = make_review_body([], "0123456789abcdef", "APPROVE", 0, 0)
         self.assertIn("No actionable findings", body)
         self.assertIn("Maintainers make the final call", body)
+
+    def test_review_body_reports_unreviewed_overflow(self):
+        body = make_review_body([], "0123456789abcdef", "COMMENT", 0, 0, 0, 1)
+        self.assertIn("No validated findings were available", body)
+        self.assertIn("beyond the output limit were not reviewed", body)
 
     def test_responses_api_text_extraction_skips_non_message_items(self):
         envelope = {
