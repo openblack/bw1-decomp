@@ -51,5 +51,13 @@ Set the Actions variable `AI_PR_REVIEW_ENABLED` to `true` and the secret
 `PR_REVIEW_API_KEY` to an OpenAI API key. The workflow defaults to `gpt-6-luna`;
 override it with the `PR_REVIEW_MODEL` variable if needed. `PR_REVIEW_API_BASE`
 defaults to `https://api.openai.com/v1`; a custom endpoint must support the
-OpenAI Responses API. The bot updates one summary comment per PR and posts only
-findings anchored to added lines. It leaves approval decisions to maintainers.
+OpenAI Responses API.
+
+The workflow submits a formal review as `github-actions[bot]`. It requests
+changes for high- or medium-severity correctness defects, approves only a
+complete review with no findings, and leaves limited reviews or non-blocking
+findings as comments. GitHub cannot assign the Actions bot as a requested
+reviewer. Approvals require **Allow GitHub Actions to create and approve pull
+requests** under Settings > Actions > General. This setting applies to all
+workflows in the repository. Review text goes to the configured model provider,
+and maintainers still own the merge decision.
