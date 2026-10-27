@@ -61,7 +61,8 @@ public:
 	LHLinkedList<GComputerSeen*>      Seen;
 	LHListHead<GComputerLookAndLearn> LookAndLearn;
 	LHListHead<GComputerPlayerQueue>  Queue;
-	uint8_t                           field_0x58[0x160];
+	float                             HandSpeed; /* 0x58 */
+	uint8_t                           field_0x5c[0x15c];
 	bool32_t                          Active;
 	uint8_t                           field_0x1bc[0x14];
 	int8_t                            CreatureSizeMode;
@@ -187,8 +188,26 @@ public:
 class PlayerActionState : public GameThingWithPos
 {
 public:
-	LHLinkedList<PlayerSubAction*> SubActions; /* 0x28 */
-	uint8_t                        field_0x30[0x25c];
+	LHLinkedList<PlayerSubAction*> SubActions;           /* 0x28 */
+	bool32_t                       NeedPreSubAction;     /* 0x30 */
+	bool32_t                       PreSubActionInserted; /* 0x34 */
+	uint32_t                       SubActionPart;        /* 0x38 */
+	uint32_t                       StartTurn;            /* 0x3c */
+	float                          EstimatedTime;        /* 0x40 */
+	uint32_t                       Timer;                /* 0x44 */
+	bool32_t                       field_0x48;
+	uint32_t                       PlayerNumber;   /* 0x4c */
+	LHPoint                        HandPoint;      /* 0x50 */
+	LHPoint                        TargetPoint;    /* 0x5c */
+	float                          HandSpeed;      /* 0x68 */
+	GComputerPlayer*               ComputerPlayer; /* 0x6c */
+	uint32_t                       field_0x70;
+	GameThingWithPos*              SpellTarget;            /* 0x74 */
+	float                          GestureProgress;        /* 0x78 */
+	LHPoint                        HandPointBeforeGesture; /* 0x7c */
+	bool32_t                       field_0x88;
+	char                           FailureText[0x100]; /* 0x8c */
+	char                           field_0x18c[0x100];
 
 	// Override methods
 
@@ -214,10 +233,52 @@ public:
 	void SetToZero();
 };
 
+enum PLAYER_SUB_ACTION
+{
+	PLAYER_SUB_ACTION_PICK_UP_OBJECT,
+	PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
+	PLAYER_SUB_ACTION_MOVE_HAND_TO_OBJECT,
+	PLAYER_SUB_ACTION_MOVE_HAND_TO_CREATURE_HEAD,
+	PLAYER_SUB_ACTION_MOVE_HAND_NEAR_POS,
+	PLAYER_SUB_ACTION_MOVE_HAND_NEAR_OBJECT,
+	PLAYER_SUB_ACTION_MOVE_HAND_TO_POS_STOP_WHEN_OUT_OF_INFLUENCE,
+	PLAYER_SUB_ACTION_THROW_OBJECT_IN_HAND_AT_POS,
+	PLAYER_SUB_ACTION_DROP_OBJECT_IN_HAND_AT_POS,
+	PLAYER_SUB_ACTION_SAY_TEXT,
+	PLAYER_SUB_ACTION_GIVE_OBJECT_IN_HAND_TO_CREATURE,
+	PLAYER_SUB_ACTION_SET_LEASH,
+	PLAYER_SUB_ACTION_ATTACH_LEASH_TO_OBJECT,
+	PLAYER_SUB_ACTION_SLAP_CREATURE,
+	PLAYER_SUB_ACTION_STROKE_CREATURE,
+	PLAYER_SUB_ACTION_CAST_SPELL_AT_OBJECT,
+	PLAYER_SUB_ACTION_CAST_SPELL_AT_POS,
+	PLAYER_SUB_ACTION_CAST_SPELL_TOWARD_POS,
+	PLAYER_SUB_ACTION_CAST_SHIELD_AT_POS,
+	PLAYER_SUB_ACTION_CLOSE_DOWN_CURRENT_SPELL,
+	PLAYER_SUB_ACTION_RAISE_TOTEM,
+	PLAYER_SUB_ACTION_LOWER_TOTEM,
+	PLAYER_SUB_ACTION_MAKE_GESTURE,
+	PLAYER_SUB_ACTION_WAIT,
+	PLAYER_SUB_ACTION_DROP_OBJECT_IN_HAND_ON_OBJECT,
+	PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
+	PLAYER_SUB_ACTION_FORCE_CREATURE_DOMINANT_DESIRE,
+	PLAYER_SUB_ACTION_WAIT_FOR_OBJECT_TO_BE_NEAR_POS,
+	PLAYER_SUB_ACTION_WAIT_FOR_SPELL_TO_WEAR_OFF,
+	PLAYER_SUB_ACTION_CREATE_FOOD_FROM_CONTAINER,
+	PLAYER_SUB_ACTION_CREATE_WOOD_FROM_CONTAINER,
+	PLAYER_SUB_ACTION_SET_CREATURE_SPEED_FOR_JOURNEY,
+	PLAYER_SUB_ACTION_MAKE_WORSHIPPERS_CHANT_FOR_SPELL,
+	PLAYER_SUB_ACTION_MAKE_WORSHIPPERS_CHANT_FOR_SPELL_NO_WAIT,
+	PLAYER_SUB_ACTION_SET_HAND_TO_POS,
+	PLAYER_SUB_ACTION_MOVE_HAND_TO_POS_DIRECT_Y_INTERPOLATION,
+	PLAYER_SUB_ACTION_SET_HAND_TO_POS_DIRECT_Y,
+	PLAYER_SUB_ACTION_LAST,
+};
+
 class PlayerSubAction : public GameThing
 {
 public:
-	uint32_t                               field_0x14;
+	PLAYER_SUB_ACTION                      Type;      /* 0x14 */
 	LHLinkedList<PlayerSubActionArgument*> Arguments; /* 0x18 */
 
 	// Override methods
@@ -248,9 +309,9 @@ class PlayerSubActionArgument : public GameThing
 public:
 	PLAYER_SUB_ACTION_ARGUMENT_TYPE Type;
 	GameThingWithPos*               Thing;
-	uint8_t                         field_0x1c[0x40];
+	char                            Text[0x40]; /* 0x1c */
 	long                            IntValue;
-	uint32_t                        field_0x60;
+	GameThing*                      field_0x60;
 	float                           FloatValue;
 	LHPoint                         PointValue;
 

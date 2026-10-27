@@ -316,7 +316,7 @@ void Abode::Draw()
 		LH3DMesh* mesh = Game3dObject->GetMesh();
 		if (mesh->BoundingBox.CheckRegionOnScreen(Game3dObject))
 		{
-			FireEffect* fire = fire_effect;
+			FireEffect* fire = fire_effect.Get();
 			if (fire != NULL)
 			{
 				uint32_t  specular = fire->GetFireEffectSpecularColor();

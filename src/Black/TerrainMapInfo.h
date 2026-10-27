@@ -25,6 +25,9 @@ public:
 
 	// BW1W120 inlined BW1M119 0149b1b0
 	TerrainMapInfo() {}
+
+	// BW1W120 007354a0 BW1M119 0154b530
+	void Clear();
 };
 
 #endif /* BW1_DECOMP_TERRAIN_MAP_INFO_INCLUDED_H */
