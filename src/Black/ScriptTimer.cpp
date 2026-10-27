@@ -8,6 +8,8 @@
 #define SCRIPT_TIMER_FILE "C:\\dev\\black\\ScriptTimer.cpp"
 #elif defined(VERSION_BW1W110)
 #define SCRIPT_TIMER_FILE "C:\\dev\\Black\\ScriptTimer.cpp"
+#elif defined(VERSION_BW1W130)
+#define SCRIPT_TIMER_FILE "D:\\Work\\Games\\dd\\Black\\ScriptTimer.cpp"
 #else
 #define SCRIPT_TIMER_FILE "C:\\dev\\MP\\Black\\ScriptTimer.cpp"
 #endif
@@ -56,23 +58,23 @@ float ScriptTimer::GetTimeInSecondsSinceSet()
 	return (float)GetTurnsSinceSet() * GGameInfo::Info.MillisecondsPerGameTurn * 0.001f;
 }
 
-bool32_t ScriptTimer::Load(GameOSFile& file)
-{
-	if (GameThingWithPos::Load(file))
-	{
-		file.ReadIt(field_0x28);
-		file.ReadIt(field_0x2c);
-		return true;
-	}
-	return false;
-}
-
 bool32_t ScriptTimer::Save(GameOSFile& file)
 {
 	if (GameThingWithPos::Save(file))
 	{
 		file.WriteIt(field_0x28);
 		file.WriteIt(field_0x2c);
+		return true;
+	}
+	return false;
+}
+
+bool32_t ScriptTimer::Load(GameOSFile& file)
+{
+	if (GameThingWithPos::Load(file))
+	{
+		file.ReadIt(field_0x28);
+		file.ReadIt(field_0x2c);
 		return true;
 	}
 	return false;
