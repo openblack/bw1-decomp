@@ -22,6 +22,7 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include <Lionhead/LH3DLib/development/LH3DMath.h>
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
 #include <Lionhead/LH3DLib/development/LH3DTech.h>
+#include <Lionhead/LHLib/ver5.0/LHCollide.h> /* For class NewCollide */
 
 #include "Artifact.h"
 #include "Citadel.h"
@@ -77,6 +78,7 @@ const float FoodPosZ = -38.0f;
 const float OverloadPulseMinSpeed = 5.0f;
 const float OverloadPulseMaxSpeed = 10.0f;
 const float WorshipSiteInfiniteChants = 1000000.0f;
+float       CollideRadiusScale = 1.3f;
 const float CentreOffsetBack = 26.1f;
 const float CentreOffsetSide = 12.55f;
 const float WorshipSiteRealRadius = 14.0f;
@@ -1518,6 +1520,38 @@ MapCoords WorshipSite::GetResourceDropPosForComputerPlayer(RESOURCE_TYPE type)
 float WorshipSite::GetRadiusMultiplierForApplyingPotToPos()
 {
 	return WORSHIP_SITE_POT_RADIUS_MULTIPLIER;
+}
+
+void WorshipSite::CreateCollideData()
+{
+	ReleaseCollideData();
+	static LHPoint CollidePoints[WORSHIP_SITE_COLLIDE_POINTS] = {
+		LHPoint(2.448f, 1.4f, -34.171f),  //
+		LHPoint(3.348f, 1.4f, -36.551f),  //
+		LHPoint(24.71f, 1.4f, -24.133f),  //
+		LHPoint(26.359f, 1.4f, -25.951f), //
+		LHPoint(3.93f, 2.0f, -39.084f),   //
+		LHPoint(27.452f, 2.0f, -28.503f), //
+		LHPoint(7.405f, 3.0f, -40.707f),  //
+		LHPoint(12.317f, 3.0f, -39.988f), //
+		LHPoint(22.537f, 3.0f, -35.073f), //
+		LHPoint(26.905f, 3.0f, -33.063f), //
+	};
+	CollideData = new (FILEPATH, 2390) NewCollide(Game3dObject);
+	if (CollideData->obj->IteratorList != NULL)
+	{
+		delete CollideData->obj->IteratorList;
+	}
+	CollideData->obj->IteratorList = new (FILEPATH, 2394) NewCollide::List(WORSHIP_SITE_COLLIDE_POINTS);
+	LHMatrix matrix;
+	GetWorldMatrix(&matrix);
+	for (int i = 0; i < WORSHIP_SITE_COLLIDE_POINTS; i++)
+	{
+		LHPoint pos = CollidePoints[i];
+		matrix.TransformPoint(pos);
+		CollideData->obj->IteratorList->Add(new (FILEPATH, 2402)
+		                                        NewCollide::Obj(CollideRadiusScale * CollidePoints[i].y, &pos));
+	}
 }
 
 float WorshipSite::GetChantBatteryMax()
