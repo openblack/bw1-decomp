@@ -504,9 +504,10 @@ void WorshipSite::ProcessChantsAvailable()
 	}
 	float boost =
 		WORSHIP_SITE_BATTERY_SPEED_BOOST - ChantStore / GetChantBatteryMax() * WORSHIP_SITE_BATTERY_SPEED_BOOST;
-	boost = boost > 0.0f ? max(boost, WORSHIP_SITE_MIN_BATTERY_SPEED_BOOST) : 0.0f;
+	boost = boost > 0.0f ? (boost < WORSHIP_SITE_MIN_BATTERY_SPEED_BOOST ? WORSHIP_SITE_MIN_BATTERY_SPEED_BOOST : boost)
+	                     : 0.0f;
 	speed += boost;
-	if (speed > 1.0f)
+	if (speed >= 1.0f)
 	{
 		speed = 1.0f;
 	}
