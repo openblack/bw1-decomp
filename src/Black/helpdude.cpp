@@ -994,7 +994,7 @@ void HelpDude::ApplyStandFrame(int frame)
 {
 	if (Anims[ANIM_STAND])
 	{
-		Anims[ANIM_STAND]->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, 1);
+		Anims[ANIM_STAND]->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, true);
 	}
 }
 
@@ -1077,7 +1077,7 @@ void HelpDude::ApplyAnimFrame(int anim, int frame)
 	{
 		UpdateGoInvisible((float)frame / frameCount);
 	}
-	Anims[anim]->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, 0);
+	Anims[anim]->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, false);
 }
 
 void HelpDude::SetPos(const LHCoord& pos)
@@ -1483,7 +1483,7 @@ void HelpDude::ApplyWingsHover(bool32_t stable_wings, float dt, bool32_t play_so
 		if (hover)
 		{
 			int frame = (int)(WingTime * 1000.0f) % hover->Duration;
-			hover->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, 0);
+			hover->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, false);
 			if (play_sound)
 			{
 				PlaySoundFX(ANIM_HOVER, (float)frame / hover->Duration, GetSoundFXBank());
@@ -1493,7 +1493,7 @@ void HelpDude::ApplyWingsHover(bool32_t stable_wings, float dt, bool32_t play_so
 	else if (WingsBlend >= 1.0f)
 	{
 		int frame = (int)(WingTime * 1000.0f) % stable->Duration;
-		stable->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, 0);
+		stable->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, false);
 		if (play_sound)
 		{
 			PlaySoundFX(ANIM_HOVERSTABLE, (float)frame / stable->Duration, GetSoundFXBank());
@@ -1503,9 +1503,9 @@ void HelpDude::ApplyWingsHover(bool32_t stable_wings, float dt, bool32_t play_so
 	{
 		int frame = (int)(WingTime * 1000.0f) % hover->Duration;
 		memcpy(BaseBoneMatrices, BoneMatrices, BoneCount * sizeof(LHMatrix));
-		hover->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, 0);
+		hover->FillBuffer(BoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, false);
 		frame = (int)(WingTime * 1000.0f) % stable->Duration;
-		stable->FillBuffer(BaseBoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, 0);
+		stable->FillBuffer(BaseBoneMatrices, Mesh, BaseMatrices, InverseBaseMatrices, frame, Frame, NULL, false);
 		LHMatrix identity;
 		identity.SetIdentity();
 		LH3DAnim::FinishTransform(BoneMatrices, Mesh, identity);

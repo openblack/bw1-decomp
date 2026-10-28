@@ -72,8 +72,8 @@ public:
 	long                      CycleTime[4];
 	float                     CycleWeight[4];
 	LHMatrix*                 TransformedMatrices;
-	LHMatrix*                 field_0x47f4;
-	LHMatrix*                 field_0x47f8;
+	LHMatrix*                 BaseMatrices;
+	LHMatrix*                 InverseBaseMatrices;
 	CFrame*                   frame;
 	int32_t                   HairGroupCount;
 	HairGroup*                HairGroups[0x8];

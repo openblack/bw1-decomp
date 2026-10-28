@@ -3735,8 +3735,8 @@ Lionhead/LH3DLib/development/LH3DVRAMTex.cpp:
 	.text       start:0x0087C520 end:0x0087D1B0
 
 Lionhead/LH3DLib/development/CAnim.cpp:
-	.text       start:0x0087F590 end:0x00881700
-	.text$x     start:0x008D3350 end:0x008D3748 align:4
+	.text       start:0x0087D1B0 end:0x00881700
+	.bss        start:0x00F89C88 end:0x00F8A08C
 
 lib/libcimt/filebuf.obj:
 	.rdata      start:0x00A14124 end:0x00A1416C
@@ -3746,6 +3746,9 @@ lib/libcimt/filebuf.obj:
 lib/libcimt/_ios.obj:
 	.text       start:0x008A4991 end:0x008A4BC7 align:1
 	.rdata      start:0x00A1416C end:0x00A14180
+
+Lionhead/LHLib/ver5.0/RPFollow.cpp:
+	.text$x     start:0x008D3350 end:0x008D3748 align:4
 
 lib/libcimt/ostream.obj:
 	.text$x     start:0x008D3748 end:0x008D38E0

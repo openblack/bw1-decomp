@@ -7,6 +7,9 @@
 #define QUARTER_PI_F 0.7853982f
 #define EIGHTH_PI_F  0.3926991f
 
+#define LH3D_BLEND(from, to, t)                 ((from) + ((to) - (from)) * (t))
+#define LH3D_BLEND2(from, to_b, to_c, t_b, t_c) ((from) + ((to_b) - (from)) * (t_b) + ((to_c) - (from)) * (t_c))
+
 #include <math.h>   /* For sqrt */
 #include <stdint.h> /* For uint8_t */
 
