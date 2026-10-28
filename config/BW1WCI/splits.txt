@@ -2096,15 +2096,18 @@ Black/ScriptMarker.cpp:
 	.bss        start:0x00E203E4 end:0x00E20414
 
 Black/ScriptTimer.cpp:
-	.text       start:0x0072C8C0 end:0x0072CBE0
+	.text       start:0x0072C8C0 end:0x0072CBB0
 	.rdata      start:0x009B5604 end:0x009B560C
-	.CRT$XCU    start:0x00A370D8 end:0x00A370E0 align:4
-	.data       start:0x00C94220 end:0x00C942A4
-	.bss        start:0x00E20414 end:0x00E20428
+	.CRT$XCU    start:0x00A370D8 end:0x00A370DC align:4
+	.data       start:0x00C94220 end:0x00C94240
+	.bss        start:0x00E20414 end:0x00E20418
 
 Black/SecretCreature.cpp:
-	.text       start:0x0072CBE0 end:0x0072D0E0
+	.text       start:0x0072CBB0 end:0x0072D0E0
 	.rdata      start:0x009B560C end:0x009B5634
+	.CRT$XCU    start:0x00A370DC end:0x00A370E0 align:4
+	.data       start:0x00C94240 end:0x00C942A4
+	.bss        start:0x00E20418 end:0x00E20428
 
 Black/Serialise.cpp:
 	.text       start:0x0072D0E0 end:0x0072DB60

@@ -10,6 +10,8 @@
 #define SCRIPT_TIMER_FILE "C:\\dev\\Black\\ScriptTimer.cpp"
 #elif defined(VERSION_BW1W130)
 #define SCRIPT_TIMER_FILE "D:\\Work\\Games\\dd\\Black\\ScriptTimer.cpp"
+#elif defined(VERSION_BW1WCI)
+#define SCRIPT_TIMER_FILE "C:\\dev\\black\\ScriptTimer.cpp"
 #else
 #define SCRIPT_TIMER_FILE "C:\\dev\\MP\\Black\\ScriptTimer.cpp"
 #endif
@@ -24,16 +26,18 @@ ScriptTimer* ScriptTimer::Create(float seconds)
 	return timer;
 }
 
+#if !defined(VERSION_BW1W100)
 // BW1W120 00711600 BW1M119 0150e230
 SCRIPT_OBJECT_TYPE ScriptTimer::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_TIMER;
 }
+#endif
 
 void ScriptTimer::SetTime(unsigned long time)
 {
-	field_0x28 = GGame::g_game->data.GameTurn;
-	field_0x2c = time;
+	StartTurn = GGame::g_game->data.GameTurn;
+	DurationTurns = time;
 }
 
 void ScriptTimer::SetTime(float seconds)
@@ -43,14 +47,14 @@ void ScriptTimer::SetTime(float seconds)
 
 float ScriptTimer::GetTimeInSecondsRemaining()
 {
-	int   turns = (int)(field_0x2c - GetTurnsSinceSet()) < 0 ? 0 : field_0x2c - GetTurnsSinceSet();
+	int   turns = (int)(DurationTurns - GetTurnsSinceSet()) < 0 ? 0 : DurationTurns - GetTurnsSinceSet();
 	float time = (float)turns;
 	return time * GGameInfo::Info.MillisecondsPerGameTurn * 0.001f;
 }
 
 int ScriptTimer::GetTurnsSinceSet()
 {
-	return GGame::g_game->data.GameTurn - field_0x28;
+	return GGame::g_game->data.GameTurn - StartTurn;
 }
 
 float ScriptTimer::GetTimeInSecondsSinceSet()
@@ -62,8 +66,8 @@ bool32_t ScriptTimer::Save(GameOSFile& file)
 {
 	if (GameThingWithPos::Save(file))
 	{
-		file.WriteIt(field_0x28);
-		file.WriteIt(field_0x2c);
+		file.WriteIt(StartTurn);
+		file.WriteIt(DurationTurns);
 		return true;
 	}
 	return false;
@@ -73,8 +77,8 @@ bool32_t ScriptTimer::Load(GameOSFile& file)
 {
 	if (GameThingWithPos::Load(file))
 	{
-		file.ReadIt(field_0x28);
-		file.ReadIt(field_0x2c);
+		file.ReadIt(StartTurn);
+		file.ReadIt(DurationTurns);
 		return true;
 	}
 	return false;

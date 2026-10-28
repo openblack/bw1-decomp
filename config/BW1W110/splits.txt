@@ -2016,6 +2016,7 @@ Black/ScriptMarker.cpp:
 Black/ScriptTimer.cpp:
 	.text       start:0x00706160 end:0x00706450
 	.rdata      start:0x009471B8 end:0x009471C0
+	.CRT$XCU    start:0x009B7084 end:0x009B7088 align:4
 	.data       start:0x00C0FCC4 end:0x00C0FCE8
 	.bss        start:0x00D87D00 end:0x00D87D04
 

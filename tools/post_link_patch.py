@@ -2076,6 +2076,12 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006CB827, copy_run(0x006CB72A)),  # PSysProperties
     (0x006CBB55, jmp_run(0x006CB827)),  # PSysProperties
     (0x006CBC98, jmp_run(0x006CBB55)),  # PSysProperties
+    (0x00715EE3, copy_run(0x00715E65)),  # ScriptTimer
+    (0x00715F56, jmp_run(0x00715EE3)),  # ScriptTimer
+    (0x00715F78, jmp_run(0x00715F56)),  # ScriptTimer
+    (0x00715FBB, call_rel32(0x004034F9)),  # ScriptTimer
+    (0x007160F1, jmp_run(0x00715FBB)),  # ScriptTimer
+    (0x007161A1, copy_run(0x00532515)),  # ScriptTimer
     (0x00764C73, jmp_run(0x00764C12)),  # VillagerHome
     (0x00764D52, jmp_run(0x00764C73)),  # VillagerHome
     (0x00764DE6, copy_run(0x00764D52)),  # VillagerHome
