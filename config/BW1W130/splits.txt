@@ -473,8 +473,15 @@ Black/CreatureAction.cpp:
 	.text       start:0x00493A50 end:0x004C6CB0
 	.rdata      start:0x008D41CC end:0x008D435C
 	.CRT$XCU    start:0x00A46388 end:0x00A463C8 align:4
-	.data       start:0x00A51C30 end:0x00A59D30
-	.bss        start:0x00CE51F0 end:0x00D03604
+	.data       start:0x00A51C30 end:0x00A59D2C
+	.bss        start:0x00CE51F0 end:0x00D03600
+
+Black/CreatureAnimInfo.cpp:
+	.text       start:0x004C6CB0 end:0x004C6FA0
+	.rdata      start:0x008D435C end:0x008D4364
+	.CRT$XCU    start:0x00A463C8 end:0x00A463D4 align:4
+	.data       start:0x00A59D2C end:0x00A59D30
+	.bss        start:0x00D03600 end:0x00D03608
 
 Black/CreatureAttitudeToCreature.cpp:
 	.text       start:0x004C6FA0 end:0x004C7370

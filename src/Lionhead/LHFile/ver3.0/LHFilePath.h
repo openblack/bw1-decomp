@@ -7,13 +7,15 @@
 // BW1W120 00c2b9e8
 extern char g_GameDriveCharacter;
 
+#define GAME_DRIVE_PATH_FORMAT "%c:\\%s"
+
 // Builds a game drive rooted copy of a path ("<drive>:\<path>") into an inline
 // buffer. Always inlined; no out-of-line symbol exists in any Windows build.
 struct LHFilePath
 {
 	char buffer[256];
 
-	LHFilePath(const char* path) { sprintf(buffer, "%c:\\%s", g_GameDriveCharacter, path); }
+	LHFilePath(const char* path) { sprintf(buffer, GAME_DRIVE_PATH_FORMAT, g_GameDriveCharacter, path); }
 
 	operator char*() { return buffer; }
 };

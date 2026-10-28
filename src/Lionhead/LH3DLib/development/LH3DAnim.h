@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
+#include <stdio.h>  /* For FILE */
 
 #include <chlasm/AllMeshes.h> /* For MAX_COUNT_3D_ANIMS */
 
@@ -26,8 +27,9 @@ struct AnimInfo;
 struct LH3DAnim;
 struct LH3DMesh;
 class LHFile;
-struct LHFilePath;
 struct LHMatrix;
+
+#define ANIM_INFO_MAX_NAMES 0x18
 
 typedef char ANM_Name[0x20];
 
@@ -50,27 +52,27 @@ struct LH3DAnimSet
 
 struct CatInfo
 {
-	int          AnimationCount; /* 0x0 */
-	ANM_Name     AnimationNames[0x18];
-	AnimInfoType AnimationType[0x18]; /* 0x304 */
+	int          AnimationCount;                      /* 0x0 */
+	ANM_Name     AnimationNames[ANIM_INFO_MAX_NAMES]; /* 0x4 */
+	AnimInfoType AnimationType[ANIM_INFO_MAX_NAMES];  /* 0x304 */
 
 	// Non-virtual methods
 
 	// BW1W120 004c4970 BW1M119 01235db0
-	char Read(LHFilePath* path);
+	char Read(FILE* file);
 };
 
 struct AnimInfo
 {
-	uint32_t SpecVersion; /* 0x0 */
-	int      CategoryCount;
-	ANM_Name CategoryNames[0x18];
-	CatInfo  categories[0x18]; /* 0x308 */
+	uint32_t SpecVersion;                        /* 0x0 */
+	int      CategoryCount;                      /* 0x4 */
+	ANM_Name CategoryNames[ANIM_INFO_MAX_NAMES]; /* 0x8 */
+	CatInfo  Categories[ANIM_INFO_MAX_NAMES];    /* 0x308 */
 
 	// Non-virtual methods
 
 	// BW1W120 004c4ab0 BW1M119 01235c00
-	uint32_t Read(char* spec_filename);
+	bool32_t Read(char* spec_filename);
 };
 
 struct LH3DAnim;
