@@ -405,6 +405,13 @@ Black/CreatureAction.cpp:
 	.rdata      start:0x008FCA10 end:0x008FCB90
 	.data       start:0x00A413E0 end:0x00A49860
 
+Black/CreatureAnimInfo.cpp:
+	.text       start:0x004D3B40 end:0x004D3E00
+	.rdata      start:0x008FCB90 end:0x008FCB98
+	.CRT$XCU    start:0x00A362C0 end:0x00A362C8 align:4
+	.data       start:0x00A498AC end:0x00A498B0
+	.bss        start:0x00CF9DAC end:0x00CF9DB4
+
 Black/CreatureAttitudeToCreature.cpp:
 	.text       start:0x004D3E00 end:0x004D41A0
 	.rdata      start:0x008FCB98 end:0x008FCBAC

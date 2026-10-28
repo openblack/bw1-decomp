@@ -403,7 +403,7 @@ GAudio::GAudio()
 				strcpy(filename, MusicTypes[i].Filename);
 				if (GetFileAttributes(filename) == INVALID_FILE_ATTRIBUTES)
 				{
-					sprintf(filename, "%c:\\%s", g_GameDriveCharacter, MusicTypes[i].Filename);
+					sprintf(filename, GAME_DRIVE_PATH_FORMAT, g_GameDriveCharacter, MusicTypes[i].Filename);
 				}
 				MusicBanks[i] = AudioSystem->LHBankRegister(filename, 0);
 			}
