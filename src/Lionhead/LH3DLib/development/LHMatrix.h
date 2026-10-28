@@ -317,15 +317,15 @@ struct LHMatrix
 	// BW1W120 005b5b90 BW1M119 0100c2e0 (LHCombined Release)
 	void __fastcall SetMatrixOnly(const LHMatrix& r)
 	{
-		m[0] = r.m[0];
-		m[1] = r.m[1];
-		m[2] = r.m[2];
-		m[3] = r.m[3];
-		m[4] = r.m[4];
-		m[5] = r.m[5];
-		m[6] = r.m[6];
-		m[7] = r.m[7];
-		m[8] = r.m[8];
+		_11 = r._11;
+		_12 = r._12;
+		_13 = r._13;
+		_21 = r._21;
+		_22 = r._22;
+		_23 = r._23;
+		_31 = r._31;
+		_32 = r._32;
+		_33 = r._33;
 	}
 	// fabricated name: PostMultiply for the 3x3 part only. The out-of-line copy sits among the ControlHand.cpp
 	// functions; the Mac inlines it into ConvertToCameraFacingMatrix with a nested SetMatrixOnly call.
@@ -334,15 +334,15 @@ struct LHMatrix
 	{
 		LHMatrix temp;
 		temp.SetMatrixOnly(*this);
-		m[0] = temp.m[0] * r.m[0] + temp.m[1] * r.m[3] + temp.m[2] * r.m[6];
-		m[1] = temp.m[0] * r.m[1] + temp.m[1] * r.m[4] + temp.m[2] * r.m[7];
-		m[2] = temp.m[0] * r.m[2] + temp.m[1] * r.m[5] + temp.m[2] * r.m[8];
-		m[3] = temp.m[3] * r.m[0] + temp.m[4] * r.m[3] + temp.m[5] * r.m[6];
-		m[4] = temp.m[3] * r.m[1] + temp.m[4] * r.m[4] + temp.m[5] * r.m[7];
-		m[5] = temp.m[3] * r.m[2] + temp.m[4] * r.m[5] + temp.m[5] * r.m[8];
-		m[6] = temp.m[6] * r.m[0] + temp.m[7] * r.m[3] + temp.m[8] * r.m[6];
-		m[7] = temp.m[6] * r.m[1] + temp.m[7] * r.m[4] + temp.m[8] * r.m[7];
-		m[8] = temp.m[6] * r.m[2] + temp.m[7] * r.m[5] + temp.m[8] * r.m[8];
+		_11 = temp._11 * r._11 + temp._12 * r._21 + temp._13 * r._31;
+		_12 = temp._11 * r._12 + temp._12 * r._22 + temp._13 * r._32;
+		_13 = temp._11 * r._13 + temp._12 * r._23 + temp._13 * r._33;
+		_21 = temp._21 * r._11 + temp._22 * r._21 + temp._23 * r._31;
+		_22 = temp._21 * r._12 + temp._22 * r._22 + temp._23 * r._32;
+		_23 = temp._21 * r._13 + temp._22 * r._23 + temp._23 * r._33;
+		_31 = temp._31 * r._11 + temp._32 * r._21 + temp._33 * r._31;
+		_32 = temp._31 * r._12 + temp._32 * r._22 + temp._33 * r._32;
+		_33 = temp._31 * r._13 + temp._32 * r._23 + temp._33 * r._33;
 	}
 	// BW1W120 007fab30 BW1M119 0100ee90 (LHCombined Release)
 	void GetYXZ(float* y, float* x, float* z) const;

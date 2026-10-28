@@ -666,7 +666,7 @@ public:
 	// BW1W120 0048d8e0 BW1M119 011ef9b0
 	void StartDestruction();
 	// BW1W120 0048d940 BW1M119 011ef740
-	void AdvanceMovementAnimations(float param_1);
+	void AdvanceMovementAnimations(float distance);
 	// BW1W120 0048dab0 BW1M119 011ef5d0
 	void GetRelativePosition(LHPoint& pos, LHPoint* result);
 	// BW1W120 0048dc70 BW1M119 011ef3f0

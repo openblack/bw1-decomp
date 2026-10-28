@@ -133,6 +133,24 @@ public:
 	uint32_t TruncateFromSegment(const char* segment_name);
 	// BW1W120 null BW1M119 01167940 (LHCombined Release)
 	void FlushCache();
+	// BW1W120 inlined BW1M119 inlined
+	long ReadLong()
+	{
+		long value;
+		GetSegmentData(&value, sizeof(value), -1);
+		return value;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	float ReadFloat()
+	{
+		float value;
+		GetSegmentData(&value, sizeof(value), -1);
+		return value;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	void WriteLong(long value) { WriteSegmentData(&value, sizeof(value)); }
+	// BW1W120 inlined BW1M119 inlined
+	void WriteFloat(float value) { WriteSegmentData(&value, sizeof(value)); }
 };
 
 #endif /* BW1_DECOMP_LH_FILE_INCLUDED_H */

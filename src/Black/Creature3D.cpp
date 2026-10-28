@@ -1090,7 +1090,7 @@ bool32_t LH3DCreature::ThrowAtPointGivenTime(LHPoint& pos, float time)
 
 long LH3DCreature::FindMirrorBone(long bone)
 {
-	LHMatrix* matrices = field_0x47f4;
+	LHMatrix* matrices = BaseMatrices;
 	LHPoint   pos(matrices[bone]._41, matrices[bone]._42, matrices[bone]._43);
 	long      mirror = -1;
 	float     best = 100.0f;
@@ -2087,7 +2087,6 @@ long LH3DCreature::GetStartState(LHPoint& param_1, LHPoint& param_2)
 	CAnim* anim0;
 	CAnim* anim1;
 	CAnim* anim2;
-	// TODO: CAnim 0xc is the length of the anim's root movement, the LHPoint at 0x10 (CAnim::field_0x8[1..4]).
 	if (y_of_vector_product_2d(facing, delta) < 0.0f)
 	{
 		if (!(anim0 = GetAnim(C_MOVE_L_STEP_0, 0)) || !(anim1 = GetAnim(C_MOVE_L_STEP_90, 0)) ||
@@ -2096,9 +2095,9 @@ long LH3DCreature::GetStartState(LHPoint& param_1, LHPoint& param_2)
 			InitialiseTurning(RequiredHeading);
 			return 4;
 		}
-		anim0->field_0x8[1] = anim0->Movement.GetNorme();
-		anim1->field_0x8[1] = anim1->Movement.GetNorme();
-		anim2->field_0x8[1] = anim2->Movement.GetNorme();
+		anim0->Distance = anim0->Movement.GetNorme();
+		anim1->Distance = anim1->Movement.GetNorme();
+		anim2->Distance = anim2->Movement.GetNorme();
 		field_0x521c = 1;
 	}
 	else
@@ -2109,13 +2108,13 @@ long LH3DCreature::GetStartState(LHPoint& param_1, LHPoint& param_2)
 			InitialiseTurning(RequiredHeading);
 			return 4;
 		}
-		anim0->field_0x8[1] = anim0->Movement.GetNorme();
-		anim1->field_0x8[1] = anim1->Movement.GetNorme();
-		anim2->field_0x8[1] = anim2->Movement.GetNorme();
+		anim0->Distance = anim0->Movement.GetNorme();
+		anim1->Distance = anim1->Movement.GetNorme();
+		anim2->Distance = anim2->Movement.GetNorme();
 		field_0x521c = 2;
 	}
 	float distance = sqrt(delta.x * delta.x + delta.z * delta.z + delta.y * delta.y) / Size2;
-	if (distance <= anim0->field_0x8[1] || distance <= anim1->field_0x8[1] || distance <= anim2->field_0x8[1])
+	if (distance <= anim0->Distance || distance <= anim1->Distance || distance <= anim2->Distance)
 	{
 		if ((float)fabs(angle_correct(RequiredHeading - Heading)) < 0.2617994f)
 		{
@@ -4978,9 +4977,9 @@ void LH3DCreature::AttemptAttack(long action, float param_2)
 	int    bestAttack = 0;
 	int    bestCost = 1000;
 	CAnim* anim = GetAnim(C_FIGHT_STEP_BACK, 0);
-	float  stepBack = anim ? anim->field_0x8[1] * Size2 : 0.0f;
+	float  stepBack = anim ? anim->Distance * Size2 : 0.0f;
 	anim = GetAnim(C_FIGHT_STEP_FORWARD, 0);
-	float stepForward = anim ? anim->field_0x8[1] * Size2 : 0.0f;
+	float stepForward = anim ? anim->Distance * Size2 : 0.0f;
 	float minDistance = 0.5f * -GetStandingHeight();
 	for (long k = -10; k <= 10; k++)
 	{
@@ -5156,7 +5155,8 @@ void LH3DCreature::DoFightActionAction()
 			GetPositionMatrix(&positionMatrix);
 			LHMatrix* bone = &SafeBuffer1[field_0x5108[index]];
 			long      time = oldTime;
-			CycleAnim[0]->FillBuffer(SafeBuffer1, GetMesh(), field_0x47f4, field_0x47f8, oldTime, frame, NULL, 1);
+			CycleAnim[0]->FillBuffer(SafeBuffer1, GetMesh(), BaseMatrices, InverseBaseMatrices, oldTime, frame, NULL,
+			                         true);
 			LH3DAnim::FinishTransform(SafeBuffer1, GetMesh(), positionMatrix);
 			LHPoint start(bone->_41, bone->_42, bone->_43);
 			long    step = AnimTimeInc / 30;
@@ -5170,7 +5170,8 @@ void LH3DCreature::DoFightActionAction()
 				{
 					continue;
 				}
-				CycleAnim[0]->FillBuffer(SafeBuffer1, GetMesh(), field_0x47f4, field_0x47f8, time, frame, NULL, 1);
+				CycleAnim[0]->FillBuffer(SafeBuffer1, GetMesh(), BaseMatrices, InverseBaseMatrices, time, frame, NULL,
+				                         true);
 				LH3DAnim::FinishTransform(SafeBuffer1, GetMesh(), positionMatrix);
 				LHPoint prev = start;
 				start.Set(bone->_41, bone->_42, bone->_43);
@@ -6290,7 +6291,7 @@ void LH3DCreature::ClearField5044()
 	field_0x5044 = 0;
 }
 
-void LH3DCreature::AdvanceMovementAnimations(float param_1)
+void LH3DCreature::AdvanceMovementAnimations(float distance)
 {
 	if (CurrentSpeed > 0.0001f)
 	{
@@ -6300,7 +6301,7 @@ void LH3DCreature::AdvanceMovementAnimations(float param_1)
 			CycleAnim[1] = GetAnim(C_MOVE_WALK, 0);
 			CycleWeight[1] = CurrentSpeed / WalkSpeed;
 			CycleWeight[0] = 1.0f - CycleWeight[1];
-			float cycles = param_1 / (CycleAnim[1]->field_0x8[1] * Size2 * CycleWeight[1]);
+			float cycles = distance / (CycleAnim[1]->Distance * Size2 * CycleWeight[1]);
 			CycleTime[0] = (long)((long)CycleAnim[0]->Duration * field_0x4988);
 			CycleTime[1] = AdvanceCyclic(C_MOVE_WALK, CycleTime[1], (long)((long)CycleAnim[1]->Duration * cycles));
 		}
@@ -6311,8 +6312,8 @@ void LH3DCreature::AdvanceMovementAnimations(float param_1)
 			CycleWeight[0] = (CurrentSpeed - WalkSpeed) / (RunSpeed - WalkSpeed);
 			CycleWeight[1] = 1.0f - CycleWeight[0];
 			float cycles =
-				param_1 /
-				((CycleAnim[1]->field_0x8[1] * CycleWeight[1] + CycleAnim[0]->field_0x8[1] * CycleWeight[0]) * Size2);
+				distance /
+				((CycleAnim[1]->Distance * CycleWeight[1] + CycleAnim[0]->Distance * CycleWeight[0]) * Size2);
 			CycleTime[1] = AdvanceCyclic(C_MOVE_WALK, CycleTime[1], (long)((long)CycleAnim[1]->Duration * cycles));
 			CycleTime[0] = CycleTime[1] * (long)CycleAnim[0]->Duration / (long)CycleAnim[1]->Duration;
 		}
@@ -6859,7 +6860,7 @@ float LH3DCreature::CalculateRadius2D()
 	}
 	LHMatrix identity;
 	identity.SetIdentity();
-	anim->FillBuffer(SafeBuffer1, GetMesh(), field_0x47f4, field_0x47f8, 0, frame, NULL, 1);
+	anim->FillBuffer(SafeBuffer1, GetMesh(), BaseMatrices, InverseBaseMatrices, 0, frame, NULL, true);
 	LH3DAnim::FinishTransform(SafeBuffer1, GetMesh(), identity);
 	float radius = 0.0f;
 	for (int i = 0; i < field_0x47b8; i++)
