@@ -745,6 +745,8 @@ public:
 	int CalculateFoodSpareForWorship();
 	// BW1W120 00747a90 BW1M119 01569270
 	int CalculateActualAmountOfFood();
+	// BW1W120 0077d170 BW1M119 null
+	void ValidateWorshippingVillagers();
 	// BW1W120 00747c60 BW1M119 01569130
 	uint32_t CalculateActualNumberOfBuildings();
 	// BW1W120 00747c70 BW1M119 01569090

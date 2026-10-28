@@ -25,6 +25,7 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include <Lionhead/LH3DLib/development/LH3DTech.h>
 #include <Lionhead/LHLib/ver5.0/LHCollide.h> /* For class NewCollide */
 
+#include "Abode.h"
 #include "Artifact.h"
 #include "Citadel.h"
 #include "CitadelHeart.h"
@@ -58,6 +59,7 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "StoragePit.h"
 #include "Town.h"
 #include "Villager.h"
+#include "VillagerStateTableInfo.h"
 #include "TownSpellIcon.h"
 #include "TribeInfo.h"
 #include "WorshipTotem.h"
@@ -1349,6 +1351,51 @@ void WorshipSite::ValidateWorshippers()
 		Villager* villager = node->payload;
 		villager->GetTopState();
 		villager->IsAvailable();
+	}
+}
+
+void Town::ValidateWorshippingVillagers()
+{
+	for (LHLinkedNode<Villager*>* node = VillagersOnWayToWorshipSite.GetStart(); node != NULL; node = node->next.Get())
+	{
+		node->payload->IsAvailable();
+	}
+	for (Abode* abode = AbodeList.head; abode != NULL; abode = abode->next)
+	{
+		for (Villager* villager = abode->villagers.head; villager != NULL; villager = villager->next)
+		{
+			bool worshipping = false;
+			for (uint32_t i = LIVING_ACTION_INDEX_TOP; i <= LIVING_ACTION_INDEX_FINAL; i++)
+			{
+				int state = villager->action.states[i];
+				switch (state)
+				{
+				case VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP:
+					worshipping = true;
+					break;
+				case VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE:
+				case VILLAGER_STATE_HIDING_AT_WORSHIP_SITE:
+					villager->GetWorshipSite();
+					worshipping = true;
+					break;
+				case VILLAGER_STATE_MOVE_AROUND_FIRE:
+					if (villager->action.states[LIVING_ACTION_INDEX_PREVIOUS] ==
+					    VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP)
+					{
+						worshipping = true;
+					}
+					break;
+				}
+				if (GVillagerStateTableInfo::Infos[state].isFinalState)
+				{
+					break;
+				}
+			}
+			if (!worshipping)
+			{
+				villager->GetWorshipSite();
+			}
+		}
 	}
 }
 
