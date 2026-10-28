@@ -45,6 +45,8 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "Pot.h"
 #include "PotInfo.h"
 #include "PSysInterface.h"
+#include "GameInfo.h"
+#include "PSysProcessInfo.h"
 #include "Rand.h"
 #include "Setup.h"
 #include "SpellIconInfo.h"
@@ -348,6 +350,40 @@ WorshipSpellIcon* WorshipSite::GetSpellIconFromSeedType(SPELL_SEED_TYPE type)
 WorshipSpellIcon* WorshipSite::GetSpellIconFromMagicType(MAGIC_TYPE type)
 {
 	return GetSpellIconFromSeedType(GSpellSeedInfo::GetFirstSpellSeedForMagicType(type));
+}
+
+uint32_t WorshipSite::Process()
+{
+	if (ManaPathPSys != NULL)
+	{
+		PSysProcessInfo info;
+		info.InterfacePosition.x = 0.0f;
+		info.InterfacePosition.y = 0.0f;
+		info.InterfacePosition.z = 0.0f;
+		info.GesturePosition.x = 0.0f;
+		info.GesturePosition.y = 0.0f;
+		info.GesturePosition.z = 0.0f;
+		info.CameraForwardUnitVector.x = 0.0f;
+		info.CameraForwardUnitVector.y = 0.0f;
+		info.CameraForwardUnitVector.z = 0.0f;
+		info.HandVelocity.x = 0.0f;
+		info.HandVelocity.y = 0.0f;
+		info.HandVelocity.z = 0.0f;
+		info.GestureAngularVelocity = 0.0f;
+		info.Active = true;
+		info.Strength = 1.0f;
+		if (ManaPathPSys->Process(info, GGameInfo::Info.MillisecondsPerGameTurn) == 5)
+		{
+			delete ManaPathPSys;
+			ManaPathPSys = NULL;
+		}
+	}
+	if (FoodPot != NULL && FoodPot->IsAvailable() != true)
+	{
+		FoodPot = NULL;
+	}
+	show_needs.Get()->Process();
+	return 1;
 }
 
 void WorshipSite::CreateManaPathSprite(const MapCoords& coords, float speed, GameThingWithPos* target)
