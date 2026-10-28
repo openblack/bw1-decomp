@@ -17,8 +17,8 @@ class GameThing;
 class ScriptTimer : public GameThingWithPos
 {
 public:
-	uint32_t field_0x28;
-	uint32_t field_0x2c;
+	uint32_t StartTurn;
+	uint32_t DurationTurns;
 
 	// Override methods
 
@@ -30,14 +30,18 @@ public:
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561310 BW1M119 0150db90
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SCRIPT_TIMER; }
+#if !defined(VERSION_BW1W100)
 	// BW1W120 00561300 BW1M119 0150db40
 	virtual bool32_t IsDeletedWhenReleasedFromScript() { return true; }
+#endif
 	// BW1W120 005612e0 BW1M119 0150da60
 	virtual const char* GetText() { return "Script Timer"; }
+#if !defined(VERSION_BW1W100)
 	// BW1W120 005612f0 BW1M119 0102dcc0
 	virtual bool32_t IsScriptTimer() { return true; }
 	// BW1W120 00711600 BW1M119 0150e230
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
+#endif
 
 	// BW1W120 inlined BW1M119 inlined
 	ScriptTimer() { SetTime(0ul); }

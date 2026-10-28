@@ -1873,6 +1873,7 @@ Black/ScriptMarker.cpp:
 Black/ScriptTimer.cpp:
 	.text       start:0x006AA990 end:0x006AAC70
 	.rdata      start:0x0088E3B8 end:0x0088E3C0
+	.CRT$XCU    start:0x008F7034 end:0x008F7038 align:4
 	.data       start:0x00B43D0C end:0x00B43D30
 	.bss        start:0x00CB9DC8 end:0x00CB9DCC
 
