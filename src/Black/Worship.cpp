@@ -40,6 +40,8 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "Landscape.h"
 #include "Utils.h"
 #include "Player.h"
+#include "PhysicsObject.h"
+#include "HelpProfile.h"
 #include "Pot.h"
 #include "PotInfo.h"
 #include "PSysInterface.h"
@@ -587,6 +589,13 @@ MultiMapFixed* WorshipSite::GetBuildingObjectForSpellIcon()
 	return building;
 }
 
+PlannedWorshipSite::PlannedWorshipSite(const MapCoords& coords, const GCitadelPartInfo* info, TRIBE_TYPE tribe,
+                                       Citadel* citadel, float y_angle, float scale)
+	: PlannedCitadelPart(coords, info, citadel, y_angle, scale)
+{
+	Tribe = tribe;
+}
+
 ABODE_TYPE PlannedWorshipSite::GetAbodeType()
 {
 	return ABODE_TYPE_CITADEL;
@@ -620,6 +629,30 @@ bool32_t PlannedWorshipSite::Load(GameOSFile& file)
 		return true;
 	}
 	return false;
+}
+
+PlannedMultiMapFixed* WorshipSite::ConvertToPlanned()
+{
+	PlannedWorshipSite* planned = new (FILEPATH, 1069)
+		PlannedWorshipSite(Pos, GetInfo(), GetTribe()->type, GetCitadel(), GetYAngle(), GetScale());
+	if (planned != NULL)
+	{
+		ToBeDeleted(false);
+	}
+	return planned;
+}
+
+MultiMapFixed* PlannedWorshipSite::CreatePlanned(float percent_built)
+{
+	Citadel* owner = citadel.Get();
+	float    yAngle = YAngle;
+	if (((const GCitadelPartInfo*)info.Get())->IsOkToCreateAtPos(Pos, yAngle, GetScale(), owner))
+	{
+		float angle = YAngle;
+		return WorshipSite::Create(Pos, (const GWorshipSiteInfo*)info.Get(), citadel.Get(), &GTribeInfo::Infos[Tribe],
+		                           angle, GetScale(), percent_built, true);
+	}
+	return NULL;
 }
 
 float WorshipSite::GetWorshipSpeed()
@@ -1366,4 +1399,22 @@ float WorshipSite::GetChantBatteryMax()
 {
 	const GWorshipSiteInfo* info = GetInfo();
 	return GetNumberVillagersWorshipping() * info->EachVillagerAddToFillBattery + info->ChantsToFillBattery;
+}
+
+bool32_t WorshipSite::DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status)
+{
+	if (object->Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS)
+	{
+		PhysicsObject* physics = PhysicsObject::SearchForPhysicsObject(object);
+		if (physics != NULL)
+		{
+			GInterfaceStatus* thrower = physics->status;
+			if (thrower == GGame::g_game->MyInterfaceStatus())
+			{
+				GGame::g_game->help_profile->Trigger(HELP_EVENT_TYPE_6);
+			}
+		}
+	}
+	DoDeleteObjectAndTakeResource(object, status);
+	return true;
 }
