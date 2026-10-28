@@ -14,6 +14,7 @@
 // Forward Declares
 
 class Base;
+class WorshipSite;
 class GDanceInfo;
 class GFootpath;
 class GFootpathLink;
@@ -132,6 +133,8 @@ public:
 	// BW1W120 0050c3d0 BW1M119 012ac0d0
 	Living* FindLiving(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE type,
 	                   uint32_t subtype);
+	// BW1W120 0050c150 BW1M119 null
+	void ValidateDancers(WorshipSite* site);
 };
 
 #endif /* BW1_DECOMP_DANCE_INCLUDED_H */

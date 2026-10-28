@@ -7,6 +7,7 @@
 static LHPoint ZeroPoint(0.0f, 0.0f, 0.0f);
 
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "MagicEffectInfo.h"
 
 static float OneOverLogHalf = 1.0f / (float)log(0.5);
 
@@ -604,6 +605,13 @@ float WorshipSite::GetDanceProgress()
 	return 0.0f;
 }
 
+bool32_t WorshipSite::ValidateDance()
+{
+	dance->ValidateDancers(this);
+	DanceValidatedTurn = GGame::g_game->data.GameTurn;
+	return true;
+}
+
 static inline void SetPositionOnLand(LH3DObject* object, const MapCoords& coords, float y_angle, float scale)
 {
 	LHPoint point;
@@ -1000,6 +1008,52 @@ MapCoords WorshipSite::GetResourceNearestEdge(RESOURCE_TYPE type, Object* object
 	return FoodPot->GetNearestEdgeOfObject(object);
 }
 
+void WorshipSite::SetTotemPos(const MapCoords& pos)
+{
+	WorshipTotem* site_totem = totem.Get();
+	if (site_totem != NULL)
+	{
+		site_totem->Pos = pos;
+		site_totem->SetWorshipSpeedFromSink();
+	}
+}
+
+uint32_t WorshipSite::GetTribeValue()
+{
+	return tribe_info.Get()->Value;
+}
+
+bool32_t WorshipSite::IsSpellIconInList(WorshipSpellIcon* icon)
+{
+	WorshipSpellIcon* item;
+	for (item = IconList.head; item != NULL; item = item->next)
+	{
+		if (item == icon)
+		{
+			break;
+		}
+	}
+	return item != NULL;
+}
+
+int WorshipSite::GetSpellIconIndex(WorshipSpellIcon* icon)
+{
+	int               index = 0;
+	WorshipSpellIcon* item;
+	for (item = IconList.head; item != NULL; item = item->next, index++)
+	{
+		if (item == icon)
+		{
+			break;
+		}
+	}
+	if (item == NULL)
+	{
+		index = -1;
+	}
+	return index > 0 ? index : 0;
+}
+
 void WorshipSite::AddTown(Town* town)
 {
 	town->SetWorshipSite(this);
@@ -1288,6 +1342,16 @@ bool32_t WorshipSite::IsVillagerInWorshipList(Villager* villager)
 	return Worshippers.IsThisInList(villager);
 }
 
+void WorshipSite::ValidateWorshippers()
+{
+	for (LHLinkedNode<Villager*>* node = Worshippers.GetStart(); node != NULL; node = node->next.Get())
+	{
+		Villager* villager = node->payload;
+		villager->GetTopState();
+		villager->IsAvailable();
+	}
+}
+
 SCRIPT_OBJECT_TYPE WorshipSite::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_WORSHIP_SITE;
@@ -1302,7 +1366,7 @@ bool32_t WorshipSite::Save(GameOSFile& file)
 		file.WritePtr(dance.Get());
 		file.WriteSafe(Towns);
 		file.WritePtr(FoodPot);
-		file.WriteSafe(field_0xbc);
+		file.WriteSafe(DanceValidatedTurn);
 		file.WriteSafe(field_0xc0);
 		file.WriteSafe(field_0xc4);
 		file.WriteSafe(NumWorshippers);
@@ -1341,7 +1405,7 @@ bool32_t WorshipSite::Load(GameOSFile& file)
 		file.ReadPtr((GameThing**)&dance);
 		file.ReadSafe(Towns);
 		file.ReadPtr((GameThing**)&FoodPot);
-		file.ReadSafe(field_0xbc);
+		file.ReadSafe(DanceValidatedTurn);
 		file.ReadSafe(field_0xc0);
 		file.ReadSafe(field_0xc4);
 		file.ReadSafe(NumWorshippers);
@@ -1505,6 +1569,33 @@ bool32_t WorshipSite::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GIn
 	return true;
 }
 
+bool32_t WorshipSite::GetChantShortfallFraction(float* fraction, MAGIC_TYPE type)
+{
+	float             maxShortfall = 0.0f;
+	float             shortfall = 0.0f;
+	WorshipSpellIcon* found = NULL;
+	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
+	{
+		float needed = max(icon->GetMagicEffectInfo(GESTURE_TYPE_NONE)->CostToCreate - icon->GetChantStore(), 0.0f);
+		float missing = max(needed - GetTotalChantsAvailable(), 0.0f);
+		if (missing > maxShortfall)
+		{
+			maxShortfall = missing;
+		}
+		if (icon->GetMagicType() == type)
+		{
+			shortfall = missing;
+			found = icon;
+		}
+	}
+	if (found != NULL)
+	{
+		*fraction = shortfall / maxShortfall;
+		return true;
+	}
+	return false;
+}
+
 float WorshipSite::GetChantsVillagerCanSupply()
 {
 	const GWorshipSiteInfo* info = GetInfo();
@@ -1559,6 +1650,25 @@ void WorshipSite::RemoveVillagerRequestingToGoHome(Villager* villager)
 int WorshipSite::GetNumVillagersRequestingToGoHome()
 {
 	return VillagersRequestingToGoHome.GetSize();
+}
+
+float WorshipSite::CalculateChargingSpellIconDemand()
+{
+	if (GetChantsVillagerCanSupply() != 0.0f)
+	{
+		float demand = 0.0f;
+		for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
+		{
+			if (icon->Charging)
+			{
+				demand += 1.0f - min((icon->GetChantNeededForSpellSeed() + WORSHIP_SITE_CHANT_EPSILON) /
+				                         (icon->GetChantRequiredForSpellSeed() + WORSHIP_SITE_CHANT_EPSILON),
+				                     1.0f);
+			}
+		}
+		return demand;
+	}
+	return 0.0f;
 }
 
 float WorshipSite::GetDesireForWorshippers()

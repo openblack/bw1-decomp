@@ -72,6 +72,7 @@ enum WORSHIP_SITE_SPECIAL_POS
 #define WORSHIP_SITE_MIN_BATTERY_SPEED_BOOST             0.2f
 #define WORSHIP_SITE_ARTIFACT_POWERUP_INTERVAL           1000
 #define WORSHIP_SITE_COLLIDE_POINTS                      10
+#define WORSHIP_SITE_CHANT_EPSILON                       0.001f
 #define WORSHIP_SITE_MANA_PATH_MAX_ALPHA                 255.0f
 #define WORSHIP_SITE_SPELL_ICON_BUILD_RANDOM_RANGE       100
 #define WORSHIP_SITE_SPELL_ICON_BUILD_TIE_CHANCE         50
@@ -89,7 +90,7 @@ public:
 	LHLinkedList<TownArtifact*>                     Artifacts;
 	Pot*                                            FoodPot; /* 0xb4 */
 	PSysInterface*                                  ManaPathPSys;
-	uint32_t                                        field_0xbc;
+	uint32_t                                        DanceValidatedTurn; /* 0xbc */
 	uint32_t                                        field_0xc0;
 	uint8_t                                         field_0xc4;
 	uint32_t                                        NumWorshippers; /* 0xc8 */
@@ -416,7 +417,22 @@ public:
 	// BW1W120 0077cfe0 BW1M119 null
 	void StopDanceEffects();
 	// BW1W120 0077cff0 BW1M119 null
-	void UpdateDanceEffects();
+	void     UpdateDanceEffects(); // BW1W120 0077b9a0 BW1M119 null
+	bool32_t ValidateDance();
+	// BW1W120 0077c740 BW1M119 null
+	void SetTotemPos(const MapCoords& pos);
+	// BW1W120 0077c770 BW1M119 null
+	uint32_t GetTribeValue();
+	// BW1W120 0077c780 BW1M119 null
+	bool32_t IsSpellIconInList(WorshipSpellIcon* icon);
+	// BW1W120 0077c7b0 BW1M119 null
+	int GetSpellIconIndex(WorshipSpellIcon* icon);
+	// BW1W120 0077d140 BW1M119 null
+	void ValidateWorshippers();
+	// BW1W120 0077df40 BW1M119 null
+	bool32_t GetChantShortfallFraction(float* fraction, MAGIC_TYPE type);
+	// BW1W120 0077e270 BW1M119 null
+	float CalculateChargingSpellIconDemand();
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INCLUDED_H */
