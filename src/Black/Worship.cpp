@@ -580,6 +580,39 @@ unsigned long WorshipSite::GetNumberVillagersWorshipping()
 	return GetNumDancers();
 }
 
+static inline void SetPositionOnLand(LH3DObject* object, const MapCoords& coords, float y_angle, float scale)
+{
+	LHPoint point;
+	GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(coords, point);
+	point.y += LH3DIsland::GetAltitudeAndSetColorSpecular(coords, (unsigned long*)&object->color,
+	                                                      (unsigned long*)&object->specular);
+	object->LH3DObject::SetPosition(point, y_angle, scale);
+}
+
+void WorshipSite::CallVirtualFunctionsForCreation(const MapCoords& coords)
+{
+	if (GetCitadel()->GetCitadelHeart()->Game3dObject == NULL)
+	{
+		GetCitadel()->GetCitadelHeart()->CallVirtualFunctionsForCreation(coords);
+	}
+	LH3DMesh* mesh = ((LH3DCitadel*)GetCitadel()->GetCitadelHeart()->Game3dObject)->CitadelMesh;
+	Create3DObject();
+	Game3dObject->SetMesh(mesh, NULL, NULL);
+	SetPositionOnLand(Game3dObject, coords, GetYAngle(), GetScale());
+	InitialiseIsFixedForMapList();
+	AllocateMultiChild();
+	if (!IsInMagicHand() && !IsUnavailableOrFlying())
+	{
+		InsertMapObject();
+	}
+	Game3dObject->UpdateMelting();
+	mesh = Game3dObject->GetMesh();
+	mesh->flags |= LH3D_MESH_FLAGS_UNKNOWN_15;
+	Game3dObject->SetFootPrintOnTexture(true);
+	Game3dObject->SetShadowOnTexture(true);
+	Game3dObject->SetCastDynamicShadow(true);
+}
+
 float WorshipSite::UseChants(float amount)
 {
 	if (amount < 0.0f)
