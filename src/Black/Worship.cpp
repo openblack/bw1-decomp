@@ -1,4 +1,6 @@
+#include "WorshipSiteInfo.h"
 #include "GameTimeConstants.h"
+#include "TimerConstants.h"
 
 #include <math.h> /* For cos, fmod, log */
 
@@ -13,7 +15,6 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 
 #include "PlannedWorshipSite.h"
 #include "WorshipSite.h"
-#include "WorshipSiteInfo.h"
 
 #include <stdio.h>  /* For sprintf */
 #include <string.h> /* For strlen */
@@ -72,7 +73,11 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #define FILEPATH "C:\\dev\\MP\\Black\\Worship.cpp"
 #endif
 
-#define SECONDS_PER_MILLISECOND 0.001f
+#define SECONDS_PER_MILLISECOND         0.001f
+#define WORSHIP_SITE_INFINITE_CHANTS    1000000.0f
+#define WORSHIP_SITE_CENTRE_OFFSET_BACK 26.1f
+#define WORSHIP_SITE_CENTRE_OFFSET_SIDE 12.55f
+#define WORSHIP_SITE_REAL_RADIUS        14.0f
 
 const float FoodPotYAngleOffset = 1.5f;
 const float FoodPotScale = 0.7f;
@@ -80,11 +85,7 @@ const float FoodPosX = 9.0f;
 const float FoodPosZ = -38.0f;
 const float OverloadPulseMinSpeed = 5.0f;
 const float OverloadPulseMaxSpeed = 10.0f;
-const float WorshipSiteInfiniteChants = 1000000.0f;
 float       CollideRadiusScale = 1.3f;
-const float CentreOffsetBack = 26.1f;
-const float CentreOffsetSide = 12.55f;
-const float WorshipSiteRealRadius = 14.0f;
 
 class SortVillagerOnNeedToGoHome : public Villager
 {
@@ -93,12 +94,6 @@ public:
 };
 
 GWorshipSiteInfo GWorshipSiteInfo::Infos[WORSHIP_SITE_INFO_LAST];
-
-GBaseInfo* GWorshipSiteInfo::GetBaseInfo(uint32_t& info_count)
-{
-	info_count = WORSHIP_SITE_INFO_LAST;
-	return Infos;
-}
 
 float GWorshipSiteInfo::GetChantsToReserveForMaintaining() const
 {
@@ -180,19 +175,23 @@ WorshipSite* WorshipSite::Create(const MapCoords& coords, const GWorshipSiteInfo
                                  const GTribeInfo* tribe_info, float y_angle, float scale, float percent_built,
                                  bool32_t under_construction)
 {
-	MapCoords pos = coords;
+	MapCoords pos;
+	pos.SetWholeX(coords.WholeX());
+	pos.SetWholeZ(coords.WholeZ());
+	pos.SetAltitude(coords.Altitude());
+	float angle = y_angle;
 	info = &GWorshipSiteInfo::Infos[tribe_info - GTribeInfo::Infos];
 	unsigned long slot = 0;
 	if (citadel != NULL)
 	{
-		if (citadel->FindNearestWorshipSitePosAngleAndSlotToPos(info, scale, pos, y_angle, slot) != true)
+		if (citadel->FindNearestWorshipSitePosAngleAndSlotToPos(info, scale, pos, angle, slot) != true)
 		{
 			return NULL;
 		}
 		pos = citadel->Pos;
 	}
 	WorshipSite* site = new (FILEPATH, 190)
-		WorshipSite(pos, info, citadel, slot, tribe_info, y_angle, scale, percent_built, under_construction);
+		WorshipSite(pos, info, citadel, slot, tribe_info, angle, scale, percent_built, under_construction);
 	if (site != NULL)
 	{
 		site->CallVirtualFunctionsForCreation(pos);
@@ -756,21 +755,6 @@ PlannedWorshipSite::PlannedWorshipSite(const MapCoords& coords, const GCitadelPa
 	Tribe = tribe;
 }
 
-ABODE_TYPE PlannedWorshipSite::GetAbodeType()
-{
-	return ABODE_TYPE_CITADEL;
-}
-
-uint32_t PlannedWorshipSite::GetSaveType()
-{
-	return GAME_THING_TYPE_PLANNED_WORSHIP_SITE;
-}
-
-char* PlannedWorshipSite::GetDebugText()
-{
-	return "PlannedWorshipSite:";
-}
-
 bool32_t PlannedWorshipSite::Save(GameOSFile& file)
 {
 	if (PlannedCitadelPart::Save(file))
@@ -1068,7 +1052,7 @@ void WorshipSite::AddTown(Town* town)
 			FootpathLink = new (FILEPATH, 1386) GFootpathLink();
 		}
 		int pathIndex;
-		if (GetFootpathLink()->GetNearestPathToQuick(GetArrivePos(), storagePit->GetArrivePos(),
+		if (GetFootpathLink()->GetNearestPathToQuick(storagePit->GetArrivePos(), GetArrivePos(),
 		                                             WORSHIP_SITE_FOOTPATH_MAX_DISTANCE, pathIndex, NULL) == NULL)
 		{
 			new (FILEPATH, 1390) GFootpathFinder(storagePit, this);
@@ -1177,7 +1161,7 @@ float WorshipSite::GetChantsAvailable()
 {
 	if (InfiniteChants)
 	{
-		return WorshipSiteInfiniteChants;
+		return WORSHIP_SITE_INFINITE_CHANTS;
 	}
 	return TotalChantsAvailable - ChantsUsed;
 }
@@ -1186,7 +1170,7 @@ float WorshipSite::GetTotalChantsAvailable()
 {
 	if (InfiniteChants)
 	{
-		return WorshipSiteInfiniteChants;
+		return WORSHIP_SITE_INFINITE_CHANTS;
 	}
 	return TotalChantsAvailable;
 }
@@ -1453,12 +1437,12 @@ bool32_t WorshipSite::Load(GameOSFile& file)
 		file.ReadPtr((GameThing**)&dance);
 		file.ReadSafe(Towns);
 		file.ReadPtr((GameThing**)&FoodPot);
-		file.ReadSafe(DanceValidatedTurn);
-		file.ReadSafe(field_0xc0);
-		file.ReadSafe(field_0xc4);
-		file.ReadSafe(NumWorshippers);
-		file.ReadSafe(field_0xcc);
-		file.ReadSafe(CheatSpellSeed);
+		file.ReadIt(DanceValidatedTurn);
+		file.ReadIt(field_0xc0);
+		file.ReadIt(field_0xc4);
+		file.ReadIt(NumWorshippers);
+		file.ReadIt(field_0xcc);
+		file.ReadIt(CheatSpellSeed);
 		file.ReadSafe(Worshippers);
 		file.ReadSafe(IconList);
 		file.ReadArray(ResourcesOnTheWay);
@@ -1552,15 +1536,14 @@ LHPoint WorshipSite::GetNearestEdgeOfObject(Object* object)
 
 MapCoords WorshipSite::CalculateCentrePos()
 {
-	LHMatrix& matrix = Game3dObject->matrix;
-	return MapCoords(LHPoint(matrix._11 * CentreOffsetSide - matrix._31 * CentreOffsetBack + matrix._41,
-	                         matrix._12 * CentreOffsetSide - matrix._32 * CentreOffsetBack + matrix._42,
-	                         matrix._13 * CentreOffsetSide - matrix._33 * CentreOffsetBack + matrix._43));
+	LHPoint offset(WORSHIP_SITE_CENTRE_OFFSET_SIDE, 0.0f, -WORSHIP_SITE_CENTRE_OFFSET_BACK);
+	Game3dObject->matrix.TransformPoint(offset);
+	return MapCoords(offset);
 }
 
 float WorshipSite::GetRealRadius()
 {
-	return WorshipSiteRealRadius;
+	return WORSHIP_SITE_REAL_RADIUS;
 }
 
 void WorshipSite::GetDefaultFireCentrePos(MapCoords* pos)

@@ -25,18 +25,18 @@ public:
 
 	// Override methods
 
+	// BW1W120 0077bee0 BW1M119 015b1f40
+	virtual ABODE_TYPE GetAbodeType() { return ABODE_TYPE_CITADEL; }
+	// BW1W120 0077bef0 BW1M119 015b1f80
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PLANNED_WORSHIP_SITE; }
 	// BW1W120 0077bf00 BW1M119 015b1fc0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "PlannedWorshipSite:"; }
 	// BW1W120 0077bf90 BW1M119 015b7d30
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0077bf30 BW1M119 015b7e10
 	virtual bool32_t Save(GameOSFile& file);
-	// BW1W120 0077bef0 BW1M119 015b1f80
-	virtual uint32_t GetSaveType();
 	// BW1W120 0077c070 BW1M119 015b7a10
 	virtual MultiMapFixed* CreatePlanned(float percent_built);
-	// BW1W120 0077bee0 BW1M119 015b1f40
-	virtual ABODE_TYPE GetAbodeType();
 
 	// Constructors
 
