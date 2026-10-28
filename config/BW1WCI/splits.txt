@@ -427,16 +427,17 @@ Black/CreatureDecision.cpp:
 	.bss        start:0x00CF9DBC end:0x00CF9DC4
 
 Black/CreatureDevelopment.cpp:
-	.text       start:0x004D46C0 end:0x004D5110
-	.rdata      start:0x008FCBBC end:0x008FCBD4
+	.text       start:0x004D46C0 end:0x004D5120
+	.rdata      start:0x008FCBBC end:0x008FCBCC
 	.CRT$XCU    start:0x00A362D8 end:0x00A362E4 align:4
-	.data       start:0x00A498DC end:0x00A49920
+	.data       start:0x00A498DC end:0x00A49904
+	.bss        start:0x00CF9DC8 end:0x00CF9F90
 
 Black/CreatureDirectControl.cpp:
-	.text       start:0x004D5110 end:0x004D6D10
-	.rdata      start:0x008FCBD4 end:0x008FCC0C
+	.text       start:0x004D5120 end:0x004D6D10
+	.rdata      start:0x008FCBCC end:0x008FCC0C
 	.CRT$XCU    start:0x00A362E4 end:0x00A362EC align:4
-	.data       start:0x00A49920 end:0x00A49980
+	.data       start:0x00A49908 end:0x00A49980
 
 Black/CreatureDump.cpp:
 	.text       start:0x004D6D10 end:0x004D74B0

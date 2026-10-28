@@ -189,7 +189,9 @@ public:
 	LEASH_CONTROL            LeashControl;
 	bool32_t                 Fainted;
 	CreatureEmotionsForMusic EmotionsForMusic;
-	uint32_t                 field_0x390[0xa];
+	uint32_t                 field_0x390;
+	bool32_t                 HasPickedUpFromHand;
+	uint32_t                 field_0x398[0x8];
 	uint32_t                 field_0x3b8;
 	uint32_t                 field_0x3bc[0x3];
 	uint32_t                 field_0x3c8;
@@ -238,7 +240,7 @@ public:
 	bool32_t                TouchedByLeash;
 	bool32_t                DirectedByLeash;
 	uint32_t                field_0x10bc;
-	uint32_t                field_0x10c0;
+	bool32_t                IsShowingDevelopmentHelpScript;
 	uint8_t                 SavedCreatureIndex;
 	uint8_t                 SavedPlayerNumber;
 	uint8_t                 field_0x10c6[0x6];
@@ -302,7 +304,7 @@ public:
 	LHLinkedList<LHPoint*>            DebugPath;
 	char                              MindFileName[0x40];
 	DEVELOPMENT_PHASE                 DevelopmentPhase;
-	uint32_t                          field_0x126c;
+	int                               GameTurnsInDevelopmentPhase;
 	uint32_t                          field_0x1270;
 	LHLinkedList<CreatureSpeechItem*> SpeechItems;
 	Bubble*                           bubble;
@@ -412,7 +414,7 @@ public:
 	// BW1W120 00474030 BW1M119 011ea710
 	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature);
 	// BW1W120 004c5e50 BW1M119 01236990
-	virtual bool32_t FalseFunction() { return false; }
+	virtual bool32_t FalseFunction();
 	// BW1W120 00473fd0 BW1M119 011ea560
 	virtual bool32_t IsSuitableForCreatureActivity();
 	// BW1W120 00474050 BW1M119 011ea7c0
@@ -844,6 +846,50 @@ public:
 	void Faint();
 	// BW1W120 00479480 BW1M119 011df800
 	bool32_t HasFinishedBuildingHome();
+	// BW1W120 inlined BW1M119 inlined
+	float GetSecondsInDevelopmentPhase();
+#ifndef VERSION_BW1W100
+	// BW1W120 004c58d0 BW1M119 01237a50
+	void CheckForNewDevelopmentPhase();
+	// BW1W120 004c58e0 BW1M119 012378c0
+	bool32_t IsAvailableToMoveToNextDevelopmentPhase();
+	// BW1W120 004c59a0 BW1M119 012375d0
+	bool32_t CanBeMovedToNextDevelopmentPhase(DEVELOPMENT_PHASE phase);
+#endif // VERSION_BW1W100
+	// BW1W120 004c59c0 BW1M119 01237430
+	void MoveToDevelopmentPhase(DEVELOPMENT_PHASE phase, int unused);
+	// BW1W120 004c5ab0 BW1M119 01237380
+	bool32_t HasFinishedDevelopmentStageInitial();
+	// BW1W120 004c5af0 BW1M119 01237270
+	bool32_t HasFinishedDevelopmentStagePunishment();
+	// BW1W120 004c5b50 BW1M119 01237150
+	bool32_t HasFinishedDevelopmentStageLeashPullAndPickup();
+	// BW1W120 004c5bb0 BW1M119 01237030
+	bool32_t HasFinishedDevelopmentStageLeashAttachToHouse();
+	// BW1W120 004c5c10 BW1M119 01236fd0
+	bool32_t HasFinishedDevelopmentStageLeashGoodAndEvil();
+	// BW1W120 004c5c20 BW1M119 01236f10
+	bool32_t HasFinishedDevelopmentStageLearnToEat();
+	// BW1W120 004c5c70 BW1M119 01236e50
+	bool32_t HasFinishedDevelopmentStageGuideTeachesSpells();
+	// BW1W120 004c5cb0 BW1M119 01236d90
+	bool32_t HasFinishedDevelopmentStageGuideExplainsHistory();
+	// BW1W120 004c5cf0 BW1M119 01236ce0
+	bool32_t HasFinishedDevelopmentStageFriendsWithGuide();
+	// BW1W120 004c5d30 BW1M119 01236c30
+	bool32_t HasFinishedDevelopmentStageMeetGuide();
+	// BW1W120 004c5d70 BW1M119 01236b70
+	bool32_t HasFinishedDevelopmentStageLearnToImpressTown();
+	// BW1W120 004c5db0 BW1M119 01236a80
+	bool32_t HasFinishedDevelopmentStageLearnToFight();
+	// BW1W120 004c5e10 BW1M119 012369d0
+	bool32_t HasFinishedDevelopmentStageLearnToHelpTown();
+#ifndef VERSION_BW1W100
+	// BW1W120 004c5e60 BW1M119 012368c0
+	void GiveMaximumSkillAtOneSpell();
+	// BW1W120 004c5ee0 BW1M119 null
+	void GiveMaximumSkillAtOnePowerUpSpell();
+#endif // VERSION_BW1W100
 	// BW1W120 004cf060 BW1M119 01243630
 	GInterfaceStatus* GetInterfaceStatusLeashOn();
 	// BW1W120 004ce320 BW1M119 012446b0

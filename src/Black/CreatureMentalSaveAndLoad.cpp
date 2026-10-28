@@ -648,11 +648,11 @@ void CreatureMental::SaveMind(Archive& archive)
 		alignment = GGame::g_game->script->GetGlobalVariableValue("OriginalAlignmentOfMyCreature");
 	}
 	archive << alignment;
-	archive << (unsigned long)creature.Get()->field_0x126c;
+	archive << (unsigned long)creature.Get()->GameTurnsInDevelopmentPhase;
 	archive << (int)creature.Get()->DevelopmentPhase;
 	creature.Get()->physical->SaveBody(archive);
 	MusicMoodController::WriteDatabase(&archive);
-	archive << (int)creature.Get()->field_0x10c0;
+	archive << (int)creature.Get()->IsShowingDevelopmentHelpScript;
 	for (i = 0; i < ARRAY_SIZE(creature.Get()->LeashEnabled); i++)
 	{
 		archive << (int)creature.Get()->LeashEnabled[i];
@@ -943,7 +943,7 @@ void CreatureMental::LoadMind(Archive& archive)
 		archive >> alignment;
 		creature.Get()->ReceiveSpell->SetAlignmentMentalLoaded(alignment);
 	}
-	archive >> (unsigned long&)creature.Get()->field_0x126c;
+	archive >> (unsigned long&)creature.Get()->GameTurnsInDevelopmentPhase;
 	archive >> (long&)creature.Get()->DevelopmentPhase;
 	creature.Get()->physical->LoadBody(archive);
 	creature.Get()->Update3DCreatureFromAttributes();
@@ -957,7 +957,7 @@ void CreatureMental::LoadMind(Archive& archive)
 	}
 	if (MindVersion >= CREATURE_MIND_VERSION_DIRECT_CONTROL)
 	{
-		archive >> (int&)creature.Get()->field_0x10c0;
+		archive >> (int&)creature.Get()->IsShowingDevelopmentHelpScript;
 	}
 	if (MindVersion >= CREATURE_MIND_VERSION_LEASH_ENABLED)
 	{
