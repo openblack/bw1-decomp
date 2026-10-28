@@ -84,6 +84,10 @@ public:
 	void Validate();
 	// BW1W120 0051c8e0 BW1M119 010c77b0
 	void Draw();
+	// BW1W120 00426a80 BW1M119 010b0c70
+	void AddToValue(float amount);
+	// BW1W120 00426820 BW1M119 010b1180
+	void SetValue(float value);
 };
 
 #endif /* BW1_DECOMP_ARTIFACT_INCLUDED_H */

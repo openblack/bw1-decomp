@@ -480,6 +480,62 @@ void WorshipSite::ProcessSpellIcons()
 	ProcessChantsAvailable();
 }
 
+void WorshipSite::ProcessChantsAvailable()
+{
+	float supply = GetChantsVillagerCanSupply();
+	float speed;
+	if (supply != 0.0f)
+	{
+		speed = ChantsUsed / supply;
+	}
+	else
+	{
+		speed = 1.0f;
+	}
+	float boost =
+		WORSHIP_SITE_BATTERY_SPEED_BOOST - ChantStore / GetChantBatteryMax() * WORSHIP_SITE_BATTERY_SPEED_BOOST;
+	boost = boost > 0.0f ? max(boost, WORSHIP_SITE_MIN_BATTERY_SPEED_BOOST) : 0.0f;
+	speed += boost;
+	if (speed > 1.0f)
+	{
+		speed = 1.0f;
+	}
+	SetWorshipSpeed(speed);
+	float chants = supply * speed;
+	float worshippers = (float)GetNumberVillagersWorshipping();
+	if (GGame::g_game->data.GameTurn % WORSHIP_SITE_ARTIFACT_POWERUP_INTERVAL == 0)
+	{
+		float powerup = GLandBalance::GetValue(GLandBalance::LAND_BALANCE_6) * GetInfo()->ArtifactPowerupMultiplier;
+		float population = GetPlayer() != NULL ? (float)GetPlayer()->GetTotalPopulation() : 0.0f;
+		float fraction = 0.0f;
+		if (population > 0.0f)
+		{
+			fraction = worshippers / population;
+		}
+		powerup *= fraction;
+		if (powerup != 0.0f)
+		{
+			for (LHLinkedNode<TownArtifact*>* node = Artifacts.GetStart(); node != NULL; node = node->next.Get())
+			{
+				if (node->payload->Artifact != NULL)
+				{
+					node->payload->AddToValue(powerup);
+				}
+			}
+		}
+	}
+	ChantDamage = worshippers != 0.0f ? chants / worshippers : 0.0f;
+	float store = ChantStore - (ChantsUsed - chants);
+	if (store <= 0.0f)
+	{
+		store = 0.0f;
+	}
+	ChantStore = store;
+	TotalChantsAvailable = store + supply;
+	ChantsUsed = 0.0f;
+	ChantsRequested = 0.0f;
+}
+
 void WorshipSite::UpdateGraphicsWithPULevels()
 {
 	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
