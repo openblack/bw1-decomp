@@ -385,6 +385,38 @@ public:
 	float GetDesireForVillagerAvailableFromTown();
 	// BW1W120 0077e780 BW1M119 015b20f0
 	float GetChantBatteryMax();
+	// BW1W120 0077b150 BW1M119 null
+	bool32_t HasSpellIconForSeedType(SPELL_SEED_TYPE type);
+	// BW1W120 0077b8c0 BW1M119 null
+	bool32_t IsGraphicsUpdatePending();
+	// BW1W120 0077b970 BW1M119 null
+	void UpdateDebugText(bool32_t verbose);
+	// BW1W120 0077b980 BW1M119 null
+	bool32_t IsDanceRequested();
+	// BW1W120 0077b990 BW1M119 null
+	float GetDanceProgress();
+	// BW1W120 0077c2f0 BW1M119 null
+	float GetTotemMaxSinkDepth();
+	// BW1W120 0077c380 BW1M119 null
+	float CalculateDesireForWood();
+	// BW1W120 0077c4b0 BW1M119 null
+	void AddToFoodOnTheWay(unsigned long amount);
+	// BW1W120 0077c4f0 BW1M119 null
+	uint32_t GetFoodForWorshipSiteFromTowns();
+	// BW1W120 0077c520 BW1M119 null
+	int CalculateActualAmountOfFoodInTowns();
+	// BW1W120 0077cc80 BW1M119 null
+	void ResetSpecialPositions();
+	// BW1W120 0077cd50 BW1M119 null
+	bool32_t GetTotemSpecialPos(MapCoords* pos);
+	// BW1W120 0077ce90 BW1M119 null
+	bool32_t GetTotemArrivePos(MapCoords* pos);
+	// BW1W120 0077cfd0 BW1M119 null
+	void StartDanceEffects();
+	// BW1W120 0077cfe0 BW1M119 null
+	void StopDanceEffects();
+	// BW1W120 0077cff0 BW1M119 null
+	void UpdateDanceEffects();
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INCLUDED_H */

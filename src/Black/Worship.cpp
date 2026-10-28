@@ -337,6 +337,11 @@ MapCoords WorshipSite::GetSpellIconPos(int16_t& slot)
 	}
 }
 
+bool32_t WorshipSite::HasSpellIconForSeedType(SPELL_SEED_TYPE type)
+{
+	return GetSpellIconFromSeedType(type) != NULL;
+}
+
 WorshipSpellIcon* WorshipSite::GetSpellIconFromSeedType(SPELL_SEED_TYPE type)
 {
 	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
@@ -546,6 +551,11 @@ void WorshipSite::UpdateGraphicsWithPULevels()
 	}
 }
 
+bool32_t WorshipSite::IsGraphicsUpdatePending()
+{
+	return false;
+}
+
 void WorshipSite::SetWorshipSpeed(float speed)
 {
 	if (dance.Get() != NULL)
@@ -580,6 +590,18 @@ int WorshipSite::CalculateFoodNeededFromTown()
 unsigned long WorshipSite::GetNumberVillagersWorshipping()
 {
 	return GetNumDancers();
+}
+
+void WorshipSite::UpdateDebugText(bool32_t verbose) {}
+
+bool32_t WorshipSite::IsDanceRequested()
+{
+	return false;
+}
+
+float WorshipSite::GetDanceProgress()
+{
+	return 0.0f;
 }
 
 static inline void SetPositionOnLand(LH3DObject* object, const MapCoords& coords, float y_angle, float scale)
@@ -835,12 +857,26 @@ TRIBE_TYPE WorshipSite::GetTribeType() const
 	return tribe_info.Get()->type;
 }
 
+float WorshipSite::GetTotemMaxSinkDepth()
+{
+	if (totem.Get() != NULL)
+	{
+		return totem->GetMaxSinkDepth();
+	}
+	return 0.0f;
+}
+
 float WorshipSite::CalculateDesireForFood()
 {
 	float needed = dance->CalculateFoodNeededByDancers();
 	float desire =
 		(GetResource(RESOURCE_TYPE_FOOD) + WORSHIP_SITE_DESIRE_EPSILON) / (needed + WORSHIP_SITE_DESIRE_EPSILON);
 	return 1.0f - (desire < 1.0f ? desire : 1.0f);
+}
+
+float WorshipSite::CalculateDesireForWood()
+{
+	return 0.0f;
 }
 
 float WorshipSite::CalculateDesireForRest()
@@ -876,9 +912,34 @@ void WorshipSite::RemoveSpellIcon(WorshipSpellIcon* icon)
 	IconList.Remove(icon);
 }
 
+void WorshipSite::AddToFoodOnTheWay(unsigned long amount)
+{
+	ResourcesOnTheWay[RESOURCE_TYPE_FOOD] += amount;
+}
+
 void WorshipSite::RemoveFromFoodOnTheWay(unsigned long amount)
 {
 	ResourcesOnTheWay[RESOURCE_TYPE_FOOD] -= amount;
+}
+
+uint32_t WorshipSite::GetFoodForWorshipSiteFromTowns()
+{
+	uint32_t food = 0;
+	for (LHLinkedNode<Town*>* node = Towns.GetStart(); node != NULL; node = node->next.Get())
+	{
+		food += node->payload->GetFoodForWorshipSiteIfEnough();
+	}
+	return food;
+}
+
+int WorshipSite::CalculateActualAmountOfFoodInTowns()
+{
+	int food = 0;
+	for (LHLinkedNode<Town*>* node = Towns.GetStart(); node != NULL; node = node->next.Get())
+	{
+		food += node->payload->CalculateActualAmountOfFood();
+	}
+	return food;
 }
 
 MapCoords WorshipSite::GetResourcePosAndYAngle(RESOURCE_TYPE type, unsigned long index, float* y_angle)
@@ -1087,6 +1148,8 @@ Pot* WorshipSite::GetFoodPot()
 	return FoodPot;
 }
 
+void WorshipSite::ResetSpecialPositions() {}
+
 bool32_t WorshipSite::GetSpecialPos(uint32_t index, MapCoords* pos)
 {
 	if (Game3dObject != NULL)
@@ -1101,6 +1164,11 @@ bool32_t WorshipSite::GetSpecialPos(uint32_t index, MapCoords* pos)
 	}
 	*pos = Pos;
 	return false;
+}
+
+bool32_t WorshipSite::GetTotemSpecialPos(MapCoords* pos)
+{
+	return GetSpecialPos(WORSHIP_SITE_SPECIAL_POS_TOTEM, pos);
 }
 
 uint32_t WorshipSite::GetShowNeedsPos(uint32_t index, MapCoords* pos)
@@ -1134,6 +1202,11 @@ void WorshipSite::GetFoodPos(MapCoords* pos)
 void WorshipSite::GetRestPos(MapCoords* pos)
 {
 	GetSpecialPos(WORSHIP_SITE_SPECIAL_POS_REST, pos);
+}
+
+bool32_t WorshipSite::GetTotemArrivePos(MapCoords* pos)
+{
+	return GetSpecialPos(WORSHIP_SITE_SPECIAL_POS_TOTEM, pos);
 }
 
 bool32_t WorshipSite::GetGatePos(MapCoords* pos)
@@ -1173,6 +1246,12 @@ unsigned long WorshipSite::GetNumDancers()
 	}
 	return dance->NumDancers;
 }
+
+void WorshipSite::StartDanceEffects() {}
+
+void WorshipSite::StopDanceEffects() {}
+
+void WorshipSite::UpdateDanceEffects() {}
 
 uint32_t WorshipSite::GetObjectCollide()
 {
