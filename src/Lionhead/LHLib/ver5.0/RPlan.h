@@ -15,6 +15,8 @@ struct VisitBlock;
 enum RPLAN_STATE
 {
 	RPLAN_STATE_PLANNING = 0x2,
+	RPLAN_STATE_FAILED = 0x3,
+	RPLAN_STATE_NO_ROUTE = 0x4,
 	RPLAN_STATE_SUCCEEDED = 0x5,
 };
 
@@ -41,7 +43,7 @@ struct RPlan
 	uint32_t    field_0x54;
 	VisitBlock* VisitBlocks;
 	float       field_0x5c;
-	Route*      Route0x60;
+	Route*      Routes;
 	uint32_t    field_0x64;
 	Route*      CurrentRoute;
 	Route*      Route0x6c;

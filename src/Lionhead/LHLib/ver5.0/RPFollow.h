@@ -6,9 +6,14 @@
 #include "RPHolder.h"
 
 class RouteNode;
+struct RPAvoid;
 struct RPlan;
 
-#define RPFOLLOW_MAX_PLANS 5
+#define RPFOLLOW_MAX_PLANS              5
+#define RPFOLLOW_MAX_PLAN_UPDATES       32
+#define RPFOLLOW_MAX_CONCATENATED_NODES 4
+#define RPFOLLOW_EPSILON                0.01f
+#define RPFOLLOW_ARRIVE_DISTANCE        0.001f
 
 enum RPFOLLOW_STATE
 {
@@ -21,26 +26,24 @@ enum RPFOLLOW_STATE
 	RPFOLLOW_STATE_TRAPPED,
 };
 
-// TODO: Original member names are unrecovered. Constructor and route-update code
-// establish the RPHolder prefix and the typed state below; no opaque size padding.
 class RPFollow : public RPHolder
 {
 public:
-	Point2D        field_0x6402c; // Current position.
+	Point2D        Pos;
 	float          field_0x64034;
-	float          field_0x64038;
+	float          DistanceAlongNode;
 	float          field_0x6403c;
 	float          field_0x64040;
-	Point2D        field_0x64044;
-	float          field_0x6404c;
+	Point2D        RouteEnd;
+	float          Radius;
 	float          field_0x64050;
 	RPFOLLOW_STATE FollowState;
 	int            field_0x64058;
 	int            field_0x6405c;
-	int            field_0x64060; // Generic callback context; Black passes a Creature* as an int.
+	int            Context;
 	void(__cdecl* field_0x64064)(int, int);
 	void(__cdecl* field_0x64068)(int, float, float);
-	float(__cdecl* field_0x6406c)(int);
+	float(__cdecl* GetRange)(int);
 	RouteNode* CurrentNode;
 	Point2D    Dest;
 	float      field_0x6407c;
@@ -68,13 +71,19 @@ public:
 	void StopMoving();
 	// BW1W120 00864040 BW1M119 010a85d0 (LHCombined Release)
 	void GameTurnUpdate(void(__cdecl* object_encountered)(int, int), int param_2);
+	// BW1W120 00864190 BW1M119 010a8530 (LHCombined Release)
+	void RemoveSpecials();
+	// BW1W120 00864420 BW1M119 010a7d10 (LHCombined Release)
+	void ConcatenateRoutes(RouteNode* node);
+	// BW1W120 00864d30 BW1M119 010a72a0 (LHCombined Release)
+	void CheckIfAnyRoutesAreBlockedByObject(RPAvoid* avoid);
 	// BW1W120 00864ba0 BW1M119 010a7630 (LHCombined Release)
 	void FillPosAndHeading(Point2D& pos, float& heading, float distance);
 	// BW1W120 00864990 BW1M119 010a7910 (LHCombined Release)
 	void MoveAlongRoute();
 };
 
-static_assert(offsetof(RPFollow, field_0x64060) == 0x64060, "RPFollow context offset is incorrect");
+static_assert(offsetof(RPFollow, Context) == 0x64060, "RPFollow context offset is incorrect");
 static_assert(sizeof(RPFollow) == 0x640c0, "RPFollow size is incorrect");
 
 #endif /* BW1_DECOMP_RP_FOLLOW_INCLUDED_H */
