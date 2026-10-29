@@ -166,9 +166,9 @@ public:
 // GlobalGameLists itself only needs the element types declared, and its own TU has to see it
 // before any element header: MSVC6 emits LHListHead/LHLinkedList members in the order their
 // specialisations were created, and GlobalGameList.cpp's target follows this member order. The
-// element headers follow for the many consumers that reach them through Game.h. PuzzleGame.h and
-// Waterfall.h stay out: their static data members would bump the $S/$E counter in every one of
-// those TUs.
+// element headers follow for the many consumers that reach them through Game.h. PuzzleGame.h,
+// Waterfall.h and FootpathFinder.h stay out: their static data members would bump the $S/$E counter
+// in every one of those TUs.
 #include "AnimatedStatic.h"    /* For struct AnimatedStatic */
 #include "Arena.h"             /* For struct GArena */
 #include "Artifact.h"          /* For struct TownArtifact */
@@ -185,7 +185,6 @@ public:
 #include "FishFarm.h"          /* For struct FishFarm */
 #include "Flock.h"             /* For struct Flock */
 #include "Footpath.h"          /* For struct GFootpath */
-#include "FootpathFinder.h"    /* For struct GFootpathFinder */
 #include "Forest.h"            /* For struct Forest */
 #include "Fragment.h"          /* For struct Fragment */
 #include "GameThing.h"         /* For struct GameThing */

@@ -19,6 +19,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMath.h>          /* For TWO_PI */
 #include <Lionhead/LH3DLib/development/LH3DObjectCollide.h> /* For class LH3DObjectCollide */
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>                /* For class NewCollide */
+#include <Lionhead/LHLib/ver5.0/RPHolder.h>                 /* For RPHolder::AddObject */
 
 #include "Animal.h"
 #include "AnimalInfo.h"

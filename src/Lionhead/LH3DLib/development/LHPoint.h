@@ -17,8 +17,6 @@ struct Point2D
 	Point2D() {}
 	// BW1W120 inlined BW1M119 inlined
 	Point2D(float x, float y) : x(x), y(y) {}
-	// BW1W120 inlined BW1M119 inlined
-	Point2D(int x, int y);
 	// BW1W120 00468480 BW1M119 010eb810
 	Point2D(const Point2D& other) : x(other.x), y(other.y) {}
 
@@ -93,6 +91,8 @@ struct Point2D
 	void SetSize(float size);
 	// BW1W120 0086fda0 BW1M119 01086ac0 (LHCombined Release)
 	float GetSizeSq() const;
+	// BW1W120 0086fe80 BW1M119 01086610 (LHCombined Release)
+	float MakeUnit();
 	// BW1W120 0086fdc0 BW1M119 01086a00 (LHCombined Release)
 	float GetRange(const Point2D& param_1) const;
 };

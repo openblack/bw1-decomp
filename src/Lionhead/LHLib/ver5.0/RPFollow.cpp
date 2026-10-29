@@ -32,8 +32,8 @@ void RPFollow::ConcatenateRoutes(RouteNode* node)
 	CurrentPlan->CurrentRoute->Tail = route->Tail;
 	CurrentPlan->Dest = plan->Dest;
 	RouteEnd = route->Tail->End;
-	CurrentPlan->field_0x40 = plan->field_0x40;
-	CurrentPlan->field_0x3c = plan->field_0x3c;
+	CurrentPlan->ArriveDistance = plan->ArriveDistance;
+	CurrentPlan->EndClearance = plan->EndClearance;
 	route->Tail = NULL;
 	route->Head = NULL;
 

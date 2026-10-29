@@ -3754,7 +3754,7 @@ Lionhead/LH3DLib/development/CAnim.cpp:
 
 Lionhead/LHLib/ver5.0/RPFollow.cpp:
 	.text       start:0x00881700 end:0x00883CF0
-	.text$x     start:0x008D3350 end:0x008D3748 align:4
+	.text$x     start:0x008D3350 end:0x008D3390 align:4
 	.rdata      start:0x00A13F18 end:0x00A13F28
 	.CRT$XCU    start:0x00A37634 end:0x00A3763C align:4
 	.bss        start:0x00F8A08C end:0x00F8AE28
@@ -3771,6 +3771,14 @@ Lionhead/LHLib/ver5.0/RPAvoid.cpp:
 	.rdata      start:0x00A13F2C end:0x00A13F34
 	.CRT$XCU    start:0x00A3764C end:0x00A37654 align:4
 	.bss        start:0x01026F6C end:0x01026F74
+
+Lionhead/LHLib/ver5.0/RPlan.cpp:
+	.text       start:0x0088D100 end:0x0088EC90
+	.text$x     start:0x008D3390 end:0x008D3748 align:4
+	.rdata      start:0x00A13F68 end:0x00A13F70
+	.xdata$x    start:0x00A2FA50 end:0x00A2FB70 align:4
+	.CRT$XCU    start:0x00A37664 end:0x00A3766C align:4
+	.bss        start:0x01029C2C end:0x01029C3C
 
 lib/libcimt/filebuf.obj:
 	.rdata      start:0x00A14124 end:0x00A1416C

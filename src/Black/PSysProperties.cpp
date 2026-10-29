@@ -31,8 +31,8 @@ static float unused;
 
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>         /* For LHFileLength, LHLoadData */
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
-#include <chlasm/CameraPosEnum.h>
-#include <chlasm/ScriptSfxEnum.h>
+#include <chlasm/LHAction.h>
+#include <chlasm/ScriptEnums.h>
 
 #if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define PSYS_PROPERTIES_FILE "C:\\dev\\black\\PSysProperties.cpp"
