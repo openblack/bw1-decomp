@@ -7,6 +7,36 @@ splits: config/BW1W130/splits.txt
 generate_imports: true
 
 block_relocations:
+# SetupBox::FindControl and DrawAll use the 0x85b680 colour, an address inside LH3DPrimitive::CheckPixelCollide.
+  - source: 0x00408133
+  - source: 0x004087FD
+# LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
+  - source: 0x008107E2
+# LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside LHMatrix::PreMultiply.
+  - source: 0x0081D786
+  - source: 0x0081D7A1
+  - source: 0x0081D93D
+# LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
+  - source: 0x00811157
+  - source: 0x00811C98
+  - source: 0x00812E16
+  - source: 0x0081566A
+  - source: 0x008157D4
+  - source: 0x00815A59
+  - source: 0x00815A5F
+  - source: 0x00815A7C
+  - source: 0x008187E1
+  - source: 0x00818CB3
+  - source: 0x00818F25
+  - source: 0x00818F2B
+  - source: 0x00818F4E
+  - source: 0x00819272
+  - source: 0x0081958F
+  - source: 0x0081AD67
+  - source: 0x0081BDA8
+  - source: 0x0081D1B4
+  - source: 0x0081D1BA
+  - source: 0x0081D1D7
 # The 0x00FF0000 channel masks in TextureRef::DrawCutAroundIntersectionPoint read as addresses inside NewCols.
   - source: 0x0086C35E
   - source: 0x0086C364

@@ -1,6 +1,7 @@
 #include "LH3DMeshIntersect.h"
 
-#include <stdio.h> /* For FILE, fopen, fgetc, fclose */
+#include <d3dtypes.h> /* For RGBA_MAKE */
+#include <stdio.h>    /* For FILE, fopen, fgetc, fclose */
 
 #include <Lionhead/LHFile/ver3.0/LHFile.h> /* For LHFile */
 
@@ -520,9 +521,8 @@ void MeshIntersect::ObtainPointColour(LH3DMesh* mesh, unsigned long* colour)
 	uint32_t px = (uint8_t)(x > 0 ? (x < desc.Width - 1 ? x : desc.Width - 1) : 0);
 	uint32_t py = (uint8_t)(y > 0 ? (y < desc.Width - 1 ? y : desc.Width - 1) : 0);
 	uint16_t pixel = ((uint16_t*)desc.Surface)[px + py * desc.Width];
-	*colour = ((unsigned long)LH3D_COLOR_OPAQUE << LH3D_COLOR_ALPHA_SHIFT) +
-	          (((pixel >> 4) & 0xf0) << LH3D_COLOR_RED_SHIFT) + ((pixel & 0xf0) << LH3D_COLOR_GREEN_SHIFT) +
-	          ((pixel & 0xf) << 4);
+	*colour = RGBA_MAKE(0, 0, 0, LH3D_COLOR_OPAQUE) + RGBA_MAKE((pixel >> 4) & 0xf0, 0, 0, 0) +
+	          RGBA_MAKE(0, pixel & 0xf0, 0, 0) + ((pixel & 0xf) << 4);
 	texture->Unlock();
 }
 

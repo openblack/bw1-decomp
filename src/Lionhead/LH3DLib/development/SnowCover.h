@@ -3,6 +3,8 @@
 
 #include <assert.h>
 
+struct LHPoint;
+
 class SnowCover
 {
 public:
@@ -21,6 +23,8 @@ public:
 	void Close();
 	// BW1W120 0086c560 BW1M119 010b4160 (LHCombined Release)
 	static void Reset();
+	// BW1W120 0086cb80 BW1M119 01027e20 (LHCombined Release)
+	float GetDepth(LHPoint& point);
 };
 
 static_assert(sizeof(SnowCover) == 0x1100c, "SnowCover size is incorrect");

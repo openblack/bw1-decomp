@@ -464,6 +464,13 @@ analyses, name evidence and matching notes in your notes folder (see
   `#define FILEPATH "C:\\dev\\MP\\..."` holding the binary's exact string and pass a base-10 line literal.
 - Boilerplate that recurs identically across modules is a shared macro, not per-file code
   (e.g. the version blocks: `LH_VERSION_INFO` in `LHLog/ver4.0/LHVersion.h`).
+- Shifts and masks in decompiler output are usually how a byte or field access compiled: reading one byte of
+  a packed 32-bit value gives `shr eax, 16; and eax, 0xff` or `mov dl, ah`, which the decompiler prints as
+  `(x >> 16) & 0xff`. Reconstruct what the programmer wrote and keep it when the opcodes match: best an
+  existing macro used for its intended purpose (an SDK's colour or flag macros on that SDK's values), else the
+  struct member, union field or accessor the Mac symbols show. Do not copy the decompiler's shifts and masks, and
+  never name their counts with `*_SHIFT` defines. Leave a literal shift only where the code really shifts a
+  value, such as a fixed-point scale.
 - Parentheses around a product stop cl folding constants: `(x * 3) / 4` emits
   `fmul 3.0; fmul 0.25`, while `x * 3 / 4` folds to one `fmul 0.75`.
 - When we narrow a flag helper's `& mask` to `test byte ptr` but the target keeps `mov; and; test`,

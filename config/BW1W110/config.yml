@@ -6,6 +6,30 @@ symbols: config/BW1W110/symbols.txt
 splits: config/BW1W110/splits.txt
 
 block_relocations:
+# LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
+  - source: 0x007FB462
+# LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside LH3DObject's code.
+  - source: 0x00808406
+  - source: 0x00808421
+  - source: 0x008085BD
+# Constants that read as addresses inside LH3DObject's code: 0x808080 grey, 0x7fe000, 0x800000 (FLT_MIN and flag
+# masks) and zlib's packed configuration_table words.
+  - source: 0x00403247
+  - source: 0x004035A4
+  - source: 0x004108A4
+  - source: 0x00455BB1
+  - source: 0x0074370F
+  - source: 0x0074371A
+  - source: 0x00813E22
+  - source: 0x008924BC
+  - source: 0x008924FD
+  - source: 0x0098F804
+  - source: 0x0098F818
+  - source: 0x00C2B480
+  - source: 0x00C2B484
+  - source: 0x00C2B488
+  - source: 0x00C2B48C
+  - source: 0x00FAF75C
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.
   - source: 0x009BAE44
   - source: 0x009BAEA8

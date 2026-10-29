@@ -6,6 +6,10 @@ symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
 block_relocations:
+# LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside Wolf's vftable.
+  - source: 0x00773936
+  - source: 0x00773951
+  - source: 0x00773AED
 # Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate.
   - source: 0x00401FE7
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.

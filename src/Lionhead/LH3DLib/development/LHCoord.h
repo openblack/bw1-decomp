@@ -30,6 +30,16 @@ struct LHCoord
 		x = _x;
 		y = _y;
 	}
+	// BW1W120 inlined BW1M119 01144c70 (LHCombined Release)
+	void XSet(long _x) { x = _x; }
+	// BW1W120 inlined BW1M119 01144be0 (LHCombined Release)
+	void YSet(long _y) { y = _y; }
+	// BW1W120 inlined BW1M119 011450f0 (LHCombined Release)
+	void Add(long dx, long dy)
+	{
+		x += dx;
+		y += dy;
+	}
 };
 
 #endif /* BW1_DECOMP_LH_COORD_INCLUDED_H */

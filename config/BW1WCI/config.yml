@@ -7,6 +7,33 @@ splits: config/BW1WCI/splits.txt
 generate_imports: false
 
 block_relocations:
+# LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
+  - source: 0x00828342
+# LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside other code.
+  - source: 0x008357E6
+  - source: 0x00835801
+  - source: 0x0083599D
+# LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
+  - source: 0x00828CB7
+  - source: 0x008297F8
+  - source: 0x0082A976
+  - source: 0x0082D1CA
+  - source: 0x0082D334
+  - source: 0x0082D5C9
+  - source: 0x0082D5CF
+  - source: 0x0082D5EC
+  - source: 0x00830351
+  - source: 0x00830823
+  - source: 0x00830A95
+  - source: 0x00830A9B
+  - source: 0x00830ABE
+  - source: 0x00830DE2
+  - source: 0x008313BF
+  - source: 0x00832DB7
+  - source: 0x00833DF8
+  - source: 0x00835214
+  - source: 0x0083521A
+  - source: 0x00835237
 # The 0x00FF0000 channel masks in TextureRef::DrawCutAroundIntersectionPoint read as addresses inside NewCols.
   - source: 0x00885F0E
   - source: 0x00885F14

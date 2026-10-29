@@ -6495,7 +6495,7 @@ void LH3DCreature::DrawNow()
 		{
 			eyeball = LH3DObject::Create(LH3DObject::STATIC);
 			eyeball->SetMesh(LH3DMesh::CreateFromHD("Data\\eyeball.l3d", false), NULL, NULL);
-			eyeball->field_0xc = 1;
+			eyeball->EnvMap = LH3DObject::ENV_MAP_TYPE_GLASS_FX;
 			eyeball->SetDynamicLighting(1);
 		}
 		if (!eyelid)

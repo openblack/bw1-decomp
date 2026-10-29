@@ -5,6 +5,7 @@
 #include "WeatherInfo.h"
 
 struct LH3DMaterial;
+class SnowCover;
 
 // Original free callback; storage remains in the extracted LH3DAtmos TU.
 // BW1W120 00edd3a0
@@ -36,6 +37,8 @@ public:
 	static void Render3DFinal();
 	// BW1W120 00edd378 BW1M119 013453e8 (LHCombined Release)
 	static LHPoint moonpos;
+	// BW1W120 00edd394 BW1M119 01345418 (LHCombined Release)
+	static LH3DMaterial* snowmat;
 	// BW1W120 inlined BW1M119 0101a070
 	static LHPoint GetMoonPos() { return moonpos; }
 	// Original Mac symbol: ambient__9LH3DAtmos.
@@ -52,6 +55,8 @@ public:
 	}
 	// BW1W120 008356e0 BW1M119 01036d60 (LHCombined Release)
 	static void UpdateGame(float visual_time, float delta_time);
+	// BW1W120 00edc344 BW1M119 013453f8 (LHCombined Release)
+	static SnowCover* scv;
 };
 
 #endif /* BW1_DECOMP_LH3D_ATMOS_INCLUDED_H */

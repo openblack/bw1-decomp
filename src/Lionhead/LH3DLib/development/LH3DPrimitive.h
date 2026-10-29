@@ -99,7 +99,7 @@ struct LH3DPrimitive
 	// BW1W120 00c392b0 BW1M119 011d0da0 (LHCombined Release)
 	static float g_size_thick_wall;
 	// BW1W120 00c392b4 BW1M119 011d0da4 (LHCombined Release)
-	static int g_draw_depth;
+	static bool32_t g_draw_depth;
 	// BW1W120 00f030e8 BW1M119 012b3778 (LHCombined Release)
 	static LHMatrix g_froz_wiggle_mat;
 	// BW1W120 00f03118 BW1M119 012bf340 (LHCombined Release)
@@ -237,6 +237,8 @@ struct LH3DPrimitive
 	void DoMouseCheck();
 	// BW1W120 00858ba0 BW1M119 01092e80 (LHCombined Release)
 	void DrawCutByPlane();
+	// BW1W120 00863240 BW1M119 01043ef0 (LHCombined Release)
+	void DrawForMouse();
 	// BW1W120 00859530 BW1M119 0102d3f0 (LHCombined Release)
 	void DrawWithVerticalTranslation();
 	// BW1W120 00859d90 BW1M119 01092a20 (LHCombined Release)

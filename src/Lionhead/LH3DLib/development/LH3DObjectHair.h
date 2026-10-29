@@ -16,6 +16,8 @@ struct LH3DObjectHair
 
 	// BW1W120 00848340 BW1M119 0104db10 (LHCombined Release)
 	void Init(long param_2, HairGroup** param_3);
+	// BW1W120 00848390 BW1M119 0103e910 (LHCombined Release)
+	void Draw() const;
 };
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_HAIR_INCLUDED_H */

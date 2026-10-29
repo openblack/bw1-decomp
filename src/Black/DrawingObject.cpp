@@ -1621,7 +1621,7 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool draw_now, bool sele
 			GetSpellSeedInfo()->GetMagicInfo(GESTURE_TYPE_NONE)->AsMagicCreatureSpellInfo();
 		if (spellInfo != NULL)
 		{
-			Game3dObject->SetAnimatedUV_2(true);
+			Game3dObject->SetAnimatedUV(true);
 			UVFrame += uvFrameSpeed * dt;
 			float uvFrame = fmod(UVFrame, SPELL_UV_FRAMES);
 			if (uvFrame < 0.0f)
@@ -1630,8 +1630,8 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool draw_now, bool sele
 			}
 			UVFrame = uvFrame;
 			int frame = (int)UVFrame;
-			Game3dObject->SetAnimatedUV_1(frame % SPELL_UV_FRAMES_PER_ROW * UVTextureScale * SPELL_UV_FRAME_TEXELS,
-			                              frame / SPELL_UV_FRAMES_PER_ROW * UVTextureScale * SPELL_UV_FRAME_TEXELS);
+			Game3dObject->SetAnimatedUV(frame % SPELL_UV_FRAMES_PER_ROW * UVTextureScale * SPELL_UV_FRAME_TEXELS,
+			                            frame / SPELL_UV_FRAMES_PER_ROW * UVTextureScale * SPELL_UV_FRAME_TEXELS);
 			float speed;
 			if (spellInfo->SpellType == CREATURE_RECEIVE_SPELL_FREEZE)
 			{
@@ -2098,7 +2098,7 @@ void Villager::DrawCarriedObject()
 	if (carried != NULL)
 	{
 		bool32_t onScreen = LH3DObject::g_b_last_on_screen;
-		carried->SetLinkedPosition(Game3dObject, 1.0f, 0);
+		carried->SetLinkedPosition(Game3dObject, 1.0f, LH3DObject::LINKED_TYPE_HAND);
 		carried->SetColorSpecular(Game3dObject->color, Game3dObject->specular);
 		carried->AddDrawing();
 		LH3DObject::g_b_last_on_screen = onScreen;
@@ -2189,7 +2189,7 @@ void PileFood::Draw()
 			float raised = altitude / GetHeight() + 1.0f;
 			raised = raised > 0.0f ? min(raised, 1.0f) : 0.0f;
 			static float uvSpeed = 0.25f;
-			static_cast<LH3DObject*>(Game3dObject)->SetAnimatedUV_1(0.0f, (1.0f - raised) * uvSpeed);
+			static_cast<LH3DObject*>(Game3dObject)->SetAnimatedUV(0.0f, (1.0f - raised) * uvSpeed);
 		}
 
 		MapCoords coords = Pos;
