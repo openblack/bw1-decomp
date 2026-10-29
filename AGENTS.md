@@ -349,8 +349,8 @@ different kind of change.
 ### Directory structure mirrors game libraries
 
 The game ships as the executable `runblack.exe` plus a handful of runtime DLLs. The
-remaining `LH*` directories and `zlib` are static libraries linked into the executable.
-`src/zlib` and `src/mpg123` are unmodified upstream releases: never edit, format or lint them.
+remaining `LH*` directories, `zlib` and `jpeg` are static libraries linked into the executable.
+`src/zlib`, `src/jpeg` and `src/mpg123` are unmodified upstream releases: never edit, format or lint them.
 
 | Directory | Module | Description |
 |-----------|--------|-------------|
@@ -364,6 +364,7 @@ remaining `LH*` directories and `zlib` are static libraries linked into the exec
 | `src/Lionhead/LHLog` | `LHLogR` (DLL) | Logging, assertions and version reporting. |
 | `src/Lionhead/LHMultiplayer` | `LHMultiplayerR` (DLL) | Multiplayer networking — sockets, packets, lobby/sessions, players and transport. |
 | `src/zlib` | static lib | Third-party zlib compression library. |
+| `src/jpeg` | static lib | Unmodified IJG libjpeg 6b (27-Mar-1998) release. The executable links its compression side for `LHJpeg`'s screenshots. `jconfig.h` is `jconfig.vc`, copied into the build include directory as `install.doc` directs. |
 | `src/mpg123` | reference | Unmodified mpg123 0.59k release by Michael Hipp. LHAudio's `MPGAudioDecoder` is Lionhead's C++ port of its decoder and includes `huffman.h` and `tables.h` from here. |
 
 The Mac build linked the Lionhead libraries into a separate module, `LHCombined Release`, so a
