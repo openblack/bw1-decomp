@@ -3422,6 +3422,13 @@ Lionhead/LH3DLib/development/CAnim.cpp:
 	.text       start:0x007B3A30 end:0x007B70A0
 	.bss        start:0x00E24080 end:0x00E24484
 
+Lionhead/LHLib/ver5.0/RPFollow.cpp:
+	.text       start:0x007B70A0 end:0x007B95B0
+	.text$x     start:0x007EA020 end:0x007EA1CD align:4
+	.rdata      start:0x008D9924 end:0x008D9938
+	.CRT$XCU    start:0x008F751C end:0x008F7524 align:4
+	.bss        start:0x00E24484 end:0x00E25220
+
 Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp:
 	.text       start:0x007B95B0 end:0x007BB6E0
 	.rdata      start:0x008D9938 end:0x008D993C
@@ -3476,6 +3483,3 @@ lib/libcmt/w_map.obj:
 	.text       start:0x007E90C8 end:0x007E9301 align:1
 	.rdata      start:0x008DA580 end:0x008DA598
 	.bss        start:0x00ECC6A0 end:0x00ECC6A4
-
-Lionhead/LHLib/ver5.0/RPFollow.cpp:
-	.text$x     start:0x007EA020 end:0x007EA1CD align:4

@@ -708,7 +708,7 @@ void AddSpecialRPObjects(RPHolder* holder)
 {
 	if (holder->field_0x50024 != NULL)
 	{
-		Creature* creature = (Creature*)holder->field_0x50024->field_0x64060;
+		Creature* creature = (Creature*)holder->field_0x50024->Context;
 		for (MapShield* shield = GGame::g_game->GameLists.MapShields.head; shield != NULL; shield = shield->next)
 		{
 			if (shield->CreatureMustAvoid(creature))
@@ -750,7 +750,7 @@ void CheckSquareFunction(int x, int z, RPHolder* holder)
 				}
 			}
 			MapCell*        cell = mapPos.ToMap();
-			Creature*       creature = avoidWater ? NULL : (Creature*)holder->field_0x50024->field_0x64060;
+			Creature*       creature = avoidWater ? NULL : (Creature*)holder->field_0x50024->Context;
 			MapCellIterator iter = cell->GetFirstIterator();
 			while (iter.object != NULL)
 			{

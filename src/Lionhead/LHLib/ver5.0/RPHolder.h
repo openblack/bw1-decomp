@@ -19,7 +19,10 @@ struct RPHolder
 	int       AvoidCount;
 	Point2D*  field_0x50004;
 	Point2D*  field_0x50008;
-	uint32_t  field_0x5000c[0x4];
+	int       MinSquareX;
+	int       MinSquareZ;
+	int       MaxSquareX;
+	int       MaxSquareZ;
 	uint8_t   field_0x5001c;
 	float     ObjectMargin;
 	RPFollow* field_0x50024;
