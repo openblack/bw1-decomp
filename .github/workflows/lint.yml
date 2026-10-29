@@ -31,7 +31,7 @@ jobs:
         fallback-style: 'none'
         # Only lint our own source tree; include/ holds vendor SDK headers
         # (ddraw.h, d3dtypes.h) and unformatted shared headers.
-        # Vendored GameSpy sources are excluded; zlib is skipped via .clang-format-ignore.
+        # Vendored GameSpy sources are excluded; zlib and mpg123 are skipped via .clang-format-ignore.
         check-path: 'src'
         exclude-regex: '^src/GameSpy/src/GameSpy/'
 

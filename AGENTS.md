@@ -350,6 +350,7 @@ different kind of change.
 
 The game ships as the executable `runblack.exe` plus a handful of runtime DLLs. The
 remaining `LH*` directories and `zlib` are static libraries linked into the executable.
+`src/zlib` and `src/mpg123` are unmodified upstream releases: never edit, format or lint them.
 
 | Directory | Module | Description |
 |-----------|--------|-------------|
@@ -363,6 +364,7 @@ remaining `LH*` directories and `zlib` are static libraries linked into the exec
 | `src/Lionhead/LHLog` | `LHLogR` (DLL) | Logging, assertions and version reporting. |
 | `src/Lionhead/LHMultiplayer` | `LHMultiplayerR` (DLL) | Multiplayer networking — sockets, packets, lobby/sessions, players and transport. |
 | `src/zlib` | static lib | Third-party zlib compression library. |
+| `src/mpg123` | reference | Unmodified mpg123 0.59k release by Michael Hipp. LHAudio's `MPGAudioDecoder` is Lionhead's C++ port of its decoder and includes `huffman.h` and `tables.h` from here. |
 
 The Mac build linked the Lionhead libraries into a separate module, `LHCombined Release`, so a
 class whose BW1M119 symbols carry the `(LHCombined Release)` tag belongs to a library, not to the

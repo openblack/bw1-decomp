@@ -759,7 +759,7 @@ def main(argv=None):
         if args.unit:
             ap.error("--all picks each file's own unit; --unit is for one header")
         files = sorted(p for p in (Path(ROOT) / "src").rglob("*") if p.suffix in (".cpp", ".c", ".h")
-                       and "zlib" not in p.parts)
+                       and "zlib" not in p.parts and "mpg123" not in p.parts)
     if not files:
         ap.error("no files given")
 

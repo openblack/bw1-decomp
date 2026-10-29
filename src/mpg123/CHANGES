@@ -1,0 +1,247 @@
+0.59k: (OF)
+------
+- fixed "Accept" header in httpget.c
+- fixed buffer overflow (causing core dumps) in httpget.c
+- fixed display of song length
+- fixed -b (buffer) problem on SGI / IRIX -- it definitely works now
+- fixed problem when files with different sample rates where played,
+  it now works with -b (buffer), too
+- fixed order of local variables in decode.c to work around a
+  compiler bug in ultrix
+- fixed Makefile for ultrix
+- reverted to old getbits.s (the new one could cause coredumps)
+- more compact MPEG header display in non-verbose mode
+- small fixes in buffer code and elsewhere
+
+
+0.59j: (MH)
+------
+- added sajber jukebox control interface (it's currently a big hack)
+  (see 'JUKEBOX' file for more)
+- added simple rewind facility .. (only used by sajber interface at the moment)
+
+
+0.59i: (MH)
+-----------
+- added front-end (remote) patch from "Brian J. Swetland" <swetland@uiuc.edu>
+- added OS2 patches from Niclas Lindstrom <nil@wineasy.se>
+- fixed 'rewind bug'
+- added patches from Leo Broukhis <leo@zycad.com>
+- added shuffle patch from Tillmann Steinbrecher <tst@darmstadt.netsurf.de>
+- added i386-getbits from M.Stekelenburg <m.stekelenburg@student.utwente.nl>
+- added fallback to 8bit if no 16bit samples support (currently linux only)
+- added (slightly changed) outburst patch
+  from Antti Andreimann <anttix@cyberix.edu.ee>
+- added 'http accept' patch from Hur TaeSung <saturn@arari.snu.ac.kr>
+- fixed buffer mode bug 
+
+
+0.59h: (MH)
+------
+- added '--8bit' option to force 'ULAW 8 BIT' playing
+- pcm buffer type changed to 'unsigned char *' 
+- plays 2:1 and 4:1 with the real frequency (ie 11025/22050 instead
+  of 44100)
+- program (re)sets (changed) frequency for every frame
+- buffer mode is broken
+
+
+0.59g: (MH)
+------
+- added support for MPEG 2.5 (it's a HACK!) .. mpg123 understands and plays
+  2.5 but it does it wrong. (you will hear this!) 
+- Fixed wrong values in BandInfo struct for 32kHz mode
+- Some performance improvements and minor changes and bug-fixes.
+- Tried the new imdct from the maplay1.2+ (version 1.81) package. (but 
+  it was slightly slower on my system, currently disabled)
+
+
+0.59f: (OF)
+------
+- HP-UX audio fix (provided by Damien Clermonte)
+- Buffering (-b option) hopefully fixed.  Please test!
+
+
+0.59e:
+------
+- added Audio MPEG 2.0 support (but near untested) (MH)
+
+
+0.59d: (MH)
+------
+- minor modifications to dct64_i386.c
+- removed duplicated dependency 'dct64.o' in Makefile
+
+
+0.59c: (OF)
+------
+Another complete rework of the buffer system (-b option)
+   (normally uses mmap(), but it can also use SYSV-ShMem because
+   mmap() is broken on linux).
+
+0.59: (MH)
+-----
+extracted dct64() from decode*.c files.
+some changes to dct64() and decode*.c to allow auto-increment/decrement
+removed bit-counter in getbit-functions. Layer3 part2 now counts it itself.
+
+0.58: (OF)
+-----
+Bugfix: not closing the audio device caused a few samples to be lost.
+Bugfix: audio_set_rate() was not called (!?!).
+Additional command line options "--doublespeed" and "--halfspeed"
+   (couldn't find better names).  See the manpage.
+Complete redesign of command line options.  See the manpage.
+Changed the buffer algorithm (-b).  I'm not sure whether it's better
+   or worse now.
+Supports multiple files on the command line.  Pressing Ctrl-C will
+   skip to the next MPEG file, pressing it twice within one second
+   will abort mpg123 completely.  See the "INTERRUPT" section in the
+   manpage.
+Support for http URLs.  See also the -p option in the manpage.
+Support for list files.  See also the -@ option in the manpage.
+
+0.57: (MH)
+-----
+Put the downsampling code together with the full
+  quality decode into one binary. (new options -2to1,-4to1)
+Optimizations in the dct12.
+Removed the 'int' version.
+
+0.56: (OF)
+-----
+Additional command line option "-rs" to try to resync on
+   "broken" MPEG streams (now called "--resync" or "-y").
+Additional command line option "-b" to use audio output buffering.
+   See the manpage for additional information.
+Changed a few variable names and some other minor fixes, so the
+   source compiles more cleanly (without warnings) on most
+   platforms (for example, the FreeBSD port compiles without
+   warnings using "-Wall -ansi -pedantic").
+Makefile changes: moved "solaris" to "solaris-gcc", new target
+   "solaris" (using Sun's SparcWorks cc, faster tha gcc!), new
+   targets "aix" and "generic".
+
+0.55: 
+-----
+removed some obsolete code from layer3.c (MH)
+changed scalefac stoing in layer3 (MH)
+decode_4to1.c added again. Renamed decode_lp.c to decode_2to1.c (MH)
+(both not optimized .. still expterimental)
+Minor cleanups and optimizations in layer3. (MH)
+Removed some (probable) minor bugs. (MH)
+Changed 2**(...) scaling (and omitted a few muls) (MH)
+Changed Makefile (OF)
+Changed dequantize to reorder with a mapping table 
+   (you can disable this by undefining MAP in layer3.c) (MH)
+removed the 'dummy' scale step for mixed mode (MH)
+Changed copy policy (MH)
+Modified dequant-reorder-mapping (MH)
+
+0.54: (MH)
+-----
+Minor changes in the documents .. 
+huffman.c: x->len,y->len removed .. always '15' for the important cases
+audio.c: some additions to the SOLARIS audio code
+
+0.53b: (OF)
+------
+Makefile:
+
+    Renamed SPARC10 to SUNOS (which is more appropriate).
+        Tested with SunOS 4.1.4 on a SPARCstation SLC, 20 MHz
+        (322% CPU, so no realtime decoding).
+    Added SOLARIS.  Tested with Solaris 2.5.1 on an Ultra 1,
+        167 MHz (14% CPU), a SPARCstation 5, 110 MHz (47% CPU),
+        and a SPARCstation 10, 33 MHz (68% CPU).
+    Added FreeBSD.  Tested with 2.1.7 on a Pentium-90 (38% CPU)
+        and 2.2 on a Pentium-166 (20% CPU).
+    Added Digital Unix.  Tested with DU 3.2 on a DEC 3000/500
+        (Alpha AXP 150 MHz, 33% CPU).  Does not support DEC's
+        audio interface ("AudioFile"), decodes to stdout only.
+    Improved "clean" target to remove core files and editor
+        backup files.
+    Added "install" target.
+    Added "dist" target to create a .tar.gz file of the source
+        directory.
+    
+    In the distributed Makefile, all system sections are
+    commented out.  When you type "make" without uncommenting
+    one of the sections, an appropriate error message will
+    be displayed.
+
+audio.c
+
+    Fixed problem when opening /dev/audio on Solaris:
+        I had to remove O_NDELAY, because writing to /dev/audio
+        didn't block until the requested number of samples
+        could be written, but instead it wrote only as much
+        samples as it was able too.  Sounded funny.  Removing
+        O_NDELAY fixed the problem.  I don't think that it
+        hurts SunOS either, so I didn't make another #ifdef.
+
+common.c
+
+    Fixed bug by adding function finish_output():
+        The decoder writes the audio samples into a buffer, and
+        each time the buffer is full, it is written to the
+        audio device (or to stdout).  But when the decoding is
+        done, there are some samples left in the buffer which
+        aren't written yet -- they were just discarded.
+        This additional function fixes the problem by writing
+        the remaining samples from the buffer.  It is called
+        immediately after the main frame loop in mpg123.c.
+
+decode*.c
+
+    Fixed compiler warning on symbol "div":
+        Some compilers issue warnings because the symbol div is
+        already used for something else (see "man div"), so I
+        changed it to "divv".
+
+layer*.c
+
+    Functions do_layer*:
+        Moved the declaration for audio_play_samples into
+        mpg123.h.  Makes the code cleaner.
+
+        I moved the variables pcm_samples and pcm_point to
+        common.c, so they are shared between all modules.  This
+        was necessary because the finish_output() function
+        (see common.c above) needs to access them.
+
+        Renamed loop variables "i" and "j" to "k" in order to
+        fix compiler warnings for duplicate/hidden symbols
+        (similar to "div" in decode*.c, see above).
+
+        Changed the preprocessor symbol AUDIOBUFSIZE into a
+        global variable "audiobufsize".  This makes it possible
+        to change it by a command line option.
+
+layer1.c
+
+    Fixed error in function I_step_one, second parameter:
+        unsigned int scale_index[2][]  -->  ...[2][SBLIMIT]
+        This caused an error with the DU compiler (which is ok,
+        because [2][] is incorrect according to ANSI).  I don't
+        know whether [2][SBLIMIT] actually works correctly (I
+        have no layer-1 streams to test it), but at least it
+        compiles without error, and it appears to be correct
+        (looking at the rest of the source).  Heaven knows why
+        gcc doesn't issue an error, and what it actually makes
+        from it.
+
+mpg123.1
+
+    A simple manual page.  Type "nroff -man mpg123.1 | more"
+    to view it, or install it in /usr/local/man/man1 (this is
+    done automatically by "make install").
+
+mpg123.c
+
+    New boolean variable "quiet":
+        If this variable is set to TRUE (command line option
+        -q), no messages are printed.
+
+***
+

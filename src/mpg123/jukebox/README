@@ -1,0 +1,9 @@
+
+These are the necessary header files to compile the mpg123 with
+sajber jukebox support. But please replace them by the files from the current 
+sajberplay source distribution. The reason is, that they may have
+changed.
+BTW: These are the files from sajber 1.05 .. The sajber jukebox is
+     under GPL.
+
+
