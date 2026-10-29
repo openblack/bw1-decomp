@@ -2767,14 +2767,14 @@ Black/Workshop.cpp:
 	.text       start:0x0077DFF0 end:0x0077F590
 	.rdata      start:0x00A1B504 end:0x00A1BE3C
 	.CRT$XCU    start:0x00A47AF8 end:0x00A47B04 align:4
-	.data       start:0x00CA5B30 end:0x00CA5B58
+	.data       start:0x00CA5B30 end:0x00CA5B54
 	.bss        start:0x00E4CE4C end:0x00E4CE50
 
 Black/Worship.cpp:
 	.text       start:0x0077F590 end:0x00783920
 	.rdata      start:0x00A1BE3C end:0x00A1C3E0
 	.CRT$XCU    start:0x00A47B04 end:0x00A47B1C align:4
-	.data       start:0x00CA5B58 end:0x00CA5BD8
+	.data       start:0x00CA5B54 end:0x00CA5BD8
 	.bss        start:0x00E4CE50 end:0x00E4DB50
 
 Black/WorshipSiteUpgrade.cpp:

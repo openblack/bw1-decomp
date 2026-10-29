@@ -71,6 +71,10 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #define FILEPATH "C:\\dev\\black\\Worship.cpp"
 #elif defined(VERSION_BW1W110)
 #define FILEPATH "C:\\dev\\Black\\Worship.cpp"
+#elif defined(VERSION_BW1W130)
+#define FILEPATH "D:\\Work\\Games\\dd\\Black\\Worship.cpp"
+#elif defined(VERSION_BW1WCI)
+#define FILEPATH "C:\\dev\\black\\Worship.cpp"
 #else
 #define FILEPATH "C:\\dev\\MP\\Black\\Worship.cpp"
 #endif
