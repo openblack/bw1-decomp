@@ -26,6 +26,7 @@ These are **not** downloaded and must be supplied by hand under `orig/` (see [Ge
 - DirectX 7.0 DDK — headers in `orig/directx7.0/include/` and libs in `orig/directx7.0/lib/`
 - Intel Approximate Math Library — `orig/libs/amaths-2.0/amaths.lib` (linked verbatim for SSE `sin`/`cos`/`tan`/`atan`/`exp`/`log`/`pow`) and its header `orig/libs/amaths-2.0/AMaths.h`
 - Intel C++ 5.0 runtime `libircmt.lib` (BW1W110/BW1W120/BW1W130/BW1WCI) — `orig/libs/icc-5.0.115/libircmt.lib` (supplies `cpu_disp_mt.obj`, the CPU-dispatch init behind the SSE paths); copy it out of `build/compilers/ICC/5.0.1/lib/` after the first build
+- QSound QMixer 5.00 SDK — header `orig/libs/qmixer-5.00/Qmixer.h` (LHAudio's QMixer.dll API), from QSound's `qm500sdk.exe` on the Wayback Machine
 
 Windows
 -------
