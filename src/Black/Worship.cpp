@@ -17,6 +17,7 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "WorshipSite.h"
 
 #include <stdio.h>  /* For sprintf */
+#include <stdlib.h> /* For __min */
 #include <string.h> /* For strlen */
 
 #include <Lionhead/LH3DLib/development/LH3DCitadel.h>
@@ -491,8 +492,8 @@ void WorshipSite::ProcessSpellIcons()
 
 void WorshipSite::ProcessChantsAvailable()
 {
+	float speed = 1.0f;
 	float supply = GetChantsVillagerCanSupply();
-	float speed;
 	if (supply != 0.0f)
 	{
 		speed = ChantsUsed / supply;
@@ -852,6 +853,7 @@ TRIBE_TYPE WorshipSite::GetTribeType() const
 	return tribe_info.Get()->type;
 }
 
+#ifndef VERSION_BW1W100
 float WorshipSite::GetTotemMaxSinkDepth()
 {
 	if (totem.Get() != NULL)
@@ -860,6 +862,7 @@ float WorshipSite::GetTotemMaxSinkDepth()
 	}
 	return 0.0f;
 }
+#endif // VERSION_BW1W100
 
 float WorshipSite::CalculateDesireForFood()
 {
@@ -893,8 +896,8 @@ float WorshipSite::CalculatePeopleHidingIndicator()
 	{
 		return 0.0f;
 	}
-	float indicator = (NumWorshippers - dance->NumDancers) / WORSHIP_SITE_HIDING_VILLAGERS_FOR_FULL_INDICATOR;
-	return 1.0f < indicator ? 1.0f : indicator;
+	uint32_t hiding = NumWorshippers - dance->NumDancers;
+	return __min(1.0f, hiding / WORSHIP_SITE_HIDING_VILLAGERS_FOR_FULL_INDICATOR);
 }
 
 void WorshipSite::AddSpellIcon(WorshipSpellIcon* icon)
@@ -995,6 +998,7 @@ MapCoords WorshipSite::GetResourceNearestEdge(RESOURCE_TYPE type, Object* object
 	return FoodPot->GetNearestEdgeOfObject(object);
 }
 
+#ifndef VERSION_BW1W100
 void WorshipSite::SetTotemPos(const MapCoords& pos)
 {
 	WorshipTotem* site_totem = totem.Get();
@@ -1004,6 +1008,7 @@ void WorshipSite::SetTotemPos(const MapCoords& pos)
 		site_totem->SetWorshipSpeedFromSink();
 	}
 }
+#endif // VERSION_BW1W100
 
 uint32_t WorshipSite::GetTribeValue()
 {
@@ -1198,8 +1203,8 @@ bool32_t WorshipSite::GetSpecialPos(uint32_t index, MapCoords* pos)
 		LHPoint point;
 		Game3dObject->GetSpecialPos(index, point);
 		float altitude = point.y - LH3DIsland::GetAltitude(LH3DMapCoords(point.x, point.z));
-		pos->SetX(point.x);
-		pos->SetZ(point.z);
+		pos->SetWholeX((long)(point.x * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL));
+		pos->SetWholeZ((long)(point.z * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL));
 		pos->SetAltitude(altitude);
 		return true;
 	}

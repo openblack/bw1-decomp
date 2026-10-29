@@ -396,8 +396,10 @@ public:
 	bool32_t IsDanceRequested();
 	// BW1W120 0077b990 BW1M119 null
 	float GetDanceProgress();
+#ifndef VERSION_BW1W100
 	// BW1W120 0077c2f0 BW1M119 null
 	float GetTotemMaxSinkDepth();
+#endif // VERSION_BW1W100
 	// BW1W120 0077c380 BW1M119 null
 	float CalculateDesireForWood();
 	// BW1W120 0077c4b0 BW1M119 null
@@ -419,8 +421,10 @@ public:
 	// BW1W120 0077cff0 BW1M119 null
 	void     UpdateDanceEffects(); // BW1W120 0077b9a0 BW1M119 null
 	bool32_t ValidateDance();
+#ifndef VERSION_BW1W100
 	// BW1W120 0077c740 BW1M119 null
 	void SetTotemPos(const MapCoords& pos);
+#endif // VERSION_BW1W100
 	// BW1W120 0077c770 BW1M119 null
 	uint32_t GetTribeValue();
 	// BW1W120 0077c780 BW1M119 null
