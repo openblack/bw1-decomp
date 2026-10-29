@@ -1,0 +1,38 @@
+
+(1)  Read the README file.
+     (also read the JUKEBOX file if you wanna compile a player
+     for the sajber jukebox)
+
+(2)  Type "make" to see a list of supported hardware platforms
+     and operating systems, then type the make command that
+     best fits your system.
+
+(3)  If compilation was successful, type "make install" to
+     install the binary and the manual page in /usr/local.
+
+Have fun!
+
+Some additional remarks:
+
+ - There is currently no direct audio hardware support for the
+   "dec", "aix" and "generic" targets.  That means that you
+   have to use the "-s" commandline option to write the decoded
+   audio data to stdout.
+
+ - On Solaris, use Sun's SparcWorks compiler ("make solaris")
+   if at all possible.  It generates faster code than gcc, so
+   use gcc only if there's no other way.
+
+ - The macro "htons" causes a compiler warning in httpget.c
+   (at least on FreeBSD 2.1.x).  This can be safely ignored.
+
+ - For Solaris 2.4:  append the options "-L/usr/ucblib -lucb"
+   at the end of the link command line.  Do this ONLY for
+   Solaris 2.4, NOT for Solaris 2.5 or newer versions.
+
+ - The HP-UX port might be broken.  I was able to compile it
+   on an HP-UX 9 account, but there were some problems with
+   libraries on HP-UX 10.  I'm not an HP expert, but perhaps
+   someone else can fix it.
+
+***
