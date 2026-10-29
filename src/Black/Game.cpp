@@ -1417,10 +1417,9 @@ GPacket::PhysicsData::PhysicsData()
 // BW1W120 0054b910 BW1M119 0101b3a0
 MusicMoodPacket::MusicMoodPacket()
 {
-	Emotion.Reset();
-	field_0x8 = 0;
-	field_0x4 = 0;
-	field_0x0 = 0;
+	MusicID = 0;
+	NumTracks = 0;
+	Track = 0;
 }
 // BW1W120 0054bcd0
 GTerrainMap::GTerrainMap() {}
