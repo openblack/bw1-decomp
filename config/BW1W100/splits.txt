@@ -2274,7 +2274,7 @@ Black/Worship.cpp:
 	.text       start:0x00703910 end:0x007074B0
 	.rdata      start:0x008D351C end:0x008D3AC0
 	.CRT$XCU    start:0x008F72C0 end:0x008F72D4 align:4
-	.data       start:0x00B47920 end:0x00B47998
+	.data       start:0x00B47918 end:0x00B47998
 	.bss        start:0x00CEC628 end:0x00CED328
 
 Black/WorshipSiteUpgrade.cpp:
