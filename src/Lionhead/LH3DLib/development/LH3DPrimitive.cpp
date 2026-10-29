@@ -173,7 +173,7 @@ void LH3DPrimitive::CalcFogTable(float red, float green, float blue, float max_f
 		int           r = FloatToInt(fog * red);
 		int           g = FloatToInt(fog * green);
 		int           b = FloatToInt(fog * blue);
-		g_fog_table[i][LH3D_FOG_COMPONENT_SPECULAR] = RGBA_MAKE(r, g, b, 0xff);
+		g_fog_table[i][LH3D_FOG_COMPONENT_SPECULAR] = RGBA_MAKE(r, g, b, LH3D_COLOR_OPAQUE);
 		g_fog_table[i][LH3D_FOG_COMPONENT_DIFFUSE] =
 			((0xff00 * brightness & 0xff0000) | (0xff * brightness & 0xff00) | (0xff0000 * brightness & 0xff0000ff)) >>
 				8 |
