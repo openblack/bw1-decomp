@@ -121,6 +121,28 @@ See [Dependencies](dependencies.md) first.
       and `pgopti_mt`.
    3. Copy it to `orig/libs/icc-5.0.115/libircmt.lib`, lowercase as above.
 
+   **QSound QMixer 5.00 SDK → `orig/libs/qmixer-5.00/`**
+
+   Needed: the header `Qmixer.h`, which `LHaudiodllR.dll`'s sources include
+   for the `QMixer.dll` they import. The game ships QMixer.dll 5.00, and the
+   only 5.00 SDK left is QSound's own download, captured by the Wayback Machine:
+
+   1. Fetch `qm500sdk.exe`:
+      `https://web.archive.org/web/20010429011901id_/http://www.qsound.com:80/gamedev/qmdx-files/qm500sdk.exe`
+      (SHA-1 `2dcd6c29ba0a11ee9a9558b2c96a49b7c89f5dae`).
+   2. It is an InstallShield 3 installer: run it on Windows, or under Wine,
+      and take the files from the `qmixer` directory it installs. `7z x` only
+      unpacks the outer layer, leaving the files compressed inside `qmsdk.z`.
+   3. Copy `Qmixer.h` to `orig/libs/qmixer-5.00/Qmixer.h`, keeping its name as
+      it is: `LHAudioPCH.h` includes it. Its SHA-1 is
+      `dcd23c08d5ee425aa51e67aa6a43f19871e5d707`.
+   4. Optionally copy `QMixer.lib` alongside it (SHA-1
+      `6174df13dd1d181080848047151e3a955da26754`). The build does not link it,
+      since imports come from the split `.idata`, and it is not the exact
+      library Lionhead linked. That one also exported `QSWaveMixGetWaveLength`,
+      like the shipped QMixer.dll, so 21 of the DLL's 32 QMixer import hints
+      are one higher than this library's.
+
 4. Run `configure.py` with the version you want to work on:
 
    ```sh
