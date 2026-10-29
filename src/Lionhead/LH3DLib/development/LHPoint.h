@@ -91,6 +91,8 @@ struct Point2D
 	float GetHeading() const;
 	// BW1W120 0086fd70 BW1M119 01086b10 (LHCombined Release)
 	void SetSize(float size);
+	// BW1W120 0086fda0 BW1M119 01086ac0 (LHCombined Release)
+	float GetSizeSq() const;
 	// BW1W120 0086fdc0 BW1M119 01086a00 (LHCombined Release)
 	float GetRange(const Point2D& param_1) const;
 };

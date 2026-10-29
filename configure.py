@@ -492,6 +492,9 @@ cflags_lh3dlib = [*cflags_base, "/G6"]
 # (/OPT:REF, lld's default without /debug).
 if config.version == "BW1W100":
     cflags_gamecode.append("/Gy")
+# The route planner units are built like LH3DLib's, with /G6 and its precompiled header, but 1.00
+# links them with function-level linking as well: their unreferenced functions are dropped.
+cflags_route_planner = ["/Gy"] if config.version == "BW1W100" else []
 
 cflags_lhdialog = [
     "/nologo",
@@ -1762,6 +1765,8 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/RPFollow.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp", pch=True),
+            LH3DLibObject(Matching, "Lionhead/LHLib/ver5.0/RPAvoid.cpp", extra_cflags=cflags_route_planner, pch=True),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/RPlan.cpp", progress_category="sdk", extra_cflags=["/G6", "/GX"]),
 
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\_ios.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\fstream.obj", progress_category="sdk"),

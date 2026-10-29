@@ -4178,7 +4178,7 @@ Lionhead/LH3DLib/development/CAnim.cpp:
 
 Lionhead/LHLib/ver5.0/RPFollow.cpp:
 	.text       start:0x008629D0 end:0x00864FC0
-	.text$x     start:0x008A8250 end:0x008A8648 align:4
+	.text$x     start:0x008A8250 end:0x008A8290 align:4
 	.rdata      start:0x009A3BB0 end:0x009A3BC4
 	.CRT$XCU    start:0x009C7DFC end:0x009C7E04 align:4
 	.bss        start:0x00F05624 end:0x00F063C0
@@ -4189,6 +4189,20 @@ Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp:
 	.CRT$XCU    start:0x009C7E04 end:0x009C7E14 align:4
 	.data       start:0x00C394E4 end:0x00C39544
 	.bss        start:0x00F063C0 end:0x00FA23E0
+
+Lionhead/LHLib/ver5.0/RPAvoid.cpp:
+	.text       start:0x00868FC0 end:0x00869600
+	.rdata      start:0x009A3BC8 end:0x009A3BD0
+	.CRT$XCU    start:0x009C7E14 end:0x009C7E1C align:4
+	.bss        start:0x00FA2504 end:0x00FA250C
+
+Lionhead/LHLib/ver5.0/RPlan.cpp:
+	.text       start:0x0086E070 end:0x0086FC00
+	.text$x     start:0x008A8290 end:0x008A8648 align:4
+	.rdata      start:0x009A3C00 end:0x009A3C08
+	.xdata$x    start:0x009BEF98 end:0x009BF0B8 align:4
+	.CRT$XCU    start:0x009C7E2C end:0x009C7E34 align:4
+	.bss        start:0x00FA51C4 end:0x00FA51D4
 
 lib/libcimt/_ios.obj:
 	.text       start:0x008A04F6 end:0x008A072C align:1
