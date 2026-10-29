@@ -306,11 +306,12 @@ shares it) or of our sources.
 
 - **`/vmg`: `Fixed`, `Town` and `VillagerHome`.** cl only warns (C4652) when a `/Yu` compile's
   pointer-to-member representation differs from the PCH's, so under `/Yu` they could have used
-  it, and `/YX` would rebuild it for them. They are out because `project.py` once shared a PCH
-  only between units with all the same flags, not because of their targets. Their `extra_cflags`
-  now override the PCH's, so whether they used it is open. `Fixed`'s `.bss` guard follows the
-  name hash of its `$S` number, which every static data member its headers declare bumps:
-  `FixedCounterPad` keeps the guard in the original's slot.
+  it, and `/YX` would rebuild it for them. `Town` and `VillagerHome` remain out because
+  `project.py` once shared a PCH only between units with all the same flags, not because of
+  their targets. Their `extra_cflags` now override the PCH's. `Fixed` uses the game PCH and
+  includes its info-table header before the header constants. The table's inline accessor
+  establishes its first mention before those constants, placing the table after them under
+  `/Yu` and reproducing the original `.bss` order without counter padding.
 - **`PCH_PENDING`**: sources fitted to the layout of a compile without the PCH, whose targets
   do not rule it out. This is not a property of the original build, and they are follow-up
   work: `/Yu` puts their statics in the reverse order of their first mention, so the

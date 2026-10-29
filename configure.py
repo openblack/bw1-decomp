@@ -929,7 +929,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/FishFarm.cpp"),
             GameCodeObject(NonMatching, "Black/FishFarmInfo.cpp"),
             # EndPhysics passes a 16-byte member-function pointer to MapCoords::FindObject.
-            GameCodeObject(Matching, "Black/Fixed.cpp", extra_cflags=["/vmg"], pch=False),
+            GameCodeObject(Matching, "Black/Fixed.cpp", extra_cflags=["/vmg"]),
             GameCodeObject(NonMatching, "Black/Flock.cpp"),
             GameCodeObject(NonMatching, "Black/Flower.cpp"),
             GameCodeObject(NonMatching, "Black/FlowersInfo.cpp"),
