@@ -22,22 +22,6 @@ enum ObjectCircleIteratorDirection
 	_ObjectCircleIteratorDirection_COUNT = 0xa
 };
 
-class HowManyPeople
-{
-public:
-	// Static data
-
-	// BW1W120 00c383f0 BW1M119 011ceaa8 (LHCombined Release)
-	static int g_alpha;
-
-	// Static methods
-
-	// BW1W120 00829690 BW1M119 0109ffd0 (LHCombined Release)
-	static void KnockKnock();
-	// BW1W120 00829780 BW1M119 01091a20 (LHCombined Release)
-	static void Draw(long max_people, long people, LHPoint* pos);
-};
-
 class NewCollide
 {
 public:
@@ -56,8 +40,6 @@ public:
 
 		// Non-virtual methods
 
-		// BW1W120 inlined BW1M119 inlined
-		bool Collide(const List* other) const;
 		// BW1W120 00829330 BW1M119 0112d9f0 (LHCombined Release)
 		void IncreaseSize();
 		// BW1W120 inlined BW1M119 inlined
@@ -97,16 +79,22 @@ public:
 
 		// BW1W120 00828f40 BW1M119 01083ef0 (LHCombined Release)
 		void CreateList();
-		// BW1W120 inlined BW1M119 inlined
-		bool Collide(const List* other) const;
+		// BW1W120 00828f30 BW1M119 010d4340 (LHCombined Release)
+		void Draw(int);
 		// BW1W120 00829140 BW1M119 0104bbf0 (LHCombined Release)
-		bool32_t Collide(const Obj* other) const;
+		bool32_t Collide(Obj* other);
 
 		// Destructors
 
 		// BW1W120 0082ae60 BW1M119 010649b0 (LHCombined Release)
 		~Obj();
 	};
+
+	// Called with each Obj as it is deleted.
+	typedef void (*DeleteCallback)(Obj* obj);
+
+	// BW1W120 00eb9a98 BW1M119 011f1db8 (LHCombined Release)
+	static DeleteCallback g_collide_del_callback;
 
 	Obj* obj;
 

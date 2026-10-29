@@ -1080,6 +1080,8 @@ int LHScreen::WaitForVerticalBlank()
 	return PDirectDraw->WaitForVerticalBlank(DDWAITVB_BLOCKBEGIN, 0) != 0 ? 2 : 0;
 }
 
+void LHScreen::SetDriver(unsigned long driver) {}
+
 // BW1W120 007ded50 BW1M119 0103d180 (LHCombined Release)
 int LHScreen::IsAppMinimized()
 {

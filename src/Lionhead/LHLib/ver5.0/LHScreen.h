@@ -147,6 +147,8 @@ struct LHScreen
 	uint32_t GetAvailableVidMem();
 	// BW1W120 007decc0 BW1M119 0114c5d0 (LHCombined Release)
 	int WaitForVerticalBlank();
+	// BW1W120 007ded40 BW1M119 0114c4a0 (LHCombined Release)
+	void SetDriver(unsigned long driver);
 	// BW1W120 007ded50 BW1M119 0103d180 (LHCombined Release)
 	int IsAppMinimized();
 	// BW1W120 007e8a20 BW1M119 01145980 (LHCombined Release)

@@ -18,6 +18,7 @@ struct LH3DEnvMatInfo;
 struct LH3DLODData;
 struct LH3DMaterial;
 struct LH3DMesh;
+struct LH3DTexture;
 struct LHPoint;
 struct SRTextured;
 struct SubCollideDataRender;
@@ -611,5 +612,13 @@ extern int caca_static_draw;
 extern LH3DMaterial* g_smoke_mat;
 // BW1W120 00ea1ac4 BW1M119 012b3708 (LHCombined Release)
 extern LH3DMaterial* g_smoke_additif_mat;
+// BW1W120 00ea1ab8 BW1M119 012b3714 (LHCombined Release)
+extern LH3DMaterial* g_fire_mat;
+// BW1W120 00ea1ab0 BW1M119 012b371c (LHCombined Release)
+extern LH3DMaterial* g_mat_misc0;
+// BW1W120 00ea1a90 BW1M119 012b373c (LHCombined Release)
+extern LH3DTexture* g_tex_misc0;
+// BW1W120 00ea1a9c BW1M119 012b3730 (LHCombined Release)
+extern LH3DTexture* g_burn_texture;
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_INCLUDED_H */

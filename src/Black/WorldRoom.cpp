@@ -55,7 +55,7 @@ struct WorldRoomCounterPad
 {
 	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8, Pad9, Pad10, Pad11, Pad12, Pad13, Pad14, Pad15,
 		Pad16, Pad17, Pad18, Pad19, Pad20, Pad21, Pad22, Pad23, Pad24, Pad25, Pad26, Pad27, Pad28, Pad29, Pad30, Pad31,
-		Pad32, Pad33, Pad34, Pad35;
+		Pad32, Pad33;
 };
 
 // The name is a guess, but not a free one: cl6 orders .bss by a hash of the symbol name, and this
@@ -181,7 +181,7 @@ void WorldRoom::InitEngine()
 	WaterObject->SetMesh(WaterMesh, NULL, NULL);
 	WaterObject->SetDynamicLighting(true);
 	WaterObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
-	Font = GatheringText::gamefont;
+	Font = GatheringText::GetGameFont(GAME_FONT_NEUTRAL);
 	Map = new (WORLD_ROOM_SOURCE_FILE, 111) MiniMap;
 	Map->Init();
 	Map->BuildMapTex();
@@ -619,15 +619,9 @@ void WorldRoom::Draw()
 		if (t > 0.0f)
 		{
 			unsigned long grey = (unsigned long)(t * 127.0f);
-			if (grey > 0xff)
-			{
-				grey = 0xff;
-			}
+			grey = min(0xff, grey);
 			unsigned long glow_alpha = (unsigned long)(t * 75.0f);
-			if (glow_alpha > 0xff)
-			{
-				glow_alpha = 0xff;
-			}
+			glow_alpha = min(0xff, glow_alpha);
 			float spread = (t - 2.0f) * 7.0f;
 			if (spread < 0.0f)
 			{

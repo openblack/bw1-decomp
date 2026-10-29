@@ -22,7 +22,7 @@ public:
 	LH3DAnim* LastAnim;
 	long      LastCycleTime;
 	float     BlendFactor; /* 0x90 */
-	uint32_t  field_0x94;
+	long      BlendTime;
 	LH3DMesh* Meshes[LH3D_MESH_LOD_LEVEL_LAST];
 
 	// Virtual methods
@@ -109,7 +109,7 @@ public:
 		LastAnim = NULL;
 		LastCycleTime = 0;
 		BlendFactor = 0.0f;
-		field_0x94 = 0;
+		BlendTime = 0;
 		for (int i = 0; i < LH3D_MESH_LOD_LEVEL_LAST; i++)
 		{
 			Meshes[i] = NULL;

@@ -108,7 +108,7 @@ void DrawLoading(float fade, float progress)
 			float videoFade;
 			if ((fade - 0.5f) * 2.0f > 0.0f)
 			{
-				videoFade = (fade - 0.5f) * 2.0f < 1.0f ? (fade - 0.5f) * 2.0f : 1.0f;
+				videoFade = min((fade - 0.5f) * 2.0f, 1.0f);
 			}
 			else
 			{
@@ -138,7 +138,7 @@ void DrawLoading(float fade, float progress)
 
 			LH3DRender::g_mode_cleaning = LH3D_CLEANING_MODE_SCREEN;
 			LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_0x01, 0);
-			GatheringText* font = GatheringText::gamefont;
+			GatheringText* font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
 			LH3DRender::StartFrame();
 			SetupThing::DrawAlpha = alphaByte;
 
@@ -244,8 +244,8 @@ void DrawLoading(float fade, float progress)
 			int barWidth = right - left + 120;
 			int sweepStart = phaseA * barWidth + left - 60.0f;
 			int sweepEnd = sweepStart + 120;
-			sweepStart = sweepStart > left + 3 ? (sweepStart < right - 3 ? sweepStart : right - 3) : left + 3;
-			sweepEnd = sweepEnd > left + 3 ? (sweepEnd < right - 3 ? sweepEnd : right - 3) : left + 3;
+			sweepStart = sweepStart > left + 3 ? (min(sweepStart, right - 3)) : left + 3;
+			sweepEnd = sweepEnd > left + 3 ? (min(sweepEnd, right - 3)) : left + 3;
 			SetupThing::DrawBox(left + 3, bottom + barTop + 3.0f, sweepStart, bottom + barBottom - 4.0f,
 			                    LOADING_BAR_SWEEP_COLOUR, LOADING_BAR_SWEEP_COLOUR, LOADING_BAR_SWEEP_COLOUR,
 			                    LOADING_BAR_SWEEP_COLOUR, 0, 1);
@@ -255,8 +255,8 @@ void DrawLoading(float fade, float progress)
 			barWidth = right - left + 120;
 			sweepStart = phaseB * barWidth + left - 60.0f;
 			sweepEnd = sweepStart + 120;
-			sweepStart = sweepStart > left + 3 ? (sweepStart < right - 3 ? sweepStart : right - 3) : left + 3;
-			sweepEnd = sweepEnd > left + 3 ? (sweepEnd < right - 3 ? sweepEnd : right - 3) : left + 3;
+			sweepStart = sweepStart > left + 3 ? (min(sweepStart, right - 3)) : left + 3;
+			sweepEnd = sweepEnd > left + 3 ? (min(sweepEnd, right - 3)) : left + 3;
 			SetupThing::DrawBox(left + 3, bottom + barTop + 3.0f, sweepStart, bottom + barBottom - 3.0f,
 			                    LOADING_BAR_SHADOW_COLOUR, LOADING_BAR_SHADOW_COLOUR, LOADING_BAR_SHADOW_COLOUR,
 			                    LOADING_BAR_SHADOW_COLOUR, 0, 1);
@@ -403,7 +403,7 @@ void RenderLoadingFrame(bool flip)
 				{
 					LH3DRender::StartFrame();
 					int alpha = (LoadingScreen::Time - PleaseWaitDelay) / 2;
-					SetupThing::DrawAlpha = alpha > 0 ? (alpha < 255 ? alpha : 255) : 0;
+					SetupThing::DrawAlpha = alpha > 0 ? (min(alpha, 255)) : 0;
 					int screenWidth = LHSys::TheSystem.screen.width;
 					int middle = LHSys::TheSystem.screen.height >> 1;
 					int top = middle - 30;

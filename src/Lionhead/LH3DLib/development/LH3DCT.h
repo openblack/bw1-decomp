@@ -20,11 +20,15 @@ struct LH3DCT
 
 	// BW1W120 0087f6d0 BW1M119 0115fee0 (LHCombined Release)
 	static LH3DCT* Create(DataOnDisk* data, bool32_t alpha);
+	// BW1W120 0087f980 BW1M119 01077a70 (LHCombined Release)
+	static LH3DCT* CreateFromDisk(char* name);
 
 	// BW1W120 0087f880 BW1M119 010d82d0 (LHCombined Release)
 	void Release();
 	// BW1W120 0087f8b0 BW1M119 010b4ac0 (LHCombined Release)
 	DataOnDisk* CreateSavingData();
+	// BW1W120 0087f950 BW1M119 010d7970 (LHCombined Release)
+	void SaveOnDisk(char* name);
 };
 static_assert(sizeof(LH3DCT) == 0x8, "Data type is of wrong size");
 static_assert(sizeof(LH3DCT::DataOnDisk) == 0x80, "Data type is of wrong size");

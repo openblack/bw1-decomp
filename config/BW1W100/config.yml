@@ -1045,6 +1045,26 @@ add_relocations:
   - source: 0x00666DE1
     type: x86_abs32
     target: '?id@?$numpunct@D@std@@$E'
+# BackgroundBox::AddBox addresses g_list_boxes[i].Region (dtk leaves the displacement unrelocated).
+  - source: 0x00778D71
+    type: x86_abs32
+    target: '?g_list_boxes@BackgroundBox@@2PAV1@A'
+    addend: 0x4
+# FishRush::DrawPreAll's loop ends one past GWater::g_circle, inside LH3DExtraDotLight::g_list.
+  - source: 0x0077E77E
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE00C
+# SuperVillager::Draw's immediates: LH3DTech::g_current_matrix = &g_local_to_clipping, and the swimming
+# animation's name.
+  - source: 0x0077F26F
+    type: x86_abs32
+    target: '?g_local_to_clipping@LH3DTech@@2ULHMatrix@@A'
+    addend: 0x0
+  - source: 0x0077F279
+    type: x86_abs32
+    target: '??_C@_09NHHM@M_P_Swim2?$AA@'
+    addend: 0x0
 
 # PSysProperties weak deleting-destructor aliases and istream exception metadata.
   - source: 0x006668FC

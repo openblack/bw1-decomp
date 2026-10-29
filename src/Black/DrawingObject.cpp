@@ -39,6 +39,7 @@ static const float UVTextureScale = 1.0f / 256.0f;
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
 #include <Lionhead/LH3DLib/development/LH3DSky.h>
 #include <Lionhead/LH3DLib/development/LH3DSmoke.h>
+#include <Lionhead/LH3DLib/development/HowManyPeople.h>
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>
 #include "Audio.h"
 #include "Camera.h"
@@ -185,14 +186,6 @@ enum CREATURE_STAT
 #define DEBUG_PATH_MARKER_HEIGHT   10.0f
 
 #define CREATURE_BUBBLE_ALIGNMENT_THRESHOLD 0.333f
-
-enum CREATURE_BUBBLE_FONT
-{
-	CREATURE_BUBBLE_FONT_DEFAULT,
-	CREATURE_BUBBLE_FONT_GOOD,
-	CREATURE_BUBBLE_FONT_NEUTRAL,
-	CREATURE_BUBBLE_FONT_EVIL
-};
 
 // Render time counts this many steps per game turn.
 #define RENDER_TIME_PER_TURN 100
@@ -765,28 +758,16 @@ void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, flo
 	{
 		float width = SetupThing::GetTextWidth(
 			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_30), size / 2, 0, 1.0f);
-		if (width > labelWidth)
-		{
-			labelWidth = width;
-		}
+		labelWidth = max(width, labelWidth);
 		width = SetupThing::GetTextWidth(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_50),
 		                                 size / 2, 0, 1.0f);
-		if (width > labelWidth)
-		{
-			labelWidth = width;
-		}
+		labelWidth = max(width, labelWidth);
 		width = SetupThing::GetTextWidth(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_119),
 		                                 size / 2, 0, 1.0f);
-		if (width > labelWidth)
-		{
-			labelWidth = width;
-		}
+		labelWidth = max(width, labelWidth);
 		width = SetupThing::GetTextWidth(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_100),
 		                                 size / 2, 0, 1.0f);
-		if (width > labelWidth)
-		{
-			labelWidth = width;
-		}
+		labelWidth = max(width, labelWidth);
 		labelWidth += size / 2;
 	}
 	xMax += labelWidth - (xMax - xMin) / 3;
@@ -973,24 +954,10 @@ void Creature::Draw()
 	static GatheringText* bubbleFont = NULL;
 	static int            unused = 1;
 
-	int fontIndex;
-	if (alignment->GetValue() > CREATURE_BUBBLE_ALIGNMENT_THRESHOLD)
-	{
-		fontIndex = CREATURE_BUBBLE_FONT_GOOD;
-	}
-	else if (alignment->GetValue() < -CREATURE_BUBBLE_ALIGNMENT_THRESHOLD)
-	{
-		fontIndex = CREATURE_BUBBLE_FONT_EVIL;
-	}
-	else
-	{
-		fontIndex = CREATURE_BUBBLE_FONT_NEUTRAL;
-	}
-	if (fontIndex == CREATURE_BUBBLE_FONT_NEUTRAL || (&GatheringText::gamefont)[fontIndex] == NULL)
-	{
-		fontIndex = CREATURE_BUBBLE_FONT_DEFAULT;
-	}
-	bubbleFont = (&GatheringText::gamefont)[fontIndex];
+	bubbleFont =
+		GatheringText::GetGameFont(alignment->GetValue() > CREATURE_BUBBLE_ALIGNMENT_THRESHOLD    ? GAME_FONT_GOOD
+	                               : alignment->GetValue() < -CREATURE_BUBBLE_ALIGNMENT_THRESHOLD ? GAME_FONT_EVIL
+	                                                                                              : GAME_FONT_NEUTRAL);
 
 	LHPoint bubblePos = physical->Creature3d->GetMatrixBuffer()->GetPos();
 	bubblePos.y = LH3DIsland::GetAltitude(LH3DMapCoords(bubblePos.x, bubblePos.z)) + GetHeight();
@@ -1418,10 +1385,7 @@ void Object::DrawInHand(GInterfaceStatus* status)
 		else
 		{
 			int time = status->HandMoveTime;
-			if (time >= duration)
-			{
-				time = duration;
-			}
+			time = min(time, duration);
 			LHPoint delta = handPos - status->HandMoveStart;
 			LHPoint target = status->HandMoveStart + delta * ((float)time / duration);
 			SetPositionOnMap(Game3dObject, MapCoords(target), 0.0f, scale);

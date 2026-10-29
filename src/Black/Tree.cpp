@@ -25,7 +25,7 @@
 #include "Utils.h"
 #include "ValueSpinner.h"
 #include "WorshipSite.h"
-#include "RootsPile.h"
+#include <Lionhead/LH3DLib/development/RootsPile.h>
 #include "ParticleContainer.h"
 #include "Script.h"
 #include "Town.h"
@@ -697,10 +697,7 @@ void Tree::SpecialDrawOnFire(bool selectable)
 	unsigned long color = Game3dObject->color;
 	Game3dObject->color = LH3D_SCALE_COLOR(color, brightness);
 	FireAlpha = (255.0f - FireAlphaCold) * heat * (1.0f / 255.0f) + FireAlphaCold;
-	if (FireAlpha >= 254.0f)
-	{
-		FireAlpha = 254.0f;
-	}
+	FireAlpha = min(FireAlpha, 254.0f);
 	LH3DRender::g_b_active_g_alpha_ref = true;
 	LH3DRender::g_alpha_ref = (unsigned long)FireAlpha;
 	if (GetLife() < 0.2f)

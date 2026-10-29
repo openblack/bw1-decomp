@@ -96,6 +96,14 @@ block_relocations:
 # MeshLodInfo's triangle tables (LH3DIsland) hold pairs of vertex indices that read as code addresses.
   - source: 0x00C37230
     end: 0x00C37BF0
+# SmokyStuff::Process's smoke colours 0x68503d and 0x808080 are immediates, not pointers into
+# UR_Articulate::ModifyAtomCollection and LH3DPrimitive::ComputeBoundingBox.
+  - source: 0x00823FF1
+  - source: 0x00824012
+# The citadel textures' DDSCAPS flags 0x401808 (Save/LoadTextureCitadel) are an immediate, not a pointer into
+# GameThing::RemoveDance.
+  - source: 0x0082A959
+  - source: 0x0082ABE8
 # SetupBox's IME candidate list control ID 0x85b680 is an immediate, not a pointer into
 # LH3DPrimitive::DrawInShadowTnL.
   - source: 0x00408133
@@ -1037,6 +1045,115 @@ add_relocations:
     type: x86_abs32
     target: '_SwayZ'
     addend: -0x4
+# BackgroundBox::AddBox addresses g_list_boxes[i].Region (dtk leaves the displacement unrelocated).
+  - source: 0x0081E381
+    type: x86_abs32
+    target: '?g_list_boxes@BackgroundBox@@2PAV1@A'
+    addend: 0x4
+# FishRush::DrawPreAll's loop ends one past GWater::g_circle, inside LH3DExtraDotLight::g_list.
+  - source: 0x00824C7E
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE00C
+# SuperVillager::Draw's immediates: LH3DTech::g_current_matrix = &g_local_to_clipping, and the swimming
+# animation's name.
+  - source: 0x0082576F
+    type: x86_abs32
+    target: '?g_local_to_clipping@LH3DTech@@2ULHMatrix@@A'
+    addend: 0x0
+  - source: 0x00825779
+    type: x86_abs32
+    target: '??_C@_09NHHM@M_P_Swim2?$AA@'
+    addend: 0x0
+# GWater::AddPlouf's switch jump table and the case blocks it alone reaches (dtk does not trace them).
+  - source: 0x0082A2B0
+    type: x86_abs32
+    target: '?AddPlouf@GWater@@QAEXPAULHPoint@@@Z'
+    addend: 0x53
+  - source: 0x0082A2B4
+    type: x86_abs32
+    target: '?AddPlouf@GWater@@QAEXPAULHPoint@@@Z'
+    addend: 0x87
+  - source: 0x0082A2B8
+    type: x86_abs32
+    target: '?AddPlouf@GWater@@QAEXPAULHPoint@@@Z'
+    addend: 0x1D3
+  - source: 0x0082A2BC
+    type: x86_abs32
+    target: '?AddPlouf@GWater@@QAEXPAULHPoint@@@Z'
+    addend: 0x31B
+  - source: 0x00829F55
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00829F5F
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00829F74
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00829FAB
+    type: x86_abs32
+    target: '__real@4@3ffeb333330000000000'
+    addend: 0x0
+  - source: 0x00829FB5
+    type: x86_abs32
+    target: '__real@4@3ff1d1b7170000000000'
+    addend: 0x0
+  - source: 0x00829FEA
+    type: x86_abs32
+    target: '__real@4@3fff8000000000000000'
+    addend: 0x0
+  - source: 0x0082A09D
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x0082A0A7
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x0082A0BC
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x0082A0F3
+    type: x86_abs32
+    target: '__real@4@3ffeb333330000000000'
+    addend: 0x0
+  - source: 0x0082A0FD
+    type: x86_abs32
+    target: '__real@4@3ff1d1b7170000000000'
+    addend: 0x0
+  - source: 0x0082A132
+    type: x86_abs32
+    target: '__real@4@3fff8000000000000000'
+    addend: 0x0
+  - source: 0x0082A1DB
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x0082A1E5
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x0082A1FA
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x0082A231
+    type: x86_abs32
+    target: '__real@4@3ffeb333330000000000'
+    addend: 0x0
+  - source: 0x0082A23B
+    type: x86_abs32
+    target: '__real@4@3ff1d1b7170000000000'
+    addend: 0x0
+  - source: 0x0082A270
+    type: x86_abs32
+    target: '__real@4@3fff8000000000000000'
+    addend: 0x0
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000

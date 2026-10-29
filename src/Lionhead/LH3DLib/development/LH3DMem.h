@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LH3D_MEM_INCLUDED_H
 
 #include <stddef.h>    /* For size_t */
+#include <string.h>    /* For memset */
 #include <re_common.h> /* For bool32_t */
 
 struct LH3DMem
@@ -23,6 +24,16 @@ struct LH3DMem
 	static void* Alloc(long size);
 	// BW1W120 00842d60 BW1M119 010c86b0 (LHCombined Release)
 	static void Free(void* ptr);
+	// BW1W120 inlined BW1M119 011a44f0
+	static void* AllocClear(long size)
+	{
+		void* data = Alloc(size);
+		if (data != NULL)
+		{
+			memset(data, 0, size);
+		}
+		return data;
+	}
 };
 
 #endif /* BW1_DECOMP_LH3D_MEM_INCLUDED_H */

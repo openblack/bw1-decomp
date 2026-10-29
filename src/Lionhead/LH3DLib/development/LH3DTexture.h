@@ -32,20 +32,20 @@ struct LH3DVRAMTex;
 class LH3DSurfDesc
 {
 public:
-	void* Surface; /* 0x0 */
-	long  Pitch;   /* 0x4 */
-	long  Width;   /* 0x8 */
-	long  Height;  /* 0xc */
+	void* Surface;
+	long  Pitch;
+	long  Width;
+	long  Height;
 };
 static_assert(sizeof(LH3DSurfDesc) == 0x10, "Data type is of wrong size");
 
 struct LH3DSRAMTex
 {
-	uint32_t      field_0x0;   /* 0x0 */
-	uint32_t      field_0x4;   /* 0x4 */
-	uint16_t*     SoftSurface; /* 0x8 */
-	uint32_t      field_0xc;   /* 0xc */
-	TextureFormat Format;      /* 0x10 */
+	uint32_t      field_0x0;
+	uint32_t      field_0x4;
+	uint16_t*     SoftSurface;
+	uint32_t      field_0xc;
+	TextureFormat Format;
 
 	// BW1W120 00870640 BW1M119 010b5bb0 (LHCombined Release)
 	void __fastcall Blend(unsigned long blend, LH3DSRAMTex* from, LH3DSRAMTex* to);
@@ -57,6 +57,8 @@ struct LH3DSRAMTex
 
 struct LH3DTexture
 {
+	// BW1W120 00edd46c BW1M119 013404c4 (LHCombined Release)
+	static bool32_t g_b_use_565;
 	// BW1W120 00edd470 BW1M119 013404c0 (LHCombined Release)
 	static int g_b_use_low_res;
 	// BW1W120 00edd460 BW1M119 013404d0 (LHCombined Release)
@@ -129,5 +131,8 @@ extern LHReleasedFile g_cached_tex_file;
 
 // BW1W120 00871170 BW1M119 010b4fb0 (LHCombined Release)
 HRESULT GLock(IDirectDrawSurface7* surface, RECT* rect, DDSURFACEDESC2* desc, unsigned long flags, HANDLE event);
+
+// BW1W120 00837300 BW1M119 010ca150 (LHCombined Release)
+bool32_t IsRawFile(char* name);
 
 #endif /* BW1_DECOMP_LH3D_TEXTURE_INCLUDED_H */

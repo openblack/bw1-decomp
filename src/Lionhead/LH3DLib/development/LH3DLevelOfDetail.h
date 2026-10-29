@@ -9,7 +9,9 @@
 struct LH3DCitadelLevelOfDetail
 {
 	bool    Reflections;
-	uint8_t field_0x1[0x3];
+	bool    VolumeLight;
+	bool    Glows;
+	bool    People;
 	bool    Lightmaps;
 	uint8_t field_0x5[0x3];
 };
