@@ -3766,6 +3766,12 @@ Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp:
 	.data       start:0x00CACAA8 end:0x00CACB08
 	.bss        start:0x00F8AE28 end:0x01026E48
 
+Lionhead/LHLib/ver5.0/RPAvoid.cpp:
+	.text       start:0x00887CF0 end:0x00888330
+	.rdata      start:0x00A13F2C end:0x00A13F34
+	.CRT$XCU    start:0x00A3764C end:0x00A37654 align:4
+	.bss        start:0x01026F6C end:0x01026F74
+
 lib/libcimt/filebuf.obj:
 	.rdata      start:0x00A14124 end:0x00A1416C
 	.rdata$r    start:0x00A2C4A0 end:0x00A2C628

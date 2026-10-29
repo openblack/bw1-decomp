@@ -52,8 +52,8 @@ struct RPHolder
 	void AddObject(int object_id, const Point2D& point, float radius, int update);
 	// win1.41 0083b860 mac 100ac020 RPHolder::GetSidePointOfStartObject(int, Point2D const &, Point2D &, int)
 	uint32_t GetSidePointOfStartObject(int param_1, Point2D* param_2, Point2D* param_3, int param_4);
-	// win1.41 0083bb60 mac 100ab580 RPHolder::GetFirstObject(Point2D const &, Point2D &, int, Point2D &, int &, float)
-	int GetFirstObject(Point2D* param_1, Point2D* param_2, int param_3, Point2D* param_4, int* param_5, float param_6);
+	// BW1W120 0083bb60 BW1M119 010a9930 (LHCombined Release)
+	int GetFirstObject(const Point2D& start, Point2D& end, int ignore_avoid, Point2D& hit, int& hit_side, float margin);
 };
 
 static_assert(sizeof(RPHolder) == 0x6402c, "RPHolder size is incorrect");
