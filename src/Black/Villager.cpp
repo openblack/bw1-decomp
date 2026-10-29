@@ -1929,7 +1929,9 @@ uint32_t Villager::ApplyThisToObject(GInterfaceStatus* status, Object* object, G
 			options.SampleNumber = LH_SAMPLE_G_SACRIFICE_01;
 			options.AttachedObject = this;
 			options.Positional = true;
-			options.Pos = soundPos;
+			options.XPos = soundPos.x;
+			options.YPos = soundPos.y;
+			options.ZPos = soundPos.z;
 			options.Follow = false;
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 			if (IsChild())

@@ -63,14 +63,22 @@ units that stopped matching out of their `MatchingFor(...)`.
   image from the linked sections.
 - `LHaudiodllR.dll` and `LHMultiplayerR.dll` are Creature Isle builds of their own. Their Rich
   headers are in `post_link_patch.py`.
+- `LHaudiodllR.dll` has no debug directory: it was linked without `/DEBUG`, so with `/OPT:REF`
+  and `/OPT:ICF`. Unreferenced code is gone (1.20's dead MPEG layer 1 and 3 decoders), and
+  identical functions share one body, which `symbols.txt` names with `alias` labels (the port
+  reads them off the export table, vtables and callers) for the fold to resolve. Its link uses
+  `/OPT:REF` too, with the DLL's exports as roots and the split's function sections plain
+  (`function_comdat: false`, which a re-emit keeps). The fold cannot merge a unit's static
+  functions onto another unit's copy, so the units with their own copy of `LHLogDebugBreak`
+  (Atmos, Bank, Music, Sample, System) do not link yet.
 
 ## Where the port stands
 
 | BW1W120 → BW1WCI | executable | `LHAudio` | `LHMultiplayer` |
 |---|---|---|---|
-| split ranges carried over | 2121 of 2549 | 218 of 256 | 511 of 519 |
-| named symbols carried over | 25 087 of 28 590 | 899 of 1225 | 3432 of 3544 |
-| units linking from source or the library | 232 of 321 | 95 of 152 | 199 of 226 |
+| split ranges carried over | 2121 of 2549 | 280 of 320 | 511 of 519 |
+| named symbols carried over | 25 087 of 28 590 | 1762 of 2442 | 3432 of 3544 |
+| units linking from source or the library | 232 of 321 | 106 of 169 | 199 of 226 |
 | rebuilt file | byte-identical | byte-identical | byte-identical |
 
 Of the 702 units that link for 1.20 or 1.30 (`LHDialog`'s 3 link for Creature Isle too), 173

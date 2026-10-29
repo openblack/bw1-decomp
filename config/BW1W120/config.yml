@@ -1058,6 +1058,12 @@ modules:
   splits: config/BW1W120/LHAudio/splits.txt
   generate_exports: true
   generate_imports: true
+  add_relocations:
+  # init_layer3 fills pow2_2[i] for i from -16: the displacement is pow2_2 - 0x40, inside Midi's statics.
+    - source: 0x1000904F
+      type: x86_abs32
+      target: _pow2_2
+      addend: -0x40
 
 - object: LHLogR.dll
   hash: 3c42f20350da2c54eb1ba0a61829b94d9883669a

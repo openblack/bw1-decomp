@@ -809,10 +809,10 @@ void HelpDude::SaySentence(int sample, bool32_t dont_interrupt, int delay)
 	SampleOptions.SampleNumber = sample;
 	SampleOptions.AttachedObject = (Base*)HELPDUDE_SAMPLE_OBJECT;
 	SampleOptions.Positional = 0;
-	SampleOptions.Pos.x = Transform._41;
-	SampleOptions.Pos.y = Transform._42;
-	SampleOptions.Pos.z = Transform._43;
-	SampleOptions.KeepData = 1;
+	SampleOptions.XPos = Transform._41;
+	SampleOptions.YPos = Transform._42;
+	SampleOptions.ZPos = Transform._43;
+	SampleOptions.Flags = LH_SAMPLE_FLAG_KEEP_DATA;
 	SaySample = sample;
 	SayTick = GetTickCount() + delay;
 	UpdateSaySentence();
@@ -863,7 +863,7 @@ float GetSampleAmplitude(LH_AudioSystem* audio_system, unsigned long sample, int
 
 LH_SampleInfo* HelpDude::PlaySample(LH_AudioSystem* audio_system, LH_SamplePlayOptions* options)
 {
-	options->KeepData = 1;
+	options->Flags = LH_SAMPLE_FLAG_KEEP_DATA;
 	LH_SampleInfo* info = audio_system->LHSamplePlay(options);
 	if (info)
 	{
@@ -879,7 +879,7 @@ LH_SampleInfo* HelpDude::PlaySample(LH_AudioSystem* audio_system, LH_SamplePlayO
 		{
 			memcpy(s_SampleData, info->Data, s_SampleCount);
 		}
-		WAVEFORMATEX* format = info->Format;
+		WAVEFORMATEX* format = (WAVEFORMATEX*)info->Wave;
 		s_SampleCount /= format->nChannels * 2;
 		s_SampleRate = format->nSamplesPerSec;
 		s_SampleDuration = (float)s_SampleCount / s_SampleRate;
@@ -895,7 +895,7 @@ void HelpDude::UpdateSaySentence()
 	}
 	SayTick = 0;
 	LH_SampleInfo* info = PlaySample(AudioSystem, &SampleOptions);
-	s_PlayingSample = info ? info->Handle : 0;
+	s_PlayingSample = info ? info->SampleNumber : 0;
 	if (!s_PlayingSample)
 	{
 		return;

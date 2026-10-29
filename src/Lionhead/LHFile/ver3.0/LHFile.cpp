@@ -15,12 +15,12 @@ extern char g_GameDriveCharacter;
 // BW1W120 00c2b9ec
 char* off_C2B9EC = "LiOnHeAd";
 
-LHSegmentDesc::LHSegmentDesc(char* name, int size, int offset)
+LHSegmentDesc::LHSegmentDesc(char* name, int offset, int size)
 {
 	memset(this, 0, 0x21);
 	strncpy(this->name, name, 0x20);
-	this->size = size;
 	this->offset = offset;
+	this->size = size;
 }
 
 uint32_t LHFile::SetName(const char* name)
@@ -60,7 +60,7 @@ uint32_t LHFile::GetSegmentData(char* segment_name, void* data, uint32_t data_si
 {
 	if (!opened)
 		return 3;
-	if (SegmentOpened)
+	if (SegmentOpenFlag)
 		CloseSegment();
 	if (OpenSegment(segment_name))
 		return 2;
@@ -126,7 +126,7 @@ uint32_t LHFile::Open(LH_FILE_MODE mode)
 	{
 		LHLinkedNode<LHSegmentDesc*>* node = SegmentList.GetStart();
 		LHSegmentDesc*                desc = node ? node->payload : 0;
-		if (SetLHFilePointer((char*)desc, desc->offset))
+		if (SetLHFilePointer((char*)desc, desc->size))
 			return 3;
 	}
 	return 0;
@@ -176,7 +176,7 @@ uint32_t LHFile::VerifyFile()
 			{
 				LHLinkedNode<LHSegmentDesc*>* node = SegmentList.GetStart();
 				LHSegmentDesc*                d = node ? node->payload : 0;
-				v5 = d->offset + d->size + 36;
+				v5 = d->size + d->offset + 36;
 			}
 			else
 			{
@@ -203,7 +203,7 @@ uint32_t LHFile::GetNextSegment(LHSegment* segment, int allocate_memory)
 		return 3;
 	if (FileMode != 2)
 		return 3;
-	if (SegmentOpened)
+	if (SegmentOpenFlag)
 		CloseSegment();
 	if (!allocate_memory && (!segment->buffer || !segment->size))
 		return 3;
@@ -245,7 +245,7 @@ uint32_t LHFile::WriteSegment(LHSegment* segment)
 		return 3;
 	if (FileMode && FileMode != 3)
 		return 3;
-	if (SegmentOpened)
+	if (SegmentOpenFlag)
 		CloseSegment();
 	if (OpenSegment((char*)segment->name))
 		return 3;
@@ -284,7 +284,7 @@ uint32_t LHFile::Close()
 {
 	if (!opened)
 		return 0;
-	if (SegmentOpened)
+	if (SegmentOpenFlag)
 		CloseSegment();
 	FreeLastSeg();
 	void* v3 = handle;
@@ -338,6 +338,17 @@ LHSegmentDesc* LHFile::Lookup(char* segment_name)
 	return v2 ? v2->payload : 0;
 }
 
+uint32_t LHFile::GetSegmentSize(char* segment_name)
+{
+	LHLinkedNode<LHSegmentDesc*>* node;
+	for (node = SegmentList.GetStart(); node; node = node->next.Get())
+	{
+		if (!strcmp((const char*)node->payload, segment_name))
+			break;
+	}
+	return node ? node->payload->size : -1;
+}
+
 uint32_t LHFile::SetLHFilePointer(char* segment_name, int offset)
 {
 	int   v4 = 0;
@@ -351,8 +362,8 @@ uint32_t LHFile::SetLHFilePointer(char* segment_name, int offset)
 		LHSegmentDesc* SegmentSize = Lookup(segment_name);
 		if (!SegmentSize)
 			return 2;
-		v4 = SegmentSize->size;
-		if (offset > (int)SegmentSize->offset)
+		v4 = SegmentSize->offset;
+		if (offset > (int)SegmentSize->size)
 			goto fail;
 	}
 	v9 = custom_set_file_pointer_function ? custom_set_file_pointer_function(offset + v4, 0, CustomFunctionUserData)
@@ -372,7 +383,7 @@ uint32_t LHFile::GetSegment(char* segment, LHSegment* dataOut, int bAllocMemory)
 		return 3;
 	if (FileMode != 2)
 		return 3;
-	if (SegmentOpened)
+	if (SegmentOpenFlag)
 		CloseSegment();
 	LHSegmentDesc* segmentLocation = Lookup(segment);
 	if (!segmentLocation)
@@ -380,28 +391,28 @@ uint32_t LHFile::GetSegment(char* segment, LHSegment* dataOut, int bAllocMemory)
 	if (SetLHFilePointer(segment, 0))
 		return 2;
 	strcpy((char*)dataOut->name, segment);
-	uint32_t v7 = segmentLocation->offset;
+	uint32_t v7 = segmentLocation->size;
 	dataOut->size = v7;
 	if (bAllocMemory)
 	{
 		if (AllocSegDataMem(dataOut))
 			return 3;
 	}
-	else if (!dataOut->buffer || v7 != segmentLocation->offset)
+	else if (!dataOut->buffer || v7 != segmentLocation->size)
 	{
 		return 3;
 	}
-	return ReadData(dataOut->buffer, segmentLocation->offset);
+	return ReadData(dataOut->buffer, segmentLocation->size);
 }
 
 uint32_t LHFile::OpenSegment(char* name)
 {
 	if (!opened)
 		return 3;
-	if (SegmentOpened)
+	if (SegmentOpenFlag)
 		CloseSegment();
 	LH_FILE_MODE v4 = FileMode;
-	SegmentOpened = 1;
+	SegmentOpenFlag = 1;
 	segment_size = 0;
 	segment_name = name;
 	if (v4 == 2)
@@ -409,8 +420,8 @@ uint32_t LHFile::OpenSegment(char* name)
 		LHSegmentDesc* v5 = Lookup(name);
 		if (!v5)
 			return 2;
-		segment_size = v5->offset;
-		SegmentOffset = v5->size;
+		segment_size = v5->size;
+		SegmentOffset = v5->offset;
 		return SetLHFilePointer(name, 0);
 	}
 	SegmentOffset = CurrentFileOffset + 36;
@@ -419,7 +430,7 @@ uint32_t LHFile::OpenSegment(char* name)
 
 uint32_t LHFile::CloseSegment()
 {
-	if (SegmentOpened)
+	if (SegmentOpenFlag)
 	{
 		LH_FILE_MODE v2 = FileMode;
 		if (!v2 || v2 == 3)
@@ -431,7 +442,7 @@ uint32_t LHFile::CloseSegment()
 			SetLHFilePointer(0, v3);
 		}
 		int v5 = segment_size + SegmentOffset;
-		SegmentOpened = 0;
+		SegmentOpenFlag = 0;
 		SetLHFilePointer(0, v5);
 	}
 	return 0;
@@ -439,7 +450,7 @@ uint32_t LHFile::CloseSegment()
 
 uint32_t LHFile::WriteSegmentData(const void* data, uint32_t length)
 {
-	if (!SegmentOpened)
+	if (!SegmentOpenFlag)
 		return 3;
 	if (FileMode && FileMode != 3)
 		return 3;
@@ -450,7 +461,7 @@ uint32_t LHFile::WriteSegmentData(const void* data, uint32_t length)
 
 uint32_t LHFile::GetSegmentData(void* data, uint32_t data_size, int offset)
 {
-	if (!SegmentOpened)
+	if (!SegmentOpenFlag)
 		return 3;
 	if (offset == -1 || !SetLHFilePointer(segment_name, offset))
 		return ReadData(data, data_size);

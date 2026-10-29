@@ -280,10 +280,10 @@ if config.version == "BW1W100":
         "__imp_?LHSampleSet3DPosition@LH_AudioSystem@@QAEPAULH_SampleInfo@@PAVLH_AudioBank@@KKMMMH@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_import}=__imp__ExitProcess@4")
-# LHLogR.dll is the one module whose project links without /DEBUG: unlike
-# LHAudio, LHMultiplayer, LHDialog (and runblack from 1.10 on) it has no debug
-# directory in any version. Without /DEBUG, link.exe (6.0 and VS.NET 2002's 7.0
-# alike) defaults to /OPT:REF and /OPT:ICF: only the functions of its libcmt
+# LHLogR.dll's project links without /DEBUG: unlike LHAudio (but for Creature
+# Isle's, below), LHMultiplayer, LHDialog (and runblack from 1.10 on) it has no
+# debug directory in any version. Without /DEBUG, link.exe (6.0 and VS.NET 2002's
+# 7.0 alike) defaults to /OPT:REF and /OPT:ICF: only the functions of its libcmt
 # objects something references are in the image, and identical ones with the
 # same COMDAT checksum share one copy (trnsctrl.obj's _CallMemberFunction1 is
 # _CallMemberFunction0). lld-link would also move string literals to the end of
@@ -320,6 +320,33 @@ config.module_ldflags = {
         *(f"/alternatename:{_name}=_abort" for _name in _lhlog_dead_functions[_lhlog_version]),
     ],
 }
+# Creature Isle's LHaudiodllR.dll has no debug directory either (1.00 to 1.30's
+# has one): it was linked without /DEBUG, so with /OPT:REF and /OPT:ICF too. The
+# functions ICF merged are aliases in its symbols.txt, which the fold resolves.
+# /OPT:REF collects what a recompiled unit holds beyond the image (Midi's unused
+# vector constructor iterator, Debug's LHDebugGetQMixerErrorText), the split's
+# own function sections being plain (function_comdat in config.yml). The fold
+# drops the units' /EXPORT directives, which were link.exe's roots, so the DLL's
+# exports stand in for them.
+def pe_export_names(path):
+    import pefile
+
+    pe = pefile.PE(path, fast_load=True)
+    pe.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY["IMAGE_DIRECTORY_ENTRY_EXPORT"]])
+    return [e.name.decode() for e in pe.DIRECTORY_ENTRY_EXPORT.symbols if e.name]
+
+
+if config.version == "BW1WCI":
+    _lhaudio_dll = Path("orig") / config.version / "LHaudiodllR.dll"
+    config.module_ldflags["LHAudio"] = [
+        "/OPT:REF",
+        "/OPT:NOICF",
+        "/OPT:NOLLDTAILMERGE",
+        "/includeglob:gap_*",
+        "/includeglob:pad_*",
+        # the C++ exports; the C ones are data, which /OPT:REF keeps anyway
+        *(f"/include:{_name}" for _name in (pe_export_names(_lhaudio_dll) if _lhaudio_dll.exists() else []) if _name.startswith("?")),
+    ]
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
@@ -539,6 +566,37 @@ def MultiplayerObject(completed, name, **options):
     return Object(completed, name, cflags=cflags_multiplayer, **options)
 
 
+# LHaudiodllR.dll is the same file in 1.00, 1.10, 1.20 and 1.30: its Rich header lists 19
+# C++ objects from VC6 SP4's compiler (Utc12_CPP 8799), so every version builds it with 6.4.
+# Its own C++ uses exception handling (EH funclets in LHAudioAtmos, LHAudioBank,
+# LHAudioSample and LHAudioSystem) and has no RTTI.
+lhaudio_compiler_version = "MSVC/6.4"
+if lhaudio_compiler_version != config.linker_version:
+    config.extra_compilers[lhaudio_compiler_version] = ("compilers_msvc", "6.4")
+cflags_lhaudio = [
+    *(f.replace(config.linker_version, lhaudio_compiler_version) for f in cflags_base if f != "/GR"),
+    "/GX",
+    # Qmixer.h, the header of QSound's QMixer 5.00 SDK whose QMixer.dll it imports.
+    "/I", "orig/libs/qmixer-5.00",
+    "/DLH_AUDIO_EXPORTS",
+]
+
+
+def AudioObject(completed, name, pch=True, **options):
+    return Object(completed, name, cflags=cflags_lhaudio, pch=lhaudio_pch if pch else None, **options)
+
+
+# The LHFile library objects LHaudiodllR.dll links.
+cflags_lhfile_audio = [f for f in cflags_lhaudio if f != "/DLH_AUDIO_EXPORTS"]
+
+# The zlib 1.1.3 objects it links for LHFile's compressed segments: the inflate side only.
+# The DLL is the same file in every version, so src/zlib's 1.00 executable cuts stay out.
+cflags_zlib_audio = [
+    *(f.replace(config.linker_version, lhaudio_compiler_version) for f in cflags_base if f != "/GR"),
+    "/UVERSION_BW1W100",
+]
+
+
 # LHLogR.dll: C++ exception handling (EH funclets in LHGenLog and LHVersion), no RTTI.
 cflags_lhlog = [
     *(f.replace(config.linker_version, lhlog_compiler_version) for f in cflags_base if f != "/GR"),
@@ -618,6 +676,10 @@ def GameCodeObject(completed, name, pch=True, **options):
 # LH3DLib's precompiled header. Its contents are those the units built with it need: the
 # reverse first-mention .bss order of /Yu is the only thing that reproduces their .bss.
 lh3dlib_pch = PrecompiledHeader("LH3DLibPCH.h", "src/Lionhead/LH3DLib/development/LH3DLibPCH.cpp")
+
+# LHaudiodllR.dll's precompiled header: its units' function-local statics sit in .bss in
+# reverse order of first mention, as only /Yu lays them out.
+lhaudio_pch = PrecompiledHeader("LHAudioPCH.h", "src/Lionhead/LHAudio/ver7.0/LHAudioPCH.cpp")
 
 
 # An LH3DLib object, compiled with cflags_lh3dlib (Pentium Pro, /G6) and counted
@@ -1177,7 +1239,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/PSysModifiers.cpp"),
             GameCodeObject(NonMatching, "Black/PSysPCreator.cpp"),
             GameCodeObject(NonMatching, "Black/PSysProcessInfo.cpp"),
-            GameCodeObject(Matching, "Black/PSysProperties.cpp", pch=PCH_PENDING),
+            GameCodeObject(NonMatching, "Black/PSysProperties.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/PSysRenderParticle.cpp"),
             GameCodeObject(NonMatching, "Black/PSysSave.cpp"),
             GameCodeObject(NonMatching, "Black/PSysShield.cpp"),
@@ -1739,23 +1801,39 @@ config.libs = [
     },
     {
         "lib": "LHAudio",
-        "compiler_version": config.linker_version,
-        "cflags": cflags_base,
+        "compiler_version": lhaudio_compiler_version,
+        "cflags": cflags_lhaudio,
         "progress_category": "sdk",
         "objects": [
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LH_AudioBank.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioAtmos.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioBank.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioHeap.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioMidi.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioMusic.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioRedbook.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioSample.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioSystem.cpp"),
-            Object(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioWave.cpp"),
-            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "libcmt64", "build\\intel\\mt_obj\\delete.obj", module="LHAudio", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "libcmt64", "build\\intel\\mt_obj\\new.obj", module="LHAudio", progress_category="sdk"),
+            AudioObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "Lionhead/LHAudio/ver7.0/LHAudioAtmos.cpp"),
+            AudioObject(NonMatching, "Lionhead/LHAudio/ver7.0/LHAudioBank.cpp"),
+            AudioObject(Matching, "Lionhead/LHAudio/ver7.0/LHAudioDebug.cpp"),
+            AudioObject(Matching, "Lionhead/LHAudio/ver7.0/LHAudioErrors.cpp"),
+            AudioObject(Matching, "Lionhead/LHAudio/ver7.0/LHAudioHeap.cpp"),
+            AudioObject(Matching, "Lionhead/LHAudio/ver7.0/LHAudioListener.cpp"),
+            AudioObject(Matching, "Lionhead/LHAudio/ver7.0/LHAudioMidi.cpp"),
+            AudioObject(NonMatching, "Lionhead/LHAudio/ver7.0/MPGAudioDecoder.cpp"),
+            AudioObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "Lionhead/LHAudio/ver7.0/LHAudioMusic.cpp"),
+            AudioObject(Matching, "Lionhead/LHAudio/ver7.0/LHAudioRedbook.cpp"),
+            AudioObject(Matching, "Lionhead/LHAudio/ver7.0/LHAudioRegistry.cpp"),
+            AudioObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "Lionhead/LHAudio/ver7.0/LHAudioSample.cpp"),
+            AudioObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "Lionhead/LHAudio/ver7.0/LHAudioSystem.cpp"),
+            AudioObject(Matching, "Lionhead/LHAudio/ver7.0/LHAudioWave.cpp"),
+            AudioObject(Matching, "Lionhead/LHAudio/ver7.0/Version.cpp"),
+            # LHFile ver3.0, built with asserts, linked from its static library.
+            Object(NonMatching, "LHAudio/LHFile/ver3.0/LHFile.cpp", source="Lionhead/LHFile/ver3.0/LHFile.cpp", cflags=cflags_lhfile_audio),
+            Object(NonMatching, "LHAudio/LHFile/ver3.0/LHOSFile.cpp", source="Lionhead/LHFile/ver3.0/LHOSFile.cpp", cflags=cflags_lhfile_audio),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/uncompr.c", source="zlib/uncompr.c", cflags=cflags_zlib_audio, progress_category="sdk"),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/inflate.c", source="zlib/inflate.c", cflags=cflags_zlib_audio, progress_category="sdk"),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/infblock.c", source="zlib/infblock.c", cflags=cflags_zlib_audio, progress_category="sdk"),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/adler32.c", source="zlib/adler32.c", cflags=cflags_zlib_audio, progress_category="sdk"),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/zutil.c", source="zlib/zutil.c", cflags=cflags_zlib_audio, progress_category="sdk"),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/infcodes.c", source="zlib/infcodes.c", cflags=cflags_zlib_audio, progress_category="sdk"),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/inftrees.c", source="zlib/inftrees.c", cflags=cflags_zlib_audio, progress_category="sdk"),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/infutil.c", source="zlib/infutil.c", cflags=cflags_zlib_audio, progress_category="sdk"),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/inffast.c", source="zlib/inffast.c", cflags=cflags_zlib_audio, progress_category="sdk"),
+            LibObject(Matching, "libcmt64", "build\\intel\\mt_obj\\delete.obj", module="LHAudio", progress_category="sdk"),
+            LibObject(Matching, "libcmt64", "build\\intel\\mt_obj\\new.obj", module="LHAudio", progress_category="sdk"),
             LibObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "libcmt64", "build\\intel\\mt_obj\\trnsctrl.obj", module="LHAudio", progress_category="sdk"),
             LibObject(Matching, "libcmt64", "build\\intel\\mt_obj\\exsup.obj", module="LHAudio", progress_category="sdk"),
             LibObject(Matching, "libcmt64", "build\\intel\\mt_obj\\rand.obj", module="LHAudio", progress_category="sdk"),

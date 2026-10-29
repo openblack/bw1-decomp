@@ -1868,6 +1868,14 @@ modules:
   name: LHAudio
   symbols: config/BW1W100/LHAudio/symbols.txt
   splits: config/BW1W100/LHAudio/splits.txt
+  generate_exports: true
+  generate_imports: true
+  add_relocations:
+  # init_layer3 fills pow2_2[i] for i from -16: the displacement is pow2_2 - 0x40, inside Midi's statics.
+    - source: 0x1000904F
+      type: x86_abs32
+      target: _pow2_2
+      addend: -0x40
 
 - object: lhlogr.dll
   hash: 30a92037f5b0df604e5fa63aedb4633a6fcdb226

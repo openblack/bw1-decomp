@@ -654,6 +654,10 @@ add_relocations:
 timestamp: "2017-06-23T11:48:16+00:00"
 force_size: 0x008BDC00
 linker_version: "6.0"
+# LHaudiodllR.dll was linked with /OPT:REF (see configure.py), which only collects COMDATs:
+# keep the split's function sections plain so that only what a recompiled unit holds beyond
+# the shipped image can be collected.
+function_comdat: false
 size_of_code: 0x4D8000
 size_of_initialized_data: 0x777000
 size_of_image: 0xC55200

@@ -49,7 +49,7 @@ public:
 	uint32_t (*custom_set_file_pointer_function)(uint32_t distance_to_move, uint32_t move_method, void* user_data);
 	void*        CustomFunctionUserData;
 	LH_FILE_MODE FileMode;
-	uint32_t     SegmentOpened;
+	uint32_t     SegmentOpenFlag;
 	uint32_t     segment_size;
 	uint32_t     CurrentFileOffset;
 	uint32_t     SegmentOffset;
@@ -81,7 +81,7 @@ public:
 		custom_write_function = NULL;
 		custom_read_function = NULL;
 		custom_set_file_pointer_function = NULL;
-		SegmentOpened = 0;
+		SegmentOpenFlag = 0;
 		segment_size = 0;
 		CurrentFileOffset = 0;
 		SegmentOffset = 0;
@@ -112,6 +112,15 @@ public:
 	LHSegmentDesc* Lookup(char* segment_name);
 	// BW1W120 007bdcd0 BW1M119 010050d0 (LHCombined Release)
 	uint32_t SetLHFilePointer(char* segment_name, int offset);
+	// BW1W120 007bdd60 BW1M119 01168fe0 (LHCombined Release)
+	uint32_t GetSegmentSize(char* segment_name);
+	// BW1W120 inlined BW1M119 inlined
+	uint32_t GetSegmentSize()
+	{
+		if (!SegmentOpenFlag)
+			return LH_FILE_RESULT_ERROR;
+		return GetSegmentSize(segment_name);
+	}
 	// BW1W120 007bddd0 BW1M119 01168df0 (LHCombined Release)
 	uint32_t GetSegment(char* param_2, LHSegment* segment, int param_4);
 	// BW1W120 007bdec0 BW1M119 01004fd0 (LHCombined Release)
