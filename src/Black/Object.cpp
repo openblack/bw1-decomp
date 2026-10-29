@@ -18,6 +18,7 @@
 #include <Lionhead/LH3DLib/development/SmokyStuff.h>
 #include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
+#include <Lionhead/LHLib/ver5.0/RPHolder.h>
 #include "re_common.h"
 #include "chlasm/AllMeshes.h"
 #include <chlasm/LHSample.h>

@@ -8,6 +8,8 @@
 
 #include "RPAvoid.h" /* For struct RPAvoid */
 
+#define RPHOLDER_BLOCKED -2
+
 // Forward Declares
 
 struct Point2D;
@@ -17,8 +19,8 @@ struct RPHolder
 {
 	RPAvoid   AvoidArray[0x4000];
 	int       AvoidCount;
-	Point2D*  field_0x50004;
-	Point2D*  field_0x50008;
+	Point2D*  IgnoredDest;
+	Point2D*  IgnoredStart;
 	int       MinSquareX;
 	int       MinSquareZ;
 	int       MaxSquareX;
@@ -50,10 +52,16 @@ struct RPHolder
 	bool32_t SquareDoesNotContain(int object_id, int x, int z);
 	// BW1W120 0083b450 BW1M119 010aa7b0 (LHCombined Release)
 	void AddObject(int object_id, const Point2D& point, float radius, int update);
-	// win1.41 0083b860 mac 100ac020 RPHolder::GetSidePointOfStartObject(int, Point2D const &, Point2D &, int)
-	uint32_t GetSidePointOfStartObject(int param_1, Point2D* param_2, Point2D* param_3, int param_4);
+	// BW1W120 0083b860 BW1M119 010aa3f0 (LHCombined Release)
+	bool32_t GetSidePointOfStartObject(int avoid, const Point2D& from, Point2D& side_point, int side);
+	// BW1W120 0083b9e0 BW1M119 010aa170 (LHCombined Release)
+	bool32_t WorkOutSidePoints(int avoid, int side, Point2D& side_point, int dest_avoid, int dest_side,
+	                           Point2D& dest_point);
 	// BW1W120 0083bb60 BW1M119 010a9930 (LHCombined Release)
 	int GetFirstObject(const Point2D& start, Point2D& end, int ignore_avoid, Point2D& hit, int& hit_side, float margin);
+	// BW1W120 0083c2d0 BW1M119 010a9110 (LHCombined Release)
+	bool32_t GetNearestPossiblePointRoundObjectToPoint(int avoid, int side, Point2D& point, const Point2D& from,
+	                                                   int& blocking_object);
 };
 
 static_assert(sizeof(RPHolder) == 0x6402c, "RPHolder size is incorrect");

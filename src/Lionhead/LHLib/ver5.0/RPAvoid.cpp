@@ -41,7 +41,7 @@ RouteNode::RouteNode(RouteNode* node)
 	*this = *node;
 	Next = NULL;
 	Prev = NULL;
-	field_0x18 = 0;
+	OnStartObject = false;
 }
 
 RouteNode::RouteNode(RouteNode* prev, bool32_t arc, const Point2D& start, const Point2D& end, int avoid, int side)
@@ -53,7 +53,7 @@ RouteNode::RouteNode(RouteNode* prev, bool32_t arc, const Point2D& start, const 
 	Side = (ROUTE_NODE_SIDE)side;
 	Prev = prev;
 	Next = NULL;
-	field_0x18 = 0;
+	OnStartObject = false;
 }
 
 float RouteNode::GetLength(RPAvoid* avoid)
@@ -157,7 +157,7 @@ Route::Route()
 {
 	Head = Tail = NULL;
 	NextRoute = NULL;
-	field_0xc = 1;
+	Improved = true;
 }
 
 Route::Route(Route* route)
@@ -171,7 +171,7 @@ Route::Route(Route* route)
 		Tail = Tail->Next;
 	}
 	NextRoute = NULL;
-	field_0xc = route->field_0xc;
+	Improved = route->Improved;
 }
 
 Route::~Route()

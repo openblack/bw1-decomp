@@ -1766,7 +1766,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/RPFollow.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LHLib/ver5.0/RPAvoid.cpp", extra_cflags=cflags_route_planner, pch=True),
-            Object(NonMatching, "Lionhead/LHLib/ver5.0/RPlan.cpp", progress_category="sdk", extra_cflags=["/G6", "/GX"]),
+            LH3DLibObject(NonMatching, "Lionhead/LHLib/ver5.0/RPlan.cpp", extra_cflags=["/GX", *cflags_route_planner], pch=True),
 
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\_ios.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\fstream.obj", progress_category="sdk"),

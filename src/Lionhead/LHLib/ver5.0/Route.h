@@ -23,7 +23,7 @@ public:
 	Point2D         End;
 	int             Avoid;
 	ROUTE_NODE_SIDE Side;
-	int             field_0x18;
+	bool32_t        OnStartObject;
 	bool32_t        Arc;
 	float           Length;
 	RouteNode*      Next;
@@ -51,7 +51,7 @@ struct Route
 	RouteNode* Head;
 	RouteNode* Tail;
 	Route*     NextRoute;
-	int        field_0xc;
+	bool32_t   Improved;
 
 	// BW1W120 00869380 BW1M119 010a6b10 (LHCombined Release)
 	Route();

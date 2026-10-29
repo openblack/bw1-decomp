@@ -7,11 +7,12 @@
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 
-#include "Game.h"       /* For GGame */
-#include "GameOSFile.h" /* For GameOSFile */
-#include "PuzzleGame.h" /* For PuzzleGame::AppliedMapPos */
-#include "Script.h"     /* For GScript::DeleteAllScriptCreatedGameThings */
-#include "Waterfall.h"  /* For GWaterfall::DesignedWaterFallNeedsReset */
+#include "FootpathFinder.h" /* For GFootpathFinder::GameTurnProcess */
+#include "Game.h"           /* For GGame */
+#include "GameOSFile.h"     /* For GameOSFile */
+#include "PuzzleGame.h"     /* For PuzzleGame::AppliedMapPos */
+#include "Script.h"         /* For GScript::DeleteAllScriptCreatedGameThings */
+#include "Waterfall.h"      /* For GWaterfall::DesignedWaterFallNeedsReset */
 #ifdef VERSION_BW1WCI
 #include "Abode.h"          /* For class Abode */
 #include "Cannon.h"         /* For class Cannon */
