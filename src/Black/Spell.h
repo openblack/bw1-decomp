@@ -210,6 +210,34 @@ public:
 	float GetSpellStrength();
 	// BW1W120 007213b0 BW1M119 0151e1d0
 	void ClearSpellSeedLink();
+	// BW1W120 007201e0 BW1M119 01520710
+	bool32_t NetUnsafeIsMyInterfaceCasting();
+	// BW1W120 00720220 BW1M119 015205b0
+	bool32_t IsCreatureCasting();
+	// BW1W120 00720230 BW1M119 01520570
+	bool32_t IsHumanPlayerCasting();
+	// BW1W120 00720270 BW1M119 01520470
+	bool32_t IsScriptCasting();
+	// BW1W120 007202c0 BW1M119 015203d0
+	float GetSpellMagnitude();
+	// BW1W120 00720390 BW1M119 0108f420
+	void ProcessMaintainRequests();
+	// BW1W120 007204d0 BW1M119 0151fd20
+	bool32_t ProcessMaintainRequest();
+	// BW1W120 00720660 BW1M119 0151fbf0
+	float CoreProcess();
+	// BW1W120 00720880 BW1M119 0151f7b0
+	float GetChantSafetyLevel();
+	// BW1W120 00720990 BW1M119 0151f500
+	float PayFor(float cost, bool param_2);
+	// BW1W120 00720a90 BW1M119 0151f450
+	float PayForOneEvent();
+	// BW1W120 00720c30 BW1M119 0151ebc0
+	bool32_t ApplyDefaultSpellEffect(const SpellEventInfo& info);
+	// BW1W120 007213d0 BW1M119 0151e0a0
+	void CreateSpellPoint(float param_1, int param_2);
+	// BW1W120 007216f0 BW1M119 0151db80
+	float GetTribalPower();
 };
 
 #endif /* BW1_DECOMP_SPELL_INCLUDED_H */
