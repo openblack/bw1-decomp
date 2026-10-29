@@ -10,6 +10,8 @@
 
 #include "TempleRoom.h" /* For class TempleRoom */
 
+#define WORLD_ROOM_STATISTICS_TEXT_CAPACITY 8192
+
 // Forward Declares
 
 struct CallbackData;
@@ -45,7 +47,7 @@ public:
 	// BW1W120 00c2a4fc
 	static bool32_t DisplayChallenges;
 	// BW1W120 00e36158
-	static wchar_t WorldStatisticsText[0x2000];
+	static wchar_t WorldStatisticsText[WORLD_ROOM_STATISTICS_TEXT_CAPACITY];
 	// BW1W120 00e3a194
 	static float MarkerAngle;
 	// BW1W120 00e3a198
