@@ -423,7 +423,8 @@ public:
 	// BW1W120 0077cfe0 BW1M119 null
 	void StopDanceEffects();
 	// BW1W120 0077cff0 BW1M119 null
-	void     UpdateDanceEffects(); // BW1W120 0077b9a0 BW1M119 null
+	void UpdateDanceEffects();
+	// BW1W120 0077b9a0 BW1M119 null
 	bool32_t ValidateDance();
 #ifndef VERSION_BW1W100
 	// BW1W120 0077c740 BW1M119 null

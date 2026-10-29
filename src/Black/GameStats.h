@@ -298,11 +298,11 @@ public:
 	uint32_t                         NumCreatureAngryCast;
 	uint32_t                         NumCreatureItchyCast;
 #if defined(VERSION_BW1WCI)
-	uint32_t                         CreatureIsleStat0x1120;
-	uint32_t                         CreatureIsleStat0x1124;
+	uint32_t CreatureIsleStat0x1120;
+	uint32_t CreatureIsleStat0x1124;
 #endif
-	float                            TotalChantsUsed;
-	uint32_t                         TotalNumSacrifices;
+	float    TotalChantsUsed;
+	uint32_t TotalNumSacrifices;
 
 	// Constructors
 
