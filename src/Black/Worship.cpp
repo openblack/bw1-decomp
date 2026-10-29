@@ -80,7 +80,9 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #define FILEPATH "C:\\dev\\MP\\Black\\Worship.cpp"
 #endif
 
-#if defined(VERSION_BW1WCI)
+#if defined(VERSION_BW1W100)
+#define WORSHIP_LINE(line) ((line) - ((line) > 242 ? 1 : 0))
+#elif defined(VERSION_BW1WCI)
 #define WORSHIP_LINE(line) ((line) + ((line) > 1390 ? 1 : 0))
 #else
 #define WORSHIP_LINE(line) (line)
@@ -239,7 +241,9 @@ void WorshipSite::RemovePotFromStructure(PotStructure* pot)
 	{
 		FoodPot = NULL;
 	}
+#if !defined(VERSION_BW1W100)
 	MultiMapFixed::RemovePotFromStructure(pot);
+#endif
 }
 
 bool32_t WorshipSite::GetInspectObjectPos(Villager* villager, MapCoords* pos)
@@ -748,7 +752,7 @@ bool32_t WorshipSite::IsBuilt()
 
 MultiMapFixed* WorshipSite::GetBuildingObjectForSpellIcon()
 {
-	uint32_t       random = GRand::GameRand(WORSHIP_SITE_SPELL_ICON_BUILD_RANDOM_RANGE, FILEPATH, 1013);
+	uint32_t       random = GRand::GameRand(WORSHIP_SITE_SPELL_ICON_BUILD_RANDOM_RANGE, FILEPATH, WORSHIP_LINE(1013));
 	MultiMapFixed* building = this;
 	float          lowest = GetPercentBuilt();
 	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
