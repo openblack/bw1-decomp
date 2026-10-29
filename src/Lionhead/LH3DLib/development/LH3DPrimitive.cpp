@@ -30,7 +30,7 @@ int      LH3DPrimitive::g_envmaptable[LH3D_ENV_MAP_TABLE_SIZE] = {1, 3, 7, 4, 5,
 bool32_t LH3DPrimitive::g_do_vertex_blending = true;
 float    LH3DPrimitive::g_size_fine_wall = 0.2f;
 float    LH3DPrimitive::g_size_thick_wall = 0.35f;
-int      LH3DPrimitive::g_draw_depth = 1;
+bool32_t LH3DPrimitive::g_draw_depth = true;
 
 LHPoint        LH3DPrimitive::g_vect_light(1.0f, 0.0f, 0.0f);
 float          LH3DPrimitive::g_fog_max;
@@ -3059,7 +3059,7 @@ void LH3DPrimitive::DrawSnow()
 void LH3DPrimitive::DrawEnvMapMT()
 {
 	int envMap = LH3DObject::g_env_map_mode;
-	if (!envMap)
+	if (envMap == LH3D_MATERIAL_ENV_MAP_NONE)
 	{
 		envMap = Material.GetEnvMap();
 	}

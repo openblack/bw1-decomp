@@ -308,6 +308,9 @@ enum GROSSE_MERDE
 // BW1W120 00ea1c88 BW1M119 012dbfbc (LHCombined Release)
 extern LHPoint DEFAULT_SUN;
 
+// BW1W120 00ea1d88 BW1M119 012dc178 (LHCombined Release)
+extern LHMatrix g_mat_paper;
+
 // Set by LHScreen when one of the display devices is a 3dfx Voodoo.
 // BW1W120 00ea9e9c BW1M119 012dc174 (LHCombined Release)
 extern bool32_t g_b_any_voodoo;

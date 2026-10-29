@@ -743,26 +743,24 @@ void LH3DRender::SetCurD3DMat(bool lit, unsigned long color, unsigned long specu
 
 	if (first_in_frame || lit != last_lit || color != last_color || specular != last_specular)
 	{
-		g_d3d_mat.specular.b = (float)(specular & LH3D_COLOR_CHANNEL_MASK) * LH3D_RENDER_COLOR_SCALE;
-		g_d3d_mat.specular.g =
-			(float)((specular >> LH3D_COLOR_GREEN_SHIFT) & LH3D_COLOR_CHANNEL_MASK) * LH3D_RENDER_COLOR_SCALE;
+		g_d3d_mat.specular.b = (float)RGBA_GETBLUE(specular) * LH3D_RENDER_COLOR_SCALE;
+		g_d3d_mat.specular.g = (float)RGBA_GETGREEN(specular) * LH3D_RENDER_COLOR_SCALE;
 		last_specular = specular;
-		g_d3d_mat.specular.r =
-			(float)((specular >> LH3D_COLOR_RED_SHIFT) & LH3D_COLOR_CHANNEL_MASK) * LH3D_RENDER_COLOR_SCALE;
+		g_d3d_mat.specular.r = (float)RGBA_GETRED(specular) * LH3D_RENDER_COLOR_SCALE;
 		first_in_frame = false;
 		last_lit = lit;
 		last_color = color;
-		g_d3d_mat.specular.a = (float)(specular >> LH3D_COLOR_ALPHA_SHIFT) * LH3D_RENDER_COLOR_SCALE;
+		g_d3d_mat.specular.a = (float)RGBA_GETALPHA(specular) * LH3D_RENDER_COLOR_SCALE;
 		if (lit)
 		{
 			float light = (LH3D_RENDER_LIGHT_LEVELS - LH3DPrimitive::MIN_LIGHT) * LH3D_RENDER_LIGHT_SCALE;
-			float b = (float)(color & LH3D_COLOR_CHANNEL_MASK);
+			float b = (float)RGBA_GETBLUE(color);
 			g_d3d_mat.diffuse.b = b * light;
-			float g = (float)((color >> LH3D_COLOR_GREEN_SHIFT) & LH3D_COLOR_CHANNEL_MASK);
+			float g = (float)RGBA_GETGREEN(color);
 			g_d3d_mat.diffuse.g = g * light;
-			float r = (float)((color >> LH3D_COLOR_RED_SHIFT) & LH3D_COLOR_CHANNEL_MASK);
+			float r = (float)RGBA_GETRED(color);
 			g_d3d_mat.diffuse.r = r * light;
-			g_d3d_mat.diffuse.a = (float)(color >> LH3D_COLOR_ALPHA_SHIFT) * LH3D_RENDER_COLOR_SCALE;
+			g_d3d_mat.diffuse.a = (float)RGBA_GETALPHA(color) * LH3D_RENDER_COLOR_SCALE;
 			light = LH3DPrimitive::MIN_LIGHT * LH3D_RENDER_LIGHT_SCALE;
 			g_d3d_mat.ambient.b = b * light;
 			g_d3d_mat.ambient.g = g * light;
@@ -771,16 +769,13 @@ void LH3DRender::SetCurD3DMat(bool lit, unsigned long color, unsigned long specu
 		}
 		else
 		{
-			g_d3d_mat.ambient.b = (float)(color & LH3D_COLOR_CHANNEL_MASK) * LH3D_RENDER_COLOR_SCALE;
-			g_d3d_mat.ambient.g =
-				(float)((color >> LH3D_COLOR_GREEN_SHIFT) & LH3D_COLOR_CHANNEL_MASK) * LH3D_RENDER_COLOR_SCALE;
+			g_d3d_mat.ambient.b = (float)RGBA_GETBLUE(color) * LH3D_RENDER_COLOR_SCALE;
+			g_d3d_mat.ambient.g = (float)RGBA_GETGREEN(color) * LH3D_RENDER_COLOR_SCALE;
 			g_d3d_mat.diffuse.r = 0.0f;
 			g_d3d_mat.diffuse.g = 0.0f;
 			g_d3d_mat.diffuse.b = 0.0f;
-			g_d3d_mat.ambient.r =
-				(float)((color >> LH3D_COLOR_RED_SHIFT) & LH3D_COLOR_CHANNEL_MASK) * LH3D_RENDER_COLOR_SCALE;
-			g_d3d_mat.diffuse.a = g_d3d_mat.ambient.a =
-				(float)(color >> LH3D_COLOR_ALPHA_SHIFT) * LH3D_RENDER_COLOR_SCALE;
+			g_d3d_mat.ambient.r = (float)RGBA_GETRED(color) * LH3D_RENDER_COLOR_SCALE;
+			g_d3d_mat.diffuse.a = g_d3d_mat.ambient.a = (float)RGBA_GETALPHA(color) * LH3D_RENDER_COLOR_SCALE;
 		}
 		D3DDevice->SetMaterial(&g_d3d_mat);
 	}
@@ -1645,7 +1640,7 @@ void LH3DRender::StartFrame()
 		fldcw new_control_word
 		fwait
 	    }
-	LH3DObject::g_count_static_object = 0;
+	caca_static_draw = 0;
 	unsigned long now =
 		(unsigned long)((float)(GetTickCount() - LH3DTech::g_timer.TickCount) * LH3DTech::g_timer.SpeedUpFactor +
 	                    (float)(uint32_t)LH3DTech::g_timer.ElapsedTime);
@@ -2037,10 +2032,10 @@ void __fastcall LH3DRender::DrawTriangleFastBlending(Vertex3D* vertices, unsigne
 		}
 	}
 	DrawAndClip(D3DPT_TRIANGLELIST, D3DFVF_TLVERTEX, vertices, vertex_count, indices, index_count);
-	unsigned long alpha = (unsigned long)LH3DObject::g_current_object_in_draw->Alpha << LH3D_COLOR_ALPHA_SHIFT;
+	unsigned long alpha = RGBA_MAKE(0, 0, 0, LH3DObject::g_current_object_in_draw->Alpha);
 	for (unsigned long i = 0; i < vertex_count; i++)
 	{
-		vertices[i].color = (vertices[i].color & LH3D_COLOR_RGB_MASK) | alpha;
+		vertices[i].color = RGBA_TORGB(vertices[i].color) | alpha;
 	}
 	LH3DMaterial* material = LH3DObject::g_fb_list_mat[LH3DPrimitive::g_current_index_primitive];
 	LH3DMaterial::SetGlobalAlpha(true);

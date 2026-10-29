@@ -8,6 +8,7 @@
 #include <chlasm/AllMeshes.h> /* For MAX_COUNT_3D_MESHES */
 
 #include "LH3DBoundingBox.h" /* For struct LH3DBoundingBox */
+#include "LH3DColor.h"       /* For LH3D_BLEND_COLOR */
 #include "LHMatrix.h"        /* For struct LHMatrix */
 
 #include <re_common.h> /* For bool32_t */
@@ -40,10 +41,21 @@ enum LH3D_MESH_FLAGS
 
 #define LH3D_MESH_LIST_MATRIX_SIZE 256
 
-#define LH3D_MESH_LOD_NEAR 1
+enum LH3D_MESH_LOD_LEVEL
+{
+	LH3D_MESH_LOD_LEVEL_NEAR,
+	LH3D_MESH_LOD_LEVEL_MEDIUM,
+	LH3D_MESH_LOD_LEVEL_FAR,
+	LH3D_MESH_LOD_LEVEL_LAST
+};
+
+#define LH3D_MESH_LOD_NEAR   0x1
+#define LH3D_MESH_LOD_MEDIUM 0x2
+#define LH3D_MESH_LOD_FAR    0x4
 
 // Forward Declares
 
+struct ExtraBone;
 struct LH3DLODData;
 struct LH3DMaterial;
 struct LH3DMesh;
@@ -83,6 +95,13 @@ struct LH3DMeshUV2Data
 	uint32_t      Count; /* 0x8 */
 	float*        UVs;
 	LH3DMaterial* LightMaps; /* 0x10 */
+};
+
+struct LH3DMeshExtraMetrics
+{
+	uint32_t  Size; /* 0x0 */
+	long      Count;
+	LHMatrix* Matrices; /* 0x8 */
 };
 
 struct LH3DMeshPack
@@ -194,6 +213,17 @@ struct LH3DMesh
 	static LHMatrix* GetCurrentMatrix();
 	// BW1W120 inlined BW1M119 01034700 (LHCombined Release)
 	static LHMatrix* GetListMatrix() { return g_current_list_matrix; }
+	// BW1W120 inlined BW1M119 01029450 (LHCombined Release)
+	static void InitMatrixDrawing() { g_current_matrix = g_current_list_matrix; }
+	// BW1W120 inlined BW1M119 01029220 (LHCombined Release)
+	static void UpdateMatrixDrawing(long count) { g_current_matrix += count; }
+	// Inliner IL size: 24
+	// BW1W120 inlined BW1M119 inlined
+	static void SetColorSpecular(unsigned long color, unsigned long specular)
+	{
+		g_color = color;
+		g_specular = specular;
+	}
 
 	// Non-virtual methods
 
@@ -220,6 +250,10 @@ struct LH3DMesh
 	bool32_t IsContainsNameData() { return flags & LH3D_MESH_FLAGS_CONTAINS_NAME_DATA; }
 	// BW1W120 inlined BW1M119 01010da0
 	bool32_t IsContainsExtraMetrics() { return flags & LH3D_MESH_FLAGS_CONTAINS_EXTRA_METRICS; }
+	// BW1W120 inlined BW1M119 0100c110 (LHCombined Release)
+	LHPoint* GetExtraPos() { return ExtraPos; }
+	// BW1W120 null BW1M119 0107d930 (LHCombined Release)
+	ExtraBone* GetExtraBoneData();
 	// BW1W120 inlined BW1M119 01026f40
 	bool32_t IsContainsEBone() { return flags & LH3D_MESH_FLAGS_CONTAINS_EBONE; }
 	// BW1W120 inlined BW1M119 013eae60
@@ -341,36 +375,39 @@ struct LH3DMesh
 		{
 			return *(uint32_t*)GetEBoneData();
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
-	// BW1W120 inlined BW1M119 inlined
+	// BW1W120 0080d9b0 BW1M119 0107d800 (LHCombined Release)
 	uint8_t* GetTnLData()
 	{
+		uint8_t* data;
 		if (!IsContainsTnLData())
 		{
-			return NULL;
+			data = NULL;
 		}
 		else
 		{
-			return (uint8_t*)FootprintData + (GetSizeFootprintData() + GetSizeUV2Data() + GetSizeNameData() +
+			data = (uint8_t*)FootprintData + (GetSizeFootprintData() + GetSizeUV2Data() + GetSizeNameData() +
 			                                  GetSizeEMetricsData() + GetSizeEBone());
 		}
+		return data;
 	}
+	// Inliner IL size: 57
 	// BW1W120 00403a30 BW1M119 013e4e70
 	uint32_t GetSizeTnLData()
 	{
+		uint32_t size;
 		if (IsContainsTnLData())
 		{
-			return *(uint32_t*)GetTnLData();
+			size = *(uint32_t*)GetTnLData();
 		}
 		else
 		{
-			return 0;
+			size = 0;
 		}
+		return size;
 	}
+	// Inliner IL size: 92
 	// BW1W120 inlined BW1M119 inlined
 	uint8_t* GetNewEPData()
 	{
@@ -378,11 +415,8 @@ struct LH3DMesh
 		{
 			return NULL;
 		}
-		else
-		{
-			return (uint8_t*)FootprintData + (GetSizeFootprintData() + GetSizeUV2Data() + GetSizeNameData() +
-			                                  GetSizeEMetricsData() + GetSizeEBone() + GetSizeTnLData());
-		}
+		return (uint8_t*)FootprintData + (GetSizeFootprintData() + GetSizeUV2Data() + GetSizeNameData() +
+		                                  GetSizeEMetricsData() + GetSizeEBone() + GetSizeTnLData());
 	}
 	// BW1W120 00805cb0 BW1M119 0106bea0 (LHCombined Release)
 	void DrawLOD(LH3DLODData* lod_data, int lod);
@@ -439,6 +473,21 @@ struct LH3DMesh
 	void __fastcall DrawInShadow(TShadowInfo* shadow) const;
 	// BW1W120 0080b150 BW1M119 010643a0 (LHCombined Release)
 	void __fastcall DrawInShadowTnL(TShadowInfo* shadow) const;
+	// BW1W120 0080c790 BW1M119 inlined
+	void __fastcall DrawReverse(bool32_t lit);
+	// Inliner IL size: 152
+	// BW1W120 inlined BW1M119 inlined
+	void __fastcall Draw(bool32_t lit);
+	// BW1W120 inlined BW1M119 inlined
+	void DrawTnL();
+	// BW1W120 inlined BW1M119 inlined
+	void __fastcall DrawUnclipped(bool32_t lit);
+	// Inliner IL size: 87
+	// BW1W120 inlined BW1M119 inlined
+	void DrawComplex();
+	// Inliner IL size: 101
+	// BW1W120 inlined BW1M119 inlined
+	void DrawFroz();
 	// BW1W120 0080b2a0 BW1M119 01064250 (LHCombined Release)
 	long GetTriangleCountDrawable();
 	// BW1W120 0080b2e0 BW1M119 01064140 (LHCombined Release)
@@ -450,5 +499,12 @@ extern bool32_t g_b_from_l3d;
 
 // BW1W120 00808890 BW1M119 01066e00 (LHCombined Release)
 void __fastcall ComputeNornal(LH3DMesh* mesh);
+
+// Inliner IL size: 89
+// BW1W120 inlined BW1M119 inlined
+inline unsigned long LH3DBlendColor(unsigned long from, unsigned long to, uint8_t amount)
+{
+	return LH3D_BLEND_COLOR(from, to, amount);
+}
 
 #endif /* BW1_DECOMP_LH3D_MESH_INCLUDED_H */

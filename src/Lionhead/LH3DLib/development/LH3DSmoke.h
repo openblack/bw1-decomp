@@ -29,9 +29,7 @@ struct LH3DSmoke
 	uint8_t       field_0x70[0xa];
 	LHPoint       field_0x7c[0xa];
 	LH3DMaterial* material; /* 0xf4 */
-	float         field_0xf8;
-	float         field_0xfc;
-	float         field_0x100;
+	LHPoint       offset;
 	float         field_0x104;
 	uint32_t      field_0x108;
 	LH3DColor     color;
@@ -43,10 +41,15 @@ struct LH3DSmoke
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 inlined
+	void SetMaterial(LH3DMaterial* new_material) { material = new_material; }
+
 	// BW1W120 007f8d10 BW1M119 010b3290 (LHCombined Release)
 	void Release();
 	// BW1W120 007f8d30 BW1M119 0100e790 (LHCombined Release)
 	void AddDrawing();
+	// BW1W120 007f8e00 BW1M119 01019840 (LHCombined Release)
+	void Draw();
 };
 
 #endif /* BW1_DECOMP_LH3D_SMOKE_INCLUDED_H */

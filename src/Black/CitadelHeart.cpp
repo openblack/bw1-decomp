@@ -313,7 +313,7 @@ TempleLeash::TempleLeash(LH3DObject* object, unsigned long player_number)
 		leash->collar->SetMesh(CollarMeshes[i], NULL, NULL);
 		leash->collar->SetPosition(pos, 0.0f, 1.0f);
 		leash->collar->SetDynamicLighting(true);
-		leash->collar->SetAnimatedUV_1(0.0f, i ? i * CREATURE_PEN_COLLAR_V_STEP : CREATURE_PEN_COLLAR_V_FIRST);
+		leash->collar->SetAnimatedUV(0.0f, i ? i * CREATURE_PEN_COLLAR_V_STEP : CREATURE_PEN_COLLAR_V_FIRST);
 		leash->collar->SetNeedSorting(true);
 		leash->CollarUVOffset = Random(0.0f, 1.0f);
 		leash->CollarXSpin = Random(0.0f, TWO_PI);
@@ -996,7 +996,7 @@ uint32_t CitadelHeart::Process()
 
 void CitadelHeart::DrawLantern()
 {
-	if (entrance != NULL && ((LH3DCitadel*)Game3dObject)->Stage > CITADEL_LANTERN_MIN_STAGE)
+	if (entrance != NULL && ((LH3DCitadel*)Game3dObject)->Life > CITADEL_LANTERN_MIN_STAGE)
 	{
 		if (entrance->lanterns[0] == NULL)
 		{
@@ -1028,7 +1028,7 @@ void CitadelHeart::DrawLantern()
 void CitadelHeart::DrawCreaturePen()
 {
 	Creature* creature = GetPlayer() != NULL ? GetPlayer()->GetCreature() : NULL;
-	if (((LH3DCitadel*)Game3dObject)->Stage == 1.0f && creature != NULL)
+	if (((LH3DCitadel*)Game3dObject)->Life == 1.0f && creature != NULL)
 	{
 		int        i = 0;
 		LEASH_TYPE types[LEASH_TYPE_LAST] = {LEASH_TYPE_EVIL, LEASH_TYPE_ROPE, LEASH_TYPE_GOOD};
@@ -1048,8 +1048,8 @@ void CitadelHeart::DrawCreaturePen()
 			Wrap(leash->CollarZSpin, TWO_PI);
 			leash->CollarUVOffset += CreaturePenUVSpeed * dt;
 			Wrap(leash->CollarUVOffset, 1.0f);
-			leash->collar->SetAnimatedUV_1(leash->CollarUVOffset,
-			                               i != 0 ? i * CREATURE_PEN_COLLAR_V_STEP : CREATURE_PEN_COLLAR_V_FIRST);
+			leash->collar->SetAnimatedUV(leash->CollarUVOffset,
+			                             i != 0 ? i * CREATURE_PEN_COLLAR_V_STEP : CREATURE_PEN_COLLAR_V_FIRST);
 			leash->collar->matrix = leash->Game3dObject->matrix;
 			LHMatrix rotation;
 			rotation.SetYXZMatrixOnly(0.0f, leash->CollarXSpin, leash->CollarZSpin);
@@ -1070,7 +1070,7 @@ void CitadelHeart::DrawCreaturePen()
 				}
 				leash->sprite->colour = (alpha << 24) | 0xc18119;
 				leash->sprite->material = g_smoke_additif_mat;
-				LHMatrix handMatrix = *hand->Matrix0x80;
+				LHMatrix handMatrix = *hand->BoneMatrices;
 				float    yAngle;
 				float    xAngle;
 				float    zAngle;
@@ -1306,7 +1306,7 @@ void CitadelHeart::CallVirtualFunctionsForCreation(const MapCoords& coords)
 		}
 		LH3DObject* object = LH3DObject::Create(LH3DObject::MORPHABLE);
 		entrance->Game3dObject = (Game3DObject*)object;
-		object->SetMesh((LH3DMesh*)Game3dObject->GetTempleEntrance(), NULL, NULL);
+		object->SetMesh(Game3dObject->GetTempleEntrance(), NULL, NULL);
 		SetPositionOnMap(entrance->Game3dObject, Pos, GetYAngle(), 1.0f);
 		object->UpdateMelting();
 		entrance->Heart = this;

@@ -2,6 +2,7 @@
 #define BW1_DECOMP_GLOW_VILLAGER_INCLUDED_H
 
 class LH3DObject;
+struct LHPoint;
 
 class GlowVillager
 {
@@ -13,6 +14,8 @@ public:
 
 	// BW1W120 00824400 BW1M119 0100ab40 (LHCombined Release)
 	static void SetNewFrame();
+	// BW1W120 008241b0 BW1M119 01010c30 (LHCombined Release)
+	static void AddGlow(LHPoint* pos, float scale);
 };
 
 #endif /* BW1_DECOMP_GLOW_VILLAGER_INCLUDED_H */

@@ -54,6 +54,18 @@ struct LH3DSprite
 		OffsetY *= size / Size;
 		Size = size;
 	}
+	// BW1W120 inlined BW1M119 inlined
+	void SetShape(float size, float aspect)
+	{
+		if (size < 0.0001f)
+		{
+			size = 0.0001f;
+		}
+		OffsetX *= size / Size;
+		OffsetY *= (size * aspect) / (Size * Aspect);
+		Size = size;
+		Aspect = aspect;
+	}
 	// BW1W120 008404f0 BW1M119 0100c840 (LHCombined Release)
 	void SetToZero();
 	// BW1W120 00840520 BW1M119 010b4e50 (LHCombined Release)

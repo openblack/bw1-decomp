@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 struct LH3DCitadelLevelOfDetail
 {
 	bool    Reflections;
@@ -17,6 +19,12 @@ struct LH3DLevelOfDetail
 {
 	// BW1W120 00c381e0 BW1M119 011ce84c (LHCombined Release)
 	static LH3DCitadelLevelOfDetail g_citadellod;
+	// BW1W120 00c3820c BW1M119 011ce878 (LHCombined Release)
+	static bool32_t g_b_draw_dynamic_shadow;
+	// BW1W120 00c38220 BW1M119 011ce88c (LHCombined Release)
+	static bool32_t g_b_objects_cast_shadow;
+	// BW1W120 00c38224 BW1M119 011ce890 (LHCombined Release)
+	static bool32_t g_b_dynamic_lighting_on_objects;
 };
 
 #endif /* BW1_DECOMP_LH3D_LEVEL_OF_DETAIL_INCLUDED_H */

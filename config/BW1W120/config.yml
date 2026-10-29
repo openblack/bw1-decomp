@@ -103,6 +103,8 @@ block_relocations:
   - source: 0x0040C26D
   - source: 0x0040C2FE
   - source: 0x0040CD4B
+# LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
+  - source: 0x0080B652
 add_relocations:
 # LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
   - source: 0x0082FEE3

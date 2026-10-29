@@ -2990,7 +2990,7 @@ void HelpDude::FinishAnimStack(LHMatrix& transform)
 	LH3DAnim::FinishTransform(BoneMatrices, Mesh, transform);
 	Object->SetPosition(LHPoint(BoneMatrices->_41, BoneMatrices->_42, BoneMatrices->_43), 0.0f, 1.0f);
 	Object->SetMesh(Mesh, NULL, NULL);
-	Object->Matrix0x80 = BoneMatrices;
+	Object->BoneMatrices = BoneMatrices;
 }
 
 void HelpDude::DrawHoverZones()

@@ -18,6 +18,8 @@ struct Vertex3D;
 #define LH3D_T_SHADOW_SCALE 0.00625f
 // The width and height of the alpha pattern g_bitmap points at.
 #define LH3D_T_SHADOW_BITMAP_SIZE 64
+// The width and depth of the piece of the world one shadow texture tile covers.
+#define LH3D_T_SHADOW_TILE_SIZE 160.0f
 
 // Renders object shadows into a texture, one scan line at a time.
 struct LH3DTShadow
@@ -34,6 +36,10 @@ struct LH3DTShadow
 		float    MaxV; /* 0x18 */
 	};
 
+	// BW1W120 00c398e4 BW1M119 011d1724 (LHCombined Release)
+	static float g_factorX;
+	// BW1W120 00c398e8 BW1M119 011d1728 (LHCombined Release)
+	static float g_factorZ;
 	// BW1W120 00c398ec BW1M119 011d172c (LHCombined Release)
 	static int g_pitch;
 	// BW1W120 00c398f0 BW1M119 011d1730 (LHCombined Release)

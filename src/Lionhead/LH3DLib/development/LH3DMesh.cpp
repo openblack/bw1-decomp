@@ -65,13 +65,6 @@ enum LH3D_MESH_LIGHT_MAP_DRAW
 	LH3D_MESH_LIGHT_MAP_DRAW_UV_REMAP = 2,
 };
 
-struct LH3DMeshExtraMetrics
-{
-	uint32_t  Size; /* 0x0 */
-	uint32_t  Count;
-	LHMatrix* Matrices; /* 0x8 */
-};
-
 struct LH3DTnLVertex
 {
 	LHPoint Position; /* 0x0 */

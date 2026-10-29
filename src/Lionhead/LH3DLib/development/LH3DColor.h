@@ -4,14 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-// A colour packed in an unsigned long is 0xAARRGGBB, a byte for each channel.
-#define LH3D_COLOR_CHANNEL_MASK 0xff
-#define LH3D_COLOR_GREEN_SHIFT  8
-#define LH3D_COLOR_RED_SHIFT    16
-#define LH3D_COLOR_ALPHA_SHIFT  24
-#define LH3D_COLOR_RGB_MASK     0xffffff
 // The alpha of an opaque colour.
 #define LH3D_COLOR_OPAQUE 0xff
+#define LH3D_COLOR_WHITE  0xffffffff
 
 struct LH3DColor
 {
@@ -60,6 +55,10 @@ struct LH3DColor
 	uint8_t GetG() { return g; }
 	// BW1W120 inlined BW1M119 012bb920
 	uint8_t GetB() { return b; }
+	// BW1W120 inlined BW1M119 010116d0 (LHCombined Release)
+	uint8_t GetA() { return a; }
+	// BW1W120 null BW1M119 010c2560 (LHCombined Release)
+	void Blend(LH3DColor& to, long amount);
 };
 
 // Moves each channel of from amount/256 of the way towards to; alpha is taken from to.

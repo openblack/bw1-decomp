@@ -25,6 +25,12 @@ static_assert(sizeof(MaterialProperties) == 0x5, "Data type is of wrong size");
 
 #define LH3D_ENV_MAP_TABLE_SIZE 16
 
+enum LH3D_MATERIAL_ENV_MAP
+{
+	LH3D_MATERIAL_ENV_MAP_NONE = 0,
+	LH3D_MATERIAL_ENV_MAP_ADDITIVE = 2,
+};
+
 struct LH3DMaterial
 {
 	// The rows of g_list_render_func_normal and g_list_render_func_global_alpha.
@@ -106,6 +112,9 @@ struct LH3DMaterial
 		g_count--;
 		texture = NULL;
 	}
+
+	// BW1W120 inlined BW1M119 010cf520 (LHCombined Release)
+	void Release() { texture = NULL; }
 
 	// Non-virtual methods
 

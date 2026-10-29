@@ -303,6 +303,12 @@ struct LH3DRender
 	// Inliner IL size: 214
 	// BW1W120 007ace50 BW1M119 inlined
 	static void SetMaterial(LH3DMaterial* material, int stage);
+	// Inliner IL size: 63
+	// BW1W120 inlined BW1M119 inlined
+	static void SetAnimUV(float delta_u, float delta_v);
+	// Inliner IL size: 18
+	// BW1W120 inlined BW1M119 inlined
+	static void SetDoUpdateMaterial(bool32_t do_update) { g_b_do_update_material = do_update; }
 	// BW1W120 inlined BW1M119 0102df20 (LHCombined Release)
 	static IDirect3DDevice7* GetD3DDevice() { return D3DDevice; }
 	// BW1W120 inlined BW1M119 0109f320 (LHCombined Release)
@@ -402,6 +408,22 @@ inline void LH3DRender::SetMaterial(LH3DMaterial* material, int stage)
 				SetRenderState(D3DRENDERSTATE_CULLMODE, material->IsDoubleSided() ? D3DCULL_NONE : D3DCULL_CCW);
 			}
 		}
+	}
+}
+
+inline void LH3DRender::SetAnimUV(float delta_u, float delta_v)
+{
+	if (delta_u == 0.0f && delta_v == 0.0f)
+	{
+		g_adv = 0.0f;
+		g_adu = 0.0f;
+		g_b_need_anim_uv = false;
+	}
+	else
+	{
+		g_adu = delta_u;
+		g_adv = delta_v;
+		g_b_need_anim_uv = true;
 	}
 }
 
