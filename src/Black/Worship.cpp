@@ -1,6 +1,7 @@
 #include "CitadelPart.h"
-#include "Town.h"
+#include "FootpathFinder.h"
 #include "WorshipSiteInfo.h"
+#include "Town.h"
 #include "GameTimeConstants.h"
 #include "TimerConstants.h"
 
@@ -41,7 +42,6 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "GameOSFile.h"
 #include "GameStats.h"
 #include "GJUtils.h"
-#include "FootpathFinder.h"
 #include "FootpathLink.h"
 #include "LandBalance.h"
 #include "Landscape.h"
