@@ -2245,7 +2245,9 @@ void Object::DoDeleteObjectAndTakeResource(Object* object, GInterfaceStatus* sta
 		options.SampleNumber = LH_SAMPLE_G_TREEMULCH_01 + mulchSample;
 		options.AttachedObject = object;
 		options.Positional = true;
-		options.Pos = pos;
+		options.XPos = pos.x;
+		options.YPos = pos.y;
+		options.ZPos = pos.z;
 		options.Follow = false;
 		GGlobal::Global.audio->PlaySoundEffect(&options);
 	}

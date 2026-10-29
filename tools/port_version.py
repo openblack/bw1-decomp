@@ -21,7 +21,12 @@ cannot silently corrupt the config. Dropped items are listed with --report.
                 through dtk's own analysis of the target.
   libraries     A unit that is a library object (the CRT) is the library's own bytes in every
                 build that links it: each of its sections is found by that content, relocated
-                fields left out, from the static libraries a build unpacked into build/lib.
+                fields left out, from the static libraries a build unpacked into build/lib. One
+                too short to search for (operator delete) is where the operands pointing at it say.
+  EH            A unit's funclets (.text$x) and FuncInfo tables (.xdata$x) are what its own EH
+                prologues point at, where their content changed too much to be found.
+  folded code   In a module DLL, a function the target's link merged with an identical one
+                (/OPT:ICF) is an alias of that body: the export table, vtables and callers say so.
   .CRT$XCU      A unit's slice of the initializer table is the run of entries that point into
                 the unit's placed .text (an object's slice only lists its own _$E functions).
   .bss          Has no content: every address comes from the operand pairs (reference operand ->
@@ -1317,12 +1322,17 @@ class Porter:
             for sec, s, e, attrs in u["secs"]:
                 if sec == ".bss" or sec == ".drectve":
                     continue
+                short = None
                 for data, comdats in ((d, c) for d in datas for c in (True, False)):
                     body, relocs = library_contribution(data, sec, comdats)
                     if not body:
                         continue
                     # the reference has to hold this very object in that range
-                    if not (len(body) <= e - s < len(body) + 16) or not find_masked(self.A.read(s, len(body)), body, relocs):
+                    if not len(body) <= e - s < len(body) + 16:
+                        continue
+                    if not find_masked(self.A.read(s, len(body)), body, relocs):
+                        if short is None and not searchable(body, relocs) and masked_equal(self.A.read(s, len(body)), body, relocs):
+                            short = (body, relocs)
                         continue
                     pe_a = self.A.section_at(s)
                     pe_b = self.B.section(pe_a["name"])
@@ -1336,40 +1346,62 @@ class Porter:
                         self.library_placed.add(s)
                         found += 1
                     elif hits:
-                        self.library_candidates[s] = (hits, len(body))
+                        self.library_candidates[s] = (hits, len(body), body, relocs, attrs)
                         deferred += 1
                     break
+                else:
+                    if short is not None:
+                        # too short to search for (operator delete is 11 bytes): the operands that
+                        # point at it say where it went, once the code around them is aligned
+                        self.library_candidates[s] = (None, len(short[0]), short[0], short[1], attrs)
+                        deferred += 1
         self.log("library objects: %d sections found by content, %d ambiguous" % (found, deferred))
 
     def settle_library_pairs(self, name):
         """Ambiguous library sections take the match the alignment around them predicts."""
         settled = 0
-        for s, (hits, size) in list(self.library_candidates.items()):
+        short = set()
+        for s, (hits, size, body, relocs, attrs) in list(self.library_candidates.items()):
             al = self.aligners.get(name)
             if al is None or not (al.a.va <= s < al.a.end):
                 continue
-            predicted = self.map.lookup(s)
-            if predicted is None:
-                continue
-            near = [h for h in hits if abs(h - predicted) < 16]
+            if hits is None:
+                # a body too short to search for is where the operands pointing at its start say
+                target = self.clean.get(s)
+                align = re.search(r"align:(\d+)", attrs)
+                align = int(align.group(1)) if align else 4
+                if target is None or not al.b.va <= target < al.b.end or target % align != s % align:
+                    continue
+                near = [target] if masked_equal(self.B.read(target, size), body, relocs) else []
+            else:
+                predicted = self.map.lookup(s)
+                if predicted is None:
+                    continue
+                near = [h for h in hits if abs(h - predicted) < 16]
             if len(near) == 1:
                 self.name_pairs[s] = near[0]
                 self.name_sizes[s] = size
                 self.library_placed.add(s)
                 del self.library_candidates[s]
                 settled += 1
+                if hits is None:
+                    short.add(s)
         if settled:
-            self.apply_name_pairs(name)
+            # what the operands placed goes in on its own, without disturbing the rest
+            self.apply_name_pairs(name, only=short if len(short) == settled else None)
             self.map = self.combined_map()
         return settled
 
-    def apply_name_pairs(self, name):
-        """Place chunks that start at a named-symbol address exactly where the name says."""
+    def apply_name_pairs(self, name, only=None):
+        """Place chunks that start at a named-symbol address exactly where the name says (only
+        the names in `only`, when given)."""
         al = self.aligners[name]
         starts = {c["addr"]: k for k, c in enumerate(al.chunks)}
         placed = moved = 0
         fixed = []
         for a, b in self.name_pairs.items():
+            if only is not None and a not in only:
+                continue
             k = starts.get(a)
             if k is None or not (al.b.va <= b < al.b.end):
                 continue
@@ -1576,6 +1608,20 @@ def library_members(lib_dir=REPO / "build" / "lib"):
     return out
 
 
+def searchable(body, relocs):
+    """Whether find_masked can look for body: it needs a run of 8 fixed bytes (or all of a shorter body)."""
+    fixed = bytearray(b"\1") * len(body)
+    for at, width in relocs.items():
+        fixed[at : at + width] = b"\0" * width
+    return max((len(r) for r in bytes(fixed).split(b"\0")), default=0) >= min(8, len(body))
+
+
+def masked_equal(window, body, relocs):
+    """Whether window holds body, its relocated fields ignored."""
+    skip = {at + i for at, width in relocs.items() for i in range(width)}
+    return len(window) == len(body) and all(i in skip or window[i] == body[i] for i in range(len(body)))
+
+
 def find_masked(haystack, body, relocs, limit=16):
     """Offsets where body occurs in haystack with its relocated fields ignored (none when there are
     more than limit)."""
@@ -1719,7 +1765,165 @@ def rename_placeholder(name, a_addr, b_addr):
     return name.replace("%08X" % a_addr, "%08X" % b_addr).replace("%08x" % a_addr, "%08x" % b_addr)
 
 
-def map_symbols(porter, fmap, boundaries=(), starts_by_section=None, pad_to_unit_end=False):
+def unique_constants(porter, dropped, placed, min_size=16):
+    """Dropped data symbols whose bytes are a constant found exactly once in the target's section:
+    [(symbol, target address)]. The alignment cannot place a constant whose order changed (the
+    GUIDs dxguid.lib links in the order the code first refers to them), but a pointer-free value
+    of 16 bytes or more that occurs once is where it is. A placeholder that the interpolated map
+    left on top of it, holding other bytes there, gives way (it is returned in `evicted`)."""
+    A, B = porter.A, porter.B
+    lo, hi = A.base + 0x1000, A.base + A.size_of_image
+    out, evicted = [], []
+    for sym in dropped:
+        sec, size = sym["sec"], sym["size"]
+        if sec not in (".rdata", ".data") or not size or size < min_size or sym["name"].startswith(PLACEHOLDER_PREFIXES):
+            continue
+        value = A.read(sym["addr"], size)
+        words = [struct.unpack_from("<I", value, i)[0] for i in range((-sym["addr"]) % 4, size - 3, 4)]
+        if len(set(value)) < 4 or any(lo <= w < hi for w in words):
+            continue
+        va, raw = B.raw_bytes(sec)
+        hits = []
+        i = raw.find(value)
+        while i != -1 and len(hits) < 2:
+            hits.append(va + i)
+            i = raw.find(value, i + 1)
+        if len(hits) != 1 or hits[0] % 4 != sym["addr"] % 4:
+            continue
+        b = hits[0]
+        items = placed.get(sec, [])
+        over = [it for it in items if it[0] < b + size and it[0] + (it[2] or 1) > b]
+        def misplaced(it):
+            n = it[2] or it[1]["size"] or 1
+            return it[1]["name"].startswith(PLACEHOLDER_PREFIXES) and A.read(it[1]["addr"], n) != B.read(it[0], n)
+        if not all(misplaced(it) for it in over):
+            continue
+        for it in over:
+            items.remove(it)
+            evicted.append(it[1])
+        items.append([b, sym, size])
+        placed[sec] = items
+        out.append(sym)
+    return out, evicted
+
+
+PLACEHOLDER_PREFIXES = ("lbl_", "data_", "gap_", "fn_")
+
+
+def export_addresses(image):
+    """{exported name: address} of a PE image."""
+    pe = image.pe
+    if not hasattr(pe, "DIRECTORY_ENTRY_EXPORT"):
+        pe.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY["IMAGE_DIRECTORY_ENTRY_EXPORT"]])
+    if not hasattr(pe, "DIRECTORY_ENTRY_EXPORT"):
+        return {}
+    return {e.name.decode(): image.base + e.address for e in pe.DIRECTORY_ENTRY_EXPORT.symbols if e.name}
+
+
+def same_body(porter, a, size, b):
+    """Whether the reference function at a (size bytes, its trailing padding left out) is the
+    target's code at b, call targets and addresses left out."""
+    ra = porter.A.read(a, size).rstrip(PADDING_BYTES)
+    rb = porter.B.read(b, len(ra))
+    if not ra:
+        return False
+    mask = bytearray(len(ra))
+    for image, raw in ((porter.A, ra), (porter.B, rb)):
+        for m in code_wildcard(image).finditer(raw):
+            s, e = m.span()
+            if raw[s] in (0xE8, 0xE9):
+                s += 1
+            mask[s:e] = b"\1" * (e - s)
+    return all(mask[i] or ra[i] == rb[i] for i in range(len(ra)))
+
+
+def folded_functions(porter, fmap, dropped, placed, units=()):
+    """Dropped functions whose body the target shares with another one, as /OPT:ICF leaves
+    identical functions: [(symbol, target address, owner)]. Every one but the owner becomes an
+    alias of the function there. The evidence is the target's own: an export table naming several
+    functions at one address, and a placed vtable whose slot for the function points at another
+    body. Where no placed function owns the body, the owner is the name from the unit the target
+    holds it in (the dropped functions' reference units tell which)."""
+    A, B = porter.A, porter.B
+    starts = {b for b, sym, _ in placed.get(".text", []) if "type:function" in sym["attrs"]}
+    where = export_addresses(B)
+    names_at = {}
+    for s in porter.symbols:
+        if "raw" not in s and s["sec"] == ".text" and "type:function" in s["attrs"]:
+            names_at.setdefault(s["addr"], []).append(s["name"])
+    for s in porter.symbols:
+        if "raw" in s or not s["name"].startswith("??_7") or not s["size"]:
+            continue
+        vb = fmap.start(s["addr"])
+        if vb is None or fmap.end(s["addr"] + s["size"]) != vb + s["size"]:
+            continue
+        for k in range(s["size"] // 4):
+            for name in names_at.get(A.u32(s["addr"] + 4 * k), []):
+                where.setdefault(name, B.u32(vb + 4 * k))
+
+    def unit_of(unit_list, addr):
+        for u in unit_list:
+            if any(sec == ".text" and s <= addr < e for sec, s, e, _ in u["secs"]):
+                return u["name"]
+        return None
+
+    by_target = {}
+    placed_names = {sym["name"] for _, sym, _ in placed.get(".text", [])}
+    for sym in dropped:
+        if sym["sec"] != ".text" or "scope:local" in sym["attrs"] or "type:function" not in sym["attrs"] or not sym["size"]:
+            continue
+        if sym["name"] in placed_names:
+            continue
+        b = where.get(sym["name"])
+        # the shared body is this very function's (a vtable slot can mean another one here)
+        if b is not None and b in porter.native_functions and same_body(porter, sym["addr"], sym["size"], b):
+            by_target.setdefault(b, []).append(sym)
+    out = []
+    for b, syms in sorted(by_target.items()):
+        owner = None
+        if b not in starts:
+            home = unit_of(units, b)
+            owners = [s for s in syms if home is not None and unit_of(porter.units, s["addr"]) == home]
+            if len(owners) != 1 or len(syms) < 2:
+                continue
+            owner = owners[0]
+        out += [(s, b, s is owner) for s in ([owner] if owner else []) + [s for s in syms if s is not owner]]
+    return out
+
+
+def called_functions(porter, dropped, placed):
+    """Dropped functions that the calls and jumps of placed code still reach: [(symbol, target
+    address, alias)]. Every rel32 operand of matched code votes for where its reference target
+    went (Porter.clean), so a function whose own bytes changed (the CRT's trnsctrl, whose
+    ___CxxFrameHandler every EH handler stub jumps to) is still where its callers say. A single
+    vote needs dtk's analysis to find a function starting there too. A global function whose
+    callers land on another placed function shares that body (/OPT:ICF) and becomes its alias."""
+    items = sorted(((b, b + (size or 0), sym) for b, sym, size in placed.get(".text", [])), key=lambda item: item[:2])
+    begins = [b for b, _, _ in items]
+    functions = {b for b, _, sym in items if "type:function" in sym["attrs"]}
+    out = []
+    placed_names = {sym["name"] for _, _, sym in items}
+    for sym in dropped:
+        if sym["sec"] != ".text" or "type:function" not in sym["attrs"] or sym["name"] in placed_names:
+            continue
+        b = porter.clean.get(sym["addr"])
+        if b is None or (porter.pairs.get(sym["addr"], {}).get(b, 0) < 2 and b not in porter.native_functions):
+            continue
+        if b in functions:
+            if "scope:local" not in sym["attrs"] and sym["size"] and same_body(porter, sym["addr"], sym["size"], b):
+                out.append((sym, b, True))
+            continue
+        k = bisect.bisect_right(begins, b) - 1
+        if k >= 0 and (begins[k] == b or items[k][0] < b < items[k][1]):
+            continue  # inside, or at the start of, something already placed
+        bisect.insort(begins, b)
+        items.insert(begins.index(b), (b, b, sym))
+        functions.add(b)
+        out.append((sym, b, False))
+    return out
+
+
+def map_symbols(porter, fmap, boundaries=(), starts_by_section=None, pad_to_unit_end=False, units=(), module=False):
     """Reference symbols rewritten for the target: (lines, dropped, clipped).
 
     boundaries are target addresses where a split starts or ends; a symbol may not span one, nor
@@ -1767,6 +1971,24 @@ def map_symbols(porter, fmap, boundaries=(), starts_by_section=None, pad_to_unit
             dropped.append(sym)  # dtk insists such symbols have a size, and regenerates them anyway
             continue
         bysec.setdefault(sym["sec"], []).append([b, sym, size])
+    found, evicted = unique_constants(porter, dropped, bysec)
+    dropped = [sym for sym in dropped if not any(sym is f for f in found)] + evicted
+    # functions a DLL's link folded or that only their callers still place (Creature Isle's
+    # LHaudiodllR.dll was linked with /OPT:ICF); the executables, whose layouts and vtables moved
+    # far more, are left to the alignment
+    folds = folded_functions(porter, fmap, dropped, bysec, units) if module else []
+    for sym, b, owner in folds:
+        dropped = [d for d in dropped if d is not sym]
+        attrs = "type:function scope:global" if owner else "type:label scope:global alias"
+        bysec.setdefault(".text", []).append([b, dict(sym, attrs=attrs), None])
+    for sym, b, alias in called_functions(porter, dropped, bysec) if module else []:
+        dropped = [d for d in dropped if d is not sym]
+        if alias:
+            bysec[".text"].append([b, dict(sym, attrs="type:label scope:global alias"), None])
+        else:
+            scope = re.search(r"scope:\w+", sym["attrs"])
+            attrs = "type:function" + (" " + scope.group(0) if scope else "")
+            bysec.setdefault(".text", []).append([b, dict(sym, attrs=attrs), porter.native_sizes.get(b)])
     lines = []
     clipped = 0
     seen_names = set()
@@ -1787,8 +2009,9 @@ def map_symbols(porter, fmap, boundaries=(), starts_by_section=None, pad_to_unit
             if not size:
                 continue
             limit = b + size
-            if i + 1 < len(items) and items[i + 1][0] > b:
-                limit = min(limit, items[i + 1][0])
+            nxt = next((item[0] for item in items[i + 1 :] if item[0] > b), None)
+            if nxt is not None:
+                limit = min(limit, nxt)
             j = bisect.bisect_right(bounds, b)
             if j < len(bounds) and bounds[j] < limit:
                 limit = bounds[j]
@@ -1931,7 +2154,10 @@ def close_small_gaps(porter, mapped, limit=16, fixed=()):
     rows = sorted((r[1], r[2], ui, ri) for ui, out in enumerate(mapped) for ri, r in enumerate(out) if r is not None and r[0] != ".drectve")
     for (s0, e0, u0, r0), (s1, e1, u1, r1) in zip(rows, rows[1:]):
         a, b = mapped[u0][r0], mapped[u1][r1]
-        if a[0] == b[0] and 0 < s1 - e0 < limit and (u0, r0) not in fixed and padding(e0, s1):
+        # the same gap between the same two ranges in the reference is no padding of the first
+        # (.bss reads as zeros either way): it stays a range of its own
+        same_gap = porter.units[u1]["secs"][r1][1] - porter.units[u0]["secs"][r0][2] == s1 - e0
+        if a[0] == b[0] and 0 < s1 - e0 < limit and (u0, r0) not in fixed and padding(e0, s1) and not same_gap:
             mapped[u0][r0] = (a[0], a[1], s1, a[3])
             closed += 1
     return closed
@@ -1982,6 +2208,92 @@ def initializer_ranges(porter, mapped, table):
     return out
 
 
+EH_MAGIC = 0x19930520  # VC6's FuncInfo
+
+
+def eh_extent(image, site):
+    """What a C++ EH prologue at `site` (push/mov eax of its handler stub, `mov eax, FuncInfo;
+    jmp ___CxxFrameHandler`) owns: ((funclets start, stub end), (tables start, tables end)), the
+    funclets being the ones its unwind map names in front of the stub; None for anything else."""
+    text, rdata = image.section(".text"), image.section(".rdata")
+
+    def inside(sec, lo, hi):
+        return sec["va"] <= lo <= hi <= sec["va"] + sec["vsize"]
+
+    if image.read(site, 1)[0] not in (0x68, 0xB8):
+        return None
+    stub = image.u32(site + 1)
+    if not inside(text, stub, stub + 10):
+        return None
+    code = image.read(stub, 10)
+    info = struct.unpack_from("<I", code, 1)[0]
+    if code[0] != 0xB8 or code[5] != 0xE9 or not inside(rdata, info, info + 0x1C):
+        return None
+    magic, states, unwind, tries, try_map = struct.unpack("<5I", image.read(info, 20))
+    if magic != EH_MAGIC or states > 0x1000 or tries > 0x1000:
+        return None
+    tables = [(s, e) for s, e in ((info, info + 0x1C), (unwind, unwind + 8 * states), (try_map, try_map + 0x14 * tries)) if e > s]
+    if not all(inside(rdata, s, e) for s, e in tables):
+        return None
+    funclets = [stub] + [a for a in (image.u32(unwind + 8 * k + 4) for k in range(states)) if a and a < stub]
+    for k in range(tries):
+        catches, handlers = struct.unpack("<2I", image.read(try_map + 0x14 * k + 12, 8))
+        if catches and not inside(rdata, handlers, handlers + 0x10 * catches):
+            return None
+        if catches:
+            tables.append((handlers, handlers + 0x10 * catches))
+    if stub - min(funclets) > 0x1000:
+        return None
+    return (min(funclets), stub + 10), (min(s for s, _ in tables), max(e for _, e in tables))
+
+
+def eh_ranges(porter, mapped, fmap):
+    """Each unit's EH funclets (.text$x) and their tables (.xdata$x), from what its own code points
+    at: an EH prologue loads the function's handler stub, whose FuncInfo names the tables and,
+    through the unwind map, the funclets in front of the stub. Funclets and tables change with the
+    code (a function loses its EH, a destructor call comes or goes), so their content often cannot
+    place them. A unit is measured this way only where the same measurement reproduces its
+    reference ranges. Returns {(unit, row): range} for the unplaced rows the target places."""
+    A, B = porter.A, porter.B
+    out = {}
+    for ui, u in enumerate(porter.units):
+        rows = {sec: (ri, s, e) for ri, (sec, s, e, _) in enumerate(u["secs"]) if sec in (".text$x", ".xdata$x")}
+        if not any(mapped[ui][ri] is None for ri, _, _ in rows.values()):
+            continue
+        sites = []
+        for sec, s, e, _ in u["secs"]:
+            if sec != ".text":
+                continue
+            code = A.read(s, e - s)
+            for k in range(e - s - 4):
+                if code[k] in (0x68, 0xB8) and eh_extent(A, s + k) is not None:
+                    sites.append(s + k)
+        if not sites:
+            continue
+        ref = [eh_extent(A, p) for p in sites]
+        measured = {
+            ".text$x": (min(r[0][0] for r in ref), max(r[0][1] for r in ref)),
+            ".xdata$x": (min(r[1][0] for r in ref), max(r[1][1] for r in ref)),
+        }
+        # the reference ranges are these, up to the padding in front of the next unit
+        if any(measured[sec][0] != s or not 0 <= e - measured[sec][1] < 16 for sec, (ri, s, e) in rows.items()):
+            continue
+        found = []
+        for p in sites:
+            q = fmap.start(p)
+            if q is not None and B.read(q, 1) == A.read(p, 1):
+                r = eh_extent(B, q)
+                if r is not None:
+                    found.append(r)
+        if not found:
+            continue
+        for sec, k in ((".text$x", 0), (".xdata$x", 1)):
+            if sec in rows and mapped[ui][rows[sec][0]] is None:
+                ri = rows[sec][0]
+                out[(ui, ri)] = (sec, min(r[k][0] for r in found), max(r[k][1] for r in found), u["secs"][ri][3])
+    return out
+
+
 def map_units(porter, fmap, drectve):
     """Reference splits rewritten for the target: (units, dropped ranges, conflicts)."""
     rows = []  # (b_start, b_end, unit index, row index)
@@ -2019,6 +2331,9 @@ def map_units(porter, fmap, drectve):
     for (ui, ri), r in tables.items():
         mapped[ui][ri] = r
         inferred.discard((ui, ri))
+    for (ui, ri), r in eh_ranges(porter, mapped, fmap).items():
+        mapped[ui][ri] = r
+        inferred.add((ui, ri))
     # overlap / order checks in target address space; an inferred range gives way to a measured one
     conflicts = []
     measured = sorted((r[1], r[2]) for ui, out in enumerate(mapped) for ri, r in enumerate(out) if r is not None and (ui, ri) not in inferred)
@@ -2158,6 +2473,11 @@ def map_header(porter, fmap):
     A, B, la, lb = porter.A, porter.B, porter.la, porter.lb
     rdata = B.section(".rdata")
     overrides = {".xdata$x": (None, porter.b_imports)}
+    # the EH funclets close .text: when the last unit's funclets do not carry over, the end of
+    # the section still places the end of .text$x
+    a_text, b_text = A.section(".text"), B.section(".text")
+    if any(r["name"] == ".text$x" and r.get("end") == a_text["va"] + a_text["vsize"] for r in porter.hdr_rows):
+        overrides[".text$x"] = (None, b_text["va"] + b_text["vsize"])
     if porter.standard_imports:
         overrides.update(
             {
@@ -2301,7 +2621,33 @@ def config_lines(porter, fmap, src_version, dst_version, symbol_addrs, module_ds
             c, d = other_spans[module]
             lines[a:b] = [l.replace(version, dst_version) for l in other_lines[c:d]]
             text = "\n".join(lines)
-    return text.split("\n"), dropped
+    # a setting that only the target has (how one of its DLLs was linked) survives a re-emit
+    lines = text.split("\n")
+    for key, block in preserved_settings(REPO / "config" / dst_version / "config.yml").items():
+        at = next((i + 1 for i, l in enumerate(lines) if l.startswith("linker_version:")), None)
+        if at is not None and not any(l.startswith(key + ":") for l in lines):
+            lines[at:at] = block
+    return lines, dropped
+
+
+PRESERVED_SETTINGS = ("function_comdat",)
+
+
+def preserved_settings(path):
+    """{key: lines} of the PRESERVED_SETTINGS in an existing config.yml, each with the comment
+    lines right above it."""
+    if not path.exists():
+        return {}
+    lines = path.read_text(encoding="utf-8").split("\n")
+    out = {}
+    for i, line in enumerate(lines):
+        m = re.match(r"^(\w+):", line)
+        if m and m.group(1) in PRESERVED_SETTINGS:
+            j = i
+            while j > 0 and lines[j - 1].startswith("#"):
+                j -= 1
+            out[m.group(1)] = lines[j : i + 1]
+    return out
 
 
 def datetime_from_stamp(stamp):
@@ -2376,6 +2722,50 @@ def module_stanzas(text):
     return lines, spans
 
 
+def target_only_addresses(version):
+    """Addresses the sources name for one target only: the `<version> <addr>` field of their
+    address comments (a function only Creature Isle has, `// BW1WCI 1001f5b0 BW1M119 null`)."""
+    field = re.compile(r"//.*\b%s ([0-9a-f]{8})\b" % re.escape(version))
+    out = set()
+    for top in ("src", "include"):
+        for path in (REPO / top).rglob("*"):
+            if path.suffix in (".h", ".hpp", ".cpp", ".c", ".inl") and path.is_file():
+                for m in field.finditer(path.read_text(encoding="utf-8", errors="ignore")):
+                    out.add(int(m.group(1), 16))
+    return out
+
+
+def with_target_names(porter, lines, path, version):
+    """The emitted symbols plus the names the existing target file gives to what the sources
+    declare for this target only (see target_only_addresses), which the reference cannot carry
+    over, where nothing in the emission claims that address or that name."""
+    if not path.exists():
+        return lines
+    wanted = target_only_addresses(version)
+    emitted = [m for m in (SYM_RE.match(line) for line in lines) if m]
+    taken = {int(m.group("addr"), 16) for m in emitted if not m.group("name").startswith(PLACEHOLDER_PREFIXES)}
+    names = {m.group("name") for m in emitted}
+    extra = [
+        s
+        for s in parse_symbols(path)
+        if "raw" not in s and s["addr"] in wanted and s["addr"] not in taken and s["name"] not in names and not s["name"].startswith(PLACEHOLDER_PREFIXES)
+    ]
+    order = {".text": 0, ".rdata": 1, ".data": 2}
+    key = lambda sec, addr: (order.get(sec, 3), addr)
+    # a placeholder the emission put where a target-only name goes gives way to it
+    places = {(s["sec"], s["addr"]) for s in extra}
+
+    def placeholder_there(line):
+        m = SYM_RE.match(line)
+        return bool(m) and m.group("name").startswith(PLACEHOLDER_PREFIXES) and (m.group("sec"), int(m.group("addr"), 16)) in places
+
+    out = [line for line in lines if not placeholder_there(line)]
+    for s in sorted(extra, key=lambda s: key(s["sec"], s["addr"])):
+        at = next((i for i, m in ((i, SYM_RE.match(line)) for i, line in enumerate(out)) if m and key(m.group("sec"), int(m.group("addr"), 16)) > key(s["sec"], s["addr"])), len(out))
+        out.insert(at, format_symbol(s, size=s["size"]))
+    return out
+
+
 def write_file(path, lines):
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text("\n".join(lines).rstrip("\n") + "\n", encoding="utf-8", newline="\n")
@@ -2440,7 +2830,8 @@ def main():
         for sec, bs, be, _ in u["secs"]:
             starts.setdefault(sec, set()).add(bs)
             starts.setdefault(sec + ":end", set()).add(be)
-    symbols, dropped_symbols, clipped = map_symbols(porter, fmap, boundaries, starts, pad_to_unit_end=bool(args.module))
+    symbols, dropped_symbols, clipped = map_symbols(porter, fmap, boundaries, starts, pad_to_unit_end=bool(args.module), units=units, module=bool(args.module))
+    symbols = with_target_names(porter, symbols, dst_dir / "symbols.txt", args.dst)
     write_file(dst_dir / "symbols.txt", symbols)
     log("symbols: %d written, %d dropped, %d sizes clipped" % (len(symbols), len(dropped_symbols), clipped))
 

@@ -11,11 +11,7 @@
 
 void WINAPI DebugBreak();
 
-enum LH_LOG_CODE
-{
-	LH_LOG_CODE_NO_MEMORY = -1,
-	LH_LOG_CODE_ERROR = -2,
-};
+#include "LHLogCode.h"
 
 static char* LHLogLibraryName;
 

@@ -1738,7 +1738,9 @@ void CitadelHeart::SetTransferedEffectObject(Object* object, bool show_effect)
 				options.AttachedObject = this;
 				options.Positional = true;
 				LHPoint soundPos = Pos.GetLHPoint();
-				options.Pos = soundPos;
+				options.XPos = soundPos.x;
+				options.YPos = soundPos.y;
+				options.ZPos = soundPos.z;
 				options.Follow = false;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
 				TransferContainer->AddTarget(new (FILEPATH, 2179) UR_PlasmaInf(
@@ -1814,7 +1816,9 @@ void CitadelHeart::ProcessTransferedDamageEffect()
 				options.AttachedObject = this;
 				options.Positional = true;
 				LHPoint soundPos = Pos.GetLHPoint();
-				options.Pos = soundPos;
+				options.XPos = soundPos.x;
+				options.YPos = soundPos.y;
+				options.ZPos = soundPos.z;
 				options.Follow = false;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
 			}

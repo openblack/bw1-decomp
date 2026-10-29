@@ -10,9 +10,12 @@
 
 class LH_AudioBank;
 
-#define LH_MUSIC_VOLUME_MAX   127
-#define LH_MUSIC_PITCH_NORMAL 100
-#define LH_MUSIC_FIRST_CHUNK  1
+#define LH_MUSIC_VOLUME_MAX             127
+#define LH_MUSIC_PITCH_NORMAL           100
+#define LH_MUSIC_FIRST_CHUNK            1
+#define LH_MUSIC_DEFAULT_MIN_DISTANCE   10.0f
+#define LH_MUSIC_DEFAULT_MAX_DISTANCE   100.0f
+#define LH_MUSIC_DEFAULT_DISTANCE_SCALE 1.0f
 
 typedef void (*LH_MUSIC_CALLBACK)(unsigned long param);
 
@@ -21,9 +24,9 @@ class LH_MusicPlayOptions
 public:
 	LH_AudioBank*     Bank;
 	long              Volume;
-	uint32_t          field_0x8;
-	uint32_t          field_0xc;
-	uint32_t          field_0x10;
+	uint32_t          Reserved1;
+	uint32_t          Reserved2;
+	uint32_t          Reserved3;
 	long              StartChunk;
 	bool32_t          StartInSecondHalf;
 	bool32_t          Loop;
@@ -32,7 +35,7 @@ public:
 	unsigned long     Pitch;
 	float             MinDistance;
 	float             MaxDistance;
-	float             field_0x34;
+	float             DistanceScale;
 	float             X;
 	float             Y;
 	float             Z;

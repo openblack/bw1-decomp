@@ -7,13 +7,13 @@
 struct LHSegmentDesc
 {
 	char     name[0x21]; /* 0x0 */
-	uint32_t size;       /* 0x24 */
-	uint32_t offset;     /* 0x28 */
+	uint32_t offset;     /* 0x24 */
+	uint32_t size;       /* 0x28 */
 
 	// Constructors
 
 	// BW1W120 007bd350 BW1M119 0116ac80 (LHCombined Release)
-	LHSegmentDesc(char* name, int size, int offset);
+	LHSegmentDesc(char* name, int offset, int size);
 };
 static_assert(sizeof(LHSegmentDesc) == 0x2c, "Data type is of wrong size");
 

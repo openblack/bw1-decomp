@@ -667,7 +667,9 @@ uint32_t Tree::DropSfx()
 	options.SampleNumber = LH_SAMPLE_G_PLANTTREE_01 + GetTickCount() % 3;
 	options.AttachedObject = this;
 	options.Positional = true;
-	options.Pos = point;
+	options.XPos = point.x;
+	options.YPos = point.y;
+	options.ZPos = point.z;
 	options.Follow = false;
 	GGlobal::Global.audio->PlaySoundEffect(&options);
 	return true;
@@ -761,7 +763,9 @@ uint32_t Tree::ApplyThisToObject(GInterfaceStatus* status, Object* object, Gestu
 				options.SampleNumber = LH_SAMPLE_G_SACRIFICE_01;
 				options.AttachedObject = this;
 				options.Positional = true;
-				options.Pos = pos;
+				options.XPos = pos.x;
+				options.YPos = pos.y;
+				options.ZPos = pos.z;
 				options.Follow = false;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
 			}

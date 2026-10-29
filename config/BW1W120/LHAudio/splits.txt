@@ -1,7 +1,9 @@
 Sections:
 	.text       type:code align:4096
+	.text$x     type:code vaddr:0x1002F0E0 end:0x1002F275
 	.rdata      type:rodata align:4096
 	.idata$5    type:rodata vaddr:0x10030000 end:0x100302CC
+	.xdata$x    type:rodata vaddr:0x10033050 end:0x10033260
 	.idata$2    type:rodata vaddr:0x10033260 end:0x100332EC
 	.idata$3    type:rodata vaddr:0x100332EC end:0x10033300
 	.idata$4    type:rodata vaddr:0x10033300 end:0x100335CC
@@ -24,15 +26,6 @@ Sections:
 	.bss        type:bss vaddr:0x10042758 end:0x10057F0C
 	.rsrc       type:rodata align:4096
 
-LHAudio/lib/libcmt64/delete.obj:
-	.text       start:0x1001E3D0 end:0x1001E3DB align:1
-
-LHAudio/lib/libcmt64/new.obj:
-	.text       start:0x1001E3DB end:0x1001E3E9 align:1
-
-LHAudio/lib/libcmt64/trnsctrl.obj:
-	.text       start:0x1001E3E9 end:0x1001E6F0 align:1
-
 LHAudio/lib/libcmt64/crt0init.obj:
 	.CRT$XCA    start:0x10037000 end:0x10037004
 	.CRT$XCZ    start:0x10037018 end:0x1003701C
@@ -42,6 +35,150 @@ LHAudio/lib/libcmt64/crt0init.obj:
 	.CRT$XPZ    start:0x1003703C end:0x10037040
 	.CRT$XTA    start:0x10037040 end:0x10037044
 	.CRT$XTZ    start:0x10037048 end:0x1003704C
+
+Lionhead/LHAudio/ver7.0/LHAudioAtmos.cpp:
+	.text       start:0x10001000 end:0x10002090
+	.text$x     start:0x1002F0E0 end:0x1002F120
+	.rdata      start:0x100302EC end:0x10030300
+	.xdata$x    start:0x10033050 end:0x100330A8
+	.CRT$XCU    start:0x10037004 end:0x10037008 align:4
+	.data       start:0x10037050 end:0x1003716C
+	.bss        start:0x10042758 end:0x10042765
+
+Lionhead/LHAudio/ver7.0/LHAudioBank.cpp:
+	.text       start:0x10002090 end:0x10002F50
+	.text$x     start:0x1002F120 end:0x1002F138
+	.rdata      start:0x10030300 end:0x10030308
+	.xdata$x    start:0x100330A8 end:0x100330D0
+	.data       start:0x1003716C end:0x10037264
+
+Lionhead/LHAudio/ver7.0/LHAudioDebug.cpp:
+	.text       start:0x10002F50 end:0x10003030
+	.data       start:0x10037264 end:0x10037279
+	.bss        start:0x10042770 end:0x10042F7A
+
+Lionhead/LHAudio/ver7.0/LHAudioErrors.cpp:
+	.data       start:0x10037280 end:0x100383AE
+
+Lionhead/LHAudio/ver7.0/LHAudioHeap.cpp:
+	.text       start:0x10003030 end:0x10003780
+	.CRT$XCU    start:0x10037008 end:0x1003700C align:4
+	.data       start:0x100383B0 end:0x100383F0
+	.bss        start:0x10042F80 end:0x10042F90
+
+Lionhead/LHAudio/ver7.0/LHAudioListener.cpp:
+	.text       start:0x10003780 end:0x10003C80
+	.rdata      start:0x10030308 end:0x1003031C
+
+Lionhead/LHAudio/ver7.0/LHAudioMidi.cpp:
+	.text       start:0x10003C80 end:0x10005EC0
+	.rdata      start:0x1003031C end:0x10030378
+	.data       start:0x100383F0 end:0x1003847A
+	.bss        start:0x10042F90 end:0x10042FF0
+
+Lionhead/LHAudio/ver7.0/MPGAudioDecoder.cpp:
+	.text       start:0x10005EC0 end:0x1000D970
+	.rdata      start:0x10030378 end:0x10030420
+	.data       start:0x10038480 end:0x1003BCD8
+	.bss        start:0x10042FF4 end:0x10056280
+
+Lionhead/LHAudio/ver7.0/LHAudioMusic.cpp:
+	.text       start:0x1000D970 end:0x1000FC50
+	.rdata      start:0x10030420 end:0x10030440
+	.data       start:0x1003BCD8 end:0x1003BDC0
+	.bss        start:0x10056280 end:0x100562D0
+
+Lionhead/LHAudio/ver7.0/LHAudioRedbook.cpp:
+	.text       start:0x1000FC50 end:0x100103E0
+	.data       start:0x1003BDC0 end:0x1003BE0C
+	.bss        start:0x100562D0 end:0x1005645C
+
+Lionhead/LHAudio/ver7.0/LHAudioRegistry.cpp:
+	.text       start:0x100103E0 end:0x100108C0
+	.data       start:0x1003BE0C end:0x1003BEC0
+
+Lionhead/LHAudio/ver7.0/LHAudioSample.cpp:
+	.text       start:0x100108C0 end:0x10015290
+	.text$x     start:0x1002F140 end:0x1002F1C0
+	.rdata      start:0x10030440 end:0x10030478
+	.xdata$x    start:0x100330D0 end:0x10033170
+	.data       start:0x1003BEC0 end:0x1003C11C
+	.bss        start:0x1005645C end:0x10056460
+
+Lionhead/LHAudio/ver7.0/LHAudioSystem.cpp:
+	.text       start:0x10015290 end:0x10015800
+	.text$x     start:0x1002F1C0 end:0x1002F1D8
+	.xdata$x    start:0x10033170 end:0x10033198
+	.data       start:0x1003C11C end:0x1003C1ED
+	.bss        start:0x10056460 end:0x10056468
+
+Lionhead/LHAudio/ver7.0/LHAudioWave.cpp:
+	.text       start:0x10015800 end:0x10015E20
+	.data       start:0x1003C1F0 end:0x1003C234
+	.bss        start:0x10056468 end:0x10056470
+
+Lionhead/LHAudio/ver7.0/Version.cpp:
+	.text       start:0x10015E20 end:0x10015E70
+	.CRT$XCU    start:0x1003700C end:0x10037010 align:4
+	.data       start:0x1003C238 end:0x1003C3CC
+	.bss        start:0x10056478 end:0x10056618
+
+LHAudio/LHFile/ver3.0/LHFile.cpp:
+	.text       start:0x10015F50 end:0x1001A0B0
+	.text$x     start:0x1002F1E0 end:0x1002F200
+	.xdata$x    start:0x10033198 end:0x100331C0
+	.CRT$XCU    start:0x10037010 end:0x10037014 align:4
+
+LHAudio/LHFile/ver3.0/LHOSFile.cpp:
+	.text       start:0x1001A0B0 end:0x1001B630
+	.text$x     start:0x1002F200 end:0x1002F275
+	.xdata$x    start:0x100331C0 end:0x10033260
+
+LHAudio/zlib/uncompr.c:
+	.text       start:0x1001B680 end:0x1001B720
+	.data       start:0x1003D8AC end:0x1003D8B4
+
+LHAudio/zlib/inflate.c:
+	.text       start:0x1001B720 end:0x1001BEB0
+	.rdata      start:0x10031EDC end:0x10031EE0
+	.data       start:0x1003D8B4 end:0x1003D924
+
+LHAudio/zlib/infblock.c:
+	.text       start:0x1001BEB0 end:0x1001CD60
+	.rdata      start:0x10031EE0 end:0x10031F2C
+	.data       start:0x1003D924 end:0x1003D998
+
+LHAudio/zlib/adler32.c:
+	.text       start:0x1001CD60 end:0x1001CE90
+
+LHAudio/zlib/zutil.c:
+	.text       start:0x1001CE90 end:0x1001CEF0
+	.data       start:0x1003D998 end:0x1003DA30
+
+LHAudio/zlib/infcodes.c:
+	.text       start:0x1001CEF0 end:0x1001D700
+	.data       start:0x1003DA30 end:0x1003DA68
+
+LHAudio/zlib/inftrees.c:
+	.text       start:0x1001D700 end:0x1001DE40
+	.rdata      start:0x10031F2C end:0x10032144
+	.data       start:0x1003DA68 end:0x1003EC60
+
+LHAudio/zlib/infutil.c:
+	.text       start:0x1001DE40 end:0x1001DF80
+	.data       start:0x1003EC60 end:0x1003ECA4
+
+LHAudio/zlib/inffast.c:
+	.text       start:0x1001DF80 end:0x1001E310
+
+LHAudio/lib/libcmt64/delete.obj:
+	.text       start:0x1001E3D0 end:0x1001E3DB align:1
+
+LHAudio/lib/libcmt64/new.obj:
+	.text       start:0x1001E3DB end:0x1001E3E9 align:1
+
+LHAudio/lib/libcmt64/trnsctrl.obj:
+	.text       start:0x1001E3E9 end:0x1001E6F0 align:1
 
 LHAudio/lib/libcmt64/exsup.obj:
 	.text       start:0x1001E6F0 end:0x1001E7DE align:1
@@ -582,4 +719,4 @@ LHAudio/lib/libcmt64/strupr.obj:
 	.text       start:0x1002EF9E end:0x1002F0D2 align:1
 
 LHAudio/lib/libcmt64/constpow.obj:
-	.data       start:0x10042498 end:0x10042758
+	.data       start:0x10042498 end:0x10042754
