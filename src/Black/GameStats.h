@@ -219,6 +219,10 @@ public:
 	// BW1W120 00d01ab0
 	static GameStatsPackage Package;
 
+#if defined(VERSION_BW1WCI)
+	bool32_t KeepPreviousStats;         /* 0x14 */
+	bool32_t FillingInConfinedCreature; /* 0x18 */
+#endif
 	GPlayer*                         Player;
 	uint32_t                         Position;
 	uint32_t                         LossReason;
@@ -297,12 +301,8 @@ public:
 	uint32_t                         NumCreatureCompassionCast;
 	uint32_t                         NumCreatureAngryCast;
 	uint32_t                         NumCreatureItchyCast;
-#if defined(VERSION_BW1WCI)
-	uint32_t CreatureIsleStat0x1120;
-	uint32_t CreatureIsleStat0x1124;
-#endif
-	float    TotalChantsUsed;
-	uint32_t TotalNumSacrifices;
+	float                            TotalChantsUsed;
+	uint32_t                         TotalNumSacrifices;
 
 	// Constructors
 

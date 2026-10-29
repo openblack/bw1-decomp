@@ -75,6 +75,10 @@ void GameStats::Init(GPlayer& player)
 
 void GameStats::SetToZero()
 {
+#if defined(VERSION_BW1WCI)
+	KeepPreviousStats = false;
+	FillingInConfinedCreature = false;
+#endif
 	Player = NULL;
 	NumPlayersThatHaveLeftTheGame = 0;
 	Position = 0;
