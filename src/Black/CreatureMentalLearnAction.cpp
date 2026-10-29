@@ -16,7 +16,7 @@
 #include "MagicInfo.h"
 #include "SpellSeedInfo.h"
 
-#if defined(VERSION_BW1W100)
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define FILEPATH "C:\\dev\\black\\CreatureMentalLearnAction.cpp"
 #elif defined(VERSION_BW1W110)
 #define FILEPATH "C:\\dev\\Black\\CreatureMentalLearnAction.cpp"
@@ -96,6 +96,12 @@ CreatureActionPrerequisite CreatureActionPrerequisite::Table[CREATURE_ACTION_LEA
         {CREATURE_ACTION_LEARNING_TYPE_NONE, MAGIC_TYPE_NONE},
         {CREATURE_ACTION_LEARNING_TYPE_NONE, MAGIC_TYPE_NONE},
         {CREATURE_ACTION_LEARNING_TYPE_NONE, MAGIC_TYPE_NONE},
+#if defined(VERSION_BW1WCI)
+        {CREATURE_ACTION_LEARNING_TYPE_NONE, MAGIC_TYPE_NONE},
+        {CREATURE_ACTION_LEARNING_TYPE_NONE, MAGIC_TYPE_NONE},
+        {CREATURE_ACTION_LEARNING_TYPE_NONE, MAGIC_TYPE_NONE},
+        {CREATURE_ACTION_LEARNING_TYPE_NONE, MAGIC_TYPE_NONE},
+#endif
     },
 };
 // clang-format on
