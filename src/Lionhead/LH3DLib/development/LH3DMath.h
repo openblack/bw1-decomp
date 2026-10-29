@@ -13,7 +13,8 @@
 #include <math.h>   /* For sqrt */
 #include <stdint.h> /* For uint8_t */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include "LHMatrix.h" /* For struct LHMatrix */
+#include "LHPoint.h"  /* For struct LHPoint */
 
 #define LH_SIN_TABLE_ONE           65536.0f
 #define LH_SIN_TABLE_COSINE_OFFSET 0x200
@@ -85,6 +86,33 @@ inline int FloatToInt(float value)
 		fistp dword ptr [edx]
 	}
 	return result;
+}
+
+// Inliner IL size: 156
+// BW1W120 inlined BW1M119 inlined
+inline void TransformPoint(LHPoint& result, const LHPoint& point, const LHMatrix& matrix)
+{
+	result.x = matrix._11 * point.x + matrix._21 * point.y + matrix._31 * point.z + matrix._41;
+	result.y = matrix._12 * point.x + matrix._22 * point.y + matrix._32 * point.z + matrix._42;
+	result.z = matrix._13 * point.x + matrix._23 * point.y + matrix._33 * point.z + matrix._43;
+}
+
+// Inliner IL size: 146
+// BW1W120 inlined BW1M119 inlined
+inline void AddMatrix(LHMatrix& matrix, const LHMatrix& other)
+{
+	matrix._11 += other._11;
+	matrix._12 += other._12;
+	matrix._13 += other._13;
+	matrix._21 += other._21;
+	matrix._22 += other._22;
+	matrix._23 += other._23;
+	matrix._31 += other._31;
+	matrix._32 += other._32;
+	matrix._33 += other._33;
+	matrix._41 += other._41;
+	matrix._42 += other._42;
+	matrix._43 += other._43;
 }
 
 #endif /* BW1_DECOMP_LH3D_MATH_INCLUDED_H */

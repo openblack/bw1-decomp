@@ -53,7 +53,7 @@
 // these pad the guard onto one of them.
 struct WorldRoomCounterPad
 {
-	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5;
+	static int Pad0, Pad1;
 };
 
 // The name is a guess, but not a free one: cl6 orders .bss by a hash of the symbol name, and this

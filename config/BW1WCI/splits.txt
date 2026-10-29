@@ -3748,6 +3748,13 @@ Lionhead/LH3DLib/development/CAnim.cpp:
 	.text       start:0x0087D1B0 end:0x00881700
 	.bss        start:0x00F89C88 end:0x00F8A08C
 
+Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp:
+	.text       start:0x00883CF0 end:0x00886A40
+	.rdata      start:0x00A13F28 end:0x00A13F2C
+	.CRT$XCU    start:0x00A3763C end:0x00A3764C align:4
+	.data       start:0x00CACAA8 end:0x00CACB08
+	.bss        start:0x00F8AE28 end:0x01026E48
+
 lib/libcimt/filebuf.obj:
 	.rdata      start:0x00A14124 end:0x00A1416C
 	.rdata$r    start:0x00A2C4A0 end:0x00A2C628
