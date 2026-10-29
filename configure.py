@@ -1752,7 +1752,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DHair.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Leash.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DObjectCollide.cpp"),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPrimitive.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPrimitive.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DVRAMTex.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/RPFollow.cpp", progress_category="sdk", extra_cflags=["/GX"]),
