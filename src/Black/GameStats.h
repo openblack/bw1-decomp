@@ -297,6 +297,10 @@ public:
 	uint32_t                         NumCreatureCompassionCast;
 	uint32_t                         NumCreatureAngryCast;
 	uint32_t                         NumCreatureItchyCast;
+#if defined(VERSION_BW1WCI)
+	uint32_t                         CreatureIsleStat0x1120;
+	uint32_t                         CreatureIsleStat0x1124;
+#endif
 	float                            TotalChantsUsed;
 	uint32_t                         TotalNumSacrifices;
 
@@ -461,6 +465,10 @@ public:
 	void IncrementCorrectSpell(MAGIC_TYPE magic_type);
 };
 
+#if defined(VERSION_BW1WCI)
+static_assert(sizeof(GameStats) == 0x1130, "Data type is of wrong size");
+#else
 static_assert(sizeof(GameStats) == 0x1128, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_GAME_STATS_INCLUDED_H */

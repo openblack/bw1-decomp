@@ -9,6 +9,12 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#if defined(VERSION_BW1WCI)
+#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
+
+#define FOOTPATH_FINDER_SOURCE_FILE "C:\\dev\\black\\Footpath.h"
+#endif
+
 // Forward Declares
 
 class Base;
@@ -17,9 +23,25 @@ class GFootpathNode;
 class GameOSFile;
 class GameThingWithPos;
 
+#if defined(VERSION_BW1WCI)
+struct GFootpathPlanner
+{
+	RPHolder holder; /* 0x0 */
+	RPlan    plan;   /* 0x6402c */
+};
+#endif
+
 class GFootpathFinder : public GameThing
 {
 public:
+#if defined(VERSION_BW1WCI)
+	GFootpathPlanner* planner; /* 0x14 */
+	GameThingWithPos* From;    /* 0x18 */
+	GameThingWithPos* To;
+	GFootpath*        Footpath; /* 0x20 */
+	GFootpathNode*    StartNode;
+	GFootpathNode*    DestNode; /* 0x28 */
+#else
 	RPHolder          holder; /* 0x14 */
 	RPlan             plan;   /* 0x64040 */
 	GameThingWithPos* From;   /* 0x640b4 */
@@ -27,6 +49,7 @@ public:
 	GFootpath*        Footpath;
 	GFootpathNode*    StartNode; /* 0x640c0 */
 	GFootpathNode*    DestNode;
+#endif
 
 	// Override methods
 
@@ -46,7 +69,11 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
+#if defined(VERSION_BW1WCI)
+	GFootpathFinder() { planner = new (FOOTPATH_FINDER_SOURCE_FILE, 112) GFootpathPlanner; }
+#else
 	GFootpathFinder() {}
+#endif
 	// BW1W120 00538ec0 BW1M119 010ec000
 	GFootpathFinder(GameThingWithPos* from, GameThingWithPos* to);
 
