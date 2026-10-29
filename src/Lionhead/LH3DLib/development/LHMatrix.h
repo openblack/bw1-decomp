@@ -12,6 +12,33 @@
 	(result).y = (matrix).m[1] * (point).x + (matrix).m[4] * (point).y + (matrix).m[7] * (point).z + (matrix).m[10];   \
 	(result).z = (matrix).m[2] * (point).x + (matrix).m[5] * (point).y + (matrix).m[8] * (point).z + (matrix).m[11]
 
+// Sets result to matrix followed by transform: each row of matrix goes through transform, the last as a point.
+#define LHMATRIX_MULTIPLY(result, matrix, transform)                                                                   \
+	(result).m[0] =                                                                                                    \
+		(transform).m[0] * (matrix).m[0] + (transform).m[3] * (matrix).m[1] + (transform).m[6] * (matrix).m[2];        \
+	(result).m[1] =                                                                                                    \
+		(transform).m[1] * (matrix).m[0] + (transform).m[4] * (matrix).m[1] + (transform).m[7] * (matrix).m[2];        \
+	(result).m[2] =                                                                                                    \
+		(transform).m[2] * (matrix).m[0] + (transform).m[5] * (matrix).m[1] + (transform).m[8] * (matrix).m[2];        \
+	(result).m[3] =                                                                                                    \
+		(transform).m[0] * (matrix).m[3] + (transform).m[3] * (matrix).m[4] + (transform).m[6] * (matrix).m[5];        \
+	(result).m[4] =                                                                                                    \
+		(transform).m[1] * (matrix).m[3] + (transform).m[4] * (matrix).m[4] + (transform).m[7] * (matrix).m[5];        \
+	(result).m[5] =                                                                                                    \
+		(transform).m[2] * (matrix).m[3] + (transform).m[5] * (matrix).m[4] + (transform).m[8] * (matrix).m[5];        \
+	(result).m[6] = (matrix).GetVectorZ().x * (transform).m[0] + (matrix).GetVectorZ().y * (transform).m[3] +          \
+	                (matrix).GetVectorZ().z * (transform).m[6];                                                        \
+	(result).m[7] = (matrix).GetVectorZ().x * (transform).m[1] + (matrix).GetVectorZ().y * (transform).m[4] +          \
+	                (matrix).GetVectorZ().z * (transform).m[7];                                                        \
+	(result).m[8] = (matrix).GetVectorZ().x * (transform).m[2] + (matrix).GetVectorZ().y * (transform).m[5] +          \
+	                (matrix).GetVectorZ().z * (transform).m[8];                                                        \
+	(result).m[9] = (matrix).GetPos().x * (transform).m[0] + (matrix).GetPos().y * (transform).m[3] +                  \
+	                (matrix).GetPos().z * (transform).m[6] + (transform).m[9];                                         \
+	(result).m[10] = (matrix).GetPos().x * (transform).m[1] + (matrix).GetPos().y * (transform).m[4] +                 \
+	                 (matrix).GetPos().z * (transform).m[7] + (transform).m[10];                                       \
+	(result).m[11] = (matrix).GetPos().x * (transform).m[2] + (matrix).GetPos().y * (transform).m[5] +                 \
+	                 (matrix).GetPos().z * (transform).m[8] + (transform).m[11]
+
 // The element names are fabricated, after D3DMATRIX (DirectX 7): the Mac build's GetVectorX/Y/Z and GetPos
 // accessors return the rows at 0x0, 0xc, 0x18 and 0x24.
 // The union is inferred from MSVC6 inliner costs, not from symbols: a store to a named float member costs

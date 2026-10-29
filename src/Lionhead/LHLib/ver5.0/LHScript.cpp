@@ -6,6 +6,7 @@
 #pragma intrinsic(strcpy)
 
 #include <Lionhead/LH3DLib/development/LHColor.h>
+#include <Lionhead/LH3DLib/development/LHIlib.h>
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h>
 #include <Lionhead/LHLib/ver5.0/LHConvert.h>
@@ -23,23 +24,6 @@
 
 extern LHPixel16 g_lhTransparentPixel16; // 0xE91EDC TODO: fabricated name
 extern LHColor   g_lhTransparentColour;  // 0xE91EE0 TODO: fabricated name
-
-// Front-end/3D-driver setup setters called by ProcessCommand.
-// TODO: all fabricated names; tiny setter bodies live at 0x0087FC90..0x0087FD40
-// (plus one empty stub at 0x007DED40), real declarations/home unknown.
-void           SetD3DSetup(long value);              // 0x0087FC90
-void           SetSwapTextureAGPvsLocal(long value); // 0x0087FCA0
-void           SetShowDebugInfo(long value);         // 0x0087FCB0
-void           SetAGPMem(long bytes);                // 0x0087FCC0
-void           SetVRAMMem(long bytes);               // 0x0087FCD0
-void           SetUseWireframe(long value);          // 0x0087FCE0
-void           SetAllocMouseSurface(long value);     // 0x0087FCF0
-void           SetBuildAllMntTexture(long value);    // 0x0087FD00
-char*          SetMntName(char* name);               // 0x0087FD10 wraps LH3DIsland::SetFileToLoad
-void           SetUseLowTexture(long value);         // 0x0087FD20
-void           SetUseSmallBump(long value);          // 0x0087FD30
-void           SetVanishObjectDist(float dist);      // 0x0087FD40
-void __stdcall D3DSetup(long value);                 // 0x007DED40 empty stub in release builds
 
 // Debug copy of the most recently parsed script line, shared by both
 // instantiations (see LoadOneLine). TODO: fabricated name.
@@ -215,56 +199,55 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 	{
 		switch (command)
 		{
-		case 1: // OPEN_SCREEN
+		case LH_SCRIPT_COMMAND_OPEN_SCREEN:
 			if (pram->number[3] == 1)
 				LHSys::TheSystem.screen.SetFullscreenMode(1);
 			return (LH_RETURN)LHSys::TheSystem.screen.Open(pram->number[0], pram->number[1], pram->number[2]);
-		case 2: // BUILD_ALL_MNT_TEXTURE
-			SetBuildAllMntTexture(pram->number[0]);
+		case LH_SCRIPT_COMMAND_BUILD_ALL_MNT_TEXTURE:
+			LHIlib::LH3DIslandSetBuildAllMaterial(pram->number[0]);
 			return LH_OK;
-		case 3: // D3D_SETUP
-			D3DSetup(pram->number[0]);
-			SetD3DSetup(1);
+		case LH_SCRIPT_COMMAND_D3D_SETUP:
+			LHSys::TheSystem.screen.SetDriver(pram->number[0]);
+			LHIlib::LH3DRenderSetNeedInit(true);
 			return LH_OK;
-		case 4: // SWAP_TEXTURE_AGP_VS_LOCAL
-			SetSwapTextureAGPvsLocal(pram->number[0]);
+		case LH_SCRIPT_COMMAND_SWAP_TEXTURE_AGP_VS_LOCAL:
+			LHIlib::LH3DRenderSetSwapTexture(pram->number[0]);
 			return LH_OK;
-		case 5: // MNT_NAME
-			SetMntName(LHStringOps<T>::makechar(pram->text[0]));
+		case LH_SCRIPT_COMMAND_MNT_NAME:
+			LHIlib::LH3DIslandSetFileToLoad(LHStringOps<T>::makechar(pram->text[0]));
 			return LH_OK;
-		case 6: // USE_LOW_TEXTURE
-			SetUseLowTexture(pram->number[0]);
+		case LH_SCRIPT_COMMAND_USE_LOW_TEXTURE:
+			LHIlib::LH3DIslandUseLowResTexture(pram->number[0]);
 			return LH_OK;
-		case 7: // SHOW_DEBUG_INFO
-			SetShowDebugInfo(pram->number[0]);
+		case LH_SCRIPT_COMMAND_SHOW_DEBUG_INFO:
+			LHIlib::LH3DRenderSetShowDebugInfo(pram->number[0]);
 			return LH_OK;
-		case 8: // SET_AGP_MEM
-			SetAGPMem(pram->number[0] << 20);
+		case LH_SCRIPT_COMMAND_SET_AGP_MEM:
+			LHIlib::LH3DRenderSetMaxAmountAgpMem(pram->number[0] << 20);
 			return LH_OK;
-		case 9: // SET_VRAM_MEM
-			SetVRAMMem(pram->number[0] << 20);
+		case LH_SCRIPT_COMMAND_SET_VRAM_MEM:
+			LHIlib::LH3DRenderSetMaxAmountVramMem(pram->number[0] << 20);
 			return LH_OK;
-		case 10: // USE_SMALL_BUMP
-			SetUseSmallBump(pram->number[0]);
+		case LH_SCRIPT_COMMAND_USE_SMALL_BUMP:
+			LHIlib::LH3DIslandSetSmallBump(pram->number[0]);
 			return LH_OK;
-		case 11: // USE_WIREFRAME
-			SetUseWireframe(pram->number[0]);
+		case LH_SCRIPT_COMMAND_USE_WIREFRAME:
+			LHIlib::LH3DRenderSetUseWireFrame(pram->number[0]);
 			return LH_OK;
-		case 12: // SET_VANISH_OBJECT_DIST
-			SetVanishObjectDist((float)pram->number[0] * (float)pram->number[0]);
+		case LH_SCRIPT_COMMAND_SET_VANISH_OBJECT_DIST:
+			LHIlib::LH3DIslandSetVanishDistance((float)pram->number[0] * (float)pram->number[0]);
 			return LH_OK;
-		case 13: // ALLOC_MOUSE_SURFACE
-			SetAllocMouseSurface(pram->number[0]);
+		case LH_SCRIPT_COMMAND_ALLOC_MOUSE_SURFACE:
+			LHIlib::LH3DRenderSetAllocMouseSurface(pram->number[0]);
 			return LH_OK;
-		case 20: // LOAD_DATA
-		{
+		case LH_SCRIPT_COMMAND_LOAD_DATA: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
 			result = (LH_RETURN)LHLoadDataToMemory(LHStringOps<T>::makechar(pram->text[0]),
 			                                       &LHSys::TheSystem.ScriptResources[pram->number[1]].data, NULL);
 			if (result)
 				return result;
-			LHSys::TheSystem.ScriptResources[pram->number[1]].type = 1;
+			LHSys::TheSystem.ScriptResources[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_DATA;
 			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return result;
 		}
@@ -272,8 +255,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		// strcpy success tail across the LOAD_BMP/LOAD_SPRITES* cases (see the
 		// shared blocks around 0x7E85E9 in the target); the exact source shape for
 		// that cross-case merge has not been found yet.
-		case 17: // LOAD_BMP
-		{
+		case LH_SCRIPT_COMMAND_LOAD_BMP: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
 			LHSprite* sprite = new (FILEPATH, 312) LHSprite;
@@ -287,12 +269,11 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				delete sprite;
 				return result;
 			}
-			LHSys::TheSystem.ScriptResources[pram->number[1]].type = 2;
+			LHSys::TheSystem.ScriptResources[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_SPRITE;
 			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return LH_OK;
 		}
-		case 18: // LOAD_SPRITES_DEPTH
-		{
+		case LH_SCRIPT_COMMAND_LOAD_SPRITES_DEPTH: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
 			LHSpriteList* spriteList = new (FILEPATH, 333) LHSpriteList;
@@ -312,12 +293,11 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				delete spriteList;
 				return result;
 			}
-			LHSys::TheSystem.ScriptResources[pram->number[1]].type = 3;
+			LHSys::TheSystem.ScriptResources[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_SPRITE_LIST;
 			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return result;
 		}
-		case 19: // LOAD_SPRITES
-		{
+		case LH_SCRIPT_COMMAND_LOAD_SPRITES: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
 			LHSpriteList* spriteList = new (FILEPATH, 358) LHSpriteList;
@@ -333,25 +313,25 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				delete spriteList;
 				return result;
 			}
-			LHSys::TheSystem.ScriptResources[pram->number[1]].type = 3;
+			LHSys::TheSystem.ScriptResources[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_SPRITE_LIST;
 			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return result;
 		}
-		case 21: // LOAD_FONT_DEPTH
+		case LH_SCRIPT_COMMAND_LOAD_FONT_DEPTH:
 			return LHSys::TheSystem.text.LoadFont(LHStringOps<T>::makechar(pram->text[0]),
 			                                      pram->number[1] != 16 ? 1 : 3);
-		case 22: // LOAD_FONT
+		case LH_SCRIPT_COMMAND_LOAD_FONT:
 			return LHSys::TheSystem.text.LoadFont(LHStringOps<T>::makechar(pram->text[0]),
 			                                      LHSys::TheSystem.screen.Depth() == 16 ? 3 : 1);
-		case 23: // SET_TRANSPARENCY
+		case LH_SCRIPT_COMMAND_SET_TRANSPARENCY:
 			g_lhTransparentPixel16.Set(pram->number[0], pram->number[1], pram->number[2]);
 			g_lhTransparentColour.Set(pram->number[0], pram->number[1], pram->number[2]);
 			return LH_OK;
-		case 24: // SLONG
-		case 25: // FLOAT
-		case 26: // CBYTE
+		case LH_SCRIPT_COMMAND_SLONG:
+		case LH_SCRIPT_COMMAND_FLOAT:
+		case LH_SCRIPT_COMMAND_CBYTE:
 			return CreateVariable(command - 1, pram);
-		case 27: // IF
+		case LH_SCRIPT_COMMAND_IF:
 			return CommandIf(pram->text[0], pram->text[1], pram->text[2]);
 		default:
 			return LH_ERROR;
@@ -508,9 +488,9 @@ template <class T> LH_RETURN LHScriptX<T>::ScanLine(T* line)
 
 		switch (command)
 		{
-		case 0:
+		case LH_SCRIPT_COMMAND_NONE:
 			break;
-		case 27: // IF: process the guarded command first, then IF on its result
+		case LH_SCRIPT_COMMAND_IF: // process the guarded command first, then IF on its result
 			if (ifLevel != -1 && !ifConditionStack[ifLevel])
 				return LH_OK;
 			command = GetNextWord(&line, word, &endOfLine);
@@ -519,14 +499,13 @@ template <class T> LH_RETURN LHScriptX<T>::ScanLine(T* line)
 			else
 				firstParam = 1;
 			goto process_command;
-		case 28: // ENDIF
+		case LH_SCRIPT_COMMAND_ENDIF:
 			if (ifLevel-- > -1)
 				break;
 			return LH_ERROR;
-		case 29: // REM
+		case LH_SCRIPT_COMMAND_REM:
 			return LH_OK;
-		case 30: // NAME = value assignment to an existing variable
-		{
+		case LH_SCRIPT_COMMAND_VAR: {
 			LHScriptVariable<T>* variable = FindVariable(word);
 			if (!variable)
 				return LH_ERROR;
@@ -534,14 +513,14 @@ template <class T> LH_RETURN LHScriptX<T>::ScanLine(T* line)
 			if (endOfLine || word[0] != '=')
 				return LH_ERROR;
 			GetNextWord(&line, word, &endOfLine);
-			if (variable->type == 0)
+			if (variable->type == LH_SCRIPT_VARIABLE_TYPE_NUMBER)
 			{
 				variable->value = LHStringOps<T>::atoi(word);
 				break;
 			}
-			if (variable->type != 1)
+			if (variable->type != LH_SCRIPT_VARIABLE_TYPE_STRING)
 			{
-				if (variable->type == 2)
+				if (variable->type == LH_SCRIPT_VARIABLE_TYPE_FLOAT)
 					*(float*)&variable->value = LHStringOps<T>::atof(word);
 				break;
 			}
@@ -572,21 +551,21 @@ template <class T> LH_RETURN LHScriptX<T>::ScanLine(T* line)
 				{
 					if (currentCommand->params[i] == ' ' || endOfLine)
 						break;
-					if (GetNextWord(&line, Pram.text[i], &endOfLine) == 30)
+					if (GetNextWord(&line, Pram.text[i], &endOfLine) == LH_SCRIPT_COMMAND_VAR)
 					{
 						LHScriptVariable<T>* variable = FindVariable(Pram.text[i]);
 						if (!variable)
 							return LH_ERROR;
-						if (variable->type != 0)
+						if (variable->type != LH_SCRIPT_VARIABLE_TYPE_NUMBER)
 						{
-							if (variable->type == 1)
+							if (variable->type == LH_SCRIPT_VARIABLE_TYPE_STRING)
 							{
 								T* value = (T*)variable->value;
 								if (!value)
 									return LH_ERROR;
 								LHStringOps<T>::strcpy(Pram.text[i], value);
 							}
-							else if (variable->type == 2)
+							else if (variable->type == LH_SCRIPT_VARIABLE_TYPE_FLOAT)
 							{
 								if (currentCommand->params[i] != 'F')
 									return LH_ERROR;
@@ -756,7 +735,7 @@ template <class T> void LHScriptX<T>::DestroyVariables()
 				delete variable->name;
 			switch (variable->type)
 			{
-			case 1:
+			case LH_SCRIPT_VARIABLE_TYPE_STRING:
 				if (variable->value)
 					delete (T*)variable->value;
 				break;
@@ -826,7 +805,6 @@ template <class T> LH_RETURN LHScriptX<T>::CommandIf(T* value1, T* condition, T*
 }
 
 // BW1W120 007e9a10 BW1M119 01152570 (LHCombined Release)
-// command 23 = SLONG (number), 24 = FLOAT, 25 = CBYTE (string).
 template <class T> LH_RETURN LHScriptX<T>::CreateVariable(long command, LHScriptPramX<T>* pram)
 {
 	LHScriptVariable<T>* variable = new (FILEPATH, 1032) LHScriptVariable<T>;
@@ -840,14 +818,14 @@ template <class T> LH_RETURN LHScriptX<T>::CreateVariable(long command, LHScript
 			LHStringOps<T>::strcpy(name, pram->text[0]);
 			switch (command)
 			{
-			case 23:
-				variable->type = 0;
+			case LH_SCRIPT_COMMAND_SLONG - 1:
+				variable->type = LH_SCRIPT_VARIABLE_TYPE_NUMBER;
 				break;
-			case 24:
-				variable->type = 2;
+			case LH_SCRIPT_COMMAND_FLOAT - 1:
+				variable->type = LH_SCRIPT_VARIABLE_TYPE_FLOAT;
 				break;
-			case 25:
-				variable->type = 1;
+			case LH_SCRIPT_COMMAND_CBYTE - 1:
+				variable->type = LH_SCRIPT_VARIABLE_TYPE_STRING;
 				break;
 			}
 			if (variables)

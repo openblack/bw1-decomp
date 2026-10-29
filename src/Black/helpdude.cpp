@@ -3088,7 +3088,7 @@ void HelpDude::Draw(bool deferred)
 		uint32_t colour = (alpha << 24) + 0xffffff;
 		if (!GlowSprite)
 		{
-			GlowSprite = LH3DSprite::Create(1, 1);
+			GlowSprite = LH3DSprite::Create(1, true);
 			GlowSprite->colour = 0xf0ffffff;
 		}
 		GlowSprite->pos = Object->matrix * GlowOffset;
@@ -3107,7 +3107,7 @@ void HelpDude::Draw(bool deferred)
 		SmokeTime += smokeDt;
 		if (!SmokeSprites)
 		{
-			SmokeSprites = LH3DSprite::Create(HELPDUDE_SMOKE_PUFFS, 1);
+			SmokeSprites = LH3DSprite::Create(HELPDUDE_SMOKE_PUFFS, true);
 			SmokePuffs = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(2992)) Smoke3[HELPDUDE_SMOKE_PUFFS];
 		}
 		bool32_t visible = false;
@@ -3559,7 +3559,7 @@ void HelpDudeTrail::Init(LHPoint pos)
 	}
 	Timer = 5.0f;
 	Head = 0;
-	Sprite = LH3DSprite::Create(HELPDUDE_TRAIL_SPARKLES, 1);
+	Sprite = LH3DSprite::Create(HELPDUDE_TRAIL_SPARKLES, true);
 	for (int j = 0; j < HELPDUDE_TRAIL_SPARKLES; j++)
 	{
 		Sparkles[j].Age = j * 16.0f / HELPDUDE_TRAIL_SPARKLES;

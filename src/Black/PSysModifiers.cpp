@@ -2822,7 +2822,7 @@ bool EmitterRuleLightningSprite::ModifyAtomCollection(AtomCollection* collection
 		AtomCore* parent = collection->ParentAtom;
 		if (parent)
 		{
-			parent->Specular = colour;
+			parent->Specular = colour.GetColor();
 		}
 	}
 	return true;

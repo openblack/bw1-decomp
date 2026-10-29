@@ -285,8 +285,8 @@ void CameraExclusion::Adjust(CameraExclusion* exclusion, LHPoint pos, float radi
 		return;
 	}
 	exclusion->pos = pos;
-	exclusion->Radius = radius > 0.0f ? (radius < 10000.0f ? radius : 10000.0f) : 0.0f;
-	exclusion->Height = height > 0.0f ? (height < 10000.0f ? height : 10000.0f) : 0.0f;
+	exclusion->Radius = radius > 0.0f ? min(radius, 10000.0f) : 0.0f;
+	exclusion->Height = height > 0.0f ? min(height, 10000.0f) : 0.0f;
 }
 
 // BW1W120 00454b40 BW1M119 null
@@ -972,7 +972,7 @@ void CameraModeNew3::Initialise()
 	Length0x1c0 = 0.0f;
 	if (InstanceCount++ == 0)
 	{
-		TriconSprite = LH3DSprite::Create(1, 1);
+		TriconSprite = LH3DSprite::Create(1, true);
 		TriconSprite->SetMaterial(LH3DAtmos::AtmosMaterial);
 		TriconSprite->SetSize(2.0f);
 		TriconSprite->colour = LH3DColor(0xffffffff);
@@ -1113,7 +1113,7 @@ void CameraModeNew3::TriconDraw()
 		}
 		x = x > 16 ? (x < LHSys::TheSystem.screen.width - 16 ? x : LHSys::TheSystem.screen.width - 16) : 16;
 		int top = (screenHeight - visibleHeight) / 2;
-		y = y > top + 16 ? (y < top + visibleHeight - 16 ? y : top + visibleHeight - 16) : top + 16;
+		y = y > top + 16 ? min(y, top + visibleHeight - 16) : top + 16;
 		LHCoord screen;
 		screen.x = x;
 		screen.y = y;
@@ -1453,14 +1453,12 @@ void CameraModeNew3::ProcessKeyMovement(uint16_t key)
 	if (originY < focusY)
 	{
 		float height = (focusY - originY) * 3.0f;
-		speed = height > EdgeScrollMinSpeed ? (height < EdgeScrollMinSpeed * 4.0f ? height : EdgeScrollMinSpeed * 4.0f)
-		                                    : EdgeScrollMinSpeed;
+		speed = height > EdgeScrollMinSpeed ? min(height, EdgeScrollMinSpeed * 4.0f) : EdgeScrollMinSpeed;
 	}
 	else
 	{
 		float height = (originY - focusY) * 3.0f;
-		speed = height > EdgeScrollMinSpeed ? (height < EdgeScrollMaxSpeed ? height : EdgeScrollMaxSpeed)
-		                                    : EdgeScrollMinSpeed;
+		speed = height > EdgeScrollMinSpeed ? min(height, EdgeScrollMaxSpeed) : EdgeScrollMinSpeed;
 	}
 	speed = speed * 0.5;
 
@@ -1693,7 +1691,7 @@ float CameraModeNew3::FindBestAngle(float heading, float distance, LHPoint& focu
 	normalPitch *= 0.5f;
 	float oldPitch = pitch * 0.2f;
 	pitch = oldPitch + normalPitch * 0.2 + 0.37699114390179034;
-	pitch = pitch > EIGHTH_PI_F ? (pitch < (PI_F / 3) ? pitch : PI_F / 3) : EIGHTH_PI_F;
+	pitch = pitch > EIGHTH_PI_F ? min(pitch, PI_F / 3) : EIGHTH_PI_F;
 	if (best_score != NULL)
 	{
 		*best_score = bestScore;
@@ -1916,7 +1914,7 @@ void CameraModeNew3::UpdateClickParams(LHPoint& pos, LHPoint& focus, bool grab)
 	float pitch;
 	GCamera::GetHeadingAndPitchFromPoints(pos, focus, &heading, &pitch);
 	float t = pitch / PI_F / 6.0f;
-	t = t > 0.0f ? (t < 1.0f ? t : 1.0f) : 0.0f;
+	t = t > 0.0f ? min(t, 1.0f) : 0.0f;
 	Length0x1c0 += (HeadingDistance - Length0x1c0) * t;
 }
 
@@ -1937,10 +1935,7 @@ float CameraModeNew3::GetAltitude(LHPoint& pos)
 					float x = pos.x - exclusion->pos.x;
 					float z = pos.z - exclusion->pos.z;
 					float height = sqrt(1.0f - (z * z + x * x) / radiusSq) * exclusion->Height + exclusion->pos.y;
-					if (altitude <= height)
-					{
-						altitude = height;
-					}
+					altitude = max(altitude, height);
 				}
 			}
 		}
@@ -2023,7 +2018,7 @@ bool CameraModeNew3::UpdateStrafe(LHPoint& pos, LHPoint& focus, float& yaw, floa
 			CameraHelp::CameraHelpCallback(CameraHelpReason_Dragging, pos, param_6);
 		}
 		double slope = tan(pitch);
-		slope = slope > 0.2f ? (slope < 2.0 ? slope : 2.0) : 0.2f;
+		slope = slope > 0.2f ? min(slope, 2.0) : 0.2f;
 		LHPoint  move(dx * -0.16f, 0.0f, dy * 0.16f / slope);
 		LHMatrix rotation;
 		rotation.SetRotationY(-yaw);
@@ -2658,7 +2653,7 @@ void CameraModeNew3::Update()
 		Global_00c5b0c4 = (CameraHelp::AutoPitchParam1 - pitch) * 0.2f;
 		if (fabs(Global_00c5b0c4) > 0.01)
 		{
-			Global_00c5b0c4 = (Global_00c5b0c4 > -dt ? (Global_00c5b0c4 < dt ? Global_00c5b0c4 : dt) : -dt) * -150.0f;
+			Global_00c5b0c4 = (Global_00c5b0c4 > -dt ? min(Global_00c5b0c4, dt) : -dt) * -150.0f;
 			autoPitched = true;
 			local_4a = true;
 			buttons = CAMERA_MODE_MOUSE_STATUS_MIDDLE;
@@ -2726,8 +2721,7 @@ void CameraModeNew3::Update()
 	else
 	{
 		float height = (originDest.y - focusDest.y) * 3.0f;
-		speed = height > EdgeScrollMinSpeed ? (height < EdgeScrollMaxSpeed ? height : EdgeScrollMaxSpeed)
-		                                    : EdgeScrollMinSpeed;
+		speed = height > EdgeScrollMinSpeed ? min(height, EdgeScrollMaxSpeed) : EdgeScrollMinSpeed;
 	}
 	zoom = speed * zoom;
 	Distance0x1a8 = max(CameraExclusion::Margin + 0.1f, zoom + Distance0x1a8);
@@ -2834,7 +2828,7 @@ void CameraModeNew3::Update()
 			}
 			float tilt = MouseTiltRate * Global_00c5b0c4;
 			float newPitch = pitch - tilt;
-			pitch = newPitch > -(PI_F / 6) ? (newPitch < maxPitch ? newPitch : maxPitch) : -(PI_F / 6);
+			pitch = newPitch > -(PI_F / 6) ? min(newPitch, maxPitch) : -(PI_F / 6);
 			Pitch0 -= tilt;
 			SmoothStrafeSpeedZ(tilt, dt);
 			local_bc = 1;
@@ -2868,7 +2862,7 @@ void CameraModeNew3::Update()
 			{
 				// Mac evaluates tan(pitch) once per use, so this clamp was probably a macro.
 				double slope = tan(pitch);
-				slope = slope > 0.2f ? (slope < 2.0 ? slope : 2.0) : 0.2f;
+				slope = slope > 0.2f ? min(slope, 2.0) : 0.2f;
 				float    scale = speed * 0.001f;
 				LHPoint  move(-(scale * Global_00c5b0d4), 0.0f, scale * Global_00c5b0d0 / slope);
 				LHMatrix rotation;
@@ -3201,10 +3195,10 @@ void CameraModeNew3::Update()
 						    (Distance0x1a8 < GrabZoomMaxDistance && MouseDelta.y < 0))
 						{
 							double steepness = GrabZoomPitch - fabs(pitch);
-							steepness = steepness > 0.0 ? (steepness < GrabZoomPitch ? steepness : GrabZoomPitch) : 0.0;
+							steepness = steepness > 0.0 ? min(steepness, GrabZoomPitch) : 0.0;
 							float factor =
 								exp((float)-MouseDelta.y / LHSys::TheSystem.screen.height * GrabZoomScale * steepness);
-							factor = factor > (1 / 1.03f) ? (factor < 1.13f ? factor : 1.13f) : (1 / 1.03f);
+							factor = factor > (1 / 1.03f) ? min(factor, 1.13f) : (1 / 1.03f);
 							float change = dt * 200.0f;
 							float minDistance = Distance0x1a8 - change;
 							float maxDistance2 = change + Distance0x1a8;
@@ -3365,8 +3359,7 @@ void CameraModeNew3::Update()
 						flyHeading = FindBestAngle(flyHeading, flyDistance, target, flyPitch, NULL);
 					}
 					focusDest = target;
-					flyPitch =
-						flyPitch > EIGHTH_PI_F ? (flyPitch < (PI_F / 2.1f) ? flyPitch : PI_F / 2.1f) : EIGHTH_PI_F;
+					flyPitch = flyPitch > EIGHTH_PI_F ? min(flyPitch, PI_F / 2.1f) : EIGHTH_PI_F;
 					GCamera::SetPointFromPointDistanceHeadingAndPitch(&originDest, focusDest, flyDistance, flyHeading,
 					                                                  flyPitch);
 					local_b4 = 3;
@@ -3460,14 +3453,13 @@ void CameraModeNew3::Update()
 		}
 		break;
 	case 1: {
-		pitch = pitch > -(PI_F / 6) ? (pitch < maxPitch ? pitch : maxPitch) : -(PI_F / 6);
+		pitch = pitch > -(PI_F / 6) ? min(pitch, maxPitch) : -(PI_F / 6);
 		LHPoint direction = focusDest - originDest;
 		direction.FastNormalizeInline();
 		direction *= Length0x1c0;
 		direction.Add(originDest);
 		GCamera::SetPointFromPointDistanceHeadingAndPitch(&originDest, Heading0x12c, distance, yaw,
-		                                                  pitch > -(PI_F / 6) ? (pitch < maxPitch ? pitch : maxPitch)
-		                                                                      : -(PI_F / 6));
+		                                                  pitch > -(PI_F / 6) ? min(pitch, maxPitch) : -(PI_F / 6));
 		focusDest = Heading0x12c;
 		if (zoom == 0.0f)
 		{
@@ -3491,8 +3483,7 @@ void CameraModeNew3::Update()
 		float tanHalfFov = tan(LH3DTech::g_camera.fov * 0.5f);
 		float aspect = LHSys::TheSystem.screen.height * tanHalfFov / LHSys::TheSystem.screen.width;
 		GCamera::SetPointFromPointDistanceHeadingAndPitch(&originDest, Heading0x12c, distance, yaw,
-		                                                  pitch > -(PI_F / 6) ? (pitch < maxPitch ? pitch : maxPitch)
-		                                                                      : -(PI_F / 6));
+		                                                  pitch > -(PI_F / 6) ? min(pitch, maxPitch) : -(PI_F / 6));
 		LHPoint forward = originDest - Heading0x12c;
 		forward.FastNormalizeInline();
 		LHPoint up(0.0f, 1.0f, 0.0f);
@@ -3767,7 +3758,7 @@ void CameraModeNew3::Update()
 	LHPoint move = originDest - pos;
 	float   moveSq = move.GetNormeSq();
 	float   maxMove = MaxMoveSpeed * HeadingDistance * dt;
-	maxMove = 300.0f > maxMove ? 300.0f : maxMove;
+	maxMove = max(300.0f, maxMove);
 	if (moveSq > maxMove * maxMove && local_b4 != 3 && zoom == 0.0f)
 	{
 		move.Normalise();

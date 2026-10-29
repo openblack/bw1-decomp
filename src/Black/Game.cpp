@@ -14,7 +14,7 @@
 #include "ParticleContainer.h"
 #include "PSysLightMaps.h"
 #include "Spell.h"
-#include "TemporaryShadow.h"
+#include <Lionhead/LH3DLib/development/TemporaryShadow.h>
 #include "TownCentre.h"
 #include "ValueSpinner.h"
 #include "VillagerNames.h"
@@ -104,7 +104,7 @@
 #include "GestureSystemDataList.h"
 #include "GestureSystemResult.h"
 #include "Settings.h"
-#include "Water.h"
+#include <Lionhead/LH3DLib/development/Water.h>
 #include "Global.h"
 #include "GroupBehaviour.h"
 #include "HelpProfile.h"

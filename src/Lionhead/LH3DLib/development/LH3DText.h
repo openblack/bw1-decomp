@@ -21,24 +21,8 @@ enum TEXTJUSTIFY
 struct LH3DColor;
 struct LHMatrix;
 
-// This is one LH3DLib translation unit (0x830050..0x833a00, sitting between
-// LH3DRender.cpp and LH3DWay.cpp in the binary -- see splits). It contains the
-// GatheringText class, the private glyph-cache types below (FontFile,
-// CacheEntry, CacheLine, CachePage, FontCache), and the CHAR2WCHAR/THAI_* free
-// functions declared at the bottom of this header (the first functions in the
-// TU, at 0x8300a0..0x8300e0). Their code is interleaved in the binary (e.g.
-// FontCache::AddToCache at 0x831380 sits between GatheringText::GetStringWidth
-// and GetFrac), which only happens within a single TU. The cache types are
-// private to this TU (no other file references them); the TU ends with two
-// empty trailing stubs (nullsub_114 @ 0x8339e0, nullsub_115 @ 0x8339f0).
-// Declarations only: field layouts are unknown and return types are inferred
-// from the demangled names -- confirm against the disassembly before relying on
-// them.
-
 struct FontFile
 {
-	// TODO(decomp): field layout unknown (fill from disassembly)
-
 	// Non-virtual methods
 
 	// BW1W120 008303c0 BW1M119 010c6630 (LHCombined Release)
@@ -151,11 +135,32 @@ struct FontCache
 	CacheEntry* Find(char16_t param_1, uint8_t param_2);
 };
 
+enum GAME_FONT
+{
+	GAME_FONT_DEFAULT,
+	GAME_FONT_GOOD,
+	GAME_FONT_NEUTRAL,
+	GAME_FONT_EVIL,
+	GAME_FONT_LAST
+};
+
 struct GatheringText
 {
-	// BW1W120 00eccd08
-	static GatheringText* gamefont;
+	// BW1W120 00eccd08 BW1M119 01332238 (LHCombined Release)
+	static GatheringText* gamefont[GAME_FONT_LAST];
 	uint8_t               field_0x0;
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 inlined
+	static GatheringText* GetGameFont(GAME_FONT font)
+	{
+		if (font == GAME_FONT_NEUTRAL || gamefont[font] == NULL)
+		{
+			font = GAME_FONT_DEFAULT;
+		}
+		return gamefont[font];
+	}
 
 	// Non-virtual methods
 

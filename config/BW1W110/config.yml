@@ -652,6 +652,115 @@ add_relocations:
     type: x86_abs32
     target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x70
+# BackgroundBox::AddBox addresses g_list_boxes[i].Region (dtk leaves the displacement unrelocated).
+  - source: 0x0080E191
+    type: x86_abs32
+    target: '?g_list_boxes@BackgroundBox@@2PAV1@A'
+    addend: 0x4
+# FishRush::DrawPreAll's loop ends one past GWater::g_circle, inside LH3DExtraDotLight::g_list.
+  - source: 0x00814A8E
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE00C
+# SuperVillager::Draw's immediates: LH3DTech::g_current_matrix = &g_local_to_clipping, and the swimming
+# animation's name.
+  - source: 0x0081557F
+    type: x86_abs32
+    target: '?g_local_to_clipping@LH3DTech@@2ULHMatrix@@A'
+    addend: 0x0
+  - source: 0x00815589
+    type: x86_abs32
+    target: '??_C@_09NHHM@M_P_Swim2?$AA@'
+    addend: 0x0
+# GWater::AddPlouf's switch jump table and the case blocks it alone reaches (dtk does not trace them).
+  - source: 0x0081A0C0
+    type: x86_abs32
+    target: '?AddPlouf@GWater@@QAEXPAULHPoint@@@Z'
+    addend: 0x53
+  - source: 0x0081A0C4
+    type: x86_abs32
+    target: '?AddPlouf@GWater@@QAEXPAULHPoint@@@Z'
+    addend: 0x87
+  - source: 0x0081A0C8
+    type: x86_abs32
+    target: '?AddPlouf@GWater@@QAEXPAULHPoint@@@Z'
+    addend: 0x1D3
+  - source: 0x0081A0CC
+    type: x86_abs32
+    target: '?AddPlouf@GWater@@QAEXPAULHPoint@@@Z'
+    addend: 0x31B
+  - source: 0x00819D65
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00819D6F
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00819D84
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00819DBB
+    type: x86_abs32
+    target: '__real@4@3ffeb333330000000000'
+    addend: 0x0
+  - source: 0x00819DC5
+    type: x86_abs32
+    target: '__real@4@3ff1d1b7170000000000'
+    addend: 0x0
+  - source: 0x00819DFA
+    type: x86_abs32
+    target: '__real@4@3fff8000000000000000'
+    addend: 0x0
+  - source: 0x00819EAD
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00819EB7
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00819ECC
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00819F03
+    type: x86_abs32
+    target: '__real@4@3ffeb333330000000000'
+    addend: 0x0
+  - source: 0x00819F0D
+    type: x86_abs32
+    target: '__real@4@3ff1d1b7170000000000'
+    addend: 0x0
+  - source: 0x00819F42
+    type: x86_abs32
+    target: '__real@4@3fff8000000000000000'
+    addend: 0x0
+  - source: 0x00819FEB
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x00819FF5
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x0081A00A
+    type: x86_abs32
+    target: '__real@4@3ffe8000000000000000'
+    addend: 0x0
+  - source: 0x0081A041
+    type: x86_abs32
+    target: '__real@4@3ffeb333330000000000'
+    addend: 0x0
+  - source: 0x0081A04B
+    type: x86_abs32
+    target: '__real@4@3ff1d1b7170000000000'
+    addend: 0x0
+  - source: 0x0081A080
+    type: x86_abs32
+    target: '__real@4@3fff8000000000000000'
+    addend: 0x0
 
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 

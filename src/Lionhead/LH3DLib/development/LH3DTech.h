@@ -304,6 +304,13 @@ enum GROSSE_MERDE
 	GROSSE_MERDE_POSITION_AND_FOCUS = 2,
 };
 
+// BW1W120 00ea9ec8 BW1M119 012d3e60 (LHCombined Release)
+extern int g_b_grosse_merde;
+// BW1W120 00ea1b68 BW1M119 012d3e54 (LHCombined Release)
+extern LHPoint grosse_merde_foc;
+// BW1W120 00ea1b58 BW1M119 012d3e48 (LHCombined Release)
+extern LHPoint grosse_merde_pos;
+
 // Shared by several units, so extern: static gives each unit a zeroed copy; LH3DTech.cpp inits it before g_sun_light.
 // BW1W120 00ea1c88 BW1M119 012dbfbc (LHCombined Release)
 extern LHPoint DEFAULT_SUN;

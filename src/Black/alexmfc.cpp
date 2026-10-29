@@ -1606,7 +1606,7 @@ void SetupTabButton::Draw(bool hovered, bool selected)
 	int drawAlpha = SetupThing::DrawAlpha;
 	if (!this->selected)
 		SetupThing::DrawAlpha = (int)(SetupThing::DrawAlpha * (2.0f / 3.0f));
-	GatheringText* font = GatheringText::gamefont;
+	GatheringText* font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
 	int            size = GetTextSize();
 	while (size > GetSmallTextSize() / 2)
 	{
@@ -2107,7 +2107,7 @@ float SetupThing::unadjustsize(float size)
 
 void SetupThing::Init()
 {
-	Font = GatheringText::gamefont;
+	Font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
 	TextureFormat format;
 	format.Type = LH3DTexture::g_b_use_low_res ? 3 : 0;
 	ButtonMaterial = LH3DRender::CreateMaterial(

@@ -3333,20 +3333,14 @@ Lionhead/LH3DLib/development/LH3DTech.cpp:
 	.data       start:0x00B5A218 end:0x00B5A234
 	.bss        start:0x00D78948 end:0x00DC8D30 align:8
 
-Lionhead/LH3DLib/development/LH3DCameraChecker.cpp:
-	.text       start:0x00779F90 end:0x0077B7E0
-	.CRT$XCU    start:0x008F749C end:0x008F74A4 align:4
-	.data       start:0x00B5A4A0 end:0x00B5A4A4
-
-Lionhead/LH3DLib/development/Fish.cpp:
-	.text       start:0x0077E1D0 end:0x0077EBF0
-	.text$x     start:0x007E9E00 end:0x007E9E40 align:4
-	.CRT$XCU    start:0x008F74B0 end:0x008F74B4 align:4
-
-Lionhead/LHLib/ver5.0/LHCollide.cpp:
-	.text       start:0x00781140 end:0x00784250
-	.text$x     start:0x007E9E40 end:0x007E9EE0 align:4
-	.CRT$XCU    start:0x008F74C0 end:0x008F74CC align:4
+Lionhead/LH3DLib/development/LH3DDivers.cpp:
+	.text       start:0x00778D10 end:0x00784250
+	.text$x     start:0x007E9E00 end:0x007E9EE0 align:4
+	.rdata      start:0x008D9494 end:0x008D9700
+	.xdata$x    start:0x008EF608 end:0x008EF720 align:4
+	.CRT$XCU    start:0x008F7488 end:0x008F74CC align:4
+	.data       start:0x00B5A238 end:0x00B5A758
+	.bss        start:0x00DC8D30 end:0x00DD8920 align:8
 
 Lionhead/LH3DLib/development/LH3DRender.cpp:
 	.text       start:0x00784250 end:0x00789090

@@ -13,6 +13,8 @@ public:
 	static float Time2SkyType(float time);
 	// BW1W120 0086bb60 BW1M119 01014060 (LHCombined Release)
 	static void PostDrawSun();
+	// BW1W120 0086c220 BW1M119 010af360 (LHCombined Release)
+	static float ComputeAlphaEclairagePublique();
 };
 
 #endif /* BW1_DECOMP_LH3D_SKY_INCLUDED_H */

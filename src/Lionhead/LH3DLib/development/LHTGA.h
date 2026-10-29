@@ -10,17 +10,22 @@
 
 struct LHTGA
 {
-	uint8_t IdLength;        /* 0x00 */
-	uint8_t ColourMapType;   /* 0x01 */
-	uint8_t ImageType;       /* 0x02 */
-	uint8_t ColourMap[5];    /* 0x03 */
-	int16_t XOrigin;         /* 0x08 */
-	int16_t YOrigin;         /* 0x0a */
-	int16_t Width;           /* 0x0c */
-	int16_t Height;          /* 0x0e */
-	uint8_t PixelDepth;      /* 0x10 */
-	uint8_t ImageDescriptor; /* 0x11 */
+	uint8_t IdLength;
+	uint8_t ColourMapType;
+	uint8_t ImageType;
+	uint8_t ColourMap[5];
+	int16_t XOrigin;
+	int16_t YOrigin;
+	int16_t Width;
+	int16_t Height;
+	uint8_t PixelDepth;
+	uint8_t ImageDescriptor;
 
+	// BW1W120 008207f0 BW1M119 010b1c20 (LHCombined Release)
+	static LHTGA* CreateFromHD(char* name);
+	// BW1W120 008208b0 BW1M119 0104be20 (LHCombined Release)
+	static void GetARGB(unsigned long* a, unsigned long* r, unsigned long* g, unsigned long* b, void* data, long index,
+	                    long format);
 	// BW1W120 00820920 BW1M119 01070aa0 (LHCombined Release)
 	static LHTGA* GetTGA(void* data, long width, long height, long format, bool32_t premultiply);
 	// Inliner IL size: <= 40, always inlined and never charged

@@ -3,8 +3,8 @@
 
 #include <math.h> /* For log */
 
-#include <Lionhead/LH3DLib/development/ArenaLight.h>        /* For ArenaLight::g_cur_arena_light */
 #include <Lionhead/LH3DLib/development/InfluenceCircle.h>   /* For InfluenceCircle::g_b_valid */
+#include <Lionhead/LH3DLib/development/LH3DArena.h>         /* For g_b_end_sequence */
 #include <Lionhead/LH3DLib/development/LH3DCitadel.h>       /* For LH3DCitadel */
 #include <Lionhead/LH3DLib/development/LH3DComplexObject.h> /* For LH3DComplexObject */
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>        /* For LandCell::g_darkness_to_color */
@@ -319,7 +319,7 @@ TempleLeash::TempleLeash(LH3DObject* object, unsigned long player_number)
 		leash->CollarXSpin = Random(0.0f, TWO_PI);
 		leash->CollarZSpin = Random(0.0f, TWO_PI);
 		leash->SpriteFrame = Random(0.0f, CREATURE_PEN_SPRITE_FRAME_RANGE);
-		LH3DSprite* sprite = LH3DSprite::Create(1, 1);
+		LH3DSprite* sprite = LH3DSprite::Create(1, true);
 		leash->sprite = sprite;
 		sprite->SetMaterial(g_smoke_mat);
 		sprite->SetSize(2.0f);
@@ -1178,22 +1178,22 @@ void CitadelHeart::DrawNow()
 	Game3DObject* object = Game3dObject;
 	unsigned long color = DrawColour;
 	object->CombineColorFromPos(color, GetSpecularColor());
-	if (ArenaLight::g_cur_arena_light != NULL)
+	if (g_b_end_sequence)
 	{
 		LH3DColor faded(object->color);
-		float     value = GJUtils::Linterp((float)faded.r, 255.0f, ArenaLight::g_land_fade);
+		float     value = GJUtils::Linterp((float)faded.r, 255.0f, g_b_end_sequence_dark);
 		if (value > 255.0f)
 		{
 			value = 255.0f;
 		}
 		faded.r = (uint8_t)value;
-		value = GJUtils::Linterp((float)faded.g, 255.0f, ArenaLight::g_land_fade);
+		value = GJUtils::Linterp((float)faded.g, 255.0f, g_b_end_sequence_dark);
 		if (value > 255.0f)
 		{
 			value = 255.0f;
 		}
 		faded.g = (uint8_t)value;
-		value = GJUtils::Linterp((float)faded.b, 255.0f, ArenaLight::g_land_fade);
+		value = GJUtils::Linterp((float)faded.b, 255.0f, g_b_end_sequence_dark);
 		if (value > 255.0f)
 		{
 			value = 255.0f;

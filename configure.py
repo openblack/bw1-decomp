@@ -1601,8 +1601,6 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\nlsdata1.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "libcmt", "build\\intel\\mt_obj\\strftime.obj", progress_category="sdk"),
 
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp"),
-
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\cmiscdat.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcmt", "build\\intel\\mt_obj\\a_cmp.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\fp8.obj", progress_category="sdk"),
@@ -1740,8 +1738,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMesh.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DObject.cpp", extra_cflags=["/GX", "/GR-"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DTech.cpp", pch=True),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Fish.cpp"),
-            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHCollide.cpp", progress_category="sdk"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DDivers.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DRender.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DText.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/ValueSpinner.cpp"),

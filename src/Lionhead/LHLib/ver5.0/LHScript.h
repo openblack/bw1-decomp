@@ -7,6 +7,42 @@
 
 class LHOSFile;
 
+enum LH_SCRIPT_COMMAND
+{
+	LH_SCRIPT_COMMAND_NONE,
+	LH_SCRIPT_COMMAND_OPEN_SCREEN,
+	LH_SCRIPT_COMMAND_BUILD_ALL_MNT_TEXTURE,
+	LH_SCRIPT_COMMAND_D3D_SETUP,
+	LH_SCRIPT_COMMAND_SWAP_TEXTURE_AGP_VS_LOCAL,
+	LH_SCRIPT_COMMAND_MNT_NAME,
+	LH_SCRIPT_COMMAND_USE_LOW_TEXTURE,
+	LH_SCRIPT_COMMAND_SHOW_DEBUG_INFO,
+	LH_SCRIPT_COMMAND_SET_AGP_MEM,
+	LH_SCRIPT_COMMAND_SET_VRAM_MEM,
+	LH_SCRIPT_COMMAND_USE_SMALL_BUMP,
+	LH_SCRIPT_COMMAND_USE_WIREFRAME,
+	LH_SCRIPT_COMMAND_SET_VANISH_OBJECT_DIST,
+	LH_SCRIPT_COMMAND_ALLOC_MOUSE_SURFACE,
+	LH_SCRIPT_COMMAND_OPEN_KEYBOARD,
+	LH_SCRIPT_COMMAND_OPEN_MOUSE,
+	LH_SCRIPT_COMMAND_OPEN_SOUND,
+	LH_SCRIPT_COMMAND_LOAD_BMP,
+	LH_SCRIPT_COMMAND_LOAD_SPRITES_DEPTH,
+	LH_SCRIPT_COMMAND_LOAD_SPRITES,
+	LH_SCRIPT_COMMAND_LOAD_DATA,
+	LH_SCRIPT_COMMAND_LOAD_FONT_DEPTH,
+	LH_SCRIPT_COMMAND_LOAD_FONT,
+	LH_SCRIPT_COMMAND_SET_TRANSPARENCY,
+	LH_SCRIPT_COMMAND_SLONG,
+	LH_SCRIPT_COMMAND_FLOAT,
+	LH_SCRIPT_COMMAND_CBYTE,
+	LH_SCRIPT_COMMAND_IF,
+	LH_SCRIPT_COMMAND_ENDIF,
+	LH_SCRIPT_COMMAND_REM,
+	LH_SCRIPT_COMMAND_VAR,
+	LH_SCRIPT_COMMAND_LAST
+};
+
 template <class T> struct LHScriptCommandX
 {
 	T*   name;
@@ -23,22 +59,37 @@ template <class T> struct LHScriptPramX
 	float flt[12]; // TODO: fabricated member name
 };
 
+enum LH_SCRIPT_RESOURCE_TYPE
+{
+	LH_SCRIPT_RESOURCE_TYPE_NONE,
+	LH_SCRIPT_RESOURCE_TYPE_DATA,
+	LH_SCRIPT_RESOURCE_TYPE_SPRITE,
+	LH_SCRIPT_RESOURCE_TYPE_SPRITE_LIST,
+};
+
 // The front-end resource bank filled by the LOAD_BMP/LOAD_SPRITES/LOAD_DATA
 // commands and read back by the front end. 100 slots embedded in LHSys at +0x924.
 // TODO: fabricated names; real home unknown.
 struct LHScriptResource
 {
-	long  type; /* 1 = raw data, 2 = BMP sprite, 3 = sprite list */
-	void* data;
-	char  name[256];
+	LH_SCRIPT_RESOURCE_TYPE type;
+	void*                   data;
+	char                    name[256];
+};
+
+enum LH_SCRIPT_VARIABLE_TYPE
+{
+	LH_SCRIPT_VARIABLE_TYPE_NUMBER,
+	LH_SCRIPT_VARIABLE_TYPE_STRING,
+	LH_SCRIPT_VARIABLE_TYPE_FLOAT,
 };
 
 template <class T> struct LHScriptVariable
 {
-	long                 type;  /* 0x0 0 = number, 1 = string, 2 = float */
-	T*                   name;  /* 0x4 */
-	long                 value; /* 0x8 long / T* / float depending on type */
-	LHScriptVariable<T>* next;  /* 0xc */
+	LH_SCRIPT_VARIABLE_TYPE type;  /* 0x0 */
+	T*                      name;  /* 0x4 */
+	long                    value; /* 0x8 long / T* / float depending on type */
+	LHScriptVariable<T>*    next;  /* 0xc */
 };
 
 // Text script engine: loads a plain-text script file and executes it line by

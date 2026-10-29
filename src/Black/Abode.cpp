@@ -50,6 +50,7 @@
 #include "Audio.h"
 #include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h>
 #include <chlasm/LHSample.h> /* For LH_SAMPLE_G_WINDMILL, LH_SAMPLE_G_KNOCKROOFMULTI_01 */
+#include <Lionhead/LH3DLib/development/HowManyPeople.h>
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>
 #include "Setup.h"
 #include "SoundTag.h"
@@ -912,14 +913,7 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 			return 0.0f;
 		}
 		float child_ratio = (float)ChildCount / (float)max_children;
-		if (child_ratio < 1.0f)
-		{
-			score = child_ratio;
-		}
-		else
-		{
-			score = 1.0f;
-		}
+		score = min(child_ratio, 1.0f);
 	}
 	else
 	{
@@ -928,14 +922,7 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 		{
 			return 0.0f;
 		}
-		if ((float)AdultCount / (float)max_adults < 1.0f)
-		{
-			score = (float)AdultCount / (float)max_adults;
-		}
-		else
-		{
-			score = 1.0f;
-		}
+		score = min((float)AdultCount / (float)max_adults, 1.0f);
 	}
 	score = 1.0f - score;
 	if (score > 0.0f)

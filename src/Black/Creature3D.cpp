@@ -262,11 +262,11 @@ LH3DCreature::LH3DCreature(LH3DCreature& other, const LHPoint& pos, void* param_
 	LoadBinary(FileName, 0);
 	SetSize(other.Size1);
 	float value = other.GetThinFat();
-	ThinFat = value > -1.0f ? (value < 1.0f ? value : 1.0f) : -1.0f;
+	ThinFat = value > -1.0f ? (min(value, 1.0f)) : -1.0f;
 	value = other.GetWeakStrong();
-	WeakStrong = value > -1.0f ? (value < 1.0f ? value : 1.0f) : -1.0f;
+	WeakStrong = value > -1.0f ? (min(value, 1.0f)) : -1.0f;
 	value = other.GetEvilGood();
-	EvilGood = value > -1.0f ? (value < 1.0f ? value : 1.0f) : -1.0f;
+	EvilGood = value > -1.0f ? (min(value, 1.0f)) : -1.0f;
 	creature = NULL;
 }
 
@@ -325,7 +325,7 @@ void LH3DCreature::GetBoundingSphere(LHPoint& centre, float& radius)
 
 void LH3DCreature::SetRequiredSpeed(float speed)
 {
-	RequiredSpeed = speed > 0.0f ? (speed < 1.0f ? speed : 1.0f) : 0.0f;
+	RequiredSpeed = speed > 0.0f ? (min(speed, 1.0f)) : 0.0f;
 	RpFollow->field_0x6403c = RequiredSpeed * RunSpeed * 1.1f;
 }
 
@@ -691,7 +691,7 @@ void LH3DCreature::SetSize(float size)
 	float half = size * 0.5f;
 	float a = 1.6f - half * 0.85f;
 	float b = half * 1.75f + 0.25f;
-	Size1 = size > 0.05f ? (size < 4.0f ? size : 4.0f) : 0.05f;
+	Size1 = size > 0.05f ? (min(size, 4.0f)) : 0.05f;
 	Size2 = GetStandingHeight() / field_0x8c;
 	WalkSpeed = b * 8.0f;
 	RunSpeed = b * 20.0f;
@@ -1865,9 +1865,9 @@ void LH3DCreature::PlayASoundEffect(long param_1, long param_2, bool param_3)
 		float distance = GGame::g_game->GetCamera()->GetDistance(position);
 		long  size = (long)((2.0f - Size1) * 1.5f + 1.0f);
 		long  sound[5];
-		sound[0] = size > 1 ? (size < 3 ? size : 3) : 1;
+		sound[0] = size > 1 ? (min(size, 3)) : 1;
 		long alignment = (long)((1.0f - EvilGood) * 1.5f + 1.0f);
-		sound[1] = alignment > 1 ? (alignment < 3 ? alignment : 3) : 1;
+		sound[1] = alignment > 1 ? (min(alignment, 3)) : 1;
 		sound[2] = field_0x4830;
 		sound[3] = GSoundMap::GetSurfaceType(coords);
 		sound[4] = param_1;
@@ -1939,7 +1939,7 @@ void LH3DCreature::PlayASoundEffect(long param_1, long param_2, bool param_3)
 			LH3DWetFeet::Add(&footPos, yAngle + 3.1415927f, Size1 * 4.0f, type, left);
 			if (footPos.y < 1.0f)
 			{
-				FishRush::g_b_er_valid = 1;
+				FishRush::g_b_er_valid = true;
 				FishRush::g_emergency = footPos;
 			}
 		}
@@ -3665,14 +3665,7 @@ void LH3DCreature::StateAction()
 			*(float*)&lineIn->field_0x3514 += pull * drift;
 			// The animation's own tempo, folded into 81..162 bpm.
 			float animTempo = 60000.0f / (long)anim->Duration;
-			if (animTempo < 0.1f)
-			{
-				animTempo = 0.1f;
-			}
-			else if (animTempo > 10000.0f)
-			{
-				animTempo = 10000.0f;
-			}
+			CLAMP(animTempo, 0.1f, 10000.0f);
 			while (animTempo < 81.0f)
 			{
 				animTempo *= 2.0f;
@@ -3988,9 +3981,9 @@ void LH3DCreature::DoPointAction(bool param_1)
 	{
 		float heading = heading_from_direction_vector(offset);
 		angle = angle_correct(Heading - heading);
-		angle = angle > -0.5235988f ? (angle < 0.5235988f ? angle : 0.5235988f) : -0.5235988f;
+		angle = angle > -0.5235988f ? (min(angle, 0.5235988f)) : -0.5235988f;
 		pitch = offset.y / distance;
-		pitch = pitch > -0.5f ? (pitch < 0.5f ? pitch : 0.5f) : -0.5f;
+		pitch = pitch > -0.5f ? (min(pitch, 0.5f)) : -0.5f;
 	}
 	// Point with the hand that is free, or else towards the side the point is on.
 	if (justTurned)
@@ -5266,7 +5259,7 @@ void LH3DCreature::DoFightActionAction()
 				}
 				float strength = (WeakStrong + 3.0f) / (FightCreature->WeakStrong + 3.0f) *
 				                 (Size1 / FightCreature->Size1) * field_0x49a4;
-				strength = strength > 0.04f ? (strength < 2.0f ? strength : 2.0f) : 0.04f;
+				strength = strength > 0.04f ? (min(strength, 2.0f)) : 0.04f;
 				if (CurrentAnim == C_FIGHT_ATTACK_SPECIAL)
 				{
 					strength *= 2.0f;
@@ -7616,7 +7609,7 @@ void LH3DCreature::ProcessMoveStraight()
 		LHPoint ahead((float)sin(heading) * distance, 0.0f, -(float)cos(heading) * distance);
 		ahead.Add(position);
 		float slope = 1.0f - (LH3DIsland::GetAltitude(ahead) - position.y) / field_0x5228 * 0.6f;
-		slope = slope > 0.3f ? (slope < 1.1f ? slope : 1.1f) : 0.3f;
+		slope = slope > 0.3f ? (min(slope, 1.1f)) : 0.3f;
 		float requiredSpeed = RpFollow->field_0x6403c * slope;
 		if (RpFollow->field_0x64034 < requiredSpeed)
 		{

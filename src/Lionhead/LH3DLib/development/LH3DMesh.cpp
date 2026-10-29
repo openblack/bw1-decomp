@@ -11,6 +11,7 @@
 #include "LH3DLODData.h"          /* For LH3DLODData */
 #include "LH3DMath.h"             /* For LH3DMath */
 #include "LH3DMem.h"              /* For LH3DMem */
+#include "LH3DMeshFootprint.h"    /* For struct LH3DMeshFootprint, struct LH3DMeshFootprintData */
 #include "LH3DObject.h"           /* For LH3DObject */
 #include "LH3DPrimitive.h"        /* For LH3DPrimitive */
 #include "LH3DRender.h"           /* For LH3DRender */
@@ -73,24 +74,6 @@ struct LH3DTnLVertex
 	float   V;
 };
 static_assert(sizeof(LH3DTnLVertex) == 0x20, "Data type is of wrong size");
-
-struct LH3DMeshFootprint
-{
-	int                Width; /* 0x0 */
-	int                Height;
-	uint32_t           field_0x8;
-	uint16_t*          Pixels;   /* 0xc */
-	LH3DMeshFootprint* Previous; /* 0x10 */
-	int                NumMatrices;
-};
-static_assert(sizeof(LH3DMeshFootprint) == 0x18, "Data type is of wrong size");
-
-struct LH3DMeshFootprintData
-{
-	uint32_t           Count; /* 0x0 */
-	LH3DMeshFootprint* First;
-	uint32_t           Size;
-};
 
 struct LH3DMeshNormalList
 {
@@ -883,11 +866,12 @@ LH3DMesh* LH3DMesh::Create(void* buf, bool32_t dont_care_about_texture)
 				for (uint32_t j = 0; j < footprints->Count; j++)
 				{
 					LH3DMeshFootprint* footprint = (LH3DMeshFootprint*)data;
-					int                count = footprint->NumMatrices;
+					int                count = footprint->NumTriangles;
 					footprint->Previous = previous;
-					footprint->Pixels = (uint16_t*)(data + count * sizeof(LHMatrix) + sizeof(LH3DMeshFootprint));
-					data += footprint->Height * footprint->Width * sizeof(uint16_t) + count * sizeof(LHMatrix) +
-					        sizeof(LH3DMeshFootprint);
+					footprint->Pixels =
+						(uint16_t*)(data + count * sizeof(LH3DMeshFootprintTriangle) + sizeof(LH3DMeshFootprint));
+					data += footprint->Height * footprint->Width * sizeof(uint16_t) +
+					        count * sizeof(LH3DMeshFootprintTriangle) + sizeof(LH3DMeshFootprint);
 					previous = current;
 					current = (LH3DMeshFootprint*)data;
 				}
@@ -2339,18 +2323,9 @@ int __fastcall LH3DMesh::DrawLightMap(SubMeshDrawData* draw_data, int num_draw_d
 								y_out++;
 							}
 						}
-						if (x < min_x)
-						{
-							min_x = x;
-						}
-						if (x > max_x)
-						{
-							max_x = x;
-						}
-						if (y < min_y)
-						{
-							min_y = y;
-						}
+						min_x = min(x, min_x);
+						max_x = max(x, max_x);
+						min_y = min(y, min_y);
 						if (y > max_y)
 						{
 							max_y = y;

@@ -19,6 +19,8 @@ struct LH3DInBuild
 	// BW1W120 00eb99a0 BW1M119 011f2234 (LHCombined Release)
 	static bool32_t g_b_fuck;
 
+	// BW1W120 00820b10 BW1M119 010bcf80 (LHCombined Release)
+	static Vertex3D* GetListVertex();
 	// BW1W120 00820b20 BW1M119 010c0b00 (LHCombined Release)
 	static void Draw();
 	// BW1W120 00820ec0 BW1M119 010868b0 (LHCombined Release)
