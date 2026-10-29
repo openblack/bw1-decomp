@@ -1,3 +1,4 @@
+#include "CitadelPart.h"
 #include "WorshipSiteInfo.h"
 #include "GameTimeConstants.h"
 #include "TimerConstants.h"
