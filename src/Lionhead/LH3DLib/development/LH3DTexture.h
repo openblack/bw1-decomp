@@ -32,10 +32,10 @@ struct LH3DVRAMTex;
 class LH3DSurfDesc
 {
 public:
-	void*         Surface; /* 0x0 */
-	long          Pitch;   /* 0x4 */
-	unsigned long Width;   /* 0x8 */
-	unsigned long Height;  /* 0xc */
+	void* Surface; /* 0x0 */
+	long  Pitch;   /* 0x4 */
+	long  Width;   /* 0x8 */
+	long  Height;  /* 0xc */
 };
 static_assert(sizeof(LH3DSurfDesc) == 0x10, "Data type is of wrong size");
 

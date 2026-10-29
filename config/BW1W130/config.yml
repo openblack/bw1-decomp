@@ -7,6 +7,10 @@ splits: config/BW1W130/splits.txt
 generate_imports: true
 
 block_relocations:
+# The 0x00FF0000 channel masks in TextureRef::DrawCutAroundIntersectionPoint read as addresses inside NewCols.
+  - source: 0x0086C35E
+  - source: 0x0086C364
+  - source: 0x0086C3A6
 # A 0x009C009B in .data that reads as a pointer into the import lookup tables.
   - source: 0x00CB1F3C
 # Text in Creature3D.cpp's .data that reads as code addresses: "tic" of PhysicalActionNames' "StartStatic" and

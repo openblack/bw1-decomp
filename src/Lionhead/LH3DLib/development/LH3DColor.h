@@ -68,6 +68,13 @@ struct LH3DColor
 	 (((((to) & 0xff00) - ((from) & 0xff00)) * (amount) >> 8) + ((from) & 0xff00)) & 0xff00 |                          \
 	 (((((to) & 0xff) - ((from) & 0xff)) * (amount) >> 8) + ((from) & 0xff)) & 0xff | ((to) & 0xff000000))
 
+// Moves each channel of from, alpha included, amount/256 of the way towards to.
+#define LH3D_BLEND_COLOR_AND_ALPHA(from, to, amount)                                                                   \
+	((((((to) & 0xff0000) - ((from) & 0xff0000)) * (amount) >> 8) + ((from) & 0xff0000)) & 0xff0000 |                  \
+	 (((((to) & 0xff00) - ((from) & 0xff00)) * (amount) >> 8) + ((from) & 0xff00)) & 0xff00 |                          \
+	 (((((to) & 0xff) - ((from) & 0xff)) * (amount) >> 8) + ((from) & 0xff)) & 0xff |                                  \
+	 ((((((to) >> 24) - ((from) >> 24)) * (amount) >> 8) + ((from) >> 24)) << 24))
+
 // Scales each colour channel by scale/256 and keeps the alpha.
 #define LH3D_SCALE_COLOR(color, scale)                                                                                 \
 	(((((color) & 0xff0000) * (scale) & 0xff0000ff) | (((color) & 0xff00) * (scale) & 0xff0000) |                      \

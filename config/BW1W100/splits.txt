@@ -3422,6 +3422,13 @@ Lionhead/LH3DLib/development/CAnim.cpp:
 	.text       start:0x007B3A30 end:0x007B70A0
 	.bss        start:0x00E24080 end:0x00E24484
 
+Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp:
+	.text       start:0x007B95B0 end:0x007BB6E0
+	.rdata      start:0x008D9938 end:0x008D993C
+	.CRT$XCU    start:0x008F7524 end:0x008F7534 align:4
+	.data       start:0x00B5B520 end:0x00B5B580
+	.bss        start:0x00E25220 end:0x00EC1240
+
 lib/libcmt/wcsdup.obj:
 	.text       start:0x007E894E end:0x007E897C align:1
 
