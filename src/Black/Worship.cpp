@@ -88,6 +88,8 @@ const float OverloadPulseMinSpeed = 5.0f;
 const float OverloadPulseMaxSpeed = 10.0f;
 float       CollideRadiusScale = 1.3f;
 
+static uint32_t UnusedStatic = 0;
+
 class SortVillagerOnNeedToGoHome : public Villager
 {
 public:
