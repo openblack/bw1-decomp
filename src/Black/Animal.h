@@ -394,8 +394,13 @@ public:
 	// BW1W120 00419d10 BW1M119 01170710
 	static Animal* CreateFromType(const MapCoords& coords, const GAnimalInfo* info, Town* town, Flock* flock,
 	                              unsigned long param_5);
+	// BW1W120 00419c20 BW1M119 01170920
+	static Animal* CreateFromType(const MapCoords& coords, const GAnimalInfo* info, Town* town, unsigned long param_4);
 
 	// Non-virtual methods
+
+	// BW1W120 00417c20 BW1M119 01174b10
+	void SetTownIfNearby(float max_distance);
 
 	// BW1W120 0041abb0 BW1M119 01089fb0
 	ANIMAL_BEHAVIOUR_RESULT KeepFlockMemberWithinFlockArea();

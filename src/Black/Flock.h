@@ -108,6 +108,8 @@ public:
 
 	// BW1W120 005302e0 BW1M119 010e9370
 	void SetToZero();
+	// BW1W120 0052fa50 BW1M119 010ea8a0
+	bool32_t AddLivingToFlock(Living* living);
 	// BW1W120 0052fb50 BW1M119 010ea6c0
 	void RemoveLivingFromFlock(Living* living, bool32_t delete_if_empty);
 	// BW1W120 0052fc20 BW1M119 010ea580

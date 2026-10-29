@@ -9,6 +9,7 @@
 
 // Forward Declares
 
+class GMobileObjectInfo;
 class Base;
 class GameOSFile;
 class GameThing;
@@ -19,6 +20,10 @@ class Object;
 class Whale : public MobileObject
 {
 public:
+	// BW1W120 00774c50 BW1M119 01168ea0
+	static Whale* Create(const MapCoords& coords, const GMobileObjectInfo* info, Object* parent, float y_angle,
+	                     float scale);
+
 	// BW1W120 00775140 BW1M119 01090cd0
 	static void ProcessAll();
 

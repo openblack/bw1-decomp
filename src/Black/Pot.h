@@ -31,6 +31,9 @@ class Town;
 class Pot : public MobileObject
 {
 public:
+	// BW1W120 0066d1a0 BW1M119 0109d7f0
+	void PlayAddResourceSound(const MapCoords& coords, RESOURCE_TYPE type, unsigned long amount);
+
 	RESOURCE_TYPE ResourceType;
 #ifndef VERSION_BW1WCI
 	LHPTR<Town> ParentTown;

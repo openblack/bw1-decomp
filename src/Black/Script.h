@@ -1359,6 +1359,11 @@ public:
 	// BW1W120 006f7ab0 BW1M119 014f0950
 	static int FindCheckNotPoisonedExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
 	                                                      uint32_t subtype);
+	// BW1W120 006f11a0 BW1M119 014e9830
+	static GameThingWithPos* CreateScriptThing(const LHPoint& point, SCRIPT_OBJECT_TYPE type, uint32_t subtype,
+	                                           float angle, float scale);
+	// BW1W120 006f3400 BW1M119 014e7390
+	static int FindNearDeadLivingCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7ae0 BW1M119 014f0800
 	static int FindNearInStateCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7b40 BW1M119 014f0710

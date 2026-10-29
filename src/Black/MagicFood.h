@@ -10,6 +10,8 @@
 
 // Forward Declares
 
+class MultiMapFixed;
+class Pot;
 class Base;
 class Creature;
 class GPlayer;
@@ -49,6 +51,14 @@ public:
 
 	// BW1W120 005fa950 BW1M119 013b4160
 	MagicFood();
+};
+
+class MagicResource
+{
+public:
+	// BW1W120 005fa8b0 BW1M119 013b41d0
+	static Pot* Create(const MapCoords& coords, GPlayer* player, RESOURCE_TYPE type, unsigned long amount,
+	                   MultiMapFixed* fixed);
 };
 
 #endif /* BW1_DECOMP_MAGIC_FOOD_INCLUDED_H */

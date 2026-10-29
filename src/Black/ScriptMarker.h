@@ -10,6 +10,7 @@
 
 // Forward Declares
 
+struct MapCoords;
 class Base;
 class GameOSFile;
 class GameThing;
@@ -17,6 +18,9 @@ class GameThing;
 class ScriptMarker : public GameThingWithPos
 {
 public:
+	// BW1W120 0070d8d0 BW1M119 01508220
+	static ScriptMarker* Create(const MapCoords& coords);
+
 	// Override methods
 
 	// BW1W120 0070d970 BW1M119 015080d0

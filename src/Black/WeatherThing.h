@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+class GWeatherInfo;
 class Base;
 class GameOSFile;
 struct LHPoint;
@@ -21,6 +22,10 @@ struct MapCoords;
 class WeatherThing : public GameThingWithPos
 {
 public:
+	// BW1W120 007741f0 BW1M119 015abb60
+	static WeatherThing* Create(const MapCoords& coords, const GWeatherInfo* info, float param_3, float param_4,
+	                            float param_5);
+
 	// BW1W120 007741a0 BW1M119 01085420
 	static void ProcessWeatherThings();
 
