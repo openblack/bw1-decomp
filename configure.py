@@ -236,6 +236,13 @@ if _debug_directory_unit is not None:
     config.linker_provided_units = [_debug_directory_unit]
 elif args.debug:
     config.base_ldflags.append("/debug")
+# LHDialogLib.dll, the same binary in every version, is the one image link.exe
+# linked with /INCREMENTAL. Past the last .text$x funclet it filled .text with
+# int3 up to 0x10008750 and then reserved 64 KiB it never wrote, so those bytes
+# are whatever the disk held there: the tail of the link's own PDB globals, then
+# part of an LH3DLib debug build's LH3DTech.obj. No compiler produced any of it,
+# so the split's copy is linked as it is and the report leaves it out.
+config.linker_padding_units = {"LHDialog": ["LHDialog/link/incremental_padding"]}
 # 1.00 was linked with /OPT:REF. Some of the CRT objects it links carry
 # unreferenced COMDATs that still name kernel32 imports the shipped exe never
 # uses (mlock's _lockerr_exit -> FatalAppExitA, winsig's signal ->

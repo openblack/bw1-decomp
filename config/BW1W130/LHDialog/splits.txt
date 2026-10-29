@@ -85,3 +85,6 @@ LHDialog/lib/msvcrtd/ti_inst.obj:
 	.rdata      start:0x10019A14 end:0x10019A1C
 	.rdata$r    start:0x10019BD8 end:0x10019C1C
 	.data       start:0x1001B910 end:0x1001B928
+
+LHDialog/link/incremental_padding:
+	.text$x     start:0x100076E3 end:0x10018750 align:1
