@@ -6,6 +6,8 @@ symbols: config/BW1W110/symbols.txt
 splits: config/BW1W110/splits.txt
 
 block_relocations:
+# "tMM" of Version.cpp's LH_VERSION_END_TAG reads as a pointer into DecisionTreeAgenda::CreateBelief.
+  - source: 0x00C1256C
 # libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x0088E9C8
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
