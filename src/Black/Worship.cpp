@@ -627,12 +627,14 @@ float WorshipSite::GetDanceProgress()
 	return 0.0f;
 }
 
+#ifndef VERSION_BW1W100
 bool32_t WorshipSite::ValidateDance()
 {
 	dance->ValidateDancers(this);
 	DanceValidatedTurn = GGame::g_game->data.GameTurn;
 	return true;
 }
+#endif // VERSION_BW1W100
 
 static inline void SetPositionOnLand(LH3DObject* object, const MapCoords& coords, float y_angle, float scale)
 {
