@@ -6,6 +6,8 @@ symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
 block_relocations:
+# libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
+  - source: 0x007E6EC8
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside Wolf's vftable.
   - source: 0x00773936
   - source: 0x00773951
@@ -24,6 +26,59 @@ block_relocations:
   - source: 0x008FC3AC
 
 add_relocations:
+# libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
+  - source: 0x007E6D90
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x007E6D97
+    type: x86_abs32
+    target: '_rgb_ycc_convert'
+  - source: 0x007E6E0C
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x007E6E13
+    type: x86_abs32
+    target: '_cmyk_ycck_convert'
+  - source: 0x007E6E60
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x36
+  - source: 0x007E6E64
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x007E6E68
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x007E6E6C
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x007E6E70
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x007E6E74
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x95
+  - source: 0x007E6E78
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0xe9
+  - source: 0x007E6E7C
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x11f
+  - source: 0x007E6E80
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x16d
+  - source: 0x007E6E84
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x19d
 # LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
   - source: 0x00788F93
     type: x86_abs32

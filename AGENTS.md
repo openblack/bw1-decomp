@@ -162,8 +162,8 @@ CI compiles every source for it with `/DBUILD_VERSION=4 /DVERSION_BW1WCI`. Its `
 and `Town` layouts are not modeled, so a layout check that holds for 1.00 and 1.10 names those
 versions (`#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)`) instead of taking a bare
 `#else`; a size known for Creature Isle gets its own branch (`GAudio` is 0x3fc there).
-`config/BW1WCI/` has no hand fixes yet: regenerate it with `port_version.py` when 1.20's splits or
-names improve.
+`config/BW1WCI/` is generated with `port_version.py` when 1.20's splits or names improve, plus hand fixes
+for what 1.20 does not have (libjpeg's decoder units): re-apply them after regenerating.
 
 The underlying utility used for splitting the binary is `dtk` (`build/tools/dtk`).
 It is already properly set up and almost never requires any meddling.
@@ -364,7 +364,7 @@ remaining `LH*` directories, `zlib` and `jpeg` are static libraries linked into 
 | `src/Lionhead/LHLog` | `LHLogR` (DLL) | Logging, assertions and version reporting. |
 | `src/Lionhead/LHMultiplayer` | `LHMultiplayerR` (DLL) | Multiplayer networking — sockets, packets, lobby/sessions, players and transport. |
 | `src/zlib` | static lib | Third-party zlib compression library. |
-| `src/jpeg` | static lib | Unmodified IJG libjpeg 6b (27-Mar-1998) release. The executable links its compression side for `LHJpeg`'s screenshots. `jconfig.h` is `jconfig.vc`, copied into the build include directory as `install.doc` directs. |
+| `src/jpeg` | static lib | Unmodified IJG libjpeg 6b (27-Mar-1998) release. The executable links its compression side for `LHJpeg`'s screenshots; Creature Isle's links the decoder too. `jconfig.h` is `jconfig.vc`, copied into the build include directory as `install.doc` directs. |
 | `src/mpg123` | reference | Unmodified mpg123 0.59k release by Michael Hipp. LHAudio's `MPGAudioDecoder` is Lionhead's C++ port of its decoder and includes `huffman.h` and `tables.h` from here. |
 
 The Mac build linked the Lionhead libraries into a separate module, `LHCombined Release`, so a

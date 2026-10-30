@@ -6,6 +6,8 @@ symbols: config/BW1W110/symbols.txt
 splits: config/BW1W110/splits.txt
 
 block_relocations:
+# libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
+  - source: 0x0088E9C8
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x007FB462
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside LH3DObject's code.
@@ -42,6 +44,59 @@ block_relocations:
   - source: 0x009BCF2C
 
 add_relocations:
+# libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
+  - source: 0x0088E890
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x0088E897
+    type: x86_abs32
+    target: '_rgb_ycc_convert'
+  - source: 0x0088E90C
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x0088E913
+    type: x86_abs32
+    target: '_cmyk_ycck_convert'
+  - source: 0x0088E960
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x36
+  - source: 0x0088E964
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x0088E968
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x0088E96C
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x0088E970
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x0088E974
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x95
+  - source: 0x0088E978
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0xe9
+  - source: 0x0088E97C
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x11f
+  - source: 0x0088E980
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x16d
+  - source: 0x0088E984
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x19d
 # LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
   - source: 0x0081FCF3
     type: x86_abs32

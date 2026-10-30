@@ -24,6 +24,8 @@ block_relocations:
   - source: 0x007DDDA9
 # SetupColourPicker's grey colour 0x808080 is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x00410B14
+# libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
+  - source: 0x0089EBB8
 # The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside LoadIt<GFurnitureInfo>.
   - source: 0x00C30B04
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874, inside Town::ProcessTownEmergency.
@@ -114,6 +116,59 @@ block_relocations:
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x0080B652
 add_relocations:
+# libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
+  - source: 0x0089EA80
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x0089EA87
+    type: x86_abs32
+    target: '_rgb_ycc_convert'
+  - source: 0x0089EAFC
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x0089EB03
+    type: x86_abs32
+    target: '_cmyk_ycck_convert'
+  - source: 0x0089EB50
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x36
+  - source: 0x0089EB54
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x0089EB58
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x0089EB5C
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x0089EB60
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x0089EB64
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x95
+  - source: 0x0089EB68
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0xe9
+  - source: 0x0089EB6C
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x11f
+  - source: 0x0089EB70
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x16d
+  - source: 0x0089EB74
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x19d
 # LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
   - source: 0x0082FEE3
     type: x86_abs32

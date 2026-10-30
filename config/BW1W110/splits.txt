@@ -3687,6 +3687,83 @@ Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.CRT$XCU    start:0x009B75E8 end:0x009B75F0 align:4
 	.bss        start:0x00F93B8C end:0x00F93B9C
 
+jpeg/jcapimin.c:
+	.text       start:0x008883D0 end:0x00888770
+
+jpeg/jerror.c:
+	.text       start:0x00888770 end:0x00888920
+	.rdata      start:0x009958B4 end:0x00995AA8
+	.data       start:0x00C29CE0 end:0x00C2AF6C
+
+jpeg/jdatadst.c:
+	.text       start:0x00888920 end:0x00888A50
+
+jpeg/jcparam.c:
+	.text       start:0x00888A50 end:0x00889400
+	.rdata      start:0x00995AA8 end:0x00995E58
+
+jpeg/jcapistd.c:
+	.text       start:0x00889400 end:0x00889620
+
+jpeg/jmemmgr.c:
+	.text       start:0x00889620 end:0x0088A240
+	.rdata      start:0x00995E58 end:0x00995E68
+	.data       start:0x00C2AF6C end:0x00C2AF7C
+
+jpeg/jcomapi.c:
+	.text       start:0x0088A240 end:0x0088A2E0
+
+jpeg/jcmarker.c:
+	.text       start:0x0088A2E0 end:0x0088ABD0
+
+jpeg/jcinit.c:
+	.text       start:0x0088ABD0 end:0x0088AC90
+
+jpeg/jmemnobs.c:
+	.text       start:0x0088AC90 end:0x0088AD20
+
+jpeg/jutils.c:
+	.text       start:0x0088AD20 end:0x0088ADF0
+	.rdata      start:0x00995E68 end:0x00995FA8
+
+jpeg/jcmainct.c:
+	.text       start:0x0088ADF0 end:0x0088AF80
+
+jpeg/jccoefct.c:
+	.text       start:0x0088AF80 end:0x0088B7F0
+
+jpeg/jchuff.c:
+	.text       start:0x0088B7F0 end:0x0088C590
+
+jpeg/jcphuff.c:
+	.text       start:0x0088C590 end:0x0088D1A0
+
+jpeg/jcdctmgr.c:
+	.text       start:0x0088D1A0 end:0x0088D770
+	.rdata      start:0x00995FA8 end:0x00996074
+
+jpeg/jcprepct.c:
+	.text       start:0x0088D770 end:0x0088DD30
+
+jpeg/jcsample.c:
+	.text       start:0x0088DD30 end:0x0088E750
+
+jpeg/jccolor.c:
+	.text       start:0x0088E750 end:0x0088EEE0
+
+jpeg/jcmaster.c:
+	.text       start:0x0088EEE0 end:0x0088FA40
+
+jpeg/jfdctint.c:
+	.text       start:0x0088FA40 end:0x0088FE40
+
+jpeg/jfdctfst.c:
+	.text       start:0x0088FE40 end:0x00890090
+
+jpeg/jfdctflt.c:
+	.text       start:0x00890090 end:0x00890300
+	.rdata      start:0x00996074 end:0x00996084
+
 lib/libcimt/_ios.obj:
 	.text       start:0x00890306 end:0x0089053C align:1
 	.rdata      start:0x00996084 end:0x00996098

@@ -7,6 +7,17 @@ splits: config/BW1WCI/splits.txt
 generate_imports: false
 
 block_relocations:
+# libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in Creature Isle's larger image both read as pointers.
+  - source: 0x008CAAB0
+  - source: 0x00A16224
+  - source: 0x00A16240
+  - source: 0x00A16244
+  - source: 0x00A16248
+  - source: 0x00A16260
+  - source: 0x00A1626C
+  - source: 0x00A16318
+# libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
+  - source: 0x008CA288
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x00828342
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside other code.
@@ -102,6 +113,68 @@ block_relocations:
   - source: 0x0040C28E
   - source: 0x0040CCDB
 add_relocations:
+# libjpeg jddctmgr start_pass: the end of aanscalefactor (dtk leaves the loop bound unrelocated).
+  - source: 0x008C2E40
+    type: x86_abs32
+    target: '_?aanscalefactor@?L@??start_pass@@9@9'
+    addend: 0x40
+  - source: 0x008C2E53
+    type: x86_abs32
+    target: '_?aanscalefactor@?L@??start_pass@@9@9'
+    addend: 0x40
+# libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
+  - source: 0x008CA150
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x008CA157
+    type: x86_abs32
+    target: '_rgb_ycc_convert'
+  - source: 0x008CA1CC
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x008CA1D3
+    type: x86_abs32
+    target: '_cmyk_ycck_convert'
+  - source: 0x008CA220
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x36
+  - source: 0x008CA224
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x008CA228
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x008CA22C
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x008CA230
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x008CA234
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x95
+  - source: 0x008CA238
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0xe9
+  - source: 0x008CA23C
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x11f
+  - source: 0x008CA240
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x16d
+  - source: 0x008CA244
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x19d
 # Audio's sound_effect_callback_function: the __except handler restores the SEH chain.
   - source: 0x00428590
     type: x86_abs32

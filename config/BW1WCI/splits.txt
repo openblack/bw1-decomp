@@ -3822,6 +3822,157 @@ lib/libcimt/_iostrea.obj:
 lib/libcimt/streamb1.obj:
 	.text       start:0x008A590B end:0x008A59EC align:1
 
+jpeg/jdapimin.c:
+	.text       start:0x008B9CF0 end:0x008BA220
+
+jpeg/jdapistd.c:
+	.text       start:0x008BA220 end:0x008BA640
+
+jpeg/jdatasrc.c:
+	.text       start:0x008BA640 end:0x008BA790
+
+lib/libcimt/istream.obj:
+	.text$x     start:0x008D3A54 end:0x008D3B2D
+	.rdata      start:0x00A141E0 end:0x00A14200
+	.rdata$r    start:0x00A2C668 end:0x00A2C6EC
+	.xdata$x    start:0x00A30178 end:0x00A30240
+
+jpeg/jerror.c:
+	.text       start:0x008BA790 end:0x008BA940
+	.rdata      start:0x00A15E2C end:0x00A16020
+	.data       start:0x00CAE558 end:0x00CAF7E4
+
+jpeg/jcapimin.c:
+	.text       start:0x008BA940 end:0x008BACE0
+
+jpeg/jdatadst.c:
+	.text       start:0x008BACE0 end:0x008BAE10
+
+jpeg/jcparam.c:
+	.text       start:0x008BAE10 end:0x008BB7C0
+	.rdata      start:0x00A16020 end:0x00A163D0
+
+jpeg/jcapistd.c:
+	.text       start:0x008BB7C0 end:0x008BB9E0
+
+jpeg/jdinput.c:
+	.text       start:0x008BB9E0 end:0x008BBFE0
+
+jpeg/jdmarker.c:
+	.text       start:0x008BBFE0 end:0x008BDE00
+
+jpeg/jmemmgr.c:
+	.text       start:0x008BDE00 end:0x008BEA20
+	.rdata      start:0x00A163D0 end:0x00A163E0
+	.data       start:0x00CAF7E4 end:0x00CAF7F4
+
+jpeg/jcomapi.c:
+	.text       start:0x008BEA20 end:0x008BEAC0
+
+jpeg/jdmaster.c:
+	.text       start:0x008BEAC0 end:0x008BF210
+
+jpeg/jcmarker.c:
+	.text       start:0x008BF210 end:0x008BFB00
+
+jpeg/jcinit.c:
+	.text       start:0x008BFB00 end:0x008BFBC0
+
+jpeg/jutils.c:
+	.text       start:0x008BFBC0 end:0x008BFC90
+	.rdata      start:0x00A163E0 end:0x00A16520
+
+jpeg/jmemnobs.c:
+	.text       start:0x008BFC90 end:0x008BFD20
+
+jpeg/jdmainct.c:
+	.text       start:0x008BFD20 end:0x008C0400
+
+jpeg/jdcoefct.c:
+	.text       start:0x008C0400 end:0x008C13B0
+
+jpeg/jdhuff.c:
+	.text       start:0x008C13B0 end:0x008C1EF0
+	.rdata      start:0x00A16520 end:0x00A165A0
+
+jpeg/jdphuff.c:
+	.text       start:0x008C1EF0 end:0x008C2C50
+	.rdata      start:0x00A165A0 end:0x00A16620
+
+jpeg/jddctmgr.c:
+	.text       start:0x008C2C50 end:0x008C2F10
+	.rdata      start:0x00A16620 end:0x00A166E0
+
+jpeg/jdpostct.c:
+	.text       start:0x008C2F10 end:0x008C3280
+
+jpeg/jdsample.c:
+	.text       start:0x008C3280 end:0x008C3A00
+
+jpeg/jdcolor.c:
+	.text       start:0x008C3A00 end:0x008C4070
+
+jpeg/jdmerge.c:
+	.text       start:0x008C4070 end:0x008C4660
+
+jpeg/jquant2.c:
+	.text       start:0x008C4660 end:0x008C5A60
+
+jpeg/jquant1.c:
+	.text       start:0x008C5A60 end:0x008C66B0
+	.rdata      start:0x00A166E0 end:0x00A167F0
+
+jpeg/jcmainct.c:
+	.text       start:0x008C66B0 end:0x008C6840
+
+jpeg/jccoefct.c:
+	.text       start:0x008C6840 end:0x008C70B0
+
+jpeg/jchuff.c:
+	.text       start:0x008C70B0 end:0x008C7E50
+
+jpeg/jcphuff.c:
+	.text       start:0x008C7E50 end:0x008C8A60
+
+jpeg/jcdctmgr.c:
+	.text       start:0x008C8A60 end:0x008C9030
+	.rdata      start:0x00A167F0 end:0x00A168BC
+
+jpeg/jcprepct.c:
+	.text       start:0x008C9030 end:0x008C95F0
+
+jpeg/jcsample.c:
+	.text       start:0x008C95F0 end:0x008CA010
+
+jpeg/jccolor.c:
+	.text       start:0x008CA010 end:0x008CA7A0
+
+jpeg/jcmaster.c:
+	.text       start:0x008CA7A0 end:0x008CB300
+
+jpeg/jidctint.c:
+	.text       start:0x008CB300 end:0x008CB8F0
+
+jpeg/jidctfst.c:
+	.text       start:0x008CB8F0 end:0x008CBDB0
+
+jpeg/jidctflt.c:
+	.text       start:0x008CBDB0 end:0x008CC1F0
+	.rdata      start:0x00A168BC end:0x00A168CC
+
+jpeg/jidctred.c:
+	.text       start:0x008CC1F0 end:0x008CC810
+
+jpeg/jfdctint.c:
+	.text       start:0x008CC810 end:0x008CCC10
+
+jpeg/jfdctfst.c:
+	.text       start:0x008CCC10 end:0x008CCE60
+
+jpeg/jfdctflt.c:
+	.text       start:0x008CCE60 end:0x008CD0D0
+	.rdata      start:0x00A168CC end:0x00A168DC
+
 lib/libircmt/cpu_disp_mt.obj:
 	.text       start:0x008CD3B0 end:0x008CD510
 	.bss        start:0x01031380 end:0x010313A0
@@ -3851,12 +4002,6 @@ lib/libcmt/chdir.obj:
 
 lib/libcmt/strlwr.obj:
 	.text       start:0x008D0EB3 end:0x008D0FE7 align:1
-
-lib/libcimt/istream.obj:
-	.text$x     start:0x008D3A54 end:0x008D3B2D
-	.rdata      start:0x00A141E0 end:0x00A14200
-	.rdata$r    start:0x00A2C668 end:0x00A2C6EC
-	.xdata$x    start:0x00A30178 end:0x00A30240
 
 lib/libcmt/ehvecdtr.obj:
 	.text       start:0x008D0FED end:0x008D10F0 align:1
