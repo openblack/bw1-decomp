@@ -2291,7 +2291,7 @@ config.libs = [
             GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerCEngine.c"),
             GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerRooms.c"),
             GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerPing.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/Peer/peerPlayers.c"),
+            GameSpyObject(Matching, "GameSpy/Peer/peerPlayers.c"),
             GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/queryreporting/gqueryreporting.c"),
             GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerGlobalCallbacks.c"),
             GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerMangle.c"),
