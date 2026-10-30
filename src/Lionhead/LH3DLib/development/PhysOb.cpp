@@ -13,6 +13,14 @@
 
 float PhysOb::MaximumVelocity = PHYS_OB_MAXIMUM_VELOCITY;
 
+// BW1W120 007fcb30 BW1M119 inlined
+inline void __fastcall TransformVector(const LHMatrix& matrix, LHPoint& result, const LHPoint& vector)
+{
+	result.x = vector.x * matrix.m[0] + vector.y * matrix.m[3] + vector.z * matrix.m[6];
+	result.y = vector.x * matrix.m[1] + vector.y * matrix.m[4] + vector.z * matrix.m[7];
+	result.z = vector.x * matrix.m[2] + vector.y * matrix.m[5] + vector.z * matrix.m[8];
+}
+
 // BW1W120 inlined BW1M119 inlined
 inline void __fastcall InverseTransformVector(const LHMatrix& matrix, LHPoint& result, const LHPoint& vector)
 {
@@ -306,7 +314,7 @@ void PhysOb::SetUpPos()
 	int i;
 	Matrix = obj->matrix;
 	LHPoint centre;
-	Matrix.TransformVector(centre, CentreOfMass);
+	TransformVector(Matrix, centre, CentreOfMass);
 	Matrix.GetVectorX().Normalise();
 	Matrix.GetVectorY().Normalise();
 	Matrix.GetVectorZ().Normalise();
@@ -329,7 +337,7 @@ void PhysOb::SetUpPos()
 		LHPoint edge2 = Vertices[face->Indices[2]].Pos - Vertices[face->Indices[0]].Pos;
 		face->Normal = edge1 ^ edge2;
 		face->Normal.Normalise();
-		Matrix.TransformVector(face->WorldNormal, face->Normal);
+		TransformVector(Matrix, face->WorldNormal, face->Normal);
 	}
 }
 
@@ -386,7 +394,7 @@ void PhysOb::PrepareForDraw(LH3DObject* object, float blend)
 		matrix.m[i] *= Scale;
 	}
 	LHPoint centre;
-	matrix.TransformVector(centre, CentreOfMass);
+	TransformVector(matrix, centre, CentreOfMass);
 	matrix.GetPos() -= centre;
 	if (Shadow != NULL)
 	{
@@ -402,7 +410,7 @@ void PhysOb::FillPositionMatrixGameFriendly(LHMatrix& matrix)
 		matrix.m[i] *= Scale;
 	}
 	LHPoint centre;
-	matrix.TransformVector(centre, CentreOfMass);
+	TransformVector(matrix, centre, CentreOfMass);
 	matrix.GetPos() -= centre;
 }
 
@@ -428,7 +436,7 @@ void PhysOb::ZeroForces()
 		PTri* face = Faces;
 		for (i = 0; i < NumFaces; i++, face++)
 		{
-			Matrix.TransformVector(face->WorldNormal, face->Normal);
+			TransformVector(Matrix, face->WorldNormal, face->Normal);
 		}
 		TotalForce = Force;
 		TotalTorque = Torque;
@@ -735,14 +743,14 @@ int PhysOb::UpdateMotion()
 	LHPoint local;
 	InverseTransformVector(Matrix, local, AngularVelocity);
 	LHPoint spin;
-	InverseInertiaTensor.TransformVector(spin, local);
+	TransformVector(InverseInertiaTensor, spin, local);
 	float spinSq = spin.GetNormeSq();
 	if (spinSq > MaximumAngularVelocitySq && (spin.x || spin.y || spin.z))
 	{
 		spin *= MaximumAngularVelocity / (float)sqrt(spinSq);
 	}
 	LHPoint world;
-	Matrix.TransformVector(world, spin);
+	TransformVector(Matrix, world, spin);
 	Velocity += TotalForce * (1.0f / Mass) * PHYS_OB_TIME_STEP;
 	Speed = Velocity.GetNorme();
 	if (Speed > MaximumVelocity)

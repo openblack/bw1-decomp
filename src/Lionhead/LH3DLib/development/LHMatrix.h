@@ -431,13 +431,6 @@ struct LHMatrix
 		point.y = m[1] * x + m[4] * y + m[7] * z;
 		point.z = m[2] * x + m[5] * y + m[8] * z;
 	}
-	// BW1W120 007fcb30 BW1M119 inlined
-	void __fastcall TransformVector(LHPoint& result, const LHPoint& vector) const
-	{
-		result.x = vector.x * m[0] + vector.y * m[3] + vector.z * m[6];
-		result.y = vector.x * m[1] + vector.y * m[4] + vector.z * m[7];
-		result.z = vector.x * m[2] + vector.y * m[5] + vector.z * m[8];
-	}
 };
 
 #endif /* BW1_DECOMP_LH_MATRIX_INCLUDED_H */
