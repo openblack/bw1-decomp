@@ -3,5 +3,3 @@
 #include "CreatureSelect.h"
 
 #include "ColourConstants.h" /* For White */
-
-void Prss::StringFunction(int, char*, int) {}

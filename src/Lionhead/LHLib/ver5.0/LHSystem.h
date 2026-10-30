@@ -69,6 +69,8 @@ struct LHKeyboard
 	int          StringEndKey;
 	int          StringActive;
 
+	// BW1W120 007dcad0 BW1M119 0113f060 (LHCombined Release)
+	unsigned char LHKeyToAscii(LH_KEY key, bool32_t shift);
 	// BW1W120 007dcaf0 BW1M119 0113ed60 (LHCombined Release)
 	void ProcessKeyboard(unsigned int msg, int key_data);
 	// BW1W120 007dcc90 BW1M119 0113ebc0 (LHCombined Release)

@@ -3768,6 +3768,13 @@ Lionhead/LH3DLib/development/LH3DMath.cpp:
 	.text       start:0x0085E850 end:0x0085E990
 	.bss        start:0x00F6ED14 end:0x00F6ED18
 
+Lionhead/LH3DLib/development/LH3DMenu.cpp:
+	.text       start:0x0085E990 end:0x00860030
+	.rdata      start:0x00A13E7C end:0x00A13ED0
+	.CRT$XCU    start:0x00A37604 end:0x00A37610 align:4
+	.data       start:0x00CAC6F8 end:0x00CAC720
+	.bss        start:0x00F6ED18 end:0x00F7AE60
+
 Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x00860490 end:0x00861BA0
 

@@ -2359,6 +2359,38 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00835116, jmp_run(0x008350D4)),  # LH3DRender
     (0x00835188, copy_run(0x00835116)),  # LH3DRender
     (0x008351D2, jmp_run(0x00835188)),  # LH3DRender
+    (0x0084648B, call_rel32(0x004034F9)),  # LH3DMenu
+    (0x00846577, jmp_run(0x0084648B)),  # LH3DMenu
+    (0x008465BB, call_rel32(0x004034F9)),  # LH3DMenu
+    (0x00846721, copy_run(0x008465BB)),  # LH3DMenu
+    (0x008467B9, jmp_run(0x00846721)),  # LH3DMenu
+    (0x00846868, copy_run(0x008467B9)),  # LH3DMenu
+    (0x00846987, copy_run(0x00846868)),  # LH3DMenu
+    (0x00846A2B, call_rel32(0x004034F9)),  # LH3DMenu
+    (0x00846A8B, call_rel32(0x004034F9)),  # LH3DMenu
+    (0x00846AEB, call_rel32(0x004034F9)),  # LH3DMenu
+    (0x00846B37, jmp_run(0x00846AEB)),  # LH3DMenu
+    (0x00846B87, copy_run(0x00846B37)),  # LH3DMenu
+    (0x00846BD7, jmp_run(0x00846B87)),  # LH3DMenu
+    (0x00846C27, copy_run(0x00846BD7)),  # LH3DMenu
+    (0x00846C88, copy_run(0x00846C27)),  # LH3DMenu
+    (0x00846CD3, jmp_run(0x00846C88)),  # LH3DMenu
+    (0x00846DA1, copy_run(0x00846CD3)),  # LH3DMenu
+    (0x008472A3, copy_run(0x00846DA1)),  # LH3DMenu
+    (0x0084733B, call_rel32(0x004034F9)),  # LH3DMenu
+    (0x0084735B, call_rel32(0x004034F9)),  # LH3DMenu
+    (0x0084737B, call_rel32(0x004034F9)),  # LH3DMenu
+    (0x008473A3, copy_run(0x0084737B)),  # LH3DMenu
+    (0x0084749A, jmp_run(0x008473A3)),  # LH3DMenu
+    (0x00847502, copy_run(0x0084749A)),  # LH3DMenu
+    (0x00847526, copy_run(0x00847502)),  # LH3DMenu
+    (0x00847546, copy_run(0x00847526)),  # LH3DMenu
+    (0x00847587, copy_run(0x00847546)),  # LH3DMenu
+    (0x0084762A, copy_run(0x00847587)),  # LH3DMenu
+    (0x008476B2, jmp_run(0x0084762A)),  # LH3DMenu
+    (0x00847962, copy_run(0x008476B2)),  # LH3DMenu
+    (0x008479EA, copy_run(0x00847962)),  # LH3DMenu
+    (0x00847A75, jmp_run(0x008479EA)),  # LH3DMenu
     (0x0086E163, copy_run(0x0086DDF3)),  # RPAvoid
     (0x0086E193, jmp_run(0x0086E163)),  # RPAvoid
     (0x0086E1C6, copy_run(0x0086E193)),  # RPAvoid

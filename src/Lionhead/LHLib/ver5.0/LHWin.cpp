@@ -154,7 +154,7 @@ void ProcessWindowMessages()
 	} while (LHScreen::AltTabbedAway);
 }
 
-unsigned char __stdcall LHKeyToAscii(int key, int shift)
+unsigned char LHKeyboard::LHKeyToAscii(LH_KEY key, bool32_t shift)
 {
 	return gKeyToAsciiTable[key | (shift != 0 ? 0x80 : 0)];
 }
@@ -383,7 +383,7 @@ void LHKeyboard::StringCollect(int key)
 	}
 	else if (StringLen < StringMax)
 	{
-		StringBuffer[StringLen] = LHKeyToAscii(key, 0);
+		StringBuffer[StringLen] = LHKeyToAscii((LH_KEY)key, false);
 		++StringLen;
 	}
 }

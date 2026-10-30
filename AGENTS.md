@@ -652,6 +652,12 @@ which translation unit owns the data and produces a mangled name (`?Name@@3...`)
 not match the real one. If a global cannot be declared in its proper header yet, leave
 the function nonmatching without it and record why in the notes or PR description.
 
+A true free global is the exception: both manglings show it outside any class
+(`?Fonts@@3PAVFont@@A`, Mac `Fonts` rather than `Fonts__4Font`), so it cannot be a static
+member. While only one translation unit uses it, declare it `extern` at the top of that
+`.cpp`, with its address comment, rather than in a header. Move the declaration to the
+owner's header only once a second unit needs it.
+
 ## Rules from maintainer review
 
 These are drawn from review feedback on earlier PRs and take precedence where they
