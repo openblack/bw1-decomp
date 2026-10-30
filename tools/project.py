@@ -916,7 +916,9 @@ def generate_build_ninja(
             command=f"{lld_link} @$ldscript $ldflags /OUT:$out @$out.rsp",
             description="LINK $out",
             rspfile="$out.rsp",
-            rspfile_content="$in_newline",
+            # $rspflags holds the flags naming C++ symbols ($ in template manglings),
+            # which neither ninja nor the shell may expand on the command line.
+            rspfile_content="$in_newline $rspflags",
         )
         n.newline()
         n.comment("Link response file of a module linked with /OPT:REF (see module_ldflags)")
@@ -1206,7 +1208,8 @@ def generate_build_ninja(
                     implicit_outputs=map_path,
                     variables={
                         "ldscript": serialize_path(ldscript),
-                        "ldflags": make_flags_str(pe_ldflags),
+                        "ldflags": make_flags_str([f for f in pe_ldflags if "$" not in f]),
+                        "rspflags": make_flags_str([f.replace("$", "$$") for f in pe_ldflags if "$" in f]),
                     },
                     order_only="post-compile",
                 )

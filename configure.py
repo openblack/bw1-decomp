@@ -279,6 +279,22 @@ if config.version == "BW1W100":
         "?AddVillagerRequestingToGoHome@WorshipSite@@QAEXPAVVillager@@@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
+    # bodge_to_force_compilation_of_versions has no callers, so /OPT:REF dropped it
+    # and every LHScriptX/LHScriptCommandX member only it calls.
+    for _dead_function in [
+        "?Load@?$LHScriptX@D@@QAE?AW4LH_RETURN@@PADPAJ@Z",
+        "?Load@?$LHScriptX@D@@QAE?AW4LH_RETURN@@PADPAPADP6A?AW42@JPAJ@Z2@Z",
+        "?Load@?$LHScriptX@D@@QAE?AW4LH_RETURN@@PADPAU?$LHScriptCommandX@D@@P6A?AW42@JPAU?$LHScriptPramX@D@@@ZPAPADP6A?AW42@JPAJ@Z5@Z",
+        "?Load@?$LHScriptX@G@@QAE?AW4LH_RETURN@@PADPAJ@Z",
+        "?Load@?$LHScriptX@G@@QAE?AW4LH_RETURN@@PADPAPAGP6A?AW42@JPAJ@Z2@Z",
+        "?Load@?$LHScriptX@G@@QAE?AW4LH_RETURN@@PADPAU?$LHScriptCommandX@G@@P6A?AW42@JPAU?$LHScriptPramX@G@@@ZPAPAGP6A?AW42@JPAJ@Z5@Z",
+        "?SetVariables@?$LHScriptX@G@@QAE?AW4LH_RETURN@@PAU?$LHScriptCommandX@G@@P6A?AW42@JPAU?$LHScriptPramX@G@@@ZPAJ@Z",
+        "?DontProcessNumLines@?$LHScriptX@G@@QAE_NAAVLHOSFile@@PAGK@Z",
+        "?InitIfLevel@?$LHScriptX@G@@QAEXXZ",
+        "?GetCommandAsText@?$LHScriptCommandX@D@@QAEPADPAD@Z",
+        "?GetCommandAsText@?$LHScriptCommandX@G@@QAEPAGPAG@Z",
+    ]:
+        config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
     # GAudio's MusicSwitch, Shutdown and bank SampleSet3DPosition wrappers have
     # no callers in 1.00; /OPT:REF dropped them and their LHAudio imports.
     for _dead_import in [
@@ -1737,7 +1753,7 @@ config.libs = [
             # TODO(#298): It's likely that LH3DLib was compiled with `/Gr` that sets __thiscall as __fastcall (e.g. first argument is in edx)
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp", progress_category="sdk", extra_cflags=["/GX"]),
-            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Lionhead/LHLib/ver5.0/LHMem.cpp", progress_category="sdk"),
+            Object(Matching, "Lionhead/LHLib/ver5.0/LHMem.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScreen.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHDrawLine.cpp", progress_category="sdk"),
@@ -1748,6 +1764,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHText.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHHeap2.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMouse.cpp", progress_category="sdk"),
+            Object(Matching, "Lionhead/LHLib/ver5.0/LHString.cpp", progress_category="sdk", extra_cflags=["/GX", "/Ob0"]),
             Object(Matching, "Lionhead/LHLib/ver5.0/LHStringOps.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScript.cpp", progress_category="sdk", extra_cflags=["/GX", "/Ob0"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSpriteList.cpp", progress_category="sdk"),

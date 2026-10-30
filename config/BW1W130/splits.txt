@@ -3935,17 +3935,22 @@ Lionhead/LHLib/ver5.0/LHMouse.cpp:
 
 Lionhead/LHLib/ver5.0/LHSurface.cpp:
 	.text       start:0x007EB400 end:0x007EBB40
-	.text$x     start:0x008ACC60 end:0x008ACC80 align:4
 
 Lionhead/LHLib/ver5.0/LHMem.cpp:
-	.text       start:0x007EBB40 end:0x007EBBC0
+	.text       start:0x007EBB40 end:0x007EBBF0
+
+Lionhead/LHLib/ver5.0/LHString.cpp:
+	.text       start:0x007EBBF0 end:0x007EBEA0
+	.text$x     start:0x008ACC60 end:0x008ACC80 align:4
+	.xdata$x    start:0x00A3E8E0 end:0x00A3E908 align:4
+	.bss        start:0x00F11894 end:0x00F13094
 
 Lionhead/LHLib/ver5.0/LHStringOps.cpp:
 	.text       start:0x007EBEA0 end:0x007EC3D0
 
 Lionhead/LHLib/ver5.0/LHScript.cpp:
 	.text       start:0x007EC3D0 end:0x007EF220
-	.text$x     start:0x008ACC80 end:0x008ACD40 align:4
+	.text$x     start:0x008ACC80 end:0x008ACD40 align:16
 	.data       start:0x00CB50D0 end:0x00CB5D10
 
 Lionhead/LHLib/ver5.0/LHDrawSprite.cpp:

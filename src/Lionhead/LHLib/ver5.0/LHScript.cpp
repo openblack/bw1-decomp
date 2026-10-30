@@ -374,15 +374,6 @@ template <class T> T* LHScriptCommandX<T>::GetCommandAsText(T* text)
 // BW1W120 007e9ad0 BW1M119 011c98f8 (LHCombined Release)
 void LHScriptX<char>::PostFileOpenStuff(LHOSFile& file) {}
 
-// BW1W120 007e6b40 BW1M119 0114fc00 (LHCombined Release)
-// Reads and discards the UTF-16 byte-order mark at the head of the file.
-void LHScriptX<wchar_t>::PostFileOpenStuff(LHOSFile& file)
-{
-	size_t  bytesRead = 0;
-	wchar_t byteOrderMark;
-	file.Read(&byteOrderMark, 2, &bytesRead);
-}
-
 // BW1W120 007e8170 BW1M119 01154080 (LHCombined Release)
 template <class T> LH_RETURN LHScriptX<T>::LoadFile(char* file_name, long* param_2)
 {
@@ -929,34 +920,7 @@ template <class T> char LHScriptX<T>::GetConditionState(long value1, unsigned ch
 	}
 }
 
-// BW1W120 007e6b70
-// Forces the compiler to instantiate every member of both template versions.
-void bodge_to_force_compilation_of_versions()
-{
-	LHScriptX<char>           scriptC;
-	LHScriptX<wchar_t>        scriptW;
-	LHScriptCommandX<char>    commandC;
-	LHScriptCommandX<wchar_t> commandW;
-	LHReleasedOSFile          file;
-
-	scriptC.Load(NULL, (long*)NULL);
-	scriptC.Load(NULL, (LHScriptCommandX<char>*)NULL, NULL, (char**)NULL, NULL, NULL);
-	scriptC.Load(NULL, (LHScriptCommandX<char>*)NULL, NULL, (long*)NULL);
-	scriptC.Load(NULL, (char**)NULL, NULL, (long*)NULL);
-	scriptC.SetVariables(NULL, NULL, NULL);
-	scriptC.LoadOneLine(file, NULL);
-	scriptC.DontProcessNumLines(file, NULL, 0);
-	scriptC.InitIfLevel();
-	scriptC.ScanLine(NULL);
-	scriptW.Load(NULL, (long*)NULL);
-	scriptW.Load(NULL, (LHScriptCommandX<wchar_t>*)NULL, NULL, (wchar_t**)NULL, NULL, NULL);
-	scriptW.Load(NULL, (LHScriptCommandX<wchar_t>*)NULL, NULL, (long*)NULL);
-	scriptW.Load(NULL, (wchar_t**)NULL, NULL, (long*)NULL);
-	scriptW.SetVariables(NULL, NULL, NULL);
-	scriptW.LoadOneLine(file, NULL);
-	scriptW.DontProcessNumLines(file, NULL, 0);
-	scriptW.InitIfLevel();
-	scriptW.ScanLine(NULL);
-	commandC.GetCommandAsText(NULL);
-	commandW.GetCommandAsText(NULL);
-}
+template class LHScriptX<char>;
+template class LHScriptX<wchar_t>;
+template struct LHScriptCommandX<char>;
+template struct LHScriptCommandX<wchar_t>;

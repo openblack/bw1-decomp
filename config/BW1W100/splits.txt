@@ -3340,6 +3340,10 @@ Lionhead/LHLib/ver5.0/LHSurface.cpp:
 Lionhead/LHLib/ver5.0/LHMem.cpp:
 	.text       start:0x0074D6D0 end:0x0074D700
 
+Lionhead/LHLib/ver5.0/LHString.cpp:
+	.text       start:0x0074D700 end:0x0074D7B0
+	.bss        start:0x00D6850C end:0x00D68D0C
+
 Lionhead/LHLib/ver5.0/LHStringOps.cpp:
 	.text       start:0x0074D7B0 end:0x0074DA00
 
