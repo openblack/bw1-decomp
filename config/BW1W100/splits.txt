@@ -3492,6 +3492,11 @@ Lionhead/LH3DLib/development/LH3DMenu.cpp:
 	.data       start:0x00B5B16C end:0x00B5B194
 	.bss        start:0x00E091F8 end:0x00E15340
 
+Lionhead/LH3DLib/development/LH3DVideo.cpp:
+	.text       start:0x00799FD0 end:0x0079A330
+	.CRT$XCU    start:0x008F74F8 end:0x008F74FC align:4
+	.bss        start:0x00E15340 end:0x00E1539B
+
 Lionhead/LH3DLib/development/LH3DMem.cpp:
 	.text       start:0x0079A330 end:0x0079A440
 

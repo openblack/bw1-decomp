@@ -2391,6 +2391,13 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00847962, copy_run(0x008476B2)),  # LH3DMenu
     (0x008479EA, copy_run(0x00847962)),  # LH3DMenu
     (0x00847A75, jmp_run(0x008479EA)),  # LH3DMenu
+    (0x00847AF1, jmp_run(0x00847A75)),  # LH3DVideo
+    (0x00847C9B, jmp_run(0x00847AF1)),  # LH3DVideo
+    (0x00847D84, copy_run(0x00847C97)),  # LH3DVideo
+    (0x00847DB7, jmp_run(0x00847D84)),  # LH3DVideo
+    (0x00847E0A, copy_run(0x00847DB7)),  # LH3DVideo
+    (0x00847E45, copy_run(0x00847E0A)),  # LH3DVideo
+    (0x00847E67, copy_run(0x00847E45)),  # LH3DVideo
     (0x0086E163, copy_run(0x0086DDF3)),  # RPAvoid
     (0x0086E193, jmp_run(0x0086E163)),  # RPAvoid
     (0x0086E1C6, copy_run(0x0086E193)),  # RPAvoid
