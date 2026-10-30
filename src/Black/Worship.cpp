@@ -1,4 +1,11 @@
+#include "CitadelPart.h"
+#include "FootpathFinder.h"
+#include "Game.h"
+#include "Rand.h"
+#include "WorshipSiteInfo.h"
+#include "Town.h"
 #include "GameTimeConstants.h"
+#include "TimerConstants.h"
 
 #include <math.h> /* For cos, fmod, log */
 
@@ -7,14 +14,15 @@
 static LHPoint ZeroPoint(0.0f, 0.0f, 0.0f);
 
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "MagicEffectInfo.h"
 
 static float OneOverLogHalf = 1.0f / (float)log(0.5);
 
 #include "PlannedWorshipSite.h"
 #include "WorshipSite.h"
-#include "WorshipSiteInfo.h"
 
 #include <stdio.h>  /* For sprintf */
+#include <stdlib.h> /* For __min */
 #include <string.h> /* For strlen */
 
 #include <Lionhead/LH3DLib/development/LH3DCitadel.h>
@@ -22,28 +30,31 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include <Lionhead/LH3DLib/development/LH3DMath.h>
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
 #include <Lionhead/LH3DLib/development/LH3DTech.h>
+#include <Lionhead/LHLib/ver5.0/LHCollide.h> /* For class NewCollide */
 
+#include "Abode.h"
 #include "Artifact.h"
 #include "Citadel.h"
 #include "CitadelHeart.h"
 #include "Dance.h"
 #include "DanceInfo.h"
-#include "Game.h"
 #include "InterfaceStatus.h"
 #include "Game3DObject.h"
 #include "GameOSFile.h"
 #include "GameStats.h"
 #include "GJUtils.h"
-#include "FootpathFinder.h"
 #include "FootpathLink.h"
 #include "LandBalance.h"
 #include "Landscape.h"
 #include "Utils.h"
 #include "Player.h"
+#include "PhysicsObject.h"
+#include "HelpProfile.h"
 #include "Pot.h"
 #include "PotInfo.h"
 #include "PSysInterface.h"
-#include "Rand.h"
+#include "GameInfo.h"
+#include "PSysProcessInfo.h"
 #include "Setup.h"
 #include "SpellIconInfo.h"
 #include "SpellPointInf.h"
@@ -52,6 +63,7 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "StoragePit.h"
 #include "Town.h"
 #include "Villager.h"
+#include "VillagerStateTableInfo.h"
 #include "TownSpellIcon.h"
 #include "TribeInfo.h"
 #include "WorshipTotem.h"
@@ -60,11 +72,27 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #define FILEPATH "C:\\dev\\black\\Worship.cpp"
 #elif defined(VERSION_BW1W110)
 #define FILEPATH "C:\\dev\\Black\\Worship.cpp"
+#elif defined(VERSION_BW1W130)
+#define FILEPATH "D:\\Work\\Games\\dd\\Black\\Worship.cpp"
+#elif defined(VERSION_BW1WCI)
+#define FILEPATH "C:\\dev\\black\\Worship.cpp"
 #else
 #define FILEPATH "C:\\dev\\MP\\Black\\Worship.cpp"
 #endif
 
-#define SECONDS_PER_MILLISECOND 0.001f
+#if defined(VERSION_BW1W100)
+#define WORSHIP_LINE(line) ((line) - ((line) > 242 ? 1 : 0))
+#elif defined(VERSION_BW1WCI)
+#define WORSHIP_LINE(line) ((line) + ((line) > 1390 ? 1 : 0))
+#else
+#define WORSHIP_LINE(line) (line)
+#endif
+
+#define SECONDS_PER_MILLISECOND         0.001f
+#define WORSHIP_SITE_INFINITE_CHANTS    1000000.0f
+#define WORSHIP_SITE_CENTRE_OFFSET_BACK 26.1f
+#define WORSHIP_SITE_CENTRE_OFFSET_SIDE 12.55f
+#define WORSHIP_SITE_REAL_RADIUS        14.0f
 
 const float FoodPotYAngleOffset = 1.5f;
 const float FoodPotScale = 0.7f;
@@ -72,10 +100,9 @@ const float FoodPosX = 9.0f;
 const float FoodPosZ = -38.0f;
 const float OverloadPulseMinSpeed = 5.0f;
 const float OverloadPulseMaxSpeed = 10.0f;
-const float WorshipSiteInfiniteChants = 1000000.0f;
-const float CentreOffsetBack = 26.1f;
-const float CentreOffsetSide = 12.55f;
-const float WorshipSiteRealRadius = 14.0f;
+float       CollideRadiusScale = 1.3f;
+
+static uint32_t UnusedStatic = 0;
 
 class SortVillagerOnNeedToGoHome : public Villager
 {
@@ -84,12 +111,6 @@ public:
 };
 
 GWorshipSiteInfo GWorshipSiteInfo::Infos[WORSHIP_SITE_INFO_LAST];
-
-GBaseInfo* GWorshipSiteInfo::GetBaseInfo(uint32_t& info_count)
-{
-	info_count = WORSHIP_SITE_INFO_LAST;
-	return Infos;
-}
 
 float GWorshipSiteInfo::GetChantsToReserveForMaintaining() const
 {
@@ -171,19 +192,23 @@ WorshipSite* WorshipSite::Create(const MapCoords& coords, const GWorshipSiteInfo
                                  const GTribeInfo* tribe_info, float y_angle, float scale, float percent_built,
                                  bool32_t under_construction)
 {
-	MapCoords pos = coords;
-	info = &GWorshipSiteInfo::Infos[tribe_info - GTribeInfo::Infos];
+	MapCoords pos;
+	pos.SetWholeX(coords.WholeX());
+	pos.SetWholeZ(coords.WholeZ());
+	pos.SetAltitude(coords.Altitude());
+	float         angle = y_angle;
 	unsigned long slot = 0;
+	info = &GWorshipSiteInfo::Infos[tribe_info - GTribeInfo::Infos];
 	if (citadel != NULL)
 	{
-		if (citadel->FindNearestWorshipSitePosAngleAndSlotToPos(info, scale, pos, y_angle, slot) != true)
+		if (citadel->FindNearestWorshipSitePosAngleAndSlotToPos(info, scale, pos, angle, slot) != true)
 		{
 			return NULL;
 		}
 		pos = citadel->Pos;
 	}
-	WorshipSite* site = new (FILEPATH, 190)
-		WorshipSite(pos, info, citadel, slot, tribe_info, y_angle, scale, percent_built, under_construction);
+	WorshipSite* site = new (FILEPATH, WORSHIP_LINE(190))
+		WorshipSite(pos, info, citadel, slot, tribe_info, angle, scale, percent_built, under_construction);
 	if (site != NULL)
 	{
 		site->CallVirtualFunctionsForCreation(pos);
@@ -216,7 +241,9 @@ void WorshipSite::RemovePotFromStructure(PotStructure* pot)
 	{
 		FoodPot = NULL;
 	}
+#if !defined(VERSION_BW1W100)
 	MultiMapFixed::RemovePotFromStructure(pot);
+#endif
 }
 
 bool32_t WorshipSite::GetInspectObjectPos(Villager* villager, MapCoords* pos)
@@ -256,7 +283,8 @@ void WorshipSite::Init(unsigned long slot)
 {
 	MapCoords pos;
 	GetDancePos(&pos);
-	dance = new (FILEPATH, 287) Dance(pos, &GDanceInfo::Infos[DANCE_INFO_CITADEL_DANCE_1 + slot], this, 0, 0, NULL);
+	dance = new (FILEPATH, WORSHIP_LINE(287))
+		Dance(pos, &GDanceInfo::Infos[DANCE_INFO_CITADEL_DANCE_1 + slot], this, 0, 0, NULL);
 	SetWorshipSpeed(WORSHIP_SITE_INITIAL_WORSHIP_SPEED);
 	CreateFoodPot();
 }
@@ -331,6 +359,11 @@ MapCoords WorshipSite::GetSpellIconPos(int16_t& slot)
 	}
 }
 
+bool32_t WorshipSite::HasSpellIconForSeedType(SPELL_SEED_TYPE type)
+{
+	return GetSpellIconFromSeedType(type) != NULL;
+}
+
 WorshipSpellIcon* WorshipSite::GetSpellIconFromSeedType(SPELL_SEED_TYPE type)
 {
 	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
@@ -348,6 +381,40 @@ WorshipSpellIcon* WorshipSite::GetSpellIconFromMagicType(MAGIC_TYPE type)
 	return GetSpellIconFromSeedType(GSpellSeedInfo::GetFirstSpellSeedForMagicType(type));
 }
 
+uint32_t WorshipSite::Process()
+{
+	if (ManaPathPSys != NULL)
+	{
+		PSysProcessInfo info;
+		info.InterfacePosition.x = 0.0f;
+		info.InterfacePosition.y = 0.0f;
+		info.InterfacePosition.z = 0.0f;
+		info.GesturePosition.x = 0.0f;
+		info.GesturePosition.y = 0.0f;
+		info.GesturePosition.z = 0.0f;
+		info.CameraForwardUnitVector.x = 0.0f;
+		info.CameraForwardUnitVector.y = 0.0f;
+		info.CameraForwardUnitVector.z = 0.0f;
+		info.HandVelocity.x = 0.0f;
+		info.HandVelocity.y = 0.0f;
+		info.HandVelocity.z = 0.0f;
+		info.GestureAngularVelocity = 0.0f;
+		info.Active = true;
+		info.Strength = 1.0f;
+		if (ManaPathPSys->Process(info, GGameInfo::Info.MillisecondsPerGameTurn) == 5)
+		{
+			delete ManaPathPSys;
+			ManaPathPSys = NULL;
+		}
+	}
+	if (FoodPot != NULL && FoodPot->IsAvailable() != true)
+	{
+		FoodPot = NULL;
+	}
+	show_needs.Get()->Process();
+	return 1;
+}
+
 void WorshipSite::CreateManaPathSprite(const MapCoords& coords, float speed, GameThingWithPos* target)
 {
 	if (ManaPathPSys == NULL)
@@ -356,8 +423,8 @@ void WorshipSite::CreateManaPathSprite(const MapCoords& coords, float speed, Gam
 		                                     LHPoint(0.0f, 0.0f, 0.0f), 1.0f, PSysInterface::NET_GAME_TYPE_0);
 	}
 	GPlayer* player = target->GetPlayer();
-	ManaPathPSys->AddTarget(new (FILEPATH, 442) SpellPointInf(coords.GetLHPoint(), speed, target->Pos.GetLHPoint(),
-	                                                          player != NULL ? player->GetPlayerColour() : 0));
+	ManaPathPSys->AddTarget(new (FILEPATH, WORSHIP_LINE(442)) SpellPointInf(
+		coords.GetLHPoint(), speed, target->Pos.GetLHPoint(), player != NULL ? player->GetPlayerColour() : 0));
 }
 
 void WorshipSite::DrawSpellIcons()
@@ -442,12 +509,74 @@ void WorshipSite::ProcessSpellIcons()
 	ProcessChantsAvailable();
 }
 
+void WorshipSite::ProcessChantsAvailable()
+{
+	float speed = 1.0f;
+	float supply = GetChantsVillagerCanSupply();
+	if (supply != 0.0f)
+	{
+		speed = ChantsUsed / supply;
+	}
+	else
+	{
+		speed = 1.0f;
+	}
+	float boost =
+		WORSHIP_SITE_BATTERY_SPEED_BOOST - ChantStore / GetChantBatteryMax() * WORSHIP_SITE_BATTERY_SPEED_BOOST;
+	boost = boost > 0.0f ? (boost < WORSHIP_SITE_MIN_BATTERY_SPEED_BOOST ? WORSHIP_SITE_MIN_BATTERY_SPEED_BOOST : boost)
+	                     : 0.0f;
+	speed += boost;
+	if (speed >= 1.0f)
+	{
+		speed = 1.0f;
+	}
+	SetWorshipSpeed(speed);
+	float chants = supply * speed;
+	float worshippers = (float)GetNumberVillagersWorshipping();
+	if (GGame::g_game->data.GameTurn % WORSHIP_SITE_ARTIFACT_POWERUP_INTERVAL == 0)
+	{
+		float powerup = GLandBalance::GetValue(GLandBalance::LAND_BALANCE_6) * GetInfo()->ArtifactPowerupMultiplier;
+		float population = GetPlayer() != NULL ? (float)GetPlayer()->GetTotalPopulation() : 0.0f;
+		float fraction = 0.0f;
+		if (population > 0.0f)
+		{
+			fraction = worshippers / population;
+		}
+		powerup *= fraction;
+		if (powerup != 0.0f)
+		{
+			for (LHLinkedNode<TownArtifact*>* node = Artifacts.GetStart(); node != NULL; node = node->next.Get())
+			{
+				if (node->payload->Artifact != NULL)
+				{
+					node->payload->AddToValue(powerup);
+				}
+			}
+		}
+	}
+	ChantDamage = worshippers != 0.0f ? chants / worshippers : 0.0f;
+	float store = ChantStore - (ChantsUsed - chants);
+	if (store <= 0.0f)
+	{
+		store = 0.0f;
+	}
+	ChantStore = store;
+	TotalChantsAvailable = store + supply;
+	ChantsUsed = 0.0f;
+	ChantsRequested = 0.0f;
+}
+
 void WorshipSite::UpdateGraphicsWithPULevels()
 {
 	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
 	{
 		icon->UpdateGraphicsWithPULevels();
 	}
+}
+
+bool32_t WorshipSite::IsGraphicsUpdatePending()
+{
+	return false;
 }
 
 void WorshipSite::SetWorshipSpeed(float speed)
@@ -484,6 +613,60 @@ int WorshipSite::CalculateFoodNeededFromTown()
 unsigned long WorshipSite::GetNumberVillagersWorshipping()
 {
 	return GetNumDancers();
+}
+
+void WorshipSite::UpdateDebugText(bool32_t verbose) {}
+
+bool32_t WorshipSite::IsDanceRequested()
+{
+	return false;
+}
+
+float WorshipSite::GetDanceProgress()
+{
+	return 0.0f;
+}
+
+#ifndef VERSION_BW1W100
+bool32_t WorshipSite::ValidateDance()
+{
+	dance->ValidateDancers(this);
+	DanceValidatedTurn = GGame::g_game->data.GameTurn;
+	return true;
+}
+#endif // VERSION_BW1W100
+
+static inline void SetPositionOnLand(LH3DObject* object, const MapCoords& coords, float y_angle, float scale)
+{
+	LHPoint point;
+	GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(coords, point);
+	point.y += LH3DIsland::GetAltitudeAndSetColorSpecular(coords, (unsigned long*)&object->color,
+	                                                      (unsigned long*)&object->specular);
+	object->LH3DObject::SetPosition(point, y_angle, scale);
+}
+
+void WorshipSite::CallVirtualFunctionsForCreation(const MapCoords& coords)
+{
+	if (GetCitadel()->GetCitadelHeart()->Game3dObject == NULL)
+	{
+		GetCitadel()->GetCitadelHeart()->CallVirtualFunctionsForCreation(coords);
+	}
+	LH3DMesh* mesh = ((LH3DCitadel*)GetCitadel()->GetCitadelHeart()->Game3dObject)->CitadelMesh;
+	Create3DObject();
+	Game3dObject->SetMesh(mesh, NULL, NULL);
+	SetPositionOnLand(Game3dObject, coords, GetYAngle(), GetScale());
+	InitialiseIsFixedForMapList();
+	AllocateMultiChild();
+	if (!IsInMagicHand() && !IsUnavailableOrFlying())
+	{
+		InsertMapObject();
+	}
+	Game3dObject->UpdateMelting();
+	mesh = Game3dObject->GetMesh();
+	mesh->flags |= LH3D_MESH_FLAGS_UNKNOWN_15;
+	Game3dObject->SetFootPrintOnTexture(true);
+	Game3dObject->SetShadowOnTexture(true);
+	Game3dObject->SetCastDynamicShadow(true);
 }
 
 float WorshipSite::UseChants(float amount)
@@ -571,7 +754,7 @@ bool32_t WorshipSite::IsBuilt()
 
 MultiMapFixed* WorshipSite::GetBuildingObjectForSpellIcon()
 {
-	uint32_t       random = GRand::GameRand(WORSHIP_SITE_SPELL_ICON_BUILD_RANDOM_RANGE, FILEPATH, 1013);
+	uint32_t       random = GRand::GameRand(WORSHIP_SITE_SPELL_ICON_BUILD_RANDOM_RANGE, FILEPATH, WORSHIP_LINE(1013));
 	MultiMapFixed* building = this;
 	float          lowest = GetPercentBuilt();
 	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
@@ -587,19 +770,11 @@ MultiMapFixed* WorshipSite::GetBuildingObjectForSpellIcon()
 	return building;
 }
 
-ABODE_TYPE PlannedWorshipSite::GetAbodeType()
+PlannedWorshipSite::PlannedWorshipSite(const MapCoords& coords, const GCitadelPartInfo* info, TRIBE_TYPE tribe,
+                                       Citadel* citadel, float y_angle, float scale)
+	: PlannedCitadelPart(coords, info, citadel, y_angle, scale)
 {
-	return ABODE_TYPE_CITADEL;
-}
-
-uint32_t PlannedWorshipSite::GetSaveType()
-{
-	return GAME_THING_TYPE_PLANNED_WORSHIP_SITE;
-}
-
-char* PlannedWorshipSite::GetDebugText()
-{
-	return "PlannedWorshipSite:";
+	Tribe = tribe;
 }
 
 bool32_t PlannedWorshipSite::Save(GameOSFile& file)
@@ -620,6 +795,30 @@ bool32_t PlannedWorshipSite::Load(GameOSFile& file)
 		return true;
 	}
 	return false;
+}
+
+PlannedMultiMapFixed* WorshipSite::ConvertToPlanned()
+{
+	PlannedWorshipSite* planned = new (FILEPATH, WORSHIP_LINE(1069))
+		PlannedWorshipSite(Pos, GetInfo(), GetTribe()->type, GetCitadel(), GetYAngle(), GetScale());
+	if (planned != NULL)
+	{
+		ToBeDeleted(false);
+	}
+	return planned;
+}
+
+MultiMapFixed* PlannedWorshipSite::CreatePlanned(float percent_built)
+{
+	Citadel* owner = citadel.Get();
+	float    yAngle = YAngle;
+	if (((const GCitadelPartInfo*)info.Get())->IsOkToCreateAtPos(Pos, yAngle, GetScale(), owner))
+	{
+		float angle = YAngle;
+		return WorshipSite::Create(Pos, (const GWorshipSiteInfo*)info.Get(), citadel.Get(), &GTribeInfo::Infos[Tribe],
+		                           angle, GetScale(), percent_built, true);
+	}
+	return NULL;
 }
 
 float WorshipSite::GetWorshipSpeed()
@@ -675,12 +874,28 @@ TRIBE_TYPE WorshipSite::GetTribeType() const
 	return tribe_info.Get()->type;
 }
 
+#ifndef VERSION_BW1W100
+float WorshipSite::GetTotemMaxSinkDepth()
+{
+	if (totem.Get() != NULL)
+	{
+		return totem->GetMaxSinkDepth();
+	}
+	return 0.0f;
+}
+#endif // VERSION_BW1W100
+
 float WorshipSite::CalculateDesireForFood()
 {
 	float needed = dance->CalculateFoodNeededByDancers();
 	float desire =
 		(GetResource(RESOURCE_TYPE_FOOD) + WORSHIP_SITE_DESIRE_EPSILON) / (needed + WORSHIP_SITE_DESIRE_EPSILON);
 	return 1.0f - (desire < 1.0f ? desire : 1.0f);
+}
+
+float WorshipSite::CalculateDesireForWood()
+{
+	return 0.0f;
 }
 
 float WorshipSite::CalculateDesireForRest()
@@ -702,8 +917,8 @@ float WorshipSite::CalculatePeopleHidingIndicator()
 	{
 		return 0.0f;
 	}
-	float indicator = (NumWorshippers - dance->NumDancers) / WORSHIP_SITE_HIDING_VILLAGERS_FOR_FULL_INDICATOR;
-	return 1.0f < indicator ? 1.0f : indicator;
+	uint32_t hiding = NumWorshippers - dance->NumDancers;
+	return __min(1.0f, hiding / WORSHIP_SITE_HIDING_VILLAGERS_FOR_FULL_INDICATOR);
 }
 
 void WorshipSite::AddSpellIcon(WorshipSpellIcon* icon)
@@ -716,9 +931,34 @@ void WorshipSite::RemoveSpellIcon(WorshipSpellIcon* icon)
 	IconList.Remove(icon);
 }
 
+void WorshipSite::AddToFoodOnTheWay(unsigned long amount)
+{
+	ResourcesOnTheWay[RESOURCE_TYPE_FOOD] += amount;
+}
+
 void WorshipSite::RemoveFromFoodOnTheWay(unsigned long amount)
 {
 	ResourcesOnTheWay[RESOURCE_TYPE_FOOD] -= amount;
+}
+
+uint32_t WorshipSite::GetFoodForWorshipSiteFromTowns()
+{
+	uint32_t food = 0;
+	for (LHLinkedNode<Town*>* node = Towns.GetStart(); node != NULL; node = node->next.Get())
+	{
+		food += node->payload->GetFoodForWorshipSiteIfEnough();
+	}
+	return food;
+}
+
+int WorshipSite::CalculateActualAmountOfFoodInTowns()
+{
+	int food = 0;
+	for (LHLinkedNode<Town*>* node = Towns.GetStart(); node != NULL; node = node->next.Get())
+	{
+		food += node->payload->CalculateActualAmountOfFood();
+	}
+	return food;
 }
 
 MapCoords WorshipSite::GetResourcePosAndYAngle(RESOURCE_TYPE type, unsigned long index, float* y_angle)
@@ -779,6 +1019,54 @@ MapCoords WorshipSite::GetResourceNearestEdge(RESOURCE_TYPE type, Object* object
 	return FoodPot->GetNearestEdgeOfObject(object);
 }
 
+#ifndef VERSION_BW1W100
+void WorshipSite::SetTotemPos(const MapCoords& pos)
+{
+	WorshipTotem* site_totem = totem.Get();
+	if (site_totem != NULL)
+	{
+		site_totem->Pos = pos;
+		site_totem->SetWorshipSpeedFromSink();
+	}
+}
+#endif // VERSION_BW1W100
+
+uint32_t WorshipSite::GetTribeValue()
+{
+	return tribe_info.Get()->Value;
+}
+
+bool32_t WorshipSite::IsSpellIconInList(WorshipSpellIcon* icon)
+{
+	WorshipSpellIcon* item;
+	for (item = IconList.head; item != NULL; item = item->next)
+	{
+		if (item == icon)
+		{
+			break;
+		}
+	}
+	return item != NULL;
+}
+
+int WorshipSite::GetSpellIconIndex(WorshipSpellIcon* icon)
+{
+	int               index = 0;
+	WorshipSpellIcon* item;
+	for (item = IconList.head; item != NULL; item = item->next, index++)
+	{
+		if (item == icon)
+		{
+			break;
+		}
+	}
+	if (item == NULL)
+	{
+		index = -1;
+	}
+	return index > 0 ? index : 0;
+}
+
 void WorshipSite::AddTown(Town* town)
 {
 	town->SetWorshipSite(this);
@@ -787,13 +1075,13 @@ void WorshipSite::AddTown(Town* town)
 	{
 		if (GetFootpathLink() == NULL)
 		{
-			FootpathLink = new (FILEPATH, 1386) GFootpathLink();
+			FootpathLink = new (FILEPATH, WORSHIP_LINE(1386)) GFootpathLink();
 		}
 		int pathIndex;
-		if (GetFootpathLink()->GetNearestPathToQuick(GetArrivePos(), storagePit->GetArrivePos(),
+		if (GetFootpathLink()->GetNearestPathToQuick(storagePit->GetArrivePos(), GetArrivePos(),
 		                                             WORSHIP_SITE_FOOTPATH_MAX_DISTANCE, pathIndex, NULL) == NULL)
 		{
-			new (FILEPATH, 1390) GFootpathFinder(storagePit, this);
+			new (FILEPATH, WORSHIP_LINE(1390)) GFootpathFinder(storagePit, this);
 		}
 	}
 	AddTownSpells(town);
@@ -899,7 +1187,7 @@ float WorshipSite::GetChantsAvailable()
 {
 	if (InfiniteChants)
 	{
-		return WorshipSiteInfiniteChants;
+		return WORSHIP_SITE_INFINITE_CHANTS;
 	}
 	return TotalChantsAvailable - ChantsUsed;
 }
@@ -908,7 +1196,7 @@ float WorshipSite::GetTotalChantsAvailable()
 {
 	if (InfiniteChants)
 	{
-		return WorshipSiteInfiniteChants;
+		return WORSHIP_SITE_INFINITE_CHANTS;
 	}
 	return TotalChantsAvailable;
 }
@@ -927,6 +1215,8 @@ Pot* WorshipSite::GetFoodPot()
 	return FoodPot;
 }
 
+void WorshipSite::ResetSpecialPositions() {}
+
 bool32_t WorshipSite::GetSpecialPos(uint32_t index, MapCoords* pos)
 {
 	if (Game3dObject != NULL)
@@ -934,13 +1224,18 @@ bool32_t WorshipSite::GetSpecialPos(uint32_t index, MapCoords* pos)
 		LHPoint point;
 		Game3dObject->GetSpecialPos(index, point);
 		float altitude = point.y - LH3DIsland::GetAltitude(LH3DMapCoords(point.x, point.z));
-		pos->SetX(point.x);
-		pos->SetZ(point.z);
+		pos->SetWholeX((long)(point.x * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL));
+		pos->SetWholeZ((long)(point.z * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL));
 		pos->SetAltitude(altitude);
 		return true;
 	}
 	*pos = Pos;
 	return false;
+}
+
+bool32_t WorshipSite::GetTotemSpecialPos(MapCoords* pos)
+{
+	return GetSpecialPos(WORSHIP_SITE_SPECIAL_POS_TOTEM, pos);
 }
 
 uint32_t WorshipSite::GetShowNeedsPos(uint32_t index, MapCoords* pos)
@@ -974,6 +1269,11 @@ void WorshipSite::GetFoodPos(MapCoords* pos)
 void WorshipSite::GetRestPos(MapCoords* pos)
 {
 	GetSpecialPos(WORSHIP_SITE_SPECIAL_POS_REST, pos);
+}
+
+bool32_t WorshipSite::GetTotemArrivePos(MapCoords* pos)
+{
+	return GetSpecialPos(WORSHIP_SITE_SPECIAL_POS_TOTEM, pos);
 }
 
 bool32_t WorshipSite::GetGatePos(MapCoords* pos)
@@ -1014,6 +1314,12 @@ unsigned long WorshipSite::GetNumDancers()
 	return dance->NumDancers;
 }
 
+void WorshipSite::StartDanceEffects() {}
+
+void WorshipSite::StopDanceEffects() {}
+
+void WorshipSite::UpdateDanceEffects() {}
+
 uint32_t WorshipSite::GetObjectCollide()
 {
 	if (GetCitadel() != NULL)
@@ -1049,6 +1355,61 @@ bool32_t WorshipSite::IsVillagerInWorshipList(Villager* villager)
 	return Worshippers.IsThisInList(villager);
 }
 
+void WorshipSite::ValidateWorshippers()
+{
+	for (LHLinkedNode<Villager*>* node = Worshippers.GetStart(); node != NULL; node = node->next.Get())
+	{
+		Villager* villager = node->payload;
+		villager->GetTopState();
+		villager->IsAvailable();
+	}
+}
+
+void Town::ValidateWorshippingVillagers()
+{
+	for (LHLinkedNode<Villager*>* node = VillagersOnWayToWorshipSite.GetStart(); node != NULL; node = node->next.Get())
+	{
+		node->payload->IsAvailable();
+	}
+	for (Abode* abode = AbodeList.head; abode != NULL; abode = abode->next)
+	{
+		for (Villager* villager = abode->villagers.head; villager != NULL; villager = villager->next)
+		{
+			bool worshipping = false;
+			for (uint32_t i = LIVING_ACTION_INDEX_TOP; i <= LIVING_ACTION_INDEX_FINAL; i++)
+			{
+				int state = villager->action.states[i];
+				switch (state)
+				{
+				case VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP:
+					worshipping = true;
+					break;
+				case VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE:
+				case VILLAGER_STATE_HIDING_AT_WORSHIP_SITE:
+					villager->GetWorshipSite();
+					worshipping = true;
+					break;
+				case VILLAGER_STATE_MOVE_AROUND_FIRE:
+					if (villager->action.states[LIVING_ACTION_INDEX_PREVIOUS] ==
+					    VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP)
+					{
+						worshipping = true;
+					}
+					break;
+				}
+				if (GVillagerStateTableInfo::Infos[state].isFinalState)
+				{
+					break;
+				}
+			}
+			if (!worshipping)
+			{
+				villager->GetWorshipSite();
+			}
+		}
+	}
+}
+
 SCRIPT_OBJECT_TYPE WorshipSite::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_WORSHIP_SITE;
@@ -1063,7 +1424,7 @@ bool32_t WorshipSite::Save(GameOSFile& file)
 		file.WritePtr(dance.Get());
 		file.WriteSafe(Towns);
 		file.WritePtr(FoodPot);
-		file.WriteSafe(field_0xbc);
+		file.WriteSafe(DanceValidatedTurn);
 		file.WriteSafe(field_0xc0);
 		file.WriteSafe(field_0xc4);
 		file.WriteSafe(NumWorshippers);
@@ -1102,12 +1463,12 @@ bool32_t WorshipSite::Load(GameOSFile& file)
 		file.ReadPtr((GameThing**)&dance);
 		file.ReadSafe(Towns);
 		file.ReadPtr((GameThing**)&FoodPot);
-		file.ReadSafe(field_0xbc);
-		file.ReadSafe(field_0xc0);
-		file.ReadSafe(field_0xc4);
-		file.ReadSafe(NumWorshippers);
-		file.ReadSafe(field_0xcc);
-		file.ReadSafe(CheatSpellSeed);
+		file.ReadIt(DanceValidatedTurn);
+		file.ReadIt(field_0xc0);
+		file.ReadIt(field_0xc4);
+		file.ReadIt(NumWorshippers);
+		file.ReadIt(field_0xcc);
+		file.ReadIt(CheatSpellSeed);
 		file.ReadSafe(Worshippers);
 		file.ReadSafe(IconList);
 		file.ReadArray(ResourcesOnTheWay);
@@ -1135,6 +1496,9 @@ bool32_t WorshipSite::Load(GameOSFile& file)
 void WorshipSite::ResolveLoad()
 {
 	Object::ResolveLoad();
+#if defined(VERSION_BW1WCI)
+	CreatureIsleVirtual0x108();
+#endif
 }
 
 void WorshipSite::AddArtifact(Fixed* artifact, GPlayer* player)
@@ -1142,7 +1506,7 @@ void WorshipSite::AddArtifact(Fixed* artifact, GPlayer* player)
 	TownArtifact* townArtifact = (TownArtifact*)artifact->GetTownArtifact();
 	if (townArtifact == NULL)
 	{
-		townArtifact = new (FILEPATH, 2092) TownArtifact(artifact, this, player);
+		townArtifact = new (FILEPATH, WORSHIP_LINE(2092)) TownArtifact(artifact, this, player);
 		artifact->town_artifact = townArtifact;
 	}
 	if (!Artifacts.IsThisInList(townArtifact))
@@ -1201,15 +1565,14 @@ LHPoint WorshipSite::GetNearestEdgeOfObject(Object* object)
 
 MapCoords WorshipSite::CalculateCentrePos()
 {
-	LHMatrix& matrix = Game3dObject->matrix;
-	return MapCoords(LHPoint(matrix._11 * CentreOffsetSide - matrix._31 * CentreOffsetBack + matrix._41,
-	                         matrix._12 * CentreOffsetSide - matrix._32 * CentreOffsetBack + matrix._42,
-	                         matrix._13 * CentreOffsetSide - matrix._33 * CentreOffsetBack + matrix._43));
+	LHPoint offset(WORSHIP_SITE_CENTRE_OFFSET_SIDE, 0.0f, -WORSHIP_SITE_CENTRE_OFFSET_BACK);
+	Game3dObject->matrix.TransformPoint(offset);
+	return MapCoords(offset);
 }
 
 float WorshipSite::GetRealRadius()
 {
-	return WorshipSiteRealRadius;
+	return WORSHIP_SITE_REAL_RADIUS;
 }
 
 void WorshipSite::GetDefaultFireCentrePos(MapCoords* pos)
@@ -1264,6 +1627,33 @@ bool32_t WorshipSite::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GIn
 		}
 	}
 	return true;
+}
+
+bool32_t WorshipSite::GetChantShortfallFraction(float* fraction, MAGIC_TYPE type)
+{
+	float             maxShortfall = 0.0f;
+	float             shortfall = 0.0f;
+	WorshipSpellIcon* found = NULL;
+	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
+	{
+		float needed = max(icon->GetMagicEffectInfo(GESTURE_TYPE_NONE)->CostToCreate - icon->GetChantStore(), 0.0f);
+		float missing = max(needed - GetTotalChantsAvailable(), 0.0f);
+		if (missing > maxShortfall)
+		{
+			maxShortfall = missing;
+		}
+		if (icon->GetMagicType() == type)
+		{
+			shortfall = missing;
+			found = icon;
+		}
+	}
+	if (found != NULL)
+	{
+		*fraction = shortfall / maxShortfall;
+		return true;
+	}
+	return false;
 }
 
 float WorshipSite::GetChantsVillagerCanSupply()
@@ -1322,6 +1712,25 @@ int WorshipSite::GetNumVillagersRequestingToGoHome()
 	return VillagersRequestingToGoHome.GetSize();
 }
 
+float WorshipSite::CalculateChargingSpellIconDemand()
+{
+	if (GetChantsVillagerCanSupply() != 0.0f)
+	{
+		float demand = 0.0f;
+		for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
+		{
+			if (icon->Charging)
+			{
+				demand += 1.0f - min((icon->GetChantNeededForSpellSeed() + WORSHIP_SITE_CHANT_EPSILON) /
+				                         (icon->GetChantRequiredForSpellSeed() + WORSHIP_SITE_CHANT_EPSILON),
+				                     1.0f);
+			}
+		}
+		return demand;
+	}
+	return 0.0f;
+}
+
 float WorshipSite::GetDesireForWorshippers()
 {
 	if (IconList.count != 0 && IsBuilt())
@@ -1362,8 +1771,58 @@ float WorshipSite::GetRadiusMultiplierForApplyingPotToPos()
 	return WORSHIP_SITE_POT_RADIUS_MULTIPLIER;
 }
 
+void WorshipSite::CreateCollideData()
+{
+	ReleaseCollideData();
+	static LHPoint CollidePoints[WORSHIP_SITE_COLLIDE_POINTS] = {
+		LHPoint(2.448f, 1.4f, -34.171f),  //
+		LHPoint(3.348f, 1.4f, -36.551f),  //
+		LHPoint(24.71f, 1.4f, -24.133f),  //
+		LHPoint(26.359f, 1.4f, -25.951f), //
+		LHPoint(3.93f, 2.0f, -39.084f),   //
+		LHPoint(27.452f, 2.0f, -28.503f), //
+		LHPoint(7.405f, 3.0f, -40.707f),  //
+		LHPoint(12.317f, 3.0f, -39.988f), //
+		LHPoint(22.537f, 3.0f, -35.073f), //
+		LHPoint(26.905f, 3.0f, -33.063f), //
+	};
+	CollideData = new (FILEPATH, WORSHIP_LINE(2390)) NewCollide(Game3dObject);
+	if (CollideData->obj->IteratorList != NULL)
+	{
+		delete CollideData->obj->IteratorList;
+	}
+	CollideData->obj->IteratorList = new (FILEPATH, WORSHIP_LINE(2394)) NewCollide::List(WORSHIP_SITE_COLLIDE_POINTS);
+	LHMatrix matrix;
+	GetWorldMatrix(&matrix);
+	for (int i = 0; i < WORSHIP_SITE_COLLIDE_POINTS; i++)
+	{
+		LHPoint pos = CollidePoints[i];
+		matrix.TransformPoint(pos);
+		CollideData->obj->IteratorList->Add(new (FILEPATH, WORSHIP_LINE(2402))
+		                                        NewCollide::Obj(CollideRadiusScale * CollidePoints[i].y, &pos));
+	}
+}
+
 float WorshipSite::GetChantBatteryMax()
 {
 	const GWorshipSiteInfo* info = GetInfo();
 	return GetNumberVillagersWorshipping() * info->EachVillagerAddToFillBattery + info->ChantsToFillBattery;
+}
+
+bool32_t WorshipSite::DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status)
+{
+	if (object->Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS)
+	{
+		PhysicsObject* physics = PhysicsObject::SearchForPhysicsObject(object);
+		if (physics != NULL)
+		{
+			GInterfaceStatus* thrower = physics->status;
+			if (thrower == GGame::g_game->MyInterfaceStatus())
+			{
+				GGame::g_game->help_profile->Trigger(HELP_EVENT_TYPE_6);
+			}
+		}
+	}
+	DoDeleteObjectAndTakeResource(object, status);
+	return true;
 }

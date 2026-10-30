@@ -44,6 +44,8 @@ public:
 
 	// BW1W120 00719b60 BW1M119 0114def0
 	static ShowNeeds* Create(GameThingWithPos* game_thing);
+	// BW1W120 00719b90 BW1M119 0114dda0
+	uint32_t Process();
 
 	// Constructors
 

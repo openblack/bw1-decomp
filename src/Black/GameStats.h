@@ -219,6 +219,10 @@ public:
 	// BW1W120 00d01ab0
 	static GameStatsPackage Package;
 
+#if defined(VERSION_BW1WCI)
+	bool32_t KeepPreviousStats;         /* 0x14 */
+	bool32_t FillingInConfinedCreature; /* 0x18 */
+#endif
 	GPlayer*                         Player;
 	uint32_t                         Position;
 	uint32_t                         LossReason;
@@ -461,6 +465,10 @@ public:
 	void IncrementCorrectSpell(MAGIC_TYPE magic_type);
 };
 
+#if defined(VERSION_BW1WCI)
+static_assert(sizeof(GameStats) == 0x1130, "Data type is of wrong size");
+#else
 static_assert(sizeof(GameStats) == 0x1128, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_GAME_STATS_INCLUDED_H */

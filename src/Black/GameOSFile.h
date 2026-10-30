@@ -525,7 +525,7 @@ public:
 		uint32_t count = list.count;
 		int      written = 0;
 		WriteIt(list.count);
-		for (LHOrderedLinkedListIterator<T> iterator(list); iterator.MoreToDo(); iterator++)
+		for (LHOrderedLinkedListIterator<T> iterator(list); iterator.MoreToDo();)
 		{
 			if (++written > (int)count)
 			{
@@ -537,6 +537,11 @@ public:
 				break;
 			}
 			WritePtr(iterator.Get());
+			iterator++;
+			if (!iterator.MoreToDo())
+			{
+				break;
+			}
 		}
 		return true;
 	}

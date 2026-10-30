@@ -1438,7 +1438,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Wonder.cpp"),
             GameCodeObject(NonMatching, "Black/Workshop.cpp"),
             GameCodeObject(NonMatching, "Black/WorkshopBuildingSite.cpp"),
-            GameCodeObject(NonMatching, "Black/Worship.cpp"),
+            GameCodeObject(Matching, "Black/Worship.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSite.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSiteInfo.cpp"),
             GameCodeObject(Matching, "Black/WorshipSiteUpgrade.cpp"),

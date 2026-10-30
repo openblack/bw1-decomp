@@ -14,7 +14,7 @@ struct PSysProcessInfo
 	struct LHPoint HandVelocity;            /* 0x24 */
 	float          Strength;
 	float          GestureAngularVelocity;
-	uint8_t        field_0x38;
+	bool           Active; /* 0x38 */
 };
 static_assert(sizeof(PSysProcessInfo) == 0x3c, "Data type is of wrong size");
 

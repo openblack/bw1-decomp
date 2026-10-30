@@ -17,7 +17,7 @@ class GTribeInfo : public GBaseInfo
 {
 public:
 	TRIBE_TYPE type; /* 0x10 */
-	uint32_t   field_0x14;
+	uint32_t   Value;
 	uint32_t   field_0x18;
 
 	// Override methods

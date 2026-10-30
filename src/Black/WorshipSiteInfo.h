@@ -34,7 +34,11 @@ public:
 	// Override methods
 
 	// BW1W120 0077a8b0 BW1M119 015bab80
-	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = WORSHIP_SITE_INFO_LAST;
+		return Infos;
+	}
 
 	// Static data
 

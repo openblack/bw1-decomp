@@ -1369,6 +1369,9 @@ void GFootpath::AssertValid()
 
 GFootpathFinder::GFootpathFinder(GameThingWithPos* from, GameThingWithPos* to)
 {
+#if defined(VERSION_BW1WCI)
+	planner = new (FILEPATH, 2855) GFootpathPlanner;
+#endif
 	GGame::g_game->GameLists.footpath_finder.Add(this);
 	Footpath = new (FILEPATH, 2856) GFootpath(from, to);
 	From = from;
@@ -1386,6 +1389,9 @@ GFootpathFinder::~GFootpathFinder() {}
 
 void GFootpathFinder::GameTurnProcess()
 {
+#if defined(VERSION_BW1WCI)
+	RPlan& plan = planner->plan;
+#endif
 	if (From->IsAvailable() == false || To->IsAvailable() == false || Footpath->IsAvailable() == false)
 	{
 		ToBeDeleted(false);
@@ -1453,6 +1459,10 @@ void GFootpathFinder::ToBeDeleted(bool32_t delete_now)
 
 void GFootpathFinder::Done()
 {
+#if defined(VERSION_BW1WCI)
+	RPHolder& holder = planner->holder;
+	RPlan&    plan = planner->plan;
+#endif
 	StartNode = Footpath->nodes.head;
 	DestNode = Footpath->nodes.GetLast();
 	GFootpath::ConvertCreaturePlanToFootpath(holder, plan, StartNode, DestNode, NULL);
@@ -1483,7 +1493,14 @@ void GFootpathFinder::Init()
 	{
 		MoveOutOfObject::Move(&dest, structure, start);
 	}
+#if defined(VERSION_BW1WCI)
+	planner->plan.SetStart(start, FOOTPATH_ROUTE_OBJECT_MARGIN, &planner->holder, ROUTE_NODE_NO_AVOID,
+	                       ROUTE_NODE_NO_AVOID, 0);
+	planner->plan.SetDest(dest, 0.0f, 0.0f, 0.0f, ROUTE_NODE_NO_AVOID, 0,
+	                      (start.GetRange(dest) + FOOTPATH_ROUTE_EXTRA_LENGTH) * FOOTPATH_ROUTE_LENGTH_FACTOR, true);
+#else
 	plan.SetStart(start, FOOTPATH_ROUTE_OBJECT_MARGIN, &holder, ROUTE_NODE_NO_AVOID, ROUTE_NODE_NO_AVOID, 0);
 	plan.SetDest(dest, 0.0f, 0.0f, 0.0f, ROUTE_NODE_NO_AVOID, 0,
 	             (start.GetRange(dest) + FOOTPATH_ROUTE_EXTRA_LENGTH) * FOOTPATH_ROUTE_LENGTH_FACTOR, true);
+#endif
 }
