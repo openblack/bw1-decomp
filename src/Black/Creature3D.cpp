@@ -6057,7 +6057,7 @@ void LH3DCreature::DoThrowingAction()
 		PhysicsObject*    physics = HeldObject->InitialisePhysics(velocity, spin, creature, true, status).Physics;
 		if (physics)
 		{
-			physics->Physics.Inertia = 0.0f;
+			physics->Physics.WindResist = 0.0f;
 		}
 		if (creature)
 		{

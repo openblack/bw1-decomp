@@ -1292,7 +1292,7 @@ uint32_t Object::ThrowObjectFromHand(GInterfaceStatus* status, bool32_t dont_rep
 	PhysicsObject* physicsObject = InitialisePhysicsFromHand(velocity, angularVelocity, status, NULL, dont_replant);
 	if (status->GetPlayer()->WindResistance && physicsObject != NULL)
 	{
-		physicsObject->Physics.Inertia = 0.0f;
+		physicsObject->Physics.WindResist = 0.0f;
 	}
 	return 0x16;
 }
@@ -1999,7 +1999,7 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 {
 	phys_ob->SetUpConstants(weight, &EditorPhysics::PhysicsConstants[PHYSICS_CONSTANTS_TYPE_TREE], true);
 	phys_ob->NumVertices = OBJECT_TREE_VERTEX_COUNT;
-	phys_ob->Vertices = new (OBJECT_SOURCE_FILE, OBJECT_LINE(2491)) PhysOb::Vertex[phys_ob->NumVertices];
+	phys_ob->Vertices = new (OBJECT_SOURCE_FILE, OBJECT_LINE(2491)) IPoint[phys_ob->NumVertices];
 
 	float halfHeight;
 	if (IsARootedObject())
@@ -2013,7 +2013,7 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 		halfHeight = height * 0.5f;
 	}
 
-	PhysOb::Vertex* vertex = phys_ob->Vertices;
+	IPoint* vertex = phys_ob->Vertices;
 	for (int ring = 1; ring < 4; ring++)
 	{
 		float ringRadius;
@@ -2079,8 +2079,8 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 	phys_ob->Radius = max(halfHeight, radius);
 
 	phys_ob->NumFaces = OBJECT_TREE_FACE_COUNT;
-	phys_ob->Faces = new (OBJECT_SOURCE_FILE, OBJECT_LINE(2591)) PhysOb::Face[phys_ob->NumFaces];
-	PhysOb::Face* face = phys_ob->Faces;
+	phys_ob->Faces = new (OBJECT_SOURCE_FILE, OBJECT_LINE(2591)) PTri[phys_ob->NumFaces];
+	PTri* face = phys_ob->Faces;
 	// The two bands between the rings, two triangles per quad.
 	int first = 0;
 	for (int band = 0; band < 2; band++)
@@ -2108,7 +2108,7 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 	face[3].Set(13, 11, 8);
 
 	phys_ob->SetUpMoi();
-	phys_ob->Inertia *= OBJECT_TREE_INERTIA_SCALE;
+	phys_ob->WindResist *= OBJECT_TREE_WIND_RESIST_SCALE;
 	phys_ob->SetUpPos();
 }
 

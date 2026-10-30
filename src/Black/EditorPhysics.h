@@ -3,24 +3,15 @@
 
 #include <assert.h> /* For static_assert */
 
+#include <Lionhead/LH3DLib/development/PhysicsData.h> /* For struct PhysicsData */
+
 #include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
-
-// One row of data/physicsconstants.txt, indexed by Object::GetPhysicsConstantsType().
-struct PhysicsData
-{
-	float field_0x0;
-	float field_0x4;
-	float field_0x8;
-	float field_0xc;
-	float field_0x10;
-	float field_0x14;
-};
-
-static_assert(sizeof(PhysicsData) == 0x18, "PhysicsData size is incorrect");
 
 class EditorPhysics
 {
 public:
+	// BW1W120 inlined BW1M119 012bbec0
+	static PhysicsData* GetData() { return PhysicsConstants; }
 	// BW1W120 00cc63e0
 	static PhysicsData PhysicsConstants[0x18];
 

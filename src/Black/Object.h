@@ -83,7 +83,7 @@ class Villager;
 #define OBJECT_TREE_WIDE_RING_RADIUS        0.65f
 #define OBJECT_TREE_RING_HEIGHT             0.6f
 #define OBJECT_TREE_BASE_RADIUS             0.1f
-#define OBJECT_TREE_INERTIA_SCALE           0.3f
+#define OBJECT_TREE_WIND_RESIST_SCALE       0.3f
 
 enum OBJECT_TASTINESS
 {
