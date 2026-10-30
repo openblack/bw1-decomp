@@ -4,6 +4,7 @@
 #include <stdint.h>    /* For uint32_t, uint8_t */
 #include <re_common.h> /* For bool32_t */
 
+#include "BBox2D.h"  /* For struct BBox2D */
 #include "LHPoint.h" /* For struct LHPoint */
 
 class LH3DObject;
@@ -21,14 +22,6 @@ struct LH3DMaterial;
 
 // The extent a shadow's bounds and depth start from before its mesh is projected.
 #define LH3D_SHADOW_FAR 1e20f
-
-struct BBox2D
-{
-	float MinX;
-	float MinZ;
-	float MaxX;
-	float MaxZ;
-};
 
 struct TShadowInfo
 {
