@@ -373,7 +373,7 @@ struct LHMatrix
 	}
 	// BW1W120 007fb180 BW1M119 01037ff0 (LHCombined Release)
 	void __fastcall SetFromVectorAndAngle(const LHPoint& vector, float angle);
-	// BW1W120 null BW1M119 010d8980 (LHCombined Release)
+	// BW1W120 007fb680 BW1M119 010d8980 (LHCombined Release)
 	void Print();
 	// BW1W120 007fab30 BW1M119 0100ee90 (LHCombined Release)
 	void GetYXZ(float* y, float* x, float* z) const;

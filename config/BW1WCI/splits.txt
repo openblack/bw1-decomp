@@ -3642,14 +3642,45 @@ Lionhead/LHLib/ver5.0/LHConvert.cpp:
 
 Lionhead/LHLib/ver5.0/LHSprite.cpp:
 	.text       start:0x0080D130 end:0x0080E5F0
-	.text$x     start:0x008D2CC0 end:0x008D2E80 align:4
 
 Lionhead/LHLib/ver5.0/LHDrawScaledSprite.cpp:
 	.text       start:0x0080E5F0 end:0x008107E0
 
+Lionhead/LHLib/ver5.0/TbIME.cpp:
+	.text       start:0x008107E0 end:0x008111E0
+	.text$x     start:0x008D2CC0 end:0x008D2D00 align:4
+	.xdata$x    start:0x00A2F1F0 end:0x00A2F240 align:4
+	.CRT$XCU    start:0x00A37540 end:0x00A37544 align:4
+
+Lionhead/LHLib/ver5.0/TbIMEImpl.cpp:
+	.text       start:0x008111E0 end:0x00813B50
+	.text$x     start:0x008D2D00 end:0x008D2E20 align:4
+	.rdata      start:0x00A12600 end:0x00A12620
+	.xdata$x    start:0x00A2F240 end:0x00A2F3A8 align:4
+	.CRT$XCU    start:0x00A37544 end:0x00A37550 align:4
+	.data       start:0x00CA9FD0 end:0x00CAA728
+	.bss        start:0x00F16840 end:0x00F16A48
+
+Lionhead/LH3DLib/development/LH3DFragMesh.cpp:
+	.text       start:0x00813B50 end:0x008157D0
+	.text$x     start:0x008D2E20 end:0x008D2E80 align:4
+	.xdata$x    start:0x00A2F3A8 end:0x00A2F420 align:4
+	.data       start:0x00CAA728 end:0x00CAA738
+	.bss        start:0x00F16A48 end:0x00F1EA60
+
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
-	.text       start:0x008157D0 end:0x008159A0
+	.text       start:0x008157D0 end:0x00817600
 	.text$x     start:0x008D2E80 end:0x008D2EE0 align:4
+	.rdata      start:0x00A12620 end:0x00A12F00
+	.xdata$x    start:0x00A2F420 end:0x00A2F498 align:4
+	.CRT$XCU    start:0x00A37550 end:0x00A37558 align:4
+	.data       start:0x00CAA738 end:0x00CAA754
+	.bss        start:0x00F1EA60 end:0x00F1EA88
+
+Lionhead/LH3DLib/development/LHMatrix.cpp:
+	.text       start:0x00817600 end:0x008183A0
+	.rdata      start:0x00A12F00 end:0x00A12F04
+	.data       start:0x00CAA754 end:0x00CAA77C
 
 Lionhead/LH3DLib/development/PhysOb.cpp:
 	.text       start:0x008183A0 end:0x0081B4A0
