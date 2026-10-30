@@ -1396,6 +1396,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/UniverseRoom.cpp"),
             GameCodeObject(NonMatching, "Black/Utils.cpp"),
             GameCodeObject(NonMatching, "Black/ValueSpinner.cpp"),
+            GameCodeObject(Matching, "Black/Version.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/Villager.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerCheck.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerChild.cpp"),
