@@ -656,7 +656,7 @@ Black/CreatureReceiveSpell.cpp:
 Black/CreatureSelect.cpp:
 	.text       start:0x004D6E20 end:0x004D8320
 	.CRT$XCU    start:0x008F641C end:0x008F643C align:4
-	.data       start:0x00B0EAD4 end:0x00B0EAD8
+	.data       start:0x00B0EAD4 end:0x00B0EADC
 
 Black/CreatureSubAction.cpp:
 	.text       start:0x004D8320 end:0x004DEC20
@@ -3423,6 +3423,13 @@ Lionhead/LH3DLib/development/LH3DMath.cpp:
 
 Lionhead/LH3DLib/development/LH3DLightningSheet.cpp:
 	.text       start:0x00798F50 end:0x00799140
+
+Lionhead/LH3DLib/development/LH3DMenu.cpp:
+	.text       start:0x00799140 end:0x00799FD0
+	.rdata      start:0x008D989C end:0x008D98F0
+	.CRT$XCU    start:0x008F74EC end:0x008F74F8 align:4
+	.data       start:0x00B5B16C end:0x00B5B194
+	.bss        start:0x00E091F8 end:0x00E15340
 
 Lionhead/LH3DLib/development/LH3DMem.cpp:
 	.text       start:0x0079A330 end:0x0079A440

@@ -4163,7 +4163,7 @@ Lionhead/LH3DLib/development/LH3DLightningSheet.cpp:
 
 Lionhead/LHLib/ver5.0/Route.cpp:
 	.text       start:0x0083B280 end:0x0083C830
-	.CRT$XCU    start:0x009C7DC4 end:0x009C7DE0 align:4
+	.CRT$XCU    start:0x009C7DC4 end:0x009C7DCC align:4
 
 Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
 	.text       start:0x0083C920 end:0x0083CE00
@@ -4183,6 +4183,13 @@ Lionhead/LH3DLib/development/LH3DSprite.cpp:
 Lionhead/LH3DLib/development/LH3DMath.cpp:
 	.text       start:0x00841170 end:0x008412B0
 	.bss        start:0x00EEA394 end:0x00EEA398
+
+Lionhead/LH3DLib/development/LH3DMenu.cpp:
+	.text       start:0x008412B0 end:0x00842950
+	.rdata      start:0x009A3B1C end:0x009A3B70
+	.CRT$XCU    start:0x009C7DCC end:0x009C7DD8 align:4
+	.data       start:0x00C390EC end:0x00C39114
+	.bss        start:0x00EEA398 end:0x00EF64E0
 
 Lionhead/LH3DLib/development/LH3DMem.cpp:
 	.text       start:0x00842CE0 end:0x00842DF0

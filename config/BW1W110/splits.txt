@@ -3658,6 +3658,13 @@ Lionhead/LH3DLib/development/LH3DSprite.cpp:
 Lionhead/LH3DLib/development/LH3DMath.cpp:
 	.text       start:0x00830F80 end:0x008310C0
 
+Lionhead/LH3DLib/development/LH3DMenu.cpp:
+	.text       start:0x008310C0 end:0x00832760
+	.rdata      start:0x00993A1C end:0x00993A70
+	.CRT$XCU    start:0x009B7588 end:0x009B7594 align:4
+	.data       start:0x00C27F3C end:0x00C27F64
+	.bss        start:0x00ED8D60 end:0x00EE4EA8
+
 Lionhead/LH3DLib/development/LH3DMem.cpp:
 	.text       start:0x00832AF0 end:0x00832D20
 

@@ -4051,6 +4051,13 @@ Lionhead/LH3DLib/development/LH3DMath.cpp:
 	.text       start:0x00846300 end:0x00846440
 	.bss        start:0x00F6B54C end:0x00F6B550
 
+Lionhead/LH3DLib/development/LH3DMenu.cpp:
+	.text       start:0x00846440 end:0x00847AE0
+	.rdata      start:0x00A23504 end:0x00A23558
+	.CRT$XCU    start:0x00A47E10 end:0x00A47E1C align:4
+	.data       start:0x00CBA024 end:0x00CBA04C
+	.bss        start:0x00F6B550 end:0x00F77698
+
 Lionhead/LH3DLib/development/LH3DMem.cpp:
 	.text       start:0x00847E70 end:0x00847F80
 	.bss        start:0x00F776F8 end:0x00F7770C align:8
@@ -4067,7 +4074,7 @@ Lionhead/LH3DLib/development/LHVideoPlayer.cpp:
 
 Lionhead/LH3DLib/development/Blob.cpp:
 	.text       start:0x0084AD30 end:0x0084B810
-	.CRT$XCU    start:0x00A47E00 end:0x00A47E08 align:4
+	.CRT$XCU    start:0x00A47E24 end:0x00A47E2C align:4
 
 Lionhead/LH3DLib/development/LH3DHair.cpp:
 	.text       start:0x0084B810 end:0x0084D550
