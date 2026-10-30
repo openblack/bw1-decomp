@@ -3648,6 +3648,13 @@ Lionhead/LH3DLib/development/LH3DSmoke.cpp:
 	.text       start:0x008157D0 end:0x008159A0
 	.text$x     start:0x008D2E80 end:0x008D2EE0 align:4
 
+Lionhead/LH3DLib/development/PhysOb.cpp:
+	.text       start:0x008183A0 end:0x0081B4A0
+	.rdata      start:0x00A12F04 end:0x00A12F24
+	.CRT$XCU    start:0x00A37558 end:0x00A3755C align:4
+	.data       start:0x00CAA77C end:0x00CAA780
+	.bss        start:0x00F1EA88 end:0x00F1EA8C
+
 Lionhead/LH3DLib/development/LH3DIsland.cpp:
 	.text       start:0x0081BFC0 end:0x00821520
 	.text$x     start:0x008D2EE0 end:0x008D2F10 align:4

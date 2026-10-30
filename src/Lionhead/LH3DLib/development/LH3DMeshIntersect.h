@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint8_t */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include "LHMatrix.h" /* For struct LHMatrix */
+#include "LHPoint.h"  /* For struct LHPoint */
 
 #include <re_common.h> /* For bool32_t */
 
@@ -16,7 +17,6 @@
 struct LH3DColor;
 struct LH3DMesh;
 class LHFile;
-struct LHMatrix;
 
 struct TextureRef
 {
@@ -105,6 +105,11 @@ static_assert(sizeof(MeshIntersect) == 0x28, "Data type is of wrong size");
 
 struct CollideBox
 {
+	LHPoint  Min;
+	LHPoint  Max;
+	LHMatrix Matrix;
+	LHMatrix InverseMatrix;
+
 	// Non-virtual methods
 
 	// BW1W120 00867fe0 BW1M119 01047970 (LHCombined Release)
@@ -112,5 +117,6 @@ struct CollideBox
 	// BW1W120 008683c0 BW1M119 010ad410 (LHCombined Release)
 	bool32_t GetImpactPoint(LH3DMesh* mesh, LHPoint& start, LHPoint& direction, LHPoint& impact, LHPoint& normal);
 };
+static_assert(sizeof(CollideBox) == 0x78, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH3D_MESH_INTERSECT_INCLUDED_H */

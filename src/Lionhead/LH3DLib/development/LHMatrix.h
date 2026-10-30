@@ -371,6 +371,10 @@ struct LHMatrix
 		_32 = temp._31 * r._12 + temp._32 * r._22 + temp._33 * r._32;
 		_33 = temp._31 * r._13 + temp._32 * r._23 + temp._33 * r._33;
 	}
+	// BW1W120 007fb180 BW1M119 01037ff0 (LHCombined Release)
+	void __fastcall SetFromVectorAndAngle(const LHPoint& vector, float angle);
+	// BW1W120 null BW1M119 010d8980 (LHCombined Release)
+	void Print();
 	// BW1W120 007fab30 BW1M119 0100ee90 (LHCombined Release)
 	void GetYXZ(float* y, float* x, float* z) const;
 	// BW1W120 007fb5c0 BW1M119 01022550 (LHCombined Release)
@@ -426,6 +430,13 @@ struct LHMatrix
 		point.x = m[0] * x + m[3] * y + m[6] * z;
 		point.y = m[1] * x + m[4] * y + m[7] * z;
 		point.z = m[2] * x + m[5] * y + m[8] * z;
+	}
+	// BW1W120 007fcb30 BW1M119 inlined
+	void __fastcall TransformVector(LHPoint& result, const LHPoint& vector) const
+	{
+		result.x = vector.x * m[0] + vector.y * m[3] + vector.z * m[6];
+		result.y = vector.x * m[1] + vector.y * m[4] + vector.z * m[7];
+		result.z = vector.x * m[2] + vector.y * m[5] + vector.z * m[8];
 	}
 };
 

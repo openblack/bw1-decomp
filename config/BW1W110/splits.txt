@@ -3535,8 +3535,15 @@ Lionhead/LHLib/ver5.0/LHSprite.cpp:
 	.text$x     start:0x00897A40 end:0x00897C00 align:4
 
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
-	.text       start:0x007E8970 end:0x007EF0E0
+	.text       start:0x007E8970 end:0x007E8B40
 	.text$x     start:0x00897C00 end:0x00897C60 align:4
+
+Lionhead/LH3DLib/development/PhysOb.cpp:
+	.text       start:0x007EB540 end:0x007EE5C0
+	.rdata      start:0x00992AB0 end:0x00992AD4
+	.CRT$XCU    start:0x009B74DC end:0x009B74E0 align:4
+	.data       start:0x00C2604C end:0x00C26050
+	.bss        start:0x00E88AF0 end:0x00E88AF4
 
 Lionhead/LH3DLib/development/LH3DIsland.cpp:
 	.text       start:0x007EF0E0 end:0x007F4CA0

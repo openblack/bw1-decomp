@@ -1943,14 +1943,14 @@ void GScript::SetIdTarget()
 		if (physics != NULL)
 		{
 			physics->Physics.Velocity = velocity;
-			physics->Physics.Inertia = 0.0f;
+			physics->Physics.WindResist = 0.0f;
 		}
 		return;
 	}
 	PhysicsInitialisation physics = object->InitialisePhysics(velocity, spin, NULL, true, NULL);
 	if (physics.Physics != NULL)
 	{
-		physics.Physics->Physics.Inertia = 0.0f;
+		physics.Physics->Physics.WindResist = 0.0f;
 	}
 }
 
