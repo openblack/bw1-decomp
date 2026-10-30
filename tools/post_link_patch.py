@@ -2276,6 +2276,35 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00783C74, jmp_run(0x00783BA2)),  # WorshipSiteUpgrade
     (0x00783D03, copy_run(0x00783C74)),  # WorshipSiteUpgrade
     (0x00783D9B, call_rel32(0x004034F9)),  # WorshipSiteUpgrade
+    (0x00783DF3, jmp_run(0x00783D9B)),  # WorshipSpellIcon
+    (0x00783EE6, copy_run(0x00783DF3)),  # WorshipSpellIcon
+    (0x00783F1A, jmp_run(0x00783EE6)),  # WorshipSpellIcon
+    (0x00783FB3, jmp_run(0x00783F13)),  # WorshipSpellIcon
+    (0x00784009, copy_run(0x00783FB3)),  # WorshipSpellIcon
+    (0x00784066, copy_run(0x00784009)),  # WorshipSpellIcon
+    (0x00784088, copy_run(0x00784066)),  # WorshipSpellIcon
+    (0x0078426B, call_rel32(0x004034F9)),  # WorshipSpellIcon
+    (0x007842B3, jmp_run(0x0078426B)),  # WorshipSpellIcon
+    (0x007844A4, copy_run(0x007842B3)),  # WorshipSpellIcon
+    (0x00784556, jmp_run(0x007844A4)),  # WorshipSpellIcon
+    (0x007845A8, copy_run(0x00784556)),  # WorshipSpellIcon
+    (0x00784613, jmp_run(0x007845A8)),  # WorshipSpellIcon
+    (0x00784653, jmp_run(0x00784613)),  # WorshipSpellIcon
+    (0x007846C3, copy_run(0x00784653)),  # WorshipSpellIcon
+    (0x007847D3, jmp_run(0x007846C3)),  # WorshipSpellIcon
+    (0x00784884, copy_run(0x007847D3)),  # WorshipSpellIcon
+    (0x00784919, jmp_run(0x00784884)),  # WorshipSpellIcon
+    (0x00784974, jmp_run(0x00784919)),  # WorshipSpellIcon
+    (0x007849C5, copy_run(0x00784974)),  # WorshipSpellIcon
+    (0x00784A7B, call_rel32(0x004034F9)),  # WorshipSpellIcon
+    (0x00784B38, jmp_run(0x00784A7B)),  # WorshipSpellIcon
+    (0x00784B76, jmp_run(0x00784B38)),  # WorshipSpellIcon
+    (0x00784BE6, copy_run(0x00784B76)),  # WorshipSpellIcon
+    (0x00784C56, jmp_run(0x00784BE6)),  # WorshipSpellIcon
+    (0x00784CB1, jmp_run(0x00784C56)),  # WorshipSpellIcon
+    (0x007852E4, copy_run(0x00784CB1)),  # WorshipSpellIcon
+    (0x00785385, copy_run(0x007852E4)),  # WorshipSpellIcon
+    (0x00785418, jmp_run(0x00785385)),  # WorshipSpellIcon
     (0x007EBB97, jmp_run(0x007EBB1A)),  # LHMem
     (0x007EBBB2, jmp_run(0x007EBB97)),  # LHMem
     (0x007EBBEA, copy_run(0x007EBBB2)),  # LHMem
