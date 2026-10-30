@@ -18,6 +18,11 @@ block_relocations:
   - source: 0x00A16318
 # libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x008CA288
+# RainCell::Draw's 0xffffff colour mask and LH3DAtmos::Render3D's 0x7f7f7f mask and bias are immediates, not
+# pointers into data or code.
+  - source: 0x008513FF
+  - source: 0x00853668
+  - source: 0x0085366E
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x00828342
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside other code.

@@ -128,7 +128,7 @@ struct LHScreen
 	// BW1W120 007dd960 BW1M119 0114e380 (LHCombined Release)
 	int DirectDrawReleaseSurface();
 	// BW1W120 007dd9c0 BW1M119 0114e310 (LHCombined Release)
-	int Lock(unsigned long param_1);
+	int Lock(unsigned long flags);
 	// BW1W120 007dda90 BW1M119 0114e250 (LHCombined Release)
 	int Unlock();
 	// BW1W120 007ddad0 BW1M119 0114e1c0 (LHCombined Release)

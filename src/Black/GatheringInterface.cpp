@@ -87,11 +87,13 @@ uint32_t __stdcall PlayerDraw(SetupList* list, int index, int x_min, int y_min, 
 	GBPlayer* player = (GBPlayer*)list->GetItemData(index);
 	clip_min = clip_min > y_min ? (min(clip_min, y_max)) : y_min;
 	clip_max = clip_max > y_min ? (min(clip_max, y_max)) : y_min;
-	if (clip_max - 4 > clip_min && player->Online && LH3DAtmos::AtmosMaterial != NULL)
+	if (clip_max - 4 > clip_min && player->Online && LH3DAtmos::mat0 != NULL)
 	{
 		LH3DColor colour(0xff, 0xff, 0xff, 0xff);
-		SetupThing::DrawBox(x_max - size - 2, clip_min, x_max - 2, clip_max, 0.875f, 0.375f, 1.0f, 0.5f,
-		                    LH3DAtmos::AtmosMaterial, &colour, 1, -40960, 40960, false, 100.0f);
+		SetupThing::DrawBox(x_max - size - 2, clip_min, x_max - 2, clip_max, 224.0f / LH3D_ATMOS_TEXTURE_SIZE,
+		                    96.0f / LH3D_ATMOS_TEXTURE_SIZE, 256.0f / LH3D_ATMOS_TEXTURE_SIZE,
+		                    128.0f / LH3D_ATMOS_TEXTURE_SIZE, LH3DAtmos::mat0, &colour, 1, -SETUP_NO_CLIP,
+		                    SETUP_NO_CLIP, false, 100.0f);
 	}
 	return 1;
 }

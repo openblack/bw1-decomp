@@ -30,6 +30,15 @@ struct SetupList;
 // Identifier of the IME candidate list that SetupEdit creates.
 #define SETUP_IME_CANDIDATE_LIST_ID 0x85b680
 
+#define SETUP_NO_CLIP 40960
+
+#define SETUP_MP3_ICON_SIZE         16
+#define SETUP_MP3_ICON_COLUMNS      4
+#define SETUP_MP3_ICON_ROWS         4
+#define SETUP_MP3_ICON_FIRST_COLUMN 4
+#define SETUP_MP3_ICON_FIRST_ROW    1
+#define SETUP_MP3_ICON_PRESS_OFFSET 1
+
 // Control identifiers of the message box buttons that SetupBox::DefaultCB presses.
 enum SETUP_MESSAGE_BOX_ID
 {

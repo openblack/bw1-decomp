@@ -27,7 +27,8 @@
 #include "HelpText.h"
 #include "Interface.h"
 
-#define FILEPATH "C:\\dev\\MP\\Black\\alexmfc.cpp"
+#define FILEPATH          "C:\\dev\\MP\\Black\\alexmfc.cpp"
+#define SETUP_MP3_ICON_UV ((float)SETUP_MP3_ICON_SIZE / LH3D_ATMOS_TEXTURE_SIZE)
 
 int SetupThing::DrawAlpha = 0xff;
 
@@ -837,7 +838,7 @@ void SetupSlider::Draw(bool hovered, bool selected)
 	else
 	{
 		SetupThing::DrawBigButton(x + 3, rect.start.y + 3, true, hovered || selected, height - 6, BBSTYLE_CHECK_BOX_OFF,
-		                          false, -40960, 40960);
+		                          false, -SETUP_NO_CLIP, SETUP_NO_CLIP);
 		LH3DColor* color = selected ? &SetupThing::DefaultColor : &SetupThing::NormalColour;
 		SetupThing::DrawTextA((rect.start.x + rect.end.x) / 2, (rect.start.y + rect.end.y) / 2 - GetHalfTextSize(),
 		                      rect.end.x - rect.start.x, TEXTJUSTIFY_CENTRE, label, GetTextSize(), color, 0);
@@ -1322,17 +1323,21 @@ void SetupMP3Button::Draw(bool hovered, bool selected)
 {
 	if (ShowButton)
 		SetupButton::Draw(hovered, selected);
-	int x = (rect.start.x + rect.end.x) / 2 - 9;
-	int y = (rect.start.y + rect.end.y) / 2 - 9;
+	int x = (rect.start.x + rect.end.x) / 2 - (SETUP_MP3_ICON_SIZE / 2 + SETUP_MP3_ICON_PRESS_OFFSET);
+	int y = (rect.start.y + rect.end.y) / 2 - (SETUP_MP3_ICON_SIZE / 2 + SETUP_MP3_ICON_PRESS_OFFSET);
 	if (pressed || Style)
 	{
-		x++;
-		y++;
+		x += SETUP_MP3_ICON_PRESS_OFFSET;
+		y += SETUP_MP3_ICON_PRESS_OFFSET;
 	}
-	float u = (IconIndex & 3) * 0.0625f + 0.25f;
-	float v = ((IconIndex / 4 & 3) + 1) * 0.0625f;
-	SetupThing::DrawBox(x, y, x + 16, y + 16, u, v, u + 0.0625f, v + 0.0625f, LH3DAtmos::AtmosMaterial,
-	                    hovered || Style ? &SetupThing::HighlightColour : &color, 1, -40960, 40960, false, 100.0f);
+	float u = (IconIndex & (SETUP_MP3_ICON_COLUMNS - 1)) * SETUP_MP3_ICON_UV +
+	          SETUP_MP3_ICON_FIRST_COLUMN * SETUP_MP3_ICON_UV;
+	float v = ((IconIndex / SETUP_MP3_ICON_COLUMNS & (SETUP_MP3_ICON_ROWS - 1)) + SETUP_MP3_ICON_FIRST_ROW) *
+	          SETUP_MP3_ICON_UV;
+	SetupThing::DrawBox(x, y, x + SETUP_MP3_ICON_SIZE, y + SETUP_MP3_ICON_SIZE, u, v, u + SETUP_MP3_ICON_UV,
+	                    v + SETUP_MP3_ICON_UV, LH3DAtmos::mat0,
+	                    hovered || Style ? &SetupThing::HighlightColour : &color, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP,
+	                    false, 100.0f);
 }
 
 void SetupBigButton::Draw(bool hovered, bool selected)
@@ -1342,7 +1347,7 @@ void SetupBigButton::Draw(bool hovered, bool selected)
 	SetupThing::TextBounds.p1.x = rect.end.x;
 	SetupThing::TextBounds.p1.y = rect.end.y;
 	SetupThing::DrawBigButton(rect.start.x, rect.start.y, pressed, hovered || (selected && !label[0]),
-	                          rect.end.x - rect.start.x, style, true, -40960, 40960);
+	                          rect.end.x - rect.start.x, style, true, -SETUP_NO_CLIP, SETUP_NO_CLIP);
 	if (text_position == SETUP_TEXT_POSITION_BELOW)
 	{
 		SetupThing::DrawTextA((rect.start.x + rect.end.x) / 2 + 2, rect.end.y + 4, 1000, TEXTJUSTIFY_CENTRE, label,
@@ -1752,7 +1757,8 @@ void SetupColourPicker::Draw(bool hovered, bool selected)
 		SetupThing::DrawBox(rect.start.x + 16, rect.start.y, rect.end.x - 16, middle, 0, 0, c, c, 1, 1);
 		SetupThing::DrawBox(rect.start.x + 16, middle, rect.end.x - 16, rect.end.y, c, c, 0xffffffff, 0xffffffff, 1, 1);
 		hovered = hovered && mouseX > rect.end.x - 16;
-		SetupThing::DrawBigButton(rect.end.x - 16, y - 8, true, hovered, 16, BBSTYLE_LEFT_ARROW, false, -40960, 40960);
+		SetupThing::DrawBigButton(rect.end.x - 16, y - 8, true, hovered, 16, BBSTYLE_LEFT_ARROW, false, -SETUP_NO_CLIP,
+		                          SETUP_NO_CLIP);
 	}
 	else
 	{
@@ -1761,9 +1767,11 @@ void SetupColourPicker::Draw(bool hovered, bool selected)
 		{
 			LH3DColor white(0xffffffff);
 			SetupThing::DrawBox(rect.start.x + 16, rect.start.y, rect.end.x - 16, rect.end.y, 1.0f / 512, 65.0f / 512,
-			                    63.0f / 512, 511.0f / 512, material, &white, 1, -40960, 40960, false, 100.0f);
+			                    63.0f / 512, 511.0f / 512, material, &white, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+			                    100.0f);
 		}
-		SetupThing::DrawBigButton(rect.start.x, y - 8, true, hovered, 16, BBSTYLE_RIGHT_ARROW, false, -40960, 40960);
+		SetupThing::DrawBigButton(rect.start.x, y - 8, true, hovered, 16, BBSTYLE_RIGHT_ARROW, false, -SETUP_NO_CLIP,
+		                          SETUP_NO_CLIP);
 	}
 }
 
@@ -1793,7 +1801,8 @@ void SetupCheckBox::Draw(bool hovered, bool selected)
 	SetupThing::TextBounds.p1.x = rect.end.x;
 	SetupThing::TextBounds.p1.y = rect.end.y;
 	SetupThing::DrawBigButton(rect.start.x, rect.start.y, pressed, hovered, rect.end.x - rect.start.x,
-	                          style ? BBSTYLE_CHECK_BOX_ON : BBSTYLE_CHECK_BOX_OFF, true, -40960, 40960);
+	                          style ? BBSTYLE_CHECK_BOX_ON : BBSTYLE_CHECK_BOX_OFF, true, -SETUP_NO_CLIP,
+	                          SETUP_NO_CLIP);
 	if (text_position == SETUP_TEXT_POSITION_BELOW)
 	{
 		SetupThing::DrawTextA((rect.start.x + rect.end.x) / 2 + 2, rect.end.y + 4, 1000, TEXTJUSTIFY_CENTRE, label,
@@ -2173,22 +2182,22 @@ void SetupThing::DrawBg(int x_min, int y_min, int x_max, int y_max, int color, i
 	x_max += 8;
 	y_max += 8;
 	DrawBox(x_min, y_min, x_min + 8, y_min + 8, 48.0f / 256, 0.0f, 54.0f / 256, 6.0f / 256, ButtonMaterial, NULL, 1,
-	        -40960, 40960, false, 100.0f);
+	        -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_max - 8, y_min, x_max, y_min + 8, 74.0f / 256, 0.0f, 80.0f / 256, 6.0f / 256, ButtonMaterial, NULL, 1,
-	        -40960, 40960, false, 100.0f);
+	        -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_min, y_max - 8, x_min + 8, y_max, 48.0f / 256, 26.0f / 256, 54.0f / 256, 32.0f / 256, ButtonMaterial,
-	        NULL, 1, -40960, 40960, false, 100.0f);
+	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_max - 8, y_max - 8, x_max, y_max, 74.0f / 256, 26.0f / 256, 80.0f / 256, 32.0f / 256, ButtonMaterial,
-	        NULL, 1, -40960, 40960, false, 100.0f);
+	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	if (top_border)
 		DrawBox(x_min + 8, y_min, x_max - 8, y_min + 8, 54.0f / 256, 0.0f, 74.0f / 256, 6.0f / 256, ButtonMaterial,
-		        NULL, 1, -40960, 40960, false, 100.0f);
+		        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_min + 8, y_max - 8, x_max - 8, y_max, 54.0f / 256, 26.0f / 256, 74.0f / 256, 32.0f / 256, ButtonMaterial,
-	        NULL, 1, -40960, 40960, false, 100.0f);
+	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_min, y_min + 8, x_min + 8, y_max - 8, 48.0f / 256, 6.0f / 256, 54.0f / 256, 26.0f / 256, ButtonMaterial,
-	        NULL, 1, -40960, 40960, false, 100.0f);
+	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_max - 8, y_min + 8, x_max, y_max - 8, 74.0f / 256, 6.0f / 256, 80.0f / 256, 26.0f / 256, ButtonMaterial,
-	        NULL, 1, -40960, 40960, false, 100.0f);
+	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawAlpha = drawAlpha;
 }
 
@@ -2227,8 +2236,8 @@ void SetupThing::DrawBevBox(int x_min, int y_min, int x_max, int y_max, int styl
 	LH3DRender::SetTextureStageState(1, D3DTSS_MAGFILTER, D3DTFG_POINT);
 	LH3DRender::SetTextureStageState(0, D3DTSS_MINFILTER, D3DTFN_POINT);
 	LH3DRender::SetTextureStageState(1, D3DTSS_MINFILTER, D3DTFN_POINT);
-	DrawBox(x_min, y_min, x_max, y_max, uStart, vStart, uEnd, vEnd, ButtonMaterial, &boxColor, 1, -40960, 40960, false,
-	        100.0f);
+	DrawBox(x_min, y_min, x_max, y_max, uStart, vStart, uEnd, vEnd, ButtonMaterial, &boxColor, 1, -SETUP_NO_CLIP,
+	        SETUP_NO_CLIP, false, 100.0f);
 	if (outline_thickness == 16 ||
 	    (outline_thickness == 8 && (style == 13 || style == 11 || style == 45 || style == 43)))
 	{

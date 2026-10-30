@@ -19,6 +19,11 @@ class GObjectInfo;
 class GWorshipSiteInfo : public GCitadelPartInfo
 {
 public:
+	// Static data
+
+	// BW1W120 00dcbd30
+	static GWorshipSiteInfo Infos[WORSHIP_SITE_INFO_LAST];
+
 	float     RadiusFromCitadel; /* 0x134 */
 	MESH_LIST BaseMesh;
 	POT_INFO  PotForResourceFood;
@@ -39,11 +44,6 @@ public:
 		info_count = WORSHIP_SITE_INFO_LAST;
 		return Infos;
 	}
-
-	// Static data
-
-	// BW1W120 00dcbd30
-	static GWorshipSiteInfo Infos[WORSHIP_SITE_INFO_LAST];
 
 	// Static methods
 

@@ -3695,11 +3695,15 @@ Lionhead/LH3DLib/development/LH3DText.cpp:
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x00823810 end:0x00823B00
-	.text$x     start:0x00897F20 end:0x00897F50 align:4
 
-Lionhead/LH3DLib/development/LH3DLightningSheet.cpp:
-	.text       start:0x00826F20 end:0x00827110
-	.text$x     start:0x00897F50 end:0x00897FD0 align:4
+Lionhead/LH3DLib/development/LH3DWeather.cpp:
+	.text       start:0x00823B00 end:0x00827110
+	.text$x     start:0x00897F20 end:0x00897FD0 align:4
+	.rdata      start:0x0099399C end:0x009939D4
+	.xdata$x    start:0x009AEA80 end:0x009AEAB0 align:4
+	.CRT$XCU    start:0x009B7574 end:0x009B7578 align:4
+	.data       start:0x00C27C60 end:0x00C27D04
+	.bss        start:0x00EC7CB8 end:0x00ECBD74 align:8
 
 Lionhead/LHLib/ver5.0/Route.cpp:
 	.text       start:0x0082B090 end:0x0082C730

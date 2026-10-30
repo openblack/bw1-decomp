@@ -456,7 +456,7 @@ int LHScreen::DirectDrawReleaseSurface()
 }
 
 // BW1W120 007dd9c0 BW1M119 0114e310 (LHCombined Release)
-int LHScreen::Lock(unsigned long param_1)
+int LHScreen::Lock(unsigned long flags)
 {
 	if (isLocked)
 	{
