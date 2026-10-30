@@ -3483,6 +3483,9 @@ Lionhead/LHLib/ver5.0/LHScreen.cpp:
 	.text       start:0x007CCC30 end:0x007CED00
 	.text$x     start:0x00897840 end:0x00897860 align:4
 
+Lionhead/LHLib/ver5.0/LHDrawLine.cpp:
+	.text       start:0x007CED00 end:0x007D0250
+
 lib/libcmt/constpow.obj:
 	.data       start:0x00C1FB00 end:0x00C1FDBC align:1
 
@@ -3492,11 +3495,12 @@ Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
 	.data       start:0x00C22E0C end:0x00C22EE8
 
 Lionhead/LHLib/ver5.0/LHHeap2.cpp:
-	.text       start:0x007D0DB0 end:0x007D2720
+	.text       start:0x007D0DB0 end:0x007D2620
 	.text$x     start:0x00897860 end:0x008978F0 align:4
 
 Lionhead/LHLib/ver5.0/LHDraw.cpp:
-	.text       start:0x007D2720 end:0x007D3A30
+	.text       start:0x007D2620 end:0x007D3A30
+	.data       start:0x00C22FC8 end:0x00C22FCC
 
 Lionhead/LHLib/ver5.0/LHText.cpp:
 	.text       start:0x007D3B10 end:0x007D4620
@@ -3516,6 +3520,9 @@ Lionhead/LHLib/ver5.0/LHScript.cpp:
 	.text       start:0x007D70D0 end:0x007D9EC0
 	.text$x     start:0x00897980 end:0x00897A40 align:4
 	.data       start:0x00C23010 end:0x00C23C40
+
+Lionhead/LHLib/ver5.0/LHDrawSprite.cpp:
+	.text       start:0x007D9EC0 end:0x007DE350
 
 Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
 	.text       start:0x007DE350 end:0x007DE4F0

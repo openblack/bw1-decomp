@@ -273,6 +273,28 @@ inline LHPixel16::LHPixel16(LHColor color)
 	        ((uint8_t)(color.r >> LHSys::TheSystem.screen.redScale) << LHSys::TheSystem.screen.RedShift);
 }
 
+inline void LHPixel16::Set(uint8_t red, uint8_t green, uint8_t blue)
+{
+	value = ((uint8_t)(red >> LHSys::GetScreen().GetRedScale()) << LHSys::GetScreen().GetRedShift()) +
+	        ((uint8_t)(green >> LHSys::GetScreen().GetGreenScale()) << LHSys::GetScreen().GetGreenShift()) +
+	        ((uint8_t)(blue >> LHSys::GetScreen().GetBlueScale()) << LHSys::GetScreen().GetBlueShift());
+}
+
+inline uint8_t LHPixel16::GetR()
+{
+	return (value & LHSys::GetScreen().RedMask) >> LHSys::GetScreen().RedShift;
+}
+
+inline uint8_t LHPixel16::GetG()
+{
+	return (value & LHSys::GetScreen().GreenMask) >> LHSys::GetScreen().GreenShift;
+}
+
+inline uint8_t LHPixel16::GetB()
+{
+	return (value & LHSys::GetScreen().BlueMask) >> LHSys::GetScreen().BlueShift;
+}
+
 inline int LHDraw::Line(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode)
 {
 	if (LHSys::GetScreen().depth == 16)

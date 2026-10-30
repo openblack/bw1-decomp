@@ -6,6 +6,27 @@
 struct LHColor;
 struct LHRegion;
 
+enum LH_BOX_EDGE
+{
+	LH_BOX_EDGE_TOP,
+	LH_BOX_EDGE_RIGHT,
+	LH_BOX_EDGE_BOTTOM,
+	LH_BOX_EDGE_LEFT,
+	LH_BOX_EDGE_LAST
+};
+
+enum LH_DRAW_STYLE
+{
+	LH_DRAW_STYLE_SOLID = 0x1,
+	LH_DRAW_STYLE_BLEND = 0x2,
+	LH_DRAW_STYLE_ADD = 0x4,
+	LH_DRAW_STYLE_SUBTRACT = 0x8,
+	LH_DRAW_STYLE_FILL = 0x10,
+	LH_DRAW_STYLE_NO_FILL = 0x100,
+	LH_DRAW_STYLE_BLEND_FILL = 0x200,
+	LH_DRAW_STYLE_SUNKEN = 0x400
+};
+
 struct LHPixel16
 {
 	uint16_t value;
@@ -21,6 +42,12 @@ struct LHPixel16
 	void Set(LHColor color);
 	// BW1W120 00521a90
 	void Set(uint8_t red, uint8_t green, uint8_t blue);
+	// BW1W120 inlined BW1M119 01132d20 (LHCombined Release)
+	uint8_t GetR();
+	// BW1W120 inlined BW1M119 01132d70 (LHCombined Release)
+	uint8_t GetG();
+	// BW1W120 inlined BW1M119 01132dc0 (LHCombined Release)
+	uint8_t GetB();
 };
 
 struct LHSprite

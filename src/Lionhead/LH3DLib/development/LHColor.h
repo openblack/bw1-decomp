@@ -16,6 +16,12 @@ struct LHColor
 	LHColor(uint8_t red, uint8_t green, uint8_t blue) : b(blue), g(green), r(red) {}
 
 	void Set(uint8_t red, uint8_t green, uint8_t blue);
+	// BW1W120 inlined BW1M119 01131cb0 (LHCombined Release)
+	uint8_t GetR() const { return r; }
+	// BW1W120 inlined BW1M119 01131d20 (LHCombined Release)
+	uint8_t GetG() const { return g; }
+	// BW1W120 inlined BW1M119 01131d90 (LHCombined Release)
+	uint8_t GetB() const { return b; }
 };
 static_assert(sizeof(LHColor) == 0x3, "Data type is of wrong size");
 

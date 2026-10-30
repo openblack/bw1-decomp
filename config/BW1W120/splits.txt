@@ -3999,6 +3999,9 @@ Lionhead/LHLib/ver5.0/LHScreen.cpp:
 	.text       start:0x007DCE20 end:0x007DEEF0
 	.text$x     start:0x008A79C0 end:0x008A79E0 align:4
 
+Lionhead/LHLib/ver5.0/LHDrawLine.cpp:
+	.text       start:0x007DEEF0 end:0x007E0440
+
 lib/libcmt/constpow.obj:
 	.data       start:0x00C30CB0 end:0x00C30F6C align:1
 
@@ -4013,6 +4016,7 @@ Lionhead/LHLib/ver5.0/LHHeap2.cpp:
 
 Lionhead/LHLib/ver5.0/LHDraw.cpp:
 	.text       start:0x007E2810 end:0x007E3C20
+	.data       start:0x00C34178 end:0x00C3417C
 
 Lionhead/LHLib/ver5.0/LHText.cpp:
 	.text       start:0x007E3D00 end:0x007E4810
@@ -4034,6 +4038,9 @@ Lionhead/LHLib/ver5.0/LHScript.cpp:
 	.text$x     start:0x008A7B00 end:0x008A7BC0 align:4
 	.data       start:0x00C341C0 end:0x00C34DF0
 
+Lionhead/LHLib/ver5.0/LHDrawSprite.cpp:
+	.text       start:0x007EA0B0 end:0x007EE540
+
 Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
 	.text       start:0x007EE540 end:0x007EE6E0
 
@@ -4043,6 +4050,9 @@ Lionhead/LHLib/ver5.0/LHConvert.cpp:
 Lionhead/LHLib/ver5.0/LHSprite.cpp:
 	.text       start:0x007F04D0 end:0x007F1990
 	.text$x     start:0x008A7BC0 end:0x008A7D80 align:4
+
+Lionhead/LHLib/ver5.0/LHDrawScaledSprite.cpp:
+	.text       start:0x007F1990 end:0x007F3B80
 
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
 	.text       start:0x007F8B60 end:0x007F8D30
