@@ -7,6 +7,17 @@ splits: config/BW1W130/splits.txt
 generate_imports: true
 
 block_relocations:
+# libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in 1.30's larger image both read as pointers.
+  - source: 0x008A4560
+  - source: 0x00A26010
+  - source: 0x00A2602C
+  - source: 0x00A26030
+  - source: 0x00A26034
+  - source: 0x00A2604C
+  - source: 0x00A26058
+  - source: 0x00A26104
+# libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
+  - source: 0x008A3D38
 # SetupBox::FindControl and DrawAll use the 0x85b680 colour, an address inside LH3DPrimitive::CheckPixelCollide.
   - source: 0x00408133
   - source: 0x004087FD
@@ -117,6 +128,59 @@ block_relocations:
   - source: 0x005C41F6
 
 add_relocations:
+# libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
+  - source: 0x008A3C00
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x008A3C07
+    type: x86_abs32
+    target: '_rgb_ycc_convert'
+  - source: 0x008A3C7C
+    type: x86_abs32
+    target: '_rgb_ycc_start'
+  - source: 0x008A3C83
+    type: x86_abs32
+    target: '_cmyk_ycck_convert'
+  - source: 0x008A3CD0
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x36
+  - source: 0x008A3CD4
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x008A3CD8
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x008A3CDC
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x008A3CE0
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x008A3CE4
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x95
+  - source: 0x008A3CE8
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0xe9
+  - source: 0x008A3CEC
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x11f
+  - source: 0x008A3CF0
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x16d
+  - source: 0x008A3CF4
+    type: x86_abs32
+    target: '_jinit_color_converter'
+    addend: 0x19d
 # LH3DTech's front-facing tests: the triangle's g_cache_t_points entries (dtk leaves the lea displacement
 # unrelocated).
   - source: 0x0081FB5C

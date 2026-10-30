@@ -164,7 +164,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.33"
+config.dtk_tag = "v0.0.34"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
@@ -379,6 +379,11 @@ config.custom_build_rules = [
         "description": "PATCH $out",
     },
     {
+        "name": "copy",
+        "command": "$python -c \"import shutil, sys; shutil.copyfile(sys.argv[1], sys.argv[2])\" $in $out",
+        "description": "COPY $out",
+    },
+    {
         "name": "patch_headers",
         "command": f"$python tools/patch_compiler_headers.py $in/include -o $out",
         "description": "PATCH $in",
@@ -401,6 +406,13 @@ config.custom_build_steps = {
             "rule": "patch_headers",
             "inputs": _msvc_dir,
             "implicit": ["tools/patch_compiler_headers.py"],
+        },
+        # IJG's install.doc: "copy jconfig.vc jconfig.h" for Visual C++. The copy goes
+        # into the build include directory so src/jpeg stays the unmodified release.
+        {
+            "outputs": f"build/{config.version}/include/jconfig.h",
+            "rule": "copy",
+            "inputs": "src/jpeg/jconfig.vc",
         },
     ],
     "post-link": [
@@ -1770,6 +1782,52 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LHLib/ver5.0/RPAvoid.cpp", extra_cflags=cflags_route_planner, pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LHLib/ver5.0/RPlan.cpp", extra_cflags=["/GX", *cflags_route_planner], pch=True),
+
+            Object(Matching, "jpeg/jcapimin.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jerror.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jdatadst.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcparam.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcapistd.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jmemmgr.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcomapi.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcmarker.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcinit.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jmemnobs.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jutils.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcmainct.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jccoefct.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jchuff.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcphuff.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcdctmgr.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcprepct.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcsample.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jccolor.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jcmaster.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jfdctint.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jfdctfst.c", progress_category="sdk"),
+            Object(Matching, "jpeg/jfdctflt.c", progress_category="sdk"),
+            # Creature Isle also links the decompression side.
+            Object(MatchingFor("BW1WCI"), "jpeg/jdapimin.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdapistd.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdatasrc.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdinput.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdmarker.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdmaster.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdmainct.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdcoefct.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdhuff.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdphuff.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jddctmgr.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdpostct.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdsample.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdcolor.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jdmerge.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jquant2.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jquant1.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jidctint.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jidctfst.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jidctflt.c", progress_category="sdk"),
+            Object(MatchingFor("BW1WCI"), "jpeg/jidctred.c", progress_category="sdk"),
 
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\_ios.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\fstream.obj", progress_category="sdk"),

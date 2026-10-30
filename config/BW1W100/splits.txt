@@ -3453,6 +3453,83 @@ Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.CRT$XCU    start:0x008F754C end:0x008F7554 align:4
 	.bss        start:0x00EC4024 end:0x00EC4034
 
+jpeg/jcapimin.c:
+	.text       start:0x007E0E40 end:0x007E1080
+
+jpeg/jerror.c:
+	.text       start:0x007E1080 end:0x007E1230
+	.rdata      start:0x008D9D44 end:0x008D9F38
+	.data       start:0x00B5CC98 end:0x00B5DF24
+
+jpeg/jdatadst.c:
+	.text       start:0x007E1230 end:0x007E1360
+
+jpeg/jcparam.c:
+	.text       start:0x007E1360 end:0x007E1A60
+	.rdata      start:0x008D9F38 end:0x008DA2E8
+
+jpeg/jcapistd.c:
+	.text       start:0x007E1A60 end:0x007E1BB0
+
+jpeg/jmemmgr.c:
+	.text       start:0x007E1BB0 end:0x007E27D0
+	.rdata      start:0x008DA2E8 end:0x008DA2F8
+	.data       start:0x00B5DF24 end:0x00B5DF34
+
+jpeg/jcomapi.c:
+	.text       start:0x007E27D0 end:0x007E2870
+
+jpeg/jcmarker.c:
+	.text       start:0x007E2870 end:0x007E3150
+
+jpeg/jcinit.c:
+	.text       start:0x007E3150 end:0x007E3210
+
+jpeg/jmemnobs.c:
+	.text       start:0x007E3210 end:0x007E3260
+
+jpeg/jutils.c:
+	.text       start:0x007E3260 end:0x007E3300
+	.rdata      start:0x008DA2F8 end:0x008DA438
+
+jpeg/jcmainct.c:
+	.text       start:0x007E3300 end:0x007E3490
+
+jpeg/jccoefct.c:
+	.text       start:0x007E3490 end:0x007E3D00
+
+jpeg/jchuff.c:
+	.text       start:0x007E3D00 end:0x007E4AA0
+
+jpeg/jcphuff.c:
+	.text       start:0x007E4AA0 end:0x007E56B0
+
+jpeg/jcdctmgr.c:
+	.text       start:0x007E56B0 end:0x007E5C80
+	.rdata      start:0x008DA438 end:0x008DA504
+
+jpeg/jcprepct.c:
+	.text       start:0x007E5C80 end:0x007E6240
+
+jpeg/jcsample.c:
+	.text       start:0x007E6240 end:0x007E6C50
+
+jpeg/jccolor.c:
+	.text       start:0x007E6C50 end:0x007E73D0
+
+jpeg/jcmaster.c:
+	.text       start:0x007E73D0 end:0x007E7F30
+
+jpeg/jfdctint.c:
+	.text       start:0x007E7F30 end:0x007E8330
+
+jpeg/jfdctfst.c:
+	.text       start:0x007E8330 end:0x007E8580
+
+jpeg/jfdctflt.c:
+	.text       start:0x007E8580 end:0x007E87F0
+	.rdata      start:0x008DA504 end:0x008DA514
+
 lib/libcmt/wcsdup.obj:
 	.text       start:0x007E894E end:0x007E897C align:1
 
@@ -3480,6 +3557,7 @@ lib/libcmt/ehvecdtr.obj:
 
 lib/libcmt/strspn.obj:
 	.text       start:0x007E8EA0 end:0x007E8EDE align:1
+	.data       start:0x00B5DF40 end:0x00B5DF40 align:1
 
 lib/libcmt/ehvecctr.obj:
 	.text       start:0x007E8EDE end:0x007E8F60 align:1
