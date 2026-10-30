@@ -90,6 +90,26 @@ struct LHScreen
 	uint16_t Height() { return height; }
 	// BW1W120 inlined BW1M119 01145840 (LHCombined Release)
 	IDirectDrawSurface7* GetBackSurface() { return PBackSurface; }
+	// BW1W120 inlined BW1M119 01131f10 (LHCombined Release)
+	LHRegion GetGraphicsWindow() { return GraphicsWindow; }
+	// BW1W120 inlined BW1M119 01131c70 (LHCombined Release)
+	uint8_t GetMaxRed() { return maxRed; }
+	// BW1W120 inlined BW1M119 01131ce0 (LHCombined Release)
+	uint8_t GetMaxGreen() { return MaxGreen; }
+	// BW1W120 inlined BW1M119 01131d50 (LHCombined Release)
+	uint8_t GetMaxBlue() { return MaxBlue; }
+	// BW1W120 inlined BW1M119 01132c60 (LHCombined Release)
+	uint8_t GetRedScale() { return redScale; }
+	// BW1W120 inlined BW1M119 01132be0 (LHCombined Release)
+	uint8_t GetGreenScale() { return GreenScale; }
+	// BW1W120 inlined BW1M119 01132ce0 (LHCombined Release)
+	uint8_t GetBlueScale() { return BlueScale; }
+	// BW1W120 inlined BW1M119 01132c20 (LHCombined Release)
+	uint8_t GetRedShift() { return RedShift; }
+	// BW1W120 inlined BW1M119 01132ba0 (LHCombined Release)
+	uint8_t GetGreenShift() { return GreenShift; }
+	// BW1W120 inlined BW1M119 01132ca0 (LHCombined Release)
+	uint8_t GetBlueShift() { return BlueShift; }
 
 	// BW1W120 007dd850 BW1M119 0114e510 (LHCombined Release)
 	// LHScreen::`vbase destructor'(void)
