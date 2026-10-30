@@ -561,9 +561,9 @@ void piSetPlayerIPAndProfileID
 		if(!player->gotIP)
 			piAddPlayerInfoCallback(peer, nick, IP, profileID);
 
-		player->profileID = profileID;
 		player->IP = IP;
 		player->gotIP = PEERTrue;
+		player->profileID = profileID;
 		player->gotProfileID = PEERTrue;
 	}
 }
