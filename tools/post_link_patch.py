@@ -2226,6 +2226,32 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00783C74, jmp_run(0x00783BA2)),  # WorshipSiteUpgrade
     (0x00783D03, copy_run(0x00783C74)),  # WorshipSiteUpgrade
     (0x00783D9B, call_rel32(0x004034F9)),  # WorshipSiteUpgrade
+    (0x007EBED6, jmp_run(0x007EBE92)),  # LHStringOps
+    (0x007EBF23, copy_run(0x007EBED6)),  # LHStringOps
+    (0x007EBF6B, call_rel32(0x004034F9)),  # LHStringOps
+    (0x007EBF83, copy_run(0x007EBF6B)),  # LHStringOps
+    (0x007EBFA3, copy_run(0x007EBF83)),  # LHStringOps
+    (0x007EBFC3, copy_run(0x007EBFA3)),  # LHStringOps
+    (0x007EBFE3, copy_run(0x007EBFC3)),  # LHStringOps
+    (0x007EC003, copy_run(0x007EBFE3)),  # LHStringOps
+    (0x007EC023, copy_run(0x007EC003)),  # LHStringOps
+    (0x007EC043, copy_run(0x007EC023)),  # LHStringOps
+    (0x007EC063, copy_run(0x007EC043)),  # LHStringOps
+    (0x007EC123, copy_run(0x007EC063)),  # LHStringOps
+    (0x007EC173, jmp_run(0x007EC123)),  # LHStringOps
+    (0x007EC193, jmp_run(0x007EC173)),  # LHStringOps
+    (0x007EC1B3, jmp_run(0x007EC193)),  # LHStringOps
+    (0x007EC1D3, jmp_run(0x007EC1B3)),  # LHStringOps
+    (0x007EC1F3, jmp_run(0x007EC1D3)),  # LHStringOps
+    (0x007EC213, jmp_run(0x007EC1F3)),  # LHStringOps
+    (0x007EC233, jmp_run(0x007EC213)),  # LHStringOps
+    (0x007EC253, jmp_run(0x007EC233)),  # LHStringOps
+    (0x007EC273, jmp_run(0x007EC253)),  # LHStringOps
+    (0x007EC304, copy_run(0x007EC273)),  # LHStringOps
+    (0x007EC324, copy_run(0x007EC304)),  # LHStringOps
+    (0x007EC385, copy_run(0x007EC324)),  # LHStringOps
+    (0x007EC3A8, copy_run(0x007EC385)),  # LHStringOps
+    (0x007EC3C8, copy_run(0x007EC3A8)),  # LHStringOps
     (0x0080A011, jmp_run(0x00809FF4)),  # LH3DMesh
     (0x0080A031, jmp_run(0x0080A011)),  # LH3DMesh
     (0x0080AE16, jmp_run(0x0080A031)),  # LH3DMesh

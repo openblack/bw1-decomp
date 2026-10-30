@@ -3906,6 +3906,9 @@ Lionhead/LHLib/ver5.0/LHSurface.cpp:
 Lionhead/LHLib/ver5.0/LHMem.cpp:
 	.text       start:0x007EBB40 end:0x007EBBC0
 
+Lionhead/LHLib/ver5.0/LHStringOps.cpp:
+	.text       start:0x007EBEA0 end:0x007EC3D0
+
 Lionhead/LHLib/ver5.0/LHScript.cpp:
 	.text       start:0x007EC3D0 end:0x007EF220
 	.text$x     start:0x008ACC80 end:0x008ACD40 align:4

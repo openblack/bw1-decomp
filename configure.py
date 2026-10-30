@@ -1747,6 +1747,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHText.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHHeap2.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMouse.cpp", progress_category="sdk"),
+            Object(Matching, "Lionhead/LHLib/ver5.0/LHStringOps.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScript.cpp", progress_category="sdk", extra_cflags=["/GX", "/Ob0"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSpriteList.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHConvert.cpp", progress_category="sdk"),
