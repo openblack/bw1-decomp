@@ -1,5 +1,9 @@
 #include <Lionhead/LHLib/ver5.0/LHMem.h>
 
+#include <windows.h>
+
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>
+
 #include <stdlib.h> /* For malloc, free */
 #include <string.h> /* For memset */
 
@@ -27,3 +31,18 @@ int __stdcall LHMem::Free(void* mem)
 	free(mem);
 	return 0;
 }
+
+#ifndef VERSION_BW1W100
+
+LH_RETURN LHBankToMem::Convert()
+{
+	LHBankToMem* entry = this;
+	while (entry->Mem != NULL)
+	{
+		*entry->Mem = LHSys::TheSystem.ScriptResources[entry->Bank].data;
+		entry++;
+	}
+	return LH_OK;
+}
+
+#endif // VERSION_BW1W100
