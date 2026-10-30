@@ -23,6 +23,8 @@ public:
 	void Close();
 	// BW1W120 0086c560 BW1M119 010b4160 (LHCombined Release)
 	static void Reset();
+	// BW1W120 0086c7a0 BW1M119 0103a9d0 (LHCombined Release)
+	void Melt(float time);
 	// BW1W120 0086cb80 BW1M119 01027e20 (LHCombined Release)
 	float GetDepth(LHPoint& point);
 };

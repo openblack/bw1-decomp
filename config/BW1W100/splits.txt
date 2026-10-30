@@ -3480,10 +3480,15 @@ Lionhead/LH3DLib/development/LH3DSprite.cpp:
 
 Lionhead/LH3DLib/development/LH3DMath.cpp:
 	.text       start:0x00795D80 end:0x00795EC0
-	.text$x     start:0x007E9FB0 end:0x007E9FE0 align:4
 
-Lionhead/LH3DLib/development/LH3DLightningSheet.cpp:
-	.text       start:0x00798F50 end:0x00799140
+Lionhead/LH3DLib/development/LH3DWeather.cpp:
+	.text       start:0x00795EC0 end:0x00799140
+	.text$x     start:0x007E9FB0 end:0x007E9FE0 align:4
+	.rdata      start:0x008D9864 end:0x008D989C
+	.xdata$x    start:0x008EF818 end:0x008EF848 align:4
+	.CRT$XCU    start:0x008F74E8 end:0x008F74EC align:4
+	.data       start:0x00B5B0D8 end:0x00B5B16C
+	.bss        start:0x00E05138 end:0x00E091F4 align:8
 
 Lionhead/LH3DLib/development/LH3DMenu.cpp:
 	.text       start:0x00799140 end:0x00799FD0

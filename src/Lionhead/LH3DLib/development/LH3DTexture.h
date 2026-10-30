@@ -18,12 +18,29 @@ struct TextureFormat
 };
 static_assert(sizeof(TextureFormat) == 0x4, "Data type is of wrong size");
 
-#define LH3D_TEXTURE_FORMAT_MESH_SKIN 1
+enum LH3D_TEXTURE_FORMAT
+{
+	LH3D_TEXTURE_FORMAT_4444,
+	LH3D_TEXTURE_FORMAT_555,
+	LH3D_TEXTURE_FORMAT_32X32_4444,
+	LH3D_TEXTURE_FORMAT_ALWAYS_256X256_4444,
+	LH3D_TEXTURE_FORMAT_256X256_8888,
+};
+
+#define LH3D_TEXTURE_FORMAT_MESH_SKIN LH3D_TEXTURE_FORMAT_555
 
 enum LH3D_TEXTURE_TYPE
 {
+	LH3D_TEXTURE_TYPE_FILE = 0x1,
 	LH3D_TEXTURE_TYPE_SYSTEM_MEMORY = 0x4,
 	LH3D_TEXTURE_TYPE_NAMED = 0x8,
+};
+
+enum LH3D_TEXTURE_FLAGS
+{
+	LH3D_TEXTURE_FLAGS_TYPE_MASK = 0x3f,
+	LH3D_TEXTURE_FLAGS_ALPHA = 0x40,
+	LH3D_TEXTURE_FLAGS_ALLOC_VRAM = 0x80,
 };
 
 class LHReleasedFile;
@@ -87,7 +104,7 @@ struct LH3DTexture
 	// BW1W120 00837930 BW1M119 010c9990 (LHCombined Release)
 	static bool32_t Close();
 	// BW1W120 008379e0 BW1M119 010c9310 (LHCombined Release)
-	static LH3DTexture* Create(void* param_0, unsigned long param_1, unsigned long param_2, TextureFormat* param_3);
+	static LH3DTexture* Create(void* source, unsigned long flags, unsigned long id, TextureFormat* format);
 	// BW1W120 008377e0 BW1M119 inlined
 	static void SetPackedTexture();
 	// BW1W120 00838480 BW1M119 010c8ce0 (LHCombined Release)
@@ -118,7 +135,7 @@ struct LH3DTexture
 	// BW1W120 00839020 BW1M119 010c8480 (LHCombined Release)
 	void Compress();
 	// BW1W120 inlined BW1M119 010107b0 (LHCombined Release)
-	uint32_t GetType() { return Flags & 0x3f; }
+	uint32_t GetType() { return Flags & LH3D_TEXTURE_FLAGS_TYPE_MASK; }
 };
 
 // Set by LHScreen for the 3dfx Voodoo2 and Banshee, which only draw one texture at a time.

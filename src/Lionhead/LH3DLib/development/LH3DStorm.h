@@ -4,14 +4,17 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "LHPoint.h"     /* For struct LHPoint */
-#include "WeatherInfo.h" /* For struct WeatherInfo */
+#include "LH3DLightningSheet.h" /* For class LH3DLightningSheet */
+#include "LHPoint.h"            /* For struct LHPoint */
+#include "WeatherInfo.h"        /* For struct WeatherInfo */
+
+#define LH3D_STORM_SHADOW_SIZE 40
 
 struct StormInfo
 {
 	LHPoint     Pos;
-	float       field_0xc;
-	float       field_0x10;
+	float       InnerRadius;
+	float       OuterRadius;
 	float       Fade;
 	float       Time;
 	float       field_0x1c;
@@ -43,6 +46,21 @@ static_assert(sizeof(StormInfo) == 0x50, "Data type is of wrong size");
 class LH3DStorm
 {
 public:
+	uint32_t           field_0x4;
+	StormInfo          Info;
+	uint8_t            field_0x58[0x18];
+	LH3DLightningSheet Sheet;
+	int                Killed;
+	uint8_t            field_0x98[0x324];
+	LH3DStorm*         Next;
+
+	// BW1W120 00eea37c BW1M119 012d37d4 (LHCombined Release)
+	static LH3DStorm* first;
+	// BW1W120 00ee9d3c BW1M119 012d37d8 (LHCombined Release)
+	static uint8_t shadowtex[LH3D_STORM_SHADOW_SIZE * LH3D_STORM_SHADOW_SIZE];
+
+	// BW1W120 0083f840 BW1M119 0103a860 (LHCombined Release)
+	static void UpdateAll(float time);
 	static void DebugDrawAll(); // 0083f890
 	// BW1W120 0083f810 BW1M119 010ba480 (LHCombined Release)
 	static void ReallyKillAll();
@@ -54,5 +72,6 @@ public:
 	virtual void CalcAtmos(LHPoint* point, WeatherInfo* info);
 	virtual ~LH3DStorm();
 };
+static_assert(sizeof(LH3DStorm) == 0x3c0, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH3DSTORM_INCLUDED_H */

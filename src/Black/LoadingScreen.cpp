@@ -147,7 +147,8 @@ void DrawLoading(float fade, float progress)
 				SetupThing::DrawBox(0, 0, screenWidth, screenHeight, 1.0f / 64.0f, 1.0f / 64.0f,
 				                    GGame::TipVideo->BlurWidth / 256.0f - 1.0f / 64.0f,
 				                    GGame::TipVideo->BlurHeight / 256.0f - 1.0f / 64.0f, GGame::TipVideo->BlurMaterial,
-				                    &LH3DColor(BACKDROP_RGB, alphaByte), 0, -40960, 40960, false, 100.0f);
+				                    &LH3DColor(BACKDROP_RGB, alphaByte), 0, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+				                    100.0f);
 				SetupThing::DrawBox(0, screenHeight / 2, screenWidth, screenHeight, 0, 0, VIDEO_SHADE_COLOUR,
 				                    VIDEO_SHADE_COLOUR, 0, 0);
 				if (videoFade < 1.0f)
@@ -155,8 +156,8 @@ void DrawLoading(float fade, float progress)
 					SetupThing::DrawBox(videoX, videoY, videoX + videoWidth, videoY + videoHeight, 1.0f / 64.0f,
 					                    1.0f / 64.0f, GGame::TipVideo->BlurWidth / 256.0f - 1.0f / 64.0f,
 					                    GGame::TipVideo->BlurHeight / 256.0f - 1.0f / 64.0f,
-					                    GGame::TipVideo->BlurMaterial, &LH3DColor(TEXT_RGB, alphaByte), 0, -40960,
-					                    40960, false, 100.0f);
+					                    GGame::TipVideo->BlurMaterial, &LH3DColor(TEXT_RGB, alphaByte), 0,
+					                    -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 				}
 				if (videoFade > 0.0f)
 				{
@@ -273,24 +274,29 @@ void DrawLoading(float fade, float progress)
 			top -= border;
 			bottom += border;
 			SetupThing::DrawBox(left, top, left + border, top + border, 48 / 256.0f, 0 / 256.0f, 54 / 256.0f,
-			                    6 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -40960, 40960, false, 100.0f);
+			                    6 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+			                    100.0f);
 			SetupThing::DrawBox(right - border, top, right, top + border, 74 / 256.0f, 0 / 256.0f, 80 / 256.0f,
-			                    6 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -40960, 40960, false, 100.0f);
+			                    6 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+			                    100.0f);
 			SetupThing::DrawBox(left, bottom - border, left + border, bottom, 48 / 256.0f, 26 / 256.0f, 54 / 256.0f,
-			                    32 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -40960, 40960, false, 100.0f);
+			                    32 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+			                    100.0f);
 			SetupThing::DrawBox(right - border, bottom - border, right, bottom, 74 / 256.0f, 26 / 256.0f, 80 / 256.0f,
-			                    32 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -40960, 40960, false, 100.0f);
+			                    32 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+			                    100.0f);
 			SetupThing::DrawBox(left + border, top, right - border, top + border, 54 / 256.0f, 0 / 256.0f, 74 / 256.0f,
-			                    6 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -40960, 40960, false, 100.0f);
+			                    6 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+			                    100.0f);
 			SetupThing::DrawBox(left + border, bottom - border, right - border, bottom, 54 / 256.0f, 26 / 256.0f,
-			                    74 / 256.0f, 32 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -40960, 40960, false,
-			                    100.0f);
+			                    74 / 256.0f, 32 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -SETUP_NO_CLIP,
+			                    SETUP_NO_CLIP, false, 100.0f);
 			SetupThing::DrawBox(left, top + border, left + border, bottom - border, 48 / 256.0f, 6 / 256.0f,
-			                    54 / 256.0f, 26 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -40960, 40960, false,
-			                    100.0f);
+			                    54 / 256.0f, 26 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -SETUP_NO_CLIP,
+			                    SETUP_NO_CLIP, false, 100.0f);
 			SetupThing::DrawBox(right - border, top + border, right, bottom - border, 74 / 256.0f, 6 / 256.0f,
-			                    80 / 256.0f, 26 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -40960, 40960, false,
-			                    100.0f);
+			                    80 / 256.0f, 26 / 256.0f, SetupThing::ButtonMaterial, NULL, 1, -SETUP_NO_CLIP,
+			                    SETUP_NO_CLIP, false, 100.0f);
 			left += border;
 			right -= border;
 			top += border;

@@ -8,6 +8,9 @@ splits: config/BW1W100/splits.txt
 block_relocations:
 # libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x007E6EC8
+# LH3DAtmos::Render3D's 0x7f7f7f colour mask and bias are immediates, not pointers into Swallow's vftable.
+  - source: 0x007980D8
+  - source: 0x007980DE
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside Wolf's vftable.
   - source: 0x00773936
   - source: 0x00773951

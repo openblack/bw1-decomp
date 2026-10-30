@@ -27,6 +27,8 @@ struct LH3DLevelOfDetail
 	static bool32_t g_b_objects_cast_shadow;
 	// BW1W120 00c38224 BW1M119 011ce890 (LHCombined Release)
 	static bool32_t g_b_dynamic_lighting_on_objects;
+	// BW1W120 00eb996c BW1M119 011f2498 (LHCombined Release)
+	static long g_num_rainsplash;
 };
 
 #endif /* BW1_DECOMP_LH3D_LEVEL_OF_DETAIL_INCLUDED_H */

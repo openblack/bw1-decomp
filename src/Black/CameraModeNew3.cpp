@@ -7,7 +7,7 @@
 #include "CreatureAttitudeConstants.h"
 #include "CameraModeNew3.h"
 
-#include <Lionhead/LH3DLib/development/LH3DAtmos.h>         /* For LH3DAtmos::AtmosMaterial */
+#include <Lionhead/LH3DLib/development/LH3DAtmos.h>         /* For LH3DAtmos::mat0 */
 #include <Lionhead/LH3DLib/development/LH3DCameraChecker.h> /* For LH3DCameraChecker::Create */
 #include <Lionhead/LH3DLib/development/LH3DComplexObject.h> /* For LH3DComplexObject */
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>        /* For LH3DIsland::GetAltitude */
@@ -973,7 +973,7 @@ void CameraModeNew3::Initialise()
 	if (InstanceCount++ == 0)
 	{
 		TriconSprite = LH3DSprite::Create(1, true);
-		TriconSprite->SetMaterial(LH3DAtmos::AtmosMaterial);
+		TriconSprite->SetMaterial(LH3DAtmos::mat0);
 		TriconSprite->SetSize(2.0f);
 		TriconSprite->colour = LH3DColor(0xffffffff);
 		TriconSprite->Frame = 12;
@@ -1122,7 +1122,7 @@ void CameraModeNew3::TriconDraw()
 		if (TriconSprite != NULL)
 		{
 			LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
-			TriconSprite->SetMaterial(LH3DAtmos::AtmosMaterial);
+			TriconSprite->SetMaterial(LH3DAtmos::mat0);
 			for (int i = 0; i < 4; i++)
 			{
 				if (Global_00c5b0d8[i] > 0.0f)

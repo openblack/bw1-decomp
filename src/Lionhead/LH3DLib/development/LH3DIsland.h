@@ -283,6 +283,8 @@ struct LandBlock
 
 	// BW1W120 00fa92dc BW1M119 01202b50 (LHCombined Release)
 	static bool32_t g_draw_reflection;
+	// BW1W120 00fa92d8 BW1M119 01202b54 (LHCombined Release)
+	static LandBlock* g_first_sorting;
 
 	// BW1W120 00874aa0 BW1M119 01025920 (LHCombined Release)
 	bool32_t Draw();
