@@ -26,6 +26,13 @@ struct TShadowInfo;
 
 #define LH3D_FOG_TABLE_SIZE 1024
 
+enum LH3D_FOG_COMPONENT
+{
+	LH3D_FOG_COMPONENT_DIFFUSE,
+	LH3D_FOG_COMPONENT_SPECULAR,
+	LH3D_FOG_COMPONENT_LAST,
+};
+
 // GetGridIndex divides the map into cells of LH3D_GRID_CELL_SIZE units, LH3D_GRID_SIZE of them along each side.
 #define LH3D_GRID_SIZE      256
 #define LH3D_GRID_CELL_SIZE 10
@@ -120,7 +127,7 @@ struct LH3DPrimitive
 	static float g_delta_fog;
 	// Each entry is a brightness to scale the vertex colour by, then the fog colour.
 	// BW1W120 00f03158 BW1M119 012bf3ac (LHCombined Release)
-	static unsigned long g_fog_table[LH3D_FOG_TABLE_SIZE][2];
+	static unsigned long g_fog_table[LH3D_FOG_TABLE_SIZE][LH3D_FOG_COMPONENT_LAST];
 	// BW1W120 00f05158 BW1M119 012bf368 (LHCombined Release)
 	static Vertex3D g_vertex_inside_triangle;
 	// BW1W120 00f05178 BW1M119 012bf39c (LHCombined Release)

@@ -3920,6 +3920,13 @@ Lionhead/LHLib/ver5.0/RPAvoid.cpp:
 	.CRT$XCU    start:0x00A3764C end:0x00A37654 align:4
 	.bss        start:0x01026F6C end:0x01026F74
 
+Lionhead/LH3DLib/development/LH3DSky.cpp:
+	.text       start:0x00888330 end:0x0088B360
+	.rdata      start:0x00A13F34 end:0x00A13F68
+	.CRT$XCU    start:0x00A37654 end:0x00A37660 align:4
+	.data       start:0x00CACB68 end:0x00CACC38
+	.bss        start:0x01026F78 end:0x010271E4
+
 Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.text       start:0x0088D100 end:0x0088EC90
 	.text$x     start:0x008D3390 end:0x008D3748 align:4

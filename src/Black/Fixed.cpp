@@ -1,3 +1,4 @@
+#include "SingleMapFixedInfo.h"
 #include "GameTimeConstants.h"
 #include "Fixed.h"
 
@@ -35,7 +36,6 @@
 #include "PhysicsObject.h"
 #include "Player.h"
 #include "Reaction.h"
-#include "SingleMapFixedInfo.h"
 #include "StandardBuildingSite.h"
 #include "Town.h"
 #include "WorshipSite.h"

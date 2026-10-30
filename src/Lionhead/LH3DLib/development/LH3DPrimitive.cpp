@@ -33,19 +33,19 @@ float    LH3DPrimitive::g_size_thick_wall = 0.35f;
 bool32_t LH3DPrimitive::g_draw_depth = true;
 
 LHPoint        LH3DPrimitive::g_vect_light(1.0f, 0.0f, 0.0f);
-float          LH3DPrimitive::g_fog_max;
-float          LH3DPrimitive::g_fog_min;
-float          LH3DPrimitive::g_delta_fog;
-unsigned long  LH3DPrimitive::g_fog_table[LH3D_FOG_TABLE_SIZE][2];
+float          LH3DPrimitive::g_best_vertex_inside_triangle;
+int            LH3DPrimitive::g_collide_count;
 LHPlane        LH3DPrimitive::g_clipping_plane_world;
 LHPlane        LH3DPrimitive::g_clipping_plane_camera;
-int            LH3DPrimitive::g_collide_count;
-float          LH3DPrimitive::g_best_vertex_inside_triangle;
-Vertex3D       LH3DPrimitive::g_vertex_inside_triangle;
-LH3DPrimitive* LH3DPrimitive::g_current_primitive;
-int            LH3DPrimitive::g_current_index_primitive;
-float*         LH3DPrimitive::g_lightmap_remap_uvs;
-float*         LH3DPrimitive::g_vertical_translate_vertices;
+float          LH3DPrimitive::g_fog_max = 0.0f;
+float          LH3DPrimitive::g_fog_min = 0.0f;
+float          LH3DPrimitive::g_delta_fog = 0.0f;
+unsigned long  LH3DPrimitive::g_fog_table[LH3D_FOG_TABLE_SIZE][LH3D_FOG_COMPONENT_LAST] = {{0}};
+Vertex3D       LH3DPrimitive::g_vertex_inside_triangle = {0};
+float*         LH3DPrimitive::g_lightmap_remap_uvs = NULL;
+LH3DPrimitive* LH3DPrimitive::g_current_primitive = NULL;
+float*         LH3DPrimitive::g_vertical_translate_vertices = NULL;
+int            LH3DPrimitive::g_current_index_primitive = 0;
 LHMatrix       LH3DPrimitive::g_froz_wiggle_mat;
 
 float wiggle_speed = 2.0f;
@@ -132,13 +132,13 @@ unsigned long LH3DPrimitive::ApplyFog(const LHPoint& point, LH3DColor* color)
 	vertex.rhw = matrix->m[2] * point.x + matrix->m[5] * point.y + matrix->m[8] * point.z + matrix->m[11];
 	if (vertex.rhw < g_fog_min)
 	{
-		vertex.color = g_fog_table[0][0];
-		vertex.specular = g_fog_table[0][1];
+		vertex.color = g_fog_table[0][LH3D_FOG_COMPONENT_DIFFUSE];
+		vertex.specular = g_fog_table[0][LH3D_FOG_COMPONENT_SPECULAR];
 	}
 	else if (vertex.rhw > g_fog_max)
 	{
-		vertex.color = g_fog_table[LH3D_FOG_TABLE_SIZE - 1][0];
-		vertex.specular = g_fog_table[LH3D_FOG_TABLE_SIZE - 1][1];
+		vertex.color = g_fog_table[LH3D_FOG_TABLE_SIZE - 1][LH3D_FOG_COMPONENT_DIFFUSE];
+		vertex.specular = g_fog_table[LH3D_FOG_TABLE_SIZE - 1][LH3D_FOG_COMPONENT_SPECULAR];
 	}
 	else
 	{
@@ -151,8 +151,8 @@ unsigned long LH3DPrimitive::ApplyFog(const LHPoint& point, LH3DColor* color)
 		{
 			index = LH3D_FOG_TABLE_SIZE - 1;
 		}
-		vertex.color = g_fog_table[index][0];
-		vertex.specular = g_fog_table[index][1];
+		vertex.color = g_fog_table[index][LH3D_FOG_COMPONENT_DIFFUSE];
+		vertex.specular = g_fog_table[index][LH3D_FOG_COMPONENT_SPECULAR];
 	}
 	LH3DColor* scale = (LH3DColor*)&vertex.color;
 	color->r = (color->r * scale->r) >> 8;
@@ -173,8 +173,8 @@ void LH3DPrimitive::CalcFogTable(float red, float green, float blue, float max_f
 		int           r = FloatToInt(fog * red);
 		int           g = FloatToInt(fog * green);
 		int           b = FloatToInt(fog * blue);
-		g_fog_table[i][1] = RGBA_MAKE(r, g, b, 0xff);
-		g_fog_table[i][0] =
+		g_fog_table[i][LH3D_FOG_COMPONENT_SPECULAR] = RGBA_MAKE(r, g, b, LH3D_COLOR_OPAQUE);
+		g_fog_table[i][LH3D_FOG_COMPONENT_DIFFUSE] =
 			((0xff00 * brightness & 0xff0000) | (0xff * brightness & 0xff00) | (0xff0000 * brightness & 0xff0000ff)) >>
 				8 |
 			0xff000000;
@@ -1893,7 +1893,7 @@ void LH3DPrimitive::DrawFroz()
 }
 
 LHPoint g_vollightgj_u_dirn(0.0f, 1.0f, 0.0f);
-bool    g_volfx_gj_cover_surface;
+bool    g_volfx_gj_cover_surface = false;
 
 void LH3DPrimitive::DrawVolLightGJ()
 {
@@ -4710,8 +4710,8 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 			}
 			else if (depth >= g_fog_max)
 			{
-				point->color = g_fog_table[LH3D_FOG_TABLE_SIZE - 1][0];
-				point->specular = g_fog_table[LH3D_FOG_TABLE_SIZE - 1][1];
+				point->color = g_fog_table[LH3D_FOG_TABLE_SIZE - 1][LH3D_FOG_COMPONENT_DIFFUSE];
+				point->specular = g_fog_table[LH3D_FOG_TABLE_SIZE - 1][LH3D_FOG_COMPONENT_SPECULAR];
 			}
 			else
 			{
@@ -4725,8 +4725,10 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 					index = LH3D_FOG_TABLE_SIZE - 1;
 				}
 				int fogLevel = index / LH3D_FOG_TABLE_STEPS_PER_LEVEL;
-				point->color = LH3D_BLEND_COLOR(LH3DMesh::g_color, g_fog_table[index][0], fogLevel);
-				point->specular = LH3D_BLEND_COLOR(LH3DMesh::g_specular, g_fog_table[index][1], fogLevel);
+				point->color =
+					LH3D_BLEND_COLOR(LH3DMesh::g_color, g_fog_table[index][LH3D_FOG_COMPONENT_DIFFUSE], fogLevel);
+				point->specular =
+					LH3D_BLEND_COLOR(LH3DMesh::g_specular, g_fog_table[index][LH3D_FOG_COMPONENT_SPECULAR], fogLevel);
 			}
 			point->color = point->color & 0xffffff | LH3DMesh::g_color & 0xff000000;
 			point->uv2.x = *uvs++;

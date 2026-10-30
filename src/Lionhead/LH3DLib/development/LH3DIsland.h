@@ -337,6 +337,9 @@ static_assert(sizeof(LandFileHeader) == 0x418, "Data type is of wrong size");
 class LH3DIsland
 {
 public:
+	// BW1W120 00c37204 BW1M119 011ceb20 (LHCombined Release)
+	static bool32_t g_b_use_fog;
+
 	// BW1W120 00c3720c BW1M119 011ceb28 (LHCombined Release)
 	static float g_height_unit;
 	// BW1W120 00c37214 BW1M119 011ceb30 (LHCombined Release)
