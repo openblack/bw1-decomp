@@ -3301,11 +3301,42 @@ Lionhead/LHLib/ver5.0/LHConvert.cpp:
 
 Lionhead/LHLib/ver5.0/LHSprite.cpp:
 	.text       start:0x00752790 end:0x00752890
-	.text$x     start:0x007E9AC0 end:0x007E9C40 align:4
+
+Lionhead/LHLib/ver5.0/TbIME.cpp:
+	.text       start:0x00752890 end:0x00753150
+	.text$x     start:0x007E9AC0 end:0x007E9AE0 align:4
+	.xdata$x    start:0x008EF208 end:0x008EF230 align:4
+	.CRT$XCU    start:0x008F7424 end:0x008F7428 align:4
+
+Lionhead/LHLib/ver5.0/TbIMEImpl.cpp:
+	.text       start:0x00753150 end:0x007557F0
+	.text$x     start:0x007E9AE0 end:0x007E9BE0 align:4
+	.rdata      start:0x008D8054 end:0x008D8074
+	.xdata$x    start:0x008EF230 end:0x008EF370 align:4
+	.CRT$XCU    start:0x008F7428 end:0x008F7434 align:4
+	.data       start:0x00B58BB8 end:0x00B59310
+	.bss        start:0x00D68D14 end:0x00D68F18
+
+Lionhead/LH3DLib/development/LH3DFragMesh.cpp:
+	.text       start:0x007557F0 end:0x00757420
+	.text$x     start:0x007E9BE0 end:0x007E9C40 align:4
+	.xdata$x    start:0x008EF370 end:0x008EF3E8 align:4
+	.data       start:0x00B59310 end:0x00B59320
+	.bss        start:0x00D68F18 end:0x00D70F30
 
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
-	.text       start:0x00757420 end:0x007575F0
+	.text       start:0x00757420 end:0x007590C0
 	.text$x     start:0x007E9C40 end:0x007E9CA0 align:4
+	.rdata      start:0x008D8074 end:0x008D8944
+	.xdata$x    start:0x008EF3E8 end:0x008EF460 align:4
+	.CRT$XCU    start:0x008F7434 end:0x008F743C align:4
+	.data       start:0x00B59320 end:0x00B5933C
+	.bss        start:0x00D70F30 end:0x00D70F58
+
+Lionhead/LH3DLib/development/LHMatrix.cpp:
+	.text       start:0x007590C0 end:0x00759D60
+	.rdata      start:0x008D8944 end:0x008D8948
+	.data       start:0x00B5933C end:0x00B59340
 
 Lionhead/LH3DLib/development/PhysOb.cpp:
 	.text       start:0x00759D60 end:0x0075CDB0

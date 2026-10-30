@@ -3880,7 +3880,7 @@ lib/libcmt/constpow.obj:
 
 Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
 	.text       start:0x007E5580 end:0x007E60E0
-	.CRT$XCU    start:0x00A47D1C end:0x00A47D64 align:4
+	.CRT$XCU    start:0x00A47D1C end:0x00A47D4C align:4
 	.data       start:0x00CB4EA0 end:0x00CB4F8C
 
 Lionhead/LHLib/ver5.0/LHHeap2.cpp:
@@ -3925,14 +3925,45 @@ Lionhead/LHLib/ver5.0/LHConvert.cpp:
 
 Lionhead/LHLib/ver5.0/LHSprite.cpp:
 	.text       start:0x007F5640 end:0x007F6B00
-	.text$x     start:0x008ACD40 end:0x008ACF00 align:4
 
 Lionhead/LHLib/ver5.0/LHDrawScaledSprite.cpp:
 	.text       start:0x007F6B00 end:0x007F8CF0
 
+Lionhead/LHLib/ver5.0/TbIME.cpp:
+	.text       start:0x007F8CF0 end:0x007F96E0
+	.text$x     start:0x008ACD40 end:0x008ACD80 align:4
+	.xdata$x    start:0x00A3E9B8 end:0x00A3EA08 align:4
+	.CRT$XCU    start:0x00A47D4C end:0x00A47D50 align:4
+
+Lionhead/LHLib/ver5.0/TbIMEImpl.cpp:
+	.text       start:0x007F96E0 end:0x007FC050
+	.text$x     start:0x008ACD80 end:0x008ACEA0 align:4
+	.rdata      start:0x00A21CAC end:0x00A21CCC
+	.xdata$x    start:0x00A3EA08 end:0x00A3EB70 align:4
+	.CRT$XCU    start:0x00A47D50 end:0x00A47D5C align:4
+	.data       start:0x00CB7978 end:0x00CB80D0
+	.bss        start:0x00F1309C end:0x00F132A0
+
+Lionhead/LH3DLib/development/LH3DFragMesh.cpp:
+	.text       start:0x007FC050 end:0x007FDCD0
+	.text$x     start:0x008ACEA0 end:0x008ACF00 align:4
+	.xdata$x    start:0x00A3EB70 end:0x00A3EBE8 align:4
+	.data       start:0x00CB80D0 end:0x00CB80E0
+	.bss        start:0x00F132A0 end:0x00F1B2B8
+
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
-	.text       start:0x007FDCD0 end:0x007FDEA0
+	.text       start:0x007FDCD0 end:0x007FFB00
 	.text$x     start:0x008ACF00 end:0x008ACF60 align:4
+	.rdata      start:0x00A21CCC end:0x00A2259C
+	.xdata$x    start:0x00A3EBE8 end:0x00A3EC60 align:4
+	.CRT$XCU    start:0x00A47D5C end:0x00A47D64 align:4
+	.data       start:0x00CB80E0 end:0x00CB80FC
+	.bss        start:0x00F1B2B8 end:0x00F1B2E0
+
+Lionhead/LH3DLib/development/LHMatrix.cpp:
+	.text       start:0x007FFB00 end:0x008008A0
+	.rdata      start:0x00A2259C end:0x00A225A0
+	.data       start:0x00CB80FC end:0x00CB8124
 
 Lionhead/LH3DLib/development/PhysOb.cpp:
 	.text       start:0x008008A0 end:0x00803920
