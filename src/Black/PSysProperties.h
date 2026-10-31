@@ -6,8 +6,11 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
-#include "PSysBase.h"      /* For struct PSysBase */
-#include "PSysModifiers.h" /* For struct BaseAtomModifierData, struct BaseCollectionModifierData */
+#include "CollectionAndOwnership.h" /* For class CollectionAndOwnership */
+#include "GJBaseUtils.h"            /* For class GJArray, class GJVector */
+#include "LightningObjectInfo.h"    /* For class LightningObjectInfo */
+#include "PSysBase.h"               /* For struct PSysBase */
+#include "PSysModifiers.h"          /* For struct BaseAtomModifierData, struct BaseCollectionModifierData */
 
 // Forward Declares
 
@@ -19,7 +22,30 @@ class GameThing;
 class UR_Lightning_CollectionData : public BaseCollectionModifierData
 {
 public:
-	uint8_t field_0x20[0xa0];
+	PSysBase*                        field_0x20;
+	PSysBase*                        field_0x24;
+	uint8_t                          field_0x28[0x8];
+	LHPoint                          field_0x30;
+	LHPoint                          field_0x3c;
+	LHPoint                          field_0x48;
+	float                            field_0x54;
+	bool                             field_0x58;
+	bool                             field_0x59;
+	bool                             field_0x5a;
+	float                            field_0x5c;
+	float                            field_0x60;
+	long                             field_0x64;
+	uint32_t                         field_0x68;
+	GJVector<LightningObjectInfo>    field_0x6c;
+	GJArray<GJVector<long> >         field_0x80;
+	long                             field_0x88;
+	GJVector<CollectionAndOwnership> field_0x8c;
+	long                             field_0xa0;
+	PSysBase*                        field_0xa4;
+	PSysBase*                        field_0xa8;
+	uint32_t                         field_0xac;
+	uint32_t                         field_0xb0;
+	LHPoint                          field_0xb4;
 
 	// Override methods
 

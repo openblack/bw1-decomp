@@ -5,20 +5,28 @@
 #include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 
+#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
+#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+
 #include "GTPointer.h"          /* For class GTPointer */
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
 // Forward Declares
 
 class Base;
+class Creature;
 class GameOSFile;
 class GameThing;
+class GameThingWithPos;
 class GoldenShower;
+class LH3DMist;
+class Object;
+class ParticleCreator;
 
 class RenderParticleCreatureRef : public RenderParticle
 {
 public:
-	uint8_t field_0x18[0x8];
+	GTPointer<Creature> field_0x18;
 
 	// Override methods
 
@@ -26,6 +34,10 @@ public:
 	virtual ~RenderParticleCreatureRef();
 	// BW1W120 006c7ec0 BW1M119 0142c240
 	virtual char* GetDebugText();
+	// BW1W120 00695770 BW1M119 01425460
+	virtual bool32_t Load(GameOSFile& file);
+	// BW1W120 006cc2e0 BW1M119 0148c1d0
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006c7ed0 BW1M119 0142c290
 	virtual void DrawAt(const DrawData& data);
 	// BW1W120 006c8060 BW1M119 01484ed0
@@ -60,7 +72,10 @@ public:
 class RenderParticleGameObject : public RenderParticle
 {
 public:
-	uint8_t field_0x18[0x40];
+	GTPointer<Object> field_0x18;
+	GameThingWithPos* field_0x20;
+	LHMatrix          field_0x24;
+	uint8_t           field_0x54;
 
 	// Override methods
 
@@ -68,6 +83,10 @@ public:
 	virtual ~RenderParticleGameObject();
 	// BW1W120 006c9ec0 BW1M119 0142bf20
 	virtual char* GetDebugText();
+	// BW1W120 006958d0 BW1M119 014251b0
+	virtual bool32_t Load(GameOSFile& file);
+	// BW1W120 006cc440 BW1M119 0148bf40
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0067b170 BW1M119 013f79a0
 	virtual void DrawAt(const DrawData& data);
 	// BW1W120 006ca170 BW1M119 01481560
@@ -98,6 +117,8 @@ public:
 	virtual ~RenderParticleGameObjectRef();
 	// BW1W120 006c8120 BW1M119 0142c0f0
 	virtual char* GetDebugText();
+	// BW1W120 006cc350 BW1M119 0148c120
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006957e0 BW1M119 014253a0
 	virtual bool32_t Load(GameOSFile& file);
 
@@ -136,7 +157,16 @@ public:
 class RenderParticleMist : public RenderParticle
 {
 public:
-	uint8_t field_0x18[0x30];
+	ParticleCreator* Creator;
+	uint32_t         field_0x1c;
+	uint8_t          field_0x20;
+	uint32_t         field_0x24;
+	uint32_t         field_0x28;
+	uint16_t         field_0x2c;
+	LHPoint          field_0x30;
+	uint32_t         field_0x3c;
+	uint32_t         field_0x40;
+	LH3DMist*        Mist;
 
 	// Override methods
 
@@ -144,6 +174,12 @@ public:
 	virtual ~RenderParticleMist();
 	// BW1W120 006c9cb0 BW1M119 0142c6d0
 	virtual char* GetDebugText();
+	// BW1W120 00695030 BW1M119 01425a40
+	virtual bool32_t Load(GameOSFile& file);
+	// BW1W120 006cbb50 BW1M119 0148c7a0
+	virtual bool32_t Save(GameOSFile& file);
+	// BW1W120 00699d60 BW1M119 014207c0
+	virtual void ResolveLoad();
 	// BW1W120 0067a670 BW1M119 013f8290
 	virtual void DrawAt(const DrawData& data);
 

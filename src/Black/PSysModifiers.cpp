@@ -1,13 +1,12 @@
 #include <math.h> /* For log */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include "ParticleConstants.h"
 
-static const LHPoint ModifierZeroPoint(0.0f, 0.0f, 0.0f);
-static const float   OneOverMaxAlpha = 1.0f / 255.0f;
+static const float OneOverMaxAlpha = 1.0f / 255.0f;
 
 #include "GameTimeConstants.h"
 
-static float OneOverLogHalf = 1.0f / (float)log(0.5);
+#include "HalfLifeConstants.h"
 
 #include "PSysModifiers.h"
 
@@ -2096,12 +2095,12 @@ void UR_Trail::UpdateTrail(AtomCollection* collection, CollectionData* data) con
 				core->SetAlpha(
 					(uint8_t)boundf(0.0f, maxAlpha * core->GetAlpha() * t * OneOverMaxAlpha, PSYS_MAX_ALPHA));
 			}
-			uint32_t specular = parent->Specular.GetColor();
+			uint32_t specular = parent->Specular;
 			uint8_t  brightness = (uint8_t)(t * PSYS_MAX_ALPHA);
-			*(uint32_t*)&core->Specular = ((((specular >> 24) * brightness) >> 8) << 24) |
-			                              (((((specular >> 16) & 0xff) * brightness) >> 8) << 16) |
-			                              (((((specular >> 8) & 0xff) * brightness) >> 8) << 8) |
-			                              (((specular & 0xff) * brightness) >> 8);
+			core->Specular = ((((specular >> 24) * brightness) >> 8) << 24) |
+			                 (((((specular >> 16) & 0xff) * brightness) >> 8) << 16) |
+			                 (((((specular >> 8) & 0xff) * brightness) >> 8) << 8) |
+			                 (((specular & 0xff) * brightness) >> 8);
 			index++;
 		}
 	}

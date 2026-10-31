@@ -2268,7 +2268,8 @@ public:
 	class AtomData : public BaseAtomModifierData
 	{
 	public:
-		uint8_t field_0x20[0x10];
+		uint8_t  field_0x20[0xc];
+		uint32_t field_0x2c;
 
 		// BW1W120 0069c820 BW1M119 inlined
 		virtual ~AtomData();
@@ -2306,7 +2307,8 @@ public:
 	class AtomData : public BaseAtomModifierData
 	{
 	public:
-		uint8_t field_0x20[0x14];
+		uint8_t           field_0x20[0xc];
+		GTPointer<Object> field_0x2c;
 
 		// BW1W120 0069ccf0 BW1M119 inlined
 		virtual ~AtomData();
@@ -2575,7 +2577,17 @@ public:
 	class CollectionData : public BaseCollectionModifierData
 	{
 	public:
-		uint8_t field_0x20[0x38];
+		uint8_t                      field_0x20;
+		uint8_t                      field_0x21;
+		LHPoint                      field_0x24;
+		uint32_t                     field_0x30;
+		GJVector<GTPointer<Object> > field_0x34;
+		long                         field_0x48;
+		uint32_t                     field_0x4c;
+		uint8_t                      field_0x50;
+		uint8_t                      field_0x51;
+		uint8_t                      field_0x52;
+		GameThing*                   field_0x54;
 
 		// BW1W120 0067e1b0 BW1M119 inlined
 		virtual ~CollectionData();
@@ -3653,8 +3665,8 @@ public:
 	class AtomData : public BaseAtomModifierData
 	{
 	public:
-		LHPoint  field_0x20;
-		uint32_t field_0x2c;
+		LHPoint field_0x20;
+		uint8_t field_0x2c;
 
 		// BW1W120 0055f4f0 BW1M119 inlined
 		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) {}
@@ -4109,7 +4121,7 @@ public:
 		LHPoint  field_0x44;
 		uint32_t field_0x50;
 		uint32_t field_0x54;
-		uint32_t field_0x58;
+		uint8_t  field_0x58;
 
 		// BW1W120 0055f350 BW1M119 inlined
 		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) {}

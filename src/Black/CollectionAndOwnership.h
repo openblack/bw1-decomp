@@ -11,6 +11,9 @@ class CollectionAndOwnership
 public:
 	PSysBase* Collection;     /* 0x0 */
 	bool      OwnsCollection; /* 0x4 */
+
+	// BW1W120 inlined BW1M119 inlined
+	CollectionAndOwnership() : Collection(NULL), OwnsCollection(false) {}
 };
 
 static_assert(sizeof(CollectionAndOwnership) == 0x8, "CollectionAndOwnership size is incorrect");

@@ -9,17 +9,28 @@
 // Forward Declares
 
 class Base;
+class GameOSFile;
+class Persistent;
 struct Zoomer3d;
 
 class Particle3DAnimWithCamera : public Particle3DAnim
 {
 public:
-	uint8_t field_0x30[0x10];
+	Persistent* field_0x30;
+	uint8_t     field_0x34;
+	uint8_t     field_0x35;
+	uint8_t     field_0x36;
+	float       field_0x38;
+	uint8_t     field_0x3c;
 
 	// Override methods
 
 	// BW1W120 006c8680 BW1M119 inlined
 	virtual ~Particle3DAnimWithCamera();
+	// BW1W120 006954c0 BW1M119 01425600
+	virtual bool32_t Load(GameOSFile& file);
+	// BW1W120 006cc010 BW1M119 0148c360
+	virtual bool32_t Save(GameOSFile& file);
 
 	// BW1W120 006c8630 BW1M119 01484130
 	Particle3DAnimWithCamera();

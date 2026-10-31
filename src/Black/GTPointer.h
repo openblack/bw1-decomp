@@ -3,6 +3,7 @@
 
 #include <assert.h>
 #include <stddef.h>
+#include <stdint.h>
 
 class GameThing;
 
@@ -10,8 +11,8 @@ class GameThing;
 template <typename T> class GTPointer
 {
 public:
-	unsigned long GameTurnValidated; /* 0x0 */
-	T*            Pointer;           /* 0x4 */
+	uint32_t GameTurnValidated; /* 0x0 */
+	T*       Pointer;           /* 0x4 */
 
 	// Deliberately leaves the turn uninitialized (BW1M119 01305cc0 for GameThing).
 	GTPointer() : Pointer(0) {}

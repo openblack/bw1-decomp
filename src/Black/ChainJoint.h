@@ -18,6 +18,9 @@ public:
 	uint32_t  field_0x10; // TODO: First DrawData color word; original type unknown.
 	LH3DColor Color;      /* 0x14 */
 	bool      Active;     /* 0x18 */
+
+	// BW1W120 00695f00 BW1M119 inlined
+	ChainJoint() : Scale(0.0f), field_0x10(0), Color(0), Active(false) { Position.x = Position.y = Position.z = 0.0f; }
 };
 
 static_assert(offsetof(ChainJoint, Scale) == 0xc, "ChainJoint scale offset is incorrect");

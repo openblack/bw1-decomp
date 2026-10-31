@@ -16,7 +16,10 @@ struct LHPoint;
 class SpellPointInf : public PSysBase
 {
 public:
-	uint8_t field_0x14[0x20];
+	unsigned long Colour;
+	LHPoint       To;
+	LHPoint       From;
+	float         Speed;
 
 	// Override methods
 

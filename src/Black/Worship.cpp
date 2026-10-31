@@ -1424,12 +1424,12 @@ bool32_t WorshipSite::Save(GameOSFile& file)
 		file.WritePtr(dance.Get());
 		file.WriteSafe(Towns);
 		file.WritePtr(FoodPot);
-		file.WriteSafe(DanceValidatedTurn);
-		file.WriteSafe(field_0xc0);
+		file.WriteIt(DanceValidatedTurn);
+		file.WriteIt(field_0xc0);
 		file.WriteSafe(field_0xc4);
-		file.WriteSafe(NumWorshippers);
-		file.WriteSafe(field_0xcc);
-		file.WriteSafe(CheatSpellSeed);
+		file.WriteIt(NumWorshippers);
+		file.WriteIt(field_0xcc);
+		file.WriteIt(CheatSpellSeed);
 		file.WriteSafe(Worshippers);
 		file.WriteSafe(IconList);
 		file.WriteArray(ResourcesOnTheWay, RESOURCE_TYPE_LAST);

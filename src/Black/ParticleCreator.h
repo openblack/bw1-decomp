@@ -16,6 +16,7 @@ class AtomCore;
 class Chain;
 class FloatProvider;
 class LH3DObject;
+class LH3DMist;
 class LH3DSprite;
 class PropertyList;
 class RenderParticle;
@@ -272,6 +273,9 @@ public:
 	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006aa540 BW1M119 01444860
 	virtual void* GetBitmap();
+
+	// BW1W120 006aa5a0 BW1M119 01444760
+	LH3DMist* CreateLH3DMist();
 
 	uint32_t    field_0x34;
 	uint32_t    field_0x38;
