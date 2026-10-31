@@ -653,7 +653,11 @@ bool32_t CreatureBelief::HasNavigationBeenBlockedRecently()
 	return false;
 }
 
+#ifdef VERSION_BW1WCI
+void CreatureBeliefs::Initialise(bool32_t param_1)
+#else
 void CreatureBeliefs::Initialise()
+#endif // VERSION_BW1WCI
 {
 	int i;
 	for (i = 0; i < NUM_ALLOCATED_TOWN_BELIEFS; i++)

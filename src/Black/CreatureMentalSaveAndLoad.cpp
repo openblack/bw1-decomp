@@ -307,7 +307,11 @@ bool32_t Creature::Load(GameOSFile& file)
 				info = &CreatureInfo::Infos[creatureType];
 			}
 		}
+#ifdef VERSION_BW1WCI
+		Initialise(Pos, GetInfo(), player, false);
+#else
 		Initialise(Pos, GetInfo(), player);
+#endif // VERSION_BW1WCI
 		for (int i = 0; i < CREATURE_RECEIVE_SPELL_SLOTS; i++)
 		{
 			file.ReadSafe(ReceiveSpell->data[i]);

@@ -118,15 +118,21 @@ public:
 	bool32_t                                  IsDemobilised;
 	uint32_t                                  GameTurnLastReactedToFlyingObject;
 	uint32_t                                  GameTurnLastReactedToObjectCrushed;
-	uint32_t                                  field_0x20d3c;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0xd068;
 #endif
+	uint32_t field_0x20d3c;
 
 	// Constructors
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 004e2a80 BW1MCI119 01267710
+	CreatureMental(Creature* creature, const CreatureInfo* info, const MapCoords& pos, GPlayer* player,
+	               bool32_t param_5);
+#else
 	// BW1W120 004d22f0 BW1M119 0124aa30
 	CreatureMental(Creature* creature, const CreatureInfo* info, const MapCoords& pos, GPlayer* player);
+#endif // VERSION_BW1WCI
 
 	// Override methods
 
@@ -219,6 +225,8 @@ public:
 	bool32_t IsObjectSuitableForAction(GameThingWithPos* object, CREATURE_ACTION action);
 	// BW1W120 004d2800 BW1M119 null
 	void EmpathiseWithPlayer(CREATURE_DESIRE_SOURCE source);
+	// BW1W120 004d2860 BW1M119 null
+	uint32_t UnreferencedFunction();
 	// BW1W120 004c4c80 BW1M119 012364d0
 	CreatureAttitudeToCreature* GetAttitudeToCreature(Creature* other_creature);
 	// BW1W120 004c4d20 BW1M119 012363b0
@@ -280,6 +288,7 @@ public:
 static_assert(offsetof(CreatureMental, learning) == 0x2b20, "Data member is at the wrong offset");
 static_assert(offsetof(CreatureMental, AttitudeToPlayer) == 0x4f48, "Data member is at the wrong offset");
 static_assert(offsetof(CreatureMental, creature) == 0xd044, "Data member is at the wrong offset");
+static_assert(offsetof(CreatureMental, ci_field_0xd068) == 0xd068, "Data member is at the wrong offset");
 static_assert(sizeof(CreatureMental) == 0xd070, "Data type is of wrong size");
 #else
 static_assert(offsetof(CreatureMental, learning) == 0x2ad8, "Data member is at the wrong offset");

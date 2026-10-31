@@ -16,8 +16,16 @@ bool32_t CreatureMental::DebugDrawMarker = false;
 bool32_t CreatureMental::DebugDrawPath = false;
 bool32_t CreatureMental::DebugDrawObjectToActOn = false;
 
+static uint32_t UnusedStatic = 0;
+
+#ifdef VERSION_BW1WCI
+CreatureMental::CreatureMental(Creature* creature, const CreatureInfo* info, const MapCoords& pos, GPlayer* player,
+                               bool32_t param_5)
+	: desires(creature, info), agenda(creature, info), beliefs(param_5), ActionOpinions(info), learning(creature),
+#else
 CreatureMental::CreatureMental(Creature* creature, const CreatureInfo* info, const MapCoords& pos, GPlayer* player)
 	: desires(creature, info), agenda(creature, info), ActionOpinions(info), learning(creature),
+#endif // VERSION_BW1WCI
 	  ActionsKnownAbout(info), InnatePersonality(info), ExplorationMap(pos), LookState(info)
 {
 	debug.IsProcessing = true;
@@ -35,6 +43,9 @@ CreatureMental::CreatureMental(Creature* creature, const CreatureInfo* info, con
 	TownDesireToHelpLevel = 0.0f;
 	NumTimesTownDesireHelped = 0;
 	GameTurnLastReactedToFlyingObject = GameTurnLastReactedToObjectCrushed = 0;
+#ifdef VERSION_BW1WCI
+	ci_field_0xd068 = param_5;
+#endif // VERSION_BW1WCI
 }
 
 CreatureMental::~CreatureMental()
@@ -103,4 +114,9 @@ void CreatureMental::EmpathiseWithPlayer(CREATURE_DESIRE_SOURCE source)
 		desires.ChangeSource(source, creature.Get()->GetInfo()->EmpathySourceIncrease);
 		creature.Get()->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_INCREASE_SOURCE, source, NULL, NULL, 0);
 	}
+}
+
+uint32_t CreatureMental::UnreferencedFunction()
+{
+	return 0;
 }

@@ -675,6 +675,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004CFE8A, call_indirect(0x008A97AC)),  # CreatureLessonChooser: __imp__ShellExecuteA@4
     (0x004D021B, call_rel32(0x00401879)),  # CreatureLessonChooser
     (0x004D02BB, call_rel32(0x00401879)),  # CreatureLessonChooser
+    (0x004D22EB, call_rel32(0x00401879)),  # CreatureMental
     (0x004D293B, call_rel32(0x00401879)),  # CreatureMentalActionTests
     (0x004D2A1A, call_indirect(0x008A93CC)),  # CreatureMentalActionTests: __imp___0LHVersion__QAE_PAULHVersionBlock___Z@4
     (0x004D2C7B, call_rel32(0x00401879)),  # CreatureMentalActionTests
@@ -1028,6 +1029,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004D2461, copy_run(0x004D23B2)),  # CreatureLessonChooser
     (0x004D25AB, call_rel32(0x00403C49)),  # CreatureLessonChooser
     (0x004D264B, call_rel32(0x00403C49)),  # CreatureLessonChooser
+    (0x004D4653, jmp_run(0x004D45F6)),  # CreatureMental
+    (0x004D467B, call_rel32(0x00403C49)),  # CreatureMental
+    (0x004D4875, jmp_run(0x004D467B)),  # CreatureMental
+    (0x004D48C3, copy_run(0x004D4872)),  # CreatureMental
+    (0x004D4913, jmp_run(0x004D48C3)),  # CreatureMental
+    (0x004D4A65, copy_run(0x004D4913)),  # CreatureMental
+    (0x004D4A96, jmp_run(0x004D4A65)),  # CreatureMental
+    (0x004D4AC9, copy_run(0x004D4A96)),  # CreatureMental
+    (0x004D4B85, copy_run(0x004D4AC9)),  # CreatureMental
+    (0x004D4BF3, jmp_run(0x004D4B85)),  # CreatureMental
     (0x004D4CA3, copy_run(0x004D4BF3)),  # CreatureMentalActionTests
     (0x004D4CCB, call_rel32(0x00403C49)),  # CreatureMentalActionTests
     (0x004D4DAA, call_indirect(0x008AE050)),  # CreatureMentalActionTests
