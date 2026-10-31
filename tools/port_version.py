@@ -2724,7 +2724,7 @@ def module_stanzas(text):
 
 def target_only_addresses(version):
     """Addresses the sources name for one target only: the `<version> <addr>` field of their
-    address comments (a function only Creature Isle has, `// BW1WCI 1001f5b0 BW1M119 null`)."""
+    address comments (a function only Creature Isle has, `// BW1WCI 1001f5b0 BW1MCI119 null`)."""
     field = re.compile(r"//.*\b%s ([0-9a-f]{8})\b" % re.escape(version))
     out = set()
     for top in ("src", "include"):

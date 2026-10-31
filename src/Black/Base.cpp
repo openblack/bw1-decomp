@@ -76,7 +76,7 @@ void operator delete[](void* ptr, size_t size, const char* file_name, uint32_t l
 
 template <class T> struct LessTypeInfo
 {
-	// BW1WCI inlined BW1M119 null
+	// BW1WCI inlined BW1MCI119 null
 	bool operator()(T* const a, T* const b) const { return a->before(*b) != 0; }
 };
 
@@ -84,9 +84,9 @@ struct ByteCount
 {
 	int Bytes;
 
-	// BW1WCI inlined BW1M119 null
+	// BW1WCI inlined BW1MCI119 null
 	ByteCount() : Bytes(0) {}
-	// BW1WCI inlined BW1M119 null
+	// BW1WCI inlined BW1MCI119 null
 	operator int&() { return Bytes; }
 };
 
@@ -100,25 +100,25 @@ class MemoryDiagnostic
 public:
 	struct MemoryStats;
 
-	// BW1WCI 004396f0 BW1M119 null
+	// BW1WCI 004396f0 BW1MCI119 null
 	void AddHeap(HeapWithPools* heap);
-	// BW1WCI inlined BW1M119 null
+	// BW1WCI inlined BW1MCI119 null
 	void AddFreeBlocks(FreeList* free_list);
-	// BW1WCI inlined BW1M119 null
+	// BW1WCI inlined BW1MCI119 null
 	void AddBlock(unsigned char*& address, AllocationSizeMap::iterator& freeBlock,
 	              AllocationSizeMap::iterator& poolChunk);
-	// BW1WCI 00439830 BW1M119 null
+	// BW1WCI 00439830 BW1MCI119 null
 	void Account(unsigned char*& address, MemoryStats& stats, unsigned int block_size);
-	// BW1WCI 004399b0 BW1M119 null
+	// BW1WCI 004399b0 BW1MCI119 null
 	void AddPool(LHPool* pool, unsigned int block_size);
-	// BW1WCI 00439bc0 BW1M119 null
+	// BW1WCI 00439bc0 BW1MCI119 null
 	void AddPools(LHPool* pool, unsigned int block_size);
-	// BW1WCI 00439d00 BW1M119 null
+	// BW1WCI 00439d00 BW1MCI119 null
 	void Print(ostream& out, MemoryStats& stats);
-	// BW1WCI inlined BW1M119 null
+	// BW1WCI inlined BW1MCI119 null
 	void Report(ostream& file);
 
-	// BW1WCI 00ccc2e8 BW1M119 null
+	// BW1WCI 00ccc2e8 BW1MCI119 null
 	static ClassSizeMap ClassSizes;
 
 	struct MemoryStats
@@ -129,11 +129,11 @@ public:
 		unsigned int  Unidentified;
 		ClassUsageMap ByClass;
 
-		// BW1WCI 00439640 BW1M119 null
+		// BW1WCI 00439640 BW1MCI119 null
 		MemoryStats() : Allocated(0), LostInFragmentation(0), ControlStructures(0), Unidentified(0) {}
 	};
 
-	// BW1WCI inlined BW1M119 null
+	// BW1WCI inlined BW1MCI119 null
 	void MarkFreeBlocks(std::vector<ByteCount>& freeBlocks, LHPool* pool, unsigned char* first_block,
 	                    unsigned int block_size);
 
@@ -361,7 +361,7 @@ inline void MemoryDiagnostic::Report(ostream& file)
 	}
 }
 
-// BW1WCI inlined BW1M119 null
+// BW1WCI inlined BW1MCI119 null
 static inline void RecordAllocationSizes()
 {
 	ObjectAllocations.RecordSizes();

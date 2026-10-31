@@ -71,7 +71,7 @@ static uint32_t         ContextsPushed = 0;
 float LimitActionPriority(float priority);
 
 #ifdef VERSION_BW1WCI
-// BW1WCI inlined BW1M119 null
+// BW1WCI inlined BW1MCI119 null
 static inline void MakeConfinedCreatureLookAtMaster(Creature* follower, Creature* master)
 {
 	follower->ForceActivityAndForceAction(CREATURE_DESIRE_CURIOSITY, NULL, CREATURE_LOOK_FOREVER,

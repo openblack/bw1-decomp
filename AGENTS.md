@@ -52,7 +52,8 @@ Experiment discipline, learned the expensive way:
 ## Repository Layout
 
 - `configure.py`        — Project configuration and generator script.
-- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1W130`, `BW1WCI`, `BW1M119`).
+- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1W130`, `BW1WCI`, `BW1M119`, `BW1MCI119`).
+  The Mac configs (`BW1M*`) hold only symbols, a reference for names and signatures; nothing is built from them.
     - `config.yml`      — decomp-toolkit project config
     - `symbols.txt`     — layout of the binaries, addresses, sizes, names etc for every symbol present
     - `splits.txt`      — per-TU section address ranges
@@ -561,11 +562,12 @@ initialise to zero, rather than picking names or adding filler statics.
 Each function and global declaration in a header carries an address comment:
 
 ```cpp
-// BW1W120 <windows addr> [BW1WCI <creature isle addr>] BW1M119 <mac addr> [(<module>)]
+// BW1W120 <windows addr> BW1M119 <mac addr> [(<module>)]
+// BW1WCI <creature isle addr> BW1MCI119 <mac creature isle addr> [(<module>)]
 // BW1W120 0054cbd0 BW1M119 010cca10
 // BW1W120 00c386e0 BW1M119 011d0df8 (LHCombined Release)
 // BW1W120 0051f180 BW1M119 inlined
-// BW1WCI 00401830 BW1MCI119 null
+// BW1WCI 004690f0 BW1MCI119 011c7760
 ```
 
 The Mac address comes from `config/BW1M119/symbols.txt`, or from a module's own
@@ -575,10 +577,14 @@ name. In either slot, `inlined` (no out-of-line copy), `null` (not in that binar
 Symbols exported from the game's DLLs use their DLL address (e.g. LHMultiplayerR `1001e2b0`).
 The line holds nothing else: notes go on a comment line of their own above it, and it
 never trails code. CI runs `python3 tools/check_addr_comments.py`, which also checks that
-the Mac address is a real BW1M119 symbol.
-A function that exists only in Creature Isle (under `#ifdef VERSION_BW1WCI`) adds its
-Creature Isle address after the Windows field: `BW1WCI <addr>`, a symbol in
-`config/BW1WCI/symbols.txt`. No Mac build has Creature Isle code.
+each address is a real symbol of its version.
+A declaration that only Creature Isle sees (under `#ifdef VERSION_BW1WCI`) uses the second
+form instead: its Windows address is a symbol in `config/BW1WCI/symbols.txt` (or a DLL
+module there) and its Mac address comes from the Mac Creature Isle build,
+`config/BW1MCI119/symbols.txt` or a module there, tagged the same way. `BW1WCI` always pairs
+with `BW1MCI119` and `BW1W120` with `BW1M119`; never mix them on one line. Where 1.20 has
+its own declaration under `#ifndef VERSION_BW1WCI`, that one keeps the `BW1W120` form.
+The BW1MCI119 symbols are the ground truth for a Creature Isle-only function's name and signature.
 Older comments with `BW1M100` (actually 1.1.0 or 1.1.9 addresses at base 0x10000000)
 and a trailing function name are historical. Use `tools/mac_symbol_version.py` to audit them.
 

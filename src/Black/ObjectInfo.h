@@ -95,7 +95,7 @@ public:
 	// BW1W120 00636e30 BW1M119 013dff10
 	float GetMesh2DRadius(float scale) const;
 #ifdef VERSION_BW1WCI
-	// BW1WCI inlined BW1M119 null
+	// BW1WCI inlined BW1MCI119 null
 	float GetRestSpeedMultiplier() const { return RestSpeedMultiplier; }
 #endif
 

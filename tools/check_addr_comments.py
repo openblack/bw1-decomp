@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 """Check the per-symbol address comments in src/ and include/.
 
-Every comment that starts with a version tag must be exactly
+Every comment that starts with a version tag must be exactly one of
 
-    // BW1W120 <windows> [BW1WCI <creature isle>] [BW1M119 <mac> [(<module>)]]
+    // BW1W120 <windows> [BW1M119 <mac> [(<module>)]]
+    // BW1WCI <creature isle> BW1MCI119 <mac creature isle> [(<module>)]
 
-on a line of its own, where
-  <windows>        is 8 lowercase hex digits or one of: inlined purecall null
-  <creature isle>  is 8 lowercase hex digits or one of: inlined purecall null
-  <mac>            is 8 lowercase hex digits or one of: inlined null purecall
-  <module>         is a directory under config/BW1M119/
+on a line of its own, the second for a function only Creature Isle has, where
+  <windows>, <creature isle>          is 8 lowercase hex digits or one of: inlined purecall null
+  <mac>, <mac creature isle>          is 8 lowercase hex digits or one of: inlined purecall null
+  <module>                            is a directory under the Mac version's config/
 
-and every address must be a symbol: the Windows one in config/BW1W120/symbols.txt or
-one of its DLL modules, the Creature Isle one in config/BW1WCI/symbols.txt or one of
-its DLL modules, the Mac one in config/BW1M119/symbols.txt or the tagged module's
-symbols.txt.
+and every address must be a symbol of its version: the Windows ones in
+config/BW1W120/ or config/BW1WCI/ (symbols.txt or one of the DLL modules), the Mac
+ones in config/BW1M119/ or config/BW1MCI119/ (symbols.txt or the tagged module's).
 
 Notes belong on their own comment line; prose may mention an address mid-sentence.
 
@@ -31,7 +30,10 @@ VENDORED_GAMESPY = os.path.join(ROOT, "src", "GameSpy")
 
 WORDS = ("inlined", "purecall", "null")
 
-TAGGED = re.compile(r"//\s*BW1(?:W\d{3}|M\d{3})\b")
+# (Windows version, Mac version, whether the Mac field is required)
+FORMS = (("BW1W120", "BW1M119", False), ("BW1WCI", "BW1MCI119", True))
+
+TAGGED = re.compile(r"//\s*BW1(?:W\d{3}|WCI|M\d{3}|MCI\d{3})\b")
 SYM = re.compile(r"^\S+\s*=\s*\.\w+:0x([0-9A-Fa-f]+);")
 
 
@@ -50,14 +52,11 @@ def addresses(path):
     return out
 
 
-def canonical_re(mac_modules):
-    word = lambda ws: r"(?:[0-9a-f]{8}|" + "|".join(map(re.escape, ws)) + r")"
-    mods = "|".join(map(re.escape, mac_modules))
-    return re.compile(
-        r"^\s*// BW1W120 (?P<win>" + word(WORDS) + r")"
-        r"(?: BW1WCI (?P<ci>" + word(WORDS) + r"))?"
-        r"(?: BW1M119 (?P<mac>" + word(WORDS) + r")(?: \((?P<mod>" + mods + r")\))?)?$"
-    )
+def form_re(win, mac, mac_required):
+    word = r"(?:[0-9a-f]{8}|" + "|".join(map(re.escape, WORDS)) + r")"
+    mods = "|".join(map(re.escape, modules(mac)))
+    mac_field = r" " + mac + r" (?P<mac>" + word + r")(?: \((?P<mod>" + mods + r")\))?"
+    return re.compile(r"^\s*// " + win + r" (?P<win>" + word + r")" + (mac_field if mac_required else "(?:" + mac_field + ")?") + r"$")
 
 
 def source_files():
@@ -71,21 +70,22 @@ def source_files():
                     yield os.path.join(dirpath, name)
 
 
-def version_addresses(version):
+def windows_addresses(version):
     out = addresses(os.path.join(ROOT, "config", version, "symbols.txt"))
     for mod in modules(version):
         out |= addresses(os.path.join(ROOT, "config", version, mod, "symbols.txt"))
     return out
 
 
+def mac_addresses(version):
+    out = {None: addresses(os.path.join(ROOT, "config", version, "symbols.txt"))}
+    for mod in modules(version):
+        out[mod] = addresses(os.path.join(ROOT, "config", version, mod, "symbols.txt"))
+    return out
+
+
 def main(argv):
-    win_addrs = version_addresses("BW1W120")
-    ci_addrs = version_addresses("BW1WCI")
-    mac_mods = modules("BW1M119")
-    mac_addrs = {None: addresses(os.path.join(ROOT, "config", "BW1M119", "symbols.txt"))}
-    for mod in mac_mods:
-        mac_addrs[mod] = addresses(os.path.join(ROOT, "config", "BW1M119", mod, "symbols.txt"))
-    canon = canonical_re(mac_mods)
+    forms = [(form_re(win, mac, req), win, mac, windows_addresses(win), mac_addresses(mac)) for win, mac, req in FORMS]
 
     errors = 0
     files = [os.path.abspath(a) for a in argv] or sorted(source_files())
@@ -100,26 +100,27 @@ def main(argv):
             tag = TAGGED.search(line)
             if not tag:
                 continue
-            m = canon.match(line)
-            if not m:
+            found = next(((m, form) for form in forms for m in [form[0].match(line)] if m), None)
+            if not found:
                 why = "trailing a line of code" if line[: tag.start()].strip() else "not in the canonical form"
                 print("%s:%d: error: %s: %s" % (rel, no, why, line.strip()))
                 errors += 1
                 continue
-            win, ci, mac, mod = m.group("win"), m.group("ci"), m.group("mac"), m.group("mod")
+            m, (_, win_tag, mac_tag, win_addrs, mac_addrs) = found
+            win, mac, mod = m.group("win"), m.group("mac"), m.group("mod")
             if win not in WORDS and int(win, 16) not in win_addrs:
-                print("%s:%d: error: BW1W120 %s is not a symbol in config/BW1W120" % (rel, no, win))
-                errors += 1
-            if ci and ci not in WORDS and int(ci, 16) not in ci_addrs:
-                print("%s:%d: error: BW1WCI %s is not a symbol in config/BW1WCI" % (rel, no, ci))
+                print("%s:%d: error: %s %s is not a symbol in config/%s" % (rel, no, win_tag, win, win_tag))
                 errors += 1
             if mac and mac not in WORDS and int(mac, 16) not in mac_addrs[mod]:
-                where = "config/BW1M119/%s" % mod if mod else "config/BW1M119/symbols.txt"
-                print("%s:%d: error: BW1M119 %s is not a symbol in %s" % (rel, no, mac, where))
+                where = "config/%s/%s" % (mac_tag, mod) if mod else "config/%s/symbols.txt" % mac_tag
+                print("%s:%d: error: %s %s is not a symbol in %s" % (rel, no, mac_tag, mac, where))
                 errors += 1
 
     if errors:
-        print("\n%d address comment problem(s). Format: // BW1W120 <w> [BW1WCI <c>] [BW1M119 <m> [(<module>)]]" % errors)
+        print(
+            "\n%d address comment problem(s). Format: // BW1W120 <w> [BW1M119 <m> [(<module>)]]"
+            " or // BW1WCI <c> BW1MCI119 <m> [(<module>)]" % errors
+        )
         return 1
     print("address comments OK (%d files)" % len(files))
     return 0

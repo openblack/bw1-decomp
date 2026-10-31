@@ -179,7 +179,7 @@ public:
 	// Override methods
 
 #ifdef VERSION_BW1WCI
-	// BW1WCI 004f4200 BW1M119 null
+	// BW1WCI 004f4200 BW1MCI119 016243d0
 	virtual bool32_t CanBePickedUpByCreature(Creature* creature);
 #endif
 	// BW1W120 005ec0a0 BW1M119 0138b460
@@ -329,13 +329,13 @@ public:
 	// BW1W120 005f26d0 BW1M119 0138de80
 	virtual bool32_t LookAtFlyingObjectReaction();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 0047e0c0 BW1M119 null
+	// BW1WCI 0047e0c0 BW1MCI119 01202930
 	virtual uint32_t GetScriptULData1() { return 0; }
-	// BW1WCI 0047e0d0 BW1M119 null
+	// BW1WCI 0047e0d0 BW1MCI119 01202970
 	virtual void SetScriptULData1(unsigned long data) {}
-	// BW1WCI 0047e0e0 BW1M119 null
+	// BW1WCI 0047e0e0 BW1MCI119 012029b0
 	virtual uint32_t GetScriptULData2() { return 0; }
-	// BW1WCI 0047e0f0 BW1M119 null
+	// BW1WCI 0047e0f0 BW1MCI119 012029f0
 	virtual void SetScriptULData2(unsigned long data) {}
 #endif
 	// BW1W120 005f2980 BW1M119 01078700
@@ -614,7 +614,7 @@ public:
 	// BW1W120 005ec340 BW1M119 0138adf0
 	virtual void MoveByTeleport(const MapCoords& param_1);
 #ifdef VERSION_BW1WCI
-	// BW1WCI 0047e180 BW1M119 null
+	// BW1WCI 0047e180 BW1MCI119 01202cb0
 	virtual bool32_t CreatureIsleVirtual0xb54(uint32_t param_1, uint32_t param_2) { return false; }
 #endif
 	// BW1W120 00417270 BW1M119 01139210
@@ -685,7 +685,7 @@ public:
 	// BW1W120 005ec1d0 BW1M119 0138b420
 	bool32_t InvalidState();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 006064d0 BW1M119 null
+	// BW1WCI 006064d0 BW1MCI119 013ac560
 	bool32_t ScriptPlayAnim();
 #endif
 	// BW1W120 005ec270 BW1M119 0104f900

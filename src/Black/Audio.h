@@ -226,7 +226,7 @@ public:
 	// BW1W120 00428230 BW1M119 011832d0
 	void StartScriptMusic(MUSIC_TYPE type);
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00429510 BW1M119 null
+	// BW1WCI 00429510 BW1MCI119 01197ea0
 	void StartScriptMusic(MUSIC_TYPE type, unsigned long start_chunk);
 #endif
 	// BW1W120 00428250 BW1M119 01183210

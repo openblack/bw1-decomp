@@ -146,7 +146,7 @@ public:
 	// BW1W120 0063a020 BW1M119 013d94f0
 	virtual void ResolveLoad();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00650b80 BW1M119 null
+	// BW1WCI 00650b80 BW1MCI119 014008a0
 	virtual void CreatureIsleVirtual0x108();
 #endif
 	// BW1W120 00639200 BW1M119 013dbbd0
@@ -582,7 +582,7 @@ public:
 	// BW1W120 006377c0 BW1M119 013dedc0
 	virtual void ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage);
 #ifdef VERSION_BW1WCI
-	// BW1WCI 0064d810 BW1M119 null
+	// BW1WCI 0064d810 BW1MCI119 01407af0
 	virtual void CreatureIsleVirtual0x7f0();
 #endif
 	// BW1W120 006377e0 BW1M119 013decf0
@@ -693,7 +693,7 @@ public:
 	// BW1W120 00402b50 BW1M119 010a3610
 	virtual uint32_t StandAnimation() { return ANM_INVALID; }
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00402c40 BW1M119 null
+	// BW1WCI 00402c40 BW1MCI119 010b3ca0
 	virtual void CreatureIsleVirtual0x89c(uint32_t param_1) {}
 #endif
 	// BW1W120 00419b30 BW1M119 0109ea50
