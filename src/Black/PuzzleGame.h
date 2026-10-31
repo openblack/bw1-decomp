@@ -211,15 +211,15 @@ public:
 	// Override methods
 
 	// BW1W120 0041d820 BW1M119 01139c80
-	virtual bool32_t DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo() { return true; }
 	// BW1W120 0041d830 BW1M119 01139cc0
-	virtual uint32_t ProcessNeeds();
+	virtual uint32_t ProcessNeeds() { return 0; }
 	// BW1W120 0041d840 BW1M119 01139d00
-	virtual uint32_t CheckNeeds();
-	// BW1W120 0041d860 BW1M119 01139d80
-	virtual char* GetDebugText();
+	virtual uint32_t CheckNeeds() { return ANIMAL_NEEDS_NONE; }
 	// BW1W120 0041d850 BW1M119 01139d40
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PIECE_SHEEP; }
+	// BW1W120 0041d860 BW1M119 01139d80
+	virtual char* GetDebugText() { return "Animal: Horse for Puzzle"; }
 
 	// BW1W120 inlined BW1M119 inlined
 	PieceHorse() {}
@@ -266,16 +266,16 @@ class PiecePig : public Pig
 public:
 	// Override methods
 
-	// BW1W120 0041daa0 BW1M119 0113a190
-	virtual char* GetDebugText();
-	// BW1W120 0041da90 BW1M119 0113a150
-	virtual uint32_t GetSaveType();
-	// BW1W120 0041da70 BW1M119 0113a0d0
-	virtual bool32_t DecideWhatToDo();
 	// BW1W120 0041da60 BW1M119 0113a090
-	virtual uint32_t ProcessNeeds();
+	virtual uint32_t ProcessNeeds() { return 0; }
+	// BW1W120 0041da70 BW1M119 0113a0d0
+	virtual bool32_t DecideWhatToDo() { return true; }
 	// BW1W120 0041da80 BW1M119 0113a110
-	virtual uint32_t CheckNeeds();
+	virtual uint32_t CheckNeeds() { return ANIMAL_NEEDS_NONE; }
+	// BW1W120 0041da90 BW1M119 0113a150
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PIECE_SHEEP; }
+	// BW1W120 0041daa0 BW1M119 0113a190
+	virtual char* GetDebugText() { return "Animal: Pig for Puzzle"; }
 
 	// BW1W120 inlined BW1M119 inlined
 	PiecePig() {}
@@ -294,15 +294,15 @@ public:
 	// Override methods
 
 	// BW1W120 0041d5e0 BW1M119 011372c0
-	virtual bool32_t DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo() { return true; }
 	// BW1W120 0041d5f0 BW1M119 01137300
-	virtual uint32_t ProcessNeeds();
+	virtual uint32_t ProcessNeeds() { return 0; }
 	// BW1W120 0041d600 BW1M119 01137340
-	virtual uint32_t CheckNeeds();
-	// BW1W120 0041d620 BW1M119 011373c0
-	virtual char* GetDebugText();
+	virtual uint32_t CheckNeeds() { return ANIMAL_NEEDS_NONE; }
 	// BW1W120 0041d610 BW1M119 01137380
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PIECE_SHEEP; }
+	// BW1W120 0041d620 BW1M119 011373c0
+	virtual char* GetDebugText() { return "Animal: Sheep for Puzzle"; }
 
 	// BW1W120 inlined BW1M119 0130fc30
 	PieceSheep() {}
@@ -321,15 +321,15 @@ public:
 	// Override methods
 
 	// BW1W120 0041dbf0 BW1M119 01139f50
-	virtual bool32_t DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo() { return true; }
 	// BW1W120 0041dc00 BW1M119 01139f90
-	virtual uint32_t ProcessNeeds();
+	virtual uint32_t ProcessNeeds() { return 0; }
 	// BW1W120 0041dc10 BW1M119 01139fd0
-	virtual uint32_t CheckNeeds();
-	// BW1W120 0041dc30 BW1M119 0113a050
-	virtual char* GetDebugText();
+	virtual uint32_t CheckNeeds() { return ANIMAL_NEEDS_NONE; }
 	// BW1W120 0041dc20 BW1M119 0113a010
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PIECE_SHEEP; }
+	// BW1W120 0041dc30 BW1M119 0113a050
+	virtual char* GetDebugText() { return "Animal: Tortoise for Puzzle"; }
 
 	// BW1W120 inlined BW1M119 inlined
 	PieceTortoise() {}

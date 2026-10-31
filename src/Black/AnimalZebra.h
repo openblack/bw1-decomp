@@ -37,10 +37,10 @@ public:
 	virtual uint32_t LandedAnimation();
 	// BW1W120 0041ccc0 BW1M119 01176ca0
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 0041d910 BW1M119 0117a010
-	virtual char* GetDebugText();
 	// BW1W120 0041d900 BW1M119 01179fe0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ZEBRA; }
+	// BW1W120 0041d910 BW1M119 0117a010
+	virtual char* GetDebugText() { return "Animal: Zebra"; }
 	// BW1W120 0041cc30 BW1M119 01176da0
 	virtual uint32_t StandAnimation();
 

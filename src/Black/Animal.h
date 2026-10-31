@@ -87,11 +87,33 @@ public:
 	JustMapXZ      EnvironmentPos;
 	uint8_t        DeathReason;
 	Zoomer         AngleZoomer;
-	LHPTR<Object>  LandedOn;
-	float          field_0x144;
+#ifdef VERSION_BW1WCI
+	uint32_t ScriptULData1;
+	uint32_t ScriptULData2;
+#endif
+	LHPTR<Object> LandedOn;
+	float         field_0x144;
 
 	// Override methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00417b00 BW1M119 null
+	virtual bool CreatureIsleVirtual0x4f0();
+	// BW1WCI 00417b10 BW1M119 null
+	virtual void CreatureIsleVirtual0x4fc(uint32_t flag);
+	// BW1WCI 00417a40 BW1M119 null
+	virtual int GetSpeed() const;
+	// BW1WCI 00418030 BW1M119 null
+	virtual uint32_t GetScriptULData1();
+	// BW1WCI 00418040 BW1M119 null
+	virtual void SetScriptULData1(unsigned long data);
+	// BW1WCI 00418050 BW1M119 null
+	virtual uint32_t GetScriptULData2();
+	// BW1WCI 00418060 BW1M119 null
+	virtual void SetScriptULData2(unsigned long data);
+	// BW1WCI 0041c8f0 BW1M119 null
+	virtual bool32_t CreatureIsleVirtual0xb54(uint32_t state, uint32_t other_state);
+#endif
 	// BW1W120 0041a9f0 BW1M119 0116f250
 	virtual bool32_t MoveInFlock();
 	// BW1W120 0041a0a0 BW1M119 011703a0

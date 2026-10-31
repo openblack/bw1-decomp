@@ -64,7 +64,7 @@ Black/Alignment.cpp:
 
 Black/Animal.cpp:
 	.text       start:0x00416C80 end:0x0041BD20
-	.rdata      start:0x008B0744 end:0x008B1428
+	.rdata      start:0x008B0744 end:0x008B2050
 	.CRT$XCU    start:0x00A46090 end:0x00A460A4 align:4
 	.data       start:0x00A48D58 end:0x00A48FA0
 	.bss        start:0x00CCDF60 end:0x00CD5C40
@@ -72,20 +72,20 @@ Black/Animal.cpp:
 Black/AnimalAnimation.cpp:
 	.text       start:0x0041BD20 end:0x0041D080
 	.CRT$XCU    start:0x00A460A4 end:0x00A460A8 align:4
-	.data       start:0x00A48FA0 end:0x00A48FF0
+	.data       start:0x00A48FA0 end:0x00A48FD0
 
 Black/AnimalCow.cpp:
 	.text       start:0x0041D080 end:0x0041DCA0
-	.rdata      start:0x008B1428 end:0x008B9A14
+	.rdata      start:0x008B2050 end:0x008BA63C
 	.CRT$XCU    start:0x00A460A8 end:0x00A460B0 align:4
-	.data       start:0x00A48FF0 end:0x00A49204
+	.data       start:0x00A48FD0 end:0x00A491E0
 	.bss        start:0x00CD5C40 end:0x00CD5C44
 
 Black/AnimalDove.cpp:
 	.text       start:0x0041DCA0 end:0x0041FBE0
-	.rdata      start:0x008B9A14 end:0x008C07F8
+	.rdata      start:0x008BA63C end:0x008C07F8
 	.CRT$XCU    start:0x00A460B0 end:0x00A460BC align:4
-	.data       start:0x00A49204 end:0x00A493A8
+	.data       start:0x00A491E0 end:0x00A493A8
 	.bss        start:0x00CD5C44 end:0x00CD5C4C
 
 Black/AnimalLeopard.cpp:

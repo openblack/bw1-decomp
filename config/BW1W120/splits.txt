@@ -72,20 +72,20 @@ Black/Animal.cpp:
 Black/AnimalAnimation.cpp:
 	.text       start:0x0041BD20 end:0x0041D080
 	.CRT$XCU    start:0x009C60A4 end:0x009C60A8 align:4
-	.data       start:0x009C8F40 end:0x009C8F88
+	.data       start:0x009C8F40 end:0x009C8F68
 
 Black/AnimalCow.cpp:
 	.text       start:0x0041D080 end:0x0041DCA0
 	.rdata      start:0x008AD050 end:0x008B563C
 	.CRT$XCU    start:0x009C60A8 end:0x009C60B0 align:4
-	.data       start:0x009C8F88 end:0x009C9194
+	.data       start:0x009C8F68 end:0x009C9170
 	.bss        start:0x00C54D00 end:0x00C54D04
 
 Black/AnimalDove.cpp:
 	.text       start:0x0041DCA0 end:0x0041FBE0
 	.rdata      start:0x008B563C end:0x008BC428
 	.CRT$XCU    start:0x009C60B0 end:0x009C60BC align:4
-	.data       start:0x009C9194 end:0x009C9330
+	.data       start:0x009C9170 end:0x009C9330
 	.bss        start:0x00C54D04 end:0x00C54D0C
 
 Black/AnimalLeopard.cpp:

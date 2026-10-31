@@ -38,10 +38,10 @@ public:
 	virtual uint32_t LandedAnimation();
 	// BW1W120 0041cf10 BW1M119 01176670
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 0041db50 BW1M119 01175f60
-	virtual char* GetDebugText();
 	// BW1W120 0041db40 BW1M119 01175f20
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_TORTOISE; }
+	// BW1W120 0041db50 BW1M119 01175f60
+	virtual char* GetDebugText() { return "Animal: Tortoise"; }
 	// BW1W120 0041ce80 BW1M119 01176770
 	virtual uint32_t StandAnimation();
 
