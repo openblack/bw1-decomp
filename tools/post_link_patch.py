@@ -627,6 +627,7 @@ def copy_run(source):
 # addresses; each call is restored over nops of its own length, and rows are skipped
 # where it is already present (the owning unit is still linked from its split object).
 BW1W120_SAFEDISC_CALLS = (
+    (0x0041D4CA, call_indirect(0x008A9978)),  # AnimalCow: __imp__CoFileTimeToDosDateTime@12
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
     (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
@@ -830,6 +831,33 @@ BW1W120_SAFEDISC_CALLS = (
 # boundary ends in a `jmp` back to the start of an earlier run (see `jmp_run`), or repeats
 # the bytes in front of one (see `copy_run`).
 BW1W130_SAFEDISC_CALLS = (
+    (0x0041D0AA, copy_run(0x0041CF56)),  # AnimalCow
+    (0x0041D118, jmp_run(0x0041D0A3)),  # AnimalCow
+    (0x0041D148, copy_run(0x0041D118)),  # AnimalCow
+    (0x0041D271, jmp_run(0x0041D143)),  # AnimalCow
+    (0x0041D308, copy_run(0x0041D271)),  # AnimalCow
+    (0x0041D433, jmp_run(0x0041D308)),  # AnimalCow
+    (0x0041D4CA, call_indirect(0x008AE7BC)),  # AnimalCow
+    (0x0041D546, copy_run(0x0041D4CA)),  # AnimalCow
+    (0x0041D57A, jmp_run(0x0041D546)),  # AnimalCow
+    (0x0041D626, copy_run(0x00401230)),  # AnimalCow
+    (0x0041D65A, jmp_run(0x0041D626)),  # AnimalCow
+    (0x0041D6D6, jmp_run(0x0041D653)),  # AnimalCow
+    (0x0041D70A, copy_run(0x0041D6D6)),  # AnimalCow
+    (0x0041D786, copy_run(0x00401230)),  # AnimalCow
+    (0x0041D7BA, jmp_run(0x0041D786)),  # AnimalCow
+    (0x0041D866, copy_run(0x00401230)),  # AnimalCow
+    (0x0041D89A, jmp_run(0x0041D866)),  # AnimalCow
+    (0x0041D916, jmp_run(0x0041D893)),  # AnimalCow
+    (0x0041D94A, copy_run(0x0041D916)),  # AnimalCow
+    (0x0041D9C6, copy_run(0x00401230)),  # AnimalCow
+    (0x0041D9FA, jmp_run(0x0041D9C6)),  # AnimalCow
+    (0x0041DAA6, copy_run(0x00401230)),  # AnimalCow
+    (0x0041DADA, jmp_run(0x0041DAA6)),  # AnimalCow
+    (0x0041DB56, jmp_run(0x0041DAD3)),  # AnimalCow
+    (0x0041DB8A, copy_run(0x0041DB56)),  # AnimalCow
+    (0x0041DC36, jmp_run(0x0041DB83)),  # AnimalCow
+    (0x0041DC6A, copy_run(0x0041DC36)),  # AnimalCow
     (0x00426B13, jmp_run(0x00426AB7)),  # Audio
     (0x00426B3B, call_rel32(0x00403C49)),  # Audio
     (0x00426B75, jmp_run(0x00426B3B)),  # Audio

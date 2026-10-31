@@ -178,6 +178,10 @@ public:
 
 	// Override methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 004f4200 BW1M119 null
+	virtual bool32_t CanBePickedUpByCreature(Creature* creature);
+#endif
 	// BW1W120 005ec0a0 BW1M119 0138b460
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 004172d0 BW1M119 01006720

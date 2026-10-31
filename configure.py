@@ -736,7 +736,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Animal.cpp"),
             GameCodeObject(NonMatching, "Black/AnimalAnimation.cpp"),
             GameCodeObject(NonMatching, "Black/AnimalBat.cpp"),
-            GameCodeObject(NonMatching, "Black/AnimalCow.cpp"),
+            GameCodeObject(Matching, "Black/AnimalCow.cpp"),
             GameCodeObject(NonMatching, "Black/AnimalCrow.cpp"),
             GameCodeObject(NonMatching, "Black/AnimalDove.cpp"),
             GameCodeObject(NonMatching, "Black/AnimalGoat.cpp"),

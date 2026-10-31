@@ -26,7 +26,13 @@ public:
 	// BW1W120 0041d4a0 BW1M119 0117b370
 	virtual bool32_t StartToEat();
 	// BW1W120 0041d0e0 BW1M119 01137400
-	virtual bool32_t IsOkToBeShepherd();
+	virtual bool32_t IsOkToBeShepherd() { return true; }
+	// BW1W120 0041d0f0 BW1M119 0117ad70
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_COW; }
+	// BW1W120 0041d100 BW1M119 0117ada0
+	virtual char* GetDebugText() { return "Animal: Cow"; }
+	// BW1W120 0041d110 BW1M119 01137440
+	virtual bool32_t IsCow(Creature* creature) { return true; }
 	// BW1W120 0041d310 BW1M119 0106ad70
 	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalNeeds();
 	// BW1W120 0041d440 BW1M119 0106b4d0
@@ -51,12 +57,6 @@ public:
 	virtual uint32_t LandedAnimation();
 	// BW1W120 0041c810 BW1M119 011778f0
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 0041d100 BW1M119 0117ada0
-	virtual char* GetDebugText();
-	// BW1W120 0041d0f0 BW1M119 0117ad70
-	virtual uint32_t GetSaveType();
-	// BW1W120 0041d110 BW1M119 01137440
-	virtual bool32_t IsCow(Creature* creature);
 	// BW1W120 0041d1b0 BW1M119 010113b0
 	virtual int DecideWhatToDo();
 
