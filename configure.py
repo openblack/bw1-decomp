@@ -1788,6 +1788,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/Route.cpp", progress_category="sdk"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DOrientSprite.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Glow.cpp"),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DZSorter.cpp", extra_cflags=["/Gy"] if config.version == "BW1W100" else [], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DStorm.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSprite.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMath.cpp"),

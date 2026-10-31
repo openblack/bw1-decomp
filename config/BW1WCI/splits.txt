@@ -3783,6 +3783,10 @@ Lionhead/LH3DLib/development/Glow.cpp:
 	.text       start:0x0085AE30 end:0x0085BBD0
 	.text$x     start:0x008D3270 end:0x008D3290 align:4
 
+Lionhead/LH3DLib/development/LH3DZSorter.cpp:
+	.text       start:0x0085C990 end:0x0085CAA0
+	.bss        start:0x00F626B0 end:0x00F6E6BC align:8
+
 Lionhead/LH3DLib/development/LH3DStorm.cpp:
 	.text       start:0x0085CBC0 end:0x0085DB80
 	.text$x     start:0x008D3290 end:0x008D32D0 align:4
