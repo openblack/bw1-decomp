@@ -40,9 +40,9 @@ public:
 	// BW1W120 00461220 BW1M119 011b26c0
 	virtual bool32_t CanPlayerGestureWhenCameraMoving() { return false; }
 #ifdef VERSION_BW1WCI
-	// BW1WCI 004690f0 BW1M119 null
+	// BW1WCI 004690f0 BW1MCI119 011c7760
 	virtual bool32_t IsScriptedMode() { return true; }
-	// BW1WCI 00469100 BW1M119 null
+	// BW1WCI 00469100 BW1MCI119 011c77a0
 	virtual bool32_t IsCameraModeScript() { return true; }
 #endif
 	// BW1W120 00461230 BW1M119 011b2720

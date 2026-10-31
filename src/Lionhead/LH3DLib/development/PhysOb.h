@@ -192,7 +192,7 @@ struct PhysOb
 	// BW1W120 007fe260 BW1M119 01082a10 (LHCombined Release)
 	int UpdateMotion();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00818500 BW1M119 null
+	// BW1WCI 00818500 BW1MCI119 null
 	void SetRestSpeedMultiplier(float multiplier);
 #endif
 };

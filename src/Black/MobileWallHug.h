@@ -123,7 +123,7 @@ public:
 	// BW1W120 0060ad60 BW1M119 0104d590
 	virtual bool32_t AreWeThere(const MapCoords& coords, float extra_distance);
 #ifdef VERSION_BW1WCI
-	// BW1W120 0060ad40 BW1WCI 006239e0 BW1M119 01061c20
+	// BW1WCI 006239e0 BW1MCI119 01063380
 	virtual bool32_t AreWeThere(float extra_distance);
 #endif
 	// BW1W120 00416f70 BW1M119 0104ac10

@@ -356,7 +356,7 @@ public:
 	// BW1W120 00401830 BW1M119 01574ee0
 	virtual bool32_t IsCreature(Creature* creature) { return false; }
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00401830 BW1M119 null
+	// BW1WCI 00401830 BW1MCI119 011badb0
 	virtual bool32_t CreatureIsleVirtual0x38(uint32_t param_1) { return false; }
 #endif
 	// BW1W120 00401840 BW1M119 01480930
@@ -370,7 +370,7 @@ public:
 	// BW1W120 0056ff10 BW1M119 01387ea0
 	virtual Town* GetTown();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00401870 BW1M119 null
+	// BW1WCI 00401870 BW1MCI119 010c7a60
 	virtual bool CreatureIsleVirtual0x50() { return false; }
 #endif
 	// BW1W120 00401870 BW1M119 01575490
@@ -388,7 +388,7 @@ public:
 	// BW1W120 00405150 BW1M119 01502990
 	virtual float Get2DRadius();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 004018b0 BW1M119 null
+	// BW1WCI 004018b0 BW1MCI119 011e4d30
 	virtual void CreatureIsleVirtual0x70(uint32_t param_1) {}
 #endif
 	// BW1W120 004018a0 BW1M119 01187f90
@@ -467,7 +467,7 @@ public:
 	// BW1W120 00405250 BW1M119 013e3d10
 	virtual void ResolveLoad();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 004051f0 BW1M119 null
+	// BW1WCI 004051f0 BW1MCI119 010dcb70
 	virtual void CreatureIsleVirtual0x108();
 #endif
 

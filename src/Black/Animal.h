@@ -97,21 +97,21 @@ public:
 	// Override methods
 
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00417b00 BW1M119 null
+	// BW1WCI 00417b00 BW1MCI119 0114beb0
 	virtual bool CreatureIsleVirtual0x4f0();
-	// BW1WCI 00417b10 BW1M119 null
+	// BW1WCI 00417b10 BW1MCI119 0114bf00
 	virtual void CreatureIsleVirtual0x4fc(uint32_t flag);
-	// BW1WCI 00417a40 BW1M119 null
+	// BW1WCI 00417a40 BW1MCI119 010073a0
 	virtual int GetSpeed() const;
-	// BW1WCI 00418030 BW1M119 null
+	// BW1WCI 00418030 BW1MCI119 0114aa10
 	virtual uint32_t GetScriptULData1();
-	// BW1WCI 00418040 BW1M119 null
+	// BW1WCI 00418040 BW1MCI119 0114aa50
 	virtual void SetScriptULData1(unsigned long data);
-	// BW1WCI 00418050 BW1M119 null
+	// BW1WCI 00418050 BW1MCI119 0114aa90
 	virtual uint32_t GetScriptULData2();
-	// BW1WCI 00418060 BW1M119 null
+	// BW1WCI 00418060 BW1MCI119 0114aad0
 	virtual void SetScriptULData2(unsigned long data);
-	// BW1WCI 0041c8f0 BW1M119 null
+	// BW1WCI 0041c8f0 BW1MCI119 011826a0
 	virtual bool32_t CreatureIsleVirtual0xb54(uint32_t state, uint32_t other_state);
 #endif
 	// BW1W120 0041a9f0 BW1M119 0116f250
@@ -434,11 +434,11 @@ public:
 	// BW1W120 0041b1f0 BW1M119 01034ef0
 	void DebugShowText();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 0041c950 BW1M119 null
+	// BW1WCI 0041c950 BW1MCI119 01182580
 	bool32_t SaveScriptPos(GameOSFile& file);
-	// BW1WCI 0041c9f0 BW1M119 null
+	// BW1WCI 0041c9f0 BW1MCI119 01182470
 	bool32_t LoadScriptPos(GameOSFile& file);
-	// BW1WCI 0041c8e0 BW1M119 null
+	// BW1WCI 0041c8e0 BW1MCI119 01182750
 	uint32_t ScriptAnimation();
 #endif
 

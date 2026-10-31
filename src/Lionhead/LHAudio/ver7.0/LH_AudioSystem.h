@@ -458,7 +458,7 @@ static_assert(sizeof(LH_AudioSystem) == 0x1ec, "Data type is of wrong size");
 LH_AUDIO_API long* LHFindAttribRow(long* key, long* base, long width, long depth);
 
 #ifdef VERSION_BW1WCI
-// BW1WCI 1001f5b0 BW1M119 null
+// BW1WCI 1001f5b0 BW1MCI119 null
 void LHRedirectFileAccess();
 #endif
 

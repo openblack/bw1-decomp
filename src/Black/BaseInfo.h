@@ -45,12 +45,12 @@ public:
 	// Constructors
 
 #ifdef VERSION_BW1WCI
-	// BW1WCI 0043a330 BW1M119 null
+	// BW1WCI 0043a330 BW1MCI119 015dff00
 	GBaseInfo();
 
 	// Destructors
 
-	// BW1WCI 0043a370 BW1M119 null
+	// BW1WCI 0043a370 BW1MCI119 011b9c20
 	virtual ~GBaseInfo();
 #else
 	// BW1W120 0042e5e0 BW1M119 010affb0
@@ -60,7 +60,7 @@ public:
 	// Non-virtual methods
 
 #ifdef VERSION_BW1WCI
-	// BW1WCI 0043a400 BW1M119 null
+	// BW1WCI 0043a400 BW1MCI119 01191e20
 	void SetInfoID(unsigned long id);
 #endif
 	// BW1W120 00436bd0 BW1M119 01519580

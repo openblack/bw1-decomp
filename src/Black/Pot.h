@@ -156,7 +156,7 @@ public:
 	// Static methods
 
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00681f30 BW1M119 null
+	// BW1WCI 00681f30 BW1MCI119 011387e0
 	static Pot* Create(const MapCoords& coords, const GPotInfo* info, unsigned long resource, MultiMapFixed* parent,
 	                   Town* town, int param_6, float y_angle, float scale, bool32_t from_building_site,
 	                   int param_10 = 0);

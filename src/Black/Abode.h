@@ -103,7 +103,7 @@ public:
 	// BW1W120 00404520 BW1M119 011771d0
 	virtual bool32_t MoveAbodeToPlannedAbodes();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00404660 BW1M119 null
+	// BW1WCI 00404660 BW1MCI119 010ada00
 	virtual void CreatePlannedAbode(Abode* abode);
 #endif
 	// BW1W120 00403f00 BW1M119 01418d70

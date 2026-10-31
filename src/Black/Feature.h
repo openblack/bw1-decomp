@@ -61,12 +61,12 @@ public:
 	// BW1W120 005275b0 BW1M119 010d57e0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 #ifdef VERSION_BW1WCI
-	// BW1WCI 0053c520 BW1M119 null
+	// BW1WCI 0053c520 BW1MCI119 010e61f0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1WCI 0053c630 BW1M119 null
+	// BW1WCI 0053c630 BW1MCI119 010e5b10
 	virtual void AddToRoutePlan(RPHolder* holder, Creature* creature, bool32_t update,
 	                            void(__cdecl* add_function)(int, Point2D, float, int));
-	// BW1WCI 0053c5b0 BW1M119 null
+	// BW1WCI 0053c5b0 BW1MCI119 010e6110
 	virtual float GetRoutePlanRadius(Creature* creature);
 #endif
 

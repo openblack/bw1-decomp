@@ -136,7 +136,7 @@ public:
 	// BW1W120 0079a800 BW1M119 015453c0
 	virtual void OnEnterRoom();
 #ifdef VERSION_BW1WCI
-	// BW1WCI 0079a1d0 BW1M119 null
+	// BW1WCI 0079a1d0 BW1MCI119 01130e90
 	virtual void DrawPostDoor() {}
 #endif
 
@@ -169,7 +169,7 @@ public:
 	// BW1W120 0079a640 BW1M119 01545710
 	static void AddNewLine(wchar_t* text);
 #ifdef VERSION_BW1WCI
-	// BW1WCI 007b3120 BW1M119 null
+	// BW1WCI 007b3120 BW1MCI119 0157c280
 	static void AddText(wchar_t* text, unsigned long help_text, unsigned long param_3, Creature* creature = NULL);
 #else
 	// BW1W120 0079a910 BW1M119 01549350
