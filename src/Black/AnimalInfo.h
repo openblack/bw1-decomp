@@ -18,7 +18,8 @@ class GObjectInfo;
 class GAnimalInfo : public GLivingInfo
 {
 public:
-	uint8_t  field_0x1f4[0x18];
+	bool32_t IsHarderThanCreature;
+	uint8_t  field_0x1f8[0x14];
 	int32_t  HungerThreshold;
 	uint8_t  field_0x210[0x4];
 	int32_t  TirednessThreshold;
@@ -46,7 +47,7 @@ public:
 	// BW1W120 inlined BW1M119 01175730
 	static GAnimalInfo* GetInfo() { return Infos; }
 
-	INFO_DATA_BLOCK(field_0x1f4, field_0x238)
+	INFO_DATA_BLOCK(IsHarderThanCreature, field_0x238)
 	INFO_DERIVED_LOADERS(GLivingInfo, "Animal.h", 72)
 };
 

@@ -15,6 +15,9 @@ class CellBox;
 // Drawn first, ahead of the enabled categories, and skipped among them.
 #define GDEBUG_FIRST_DRAWN_CATEGORY 6
 
+// BW1W120 008d729c BW1M119 015f9230
+extern const char ObjectTypeNames[][64];
+
 struct GDebug
 {
 	LHTimer  field_0x0;
