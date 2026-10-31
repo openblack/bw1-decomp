@@ -915,7 +915,7 @@ void LH3DAtmos::Render3D()
 	needsnowupdate = false;
 	bool32_t      rainPrepared = rc == NULL;
 	bool32_t      snowPrepared = sc == NULL;
-	unsigned long colour = ((LH3DSky::topcol >> 1) & 0x7f7f7f) + RGB_MAKE(0x7f, 0x7f, 0x7f);
+	unsigned long colour = ((LH3DSky::topcol.GetColor() >> 1) & 0x7f7f7f) + RGB_MAKE(0x7f, 0x7f, 0x7f);
 	LandBlock*    block;
 	for (block = LandBlock::g_first_sorting; block != NULL; block = block->Next)
 	{
@@ -969,7 +969,7 @@ void LH3DAtmos::Render3D()
 				{
 					if (!snowPrepared)
 					{
-						sc->PrepareForDraw(LH3DSky::topcol);
+						sc->PrepareForDraw(LH3DSky::topcol.GetColor());
 						snowPrepared = true;
 						needsnowupdate = true;
 					}

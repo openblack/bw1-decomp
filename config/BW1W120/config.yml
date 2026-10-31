@@ -113,6 +113,9 @@ block_relocations:
   - source: 0x0040C26D
   - source: 0x0040C2FE
   - source: 0x0040CD4B
+
+# Sky: sun tint is a packed colour immediate.
+  - source: 0x0086BC60
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x0080B652
 add_relocations:
@@ -136,6 +139,64 @@ add_relocations:
   - source: 0x00882623
     type: x86_abs32
     target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+# LHMatrix copy: original callers pass source in EDX and destination in ECX.
+  - source: 0x005FED95
+    type: x86_rel32
+    target: '?Set@LHMatrix@@QAIXABU1@@Z'
+  - source: 0x0068DCD2
+    type: x86_rel32
+    target: '?Set@LHMatrix@@QAIXABU1@@Z'
+  - source: 0x0068DD3D
+    type: x86_rel32
+    target: '?Set@LHMatrix@@QAIXABU1@@Z'
+  - source: 0x0086AEC7
+    type: x86_rel32
+    target: '?Set@LHMatrix@@QAIXABU1@@Z'
+
+# Sky: absolute data operands, array ends and ConvertTime switch destinations.
+  - source: 0x0086A0DB
+    type: x86_abs32
+    target: '__real@4@4002c000000000000000'
+  - source: 0x00869C1F
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x00869CB2
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x0086A7A5
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x0086A7D0
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x0086B987
+    type: x86_abs32
+    target: '?sky_texture@@3PAPAULH3DTexture@@A'
+    addend: 0xC
+  - source: 0x0086A0FC
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD3
+  - source: 0x0086A100
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD9
+  - source: 0x0086A104
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xE9
+  - source: 0x0086A108
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xF9
+  - source: 0x0086A10C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0x109
+
 # libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
   - source: 0x0089EA80
     type: x86_abs32

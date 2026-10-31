@@ -972,7 +972,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/FishFarm.cpp"),
             GameCodeObject(NonMatching, "Black/FishFarmInfo.cpp"),
             # EndPhysics passes a 16-byte member-function pointer to MapCoords::FindObject.
-            GameCodeObject(Matching, "Black/Fixed.cpp", extra_cflags=["/vmg"], pch=False),
+            GameCodeObject(Matching, "Black/Fixed.cpp", extra_cflags=["/vmg"]),
             GameCodeObject(NonMatching, "Black/Flock.cpp"),
             GameCodeObject(NonMatching, "Black/Flower.cpp"),
             GameCodeObject(NonMatching, "Black/FlowersInfo.cpp"),
@@ -1473,7 +1473,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/WorshipSpell.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpellIcon.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipTotem.cpp", pch=False),
-            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/WorldRoom.cpp", pch=PCH_PENDING),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/WorldRoom.cpp"),
             GameCodeObject(NonMatching, "Black/WorldRoomCamera.cpp"),
 
             # Contains SSE instructions, could be result of compiling with intel compiler
@@ -1813,12 +1813,13 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DHair.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Leash.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DObjectCollide.cpp"),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPrimitive.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPrimitive.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DVRAMTex.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/RPFollow.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LHLib/ver5.0/RPAvoid.cpp", extra_cflags=cflags_route_planner, pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSky.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LHLib/ver5.0/RPlan.cpp", extra_cflags=["/GX", *cflags_route_planner], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DSubMesh.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/SRTextured.cpp", pch=True),

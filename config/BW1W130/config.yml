@@ -129,6 +129,37 @@ block_relocations:
 # HelpDude::Draw's evil smoke tint 0x7F1F1F is an immediate, not a pointer into LHDraw::ScaledSprite24.
   - source: 0x005C41F6
 
+# LH3DSky: packed sun tint is an immediate.
+  - source: 0x00870DE0
+
+# LH3DSky: packed colours and RGB masks are immediate values, not addresses.
+  - source: 0x0086EA86
+  - source: 0x0086EA8E
+  - source: 0x0086EACE
+  - source: 0x0086EB60
+  - source: 0x0086EB68
+  - source: 0x0086EBA5
+  - source: 0x0086EBE3
+  - source: 0x0086EBEB
+  - source: 0x0086EC2B
+  - source: 0x0086EDBE
+  - source: 0x0086EDC3
+  - source: 0x0086F105
+  - source: 0x0087047D
+  - source: 0x00870485
+  - source: 0x008704C9
+  - source: 0x00870549
+  - source: 0x0087058C
+  - source: 0x008705B2
+  - source: 0x008705E5
+  - source: 0x0087061A
+  - source: 0x0087064B
+  - source: 0x00870650
+  - source: 0x008706C1
+  - source: 0x008706C8
+  - source: 0x0087084B
+  - source: 0x00871378
+
 add_relocations:
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005CC1B2
@@ -946,6 +977,97 @@ add_relocations:
   - source: 0x005C05B6
     type: x86_abs32
     target: '__real@4@3fff8000000000000000'
+
+# LH3DSky: array boundaries, matrix copy and ConvertTime switch destinations.
+  - source: 0x00870047
+    type: x86_rel32
+    target: '?Set@LHMatrix@@QAIXABU1@@Z'
+  - source: 0x0086F25B
+    type: x86_abs32
+    target: '__real@4@4002c000000000000000'
+  - source: 0x0086ED9F
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x0086EE32
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x0086F925
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x0086F950
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x00870B07
+    type: x86_abs32
+    target: '?sky_texture@@3PAPAULH3DTexture@@A'
+    addend: 0xC
+  - source: 0x0086F27C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD3
+  - source: 0x0086F280
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD9
+  - source: 0x0086F284
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xE9
+  - source: 0x0086F288
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xF9
+  - source: 0x0086F28C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0x109
+
+# LH3DSky: shared constants and fog calls resolved from the original instructions.
+  - source: 0x0086EED5
+    type: x86_abs32
+    target: '__real@4@3ff6a3d70a0000000000'
+  - source: 0x0086EF1D
+    type: x86_abs32
+    target: '__real@4@3ff6a3d70a0000000000'
+  - source: 0x0086EFF3
+    type: x86_abs32
+    target: '__real@4@3ffb8888888888888800'
+  - source: 0x0086F0DA
+    type: x86_rel32
+    target: '?SetFogMinMax@LH3DIsland@@SAXMM@Z'
+  - source: 0x0086F0F9
+    type: x86_rel32
+    target: '?SetFogColor@LH3DIsland@@SAXMMMK@Z'
+  - source: 0x0086F4E2
+    type: x86_abs32
+    target: '__real@8@3ff9f5c28f0000000000'
+  - source: 0x0086F581
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x008701BF
+    type: x86_abs32
+    target: '__real@4@4005dc00000000000000'
+  - source: 0x00870335
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x00870977
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x008711B9
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+  - source: 0x008711C8
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+  - source: 0x00871266
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+  - source: 0x0087129A
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
 
 timestamp: "2003-03-06T21:30:42+00:00"
 force_size: 0x008C4000
