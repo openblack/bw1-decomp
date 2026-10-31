@@ -8,6 +8,7 @@
 
 // Forward Declares
 
+class GAnimatedStaticInfo;
 class Base;
 class Creature;
 class GameOSFile;
@@ -23,6 +24,10 @@ struct RPHolder;
 class AnimatedStatic : public Feature
 {
 public:
+	// BW1W120 00421f50 BW1M119 010ab030
+	static AnimatedStatic* Create(const MapCoords& coords, const GAnimatedStaticInfo* info, float y_angle, float scale,
+	                              float param_5, int param_6);
+
 	uint32_t GateType;
 	Object*  GateStones[ANIMATED_STATIC_GATE_STONE_COUNT];
 	uint32_t GateStoneIndices[ANIMATED_STATIC_GATE_STONE_COUNT];

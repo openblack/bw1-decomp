@@ -17,6 +17,7 @@ class Town;
 class Base;
 class GInterfaceStatus;
 class GPlayer;
+class GRewardInfo;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
@@ -28,6 +29,9 @@ class Reward : public MobileObject
 public:
 	// BW1W120 006e6890 BW1M119 01090310
 	static void ProcessList();
+	// BW1W120 006e58c0 BW1M119 01144650
+	static Reward* Create(const MapCoords& coords, const GRewardInfo* info, GPlayer* player, int param_4, float param_5,
+	                      float param_6, Town* town);
 
 	GameThing* field_0x68;
 	GPlayer*   Player;
