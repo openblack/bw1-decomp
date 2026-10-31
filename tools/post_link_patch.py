@@ -706,6 +706,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004F1B5B, call_rel32(0x00401879)),  # CreaturePlan
     (0x004F218B, call_rel32(0x00401879)),  # CreaturePreviousActionContext
     (0x004F231B, call_rel32(0x00401879)),  # CreaturePreviousContext
+    (0x0050AA4B, call_rel32(0x00401879)),  # Creche
+    (0x0050AB3A, call_indirect(0x008A9570)),  # Creche: __imp__db_free_data__YAXPAPAD_Z@4
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
     (0x0052E3FA, call_indirect(0x008A901C)),  # Fixed: __imp__TrackMouseEvent@4
     (0x0052EE0A, call_indirect(0x008A97AC)),  # Fixed: __imp__ShellExecuteA@4
@@ -1169,6 +1171,14 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004F4745, copy_run(0x004F46AB)),  # CreaturePreviousContext
     (0x004F4958, jmp_run(0x004F4743)),  # CreaturePreviousContext
     (0x004F4988, copy_run(0x004F4958)),  # CreaturePreviousContext
+    (0x0050CCD3, jmp_run(0x0050CC71)),  # Creche
+    (0x0050CD19, jmp_run(0x0050CCD3)),  # Creche
+    (0x0050CD86, copy_run(0x0050CD19)),  # Creche
+    (0x0050CDBA, jmp_run(0x0050CD86)),  # Creche
+    (0x0050CDDB, call_rel32(0x00403C49)),  # Creche
+    (0x0050CE53, jmp_run(0x0050CDDB)),  # Creche
+    (0x0050CF13, jmp_run(0x0050CE53)),  # Creche
+    (0x0050CF32, jmp_run(0x0050CF13)),  # Creche
     (0x00530CB3, jmp_run(0x00530C52)),  # Fixed
     (0x00530CDB, call_rel32(0x00403C49)),  # Fixed
     (0x00530D59, jmp_run(0x00530CDB)),  # Fixed

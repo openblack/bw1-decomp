@@ -102,6 +102,10 @@ public:
 	virtual void SetShouldNotBeAddedToPlanned(bool32_t value) { ShouldNotBeAddedToPlanned = value; }
 	// BW1W120 00404520 BW1M119 011771d0
 	virtual bool32_t MoveAbodeToPlannedAbodes();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00404660 BW1M119 null
+	virtual void CreatePlannedAbode(Abode* abode);
+#endif
 	// BW1W120 00403f00 BW1M119 01418d70
 	virtual void DeleteDependancys();
 	// BW1W120 004047e0 BW1M119 013c6f80

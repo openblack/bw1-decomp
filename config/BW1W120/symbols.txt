@@ -6198,6 +6198,7 @@ _$E46 = .text:0x0050A930; // type:function size:0x20 scope:local
 ?ToBeDeleted@Creche@@UAEXH@Z = .text:0x0050AA30; // type:function size:0x1B scope:global
 ?DeleteDependancys@Creche@@UAEXXZ = .text:0x0050AA50; // type:function size:0x80 scope:global
 ?Create@Creche@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z = .text:0x0050AAD0; // type:function size:0x6A scope:global
+?UnreferencedEmptyFunction@Creche@@QAEXH@Z = .text:0x0050AB40; // type:function size:0x3 scope:global
 ?MakeFunctional@Creche@@UAEXXZ = .text:0x0050AB50; // type:function size:0x40 scope:global
 ?ReduceLife@Creche@@UAEMMPAVGPlayer@@@Z = .text:0x0050AB90; // type:function size:0x20 scope:global
 _$E94 = .text:0x0050ABB0; // type:function size:0x20 scope:local

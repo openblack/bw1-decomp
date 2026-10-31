@@ -23,24 +23,22 @@ class Creche : public Abode
 public:
 	// Override methods
 
-	// BW1W120 0050aa00 BW1M119 012a6b20
-	virtual ~Creche();
 	// BW1W120 0050aa30 BW1M119 012a7100
 	virtual void ToBeDeleted(bool32_t delete_now);
-	// BW1W120 0050a9f0 BW1M119 012a6d50
-	virtual char* GetDebugText();
-	// BW1W120 0050a9e0 BW1M119 012a6d10
-	virtual uint32_t GetSaveType();
 	// BW1W120 0050a990 BW1M119 inlined
-	virtual MapCoords GetArrivePos();
+	virtual MapCoords GetArrivePos() { return Pos; }
 	// BW1W120 0050a9b0 BW1M119 012a6c50
-	virtual bool32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* creature) { return false; }
 	// BW1W120 0050a9c0 BW1M119 012a6ca0
-	virtual bool32_t IsStoragePit(Creature* param_1);
+	virtual bool32_t IsStoragePit(Creature* creature) { return false; }
+	// BW1W120 0050a9d0 BW1M119 012a6ce0
+	virtual LH3DObject::ObjectType Get3DType() { return LH3DObject::MORPHABLE; }
+	// BW1W120 0050a9e0 BW1M119 012a6d10
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_CRECHE; }
+	// BW1W120 0050a9f0 BW1M119 012a6d50
+	virtual char* GetDebugText() { return "Creche:"; }
 	// BW1W120 0050ab90 BW1M119 012a6d90
 	virtual float ReduceLife(float value, GPlayer* player);
-	// BW1W120 0050a9d0 BW1M119 012a6ce0
-	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0050aa50 BW1M119 012a6fe0
 	virtual void DeleteDependancys();
 	// BW1W120 0050ab50 BW1M119 012a6df0
@@ -51,6 +49,8 @@ public:
 	// BW1W120 0050a950 BW1M119 inlined
 	Creche(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	       int wood);
+	// BW1W120 0050ab40 BW1M119 null
+	void UnreferencedEmptyFunction(int value);
 
 	// Static methods
 
