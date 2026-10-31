@@ -810,6 +810,12 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005C945B, call_rel32(0x004017F9)),  # HelpSystemQuery
     (0x005C949A, call_indirect(0x008A991C)),  # HelpSystemQuery: __imp__ioctlsocket@4
     (0x005C98DA, call_indirect(0x008A939C)),  # HelpSystemQuery: __imp_?GetModuleChecksum@LHVersion@@SAKXZ
+    (0x005E79DB, call_rel32(0x004017F9)),  # LHInetWeather
+    (0x005E7AAB, call_rel32(0x004017F9)),  # LHInetWeather
+    (0x005E7FAA, call_indirect(0x008A9328)),  # LHInetWeather: __imp_LHEditBox...
+    (0x005E8C5B, call_rel32(0x004017F9)),  # LHInetWeather
+    (0x005E93EB, call_rel32(0x004017F9)),  # LHInetWeather
+    (0x005E96CA, call_indirect(0x008A901C)),  # LHInetWeather: __imp__TrackMouseEvent@4
     (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
     (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
     (0x0060714B, call_rel32(0x004017F9)),  # MobileObject

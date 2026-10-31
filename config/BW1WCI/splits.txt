@@ -1354,16 +1354,16 @@ Black/LHInetWeather.cpp:
 	.text       start:0x005FFB20 end:0x00602610
 	.rdata      start:0x00982A58 end:0x00982A78
 	.CRT$XCU    start:0x00A36A08 end:0x00A36A0C align:4
-	.data       start:0x00C643E4 end:0x00C6471C
-	.bss        start:0x00D9E730 end:0x00D9EAB8
+	.data       start:0x00C643E4 end:0x00C646EC
+	.bss        start:0x00D9E72C end:0x00D9EA10
 
 Black/LHNetBase.cpp:
 	.text       start:0x00602610 end:0x00603D00
 	.text$x     start:0x008D1610 end:0x008D1620 align:16
 	.rdata      start:0x00982A78 end:0x00982AA8
 	.CRT$XCU    start:0x00A36A0C end:0x00A36A1C align:4
-	.data       start:0x00C6471C end:0x00C647B8
-	.bss        start:0x00D9EAB8 end:0x00D9EAC0
+	.data       start:0x00C646EC end:0x00C647B8
+	.bss        start:0x00D9EA10 end:0x00D9EAC0
 
 Black/Living.cpp:
 	.text       start:0x00603D00 end:0x006078B0

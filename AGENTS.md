@@ -448,7 +448,9 @@ analyses, name evidence and matching notes in your notes folder (see
 - No magic numbers. Name sizes, counts, lengths, ports, timeouts, ids and flags. A value that
   belongs to a real enum is one of its enumerators: the number of entries in `TRIBE_TYPE` is
   `TRIBE_TYPE_LAST`, not a separate constant. Any other standalone constant is a `#define` in the
-  owning header, never an anonymous `enum { ... }` and never new static data. Use existing
+  owning header, never an anonymous `enum { ... }` and never new static data. A one-off char array
+  length (`char name[150]`, `char buffer[200]`) says nothing beyond itself: write the literal, not a
+  `*_LENGTH`/`*_SIZE` define. Where the same buffer's size is needed again, use `sizeof` on it. Use existing
   enums and Win32 names (`INFINITE`, `WAIT_FAILED`, `THREAD_PRIORITY_*`), `sizeof`/`ARRAY_SIZE`
   for repeated sizes, hex for colours and base 10 for line numbers.
 - Full-register true/false values are `bool32_t` (returns, members, parameters, template helpers
@@ -464,6 +466,12 @@ analyses, name evidence and matching notes in your notes folder (see
   `field_0x…` member includes giving it the right type.
 - Never use `__FILE__`, `__LINE__` or `#line`. For debug-new and logging calls define a TU-local
   `#define FILEPATH "C:\\dev\\MP\\..."` holding the binary's exact string and pass a base-10 line literal.
+  Write the code as if the original used `__FILE__`/`__LINE__` and our macros stand in for them. A path
+  naming a `.h` means the call was inlined from that header: define the inline in that header with the
+  header's own path macro and line (both version-guarded, e.g. `GatheringInterface.h`), never as a per-TU override
+  of the full path. The file name's capitalisation comes from the including unit's `#include` spelling (`__FILE__`
+  repeats it), so a unit whose string reads `gatheringinterface.h` writes `#include "gatheringinterface.h"` and
+  defines only the header's include-name macro before it.
 - Boilerplate that recurs identically across modules is a shared macro, not per-file code
   (e.g. the version blocks: `LH_VERSION_INFO` in `LHLog/ver4.0/LHVersion.h`).
 - Shifts and masks in decompiler output are usually how a byte or field access compiled: reading one byte of

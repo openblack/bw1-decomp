@@ -9,20 +9,34 @@
 
 #include "GatheringBox.h" /* For class GatheringBox */
 
-#if defined(VERSION_BW1W100)
-#define GATHERING_INTERFACE_SOURCE_FILE "C:\\dev\\black\\GatheringInterface.h"
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
+#define GATHERING_INTERFACE_SOURCE_DIRECTORY "C:\\dev\\black\\"
 #elif defined(VERSION_BW1W110)
-#define GATHERING_INTERFACE_SOURCE_FILE "C:\\dev\\Black\\GatheringInterface.h"
+#define GATHERING_INTERFACE_SOURCE_DIRECTORY "C:\\dev\\Black\\"
+#elif defined(VERSION_BW1W130)
+#define GATHERING_INTERFACE_SOURCE_DIRECTORY "D:\\Work\\Games\\dd\\Black\\"
 #else
-#define GATHERING_INTERFACE_SOURCE_FILE "C:\\dev\\MP\\Black\\GatheringInterface.h"
+#define GATHERING_INTERFACE_SOURCE_DIRECTORY "C:\\dev\\MP\\Black\\"
 #endif
 
-inline void AddIncomingText(INCOMINGTEXTTYPE type, char16_t* text)
+#ifndef GATHERING_INTERFACE_INCLUDE_NAME
+#define GATHERING_INTERFACE_INCLUDE_NAME "GatheringInterface.h"
+#endif
+
+#define GATHERING_INTERFACE_SOURCE_FILE GATHERING_INTERFACE_SOURCE_DIRECTORY GATHERING_INTERFACE_INCLUDE_NAME
+
+inline IncomingBubbleInfo* AddIncomingText(INCOMINGTEXTTYPE type, char16_t* text)
 {
 	GatheringBox* box = GatheringBox::Instance;
 	box->NumIncoming++;
-	box->IncomingList.AddToEnd(new (GATHERING_INTERFACE_SOURCE_FILE, 282) IncomingBubbleInfo(type, text));
+#if defined(VERSION_BW1W100)
+	IncomingBubbleInfo* info = new (GATHERING_INTERFACE_SOURCE_FILE, 213) IncomingBubbleInfo(type, text);
+#else
+	IncomingBubbleInfo* info = new (GATHERING_INTERFACE_SOURCE_FILE, 282) IncomingBubbleInfo(type, text);
+#endif
+	box->IncomingList.AddToEnd(info);
 	box->UpdateIncomingText();
+	return info;
 }
 
 #endif /* BW1_DECOMP_GATHERING_INTERFACE_INCLUDED_H */
