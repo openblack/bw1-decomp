@@ -26,11 +26,36 @@ CreatureAgenda::CreatureAgenda(Creature* creature, const CreatureInfo* info) : S
 	GameTurnLastPlanDecided = 0;
 }
 
+#ifdef VERSION_BW1WCI
+inline Creature* CreatureAgenda::GetCreature()
+{
+	if (creature == NULL)
+	{
+		for (LHLinkedNode<Creature*>* node = Creature::CreatureList.GetStart(); node != NULL; node = node->next.Get())
+		{
+			Creature* candidate = node->payload;
+			if (&candidate->mind->agenda == this)
+			{
+				creature = candidate;
+				break;
+			}
+		}
+	}
+	return creature;
+}
+#endif
+
 bool32_t CreatureAgenda::ConstructSubActionsFromActionAgenda(CREATURE_ACTION action)
 {
 	SubActionAgenda.ClearSubActionAgenda();
+#ifdef VERSION_BW1WCI
+	GetCreature();
+	bool32_t failed = (this->*ActionTable[action].ConstructSubActions)(ActionTable[action].MagicType);
+	if (!GetCreature()->GoingBackToConfinedArea && SubActionAgenda.GoesOutsideConfinedArea)
+#else
 	bool32_t failed = (this->*ActionTable[action].ConstructSubActions)(ActionTable[action].MagicType);
 	if (!creature->GoingBackToConfinedArea && SubActionAgenda.GoesOutsideConfinedArea)
+#endif
 	{
 		creature->FinishActionUnsuccessfully("outside area", true, true);
 		SubActionAgenda.ClearSubActionAgenda();

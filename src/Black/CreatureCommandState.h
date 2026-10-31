@@ -26,6 +26,11 @@ public:
 	bool32_t                       ForcedByPlayerAction;
 	LHLinkedList<CreatureCommand*> Commands;
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	CreatureCommandState() {}
+
 	// Non-virtual methods
 
 	// BW1W120 004c74e0 BW1M119 01237b60

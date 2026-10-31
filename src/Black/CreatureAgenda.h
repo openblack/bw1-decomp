@@ -66,6 +66,10 @@ public:
 
 	// Non-virtual methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 inlined
+	Creature* GetCreature();
+#endif
 	// BW1W120 004d36a0 BW1M119 0124b7f0
 	bool32_t ConstructSubActionsFromActionAgenda(CREATURE_ACTION action);
 	// BW1W120 004d3760 BW1M119 0124b710
