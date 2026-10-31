@@ -1520,8 +1520,8 @@ Black/LHInetWeather.cpp:
 	.text       start:0x005EB460 end:0x005EDF80
 	.rdata      start:0x009591A8 end:0x009591C8
 	.CRT$XCU    start:0x00A46DD8 end:0x00A46DE0 align:4
-	.data       start:0x00C74050 end:0x00C7439C
-	.bss        start:0x00DA11A0 end:0x00DA1528
+	.data       start:0x00C74050 end:0x00C7436C
+	.bss        start:0x00DA11A0 end:0x00DA1480
 
 Black/LHNetBase.cpp:
 	.text       start:0x005EDF80 end:0x005EF880
@@ -1529,8 +1529,8 @@ Black/LHNetBase.cpp:
 	.rdata      start:0x009591C8 end:0x009591E8
 	.xdata$x    start:0x00A3C578 end:0x00A3C5D0 align:4
 	.CRT$XCU    start:0x00A46DE0 end:0x00A46DF4 align:4
-	.data       start:0x00C7439C end:0x00C74448
-	.bss        start:0x00DA1528 end:0x00DA1530
+	.data       start:0x00C7436C end:0x00C74448
+	.bss        start:0x00DA1480 end:0x00DA1530
 
 Black/Living.cpp:
 	.text       start:0x005EF880 end:0x005F3320

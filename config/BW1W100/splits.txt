@@ -1272,17 +1272,17 @@ Black/LeashStatus.cpp:
 	.text       start:0x005A6220 end:0x005A7020
 
 Black/LHInetWeather.cpp:
-	.text       start:0x005A70A0 end:0x005A9410
+	.text       start:0x005A7040 end:0x005A9410
 	.rdata      start:0x0086919C end:0x008691BC
-	.data       start:0x00B2048C end:0x00B204F4
-	.bss        start:0x00C412D8 end:0x00C41660
+	.data       start:0x00B2048C end:0x00B20654
+	.bss        start:0x00C412D8 end:0x00C415B8
 
 Black/LHNetBase.cpp:
 	.text       start:0x005A9460 end:0x005AAA30
 	.text$x     start:0x007E9420 end:0x007E9430 align:16
 	.xdata$x    start:0x008EE768 end:0x008EE7C0 align:4
 	.CRT$XCU    start:0x008F6984 end:0x008F698C align:4
-	.data       start:0x00B206F8 end:0x00B20720
+	.data       start:0x00B20654 end:0x00B20720
 
 Black/Living.cpp:
 	.text       start:0x005AAA30 end:0x005AE060

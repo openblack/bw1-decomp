@@ -1362,15 +1362,15 @@ Black/LeashStatus.cpp:
 	.rdata      start:0x0091B328 end:0x0091B34C
 
 Black/LevelOfDetail.cpp:
-	.text       start:0x005E27D0 end:0x005E2AD0
+	.text       start:0x005E27D0 end:0x005E2AF0
 	.rdata      start:0x0091B34C end:0x0091B370
 	.data       start:0x00BE2A5C end:0x00BE2AA4
 
 Black/LHInetWeather.cpp:
-	.text       start:0x005E2B50 end:0x005E55C0
+	.text       start:0x005E2AF0 end:0x005E55C0
 	.rdata      start:0x0091B370 end:0x0091B390
-	.data       start:0x00BE2AA4 end:0x00BE2DDC
-	.bss        start:0x00D0EFE0 end:0x00D0F368
+	.data       start:0x00BE2AA4 end:0x00BE2DAC
+	.bss        start:0x00D0EFE0 end:0x00D0F2C0
 
 Black/LHNetBase.cpp:
 	.text       start:0x005E5610 end:0x005E6CB0
@@ -1378,7 +1378,7 @@ Black/LHNetBase.cpp:
 	.rdata      start:0x0091B390 end:0x0091B3C0
 	.xdata$x    start:0x009ABFC0 end:0x009AC018 align:4
 	.CRT$XCU    start:0x009B69CC end:0x009B69D4 align:4
-	.data       start:0x00BE2DDC end:0x00BE2E78
+	.data       start:0x00BE2DAC end:0x00BE2E78
 
 Black/Living.cpp:
 	.text       start:0x005E6CB0 end:0x005EA6F0
