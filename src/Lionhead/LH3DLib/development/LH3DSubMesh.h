@@ -16,12 +16,13 @@ struct SubCollideDataRender;
 struct TShadowInfo;
 
 #define LH3D_BONE_NO_PARENT -1
+#define LH3D_BONE_NONE      -1
 
 struct LH3DBone
 {
 	long     Parent; /* 0x0 */
-	uint32_t field_0x4;
-	uint32_t field_0x8;
+	long     FirstChild;
+	long     NextSibling;
 	LHMatrix Matrix; /* 0xc */
 };
 static_assert(sizeof(LH3DBone) == 0x3c, "Data type is of wrong size");

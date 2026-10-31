@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LH3D_ANIM_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For offsetof */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 #include <stdio.h>  /* For FILE */
 
@@ -107,17 +108,24 @@ enum LH3D_ANIM_FLAGS
 {
 	LH3D_ANIM_FLAG_CYCLIC = 0x100,
 	LH3D_ANIM_FLAG_TIME_BASED = 0x200,
+	LH3D_ANIM_FLAG_CACHED = 0x800,
 };
+
+#define LH3D_ANIM_MIN_DISTANCE        0.05f
+#define LH3D_ANIM_MAX_CACHED_MEMORIES 0x100000
+#define LH3D_ANIM_CACHE_TIMEOUT       10000
 
 struct LH3DAnim
 {
+	struct PackHeader;
+
 	ANM_Name        name;
 	int             Duration;
 	float           field_0x24;
 	float           Distance;
 	LHPoint         Movement;
 	int             NumFrames;
-	int             field_0x3c;
+	int             SubMeshCount;
 	uint8_t         field_0x40;
 	uint8_t         field_0x41;
 	uint8_t         field_0x42;
@@ -126,14 +134,16 @@ struct LH3DAnim
 	LH3DAnimSound*  Sounds;
 	LH3DAnimFrame** ListPtrFrames;
 	uint32_t        Flags;
-	uint32_t        CurrentTimeMaybe;
-	uint32_t        field_0x58;
-	uint32_t        PackIndex2;
+	long            LastUsedTime; /* 0x54 */
+	long            CachedSize;
+	int             IndexInCache;
 
 	// Static data
 
 	// BW1W120 00edd508 BW1M119 011e36d4 (LHCombined Release)
 	static LH3DAnimPack* g_pack;
+	// BW1W120 00edd504 BW1M119 011e36d8 (LHCombined Release)
+	static long g_total_cached_memories;
 
 	// Static methods
 
@@ -193,5 +203,10 @@ struct LH3DAnim
 	// BW1W120 inlined BW1M119 01018c60
 	uint32_t IsCyclic() const { return Flags & LH3D_ANIM_FLAG_CYCLIC; }
 };
+
+#define LH3D_ANIM_CACHED_HEADER_SIZE offsetof(LH3DAnim, LastUsedTime)
+
+// BW1W120 0083ac70 BW1M119 010c0230 (LHCombined Release)
+void SetTransformSpecial(LH3DAnim* anim, LHMatrix* bones, long time, LHMatrix& transform);
 
 #endif /* BW1_DECOMP_LH3D_ANIM_INCLUDED_H */

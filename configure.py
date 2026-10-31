@@ -269,7 +269,8 @@ if config.version == "BW1W100":
     # only caller of Villager::HousewifeAskForMeal. Villager's
     # SetGotoWorshipSpeed and CheckRequestGoHome have no callers in 1.00, so
     # they were dropped too, with the only users of WorshipSite's
-    # GetWorshipSpeed and AddVillagerRequestingToGoHome.
+    # GetWorshipSpeed and AddVillagerRequestingToGoHome. Nothing calls
+    # LH3DAnim::CreateCachedFile, the only user of LHFile::WriteSegment.
     for _dead_function in [
         "?_Nomemory@std@@YAXXZ",
         "?IsNameUsed@PersistentOwner@@QAEHPBD@Z",
@@ -277,6 +278,7 @@ if config.version == "BW1W100":
         "?HousewifeAskForMeal@Villager@@QAEHXZ",
         "?GetWorshipSpeed@WorshipSite@@QAEMXZ",
         "?AddVillagerRequestingToGoHome@WorshipSite@@QAEXPAVVillager@@@Z",
+        "?WriteSegment@LHFile@@QAEIPAULHSegment@@@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
     # bodge_to_force_compilation_of_versions has no callers, so /OPT:REF dropped it
@@ -523,6 +525,9 @@ if config.version == "BW1W100":
 # The route planner units are built like LH3DLib's, with /G6 and its precompiled header, but 1.00
 # links them with function-level linking as well: their unreferenced functions are dropped.
 cflags_route_planner = ["/Gy"] if config.version == "BW1W100" else []
+# So is LH3DAnimation: 1.00 drops its unreferenced functions and folds its Release and
+# SetListPtrFrame onto identical functions of other units.
+cflags_lh3d_animation = ["/GX", "/Gy"] if config.version == "BW1W100" else ["/GX"]
 
 cflags_lhdialog = [
     "/nologo",
@@ -1790,6 +1795,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DText.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/ValueSpinner.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DWeather.cpp", extra_cflags=["/GX"], pch=True),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DAnimation.cpp", extra_cflags=cflags_lh3d_animation, pch=True),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/Route.cpp", progress_category="sdk"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DOrientSprite.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Glow.cpp"),

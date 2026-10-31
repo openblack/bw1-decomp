@@ -3511,6 +3511,13 @@ Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x0078C9F0 end:0x0078CCE0
 	.text$x     start:0x007E9F10 end:0x007E9F30 align:4
 
+Lionhead/LH3DLib/development/LH3DAnimation.cpp:
+	.text       start:0x0078EDE0 end:0x0078FD50
+	.rdata      start:0x008D9820 end:0x008D9828
+	.CRT$XCU    start:0x008F74DC end:0x008F74E0 align:4
+	.data       start:0x00B5B034 end:0x00B5B088
+	.bss        start:0x00DF8238 end:0x00DF82AC
+
 Lionhead/LHLib/ver5.0/Route.cpp:
 	.text       start:0x007901F0 end:0x007917F0
 	.CRT$XCU    start:0x008F74E0 end:0x008F74E8 align:4
