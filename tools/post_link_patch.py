@@ -2416,6 +2416,20 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00835116, jmp_run(0x008350D4)),  # LH3DRender
     (0x00835188, copy_run(0x00835116)),  # LH3DRender
     (0x008351D2, jmp_run(0x00835188)),  # LH3DRender
+    (0x0083EB08, copy_run(0x0083EA0B)),  # LH3DAnimation
+    (0x0083ED44, copy_run(0x0083EB08)),  # LH3DAnimation
+    (0x0083F097, jmp_run(0x0083ED44)),  # LH3DAnimation
+    (0x0083F12B, call_rel32(0x004034F9)),  # LH3DAnimation
+    (0x0083F1A5, copy_run(0x0083F12B)),  # LH3DAnimation
+    (0x0083F2C5, copy_run(0x0083F1A5)),  # LH3DAnimation
+    (0x0083F35A, jmp_run(0x0083F2C5)),  # LH3DAnimation
+    (0x0083F488, copy_run(0x0083F35A)),  # LH3DAnimation
+    (0x0083F611, jmp_run(0x0083F488)),  # LH3DAnimation
+    (0x0083F798, jmp_run(0x0083F611)),  # LH3DAnimation
+    (0x0083F825, copy_run(0x0083F798)),  # LH3DAnimation
+    (0x0083FBBB, call_rel32(0x004034F9)),  # LH3DAnimation
+    (0x0083FCFB, call_rel32(0x004034F9)),  # LH3DAnimation
+    (0x0083FD8A, copy_run(0x0083FCFB)),  # LH3DAnimation
     (0x0084648B, call_rel32(0x004034F9)),  # LH3DMenu
     (0x00846577, jmp_run(0x0084648B)),  # LH3DMenu
     (0x008465BB, call_rel32(0x004034F9)),  # LH3DMenu

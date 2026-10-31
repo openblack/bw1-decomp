@@ -3752,12 +3752,21 @@ Lionhead/LH3DLib/development/ValueSpinner.cpp:
 
 Lionhead/LH3DLib/development/LH3DWeather.cpp:
 	.text       start:0x00823B00 end:0x00827110
-	.text$x     start:0x00897F20 end:0x00897FD0 align:4
+	.text$x     start:0x00897F20 end:0x00897FA0 align:4
 	.rdata      start:0x0099399C end:0x009939D4
 	.xdata$x    start:0x009AEA80 end:0x009AEAB0 align:4
 	.CRT$XCU    start:0x009B7574 end:0x009B7578 align:4
 	.data       start:0x00C27C60 end:0x00C27D04
 	.bss        start:0x00EC7CB8 end:0x00ECBD74 align:8
+
+Lionhead/LH3DLib/development/LH3DAnimation.cpp:
+	.text       start:0x008296D0 end:0x0082ABF0
+	.text$x     start:0x00897FA0 end:0x00897FD0 align:4
+	.rdata      start:0x009939D8 end:0x009939E0
+	.xdata$x    start:0x009AEB10 end:0x009AEB48 align:4
+	.CRT$XCU    start:0x009B757C end:0x009B7580 align:4
+	.data       start:0x00C27E90 end:0x00C27EEC
+	.bss        start:0x00ECBE60 end:0x00ECBED4
 
 Lionhead/LHLib/ver5.0/Route.cpp:
 	.text       start:0x0082B090 end:0x0082C730
@@ -3765,7 +3774,7 @@ Lionhead/LHLib/ver5.0/Route.cpp:
 
 Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
 	.text       start:0x0082C730 end:0x0082CC10
-	.text$x     start:0x00897FD0 end:0x00897FF0 align:4
+	.text$x     start:0x00897FD0 end:0x00897FF0 align:16
 
 Lionhead/LH3DLib/development/Glow.cpp:
 	.text       start:0x0082D560 end:0x0082E300
