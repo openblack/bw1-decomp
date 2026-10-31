@@ -62,36 +62,36 @@ public:
 	virtual float MaintainSpell(uint32_t spell, float amount);
 	// BW1W120 0077f750 BW1M119 015bd440
 	virtual void UpdateSpellInfo(Spell* spell, PSysProcessInfo* info);
+	// BW1W120 0077f090 BW1M119 015bb190
+	virtual WorshipSpellIcon* GetWorshipSpellIcon() { return this; }
+	// BW1W120 0077f0a0 BW1M119 01575730
+	virtual WorshipSite* GetWorshipSite() { return Site.Get(); }
+	// BW1W120 0077f0b0 BW1M119 015bb1d0
+	virtual bool32_t IsEffectReceiver(EffectValues* values) { return false; }
+	// BW1W120 0077f0c0 BW1M119 015bb220
+	virtual float GetPercentForDrawBuilding() { return 0.0f; }
+	// BW1W120 0077f0d0 BW1M119 015bb270
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords) { return 0; }
+	// BW1W120 0077f0e0 BW1M119 015bb2c0
+	virtual float ApplyEffect(EffectValues& values, int) { return 0.0f; }
+	// BW1W120 0077f0f0 BW1M119 015bb310
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WORSHIP_SPELL_ICON; }
 	// BW1W120 0077f100 BW1M119 015bb350
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "WorshipSpellIcon:"; }
 	// BW1W120 007801f0 BW1M119 015bb5a0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0077ff80 BW1M119 015bbb40
 	virtual bool32_t Save(GameOSFile& file);
-	// BW1W120 0077f0f0 BW1M119 015bb310
-	virtual uint32_t GetSaveType();
-	// BW1W120 0077f0a0 BW1M119 01575730
-	virtual WorshipSite* GetWorshipSite();
-	// BW1W120 0077f0e0 BW1M119 015bb2c0
-	virtual float ApplyEffect(EffectValues& param_1, int param_2);
 	// BW1W120 0077f390 BW1M119 015bd9f0
 	virtual uint32_t Process();
 	// BW1W120 0077f290 BW1M119 015bddc0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 0077f0b0 BW1M119 015bb1d0
-	virtual bool32_t IsEffectReceiver(EffectValues* values);
-	// BW1W120 0077f0d0 BW1M119 015bb270
-	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 	// BW1W120 0077fee0 BW1M119 015bc000
 	virtual bool32_t IsBuilt();
-	// BW1W120 0077f0c0 BW1M119 015bb220
-	virtual float GetPercentForDrawBuilding();
 	// BW1W120 0077fca0 BW1M119 015bc540
 	virtual void* GetBuildingObject();
 	// BW1W120 0077fc90 BW1M119 015bc5f0
 	virtual int GetSpellIconPlacementIndex();
-	// BW1W120 0077f090 BW1M119 015bb190
-	virtual WorshipSpellIcon* GetWorshipSpellIcon();
 
 	// Static methods
 
@@ -130,6 +130,8 @@ public:
 	void AddSpell(SpellSeed* seed);
 	// BW1W120 0077f7d0 BW1M119 015bd110
 	void RemoveSpell(SpellSeed* seed);
+	// BW1W120 0077f830 BW1M119 null
+	void UnreferencedEmptyFunction(int value);
 	// BW1W120 0077f840 BW1M119 015bd070
 	float GetChantRequiredForSpellSeed();
 	// BW1W120 0077f880 BW1M119 015bcf60
@@ -172,6 +174,8 @@ public:
 	void StartRemoveFromPlayer();
 	// BW1W120 0077ff40 BW1M119 015bbf70
 	void StopRemoveFromPlayer();
+	// BW1W120 0077ff70 BW1M119 null
+	void UnreferencedEmptyFunction2();
 	// BW1W120 00780480 BW1M119 015bb4a0
 	float GetNumGameTurnsToCreate();
 	// BW1W120 00780510 BW1M119 015bb390

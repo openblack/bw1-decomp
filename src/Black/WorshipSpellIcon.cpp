@@ -20,53 +20,20 @@
 #define FILEPATH "C:\\dev\\black\\WorshipSpellIcon.cpp"
 #elif defined(VERSION_BW1W110)
 #define FILEPATH "C:\\dev\\Black\\WorshipSpellIcon.cpp"
+#elif defined(VERSION_BW1W130)
+#define FILEPATH "D:\\Work\\Games\\dd\\Black\\WorshipSpellIcon.cpp"
+#elif defined(VERSION_BW1WCI)
+#define FILEPATH "C:\\dev\\black\\WorshipSpellIcon.cpp"
 #else
 #define FILEPATH "C:\\dev\\MP\\Black\\WorshipSpellIcon.cpp"
 #endif
 
+static uint32_t UnusedStatic0 = 0;
+static uint32_t UnusedStatic1 = 0;
+
 WorshipSpellIcon::WorshipSpellIcon()
 {
 	SetToZero();
-}
-
-WorshipSpellIcon* WorshipSpellIcon::GetWorshipSpellIcon()
-{
-	return this;
-}
-
-WorshipSite* WorshipSpellIcon::GetWorshipSite()
-{
-	return Site.Get();
-}
-
-bool32_t WorshipSpellIcon::IsEffectReceiver(EffectValues* values)
-{
-	return false;
-}
-
-float WorshipSpellIcon::GetPercentForDrawBuilding()
-{
-	return 0.0f;
-}
-
-uint32_t WorshipSpellIcon::SaveObject(LHOSFile& file, const MapCoords* coords)
-{
-	return 0;
-}
-
-float WorshipSpellIcon::ApplyEffect(EffectValues&, int)
-{
-	return 0.0f;
-}
-
-uint32_t WorshipSpellIcon::GetSaveType()
-{
-	return GAME_THING_TYPE_WORSHIP_SPELL_ICON;
-}
-
-char* WorshipSpellIcon::GetDebugText()
-{
-	return "WorshipSpellIcon:";
 }
 
 WorshipSpellIcon::WorshipSpellIcon(const MapCoords& coords, const GSpellIconInfo* icon_info,
@@ -216,6 +183,9 @@ void WorshipSpellIcon::PlayFullyChargedSoundFX()
 	if (GetPlayer() == GGame::g_game->MyPlayer())
 	{
 		uint32_t sample;
+#ifdef VERSION_BW1WCI
+		bool ci_sample = false;
+#endif
 		switch (GSpellSeedInfo::GetTypeFromInfo(seed_info.Get()))
 		{
 		case SPELL_SEED_TYPE_STORM:
@@ -278,6 +248,16 @@ void WorshipSpellIcon::PlayFullyChargedSoundFX()
 		case SPELL_SEED_TYPE_CREATURE_SPELL_ITCHY:
 			sample = SPELL_DIALOGUE_SAMPLE_CREATURE_SPELL_ITCHY;
 			break;
+#ifdef VERSION_BW1WCI
+		case SPELL_SEED_TYPE_CREATURE_SPELL_ANTI_SPELL:
+			sample = CI_SPELL_DIALOGUE_SAMPLE_CREATURE_SPELL_ANTI_SPELL;
+			ci_sample = true;
+			break;
+		case SPELL_SEED_TYPE_CREATURE_SPELL_FAST:
+			sample = CI_SPELL_DIALOGUE_SAMPLE_CREATURE_SPELL_FAST;
+			ci_sample = true;
+			break;
+#endif
 		case SPELL_SEED_TYPE_TELEPORT:
 			sample = SPELL_DIALOGUE_SAMPLE_ANNOUNCER_VOICE_TELEPORT;
 			break;
@@ -289,7 +269,18 @@ void WorshipSpellIcon::PlayFullyChargedSoundFX()
 			sample = SPELL_DIALOGUE_SAMPLE_ANNOUNCER_VOICE_LIGHTNING;
 			break;
 		}
+#ifdef VERSION_BW1WCI
+		if (!ci_sample)
+		{
+			GGlobal::Global.audio->PlaySoundEffect(NULL, sample, 2, 0, 0, 0, AUDIO_SFX_BANK_TYPE_SPELL_DIALOG);
+		}
+		else
+		{
+			GGlobal::Global.audio->PlaySoundEffect(NULL, sample, 2, 0, 0, 0, AUDIO_SFX_BANK_TYPE_CI_SPELL_DIALOGUE);
+		}
+#else
 		GGlobal::Global.audio->PlaySoundEffect(NULL, sample, 2, 0, 0, 0, AUDIO_SFX_BANK_TYPE_SPELL_DIALOG);
+#endif
 	}
 }
 
@@ -360,6 +351,8 @@ void WorshipSpellIcon::RemoveSpell(SpellSeed* seed)
 	CreatedSpells.Remove(seed);
 	seed->SpellSeedFlags &= ~SPELL_SEED_FLAG_IN_SPELL_ICON_LIST;
 }
+
+void WorshipSpellIcon::UnreferencedEmptyFunction(int value) {}
 
 float WorshipSpellIcon::GetChantRequiredForSpellSeed()
 {
@@ -622,6 +615,8 @@ void WorshipSpellIcon::StopRemoveFromPlayer()
 		RemoveCountdown = 0;
 	}
 }
+
+void WorshipSpellIcon::UnreferencedEmptyFunction2() {}
 
 bool32_t WorshipSpellIcon::Save(GameOSFile& file)
 {

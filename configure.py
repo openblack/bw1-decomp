@@ -1471,7 +1471,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/WorshipSiteUpgrade.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSiteUpgradeInfo.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpell.cpp"),
-            GameCodeObject(NonMatching, "Black/WorshipSpellIcon.cpp"),
+            GameCodeObject(Matching, "Black/WorshipSpellIcon.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipTotem.cpp", pch=False),
             GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/WorldRoom.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/WorldRoomCamera.cpp"),
