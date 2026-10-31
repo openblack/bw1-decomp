@@ -679,6 +679,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004D2A1A, call_indirect(0x008A93CC)),  # CreatureMentalActionTests: __imp___0LHVersion__QAE_PAULHVersionBlock___Z@4
     (0x004D2C7B, call_rel32(0x00401879)),  # CreatureMentalActionTests
     (0x004D342A, call_indirect(0x008A911C)),  # CreatureMentalActionTests: __imp__ImmSetCompositionStringA@4
+    (0x004D34AB, call_rel32(0x00401879)),  # CreatureMentalAgenda
+    (0x004D383B, call_rel32(0x00401879)),  # CreatureMentalAgenda
     (0x004D968B, call_rel32(0x00401879)),  # CreatureMentalBeliefs
     (0x004DA00A, call_indirect(0x008A9944)),  # CreatureMentalBeliefs: __imp__BinkNextFrame@4
     (0x004DA5DA, call_indirect(0x008A9970)),  # CreatureMentalBeliefs: __imp__GetOpenFileNameA@4
@@ -1054,6 +1056,11 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004D5757, jmp_run(0x004D56E7)),  # CreatureMentalActionTests
     (0x004D5793, jmp_run(0x004D5757)),  # CreatureMentalActionTests
     (0x004D57BA, call_indirect(0x008AE3E0)),  # CreatureMentalActionTests
+    (0x004D5813, jmp_run(0x004D57BA)),  # CreatureMentalAgenda
+    (0x004D583B, call_rel32(0x00403C49)),  # CreatureMentalAgenda
+    (0x004D5A25, copy_run(0x004D583B)),  # CreatureMentalAgenda
+    (0x004D5B87, copy_run(0x00472D95)),  # CreatureMentalAgenda
+    (0x004D5BCB, call_rel32(0x00403C49)),  # CreatureMentalAgenda
     (0x004DB9F3, jmp_run(0x004DB994)),  # CreatureMentalBeliefs
     (0x004DBA1B, call_rel32(0x00403C49)),  # CreatureMentalBeliefs
     (0x004DBB84, copy_run(0x004DBA1B)),  # CreatureMentalBeliefs
