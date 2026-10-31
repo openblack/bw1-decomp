@@ -2447,6 +2447,9 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0086E5A1, copy_run(0x0086E514)),  # RPAvoid
     (0x0086E5D2, jmp_run(0x0086E5A1)),  # RPAvoid
     (0x0086E774, jmp_run(0x0086E5D2)),  # RPAvoid
+    (0x00884BE6, copy_run(0x00884B76)),  # LH3DSubMesh
+    (0x00884D09, copy_run(0x00884BE6)),  # LH3DSubMesh
+    (0x00884DC2, copy_run(0x00884D09)),  # LH3DSubMesh
     (0x0089D982, copy_run(0x0089D627)),  # jcapimin
     (0x0089D989, copy_run(0x0089D627)),  # jcapimin
     (0x0089DA63, copy_run(0x0089D982)),  # jcapimin

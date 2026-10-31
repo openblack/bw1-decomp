@@ -1592,7 +1592,7 @@ void LH3DPrimitive::ComputeBoundingBox(LHPoint& maxima, LHPoint& minima, int& in
 	LHPoint point;
 	LHResetFPU();
 	LH3DVertex* vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; i++)
 		{

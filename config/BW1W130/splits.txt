@@ -4174,6 +4174,10 @@ Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.CRT$XCU    start:0x00A47E70 end:0x00A47E78 align:4
 	.bss        start:0x0102637C end:0x0102638C
 
+Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
+	.text       start:0x00884B80 end:0x00884DD0
+	.bss        start:0x0102A574 end:0x0102A57C
+
 jpeg/jcapimin.c:
 	.text       start:0x0089D740 end:0x0089DAE0
 

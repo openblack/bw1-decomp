@@ -1393,7 +1393,7 @@ bool32_t DoesPosIntersectAnyVertices(const LHPoint& pos, float radius, Object* o
 	for (int i = 0; i < numSubmeshes; i++)
 	{
 		LH3DSubMesh* submesh = mesh->submeshes[i];
-		if (submesh->flags_ & 0x20000000)
+		if (submesh->Lod & LH3D_MESH_LOD_NEAR)
 		{
 			// TODO: NumPrimitives is compared signed (jl here, cmpw on Mac); its uint32_t declaration is probably wrong.
 			for (int j = 0; j < (int)submesh->NumPrimitives; j++)
