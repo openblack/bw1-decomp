@@ -675,8 +675,13 @@ public:
 
 	// Static methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0047eda0 BW1MCI119 011feaf0
+	static Creature* Create(const MapCoords& coords, const CreatureInfo* info, GPlayer* player, bool32_t param_4);
+#else
 	// BW1W120 00474a20 BW1M119 011e7440
 	static Creature* Create(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
+#endif // VERSION_BW1WCI
 	// BW1W120 00474b50 BW1M119 011e7370
 	static Creature* CreateCreature(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
 	// BW1W120 0047cbd0 BW1M119 011d8360
@@ -693,8 +698,13 @@ public:
 
 	// BW1W120 00474690 BW1M119 011e7610
 	Creature();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0047de00 BW1MCI119 01200170
+	Creature(const MapCoords& coords, const CreatureInfo* info, GPlayer* player, bool32_t param_4);
+#else
 	// BW1W120 00473b90 BW1M119 011e8a20
 	Creature(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
+#endif // VERSION_BW1WCI
 
 	// Non-virtual methods
 
@@ -710,8 +720,13 @@ public:
 	void TrappedInEnclosedSpace(unsigned long num_objects, Object** objects);
 	// BW1W120 00477850 BW1M119 011e26b0
 	LH3DCreature* GetCreature3D();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0047e610 BW1MCI119 011ffa60
+	void Initialise(const MapCoords& coords, const CreatureInfo* info, GPlayer* player, bool32_t param_4);
+#else
 	// BW1W120 00474350 BW1M119 011e8360
 	void Initialise(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
+#endif // VERSION_BW1WCI
 	// BW1W120 00477210 BW1M119 011e3040
 	void Update3DCreatureFromAttributes();
 	// BW1W120 0047d2f0 BW1M119 011d7820

@@ -102,7 +102,11 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
+#ifdef VERSION_BW1WCI
+	CreatureBeliefs(bool32_t param_1) { Initialise(param_1); }
+#else
 	CreatureBeliefs() { Initialise(); }
+#endif // VERSION_BW1WCI
 
 	// Override methods
 
@@ -111,8 +115,13 @@ public:
 
 	// Non-virtual methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 004e9610 BW1MCI119 01271e10
+	void Initialise(bool32_t param_1);
+#else
 	// BW1W120 004d8ea0 BW1M119 01255240
 	void Initialise();
+#endif // VERSION_BW1WCI
 	// BW1W120 004d8af0 BW1M119 01256740
 	uint32_t GetNumBeliefsAboutType(CREATURE_BELIEF_TYPE type);
 	// BW1W120 004c7c60 BW1M119 null
