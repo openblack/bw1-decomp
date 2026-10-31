@@ -4113,12 +4113,20 @@ Lionhead/LH3DLib/development/ValueSpinner.cpp:
 
 Lionhead/LH3DLib/development/LH3DWeather.cpp:
 	.text       start:0x00838E80 end:0x0083C490
-	.text$x     start:0x008AD220 end:0x008AD2A0 align:4
+	.text$x     start:0x008AD220 end:0x008AD250 align:4
 	.rdata      start:0x00A23484 end:0x00A234BC
 	.xdata$x    start:0x00A3EFB0 end:0x00A3EFE0 align:4
 	.CRT$XCU    start:0x00A47DFC end:0x00A47E00 align:4
 	.data       start:0x00CB9D48 end:0x00CB9DEC
 	.bss        start:0x00F5A4A8 end:0x00F5E564 align:8
+
+Lionhead/LH3DLib/development/LH3DTexture.cpp:
+	.text       start:0x0083C490 end:0x0083E9F0
+	.text$x     start:0x008AD250 end:0x008AD2A0 align:4
+	.xdata$x    start:0x00A3EFE0 end:0x00A3F040 align:4
+	.CRT$XCU    start:0x00A47E00 end:0x00A47E04 align:4
+	.data       start:0x00CB9DEC end:0x00CB9F78
+	.bss        start:0x00F5E568 end:0x00F5E64C align:8
 
 Lionhead/LH3DLib/development/LH3DAnimation.cpp:
 	.text       start:0x0083EA50 end:0x0083FF70
