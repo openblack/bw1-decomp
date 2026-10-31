@@ -49,6 +49,11 @@ block_relocations:
   - source: 0x009BCF2C
 
 add_relocations:
+# HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
+  - source: 0x005C4402
+    type: x86_abs32
+    target: '_InterfaceMessageSets'
+    addend: 0x38
 # libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
   - source: 0x0088E890
     type: x86_abs32

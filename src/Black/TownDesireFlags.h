@@ -83,6 +83,11 @@ public:
 		ParentTown = NULL;
 	}
 
+	// Non-virtual methods
+
+	// BW1W120 00746ee0 BW1M119 01565f90
+	unsigned long GetQueryStatEnumText();
+
 	// Static methods
 
 	// BW1W120 00746df0 BW1M119 015660c0

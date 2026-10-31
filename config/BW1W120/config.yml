@@ -1209,6 +1209,11 @@ add_relocations:
     type: x86_abs32
     target: '__real@4@3fff8000000000000000'
     addend: 0x0
+# HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
+  - source: 0x005C89D2
+    type: x86_abs32
+    target: '_InterfaceMessageSets'
+    addend: 0x38
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000

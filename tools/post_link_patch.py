@@ -802,6 +802,12 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005957EB, call_rel32(0x004017F9)),  # GlobalGameList
     (0x00595ADA, call_indirect(0x008A903C)),  # GlobalGameList: __imp__DirectXSetupGetVersion
     (0x00595BFA, call_indirect(0x008A97C4)),  # GlobalGameList: __imp__LoadImageA@4
+    (0x005C81BB, call_rel32(0x004017F9)),  # HelpSystemBanter
+    (0x005C81DB, call_rel32(0x004017F9)),  # HelpSystemBanter
+    (0x005C896B, call_rel32(0x004017F9)),  # HelpSystemInfo
+    (0x005C945B, call_rel32(0x004017F9)),  # HelpSystemQuery
+    (0x005C949A, call_indirect(0x008A991C)),  # HelpSystemQuery: __imp__ioctlsocket@4
+    (0x005C98DA, call_indirect(0x008A939C)),  # HelpSystemQuery: __imp_?GetModuleChecksum@LHVersion@@SAKXZ
     (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
     (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
     (0x0060714B, call_rel32(0x004017F9)),  # MobileObject
@@ -1444,6 +1450,12 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005991CA, call_filler(0x004034F9, 0x00)),  # GlobalGameList
     (0x005AFFA8, copy_run(0x0059C182)),  # GStates
     (0x005B3359, jmp_run(0x005AFFA8)),  # GStates
+    (0x005CB99B, jmp_run(0x005CB944)),  # HelpSystemBanter
+    (0x005CBA79, jmp_run(0x005CB99B)),  # HelpSystemBanter
+    (0x005CBE83, copy_run(0x005CBD03)),  # HelpSystemConditions
+    (0x005CBEF8, jmp_run(0x005CBE83)),  # HelpSystemConditions
+    (0x005CC14B, copy_run(0x005CBEF8)),  # HelpSystemInfo
+    (0x005CC1D8, jmp_run(0x005CC14B)),  # HelpSystemLevel
     (0x0060A717, jmp_run(0x0060A511)),  # Mobile
     (0x0060A7E4, copy_run(0x0060A717)),  # Mobile
     (0x0060A843, copy_run(0x0060A7E3)),  # MobileObject

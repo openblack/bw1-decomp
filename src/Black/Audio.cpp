@@ -105,11 +105,6 @@
 #define DANCE_MUSIC_DISTANCE     75.0f
 #define DANCE_MUSIC_HEIGHT_RANGE 60.0f
 
-inline void GCamera::GetFocus(LHPoint& focus)
-{
-	focus = LHPoint(LH3DTech::GetCameraTarget());
-}
-
 inline void GCamera::GetUpVector(LHPoint& up)
 {
 	up.x = LH3DTech::g_world_to_camera._12;

@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For TERRAIN_MATERIAL_TYPE_LAST */
+#include <chlasm/Enum.h>          /* For TERRAIN_MATERIAL_TYPE_LAST */
+#include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
@@ -16,7 +17,10 @@ class Base;
 class GTerrainMaterialInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0x60];
+	uint8_t   field_0x10[0x3c];
+	HELP_TEXT QueryFirstEnumText;
+	HELP_TEXT QueryLastEnumText;
+	uint8_t   field_0x54[0x1c];
 
 	// Override methods
 
@@ -37,7 +41,7 @@ public:
 	static GTerrainMaterialInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in Terrain.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(field_0x10, field_0x54)
 	INFO_ROOT_LOADERS("Terrain.h", 15)
 };
 

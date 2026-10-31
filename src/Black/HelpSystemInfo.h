@@ -14,7 +14,8 @@ class Base;
 class HelpSystemInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0x10];
+	float   MaxFOVDistance;
+	uint8_t field_0x14[0xc];
 
 	// BW1W120 00d16160
 	static HelpSystemInfo Info;
@@ -28,7 +29,7 @@ public:
 
 	// TODO(#377): The original declared this class in HelpSystem.h.
 	// Out of line: LoadBinary at 0042f7f0, Load at 0042f7a0.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(MaxFOVDistance, field_0x14)
 	INFO_ROOT_LOADERS("HelpSystem.h", 67)
 };
 
