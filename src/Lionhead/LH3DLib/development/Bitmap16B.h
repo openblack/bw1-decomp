@@ -1,7 +1,6 @@
 #ifndef BW1_DECOMP_BITMAP_16B_INCLUDED_H
 #define BW1_DECOMP_BITMAP_16B_INCLUDED_H
 
-#include <stddef.h>
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t */
 
@@ -41,6 +40,5 @@ struct Bitmap16B
 	void SaveOnHD(char* name);
 };
 static_assert(sizeof(Bitmap16B) == 0x10, "Data type is of wrong size");
-static_assert(offsetof(Bitmap16B, Data) == 0xc, "Data member is at the wrong offset");
 
 #endif /* BW1_DECOMP_BITMAP_16B_INCLUDED_H */

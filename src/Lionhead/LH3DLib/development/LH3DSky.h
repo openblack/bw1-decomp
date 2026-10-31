@@ -2,8 +2,6 @@
 #define BW1_DECOMP_LH3D_SKY_INCLUDED_H
 
 #include <stdint.h>
-#include <stddef.h>
-#include <limits.h>
 
 #include <re_common.h>
 
@@ -15,25 +13,19 @@ struct LH3DMesh;
 struct LHMatrix;
 struct LHPoint;
 
-#define LH3D_SKY_COLOUR_CHANNEL_BITS CHAR_BIT
-#define LH3D_SKY_COLOUR_ALPHA_SHIFT  (offsetof(LH3DColor, a) * CHAR_BIT)
-#define LH3D_SKY_COLOUR_RGB_MASK     (LH3D_COLOR_WHITE >> CHAR_BIT)
-#define LH3D_SKY_TRANSPARENT_BLACK   0x00000000
+#define LH3D_SKY_TRANSPARENT_BLACK 0x00000000
 
 #define LH3D_SKY_HOURS_PER_DAY        24.0f
 #define LH3D_SKY_HOURS_PER_HALF_DAY   (LH3D_SKY_HOURS_PER_DAY / 2.0f)
-#define LH3D_SKY_RGB444_CHANNEL_BITS  4
-#define LH3D_SKY_RGB444_RED_SHIFT     (LH3D_SKY_RGB444_CHANNEL_BITS * 2)
-#define LH3D_SKY_RGB444_CHANNEL_MASK  0xf
-#define LH3D_SKY_COLOUR_BLEND_SHIFT   8
-#define LH3D_SKY_COLOUR_BLEND_SCALE   (1 << LH3D_SKY_COLOUR_BLEND_SHIFT)
+#define LH3D_SKY_COLOUR_BLEND_SCALE   256
+#define LH3D_SKY_BLEND_TABLE_SIZE     64
 #define LH3D_SKY_MOON_UPDATE_INTERVAL 2000
 #define LH3D_SKY_MOON_SECONDS_PER_DAY 86400
 #define LH3D_SKY_MOON_REFERENCE_DAY   10962
-#define LH3D_SKY_MOON_CYCLE_DAYS      29.5305992
+#define LH3D_SKY_LUNAR_MONTH_DAYS     29.5305992
 #define LH3D_SKY_MOON_UV_DIVISOR      400.0f
 #define LH3D_SKY_MOON_UV_OFFSET       0.25f
-#define LH3D_SKY_MOON_TILT_ANGLE      (-0.1308997f)
+#define LH3D_SKY_MOON_TILT_ANGLE      (-PI_F / 24.0f)
 #define LH3D_SKY_MOON_SHADING_SCALE   0.65f
 #define LH3D_SKY_SUN_INITIAL_XZ       (-30000.0f)
 #define LH3D_SKY_SUNRISE_TIME         6.0f
@@ -59,10 +51,11 @@ struct LHPoint;
 #define SKY_TYPE_CHANGE_THRESHOLD                      0.03f
 #define LH3D_SKY_MOON_QUAD_SIZE                        500.0f
 #define LH3D_SKY_MOON_UV_MIN                           0.25f
-#define LH3D_SKY_MOON_UV_MAX                           0.49375f
+#define LH3D_SKY_MOON_UV_INSET                         (2.0f / 320.0f)
+#define LH3D_SKY_MOON_UV_MAX                           (0.5f - LH3D_SKY_MOON_UV_INSET)
 #define LH3D_SKY_MOON_RED_DIVISOR                      6
 #define LH3D_SKY_MOON_GREEN_DIVISOR                    5
-#define LH3D_SKY_MOON_BLUE_SHIFT                       2
+#define LH3D_SKY_MOON_BLUE_DIVISOR                     4
 #define LH3D_SKY_MOON_TRIANGLE_VERTICES                3
 #define LH3D_SKY_MOON_UV_COMPONENTS                    2
 #define LH3D_SKY_MOON_TRIANGLE_INDEX(triangle, corner) ((triangle) * LH3D_SKY_MOON_TRIANGLE_VERTICES + (corner))
@@ -90,26 +83,40 @@ struct LHPoint;
 
 #define LH3D_SKY_LIGHTNING_SPECULAR_DIVISOR 2
 
-#define SKY_COLOUR_KEY_PAIRS     2
-#define SKY_COLOUR_BOOST_BASE    200.0f
-#define SKY_COLOUR_BOOST_SCALE   130.0f
-#define SKY_OVERCAST_COLOUR_LOSS 96.0f
-#define SKY_FOG_RED_WEIGHT       1
-#define SKY_FOG_GREEN_WEIGHT     4
-#define SKY_FOG_BLUE_WEIGHT      3
-#define SKY_FOG_WEIGHT_SUM       (SKY_FOG_RED_WEIGHT + SKY_FOG_GREEN_WEIGHT + SKY_FOG_BLUE_WEIGHT)
-#define SKY_FOG_ALPHA_OFFSET     8
-#define SKY_FOG_COLOUR_DIVISOR   3
-#define SKY_FOG_OVERCAST_SHIFT   3
-#define SKY_FOG_OVERCAST_OFFSET  32
-#define SKY_FOG_OVERCAST_ALPHA   48
-#define SKY_FOG_DAY_NEAR         400.0f
-#define SKY_FOG_DAY_FAR          900.0f
-#define SKY_FOG_DUSK_NEAR        100.0f
-#define SKY_FOG_DUSK_FAR         800.0f
-#define SKY_FOG_OVERCAST_NEAR    15.0f
-#define SKY_FOG_OVERCAST_FAR     350.0f
-#define SKY_BLEND_INVERSE_SCALE  (1.0f / LH3D_SKY_COLOUR_BLEND_SCALE)
+#define SKY_COLOUR_KEY_PAIRS            2
+#define SKY_COLOUR_BOOST_BASE           200.0f
+#define SKY_COLOUR_BOOST_SCALE          130.0f
+#define SKY_OVERCAST_COLOUR_LOSS        96.0f
+#define SKY_FOG_RED_WEIGHT              1
+#define SKY_FOG_GREEN_WEIGHT            4
+#define SKY_FOG_BLUE_WEIGHT             3
+#define SKY_FOG_WEIGHT_SUM              (SKY_FOG_RED_WEIGHT + SKY_FOG_GREEN_WEIGHT + SKY_FOG_BLUE_WEIGHT)
+#define SKY_FOG_ALPHA_OFFSET            8
+#define SKY_FOG_COLOUR_DIVISOR          3
+#define SKY_FOG_OVERCAST_COLOUR_DIVISOR 8
+#define SKY_FOG_OVERCAST_OFFSET         32
+#define SKY_FOG_OVERCAST_ALPHA          48
+#define SKY_FOG_DAY_NEAR                400.0f
+#define SKY_FOG_DAY_FAR                 900.0f
+#define SKY_FOG_DUSK_NEAR               100.0f
+#define SKY_FOG_DUSK_FAR                800.0f
+#define SKY_FOG_OVERCAST_NEAR           15.0f
+#define SKY_FOG_OVERCAST_FAR            350.0f
+#define SKY_BLEND_INVERSE_SCALE         (1.0f / LH3D_SKY_COLOUR_BLEND_SCALE)
+
+#define SKY_SUN_SAMPLE_OFFSET   500.0f
+#define SKY_SUN_MIN_HEIGHT      10.0f
+#define SKY_SUN_DEPTH_THRESHOLD 65000
+
+#define SKY_DEFAULT_NIGHT_TIME 4.5f
+#define SKY_DEFAULT_DUSK_START 7.0f
+#define SKY_DEFAULT_DUSK_END   7.5f
+#define SKY_DEFAULT_DAY_TIME   8.25f
+#define SKY_DEFAULT_MOON_SIZE  3.0f
+#define SKY_MOON_SIZE          4.0f
+#define SKY_TEXTURE_ID         0
+#define SKY_POSITION           2560.0f
+#define SKY_SCALE              5.0f
 
 enum SKY_LIGHT_COLOUR
 {
@@ -123,15 +130,6 @@ enum SKY_LIGHT_COLOUR
 	SKY_LIGHT_COLOUR_AUXILIARY,
 	SKY_LIGHT_COLOUR_LAST,
 };
-
-#define LH3D_SKY_BLEND_TABLE_SIZE  64
-#define LH3D_SKY_RGB555_RED_SHIFT  10
-#define LH3D_SKY_RGB565_RED_SHIFT  11
-#define LH3D_SKY_RGB5_CHANNEL_BITS 5
-#define LH3D_SKY_RGB565_GREEN_BITS 6
-#define LH3D_SKY_RGB5_MASK         0x1f
-#define LH3D_SKY_RGB6_MASK         0x3f
-#define LH3D_SKY_PIXEL_BYTES       2
 
 enum SKY_TYPE
 {
@@ -277,20 +275,5 @@ public:
 	// BW1W120 0086c220 BW1M119 010af360 (LHCombined Release)
 	static float ComputeAlphaEclairagePublique();
 };
-
-#define SKY_SUN_SAMPLE_OFFSET   500.0f
-#define SKY_SUN_MIN_HEIGHT      10.0f
-#define SKY_SUN_DEPTH_THRESHOLD 65000
-
-#define SKY_DEFAULT_NIGHT_TIME    4.5f
-#define SKY_DEFAULT_DUSK_START    7.0f
-#define SKY_DEFAULT_DUSK_END      7.5f
-#define SKY_DEFAULT_DAY_TIME      8.25f
-#define SKY_DEFAULT_MOON_SIZE     3.0f
-#define SKY_MOON_SIZE             4.0f
-#define SKY_TEXTURE_ID            0
-#define SKY_POSITION              2560.0f
-#define SKY_SCALE                 5.0f
-#define SKY_TEXTURE_NAME_CAPACITY 256
 
 #endif /* BW1_DECOMP_LH3D_SKY_INCLUDED_H */
