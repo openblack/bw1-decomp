@@ -10,6 +10,38 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 
+#include <chlasm/Enum.h> /* For OBJECT_TYPE_LAST */
+
+const char ObjectTypeNames[OBJECT_TYPE_LAST][64] = {
+	"Abode",           //
+	"Creature",        //
+	"Villager",        //
+	"Magic",           //
+	"Animal",          //
+	"Lightning",       //
+	"ForestTree",      //
+	"FirewallSection", //
+	"CitadelPart",     //
+	"Terrain",         //
+	"MagicLiving",     //
+	"Wall",            //
+	"FakeWall",        //
+	"SpellSeed",       //
+	"Boundry",         //
+	"Ball",            //
+	"Shot",            //
+	"ComputerPlayer",  //
+	"Field",           //
+	"Feature",         //
+	"MobileObject",    //
+	"Pot",             //
+	"Football",        //
+	"Ground",          //
+	"Prayer",          //
+	"ShowNeed",        //
+	"Dummy",           //
+};
+
 static const float GDebugInitialValue2d284 = 1000.0f;
 
 GDebug::GDebug()
