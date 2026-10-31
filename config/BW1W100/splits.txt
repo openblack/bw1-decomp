@@ -1119,11 +1119,57 @@ Black/HelpSpirit.cpp:
 	.rdata      start:0x00853284 end:0x00853B28
 
 Black/HelpSystem.cpp:
-	.text       start:0x00586CC0 end:0x0058A9C0
+	.text       start:0x00586CC0 end:0x00589640
 	.rdata      start:0x00853B28 end:0x008682AC
-	.CRT$XCU    start:0x008F6808 end:0x008F682C align:4
-	.data       start:0x00B1DB64 end:0x00B1E8CC
-	.bss        start:0x00C37284 end:0x00C37A44
+	.CRT$XCU    start:0x008F6800 end:0x008F6808 align:4
+	.data       start:0x00B1DB64 end:0x00B1DB80
+	.bss        start:0x00C37284 end:0x00C374B8
+
+Black/HelpSystemBanter.cpp:
+	.text       start:0x00589640 end:0x00589740
+	.CRT$XCU    start:0x008F6808 end:0x008F680C align:4
+	.bss        start:0x00C374B8 end:0x00C374BC
+
+Black/HelpSystemBubble.cpp:
+	.text       start:0x00589740 end:0x00589AC0
+	.CRT$XCU    start:0x008F680C end:0x008F6810 align:4
+	.data       start:0x00B1DB80 end:0x00B1DBC8
+	.bss        start:0x00C374BC end:0x00C374C4
+
+Black/HelpSystemConditions.cpp:
+	.text       start:0x00589AC0 end:0x00589D60
+	.rdata      start:0x008682AC end:0x008682C0
+	.CRT$XCU    start:0x008F6810 end:0x008F6814 align:4
+	.bss        start:0x00C374C4 end:0x00C374C8
+
+Black/HelpSystemInfo.cpp:
+	.text       start:0x00589D60 end:0x00589D80
+	.CRT$XCU    start:0x008F6814 end:0x008F6818 align:4
+	.bss        start:0x00C374C8 end:0x00C374CC
+
+Black/HelpSystemLevel.cpp:
+	.rdata      start:0x008682C0 end:0x008682C4
+	.data       start:0x00B1DBC8 end:0x00B1DC00
+
+Black/HelpSystemMessage.cpp:
+	.text       start:0x00589D80 end:0x0058A140
+	.rdata      start:0x008682C4 end:0x008682CC
+	.CRT$XCU    start:0x008F6818 end:0x008F6820 align:4
+	.data       start:0x00B1DC00 end:0x00B1E844
+	.bss        start:0x00C374CC end:0x00C374D4
+
+Black/HelpSystemProcess.cpp:
+	.text       start:0x0058A140 end:0x0058A4E0
+	.rdata      start:0x008682CC end:0x008682DC
+	.CRT$XCU    start:0x008F6820 end:0x008F6824 align:4
+	.bss        start:0x00C374D4 end:0x00C374E0
+
+Black/HelpSystemQuery.cpp:
+	.text       start:0x0058A4E0 end:0x0058A9C0
+	.rdata      start:0x008682DC end:0x008682E4
+	.CRT$XCU    start:0x008F6824 end:0x008F682C align:4
+	.data       start:0x00B1E844 end:0x00B1E860
+	.bss        start:0x00C374E0 end:0x00C374E8
 
 Black/HelpSystemToolTips.cpp:
 	.text       start:0x0058A9F0 end:0x0058BAA0

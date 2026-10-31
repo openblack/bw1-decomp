@@ -21,6 +21,8 @@ struct CameraHelpAccumulator
 
 	// BW1W120 00448f20 BW1M119 011a5e10
 	void Reset();
+	// BW1W120 00448f40 BW1M119 01094fb0
+	float GetTimeSinceLastUsed();
 	// BW1W120 inlined BW1M119 01322a20
 	long GetTotal() { return TotalTriggerCount; }
 };
@@ -60,6 +62,8 @@ public:
 	void Trigger(HELP_EVENT_TYPE param_1);
 	// BW1W120 005c4770 BW1M119 013538a0
 	void SetToZero();
+	// BW1W120 inlined BW1M119 01503d20
+	float GetTimeSinceTrigger(HELP_EVENT_TYPE type) { return accumulators[type].GetTimeSinceLastUsed(); }
 };
 
 #endif /* BW1_DECOMP_HELP_PROFILE_INCLUDED_H */

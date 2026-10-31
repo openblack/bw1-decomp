@@ -118,6 +118,11 @@ block_relocations:
   - source: 0x0040C28E
   - source: 0x0040CCDB
 add_relocations:
+# HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
+  - source: 0x005DDFC2
+    type: x86_abs32
+    target: '_InterfaceMessageSets'
+    addend: 0x38
 # libjpeg jddctmgr start_pass: the end of aanscalefactor (dtk leaves the loop bound unrelocated).
   - source: 0x008C2E40
     type: x86_abs32

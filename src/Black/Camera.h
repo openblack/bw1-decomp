@@ -108,7 +108,7 @@ public:
 	// BW1W120 inlined BW1M119 011a1680
 	void GetPosition(LHPoint& pos) { pos = LH3DTech::g_camera.pos; }
 	// BW1W120 inlined BW1M119 011a1600
-	void GetFocus(LHPoint& focus);
+	void GetFocus(LHPoint& focus) { focus = LHPoint(LH3DTech::GetCameraTarget()); }
 	// BW1W120 inlined BW1M119 inlined
 	void GetUpVector(LHPoint& up);
 	// BW1W120 inlined BW1M119 011a26b0

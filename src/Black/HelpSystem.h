@@ -198,6 +198,31 @@ enum HELP_SYSTEM_MESSAGE_SET
 	HELP_SYSTEM_MESSAGE_SET_LAST = 152,
 };
 
+#define HELP_SYSTEM_NUM_BANTER_SETS (HELP_SYSTEM_MESSAGE_BANTER_SET_LAST - HELP_SYSTEM_MESSAGE_BANTER_SET_FIRST)
+
+enum HELP_SYSTEM_CONDITION
+{
+	HELP_SYSTEM_CONDITION_NONE = 0,
+	HELP_SYSTEM_CONDITION_ALWAYS = 1,
+	HELP_SYSTEM_CONDITION_BANTER = 2,
+	HELP_SYSTEM_CONDITION_FIRST_TIME = 3,
+	HELP_SYSTEM_CONDITION_SPELL_SEED_NOT_ENABLED = 4,
+	HELP_SYSTEM_CONDITION_5 = 5,
+	HELP_SYSTEM_CONDITION_6 = 6,
+	HELP_SYSTEM_CONDITION_7 = 7,
+	HELP_SYSTEM_CONDITION_NEVER_SENT = 8,
+	HELP_SYSTEM_CONDITION_SOME_OF_THE_TIME = 9,
+	HELP_SYSTEM_CONDITION_SOME_OF_THE_TIME_CAPPED = 10,
+	HELP_SYSTEM_CONDITION_NOT_SENT_FOR_A_LONG_TIME = 11,
+	HELP_SYSTEM_CONDITION_NOT_SENT_FOR_A_WHILE = 12,
+	HELP_SYSTEM_CONDITION_ONE_IN_TWENTY = 13,
+	HELP_SYSTEM_CONDITION_ONE_IN_FIVE = 14,
+	HELP_SYSTEM_CONDITION_LOOK_CLOSE_AT_LAND = 15,
+	HELP_SYSTEM_CONDITION_COLLIDE_WITH_INCLUSION = 16,
+	HELP_SYSTEM_CONDITION_LOOK_AT_SKY = 17,
+	HELP_SYSTEM_CONDITION_LAST = 18,
+};
+
 enum HELP_EVENT_TYPE
 {
 	HELP_EVENT_TYPE_0 = 0x0,
@@ -252,6 +277,12 @@ enum HELP_EVENT_TYPE
 	_HELP_EVENT_TYPE_COUNT = 0x31
 };
 
+struct HelpSystemInterfaceMessageSet
+{
+	HELP_SYSTEM_MESSAGE_SET Set;
+	HELP_SYSTEM_CONDITION   Condition;
+};
+
 // Forward Declares
 
 struct Bubble;
@@ -261,6 +292,7 @@ struct HelpDudeControl;
 class HelpSpirit;
 class HelpText;
 class Object;
+struct MapCoords;
 
 class HelpSystem : public Base
 {
@@ -282,59 +314,55 @@ public:
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x30;
 #endif
-	uint8_t  field_0x30[0x48];
-	uint32_t field_0x78[0x98];
-	uint32_t field_0x2d8[0x9];
-	uint32_t field_0x2fc[0x98];
-	uint32_t field_0x55c;
-	uint32_t field_0x560;
-	uint8_t  field_0x564;
-	uint8_t  field_0x565;
-	uint8_t  field_0x566;
-	uint8_t  field_0x567;
-	uint32_t field_0x568;
-	uint16_t field_0x56c;
-	uint8_t  field_0x56e;
-	uint8_t  field_0x56f;
-	uint32_t field_0x570;
-	uint32_t field_0x574;
-	uint32_t field_0x578;
-	uint32_t field_0x57c;
-	uint32_t field_0x580;
-	uint32_t field_0x584[0x6];
-	uint8_t  field_0x59c[0x4028];
-	uint32_t field_0x45c4;
-	uint32_t field_0x45c8;
-	uint32_t field_0x45cc;
-	uint32_t field_0x45d0;
-	uint8_t  field_0x45d4;
-	uint8_t  field_0x45d5;
-	uint8_t  field_0x45d6;
-	uint8_t  field_0x45d7;
-	uint32_t field_0x45d8;
-	uint32_t field_0x45dc;
-	uint32_t field_0x45e0;
-	uint32_t field_0x45e4;
-	bool32_t WideScreen;
-	int      WideScreenControl;
-	float    field_0x45f0;
-	int      field_0x45f4;
-	int      field_0x45f8;
-	uint32_t field_0x45fc;
-	uint8_t  field_0x4600;
-	uint8_t  field_0x4601;
-	uint8_t  field_0x4602;
-	uint8_t  field_0x4603;
-	uint8_t  field_0x4604;
-	uint8_t  field_0x4605;
-	uint8_t  field_0x4606;
-	uint8_t  field_0x4607;
-	uint32_t field_0x4608;
-	uint32_t field_0x460c;
-	uint8_t  field_0x4610;
-	uint8_t  field_0x4611;
-	uint8_t  field_0x4612;
-	uint8_t  field_0x4613;
+	bool32_t                Conditions[HELP_SYSTEM_CONDITION_LAST];
+	uint32_t                MessageSetSentTime[HELP_SYSTEM_MESSAGE_SET_LAST];
+	uint32_t                CategoryTriggerTime[_HELP_SET_CATEGORY_COUNT];
+	uint32_t                MessageSetSentCount[HELP_SYSTEM_MESSAGE_SET_LAST];
+	HELP_SYSTEM_MESSAGE_SET LastMessageSet;
+	uint32_t                LastMessageTime;
+	bool32_t                FOVActive;
+	Object*                 FOVObject;
+	uint16_t                field_0x56c;
+	uint8_t                 field_0x56e;
+	uint8_t                 field_0x56f;
+	float                   FOVDistance;
+	Object*                 LastObjectInHand;
+	bool32_t                FOVLocked;
+	uint32_t                field_0x57c;
+	uint32_t                field_0x580;
+	uint32_t                field_0x584[0x6];
+	uint8_t                 field_0x59c[0x4028];
+	uint32_t                field_0x45c4;
+	uint32_t                field_0x45c8;
+	uint32_t                field_0x45cc;
+	uint32_t                field_0x45d0;
+	uint16_t                NumBanterSetsSent;
+	uint8_t                 field_0x45d6;
+	uint8_t                 field_0x45d7;
+	uint32_t                field_0x45d8;
+	uint32_t                field_0x45dc;
+	uint32_t                field_0x45e0;
+	uint32_t                field_0x45e4;
+	bool32_t                WideScreen;
+	int                     WideScreenControl;
+	float                   field_0x45f0;
+	int                     HelpLevel;
+	bool32_t                HelpSystemOn;
+	uint32_t                field_0x45fc;
+	uint8_t                 field_0x4600;
+	uint8_t                 field_0x4601;
+	uint8_t                 field_0x4602;
+	uint8_t                 field_0x4603;
+	uint8_t                 field_0x4604;
+	uint8_t                 field_0x4605;
+	uint8_t                 field_0x4606;
+	uint8_t                 field_0x4607;
+	uint32_t                field_0x4608;
+	uint32_t                field_0x460c;
+	uint8_t                 field_0x4610;
+	uint8_t                 field_0x4611;
+	uint8_t                 field_0x4612;
+	uint8_t                 field_0x4613;
 
 	// Override methods
 
@@ -350,8 +378,41 @@ public:
 
 	// BW1W120 005c8fe0 BW1M119 0107fa70
 	void Process();
+	// BW1W120 005c9060 BW1M119 null
+	void ProcessSpirits();
 	// BW1W120 005c9090 BW1M119 01048fc0
 	void SendFOVObject(Object* object, float distance);
+	// BW1W120 005c92f0 BW1M119 null
+	bool32_t IsFOVPaused();
+	// BW1W120 005c9300 BW1M119 0135bc20
+	void ResetFOV();
+	// BW1W120 005c9360 BW1M119 null
+	bool32_t ProcessObjectInHand();
+	// BW1W120 005c5e50 BW1M119 0108edc0
+	void Validate();
+	// BW1W120 005c82f0 BW1M119 0108e910
+	void ProcessBubble();
+	// BW1W120 005c9d00 BW1M119 010881e0
+	void ProcessToolTips();
+	// BW1W120 005c8ec0 BW1M119 null
+	bool32_t HasTimeElapsedSinceCategoryTriggered(HELP_SET_CATEGORY category, float seconds) const;
+	// BW1W120 005c6740 BW1M119 0100c950
+	bool32_t IsDialogueControlled() const;
+	// BW1W120 005c6550 BW1M119 01358940
+	bool32_t IsSpiritEjected(HELP_SPIRIT_TYPE type);
+	// BW1W120 005c6670 BW1M119 01358470
+	void SpiritHome(HELP_SPIRIT_TYPE type, bool32_t disappear) const;
+	// BW1W120 inlined BW1M119 0108fdf0
+	int GetHelpLevel() const
+	{
+		if (HelpSystemOn)
+		{
+			return HelpLevel;
+		}
+		return 0;
+	}
+	// BW1W120 inlined BW1M119 014f9ad0
+	bool32_t IsHelpEnabled() const { return HelpSystemOn ? GetHelpLevel() != 0 : false; }
 	// BW1W120 005c6eb0 BW1M119 013564b0
 	bool32_t Save(GameOSFile& file);
 	// BW1W120 005c73e0 BW1M119 01355620
@@ -392,17 +453,33 @@ public:
 	// BW1W120 inlined BW1M119 010867f0
 	int GetWideScreenControl() const { return WideScreenControl; }
 	// BW1W120 005c8280 BW1M119 0135a370
-	void TriggerCategory(HELP_SET_CATEGORY param_1);
+	void TriggerCategory(HELP_SET_CATEGORY category);
+	// BW1W120 005c86b0 BW1M119 0108b4f0
+	void ProcessConditions();
+	// BW1W120 005c8720 BW1M119 0135aca0
+	bool32_t ConditionSuccess(Object* object, HELP_SYSTEM_MESSAGE_SET set, HELP_SYSTEM_CONDITION condition);
+	// BW1W120 005c89a0 BW1M119 null
+	bool32_t ProcessInterfaceMessageSets();
+	// BW1W120 005c8e60 BW1M119 0135b400
+	bool32_t HasTimeElaspedSinceMessageSent(HELP_SYSTEM_MESSAGE_SET set, float seconds) const;
+	// BW1W120 005c81e0 BW1M119 0135a410
+	HELP_SYSTEM_MESSAGE_SET GetRandomBanterSet();
+	// BW1W120 005c81c0 BW1M119 0108f5b0
+	void ProcessBanter();
 	// BW1W120 005c8b80 BW1M119 0135b8c0
-	uint32_t RunMessageSet(HELP_SYSTEM_MESSAGE_SET param_1, GameThingWithPos* param_2);
+	uint32_t RunMessageSet(HELP_SYSTEM_MESSAGE_SET set, GameThingWithPos* thing);
 	// BW1W120 005c8c40 BW1M119 0135b770
 	uint32_t StopHelpScriptsForNewHelp();
 	// BW1W120 005c8c80 BW1M119 0135b710
 	uint32_t StopRunningScripts();
 	// BW1W120 005c8ce0 BW1M119 0135b520
-	uint32_t RunMessage(unsigned long param_1, unsigned long param_2, char* param_3);
+	uint32_t RunMessage(unsigned long start_text, unsigned long end_text, char* script);
+	// BW1W120 005c9490 BW1M119 null
+	uint32_t RunNotInterestedMessage();
 	// BW1W120 005c94a0 BW1M119 0135c210
-	void GetHelpQueryOnGameThingWithPos(GameThingWithPos* param_1);
+	void GetHelpQueryOnGameThingWithPos(GameThingWithPos* thing);
+	// BW1W120 005c9780 BW1M119 0135bf60
+	void GetHelpQueryAtPosition(const MapCoords& coords);
 	// BW1W120 005c98e0 BW1M119 0135bea0
 	void HelpQuery();
 	// BW1W120 inlined BW1M119 014ffc90

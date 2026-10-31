@@ -1194,10 +1194,52 @@ Black/HelpSystem.cpp:
 	.data       start:0x00C617E4 end:0x00C61808
 	.bss        start:0x00D943DC end:0x00D94610
 
+Black/HelpSystemBanter.cpp:
+	.text       start:0x005DD850 end:0x005DD950
+	.CRT$XCU    start:0x00A3687C end:0x00A36880 align:4
+	.bss        start:0x00D94610 end:0x00D94614
+
 Black/HelpSystemBubble.cpp:
-	.text       start:0x005DD950 end:0x005DDD00
-	.CRT$XCU    start:0x00A36880 end:0x00A36888 align:4
+	.text       start:0x005DD950 end:0x005DDCD0
+	.CRT$XCU    start:0x00A36880 end:0x00A36884 align:4
 	.data       start:0x00C61808 end:0x00C61840
+	.bss        start:0x00D94614 end:0x00D9461C
+
+Black/HelpSystemConditions.cpp:
+	.text       start:0x005DDCD0 end:0x005DDF70
+	.rdata      start:0x00981A44 end:0x00981A58
+	.CRT$XCU    start:0x00A36884 end:0x00A36888 align:4
+	.bss        start:0x00D9461C end:0x00D94620
+
+Black/HelpSystemInfo.cpp:
+	.text       start:0x005DDF70 end:0x005DDF90
+	.CRT$XCU    start:0x00A36888 end:0x00A3688C align:4
+	.bss        start:0x00D94620 end:0x00D94624
+
+Black/HelpSystemLevel.cpp:
+	.text       start:0x005DDF90 end:0x005DDFF0
+	.rdata      start:0x00981A58 end:0x00981A5C
+	.data       start:0x00C61840 end:0x00C61878
+
+Black/HelpSystemMessage.cpp:
+	.text       start:0x005DDFF0 end:0x005DE540
+	.rdata      start:0x00981A5C end:0x00981A64
+	.CRT$XCU    start:0x00A3688C end:0x00A36894 align:4
+	.data       start:0x00C61878 end:0x00C624BC
+	.bss        start:0x00D94628 end:0x00D94630
+
+Black/HelpSystemProcess.cpp:
+	.text       start:0x005DE540 end:0x005DE9B0
+	.rdata      start:0x00981A64 end:0x00981A74
+	.CRT$XCU    start:0x00A36894 end:0x00A36898 align:4
+	.bss        start:0x00D94630 end:0x00D9463C
+
+Black/HelpSystemQuery.cpp:
+	.text       start:0x005DE9B0 end:0x005DEEF0
+	.rdata      start:0x00981A74 end:0x00981A7C
+	.CRT$XCU    start:0x00A36898 end:0x00A368A0 align:4
+	.data       start:0x00C624BC end:0x00C624D8
+	.bss        start:0x00D9463C end:0x00D94644
 
 Black/HelpSystemToolTips.cpp:
 	.text       start:0x005DEEF0 end:0x005E0060

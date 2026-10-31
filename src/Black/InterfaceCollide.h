@@ -25,6 +25,13 @@ public:
 	Leash*    leash;
 	float     LeashDistance;
 
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 0100f810
+	MapCoords& GetPos() { return pos; }
+	// BW1W120 inlined BW1M119 010b9c30
+	Object* GetObjectA() { return object; }
+
 	// Implicit destructor, only Base is destroyed.
 	// BW1W120 005ce380
 };

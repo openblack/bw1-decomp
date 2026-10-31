@@ -1366,22 +1366,57 @@ Black/HelpSystem.cpp:
 	.data       start:0x00BF0CC4 end:0x00BF0CEC
 	.bss        start:0x00D16154 end:0x00D16388
 
+Black/HelpSystemBanter.cpp:
+	.text       start:0x005C81A0 end:0x005C82D0
+	.CRT$XCU    start:0x009C6BC0 end:0x009C6BC8 align:4
+	.bss        start:0x00D16388 end:0x00D1638C
+
 Black/HelpSystemBubble.cpp:
 	.text       start:0x005C82D0 end:0x005C8680
 	.CRT$XCU    start:0x009C6BC8 end:0x009C6BD0 align:4
 	.data       start:0x00BF0CEC end:0x00BF0D28
 	.bss        start:0x00D1638C end:0x00D16394
 
+Black/HelpSystemConditions.cpp:
+	.text       start:0x005C8680 end:0x005C8950
+	.rdata      start:0x0092A49C end:0x0092A4B0
+	.CRT$XCU    start:0x009C6BD0 end:0x009C6BD8 align:4
+	.bss        start:0x00D16394 end:0x00D16398
+
+Black/HelpSystemInfo.cpp:
+	.text       start:0x005C8950 end:0x005C89A0
+	.CRT$XCU    start:0x009C6BD8 end:0x009C6BE0 align:4
+	.bss        start:0x00D16398 end:0x00D1639C
+
+Black/HelpSystemLevel.cpp:
+	.text       start:0x005C89A0 end:0x005C8A30
+	.rdata      start:0x0092A4B0 end:0x0092A4B4
+	.CRT$XCU    start:0x009C6BE0 end:0x009C6BE4 align:4
+	.data       start:0x00BF0D28 end:0x00BF0D60
+
 Black/HelpSystemMessage.cpp:
 	.text       start:0x005C8A30 end:0x005C8FB0
 	.rdata      start:0x0092A4B4 end:0x0092A4BC
 	.CRT$XCU    start:0x009C6BE4 end:0x009C6BF0 align:4
-	.data       start:0x00BF0D60 end:0x00BF19C0
+	.data       start:0x00BF0D60 end:0x00BF19A4
 	.bss        start:0x00D1639C end:0x00D163A4
+
+Black/HelpSystemProcess.cpp:
+	.text       start:0x005C8FB0 end:0x005C9440
+	.rdata      start:0x0092A4BC end:0x0092A4CC
+	.CRT$XCU    start:0x009C6BF0 end:0x009C6BF8 align:4
+	.bss        start:0x00D163A4 end:0x00D163B0
+
+Black/HelpSystemQuery.cpp:
+	.text       start:0x005C9440 end:0x005C9970
+	.rdata      start:0x0092A4CC end:0x0092A4D4
+	.CRT$XCU    start:0x009C6BF8 end:0x009C6C04 align:4
+	.data       start:0x00BF19A4 end:0x00BF19C0
+	.bss        start:0x00D163B0 end:0x00D163B8
 
 Black/HelpSystemToolTips.cpp:
 	.text       start:0x005C9970 end:0x005CAAB0
-	.rdata      start:0x0092A4D8 end:0x0092A514
+	.rdata      start:0x0092A4D4 end:0x0092A514
 	.CRT$XCU    start:0x009C6C04 end:0x009C6C10 align:4
 	.data       start:0x00BF19C0 end:0x00BF1A28
 	.bss        start:0x00D16914 end:0x00D17C90

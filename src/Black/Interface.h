@@ -187,6 +187,8 @@ public:
 	GInterfaceStatus* GetStatus() { return status; }
 	// BW1W120 005d0610 BW1M119 01086440
 	void UpdateHandRenderCollide();
+	// BW1W120 005d7e40 BW1M119 01077010
+	void CalculateHandState();
 	// BW1W120 005ce3f0 BW1M119 01363de0
 	static void SetupStatics();
 	// BW1W120 005ceba0 BW1M119 01362e80

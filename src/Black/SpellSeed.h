@@ -17,6 +17,7 @@
 class Base;
 class EffectValues;
 class GInterfaceStatus;
+class GMagicInfo;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
@@ -157,6 +158,11 @@ public:
 	// BW1W120 007282a0 BW1M119 01534a60
 	static SpellSeed* Create(const MapCoords& coords, WorshipSpellIcon* icon, GInterfaceStatus* status,
 	                         POWER_UP_TYPE power_up, float power);
+
+	// Non-virtual methods
+
+	// BW1W120 007290f0 BW1M119 015327e0
+	GMagicInfo* GetMagicInfo() const;
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_INCLUDED_H */
