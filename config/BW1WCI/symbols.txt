@@ -5571,6 +5571,7 @@ crt_xc_fn_thunk_sentinelNegOne_CreatureMentalLearnAction_004F28B0 = .text:0x004F
 ??_GCreatureActionsKnownAbout@@UAEPAXI@Z = .text:0x004F2910; // type:function size:0x20 scope:global
 ??1CreatureActionsKnownAbout@@UAE@XZ = .text:0x004F2930; // type:function size:0x90
 ?GetSkillAtAction@CreatureLearning@@QAEMW4CREATURE_ACTION@@@Z = .text:0x004F29C0; // type:function size:0x70 scope:global
+?SetSkillAtAction@CreatureLearning@@QAEXW4CREATURE_ACTION@@M@Z = .text:0x004F2A30; // type:function size:0x30 scope:global
 ?ConsiderLearningAction@CreatureMental@@QAEHW4CREATURE_ACTION_LEARNING_TYPE@@K@Z = .text:0x004F2A60; // type:function size:0x4C0
 ?SetKnowsAction@CreatureActionsKnownAbout@@QAEXPAVCreature@@W4CREATURE_ACTION_LEARNING_TYPE@@KH@Z = .text:0x004F2FB0; // type:function size:0xA0
 ?KnowsAction@CreatureActionsKnownAbout@@QAEHW4CREATURE_ACTION_LEARNING_TYPE@@K@Z = .text:0x004F3050; // type:function size:0x2B
