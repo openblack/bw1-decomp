@@ -887,8 +887,8 @@ public:
 #ifndef VERSION_BW1W100
 	// BW1W120 004c5e60 BW1M119 012368c0
 	void GiveMaximumSkillAtOneSpell();
-	// BW1W120 004c5ee0 BW1M119 null
-	void GiveMaximumSkillAtOnePowerUpSpell();
+	// BW1W120 004c5ee0 BW1M119 012367f0
+	void GiveMaximumSkillAtOnePowerupSpell();
 #endif // VERSION_BW1W100
 	// BW1W120 004cf060 BW1M119 01243630
 	GInterfaceStatus* GetInterfaceStatusLeashOn();

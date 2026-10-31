@@ -236,7 +236,7 @@ void Creature::GiveMaximumSkillAtOneSpell()
 	mind->learning.SetSkillAtAction(spell, MAXIMUM_SKILL);
 }
 
-void Creature::GiveMaximumSkillAtOnePowerUpSpell()
+void Creature::GiveMaximumSkillAtOnePowerupSpell()
 {
 	CREATURE_ACTION spells[] = {
 		CREATURE_CAST_FIREBALL_PU1,       CREATURE_CAST_FIREBALL_PU2,   CREATURE_CAST_LIGHTNING_BOLT_PU1,
