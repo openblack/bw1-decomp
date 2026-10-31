@@ -3329,7 +3329,7 @@ Lionhead/LHLib/ver5.0/LHHeap2.cpp:
 	.text$x     start:0x007E9960 end:0x007E99D0 align:4
 
 Lionhead/LHLib/ver5.0/LHText.cpp:
-	.text       start:0x0074B870 end:0x0074BB40
+	.text       start:0x0074B790 end:0x0074BB40
 
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x0074BB40 end:0x0074CFF0

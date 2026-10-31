@@ -321,4 +321,41 @@ inline int LHDraw::Pixel(unsigned long x, unsigned long y, LHColor color, unsign
 	return Pixel24(x, y, color, mode);
 }
 
+inline int LHDraw::HVLine(long x0, long y0, long x1, long y1, const LHColor& color, unsigned long mode)
+{
+	if (LHSys::GetScreen().depth == 16)
+	{
+		LHPixel16 pixel;
+		pixel.Set(color);
+		return HVLine16(x0, y0, x1, y1, pixel, mode);
+	}
+	return HVLine24(x0, y0, x1, y1, color, mode);
+}
+
+inline int LHDraw::Sprite(long x, long y, LHSprite* sprite)
+{
+	if (LHSys::GetScreen().depth == 16)
+		return Sprite16(x, y, sprite);
+	return Sprite24(x, y, sprite);
+}
+
+inline int LHDraw::Sprite(long x, long y, LHSprite* sprite, unsigned long flags, uint32_t drawBuffer,
+                          unsigned long pixelPitch)
+{
+	if (LHSys::GetScreen().depth == 16)
+		return Sprite16(x, y, sprite, flags, 0, (LHPixel16*)drawBuffer, pixelPitch);
+	return Sprite24(x, y, sprite, flags, (LHColor*)drawBuffer, pixelPitch);
+}
+
+inline int LHDraw::OneColorSprite(long x, long y, LHSprite* sprite, LHColor color, unsigned long flags)
+{
+	if (LHSys::GetScreen().depth == 16)
+	{
+		LHPixel16 pixel;
+		pixel.Set(color);
+		return OneColorSprite16(x, y, sprite, pixel, flags);
+	}
+	return OneColorSprite24(x, y, sprite, color, flags);
+}
+
 #endif /* BW1_DECOMP_LH_SYSTEM_INCLUDED_H */

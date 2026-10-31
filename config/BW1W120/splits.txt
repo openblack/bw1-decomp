@@ -4045,7 +4045,9 @@ Lionhead/LHLib/ver5.0/LHDraw.cpp:
 	.data       start:0x00C34178 end:0x00C3417C
 
 Lionhead/LHLib/ver5.0/LHText.cpp:
-	.text       start:0x007E3D00 end:0x007E4810
+	.text       start:0x007E3C20 end:0x007E4810
+	.data       start:0x00C3417C end:0x00C34188
+	.bss        start:0x00E90608 end:0x00E90650 align:8
 
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x007E4810 end:0x007E6290
