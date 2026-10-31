@@ -3632,6 +3632,9 @@ Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
 	.text       start:0x007CD130 end:0x007CD380
 	.bss        start:0x00ECA63C end:0x00ECA644
 
+Lionhead/LH3DLib/development/SRTextured.cpp:
+	.text       start:0x007CD380 end:0x007CD910
+
 jpeg/jcapimin.c:
 	.text       start:0x007E0E40 end:0x007E1080
 

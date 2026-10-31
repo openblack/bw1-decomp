@@ -123,6 +123,26 @@ add_relocations:
     type: x86_abs32
     target: '_InterfaceMessageSets'
     addend: 0x38
+# SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
+# the lea displacement unrelocated).
+  - source: 0x008A05D1
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A05FC
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A061F
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A1715
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A1740
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A1763
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
 # libjpeg jddctmgr start_pass: the end of aanscalefactor (dtk leaves the loop bound unrelocated).
   - source: 0x008C2E40
     type: x86_abs32

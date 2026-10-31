@@ -2472,6 +2472,17 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00884BE6, copy_run(0x00884B76)),  # LH3DSubMesh
     (0x00884D09, copy_run(0x00884BE6)),  # LH3DSubMesh
     (0x00884DC2, copy_run(0x00884D09)),  # LH3DSubMesh
+    (0x00886201, copy_run(0x008861C7)),  # SRTextured
+    (0x0088686B, call_rel32(0x004034F9)),  # SRTextured
+    (0x008868CA, copy_run(0x0088686B)),  # SRTextured
+    (0x0088692B, call_rel32(0x004034F9)),  # SRTextured
+    (0x008869F1, jmp_run(0x0088692B)),  # SRTextured
+    (0x00886B48, copy_run(0x008869F1)),  # SRTextured
+    (0x00886DE7, copy_run(0x00886B48)),  # SRTextured
+    (0x008870A8, copy_run(0x00886DE7)),  # SRTextured
+    (0x008871F8, jmp_run(0x008870A8)),  # SRTextured
+    (0x00887416, jmp_run(0x008871F8)),  # SRTextured
+    (0x00887831, jmp_run(0x00887416)),  # SRTextured
     (0x0089D982, copy_run(0x0089D627)),  # jcapimin
     (0x0089D989, copy_run(0x0089D627)),  # jcapimin
     (0x0089DA63, copy_run(0x0089D982)),  # jcapimin

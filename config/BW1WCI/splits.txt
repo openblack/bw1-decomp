@@ -3923,6 +3923,9 @@ Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
 	.text       start:0x0089EB40 end:0x0089ED90
 	.bss        start:0x0102DE28 end:0x0102DE30
 
+Lionhead/LH3DLib/development/SRTextured.cpp:
+	.text       start:0x008A0190 end:0x008A1800
+
 lib/libcimt/filebuf.obj:
 	.rdata      start:0x00A14124 end:0x00A1416C
 	.rdata$r    start:0x00A2C4A0 end:0x00A2C628

@@ -54,6 +54,26 @@ add_relocations:
     type: x86_abs32
     target: '_InterfaceMessageSets'
     addend: 0x38
+# SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
+# the lea displacement unrelocated).
+  - source: 0x008712A1
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008712CC
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008712EF
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008723E5
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x00872410
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x00872433
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
 # libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
   - source: 0x0088E890
     type: x86_abs32

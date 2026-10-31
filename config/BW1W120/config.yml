@@ -116,6 +116,26 @@ block_relocations:
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x0080B652
 add_relocations:
+# SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
+# the lea displacement unrelocated).
+  - source: 0x00881491
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008814BC
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008814DF
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008825D5
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x00882600
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x00882623
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
 # libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
   - source: 0x0089EA80
     type: x86_abs32
