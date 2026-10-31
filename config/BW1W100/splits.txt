@@ -691,13 +691,14 @@ Black/CreatureWhatToDoNext.cpp:
 Black/Creche.cpp:
 	.text       start:0x004E9190 end:0x004E93B0
 	.rdata      start:0x008104C8 end:0x00810E00
+	.CRT$XCU    start:0x008F6470 end:0x008F6474 align:4
 	.data       start:0x00B14558 end:0x00B14590
-	.bss        start:0x00BCEE9C end:0x00BCEEC0
+	.bss        start:0x00BCEE9C end:0x00BCEEA0
 
 Black/CreditText.cpp:
 	.text       start:0x004E9420 end:0x004E9AD0
 	.rdata      start:0x00810E00 end:0x00810E08
-	.bss        start:0x00BCEEC0 end:0x00BCEED0
+	.bss        start:0x00BCEEA0 end:0x00BCEED0
 
 Black/Creed.cpp:
 	.text       start:0x004E9AD0 end:0x004E9C60

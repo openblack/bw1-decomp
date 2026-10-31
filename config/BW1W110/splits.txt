@@ -726,13 +726,14 @@ Black/CreatureWhatToDoNext.cpp:
 Black/Creche.cpp:
 	.text       start:0x00508E10 end:0x005090A0
 	.rdata      start:0x008C16A8 end:0x008C1FE0
+	.CRT$XCU    start:0x009B64B4 end:0x009B64B8 align:4
 	.data       start:0x00BD5D78 end:0x00BD5DB0
-	.bss        start:0x00C9C974 end:0x00C9C998
+	.bss        start:0x00C9C974 end:0x00C9C978
 
 Black/CreditText.cpp:
 	.text       start:0x00509110 end:0x005097C0
 	.rdata      start:0x008C1FE0 end:0x008C1FE8
-	.bss        start:0x00C9C998 end:0x00C9C9A8
+	.bss        start:0x00C9C978 end:0x00C9C9A8
 
 Black/Creed.cpp:
 	.text       start:0x005097C0 end:0x005099A0

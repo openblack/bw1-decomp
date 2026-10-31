@@ -796,25 +796,25 @@ Black/CreatureWhatToDoNext.cpp:
 	.text       start:0x0050B200 end:0x0050CCB0
 	.rdata      start:0x008D668C end:0x008D66C0
 	.CRT$XCU    start:0x00A46690 end:0x00A466A8 align:4
-	.data       start:0x00C66E40 end:0x00C66E90
+	.data       start:0x00C66E40 end:0x00C66E70
 	.bss        start:0x00D2EAEC end:0x00D2EAFC
 
 Black/Creche.cpp:
 	.text       start:0x0050CCB0 end:0x0050CF70
-	.rdata      start:0x008D66C0 end:0x008D66CC
+	.rdata      start:0x008D66C0 end:0x008D6FF8
 	.CRT$XCU    start:0x00A466A8 end:0x00A466B0 align:4
-	.data       start:0x00C66E90 end:0x00C66EB8
-	.bss        start:0x00D2EAFC end:0x00D2EB20
+	.data       start:0x00C66E70 end:0x00C66EB8
+	.bss        start:0x00D2EAFC end:0x00D2EB00
 
 Black/CreditsRoom.cpp:
 	.text       start:0x0050CF70 end:0x0050D6A0
-	.rdata      start:0x008D66CC end:0x008D7004
+	.rdata      start:0x008D6FF8 end:0x008D7000
 	.CRT$XCU    start:0x00A466B0 end:0x00A466C0 align:4
 	.bss        start:0x00D2EB20 end:0x00D2EB30
 
 Black/Creed.cpp:
 	.text       start:0x0050D6A0 end:0x0050D8D0
-	.rdata      start:0x008D7004 end:0x008D7860
+	.rdata      start:0x008D7000 end:0x008D7860
 	.CRT$XCU    start:0x00A466C0 end:0x00A466C4 align:4
 	.data       start:0x00C66EB8 end:0x00C66EF8
 
