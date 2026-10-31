@@ -118,6 +118,8 @@ block_relocations:
 # LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into
 # GameThing::RemoveDance.
   - source: 0x00839745
+# LH3DLandscape::ProcessTextureInBackground's surface caps 0x401808 are an immediate, not a pointer into GameThing::RemoveDance.
+  - source: 0x0087214F
 add_relocations:
 # SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
 # the lea displacement unrelocated).

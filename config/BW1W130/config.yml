@@ -144,6 +144,11 @@ block_relocations:
 # LH3DTexture::Lock's memset fill 0x1010101 is an immediate.
   - source: 0x0083DFD8
 add_relocations:
+# LH3DLandscape::BlendCountry128 compares against the end of g_coeff plus 8 (dtk leaves the immediate unrelocated).
+  - source: 0x00879590
+    type: x86_abs32
+    target: '?g_coeff@LH3DLandscape@@2PAY03KA'
+    addend: 0x1008
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005CC1B2
     type: x86_abs32

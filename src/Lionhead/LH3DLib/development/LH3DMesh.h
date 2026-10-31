@@ -7,9 +7,10 @@
 
 #include <chlasm/AllMeshes.h> /* For MAX_COUNT_3D_MESHES */
 
-#include "LH3DBoundingBox.h" /* For struct LH3DBoundingBox */
-#include "LH3DColor.h"       /* For LH3D_BLEND_COLOR */
-#include "LHMatrix.h"        /* For struct LHMatrix */
+#include "LH3DBoundingBox.h"  /* For struct LH3DBoundingBox */
+#include "LH3DColor.h"        /* For LH3D_BLEND_COLOR */
+#include "LH3DMeshLodLevel.h" /* For LH3D_MESH_LOD_LEVEL */
+#include "LHMatrix.h"         /* For struct LHMatrix */
 
 #include <re_common.h> /* For bool32_t */
 
@@ -48,14 +49,6 @@ enum LH3D_MESH_EXTRA_POS
 };
 
 #define LH3D_MESH_LIST_MATRIX_SIZE 256
-
-enum LH3D_MESH_LOD_LEVEL
-{
-	LH3D_MESH_LOD_LEVEL_NEAR,
-	LH3D_MESH_LOD_LEVEL_MEDIUM,
-	LH3D_MESH_LOD_LEVEL_FAR,
-	LH3D_MESH_LOD_LEVEL_LAST
-};
 
 #define LH3D_MESH_LOD_NEAR   0x1
 #define LH3D_MESH_LOD_MEDIUM 0x2

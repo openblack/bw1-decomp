@@ -480,6 +480,10 @@ LH3DColor     LH3DIsland::g_max_color_fog((uint8_t)g_max_fogr, (uint8_t)g_max_fo
 bool32_t      g_b_dont_do_d3d_activated_texture = false;
 MeshLodInfo   MeshLodInfo::g_mesh_lod_info[MESH_LOD_TYPE_COUNT];
 LandBlock*    LH3DIsland::g_ptr_blocks[LAND_MAX_BLOCKS];
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+float LH3DIsland::g_hitx;
+float LH3DIsland::g_hity;
+#endif
 
 static inline void* AllocClear(long size)
 {

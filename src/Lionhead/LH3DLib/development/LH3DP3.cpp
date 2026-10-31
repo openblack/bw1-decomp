@@ -2369,7 +2369,7 @@ void LandBlock::CreateListPolyP3(LandMeshLOD lod)
 
 	LandCell* cell = &Cells[0][0];
 	LH3DTech::g_clip_with_double_sided = false;
-	if (MeshLodZone == 0)
+	if (MeshLodZone == LAND_MESH_ZONE_NEAR)
 	{
 		for (int x = startX; x < endX; x++, cell++)
 		{
@@ -2526,7 +2526,7 @@ void LandBlock::CreateListPolyUnclippedP3(LandMeshLOD lod)
 
 	LandCell* cell = &Cells[0][0];
 	LH3DTech::g_clip_with_double_sided = false;
-	if (MeshLodZone == 0)
+	if (MeshLodZone == LAND_MESH_ZONE_NEAR)
 	{
 		for (int x = startX; x < endX; x++, cell++)
 		{

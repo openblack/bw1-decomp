@@ -1797,6 +1797,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DWeather.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DTexture.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DAnimation.cpp", extra_cflags=cflags_lh3d_animation, pch=True),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LandCell.cpp", pch=True),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/Route.cpp", progress_category="sdk"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DOrientSprite.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Glow.cpp"),
@@ -1821,6 +1822,8 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LHLib/ver5.0/RPAvoid.cpp", extra_cflags=cflags_route_planner, pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LHLib/ver5.0/RPlan.cpp", extra_cflags=["/GX", *cflags_route_planner], pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DLandscape.cpp", extra_cflags=["/GX"], pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LandBlock.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DSubMesh.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/SRTextured.cpp", pch=True),
 

@@ -534,7 +534,7 @@ LH3DJustFootPrint* LH3DJustFootPrint::Create(LH3DObject* object)
 	footPrint->Mesh = object->GetMesh();
 	footPrint->Next = g_first;
 	footPrint->Matrix = object->matrix;
-	footPrint->field_0x38 = 0;
+	footPrint->UseAlpha = false;
 	footPrint->Opacity = LH3D_JUST_FOOT_PRINT_OPAQUE;
 	LH3DMeshFootprintData* data = (LH3DMeshFootprintData*)footPrint->Mesh->GetFootprintData();
 	if (data != NULL && data->Count != 0)
