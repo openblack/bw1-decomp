@@ -6,7 +6,22 @@
 #include <stdint.h> /* For uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHColor.h> /* For struct LHColor */
+#include <Lionhead/LHLib/ver5.0/LHDraw.h>         /* For struct LHSprite */
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>       /* For enum LH_RETURN */
+
+#define LH_TEXT_RIGHT     0x2
+#define LH_TEXT_JUSTIFY   0x4
+#define LH_TEXT_CENTRE    0x8
+#define LH_TEXT_NO_BREAK  0x20
+#define LH_TEXT_ONE_COLOR 0x40
+#define LH_TEXT_UNCLIPPED 0x80
+#define LH_TEXT_UNDERLINE 0x100
+
+#define LH_TEXT_CHAR_TAB         9
+#define LH_TEXT_CHAR_NEWLINE     10
+#define LH_TEXT_CHAR_SPACE       32
+#define LH_TEXT_FIRST_GLYPH      LH_TEXT_CHAR_SPACE
+#define LH_TEXT_DEFAULT_TAB_SIZE 4
 
 // Forward Declares
 
@@ -55,14 +70,14 @@ static_assert(sizeof(LHSpriteList) == 0xc, "Data type is of wrong size");
 // swapping the global LHScreen graphics window for its text window.
 struct LHText : LHSpriteList
 {
-	LHColor Color;      /* 0x0c */
-	int     SpaceWidth; /* 0x10 */
-	int     field_20;   /* 0x14 */
-	int     LineHeight; /* 0x18 */
-	int     TabWidth;   /* 0x1c */
-	uint8_t TabSize;    /* 0x20 */
-	uint8_t _pad0x21[0x3];
-	int     Flags; /* 0x24 */
+	LHColor  Color;      /* 0x0c */
+	int      SpaceWidth; /* 0x10 */
+	int      MaxWidth;   /* 0x14 */
+	int      LineHeight; /* 0x18 */
+	uint32_t TabWidth;   /* 0x1c */
+	uint8_t  TabSize;    /* 0x20 */
+	uint8_t  _pad0x21[0x3];
+	int      Flags; /* 0x24 */
 
 	// Non-virtual methods
 
@@ -70,6 +85,18 @@ struct LHText : LHSpriteList
 	LH_RETURN LoadFont(char* file_name, unsigned long flags);
 	// BW1W120 007e3d00 BW1M119 0115e430 (LHCombined Release)
 	int FreeFont();
+	// BW1W120 inlined BW1M119 inlined
+	int CharacterWidth(char c)
+	{
+		return (unsigned int)(c - LH_TEXT_FIRST_GLYPH) >= (unsigned int)Count ? 0
+		                                                                      : Sprites[c - LH_TEXT_FIRST_GLYPH].Width;
+	}
+	// BW1W120 inlined BW1M119 0115e120 (LHCombined Release)
+	int CharacterHeight(char c)
+	{
+		return (unsigned int)(c - LH_TEXT_FIRST_GLYPH) >= (unsigned int)Count ? 0
+		                                                                      : Sprites[c - LH_TEXT_FIRST_GLYPH].Height;
+	}
 	// BW1W120 007e3d20 BW1M119 0115e2f0 (LHCombined Release)
 	int StringWidth(char* start, char* end);
 	// BW1W120 007e3db0 BW1M119 0115e220 (LHCombined Release)

@@ -71,6 +71,8 @@ public:
 	int HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsigned long mode);
 	// BW1W120 007df430 BW1M119 01140900 (LHCombined Release)
 	int HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode);
+	// BW1W120 inlined BW1M119 inlined
+	int HVLine(long x0, long y0, long x1, long y1, const LHColor& color, unsigned long mode);
 
 	// BW1W120 007dfe70 BW1M119 0113f130 (LHCombined Release)
 	int Line16(long x0, long y0, long x1, long y1, LHPixel16 color, unsigned long mode, LHPixel16* drawBuffer,
@@ -113,6 +115,8 @@ public:
 	// BW1W120 007ea810 BW1M119 011336b0 (LHCombined Release)
 	int Circle24(long centerX, long centerY, unsigned long radius, LHColor color, unsigned long mode);
 
+	// BW1W120 inlined BW1M119 inlined
+	int Sprite(long x, long y, LHSprite* sprite);
 	// BW1W120 007eab90 BW1M119 01159b60 (LHCombined Release)
 	int Sprite16(long x, long y, LHSprite* sprite);
 	// BW1W120 007eac00 BW1M119 01159a10 (LHCombined Release)
@@ -120,6 +124,8 @@ public:
 	// BW1W120 007eacb0 BW1M119 01159850 (LHCombined Release)
 	int Sprite24To16(long x, long y, LHSprite* sprite);
 
+	// BW1W120 inlined BW1M119 inlined
+	int Sprite(long x, long y, LHSprite* sprite, unsigned long flags, uint32_t drawBuffer, unsigned long pixelPitch);
 	// BW1W120 007eadb0 BW1M119 011590a0 (LHCombined Release)
 	int Sprite24(long x, long y, LHSprite* sprite, unsigned long flags, LHColor* drawBuffer, unsigned long pixelPitch);
 	// BW1W120 007eb250 BW1M119 01158a20 (LHCombined Release)
@@ -143,6 +149,8 @@ public:
 	// BW1W120 007ed580 BW1M119 01155930 (LHCombined Release)
 	int RegionSprite24To16(long x, long y, LHSprite* sprite, LHRegion* region, unsigned long flags);
 
+	// BW1W120 inlined BW1M119 inlined
+	int OneColorSprite(long x, long y, LHSprite* sprite, LHColor color, unsigned long flags);
 	// BW1W120 007edb90 BW1M119 011551c0 (LHCombined Release)
 	int OneColorSprite16(long x, long y, LHSprite* sprite, LHPixel16 color, unsigned long flags);
 	// BW1W120 007ee050 BW1M119 011548a0 (LHCombined Release)

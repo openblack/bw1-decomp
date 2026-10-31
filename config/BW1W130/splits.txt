@@ -3926,7 +3926,7 @@ Lionhead/LHLib/ver5.0/LHDraw.cpp:
 	.data       start:0x00CB507C end:0x00CB5080
 
 Lionhead/LHLib/ver5.0/LHText.cpp:
-	.text       start:0x007E8E70 end:0x007E9980
+	.text       start:0x007E8D90 end:0x007E9980
 
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x007E9980 end:0x007EB400

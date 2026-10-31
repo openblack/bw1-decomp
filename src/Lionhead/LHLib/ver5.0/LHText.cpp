@@ -3,6 +3,8 @@
 #include <string.h>
 #include <windows.h>
 
+#include <re_common.h>
+
 #include <Lionhead/LH3DLib/development/LHColor.h>
 #include <Lionhead/LH3DLib/development/LHCoord.h>
 #include <Lionhead/LH3DLib/development/LHRegion.h>
@@ -10,9 +12,39 @@
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>
 
-extern int      g_lhTextFontUninit; // 0xC3417C
-extern HFONT    g_lhTextFont;       // 0xE90608
-extern LOGFONTA g_lhTextLogFont;    // 0xE90610
+#define FONT_POINT_SIZE         6
+#define POINTS_PER_INCH_DIVISOR 18
+#define FONT_WEIGHT             100
+#define FONT_FACE               "Arial"
+#define LINE_PITCH              13
+
+bool32_t g_lhTextFontUninit = true;
+HFONT    g_lhTextFont;
+LOGFONTA g_lhTextLogFont;
+
+LH_RETURN LHText::LoadFont(char* file_name, unsigned long flags)
+{
+	int       maxWidth = 0;
+	LH_RETURN result = LHSys::GetConvert().ToSprites(file_name, this, NULL, flags, NULL, NULL, NULL);
+	if (result == LH_OK)
+	{
+		for (char c = LH_TEXT_FIRST_GLYPH; (uint8_t)c < (uint32_t)(Count + LH_TEXT_FIRST_GLYPH); ++c)
+		{
+			int width = CharacterWidth(c);
+			if (width > maxWidth)
+				maxWidth = width;
+		}
+		LineHeight = CharacterHeight(LH_TEXT_CHAR_SPACE);
+		SpaceWidth = CharacterWidth(LH_TEXT_CHAR_SPACE);
+		MaxWidth = maxWidth;
+		TabWidth = SpaceWidth * LH_TEXT_DEFAULT_TAB_SIZE;
+		TabSize = LH_TEXT_DEFAULT_TAB_SIZE;
+		LHColor black;
+		black.b = black.g = black.r = 0;
+		Color = black;
+	}
+	return result;
+}
 
 int LHText::FreeFont()
 {
@@ -27,35 +59,27 @@ int LHText::FreeFont()
 
 int LHText::StringWidth(char* start, char* end)
 {
-	// TODO(nonmatching): register allocation differs
 	int width = 0;
 	int maxWidth = 0;
 	if (!end)
 		end = &start[strlen(start)];
-	for (char* p = start; p < end; ++p)
+	for (; start < end; ++start)
 	{
-		char c = *p;
-		switch (c)
+		switch (*start)
 		{
 		case 0:
 			break;
-		case 9:
+		case LH_TEXT_CHAR_TAB:
 			width += TabWidth;
 			break;
-		case 10:
+		case LH_TEXT_CHAR_NEWLINE:
 			if (maxWidth < width)
 				maxWidth = width;
 			width = 0;
 			break;
-		default: {
-			int advance;
-			if ((unsigned int)(c - 32) >= (unsigned int)Count)
-				advance = 0;
-			else
-				advance = Sprites[c - 32].Width;
-			width += advance;
-		}
-		break;
+		default:
+			width += CharacterWidth(*start);
+			break;
 		}
 	}
 	return max(maxWidth, width);
@@ -63,24 +87,19 @@ int LHText::StringWidth(char* start, char* end)
 
 int LHText::StringHeight(char* start, char* end)
 {
-	// TODO(nonmatching): compiler folds the dead p==end checks the original keeps
-	char* p = start;
 	if (!end)
 		end = &start[strlen(start)];
 	int result = 0;
-	if (start < end)
+	while (start < end)
 	{
-		do
+		char c = *start;
+		if (!c || start == end || c == LH_TEXT_CHAR_NEWLINE)
 		{
-			char c = *p;
-			if (!c || p == end || c == 10)
-			{
-				result += LineHeight;
-				if (!c || p == end)
-					break;
-			}
-			++p;
-		} while (p < end);
+			result += LineHeight;
+			if (!c || start == end)
+				break;
+		}
+		++start;
 	}
 	return result;
 }
@@ -88,18 +107,13 @@ int LHText::StringHeight(char* start, char* end)
 int LHText::WordWidth(char* text)
 {
 	int result = 0;
-	for (char c = *text; c != 32; c = *++text)
+	for (char c = *text; c != LH_TEXT_CHAR_SPACE; c = *++text)
 	{
-		if (c == 9 || c == 10 || !c)
+		if (c == LH_TEXT_CHAR_TAB || c == LH_TEXT_CHAR_NEWLINE || !c)
 			break;
-		if (c >= 32)
+		if (c >= LH_TEXT_CHAR_SPACE)
 		{
-			int advance;
-			if ((unsigned int)(c - 32) >= (unsigned int)Count)
-				advance = 0;
-			else
-				advance = Sprites[c - 32].Width;
-			result += advance;
+			result += CharacterWidth(c);
 		}
 	}
 	return result;
@@ -107,201 +121,98 @@ int LHText::WordWidth(char* text)
 
 int LHText::DrawActualTextSprites(long x, long y, char* start, char* end, unsigned long extraSpacing)
 {
-	// TODO(nonmatching): register allocation / scheduling
-	int penX = x;
-	if (Flags & 0x40)
+	long startX = x;
+	if (Flags & LH_TEXT_ONE_COLOR)
 	{
-		char* p = start;
-		if (start < end)
+		for (; start < end; ++start)
 		{
-			while (1)
+			char c = *start;
+			if (c == LH_TEXT_CHAR_SPACE)
+				x += extraSpacing + SpaceWidth;
+			else if (c >= LH_TEXT_FIRST_GLYPH)
 			{
-				char c = *p;
-				int  advance;
-				if (c == 32)
-				{
-					advance = extraSpacing + SpaceWidth;
-					goto add;
-				}
-				if (c >= 32)
-				{
-					LHSprite* glyph = &Sprites[c - 32];
-					if (LHSys::GetScreen().depth == 16)
-					{
-						LHPixel16 pix;
-						pix.Set(Color);
-						LHSys::GetDraw().OneColorSprite16(penX, y, glyph, pix, 1);
-					}
-					else
-					{
-						LHColor col;
-						col.b = Color.b;
-						col.g = Color.g;
-						col.r = Color.r;
-						LHSys::GetDraw().OneColorSprite24(penX, y, glyph, col, 1);
-					}
-					if ((unsigned int)(*p - 32) >= (unsigned int)Count)
-						advance = 0;
-					else
-						advance = Sprites[*p - 32].Width;
-					goto add;
-				}
-				if (c == 9)
-				{
-					advance = TabSize * (extraSpacing + SpaceWidth);
-					goto add;
-				}
-				goto next;
-			add:
-				penX += advance;
-			next:
-				if (++p >= end)
-					goto underline;
+				c -= LH_TEXT_FIRST_GLYPH;
+				LHSys::GetDraw().OneColorSprite(x, y, &Sprites[c], Color, 1);
+				x += CharacterWidth(*start);
 			}
+			else if (c == LH_TEXT_CHAR_TAB)
+				x += TabSize * (extraSpacing + SpaceWidth);
 		}
-		goto underline;
 	}
-	else if (Flags & 0x80)
+	else if (Flags & LH_TEXT_UNCLIPPED)
 	{
-		char* p = start;
-		if (start >= end)
-			goto underline;
-		while (1)
+		for (; start < end; ++start)
 		{
-			char c = *p;
-			if (c == 32)
+			char c = *start;
+			if (c == LH_TEXT_CHAR_SPACE)
+				x += extraSpacing + SpaceWidth;
+			else if (c >= LH_TEXT_FIRST_GLYPH)
 			{
-				penX += extraSpacing + SpaceWidth;
+				c -= LH_TEXT_FIRST_GLYPH;
+				LHSys::GetDraw().Sprite(x, y, &Sprites[c]);
+				x += CharacterWidth(*start);
 			}
-			else
-			{
-				if (c >= 32)
-				{
-					LHSprite* glyph = &Sprites[c - 32];
-					if (LHSys::GetScreen().depth == 16)
-						LHSys::GetDraw().Sprite16(penX, y, glyph);
-					else
-						LHSys::GetDraw().Sprite24(penX, y, glyph);
-					int advance;
-					if ((unsigned int)(*p - 32) >= (unsigned int)Count)
-						advance = 0;
-					else
-						advance = Sprites[*p - 32].Width;
-					penX += advance;
-				}
-				else if (c == 9)
-				{
-					penX += TabSize * (extraSpacing + SpaceWidth);
-				}
-			}
-			if (++p >= end)
-				goto underline;
+			else if (c == LH_TEXT_CHAR_TAB)
+				x += TabSize * (extraSpacing + SpaceWidth);
 		}
 	}
 	else
 	{
-		char* p = start;
-		if (start < end)
+		for (; start < end; ++start)
 		{
-			do
+			char c = *start;
+			if (c == LH_TEXT_CHAR_SPACE)
+				x += extraSpacing + SpaceWidth;
+			else if (c >= LH_TEXT_FIRST_GLYPH)
 			{
-				char c = *p;
-				if (c == 32)
-				{
-					penX += extraSpacing + SpaceWidth;
-				}
-				else if (c < 32)
-				{
-					if (c == 9)
-						penX += TabSize * (extraSpacing + SpaceWidth);
-				}
-				else
-				{
-					LHSprite* glyph = &Sprites[c - 32];
-					if (LHSys::GetScreen().depth == 16)
-						LHSys::GetDraw().Sprite16(penX, y, glyph, 1, 0, (LHPixel16*)LHSys::GetScreen().backAddress,
-						                          LHSys::GetScreen().backPixelPitch);
-					else
-						LHSys::GetDraw().Sprite24(penX, y, glyph, 1, (LHColor*)LHSys::GetScreen().backAddress,
-						                          LHSys::GetScreen().backPixelPitch);
-					if ((unsigned int)(*p - 32) < (unsigned int)Count)
-						penX += Sprites[*p - 32].Width;
-				}
-				++p;
-			} while (p < end);
+				c -= LH_TEXT_FIRST_GLYPH;
+				LHSys::GetDraw().Sprite(x, y, &Sprites[c], 1, LHSys::GetScreen().backAddress,
+				                        LHSys::GetScreen().backPixelPitch);
+				x += CharacterWidth(*start);
+			}
+			else if (c == LH_TEXT_CHAR_TAB)
+				x += TabSize * (extraSpacing + SpaceWidth);
 		}
 	}
-
-underline:
-	int result = Flags;
-	if (result & 0x100)
-	{
-		int height1 = Count ? Sprites->Height : 0;
-		int height2 = Count ? Sprites->Height : 0;
-		int underlineY2 = height2 + y;
-		int underlineY1 = height1 + y;
-		if (LHSys::GetScreen().depth == 16)
-		{
-			unsigned int packed =
-				((unsigned int)(uint8_t)(Color.r >> LHSys::GetScreen().redScale) << LHSys::GetScreen().RedShift) +
-				((unsigned int)(uint8_t)(Color.b >> LHSys::GetScreen().BlueScale) << LHSys::GetScreen().BlueShift);
-			packed += (unsigned int)(uint8_t)(Color.g >> LHSys::GetScreen().GreenScale)
-			          << LHSys::GetScreen().GreenShift;
-			LHPixel16 pix;
-			pix.value = (uint16_t)packed;
-			return LHSys::GetDraw().HVLine16(x, underlineY2, penX, underlineY1, pix, 1);
-		}
-		else
-		{
-			LHColor col;
-			col.b = Color.b;
-			col.g = Color.g;
-			col.r = Color.r;
-			return LHSys::GetDraw().HVLine24(x, underlineY2, penX, underlineY1, col, 1);
-		}
-	}
-	return result;
+	if (Flags & LH_TEXT_UNDERLINE)
+		return LHSys::GetDraw().HVLine(startX, y + CharacterHeight(LH_TEXT_CHAR_SPACE), x,
+		                               y + CharacterHeight(LH_TEXT_CHAR_SPACE), Color, 1);
+	return Flags;
 }
 
 int LHText::Draw(long x, long y, char* text, unsigned long flags)
 {
-	// TODO(nonmatching): stack layout / register allocation
 	char*    lineStart = text;
+	int      spaceCount = 0;
 	LHRegion savedGraphicsWindow = LHSys::GetScreen().GraphicsWindow;
+	LHRegion textWindow = LHSys::GetScreen().GetTextWindow();
 	LHSys::GetScreen().GraphicsWindow = LHSys::GetScreen().TextWindow;
-	int lineWidth = LHSys::GetScreen().TextWindow.end.x - LHSys::GetScreen().TextWindow.start.x + 1;
-	int penY = LHSys::GetScreen().TextWindow.start.y + y;
-	int textLeft = LHSys::GetScreen().TextWindow.start.x;
-	int penX = LHSys::GetScreen().TextWindow.start.x + x;
+	int  lineWidth = textWindow.Width();
+	long penX = textWindow.start.x + x;
+	long penY = LHSys::GetScreen().GetTextWindow().Y1() + y;
 	Flags = flags;
-	int startX = penX;
-	int spaceCount = 0;
+	long startX = penX;
 	if (*text)
 	{
 		char* wordStart = text + 1;
 		do
 		{
-			char c = *text;
-			switch (c)
+			switch (*text)
 			{
-			case 9:
+			case LH_TEXT_CHAR_TAB:
 				penX += TabWidth;
 				if (penX + WordWidth(wordStart) > lineWidth)
 				{
-					int extra = 0;
-					int lineX;
-					if (flags & 2)
-					{
-						lineX = lineWidth + TabWidth + 2 * startX - penX;
-					}
-					else if (flags & 8)
-					{
-						lineX = startX + ((unsigned int)(lineWidth + startX + TabWidth - penX) >> 1);
-					}
+					int  extra = 0;
+					long lineX;
+					if (flags & LH_TEXT_RIGHT)
+						lineX = startX + lineWidth - (penX - TabWidth - startX);
+					else if (flags & LH_TEXT_CENTRE)
+						lineX = startX + (lineWidth - (penX - TabWidth - startX)) / 2;
 					else
 					{
-						if ((flags & 4) && spaceCount)
-							extra = (lineWidth + startX + SpaceWidth - penX) / spaceCount;
+						if ((flags & LH_TEXT_JUSTIFY) && spaceCount)
+							extra = (lineWidth - (penX - SpaceWidth - startX)) / spaceCount;
 						lineX = startX;
 					}
 					DrawActualTextSprites(lineX, penY, lineStart, text, extra);
@@ -309,47 +220,41 @@ int LHText::Draw(long x, long y, char* text, unsigned long flags)
 					penX = startX;
 					penY += LineHeight;
 					spaceCount = 0;
-					goto nextChar;
 				}
-				spaceCount += TabSize;
+				else
+					spaceCount += TabSize;
 				break;
-			case 10: {
-				int lineX;
-				if (flags & 2)
-				{
-					lineX = lineWidth + 2 * startX - penX;
-				}
+			case LH_TEXT_CHAR_NEWLINE: {
+				long lineX;
+				if (flags & LH_TEXT_RIGHT)
+					lineX = startX + lineWidth - (penX - startX);
 				else
 				{
 					lineX = startX;
-					if (flags & 8)
-						lineX = startX + (lineWidth + startX - penX) / 2;
+					if (flags & LH_TEXT_CENTRE)
+						lineX = startX + (lineWidth - (penX - startX)) / 2;
 				}
 				DrawActualTextSprites(lineX, penY, lineStart, text, 0);
-				penX = startX;
 				lineStart = text;
+				penX = startX;
 				penY += LineHeight;
 				spaceCount = 0;
+				break;
 			}
-				goto nextChar;
-			case 32:
+			case LH_TEXT_CHAR_SPACE:
 				penX += SpaceWidth;
-				if (penX - textLeft + WordWidth(wordStart) > lineWidth)
+				if (penX - textWindow.start.x + WordWidth(wordStart) > lineWidth)
 				{
-					int extra = 0;
-					int lineX;
-					if (flags & 2)
-					{
-						lineX = lineWidth + SpaceWidth + 2 * startX - penX;
-					}
-					else if (flags & 8)
-					{
-						lineX = startX + (lineWidth + startX + SpaceWidth - penX) / 2;
-					}
+					int  extra = 0;
+					long lineX;
+					if (flags & LH_TEXT_RIGHT)
+						lineX = startX + lineWidth - (penX - SpaceWidth - startX);
+					else if (flags & LH_TEXT_CENTRE)
+						lineX = startX + (lineWidth - (penX - SpaceWidth - startX)) / 2;
 					else
 					{
-						if ((flags & 4) && spaceCount)
-							extra = (lineWidth + startX + SpaceWidth - penX) / spaceCount;
+						if ((flags & LH_TEXT_JUSTIFY) && spaceCount)
+							extra = (lineWidth - (penX - SpaceWidth - startX)) / spaceCount;
 						lineX = startX;
 					}
 					if (lineStart == text)
@@ -360,73 +265,48 @@ int LHText::Draw(long x, long y, char* text, unsigned long flags)
 					penX = startX;
 					penY += LineHeight;
 					spaceCount = 0;
-					goto nextChar;
 				}
-				spaceCount += 1;
-				break;
-			default: {
-				int advance;
-				if ((unsigned int)(c - 32) >= (unsigned int)Count)
-					advance = 0;
 				else
-					advance = Sprites[c - 32].Width;
-				penX += advance;
-				if (penX - textLeft > lineWidth && (flags & 0x20) == 0)
+					spaceCount++;
+				break;
+			default:
+				penX += CharacterWidth(*text);
+				if (penX - textWindow.start.x > lineWidth && !(flags & LH_TEXT_NO_BREAK))
 				{
-					int lineX;
-					if (flags & 2)
-					{
-						int d;
-						if ((unsigned int)(*text - 32) < (unsigned int)Count)
-							d = Sprites[*text - 32].Width + 2 * startX - penX;
-						else
-							d = 2 * startX - penX;
-						lineX = lineWidth + d;
-					}
-					else if (flags & 8)
-					{
-						int w;
-						if ((unsigned int)(*text - 32) < (unsigned int)Count)
-							w = Sprites[*text - 32].Width;
-						else
-							w = 0;
-						lineX = startX + (lineWidth + startX + w - penX) / 2;
-					}
+					long lineX;
+					if (flags & LH_TEXT_RIGHT)
+						lineX = startX + lineWidth - (penX - CharacterWidth(*text) - startX);
+					else if (flags & LH_TEXT_CENTRE)
+						lineX = startX + (lineWidth - (penX - CharacterWidth(*text) - startX)) / 2;
 					else
-					{
 						lineX = startX;
-					}
-					char* lineEnd = text;
 					if (lineStart == text)
 					{
-						lineEnd = ++text;
+						++text;
 						++wordStart;
 					}
-					DrawActualTextSprites(lineX, penY, lineStart, lineEnd, 0);
-					lineStart = text--;
-					penX = startX;
+					DrawActualTextSprites(lineX, penY, lineStart, text, 0);
+					lineStart = text;
+					--text;
 					--wordStart;
+					penX = startX;
 					penY += LineHeight;
 					spaceCount = 0;
 				}
+				break;
 			}
-				goto nextChar;
-			}
-		nextChar:
 			++text;
 			++wordStart;
 		} while (*text);
 	}
-	int lineX;
-	if (flags & 2)
-	{
-		lineX = lineWidth + 2 * startX - penX;
-	}
+	long lineX;
+	if (flags & LH_TEXT_RIGHT)
+		lineX = startX + lineWidth - (penX - startX);
 	else
 	{
 		lineX = startX;
-		if (flags & 8)
-			lineX = startX + (lineWidth + startX - penX) / 2;
+		if (flags & LH_TEXT_CENTRE)
+			lineX = startX + (lineWidth - (penX - startX)) / 2;
 	}
 	DrawActualTextSprites(lineX, penY, lineStart, text, 0);
 	LHSys::GetScreen().GraphicsWindow = savedGraphicsWindow;
@@ -435,21 +315,21 @@ int LHText::Draw(long x, long y, char* text, unsigned long flags)
 
 int LHText::DrawSimple(long x, long y, char* text, LHColor* color, int mode)
 {
-	// TODO(nonmatching): colour-byte register/stack placement
-	HDC     hdc;
-	uint8_t b = 0;
-	uint8_t g = 0;
-	uint8_t r = 0;
+	HDC      hdc;
+	uint8_t  b = 0;
+	uint8_t  g = 0;
+	bool32_t done = false;
+	uint8_t  r = 0;
 	if (LHSys::GetScreen().PBackSurface->GetDC(&hdc))
-		return 2;
+		return LH_FAIL;
 	if (g_lhTextFontUninit)
 	{
-		g_lhTextFontUninit = 0;
-		g_lhTextLogFont.lfHeight = -MulDiv(6, GetDeviceCaps(hdc, LOGPIXELSY), 18);
+		g_lhTextFontUninit = false;
+		g_lhTextLogFont.lfHeight = -MulDiv(FONT_POINT_SIZE, GetDeviceCaps(hdc, LOGPIXELSY), POINTS_PER_INCH_DIVISOR);
 		g_lhTextLogFont.lfWidth = 0;
 		g_lhTextLogFont.lfEscapement = 0;
 		g_lhTextLogFont.lfOrientation = 0;
-		g_lhTextLogFont.lfWeight = 100;
+		g_lhTextLogFont.lfWeight = FONT_WEIGHT;
 		g_lhTextLogFont.lfItalic = 0;
 		g_lhTextLogFont.lfUnderline = 0;
 		g_lhTextLogFont.lfStrikeOut = 0;
@@ -458,16 +338,16 @@ int LHText::DrawSimple(long x, long y, char* text, LHColor* color, int mode)
 		g_lhTextLogFont.lfClipPrecision = 0;
 		g_lhTextLogFont.lfQuality = 0;
 		g_lhTextLogFont.lfPitchAndFamily = 0;
-		strcpy(g_lhTextLogFont.lfFaceName, "Arial");
+		strcpy(g_lhTextLogFont.lfFaceName, FONT_FACE);
 		g_lhTextFont = CreateFontIndirectA(&g_lhTextLogFont);
 		if (g_lhTextFont)
 			SelectObject(hdc, g_lhTextFont);
 	}
 	if (color)
 	{
-		b = color->b;
 		g = color->g;
 		r = color->r;
+		b = color->b;
 	}
 	if (mode == 1)
 		SetBkColor(hdc, RGB((uint8_t)(255 - r), (uint8_t)(255 - g), (uint8_t)(255 - b)));
@@ -475,34 +355,30 @@ int LHText::DrawSimple(long x, long y, char* text, LHColor* color, int mode)
 		SetBkMode(hdc, TRANSPARENT);
 	SetTextColor(hdc, RGB(r, g, b));
 
-	int done = 0;
 	int lineBreak = -1;
 	do
 	{
 		int i = lineBreak + 1;
-		if (lineBreak == -2)
+		if (i == -1)
 			i = 0;
-		char        c = text[i];
-		const char* line = &text[i];
-		if (c)
+		char* line = &text[i];
+		while (text[i])
 		{
-			while (c != 10)
+			if (text[i] == LH_TEXT_CHAR_NEWLINE)
 			{
-				c = text[++i];
-				if (!c)
-					goto emit;
+				lineBreak = i;
+				break;
 			}
-			lineBreak = i;
+			++i;
 		}
-	emit:
 		if (!text[i])
-			done = 1;
+			done = true;
 		if (lineBreak != -1)
 			text[lineBreak] = 0;
 		TextOutA(hdc, x, y, line, strlen(line));
 		if (lineBreak != -1)
-			text[lineBreak] = 10;
-		y += 13;
+			text[lineBreak] = LH_TEXT_CHAR_NEWLINE;
+		y += LINE_PITCH;
 	} while (!done);
 
 	LHSys::GetScreen().PBackSurface->ReleaseDC(hdc);

@@ -92,6 +92,8 @@ struct LHScreen
 	IDirectDrawSurface7* GetBackSurface() { return PBackSurface; }
 	// BW1W120 inlined BW1M119 01131f10 (LHCombined Release)
 	LHRegion GetGraphicsWindow() { return GraphicsWindow; }
+	// BW1W120 inlined BW1M119 0115ed90 (LHCombined Release)
+	LHRegion GetTextWindow() { return TextWindow; }
 	// BW1W120 inlined BW1M119 01131c70 (LHCombined Release)
 	uint8_t GetMaxRed() { return maxRed; }
 	// BW1W120 inlined BW1M119 01131ce0 (LHCombined Release)
