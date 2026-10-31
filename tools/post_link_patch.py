@@ -838,6 +838,16 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0063AB7B, call_rel32(0x004017F9)),  # Object3D
     (0x0063B0AB, call_rel32(0x004017F9)),  # Object3D
     (0x0063B8CB, call_rel32(0x004017F9)),  # OnMapTrajectory
+    (0x006975FB, call_rel32(0x004017F9)),  # PSysLoad
+    (0x00697D5B, call_rel32(0x004017F9)),  # PSysLoad
+    (0x006994AB, call_rel32(0x004017F9)),  # PSysLoad
+    (0x0069969B, call_rel32(0x004017F9)),  # PSysLoad
+    (0x0069977B, call_rel32(0x004017F9)),  # PSysLoad
+    (0x00699D3B, call_rel32(0x004017F9)),  # PSysLoad
+    (0x00699D5B, call_rel32(0x004017F9)),  # PSysLoad
+    (0x00699D7B, call_rel32(0x004017F9)),  # PSysLoad
+    (0x00699D9B, call_rel32(0x004017F9)),  # PSysLoad
+    (0x00699DBB, call_rel32(0x004017F9)),  # PSysLoad
 )
 
 
@@ -1617,6 +1627,72 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0063F635, jmp_run(0x0063F5CB)),  # OnMapTrajectory
     (0x0063F6A3, copy_run(0x0063F633)),  # OnMapTrajectory
     (0x0063F892, jmp_run(0x0063F6A3)),  # OnMapTrajectory
+    (0x00698CF3, jmp_run(0x00698C4B)),  # PSysLoad
+    (0x00698DA7, copy_run(0x00698CF3)),  # PSysLoad
+    (0x00698DC3, copy_run(0x00698DA7)),  # PSysLoad
+    (0x006990D8, jmp_run(0x00698DC3)),  # PSysLoad
+    (0x00699687, copy_run(0x004057E9)),  # PSysLoad
+    (0x00699791, jmp_run(0x00699687)),  # PSysLoad
+    (0x006998A6, copy_run(0x004211D0)),  # PSysLoad
+    (0x00699923, copy_run(0x004211D0)),  # PSysLoad
+    (0x00699A75, jmp_run(0x00699923)),  # PSysLoad
+    (0x00699C33, jmp_run(0x00699A75)),  # PSysLoad
+    (0x00699CA8, copy_run(0x004211D0)),  # PSysLoad
+    (0x0069A0DA, jmp_run(0x00699CA8)),  # PSysLoad
+    (0x0069A14A, copy_run(0x00401C45)),  # PSysLoad
+    (0x0069A163, copy_run(0x00401C45)),  # PSysLoad
+    (0x0069A2C1, copy_run(0x0069A163)),  # PSysLoad
+    (0x0069A3B8, jmp_run(0x0069A2C1)),  # PSysLoad
+    (0x0069A502, copy_run(0x00401C45)),  # PSysLoad
+    (0x0069A819, jmp_run(0x0069A502)),  # PSysLoad
+    (0x0069ACD9, jmp_run(0x0069A819)),  # PSysLoad
+    (0x0069AE69, copy_run(0x0041A36D)),  # PSysLoad
+    (0x0069B016, jmp_run(0x0069AE69)),  # PSysLoad
+    (0x0069B08A, copy_run(0x0040765F)),  # PSysLoad
+    (0x0069B238, jmp_run(0x0069B08A)),  # PSysLoad
+    (0x0069B343, copy_run(0x004211D0)),  # PSysLoad
+    (0x0069B3FA, jmp_run(0x0069B343)),  # PSysLoad
+    (0x0069B504, copy_run(0x004211D0)),  # PSysLoad
+    (0x0069B9D6, jmp_run(0x0069B504)),  # PSysLoad
+    (0x0069BB94, jmp_run(0x0069B9D6)),  # PSysLoad
+    (0x0069BEFB, jmp_run(0x0069BB94)),  # PSysLoad
+    (0x0069BF6A, copy_run(0x0040765F)),  # PSysLoad
+    (0x0069C0F9, jmp_run(0x0069BF6A)),  # PSysLoad
+    (0x0069C16A, copy_run(0x004192B8)),  # PSysLoad
+    (0x0069C51A, jmp_run(0x0069C16A)),  # PSysLoad
+    (0x0069C65B, jmp_run(0x0069C51A)),  # PSysLoad
+    (0x0069C9DA, jmp_run(0x0069C65B)),  # PSysLoad
+    (0x0069CC46, copy_run(0x004211D0)),  # PSysLoad
+    (0x0069CDC7, copy_run(0x004211D0)),  # PSysLoad
+    (0x0069D065, copy_run(0x004211D0)),  # PSysLoad
+    (0x0069D274, jmp_run(0x0069D065)),  # PSysLoad
+    (0x0069D424, copy_run(0x004211D0)),  # PSysLoad
+    (0x0069D8B1, jmp_run(0x0069D424)),  # PSysLoad
+    (0x0069D961, copy_run(0x004211D0)),  # PSysLoad
+    (0x0069DCCA, copy_run(0x0040765F)),  # PSysLoad
+    (0x0069DDAB, copy_run(0x0040765F)),  # PSysLoad
+    (0x0069DEB4, jmp_run(0x0069DDAB)),  # PSysLoad
+    (0x0069DF9B, jmp_run(0x0069DEB4)),  # PSysLoad
+    (0x0069E07B, jmp_run(0x0069DF9B)),  # PSysLoad
+    (0x0069E316, jmp_run(0x0069E07B)),  # PSysLoad
+    (0x0069E359, jmp_run(0x0069E316)),  # PSysLoad
+    (0x0069E4F8, jmp_run(0x0069E359)),  # PSysLoad
+    (0x0069E63B, jmp_run(0x0069E4F8)),  # PSysLoad
+    (0x0069E65B, jmp_run(0x0069E63B)),  # PSysLoad
+    (0x0069E67B, jmp_run(0x0069E65B)),  # PSysLoad
+    (0x0069E69B, jmp_run(0x0069E67B)),  # PSysLoad
+    (0x0069E6BB, jmp_run(0x0069E69B)),  # PSysLoad
+    (0x0069E6E1, copy_run(0x0069E6BB)),  # PSysLoad
+    (0x0069E734, jmp_run(0x0069E6E1)),  # PSysLoad
+    (0x0069E784, copy_run(0x00407744)),  # PSysLoad
+    (0x0069E817, jmp_run(0x0069E784)),  # PSysLoad
+    (0x0069E857, jmp_run(0x0069E817)),  # PSysLoad
+    (0x0069E881, copy_run(0x00401C45)),  # PSysLoad
+    (0x0069E8B1, jmp_run(0x0069E881)),  # PSysLoad
+    (0x0069E947, copy_run(0x0067BD21)),  # PSysLoad
+    (0x0069EA79, jmp_run(0x0069E947)),  # PSysLoad
+    (0x0069EB41, copy_run(0x00686D59)),  # PSysLoad
+    (0x0069EBC8, copy_run(0x0069675B)),  # PSysLoad
     (0x006AF833, jmp_run(0x006AF72B)),  # PSysProperties
     (0x006AF867, copy_run(0x006AF833)),  # PSysProperties
     (0x006AFA8B, copy_run(0x006AF867)),  # PSysProperties
@@ -2132,6 +2208,55 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006CB827, copy_run(0x006CB72A)),  # PSysProperties
     (0x006CBB55, jmp_run(0x006CB827)),  # PSysProperties
     (0x006CBC98, jmp_run(0x006CBB55)),  # PSysProperties
+    (0x006CF873, jmp_run(0x006CF81B)),  # PSysSave
+    (0x006CF927, copy_run(0x006CF873)),  # PSysSave
+    (0x006CF943, copy_run(0x006CF927)),  # PSysSave
+    (0x006CFC29, copy_run(0x004015F2)),  # PSysSave
+    (0x006CFF61, copy_run(0x00401C45)),  # PSysSave
+    (0x006D019B, jmp_run(0x006CFF61)),  # PSysSave
+    (0x006D02A1, copy_run(0x0052CB2B)),  # PSysSave
+    (0x006D0433, jmp_run(0x006D02A1)),  # PSysSave
+    (0x006D0591, jmp_run(0x006D0433)),  # PSysSave
+    (0x006D0767, copy_run(0x00401C45)),  # PSysSave
+    (0x006D07D8, jmp_run(0x006D0767)),  # PSysSave
+    (0x006D08F7, jmp_run(0x006D07D8)),  # PSysSave
+    (0x006D0A4B, copy_run(0x00401C45)),  # PSysSave
+    (0x006D0C3A, jmp_run(0x006D0A4B)),  # PSysSave
+    (0x006D0CAA, copy_run(0x00401C45)),  # PSysSave
+    (0x006D0CC3, copy_run(0x00401C45)),  # PSysSave
+    (0x006D0E21, copy_run(0x0069A163)),  # PSysSave
+    (0x006D1069, copy_run(0x00401C45)),  # PSysSave
+    (0x006D1354, jmp_run(0x006D1069)),  # PSysSave
+    (0x006D1841, copy_run(0x00401C45)),  # PSysSave
+    (0x006D19A6, copy_run(0x00401C45)),  # PSysSave
+    (0x006D1B6A, copy_run(0x00401C45)),  # PSysSave
+    (0x006D1BDA, jmp_run(0x006D1B6A)),  # PSysSave
+    (0x006D1D88, copy_run(0x00401C45)),  # PSysSave
+    (0x006D1E96, jmp_run(0x006D1D88)),  # PSysSave
+    (0x006D1F4A, copy_run(0x0040765F)),  # PSysSave
+    (0x006D2328, copy_run(0x004211D0)),  # PSysSave
+    (0x006D2536, jmp_run(0x006D2328)),  # PSysSave
+    (0x006D26F8, jmp_run(0x006D2536)),  # PSysSave
+    (0x006D2ACA, copy_run(0x00401C45)),  # PSysSave
+    (0x006D2C26, copy_run(0x00401C45)),  # PSysSave
+    (0x006D2C9A, jmp_run(0x006D2C26)),  # PSysSave
+    (0x006D2F87, copy_run(0x00401C45)),  # PSysSave
+    (0x006D2FFA, jmp_run(0x006D2F87)),  # PSysSave
+    (0x006D3288, copy_run(0x004211D0)),  # PSysSave
+    (0x006D34DA, jmp_run(0x006D3288)),  # PSysSave
+    (0x006D3647, copy_run(0x004211D0)),  # PSysSave
+    (0x006D38E7, copy_run(0x004211D0)),  # PSysSave
+    (0x006D3B38, jmp_run(0x006D38E7)),  # PSysSave
+    (0x006D4155, jmp_run(0x006D3B38)),  # PSysSave
+    (0x006D4381, copy_run(0x00401C45)),  # PSysSave
+    (0x006D4431, jmp_run(0x006D4381)),  # PSysSave
+    (0x006D4521, copy_run(0x004211D0)),  # PSysSave
+    (0x006D4D18, jmp_run(0x006D4521)),  # PSysSave
+    (0x006D4EC4, copy_run(0x004057E9)),  # PSysSave
+    (0x006D5014, jmp_run(0x006D4EC4)),  # PSysSave
+    (0x006D5064, copy_run(0x00407744)),  # PSysSave
+    (0x006D5143, copy_run(0x00407744)),  # PSysSave
+    (0x006D5242, copy_run(0x006D5143)),  # PSysSave
     (0x00715EE3, copy_run(0x00715E65)),  # ScriptTimer
     (0x00715F56, jmp_run(0x00715EE3)),  # ScriptTimer
     (0x00715F78, jmp_run(0x00715F56)),  # ScriptTimer

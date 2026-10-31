@@ -1861,10 +1861,10 @@ bool32_t Object::Save(GameOSFile& file)
 	{
 		file.WriteInfo(info);
 		WRITE_SAFE(file, coords);
-		WRITE_SAFE(file, ObjectCreationIndex);
-		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(life));
-		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(scale));
-		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(y_angle));
+		WRITE_IT(file, ObjectCreationIndex);
+		WRITE_IT(file, reinterpret_cast<uint32_t&>(life));
+		WRITE_IT(file, reinterpret_cast<uint32_t&>(scale));
+		WRITE_IT(file, reinterpret_cast<uint32_t&>(y_angle));
 		file.WritePtr(fire_effect.Get());
 		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & GAME_THING_FLAG_PSYS_FLYING) == 0)
 		{

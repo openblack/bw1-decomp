@@ -16,7 +16,8 @@ template <class T> inline GJVector<T>::GJVector() : Data(NULL), Capacity(0), Siz
 
 template <class T> inline GJVector<T>::~GJVector()
 {
-	for (T* entry = Data; entry < Data + Size; ++entry)
+	T* end = Data + Size;
+	for (T* entry = Data; entry < end; ++entry)
 	{
 		entry->~T();
 	}
@@ -57,6 +58,24 @@ template <class T> inline void GJVector<T>::Grow(long capacity)
 		Data = data;
 		Capacity = capacity;
 	}
+}
+
+template <class T> inline GJVector<T>& GJVector<T>::operator=(const GJVector<T>& other)
+{
+	if (this == &other)
+	{
+		return *this;
+	}
+	T* data = MemoryAllocator.Allocate(other.Size);
+	T* destination = data;
+	for (T* entry = other.Data; entry < other.Data + other.Size; ++entry)
+	{
+		MemoryAllocator.Construct(destination++, *entry);
+	}
+	MemoryAllocator.DeAllocate(Data, Capacity);
+	Data = data;
+	Size = Capacity = other.Size;
+	return *this;
 }
 
 template <class T> inline long GJVector<T>::GetSize() const

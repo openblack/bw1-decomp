@@ -1981,24 +1981,24 @@ Black/PSysProperties.cpp:
 	.bss        start:0x00DD0178 end:0x00DD0198
 
 Black/PSysRenderParticle.cpp:
-	.text       start:0x006DC190 end:0x006DFBF0
+	.text       start:0x006DC190 end:0x006DFC60
 	.rdata      start:0x009914CC end:0x0099294C
 	.CRT$XCU    start:0x00A36F6C end:0x00A36F88 align:4
 	.data       start:0x00C79EF0 end:0x00C7A1A8
-	.bss        start:0x00DD0198 end:0x00DD0210
+	.bss        start:0x00DD0198 end:0x00DD0208
 
 Black/PSysSave.cpp:
-	.text       start:0x006DFBF0 end:0x006E55C0
+	.text       start:0x006DFC60 end:0x006E5690
 	.rdata      start:0x0099294C end:0x00992954
 	.CRT$XCU    start:0x00A36F88 end:0x00A36FA0 align:4
-	.bss        start:0x00DD0210 end:0x00DD0240
+	.bss        start:0x00DD0208 end:0x00DD0228
 
 Black/PSysShield.cpp:
-	.text       start:0x006E55C0 end:0x006E59B0
+	.text       start:0x006E5690 end:0x006E59B0
 	.rdata      start:0x00992954 end:0x00992A74
 	.CRT$XCU    start:0x00A36FA0 end:0x00A36FAC align:4
 	.data       start:0x00C7A1A8 end:0x00C7A244
-	.bss        start:0x00DD0240 end:0x00DD0260
+	.bss        start:0x00DD0228 end:0x00DD0260
 
 Black/PSysSound.cpp:
 	.text       start:0x006E59B0 end:0x006E6260

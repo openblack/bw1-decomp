@@ -21,12 +21,18 @@ public:
 	ParticleCreator* Creator;
 	LH3DSprite*      Sprite;
 	uint8_t          FrameOffset;
-	uint8_t          Flag0 : 1;
-	uint8_t          Flag1 : 1;
-	uint8_t          Flag2 : 1;
-	uint8_t          Flag3 : 1;
-	float            PreviousScale;
-	float            Scale;
+	union {
+		struct
+		{
+			uint8_t Flag0 : 1;
+			uint8_t Flag1 : 1;
+			uint8_t Flag2 : 1;
+			uint8_t Flag3 : 1;
+		};
+		uint8_t Flags;
+	};
+	float PreviousScale;
+	float Scale;
 
 	// Override methods
 

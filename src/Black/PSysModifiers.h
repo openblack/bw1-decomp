@@ -69,6 +69,8 @@ static_assert(sizeof(BaseCollectionModifierData) == 0x20, "Data type is of wrong
 class DrawOffset : public PSysBase
 {
 public:
+	uint16_t ReferenceCount;
+
 	// Override methods
 
 	// BW1W120 006c7550 BW1M119 01486480
@@ -88,12 +90,22 @@ public:
 	virtual void GetOffset(LHPoint* offset) = 0;
 	// BW1W120 006c7510 BW1M119 01486510
 	virtual void SetRefPos(const LHPoint& pos, float amount);
+
+	// BW1W120 006c7570 BW1M119 01486440
+	void AddReference();
+	// BW1W120 006c7580 BW1M119 014863c0
+	void DecReference();
 };
 
 class DrawOffsetDecay : public DrawOffset
 {
 public:
-	uint8_t field_0x14[0x2c];
+	DrawOffsetDecay* Previous;
+	DrawOffsetDecay* Next;
+	LHPoint          StartOffset;
+	LHPoint          CurrentOffset;
+	float            Age;
+	float            DecayRate;
 
 	// Override methods
 
@@ -115,11 +127,13 @@ public:
 	// BW1W120 006c7840 BW1M119 01485fd0
 	DrawOffsetDecay(const LHPoint& offset);
 };
+static_assert(sizeof(DrawOffsetDecay) == 0x40, "Data type is of wrong size");
 
 class DrawOffsetLT : public DrawOffset
 {
 public:
-	uint8_t field_0x14[0x14];
+	float   Amount;
+	LHPoint RefPos;
 
 	// Override methods
 
@@ -141,6 +155,7 @@ public:
 	// BW1W120 006c75a0 BW1M119 01486330
 	DrawOffsetLT();
 };
+static_assert(sizeof(DrawOffsetLT) == 0x28, "Data type is of wrong size");
 
 class GJAnimVolFX : public PSysBase
 {

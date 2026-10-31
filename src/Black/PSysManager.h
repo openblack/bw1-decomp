@@ -53,7 +53,7 @@ public:
 	float                         InitialSpeed;
 	float                         Magnitude;
 	float                         CloseDownAge;
-	Spell*                        OwnerSpell;
+	GameThing*                    OwnerSpell;
 	bool                          field_0xac;
 	bool                          field_0xad;
 	uint8_t                       field_0xae;

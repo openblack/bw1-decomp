@@ -60,9 +60,11 @@ public:
 	long      GrowthIncrement;
 	Allocator MemoryAllocator;
 
+	// BW1W120 0069a250 BW1M119 inlined
+	GJVector& operator=(const GJVector& other);
+
 private:
 	GJVector(const GJVector&);
-	GJVector& operator=(const GJVector&);
 };
 
 // A fixed-size heap array. Unlike GJVector it constructs its entries with new[] and has no spare

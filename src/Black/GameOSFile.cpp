@@ -1543,46 +1543,20 @@ void GameOSFile::ReadSafe(CollectionAndOwnership& value)
 
 void GameOSFile::WriteSafe(LightningObjectInfo& value)
 {
-	if (!WriteEnabled)
+	if (WriteEnabled)
 	{
-		return;
+		WriteSafe(value.Target);
+		WriteIt(value.Position);
+		WriteIt(value.Valid);
+		WriteIt(value.InRange);
+		WriteIt(value.Hit);
+		WriteIt(value.ForkIndex);
 	}
-	WriteIt(reinterpret_cast<unsigned int&>(value.TargetGameTurn));
-	WriteSafe(reinterpret_cast<GameThing* const&>(value.Target));
-	if (!WriteEnabled)
-	{
-		return;
-	}
-	WriteIt(value.Position);
-	if (!WriteEnabled)
-	{
-		return;
-	}
-	WriteIt(value.Valid);
-	if (!WriteEnabled)
-	{
-		return;
-	}
-	WriteIt(value.InRange);
-	if (!WriteEnabled)
-	{
-		return;
-	}
-	WriteIt(value.Hit);
-	if (!WriteEnabled)
-	{
-		return;
-	}
-	WriteIt(value.ForkIndex);
 }
 
 void GameOSFile::ReadSafe(LightningObjectInfo& value)
 {
-	if (ReadEnabled)
-	{
-		ReadIt(reinterpret_cast<unsigned int&>(value.TargetGameTurn));
-		ReadSafe(reinterpret_cast<GameThing*&>(value.Target));
-	}
+	ReadSafe(value.Target);
 	ReadIt(value.Position);
 	ReadIt(value.Valid);
 	ReadIt(value.InRange);

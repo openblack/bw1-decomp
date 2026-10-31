@@ -50,22 +50,34 @@ public:
 	float                                        BirthTime;
 	PSysManager*                                 Manager;
 	long                                         Group;
-	uint8_t                                      InGlobalCoords : 1;
-	uint8_t                                      InterpolateDrawPos : 1;
-	uint8_t                                      field_0x38 : 6;
-	uint8_t                                      field_0x39;
-	uint8_t                                      field_0x3a;
-	uint8_t                                      field_0x3b;
-	AtomCore*                                    ParentAtom;
-	GJDoubleLinkList<AtomCore>                   Atoms;
-	Chain*                                       ParticleChain;
-	bool32_t                                     TransmitsTransform;
-	uint8_t                                      Alpha;
+	union {
+		struct
+		{
+			uint8_t InGlobalCoords : 1;
+			uint8_t InterpolateDrawPos : 1;
+			uint8_t field_0x38 : 6;
+		};
+		uint8_t Flags;
+	};
+	uint8_t                    field_0x39;
+	uint8_t                    field_0x3a;
+	uint8_t                    field_0x3b;
+	AtomCore*                  ParentAtom;
+	GJDoubleLinkList<AtomCore> Atoms;
+	Chain*                     ParticleChain;
+	bool32_t                   TransmitsTransform;
+	uint8_t                    Alpha;
 
 	// BW1W120 00674890 BW1M119 013eac80
 	virtual ~AtomCollection();
 	// BW1W120 00674880 BW1M119 0142cb40
 	virtual char* GetDebugText();
+	// BW1W120 00694b30 BW1M119 01425ed0
+	virtual bool32_t Load(GameOSFile& file);
+	// BW1W120 006cb680 BW1M119 0148cc30
+	virtual bool32_t Save(GameOSFile& file);
+	// BW1W120 00699d00 BW1M119 01420960
+	virtual void ResolveLoad();
 	// BW1W120 00674870 BW1M119 0142cb00
 	virtual uint32_t GetSaveType();
 
@@ -96,6 +108,8 @@ public:
 	AtomCore* GetParentAtom() const { return ParentAtom; }
 	// BW1W120 inlined BW1M119 013e9d50
 	bool IsInGlobalCoords() { return InGlobalCoords; }
+	// BW1W120 inlined BW1M119 013eabc0
+	void SetParentAtom(AtomCore* parent);
 
 	template <class T> void FindModifier(const T*& modifier) const
 	{
@@ -147,24 +161,30 @@ public:
 	float                                  StretchHeight;
 	LHPoint                                LocalPos;
 	LH3DColor                              Colour;
-	LH3DColor                              Specular;
-	uint8_t                                Flag0 : 1;
-	uint8_t                                Flag1 : 1;
-	uint8_t                                Flag2 : 1;
-	uint8_t                                HasBeenDeflected : 1;
-	uint8_t                                InUse : 1;
-	uint8_t                                field_0x95;
-	uint16_t                               field_0x96;
-	CalculateDrawPosInfo                   DrawPosInfo;
-	CalculateDrawPosInfo                   LastDrawPosInfo;
-	float                                  field_0x108;
-	float                                  FrameTime;
-	PSysAnimInfo                           AnimInfo;
-	float                                  GravityScale;
-	AtomCollection*                        Collection;
-	DrawOffset*                            Offset;
-	RenderParticle*                        Particle;
-	uint8_t                                RandomSeed;
+	uint32_t                               Specular;
+	union {
+		struct
+		{
+			uint8_t Flag0 : 1;
+			uint8_t Flag1 : 1;
+			uint8_t Flag2 : 1;
+			uint8_t HasBeenDeflected : 1;
+			uint8_t InUse : 1;
+			uint8_t field_0x95;
+		};
+		uint16_t Flags;
+	};
+	uint16_t             field_0x96;
+	CalculateDrawPosInfo DrawPosInfo;
+	CalculateDrawPosInfo LastDrawPosInfo;
+	float                field_0x108;
+	float                FrameTime;
+	PSysAnimInfo         AnimInfo;
+	float                GravityScale;
+	AtomCollection*      Collection;
+	DrawOffset*          Offset;
+	RenderParticle*      Particle;
+	uint8_t              RandomSeed;
 
 	// Override methods
 
@@ -291,6 +311,22 @@ static_assert(offsetof(AtomCore, DrawPosInfo) == 0x98, "Data member is at wrong 
 static_assert(offsetof(AtomCore, AnimInfo) == 0x110, "Data member is at wrong offset");
 static_assert(offsetof(AtomCore, Collection) == 0x120, "Data member is at wrong offset");
 static_assert(sizeof(AtomCore) == 0x130, "Data type is of wrong size");
+
+inline void AtomCollection::SetParentAtom(AtomCore* parent)
+{
+	ParentAtom = parent;
+	if (parent != NULL)
+	{
+		parent->SubCollections.InsertIntoList(this);
+	}
+	for (AtomCore* atom = parent; atom != NULL; atom = atom->GetParentAtom())
+	{
+		if (atom->Collection->TransmitsTransform)
+		{
+			InGlobalCoords = false;
+		}
+	}
+}
 
 #undef PSYS_ATOM_CORE_HEADER_FILE
 
