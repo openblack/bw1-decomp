@@ -48,6 +48,8 @@ block_relocations:
 # MPFEMessageObject's type descriptor name contains a word that reads as a code address.
   - source: 0x009BCF2C
 
+# LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
+  - source: 0x00829555
 add_relocations:
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005C4402

@@ -129,6 +129,20 @@ block_relocations:
 # HelpDude::Draw's evil smoke tint 0x7F1F1F is an immediate, not a pointer into LHDraw::ScaledSprite24.
   - source: 0x005C41F6
 
+# LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
+  - source: 0x0083E8D5
+# LH3DTexture's DDBLT_WAIT (0x1000000) Blt flags are immediates; 1.30's larger image reads them as pointers.
+  - source: 0x0083D252
+  - source: 0x0083D350
+  - source: 0x0083D3CC
+  - source: 0x0083D3E9
+  - source: 0x0083D405
+  - source: 0x0083DA5F
+  - source: 0x0083DD59
+  - source: 0x0083DF6F
+  - source: 0x0083E2DD
+# LH3DTexture::Lock's memset fill 0x1010101 is an immediate.
+  - source: 0x0083DFD8
 add_relocations:
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005CC1B2

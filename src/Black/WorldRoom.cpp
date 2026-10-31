@@ -995,7 +995,7 @@ void WorldRoom::MakeScrollText(bool32_t show_statistics)
 	LH3DTexture* texture = ScrollMaterial->texture;
 	if (texture->GetType() == LH3D_TEXTURE_TYPE_NAMED || texture->GetType() == LH3D_TEXTURE_TYPE_SYSTEM_MEMORY)
 	{
-		texture->ReloadPending = 1;
+		texture->ReloadPending = true;
 	}
 }
 

@@ -3509,7 +3509,14 @@ Lionhead/LH3DLib/development/LH3DText.cpp:
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x0078C9F0 end:0x0078CCE0
+
+Lionhead/LH3DLib/development/LH3DTexture.cpp:
+	.text       start:0x0078CCE0 end:0x0078EDA0
 	.text$x     start:0x007E9F10 end:0x007E9F30 align:4
+	.xdata$x    start:0x008EF750 end:0x008EF778 align:4
+	.CRT$XCU    start:0x008F74D8 end:0x008F74DC align:4
+	.data       start:0x00B5AE98 end:0x00B5B034
+	.bss        start:0x00DF8150 end:0x00DF8230 align:8
 
 Lionhead/LH3DLib/development/LH3DAnimation.cpp:
 	.text       start:0x0078EDE0 end:0x0078FD50

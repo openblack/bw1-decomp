@@ -28,6 +28,8 @@ block_relocations:
   - source: 0x008FC23C
   - source: 0x008FC3AC
 
+# LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
+  - source: 0x0078EC85
 add_relocations:
 # libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
   - source: 0x007E6D90

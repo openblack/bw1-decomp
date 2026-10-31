@@ -117,6 +117,21 @@ block_relocations:
   - source: 0x0040C1FD
   - source: 0x0040C28E
   - source: 0x0040CCDB
+# LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
+  - source: 0x00856E05
+# LH3DTexture's DDBLT_WAIT (0x1000000) Blt flags are immediates; Creature Isle's larger image reads them as pointers.
+  - source: 0x00855492
+  - source: 0x00855590
+  - source: 0x0085560C
+  - source: 0x00855629
+  - source: 0x00855645
+  - source: 0x00855CD6
+  - source: 0x00855F82
+  - source: 0x00856289
+  - source: 0x0085649F
+  - source: 0x0085680D
+# LH3DTexture::Lock's memset fill 0x1010101 is an immediate.
+  - source: 0x00856508
 add_relocations:
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005DDFC2
