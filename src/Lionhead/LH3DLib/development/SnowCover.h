@@ -2,6 +2,7 @@
 #define BW1_DECOMP_SNOW_COVER_INCLUDED_H
 
 #include <assert.h>
+#include <stdint.h> /* For uint16_t */
 
 struct LHPoint;
 
@@ -27,6 +28,8 @@ public:
 	void Melt(float time);
 	// BW1W120 0086cb80 BW1M119 01027e20 (LHCombined Release)
 	float GetDepth(LHPoint& point);
+	// BW1W120 0086cba0 BW1M119 010b35e0 (LHCombined Release)
+	void DrawSnowLoc(int grid_z, int grid_x, uint16_t* dest, int size);
 };
 
 static_assert(sizeof(SnowCover) == 0x1100c, "SnowCover size is incorrect");

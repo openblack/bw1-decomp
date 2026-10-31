@@ -3,6 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 
+#include <re_common.h> /* For bool32_t */
+
 #include "LHCoordF.h" /* For struct LHCoordF */
 #include "LHMatrix.h" /* For struct LHMatrix */
 
@@ -19,7 +21,7 @@ struct LH3DJustFootPrint
 	LH3DMesh*          Mesh;
 	LH3DJustFootPrint* Next;
 	LHMatrix           Matrix;
-	int                field_0x38;
+	bool32_t           UseAlpha;
 	LHCoordF           Min;
 	LHCoordF           Max;
 	int                Opacity;

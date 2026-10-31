@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_SOFT_TRI_INCLUDED_H
 #define BW1_DECOMP_SOFT_TRI_INCLUDED_H
 
+#include <stdint.h> /* For uint8_t */
+
 // A software triangle rasteriser.
 struct SoftTri
 {
@@ -8,6 +10,9 @@ struct SoftTri
 	static int CLIPX;
 	// BW1W120 00c39b0c BW1M119 011d119c (LHCombined Release)
 	static int CLIPY;
+	// A darkness for each shadow value.
+	// BW1W120 00fa94c4 BW1M119 012d206c (LHCombined Release)
+	static uint8_t bit2char[256];
 	// BW1W120 00faa7cc BW1M119 012d236c (LHCombined Release)
 	static int maxy;
 	// BW1W120 00faa7d0 BW1M119 012d2370 (LHCombined Release)

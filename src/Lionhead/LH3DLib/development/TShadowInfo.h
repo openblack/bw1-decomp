@@ -1,6 +1,7 @@
 #ifndef BW1_DECOMP_T_SHADOW_INFO_INCLUDED_H
 #define BW1_DECOMP_T_SHADOW_INFO_INCLUDED_H
 
+#include <assert.h>    /* For static_assert */
 #include <stdint.h>    /* For uint32_t, uint8_t */
 #include <re_common.h> /* For bool32_t */
 
@@ -45,6 +46,7 @@ struct TShadowInfo
 	uint32_t      field_0x45c;
 	LH3DMaterial* Material; /* 0x460 */
 	LH3DObject*   Caster;
+	uint8_t       field_0x468[0x44];
 
 	// BW1W120 00faa7e0 BW1M119 012d337c (LHCombined Release)
 	static TShadowInfo* g_first;
@@ -69,6 +71,7 @@ struct TShadowInfo
 	// BW1W120 00880fc0 BW1M119 0100c350 (LHCombined Release)
 	void __fastcall renderbuffer(uint16_t* buffer, long pitch);
 };
+static_assert(sizeof(TShadowInfo) == 0x4ac, "Data type is of wrong size");
 
 // BW1W120 00874600 BW1M119 010138d0 (LHCombined Release)
 float GetAlphaForShadow(LH3DObject* object);

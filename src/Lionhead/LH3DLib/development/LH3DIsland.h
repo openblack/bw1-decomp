@@ -7,8 +7,10 @@
 #include <re_common.h> /* For bool32_t */
 
 #include "LH3DMapCoords.h"
+#include "LH3DMeshLodLevel.h" /* For LH3D_MESH_LOD_LEVEL */
 #include "LHMatrix.h"
 #include "LHPoint.h"
+#include "DynamicLightAndShadow.h"
 
 // Forward Declares
 
@@ -33,7 +35,11 @@ struct TShadowInfo;
 #define LAND_CELL_SOUND_LOW_BIT           0x400
 #define LAND_CELL_SOUND_MASK              0xf
 #define LAND_INV_SQR_ARRAY_SIZE           1024
+#define LAND_DISTANCE_ARRAY_SIZE          256
 #define LAND_WEIGHT_ONE                   256
+#define LAND_CELL_SIZE                    10.0f
+#define LAND_BLOCK_WIDTH                  (LAND_CELL_SIZE * LAND_MESH_LOD_0_CELLS)
+#define LAND_BLOCK_IN_FRUSTUM             0x4
 #define LAND_MAP_SIZE                     512
 #define LAND_MAP_MAX                      (LAND_MAP_SIZE - 1)
 #define LAND_MAP_POINTS                   ((LAND_MAP_SIZE + 1) * (LAND_MAP_SIZE + 1))
@@ -44,6 +50,9 @@ struct TShadowInfo;
 #define LAND_RAY_CAST_SEA_RANGE           7500.0f
 #define LAND_RAY_CELL_MIN                 0.1f
 #define LAND_RAY_CELL_MAX                 (LAND_MAP_SIZE - LAND_RAY_CELL_MIN)
+#define LAND_RAY_CELL_EDGE_MIN            -0.1f
+#define LAND_RAY_CELL_EDGE_MAX            1.1f
+#define LAND_RAY_CELL_EDGE_INNER          0.9f
 #define LAND_RAY_CAST_INFINITY            1e20
 #define LAND_PLANES_PARALLEL_EPSILON      0.0001f
 #define LAND_MESH_LOD_0_CELLS             16
@@ -97,6 +106,8 @@ struct LandCell
 	uint8_t  SaveColor;
 	uint16_t Flags;
 
+	// BW1W120 00edd50c BW1M119 01202b80 (LHCombined Release)
+	static unsigned long g_darkness[LAND_CELL_MAX_DARKNESS + 1];
 	// Light colour for each darkness level.
 	// BW1W120 00edd90c BW1M119 01202f80 (LHCombined Release)
 	static unsigned long g_darkness_to_color[LAND_CELL_MAX_DARKNESS + 1];
@@ -109,9 +120,9 @@ struct LandCell
 	// BW1W120 inlined BW1M119 0100f850
 	bool32_t IsWater() { return Flags & LAND_CELL_WATER; }
 	// BW1W120 inlined BW1M119 0106a4f0
-	bool IsLand() { return !(Flags & LAND_CELL_WATER); }
+	bool32_t IsLand() { return !(Flags & LAND_CELL_WATER); }
 	// BW1W120 inlined BW1M119 013e9470
-	bool IsCoastal() { return !IsWater() && (Flags & LAND_CELL_COAST); }
+	bool32_t IsCoastal() { return IsLand() && (Flags & LAND_CELL_COAST); }
 	// BW1W120 inlined BW1M119 0104b470 (LHCombined Release)
 	void SetLand() { Flags &= ~(LAND_CELL_WATER | LAND_CELL_COAST); }
 	// BW1W120 inlined BW1M119 inlined
@@ -176,6 +187,20 @@ struct TextureLOD
 		HalfWidth = Width * 0.5f;
 		Distance = distance;
 	}
+	// BW1W120 inlined BW1M119 inlined
+	int GetLevel(float x, float z)
+	{
+		float distance = (x - Point.x) * Normal.z - (z - Point.z) * Normal.x;
+		if (distance > HalfWidth)
+		{
+			return LAND_TEXTURE_LOD_HIGH;
+		}
+		if (distance < -HalfWidth)
+		{
+			return LAND_TEXTURE_LOD_LOW;
+		}
+		return LAND_TEXTURE_LOD_BLEND;
+	}
 	// BW1W120 007fee60 BW1M119 01018b10 (LHCombined Release)
 	void ComputeXLine();
 };
@@ -207,6 +232,20 @@ struct MeshLOD
 		HalfWidth = width * 0.5f;
 		Distance = distance;
 	}
+	// BW1W120 inlined BW1M119 inlined
+	LH3D_MESH_LOD_LEVEL GetLevel(float x, float z)
+	{
+		float distance = (x - Point.x) * Normal.z - (z - Point.z) * Normal.x;
+		if (distance > HalfWidth)
+		{
+			return LH3D_MESH_LOD_LEVEL_NEAR;
+		}
+		if (distance < -HalfWidth)
+		{
+			return LH3D_MESH_LOD_LEVEL_FAR;
+		}
+		return LH3D_MESH_LOD_LEVEL_MEDIUM;
+	}
 	// BW1W120 007ff0e0 BW1M119 01018d90 (LHCombined Release)
 	void ComputeXLine();
 };
@@ -218,6 +257,11 @@ struct LowResTexture
 	LH3DMaterial* Material; /* 0x4 */
 	int           Count;    /* 0x8 */
 	int           Index;    /* 0xc */
+
+	// BW1W120 00e9a298 BW1M119 01200444 (LHCombined Release)
+	static LowResTexture* g_list[LOW_RES_TEXTURE_MAX];
+	// BW1W120 00e9cd98 BW1M119 01200440 (LHCombined Release)
+	static int g_count;
 
 	// BW1W120 007fed20 BW1M119 0104c400 (LHCombined Release)
 	static LowResTexture* GetNewTexture(long* u, long* v);
@@ -240,6 +284,15 @@ struct LowResTexture
 };
 static_assert(sizeof(LowResTexture) == 0x10, "Data type is of wrong size");
 
+enum LAND_MESH_ZONE
+{
+	LAND_MESH_ZONE_NEAR,
+	LAND_MESH_ZONE_NEAR_TO_MEDIUM,
+	LAND_MESH_ZONE_MEDIUM,
+	LAND_MESH_ZONE_MEDIUM_TO_FAR,
+	LAND_MESH_ZONE_FAR,
+};
+
 struct LandBlock
 {
 	enum LandMeshLOD
@@ -261,30 +314,30 @@ struct LandBlock
 	bool32_t       DrawSmallBump;                                         /* 0x928 */
 	bool32_t       UseLowResTexture;                                      /* 0x92c */
 	LandMeshLOD    MeshLod;                                               /* 0x930 */
-	int            MeshLodZone;                                           /* 0x934 */
+	LAND_MESH_ZONE MeshLodZone;                                           /* 0x934 */
 	int            TextureLod;                                            /* 0x938 */
 	uint32_t       MeshLodType;                                           /* 0x93c */
 	int            FogMode;                                               /* 0x940 */
 	LH3DTexture*   Texture;                                               /* 0x944 */
 	LH3DMaterial*  Material;                                              /* 0x948 */
 	uint32_t       DrawFlags;                                             /* 0x94c */
-	uint32_t       field_0x950;                                           /* 0x950 */
-	uint32_t       field_0x954;                                           /* 0x954 */
-	LHMatrix       field_0x958;                                           /* 0x958 */
-	LHMatrix       field_0x988;                                           /* 0x988 */
-	LandBlock*     Next;                                                  /* 0x9b8 */
-	float          Distance;                                              /* 0x9bc */
-	LowResTexture* LowRes;                                                /* 0x9c0 */
-	float          LowResU;                                               /* 0x9c4 */
-	float          LowResV;                                               /* 0x9c8 */
-	long           LowResPixelU;                                          /* 0x9cc */
-	long           LowResPixelV;                                          /* 0x9d0 */
-	bool32_t       SmallTextureUpdated;                                   /* 0x9d4 */
+	LH3DMaterial*  BeforeMaterial;
+	LH3DMaterial*  AfterMaterial;
+	LHMatrix       BeforeMatrix;
+	LHMatrix       AfterMatrix;
+	LandBlock*     Next;                /* 0x9b8 */
+	float          Distance;            /* 0x9bc */
+	LowResTexture* LowRes;              /* 0x9c0 */
+	float          LowResU;             /* 0x9c4 */
+	float          LowResV;             /* 0x9c8 */
+	long           LowResPixelU;        /* 0x9cc */
+	long           LowResPixelV;        /* 0x9d0 */
+	bool32_t       SmallTextureUpdated; /* 0x9d4 */
 
-	// BW1W120 00fa92dc BW1M119 01202b50 (LHCombined Release)
-	static bool32_t g_draw_reflection;
 	// BW1W120 00fa92d8 BW1M119 01202b54 (LHCombined Release)
 	static LandBlock* g_first_sorting;
+	// BW1W120 00fa92dc BW1M119 01202b50 (LHCombined Release)
+	static bool32_t g_draw_reflection;
 
 	// BW1W120 00874aa0 BW1M119 01025920 (LHCombined Release)
 	bool32_t Draw();
@@ -305,9 +358,17 @@ struct LandBlock
 	// BW1W120 008786d0 BW1M119 0103fbe0 (LHCombined Release)
 	void SetNeedUpdate();
 	// BW1W120 00878f70 BW1M119 0104ce80 (LHCombined Release)
-	void DrawBefore();
+	long DrawBefore();
 	// BW1W120 008790f0 BW1M119 0104cbf0 (LHCombined Release)
-	void DrawAfter();
+	long DrawAfter();
+	// BW1W120 00878700 BW1M119 0103b680 (LHCombined Release)
+	void ClearLight();
+	// BW1W120 00878c70 BW1M119 0103be90 (LHCombined Release)
+	void DrawShadow(DynamicLightAndShadow::StoreInfo* info, uint8_t* map, unsigned long frac_z, unsigned long frac_x);
+	// BW1W120 00878780 BW1M119 0104d4f0 (LHCombined Release)
+	void DrawSpecular(DynamicLightAndShadow::StoreInfo* info, uint8_t* map, unsigned long frac_z, unsigned long frac_x);
+	// BW1W120 00878e30 BW1M119 0104d200 (LHCombined Release)
+	static void ComputeLighting();
 	// BW1W120 007a98b0 BW1M119 null
 	void CreateListPolyP3(LandMeshLOD lod);
 	// BW1W120 007aa8f0 BW1M119 null
@@ -337,6 +398,10 @@ static_assert(sizeof(LandFileHeader) == 0x418, "Data type is of wrong size");
 class LH3DIsland
 {
 public:
+	// BW1W120 00c37200 BW1M119 011ceb1c (LHCombined Release)
+	static float g_distance_vanish;
+	// BW1W120 00c37208 BW1M119 011ceb24 (LHCombined Release)
+	static bool32_t g_b_view_has_changed;
 	// BW1W120 00c3720c BW1M119 011ceb28 (LHCombined Release)
 	static float g_height_unit;
 	// BW1W120 00c37214 BW1M119 011ceb30 (LHCombined Release)
@@ -351,22 +416,54 @@ public:
 	static float g_fog_max;
 	// BW1W120 00c37228 BW1M119 011ceb44 (LHCombined Release)
 	static int g_max_fadefac;
+	// BW1W120 00c3722c BW1M119 011ceb48 (LHCombined Release)
+	static bool32_t g_b_need_rebuild_all;
+	// BW1W120 00e9a2d8 BW1M119 01200494 (LHCombined Release)
+	static float g_inv_sqr_array[LAND_INV_SQR_ARRAY_SIZE];
+	// BW1W120 00e9b2d8 BW1M119 012014a0 (LHCombined Release)
+	static float g_distance_array[LAND_DISTANCE_ARRAY_SIZE];
 	// BW1W120 00e9b6d8 BW1M119 012018a8 (LHCombined Release)
 	static LH3DColor g_max_color_fog;
 	// BW1W120 00e9b6dc BW1M119 012018ac (LHCombined Release)
 	static float g_fog_delta;
+	// BW1W120 00e9b6e0 BW1M119 012018b0 (LHCombined Release)
+	static LandBlock g_dummy_block;
+	// BW1W120 00e9c0b8 BW1M119 0120269c (LHCombined Release)
+	static char g_name_mnt_to_load[1024];
 	// BW1W120 00e9c508 BW1M119 01202af4 (LHCombined Release)
 	static TextureLOD g_texture_lod;
 	// BW1W120 00e9c530 BW1M119 01202b1c (LHCombined Release)
 	static TextureLOD g_sbump_lod;
 	// BW1W120 00e9c964 BW1M119 01202288 (LHCombined Release)
 	static uint8_t g_index_block[LAND_BLOCKS_SIDE][LAND_BLOCKS_SIDE];
+	// BW1W120 00e9c558 BW1M119 0120268c (LHCombined Release)
+	static LHPoint g_hand_position;
 	// BW1W120 00e9c564 BW1M119 011ffed8 (LHCombined Release)
 	static LandBlock* g_ptr_blocks[LAND_MAX_BLOCKS];
 	// BW1W120 00e9cd64 BW1M119 01202aa0 (LHCombined Release)
 	static LH3DMaterial* g_bump_material;
+	// BW1W120 00e9c4b8 BW1M119 01202aa4 (LHCombined Release)
+	static MeshLOD g_mesh_red_12;
+	// BW1W120 00e9c4e0 BW1M119 01202acc (LHCombined Release)
+	static MeshLOD g_mesh_red_01;
+	// BW1W120 00e9cd68 BW1M119 01202a9c (LHCombined Release)
+	static LH3DTexture* g_bump_texture;
 	// BW1W120 00e9cd6c BW1M119 01202698 (LHCombined Release)
 	static LandBlock* g_current_block;
+	// BW1W120 00e9cd88 BW1M119 01200490 (LHCombined Release)
+	static int g_max_index_country;
+	// BW1W120 00c37204 BW1M119 011ceb20 (LHCombined Release)
+	static bool32_t g_b_use_fog;
+	// BW1W120 00c37210 BW1M119 011ceb2c (LHCombined Release)
+	static bool32_t g_b_use_small_bump;
+	// BW1W120 00e9cd8c BW1M119 0120048c (LHCombined Release)
+	static bool32_t g_b_draw_reflection;
+	// BW1W120 00e9cd90 BW1M119 01200488 (LHCombined Release)
+	static bool32_t g_b_use_always_low_texture;
+	// BW1W120 00e9cd80 BW1M119 01201498 (LHCombined Release)
+	static float g_hitx;
+	// BW1W120 00e9cd84 BW1M119 01201494 (LHCombined Release)
+	static float g_hity;
 
 	// Static methods
 

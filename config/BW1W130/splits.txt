@@ -4137,6 +4137,10 @@ Lionhead/LH3DLib/development/LH3DAnimation.cpp:
 	.data       start:0x00CB9F78 end:0x00CB9FD4
 	.bss        start:0x00F5E650 end:0x00F5E6C4
 
+Lionhead/LH3DLib/development/LandCell.cpp:
+	.text       start:0x0083FF70 end:0x00840410
+	.bss        start:0x00F5E6C4 end:0x00F5EEC4
+
 Lionhead/LHLib/ver5.0/Route.cpp:
 	.text       start:0x00840410 end:0x008419C0
 
@@ -4238,6 +4242,17 @@ Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.xdata$x    start:0x00A3F218 end:0x00A3F338 align:4
 	.CRT$XCU    start:0x00A47E70 end:0x00A47E78 align:4
 	.bss        start:0x0102637C end:0x0102638C
+
+Lionhead/LH3DLib/development/LH3DLandscape.cpp:
+	.text       start:0x00876330 end:0x008795C0
+	.rdata      start:0x00A235F4 end:0x00A235F8
+	.data       start:0x00CBA72C end:0x00CBA81C
+	.bss        start:0x010263B0 end:0x01028888
+
+Lionhead/LH3DLib/development/LandBlock.cpp:
+	.text       start:0x00879C20 end:0x0087E460
+	.rdata      start:0x00A235FC end:0x00A23604
+	.bss        start:0x0102A490 end:0x0102A498
 
 Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
 	.text       start:0x00884B80 end:0x00884DD0

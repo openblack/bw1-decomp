@@ -2436,6 +2436,8 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0083FBBB, call_rel32(0x004034F9)),  # LH3DAnimation
     (0x0083FCFB, call_rel32(0x004034F9)),  # LH3DAnimation
     (0x0083FD8A, copy_run(0x0083FCFB)),  # LH3DAnimation
+    (0x0084000B, call_rel32(0x004034F9)),  # LandCell
+    (0x00840405, copy_run(0x0084000B)),  # LandCell
     (0x0084648B, call_rel32(0x004034F9)),  # LH3DMenu
     (0x00846577, jmp_run(0x0084648B)),  # LH3DMenu
     (0x008465BB, call_rel32(0x004034F9)),  # LH3DMenu
