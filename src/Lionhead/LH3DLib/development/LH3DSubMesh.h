@@ -15,18 +15,6 @@ struct SRTextured;
 struct SubCollideDataRender;
 struct TShadowInfo;
 
-enum LH3D_SUB_MESH_FLAGS
-{
-	// The sub-mesh's vertex groups are moved by the bones of the object's skeleton.
-	LH3D_SUB_MESH_FLAGS_SKINNED = 0x1,
-};
-
-#define LH3D_SUB_MESH_STATUS_SHIFT  4
-#define LH3D_SUB_MESH_STATUS_MASK   0x3f
-#define LH3D_SUB_MESH_WINDOW_SHIFT  12
-#define LH3D_SUB_MESH_PHYSICS_SHIFT 13
-#define LH3D_SUB_MESH_LOD_SHIFT     29
-
 #define LH3D_BONE_NO_PARENT -1
 
 struct LH3DBone
@@ -40,11 +28,19 @@ static_assert(sizeof(LH3DBone) == 0x3c, "Data type is of wrong size");
 
 struct LH3DSubMesh
 {
-	uint32_t        flags_; /* 0x0 */
+	uint32_t        Skinned : 1;
+	uint32_t        field_0x0_1 : 3;
+	uint32_t        Status : 6;
+	uint32_t        field_0x0_10 : 1;
+	uint32_t        LodAssigned : 1;
+	uint32_t        Window : 1;
+	uint32_t        Physics : 1;
+	uint32_t        field_0x0_14 : 15;
+	uint32_t        Lod : 3;
 	int             NumPrimitives;
 	LH3DPrimitive** primitives_;
 	int             NumBones;
-	LH3DBone*       Bones; /* 0x10 */
+	LH3DBone*       Bones;
 
 	// BW1W120 00fa93bc BW1M119 012d3e1c (LHCombined Release)
 	static LH3DSubMesh* g_current_sub_mesh;
@@ -57,17 +53,17 @@ struct LH3DSubMesh
 	static void Create(uint8_t* buffer, LH3DSubMesh* submesh);
 
 	// BW1W120 inlined BW1M119 010291e0 (LHCombined Release)
-	uint32_t GetLod() { return flags_ >> LH3D_SUB_MESH_LOD_SHIFT; }
+	uint32_t GetLod() { return Lod; }
 	// BW1W120 inlined BW1M119 010791d0 (LHCombined Release)
 	LH3DPrimitive** GetListPtrPrimitive() { return primitives_; }
 	// BW1W120 inlined BW1M119 inlined
 	int GetPrimitiveCount() { return NumPrimitives; }
 	// BW1W120 inlined BW1M119 01043750 (LHCombined Release)
-	bool IsWindow() { return (flags_ >> LH3D_SUB_MESH_WINDOW_SHIFT) & 1; }
+	bool IsWindow() { return Window; }
 	// BW1W120 inlined BW1M119 010648d0 (LHCombined Release)
-	uint32_t GetStatus() { return (flags_ >> LH3D_SUB_MESH_STATUS_SHIFT) & LH3D_SUB_MESH_STATUS_MASK; }
+	uint32_t GetStatus() { return Status; }
 	// BW1W120 inlined BW1M119 01079ee0 (LHCombined Release)
-	bool IsPhysics() { return (flags_ >> LH3D_SUB_MESH_PHYSICS_SHIFT) & 1; }
+	bool IsPhysics() { return Physics; }
 	// BW1W120 inlined BW1M119 0100e660 (LHCombined Release)
 	long GetVerticesCount()
 	{

@@ -186,7 +186,7 @@ void __fastcall LH3DPrimitive::DrawIntoSprite(void* sprite)
 	g_current_primitive = this;
 	LH3DVertex* vertex = Vertices;
 	Vertex3D*   point = LH3DTech::g_cache_t_points;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; point++, vertex++, i++)
 		{
@@ -602,7 +602,7 @@ void LH3DPrimitive::DrawTextureShadow()
 {
 	float size = LH3DTexture::g_b_use_low_res ? LH3D_T_SHADOW_SIZE / 2.0f : (float)LH3D_T_SHADOW_SIZE;
 	g_current_primitive = this;
-	if (LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED)
+	if (LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		return;
 	}
@@ -645,7 +645,7 @@ void LH3DPrimitive::DrawTextureShadow32x32(SubCollideDataRender* collide, SRText
 {
 	float minDepth = shadow->MinDepth;
 	float height = shadow->GroundHeight - shadow->Light.y;
-	if (LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED)
+	if (LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		return;
 	}
@@ -721,7 +721,7 @@ void LH3DPrimitive::DrawLit()
 	LH3DVertex*    vertex = Vertices;
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
@@ -1417,7 +1417,7 @@ void LH3DPrimitive::DrawInShadow()
 	float          u;
 	float          v;
 	float          depth;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (j = 0; j < NumVertices; flags++, point++, vertex++, j++)
 		{
@@ -1594,7 +1594,7 @@ void __fastcall LH3DPrimitive::DrawVolLight(LHPoint* light, float intensity)
 	g_current_primitive = this;
 	Vertex3D*   point = LH3DTech::g_cache_t_points;
 	LH3DVertex* vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; point++, vertex++, i++)
 		{
@@ -1791,7 +1791,7 @@ void LH3DPrimitive::DrawFroz()
 	LH3DVertex*   vertex = Vertices;
 	unsigned long color = LH3DMesh::g_color;
 	Vertex3D*     point = &LH3DTech::g_cache_t_points[LH3D_FROZ_FIRST_POINT];
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; point++, vertex++, i++)
 		{
@@ -1901,7 +1901,7 @@ void LH3DPrimitive::DrawVolLightGJ()
 	g_current_primitive = this;
 	Vertex3D*   point = &LH3DTech::g_cache_t_points[LH3D_GJ_ANIM_VOL_FX_FIRST_POINT];
 	LH3DVertex* vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		LHMatrix normalMatrix = *LH3DTech::g_current_matrix;
 		normalMatrix.NormaliseMatrixOnly();
@@ -2117,7 +2117,7 @@ void LH3DPrimitive::DrawCage(float scale)
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		LHMatrix matrix = *LH3DTech::g_current_matrix;
 		matrix.NormaliseMatrixOnly();
@@ -2278,7 +2278,7 @@ int __fastcall LH3DPrimitive::ComputeProjectedPoints(float* projected, TShadowIn
 	float minZ = shadow->MinZ;
 	float maxX = shadow->MaxX;
 	float maxZ = shadow->MaxZ;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		float       height = -LH3DObject::g_current_object_in_draw->matrix.m[10];
 		LH3DVertex* vertex = Vertices;
@@ -2455,7 +2455,7 @@ void LH3DPrimitive::DrawWaterReflection()
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	float          scaleY = 1.0f / LH3DTech::g_info_transform.InvHalfTanFovX;
 	GetTickCount();
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		LHMatrix* matrix = &LH3DObject::g_current_object_in_draw->matrix;
 		for (int i = 0; i < NumVertices; point++, vertex++, flags++, i++)
@@ -2705,7 +2705,7 @@ void LH3DPrimitive::DrawSnow()
 	g_current_primitive = this;
 	if (LH3DObject::g_current_object_in_draw && LH3DObject::g_current_object_in_draw->DrawAsFence)
 	{
-		if (LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED)
+		if (LH3DSubMesh::g_current_sub_mesh->Skinned)
 		{
 			return;
 		}
@@ -2887,7 +2887,7 @@ void LH3DPrimitive::DrawSnow()
 		LH3DVertex*    vertex = Vertices;
 		Vertex3D*      point = LH3DTech::g_cache_t_points;
 		unsigned long* flags = LH3DTech::g_cache_flags;
-		if (LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED)
+		if (LH3DSubMesh::g_current_sub_mesh->Skinned)
 		{
 			int start = 0;
 			for (int i = 0; i < NumVertexGroups; i++)
@@ -3074,7 +3074,7 @@ void LH3DPrimitive::DrawEnvMapMT()
 	Vertex3DMT*    point = (Vertex3DMT*)LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		LHMatrix envMatrix = LH3DObject::g_current_object_in_draw->matrix;
 		envMatrix.SetTranslateOnly(LHPoint(0.0f, 0.0f, 0.0f));
@@ -3274,7 +3274,7 @@ void LH3DPrimitive::DrawEnvMapST()
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		LHMatrix envMatrix = LH3DObject::g_current_object_in_draw->matrix;
 		envMatrix.SetTranslateOnly(LHPoint(0.0f, 0.0f, 0.0f));
@@ -3462,7 +3462,7 @@ void LH3DPrimitive::DrawRefMapMT()
 	Vertex3DMT*    point = (Vertex3DMT*)LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		LHPoint eye = *LH3DTech::GetCameraPosition();
 		LH3DTech::g_world_to_local.TransformPoint(eye);
@@ -3682,7 +3682,7 @@ bool32_t LH3DPrimitive::CheckTriangleCollide()
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
@@ -4023,7 +4023,7 @@ bool32_t LH3DPrimitive::CheckPixelCollide()
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
@@ -4374,7 +4374,7 @@ void LH3DPrimitive::Draw()
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
@@ -4532,7 +4532,7 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
@@ -4697,7 +4697,7 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 	Vertex3DMT*    point = (Vertex3DMT*)LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
@@ -5059,7 +5059,7 @@ void LH3DPrimitive::DrawCutByPlane()
 	LH3DVertex*    vertex = Vertices;
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
@@ -5708,7 +5708,7 @@ void LH3DPrimitive::DrawLitUnclipped()
 	g_current_primitive = this;
 	LH3DVertex* vertex = Vertices;
 	Vertex3D*   point = LH3DTech::g_cache_t_points;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; point++, vertex++, i++)
 		{
@@ -5847,7 +5847,7 @@ void LH3DPrimitive::DrawInShadowTnL()
 	LHPoint        point;
 	LHPoint        transformed;
 	float          depth;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (j = 0; j < NumVertices; flags++, out++, vertex++, j++)
 		{
@@ -5964,7 +5964,7 @@ void LH3DPrimitive::DrawLitTnL()
 	}
 	LH3DVBVertex* out = (LH3DVBVertex*)LH3DVB::Lock(GetVerticesCount());
 	LH3DVertex*   vertex = GetListVertex();
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; out++, vertex++, i++)
 		{
@@ -6024,7 +6024,7 @@ void LH3DPrimitive::DrawUnclipped()
 	g_current_primitive = this;
 	Vertex3D*   point = LH3DTech::g_cache_t_points;
 	LH3DVertex* vertex = Vertices;
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; point++, vertex++, i++)
 		{
@@ -6545,7 +6545,7 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 	float          angle = -PI_F * LH3DTech::g_current_time / LH3D_SPECIAL_LIGHT_HALF_TURN_TIME;
 	float          cosAngle = cos(angle);
 	float          sinAngle = sin(angle);
-	if (!(LH3DSubMesh::g_current_sub_mesh->flags_ & LH3D_SUB_MESH_FLAGS_SKINNED))
+	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{

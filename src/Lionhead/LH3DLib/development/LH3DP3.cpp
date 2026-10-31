@@ -3154,7 +3154,7 @@ LHMatrix* LH3DMesh::GetCurrentMatrix()
 
 bool32_t LH3DSubMesh::HasBones()
 {
-	return flags_ & LH3D_SUB_MESH_FLAGS_SKINNED;
+	return Skinned;
 }
 
 int LH3DVertexGroup::GetBoneIndex()
