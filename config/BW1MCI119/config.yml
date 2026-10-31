@@ -1,0 +1,65 @@
+object: orig/BW1MCI119/Creature Isle
+hash: 5b9a41fef04ea079303741da31f744ba1aff6abf
+symbols: config/BW1MCI119/symbols.txt
+splits: config/BW1MCI119/splits.txt
+modules:
+- name: LHCombined Release
+  object: orig/BW1MCI119/Creature Isle:LHCombined Release
+  hash: dced7b52e29516e65d50669d4886160017c62f35
+  symbols: config/BW1MCI119/LHCombined Release/symbols.txt
+  splits: config/BW1MCI119/LHCombined Release/splits.txt
+- name: FindErrorLib1
+  object: orig/BW1MCI119/Creature Isle:FindErrorLib1
+  hash: 05198c2e089e5adf2894b7073a3ae96f08f0a3f9
+  symbols: config/BW1MCI119/FindErrorLib1/symbols.txt
+  splits: config/BW1MCI119/FindErrorLib1/splits.txt
+- name: Creature Isle Support
+  object: orig/BW1MCI119/Creature Isle:Creature Isle Support
+  hash: 07d593c0da3a4e7685c1cb94001f47548509dcea
+  symbols: config/BW1MCI119/Creature Isle Support/symbols.txt
+  splits: config/BW1MCI119/Creature Isle Support/splits.txt
+- name: RezLib
+  object: orig/BW1MCI119/Creature Isle:RezLib
+  hash: 9a276d427d8b3f528876d66a986e18d1ab551331
+  symbols: config/BW1MCI119/RezLib/symbols.txt
+  splits: config/BW1MCI119/RezLib/splits.txt
+- name: ZLib Release
+  object: orig/BW1MCI119/Creature Isle:ZLib Release
+  hash: 3b8181073fda11a506a245b9908b372b08577709
+  symbols: config/BW1MCI119/ZLib Release/symbols.txt
+  splits: config/BW1MCI119/ZLib Release/splits.txt
+- name: Macdoze Release
+  object: orig/BW1MCI119/Creature Isle:Macdoze Release
+  hash: eb92fbb4e9091ab11c154a5c330d3eb4476ab05f
+  symbols: config/BW1MCI119/Macdoze Release/symbols.txt
+  splits: config/BW1MCI119/Macdoze Release/splits.txt
+- name: Sam's Utilities Release
+  object: orig/BW1MCI119/Creature Isle:Sam's Utilities Release
+  hash: e93269cde524ab14eaf72a22fa990c05a0bd5cdd
+  symbols: config/BW1MCI119/Sam's Utilities Release/symbols.txt
+  splits: config/BW1MCI119/Sam's Utilities Release/splits.txt
+- name: ZonicLib Release
+  object: orig/BW1MCI119/Creature Isle:ZonicLib Release
+  hash: 8696a2af767ac2c36665847fb6a47ddeb62a7593
+  symbols: config/BW1MCI119/ZonicLib Release/symbols.txt
+  splits: config/BW1MCI119/ZonicLib Release/splits.txt
+- name: MoreFiles Release
+  object: orig/BW1MCI119/Creature Isle:MoreFiles Release
+  hash: 5fb00d422291dcc858b02f204072506a94e15e5f
+  symbols: config/BW1MCI119/MoreFiles Release/symbols.txt
+  splits: config/BW1MCI119/MoreFiles Release/splits.txt
+- name: HMRuntimeMSL Release
+  object: orig/BW1MCI119/Creature Isle:HMRuntimeMSL Release
+  hash: 8b6f6eb7addd5bd2c03ff53e8c06b19e5bfb0274
+  symbols: config/BW1MCI119/HMRuntimeMSL Release/symbols.txt
+  splits: config/BW1MCI119/HMRuntimeMSL Release/splits.txt
+- name: LibJPEG Release
+  object: orig/BW1MCI119/Creature Isle:LibJPEG Release
+  hash: 84cc8d8a85b79ce9bf71710c4da700d015dc2a3a
+  symbols: config/BW1MCI119/LibJPEG Release/symbols.txt
+  splits: config/BW1MCI119/LibJPEG Release/splits.txt
+- name: IndirectX 7 Release
+  object: orig/BW1MCI119/Creature Isle:IndirectX 7 Release
+  hash: 52ae968aca49a84d7e9ac6565a1d891c5c410f9e
+  symbols: config/BW1MCI119/IndirectX 7 Release/symbols.txt
+  splits: config/BW1MCI119/IndirectX 7 Release/splits.txt
