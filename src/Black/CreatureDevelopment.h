@@ -5,11 +5,15 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <chlasm/CreatureEnum.h>           /* For DEVELOPMENT_PHASE_LAST */
+#include <chlasm/Enum.h>                   /* For enum CREATURE_DESIRES */
 #include <Lionhead/LHFile/ver3.0/LHFile.h> /* For struct LHFile */
 #include <re_common.h>                     /* For ARRAY_SIZE */
 
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
+
+#define NUM_DEVELOPMENT_PHASE_ACTIVATED_DESIRES   10
+#define NUM_DEVELOPMENT_PHASE_DEACTIVATED_DESIRES 4
 
 // Forward Declares
 
@@ -18,7 +22,7 @@ class Base;
 class CreatureDevelopmentDurationEntry : public GBaseInfo
 {
 public:
-	uint32_t field_0x10[0xe];
+	uint32_t Duration[DEVELOPMENT_PHASE_LAST];
 
 	// Override methods
 
@@ -41,16 +45,19 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureMentalDesire.h.
 	// Out of line: LoadBinary at 0042e0c0, Load at 0042e080.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(Duration, Duration)
 	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 189)
 };
 
 class CreatureDevelopmentPhaseEntry : public GBaseInfo
 {
 public:
-	uint32_t field_0x10[0xc];
-	float    GoHomeDistance;
-	uint32_t field_0x44[0x10];
+	uint32_t         field_0x10[0xc];
+	float            GoHomeDistance;
+	uint32_t         field_0x44;
+	uint32_t         field_0x48;
+	CREATURE_DESIRES ActivatedDesires[NUM_DEVELOPMENT_PHASE_ACTIVATED_DESIRES];
+	CREATURE_DESIRES DeactivatedDesires[NUM_DEVELOPMENT_PHASE_DEACTIVATED_DESIRES];
 
 	// Override methods
 
@@ -73,7 +80,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureMentalDesire.h.
 	// Out of line: LoadBinary at 0042e030, Load at 0042dff0.
-	INFO_DATA_BLOCK(field_0x10, field_0x44)
+	INFO_DATA_BLOCK(field_0x10, DeactivatedDesires)
 	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 181)
 };
 
