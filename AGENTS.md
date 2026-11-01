@@ -1,192 +1,105 @@
 # Black & White 1 Decompilation
 
-This document describes the structure, conventions and workflows of this repository to help AI agents contribute effectively.
+Structure, conventions, workflows of repo, for AI agents.
 
-The project is a matching decompilation of **Black & White 1** (PE/COFF, MSVC 6.0 SP5) which also makes use of PPC Mac symbols to name classes and methods properly.
-
-The goal is to reconstruct the original C++ source code such that compiling it with the original compilers produces byte-identical object files to the original game binaries.
-
-The main version to work from is `BW1W120`.
+Matching decompilation of **Black & White 1** (PE/COFF, MSVC 6.0 SP5), use PPC Mac symbols to name classes and methods. Goal: C++ source compile with original compilers to byte-identical object files. Main version `BW1W120`.
 
 ### Mindset
 
-The work is fundamentally about getting into the heads of the original developers using only the evidence available — the binary, the linker map, debug strings, and the compiler's behavior. Every assumption must be doubted and verified. Be skeptical of everything: naming guesses, code structure, control flow choices, even whether a function "looks right." Only commit to a decision when the evidence is overwhelming.
+Work = get into original devs' heads using only evidence: binary, linker map, debug strings, compiler behavior. Doubt every assumption (names, structure, control flow, whether function "looks right"). Commit only when evidence overwhelming.
 
-When progress stalls because a tough choice must be made and strong evidence is lacking, **leave the code nonmatching and move on**. New evidence often emerges later — from matching a neighboring function, finding a pattern in another TU, or discovering a debug string. Premature commitment to a wrong approach creates technical debt that's harder to undo than a nonmatching function. The final goal is still always a 100% match, but trying to headbutt a particular function into matching 100% usually results in fakematches (see below) and technical debt. Case-by-case judgement should be used.
+Tough choice, weak evidence: **leave code nonmatching, move on**. New evidence often appear later (neighbor function, other TU, debug string). Wrong commitment harder to undo than nonmatching function. Forcing 100% usually yield fakematches and debt.
 
-Truly hard judgment calls — ambiguous code structure, naming disputes, architectural decisions — should be deferred to humans.
-Raise them in the PR description or the investigation notes (see [Comments](#comments--annotations-in-the-code)),
-not in source comments, rather than refusing to tackle complicated tasks.
-The ultimate goal of the project is not just a matching binary, but **human-readable, modifiable source code**.
+Defer truly hard calls (ambiguous structure, naming disputes, architecture) to humans via PR description or investigation notes (see [Comments](#comments--annotations-in-the-code)), never source comments. Do not refuse complicated tasks because of them. Goal = **human-readable, modifiable source**, not just matching binary.
 
-Before trying another source variant, identify the assembly difference it is intended
-to explain. If repeated experiments merely shuffle registers or move mismatches
-elsewhere, retain the clearest supported implementation and document the unresolved cause.
+Odd code that matches not a question: "If it matches it matches" (#486). Raise only decisions evidence cannot settle.
 
-Experiment discipline, learned the expensive way:
+Before trying another source variant, identify assembly difference it should explain. If experiments only shuffle registers or move mismatches elsewhere, keep clearest supported implementation, document unresolved cause.
 
-- **Classify the difference before experimenting.** A helper inlined on one side only is an
-  inline-budget problem; the same x87 operations in a different operand order inside inlined
-  bodies is a tie-break; the same integer instructions in a different order around the x87
-  chain is a scheduling problem (`tools/c2-sched-log.py`, see
-  [`docs/msvc6_scheduler.md`](docs/msvc6_scheduler.md)); registers or store order that move
-  when unrelated declarations are added to a header is a symbol-numbering tie-break (see
-  [Inline expansion](#inline-expansion)); anything else is a real source difference. Each
-  class has its own procedure. Read the whole diff before naming the class: integer stores
-  are not an x87 tie-break.
-- **Prove that a knob moves the output before you sweep it.** A 5,000-build sweep over knobs
-  that never touch the differing instructions finds nothing.
-- **Rank assumptions by evidence.** Mac bodies and signatures, and target call sets across
-  all units, outrank guessed shapes of fabricated or hand-expanded functions. When a model
-  can't fit every caller, doubt the weakest-evidence caller before rewriting shared headers.
-- **Bound the search and escalate early.** Once a residual is shown to be an x87 operand-order
-  tie-break (see [Inline expansion](#inline-expansion)), stop hunting and ask the human
-  whether to accept a fakematch. Reverse-engineering that tie-break rule has not paid off.
-- **A regression is not a version divergence.** When a change stops an already-linked unit
-  matching in one version (a hash fails after a header, PCH or merge change), never propose
-  dropping that version from `MatchingFor(...)` as the first fix. Doing so unlinks matched code
-  and hides the regression. Find the change that broke it, classify the difference, and
-  fix it in the source or headers. If that fails, take the evidence to the human. Remove a
-  version only with the human's approval, and record it in the PR.
+Two source shapes give byte-identical code (e.g. `values[age]` vs `values[age - 1]` with different member order) → pick more readable form, note ambiguity.
+
+Experiment discipline, learned expensive way:
+
+- **Classify difference before experimenting**, after reading whole diff (integer stores not x87 tie-break). Each class own procedure:
+  - helper inlined one side only: inline-budget problem;
+  - same x87 operations, different operand order inside inlined bodies: tie-break;
+  - same integer instructions, different order around x87 chain: scheduling (`tools/c2-sched-log.py`, [`docs/msvc6_scheduler.md`](docs/msvc6_scheduler.md));
+  - registers or store order move when unrelated declarations added to header: symbol-numbering tie-break (see [Inline expansion](#inline-expansion));
+  - anything else: real source difference.
+- **Prove knob moves output before sweeping it.**
+- **Rank assumptions by evidence.** Mac bodies and signatures, target call sets across all units, outrank guessed shapes of fabricated or hand-expanded functions. Model can't fit every caller → doubt weakest-evidence caller before rewriting shared headers.
+- **Bound search, escalate early.** Residual = x87 operand-order tie-break → stop, ask human whether accept fakematch. Reverse-engineering tie-break rule not paid off.
+- **Regression not version divergence.** Change stops linked unit matching in one version (hash fails after header, PCH or merge change) → never first propose dropping version from `MatchingFor(...)`: unlinks matched code, hides regression. Find breaking change, classify difference, fix in source or headers. Fail → take evidence to human. Remove version only with human approval, record in PR.
 
 ## Repository Layout
 
-- `configure.py`        — Project configuration and generator script.
-- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1W130`, `BW1WCI`, `BW1M119`, `BW1MCI119`).
-  The Mac configs (`BW1M*`) hold only symbols, a reference for names and signatures; nothing is built from them.
-    - `config.yml`      — decomp-toolkit project config
-    - `symbols.txt`     — layout of the binaries, addresses, sizes, names etc for every symbol present
-    - `splits.txt`      — per-TU section address ranges
-    - `build.sha1`      — SHA-1 hashes for each built artifact, for final verification.
-- `src/`                — decompiled C/C++ source files
-- `include/`            — headers (class declarations, inline functions)
-- `build/`              — Build artifacts generated by the build process. Ignored by `.gitignore`.
-- `orig/[VERSION]`      — Original game files. Ignored by `.gitignore`.
-- `tools/`              — Scripts shared between projects.
-- `docs/`               — documentation on reverse-engineering
+- `configure.py` — project configuration and generator script.
+- `config/[VERSION]` — per-version configs (`BW1W100`, `BW1W110`, `BW1W120`, `BW1W130`, `BW1WCI`, `BW1M119`, `BW1MCI119`). Mac configs (`BW1M*`) hold only symbols, reference for names and signatures; nothing built from them.
+    - `config.yml` — decomp-toolkit project config
+    - `symbols.txt` — every symbol with address, size, name etc.
+    - `splits.txt` — per-TU section address ranges
+    - `build.sha1` — SHA-1 of each built artifact, for final verification
+- `src/` source, `include/` headers (classes, inlines), `tools/` scripts, `docs/` reverse-engineering notes; `build/` and `orig/[VERSION]` (original game files) gitignored. `dtk` (`build/tools/dtk`) splits binary, rarely need meddling.
 
-Keep detailed investigation records and task-specific handoffs in your own notes folder
-outside the repository, rather than adding them to `docs/`.
+Keep investigation records and task handoffs in own notes folder outside repo, not in `docs/`.
 
 ## Build & Diff Workflow
 
-On Windows, native tool names use `.exe`; examples below omit that suffix for brevity.
-Preserve Ninja target spelling exactly, including case and separators, even on Windows.
-Normalize paths for filesystem comparisons, not when passing target names to Ninja.
+On Windows, native tool names use `.exe` (omitted below). Preserve Ninja target spelling exactly (case, separators), even on Windows; normalize paths only for filesystem comparisons.
 
-Ninja is used for most workflows. Simply running `ninja` in the root of the repository will build the project and report the overall matching progress.
+`ninja` in repo root builds and reports overall progress.
 
 ### Baselines and final verification
 
-For matching work, run `ninja baseline` **before editing** and preserve that baseline
-throughout the task. If the worktree already has changes, record whether the baseline
-includes them. To compare against a clean branch instead, preserve the changes before
-building that baseline and restore them afterward.
+Run `ninja baseline` **before editing**, keep throughout. Worktree already has changes → record whether baseline includes them (to baseline clean branch, stash changes first, restore after). For actively investigated units also capture rich snapshot, since ordinary reports lack historical layouts and strict relocation evidence:
 
-For actively investigated units, also capture rich snapshots: ordinary reports do not
-preserve historical compiled layouts or strict relocation evidence.
-
-```powershell
+```
 ninja baseline
 python tools/decomp-regress.py --unit Game --strict --snapshot build/BW1W120/Game-before.json
 ```
 
-At completion, verify affected sources and header consumers, build, explicitly refresh
-the report, and run `ninja changes_all`. `decomp-verify.py` automates whole-file formatting
-checks, original compiler replay, the full build/hash checks, report refresh and regression
-analysis. It defaults to a read-only plan; execution requires `--run` and an existing baseline.
+At completion, verify affected sources and header consumers, build, refresh report, run `ninja changes_all`. `decomp-verify.py` automates whole-file formatting checks, original compiler replay, full build/hash checks, report refresh, regression analysis. Default read-only plan; `--run` and existing baseline required to execute.
 
-```powershell
+```
 python tools/decomp-verify.py --since main --list
 python tools/decomp-verify.py --since main --run --baseline build/BW1W120/baseline.json
 ninja changes_all
 ```
 
-Use `--changed` for current worktree edits or `--unit Game` for a focused unit. After shared
-header changes, use changed/since selection to cover consumers rather than only one unit.
-`--compile-only` provides a focused compiler check without the full verification pipeline.
+`--changed` selects worktree edits, `--unit Game` one unit; after shared header changes use changed/since to cover consumers. `--compile-only` skips full pipeline.
 
-**Inspect sections as well as functions.** `changes_all` does not expose every section
-change; use `decomp-regress.py` for the full audit. A negative byte count for `.bss` may
-represent actual storage changes, an include introducing a TU-local static, or a fuzzy-score
-change caused by splitting an anonymous target range into named symbols. Determine which
-occurred; never add padding or undo established symbol recovery to restore a percentage.
+**Inspect sections as well as functions.** `changes_all` hides some section changes; use `decomp-regress.py` for full audit. Negative `.bss` byte count may be real storage change, include introducing TU-local static, or fuzzy-score change from splitting anonymous target range into named symbols. Determine which; never add padding or undo symbol recovery to restore percentage.
 
-A successful Ninja run does not always refresh the report after extracted objects change.
-For an explicit refresh and audit without rebuilding:
+Ninja not always refresh report after extracted objects change. To refresh and audit without rebuilding (reads existing objects, does not prove sources rebuilt):
 
-```powershell
+```
 python tools/decomp-regress.py --refresh --fail-on-regression
 ```
 
-Refreshing reads existing objects; it does not establish that sources and headers were
-rebuilt. Freshness checks report stale or uncertain evidence, not proof of a correct build.
-Use `--help` for snapshot comparison and machine-readable output options.
+For readability pass that must not change codegen (renames, constants, comment removal, formatting), snapshot before editing, compare after:
 
-For a readability pass that must not change code generation (renames, constants, comment
-removal, formatting), snapshot the affected objects before editing and compare afterwards:
-
-```powershell
+```
 python tools/codegen-check.py snapshot tidy --changed     # or --source <file> (repeatable)
 python tools/codegen-check.py compare tidy                # add --ignore-comdat-order for NonMatching consumers
 ```
 
-It recompiles with the exact Ninja commands into `build/codegen-check/` and ignores
-compiler-numbered labels. For one unit, `tools/c2-il.py compare --source <file> --file <variant>`
-goes further: it compares the IL the front end hands to `c2.dll` and reports identical (no object
-can change), same code (only section or COMDAT order can move) or different (see
-[`docs/msvc6_passes.md`](docs/msvc6_passes.md)). COMDAT/RTTI section order reacts to unrelated header contents and
-even the source path, so an order-only difference matters only for linked units, which the
-executable hashes check.
+Recompiles with exact Ninja commands into `build/codegen-check/`, ignores compiler-numbered labels. For one unit, `tools/c2-il.py compare --source <file> --file <variant>` compares IL front end hands to `c2.dll`: identical (no object can change), same code (only section or COMDAT order can move) or different (see [`docs/msvc6_passes.md`](docs/msvc6_passes.md)). COMDAT/RTTI section order reacts to unrelated header contents and even source path, so order-only difference matters only for linked units, which executable hashes check.
+
+PR requirements: **show it matching** (objdiff 100% and CI report), not assert; comment-only, analysis-only or "proposed" changes not enough, macro or abstraction must be shown working and matching. Run `clang-format` 22 on every touched file, rebase onto latest `main` (CI runs `check-format`, expects report to show claimed improvement). Rebuild `main` baseline after `main` moves, else merged upstream work shows as false regressions. Verify readability passes with `tools/codegen-check.py snapshot`/`compare`, not `decomp-regress` against `main` baseline, which cannot see drop in function PR itself adds (0% in baseline); `(status & F) == F` and `status & F` compile differently. `tools/review-lint.py` lists added lines that often draw reviewer comments; every hit needs judgement.
 
 ### Game versions
 
-CI builds BW1W100, BW1W110, BW1W120, BW1W130 and BW1WCI, including the DLL units; only BW1W120 is
-configured locally by default. Layouts can differ between versions (e.g. `LHNetUser`), so guard
-version-specific `static_assert`s and members with the version macros, and compile touched units
-with each version's `/DBUILD_VERSION=<n> /DVERSION_<ver>` before pushing. BW1W130 shares 1.20's
-layouts: guard them with `#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)`.
+CI builds BW1W100, BW1W110, BW1W120, BW1W130, BW1WCI, including DLL units; only BW1W120 configured locally by default. Layouts differ between versions (e.g. `LHNetUser`): guard version-specific `static_assert`s and members with version macros, compile touched units with each version's `/DBUILD_VERSION=<n> /DVERSION_<ver>` before pushing. BW1W130 shares 1.20 layouts: guard with `#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)`.
 
-BW1W130 was ported from BW1W120 by `tools/port_version.py`. It was built from
-`D:\Work\Games\dd\Black\` rather than `C:\dev\MP\Black\`, has some changed code and layouts,
-and stale bytes fill some of its function padding. A unit matched for 1.20 is therefore not
-automatically matched for 1.30: list the versions it really matches in an inclusive
-`MatchingFor(...)`, and keep a version out of that list rather than changing source for it.
-This is for code that really differs in that version's binary, not for a unit that matched
-there before your change (see [Mindset](#mindset)).
-The same applies when matching a new unit: check BW1W130 and BW1WCI before using plain `Matching`.
+BW1W130 ported from BW1W120 by `tools/port_version.py`, built from `D:\Work\Games\dd\Black\` not `C:\dev\MP\Black\`, with some changed code and layouts and stale bytes in some function padding. Unit matched for 1.20 not automatically matched for 1.30: list versions it really matches in inclusive `MatchingFor(...)`, keep version out of list rather than change source for it. That for code that really differs in that version's binary, not unit that matched there before your change (see [Mindset](#mindset)). Matching new unit → check BW1W130 and BW1WCI before using plain `Matching`.
 
-BW1WCI (Creature Isle) was ported from BW1W120 the same way (see
-[`docs/porting_versions.md`](docs/porting_versions.md)), and its code is further from 1.20 than
-1.30's: list it in a unit's `MatchingFor(...)` only where the unit links byte-identical there too.
-CI compiles every source for it with `/DBUILD_VERSION=4 /DVERSION_BW1WCI`. Its `GGame`, `GPlayer`
-and `Town` layouts are not modeled, so a layout check that holds for 1.00 and 1.10 names those
-versions (`#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)`) instead of taking a bare
-`#else`; a size known for Creature Isle gets its own branch (`GAudio` is 0x3fc there).
-`config/BW1WCI/` is generated with `port_version.py` when 1.20's splits or names improve, plus hand fixes
-for what 1.20 does not have (libjpeg's decoder units): re-apply them after regenerating.
+BW1WCI (Creature Isle) ported from BW1W120 same way (see [`docs/porting_versions.md`](docs/porting_versions.md)), further from 1.20: list in `MatchingFor(...)` only where unit links byte-identical there. CI compiles every source for it with `/DBUILD_VERSION=4 /DVERSION_BW1WCI`. Its `GGame`, `GPlayer`, `Town` layouts not modeled, so layout check true for 1.00 and 1.10 names those (`#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)`) instead of bare `#else`; size known for Creature Isle gets own branch (`GAudio` is 0x3fc). `config/BW1WCI/` generated by `port_version.py` when 1.20 splits or names improve, plus hand fixes for what 1.20 lacks (libjpeg decoder units): re-apply after regenerating.
 
-The underlying utility used for splitting the binary is `dtk` (`build/tools/dtk`).
-It is already properly set up and almost never requires any meddling.
-
-The main diffing tool used by humans is **objdiff**. It compares the compiled `.o` from our source against the original `.o` extracted from the game binary (`runblack-decrypted`), function by function, showing x86 assembly side-by-side in a convenient GUI.
-
-**Important**: The human user typically has objdiff open in the background.
-It watches source files and **automatically recompiles** whenever a file changes.
-Do not manually `touch` files or force Ninja rebuilds when it says "no work to do";
-objdiff may already have compiled the latest code. This does not replace final
-header-consumer verification through `decomp-verify.py`.
+User typically has **objdiff** open; compares our compiled `.o` against original extracted from `runblack-decrypted`, **recompiles automatically** on source changes. Do not `touch` files or force Ninja rebuilds when it reports "no work to do". Does not replace final header-consumer verification through `decomp-verify.py`.
 
 ### Fast per-iteration loop (agents)
 
-When iterating on a single translation unit, do **not** run bare `ninja` on every
-edit. Full `ninja` recompiles the graph, **relinks the executable,
-and regenerates the whole progress report** — several seconds of overhead per cycle,
-all to produce one `.o` that `decomp-diff.py` reads. For a scheduling-sensitive
-function that needs many guess-and-check cycles this dominates your runtime.
-
-Instead, build **only the object you are working on** — the `base_path` for the unit
-in `objdiff.json`, which is exactly what `decomp-diff.py` reads:
+Iterating on one translation unit → do **not** run bare `ninja` per edit: recompiles graph, relinks executable, regenerates whole report, dominates runtime over many guess-and-check cycles. Build only unit's object, the `base_path` in `objdiff.json` (what `decomp-diff.py` reads):
 
 ```
 # inner loop (edit -> build one .o -> diff), ~1-2s per cycle:
@@ -194,380 +107,168 @@ ninja build/BW1W120/src/Lionhead/LHLib/ver5.0/LHHeap2.o
 python tools/decomp-diff.py --source src/Lionhead/LHLib/ver5.0/LHHeap2.cpp -d "Heap::New(int)"
 ```
 
-Reserve full verification for the completed batch, rather than every micro-edit.
-The pre-edit baseline must not be regenerated at the end. Find the exact object target
-in `objdiff.json` under `base_path`.
+Reserve full verification for completed batch. Do not regenerate pre-edit baseline at end.
 
 ### Using `decomp-diff.py` (agent-friendly CLI diffing)
 
-Since agents cannot use the objdiff GUI, use the wrapper script `tools/decomp-diff.py` instead. It calls `objdiff-cli` and produces readable text output.
+`tools/decomp-diff.py` wraps `objdiff-cli` for agents. Select unit with `--source src/Black/Abode.cpp`, exact unit name from `objdiff.json`, or unique basename (`--unit Abode`); never hardcode executable prefixes.
 
-Use `--source src/Black/Abode.cpp`, an exact unit name from `objdiff.json`, or a unique
-basename such as `--unit Abode`. Executable prefixes can change; do not hardcode them.
+Overview (`python tools/decomp-diff.py --unit Abode`) lists STATUS (match/nonmatching/missing/extra), MATCH %, SIZE, SECTION, demangled NAME. Filters (combinable): `-s nonmatching|match|missing|extra` (missing = target only, extra = ours only), `-t function|object`, `--section .text`, `--search "init"` (substring), `--exact`/`--regex`, `--sections` (section sizes and scores, including `.bss`), `--strict` (compare all relocation identities and addends; default `data_value`). Example: `python tools/decomp-diff.py --unit Abode -s nonmatching -t function --section .text`
 
-#### Overview mode (list symbols with match status)
-
-```
-python tools/decomp-diff.py --unit Abode
-```
-
-Output columns: STATUS (match/nonmatching/missing/extra), MATCH %, SIZE, SECTION, demangled NAME.
-
-Useful filters (can be combined):
-- `-s nonmatching` — only nonmatching symbols
-- `-s match` — only matching symbols
-- `-s missing` — symbols in target but not in our build
-- `-s extra` — symbols in our build but not in target
-- `-t function` — only functions (skip data/bss)
-- `-t object` — only data objects
-- `--section .text` — only `.text` section
-- `--search "init"` — substring search on mangled or demangled name
-- `--exact` / `--regex` — change name selection to exact matching or a regular expression
-- `--sections` — target/compiled section sizes and scores, including `.bss`
-- `--strict` — compare all function relocation identities and addends; default is `data_value`
-
-Example — list all nonmatching functions:
-```
-python tools/decomp-diff.py --unit Abode -s nonmatching -t function --section .text
-```
-
-#### Diff mode (side-by-side instruction comparison)
-
-```
-python tools/decomp-diff.py --unit Abode -d "Fixed::CanBeSetOnFire"
-```
-
-The `-d` argument selects a symbol by substring; ambiguous selections are errors.
-Use `--exact` to disambiguate or `--regex` to explicitly select a batch of functions.
-
-Output shows target (original) x86 assembly in the **LEFT** column and our build in
-the **RIGHT** column, with diff markers at the start of each row:
-- ` ` (space) — instructions match perfectly
-- `~` — same opcode, but one or more operands differ (shown in `{braces}`)
-- `|` — different opcode at corresponding position
-- `>` — instruction exists only in our build (inserted/extra)
-- `<` — instruction exists only in the target (deleted/missing)
-
-Each row aligns corresponding instructions; insertions/deletions occupy only one side.
-Differing operands are wrapped in `{braces}`. Relocation addends are shown explicitly,
-for example `PacketTimeHistory+0x28`.
-
-By default, long runs of fully matching instructions are **collapsed** into a summary line like `... 10 matching instructions ...`.
-This is only a display shortcut: those instructions still exist and still match; they are just hidden to keep the diff compact.
-
-With `--no-collapse`, those summary lines disappear and every instruction in matching regions is printed explicitly.
-This is useful when mapping source lines to exact instruction neighborhoods or when checking whether a mismatch cluster is truly contiguous.
-
-Quick rule of thumb for agents:
-- default (collapsed): better for scanning large functions and finding mismatch hotspots quickly.
-- `--no-collapse`: better for deep analysis when you need complete sequential instruction flow.
-
-Options:
-- `-C 5` — show 5 context lines instead of 3
-- `--no-collapse` — disable match-run collapsing and show every instruction
-- `--range 100-300` — only show instructions at hex offsets 0x100–0x300
+Diff (`python tools/decomp-diff.py --unit Abode -d "Fixed::CanBeSetOnFire"`): `-d` selects symbol by substring; ambiguity is error (use `--exact`, or `--regex` for batch). Target assembly **LEFT** column, ours **RIGHT**. Row markers: ` ` match, `~` same opcode with differing operands (in `{braces}`), `|` different opcode, `>` only in our build, `<` only in target. Relocation addends explicit (e.g. `PacketTimeHistory+0x28`). Runs of matching instructions collapse to `... 10 matching instructions ...` by default, good for finding hotspots; `--no-collapse` prints all, for mapping source lines to instructions. Also `-C 5` (context lines, default 3) and `--range 100-300` (hex offsets).
 
 ### Interpreting matches and relocations
 
-State the comparison mode and source-linking status when reporting results:
+State comparison mode and source-linking status when reporting results:
 
-- **Report match:** under the settings used to generate the report.
+- **Report match:** under settings used to generate report.
 - **Strict object match:** includes relocation identities and addends (`--strict`).
 - **Resolved-byte match:** relocations mapped back to original addresses produce identical bytes.
 
-A rounded `100.0%` display is not sufficient proof of exactness. Successful executable
-hashes do not prove that a `NonMatching` source replacement was linked.
+Rounded `100.0%` not proof of exactness, and successful executable hashes do not prove `NonMatching` source replacement was linked.
 
-`decomp-relocs.py` inspects relocation-boundary ambiguity and verifies resolved bytes
-for i386 COFF/PE32. It provides evidence without automatically applying overrides:
+`decomp-relocs.py` inspects relocation-boundary ambiguity, verifies resolved bytes (i386 COFF/PE32) without applying overrides:
 
-```powershell
+```
 python tools/decomp-relocs.py --unit Game --address 0054CE1E --symbol ProcessNetworkPackets --original orig/BW1W120/runblack-decrypted.exe --verify
 ```
 
-objdiff "extra" functions of other classes are usually COMDAT copies (inline functions, vftables, `??_G`) that the
-image keeps in an earlier unit; see [`docs/msvc6_comdat.md`](docs/msvc6_comdat.md) for the emission and link rules,
-and `tools/comdat-scan.py where --unit X` to see where each one is kept. Keep them inline in headers.
+objdiff "extra" functions of other classes usually COMDAT copies (inline functions, vftables, `??_G`) that image keeps in earlier unit; see [`docs/msvc6_comdat.md`](docs/msvc6_comdat.md) and `tools/comdat-scan.py where --unit X`. Keep them inline in headers.
 
 ### Parallel work
 
-When parallel agents are requested, use them for independent investigations and give
-each explicit file ownership. Serialize integration, configuration edits and builds
-that share a translation unit. Handoffs should include changed files, supporting evidence,
-verification commands/results, remaining mismatches, and whether source, objects and
-reports describe the same revision.
+Parallel agents requested → give each independent investigation explicit file ownership; serialize integration, config edits, builds sharing a TU. Handoffs list changed files, evidence, verification results, remaining mismatches, and whether source, objects, reports describe same revision.
 
-Concurrent Ninja runs in one build directory race on shared objects and logs. Workers build
-only their own objects (with the compile command from `ninja -t compdb cl`, or
-`codegen-check.py`), never run bare `ninja`, and never edit `config/`; one coordinator applies
-symbol, split and config requests and re-splits between waves.
+Concurrent Ninja runs in one build directory race on shared objects and logs. Workers build only own objects (compile command from `ninja -t compdb cl`, or `codegen-check.py`), never run bare `ninja`, never edit `config/`; one coordinator applies symbol, split, config requests and re-splits between waves.
 
 #### Using every core for long verifications
 
-A full build of one version keeps all cores busy only while compiling; splitting, linking,
-hashing and the report are mostly serial, so it averages a fraction of the machine. Run
-independent builds side by side instead of one after another, for example `main` against the
-branch, or the five versions of one revision:
-
-- One checkout builds one version at a time. The root `objdiff.json` (read by the report) and
-  `.ninja_log`/`.ninja_deps` belong to the version `configure.py -v` last set up.
-- Add checkouts with `git worktree add --detach <dir> <rev>`. In each, symlink `orig`,
-  `build/tools` and `build/compilers` to the main checkout, copy `build/lib` (its copy command
-  embeds the checkout path) and the root `.ninja_log`/`.ninja_deps`.
-- Fresh checkout timestamps make the tool downloads look out of date, and ninja would rewrite the
-  shared `build/tools`. Backdate the worktree's files and confirm nothing shared is dirty:
-
-  ```sh
-  find . -path ./build -prune -o -path ./orig -prune -o -type f -print0 | xargs -0 touch -d 2001-01-01
-  python configure.py -v BW1W100 && ninja -n -d explain | grep -E 'build/(tools|compilers)/'
-  ```
-
-- Give each checkout its own list of versions and run them as background jobs, then `wait`.
-  Delete `build/<version>/src/**/*.o` first after header changes (the `cl` rule has no header
-  dependencies), and restore `config/*/symbols.txt` afterwards if dtk rewrote labels.
-- For sweeps over one unit (knob counts, alternative spellings), use
-  `tools/tiebreak-probe.py --variants FILE -j <cores>`: each variant compiles from a private copy
-  of `src/`, in parallel, with an exact byte comparison. Do not loop over single-object rebuilds.
-- When no variant is expected to match exactly, use `tools/variant-sweep.py` instead. It takes
-  the same variant list, or knobs (named alternatives, swept as every combination or one knob at
-  a time), and ranks the variants by objdiff score. For each function it also lists the inline
-  calls c2 rejected, so a budget shift shows up next to the score.
+Full build of one version saturates cores only while compiling. Run independent builds side by side (e.g. `main` against branch, or five versions of one revision) in separate `git worktree` checkouts, use `tools/tiebreak-probe.py --variants FILE -j <cores>` or `tools/variant-sweep.py` for sweeps over one unit instead of looping single-object rebuilds. Setup details (symlinks, backdated timestamps, per-checkout version lists) in [`docs/parallel_builds.md`](docs/parallel_builds.md).
 
 ## Source Organization
 
-Each `.o` file maps 1:1 to a `.cpp` file. The path is listed in `configure.py` under `config.libs`. Each object has a status:
+Each `.o` maps 1:1 to a `.cpp`, listed in `configure.py` under `config.libs`, with status:
 
-- `Matching` — our code compiles to byte-identical output. Linked into the final executable (`runblack.exe`).
-- `NonMatching` — work in progress. Not linked.
-- `Equivalent` — functionally equivalent but not byte-identical. Only linked with `--non-matching`.
+- `Matching` — byte-identical output; linked into final executable (`runblack.exe`).
+- `NonMatching` — work in progress; not linked.
+- `Equivalent` — functionally equivalent, not byte-identical; linked only with `--non-matching`.
 
-A translation unit is only **matched** when its `configure.py` entry is `Matching`. Matching
-functions inside a still-`NonMatching` unit is progress toward a matched TU, not a matched TU —
-the unit is not linked from our source until the entry is flipped. A PR that *matches a TU*
-therefore includes the `configure.py` flip; per-function work inside a `NonMatching` unit is a
-different kind of change.
+TU **matched** only when `configure.py` entry is `Matching`; matching functions inside `NonMatching` unit = progress, not matched TU (not linked until flipped). PR that *matches a TU* includes the flip. **One TU per PR**: broad PRs over many units get tabled (#484); prefer taking one TU to `Matching` over partial progress across many, wait for open PR touching same headers to land first.
 
 ### Directory structure mirrors game libraries
 
-The game ships as the executable `runblack.exe` plus a handful of runtime DLLs. The
-remaining `LH*` directories, `zlib` and `jpeg` are static libraries linked into the executable.
-`src/zlib`, `src/jpeg` and `src/mpg123` are unmodified upstream releases: never edit, format or lint them.
+Game ships as `runblack.exe` plus few runtime DLLs. Remaining `LH*` directories, `zlib`, `jpeg` = static libraries linked into executable. `src/zlib`, `src/jpeg`, `src/mpg123` = unmodified upstream releases: never edit, format, lint them.
 
-| Directory | Module | Description |
-|-----------|--------|-------------|
-| `src/Black/` | `runblack.exe` (executable) | The game itself — creatures, villagers, world, AI, UI and everything specific to Black & White. The bulk of the codebase. |
-| `src/Lionhead/LH3DLib` | static lib | 3D graphics/rendering — island terrain, meshes, camera, on-screen text and effects (smoke, techniques). |
-| `src/Lionhead/LHAudio` | `LHAudioDLLR` (DLL) | Audio engine — sample/wave playback, music, MIDI, Redbook CD audio, sound banks and heaps. |
-| `src/Lionhead/LHDialogLib` | `LHDialogLib` (DLL) | Win32/MFC dialog boxes — progress, edit, camera-params and system-spec dialogs. |
-| `src/Lionhead/LHDLL` | static lib | Dynamic library (DLL) loading helper. |
-| `src/Lionhead/LHFile` | static lib | File I/O and text-file parsing. |
-| `src/Lionhead/LHLib` | static lib | Core utilities — memory/heap management, screen, mouse, collision, scripting, OS file access and windowing. |
-| `src/Lionhead/LHLog` | `LHLogR` (DLL) | Logging, assertions and version reporting. |
-| `src/Lionhead/LHMultiplayer` | `LHMultiplayerR` (DLL) | Multiplayer networking — sockets, packets, lobby/sessions, players and transport. |
-| `src/zlib` | static lib | Third-party zlib compression library. |
-| `src/jpeg` | static lib | Unmodified IJG libjpeg 6b (27-Mar-1998) release. The executable links its compression side for `LHJpeg`'s screenshots; Creature Isle's links the decoder too. `jconfig.h` is `jconfig.vc`, copied into the build include directory as `install.doc` directs. |
-| `src/mpg123` | reference | Unmodified mpg123 0.59k release by Michael Hipp. LHAudio's `MPGAudioDecoder` is Lionhead's C++ port of its decoder and includes `huffman.h` and `tables.h` from here. |
+| Directory | Module |
+|-----------|--------|
+| `src/Black/` | `runblack.exe`: the game itself, bulk of codebase |
+| `src/Lionhead/LH3DLib` | static lib: 3D rendering (terrain, meshes, camera, text, effects) |
+| `src/Lionhead/LHAudio` | `LHAudioDLLR` (DLL): audio engine |
+| `src/Lionhead/LHDialogLib` | `LHDialogLib` (DLL): Win32/MFC dialogs |
+| `src/Lionhead/LHDLL` | static lib: DLL loading helper |
+| `src/Lionhead/LHFile` | static lib: file I/O, text parsing |
+| `src/Lionhead/LHLib` | static lib: core utilities (heaps, screen, mouse, collision, scripting, OS access) |
+| `src/Lionhead/LHLog` | `LHLogR` (DLL): logging, assertions, version reporting |
+| `src/Lionhead/LHMultiplayer` | `LHMultiplayerR` (DLL): sockets, packets, lobby, players |
+| `src/zlib` | static lib: zlib |
+| `src/jpeg` | static lib: IJG libjpeg 6b. Executable links compression side for `LHJpeg`'s screenshots; Creature Isle's links decoder too. `jconfig.h` is `jconfig.vc`, copied into build include directory as `install.doc` directs. |
+| `src/mpg123` | reference: mpg123 0.59k (Michael Hipp). LHAudio's `MPGAudioDecoder` is Lionhead's C++ port, includes its `huffman.h` and `tables.h`. |
 
-The Mac build linked the Lionhead libraries into a separate module, `LHCombined Release`, so a
-class whose BW1M119 symbols carry the `(LHCombined Release)` tag belongs to a library, not to the
-game: its header and source go under `src/Lionhead/` (usually `LH3DLib/development/`), never
-`src/Black/`. Game-side headers include it by its full path (`<Lionhead/LH3DLib/development/...>`).
+Mac build put Lionhead libraries in separate module, `LHCombined Release`; class whose BW1M119 symbols carry that tag belongs to library: header and source go under `src/Lionhead/` (usually `LH3DLib/development/`), never `src/Black/`. Game-side headers include it by full path (`<Lionhead/LH3DLib/development/...>`).
 
 ## Key Data Files
 
 ### `config/BW1W120/symbols.txt`
 
-Every symbol present in the binary with address, size, type, scope and alignment. Format:
+Every symbol in binary:
 ```
 mangled_name = .section:0xADDRESS; // type:function size:0xSIZE scope:global align:4
 ```
 
-Scope is `global`, `local` (static), or `weak` (inline/header-defined).
+Scope `global`, `local` (static) or `weak` (inline/header-defined).
 
-dtk rewrites this file when it splits, and it de-duplicates function **and data** names per
-module: the lowest address keeps a repeated name and every other copy becomes `fn_0x…` or
-`data_0x…`. Name a per-TU static (`_$E` initializer pairs, header-defined file statics) in one
-TU only, or a new name silently steals an already-paired one. Other recurring fixes:
+dtk rewrites this file when splitting, de-duplicates function **and data** names per module: lowest address keeps repeated name, every other copy becomes `fn_0x…` or `data_0x…`. Name per-TU static (`_$E` initializer pairs, header-defined file statics) in one TU only, or new name silently steals already-paired one. Other recurring fixes:
 
-- A dtk `lbl_` inside a function, or a switch jump table after its code, splits the function
-  in objdiff: delete the labels and extend the size over the table (not the trailing padding).
-- Renaming a delay-load import slot to `__imp__Name@N` drops its base relocation and breaks
-  the DLL hash; restore it with an `add_relocations` entry pointing the slot at its
-  `__imp_load_*` thunk. EH functions need `__except_list` entries the same way.
+- dtk `lbl_` inside function, or jump table after its code, splits function in objdiff: delete labels, extend size over table (not padding).
+- Renaming delay-load import slot to `__imp__Name@N` drops its base relocation, breaks DLL hash; restore with `add_relocations` entry pointing slot at its `__imp_load_*` thunk. EH functions need `__except_list` entries same way.
 - `add_relocations` and other `config.yml` changes take effect only after `python configure.py`.
 
 ### `config/BW1W120/splits.txt`
 
-Maps each source file to its section address ranges, telling dtk how to split the binary into per-TU objects.
+Maps each source file to section address ranges for dtk's per-TU split.
 
 ## Code Conventions
 
 ### Naming
 
-- **Use original names wherever possible.** The symbols from the Mac version can be mapped to Windows methods 90%+ of the time.
-- Function arguments: `snake_case` (e.g., `food_amount`, `wood_amount`, `max_dist`). Placeholders (`param_1`, `param_2`) only where the signature is genuinely unknown (see [Rules from maintainer review](#rules-from-maintainer-review)).
-- Local variables: `camelCase` (e.g., `abodeType`, `maxVillagersInAbode`). Hex-Rays placeholders (`fVar1`, `fVar2`) only under the same condition.
-- Classes: `PascalCase` (e.g., `Abode`, `Villager`, `Town`, `MapCoords`).
-- Enums: type name in `SCREAMING_SNAKE_CASE`, enumerators prefixed with the type name (e.g., `TOWN_STATUS` → `TOWN_STATUS_DEFAULT`, `TOWN_STATUS_CAPTURED`).
-- Member variables: `PascalCase`, no prefix (e.g., `AttachedThing`, `PreviousStatus`, `XOffset`, `FlashOn`). Real Lionhead headers show members are consistently `PascalCase` — not `snake_case`/`camelCase`, and never `m_`-prefixed. Member names don't survive in the binary, so where the true name is unknown, pick a readable `PascalCase` name.
-- Members our code does not use, or only saves and loads, retain placeholder names like `field_0x7c`, `field_0x94`, encoding the hex offset. A member the code uses gets a name and a type (see [Naming and values](#naming-and-values-from-qwerins-425-review)).
-- Method names use PascalCase: `ArriveHome()`, `AddVillagerToAbode()`, `CalcRandomPos()`.
-- Record evidence or uncertainty about a name or provisional ownership in the PR description, not in source comments (see [Comments](#comments--annotations-in-the-code)). Do not add blanket comments such as "Descriptive member names" or comments merely stating that names are inferred rather than original; readable names for reconstructed members are expected.
+- **Use original names wherever possible.** Mac symbols map to Windows methods 90%+ of time.
+- Function arguments: `snake_case` (`food_amount`, `max_dist`). Locals: `camelCase` (`abodeType`). Matching function must not keep `param_N` placeholders: name each from role, demangled Mac symbol or call sites, following base-class convention (`ToBeDeleted(bool32_t delete_now)`, `PhysicsEditorCreate(int type)`). Keep `param_N` or Hex-Rays `fVarN` only where signature genuinely unknown, even then prefer closest evidence-based name.
+- Classes `PascalCase` (`Abode`, `MapCoords`); methods `PascalCase` (`ArriveHome()`, `CalcRandomPos()`).
+- Enums: type name `SCREAMING_SNAKE_CASE`, enumerators prefixed with it (`TOWN_STATUS` → `TOWN_STATUS_DEFAULT`).
+- Members: `PascalCase`, no prefix (`AttachedThing`, `XOffset`). Real Lionhead headers never use `snake_case`/`camelCase`/`m_`; true name unknown → pick readable `PascalCase` one.
+- Members code does not use, or only saves and loads, keep placeholders encoding hex offset (`field_0x7c`). Name anything used in significant way (field, function, enum value, flag, parameter) by role, found from what sets and reads it; fields only saved/loaded, never read, may stay `field_0x…`, but say so in PR. New code that reads `field_0x…`, `param_N` or offset-named member (`Material0x58`) renames it in same PR (#494). Address- or offset-suffixed name (`GetDistanceInMetres_0074cd50`) not a name (#501).
+- Record evidence or uncertainty about name or provisional ownership in PR description, not source comments. No blanket comments such as "Descriptive member names".
 
 ### Comments & annotations in the code
 
-Source must read as if a Lionhead programmer wrote it. The only comments it contains are:
+Source must read as if Lionhead programmer wrote it. Only comments:
 
-- Address comments in the exact form described under
-  [Signatures](#signatures-function-boundaries-and-layouts), above declarations in headers.
-  `.cpp` files carry no comments above definitions; a function with no header (file static,
-  callback) keeps its address comment on a forward declaration in the `.cpp`.
-- `// Inliner IL size: N` — above an inline helper's address comment: its exact IL size, as measured by `tools/inline-budget.py size`
-  (`<= 40` means never charged). Update it whenever the body changes.
-- An empty trailing `//` after each entry of an initializer table, to keep clang-format at one entry per line (#506).
-- Comments a Lionhead programmer could plausibly have written; prefer none.
+- Address comments in form under [Signatures](#signatures-function-boundaries-and-layouts), above declarations in headers. `.cpp` files carry no comments above definitions; function with no header (file static, callback) keeps address comment on forward declaration in `.cpp`.
+- `// Inliner IL size: N` above inline helper's address comment: exact IL size from `tools/inline-budget.py size` (`<= 40` means never charged). Update whenever body changes.
+- Empty trailing `//` after each entry of initializer table, keep clang-format at one entry per line (#506).
+- Comments Lionhead programmer could plausibly have written; prefer none.
 
-Do not commit decompilation commentary: TODOs, "fabricated", match percentages, register,
-scheduling or inliner notes, evidence for a name, Mac/IDA references, layout prose, or
-dividers such as `// Static methods`. The match percentage is the TODO. Keep residual
-analyses, name evidence and matching notes in your notes folder (see
-[Repository Layout](#repository-layout)) or the PR description.
-
-`#pragma dont_inline on/off` is code, not commentary, and stays where matching needs it.
+Do not commit decompilation commentary: TODOs, "fabricated", match percentages, register/scheduling/inliner notes, name evidence, Mac/IDA references, layout prose, or dividers such as `// Static methods`. Match percentage is the TODO. Keep such analysis in notes folder or PR description. `#pragma dont_inline on/off` is code, not commentary, stays where matching needs it.
 
 ### Style
 
-- Formatting follows `.clang-format` (Microsoft-based, 120-column, tabs for indentation with spaces for alignment).
-  CI checks with **clang-format 22**; other major versions wrap some expressions differently
-  (`pip install "clang-format>=22,<23"`).
-- Apply whole-file clang-format to touched C++ files before final verification and commits, not just changed lines.
-- Pre-C++11 style (`.clang-format` sets `Standard: c++03`; the compiler is MSVC 6.0): no `auto`, no range-for, no lambdas, no `nullptr` (use `NULL` or `0`).
-- Header guards use the `#ifndef BW1_DECOMP_<NAME>_INCLUDED_H` / `#define` / `#endif` pattern (e.g. `BW1_DECOMP_ABODE_INCLUDED_H`).
-- Use windef.h's `min`/`max` where the original did. `tools/minmax-scan.py --verify --apply <file>` finds
-  hand-expanded selects and clamps and keeps only rewrites that compile byte-identical (`minmax-macros` skill).
-- No magic numbers. Name sizes, counts, lengths, ports, timeouts, ids and flags. A value that
-  belongs to a real enum is one of its enumerators: the number of entries in `TRIBE_TYPE` is
-  `TRIBE_TYPE_LAST`, not a separate constant. Any other standalone constant is a `#define` in the
-  owning header, never an anonymous `enum { ... }` and never new static data. A one-off char array
-  length (`char name[150]`, `char buffer[200]`) says nothing beyond itself: write the literal, not a
-  `*_LENGTH`/`*_SIZE` define. Where the same buffer's size is needed again, use `sizeof` on it. Use existing
-  enums and Win32 names (`INFINITE`, `WAIT_FAILED`, `THREAD_PRIORITY_*`), `sizeof`/`ARRAY_SIZE`
-  for repeated sizes, hex for colours and base 10 for line numbers.
-- Full-register true/false values are `bool32_t` (returns, members, parameters, template helpers
-  such as `LHLinkedList::Add`) with `true`/`false`, not `TRUE`/`FALSE`/`1`/`0`. It is `int`, so
-  manglings do not change. Wide strings are `wchar_t`, not `char16_t` or `unsigned short`.
-  `unsigned long` (`K`) and `uint32_t` (`I`) mangle differently: never swap them in signatures.
-- Declare each value as what it holds, then compare it in that type's own terms. A field, local,
-  parameter or return used only as a flag is `bool32_t`, tested directly or against `true`/`false`,
-  never `0`/`1`. A pointer is a pointer type compared with `NULL`, never a `uint32_t` cast back to a
-  pointer. An enum value has the enum type and is compared with enumerators. A cast inside a comparison
-  (`(uint8_t)GetTopState() != …`, `(uint32_t)NumAdults > …`) usually hides a wrong declaration: fix the
-  field, return or parameter type instead, and keep the cast only when codegen needs it. Naming a
-  `field_0x…` member includes giving it the right type.
-- Never use `__FILE__`, `__LINE__` or `#line`. For debug-new and logging calls define a TU-local
-  `#define FILEPATH "C:\\dev\\MP\\..."` holding the binary's exact string and pass a base-10 line literal.
-  Write the code as if the original used `__FILE__`/`__LINE__` and our macros stand in for them. A path
-  naming a `.h` means the call was inlined from that header: define the inline in that header with the
-  header's own path macro and line (both version-guarded, e.g. `GatheringInterface.h`), never as a per-TU override
-  of the full path. The file name's capitalisation comes from the including unit's `#include` spelling (`__FILE__`
-  repeats it), so a unit whose string reads `gatheringinterface.h` writes `#include "gatheringinterface.h"` and
-  defines only the header's include-name macro before it.
-- Boilerplate that recurs identically across modules is a shared macro, not per-file code
-  (e.g. the version blocks: `LH_VERSION_INFO` in `LHLog/ver4.0/LHVersion.h`).
-- Shifts and masks in decompiler output are usually how a byte or field access compiled: reading one byte of
-  a packed 32-bit value gives `shr eax, 16; and eax, 0xff` or `mov dl, ah`, which the decompiler prints as
-  `(x >> 16) & 0xff`. Reconstruct what the programmer wrote and keep it when the opcodes match: best an
-  existing macro used for its intended purpose (an SDK's colour or flag macros on that SDK's values), else the
-  struct member, union field or accessor the Mac symbols show. Do not copy the decompiler's shifts and masks, and
-  never name their counts with `*_SHIFT` defines. Leave a literal shift only where the code really shifts a
-  value, such as a fixed-point scale.
-- Parentheses around a product stop cl folding constants: `(x * 3) / 4` emits
-  `fmul 3.0; fmul 0.25`, while `x * 3 / 4` folds to one `fmul 0.75`.
-- When we narrow a flag helper's `& mask` to `test byte ptr` but the target keeps `mov; and; test`,
-  the AND result flows into a join at the caller:
-  `uint32_t type = i < n - 1 ? GetKeyPointType(i) : GESTURE_KEY_POINT_TYPE_END;`.
-- Use inline accessors such as `LHCoordF::X()`/`Y()`/`Set()` where the Mac build has them, not
-  direct field access; their float results add IL nodes that move the schedule.
-- An accessor's float result also makes its operand the heavier one, so it is loaded first:
-  `z - region.start.Y()` gives `fld start.y; fsubr [z]`.
+- Formatting follows `.clang-format` (Microsoft-based, 120 columns, tabs for indentation, spaces for alignment). CI checks with **clang-format 22**; other majors wrap some expressions differently (`pip install "clang-format>=22,<23"`). Apply whole-file clang-format to touched C++ files before final verification and commits.
+- Pre-C++11 (`Standard: c++03`, MSVC 6.0): no `auto`, range-for, lambdas, `nullptr` (use `NULL` or `0`).
+- Header guards: `#ifndef BW1_DECOMP_<NAME>_INCLUDED_H` / `#define` / `#endif` (e.g. `BW1_DECOMP_ABODE_INCLUDED_H`).
+- Use windef.h's `min`/`max` where original did. `tools/minmax-scan.py --verify --apply <file>` finds hand-expanded selects and clamps, keeps only rewrites that compile byte-identical (`minmax-macros` skill).
+- No magic numbers: name sizes, counts, lengths, ports, timeouts, ids, flags. Value belonging to real enum is enumerator (`TRIBE_TYPE_LAST`, not separate constant). Any other standalone constant is `#define` in owning header, never anonymous `enum` or new static data. One-off char array length (`char name[150]`) is just literal, no `*_LENGTH`/`*_SIZE` define; where size needed again use `sizeof`. Use existing enums and Win32 names (`INFINITE`, `WAIT_FAILED`, `THREAD_PRIORITY_*`), `sizeof`/`ARRAY_SIZE` for repeated sizes, hex for colours, base 10 for line numbers.
+- Model values, don't relocate them: `#define X (Y + 4)` still magic number. Work out what value *is* (enum count, slot in table with known entries, flag), model that, start enum from known entries (e.g. belief `Attributes[]` slots named from functions that fill them). Never reuse `chlasm` name that only coincidentally has same value. Related values for one property (`LIVING_LOOK_AT_SPEED_SLOW`/`_NORMAL`/`_FAST`) = named enum in owning header, not run of `#define`s (#501); new named enums go in owning class's header, standalone counts/sizes are `#define`s there (no anonymous enums). `include/chlasm/*.h` comes from Creature Isle but usable for Black & White; where last enumerator too large, needs `#ifdef VERSION_BW1WCI` guards.
+- Full-register true/false values are `bool32_t` (returns, members, parameters, template helpers like `LHLinkedList::Add`) with `true`/`false`, not `TRUE`/`FALSE`/`1`/`0`. It is `int`, so manglings do not change. Wide strings are `wchar_t`, not `char16_t` or `unsigned short`. `unsigned long` (`K`) and `uint32_t` (`I`) mangle differently: never swap in signatures. Prefer `[u]intN_t` over `unsigned long`/`unsigned char`/`unsigned short` wherever size, signedness, mangling unchanged (plain `int` fine), never `uint16_t` for wide characters. Typedefs and `#define`d types do not survive mangling: `BOOL` and `int` mangle identically, game likely used `BOOL`, so Mac `int` may be `BOOL`/`bool32_t` in source. Pick spelling that reads best, matches surrounding code, confirm codegen unchanged.
+- Declare each value as what it holds, compare in that type's terms. Flag is `bool32_t`, tested directly or against `true`/`false`, never `0`/`1`. Pointer is pointer type compared with `NULL`, never `uint32_t` cast back. Enum value has enum type, compared with enumerators. Cast inside comparison (`(uint8_t)GetTopState() != …`, `(uint32_t)NumAdults > …`) usually hides wrong declaration: fix field, return or parameter type, keep cast only when codegen needs it. Naming `field_0x…` member includes giving right type.
+- Never use `__FILE__`, `__LINE__` or `#line`. For debug-new and logging calls define TU-local `#define FILEPATH "C:\\dev\\MP\\..."` holding binary's exact string, pass base-10 line literal. Path naming `.h` means call inlined from that header: define inline there with header's own path macro and line (both version-guarded, e.g. `GatheringInterface.h`), never as per-TU override of full path. Name's capitalisation comes from including unit's `#include` spelling: unit whose string reads `gatheringinterface.h` writes `#include "gatheringinterface.h"` and defines only header's include-name macro before it.
+- Boilerplate recurring identically across modules = shared macro (e.g. `LH_VERSION_INFO` in `LHLog/ver4.0/LHVersion.h`).
+- Shifts and masks in decompiler output usually how byte or field access compiled (`shr eax, 16; and eax, 0xff` prints as `(x >> 16) & 0xff`). Reconstruct what programmer wrote, keep when opcodes match: best existing macro used as intended (SDK's colour or flag macros), else struct member, union field or accessor Mac symbols show. Never copy decompiler's shifts and masks or name shift counts with `*_SHIFT` defines; keep literal shift only where code really shifts value (e.g. fixed-point scale).
+- Parentheses around product stop cl folding constants: `(x * 3) / 4` emits `fmul 3.0; fmul 0.25`, while `x * 3 / 4` folds to `fmul 0.75`.
+- We narrow flag helper's `& mask` to `test byte ptr` but target keeps `mov; and; test` → AND result flows into join at caller: `uint32_t type = i < n - 1 ? GetKeyPointType(i) : GESTURE_KEY_POINT_TYPE_END;`.
+- Use inline accessors such as `LHCoordF::X()`/`Y()`/`Set()` where Mac build has them, not direct field access; float results add IL nodes that move schedule. Accessor's float result also makes operand heavier, so it loads first: `z - region.start.Y()` gives `fld start.y; fsubr [z]`.
 
 ### Header dependencies
 
-An include can change generated code even when its declarations are unused: TU-local
-constants, dynamic initializers, template storage/helpers and inlining can all be affected.
-Keep enum-only headers lightweight and place complete types where consumers need them.
-Verify affected header consumers after layout, virtual-interface or include-boundary changes.
+Include can change generated code even when declarations unused: TU-local constants, dynamic initializers, template storage/helpers, inlining can all change. Keep enum-only headers lightweight, place complete types where consumers need them. Verify header consumers after layout, virtual-interface, include-boundary changes.
 
-Every static data member declared in a header bumps cl6's `_$E`/`_$S` counter in each TU
-that includes it, renumbering those TUs' initializers. If the game's numbering shows it never
-saw a DLL module's statics, keep them out of the game's view with that module's own build
-define (e.g. `#ifdef LH_MULTIPLAYER_EXPORTS`). This applies only to the DLL modules: LH3DLib
-is linked into the executable, and hiding its declarations from the game with `_LH_3D_LIB_`
-is forbidden (see [Rules from maintainer review](#rules-from-maintainer-review)).
+Every static data member declared in header bumps cl6's `_$E`/`_$S` counter in each including TU, renumbering initializers. Game's numbering shows it never saw DLL module's statics → hide with that module's own build define (e.g. `#ifdef LH_MULTIPLAYER_EXPORTS`). DLL modules only.
+
+**Never use `_LH_3D_LIB_`.** Do not test it (`#ifdef`, `#if defined`) in source or headers, or add to MSVC compile flags, to give LH3DLib units statics, members or inline bodies game units do not see; same for any other invented library-only define. Only place: LH3DP3.cpp's reproduced Intel C++ command line in `configure.py`. LH3DLib declaration would break matched game code (executable hash, or currently matching function, initializer or section) → treat like global that cannot be declared yet (see [Globals](#globals)): leave function that needs it nonmatching, record why.
+
+New `#include` in shared header reaches every transitive includer, can change their objects for *other* versions (extra include in `CreatureMentalAttributeTest.h` broke BW1W100 hash while 1.20 passed). Include heavy headers in `.cpp` that needs them, compile changed files for BW1W100/BW1W110 too.
+
+Header code stays in headers: function TU only instantiates from header (inline or template body, COMDAT, `scope:weak`) defined inline there, not in TU's `.cpp` (#441).
+
+Member-pointer tables follow `VillagerStates.h` (#515): declare entry struct while its class only forward-declared (MSVC's general 16-byte representation without `/vmg`), make table static member of entry struct in own small header. Static member in widely included class header bumps `_$E`/`_$S` in every consumer.
 
 ### Inline expansion
 
-When the target inlines a different subset of calls than our build (a helper stays a `call`
-on one side only), the cause is the compiler's inline budget, not optimization flags. Use the
-`inline-budget-matching` skill. Its reference is [`docs/msvc6_inliner.md`](docs/msvc6_inliner.md):
-the c2.dll inliner rules (per-function budget, the 40-unit free threshold, nested budget
-shares), measured sizes, and per-construct costs.
+Target inlines different subset of calls than our build (helper stays `call` on one side only) → cause is compiler's inline budget, not optimization flags. Use `inline-budget-matching` skill; reference [`docs/msvc6_inliner.md`](docs/msvc6_inliner.md) (c2.dll inliner rules: per-function budget, 40-unit free threshold, nested budget shares, measured sizes, per-construct costs).
 
-- `tools/c2-inline-log.py --source <file> -f <function>` compiles with a logging copy of c2.dll
-  and prints every inline decision: callee IL size, budget left, nested share, and why each call
-  was or was not inlined. Start here for any budget difference.
-- `tools/inline-budget.py size` measures an inline call's exact IL size with the unit's real
-  compile command.
-- `tools/inline-budget.py sim` replays the budget algorithm on a call tree. It must reproduce
-  our object's call set before you trust it for the target.
-- `tools/inline-budget.py callsets --all --target-only` lists which helpers stay calls in every
-  target function. Callers that share a body but get different target patterns show which
-  helper cost differs.
-- Change a helper's IL size without changing its bytes: a ternary instead of `if`, compound or
-  chained assignment. Do not reach for `__forceinline` or invented layouts.
+- `tools/c2-inline-log.py --source <file> -f <function>` prints every inline decision (callee IL size, budget left, nested share, why). Start here.
+- `tools/inline-budget.py size` measures inline call's exact IL size; `sim` replays budget algorithm on call tree, must reproduce our object's call set before trusting for target.
+- `tools/inline-budget.py callsets --all --target-only` lists which helpers stay calls in every target function; callers sharing body but different patterns show which helper cost differs.
+- Change helper's IL size without changing bytes: ternary instead of `if`, compound or chained assignment. Do not reach for `__forceinline` or invented layouts.
 
-When the only remaining difference is the operand order of equal-cost x87 operations inside
-inlined bodies, it is a c2 tie-break. It depends on how much IL the inliner has built earlier
-in the same function, not on anything the source means. `tools/tiebreak-probe.py --dummies`
-confirms this in one batch: some counts of unused locals match and others do not. Don't hunt
-further; leave the function nonmatching or ask the human about a fakematch.
+Only remaining difference = operand order of equal-cost x87 operations inside inlined bodies → c2 tie-break depending on how much IL inliner built earlier in function, not source's meaning. `tools/tiebreak-probe.py --dummies` confirms in one batch (some counts of unused locals match, others not). Don't hunt further; leave function nonmatching or ask human about fakematch.
 
-A second c2 tie-break depends on the number the front end gives a symbol: how many
-declarations come before it in the unit. Register choice and store order can change with it.
-Names, name lengths and macros have no effect. The output repeats over a cycle of 64
-declarations, and only the declarations before one sensitive symbol count. Because the inputs
-are declaration counts, a merge that adds unrelated declarations to shared headers can break a
-matched unit. Localize it with `tools/tiebreak-probe.py --variants`:
+Second c2 tie-break depends on number front end gives symbol (how many declarations precede it in unit); register choice and store order can change with it, in cycle of 64 declarations. Merge adding unrelated declarations to shared headers can therefore break matched unit. Fix = real change to headers before sensitive symbol, adding members, enumerators or methods Mac symbols show are missing, never padding without such evidence (fakematch: ask human first). Localize with `tools/tiebreak-probe.py --variants`; procedure, and how to choose set that lands in matching window for every version, in [`docs/msvc6_symbol_numbering.md`](docs/msvc6_symbol_numbering.md).
 
-1. Add N unused enumerators to an existing enum in a header the unit includes, for N from 0 to
-   about 130. Record which N match.
-2. Put a fixed number of matching declarations at points along the unit's include order (get
-   the order from a `/E` preprocess). Bisect down to the declaration after which inserts stop
-   having an effect. That declaration is the sensitive symbol.
-
-The fix is a real change to the headers before that symbol: add the members, enumerators or
-methods that the Mac symbols show they are missing. The count must land in a matching
-window for every version that links the unit. An inline body counts for more than one, so
-measure each candidate set with the same sweep. Every other unit that includes the edited
-headers is renumbered as well: build all five versions and compare their reports before
-choosing a set. Padding declarations without such evidence make a fakematch, so ask the
-human before adding them.
-
-The Ninja `cl` rule has no header dependencies. After editing a header, delete the objects
-you rely on before rebuilding. For shared headers, delete every object, then compare full
-reports (`decomp-regress.py --refresh --baseline <saved report>`) before keeping the change.
-Nor does the precompiled header: after editing a header it reads, delete it as well
-(`build/<version>/src/Black/BlackPCH.pch`, `.../LH3DLib/development/LH3DLibPCH.pch`), and
-Ninja rebuilds it and every unit using it (see [`docs/msvc6_pch.md`](docs/msvc6_pch.md)).
-Game units are built with the game code's PCH unless their `configure.py` entry says
-otherwise (`pch=`); LH3DLib units use LH3DLib's with `pch=True`. Either header is forced in
-with `/FI`, never included by the source. With it, `cl` lays out a unit's uninitialised
-statics in reverse order of their first mention, not by name hash: order the definitions, or
-initialise to zero, rather than picking names or adding filler statics.
+Ninja `cl` rule and precompiled header have no header dependencies. After editing header, delete objects you rely on before rebuilding; for shared headers delete every object, then compare full reports (`decomp-regress.py --refresh --baseline <saved report>`) before keeping change. Also delete PCH the header feeds (`build/<version>/src/Black/BlackPCH.pch`, `.../LH3DLib/development/LH3DLibPCH.pch`), Ninja rebuilds it and its units (see [`docs/msvc6_pch.md`](docs/msvc6_pch.md)). Game units use game PCH unless `configure.py` entry says otherwise (`pch=`); LH3DLib units use theirs with `pch=True`. Forced in with `/FI`, never included by source. With PCH, `cl` lays out unit's uninitialised statics in reverse order of first mention, not by name hash: order definitions, or initialise to zero, rather than picking names or adding filler statics.
 
 ### Signatures, function boundaries and layouts
 
-Each function and global declaration in a header carries an address comment:
+Each function and global declaration in header carries address comment:
 
 ```cpp
 // BW1W120 <windows addr> BW1M119 <mac addr> [(<module>)]
@@ -578,29 +279,11 @@ Each function and global declaration in a header carries an address comment:
 // BW1WCI 004690f0 BW1MCI119 011c7760
 ```
 
-The Mac address comes from `config/BW1M119/symbols.txt`, or from a module's own
-`config/BW1M119/<module>/symbols.txt`; a module symbol is tagged with that directory
-name. In either slot, `inlined` (no out-of-line copy), `null` (not in that binary) or
-`purecall` (pure virtual slot) replace an address; nothing else does.
-Symbols exported from the game's DLLs use their DLL address (e.g. LHMultiplayerR `1001e2b0`).
-The line holds nothing else: notes go on a comment line of their own above it, and it
-never trails code. CI runs `python3 tools/check_addr_comments.py`, which also checks that
-each address is a real symbol of its version.
-A declaration that only Creature Isle sees (under `#ifdef VERSION_BW1WCI`) uses the second
-form instead: its Windows address is a symbol in `config/BW1WCI/symbols.txt` (or a DLL
-module there) and its Mac address comes from the Mac Creature Isle build,
-`config/BW1MCI119/symbols.txt` or a module there, tagged the same way. `BW1WCI` always pairs
-with `BW1MCI119` and `BW1W120` with `BW1M119`; never mix them on one line. Where 1.20 has
-its own declaration under `#ifndef VERSION_BW1WCI`, that one keeps the `BW1W120` form.
-The BW1MCI119 symbols are the ground truth for a Creature Isle-only function's name and signature.
-Older comments with `BW1M100` (actually 1.1.0 or 1.1.9 addresses at base 0x10000000)
-and a trailing function name are historical. Use `tools/mac_symbol_version.py` to audit them.
+Mac address comes from `config/BW1M119/symbols.txt`, or module's own `config/BW1M119/<module>/symbols.txt` (module symbol tagged with that directory name). In either slot, `inlined` (no out-of-line copy), `null` (not in that binary) or `purecall` (pure virtual slot) replace address; nothing else does. DLL exports use DLL address (e.g. LHMultiplayerR `1001e2b0`). Line holds nothing else: notes go on comment line above, never trails code. CI runs `python3 tools/check_addr_comments.py`, also checks each address is real symbol of its version.
 
-**Ground truth for a function's name, class, argument list and `const`-ness is the
-demangled CodeWarrior symbol in `config/BW1M119`.** The Mac binary kept its real
-symbols. The Windows names in `config/BW1W120/symbols.txt` were reconstructed from
-them, so where the two disagree, trust the Mac symbol. Look the symbol up, then demangle
-it with objdiff's demangler (`cwdemangle`) or the local port:
+Declaration only Creature Isle sees (under `#ifdef VERSION_BW1WCI`) uses second form: Windows address is symbol in `config/BW1WCI/symbols.txt` (or DLL module there), Mac address from `config/BW1MCI119/symbols.txt` or module there, tagged same way. `BW1WCI` always pairs with `BW1MCI119`, `BW1W120` with `BW1M119`; never mix on one line. Where 1.20 has own declaration under `#ifndef VERSION_BW1WCI`, keeps `BW1W120` form. BW1MCI119 symbols = ground truth for Creature Isle-only function's name and signature. Older `BW1M100` comments (actually 1.1.0 or 1.1.9 addresses at base 0x10000000) with trailing function name historical; audit with `tools/mac_symbol_version.py`.
+
+**Ground truth for function's name, class, argument list, `const`-ness = demangled CodeWarrior symbol in `config/BW1M119`.** Mac binary kept real symbols; Windows names in `config/BW1W120/symbols.txt` reconstructed from them, so trust Mac symbol where they disagree. Look up and demangle with objdiff's `cwdemangle` or local port:
 
 ```sh
 grep 'CalculateDancePosition__6Living' config/BW1M119/symbols.txt
@@ -609,164 +292,30 @@ python3 tools/cwdemangle.py '.CalculateDancePosition__6LivingFRC9MapCoordsP9MapC
 python3 tools/mac_symbol_version.py --find 'Living::CalculateDancePosition'
 ```
 
-Use the `.`-prefixed `.code0` symbol; the unprefixed `.pidata1` object is its transition
-vector. A CodeWarrior mangling encodes no return type, calling convention or
-static-ness. Establish those from the Windows code (`ret N`, `this` in ECX, `al` vs
-`eax`). The BW1W120 mangling for them is a hypothesis. When the header disagrees with the
-demangled Mac signature, fix the header.
+Use `.`-prefixed `.code0` symbol; unprefixed `.pidata1` object is its transition vector. CodeWarrior mangling encodes no return type, calling convention, static-ness: establish from Windows code (`ret N`, `this` in ECX, `al` vs `eax`); BW1W120 mangling for them is hypothesis. Header disagrees with demangled Mac signature → fix header.
 
-Treat decompiler signatures and function boundaries as hypotheses. Corroborate Windows
-assembly with Mac symbols and call sites; neither platform alone establishes every detail
-of the other. Check full-register versus byte-sized Boolean results, static versus instance
-methods, calling conventions and virtual slots. An apparent entry can be a continuation
-or exception funclet.
+Windows `symbols.txt` mangled names and return types reconstructed, can be wrong (`class` vs `struct`, `bool` vs `int`, return type disagreeing with codegen, offset encoded relative to one symbol base that resolves to another); Mac symbols right ~99% of time, only subtle differences. RTTI in Windows binaries absolute ground truth for RTTI types. Before renaming type or changing signature, confirm in objdiff *and* CI report, check it does not regress other functions, sections, data.
 
-A recovered prefix is not necessarily an allocation-ready type. Document incomplete
-layouts; do not allocate using an unproven `sizeof` or define undersized singleton storage.
+Ask Mac binary before asking reviewer: what body does (empty destructor, helper's argument order) is in BW1M119 code; `tools/mac-disasm.py` disassembles it (#496). New helper needs proof of where it lives and argument order. Mac symbol's class or namespace cannot be contradicted: resolve duplicate inside it, don't move function out (#501).
 
-#### Pointer vs reference
+Treat decompiler signatures and function boundaries as hypotheses; corroborate Windows assembly with Mac symbols and call sites. Check full-register vs byte-sized Boolean results, static vs instance methods, calling conventions, virtual slots. Apparent entry can be continuation or exception funclet.
 
-If the demangled BW1M119 signature says `Type&` or `Type const &` but the header has
-`Type*`, the header should use `Type&` or `const Type&` instead.
+Recovered prefix not necessarily allocation-ready type: document incomplete layouts, do not allocate with unproven `sizeof` or define undersized singleton storage.
 
-```cpp
-// BW1M119: Living::CalculateDancePosition(MapCoords const &, MapCoords *)
-// BW1W120 005ef9c0 BW1M119 0138c340
-bool CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2);
-//                                        ^ should be const MapCoords&
-```
+#### Pointer vs reference, hidden output parameters
 
-This applies to any type, not just `MapCoords`.
-
-#### Hidden output parameter returned as pointer
-
-If a function is declared as `Type* Func(Type* first_param, ...)` but the
-demangled BW1M119 signature omits `first_param` (showing fewer params), then
-`first_param` is a hidden output buffer. The function should return `Type` by value
-instead of `Type*`, and the first parameter should be removed.
+Demangled BW1M119 signature says `Type&` or `Type const &` where header has `Type*` → use reference (any type). Function declared `Type* Func(Type* first_param, ...)` but Mac signature omits `first_param` → hidden output buffer: return `Type` by value, drop parameter.
 
 ```cpp
 // BW1M119:  Living::CalcRandomPos(MapCoords const &, float, float)
 // Current:  MapCoords* CalcRandomPos(MapCoords* param_1, MapCoords* param_2, float, float)
 // Fix:      MapCoords CalcRandomPos(MapCoords* param_2, float, float)
-//                            ^^ return by value, remove first param
 ```
 
 ### Globals
 
-`(*globals.game)->` is an old way of writing `GGame::g_game->`.
+Globals belong to class as `static` data members (`GGame::g_game`, `EditorPhysics::PhysicsConstants`), declared in its header, defined in its `.cpp`. Find owning class first (functions that write data usually name it).
 
-Globals belong to a class as `static` data members (`GGame::g_game`,
-`EditorPhysics::PhysicsConstants`), declared in that class's header and defined in
-its `.cpp`. Find the owning class first (the functions that write the data usually
-name it).
+**Never use `extern`**, not even as temporary stand-in in NonMatching unit: hides which TU owns data, produces mangled name (`?Name@@3...`) that will not match. Global cannot be declared in proper header yet → leave function nonmatching, record why in notes or PR description.
 
-**Never use `extern`**, not even as a temporary stand-in in a NonMatching unit. It hides
-which translation unit owns the data and produces a mangled name (`?Name@@3...`) that will
-not match the real one. If a global cannot be declared in its proper header yet, leave
-the function nonmatching without it and record why in the notes or PR description.
-
-A true free global is the exception: both manglings show it outside any class
-(`?Fonts@@3PAVFont@@A`, Mac `Fonts` rather than `Fonts__4Font`), so it cannot be a static
-member. While only one translation unit uses it, declare it `extern` at the top of that
-`.cpp`, with its address comment, rather than in a header. Move the declaration to the
-owner's header only once a second unit needs it.
-
-## Rules from maintainer review
-
-These are drawn from review feedback on earlier PRs and take precedence where they
-conflict with looser guidance above. `tools/review-lint.py` lists added lines that often
-draw these comments; it is a reviewer's aid, every hit needs a judgement.
-
-- **Name parameters.** A function that matches must not keep `param_1`/`param_2`
-  placeholders. Name each argument from its role, the demangled Mac symbol, or its call
-  sites (`snake_case`). Keep `param_N` (or Hex-Rays `fVarN`) only when the signature is
-  genuinely unknown, and even then prefer the closest evidence-based name. This extends
-  to the base-class convention already used elsewhere (`ToBeDeleted(bool32_t delete_now)`,
-  `CallVirtualFunctionsForCreation(const MapCoords& coords)`, `PhysicsEditorCreate(int type)`).
-- **Know which symbol source is authoritative.** The Mac symbols (`config/BW1M119`) are
-  ground truth — the real names survived, with only subtle differences, so they are right
-  ~99% of the time. The Windows `symbols.txt` mangled names and return types, by contrast,
-  are reconstructed and can be wrong — `class` vs `struct`, `bool` vs `int`, a return type
-  that disagrees with the codegen, or an offset encoded relative to one symbol base that
-  resolves to a different one elsewhere. RTTI in the Windows binaries is absolute ground
-  truth for RTTI types. Before renaming a type or changing a signature, confirm the change
-  in objdiff *and* in the CI report, and check it does not regress other functions,
-  sections or data matches.
-- **Typedefs and `#define`d types don't survive in the mangling.** Two spellings of the
-  same underlying type — `BOOL` vs `int`, a `typedef` vs its expansion — mangle
-  identically, so the mangling leaves room to interpret which one the original wrote. The
-  game used `int` for booleans (likely `BOOL`), so the Mac symbol may show an `int`
-  parameter where the source said `BOOL`/`bool32_t`. Pick the spelling that reads best and
-  matches the surrounding code, and confirm the codegen is unchanged.
-- **Prefer `[u]intN_t` over the spelled-out equivalents** (`unsigned long`,
-  `unsigned char`, `unsigned short`, …) wherever it does not hurt matching — same size,
-  signedness and mangling. Plain `int` is fine. Do **not** use `uint16_t` for wide
-  characters; those are `wchar_t`.
-- **Show it matching.** A PR must demonstrate the result (objdiff 100% and the CI report),
-  not just assert it. Comment-only, analysis-only or "proposed" changes are not enough —
-  a macro or abstraction must be shown working and matching.
-- **Prefer the clearer of equal matches.** When two source shapes produce byte-identical
-  code (e.g. a member order reading `values[age]` vs the original order reading
-  `values[age - 1]`), the assembly does not pin the source down. Pick the more readable
-  form and note the ambiguity rather than treating the asm as proof of one shape.
-- **Format and rebase before review.** Run `clang-format` 22 on every touched file and
-  rebase onto the latest `main`; CI runs `check-format` and expects the report to show
-  the claimed improvement.
-- **Never use `_LH_3D_LIB_`.** Do not test it (`#ifdef`, `#if defined`) in source or headers,
-  and do not add it to the MSVC compile flags, to give LH3DLib units statics, members or
-  inline bodies that the game units do not see. The same goes for any other invented
-  library-only define. Its only place is LH3DP3.cpp's reproduced Intel C++ command line in
-  `configure.py`. When an LH3DLib declaration would break matched game code (an executable
-  hash, or a function, initializer or section that currently matches), treat it like a
-  global that cannot be declared yet (see [Globals](#globals)): leave the function that needs
-  it nonmatching and record why.
-- **One TU per PR.** Broad PRs over many units get tabled (#484). Prefer taking one
-  translation unit to `Matching` over partial progress across many, and wait for an open PR
-  that touches the same headers to land first.
-- **Ask the Mac binary before asking the reviewer.** What a body does (an empty destructor, a
-  helper's argument order) is in the BW1M119 code; `tools/mac-disasm.py` disassembles it
-  (#496). A new helper needs proof of where it lives and of its argument order. The Mac
-  symbol's class or namespace cannot be contradicted: resolve a duplicate inside it rather
-  than moving the function out (#501).
-- **Rename the placeholders your code uses.** New code that reads a `field_0x…`, `param_N` or
-  offset-named member (`Material0x58`) renames it in the same PR (#494). An address- or
-  offset-suffixed name (`GetDistanceInMetres_0074cd50`) is not a name (#501).
-- **Related values are an enum.** A set of values for one property
-  (`LIVING_LOOK_AT_SPEED_SLOW`/`_NORMAL`/`_FAST`) is a named enum in the owning header, not a
-  run of `#define`s (#501).
-- **Header code stays in headers.** A function a TU only instantiates from a header (an inline
-  or template body, COMDAT, `scope:weak`) is defined inline in that header, not in the TU's
-  `.cpp` (#441).
-- **Member-pointer tables** follow `VillagerStates.h` (#515): declare the entry struct while
-  its class is only forward-declared (MSVC's general 16-byte representation without `/vmg`) and
-  make the table a static member of the entry struct in its own small header. A static
-  member in a widely included class header bumps `_$E`/`_$S` in every consumer.
-- **Only ask real questions.** Odd code that matches is not a question for review: "If it
-  matches it matches" (#486). Raise only decisions the evidence cannot settle.
-
-### Naming and values (from @qwerin's #425 review)
-
-- **Model values, don't relocate them.** Wrapping a literal in a macro
-  (`#define X (Y + 4)`) is still a magic number. Work out what the value *is* — an enum
-  count, a slot in a table with known entries, a flag — and model that, starting the enum
-  from the known entries (e.g. the belief `Attributes[]` slots named from the functions
-  that fill them). Never reuse a `chlasm` name that only coincidentally has the same value.
-- **Name anything used in a significant way** — field, function, enum value, flag, or
-  parameter — from context: find what sets and reads it, then name it by its role. Fields
-  that are only saved/loaded and never read may stay `field_0x…`, but say so in the PR.
-- **Placement.** Standalone counts/sizes are `#define`s in the owning header (no anonymous
-  enums); new named enums go in the owning class's header.
-  `include/chlasm/*.h` comes from Creature Isle but is usable for Black & White; where its
-  last enumerator is too large it needs `#ifdef VERSION_BW1WCI` guards.
-- **Watch include/link side effects.** A new `#include` in a shared header reaches every
-  unit that transitively includes it and can change their objects for *other* versions — an
-  extra include in `CreatureMentalAttributeTest.h` changed `Audio.cpp`'s 1.00 object and
-  broke the BW1W100 hash while 1.20 still passed. Include heavy headers in the `.cpp` that
-  needs them, and compile changed files for BW1W100/BW1W110 as well.
-- **Verify readability passes with `tools/codegen-check.py snapshot`/`compare`**, not
-  `decomp-regress` against a `main` baseline — the latter cannot see a drop in a function
-  the PR itself adds (it was 0% in the baseline). Note `(status & F) == F` and `status & F`
-  compile differently.
-- **Rebuild the `main` baseline after `main` moves**, otherwise merged upstream work shows
-  up as false regressions.
+True free global is exception: both manglings show it outside any class (`?Fonts@@3PAVFont@@A`, Mac `Fonts` rather than `Fonts__4Font`), so cannot be static member. While only one TU uses it, declare `extern` at top of that `.cpp` with address comment; move to owner's header only once second unit needs it.
