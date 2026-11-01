@@ -666,10 +666,18 @@ for _include_dir in includes_project[1::2]:
     del cflags_gamespy[_index - 1 : _index + 1]
 
 
-# A GameSpy SDK object in LHMultiplayerR.dll, built from the SDK sources under src/GameSpy.
-def GameSpyObject(completed, name, **options):
+# A GameSpy SDK object, built from the SDK sources under src/GameSpy. runblack.exe and
+# LHMultiplayerR.dll each link a copy of the SDK; the DLL's units are named under the module
+# like its zlib's, since unit names are unique project-wide.
+def GameSpyObject(completed, name, module=None, **options):
     source = name.replace("GameSpy/", "GameSpy/src/GameSpy/", 1)
+    if module is not None:
+        name = module + "/" + name
     return Object(completed, name, source=source, cflags=cflags_gamespy, **options)
+
+
+def MultiplayerGameSpyObject(completed, name, **options):
+    return GameSpyObject(completed, name, module="LHMultiplayer", **options)
 
 
 # A precompiled header (docs/msvc6_pch.md), for an object's `pch`: `header`, built once per
@@ -1827,6 +1835,30 @@ config.libs = [
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DSubMesh.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/SRTextured.cpp", pch=True),
 
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "GameSpy/Peer/peerMain.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/gcdkey/gcdkeyc.c", progress_category="sdk"),
+            GameSpyObject(Matching, "GameSpy/CEngine/gserver.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatMain.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W100", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/darray.c", progress_category="sdk", extra_cflags=["/D_NO_NOPORT_H_"]),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerCallbacks.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerOperations.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/nonport.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerCEngine.c", progress_category="sdk"),
+            GameSpyObject(Matching, "GameSpy/Peer/peerRooms.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/Peer/peerPing.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerPlayers.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W100", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/queryreporting/gqueryreporting.c", progress_category="sdk"),
+            GameSpyObject(Matching, "GameSpy/Peer/peerGlobalCallbacks.c", progress_category="sdk"),
+            GameSpyObject(Matching, "GameSpy/Peer/peerMangle.c", progress_category="sdk"),
+            GameSpyObject(Matching, "GameSpy/md5c.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/hashtable.c", progress_category="sdk", extra_cflags=["/D_NO_NOPORT_H_"]),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatSocket.c", progress_category="sdk"),
+            GameSpyObject(Matching, "GameSpy/Chat/chatCallbacks.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatChannel.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/Chat/chatHandlers.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/CEngine/gserverlist.c", progress_category="sdk"),
+            GameSpyObject(MatchingFor("BW1W100", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/pinger/pingerMain.c", progress_category="sdk"),
+
             Object(Matching, "jpeg/jcapimin.c", progress_category="sdk"),
             Object(Matching, "jpeg/jerror.c", progress_category="sdk"),
             Object(Matching, "jpeg/jdatadst.c", progress_category="sdk"),
@@ -2318,29 +2350,29 @@ config.libs = [
             Object(Matching, "LHMultiplayer/zlib/infutil.c", source="zlib/infutil.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
             Object(Matching, "LHMultiplayer/zlib/inffast.c", source="zlib/inffast.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
 
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerMain.c"),
-            GameSpyObject(Matching, "GameSpy/gcdkey/gcdkeyc.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerCallbacks.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerOperations.c"),
-            GameSpyObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "GameSpy/nonport.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatMain.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerCEngine.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerRooms.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerPing.c"),
-            GameSpyObject(Matching, "GameSpy/Peer/peerPlayers.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/queryreporting/gqueryreporting.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerGlobalCallbacks.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerMangle.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/CEngine/gserver.c"),
-            GameSpyObject(Matching, "GameSpy/md5c.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/CEngine/gserverlist.c"),
-            GameSpyObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "GameSpy/darray.c", extra_cflags=["/D_NO_NOPORT_H_"]),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/Chat/chatSocket.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatCallbacks.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatChannel.c"),
-            GameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatHandlers.c"),
-            GameSpyObject(Matching, "GameSpy/hashtable.c", extra_cflags=["/D_NO_NOPORT_H_"]),
-            GameSpyObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "GameSpy/pinger/pingerMain.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerMain.c"),
+            MultiplayerGameSpyObject(Matching, "GameSpy/gcdkey/gcdkeyc.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerCallbacks.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerOperations.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "GameSpy/nonport.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatMain.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerCEngine.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerRooms.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerPing.c"),
+            MultiplayerGameSpyObject(Matching, "GameSpy/Peer/peerPlayers.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/queryreporting/gqueryreporting.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerGlobalCallbacks.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Peer/peerMangle.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/CEngine/gserver.c"),
+            MultiplayerGameSpyObject(Matching, "GameSpy/md5c.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/CEngine/gserverlist.c"),
+            MultiplayerGameSpyObject(Matching, "GameSpy/darray.c", extra_cflags=["/D_NO_NOPORT_H_"]),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/Chat/chatSocket.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatCallbacks.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatChannel.c"),
+            MultiplayerGameSpyObject(MatchingFor("BW1W120", "BW1W130", "BW1WCI"), "GameSpy/Chat/chatHandlers.c"),
+            MultiplayerGameSpyObject(Matching, "GameSpy/hashtable.c", extra_cflags=["/D_NO_NOPORT_H_"]),
+            MultiplayerGameSpyObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "GameSpy/pinger/pingerMain.c"),
 
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\purevirt.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\trnsctrl.obj", module="LHMultiplayer", progress_category="sdk"),

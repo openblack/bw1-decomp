@@ -171,7 +171,7 @@ void ArrayDeleteAt(DArray array, int n)
 {
    	assert( (n >= 0) && (n < array->count));
 
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130) || defined(VERSION_BW1WCI)
 	if ((n >= 0) && (n < array->count))
 #endif
 	{

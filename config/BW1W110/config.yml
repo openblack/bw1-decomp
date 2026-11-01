@@ -50,6 +50,9 @@ block_relocations:
 
 # LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
   - source: 0x00829555
+# MeshLodInfo's triangle tables (LH3DIsland) hold pairs of vertex indices that read as code addresses.
+  - source: 0x00C26080
+    end: 0x00C26A40
 add_relocations:
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005C4402

@@ -898,98 +898,98 @@ LHMultiplayer/lib/libcmt/w_map.obj:
 LHMultiplayer/lib/libcmt/constpow.obj:
 	.data       start:0x100675A0 end:0x1006785C
 
-GameSpy/Peer/peerMain.c:
+LHMultiplayer/GameSpy/Peer/peerMain.c:
 	.text       start:0x1003AE20 end:0x1003C6F0
 	.data       start:0x1006785C end:0x10067880
 
-GameSpy/gcdkey/gcdkeyc.c:
+LHMultiplayer/GameSpy/gcdkey/gcdkeyc.c:
 	.text       start:0x1003C6F0 end:0x1003C810
 	.data       start:0x10067880 end:0x100678B0
 
-GameSpy/Peer/peerCallbacks.c:
+LHMultiplayer/GameSpy/Peer/peerCallbacks.c:
 	.text       start:0x1003C810 end:0x1003E0D0
 	.rdata      start:0x10052300 end:0x100524A0
 
-GameSpy/Peer/peerOperations.c:
+LHMultiplayer/GameSpy/Peer/peerOperations.c:
 	.text       start:0x1003E0D0 end:0x1003EE30
 	.data       start:0x100678B0 end:0x100678DC
 
-GameSpy/nonport.c:
+LHMultiplayer/GameSpy/nonport.c:
 	.text       start:0x1003EE30 end:0x1003F190
 	.data       start:0x100678DC end:0x10067954
 	.bss        start:0x1006AB48 end:0x1006AC50
 
-GameSpy/Chat/chatMain.c:
+LHMultiplayer/GameSpy/Chat/chatMain.c:
 	.text       start:0x1003F270 end:0x100405B0
 	.data       start:0x10067958 end:0x10067B90
 
-GameSpy/Peer/peerCEngine.c:
+LHMultiplayer/GameSpy/Peer/peerCEngine.c:
 	.text       start:0x100405B0 end:0x10040EF0
 	.data       start:0x10067B90 end:0x10067C14
 
-GameSpy/Peer/peerRooms.c:
+LHMultiplayer/GameSpy/Peer/peerRooms.c:
 	.text       start:0x10040EF0 end:0x10041370
 
-GameSpy/Peer/peerPing.c:
+LHMultiplayer/GameSpy/Peer/peerPing.c:
 	.text       start:0x10041370 end:0x10041EB0
 	.data       start:0x10067C14 end:0x10067C18
 
-GameSpy/Peer/peerPlayers.c:
+LHMultiplayer/GameSpy/Peer/peerPlayers.c:
 	.text       start:0x10041EB0 end:0x10042450
 
-GameSpy/queryreporting/gqueryreporting.c:
+LHMultiplayer/GameSpy/queryreporting/gqueryreporting.c:
 	.text       start:0x10042450 end:0x100434A0
 	.data       start:0x10067C18 end:0x10067E28
 	.bss        start:0x1006AC50 end:0x1006AF68
 
-GameSpy/Peer/peerGlobalCallbacks.c:
+LHMultiplayer/GameSpy/Peer/peerGlobalCallbacks.c:
 	.text       start:0x100434A0 end:0x100443A0
 	.data       start:0x10067E28 end:0x10067EB8
 	.bss        start:0x1006AF68 end:0x1006B180
 
-GameSpy/Peer/peerMangle.c:
+LHMultiplayer/GameSpy/Peer/peerMangle.c:
 	.text       start:0x100443A0 end:0x100446C0
 	.rdata      start:0x100524A0 end:0x100524CC
 	.data       start:0x10067EB8 end:0x10067F0C
 	.bss        start:0x1006B180 end:0x1006B1A0
 
-GameSpy/CEngine/gserver.c:
+LHMultiplayer/GameSpy/CEngine/gserver.c:
 	.text       start:0x100446C0 end:0x10044E60
 	.data       start:0x10067F0C end:0x10067F2C
 	.bss        start:0x1006B1A0 end:0x1006B1A4
 
-GameSpy/md5c.c:
+LHMultiplayer/GameSpy/md5c.c:
 	.text       start:0x10044E60 end:0x10045A70
 	.data       start:0x10067F2C end:0x10067F74
 
-GameSpy/CEngine/gserverlist.c:
+LHMultiplayer/GameSpy/CEngine/gserverlist.c:
 	.text       start:0x10045A70 end:0x10047120
 	.rdata      start:0x100524CC end:0x100524E8
 	.data       start:0x10067F74 end:0x10068150
 	.bss        start:0x1006B1A4 end:0x1006B9FC
 
-GameSpy/darray.c:
+LHMultiplayer/GameSpy/darray.c:
 	.text       start:0x10047120 end:0x10047630
 
-GameSpy/Chat/chatSocket.c:
+LHMultiplayer/GameSpy/Chat/chatSocket.c:
 	.text       start:0x10047630 end:0x100485D0
 	.data       start:0x10068150 end:0x10068178
 	.bss        start:0x1006B9FC end:0x1006CAFC
 
-GameSpy/Chat/chatCallbacks.c:
+LHMultiplayer/GameSpy/Chat/chatCallbacks.c:
 	.text       start:0x100485D0 end:0x10049990
 
-GameSpy/Chat/chatChannel.c:
+LHMultiplayer/GameSpy/Chat/chatChannel.c:
 	.text       start:0x10049990 end:0x1004AA10
 
-GameSpy/Chat/chatHandlers.c:
+LHMultiplayer/GameSpy/Chat/chatHandlers.c:
 	.text       start:0x1004AA10 end:0x1004D990
 	.data       start:0x10068178 end:0x100683CC
 
-GameSpy/hashtable.c:
+LHMultiplayer/GameSpy/hashtable.c:
 	.text       start:0x1004D990 end:0x1004DC90
 
-GameSpy/pinger/pingerMain.c:
+LHMultiplayer/GameSpy/pinger/pingerMain.c:
 	.text       start:0x1004DC90 end:0x1004E8E0
 	.data       start:0x100683CC end:0x100683D0
 	.bss        start:0x1006CAFC end:0x1006CB28

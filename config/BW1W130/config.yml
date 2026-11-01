@@ -143,7 +143,19 @@ block_relocations:
   - source: 0x0083E2DD
 # LH3DTexture::Lock's memset fill 0x1010101 is an immediate.
   - source: 0x0083DFD8
+# GGame::Init's RAND_SEED 0x88f89f is an immediate, not a pointer into the GameSpy SDK's code.
+  - source: 0x00552850
+# Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
+  - source: 0x00CA3F30
+  - source: 0x00CB1F18
+# MeshLodInfo's triangle tables (LH3DIsland) hold pairs of vertex indices that read as code addresses.
+  - source: 0x00CB8158
+    end: 0x00CB8B18
 add_relocations:
+# GameSpy gserverlist.c's ServerListReadList: the lea displacement of its static data buffer (dtk leaves it unrelocated).
+  - source: 0x0089BD60
+    type: x86_abs32
+    target: '_?data@?1??ServerListReadList@@9@9'
 # LH3DLandscape::BlendCountry128 compares against the end of g_coeff plus 8 (dtk leaves the immediate unrelocated).
   - source: 0x00879590
     type: x86_abs32

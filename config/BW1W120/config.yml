@@ -120,6 +120,11 @@ block_relocations:
   - source: 0x00839745
 # LH3DLandscape::ProcessTextureInBackground's surface caps 0x401808 are an immediate, not a pointer into GameThing::RemoveDance.
   - source: 0x0087214F
+# GGame::Init's RAND_SEED 0x88f89f is an immediate, not a pointer into the GameSpy SDK's code.
+  - source: 0x0054F4B0
+# Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
+  - source: 0x00C23160
+  - source: 0x00C31058
 add_relocations:
 # SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
 # the lea displacement unrelocated).
@@ -141,6 +146,10 @@ add_relocations:
   - source: 0x00882623
     type: x86_abs32
     target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+# GameSpy gserverlist.c's ServerListReadList: the lea displacement of its static data buffer (dtk leaves it unrelocated).
+  - source: 0x00896BE0
+    type: x86_abs32
+    target: '_?data@?1??ServerListReadList@@9@9'
 # libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
   - source: 0x0089EA80
     type: x86_abs32
