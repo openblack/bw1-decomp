@@ -132,6 +132,10 @@ block_relocations:
   - source: 0x0085680D
 # LH3DTexture::Lock's memset fill 0x1010101 is an immediate.
   - source: 0x00856508
+# Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
+  - source: 0x008D4998
+  - source: 0x00C9689C
+  - source: 0x00CA46BC
 add_relocations:
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005DDFC2

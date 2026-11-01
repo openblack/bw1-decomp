@@ -4261,6 +4261,102 @@ Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
 Lionhead/LH3DLib/development/SRTextured.cpp:
 	.text       start:0x008861D0 end:0x00887840
 
+GameSpy/Peer/peerMain.c:
+	.text       start:0x00889A40 end:0x0088B310
+	.data       start:0x00CBB298 end:0x00CBB2BC
+
+GameSpy/gcdkey/gcdkeyc.c:
+	.text       start:0x0088B310 end:0x0088B430
+	.data       start:0x00CBB2BC end:0x00CBB2EC
+
+GameSpy/CEngine/gserver.c:
+	.text       start:0x0088B430 end:0x0088BBD0
+	.data       start:0x00CBB2EC end:0x00CBB31C
+	.bss        start:0x0102B9D0 end:0x0102B9D4
+
+GameSpy/Chat/chatMain.c:
+	.text       start:0x0088BBD0 end:0x0088CF10
+	.data       start:0x00CBB31C end:0x00CBB54C
+
+GameSpy/darray.c:
+	.text       start:0x0088CF10 end:0x0088D430
+
+GameSpy/Peer/peerCallbacks.c:
+	.text       start:0x0088D430 end:0x0088ECF0
+	.rdata      start:0x00A23770 end:0x00A23910
+
+GameSpy/Peer/peerOperations.c:
+	.text       start:0x0088ECF0 end:0x0088FA50
+	.data       start:0x00CBB54C end:0x00CBB56C
+
+GameSpy/nonport.c:
+	.text       start:0x0088FA50 end:0x0088FDB0
+	.data       start:0x00CBB56C end:0x00CBB5E4
+	.bss        start:0x0102B9D4 end:0x0102BAD8
+
+GameSpy/Peer/peerCEngine.c:
+	.text       start:0x0088FE90 end:0x008907D0
+	.data       start:0x00CBB5E8 end:0x00CBB648
+
+GameSpy/Peer/peerRooms.c:
+	.text       start:0x008907D0 end:0x00890C50
+
+GameSpy/Peer/peerPing.c:
+	.text       start:0x00890C50 end:0x00891790
+	.data       start:0x00CBB648 end:0x00CBB658
+
+GameSpy/Peer/peerPlayers.c:
+	.text       start:0x00891790 end:0x00891D30
+
+GameSpy/queryreporting/gqueryreporting.c:
+	.text       start:0x00891D30 end:0x00892D80
+	.data       start:0x00CBB658 end:0x00CBB868
+	.bss        start:0x0102BAD8 end:0x0102BDF0
+
+GameSpy/Peer/peerGlobalCallbacks.c:
+	.text       start:0x00892D80 end:0x00893C80
+	.data       start:0x00CBB868 end:0x00CBB8C0
+	.bss        start:0x0102BDF0 end:0x0102C008
+
+GameSpy/Peer/peerMangle.c:
+	.text       start:0x00893C80 end:0x00893FA0
+	.rdata      start:0x00A23910 end:0x00A2393C
+	.data       start:0x00CBB8C0 end:0x00CBB914
+	.bss        start:0x0102C008 end:0x0102C028
+
+GameSpy/md5c.c:
+	.text       start:0x00893FA0 end:0x00894BB0
+	.data       start:0x00CBB914 end:0x00CBB95C
+
+GameSpy/hashtable.c:
+	.text       start:0x00894BB0 end:0x00894EB0
+
+GameSpy/Chat/chatSocket.c:
+	.text       start:0x00894EB0 end:0x00895E50
+	.data       start:0x00CBB95C end:0x00CBB980
+	.bss        start:0x0102C028 end:0x0102D128
+
+GameSpy/Chat/chatCallbacks.c:
+	.text       start:0x00895E50 end:0x00897210
+
+GameSpy/Chat/chatChannel.c:
+	.text       start:0x00897210 end:0x00898290
+
+GameSpy/Chat/chatHandlers.c:
+	.text       start:0x00898290 end:0x0089B210
+	.data       start:0x00CBB980 end:0x00CBBBD8
+
+GameSpy/CEngine/gserverlist.c:
+	.text       start:0x0089B210 end:0x0089C8C0
+	.rdata      start:0x00A2393C end:0x00A23954
+	.data       start:0x00CBBBD8 end:0x00CBBDB4
+	.bss        start:0x0102D128 end:0x0102D980
+
+GameSpy/pinger/pingerMain.c:
+	.text       start:0x0089C8C0 end:0x0089D510
+	.data       start:0x00CBBDB4 end:0x00CBBDB8
+	.bss        start:0x0102D980 end:0x0102D9AC
+
 jpeg/jcapimin.c:
 	.text       start:0x0089D740 end:0x0089DAE0
 

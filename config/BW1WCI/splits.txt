@@ -3990,6 +3990,108 @@ lib/libcimt/_iostrea.obj:
 lib/libcimt/streamb1.obj:
 	.text       start:0x008A590B end:0x008A59EC align:1
 
+GameSpy/Peer/peerMain.c:
+	.text       start:0x008A6010 end:0x008A78E0
+	.data       start:0x00CADA3C end:0x00CADA60
+
+GameSpy/gcdkey/gcdkeyc.c:
+	.text       start:0x008A78E0 end:0x008A7A00
+	.data       start:0x00CADA60 end:0x00CADA90
+
+GameSpy/CEngine/gserver.c:
+	.text       start:0x008A7A00 end:0x008A81A0
+	.data       start:0x00CADA90 end:0x00CADAC0
+	.bss        start:0x0102F2C4 end:0x0102F2C8
+
+GameSpy/Chat/chatMain.c:
+	.text       start:0x008A81A0 end:0x008A94E0
+	.data       start:0x00CADAC0 end:0x00CADCF0
+
+GameSpy/darray.c:
+	.text       start:0x008A94E0 end:0x008A9A00
+
+lib/libcimt/istream.obj:
+	.text$x     start:0x008D3A54 end:0x008D3B2D
+	.rdata      start:0x00A141E0 end:0x00A14200
+	.rdata$r    start:0x00A2C668 end:0x00A2C6EC
+	.xdata$x    start:0x00A30178 end:0x00A30240
+
+GameSpy/Peer/peerCallbacks.c:
+	.text       start:0x008A9A00 end:0x008AB2C0
+	.rdata      start:0x00A14200 end:0x00A143A0
+
+GameSpy/Peer/peerOperations.c:
+	.text       start:0x008AB2C0 end:0x008AC020
+	.data       start:0x00CADCF0 end:0x00CADD10
+
+GameSpy/nonport.c:
+	.text       start:0x008AC020 end:0x008AC380
+	.data       start:0x00CADD10 end:0x00CADD88
+	.bss        start:0x0102F2C8 end:0x0102F3D0
+
+GameSpy/Peer/peerCEngine.c:
+	.text       start:0x008AC460 end:0x008ACDA0
+	.data       start:0x00CADD8C end:0x00CADDEC
+
+GameSpy/Peer/peerRooms.c:
+	.text       start:0x008ACDA0 end:0x008AD220
+
+GameSpy/Peer/peerPing.c:
+	.text       start:0x008AD220 end:0x008ADD60
+	.data       start:0x00CADDEC end:0x00CADDF8
+
+GameSpy/Peer/peerPlayers.c:
+	.text       start:0x008ADD60 end:0x008AE300
+
+GameSpy/queryreporting/gqueryreporting.c:
+	.text       start:0x008AE300 end:0x008AF350
+	.data       start:0x00CADDF8 end:0x00CAE008
+	.bss        start:0x0102F3D0 end:0x0102F6E8
+
+GameSpy/Peer/peerGlobalCallbacks.c:
+	.text       start:0x008AF350 end:0x008B0250
+	.data       start:0x00CAE008 end:0x00CAE060
+	.bss        start:0x0102F6E8 end:0x0102F900
+
+GameSpy/Peer/peerMangle.c:
+	.text       start:0x008B0250 end:0x008B0570
+	.rdata      start:0x00A143A0 end:0x00A143CC
+	.data       start:0x00CAE060 end:0x00CAE0B4
+	.bss        start:0x0102F900 end:0x0102F920
+
+GameSpy/md5c.c:
+	.text       start:0x008B0570 end:0x008B1180
+	.data       start:0x00CAE0B4 end:0x00CAE0FC
+
+GameSpy/hashtable.c:
+	.text       start:0x008B1180 end:0x008B1480
+
+GameSpy/Chat/chatSocket.c:
+	.text       start:0x008B1480 end:0x008B2420
+	.data       start:0x00CAE0FC end:0x00CAE120
+	.bss        start:0x0102F920 end:0x01030A20
+
+GameSpy/Chat/chatCallbacks.c:
+	.text       start:0x008B2420 end:0x008B37E0
+
+GameSpy/Chat/chatChannel.c:
+	.text       start:0x008B37E0 end:0x008B4860
+
+GameSpy/Chat/chatHandlers.c:
+	.text       start:0x008B4860 end:0x008B77E0
+	.data       start:0x00CAE120 end:0x00CAE378
+
+GameSpy/CEngine/gserverlist.c:
+	.text       start:0x008B77E0 end:0x008B8E90
+	.rdata      start:0x00A143CC end:0x00A143E4
+	.data       start:0x00CAE378 end:0x00CAE554
+	.bss        start:0x01030A20 end:0x01031278
+
+GameSpy/pinger/pingerMain.c:
+	.text       start:0x008B8E90 end:0x008B9AE0
+	.data       start:0x00CAE554 end:0x00CAE558
+	.bss        start:0x01031278 end:0x010312A4
+
 jpeg/jdapimin.c:
 	.text       start:0x008B9CF0 end:0x008BA220
 
@@ -3998,12 +4100,6 @@ jpeg/jdapistd.c:
 
 jpeg/jdatasrc.c:
 	.text       start:0x008BA640 end:0x008BA790
-
-lib/libcimt/istream.obj:
-	.text$x     start:0x008D3A54 end:0x008D3B2D
-	.rdata      start:0x00A141E0 end:0x00A14200
-	.rdata$r    start:0x00A2C668 end:0x00A2C6EC
-	.xdata$x    start:0x00A30178 end:0x00A30240
 
 jpeg/jerror.c:
 	.text       start:0x008BA790 end:0x008BA940
