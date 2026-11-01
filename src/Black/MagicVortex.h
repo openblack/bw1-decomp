@@ -31,6 +31,9 @@ class Villager;
 class LandscapeVortex : public MobileStatic
 {
 public:
+	// BW1W120 005fe6e0 BW1M119 013becd0
+	static LandscapeVortex* Create(const MapCoords& coords, VORTEX_TYPE type, float param_3);
+
 	LandscapeVortex* next; /* 0x88 */
 	float            field_0x8c;
 	float            field_0x90;

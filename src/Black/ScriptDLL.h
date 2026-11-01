@@ -54,7 +54,7 @@ public:
 	uint32_t  NumTasks; /* 0x70 */
 	uint32_t  LineNumber;
 	uint32_t  TaskNumber_ptr;
-	uint32_t  TaskName;
+	uint32_t  TaskName_ptr;
 	uint32_t  TaskFilename; /* 0x80 */
 	uint32_t  GetTaskFilename;
 	uint32_t  GetTaskName;
@@ -145,6 +145,8 @@ public:
 	int LoadBinary(const char* path);
 	// BW1W120 006f69f0 BW1M119 014ef950
 	uint32_t TaskNumber();
+	// BW1W120 006f6a10 BW1M119 014ef8e0
+	char* TaskName();
 	// BW1W120 006f6ba0 BW1M119 010458d0
 	void PUSH(void* param_1, VMType param_2);
 	// BW1W120 006f6bd0 BW1M119 014ef5e0

@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+class Object;
 class Base;
 class Creature;
 class GInterfaceStatus;
@@ -31,6 +32,10 @@ struct RPHolder;
 class MobileStatic : public MultiMapFixed
 {
 public:
+	// BW1W120 00608770 BW1M119 013c88d0
+	static MobileStatic* Create(const MapCoords& coords, const GMobileStaticInfo* info, Object* parent, GPlayer* player,
+	                            float y_angle, float scale);
+
 	GPlayer* Player;
 	uint32_t field_0x80;
 	uint32_t field_0x84;

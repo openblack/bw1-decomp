@@ -28,6 +28,7 @@ class Living;
 struct MapCoords;
 class Town;
 class WorshipSite;
+class WorshipSpellIcon;
 
 #define MAX_WORSHIP_SITES 6
 
@@ -102,6 +103,8 @@ public:
 
 	// BW1W120 00463130 BW1M119 011c2570
 	void* AddTown(Town* town);
+	// BW1W120 00463ad0 BW1M119 011c1160
+	WorshipSpellIcon* FindSpellIcon(MAGIC_TYPE type);
 	// BW1W120 00463190 BW1M119 011c2460
 	WorshipSite* FindTribeWorshipSite(const GTribeInfo* tribe_info);
 	// BW1W120 004639a0 BW1M119 01005d60

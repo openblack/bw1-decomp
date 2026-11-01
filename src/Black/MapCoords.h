@@ -169,11 +169,11 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 inlined BW1M119 010247e0
 	void SetMetersZ(float meters);
 	// BW1W120 inlined BW1M119 inlined
-	void SetX(float _x) { SetWholeX((long)(_x * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL)); }
+	void SetX(const float& _x) { SetWholeX((long)(_x * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL)); }
 	// BW1W120 inlined BW1M119 0104d810
 	void SetWholeX(long _x) { x = _x; }
 	// BW1W120 inlined BW1M119 inlined
-	void SetZ(float _z) { SetWholeZ((long)(_z * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL)); }
+	void SetZ(const float& _z) { SetWholeZ((long)(_z * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL)); }
 	// BW1W120 inlined BW1M119 0104d850
 	void SetWholeZ(long _z) { z = _z; }
 	// Inliner IL size: 42

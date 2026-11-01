@@ -33,6 +33,8 @@
 
 // Forward Declares
 
+class Town;
+class GAbodeInfo;
 class Abode;
 class Base;
 struct ControlHandUpdateInfo;
@@ -55,6 +57,9 @@ struct RPHolder;
 class PuzzleGame : public GameThingWithPos
 {
 public:
+	// BW1W120 006d6680 BW1M119 011366f0
+	static PuzzleGame* Create(const MapCoords& coords, SCRIPT_PUZZLE_GAME_TYPE type, unsigned short angle, float scale);
+
 	// BW1W120 00d4eee8
 	static LH3DMapCoords AppliedMapPos;
 
@@ -708,6 +713,10 @@ public:
 class PuzzleTotem : public Totem
 {
 public:
+	// BW1W120 006da550 BW1M119 0112f730
+	static PuzzleTotem* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
+	                           float param_6, int param_7);
+
 	int32_t MaxHeight;
 	int32_t ActualHeight;
 	int32_t PreviousHeight;

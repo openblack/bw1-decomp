@@ -2085,12 +2085,18 @@ Black/ScriptContainer.cpp:
 	.data       start:0x00C7CDF0 end:0x00C7D7D8
 	.bss        start:0x00E17118 end:0x00E17320
 
+Black/ScriptStop.cpp:
+	.text       start:0x007063F0 end:0x00706870
+
 Black/ScriptCreateOrCall.cpp:
-	.text       start:0x007063F0 end:0x0070D190
+	.text       start:0x00706870 end:0x00709620
 	.rdata      start:0x0099ACE4 end:0x0099AD30
 	.CRT$XCU    start:0x00A37044 end:0x00A3705C align:4
 	.data       start:0x00C7D7E8 end:0x00C7DC58
 	.bss        start:0x00E17320 end:0x00E17554
+
+Black/ScriptCreature.cpp:
+	.text       start:0x00709620 end:0x0070D190
 
 Black/ScriptCreatureCurse.cpp:
 	.text       start:0x0070D190 end:0x0070D2A0
