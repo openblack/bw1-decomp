@@ -40,7 +40,7 @@
 #include "InterfaceStatus.h"
 #include "LHNetBase.h"
 #include "MPFEData.h"
-#include "MusicMood.h"
+#include "MusicMoodController.h"
 #include "Player.h"
 #include "SetupStaticTextNoHit.h"
 #include "SoundGuidance.h"

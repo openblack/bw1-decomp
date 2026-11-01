@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include "GameTimeConstants.h"
+#include "MusicMoodController.h"
 #include "MusicMood.h"
 #include "Serialise.h"
 

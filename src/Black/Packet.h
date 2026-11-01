@@ -5,7 +5,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h>
 #include "MapCoords.h"
 #include "GestureSystemPacketData.h"
-#include "MusicMood.h"
+#include "MusicMoodController.h"
 
 // Original enum types from Mac symbols. Only the values needed by the turn
 // memory handshake are declared; original enumerator names are unrecovered.

@@ -117,7 +117,7 @@
 #include "LHNetBase.h"
 #include "MainMenu.h"
 #include "MobileWallHug.h"
-#include "MusicMood.h"
+#include "MusicMoodController.h"
 #include "PhysicsObject.h"
 #include "PlayerProfile.h"
 #include "PSysEditor.h"
