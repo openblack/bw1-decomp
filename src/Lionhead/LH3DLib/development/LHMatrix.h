@@ -6,6 +6,8 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+#define LH_MATRIX_ELEMENT_COUNT 12
+
 // Transforms point by matrix into result; point is evaluated once for every term.
 #define LHMATRIX_TRANSFORM_POINT(result, point, matrix)                                                                \
 	(result).x = (matrix).m[0] * (point).x + (matrix).m[3] * (point).y + (matrix).m[6] * (point).z + (matrix).m[9];    \
@@ -39,13 +41,6 @@
 	(result).m[11] = (matrix).GetPos().x * (transform).m[2] + (matrix).GetPos().y * (transform).m[5] +                 \
 	                 (matrix).GetPos().z * (transform).m[8] + (transform).m[11]
 
-// The element names are fabricated, after D3DMATRIX (DirectX 7): the Mac build's GetVectorX/Y/Z and GetPos
-// accessors return the rows at 0x0, 0xc, 0x18 and 0x24.
-// The union is inferred from MSVC6 inliner costs, not from symbols: a store to a named float member costs
-// less IL than a store to m[i]. The helpers written against the named members (SetIdentity, SetScale,
-// PostTranslation, RotateY) give inline sizes that reproduce the target's inlining decisions in every
-// LH3DObject::SetPosition caller (Object::SetXYZAngles, Abode::CallVirtualFunctionsForCreation, ...), while
-// Translation's cost fits only with m[] stores. See docs/msvc6_inliner.md.
 struct LHMatrix
 {
 	union {
@@ -56,10 +51,8 @@ struct LHMatrix
 			float _31, _32, _33; /* 0x18 */
 			float _41, _42, _43; /* 0x24 */
 		};
-		float m[0xc]; /* 0x0 */
+		float m[LH_MATRIX_ELEMENT_COUNT]; /* 0x0 */
 	};
-
-	// Non-virtual methods
 
 	// Inliner IL size: 101
 	// BW1W120 00403500 BW1M119 01044210
@@ -95,7 +88,7 @@ struct LHMatrix
 		_22 = scale;
 		_11 = scale;
 	}
-	// Inliner IL size: 68, plus the nested SetIdentity
+	// Inliner IL size: 68
 	// BW1W120 00403530 BW1M119 inlined
 	void __fastcall Translation(const LHPoint& translation)
 	{
@@ -108,7 +101,6 @@ struct LHMatrix
 	// BW1W120 00403570 BW1M119 inlined
 	void __fastcall PostTranslation(const LHPoint& translation)
 	{
-		// Mac loads _41 first.
 		_41 = _41 + translation.x;
 		_42 = _42 + translation.y;
 		_43 = _43 + translation.z;
@@ -135,7 +127,7 @@ struct LHMatrix
 		m[7] *= z;
 		m[8] *= z;
 	}
-	// Inliner IL size: 81, plus the nested SetIdentity
+	// Inliner IL size: 81
 	// BW1W120 inlined BW1M119 inlined
 	void SetRotationY(float angle)
 	{
@@ -144,7 +136,6 @@ struct LHMatrix
 		m[2] = sin(angle);
 		m[6] = -m[2];
 	}
-	// Inliner IL size: <= 40, always inlined and never charged
 	// BW1W120 inlined BW1M119 01043dd0
 	LHPoint& GetPos() const { return *(LHPoint*)&m[9]; }
 	// BW1W120 inlined BW1M119 01099510
@@ -325,8 +316,8 @@ struct LHMatrix
 	void SetInverse();
 	// BW1W120 007faff0 BW1M119 01028040 (LHCombined Release)
 	void __fastcall PostMultiply(const LHMatrix& r);
-	// BW1W120 inlined BW1M119 inlined
-	void Set(const LHMatrix& r)
+	// BW1W120 005feda0 BW1M119 inlined
+	void __fastcall Set(const LHMatrix& r)
 	{
 		m[0] = r.m[0];
 		m[1] = r.m[1];
@@ -341,6 +332,7 @@ struct LHMatrix
 		m[10] = r.m[10];
 		m[11] = r.m[11];
 	}
+
 	// BW1W120 005b5b90 BW1M119 0100c2e0 (LHCombined Release)
 	void __fastcall SetMatrixOnly(const LHMatrix& r)
 	{
@@ -354,8 +346,6 @@ struct LHMatrix
 		_32 = r._32;
 		_33 = r._33;
 	}
-	// fabricated name: PostMultiply for the 3x3 part only. The out-of-line copy sits among the ControlHand.cpp
-	// functions; the Mac inlines it into ConvertToCameraFacingMatrix with a nested SetMatrixOnly call.
 	// BW1W120 0046d9d0 BW1M119 inlined
 	void __fastcall PostMultiplyMatrixOnly(const LHMatrix& r)
 	{
@@ -402,8 +392,6 @@ struct LHMatrix
 		point.y = m[1] * x + m[4] * y + m[7] * z + m[10];
 		point.z = m[2] * x + m[5] * y + m[8] * z + m[11];
 	}
-	// fabricated name: scales the 3x3 part and leaves the translation alone, after SetMatrixOnly and
-	// NormaliseMatrixOnly. Inlined into OneOffSpellSeed::FaceCamera on the Mac.
 	// Inliner IL size: 108
 	// BW1W120 00518b90 BW1M119 inlined
 	void ScaleMatrixOnly(float scale)
@@ -418,8 +406,6 @@ struct LHMatrix
 		m[7] *= scale;
 		m[8] *= scale;
 	}
-	// fabricated name: TransformPoint without the translation (after LH3DCore::InverseTransformVector).
-	// Inlined into OneOffSpellSeed::FaceCamera on the Mac.
 	// Inliner IL size: 156
 	// BW1W120 00518bf0 BW1M119 inlined
 	void __fastcall TransformVector(LHPoint& point) const

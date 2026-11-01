@@ -13,6 +13,12 @@
 
 struct LH3DMaterial;
 struct LHPlane;
+struct LH3DTexture;
+
+// BW1W120 00eb9954 BW1M119 011f24b4 (LHCombined Release)
+extern LH3DTexture* g_weather_texture;
+// BW1W120 00eb9958 BW1M119 011f24b0 (LHCombined Release)
+extern LH3DTexture* g_sun_texture;
 
 #define BACKGROUND_BOX_MAX      256
 #define BACKGROUND_BOX_VERTICES 4

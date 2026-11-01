@@ -1,4 +1,5 @@
 #include "LH3DRender.h"
+#include "LH3DRenderGlobals.h"
 
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>   /* For LHResetFPU */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>   /* For LHSys */
