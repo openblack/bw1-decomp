@@ -36,17 +36,19 @@
 #include "VortexObjectInfo.h"
 #include "VortexSave.h"
 
-#include <Lionhead/LH3DLib/development/LH3DIsland.h>    /* For struct LandBlock */
-#include <Lionhead/LH3DLib/development/LH3DMaterial.h>  /* For struct LH3DMaterial */
-#include <Lionhead/LH3DLib/development/LH3DMesh.h>      /* For LH3DMesh::GetPackedMesh */
-#include <Lionhead/LH3DLib/development/LH3DPrimitive.h> /* For struct LH3DPrimitive */
-#include <Lionhead/LH3DLib/development/LH3DSubMesh.h>   /* For struct LH3DSubMesh */
-#include <Lionhead/LH3DLib/development/LH3DMath.h>      /* For TWO_PI */
-#include <Lionhead/LH3DLib/development/LH3DObject.h>    /* For class LH3DObject */
-#include <Lionhead/LH3DLib/development/LH3DRender.h>    /* For LH3DRender::CreateMaterial */
-#include <Lionhead/LH3DLib/development/LH3DTech.h>      /* For LH3DTech */
-#include <Lionhead/LH3DLib/development/LH3DZSorter.h>   /* For LH3DZSorter */
-#include <Lionhead/LH3DLib/development/PhysOb.h>        /* For class PhysOb */
+#include <Lionhead/LH3DLib/development/LH3DIsland.h>      /* For struct LandBlock */
+#include <Lionhead/LH3DLib/development/LH3DIslandBlock.h> /* For GetLandBlock */
+#include <Lionhead/LH3DLib/development/LHMatrixScale.h>   /* For PostScale */
+#include <Lionhead/LH3DLib/development/LH3DMaterial.h>    /* For struct LH3DMaterial */
+#include <Lionhead/LH3DLib/development/LH3DMesh.h>        /* For LH3DMesh::GetPackedMesh */
+#include <Lionhead/LH3DLib/development/LH3DPrimitive.h>   /* For struct LH3DPrimitive */
+#include <Lionhead/LH3DLib/development/LH3DSubMesh.h>     /* For struct LH3DSubMesh */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>        /* For TWO_PI */
+#include <Lionhead/LH3DLib/development/LH3DObject.h>      /* For class LH3DObject */
+#include <Lionhead/LH3DLib/development/LH3DRender.h>      /* For LH3DRender::CreateMaterial */
+#include <Lionhead/LH3DLib/development/LH3DTech.h>        /* For LH3DTech */
+#include <Lionhead/LH3DLib/development/LH3DZSorter.h>     /* For LH3DZSorter */
+#include <Lionhead/LH3DLib/development/PhysOb.h>          /* For class PhysOb */
 
 #include <math.h> /* For cos, sin */
 
@@ -166,7 +168,9 @@ GVortexInfo* LandscapeVortex::GetVortexInfo()
 
 void LandscapeVortex::SetTown(Town* town) {}
 
-void LandscapeVortex::SetFlockParams(const MapCoords& coords, float param_2, float param_3, Flock* flock) {}
+void LandscapeVortex::SetFlockParams(const MapCoords& coords, float flock_distance, float domain_radius, Flock* flock)
+{
+}
 
 bool LandscapeVortex::IsVillagerBeingThrownByAVortex(Villager* villager)
 {
@@ -283,14 +287,14 @@ LandscapeVortexIn::LandscapeVortexIn(const MapCoords& coords, float radius)
 	VortexSaver = new (MAGIC_VORTEX_FILE, 216) VortexSave("vortex.txt", false);
 }
 
-void LandscapeVortexIn::ToBeDeleted(int delete_now)
+void LandscapeVortexIn::ToBeDeleted(bool32_t delete_now)
 {
 	if (VortexSaver != NULL)
 	{
-		VortexSaver->ToBeDeleted(0);
+		VortexSaver->ToBeDeleted(false);
 		VortexSaver = NULL;
 	}
-	LandscapeVortex::ToBeDeleted(0);
+	LandscapeVortex::ToBeDeleted(false);
 }
 
 void LandscapeVortexIn::SetToZero()
@@ -307,7 +311,7 @@ bool LandscapeVortexIn::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object*
 	return false;
 }
 
-void LandscapeVortexIn::ReactToPhysicsImpact(PhysicsObject* physics_object, bool param_2)
+void LandscapeVortexIn::ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage)
 {
 	Object* object = physics_object->GetGameObjectWhoHitMe();
 	if (State == VORTEX_STATE_ACTIVE && object != NULL && object->CanBeSuckedIntoVortex(this) &&
@@ -334,7 +338,7 @@ bool32_t LandscapeVortexIn::CreatureMustAvoid(Creature* creature)
 	return !creature->CanBeSuckedIntoVortex(this);
 }
 
-void LandscapeVortexIn::AddObject(Object* object, const LHPoint& velocity, const LHMatrix& matrix, bool param_4)
+void LandscapeVortexIn::AddObject(Object* object, const LHPoint& velocity, const LHMatrix& matrix, bool from_physics)
 {
 	GetVortexInfo();
 	Creature* creature = object->CastCreature();
@@ -351,10 +355,10 @@ void LandscapeVortexIn::AddObject(Object* object, const LHPoint& velocity, const
 	{
 		indestructible = true;
 	}
-	if (object->CanBecomeAPhysicsObject() && field_0x98 != NULL)
+	if (object->CanBecomeAPhysicsObject() && ObjectMoverParticle != NULL)
 	{
-		field_0x98->AddTarget(new (MAGIC_VORTEX_FILE, 358)
-		                          VortexObjectInfo(object, param_4, velocity, matrix, indestructible, this));
+		ObjectMoverParticle->AddTarget(new (MAGIC_VORTEX_FILE, 358) VortexObjectInfo(object, from_physics, velocity,
+		                                                                             matrix, indestructible, this));
 	}
 }
 
@@ -394,16 +398,16 @@ void LandscapeVortexIn::ProcessContentsOfVortex()
 		return;
 	}
 	float radius;
-	if (GGame::g_game->data.GameTurn % 3 == 0)
+	if (GGame::g_game->data.GameTurn % VORTEX_FULL_RADIUS_TURNS == 0)
 	{
-		radius = field_0xe8;
+		radius = Radius;
 	}
 	else
 	{
-		radius = field_0xe8 * 0.5f;
+		radius = Radius * 0.5f;
 	}
 	MapCoords coords = Pos;
-	long      count = 9999;
+	long      count = VORTEX_MAX_SPIRAL_CELLS;
 	long      spiralX = 1;
 	long      spiralZ = 1;
 	do
@@ -414,8 +418,8 @@ void LandscapeVortexIn::ProcessContentsOfVortex()
 			{
 				return;
 			}
-			for (Object* object = coords.FindType((OBJECT_TYPE)-1, NULL); object != NULL;
-			     object = coords.FindType((OBJECT_TYPE)-1, object))
+			for (Object* object = coords.FindType(OBJECT_TYPE_ANY, NULL); object != NULL;
+			     object = coords.FindType(OBJECT_TYPE_ANY, object))
 			{
 				if (object->Pos.ToMap() == coords.ToMap() && object->CanBeSuckedIntoVortex(this))
 				{
@@ -429,7 +433,7 @@ void LandscapeVortexIn::ProcessContentsOfVortex()
 					if (pile != NULL)
 					{
 						pile->GetHandPotInfoType();
-						Object* taken = pile->TakeResourceAndCreateHandPot(1000);
+						Object* taken = pile->TakeResourceAndCreateHandPot(VORTEX_PILE_TAKE_AMOUNT);
 						if (taken != NULL)
 						{
 							taken->SetScale((GRand::GameFloatRand(0.3f, MAGIC_VORTEX_FILE, 436) * 0.4f + 0.3f) *
@@ -489,11 +493,11 @@ void LandscapeVortexOut::SetToZero()
 	}
 }
 
-void LandscapeVortexOut::ToBeDeleted(int delete_now)
+void LandscapeVortexOut::ToBeDeleted(bool32_t delete_now)
 {
 	if (VortexSaver != NULL)
 	{
-		VortexSaver->ToBeDeleted(0);
+		VortexSaver->ToBeDeleted(false);
 		VortexSaver = NULL;
 	}
 	LHLinkedNode<Object*>* node = ThrownObjects.GetStart();
@@ -504,7 +508,7 @@ void LandscapeVortexOut::ToBeDeleted(int delete_now)
 		node = next;
 	}
 	ThrownObjects.RemoveAll();
-	LandscapeVortex::ToBeDeleted(0);
+	LandscapeVortex::ToBeDeleted(false);
 }
 
 bool LandscapeVortexOut::IsVillagerBeingThrownByThisVortex(Villager* villager)
@@ -517,11 +521,12 @@ void LandscapeVortexOut::SetTown(Town* town)
 	TownToJoin = town;
 }
 
-void LandscapeVortexOut::SetFlockParams(const MapCoords& coords, float param_2, float param_3, Flock* flock)
+void LandscapeVortexOut::SetFlockParams(const MapCoords& coords, float flock_distance, float domain_radius,
+                                        Flock* flock)
 {
 	FlockCoords = coords;
-	FlockDistance = param_2;
-	DomainRadius = param_3;
+	FlockDistance = flock_distance;
+	DomainRadius = domain_radius;
 	FlockToJoin = flock;
 }
 
@@ -591,7 +596,7 @@ void LandscapeVortexOut::ProcessContentsOfVortex()
 		}
 		else
 		{
-			VortexSaver->ToBeDeleted(0);
+			VortexSaver->ToBeDeleted(false);
 			VortexSaver = NULL;
 		}
 		return;
@@ -600,7 +605,7 @@ void LandscapeVortexOut::ProcessContentsOfVortex()
 	{
 		return;
 	}
-	bool       child = ++Created[VORTEX_STAT_TYPE_VILLAGER] % 5 == 0;
+	bool       child = ++Created[VORTEX_STAT_TYPE_VILLAGER] % VORTEX_CHILD_INTERVAL == 0;
 	TRIBE_TYPE tribe = TRIBE_TYPE_NORSE;
 	if (TownToJoin != NULL)
 	{
@@ -728,7 +733,7 @@ LandscapeVortex::LandscapeVortex(const MapCoords& coords, VORTEX_TYPE type, floa
 {
 	SetToZero();
 	Type = type;
-	field_0xe8 = radius;
+	Radius = radius;
 	State = GetVortexInfo()->InitialState;
 }
 
@@ -750,7 +755,7 @@ void LandscapeVortex::ReleaseFootPrints()
 	}
 }
 
-void LandscapeVortex::ToBeDeleted(int delete_now)
+void LandscapeVortex::ToBeDeleted(bool32_t delete_now)
 {
 	Vortices.Remove(this);
 	if (ZCheatBox != NULL)
@@ -758,25 +763,25 @@ void LandscapeVortex::ToBeDeleted(int delete_now)
 		ZCheatBox->Release();
 		ZCheatBox = NULL;
 	}
-	if (field_0x98 != NULL)
+	if (ObjectMoverParticle != NULL)
 	{
-		delete field_0x98;
-		field_0x98 = NULL;
+		delete ObjectMoverParticle;
+		ObjectMoverParticle = NULL;
 	}
-	if (field_0x9c != NULL)
+	if (PreLandscapeParticle != NULL)
 	{
-		delete field_0x9c;
-		field_0x9c = NULL;
+		delete PreLandscapeParticle;
+		PreLandscapeParticle = NULL;
 	}
-	if (field_0xa0 != NULL)
+	if (PostLandscapeParticle != NULL)
 	{
-		delete field_0xa0;
-		field_0xa0 = NULL;
+		delete PostLandscapeParticle;
+		PostLandscapeParticle = NULL;
 	}
-	if (field_0x94 != NULL)
+	if (LightMapParticle != NULL)
 	{
-		delete field_0x94;
-		field_0x94 = NULL;
+		delete LightMapParticle;
+		LightMapParticle = NULL;
 	}
 	ReleaseFootPrints();
 	MobileStatic::ToBeDeleted(delete_now);
@@ -788,19 +793,19 @@ void LandscapeVortex::SetToZero()
 	FootPrintBlock = NULL;
 	FootPrintAlphaMaterial = NULL;
 	FootPrintMaterial = NULL;
-	field_0x98 = NULL;
-	field_0xa0 = NULL;
-	field_0x9c = NULL;
-	field_0x94 = NULL;
+	ObjectMoverParticle = NULL;
+	PostLandscapeParticle = NULL;
+	PreLandscapeParticle = NULL;
+	LightMapParticle = NULL;
 	FadeStartTurn = 0;
 	field_0xb8 = 0;
 	State = VORTEX_STATE_INACTIVE;
 	AverageHeight = 0.0f;
 	LastFootPrintFraction = -1.0f;
 	LastHeightFraction = -1.0f;
-	field_0xd4.SetNull();
+	Centre.SetNull();
 	Type = VORTEX_TYPE_IN;
-	field_0xe8 = 0.0f;
+	Radius = 0.0f;
 	Vortices.AddToFirst(this);
 }
 
@@ -833,10 +838,10 @@ bool32_t LandscapeVortex::Save(GameOSFile& file)
 {
 	if (MobileStatic::Save(file))
 	{
-		file.WriteIt(field_0xd4);
+		file.WriteIt(Centre);
 		file.WriteIt(Type);
 		file.WriteIt(State);
-		file.WriteIt(field_0xe8);
+		file.WriteIt(Radius);
 		file.WriteIt(AverageHeight);
 		file.WriteSafe(OriginalHeights);
 		return true;
@@ -848,10 +853,10 @@ bool32_t LandscapeVortex::Load(GameOSFile& file)
 {
 	if (MobileStatic::Load(file))
 	{
-		file.ReadIt(field_0xd4);
+		file.ReadIt(Centre);
 		file.ReadIt(Type);
 		file.ReadIt(State);
-		file.ReadIt(field_0xe8);
+		file.ReadIt(Radius);
 		file.ReadIt(AverageHeight);
 		file.ReadSafe(OriginalHeights);
 		return true;
@@ -864,7 +869,7 @@ bool32_t LandscapeVortexIn::Save(GameOSFile& file)
 	if (LandscapeVortex::Save(file))
 	{
 		file.WritePtr(VortexSaver);
-		file.WriteSafe(reinterpret_cast<PSysBase* const&>(field_0x98));
+		file.WriteSafe(reinterpret_cast<PSysBase* const&>(ObjectMoverParticle));
 		file.WriteArray(field_0xf0, VORTEX_STAT_TYPE_LAST);
 		return true;
 	}
@@ -876,7 +881,7 @@ bool32_t LandscapeVortexIn::Load(GameOSFile& file)
 	if (LandscapeVortex::Load(file))
 	{
 		file.ReadPtr((GameThing**)&VortexSaver);
-		file.ReadSafe((PSysBase*&)field_0x98);
+		file.ReadSafe((PSysBase*&)ObjectMoverParticle);
 		file.ReadArray(field_0xf0);
 		return true;
 	}
@@ -926,7 +931,7 @@ bool32_t VortexObjectInfo::Save(GameOSFile& file)
 		file.WriteIt(Velocity);
 		file.WriteIt(Matrix);
 		file.WriteSafe(Thing);
-		file.WriteIt(field_0x18);
+		file.WriteIt(FromPhysics);
 		file.WriteIt(Indestructible);
 		file.WritePtr(Vortex);
 		return true;
@@ -941,7 +946,7 @@ bool32_t VortexObjectInfo::Load(GameOSFile& file)
 		file.ReadIt(Velocity);
 		file.ReadIt(Matrix);
 		file.ReadSafe(Thing);
-		file.ReadIt(field_0x18);
+		file.ReadIt(FromPhysics);
 		file.ReadIt(Indestructible);
 		file.WritePtr(Vortex);
 		return true;
@@ -1060,15 +1065,15 @@ int LandscapeVortex::GetHeightMapSize()
 void LandscapeVortex::ProcessVortex()
 {
 	ProcessContentsOfVortex();
-	if (field_0x94 != NULL)
+	if (LightMapParticle != NULL)
 	{
 		PSysProcessInfo info;
-		field_0x94->Process(info);
+		LightMapParticle->Process(info);
 	}
-	if (field_0x98 != NULL)
+	if (ObjectMoverParticle != NULL)
 	{
 		PSysProcessInfo info;
-		field_0x98->Process(info);
+		ObjectMoverParticle->Process(info);
 	}
 	float time = GetTimeSinceFadeStarted();
 	bool  finished = time > FootPrintDelay + FadeTime;
@@ -1084,7 +1089,7 @@ void LandscapeVortex::ProcessVortex()
 		if (finished)
 		{
 			State = VORTEX_STATE_INACTIVE;
-			ToBeDeleted(0);
+			ToBeDeleted(false);
 			return;
 		}
 		break;
@@ -1093,8 +1098,8 @@ void LandscapeVortex::ProcessVortex()
 	if (GetVortexInfo()->IsAdjustLandscapeHeight() && fraction > LastHeightFraction)
 	{
 		LastHeightFraction = fraction;
-		int z = (int)(field_0xd4.z / LAND_CELL_SIZE);
-		int x = (int)(field_0xd4.x / LAND_CELL_SIZE);
+		int z = (int)(Centre.z / LAND_CELL_SIZE);
+		int x = (int)(Centre.x / LAND_CELL_SIZE);
 		int size = GetHeightMapSize();
 		if (OriginalHeights.GetSize() == 0)
 		{
@@ -1122,8 +1127,8 @@ void LandscapeVortex::ProcessVortex()
 			{
 				float original = OriginalHeights[index++];
 				float height =
-					original + GetHeightRaise(cellX * LAND_CELL_SIZE - field_0xd4.x,
-				                              cellZ * LAND_CELL_SIZE - field_0xd4.z, original, AverageHeight, fraction);
+					original + GetHeightRaise(cellX * LAND_CELL_SIZE - Centre.x, cellZ * LAND_CELL_SIZE - Centre.z,
+				                              original, AverageHeight, fraction);
 				int value = FloatToInt(height);
 				value = min(value, 255);
 				LH3DIsland::SetHeightAsByte(cellX, cellZ, (uint8_t)max(value, 0));
@@ -1164,36 +1169,6 @@ float LandscapeVortex::GetFractionHeight()
 	return 1.0f - inverse * inverse;
 }
 
-inline LandBlock* GetLandBlock(long x, long z)
-{
-	if (x < 0 || x > LAND_MAP_MAX || z < 0 || z > LAND_MAP_MAX)
-	{
-		return NULL;
-	}
-	uint32_t index = LH3DIsland::g_index_block[x >> 4][z >> 4];
-	if (index == 0)
-	{
-		return NULL;
-	}
-	return LH3DIsland::g_ptr_blocks[index];
-}
-
-inline void ScaleMatrix(LHMatrix& matrix, float scale)
-{
-	matrix.m[0] *= scale;
-	matrix.m[3] *= scale;
-	matrix.m[6] *= scale;
-	matrix.m[9] *= scale;
-	matrix.m[1] *= scale;
-	matrix.m[4] *= scale;
-	matrix.m[7] *= scale;
-	matrix.m[10] *= scale;
-	matrix.m[2] *= scale;
-	matrix.m[5] *= scale;
-	matrix.m[8] *= scale;
-	matrix.m[11] *= scale;
-}
-
 void LandscapeVortex::CreateFootPrints()
 {
 	static const float FootPrintTextureOffset = 0.5f;
@@ -1205,8 +1180,8 @@ void LandscapeVortex::CreateFootPrints()
 	FootPrintMaterial =
 		LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_NZ,
 	                               GJUtils::CreateSharedTexture(GetVortexInfo()->GetFootPrintFileName()));
-	long x = (long)(field_0xd4.x / LAND_CELL_SIZE);
-	long z = (long)(field_0xd4.z / LAND_CELL_SIZE);
+	long x = (long)(Centre.x / LAND_CELL_SIZE);
+	long z = (long)(Centre.z / LAND_CELL_SIZE);
 	FootPrintBlock = GetLandBlock(x, z);
 	FootPrintAlphaMaterial =
 		LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_CHROMA_JUST_Z,
@@ -1217,15 +1192,15 @@ void LandscapeVortex::CreateFootPrints()
 	}
 	LHMatrix matrix;
 	matrix.SetIdentity();
-	LHPoint offset(-field_0xd4.z, 0.0f, -field_0xd4.x);
+	LHPoint offset(-Centre.z, 0.0f, -Centre.x);
 	offset.x += FootPrintBlock->Z;
 	offset.z += FootPrintBlock->X;
 	offset *= FootPrintTextureScale;
 	matrix.Translation(offset);
-	ScaleMatrix(matrix, 1.0f / GetVortexInfo()->BaseScale);
-	matrix._41 += FootPrintTextureOffset;
-	matrix._43 += FootPrintTextureOffset;
-	FootPrintBlock->DrawFlags = 3;
+	float scale = 1.0f / GetVortexInfo()->BaseScale;
+	PostScale(matrix, scale, scale, scale);
+	matrix.PostTranslation(LHPoint(FootPrintTextureOffset, 0.0f, FootPrintTextureOffset));
+	FootPrintBlock->DrawFlags = LAND_BLOCK_DRAW_FLAG_BEFORE | LAND_BLOCK_DRAW_FLAG_AFTER;
 	FootPrintBlock->BeforeMaterial = FootPrintAlphaMaterial;
 	FootPrintBlock->AfterMaterial = FootPrintMaterial;
 	FootPrintBlock->BeforeMatrix.Set(matrix);
@@ -1234,10 +1209,10 @@ void LandscapeVortex::CreateFootPrints()
 
 void LandscapeVortex::Draw()
 {
-	GInterface::SendInvisibleDrawCollision(this, &field_0xd4, Get2DRadius() * 0.7f);
-	if (field_0x98 != NULL)
+	GInterface::SendInvisibleDrawCollision(this, &Centre, Get2DRadius() * 0.7f);
+	if (ObjectMoverParticle != NULL)
 	{
-		field_0x98->Draw(true);
+		ObjectMoverParticle->Draw(true);
 	}
 	AddDrawing();
 	LH3DObject::g_b_last_on_screen = true;
@@ -1252,31 +1227,17 @@ void LandscapeVortex::AddDrawing()
 void LandscapeVortex::DrawNow()
 {
 	float fraction = GetFractionFootPrintComplete();
-	if (field_0xa0 != NULL && fraction != 0.0f)
+	if (PostLandscapeParticle != NULL && fraction != 0.0f)
 	{
 		PSysProcessInfo info;
-		info.InterfacePosition.x = 0.0f;
-		info.InterfacePosition.y = 0.0f;
-		info.InterfacePosition.z = 0.0f;
-		info.GesturePosition.x = 0.0f;
-		info.GesturePosition.y = 0.0f;
-		info.GesturePosition.z = 0.0f;
-		info.CameraForwardUnitVector.x = 0.0f;
-		info.CameraForwardUnitVector.y = 0.0f;
-		info.CameraForwardUnitVector.z = 0.0f;
-		info.HandVelocity.x = 0.0f;
-		info.HandVelocity.y = 0.0f;
-		info.HandVelocity.z = 0.0f;
-		info.GestureAngularVelocity = 0.0f;
-		info.Active = true;
 		info.Strength = fraction;
-		field_0xa0->Process(info, LH3DTech::g_game_time_inc);
-		field_0xa0->Draw(1.0f, true);
+		PostLandscapeParticle->Process(info, LH3DTech::g_game_time_inc);
+		PostLandscapeParticle->Draw(1.0f, true);
 	}
-	if (field_0x94 != NULL)
+	if (LightMapParticle != NULL)
 	{
-		field_0x94->manager->Alpha = (uint8_t)(GetFractionLightmap() * 255.0f);
-		field_0x94->Draw(true);
+		LightMapParticle->manager->Alpha = (uint8_t)(GetFractionLightmap() * 255.0f);
+		LightMapParticle->Draw(true);
 	}
 	LH3DObject::g_b_last_on_screen = true;
 }
@@ -1306,7 +1267,7 @@ void LandscapeVortex::PreLandscapeDraw(bool process)
 			FootPrintAlphaMaterial->AlphaReference = (uint8_t)alpha;
 		}
 	}
-	if (fraction == 0.0f || field_0x9c == NULL)
+	if (fraction == 0.0f || PreLandscapeParticle == NULL)
 	{
 		return;
 	}
@@ -1314,26 +1275,22 @@ void LandscapeVortex::PreLandscapeDraw(bool process)
 	{
 		PSysProcessInfo info;
 		info.Strength = fraction;
-		LHPoint origin = field_0xd4;
+		LHPoint origin = Centre;
 		origin.y = LH3DIsland::GetAltitude(LH3DMapCoords(origin.x, origin.z));
 		origin.y -= GJUtils::Linterp(LoweredParticleHeight, RaisedParticleHeight, GetFractionHeight());
-		field_0x9c->SetOrigin(origin);
-		field_0x9c->Process(info, LH3DTech::GetGameTimeInc());
+		PreLandscapeParticle->SetOrigin(origin);
+		PreLandscapeParticle->Process(info, LH3DTech::GetGameTimeInc());
 	}
-	field_0x9c->Draw(1.0f, true);
+	PreLandscapeParticle->Draw(1.0f, true);
 }
 
 void LandscapeVortex::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 	if (GetVortexInfo()->GetVortexType() == VORTEX_TYPE_VOLCANO)
 	{
-		SoundTag::Create(this, LH_SAMPLE_G_VOLCANO_02, false, 2, -1, 0, 1, AUDIO_SFX_BANK_TYPE_IN_GAME, 0);
+		SoundTag::Create(this, LH_SAMPLE_G_VOLCANO_02, false, 2, -1, false, true, AUDIO_SFX_BANK_TYPE_IN_GAME, 0);
 	}
-	LHPoint& position = field_0xd4;
-	float    altitude = coords.altitude;
-	position.y = LH3DIsland::GetAltitude(coords) + altitude;
-	position.x = (int32_t)coords.x * (LAND_CELL_SIZE / MAP_COORDS_UNITS_PER_CELL);
-	position.z = (int32_t)coords.z * (LAND_CELL_SIZE / MAP_COORDS_UNITS_PER_CELL);
+	GLandscape::ConvertMapCoordToLandscapePoint(coords, Centre);
 	MobileStatic::CallVirtualFunctionsForCreation(coords);
 	State = GetVortexInfo()->InitialState;
 	PARTICLE_TYPE objectMover = GetVortexInfo()->ParticleTypeObjectMover;
@@ -1341,41 +1298,41 @@ void LandscapeVortex::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	{
 		ZCheatBox = LH3DObject::Create(LH3DObject::STATIC);
 		ZCheatBox->SetMesh(LH3DMesh::GetPackedMesh(MSH_S_ZCHEATBOX), NULL, NULL);
-		*(LHPoint*)&ZCheatBox->matrix._41 = position;
+		ZCheatBox->matrix.GetPos() = Centre;
 		ZCheatBox->matrix._42 = 0.0f;
 		float scale = ZCheatBoxScale * GetVortexInfo()->BaseScale;
 		ZCheatBox->matrix.ScaleMatrixOnly(scale);
 		ZCheatBox->scale *= scale;
 		ZCheatBox->GetMesh()->submeshes[0]->primitives_[0]->Material.render_mode =
 			LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_CHROMA_JUST_Z;
-		if (objectMover != PARTICLE_TYPE_NONE && field_0x98 == NULL)
+		if (objectMover != PARTICLE_TYPE_NONE && ObjectMoverParticle == NULL)
 		{
-			field_0x98 = GJPSysInterface::Create(NULL, objectMover, field_0xd4, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
-			                                     (PSysInterface::NET_GAME_TYPE)1);
-			if (field_0x98 != NULL)
+			ObjectMoverParticle = GJPSysInterface::Create(NULL, objectMover, Centre, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
+			                                              PSysInterface::NET_GAME_TYPE_1);
+			if (ObjectMoverParticle != NULL)
 			{
-				field_0x98->SetPlayer(GetPlayer());
+				ObjectMoverParticle->SetPlayer(GetPlayer());
 			}
 		}
 		PARTICLE_TYPE preLandscape = GetVortexInfo()->ParticleTypePreLandscape;
 		if (preLandscape != PARTICLE_TYPE_NONE)
 		{
-			LHPoint position = field_0xd4;
+			LHPoint position = Centre;
 			position.y = LH3DIsland::GetAltitude(LH3DMapCoords(position.x, position.z));
-			field_0x9c = PSysInterface::Create(NULL, preLandscape, position, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
-			                                   PSysInterface::NET_GAME_TYPE_0);
+			PreLandscapeParticle = PSysInterface::Create(NULL, preLandscape, position, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
+			                                             PSysInterface::NET_GAME_TYPE_0);
 		}
 		PARTICLE_TYPE postLandscape = GetVortexInfo()->ParticleTypePostLandscape;
 		if (postLandscape != PARTICLE_TYPE_NONE)
 		{
-			field_0xa0 = PSysInterface::Create(NULL, postLandscape, field_0xd4, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
-			                                   PSysInterface::NET_GAME_TYPE_0);
+			PostLandscapeParticle = PSysInterface::Create(NULL, postLandscape, Centre, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
+			                                              PSysInterface::NET_GAME_TYPE_0);
 		}
 		PARTICLE_TYPE lightMap = GetVortexInfo()->ParticleTypeLightMap;
 		if (lightMap != PARTICLE_TYPE_NONE)
 		{
-			field_0x94 = GJPSysInterface::Create(NULL, lightMap, field_0xd4, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
-			                                     PSysInterface::NET_GAME_TYPE_0);
+			LightMapParticle = GJPSysInterface::Create(NULL, lightMap, Centre, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
+			                                           PSysInterface::NET_GAME_TYPE_0);
 		}
 	}
 	HeightSpline.SetSize(5);
@@ -1397,8 +1354,8 @@ void LandscapeVortex::ResetLandscapeHeights()
 	{
 		return;
 	}
-	int z = (int)(field_0xd4.z / LAND_CELL_SIZE);
-	int x = (int)(field_0xd4.x / LAND_CELL_SIZE);
+	int z = (int)(Centre.z / LAND_CELL_SIZE);
+	int x = (int)(Centre.x / LAND_CELL_SIZE);
 	int size = GetHeightMapSize();
 	if (OriginalHeights.GetSize() == 0)
 	{

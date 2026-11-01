@@ -23,6 +23,7 @@ public:
 	enum NET_GAME_TYPE
 	{
 		NET_GAME_TYPE_0 = 0x0,
+		NET_GAME_TYPE_1 = 0x1,
 	};
 
 	// Override methods

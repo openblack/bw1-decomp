@@ -21,7 +21,7 @@ class VortexObjectInfo : public PSysBase
 {
 public:
 	GameThing*       Thing;          /* 0x14 */
-	bool             field_0x18;     /* 0x18 */
+	bool             FromPhysics;    /* 0x18 */
 	LHPoint          Velocity;       /* 0x1c */
 	LHMatrix         Matrix;         /* 0x28 */
 	bool             Indestructible; /* 0x58 */
@@ -41,9 +41,9 @@ public:
 	// BW1W120 0055d7f0 BW1M119 inlined
 	VortexObjectInfo() {}
 	// BW1W120 inlined BW1M119 inlined
-	VortexObjectInfo(Object* thing, bool param_2, const LHPoint& velocity, const LHMatrix& matrix, bool indestructible,
-	                 LandscapeVortex* vortex)
-		: Thing(thing), field_0x18(param_2), Velocity(velocity), Matrix(matrix), Indestructible(indestructible),
+	VortexObjectInfo(Object* thing, bool from_physics, const LHPoint& velocity, const LHMatrix& matrix,
+	                 bool indestructible, LandscapeVortex* vortex)
+		: Thing(thing), FromPhysics(from_physics), Velocity(velocity), Matrix(matrix), Indestructible(indestructible),
 		  Vortex(vortex)
 	{
 	}

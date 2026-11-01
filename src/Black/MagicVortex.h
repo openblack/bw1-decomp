@@ -17,6 +17,11 @@
 #include "MapCoords.h"            /* For struct MapCoords */
 #include "MobileStatic.h"         /* For class MobileStatic */
 
+#define VORTEX_FULL_RADIUS_TURNS 3
+#define VORTEX_CHILD_INTERVAL    5
+#define VORTEX_MAX_SPIRAL_CELLS  9999
+#define VORTEX_PILE_TAKE_AMOUNT  1000
+
 // Forward Declares
 
 class Base;
@@ -50,10 +55,10 @@ public:
 	LHListNode<LandscapeVortex> next;                   /* 0x88 */
 	float                       LastFootPrintFraction;  /* 0x8c */
 	float                       LastHeightFraction;     /* 0x90 */
-	GJPSysInterface*            field_0x94;             /* 0x94 */
-	GJPSysInterface*            field_0x98;             /* 0x98 */
-	PSysInterface*              field_0x9c;             /* 0x9c */
-	PSysInterface*              field_0xa0;             /* 0xa0 */
+	GJPSysInterface*            LightMapParticle;       /* 0x94 */
+	GJPSysInterface*            ObjectMoverParticle;    /* 0x98 */
+	PSysInterface*              PreLandscapeParticle;   /* 0x9c */
+	PSysInterface*              PostLandscapeParticle;  /* 0xa0 */
 	LH3DMaterial*               FootPrintMaterial;      /* 0xa4 */
 	LH3DMaterial*               FootPrintAlphaMaterial; /* 0xa8 */
 	LH3DObject*                 ZCheatBox;              /* 0xac */
@@ -63,15 +68,15 @@ public:
 	GJArray<uint8_t>            OriginalHeights;        /* 0xbc */
 	float                       AverageHeight;          /* 0xc4 */
 	KPSplineInterpolator<float> HeightSpline;           /* 0xc8 */
-	LHPoint                     field_0xd4;             /* 0xd4 */
+	LHPoint                     Centre;                 /* 0xd4 */
 	VORTEX_TYPE                 Type;                   /* 0xe0 */
 	VORTEX_STATE_TYPE           State;                  /* 0xe4 */
-	float                       field_0xe8;             /* 0xe8 */
+	float                       Radius;                 /* 0xe8 */
 
 	// Override methods
 
 	// BW1W120 005fe8f0 BW1M119 013be610
-	virtual void ToBeDeleted(int delete_now);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00600210 BW1M119 013bbc90
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00600000 BW1M119 013bc060
@@ -126,7 +131,7 @@ public:
 	// BW1W120 005fd6c0 BW1M119 013bd470
 	virtual void ProcessContentsOfVortex();
 	// BW1W120 005fd590 BW1M119 013c0df0
-	virtual void SetFlockParams(const MapCoords& coords, float param_2, float param_3, Flock* flock);
+	virtual void SetFlockParams(const MapCoords& coords, float flock_distance, float domain_radius, Flock* flock);
 	// BW1W120 005fd6d0 BW1M119 013c0d90
 	virtual bool IsVillagerBeingThrownByThisVortex(Villager* villager);
 
@@ -206,7 +211,7 @@ public:
 	// Override methods
 
 	// BW1W120 005fd860 BW1M119 013c09a0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 005fd7a0 BW1M119 013c1c00
 	virtual char* GetDebugText();
 	// BW1W120 00600550 BW1M119 013bba70
@@ -220,11 +225,11 @@ public:
 	// BW1W120 005fd8c0 BW1M119 013c0950
 	virtual bool InteractsWithPhysicsObjects() { return true; }
 	// BW1W120 005fd8d0 BW1M119 013c08e0
-	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
+	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* object);
 	// BW1W120 005fd8e0 BW1M119 013c07c0
-	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+	virtual void ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage);
 	// BW1W120 005fd980 BW1M119 013c06d0
-	virtual bool32_t CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* creature);
 	// BW1W120 005fdb60 BW1M119 013c0060
 	virtual void ProcessContentsOfVortex();
 
@@ -238,7 +243,7 @@ public:
 	// BW1W120 005fd890 BW1M119 inlined
 	void SetToZero();
 	// BW1W120 005fd9b0 BW1M119 013c0440
-	void AddObject(Object* object, const LHPoint& velocity, const LHMatrix& matrix, bool param_4);
+	void AddObject(Object* object, const LHPoint& velocity, const LHMatrix& matrix, bool from_physics);
 	// BW1W120 005fdac0 BW1M119 013c0330
 	void SaveVortexObject(Object* object);
 	// BW1W120 005fdaf0 BW1M119 inlined
@@ -267,7 +272,7 @@ public:
 	// Override methods
 
 	// BW1W120 005fdf10 BW1M119 013bfb40
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 005fddd0 BW1M119 013c1ab0
 	virtual char* GetDebugText();
 	// BW1W120 00600880 BW1M119 013bb240
@@ -277,11 +282,11 @@ public:
 	// BW1W120 005fddc0 BW1M119 013c1a70
 	virtual uint32_t GetSaveType();
 	// BW1W120 005fdfe0 BW1M119 013bfa40
-	virtual void SetTown(Town* param_1);
+	virtual void SetTown(Town* town);
 	// BW1W120 005fe030 BW1M119 013bf460
 	virtual void ProcessContentsOfVortex();
 	// BW1W120 005fdff0 BW1M119 013bf990
-	virtual void SetFlockParams(const MapCoords& coords, float param_2, float param_3, Flock* flock);
+	virtual void SetFlockParams(const MapCoords& coords, float flock_distance, float domain_radius, Flock* flock);
 	// BW1W120 005fdfb0 BW1M119 013bfa80
 	virtual bool IsVillagerBeingThrownByThisVortex(Villager* villager);
 

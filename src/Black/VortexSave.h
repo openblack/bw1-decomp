@@ -32,7 +32,7 @@ public:
 	// BW1W120 0076f840 BW1M119 011678d0
 	VortexSave();
 	// BW1W120 0076f890 BW1M119 01167720
-	VortexSave(char* file_name, bool param_2);
+	VortexSave(char* file_name, bool read);
 
 	// Non-virtual methods
 
