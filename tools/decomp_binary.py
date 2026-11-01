@@ -172,6 +172,9 @@ class Coff:
             self.sections.append(sec)
         for sym in self.symbols.values():
             if sym.section > 0 and sym.value > self.sections[sym.section - 1].size:
+                # MSVC debug symbols such as .lf can legitimately sit past the section end.
+                if sym.name.startswith(".lf"):
+                    continue
                 raise BinaryError(f"symbol {sym.name}: value outside section")
 
     @classmethod
