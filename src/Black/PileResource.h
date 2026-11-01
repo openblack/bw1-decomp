@@ -85,6 +85,11 @@ public:
 	// BW1W120 0066ec70 BW1M119 011218a0
 	PileResource(const MapCoords& coords, const GPotInfo* info, uint32_t resource, MultiMapFixed* parent, Town* town,
 	             int param_6, float y_angle, float scale);
+
+	// Non-virtual methods
+
+	// BW1W120 0066f0d0 BW1M119 01120a30
+	Object* TakeResourceAndCreateHandPot(unsigned long amount);
 };
 
 #endif /* BW1_DECOMP_PILE_RESOURCE_INCLUDED_H */

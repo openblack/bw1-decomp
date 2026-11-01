@@ -72,6 +72,12 @@ public:
 
 	// BW1W120 0055ec90 BW1M119 inlined
 	GJPSysInterface() { manager = NULL; }
+
+	// Static methods
+
+	// BW1W120 0068f2f0 BW1M119 0109a710
+	static GJPSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, const LHPoint& position,
+	                               const LHPoint& velocity, float strength, PSysInterface::NET_GAME_TYPE game_type);
 };
 
 #endif /* BW1_DECOMP_JP_SYS_INTERFACE_INCLUDED_H */

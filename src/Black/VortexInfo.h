@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For VORTEX_TYPE_LAST */
+#include <chlasm/Enum.h> /* For PARTICLE_TYPE, TRIBE_TYPE, VILLAGER_INFO, VORTEX_STAT_TYPE, VORTEX_STATE_TYPE, VORTEX_TYPE */
 
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
@@ -16,7 +16,14 @@ class Base;
 class GVortexInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0x30];
+	PARTICLE_TYPE     ParticleTypePreLandscape;           /* 0x10 */
+	PARTICLE_TYPE     ParticleTypePostLandscape;          /* 0x14 */
+	PARTICLE_TYPE     ParticleTypeObjectMover;            /* 0x18 */
+	PARTICLE_TYPE     ParticleTypeLightMap;               /* 0x1c */
+	VORTEX_STATE_TYPE InitialState;                       /* 0x20 */
+	uint32_t          FadeWhenDeleted;                    /* 0x24 */
+	float             BaseScale;                          /* 0x28 */
+	uint32_t          MaxToCreate[VORTEX_STAT_TYPE_LAST]; /* 0x2c */
 
 	// Override methods
 
@@ -35,9 +42,28 @@ public:
 	// BW1W120 inlined BW1M119 013c12c0
 	static GVortexInfo* GetInfo() { return Infos; }
 
+	// Non-virtual methods
+
+	// BW1W120 005fd410 BW1M119 013c1200
+	VORTEX_TYPE GetVortexType() const;
+	// BW1W120 005fd420 BW1M119 inlined
+	VILLAGER_INFO GetVillagerInfoToCreate(TRIBE_TYPE tribe);
+	// BW1W120 005fd480 BW1M119 inlined
+	int32_t GetMaxToCreate(VORTEX_STAT_TYPE type);
+	// BW1W120 005fd4a0 BW1M119 inlined
+	uint32_t GetMaxToCreateFromInfo(VORTEX_STAT_TYPE type);
+	// BW1W120 005fd4c0 BW1M119 013c1190
+	const char* GetFootPrintFileName() const;
+	// BW1W120 005fd4d0 BW1M119 013c1120
+	const char* GetFootPrintAlphaFileName() const;
+	// BW1W120 005fd4e0 BW1M119 013c10b0
+	bool IsAdjustLandscapeHeight() const;
+
 	// TODO(#377): The original declared this class in MagicVortex.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(ParticleTypePreLandscape, MaxToCreate)
 	INFO_ROOT_LOADERS("MagicVortex.h", 25)
 };
+
+static_assert(sizeof(GVortexInfo) == 0x40, "GVortexInfo size is incorrect");
 
 #endif /* BW1_DECOMP_VORTEX_INFO_INCLUDED_H */
