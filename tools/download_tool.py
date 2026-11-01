@@ -14,6 +14,7 @@ import argparse
 import io
 import os
 import platform
+import re
 import shutil
 import stat
 import tarfile
@@ -192,6 +193,58 @@ def download(url, response, outputs) -> None:
         os.chmod(output, st.st_mode | stat.S_IEXEC)
 
 
+def patch_unique(exe: Path, pattern: bytes, before: bytes, after: bytes) -> None:
+    # `pattern` holds one `%s` where `before` is replaced by `after`. Patching
+    # twice is a no-op; anything but exactly one match means the binary is not
+    # the one the pattern was written for.
+    data = bytearray(exe.read_bytes())
+    if re.search(pattern % re.escape(after), data, re.DOTALL):
+        return
+    matches = list(re.finditer(pattern % re.escape(before), data, re.DOTALL))
+    if len(matches) != 1:
+        raise SystemExit(f"{exe}: expected one match to patch, found {len(matches)}")
+    start = matches[0].start(1)
+    data[start : start + len(after)] = after
+    exe.write_bytes(data)
+
+
+def patch_cl_file_echo(output: Path) -> None:
+    # cl.exe prints each source file name before compiling it, and has no
+    # switch for that (/nologo only drops the banner). The print sits behind
+    # `cmp [flag], 0; pop ecx; je print; cmp [count], 1; jg skip`. Replacing
+    # the `mov eax, [ebp+x]` at `print` with a short jmp to `skip` stops it:
+    # every path to the print goes through that instruction. The match is on
+    # instruction shape, identical in MSVC 6.0 SP4/SP5 and 7.0 apart from the
+    # stack displacements.
+    patch_unique(
+        output / "cl.exe",
+        rb"\x83\x7d.\x00\x59\x74\x06\x83\x7d.\x01\x7f\x22(%s)."
+        rb"\xff\x70\x04\x8d\x85....\x50\xe8....\x50\x68....\x6a\x02\xe8....\x83\xc4\x14",
+        b"\x8b\x45",
+        b"\xeb\x20",
+    )
+
+
+def patch_icl_file_echo(output: Path) -> None:
+    # icl.exe prints the source file name as `fprintf(f, "%s%s\n", name, ...)`
+    # unless the preprocess-mode variable is 1 (`cmp edx, 1; je done`). Making
+    # that `je` unconditional skips the print in every mode.
+    patch_unique(
+        output / "icl.exe",
+        rb"\x83\xfa\x01(%s).\x8b\x15....\x83\xfa\x04\x7d\x07\xbb....\xeb\x05\x83\xfa\x09\x74."
+        rb"\x89\x1c\x24\xc7\x44\x24\x04....\x89\x74\x24\x08\x89\x6c\x24\x0c\xe8....\x83\xc4\x10",
+        b"\x74",
+        b"\xeb",
+    )
+
+
+PATCHES: Dict[str, Callable[[Path], None]] = {
+    "compilers_msvc": patch_cl_file_echo,
+    "compilers_msvc70": patch_cl_file_echo,
+    "icc": patch_icl_file_echo,
+}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("tool", help="Tool name (or 'url' with --url)")
@@ -229,6 +282,10 @@ def main() -> None:
             req, context=ssl.create_default_context(cafile=certifi.where())
         ) as response:
             download(url, response, outputs)
+
+    patch = PATCHES.get(args.tool)
+    if patch is not None:
+        patch(args.output)
 
 
 if __name__ == "__main__":
