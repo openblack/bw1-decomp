@@ -5,7 +5,15 @@
 #include "MusicMood.h"
 #include "Serialise.h"
 
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
+#define FILEPATH "C:\\dev\\black\\MusicMood.cpp"
+#elif defined(VERSION_BW1W110)
+#define FILEPATH "C:\\dev\\Black\\MusicMood.cpp"
+#elif defined(VERSION_BW1W130)
+#define FILEPATH "D:\\Work\\Games\\dd\\Black\\MusicMood.cpp"
+#else
 #define FILEPATH "C:\\dev\\MP\\Black\\MusicMood.cpp"
+#endif
 
 // BW1W120 00633ae0 BW1M119 01114840
 bool redbook_status(unsigned int device_id);
@@ -83,7 +91,11 @@ void MusicMood::SetNumTracks(int num_tracks)
 		MusicEmotion* emotions = NULL;
 		if (num_tracks != 0)
 		{
+#ifdef VERSION_BW1W100
+			emotions = new (FILEPATH, 150) MusicEmotion[num_tracks];
+#else
 			emotions = new (FILEPATH, 154) MusicEmotion[num_tracks];
+#endif
 			if (emotions != NULL)
 			{
 				if (Emotions != NULL)
