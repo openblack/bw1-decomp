@@ -9,6 +9,8 @@
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
+#define VORTEX_MAX_VILLAGERS_TO_CREATE 30
+
 // Forward Declares
 
 class Base;

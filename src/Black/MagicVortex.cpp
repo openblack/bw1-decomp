@@ -67,7 +67,7 @@ const float VortexRadius = 58.0f;
 const float HeightProfileCentre = 30.0f;
 const float HeightProfileHalfWidth = 20.0f;
 const float VortexFlatRadius = 50.0f;
-const float HeightProfile[5] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+const float HeightProfile[VORTEX_HEIGHT_PROFILE_POINTS] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 const float FootPrintDelay = 2.0f;
 const float ActiveLightmapFraction = 0.6f;
 const float RaisedParticleHeight = 0.3f;
@@ -123,14 +123,16 @@ VILLAGER_INFO GVortexInfo::GetVillagerInfoToCreate(TRIBE_TYPE tribe)
 	}
 	else
 	{
-		number = (VILLAGER_NUMBER)(GRand::GameRand(5, MAGIC_VORTEX_FILE, 89) + 1);
+		number = (VILLAGER_NUMBER)(GRand::GameRand(VILLAGER_NUMBER_LEADER - VILLAGER_NUMBER_FORESTER + 1,
+		                                           MAGIC_VORTEX_FILE, 89) +
+		                           VILLAGER_NUMBER_FORESTER);
 	}
 	return (VILLAGER_INFO)(tribe * VILLAGER_NUMBER_LAST + number);
 }
 
 int32_t GVortexInfo::GetMaxToCreate(VORTEX_STAT_TYPE type)
 {
-	return type == VORTEX_STAT_TYPE_VILLAGER ? 30 : 0;
+	return type == VORTEX_STAT_TYPE_VILLAGER ? VORTEX_MAX_VILLAGERS_TO_CREATE : 0;
 }
 
 uint32_t GVortexInfo::GetMaxToCreateFromInfo(VORTEX_STAT_TYPE type)
@@ -388,7 +390,7 @@ void LandscapeVortexIn::RemoveObjectFromWorld(Object* object)
 
 float LandscapeVortexIn::GetCreatureFizzRadius()
 {
-	return Get2DRadius() * 0.7f;
+	return Get2DRadius() * VORTEX_SUCK_RADIUS_SCALE;
 }
 
 void LandscapeVortexIn::ProcessContentsOfVortex()
@@ -482,9 +484,7 @@ void LandscapeVortexOut::SetToZero()
 	AnimalFlock = NULL;
 	FlockToJoin = NULL;
 	VortexSaver = NULL;
-	FlockCoords.x = 0;
-	FlockCoords.z = 0;
-	FlockCoords.altitude = 0.0f;
+	FlockCoords.Clear();
 	field_0x110 = 0;
 	field_0x114 = 0;
 	for (int i = 0; i < VORTEX_STAT_TYPE_LAST; i++)
@@ -542,7 +542,7 @@ void LandscapeVortexOut::ProcessContentsOfVortex()
 	}
 	if (TownToJoin == NULL)
 	{
-		TownToJoin = Pos.GetNearestTown(200.0f);
+		TownToJoin = Pos.GetNearestTown(VORTEX_TOWN_SEARCH_DISTANCE);
 	}
 	LHLinkedNode<Object*>* node = ThrownObjects.GetStart();
 	while (node != NULL)
@@ -567,12 +567,12 @@ void LandscapeVortexOut::ProcessContentsOfVortex()
 	{
 		FadeStartTurn = GGame::g_game->data.GameTurn;
 	}
-	if (GGame::g_game->data.GameTurn & 1)
+	if (GGame::g_game->data.GameTurn % VORTEX_CREATE_TURNS != 0)
 	{
 		return;
 	}
-	float     angle = GRand::GameFloatRand(TWO_PI, MAGIC_VORTEX_FILE, 578);
-	LHPoint   offset((float)sin(angle) * 16.0f, 0.0f, (float)cos(angle) * -16.0f);
+	float   angle = GRand::GameFloatRand(TWO_PI, MAGIC_VORTEX_FILE, 578);
+	LHPoint offset((float)sin(angle) * VORTEX_THROW_OUT_DISTANCE, 0.0f, (float)cos(angle) * -VORTEX_THROW_OUT_DISTANCE);
 	MapCoords coords = Pos;
 	coords.SetMapMetersX(coords.MapMetersX() + offset.x);
 	coords.SetMapMetersZ(coords.MapMetersZ() + offset.z);
@@ -612,10 +612,11 @@ void LandscapeVortexOut::ProcessContentsOfVortex()
 		tribe = TownToJoin->tribe_type;
 	}
 	const GVillagerInfo* info = &GVillagerInfo::InfoList[GetVortexInfo()->GetVillagerInfoToCreate(tribe)];
-	Villager*            villager = Villager::Create(coords, info,
-	                                                 child ? GRand::GameRand(9, MAGIC_VORTEX_FILE, 630) + 1
-	                                                       : GRand::GameRand(6, MAGIC_VORTEX_FILE, 630) + 16,
-	                                                 false);
+	Villager*            villager =
+		Villager::Create(coords, info,
+	                     child ? GRand::GameRand(VORTEX_CHILD_AGE_RANGE, MAGIC_VORTEX_FILE, 630) + VORTEX_CHILD_MIN_AGE
+	                           : GRand::GameRand(VORTEX_ADULT_AGE_RANGE, MAGIC_VORTEX_FILE, 630) + VORTEX_ADULT_MIN_AGE,
+	                     false);
 	if (villager != NULL)
 	{
 		DoPostObjectCreateThings(villager, angle);
@@ -649,7 +650,7 @@ void LandscapeVortexOut::DoPostObjectCreateThings(Object* object, float angle)
 			FlockToJoin->AddLivingToFlock(villager);
 			if (FlockToJoin->IsInScript())
 			{
-				uint32_t id = GScript::AddScriptGameThing(villager, 0);
+				uint32_t id = GScript::AddScriptGameThing(villager, false);
 				if (id != 0)
 				{
 					GScript::IncrementScriptReference(id);
@@ -707,13 +708,13 @@ LandscapeVortex* LandscapeVortex::Create(const MapCoords& coords, VORTEX_TYPE ty
 	switch (type)
 	{
 	case VORTEX_TYPE_VOLCANO:
-		vortex = new (MAGIC_VORTEX_FILE, 733) LandscapeVortexVolc(coords, 50.0f);
+		vortex = new (MAGIC_VORTEX_FILE, 733) LandscapeVortexVolc(coords, VORTEX_RADIUS);
 		break;
 	case VORTEX_TYPE_IN:
-		vortex = new (MAGIC_VORTEX_FILE, 736) LandscapeVortexIn(coords, 50.0f);
+		vortex = new (MAGIC_VORTEX_FILE, 736) LandscapeVortexIn(coords, VORTEX_RADIUS);
 		break;
 	case VORTEX_TYPE_OUT:
-		vortex = new (MAGIC_VORTEX_FILE, 739) LandscapeVortexOut(coords, 50.0f);
+		vortex = new (MAGIC_VORTEX_FILE, 739) LandscapeVortexOut(coords, VORTEX_RADIUS);
 		break;
 	}
 	if (vortex != NULL)
@@ -1209,7 +1210,7 @@ void LandscapeVortex::CreateFootPrints()
 
 void LandscapeVortex::Draw()
 {
-	GInterface::SendInvisibleDrawCollision(this, &Centre, Get2DRadius() * 0.7f);
+	GInterface::SendInvisibleDrawCollision(this, &Centre, Get2DRadius() * VORTEX_SUCK_RADIUS_SCALE);
 	if (ObjectMoverParticle != NULL)
 	{
 		ObjectMoverParticle->Draw(true);
@@ -1261,7 +1262,7 @@ void LandscapeVortex::PreLandscapeDraw(bool process)
 			ReleaseFootPrints();
 		}
 		uint32_t alpha = (uint32_t)(fraction * 255.0f);
-		alpha = min(alpha, 235);
+		alpha = min(alpha, VORTEX_FOOTPRINT_MAX_ALPHA);
 		if (FootPrintAlphaMaterial != NULL)
 		{
 			FootPrintAlphaMaterial->AlphaReference = (uint8_t)alpha;
@@ -1299,7 +1300,7 @@ void LandscapeVortex::CallVirtualFunctionsForCreation(const MapCoords& coords)
 		ZCheatBox = LH3DObject::Create(LH3DObject::STATIC);
 		ZCheatBox->SetMesh(LH3DMesh::GetPackedMesh(MSH_S_ZCHEATBOX), NULL, NULL);
 		ZCheatBox->matrix.GetPos() = Centre;
-		ZCheatBox->matrix._42 = 0.0f;
+		ZCheatBox->matrix.GetPos().y = 0.0f;
 		float scale = ZCheatBoxScale * GetVortexInfo()->BaseScale;
 		ZCheatBox->matrix.ScaleMatrixOnly(scale);
 		ZCheatBox->scale *= scale;
@@ -1335,7 +1336,7 @@ void LandscapeVortex::CallVirtualFunctionsForCreation(const MapCoords& coords)
 			                                           PSysInterface::NET_GAME_TYPE_0);
 		}
 	}
-	HeightSpline.SetSize(5);
+	HeightSpline.SetSize(VORTEX_HEIGHT_PROFILE_POINTS);
 	HeightSpline.SetSP(0, 0.0f, HeightProfile[0]);
 	HeightSpline.SetSP(1, HeightProfileCentre - HeightProfileHalfWidth, HeightProfile[1]);
 	HeightSpline.SetSP(2, HeightProfileCentre, HeightProfile[2]);

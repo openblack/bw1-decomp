@@ -17,10 +17,21 @@
 #include "MapCoords.h"            /* For struct MapCoords */
 #include "MobileStatic.h"         /* For class MobileStatic */
 
-#define VORTEX_FULL_RADIUS_TURNS 3
-#define VORTEX_CHILD_INTERVAL    5
-#define VORTEX_MAX_SPIRAL_CELLS  9999
-#define VORTEX_PILE_TAKE_AMOUNT  1000
+#define VORTEX_FULL_RADIUS_TURNS     3
+#define VORTEX_CHILD_INTERVAL        5
+#define VORTEX_MAX_SPIRAL_CELLS      9999
+#define VORTEX_PILE_TAKE_AMOUNT      1000
+#define VORTEX_CREATE_TURNS          2
+#define VORTEX_RADIUS                50.0f
+#define VORTEX_SUCK_RADIUS_SCALE     0.7f
+#define VORTEX_TOWN_SEARCH_DISTANCE  200.0f
+#define VORTEX_THROW_OUT_DISTANCE    16.0f
+#define VORTEX_CHILD_MIN_AGE         1
+#define VORTEX_CHILD_AGE_RANGE       9
+#define VORTEX_ADULT_MIN_AGE         16
+#define VORTEX_ADULT_AGE_RANGE       6
+#define VORTEX_HEIGHT_PROFILE_POINTS 5
+#define VORTEX_FOOTPRINT_MAX_ALPHA   235
 
 // Forward Declares
 
