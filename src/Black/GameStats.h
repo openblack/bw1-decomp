@@ -377,6 +377,10 @@ public:
 	float GetFinalTotalBelief();
 	// BW1W120 00565050 BW1M119 013232a0
 	float GetFinalAreaOfInfluence();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00579ce0 BW1MCI119 01342b80
+	Creature* GetCreatureOrTyke();
+#endif
 	// BW1W120 00565060 BW1M119 013231a0
 	float GetCreatureGrowth();
 	// BW1W120 005650c0 BW1M119 013230b0

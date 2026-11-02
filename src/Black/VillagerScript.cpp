@@ -150,6 +150,7 @@ bool32_t Living::EnterPlayAnim(uint8_t param_1, uint8_t param_2)
 // puts push-1 before the store. No source shape found (tried ternary-arg [branchless select],
 // state-local-one-call [branchless push eax], inverted <=0, and != vs > vs <= boundaries) to force
 // the redundant test / jbe / store-then-push ordering — it's a regalloc/scheduling artifact.
+#ifndef VERSION_BW1WCI
 bool32_t Villager::ScriptPlayAnim()
 {
 	uint32_t counter = WanderArea.z;
@@ -171,6 +172,7 @@ bool32_t Villager::ScriptPlayAnim()
 	}
 	return 1;
 }
+#endif
 
 // BW1W120 007689c0 BW1M119 inlined
 bool32_t Living::ExitPlayAnim(uint8_t state)
@@ -178,6 +180,7 @@ bool32_t Living::ExitPlayAnim(uint8_t state)
 	return ExitInScript(state);
 }
 
+#ifndef VERSION_BW1WCI
 // BW1W120 007689d0 BW1M119 0100cac0
 bool32_t Villager::IsScriptAnimationComplete()
 {
@@ -192,6 +195,7 @@ bool32_t Villager::IsScriptAnimationComplete()
 	}
 	return true;
 }
+#endif
 
 // BW1W120 00768a00 BW1M119 0159dfa0
 // TODO: returns the raw dword at the WanderArea union (0x11c); the semantic union member is a guess.

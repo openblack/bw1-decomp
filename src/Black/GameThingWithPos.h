@@ -33,7 +33,6 @@ class GameOSFile;
 struct LHPoint;
 class Living;
 class Object;
-class PileResource;
 class Reaction;
 class SpellShield;
 class WorshipSite;
@@ -667,7 +666,7 @@ public:
 	// BW1W120 00402480 BW1M119 010a7c40
 	virtual SpellShield* IsSpellShield() { return NULL; }
 	// BW1W120 00402490 BW1M119 010a6f40
-	virtual PileResource* IsPileResource() { return NULL; }
+	virtual bool32_t IsPileResource() { return false; }
 	// BW1W120 004024a0 BW1M119 013f97d0
 	virtual bool32_t IsScriptTimer() { return false; }
 #ifdef VERSION_BW1WCI
