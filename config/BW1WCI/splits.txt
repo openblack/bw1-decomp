@@ -1619,14 +1619,17 @@ Black/MPFELogin.cpp:
 	.rdata      start:0x00988B28 end:0x00988B64
 
 Black/MPFEMapMessages.cpp:
+	.text       start:0x00647150 end:0x00647440
 	.rdata      start:0x00988B64 end:0x00988B7C
-	.data       start:0x00C6E6F4 end:0x00C6E7A4
+	.CRT$XCU    start:0x00A36BC8 end:0x00A36BCC align:4
+	.data       start:0x00C6E6D0 end:0x00C6E744
+	.bss        start:0x00DC2244 end:0x00DC2248
 
 Black/MPFEPlayerDetails.cpp:
 	.text       start:0x00647440 end:0x00649440
 	.rdata      start:0x00988B7C end:0x00988BAC
 	.CRT$XCU    start:0x00A36BCC end:0x00A36BDC align:4
-	.data       start:0x00C6E7A4 end:0x00C6E8DC
+	.data       start:0x00C6E744 end:0x00C6E8DC
 	.bss        start:0x00DC224C end:0x00DC2278
 
 Black/MultiplayerDatabase.cpp:

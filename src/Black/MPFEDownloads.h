@@ -7,10 +7,19 @@
 class MPFEDownloads
 {
 public:
-	uint8_t field_0x4[0x27c];
+	uint8_t       field_0x4[0x6c];
+	bool          Downloading; /* 0x70 */
+	uint8_t       field_0x71[0x20b];
+	unsigned long FileNumber; /* 0x27c */
 
-	// Override methods
+	// New virtual methods
 
+	// BW1W120 purecall BW1M119 purecall
+	virtual void GetFileNumber(unsigned long number) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual void Refresh() = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual void Stop() = 0;
 	// BW1W120 0062e740 BW1M119 013ac730
 	virtual void FileCompleted();
 	// BW1W120 0062e750 BW1M119 013ac6f0
@@ -21,5 +30,7 @@ public:
 	// BW1W120 0062e580 BW1M119 013aca60
 	MPFEDownloads();
 };
+
+static_assert(sizeof(MPFEDownloads) == 0x280, "MPFEDownloads size is incorrect");
 
 #endif /* BW1_DECOMP_MPFE_DOWNLOADS_INCLUDED_H */

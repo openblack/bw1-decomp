@@ -6,11 +6,17 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+// Forward Declares
+
+struct SetupList;
+
 class ChannelBox : public DialogBoxBase
 {
 public:
-	uint8_t field_0x10[0xab4];
-	bool    ConditionEnabled[15]; /* 0xac4; initialized by MPFEData and condition messages. */
+	uint8_t    field_0x10[0xa7c];
+	SetupList* ConditionList; /* 0xa8c */
+	uint8_t    field_0xa90[0x34];
+	bool       ConditionEnabled[15]; /* 0xac4 */
 
 	// Override methods
 
@@ -21,6 +27,11 @@ public:
 	virtual void Destroy();
 	// BW1W120 0061ca60 BW1M119 01396ad0
 	virtual void InitControls();
+
+	// Non-virtual methods
+
+	// BW1W120 0061cc80 BW1M119 inlined
+	void UpdateAll();
 };
 
 #endif /* BW1_DECOMP_CHANNEL_BOX_INCLUDED_H */

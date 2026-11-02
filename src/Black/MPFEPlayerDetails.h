@@ -26,7 +26,9 @@ struct MPFEPlayerDetails
 	uint8_t    field_0x120[0x4];
 	LH_USER_ID ID;
 #else
-	uint8_t    field_0x120[0x8];
+	uint8_t    field_0x120;
+	bool       Ready; /* 0x121 */
+	uint8_t    field_0x122[0x6];
 	LH_USER_ID ID;
 #endif
 
