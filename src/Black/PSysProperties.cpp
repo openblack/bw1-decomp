@@ -1798,7 +1798,7 @@ static void EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4)
 	std::string text;
 }
 #else
-static void EmptyString(int arg0)
+static void EmptyString(int arg0, int arg1)
 {
 	std::string text;
 }

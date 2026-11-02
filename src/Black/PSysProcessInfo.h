@@ -15,6 +15,14 @@ struct PSysProcessInfo
 	float          Strength;
 	float          GestureAngularVelocity;
 	bool           Active; /* 0x38 */
+
+	// BW1W120 inlined BW1M119 inlined
+	PSysProcessInfo()
+		: InterfacePosition(0.0f, 0.0f, 0.0f), GesturePosition(0.0f, 0.0f, 0.0f),
+		  CameraForwardUnitVector(0.0f, 0.0f, 0.0f), HandVelocity(0.0f, 0.0f, 0.0f), Strength(1.0f),
+		  GestureAngularVelocity(0.0f), Active(true)
+	{
+	}
 };
 static_assert(sizeof(PSysProcessInfo) == 0x3c, "Data type is of wrong size");
 
