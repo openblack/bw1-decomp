@@ -19,7 +19,7 @@
 #include "GameInfo.h"
 #include "GameOSFile.h"
 #include "JPSysInterface.h"
-#include "MapCoordsMeters.h"      /* For MapCoords::MetersX, MapCoords::SetMetersX */
+#include "MapCoordsMeters.h"      /* For MapCoords::MetersX, MapCoords::MapMetersX */
 #include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 #include "PhysicsObject.h"
 #include "MobileStaticInfo.h"
@@ -48,6 +48,7 @@
 #include <Lionhead/LH3DLib/development/LH3DTech.h>        /* For LH3DTech */
 #include <Lionhead/LH3DLib/development/LH3DZSorter.h>     /* For LH3DZSorter */
 #include <Lionhead/LH3DLib/development/PhysOb.h>          /* For class PhysOb */
+#include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h> /* For LH_SAMPLE_LOOP_FOREVER, LH_SAMPLE_PLAY_TYPE_ONCE */
 
 #include <math.h> /* For cos, sin */
 
@@ -73,11 +74,6 @@ const float RaisedParticleHeight = 0.3f;
 const float LoweredParticleHeight = 2.5f;
 const float ZCheatBoxScale = 1.0f;
 
-inline float SmoothStep(float fraction)
-{
-	return fraction * fraction * (3.0f - 2.0f * fraction);
-}
-
 static char* FootPrintFileNames[VORTEX_TYPE_LAST] = {
 	".\\data\\textures\\S_VortexBaseMultiRing.raw", //
 	".\\data\\textures\\S_VortexBaseMultiRing.raw", //
@@ -88,16 +84,6 @@ static char* FootPrintAlphaFileNames[VORTEX_TYPE_LAST] = {
 	".\\data\\textures\\S_VortexBaseAlphacopy.raw", //
 	".\\data\\textures\\S_Volcano_Base_Alpha.raw",  //
 };
-
-inline float MapCoords::MapMetersX()
-{
-	return MapX() * MetresPerMapCell;
-}
-
-inline float MapCoords::MapMetersZ()
-{
-	return MapZ() * MetresPerMapCell;
-}
 
 GVortexInfo GVortexInfo::Infos[VORTEX_TYPE_LAST];
 
@@ -160,7 +146,7 @@ bool GVortexInfo::IsAdjustLandscapeHeight() const
 
 LHListHead<LandscapeVortex> LandscapeVortex::Vortices;
 
-static float VortexInnerRadius = VortexRadius - 2.0f;
+static float VortexInnerRadius = VortexRadius - VORTEX_INNER_RADIUS_MARGIN;
 
 GVortexInfo* LandscapeVortex::GetVortexInfo()
 {
@@ -1036,11 +1022,13 @@ float LandscapeVortex::GetFractionFootPrintComplete()
 		{
 			return 0.0f;
 		}
-		return SmoothStep(boundf(0.0f, (time - FootPrintDelay) / FadeTime, 1.0f));
+		float fraction = boundf(0.0f, (time - FootPrintDelay) / FadeTime, 1.0f);
+		return fraction * fraction * (3.0f - 2.0f * fraction);
 	}
 	if (time < FadeTime)
 	{
-		return SmoothStep(1.0f - time / FadeTime);
+		float fraction = 1.0f - time / FadeTime;
+		return fraction * fraction * (3.0f - 2.0f * fraction);
 	}
 	return 0.0f;
 }
@@ -1264,7 +1252,7 @@ void LandscapeVortex::PreLandscapeDraw(bool process)
 		alpha = min(alpha, VORTEX_FOOTPRINT_MAX_ALPHA);
 		if (FootPrintAlphaMaterial != NULL)
 		{
-			FootPrintAlphaMaterial->AlphaReference = (uint8_t)alpha;
+			FootPrintAlphaMaterial->AlphaReference = alpha;
 		}
 	}
 	if (fraction == 0.0f || PreLandscapeParticle == NULL)
@@ -1288,7 +1276,8 @@ void LandscapeVortex::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 	if (GetVortexInfo()->GetVortexType() == VORTEX_TYPE_VOLCANO)
 	{
-		SoundTag::Create(this, LH_SAMPLE_G_VOLCANO_02, false, 2, -1, false, true, AUDIO_SFX_BANK_TYPE_IN_GAME, 0);
+		SoundTag::Create(this, LH_SAMPLE_G_VOLCANO_02, false, LH_SAMPLE_PLAY_TYPE_ONCE, LH_SAMPLE_LOOP_FOREVER, false,
+		                 true, AUDIO_SFX_BANK_TYPE_IN_GAME, 0);
 	}
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, Centre);
 	MobileStatic::CallVirtualFunctionsForCreation(coords);
