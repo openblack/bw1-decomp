@@ -33,7 +33,7 @@
 #include "Interface.h"
 #include "InterfaceStatus.h"
 #include "MPFEStartGameData.h"
-#include "MusicMood.h"
+#include "MusicMoodController.h"
 #include "Player.h"
 #include "PlayerSymbol.h"
 #include "SaveGameRoom.h"
