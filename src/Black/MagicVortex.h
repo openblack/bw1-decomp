@@ -216,8 +216,8 @@ static_assert(sizeof(LandscapeVortex) == 0xec, "LandscapeVortex size is incorrec
 class LandscapeVortexIn : public LandscapeVortex
 {
 public:
-	VortexSave* VortexSaver;                       /* 0xec */
-	uint32_t    field_0xf0[VORTEX_STAT_TYPE_LAST]; /* 0xf0 */
+	VortexSave* VortexSaver;                  /* 0xec */
+	uint32_t    Saved[VORTEX_STAT_TYPE_LAST]; /* 0xf0 */
 
 	// Override methods
 

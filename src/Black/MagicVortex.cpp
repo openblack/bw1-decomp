@@ -105,12 +105,12 @@ GVortexInfo GVortexInfo::Infos[VORTEX_TYPE_LAST];
 GBaseInfo* GVortexInfo::GetBaseInfo(uint32_t& info_count)
 {
 	info_count = VORTEX_TYPE_LAST;
-	return Infos;
+	return GetInfo();
 }
 
 VORTEX_TYPE GVortexInfo::GetVortexType() const
 {
-	return (VORTEX_TYPE)(this - Infos);
+	return (VORTEX_TYPE)(this - GetInfo());
 }
 
 VILLAGER_INFO GVortexInfo::GetVillagerInfoToCreate(TRIBE_TYPE tribe)
@@ -165,7 +165,7 @@ static float VortexInnerRadius = VortexRadius - 2.0f;
 
 GVortexInfo* LandscapeVortex::GetVortexInfo()
 {
-	return &GVortexInfo::Infos[Type];
+	return &GVortexInfo::GetInfo()[Type];
 }
 
 void LandscapeVortex::SetTown(Town* town) {}
@@ -304,7 +304,7 @@ void LandscapeVortexIn::SetToZero()
 	VortexSaver = NULL;
 	for (int i = 0; i < VORTEX_STAT_TYPE_LAST; i++)
 	{
-		field_0xf0[i] = 0;
+		Saved[i] = 0;
 	}
 }
 
@@ -871,7 +871,7 @@ bool32_t LandscapeVortexIn::Save(GameOSFile& file)
 	{
 		file.WritePtr(VortexSaver);
 		file.WriteSafe(reinterpret_cast<PSysBase* const&>(ObjectMoverParticle));
-		file.WriteArray(field_0xf0, VORTEX_STAT_TYPE_LAST);
+		file.WriteArray(Saved, VORTEX_STAT_TYPE_LAST);
 		return true;
 	}
 	return false;
@@ -883,7 +883,7 @@ bool32_t LandscapeVortexIn::Load(GameOSFile& file)
 	{
 		file.ReadPtr((GameThing**)&VortexSaver);
 		file.ReadSafe((PSysBase*&)ObjectMoverParticle);
-		file.ReadArray(field_0xf0);
+		file.ReadArray(Saved);
 		return true;
 	}
 	return false;
@@ -1309,7 +1309,7 @@ void LandscapeVortex::CallVirtualFunctionsForCreation(const MapCoords& coords)
 		if (objectMover != PARTICLE_TYPE_NONE && ObjectMoverParticle == NULL)
 		{
 			ObjectMoverParticle = GJPSysInterface::Create(NULL, objectMover, Centre, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
-			                                              PSysInterface::NET_GAME_TYPE_1);
+			                                              PSysInterface::NET_GAME_TYPE_GAME);
 			if (ObjectMoverParticle != NULL)
 			{
 				ObjectMoverParticle->SetPlayer(GetPlayer());
@@ -1321,19 +1321,19 @@ void LandscapeVortex::CallVirtualFunctionsForCreation(const MapCoords& coords)
 			LHPoint position = Centre;
 			position.y = LH3DIsland::GetAltitude(LH3DMapCoords(position.x, position.z));
 			PreLandscapeParticle = PSysInterface::Create(NULL, preLandscape, position, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
-			                                             PSysInterface::NET_GAME_TYPE_0);
+			                                             PSysInterface::NET_GAME_TYPE_LOCAL);
 		}
 		PARTICLE_TYPE postLandscape = GetVortexInfo()->ParticleTypePostLandscape;
 		if (postLandscape != PARTICLE_TYPE_NONE)
 		{
 			PostLandscapeParticle = PSysInterface::Create(NULL, postLandscape, Centre, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
-			                                              PSysInterface::NET_GAME_TYPE_0);
+			                                              PSysInterface::NET_GAME_TYPE_LOCAL);
 		}
 		PARTICLE_TYPE lightMap = GetVortexInfo()->ParticleTypeLightMap;
 		if (lightMap != PARTICLE_TYPE_NONE)
 		{
 			LightMapParticle = GJPSysInterface::Create(NULL, lightMap, Centre, LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
-			                                           PSysInterface::NET_GAME_TYPE_0);
+			                                           PSysInterface::NET_GAME_TYPE_LOCAL);
 		}
 	}
 	HeightSpline.SetSize(VORTEX_HEIGHT_PROFILE_POINTS);
