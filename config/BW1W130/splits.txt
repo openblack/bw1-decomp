@@ -1650,15 +1650,15 @@ Black/MagicTree.cpp:
 	.text       start:0x00600950 end:0x00600DB0
 	.rdata      start:0x0095A81C end:0x0095A830
 	.CRT$XCU    start:0x00A46EC8 end:0x00A46ED8 align:4
-	.data       start:0x00C7496C end:0x00C74994
-	.bss        start:0x00DB91DC end:0x00DB91F0
+	.data       start:0x00C7496C end:0x00C74A74
+	.bss        start:0x00DB91DC end:0x00DB9208
 
 Black/MagicVortex.cpp:
 	.text       start:0x00600DB0 end:0x00604850
 	.rdata      start:0x0095A830 end:0x0095D5A0
 	.CRT$XCU    start:0x00A46ED8 end:0x00A46EF8 align:4
-	.data       start:0x00C74994 end:0x00C74BE8
-	.bss        start:0x00DB91F0 end:0x00DB92E8
+	.data       start:0x00C74A74 end:0x00C74BE8
+	.bss        start:0x00DB9208 end:0x00DB92E8
 
 Black/MagicWood.cpp:
 	.text       start:0x00604850 end:0x00604AE0

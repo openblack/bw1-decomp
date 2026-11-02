@@ -24,24 +24,4 @@ inline void MapCoords::SetMetersZ(float meters)
 	SetWholeZ((long)(meters * MAP_COORDS_UNITS_PER_CELL / MetresPerMapCell));
 }
 
-inline float MapCoords::MapMetersX()
-{
-	return MapX() * MetresPerMapCell;
-}
-
-inline float MapCoords::MapMetersZ()
-{
-	return MapZ() * MetresPerMapCell;
-}
-
-inline void MapCoords::SetMapMetersX(float x)
-{
-	SetMapX((short)(x / MetresPerMapCell));
-}
-
-inline void MapCoords::SetMapMetersZ(float z)
-{
-	SetMapZ((short)(z / MetresPerMapCell));
-}
-
 #endif /* BW1_DECOMP_MAP_COORDS_METERS_INCLUDED_H */

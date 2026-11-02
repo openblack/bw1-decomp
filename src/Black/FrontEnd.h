@@ -75,14 +75,6 @@ struct FrontEnd
 	void JustDoNewProfileBox();
 	// BW1W120 00544f80 BW1M119 015c0eb0
 	static void JustDoSkirmishGameBox();
-	// BW1W120 0053c0f0 BW1M119 015cb560
-	static void DrawMouse();
-	// BW1W120 0053c470 BW1M119 015cb4b0
-	void SetCursorOff();
-	// BW1W120 0053c480 BW1M119 015cb160
-	static void Close();
-	// BW1W120 inlined BW1M119 010848c0
-	static void SetToolTip(wchar_t* text, unsigned long);
 };
 
 #endif /* BW1_DECOMP_FRONT_END_INCLUDED_H */

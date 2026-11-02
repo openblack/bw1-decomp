@@ -65,7 +65,7 @@ bool32_t PSysManager::Save(GameOSFile& file)
 		SaveIt(file, Magnitude);
 		SaveIt(file, CloseDownAge);
 		SaveSafe(file, OwnerSpell);
-		SaveIt(file, UseGameRand);
+		SaveIt(file, field_0xac);
 		SaveIt(file, field_0xad);
 		SaveSafe(file, field_0xb4);
 		file.WriteSafe(Targets);

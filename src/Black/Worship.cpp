@@ -420,7 +420,7 @@ void WorshipSite::CreateManaPathSprite(const MapCoords& coords, float speed, Gam
 	if (ManaPathPSys == NULL)
 	{
 		ManaPathPSys = PSysInterface::Create(NULL, PARTICLE_TYPE_MANA_PATH, LHPoint(0.0f, 0.0f, 0.0f),
-		                                     LHPoint(0.0f, 0.0f, 0.0f), 1.0f, PSysInterface::NET_GAME_TYPE_LOCAL);
+		                                     LHPoint(0.0f, 0.0f, 0.0f), 1.0f, PSysInterface::NET_GAME_TYPE_0);
 	}
 	GPlayer* player = target->GetPlayer();
 	ManaPathPSys->AddTarget(new (FILEPATH, WORSHIP_LINE(442)) SpellPointInf(

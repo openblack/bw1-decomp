@@ -47,8 +47,6 @@
 #include "GameTimeConstants.h" /* For SecondsPerYear */
 #include "ColourConstants.h"   /* For White */
 
-#include "MapCoordsMeters.h" /* For MapCoords::MapMetersX */
-
 // fabricated: unrecovered counter slots. cl6 orders .bss by a hash of the symbol name, and Draw's
 // sign_texts guard ?$S<n> lands in the original's slot only for some n (246, 251, 252, 256, 262,
 // 305, 306). The headers above declare more static data members than the original's did, so
@@ -122,6 +120,16 @@ static uint32_t UnusedStatic = 0;
 	(0xff000000 | (((colour & 0xff0000) + ((0xff0000 - (colour & 0xff0000)) * 64 >> 8)) & 0xff0000) |                  \
 	 (((colour & 0xff00) + ((0xff00 - (colour & 0xff00)) * 64 >> 8)) & 0xff00) |                                       \
 	 (((colour & 0xff) + ((0xff - (colour & 0xff)) * 64 >> 8)) & 0xff))
+
+inline float MapCoords::MapMetersX()
+{
+	return MapX() * MetresPerMapCell;
+}
+
+inline float MapCoords::MapMetersZ()
+{
+	return MapZ() * MetresPerMapCell;
+}
 
 inline MapCoords::MapCoords(float meters_x, float meters_z)
 {

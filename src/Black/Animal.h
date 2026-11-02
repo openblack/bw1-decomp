@@ -415,8 +415,6 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 00417ba0 BW1M119 01174b90
-	void DeleteDependancys();
 	// BW1W120 0041abb0 BW1M119 01089fb0
 	ANIMAL_BEHAVIOUR_RESULT KeepFlockMemberWithinFlockArea();
 	// BW1W120 0041a690 BW1M119 01006420

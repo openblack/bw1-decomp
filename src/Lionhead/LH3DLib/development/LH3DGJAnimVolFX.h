@@ -79,8 +79,6 @@ public:
 	void Release();
 	// BW1W120 0083f0e0 BW1M119 010cd320 (LHCombined Release)
 	void SetColorSpecular(unsigned long color, unsigned long specular);
-	// BW1W120 0083f100 BW1M119 010cd160 (LHCombined Release)
-	void AddDrawing();
 	// BW1W120 0083f210 BW1M119 010cd090 (LHCombined Release)
 	void Draw();
 	// BW1W120 0083f270 BW1M119 010cd000 (LHCombined Release)
