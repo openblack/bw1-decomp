@@ -433,7 +433,7 @@ class FilesystemTests(unittest.TestCase):
         before = self.baseline.read_bytes()
         with patch.object(regress, "refresh_report") as refresh:
             self.assertEqual(self.invoke("--refresh", "--json")[0], 0)
-        refresh.assert_called_once_with(self.current)
+        refresh.assert_called_once_with(self.current.resolve())
         self.assertEqual(self.baseline.read_bytes(), before)
 
     def test_require_current_rejects_stale_and_missing_inputs_but_does_not_claim_fresh(self):
