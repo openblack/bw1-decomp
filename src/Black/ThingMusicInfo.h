@@ -11,8 +11,6 @@
 #include "GameThing.h" /* For struct GameThing */
 #include "MapCoords.h" /* For struct MapCoords */
 
-// Forward Declares
-
 class Base;
 class GameOSFile;
 class GameThingWithPos;
@@ -23,12 +21,10 @@ public:
 	MUSIC_TYPE        MusicType;
 	GameThingWithPos* Thing;
 	bool32_t          Enabled;
-	bool32_t          Suppressed;
-	bool32_t          Playing;
+	bool32_t          Finished;
+	bool32_t          Started;
 	bool32_t          UseFixedPos;
 	MapCoords         FixedPos;
-
-	// Override methods
 
 	// BW1W120 00429310 BW1M119 01185d50
 	virtual char* GetDebugText();
@@ -39,14 +35,25 @@ public:
 	// BW1W120 00429300 BW1M119 01185d10
 	virtual uint32_t GetSaveType();
 
+	// BW1W120 inlined BW1M119 inlined
+	ThingMusicInfo(MUSIC_TYPE type, GameThingWithPos* thing)
+	{
+		MusicType = type;
+		Thing = thing;
+		Enabled = true;
+		Started = false;
+		Finished = false;
+		UseFixedPos = false;
+	}
+
 	// BW1W120 00561bc0 BW1M119 inlined
 	ThingMusicInfo()
 	{
 		MusicType = MUSIC_TYPE_NONE;
 		Thing = NULL;
 		Enabled = false;
-		Playing = false;
-		Suppressed = false;
+		Started = false;
+		Finished = false;
 		UseFixedPos = false;
 	}
 };
