@@ -91,7 +91,7 @@ uint32_t GScript::GetSubType(GameThingWithPos* thing)
 		subtype = ((MobileObject*)thing)->GetInfo() - GMobileObjectInfo::GetInfo();
 		break;
 	case SCRIPT_OBJECT_TYPE_VORTEX:
-		subtype = ((LandscapeVortex*)thing)->type;
+		subtype = ((LandscapeVortex*)thing)->Type;
 		break;
 	case SCRIPT_OBJECT_TYPE_DEAD_TREE:
 		ScriptErrorMessage("Not implemented");

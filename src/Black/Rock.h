@@ -85,8 +85,10 @@ public:
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 006e6ff0 BW1M119 01146180
 	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
+#ifndef VERSION_BW1WCI
 	// BW1W120 006e7000 BW1M119 01146120
-	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map);
+#endif
 	// BW1W120 00561370 BW1M119 010c7240
 	virtual bool InteractsWithPhysicsObjects() { return true; }
 	// BW1W120 006e7930 BW1M119 01145270
