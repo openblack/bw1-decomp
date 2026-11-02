@@ -66,7 +66,7 @@ bool32_t PSysManager::Load(GameOSFile& file)
 		LoadIt(file, Magnitude);
 		LoadIt(file, CloseDownAge);
 		LoadSafe(file, OwnerSpell);
-		LoadIt(file, UseGameRand);
+		LoadIt(file, field_0xac);
 		LoadIt(file, field_0xad);
 		LoadSafe(file, field_0xb4);
 		file.ReadSafe(Targets);

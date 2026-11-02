@@ -22,8 +22,7 @@ class PSysInterface : public PSysBase
 public:
 	enum NET_GAME_TYPE
 	{
-		NET_GAME_TYPE_LOCAL = 0x0,
-		NET_GAME_TYPE_GAME = 0x1,
+		NET_GAME_TYPE_0 = 0x0,
 	};
 
 	// Override methods

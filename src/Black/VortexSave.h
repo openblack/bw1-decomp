@@ -31,15 +31,6 @@ public:
 
 	// BW1W120 0076f840 BW1M119 011678d0
 	VortexSave();
-	// BW1W120 0076f890 BW1M119 01167720
-	VortexSave(char* file_name, bool read);
-
-	// Non-virtual methods
-
-	// BW1W120 0076fa00 BW1M119 01167560
-	void Push(Object* object, const MapCoords& coords);
-	// BW1W120 0076fa50 BW1M119 01167430
-	bool Pop(const MapCoords& coords, GameThing** thing);
 };
 
 #endif /* BW1_DECOMP_VORTEX_SAVE_INCLUDED_H */
