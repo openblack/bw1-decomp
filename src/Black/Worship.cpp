@@ -1497,7 +1497,7 @@ void WorshipSite::ResolveLoad()
 {
 	Object::ResolveLoad();
 #if defined(VERSION_BW1WCI)
-	CreatureIsleVirtual0x108();
+	SetDiseapearFlag();
 #endif
 }
 

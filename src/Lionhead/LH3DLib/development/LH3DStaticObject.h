@@ -81,6 +81,10 @@ public:
 	virtual void DrawFizz(float amount, LH3DMaterial* material);
 	// BW1W120 00810720 BW1M119 010793d0 (LHCombined Release)
 	virtual void DrawFroz(float froz_amount, unsigned long froz_color, LH3DMaterial* material);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0082d410 BW1MCI119 0107a380 (LHCombined Release)
+	virtual void DrawPlasma(float, float, float, LH3DMaterial* material, LH3DColor colour, float);
+#endif
 	// BW1W120 0080ecb0 BW1M119 0107bc80 (LHCombined Release)
 	virtual void DrawTextureShadow(unsigned long tile_x, unsigned long tile_z) const;
 	// BW1W120 0080ee80 BW1M119 0107ba60 (LHCombined Release)

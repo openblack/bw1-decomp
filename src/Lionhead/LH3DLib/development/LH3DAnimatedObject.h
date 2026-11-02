@@ -91,6 +91,10 @@ public:
 	virtual void DrawNormals() const;
 	// BW1W120 00817930 BW1M119 01070c60 (LHCombined Release)
 	virtual void DrawFroz(float froz_amount, unsigned long froz_color, LH3DMaterial* material);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00834b10 BW1MCI119 010718b0 (LHCombined Release)
+	virtual void DrawPlasma(float, float, float, LH3DMaterial* material, LH3DColor colour, float);
+#endif
 	// BW1W120 00813190 BW1M119 01077b80 (LHCombined Release)
 	virtual void __fastcall DrawIntoSprite(void* sprite_data);
 	// BW1W120 008185c0 BW1M119 01033d60 (LHCombined Release)

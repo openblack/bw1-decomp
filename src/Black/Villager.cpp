@@ -1672,7 +1672,7 @@ uint32_t Villager::CallEntryStateFunction(uint8_t current, uint8_t destination)
 	return false;
 }
 
-bool Villager::IsStateEntryFunctionSameAs(unsigned long state_a, unsigned long state_b) const
+bool32_t Villager::IsStateEntryFunctionSameAs(unsigned long state_a, unsigned long state_b) const
 {
 	return VillagerStateTableEntry::StateTable[state_a].EntryState ==
 	       VillagerStateTableEntry::StateTable[state_b].EntryState;

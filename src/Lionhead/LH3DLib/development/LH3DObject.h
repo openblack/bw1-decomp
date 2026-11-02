@@ -429,8 +429,8 @@ public:
 	// BW1W120 00815780 BW1M119 010747b0 (LHCombined Release)
 	virtual void DrawFroz(float froz_amount, unsigned long froz_color, LH3DMaterial* material);
 #ifdef VERSION_BW1WCI
-	virtual void CreatureIsleVirtual0x164(uint32_t param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4,
-	                                      uint32_t param_5, uint32_t param_6);
+	// BW1WCI 00832940 BW1MCI119 01074960 (LHCombined Release)
+	virtual void DrawPlasma(float, float, float, LH3DMaterial* material, LH3DColor colour, float);
 #endif
 	// BW1W120 008158e0 BW1M119 01074210 (LHCombined Release)
 	virtual void DrawTextureShadow(unsigned long tile_x, unsigned long tile_z) const;

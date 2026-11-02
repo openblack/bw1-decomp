@@ -76,6 +76,10 @@ public:
 	virtual void DrawFizz();
 	// BW1W120 00815770 BW1M119 010747f0 (LHCombined Release)
 	virtual void DrawFroz();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00831050 BW1MCI119 010766d0 (LHCombined Release)
+	virtual void DrawPlasma(float, float, float, LH3DMaterial* material, LH3DColor colour, float);
+#endif
 	// BW1W120 00814e80 BW1M119 01075250 (LHCombined Release)
 	virtual void DrawForMouse();
 	// BW1W120 00811950 BW1M119 01078a50 (LHCombined Release)

@@ -784,7 +784,7 @@ bool Object::InteractsWithPhysicsObjects()
 void Object::ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage) {}
 
 #ifdef VERSION_BW1WCI
-void Object::CreatureIsleVirtual0x7f0() {}
+void Object::ReactToPhysicsImpactWithGround() {}
 #endif
 
 bool Object::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* object)
@@ -1947,7 +1947,7 @@ void Object::ResolveLoad()
 	}
 	Flags &= ~(GAME_THING_WITH_POS_FLAG_INTERACTING | GAME_THING_WITH_POS_FLAG_LOCKED_SELECT);
 #ifdef VERSION_BW1WCI
-	CreatureIsleVirtual0x108();
+	SetDiseapearFlag();
 #endif
 }
 
@@ -2283,7 +2283,7 @@ void Object::DestroyedByBeam()
 }
 
 #ifdef VERSION_BW1WCI
-void Object::CreatureIsleVirtual0x108()
+void Object::SetDiseapearFlag()
 {
 	if ((GameThing::Flags & GAME_THING_FLAG_REAPPEARED) && Game3dObject != NULL)
 	{
