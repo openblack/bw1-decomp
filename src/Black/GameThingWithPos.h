@@ -33,6 +33,7 @@ class GameOSFile;
 struct LHPoint;
 class Living;
 class Object;
+class PileResource;
 class Reaction;
 class SpellShield;
 class WorshipSite;
@@ -171,11 +172,11 @@ public:
 	virtual void SetHeight(float height) {}
 #ifdef VERSION_BW1WCI
 	// BW1WCI 004019e0 BW1MCI119 010a9980
-	virtual void CreatureIsleVirtual0x158(uint32_t param_1) {}
+	virtual void Set2DRadius(float radius) {}
 	// BW1WCI 004019f0 BW1MCI119 010eaee0
-	virtual void CreatureIsleVirtual0x15c(uint32_t param_1) {}
+	virtual void SetDensity(float density) {}
 	// BW1WCI 00401a00 BW1MCI119 013b9100
-	virtual float CreatureIsleVirtual0x160() { return 1.0f; }
+	virtual float GetDensity() { return 1.0f; }
 #endif
 	// BW1W120 004019c0 BW1M119 01568be0
 	virtual void SetMaxHeight(float height) {}
@@ -248,7 +249,7 @@ public:
 	virtual bool32_t IsTownBelongingToAnotherPlayer(Creature* creature) { return false; }
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00401af0 BW1MCI119 0139a220
-	virtual bool32_t CreatureIsleVirtual0x1ec(uint32_t param_1) { return false; }
+	virtual bool32_t IsCreatureICanCurrentlyBeFriendlyTo(Creature* creature) { return false; }
 #endif
 	// BW1W120 00401aa0 BW1M119 014ae2b0
 	virtual bool32_t TrueFunction() { return true; }
@@ -540,7 +541,7 @@ public:
 	virtual bool32_t IsActive() const { return false; }
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00402250 BW1MCI119 01417d00
-	virtual bool32_t CreatureIsleVirtual0x430() { return false; }
+	virtual bool32_t IsCannonAmmo() const { return false; }
 #endif
 	// BW1W120 004021f0 BW1M119 010b9410
 	virtual bool32_t IsObjectTurningTooFastForCameraToFollowSmoothly() { return false; }
@@ -627,7 +628,7 @@ public:
 	virtual bool32_t IsScaffold() { return false; }
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00402460 BW1MCI119 01118540
-	virtual bool32_t CreatureIsleVirtual0x4c4() { return false; }
+	virtual bool32_t IsBalista() { return false; }
 #endif
 	// BW1W120 004023f0 BW1M119 01568cf0
 	virtual bool32_t IsSkeleton() const { return false; }
@@ -645,13 +646,13 @@ public:
 	virtual bool32_t IsComputerPlayer() { return false; }
 #ifdef VERSION_BW1WCI
 	// BW1WCI 004024e0 BW1MCI119 010d1ac0
-	virtual bool CreatureIsleVirtual0x4e4() { return false; }
+	virtual bool IsCannon() { return false; }
 	// BW1WCI 004024f0 BW1MCI119 010d1900
-	virtual bool CreatureIsleVirtual0x4e8() { return false; }
+	virtual bool IsDolphin() { return false; }
 	// BW1WCI 00402500 BW1MCI119 01152d00
-	virtual bool CreatureIsleVirtual0x4ec() { return false; }
+	virtual bool IsScriptDolphin() { return false; }
 	// BW1WCI 00402510 BW1MCI119 013afc00
-	virtual bool CreatureIsleVirtual0x4f0() { return false; }
+	virtual bool IsImmuneToSpells() { return false; }
 #endif
 	// BW1W120 005701c0 BW1M119 01381500
 	virtual bool32_t CanBeThrownByPlayer();
@@ -659,19 +660,19 @@ public:
 	virtual void SetSkeleton(bool32_t skeleton) {}
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00402530 BW1MCI119 013afdc0
-	virtual void CreatureIsleVirtual0x4fc(uint32_t param_1) {}
+	virtual void SetImmuneToSpells(bool immune) {}
 #endif
 	// BW1W120 00402470 BW1M119 0107d710
 	virtual bool32_t IsSpellSeed() { return false; }
 	// BW1W120 00402480 BW1M119 010a7c40
 	virtual SpellShield* IsSpellShield() { return NULL; }
 	// BW1W120 00402490 BW1M119 010a6f40
-	virtual bool32_t IsPileResource() { return false; }
+	virtual PileResource* IsPileResource() { return NULL; }
 	// BW1W120 004024a0 BW1M119 013f97d0
 	virtual bool32_t IsScriptTimer() { return false; }
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00402580 BW1MCI119 014c7840
-	virtual bool32_t CreatureIsleVirtual0x510() { return false; }
+	virtual bool32_t IsDice() { return false; }
 #endif
 	// BW1W120 004178e0 BW1M119 013e3d40
 	virtual BuildingSite* CreateBuildingSite() { return NULL; }

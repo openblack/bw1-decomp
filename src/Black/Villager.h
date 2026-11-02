@@ -825,7 +825,7 @@ public:
 	// BW1W120 007522c0 BW1M119 015752a0
 	bool32_t IsAvailableToBeSummonedByCreature();
 	// BW1W120 007524d0 BW1M119 0109f200
-	bool IsStateEntryFunctionSameAs(unsigned long state_a, unsigned long state_b) const;
+	bool32_t IsStateEntryFunctionSameAs(unsigned long state_a, unsigned long state_b) const;
 	// BW1W120 007525b0 BW1M119 01574fa0
 	static bool32_t IsReactiveState(unsigned long state);
 	// BW1W120 007525d0 BW1M119 01574f20

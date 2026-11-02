@@ -1215,7 +1215,7 @@ void AtomCollection::ResolveLoad()
 		node->payload->AddReference(this);
 	}
 #if defined(VERSION_BW1WCI)
-	CreatureIsleVirtual0x108();
+	SetDiseapearFlag();
 #endif
 }
 
@@ -1226,7 +1226,7 @@ void Particle3DObj::ResolveLoad()
 		Object3D = Creator->CreateLH3DObject();
 	}
 #if defined(VERSION_BW1WCI)
-	CreatureIsleVirtual0x108();
+	SetDiseapearFlag();
 #endif
 }
 

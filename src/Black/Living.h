@@ -614,8 +614,12 @@ public:
 	// BW1W120 005ec340 BW1M119 0138adf0
 	virtual void MoveByTeleport(const MapCoords& param_1);
 #ifdef VERSION_BW1WCI
+	// BW1WCI 00417b00 BW1MCI119 0114beb0
+	virtual bool IsImmuneToSpells();
+	// BW1WCI 00417b10 BW1MCI119 0114bf00
+	virtual void SetImmuneToSpells(bool immune);
 	// BW1WCI 0047e180 BW1MCI119 01202cb0
-	virtual bool32_t CreatureIsleVirtual0xb54(uint32_t param_1, uint32_t param_2) { return false; }
+	virtual bool32_t IsStateEntryFunctionSameAs(unsigned long state, unsigned long other_state) const { return false; }
 #endif
 	// BW1W120 00417270 BW1M119 01139210
 	virtual bool32_t IsDead();

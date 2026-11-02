@@ -298,6 +298,7 @@ class GFootpathLink;
 class GInterfaceStatus;
 class GPlayer;
 class GameOSFile;
+struct LH3DColor;
 class Living;
 struct MapCoords;
 class MultiMapFixed;
@@ -357,7 +358,7 @@ public:
 	virtual bool32_t IsCreature(Creature* creature) { return false; }
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00401830 BW1MCI119 011badb0
-	virtual bool32_t CreatureIsleVirtual0x38(uint32_t param_1) { return false; }
+	virtual bool32_t IsCreatureNotFighting(Creature* creature) { return false; }
 #endif
 	// BW1W120 00401840 BW1M119 01480930
 	virtual bool32_t IsCreatureNotTooNear(Creature* creature) { return false; }
@@ -371,7 +372,7 @@ public:
 	virtual Town* GetTown();
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00401870 BW1MCI119 010c7a60
-	virtual bool CreatureIsleVirtual0x50() { return false; }
+	virtual bool IsInvisible() { return false; }
 #endif
 	// BW1W120 00401870 BW1M119 01575490
 	virtual float GetVillagerActivityDesire(Villager* villager) { return 0.0f; }
@@ -389,7 +390,7 @@ public:
 	virtual float Get2DRadius();
 #ifdef VERSION_BW1WCI
 	// BW1WCI 004018b0 BW1MCI119 011e4d30
-	virtual void CreatureIsleVirtual0x70(uint32_t param_1) {}
+	virtual void SetColour(LH3DColor& colour) {}
 #endif
 	// BW1W120 004018a0 BW1M119 01187f90
 	virtual GPlayer* GetPlayerWhoLastPickedMeUp() { return NULL; }
@@ -468,7 +469,7 @@ public:
 	virtual void ResolveLoad();
 #ifdef VERSION_BW1WCI
 	// BW1WCI 004051f0 BW1MCI119 010dcb70
-	virtual void CreatureIsleVirtual0x108();
+	virtual void SetDiseapearFlag();
 #endif
 
 	// Static methods

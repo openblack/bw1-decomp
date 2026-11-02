@@ -147,7 +147,7 @@ public:
 	virtual void ResolveLoad();
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00650b80 BW1MCI119 014008a0
-	virtual void CreatureIsleVirtual0x108();
+	virtual void SetDiseapearFlag();
 #endif
 	// BW1W120 00639200 BW1M119 013dbbd0
 	virtual void SetScale(float scale);
@@ -583,7 +583,7 @@ public:
 	virtual void ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 0064d810 BW1MCI119 01407af0
-	virtual void CreatureIsleVirtual0x7f0();
+	virtual void ReactToPhysicsImpactWithGround();
 #endif
 	// BW1W120 006377e0 BW1M119 013decf0
 	virtual bool32_t CanBecomeAPhysicsObject();
@@ -694,7 +694,7 @@ public:
 	virtual uint32_t StandAnimation() { return ANM_INVALID; }
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00402c40 BW1MCI119 010b3ca0
-	virtual void CreatureIsleVirtual0x89c(uint32_t param_1) {}
+	virtual void RaiseTotem(long) {}
 #endif
 	// BW1W120 00419b30 BW1M119 0109ea50
 	virtual NewCollide* GetCollideData() { return NULL; }

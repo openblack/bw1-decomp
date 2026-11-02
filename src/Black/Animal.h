@@ -97,10 +97,6 @@ public:
 	// Override methods
 
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00417b00 BW1MCI119 0114beb0
-	virtual bool CreatureIsleVirtual0x4f0();
-	// BW1WCI 00417b10 BW1MCI119 0114bf00
-	virtual void CreatureIsleVirtual0x4fc(uint32_t flag);
 	// BW1WCI 00417a40 BW1MCI119 010073a0
 	virtual int GetSpeed() const;
 	// BW1WCI 00418030 BW1MCI119 0114aa10
@@ -112,7 +108,7 @@ public:
 	// BW1WCI 00418060 BW1MCI119 0114aad0
 	virtual void SetScriptULData2(unsigned long data);
 	// BW1WCI 0041c8f0 BW1MCI119 011826a0
-	virtual bool32_t CreatureIsleVirtual0xb54(uint32_t state, uint32_t other_state);
+	virtual bool32_t IsStateEntryFunctionSameAs(unsigned long state, unsigned long other_state) const;
 #endif
 	// BW1W120 0041a9f0 BW1M119 0116f250
 	virtual bool32_t MoveInFlock();
