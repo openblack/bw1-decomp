@@ -94,7 +94,7 @@ class CommandTests(Fixture):
         self.assertEqual(verify.stale_pchs([a], self.root, lambda p: ['src/other.h']), [])
 
     def test_precompiled_header_lookup_preserves_ninja_target_case(self):
-        target = 'build/BW1W120/src/Black/BlackPCH.pch'
+        target = 'build/Version/src/Black/BlackPCH.pch'
         with patch.object(verify.os.path, 'normcase', side_effect=lambda value: value.lower()):
             edge = self.edge('a', flags='/YuBlackPCH.h /Fp' + target)
         # Both codegen-check and pch_reads derive a Ninja target from this path.
