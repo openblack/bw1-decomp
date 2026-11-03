@@ -29,6 +29,15 @@ public:
 
 	// BW1W120 0062e580 BW1M119 013aca60
 	MPFEDownloads();
+
+	// Non-virtual methods
+
+	// Inliner IL size: 23
+	// BW1W120 inlined BW1M119 inlined
+	bool IsDownloading() { return Downloading; }
+	// Inliner IL size: 23
+	// BW1W120 inlined BW1M119 inlined
+	unsigned long GetCurrentFileNumber() { return FileNumber; }
 };
 
 static_assert(sizeof(MPFEDownloads) == 0x280, "MPFEDownloads size is incorrect");

@@ -1185,7 +1185,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFEKickMessageRequest.cpp"),
             GameCodeObject(NonMatching, "Black/MPFELogin.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEMapErrorMessage.cpp"),
-            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "Black/MPFEMapMessages.cpp"),
+            GameCodeObject(Matching, "Black/MPFEMapMessages.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/MPFEMessageObject.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEPlayerDetails.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEPrivateChatMessage.cpp"),

@@ -110,9 +110,9 @@ void MPFEChangedMapMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDetails*
 	MPFEData::Data.D2A_RefreshTeams();
 	if (mapID > 0)
 	{
-		if (MPFEData::Data.MapDownload.Downloading)
+		if (MPFEData::Data.MapDownload.IsDownloading())
 		{
-			if (MPFEData::Data.MapDownload.FileNumber != mapID)
+			if (MPFEData::Data.MapDownload.GetCurrentFileNumber() != mapID)
 			{
 				MPFEData::Data.MapDownload.Stop();
 				MPFEData::Data.MapDownload.GetFileNumber(mapID);
