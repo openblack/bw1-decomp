@@ -9,12 +9,7 @@
 
 struct MPFEPlayerDetails
 {
-	enum
-	{
-		NAME_SIZE = 0x80
-	};
-
-	wchar_t       Name[NAME_SIZE];
+	wchar_t       Name[0x80];
 	bool          IsHost;       /* 0x100 */
 	int           PlayerNumber; /* 0x104 */
 	LH_USER_ID    ID;           /* 0x108 */
@@ -38,8 +33,6 @@ struct MPFEPlayerDetails
 	uint8_t    field_0x122[0x6];
 	LH_USER_ID DatabaseID; /* 0x128 */
 #endif
-
-	// Non-virtual methods
 
 	// BW1W120 00632670 BW1M119 013b08f0
 	wchar_t* GetName();

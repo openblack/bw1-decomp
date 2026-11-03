@@ -360,7 +360,7 @@ void BWGameSpy::PlayerKickedCallback(PEER peer, RoomType roomType, const char* n
 {
 #ifndef VERSION_BW1W100
 	LH_USER_ID id;
-	wchar_t    name[MPFEPlayerDetails::NAME_SIZE * 2];
+	wchar_t    name[0x100];
 	GetLHUIDFromIRCNick(nick, &id);
 	wcscpy(name, MPFEData::Data.GetPlayerDetailsFromDatabaseID(id)->GetName());
 	MPFEData::Data.A2D_LeaveGameChannel();

@@ -6,13 +6,13 @@
 
 struct LandscapeDetails
 {
-	char          Name[0xc8];
-	char          FileName[0xc8];      /* 0xc8 */
-	char          ServerAddress[0xc8]; /* 0x190 */
-	char          ServerPath[0xc8];    /* 0x258 */
-	unsigned long NumTeams;            /* 0x320 */
-	unsigned long ID;                  /* 0x324 */
-	bool          ThumbnailOnDisk;     /* 0x328 */
+	char          Name[200];
+	char          FileName[200];      /* 0xc8 */
+	char          ServerAddress[200]; /* 0x190 */
+	char          ServerPath[200];    /* 0x258 */
+	unsigned long NumTeams;           /* 0x320 */
+	unsigned long ID;                 /* 0x324 */
+	bool          ThumbnailOnDisk;    /* 0x328 */
 	bool          MapOnDisk;
 	bool          FromDatabase;
 };
