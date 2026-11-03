@@ -4349,6 +4349,9 @@ Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp:
 	.data       start:0x00C394E4 end:0x00C39544
 	.bss        start:0x00F063C0 end:0x00FA23E0
 
+Lionhead/LH3DLib/development/LH3DBoundingBox.cpp:
+	.text       start:0x00868C80 end:0x00868FC0
+
 Lionhead/LHLib/ver5.0/RPAvoid.cpp:
 	.text       start:0x00868FC0 end:0x00869600
 	.rdata      start:0x009A3BC8 end:0x009A3BD0
