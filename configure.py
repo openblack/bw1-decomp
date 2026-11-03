@@ -1836,6 +1836,7 @@ config.libs = [
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DSubMesh.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/SRTextured.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DEye.cpp", pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DVB.cpp", pch=True),
 
             GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "GameSpy/Peer/peerMain.c", progress_category="sdk"),
             GameSpyObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/gcdkey/gcdkeyc.c", progress_category="sdk"),
