@@ -4,6 +4,21 @@ Read before cleanup, final validation, or preparing public artifacts. Use curren
 
 The build and matching checks below apply to decompiled code and build/configuration changes. For a documentation-only contribution, validate the instructions, referenced paths, examples, and applicable documentation checks; do not claim new binary verification or rebuild the game merely to check prose.
 
+## Pre-PR skill and extern checks
+
+For decompilation contributions, this guide requires an explicit completion pass through the following checks before publication. A matching score does not replace them. Use the checkout's current skills and `AGENTS.md`; reading a skill is preparation, not a completed check.
+
+| Check | Required outcome |
+| --- | --- |
+| `.claude/skills/minmax-macros/SKILL.md` | Scan the affected source and relevant helpers with `tools/minmax-scan.py`. Verify candidate rewrites with the original compiler; keep only supported, matching forms. Record no candidates or a verified reason to retain an existing form when appropriate. |
+| `.claude/skills/inline-budget-matching/SKILL.md` | Perform its initial diff/call-set classification for the recovered functions and relevant helpers. Confirm the call/inlining patterns agree, or follow the bounded procedure for the observed mismatch. Exact agreement is a valid completion result; do not start budget experiments merely to tick a box. |
+| `.claude/skills/version-backport/SKILL.md` | Inspect the selected unit in every version required by current repository policy. Port the justified new names and necessary metadata, not just the C++ source, following [version-checks.md](version-checks.md). Re-split and verify the committed mappings. |
+| Global ownership / `extern` | Search the affected source and headers for `extern` declarations, including existing ones relied on by the recovered code. Follow `AGENTS.md`'s Globals rules: establish the owner and use its proper declaration, rather than a convenient TU-local stand-in. Distinguish linkage specifications such as `extern "C"` and the documented, evidence-backed free-global exception from ownership shortcuts. |
+
+Keep a short local record for each check: scope, command or original evidence inspected, outcome, and any unresolved item. An applicability conclusion must explain what was checked; bare "N/A" or "skill loaded" is insufficient. Missing tools or reference inputs are explicit incomplete checks. Do not widen the PR to unrelated cleanup or force speculative transformations to make every row produce a change.
+
+Do this before final formatting and consumer/version verification, since these passes may change code or headers. After later edits, repeat the affected checks. Summarize meaningful results and unresolved limitations in the PR without copying the full investigation log. This completion pass adds no authorization to publish or contact reviewers.
+
 ## Preserve the comparisons that answer different questions
 
 Before edits, run `ninja baseline` and preserve that baseline. For the actively investigated unit, capture a strict rich snapshot with `tools/decomp-regress.py --unit <unit> --strict --snapshot <path>`. Record revision, input set, compiler/configuration, and any existing work included. Keep detailed investigation notes outside the repository.
