@@ -3891,6 +3891,9 @@ Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.CRT$XCU    start:0x009B75E8 end:0x009B75F0 align:4
 	.bss        start:0x00F93B8C end:0x00F93B9C
 
+Lionhead/LH3DLib/development/LH3DSRAMTex.cpp:
+	.text       start:0x00860000 end:0x00860FC0
+
 Lionhead/LH3DLib/development/LH3DLandscape.cpp:
 	.text       start:0x00860FC0 end:0x00864250
 	.rdata      start:0x00993B0C end:0x00993B10
