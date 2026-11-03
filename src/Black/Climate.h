@@ -78,6 +78,16 @@ public:
 
 	// BW1W120 0055de80 BW1M119 inlined
 	GClimate() {}
+	// BW1W120 007715b0 BW1M119 010675f0
+	static float GetSnow(const LHPoint& pos);
+	// BW1W120 007714f0 BW1M119 010843b0
+	static bool IsSnowing(const LHPoint& pos);
+	// BW1W120 00771a80 BW1M119 01084450
+	static float GetTemp(const LHPoint* pos);
+	// BW1W120 00771570 BW1M119 0108e620
+	static float GetRain(const LHPoint& pos);
+	// BW1W120 00772e00 BW1M119 015a7540
+	void CreateStorm();
 };
 
 #endif /* BW1_DECOMP_CLIMATE_INCLUDED_H */

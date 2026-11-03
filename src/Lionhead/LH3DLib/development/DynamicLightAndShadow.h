@@ -36,6 +36,17 @@ public:
 	// BW1W120 0086cff0 BW1M119 010203a0 (LHCombined Release)
 	static void __fastcall AddLight(LHPoint* pos, uint8_t* map, long size, bool32_t centred, float intensity,
 	                                LightType type, bool32_t interpolate);
+	// BW1W120 0086cf50 BW1M119 01020480 (LHCombined Release)
+	static void __fastcall FillStoreInfo(StoreInfo* info, LHPoint* pos, uint8_t* map, long size, bool32_t centred,
+	                                     float intensity, LightType type, bool32_t interpolate);
+	// BW1W120 0086d060 BW1M119 0103ba10 (LHCombined Release)
+	static void __fastcall Draw(StoreInfo* info);
+	// BW1W120 0086d360 BW1M119 0103bdf0 (LHCombined Release)
+	static void Draw();
+	// BW1W120 0086d390 BW1M119 0103b830 (LHCombined Release)
+	static void __fastcall Clear(StoreInfo* info);
+	// BW1W120 0086d460 BW1M119 0103b790 (LHCombined Release)
+	static void Clear();
 };
 
 #endif /* BW1_DECOMP_DYNAMIC_LIGHT_AND_SHADOW_INCLUDED_H */

@@ -59,6 +59,10 @@ public:
 	float GetBeliefInPlayerCap(GPlayer* player);
 	// BW1W120 00438b20 BW1M119 010b3bd0
 	float GetPercentCloseOtherPlayer(GPlayer* player);
+	// BW1W120 00438800 BW1M119 010a0330
+	void DrawBelief(float scale, GameThingWithPos* thing, GPlayer* player);
+	// BW1W120 00437fd0 BW1M119 010b46f0
+	void ReduceBelief(GPlayer* player, Town* town, float amount);
 };
 
 #endif /* BW1_DECOMP_BELIEF_INCLUDED_H */

@@ -12,6 +12,9 @@
 
 // Forward Declares
 
+class Particle3DSprite;
+class RenderParticleMist;
+class ParticleLightMap;
 class AtomCore;
 class Chain;
 class FloatProvider;
@@ -295,6 +298,8 @@ public:
 	bool        IsShadowMap;
 	bool        LoadLightMap;
 	bool        TakeRatioFromMatrix;
+	// BW1W120 006aa610 BW1M119 01444450
+	RenderParticleMist* CreateParticleMist(AtomCore* core);
 };
 static_assert(sizeof(ParticleMistCreator) == 0x7c, "Data type is of wrong size");
 
@@ -424,6 +429,8 @@ public:
 	bool        IgnoreRotation;
 	uint8_t     field_0x82;
 	uint8_t     field_0x83;
+	// BW1W120 006aa0d0 BW1M119 0101e9f0
+	Particle3DSprite* CreateParticle3DSprite(AtomCore* core);
 };
 static_assert(sizeof(ParticleSpriteCreator) == 0x84, "Data type is of wrong size");
 
@@ -477,6 +484,8 @@ public:
 	uint8_t     field_0x7f;
 	float       ShiftX;
 	float       ShiftZ;
+	// BW1W120 006a9d80 BW1M119 014459d0
+	ParticleLightMap* CreateParticleLightMap(AtomCore* core);
 };
 static_assert(sizeof(ParticleLightMapCreator) == 0x88, "Data type is of wrong size");
 

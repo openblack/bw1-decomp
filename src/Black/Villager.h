@@ -1748,10 +1748,12 @@ public:
 	bool32_t SetupNewScriptWander();
 	// BW1W120 007687f0 BW1M119 0159e440
 	bool32_t ScriptWanderAroundPos();
+#ifndef VERSION_BW1WCI
 	// BW1W120 00768970 BW1M119 01005e50
 	bool32_t ScriptPlayAnim();
 	// BW1W120 007689d0 BW1M119 0100cac0
 	bool32_t IsScriptAnimationComplete();
+#endif
 	// BW1W120 00768a00 BW1M119 0159dfa0
 	uint32_t ScriptAnimation();
 	// BW1W120 00768a10 BW1M119 0159df60

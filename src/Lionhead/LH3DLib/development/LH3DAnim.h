@@ -49,6 +49,10 @@ struct LH3DAnimSet
 
 	// BW1W120 00619b80 BW1M119 0110f440
 	uint32_t ReadBinaryNew(LHFile* param_2, AnimInfo* param_3, AnimInfo* param_4);
+	// BW1W120 006199f0 BW1M119 0110f640
+	uint32_t ReadBinaryOld(LHFile* file, AnimInfo* info, AnimInfo* other_info);
+	// BW1W120 00619c90 BW1M119 0110f2a0
+	void WriteBinary(LHFile* file, long count, CAnim* anim);
 };
 
 struct CatInfo

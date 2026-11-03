@@ -689,6 +689,8 @@ public:
 #ifdef VERSION_BW1WCI
 	// BW1WCI 006064d0 BW1MCI119 013ac560
 	bool32_t ScriptPlayAnim();
+	// BW1WCI 00606470 BW1MCI119 013ac820
+	bool32_t IsScriptAnimationComplete();
 #endif
 	// BW1W120 005ec270 BW1M119 0104f900
 	int MoveToPos();

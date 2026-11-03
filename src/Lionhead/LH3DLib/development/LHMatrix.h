@@ -135,6 +135,23 @@ struct LHMatrix
 		m[7] *= z;
 		m[8] *= z;
 	}
+	// Inliner IL size: 138
+	// BW1W120 inlined BW1M119 inlined
+	void PostScale(float scale)
+	{
+		m[0] *= scale;
+		m[3] *= scale;
+		m[6] *= scale;
+		m[9] *= scale;
+		m[1] *= scale;
+		m[4] *= scale;
+		m[7] *= scale;
+		m[10] *= scale;
+		m[2] *= scale;
+		m[5] *= scale;
+		m[8] *= scale;
+		m[11] *= scale;
+	}
 	// Inliner IL size: 81, plus the nested SetIdentity
 	// BW1W120 inlined BW1M119 inlined
 	void SetRotationY(float angle)
@@ -325,8 +342,8 @@ struct LHMatrix
 	void SetInverse();
 	// BW1W120 007faff0 BW1M119 01028040 (LHCombined Release)
 	void __fastcall PostMultiply(const LHMatrix& r);
-	// BW1W120 inlined BW1M119 inlined
-	void Set(const LHMatrix& r)
+	// BW1W120 005feda0 BW1M119 inlined
+	void __fastcall Set(const LHMatrix& r)
 	{
 		m[0] = r.m[0];
 		m[1] = r.m[1];

@@ -62,6 +62,8 @@ public:
 	virtual void DefineProperties(PropertyList* list);
 
 	LHLinkedList<Persistent*> Objects;
+	// BW1W120 006723b0 BW1M119 013e6490
+	void Clear();
 };
 static_assert(sizeof(PersistentOwner) == 0x14, "Data type is of wrong size");
 

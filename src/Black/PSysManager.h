@@ -54,7 +54,7 @@ public:
 	float                         Magnitude;
 	float                         CloseDownAge;
 	GameThing*                    OwnerSpell;
-	bool                          field_0xac;
+	bool                          UseGameRand;
 	bool                          field_0xad;
 	uint8_t                       field_0xae;
 	uint8_t                       field_0xaf;

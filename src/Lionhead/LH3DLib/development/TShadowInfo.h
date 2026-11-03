@@ -68,6 +68,10 @@ struct TShadowInfo
 	float __fastcall CalcShadowUV_Clipping(LHPoint& point, float& u, float& v);
 	// BW1W120 00880800 BW1M119 010adff0 (LHCombined Release)
 	void CalcShadowUV_World(LHPoint& point, float* u, float* v, float* depth);
+	// BW1W120 00880390 BW1M119 010ae7f0 (LHCombined Release)
+	long CalcShadow_Clipping(LHPoint& point);
+	// BW1W120 008805b0 BW1M119 010ae5b0 (LHCombined Release)
+	long CalcShadow_World(LHPoint& point);
 	// BW1W120 00880fc0 BW1M119 0100c350 (LHCombined Release)
 	void __fastcall renderbuffer(uint16_t* buffer, long pitch);
 };

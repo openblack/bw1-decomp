@@ -33,6 +33,14 @@ public:
 	                                      int param_5);
 	// BW1W120 005cd630 BW1M119 010674f0
 	static GPlayer* CalculateMostInfluentialPlayer(const MapCoords& pos, float* influence);
+	// BW1W120 005cd560 BW1M119 01043990
+	static float CalculateInfluenceOnRange(float, float, int);
+	// BW1W120 005cd230 BW1M119 010461a0
+	static float CalculatePlayerRawInfluence(const MapCoords& coords, GPlayer* player, int);
+	// BW1W120 005cd490 BW1M119 010466f0
+	static bool32_t IsInAntiInfluence(const MapCoords& coords, GPlayer* player);
+	// BW1W120 005cd460 BW1M119 01069830
+	static bool32_t IsInPlayerRawInfluence(const MapCoords& coords, GPlayer* player);
 };
 
 class InfluenceRing : public GameThingWithPos
@@ -86,6 +94,8 @@ public:
 	InfluenceRing(const MapCoords& coords, GPlayer* player, float radius, int anti);
 	// BW1W120 005cd800 BW1M119 01105fd0
 	InfluenceRing(GameThingWithPos* thing, GPlayer* player, float radius, int anti);
+	// BW1W120 005cd900 BW1M119 01046830
+	float CalculateInfluence(const MapCoords& coords, GPlayer* player, int);
 };
 
 #endif /* BW1_DECOMP_INFLUENCE_INCLUDED_H */

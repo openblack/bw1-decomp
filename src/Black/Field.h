@@ -212,6 +212,8 @@ public:
 	float RemoveFood(float param_1);
 	// BW1W120 00529700 BW1M119 010d7c10
 	float GetFoodValue();
+	// BW1W120 005298d0 BW1M119 01097400
+	bool32_t IsUnripe();
 };
 
 #endif /* BW1_DECOMP_FIELD_INCLUDED_H */
