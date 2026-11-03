@@ -4,11 +4,11 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LH3DMeshIntersect.h> /* For struct TextureRef */
-#include <Lionhead/LH3DLib/development/LHPoint.h>           /* For struct LHPoint */
-#include <Lionhead/LH3DLib/development/Zoomer.h>            /* For struct Zoomer3d */
-#include <chlasm/SoundAction.h>                             /* For enum LHSoundAction */
-#include <re_common.h>                                      /* For bool32_t */
+#include <Lionhead/LH3DLib/development/MeshIntersect.h> /* For struct TextureRef */
+#include <Lionhead/LH3DLib/development/LHPoint.h>       /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/Zoomer.h>        /* For struct Zoomer3d */
+#include <chlasm/SoundAction.h>                         /* For enum LHSoundAction */
+#include <re_common.h>                                  /* For bool32_t */
 
 #include "Morphable.h" /* For struct Morphable */
 
@@ -16,6 +16,7 @@
 
 class Archive;
 struct CameraExclusion;
+struct CollideBox;
 struct HandGlows;
 class LH_AudioBank;
 struct LH3DMesh;

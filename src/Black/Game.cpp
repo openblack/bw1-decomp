@@ -31,7 +31,7 @@
 #include "ServerLandscapeMap.h"
 #include "alexmfc.h"
 #include "SkirmishGameBox.h"
-#include <Lionhead/LH3DLib/development/LH3DMeshIntersect.h>
+#include <Lionhead/LH3DLib/development/MeshIntersect.h>
 #include <io.h>
 #include "Alignment.h"
 #include "MobileStatic.h"

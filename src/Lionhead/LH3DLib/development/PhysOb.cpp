@@ -2,11 +2,11 @@
 
 #include <windows.h> /* For max */
 
+#include "CollideBox.h"                /* For struct CollideBox */
 #include "LH3DDynamicShadow.h"         /* For struct LH3DDynamicShadow */
 #include "LH3DIsland.h"                /* For class LH3DIsland */
 #include "LH3DMath.h"                  /* For FloatToInt */
 #include "LH3DMesh.h"                  /* For struct LH3DMesh */
-#include "LH3DMeshIntersect.h"         /* For struct CollideBox */
 #include "LH3DObject.h"                /* For class LH3DObject */
 #include "LH3DStaticMorphableObject.h" /* For class LH3DStaticMorphableObject */
 #include "LH3DSubMesh.h"               /* For struct LH3DSubMesh */

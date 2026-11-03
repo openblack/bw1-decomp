@@ -3922,12 +3922,16 @@ Lionhead/LHLib/ver5.0/RPFollow.cpp:
 	.CRT$XCU    start:0x00A37634 end:0x00A3763C align:4
 	.bss        start:0x00F8A08C end:0x00F8AE28
 
-Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp:
+Lionhead/LH3DLib/development/MeshIntersect.cpp:
 	.text       start:0x00883CF0 end:0x00886A40
 	.rdata      start:0x00A13F28 end:0x00A13F2C
 	.CRT$XCU    start:0x00A3763C end:0x00A3764C align:4
 	.data       start:0x00CACAA8 end:0x00CACB08
 	.bss        start:0x00F8AE28 end:0x01026E48
+
+Lionhead/LH3DLib/development/CollideBox.cpp:
+	.text       start:0x00886A40 end:0x008879B0
+	.bss        start:0x01026E48 end:0x01026F6C
 
 Lionhead/LH3DLib/development/LH3DBoundingBox.cpp:
 	.text       start:0x008879B0 end:0x00887CF0

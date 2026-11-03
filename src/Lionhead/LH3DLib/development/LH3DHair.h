@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "LH3DMeshIntersect.h" /* For struct MeshIntersect */
-#include "LHPoint.h"           /* For struct LHPoint */
+#include "MeshIntersect.h" /* For struct MeshIntersect */
+#include "LHPoint.h"       /* For struct LHPoint */
 
 // Forward Declares
 
