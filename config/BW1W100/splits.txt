@@ -903,7 +903,7 @@ Black/Furniture.cpp:
 	.text       start:0x0051D890 end:0x0051D940
 	.rdata      start:0x0081D458 end:0x0081D4C8
 	.CRT$XCU    start:0x008F65F4 end:0x008F65F8 align:4
-	.data       start:0x00B19374 end:0x00B19400
+	.data       start:0x00B192E8 end:0x00B19484
 	.bss        start:0x00BF4954 end:0x00C22C98
 
 Black/Game.cpp:
@@ -1321,6 +1321,7 @@ Black/Lobbybox.cpp:
 	.text       start:0x005B34D0 end:0x005B69D0
 	.rdata      start:0x00869444 end:0x008694D8
 	.CRT$XCU    start:0x008F69C8 end:0x008F69D0 align:4
+	.data       start:0x00B208F8 end:0x00B2097C
 	.bss        start:0x00C529FC end:0x00C52A88
 
 Black/logo.cpp:
@@ -2161,6 +2162,7 @@ Black/TownDesire.cpp:
 	.text       start:0x006D68D0 end:0x006DA420
 	.rdata      start:0x008D1200 end:0x008D1270
 	.CRT$XCU    start:0x008F71A8 end:0x008F71AC align:4
+	.data       start:0x00B45E48 end:0x00B45ECC
 	.bss        start:0x00CC35C4 end:0x00CC4658
 
 Black/TownSpellIcon.cpp:
