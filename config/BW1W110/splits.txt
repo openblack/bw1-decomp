@@ -961,7 +961,7 @@ Black/Furniture.cpp:
 	.text       start:0x00547B30 end:0x00547CC0
 	.rdata      start:0x008CED28 end:0x008CF5D0
 	.CRT$XCU    start:0x009B6638 end:0x009B663C align:4
-	.data       start:0x00BD9E10 end:0x00BDB750
+	.data       start:0x00BD9E10 end:0x00BDB7D4
 	.bss        start:0x00CC243C end:0x00CF0780
 
 Black/Game.cpp:
@@ -1716,14 +1716,14 @@ Black/PCInput.cpp:
 	.text       start:0x00635A90 end:0x00638750
 	.rdata      start:0x00921B84 end:0x00921BA4
 	.CRT$XCU    start:0x009B6C08 end:0x009B6C38 align:4
-	.data       start:0x00BED468 end:0x00BEDB98
+	.data       start:0x00BED468 end:0x00BEDC1C
 	.bss        start:0x00D342F0 end:0x00D35718
 
 Black/PCMain.cpp:
 	.text       start:0x00638750 end:0x0063A3D0
 	.rdata      start:0x00921BA4 end:0x00921C48
 	.CRT$XCU    start:0x009B6C38 end:0x009B6C40 align:4
-	.data       start:0x00BEDB9C end:0x00BEDF48
+	.data       start:0x00BEDC1C end:0x00BEDF48
 	.bss        start:0x00D35794 end:0x00D357BC
 
 Black/PFootball.cpp:

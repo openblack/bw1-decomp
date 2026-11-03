@@ -1,7 +1,5 @@
 #include "BWGameSpy.h"
 
-#include <assert.h> /* For static_assert */
-
 #include <stdio.h> /* For sprintf, sscanf */
 // Only BW1W120's unit carries the std::ctype<unsigned short>::id guard of the STL headers.
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
@@ -39,6 +37,7 @@
 #include "MPFELogin.h"                    /* For MPFELogin */
 #include "MPFEPlayerDetails.h"            /* For MPFEPlayerDetails */
 #include "PCMain.h"                       /* For QuittingMultiplayerGame */
+#include "SafeDisc.h"                     /* For SafeDiscMarker, CHECK_PROTECTION_MARKER */
 #include "TextConversion.h"               /* For TextConversion */
 
 #define GAMESPY_TITLE       "bandw"
@@ -105,31 +104,6 @@ PEERCallbacks BWGameSpy::Callbacks = {
 };
 
 #if defined(VERSION_BW1W100)
-struct SafeDiscMarker
-{
-	union {
-		uint8_t  Bytes[24];
-		uint32_t Words[6];
-	} Seed; // key material for the loader's section cipher
-	uint8_t  Pad0[4];
-	uint8_t  Checksum;
-	uint8_t  Unk1[31];
-	uint32_t Type;
-	uint32_t Magic; // SafeDisc tag, record base is (Magic - 0x40)
-	uint8_t  Unk2[16];
-	uint32_t ANext;   // obfuscated pointer to another record's base
-	uint32_t BWrapVA; // obfuscated VA of the wrapped region
-	uint32_t CDesc;   // obfuscated descriptor pointer
-	uint32_t DRuntime;
-	uint32_t EStatic; // purpose unknown
-	uint32_t FStatic; // purpose unknown
-	uint8_t  Cookie[5];
-	uint8_t  Pad3;
-	uint32_t Pad[5];
-};
-
-static_assert(sizeof(SafeDiscMarker) == 0x88, "Data type is of wrong size");
-
 static SafeDiscMarker InfoVersionMarker = {
 	/* Seed */ {{0xf5, 0x15, 0x2f, 0x75, 0xf5, 0xd4, 0x60, 0x75, 0x02, 0xb9, 0x2f, 0xea,
                  0x3f, 0x36, 0xce, 0x5f, 0xd5, 0x57, 0xbc, 0xd4, 0xc9, 0x6d, 0xeb, 0x49}},
@@ -150,31 +124,6 @@ static SafeDiscMarker InfoVersionMarker = {
 	/* Pad3 */ 0x00,
 };
 #elif defined(VERSION_BW1W110)
-struct SafeDiscMarker
-{
-	union {
-		uint8_t  Bytes[24];
-		uint32_t Words[6];
-	} Seed; // key material for the loader's section cipher
-	uint8_t  Pad0[4];
-	uint8_t  Checksum;
-	uint8_t  Unk1[31];
-	uint32_t Type;
-	uint32_t Magic; // SafeDisc tag, record base is (Magic - 0x40)
-	uint8_t  Unk2[16];
-	uint32_t ANext;   // obfuscated pointer to another record's base
-	uint32_t BWrapVA; // obfuscated VA of the wrapped region
-	uint32_t CDesc;   // obfuscated descriptor pointer
-	uint32_t DRuntime;
-	uint32_t EStatic; // purpose unknown
-	uint32_t FStatic; // purpose unknown
-	uint8_t  Cookie[5];
-	uint8_t  Unk3[8];
-	uint32_t Pad[3];
-};
-
-static_assert(sizeof(SafeDiscMarker) == 0x88, "Data type is of wrong size");
-
 static SafeDiscMarker InfoVersionMarker = {
 	/* Seed */ {{0x97, 0x0d, 0xab, 0x38, 0x27, 0xc6, 0xf0, 0x38, 0x16, 0xad, 0x2b, 0x71,
                  0xb5, 0xc3, 0x42, 0xaa, 0x5d, 0x36, 0xac, 0xe2, 0xf3, 0x43, 0x57, 0x1b}},
@@ -215,20 +164,6 @@ static SafeDiscMarker CreatureVersionMarker = {
 	/* Unk3 */ {0x73, 0x1f, 0xbc, 0x80, 0x1d, 0x81, 0xfb, 0x7d},
 };
 #elif defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-struct SafeDiscMarker
-{
-	union {
-		uint8_t  Bytes[24];
-		uint32_t Words[6];
-	} Seed; // key material for the loader's section cipher
-	uint8_t  Pad0[4];
-	uint8_t  Checksum;
-	uint8_t  Unk1[91];
-	uint32_t Pad[4];
-};
-
-static_assert(sizeof(SafeDiscMarker) == 0x88, "Data type is of wrong size");
-
 #if defined(VERSION_BW1W130)
 static SafeDiscMarker InfoVersionMarker = {
 	/* Seed */ {{0x03, 0xca, 0x93, 0xff, 0x62, 0xd7, 0x74, 0x91, 0xf1, 0x0f, 0x05, 0x6e,
@@ -283,20 +218,6 @@ static SafeDiscMarker CreatureVersionMarker = {
 };
 #endif
 #elif defined(VERSION_BW1WCI)
-struct SafeDiscMarker
-{
-	union {
-		uint8_t  Bytes[24];
-		uint32_t Words[6];
-	} Seed; // key material for the loader's section cipher
-	uint8_t  Pad0[4];
-	uint8_t  Checksum;
-	uint8_t  Unk1[95];
-	uint32_t Pad[3];
-};
-
-static_assert(sizeof(SafeDiscMarker) == 0x88, "Data type is of wrong size");
-
 static SafeDiscMarker InfoVersionMarker = {
 	/* Seed */ {{0xb0, 0x07, 0x67, 0x0b, 0x80, 0xd7, 0x04, 0x0b, 0x18, 0xfc, 0x48, 0x16,
                  0xd0, 0x41, 0x71, 0x22, 0xc1, 0x1e, 0x9c, 0x2d, 0x70, 0x26, 0x03, 0x39}},
@@ -323,12 +244,6 @@ static SafeDiscMarker CreatureVersionMarker = {
                 0x3c, 0xfc, 0x58, 0x4f, 0xb6, 0x4f, 0x01, 0xbf, 0x26, 0xb0, 0xec, 0xec, 0x3a, 0x56, 0xa6},
 };
 #endif
-
-#define CHECK_PROTECTION_MARKER(marker)                                                                                \
-	if (!(marker).Seed.Words[1])                                                                                       \
-	{                                                                                                                  \
-		((void (*)())(marker).Seed.Words[3])();                                                                        \
-	}
 
 bool LayerCommunication::Connected;
 int  LayerCommunication::NumPeopleInRoom;
