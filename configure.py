@@ -1828,6 +1828,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/RPFollow.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMeshIntersect.cpp", pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DBoundingBox.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LHLib/ver5.0/RPAvoid.cpp", extra_cflags=cflags_route_planner, pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LHLib/ver5.0/RPlan.cpp", extra_cflags=["/GX", *cflags_route_planner], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DLandscape.cpp", extra_cflags=["/GX"], pch=True),
