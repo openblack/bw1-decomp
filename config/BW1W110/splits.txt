@@ -1318,7 +1318,7 @@ Black/JCMisc.cpp:
 	.text       start:0x005D9280 end:0x005DC960
 	.rdata      start:0x0091B1CC end:0x0091B1F4
 	.CRT$XCU    start:0x009B6950 end:0x009B6970 align:4
-	.data       start:0x00BE2730 end:0x00BE2734
+	.data       start:0x00BE2668 end:0x00BE2770
 	.bss        start:0x00D08810 end:0x00D09060
 
 Black/JobInfo.cpp:
@@ -3908,6 +3908,11 @@ Lionhead/LH3DLib/development/LandBlock.cpp:
 	.text       start:0x008648B0 end:0x008690F0
 	.rdata      start:0x00993B14 end:0x00993B1C
 	.bss        start:0x00F97CA0 end:0x00F97CA8
+
+Lionhead/LH3DLib/development/LH3DCT.cpp:
+	.text       start:0x0086F4E0 end:0x0086F810
+	.data       start:0x00C28908 end:0x00C28918
+	.bss        start:0x00F97D80 end:0x00F97D84
 
 Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
 	.text       start:0x0086F810 end:0x0086FA60
