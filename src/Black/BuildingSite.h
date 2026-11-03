@@ -80,6 +80,8 @@ public:
 	virtual MapCoords GetResourcePosAndYAngle(RESOURCE_TYPE type, unsigned long index, float* y_angle);
 	// BW1W120 0043b790 BW1M119 010c18d0
 	virtual void RemovePotFromStructure(PotStructure* structure);
+	// BW1W120 0043d0a0 BW1M119 010bc900
+	virtual bool IsLinkedToThisBuildingSite(Pot* pot);
 
 	// Constructors
 
@@ -114,6 +116,10 @@ public:
 	void BuildBy(float amount);
 	// BW1W120 0043d0b0 BW1M119 010bc770
 	void RemoveAllVillagersFromTown(Town* town);
+	// BW1W120 0043bf20 BW1M119 010bee40
+	void RemoveScaffold(Scaffold* scaffold);
+	// BW1W120 0043bcb0 BW1M119 010bf5c0
+	float GetPercentBuilt();
 };
 
 #endif /* BW1_DECOMP_BUILDING_SITE_INCLUDED_H */

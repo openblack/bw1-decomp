@@ -102,6 +102,10 @@ struct BindableAction
 
 	// BW1W120 0046f4c0 BW1M119 01092db0
 	bool IsKeyBeingPressed();
+	// BW1W120 0046f500 BW1M119 01092be0
+	bool32_t IsMouseBeingPressed();
+	// BW1W120 0046f360 BW1M119 011d3c30
+	static bool32_t CompareKeys(LH_KEY key, LH_KEY other_key);
 };
 
 #endif /* BW1_DECOMP_BINDABLE_ACTION_INCLUDED_H */

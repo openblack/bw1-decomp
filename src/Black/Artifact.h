@@ -8,6 +8,8 @@
 
 // Forward Declares
 
+class LHOSFile;
+struct MapCoords;
 class Base;
 class Fixed;
 class GPlayer;
@@ -88,6 +90,12 @@ public:
 	void AddToValue(float amount);
 	// BW1W120 00426820 BW1M119 010b1180
 	void SetValue(float value);
+	// BW1W120 004269c0 BW1M119 010b0cf0
+	uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
+	// BW1W120 00425fb0 BW1M119 010b20e0
+	void Process();
+	// BW1W120 00425f20 BW1M119 010b2290
+	void CreateParticleEffectIfNecessary();
 };
 
 #endif /* BW1_DECOMP_ARTIFACT_INCLUDED_H */

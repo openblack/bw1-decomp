@@ -47,7 +47,7 @@ public:
 	// BW1W120 0066e390 BW1M119 01122890
 	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 0066ed60 BW1M119 01121730
-	virtual bool32_t IsPileResource();
+	virtual PileResource* IsPileResource();
 	// BW1W120 0066e400 BW1M119 011225b0
 	virtual void SetLife(float param_1);
 	// BW1W120 0066e300 BW1M119 01122970

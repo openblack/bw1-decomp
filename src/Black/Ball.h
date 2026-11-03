@@ -100,6 +100,9 @@ public:
 	bool32_t AddToTown(Town* town);
 	// BW1W120 004360e0 BW1M119 010b2f80
 	bool IsBallFree();
+
+	// BW1W120 inlined BW1M119 010b2fc0
+	void RemoveFromTown();
 };
 
 #endif /* BW1_DECOMP_BALL_INCLUDED_H */

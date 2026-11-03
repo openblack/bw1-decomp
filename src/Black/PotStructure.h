@@ -70,6 +70,8 @@ public:
 	// BW1W120 0066d910 BW1M119 011244a0
 	PotStructure(const MapCoords& coords, const GPotInfo* param_2, uint32_t param_3, MultiMapFixed* param_4,
 	             Town* param_5, int param_6, float param_7, float param_8);
+	// BW1W120 0066d980 BW1M119 01124370
+	void RemoveFromStructure();
 };
 
 #endif /* BW1_DECOMP_POT_STRUCTURE_INCLUDED_H */

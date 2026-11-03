@@ -102,6 +102,9 @@ public:
 	// BW1W120 004693f0 BW1M119 011cadc0
 	CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* parent_citadel, float y_angle,
 	            float scale, float food, int wood);
+
+	// BW1W120 inlined BW1M119 015b80e0
+	bool32_t IsPlanned();
 };
 
 #endif /* BW1_DECOMP_CITADEL_PART_INCLUDED_H */

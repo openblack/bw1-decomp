@@ -53,6 +53,9 @@ public:
 	Mobile() {}
 	// BW1W120 005ec000 BW1M119 inlined
 	Mobile(const MapCoords& coords, const GMobileInfo* info) : Object(coords, info) { SetScale(1.0f); }
+
+	// BW1W120 inlined BW1M119 013c5e10
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_MOBILE_INCLUDED_H */

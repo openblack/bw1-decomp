@@ -9,6 +9,7 @@
 
 // Forward Declares
 
+class Villager;
 class Base;
 class EffectValues;
 class FireGraphic;
@@ -94,6 +95,28 @@ public:
 	uint32_t GetFireEffectSpecularColor();
 	// BW1W120 00730570 BW1M119 01155820
 	uint32_t GetFireEffectCharingColor();
+	// BW1W120 007309e0 BW1M119 011548b0
+	void RemoveFireman(Villager* villager);
+	// BW1W120 007309a0 BW1M119 011549b0
+	void AddFireman(Villager* villager);
+	// BW1W120 007305f0 BW1M119 011557e0
+	Object* GetObjectA();
+	// BW1W120 007303e0 BW1M119 01155a90
+	float GetFireFraction();
+	// BW1W120 00730380 BW1M119 01155cb0
+	bool32_t IsAboveReactionTemperature();
+	// BW1W120 00730020 BW1M119 011563d0
+	float GetSafeFireRadius();
+	// BW1W120 00730000 BW1M119 011564d0
+	float GetMaxFireRadius();
+	// BW1W120 0072ff10 BW1M119 01156660
+	float GetFireRadius();
+	// BW1W120 0072fea0 BW1M119 01156780
+	bool32_t IsInSameFireGroupAs(FireEffect* fire);
+	// BW1W120 0072fdd0 BW1M119 01156810
+	bool32_t RemoveFromFireGroup();
+	// BW1W120 0072fbe0 BW1M119 01156ae0
+	void AddToMyFireGroup(FireEffect* fire);
 };
 
 #endif /* BW1_DECOMP_FIRE_EFFECT_INCLUDED_H */

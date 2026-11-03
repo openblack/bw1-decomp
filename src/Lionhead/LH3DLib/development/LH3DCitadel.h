@@ -20,16 +20,20 @@ struct LHPoint;
 class LH3DCitadel : public LH3DStaticMorphableObject
 {
 public:
-	float     field_0x84;
-	float     field_0x88;
-	float     Stage; /* 0x8c */
-	float     field_0x90;
-	float     field_0x94;
-	float     Nasty; /* 0x98 */
-	float     Life;
-	uint8_t   field_0xa0[0xc];
-	LH3DMesh* CitadelMesh; /* 0xac */
-	uint8_t   field_0xb0[0x10];
+	float         field_0x84;
+	float         field_0x88;
+	float         Stage; /* 0x8c */
+	float         field_0x90;
+	float         field_0x94;
+	float         Nasty; /* 0x98 */
+	float         Life;
+	uint32_t      field_0xa0;
+	bool32_t      ForceAlignement; /* 0xa4 */
+	unsigned long Player;
+	LH3DMesh*     CitadelMesh; /* 0xac */
+	uint8_t       field_0xb0[0x8];
+	long          CellX; /* 0xb8 */
+	long          CellZ;
 
 	// Static data
 

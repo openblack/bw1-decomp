@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+class LHOSFile;
 enum FOREST_SIZE
 {
 	FOREST_SIZE_SMALL,
@@ -117,6 +118,10 @@ public:
 	static void RemoveForestFromTowns(Forest* forest);
 	// BW1W120 0053a1a0 BW1M119 010faf60
 	static Forest* FindClosestForest(const MapCoords& pos, float max_distance, bool32_t empty_only);
+	// BW1W120 00539da0 BW1M119 01027d10
+	void Process();
+	// BW1W120 0053a7c0 BW1M119 010fa470
+	uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 #endif /* BW1_DECOMP_FOREST_INCLUDED_H */

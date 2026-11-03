@@ -71,6 +71,8 @@ public:
 
 	// BW1W120 0072c0e0 BW1M119 0153a210
 	void SetToZero();
+	// BW1W120 0072be20 BW1M119 0153a770
+	static MapShield* Create(const MapCoords& coords, SpellShield* shield, float);
 };
 
 #endif /* BW1_DECOMP_MAP_SHIELD_INCLUDED_H */

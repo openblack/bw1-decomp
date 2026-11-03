@@ -37,7 +37,6 @@
 #include "VortexSave.h"
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>      /* For struct LandBlock */
-#include <Lionhead/LH3DLib/development/LH3DIslandBlock.h> /* For GetLandBlock */
 #include <Lionhead/LH3DLib/development/LH3DMaterial.h>    /* For struct LH3DMaterial */
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>        /* For LH3DMesh::GetPackedMesh */
 #include <Lionhead/LH3DLib/development/LH3DPrimitive.h>   /* For struct LH3DPrimitive */
@@ -416,7 +415,7 @@ void LandscapeVortexIn::ProcessContentsOfVortex()
 				}
 				else
 				{
-					PileResource* pile = (PileResource*)object->IsPileResource();
+					PileResource* pile = object->IsPileResource();
 					if (pile != NULL)
 					{
 						pile->GetHandPotInfoType();
@@ -1170,7 +1169,7 @@ void LandscapeVortex::CreateFootPrints()
 	                               GJUtils::CreateSharedTexture(GetVortexInfo()->GetFootPrintFileName()));
 	long x = (long)(Centre.x / LAND_CELL_SIZE);
 	long z = (long)(Centre.z / LAND_CELL_SIZE);
-	FootPrintBlock = GetLandBlock(x, z);
+	FootPrintBlock = LH3DIsland::GetBlock(x, z);
 	FootPrintAlphaMaterial =
 		LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_CHROMA_JUST_Z,
 	                               GJUtils::CreateSharedTexture(GetVortexInfo()->GetFootPrintAlphaFileName()));

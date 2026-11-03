@@ -126,6 +126,8 @@ public:
 	DrawOffsetDecay();
 	// BW1W120 006c7840 BW1M119 01485fd0
 	DrawOffsetDecay(const LHPoint& offset);
+	// BW1W120 0068f680 BW1M119 010178e0
+	static void ProcessList();
 };
 static_assert(sizeof(DrawOffsetDecay) == 0x40, "Data type is of wrong size");
 

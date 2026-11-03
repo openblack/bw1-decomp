@@ -30,6 +30,7 @@ class Object;
 class ParticleCreator;
 class PropertyList;
 class TEventCondition;
+class UR_Lightning_CollectionData;
 
 class RemoveSoundFromAtom : public AppearanceUpdateRule
 {
@@ -2639,6 +2640,8 @@ public:
 	float InitialDelay;
 	float SmokeDelay;
 	float BeamDelay;
+	// BW1W120 0067e200 BW1M119 01401410
+	void InitCollection(AtomCollection* collection, CollectionData* data) const;
 };
 static_assert(sizeof(UR_Explosion::AtomData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(UR_Explosion) == 0x50, "Data type is of wrong size");
@@ -3881,6 +3884,12 @@ public:
 	float            RenewTargetsOnMoveFrac;
 	float            RenewSearchEvery;
 	PSysSoundAction  SoundLightning;
+	// BW1W120 006914c0 BW1M119 0141c140
+	bool ActualModify(AtomCollection* collection) const;
+	// BW1W120 00691190 BW1M119 0141c590
+	void CreateForkStructure(AtomCollection* collection, UR_Lightning_CollectionData* data) const;
+	// BW1W120 00691bb0 BW1M119 0141b700
+	void UpdateForkStructure(AtomCollection* collection, UR_Lightning_CollectionData* data) const;
 };
 static_assert(sizeof(UR_Lightning) == 0x98, "Data type is of wrong size");
 
@@ -4159,6 +4168,8 @@ public:
 	float            RandomFrac;
 	float            ForkScaleMin;
 	float            ForkScaleMax;
+	// BW1W120 006767f0 BW1M119 013efaa0
+	void CreateArc(AtomCollection* collection, long index, AtomData* data) const;
 };
 static_assert(sizeof(UR_Plasma::SubCollectionData) == 0x34, "Data type is of wrong size");
 static_assert(sizeof(UR_Plasma::AtomData) == 0x5c, "Data type is of wrong size");

@@ -13,6 +13,7 @@
 
 // Forward Declares
 
+struct GSpotVisualInfo;
 class Base;
 class GPlayer;
 class GameOSFile;
@@ -73,6 +74,13 @@ public:
 	void AddTarget(const LHPoint& target);
 	// BW1W120 0063e3e0 BW1M119 01119de0
 	void SetParticleStrength(float strength);
+	// BW1W120 0063e280 BW1M119 0105b480
+	uint32_t Process();
+	// BW1W120 0063e4b0 BW1M119 0109de20
+	static GParticleContainer* Create(const MapCoords& coords, GameThingWithPos* thing, const GSpotVisualInfo* info,
+	                                  float, long);
+	// BW1W120 0063e370 BW1M119 01119fe0
+	void CloseDown();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_CONTAINER_INCLUDED_H */

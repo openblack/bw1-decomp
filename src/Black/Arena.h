@@ -61,6 +61,14 @@ public:
 	bool32_t IsCreatureInArena(Creature* creature);
 	// BW1W120 004250a0 BW1M119 010ae470
 	void SetSpellSelection(MAGIC_TYPE type, Creature* creature, bool param_3);
+	// BW1W120 00424fb0 BW1M119 010ae530
+	static float GetArenaRadius(Creature*, Creature*);
+	// BW1W120 00424e70 BW1M119 010ae650
+	static GArena* FindNearestArenaOrCreateNew(const MapCoords& coords, Creature*, Creature*, float);
+	// BW1W120 00424e00 BW1M119 010ae840
+	static GArena* FindNearestArena(const MapCoords& coords, float);
+	// BW1W120 00424820 BW1M119 010af680
+	static GArena* Create(const MapCoords& coords, float);
 };
 
 class ArenaSpellIcon : public Fixed

@@ -161,6 +161,9 @@ public:
 
 	// BW1W120 00743b10 BW1M119 01565160
 	void SetToZero();
+
+	// BW1W120 inlined BW1M119 0142fce0
+	void DeletePSys();
 };
 
 #endif /* BW1_DECOMP_TOWN_CENTRE_INCLUDED_H */
