@@ -11,7 +11,7 @@ Black & White
 [Discord Badge]: https://img.shields.io/discord/608729286513262622?color=%237289DA&logo=discord&logoColor=%23FFFFFF
 [discord]: https://discord.gg/5QTexBU
 
-[<img src="https://decomp.dev/openblack/bw1-decomp.svg?w=512&h=256" width="512" height="256">][Progress]
+[<img src="https://decomp.dev/openblack/bw1-decomp.svg?w=512&h=256" width="1024" height="512">][Progress]
 
 A work-in-progress decompilation of Lionhead Studios' _Black & White_ (2001).
 
