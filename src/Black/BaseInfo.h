@@ -7,7 +7,7 @@
 
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
 
-#include "Base.h" /* For struct Base, struct BaseVftable */
+#include "Base.h" /* For struct Base */
 
 #define BASE_INFO_INVALID 1
 

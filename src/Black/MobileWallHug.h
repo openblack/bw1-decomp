@@ -11,7 +11,7 @@
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "LHPTR.h"            /* For class LHPTR */
 #include "MapCoords.h"        /* For struct MapCoords */
-#include "Mobile.h"           /* For struct Mobile, struct MobileVftable */
+#include "Mobile.h"           /* For struct Mobile */
 #include "Object.h"           /* For struct Object */
 
 #include <Lionhead/LH3DLib/development/LH3DMath.h> /* For LHSinTable */
@@ -41,11 +41,8 @@ class MultiMapFixed;
 class GMobileWallHugInfo;
 class GameOSFile;
 class GameThing;
-struct GameThingVftable;
-struct GameThingWithPosVftable;
 struct LHPoint;
 class MultiMapFixed;
-struct ObjectVftable;
 
 struct GMoveBy
 {

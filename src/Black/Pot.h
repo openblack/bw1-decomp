@@ -7,7 +7,7 @@
 #include <chlasm/Enum.h>        /* For enum RESOURCE_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
-#include "MobileObject.h" /* For struct MobileObject, struct MobileObjectVftable */
+#include "MobileObject.h" /* For struct MobileObject */
 #include "Object.h"       /* For enum FOOD_TYPE */
 
 // Forward Declares

@@ -12,7 +12,7 @@
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 #include <re_common.h>                               /* For bool32_t */
 
-#include "GameThingWithPos.h"     /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "GameThingWithPos.h"     /* For struct GameThingWithPos */
 #include "LHPTR.h"                /* For class LHPTR */
 #include "MapCoords.h"            /* For struct MapCoords */
 #include "ObjectInfo.h"           /* For class GObjectInfo, needed by the inline getters below */
@@ -31,7 +31,6 @@ class GPlayer;
 class Game3DObject;
 class GameOSFile;
 class GameThing;
-struct GameThingVftable;
 struct GestureSystemPacketData;
 struct LH3DAnim;
 struct LH3DSprite;

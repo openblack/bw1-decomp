@@ -7,7 +7,7 @@
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <chlasm/Enum.h>      /* For enum ABODE_NUMBER, enum ABODE_TYPE */
 
-#include "ObjectInfo.h"  /* For struct GObjectInfo, struct GObjectInfoVftable */
+#include "ObjectInfo.h"  /* For struct GObjectInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares

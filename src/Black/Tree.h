@@ -7,7 +7,7 @@
 #include <chlasm/Enum.h>        /* For enum HOLD_TYPE, enum RESOURCE_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
-#include "Fixed.h" /* For struct SingleMapFixed, struct SingleMapFixedVftable */
+#include "Fixed.h" /* For struct SingleMapFixed */
 
 // Forward Declares
 

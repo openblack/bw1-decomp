@@ -17,7 +17,7 @@
 #include "GameThing.h"        /* For struct GameThing */
 #include "LHPTR.h"            /* For class LHPTR */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
-#include "Living.h"           /* For struct Living, struct LivingVftable */
+#include "Living.h"           /* For struct Living */
 #include "LivingAction.h"     /* For enum LIVING_ACTION_INDEX, enum STATE_TYPE */
 #include "Object.h"           /* For struct Object */
 #include "Reaction.h"         /* For MissionaryControl::GetPlayer */
@@ -45,8 +45,6 @@ class GPlayer;
 class GTribeInfo;
 class GVillagerInfo;
 class GameOSFile;
-struct GameThingVftable;
-struct GameThingWithPosVftable;
 struct GestureSystemPacketData;
 struct JustWholeMapXZ;
 class LHOSFile;
@@ -54,7 +52,6 @@ struct LHPoint;
 class MagicTeleport;
 struct MapCoords;
 class MultiMapFixed;
-struct ObjectVftable;
 struct PhysOb;
 class PhysicsObject;
 class Pot;

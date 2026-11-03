@@ -12,7 +12,7 @@
 #include "DanceGroup.h"       /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "DancePathInfo.h"    /* For struct DancePathInfo */
 #include "GameThing.h"        /* For struct GameThing */
-#include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
 // Forward Declares
 

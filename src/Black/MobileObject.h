@@ -10,7 +10,7 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 #include "LHPTR.h"    /* For class LHPTR */
-#include "Mobile.h"   /* For struct Mobile, struct MobileVftable */
+#include "Mobile.h"   /* For struct Mobile */
 
 #define MOBILE_OBJECT_SCRIPT_SCALE 1000.0f
 

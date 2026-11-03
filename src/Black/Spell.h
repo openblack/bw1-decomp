@@ -9,7 +9,7 @@
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
 
-#include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "LHPTR.h"            /* For class LHPTR */
 #include "MapCoords.h"        /* For struct MapCoords */
 
