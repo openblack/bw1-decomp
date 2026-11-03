@@ -2,6 +2,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DTech.h>  /* For LH3DTech::g_camera */
 #include <Lionhead/LHAudio/ver7.0/LH_AudioSystem.h> /* For class LH_AudioSystem */
+#include <Lionhead/LHAudio/ver7.0/LH_MusicPlayOptions.h>
 
 #include "Audio.h"
 #include "GameOSFile.h" /* For class GameOSFile */
@@ -10,6 +11,16 @@
 #include "Landscape.h"
 #include "ThingMusicInfo.h"
 
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
+#define FILEPATH "C:\\dev\\black\\AudioMusicThing.cpp"
+#elif defined(VERSION_BW1W110)
+#define FILEPATH "C:\\dev\\Black\\AudioMusicThing.cpp"
+#elif defined(VERSION_BW1W130)
+#define FILEPATH "D:\\Work\\Games\\dd\\Black\\AudioMusicThing.cpp"
+#else
+#define FILEPATH "C:\\dev\\MP\\Black\\AudioMusicThing.cpp"
+#endif
+
 uint32_t ThingMusicInfo::GetSaveType()
 {
 	return GAME_THING_TYPE_THING_MUSIC_INFO;
@@ -17,7 +28,7 @@ uint32_t ThingMusicInfo::GetSaveType()
 
 char* ThingMusicInfo::GetDebugText()
 {
-	return "ThingMusicInfo:";
+	return "AudioMusicThing:";
 }
 
 ThingMusicInfo* GAudio::GetThingMusicInfo(GameThingWithPos* thing)
@@ -38,13 +49,32 @@ void GAudio::ReleaseAllThingMusicInfo()
 	ThingMusicList.ToBeDeletedAll();
 }
 
+void GAudio::AddThingMusic(MUSIC_TYPE type, GameThingWithPos* thing)
+{
+	if (thing->IsAvailable())
+	{
+		ThingMusicInfo* info = GetThingMusicInfo(thing);
+		if (info != NULL)
+		{
+			info->MusicType = type;
+		}
+		else
+		{
+			info = new (FILEPATH, 51) ThingMusicInfo(type, thing);
+			if (IsThingMusicPlaying(info))
+				StopMusic(info, false);
+			ThingMusicList.Add(info);
+		}
+	}
+}
+
 void GAudio::RemoveThingMusic(GameThingWithPos* thing)
 {
 	ThingMusicInfo* info = GetThingMusicInfo(thing);
 	if (info)
 	{
 		ThingMusicList.Remove(info);
-		info->ToBeDeleted(0);
+		info->ToBeDeleted(false);
 	}
 }
 
@@ -82,7 +112,7 @@ void GAudio::ValidateThingMusic()
 		if (!info->Thing->IsAvailable())
 		{
 			ThingMusicList.Remove(info);
-			info->ToBeDeleted(0);
+			info->ToBeDeleted(false);
 		}
 		node = next;
 	}
@@ -90,7 +120,7 @@ void GAudio::ValidateThingMusic()
 
 bool32_t GAudio::ProcessThingMusic()
 {
-	int                            result = 0;
+	int                            result = THING_MUSIC_RESULT_NONE;
 	LHLinkedNode<ThingMusicInfo*>* node = ThingMusicList.GetStart();
 	while (node)
 	{
@@ -99,7 +129,7 @@ bool32_t GAudio::ProcessThingMusic()
 		LHLinkedNode<ThingMusicInfo*>* next = node->next.Get();
 		if (thing->IsAvailable())
 		{
-			if (info->Enabled && !info->Suppressed)
+			if (info->Enabled && !info->Finished)
 			{
 				if (ProcessThingMusic(info, thing))
 				{
@@ -114,7 +144,7 @@ bool32_t GAudio::ProcessThingMusic()
 		else
 		{
 			ThingMusicList.Remove(info);
-			info->ToBeDeleted(0);
+			info->ToBeDeleted(false);
 		}
 		node = next;
 	}
@@ -132,6 +162,53 @@ bool32_t GAudio::ThingMusicInRange(MUSIC_TYPE type, GameThingWithPos* thing)
 		float   distance = pos.GetDistance(cameraPos);
 		if (distance < GetPlayDistance(type))
 		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool32_t GAudio::ProcessThingMusic(ThingMusicInfo* info, GameThingWithPos* thing)
+{
+	LH_MusicPlayOptions options;
+	MUSIC_TYPE          type = info->MusicType;
+	if (MusicBanks[type] != NULL)
+	{
+		long group = MusicBanks[type]->LHBankGetMusicGroupId();
+		if (ThingMusicInRange(type, thing))
+		{
+			LHPoint pos;
+			if (info->UseFixedPos)
+				GLandscape::ConvertMapCoordToLandscapePoint(info->FixedPos, pos);
+			else
+				GLandscape::ConvertMapCoordToLandscapePoint(thing->Pos, pos);
+			if (group > 0)
+			{
+				options.Loop = true;
+				options.FadeIn = true;
+			}
+			else
+			{
+				options.Loop = false;
+				options.FadeIn = false;
+			}
+			options.Bank = MusicBanks[type];
+			options.Volume = LH_MUSIC_VOLUME_MAX;
+			options.StartChunk = MusicStyleChunks[group - 1];
+			options.Positional = true;
+			options.Pitch = LH_MUSIC_PITCH_NORMAL;
+			options.X = pos.x;
+			options.Y = pos.y;
+			options.Z = pos.z;
+			StoreMusicStyleChunks();
+			if (AudioSystem->LHMusicGetInfo(options.Bank) == NULL && info->Started && info->Finished)
+				return false;
+			if (!info->Finished)
+			{
+				LH_MusicInfo* music = AudioSystem->LHMusicPlay(&options);
+				info->Started = true;
+				AudioSystem->LHMusicSet3DPosition(music, pos.x, pos.y, pos.z);
+			}
 			return true;
 		}
 	}
@@ -183,8 +260,8 @@ void GAudio::EnableMusicThing(GameThingWithPos* thing, int enable)
 	if (info)
 	{
 		info->Enabled = enable;
-		info->Suppressed = false;
-		info->Playing = false;
+		info->Finished = false;
+		info->Started = false;
 	}
 }
 
@@ -203,7 +280,7 @@ bool32_t GAudio::IsMusicThingFinished(GameThingWithPos* thing)
 	ThingMusicInfo* info = GetThingMusicInfo(thing);
 	if (info)
 	{
-		return info->Suppressed;
+		return info->Finished;
 	}
 	return true;
 }
@@ -215,8 +292,8 @@ bool32_t ThingMusicInfo::Save(GameOSFile& file)
 		WRITE_IT(file, MusicType);
 		file.WritePtr(Thing);
 		WRITE_IT(file, Enabled);
-		WRITE_IT(file, Suppressed);
-		WRITE_IT(file, Playing);
+		WRITE_IT(file, Finished);
+		WRITE_IT(file, Started);
 		WRITE_IT(file, UseFixedPos);
 		WRITE_IT(file, FixedPos);
 		return true;
@@ -231,8 +308,8 @@ bool32_t ThingMusicInfo::Load(GameOSFile& file)
 		file.ReadIt(MusicType);
 		file.ReadPtr((GameThing**)&Thing);
 		file.ReadIt(Enabled);
-		file.ReadIt(Suppressed);
-		file.ReadIt(Playing);
+		file.ReadIt(Finished);
+		file.ReadIt(Started);
 		file.ReadIt(UseFixedPos);
 		file.ReadIt(FixedPos);
 		return true;
