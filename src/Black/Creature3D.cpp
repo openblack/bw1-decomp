@@ -9,6 +9,7 @@
 #include <Lionhead/LHLib/ver5.0/LHWin.h>                    /* For operator new(size_t, const char*, uint32_t) */
 #include <chlasm/CreatureSpec.h>                            /* For CREATURE_ANIMATIONS */
 #include <Lionhead/LH3DLib/development/Blob.h>              /* For DrawASparkle */
+#include <Lionhead/LH3DLib/development/CollideBox.h>        /* For struct CollideBox */
 #include <Lionhead/LH3DLib/development/Fish.h>              /* For FishRush */
 #include <Lionhead/LH3DLib/development/LH3DComplexObject.h> /* For LH3DComplexObject */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>          /* For angle_correct, heading_from_direction_vector */

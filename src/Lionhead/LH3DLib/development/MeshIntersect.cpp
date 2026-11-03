@@ -1,4 +1,4 @@
-#include "LH3DMeshIntersect.h"
+#include "MeshIntersect.h"
 
 #include <d3dtypes.h> /* For RGBA_MAKE */
 #include <stdio.h>    /* For FILE, fopen, fgetc, fclose */
