@@ -1,11 +1,12 @@
 Black & White
-[![Build Status]][actions] [![Code Progress]][progress] [![Data Progress]][progress] [![Discord Badge]][discord]
+[![Build Status]][actions] [![Code Progress]][progress] [![Data Progress]][progress] [![Linked Progress]][progress] [![Discord Badge]][discord]
 =============
 
 [Build Status]: https://github.com/openblack/bw1-decomp/actions/workflows/build.yml/badge.svg
 [actions]: https://github.com/openblack/bw1-decomp/actions/workflows/build.yml
 [Code Progress]: https://decomp.dev/openblack/bw1-decomp.svg?mode=shield&measure=code&label=Code
 [Data Progress]: https://decomp.dev/openblack/bw1-decomp.svg?mode=shield&measure=data&label=Data
+[Linked Progress]: https://decomp.dev/openblack/bw1-decomp.svg?mode=shield&measure=complete_units&label=Linked
 [progress]: https://decomp.dev/openblack/bw1-decomp
 [Discord Badge]: https://img.shields.io/discord/608729286513262622?color=%237289DA&logo=discord&logoColor=%23FFFFFF
 [discord]: https://discord.gg/5QTexBU
@@ -20,18 +21,17 @@ Scaffolded from [encounter/dtk-template](https://github.com/encounter/dtk-templa
 
 Supported versions:
 
-- `BW1W100` — Windows v1.00 (PE/COFF, MSVC 6.0 SP4 with `/OPT:ICF`)
-- `BW1W110` — Windows v1.10 (PE/COFF, MSVC 6.0 SP4)
-- `BW1W120` — Windows v1.20 (PE/COFF, MSVC 6.0 SP5)
-- `BW1W130` — Windows v1.30 (PE/COFF, MSVC 6.0 SP5)
-- `BW1WCI` — Windows Creature Isle (PE/COFF, MSVC 6.0 SP5)
+- [![BW1W100 Progress]][progress] — Windows v1.00 (PE/COFF, MSVC 6.0 SP4 with `/OPT:ICF`)
+- [![BW1W110 Progress]][progress] — Windows v1.10 (PE/COFF, MSVC 6.0 SP4)
+- [![BW1W120 Progress]][progress] — Windows v1.20 (PE/COFF, MSVC 6.0 SP5)
+- [![BW1W130 Progress]][progress] — Windows v1.30 (PE/COFF, MSVC 6.0 SP5)
+- [![BW1WCI Progress]][progress] — Windows Creature Isle (PE/COFF, MSVC 6.0 SP5)
 
-Work in progress:
-
-- `BW1M110` — Classic Mac OS PowerPC v1.1.0 (PEF, CodeWarrior Mac)
-- `BW1M115` — Classic Mac OS PowerPC v1.1.5 (PEF, CodeWarrior Mac)
-- `BW1M119` — Classic Mac OS PowerPC v1.1.9 (PEF, CodeWarrior Mac)
-- `BW1MCI119` — Classic Mac OS PowerPC Creature Isle v1.1.9 (PEF, CodeWarrior Mac)
+[BW1W100 Progress]: https://decomp.dev/openblack/bw1-decomp/BW1W100.svg?mode=shield&measure=code&label=BW1W100
+[BW1W110 Progress]: https://decomp.dev/openblack/bw1-decomp/BW1W110.svg?mode=shield&measure=code&label=BW1W110
+[BW1W120 Progress]: https://decomp.dev/openblack/bw1-decomp/BW1W120.svg?mode=shield&measure=code&label=BW1W120
+[BW1W130 Progress]: https://decomp.dev/openblack/bw1-decomp/BW1W130.svg?mode=shield&measure=code&label=BW1W130
+[BW1WCI Progress]: https://decomp.dev/openblack/bw1-decomp/BW1WCI.svg?mode=shield&measure=code&label=BW1WCI
 
 Documentation
 -------------
