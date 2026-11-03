@@ -93,6 +93,21 @@ class CommandTests(Fixture):
         self.assertEqual(verify.stale_pchs([a], self.root, lambda p: ['src/pch.h']), [pch])
         self.assertEqual(verify.stale_pchs([a], self.root, lambda p: ['src/other.h']), [])
 
+    def test_precompiled_header_lookup_preserves_ninja_target_case(self):
+        target = 'build/BW1W120/src/Black/BlackPCH.pch'
+        with patch.object(verify.os.path, 'normcase', side_effect=lambda value: value.lower()):
+            edge = self.edge('a', flags='/YuBlackPCH.h /Fp' + target)
+        # Both codegen-check and pch_reads derive a Ninja target from this path.
+        self.assertEqual(edge.pch.relative_to(self.root).as_posix(), target)
+        probe = types.ModuleType('msvc_probe')
+        probe.files_read = unittest.mock.Mock(return_value=['src/Black/BlackPCH.h'])
+        command = 'cl /YcBlackPCH.h /Fp' + target + ' /c src/Black/BlackPCH.cpp'
+        with patch.dict(sys.modules, {'msvc_probe': probe}), \
+             patch.object(verify, 'capture', return_value=command) as capture:
+            self.assertEqual(verify.pch_reads('ninja', edge.pch, self.root), ['src/Black/BlackPCH.h'])
+        capture.assert_called_once_with(['ninja', '-t', 'commands', '-s', target], self.root)
+        probe.files_read.assert_called_once_with(verify.command_words(command), self.root)
+
     def test_unsupported_response_and_environment_fail_before_replay(self):
         with self.assertRaisesRegex(ValueError, 'Response file'):
             self.edge('a', flags='@flags.rsp')
