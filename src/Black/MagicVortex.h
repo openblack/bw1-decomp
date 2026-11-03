@@ -7,8 +7,7 @@
 #include <chlasm/Enum.h>        /* For enum VORTEX_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
-#include "MobileStatic.h"  /* For struct MobileStatic */
-#include "MultiMapFixed.h" /* For struct MultiMapFixedVftable */
+#include "MobileStatic.h" /* For struct MobileStatic */
 
 // Forward Declares
 

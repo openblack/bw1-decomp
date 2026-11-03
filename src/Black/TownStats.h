@@ -10,7 +10,6 @@
 
 // Forward Declares
 
-struct BaseVftable;
 class Abode;
 class BuildingSite;
 class GPlayer;

@@ -9,7 +9,7 @@
 
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
-#include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "LHPTR.h"            /* For class LHPTR */
 
 // Forward Declares

@@ -15,7 +15,7 @@
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "LHPTR.h"            /* For LHPTR */
 #include "MapCoords.h"        /* For struct MapCoords */
-#include "MultiMapFixed.h"    /* For struct MultiMapFixed, struct MultiMapFixedVftable */
+#include "MultiMapFixed.h"    /* For struct MultiMapFixed */
 #include "Object.h"           /* For struct Object */
 #include "Villager.h"         /* For struct Villager */
 
@@ -43,14 +43,11 @@ class GPlayer;
 class GTribeInfo;
 class GameOSFile;
 class GameThing;
-struct GameThingVftable;
-struct GameThingWithPosVftable;
 struct FragMesh;
 struct LH3DMesh;
 struct LH3DSmoke;
 class LHOSFile;
 struct LHPoint;
-struct ObjectVftable;
 struct PhysOb;
 class PhysicsObject;
 class PlannedMultiMapFixed;

@@ -8,7 +8,7 @@
 #include <re_common.h>                        /* For bool32_t */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
 
-#include "Base.h" /* For struct Base, struct BaseVftable */
+#include "Base.h" /* For struct Base */
 
 enum GAME_THING_TYPE
 {

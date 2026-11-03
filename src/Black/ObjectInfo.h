@@ -8,7 +8,7 @@
 #include <chlasm/Enum.h> /* For enum ALIGNMENT_TYPE, enum IMMERSION_EFFECT_TYPE, enum OBJECT_TYPE, enum SOUND_COLLISION_TYPE, enum TRIBE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
-#include "BaseInfo.h"      /* For struct GBaseInfo, struct GBaseInfoVftable */
+#include "BaseInfo.h"      /* For struct GBaseInfo */
 #include "EffectNumbers.h" /* For struct EffectNumbers */
 #include "InfoLoaders.h"   /* For INFO_DATA_BLOCK */
 

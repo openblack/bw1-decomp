@@ -6,8 +6,7 @@
 
 #include <chlasm/Enum.h> /* For enum PARTICLE_TYPE */
 
-#include "GameThing.h" /* For struct GameThingVftable */
-#include "PSysBase.h"  /* For struct PSysBase */
+#include "PSysBase.h" /* For struct PSysBase */
 
 // Forward Declares
 

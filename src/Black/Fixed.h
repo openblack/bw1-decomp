@@ -6,7 +6,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#include "Object.h" /* For struct Object, struct ObjectVftable */
+#include "Object.h" /* For struct Object */
 
 #define FIXED_ARTIFACT_SEARCH_RADIUS 50.0f
 
@@ -18,9 +18,7 @@ class GInterfaceStatus;
 class GObjectInfo;
 class GameOSFile;
 class GameThing;
-struct GameThingVftable;
 class GameThingWithPos;
-struct GameThingWithPosVftable;
 struct GestureSystemPacketData;
 struct MapCell;
 struct MapCoords;

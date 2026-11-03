@@ -7,7 +7,7 @@
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>          /* For struct LHListNode */
 #include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h> /* For class LHOrderedLinkedList */
 
-#include "Container.h" /* For struct Container, struct ContainerVftable */
+#include "Container.h" /* For struct Container */
 #include "Tree.h"      /* For struct Tree */
 
 // Forward Declares

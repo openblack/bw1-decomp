@@ -18,7 +18,7 @@
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "LHPTR.h"            /* For class LHPTR */
 #include "LivingAction.h"     /* For enum LIVING_ACTION_INDEX, struct LivingAction */
-#include "MobileWallHug.h"    /* For struct MobileWallHug, struct MobileWallHugVftable */
+#include "MobileWallHug.h"    /* For struct MobileWallHug */
 #include "Object.h"           /* For struct Object */
 
 // Forward Declares
@@ -33,12 +33,10 @@ class GFootpathNode;
 class GInterfaceStatus;
 class GLivingInfo;
 class GameOSFile;
-struct GameThingVftable;
 struct GestureSystemPacketData;
 struct JustMapXZ;
 struct LHPoint;
 struct MapCoords;
-struct ObjectVftable;
 class PhysicsObject;
 class Reaction;
 

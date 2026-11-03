@@ -5,7 +5,7 @@
 #include <stdint.h>                           /* For uint32_t */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
-#include "Fixed.h" /* For struct SingleMapFixed, struct SingleMapFixedVftable */
+#include "Fixed.h" /* For struct SingleMapFixed */
 
 // Forward Declares
 

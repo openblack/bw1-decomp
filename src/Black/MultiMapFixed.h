@@ -8,7 +8,7 @@
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum RESOURCE_TYPE */
 #include <re_common.h>   /* For bool32_t */
 
-#include "Fixed.h"            /* For struct Fixed, struct FixedVftable */
+#include "Fixed.h"            /* For struct Fixed */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MapCoords.h"        /* For struct JustMapXZ */
 #include "Object.h"           /* For struct Object */
@@ -30,8 +30,6 @@ class GPlayer;
 class GameOSFile;
 class GameThing;
 class Game3DObject;
-struct GameThingVftable;
-struct GameThingWithPosVftable;
 struct FragMesh;
 struct LH3DMesh;
 class LHOSFile;
@@ -39,7 +37,6 @@ class Living;
 struct MapCell;
 struct MapCoords;
 class NewCollide;
-struct ObjectVftable;
 class PlannedMultiMapFixed;
 class PotStructure;
 class Town;

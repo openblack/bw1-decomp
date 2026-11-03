@@ -9,7 +9,7 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>   /* For struct LHLinkedList */
 #include <re_common.h>                            /* For bool32_t */
 
-#include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
+#include "GameThing.h" /* For struct GameThing */
 #include "Villager.h"  /* For struct Villager */
 
 // Forward Declares

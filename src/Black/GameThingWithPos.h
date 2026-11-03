@@ -20,7 +20,7 @@
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>    /* For LHListNode */
 
 #include "CreatureBeliefType.h" /* For enum CREATURE_BELIEF_TYPE */
-#include "GameThing.h"          /* For struct GameThing, struct GameThingVftable */
+#include "GameThing.h"          /* For struct GameThing */
 #include "MapCoords.h"          /* For struct MapCoords */
 
 // Forward Declares

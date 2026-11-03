@@ -6,7 +6,7 @@
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For LHLinkedList */
 
-#include "Spell.h" /* For struct Spell, struct SpellVftable */
+#include "Spell.h" /* For struct Spell */
 
 // Forward Declares
 

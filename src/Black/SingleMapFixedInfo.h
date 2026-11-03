@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "ObjectInfo.h"  /* For struct GObjectInfo, struct GObjectInfoVftable */
+#include "ObjectInfo.h"  /* For struct GObjectInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares

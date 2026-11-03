@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint16_t, uint32_t */
 
 #include "MobileInfo.h" /* For class GMobileInfo */
-#include "Object.h"     /* For struct Object, struct ObjectVftable */
+#include "Object.h"     /* For struct Object */
 
 // Forward Declares
 
