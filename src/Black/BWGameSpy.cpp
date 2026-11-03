@@ -283,7 +283,7 @@ void BWGameSpy::SendMessageA(wchar_t* message, bool private_message, MPFEPlayerD
 		if (player != NULL)
 		{
 			char nick[0x200];
-			sprintf(nick, IRC_NICK_FORMAT, player->ID.id);
+			sprintf(nick, IRC_NICK_FORMAT, player->DatabaseID.id);
 			peerMessagePlayer(LHNetBase::Instance.Peer, nick, text, NormalMessage);
 		}
 	}
@@ -300,7 +300,7 @@ void BWGameSpy::SendMessageA(const char* message, bool private_message, MPFEPlay
 		if (player != NULL)
 		{
 			char nick[0x200];
-			sprintf(nick, IRC_NICK_FORMAT, player->ID.id);
+			sprintf(nick, IRC_NICK_FORMAT, player->DatabaseID.id);
 			peerMessagePlayer(LHNetBase::Instance.Peer, nick, message, NormalMessage);
 		}
 	}
@@ -360,7 +360,7 @@ void BWGameSpy::PlayerKickedCallback(PEER peer, RoomType roomType, const char* n
 {
 #ifndef VERSION_BW1W100
 	LH_USER_ID id;
-	wchar_t    name[MPFEPlayerDetails::NAME_SIZE * 2];
+	wchar_t    name[0x100];
 	GetLHUIDFromIRCNick(nick, &id);
 	wcscpy(name, MPFEData::Data.GetPlayerDetailsFromDatabaseID(id)->GetName());
 	MPFEData::Data.A2D_LeaveGameChannel();
@@ -652,7 +652,7 @@ void BWGameSpy::PlayerLeftCallback(PEER peer, RoomType roomType, const char* nic
 	{
 		return;
 	}
-	MPFEData::Data.D_PlayerLeft(player->ID, player->GetName());
+	MPFEData::Data.D_PlayerLeft(player->DatabaseID, player->GetName());
 	if (MPFEData::Data.IsHost)
 	{
 		peerStateChanged(LHNetBase::Instance.Peer);
@@ -1055,7 +1055,7 @@ void BWGameSpy::GOAPlayersCallback(PEER peer, PEERBool playing, char* outbuf, in
 		{
 			strcat(outbuf,
 			       LHSPrintf(GOA_PLAYER_FORMAT, index, (char*)LHSPrintf("%s", ENCODE_NAME(node->GetData()->Name)),
-			                 index, node->GetData()->ID));
+			                 index, node->GetData()->DatabaseID));
 			index++;
 		}
 	}
@@ -1063,11 +1063,11 @@ void BWGameSpy::GOAPlayersCallback(PEER peer, PEERBool playing, char* outbuf, in
 	     node = node->next.Get())
 	{
 		MPFEPlayerDetails* player = node->payload;
-		if (player->ID.IsValid())
+		if (player->DatabaseID.IsValid())
 		{
 			// The original passes outbuf as the format; the real format string becomes an argument.
 			strcat(outbuf, LHSPrintf(outbuf, GOA_PLAYER_FORMAT, index,
-			                         (char*)LHSPrintf("%s", ENCODE_NAME(player->Name)), index, player->ID));
+			                         (char*)LHSPrintf("%s", ENCODE_NAME(player->Name)), index, player->DatabaseID));
 		}
 	}
 }
@@ -1315,7 +1315,7 @@ void BWGameSpy::KickPlayerFromChannel(MPFEPlayerDetails* player)
 #ifdef VERSION_BW1W100
 	strcpy(nick, LHSPrintf("%s", ENCODE_NAME(player->GetName())));
 #else
-	strcpy(nick, LHSPrintf(IRC_NICK_FORMAT, player->ID.id));
+	strcpy(nick, LHSPrintf(IRC_NICK_FORMAT, player->DatabaseID.id));
 #endif
 	chatKickUser(Chat, channel, nick,
 	             "You are either not using a Black & White compatible client or the host has kicked you because he "

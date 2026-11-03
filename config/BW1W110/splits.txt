@@ -1636,16 +1636,18 @@ Black/MPFEGameStartMessages.cpp:
 
 Black/MPFELogin.cpp:
 	.text       start:0x00627A30 end:0x00628500
-	.rdata      start:0x009208E0 end:0x00920914
+	.rdata      start:0x009208E0 end:0x0092091C
 	.CRT$XCU    start:0x009B6B74 end:0x009B6B80 align:4
 
 Black/MPFEMapMessages.cpp:
-	.text       start:0x00628500 end:0x006288A0
-	.rdata      start:0x00920914 end:0x00920934
+	.text       start:0x00628500 end:0x006287F0
+	.rdata      start:0x0092091C end:0x00920934
 	.CRT$XCU    start:0x009B6B80 end:0x009B6B84 align:4
+	.data       start:0x00BECD10 end:0x00BECD84
+	.bss        start:0x00D2FD6C end:0x00D2FD70
 
 Black/MPFEPlayerDetails.cpp:
-	.text       start:0x006288A0 end:0x0062A550
+	.text       start:0x006287F0 end:0x0062A550
 	.rdata      start:0x00920934 end:0x00920958
 	.CRT$XCU    start:0x009B6B84 end:0x009B6B90 align:4
 	.data       start:0x00BECE18 end:0x00BECEF4

@@ -198,7 +198,11 @@ static_assert(offsetof(GPlayer, type) == 0xf8, "GPlayer layout is incorrect");
 #endif
 static_assert(offsetof(ChannelBox, ConditionEnabled) == 0xac4, "ChannelBox condition offset is incorrect");
 static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
+#if defined(VERSION_BW1WCI)
+static_assert(offsetof(MPFEData, ActiveDialog) == 0xa78, "MPFEData dialog offset is incorrect");
+#else
 static_assert(offsetof(MPFEData, ActiveDialog) == 0xa64, "MPFEData dialog offset is incorrect");
+#endif
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(MPFEData, Conditions) == 0x15d4, "MPFEData condition offset is incorrect");
 #endif
@@ -849,7 +853,7 @@ uint32_t GGame::InitOneTimeOnly()
 		internetOptions = 2;
 	}
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	MultiplayerTimeLimit = 30;
+	MultiplayerTimeLimit = GAME_DEFAULT_MULTIPLAYER_TIME_LIMIT;
 #endif
 	Report3D__FPCce("LHCheckForInternetConnection\n");
 	InternetAvailable = LHCheckForInternetConnection(internetOptions);
@@ -1229,7 +1233,7 @@ bool32_t GGame::Close()
 	ClearMap();
 	climate = NULL;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	MultiplayerTimeLimit = 30;
+	MultiplayerTimeLimit = GAME_DEFAULT_MULTIPLAYER_TIME_LIMIT;
 #endif
 	GameThing::ProcessDeadList(1);
 	time_t currentTime;

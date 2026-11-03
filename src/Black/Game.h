@@ -34,7 +34,8 @@
 #include "Setup.h"
 #include "TerrainMap.h" /* For struct GTerrainMap */
 
-#define GAME_MILLISECONDS_PER_TURN 100
+#define GAME_MILLISECONDS_PER_TURN          100
+#define GAME_DEFAULT_MULTIPLAYER_TIME_LIMIT 30
 
 enum GAME_VIEW_MODE
 {

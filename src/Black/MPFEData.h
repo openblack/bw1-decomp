@@ -8,12 +8,43 @@
 #include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h> /* For LHOrderedLinkedList */
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUser.h>   /* For struct LH_USER_ID */
 
+#include <Lionhead/LHMultiplayer/ver4.0/LHDatabase.h>     /* For struct DBInfo */
+#include <Lionhead/LHMultiplayer/ver4.0/LHFileDownload.h> /* For class LHFileDownload */
+
+#include "MPFECreatureDownload.h" /* For class MPFECreatureDownload */
+#include "MPFEFileTransfer.h"     /* For class MPFEFileTransfer */
+#include "MPFEMapDownload.h"      /* For class MPFEMapDownload */
+#include "MPFEThumbDownload.h"    /* For class MPFEThumbDownload */
+#include "ServerLandscapeMap.h"   /* For class ServerLandscapeMap */
 #include "WinCondition.h"
+
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+#include <utility> /* For std::pair */
+#include <vector>  /* For std::vector */
+#endif
 
 class ChannelBox;
 class LayerCommunication;
+class LHSession;
+struct LandscapeDetails;
 struct MPFEChannelDetails;
 struct MPFEPlayerDetails;
+
+struct MPFETeamDetails
+{
+	wchar_t       Name[0x100];
+	unsigned long ClanID;      /* 0x200 */
+	unsigned long ClanSetByID; /* 0x204 */
+#if defined(VERSION_BW1WCI)
+	bool field_0x208;
+#endif
+};
+
+struct MPFEInviteDetails
+{
+	wchar_t       Name[0x100];
+	unsigned long Team; /* 0x200 */
+};
 
 class MPFEData
 {
@@ -25,30 +56,61 @@ public:
 	};
 
 	LHOrderedLinkedList<MPFEPlayerDetails> Teams[MAX_TEAMS];
-	uint8_t                                field_0x28[0xa34];
+	MPFETeamDetails                        TeamDetails[MAX_TEAMS]; /* 0x28 */
+	float                                  DownloadPercentage;
+	float                                  DownloadSpeed;
+	MPFEPlayerDetails*                     SelectedPlayer;
 	MPFEChannelDetails*                    CurrentChannel;
 	LayerCommunication*                    Layer;
 	ChannelBox*                            ActiveDialog;
-	uint8_t                                field_0xa68[0x6c];
+	LHFileDownload                         FileDownload;
 	LHLinkedList<MPFEPlayerDetails*>       UnassignedPlayers;
-	uint8_t                                field_0xadc[0xae8];
+	LHLinkedList<MPFEPlayerDetails*>       PlayersTransferringFiles;
+	LHLinkedList<MPFEPlayerDetails*>       field_0xae4;
+	LHLinkedList<void*>                    field_0xaec;
+	LHLinkedList<unsigned long*>           TeamJoinRequests;
+	LHLinkedList<MPFEInviteDetails*>       Invites;
+	LHLinkedList<MPFEPlayerDetails*>       PlayersAwaitingStartReply;
+	MPFEFileTransfer                       FileTransfers[MAX_TEAMS];
+	ServerLandscapeMap                     ThumbnailMap;
+	MPFEMapDownload                        MapDownload; /* 0x1050 */
+	MPFEThumbDownload                      ThumbDownload;
+	MPFECreatureDownload                   ClanCreatureDownload;
 	bool                                   IsOOSGame;
 	bool                                   InGameChannel;
 	bool                                   IsHost;
+	bool                                   HaveTeamList;
+	bool                                   TeamsChanged;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	uint8_t      field_0x15c7[0xa];
-	bool         GameStarting;
-	WinCondition Conditions[WC_LAST];
-	uint8_t      field_0x16c4[0x74];
-	uint32_t     LocalPlayerID;
-	wchar_t      LocalPlayerName[PLAYER_NAME_SIZE];
-#else
-	uint8_t  field_0x15c7[0x7];
-	bool     GameStarting;
-	uint8_t  field_0x15cf[0x69];
-	uint32_t LocalPlayerID;
-	wchar_t  LocalPlayerName[PLAYER_NAME_SIZE];
+	bool SettingsChanged; /* 0x15c9 */
+	bool ReadyChanged;
+	bool TeamsReadyChanged;
+#elif defined(VERSION_BW1WCI)
+	bool TykeStatusChanged;
 #endif
+	bool ClansChanged;
+	bool ProfileWaitingForDatabase;
+	bool MapChanged;
+	bool ProfileRetried;
+	bool TransferringFiles;
+	bool GameStarting;
+	bool StartGameRequested;
+	bool ProfileSent;
+#if defined(VERSION_BW1WCI)
+	bool TykeEnabled;
+#endif
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	WinCondition                      Conditions[WC_LAST];
+	std::vector<std::pair<int, int> > ConditionChanges;
+#endif
+	DBInfo        DatabaseQuery;
+	bool          DatabaseQueryActive;
+	uint32_t      field_0x1724;
+	unsigned long TeamListSequence;
+	uint64_t      MapChecksum;
+	uint32_t      LocalPlayerID;
+	wchar_t       LocalPlayerName[PLAYER_NAME_SIZE];
+	LHSession*    Session;
 
 	// BW1W120 00d3f038
 	static MPFEData Data;
@@ -73,10 +135,42 @@ public:
 	void A2D_LeaveGameChannel();
 	// BW1W120 00622d40 BW1M119 013a00f0
 	MPFEPlayerDetails* GetLocalPlayer();
+	// BW1W120 00622d60 BW1M119 0139ff70
+	MPFEPlayerDetails* GetHostPlayer();
+	// BW1W120 00624180 BW1M119 0139d9b0
+	void FlushTeams();
+	// BW1W120 00620a30 BW1M119 01392a60
+	void D2A_CouldNotDownloadMap();
+	// BW1W120 00623960 BW1M119 0139e6a0
+	void D_FoundMapSetDetails(unsigned long id);
+	// BW1W120 00625180 BW1M119 0139bef0
+	wchar_t* GetMyPlayerName();
+	// BW1W120 00622a00 BW1M119 013a0230
+	void ResetClans();
+	// BW1W120 00625420 BW1M119 0139b8a0
+	void D_SendOutPlayerProfile();
+	// BW1W120 00622dc0 BW1M119 0139fe40
+	MPFEPlayerDetails* GetPlayerDetailsFromName(wchar_t* name);
+	// BW1W120 00622ee0 BW1M119 0139fbf0
+	MPFEPlayerDetails* GetPlayerDetailsFromID(const LH_USER_ID& id);
+	// BW1W120 006251e0 BW1M119 0139bbd0
+	MPFEPlayerDetails* GetLowestNumberedPlayer();
+	// BW1W120 006252b0 BW1M119 0139bdb0
+	MPFEPlayerDetails* GetHighestNumberedPlayer();
+	// BW1W120 006203d0 BW1M119 01393090
+	void D2A_UpdateThumbnail(unsigned long id);
+	// BW1W120 006239a0 BW1M119 0139e5c0
+	void A2D_RequestForClanDetails(wchar_t* name);
+	// BW1W120 006239c0 BW1M119 0139e520
+	void A2D_RequestForPlayerDetails(wchar_t* name);
 	// BW1W120 00622e60 BW1M119 0139fcd0
 	MPFEPlayerDetails* GetPlayerDetailsFromDatabaseID(LH_USER_ID id);
 	// BW1W120 00620770 BW1M119 01392db0
 	void D2A_YouWereKickedGame(wchar_t* name);
+	// BW1W120 006208c0 BW1M119 01392c60
+	void D2A_RefreshTeams();
+	// BW1W120 00620b80 BW1M119 01392910
+	void D2A_PersonCouldNotDownload(wchar_t* name);
 	// BW1W120 006241f0 BW1M119 0139d6f0
 	void D_PlayerJoined(const char* nick, LH_USER_ID id);
 	// BW1W120 006244a0 BW1M119 0139cad0
@@ -87,8 +181,18 @@ public:
 	void D_FinishedPlayerEnumeration(int count);
 	// BW1W120 00624f20 BW1M119 0139bfb0
 	void D_EnumeratingPlayersAdd(const char* nick, bool host, LH_USER_ID id);
+	// BW1W120 00626020 BW1M119 0139a880
+	LandscapeDetails* A2D_GetLandscapeDetailsFromID(unsigned long id);
 	// BW1W120 00626360 BW1M119 01399ee0
 	uint64_t GetOOSChecksum();
 };
+
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+static_assert(sizeof(MPFEData) == 0x1840, "MPFEData size is incorrect");
+#elif defined(VERSION_BW1WCI)
+static_assert(sizeof(MPFEData) == 0x1750, "MPFEData size is incorrect");
+#else
+static_assert(sizeof(MPFEData) == 0x1740, "MPFEData size is incorrect");
+#endif
 
 #endif /* BW1_DECOMP_MPFE_DATA_INCLUDED_H */

@@ -12,6 +12,8 @@
 
 #include "Base.h" /* For struct Base */
 
+class HelpSystem;
+
 class HelpText : public Base
 {
 public:
@@ -44,6 +46,11 @@ public:
 
 	// BW1W120 005cad40 BW1M119 0135f9e0
 	HelpText(const LHRegion& region);
+
+	// BW1W120 005cb090 BW1M119 0135f510
+	static HelpText* Create(const LHRegion& region, HelpSystem* help_system);
+	// BW1W120 005cb020 BW1M119 0135f670
+	void Reset(bool full);
 };
 
 // Database entries are 12 bytes, distinct from the on-screen HelpText object.

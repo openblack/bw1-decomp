@@ -1519,16 +1519,18 @@ Black/MPFEGameStartMessages.cpp:
 
 Black/MPFELogin.cpp:
 	.text       start:0x005E3380 end:0x005E3E30
-	.rdata      start:0x0086E1E0 end:0x0086E214
+	.rdata      start:0x0086E1E0 end:0x0086E21C
 	.CRT$XCU    start:0x008F6B2C end:0x008F6B38 align:4
 
 Black/MPFEMapMessages.cpp:
-	.text       start:0x005E3E30 end:0x005E4170
-	.rdata      start:0x0086E214 end:0x0086E234
+	.text       start:0x005E3E30 end:0x005E40C0
+	.rdata      start:0x0086E21C end:0x0086E234
 	.CRT$XCU    start:0x008F6B38 end:0x008F6B3C align:4
+	.data       start:0x00B21938 end:0x00B219AC
+	.bss        start:0x00C61E34 end:0x00C61E38
 
 Black/MPFEPlayerDetails.cpp:
-	.text       start:0x005E4170 end:0x005E5CB0
+	.text       start:0x005E40C0 end:0x005E5CB0
 	.rdata      start:0x0086E234 end:0x0086E258
 	.CRT$XCU    start:0x008F6B3C end:0x008F6B48 align:4
 	.data       start:0x00B21A50 end:0x00B21AF8
