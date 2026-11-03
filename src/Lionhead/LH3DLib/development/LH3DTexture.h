@@ -79,9 +79,9 @@ struct LH3DTexture;
 struct LH3DSRAMTex
 {
 	LH3DTexture*  Texture;
-	uint32_t      field_0x4;
+	LH3DSRAMTex*  Next;
 	uint16_t*     SoftSurface;
-	uint32_t      field_0xc;
+	uint16_t*     Buffer;
 	TextureFormat Format;
 
 	// Static methods
@@ -89,24 +89,44 @@ struct LH3DSRAMTex
 	// BW1W120 008701f0 BW1M119 010b6560 (LHCombined Release)
 	static bool32_t Open();
 	// BW1W120 00870230 BW1M119 010b64b0 (LHCombined Release)
-	static void Close();
+	static bool32_t Close();
 	// BW1W120 00870310 BW1M119 010b6220 (LHCombined Release)
 	static LH3DSRAMTex* Create(LH3DTexture* texture);
+	// BW1W120 00870270 BW1M119 010b62c0 (LHCombined Release)
+	static LH3DSRAMTex* GetElderOrFree();
+	// BW1W120 00870480 BW1M119 010b5f10 (LHCombined Release)
+	static void ReleaseAll();
+	// BW1W120 008710c0 BW1M119 null
+	static void SaveAllToTGA();
 
 	// Non-virtual methods
 
+	// BW1W120 00870380 BW1M119 010b60c0 (LHCombined Release)
+	LH3DSRAMTex(LH3DTexture* texture);
+	// BW1W120 00870410 BW1M119 010b5fc0 (LHCombined Release)
+	~LH3DSRAMTex();
 	// BW1W120 00870610 BW1M119 010b5d00 (LHCombined Release)
 	void Release();
 	// BW1W120 008704c0 BW1M119 010b52c0 (LHCombined Release)
 	void __fastcall Copy(IDirectDrawSurface7* surface);
+	// BW1W120 00870fb0 BW1M119 010b5eb0 (LHCombined Release)
+	void LoadInSRAM(IDirectDrawSurface7* surface);
 	// BW1W120 008709d0 BW1M119 010b50a0 (LHCombined Release)
-	void CopyInto(uint16_t* source, long width, long height);
+	void CopyInto(uint16_t* source, long width, long pitch);
+	// BW1W120 00871020 BW1M119 010b53e0 (LHCombined Release)
+	void Copy(uint16_t* dest, long height, long width);
+	// BW1W120 00870920 BW1M119 010b5930 (LHCombined Release)
+	uint16_t* Lock256x256(bool32_t discard);
+	// BW1W120 00870990 BW1M119 010b5890 (LHCombined Release)
+	void UnlockLock256x256();
 	// BW1W120 00870640 BW1M119 010b5bb0 (LHCombined Release)
 	void __fastcall Blend(unsigned long blend, LH3DSRAMTex* from, LH3DSRAMTex* to);
 	// BW1W120 008707a0 BW1M119 010b5a50 (LHCombined Release)
 	void __fastcall OrganicBlend(LH3DSRAMTex* from, LH3DSRAMTex* to, float blend);
 	// BW1W120 00870910 BW1M119 01034cf0 (LHCombined Release)
 	uint16_t* GetSoftSurface();
+	// BW1W120 inlined BW1M119 010b6420 (LHCombined Release)
+	LH3DTexture* GetTexture() { return Texture; }
 };
 
 struct LH3DTexture
@@ -207,6 +227,8 @@ struct LH3DTexture
 	uint32_t GetType() { return Flags & LH3D_TEXTURE_FLAGS_TYPE_MASK; }
 	// BW1W120 inlined BW1M119 010b61e0 (LHCombined Release)
 	TextureFormat GetFormat() { return format; }
+	// BW1W120 inlined BW1M119 010b6460 (LHCombined Release)
+	bool32_t IsStatic() { return GetType() == LH3D_TEXTURE_TYPE_SYSTEM_MEMORY; }
 	// BW1W120 inlined BW1M119 inlined
 	uint32_t GetId() { return id; }
 };
