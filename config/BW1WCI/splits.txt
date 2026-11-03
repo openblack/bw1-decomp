@@ -3958,6 +3958,11 @@ Lionhead/LH3DLib/development/LandBlock.cpp:
 	.rdata      start:0x00A13F7C end:0x00A13F84
 	.bss        start:0x0102DD40 end:0x0102DD48
 
+Lionhead/LH3DLib/development/LH3DCT.cpp:
+	.text       start:0x0089E810 end:0x0089EB40
+	.data       start:0x00CAD07C end:0x00CAD08C
+	.bss        start:0x0102DE24 end:0x0102DE28
+
 Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
 	.text       start:0x0089EB40 end:0x0089ED90
 	.bss        start:0x0102DE28 end:0x0102DE30

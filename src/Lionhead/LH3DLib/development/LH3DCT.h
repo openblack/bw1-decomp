@@ -4,6 +4,7 @@
 #include <assert.h>    /* For static_assert */
 #include <ddraw.h>     /* For DDSURFACEDESC2, IDirectDrawSurface7 */
 #include <re_common.h> /* For bool32_t */
+#include <stdint.h>    /* For uint32_t */
 
 // A texture compressed into a DXT surface.
 struct LH3DCT
@@ -17,6 +18,9 @@ struct LH3DCT
 
 	unsigned long        Size;    /* 0x0 */
 	IDirectDrawSurface7* Surface; /* 0x4 */
+
+	// BW1W120 00fa93b8 BW1M119 011e3d7c (LHCombined Release)
+	static uint32_t g_total_mem_used;
 
 	// BW1W120 0087f6d0 BW1M119 0115fee0 (LHCombined Release)
 	static LH3DCT* Create(DataOnDisk* data, bool32_t alpha);

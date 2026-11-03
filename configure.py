@@ -1835,6 +1835,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSRAMTex.cpp", extra_cflags=["/GX"]),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DLandscape.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LandBlock.cpp", extra_cflags=["/GX"], pch=True),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DCT.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DSubMesh.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/SRTextured.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DEye.cpp", pch=True),
