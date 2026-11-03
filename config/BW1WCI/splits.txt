@@ -3966,6 +3966,10 @@ Lionhead/LH3DLib/development/LH3DEye.cpp:
 	.data       start:0x00CAD79C end:0x00CAD924
 	.bss        start:0x0102F254 end:0x0102F260
 
+Lionhead/LH3DLib/development/LH3DVB.cpp:
+	.text       start:0x008A36F0 end:0x008A39F0
+	.bss        start:0x0102F260 end:0x0102F284
+
 lib/libcimt/filebuf.obj:
 	.rdata      start:0x00A14124 end:0x00A1416C
 	.rdata$r    start:0x00A2C4A0 end:0x00A2C628

@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t */
 
+#include <windows.h> /* For HRESULT */
+
 #include "LHCoordF.h" /* For struct LHCoordF */
 #include "LHPoint.h"  /* For struct LHPoint */
 
@@ -16,9 +18,27 @@ struct LH3DVBVertex
 };
 static_assert(sizeof(LH3DVBVertex) == 0x20, "Data type is of wrong size");
 
+struct IDirect3DVertexBuffer7;
+
+// Number of vertices in each dynamic vertex buffer.
+#define LH3D_VB_VERTEX_COUNT 0x1000
+
+// The most vertices a single Lock call can request.
+#define LH3D_VB_MAX_LOCK_VERTICES 0x800
+
 // The dynamic vertex buffers.
 struct LH3DVB
 {
+	// BW1W120 00faa7f4 BW1M119 01342174 (LHCombined Release)
+	static void* vbpooldataMT;
+	// BW1W120 00faa7f8 BW1M119 01342184 (LHCombined Release)
+	static bool32_t inited;
+	// BW1W120 00faa7fc BW1M119 01342188 (LHCombined Release)
+	static void* vbpooldata;
+	// BW1W120 00faa800 BW1M119 01342178 (LHCombined Release)
+	static IDirect3DVertexBuffer7* vbpoolMT;
+	// BW1W120 00faa804 BW1M119 0134218c (LHCombined Release)
+	static IDirect3DVertexBuffer7* vbpool;
 	// BW1W120 00faa808 BW1M119 0134216c (LHCombined Release)
 	static int curvmt;
 	// BW1W120 00faa80c BW1M119 0134217c (LHCombined Release)
@@ -29,13 +49,17 @@ struct LH3DVB
 	static bool32_t newframe;
 
 	// BW1W120 008845b0 BW1M119 010cacb0 (LHCombined Release)
-	static void Init();
+	static HRESULT Init();
 	// BW1W120 00884680 BW1M119 010cabf0 (LHCombined Release)
 	static void Close();
 	// BW1W120 008846d0 BW1M119 010caaf0 (LHCombined Release)
 	static void* Lock(int vertex_count);
 	// BW1W120 00884750 BW1M119 010ca880 (LHCombined Release)
 	static void UnlockAndDraw(int vertex_count, uint16_t* indices, int index_count);
+	// BW1W120 008847e0 BW1M119 010ca780 (LHCombined Release)
+	static void* LockMT(int vertex_count);
+	// BW1W120 00884860 BW1M119 010ca6b0 (LHCombined Release)
+	static void UnlockAndDrawMT(int vertex_count, uint16_t* indices, int index_count);
 };
 
 #endif /* BW1_DECOMP_LH3D_VB_INCLUDED_H */

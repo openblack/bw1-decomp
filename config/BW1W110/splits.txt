@@ -3914,6 +3914,10 @@ Lionhead/LH3DLib/development/LH3DEye.cpp:
 	.data       start:0x00C29028 end:0x00C291B0
 	.bss        start:0x00F991B0 end:0x00F991BC
 
+Lionhead/LH3DLib/development/LH3DVB.cpp:
+	.text       start:0x008743C0 end:0x008746C0
+	.bss        start:0x00F991BC end:0x00F991E0
+
 GameSpy/Peer/peerMain.c:
 	.text       start:0x008746D0 end:0x00875FA0
 	.data       start:0x00C291B0 end:0x00C291D4
