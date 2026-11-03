@@ -4384,6 +4384,11 @@ Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
 Lionhead/LH3DLib/development/SRTextured.cpp:
 	.text       start:0x00881050 end:0x008826C0
 
+Lionhead/LH3DLib/development/LH3DEye.cpp:
+	.text       start:0x00883560 end:0x008845B0
+	.data       start:0x00C3A1D8 end:0x00C3A360
+	.bss        start:0x00FAA7E8 end:0x00FAA7F4
+
 GameSpy/Peer/peerMain.c:
 	.text       start:0x008848C0 end:0x00886190
 	.data       start:0x00C3A360 end:0x00C3A384
