@@ -1,46 +1,55 @@
 #include "LH3DIsland.h"
 
-#include <math.h>
-#include <windows.h>
+#include <math.h> /* For sqrt */
 
-#include "LH3DColor.h"     /* For LH3DColor, LH3D_SCALE_COLOR */
-#include "LH3DMapCoords.h" /* For LH3DMapCoords, MAP_COORDS_METRES_PER_CELL */
-#include "LH3DMaterial.h"
-#include "LH3DMath.h" /* For FloatToInt */
-#include "LH3DMem.h"
-#include "LH3DObject.h"
-#include "LH3DPrimitive.h" /* For LH3DObject */
+#include "LH3DColor.h"     /* For LH3D_SCALE_COLOR */
+#include "LH3DMaterial.h"  /* For LH3DMaterial */
+#include "LH3DMath.h"      /* For FloatToInt */
+#include "LH3DMem.h"       /* For LH3DMem */
+#include "LH3DObject.h"    /* For LH3DObject */
 #include "LH3DP3.h"        /* For LH3DP3 */
+#include "LH3DPrimitive.h" /* For GetLightLevel */
 #include "LH3DRender.h"    /* For LH3DRender */
 #include "LH3DTech.h"      /* For LH3DTech */
-#include "LH3DTexture.h"
-#include "LH3DVertex.h" /* For Vertex3D */
-#include "MeshLodInfo.h"
-#include "TShadowInfo.h" /* For TShadowInfo */
+#include "LH3DTexture.h"   /* For LH3DTexture */
+#include "MeshLodInfo.h"   /* For MeshLodInfo */
+#include "TShadowInfo.h"   /* For TShadowInfo */
 
-bool32_t   LandBlock::g_draw_reflection;
-LandBlock* LandBlock::g_first_sorting;
+#define LAND_LOW_RES_TILE_SCALE     (62.0f / 256.0f)
+#define LAND_SMALL_BUMP_TILING      12.0f
+#define LAND_LIGHT_MAP_PIXEL_SIZE   3
+#define LAND_CELL_METRES            10
+#define LAND_LIGHTING_SAMPLE_OFFSET 0.1f
+#define LAND_LIGHT_AXES             3.0
 
-#define LAND_LOW_RES_TILE_SCALE (62.0f / 256.0f)
-#define LAND_LOW_RES_TILE_INSET (1.0f / 255.0f)
-#define LAND_SMALL_BUMP_TILING  12.0f
+inline float Reciprocal(float value)
+{
+	return 1.0f / value;
+}
 
-#define ADD_TRIANGLE(v0, v1, v2)                                                                                       \
-	{                                                                                                                  \
-		LH3DTech::g_list_indices[LH3DTech::g_index_count++] = v0;                                                      \
-		LH3DTech::g_list_indices[LH3DTech::g_index_count++] = v1;                                                      \
-		LH3DTech::g_list_indices[LH3DTech::g_index_count++] = v2;                                                      \
-	}
+#define LOW_RES_TILE_INSET Reciprocal(LOW_RES_TEXTURE_SIZE - 1)
+
+inline bool32_t IsFrontFacing(uint16_t a, uint16_t b, uint16_t c)
+{
+	Vertex3D* points = LH3DTech::g_cache_t_points;
+	return (points[c].y - points[a].y) * (points[b].x - points[a].x) -
+	           (points[b].y - points[a].y) * (points[c].x - points[a].x) >
+	       0.0f;
+}
+
+inline void AddTriangle(uint16_t a, uint16_t b, uint16_t c)
+{
+	LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
+	LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
+	LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
+}
+
+#define ADD_TRIANGLE(v0, v1, v2) AddTriangle(v0, v1, v2);
 
 #define ADD_TRIANGLE_IF_FRONT(v0, v1, v2)                                                                              \
+	if (IsFrontFacing(v0, v1, v2))                                                                                     \
 	{                                                                                                                  \
-		Vertex3D* p2 = &LH3DTech::g_cache_t_points[v2];                                                                \
-		Vertex3D* p0 = &LH3DTech::g_cache_t_points[v0];                                                                \
-		Vertex3D* p1 = &LH3DTech::g_cache_t_points[v1];                                                                \
-		if ((p1->x - p0->x) * (p2->y - p0->y) - (p2->x - p0->x) * (p1->y - p0->y) > 0.0f)                              \
-		{                                                                                                              \
-			ADD_TRIANGLE(v0, v1, v2)                                                                                   \
-		}                                                                                                              \
+		ADD_TRIANGLE(v0, v1, v2)                                                                                       \
 	}
 
 #define ADD_TRIANGLE_CLIPPED(v0, v1, v2)                                                                               \
@@ -178,6 +187,19 @@ LandBlock* LandBlock::g_first_sorting;
 		}                                                                                                              \
 	}
 
+#define LAND_BLEND_8(from, to, fraction) (((((to) - (from)) * (fraction) >> 8) + (from)) & 0xff)
+
+#define LAND_LIGHT_CHANNEL(light, map, row, channel, frac_z, frac_x, intensity)                                        \
+	{                                                                                                                  \
+		unsigned long top = LAND_BLEND_8((map)[channel], (map)[(channel) + LAND_LIGHT_MAP_PIXEL_SIZE], frac_z);        \
+		unsigned long bottom =                                                                                         \
+			LAND_BLEND_8((map)[(row) + (channel)], (map)[(row) + (channel) + LAND_LIGHT_MAP_PIXEL_SIZE], frac_z);      \
+		light = LAND_BLEND_8(top, bottom, frac_x) * (intensity) / LAND_CELL_MAX_DARKNESS;                              \
+	}
+
+LandBlock* LandBlock::g_first_sorting = NULL;
+bool32_t   LandBlock::g_draw_reflection = false;
+
 bool32_t LandBlock::Draw()
 {
 	if (LH3DTech::g_b_P3)
@@ -195,28 +217,29 @@ bool32_t LandBlock::Draw()
 	if (TextureLod == LAND_TEXTURE_LOD_LOW)
 	{
 		uvStep *= LAND_LOW_RES_TILE_SCALE;
-		startV = LowResV + LAND_LOW_RES_TILE_INSET;
-		startU = LowResU + LAND_LOW_RES_TILE_INSET;
+		startV = LowResV + LOW_RES_TILE_INSET;
+		startU = LowResU + LOW_RES_TILE_INSET;
 	}
 	float     x = X;
 	LandCell* cell = &Cells[0][0];
 	int       xi = 0;
 	int       zi;
-	int       count = 0;
+	float     y;
+	float     z;
 	LH3DColor fogColor;
 	uint32_t  fadeWeight;
 	if (FogMode != LAND_FOG_NONE)
 	{
 		for (; xi < LAND_BLOCK_SIDE_POINTS; xi += step)
 		{
-			float z = Z;
+			z = Z;
 			float tu = startU;
 			for (zi = 0; zi < LAND_BLOCK_SIDE_POINTS;)
 			{
 				vertex->specular = *(uint32_t*)cell | 0xff000000;
 				vertex->color = LandCell::g_darkness_to_color[cell->darkness];
-				int   altitude = cell->altitude;
-				float y = altitude * LH3DIsland::g_height_unit;
+				int altitude = cell->altitude;
+				y = altitude * LH3DIsland::g_height_unit;
 				if (altitude <= LAND_CELL_SEA_ALTITUDE)
 				{
 					y = 0.0f;
@@ -376,14 +399,14 @@ bool32_t LandBlock::Draw()
 	{
 		for (; xi < LAND_BLOCK_SIDE_POINTS; xi += step)
 		{
-			float z = Z;
+			z = Z;
 			float tu = startU;
 			for (zi = 0; zi < LAND_BLOCK_SIDE_POINTS;)
 			{
 				vertex->specular = *(uint32_t*)cell | 0xff000000;
+				int altitude = cell->altitude;
 				vertex->color = LandCell::g_darkness_to_color[cell->darkness];
-				int   altitude = cell->altitude;
-				float y = altitude * LH3DIsland::g_height_unit;
+				y = altitude * LH3DIsland::g_height_unit;
 				if (altitude <= LAND_CELL_SEA_ALTITUDE)
 				{
 					y = 0.0f;
@@ -514,16 +537,16 @@ bool32_t LandBlock::Draw()
 			if (LH3DIsland::g_ptr_blocks[Index]->UseLowResTexture)
 			{
 				LH3DRender::SetMaterial(LowRes->Material, 0);
-				LowResU += LAND_LOW_RES_TILE_INSET;
-				LowResV += LAND_LOW_RES_TILE_INSET;
+				LowResU += LOW_RES_TILE_INSET;
+				LowResV += LOW_RES_TILE_INSET;
 				for (int i = 0; i < LH3DTech::g_points_count; i++)
 				{
 					Vertex3D* point = &LH3DTech::g_cache_t_points[i];
 					point->uv.x = point->uv.x * LAND_LOW_RES_TILE_SCALE + LowResU;
 					point->uv.y = point->uv.y * LAND_LOW_RES_TILE_SCALE + LowResV;
 				}
-				LowResU -= LAND_LOW_RES_TILE_INSET;
-				LowResV -= LAND_LOW_RES_TILE_INSET;
+				LowResU -= LOW_RES_TILE_INSET;
+				LowResV -= LOW_RES_TILE_INSET;
 				LH3DRender::DrawTriangle(LH3DTech::g_cache_t_points, LH3DTech::g_points_count, LH3DTech::g_list_indices,
 				                         LH3DTech::g_index_count);
 				return true;
@@ -539,8 +562,8 @@ bool32_t LandBlock::Draw()
 		{
 			LH3DRender::SetMaterial(LowRes->Material, 0);
 			float alphaScale = 255.0f / LH3DIsland::g_texture_lod.Width;
-			LowResU += LAND_LOW_RES_TILE_INSET;
-			LowResV += LAND_LOW_RES_TILE_INSET;
+			LowResU += LOW_RES_TILE_INSET;
+			LowResV += LOW_RES_TILE_INSET;
 			for (int i = 0; i < LH3DTech::g_points_count; i++)
 			{
 				Vertex3D* point = &LH3DTech::g_cache_t_points[i];
@@ -562,8 +585,8 @@ bool32_t LandBlock::Draw()
 					point->color = (point->color & 0x00ffffff) | (alpha << 24);
 				}
 			}
-			LowResU -= LAND_LOW_RES_TILE_INSET;
-			LowResV -= LAND_LOW_RES_TILE_INSET;
+			LowResU -= LOW_RES_TILE_INSET;
+			LowResV -= LOW_RES_TILE_INSET;
 			LH3DRender::DrawTriangle(LH3DTech::g_cache_t_points, LH3DTech::g_points_count, LH3DTech::g_list_indices,
 			                         LH3DTech::g_index_count);
 		}
@@ -652,6 +675,7 @@ bool32_t LandBlock::Draw()
 				}
 			}
 			int triangles = LH3DTech::g_index_count / 3;
+			int count = 0;
 			for (int i = 0, j = 0; j < triangles; j++, i += 3)
 			{
 				uint16_t a = LH3DTech::g_list_indices[i];
@@ -698,13 +722,15 @@ bool32_t LandBlock::Draw()
 	return drawn;
 }
 
-void LandBlock::CreateListPoly(LandMeshLOD lod)
+void __fastcall LandBlock::CreateListPoly(LandMeshLOD lod)
 {
+#ifndef VERSION_BW1W100
 	if (LH3DTech::g_b_P3)
 	{
 		LH3DP3::CreateListPolyWrapper(this, lod);
 		return;
 	}
+#endif
 	int          rowStep = 1;
 	MeshLodInfo* info = &MeshLodInfo::g_mesh_lod_info[MeshLodType];
 	int          startX;
@@ -780,9 +806,10 @@ void LandBlock::CreateListPoly(LandMeshLOD lod)
 		{
 			for (int z = startZ; z < endZ; z++, cell++)
 			{
-				if ((cell->Flags & LAND_CELL_SUBMERGED) == 0)
+				uint16_t flags = cell->Flags;
+				if ((flags & LAND_CELL_SUBMERGED) == 0)
 				{
-					if (cell->Flags & LAND_CELL_SPLIT)
+					if (flags & LAND_CELL_SPLIT)
 					{
 						ADD_CELL_CLIPPED(v01, v11, v00, v10)
 					}
@@ -859,13 +886,15 @@ void LandBlock::CreateListPoly(LandMeshLOD lod)
 	}
 }
 
-void LandBlock::CreateListPolyUnclipped(LandMeshLOD lod)
+void __fastcall LandBlock::CreateListPolyUnclipped(LandMeshLOD lod)
 {
+#ifndef VERSION_BW1W100
 	if (LH3DTech::g_b_P3)
 	{
 		LH3DP3::CreateListPolyUnclippedWrapper(this, lod);
 		return;
 	}
+#endif
 	int          rowStep = 1;
 	MeshLodInfo* info = &MeshLodInfo::g_mesh_lod_info[MeshLodType];
 	int          startX;
@@ -928,7 +957,7 @@ void LandBlock::CreateListPolyUnclipped(LandMeshLOD lod)
 
 	if (g_draw_reflection)
 	{
-		int swap = v01;
+		uint16_t swap = v01;
 		v01 = v10;
 		v10 = swap;
 	}
@@ -1028,18 +1057,22 @@ void LandBlock::ComputeInfo()
 	}
 	int     maxAltitude = MaxAltitude;
 	LHPoint center;
+	LHPoint size;
 	center.x = X + LAND_BLOCK_WIDTH * 0.5f;
-	float halfHeight;
 	if (LH3DIsland::g_b_draw_reflection)
 	{
 		center.y = 0.0f;
 		center.z = Z + LAND_BLOCK_WIDTH * 0.5f;
-		halfHeight = maxAltitude * LH3DIsland::g_height_unit;
+		size.x = LAND_BLOCK_WIDTH * 0.5f;
+		size.y = maxAltitude * LH3DIsland::g_height_unit;
+		size.z = LAND_BLOCK_WIDTH * 0.5f;
 	}
 	else
 	{
-		halfHeight = maxAltitude * LH3DIsland::g_height_unit * 0.5f;
-		center.y = halfHeight;
+		size.x = LAND_BLOCK_WIDTH * 0.5f;
+		size.y = maxAltitude * LH3DIsland::g_height_unit * 0.5f;
+		size.z = LAND_BLOCK_WIDTH * 0.5f;
+		center.y = size.y;
 		center.z = Z + LAND_BLOCK_WIDTH * 0.5f;
 	}
 
@@ -1056,44 +1089,44 @@ void LandBlock::ComputeInfo()
 		switch (corner)
 		{
 		case 0:
-			point.x = center.x + LAND_BLOCK_WIDTH * 0.5f;
-			point.y = halfHeight + center.y;
-			point.z = center.z + LAND_BLOCK_WIDTH * 0.5f;
+			point.x = center.x + size.x;
+			point.y = center.y + size.y;
+			point.z = center.z + size.z;
 			break;
 		case 1:
-			point.x = center.x - LAND_BLOCK_WIDTH * 0.5f;
-			point.y = halfHeight + center.y;
-			point.z = center.z + LAND_BLOCK_WIDTH * 0.5f;
+			point.x = center.x - size.x;
+			point.y = center.y + size.y;
+			point.z = center.z + size.z;
 			break;
 		case 2:
-			point.x = center.x + LAND_BLOCK_WIDTH * 0.5f;
-			point.y = halfHeight + center.y;
-			point.z = center.z - LAND_BLOCK_WIDTH * 0.5f;
+			point.x = center.x + size.x;
+			point.y = center.y + size.y;
+			point.z = center.z - size.z;
 			break;
 		case 3:
-			point.x = center.x + LAND_BLOCK_WIDTH * 0.5f;
-			point.y = center.y - halfHeight;
-			point.z = center.z + LAND_BLOCK_WIDTH * 0.5f;
+			point.x = center.x + size.x;
+			point.y = center.y - size.y;
+			point.z = center.z + size.z;
 			break;
 		case 4:
-			point.x = center.x - LAND_BLOCK_WIDTH * 0.5f;
-			point.y = halfHeight + center.y;
-			point.z = center.z - LAND_BLOCK_WIDTH * 0.5f;
+			point.x = center.x - size.x;
+			point.y = center.y + size.y;
+			point.z = center.z - size.z;
 			break;
 		case 5:
-			point.x = center.x + LAND_BLOCK_WIDTH * 0.5f;
-			point.y = center.y - halfHeight;
-			point.z = center.z - LAND_BLOCK_WIDTH * 0.5f;
+			point.x = center.x + size.x;
+			point.y = center.y - size.y;
+			point.z = center.z - size.z;
 			break;
 		case 6:
-			point.x = center.x - LAND_BLOCK_WIDTH * 0.5f;
-			point.y = center.y - halfHeight;
-			point.z = center.z - LAND_BLOCK_WIDTH * 0.5f;
+			point.x = center.x - size.x;
+			point.y = center.y - size.y;
+			point.z = center.z - size.z;
 			break;
 		default:
-			point.x = center.x - LAND_BLOCK_WIDTH * 0.5f;
-			point.y = center.y - halfHeight;
-			point.z = center.z + LAND_BLOCK_WIDTH * 0.5f;
+			point.x = center.x - size.x;
+			point.y = center.y - size.y;
+			point.z = center.z + size.z;
 			break;
 		}
 		LHPoint clip = LH3DTech::g_world_to_clipping * point;
@@ -1199,9 +1232,7 @@ void LandBlock::ComputeInfo()
 	if ((TextureLod == LAND_TEXTURE_LOD_HIGH || TextureLod == LAND_TEXTURE_LOD_BLEND || UseLowResTexture) &&
 	    LH3DIsland::g_b_use_small_bump)
 	{
-		sides[LAND_TEXTURE_LOD_HIGH] = 0;
-		sides[LAND_TEXTURE_LOD_LOW] = 0;
-		sides[LAND_TEXTURE_LOD_BLEND] = 0;
+		sides[LAND_TEXTURE_LOD_HIGH] = sides[LAND_TEXTURE_LOD_LOW] = sides[LAND_TEXTURE_LOD_BLEND] = 0;
 		sides[LH3DIsland::g_sbump_lod.GetLevel(X, Z)]++;
 		sides[LH3DIsland::g_sbump_lod.GetLevel(X, Z + LAND_BLOCK_WIDTH)]++;
 		sides[LH3DIsland::g_sbump_lod.GetLevel(X + LAND_BLOCK_WIDTH, Z)]++;
@@ -1216,9 +1247,7 @@ void LandBlock::ComputeInfo()
 		DrawSmallBump = false;
 	}
 
-	sides[LH3D_MESH_LOD_LEVEL_NEAR] = 0;
-	sides[LH3D_MESH_LOD_LEVEL_MEDIUM] = 0;
-	sides[LH3D_MESH_LOD_LEVEL_FAR] = 0;
+	sides[LH3D_MESH_LOD_LEVEL_NEAR] = sides[LH3D_MESH_LOD_LEVEL_MEDIUM] = sides[LH3D_MESH_LOD_LEVEL_FAR] = 0;
 	sides[LH3DIsland::g_mesh_red_01.GetLevel(X, Z)]++;
 	sides[LH3DIsland::g_mesh_red_01.GetLevel(X, Z + LAND_BLOCK_WIDTH)]++;
 	sides[LH3DIsland::g_mesh_red_01.GetLevel(X + LAND_BLOCK_WIDTH, Z)]++;
@@ -1249,9 +1278,7 @@ void LandBlock::ComputeInfo()
 
 	if (MeshLodZone == LAND_MESH_ZONE_MEDIUM)
 	{
-		sides[LH3D_MESH_LOD_LEVEL_NEAR] = 0;
-		sides[LH3D_MESH_LOD_LEVEL_MEDIUM] = 0;
-		sides[LH3D_MESH_LOD_LEVEL_FAR] = 0;
+		sides[LH3D_MESH_LOD_LEVEL_NEAR] = sides[LH3D_MESH_LOD_LEVEL_MEDIUM] = sides[LH3D_MESH_LOD_LEVEL_FAR] = 0;
 		sides[LH3DIsland::g_mesh_red_12.GetLevel(X, Z)]++;
 		sides[LH3DIsland::g_mesh_red_12.GetLevel(X, Z + LAND_BLOCK_WIDTH)]++;
 		sides[LH3DIsland::g_mesh_red_12.GetLevel(X + LAND_BLOCK_WIDTH, Z)]++;
@@ -1281,144 +1308,110 @@ void LandBlock::ComputeInfo()
 		}
 	}
 
-	LHPoint camera = LH3DTech::g_camera.pos;
-	Distance = center.GetDistance(camera);
+	LHPoint delta(&center);
+	delta.Sub(LHPoint(&LH3DTech::g_camera.pos));
+	Distance = delta.GetNorme();
 }
+
+#define MORPH_CELL(cell, below, above)                                                                                 \
+	{                                                                                                                  \
+		distance = normal.z * wx - normal.x * wz;                                                                      \
+		if (distance < halfWidth)                                                                                      \
+		{                                                                                                              \
+			if (-halfWidth < distance)                                                                                 \
+			{                                                                                                          \
+				int           average = ((below).altitude + (above).altitude) >> 1;                                    \
+				int           altitude = (cell).altitude;                                                              \
+				unsigned long weight = FloatToInt((halfWidth - distance) * scale);                                     \
+				(cell).altitude = ((LAND_WEIGHT_ONE - weight) * altitude + average * weight) >> 8;                     \
+			}                                                                                                          \
+			else                                                                                                       \
+			{                                                                                                          \
+				(cell).altitude = (unsigned)((below).altitude + (above).altitude) >> 1;                                \
+			}                                                                                                          \
+		}                                                                                                              \
+	}
 
 void __fastcall LandBlock::MorphBlock(bool32_t lod_1)
 {
-	int   step;
-	int   half;
-	int   i;
-	int   j;
-	float normalX;
-	float normalZ;
-	float pointX;
-	float pointZ;
-	float scale;
-	float halfWidth;
+	LHPoint normal;
+	LHPoint point;
+	float   distance;
+	float   wx = X;
+	float   stepWorld = 0.0f;
+	float   wz = 0.0f;
+	float   scale = 0.0f;
+	float   halfWidth = 0.0f;
+	int     step;
+	int     start;
 	if (lod_1)
 	{
-		normalX = LH3DIsland::g_mesh_red_01.Normal.x;
-		normalZ = LH3DIsland::g_mesh_red_01.Normal.z;
-		pointX = LH3DIsland::g_mesh_red_01.Point.x;
-		pointZ = LH3DIsland::g_mesh_red_01.Point.z;
-		step = (LAND_MESH_LOD_0_CELLS / LAND_MESH_LOD_1_CELLS);
-		half = step / 2;
+		point.x = LH3DIsland::g_mesh_red_01.Point.x;
+		point.z = LH3DIsland::g_mesh_red_01.Point.z;
+		normal.x = LH3DIsland::g_mesh_red_01.Normal.x;
+		normal.z = LH3DIsland::g_mesh_red_01.Normal.z;
 		scale = LAND_WEIGHT_ONE / LH3DIsland::g_mesh_red_01.Width;
+		step = LAND_MESH_LOD_0_CELLS / LAND_MESH_LOD_1_CELLS;
+		start = step / 2;
 		halfWidth = LH3DIsland::g_mesh_red_01.Width * 0.5f;
 	}
 	else
 	{
-		normalX = LH3DIsland::g_mesh_red_12.Normal.x;
-		normalZ = LH3DIsland::g_mesh_red_12.Normal.z;
-		pointX = LH3DIsland::g_mesh_red_12.Point.x;
-		pointZ = LH3DIsland::g_mesh_red_12.Point.z;
-		step = (LAND_MESH_LOD_0_CELLS / LAND_MESH_LOD_2_CELLS);
-		half = step / 2;
+		point.x = LH3DIsland::g_mesh_red_12.Point.x;
+		point.z = LH3DIsland::g_mesh_red_12.Point.z;
+		normal.x = LH3DIsland::g_mesh_red_12.Normal.x;
+		normal.z = LH3DIsland::g_mesh_red_12.Normal.z;
 		scale = LAND_WEIGHT_ONE / LH3DIsland::g_mesh_red_12.Width;
+		step = LAND_MESH_LOD_0_CELLS / LAND_MESH_LOD_2_CELLS;
+		start = step / 2;
 		halfWidth = LH3DIsland::g_mesh_red_12.Width * 0.5f;
 	}
-
-	float     x = X - pointX;
-	LandCell* row = &Cells[0][0];
-	for (i = 0; i < LAND_BLOCK_SIDE_POINTS; i += step)
+	wx = X - point.x;
+	stepWorld = step * MAP_COORDS_METRES_PER_CELL;
+	float startWorld = start * MAP_COORDS_METRES_PER_CELL;
+	float startZ = startWorld + Z - point.z;
+	wz = startZ;
+	LandCell* cells = &Cells[0][0];
+	int       x;
+	int       z;
+	for (x = 0; x < LAND_BLOCK_SIDE_POINTS; x += step)
 	{
-		float     z = half * LAND_CELL_SIZE + Z - pointZ;
-		LandCell* cell = row + half;
-		for (j = half; j < LAND_BLOCK_SIDE_POINTS; j += step)
+		wz = startZ;
+		int index = x * LAND_BLOCK_SIDE_POINTS + start;
+		for (z = start; z < LAND_BLOCK_SIDE_POINTS; z += step, index += step)
 		{
-			float distance = normalX * x - normalZ * z;
-			if (distance < halfWidth)
-			{
-				uint32_t altitude;
-				if (-halfWidth < distance)
-				{
-					int weight = FloatToInt((halfWidth - distance) * scale);
-					int average = (cell[-half].altitude + cell[half].altitude) >> 1;
-					altitude = ((LAND_WEIGHT_ONE - weight) * cell->altitude + weight * average) >> 8;
-				}
-				else
-				{
-					altitude = (cell[-half].altitude + cell[half].altitude) >> 1;
-				}
-				cell->altitude = altitude;
-			}
-			z += step * LAND_CELL_SIZE;
-			cell += step;
+			MORPH_CELL(cells[index], cells[index - start], cells[index + start])
+			wz += stepWorld;
 		}
-		x += step * LAND_CELL_SIZE;
-		row += step * LAND_BLOCK_SIDE_POINTS;
+		wx += stepWorld;
 	}
-
-	x = half * LAND_CELL_SIZE + X - pointX;
-	row = &Cells[half][0];
-	for (i = half; i < LAND_BLOCK_SIDE_POINTS; i += step)
+	wx = startWorld + X - point.x;
+	startZ = startWorld + Z - point.z;
+	int offset = start * (LAND_BLOCK_SIDE_POINTS + 1);
+	for (x = start; x < LAND_BLOCK_SIDE_POINTS; x += step)
 	{
-		float     z = half * LAND_CELL_SIZE + Z - pointZ;
-		LandCell* cell = row + half;
-		for (j = half; j < LAND_BLOCK_SIDE_POINTS; j += step)
+		wz = startZ;
+		int index = x * LAND_BLOCK_SIDE_POINTS + start;
+		for (z = start; z < LAND_BLOCK_SIDE_POINTS; z += step, index += step)
 		{
-			float distance = normalX * x - normalZ * z;
-			if (distance < halfWidth)
-			{
-				uint32_t altitude;
-				if (-halfWidth < distance)
-				{
-					int weight = FloatToInt((halfWidth - distance) * scale);
-					int average = (cell[-half * LAND_BLOCK_SIDE_POINTS - half].altitude +
-					               cell[half * LAND_BLOCK_SIDE_POINTS + half].altitude) >>
-					              1;
-					altitude = ((LAND_WEIGHT_ONE - weight) * cell->altitude + weight * average) >> 8;
-				}
-				else
-				{
-					altitude = (cell[-half * LAND_BLOCK_SIDE_POINTS - half].altitude +
-					            cell[half * LAND_BLOCK_SIDE_POINTS + half].altitude) >>
-					           1;
-				}
-				cell->altitude = altitude;
-			}
-			z += step * LAND_CELL_SIZE;
-			cell += step;
+			MORPH_CELL(cells[index], cells[index - offset], cells[index + offset])
+			wz += stepWorld;
 		}
-		x += step * LAND_CELL_SIZE;
-		row += step * LAND_BLOCK_SIDE_POINTS;
+		wx += stepWorld;
 	}
-
-	x = half * LAND_CELL_SIZE + X - pointX;
-	row = &Cells[half][0];
-	for (i = half; i < LAND_BLOCK_SIDE_POINTS; i += step)
+	wx = startWorld + X - point.x;
+	startZ = Z - point.z;
+	offset = start * LAND_BLOCK_SIDE_POINTS;
+	for (x = start; x < LAND_BLOCK_SIDE_POINTS; x += step)
 	{
-		float     z = Z - pointZ;
-		LandCell* cell = row;
-		for (j = 0; j < LAND_BLOCK_SIDE_POINTS; j += step)
+		wz = startZ;
+		int index = x * LAND_BLOCK_SIDE_POINTS;
+		for (z = 0; z < LAND_BLOCK_SIDE_POINTS; z += step, index += step)
 		{
-			float distance = normalX * x - normalZ * z;
-			if (distance < halfWidth)
-			{
-				uint32_t altitude;
-				if (-halfWidth < distance)
-				{
-					int weight = FloatToInt((halfWidth - distance) * scale);
-					int average = (cell[-half * LAND_BLOCK_SIDE_POINTS].altitude +
-					               cell[half * LAND_BLOCK_SIDE_POINTS].altitude) >>
-					              1;
-					altitude = ((LAND_WEIGHT_ONE - weight) * cell->altitude + weight * average) >> 8;
-				}
-				else
-				{
-					altitude = (cell[-half * LAND_BLOCK_SIDE_POINTS].altitude +
-					            cell[half * LAND_BLOCK_SIDE_POINTS].altitude) >>
-					           1;
-				}
-				cell->altitude = altitude;
-			}
-			z += step * LAND_CELL_SIZE;
-			cell += step;
+			MORPH_CELL(cells[index], cells[index - offset], cells[index + offset])
+			wz += stepWorld;
 		}
-		x += step * LAND_CELL_SIZE;
-		row += step * LAND_BLOCK_SIDE_POINTS;
+		wx += stepWorld;
 	}
 }
 
@@ -1427,48 +1420,49 @@ void LandBlock::ComputeMeshLodType()
 	MeshLodType = 0;
 	int index = LH3DIsland::GetIndex(GridX - 1, GridZ);
 	if (index != 0 && LH3DIsland::g_ptr_blocks[index]->MeshLod > MeshLod)
+	{
 		MeshLodType = MESH_LOD_NORTH;
+	}
 	index = LH3DIsland::GetIndex(GridX, GridZ - 1);
 	if (index != 0 && LH3DIsland::g_ptr_blocks[index]->MeshLod > MeshLod)
+	{
 		MeshLodType |= MESH_LOD_WEST;
+	}
 	index = LH3DIsland::GetIndex(GridX, GridZ + 1);
 	if (index != 0 && LH3DIsland::g_ptr_blocks[index]->MeshLod > MeshLod)
+	{
 		MeshLodType |= MESH_LOD_EAST;
+	}
 	index = LH3DIsland::GetIndex(GridX + 1, GridZ);
 	if (index != 0 && LH3DIsland::g_ptr_blocks[index]->MeshLod > MeshLod)
+	{
 		MeshLodType |= MESH_LOD_SOUTH;
+	}
 }
 
 void LandBlock::DrawWithDynamicShadow(TShadowInfo* shadow)
 {
 	float          invWidth = 1.0f / (shadow->MaxX - shadow->MinX);
 	int            step = 1 << MeshLod;
-	int            rowSkip = LAND_BLOCK_SIDE_POINTS * step - (step + LAND_MESH_LOD_0_CELLS);
-	float          x = X;
 	float          invDepth = 1.0f / (shadow->MaxZ - shadow->MinZ);
-	float          meterStep = step * MAP_COORDS_METRES_PER_CELL;
-	float          uvStep = step * (1.0f / LAND_MESH_LOD_0_CELLS);
-	float          casterHeight;
+	int            rowSkip = step * LAND_MESH_LOD_0_CELLS - LAND_MESH_LOD_0_CELLS;
 	Vertex3D*      vertex = LH3DTech::g_cache_t_points;
-	unsigned long* clip = LH3DTech::g_cache_flags;
+	unsigned long* flags = LH3DTech::g_cache_flags;
+	float          stepWorld = step * MAP_COORDS_METRES_PER_CELL;
+	float          stepTexture = step / (float)LAND_MESH_LOD_0_CELLS;
+	float          wx = X;
+	float          tx = 0.0f;
 	LandCell*      cell = &Cells[0][0];
-	float          tv = 0.0f;
-	if (shadow->Caster != NULL)
-	{
-		casterHeight = LH3DIsland::GetAltitude(shadow->Caster->matrix.GetPos());
-	}
-	else
-	{
-		casterHeight = shadow->GroundHeight;
-	}
+	float          height =
+		shadow->Caster != NULL ? LH3DIsland::GetAltitude(shadow->Caster->matrix.GetPos()) : shadow->GroundHeight;
 	unsigned long clipMask = NeedClipping ? LH3DTech::CLIP_CODE_FRUSTUM : 0;
-	for (int xi = 0; xi < LAND_BLOCK_SIDE_POINTS; xi += step)
+	for (int i = 0; i < LAND_BLOCK_SIDE_POINTS; i += step)
 	{
-		float z = Z;
-		float tu = 0.0f;
-		for (int zi = 0; zi < LAND_BLOCK_SIDE_POINTS; zi += step)
+		float wz = Z;
+		float tz = 0.0f;
+		for (int j = 0; j < LAND_BLOCK_SIDE_POINTS; j += step)
 		{
-			int altitude = cell->altitude;
+			int altitude = cell->GetAltitude();
 			if (altitude > LAND_CELL_SEA_ALTITUDE || altitude > LAND_CELL_SHORE_ALTITUDE)
 			{
 				vertex->color = LH3D_COLOR_WHITE;
@@ -1478,45 +1472,45 @@ void LandBlock::DrawWithDynamicShadow(TShadowInfo* shadow)
 				vertex->color = 0;
 			}
 			vertex->specular = 0;
-			float depth = z * shadow->Direction.z + x * shadow->Direction.x;
-			float scale = (shadow->GroundHeight - shadow->Light.y) / (casterHeight - shadow->Light.y);
-			float u = ((x - shadow->Light.x) * scale + shadow->Light.x - shadow->MinX) * invWidth;
-			float v = ((z - shadow->Light.z) * scale + shadow->Light.z - shadow->MinZ) * invDepth;
-			vertex->uv.Set(u, v);
-			*clip &= clipMask;
+			float depth = wx * shadow->Direction.x + wz * shadow->Direction.z;
+			float ratio = (shadow->GroundHeight - shadow->Light.y) / (height - shadow->Light.y);
+			float u = ((wx - shadow->Light.x) * ratio + shadow->Light.x - shadow->MinX) * invWidth;
+			float v = ((wz - shadow->Light.z) * ratio + shadow->Light.z - shadow->MinZ) * invDepth;
+			vertex->uv.x = u;
+			*flags &= clipMask;
+			vertex->uv.y = v;
 			if (depth < shadow->MinDepth)
 			{
-				*clip |= LH3D_SHADOW_CLIP_CODE_BEHIND;
+				*flags |= LH3D_SHADOW_CLIP_CODE_BEHIND;
 			}
 			if (u <= 0.0f)
 			{
-				*clip |= LH3D_SHADOW_CLIP_CODE_U_MIN;
+				*flags |= LH3D_SHADOW_CLIP_CODE_U_MIN;
 			}
 			else if (u >= 1.0f)
 			{
-				*clip |= LH3D_SHADOW_CLIP_CODE_U_MAX;
+				*flags |= LH3D_SHADOW_CLIP_CODE_U_MAX;
 			}
 			if (v <= 0.0f)
 			{
-				*clip |= LH3D_SHADOW_CLIP_CODE_V_MIN;
+				*flags |= LH3D_SHADOW_CLIP_CODE_V_MIN;
 			}
 			else if (v >= 1.0f)
 			{
-				*clip |= LH3D_SHADOW_CLIP_CODE_V_MAX;
+				*flags |= LH3D_SHADOW_CLIP_CODE_V_MAX;
 			}
+			wz += stepWorld;
+			tz += stepTexture;
 			cell += step;
-			z += meterStep;
-			tu += uvStep;
+			flags++;
 			vertex++;
-			clip++;
 		}
-		tv += uvStep;
-		x += meterStep;
 		cell += rowSkip;
+		wx += stepWorld;
+		tx += stepTexture;
 	}
-	int side = LAND_MESH_LOD_0_CELLS / step + 1;
 	LH3DTech::g_index_count = 0;
-	LH3DTech::g_points_count = side * side;
+	LH3DTech::g_points_count = (LAND_MESH_LOD_0_CELLS / step + 1) * (LAND_MESH_LOD_0_CELLS / step + 1);
 	CreateListPoly(MeshLod);
 	if (LH3DTech::g_index_count != 0)
 	{
@@ -1524,32 +1518,6 @@ void LandBlock::DrawWithDynamicShadow(TShadowInfo* shadow)
 		LH3DRender::DrawTriangle(LH3DTech::g_cache_t_points, LH3DTech::g_points_count, LH3DTech::g_list_indices,
 		                         LH3DTech::g_index_count);
 	}
-}
-
-#define LAND_SPECULAR_MAP_BYTES  3
-#define LAND_LIGHT_SAMPLE_OFFSET 0.1f
-#define LAND_CELL_METRES         10
-#define LAND_BLOCK_METRES        (LAND_CELL_METRES * LAND_MESH_LOD_0_CELLS)
-
-static inline uint32_t Interpolate(uint32_t from, uint32_t to, uint32_t fraction)
-{
-	return (((to - from) * fraction) >> 8) + from & 0xff;
-}
-
-static inline uint32_t SampleMap(const uint8_t* map, long pitch, unsigned long frac_z, unsigned long frac_x)
-{
-	uint32_t near_row = Interpolate(map[0], map[1], frac_z);
-	uint32_t far_row = Interpolate(map[pitch], map[pitch + 1], frac_z);
-	return Interpolate(near_row, far_row, frac_x);
-}
-
-static inline uint32_t ScaleSample(const uint8_t* map, long pitch, int channel, unsigned long frac_z,
-                                   unsigned long frac_x, uint32_t intensity)
-{
-	uint32_t near_row = (((map[channel + 3] - map[channel]) * frac_z) >> 8) + map[channel] & 0xff;
-	uint32_t far_row =
-		(((map[pitch + channel + 3] - map[pitch + channel]) * frac_z) >> 8) + map[pitch + channel] & 0xff;
-	return Interpolate(near_row, far_row, frac_x) * intensity / LAND_CELL_MAX_DARKNESS;
 }
 
 void LandBlock::SetNeedUpdate()
@@ -1566,10 +1534,9 @@ void LandBlock::SetNeedUpdate()
 void LandBlock::ClearLight()
 {
 	LandCell* cell = &Cells[0][0];
-	for (int i = 0; i < LAND_BLOCK_SIDE_POINTS * LAND_BLOCK_SIDE_POINTS; i++)
+	for (int i = 0; i < LAND_BLOCK_SIDE_POINTS * LAND_BLOCK_SIDE_POINTS; i++, cell++)
 	{
 		*(uint32_t*)cell = cell->SaveColor << 24;
-		cell++;
 	}
 }
 
@@ -1591,100 +1558,132 @@ void LandBlock::Release()
 void LandBlock::DrawSpecular(DynamicLightAndShadow::StoreInfo* info, uint8_t* map, unsigned long frac_z,
                              unsigned long frac_x)
 {
+	int       x = info->X - GridX * LAND_MESH_LOD_0_CELLS;
+	int       endX = x + info->SizeX;
+	int       z = info->Z - GridZ * LAND_MESH_LOD_0_CELLS;
+	int       endZ = z + info->SizeZ;
 	LandCell* cell = &Cells[0][0];
-	int       startX = info->X - GridX * LAND_MESH_LOD_0_CELLS;
-	int       startZ = info->Z - GridZ * LAND_MESH_LOD_0_CELLS;
-	int       endX = startX + info->SizeX;
-	int       endZ = startZ + info->SizeZ;
-
-	if (startX < 0)
+	if (x < 0)
 	{
-		map -= info->Pitch * startX * LAND_SPECULAR_MAP_BYTES;
-		startX = 0;
+		map -= info->Pitch * x * LAND_LIGHT_MAP_PIXEL_SIZE;
+		x = 0;
 	}
 	else
 	{
-		cell += startX * LAND_BLOCK_SIDE_POINTS;
+		cell += x * LAND_BLOCK_SIDE_POINTS;
 	}
 	if (endX > LAND_BLOCK_SIDE_POINTS)
 	{
 		endX = LAND_BLOCK_SIDE_POINTS;
 	}
-	if (startZ < 0)
+	if (z < 0)
 	{
-		map -= startZ * LAND_SPECULAR_MAP_BYTES;
-		startZ = 0;
+		map -= z * LAND_LIGHT_MAP_PIXEL_SIZE;
+		z = 0;
 	}
 	else
 	{
-		cell += startZ;
+		cell += z;
 	}
 	if (endZ > LAND_BLOCK_SIDE_POINTS)
 	{
 		endZ = LAND_BLOCK_SIDE_POINTS;
 	}
-
-	long     pitch = info->Pitch * LAND_SPECULAR_MAP_BYTES;
 	uint32_t intensity = info->Intensity;
+	long     row = info->Pitch * LAND_LIGHT_MAP_PIXEL_SIZE;
 	if (info->MaxBlend)
 	{
-		for (int x = startX; x < endX; x++)
+		for (; x < endX; x++)
 		{
-			for (int z = startZ; z < endZ; z++)
+			for (int i = z; i < endZ; i++)
 			{
-				uint32_t value;
-				value = ScaleSample(map, pitch, 0, frac_z, frac_x, intensity);
-				cell->b = max(cell->b, value);
-				value = ScaleSample(map, pitch, 1, frac_z, frac_x, intensity);
-				cell->g = max(cell->g, value);
-				value = ScaleSample(map, pitch, 2, frac_z, frac_x, intensity);
-				cell->r = max(cell->r, value);
-				map += LAND_SPECULAR_MAP_BYTES;
+				unsigned long b;
+				LAND_LIGHT_CHANNEL(b, map, row, 0, frac_z, frac_x, intensity)
+				uint8_t blue;
+				if (cell->b > b)
+				{
+					blue = cell->b;
+				}
+				else
+				{
+					blue = b;
+				}
+				cell->b = blue;
+				unsigned long g;
+				LAND_LIGHT_CHANNEL(g, map, row, 1, frac_z, frac_x, intensity)
+				uint8_t green;
+				if (cell->g > g)
+				{
+					green = cell->g;
+				}
+				else
+				{
+					green = g;
+				}
+				cell->g = green;
+				unsigned long r;
+				LAND_LIGHT_CHANNEL(r, map, row, 2, frac_z, frac_x, intensity)
+				uint8_t red;
+				if (cell->r > r)
+				{
+					red = cell->r;
+				}
+				else
+				{
+					red = r;
+				}
+				cell->r = red;
+				map += LAND_LIGHT_MAP_PIXEL_SIZE;
 				cell++;
 			}
-			map += (info->Pitch - (endZ - startZ)) * LAND_SPECULAR_MAP_BYTES;
-			cell += LAND_BLOCK_SIDE_POINTS - (endZ - startZ);
+			map += (info->Pitch - (endZ - z)) * LAND_LIGHT_MAP_PIXEL_SIZE;
+			cell += LAND_BLOCK_SIDE_POINTS - (endZ - z);
 		}
 	}
 	else
 	{
-		for (int x = startX; x < endX; x++)
+		for (; x < endX; x++)
 		{
-			for (int z = startZ; z < endZ; z++)
+			for (int i = z; i < endZ; i++)
 			{
-				uint32_t value;
-				value = cell->b + ScaleSample(map, pitch, 0, frac_z, frac_x, intensity);
-				if (value > 0xff)
+				unsigned long b;
+				LAND_LIGHT_CHANNEL(b, map, row, 0, frac_z, frac_x, intensity)
+				b += cell->b;
+				if (b > LH3D_COLOR_CHANNEL_MAX)
 				{
-					cell->b = 0xff;
+					cell->b = LH3D_COLOR_CHANNEL_MAX;
 				}
 				else
 				{
-					cell->b = value;
+					cell->b = b;
 				}
-				value = cell->g + ScaleSample(map, pitch, 1, frac_z, frac_x, intensity);
-				if (value > 0xff)
+				unsigned long g;
+				LAND_LIGHT_CHANNEL(g, map, row, 1, frac_z, frac_x, intensity)
+				g += cell->g;
+				if (g > LH3D_COLOR_CHANNEL_MAX)
 				{
-					cell->g = 0xff;
+					cell->g = LH3D_COLOR_CHANNEL_MAX;
 				}
 				else
 				{
-					cell->g = value;
+					cell->g = g;
 				}
-				value = cell->r + ScaleSample(map, pitch, 2, frac_z, frac_x, intensity);
-				if (value > 0xff)
+				unsigned long r;
+				LAND_LIGHT_CHANNEL(r, map, row, 2, frac_z, frac_x, intensity)
+				r += cell->r;
+				if (r > LH3D_COLOR_CHANNEL_MAX)
 				{
-					cell->r = 0xff;
+					cell->r = LH3D_COLOR_CHANNEL_MAX;
 				}
 				else
 				{
-					cell->r = value;
+					cell->r = r;
 				}
-				map += LAND_SPECULAR_MAP_BYTES;
+				map += LAND_LIGHT_MAP_PIXEL_SIZE;
 				cell++;
 			}
-			map += (info->Pitch - (endZ - startZ)) * LAND_SPECULAR_MAP_BYTES;
-			cell += LAND_BLOCK_SIDE_POINTS - (endZ - startZ);
+			map += (info->Pitch - (endZ - z)) * LAND_LIGHT_MAP_PIXEL_SIZE;
+			cell += LAND_BLOCK_SIDE_POINTS - (endZ - z);
 		}
 	}
 }
@@ -1692,48 +1691,48 @@ void LandBlock::DrawSpecular(DynamicLightAndShadow::StoreInfo* info, uint8_t* ma
 void LandBlock::DrawShadow(DynamicLightAndShadow::StoreInfo* info, uint8_t* map, unsigned long frac_z,
                            unsigned long frac_x)
 {
-	int       startX = info->X - GridX * LAND_MESH_LOD_0_CELLS;
-	int       startZ = info->Z - GridZ * LAND_MESH_LOD_0_CELLS;
-	int       endX = startX + info->SizeX;
-	int       endZ = startZ + info->SizeZ;
+	int       x = info->X - GridX * LAND_MESH_LOD_0_CELLS;
+	int       z = info->Z - GridZ * LAND_MESH_LOD_0_CELLS;
+	int       endX = x + info->SizeX;
+	int       endZ = z + info->SizeZ;
 	LandCell* cell = &Cells[0][0];
-
-	if (startX < 0)
+	if (x < 0)
 	{
-		map -= info->Pitch * startX;
-		startX = 0;
+		map -= info->Pitch * x;
+		x = 0;
 	}
 	else
 	{
-		cell += startX * LAND_BLOCK_SIDE_POINTS;
+		cell += x * LAND_BLOCK_SIDE_POINTS;
 	}
 	if (endX > LAND_BLOCK_SIDE_POINTS)
 	{
 		endX = LAND_BLOCK_SIDE_POINTS;
 	}
-	if (startZ < 0)
+	if (z < 0)
 	{
-		map -= startZ;
-		startZ = 0;
+		map -= z;
+		z = 0;
 	}
 	else
 	{
-		cell += startZ;
+		cell += z;
 	}
 	if (endZ > LAND_BLOCK_SIDE_POINTS)
 	{
 		endZ = LAND_BLOCK_SIDE_POINTS;
 	}
-
-	long     pitch = info->Pitch;
+	long     size = info->Pitch;
 	uint32_t intensity = info->Intensity;
-	for (int x = startX; x < endX; x++)
+	for (; x < endX; x++)
 	{
-		for (int z = startZ; z < endZ; z++)
+		for (int i = z; i < endZ; i++, map++, cell++)
 		{
-			uint32_t sample = SampleMap(map, pitch, frac_z, frac_x);
-			uint32_t darkness =
-				LAND_CELL_MAX_DARKNESS - (LAND_CELL_MAX_DARKNESS - sample) * intensity / LAND_CELL_MAX_DARKNESS;
+			unsigned long top = LAND_BLEND_8(map[0], map[1], frac_z);
+			unsigned long bottom = LAND_BLEND_8(map[size], map[size + 1], frac_z);
+			unsigned long shadow = LAND_BLEND_8(top, bottom, frac_x);
+			unsigned long darkness =
+				LAND_CELL_MAX_DARKNESS - (LAND_CELL_MAX_DARKNESS - shadow) * intensity / LAND_CELL_MAX_DARKNESS;
 			if (darkness < LAND_CELL_MIN_DARKNESS)
 			{
 				darkness = LAND_CELL_MIN_DARKNESS;
@@ -1742,99 +1741,105 @@ void LandBlock::DrawShadow(DynamicLightAndShadow::StoreInfo* info, uint8_t* map,
 			{
 				cell->darkness = darkness;
 			}
-			map++;
-			cell++;
 		}
-		map += info->Pitch - (endZ - startZ);
-		cell += LAND_BLOCK_SIDE_POINTS - (endZ - startZ);
+		map += info->Pitch - (endZ - z);
+		cell += LAND_BLOCK_SIDE_POINTS - (endZ - z);
 	}
 }
 
+#ifndef VERSION_BW1W100
 void LandBlock::ComputeLighting()
 {
-	LandBlock** blocks = &LH3DIsland::g_ptr_blocks[1];
-	for (LandBlock* block = *blocks; block != NULL; block = *blocks)
+	LandBlock* block;
+	int        index = 1;
+	while ((block = LH3DIsland::g_ptr_blocks[index]) != NULL)
 	{
-		blocks++;
-		LandCell* row = &block->Cells[0][0];
-		for (int x = 0; x < LAND_BLOCK_METRES; x += LAND_CELL_METRES)
+		index++;
+		float scale = 1.0f / (float)sqrt(LAND_LIGHT_AXES);
+		for (int x = 0; x < LAND_MESH_LOD_0_CELLS; x++)
 		{
-			LandCell* cell = row;
-			for (int z = 0; z < LAND_BLOCK_METRES; z += LAND_CELL_METRES)
+			for (int z = 0; z < LAND_MESH_LOD_0_CELLS; z++)
 			{
-				LH3DMapCoords coords(block->X + x + LAND_LIGHT_SAMPLE_OFFSET, block->Z + z + LAND_LIGHT_SAMPLE_OFFSET);
+				LHPoint pos;
+				pos.x = x * LAND_CELL_METRES + block->X + LAND_LIGHTING_SAMPLE_OFFSET;
+				pos.z = z * LAND_CELL_METRES + block->Z + LAND_LIGHTING_SAMPLE_OFFSET;
+				LH3DMapCoords coords(pos.x, pos.z);
 				LHPoint       normal;
 				LH3DIsland::GetNormal(coords, &normal);
-				float intensity = (normal.x + normal.y + normal.z) * (1.0f / sqrtf(3.0f));
-				cell->darkness = GetLightLevel((int)(intensity * LH3D_LIGHT_MAX));
-				cell++;
+				float light = (normal.x + normal.y + normal.z) * scale * (float)LAND_CELL_MAX_DARKNESS;
+				block->Cells[x][z].darkness = GetLightLevel((int)light);
 			}
-
-			row += LAND_BLOCK_SIDE_POINTS;
 		}
 	}
 }
+#endif
 
 long LandBlock::DrawBefore()
 {
-	if (LH3DTech::GetIndiceCount() != 0)
+	if (LH3DTech::g_index_count != 0)
 	{
-		int i;
-		for (i = 0; i < LH3DTech::GetPointCount(); i++)
+		Vertex3D* vertex = LH3DTech::g_cache_t_points;
+		for (int i = 0; i < LH3DTech::g_points_count; i++, vertex++)
 		{
-			Vertex3D* vertex = LH3DTech::GetPointeurTPoint(i);
-			vertex->uv.Set(vertex->uv.X() * BeforeMatrix._11 + vertex->uv.Y() * BeforeMatrix._31 + BeforeMatrix._41,
-			               vertex->uv.X() * BeforeMatrix._13 + vertex->uv.Y() * BeforeMatrix._33 + BeforeMatrix._43);
+			LHPoint p(vertex->uv.X(), 0.0f, vertex->uv.Y());
+			BeforeMatrix.TransformPoint(p);
+			vertex->uv.x = p.x;
+			vertex->uv.y = p.z;
 		}
 		LH3DRender::SetMaterial(BeforeMaterial, 0);
-		LH3DRender::DrawTriangle(LH3DTech::GetCachePoints(), LH3DTech::GetPointCount(), LH3DTech::GetIndiceList(),
-		                         LH3DTech::GetIndiceCount());
+		LH3DRender::DrawTriangle(LH3DTech::g_cache_t_points, LH3DTech::g_points_count, LH3DTech::g_list_indices,
+		                         LH3DTech::g_index_count);
 		LHMatrix inverse;
 		inverse.SetInverse(BeforeMatrix);
-		for (i = 0; i < LH3DTech::GetPointCount(); i++)
+		vertex = LH3DTech::g_cache_t_points;
+		for (int j = 0; j < LH3DTech::g_points_count; j++, vertex++)
 		{
-			Vertex3D* vertex = LH3DTech::GetPointeurTPoint(i);
-			vertex->uv.Set(vertex->uv.X() * inverse._11 + vertex->uv.Y() * inverse._31 + inverse._41,
-			               vertex->uv.X() * inverse._13 + vertex->uv.Y() * inverse._33 + inverse._43);
+			LHPoint p(vertex->uv.X(), 0.0f, vertex->uv.Y());
+			inverse.TransformPoint(p);
+			vertex->uv.x = p.x;
+			vertex->uv.y = p.z;
 		}
 	}
-	return LH3DTech::GetIndiceCount();
+	return LH3DTech::g_index_count;
 }
 
 long LandBlock::DrawAfter()
 {
-	float          startV = 0.0f;
 	int            step = 1 << MeshLod;
 	Vertex3D*      vertex = LH3DTech::g_cache_t_points;
-	unsigned long* clip = LH3DTech::g_cache_flags;
-	int            rowSkip = LAND_BLOCK_SIDE_POINTS * step - (step + LAND_MESH_LOD_0_CELLS);
-	float          meterStep = step * MAP_COORDS_METRES_PER_CELL;
-	float          uvStep = step * (1.0f / LAND_MESH_LOD_0_CELLS);
-	float          x = X;
+	unsigned long* flags = LH3DTech::g_cache_flags;
+	int            rowSkip = step * LAND_MESH_LOD_0_CELLS - LAND_MESH_LOD_0_CELLS;
 	LandCell*      cell = &Cells[0][0];
-	for (int xi = 0; xi < LAND_BLOCK_SIDE_POINTS; xi += step)
+	float          tx = 0.0f;
+	float          stepWorld = step * MAP_COORDS_METRES_PER_CELL;
+	float          stepTexture = step / (float)LAND_MESH_LOD_0_CELLS;
+	float          wx = X;
+	for (int i = 0; i < LAND_BLOCK_SIDE_POINTS; i += step)
 	{
-		float z = Z;
-		float tu = 0.0f;
-		for (int zi = 0; zi < LAND_BLOCK_SIDE_POINTS; zi += step)
+		float wz = Z;
+		float tz = 0.0f;
+		for (int j = 0; j < LAND_BLOCK_SIDE_POINTS; j += step)
 		{
-			vertex->specular = *(uint32_t*)cell | 0xff000000;
+			vertex->specular = *(uint32_t*)cell | (LH3D_COLOR_OPAQUE << 24);
 			vertex->color = LandCell::g_darkness_to_color[cell->darkness];
-			vertex->uv.Set(startV * AfterMatrix._31 + tu * AfterMatrix._11 + AfterMatrix._41,
-			               tu * AfterMatrix._13 + startV * AfterMatrix._33 + AfterMatrix._43);
-			clip++;
-			vertex++;
+			LHPoint unused0;
+			LHPoint unused1;
+			LHPoint p(tz, 0.0f, tx);
+			AfterMatrix.TransformPoint(p);
+			vertex->uv.x = p.x;
+			vertex->uv.y = p.z;
+			wz += stepWorld;
+			tz += stepTexture;
 			cell += step;
-			z += meterStep;
-			tu += uvStep;
+			flags++;
+			vertex++;
 		}
-		x += meterStep;
-		startV += uvStep;
 		cell += rowSkip;
+		wx += stepWorld;
+		tx += stepTexture;
 	}
-	int side = LAND_MESH_LOD_0_CELLS / step + 1;
 	LH3DTech::g_index_count = 0;
-	LH3DTech::g_points_count = side * side;
+	LH3DTech::g_points_count = (LAND_MESH_LOD_0_CELLS / step + 1) * (LAND_MESH_LOD_0_CELLS / step + 1);
 	if (NeedClipping)
 	{
 		CreateListPoly(MeshLod);
