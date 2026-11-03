@@ -4,13 +4,17 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHMultiplayer/ver4.0/LHFileDownload.h> /* For class LHFileDownload */
+
 class MPFEDownloads
 {
 public:
-	uint8_t       field_0x4[0x6c];
-	bool          Downloading; /* 0x70 */
-	uint8_t       field_0x71[0x20b];
-	unsigned long FileNumber; /* 0x27c */
+	LHFileDownload FileDownload;
+	bool           Downloading;          /* 0x70 */
+	char           LocalFileName[0x200]; /* 0x71 */
+	float          TransferSpeed;        /* 0x274 */
+	float          PercentageDownloaded; /* 0x278 */
+	unsigned long  FileNumber;           /* 0x27c */
 
 	// New virtual methods
 
@@ -27,8 +31,10 @@ public:
 
 	// Constructors
 
-	// BW1W120 0062e580 BW1M119 013aca60
+	// BW1W120 0062e560 BW1M119 013aca60
 	MPFEDownloads();
+	// BW1W120 0062e580 BW1M119 013ac990
+	~MPFEDownloads();
 
 	// Non-virtual methods
 

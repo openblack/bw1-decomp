@@ -7,10 +7,14 @@
 struct LandscapeDetails
 {
 	char          Name[0xc8];
-	char          FileName[0x258]; /* 0xc8 */
-	unsigned long NumTeams;        /* 0x320 */
-	unsigned long ID;              /* 0x324 */
-	uint8_t       field_0x328[0x4];
+	char          FileName[0xc8];      /* 0xc8 */
+	char          ServerAddress[0xc8]; /* 0x190 */
+	char          ServerPath[0xc8];    /* 0x258 */
+	unsigned long NumTeams;            /* 0x320 */
+	unsigned long ID;                  /* 0x324 */
+	bool          ThumbnailOnDisk;     /* 0x328 */
+	bool          MapOnDisk;
+	bool          FromDatabase;
 };
 
 static_assert(sizeof(LandscapeDetails) == 0x32c, "LandscapeDetails size is incorrect");

@@ -49,11 +49,12 @@ MPFECancelStartMessage::MPFECancelStartMessage()
 MPFEKickMessageRequest::MPFEKickMessageRequest(MPFEPlayerDetails* player)
 {
 	Message = new (MPFE_CHANNEL_MESSAGES_FILE, 386) wchar_t[50];
-	swprintf(Message, L"%c%u", GetMessageCode(SPECIAL_MESSAGE_TYPE_KICK_REQUEST), (unsigned long)player->ID);
+	swprintf(Message, L"%c%u", GetMessageCode(SPECIAL_MESSAGE_TYPE_KICK_REQUEST), (unsigned long)player->DatabaseID);
 }
 
 MPFEKickMessage::MPFEKickMessage(MPFEPlayerDetails* player, MPFEPlayerDetails* by)
 {
 	Message = new (MPFE_CHANNEL_MESSAGES_FILE, 433) wchar_t[50];
-	swprintf(Message, L"%c%u:%u:%u", GetMessageCode(SPECIAL_MESSAGE_TYPE_KICK), player->ID.id, by->ID.id, player->Team);
+	swprintf(Message, L"%c%u:%u:%u", GetMessageCode(SPECIAL_MESSAGE_TYPE_KICK), player->DatabaseID.id,
+	         by->DatabaseID.id, player->Team);
 }

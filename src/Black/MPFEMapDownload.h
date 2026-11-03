@@ -10,7 +10,7 @@
 class MPFEMapDownload : public MPFEDownloads, public MPFEDatabase
 {
 public:
-	bool field_0x28c;
+	bool RepopulatedDatabase; /* 0x28c */
 
 	// Override methods
 
