@@ -21,11 +21,11 @@ Scaffolded from [encounter/dtk-template](https://github.com/encounter/dtk-templa
 
 Supported versions:
 
-- [![BW1W100 Progress]][progress] — Windows v1.00 (PE/COFF, MSVC 6.0 SP4 with `/OPT:ICF`)
-- [![BW1W110 Progress]][progress] — Windows v1.10 (PE/COFF, MSVC 6.0 SP4)
-- [![BW1W120 Progress]][progress] — Windows v1.20 (PE/COFF, MSVC 6.0 SP5)
-- [![BW1W130 Progress]][progress] — Windows v1.30 (PE/COFF, MSVC 6.0 SP5)
-- [![BW1WCI Progress]][progress] — Windows Creature Isle (PE/COFF, MSVC 6.0 SP5)
+- [![BW1W100 Progress]](https://decomp.dev/openblack/bw1-decomp/BW1W100) — Windows v1.00 (PE/COFF, MSVC 6.0 SP4 with `/OPT:ICF`)
+- [![BW1W110 Progress]](https://decomp.dev/openblack/bw1-decomp/BW1W110) — Windows v1.10 (PE/COFF, MSVC 6.0 SP4)
+- [![BW1W120 Progress]](https://decomp.dev/openblack/bw1-decomp/BW1W120) — Windows v1.20 (PE/COFF, MSVC 6.0 SP5)
+- [![BW1W130 Progress]](https://decomp.dev/openblack/bw1-decomp/BW1W130) — Windows v1.30 (PE/COFF, MSVC 6.0 SP5)
+- [![BW1WCI Progress]](https://decomp.dev/openblack/bw1-decomp/BW1WCI) — Windows Creature Isle (PE/COFF, MSVC 6.0 SP5)
 
 [BW1W100 Progress]: https://decomp.dev/openblack/bw1-decomp/BW1W100.svg?mode=shield&measure=code&label=BW1W100
 [BW1W110 Progress]: https://decomp.dev/openblack/bw1-decomp/BW1W110.svg?mode=shield&measure=code&label=BW1W110
