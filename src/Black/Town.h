@@ -120,7 +120,7 @@ public:
 	float       worship_percentage;
 	int         WorshipCount;
 #ifdef VERSION_BW1WCI
-	uint32_t ci_field_0x5c8;
+	float InfluenceMultiplier;
 #endif
 	float    influence;
 	uint32_t NumVillagersOnWayToWorshipSite;
@@ -291,7 +291,7 @@ public:
 #else
 	// BW1W120 00739350 BW1M119 01560de0
 	Town(const MapCoords& coords, const GTownInfo* info, GPlayer* player, TRIBE_TYPE tribe_type, char* name,
-	     unsigned long id, int param_7);
+	     unsigned long id, bool32_t zero_base_influence);
 #endif
 
 	// Non-virtual methods

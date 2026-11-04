@@ -1104,7 +1104,13 @@ static_assert(offsetof(LHPlayer, TeamNumber) == 0x1f8, "LHPlayer team offset");
 static_assert(offsetof(LHSession, Players) == 0x90, "LHSession player list offset");
 static_assert(offsetof(LHConnection, NetUser) == 0x88, "LHConnection user offset");
 static_assert(offsetof(GPlayerInfo, NetworkName) == 0x50, "GPlayerInfo network name offset");
+#if defined(VERSION_BW1W100)
+static_assert(offsetof(LHSys, MessageHook) == 0x6e4c, "LHWin message callback offset");
+#elif defined(VERSION_BW1W130)
+static_assert(offsetof(LHSys, MessageHook) == 0x70dc, "LHWin message callback offset");
+#else
 static_assert(offsetof(LHSys, MessageHook) == 0x70cc, "LHWin message callback offset");
+#endif
 
 // BW1W120 0054b240 BW1M119 010ccb00
 GGame::GGame()
@@ -1138,8 +1144,8 @@ GGame::GGame()
 	settings = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x408) Settings;
 #endif
 	((LH3DMapCoords&)StartCameraCoords).SetToZero();
-	field_0x2500a8[0] = 0;
-	field_0x250170 = NULL;
+	FlyByFilename[0] = 0;
+	PendingMapFeaturesFile = NULL;
 	PlayerInfluenceMultiplier = 1.0f;
 	TownInfluenceMultiplier = 1.0f;
 	DanceLight::InitialiseBitmaps();
@@ -1464,7 +1470,11 @@ static_assert(sizeof(GestureSystemDataList) == 0x10, "GestureSystemDataList size
 static_assert(sizeof(GestureSystemData) == 0x65c, "GestureSystemData size is incorrect");
 static_assert(sizeof(GestureSystem) == 0xc98, "GestureSystem size is incorrect");
 static_assert(sizeof(GestureSystemResult) == 0xc, "GestureSystemResult size is incorrect");
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(Settings) == 0x208, "Settings size is incorrect");
+#else
 static_assert(sizeof(Settings) == 0x104, "Settings size is incorrect");
+#endif
 static_assert(offsetof(CreatureDanceLineInput, Analysis) == 0x28, "Line-input prefix offset is incorrect");
 static_assert(offsetof(Dance, next) == 0xec, "Dance link offset is incorrect");
 static_assert(sizeof(Dance) == 0x12c, "Dance size is incorrect");

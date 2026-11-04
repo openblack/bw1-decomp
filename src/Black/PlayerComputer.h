@@ -1,9 +1,10 @@
 #ifndef BW1_DECOMP_PLAYER_COMPUTER_INCLUDED_H
 #define BW1_DECOMP_PLAYER_COMPUTER_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stddef.h> /* For NULL */
-#include <stdint.h> /* For int8_t, uint32_t, uint8_t */
+#include <chlasm/CreatureEnum.h> /* For enum CREATURE_TYPE */
+#include <assert.h>              /* For static_assert */
+#include <stddef.h>              /* For NULL */
+#include <stdint.h>              /* For int8_t, uint32_t, uint8_t */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>   /* For class LHLinkedList */
 #include <Lionhead/LHLib/ver5.0/LHListHead.h>     /* For struct LHListHead */
@@ -64,9 +65,13 @@ public:
 	float                             HandSpeed; /* 0x58 */
 	uint8_t                           field_0x5c[0x15c];
 	bool32_t                          Active;
-	uint8_t                           field_0x1bc[0x14];
-	int8_t                            CreatureSizeMode;
-	uint8_t                           field_0x1d1[0x2b];
+#ifdef VERSION_BW1WCI
+	uint8_t field_0x1bc[0x1c];
+#else
+	uint8_t field_0x1bc[0x14];
+#endif
+	int8_t  CreatureSizeMode;
+	uint8_t field_0x1d1[0x2b];
 
 	// BW1W120 00656d40 BW1M119 014b0ad0
 	GComputerPlayer(GPlayer* player, float param_2, float param_3, unsigned long param_4);
@@ -119,6 +124,13 @@ public:
 	void ForceComputerPlayerToMoveToPointAndPause(LHPoint& point, float param_2);
 	// BW1W120 006583f0 BW1M119 inlined
 	void SetSpeed(float speed);
+
+	// BW1W120 0065ba40 BW1M119 014b5d40
+	void CreateCreatureFromFile(CREATURE_TYPE type, const MapCoords& coords, char* file_name);
+	// BW1W120 006642b0 BW1M119 014c5ba0
+	void LoadPersonalltyTree(char* file_name);
+	// BW1W120 00664000 BW1M119 014c6210
+	void SetPersonality(char* name, float value);
 };
 
 class GComputerPlayerQueue : public GameThing

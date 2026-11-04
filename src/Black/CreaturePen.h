@@ -12,6 +12,8 @@ class Base;
 class LHOSFile;
 struct MapCoords;
 class MultiMapFixed;
+class Citadel;
+class GCreaturePenInfo;
 class Object;
 class PlannedMultiMapFixed;
 
@@ -26,6 +28,10 @@ public:
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 004eefc0 BW1M119 01278c80
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
+
+	// BW1W120 004eef60 BW1M119 01278e20
+	static CreaturePen* Create(const MapCoords& coords, const GCreaturePenInfo* info, Citadel* citadel, float y_angle,
+	                           float scale, float percent_built, bool32_t under_construction);
 };
 
 #endif /* BW1_DECOMP_CREATURE_PEN_INCLUDED_H */

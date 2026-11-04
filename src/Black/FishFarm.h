@@ -169,6 +169,9 @@ public:
 	FishFarm() {}
 	// BW1W120 0052c360 BW1M119 010e26d0
 	FishFarm(const MapCoords& coords, const GFishFarmInfo* info, Town* town);
+
+	// BW1W120 0052c7b0 BW1M119 010e1820
+	static FishFarm* Create(const MapCoords& coords, const GFishFarmInfo* info, Town* town);
 };
 
 #endif /* BW1_DECOMP_FISH_FARM_INCLUDED_H */

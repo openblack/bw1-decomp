@@ -17,6 +17,7 @@ class Base;
 class GPlayer;
 class GameOSFile;
 class GameThing;
+class LHOSFile;
 struct MapCoords;
 struct MistListNode;
 
@@ -69,6 +70,11 @@ public:
 
 	// BW1W120 00606880 BW1M119 01065070
 	void Process();
+
+	// BW1W120 006063d0 BW1M119 0110ed70
+	static Mist* Create(const MapCoords& coords, float scale, unsigned long colour, float alpha);
+	// BW1W120 006065d0 BW1M119 0110e8f0
+	static void SaveAllMists(LHOSFile& file, const MapCoords& coords);
 };
 
 #endif /* BW1_DECOMP_MIST_INCLUDED_H */

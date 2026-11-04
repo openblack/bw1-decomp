@@ -103,6 +103,8 @@ struct MapCoords : public LH3DMapCoords
 	MapCoords(const char* str);
 	// BW1W120 inlined BW1M119 inlined
 	MapCoords(float meters_x, float meters_z);
+	// BW1W120 00602fc0 BW1M119 01057b30
+	MapCoords(unsigned short cell_x, unsigned short cell_z);
 	// BW1W120 00603030 BW1M119 01375af0
 	MapCoords(JustWholeMapXZ* xz);
 	// BW1W120 00603160 BW1M119 0106cbb0

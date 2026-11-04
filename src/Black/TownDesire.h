@@ -86,6 +86,9 @@ public:
 	float CalculateAverageTownNeeds();
 	// BW1W120 00745ea0 BW1M119 01567770
 	TOWN_DESIRE_INFO GetMostSignificantRawDesire(float minimum);
+
+	// BW1W120 00747270 BW1M119 015658f0
+	static int GetDesireFromText(char* text);
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INCLUDED_H */

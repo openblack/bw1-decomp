@@ -31,6 +31,8 @@ public:
 
 	// BW1W120 0074c940 BW1M119 01161e10
 	static GTribeInfo* GetTribeFromText(const char* str);
+	// BW1W120 inlined BW1M119 inlined
+	TRIBE_TYPE GetTribeType() const { return (TRIBE_TYPE)(this - GetInfo()); }
 
 	// Non-virtual methods
 

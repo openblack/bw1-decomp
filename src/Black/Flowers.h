@@ -10,6 +10,7 @@
 
 // Forward Declares
 
+class GFlowersInfo;
 class Base;
 class GameThing;
 class LHOSFile;
@@ -36,6 +37,9 @@ public:
 
 	// BW1W120 00560fa0 BW1M119 inlined
 	Flowers() {}
+
+	// BW1W120 005279e0 BW1M119 010d4930
+	static Flowers* Create(const MapCoords& coords, const GFlowersInfo* info, float y_angle, float scale);
 };
 
 #endif /* BW1_DECOMP_FLOWERS_INCLUDED_H */

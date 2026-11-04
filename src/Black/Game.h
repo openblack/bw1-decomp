@@ -120,6 +120,10 @@ enum GAME_FLAGS
 	GAME_FLAG_WAIT_FOR_BUILDING_WOOD = 0x40000,
 	GAME_FLAG_SHOW_VILLAGER_INFO = 0x200000,
 	GAME_FLAG_FORCE_GAME_TURN = 0x400000,
+#ifdef VERSION_BW1WCI
+	GAME_FLAG_STARTUP_ALLOW_SKIP = 0x800000,
+	GAME_FLAG_STARTUP_FORCE_INTRO = 0x1000000,
+#endif
 };
 
 class GGame : public GameThing
@@ -282,8 +286,8 @@ public:
 	HelpEditor*           field_0x250094;
 	uint32_t              field_0x250098;
 	MapCoords             StartCameraCoords;
-	uint8_t               field_0x2500a8[0xc8];
-	char*                 field_0x250170;
+	char                  FlyByFilename[200];
+	char*                 PendingMapFeaturesFile;
 	uint8_t               field_0x250174;
 	Config*               config;
 	uint32_t              Enum0x25017c; // TODO: Original enum identity is unrecovered; serialized as four bytes.
@@ -437,6 +441,12 @@ public:
 	void SetUnusedCitadelComputerPlayers();
 	// BW1W120 00550ba0 BW1M119 0142e3c0
 	void SetPacket(PACKET_TYPE type, short x, short z, long value);
+	// BW1W120 00550c20 BW1M119 013de280
+	void SetPacket(PACKET_TYPE type, long first_value, long second_value);
+	// BW1W120 0063ee10 BW1M119 013e3b80
+	void SwitchProfile(LH_KEY key);
+	// BW1W120 005530c0 BW1M119 013e6c90
+	void SaveObject(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 0054ff80 BW1M119 010a2a00
 	static void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4,
 	                       void* param_5);
@@ -527,7 +537,7 @@ public:
 	// BW1W120 00555880 BW1M119 01062630
 	GInterfaceStatus* MyInterfaceStatus();
 	// BW1W120 00555890 BW1M119 0117d380
-	void SetLandBalance(int index, float balance, GPlayer* player);
+	void SetLandBalance(unsigned long index, float balance, GPlayer* player);
 	// BW1W120 00555990 BW1M119 01115890
 	void StartPlaygroundGame(char* path);
 	// BW1W120 0063c3d0 BW1M119 01020d50
@@ -543,6 +553,9 @@ public:
 	uint32_t ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned long param_3);
 	// BW1W120 0063f940 BW1M119 010a1200
 	uint32_t DoAction(unsigned long param_1);
+
+	// BW1W120 00552ff0 BW1M119 010d4eb0
+	Town* FindClosestTown(const MapCoords& coords);
 };
 
 template <typename T> inline void GTPointer<T>::SetGameTurnValidated()

@@ -19,6 +19,9 @@ public:
 	uint8_t  field_0x120[0x14];
 	uint32_t Capacity;
 	uint8_t  field_0x138[0x1c];
+#ifdef VERSION_BW1WCI
+	uint8_t field_0x154[4];
+#endif
 
 	// Override methods
 

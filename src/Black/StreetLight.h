@@ -45,6 +45,11 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	GStreetLight() {}
+
+	// BW1W120 00734e60 BW1M119 0153e940
+	static GStreetLight* Create(const MapCoords& coords);
+	// BW1W120 00734f70 BW1M119 0153e6b0
+	static void SaveAllStreetLights(LHOSFile& file, const MapCoords& coords);
 };
 
 #endif /* BW1_DECOMP_STREET_LIGHT_INCLUDED_H */
