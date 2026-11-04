@@ -19,7 +19,7 @@
 #include <Lionhead/LH3DLib/development/LH3DText.h>   /* For CHAR2WCHAR */
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>          /* For LHSys::TheSystem */
-#include <Lionhead/LHLib/ver5.0/LHWin.h>             /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>             /* For LHKeyToAsciiTable, operator new */
 
 #include "Abode.h"
 #include "AbodeInfo.h"
@@ -160,9 +160,6 @@
 #endif
 
 #define NO_OFFSET (*(const MapCoords*)NULL)
-
-// BW1W120 00c3122c BW1M119 011db7a4 (LHCombined Release)
-extern char LHKeyToAsciiTable[LH_KEY_TO_ASCII_TABLE_SIZE];
 
 #ifdef VERSION_BW1WCI
 #define CREATURE_ISLE_HELP_TEXTS 0
