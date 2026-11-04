@@ -2768,7 +2768,7 @@ bool32_t GGame::Save(GameOSFile& file)
 			}
 		}
 	}
-	snow = SnowCover::g_snowcover->field_0x10000;
+	snow = SnowCover::g_snowcover->BlockMelt;
 	count = 0x400;
 	if (GameOSFile::WriteEnabled)
 	{
@@ -2782,8 +2782,8 @@ bool32_t GGame::Save(GameOSFile& file)
 			}
 		}
 	}
-	file.WriteIt(SnowCover::g_snowcover->field_0x11000);
-	file.WriteIt(SnowCover::g_snowcover->field_0x11004);
+	file.WriteIt(SnowCover::g_snowcover->MeltTimer);
+	file.WriteIt(SnowCover::g_snowcover->MeltStep);
 	if (temporarySnow)
 	{
 		temporarySnow->Close();
@@ -2896,7 +2896,7 @@ bool32_t GGame::Load(GameOSFile& file)
 			file.ReadIt(snow[i]);
 		}
 	}
-	snow = SnowCover::g_snowcover->field_0x10000;
+	snow = SnowCover::g_snowcover->BlockMelt;
 	if (GameOSFile::ReadEnabled)
 	{
 		uint32_t count;
@@ -2906,8 +2906,8 @@ bool32_t GGame::Load(GameOSFile& file)
 			file.ReadIt(snow[i]);
 		}
 	}
-	file.ReadIt(SnowCover::g_snowcover->field_0x11000);
-	file.ReadIt(SnowCover::g_snowcover->field_0x11004);
+	file.ReadIt(SnowCover::g_snowcover->MeltTimer);
+	file.ReadIt(SnowCover::g_snowcover->MeltStep);
 	if (temporarySnow)
 	{
 		temporarySnow->Close();

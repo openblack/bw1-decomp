@@ -3951,6 +3951,12 @@ Lionhead/LHLib/ver5.0/RPAvoid.cpp:
 	.CRT$XCU    start:0x00A3764C end:0x00A37654 align:4
 	.bss        start:0x01026F6C end:0x01026F74
 
+Lionhead/LH3DLib/development/SnowCover.cpp:
+	.text       start:0x0088B5F0 end:0x0088BFE0
+	.rdata      start:0x00A13F48 end:0x00A13F4C
+	.data       start:0x00CACC38 end:0x00CACC58
+	.bss        start:0x010271E4 end:0x01027388
+
 Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.text       start:0x0088D100 end:0x0088EC90
 	.text$x     start:0x008D3390 end:0x008D3748 align:4
