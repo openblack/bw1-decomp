@@ -272,7 +272,7 @@ struct SetupControl
 	uint32_t        RightButton;
 	SetupControl*   next; /* 0x230 */
 	SetupBox*       setup_box;
-	void*           ContinueButtonCallback;
+	void (*ContinueButtonCallback)(SetupBox* box, SetupControl* control);
 
 	// Override methods
 

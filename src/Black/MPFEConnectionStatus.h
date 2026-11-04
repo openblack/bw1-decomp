@@ -20,8 +20,22 @@ struct MPFEConnectionStatus
 	bool IsLanLobby();
 	// BW1W120 0062dac0 BW1M119 013a9330
 	bool IsInternetLobby();
+	// BW1W120 0062d8a0 BW1M119 013a98e0
+	void SetLobbyType(LOBBY_TYPE lobby_type);
 	// BW1W120 0062d8f0 BW1M119 013a9820
 	void LeaveLobbyScreen();
+	// BW1W120 0062d930 BW1M119 013a9750
+	void LeaveLoginScreen();
+	// BW1W120 0062d980 BW1M119 013a96d0
+	void LeaveLobbyTypeScreen();
+	// BW1W120 0062d9a0 BW1M119 013a9650
+	void LeaveConnectionScreen();
+	// BW1W120 0062d9c0 BW1M119 013a95d0
+	void DoLogin();
+	// BW1W120 0062d9e0 BW1M119 013a94d0
+	void ReEnterMultiplayerScreens();
+	// BW1W120 0062da60 BW1M119 013a9440
+	void StartMultiplayerScreens();
 };
 
 #endif /* BW1_DECOMP_MPFE_CONNECTION_STATUS_INCLUDED_H */

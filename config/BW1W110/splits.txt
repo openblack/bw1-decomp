@@ -1670,14 +1670,14 @@ Black/MPFEFileTransfer.cpp:
 	.rdata      start:0x00920834 end:0x00920858
 	.CRT$XCU    start:0x009B6B4C end:0x009B6B58 align:4
 	.data       start:0x00BECAC8 end:0x00BECB4C
-	.bss        start:0x00D2FBC0 end:0x00D2FC00 align:16
+	.bss        start:0x00D2FBC0 end:0x00D2FBD0 align:16
 
 Black/MPFEFindGame.cpp:
 	.text       start:0x00626AB0 end:0x00627020
 	.rdata      start:0x00920858 end:0x00920888
 	.CRT$XCU    start:0x009B6B58 end:0x009B6B64 align:4
 	.data       start:0x00BECB4C end:0x00BECB50
-	.bss        start:0x00D2FC00 end:0x00D2FC0C
+	.bss        start:0x00D2FBD0 end:0x00D2FC0C
 
 Black/MPFEGameStartMessages.cpp:
 	.text       start:0x00627020 end:0x00627A30
