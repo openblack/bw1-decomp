@@ -87,47 +87,48 @@ MPFE_CREATURE_DOWNLOAD_RESULT MPFECreatureDownload::Refresh()
 			if (db_get_result(&Query, &columns, &rows, &table) == DBSTATUS_ERROR)
 			{
 				MPFEData::Data.D_CreatureErrorMessage();
-				return result;
-			}
-
-			if (strcmp("", table[0]) == 0)
-			{
-				MPFEData::Data.D_CreatureUploadedNextTime();
 			}
 			else
 			{
-				char prefix[] = "CLANCREATECREATURE";
-				if (_strnicmp(table[0], prefix, strlen(prefix)) == 0)
+				if (strcmp("", table[0]) == 0)
 				{
-					CreatureFile = new char[strlen(table[0]) + sizeof(unsigned long) + 1];
-					strcpy(CreatureFile, table[0]);
-					CreatureFileSize = strlen(CreatureFile) + 1;
-					UserData = NULL;
-					UserDataLen = 0;
-					Alignment = 0.0f;
+					MPFEData::Data.D_CreatureUploadedNextTime();
 				}
 				else
 				{
-					char*         decoded;
-					unsigned long decodedLength;
-					LHWebDecode(table[0], strlen(table[0]), &decoded, &decodedLength);
-					ZipData zip;
-					zip.SetCompressedData(decoded, decodedLength);
-					LHWebEncodingFreePtr(decoded);
+					char prefix[] = "CLANCREATECREATURE";
+					if (_strnicmp(table[0], prefix, strlen(prefix)) == 0)
+					{
+						CreatureFile = new char[strlen(table[0]) + sizeof(unsigned long) + 1];
+						strcpy(CreatureFile, table[0]);
+						CreatureFileSize = strlen(CreatureFile) + 1;
+						UserData = NULL;
+						UserDataLen = 0;
+						Alignment = 0.0f;
+					}
+					else
+					{
+						char*         decoded;
+						unsigned long decodedLength;
+						LHWebDecode(table[0], strlen(table[0]), &decoded, &decodedLength);
+						ZipData zip;
+						zip.SetCompressedData(decoded, decodedLength);
+						LHWebEncodingFreePtr(decoded);
 
-					MPFEStartGameData data;
-					data.DecodeData(zip.UncompressedData);
-					CreatureFileSize = data.CreatureLength;
-					CreatureFile = new char[CreatureFileSize];
-					memcpy(CreatureFile, data.CreatureData, CreatureFileSize);
-					UserDataLen = data.MemoryLength;
-					UserData = new char[UserDataLen];
-					memcpy(UserData, data.MemoryData, UserDataLen);
-					Alignment = data.GetAlignment();
+						MPFEStartGameData data;
+						data.DecodeData(zip.UncompressedData);
+						CreatureFileSize = data.CreatureLength;
+						CreatureFile = new char[CreatureFileSize];
+						memcpy(CreatureFile, data.CreatureData, CreatureFileSize);
+						UserDataLen = data.MemoryLength;
+						UserData = new char[UserDataLen];
+						memcpy(UserData, data.MemoryData, UserDataLen);
+						Alignment = data.GetAlignment();
+					}
+					result = MPFE_CREATURE_DOWNLOAD_RESULT_COMPLETE;
 				}
-				result = MPFE_CREATURE_DOWNLOAD_RESULT_COMPLETE;
+				db_free_data(table);
 			}
-			db_free_data(table);
 			return result;
 		}
 		case DBSTATUS_PENDING:

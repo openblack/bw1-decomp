@@ -1767,7 +1767,7 @@ Black/MPFEClanDetails.cpp:
 
 Black/MPFEConditionMessages.cpp:
 	.text       start:0x00630390 end:0x006317C0
-	.rdata      start:0x0095E628 end:0x0095E664
+	.rdata      start:0x0095E628 end:0x0095E660
 	.CRT$XCU    start:0x00A46FD8 end:0x00A47000 align:4
 	.bss        start:0x00DC1DE8 end:0x00DC1E30
 
@@ -1777,8 +1777,9 @@ Black/MPFEConnectionStatus.cpp:
 
 Black/MPFECreatureDownload.cpp:
 	.text       start:0x00631810 end:0x00631CC0
-	.rdata      start:0x0095E664 end:0x0095E668
+	.rdata      start:0x0095E660 end:0x0095E668
 	.CRT$XCU    start:0x00A47004 end:0x00A47014 align:4
+	.data       start:0x00C7E288 end:0x00C7E2B0
 	.bss        start:0x00DC1E30 end:0x00DC1E40
 
 Black/MPFEDatabase.cpp:
