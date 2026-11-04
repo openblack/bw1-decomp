@@ -1490,14 +1490,14 @@ Black/MPFECreatureDownload.cpp:
 	.rdata      start:0x0086E0E4 end:0x0086E0EC
 	.CRT$XCU    start:0x008F6AE8 end:0x008F6AF4 align:4
 	.data       start:0x00B21650 end:0x00B21678
-	.bss        start:0x00C61C00 end:0x00C61C14
+	.bss        start:0x00C61C00 end:0x00C61C10
 
 Black/MPFEDatabase.cpp:
 	.text       start:0x005E10F0 end:0x005E1670
 	.rdata      start:0x0086E0EC end:0x0086E0F8
 	.CRT$XCU    start:0x008F6AF4 end:0x008F6B00 align:4
 	.data       start:0x00B21678 end:0x00B216B8
-	.bss        start:0x00C61C14 end:0x00C61C78
+	.bss        start:0x00C61C10 end:0x00C61C78
 
 Black/MPFEDownloads.cpp:
 	.text       start:0x005E1670 end:0x005E1CB0
