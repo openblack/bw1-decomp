@@ -4264,15 +4264,15 @@ Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
 Lionhead/LH3DLib/development/Glow.cpp:
 	.text       start:0x0083D750 end:0x0083E4F0
 
+Lionhead/LH3DLib/development/LightSheet.cpp:
+	.text       start:0x0083E4F0 end:0x0083EFE0
+
 Lionhead/LH3DLib/development/LH3DGJAnimVolFX.cpp:
 	.text       start:0x0083EFE0 end:0x0083F2B0
 	.text$x     start:0x008A8170 end:0x008A8185 align:4
 	.xdata$x    start:0x009BEE20 end:0x009BEE48 align:4
 	.data       start:0x00C3909C end:0x00C390CC
 	.bss        start:0x00EDDD1C end:0x00EDDD2C
-
-Lionhead/LH3DLib/development/LightSheet.cpp:
-	.text       start:0x0083E4F0 end:0x0083EFE0
 
 Lionhead/LH3DLib/development/LH3DZSorter.cpp:
 	.text       start:0x0083F2B0 end:0x0083F3C0
@@ -4407,6 +4407,12 @@ Lionhead/LH3DLib/development/LandBlock.cpp:
 	.text       start:0x00874AA0 end:0x008792E0
 	.rdata      start:0x009A3C14 end:0x009A3C1C
 	.bss        start:0x00FA92D8 end:0x00FA92E0
+
+Lionhead/LH3DLib/development/LH3DWater.cpp:
+	.text       start:0x008792E0 end:0x0087A340
+	.rdata      start:0x009A3C1C end:0x009A3C30
+	.data       start:0x00C398FC end:0x00C39964
+	.bss        start:0x00FA92E0 end:0x00FA9398
 
 Lionhead/LH3DLib/development/LH3DCT.cpp:
 	.text       start:0x0087F6D0 end:0x0087FA00
