@@ -35,6 +35,12 @@ public:
 	ServerLandscapeMap(char* path);
 	// BW1W120 00712fe0 BW1M119 0135c9d0
 	~ServerLandscapeMap();
+	// BW1W120 00712ff0 BW1M119 013ee4b0
+	void DeleteThumbData();
+	// BW1W120 00713120 BW1M119 013ed4f0
+	void DeleteAllTheStuff();
+	// BW1W120 00713140 BW1M119 013edef0
+	bool LoadThumbnail(char* path);
 	// BW1W120 007132b0 BW1M119 0130d870
 	bool LoadMap(char* path);
 	// BW1W120 00713660 BW1M119 014a09c0
