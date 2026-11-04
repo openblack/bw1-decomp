@@ -125,6 +125,10 @@ public:
 	// BW1W120 00bf456c
 	static unsigned long TeamColors[MAX_TEAMS];
 
+	// BW1W120 00622510 BW1M119 013a0c50
+	MPFEData();
+	// BW1W120 00622690 BW1M119 013a0a50
+	~MPFEData();
 	// BW1W120 006227c0 BW1M119 013a02f0
 	void Reset();
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)

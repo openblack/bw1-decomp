@@ -1,9 +1,8 @@
 #ifndef BW1_DECOMP_MPFE_START_GAME_DATA_INCLUDED_H
 #define BW1_DECOMP_MPFE_START_GAME_DATA_INCLUDED_H
+#include <assert.h> /* For static_assert */
 #include <stdint.h>
 
-// Prefix established by 00632860/00632880/006328e0 and Mac names.
-// Used through GPlayer's existing pointer, not as an allocation model.
 struct MPFEStartGameData
 {
 	bool     LocalCreature;
@@ -15,7 +14,16 @@ struct MPFEStartGameData
 	uint32_t field_0x18;
 	float    Alignment;
 
+	// BW1W120 00632860 BW1M119 013b2ef0
+	MPFEStartGameData();
 	// BW1W120 00632880 BW1M119 013b2e00
 	~MPFEStartGameData();
+	// BW1W120 006329a0 BW1M119 013b2c80
+	void DecodeData(char* data);
+	// BW1W120 inlined BW1M119 inlined
+	float GetAlignment() { return Alignment; }
 };
+
+static_assert(sizeof(MPFEStartGameData) == 0x20, "MPFEStartGameData size is incorrect");
+
 #endif

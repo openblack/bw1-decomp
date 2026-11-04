@@ -1772,12 +1772,13 @@ Black/MPFEConditionMessages.cpp:
 	.bss        start:0x00DC1DE8 end:0x00DC1E30
 
 Black/MPFEConnectionStatus.cpp:
-	.text       start:0x006317C0 end:0x006317D0
+	.text       start:0x006317C0 end:0x00631810
+	.CRT$XCU    start:0x00A47000 end:0x00A47004 align:4
 
 Black/MPFECreatureDownload.cpp:
-	.text       start:0x006317D0 end:0x00631CC0
+	.text       start:0x00631810 end:0x00631CC0
 	.rdata      start:0x0095E664 end:0x0095E668
-	.CRT$XCU    start:0x00A47000 end:0x00A47014 align:4
+	.CRT$XCU    start:0x00A47004 end:0x00A47014 align:4
 	.bss        start:0x00DC1E30 end:0x00DC1E40
 
 Black/MPFEDatabase.cpp:
