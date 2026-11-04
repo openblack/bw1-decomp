@@ -3695,6 +3695,11 @@ Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
 Lionhead/LH3DLib/development/SRTextured.cpp:
 	.text       start:0x007CD380 end:0x007CD910
 
+Lionhead/LH3DLib/development/LH3DCitadel.cpp:
+	.text       start:0x007CD910 end:0x007CE7A0
+	.data       start:0x00B5BAB4 end:0x00B5C164
+	.bss        start:0x00ECA644 end:0x00ECA648
+
 Lionhead/LH3DLib/development/LH3DEye.cpp:
 	.text       start:0x007CE7A0 end:0x007CF7F0
 	.data       start:0x00B5C164 end:0x00B5C2EC
