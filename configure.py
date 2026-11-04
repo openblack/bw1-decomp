@@ -1483,6 +1483,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/WorshipTotem.cpp", pch=False),
             GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/WorldRoom.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/WorldRoomCamera.cpp"),
+            GameCodeObject(Matching, "Black/ZipData.cpp", pch=False),
 
             # Contains SSE instructions, could be result of compiling with intel compiler
             # P3 suggests pentium III. Instructions are for P3 and P4.

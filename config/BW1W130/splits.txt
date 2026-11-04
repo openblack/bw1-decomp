@@ -2879,8 +2879,11 @@ Black/WorshipTotem.cpp:
 	.data       start:0x00CA5CC0 end:0x00CA5CF8
 	.bss        start:0x00E4DC8C end:0x00E4DCA0
 
+Black/ZipData.cpp:
+	.text       start:0x00785E40 end:0x00785FA0
+
 Black/ChallengeRoom.cpp:
-	.text       start:0x00785E40 end:0x0078A020
+	.text       start:0x00785FA0 end:0x0078A020
 	.rdata      start:0x00A1E4BC end:0x00A1E4C8
 	.CRT$XCU    start:0x00A47B44 end:0x00A47B58 align:4
 	.data       start:0x00CA5CF8 end:0x00CA5FD0

@@ -2429,6 +2429,9 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00783C74, jmp_run(0x00783BA2)),  # WorshipSiteUpgrade
     (0x00783D03, copy_run(0x00783C74)),  # WorshipSiteUpgrade
     (0x00783D9B, call_rel32(0x004034F9)),  # WorshipSiteUpgrade
+    (0x00785E93, jmp_run(0x00785E05)),  # ZipData
+    (0x00785F0A, copy_run(0x00785E93)),  # ZipData
+    (0x00785F99, jmp_run(0x00785F0A)),  # ZipData
     (0x007EBB97, jmp_run(0x007EBB1A)),  # LHMem
     (0x007EBBB2, jmp_run(0x007EBB97)),  # LHMem
     (0x007EBBEA, copy_run(0x007EBBB2)),  # LHMem
