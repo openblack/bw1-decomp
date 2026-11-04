@@ -116,7 +116,7 @@ MPFE_CREATURE_DOWNLOAD_RESULT MPFECreatureDownload::Refresh()
 						LHWebEncodingFreePtr(decoded);
 
 						MPFEStartGameData data;
-						data.DecodeData(zip.UncompressedData);
+						data.DecodeDataWithoutCreature(zip.UncompressedData);
 						CreatureFileSize = data.CreatureLength;
 						CreatureFile = new char[CreatureFileSize];
 						memcpy(CreatureFile, data.CreatureData, CreatureFileSize);

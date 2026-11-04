@@ -24,8 +24,8 @@ struct MPFEStartGameData
 	MPFEStartGameData();
 	// BW1W120 00632880 BW1M119 013b2e00
 	~MPFEStartGameData();
-	// BW1W120 006329a0 BW1M119 013b2c80
-	void DecodeData(char* data);
+	// BW1W120 006329a0 BW1M119 013b2af0
+	void DecodeDataWithoutCreature(char* data);
 	// BW1W120 inlined BW1M119 inlined
 	float GetAlignment() { return Alignment; }
 };
