@@ -1173,7 +1173,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFEDatabase.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEDatabaseID.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEDisconnectNowMessage.cpp"),
-            GameCodeObject(NonMatching, "Black/MPFEDownloads.cpp"),
+            GameCodeObject(Matching, "Black/MPFEDownloads.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEFileTransfer.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEFileTransferMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEFindGame.cpp"),

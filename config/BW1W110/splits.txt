@@ -1603,22 +1603,24 @@ Black/MPFEConnectionStatus.cpp:
 
 Black/MPFEDatabase.cpp:
 	.text       start:0x00625150 end:0x00625B50
-	.rdata      start:0x009207E4 end:0x0092082C
+	.rdata      start:0x009207E4 end:0x009207F8
 	.CRT$XCU    start:0x009B6B30 end:0x009B6B48 align:4
-	.data       start:0x00BECA28 end:0x00BECAC8
+	.data       start:0x00BECA28 end:0x00BECA90
 	.bss        start:0x00D2FB38 end:0x00D2FBB0
 
 Black/MPFEDownloads.cpp:
 	.text       start:0x00625B50 end:0x006261B0
+	.rdata      start:0x009207F8 end:0x00920834
 	.CRT$XCU    start:0x009B6B48 end:0x009B6B4C align:4
+	.data       start:0x00BECA90 end:0x00BECAC8
 	.bss        start:0x00D2FBB4 end:0x00D2FBC0
 
 Black/MPFEFileTransfer.cpp:
 	.text       start:0x006261B0 end:0x00626AB0
-	.rdata      start:0x0092082C end:0x00920858
+	.rdata      start:0x00920834 end:0x00920858
 	.CRT$XCU    start:0x009B6B4C end:0x009B6B58 align:4
 	.data       start:0x00BECAC8 end:0x00BECB4C
-	.bss        start:0x00D2FBC0 end:0x00D2FC00
+	.bss        start:0x00D2FBC0 end:0x00D2FC00 align:16
 
 Black/MPFEFindGame.cpp:
 	.text       start:0x00626AB0 end:0x00627020

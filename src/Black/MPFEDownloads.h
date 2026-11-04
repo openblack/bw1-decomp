@@ -6,6 +6,8 @@
 
 #include <Lionhead/LHMultiplayer/ver4.0/LHFileDownload.h> /* For class LHFileDownload */
 
+struct LandscapeDetails;
+
 class MPFEDownloads
 {
 public:
@@ -38,6 +40,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0062e5c0 BW1M119 013ac770
+	bool DownloadFile(LandscapeDetails* details);
 	// Inliner IL size: 23
 	// BW1W120 inlined BW1M119 inlined
 	bool IsDownloading() { return Downloading; }
