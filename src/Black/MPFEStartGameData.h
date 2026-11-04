@@ -8,21 +8,17 @@ struct MPFEStartGameData
 	bool  LocalCreature;
 	char* CreatureData;
 #ifdef VERSION_BW1WCI
-	char*    field_0x8;
-	char*    MemoryData;
-	char*    field_0x10;
-	uint32_t CreatureLength;
-	uint32_t field_0x18;
-	uint32_t MemoryLength;
-	uint32_t field_0x20;
-#else
-	char*    MemoryData;
-	char*    field_0xc;
-	uint32_t CreatureLength;
-	uint32_t MemoryLength;
-	uint32_t field_0x18;
+	char* TykeData;
 #endif
-	float Alignment;
+	char*    MemoryData;
+	char*    PlayerSymbolData;
+	uint32_t CreatureLength;
+#ifdef VERSION_BW1WCI
+	uint32_t TykeLength;
+#endif
+	uint32_t MemoryLength;
+	uint32_t PlayerSymbolLength;
+	float    Alignment;
 
 	// BW1W120 00632860 BW1M119 013b2ef0
 	MPFEStartGameData();
