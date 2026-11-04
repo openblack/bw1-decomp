@@ -3,6 +3,10 @@
 
 #include <stdint.h> /* For uint8_t */
 
+#define SOFT_TRI_TABLE_SIZE 256
+#define SOFT_TRI_MAX_ROWS   513
+#define SOFT_TRI_MASK_COUNT 16
+
 // A software triangle rasteriser.
 struct SoftTri
 {
@@ -10,13 +14,34 @@ struct SoftTri
 	static int CLIPX;
 	// BW1W120 00c39b0c BW1M119 011d119c (LHCombined Release)
 	static int CLIPY;
+	// BW1W120 00fa93c4 BW1M119 012d1f6c (LHCombined Release)
+	static uint8_t char2bit[SOFT_TRI_TABLE_SIZE];
 	// A darkness for each shadow value.
 	// BW1W120 00fa94c4 BW1M119 012d206c (LHCombined Release)
-	static uint8_t bit2char[256];
+	static uint8_t bit2char[SOFT_TRI_TABLE_SIZE];
+	// BW1W120 00fa95c4 BW1M119 012d216c (LHCombined Release)
+	static uint16_t bit2col[SOFT_TRI_TABLE_SIZE];
 	// BW1W120 00faa7cc BW1M119 012d236c (LHCombined Release)
 	static int maxy;
 	// BW1W120 00faa7d0 BW1M119 012d2370 (LHCombined Release)
 	static int miny;
+	// BW1W120 00fa97c4 BW1M119 012d2374 (LHCombined Release)
+	static int right[SOFT_TRI_MAX_ROWS];
+	// BW1W120 00fa9fc8 BW1M119 012d2b78 (LHCombined Release)
+	static int left[SOFT_TRI_MAX_ROWS];
+
+	// BW1W120 009a3c74 BW1M119 011adc24 (LHCombined Release)
+	static const uint32_t leftmask_top[SOFT_TRI_MASK_COUNT];
+	// BW1W120 009a3cb4 BW1M119 011adc64 (LHCombined Release)
+	static const uint32_t rightmask_top[SOFT_TRI_MASK_COUNT];
+	// BW1W120 009a3cf4 BW1M119 011adca4 (LHCombined Release)
+	static const uint32_t leftmask_bottom[SOFT_TRI_MASK_COUNT];
+	// BW1W120 009a3d34 BW1M119 011adce4 (LHCombined Release)
+	static const uint32_t rightmask_bottom[SOFT_TRI_MASK_COUNT];
+	// BW1W120 009a3d74 BW1M119 011add24 (LHCombined Release)
+	static const uint32_t fullmask_top;
+	// BW1W120 009a3d78 BW1M119 011add28 (LHCombined Release)
+	static const uint32_t fullmask_bottom;
 
 	// BW1W120 00880f20 BW1M119 010ad540 (LHCombined Release)
 	static void CalcColTab(short start, short count);

@@ -5,11 +5,13 @@
 #include <stdint.h>    /* For uint32_t, uint8_t */
 #include <re_common.h> /* For bool32_t */
 
-#include "BBox2D.h"  /* For struct BBox2D */
-#include "LHPoint.h" /* For struct LHPoint */
+#include "BBox2D.h"   /* For struct BBox2D */
+#include "LHMatrix.h" /* For struct LHMatrix */
+#include "LHPoint.h"  /* For struct LHPoint */
 
 class LH3DObject;
 struct LH3DMaterial;
+struct LH3DTexture;
 
 #define LH3D_SHADOW_CLIP_CODE_U_MIN  0x40
 #define LH3D_SHADOW_CLIP_CODE_U_MAX  0x80
@@ -43,10 +45,13 @@ struct TShadowInfo
 	float         MinDepth; /* 0x440 */
 	LHPoint       Light;
 	LHPoint       Direction; /* 0x450 */
-	uint32_t      field_0x45c;
+	LH3DTexture*  Texture;
 	LH3DMaterial* Material; /* 0x460 */
 	LH3DObject*   Caster;
-	uint8_t       field_0x468[0x44];
+	LHMatrix      Projection; /* 0x468 */
+	LHPoint       LightUV;
+	float         ScaleU;
+	float         ScaleV;
 
 	// BW1W120 00faa7e0 BW1M119 012d337c (LHCombined Release)
 	static TShadowInfo* g_first;
