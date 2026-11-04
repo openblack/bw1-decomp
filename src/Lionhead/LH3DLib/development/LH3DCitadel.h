@@ -13,18 +13,20 @@ struct LHMatrix;
 struct LHPoint;
 
 // The highest stage a citadel reaches, just under the fully built one.
-#define LH3D_CITADEL_MAX_STAGE 0.9999f
+#define LH3D_CITADEL_MAX_STAGE  0.9999f
+#define LH3D_CITADEL_PLAYERS    4
+#define LH3D_CITADEL_ALIGNMENTS 3
 // The stages of a citadel's building, counted by GetStage.
 #define LH3D_CITADEL_STAGES 2
 
 class LH3DCitadel : public LH3DStaticMorphableObject
 {
 public:
-	float         field_0x84;
-	float         field_0x88;
+	float         AppliedLevel; /* 0x84 */
+	float         Level;
 	float         Stage; /* 0x8c */
-	float         field_0x90;
-	float         field_0x94;
+	float         AppliedAlignment;
+	float         Alignment;
 	float         Nasty; /* 0x98 */
 	float         Life;
 	uint32_t      field_0xa0;
@@ -37,8 +39,26 @@ public:
 
 	// Static data
 
+	// The texture of each player and alignment.
+	// BW1W120 00c39b28 BW1M119 null
+	static char g_texture_names[LH3D_CITADEL_PLAYERS][LH3D_CITADEL_ALIGNMENTS][0x80];
+
 	// BW1W120 00faa7e4 BW1M119 011e3b5c (LHCombined Release)
 	static LH3DMesh* g_mesh_entrance;
+
+	// Static methods
+
+	// BW1W120 008826c0 BW1M119 010af670 (LHCombined Release)
+	static float GetCoeffFlatten(long x, long z);
+	// BW1W120 008830e0 BW1M119 010c7320 (LHCombined Release)
+	static LH3DMesh* GetMeshFromDisk(long stage, long level);
+	// BW1W120 00882ac0 BW1M119 010cd5d0 (LHCombined Release)
+	static LH3DMesh* CreateFirstMesh();
+
+	// Non-virtual methods
+
+	// BW1W120 008829c0 BW1M119 010cc7f0 (LHCombined Release)
+	void CreateWorship();
 
 	// Virtual methods
 
@@ -116,6 +136,11 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	LH3DCitadel() { g_count_static_object++; }
+
+	// Destructor
+
+	// BW1W120 008830c0 BW1M119 inlined
+	~LH3DCitadel();
 };
 
 #endif /* BW1_DECOMP_LH3D_CITADEL_INCLUDED_H */
