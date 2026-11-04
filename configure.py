@@ -1809,6 +1809,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DOrientSprite.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Glow.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LightSheet.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DGJAnimVolFX.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DZSorter.cpp", extra_cflags=["/Gy"] if config.version == "BW1W100" else [], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DStorm.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSprite.cpp"),

@@ -4150,7 +4150,13 @@ Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
 
 Lionhead/LH3DLib/development/Glow.cpp:
 	.text       start:0x008428E0 end:0x00843680
-	.text$x     start:0x008AD2F0 end:0x008AD310 align:4
+
+Lionhead/LH3DLib/development/LH3DGJAnimVolFX.cpp:
+	.text       start:0x00844170 end:0x00844440
+	.text$x     start:0x008AD2F0 end:0x008AD305 align:4
+	.xdata$x    start:0x00A3F0A0 end:0x00A3F0C8 align:4
+	.data       start:0x00CB9FD4 end:0x00CBA004
+	.bss        start:0x00F5EED4 end:0x00F5EEE4
 
 Lionhead/LH3DLib/development/LightSheet.cpp:
 	.text       start:0x00843680 end:0x00844170

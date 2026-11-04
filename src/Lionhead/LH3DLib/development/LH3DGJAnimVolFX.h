@@ -36,8 +36,8 @@ public:
 	float         Intensity;
 	float         USpeed;
 	float         VSpeed; /* 0x10 */
-	float         field_0x14;
-	float         field_0x18;
+	float         TextureFracU;
+	float         TextureFracV;
 	float         U;
 	float         V; /* 0x20 */
 	unsigned long Color;
@@ -75,6 +75,11 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0083f070 BW1M119 010cd3e0 (LHCombined Release)
+	LH3DGJAnimVolFX(LH3DObject* object, LH3DMaterial* material);
+	// BW1W120 0083f0d0 BW1M119 010cd370 (LHCombined Release)
+	~LH3DGJAnimVolFX();
+
 	// BW1W120 0083f050 BW1M119 010cd480 (LHCombined Release)
 	void Release();
 	// BW1W120 0083f0e0 BW1M119 010cd320 (LHCombined Release)
@@ -90,9 +95,9 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	void SetVSpeed(float speed) { VSpeed = speed; }
 	// BW1W120 inlined BW1M119 inlined
-	void SetField14(float value) { field_0x14 = value; }
+	void SetTextureFracU(float value) { TextureFracU = value; }
 	// BW1W120 inlined BW1M119 inlined
-	void SetField18(float value) { field_0x18 = value; }
+	void SetTextureFracV(float value) { TextureFracV = value; }
 };
 
 static_assert(sizeof(LH3DGJAnimVolFX) == 0x2c, "Data type is of wrong size");

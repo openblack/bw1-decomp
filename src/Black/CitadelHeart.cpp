@@ -117,8 +117,8 @@ const int   CreaturePenColourKey = 0x6e37;
 const float DestructionVolFXScale = 0.3f;
 const float DestructionVolFXUSpeed = 0.6f;
 const float DestructionVolFXVSpeed = 0.2f;
-const float DestructionVolFXField14 = 0.7f;
-const float DestructionVolFXField18 = 0.1f;
+const float DestructionVolFXTextureFracU = 0.7f;
+const float DestructionVolFXTextureFracV = 0.1f;
 const int   DestructionVolFXFrameCount = 20;
 const float ImpactDamageScale = 0.000005f;
 const float HeartRouteSize = 21.5f;
@@ -1153,8 +1153,8 @@ void CitadelHeart::DrawDestruction()
 			VolFX->SetColorSpecular(colour, 0x141414);
 			VolFX->SetUSpeed(DestructionVolFXUSpeed);
 			VolFX->SetVSpeed(DestructionVolFXVSpeed);
-			VolFX->SetField14(DestructionVolFXField14);
-			VolFX->SetField18(DestructionVolFXField18);
+			VolFX->SetTextureFracU(DestructionVolFXTextureFracU);
+			VolFX->SetTextureFracV(DestructionVolFXTextureFracV);
 			float intensity = LinterpTable(DestructionVolFXTimes, DestructionVolFXIntensities,
 			                               DESTRUCTION_VOL_FX_STAGES, GetDestructionTime()) *
 			                  pulse;
