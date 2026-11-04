@@ -7,9 +7,9 @@
 #include <Lionhead/LH3DLib/development/LH3DColor.h>  /* For struct LH3DColor */
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 
-#include "CitadelPart.h" /* For struct CitadelPart */
-#include "LHPTR.h"       /* For LHPTR */
-#include "LightSheet.h"  /* For struct LightSheet */
+#include "CitadelPart.h"                             /* For struct CitadelPart */
+#include "LHPTR.h"                                   /* For LHPTR */
+#include <Lionhead/LH3DLib/development/LightSheet.h> /* For struct LightSheet */
 
 // Forward Declares
 
