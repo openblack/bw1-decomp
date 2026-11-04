@@ -19,6 +19,7 @@
 #include "WinCondition.h"
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+#include <string>
 #include <utility> /* For std::pair */
 #include <vector>  /* For std::vector */
 #endif

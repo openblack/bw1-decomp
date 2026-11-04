@@ -14,10 +14,6 @@
 #include "MPFEStartGameData.h" /* For struct MPFEStartGameData */
 #include "ZipData.h"           /* For class ZipData */
 
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-#include <string>
-#endif
-
 MPFECreatureDownload::MPFECreatureDownload()
 {
 	UserData = NULL;
