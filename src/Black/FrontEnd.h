@@ -53,6 +53,8 @@ struct FrontEnd
 	static TattooEditor* TattooDialog;
 	// BW1W120 00cd0b0c
 	static EndGameBox* EndGameDialog;
+	// BW1W120 00cd0b14
+	static StartGameBox* StartGameDialog;
 	// TODO: Original name unknown; created by JustDoABox.
 	// BW1W120 00cd06e8
 	static Plasma* Dat_00CD06E8;

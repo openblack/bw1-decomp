@@ -2179,9 +2179,9 @@ Black/Serialise.cpp:
 
 Black/ServerLandscapeMap.cpp:
 	.text       start:0x0072DB60 end:0x0072FDB0
-	.rdata      start:0x009B5644 end:0x009B5674
+	.rdata      start:0x009B5644 end:0x009B566C
 	.CRT$XCU    start:0x00A370F0 end:0x00A370F8 align:4
-	.data       start:0x00C942D8 end:0x00C95748
+	.data       start:0x00C942D8 end:0x00C94408
 	.bss        start:0x00E20434 end:0x00E2065C
 
 Black/Settings.cpp:
@@ -2189,17 +2189,24 @@ Black/Settings.cpp:
 	.bss        start:0x00E2065C end:0x00E20760
 
 Black/Setup.cpp:
-	.text       start:0x00730190 end:0x00734E80
-	.rdata      start:0x009B5674 end:0x009B5688
-	.CRT$XCU    start:0x00A370F8 end:0x00A3710C align:4
-	.data       start:0x00C95748 end:0x00C95890
-	.bss        start:0x00E20760 end:0x00E20F7C
+	.text       start:0x00730190 end:0x00734BF0
+	.rdata      start:0x009B566C end:0x009B5680
+	.CRT$XCU    start:0x00A370F8 end:0x00A37104 align:4
+	.data       start:0x00C94408 end:0x00C95870
+	.bss        start:0x00E20760 end:0x00E20B08
+
+Black/SetupGameData.cpp:
+	.text       start:0x00734BF0 end:0x00734E80
+	.rdata      start:0x009B5680 end:0x009B5688
+	.CRT$XCU    start:0x00A37104 end:0x00A3710C align:4
+	.bss        start:0x00E20B08 end:0x00E20B10
 
 Black/ShowNeeds.cpp:
 	.text       start:0x00734E80 end:0x007358F0
 	.rdata      start:0x009B5688 end:0x009B56C8
 	.CRT$XCU    start:0x00A3710C end:0x00A37110 align:4
-	.data       start:0x00C95890 end:0x00C958CC
+	.data       start:0x00C95870 end:0x00C958CC
+	.bss        start:0x00E20B10 end:0x00E20F7C
 
 Black/SoundConfirmation.cpp:
 	.text       start:0x007358F0 end:0x00735DA0

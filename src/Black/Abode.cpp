@@ -442,7 +442,11 @@ void Abode::CreateAbodeSurroundingObjects()
 		if (!GStreetLantern::IsALaternWithinDistance(coords, 40.0f))
 		{
 			coords.altitude = 0.0f;
+#ifdef VERSION_BW1WCI
+			GStreetLantern::Create(coords, &GMobileStaticInfo::GetInfo()[MOBILE_STATIC_INFO_STREET_LANTERN], 1.0f);
+#else
 			GStreetLantern::Create(coords, &GMobileStaticInfo::GetInfo()[MOBILE_STATIC_INFO_STREET_LANTERN]);
+#endif
 		}
 	}
 }

@@ -7,6 +7,8 @@
 #include <chlasm/Enum.h>        /* For enum HOLD_TYPE, enum RESOURCE_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
+#include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For struct LHListHead */
+
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 #include "Object.h"        /* For struct Object */
 
@@ -164,12 +166,23 @@ public:
 	MobileStatic() : Player(NULL) {}
 	// BW1W120 00608710 BW1M119 013c8c20
 	MobileStatic(const MapCoords& coords, const GMobileStaticInfo* info, Object* param_3, float param_4, float param_5);
+
+	// BW1W120 00608770 BW1M119 013c88d0
+	static MobileStatic* Create(const MapCoords& coords, const GMobileStaticInfo* info, Object* parent, GPlayer* player,
+	                            float y_angle, float scale);
+	// BW1W120 00608840 BW1M119 013c8700
+	static MobileStatic* Create(const MapCoords& coords, const GMobileStaticInfo* info, Object* parent, GPlayer* player,
+	                            float y_angle, float scale, float x_angle, float z_angle);
 };
 
 class GBaseOnly : public Object
 {
 public:
-	uint8_t field_0x54[0x8];
+	GBaseOnly* next;
+	uint32_t   field_0x58;
+
+	// BW1W120 00d3ee54
+	static LHListHead<GBaseOnly> AllBases;
 
 	// BW1W120 006094e0 BW1M119 013c67f0
 	static void ReleaseAll();
@@ -190,13 +203,23 @@ public:
 
 	// BW1W120 0055d790 BW1M119 inlined
 	GBaseOnly() {}
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00621de0 BW1MCI119 013ef020
+	GBaseOnly(const MapCoords& coords, const GObjectInfo* info, float y_angle, float scale);
+#else
 	// BW1W120 inlined BW1M119 inlined
 	GBaseOnly(const MapCoords& coords, const GObjectInfo* info) : Object(coords, info) {}
+#endif
 
 	// Static methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00621eb0 BW1MCI119 013eede0
+	static GBaseOnly* Create(const MapCoords& coords, const GObjectInfo* info, float y_angle, float scale);
+#else
 	// BW1W120 00609340 BW1M119 013c6a70
 	static GBaseOnly* Create(const MapCoords& coords, const GObjectInfo* info);
+#endif
 };
 
 #endif /* BW1_DECOMP_MOBILE_STATIC_INCLUDED_H */

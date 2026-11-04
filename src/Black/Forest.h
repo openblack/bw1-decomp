@@ -122,6 +122,9 @@ public:
 	void Process();
 	// BW1W120 0053a7c0 BW1M119 010fa470
 	uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
+
+	// BW1W120 0053a600 BW1M119 010fa6f0
+	Tree* GetNextTree(Tree* tree);
 };
 
 #endif /* BW1_DECOMP_FOREST_INCLUDED_H */

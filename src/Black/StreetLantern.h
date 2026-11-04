@@ -61,7 +61,11 @@ public:
 	// Static methods
 
 	// BW1W120 007346e0 BW1M119 0153e170
+#ifdef VERSION_BW1WCI
+	static GStreetLantern* Create(const MapCoords& coords, const GMobileStaticInfo* info, float scale);
+#else
 	static GStreetLantern* Create(const MapCoords& coords, const GMobileStaticInfo* info);
+#endif
 	// BW1W120 00734a30 BW1M119 0153da00
 	static uint32_t IsALaternWithinDistance(MapCoords coords, float max_dist);
 

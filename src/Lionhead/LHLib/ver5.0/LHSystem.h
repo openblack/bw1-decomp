@@ -39,7 +39,8 @@ struct LHSystem
 #include "LHScript.h"  /* For class LHScriptX, struct LHScriptResource */
 #include "LHText.h"    /* For struct LHText */
 
-typedef LHScriptX<char> LHScriptX_c_;
+typedef LHScriptX<char>    LHScriptX_c_;
+typedef LHScriptX<wchar_t> LHScriptX_w_;
 struct LHKeyEvent
 {
 	int     Key;
@@ -189,43 +190,59 @@ struct TbIME
 
 struct LHSys
 {
-	LHSystem         system;   /* 0x0 */
-	LHScreen         screen;   /* 0x10 */
-	LHMouse          mouse;    /* 0x1c4 */
-	LHKeyboard       keyboard; /* 0x32c */
-	CharRing         charRing; /* 0x560 */
-	LHJoypads        joypads;  /* 0x5a8 */
-	LHDraw           draw;     /* 0x82c */
-	LHConvert        convert;  /* 0x834 */
-	LHScriptX_c_     script;   /* 0x8c4 */
-	uint8_t          field_0x8f4[0x30];
+	LHSystem   system;   /* 0x0 */
+	LHScreen   screen;   /* 0x10 */
+	LHMouse    mouse;    /* 0x1c4 */
+	LHKeyboard keyboard; /* 0x32c */
+	CharRing   charRing; /* 0x560 */
+#ifndef VERSION_BW1W100
+	LHJoypads joypads; /* 0x5a8 */
+#endif
+	LHDraw           draw;                 /* 0x82c */
+	LHConvert        convert;              /* 0x834 */
+	LHScriptX_c_     script;               /* 0x8c4 */
+	LHScriptX_w_     wscript;              /* 0x8f4 */
 	LHScriptResource ScriptResources[100]; /* 0x924 the front-end script resource bank */
 	LHText           text;                 /* 0x7044 */
 	unsigned int     LastCommand;          /* 0x706c most recent WM_* the app was told about */
 	unsigned int     LastCommandParam;     /* 0x7070 */
-	uint8_t          field_0x7074[0xC];
-	int              LastMouseMsgTime;        /* 0x7080 */
-	unsigned int     QueryCancelAutoPlayMsg;  /* 0x7084 registered "QueryCancelAutoPlay" message */
-	uint8_t          QueryCancelAutoPlayInit; /* 0x7088 bit 0 = message registered */
-	uint8_t          _pad7089[3];
-	HANDLE           AppEvent;            /* 0x708c signalled on WM_MOUSEMOVE, waited on by the mouse thread */
-	HCURSOR          ArrowCursor;         /* 0x7090 */
-	HCURSOR          AppCursor;           /* 0x7094 */
-	TRACKMOUSEEVENT  TrackMouseEventInfo; /* 0x7098 */
-	HACCEL           Accel;               /* 0x70a8 */
-	uint8_t          field_0x70ac[4];
-	HMENU            Menu;         /* 0x70b0 */
-	HWND             Window;       /* 0x70b4 the game's top-level window */
-	uint8_t          field_0x70b8; /* 256-colour failure marker (byte store in LHScreen::ChangeMode) */
-	uint8_t          field_0x70b9;
-	uint8_t          WindowedMode;       /* 0x70ba */
-	uint8_t          AltTabPending;      /* 0x70bb */
-	int              AppMinimized;       /* 0x70bc */
-	int              AppMinimizedByUs;   /* 0x70c0 */
-	slim::TbIME*     TbIME;              /* 0x70c4 */
-	uint8_t          MouseThreadRunning; /* 0x70c8 */
-	uint8_t          TerminateRequested; /* 0x70c9 */
-	uint8_t          _pad70ca[2];
+#ifdef VERSION_BW1W100
+	uint8_t field_0x6df0[0x10];
+#else
+	uint8_t field_0x7074[0xC];
+#endif
+#if defined(VERSION_BW1W130)
+	bool32_t GloveActive; /* 0x7080 */
+	uint8_t  field_0x7084[4];
+#endif
+	int          LastMouseMsgTime;        /* 0x7080 */
+	unsigned int QueryCancelAutoPlayMsg;  /* 0x7084 registered "QueryCancelAutoPlay" message */
+	uint8_t      QueryCancelAutoPlayInit; /* 0x7088 bit 0 = message registered */
+	uint8_t      _pad7089[3];
+#if defined(VERSION_BW1W130)
+	uint8_t field_0x7094[4];
+#endif
+	HANDLE  AppEvent;    /* 0x708c signalled on WM_MOUSEMOVE, waited on by the mouse thread */
+	HCURSOR ArrowCursor; /* 0x7090 */
+	HCURSOR AppCursor;   /* 0x7094 */
+#if defined(VERSION_BW1W130)
+	uint8_t field_0x70a4[4];
+#endif
+	TRACKMOUSEEVENT TrackMouseEventInfo; /* 0x7098 */
+	HACCEL          Accel;               /* 0x70a8 */
+	uint8_t         field_0x70ac[4];
+	HMENU           Menu;         /* 0x70b0 */
+	HWND            Window;       /* 0x70b4 the game's top-level window */
+	uint8_t         field_0x70b8; /* 256-colour failure marker (byte store in LHScreen::ChangeMode) */
+	uint8_t         field_0x70b9;
+	uint8_t         WindowedMode;       /* 0x70ba */
+	uint8_t         AltTabPending;      /* 0x70bb */
+	int             AppMinimized;       /* 0x70bc */
+	int             AppMinimizedByUs;   /* 0x70c0 */
+	slim::TbIME*    TbIME;              /* 0x70c4 */
+	uint8_t         MouseThreadRunning; /* 0x70c8 */
+	uint8_t         TerminateRequested; /* 0x70c9 */
+	uint8_t         _pad70ca[2];
 	void(__stdcall* MessageHook)(unsigned long, unsigned long, unsigned long); /* 0x70cc; Mac UserMessageCallback */
 	int     LastKey;                                                           /* 0x70d0 */
 	uint8_t field_0x70d4[4];
@@ -252,14 +269,33 @@ struct LHSys
 	static HINSTANCE   GetInstance() { return TheSystem.system.HInstance; }
 	static HWND        GetWindow() { return TheSystem.Window; }
 };
+#if defined(VERSION_BW1W100)
+static_assert(sizeof(LHSys) == 0x6E58, "LHSys is the wrong size");
+#elif defined(VERSION_BW1W130)
+static_assert(sizeof(LHSys) == 0x70E8, "LHSys is the wrong size");
+#else
 static_assert(sizeof(LHSys) == 0x70D8, "LHSys is the wrong size");
+#endif
 static_assert(offsetof(LHSys, keyboard) == 0x32c, "LHSys keyboard offset changed");
 static_assert(offsetof(LHSys, charRing) == 0x560, "LHSys charRing offset changed");
+#if defined(VERSION_BW1W100)
+static_assert(offsetof(LHSys, draw) == 0x5a8, "LHSys draw offset changed");
+static_assert(offsetof(LHSys, ScriptResources) == 0x6a0, "LHSys ScriptResources offset changed");
+static_assert(offsetof(LHSys, text) == 0x6dc0, "LHSys text offset changed");
+static_assert(offsetof(LHSys, Window) == 0x6e34, "LHSys Window offset changed");
+static_assert(offsetof(LHSys, LastKey) == 0x6e50, "LHSys LastKey offset changed");
+#else
 static_assert(offsetof(LHSys, draw) == 0x82c, "LHSys draw offset changed");
 static_assert(offsetof(LHSys, ScriptResources) == 0x924, "LHSys ScriptResources offset changed");
 static_assert(offsetof(LHSys, text) == 0x7044, "LHSys text offset changed");
+#if defined(VERSION_BW1W130)
+static_assert(offsetof(LHSys, Window) == 0x70c4, "LHSys Window offset changed");
+static_assert(offsetof(LHSys, LastKey) == 0x70e0, "LHSys LastKey offset changed");
+#else
 static_assert(offsetof(LHSys, Window) == 0x70b4, "LHSys Window offset changed");
 static_assert(offsetof(LHSys, LastKey) == 0x70d0, "LHSys LastKey offset changed");
+#endif
+#endif
 
 inline void LHPixel16::Set(LHColor color)
 {

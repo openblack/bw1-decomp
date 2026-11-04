@@ -66,6 +66,9 @@ public:
 
 	// BW1W120 00439830 BW1M119 010b7920
 	void SetToZero();
+
+	// BW1W120 00439850 BW1M119 010b77a0
+	static Bonfire* Create(const MapCoords& coords, float y_angle, float scale, float fire_scale);
 };
 
 #endif /* BW1_DECOMP_BONFIRE_INCLUDED_H */
