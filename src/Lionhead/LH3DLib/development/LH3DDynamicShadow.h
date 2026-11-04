@@ -6,11 +6,12 @@
 // Forward Declares
 
 class LH3DObject;
+struct TShadowInfo;
 
 struct LH3DDynamicShadow
 {
-	void*    field_0x0;
-	bool32_t UseDefaultSun;
+	TShadowInfo* ShadowInfo;
+	bool32_t     UseDefaultSun;
 
 	// Static methods
 

@@ -4422,6 +4422,12 @@ Lionhead/LH3DLib/development/LH3DLandscape.cpp:
 	.data       start:0x00C397F4 end:0x00C398E4
 	.bss        start:0x00FA51F8 end:0x00FA76D0
 
+Lionhead/LH3DLib/development/LH3DDynamicShadow.cpp:
+	.text       start:0x00874440 end:0x00874AA0
+	.rdata      start:0x009A3C10 end:0x009A3C14
+	.data       start:0x00C398E4 end:0x00C398FC
+	.bss        start:0x00FA76D0 end:0x00FA92D8
+
 Lionhead/LH3DLib/development/LandBlock.cpp:
 	.text       start:0x00874AA0 end:0x008792E0
 	.rdata      start:0x009A3C14 end:0x009A3C1C
