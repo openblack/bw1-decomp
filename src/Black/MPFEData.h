@@ -169,6 +169,16 @@ public:
 	void D2A_YouWereKickedGame(wchar_t* name);
 	// BW1W120 006208c0 BW1M119 01392c60
 	void D2A_RefreshTeams();
+	// BW1W120 006208d0 BW1M119 01392c00
+	void D2A_RefreshMaps();
+	// BW1W120 006208e0 BW1M119 01392ba0
+	void D2A_RefreshPlayerDetails();
+	// BW1W120 006200b0 BW1M119 01393130
+	void D2A_IncomingChatString(wchar_t* from, wchar_t* text, bool is_private, bool is_team, bool highlight);
+	// BW1W120 006208f0 BW1M119 01392b00
+	void D2A_CouldNotQueryDatabase();
+	// BW1W120 00620ae0 BW1M119 013929c0
+	void D2A_CouldNotDownloadThumb();
 	// BW1W120 00620b80 BW1M119 01392910
 	void D2A_PersonCouldNotDownload(wchar_t* name);
 	// BW1W120 006241f0 BW1M119 0139d6f0
@@ -183,6 +193,10 @@ public:
 	void D_EnumeratingPlayersAdd(const char* nick, bool host, LH_USER_ID id);
 	// BW1W120 00626020 BW1M119 0139a880
 	LandscapeDetails* A2D_GetLandscapeDetailsFromID(unsigned long id);
+	// BW1W120 00626080 BW1M119 0139a6b0
+	void D_GotThumbnail();
+	// BW1W120 006260d0 BW1M119 0139a640
+	void D_GotMapfile();
 	// BW1W120 00626360 BW1M119 01399ee0
 	uint64_t GetOOSChecksum();
 };

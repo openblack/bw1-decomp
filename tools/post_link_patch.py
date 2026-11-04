@@ -825,6 +825,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0060812B, call_rel32(0x004017F9)),  # MobileObject
     (0x006083BB, call_rel32(0x004017F9)),  # MobileObject
     (0x0060843A, call_indirect(0x008A9960)),  # MobileObject: __imp__BinkGetSummary@8
+    (0x0062E55B, call_rel32(0x004017F9)),  # MPFEDownloads
+    (0x0062EADB, call_rel32(0x004017F9)),  # MPFEDownloads
     (0x0063114B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x0063119B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x006314BB, call_rel32(0x004017F9)),  # MPFEMapMessages
@@ -1521,6 +1523,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0060BE66, copy_run(0x0060BDF6)),  # MobileObject
     (0x0060BE93, jmp_run(0x0060BE66)),  # MobileObject
     (0x0060BEE6, copy_run(0x0060BE93)),  # MobileObject
+    (0x0063225B, jmp_run(0x00632233)),  # MPFEDownloads
+    (0x00632276, jmp_run(0x0063225B)),  # MPFEDownloads
+    (0x006322B7, jmp_run(0x00632276)),  # MPFEDownloads
+    (0x006324CA, copy_run(0x006322B7)),  # MPFEDownloads
+    (0x00632562, copy_run(0x006324CA)),  # MPFEDownloads
+    (0x00632656, jmp_run(0x00632562)),  # MPFEDownloads
+    (0x00632718, jmp_run(0x00632656)),  # MPFEDownloads
+    (0x006327DB, jmp_run(0x00632718)),  # MPFEDownloads
+    (0x0063285A, jmp_run(0x006327DB)),  # MPFEDownloads
+    (0x00632893, jmp_run(0x0063285A)),  # MPFEDownloads
     (0x00634E4B, copy_run(0x00634DEA)),  # MPFEMapMessages
     (0x00634E73, jmp_run(0x00634E4B)),  # MPFEMapMessages
     (0x00634E9B, jmp_run(0x00634E73)),  # MPFEMapMessages
