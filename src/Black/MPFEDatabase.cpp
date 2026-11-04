@@ -102,12 +102,12 @@ void MPFEDatabase::ParseDatabaseInformation()
 	for (unsigned long row = 0; row < rows; row++)
 	{
 		LandscapeDetails* details = new LandscapeDetails;
-		details->ID = atoi(table[row * columns]);
-		strcpy(details->Name, table[row * columns + 1]);
-		strcpy(details->FileName, table[row * columns + 2]);
-		details->NumTeams = atoi(table[row * columns + 3]);
-		strcpy(details->ServerAddress, table[row * columns + 4]);
-		strcpy(details->ServerPath, table[row * columns + 5]);
+		details->ID = atoi(table[row * columns + MPFE_DATABASE_COLUMN_ID]);
+		strcpy(details->Name, table[row * columns + MPFE_DATABASE_COLUMN_NAME]);
+		strcpy(details->FileName, table[row * columns + MPFE_DATABASE_COLUMN_FILE_NAME]);
+		details->NumTeams = atoi(table[row * columns + MPFE_DATABASE_COLUMN_NUM_TEAMS]);
+		strcpy(details->ServerAddress, table[row * columns + MPFE_DATABASE_COLUMN_SERVER_ADDRESS]);
+		strcpy(details->ServerPath, table[row * columns + MPFE_DATABASE_COLUMN_SERVER_PATH]);
 		details->MapOnDisk = details->AreWeOnDisk(true);
 		details->ThumbnailOnDisk = details->AreWeOnDisk(false);
 		details->FromDatabase = true;
