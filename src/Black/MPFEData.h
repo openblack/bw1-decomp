@@ -181,6 +181,24 @@ public:
 	void D2A_CouldNotDownloadThumb();
 	// BW1W120 00620b80 BW1M119 01392910
 	void D2A_PersonCouldNotDownload(wchar_t* name);
+	// BW1W120 00620d20 BW1M119 01392890
+	void D2A_DisableStartGameButton();
+	// BW1W120 00620d40 BW1M119 01392810
+	void D2A_EnableStartGameButton();
+	// BW1W120 00620e00 BW1M119 01392720
+	void D2A_TransferringFiles();
+	// BW1W120 00620f10 BW1M119 01392680
+	void D2A_HostWaitStart();
+	// BW1W120 00620fb0 BW1M119 013925e0
+	void D2A_ClientWaitStart();
+	// BW1W120 00621050 BW1M119 01392160
+	void D2A_CouldNotStartBecauseOtherPeopleDownloading();
+	// BW1W120 006211a0 BW1M119 013920b0
+	void D2A_CouldNotStartBecauseIAmDownloading();
+	// BW1W120 006212e0 BW1M119 01392010
+	void D_CreatureErrorMessage();
+	// BW1W120 00621380 BW1M119 01391c40
+	void D_CreatureUploadedNextTime();
 	// BW1W120 006241f0 BW1M119 0139d6f0
 	void D_PlayerJoined(const char* nick, LH_USER_ID id);
 	// BW1W120 006244a0 BW1M119 0139cad0

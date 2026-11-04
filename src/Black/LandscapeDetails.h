@@ -2,7 +2,9 @@
 #define BW1_DECOMP_LANDSCAPE_DETAILS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <string.h> /* For memset */
+
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
 
 struct LandscapeDetails
 {
@@ -15,6 +17,17 @@ struct LandscapeDetails
 	bool          ThumbnailOnDisk;    /* 0x328 */
 	bool          MapOnDisk;
 	bool          FromDatabase;
+
+	// BW1W120 inlined BW1M119 014d28e0
+	LandscapeDetails() { memset(this, 0, sizeof(*this)); }
+
+	// BW1W120 00714350 BW1M119 013eed70
+	bool AreWeOnDisk(bool map);
+
+	// BW1W120 00713fd0 BW1M119 01183430
+	static void GetFromDisk(LHLinkedList<LandscapeDetails*>* list);
+	// BW1W120 00714130 BW1M119 0117d520
+	static void DumpListToDisk(char* path, LHLinkedList<LandscapeDetails*>* list);
 };
 
 static_assert(sizeof(LandscapeDetails) == 0x32c, "LandscapeDetails size is incorrect");

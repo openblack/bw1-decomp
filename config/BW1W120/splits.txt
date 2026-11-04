@@ -1817,12 +1817,19 @@ Black/MPFEConnectionStatus.cpp:
 	.data       start:0x00BF4D40 end:0x00BFD7E8
 	.bss        start:0x00D40E20 end:0x00D40E50
 
+Black/MPFECreatureDownload.cpp:
+	.text       start:0x0062DB10 end:0x0062DFC0
+	.rdata      start:0x00930860 end:0x00930868
+	.CRT$XCU    start:0x009C6FFC end:0x009C700C align:4
+	.data       start:0x00BFD7E8 end:0x00BFD810
+	.bss        start:0x00D40E50 end:0x00D40E64
+
 Black/MPFEDatabase.cpp:
-	.text       start:0x0062DB10 end:0x0062E540
-	.rdata      start:0x00930860 end:0x00930874
-	.CRT$XCU    start:0x009C6FFC end:0x009C7018 align:4
-	.data       start:0x00BFD7E8 end:0x00BFD850
-	.bss        start:0x00D40E50 end:0x00D40EC8
+	.text       start:0x0062DFC0 end:0x0062E540
+	.rdata      start:0x00930868 end:0x00930874
+	.CRT$XCU    start:0x009C700C end:0x009C7018 align:4
+	.data       start:0x00BFD810 end:0x00BFD850
+	.bss        start:0x00D40E64 end:0x00D40EC8
 
 Black/MPFEDownloads.cpp:
 	.text       start:0x0062E540 end:0x0062EBD0
