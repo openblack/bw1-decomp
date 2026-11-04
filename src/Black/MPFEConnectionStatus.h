@@ -14,6 +14,8 @@ struct MPFEConnectionStatus
 
 	// Non-virtual methods
 
+	// BW1W120 0062da90 BW1M119 013a93d0
+	void StartGame();
 	// BW1W120 0062dab0 BW1M119 013a9380
 	bool IsLanLobby();
 	// BW1W120 0062dac0 BW1M119 013a9330

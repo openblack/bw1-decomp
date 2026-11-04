@@ -220,8 +220,16 @@ public:
 	void D_GotThumbnail();
 	// BW1W120 006260d0 BW1M119 0139a640
 	void D_GotMapfile();
+	// BW1W120 00625880 BW1M119 0139ac40
+	void D_StartGameSession(char* session_name);
+	// BW1W120 00625d30 BW1M119 0139a8f0
+	void D_DecodeFilesAndSetupPlayersForSession();
+	// BW1W120 00626230 BW1M119 0139a1a0
+	uint64_t GetMapChecksum(unsigned long map_id);
 	// BW1W120 00626360 BW1M119 01399ee0
 	uint64_t GetOOSChecksum();
+	// BW1W120 00626420 BW1M119 01399e50
+	bool D_GotSelectedMapFile();
 };
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)

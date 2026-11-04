@@ -34,6 +34,8 @@ struct MPFEPlayerDetails
 	LH_USER_ID DatabaseID; /* 0x128 */
 #endif
 
+	// BW1W120 00631940 BW1M119 013b1fe0
+	~MPFEPlayerDetails();
 	// BW1W120 00632670 BW1M119 013b08f0
 	wchar_t* GetName();
 };

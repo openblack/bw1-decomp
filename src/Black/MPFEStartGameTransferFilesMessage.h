@@ -5,9 +5,18 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+// Forward Declares
+
+struct MPFEPlayerDetails;
+
 class MPFEStartGameTransferFilesMessage : public MPFEMessageObject
 {
 public:
+	// Static methods
+
+	// BW1W120 00630080 BW1M119 013ae650
+	static void ProcessIncoming(wchar_t* message, MPFEPlayerDetails* from);
+
 	// Constructors
 
 	// BW1W120 00630000 BW1M119 013ae7b0
