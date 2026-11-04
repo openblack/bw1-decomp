@@ -419,10 +419,13 @@ Black/CreatureDecision.cpp:
 	.bss        start:0x00BA39B0 end:0x00BA39B8
 
 Black/CreatureDevelopment.cpp:
+	.text       start:0x004AC760 end:0x004ACE50
 	.rdata      start:0x0080E238 end:0x0080E248
+	.CRT$XCU    start:0x008F627C end:0x008F6288 align:4
+	.bss        start:0x00BA39B8 end:0x00BA3B80
 
 Black/CreatureDirectControl.cpp:
-	.text       start:0x004ACE50 end:0x004AE350
+	.text       start:0x004ACE50 end:0x004AE350 align:16
 	.rdata      start:0x0080E24C end:0x0080E254
 	.CRT$XCU    start:0x008F6288 end:0x008F6290 align:4
 	.data       start:0x00907E60 end:0x00907E88
