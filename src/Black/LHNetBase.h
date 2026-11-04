@@ -50,6 +50,8 @@ public:
 	void Chat(LH_USER_ID user_id, char16_t* text, LHTransportInfo* transport_info);
 	// BW1W120 005eb470 BW1M119 0137d870
 	void SendIAmHere(LHTransportInfo* transport_info);
+	// BW1W120 005ebd20 BW1M119 0137cbc0
+	int WaitUntilGameLoopStarted();
 };
 
 #endif
