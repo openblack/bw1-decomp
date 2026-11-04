@@ -3995,6 +3995,12 @@ Lionhead/LH3DLib/development/LH3DSubMesh.cpp:
 	.text       start:0x0089EB40 end:0x0089ED90
 	.bss        start:0x0102DE28 end:0x0102DE30
 
+Lionhead/LH3DLib/development/LH3DShadow.cpp:
+	.text       start:0x0089EE90 end:0x008A0190
+	.rdata      start:0x00A13FDC end:0x00A140E4
+	.data       start:0x00CAD08C end:0x00CAD0EC
+	.bss        start:0x0102DE30 end:0x0102F250
+
 Lionhead/LH3DLib/development/SRTextured.cpp:
 	.text       start:0x008A0190 end:0x008A1800
 
