@@ -35,6 +35,7 @@ void ZipData::Reset()
 
 bool ZipData::SetCompressedData(char* data, unsigned long length)
 {
+	bool ok = true;
 	Reset();
 	UncompressedSize = *(unsigned long*)data;
 	CompressedSize = length;
@@ -43,13 +44,14 @@ bool ZipData::SetCompressedData(char* data, unsigned long length)
 	UncompressedData = new char[UncompressedSize];
 	if (uncompress((Bytef*)UncompressedData, &UncompressedSize, (Bytef*)CompressedData, CompressedSize) != Z_OK)
 	{
-		return false;
+		ok = false;
 	}
-	return true;
+	return ok;
 }
 
 bool ZipData::SetUncompressedData(char* data, unsigned long length)
 {
+	bool ok = true;
 	Reset();
 	UncompressedSize = length;
 	UncompressedData = new char[length];
@@ -60,8 +62,11 @@ bool ZipData::SetUncompressedData(char* data, unsigned long length)
 	if (compress((Bytef*)CompressedData + sizeof(UncompressedSize), &CompressedSize, (Bytef*)UncompressedData,
 	             UncompressedSize) != Z_OK)
 	{
-		return false;
+		ok = false;
 	}
-	*(unsigned long*)CompressedData = UncompressedSize;
-	return true;
+	else
+	{
+		*(unsigned long*)CompressedData = UncompressedSize;
+	}
+	return ok;
 }
