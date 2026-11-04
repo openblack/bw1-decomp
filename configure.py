@@ -1842,6 +1842,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DWater.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DCT.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DSubMesh.cpp", pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LHIlib.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DShadow.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/SRTextured.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DCitadel.cpp", pch=True),
