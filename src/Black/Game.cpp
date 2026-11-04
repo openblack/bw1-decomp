@@ -8,7 +8,7 @@
 #include "FallingSpell.h"
 #include "FireFly.h"
 #include <Lionhead/LH3DLib/development/LH3DZSorter.h>
-#include "LightSheet.h"
+#include <Lionhead/LH3DLib/development/LightSheet.h>
 #include "LiquidParticle.h"
 #include "MagicHand.h"
 #include "ParticleContainer.h"
@@ -2263,9 +2263,9 @@ void GGame::Process3dEngine()
 			LH3DAtmos::Render3D();
 			if (CameraModeNew3::ForceField && CameraModeNew3::DrawForceField)
 			{
-				CameraModeNew3::ForceField->count = CameraModeNew3::ForceFieldPointCount + 1;
+				CameraModeNew3::ForceField->NumPoints = CameraModeNew3::ForceFieldPointCount + 1;
 				int i;
-				for (i = 0; i < CameraModeNew3::ForceField->count - 1; ++i)
+				for (i = 0; i < CameraModeNew3::ForceField->NumPoints - 1; ++i)
 					CameraModeNew3::ForceField->Points[i] = CameraModeNew3::ForceFieldPoints[i];
 				CameraModeNew3::ForceField->Points[i] = CameraModeNew3::ForceFieldPoints[0];
 				CameraModeNew3::ForceField->Update((int)LH3DTech::g_game_time_inc * 0.001f);

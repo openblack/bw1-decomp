@@ -40,7 +40,7 @@
 #include "HelpText.h"
 #include "InterfaceStatus.h"
 #include "SoundGuidance.h" /* For GGuidance::HelpSpritesCreatureFight */
-#include "LightSheet.h"
+#include <Lionhead/LH3DLib/development/LightSheet.h>
 #include "CameraModeScript.h"
 #include "ControlHand.h"
 #include "HelpSystem.h"

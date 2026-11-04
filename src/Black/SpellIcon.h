@@ -8,10 +8,10 @@
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <re_common.h>                              /* For bool32_t */
 
-#include "LightSheet.h"    /* For struct LightSheet */
-#include "MapCoords.h"     /* For struct LH3DMapCoords, struct MapCoords */
-#include "LHPTR.h"         /* For LHPTR */
-#include "MultiMapFixed.h" /* For struct MultiMapFixed */
+#include <Lionhead/LH3DLib/development/LightSheet.h> /* For struct LightSheet */
+#include "MapCoords.h"                               /* For struct LH3DMapCoords, struct MapCoords */
+#include "LHPTR.h"                                   /* For LHPTR */
+#include "MultiMapFixed.h"                           /* For struct MultiMapFixed */
 
 // Forward Declares
 
