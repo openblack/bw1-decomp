@@ -273,6 +273,8 @@ public:
 
 	// BW1W120 00428ef0 BW1M119 01185ba0
 	void InitAtmos();
+	// BW1W120 00428f30 BW1M119 null
+	void LoadAtmosSoundBanks();
 	// BW1W120 00428f90 BW1M119 01185ae0
 	void ReleaseAtmosSoundBanks();
 	// BW1W120 00428fe0 BW1M119 0102f440
