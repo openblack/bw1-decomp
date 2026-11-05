@@ -400,7 +400,7 @@ public:
 	// BW1W120 0047c640 BW1M119 011da050
 	virtual float GetDefaultSpeedInMetres();
 	// BW1W120 0047de80 BW1M119 011d6060
-	virtual void SetHeight(float param_1);
+	virtual void SetHeight(float height);
 	// BW1W120 004f8b30 BW1M119 0128e680
 	virtual void GetPSysBeamTargetPos(LHPoint* param_1);
 	// BW1W120 00477ac0 BW1M119 011e21c0

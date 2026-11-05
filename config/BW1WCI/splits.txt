@@ -2163,7 +2163,7 @@ Black/ScriptCreatureCurse.cpp:
 	.text       start:0x0070D190 end:0x0070D2A0
 	.rdata      start:0x0099AD30 end:0x0099AD38
 	.CRT$XCU    start:0x00A3705C end:0x00A37064 align:4
-	.bss        start:0x00E17554 end:0x00E17564
+	.bss        start:0x00E17554 end:0x00E1755C
 
 Black/ScriptDLL.cpp:
 	.text       start:0x0070D2F0 end:0x0070DCA0
