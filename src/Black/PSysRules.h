@@ -421,6 +421,8 @@ public:
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 00683580 BW1M119 01409720
 	virtual bool ModifyAtomCollection(AtomCollection* collection) const;
+	// BW1W120 00684160 BW1M119 014091b0
+	void UpdateBanking(AtomCore* atom, const LHPoint& velocity, const LHPoint& acceleration) const;
 
 	// BW1W120 006ac0c0 BW1M119 01472700
 	long GetAccnType() { return AccnType; }
