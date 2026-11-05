@@ -24,7 +24,12 @@ class GStreetLantern : public Object
 {
 public:
 	LHListNode<GStreetLantern> next;
-	uint8_t                    field_0x58[0xc];
+#ifdef VERSION_BW1WCI
+	uint8_t  field_0x58[0x8];
+	bool32_t Active;
+#else
+	uint8_t field_0x58[0xc];
+#endif
 
 	// Override methods
 

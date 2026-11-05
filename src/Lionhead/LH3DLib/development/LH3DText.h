@@ -200,7 +200,7 @@ struct GatheringText
 // Free functions at the head of this TU (originally declared in Utils.h).
 
 // BW1W120 008300a0 BW1M119 0100f7a0 (LHCombined Release)
-char16_t* __cdecl CHAR2WCHAR(const char* param_1);
+char16_t* __cdecl CHAR2WCHAR(const char* text);
 // BW1W120 008300d0
 void __cdecl THAI_RESET();
 // BW1W120 008300e0 BW1M119 01030cd0 (LHCombined Release)

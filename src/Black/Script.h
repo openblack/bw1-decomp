@@ -201,11 +201,11 @@ public:
 #endif
 	MapCoords FindPos;
 	float     FindRadius;
-	uint32_t  LoopValue;
-	uint32_t  LoopValue2;
 #ifdef VERSION_BW1WCI
-	uint32_t ci_field_0x30;
+	uint32_t LoopState;
 #endif
+	uint32_t LoopValue;
+	uint32_t LoopValue2;
 	uint8_t  field_0x2c[0x8];
 	uint32_t LoopCount;
 	uint32_t LoopParam;
@@ -216,18 +216,26 @@ public:
 	GameThingWithPos* HitObject;
 	GameThingWithPos* ObjectWhichHit;
 #ifdef VERSION_BW1WCI
-	GameThingWithPos* ci_field_0x80;
+	GameThingWithPos* ObjectHitLand;
 #endif
 	uint8_t  field_0x78[0xc];
 	uint32_t field_0x84;
-	uint8_t  field_0x88[0xc];
+	bool32_t HandDemoTrigger;
+	bool32_t HandDemoWithPause;
+	uint32_t field_0x90;
 	bool32_t AlignmentMusic;
 	long     LastMusicLine;
 	long     LastMusicWord;
 	uint32_t CitadelInteract;
 	uint8_t  field_0xa4[0x8];
 	uint32_t GameSpeedTask;
-	uint8_t  field_0xb0[0xc];
+#ifdef VERSION_BW1WCI
+	bool32_t FightLock;
+	bool32_t FightQueueOnly;
+	uint32_t field_0xc4;
+#else
+	uint8_t field_0xb0[0xc];
+#endif
 #ifdef VERSION_BW1WCI
 	uint8_t ci_field_0xc8[0x10];
 #endif
@@ -621,6 +629,16 @@ public:
 	static void SetScriptState(Living* living, uint32_t state);
 	// BW1W120 006f8370 BW1M119 014ff590
 	static void SetScriptState();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0070f4a0 BW1MCI119 01530530
+	static int SetPlayAnimLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1WCI 0070f5a0 BW1MCI119 015302a0
+	static void GameThingPlayAnim();
+	// BW1WCI 0070f790 BW1MCI119 015300a0
+	static int SetStateWithParamsLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1WCI 0070f8d0 BW1MCI119 0152fd60
+	static void SetStateWithParams();
+#endif
 	// BW1W120 006f8460 BW1M119 014ff4a0
 	static int SetStatePosLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f84c0 BW1M119 014ff2b0
@@ -646,11 +664,11 @@ public:
 	// BW1W120 006f8e80 BW1M119 014fe4c0
 	static void MoveGameThing();
 	// BW1W120 0070d0f0 BW1M119 010031b0
-	static uint32_t AddScriptGameThing(GameThingWithPos* thing, int take_control);
+	static uint32_t AddScriptGameThing(GameThingWithPos* thing, bool32_t take_control);
 	// BW1W120 0070d220 BW1M119 0104f750
 	static GameThingWithPos* GetScriptGameThing(uint32_t id);
 	// BW1W120 0070d540 BW1M119 010037f0
-	static void ReleaseControlFromScript(GameThingWithPos* thing, unsigned long id, int param_3);
+	static void ReleaseControlFromScript(GameThingWithPos* thing, unsigned long id, bool32_t keep_script_id);
 	// BW1W120 0070d1a0 BW1M119 015074d0
 	static void RemoveScriptGameThing(uint32_t id);
 	// BW1W120 006f90b0 BW1M119 0102e4a0
@@ -781,6 +799,8 @@ public:
 	static void ClearHitObject();
 	// BW1W120 006fbe20 BW1M119 01026720
 	static void IsHitObject();
+	// BW1W120 006fbe90 BW1M119 014f9cd0
+	static int GetSlowestLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fbee0 BW1M119 014f9b40
 	static void GetSlowestInId();
 	// BW1W120 006fbfd0 BW1M119 014f9a50
@@ -841,6 +861,8 @@ public:
 	static void SetObjectRelativeBelief();
 	// BW1W120 006fd520 BW1M119 014f7760
 	static void SetBelief();
+	// BW1W120 006fd600 BW1M119 null
+	static void SetTownBeliefCap();
 	// BW1W120 006fd6c0 BW1M119 014f76b0
 	static void SetVirtualInfluence();
 	// BW1W120 006fd720 BW1M119 014f7570
@@ -859,6 +881,8 @@ public:
 	static void PlayHandDemo();
 	// BW1W120 006fdb80 BW1M119 014f6f60
 	static void IsHandDemoPlayed();
+	// BW1W120 006fdbb0 BW1M119 014f6ec0
+	static int SetSkeletonLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fdbd0 BW1M119 014f6d90
 	static void SetSkeleton();
 	// BW1W120 006fdc80 BW1M119 014f6cc0
@@ -867,6 +891,8 @@ public:
 	static void AddTargetPos();
 	// BW1W120 006fdd80 BW1M119 014f6b00
 	static void AddTargetObject();
+	// BW1W120 006fddf0 BW1M119 014f6a70
+	static int SetIndestructableLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fde20 BW1M119 014f6940
 	static void SetIndestructable();
 	// BW1W120 006fdee0 BW1M119 014f6890
@@ -1217,7 +1243,7 @@ public:
 	static void ResetGameTimeProperties();
 
 	// BW1W120 006f9090 BW1M119 014fe420
-	static int SetFocusLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t param_3);
+	static int SetFocusLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 
 	// Non-virtual methods
 
@@ -1238,12 +1264,74 @@ public:
 	float GetCountDownTimerRemainingTime(); // 006eb950
 	// BW1W120 006eba90 BW1M119 014dd990
 	void SetupScreenFadeTo(uint8_t r, uint8_t g, uint8_t b, signed char a);
+	// BW1W120 006ebb00 BW1M119 014dd890
+	void SetupScreenFadeBackToNormal(signed char time);
+	// BW1W120 006ebb50 BW1M119 014dd830
+	bool32_t IsScreenFaded();
 	// BW1W120 006ebbc0 BW1M119 014dd630
 	void CleanGameForScriptReboot();
 	// BW1W120 006ec790 BW1M119 014dc490
-	void PUSH(void* param_1, VMType param_2);
+	void PUSH(void* value, VMType type);
 	// BW1W120 006ec7b0 BW1M119 014dc390
 	void SetHitObject(GameThingWithPos* hit_object, GameThingWithPos* object_which_hit);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00701850 BW1MCI119 015093c0
+	void SetObjectHitLand(GameThingWithPos* thing);
+	// BW1WCI inlined BW1MCI119 0152a8d0
+	GameThingWithPos* GetObjectHitLand() { return ObjectHitLand; }
+	// BW1WCI 00713400 BW1MCI119 0152a7f0
+	static void IsHitLandObject();
+	// BW1WCI 00713470 BW1MCI119 0152a780
+	static void ClearHitLandObject();
+	// BW1WCI 00713490 BW1MCI119 0152a6c0
+	static void GetLastObjectToHitLand();
+	// BW1WCI 00717540 BW1MCI119 01523360
+	static void SetObjectScore();
+	// BW1WCI 00717660 BW1MCI119 01523010
+	static void GetObjectScore();
+	// BW1WCI 00717780 BW1MCI119 01522f50
+	static void DeleteFire();
+	// BW1WCI 00717800 BW1MCI119 01522dc0
+	static void EpOfObject();
+	// BW1WCI 007179c0 BW1MCI119 01522a10
+	static void GetObjectLandingPos();
+	// BW1WCI 00717d20 BW1MCI119 01522910
+	static void SetObjectDieCheck();
+	// BW1WCI 00717da0 BW1MCI119 015227f0
+	static void SetDolphinMove();
+	// BW1WCI 00717ea0 BW1MCI119 01522710
+	static void InWidescreen();
+	// BW1WCI 00717ef0 BW1MCI119 01522640
+	static void SetAffectedBySnow();
+	// BW1WCI 00717f60 BW1MCI119 015225d0
+	static void SetDolphinSpeed();
+	// BW1WCI 00717f90 BW1MCI119 01522560
+	static void SetDolphinWait();
+	// BW1WCI 00717fc0 BW1MCI119 01522490
+	static void FireGun();
+	// BW1WCI 00718030 BW1MCI119 01522370
+	static void SetGunAnglePitch();
+	// BW1WCI 007180c0 BW1MCI119 015222d0
+	static void SetCanBeLeashed();
+	// BW1WCI 00718110 BW1MCI119 01522210
+	static void SetBookMarkOnObject();
+	// BW1WCI 00718170 BW1MCI119 01522100
+	static void SetObjectColour();
+	// BW1WCI 00718210 BW1MCI119 01521f80
+	static void DeleteFragmentsInRadius();
+	// BW1WCI 00718300 BW1MCI119 01521eb0
+	static void DeleteFragmentsForObject();
+	// BW1WCI 00718360 BW1MCI119 01521e40
+	static void SetFightLock();
+	// BW1WCI 00718390 BW1MCI119 01521dd0
+	static void SetFightQueueOnly();
+	// BW1WCI 007183c0 BW1MCI119 01521d40
+	static void ClearSpellsOnObject();
+	// BW1WCI 00718400 BW1MCI119 01521c70
+	static void SetObjectImmuneToSpells();
+	// BW1WCI 00718460 BW1MCI119 01521bd0
+	static void IsObjectImmuneToSpells();
+#endif
 	// BW1W120 006f0cc0 BW1M119 014e6610
 	void StopScriptsOfType(VMScriptType param_1);
 	// BW1W120 006f62a0 BW1M119 014ef450
@@ -1388,12 +1476,6 @@ public:
 	void DecreaseContainerContentsScriptReference(GameThingWithPos* thing);
 	// BW1W120 006efcd0 BW1M119 014e55e0
 	void ReleaseContainerContents(GameThingWithPos* thing);
-	// BW1W120 006fddf0 BW1M119 014f6a70
-	static int SetIndestructableLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
-	// BW1W120 006fdbb0 BW1M119 014f6ec0
-	static int SetSkeletonLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
-	// BW1W120 006fbe90 BW1M119 014f9cd0
-	static int GetSlowestLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 0070d440 BW1M119 01506e80
 	bool32_t IsCreatedByScript(uint32_t slot);
 	// BW1W120 0070cf50 BW1M119 01507ad0
@@ -1402,8 +1484,6 @@ public:
 	HELP_SPIRIT_TYPE ConvertScriptSpiritToHelpSpirit(SCRIPT_SPIRIT_TYPE spirit);
 	// BW1W120 0070f600 BW1M119 010021c0
 	void ReleaseScriptThingIntoTheGame(GameThingWithPos* thing, uint32_t slot, bool32_t force);
-	// BW1W120 006ebb00 BW1M119 014dd890
-	void SetupScreenFadeBackToNormal(signed char a);
 	// BW1W120 006f0430 BW1M119 014e4880
 	void DetachFromDance(uint32_t slot, Dance* dance);
 };

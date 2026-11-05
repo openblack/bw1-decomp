@@ -855,6 +855,72 @@ add_relocations:
     type: x86_abs32
     target: '__real@4@3fff8000000000000000'
     addend: 0x0
+# ScriptFunctions.cpp: g_scriptObjectDispatch[type - 1].Loop leaves the displaced table reference unrelocated.
+  - source: 0x006ED382
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006ED51B
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006ED65A
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006ED7A4
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006EE10C
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006EF0CF
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006EF192
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F0075
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x006F058A
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F05B2
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F06B6
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F0EEE
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F0F18
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F2BC6
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F2E16
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F4483
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x006F4498
+    type: x86_abs32
+    target: '?StormCreationPaused@GWeather@@2_NA'
 
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 

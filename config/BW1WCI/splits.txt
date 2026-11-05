@@ -2166,10 +2166,11 @@ Black/ScriptFind.cpp:
 	.data       start:0x00C7DF08 end:0x00C7DF54
 
 Black/ScriptFunctions.cpp:
-	.text       start:0x0070EBA0 end:0x00717570
+	.text       start:0x0070EBA0 end:0x007184A0
 	.rdata      start:0x0099AD4C end:0x0099AD60
-	.CRT$XCU    start:0x00A37074 end:0x00A3707C align:4
-	.data       start:0x00C7DF54 end:0x00C7E740
+	.CRT$XCU    start:0x00A37074 end:0x00A37080 align:4
+	.data       start:0x00C7DF54 end:0x00C7E7C0
+	.bss        start:0x00E17588 end:0x00E1A79C
 
 Black/ScriptFunctionTable.cpp:
 	.data       start:0x00C7E7C0 end:0x00C93B2C

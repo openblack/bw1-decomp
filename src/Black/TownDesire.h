@@ -63,6 +63,8 @@ public:
 
 	// BW1W120 00745770 BW1M119 01567d40
 	void Init(Town* town);
+	// BW1W120 00746140 BW1M119 01567270
+	void SortDesires();
 	// BW1W120 00745ae0 BW1M119 0105f590
 	void Process();
 	// BW1W120 00745d80 BW1M119 0105fde0

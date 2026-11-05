@@ -598,7 +598,11 @@ int GScript::FindCheckNotPoisonedExcludingScriptObjects(GameThingWithPos* thing,
 int GScript::FindNearInStateCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (thing->IsLiving() && FindGeneralCheck(thing, type, subtype) &&
+#ifdef VERSION_BW1WCI
+	    (uint8_t)((Living*)thing)->GetFinalState() == GGame::g_game->script->LoopState)
+#else
 	    (uint8_t)((Living*)thing)->GetFinalState() == GGame::g_game->script->LoopValue)
+#endif
 	{
 		return true;
 	}

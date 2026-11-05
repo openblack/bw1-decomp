@@ -137,7 +137,7 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WriteIt(autoFightStatus);
 		file.WriteSafe(ControlledVillagers);
 		file.WritePtr(dance);
-		file.WriteIt(field_0x1158);
+		file.WriteIt(CanDie);
 		uint32_t strength = physical->strength;
 		file.WriteIt(strength);
 		file.WriteIt((uint32_t&)physical->Size);
@@ -334,7 +334,7 @@ bool32_t Creature::Load(GameOSFile& file)
 		SetAutoFightStatus(autoFightStatus);
 		file.ReadSafe(ControlledVillagers);
 		file.ReadPtr((GameThing**)&dance);
-		file.ReadIt(field_0x1158);
+		file.ReadIt(CanDie);
 		float strength;
 		file.ReadIt((uint32_t&)strength);
 		physical->SetStrength(strength);

@@ -94,6 +94,15 @@ public:
 	void COORD_PUSH(float value) { PUSH(*(void**)&value, VMType_VECTOR); }
 	// BW1W120 inlined BW1M119 inlined
 	void FLOAT_PUSH(float value) { PUSH(*(void**)&value, VMType_FLOAT); }
+	// Inliner IL size: 57
+	// BW1W120 inlined BW1M119 inlined
+	void POINT_POP(LHPoint& point)
+	{
+		point.z = COORD_POP();
+		point.y = COORD_POP();
+		point.x = COORD_POP();
+	}
+	// Inliner IL size: 63
 	// BW1W120 006fb100 BW1M119 null
 	void POINT_PUSH(const LHPoint& point)
 	{
@@ -146,7 +155,7 @@ public:
 	// BW1W120 006f69f0 BW1M119 014ef950
 	uint32_t TaskNumber();
 	// BW1W120 006f6ba0 BW1M119 010458d0
-	void PUSH(void* param_1, VMType param_2);
+	void PUSH(void* value, VMType type);
 	// BW1W120 006f6bd0 BW1M119 014ef5e0
 	char* STRING(uint32_t index);
 	// BW1W120 006f6c50 BW1M119 014ef510

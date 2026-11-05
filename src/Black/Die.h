@@ -9,6 +9,15 @@ class Die : public MobileStatic
 {
 public:
 	LHListNode<Die> next;
+#ifdef VERSION_BW1WCI
+	uint8_t  field_0x8c[0x10];
+	uint32_t Check;
+
+	// BW1WCI 00528e70 BW1MCI119 016334f0
+	long GetValue();
+	// BW1WCI 00528ff0 BW1MCI119 01633250
+	void SetValue(long value);
+#endif
 };
 
 #endif /* BW1_DECOMP_DIE_INCLUDED_H */

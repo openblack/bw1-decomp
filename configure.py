@@ -1353,7 +1353,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ScriptDLL.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/ScriptedCamera.cpp"),
             GameCodeObject(MatchingFor("BW1W120"), "Black/ScriptFind.cpp", pch=PCH_PENDING),
-            GameCodeObject(NonMatching, "Black/ScriptFunctions.cpp"),
+            GameCodeObject(Matching, "Black/ScriptFunctions.cpp"),
             GameCodeObject(MatchingFor("BW1W120"), "Black/ScriptFunctionTable.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptGFX.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptHighlight.cpp"),

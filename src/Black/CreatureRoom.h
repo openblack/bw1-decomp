@@ -13,10 +13,10 @@ public:
 	static void ProcessScreenShot();
 	// TODO: Original static member name is unrecovered.
 	// BW1W120 00d96270
-	static int CreatureInTemple;
-	uint8_t    field_0xec[0x380];
-	uint32_t   field_0x46c;
-	uint8_t    field_0x470[0x68];
+	static bool32_t CreatureInTemple;
+	uint8_t         field_0xec[0x380];
+	uint32_t        field_0x46c;
+	uint8_t         field_0x470[0x68];
 
 	// Override methods
 

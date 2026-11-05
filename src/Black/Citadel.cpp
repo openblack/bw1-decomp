@@ -28,7 +28,7 @@ WorshipSite* Citadel::FindOrCreateWorshipSite(Town* town)
 		return NULL;
 	}
 	WorshipSite* result = NULL;
-	if (NumWorshipSites == 0 && town->IsAllowedToCreateWorshipSite())
+	if (!CannotBuildWorshipSite && town->IsAllowedToCreateWorshipSite())
 	{
 		result = FindOrCreateWorshipSite(town->GetTribe());
 	}

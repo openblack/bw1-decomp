@@ -13,6 +13,11 @@ struct WeatherInfo;
 class GWeather : public LH3DStorm
 {
 public:
+	// BW1W120 00c24758
+	static bool StormCreationPaused;
+	// BW1W120 00c24759
+	static bool Paused;
+
 	// Override methods
 
 	// BW1W120 0083f900 BW1M119 inlined

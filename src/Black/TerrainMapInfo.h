@@ -28,6 +28,8 @@ public:
 
 	// BW1W120 007354a0 BW1M119 0154b530
 	void Clear();
+	// BW1W120 00735440 BW1M119 0154b5a0
+	void Init(uint32_t x, uint32_t z);
 };
 
 #endif /* BW1_DECOMP_TERRAIN_MAP_INFO_INCLUDED_H */

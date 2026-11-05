@@ -95,11 +95,13 @@ public:
 	// BW1W120 006d7480 BW1M119 01132350
 	void Process();
 	// BW1W120 006d6cc0 BW1M119 01135550
-	void FullDelete(int param_1);
+	void FullDelete(bool32_t delete_now);
 	// BW1W120 006d66e0 BW1M119 01135b10
 	bool32_t IsComplete();
 	// BW1W120 006dc070 BW1M119 0112c1f0
 	uint32_t GetPuzzleGameStatus();
+	// BW1W120 006db160 BW1M119 0112d790
+	void ResetToStartConfig();
 };
 
 class ChessGamePuzzle : public GameThingWithPos

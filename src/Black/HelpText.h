@@ -59,6 +59,8 @@ public:
 	static HelpText* Create(const LHRegion& region, HelpSystem* help_system);
 	// BW1W120 005cb020 BW1M119 0135f670
 	void Reset(bool full);
+	// BW1W120 005cb010 BW1M119 0135f700
+	void CloseDialogWindow();
 };
 
 struct HelpTextData

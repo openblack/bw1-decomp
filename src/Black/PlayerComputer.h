@@ -121,7 +121,7 @@ public:
 	// BW1W120 00657fe0 BW1M119 010572a0
 	MapCoords GetHandPos();
 	// BW1W120 00658510 BW1M119 014ad590
-	void ForceComputerPlayerToMoveToPointAndPause(LHPoint& point, float param_2);
+	void ForceComputerPlayerToMoveToPointAndPause(LHPoint& point, float pause_time);
 	// BW1W120 006583f0 BW1M119 inlined
 	void SetSpeed(float speed);
 

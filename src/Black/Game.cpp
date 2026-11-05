@@ -2437,7 +2437,7 @@ void GGame::ProcessTurn()
 		{
 			MemoryState = 1;
 			g_game->field_0x205a18 = g_game->data.GameTurn;
-			SetPacket(PACKET_TYPE_0x61);
+			SetPacket(PACKET_TYPE_INSTANT_SAVE);
 		}
 	}
 	if (MemoryState == 2 && !g_game->IsMultiplayerGame() && g_game->field_0x205a10 == 0 &&

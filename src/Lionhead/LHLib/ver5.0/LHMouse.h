@@ -185,6 +185,10 @@ struct LHMouse
 
 	// BW1W120 007e4f20 BW1M119 01146690 (LHCombined Release)
 	LHMouse();
+	// BW1W120 inlined BW1M119 014f93b0
+	bool32_t GetMouseWheelPresent() const { return IsWheelPresent; }
+	// BW1W120 inlined BW1M119 014f9300
+	uint32_t GetNumberOfButtons() const { return NumButtons; }
 
 	// Non-virtual methods
 

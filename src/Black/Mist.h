@@ -73,12 +73,19 @@ public:
 
 	// BW1W120 006063d0 BW1M119 0110ed70
 	static Mist* Create(const MapCoords& coords, float scale, unsigned long colour, float alpha);
+
+	// Non-virtual methods
+
+	// BW1W120 00606800 BW1M119 0110e630
+	void SetFade(float start_scale, float end_scale, float start_alpha, float end_alpha, float duration);
+	// BW1W120 00606870 BW1M119 0110e5f0
+	float GetFadePercentage();
+	// BW1W120 00606660 BW1M119 0110e7a0
+	float Get2DRadius() const;
 	// BW1W120 006065d0 BW1M119 0110e8f0
 	static void SaveAllMists(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 006064f0 BW1M119 0110e9d0
 	void SaveObject(LHOSFile& file, const MapCoords& coords);
-	// BW1W120 00606800 BW1M119 0110e630
-	void SetFade(float param_1, float param_2, float param_3, float param_4, float seconds);
 };
 
 #endif /* BW1_DECOMP_MIST_INCLUDED_H */

@@ -262,7 +262,7 @@ public:
 	uint32_t                field_0x1120;
 	int                     GameTurn;
 	CreatureRecentTrees     RecentTrees;
-	uint32_t                field_0x1158;
+	bool32_t                CanDie;
 	uint32_t                field_0x115c;
 	uint32_t                field_0x1160;
 	MapCoords               field_0x1164;
@@ -460,7 +460,7 @@ public:
 	// BW1W120 004794a0 BW1M119 011df790
 	virtual bool32_t IsReadyForNewScriptAction();
 	// BW1W120 0047d2c0 BW1M119 011d7890
-	virtual void SetControlledByScript(int controlled);
+	virtual void SetControlledByScript(bool32_t controlled);
 	// BW1W120 0047d8f0 BW1M119 011d6a20
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 0047d940 BW1M119 011d69c0
@@ -470,7 +470,7 @@ public:
 	// BW1W120 00477ec0 BW1M119 011e1980
 	virtual float GetFacingDirection();
 	// BW1W120 004f6760 BW1M119 0128db10
-	virtual void SetFocus(const LHPoint& param_1);
+	virtual void SetFocus(const LHPoint& focus);
 	// BW1W120 00473f50 BW1M119 011ea350
 	virtual bool32_t IsReachable();
 	// BW1W120 00479e50 BW1M119 011de170
@@ -705,7 +705,7 @@ public:
 	// BW1W120 004753f0 BW1M119 011e5db0
 	void CantFindRoute();
 	// BW1W120 00475730 BW1M119 011e57d0
-	void FinishActionUnsuccessfully(char* param_1, int param_2, int param_3);
+	void FinishActionUnsuccessfully(char* reason, bool32_t stop_moving, bool32_t end_actions);
 	// BW1W120 0047daa0 BW1M119 011d6590
 	bool32_t FindSuitableActionToRemoveObstacle(Object* object);
 	// BW1W120 0047d9a0 BW1M119 011d6740
@@ -858,6 +858,10 @@ public:
 #endif // VERSION_BW1W100
 	// BW1W120 004c59c0 BW1M119 01237430
 	void MoveToDevelopmentPhase(DEVELOPMENT_PHASE phase, int unused);
+	// BW1W120 004ca580 BW1M119 0123db20
+	void ClearHelpStack(CREATURE_HELP_TYPE type);
+	// BW1W120 00477520 BW1M119 011e2c70
+	bool32_t IsLookingTowardsPos(const MapCoords& pos, unsigned long degrees);
 	// BW1W120 004c5ab0 BW1M119 01237380
 	bool32_t HasFinishedDevelopmentStageInitial();
 	// BW1W120 004c5af0 BW1M119 01237270
@@ -988,7 +992,7 @@ public:
 	                                 CreatureBelief* object_to_act_on, CreatureBelief* object_to_use, int param_6,
 	                                 int param_7);
 	// BW1W120 004c44b0 BW1M119 01235820
-	void ForceActivityAndForceAction(CreaturePlan& plan, int param_2, int param_3);
+	void ForceActivityAndForceAction(CreaturePlan& plan, bool32_t forced_by_player, bool32_t stop_current_action);
 	// BW1W120 004c8230 BW1M119 01239d00
 	float ComputeCurrentPlayerInterestingness();
 	// BW1W120 004c81f0 BW1M119 01239f60
@@ -1211,8 +1215,14 @@ public:
 	const CreatureInfo* GetInfo() const { return (const CreatureInfo*)info; }
 	// BW1W120 00479eb0 BW1M119 011de020
 	void ForceMoveMapObjectWithoutWalking(const MapCoords& pos);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00488400 BW1MCI119 011ed990
+	uint32_t CountNumberOfHitsInQueue();
+	// BW1WCI 00484aa0 BW1MCI119 011f4c00
+	void ForceMoveMapObjectWithoutWalkingOrChangingWhatDoing(const MapCoords& pos);
+#endif
 	// BW1W120 0047ab90 BW1M119 011dcbc0
-	void SetFizz(float param_1, float param_2, bool param_3);
+	void SetFizz(float amount, float duration, bool lock);
 	// BW1W120 0047b140 BW1M119 011dc350
 	bool32_t IsAnimIndividual(unsigned long anim);
 	// BW1W120 004f6850 BW1M119 0128d9d0
@@ -1224,7 +1234,7 @@ public:
 	// BW1W120 004f6e30 BW1M119 0128d0e0
 	void ScriptPlayIndividualAnimation(unsigned long anim);
 	// BW1W120 004f6f10 BW1M119 0128cfa0
-	void ScriptPlayStaticAnimation(unsigned long anim, float param_2);
+	void ScriptPlayStaticAnimation(unsigned long anim, float duration);
 	// BW1W120 0047b1c0 BW1M119 011dc140
 	bool32_t IsFighting();
 #ifdef VERSION_BW1WCI

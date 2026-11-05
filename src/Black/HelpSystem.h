@@ -312,7 +312,7 @@ public:
 	uint32_t         icon1;
 	uint32_t         icon2;
 #ifdef VERSION_BW1WCI
-	uint32_t ci_field_0x30;
+	GameThingWithPos* ScriptTextThing;
 #endif
 	bool32_t                Conditions[HELP_SYSTEM_CONDITION_LAST];
 	uint32_t                MessageSetSentTime[HELP_SYSTEM_MESSAGE_SET_LAST];
@@ -436,7 +436,7 @@ public:
 	void SendText(unsigned long text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator);
 	// BW1W120 005c6100 BW1M119 01358cf0
 	void SendText(char16_t* text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator,
-	              unsigned long param_5);
+	              unsigned long text_id);
 	// BW1W120 005c64e0 BW1M119 013589c0
 	bool32_t IsTextRead();
 	void     Draw3D(); // 005c59a0
@@ -445,13 +445,17 @@ public:
 	// BW1W120 005c68a0 BW1M119 01357f40
 	HelpSpirit* GetSpirit(HELP_SPIRIT_TYPE type) const;
 	// BW1W120 005c6ad0 BW1M119 01357c40
-	void SetWideScreen(int param_2, uint32_t param_3);
+	void SetWideScreen(bool32_t widescreen, uint32_t task);
 	// BW1W120 005c6b60 BW1M119 01020020
 	float GetWideScreenPercentage() const;
 	// BW1W120 005c6c50 BW1M119 0101e730
 	bool32_t IsInWideScreenTransition() const;
 	// BW1W120 inlined BW1M119 010867f0
 	int GetWideScreenControl() const { return WideScreenControl; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 01522790
+	bool32_t IsInScriptWideScreen() const { return WideScreen && WideScreenControl; }
+#endif
 	// BW1W120 005c8280 BW1M119 0135a370
 	void TriggerCategory(HELP_SET_CATEGORY category);
 	// BW1W120 005c86b0 BW1M119 0108b4f0

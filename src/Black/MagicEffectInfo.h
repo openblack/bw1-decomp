@@ -55,7 +55,7 @@ public:
 	uint32_t         field_0xec;
 	uint32_t         field_0xf0;
 	uint32_t         field_0xf4;
-	uint32_t         field_0xf8;
+	uint32_t         HelpEnum;
 	uint32_t         field_0xfc;
 	uint32_t         field_0x100;
 	uint32_t         field_0x104;

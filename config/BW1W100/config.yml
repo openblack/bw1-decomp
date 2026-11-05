@@ -1128,6 +1128,72 @@ add_relocations:
     type: x86_abs32
     target: '??_C@_09NHHM@M_P_Swim2?$AA@'
     addend: 0x0
+# ScriptFunctions.cpp: g_scriptObjectDispatch[type - 1].Loop leaves the displaced table reference unrelocated.
+  - source: 0x006920F2
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x0069228B
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006923CA
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00692514
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00692E7C
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00693E3F
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00693F02
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006952FA
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00695322
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00695426
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00695C5E
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00695C88
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00696876
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x006968BF
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x00696974
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x00697796
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006979E6
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
 
 # PSysProperties weak deleting-destructor aliases and istream exception metadata.
   - source: 0x006668FC

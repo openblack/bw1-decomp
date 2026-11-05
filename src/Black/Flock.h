@@ -116,7 +116,7 @@ public:
 	// BW1W120 0052fb50 BW1M119 010ea6c0
 	void RemoveLivingFromFlock(Living* living, bool32_t delete_if_empty);
 	// BW1W120 0052fc20 BW1M119 010ea580
-	void SetDomainCentrePos(const MapCoords& param_1);
+	void SetDomainCentrePos(const MapCoords& pos);
 	// BW1W120 00530510 BW1M119 010e8d70
 	Living* FindLiving(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE type,
 	                   uint32_t subtype);

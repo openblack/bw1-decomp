@@ -1964,9 +1964,11 @@ Black/ScriptDLL.cpp:
 	.CRT$XCU    start:0x008F6FC8 end:0x008F6FCC align:4
 
 Black/ScriptFunctions.cpp:
-	.text       start:0x00690C40 end:0x00691490
-	.CRT$XCU    start:0x008F6FCC end:0x008F6FD4 align:4
-	.data       start:0x00B30970 end:0x00B41198
+	.text       start:0x006918B0 end:0x00699A40
+	.rdata      start:0x00879388 end:0x0087939C
+	.CRT$XCU    start:0x008F6FD4 end:0x008F6FDC align:4
+	.data       start:0x00B307DC end:0x00B30FC0
+	.bss        start:0x00CB6DFC end:0x00CB700C
 
 Black/ScriptGFX.cpp:
 	.data       start:0x00B4370C end:0x00B43768

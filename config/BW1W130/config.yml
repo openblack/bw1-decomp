@@ -889,6 +889,43 @@ add_relocations:
     type: x86_abs32
     target: '__real@4@3fff8000000000000000'
     addend: 0x0
+# ScriptFunctions.cpp: g_scriptObjectDispatch[type - 1].Loop leaves the displaced table reference unrelocated.
+  - source: 0x006FEA1F
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006FEAE2
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006FFEDA
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006FFF02
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00700006
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x0070083E
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00700868
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00702536
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x00702786
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
 
 # ScriptFunctions: string literals and dispatch-table entries dtk leaves as raw immediates.
   - source: 0x006FC5C1

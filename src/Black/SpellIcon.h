@@ -162,6 +162,8 @@ public:
 	GMagicInfo* GetMagicInfoFromPULevel(POWER_UP_TYPE power_up);
 	// BW1W120 00726280 BW1M119 0152c5e0
 	GMagicEffectInfo* GetMagicEffectInfo(GESTURE_TYPE gesture);
+	// BW1W120 007262c0 BW1M119 0152c4e0
+	GMagicInfo* GetMagicInfo(GESTURE_TYPE gesture);
 	// BW1W120 00726210 BW1M119 0152c650
 	void Create3DSpellObject();
 };

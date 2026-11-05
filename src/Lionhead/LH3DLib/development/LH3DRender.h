@@ -437,7 +437,7 @@ extern int g_frame_rate_stats;
 extern bool32_t g_b_any_kyro;
 
 // BW1W120 005f4e40 BW1M119 01109f80
-void __cdecl RenderLoadingFrame(bool param_1);
+void __cdecl RenderLoadingFrame(bool flip);
 // BW1W120 0082a500 BW1M119 0100b580 (LHCombined Release)
 void __cdecl DrawAndClip(D3DPRIMITIVETYPE primitive_type, unsigned long fvf, Vertex3D* vertices,
                          unsigned long vertex_count, uint16_t* indices, unsigned long index_count);
