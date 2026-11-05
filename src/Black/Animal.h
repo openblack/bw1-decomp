@@ -147,7 +147,7 @@ public:
 	// BW1W120 00419310 BW1M119 01172060
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 00419320 BW1M119 01172010
-	virtual float GetHoldLoweringMultiplier() { return 1.3f; }
+	virtual float GetHoldLoweringMultiplier() { return 0.65f; }
 	// BW1W120 0041b1b0 BW1M119 0116e810
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
 	// BW1W120 00417700 BW1M119 01137df0

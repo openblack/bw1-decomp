@@ -422,21 +422,12 @@ bool32_t LH3DRender::Close()
 	CloseD3D();
 	if (!LH3DMem::g_open)
 	{
-#if defined(VERSION_BW1W100)
 		Report3D__FPCce("Not Open!\n");
-#else
-		Report3D__FPCce("RV: LH3DMem::Close without open.\n");
-#endif
 	}
 	else if (LH3DMem::g_current_count != 0 || LH3DMem::g_current_amount != 0)
 	{
-#if defined(VERSION_BW1W100)
 		Report3D__FPCce("LH3DMem: Bad release: %d allocations, %d mem!\n", LH3DMem::g_current_count,
 		                LH3DMem::g_current_amount);
-#else
-		Report3D__FPCce("RV: LH3DMem Close: %d allocation(s) not freed (%d bytes).\n", LH3DMem::g_current_count,
-		                LH3DMem::g_current_amount);
-#endif
 	}
 	return true;
 }
