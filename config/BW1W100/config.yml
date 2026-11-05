@@ -33,6 +33,36 @@ block_relocations:
 # Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
   - source: 0x00B4609C
   - source: 0x00B53544
+
+  - source: 0x007BECD0
+
+  - source: 0x007BC976
+  - source: 0x007BC97E
+  - source: 0x007BC9BE
+  - source: 0x007BCA50
+  - source: 0x007BCA58
+  - source: 0x007BCA95
+  - source: 0x007BCAD3
+  - source: 0x007BCADB
+  - source: 0x007BCB1B
+  - source: 0x007BCCAE
+  - source: 0x007BCCB3
+  - source: 0x007BCFF5
+  - source: 0x007BE36D
+  - source: 0x007BE375
+  - source: 0x007BE3B9
+  - source: 0x007BE439
+  - source: 0x007BE47C
+  - source: 0x007BE4A2
+  - source: 0x007BE4D5
+  - source: 0x007BE50A
+  - source: 0x007BE53B
+  - source: 0x007BE540
+  - source: 0x007BE5B1
+  - source: 0x007BE5B8
+  - source: 0x007BE73B
+  - source: 0x007BF268
+
 add_relocations:
 # libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
   - source: 0x007E6D90
@@ -1922,6 +1952,116 @@ add_relocations:
     target: '?g_fog_table@LH3DPrimitive@@2PAY01KA'
     addend: 0x2000
 
+  - source: 0x007BDF37
+    type: x86_rel32
+    target: '?Set@LHMatrix@@QAIXABU1@@Z'
+  - source: 0x007BD14B
+    type: x86_abs32
+    target: '__real@4@4002c000000000000000'
+  - source: 0x007BCC8F
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x007BCD22
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x007BD815
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x007BD840
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x007BE9F7
+    type: x86_abs32
+    target: '?sky_texture@@3PAPAULH3DTexture@@A'
+    addend: 0xC
+  - source: 0x007BD16C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD3
+  - source: 0x007BD170
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD9
+  - source: 0x007BD174
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xE9
+  - source: 0x007BD178
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xF9
+  - source: 0x007BD17C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0x109
+
+  - source: 0x007BCDC5
+    type: x86_abs32
+    target: '__real@4@3ff6a3d70a0000000000'
+  - source: 0x007BCE0D
+    type: x86_abs32
+    target: '__real@4@3ff6a3d70a0000000000'
+  - source: 0x007BCEE3
+    type: x86_abs32
+    target: '__real@4@3ffb8888888888888800'
+  - source: 0x007BCFCA
+    type: x86_rel32
+    target: '?SetFogMinMax@LH3DIsland@@SAXMM@Z'
+  - source: 0x007BCFE9
+    type: x86_rel32
+    target: '?SetFogColor@LH3DIsland@@SAXMMMK@Z'
+  - source: 0x007BD3D2
+    type: x86_abs32
+    target: '__real@8@3ff9f5c28f0000000000'
+  - source: 0x007BD471
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x007BE0AF
+    type: x86_abs32
+    target: '__real@4@4005dc00000000000000'
+  - source: 0x007BE225
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x007BE867
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x007BF0A9
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+  - source: 0x007BF0B8
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+  - source: 0x007BF156
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+  - source: 0x007BF18A
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+
+  - source: 0x007BD8DD
+    type: x86_abs32
+    target: '__real@8@3ffa8ab41e3304e97800'
+  - source: 0x007BF146
+    type: x86_abs32
+    target: '__real@4@4005aa00000000000000'
+  - source: 0x007BF167
+    type: x86_abs32
+    target: '__real@4@4003a800000000000000'
+  - source: 0x007BF17E
+    type: x86_abs32
+    target: '__real@4@400bea60000000000000'
+  - source: 0x007BF190
+    type: x86_abs32
+    target: '__real@4@4005aa00000000000000'
+  - source: 0x007BF1A2
+    type: x86_abs32
+    target: '__real@4@400bea60000000000000'
+  - source: 0x007BDF7D
+    type: x86_abs32
+    target: '__real@4@bffc860a920000000000'
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the
 # reference graph is fully recovered, keep function sections plain so it cannot
