@@ -272,7 +272,7 @@ struct SetupControl
 	uint32_t        RightButton;
 	SetupControl*   next; /* 0x230 */
 	SetupBox*       setup_box;
-	void*           ContinueButtonCallback;
+	void (*ContinueButtonCallback)(SetupBox* box, SetupControl* control);
 
 	// Override methods
 
@@ -407,6 +407,8 @@ struct SetupBox
 	void SetFocusPrev();
 	// BW1W120 00411150 BW1M119 014efd50
 	void CleanOld();
+	// BW1W120 null BW1M119 012b5520
+	void DeleteAll();
 	// BW1W120 00411190 BW1M119 013ccd30
 	void MessageBoxA(char16_t* text, MSGBOXSTYLE style, unsigned long hold_data);
 };
@@ -732,6 +734,8 @@ struct SetupEdit : public SetupControl
 	void FixSelect();
 	// BW1W120 0040c090 BW1M119 013e1d10
 	int CalcCharpos(int pos);
+	// BW1W120 null BW1M119 01576390
+	void UnderlineRange(short, int, int);
 	// BW1W120 inlined BW1M119 inlined
 	void SetText(const char16_t* text)
 	{

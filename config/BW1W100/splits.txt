@@ -1525,13 +1525,13 @@ Black/MPFEFileTransfer.cpp:
 	.rdata      start:0x0086E134 end:0x0086E158
 	.CRT$XCU    start:0x008F6B04 end:0x008F6B10 align:4
 	.data       start:0x00B216F0 end:0x00B21773
-	.bss        start:0x00C61C80 end:0x00C61CC8 align:16
+	.bss        start:0x00C61C80 end:0x00C61C98 align:16
 
 Black/MPFEFindGame.cpp:
 	.text       start:0x005E2540 end:0x005E2AA0
 	.rdata      start:0x0086E158 end:0x0086E188
 	.CRT$XCU    start:0x008F6B10 end:0x008F6B1C align:4
-	.bss        start:0x00C61CC8 end:0x00C61CD4
+	.bss        start:0x00C61C98 end:0x00C61CD4
 
 Black/MPFEGameStartMessages.cpp:
 	.text       start:0x005E2AA0 end:0x005E3380
