@@ -34,10 +34,8 @@ block_relocations:
   - source: 0x00B4609C
   - source: 0x00B53544
 
-# LH3DSky: packed sun tint is an immediate.
   - source: 0x007BECD0
 
-# LH3DSky: packed colours and RGB masks are immediate values, not addresses.
   - source: 0x007BC976
   - source: 0x007BC97E
   - source: 0x007BC9BE
@@ -1954,7 +1952,6 @@ add_relocations:
     target: '?g_fog_table@LH3DPrimitive@@2PAY01KA'
     addend: 0x2000
 
-# LH3DSky: array boundaries, matrix copy and ConvertTime switch destinations.
   - source: 0x007BDF37
     type: x86_rel32
     target: '?Set@LHMatrix@@QAIXABU1@@Z'
@@ -2001,7 +1998,6 @@ add_relocations:
     target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
     addend: 0x109
 
-# LH3DSky: shared constants and fog calls resolved from the original instructions.
   - source: 0x007BCDC5
     type: x86_abs32
     target: '__real@4@3ff6a3d70a0000000000'

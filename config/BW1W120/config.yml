@@ -114,7 +114,6 @@ block_relocations:
   - source: 0x0040C2FE
   - source: 0x0040CD4B
 
-# Sky: sun tint is a packed colour immediate.
   - source: 0x0086BC60
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x0080B652
@@ -157,7 +156,6 @@ add_relocations:
     type: x86_rel32
     target: '?Set@LHMatrix@@QAIXABU1@@Z'
 
-# Sky: absolute data operands, array ends and ConvertTime switch destinations.
   - source: 0x0086A0DB
     type: x86_abs32
     target: '__real@4@4002c000000000000000'

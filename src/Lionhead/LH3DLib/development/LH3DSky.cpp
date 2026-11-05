@@ -520,7 +520,7 @@ void LH3DSky::DrawMoonPost(LH3DColor& colour, LHMatrix& quad_matrix, LHMatrix& m
 	LHPoint& upperRightOutput = LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED][SKY_MOON_VERTEX_UPPER_RIGHT];
 	LHMATRIX_TRANSFORM_POINT(upperRightOutput, upperRight, quad_matrix);
 
-	LH3DTech::Draw3DWorldTriangle(LH3D_SKY_MOON_VERTEX_COUNT, LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED],
+	LH3DTech::Draw3DWorldTriangle(SKY_MOON_VERTEX_LAST, LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED],
 	                              LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_SHARED], LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED],
 	                              LH3D_SKY_MOON_TRIANGLE_COUNT, LH3DAtmos::v_idx[LH3D_ATMOS_BUFFER_SHARED],
 	                              LH3DAtmos::mat1, false);
