@@ -1645,8 +1645,8 @@ Black/MPFEGameStartMessages.cpp:
 	.text       start:0x00627020 end:0x00627A30
 	.rdata      start:0x00920888 end:0x009208E0
 	.CRT$XCU    start:0x009B6B64 end:0x009B6B74 align:4
-	.data       start:0x00BECBC8 end:0x00BECCD0
-	.bss        start:0x00D2FC0C end:0x00D2FD64
+	.data       start:0x00BECB70 end:0x00BECCB8
+	.bss        start:0x00D2FC0C end:0x00D2FC20
 
 Black/MPFELogin.cpp:
 	.text       start:0x00627A30 end:0x00628500

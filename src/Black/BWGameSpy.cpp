@@ -50,9 +50,6 @@
 #define IRC_NICK_FORMAT     IRC_NICK_PREFIX "%u"
 #define IRC_NICK_PREFIX_LEN 4
 
-#define ENCODE_NAME(name) (GSFunctions::NeedsEncoding(name) ? GSFunctions::EncodeUnicode(name) : WCHAR2CHAR(name))
-#define DECODE_NAME(name) (GSFunctions::IsEncodedString(name) ? GSFunctions::DecodeUnicode(name) : CHAR2WCHAR(name))
-
 #define BW_SETUP_REGISTRY_KEY "Software\\Lionhead Studios Ltd\\Black & White\\BWSetup"
 
 // The allocations pass the original file's __LINE__: BW1W110 added twelve lines above them and BW1W120

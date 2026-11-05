@@ -829,6 +829,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0062DB4B, call_rel32(0x004017F9)),  # MPFECreatureDownload
     (0x0062E55B, call_rel32(0x004017F9)),  # MPFEDownloads
     (0x0062EADB, call_rel32(0x004017F9)),  # MPFEDownloads
+    (0x0062FABB, call_rel32(0x004017F9)),  # MPFEGameStartMessages
+    (0x0062FB0B, call_rel32(0x004017F9)),  # MPFEGameStartMessages
+    (0x0063010B, call_rel32(0x004017F9)),  # MPFEGameStartMessages
     (0x0063114B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x0063119B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x006314BB, call_rel32(0x004017F9)),  # MPFEMapMessages

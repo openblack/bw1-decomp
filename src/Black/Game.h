@@ -404,9 +404,8 @@ public:
 	// Original name unrecovered; increments rendered-frame count.
 	// BW1W120 0054d7f0
 	void fn_0054D7F0();
-	// Original name unrecovered; selects online game mode.
-	// BW1W120 00555400
-	void fn_00555400();
+	// BW1W120 00555400 BW1M119 014f6640
+	void QuitGameAndGoIntoNetworkLobby();
 	// Original name unrecovered; flushes packed network data.
 	// BW1W120 005525e0
 	void fn_005525E0();

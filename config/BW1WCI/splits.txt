@@ -1616,15 +1616,15 @@ Black/MPFEFindGame.cpp:
 	.text       start:0x006456F0 end:0x00645C70
 	.rdata      start:0x00988AA0 end:0x00988AD0
 	.CRT$XCU    start:0x00A36BA0 end:0x00A36BAC align:4
-	.data       start:0x00C6E50C end:0x00C6E560
+	.data       start:0x00C6E50C end:0x00C6E530
 	.bss        start:0x00DC20D8 end:0x00DC20E4
 
 Black/MPFEGameStartMessages.cpp:
 	.text       start:0x00645C70 end:0x00646680
 	.rdata      start:0x00988AD0 end:0x00988B28
 	.CRT$XCU    start:0x00A36BAC end:0x00A36BBC align:4
-	.data       start:0x00C6E560 end:0x00C6E690
-	.bss        start:0x00DC20E4 end:0x00DC2238
+	.data       start:0x00C6E530 end:0x00C6E678
+	.bss        start:0x00DC20E4 end:0x00DC20F8
 
 Black/MPFELogin.cpp:
 	.rdata      start:0x00988B28 end:0x00988B64

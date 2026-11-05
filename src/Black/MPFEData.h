@@ -140,6 +140,8 @@ public:
 	void A2D_LeaveGameChannel();
 	// BW1W120 00622d40 BW1M119 013a00f0
 	MPFEPlayerDetails* GetLocalPlayer();
+	// BW1W120 inlined BW1M119 inlined
+	LayerCommunication* GetLayer() { return Layer; }
 	// BW1W120 00622d60 BW1M119 0139ff70
 	MPFEPlayerDetails* GetHostPlayer();
 	// BW1W120 00624180 BW1M119 0139d9b0

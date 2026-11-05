@@ -1826,7 +1826,7 @@ void GGame::Loop()
 		FlipScreen();
 		if (network.session->SyncAllAndStartSession(0xffffffffUL) != LH_OK)
 		{
-			fn_00555400();
+			QuitGameAndGoIntoNetworkLobby();
 			return;
 		}
 	}
@@ -2000,9 +2000,7 @@ void GGame::fn_005525E0()
 	}
 }
 
-// Original name unrecovered.
-// BW1W120 00555400
-void GGame::fn_00555400()
+void GGame::QuitGameAndGoIntoNetworkLobby()
 {
 	GameMode = GAME_MODE_ONLINE;
 }

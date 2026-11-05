@@ -9,13 +9,19 @@
 
 #include <stdio.h> /* For swprintf, swscanf */
 
-#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>     /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LHLog/ver4.0/LHSPrintf.h> /* For LHSPrintf */
 
 #include "BWGameSpy.h"                         /* For BWGameSpy::Locked */
 #include "ChannelBox.h"                        /* For ChannelBox::Requesters */
+#include "FrontEnd.h"                          /* For FrontEnd, WCHAR2CHAR */
+#include "GSFunctions.h"                       /* For ENCODE_NAME */
+#include "Game.h"                              /* For GGame::g_game */
+#include "LHNetBase.h"                         /* For LHNetBase::Instance */
 #include "LayerCommunication.h"                /* For LayerCommunication */
 #include "MPFECancelStartMessage.h"            /* For MPFECancelStartMessage */
 #include "MPFEChannelDetails.h"                /* For struct MPFEChannelDetails */
+#include "MPFEConnectionStatus.h"              /* For MPFEConnectionStatus::Status */
 #include "MPFEData.h"                          /* For MPFEData::Data */
 #include "MPFEDisconnectNowMessage.h"          /* For MPFEDisconnectNowMessage */
 #include "MPFEKickMessageRequest.h"            /* For MPFEKickMessageRequest */
@@ -32,6 +38,12 @@
 #define MPFE_GAME_START_MESSAGES_LINE(line) ((line) - ((line) < 100 ? 1 : 4))
 #elif defined(VERSION_BW1W110)
 #define MPFE_GAME_START_MESSAGES_FILE       "C:\\dev\\Black\\MPFEGameStartMessages.cpp"
+#define MPFE_GAME_START_MESSAGES_LINE(line) (line)
+#elif defined(VERSION_BW1W130)
+#define MPFE_GAME_START_MESSAGES_FILE       "D:\\Work\\Games\\dd\\Black\\MPFEGameStartMessages.cpp"
+#define MPFE_GAME_START_MESSAGES_LINE(line) (line)
+#elif defined(VERSION_BW1WCI)
+#define MPFE_GAME_START_MESSAGES_FILE       "C:\\dev\\black\\MPFEGameStartMessages.cpp"
 #define MPFE_GAME_START_MESSAGES_LINE(line) (line)
 #else
 #define MPFE_GAME_START_MESSAGES_FILE       "C:\\dev\\MP\\Black\\MPFEGameStartMessages.cpp"
@@ -131,7 +143,7 @@ void MPFEStartGameReadyMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDeta
 			MPFEData::Data.D2A_CouldNotStartBecauseOtherPeopleDownloading();
 			MPFECancelStartMessage cancel;
 #ifndef VERSION_BW1W100
-			MPFEData::Data.Layer->SetInvite(false);
+			MPFEData::Data.GetLayer()->SetInvite(false);
 #endif
 			cancel.Send(NULL);
 		}
@@ -171,11 +183,37 @@ MPFEStartGameNowMessage::MPFEStartGameNowMessage(wchar_t* name)
 	swprintf(Message, L"%c%s", GetMessageCode(SPECIAL_MESSAGE_TYPE_START_GAME_NOW), name);
 }
 
+void MPFEStartGameNowMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDetails* from)
+{
+	wchar_t name[100];
+	MPFEData::Data.GameStarting = true;
+	swscanf(message, L"%s", name);
+	MPFEData::Data.D_StartGameSession(LHSPrintf("%s", ENCODE_NAME(name)));
+	if (LHNetBase::Instance.WaitUntilGameLoopStarted() == -1)
+	{
+		MPFEData::Data.GameStarting = false;
+		GGame::g_game->QuitGameAndGoIntoNetworkLobby();
+		return;
+	}
+	MPFEData::Data.D_DecodeFilesAndSetupPlayersForSession();
+	FrontEnd::InMultiplayerScreens = false;
+	FrontEnd::MultiplayerGameRunning = true;
+	MPFEData::Data.GameStarting = true;
+	MPFEConnectionStatus::Status.StartGame();
+}
+
 MPFEDisconnectNowMessage::MPFEDisconnectNowMessage()
 {
 	Message = new (MPFE_GAME_START_MESSAGES_FILE, MPFE_GAME_START_MESSAGES_LINE(165)) wchar_t[10];
 	swprintf(Message, L"%c", GetMessageCode(SPECIAL_MESSAGE_TYPE_DISCONNECT_NOW));
 }
+
+#ifndef VERSION_BW1W100
+void MPFEDisconnectNowMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDetails* from)
+{
+	MPFEData::Data.Layer->LeaveGameChannel();
+}
+#endif
 
 MPFEStopGameStartMessage::MPFEStopGameStartMessage()
 {

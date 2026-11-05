@@ -1804,23 +1804,23 @@ Black/MPFEFileTransfer.cpp:
 
 Black/MPFEFindGame.cpp:
 	.text       start:0x00633200 end:0x006337A0
-	.rdata      start:0x0095E6CC end:0x0095E6E0
+	.rdata      start:0x0095E6CC end:0x0095E704
 	.CRT$XCU    start:0x00A47038 end:0x00A47048 align:4
-	.data       start:0x00C7E3B4 end:0x00C7E410
+	.data       start:0x00C7E3B4 end:0x00C7E3E0
 	.bss        start:0x00DC1EF0 end:0x00DC1EFC
 
 Black/MPFEGameStartMessages.cpp:
 	.text       start:0x006337A0 end:0x006341E0
-	.rdata      start:0x0095E6E0 end:0x0095E754
+	.rdata      start:0x0095E704 end:0x0095E75C
 	.CRT$XCU    start:0x00A47048 end:0x00A4705C align:4
-	.data       start:0x00C7E410 end:0x00C7E550
-	.bss        start:0x00DC1EFC end:0x00DC2054
+	.data       start:0x00C7E3E0 end:0x00C7E538
+	.bss        start:0x00DC1EFC end:0x00DC1F10
 
 Black/MPFELogin.cpp:
 	.text       start:0x006341E0 end:0x00634E30
-	.rdata      start:0x0095E754 end:0x0095E798
+	.rdata      start:0x0095E75C end:0x0095E798
 	.CRT$XCU    start:0x00A4705C end:0x00A4706C align:4
-	.data       start:0x00C7E550 end:0x00C7E618
+	.data       start:0x00C7E538 end:0x00C7E618
 	.bss        start:0x00DC2054 end:0x00DC2060
 
 Black/MPFEMapMessages.cpp:
