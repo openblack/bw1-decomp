@@ -28,6 +28,7 @@ class ChannelBox;
 class LayerCommunication;
 class LHSession;
 struct LandscapeDetails;
+class MPFEClanDetails;
 struct MPFEChannelDetails;
 struct MPFEPlayerDetails;
 
@@ -232,6 +233,34 @@ public:
 	uint64_t GetOOSChecksum();
 	// BW1W120 00626420 BW1M119 01399e50
 	bool D_GotSelectedMapFile();
+	// BW1W120 00622f20 BW1M119 0139f960
+	void A2D_SendChat(wchar_t* name, wchar_t* text, bool is_private);
+	// BW1W120 00623200 BW1M119 0139f2e0
+	void A2D_KickPlayerFromTeam(wchar_t* name);
+	// BW1W120 00623310 BW1M119 0139ef90
+	void A2D_InvitePlayer(wchar_t* name);
+	// BW1W120 00623590 BW1M119 0139e930
+	void A2D_SetClan(MPFEClanDetails* clan);
+	// BW1W120 00623820 BW1M119 0139e7e0
+	void A2D_SetMap(unsigned long map_id);
+	// BW1W120 00623910 BW1M119 0139e710
+	void D_ReOrganizeTeams(unsigned long num_teams);
+	// BW1W120 00623980 BW1M119 0139e640
+	void A2D_GetThumbnail(unsigned long map_id);
+	// BW1W120 006239e0 BW1M119 0139dc70
+	void ProcessDaniel();
+	// BW1W120 006240f0 BW1M119 0139db50
+	void CheckForUnpureClients();
+	// BW1W120 00624160 BW1M119 0139db20
+	void ProcessAlex();
+	// BW1W120 00624e60 BW1M119 0139c4c0
+	void D_ReShuffle(MPFEPlayerDetails* player);
+	// BW1W120 00625150 BW1M119 0139bf30
+	void D_RecomputeNumPlayers();
+	// BW1W120 006255c0 BW1M119 0139b140
+	void A2D_StartGame();
+	// BW1W120 00626040 BW1M119 0139a750
+	LandscapeDetails* A2D_GetNextLandscape(LandscapeDetails* details);
 };
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
