@@ -1868,12 +1868,14 @@ Black/PlayerMessage.cpp:
 	.text       start:0x00680650 end:0x006807E0
 	.rdata      start:0x0098B098 end:0x0098B0B8
 	.CRT$XCU    start:0x00A36D3C end:0x00A36D40 align:4
-	.data       start:0x00C729A4 end:0x00C729C8
+	.data       start:0x00C729A4 end:0x00C729C4
 	.bss        start:0x00DCD0A0 end:0x00DCD0A8
 
 Black/PlayerProfile.cpp:
+	.text       start:0x006807E0 end:0x006810C0
 	.rdata      start:0x0098B0B8 end:0x0098B0C8
-	.data       start:0x00C729E0 end:0x00C72A68
+	.CRT$XCU    start:0x00A36D40 end:0x00A36D4C align:4
+	.data       start:0x00C729C4 end:0x00C72A68
 	.bss        start:0x00DCD0A8 end:0x00DCD8E4
 
 Black/PlaytimeDance.cpp:

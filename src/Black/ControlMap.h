@@ -49,6 +49,8 @@ struct ControlMap
 	void ProcessActionsPerformed();
 	// BW1W120 00470af0 BW1M119 01073e00
 	bool32_t IsActionPerformed(BINDABLE_ACTIONS action);
+	// BW1W120 004713d0 BW1M119 011d1910
+	void LoadCurrentProfileKeys();
 	// BW1W120 00471940 BW1M119 01094b00
 	bool32_t IsMouseButtonAssignedToAction(BINDABLE_ACTIONS action);
 };

@@ -40,7 +40,11 @@ public:
 	// BW1W120 005c4820 BW1M119 01353010
 	bool32_t Save(GameOSFile& file);
 	// BW1W120 005c4830 BW1M119 01352f40
-	bool32_t              Load(GameOSFile& file);
+	bool32_t Load(GameOSFile& file);
+	// BW1W120 005c4840 BW1M119 01352e70
+	void LoadFromProfile();
+	// BW1W120 005c48e0 BW1M119 01352da0
+	void                  SaveToProfile();
 	CameraHelpAccumulator accumulators[0x31]; /* 0x8 */
 	uint32_t              field_0x3354;
 

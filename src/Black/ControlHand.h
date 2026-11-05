@@ -63,7 +63,7 @@ public:
 	uint32_t          field_0x4840;
 	uint32_t          field_0x4844;
 	uint32_t          field_0x4848;
-	int               field_0x484c;
+	int               HandOrientation;
 	GInterfaceStatus* InterfaceStatus; /* 0x4850 */
 	float             field_0x4854;
 	uint8_t           field_0x4858;

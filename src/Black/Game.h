@@ -521,6 +521,8 @@ public:
 	void SetPacket(PACKET_TYPE type);
 	// BW1W120 00550c80 BW1M119 015683d0
 	void SetPacket(PACKET_TYPE type, unsigned long value);
+	// BW1W120 00550be0 BW1M119 011a25b0
+	void SetPacket(PACKET_TYPE type, unsigned long object, unsigned long value);
 	// BW1W120 00550c50 BW1M119 010a7990
 	void SetPacket(PACKET_TYPE type, unsigned short first_value, unsigned short second_value);
 	// BW1W120 00551530 BW1M119 01108490

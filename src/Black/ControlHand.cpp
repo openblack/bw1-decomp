@@ -53,7 +53,7 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 	field_0x486c = 0;
 	field_0x4870 = 0;
 	field_0x4844 = 0;
-	field_0x484c = 0;
+	HandOrientation = 0;
 
 	MorphInit(point, 1, NULL);
 

@@ -1862,13 +1862,17 @@ Black/PlayerComputerTown.cpp:
 	.data       start:0x00BF0EAC end:0x00BF1094
 
 Black/PlayerMessage.cpp:
-	.text       start:0x00660E80 end:0x006618C0
+	.text       start:0x00660E80 end:0x00661010
 	.rdata      start:0x00922D08 end:0x00922D28
 	.CRT$XCU    start:0x009B6CF0 end:0x009B6CF4 align:4
-	.bss        start:0x00D3AA00 end:0x00D3B240
+	.bss        start:0x00D3AA00 end:0x00D3AA08
 
 Black/PlayerProfile.cpp:
+	.text       start:0x00661010 end:0x006618C0
 	.rdata      start:0x00922D28 end:0x00922D38
+	.CRT$XCU    start:0x009B6CF4 end:0x009B6D00 align:4
+	.data       start:0x00BF10B4 end:0x00BF1138
+	.bss        start:0x00D3AA08 end:0x00D3B240
 
 Black/PlaytimeDance.cpp:
 	.text       start:0x006618C0 end:0x00662340
