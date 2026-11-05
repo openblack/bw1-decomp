@@ -21,6 +21,10 @@ class Object;
 class FireEffect : public GameThing
 {
 public:
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0074f450 BW1MCI119 01165c50
+	static void RemoveFiresInRadius(LHPoint pos, float radius);
+#endif
 	// BW1W120 00730760 BW1M119 01091670
 	static void ProcessList();
 	// BW1W120 00730670 BW1M119 01155470

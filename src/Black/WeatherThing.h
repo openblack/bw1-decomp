@@ -13,10 +13,15 @@
 // Forward Declares
 
 class Base;
+class GWeatherInfo;
 class GameOSFile;
 struct LHPoint;
 class GameThing;
 struct MapCoords;
+
+#define WEATHER_SCRIPT_INNER_RADIUS 100.0f
+#define WEATHER_SCRIPT_OUTER_RADIUS 300.0f
+#define WEATHER_SCRIPT_HEIGHT       100.0f
 
 class WeatherThing : public GameThingWithPos
 {
@@ -57,6 +62,10 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	WeatherThing() {}
+
+	// BW1W120 007741f0 BW1M119 015abb60
+	static WeatherThing* Create(const MapCoords& coords, const GWeatherInfo* info, float inner_radius,
+	                            float outer_radius, float height);
 
 	// Non-virtual methods
 

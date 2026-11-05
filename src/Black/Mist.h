@@ -21,13 +21,15 @@ class LHOSFile;
 struct MapCoords;
 struct MistListNode;
 
+#define MIST_OPACITY_RANGE 255.0f
+
 class Mist : public GameThingWithPos
 {
 public:
 	LHPTR<LH3DMist>  MistObject;
 	float            field_0x2c;
 	uint32_t         field_0x30;
-	float            field_0x34;
+	float            HeightScale;
 	uint8_t          field_0x38[0x14];
 	uint32_t         field_0x4c;
 	LHListNode<Mist> next;
@@ -72,13 +74,21 @@ public:
 	void Process();
 
 	// BW1W120 006063d0 BW1M119 0110ed70
-	static Mist* Create(const MapCoords& coords, float scale, unsigned long colour, float alpha);
+	static Mist* Create(const MapCoords& coords, float scale, unsigned long colour, float height_scale);
+	// BW1W120 00606380 BW1M119 0110ee80
+	static Mist* Create(const MapCoords& coords, float scale, uint8_t red, uint8_t blue, uint8_t green, uint8_t alpha,
+	                    float height_scale);
+
+	// BW1W120 00606800 BW1M119 0110e630
+	void SetFade(float start_scale, float end_scale, float start_alpha, float end_alpha, float duration);
+	// BW1W120 00606870 BW1M119 0110e5f0
+	float GetFadePercentage();
+	// BW1W120 00606660 BW1M119 0110e7a0
+	float Get2DRadius() const;
 	// BW1W120 006065d0 BW1M119 0110e8f0
 	static void SaveAllMists(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 006064f0 BW1M119 0110e9d0
 	void SaveObject(LHOSFile& file, const MapCoords& coords);
-	// BW1W120 00606800 BW1M119 0110e630
-	void SetFade(float param_1, float param_2, float param_3, float param_4, float seconds);
 };
 
 #endif /* BW1_DECOMP_MIST_INCLUDED_H */

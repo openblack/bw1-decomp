@@ -5882,8 +5882,7 @@ void LH3DCreature::DoDiscardAction()
 				}
 				if (creature)
 				{
-					// TODO: Creature::field_0x11c8 is the Object* the creature last dropped (GScript::GetObjectDropped).
-					creature->field_0x11c8 = (uint32_t)HeldObject;
+					creature->LastDroppedObject = HeldObject;
 				}
 			}
 		}
@@ -6052,8 +6051,7 @@ void LH3DCreature::DoThrowingAction()
 		}
 		if (creature)
 		{
-			// TODO: Creature::field_0x11c8 is the Object* the creature last dropped (GScript::GetObjectDropped).
-			creature->field_0x11c8 = (uint32_t)HeldObject;
+			creature->LastDroppedObject = HeldObject;
 		}
 		ReleaseHeldObject();
 		// TODO: CreatureMentalDebug 0x24 and 0x30 are LHPoints (throw start and target), 0x3c how long to show them.

@@ -216,4 +216,14 @@ public:
 	bool32_t IsUnripe();
 };
 
+#ifdef VERSION_BW1WCI
+class SpecialField : public Field
+{
+public:
+	// BW1WCI 0073a2b0 BW1MCI119 0162f9b0
+	static SpecialField* Create(const MapCoords& coords, const GFieldTypeInfo* type_info, Town* town, float y_angle,
+	                            float food, int wood);
+};
+#endif
+
 #endif /* BW1_DECOMP_FIELD_INCLUDED_H */

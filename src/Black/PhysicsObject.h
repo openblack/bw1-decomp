@@ -36,6 +36,10 @@ public:
 	static void DrawAll(); // 00646de0
 	// BW1W120 00646950 BW1M119 0111bc70
 	static PhysicsObject* SearchForPhysicsObject(Object* object);
+	// BW1W120 00646980 BW1M119 0111bb70
+	static Object* FindObject(bool32_t(__cdecl* check)(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
+	                                                   uint32_t subtype),
+	                          SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006443a0 BW1M119 0111d510
 	static PhysicsObject* AddObject(Object* object, const LHPoint& velocity, const LHPoint& angular_velocity,
 	                                Object* thrower, GInterfaceStatus* status);

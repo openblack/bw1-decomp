@@ -86,7 +86,7 @@ struct JustWholeMapXZ
 		z = 0;
 	}
 	// BW1W120 005e1900 BW1M119 011085d0
-	void Init(const MapCoords& param_1);
+	void Init(const MapCoords& coords);
 };
 
 struct MapCoords : public LH3DMapCoords

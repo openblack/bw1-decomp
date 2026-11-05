@@ -60,6 +60,8 @@ class Town;
 class Tree;
 class WorshipSite;
 
+#define VILLAGER_SCRIPT_CHILD_AGE 10
+
 class SortedObject : public Object
 {
 };
@@ -791,6 +793,12 @@ public:
 	void PopFromPrevious();
 	// BW1W120 00751ea0 BW1M119 01575cf0
 	Football* GetFootball();
+	// BW1W120 inlined BW1M119 inlined
+	void SetInFootballGame(Football* game)
+	{
+		Flags |= VILLAGER_FLAG_PLAYING_FOOTBALL;
+		football = game;
+	}
 	// BW1W120 00751eb0 BW1M119 01575c70
 	PFootball* GetPFootball();
 	// BW1W120 00751ee0 BW1M119 01575c10

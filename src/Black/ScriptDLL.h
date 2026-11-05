@@ -54,11 +54,11 @@ public:
 	uint32_t  NumTasks; /* 0x70 */
 	uint32_t  LineNumber;
 	uint32_t  TaskNumber_ptr;
-	uint32_t  TaskName;
-	uint32_t  TaskFilename; /* 0x80 */
-	uint32_t  GetTaskFilename;
-	uint32_t  GetTaskName;
-	uint32_t  OpCode;
+	char*(__cdecl* TaskName_ptr)(LHTransport* transport);
+	uint32_t TaskFilename; /* 0x80 */
+	uint32_t GetTaskFilename;
+	uint32_t GetTaskName;
+	uint32_t OpCode;
 
 	// Non-virtual methods
 
@@ -94,6 +94,15 @@ public:
 	void COORD_PUSH(float value) { PUSH(*(void**)&value, VMType_VECTOR); }
 	// BW1W120 inlined BW1M119 inlined
 	void FLOAT_PUSH(float value) { PUSH(*(void**)&value, VMType_FLOAT); }
+	// Inliner IL size: 57
+	// BW1W120 inlined BW1M119 inlined
+	void POINT_POP(LHPoint& point)
+	{
+		point.z = COORD_POP();
+		point.y = COORD_POP();
+		point.x = COORD_POP();
+	}
+	// Inliner IL size: 63
 	// BW1W120 006fb100 BW1M119 null
 	void POINT_PUSH(const LHPoint& point)
 	{
@@ -107,7 +116,7 @@ public:
 	uint32_t Type;
 	uint32_t Value; /* 0xa0 */
 	uint32_t OpCodeName;
-	uint32_t StopScripts;
+	void(__cdecl* StopScripts_ptr)(LHTransport* transport, bool(__cdecl* check)(const char*, const char*));
 	uint32_t GetScriptID;
 	uint32_t Version; /* 0xb0 */
 	uint32_t CodeSize;
@@ -138,15 +147,19 @@ public:
 	// BW1W120 006f68c0 BW1M119 014efc20
 	void AutoStart();
 	// BW1W120 006f68f0 BW1M119 014efbb0
-	void StopTasksOfType(VMScriptType param_1);
+	void StopTasksOfType(VMScriptType type);
+	// BW1W120 006f6b10 BW1M119 014ef790
+	void StopScripts(bool(__cdecl* check)(const char* script_name, const char* filename));
 	// BW1W120 006f6910 BW1M119 014efb50
 	void StopAllTasks();
 	// BW1W120 006f6920 BW1M119 014efaf0
 	int LoadBinary(const char* path);
 	// BW1W120 006f69f0 BW1M119 014ef950
 	uint32_t TaskNumber();
+	// BW1W120 006f6a10 BW1M119 014ef8e0
+	char* TaskName();
 	// BW1W120 006f6ba0 BW1M119 010458d0
-	void PUSH(void* param_1, VMType param_2);
+	void PUSH(void* value, VMType type);
 	// BW1W120 006f6bd0 BW1M119 014ef5e0
 	char* STRING(uint32_t index);
 	// BW1W120 006f6c50 BW1M119 014ef510

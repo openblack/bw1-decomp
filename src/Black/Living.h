@@ -71,9 +71,9 @@ public:
 	uint32_t field_0x30;
 	uint32_t field_0x34;
 	uint32_t field_0x38;
-	uint32_t field_0x3c;
+	uint32_t OverrideAnim;
 	uint32_t field_0x40;
-	uint32_t field_0x44;
+	uint32_t OverrideState;
 
 	// Override methods
 
@@ -243,7 +243,7 @@ public:
 	// BW1W120 005ec9b0 BW1M119 0138a3a0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00416fa0 BW1M119 01138400
-	virtual void SetPoisoned(int param_1);
+	virtual void SetPoisoned(bool32_t poisoned);
 	// BW1W120 005ec390 BW1M119 0138ad10
 	virtual bool32_t SetDying();
 	// BW1W120 005eccb0 BW1M119 01389390
@@ -256,8 +256,8 @@ public:
 	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
 	                                                 GInterfaceStatus* status, Object* thrower, bool32_t dont_replant);
 	// BW1W120 005efe10 BW1M119 0138daa0
-	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
-	                                                bool param_4, GInterfaceStatus* param_5);
+	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& velocity, const LHPoint& angular_velocity,
+	                                                Object* thrower, bool dont_replant, GInterfaceStatus* status);
 	// BW1W120 005ed2f0 BW1M119 013886c0
 	virtual void GetBoundingSphere(LHPoint& param_1, float& param_2);
 	// BW1W120 005ed3e0 BW1M119 01388410

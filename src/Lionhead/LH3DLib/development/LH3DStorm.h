@@ -125,6 +125,8 @@ public:
 	static void DebugDrawAll(); // 0083f890
 	// BW1W120 0083f810 BW1M119 010ba480 (LHCombined Release)
 	static void ReallyKillAll();
+	// BW1W120 0083f750 BW1M119 010ba660 (LHCombined Release)
+	static void KillAllStormsInArea(LHPoint pos, float radius);
 	// BW1W120 0083f6f0 BW1M119 010ba760 (LHCombined Release)
 	static LH3DStorm* CreateStorm(StormInfo& info);
 	// BW1W120 0083f7b0 BW1M119 010ba600 (LHCombined Release)

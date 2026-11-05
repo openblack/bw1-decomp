@@ -3613,13 +3613,13 @@ MapCoords Town::GetCongregationPos()
 	return CongregationPos;
 }
 
-Abode* Town::FindAbodeNumber(ABODE_NUMBER number, float percent_built, int param_3)
+Abode* Town::FindAbodeNumber(ABODE_NUMBER number, float percent_built, bool32_t match_required)
 {
 	for (Abode* abode = AbodeList.head; abode != NULL; abode = abode->next)
 	{
 		if ((abode->GetInfo()->GetAbodeNumber() == number && abode->GetPercentBuilt() >= percent_built &&
 		     !abode->IsInScript()) ||
-		    !param_3)
+		    !match_required)
 		{
 			return abode;
 		}
@@ -3688,7 +3688,7 @@ MultiMapFixed* Town::GetBestAttackObject(const MapCoords& pos)
 	return best;
 }
 
-int Town::GetDeathsFromWorshipping()
+uint32_t Town::GetDeathsFromWorshipping()
 {
 	return GetDeaths(DEATH_REASON_CHANT);
 }

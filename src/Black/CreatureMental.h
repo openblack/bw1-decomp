@@ -37,6 +37,8 @@ class CreatureInfo;
 class GameThingWithPos;
 class GPlayer;
 
+#define CREATURE_MENTAL_YOUNG_MIND_FILE "temp1"
+
 enum CREATURE_DECISION_TYPE
 {
 	CREATURE_DECISION_NORMAL,
@@ -77,8 +79,13 @@ public:
 	// BW1W120 00c82f58
 	static bool32_t DebugDrawObjectToActOn;
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 004f8840 BW1MCI119 0128b300
+	void SaveMind(char* path, bool32_t substitute_type = false);
+#else
 	// BW1W120 004e7820 BW1M119 0126dfb0
 	void SaveMind(char* path);
+#endif
 	// BW1W120 004e79d0 BW1M119 0126d750
 	void SaveMind(Archive& archive);
 	// BW1W120 004e7090 BW1M119 null

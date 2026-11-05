@@ -80,6 +80,8 @@ public:
 	}
 	// BW1W120 inlined BW1M119 0129acc0
 	unsigned long GetSubActionIndex() const { return CurrentSubAction; }
+	// BW1W120 inlined BW1M119 01299260
+	CreatureBelief* GetObjectArgument() { return SubActions[CurrentSubAction].Belief; }
 	// BW1W120 004ff5c0 BW1M119 012902d0
 	void ClearSubActionAgenda();
 	// BW1W120 004e5940 BW1M119 012702f0

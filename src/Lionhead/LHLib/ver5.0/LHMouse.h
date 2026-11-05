@@ -143,8 +143,8 @@ struct LHMouse
 	LHSprite*    SingleSprite;
 	LHSurface*   SingleSurface;
 	LHSurface*   Mode8Surface;
-	int          IsWheelPresent;
-	int          NumButtons;
+	bool32_t     IsWheelPresent;
+	uint32_t     NumButtons;
 	int          IsMultiFrame;
 	void*        FrameBank;
 	int*         FramePartOffsets;
@@ -185,6 +185,10 @@ struct LHMouse
 
 	// BW1W120 007e4f20 BW1M119 01146690 (LHCombined Release)
 	LHMouse();
+	// BW1W120 inlined BW1M119 014f93b0
+	bool32_t GetMouseWheelPresent() { return IsWheelPresent; }
+	// BW1W120 inlined BW1M119 014f9300
+	uint32_t GetNumberOfButtons() { return NumButtons; }
 
 	// Non-virtual methods
 

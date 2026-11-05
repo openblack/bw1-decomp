@@ -37,7 +37,7 @@ public:
 	// BW1W120 00437dd0 BW1M119 010b4960
 	void Init(Town* town);
 	// BW1W120 00437e70 BW1M119 010b4910
-	float GetBeliefInPlayer(unsigned long param_1);
+	float GetBeliefInPlayer(unsigned long player);
 	// BW1W120 00437e90 BW1M119 0105f3a0
 	float GetBeliefInPlayer(GPlayer* player);
 	// BW1W120 00437eb0 BW1M119 0109b8e0

@@ -38,7 +38,7 @@ public:
 	uint32_t    field_0x80;
 	uint32_t    field_0x84;
 #ifdef VERSION_BW1WCI
-	uint32_t ci_field_0x88;
+	int ScoreBoardValue;
 #endif
 	LHListNode<ScriptHighlight> next;
 
@@ -118,8 +118,8 @@ public:
 	// Static methods
 
 	// BW1W120 00709a40 BW1M119 01502fc0
-	static ScriptHighlight* Create(const MapCoords& coords, const GScriptHighlightInfo* info, uint32_t param_3,
-	                               float param_4, float param_5);
+	static ScriptHighlight* Create(const MapCoords& coords, const GScriptHighlightInfo* info, uint32_t script_id,
+	                               float y_angle, float scale);
 	// BW1W120 0070a460 BW1M119 010588a0
 	static void ProcessHighlights();
 
@@ -130,11 +130,17 @@ public:
 	// BW1W120 00709c40 BW1M119 01502c80
 	void SetDrawHeight(float height);
 	// BW1W120 0070a630 BW1M119 01502760
-	void SetActivated(int param_1);
+	void SetActivated(bool32_t activated);
 	// BW1W120 0070ac20 BW1M119 01051a30
-	bool IsDidYouKnow();
+	bool32_t IsDidYouKnow();
 	// BW1W120 0070a750 BW1M119 01502700
 	MESH_LIST GetActiveMesh();
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 01523240
+	int GetScoreBoardValue() const { return ScoreBoardValue; }
+	// BW1WCI inlined BW1MCI119 01523320
+	const GScriptHighlightInfo* GetInfo() const { return (const GScriptHighlightInfo*)info; }
+#endif
 };
 
 #endif /* BW1_DECOMP_SCRIPT_HIGHLIGHT_INCLUDED_H */

@@ -2113,7 +2113,7 @@ uint16_t Villager::GetResourceFrom(Object* object, RESOURCE_TYPE resource_type, 
 		}
 		if ((uint8_t)object->IsPoisoned())
 		{
-			SetPoisoned(1);
+			SetPoisoned(true);
 		}
 	}
 	return got;
@@ -3203,7 +3203,7 @@ uint32_t Villager::AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceSt
 		PickupFood(amount);
 		if (poisoned)
 		{
-			SetPoisoned(1);
+			SetPoisoned(true);
 		}
 	}
 	else if (type == RESOURCE_TYPE_WOOD)

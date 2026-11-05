@@ -95,7 +95,7 @@ public:
 	Villager*               BallChaser;
 	Ball*                   TheBall;
 	LHPTR<Villager>         MexicanWave[40];
-	uint32_t                field_0x2fc;
+	bool32_t                AvailableToVillagers;
 	uint32_t                GoalTimer;
 	uint32_t                field_0x304;
 	uint32_t                PlayStateTimer;
@@ -168,8 +168,20 @@ public:
 	void CreateBall();
 	// BW1W120 00531410 BW1M119 012c0a10
 	Ball* GetBall();
+	// BW1W120 00531fd0 BW1M119 012bf550
+	void StopFootballGame();
+	// BW1W120 00532500 BW1M119 012bedd0
+	bool32_t AddVillagerToTeam(Villager* villager, int side);
 	// BW1W120 005325d0 BW1M119 012bebf0
 	bool32_t RemoveVillagerFromTeam(Villager* villager);
+	// BW1W120 00532730 BW1M119 012be950
+	bool32_t AddReferee(Villager* villager);
+	// BW1W120 00532810 BW1M119 012be680
+	bool32_t RemovePlayerFromSide(int side);
+	// BW1W120 inlined BW1M119 014f88c0
+	uint32_t GetNumberOfPeopleInHomeTeam() const { return HomeTeam.count; }
+	// BW1W120 inlined BW1M119 014f8870
+	uint32_t GetNumberOfPeopleInAwayTeam() const { return AwayTeam.count; }
 	// BW1W120 005326e0 BW1M119 012be9e0
 	bool32_t RemoveVillagerFromMexicanWave(Villager* villager);
 	// BW1W120 00532eb0 BW1M119 012bdc40

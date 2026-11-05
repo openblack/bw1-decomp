@@ -15,7 +15,11 @@ class GBaseInfo;
 class GScriptHighlightInfo : public GSingleMapFixedInfo
 {
 public:
+#ifdef VERSION_BW1WCI
+	uint8_t field_0x104[0x10];
+#else
 	uint8_t field_0x104[0xc];
+#endif
 
 	// Override methods
 
@@ -33,6 +37,10 @@ public:
 
 	// BW1W120 inlined BW1M119 01052ea0
 	static GScriptHighlightInfo* GetInfo() { return Infos; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 01523290
+	HIGHLIGHT_INFO GetType() const { return (HIGHLIGHT_INFO)(this - Infos); }
+#endif
 
 	// TODO(#377): The original declared this class in ScriptHighlight.h.
 	// Out of line: LoadBinary at 0042f8f0, Load at 0042f850.

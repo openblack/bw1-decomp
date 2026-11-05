@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/Enum.h> /* For enum MOBILE_STATIC_INFO */
+
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 #include "InfoLoaders.h"       /* For INFO_DATA_BLOCK */
 
@@ -16,8 +18,9 @@ class GObjectInfo;
 class GMobileStaticInfo : public GMultiMapFixedInfo
 {
 public:
-	MESH_LIST MeshId; /* 0x120 */
-	uint8_t   field_0x124[0x8];
+	MESH_LIST          MeshId; /* 0x120 */
+	uint32_t           field_0x124;
+	MOBILE_STATIC_INFO BaseOnlyType;
 
 	// Override methods
 
@@ -39,7 +42,7 @@ public:
 	static GMobileStaticInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in MobileStatic.h.
-	INFO_DATA_BLOCK(MeshId, field_0x124)
+	INFO_DATA_BLOCK(MeshId, BaseOnlyType)
 	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "MobileStatic.h", 21)
 };
 

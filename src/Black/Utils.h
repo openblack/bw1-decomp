@@ -66,7 +66,9 @@ struct GUtils
 	// BW1W120 0074d580 BW1M119 01064310
 	static MapCoords GetPosFromAngle(float angle, float radius);
 	// BW1W120 0074d7e0 BW1M119 0104c490
-	static const JustMapXZ* Spiral(long& param_1, long& param_2);
+	static const JustMapXZ* Spiral(long& x, long& z);
+	// BW1W120 0074f3d0 BW1M119 01381db0
+	static bool32_t CanISeeThisPoint(LHPoint* eye, float y_angle, float half_angle, LHPoint* point);
 	// BW1W120 0074d810 BW1M119 01024840
 	static void SpiralIncrement(MapCoords& param_1, long& param_2, long& param_3, float param_4);
 	// BW1W120 0074dbf0 BW1M119 01358130

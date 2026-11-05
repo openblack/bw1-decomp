@@ -32,6 +32,9 @@ class Town;
 #define FLOCK_DEFAULT_DOMAIN_RADIUS 80
 #define FLOCK_DEFAULT_DISTANCE      30
 
+#define FLOCK_SCRIPT_ANIMAL_DOMAIN_RADIUS 2
+#define FLOCK_SCRIPT_ANIMAL_DISTANCE      1
+
 class Flock : public Container
 {
 public:
@@ -96,7 +99,7 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	Flock() : Shepherd(NULL), town(NULL), SavedThing(NULL) { SetToZero(); }
 	// BW1W120 0052f780 BW1M119 010eb000
-	Flock(const MapCoords& coords, const GFlockInfo* info, GPlayer* player, uint32_t param_4);
+	Flock(const MapCoords& coords, const GFlockInfo* info, GPlayer* player, uint32_t magic);
 	// BW1W120 0052f950 BW1M119 010ead80
 	Flock(Living* param_1);
 
@@ -112,11 +115,11 @@ public:
 	// BW1W120 005302e0 BW1M119 010e9370
 	void SetToZero();
 	// BW1W120 0052fa50 BW1M119 010ea8a0
-	void AddLivingToFlock(Living* living);
+	bool32_t AddLivingToFlock(Living* living);
 	// BW1W120 0052fb50 BW1M119 010ea6c0
 	void RemoveLivingFromFlock(Living* living, bool32_t delete_if_empty);
 	// BW1W120 0052fc20 BW1M119 010ea580
-	void SetDomainCentrePos(const MapCoords& param_1);
+	void SetDomainCentrePos(const MapCoords& pos);
 	// BW1W120 00530510 BW1M119 010e8d70
 	Living* FindLiving(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE type,
 	                   uint32_t subtype);

@@ -30,16 +30,16 @@ public:
 	// BW1W120 0076eaf0 BW1M119 011641b0
 	void ProcessTimer();
 
-	FragMesh* frag_mesh; /* 0x94 */
-	uint32_t  field_0x98;
-	uint32_t  field_0x9c;
-	uint32_t  field_0xa0;
-	uint32_t  field_0xa4;
+	FragMesh*         frag_mesh; /* 0x94 */
+	uint32_t          field_0x98;
+	uint32_t          field_0x9c;
+	uint32_t          field_0xa0;
+	GameThingWithPos* Owner;
 
 	// Override methods
 
 	// BW1W120 0076ea70 BW1M119 01164260
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0076e990 BW1M119 01162e60
 	virtual char* GetDebugText();
 	// BW1W120 0076f6a0 BW1M119 01163180

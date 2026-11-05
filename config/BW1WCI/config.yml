@@ -656,6 +656,15 @@ add_relocations:
     type: x86_abs32
     target: '__real@4@3fff8000000000000000'
     addend: 0x0
+  - source: 0x00706F8C
+    type: x86_abs32
+    target: '?Infos@GMobileStaticInfo@@2PAV1@A'
+  - source: 0x00706FBC
+    type: x86_abs32
+    target: '?Infos@GMobileStaticInfo@@2PAV1@A'
+  - source: 0x00706FDD
+    type: x86_abs32
+    target: '?Infos@GMobileStaticInfo@@2PAV1@A'
 
 # ScriptFunctions: string literals and dispatch-table entries dtk leaves as raw immediates.
   - source: 0x0070F0B3

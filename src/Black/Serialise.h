@@ -129,36 +129,33 @@ public:
 		}
 		File.Close();
 	}
-	// BW1W120 inlined BW1M119 01101370
+	// BW1W120 004e69a0 BW1M119 01101370
 	void SaveMemory()
-	{
-		unsigned long total = 0;
-		if (BufferPos != 0)
-		{
-			Flush();
-		}
-		LHLinkedNode<ArchiveMemoryBlocks*>* node;
-		for (node = MemoryBlocks.GetStart(); node != NULL; node = node->next.Get())
-		{
-			total += node->payload->Size;
-		}
-		char* dest = (char*)operator new(total, SERIALISE_FILEPATH, 186);
-		*Memory = dest;
-		for (node = MemoryBlocks.GetStart(); node != NULL; node = node->next.Get())
-		{
-			memcpy(dest, node->payload->Data, node->payload->Size);
-			dest += node->payload->Size;
-		}
-	}
-	// BW1W120 004e69a0 BW1M119 01100ea0
-	void CloseMemory()
 	{
 		if (*Memory == NULL)
 		{
-			SaveMemory();
+			unsigned long total = 0;
+			if (BufferPos != 0)
+			{
+				Flush();
+			}
+			LHLinkedNode<ArchiveMemoryBlocks*>* node;
+			for (node = MemoryBlocks.GetStart(); node != NULL; node = node->next.Get())
+			{
+				total += node->payload->Size;
+			}
+			char* dest = (char*)operator new(total, SERIALISE_FILEPATH, 186);
+			*Memory = dest;
+			for (node = MemoryBlocks.GetStart(); node != NULL; node = node->next.Get())
+			{
+				memcpy(dest, node->payload->Data, node->payload->Size);
+				dest += node->payload->Size;
+			}
 			MemoryBlocks.DeleteAll();
 		}
 	}
+	// BW1W120 inlined BW1M119 01100ea0
+	void CloseMemory() { SaveMemory(); }
 
 	// BW1W120 00711fe0 BW1M119 0150f1a0
 	Archive& operator<<(unsigned char value);

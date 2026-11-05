@@ -29,8 +29,8 @@ class Influence
 {
 public:
 	// BW1W120 005cd170 BW1M119 010386b0
-	static float CalculatePlayerInfluence(const MapCoords& pos, GPlayer* player, int param_3, INFL_CALC_TYPE type,
-	                                      int param_5);
+	static float CalculatePlayerInfluence(const MapCoords& pos, GPlayer* player, int unused, INFL_CALC_TYPE type,
+	                                      bool32_t include_allies);
 	// BW1W120 005cd630 BW1M119 010674f0
 	static GPlayer* CalculateMostInfluentialPlayer(const MapCoords& pos, float* influence);
 	// BW1W120 005cd560 BW1M119 01043990

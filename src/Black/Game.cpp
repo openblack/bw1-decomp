@@ -1771,7 +1771,7 @@ void GGame::Loop()
 	RenderLoadingFrame("Starting game loop...");
 	if (!network.session->IsSinglePlayer())
 	{
-		help_system->field_0x4608 = 0;
+		help_system->CreatureHelp = false;
 	}
 	LH3DTech::g_game_time_inc = 0;
 	TimeInc = 0;
@@ -2365,7 +2365,7 @@ void GGame::StartTurn()
 	GGameInfo::Info.Debug();
 	if (IsMultiplayerGame())
 	{
-		help_system->field_0x4608 = 0;
+		help_system->CreatureHelp = false;
 	}
 }
 
@@ -2437,7 +2437,7 @@ void GGame::ProcessTurn()
 		{
 			MemoryState = 1;
 			g_game->field_0x205a18 = g_game->data.GameTurn;
-			SetPacket(PACKET_TYPE_0x61);
+			SetPacket(PACKET_TYPE_INSTANT_SAVE);
 		}
 	}
 	if (MemoryState == 2 && !g_game->IsMultiplayerGame() && g_game->field_0x205a10 == 0 &&

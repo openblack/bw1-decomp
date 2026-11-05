@@ -25,6 +25,8 @@
 class Creature;
 class CreatureInfo;
 
+#define CREATURE_DESIRE_SCRIPT_SUPPRESS_SECONDS 600.0f
+
 class CreatureDesires : public Base
 {
 public:
@@ -58,6 +60,14 @@ public:
 	CreatureDesires(Creature* creature, const CreatureInfo* info);
 
 	// Non-virtual methods
+
+	// Inliner IL size: 105
+	// BW1W120 inlined BW1M119 inlined
+	void SetLevel(CREATURE_DESIRES desire, float level)
+	{
+		Levels[desire] = level;
+		CLAMP(Levels[desire], 0.0f, 1.0f);
+	}
 
 	// BW1W120 004dc100 BW1M119 0125ee30
 	void Initialise(Creature* creature, const CreatureInfo* info);

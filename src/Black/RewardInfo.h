@@ -15,7 +15,9 @@ class GBaseInfo;
 class GRewardInfo : public GMobileObjectInfo
 {
 public:
-	uint8_t field_0x114[0x1c];
+	uint8_t   field_0x114[0xc];
+	HELP_TEXT HelpEnum;
+	uint8_t   field_0x124[0xc];
 
 	// Override methods
 
@@ -35,7 +37,7 @@ public:
 	static GRewardInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in reward.h.
-	INFO_DATA_BLOCK(field_0x114, field_0x114)
+	INFO_DATA_BLOCK(field_0x114, field_0x124)
 	INFO_DERIVED_LOADERS(GMobileObjectInfo, "reward.h", 27)
 };
 

@@ -54,6 +54,13 @@ struct GLandscape
 		coords.z = (LH3DMapCoordsFull)(point.z / (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL));
 		coords.altitude = 0.0f;
 	}
+	// BW1W120 inlined BW1M119 01056c70
+	static void ConvertLHPointToMapCoord(const LHPoint& point, MapCoords& coords)
+	{
+		coords.SetWholeX((long)(point.x * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL));
+		coords.SetWholeZ((long)(point.z * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL));
+		coords.SetAltitude(point.y - LH3DIsland::GetAltitude(point));
+	}
 	// BW1W120 inlined BW1M119 010aab80
 	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point)
 	{

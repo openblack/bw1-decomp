@@ -27,6 +27,8 @@
 
 // Forward Declares
 
+#define CREATURE_DEVELOPMENT_CONFINEMENT_RADIUS 12.0f
+
 enum CREATURE_HEIGHT
 {
 	CREATURE_HEIGHT_VERY_SMALL,
@@ -109,6 +111,12 @@ struct CreatureEmotionsForMusic
 	uint32_t field_0x0;
 	uint32_t field_0x4;
 };
+
+#ifdef VERSION_BW1WCI
+#define CREATURE_TATTOO_FLAG_FIGHTER        0x1
+#define CREATURE_TATTOO_FLAG_GODS           0x2
+#define CREATURE_TATTOO_FLAG_FIGHTER_ALWAYS 0x4
+#endif
 
 class Creature : public Living
 {
@@ -213,7 +221,7 @@ public:
 	bool32_t RightHandOnly;
 	uint32_t ci_field_0x107c;
 	uint32_t ci_field_0x1080;
-	uint8_t  Tattoos;
+	uint8_t  BodyFlags;
 	uint8_t  ci_field_0x1085[0x3];
 #endif
 	uint32_t                ActionForced;
@@ -239,14 +247,14 @@ public:
 	bool32_t                FightEnded;
 	bool32_t                TouchedByLeash;
 	bool32_t                DirectedByLeash;
-	uint32_t                field_0x10bc;
+	bool32_t                SpellReversion;
 	bool32_t                IsShowingDevelopmentHelpScript;
 	uint8_t                 SavedCreatureIndex;
 	uint8_t                 SavedPlayerNumber;
 	uint8_t                 field_0x10c6[0x6];
 	uint32_t                field_0x10cc;
 	uint32_t                field_0x10d0;
-	uint32_t                field_0x10d4;
+	GameThingWithPos*       InteractingObject;
 	uint8_t                 field_0x10d8[0x10];
 	uint32_t                TurnsBeforeConsideringDecision;
 	uint32_t                field_0x10ec;
@@ -262,14 +270,14 @@ public:
 	uint32_t                field_0x1120;
 	int                     GameTurn;
 	CreatureRecentTrees     RecentTrees;
-	uint32_t                field_0x1158;
-	uint32_t                field_0x115c;
-	uint32_t                field_0x1160;
+	bool32_t                CanDie;
+	bool32_t                AutoScale;
+	float                   AutoScaleValue;
 	MapCoords               field_0x1164;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x119c;
-	uint32_t ci_field_0x11a0;
-	uint32_t ci_field_0x11a4;
+	bool32_t Navigation;
+	bool32_t HasYoung;
 #endif
 	uint32_t                          field_0x1170[0x8];
 	uint32_t*                         TattooData;
@@ -281,10 +289,8 @@ public:
 	MapCoords                         ConfinementCentre;
 	float                             ConfinementRadius;
 	bool32_t                          GoingBackToConfinedArea;
-	uint32_t                          field_0x11bc;
-	float                             ObjectsDestroyed;
-	uint32_t                          field_0x11c4;
-	uint32_t                          field_0x11c8;
+	float                             NumTimesPerformedAction[SCRIPT_PERFORMED_ACTION_LAST];
+	Object*                           LastDroppedObject;
 	MapCoords                         DestPosBeforeTeleport;
 	MapCoords                         field_0x11d8;
 	GParticleContainer*               ParticleContainer0x11e4;
@@ -316,7 +322,7 @@ public:
 #ifndef VERSION_BW1W100
 	bool32_t                ConfinedToObject;
 	GameThingWithPos*       ConfinementObject;
-	int                     field_0x129c;
+	int                     ConfinementPlayerNumber;
 	LHLinkedList<Creature*> ConfinedCreatures;
 #endif
 #ifdef VERSION_BW1WCI
@@ -460,7 +466,7 @@ public:
 	// BW1W120 004794a0 BW1M119 011df790
 	virtual bool32_t IsReadyForNewScriptAction();
 	// BW1W120 0047d2c0 BW1M119 011d7890
-	virtual void SetControlledByScript(int controlled);
+	virtual void SetControlledByScript(bool32_t controlled);
 	// BW1W120 0047d8f0 BW1M119 011d6a20
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 0047d940 BW1M119 011d69c0
@@ -470,7 +476,7 @@ public:
 	// BW1W120 00477ec0 BW1M119 011e1980
 	virtual float GetFacingDirection();
 	// BW1W120 004f6760 BW1M119 0128db10
-	virtual void SetFocus(const LHPoint& param_1);
+	virtual void SetFocus(const LHPoint& focus);
 	// BW1W120 00473f50 BW1M119 011ea350
 	virtual bool32_t IsReachable();
 	// BW1W120 00479e50 BW1M119 011de170
@@ -677,8 +683,15 @@ public:
 
 	// Static methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0047eda0 BW1MCI119 011feaf0
+	static Creature* Create(const MapCoords& coords, const CreatureInfo* info, GPlayer* player, bool32_t dumb = false);
+	// BW1WCI 0047ed60 BW1MCI119 011fecd0
+	static Creature* CreateFemale(const MapCoords& coords, const CreatureInfo* info, GPlayer* player, bool32_t dumb);
+#else
 	// BW1W120 00474a20 BW1M119 011e7440
 	static Creature* Create(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
+#endif
 	// BW1W120 00474b50 BW1M119 011e7370
 	static Creature* CreateCreature(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
 	// BW1W120 0047cbd0 BW1M119 011d8360
@@ -705,7 +718,7 @@ public:
 	// BW1W120 004753f0 BW1M119 011e5db0
 	void CantFindRoute();
 	// BW1W120 00475730 BW1M119 011e57d0
-	void FinishActionUnsuccessfully(char* param_1, int param_2, int param_3);
+	void FinishActionUnsuccessfully(char* reason, bool32_t stop_moving, bool32_t end_actions);
 	// BW1W120 0047daa0 BW1M119 011d6590
 	bool32_t FindSuitableActionToRemoveObstacle(Object* object);
 	// BW1W120 0047d9a0 BW1M119 011d6740
@@ -858,6 +871,10 @@ public:
 #endif // VERSION_BW1W100
 	// BW1W120 004c59c0 BW1M119 01237430
 	void MoveToDevelopmentPhase(DEVELOPMENT_PHASE phase, int unused);
+	// BW1W120 004ca580 BW1M119 0123db20
+	void ClearHelpStack(CREATURE_HELP_TYPE type);
+	// BW1W120 00477520 BW1M119 011e2c70
+	bool32_t IsLookingTowardsPos(const MapCoords& pos, unsigned long degrees);
 	// BW1W120 004c5ab0 BW1M119 01237380
 	bool32_t HasFinishedDevelopmentStageInitial();
 	// BW1W120 004c5af0 BW1M119 01237270
@@ -985,10 +1002,10 @@ public:
 	bool32_t FindClearArea(MapCoords* coords, float radius, bool32_t avoid_living);
 	// BW1W120 004c4450 BW1M119 01235990
 	void ForceActivityAndForceAction(CREATURE_DESIRES desire, CreatureBelief* activity_object, CREATURE_ACTION action,
-	                                 CreatureBelief* object_to_act_on, CreatureBelief* object_to_use, int param_6,
-	                                 int param_7);
+	                                 CreatureBelief* object_to_act_on, CreatureBelief* object_to_use,
+	                                 bool32_t forced_by_player, bool32_t stop_current_action);
 	// BW1W120 004c44b0 BW1M119 01235820
-	void ForceActivityAndForceAction(CreaturePlan& plan, int param_2, int param_3);
+	void ForceActivityAndForceAction(CreaturePlan& plan, bool32_t forced_by_player, bool32_t stop_current_action);
 	// BW1W120 004c8230 BW1M119 01239d00
 	float ComputeCurrentPlayerInterestingness();
 	// BW1W120 004c81f0 BW1M119 01239f60
@@ -1211,8 +1228,19 @@ public:
 	const CreatureInfo* GetInfo() const { return (const CreatureInfo*)info; }
 	// BW1W120 00479eb0 BW1M119 011de020
 	void ForceMoveMapObjectWithoutWalking(const MapCoords& pos);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00488400 BW1MCI119 011ed990
+	uint32_t CountNumberOfHitsInQueue();
+#else
+	// BW1W120 0047d470 BW1M119 011d7490
+	uint32_t CountNumberOfHitsInQueue();
+#endif
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00484aa0 BW1MCI119 011f4c00
+	void ForceMoveMapObjectWithoutWalkingOrChangingWhatDoing(const MapCoords& pos);
+#endif
 	// BW1W120 0047ab90 BW1M119 011dcbc0
-	void SetFizz(float param_1, float param_2, bool param_3);
+	void SetFizz(float amount, float duration, bool lock);
 	// BW1W120 0047b140 BW1M119 011dc350
 	bool32_t IsAnimIndividual(unsigned long anim);
 	// BW1W120 004f6850 BW1M119 0128d9d0
@@ -1224,7 +1252,7 @@ public:
 	// BW1W120 004f6e30 BW1M119 0128d0e0
 	void ScriptPlayIndividualAnimation(unsigned long anim);
 	// BW1W120 004f6f10 BW1M119 0128cfa0
-	void ScriptPlayStaticAnimation(unsigned long anim, float param_2);
+	void ScriptPlayStaticAnimation(unsigned long anim, float duration);
 	// BW1W120 0047b1c0 BW1M119 011dc140
 	bool32_t IsFighting();
 #ifdef VERSION_BW1WCI
@@ -1358,6 +1386,49 @@ public:
 	void SetInnateCommunicativenessSource(float value);
 	// BW1W120 004f6930 BW1M119 0128d940
 	void ScriptTurnOffAllDesires();
+	// BW1W120 004f6950 BW1M119 0128d890
+	void ScriptTurnOnDesireAndMakeItMaximum(CREATURE_DESIRES desire);
+	// BW1W120 004f7000 BW1M119 0128ce80
+	void ScriptDoAction(CREATURE_ACTION action, GameThingWithPos* object, GameThingWithPos* second_object);
+	// BW1W120 004f7080 BW1M119 0128cda0
+	void ScriptLearnEverything();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00508f10 BW1MCI119 012ac280
+	void ScriptSetKnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, bool32_t knows, float progress);
+#else
+	// BW1W120 004f7090 BW1M119 0128cca0
+	void ScriptSetKnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, bool32_t knows);
+#endif
+	// BW1W120 004f70f0 BW1M119 0128cc50
+	void ScriptSetAgendaPriority(float priority);
+	// BW1W120 004f6980 BW1M119 0128d6c0
+	void ScriptLearnDistinctionAboutActivityObject(CREATURE_DESIRES desire, ATTRIBUTE_TYPE attribute,
+	                                               unsigned long amount);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00508260 BW1MCI119 012ad470
+	static Creature* ScriptCreateCreatureRelativeToCreature(Creature* creature, float scale, const MapCoords& coords,
+	                                                        CREATURE_TYPE type, bool32_t dumb);
+	// BW1WCI 00709b90 BW1MCI119 0151dd60
+	static void ReleaseTykeFromMaster(Creature* tyke, Creature* master);
+	// BW1WCI 0047ef30 BW1MCI119 011fe6b0
+	void SetTyke(Creature* master);
+	// BW1WCI 00488430 BW1MCI119 011ed930
+	void ClearFightQueue();
+#else
+	// BW1W120 004f6610 BW1M119 0128dc50
+	static Creature* ScriptCreateCreatureRelativeToCreature(Creature* creature, float scale, const MapCoords& coords,
+	                                                        CREATURE_TYPE type);
+#endif
+	// BW1W120 0047bee0 BW1M119 011da220
+	static void SwapMinds(Creature* new_creature, Creature* my_creature);
+	// BW1W120 0047d320 BW1M119 011d7750
+	void QueueAttackOrBlock(unsigned long move);
+	// BW1W120 0047d340 BW1M119 011d76e0
+	void QueueSpell(unsigned long spell);
+	// BW1W120 0047d360 BW1M119 011d7670
+	void QueueSideStep(unsigned long step);
+	// BW1W120 0047d380 BW1M119 011d7530
+	uint32_t GetCurrentFightAction();
 	// BW1W120 004f78c0 BW1M119 0128e310
 	static float SigmoidThreshold(float threshold, float value);
 };
