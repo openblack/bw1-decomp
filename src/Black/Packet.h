@@ -41,7 +41,11 @@ public:
 		LHPoint Direction;
 		LHPoint Rotation;
 		// BW1W120 0054b8f0
-		PhysicsData();
+		PhysicsData()
+		{
+			Velocity.x = Velocity.y = Velocity.z = 0.0f;
+			Rotation.x = Rotation.y = Rotation.z = 0.0f;
+		}
 	};
 	uint8_t  field_0x0;
 	uint8_t  Type;
@@ -112,6 +116,8 @@ public:
 			MapCoords End;
 		};
 	};
+	// BW1W120 0063c420 BW1M119 01011b40
+	void ProcessPacket(uint8_t type);
 };
 
 #endif /* BW1_DECOMP_PACKET_INCLUDED_H */

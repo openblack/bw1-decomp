@@ -119,7 +119,7 @@ public:
 	// BW1W120 00417b80 BW1M119 01174cd0
 	virtual ~Animal();
 	// BW1W120 00417b60 BW1M119 01174d70
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0071be10 BW1M119 01517730
 	virtual uint32_t GetGuidanceResourceType();
 	// BW1W120 0041b710 BW1M119 0116daa0
@@ -147,7 +147,7 @@ public:
 	// BW1W120 00419310 BW1M119 01172060
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 00419320 BW1M119 01172010
-	virtual float GetHoldLoweringMultiplier();
+	virtual float GetHoldLoweringMultiplier() { return 1.3f; }
 	// BW1W120 0041b1b0 BW1M119 0116e810
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
 	// BW1W120 00417700 BW1M119 01137df0
@@ -261,11 +261,11 @@ public:
 	// BW1W120 004184d0 BW1M119 011732e0
 	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalFoodNeeds();
 	// BW1W120 0041ad50 BW1M119 0116ec70
-	virtual bool32_t LookForFoodPos(MapCoords* pos);
+	virtual bool32_t LookForFoodPos(MapCoords* pos) { return false; }
 	// BW1W120 0041ad60 BW1M119 0116ec30
 	virtual uint32_t LookForSleepPos();
 	// BW1W120 004175b0 BW1M119 011376e0
-	virtual uint32_t IAmABird();
+	virtual bool32_t IAmABird();
 	// BW1W120 0041b420 BW1M119 0116e270
 	virtual uint32_t CalculeLairPos();
 	// BW1W120 004192e0 BW1M119 011720e0
@@ -355,47 +355,50 @@ public:
 	// BW1W120 00420410 BW1M119 0117f430
 	virtual void SetupFleeFromPredator(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004175c0 BW1M119 01137710
-	virtual uint8_t FollowObjectPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t FollowObjectPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004175d0 BW1M119 01137760
-	virtual uint8_t LookAtSpellPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t LookAtSpellPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004175e0 BW1M119 011377b0
-	virtual uint8_t LookAtNiceSpellPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t LookAtNiceSpellPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004175f0 BW1M119 01137800
-	virtual uint8_t FollowSpellPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t FollowSpellPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 00417600 BW1M119 01137850
-	virtual uint8_t ReactToWoodPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToWoodPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 00417610 BW1M119 011378a0
-	virtual uint8_t ReactToMagicTreePriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToMagicTreePriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 00417620 BW1M119 01137900
-	virtual uint8_t ReactToBallPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToBallPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004203a0 BW1M119 0117f640
 	virtual uint8_t ReactToFirePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00417630 BW1M119 01137950
-	virtual uint8_t ReactToMagicShieldPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToMagicShieldPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 00417640 BW1M119 011379b0
-	virtual uint8_t ReactToCreatureGiftPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToCreatureGiftPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 00417650 BW1M119 01137a10
-	virtual uint8_t ReactToNewBuildingPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToNewBuildingPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 00417660 BW1M119 01137a70
-	virtual uint8_t ReactToHandPickUpPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToHandPickUpPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 00417670 BW1M119 01137ad0
-	virtual uint8_t ReactToHandUsingTotemPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToHandUsingTotemPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 00417680 BW1M119 01137b30
-	virtual uint8_t ReactToObjectCrushedPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToObjectCrushedPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 00417690 BW1M119 01137b90
-	virtual uint8_t ReactToFightPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFightPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004176a0 BW1M119 01137be0
-	virtual uint8_t ReactToTeleportPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToTeleportPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004176b0 BW1M119 01137c30
-	virtual uint8_t ReactToHandPuttingStuffInStoragePitPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToHandPuttingStuffInStoragePitPriority(Reaction* reaction, Reaction* current_reaction)
+	{
+		return 0;
+	}
 	// BW1W120 004176c0 BW1M119 01137ca0
-	virtual uint8_t ReactToDeathPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToDeathPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004176d0 BW1M119 01137cf0
-	virtual uint8_t ReactToDroppedByHandPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToDroppedByHandPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004176e0 BW1M119 01137d50
-	virtual uint8_t ReactToFaintingPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFaintingPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004176f0 BW1M119 01137da0
-	virtual uint8_t ReactToConfusedPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToConfusedPriority(Reaction* reaction, Reaction* current_reaction) { return 0; }
 	// BW1W120 004203b0 BW1M119 0117f5c0
 	virtual uint8_t ReactToFallingTreePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 0041bb00 BW1M119 0116d410

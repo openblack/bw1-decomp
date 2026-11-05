@@ -2,6 +2,17 @@
 #include "PFootball.h"
 #include "FootballInfo.h"
 #include "FootballPositionInfo.h"
+#include "Villager.h"
+
+MESH_LIST GPFootballInfo::GetMesh() const
+{
+	return Mesh;
+}
+
+bool32_t PFootball::AddPlaytimeVillager(Villager* villager)
+{
+	return villager->CheckPlaytimeAvailableToPlayPFootball();
+}
 
 GPlayer* PFootball::GetPlayer()
 {

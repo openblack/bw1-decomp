@@ -89,6 +89,10 @@ public:
 
 	// BW1W120 00747270 BW1M119 015658f0
 	static int GetDesireFromText(char* text);
+	// BW1W120 00746270 BW1M119 0105fd30
+	float GetDesireVillagerModification(TOWN_DESIRE_INFO desire);
+	// BW1W120 007464f0 BW1M119 0108c210
+	float GetTemporaryDesireVillagerModification(TOWN_DESIRE_INFO desire);
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INCLUDED_H */

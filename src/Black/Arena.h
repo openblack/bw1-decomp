@@ -25,7 +25,8 @@ class Object;
 class GArena : public GameThingWithPos
 {
 public:
-	uint8_t            field_0x28[0xc];
+	uint8_t            field_0x28[0x8];
+	float              Radius;          /* 0x30 */
 	bool32_t           FightInProgress; /* 0x34 */
 	Creature*          Creatures[2];
 	uint8_t            field_0x40[0x8];

@@ -28,8 +28,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 00439800 BW1M119 010b6780
-	virtual ~Bonfire();
 	// BW1W120 004397f0 BW1M119 010b6a30
 	virtual char* GetDebugText();
 	// BW1W120 00439a00 BW1M119 010b7440
@@ -63,6 +61,8 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Bonfire() { SetToZero(); }
+	// BW1W120 004395c0 BW1M119 010b7950
+	Bonfire(const MapCoords& coords, float param_2, float y_angle, float scale);
 
 	// BW1W120 00439830 BW1M119 010b7920
 	void SetToZero();

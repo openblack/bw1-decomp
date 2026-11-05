@@ -16,6 +16,7 @@
 class Base;
 class GameThingWithPos;
 struct MapCoords;
+class LH_AudioBank;
 
 class SoundTag : public LocalBase
 {
@@ -79,6 +80,12 @@ public:
 	void Set(GameThingWithPos* param_1, const LHPoint& param_2, const LHPoint& param_3, uint32_t param_4, bool param_5,
 	         uint32_t param_6, uint32_t param_7, int param_8, int param_9, uint32_t param_10, int param_11,
 	         int param_12);
+	// BW1W120 0071ecd0 BW1M119 0151b4e0
+	bool32_t CreateSoundTagForDeadObject();
+	// BW1W120 0071e760 BW1M119 0151be30
+	void CheckDelay();
+	// BW1W120 0071e610 BW1M119 01001e60
+	LH_AudioBank* GetBank() const;
 };
 
 #endif /* BW1_DECOMP_SOUND_TAG_INCLUDED_H */

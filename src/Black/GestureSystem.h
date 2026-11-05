@@ -68,7 +68,7 @@ public:
 	// Constructors
 
 	// BW1W120 0054bb40 BW1M119 inlined
-	GestureSystem();
+	GestureSystem() { field_0xc94 = 1; }
 
 	// Non-virtual methods
 

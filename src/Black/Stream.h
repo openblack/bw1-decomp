@@ -51,6 +51,8 @@ public:
 	void AddPoint(LHPoint point);
 	// BW1W120 00733fb0 BW1M119 0115c9b0
 	static void SaveAll(LHOSFile& file);
+	// BW1W120 00733d30 BW1M119 0115ca60
+	bool32_t FindNearestPosTo(MapCoords& pos, MapCoords& nearest_pos, float max_distance);
 };
 
 #endif /* BW1_DECOMP_STREAM_INCLUDED_H */

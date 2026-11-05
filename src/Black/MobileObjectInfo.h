@@ -20,7 +20,7 @@ class GMobileObjectInfo : public GMobileInfo
 {
 public:
 	MOBILE_OBJECT_INFO MobileObjectType; /* 0x104 */
-	uint32_t           field_0x108;
+	MESH_LIST          Mesh;
 	uint32_t           field_0x10c;
 	float              ScalePerLife;
 
@@ -38,7 +38,7 @@ public:
 		return GetInfo();
 	}
 	// BW1W120 00425920 BW1M119 010b0310
-	virtual MESH_LIST GetMesh() const;
+	virtual MESH_LIST GetMesh() const { return Mesh; }
 
 	// Static methods
 

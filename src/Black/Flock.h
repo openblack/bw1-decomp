@@ -132,6 +132,8 @@ public:
 	SLL<Living, &Living::FlockOrder>* GetFlockMembers() { return &Members; }
 	// BW1W120 00530310 BW1M119 010e9030
 	uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
+	// BW1W120 005300d0 BW1M119 010e97e0
+	bool32_t AllMembersWithinFlockDistance();
 };
 
 #endif /* BW1_DECOMP_FLOCK_INCLUDED_H */

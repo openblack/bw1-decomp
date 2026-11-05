@@ -3,6 +3,8 @@
 
 #include "Citadel.h"
 #include "CitadelPartInfo.h"
+#include "PlannedCitadelPart.h"
+#include "PlannedMultiMapFixed.h"
 #include "GameOSFile.h"
 
 CitadelPart::CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* parent_citadel, float y_angle,
@@ -16,6 +18,13 @@ CitadelPart::CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, 
 	{
 		parent_citadel->PartList.AddToFirst(this);
 	}
+}
+
+CitadelPart::~CitadelPart() {}
+
+char* CitadelPart::GetDebugText()
+{
+	return "CitadelPart:";
 }
 
 bool32_t CitadelPart::Load(GameOSFile& file)
@@ -70,4 +79,24 @@ uint32_t CitadelPart::SaveObject(LHOSFile& param_1, const MapCoords* param_2)
 uint32_t CitadelPart::DestroyedByEffect(GPlayer* param_1, float param_2)
 {
 	return 0;
+}
+
+bool32_t PlannedCitadelPart::Save(GameOSFile& file)
+{
+	if (PlannedMultiMapFixed::Save(file))
+	{
+		file.WritePtr(citadel.Get());
+		return true;
+	}
+	return false;
+}
+
+bool32_t PlannedCitadelPart::Load(GameOSFile& file)
+{
+	if (PlannedMultiMapFixed::Load(file))
+	{
+		file.ReadPtr((GameThing**)&citadel);
+		return true;
+	}
+	return false;
 }

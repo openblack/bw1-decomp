@@ -4,3 +4,8 @@
 #include "ColourConstants.h" /* For White */
 
 GGuidance::~GGuidance() {}
+
+float GGuidance::GetNonInterpedHeartBeatPulseValue()
+{
+	return NonInterpedHeartBeatPulseValue;
+}

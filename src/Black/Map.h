@@ -14,6 +14,7 @@
 class Fixed;
 class Object;
 struct MapCellIterator;
+struct LH3DColor;
 
 struct MapCell
 {
@@ -45,6 +46,12 @@ struct MapCell
 	MapCellIterator GetFirstIterator() const;
 	// BW1W120 00601bc0 BW1M119 0111edf0
 	int Collide(COLLIDE_TYPE type);
+	// BW1W120 00601ea0 BW1M119 01301820
+	bool32_t IsFixed();
+	// BW1W120 00601d10 BW1M119 01506b50
+	uint32_t CollideWithFixe(const MapCoords& coords);
+	// BW1W120 00601880 BW1M119 015687d0
+	void ShowMapCell(LH3DColor* colour);
 };
 
 struct MapCellIterator

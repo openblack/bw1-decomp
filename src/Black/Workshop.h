@@ -90,7 +90,7 @@ public:
 	// BW1W120 0077a650 BW1M119 0116a130
 	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 00779f20 BW1M119 0116b080
-	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status);
 	// BW1W120 0077a680 BW1M119 0116a030
 	virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus& param_2);
 

@@ -34,7 +34,7 @@ public:
 	uint8_t            player_number;
 	GInterface*        iface;
 	GGuidance*         guidance;
-	uint32_t           field_0x34;
+	SPELL_SEED_TYPE    LastSpellGained;
 	uint32_t           field_0x38;
 	uint32_t           field_0x3c;
 	uint32_t           field_0x40;

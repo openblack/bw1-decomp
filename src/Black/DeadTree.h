@@ -62,7 +62,7 @@ public:
 	// BW1W120 00510a00 BW1M119 010c4e50
 	virtual ~DeadTree();
 	// BW1W120 00510c90 BW1M119 010c67e0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00511370 BW1M119 010c5440
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 005109f0 BW1M119 010c7200
@@ -125,9 +125,9 @@ public:
 	// BW1W120 00511100 BW1M119 010c5ba0
 	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 00511170 BW1M119 010c5970
-	virtual void SetUpPhysOb(PhysOb* param_1);
+	virtual void SetUpPhysOb(PhysOb* phys_ob);
 	// BW1W120 005113f0 BW1M119 010c53a0
-	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map);
 	// BW1W120 005111f0 BW1M119 010c5920
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00510ca0 BW1M119 010c6710

@@ -127,7 +127,7 @@ public:
 	// BW1W120 006e9dd0 BW1M119 01148dc0
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 006eab70 BW1M119 011474e0
-	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2);
+	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* status, bool32_t dont_replant);
 	// BW1W120 006ea8a0 BW1M119 01147c70
 	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
 	                                                 GInterfaceStatus* status, Object* thrower, bool32_t dont_replant);

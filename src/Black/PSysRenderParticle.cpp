@@ -47,7 +47,17 @@ char* RenderParticleGameObjectRef::GetDebugText()
 	return PSYS_DEBUG_TEXT;
 }
 
+Object* RenderParticleGameObjectRef::GetGameObject()
+{
+	return GameObject.Get();
+}
+
 void RenderParticleGameObjectRef::DrawAt(const DrawData& data) {}
+
+Particle3DAnim* Particle3DAnim::AsParticle3DAnim()
+{
+	return this;
+}
 
 char* Particle3DAnim::GetDebugText()
 {

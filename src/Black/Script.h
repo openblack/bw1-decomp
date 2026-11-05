@@ -152,6 +152,7 @@ class GPlayer;
 class Living;
 struct MapCoords;
 class Town;
+class Dance;
 
 struct ScriptObjectDispatch
 {
@@ -1375,6 +1376,34 @@ public:
 	// BW1W120 006f7b40 BW1M119 014f0710
 	static int FindNearInStateCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
 	                                                      uint32_t subtype);
+	// BW1W120 0070cee0 BW1M119 01003350
+	int FindFreeScriptGameThingSlot();
+	// BW1W120 006eb8b0 BW1M119 014ddc30
+	void InitialiseCountDownTimer(float seconds);
+	// BW1W120 006eb890 BW1M119 014ddd10
+	void SetPointOutOfWorld(LHPoint* point);
+	// BW1W120 006efd60 BW1M119 014e54e0
+	void DecreaseContainerContentsScriptReference(GameThingWithPos* thing);
+	// BW1W120 006efcd0 BW1M119 014e55e0
+	void ReleaseContainerContents(GameThingWithPos* thing);
+	// BW1W120 006fddf0 BW1M119 014f6a70
+	static int SetIndestructableLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006fdbb0 BW1M119 014f6ec0
+	static int SetSkeletonLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006fbe90 BW1M119 014f9cd0
+	static int GetSlowestLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 0070d440 BW1M119 01506e80
+	bool32_t IsCreatedByScript(uint32_t slot);
+	// BW1W120 0070cf50 BW1M119 01507ad0
+	int FindScriptGameThing(GameThingWithPos* thing);
+	// BW1W120 00710350 BW1M119 0150caf0
+	HELP_SPIRIT_TYPE ConvertScriptSpiritToHelpSpirit(SCRIPT_SPIRIT_TYPE spirit);
+	// BW1W120 0070f600 BW1M119 010021c0
+	void ReleaseScriptThingIntoTheGame(GameThingWithPos* thing, uint32_t slot, bool32_t force);
+	// BW1W120 006ebb00 BW1M119 014dd890
+	void SetupScreenFadeBackToNormal(signed char a);
+	// BW1W120 006f0430 BW1M119 014e4880
+	void DetachFromDance(uint32_t slot, Dance* dance);
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(GScript) == 0xd8, "Data type is of wrong size");

@@ -18,6 +18,7 @@ class LHOSFile;
 struct MapCoords;
 class LH3DStorm;
 struct LHPoint;
+struct WeatherInfo;
 
 struct RainInfo
 {
@@ -111,6 +112,12 @@ public:
 	static GClimate* GetClimateWithId(long id);
 	// BW1W120 00772b80 BW1M119 015a7f00
 	static void SaveAllObjectTextFile(LHOSFile& file, const MapCoords& coords);
+	// BW1W120 00771490 BW1M119 01033540
+	static WeatherInfo GetWeather(const LHPoint& point, bool recalc);
+	// BW1W120 00771640 BW1M119 010496b0
+	static WeatherInfo ComputeWeather(const LHPoint& point, bool recalc);
+	// BW1W120 00772be0 BW1M119 015a7b90
+	MapCoords FindWhereToCreateStorm();
 };
 
 #endif /* BW1_DECOMP_CLIMATE_INCLUDED_H */

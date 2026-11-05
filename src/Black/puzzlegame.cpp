@@ -20,6 +20,12 @@ bool32_t PuzzleVillager::MoveAllowedForChessGame(long x, long z)
 	return false;
 }
 
+void PuzzleLion::AddToBoxPositionForChessGame(long x, long z)
+{
+	BoxX += x;
+	BoxZ += z;
+}
+
 bool32_t PuzzleLion::DecideWhatToDo()
 {
 	return true;
@@ -95,6 +101,26 @@ const char* ChessGamePuzzle::GetText()
 	return "ChessGamePuzzle";
 }
 
+void ChessGamePuzzle::ToBeDeleted(bool32_t delete_now)
+{
+	GameThingWithPos::ToBeDeleted(delete_now);
+}
+
+void ChessPion::ToBeDeleted(bool32_t delete_now)
+{
+	Object::ToBeDeleted(false);
+}
+
+void ChessPion::CallVirtualFunctionsForCreation(const MapCoords& coords)
+{
+	Object::CallVirtualFunctionsForCreation(coords);
+}
+
+uint32_t ChessPion::SaveObject(LHOSFile& file, const MapCoords* coords)
+{
+	return 1;
+}
+
 bool32_t PuzzleTotem::NetworkFriendlyEndLockedSelect(GInterfaceStatus*)
 {
 	return true;
@@ -120,6 +146,12 @@ bool32_t PuzzleTotem::Save(GameOSFile& file)
 		return true;
 	}
 	return false;
+}
+
+void PuzzleSheep::AddToBoxPositionForChessGame(long x, long z)
+{
+	BoxX += x;
+	BoxZ += z;
 }
 
 bool32_t PuzzleSheep::DecideWhatToDo()

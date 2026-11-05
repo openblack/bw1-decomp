@@ -109,9 +109,40 @@ bool32_t FishFarm::NetworkUnfriendlyEndLockedSelect()
 	return false;
 }
 
+float FishFarm::Get2DRadius()
+{
+	return 5.0f;
+}
+
+float FishFarm::GetMeshRadius() const
+{
+	return 5.0f;
+}
+
+MapCoords FishFarm::GetArrivePos()
+{
+	return Pos;
+}
+
 char* FishFarm::GetDebugText()
 {
 	return "FishFarm:";
+}
+
+void FishFarm::ToBeDeleted(bool32_t delete_now)
+{
+	DeleteDependancys();
+	MultiMapFixed::ToBeDeleted(delete_now);
+}
+
+float FishFarm::GetHeightForHandAboveInteractObject()
+{
+	return 5.0f;
+}
+
+MapCoords FishFarm::GetDoorPos()
+{
+	return Pos;
 }
 
 Town* FishFarm::GetTown()

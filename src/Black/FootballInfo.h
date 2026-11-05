@@ -16,7 +16,7 @@ class GObjectInfo;
 class GPFootballInfo : public GMultiMapFixedInfo
 {
 public:
-	uint32_t field_0x120;
+	MESH_LIST Mesh;
 
 	// Override methods
 
@@ -38,7 +38,7 @@ public:
 	static GPFootballInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in PFootball.h.
-	INFO_DATA_BLOCK(field_0x120, field_0x120)
+	INFO_DATA_BLOCK(Mesh, Mesh)
 	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "PFootball.h", 36)
 };
 

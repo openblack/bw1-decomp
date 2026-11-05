@@ -4,6 +4,7 @@
 #include "ColourConstants.h" /* For White */
 #include "FelledTree.h"
 #include "Reaction.h"
+#include "WorshipTotem.h"
 #include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 
 uint32_t DeadTree::GetSaveType()
@@ -19,6 +20,16 @@ uint32_t FelledTree::GetSaveType()
 PHYSICS_CONSTANTS_TYPE FelledTree::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_TREE;
+}
+
+void FelledTree::SetUpPhysOb(PhysOb* phys_ob)
+{
+	SetUpPhysObAsATree(phys_ob, GetWeight(), GetHeight(), Get2DRadius(), GetScale());
+}
+
+Object* FelledTree::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map)
+{
+	return Fixed::EndPhysics(physics_object, insert_back_into_map);
 }
 
 bool32_t DeadTree::HandShouldFeelWithMeshIntersect()
@@ -61,6 +72,16 @@ HOLD_TYPE DeadTree::GetHoldType()
 	return HOLD_TYPE_TREE;
 }
 
+float DeadTree::GetHoldRadius()
+{
+	return Get2DRadius() * 0.2f;
+}
+
+float DeadTree::GetHoldLoweringMultiplier()
+{
+	return 0.1f;
+}
+
 SCRIPT_OBJECT_TYPE DeadTree::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_DEAD_TREE;
@@ -91,9 +112,37 @@ bool32_t DeadTree::IsRock()
 	return false;
 }
 
+void DeadTree::ToBeDeleted(bool32_t delete_now)
+{
+	MobileStatic::ToBeDeleted(delete_now);
+}
+
 void DeadTree::StartOnFire()
 {
 	Reaction::RemoveAllReactionsInitiatedByObject(this);
+}
+
+uint32_t DeadTree::ValidToApplyThisToObject(GInterfaceStatus* status, Object* object)
+{
+	if (dynamic_cast<WorshipTotem*>(object) != NULL)
+	{
+		return true;
+	}
+	if (object != NULL && object->IsResourceStore(RESOURCE_TYPE_WOOD))
+	{
+		return true;
+	}
+	return false;
+}
+
+uint32_t DeadTree::ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords, GestureSystemPacketData* data)
+{
+	Object* site = Pos.IsWithinBuilingSite();
+	if (site != NULL && site->IsResourceStore(GetResourceType()) && site->DeleteObjectAndTakeResource(this, status))
+	{
+		return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+	}
+	return MobileStatic::ApplyThisToMapCoord(status, coords, data);
 }
 
 IMMERSION_EFFECT_TYPE DeadTree::GetInHandImmersionTexture()

@@ -22,7 +22,19 @@ PHYSICS_CONSTANTS_TYPE Rock::GetPhysicsConstantsType()
 	return PHYSICS_CONSTANTS_TYPE_ROCK;
 }
 
+#ifndef VERSION_BW1WCI
+Object* Rock::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map)
+{
+	return Fixed::EndPhysics(physics_object, insert_back_into_map);
+}
+#endif
+
 uint32_t Rock::GetOverwriteTapToolTip()
 {
 	return HELP_TEXT_TOOLTIP_125;
+}
+
+bool32_t Rock::CanBePickedUpByCreature(Creature* creature)
+{
+	return Object::CanBePickedUpByCreature(creature);
 }

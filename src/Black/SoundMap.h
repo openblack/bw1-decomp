@@ -51,7 +51,11 @@ public:
 	// Constructors
 
 	// BW1W120 0054b9d0 BW1M119 inlined
-	GSoundMap();
+	GSoundMap()
+	{
+		Reset();
+		memset(field_0xb4, 0, sizeof(field_0xb4));
+	}
 	// BW1W120 0071d6d0 BW1M119 0101b120
 	void Reset();
 };

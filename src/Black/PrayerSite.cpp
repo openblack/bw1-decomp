@@ -2,8 +2,14 @@
 #include "PrayerSite.h"
 #include "PrayerIconInfo.h"
 #include "PrayerSiteInfo.h"
+#include "WorshipSpellIcon.h"
 
 void PrayerSite::ToBeDeleted(int param_1) {}
+
+uint32_t PrayerSite::Process()
+{
+	return 3;
+}
 
 GPlayer* PrayerSite::GetPlayer()
 {
@@ -35,4 +41,14 @@ GBaseInfo* GPrayerIconInfo::GetBaseInfo(uint32_t& info_count)
 {
 	info_count = PLAYER_INFO_LAST;
 	return Infos;
+}
+
+uint32_t PrayerIcon::GetCreatureBeliefType()
+{
+	return CREATURE_BELIEF_TYPE_MOBILE_OBJECT;
+}
+
+uint32_t PrayerIcon::Process()
+{
+	return 3;
 }

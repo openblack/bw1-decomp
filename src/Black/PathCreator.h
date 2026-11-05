@@ -42,6 +42,8 @@ struct PathCreator
 	void GetAutoSavePath(char* path);
 	// BW1W120 0078efc0 BW1M119 011a2b10
 	bool CheckAndRecreateSaveGamePaths();
+	// BW1W120 0078ef60 BW1M119 01183640
+	bool32_t CheckSaveGamePaths();
 };
 
 #endif /* BW1_DECOMP_PATH_CREATOR_INCLUDED_H */

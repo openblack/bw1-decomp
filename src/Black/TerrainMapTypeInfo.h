@@ -21,7 +21,11 @@ public:
 	// Override methods
 
 	// BW1W120 0054bd70 BW1M119 01580270
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = 0;
+		return NULL;
+	}
 };
 
 #endif /* BW1_DECOMP_TERRAIN_MAP_TYPE_INFO_INCLUDED_H */

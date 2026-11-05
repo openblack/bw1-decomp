@@ -71,7 +71,7 @@ public:
 	// Override methods
 
 	// BW1W120 006d6ff0 BW1M119 01135110
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00561b60 BW1M119 0113c5e0
 	virtual char* GetDebugText() { return "PuzzleGame: "; }
 	// BW1W120 006d9d40 BW1M119 0112fc40
@@ -110,7 +110,7 @@ public:
 	// BW1W120 006dddb0 BW1M119 inlined
 	virtual ~ChessGamePuzzle();
 	// BW1W120 006dde30 BW1M119 inlined
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 006ddda0 BW1M119 inlined
 	virtual const char* GetText();
 };
@@ -157,7 +157,7 @@ public:
 	// BW1W120 006de280 BW1M119 inlined
 	virtual ~ChessPion();
 	// BW1W120 006dde40 BW1M119 inlined
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 005273b0 BW1M119 inlined
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00422190 BW1M119 inlined
@@ -171,7 +171,7 @@ public:
 	// BW1W120 00422770 BW1M119 inlined
 	virtual void Draw();
 	// BW1W120 006dde50 BW1M119 inlined
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00422210 BW1M119 inlined
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 004221e0 BW1M119 inlined
@@ -184,7 +184,7 @@ public:
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
 	// BW1W120 006de260 BW1M119 inlined
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 };
 
 class ChessQueen : public ChessPiece

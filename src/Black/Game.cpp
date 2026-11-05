@@ -1,5 +1,7 @@
 #include "GameTimeConstants.h"
 #include "Game.h"
+#include "TerrainMapTypeInfo.h"
+#include <Lionhead/LH3DLib/development/LH3DMesh.h>
 #include "GameVideo.h"
 #include "PCInput.h"
 #include "CreaturePhysical.h"
@@ -937,6 +939,11 @@ void GGame::FinishInitialisation()
 	GGlobal::Global.audio->InitAtmos();
 }
 
+void GGame::CreateMeshPack()
+{
+	LH3DMesh::CreatePack();
+}
+
 // BW1W120 00550390 BW1M119 01509420
 bool32_t GGame::LoadFiles()
 {
@@ -1414,48 +1421,12 @@ void GGame::ClearMap()
 	LHResetFPU();
 }
 
-// Constructors emitted in the original Game translation unit.
-GPacket::PhysicsData::PhysicsData()
-{
-	Velocity.z = 0.0f;
-	Velocity.y = 0.0f;
-	Velocity.x = 0.0f;
-	Rotation.z = 0.0f;
-	Rotation.y = 0.0f;
-	Rotation.x = 0.0f;
-}
 // BW1W120 0054b910 BW1M119 0101b3a0
 MusicMoodPacket::MusicMoodPacket()
 {
 	MusicID = 0;
 	NumTracks = 0;
 	Track = 0;
-}
-// BW1W120 0054bcd0
-GTerrainMap::GTerrainMap() {}
-// BW1W120 0054b930
-GKeyBuffer::GKeyBuffer()
-{
-	Inputs = NULL;
-	BufferedKeys = 0;
-	field_0xc = 0;
-}
-// BW1W120 0054b9d0
-GSoundMap::GSoundMap()
-{
-	Reset();
-	memset(field_0xb4, 0, sizeof(field_0xb4));
-}
-// BW1W120 0054baa0
-GestureSystemDataList::GestureSystemDataList()
-{
-	Data = NULL;
-	Count = 0;
-}
-// BW1W120 0054bb40
-GestureSystem::GestureSystem()
-{
-	field_0xc94 = 1;
 }
 static_assert(sizeof(GPacket) == 0x110, "GPacket size is incorrect");
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)

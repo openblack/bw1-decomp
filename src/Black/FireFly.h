@@ -21,7 +21,8 @@ class PhysicsObject;
 class FireFly : public Object
 {
 public:
-	static void DrawAll(); // 0052b790
+	// BW1W120 0052b790 BW1M119 010152e0
+	static void DrawAll();
 	// BW1W120 0052a1e0 BW1M119 010deda0
 	static void OnClearMap();
 	// BW1W120 0052b7a0 BW1M119 0107fcb0

@@ -53,7 +53,7 @@ public:
 	// BW1W120 0052c5c0 BW1M119 010e25a0
 	virtual ~FishFarm();
 	// BW1W120 0052c690 BW1M119 010e2530
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0052c850 BW1M119 010e1670
 	virtual GPlayer* GetPlayer();
 	// BW1W120 0052c450 BW1M119 010df950
@@ -158,6 +158,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0052c6b0 BW1M119 010e1980
+	void DeleteDependancys();
 	// BW1W120 0052d290 BW1M119 010a19c0
 	void RemoveFisherman(Villager* villager);
 	// BW1W120 0052d2f0 BW1M119 010e0270
@@ -172,6 +174,8 @@ public:
 
 	// BW1W120 0052c7b0 BW1M119 010e1820
 	static FishFarm* Create(const MapCoords& coords, const GFishFarmInfo* info, Town* town);
+	// BW1W120 0052c940 BW1M119 01007120
+	bool32_t GetNextPos(MapCoords& pos, uint32_t& index);
 };
 
 #endif /* BW1_DECOMP_FISH_FARM_INCLUDED_H */

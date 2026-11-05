@@ -106,6 +106,7 @@ class Town;
 class LHVideoPlayer;
 class LHMail;
 class FallingSpell;
+class LHPlayer;
 
 enum GAME_FLAGS
 {
@@ -556,6 +557,8 @@ public:
 
 	// BW1W120 00552ff0 BW1M119 010d4eb0
 	Town* FindClosestTown(const MapCoords& coords);
+	// BW1W120 00555a10 BW1M119 01505ae0
+	LHPlayer* GetMyLHPlayer();
 };
 
 template <typename T> inline void GTPointer<T>::SetGameTurnValidated()

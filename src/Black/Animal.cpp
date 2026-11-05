@@ -108,9 +108,9 @@ bool32_t Animal::IsOkToBeShepherd()
 	return false;
 }
 
-uint32_t Animal::IAmABird()
+bool32_t Animal::IAmABird()
 {
-	return 0;
+	return false;
 }
 
 uint32_t Animal::GetCreatureBeliefType()
@@ -128,9 +128,26 @@ uint32_t Animal::GetTastiness()
 	return OBJECT_TASTINESS_LIVING;
 }
 
+void Animal::ToBeDeleted(bool32_t delete_now)
+{
+	DeleteDependancys();
+	Living::ToBeDeleted(delete_now);
+}
+
+Animal::~Animal()
+{
+	DeleteDependancys();
+}
+
 bool32_t Animal::MoveToPosAndLookAround()
 {
 	return true;
+}
+
+ANIM_LIST Animal::GetAnimId()
+{
+	uint32_t (Animal::*animation)() = StateTable[action.states[LIVING_ACTION_INDEX_TOP]].Animation;
+	return (ANIM_LIST)(this->*animation)();
 }
 
 uint32_t Animal::ProcessFadeOut()

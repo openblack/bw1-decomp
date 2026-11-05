@@ -112,7 +112,7 @@ public:
 	// BW1W120 00531300 BW1M119 012bc180
 	virtual bool32_t CanBeHiddenIn();
 	// BW1W120 00531360 BW1M119 012c0c20
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00532220 BW1M119 012bf2b0
 	virtual float GetVillagerActivityDesire(Villager* param_1);
 	// BW1W120 00532190 BW1M119 012bf3e0

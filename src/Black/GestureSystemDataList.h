@@ -25,7 +25,11 @@ public:
 	// Constructors
 
 	// BW1W120 0054baa0 BW1M119 inlined
-	GestureSystemDataList();
+	GestureSystemDataList()
+	{
+		Data = NULL;
+		Count = 0;
+	}
 
 	// Non-virtual methods
 
