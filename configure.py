@@ -725,6 +725,12 @@ PCH_PENDING = False
 # the unit was built without it (and the /vmg units, docs/msvc6_pch.md §4),
 # PCH_EXCEPT_NO_STRING or PCHExceptNoStringIn where the <string> in ours keeps a
 # unit off it, PCH_PENDING as above.
+# The report diffs a unit's combined data sections byte by byte, which takes minutes
+# for a unit whose .rdata is far larger on one side than the other. Scores for these
+# units are unaffected, apart from a few bytes of total_data.
+slow_report_options = {"combineDataSections": False}
+
+
 def GameCodeObject(completed, name, pch=True, **options):
     return Object(completed, name, cflags=cflags_gamecode, pch=gamecode_pch if pch else None, **options)
 
@@ -1010,7 +1016,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/GameArea.cpp"),
             GameCodeObject(NonMatching, "Black/GameInfo.cpp"),
             GameCodeObject(NonMatching, "Black/GameOptionsRoom.cpp", pch=PCHExceptNoStringIn("BW1W130")),
-            GameCodeObject(NonMatching, "Black/GameOSFile.cpp"),
+            GameCodeObject(NonMatching, "Black/GameOSFile.cpp", objdiff_options=slow_report_options),
             GameCodeObject(NonMatching, "Black/GameStats.cpp"),
             GameCodeObject(NonMatching, "Black/GameStatsFrontEnd.cpp"),
             GameCodeObject(NonMatching, "Black/GameStatsList.cpp"),
@@ -1052,7 +1058,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/HandStateNormal.cpp"),
             GameCodeObject(NonMatching, "Black/HandStatePlayAnim.cpp"),
             GameCodeObject(NonMatching, "Black/HandStateTotem.cpp"),
-            GameCodeObject(NonMatching, "Black/HandStateTug.cpp"),
+            GameCodeObject(NonMatching, "Black/HandStateTug.cpp", objdiff_options=slow_report_options),
             GameCodeObject(NonMatching, "Black/HanoiBlock.cpp"),
             GameCodeObject(NonMatching, "Black/helpdude.cpp"),
             GameCodeObject(NonMatching, "Black/HelpDudeControl.cpp", pch=PCH_EXCEPT_NO_STRING),
@@ -1357,7 +1363,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/SLLTemplate.cpp"),
             GameCodeObject(NonMatching, "Black/SLobbyBox.cpp"),
             GameCodeObject(NonMatching, "Black/SoundConfirmation.cpp"),
-            GameCodeObject(NonMatching, "Black/SoundGuidance.cpp"),
+            GameCodeObject(NonMatching, "Black/SoundGuidance.cpp", objdiff_options=slow_report_options),
             GameCodeObject(NonMatching, "Black/SoundInfo.cpp"),
             GameCodeObject(NonMatching, "Black/SoundMap.cpp"),
             GameCodeObject(NonMatching, "Black/SoundTag.cpp"),

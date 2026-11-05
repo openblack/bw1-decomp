@@ -69,6 +69,8 @@ class Object:
             "lib_member": None,
             "compiler_version": None,
             "env": None,
+            # Per-unit objdiff diff options, written to the unit in objdiff.json.
+            "objdiff_options": None,
             # Executable to invoke, relative to the compiler directory. Defaults
             # to cl.exe; hand-supplied compilers may keep their own name/layout.
             "compiler_exe": None,
@@ -2402,6 +2404,8 @@ def generate_objdiff_config(
             progress_categories.extend(category_opt)
         elif category_opt is not None:
             progress_categories.append(category_opt)
+        if obj.options["objdiff_options"]:
+            unit_config["options"] = obj.options["objdiff_options"]
         unit_config["metadata"].update(
             {
                 "complete": (
