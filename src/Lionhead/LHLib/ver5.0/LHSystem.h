@@ -39,8 +39,6 @@ struct LHSystem
 #include "LHScript.h"  /* For class LHScriptX, struct LHScriptResource */
 #include "LHText.h"    /* For struct LHText */
 
-typedef LHScriptX<char>    LHScriptX_c_;
-typedef LHScriptX<wchar_t> LHScriptX_w_;
 struct LHKeyEvent
 {
 	int     Key;
@@ -198,14 +196,14 @@ struct LHSys
 #ifndef VERSION_BW1W100
 	LHJoypads joypads; /* 0x5a8 */
 #endif
-	LHDraw           draw;                 /* 0x82c */
-	LHConvert        convert;              /* 0x834 */
-	LHScriptX_c_     script;               /* 0x8c4 */
-	LHScriptX_w_     wscript;              /* 0x8f4 */
-	LHScriptResource ScriptResources[100]; /* 0x924 the front-end script resource bank */
-	LHText           text;                 /* 0x7044 */
-	unsigned int     LastCommand;          /* 0x706c most recent WM_* the app was told about */
-	unsigned int     LastCommandParam;     /* 0x7070 */
+	LHDraw             draw;                 /* 0x82c */
+	LHConvert          convert;              /* 0x834 */
+	LHScriptX<char>    script;               /* 0x8c4 */
+	LHScriptX<wchar_t> wscript;              /* 0x8f4 */
+	LHScriptResource   ScriptResources[100]; /* 0x924 the front-end script resource bank */
+	LHText             text;                 /* 0x7044 */
+	unsigned int       LastCommand;          /* 0x706c most recent WM_* the app was told about */
+	unsigned int       LastCommandParam;     /* 0x7070 */
 #ifdef VERSION_BW1W100
 	uint8_t field_0x6df0[0x10];
 #else
