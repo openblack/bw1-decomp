@@ -93,8 +93,7 @@ struct ByteCount
 typedef std::map<void*, unsigned int>                                   AllocationSizeMap;
 typedef std::map<const type_info*, int, LessTypeInfo<const type_info> > ClassSizeMap;
 typedef std::map<type_info*, ByteCount, LessTypeInfo<type_info> >       ClassUsageMap;
-typedef std::pair<Base*, int>                                           AllocationEntry;
-typedef std::list<AllocationEntry>                                      AllocationList;
+typedef std::list<std::pair<Base*, int> >                               AllocationList;
 
 class MemoryDiagnostic
 {

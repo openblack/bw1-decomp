@@ -1,8 +1,15 @@
 #include "WhiteColour.h"
 #include "CreatureAttitudeConstants.h"
 #include "InfoArrays.h"
-#include "GameTimeConstants.h"
 #include "Script.h"
+
+inline GBaseInfo* GScriptOpposingCreature::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = CREATURE_TYPE_LAST;
+	return GInfoArrays::ScriptOpposingCreatures;
+}
+
+#include "GameTimeConstants.h"
 
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>         /* For LHSPrintf */
 #include <Lionhead/LHMultiplayer/ver4.0/LHSession.h> /* For LHSession */
@@ -16,6 +23,9 @@
 #include "CreatureActionsKnownAbout.h"
 #include "CreatureAgenda.h"
 #include "CreatureAttitudeToPlayer.h"
+#ifdef VERSION_BW1W100
+#include "CreatureDevelopment.h"
+#endif
 #include "CreatureInfo.h"
 #include "CreatureLearning.h"
 #include "CreatureMentalBelief.h"
@@ -36,19 +46,31 @@
 #include "ScriptDLL.h"
 
 #include <chlasm/HitRegions.h>
+#ifdef VERSION_BW1WCI
+#include <chlasm/ScriptEnumstwo.h>
+#include "CreatureForcedAction.h"
+#include "CreatureInitialDesireInfo.h"
+#include "Serialise.h"
+#endif
+
+#ifdef VERSION_BW1WCI
+#define SCRIPT_MASTER_SUPPRESS_SECONDS  600.0f
+#define SCRIPT_YOUNG_CREATURE_MIND_FILE "temp1"
+#endif
 
 static uint32_t UnusedStatic = 0;
 
-GScriptOpposingCreature GInfoArrays::ScriptOpposingCreatures[CREATURE_TYPE_LAST];
+#ifdef VERSION_BW1WCI
+const float FightEventTicksPerSecond = 1200.0f;
+#endif
 
-GBaseInfo* GScriptOpposingCreature::GetBaseInfo(uint32_t& info_count)
-{
-	info_count = CREATURE_TYPE_LAST;
-	return GInfoArrays::ScriptOpposingCreatures;
-}
+GScriptOpposingCreature GInfoArrays::ScriptOpposingCreatures[CREATURE_TYPE_LAST];
 
 void GScript::CreateCreatureFromCreature()
 {
+#ifdef VERSION_BW1WCI
+	int dumb = g_scriptDLL->ULONG_POP();
+#endif
 	MapCoords     coords;
 	CREATURE_TYPE type = (CREATURE_TYPE)g_scriptDLL->ULONG_POP();
 	SCRIPT_ASSERT(type < CREATURE_TYPE_LAST, "Invalid creature type");
@@ -56,7 +78,8 @@ void GScript::CreateCreatureFromCreature()
 	g_scriptDLL->POINT_POP(pos);
 	GLandscape::ConvertLandscapePointToMapCoord(pos, coords);
 	float             scale = g_scriptDLL->FLOAT_POP();
-	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	uint32_t          id = g_scriptDLL->THING_OR_NULL_POP();
+	GameThingWithPos* thing = GetScriptGameThing(id);
 	if (thing == NULL)
 	{
 		ScriptErrorMessage("No creature for script");
@@ -64,8 +87,15 @@ void GScript::CreateCreatureFromCreature()
 	else
 	{
 		Creature* creature = dynamic_cast<Creature*>(thing);
-		SCRIPT_ASSERT(creature != NULL, "No creature for script");
+		if (creature == NULL)
+		{
+			ScriptErrorMessage("No creature for script");
+		}
+#ifdef VERSION_BW1WCI
+		Creature* newCreature = Creature::ScriptCreateCreatureRelativeToCreature(creature, scale, coords, type, dumb);
+#else
 		Creature* newCreature = Creature::ScriptCreateCreatureRelativeToCreature(creature, scale, coords, type);
+#endif
 		if (newCreature != NULL)
 		{
 			uint32_t id = AddScriptGameThing(newCreature, true);
@@ -76,6 +106,57 @@ void GScript::CreateCreatureFromCreature()
 	}
 	g_scriptDLL->PUSH(NULL, VMType_OBJECT);
 }
+
+#ifdef VERSION_BW1WCI
+void GScript::CreateYoungCreatureWithKnowledge()
+{
+	LHPoint pos;
+	g_scriptDLL->POINT_POP(pos);
+	GameThingWithPos* second = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	GameThingWithPos* first = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (first != NULL && second != NULL)
+	{
+		Creature* master = dynamic_cast<Creature*>(first);
+		Creature* tyke = dynamic_cast<Creature*>(second);
+		if (master != NULL && tyke != NULL)
+		{
+			MapCoords coords;
+			GLandscape::ConvertLandscapePointToMapCoord(pos, coords);
+			Creature::ReleaseTykeFromMaster(tyke, master);
+			Creature* young = Creature::Create(
+				coords, &CreatureInfo::Infos[((CreatureInfo*)master->info)->CreatureType], NULL, false);
+			if (young != NULL)
+			{
+				tyke->mind->SaveMind(SCRIPT_YOUNG_CREATURE_MIND_FILE, 0);
+				Archive archive(SCRIPT_YOUNG_CREATURE_MIND_FILE, LH_FILE_MODE_READ_ONLY);
+				if (archive.IsOpen)
+				{
+					young->mind->LoadMindIntoPreexistingCreature(archive);
+					young->SetTyke(master);
+				}
+				uint32_t id = AddScriptGameThing(young, true);
+				g_scriptDLL->PUSH((void*)id, VMType_OBJECT);
+				wcscpy(tyke->name, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_CHIMP_NAME_01));
+				tyke->HasYoung = true;
+				return;
+			}
+		}
+	}
+	ScriptErrorMessage("Creature not created!");
+	g_scriptDLL->PUSH(NULL, VMType_OBJECT);
+}
+
+void Creature::ReleaseTykeFromMaster(Creature* tyke, Creature* master)
+{
+	if (tyke->ConfinedToObject)
+	{
+		tyke->ConfinedToObject = false;
+		tyke->ConfinementObject = NULL;
+		tyke->ConfinementPlayerNumber = 0;
+		master->ConfinedCreatures.Remove(tyke);
+	}
+}
+#endif
 
 void GScript::CreatureLearnEverything()
 {
@@ -92,6 +173,9 @@ void GScript::CreatureLearnEverything()
 
 void GScript::CreatureSetKnowsAction()
 {
+#ifdef VERSION_BW1WCI
+	float progress = g_scriptDLL->FLOAT_POP();
+#endif
 	bool32_t                      knows = g_scriptDLL->ULONG_POP();
 	uint32_t                      action = g_scriptDLL->ULONG_POP();
 	CREATURE_ACTION_LEARNING_TYPE type = (CREATURE_ACTION_LEARNING_TYPE)g_scriptDLL->ULONG_POP();
@@ -102,10 +186,18 @@ void GScript::CreatureSetKnowsAction()
 		return;
 	}
 	Creature* creature = dynamic_cast<Creature*>(thing);
-	SCRIPT_ASSERT(creature != NULL, "No script for creature");
+	if (creature == NULL)
+	{
+		ScriptErrorMessage("No script for creature");
+	}
+#ifdef VERSION_BW1WCI
+	creature->ScriptSetKnowsAction(type, action, knows, progress);
+#else
 	creature->ScriptSetKnowsAction(type, action, knows);
+#endif
 }
 
+#ifndef VERSION_BW1W100
 void GScript::CreatureSetAgendaPriority()
 {
 	float             priority = g_scriptDLL->FLOAT_POP();
@@ -132,6 +224,7 @@ void GScript::CreatureTurnOffAllDesires()
 	SCRIPT_ASSERT(creature != NULL, "No script for creature");
 	creature->ScriptTurnOffAllDesires();
 }
+#endif
 
 void GScript::CreatureTurnOnDesireAndMakeItMaximum()
 {
@@ -146,6 +239,21 @@ void GScript::CreatureTurnOnDesireAndMakeItMaximum()
 	SCRIPT_ASSERT(creature != NULL, "No script for creature");
 	creature->ScriptTurnOnDesireAndMakeItMaximum(desire);
 }
+
+#ifdef VERSION_BW1W100
+void GScript::CreatureTurnOffAllDesires()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing == NULL)
+	{
+		ScriptErrorMessage("No creature for script");
+		return;
+	}
+	Creature* creature = dynamic_cast<Creature*>(thing);
+	SCRIPT_ASSERT(creature != NULL, "No script for creature");
+	creature->ScriptTurnOffAllDesires();
+}
+#endif
 
 void GScript::CreatureLearnDistinction()
 {
@@ -188,6 +296,32 @@ void GScript::CreatureDoAction()
 	creature->ScriptDoAction(action, object, secondObject);
 }
 
+#ifdef VERSION_BW1WCI
+void GScript::CreatureDoActionAtPos()
+{
+	LHPoint pos;
+	g_scriptDLL->POINT_POP(pos);
+	GameThingWithPos* object = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	CREATURE_ACTION   action = (CREATURE_ACTION)g_scriptDLL->ULONG_POP();
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing == NULL)
+	{
+		ScriptErrorMessage("No creature for script");
+		return;
+	}
+	if (thing->IsCreature())
+	{
+		Creature* creature = (Creature*)thing;
+		creature->SetControlledByScript(true);
+		CreatureForcedAction::InProgress = true;
+		creature->PrepareCreatureForScriptedAction(true);
+		CreatureBelief* belief = creature->mind->AddBeliefAboutObject(creature, object);
+		creature->ForceActivityAndForceAction(CREATURE_DESIRE_TO_OBEY_PLAYER, NULL, action, belief, NULL, true, true);
+		GLandscape::ConvertLandscapePointToMapCoord(pos, creature->mind->agenda.PosToRunAwayFrom);
+	}
+}
+#endif
+
 void GScript::CallPlayerCreature()
 {
 	uint32_t playerIndex = ConvertScriptPlayerToGamePlayer((uint32_t)g_scriptDLL->FLOAT_POP());
@@ -212,10 +346,10 @@ void GScript::InCreatureHand()
 	if (creatureThing != NULL && object != NULL)
 	{
 		Creature* creature = dynamic_cast<Creature*>(creatureThing);
+		SCRIPT_ASSERT(creature != NULL, "Not a creature");
 		if (creature == NULL)
 		{
-			ScriptErrorMessage("Not a creature");
-			g_scriptDLL->PUSH(creature, VMType_BOOLEAN);
+			g_scriptDLL->PUSH((void*)false, VMType_BOOLEAN);
 		}
 		if (creature->physical->ObjectCarried == object)
 		{
@@ -223,9 +357,8 @@ void GScript::InCreatureHand()
 			return;
 		}
 		CreatureMental* mind = creature->mind;
-		CreatureBelief* belief =
-			mind->agenda.SubActionAgenda.SubActions[mind->agenda.SubActionAgenda.CurrentSubAction].Belief;
-		if (mind->agenda.SubActionAgenda.SubActions[mind->agenda.SubActionAgenda.CurrentSubAction].Action ==
+		CreatureBelief* belief = mind->agenda.SubActionAgenda.GetObjectArgument();
+		if (mind->agenda.SubActionAgenda.SubActions[mind->agenda.SubActionAgenda.GetSubActionIndex()].Action ==
 		        CREATURE_SUB_STATE_ACTIONS_EAT &&
 		    belief != NULL && belief->GetPointer() == object)
 		{
@@ -263,15 +396,15 @@ void GScript::CreatureSetDesireActivated()
 {
 	bool32_t          activated = g_scriptDLL->ULONG_POP();
 	CREATURE_DESIRES  desire = (CREATURE_DESIRES)g_scriptDLL->ULONG_POP();
-	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
+	uint32_t          id = g_scriptDLL->THING_OR_NULL_POP();
+	GameThingWithPos* thing = GetScriptGameThing(id);
+	SCRIPT_ASSERT(thing != NULL, "no creature");
+	if (thing != NULL)
 	{
-		ScriptErrorMessage("no creature");
-		return;
+		Creature* creature = dynamic_cast<Creature*>(thing);
+		SCRIPT_ASSERT(creature != NULL, "not a creature");
+		creature->mind->desires.SetActivated(desire, activated);
 	}
-	Creature* creature = dynamic_cast<Creature*>(thing);
-	SCRIPT_ASSERT(creature != NULL, "not a creature");
-	creature->mind->desires.SetActivated(desire, activated);
 }
 
 void GScript::CreatureSetAllDesireActivated()
@@ -309,28 +442,35 @@ void GScript::CreatureSetDesireMaximum()
 void GScript::CreatureSetPlayer()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
+#ifdef VERSION_BW1WCI
+	GPlayer* player = GGame::g_game->GetPlayer(ConvertScriptPlayerToGamePlayer((uint32_t)g_scriptDLL->FLOAT_POP()));
+#endif
+	SCRIPT_ASSERT(thing != NULL, "no creature");
+	if (thing != NULL)
 	{
-		ScriptErrorMessage("no creature");
-		return;
-	}
-	Creature* creature = dynamic_cast<Creature*>(thing);
-	SCRIPT_ASSERT(creature != NULL, "not a creature");
-	GPlayer* player = GGame::g_game->MyPlayer();
-	player->creature = creature;
-	creature->owner = player;
-	Reaction* reaction = Reaction::GetReactionInitiatedByObject(creature);
-	if (reaction != NULL)
-	{
-		reaction->SetPlayer(creature->GetPlayer());
-	}
-	if (player->GetLeaderInterfaceStatus() != NULL)
-	{
-		const wchar_t* name = (const wchar_t*)GGame::g_game->network.session->GetUserData(
-			player->GetLeaderInterfaceStatus()->GetInterface()->player);
-		if (name != NULL)
+		Creature* creature = dynamic_cast<Creature*>(thing);
+		if (creature == NULL)
 		{
-			wcscpy(creature->name, name);
+			ScriptErrorMessage("not a creature");
+		}
+#ifndef VERSION_BW1WCI
+		GPlayer* player = GGame::g_game->MyPlayer();
+#endif
+		player->creature = creature;
+		creature->owner = player;
+		Reaction* reaction = Reaction::GetReactionInitiatedByObject(creature);
+		if (reaction != NULL)
+		{
+			reaction->SetPlayer(creature->GetPlayer());
+		}
+		if (player->GetLeaderInterfaceStatus() != NULL)
+		{
+			LHPlayer*      lhPlayer = player->GetLeaderInterfaceStatus()->GetInterface()->player;
+			const wchar_t* name = (const wchar_t*)GGame::g_game->network.session->GetUserData(lhPlayer);
+			if (name != NULL)
+			{
+				wcscpy(creature->name, name);
+			}
 		}
 	}
 }
@@ -338,33 +478,35 @@ void GScript::CreatureSetPlayer()
 void GScript::CreatureInitialiseNumTimesPerformedAction()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("no creature");
-		g_scriptDLL->ULONG_POP();
-	}
-	else
+	SCRIPT_ASSERT(thing != NULL, "no creature");
+	if (thing != NULL)
 	{
 		Creature* creature = dynamic_cast<Creature*>(thing);
 		SCRIPT_ASSERT(creature != NULL, "not a creature");
 		creature->NumTimesPerformedAction[g_scriptDLL->ULONG_POP()] = 0.0f;
+	}
+	else
+	{
+		g_scriptDLL->ULONG_POP();
 	}
 }
 
 void GScript::CreatureGetNumTimesPerformedAction()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
+	SCRIPT_ASSERT(thing != NULL, "no creature");
+	if (thing != NULL)
 	{
-		ScriptErrorMessage("no creature");
+		Creature* creature = dynamic_cast<Creature*>(thing);
+		SCRIPT_ASSERT(creature != NULL, "not a creature");
+		SCRIPT_PERFORMED_ACTION action = (SCRIPT_PERFORMED_ACTION)g_scriptDLL->ULONG_POP();
+		g_scriptDLL->FLOAT_PUSH(creature->NumTimesPerformedAction[action]);
+	}
+	else
+	{
 		g_scriptDLL->ULONG_POP();
 		g_scriptDLL->FLOAT_PUSH(0.0f);
-		return;
 	}
-	Creature* creature = dynamic_cast<Creature*>(thing);
-	SCRIPT_ASSERT(creature != NULL, "not a creature");
-	SCRIPT_PERFORMED_ACTION action = (SCRIPT_PERFORMED_ACTION)g_scriptDLL->ULONG_POP();
-	g_scriptDLL->FLOAT_PUSH(creature->NumTimesPerformedAction[action]);
 }
 
 void GScript::SetCreatureHelp()
@@ -497,7 +639,8 @@ void GScript::SetCreatureOnlyDesireOff()
 void GScript::SetCreatureDevelopmentPhase()
 {
 	DEVELOPMENT_PHASE phase = (DEVELOPMENT_PHASE)g_scriptDLL->ULONG_POP();
-	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	uint32_t          id = g_scriptDLL->THING_OR_NULL_POP();
+	GameThingWithPos* thing = GetScriptGameThing(id);
 	if (thing == NULL)
 	{
 		ScriptErrorMessage("Thing not found!");
@@ -506,14 +649,38 @@ void GScript::SetCreatureDevelopmentPhase()
 	SCRIPT_ASSERT(thing->IsCreature(), "Thing not creature!");
 	if (thing->IsCreature())
 	{
+#ifdef VERSION_BW1W100
+		Creature* creature = (Creature*)thing;
+		creature->DevelopmentPhase = phase;
+		creature->mind->desires.UnsuppressAllDesires();
+		uint32_t i;
+		for (i = 0; i < NUM_DEVELOPMENT_PHASE_ACTIVATED_DESIRES; i++)
+		{
+			CREATURE_DESIRES desire = CreatureDevelopmentPhaseEntry::Infos[phase].ActivatedDesires[i];
+			if (desire != NO_CREATURE_DESIRE)
+			{
+				creature->mind->desires.SetActivated(desire, true);
+			}
+		}
+		for (i = 0; i < NUM_DEVELOPMENT_PHASE_DEACTIVATED_DESIRES; i++)
+		{
+			CREATURE_DESIRES desire = CreatureDevelopmentPhaseEntry::Infos[phase].DeactivatedDesires[i];
+			if (desire != NO_CREATURE_DESIRE)
+			{
+				creature->mind->desires.SetActivated(desire, false);
+			}
+		}
+#else
 		((Creature*)thing)->MoveToDevelopmentPhase(phase, 0);
+#endif
 	}
 }
 
 void GScript::SwapCreature()
 {
 	GameThingWithPos* myCreature = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	GameThingWithPos* newCreature = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	uint32_t          newId = g_scriptDLL->THING_OR_NULL_POP();
+	GameThingWithPos* newCreature = GetScriptGameThing(newId);
 	SCRIPT_ASSERT(myCreature != NULL && newCreature != NULL, "creature for swap not found!");
 	if (myCreature != NULL && newCreature != NULL)
 	{
@@ -1001,20 +1168,17 @@ void GScript::ObjectInteractingWithObject()
 	GameThingWithPos* first = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	GameThingWithPos* second = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	SCRIPT_ASSERT(first != NULL && second != NULL, "Thing not found!");
-	if (first == NULL || second == NULL)
+	if (first != NULL && second != NULL)
 	{
-		g_scriptDLL->PUSH((void*)false, VMType_BOOLEAN);
-		return;
+		SCRIPT_ASSERT(first->IsCreature(), "Thing not creature!");
+		if (first->IsCreature())
+		{
+			bool32_t interacting = second == ((Creature*)first)->InteractingObject;
+			g_scriptDLL->PUSH((void*)interacting, VMType_BOOLEAN);
+			return;
+		}
 	}
-	SCRIPT_ASSERT(first->IsCreature(), "Thing not creature!");
-	if (first->IsCreature())
-	{
-		g_scriptDLL->PUSH((void*)(second == ((Creature*)first)->InteractingObject), VMType_BOOLEAN);
-	}
-	else
-	{
-		g_scriptDLL->PUSH((void*)false, VMType_BOOLEAN);
-	}
+	g_scriptDLL->PUSH((void*)false, VMType_BOOLEAN);
 }
 
 void GScript::ConfineObject()
@@ -1132,6 +1296,9 @@ void GScript::IsCreatureAutoFighting()
 
 void GScript::QueueCreatureFightMove()
 {
+#ifdef VERSION_BW1WCI
+	float time = g_scriptDLL->FLOAT_POP();
+#endif
 	FIGHT_MOVE        move = (FIGHT_MOVE)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	if (thing != NULL)
@@ -1139,7 +1306,14 @@ void GScript::QueueCreatureFightMove()
 		SCRIPT_ASSERT(thing->IsCreature(), "Thing not creature!");
 		if (thing->IsCreature())
 		{
+#ifdef VERSION_BW1WCI
+			LH3DCreature* creature3d = ((Creature*)thing)->physical->Creature3d;
+			((Creature*)thing)->ClearFightQueue();
 			((Creature*)thing)->QueueAttackOrBlock(move);
+			creature3d->ValidateFightEvent((unsigned long)(FightEventTicksPerSecond * time));
+#else
+			((Creature*)thing)->QueueAttackOrBlock(move);
+#endif
 		}
 	}
 }
@@ -1153,6 +1327,9 @@ void GScript::QueueCreatureFightSpell()
 		SCRIPT_ASSERT(thing->IsCreature(), "Thing not creature!");
 		if (thing->IsCreature())
 		{
+#ifdef VERSION_BW1WCI
+			((Creature*)thing)->ClearFightQueue();
+#endif
 			((Creature*)thing)->QueueSpell(spell);
 		}
 	}
@@ -1167,6 +1344,9 @@ void GScript::QueueCreatureFightStep()
 		SCRIPT_ASSERT(thing->IsCreature(), "Thing not creature!");
 		if (thing->IsCreature())
 		{
+#ifdef VERSION_BW1WCI
+			((Creature*)thing)->ClearFightQueue();
+#endif
 			((Creature*)thing)->QueueSideStep(step);
 		}
 	}
@@ -1207,20 +1387,357 @@ void GScript::GetCreatureFightQueuedHits()
 	g_scriptDLL->FLOAT_PUSH(0.0f);
 }
 
+#ifdef VERSION_BW1WCI
+void GScript::SetFightCameraExit()
+{
+	bool32_t exitCamera = g_scriptDLL->ULONG_POP();
+	GGame::g_game->script->StayInFightCamera = exitCamera == false;
+}
+#else
 void GScript::SetFightExit()
 {
 	CameraModeNew3::AutoEndFight = g_scriptDLL->ULONG_POP();
 }
+#endif
 
 void GScript::SetCreatureAutoScale()
 {
 	float             scale = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	bool32_t          autoScale = g_scriptDLL->ULONG_POP();
-	SCRIPT_ASSERT(thing != NULL && thing->IsCreature(), "Thing should be valid!");
-	if (thing != NULL)
+	if (thing == NULL || !thing->IsCreature())
 	{
+		ScriptErrorMessage("Thing should be valid!");
+	}
+#ifdef VERSION_BW1WCI
+	if (thing != NULL && thing->IsCreature())
+#else
+	if (thing != NULL)
+#endif
+	{
+#ifndef VERSION_BW1WCI
+		thing->IsCreature();
+#endif
 		((Creature*)thing)->AutoScale = autoScale;
 		((Creature*)thing)->AutoScaleValue = scale;
 	}
 }
+
+#ifdef VERSION_BW1WCI
+void GScript::SetObjectFollowMaster()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	bool32_t          follow = g_scriptDLL->ULONG_POP();
+	if (thing == NULL || !thing->IsCreature())
+	{
+		ScriptErrorMessage("Thing should be valid!");
+	}
+	if (thing != NULL && thing->IsCreature())
+	{
+		Creature* creature = (Creature*)thing;
+		creature->FollowMaster = follow;
+		if (!follow && creature->ConfinedToObject)
+		{
+			Creature* master = (Creature*)creature->ConfinementObject;
+			if (master != NULL)
+			{
+				master->ConfinedCreatures.Remove(creature);
+				creature->Friends.Remove((Creature*)creature->ConfinementObject);
+				((Creature*)creature->ConfinementObject)->Friends.Remove(creature);
+				((Creature*)creature->ConfinementObject)
+					->mind->desires.SuppressDesire(CREATURE_DESIRE_TO_BE_FRIENDS, SCRIPT_MASTER_SUPPRESS_SECONDS);
+			}
+			creature->ConfinedToObject = false;
+			creature->ConfinementObject = NULL;
+			creature->ConfinementPlayerNumber = -1;
+			creature->mind->desires.SuppressDesire(CREATURE_DESIRE_TO_BE_FRIENDS, SCRIPT_MASTER_SUPPRESS_SECONDS);
+			creature->mind->desires.SetActivated(CREATURE_DESIRE_TO_BE_FRIENDS, false);
+			creature->ConfinementRadius = 0.0f;
+		}
+	}
+}
+
+void GScript::SetObjectDistanceFromHome()
+{
+	int               distance = (int)g_scriptDLL->FLOAT_POP();
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing == NULL || !thing->IsCreature())
+	{
+		ScriptErrorMessage("Thing should be valid!");
+	}
+	if (thing != NULL && thing->IsCreature())
+	{
+		((Creature*)thing)->DistanceFromHome = (float)distance;
+	}
+}
+
+void GScript::SetCreatureMaster()
+{
+	GameThingWithPos* master = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing == NULL || !thing->IsCreature())
+	{
+		ScriptErrorMessage("Creature Thing should be valid!");
+	}
+	if (thing != NULL && thing->IsCreature())
+	{
+		if (master == NULL || !master->IsCreature())
+		{
+			ScriptErrorMessage("Master Thing should be valid!");
+		}
+		if (master != NULL && master->IsCreature())
+		{
+			((Creature*)thing)->SetTyke((Creature*)master);
+		}
+	}
+}
+
+void GScript::SetObjectNavigation()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	bool32_t          navigation = g_scriptDLL->ULONG_POP();
+	if (thing == NULL || !thing->IsCreature())
+	{
+		ScriptErrorMessage("Creature Thing should be valid!");
+	}
+	if (thing != NULL && thing->IsCreature())
+	{
+		if (thing->IsCreature())
+		{
+			((Creature*)thing)->Navigation = navigation;
+		}
+	}
+}
+
+void GScript::GetCreatureDesire()
+{
+	GameThingWithPos* object = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	uint32_t          desire = g_scriptDLL->ULONG_POP();
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	float             usefulness = 0.0f;
+	if (object != NULL && thing != NULL && thing->IsCreature() && desire < NUM_CREATURE_DESIRES)
+	{
+		Creature*       creature = (Creature*)thing;
+		CreatureBelief* belief = creature->mind->AddBeliefAboutObject(creature, object);
+		if (belief != NULL)
+		{
+			if (CreatureInitialDesireInfo::GetInfo()[desire].Social)
+			{
+				CreatureBelief* associated = creature->AddBeliefAboutAssociatedObject(belief);
+				usefulness = creature->mind->GetActivityObjectUsefulness(associated, (CREATURE_DESIRES)desire);
+			}
+			else
+			{
+				usefulness = creature->mind->GetObjectToActOnUsefulness(belief, (CREATURE_DESIRES)desire);
+			}
+		}
+	}
+	g_scriptDLL->FLOAT_PUSH(usefulness);
+}
+
+void GScript::GetCreatureCurrentAction()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing != NULL && thing->IsCreature())
+	{
+		g_scriptDLL->PUSH((void*)((Creature*)thing)->mind->agenda.CurrentPlan.creature_action, VMType_INT);
+		return;
+	}
+	g_scriptDLL->PUSH(NULL, VMType_INT);
+}
+
+void GScript::GetCreatureSpellSkill()
+{
+	float             skill;
+	uint32_t          spell = g_scriptDLL->ULONG_POP();
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing != NULL && thing->IsCreature())
+	{
+		Creature* creature = (Creature*)thing;
+		float     seen = (float)creature->mind->learning.NumTimesMagicActionSeen[spell];
+		skill = seen / creature->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(spell);
+		if (skill > 1.0f)
+		{
+			skill = 1.0f;
+		}
+	}
+	g_scriptDLL->FLOAT_PUSH(skill);
+}
+
+void GScript::CreatureKnowsAction()
+{
+	uint32_t          action = g_scriptDLL->ULONG_POP();
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing != NULL && thing->IsCreature())
+	{
+		bool32_t knows =
+			((Creature*)thing)->mind->ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_NORMAL, action);
+		g_scriptDLL->PUSH((void*)knows, VMType_BOOLEAN);
+		return;
+	}
+	g_scriptDLL->PUSH((void*)false, VMType_BOOLEAN);
+}
+
+void GScript::SetObjectTattoo()
+{
+	uint32_t          tattoo = g_scriptDLL->ULONG_POP();
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	bool32_t          enabled = g_scriptDLL->ULONG_POP();
+	if (thing != NULL && thing->IsCreature())
+	{
+		Creature* creature = (Creature*)thing;
+		switch (tattoo)
+		{
+		case CREATURE_TATTOO_TYPE_THE_BROTHERHOOD:
+		case CREATURE_TATTOO_TYPE_SUPER_GODS:
+			if (enabled)
+			{
+				creature->Tattoos |= CREATURE_TATTOO_FLAG_GODS;
+			}
+			else
+			{
+				creature->Tattoos &= ~CREATURE_TATTOO_FLAG_GODS;
+			}
+			break;
+		case CREATURE_TATTOO_TYPE_FIGHTER:
+			if (enabled)
+			{
+				creature->Tattoos |= CREATURE_TATTOO_FLAG_FIGHTER;
+			}
+			else
+			{
+				creature->Tattoos &= ~CREATURE_TATTOO_FLAG_FIGHTER;
+			}
+			break;
+		case CREATURE_TATTOO_TYPE_FIGHTER_ALWAYS:
+			if (enabled)
+			{
+				creature->Tattoos |= CREATURE_TATTOO_FLAG_FIGHTER_ALWAYS;
+			}
+			else
+			{
+				creature->Tattoos &= ~CREATURE_TATTOO_FLAG_FIGHTER_ALWAYS;
+			}
+			break;
+		}
+	}
+}
+
+void GScript::ClearFightQueue()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing != NULL && thing->IsCreature())
+	{
+		((Creature*)thing)->ClearFightQueue();
+	}
+}
+
+void GScript::SetCreatureLightbulb()
+{
+	float             progress = g_scriptDLL->FLOAT_POP();
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing != NULL && thing->IsCreature())
+	{
+		((Creature*)thing)->CreateLightbulb(progress);
+	}
+}
+
+void GScript::SetCreatureCanDrop()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	bool32_t          canDrop = g_scriptDLL->ULONG_POP();
+	if (thing != NULL && thing->IsCreature())
+	{
+		((Creature*)thing)->CanDrop = canDrop;
+	}
+}
+
+void GScript::IsCreatureHelpOn()
+{
+	g_scriptDLL->PUSH((void*)GGame::g_game->help_system->CreatureHelp, VMType_BOOLEAN);
+}
+
+void GScript::SetCreatureCanLearn()
+{
+	int               lesson = g_scriptDLL->ULONG_POP();
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	bool32_t          canLearn = g_scriptDLL->ULONG_POP();
+	SCRIPT_ASSERT(lesson < CREATURE_ACTION_KNOWN_ABOUT_LAST, "Invalid lesson");
+	if (thing != NULL && thing->IsCreature())
+	{
+		((Creature*)thing)->mind->learning.CanLearn[lesson] = canLearn;
+	}
+}
+
+void GScript::ObjectHandPosition()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	bool32_t          leftHand = g_scriptDLL->ULONG_POP();
+	LHPoint           pos(0.0f, 0.0f, 0.0f);
+	if (thing != NULL)
+	{
+		LH3DCreature* creature3d;
+		if (thing->IsCreature() && (creature3d = ((Creature*)thing)->GetCreature3D()) != NULL)
+		{
+			if (leftHand)
+			{
+				long bone = creature3d->GetMirrorBone(creature3d->RightHand);
+				pos = LHPoint(*creature3d->GetBonePos(bone));
+			}
+			else
+			{
+				pos = LHPoint(*creature3d->GetBonePos(creature3d->RightHand));
+			}
+			g_scriptDLL->POINT_PUSH(pos);
+			return;
+		}
+		pos = thing->Pos.Get3DPoint();
+	}
+	g_scriptDLL->POINT_PUSH(pos);
+}
+
+void GScript::SetCreatureRightHandOnly()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	bool32_t          rightHandOnly = g_scriptDLL->ULONG_POP();
+	if (thing != NULL && thing->IsCreature())
+	{
+		((Creature*)thing)->RightHandOnly = rightHandOnly;
+	}
+}
+
+void GScript::GetBraceletPos()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	LHPoint           pos(0.0f, 0.0f, 0.0f);
+	if (thing != NULL && thing->IsCreature())
+	{
+		pos = ((Creature*)thing)->GetCreature3D()->BraceletPos;
+	}
+	g_scriptDLL->POINT_PUSH(pos);
+}
+
+void GScript::GetObjectObjectLeashedTo()
+{
+	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	if (thing->IsCreature() && thing != NULL)
+	{
+		GPlayer* player = thing->GetPlayer();
+		if (player == NULL)
+		{
+			ScriptErrorMessage("No player for leash");
+		}
+		else
+		{
+			GInterfaceStatus* status = player->GetLeaderInterfaceStatus();
+			if (status->LeashStatus != NULL && status->LeashStatus->ObjectAttachedTo != NULL)
+			{
+				uint32_t id = AddScriptGameThing(status->LeashStatus->ObjectAttachedTo, false);
+				g_scriptDLL->PUSH((void*)id, VMType_OBJECT);
+				return;
+			}
+		}
+	}
+	g_scriptDLL->PUSH(NULL, VMType_OBJECT);
+}
+#endif

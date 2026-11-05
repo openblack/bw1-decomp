@@ -334,6 +334,10 @@ public:
 	int                 field_0x57ac;
 	HandGlows*          Glows;
 	CameraExclusion*    CameraExclusionDome;
+#ifdef VERSION_BW1WCI
+	uint8_t ci_field_0x57bc[0x3c];
+	LHPoint BraceletPos;
+#endif
 
 	// Override methods
 

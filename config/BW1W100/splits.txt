@@ -1966,14 +1966,14 @@ Black/ScriptCreateOrCall.cpp:
 
 Black/ScriptCreature.cpp:
 	.text       start:0x0068DAD0 end:0x00690530
-	.rdata      start:0x00879338 end:0x00879378
+	.rdata      start:0x00879338 end:0x00879374
 	.CRT$XCU    start:0x008F6FB8 end:0x008F6FC4 align:4
 	.data       start:0x00B30250 end:0x00B30578
 	.bss        start:0x00CB6BE8 end:0x00CB6DD4
 
 Black/ScriptDLL.cpp:
 	.text       start:0x00690550 end:0x00690C40
-	.rdata      start:0x00879378 end:0x00879380
+	.rdata      start:0x00879374 end:0x00879380
 	.CRT$XCU    start:0x008F6FC8 end:0x008F6FCC align:4
 
 Black/ScriptFunctions.cpp:

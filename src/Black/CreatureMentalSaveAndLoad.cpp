@@ -443,9 +443,9 @@ void Creature::ResolveLoad()
 		mind->agenda.SubActionAgenda = SubActionAgenda;
 	}
 #ifndef VERSION_BW1W100
-	if (ConfinedToObject && field_0x129c != -1)
+	if (ConfinedToObject && ConfinementPlayerNumber != -1)
 	{
-		GPlayer*  owner = GGame::g_game->GetPlayer(field_0x129c);
+		GPlayer*  owner = GGame::g_game->GetPlayer(ConfinementPlayerNumber);
 		Creature* creature = owner->creature.Get();
 		if (creature != NULL)
 		{
@@ -530,7 +530,11 @@ unsigned long Creature::SaveMindToMemory(char** buffer)
 	return archive.Size;
 }
 
+#ifdef VERSION_BW1WCI
+void CreatureMental::SaveMind(char* path, int mode)
+#else
 void CreatureMental::SaveMind(char* path)
+#endif
 {
 	if (creature.Get()->RemoteCreature != true)
 	{
@@ -673,7 +677,7 @@ void CreatureMental::SaveMind(Archive& archive)
 	archive << learning.field_0x1522c;
 #ifndef VERSION_BW1W100
 	archive << (int)creature.Get()->ConfinedToObject;
-	archive << (long)creature.Get()->field_0x129c;
+	archive << (long)creature.Get()->ConfinementPlayerNumber;
 #endif // VERSION_BW1W100
 }
 
@@ -1007,7 +1011,7 @@ void CreatureMental::LoadMind(Archive& archive)
 	if (MindVersion >= CREATURE_MIND_VERSION_CONFINEMENT)
 	{
 		archive >> (int&)creature.Get()->ConfinedToObject;
-		archive >> (long&)creature.Get()->field_0x129c;
+		archive >> (long&)creature.Get()->ConfinementPlayerNumber;
 	}
 #endif // VERSION_BW1W100
 }

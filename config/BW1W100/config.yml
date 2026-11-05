@@ -1137,6 +1137,14 @@ add_relocations:
   - source: 0x00696974
     type: x86_abs32
     target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x0068EC61
+    type: x86_abs32
+    target: '?Infos@CreatureDevelopmentPhaseEntry@@2PAV1@A'
+    addend: 76
+  - source: 0x0068EC8A
+    type: x86_abs32
+    target: '?Infos@CreatureDevelopmentPhaseEntry@@2PAV1@A'
+    addend: 116
 
 # PSysProperties weak deleting-destructor aliases and istream exception metadata.
   - source: 0x006668FC

@@ -459,7 +459,11 @@ ScriptFunctionEntry g_scriptFunctionTable[464] = {
 	{GScript::GetPlayerTownTotal, 1, 1, 0, "GET_PLAYER_TOWN_TOTAL"},
 	{GScript::ScriptSpiritScreenPoint, 3, 0, 0, "SPIRIT_SCREEN_POINT"},
 	{GScript::ScriptKeyDown, 1, 1, 0, "KEY_DOWN"},
+#ifdef VERSION_BW1WCI
+	{GScript::SetFightCameraExit, 1, 0, 0, "SET_FIGHT_CAMERA_EXIT"},
+#else
 	{GScript::SetFightExit, 1, 0, 0, "SET_FIGHT_EXIT"},
+#endif
 	{GScript::GetObjectClicked, 0, 1, 0, "GET_OBJECT_CLICKED"},
 	{GScript::GetObjectMana, 1, 1, 0, "GET_MANA"},
 	{GScript::ClearPlayerSpellCharging, 1, 0, 0, "CLEAR_PLAYER_SPELL_CHARGING"},

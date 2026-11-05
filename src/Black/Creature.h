@@ -110,6 +110,12 @@ struct CreatureEmotionsForMusic
 	uint32_t field_0x4;
 };
 
+#ifdef VERSION_BW1WCI
+#define CREATURE_TATTOO_FLAG_FIGHTER        0x1
+#define CREATURE_TATTOO_FLAG_GODS           0x2
+#define CREATURE_TATTOO_FLAG_FIGHTER_ALWAYS 0x4
+#endif
+
 class Creature : public Living
 {
 public:
@@ -268,8 +274,8 @@ public:
 	MapCoords               field_0x1164;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x119c;
-	uint32_t ci_field_0x11a0;
-	uint32_t ci_field_0x11a4;
+	bool32_t Navigation;
+	bool32_t HasYoung;
 #endif
 	uint32_t                          field_0x1170[0x8];
 	uint32_t*                         TattooData;
@@ -314,7 +320,7 @@ public:
 #ifndef VERSION_BW1W100
 	bool32_t                ConfinedToObject;
 	GameThingWithPos*       ConfinementObject;
-	int                     field_0x129c;
+	int                     ConfinementPlayerNumber;
 	LHLinkedList<Creature*> ConfinedCreatures;
 #endif
 #ifdef VERSION_BW1WCI
@@ -1385,15 +1391,30 @@ public:
 	// BW1W120 004f7080 BW1M119 0128cda0
 	void ScriptLearnEverything();
 	// BW1W120 004f7090 BW1M119 0128cca0
+#ifdef VERSION_BW1WCI
+	void ScriptSetKnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, bool32_t knows, float progress);
+#else
 	void ScriptSetKnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, bool32_t knows);
+#endif
 	// BW1W120 004f70f0 BW1M119 0128cc50
 	void ScriptSetAgendaPriority(float priority);
 	// BW1W120 004f6980 BW1M119 0128d6c0
 	void ScriptLearnDistinctionAboutActivityObject(CREATURE_DESIRES desire, ATTRIBUTE_TYPE attribute,
 	                                               unsigned long amount);
 	// BW1W120 004f6610 BW1M119 0128dc50
+#ifdef VERSION_BW1WCI
+	static Creature* ScriptCreateCreatureRelativeToCreature(Creature* creature, float scale, const MapCoords& coords,
+	                                                        CREATURE_TYPE type, int dumb);
+	// BW1WCI 00709b90 BW1MCI119 0151dd60
+	static void ReleaseTykeFromMaster(Creature* tyke, Creature* master);
+	// BW1WCI 0047ef30 BW1MCI119 011fe6b0
+	void SetTyke(Creature* master);
+	// BW1WCI 00488430 BW1MCI119 011ed930
+	void ClearFightQueue();
+#else
 	static Creature* ScriptCreateCreatureRelativeToCreature(Creature* creature, float scale, const MapCoords& coords,
 	                                                        CREATURE_TYPE type);
+#endif
 	// BW1W120 0047bee0 BW1M119 011da220
 	static void SwapMinds(Creature* new_creature, Creature* my_creature);
 	// BW1W120 0047d320 BW1M119 011d7750

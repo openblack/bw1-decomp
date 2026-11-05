@@ -246,7 +246,7 @@ public:
 #ifdef VERSION_BW1WCI
 	bool32_t FightLock;
 	bool32_t FightQueueOnly;
-	uint32_t field_0xc4;
+	bool32_t StayInFightCamera;
 #else
 	uint8_t field_0xb0[0xc];
 #endif
@@ -631,8 +631,53 @@ public:
 	static void GetCreatureFightAction();
 	// BW1W120 006f5fc0 BW1M119 014ea6f0
 	static void GetCreatureFightQueuedHits();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0070c530 BW1MCI119 01519130
+	static void SetFightCameraExit();
+	// BW1WCI 0070c5f0 BW1MCI119 01518ce0
+	static void SetObjectFollowMaster();
+	// BW1WCI 0070c7c0 BW1MCI119 01518bc0
+	static void SetObjectDistanceFromHome();
+	// BW1WCI 0070c840 BW1MCI119 01518a70
+	static void SetCreatureMaster();
+	// BW1WCI 0070c8e0 BW1MCI119 01518960
+	static void SetObjectNavigation();
+	// BW1WCI 0070c960 BW1MCI119 015187f0
+	static void GetCreatureDesire();
+	// BW1WCI 0070ca40 BW1MCI119 01518720
+	static void GetCreatureCurrentAction();
+	// BW1WCI 0070caa0 BW1MCI119 01518600
+	static void GetCreatureSpellSkill();
+	// BW1WCI 0070cb50 BW1MCI119 01518510
+	static void CreatureKnowsAction();
+	// BW1WCI 0070cbd0 BW1MCI119 015183b0
+	static void SetObjectTattoo();
+	// BW1WCI 0070ccd0 BW1MCI119 01518320
+	static void ClearFightQueue();
+	// BW1WCI 0070cd10 BW1MCI119 01518270
+	static void SetCreatureLightbulb();
+	// BW1WCI 0070cd70 BW1MCI119 015181c0
+	static void SetCreatureCanDrop();
+	// BW1WCI 0070cdc0 BW1MCI119 01518140
+	static void IsCreatureHelpOn();
+	// BW1WCI 0070cde0 BW1MCI119 01518050
+	static void SetCreatureCanLearn();
+	// BW1WCI 0070ce60 BW1MCI119 01517e90
+	static void ObjectHandPosition();
+	// BW1WCI 0070d000 BW1MCI119 01517dd0
+	static void SetCreatureRightHandOnly();
+	// BW1WCI 0070d050 BW1MCI119 01517ce0
+	static void GetBraceletPos();
+	// BW1WCI 0070d100 BW1MCI119 01517bc0
+	static void GetObjectObjectLeashedTo();
+	// BW1WCI 007098a0 BW1MCI119 0151de90
+	static void CreateYoungCreatureWithKnowledge();
+	// BW1WCI 0070a070 BW1MCI119 0151d5c0
+	static void CreatureDoActionAtPos();
+#else
 	// BW1W120 006f6060 BW1M119 014ea690
 	static void SetFightExit();
+#endif
 	// BW1W120 006f6080 BW1M119 014ea590
 	static void SetCreatureAutoScale();
 	// BW1W120 006f7910 BW1M119 014f0d70

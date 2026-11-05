@@ -2323,6 +2323,57 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006F7D39, jmp_run(0x006F7CE7)),  # ScriptCreateOrCall
     (0x006F7E76, jmp_run(0x006F7D39)),  # ScriptCreateOrCall
     (0x006F7F3B, jmp_run(0x006F7E76)),  # ScriptCreateOrCall
+    (0x006F7F8B, copy_run(0x006F7F3B)),  # ScriptCreature
+    (0x006F7FB3, jmp_run(0x006F7F8B)),  # ScriptCreature
+    (0x006F81D9, jmp_run(0x006F7FB3)),  # ScriptCreature
+    (0x006F8242, copy_run(0x006F81D9)),  # ScriptCreature
+    (0x006F82F4, jmp_run(0x006F8242)),  # ScriptCreature
+    (0x006F8378, jmp_run(0x006F82F4)),  # ScriptCreature
+    (0x006F83E2, copy_run(0x006F8378)),  # ScriptCreature
+    (0x006F8468, copy_run(0x006F83E2)),  # ScriptCreature
+    (0x006F8538, jmp_run(0x006F8468)),  # ScriptCreature
+    (0x006F8626, copy_run(0x006F8538)),  # ScriptCreature
+    (0x006F86C9, copy_run(0x006F8626)),  # ScriptCreature
+    (0x006F87DA, jmp_run(0x006F86C9)),  # ScriptCreature
+    (0x006F88D9, jmp_run(0x006F87DA)),  # ScriptCreature
+    (0x006F8975, jmp_run(0x006F88D9)),  # ScriptCreature
+    (0x006F8A0A, copy_run(0x006F8975)),  # ScriptCreature
+    (0x006F8AAB, copy_run(0x006F8A0A)),  # ScriptCreature
+    (0x006F8C26, copy_run(0x006F8AAB)),  # ScriptCreature
+    (0x006F8CE2, copy_run(0x006F8C26)),  # ScriptCreature
+    (0x006F8D15, jmp_run(0x006F8CE2)),  # ScriptCreature
+    (0x006F8D6A, copy_run(0x006F8D15)),  # ScriptCreature
+    (0x006F8E66, copy_run(0x006F8D6A)),  # ScriptCreature
+    (0x006F8FA6, copy_run(0x006F8E66)),  # ScriptCreature
+    (0x006F9067, copy_run(0x006F8FA6)),  # ScriptCreature
+    (0x006F910B, copy_run(0x006F9067)),  # ScriptCreature
+    (0x006F9262, copy_run(0x006F910B)),  # ScriptCreature
+    (0x006F9303, copy_run(0x006F9262)),  # ScriptCreature
+    (0x006F93DA, jmp_run(0x006F9303)),  # ScriptCreature
+    (0x006F96B2, jmp_run(0x006F93DA)),  # ScriptCreature
+    (0x006F97DB, jmp_run(0x006F96B2)),  # ScriptCreature
+    (0x006F98A3, copy_run(0x006F97DB)),  # ScriptCreature
+    (0x006F9A5A, jmp_run(0x006F98A3)),  # ScriptCreature
+    (0x006F9B83, copy_run(0x006F9A5A)),  # ScriptCreature
+    (0x006F9C86, copy_run(0x006F9B83)),  # ScriptCreature
+    (0x006F9DE1, copy_run(0x006F9C86)),  # ScriptCreature
+    (0x006F9E56, jmp_run(0x006F9DE1)),  # ScriptCreature
+    (0x006F9EE7, copy_run(0x006F9E56)),  # ScriptCreature
+    (0x006FA1AA, copy_run(0x006FA253)),  # ScriptCreature
+    (0x006FA268, copy_run(0x006FA1AA)),  # ScriptCreature
+    (0x006FA346, copy_run(0x006FA268)),  # ScriptCreature
+    (0x006FA3A8, copy_run(0x006FA346)),  # ScriptCreature
+    (0x006FA4C1, copy_run(0x006FA3A8)),  # ScriptCreature
+    (0x006FA568, copy_run(0x006FA4C1)),  # ScriptCreature
+    (0x006FA5DA, jmp_run(0x006FA568)),  # ScriptCreature
+    (0x006FA655, jmp_run(0x006FA5DA)),  # ScriptCreature
+    (0x006FA6DB, jmp_run(0x006FA655)),  # ScriptCreature
+    (0x006FA74A, copy_run(0x006FA6DB)),  # ScriptCreature
+    (0x006FA7BA, jmp_run(0x006FA74A)),  # ScriptCreature
+    (0x006FA82A, copy_run(0x006FA82A)),  # ScriptCreature
+    (0x006FA8A5, copy_run(0x006FA82A)),  # ScriptCreature
+    (0x006FA968, copy_run(0x006FA8A5)),  # ScriptCreature
+    (0x006FA9F3, jmp_run(0x006FA968)),  # ScriptCreature
     (0x006FC4AB, copy_run(0x006FC45C)),  # ScriptFunctions
     (0x006FC4D3, jmp_run(0x006FC4AB)),  # ScriptFunctions
     (0x006FC554, jmp_run(0x006FC4D3)),  # ScriptFunctions

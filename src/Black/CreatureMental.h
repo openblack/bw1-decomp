@@ -78,7 +78,11 @@ public:
 	static bool32_t DebugDrawObjectToActOn;
 
 	// BW1W120 004e7820 BW1M119 0126dfb0
+#ifdef VERSION_BW1WCI
+	void SaveMind(char* path, int mode = 0);
+#else
 	void SaveMind(char* path);
+#endif
 	// BW1W120 004e79d0 BW1M119 0126d750
 	void SaveMind(Archive& archive);
 	// BW1W120 004e7090 BW1M119 null
