@@ -192,6 +192,7 @@ dtk rewrites this file when splitting, de-duplicates function **and data** names
 - dtk `lbl_` inside function, or jump table after its code, splits function in objdiff: delete labels, extend size over table (not padding).
 - Renaming delay-load import slot to `__imp__Name@N` drops its base relocation, breaks DLL hash; restore with `add_relocations` entry pointing slot at its `__imp_load_*` thunk. EH functions need `__except_list` entries same way.
 - `add_relocations` and other `config.yml` changes take effect only after `python configure.py`.
+- Recompiled units link as compiled (no fold, except ICF links): unit newly linked → `duplicate symbol` or shifted image means split lacks `comdat` mark or `.rdata$r` range. Per version after build: `tools/mark-shared-comdats.py --version V --fix-sizes --apply`, `tools/rdata-r-ranges.py --version V --apply` ([`docs/msvc6_comdat.md`](docs/msvc6_comdat.md) §7).
 
 ### `config/BW1W120/splits.txt`
 
