@@ -1843,7 +1843,7 @@ Black/MPFEFindGame.cpp:
 	.rdata      start:0x0095E6D4 end:0x0095E704
 	.CRT$XCU    start:0x00A47038 end:0x00A47048 align:4
 	.data       start:0x00C7E3B4 end:0x00C7E3E0
-	.bss        start:0x00DC1EF0 end:0x00DC1EFC
+	.bss        start:0x00DC1EC0 end:0x00DC1EFC
 
 Black/MPFEGameStartMessages.cpp:
 	.text       start:0x006337A0 end:0x006341E0
