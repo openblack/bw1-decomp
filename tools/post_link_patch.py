@@ -870,6 +870,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0060812B, call_rel32(0x004017F9)),  # MobileObject
     (0x006083BB, call_rel32(0x004017F9)),  # MobileObject
     (0x0060843A, call_indirect(0x008A9960)),  # MobileObject: __imp__BinkGetSummary@8
+    (0x0062AC4B, call_rel32(0x004017F9)),  # MPFEChooseConnection
+    (0x0062B8BB, call_rel32(0x004017F9)),  # MPFEChooseConnection
     (0x0062C6AB, call_rel32(0x004017F9)),  # MPFEConditionMessages
     (0x0062C6FB, call_rel32(0x004017F9)),  # MPFEConditionMessages
     (0x0062DB2B, call_rel32(0x004017F9)),  # MPFECreatureDownload
@@ -1712,6 +1714,13 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0060BE66, copy_run(0x0060BDF6)),  # MobileObject
     (0x0060BE93, jmp_run(0x0060BE66)),  # MobileObject
     (0x0060BEE6, copy_run(0x0060BE93)),  # MobileObject
+    (0x0062E94F, copy_run(0x0062E94B)),  # MPFEChooseConnection
+    (0x0062E975, jmp_run(0x0062E94B)),  # MPFEChooseConnection
+    (0x0062EA27, copy_run(0x0062E973)),  # MPFEChooseConnection
+    (0x0062EAD7, jmp_run(0x0062EA27)),  # MPFEChooseConnection
+    (0x0062EEF5, jmp_run(0x0062EAD7)),  # MPFEChooseConnection
+    (0x0062F006, copy_run(0x0062EEF5)),  # MPFEChooseConnection
+    (0x0062F5BB, jmp_run(0x0062F006)),  # MPFEChooseConnection
     (0x006303AB, copy_run(0x00630352)),  # MPFEConditionMessages
     (0x006303D5, jmp_run(0x006303AB)),  # MPFEConditionMessages
     (0x006303FB, jmp_run(0x006303D3)),  # MPFEConditionMessages
