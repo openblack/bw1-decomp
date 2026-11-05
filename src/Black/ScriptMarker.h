@@ -20,7 +20,7 @@ public:
 	// Override methods
 
 	// BW1W120 0070d970 BW1M119 015080d0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00561060 BW1M119 01507fb0
 	virtual char* GetDebugText() { return "ScriptMarker:"; }
 	// BW1W120 0070d9f0 BW1M119 01507ff0
@@ -30,7 +30,7 @@ public:
 	// BW1W120 00561050 BW1M119 01507f70
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SCRIPT_MARKER; }
 	// BW1W120 00561030 BW1M119 01507ee0
-	virtual void PhysicsEditorCreate(int keep_altitude) {}
+	virtual void PhysicsEditorCreate(int type) {}
 	// BW1W120 00561040 BW1M119 01507f20
 	virtual bool32_t IsDeletedWhenReleasedFromScript() { return true; }
 	// BW1W120 00561010 BW1M119 01507e60
@@ -42,6 +42,8 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	ScriptMarker() {}
+	// BW1W120 inlined BW1M119 inlined
+	ScriptMarker(const MapCoords& coords) : GameThingWithPos(coords) {}
 
 	// BW1W120 0070d8d0 BW1M119 01508220
 	static ScriptMarker* Create(const MapCoords& coords);

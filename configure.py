@@ -1373,7 +1373,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ScriptHighlight.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptHighlightInfo.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptManage.cpp", pch=False),
-            GameCodeObject(NonMatching, "Black/ScriptMarker.cpp", pch=False),
+            GameCodeObject(Matching, "Black/ScriptMarker.cpp"),
             GameCodeObject(Matching, "Black/ScriptTimer.cpp"),
             GameCodeObject(NonMatching, "Black/SecretCreature.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/Serialise.cpp"),

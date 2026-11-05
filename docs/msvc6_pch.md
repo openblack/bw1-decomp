@@ -286,8 +286,8 @@ shares it) or of our sources.
   `Belief`, `CPUCheck`, `EditorIconBase`, `GestureSystem`, `GestureSystemData`,
   `GestureSystemDataList`, `GestureSystemMatch`, `GestureSystemSamples`, `Language`,
   `MPFEConditionMessages`, `MPFECreatureDownload`, `MPFEDatabase`, `PlayerMessage`, `ScriptManage`,
-  `ScriptMarker`, `SpellShield`, `TotemStatue`, `VillagerStates`, `WorshipTotem`. Either mechanism gives
-  this. `/YX` needs no twenty overrides set by hand (and `CPUCheck`'s leading includes, DirectDraw's, are its own), and it
+  `SpellShield`, `TotemStatue`, `VillagerStates`, `WorshipTotem`. Either mechanism gives
+  this. `/YX` needs no nineteen overrides set by hand (and `CPUCheck`'s leading includes, DirectDraw's, are its own), and it
   fits the GestureSystem files: five are in
   hash order, and `GestureSystemResult`, which follows `GestureSystemMatch` in link order and
   would reuse the PCH it had rebuilt, is the only one of the six in `/Yu` order.
