@@ -1175,7 +1175,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFECondtionUpdateMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEConnectionStatus.cpp", pch=PCHExceptNoStringIn("BW1W130")),
             GameCodeObject(NonMatching, "Black/MPFECreateGame.cpp"),
-            GameCodeObject(NonMatching, "Black/MPFECreatureDownload.cpp"),
+            GameCodeObject(Matching, "Black/MPFECreatureDownload.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/MPFEDatabase.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/MPFEDatabaseID.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEDisconnectNowMessage.cpp"),
