@@ -2944,6 +2944,10 @@ Black/ChallengeRoomCamera.cpp:
 	.data       start:0x00CA5FD0 end:0x00CA5FF0
 	.bss        start:0x00E51DC4 end:0x00E51DC8
 
+Black/CreatureCitadel.cpp:
+	.text       start:0x0078B2D0 end:0x0078B300
+	.CRT$XCU    start:0x00A47B60 end:0x00A47B64 align:4
+
 Black/CreatureRoom.cpp:
 	.text       start:0x0078B300 end:0x0078EBF0
 	.rdata      start:0x00A1E508 end:0x00A1E5EC
@@ -2952,10 +2956,18 @@ Black/CreatureRoom.cpp:
 	.bss        start:0x00E51DC8 end:0x00E62B98
 
 Black/CreatureRoomCamera.cpp:
-	.text       start:0x0078EBF0 end:0x007928D0
+	.text       start:0x0078EBF0 end:0x00792800
 	.rdata      start:0x00A1E5EC end:0x00A1E6C4
-	.CRT$XCU    start:0x00A47B7C end:0x00A47BBC align:4
+	.CRT$XCU    start:0x00A47B7C end:0x00A47BB4 align:4
 	.bss        start:0x00E62B98 end:0x00E8307C
+
+Black/GameOptionsRoomCamera.cpp:
+	.text       start:0x00792800 end:0x00792830
+	.CRT$XCU    start:0x00A47BB4 end:0x00A47BB8 align:4
+
+Black/InterfaceHelp.cpp:
+	.text       start:0x00792830 end:0x007928D0
+	.CRT$XCU    start:0x00A47BB8 end:0x00A47BBC align:4
 
 Black/SubOptionEntry.cpp:
 	.text       start:0x007928D0 end:0x00793730
@@ -2975,11 +2987,15 @@ Black/PictureRoom.cpp:
 	.data       start:0x00CA94A0 end:0x00CA9728
 
 Black/SaveGameRoom.cpp:
-	.text       start:0x00794570 end:0x00798870
+	.text       start:0x00794570 end:0x00798840
 	.rdata      start:0x00A1E7DC end:0x00A1E82C
-	.CRT$XCU    start:0x00A47BCC end:0x00A47BE0 align:4
+	.CRT$XCU    start:0x00A47BCC end:0x00A47BDC align:4
 	.data       start:0x00CA9728 end:0x00CAB010
 	.bss        start:0x00E870D8 end:0x00E8719C
+
+Black/SaveGameRoomCamera.cpp:
+	.text       start:0x00798840 end:0x00798870
+	.CRT$XCU    start:0x00A47BDC end:0x00A47BE0 align:4
 
 Black/Temple.cpp:
 	.text       start:0x00798870 end:0x007999D0
@@ -3014,6 +3030,10 @@ Black/UniverseRoom.cpp:
 	.data       start:0x00CAB210 end:0x00CAB32C
 	.bss        start:0x00EB7308 end:0x00EB7310
 
+Black/UniverseRoomCamera.cpp:
+	.text       start:0x007A20F0 end:0x007A2120
+	.CRT$XCU    start:0x00A47C3C end:0x00A47C40 align:4
+
 Black/WorldRoom.cpp:
 	.text       start:0x007A2120 end:0x007A4940
 	.rdata      start:0x00A1E964 end:0x00A1E9FC
@@ -3021,8 +3041,11 @@ Black/WorldRoom.cpp:
 	.data       start:0x00CAB330 end:0x00CAB648
 	.bss        start:0x00EB7310 end:0x00EBB36C
 
+Black/WorldRoomCamera.cpp:
+	.text       start:0x007A4940 end:0x007A63D0
+
 Lionhead/LH3DLib/development/LH3DP3.cpp:
-	.text       start:0x007A6480 end:0x007B2060
+	.text       start:0x007A6400 end:0x007B2060
 	.CRT$XCU    start:0x00A47C80 end:0x00A47CC0 align:4
 	.data       start:0x00CAB980 end:0x00CAB9E8 align:32
 	.bss        start:0x00EBB3C0 end:0x00F04BE0 align:32
@@ -4784,6 +4807,3 @@ lib/libcmt/mbtoupr.obj:
 lib/libcmt/sehsupp.obj:
 	.text       start:0x008AB576 end:0x008AB5DB align:1
 	.rdata      start:0x00A26548 end:0x00A26558
-
-Black/WorldRoomCamera.cpp:
-	.text       start:0x007A4960 end:0x007A6480

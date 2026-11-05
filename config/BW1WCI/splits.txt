@@ -2719,6 +2719,9 @@ Black/CreatureRoomCamera.cpp:
 	.data       start:0x00C9ACCC end:0x00C9AD10
 	.bss        start:0x00E6A300 end:0x00E6A324
 
+Black/InterfaceHelp.cpp:
+	.text       start:0x007A6470 end:0x007A64E0
+
 Black/CreditsRoom.cpp:
 	.data       start:0x00C9AE30 end:0x00C9B6D0
 	.bss        start:0x00E6A324 end:0x00E8A7DC
@@ -2787,7 +2790,7 @@ Black/WorldRoomCamera.cpp:
 	.bss        start:0x00EC2AD8 end:0x00EC2B24
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
-	.text       start:0x007B9590 end:0x007C5170
+	.text       start:0x007B9510 end:0x007C5170
 	.CRT$XCU    start:0x00A37480 end:0x00A374C0 align:4
 	.data       start:0x00C9E0C0 end:0x00C9E128 align:32
 	.bss        start:0x00EC2B40 end:0x00F0C360 align:32

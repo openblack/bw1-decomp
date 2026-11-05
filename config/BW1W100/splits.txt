@@ -2460,11 +2460,14 @@ Black/CreatureRoom.cpp:
 	.bss        start:0x00CF15A0 end:0x00D02370
 
 Black/CreatureRoomCamera.cpp:
-	.text       start:0x00711430 end:0x00714EB0
+	.text       start:0x00711430 end:0x00714E40
 	.rdata      start:0x008D4E9C end:0x008D4ED4
 	.CRT$XCU    start:0x008F7318 end:0x008F7330 align:4
 	.data       start:0x00B4A380 end:0x00B4A3C8
 	.bss        start:0x00D02370 end:0x00D22854
+
+Black/InterfaceHelp.cpp:
+	.text       start:0x00714E40 end:0x00714EB0
 
 Black/GameOptionsRoom.cpp:
 	.data       start:0x00B4AE50 end:0x00B4AF98

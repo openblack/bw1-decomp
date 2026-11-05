@@ -2618,10 +2618,13 @@ Black/CreatureRoom.cpp:
 	.bss        start:0x00DBF5D8 end:0x00DD03A8
 
 Black/CreatureRoomCamera.cpp:
-	.text       start:0x007799B0 end:0x0077D520
+	.text       start:0x007799B0 end:0x0077D4B0
 	.rdata      start:0x0098EB04 end:0x0098EB3C
 	.CRT$XCU    start:0x009B7368 end:0x009B7380 align:4
 	.bss        start:0x00DD03A8 end:0x00DF088C
+
+Black/InterfaceHelp.cpp:
+	.text       start:0x0077D4B0 end:0x0077D520
 
 Black/GameOptionsRoom.cpp:
 	.data       start:0x00C170C8 end:0x00C17210
@@ -2695,7 +2698,7 @@ Black/WorldRoomCamera.cpp:
 	.text       start:0x0078F0D0 end:0x00790B30
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
-	.text       start:0x00790BB0 end:0x0079C790
+	.text       start:0x00790B30 end:0x0079C790
 	.CRT$XCU    start:0x009B7400 end:0x009B7440 align:4
 	.data       start:0x00C198C0 end:0x00C19928 align:32
 	.bss        start:0x00E28BE0 end:0x00E72400 align:32
