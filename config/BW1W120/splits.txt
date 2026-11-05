@@ -3199,9 +3199,9 @@ Lionhead/LHFile/ver3.0/LHOSFile.cpp:
 	.data       start:0x00C2B9E0 end:0x00C2BA74
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
-	.text       start:0x007BD330 end:0x007BE280
+	.text       start:0x007BD330 end:0x007BE290
 	.text$x     start:0x008A7950 end:0x008A7970 align:4
-	.CRT$XCU    start:0x009C7CEC end:0x009C7CF4 align:4
+	.CRT$XCU    start:0x009C7CEC end:0x009C7CF0 align:4
 
 zlib/compress.c:
 	.text       start:0x007BE290 end:0x007BE360
@@ -3212,6 +3212,12 @@ zlib/uncompr.c:
 
 Lionhead/LHFile/ver3.0/LHParseFile.cpp:
 	.text       start:0x007BE400 end:0x007BF1C0
+
+Lionhead/LHFile/ver3.0/Version.cpp:
+	.text       start:0x007BF1C0 end:0x007BF210
+	.CRT$XCU    start:0x009C7CF0 end:0x009C7CF4 align:4
+	.data       start:0x00C2BDC8 end:0x00C2BF5C
+	.bss        start:0x00E83FE8 end:0x00E84188
 
 zlib/deflate.c:
 	.text       start:0x007BF210 end:0x007C08D0
@@ -4281,11 +4287,12 @@ Lionhead/LHLib/ver5.0/Route.cpp:
 	.CRT$XCU    start:0x009C7DC4 end:0x009C7DCC align:4
 
 Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
-	.text       start:0x0083C920 end:0x0083CE00
-	.text$x     start:0x008A8150 end:0x008A8170 align:16
+	.text       start:0x0083C830 end:0x0083CE00
 
 Lionhead/LH3DLib/development/Glow.cpp:
-	.text       start:0x0083D750 end:0x0083E4F0
+	.text       start:0x0083CE00 end:0x0083E4F0
+	.text$x     start:0x008A8150 end:0x008A8170 align:16
+	.xdata$x    start:0x009BEDF8 end:0x009BEE20 align:4
 
 Lionhead/LH3DLib/development/LightSheet.cpp:
 	.text       start:0x0083E4F0 end:0x0083EFE0
@@ -4298,7 +4305,7 @@ Lionhead/LH3DLib/development/LH3DGJAnimVolFX.cpp:
 	.bss        start:0x00EDDD1C end:0x00EDDD2C
 
 Lionhead/LH3DLib/development/LH3DZSorter.cpp:
-	.text       start:0x0083F2B0 end:0x0083F3C0
+	.text       start:0x0083F2B0 end:0x0083F3F0
 	.bss        start:0x00EDDD30 end:0x00EE9D3C align:8
 
 Lionhead/LH3DLib/development/LH3DStorm.cpp:
@@ -4325,11 +4332,13 @@ Lionhead/LH3DLib/development/LH3DVideo.cpp:
 	.bss        start:0x00EF64E0 end:0x00EF653B
 
 Lionhead/LH3DLib/development/LH3DMem.cpp:
-	.text       start:0x00842CE0 end:0x00842DF0
+	.text       start:0x00842CE0 end:0x00842E40
 	.bss        start:0x00EF6540 end:0x00EF6554 align:8
 
 Lionhead/LH3DLib/development/LH3DWay.cpp:
-	.text       start:0x00842F10 end:0x00844620
+	.text       start:0x00842E40 end:0x00844620
+	.CRT$XCU    start:0x009C7DDC end:0x009C7DE0 align:4
+	.bss        start:0x00EF6554 end:0x00EF655C
 
 Lionhead/LH3DLib/development/Font.cpp:
 	.text       start:0x00844620 end:0x00844C60
@@ -4402,7 +4411,7 @@ Lionhead/LH3DLib/development/LH3DSky.cpp:
 	.bss        start:0x00FA2510 end:0x00FA277C
 
 Lionhead/LH3DLib/development/SnowCover.cpp:
-	.text       start:0x0086C560 end:0x0086CF50
+	.text       start:0x0086C2D0 end:0x0086CF50
 	.rdata      start:0x009A3BE4 end:0x009A3BE8
 	.data       start:0x00C39678 end:0x00C39698
 	.bss        start:0x00FA277C end:0x00FA2920
@@ -4411,6 +4420,9 @@ Lionhead/LH3DLib/development/DynamicLightAndShadow.cpp:
 	.text       start:0x0086CF50 end:0x0086D4A0
 	.CRT$XCU    start:0x009C7E28 end:0x009C7E2C align:4
 	.bss        start:0x00FA2920 end:0x00FA51C4
+
+Lionhead/LH3DLib/development/LH3DCamera.cpp:
+	.text       start:0x0086D4A0 end:0x0086E070
 
 Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.text       start:0x0086E070 end:0x0086FC00
@@ -4428,6 +4440,7 @@ Lionhead/LH3DLib/development/LHPoint.cpp:
 
 Lionhead/LH3DLib/development/LH3DFade.cpp:
 	.text       start:0x0086FEB0 end:0x008701F0
+	.CRT$XCU    start:0x009C7E38 end:0x009C7E3C align:4
 	.bss        start:0x00FA51D8 end:0x00FA51E0
 
 Lionhead/LH3DLib/development/LH3DSRAMTex.cpp:
@@ -4439,7 +4452,6 @@ Lionhead/LH3DLib/development/LH3DSRAMTex.cpp:
 
 Lionhead/LH3DLib/development/LH3DLandscape.cpp:
 	.text       start:0x008711B0 end:0x00874440
-	.text$x     start:0x008A83F0 end:0x008A8648 align:4
 	.rdata      start:0x009A3C0C end:0x009A3C10
 	.data       start:0x00C397F4 end:0x00C398E4
 	.bss        start:0x00FA51F8 end:0x00FA76D0
@@ -4458,8 +4470,16 @@ Lionhead/LH3DLib/development/LandBlock.cpp:
 Lionhead/LH3DLib/development/LH3DWater.cpp:
 	.text       start:0x008792E0 end:0x0087A340
 	.rdata      start:0x009A3C1C end:0x009A3C30
-	.data       start:0x00C398FC end:0x00C39964
+	.data       start:0x00C398FC end:0x00C39960
 	.bss        start:0x00FA92E0 end:0x00FA9398
+
+Lionhead/LH3DLib/development/LH3DPolygonIsland.cpp:
+	.text       start:0x0087A340 end:0x0087F6D0
+	.text$x     start:0x008A83F0 end:0x008A8630 align:4
+	.rdata      start:0x009A3C30 end:0x009A3C74
+	.xdata$x    start:0x009BF0E0 end:0x009BF338 align:4
+	.data       start:0x00C39960 end:0x00C39AB8
+	.bss        start:0x00FA9398 end:0x00FA93B8
 
 Lionhead/LH3DLib/development/LH3DCT.cpp:
 	.text       start:0x0087F6D0 end:0x0087FA00
@@ -4475,7 +4495,9 @@ Lionhead/LH3DLib/development/LHIlib.cpp:
 
 Lionhead/LH3DLib/development/LH3DShadow.cpp:
 	.text       start:0x0087FD50 end:0x00881050
+	.text$x     start:0x008A8630 end:0x008A8648 align:4
 	.rdata      start:0x009A3C74 end:0x009A3D7C
+	.xdata$x    start:0x009BF338 end:0x009BF360 align:4
 	.data       start:0x00C39AC8 end:0x00C39B28
 	.bss        start:0x00FA93C4 end:0x00FAA7E4
 
@@ -4592,6 +4614,11 @@ GameSpy/pinger/pingerMain.c:
 	.text       start:0x00897740 end:0x00898390
 	.data       start:0x00C3AE7C end:0x00C3AE80
 	.bss        start:0x00FAC7C8 end:0x00FAC7F4
+
+Lionhead/LHLib/ver5.0/LHJpeg.cpp:
+	.text       start:0x00898450 end:0x008985C0
+	.rdata      start:0x009A59B0 end:0x009A59B4
+	.data       start:0x00C3AE80 end:0x00C3AE90
 
 jpeg/jcapimin.c:
 	.text       start:0x008985C0 end:0x00898960
@@ -4747,6 +4774,11 @@ lib/amaths/AMaths.obj:
 	.bss        start:0x00FAC860 end:0x00FAC880
 	.drectve    type:comment start:0x00400555 end:0x004006B2
 
+Lionhead/LHFile/ver3.0/BitmapInfo.cpp:
+	.text       start:0x008A5440 end:0x008A5A80
+	.text$x     start:0x008A8930 end:0x008A8945
+	.xdata$x    start:0x009BF6C0 end:0x009BF6E8 align:4
+
 lib/libcmt/wcsdup.obj:
 	.text       start:0x008A5B0C end:0x008A5B3A align:1
 
@@ -4811,6 +4843,3 @@ lib/libcmt/mbtoupr.obj:
 lib/libcmt/sehsupp.obj:
 	.text       start:0x008A63F6 end:0x008A645B align:1
 	.rdata      start:0x009A62C8 end:0x009A62D8
-
-Lionhead/LHFile/ver3.0/BitmapInfo.cpp:
-	.text$x     start:0x008A8930 end:0x008A8945

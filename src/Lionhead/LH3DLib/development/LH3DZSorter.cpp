@@ -16,10 +16,10 @@ LH3DZSorter* __fastcall LH3DZSorter::Create(long max_objects)
 	if (sorter != NULL)
 	{
 		sorter->Entries = (uint8_t*)sorter + sizeof(LH3DZSorter);
-		sorter->SortedList = (uint8_t*)sorter->Entries + LH3D_Z_SORTER_CAPACITY * LH3D_Z_SORTER_ENTRY_SIZE;
+		sorter->Scratch = (uint8_t*)sorter->Entries + LH3D_Z_SORTER_CAPACITY * LH3D_Z_SORTER_ENTRY_SIZE;
 		sorter->MaxCount = LH3D_Z_SORTER_MAX_COUNT;
 		sorter->Count = 0;
-		sorter->Scratch = (uint8_t*)sorter->SortedList + LH3D_Z_SORTER_CAPACITY * LH3D_Z_SORTER_POINTER_SIZE;
+		sorter->SortedList = (uint8_t*)sorter->Scratch + LH3D_Z_SORTER_CAPACITY * LH3D_Z_SORTER_POINTER_SIZE;
 	}
 	return sorter;
 }
@@ -81,4 +81,19 @@ void LH3DZSorter::OpenSort()
 {
 	g_z_first = NULL;
 	g_z_object_count = 0;
+}
+
+long LH3DZSorter::GetZObjectsMaxCount() const
+{
+	return MaxCount;
+}
+
+long LH3DZSorter::GetZObjectsCount() const
+{
+	return Count;
+}
+
+void* LH3DZSorter::GetZObjectsSortedList() const
+{
+	return SortedList;
 }

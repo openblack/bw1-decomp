@@ -28,12 +28,12 @@ public:
 	};
 
 	uint32_t field_0x0;
-	uint16_t MaxCount;
-	uint16_t Count;
+	int16_t  MaxCount;
+	int16_t  Count;
 	void*    Entries;
 	uint8_t  field_0xc[LH3D_Z_SORTER_HEADER_BYTES];
-	void*    SortedList;
 	void*    Scratch;
+	void*    SortedList;
 
 	// BW1W120 00ee9d30 BW1M119 01356448 (LHCombined Release)
 	static unsigned long UserData;
@@ -49,6 +49,12 @@ public:
 	void CloseSort();
 	// BW1W120 0083f310 BW1M119 0101bf70 (LHCombined Release)
 	void __fastcall NewZObject(void* object, DrawCallback draw, float distance, unsigned long flags);
+	// BW1W120 0083f3c0 BW1M119 010d81e0 (LHCombined Release)
+	long GetZObjectsMaxCount() const;
+	// BW1W120 0083f3d0 BW1M119 010d81a0 (LHCombined Release)
+	long GetZObjectsCount() const;
+	// BW1W120 0083f3e0 BW1M119 010d8150 (LHCombined Release)
+	void* GetZObjectsSortedList() const;
 };
 static_assert(sizeof(LH3DZSorter::ZObject) == 0x18, "Data type is of wrong size");
 static_assert(sizeof(LH3DZSorter) == 0x614, "Data type is of wrong size");

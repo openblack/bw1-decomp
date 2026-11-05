@@ -17,21 +17,22 @@ struct LH3DCamera
 
 	// Static methods
 
-	// BW1W120 null BW1M119 011690a0 (LHCombined Release)
+	// BW1W120 0086d4a0 BW1M119 011690a0 (LHCombined Release)
 	static LH3DCamera* Create(void* data, bool create);
 
 	// Non-virtual methods
 
-	// BW1W120 null BW1M119 01168860 (LHCombined Release)
-	void GetCamera(LH3DObject* object, unsigned long flags, LHPoint* position, LHPoint* focus, LHMatrix* matrix);
-	// BW1W120 null BW1M119 01169250 (LHCombined Release)
-	void GetCamera(LH3DObject* object, unsigned long flags, LHPoint* position, LHPoint* focus);
-	// BW1W120 null BW1M119 01169590 (LHCombined Release)
+	// BW1W120 0086d760 BW1M119 01168860 (LHCombined Release)
+	void __fastcall GetCamera(LH3DObject* object, unsigned long flags, LHPoint* position, LHPoint* focus,
+	                          LHMatrix* matrix);
+	// BW1W120 0086d4e0 BW1M119 01169250 (LHCombined Release)
+	void __fastcall GetCamera(LH3DObject* object, unsigned long flags, LHPoint* position, LHPoint* focus);
+	// BW1W120 0086d4d0 BW1M119 01169590 (LHCombined Release)
 	void Release();
-	// BW1W120 null BW1M119 01168560 (LHCombined Release)
-	void SetTechCamera(LH3DObject* object, unsigned long flags);
-	// BW1W120 null BW1M119 0116a7b0 (LHCombined Release)
-	void SetTechCamera(LHMatrix* matrix, unsigned long flags);
+	// BW1W120 0086ddd0 BW1M119 01168560 (LHCombined Release)
+	void __fastcall SetTechCamera(LH3DObject* object, unsigned long flags);
+	// BW1W120 0086db40 BW1M119 0116a7b0 (LHCombined Release)
+	void __fastcall SetTechCamera(LHMatrix* matrix, unsigned long flags);
 };
 
 #endif /* BW1_DECOMP_LH3D_CAMERA_INCLUDED_H */
