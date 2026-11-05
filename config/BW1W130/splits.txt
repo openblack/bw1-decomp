@@ -42,9 +42,9 @@ lib/libcmt/crt0init.obj:
 Black/Abode.cpp:
 	.text       start:0x00401000 end:0x00407880
 	.rdata      start:0x008AE9DC end:0x008B0250
-	.rdata$r    start:0x00A26610 end:0x00A267F0
+	.rdata$r    start:0x00A26558 end:0x00A267F0
 	.CRT$XCU    start:0x00A46004 end:0x00A46054 align:4
-	.data       start:0x00A47F40 end:0x00A480C0
+	.data       start:0x00A47EC0 end:0x00A480C0
 	.bss        start:0x00CBD5C0 end:0x00CCDBC0
 
 Black/alexmfc.cpp:
@@ -58,6 +58,7 @@ Black/alexmfc.cpp:
 Black/Alignment.cpp:
 	.text       start:0x00414020 end:0x00416C80
 	.rdata      start:0x008B0638 end:0x008B0744
+	.rdata$r    start:0x00A26C48 end:0x00A26D70
 	.CRT$XCU    start:0x00A4607C end:0x00A46090 align:4
 	.data       start:0x00A48390 end:0x00A48D58
 	.bss        start:0x00CCDC78 end:0x00CCDF60 align:8
@@ -65,6 +66,7 @@ Black/Alignment.cpp:
 Black/Animal.cpp:
 	.text       start:0x00416C80 end:0x0041BD20
 	.rdata      start:0x008B0744 end:0x008B2050
+	.rdata$r    start:0x00A26D70 end:0x00A26F80
 	.CRT$XCU    start:0x00A46090 end:0x00A460A4 align:4
 	.data       start:0x00A48D58 end:0x00A48FA0
 	.bss        start:0x00CCDF60 end:0x00CD5C40
@@ -77,27 +79,28 @@ Black/AnimalAnimation.cpp:
 Black/AnimalCow.cpp:
 	.text       start:0x0041D080 end:0x0041DCA0
 	.rdata      start:0x008B2050 end:0x008BA63C
+	.rdata$r    start:0x00A26F80 end:0x00A27448
 	.CRT$XCU    start:0x00A460A8 end:0x00A460B0 align:4
 	.data       start:0x00A48FD0 end:0x00A491E0
 	.bss        start:0x00CD5C40 end:0x00CD5C44
 
 Black/AnimalDove.cpp:
 	.text       start:0x0041DCA0 end:0x0041FBE0
-	.rdata      start:0x008BA63C end:0x008C07F8
+	.rdata      start:0x008BA63C end:0x008C1428
 	.CRT$XCU    start:0x00A460B0 end:0x00A460BC align:4
 	.data       start:0x00A491E0 end:0x00A493A8
 	.bss        start:0x00CD5C44 end:0x00CD5C4C
 
 Black/AnimalLeopard.cpp:
 	.text       start:0x0041FBE0 end:0x0041FD00
-	.rdata      start:0x008C07F8 end:0x008C1434
+	.rdata      start:0x008C1428 end:0x008C205C
 	.CRT$XCU    start:0x00A460BC end:0x00A460C4 align:4
 	.data       start:0x00A493B0 end:0x00A493F4
 	.bss        start:0x00CD5C4C end:0x00CD5C50
 
 Black/AnimalLion.cpp:
 	.text       start:0x0041FD00 end:0x00420160
-	.rdata      start:0x008C1434 end:0x008C38C0
+	.rdata      start:0x008C205C end:0x008C38C0
 	.CRT$XCU    start:0x00A460C4 end:0x00A460CC align:4
 	.data       start:0x00A493F4 end:0x00A49450
 	.bss        start:0x00CD5C50 end:0x00CD5C54
@@ -117,28 +120,29 @@ Black/AnimalReaction.cpp:
 
 Black/AnimalSpellWolf.cpp:
 	.text       start:0x004207C0 end:0x00421390
-	.rdata      start:0x008C38D4 end:0x008C38F0
+	.rdata      start:0x008C38D4 end:0x008C4520
 	.CRT$XCU    start:0x00A460DC end:0x00A460E4 align:4
 	.data       start:0x00A49480 end:0x00A494EC
 	.bss        start:0x00CD5C5C end:0x00CD5C60
 
 Black/AnimalTiger.cpp:
 	.text       start:0x00421390 end:0x004215D0
-	.rdata      start:0x008C38F0 end:0x008C452C
+	.rdata      start:0x008C4520 end:0x008C5154
 	.CRT$XCU    start:0x00A460E4 end:0x00A460EC align:4
 	.data       start:0x00A494EC end:0x00A4953C
 	.bss        start:0x00CD5C60 end:0x00CD5C64
 
 Black/AnimalWolf.cpp:
 	.text       start:0x004215D0 end:0x00421E10
-	.rdata      start:0x008C452C end:0x008C5D90
+	.rdata      start:0x008C5154 end:0x008C69B8
 	.CRT$XCU    start:0x00A460EC end:0x00A460F4 align:4
 	.data       start:0x00A4953C end:0x00A49628
 	.bss        start:0x00CD5C64 end:0x00CD6F30
 
 Black/AnimatedStatic.cpp:
 	.text       start:0x00421E10 end:0x00423140
-	.rdata      start:0x008C5D90 end:0x008C7C2C
+	.rdata      start:0x008C69B8 end:0x008C7C2C
+	.rdata$r    start:0x00A27B38 end:0x00A27C78
 	.CRT$XCU    start:0x00A460F4 end:0x00A46100 align:4
 	.data       start:0x00A49628 end:0x00A49670
 	.bss        start:0x00CD6F30 end:0x00CD6F34
@@ -153,6 +157,7 @@ Black/Animations.cpp:
 Black/Arena.cpp:
 	.text       start:0x00424480 end:0x004258F0
 	.rdata      start:0x008C7C50 end:0x008C8F14
+	.rdata$r    start:0x00A27C78 end:0x00A27D68
 	.CRT$XCU    start:0x00A4610C end:0x00A46118 align:4
 	.data       start:0x00A496C4 end:0x00A4978C
 	.bss        start:0x00CD6F40 end:0x00CD7080
@@ -160,6 +165,7 @@ Black/Arena.cpp:
 Black/Arrow.cpp:
 	.text       start:0x004258F0 end:0x00425C50
 	.rdata      start:0x008C8F14 end:0x008C97B8
+	.rdata$r    start:0x00A27D68 end:0x00A27E58
 	.CRT$XCU    start:0x00A46118 end:0x00A46120 align:4
 	.data       start:0x00A4978C end:0x00A497F0
 
@@ -173,6 +179,7 @@ Black/Artifact.cpp:
 Black/Audio.cpp:
 	.text       start:0x00426AF0 end:0x00428850
 	.rdata      start:0x008C98CC end:0x008C99E8
+	.rdata$r    start:0x00A27EA8 end:0x00A27EF8
 	.CRT$XCU    start:0x00A46130 end:0x00A4613C align:4
 	.data       start:0x00A49818 end:0x00A4B120
 	.bss        start:0x00CD709C end:0x00CD70A8
@@ -231,14 +238,15 @@ Black/BaseInfo.cpp:
 
 Black/Belief.cpp:
 	.text       start:0x00437C90 end:0x00438BE0
-	.rdata      start:0x008CA850 end:0x008CA89C
+	.rdata      start:0x008CA850 end:0x008CA8AC
+	.rdata$r    start:0x00A28608 end:0x00A286C0
 	.CRT$XCU    start:0x00A4618C end:0x00A461A4 align:4
 	.data       start:0x00A4D540 end:0x00A4D600
 	.bss        start:0x00CD9564 end:0x00CD95B0
 
 Black/BigForest.cpp:
 	.text       start:0x00438BE0 end:0x004395C0
-	.rdata      start:0x008CA89C end:0x008CB218
+	.rdata      start:0x008CA8AC end:0x008CB218
 	.CRT$XCU    start:0x00A461A4 end:0x00A461B0 align:4
 	.data       start:0x00A4D600 end:0x00A4D694
 	.bss        start:0x00CD95B0 end:0x00CD9A60
@@ -258,6 +266,7 @@ Black/Bookmark.cpp:
 Black/BuildingSite.cpp:
 	.text       start:0x0043AD90 end:0x0043DD40
 	.rdata      start:0x008CBB58 end:0x008CC050
+	.rdata$r    start:0x00A28810 end:0x00A28968
 	.CRT$XCU    start:0x00A461C4 end:0x00A461D4 align:4
 	.data       start:0x00A4D74C end:0x00A4D838
 	.bss        start:0x00CD9C10 end:0x00CD9E20
@@ -285,14 +294,14 @@ Black/Camera.cpp:
 
 Black/CameraEditor.cpp:
 	.text       start:0x00443B70 end:0x00447310
-	.rdata      start:0x008CC630 end:0x008CC63C
+	.rdata      start:0x008CC630 end:0x008CC65C
 	.CRT$XCU    start:0x00A46200 end:0x00A4620C align:4
 	.data       start:0x00A4DF00 end:0x00A4E3A0
 	.bss        start:0x00CDAB04 end:0x00CDBEFC
 
 Black/CameraHelp.cpp:
 	.text       start:0x00447310 end:0x0044A910
-	.rdata      start:0x008CC63C end:0x008CC67C
+	.rdata      start:0x008CC65C end:0x008CC67C
 	.CRT$XCU    start:0x00A4620C end:0x00A46224 align:4
 	.bss        start:0x00CDBEFC end:0x00CDBF38
 
@@ -402,21 +411,23 @@ Black/CarriedObject.cpp:
 
 Black/Citadel.cpp:
 	.text       start:0x004633F0 end:0x00464D60
-	.rdata      start:0x008CCE1C end:0x008CCE68
+	.rdata      start:0x008CCE1C end:0x008CD370
+	.rdata$r    start:0x00A28FD0 end:0x00A290B0
 	.CRT$XCU    start:0x00A46290 end:0x00A4629C align:4
 	.data       start:0x00A4EBE0 end:0x00A4EDC8
 	.bss        start:0x00CDF184 end:0x00CDF1B4
 
 Black/CitadelHeart.cpp:
 	.text       start:0x00464D60 end:0x00469E90
-	.rdata      start:0x008CCE68 end:0x008CFAF0
+	.rdata      start:0x008CD370 end:0x008CFAF0
+	.rdata$r    start:0x00A290B0 end:0x00A293D0
 	.CRT$XCU    start:0x00A4629C end:0x00A462D0 align:4
 	.data       start:0x00A4EDC8 end:0x00A4EF68
 	.bss        start:0x00CDF1B4 end:0x00CDF334
 
 Black/CitadelPart.cpp:
 	.text       start:0x00469E90 end:0x0046A430
-	.rdata      start:0x008CFAF0 end:0x008D0410
+	.rdata      start:0x008CFAF0 end:0x008D092C
 	.CRT$XCU    start:0x00A462D0 end:0x00A462D8 align:4
 	.bss        start:0x00CDF334 end:0x00CDF3DC
 
@@ -433,7 +444,7 @@ Black/Collide.cpp:
 
 Black/Config.cpp:
 	.text       start:0x0046B950 end:0x0046C260
-	.rdata      start:0x008D0410 end:0x008D0944
+	.rdata      start:0x008D092C end:0x008D0944
 	.CRT$XCU    start:0x00A462E4 end:0x00A462F4 align:4
 	.data       start:0x00A4EFC8 end:0x00A4F114
 	.bss        start:0x00CDF514 end:0x00CDF520
@@ -441,6 +452,7 @@ Black/Config.cpp:
 Black/Container.cpp:
 	.text       start:0x0046C260 end:0x0046C4A0
 	.rdata      start:0x008D0944 end:0x008D0E80
+	.rdata$r    start:0x00A29458 end:0x00A294D0
 	.CRT$XCU    start:0x00A462F4 end:0x00A46304 align:4
 	.bss        start:0x00CDF520 end:0x00CDF580
 
@@ -466,6 +478,7 @@ Black/CPUCheck.cpp:
 Black/Creature.cpp:
 	.text       start:0x00474D50 end:0x004814D0
 	.rdata      start:0x008D0F4C end:0x008D407C
+	.rdata$r    start:0x00A29620 end:0x00A29B90
 	.CRT$XCU    start:0x00A46338 end:0x00A46370 align:4
 	.data       start:0x00A4FCD8 end:0x00A50CA0
 	.bss        start:0x00CE0CE0 end:0x00CE5148
@@ -528,6 +541,7 @@ Black/CreatureDump.cpp:
 Black/CreatureEmpathy.cpp:
 	.text       start:0x004CA170 end:0x004CA7D0
 	.rdata      start:0x008D43D0 end:0x008D4408
+	.rdata$r    start:0x00A29EB0 end:0x00A29F00
 	.CRT$XCU    start:0x00A46414 end:0x00A46420 align:4
 	.data       start:0x00A5A130 end:0x00A5A158
 	.bss        start:0x00D037F4 end:0x00D037FC
@@ -549,6 +563,7 @@ Black/CreatureHelp.cpp:
 Black/CreatureInitialLesson.cpp:
 	.text       start:0x004CD700 end:0x004D0660
 	.rdata      start:0x008D4428 end:0x008D47D0
+	.rdata$r    start:0x00A29F00 end:0x00A2A450
 	.CRT$XCU    start:0x00A46440 end:0x00A4644C align:4
 	.data       start:0x00A5D9C4 end:0x00A5DB40
 	.bss        start:0x00D038D4 end:0x00D038DC
@@ -605,6 +620,7 @@ Black/CreatureMentalAttribute.cpp:
 Black/CreatureMentalAttributeTest.cpp:
 	.text       start:0x004D65B0 end:0x004D9B50
 	.rdata      start:0x008D49AC end:0x008D4E08
+	.rdata$r    start:0x00A2A720 end:0x00A2AC88
 	.CRT$XCU    start:0x00A464A0 end:0x00A464AC align:4
 	.data       start:0x00C5F060 end:0x00C5F988
 	.bss        start:0x00D04178 end:0x00D05350
@@ -619,6 +635,7 @@ Black/CreatureMentalBelief.cpp:
 Black/CreatureMentalBeliefs.cpp:
 	.text       start:0x004DB9D0 end:0x004DD5E0
 	.rdata      start:0x008D4E7C end:0x008D4ED4
+	.rdata$r    start:0x00A2AD10 end:0x00A2AD60
 	.CRT$XCU    start:0x00A464B8 end:0x00A464C4 align:4
 	.data       start:0x00C5F9F4 end:0x00C5FA58
 	.bss        start:0x00D05358 end:0x00D05360
@@ -681,6 +698,7 @@ Black/CreatureMentalLearnAction.cpp:
 Black/CreatureMentalMisc.cpp:
 	.text       start:0x004E5050 end:0x004E5900
 	.rdata      start:0x008D54C0 end:0x008D556C
+	.rdata$r    start:0x00A2B260 end:0x00A2B3A8
 	.CRT$XCU    start:0x00A46550 end:0x00A46564 align:4
 	.data       start:0x00C60428 end:0x00C60510
 	.bss        start:0x00D2AC28 end:0x00D2C110
@@ -726,14 +744,15 @@ Black/CreatureMorph.cpp:
 
 Black/CreaturePen.cpp:
 	.text       start:0x004F10C0 end:0x004F1600
-	.rdata      start:0x008D563C end:0x008D5FA4
+	.rdata      start:0x008D563C end:0x008D64C0
+	.rdata$r    start:0x00A2B448 end:0x00A2B570
 	.CRT$XCU    start:0x00A465B8 end:0x00A465C8 align:4
 	.data       start:0x00C607E0 end:0x00C60868
 	.bss        start:0x00D2EA3C end:0x00D2EA44
 
 Black/CreaturePhysical.cpp:
 	.text       start:0x004F1600 end:0x004F26B0
-	.rdata      start:0x008D5FA4 end:0x008D64F8
+	.rdata      start:0x008D64C0 end:0x008D64F8
 	.CRT$XCU    start:0x00A465C8 end:0x00A465D4 align:4
 	.data       start:0x00C60868 end:0x00C608C0
 	.bss        start:0x00D2EA44 end:0x00D2EA4C
@@ -741,6 +760,7 @@ Black/CreaturePhysical.cpp:
 Black/CreaturePlan.cpp:
 	.text       start:0x004F26B0 end:0x004F44D0
 	.rdata      start:0x008D6530 end:0x008D6570
+	.rdata$r    start:0x00A2B610 end:0x00A2B660
 	.CRT$XCU    start:0x00A465D4 end:0x00A465E0 align:4
 	.data       start:0x00C608C0 end:0x00C60958
 	.bss        start:0x00D2EA4C end:0x00D2EA5C
@@ -793,14 +813,14 @@ Black/CreatureSubAction.cpp:
 
 Black/CreatureSubActions.cpp:
 	.text       start:0x00501CA0 end:0x0050B200
-	.rdata      start:0x008D665C end:0x008D668C
+	.rdata      start:0x008D665C end:0x008D66A0
 	.CRT$XCU    start:0x00A4667C end:0x00A46690 align:4
 	.data       start:0x00C66BF8 end:0x00C66E40
 	.bss        start:0x00D2EAD0 end:0x00D2EAEC
 
 Black/CreatureWhatToDoNext.cpp:
 	.text       start:0x0050B200 end:0x0050CCB0
-	.rdata      start:0x008D668C end:0x008D66C0
+	.rdata      start:0x008D66A0 end:0x008D66C0
 	.CRT$XCU    start:0x00A46690 end:0x00A466A8 align:4
 	.data       start:0x00C66E40 end:0x00C66E70
 	.bss        start:0x00D2EAEC end:0x00D2EAFC
@@ -808,6 +828,7 @@ Black/CreatureWhatToDoNext.cpp:
 Black/Creche.cpp:
 	.text       start:0x0050CCB0 end:0x0050CF70
 	.rdata      start:0x008D66C0 end:0x008D6FF8
+	.rdata$r    start:0x00A2B700 end:0x00A2B768
 	.CRT$XCU    start:0x00A466A8 end:0x00A466B0 align:4
 	.data       start:0x00C66E70 end:0x00C66EB8
 	.bss        start:0x00D2EAFC end:0x00D2EB00
@@ -821,12 +842,14 @@ Black/CreditsRoom.cpp:
 Black/Creed.cpp:
 	.text       start:0x0050D6A0 end:0x0050D8D0
 	.rdata      start:0x008D7000 end:0x008D7860
+	.rdata$r    start:0x00A2B768 end:0x00A2B7C8
 	.CRT$XCU    start:0x00A466C0 end:0x00A466C4 align:4
 	.data       start:0x00C66EB8 end:0x00C66EF8
 
 Black/Dance.cpp:
 	.text       start:0x0050D8D0 end:0x0050EF60
 	.rdata      start:0x008D7860 end:0x008D8F9C
+	.rdata$r    start:0x00A2B7C8 end:0x00A2B8D8
 	.CRT$XCU    start:0x00A466C4 end:0x00A466DC align:4
 	.data       start:0x00C66EF8 end:0x00C68A7C
 	.bss        start:0x00D45B30 end:0x00D46C70
@@ -865,14 +888,14 @@ Black/Data.cpp:
 
 Black/DeadTree.cpp:
 	.text       start:0x00512B40 end:0x00513EF0
-	.rdata      start:0x008DB05C end:0x008DB984
+	.rdata      start:0x008DB05C end:0x008DC294
 	.CRT$XCU    start:0x00A46728 end:0x00A46734 align:4
 	.data       start:0x00C69098 end:0x00C692BC
 	.bss        start:0x00D46EC8 end:0x00D46FEC
 
 Black/Debug.cpp:
 	.text       start:0x00513EF0 end:0x00514650
-	.rdata      start:0x008DB984 end:0x008DD5A4
+	.rdata      start:0x008DC294 end:0x008DD5A4
 	.CRT$XCU    start:0x00A46734 end:0x00A4673C align:4
 	.bss        start:0x00D46FEC end:0x00D4726C
 
@@ -911,14 +934,14 @@ Black/DrawingObject.cpp:
 
 Black/EditorAnim.cpp:
 	.text       start:0x0051FE00 end:0x00521FE0
-	.rdata      start:0x008DD768 end:0x008DD778
+	.rdata      start:0x008DD768 end:0x008DD798
 	.CRT$XCU    start:0x00A46778 end:0x00A46794 align:4
 	.data       start:0x00C69750 end:0x00C69940
 	.bss        start:0x00D472E8 end:0x00D472F8
 
 Black/EditorHug.cpp:
 	.text       start:0x00521FE0 end:0x00522C70
-	.rdata      start:0x008DD778 end:0x008DD7DC
+	.rdata      start:0x008DD798 end:0x008DD7DC
 	.CRT$XCU    start:0x00A46794 end:0x00A467A0 align:4
 	.data       start:0x00C69940 end:0x00C699A8
 	.bss        start:0x00D472F8 end:0x00D47328
@@ -937,21 +960,21 @@ Black/EditorIconBase.cpp:
 
 Black/EditorIconGraph.cpp:
 	.text       start:0x00524220 end:0x005251E0
-	.rdata      start:0x008DD9AC end:0x008DD9B8
+	.rdata      start:0x008DD9AC end:0x008DDA04
 	.CRT$XCU    start:0x00A467C0 end:0x00A467D0 align:4
 	.data       start:0x00C69A90 end:0x00C69AE4
 	.bss        start:0x00D47368 end:0x00D47384
 
 Black/EditorIconPDM.cpp:
 	.text       start:0x005251E0 end:0x00525AC0
-	.rdata      start:0x008DD9B8 end:0x008DDA10
+	.rdata      start:0x008DDA04 end:0x008DDA6C
 	.CRT$XCU    start:0x00A467D0 end:0x00A467DC align:4
 	.data       start:0x00C69AE4 end:0x00C69B64
 	.bss        start:0x00D47384 end:0x00D47394
 
 Black/EditorIconPlace.cpp:
 	.text       start:0x00525AC0 end:0x00526950
-	.rdata      start:0x008DDA10 end:0x008DDACC
+	.rdata      start:0x008DDA6C end:0x008DDACC
 	.CRT$XCU    start:0x00A467DC end:0x00A467E8 align:4
 	.data       start:0x00C69B64 end:0x00C69BA8
 	.bss        start:0x00D47394 end:0x00D4A6F8
@@ -987,26 +1010,27 @@ Black/fallingspell.cpp:
 Black/Feature.cpp:
 	.text       start:0x0052A3E0 end:0x0052AD00
 	.rdata      start:0x008DDC14 end:0x008DEADC
+	.rdata$r    start:0x00A2C298 end:0x00A2C3F8
 	.CRT$XCU    start:0x00A46838 end:0x00A46844 align:4
 	.data       start:0x00C6A4C8 end:0x00C6A5BC
 
 Black/Field.cpp:
 	.text       start:0x0052AD00 end:0x0052D290
-	.rdata      start:0x008DEADC end:0x008DEB84
+	.rdata      start:0x008DEADC end:0x008DF4B8
 	.CRT$XCU    start:0x00A46844 end:0x00A46868 align:4
 	.data       start:0x00C6A5BC end:0x00C6A5EC
 	.bss        start:0x00D50020 end:0x00D50C18
 
 Black/FireFly.cpp:
 	.text       start:0x0052D290 end:0x0052F3A0
-	.rdata      start:0x008DEB84 end:0x008DF500
+	.rdata      start:0x008DF4B8 end:0x008DFD68
 	.CRT$XCU    start:0x00A46868 end:0x00A46874 align:4
 	.data       start:0x00C6A5EC end:0x00C6A680
 	.bss        start:0x00D50C18 end:0x00D50C30
 
 Black/FishFarm.cpp:
 	.text       start:0x0052F3A0 end:0x00530C90
-	.rdata      start:0x008DF500 end:0x008E06D4
+	.rdata      start:0x008DFD68 end:0x008E06D4
 	.CRT$XCU    start:0x00A46874 end:0x00A46884 align:4
 	.data       start:0x00C6A680 end:0x00C6A6E0
 	.bss        start:0x00D50C30 end:0x00D50D68
@@ -1021,14 +1045,14 @@ Black/Fixed.cpp:
 
 Black/Flock.cpp:
 	.text       start:0x005328A0 end:0x00533FC0
-	.rdata      start:0x008E2104 end:0x008E2110
+	.rdata      start:0x008E2104 end:0x008E2610
 	.CRT$XCU    start:0x00A46898 end:0x00A468A0 align:4
 	.data       start:0x00C6A748 end:0x00C6A814
 	.bss        start:0x00D51188 end:0x00D51198
 
 Black/FootBall.cpp:
 	.text       start:0x00533FC0 end:0x00537D90
-	.rdata      start:0x008E2110 end:0x008E2F98
+	.rdata      start:0x008E2610 end:0x008E2F98
 	.CRT$XCU    start:0x00A468A0 end:0x00A468BC align:4
 	.data       start:0x00C6A814 end:0x00C6A9B0
 	.bss        start:0x00D51198 end:0x00D51420
@@ -1042,7 +1066,7 @@ Black/Footpath.cpp:
 
 Black/Forest.cpp:
 	.text       start:0x0053CA50 end:0x0053E5A0
-	.rdata      start:0x008E33E4 end:0x008E3424
+	.rdata      start:0x008E33E4 end:0x008E3924
 	.CRT$XCU    start:0x00A468D8 end:0x00A468E8 align:4
 	.data       start:0x00C6AAA8 end:0x00C6ADDC
 	.bss        start:0x00D51460 end:0x00D51AB8
@@ -1050,7 +1074,7 @@ Black/Forest.cpp:
 Black/frontend.cpp:
 	.text       start:0x0053E5A0 end:0x00549540
 	.text$x     start:0x008AB5F0 end:0x008AB600 align:4
-	.rdata      start:0x008E3424 end:0x008E3CE0
+	.rdata      start:0x008E3924 end:0x008E3CE0
 	.CRT$XCU    start:0x00A468E8 end:0x00A468F8 align:4
 	.data       start:0x00C6ADDC end:0x00C6B040
 	.bss        start:0x00D51AB8 end:0x00D52620
@@ -1064,21 +1088,22 @@ Black/FrontEndSetupGame.cpp:
 
 Black/FrontEndSetupMultiplayer.cpp:
 	.text       start:0x0054CE20 end:0x0054D5D0
-	.rdata      start:0x008E3D10 end:0x008E3D44
+	.rdata      start:0x008E3D10 end:0x008E3D68
 	.CRT$XCU    start:0x00A46904 end:0x00A46910 align:4
 	.data       start:0x00C6B118 end:0x00C6B1C8
 	.bss        start:0x00D5263C end:0x00D545CC
 
 Black/Furniture.cpp:
 	.text       start:0x0054D5D0 end:0x0054D7E0
-	.rdata      start:0x008E3D44 end:0x008E3DB4
+	.rdata      start:0x008E3D68 end:0x008E4610
 	.CRT$XCU    start:0x00A46910 end:0x00A46920 align:4
 	.bss        start:0x00D545CC end:0x00D82910
 
 Black/Game.cpp:
 	.text       start:0x0054D7E0 end:0x0055A680
 	.text$x     start:0x008AB600 end:0x008AB610 align:4
-	.rdata      start:0x008E3DB4 end:0x008E48C0
+	.rdata      start:0x008E4610 end:0x008E48C0
+	.rdata$r    start:0x00A2D290 end:0x00A2D600
 	.CRT$XCU    start:0x00A46920 end:0x00A46958 align:4
 	.bss        start:0x00D82910 end:0x00D82A18
 
@@ -1088,14 +1113,14 @@ Black/GameArea.cpp:
 
 Black/GameInfo.cpp:
 	.text       start:0x0055AA30 end:0x0055B130
-	.rdata      start:0x008E48C0 end:0x008E4900
+	.rdata      start:0x008E48C0 end:0x008E4950
 	.CRT$XCU    start:0x00A46960 end:0x00A4696C align:4
 	.bss        start:0x00D82A18 end:0x00D82A28
 
 Black/GameOptionsRoom.cpp:
 	.text       start:0x0055B130 end:0x0055B4F0
-	.rdata      start:0x008E4900 end:0x00904CB4
-	.rdata$r    start:0x00A2DF28 end:0x00A2DF74
+	.rdata      start:0x008E4950 end:0x00904CB4
+	.rdata$r    start:0x00A2D6A0 end:0x00A30698
 	.CRT$XCU    start:0x00A4696C end:0x00A46980 align:4
 	.bss        start:0x00D82A28 end:0x00D82A80
 
@@ -1187,6 +1212,7 @@ Black/GJPersistent.cpp:
 	.text       start:0x00583E10 end:0x00587420
 	.text$x     start:0x008AB620 end:0x008AB630 align:4
 	.rdata      start:0x00905184 end:0x009052B0
+	.rdata$r    start:0x00A30868 end:0x00A30CE0
 	.xdata$x    start:0x00A3C0A8 end:0x00A3C100 align:4
 	.CRT$XCU    start:0x00A46A84 end:0x00A46A90 align:4
 	.data       start:0x00C6FF28 end:0x00C702A0
@@ -1196,6 +1222,7 @@ Black/GJProperty.cpp:
 	.text       start:0x00587420 end:0x005935B0
 	.text$x     start:0x008AB630 end:0x008AB700 align:4
 	.rdata      start:0x009052B0 end:0x009053C4
+	.rdata$r    start:0x00A30CE0 end:0x00A31078
 	.xdata$x    start:0x00A3C100 end:0x00A3C578 align:4
 	.CRT$XCU    start:0x00A46A90 end:0x00A46AB0 align:4
 	.data       start:0x00C702A0 end:0x00C7066C
@@ -1256,31 +1283,31 @@ Black/GStates.cpp:
 
 Black/HandStateCamera.cpp:
 	.text       start:0x005B3830 end:0x005B4170 align:16
-	.rdata      start:0x00905A50 end:0x00905A5C
+	.rdata      start:0x00905A50 end:0x00905A70
 	.CRT$XCU    start:0x00A46B04 end:0x00A46B10 align:4
 	.bss        start:0x00D94EB0 end:0x00D94EBC
 
 Black/HandStateCitadel.cpp:
 	.text       start:0x005B4170 end:0x005B4950
-	.rdata      start:0x00905A5C end:0x00905A88
+	.rdata      start:0x00905A70 end:0x00905A9C
 	.CRT$XCU    start:0x00A46B10 end:0x00A46B1C align:4
 	.bss        start:0x00D94EBC end:0x00D94EC8
 
 Black/HandStateCreature.cpp:
 	.text       start:0x005B4950 end:0x005B60D0
-	.rdata      start:0x00905A88 end:0x00905AB4
+	.rdata      start:0x00905A9C end:0x00905AF8
 	.CRT$XCU    start:0x00A46B1C end:0x00A46B2C align:4
 	.bss        start:0x00D94EC8 end:0x00D94EE8
 
 Black/HandStateGrain.cpp:
 	.text       start:0x005B60D0 end:0x005B6FB0
-	.rdata      start:0x00905AB4 end:0x00905B08
+	.rdata      start:0x00905AF8 end:0x00905B28
 	.CRT$XCU    start:0x00A46B2C end:0x00A46B40 align:4
 	.bss        start:0x00D94EE8 end:0x00D94F18
 
 Black/HandStateHolding.cpp:
 	.text       start:0x005B6FB0 end:0x005B8D00
-	.rdata      start:0x00905B08 end:0x00905B6C
+	.rdata      start:0x00905B28 end:0x00905B6C
 	.CRT$XCU    start:0x00A46B40 end:0x00A46B54 align:4
 	.bss        start:0x00D94F18 end:0x00D95018
 
@@ -1291,13 +1318,13 @@ Black/HandStateMultiPickUp.cpp:
 
 Black/HandStateNormal.cpp:
 	.text       start:0x005B91F0 end:0x005BAA70
-	.rdata      start:0x00905B90 end:0x00905BA8
+	.rdata      start:0x00905B90 end:0x00905BBC
 	.CRT$XCU    start:0x00A46B58 end:0x00A46B74 align:4
 	.bss        start:0x00D95018 end:0x00D95028
 
 Black/HandStatePlayAnim.cpp:
 	.text       start:0x005BAA70 end:0x005BB350
-	.rdata      start:0x00905BA8 end:0x00905BEC
+	.rdata      start:0x00905BBC end:0x00905BEC
 	.CRT$XCU    start:0x00A46B74 end:0x00A46B84 align:4
 	.bss        start:0x00D95028 end:0x00D95038
 
@@ -1399,33 +1426,33 @@ Black/HelpSystemQuery.cpp:
 
 Black/HelpSystemToolTips.cpp:
 	.text       start:0x005CD150 end:0x005CE2B0
-	.rdata      start:0x009582D4 end:0x009582E4
+	.rdata      start:0x009582D4 end:0x00958310
 	.CRT$XCU    start:0x00A46C0C end:0x00A46C18 align:4
 	.bss        start:0x00D978EC end:0x00D98C68
 
 Black/HelpText.cpp:
 	.text       start:0x005CE2B0 end:0x005D0860
-	.rdata      start:0x009582E4 end:0x0095831C
+	.rdata      start:0x00958310 end:0x00958350
 	.CRT$XCU    start:0x00A46C18 end:0x00A46C34 align:4
 	.data       start:0x00C7236C end:0x00C72418
 	.bss        start:0x00D98C68 end:0x00D98CB4
 
 Black/Influence.cpp:
 	.text       start:0x005D0860 end:0x005D15F0
-	.rdata      start:0x0095831C end:0x0095835C
+	.rdata      start:0x00958350 end:0x00958388
 	.CRT$XCU    start:0x00A46C34 end:0x00A46C40 align:4
 	.bss        start:0x00D98CB4 end:0x00D98CD0
 
 Black/Interface.cpp:
 	.text       start:0x005D15F0 end:0x005D4110
-	.rdata      start:0x0095835C end:0x00958900
+	.rdata      start:0x00958388 end:0x0095891C
 	.CRT$XCU    start:0x00A46C40 end:0x00A46C68 align:4
 	.data       start:0x00C72440 end:0x00C7330C
 	.bss        start:0x00D98CD0 end:0x00D98D60
 
 Black/InterfaceAction.cpp:
 	.text       start:0x005D4110 end:0x005D9060
-	.rdata      start:0x00958900 end:0x00958950
+	.rdata      start:0x0095891C end:0x00958950
 	.CRT$XCU    start:0x00A46C68 end:0x00A46CB4 align:4
 	.bss        start:0x00D98D60 end:0x00D99230
 
@@ -1451,14 +1478,14 @@ Black/InterfaceMessage.cpp:
 
 Black/InterfaceStatus.cpp:
 	.text       start:0x005DF1B0 end:0x005E0D70
-	.rdata      start:0x009589BC end:0x00958AD0
+	.rdata      start:0x009589BC end:0x00958FD4
 	.CRT$XCU    start:0x00A46D0C end:0x00A46D28 align:4
 	.data       start:0x00C7339C end:0x00C73418
 	.bss        start:0x00D9984C end:0x00D999A4
 
 Black/IpSpecialDialog.cpp:
 	.text       start:0x005E0D70 end:0x005E1570
-	.rdata      start:0x00958AD0 end:0x00958FE0
+	.rdata      start:0x00958FD4 end:0x00959004
 	.CRT$XCU    start:0x00A46D28 end:0x00A46D34 align:4
 	.data       start:0x00C73418 end:0x00C7343C
 	.bss        start:0x00D999A4 end:0x00D9A9D0
@@ -1470,7 +1497,7 @@ Black/JCGameBlock.cpp:
 
 Black/JCMisc.cpp:
 	.text       start:0x005E1990 end:0x005E50A0
-	.rdata      start:0x00958FE0 end:0x0095902C
+	.rdata      start:0x00959004 end:0x0095902C
 	.CRT$XCU    start:0x00A46D3C end:0x00A46D60 align:4
 	.data       start:0x00C73BC0 end:0x00C73CE0
 	.bss        start:0x00D9A9D0 end:0x00D9B220
@@ -1532,7 +1559,7 @@ Black/LHInetWeather.cpp:
 Black/LHNetBase.cpp:
 	.text       start:0x005EDF80 end:0x005EF880
 	.text$x     start:0x008AB700 end:0x008AB710 align:16
-	.rdata      start:0x009591C8 end:0x009591E8
+	.rdata      start:0x009591C8 end:0x009591F8
 	.xdata$x    start:0x00A3C578 end:0x00A3C5D0 align:4
 	.CRT$XCU    start:0x00A46DE0 end:0x00A46DF4 align:4
 	.data       start:0x00C7436C end:0x00C74448
@@ -1540,14 +1567,14 @@ Black/LHNetBase.cpp:
 
 Black/Living.cpp:
 	.text       start:0x005EF880 end:0x005F3320
-	.rdata      start:0x009591E8 end:0x00959320
+	.rdata      start:0x009591F8 end:0x00959420
 	.CRT$XCU    start:0x00A46DF4 end:0x00A46E14 align:4
 	.data       start:0x00C74448 end:0x00C744E4
 	.bss        start:0x00DA1530 end:0x00DB1860
 
 Black/LivingProjectile.cpp:
 	.text       start:0x005F3320 end:0x005F4980
-	.rdata      start:0x00959320 end:0x00959430
+	.rdata      start:0x00959420 end:0x00959430
 	.CRT$XCU    start:0x00A46E14 end:0x00A46E24 align:4
 	.data       start:0x00C744E4 end:0x00C7450C
 	.bss        start:0x00DB1860 end:0x00DB1868
@@ -1600,14 +1627,14 @@ Black/MagicCreatureSpellInfo.cpp:
 
 Black/MagicFood.cpp:
 	.text       start:0x005FE390 end:0x005FE6C0
-	.rdata      start:0x00959518 end:0x00959524
+	.rdata      start:0x00959518 end:0x00959D98
 	.CRT$XCU    start:0x00A46E80 end:0x00A46E88 align:4
 	.data       start:0x00C747E0 end:0x00C74814
 	.bss        start:0x00DB8CBC end:0x00DB8CC4
 
 Black/MagicFoodInfo.cpp:
 	.text       start:0x005FE6C0 end:0x005FE850
-	.rdata      start:0x00959524 end:0x00959DB8
+	.rdata      start:0x00959D98 end:0x00959DB8
 	.CRT$XCU    start:0x00A46E88 end:0x00A46E94 align:4
 	.data       start:0x00C74814 end:0x00C74838
 	.bss        start:0x00DB8CC4 end:0x00DB8CD8
@@ -1654,14 +1681,14 @@ Black/MagicTeleport.cpp:
 
 Black/MagicTree.cpp:
 	.text       start:0x00600950 end:0x00600DB0
-	.rdata      start:0x0095A81C end:0x0095A830
+	.rdata      start:0x0095A81C end:0x0095B0A4
 	.CRT$XCU    start:0x00A46EC8 end:0x00A46ED8 align:4
 	.data       start:0x00C7496C end:0x00C74994
 	.bss        start:0x00DB91DC end:0x00DB91F0
 
 Black/MagicVortex.cpp:
 	.text       start:0x00600DB0 end:0x00604850
-	.rdata      start:0x0095A830 end:0x0095D5A0
+	.rdata      start:0x0095B0A4 end:0x0095D5A0
 	.CRT$XCU    start:0x00A46ED8 end:0x00A46EF8 align:4
 	.data       start:0x00C74994 end:0x00C74BE8
 	.bss        start:0x00DB91F0 end:0x00DB92E8
@@ -1707,6 +1734,7 @@ Black/Mobile.cpp:
 Black/MobileObject.cpp:
 	.text       start:0x0060A820 end:0x0060BFB0
 	.rdata      start:0x0095E3C0 end:0x0095E408
+	.rdata$r    start:0x00A32268 end:0x00A322A8
 	.CRT$XCU    start:0x00A46F30 end:0x00A46F40 align:4
 	.data       start:0x00C74C90 end:0x00C74CB8
 	.bss        start:0x00DB9410 end:0x00DBB6A4
@@ -1739,41 +1767,42 @@ Black/MPFEAlexDialog.cpp:
 
 Black/MPFEChannelData.cpp:
 	.text       start:0x00626170 end:0x0062A3A0
-	.rdata      start:0x0095E4A8 end:0x0095E4B4
+	.rdata      start:0x0095E4A8 end:0x0095E4C8
+	.rdata$r    start:0x00A32300 end:0x00A32368
 	.CRT$XCU    start:0x00A46F78 end:0x00A46F88 align:4
 	.data       start:0x00C75120 end:0x00C75218
 	.bss        start:0x00DC1858 end:0x00DC18A0
 
 Black/MPFEChannelMessages.cpp:
 	.text       start:0x0062A3A0 end:0x0062BF90
-	.rdata      start:0x0095E4B4 end:0x0095E56C
+	.rdata      start:0x0095E4C8 end:0x0095E574
 	.CRT$XCU    start:0x00A46F88 end:0x00A46FA0 align:4
 	.data       start:0x00C75218 end:0x00C754EC
 	.bss        start:0x00DC18A0 end:0x00DC1968
 
 Black/MPFEChannelSelector.cpp:
 	.text       start:0x0062BF90 end:0x0062E930
-	.rdata      start:0x0095E56C end:0x0095E5A8
+	.rdata      start:0x0095E574 end:0x0095E5CC
 	.CRT$XCU    start:0x00A46FA0 end:0x00A46FB4 align:4
 	.data       start:0x00C754EC end:0x00C755B4
 	.bss        start:0x00DC1968 end:0x00DC1DC4
 
 Black/MPFEChooseConnection.cpp:
 	.text       start:0x0062E930 end:0x0062F5F0
-	.rdata      start:0x0095E5A8 end:0x0095E5D8
+	.rdata      start:0x0095E5CC end:0x0095E5FC
 	.CRT$XCU    start:0x00A46FB4 end:0x00A46FC4 align:4
 	.data       start:0x00C755B4 end:0x00C75684
 	.bss        start:0x00DC1DC4 end:0x00DC1DD0
 
 Black/MPFEClanDetails.cpp:
 	.text       start:0x0062F5F0 end:0x00630390
-	.rdata      start:0x0095E5D8 end:0x0095E628
+	.rdata      start:0x0095E5FC end:0x0095E630
 	.CRT$XCU    start:0x00A46FC4 end:0x00A46FD8 align:4
 	.bss        start:0x00DC1DD0 end:0x00DC1DE8
 
 Black/MPFEConditionMessages.cpp:
 	.text       start:0x00630390 end:0x006317C0
-	.rdata      start:0x0095E628 end:0x0095E660
+	.rdata      start:0x0095E630 end:0x0095E660
 	.CRT$XCU    start:0x00A46FD8 end:0x00A47000 align:4
 	.bss        start:0x00DC1DE8 end:0x00DC1E30
 
@@ -1797,20 +1826,21 @@ Black/MPFEDatabase.cpp:
 Black/MPFEDownloads.cpp:
 	.text       start:0x00632240 end:0x006328D0
 	.rdata      start:0x0095E674 end:0x0095E6B0
+	.rdata$r    start:0x00A32A3C end:0x00A32AF0
 	.CRT$XCU    start:0x00A47020 end:0x00A47028 align:4
 	.data       start:0x00C7E2F0 end:0x00C7E328
 	.bss        start:0x00DC1EA8 end:0x00DC1EB0
 
 Black/MPFEFileTransfer.cpp:
 	.text       start:0x006328D0 end:0x00633200
-	.rdata      start:0x0095E6B0 end:0x0095E6CC
+	.rdata      start:0x0095E6B0 end:0x0095E6D4
 	.CRT$XCU    start:0x00A47028 end:0x00A47038 align:4
 	.data       start:0x00C7E328 end:0x00C7E3B4
 	.bss        start:0x00DC1EB0 end:0x00DC1EF0
 
 Black/MPFEFindGame.cpp:
 	.text       start:0x00633200 end:0x006337A0
-	.rdata      start:0x0095E6CC end:0x0095E704
+	.rdata      start:0x0095E6D4 end:0x0095E704
 	.CRT$XCU    start:0x00A47038 end:0x00A47048 align:4
 	.data       start:0x00C7E3B4 end:0x00C7E3E0
 	.bss        start:0x00DC1EF0 end:0x00DC1EFC
@@ -1832,6 +1862,7 @@ Black/MPFELogin.cpp:
 Black/MPFEMapMessages.cpp:
 	.text       start:0x00634E30 end:0x006352A0
 	.rdata      start:0x0095E798 end:0x0095E7B8
+	.rdata$r    start:0x00A32E10 end:0x00A32EB0
 	.CRT$XCU    start:0x00A4706C end:0x00A4707C align:4
 	.data       start:0x00C7E618 end:0x00C7E6BC
 	.bss        start:0x00DC2060 end:0x00DC2070
@@ -1845,14 +1876,14 @@ Black/MPFEPlayerDetails.cpp:
 
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x00637060 end:0x00637760
-	.rdata      start:0x0095E7DC end:0x0095E80C
+	.rdata      start:0x0095E7DC end:0x0095E814
 	.CRT$XCU    start:0x00A47090 end:0x00A470A4 align:4
 	.data       start:0x00C7E83C end:0x00C7E8DC
 	.bss        start:0x00DC2090 end:0x00DC20B0
 
 Black/MusicMood.cpp:
 	.text       start:0x00637760 end:0x00638100
-	.rdata      start:0x0095E80C end:0x0095E824
+	.rdata      start:0x0095E814 end:0x0095E824
 	.CRT$XCU    start:0x00A470A4 end:0x00A470B4 align:4
 	.data       start:0x00C7E8DC end:0x00C7E914
 	.bss        start:0x00DC20B0 end:0x00DC2300
@@ -1866,6 +1897,7 @@ Black/Network.cpp:
 Black/Object.cpp:
 	.text       start:0x00639FB0 end:0x0063E860
 	.rdata      start:0x0095E844 end:0x0095F108
+	.rdata$r    start:0x00A33088 end:0x00A33100
 	.CRT$XCU    start:0x00A470CC end:0x00A470E4 align:4
 	.data       start:0x00C7EA1C end:0x00C7EA40
 	.bss        start:0x00DC2484 end:0x00DC5364
@@ -1915,28 +1947,28 @@ Black/PCInput.cpp:
 
 Black/PCMain.cpp:
 	.text       start:0x00646150 end:0x00647E60
-	.rdata      start:0x0095FA40 end:0x0095FADC
+	.rdata      start:0x0095FA40 end:0x0095FAE4
 	.CRT$XCU    start:0x00A4717C end:0x00A47188 align:4
 	.data       start:0x00C7F6B0 end:0x00C7F8E0
 	.bss        start:0x00DC7C54 end:0x00DC7C8C
 
 Black/PFootball.cpp:
 	.text       start:0x00647E60 end:0x00648B40
-	.rdata      start:0x0095FADC end:0x00960090
+	.rdata      start:0x0095FAE4 end:0x0096099C
 	.CRT$XCU    start:0x00A47188 end:0x00A47198 align:4
 	.data       start:0x00C7F8E0 end:0x00C7FA34
 	.bss        start:0x00DC7C8C end:0x00DC89B0
 
 Black/PhysicsObject.cpp:
 	.text       start:0x00648B40 end:0x0064BDC0
-	.rdata      start:0x00960090 end:0x009609A8
+	.rdata      start:0x0096099C end:0x009609C8
 	.CRT$XCU    start:0x00A47198 end:0x00A471A8 align:4
 	.data       start:0x00C7FA34 end:0x00C7FBC8
 	.bss        start:0x00DC89B0 end:0x00DC89D8
 
 Black/PlaceSupport.cpp:
 	.text       start:0x0064BDC0 end:0x0064D020
-	.rdata      start:0x009609A8 end:0x009609D8
+	.rdata      start:0x009609C8 end:0x009609D8
 	.CRT$XCU    start:0x00A471A8 end:0x00A471C4 align:4
 	.bss        start:0x00DC89D8 end:0x00DC8B20
 
@@ -1971,14 +2003,14 @@ Black/PlayerActions.cpp:
 
 Black/PlayerComputer.cpp:
 	.text       start:0x0065A300 end:0x0065D8A0
-	.rdata      start:0x00960B28 end:0x00960B38
+	.rdata      start:0x00960B28 end:0x00960B44
 	.CRT$XCU    start:0x00A4720C end:0x00A4721C align:4
 	.data       start:0x00C816B8 end:0x00C81728
 	.bss        start:0x00DC9110 end:0x00DC9198
 
 Black/PlayerComputerCreature.cpp:
 	.text       start:0x0065D8A0 end:0x00668460
-	.rdata      start:0x00960B38 end:0x00960B6C
+	.rdata      start:0x00960B44 end:0x00960B6C
 	.CRT$XCU    start:0x00A4721C end:0x00A4724C align:4
 	.data       start:0x00C81728 end:0x00C82798
 	.bss        start:0x00DC9198 end:0x00DCCEAC
@@ -2019,14 +2051,14 @@ Black/PlayerMessage.cpp:
 
 Black/PlaytimeDance.cpp:
 	.text       start:0x00670930 end:0x00671410
-	.rdata      start:0x00960BD0 end:0x00960D20
+	.rdata      start:0x00960BD0 end:0x00960E1C
 	.CRT$XCU    start:0x00A4729C end:0x00A472C0 align:4
 	.data       start:0x00C82B98 end:0x00C82BE0
 	.bss        start:0x00DCD71C end:0x00DCD808
 
 Black/Pot.cpp:
 	.text       start:0x00671410 end:0x00674030
-	.rdata      start:0x00960D20 end:0x00961F58
+	.rdata      start:0x00960E1C end:0x00961F58
 	.CRT$XCU    start:0x00A472C0 end:0x00A472D4 align:4
 	.data       start:0x00C82BE0 end:0x00C82C1C
 	.bss        start:0x00DCD808 end:0x00DCF024
@@ -2065,7 +2097,7 @@ Black/PSysBase.cpp:
 
 Black/PSysBaseModifiers.cpp:
 	.text       start:0x0067A300 end:0x0067BD90
-	.rdata      start:0x009634E0 end:0x00963530
+	.rdata      start:0x009634E0 end:0x00963550
 	.CRT$XCU    start:0x00A47318 end:0x00A47330 align:4
 	.bss        start:0x00DCF320 end:0x00DCF354
 
@@ -2074,13 +2106,13 @@ Black/PSysBeam.cpp:
 
 Black/PSysCreature.cpp:
 	.text       start:0x0067C6C0 end:0x0067E040
-	.rdata      start:0x00963530 end:0x00963588
+	.rdata      start:0x00963550 end:0x009635B8
 	.CRT$XCU    start:0x00A47330 end:0x00A47344 align:4
 	.bss        start:0x00DCF354 end:0x00DCF468
 
 Black/PSysDraw.cpp:
 	.text       start:0x0067E040 end:0x00681DA0
-	.rdata      start:0x00963588 end:0x009635D0
+	.rdata      start:0x009635B8 end:0x009635D0
 	.CRT$XCU    start:0x00A47344 end:0x00A47364 align:4
 	.data       start:0x00C82F28 end:0x00C82F30
 	.bss        start:0x00DCF468 end:0x00DCF480
@@ -2112,28 +2144,28 @@ Black/PSysFireball.cpp:
 
 Black/PSysGeom.cpp:
 	.text       start:0x00687CE0 end:0x0068C360
-	.rdata      start:0x00963FCC end:0x0096447C
+	.rdata      start:0x00963FCC end:0x00964578
 	.CRT$XCU    start:0x00A473BC end:0x00A473EC align:4
 	.data       start:0x00C83048 end:0x00C83390
 	.bss        start:0x00DCF8A4 end:0x00DCFCF8
 
 Black/PSysGesture.cpp:
 	.text       start:0x0068C360 end:0x00691150
-	.rdata      start:0x0096447C end:0x009647DC
+	.rdata      start:0x00964578 end:0x009648E0
 	.CRT$XCU    start:0x00A473EC end:0x00A47434 align:4
 	.data       start:0x00C83390 end:0x00C834B4
 	.bss        start:0x00DCFCF8 end:0x00DCFD44
 
 Black/PSysHandFX.cpp:
 	.text       start:0x00691150 end:0x00693140
-	.rdata      start:0x009647DC end:0x00964A2C
+	.rdata      start:0x009648E0 end:0x00964A54
 	.CRT$XCU    start:0x00A47434 end:0x00A47448 align:4
 	.data       start:0x00C834B4 end:0x00C84E34
 	.bss        start:0x00DCFD44 end:0x00DCFD7C
 
 Black/PSysInterface.cpp:
 	.text       start:0x00693140 end:0x00694620
-	.rdata      start:0x00964A2C end:0x00964A70
+	.rdata      start:0x00964A54 end:0x00964A70
 	.CRT$XCU    start:0x00A47448 end:0x00A47464 align:4
 	.data       start:0x00C84E34 end:0x00C84E90
 	.bss        start:0x00DCFD7C end:0x00DCFDD8
@@ -2158,21 +2190,21 @@ Black/PSysLocal.cpp:
 
 Black/PSysMagicSystem.cpp:
 	.text       start:0x0069F480 end:0x006A22C0
-	.rdata      start:0x00964DD4 end:0x00965248
+	.rdata      start:0x00964DD4 end:0x0096534C
 	.CRT$XCU    start:0x00A474A8 end:0x00A474C8 align:4
 	.data       start:0x00C84F84 end:0x00C850F4
 	.bss        start:0x00DCFE78 end:0x00DCFEF4
 
 Black/PSysModifiers.cpp:
 	.text       start:0x006A22C0 end:0x006ACC40
-	.rdata      start:0x00965248 end:0x00965850
+	.rdata      start:0x0096534C end:0x0096594C
 	.CRT$XCU    start:0x00A474C8 end:0x00A474DC align:4
 	.data       start:0x00C850F4 end:0x00C85430
 	.bss        start:0x00DCFEF4 end:0x00DCFF28
 
 Black/PSysPCreator.cpp:
 	.text       start:0x006ACC40 end:0x006AF760
-	.rdata      start:0x00965850 end:0x00965BC8
+	.rdata      start:0x0096594C end:0x00965BC8
 	.CRT$XCU    start:0x00A474DC end:0x00A474F0 align:4
 	.data       start:0x00C85430 end:0x00C856A8
 	.bss        start:0x00DCFF28 end:0x00DCFF40
@@ -2208,26 +2240,26 @@ Black/PSysShield.cpp:
 
 Black/PSysSound.cpp:
 	.text       start:0x006D55A0 end:0x006D5EC0
-	.rdata      start:0x00968158 end:0x00968278
+	.rdata      start:0x00968158 end:0x00968374
 	.CRT$XCU    start:0x00A47550 end:0x00A47560 align:4
 	.bss        start:0x00DD0028 end:0x00DD0054
 
 Black/PSysTornado.cpp:
 	.text       start:0x006D5EC0 end:0x006DAA40
-	.rdata      start:0x00968278 end:0x00968520
+	.rdata      start:0x00968374 end:0x0096861C
 	.CRT$XCU    start:0x00A47560 end:0x00A47574 align:4
 	.data       start:0x00C8A404 end:0x00C8A778
 	.bss        start:0x00DD0054 end:0x00DD0098
 
 Black/puzzlegame.cpp:
 	.text       start:0x006DAA40 end:0x006E2E00
-	.rdata      start:0x00968520 end:0x0096EC38
+	.rdata      start:0x0096861C end:0x0096F548
 	.CRT$XCU    start:0x00A47574 end:0x00A47588 align:4
 	.bss        start:0x00DD0098 end:0x00DD0730
 
 Black/RandomBuildingPlacement.cpp:
 	.text       start:0x006E2E00 end:0x006E4940
-	.rdata      start:0x0096EC38 end:0x0096F558
+	.rdata      start:0x0096F548 end:0x0096F558
 	.CRT$XCU    start:0x00A47588 end:0x00A4759C align:4
 	.data       start:0x00C8A778 end:0x00C8A834
 	.bss        start:0x00DD0730 end:0x00DD0758
@@ -2254,7 +2286,7 @@ Black/Reaction.cpp:
 
 Black/Reward.cpp:
 	.text       start:0x006E9CC0 end:0x006EB830
-	.rdata      start:0x0096F624 end:0x0096F6A0
+	.rdata      start:0x0096F624 end:0x0096FF10
 	.CRT$XCU    start:0x00A475CC end:0x00A475E0 align:4
 	.bss        start:0x00DD1870 end:0x00E16B6C
 
@@ -2270,14 +2302,14 @@ Black/RoutePlan.cpp:
 
 Black/Scaffold.cpp:
 	.text       start:0x006ECB70 end:0x006EF990
-	.rdata      start:0x0096F6A0 end:0x0096FF34
+	.rdata      start:0x0096FF10 end:0x0096FF70
 	.CRT$XCU    start:0x00A475EC end:0x00A47600 align:4
 	.data       start:0x00C8CC5C end:0x00C8CC98
 	.bss        start:0x00E16B6C end:0x00E16DB8
 
 Black/Script.cpp:
 	.text       start:0x006EF990 end:0x006F11C0
-	.rdata      start:0x0096FF34 end:0x0096FF80
+	.rdata      start:0x0096FF70 end:0x0096FF9C
 	.CRT$XCU    start:0x00A47600 end:0x00A4760C align:4
 	.data       start:0x00C8CC98 end:0x00C8CE04
 	.bss        start:0x00E16DB8 end:0x00E16DD4
@@ -2290,7 +2322,7 @@ Black/ScriptCamera.cpp:
 
 Black/ScriptContainer.cpp:
 	.text       start:0x006F3C60 end:0x006F5150
-	.rdata      start:0x0096FF80 end:0x0096FFB0
+	.rdata      start:0x0096FF9C end:0x0096FFB0
 	.CRT$XCU    start:0x00A4761C end:0x00A47628 align:4
 	.data       start:0x00C8D000 end:0x00C8D928
 	.bss        start:0x00E16DE0 end:0x00E16FE8
@@ -2343,20 +2375,20 @@ Black/ScriptGFX.cpp:
 
 Black/ScriptHighlight.cpp:
 	.text       start:0x0070DE70 end:0x0070F780
-	.rdata      start:0x00970034 end:0x0097009C
+	.rdata      start:0x00970034 end:0x0097090C
 	.CRT$XCU    start:0x00A47690 end:0x00A476A4 align:4
 	.data       start:0x00CA1298 end:0x00CA15D8
 	.bss        start:0x00E17538 end:0x00E17990
 
 Black/ScriptManage.cpp:
 	.text       start:0x0070F780 end:0x007121C0
-	.rdata      start:0x0097009C end:0x00970928
+	.rdata      start:0x0097090C end:0x0097092C
 	.CRT$XCU    start:0x00A476A4 end:0x00A476C8 align:4
 	.bss        start:0x00E17990 end:0x00E1A1B4
 
 Black/ScriptMarker.cpp:
 	.text       start:0x007121C0 end:0x00715EC0
-	.rdata      start:0x00970928 end:0x00985050
+	.rdata      start:0x0097092C end:0x00985050
 	.CRT$XCU    start:0x00A476C8 end:0x00A47708 align:4
 	.data       start:0x00CA15D8 end:0x00CA184C
 	.bss        start:0x00E1A1B4 end:0x00E1A1E0
@@ -2423,53 +2455,53 @@ Black/SoundConfirmation.cpp:
 
 Black/SoundGuidance.cpp:
 	.text       start:0x0071F3E0 end:0x00721F60
-	.rdata      start:0x009C260C end:0x009EB7A4
+	.rdata      start:0x009C260C end:0x009EB7D0
 	.CRT$XCU    start:0x00A47770 end:0x00A47780 align:4
 	.data       start:0x00CA2F30 end:0x00CA3228
 	.bss        start:0x00E1AD7C end:0x00E1BAA4
 
 Black/SoundMap.cpp:
 	.text       start:0x00721F60 end:0x00722D70
-	.rdata      start:0x009EB7A4 end:0x009EB7E0
+	.rdata      start:0x009EB7D0 end:0x009EB820
 	.CRT$XCU    start:0x00A47780 end:0x00A4778C align:4
 	.bss        start:0x00E1BAA4 end:0x00E1BAF4
 
 Black/SoundTag.cpp:
 	.text       start:0x00722D70 end:0x00723860
-	.rdata      start:0x009EB7E0 end:0x009EB830
+	.rdata      start:0x009EB820 end:0x009EB84C
 	.CRT$XCU    start:0x00A4778C end:0x00A47794 align:4
 	.data       start:0x00CA3228 end:0x00CA3274
 	.bss        start:0x00E1BAF4 end:0x00E1BAFC
 
 Black/SpecialVillager.cpp:
 	.text       start:0x00723860 end:0x00724430
-	.rdata      start:0x009EB830 end:0x009EB860
+	.rdata      start:0x009EB84C end:0x009EB88C
 	.CRT$XCU    start:0x00A47794 end:0x00A477A8 align:4
 	.data       start:0x00CA3274 end:0x00CA3310
 	.bss        start:0x00E1BAFC end:0x00E1E524
 
 Black/Spell.cpp:
 	.text       start:0x00724430 end:0x00726C30
-	.rdata      start:0x009EB860 end:0x009EB8A8
+	.rdata      start:0x009EB88C end:0x009EBDFC
 	.CRT$XCU    start:0x00A477A8 end:0x00A477B8 align:4
 	.bss        start:0x00E1E524 end:0x00E1E534
 
 Black/SpellCreature.cpp:
 	.text       start:0x00726C30 end:0x007270D0
-	.rdata      start:0x009EB8A8 end:0x009EBE0C
+	.rdata      start:0x009EBDFC end:0x009EC360
 	.CRT$XCU    start:0x00A477B8 end:0x00A477C4 align:4
 	.bss        start:0x00E1E534 end:0x00E1E540
 
 Black/SpellDispenser.cpp:
 	.text       start:0x007270D0 end:0x00727B20
-	.rdata      start:0x009EBE0C end:0x009EC370
+	.rdata      start:0x009EC360 end:0x009ECC9C
 	.CRT$XCU    start:0x00A477C4 end:0x00A477CC align:4
 	.data       start:0x00CA3310 end:0x00CA3334
 	.bss        start:0x00E1E540 end:0x00E1E548
 
 Black/SpellFlock.cpp:
 	.text       start:0x00727B20 end:0x007296C0
-	.rdata      start:0x009EC370 end:0x009ECCE0
+	.rdata      start:0x009ECC9C end:0x009ECCE0
 	.CRT$XCU    start:0x00A477CC end:0x00A477D8 align:4
 	.data       start:0x00CA333C end:0x00CA335C
 	.bss        start:0x00E1E548 end:0x00E1E560
@@ -2490,34 +2522,34 @@ Black/SpellForest.cpp:
 
 Black/SpellIcon.cpp:
 	.text       start:0x0072A8E0 end:0x0072C930
-	.rdata      start:0x009ECCF8 end:0x009ECDA0
+	.rdata      start:0x009ECCF8 end:0x009ED2A4
 	.CRT$XCU    start:0x00A477EC end:0x00A47800 align:4
 	.data       start:0x00CA341C end:0x00CA346C
 	.bss        start:0x00E1E590 end:0x00E1E800
 
 Black/SpellSeed.cpp:
 	.text       start:0x0072C930 end:0x0072F7D0
-	.rdata      start:0x009ECDA0 end:0x009ED2B8
+	.rdata      start:0x009ED2A4 end:0x009EDB20
 	.CRT$XCU    start:0x00A47800 end:0x00A47810 align:4
 	.data       start:0x00CA346C end:0x00CA3528
 	.bss        start:0x00E1E800 end:0x00E1E820
 
 Black/SpellSeedInfo.cpp:
 	.text       start:0x0072F7D0 end:0x0072FD10
-	.rdata      start:0x009ED2B8 end:0x009EDB5C
+	.rdata      start:0x009EDB20 end:0x009EDB98
 	.CRT$XCU    start:0x00A47810 end:0x00A47824 align:4
 	.bss        start:0x00E1E820 end:0x00E21764
 
 Black/SpellShield.cpp:
 	.text       start:0x0072FD10 end:0x00732800
-	.rdata      start:0x009EDB5C end:0x009EFAD4
+	.rdata      start:0x009EDB98 end:0x009F0028
 	.CRT$XCU    start:0x00A47824 end:0x00A4784C align:4
 	.data       start:0x00CA3528 end:0x00CA364C
 	.bss        start:0x00E21764 end:0x00E219B8
 
 Black/SpellWater.cpp:
 	.text       start:0x00732800 end:0x00732ED0
-	.rdata      start:0x009EFAD4 end:0x00A18E24
+	.rdata      start:0x009F0028 end:0x00A18E24
 	.bss        start:0x00E219B8 end:0x00E21A04
 
 Black/SpookyVoices.cpp:
@@ -2528,13 +2560,13 @@ Black/SpookyVoices.cpp:
 
 Black/SpreadEffect.cpp:
 	.text       start:0x00733690 end:0x00737940
-	.rdata      start:0x00A19004 end:0x00A192C4
+	.rdata      start:0x00A19004 end:0x00A193C0
 	.data       start:0x00CA36DC end:0x00CA3794
 	.bss        start:0x00E21B90 end:0x00E21BB0
 
 Black/StoragePit.cpp:
 	.text       start:0x00737940 end:0x00738850
-	.rdata      start:0x00A192C4 end:0x00A193C8
+	.rdata      start:0x00A193C0 end:0x00A193C8
 	.CRT$XCU    start:0x00A47898 end:0x00A478A0 align:4
 	.data       start:0x00CA3794 end:0x00CA37BB
 	.bss        start:0x00E21BB0 end:0x00E21BD4
@@ -2556,7 +2588,7 @@ Black/StreetLight.cpp:
 
 Black/TerrainMaterialInfo.cpp:
 	.text       start:0x00739FA0 end:0x0073A220
-	.rdata      start:0x00A193C8 end:0x00A193D4
+	.rdata      start:0x00A193C8 end:0x00A19404
 	.CRT$XCU    start:0x00A478AC end:0x00A478B8 align:4
 	.bss        start:0x00E21BD4 end:0x00E22EA8
 
@@ -2571,7 +2603,7 @@ Black/TOMnavigator.cpp:
 
 Black/Totem.cpp:
 	.text       start:0x0073C120 end:0x0073C770
-	.rdata      start:0x00A193D4 end:0x00A19424
+	.rdata      start:0x00A19404 end:0x00A19424
 	.CRT$XCU    start:0x00A478C4 end:0x00A478D0 align:4
 	.data       start:0x00CA38C4 end:0x00CA3908
 	.bss        start:0x00E22EA8 end:0x00E22EBC
@@ -2592,21 +2624,21 @@ Black/Town.cpp:
 
 Black/TownAttitudeToCreature.cpp:
 	.text       start:0x00748480 end:0x00748810
-	.rdata      start:0x00A19A20 end:0x00A19A30
+	.rdata      start:0x00A19A20 end:0x00A19A5C
 	.CRT$XCU    start:0x00A478F8 end:0x00A47904 align:4
 	.data       start:0x00CA39C8 end:0x00CA39FC
 	.bss        start:0x00E23AD0 end:0x00E23AD8
 
 Black/TownCentre.cpp:
 	.text       start:0x00748810 end:0x00749840
-	.rdata      start:0x00A19A30 end:0x00A19A68
+	.rdata      start:0x00A19A5C end:0x00A19A70
 	.CRT$XCU    start:0x00A47904 end:0x00A4790C align:4
 	.data       start:0x00CA39FC end:0x00CA3C14
 	.bss        start:0x00E23AD8 end:0x00E23AE4
 
 Black/TownDesire.cpp:
 	.text       start:0x00749840 end:0x0074D820
-	.rdata      start:0x00A19A68 end:0x00A19AF4
+	.rdata      start:0x00A19A70 end:0x00A19AF4
 	.CRT$XCU    start:0x00A4790C end:0x00A4792C align:4
 	.data       start:0x00CA3C1C end:0x00CA3CC4
 	.bss        start:0x00E23AE4 end:0x00E24B78
@@ -2620,14 +2652,14 @@ Black/TownSpellIcon.cpp:
 
 Black/Tree.cpp:
 	.text       start:0x0074EAB0 end:0x00751610
-	.rdata      start:0x00A19AFC end:0x00A19B14
+	.rdata      start:0x00A19AFC end:0x00A19B74
 	.CRT$XCU    start:0x00A47938 end:0x00A47948 align:4
 	.data       start:0x00CA3D88 end:0x00CA4128
 	.bss        start:0x00E24C88 end:0x00E26A5C
 
 Black/TribeInfo.cpp:
 	.text       start:0x00751610 end:0x00752D80
-	.rdata      start:0x00A19B14 end:0x00A19BD0
+	.rdata      start:0x00A19B74 end:0x00A19BD0
 	.CRT$XCU    start:0x00A47948 end:0x00A47964 align:4
 	.bss        start:0x00E26A5C end:0x00E27BD8
 
@@ -2794,14 +2826,14 @@ Black/VillagerWorshipper.cpp:
 
 Black/VirtualInfluence.cpp:
 	.text       start:0x00771A20 end:0x00772240
-	.rdata      start:0x00A1A454 end:0x00A1A460
+	.rdata      start:0x00A1A454 end:0x00A1A47C
 	.CRT$XCU    start:0x00A47A78 end:0x00A47A84 align:4
 	.data       start:0x00CA5480 end:0x00CA54A0
 	.bss        start:0x00E4C334 end:0x00E4C340
 
 Black/ViscousLiquid.cpp:
 	.text       start:0x00772240 end:0x00774620
-	.rdata      start:0x00A1A460 end:0x00A1AD98
+	.rdata      start:0x00A1A47C end:0x00A1AD98
 	.CRT$XCU    start:0x00A47A84 end:0x00A47A90 align:4
 	.data       start:0x00CA54A0 end:0x00CA54F4
 	.bss        start:0x00E4C340 end:0x00E4C34C
@@ -2825,21 +2857,21 @@ Black/WayPoint.cpp:
 
 Black/Weather.cpp:
 	.text       start:0x00775B40 end:0x00778A10
-	.rdata      start:0x00A1B39C end:0x00A1B3F0
+	.rdata      start:0x00A1B39C end:0x00A1B430
 	.CRT$XCU    start:0x00A47AA0 end:0x00A47AB0 align:4
 	.data       start:0x00CA55F8 end:0x00CA57D8
 	.bss        start:0x00E4C34C end:0x00E4CB2C
 
 Black/WeatherRain.cpp:
 	.text       start:0x00778A10 end:0x00778C70
-	.rdata      start:0x00A1B3F0 end:0x00A1B43C
+	.rdata      start:0x00A1B430 end:0x00A1B470
 	.CRT$XCU    start:0x00A47AB0 end:0x00A47ABC align:4
 	.data       start:0x00CA57D8 end:0x00CA58B4
 	.bss        start:0x00E4CB2C end:0x00E4CB30
 
 Black/WeatherThing.cpp:
 	.text       start:0x00778C70 end:0x00779830
-	.rdata      start:0x00A1B43C end:0x00A1B478
+	.rdata      start:0x00A1B470 end:0x00A1B478
 	.CRT$XCU    start:0x00A47ABC end:0x00A47AC8 align:4
 	.bss        start:0x00E4CB30 end:0x00E4CB34
 
@@ -2869,6 +2901,7 @@ Black/Workshop.cpp:
 Black/Worship.cpp:
 	.text       start:0x0077F590 end:0x00783920
 	.rdata      start:0x00A1BE3C end:0x00A1C3E0
+	.rdata$r    start:0x00A3A540 end:0x00A3A600
 	.CRT$XCU    start:0x00A47B04 end:0x00A47B1C align:4
 	.data       start:0x00CA5B54 end:0x00CA5BD8
 	.bss        start:0x00E4CE50 end:0x00E4DB50
@@ -2876,6 +2909,7 @@ Black/Worship.cpp:
 Black/WorshipSiteUpgrade.cpp:
 	.text       start:0x00783920 end:0x00783DD0
 	.rdata      start:0x00A1C3E0 end:0x00A1D25C
+	.rdata$r    start:0x00A3A600 end:0x00A3A728
 	.CRT$XCU    start:0x00A47B1C end:0x00A47B24 align:4
 	.data       start:0x00CA5BD8 end:0x00CA5C80
 	.bss        start:0x00E4DB50 end:0x00E4DC80
@@ -2899,7 +2933,7 @@ Black/ZipData.cpp:
 
 Black/ChallengeRoom.cpp:
 	.text       start:0x00785FA0 end:0x0078A020
-	.rdata      start:0x00A1E4BC end:0x00A1E4C8
+	.rdata      start:0x00A1E4BC end:0x00A1E508
 	.CRT$XCU    start:0x00A47B44 end:0x00A47B58 align:4
 	.data       start:0x00CA5CF8 end:0x00CA5FD0
 	.bss        start:0x00E51D98 end:0x00E51DC4
@@ -2912,14 +2946,14 @@ Black/ChallengeRoomCamera.cpp:
 
 Black/CreatureRoom.cpp:
 	.text       start:0x0078B300 end:0x0078EBF0
-	.rdata      start:0x00A1E4C8 end:0x00A1E5C0
+	.rdata      start:0x00A1E508 end:0x00A1E5EC
 	.CRT$XCU    start:0x00A47B64 end:0x00A47B7C align:4
 	.data       start:0x00CA7DC0 end:0x00CA9298
 	.bss        start:0x00E51DC8 end:0x00E62B98
 
 Black/CreatureRoomCamera.cpp:
 	.text       start:0x0078EBF0 end:0x007928D0
-	.rdata      start:0x00A1E5C0 end:0x00A1E6C4
+	.rdata      start:0x00A1E5EC end:0x00A1E6C4
 	.CRT$XCU    start:0x00A47B7C end:0x00A47BBC align:4
 	.bss        start:0x00E62B98 end:0x00E8307C
 
@@ -2942,14 +2976,14 @@ Black/PictureRoom.cpp:
 
 Black/SaveGameRoom.cpp:
 	.text       start:0x00794570 end:0x00798870
-	.rdata      start:0x00A1E7DC end:0x00A1E7EC
+	.rdata      start:0x00A1E7DC end:0x00A1E82C
 	.CRT$XCU    start:0x00A47BCC end:0x00A47BE0 align:4
 	.data       start:0x00CA9728 end:0x00CAB010
 	.bss        start:0x00E870D8 end:0x00E8719C
 
 Black/Temple.cpp:
 	.text       start:0x00798870 end:0x007999D0
-	.rdata      start:0x00A1E7EC end:0x00A1E840
+	.rdata      start:0x00A1E82C end:0x00A1E840
 	.CRT$XCU    start:0x00A47BE0 end:0x00A47BFC align:4
 	.bss        start:0x00E8719C end:0x00EB7270
 
@@ -2961,14 +2995,14 @@ Black/TempleEngine.cpp:
 
 Black/TempleRoom.cpp:
 	.text       start:0x0079D230 end:0x0079F860
-	.rdata      start:0x00A1E894 end:0x00A1E8B4
+	.rdata      start:0x00A1E894 end:0x00A1E900
 	.CRT$XCU    start:0x00A47C00 end:0x00A47C24 align:4
 	.data       start:0x00CAB074 end:0x00CAB1D8
 	.bss        start:0x00EB7270 end:0x00EB72FC
 
 Black/TempleRoomAddText.cpp:
 	.text       start:0x0079F860 end:0x007A1CC0
-	.rdata      start:0x00A1E8B4 end:0x00A1E914
+	.rdata      start:0x00A1E900 end:0x00A1E914
 	.CRT$XCU    start:0x00A47C24 end:0x00A47C30 align:4
 	.data       start:0x00CAB1D8 end:0x00CAB210
 	.bss        start:0x00EB72FC end:0x00EB7308
