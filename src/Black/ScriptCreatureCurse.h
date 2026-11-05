@@ -3,24 +3,20 @@
 
 #include <assert.h> /* For static_assert */
 
-// Forward Declares
-
 class Creature;
 
 struct ScriptCreatureCurse
 {
-	float height; /* 0x0 */
-	float strength;
-	float alignment;
+	float Height; /* 0x0 */
+	float Strength;
+	float Alignment;
 
 	ScriptCreatureCurse()
 	{
-		alignment = 0.0f;
-		strength = 0.0f;
-		height = 0.0f;
+		Alignment = 0.0f;
+		Strength = 0.0f;
+		Height = 0.0f;
 	}
-
-	// Non-virtual methods
 
 	// BW1W120 006f6190 BW1M119 015f04a0
 	void Init(Creature* creature);

@@ -2374,6 +2374,10 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006FA8A5, copy_run(0x006FA82A)),  # ScriptCreature
     (0x006FA968, copy_run(0x006FA8A5)),  # ScriptCreature
     (0x006FA9F3, jmp_run(0x006FA968)),  # ScriptCreature
+    (0x006FAA53, jmp_run(0x006FA9F3)),  # ScriptCreatureCurse
+    (0x006FAA7B, jmp_run(0x006FAA53)),  # ScriptCreatureCurse
+    (0x006FAAC4, copy_run(0x006FAA7B)),  # ScriptCreatureCurse
+    (0x006FAB3A, jmp_run(0x006FAAC4)),  # ScriptCreatureCurse
     (0x006FC4AB, copy_run(0x006FC45C)),  # ScriptFunctions
     (0x006FC4D3, jmp_run(0x006FC4AB)),  # ScriptFunctions
     (0x006FC554, jmp_run(0x006FC4D3)),  # ScriptFunctions
