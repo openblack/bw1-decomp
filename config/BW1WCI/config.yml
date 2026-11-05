@@ -7,6 +7,8 @@ splits: config/BW1WCI/splits.txt
 generate_imports: false
 
 block_relocations:
+# "tMM" of LHFile's Version.cpp LH_VERSION_END_TAG reads as a pointer into code.
+  - source: 0x00C9F59C
 # libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in Creature Isle's larger image both read as pointers.
   - source: 0x008CAAB0
   - source: 0x00A16224
@@ -140,6 +142,8 @@ block_relocations:
   - source: 0x008D4998
   - source: 0x00C9689C
   - source: 0x00CA46BC
+# LH3DWater::g_color_water's initial 0x00FFFFFF reads as an address inside NewCols.
+  - source: 0x00CACEBC
 add_relocations:
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005DDFC2

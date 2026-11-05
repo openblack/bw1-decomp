@@ -11,6 +11,8 @@ block_relocations:
   - source: 0x006378AE
 # "tMM" of Version.cpp's LH_VERSION_END_TAG reads as a pointer into Creature::CanCreatureCastSpell.
   - source: 0x00CA42B4
+# The same "tMM" in LHFile's Version.cpp.
+  - source: 0x00CACE14
 # libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in 1.30's larger image both read as pointers.
   - source: 0x008A4560
   - source: 0x00A26010

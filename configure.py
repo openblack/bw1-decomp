@@ -1513,6 +1513,7 @@ config.libs = [
             Object(Matching, "zlib/uncompr.c", progress_category="sdk"),
 
             Object(NonMatching, "Lionhead/LHFile/ver3.0/LHParseFile.cpp", progress_category="sdk"),
+            Object(Matching, "Lionhead/LHFile/ver3.0/Version.cpp", progress_category="sdk"),
 
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "zlib/deflate.c", progress_category="sdk"),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "zlib/inflate.c", progress_category="sdk"),
@@ -1850,6 +1851,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSky.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/SnowCover.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/DynamicLightAndShadow.cpp", pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DCamera.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LHLib/ver5.0/RPlan.cpp", extra_cflags=["/GX", *cflags_route_planner], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LHPoint.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DFade.cpp", pch=True),
@@ -1858,6 +1860,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DDynamicShadow.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LandBlock.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DWater.cpp", pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPolygonIsland.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DCT.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DSubMesh.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LHIlib.cpp", pch=True),
@@ -1890,6 +1893,8 @@ config.libs = [
             GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/Chat/chatHandlers.c", progress_category="sdk"),
             GameSpyObject(MatchingFor("BW1W120", "BW1W130"), "GameSpy/CEngine/gserverlist.c", progress_category="sdk"),
             GameSpyObject(MatchingFor("BW1W100", "BW1W120", "BW1W130", "BW1WCI"), "GameSpy/pinger/pingerMain.c", progress_category="sdk"),
+
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHJpeg.cpp", progress_category="sdk"),
 
             Object(Matching, "jpeg/jcapimin.c", progress_category="sdk"),
             Object(Matching, "jpeg/jerror.c", progress_category="sdk"),
