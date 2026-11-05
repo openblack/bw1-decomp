@@ -14,9 +14,9 @@ class GWeather : public LH3DStorm
 {
 public:
 	// BW1W120 00c24758
-	static bool StormCreationPaused;
+	static bool StormCreationActive;
 	// BW1W120 00c24759
-	static bool Paused;
+	static bool ClimateActive;
 
 	// Override methods
 

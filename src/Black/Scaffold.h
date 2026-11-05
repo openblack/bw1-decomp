@@ -56,7 +56,7 @@ public:
 	uint16_t             field_0x88_c : 4;
 	uint8_t              field_0x8a[0x2];
 	Town*                town;
-	uint32_t             BuildingType;
+	ABODE_INFO           BuildingType;
 	uint32_t             field_0x94;
 	LHListNode<Scaffold> next;
 

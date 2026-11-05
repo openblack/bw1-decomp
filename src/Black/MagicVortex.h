@@ -61,6 +61,8 @@ class Villager;
 class VortexSave;
 struct LHMatrix;
 
+#define MAGIC_VORTEX_SCRIPT_RADIUS 50.0f
+
 class LandscapeVortex : public MobileStatic
 {
 public:

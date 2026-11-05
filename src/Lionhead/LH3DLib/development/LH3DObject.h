@@ -37,6 +37,9 @@ struct TShadowInfo;
 // The diagonal of a square shadow over the length of its side.
 #define LH3D_OBJECT_SHADOW_DIAGONAL_SCALE 1.4142f
 
+#define LH3D_OBJECT_FLAG2_NOT_AFFECTED_BY_SNOW_BIT 5
+#define LH3D_OBJECT_FLAG2_NOT_AFFECTED_BY_SNOW     (1 << LH3D_OBJECT_FLAG2_NOT_AFFECTED_BY_SNOW_BIT)
+
 enum LH3D_OBJECT_FLAGS2
 {
 	LH3D_OBJECT_FLAGS2_OUT_OF_MAP = 0x40,

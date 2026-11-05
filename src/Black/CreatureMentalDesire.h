@@ -63,14 +63,7 @@ public:
 	void SetLevel(CREATURE_DESIRES desire, float level)
 	{
 		Levels[desire] = level;
-		if (Levels[desire] < 0.0f)
-		{
-			Levels[desire] = 0.0f;
-		}
-		else if (Levels[desire] > 1.0f)
-		{
-			Levels[desire] = 1.0f;
-		}
+		CLAMP(Levels[desire], 0.0f, 1.0f);
 	}
 
 	// BW1W120 004dc100 BW1M119 0125ee30

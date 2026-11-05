@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum CREATURE_DESIRES, MAGIC_TYPE_LAST */
+#include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
+#include <chlasm/Enum.h>          /* For enum CREATURE_DESIRES, MAGIC_TYPE_LAST */
 
 #include "EffectInfo.h"  /* For struct GEffectInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
@@ -55,7 +56,7 @@ public:
 	uint32_t         field_0xec;
 	uint32_t         field_0xf0;
 	uint32_t         field_0xf4;
-	uint32_t         HelpEnum;
+	HELP_TEXT        HelpEnum;
 	uint32_t         field_0xfc;
 	uint32_t         field_0x100;
 	uint32_t         field_0x104;

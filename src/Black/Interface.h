@@ -192,7 +192,7 @@ public:
 	// BW1W120 inlined BW1M119 014f3b00
 	HAND_STATE GetHandState() const { return HandState.hand_state; }
 	// BW1W120 005dad60 BW1M119 013742f0
-	void StartPlayBack(char* path, uint32_t task, int without_hand_modify);
+	void StartPlayBack(char* path, uint32_t task, bool32_t without_hand_modify);
 	// BW1W120 005d0610 BW1M119 01086440
 	void UpdateHandRenderCollide();
 	// BW1W120 005d7e40 BW1M119 01077010

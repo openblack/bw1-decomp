@@ -79,10 +79,7 @@ void GScript::StopScript()
 {
 	ScriptDLL* dll = g_scriptDLL;
 	GGame::g_game->script->StopList = dll->STRING(dll->ULONG_POP());
-	if (GGame::g_game->script->StopList == NULL)
-	{
-		ScriptErrorMessage("Jonty - Invalid ptr");
-	}
+	SCRIPT_ASSERT(GGame::g_game->script->StopList != NULL, "Jonty - Invalid ptr");
 	GGame::g_game->script->StopScript(GGame::g_game->script->StopList);
 }
 
@@ -90,10 +87,7 @@ void GScript::StopScriptsExcluding()
 {
 	ScriptDLL* dll = g_scriptDLL;
 	GGame::g_game->script->StopList = dll->STRING(dll->ULONG_POP());
-	if (GGame::g_game->script->StopList == NULL)
-	{
-		ScriptErrorMessage("Jonty - Invalid ptr");
-	}
+	SCRIPT_ASSERT(GGame::g_game->script->StopList != NULL, "Jonty - Invalid ptr");
 	g_scriptDLL->StopScripts(NotNameCheck);
 }
 
@@ -103,10 +97,8 @@ void GScript::StopScriptsInFilesExcluding()
 	GGame::g_game->script->StopList = dll->STRING(dll->ULONG_POP());
 	dll = g_scriptDLL;
 	GGame::g_game->script->StopFileList = dll->STRING(dll->ULONG_POP());
-	if (GGame::g_game->script->StopList == NULL || GGame::g_game->script->StopFileList == NULL)
-	{
-		ScriptErrorMessage("Jonty - Invalid ptr");
-	}
+	SCRIPT_ASSERT(GGame::g_game->script->StopList != NULL && GGame::g_game->script->StopFileList != NULL,
+	              "Jonty - Invalid ptr");
 	g_scriptDLL->StopScripts(FilenameAndNotScriptCheck);
 }
 
@@ -114,10 +106,7 @@ void GScript::StopScriptsExcludingFiles()
 {
 	ScriptDLL* dll = g_scriptDLL;
 	GGame::g_game->script->StopList = dll->STRING(dll->ULONG_POP());
-	if (GGame::g_game->script->StopList == NULL)
-	{
-		ScriptErrorMessage("Jonty - Invalid ptr");
-	}
+	SCRIPT_ASSERT(GGame::g_game->script->StopList != NULL, "Jonty - Invalid ptr");
 	g_scriptDLL->StopScripts(NotFilenameCheck);
 }
 
@@ -125,10 +114,7 @@ void GScript::StopScriptsInFiles()
 {
 	ScriptDLL* dll = g_scriptDLL;
 	GGame::g_game->script->StopList = dll->STRING(dll->ULONG_POP());
-	if (GGame::g_game->script->StopList == NULL)
-	{
-		ScriptErrorMessage("Jonty - Invalid ptr");
-	}
+	SCRIPT_ASSERT(GGame::g_game->script->StopList != NULL, "Jonty - Invalid ptr");
 	g_scriptDLL->StopScripts(FilenameCheck);
 }
 

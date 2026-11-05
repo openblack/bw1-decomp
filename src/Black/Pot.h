@@ -103,7 +103,7 @@ public:
 	// BW1W120 0055d550 BW1M119 0111fd00
 	virtual void SetPoisonedResource(RESOURCE_TYPE type, int poisoned) { Poisoned = poisoned; }
 	// BW1W120 0055d510 BW1M119 010011f0
-	virtual void SetPoisoned(int poisoned) { Poisoned = poisoned; }
+	virtual void SetPoisoned(bool32_t poisoned) { Poisoned = poisoned; }
 	// BW1W120 0066d6c0 BW1M119 011249d0
 	virtual void StartOnFire();
 	// BW1W120 0066d6d0 BW1M119 01124920

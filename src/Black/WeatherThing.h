@@ -19,6 +19,10 @@ struct LHPoint;
 class GameThing;
 struct MapCoords;
 
+#define WEATHER_SCRIPT_INNER_RADIUS 100.0f
+#define WEATHER_SCRIPT_OUTER_RADIUS 300.0f
+#define WEATHER_SCRIPT_HEIGHT       100.0f
+
 class WeatherThing : public GameThingWithPos
 {
 public:

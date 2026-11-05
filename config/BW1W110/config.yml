@@ -863,7 +863,7 @@ add_relocations:
     target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
   - source: 0x006F4498
     type: x86_abs32
-    target: '?StormCreationPaused@GWeather@@2_NA'
+    target: '?StormCreationActive@GWeather@@2_NA'
 
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 

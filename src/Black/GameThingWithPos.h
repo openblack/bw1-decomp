@@ -692,7 +692,7 @@ public:
 	// BW1W120 004024b0 BW1M119 0154af60
 	virtual float GetFacingDirection() { return 0.0f; }
 	// BW1W120 004024c0 BW1M119 015aa9f0
-	virtual void SetAffectedByWind(int affected) {}
+	virtual void SetAffectedByWind(bool32_t affected) {}
 	// BW1W120 004024d0 BW1M119 0101b450
 	virtual float GetReactionPower() { return 1.0f; }
 	// BW1W120 00570570 BW1M119 0117b3e0
@@ -735,6 +735,10 @@ public:
 	bool32_t IsFixed() const { return (Flags & GAME_THING_WITH_POS_FLAG_FIXED) != 0; }
 	// BW1W120 inlined BW1M119 01032e80
 	bool32_t IsInMagicHand() const { return (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) != 0; }
+#ifndef VERSION_BW1WCI
+	// BW1W120 inlined BW1M119 0100f4b0
+	bool32_t IsControlledByScript() const { return (Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) != 0; }
+#endif
 	// BW1W120 inlined BW1M119 0112bd40
 	void SetIndestructable(bool32_t indestructable)
 	{

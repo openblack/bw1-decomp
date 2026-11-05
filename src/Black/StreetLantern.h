@@ -27,6 +27,9 @@ public:
 #ifdef VERSION_BW1WCI
 	uint8_t  field_0x58[0x8];
 	bool32_t Active;
+
+	// BW1WCI 00575bb0 BW1MCI119 01570260
+	virtual bool32_t IsActive() const { return Active; }
 #else
 	uint8_t field_0x58[0xc];
 #endif

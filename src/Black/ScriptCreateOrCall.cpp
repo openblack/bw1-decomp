@@ -91,33 +91,9 @@
 #define FILEPATH "C:\\dev\\MP\\Black\\ScriptCreateOrCall.cpp"
 #endif
 
-#ifdef VERSION_BW1WCI
-#define FILELINE(line, creature_isle_line) creature_isle_line
-#else
-#define FILELINE(line, creature_isle_line) line
-#endif
-
-#define SCRIPT_CREATE_NO_SUBTYPE          5000
-#define SCRIPT_ANIMAL_FLOCK_DOMAIN_RADIUS 2
-#define SCRIPT_ANIMAL_FLOCK_DISTANCE      1
-#define SCRIPT_NUM_VILLAGERS_PER_TRIBE    7
-#define SCRIPT_BIRD_TOWN_RADIUS           500.0f
-#define SCRIPT_VILLAGER_CHILD_AGE         10
-#define SCRIPT_MIST_OPACITY_RANGE         255.0f
-#define SCRIPT_VORTEX_RADIUS              50.0f
-#define SCRIPT_BALL_RADIUS                6.0f
-#define SCRIPT_BALL_HEIGHT                4.0f
-#define SCRIPT_WEATHER_INNER_RADIUS       100.0f
-#define SCRIPT_WEATHER_OUTER_RADIUS       300.0f
-#define SCRIPT_WEATHER_HEIGHT             100.0f
-#define SCRIPT_PUZZLE_ANGLE_UNITS         2048.0f
-#define SCRIPT_TWO_PI                     (2.0f * PI_F)
-#define SCRIPT_DEGREES_TO_RADIANS         (PI_F / 180.0f)
-#define SCRIPT_POPULATE_SPREAD_PER_ITEM   0.1
-#define SCRIPT_POPULATE_SPREAD_MINIMUM    4.0
-#ifdef VERSION_BW1WCI
-#define SCRIPT_CANNON_SCALE 0.5f
-#endif
+#define SCRIPT_ANIMAL_TOWN_RADIUS       500.0f
+#define SCRIPT_POPULATE_SPREAD_PER_ITEM 0.1
+#define SCRIPT_POPULATE_SPREAD_MINIMUM  4.0
 
 static uint32_t UnusedStatic = 0;
 
@@ -327,7 +303,7 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 	Villager*         villager;
 	MapCoords         coords(pos);
 	bool              valid = false;
-	if (subtype != SCRIPT_CREATE_NO_SUBTYPE || type == SCRIPT_OBJECT_TYPE_TIMER ||
+	if (subtype != SCRIPT_FIND_TYPE_ANY || type == SCRIPT_OBJECT_TYPE_TIMER ||
 	    type == SCRIPT_OBJECT_TYPE_SPELL_DISPENSER || type == SCRIPT_OBJECT_TYPE_WHALE ||
 	    type == SCRIPT_OBJECT_TYPE_ARK || type == SCRIPT_OBJECT_TYPE_MARKER || type == SCRIPT_OBJECT_TYPE_BALL ||
 	    type == SCRIPT_OBJECT_TYPE_POO || type == SCRIPT_OBJECT_TYPE_SCAFFOLD
@@ -339,10 +315,7 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 	{
 		valid = true;
 	}
-	if (!valid)
-	{
-		ScriptErrorMessage("Trying to create an invalid sub_type");
-	}
+	SCRIPT_ASSERT(valid, "Trying to create an invalid sub_type");
 	if (!valid)
 	{
 		return NULL;
@@ -380,9 +353,9 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 		break;
 	}
 	case SCRIPT_OBJECT_TYPE_VILLAGER_CHILD: {
-		villager = Villager::Create(coords, &GVillagerInfo::GetInfo()[subtype], SCRIPT_VILLAGER_CHILD_AGE, false);
+		villager = Villager::Create(coords, &GVillagerInfo::GetInfo()[subtype], VILLAGER_SCRIPT_CHILD_AGE, false);
 		thing = villager;
-		villager->SetAge(SCRIPT_VILLAGER_CHILD_AGE);
+		villager->SetAge(VILLAGER_SCRIPT_CHILD_AGE);
 		SetScriptState(villager, VILLAGER_STATE_IN_SCRIPT);
 		break;
 	}
@@ -390,9 +363,9 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 	case SCRIPT_OBJECT_TYPE_BIRD: {
 		Animal* animal = Animal::CreateFromType(coords, &GAnimalInfo::GetInfo()[subtype], NULL, 0);
 		Flock*  flock = animal->flock.Get();
-		flock->DomainRadius = SCRIPT_ANIMAL_FLOCK_DOMAIN_RADIUS;
-		flock->FlockDistance = SCRIPT_ANIMAL_FLOCK_DISTANCE;
-		animal->SetTownIfNearby(SCRIPT_BIRD_TOWN_RADIUS);
+		flock->DomainRadius = FLOCK_SCRIPT_ANIMAL_DOMAIN_RADIUS;
+		flock->FlockDistance = FLOCK_SCRIPT_ANIMAL_DISTANCE;
+		animal->SetTownIfNearby(SCRIPT_ANIMAL_TOWN_RADIUS);
 		SetScriptState(animal, VILLAGER_STATE_IN_SCRIPT);
 		thing = animal;
 		break;
@@ -465,8 +438,8 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 		thing = Tree::Create(coords, &GTreeInfo::GetInfo()[subtype], NULL, scale, y_angle, scale);
 		break;
 	case SCRIPT_OBJECT_TYPE_WEATHER_THING:
-		thing = WeatherThing::Create(coords, &GWeatherInfo::GetInfo()[subtype], SCRIPT_WEATHER_INNER_RADIUS,
-		                             SCRIPT_WEATHER_OUTER_RADIUS, SCRIPT_WEATHER_HEIGHT);
+		thing = WeatherThing::Create(coords, &GWeatherInfo::GetInfo()[subtype], WEATHER_SCRIPT_INNER_RADIUS,
+		                             WEATHER_SCRIPT_OUTER_RADIUS, WEATHER_SCRIPT_HEIGHT);
 		break;
 	case SCRIPT_OBJECT_TYPE_STORE: {
 		Pot* pot = MagicResource::Create(MapCoords(coords), NULL, (RESOURCE_TYPE)subtype, 1, NULL);
@@ -478,7 +451,7 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 		break;
 	}
 	case SCRIPT_OBJECT_TYPE_VORTEX:
-		thing = LandscapeVortex::Create(coords, (VORTEX_TYPE)subtype, SCRIPT_VORTEX_RADIUS);
+		thing = LandscapeVortex::Create(coords, (VORTEX_TYPE)subtype, MAGIC_VORTEX_SCRIPT_RADIUS);
 		break;
 	case SCRIPT_OBJECT_TYPE_POO:
 		thing = MobileObject::Create(coords, &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_LUMP_OF_POO], NULL,
@@ -492,7 +465,7 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 			MobileObject::Create(coords, &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_ARK], NULL, y_angle, scale);
 		break;
 	case SCRIPT_OBJECT_TYPE_BALL: {
-		thing = Ball::Create(coords, GBallInfo::GetInfo(), 0, SCRIPT_BALL_RADIUS, SCRIPT_BALL_HEIGHT);
+		thing = Ball::Create(coords, GBallInfo::GetInfo(), 0, BALL_SCRIPT_RADIUS, BALL_SCRIPT_HEIGHT);
 		Town* town = Town::GetNearestTownToPos(coords, TRIBE_TYPE_NONE, ABODE_TYPE_ANY, MaxFloat);
 		if (town != NULL)
 		{
@@ -517,7 +490,7 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 		break;
 	case SCRIPT_OBJECT_TYPE_PUZZLE_GAME:
 		thing = PuzzleGame::Create(coords, (SCRIPT_PUZZLE_GAME_TYPE)subtype,
-		                           (uint16_t)((y_angle * SCRIPT_PUZZLE_ANGLE_UNITS) / SCRIPT_TWO_PI), scale);
+		                           (uint16_t)((y_angle * PUZZLE_GAME_ANGLE_FULL_TURN) / TWO_PI), scale);
 		break;
 	case SCRIPT_OBJECT_TYPE_TOTEM:
 		thing = PuzzleTotem::Create(coords, &GAbodeInfo::GetInfo()[subtype], NULL, y_angle, scale, 1.0f, false);
@@ -549,7 +522,7 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 	case SCRIPT_OBJECT_TYPE_CANNON:
 		thing = Cannon::Create(coords, &GMobileStaticInfo::GetInfo()[MOBILE_STATIC_INFO_WATER_CANNON],
 		                       &GMobileStaticInfo::GetInfo()[MOBILE_STATIC_INFO_WATER_CANNON_AMMO], 0.0f,
-		                       SCRIPT_CANNON_SCALE);
+		                       CANNON_SCRIPT_SCALE);
 		break;
 	case SCRIPT_OBJECT_TYPE_FLOWERS:
 		thing = Flowers::Create(coords, &GFlowersInfo::GetInfo()[subtype], y_angle, scale);
@@ -584,10 +557,7 @@ void GScript::CreateThing()
 	g_scriptDLL->POINT_POP(pos);
 	uint32_t           subtype = g_scriptDLL->ULONG_POP();
 	SCRIPT_OBJECT_TYPE type = (SCRIPT_OBJECT_TYPE)g_scriptDLL->ULONG_POP();
-	if (type <= SCRIPT_OBJECT_TYPE_NONE || type >= SCRIPT_OBJECT_TYPE_LAST)
-	{
-		ScriptErrorMessage("Invalid type");
-	}
+	SCRIPT_ASSERT(type > SCRIPT_OBJECT_TYPE_NONE && type < SCRIPT_OBJECT_TYPE_LAST, "Invalid type");
 	if (type > SCRIPT_OBJECT_TYPE_NONE && type < SCRIPT_OBJECT_TYPE_LAST)
 	{
 		GameThingWithPos* thing = CreateScriptThing(pos, type, subtype, 0.0f, 1.0f);
@@ -608,13 +578,13 @@ void GScript::CreateHighlight()
 #ifdef VERSION_BW1WCI
 	LHPoint pos;
 	g_scriptDLL->POINT_POP(pos);
-	uint32_t highlightType = g_scriptDLL->ULONG_POP();
-	uint32_t scriptId = g_scriptDLL->ULONG_POP();
+	HIGHLIGHT_INFO highlightType = (HIGHLIGHT_INFO)g_scriptDLL->ULONG_POP();
+	uint32_t       scriptId = g_scriptDLL->ULONG_POP();
 #else
 	uint32_t scriptId = g_scriptDLL->ULONG_POP();
 	LHPoint  pos;
 	g_scriptDLL->POINT_POP(pos);
-	uint32_t highlightType = g_scriptDLL->ULONG_POP();
+	HIGHLIGHT_INFO highlightType = (HIGHLIGHT_INFO)g_scriptDLL->ULONG_POP();
 #endif
 	ScriptHighlight* highlight =
 		ScriptHighlight::Create(MapCoords(pos), &GScriptHighlightInfo::GetInfo()[highlightType], scriptId, 0.0f, 1.0f);
@@ -636,8 +606,8 @@ void GScript::CreateTempleForPlayer()
 {
 	LHPoint pos;
 	g_scriptDLL->POINT_POP(pos);
-	uint32_t player = (uint32_t)g_scriptDLL->FLOAT_POP();
-	Citadel* citadel = Citadel::CreateCitadel(MapCoords(pos), GCitadelHeartInfo::GetInfo(), player, 0.0f, 1.0f);
+	uint32_t playerNumber = (uint32_t)g_scriptDLL->FLOAT_POP();
+	Citadel* citadel = Citadel::CreateCitadel(MapCoords(pos), GCitadelHeartInfo::GetInfo(), playerNumber, 0.0f, 1.0f);
 	if (citadel != NULL)
 	{
 		uint32_t id = AddScriptGameThing(citadel, true);
@@ -671,17 +641,17 @@ void GScript::CreateTimer()
 
 void GScript::CreateMist()
 {
-	uint32_t fadeTime = g_scriptDLL->ULONG_POP();
+	uint32_t heightRatio = g_scriptDLL->ULONG_POP();
 	float    alpha = g_scriptDLL->FLOAT_POP();
-	float    green = g_scriptDLL->FLOAT_POP();
 	float    blue = g_scriptDLL->FLOAT_POP();
+	float    green = g_scriptDLL->FLOAT_POP();
 	float    red = g_scriptDLL->FLOAT_POP();
 	float    scale = g_scriptDLL->FLOAT_POP();
 	LHPoint  pos;
 	g_scriptDLL->POINT_POP(pos);
-	float fadeRate = 1.0f / *(float*)&fadeTime;
-	Mist* mist = Mist::Create(MapCoords(pos), scale, (uint8_t)red, (uint8_t)green, (uint8_t)blue,
-	                          (uint8_t)(alpha * SCRIPT_MIST_OPACITY_RANGE), fadeRate);
+	float heightScale = 1.0f / *(float*)&heightRatio;
+	Mist* mist = Mist::Create(MapCoords(pos), scale, (uint8_t)red, (uint8_t)blue, (uint8_t)green,
+	                          (uint8_t)(alpha * MIST_OPACITY_RANGE), heightScale);
 	if (mist != NULL)
 	{
 		uint32_t id = AddScriptGameThing(mist, true);
@@ -760,11 +730,7 @@ void GScript::PopulateContainer()
 			}
 			else
 			{
-				if (!thing->IsLiving())
-				{
-					ScriptErrorMessage("Created Thing Not Living");
-				}
-				thing->IsLiving();
+				SCRIPT_ASSERT(thing->IsLiving(), "Created Thing Not Living");
 				thing->ToBeDeleted(false);
 				return;
 			}
@@ -936,11 +902,7 @@ void GScript::CallInNotNear()
 void GScript::GetObjectHandOver()
 {
 	GameThingWithPos* thing = GGame::g_game->MyInterface()->interface_collide.object;
-	if (GGame::g_game->IsMultiplayerGame())
-	{
-		ScriptErrorMessage("This is not multiplayer friendly yet!");
-	}
-	GGame::g_game->IsMultiplayerGame();
+	SCRIPT_ASSERT(!GGame::g_game->IsMultiplayerGame(), "This is not multiplayer friendly yet!");
 	if (thing != NULL)
 	{
 		uint32_t id = AddScriptGameThing(thing, false);
@@ -955,11 +917,7 @@ void GScript::GetObjectHandOver()
 void GScript::GetHeldObject()
 {
 	Object* object = GGame::g_game->MyInterface()->GetStatus()->GetFirstObjectInCurrentHand();
-	if (GGame::g_game->IsMultiplayerGame())
-	{
-		ScriptErrorMessage("This is not multiplayer friendly yet!");
-	}
-	GGame::g_game->IsMultiplayerGame();
+	SCRIPT_ASSERT(!GGame::g_game->IsMultiplayerGame(), "This is not multiplayer friendly yet!");
 	if (object != NULL)
 	{
 		uint32_t id = AddScriptGameThing(object, false);
@@ -1053,7 +1011,7 @@ void GScript::GetNearestTownOfPlayer()
 	float   scriptPlayer = g_scriptDLL->FLOAT_POP();
 	LHPoint pos;
 	g_scriptDLL->POINT_POP(pos);
-	uint32_t playerIndex = ConvertScriptPlayerToGamePlayer((unsigned long)scriptPlayer);
+	uint32_t playerIndex = ConvertScriptPlayerToGamePlayer((uint32_t)scriptPlayer);
 	GPlayer* player = GGame::g_game->GetPlayer((uint32_t)(float)playerIndex);
 	Town*    town = FindPlayerTownAtPos(MapCoords(pos), radius, player);
 	if (town == NULL)
@@ -1073,11 +1031,8 @@ void GScript::CreateReward()
 	bool32_t immediate = g_scriptDLL->ULONG_POP();
 	LHPoint  pos;
 	g_scriptDLL->POINT_POP(pos);
-	int type = g_scriptDLL->ULONG_POP();
-	if (type <= REWARD_OBJECT_INFO_NONE || type >= REWARD_OBJECT_INFO_LAST)
-	{
-		ScriptErrorMessage("Invalid type");
-	}
+	REWARD_OBJECT_INFO type = (REWARD_OBJECT_INFO)g_scriptDLL->ULONG_POP();
+	SCRIPT_ASSERT(type > REWARD_OBJECT_INFO_NONE && type < REWARD_OBJECT_INFO_LAST, "Invalid type");
 	if (type > REWARD_OBJECT_INFO_NONE && type < REWARD_OBJECT_INFO_LAST)
 	{
 		Reward* reward = Reward::Create(MapCoords(pos), &GRewardInfo::GetInfo()[type], GGame::g_game->MyPlayer(),
@@ -1098,21 +1053,14 @@ void GScript::CreateRewardInTown()
 	bool32_t immediate = g_scriptDLL->ULONG_POP();
 	LHPoint  pos;
 	g_scriptDLL->POINT_POP(pos);
-	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	int               type = g_scriptDLL->ULONG_POP();
-	if (type <= REWARD_OBJECT_INFO_NONE || type >= REWARD_OBJECT_INFO_LAST)
-	{
-		ScriptErrorMessage("Invalid type");
-	}
+	GameThingWithPos*  thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	REWARD_OBJECT_INFO type = (REWARD_OBJECT_INFO)g_scriptDLL->ULONG_POP();
+	SCRIPT_ASSERT(type > REWARD_OBJECT_INFO_NONE && type < REWARD_OBJECT_INFO_LAST, "Invalid type");
 	if (type > REWARD_OBJECT_INFO_NONE && type < REWARD_OBJECT_INFO_LAST)
 	{
-		if (thing == NULL || !thing->IsTown())
-		{
-			ScriptErrorMessage("Thing not valid");
-		}
+		SCRIPT_ASSERT(thing != NULL && thing->IsTown(), "Thing not valid");
 		if (thing != NULL)
 		{
-			thing->IsTown();
 			if (thing->IsTown())
 			{
 				Reward* reward =
@@ -1138,7 +1086,7 @@ void GScript::CreateWithAngleAndScale()
 	uint32_t           subtype = g_scriptDLL->ULONG_POP();
 	SCRIPT_OBJECT_TYPE type = (SCRIPT_OBJECT_TYPE)g_scriptDLL->ULONG_POP();
 	float              scale = g_scriptDLL->FLOAT_POP();
-	float              angle = g_scriptDLL->FLOAT_POP() * SCRIPT_DEGREES_TO_RADIANS;
+	float              angle = g_scriptDLL->FLOAT_POP() * DEGREES_TO_RADIANS;
 	if (type <= SCRIPT_OBJECT_TYPE_NONE || type >= SCRIPT_OBJECT_TYPE_LAST)
 	{
 		ScriptErrorMessage(LHSPrintf("Invalid type=%d", type));
@@ -1162,9 +1110,9 @@ void GScript::CreateRandomVillagerOfTribe()
 {
 	LHPoint pos;
 	g_scriptDLL->POINT_POP(pos);
-	uint32_t             tribe = g_scriptDLL->ULONG_POP();
-	uint32_t             index = tribe * SCRIPT_NUM_VILLAGERS_PER_TRIBE +
-	                             GRand::GameRand(SCRIPT_NUM_VILLAGERS_PER_TRIBE, FILEPATH, FILELINE(1077, 1170));
+	TRIBE_TYPE tribe = (TRIBE_TYPE)g_scriptDLL->ULONG_POP();
+	uint32_t   index =
+		tribe * VILLAGER_INFOS_PER_TRIBE + GRand::GameRand(VILLAGER_INFOS_PER_TRIBE, FILEPATH, FILELINE(1077, 1170));
 	const GVillagerInfo* info = &GVillagerInfo::GetInfo()[index];
 	Villager*            villager = Villager::Create(MapCoords(pos), info, info->TeenAge, false);
 	if (villager != NULL)
@@ -1182,13 +1130,13 @@ void GScript::CreateRandomVillagerOfTribe()
 
 void GScript::GetTownWithId()
 {
-	uint32_t id = (uint32_t)g_scriptDLL->FLOAT_POP();
+	uint32_t townId = (uint32_t)g_scriptDLL->FLOAT_POP();
 	for (GPlayer* player = GGame::g_game->GetNextPlayerAndNeutral(NULL); player != NULL;
 	     player = GGame::g_game->GetNextPlayerAndNeutral(player))
 	{
 		for (Town* town = player->towns.head; town != NULL; town = town->next)
 		{
-			if (town->ID == id)
+			if (town->ID == townId)
 			{
 				uint32_t id = AddScriptGameThing(town, false);
 				g_scriptDLL->PUSH((void*)id, VMType_OBJECT);
@@ -1206,11 +1154,7 @@ void GScript::GetBuildingInTown()
 	float             percentBuilt = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* town = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	ABODE_NUMBER      number = (ABODE_NUMBER)g_scriptDLL->ULONG_POP();
-	if (!town->IsTown())
-	{
-		ScriptErrorMessage("Must be town");
-	}
-	town->IsTown();
+	SCRIPT_ASSERT(town->IsTown(), "Must be town");
 	if (town->IsTown())
 	{
 		Abode* abode = ((Town*)town)->FindAbodeNumber(number, percentBuilt, matchRequired);
@@ -1284,7 +1228,7 @@ void GScript::GetTotemStatue()
 	g_scriptDLL->PUSH(NULL, VMType_OBJECT);
 }
 
-int GScript::FindNearDeadLivingCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindNearDeadLivingCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	return (thing->IsAnimal() || thing->IsVillager(NULL)) && thing->IsLiving() && ((Living*)thing)->IsDead();
 }
@@ -1313,13 +1257,9 @@ void GScript::GetSpellIconFromTemple()
 {
 	GameThingWithPos* temple = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	MAGIC_TYPE        magic = (MAGIC_TYPE)g_scriptDLL->ULONG_POP();
-	if (temple == NULL || !temple->IsCitadelHeart())
-	{
-		ScriptErrorMessage("Invalid Temple");
-	}
+	SCRIPT_ASSERT(temple != NULL && temple->IsCitadelHeart(), "Invalid Temple");
 	if (temple != NULL)
 	{
-		temple->IsCitadelHeart();
 		if (temple->IsCitadelHeart())
 		{
 			Citadel* citadel = temple->GetCitadel();

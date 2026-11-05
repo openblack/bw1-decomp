@@ -15,9 +15,9 @@ class GBaseInfo;
 class GRewardInfo : public GMobileObjectInfo
 {
 public:
-	uint8_t  field_0x114[0xc];
-	uint32_t HelpEnum;
-	uint8_t  field_0x124[0xc];
+	uint8_t   field_0x114[0xc];
+	HELP_TEXT HelpEnum;
+	uint8_t   field_0x124[0xc];
 
 	// Override methods
 

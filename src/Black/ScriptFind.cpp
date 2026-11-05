@@ -130,7 +130,7 @@ uint32_t GScript::GetSubType(GameThingWithPos* thing)
 }
 
 // BW1W120 006f6fa0 BW1M119 014f26e0
-int GScript::FindGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (thing->GetScriptObjectType() == type)
 	{
@@ -151,7 +151,7 @@ int GScript::FindGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, 
 }
 
 // BW1W120 006f6ff0 BW1M119 014f25c0
-int GScript::FindCheckPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindCheckPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (thing->IsPoisoned() && FindGeneralCheck(thing, type, subtype))
 	{
@@ -161,7 +161,7 @@ int GScript::FindCheckPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
 }
 
 // BW1W120 006f7030 BW1M119 014f24a0
-int GScript::FindCheckNotPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindCheckNotPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (!thing->IsPoisoned() && FindGeneralCheck(thing, type, subtype))
 	{
@@ -171,7 +171,7 @@ int GScript::FindCheckNotPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE ty
 }
 
 // BW1W120 006f7070 BW1M119 01013fc0
-int GScript::FindNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (FindGeneralCheck(thing, type, subtype))
 	{
@@ -194,7 +194,7 @@ int GScript::FindNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE ty
 }
 
 // BW1W120 006f7100 BW1M119 014f22b0
-int GScript::FindFireNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindFireNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (thing->IsOnFire(NULL))
 	{
@@ -217,7 +217,7 @@ int GScript::FindFireNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYP
 }
 
 // BW1W120 006f7190 BW1M119 014f2130
-int GScript::FindGeneralNotNearCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindGeneralNotNearCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (FindGeneralCheck(thing, type, subtype))
 	{
@@ -480,7 +480,7 @@ void* GScript::FindInAbodeNotNear(GameThingWithPos* thing,
 }
 
 // BW1W120 006f7800 BW1M119 014f10d0
-int GScript::LoopFnCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::LoopFnCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (GGame::g_game->script->LoopSetControlledByScript)
 	{
@@ -542,7 +542,8 @@ void GScript::IsFireNear()
 }
 
 // BW1W120 006f79f0 BW1M119 014f0c50
-int GScript::FindGeneralCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindGeneralCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
+                                                         uint32_t subtype)
 {
 	if (!thing->IsInScript())
 	{
@@ -574,7 +575,8 @@ int GScript::FindGeneralNotNearCheckExcludingScriptObjects(GameThingWithPos* thi
 }
 
 // BW1W120 006f7a80 BW1M119 014f0a40
-int GScript::FindCheckPoisonedExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindCheckPoisonedExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
+                                                          uint32_t subtype)
 {
 	if (!thing->IsInScript())
 	{
@@ -595,13 +597,13 @@ int GScript::FindCheckNotPoisonedExcludingScriptObjects(GameThingWithPos* thing,
 }
 
 // BW1W120 006f7ae0 BW1M119 014f0800
-int GScript::FindNearInStateCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::FindNearInStateCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (thing->IsLiving() && FindGeneralCheck(thing, type, subtype) &&
 #ifdef VERSION_BW1WCI
-	    (uint8_t)((Living*)thing)->GetFinalState() == GGame::g_game->script->LoopState)
+	    ((Living*)thing)->GetFinalState() == GGame::g_game->script->LoopState)
 #else
-	    (uint8_t)((Living*)thing)->GetFinalState() == GGame::g_game->script->LoopValue)
+	    ((Living*)thing)->GetFinalState() == GGame::g_game->script->LoopValue)
 #endif
 	{
 		return true;

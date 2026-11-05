@@ -60,6 +60,8 @@ class Town;
 class Tree;
 class WorshipSite;
 
+#define VILLAGER_SCRIPT_CHILD_AGE 10
+
 class SortedObject : public Object
 {
 };

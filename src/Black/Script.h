@@ -15,6 +15,19 @@
 #include "ScriptDLL.h"   /* For enum VMScriptType, enum VMType */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
+#ifdef VERSION_BW1WCI
+#define FILELINE(line, creature_isle_line) creature_isle_line
+#else
+#define FILELINE(line, creature_isle_line) line
+#endif
+
+#define SCRIPT_ASSERT(condition, message)                                                                              \
+	if (!(condition))                                                                                                  \
+	{                                                                                                                  \
+		GScript::ScriptErrorMessage(message);                                                                          \
+	}                                                                                                                  \
+	(condition)
+
 enum SCRIPT_FEATURE_COMMANDS
 {
 	SCRIPT_FEATURE_COMMANDS_CREATE_MIST = 0x0,
@@ -631,7 +644,7 @@ public:
 	// BW1W120 006f7f50 BW1M119 014ffb00
 	static void TempTextWithNumber();
 	// BW1W120 006f8280 BW1M119 014ff8e0
-	static int SetStateLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetStateLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f82c0 BW1M119 014ff870
 	static void SetScriptFlyingState(Living* living, uint32_t state);
 	// BW1W120 006f82e0 BW1M119 014ff710
@@ -640,24 +653,24 @@ public:
 	static void SetScriptState();
 #ifdef VERSION_BW1WCI
 	// BW1WCI 0070f4a0 BW1MCI119 01530530
-	static int SetPlayAnimLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetPlayAnimLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1WCI 0070f5a0 BW1MCI119 015302a0
 	static void GameThingPlayAnim();
 	// BW1WCI 0070f790 BW1MCI119 015300a0
-	static int SetStateWithParamsLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetStateWithParamsLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1WCI 0070f8d0 BW1MCI119 0152fd60
 	static void SetStateWithParams();
 #endif
 	// BW1W120 006f8460 BW1M119 014ff4a0
-	static int SetStatePosLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetStatePosLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f84c0 BW1M119 014ff2b0
 	static void SetScriptStatePos();
 	// BW1W120 006f8600 BW1M119 014ff1e0
-	static int SetStateFloatLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetStateFloatLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f8640 BW1M119 014ff070
 	static void SetScriptStateFloat();
 	// BW1W120 006f8730 BW1M119 014fef90
-	static int SetStateULLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetStateULLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f8770 BW1M119 014fedd0
 	static void SetScriptStateULData();
 	// BW1W120 006f88a0 BW1M119 0104d150
@@ -709,9 +722,9 @@ public:
 	// BW1W120 006f9f50 BW1M119 014fd1c0
 	static void OverrideStateAnimation();
 	// BW1W120 006fa0d0 BW1M119 014fd080
-	static int RemoveAllReactionsLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t RemoveAllReactionsLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fa160 BW1M119 014fcef0
-	static int RemoveAllReactionsOfTypeLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t RemoveAllReactionsOfTypeLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fa070 BW1M119 014fd110
 	static void CreateReaction();
 	// BW1W120 006fa0e0 BW1M119 014fcf90
@@ -781,11 +794,11 @@ public:
 	// BW1W120 006fb520 BW1M119 014fae80
 	static void IsPoisoned();
 	// BW1W120 006fb580 BW1M119 014fadd0
-	static int CountPoisonedFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t CountPoisonedFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fb5b0 BW1M119 014fac60
 	static void GetPoisonedSize();
 	// BW1W120 006fb680 BW1M119 014fabc0
-	static int SetPoisonedLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetPoisonedLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fb6a0 BW1M119 014faa50
 	static void SetPoisoned();
 	// BW1W120 006fb780 BW1M119 014fa930
@@ -809,7 +822,7 @@ public:
 	// BW1W120 006fbe20 BW1M119 01026720
 	static void IsHitObject();
 	// BW1W120 006fbe90 BW1M119 014f9cd0
-	static int GetSlowestLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t GetSlowestLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fbee0 BW1M119 014f9b40
 	static void GetSlowestInId();
 	// BW1W120 006fbfd0 BW1M119 014f9a50
@@ -870,8 +883,10 @@ public:
 	static void SetObjectRelativeBelief();
 	// BW1W120 006fd520 BW1M119 014f7760
 	static void SetBelief();
+#ifndef VERSION_BW1W100
 	// BW1W120 006fd600 BW1M119 null
 	static void SetTownBeliefCap();
+#endif
 	// BW1W120 006fd6c0 BW1M119 014f76b0
 	static void SetVirtualInfluence();
 	// BW1W120 006fd720 BW1M119 014f7570
@@ -891,7 +906,7 @@ public:
 	// BW1W120 006fdb80 BW1M119 014f6f60
 	static void IsHandDemoPlayed();
 	// BW1W120 006fdbb0 BW1M119 014f6ec0
-	static int SetSkeletonLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetSkeletonLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fdbd0 BW1M119 014f6d90
 	static void SetSkeleton();
 	// BW1W120 006fdc80 BW1M119 014f6cc0
@@ -901,7 +916,7 @@ public:
 	// BW1W120 006fdd80 BW1M119 014f6b00
 	static void AddTargetObject();
 	// BW1W120 006fddf0 BW1M119 014f6a70
-	static int SetIndestructableLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetIndestructableLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006fde20 BW1M119 014f6940
 	static void SetIndestructable();
 	// BW1W120 006fdee0 BW1M119 014f6890
@@ -968,8 +983,10 @@ public:
 	static void GetObjectCapacity();
 	// BW1W120 006ff390 BW1M119 014f4170
 	static void GetObjectAdultCapacity();
+#ifndef VERSION_BW1WCI
 	// BW1W120 006ff4a0 BW1M119 014f4090
 	static void SquareRoot();
+#endif
 	// BW1W120 006ff4e0 BW1M119 014f4020
 	static void SetPauseWeather();
 	// BW1W120 006ff500 BW1M119 014f3fb0
@@ -1252,7 +1269,7 @@ public:
 	static void ResetGameTimeProperties();
 
 	// BW1W120 006f9090 BW1M119 014fe420
-	static int SetFocusLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t SetFocusLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 
 	// Non-virtual methods
 
@@ -1369,19 +1386,19 @@ public:
 	// BW1W120 006f3b00 BW1M119 null
 	static void CreatureTurnOnDesireAndMakeItMaximum();
 	// BW1W120 006f3400 BW1M119 014e7390
-	static int FindNearDeadLivingCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t FindNearDeadLivingCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f6fa0 BW1M119 014f26e0
-	static int FindGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t FindGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f6ff0 BW1M119 014f25c0
-	static int FindCheckPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t FindCheckPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7030 BW1M119 014f24a0
-	static int FindCheckNotPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t FindCheckNotPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7070 BW1M119 01013fc0
-	static int FindNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t FindNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7100 BW1M119 014f22b0
-	static int FindFireNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t FindFireNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7190 BW1M119 014f2130
-	static int FindGeneralNotNearCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t FindGeneralNotNearCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7220 BW1M119 014f2030
 	static void* FindAtPos(const MapCoords& pos,
 	                       int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
@@ -1457,7 +1474,7 @@ public:
 	                                int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
 	                                SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos, float radius);
 	// BW1W120 006f7800 BW1M119 014f10d0
-	static int LoopFnCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t LoopFnCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7850 BW1M119 014f1010
 	static void* TownLoop(GameThingWithPos* thing,
 	                      int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
@@ -1490,7 +1507,7 @@ public:
 	static int FindCheckNotPoisonedExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
 	                                                      uint32_t subtype);
 	// BW1W120 006f7ae0 BW1M119 014f0800
-	static int FindNearInStateCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	static bool32_t FindNearInStateCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7b40 BW1M119 014f0710
 	static int FindNearInStateCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
 	                                                      uint32_t subtype);
@@ -1531,7 +1548,7 @@ public:
 	// Override methods
 
 	// BW1W120 006f3710 BW1M119 014ef2f0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count);
 
 	INFO_DATA_BLOCK(OpposingTypes, OpposingTypes)
 	INFO_ROOT_LOADERS("Script.h", 923)

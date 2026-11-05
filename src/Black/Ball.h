@@ -29,6 +29,9 @@ struct MapCoords;
 class Object;
 class Town;
 
+#define BALL_SCRIPT_RADIUS 6.0f
+#define BALL_SCRIPT_HEIGHT 4.0f
+
 class Ball : public MobileObject
 {
 public:

@@ -36,6 +36,8 @@
 #include "CreatureReceiveSpell.h"
 #include "CreatureRoom.h"
 #ifdef VERSION_BW1WCI
+#include <chlasm/CreatureSpec.h>
+
 #include <Lionhead/LH3DLib/development/LH3DLine.h>
 
 #include "Bookmark.h"
@@ -84,7 +86,6 @@
 #include "SaveGameRoom.h"
 #include "Scaffold.h"
 #include "ScriptDLL.h"
-#include "ScriptGameState.h"
 #include "ScriptHighlight.h"
 #include "Setup.h"
 #include "SoundGuidance.h"
@@ -109,13 +110,7 @@
 #endif
 
 #ifdef VERSION_BW1WCI
-#define FILELINE(line, creature_isle_line) creature_isle_line
-#else
-#define FILELINE(line, creature_isle_line) line
-#endif
-
-#ifdef VERSION_BW1WCI
-#define SCRIPT_TEXT_ID_LIMIT 8856
+#define SCRIPT_TEXT_ID_LIMIT HELP_TEXT_LAST
 #else
 #define SCRIPT_TEXT_ID_LIMIT 6974
 #endif
@@ -131,43 +126,43 @@
 #define SCRIPT_SPIN_OFFSET                100.0f
 #define SCRIPT_SPIN_SCALE                 100.0f
 #define SCRIPT_DEGREES_IN_CIRCLE          360.0f
-#define SCRIPT_DEGREES_TO_RADIANS         (PI_F / 180.0f)
 #define SCRIPT_INVALID_LAND_HEIGHT        (-10.0f)
 #define SCRIPT_SECONDS_PER_MILLISECOND    0.001f
 #ifdef VERSION_BW1WCI
-#define SCRIPT_ANIM_LIMIT 471
+#define SCRIPT_ANIM_LIMIT MAX_COUNT_3D_ANIMS
 #else
 #define SCRIPT_ANIM_LIMIT 441
 #endif
-#define SCRIPT_ACTION_TEXT                         828
-#define SCRIPT_BUILD_DESIRE_SCALE                  5.0f
-#define SCRIPT_BAD_POS_MIN                         (-1.0f)
-#define SCRIPT_BAD_POS_MAX                         50.0f
-#define SCRIPT_FIGHT_ANIM_FIRST                    125
-#define SCRIPT_FIGHT_ANIM_LAST                     136
-#define SCRIPT_REMOVE_FIRE_RADIUS                  5.0f
-#define SCRIPT_GAME_THING_FLAG_NOT_LEASHABLE_BIT   7
-#define SCRIPT_GAME_THING_FLAG_NOT_LEASHABLE       (1 << SCRIPT_GAME_THING_FLAG_NOT_LEASHABLE_BIT)
-#define LH3D_OBJECT_FLAG2_NOT_AFFECTED_BY_SNOW_BIT 5
-#define LH3D_OBJECT_FLAG2_NOT_AFFECTED_BY_SNOW     (1 << LH3D_OBJECT_FLAG2_NOT_AFFECTED_BY_SNOW_BIT)
-#define SCRIPT_SCORE_NONE                          (-1)
-#define SCRIPT_LANDING_PATH_POINTS                 1024
-#define SCRIPT_LANDING_MAX_TIME                    60.0f
-#define SCRIPT_LANDING_STEP                        0.01f
-#define SCRIPT_LANDING_FIRST_CHECK                 1.0f
-#define SCRIPT_LANDING_CHECK_INTERVAL              0.05f
-#define SCRIPT_COLOUR_RANGE                        256
-#define SCRIPT_COLOUR_OPAQUE                       0xff
-#define SCRIPT_LANDING_GRAVITY_STEP                0.0981f
-#define SCRIPT_ANIM_REPEATS_LIMIT                  31
-#define SCRIPT_VILLAGER_PLAY_ANIM_STATE            200
-#define SCRIPT_ANIMAL_PLAY_ANIM_STATE              53
-#define SCRIPT_GRAVITY                             (-9.81f)
+#define SCRIPT_ACTION_TEXT            828
+#define SCRIPT_BUILD_DESIRE_SCALE     5.0f
+#define SCRIPT_BAD_POS_MIN            (-1.0f)
+#define SCRIPT_BAD_POS_MAX            50.0f
+#define SCRIPT_REMOVE_FIRE_RADIUS     5.0f
+#define SCRIPT_SCORE_NONE             (-1)
+#define SCRIPT_LANDING_PATH_POINTS    1024
+#define SCRIPT_LANDING_MAX_TIME       60.0f
+#define SCRIPT_LANDING_STEP           0.01f
+#define SCRIPT_LANDING_FIRST_CHECK    1.0f
+#define SCRIPT_LANDING_CHECK_INTERVAL 0.05f
+#define SCRIPT_COLOUR_RANGE           256
+#define SCRIPT_COLOUR_OPAQUE          0xff
+#define SCRIPT_LANDING_GRAVITY_STEP   0.0981f
+#define SCRIPT_ANIM_REPEATS_LIMIT     31
+#define SCRIPT_GRAVITY                (-9.81f)
 
 #define SCRIPT_DEVELOPMENT_CONFINEMENT_RADIUS 12.0f
 #define SCRIPT_HIGHLIGHT_SEARCH_CELLS         81
 #define SCRIPT_TEMPLE_ENTRANCE_EXTRA_POS      15
 #define SCRIPT_ATTACKED_AGGRESSION            0.15
+
+class CImmMouse;
+
+// BW1W120 00bec284
+extern TempleRoomsEnum CurrentRoom;
+// BW1W120 00c221cc
+extern bool32_t CreatureInTemple;
+// BW1W120 00d18588
+extern CImmMouse* ImmersionMouse;
 
 static uint32_t UnusedStatic = 0;
 bool32_t        CreatureRoom::CreatureInTemple = false;
@@ -178,10 +173,7 @@ void GScript::SetWideScreen()
 	bool32_t widescreen = g_scriptDLL->ULONG_POP();
 	uint32_t control = GGame::g_game->help_system->WideScreenControl;
 	uint32_t task = g_scriptDLL->TaskNumber();
-	if (widescreen && control == task)
-	{
-		ScriptErrorMessage("Script asking for Widescreen it has control of! Bad");
-	}
+	SCRIPT_ASSERT(!widescreen || control != task, "Script asking for Widescreen it has control of! Bad");
 	if (control == 0 || control == task)
 	{
 		GGame::g_game->help_system->SetWideScreen(widescreen, g_scriptDLL->TaskNumber());
@@ -198,11 +190,8 @@ void GScript::RunTextWithNumber()
 	float                 number = g_scriptDLL->FLOAT_POP();
 	uint32_t              text = g_scriptDLL->ULONG_POP();
 	bool32_t              singleLine = g_scriptDLL->ULONG_POP();
-	if (GGame::g_game->IsMultiplayerGame() && interaction)
-	{
-		ScriptErrorMessage("This is not multiplayer friendly yet!");
-	}
-	GGame::g_game->IsMultiplayerGame();
+	SCRIPT_ASSERT(!GGame::g_game->IsMultiplayerGame() || interaction == HELP_TEXT_INTERACTION_NONE,
+	              "This is not multiplayer friendly yet!");
 	if (text >= SCRIPT_TEXT_ID_LIMIT)
 	{
 		ScriptErrorMessage("Invalid text");
@@ -227,11 +216,8 @@ void GScript::RunText()
 	HELP_TEXT_INTERACTION interaction = (HELP_TEXT_INTERACTION)g_scriptDLL->ULONG_POP();
 	uint32_t              text = g_scriptDLL->ULONG_POP();
 	bool32_t              singleLine = g_scriptDLL->ULONG_POP();
-	if (GGame::g_game->IsMultiplayerGame() && interaction)
-	{
-		ScriptErrorMessage("This is not multiplayer friendly yet!");
-	}
-	GGame::g_game->IsMultiplayerGame();
+	SCRIPT_ASSERT(!GGame::g_game->IsMultiplayerGame() || interaction == HELP_TEXT_INTERACTION_NONE,
+	              "This is not multiplayer friendly yet!");
 	if (text >= SCRIPT_TEXT_ID_LIMIT)
 	{
 		ScriptErrorMessage("Invalid text");
@@ -250,7 +236,7 @@ void GScript::RunText()
 
 void GScript::TempText()
 {
-	static char16_t text[0x80];
+	static wchar_t text[0x80];
 
 #ifdef VERSION_BW1WCI
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
@@ -261,15 +247,9 @@ void GScript::TempText()
 	bool32_t              singleLine = g_scriptDLL->ULONG_POP();
 	UNICODE_sprintf(text, L"*%s", CHAR2WCHAR(string));
 	ScriptErrorMessage("Development text being used in game!");
-	if (string == NULL)
-	{
-		ScriptErrorMessage("Jonty - Invalid ptr");
-	}
-	if (GGame::g_game->IsMultiplayerGame() && interaction)
-	{
-		ScriptErrorMessage("This is not multiplayer friendly yet!");
-	}
-	GGame::g_game->IsMultiplayerGame();
+	SCRIPT_ASSERT(string != NULL, "Jonty - Invalid ptr");
+	SCRIPT_ASSERT(!GGame::g_game->IsMultiplayerGame() || interaction == HELP_TEXT_INTERACTION_NONE,
+	              "This is not multiplayer friendly yet!");
 	ScriptWarningMessage(string);
 	if (singleLine || GGame::g_game->help_system->GetHelpText()->SingleLine)
 	{
@@ -284,7 +264,7 @@ void GScript::TempText()
 
 void GScript::TempTextWithNumber()
 {
-	static char16_t text[0x80];
+	static wchar_t text[0x80];
 
 #ifdef VERSION_BW1WCI
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
@@ -295,15 +275,9 @@ void GScript::TempTextWithNumber()
 	char*                 string = dll->STRING(dll->ULONG_POP());
 	bool32_t              singleLine = g_scriptDLL->ULONG_POP();
 	UNICODE_sprintf(text, L"*%s", CHAR2WCHAR(string));
-	if (string == NULL)
-	{
-		ScriptErrorMessage("Jonty - Invalid ptr");
-	}
-	if (GGame::g_game->IsMultiplayerGame() && interaction)
-	{
-		ScriptErrorMessage("This is not multiplayer friendly yet!");
-	}
-	GGame::g_game->IsMultiplayerGame();
+	SCRIPT_ASSERT(string != NULL, "Jonty - Invalid ptr");
+	SCRIPT_ASSERT(!GGame::g_game->IsMultiplayerGame() || interaction == HELP_TEXT_INTERACTION_NONE,
+	              "This is not multiplayer friendly yet!");
 	if (singleLine || GGame::g_game->help_system->GetHelpText()->SingleLine)
 	{
 		GGame::g_game->help_system->ClearAllText();
@@ -377,7 +351,7 @@ void GScript::TextRead()
 	g_scriptDLL->PUSH((void*)read, VMType_BOOLEAN);
 }
 
-int GScript::SetStateLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetStateLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	Living* living = dynamic_cast<Living*>(thing);
 	if (living != NULL)
@@ -457,7 +431,7 @@ void GScript::SetScriptState()
 }
 
 #ifdef VERSION_BW1WCI
-int GScript::SetPlayAnimLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetPlayAnimLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	Villager* villager = dynamic_cast<Villager*>(thing);
 	if (villager != NULL)
@@ -527,7 +501,7 @@ void GScript::GameThingPlayAnim()
 	Villager* villager = dynamic_cast<Villager*>(thing);
 	if (villager != NULL)
 	{
-		state = SCRIPT_VILLAGER_PLAY_ANIM_STATE;
+		state = VILLAGER_STATE_SCRIPT_PLAY_ANIM;
 		villager->WanderArea.x = anim;
 		villager->WanderArea.z = (int)repeats;
 	}
@@ -542,7 +516,7 @@ void GScript::GameThingPlayAnim()
 	}
 	else if (thing->IsAnimal())
 	{
-		state = SCRIPT_ANIMAL_PLAY_ANIM_STATE;
+		state = ANIMAL_STATE_SCRIPT_PLAY_ANIM;
 		((Animal*)thing)->ScriptULData1 = anim;
 		((Animal*)thing)->ScriptULData2 = (int)repeats;
 	}
@@ -555,7 +529,7 @@ void GScript::GameThingPlayAnim()
 	ScriptErrorMessage("Object not living for set state");
 }
 
-int GScript::SetStateWithParamsLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetStateWithParamsLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	Living* living = dynamic_cast<Living*>(thing);
 	if (living == NULL || living->IsDrowning())
@@ -650,7 +624,7 @@ void GScript::SetStateWithParams()
 	creature->ScriptAnimRepeats = z;
 }
 #else
-int GScript::SetStatePosLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetStatePosLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	Villager* villager = dynamic_cast<Villager*>(thing);
 	if (villager != NULL)
@@ -693,7 +667,7 @@ void GScript::SetScriptStatePos()
 	ScriptErrorMessage("Object not villager for state data");
 }
 
-int GScript::SetStateFloatLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetStateFloatLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	Villager* villager = dynamic_cast<Villager*>(thing);
 	if (villager != NULL)
@@ -734,7 +708,7 @@ void GScript::SetScriptStateFloat()
 	ScriptErrorMessage("Object not villager for state data");
 }
 
-int GScript::SetStateULLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetStateULLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	Villager* villager = dynamic_cast<Villager*>(thing);
 	if (villager != NULL)
@@ -793,10 +767,7 @@ void GScript::GetPosition()
 {
 	LHPoint           point;
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing no longer valid");
 	if (thing != NULL)
 	{
 		if (thing->IsFlock())
@@ -835,14 +806,13 @@ void GScript::GetPosition()
 	g_scriptDLL->POINT_PUSH(point);
 }
 
+// Inliner IL size: <= 40
+// BW1W120 inlined BW1M119 inlined
+inline void StorePreviousPosition(Object* object);
+
 inline void StorePreviousPosition(Object* object)
 {
 	object->coords = object->Pos;
-}
-
-inline bool32_t IsControlledByScript(GameThingWithPos* thing)
-{
-	return (thing->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) != 0;
 }
 
 #ifdef VERSION_BW1WCI
@@ -933,20 +903,13 @@ void GScript::SetPosition()
 	LHPoint pos;
 	g_scriptDLL->POINT_POP(pos);
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing no longer valid");
 	if (thing != NULL)
 	{
-		if (thing->Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE)
-		{
-			ScriptErrorMessage("Setting object in hand to a position");
-		}
-		if (thing->Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS)
-		{
-			ScriptErrorMessage("Trying to set position - Object is flying");
-		}
+		SCRIPT_ASSERT(!(thing->Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE),
+		              "Setting object in hand to a position");
+		SCRIPT_ASSERT(!(thing->Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS),
+		              "Trying to set position - Object is flying");
 		if (!(thing->Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) &&
 		    !(thing->Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS))
 		{
@@ -958,10 +921,8 @@ void GScript::SetPosition()
 			}
 			if (object != NULL)
 			{
-				if (!(object->Flags & GAME_THING_WITH_POS_FLAG_IN_MAP))
-				{
-					ScriptErrorMessage("Trying to set position - Object not in map");
-				}
+				SCRIPT_ASSERT(object->Flags & GAME_THING_WITH_POS_FLAG_IN_MAP,
+				              "Trying to set position - Object not in map");
 				if (object->Flags & GAME_THING_WITH_POS_FLAG_IN_MAP)
 				{
 					Creature* creature = object->CastCreature();
@@ -977,7 +938,7 @@ void GScript::SetPosition()
 							SetPositionOnMap(object->Game3dObject, coords, object->GetYAngle(), object->GetScale());
 						}
 						StorePreviousPosition(object);
-						if (object->IsLiving() && IsControlledByScript(thing))
+						if (object->IsLiving() && thing->IsControlledByScript())
 						{
 							SetScriptState((Living*)thing, VILLAGER_STATE_IN_SCRIPT);
 						}
@@ -1043,10 +1004,7 @@ void GScript::MoveGameThing()
 	if (thing->IsCreature())
 	{
 		Creature* creature = dynamic_cast<Creature*>(thing);
-		if (creature == NULL)
-		{
-			ScriptErrorMessage("no creature for script");
-		}
+		SCRIPT_ASSERT(creature != NULL, "no creature for script");
 		if (thing->IsObjectInMap())
 		{
 			creature->ScriptMoveToPos(&pos, speed);
@@ -1098,7 +1056,7 @@ void GScript::MoveGameThing()
 	thing->SetPos(MapCoords(pos));
 }
 
-int GScript::SetFocusLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetFocusLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	((Object*)thing)->SetFocus(GGame::g_game->script->FocusPos);
 	return false;
@@ -1148,6 +1106,10 @@ void GScript::SetFocus()
 	ScriptErrorMessage("Jonty - Thing must be living to face position!");
 }
 
+// Inliner IL size: <= 40
+// BW1W120 inlined BW1M119 inlined
+inline GameThingWithPos* PopGameThing();
+
 inline GameThingWithPos* PopGameThing()
 {
 	uint32_t id = GScript::g_scriptDLL->THING_OR_NULL_POP();
@@ -1158,10 +1120,7 @@ void GScript::SetFocusOnObject()
 {
 	GameThingWithPos* target = PopGameThing();
 	GameThingWithPos* thing = PopGameThing();
-	if (thing == NULL || target == NULL)
-	{
-		ScriptErrorMessage("Thing not found!");
-	}
+	SCRIPT_ASSERT(thing != NULL && target != NULL, "Thing not found!");
 	if (thing == NULL || target == NULL)
 	{
 		return;
@@ -1181,9 +1140,9 @@ void GScript::SetFocusOnObject()
 
 void GScript::DeleteObject()
 {
-	uint32_t          mode = g_scriptDLL->ULONG_POP();
-	uint32_t          id = g_scriptDLL->THING_OR_NULL_POP();
-	GameThingWithPos* thing = GetScriptGameThing(id);
+	SCRIPT_DELETE_MODE mode = (SCRIPT_DELETE_MODE)g_scriptDLL->ULONG_POP();
+	uint32_t           id = g_scriptDLL->THING_OR_NULL_POP();
+	GameThingWithPos*  thing = GetScriptGameThing(id);
 	if (thing == NULL)
 	{
 		return;
@@ -1278,10 +1237,7 @@ void GScript::UpdateSnapShot()
 	data.Challenge = static_cast<ScriptChallengeEnums>(g_scriptDLL->ULONG_POP());
 #endif
 	uint32_t count = g_scriptDLL->ULONG_POP();
-	if (count >= SCRIPT_SNAPSHOT_MAX_VALUES)
-	{
-		ScriptErrorMessage("Paul - number of stack objects is too big.");
-	}
+	SCRIPT_ASSERT(count < SCRIPT_SNAPSHOT_MAX_VALUES, "Paul - number of stack objects is too big.");
 	for (uint32_t i = 0; i < count; i++)
 	{
 		values[i] = (void*)g_scriptDLL->POP(&types[i]);
@@ -1311,10 +1267,7 @@ void GScript::SnapShot()
 	data.Challenge = static_cast<ScriptChallengeEnums>(g_scriptDLL->ULONG_POP());
 #endif
 	uint32_t count = g_scriptDLL->ULONG_POP();
-	if (count > SCRIPT_SNAPSHOT_MAX_VALUES)
-	{
-		ScriptErrorMessage("Paul - number of stack objects is too big.");
-	}
+	SCRIPT_ASSERT(count <= SCRIPT_SNAPSHOT_MAX_VALUES, "Paul - number of stack objects is too big.");
 	for (uint32_t i = 0; i < count; i++)
 	{
 		values[i] = (void*)g_scriptDLL->POP(&types[i]);
@@ -1339,10 +1292,7 @@ void GScript::UpdateAlignment()
 {
 	GPlayer* player = GGame::g_game->GetPlayer(g_scriptDLL->ULONG_POP());
 	float    change = g_scriptDLL->FLOAT_POP();
-	if (!(change >= -1.0f && change <= 1.0f))
-	{
-		ScriptErrorMessage("Alignment out of range");
-	}
+	SCRIPT_ASSERT(change >= -1.0f && change <= 1.0f, "Alignment out of range");
 	if (change >= -1.0f && change <= 1.0f)
 	{
 		player->alignment->CrudeUpdate(change);
@@ -1361,10 +1311,7 @@ void GScript::CreateInfluenceOnObject()
 	GPlayer*          player = GGame::g_game->GetPlayer(g_scriptDLL->ULONG_POP());
 	float             radius = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "thing not valid");
 	if (thing != NULL)
 	{
 		InfluenceRing* ring = InfluenceRing::Create(thing, player, radius, anti);
@@ -1411,10 +1358,7 @@ void GScript::GetInfluence()
 void GScript::GetPlayedPercentage()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing no longer valid");
 	if (thing != NULL)
 	{
 		if (thing->IsCreature())
@@ -1430,10 +1374,7 @@ void GScript::GetPlayedPercentage()
 void GScript::HasPlayed()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing no longer valid");
 	if (thing != NULL)
 	{
 		if (thing->IsCreature())
@@ -1443,7 +1384,7 @@ void GScript::HasPlayed()
 			if (creature->IsFighting() && creature->GetCreature3D() != NULL)
 			{
 				int anim = creature->GetCreature3D()->CurrentAnim;
-				if ((anim >= SCRIPT_FIGHT_ANIM_FIRST && anim <= SCRIPT_FIGHT_ANIM_LAST) ||
+				if ((anim >= C_FIGHT_ATTACK_HIGH && anim <= C_FIGHT_ATTACK_SPECIAL2) ||
 				    creature->CountNumberOfHitsInQueue() > 0)
 				{
 					g_scriptDLL->PUSH((void*)false, VMType_BOOLEAN);
@@ -1494,7 +1435,7 @@ void GScript::HasPlayed()
 				g_scriptDLL->PUSH((void*)complete, VMType_BOOLEAN);
 				return;
 			}
-			bool32_t inScript = (uint8_t)((Living*)thing)->GetFinalState() == VILLAGER_STATE_IN_SCRIPT;
+			bool32_t inScript = ((Living*)thing)->GetFinalState() == VILLAGER_STATE_IN_SCRIPT;
 			g_scriptDLL->PUSH((void*)inScript, VMType_BOOLEAN);
 			return;
 #endif
@@ -1527,10 +1468,7 @@ void GScript::OverrideStateAnimation()
 {
 	int               anim = g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (!(anim > 0 && anim < SCRIPT_ANIM_LIMIT))
-	{
-		ScriptErrorMessage("Invalid animation forced");
-	}
+	SCRIPT_ASSERT(anim > 0 && anim < SCRIPT_ANIM_LIMIT, "Invalid animation forced");
 	if (thing == NULL)
 	{
 		return;
@@ -1558,19 +1496,16 @@ void GScript::OverrideStateAnimation()
 
 void GScript::CreateReaction()
 {
-	uint32_t          reaction = g_scriptDLL->ULONG_POP();
+	REACTION          reaction = (REACTION)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("no reaction for thing");
-	}
+	SCRIPT_ASSERT(thing != NULL, "no reaction for thing");
 	if (thing != NULL)
 	{
 		Reaction::CreateReaction(thing, (uint8_t)reaction, NULL, false);
 	}
 }
 
-int GScript::RemoveAllReactionsLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::RemoveAllReactionsLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	Reaction::RemoveAllReactionsInitiatedByObject(thing);
 	return false;
@@ -1579,10 +1514,7 @@ int GScript::RemoveAllReactionsLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYP
 void GScript::RemoveReaction()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("no reaction for thing");
-	}
+	SCRIPT_ASSERT(thing != NULL, "no reaction for thing");
 	if (thing != NULL)
 	{
 		if (thing->IsScriptContainer())
@@ -1598,7 +1530,7 @@ void GScript::RemoveReaction()
 	}
 }
 
-int GScript::RemoveAllReactionsOfTypeLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::RemoveAllReactionsOfTypeLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	Reaction::RemoveAllReactionsOfTypeInitiatedByObject(thing, (REACTION)GGame::g_game->script->LoopValue);
 	return false;
@@ -1608,10 +1540,7 @@ void GScript::RemoveReactionsOfType()
 {
 	REACTION          reaction = (REACTION)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("no reaction for thing");
-	}
+	SCRIPT_ASSERT(thing != NULL, "no reaction for thing");
 	if (thing != NULL)
 	{
 		if (thing->IsScriptContainer())
@@ -1632,10 +1561,7 @@ void GScript::RemoveReactionsOfType()
 void GScript::GetTargetObject()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("no object");
-	}
+	SCRIPT_ASSERT(thing != NULL, "no object");
 	if (thing == NULL)
 	{
 		return;
@@ -1647,10 +1573,7 @@ void GScript::GetTargetObject()
 		if (belief != NULL)
 		{
 			GameThingWithPos* target = belief->Pointer;
-			if (target == NULL)
-			{
-				ScriptErrorMessage("Richard: strange. No pointer for belief");
-			}
+			SCRIPT_ASSERT(target != NULL, "Richard: strange. No pointer for belief");
 			if (target != NULL)
 			{
 				uint32_t id = AddScriptGameThing(target, false);
@@ -1667,7 +1590,7 @@ void GScript::GetTargetObject()
 
 void GScript::DesireIs()
 {
-	uint32_t          desire = g_scriptDLL->ULONG_POP();
+	CREATURE_DESIRES  desire = (CREATURE_DESIRES)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	Creature*         creature = dynamic_cast<Creature*>(thing);
 	if (creature != NULL)
@@ -1731,11 +1654,7 @@ void GScript::SetWeatherProperties()
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	if (thing != NULL)
 	{
-		if (!thing->IsWeather())
-		{
-			ScriptErrorMessage("Jonty-Weather properties on non weather object");
-		}
-		thing->IsWeather();
+		SCRIPT_ASSERT(thing->IsWeather(), "Jonty-Weather properties on non weather object");
 		if (thing->IsWeather())
 		{
 			((WeatherThing*)thing)->SetProperties(temperature, rainfall, snowfall, overcast, fallSpeed);
@@ -1750,11 +1669,7 @@ void GScript::SetTimeFadeProperties()
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	if (thing != NULL)
 	{
-		if (!thing->IsWeather())
-		{
-			ScriptErrorMessage("Jonty-Weather properties on non weather object");
-		}
-		thing->IsWeather();
+		SCRIPT_ASSERT(thing->IsWeather(), "Jonty-Weather properties on non weather object");
 		if (thing->IsWeather())
 		{
 			((WeatherThing*)thing)->SetTimes(time, fade);
@@ -1770,11 +1685,7 @@ void GScript::SetCloudProperties()
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	if (thing != NULL)
 	{
-		if (!thing->IsWeather())
-		{
-			ScriptErrorMessage("Jonty-Weather properties on non weather object");
-		}
-		thing->IsWeather();
+		SCRIPT_ASSERT(thing->IsWeather(), "Jonty-Weather properties on non weather object");
 		if (thing->IsWeather())
 		{
 			((WeatherThing*)thing)->SetClouds(shade, (int)clouds, height);
@@ -1791,17 +1702,17 @@ void GScript::SetLightningProperties()
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	if (thing != NULL)
 	{
-		if (!thing->IsWeather())
-		{
-			ScriptErrorMessage("Jonty-Weather properties on non weather object");
-		}
-		thing->IsWeather();
+		SCRIPT_ASSERT(thing->IsWeather(), "Jonty-Weather properties on non weather object");
 		if (thing->IsWeather())
 		{
 			((WeatherThing*)thing)->SetLightning(sheetMin, sheetMax, forkMin, forkMax);
 		}
 	}
 }
+
+// Inliner IL size: 123
+// BW1W120 inlined BW1M119 inlined
+inline void SetPointLength(LHPoint& point, float length);
 
 inline void SetPointLength(LHPoint& point, float length)
 {
@@ -1949,10 +1860,7 @@ void GScript::SetAffectedByWind()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	bool32_t          affected = g_scriptDLL->ULONG_POP();
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Invalid thing");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Invalid thing");
 	if (thing != NULL)
 	{
 		thing->SetAffectedByWind(affected);
@@ -1979,10 +1887,7 @@ void GScript::GetResource()
 		}
 		ScriptErrorMessage("Not object for resource");
 	}
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("No thing for resource");
-	}
+	SCRIPT_ASSERT(thing != NULL, "No thing for resource");
 	g_scriptDLL->FLOAT_PUSH(0.0f);
 }
 
@@ -2004,10 +1909,7 @@ void GScript::AddResource()
 		}
 		ScriptErrorMessage("Not object for resource");
 	}
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("No thing for resource");
-	}
+	SCRIPT_ASSERT(thing != NULL, "No thing for resource");
 	g_scriptDLL->FLOAT_PUSH(0.0f);
 }
 
@@ -2029,10 +1931,7 @@ void GScript::RemoveResource()
 		}
 		ScriptErrorMessage("Not object for resource");
 	}
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("No thing for resource");
-	}
+	SCRIPT_ASSERT(thing != NULL, "No thing for resource");
 	g_scriptDLL->FLOAT_PUSH(0.0f);
 }
 
@@ -2051,7 +1950,7 @@ void GScript::GetTargetRelativePos()
 	direction = target - origin;
 	direction.Normalise();
 	LHMatrix rotation;
-	rotation.SetRotationY(angle * SCRIPT_DEGREES_TO_RADIANS);
+	rotation.SetRotationY(angle * DEGREES_TO_RADIANS);
 	rotation.TransformPoint(direction);
 	direction = target + direction * distance;
 	g_scriptDLL->POINT_PUSH(&direction);
@@ -2060,10 +1959,7 @@ void GScript::GetTargetRelativePos()
 void GScript::GetScriptState()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing invalid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing invalid");
 	if (thing != NULL)
 	{
 		if (thing->IsLiving())
@@ -2116,10 +2012,7 @@ void GScript::ReleaseActorFromScript()
 {
 	uint32_t          id = g_scriptDLL->THING_OR_NULL_POP();
 	GameThingWithPos* thing = GetScriptGameThing(id);
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL)
 	{
 		if (thing->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT)
@@ -2138,10 +2031,7 @@ void GScript::SetMoveable()
 	uint32_t          thingId = g_scriptDLL->THING_OR_NULL_POP();
 	GameThingWithPos* thing = GetScriptGameThing(thingId);
 	bool32_t          moveable = g_scriptDLL->ULONG_POP();
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL)
 	{
 		thing->Flags = (thing->Flags & ~GAME_THING_WITH_POS_FLAG_IMMOVABLE) |
@@ -2154,10 +2044,7 @@ void GScript::SetPickupable()
 	uint32_t          thingId = g_scriptDLL->THING_OR_NULL_POP();
 	GameThingWithPos* thing = GetScriptGameThing(thingId);
 	bool32_t          pickupable = g_scriptDLL->ULONG_POP();
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL)
 	{
 		thing->Flags = (thing->Flags & ~GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP) |
@@ -2168,10 +2055,7 @@ void GScript::SetPickupable()
 void GScript::IsOnFire()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL)
 	{
 		bool32_t onFire = thing->IsOnFire(NULL);
@@ -2184,10 +2068,7 @@ void GScript::IsOnFire()
 void GScript::IsPoisoned()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL)
 	{
 		bool32_t poisoned = thing->IsPoisoned();
@@ -2197,7 +2078,7 @@ void GScript::IsPoisoned()
 	g_scriptDLL->PUSH((void*)false, VMType_BOOLEAN);
 }
 
-int GScript::CountPoisonedFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::CountPoisonedFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (thing->IsPoisoned())
 	{
@@ -2209,10 +2090,7 @@ int GScript::CountPoisonedFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE t
 void GScript::GetPoisonedSize()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL)
 	{
 		SCRIPT_OBJECT_TYPE objectType = thing->GetScriptObjectType();
@@ -2229,7 +2107,7 @@ void GScript::GetPoisonedSize()
 	g_scriptDLL->PUSH(*(void**)&none, VMType_FLOAT);
 }
 
-int GScript::SetPoisonedLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetPoisonedLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	((Object*)thing)->SetPoisoned(GGame::g_game->script->LoopParam);
 	return false;
@@ -2239,10 +2117,7 @@ void GScript::SetPoisoned()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	bool32_t          poisoned = g_scriptDLL->ULONG_POP();
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL)
 	{
 		if (thing->IsScriptContainer())
@@ -2256,10 +2131,7 @@ void GScript::SetPoisoned()
 			return;
 		}
 		Object* object = dynamic_cast<Object*>(thing);
-		if (object == NULL)
-		{
-			ScriptErrorMessage("Thing not object");
-		}
+		SCRIPT_ASSERT(object != NULL, "Thing not object");
 		if (object != NULL)
 		{
 			object->SetPoisoned(poisoned);
@@ -2272,17 +2144,11 @@ void GScript::SetOnFire()
 	float             temperature = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	bool32_t          onFire = g_scriptDLL->ULONG_POP();
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL)
 	{
 		Object* object = dynamic_cast<Object*>(thing);
-		if (object == NULL)
-		{
-			ScriptErrorMessage("Thing not object");
-		}
+		SCRIPT_ASSERT(object != NULL, "Thing not object");
 		if (object != NULL)
 		{
 			if (onFire)
@@ -2303,17 +2169,11 @@ void GScript::SetTemperature()
 {
 	float             temperature = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL)
 	{
 		Object* object = dynamic_cast<Object*>(thing);
-		if (object == NULL)
-		{
-			ScriptErrorMessage("Thing not object");
-		}
+		SCRIPT_ASSERT(object != NULL, "Thing not object");
 		if (object != NULL)
 		{
 			object->SetTemperature(temperature, NULL);
@@ -2328,14 +2188,8 @@ void GScript::SetIdTarget()
 	LHPoint target;
 	g_scriptDLL->POINT_POP(target);
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
-	if (!(time > 0.0f))
-	{
-		ScriptErrorMessage("Invalid time");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
+	SCRIPT_ASSERT(time > 0.0f, "Invalid time");
 	if (thing == NULL || !(time > 0.0f))
 	{
 		return;
@@ -2382,10 +2236,7 @@ void GScript::SetWalkPath()
 	SCRIPT_PATH       path = (SCRIPT_PATH)g_scriptDLL->ULONG_POP();
 	bool32_t          reverse = g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing == NULL)
 	{
 		return;
@@ -2407,10 +2258,7 @@ void GScript::SetWalkPath()
 void GScript::GetWalkPathPercentage()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Thing not valid");
 	if (thing != NULL && thing->IsLiving())
 	{
 		float percentage = ((Living*)thing)->GetWalkPathPercentage();
@@ -2435,10 +2283,7 @@ void GScript::IsOfType()
 		g_scriptDLL->PUSH((void*)false, VMType_BOOLEAN);
 		return;
 	}
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Object no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Object no longer valid");
 	if (thing != NULL)
 	{
 		bool32_t isOfType = FindGeneralCheck(thing, type, subtype);
@@ -2480,10 +2325,7 @@ void GScript::ClearHitObject()
 void GScript::IsHitObject()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Object no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Object no longer valid");
 	if (thing != NULL)
 	{
 		g_scriptDLL->PUSH((void*)(GGame::g_game->script->HitObject == thing), VMType_BOOLEAN);
@@ -2496,10 +2338,7 @@ void GScript::IsHitObject()
 void GScript::IsHitLandObject()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL)
-	{
-		ScriptErrorMessage("Object no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL, "Object no longer valid");
 	if (thing != NULL)
 	{
 		g_scriptDLL->PUSH((void*)(GGame::g_game->script->GetObjectHitLand() == thing), VMType_BOOLEAN);
@@ -2526,7 +2365,7 @@ void GScript::GetLastObjectToHitLand()
 }
 #endif
 
-int GScript::GetSlowestLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::GetSlowestLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	if (GGame::g_game->script->FindRadius > thing->GetSpeedInMetres())
 	{
@@ -2544,11 +2383,7 @@ void GScript::GetSlowestInId()
 	}
 	else
 	{
-		if (!thing->IsScriptContainer())
-		{
-			ScriptErrorMessage("Object not container");
-		}
-		thing->IsScriptContainer();
+		SCRIPT_ASSERT(thing->IsScriptContainer(), "Object not container");
 		if (thing->IsScriptContainer())
 		{
 			SCRIPT_OBJECT_TYPE objectType = thing->GetScriptObjectType();
@@ -2693,9 +2528,9 @@ void GScript::DevFunction()
 		break;
 	}
 	case SCRIPT_DEV_FUNCTION_ENTER_SAVEGAMEROOM:
-		ScriptGameState::CurrentRoom = TEMPLE_ROOM_SAVE_GAME;
+		CurrentRoom = TEMPLE_ROOM_SAVE_GAME;
 		GGame::g_game->GoInsideCitadel(TEMPLE_ROOM_SAVE_GAME, false);
-		ScriptGameState::CurrentRoom = TEMPLE_ROOM_SAVE_GAME;
+		CurrentRoom = TEMPLE_ROOM_SAVE_GAME;
 		break;
 	}
 }
@@ -2719,11 +2554,7 @@ void GScript::GetFootballPitch()
 	}
 	else
 	{
-		if (!thing->IsTown())
-		{
-			ScriptErrorMessage("Must look in a town!");
-		}
-		thing->IsTown();
+		SCRIPT_ASSERT(thing->IsTown(), "Must look in a town!");
 		if (thing->IsTown())
 		{
 			GameThing* pitch = ((Town*)thing)->FootballPitch;
@@ -2747,11 +2578,7 @@ void GScript::StopAllGames()
 		ScriptErrorMessage("Object no longer valid");
 		return;
 	}
-	if (!thing->IsFootball())
-	{
-		ScriptErrorMessage("Must be football");
-	}
-	thing->IsFootball();
+	SCRIPT_ASSERT(thing->IsFootball(), "Must be football");
 	if (thing->IsFootball())
 	{
 		((Football*)thing)->StopFootballGame();
@@ -2763,22 +2590,11 @@ void GScript::AttachToGame()
 	int               side = g_scriptDLL->ULONG_POP();
 	GameThingWithPos* game = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || game == NULL)
-	{
-		ScriptErrorMessage("Object no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL && game != NULL, "Object no longer valid");
 	if (thing != NULL && game != NULL)
 	{
-		if (!game->IsFootball())
-		{
-			ScriptErrorMessage("Must be footy!");
-		}
-		game->IsFootball();
-		if (!thing->IsVillager(NULL))
-		{
-			ScriptErrorMessage("Must be villager!");
-		}
-		thing->IsVillager(NULL);
+		SCRIPT_ASSERT(game->IsFootball(), "Must be footy!");
+		SCRIPT_ASSERT(thing->IsVillager(NULL), "Must be villager!");
 		if (game->IsFootball() && thing->IsVillager(NULL))
 		{
 			if (((Football*)game)->AddVillagerToTeam((Villager*)thing, side) != true)
@@ -2795,22 +2611,11 @@ void GScript::DetachFromGame()
 	g_scriptDLL->ULONG_POP();
 	GameThingWithPos* game = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || game == NULL)
-	{
-		ScriptErrorMessage("Object no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL && game != NULL, "Object no longer valid");
 	if (thing != NULL && game != NULL)
 	{
-		if (!game->IsFootball())
-		{
-			ScriptErrorMessage("Must be footy!");
-		}
-		game->IsFootball();
-		if (!thing->IsVillager(NULL))
-		{
-			ScriptErrorMessage("Must be villager!");
-		}
-		thing->IsVillager(NULL);
+		SCRIPT_ASSERT(game->IsFootball(), "Must be footy!");
+		SCRIPT_ASSERT(thing->IsVillager(NULL), "Must be villager!");
 		if (game->IsFootball() && thing->IsVillager(NULL))
 		{
 			if (((Football*)game)->RemoveVillagerFromTeam((Villager*)thing) != true)
@@ -2830,11 +2635,7 @@ void GScript::DetachFirstFromGame()
 		ScriptErrorMessage("Object no longer valid");
 		return;
 	}
-	if (!game->IsFootball())
-	{
-		ScriptErrorMessage("Must be footy!");
-	}
-	game->IsFootball();
+	SCRIPT_ASSERT(game->IsFootball(), "Must be footy!");
 	if (game->IsFootball())
 	{
 		if (((Football*)game)->RemovePlayerFromSide(side) != true)
@@ -2853,11 +2654,7 @@ void GScript::SetOnlyForScripts()
 		ScriptErrorMessage("Object no longer valid");
 		return;
 	}
-	if (!game->IsFootball())
-	{
-		ScriptErrorMessage("Must be footy!");
-	}
-	game->IsFootball();
+	SCRIPT_ASSERT(game->IsFootball(), "Must be footy!");
 	if (game->IsFootball())
 	{
 		((Football*)game)->AvailableToVillagers = onlyForScripts == false;
@@ -2868,22 +2665,11 @@ void GScript::StartWithReferee()
 {
 	GameThingWithPos* referee = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	GameThingWithPos* game = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (referee == NULL || game == NULL)
-	{
-		ScriptErrorMessage("Object no longer valid");
-	}
+	SCRIPT_ASSERT(referee != NULL && game != NULL, "Object no longer valid");
 	if (referee != NULL && game != NULL)
 	{
-		if (!game->IsFootball())
-		{
-			ScriptErrorMessage("Must be footy!");
-		}
-		game->IsFootball();
-		if (!referee->IsVillager(NULL))
-		{
-			ScriptErrorMessage("Must be villager!");
-		}
-		referee->IsVillager(NULL);
+		SCRIPT_ASSERT(game->IsFootball(), "Must be footy!");
+		SCRIPT_ASSERT(referee->IsVillager(NULL), "Must be villager!");
 		if (game->IsFootball() && referee->IsVillager(NULL))
 		{
 			if (((Football*)game)->AddReferee((Villager*)referee) != true)
@@ -2905,11 +2691,7 @@ void GScript::GetTeamSize()
 	}
 	else
 	{
-		if (!game->IsFootball())
-		{
-			ScriptErrorMessage("Must be footy!");
-		}
-		game->IsFootball();
+		SCRIPT_ASSERT(game->IsFootball(), "Must be footy!");
 		if (game->IsFootball())
 		{
 			if (home)
@@ -2950,6 +2732,10 @@ void GScript::GetSubType()
 	g_scriptDLL->PUSH((void*)subtype, VMType_INT);
 }
 
+// Inliner IL size: <= 40
+// BW1W120 inlined BW1M119 inlined
+inline bool32_t IsValidDesire(TOWN_DESIRE_INFO desire);
+
 inline bool32_t IsValidDesire(TOWN_DESIRE_INFO desire)
 {
 	return desire >= TOWN_DESIRE_INFO_FIRST && desire < TOWN_DESIRE_INFO_LAST;
@@ -2958,10 +2744,7 @@ inline bool32_t IsValidDesire(TOWN_DESIRE_INFO desire)
 void GScript::GetDesire()
 {
 	TOWN_DESIRE_INFO desire = (TOWN_DESIRE_INFO)g_scriptDLL->ULONG_POP();
-	if (!IsValidDesire(desire))
-	{
-		ScriptErrorMessage("Invalid desire");
-	}
+	SCRIPT_ASSERT(IsValidDesire(desire), "Invalid desire");
 	if (!IsValidDesire(desire))
 	{
 		g_scriptDLL->FLOAT_PUSH(0.0f);
@@ -3006,10 +2789,7 @@ void GScript::GetThingBeliefForPlayer()
 	float             scriptPlayer = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	GPlayer*          player = GGame::g_game->GetPlayer(ConvertScriptPlayerToGamePlayer((int)scriptPlayer));
-	if (thing == NULL || player == NULL)
-	{
-		ScriptErrorMessage("Object or player no longer valid");
-	}
+	SCRIPT_ASSERT(thing != NULL && player != NULL, "Object or player no longer valid");
 	if (thing != NULL && player != NULL)
 	{
 		if (thing->IsTown())
@@ -3035,20 +2815,16 @@ void GScript::GetThingHelp()
 	}
 	else
 	{
-		if (!thing->IsReward())
-		{
-			ScriptErrorMessage("Not reward!");
-		}
-		thing->IsReward();
+		SCRIPT_ASSERT(thing->IsReward(), "Not reward!");
 		if (thing->IsReward())
 		{
-			g_scriptDLL->FLOAT_PUSH((float)((GRewardInfo*)((Reward*)thing)->info)->HelpEnum);
+			g_scriptDLL->FLOAT_PUSH((float)(uint32_t)((GRewardInfo*)((Reward*)thing)->info)->HelpEnum);
 			return;
 		}
 		if (thing->IsSpellDispenser())
 		{
 			g_scriptDLL->FLOAT_PUSH(
-				(float)((SpellDispenser*)thing)->GetMagicInfoProduced()->GetMagicEffectInfo()->HelpEnum);
+				(float)(uint32_t)((SpellDispenser*)thing)->GetMagicInfoProduced()->GetMagicEffectInfo()->HelpEnum);
 			return;
 		}
 		if (thing->IsObject())
@@ -3072,7 +2848,7 @@ void GScript::GetFirstHelp()
 		if (thing->IsSpellDispenser())
 		{
 			g_scriptDLL->FLOAT_PUSH(
-				(float)((SpellDispenser*)thing)->GetMagicInfoProduced()->GetMagicEffectInfo()->HelpEnum);
+				(float)(uint32_t)((SpellDispenser*)thing)->GetMagicInfoProduced()->GetMagicEffectInfo()->HelpEnum);
 			return;
 		}
 		if (thing->IsObject())
@@ -3097,7 +2873,7 @@ void GScript::GetLastHelp()
 		if (thing->IsSpellDispenser())
 		{
 			g_scriptDLL->FLOAT_PUSH(
-				(float)((SpellDispenser*)thing)->GetMagicInfoProduced()->GetMagicEffectInfo()->HelpEnum);
+				(float)(uint32_t)((SpellDispenser*)thing)->GetMagicInfoProduced()->GetMagicEffectInfo()->HelpEnum);
 			return;
 		}
 		if (thing->IsObject())
@@ -3134,11 +2910,8 @@ void GScript::LoadComputerCreature()
 	dll = g_scriptDLL;
 	char*         path = dll->STRING(dll->ULONG_POP());
 	CREATURE_TYPE type = (CREATURE_TYPE)g_scriptDLL->ULONG_POP();
-	if (GGame::g_game->GetPlayer(player)->GetCreature() != NULL)
-	{
-		ScriptErrorMessage("Player has already his creature loaded, but I overwrite it");
-	}
-	GGame::g_game->GetPlayer(player)->GetCreature();
+	SCRIPT_ASSERT(GGame::g_game->GetPlayer(player)->GetCreature() == NULL,
+	              "Player has already his creature loaded, but I overwrite it");
 	if (GGame::g_game->GetPlayer(player)->ComputerPlayer != NULL)
 	{
 		GGame::g_game->GetPlayer(player)->ComputerPlayer->CreateCreatureFromFile(type, coords, path);
@@ -3157,11 +2930,7 @@ void GScript::SetObjectRelativeBelief()
 		ScriptErrorMessage("Object no longer valid");
 		return;
 	}
-	if (!thing->IsTown())
-	{
-		ScriptErrorMessage("Not town!");
-	}
-	thing->IsTown();
+	SCRIPT_ASSERT(thing->IsTown(), "Not town!");
 	if (thing->IsTown())
 	{
 		((Town*)thing)->PlayerTakeTownCheat(GGame::g_game->GetPlayer(player), belief);
@@ -3178,11 +2947,7 @@ void GScript::SetBelief()
 		ScriptErrorMessage("Object no longer valid");
 		return;
 	}
-	if (!thing->IsTown())
-	{
-		ScriptErrorMessage("Not town!");
-	}
-	thing->IsTown();
+	SCRIPT_ASSERT(thing->IsTown(), "Not town!");
 	if (thing->IsTown())
 	{
 		GBelief& belief = ((Town*)thing)->belief;
@@ -3202,11 +2967,7 @@ void GScript::SetTownBeliefCap()
 		ScriptErrorMessage("Object no longer valid");
 		return;
 	}
-	if (!thing->IsTown())
-	{
-		ScriptErrorMessage("Not town!");
-	}
-	thing->IsTown();
+	SCRIPT_ASSERT(thing->IsTown(), "Not town!");
 	if (thing->IsTown())
 	{
 		((Town*)thing)->belief.SetBeliefInPlayerCap(thing->GetPlayer(), cap);
@@ -3332,11 +3093,7 @@ void GScript::SetMistFade()
 		              *(float*)&duration);
 		return;
 	}
-	if (!thing->IsMist())
-	{
-		ScriptErrorMessage("Must be mist object!");
-	}
-	thing->IsMist();
+	SCRIPT_ASSERT(thing->IsMist(), "Must be mist object!");
 }
 
 void GScript::GetMistFade()
@@ -3353,11 +3110,7 @@ void GScript::GetMistFade()
 			g_scriptDLL->FLOAT_PUSH(((Mist*)thing)->GetFadePercentage());
 			return;
 		}
-		if (!thing->IsMist())
-		{
-			ScriptErrorMessage("Must be mist object!");
-		}
-		thing->IsMist();
+		SCRIPT_ASSERT(thing->IsMist(), "Must be mist object!");
 	}
 	g_scriptDLL->FLOAT_PUSH(1.0f);
 }
@@ -3380,7 +3133,7 @@ void GScript::IsHandDemoPlayed()
 	g_scriptDLL->PUSH((void*)finished, VMType_BOOLEAN);
 }
 
-int GScript::SetSkeletonLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetSkeletonLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	thing->SetSkeleton(GGame::g_game->script->LoopParam);
 	return false;
@@ -3452,7 +3205,7 @@ void GScript::AddTargetObject()
 	}
 }
 
-int GScript::SetIndestructableLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
+bool32_t GScript::SetIndestructableLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	bool32_t indestructible = GGame::g_game->script->LoopParam;
 	thing->Flags = (thing->Flags & ~GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE) |
@@ -3512,7 +3265,7 @@ void GScript::SetHurtByFire()
 void GScript::ImmersionExists()
 {
 	GGame::g_game->MyInterface();
-	g_scriptDLL->PUSH((void*)(ScriptGameState::ImmersionMouse != NULL), VMType_BOOLEAN);
+	g_scriptDLL->PUSH((void*)(ImmersionMouse != NULL), VMType_BOOLEAN);
 }
 
 void GScript::SetIntroBuilding()
@@ -3554,10 +3307,7 @@ void GScript::SetVortexParameters()
 	LandscapeVortex*  vortex = dynamic_cast<LandscapeVortex*>(vortexThing);
 	Town*             town = dynamic_cast<Town*>(townThing);
 	Flock*            flock = dynamic_cast<Flock*>(flockThing);
-	if (town == NULL || vortex == NULL)
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(town != NULL && vortex != NULL, "Thing not valid");
 	if (vortex != NULL)
 	{
 		vortex->SetTown(town);
@@ -3570,13 +3320,9 @@ void GScript::SetHighlightProperties()
 	DYK_CATEGORY      category = (DYK_CATEGORY)g_scriptDLL->ULONG_POP();
 	uint32_t          scriptId = g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsScriptHighlight())
-	{
-		ScriptErrorMessage("Thing not valid");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsScriptHighlight(), "Thing not valid");
 	if (thing != NULL)
 	{
-		thing->IsScriptHighlight();
 		if (thing->IsScriptHighlight())
 		{
 			((ScriptHighlight*)thing)->SetScriptId(scriptId, category);
@@ -3633,13 +3379,9 @@ void GScript::GameThingCanViewCamera()
 {
 	float             angle = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsObject())
-	{
-		ScriptErrorMessage("Thing not valid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsObject(), "Thing not valid!");
 	if (thing != NULL)
 	{
-		thing->IsObject();
 		if (thing->IsObject())
 		{
 			GGame::g_game->GetCamera();
@@ -3657,8 +3399,7 @@ void GScript::GameThingCanViewCamera()
 				LHPoint pos;
 				GLandscape::ConvertMapCoordToLandscapePoint(thing->Pos, pos);
 				float    yAngle = ((Object*)thing)->GetYAngle();
-				bool32_t canSee =
-					GUtils::CanISeeThisPoint(&pos, yAngle, (angle * 0.5f) * SCRIPT_DEGREES_TO_RADIANS, &camera);
+				bool32_t canSee = GUtils::CanISeeThisPoint(&pos, yAngle, (angle * 0.5f) * DEGREES_TO_RADIANS, &camera);
 				g_scriptDLL->PUSH((void*)canSee, VMType_BOOLEAN);
 				return;
 			}
@@ -3672,18 +3413,8 @@ void GScript::SetTownDesireBoost()
 	float             boost = g_scriptDLL->FLOAT_POP();
 	TOWN_DESIRE_INFO  desire = (TOWN_DESIRE_INFO)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsTown())
-	{
-		ScriptErrorMessage("Thing not valid!");
-	}
-	if (thing != NULL)
-	{
-		thing->IsTown();
-	}
-	if (!(desire < TOWN_DESIRE_INFO_LAST && boost >= -1.0f && boost <= 1.0f))
-	{
-		ScriptErrorMessage("Invalid Params");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsTown(), "Thing not valid!");
+	SCRIPT_ASSERT(desire < TOWN_DESIRE_INFO_LAST && boost >= -1.0f && boost <= 1.0f, "Invalid Params");
 	if (desire < TOWN_DESIRE_INFO_LAST && boost >= -1.0f && boost <= 1.0f && thing != NULL && thing->IsTown())
 	{
 		((Town*)thing)->desire.DesireBoost[desire] = boost;
@@ -3694,13 +3425,9 @@ void GScript::SetTownDesireBoost()
 void GScript::ClearActorMind()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsTown())
-	{
-		ScriptErrorMessage("Thing not valid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsTown(), "Thing not valid!");
 	if (thing != NULL)
 	{
-		thing->IsTown();
 		if (((Living*)thing)->data_for_script_remind != NULL)
 		{
 			((Living*)thing)->data_for_script_remind->ToBeDeleted(false);
@@ -3723,13 +3450,9 @@ void GScript::SetObjectMana()
 {
 	float             mana = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !(thing->IsWorshipSite() || thing->IsSpellIcon()))
-	{
-		ScriptErrorMessage("Thing not valid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && (thing->IsWorshipSite() || thing->IsSpellIcon()), "Thing not valid!");
 	if (thing != NULL)
 	{
-		thing->IsWorshipSite() || thing->IsSpellIcon();
 		WorshipSite* site = NULL;
 		if (thing->IsWorshipSite())
 		{
@@ -3750,13 +3473,9 @@ void GScript::SetObjectMana()
 void GScript::GetObjectMana()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsWorshipSite())
-	{
-		ScriptErrorMessage("Thing not valid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsWorshipSite(), "Thing not valid!");
 	if (thing != NULL)
 	{
-		thing->IsWorshipSite();
 		if (thing->IsWorshipSite())
 		{
 			g_scriptDLL->FLOAT_PUSH(((WorshipSite*)thing)->GetChantStore());
@@ -3769,13 +3488,9 @@ void GScript::GetObjectMana()
 void GScript::GetSacrificeTotal()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsWorshipSite())
-	{
-		ScriptErrorMessage("Thing not valid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsWorshipSite(), "Thing not valid!");
 	if (thing != NULL)
 	{
-		thing->IsWorshipSite();
 		if (thing->IsWorshipSite())
 		{
 			g_scriptDLL->FLOAT_PUSH(((WorshipSite*)thing)->GetSacrficeTotal());
@@ -3809,18 +3524,14 @@ void GScript::SetScaffoldProperties()
 {
 	bool32_t          destroy = g_scriptDLL->ULONG_POP();
 	float             value = g_scriptDLL->FLOAT_POP();
-	uint32_t          type = g_scriptDLL->ULONG_POP();
+	ABODE_INFO        type = (ABODE_INFO)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	if (thing == NULL)
 	{
 		ScriptErrorMessage("Object no longer valid!");
 		return;
 	}
-	if (!thing->IsScaffold())
-	{
-		ScriptErrorMessage("Thing must be scaffold");
-	}
-	thing->IsScaffold();
+	SCRIPT_ASSERT(thing->IsScaffold(), "Thing must be scaffold");
 	if (thing->IsScaffold())
 	{
 		Scaffold* scaffold = (Scaffold*)thing;
@@ -3840,11 +3551,7 @@ void GScript::SetDisciple()
 		ScriptErrorMessage("Object no longer valid!");
 		return;
 	}
-	if (!thing->IsVillager(NULL))
-	{
-		ScriptErrorMessage("Thing must be villager");
-	}
-	thing->IsVillager(NULL);
+	SCRIPT_ASSERT(thing->IsVillager(NULL), "Thing must be villager");
 	if (thing->IsVillager(NULL))
 	{
 		((Villager*)thing)->SetVillagerDisciple(NULL, disciple, unused);
@@ -3855,13 +3562,9 @@ void GScript::SetBuildWorshipSite()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	bool32_t          canBuild = g_scriptDLL->ULONG_POP();
-	if (thing == NULL || !(thing->IsTown() || thing->IsCitadelHeart()))
-	{
-		ScriptErrorMessage("Must be town");
-	}
+	SCRIPT_ASSERT(thing != NULL && (thing->IsTown() || thing->IsCitadelHeart()), "Must be town");
 	if (thing != NULL)
 	{
-		thing->IsTown() || thing->IsCitadelHeart();
 		if (thing->IsTown())
 		{
 			((Town*)thing)->CannotBuildWorshipSite = canBuild == false;
@@ -3962,11 +3665,7 @@ void GScript::AffectedBySpell()
 	}
 	else
 	{
-		if (!thing->IsCreature())
-		{
-			ScriptErrorMessage("Object must be a creature!");
-		}
-		thing->IsCreature();
+		SCRIPT_ASSERT(thing->IsCreature(), "Object must be a creature!");
 		if (thing->IsCreature())
 		{
 			const GMagicCreatureSpellInfo* info =
@@ -3992,11 +3691,7 @@ void GScript::SetMagicInObject()
 		ScriptErrorMessage("Thing not valid");
 		return;
 	}
-	if (!thing->IsTown())
-	{
-		ScriptErrorMessage("Object should be town");
-	}
-	thing->IsTown();
+	SCRIPT_ASSERT(thing->IsTown(), "Object should be town");
 	if (thing->IsTown())
 	{
 		if (add)
@@ -4017,11 +3712,7 @@ void GScript::GetObjectAdultSize()
 	}
 	else
 	{
-		if (!thing->IsTown() && !thing->IsAbode())
-		{
-			ScriptErrorMessage("Object should be town, or abode");
-		}
-		thing->IsTown() || thing->IsAbode();
+		SCRIPT_ASSERT(thing->IsTown() || thing->IsAbode(), "Object should be town, or abode");
 		if (thing->IsTown())
 		{
 			g_scriptDLL->FLOAT_PUSH((float)((Town*)thing)->stats.NumAdults);
@@ -4045,11 +3736,7 @@ void GScript::GetObjectCapacity()
 	}
 	else
 	{
-		if (!thing->IsTown() && !thing->IsAbode())
-		{
-			ScriptErrorMessage("Object should be town, or abode");
-		}
-		thing->IsTown() || thing->IsAbode();
+		SCRIPT_ASSERT(thing->IsTown() || thing->IsAbode(), "Object should be town, or abode");
 		if (thing->IsTown())
 		{
 			g_scriptDLL->FLOAT_PUSH(
@@ -4075,11 +3762,7 @@ void GScript::GetObjectAdultCapacity()
 	}
 	else
 	{
-		if (!thing->IsTown() && !thing->IsAbode())
-		{
-			ScriptErrorMessage("Object should be town, or abode");
-		}
-		thing->IsTown() || thing->IsAbode();
+		SCRIPT_ASSERT(thing->IsTown() || thing->IsAbode(), "Object should be town, or abode");
 		if (thing->IsTown())
 		{
 			g_scriptDLL->FLOAT_PUSH((float)((Town*)thing)->stats.MaxVillagersInAbodes);
@@ -4103,12 +3786,12 @@ void GScript::SquareRoot()
 
 void GScript::SetPauseWeather()
 {
-	GWeather::Paused = g_scriptDLL->ULONG_POP() != 0;
+	GWeather::ClimateActive = g_scriptDLL->ULONG_POP() != 0;
 }
 
 void GScript::SetStormCreation()
 {
-	GWeather::StormCreationPaused = g_scriptDLL->ULONG_POP() != 0;
+	GWeather::StormCreationActive = g_scriptDLL->ULONG_POP() != 0;
 }
 
 void GScript::KillStormsInArea()
@@ -4145,13 +3828,9 @@ void GScript::RestartThing()
 void GScript::GetTownWorshipDeaths()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsTown())
-	{
-		ScriptErrorMessage("Town invalid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsTown(), "Town invalid!");
 	if (thing != NULL)
 	{
-		thing->IsTown();
 		if (thing->IsTown())
 		{
 			g_scriptDLL->FLOAT_PUSH((float)(uint32_t)((Town*)thing)->GetDeathsFromWorshipping());
@@ -4200,13 +3879,9 @@ void GScript::TownBalanceBeliefScale()
 {
 	float             scale = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsTown())
-	{
-		ScriptErrorMessage("Town invalid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsTown(), "Town invalid!");
 	if (thing != NULL)
 	{
-		thing->IsTown();
 		if (thing->IsTown())
 		{
 			((Town*)thing)->BalanceBeliefScale = scale;
@@ -4218,14 +3893,14 @@ void GScript::SetCreatureInTemple()
 {
 	bool32_t inTemple = g_scriptDLL->ULONG_POP();
 	CreatureRoom::CreatureInTemple = inTemple;
-	ScriptGameState::CreatureInTemple = inTemple;
+	::CreatureInTemple = inTemple;
 }
 
 void GScript::InstantSaveForScript()
 {
 	float slot = g_scriptDLL->FLOAT_POP();
 #ifdef VERSION_BW1WCI
-	GGame::g_game->SetPacket(PACKET_TYPE_INSTANT_SAVE, (unsigned short)slot, (unsigned short)0);
+	GGame::g_game->SetPacket(PACKET_TYPE_INSTANT_SAVE, (uint16_t)slot, (uint16_t)0);
 #else
 	SaveGameRoom::InstantSaveGame((long)slot);
 #endif
@@ -4235,13 +3910,9 @@ void GScript::SetObjectCarrying()
 {
 	uint32_t          carrying = g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsVillager(NULL))
-	{
-		ScriptErrorMessage("Villager invalid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsVillager(NULL), "Villager invalid!");
 	if (thing != NULL)
 	{
-		thing->IsVillager(NULL);
 		if (thing->IsVillager(NULL))
 		{
 			((Villager*)thing)->CarriedObjectType = carrying;
@@ -4371,21 +4042,15 @@ void GScript::SetObjectScore()
 {
 	float             score = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsScriptHighlight())
-	{
-		ScriptErrorMessage("Highlight invalid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsScriptHighlight(), "Highlight invalid!");
 	if (thing != NULL)
 	{
-		thing->IsScriptHighlight();
 		if (thing->IsScriptHighlight())
 		{
 			ScriptHighlight* highlight = (ScriptHighlight*)thing;
 			HIGHLIGHT_INFO   type = highlight->GetInfo()->GetType();
-			if (type != SCRIPT_HIGHLIGHT_INFO_SCOREBOARD && type != SCRIPT_HIGHLIGHT_INFO_SCOREBOARD_BIG)
-			{
-				ScriptErrorMessage("Should be a scoreboard");
-			}
+			SCRIPT_ASSERT(type == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD || type == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD_BIG,
+			              "Should be a scoreboard");
 			type = highlight->GetInfo()->GetType();
 			if (type == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD || type == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD_BIG)
 			{
@@ -4411,21 +4076,15 @@ void GScript::SetObjectScore()
 void GScript::GetObjectScore()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsScriptHighlight())
-	{
-		ScriptErrorMessage("Highlight invalid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsScriptHighlight(), "Highlight invalid!");
 	if (thing != NULL)
 	{
-		thing->IsScriptHighlight();
 		if (thing->IsScriptHighlight())
 		{
 			ScriptHighlight* highlight = (ScriptHighlight*)thing;
 			HIGHLIGHT_INFO   type = highlight->GetInfo()->GetType();
-			if (type != SCRIPT_HIGHLIGHT_INFO_SCOREBOARD && type != SCRIPT_HIGHLIGHT_INFO_SCOREBOARD_BIG)
-			{
-				ScriptErrorMessage("Should be a scoreboard");
-			}
+			SCRIPT_ASSERT(type == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD || type == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD_BIG,
+			              "Should be a scoreboard");
 			type = highlight->GetInfo()->GetType();
 			if (type == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD || type == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD_BIG)
 			{
@@ -4455,14 +4114,7 @@ void GScript::EpOfObject()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	float             index = g_scriptDLL->FLOAT_POP();
-	if (thing == NULL || !thing->IsObject())
-	{
-		ScriptErrorMessage("thing invalid!");
-	}
-	if (thing != NULL)
-	{
-		thing->IsObject();
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsObject(), "thing invalid!");
 	LHPoint pos;
 	pos.z = 0.0f;
 	pos.y = 0.0f;
@@ -4550,13 +4202,9 @@ void GScript::SetObjectDieCheck()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	uint32_t          check = g_scriptDLL->ULONG_POP();
-	if (thing == NULL || !thing->IsDice())
-	{
-		ScriptErrorMessage("thing invalid!");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsDice(), "thing invalid!");
 	if (thing != NULL)
 	{
-		thing->IsDice();
 		if (thing->IsDice())
 		{
 			((Die*)thing)->Check = check;
@@ -4616,13 +4264,9 @@ void GScript::SetDolphinWait()
 void GScript::FireGun()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsCannon())
-	{
-		ScriptErrorMessage("Thing not cannon");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsCannon(), "Thing not cannon");
 	if (thing != NULL)
 	{
-		thing->IsCannon();
 		if (thing->IsCannon())
 		{
 			((Cannon*)thing)->Fire();
@@ -4635,13 +4279,9 @@ void GScript::SetGunAnglePitch()
 	float             pitch = g_scriptDLL->FLOAT_POP();
 	float             angle = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	if (thing == NULL || !thing->IsCannon())
-	{
-		ScriptErrorMessage("Thing not cannon");
-	}
+	SCRIPT_ASSERT(thing != NULL && thing->IsCannon(), "Thing not cannon");
 	if (thing != NULL)
 	{
-		thing->IsCannon();
 		if (thing->IsCannon())
 		{
 			((Cannon*)thing)->SetOrientation(angle, pitch);
@@ -4655,8 +4295,8 @@ void GScript::SetCanBeLeashed()
 	bool32_t          leashable = g_scriptDLL->ULONG_POP();
 	if (thing != NULL)
 	{
-		((GameThing*)thing)->Flags = (((GameThing*)thing)->Flags & ~SCRIPT_GAME_THING_FLAG_NOT_LEASHABLE) |
-		                             ((leashable == false) << SCRIPT_GAME_THING_FLAG_NOT_LEASHABLE_BIT);
+		((GameThing*)thing)->Flags = (((GameThing*)thing)->Flags & ~GAME_THING_FLAG_NOT_LEASHABLE) |
+		                             ((leashable == false) << GAME_THING_FLAG_NOT_LEASHABLE_BIT);
 	}
 }
 

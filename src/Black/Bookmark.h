@@ -80,7 +80,7 @@ class Bookmark
 public:
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00440fb0 BW1MCI119 010c9980
-	static void SetBookMarkForObject(Object* object, int clear);
+	static void SetBookMarkForObject(Object* object, bool32_t clear);
 #endif
 	BookmarkGraphic* Graphic; /* 0x0 */
 	uint8_t          Flags;

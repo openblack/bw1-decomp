@@ -1385,7 +1385,7 @@ public:
 	// BW1W120 004f7080 BW1M119 0128cda0
 	void ScriptLearnEverything();
 	// BW1W120 004f7090 BW1M119 0128cca0
-	void ScriptSetKnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, int knows);
+	void ScriptSetKnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, bool32_t knows);
 	// BW1W120 004f70f0 BW1M119 0128cc50
 	void ScriptSetAgendaPriority(float priority);
 	// BW1W120 004f6980 BW1M119 0128d6c0

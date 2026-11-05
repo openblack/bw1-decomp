@@ -434,7 +434,9 @@ ScriptFunctionEntry g_scriptFunctionTable[464] = {
 	{GScript::QueueCreatureFightStep, 2, 0, 0, "SET_CREATURE_QUEUE_FIGHT_STEP"},
 	{GScript::GetCreatureFightAction, 1, 1, 0, "GET_CREATURE_FIGHT_ACTION"},
 	{GScript::GetCreatureFightQueuedHits, 1, 1, 0, "CREATURE_FIGHT_QUEUE_HITS"},
+#ifndef VERSION_BW1WCI
 	{GScript::SquareRoot, 1, 1, 0, "SQUARE_ROOT"},
+#endif
 	{GScript::GetPlayerAlly, 2, 1, 0, "GET_PLAYER_ALLY"},
 	{GScript::SetNoWindResistanceFlag, 2, 1, 0, "SET_PLAYER_WIND_RESISTANCE"},
 	{GScript::GetNoWindResistanceFlag, 2, 1, 0, "GET_PLAYER_WIND_RESISTANCE"},

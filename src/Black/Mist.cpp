@@ -12,7 +12,7 @@ bool32_t Mist::Load(GameOSFile& file)
 	{
 		file.ReadIt(field_0x2c);
 		file.ReadIt(field_0x30);
-		file.ReadIt(field_0x34);
+		file.ReadIt(HeightScale);
 		return true;
 	}
 	return false;
@@ -24,7 +24,7 @@ bool32_t Mist::Save(GameOSFile& file)
 	{
 		file.WriteIt(field_0x2c);
 		file.WriteIt(field_0x30);
-		file.WriteIt(field_0x34);
+		file.WriteIt(HeightScale);
 		return true;
 	}
 	return false;

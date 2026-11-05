@@ -11,6 +11,8 @@
 
 class GMobileStaticInfo;
 
+#define CANNON_SCRIPT_SCALE 0.5f
+
 class Cannon : public MultiMapFixed
 {
 public:

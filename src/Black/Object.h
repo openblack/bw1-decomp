@@ -423,7 +423,7 @@ public:
 	// BW1W120 00402770 BW1M119 012fefa0
 	virtual void SetPoisonedResource(RESOURCE_TYPE type, int poisoned) {}
 	// BW1W120 00402780 BW1M119 015a30b0
-	virtual void SetPoisoned(int poisoned) {}
+	virtual void SetPoisoned(bool32_t poisoned) {}
 	// BW1W120 00402790 BW1M119 011779b0
 	virtual bool32_t IsLockedInInteract() { return false; }
 	// BW1W120 004027a0 BW1M119 0150e1d0

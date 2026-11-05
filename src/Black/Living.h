@@ -243,7 +243,7 @@ public:
 	// BW1W120 005ec9b0 BW1M119 0138a3a0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00416fa0 BW1M119 01138400
-	virtual void SetPoisoned(int poisoned);
+	virtual void SetPoisoned(bool32_t poisoned);
 	// BW1W120 005ec390 BW1M119 0138ad10
 	virtual bool32_t SetDying();
 	// BW1W120 005eccb0 BW1M119 01389390

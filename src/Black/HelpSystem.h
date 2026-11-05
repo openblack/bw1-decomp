@@ -435,7 +435,7 @@ public:
 	// BW1W120 005c5f90 BW1M119 01358e20
 	void SendText(unsigned long text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator);
 	// BW1W120 005c6100 BW1M119 01358cf0
-	void SendText(char16_t* text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator,
+	void SendText(wchar_t* text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator,
 	              unsigned long text_id);
 	// BW1W120 005c64e0 BW1M119 013589c0
 	bool32_t IsTextRead();

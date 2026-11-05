@@ -32,6 +32,9 @@ class Town;
 #define FLOCK_DEFAULT_DOMAIN_RADIUS 80
 #define FLOCK_DEFAULT_DISTANCE      30
 
+#define FLOCK_SCRIPT_ANIMAL_DOMAIN_RADIUS 2
+#define FLOCK_SCRIPT_ANIMAL_DISTANCE      1
+
 class Flock : public Container
 {
 public:

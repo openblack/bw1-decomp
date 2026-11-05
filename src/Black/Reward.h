@@ -43,7 +43,7 @@ public:
 	uint32_t   field_0x90;
 	uint8_t    field_0x94[0x4];
 	uint32_t   field_0x98;
-	uint32_t   field_0x9c;
+	float      field_0x9c;
 	uint8_t    field_0xa0[0x4];
 	uint32_t   field_0xa4;
 
@@ -98,7 +98,7 @@ public:
 	void ProcessDrawing();
 	// BW1W120 006e58c0 BW1M119 01144650
 	static Reward* Create(const MapCoords& coords, const GRewardInfo* info, GPlayer* player, bool32_t from_sky,
-	                      float y_angle, float scale, Town* town);
+	                      float y_angle, float unused, Town* town);
 };
 
 class GRewardProgress : public GBaseInfo
