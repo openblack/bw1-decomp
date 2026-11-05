@@ -23,16 +23,6 @@
 #include "Packet.h"
 #include "Player.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreatureLessonChooser.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureLessonChooser.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureLessonChooser.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureLessonChooser.cpp"
-#endif
-
 #define LESSON_CHOOSER_MARGIN           20
 #define LESSON_CHOOSER_LINE_HEIGHT      20
 #define LESSON_CHOOSER_ACTION_TEXT_Y    280

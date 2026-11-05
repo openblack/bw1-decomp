@@ -10,7 +10,7 @@
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
-static char THIS_FILE[] = "C:\\Dev\\Libs\\LIONHEAD\\LHDialogLib\\VERSION 1.0\\LHDialogLib.cpp";
+static char THIS_FILE[] = FILEPATH;
 #endif
 
 enum DIALOG_TYPE

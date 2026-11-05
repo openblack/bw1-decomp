@@ -16,9 +16,6 @@
 #include <Lionhead/LHLib/ver5.0/LHSurface.h>       /* For struct LHSurface */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
 
-// This unit passes its own source path to operator new (see #463).
-#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHWin.cpp"
-
 WINUSERAPI BOOL WINAPI TrackMouseEvent(LPTRACKMOUSEEVENT);
 
 // (LHScreen.cpp) per-message screen bookkeeping

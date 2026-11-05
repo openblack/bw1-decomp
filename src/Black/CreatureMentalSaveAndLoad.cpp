@@ -41,16 +41,6 @@
 #include "Serialise.h"
 #include "Utils.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreatureMentalSaveAndLoad.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMentalSaveAndLoad.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalSaveAndLoad.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalSaveAndLoad.cpp"
-#endif
-
 #define NO_SAVED_CREATURE          (-1)
 #define NO_SAVED_PLAYER            0xff
 #define DECISION_TREE_MAX_EXAMPLES 16

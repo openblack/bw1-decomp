@@ -17,16 +17,6 @@
 #include "Rand.h"
 #include "Utils.h" /* For class GUtils */
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreatureMentalMisc.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMentalMisc.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalMisc.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalMisc.cpp"
-#endif
-
 #define PERSONALITY_VARIATION         0.1f
 #define EXTROVERSION_VARIATION        0.3f
 #define INTEREST_IN_LOOKING_VARIATION 0.4f

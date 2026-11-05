@@ -77,8 +77,6 @@
 #define TREE_SHELTER_DISTANCE     4.0f
 #define TREE_SLEEP_DISTANCE       2.0f
 
-#define FILEPATH "C:\\dev\\MP\\Black\\Tree.cpp"
-
 GTreeInfo GTreeInfo::Infos[TREE_INFO_LAST];
 
 static int   SwayTimer;

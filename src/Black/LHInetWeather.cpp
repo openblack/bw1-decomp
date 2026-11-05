@@ -25,16 +25,6 @@
 #include "HelpText.h"
 #include "Landscape.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\LHInetWeather.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\LHInetWeather.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\LHInetWeather.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\LHInetWeather.cpp"
-#endif
-
 #define HELP_TEXT_WEATHER_INFO (HELP_TEXT_DIALOG_WEATHER_INFO - 8)
 
 typedef BOOL(WINAPI* ISNETWORKALIVE)(LPDWORD flags);

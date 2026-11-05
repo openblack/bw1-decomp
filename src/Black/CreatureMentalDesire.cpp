@@ -21,16 +21,6 @@
 #include "Player.h"
 #include "Rand.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\CreatureMentalDesire.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMentalDesire.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalDesire.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalDesire.cpp"
-#endif
-
 #define MAX_LEVEL_FEEDBACK_RANGE        0.2f
 #define MAX_DESIRE_LEVEL                2.0f
 #define MIN_COMPLETIONS_TO_SATISFY_URGE 1.0f

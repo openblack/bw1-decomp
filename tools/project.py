@@ -16,6 +16,8 @@ import math
 import os
 import re
 import platform
+import shlex
+import subprocess
 import sys
 from pathlib import Path
 from typing import (
@@ -448,10 +450,20 @@ def check_path_case(path: Path):
         print(f"⚠️  Case mismatch: expected={path} actual={curr}")
 
 
-def make_flags_str(flags: Optional[List[str]]) -> str:
+# Flags holding a quote (a string-valued /D, such as FILEPATH) are quoted for the
+# command interpreter: ninja runs commands through /bin/sh on POSIX and passes them
+# to CreateProcess, which cl splits by the CRT's rules, on Windows. Others pass as
+# they are, so that two-part flags such as "/I include" stay two arguments.
+def quote_flag(flag: str, windows: bool = os.name == "nt") -> str:
+    if '"' not in flag:
+        return flag
+    return subprocess.list2cmdline([flag]) if windows else shlex.quote(flag)
+
+
+def make_flags_str(flags: Optional[List[str]], windows: bool = os.name == "nt") -> str:
     if flags is None:
         return ""
-    return " ".join(flags)
+    return " ".join(quote_flag(flag, windows) for flag in flags)
 
 
 # Writes dtk's link response file `src` to `dst` without /includeglob:*, for a
@@ -2378,7 +2390,8 @@ def generate_objdiff_config(
         if compiler_version is None:
             print(f"Missing scratch compiler mapping for {obj.options['compiler_version']}")
         else:
-            cflags_str = make_flags_str(all_cflags)
+            # decomp.me splits its flags as a POSIX shell does.
+            cflags_str = make_flags_str(all_cflags, windows=False)
             if src_exists and obj.src_path.suffix.lower() in (".cpp", ".cxx", ".cc"):
                 cflags_str += " /TP"
             # A preset overrides the compiler and flags sent here, so only objects

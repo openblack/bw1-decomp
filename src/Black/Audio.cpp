@@ -48,16 +48,6 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define AUDIO_FILE "C:\\dev\\black\\Audio.cpp"
-#elif defined(VERSION_BW1W110)
-#define AUDIO_FILE "C:\\dev\\Black\\Audio.cpp"
-#elif defined(VERSION_BW1W130)
-#define AUDIO_FILE "D:\\Work\\Games\\dd\\Black\\Audio.cpp"
-#else
-#define AUDIO_FILE "C:\\dev\\MP\\Black\\Audio.cpp"
-#endif
-
 #ifndef INVALID_FILE_ATTRIBUTES
 #define INVALID_FILE_ATTRIBUTES 0xFFFFFFFF
 #endif
@@ -359,9 +349,9 @@ GAudio::GAudio()
 	OSVERSIONINFO versionInfo;
 
 #ifdef VERSION_BW1WCI
-	AudioSystem = new (AUDIO_FILE, 333) LH_AudioSystem;
+	AudioSystem = new (FILEPATH, 333) LH_AudioSystem;
 #else
-	AudioSystem = new (AUDIO_FILE, 325) LH_AudioSystem;
+	AudioSystem = new (FILEPATH, 325) LH_AudioSystem;
 #endif
 	AudioSystem->EnableWave = true;
 	AudioSystem->EnableMidi = false;

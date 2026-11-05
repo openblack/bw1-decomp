@@ -4,21 +4,9 @@
 #include "GameInfo.h"
 #include "GameOSFile.h" /* For class GameOSFile */
 
-#if defined(VERSION_BW1W100)
-#define SCRIPT_TIMER_FILE "C:\\dev\\black\\ScriptTimer.cpp"
-#elif defined(VERSION_BW1W110)
-#define SCRIPT_TIMER_FILE "C:\\dev\\Black\\ScriptTimer.cpp"
-#elif defined(VERSION_BW1W130)
-#define SCRIPT_TIMER_FILE "D:\\Work\\Games\\dd\\Black\\ScriptTimer.cpp"
-#elif defined(VERSION_BW1WCI)
-#define SCRIPT_TIMER_FILE "C:\\dev\\black\\ScriptTimer.cpp"
-#else
-#define SCRIPT_TIMER_FILE "C:\\dev\\MP\\Black\\ScriptTimer.cpp"
-#endif
-
 ScriptTimer* ScriptTimer::Create(float seconds)
 {
-	ScriptTimer* timer = new (SCRIPT_TIMER_FILE, 13) ScriptTimer();
+	ScriptTimer* timer = new (FILEPATH, 13) ScriptTimer();
 	if (timer != NULL)
 	{
 		timer->SetTime(seconds);

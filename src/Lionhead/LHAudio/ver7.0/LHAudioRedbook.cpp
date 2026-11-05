@@ -1,7 +1,5 @@
 #include "LHAudioLog.h"
 
-#define FILEPATH LH_AUDIO_SOURCE_DIRECTORY "LHAudioRedbook.cpp"
-
 #define LH_REDBOOK_VOLUME_MAX       127
 #define LH_REDBOOK_VOLUME_UNKNOWN   (-1)
 #define LH_REDBOOK_VOLUME_SHIFT     9

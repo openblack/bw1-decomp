@@ -839,7 +839,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Camera.cpp"),
             GameCodeObject(NonMatching, "Black/CameraEditor.cpp"),
             GameCodeObject(NonMatching, "Black/CameraExclusion.cpp"),
-            GameCodeObject(NonMatching, "Black/CameraHelp.cpp"),
+            GameCodeObject(NonMatching, "Black/camerahelp.cpp"),
             GameCodeObject(NonMatching, "Black/CameraMode.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeCitadel.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeCtrInteract.cpp"),
@@ -2626,6 +2626,154 @@ config.libs = [
         ],
     },
 ]
+
+
+# Where each version's build machine compiled a src/ directory from, as the __FILE__ strings of
+# the executable and DLLs spell it (debug new, asserts, logging, MFC's THIS_FILE). Each unit
+# compiled from one of these gets:
+#   FILEPATH                    the unit's original path, for its own debug-new and logging calls
+#   SOURCE_DIRECTORY            that directory with a trailing backslash, which a header next to
+#                               the unit puts before its include name for the calls inlined from it
+#   RELEASED_HEADERS_DIRECTORY  where its project found the released Lionhead headers (LHALL),
+#                               likewise for those headers, where known
+# __FILE__ itself cannot be redefined (C4117) and would name our paths.
+class OriginalDirectory:
+    def __init__(self, sources, headers=None, relative=()):
+        self.sources = sources
+        self.headers = headers or {}
+        # Versions whose build passed cl the file names alone, from within the directory.
+        self.relative = relative
+
+
+# Lionhead's source trees. Each holds the game in Black, every library in
+# Libs\LIONHEAD\<library>\<version> and the released headers in Libs\LHALL\RELEASED\Headers.
+# The tree each version built each part in: the game, the static libraries built for it, the
+# multiplayer DLL, and the rest (LHDLL and the other DLLs), built once and shipped with every version.
+SOURCE_TREES = {
+    "BW1W100": {"game": r"C:\dev",           "libraries": r"C:\dev",                "multiplayer": r"C:\dev",    "shared": r"C:\dev"},
+    "BW1W110": {"game": r"C:\dev",           "libraries": r"C:\dev",                "multiplayer": r"C:\dev",    "shared": r"C:\dev"},
+    "BW1WCI":  {"game": r"C:\dev",           "libraries": r"C:\dev",                "multiplayer": r"C:\dev",    "shared": r"C:\dev"},
+    "BW1W120": {"game": r"C:\dev\MP",        "libraries": r"C:\dev",                "multiplayer": r"C:\dev\MP", "shared": r"C:\dev"},
+    "BW1W130": {"game": r"D:\Work\Games\dd", "libraries": r"C:\dev\branches\P5New", "multiplayer": r"C:\dev\MP", "shared": r"C:\dev"},
+}
+
+
+def game(tree):
+    return tree + r"\Black"
+
+
+def library(name):
+    return lambda tree: rf"{tree}\Libs\LIONHEAD\{name}"
+
+
+def released_headers(tree):
+    return tree + r"\Libs\LHALL\RELEASED\Headers"
+
+
+# Each version's path in `layout` under the tree of its `part`, as its project spelled it: Windows
+# ignores case, so each project kept the case it was given, and __FILE__ keeps it too. A spelling
+# is the string the binary holds, or str.lower/str.upper; `spelling` applies to every version not
+# named.
+def paths(layout, part, spelling=None, **spellings):
+    result = {}
+    for version in VERSIONS:
+        path = layout(SOURCE_TREES[version][part])
+        spelled = spellings.get(version, spelling) or path
+        spelled = spelled(path) if callable(spelled) else spelled
+        assert spelled.lower() == path.lower(), f"{version}: {spelled} is not {path}"
+        result[version] = spelled
+    return result
+
+
+ORIGINAL_SOURCE_DIRECTORIES = {
+    "Black": OriginalDirectory(
+        paths(game, "game", BW1W100=r"C:\dev\black", BW1WCI=r"C:\dev\black"),
+        headers=paths(released_headers, "game", str.lower, BW1W120=str.upper, BW1W130=None),
+    ),
+    "Lionhead/LH3DLib/development": OriginalDirectory(
+        paths(
+            library(r"LH3DLIB\DEVELOPMENT"),
+            "libraries",
+            BW1W110=r"C:\DEV\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT",
+            BW1W120=r"C:\DEV\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT",
+            BW1WCI=r"C:\Dev\Libs\LIONHEAD\LH3DLIB\development",
+        )
+    ),
+    "Lionhead/LHDLL/ver1.0": OriginalDirectory(
+        paths(library(r"LHDLL\VER1.0"), "shared", r"C:\Dev\LIBS\Lionhead\LHDLL\VER1.0")
+    ),
+    "Lionhead/LHLib/ver5.0": OriginalDirectory(
+        paths(
+            library(r"lhlib\VER5.0"),
+            "libraries",
+            BW1W100=r"C:\DEV\Libs\LIONHEAD\lhlib\VER5.0",
+            BW1W110=r"C:\Dev\Libs\lionhead\lhlib\VER5.0",
+            BW1W120=r"C:\Dev\Libs\lionhead\lhlib\VER5.0",
+            BW1WCI=r"C:\Dev\Libs\LIONHEAD\lhlib\VER5.0",
+        )
+    ),
+    "Lionhead/LHAudio/ver7.0": OriginalDirectory(
+        paths(library(r"LHAUDIO\VER7.0"), "shared", r"C:\dev\LIBS\LIONHEAD\LHAUDIO\VER7.0", BW1WCI=None),
+        headers=paths(released_headers, "shared", str.upper),
+    ),
+    "LHAudio/LHFile/ver3.0": OriginalDirectory(
+        paths(library(r"LHFile\VER3.0"), "shared", r"C:\Dev\Libs\LIONHEAD\LHFILE\VER3.0", BW1WCI=None),
+        headers=paths(released_headers, "shared", str.upper),
+    ),
+    "Lionhead/LHDialogLib/version_1.0": OriginalDirectory(
+        paths(library(r"LHDialogLib\VERSION 1.0"), "shared", r"C:\Dev\Libs\LIONHEAD\LHDialogLib\VERSION 1.0")
+    ),
+    # 1.20 rebuilt LHLogR.dll with Visual Studio .NET, which passed the file names alone.
+    "Lionhead/LHLog/ver4.0": OriginalDirectory(
+        paths(
+            library(r"LHLog\VER4.0"),
+            "shared",
+            r"C:\Dev\Libs\LIONHEAD\LHLog\VER4.0",
+            BW1W100=r"C:\dev\libs\LIONHEAD\LHLog\VER4.0",
+            BW1W120=None,
+            BW1W130=None,
+        ),
+        headers=paths(
+            released_headers,
+            "shared",
+            r"c:\DEV\LIBS\LHALL\RELEASED\HEADERS",
+            BW1W100=str.lower,
+            BW1W120=None,
+            BW1W130=None,
+        ),
+        relative=("BW1W120", "BW1W130"),
+    ),
+    "Lionhead/LHMultiplayer/ver4.0": OriginalDirectory(
+        paths(library(r"LHMultiplayer\VER4.0"), "multiplayer")
+    ),
+}
+
+
+# A C string literal holding `text`, as a /D value.
+def c_string_literal(text):
+    return '"' + text.replace("\\", "\\\\") + '"'
+
+
+def add_original_source_paths(libs):
+    for lib in libs:
+        for obj in lib["objects"]:
+            if not obj.name.endswith((".c", ".cpp")) or obj.options["compiler_exe"] is not None:
+                continue
+            directory, _, file_name = obj.name.rpartition("/")
+            original = ORIGINAL_SOURCE_DIRECTORIES.get(directory)
+            if original is None:
+                continue
+            prefix = "" if config.version in original.relative else original.sources[config.version] + "\\"
+            defines = {"FILEPATH": prefix + file_name, "SOURCE_DIRECTORY": prefix}
+            if config.version in original.headers:
+                defines["RELEASED_HEADERS_DIRECTORY"] = original.headers[config.version] + "\\"
+            obj.options["extra_cflags"] = [
+                *obj.options["extra_cflags"],
+                *(f"/D{name}={c_string_literal(value)}" for name, value in defines.items()),
+            ]
+
+
+add_original_source_paths(config.libs)
 
 
 # Optional callback to adjust link order. This can be used to add, remove, or reorder objects.

@@ -5,14 +5,6 @@
 #include "PlannedAbode.h"         /* For PlannedAbode */
 #include "ScaffoldInfo.h"         /* For GScaffoldInfo */
 
-#if defined(VERSION_BW1W100)
-#define SCAFFOLD_FILE "C:\\dev\\black\\Scaffold.cpp"
-#elif defined(VERSION_BW1W110)
-#define SCAFFOLD_FILE "C:\\dev\\Black\\Scaffold.cpp"
-#else
-#define SCAFFOLD_FILE "C:\\dev\\MP\\Black\\Scaffold.cpp"
-#endif
-
 SCRIPT_OBJECT_TYPE Scaffold::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_SCAFFOLD;
@@ -67,7 +59,7 @@ Scaffold::~Scaffold() {}
 Scaffold* Scaffold::Create(const MapCoords& coords, const GScaffoldInfo* info, Town* town, Object* parent,
                            float y_angle, float scale)
 {
-	Scaffold* scaffold = new (SCAFFOLD_FILE, 66) Scaffold(coords, info, parent, y_angle, scale);
+	Scaffold* scaffold = new (FILEPATH, 66) Scaffold(coords, info, parent, y_angle, scale);
 	if (scaffold != NULL)
 	{
 		scaffold->town = town;

@@ -1,5 +1,4 @@
 #include "LHAudioLog.h"
-#define FILEPATH LH_AUDIO_SOURCE_DIRECTORY "LHAudioWave.cpp"
 
 #define LH_WAVE_VOLUME_MAX         127
 #define LH_WAVE_DEVICE_VOLUME_MAX  0xffff

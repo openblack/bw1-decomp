@@ -28,14 +28,6 @@
 
 #include <Lionhead/LHLib/ver5.0/LHStack.h>
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\VillagerReactionToCreature.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\VillagerReactionToCreature.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\VillagerReactionToCreature.cpp"
-#endif
-
 #define VILLAGER_INSPECT_CREATURE_START_DISTANCE    20.0f
 #define VILLAGER_INSPECT_CREATURE_DISTANCE_STEP     8.0f
 #define VILLAGER_INSPECT_CREATURE_MIN_DISTANCE      1.0f

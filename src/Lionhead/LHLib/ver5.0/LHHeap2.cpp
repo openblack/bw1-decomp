@@ -8,8 +8,6 @@
 
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
-#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHHeap2.cpp"
-
 // When set, HeapWithPools bypasses the LHPool buckets and routes every request
 // straight to the underlying Heap free-list allocator. Defaults to true (pools off).
 // BW1W120 00c34098 BW1M119 011da730 (LHCombined Release)

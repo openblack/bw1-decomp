@@ -24,14 +24,6 @@
 #include "Spell.h"
 #include "Utils.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\CreatureReaction.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureReaction.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureReaction.cpp"
-#endif
-
 #define CREATURE_IMPRESSIVENESS_SCALE             4.0f
 #define CREATURE_IMPRESSIVENESS_OF_CREATURE_SCALE 3.0f
 #define CREATURE_REACT_TO_OTHER_PLAYER_CHANCE     100

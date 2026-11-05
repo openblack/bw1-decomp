@@ -9,7 +9,7 @@
 #define new DEBUG_NEW
 #undef THIS_FILE
 // __FILE__ of the original build.
-static char THIS_FILE[] = "C:\\Dev\\Libs\\LIONHEAD\\LHDialogLib\\VERSION 1.0\\LHSystemSpecDialog.cpp";
+static char THIS_FILE[] = FILEPATH;
 #endif
 
 CLHSystemSpecDialog::CLHSystemSpecDialog(CWnd* parent /*=NULL*/) : CDialog(CLHSystemSpecDialog::IDD, parent)

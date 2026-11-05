@@ -4,14 +4,6 @@
 #include "FishFarm.h"
 #include "Rand.h"
 
-#if defined(VERSION_BW1W100)
-#define VILLAGER_FISHERMAN_FILE "C:\\dev\\black\\VillagerFisherman.cpp"
-#elif defined(VERSION_BW1W110)
-#define VILLAGER_FISHERMAN_FILE "C:\\dev\\Black\\VillagerFisherman.cpp"
-#else
-#define VILLAGER_FISHERMAN_FILE "C:\\dev\\MP\\Black\\VillagerFisherman.cpp"
-#endif
-
 // BW1W120 0075b4c0 BW1M119 01582a20
 // TODO: deferred -- blocked on the UNNAMED global fn_0073E750 (systemic blocker #4: no symbols.txt
 // name). Reverse-engineered structure (from raw target disasm, confirmed via manual byte-level
@@ -150,7 +142,7 @@ bool32_t Villager::IsAtValidFishingPos()
 //         // field across Villager/Living/Object/GameThingWithPos/GameThing -- a genuine struct-layout
 //         // gap, not mine to fill (dispatcher-owned; AGENTS.md/skill rules exclude layout changes).
 //     FishFarm* fish_farm = (FishFarm*)TargetThing;
-//     if (GRand::GameRand(fish_farm->villagers.count, VILLAGER_FISHERMAN_FILE, 98) != 0) return true;
+//     if (GRand::GameRand(fish_farm->villagers.count, FILEPATH, 98) != 0) return true;
 //         // "lucky roll" gate: only 1-in-N(fisherman count at this farm) ticks do real work.
 //         // gamerand-file-line-split-tu idiom: line/file operands can never match in a split TU.
 //     const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
@@ -203,7 +195,7 @@ bool32_t Villager::Fishing()
 	}
 	// TODO: field_0x90 = 0; -- see TODO above (struct-layout gap, not mine to fill).
 	FishFarm* fish_farm = (FishFarm*)TargetThing;
-	if (GRand::GameRand(fish_farm->villagers.count, VILLAGER_FISHERMAN_FILE, 98) != 0)
+	if (GRand::GameRand(fish_farm->villagers.count, FILEPATH, 98) != 0)
 	{
 		return true;
 	}

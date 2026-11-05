@@ -64,16 +64,6 @@
 #include "ValueSpinner.h"
 #include "VirtualInfluence.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define OBJECT_SOURCE_FILE "C:\\dev\\black\\Object.cpp"
-#elif defined(VERSION_BW1W110)
-#define OBJECT_SOURCE_FILE "C:\\dev\\Black\\Object.cpp"
-#elif defined(VERSION_BW1W130)
-#define OBJECT_SOURCE_FILE "D:\\Work\\Games\\dd\\Black\\Object.cpp"
-#else
-#define OBJECT_SOURCE_FILE "C:\\dev\\MP\\Black\\Object.cpp"
-#endif
-
 #ifdef VERSION_BW1WCI
 #define OBJECT_LINE(line) ((line) + ((line) < 2491 ? 15 : 16))
 #else
@@ -1587,7 +1577,7 @@ void Object::DrawValue(int text_type, float value)
 		point.y += GetHeight();
 		if (GGame::g_game->GameFlags & GAME_FLAG_DRAW_VALUE_SPINNERS)
 		{
-			ValueSpinner* spinner = new (OBJECT_SOURCE_FILE, OBJECT_LINE(1950)) ValueSpinner;
+			ValueSpinner* spinner = new (FILEPATH, OBJECT_LINE(1950)) ValueSpinner;
 			spinner->Init(point, value, (ValueSpinner::TEXTTYPE_ENUM)text_type);
 		}
 	}
@@ -1999,7 +1989,7 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 {
 	phys_ob->SetUpConstants(weight, &EditorPhysics::PhysicsConstants[PHYSICS_CONSTANTS_TYPE_TREE], true);
 	phys_ob->NumVertices = OBJECT_TREE_VERTEX_COUNT;
-	phys_ob->Vertices = new (OBJECT_SOURCE_FILE, OBJECT_LINE(2491)) IPoint[phys_ob->NumVertices];
+	phys_ob->Vertices = new (FILEPATH, OBJECT_LINE(2491)) IPoint[phys_ob->NumVertices];
 
 	float halfHeight;
 	if (IsARootedObject())
@@ -2079,7 +2069,7 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 	phys_ob->Radius = max(halfHeight, radius);
 
 	phys_ob->NumFaces = OBJECT_TREE_FACE_COUNT;
-	phys_ob->Faces = new (OBJECT_SOURCE_FILE, OBJECT_LINE(2591)) PTri[phys_ob->NumFaces];
+	phys_ob->Faces = new (FILEPATH, OBJECT_LINE(2591)) PTri[phys_ob->NumFaces];
 	PTri* face = phys_ob->Faces;
 	// The two bands between the rings, two triangles per quad.
 	int first = 0;

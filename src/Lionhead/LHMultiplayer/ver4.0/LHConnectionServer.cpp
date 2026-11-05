@@ -15,8 +15,6 @@
 #include "LHServerListener.h"
 #include "LHTransportInfo.h"
 
-#define FILEPATH "C:\\dev\\MP\\Libs\\LIONHEAD\\LHMultiplayer\\VER4.0\\LHConnectionServer.cpp"
-
 // BW1W120 10005c50 BW1M119 010e2a30 (LHCombined Release)
 static LH_RETURN BaseProcessEvent(LHNetEvent* event, LHConnection* connection, void* context);
 // BW1W120 10005c70 BW1M119 010e29b0 (LHCombined Release)

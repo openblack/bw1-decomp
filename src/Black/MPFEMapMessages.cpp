@@ -31,12 +31,6 @@
 #include "WinConditionSetup.h" /* For SetupWinConditions */
 #endif
 
-#if defined(VERSION_BW1W130)
-#define MPFE_MAP_MESSAGES_FILE "D:\\Work\\Games\\dd\\Black\\MPFEMapMessages.cpp"
-#elif defined(VERSION_BW1W120)
-#define MPFE_MAP_MESSAGES_FILE "C:\\dev\\MP\\Black\\MPFEMapMessages.cpp"
-#endif
-
 MPFEChangedMapMessage::MPFEChangedMapMessage(unsigned long map_id, unsigned long num_teams)
 {
 	uint64_t checksum = 0;
@@ -46,7 +40,7 @@ MPFEChangedMapMessage::MPFEChangedMapMessage(unsigned long map_id, unsigned long
 	}
 	wchar_t* text = LHSPrintfW(L"%c%u:%u:", GetMessageCode(SPECIAL_MESSAGE_TYPE_CHANGED_MAP), map_id, num_teams);
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	Message = new (MPFE_MAP_MESSAGES_FILE, 19) wchar_t[wcslen(text) + 40];
+	Message = new (FILEPATH, 19) wchar_t[wcslen(text) + 40];
 #else
 	Message = new wchar_t[wcslen(text) + 40];
 #endif
@@ -131,7 +125,7 @@ void MPFEChangedMapMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDetails*
 MPFEMapErrorMessage::MPFEMapErrorMessage()
 {
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	Message = new (MPFE_MAP_MESSAGES_FILE, 96) wchar_t[10];
+	Message = new (FILEPATH, 96) wchar_t[10];
 #else
 	Message = new wchar_t[10];
 #endif

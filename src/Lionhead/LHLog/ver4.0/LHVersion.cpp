@@ -10,8 +10,6 @@
 #include "LHRegistry.h"
 #include "LHTemplate.h"
 
-#define FILEPATH "LHVersion.cpp"
-
 #define IDD_VERSION          103
 #define IDD_COPYRIGHT        104
 #define IDC_RESTORE          1016

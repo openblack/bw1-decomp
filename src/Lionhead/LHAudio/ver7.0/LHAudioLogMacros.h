@@ -11,12 +11,6 @@
 #include <Lionhead/LHLog/ver4.0/LHLogger.h>  /* For LHLogger */
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h> /* For LHSPrintf */
 
-#ifdef VERSION_BW1WCI
-#define LH_AUDIO_SOURCE_DIRECTORY "C:\\dev\\Libs\\LIONHEAD\\LHAUDIO\\VER7.0\\"
-#else
-#define LH_AUDIO_SOURCE_DIRECTORY "C:\\dev\\LIBS\\LIONHEAD\\LHAUDIO\\VER7.0\\"
-#endif
-
 static void LHLogDebugBreak()
 {
 	DebugBreak();

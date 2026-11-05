@@ -30,11 +30,6 @@
 #include "HelpSystem.h"
 #include "Rand.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
-#define HELPDUDE_SOURCE_FILE "C:\\dev\\Black\\helpdude.cpp"
-#else
-#define HELPDUDE_SOURCE_FILE "C:\\dev\\MP\\Black\\helpdude.cpp"
-#endif
 #define HELPDUDE_LINE(line) (line)
 
 #define HELPDUDE_TRAIL_VERTICES  (HELPDUDE_TRAIL_LENGTH * 2)
@@ -207,8 +202,8 @@ int SortedFloatList::Add(float key, int data)
 	}
 
 	Count++;
-	SortedFloatListItem* items = (SortedFloatListItem*)operator new(Count * sizeof(SortedFloatListItem),
-	                                                                HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(252));
+	SortedFloatListItem* items =
+		(SortedFloatListItem*)operator new(Count * sizeof(SortedFloatListItem), FILEPATH, HELPDUDE_LINE(252));
 	memcpy(items, Items, index * sizeof(SortedFloatListItem));
 	memcpy(&items[index + 1], &Items[index], (Count - index - 1) * sizeof(SortedFloatListItem));
 	delete Items;
@@ -740,7 +735,7 @@ LH_AudioBank* HelpDude::SetSentenceBank(LH_AudioSystem* audio_system, LH_AudioBa
 	{
 		delete[] SentenceTags;
 		SentenceCount = AudioSystem->LHBankGetNumberOfSamples(SentenceBank);
-		SentenceTags = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(701)) AudioTagList[SentenceCount];
+		SentenceTags = new (FILEPATH, HELPDUDE_LINE(701)) AudioTagList[SentenceCount];
 	}
 	return SentenceBank;
 }
@@ -762,7 +757,7 @@ LH_AudioBank* HelpDude::SetSentenceBank(LH_AudioSystem* audio_system, char* name
 	{
 		delete[] SentenceTags;
 		SentenceCount = AudioSystem->LHBankGetNumberOfSamples(SentenceBank);
-		SentenceTags = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(718)) AudioTagList[SentenceCount];
+		SentenceTags = new (FILEPATH, HELPDUDE_LINE(718)) AudioTagList[SentenceCount];
 	}
 	return SentenceBank;
 }
@@ -874,7 +869,7 @@ LH_SampleInfo* HelpDude::PlaySample(LH_AudioSystem* audio_system, LH_SamplePlayO
 		}
 		s_SampleData = NULL;
 		s_SampleCount = info->DataSize;
-		s_SampleData = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(822)) short[s_SampleCount / 2];
+		s_SampleData = new (FILEPATH, HELPDUDE_LINE(822)) short[s_SampleCount / 2];
 		if (s_SampleData && info->Data)
 		{
 			memcpy(s_SampleData, info->Data, s_SampleCount);
@@ -3108,7 +3103,7 @@ void HelpDude::Draw(bool deferred)
 		if (!SmokeSprites)
 		{
 			SmokeSprites = LH3DSprite::Create(HELPDUDE_SMOKE_PUFFS, true);
-			SmokePuffs = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(2992)) Smoke3[HELPDUDE_SMOKE_PUFFS];
+			SmokePuffs = new (FILEPATH, HELPDUDE_LINE(2992)) Smoke3[HELPDUDE_SMOKE_PUFFS];
 		}
 		bool32_t visible = false;
 		uint32_t tint = 0xffffff;
@@ -3246,7 +3241,7 @@ void HelpDude::LoadAnim(int anim, LHFile* file)
 		{
 			return;
 		}
-		Anims[anim] = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(3117)) CAnim();
+		Anims[anim] = new (FILEPATH, HELPDUDE_LINE(3117)) CAnim();
 		Anims[anim]->ReadBinary(file);
 		if (anim == ANIM_STAND)
 		{
@@ -3319,15 +3314,14 @@ void HelpDude::LoadAnim(int anim, LHFile* file)
 				InverseBaseMatrices[i].SetInverse(BaseMatrices[i]);
 			}
 		}
-		Anims[anim] =
-			new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(3174)) CAnim(Mesh, BaseMatrices, InverseBaseMatrices, data);
+		Anims[anim] = new (FILEPATH, HELPDUDE_LINE(3174)) CAnim(Mesh, BaseMatrices, InverseBaseMatrices, data);
 		if (anim == ANIM_STAND)
 		{
 			Frame = Anims[ANIM_STAND]->frames[0];
 			LH3DMem::Free(data);
 			return;
 		}
-		CAnim* based = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(3182)) CAnim(Anims[anim], Frame);
+		CAnim* based = new (FILEPATH, HELPDUDE_LINE(3182)) CAnim(Anims[anim], Frame);
 		delete Anims[anim];
 		Anims[anim] = based;
 	}
@@ -3340,7 +3334,7 @@ void HelpDude::LoadAnims(LHFile* file)
 	{
 		delete[] Anims;
 	}
-	Anims = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(3199)) CAnim*[ANIM_LAST];
+	Anims = new (FILEPATH, HELPDUDE_LINE(3199)) CAnim*[ANIM_LAST];
 	memset(Anims, 0, ANIM_LAST * sizeof(CAnim*));
 	int count;
 	if (file)
@@ -3599,7 +3593,7 @@ HelpDude::HelpDude(char* mesh_file, int anim_count, char** anim_files, bool32_t 
 	}
 	LoadMesh(NULL);
 	LoadAnims(NULL);
-	SoundInfos = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(3434)) HelpDudeSoundInfo[ANIM_LAST];
+	SoundInfos = new (FILEPATH, HELPDUDE_LINE(3434)) HelpDudeSoundInfo[ANIM_LAST];
 	memset(SoundInfos, 0, ANIM_LAST * sizeof(HelpDudeSoundInfo));
 }
 
@@ -3652,14 +3646,14 @@ void HelpDude::Load(LHFile* file, LH_AudioSystem* audio_system)
 	file->GetSegmentData(&Depth, sizeof(Depth), -1);
 	file->GetSegmentData(&Size, sizeof(Size), -1);
 	file->GetSegmentData(&Tilt, sizeof(Tilt), -1);
-	SoundInfos = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(3502)) HelpDudeSoundInfo[ANIM_LAST];
+	SoundInfos = new (FILEPATH, HELPDUDE_LINE(3502)) HelpDudeSoundInfo[ANIM_LAST];
 	memset(SoundInfos, 0, ANIM_LAST * sizeof(HelpDudeSoundInfo));
 	int infoCount = 0;
 	file->GetSegmentData(&infoCount, sizeof(infoCount), -1);
 	for (int j = 0; j < infoCount; j++)
 	{
 		file->GetSegmentData(&SoundInfos[j].SoundCount, sizeof(SoundInfos[j].SoundCount), -1);
-		SoundInfos[j].Sounds = new (HELPDUDE_SOURCE_FILE, HELPDUDE_LINE(3511)) HelpDudeSound[SoundInfos[j].SoundCount];
+		SoundInfos[j].Sounds = new (FILEPATH, HELPDUDE_LINE(3511)) HelpDudeSound[SoundInfos[j].SoundCount];
 		for (int k = 0; k < SoundInfos[j].SoundCount; k++)
 		{
 			file->GetSegmentData(&SoundInfos[j].Sounds[k], sizeof(HelpDudeSound), -1);

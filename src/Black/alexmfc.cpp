@@ -27,7 +27,6 @@
 #include "HelpText.h"
 #include "Interface.h"
 
-#define FILEPATH          "C:\\dev\\MP\\Black\\alexmfc.cpp"
 #define SETUP_MP3_ICON_UV ((float)SETUP_MP3_ICON_SIZE / LH3D_ATMOS_TEXTURE_SIZE)
 
 int SetupThing::DrawAlpha = 0xff;

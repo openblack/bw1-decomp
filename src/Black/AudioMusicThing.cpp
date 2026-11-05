@@ -11,16 +11,6 @@
 #include "Landscape.h"
 #include "ThingMusicInfo.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\AudioMusicThing.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\AudioMusicThing.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\AudioMusicThing.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\AudioMusicThing.cpp"
-#endif
-
 uint32_t ThingMusicInfo::GetSaveType()
 {
 	return GAME_THING_TYPE_THING_MUSIC_INFO;

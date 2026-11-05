@@ -12,7 +12,7 @@
 #if defined(VERSION_BW1WCI)
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
-#define FOOTPATH_FINDER_SOURCE_FILE "C:\\dev\\black\\Footpath.h"
+#define FOOTPATH_FINDER_SOURCE_FILE SOURCE_DIRECTORY "Footpath.h"
 #endif
 
 // Forward Declares

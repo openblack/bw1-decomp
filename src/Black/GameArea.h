@@ -13,15 +13,7 @@
 
 class LHOSFile;
 
-#if defined(VERSION_BW1W130)
-#define GAME_AREA_FILEPATH "D:\\Work\\Games\\dd\\Black\\GameArea.h"
-#elif defined(VERSION_BW1W120)
-#define GAME_AREA_FILEPATH "C:\\dev\\MP\\Black\\GameArea.h"
-#elif defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define GAME_AREA_FILEPATH "C:\\dev\\black\\GameArea.h"
-#else
-#define GAME_AREA_FILEPATH "C:\\dev\\Black\\GameArea.h"
-#endif
+#define GAME_AREA_FILEPATH    SOURCE_DIRECTORY "GameArea.h"
 #define GAME_AREA_CREATE_LINE 14
 
 class GameArea : public Base

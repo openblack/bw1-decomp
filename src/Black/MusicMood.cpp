@@ -6,16 +6,6 @@
 #include "MusicMood.h"
 #include "Serialise.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\MusicMood.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\MusicMood.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\MusicMood.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\MusicMood.cpp"
-#endif
-
 // BW1W120 00633ae0 BW1M119 01114840
 bool redbook_status(unsigned int device_id);
 // BW1W120 00633b30 BW1M119 011147d0

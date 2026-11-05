@@ -5,8 +5,6 @@
 #include "LHLogMacros.h"
 #include "LHRegistry.h"
 
-#define FILEPATH "LogUtils.cpp"
-
 #define LH_REGISTRY_VALUE_NAME_SIZE 128
 
 static HKEY CurrentKey = HKEY_CURRENT_USER;

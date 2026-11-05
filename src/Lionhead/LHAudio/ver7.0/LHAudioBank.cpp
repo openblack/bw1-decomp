@@ -7,8 +7,6 @@
 #include "LH_BankSample.h"
 #include "MPGAudioDecoder.h"
 
-#define FILEPATH LH_AUDIO_SOURCE_DIRECTORY "LHAudioBank.cpp"
-
 LH_AudioBank::LH_AudioBank()
 {
 	UsingHeap = false;

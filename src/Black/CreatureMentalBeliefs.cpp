@@ -14,16 +14,6 @@ const float TownObjectToActOnUsefulness = 0.1f;
 #include "Object.h"
 #include "Tree.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreatureMentalBeliefs.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMentalBeliefs.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalBeliefs.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalBeliefs.cpp"
-#endif
-
 inline Object* CreatureBelief::GetObjectPointer()
 {
 	return dynamic_cast<Object*>(Pointer);

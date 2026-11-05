@@ -24,16 +24,6 @@ static double unused;
 #include "Persistent.h"      /* For class Persistent, class PersistentOwner */
 #include "PSysSoundAction.h" /* For class PSysSoundAction */
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define GJ_PROPERTY_SOURCE_FILE "C:\\dev\\black\\GJProperty.cpp"
-#elif defined(VERSION_BW1W110)
-#define GJ_PROPERTY_SOURCE_FILE "C:\\dev\\Black\\GJProperty.cpp"
-#elif defined(VERSION_BW1W130)
-#define GJ_PROPERTY_SOURCE_FILE "D:\\Work\\Games\\dd\\Black\\GJProperty.cpp"
-#else
-#define GJ_PROPERTY_SOURCE_FILE "C:\\dev\\MP\\Black\\GJProperty.cpp"
-#endif
-
 void Persistent::SetUniqueName()
 {
 	std::string className = "UNKNOWNCLASS";
@@ -66,7 +56,7 @@ RegisterPersistent::RegisterPersistent()
 
 void PropertyList::AddFloatProperty(const char* name, float* value, float min, float max)
 {
-	FloatValueProperty* property = new (GJ_PROPERTY_SOURCE_FILE, 73) FloatValueProperty;
+	FloatValueProperty* property = new (FILEPATH, 73) FloatValueProperty;
 	property->Name = name;
 	property->Value = value;
 	property->Min = min;
@@ -76,7 +66,7 @@ void PropertyList::AddFloatProperty(const char* name, float* value, float min, f
 
 void PropertyList::AddIntegerProperty(const char* name, long* value, long min, long max)
 {
-	IntegerValueProperty* property = new (GJ_PROPERTY_SOURCE_FILE, 85) IntegerValueProperty;
+	IntegerValueProperty* property = new (FILEPATH, 85) IntegerValueProperty;
 	property->Name = name;
 	property->Value = value;
 	property->Min = min;
@@ -86,7 +76,7 @@ void PropertyList::AddIntegerProperty(const char* name, long* value, long min, l
 
 void PropertyList::AddSoundActionProperty(const char* name, PSysSoundAction* value)
 {
-	SoundActionProperty* property = new (GJ_PROPERTY_SOURCE_FILE, 96) SoundActionProperty;
+	SoundActionProperty* property = new (FILEPATH, 96) SoundActionProperty;
 	property->Name = name;
 	property->Value = value;
 	Properties[name] = property;
@@ -94,7 +84,7 @@ void PropertyList::AddSoundActionProperty(const char* name, PSysSoundAction* val
 
 void PropertyList::AddStringProperty(const char* name, std::string* value)
 {
-	StringProperty* property = new (GJ_PROPERTY_SOURCE_FILE, 105) StringProperty;
+	StringProperty* property = new (FILEPATH, 105) StringProperty;
 	property->Name = name;
 	property->Value = value;
 	Properties[name] = property;
@@ -102,7 +92,7 @@ void PropertyList::AddStringProperty(const char* name, std::string* value)
 
 void PropertyList::AddFileNameProperty(const char* name, std::string* value, const std::string& extension)
 {
-	FileNameProperty* property = new (GJ_PROPERTY_SOURCE_FILE, 114) FileNameProperty;
+	FileNameProperty* property = new (FILEPATH, 114) FileNameProperty;
 	property->Name = name;
 	property->Value = value;
 	property->Extension = extension;
@@ -111,7 +101,7 @@ void PropertyList::AddFileNameProperty(const char* name, std::string* value, con
 
 void PropertyList::AddBoolProperty(const char* name, bool* value)
 {
-	BoolProperty* property = new (GJ_PROPERTY_SOURCE_FILE, 124) BoolProperty;
+	BoolProperty* property = new (FILEPATH, 124) BoolProperty;
 	property->Name = name;
 	property->Value = value;
 	Properties[name] = property;
@@ -119,7 +109,7 @@ void PropertyList::AddBoolProperty(const char* name, bool* value)
 
 void PropertyList::AddMeshEnumProperty(const char* name, MESH_LIST* value)
 {
-	MeshEnumProperty* property = new (GJ_PROPERTY_SOURCE_FILE, 133) MeshEnumProperty;
+	MeshEnumProperty* property = new (FILEPATH, 133) MeshEnumProperty;
 	property->Name = name;
 	property->Value = (long*)value;
 	Properties[name] = property;
@@ -127,7 +117,7 @@ void PropertyList::AddMeshEnumProperty(const char* name, MESH_LIST* value)
 
 void PropertyList::AddAnimEnumProperty(const char* name, ANIM_LIST* value)
 {
-	AnimEnumProperty* property = new (GJ_PROPERTY_SOURCE_FILE, 142) AnimEnumProperty;
+	AnimEnumProperty* property = new (FILEPATH, 142) AnimEnumProperty;
 	property->Name = name;
 	property->Value = (long*)value;
 	Properties[name] = property;
@@ -217,7 +207,7 @@ void SoundActionProperty::MakeLHActionFile()
 	{
 		char path[256];
 		sprintf(path, "Data\\SoundAction.h");
-		ActionFile = new (GJ_PROPERTY_SOURCE_FILE, 285) LHParseFile(path, " \t");
+		ActionFile = new (FILEPATH, 285) LHParseFile(path, " \t");
 		if (!ActionFile->Open())
 		{
 			sprintf(path, "%c:\\Data\\SoundAction.h", g_GameDriveCharacter);
@@ -323,7 +313,7 @@ void EnumProperty::MakeEnumFile()
 {
 	if (GetEnumFile() == NULL)
 	{
-		SetEnumFile(new (GJ_PROPERTY_SOURCE_FILE, 406) LHParseFile((char*)GetEnumFileName(), " \t"));
+		SetEnumFile(new (FILEPATH, 406) LHParseFile((char*)GetEnumFileName(), " \t"));
 		if (!GetEnumFile()->Open())
 		{
 			delete GetEnumFile();

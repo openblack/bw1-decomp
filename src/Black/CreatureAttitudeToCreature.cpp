@@ -10,16 +10,6 @@
 #include "CreatureMentalDesire.h"
 #include "CreaturePlan.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreatureAttitudeToCreature.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureAttitudeToCreature.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureAttitudeToCreature.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureAttitudeToCreature.cpp"
-#endif
-
 CreatureAttitudeToCreature::CreatureAttitudeToCreature(Creature* creature)
 {
 	this->creature = creature;

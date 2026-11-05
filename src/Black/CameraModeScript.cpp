@@ -8,23 +8,13 @@
 #include <Lionhead/LH3DLib/development/LH3DTech.h> /* For LH3DTech::g_game_time_inc */
 #include "ScriptedCamera.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define CAMERA_MODE_SCRIPT_FILE "C:\\dev\\black\\CameraModeScript.cpp"
-#elif defined(VERSION_BW1W110)
-#define CAMERA_MODE_SCRIPT_FILE "C:\\dev\\Black\\CameraModeScript.cpp"
-#elif defined(VERSION_BW1W130)
-#define CAMERA_MODE_SCRIPT_FILE "D:\\Work\\Games\\dd\\Black\\CameraModeScript.cpp"
-#else
-#define CAMERA_MODE_SCRIPT_FILE "C:\\dev\\MP\\Black\\CameraModeScript.cpp"
-#endif
-
 CameraModeScript* CameraModeScript::Create(GCamera* camera)
 {
 	if (camera->CantExitCurrentMode())
 	{
 		return NULL;
 	}
-	return new (CAMERA_MODE_SCRIPT_FILE, 18) CameraModeScript(camera);
+	return new (FILEPATH, 18) CameraModeScript(camera);
 }
 
 CameraModeScript::CameraModeScript(GCamera* camera) : CameraModeFollow(camera, NULL, 0.2f, true, false)

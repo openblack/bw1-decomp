@@ -69,14 +69,6 @@
 #include "TribeInfo.h"
 #include "WorshipSite.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\CitadelHeart.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CitadelHeart.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CitadelHeart.cpp"
-#endif
-
 // TODO: The original emits the int constants below into .rdata although nothing references them; MSVC6 only
 // emits an unreferenced const int whose address is taken, so they are missing from this build.
 const float DestructionPlasmaStartTime = 0.0f;

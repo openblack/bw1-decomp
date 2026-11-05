@@ -7,14 +7,6 @@
 
 #include "GameInfo.h" /* For class GGameInfo */
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\DanceKey.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\DanceKey.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\DanceKey.cpp"
-#endif
-
 #define DANCE_KEY_FRAME_MAX_REMOVED_GROUPS 256
 
 DanceKeyAction::DanceKeyAction()

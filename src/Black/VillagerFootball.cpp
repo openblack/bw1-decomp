@@ -10,8 +10,6 @@
 #include "Object.h"
 #include "Rand.h"
 
-#define FILEPATH "C:\\dev\\MP\\Black\\VillagerFootball.cpp"
-
 // BW1W120 0075d130 BW1M119 0158c600
 void Villager::AssignFootballSubState()
 {

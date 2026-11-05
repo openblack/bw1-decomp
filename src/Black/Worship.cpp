@@ -69,18 +69,6 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "WorshipTotem.h"
 
 #if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\Worship.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\Worship.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\Worship.cpp"
-#elif defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\Worship.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\Worship.cpp"
-#endif
-
-#if defined(VERSION_BW1W100)
 #define WORSHIP_LINE(line) ((line) - ((line) > 242 ? 1 : 0))
 #elif defined(VERSION_BW1WCI)
 #define WORSHIP_LINE(line) ((line) + ((line) > 1390 ? 1 : 0))

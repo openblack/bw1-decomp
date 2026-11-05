@@ -25,14 +25,6 @@
 #include "Town.h"
 #include "Utils.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\LivingReaction.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\LivingReaction.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\LivingReaction.cpp"
-#endif
-
 #define LIVING_FLEE_FROM_SPELL_PRIORITY_DISTANCE     600000
 #define LIVING_FLEE_FROM_SPELL_PRIORITY_BONUS        100
 #define LIVING_PREDATOR_CHASING_SPEED                5.0f

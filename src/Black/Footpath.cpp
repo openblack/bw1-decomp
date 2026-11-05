@@ -31,14 +31,6 @@ static const double ArcStepScale = 0.35;
 static const float  ObstacleRangeMargin = 0.4f;
 static const float  ObstacleRangeScale = 1.03f;
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\Footpath.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\Footpath.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\Footpath.cpp"
-#endif
-
 #define FOOTPATH_SCRIPT_LINE_LENGTH        100
 #define FOOTPATH_LINK_SCRIPT_LINE_LENGTH   200
 #define FOOTPATH_FAR_DISTANCE              9999990.0f

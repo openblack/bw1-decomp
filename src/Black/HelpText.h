@@ -13,15 +13,7 @@
 
 #include "Base.h" /* For struct Base */
 
-#if defined(VERSION_BW1W130)
-#define HELP_TEXT_FILEPATH "D:\\Work\\Games\\dd\\Black\\HelpText.h"
-#elif defined(VERSION_BW1W120)
-#define HELP_TEXT_FILEPATH "C:\\dev\\MP\\Black\\HelpText.h"
-#elif defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define HELP_TEXT_FILEPATH "C:\\dev\\black\\HelpText.h"
-#else
-#define HELP_TEXT_FILEPATH "C:\\dev\\Black\\HelpText.h"
-#endif
+#define HELP_TEXT_FILEPATH SOURCE_DIRECTORY "HelpText.h"
 #ifdef VERSION_BW1W100
 #define HELP_TEXT_INIT_LINE 92
 #else

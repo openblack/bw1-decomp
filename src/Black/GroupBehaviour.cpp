@@ -16,14 +16,6 @@
 #include "Utils.h"           /* For class GUtils */
 #include "MapCoordsMeters.h" /* For MapCoords::MetersX */
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\GroupBehaviour.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\GroupBehaviour.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\GroupBehaviour.cpp"
-#endif
-
 #define SECONDS_PER_MINUTE 60
 
 GroupBehaviour::GroupBehaviour()

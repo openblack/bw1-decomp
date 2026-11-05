@@ -13,14 +13,6 @@
 #include "PSysLightMaps.h"
 #include "Particle3DAnimWithCamera.h"
 
-#if defined(VERSION_BW1W100)
-#define CAMERA_MODE_PATH_FILE "C:\\dev\\black\\CameraModePath.cpp"
-#elif defined(VERSION_BW1W110)
-#define CAMERA_MODE_PATH_FILE "C:\\dev\\Black\\CameraModePath.cpp"
-#else
-#define CAMERA_MODE_PATH_FILE "C:\\dev\\MP\\Black\\CameraModePath.cpp"
-#endif
-
 CameraModePath::CameraModePath(GCamera* camera, Particle3DAnimWithCamera* anim) : CameraMode(camera)
 {
 	CameraMode* currentMode = camera->ModeCurrentIndex < 0 ? NULL : camera->modes[camera->ModeCurrentIndex];
@@ -88,10 +80,10 @@ void CameraModePath::ProcessKeyMovement(uint16_t key)
 
 	if (move != 0 || turn != 0)
 	{
-		new (CAMERA_MODE_PATH_FILE, 93) CameraModeNew3(camera);
+		new (FILEPATH, 93) CameraModeNew3(camera);
 	}
 	if (GGame::g_game->MyInterface()->HandState.hand_state == HAND_STATE_GRIP_LANDSCAPE)
 	{
-		new (CAMERA_MODE_PATH_FILE, 100) CameraModeNew3(camera);
+		new (FILEPATH, 100) CameraModeNew3(camera);
 	}
 }
