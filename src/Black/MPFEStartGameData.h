@@ -11,13 +11,13 @@ struct MPFEStartGameData
 	char* TykeData;
 #endif
 	char*    MemoryData;
-	char*    PlayerSymbolData;
+	char*    ClanBitmapData;
 	uint32_t CreatureLength;
 #ifdef VERSION_BW1WCI
 	uint32_t TykeLength;
 #endif
 	uint32_t MemoryLength;
-	uint32_t PlayerSymbolLength;
+	uint32_t ClanBitmapLength;
 	float    Alignment;
 
 	// BW1W120 00632860 BW1M119 013b2ef0
