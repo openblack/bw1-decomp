@@ -32,6 +32,12 @@ class MPFEClanDetails;
 struct MPFEChannelDetails;
 struct MPFEPlayerDetails;
 
+enum TeamEnums
+{
+	TEAM_UNASSIGNED = -1,
+	TEAM_NONE = 0,
+};
+
 struct MPFETeamDetails
 {
 	wchar_t       Name[0x100];
@@ -261,6 +267,12 @@ public:
 	void A2D_StartGame();
 	// BW1W120 00626040 BW1M119 0139a750
 	LandscapeDetails* A2D_GetNextLandscape(LandscapeDetails* details);
+	// BW1W120 00624ed0 BW1M119 0139c410
+	void D_ReShuffleTeam(MPFEPlayerDetails* player, TeamEnums team);
+	// BW1W120 00625270 BW1M119 0139bd10
+	MPFEPlayerDetails* GetHighestNumberedPlayerInTeam(TeamEnums team);
+	// BW1W120 00626490 BW1M119 01399b50
+	void D_UpdateBoxClans();
 };
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
