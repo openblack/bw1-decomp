@@ -81,16 +81,6 @@
 #include "WeatherThing.h"
 #include "Whale.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\ScriptCreateOrCall.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\ScriptCreateOrCall.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\ScriptCreateOrCall.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\ScriptCreateOrCall.cpp"
-#endif
-
 static uint32_t UnusedStatic = 0;
 
 ScriptObjectDispatch GScript::g_scriptObjectDispatch[SCRIPT_OBJECT_TYPE_LAST] = {

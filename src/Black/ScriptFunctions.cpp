@@ -99,16 +99,6 @@
 #include "WeatherThing.h"
 #include "WorshipSite.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\ScriptFunctions.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\ScriptFunctions.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\ScriptFunctions.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\ScriptFunctions.cpp"
-#endif
-
 class CImmMouse;
 
 // BW1W120 00bec284

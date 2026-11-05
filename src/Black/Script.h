@@ -956,8 +956,10 @@ public:
 	static void GetThingHelp();
 	// BW1W120 006fd0a0 BW1M119 014f7e30
 	static void GetFirstHelp();
+#ifndef VERSION_BW1W100
 	// BW1W120 006fd180 BW1M119 014f7cd0
 	static void GetLastHelp();
+#endif
 	// BW1W120 006fd260 BW1M119 014f7bc0
 	static void LoadMyCreature();
 	// BW1W120 006fd2f0 BW1M119 014f7a00
@@ -1112,6 +1114,7 @@ public:
 	static void GetTemplePosition();
 	// BW1W120 006ffcb0 BW1M119 014f2d90
 	static void GetTempleEntrancePosition();
+#ifndef VERSION_BW1W100
 	// BW1W120 006ffef0 BW1M119 014f2d20
 	static void CanSkipTutorial();
 	// BW1W120 006fff10 BW1M119 014f2cb0
@@ -1120,6 +1123,7 @@ public:
 	static void IsKeepingOldCreature();
 	// BW1W120 006fff50 BW1M119 014f2bb0
 	static void CurrentProfileHasCreature();
+#endif
 	// BW1W120 00708c50 BW1M119 01501070
 	static void SetClippingDistance();
 	// BW1W120 00708c80 BW1M119 01501000
