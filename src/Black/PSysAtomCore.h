@@ -32,13 +32,7 @@ class RenderParticle;
 
 #define PSYS_MAX_ALPHA 255.0f
 
-#if defined(VERSION_BW1W100)
-#define PSYS_ATOM_CORE_HEADER_FILE "C:\\dev\\black\\PSysAtomCore.h"
-#elif defined(VERSION_BW1W110)
-#define PSYS_ATOM_CORE_HEADER_FILE "C:\\dev\\Black\\PSysAtomCore.h"
-#else
-#define PSYS_ATOM_CORE_HEADER_FILE "C:\\dev\\MP\\Black\\PSysAtomCore.h"
-#endif
+#define PSYS_ATOM_CORE_HEADER_FILE SOURCE_DIRECTORY "PSysAtomCore.h"
 
 class AtomCollection : public PSysBase
 {

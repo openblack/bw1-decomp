@@ -79,14 +79,11 @@
 #include "WorshipSpellIcon.h"
 
 #if defined(VERSION_BW1W100)
-#define PLAYER_SOURCE_FILE "C:\\dev\\black\\Player.cpp"
-#define PLAYER_LINE(line)  ((line) - ((line) < 900 ? 3 : (line) < 2000 ? 211 : 218))
+#define PLAYER_LINE(line) ((line) - ((line) < 900 ? 3 : (line) < 2000 ? 211 : 218))
 #elif defined(VERSION_BW1W110)
-#define PLAYER_SOURCE_FILE "C:\\dev\\Black\\Player.cpp"
-#define PLAYER_LINE(line)  ((line) - ((line) < 900 ? 3 : 207))
+#define PLAYER_LINE(line) ((line) - ((line) < 900 ? 3 : 207))
 #else
-#define PLAYER_SOURCE_FILE "C:\\dev\\MP\\Black\\Player.cpp"
-#define PLAYER_LINE(line)  (line)
+#define PLAYER_LINE(line) (line)
 #endif
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
@@ -132,7 +129,7 @@ unsigned long GPlayer::CreatureMindDataLength;
 GPlayer::GPlayer() : EditorIcon(NULL)
 {
 	SetToZero();
-	alignment = new (PLAYER_SOURCE_FILE, PLAYER_LINE(125)) GAlignment();
+	alignment = new (FILEPATH, PLAYER_LINE(125)) GAlignment();
 }
 
 GPlayer::~GPlayer()
@@ -212,11 +209,11 @@ void GPlayer::Init(PLAYER_TYPE type, unsigned char player_number, char16_t* play
 	}
 	if (ComputerPlayer == NULL)
 	{
-		ComputerPlayer = new (PLAYER_SOURCE_FILE, PLAYER_LINE(259)) GComputerPlayer(this, 90.0f, 30.0f, 50);
+		ComputerPlayer = new (FILEPATH, PLAYER_LINE(259)) GComputerPlayer(this, 90.0f, 30.0f, 50);
 	}
 	if (game_stats == NULL)
 	{
-		game_stats = new (PLAYER_SOURCE_FILE, PLAYER_LINE(264)) GameStats();
+		game_stats = new (FILEPATH, PLAYER_LINE(264)) GameStats();
 		game_stats->Init(*this);
 	}
 	for (int i = 0; i < _PLAYER_NAME_COUNT; i++)
@@ -225,7 +222,7 @@ void GPlayer::Init(PLAYER_TYPE type, unsigned char player_number, char16_t* play
 	}
 	AverageInfluencePower = InfluencePower;
 	AlignmentSaveTurn = 0;
-	interfaces[player_id] = new (PLAYER_SOURCE_FILE, PLAYER_LINE(278)) GInterface();
+	interfaces[player_id] = new (FILEPATH, PLAYER_LINE(278)) GInterface();
 	interfaces[player_id]->Init(player_number);
 }
 
@@ -798,7 +795,7 @@ bool32_t GPlayer::ZoomToCitadel(bool to_island_centre)
 		}
 		if (attempt == 0)
 		{
-			new (PLAYER_SOURCE_FILE, PLAYER_LINE(936)) CameraModeNew3(GGame::g_game->GetCamera());
+			new (FILEPATH, PLAYER_LINE(936)) CameraModeNew3(GGame::g_game->GetCamera());
 		}
 	}
 	return TRUE;
@@ -1882,8 +1879,8 @@ MAGIC_TYPE GPlayer::GetNextMagicTypeToEnable()
 	float                  alignmentValue = GetAlignmentValue();
 	if (alignmentValue == 0.0f)
 	{
-		progress = GRand::GameRand(2, PLAYER_SOURCE_FILE, PLAYER_LINE(2303)) ? GRewardProgress::GetInfoGood()
-		                                                                     : GRewardProgress::GetInfoEvil();
+		progress = GRand::GameRand(2, FILEPATH, PLAYER_LINE(2303)) ? GRewardProgress::GetInfoGood()
+		                                                           : GRewardProgress::GetInfoEvil();
 	}
 	else if (alignmentValue > 0.0f)
 	{
@@ -2205,7 +2202,7 @@ Town* GPlayer::GetRandomTown()
 		return NULL;
 	}
 	LHLinkedNode<Town*>* node =
-		candidates.GetNodeAtPosition(GRand::GameRand(candidates.count, PLAYER_SOURCE_FILE, PLAYER_LINE(2780)));
+		candidates.GetNodeAtPosition(GRand::GameRand(candidates.count, FILEPATH, PLAYER_LINE(2780)));
 	Town* chosen = node == NULL ? NULL : node->payload;
 	while (candidates.GetStart() != NULL)
 	{

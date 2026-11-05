@@ -31,16 +31,6 @@
 #include "Villager.h"
 #include "VillagerInfo.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\CreatureMimic.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMimic.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMimic.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMimic.cpp"
-#endif
-
 #define MIMIC_NEARBY_TOWN_DISTANCE           100.0f
 #define MIMIC_OBJECT_NEAR_CITADEL_DISTANCE   80.0f
 #define MIMIC_STAGE_TIMEOUT_SECONDS          180.0f

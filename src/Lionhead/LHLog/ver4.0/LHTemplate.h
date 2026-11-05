@@ -7,7 +7,7 @@
 
 #include "LHAssert.h"
 
-#define LH_TEMPLATE_FILEPATH "C:\\dev\\Libs\\LHALL\\RELEASED\\Headers\\LHTemplate.h"
+#define LH_TEMPLATE_FILEPATH RELEASED_HEADERS_DIRECTORY "LHTemplate.h"
 
 typedef long SLONG;
 

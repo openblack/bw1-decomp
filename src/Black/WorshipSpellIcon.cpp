@@ -16,14 +16,6 @@
 #include "SpellSeedInfo.h"
 #include "WorshipSite.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\WorshipSpellIcon.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\WorshipSpellIcon.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\WorshipSpellIcon.cpp"
-#endif
-
 WorshipSpellIcon::WorshipSpellIcon()
 {
 	SetToZero();

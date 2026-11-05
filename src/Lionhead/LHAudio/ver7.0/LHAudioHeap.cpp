@@ -6,8 +6,6 @@
 #include "LH_BankSample.h"
 #include "LH_SamplePlayOptions.h"
 
-#define FILEPATH LH_AUDIO_SOURCE_DIRECTORY "LHAudioHeap.cpp"
-
 unsigned long heap_list::TotalAllowed = LH_HEAP_DEFAULT_TOTAL_ALLOWED;
 unsigned long heap_list::TotalAllocated;
 

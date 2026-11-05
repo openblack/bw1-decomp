@@ -5,18 +5,6 @@
 #include "Game3DObject.h"
 #include "Town.h"
 
-#if defined(VERSION_BW1W100)
-#define CRECHE_FILE "C:\\dev\\black\\Creche.cpp"
-#elif defined(VERSION_BW1W110)
-#define CRECHE_FILE "C:\\dev\\Black\\Creche.cpp"
-#elif defined(VERSION_BW1W130)
-#define CRECHE_FILE "D:\\Work\\Games\\dd\\Black\\Creche.cpp"
-#elif defined(VERSION_BW1WCI)
-#define CRECHE_FILE "C:\\dev\\black\\Creche.cpp"
-#else
-#define CRECHE_FILE "C:\\dev\\MP\\Black\\Creche.cpp"
-#endif
-
 Creche::Creche(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
                int wood)
 	: Abode(coords, info, town, y_angle, scale, food, wood)
@@ -53,7 +41,7 @@ void Creche::DeleteDependancys()
 Creche* Creche::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                        float food, int wood)
 {
-	Creche* creche = new (CRECHE_FILE, 50) Creche(coords, info, town, y_angle, scale, food, wood);
+	Creche* creche = new (FILEPATH, 50) Creche(coords, info, town, y_angle, scale, food, wood);
 	if (creche != NULL)
 	{
 		creche->CallVirtualFunctionsForCreation(coords);

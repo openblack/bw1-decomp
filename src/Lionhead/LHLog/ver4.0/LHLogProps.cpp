@@ -6,8 +6,6 @@
 #include "LHLogger.h"
 #include "LHLogMacros.h"
 
-#define FILEPATH "LHLogProps.cpp"
-
 #define IDD_LOG_DIALOG                102
 #define IDC_CLOSE                     1000
 #define IDC_LOG_FILENAME              1001

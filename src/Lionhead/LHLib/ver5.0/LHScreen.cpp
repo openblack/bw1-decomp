@@ -17,8 +17,6 @@
 #include <Lionhead/LHLib/ver5.0/LHWin.h>              /* For operator new(size_t, const char*, uint32_t) */
 #include <Lionhead/LHLog/ver4.0/LHRegistry.h>         /* For RegistryRetrieveULong */
 
-#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHScreen.cpp"
-
 // -----------------------------------------------------------------------------
 // External symbols this translation unit depends on that have not been
 // decompiled yet.

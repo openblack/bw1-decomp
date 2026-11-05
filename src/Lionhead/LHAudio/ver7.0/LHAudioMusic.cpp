@@ -11,8 +11,6 @@
 #include "LH_MusicPlayOptions.h"
 #include "MPGAudioDecoder.h"
 
-#define FILEPATH LH_AUDIO_SOURCE_DIRECTORY "LHAudioMusic.cpp"
-
 #define LH_MUSIC_MARKER_START            '!'
 #define LH_MUSIC_MARKER_NAME_LENGTH      0x20
 #define LH_MUSIC_CHUNK_SAMPLES           24192

@@ -31,14 +31,6 @@
 
 static float OneOverLogHalf = 1.0f / (float)log(0.5);
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\WorshipTotem.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\WorshipTotem.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\WorshipTotem.cpp"
-#endif
-
 const float AlwaysVisibleFraction = 0.35f;
 const float ChargeRingWaveHeight = 10.0f;
 const float ChargeRingScale = 1.5f;

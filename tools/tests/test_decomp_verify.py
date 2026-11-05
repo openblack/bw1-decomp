@@ -59,6 +59,15 @@ class CommandTests(Fixture):
         with self.assertRaises(ValueError):
             verify.command_words('cl "broken', True)
 
+    def test_project_flags_with_string_defines_roundtrip(self):
+        sys.path.insert(0, str(SCRIPT.parents[1]))
+        from tools.project import make_flags_str
+        flags = ['/I include', r'/DFILEPATH="C:\\dev\\MP\\Black\\Abode.cpp"',
+                 r'/DSOURCE_DIRECTORY="C:\\Dev\\Libs\\LIONHEAD\\LHDialogLib\\VERSION 1.0\\"']
+        for windows in (True, False):
+            self.assertEqual(verify.command_words(make_flags_str(flags, windows), windows),
+                             ['/I', 'include', *flags[1:]])
+
     def test_compdb_directory_flags_forced_includes_and_duplicate_outputs(self):
         record = {'file': 'a.cpp', 'directory': str(self.root / 'sub dir'), 'output': 'a.o',
                   'command': 'cl /I"../include dir" /FI forced.h /Fddebug.pdb /Zi /c a.cpp /Foa.o'}

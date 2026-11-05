@@ -9,7 +9,7 @@
 #define new DEBUG_NEW
 #undef THIS_FILE
 // __FILE__ of the original build.
-static char THIS_FILE[] = "C:\\Dev\\Libs\\LIONHEAD\\LHDialogLib\\VERSION 1.0\\LHProgressDialog.cpp";
+static char THIS_FILE[] = FILEPATH;
 #endif
 
 CLHProgressDialog::CLHProgressDialog(CWnd* parent /*=NULL*/) : CDialog(CLHProgressDialog::IDD, parent)

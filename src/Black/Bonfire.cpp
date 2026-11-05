@@ -3,14 +3,6 @@
 #include "MobileStaticInfo.h"
 #include "ParticleContainer.h"
 
-#if defined(VERSION_BW1W100)
-#define BONFIRE_FILE "C:\\dev\\black\\Bonfire.cpp"
-#elif defined(VERSION_BW1W110)
-#define BONFIRE_FILE "C:\\dev\\Black\\Bonfire.cpp"
-#else
-#define BONFIRE_FILE "C:\\dev\\MP\\Black\\Bonfire.cpp"
-#endif
-
 Bonfire::Bonfire(const MapCoords& coords, float param_2, float y_angle, float scale)
 	: Rock(coords, &GMobileStaticInfo::Infos[MOBILE_STATIC_INFO_BONFIRE], NULL, NULL, y_angle, scale)
 {
@@ -52,7 +44,7 @@ void Bonfire::CallVirtualFunctionsForCreation(const MapCoords& coords)
 
 Bonfire* Bonfire::Create(const MapCoords& coords, float y_angle, float scale, float fire_scale)
 {
-	Bonfire* bonfire = new (BONFIRE_FILE, 30) Bonfire(coords, y_angle, scale, fire_scale);
+	Bonfire* bonfire = new (FILEPATH, 30) Bonfire(coords, y_angle, scale, fire_scale);
 	if (bonfire)
 	{
 		bonfire->CallVirtualFunctionsForCreation(coords);

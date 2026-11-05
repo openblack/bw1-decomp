@@ -9,8 +9,6 @@
 
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
-#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHMemoryLeak.cpp"
-
 // The global call-stack tracer, provided by LHLogR. gDebugStack is a plain global
 // (accessed by address, not via the import table); its 512-byte frame slots hold
 // the captured function names and the active depth byte sits at offset 0x4000.

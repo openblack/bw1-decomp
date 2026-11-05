@@ -17,8 +17,6 @@
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
 
-#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHScript.cpp"
-
 // NB this TU builds with /Ob0, so the LHSys accessors would not inline; the
 // system aggregate's members are reached through LHSys::TheSystem directly.
 

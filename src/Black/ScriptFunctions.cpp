@@ -628,8 +628,7 @@ void GScript::Random()
 {
 	float max = g_scriptDLL->FLOAT_POP();
 	float min = g_scriptDLL->FLOAT_POP();
-#line 682 "C:\\dev\\MP\\Black\\ScriptFunctions.cpp"
-	float value = (float)(int)(GRand::GameFloatRand(max - min + 1.0f, __FILE__, __LINE__) + min);
+	float value = (float)(int)(GRand::GameFloatRand(max - min + 1.0f, FILEPATH, 682) + min);
 	g_scriptDLL->PUSH(*(void**)&value, VMType_FLOAT);
 }
 
@@ -638,8 +637,7 @@ void GScript::RandomULONG()
 {
 	uint32_t max = g_scriptDLL->ULONG_POP();
 	uint32_t min = g_scriptDLL->ULONG_POP();
-#line 697
-	uint32_t value = GRand::GameRand(max - min + 1, __FILE__, __LINE__) + min;
+	uint32_t value = GRand::GameRand(max - min + 1, FILEPATH, 697) + min;
 	g_scriptDLL->PUSH((void*)value, VMType_INT);
 }
 
@@ -1129,8 +1127,7 @@ void GScript::OverrideStateAnimation()
 	}
 	if (living->data_for_script_remind == NULL)
 	{
-#line 1217
-		living->data_for_script_remind = new (__FILE__, __LINE__) DataForScriptRemind();
+		living->data_for_script_remind = new (FILEPATH, 1217) DataForScriptRemind();
 	}
 	living->data_for_script_remind->KeepThatInMind(living);
 	living->data_for_script_remind->field_0x44 = 0;
@@ -1434,10 +1431,9 @@ void GScript::SetVelocityHeadingSpeed()
 			return;
 		}
 		LHPoint spin;
-#line 1535
-		spin.x = (GRand::GameFloatRand(200.0f, __FILE__, __LINE__) - 100.0f) / 100.0f;
-		spin.y = (GRand::GameFloatRand(200.0f, __FILE__, __LINE__) - 100.0f) / 100.0f;
-		spin.z = (GRand::GameFloatRand(200.0f, __FILE__, __LINE__) - 100.0f) / 100.0f;
+		spin.x = (GRand::GameFloatRand(200.0f, FILEPATH, 1535) - 100.0f) / 100.0f;
+		spin.y = (GRand::GameFloatRand(200.0f, FILEPATH, 1536) - 100.0f) / 100.0f;
+		spin.z = (GRand::GameFloatRand(200.0f, FILEPATH, 1537) - 100.0f) / 100.0f;
 		object->InitialisePhysics(velocity, spin, NULL, true, NULL);
 		return;
 	}
@@ -1933,10 +1929,9 @@ void GScript::SetIdTarget()
 	GLandscape::ConvertMapCoordToLandscapePoint(thing->Pos, pos);
 	velocity = (target - pos - gravity * (0.5f * time * time)) * (1.0f / time);
 	LHPoint spin;
-#line 2049
-	spin.x = (GRand::GameFloatRand(200.0f, __FILE__, __LINE__) - 100.0f) / 100.0f;
-	spin.y = (GRand::GameFloatRand(200.0f, __FILE__, __LINE__) - 100.0f) / 100.0f;
-	spin.z = (GRand::GameFloatRand(200.0f, __FILE__, __LINE__) - 100.0f) / 100.0f;
+	spin.x = (GRand::GameFloatRand(200.0f, FILEPATH, 2049) - 100.0f) / 100.0f;
+	spin.y = (GRand::GameFloatRand(200.0f, FILEPATH, 2050) - 100.0f) / 100.0f;
+	spin.z = (GRand::GameFloatRand(200.0f, FILEPATH, 2051) - 100.0f) / 100.0f;
 	if (object->Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS)
 	{
 		PhysicsObject* physics = PhysicsObject::SearchForPhysicsObject(object);

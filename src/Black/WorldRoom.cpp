@@ -54,14 +54,6 @@
 // Player.cpp hold the same constant as OneOverLogHalf, which sorts after White.
 static float OneOnLogHalf = 1.0f / (float)log(0.5);
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define WORLD_ROOM_SOURCE_FILE "C:\\dev\\black\\WorldRoom.cpp"
-#elif defined(VERSION_BW1W110)
-#define WORLD_ROOM_SOURCE_FILE "C:\\dev\\Black\\WorldRoom.cpp"
-#else
-#define WORLD_ROOM_SOURCE_FILE "C:\\dev\\MP\\Black\\WorldRoom.cpp"
-#endif
-
 #ifdef VERSION_BW1WCI
 #define ROOM_TEXT(text) (text)
 // Creature Isle's text database has eight more entries ahead of the tooltips than HelpTextEnums.h.
@@ -163,7 +155,7 @@ void WorldRoom::InitEngine()
 	WaterObject->SetDynamicLighting(true);
 	WaterObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 	Font = GatheringText::GetGameFont(GAME_FONT_NEUTRAL);
-	Map = new (WORLD_ROOM_SOURCE_FILE, 111) MiniMap;
+	Map = new (FILEPATH, 111) MiniMap;
 	Map->Init();
 	Map->BuildMapTex();
 	if (!Temple::MultiplayerCitadel)
@@ -195,7 +187,7 @@ void WorldRoom::InitEngine()
 	ChallengeIconObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 	camera->Close();
 	delete camera;
-	camera = new (WORLD_ROOM_SOURCE_FILE, 150) WorldRoomCamera;
+	camera = new (FILEPATH, 150) WorldRoomCamera;
 	camera->Init("data\\citadel\\engine\\main.cam");
 	ScrollTexture = LH3DTexture::Create("Data\\Citadel\\Controls\\ChallengeScroll.raw", 0x44, 0, NULL);
 	ScrollMaterial =

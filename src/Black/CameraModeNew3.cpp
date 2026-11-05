@@ -27,7 +27,7 @@
 #include "CameraExclusion.h"
 #include "CameraModeFollow.h"
 #include "ColourConstants.h" /* For White */
-#include "CameraHelp.h"
+#include "camerahelp.h"
 #include "Creature.h"
 #include "CreatureMorph.h"
 #include "CreaturePhysical.h"

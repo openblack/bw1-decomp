@@ -14,7 +14,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#define SERIALISE_FILEPATH "C:\\dev\\MP\\Black\\Serialise.h"
+#define SERIALISE_FILEPATH SOURCE_DIRECTORY "Serialise.h"
 
 #define ARCHIVE_BUFFER_SIZE 0x400
 #define ARCHIVE_FORMAT      3

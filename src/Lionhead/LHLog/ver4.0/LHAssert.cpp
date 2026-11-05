@@ -8,8 +8,6 @@
 #include "LHLogger.h"
 #include "LHLogMacros.h"
 
-#define FILEPATH "LHAssert.cpp"
-
 #define IDD_ASSERT_DIALOG         101
 #define IDB_PRIORITY_HIGH         107
 #define IDB_PRIORITY_MEDIUM       108

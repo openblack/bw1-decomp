@@ -16,16 +16,6 @@
 #include "MagicInfo.h"
 #include "SpellSeedInfo.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreatureMentalLearnAction.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMentalLearnAction.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalLearnAction.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalLearnAction.cpp"
-#endif
-
 #define MAGIC_ACTION_SEEN_AGAIN_GAME_TURNS      50
 #define MAGIC_ACTION_RECENTLY_LEARNT_SIGHTINGS  3.0f
 #define NEARLY_LEARNT_MAGIC_ACTION_FRACTION     0.75f

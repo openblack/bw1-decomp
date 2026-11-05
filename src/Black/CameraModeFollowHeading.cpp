@@ -9,16 +9,6 @@
 #include "Global.h"
 #include "Landscape.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define CAMERA_MODE_FOLLOW_HEADING_FILE "C:\\dev\\black\\CameraModeFollowHeading.cpp"
-#elif defined(VERSION_BW1W110)
-#define CAMERA_MODE_FOLLOW_HEADING_FILE "C:\\dev\\Black\\CameraModeFollowHeading.cpp"
-#elif defined(VERSION_BW1W130)
-#define CAMERA_MODE_FOLLOW_HEADING_FILE "D:\\Work\\Games\\dd\\Black\\CameraModeFollowHeading.cpp"
-#else
-#define CAMERA_MODE_FOLLOW_HEADING_FILE "C:\\dev\\MP\\Black\\CameraModeFollowHeading.cpp"
-#endif
-
 #if !defined(VERSION_BW1W100)
 CameraModeFollowHeading* CameraModeFollowHeading::Create(GCamera* camera, Object* target, float heading, float pitch,
                                                          float distance, float heading_speed)
@@ -31,8 +21,7 @@ CameraModeFollowHeading* CameraModeFollowHeading::Create(GCamera* camera, Object
 	{
 		return NULL;
 	}
-	return new (CAMERA_MODE_FOLLOW_HEADING_FILE, 20)
-		CameraModeFollowHeading(camera, target, heading, pitch, distance, heading_speed);
+	return new (FILEPATH, 20) CameraModeFollowHeading(camera, target, heading, pitch, distance, heading_speed);
 }
 #endif
 

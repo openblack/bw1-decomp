@@ -7,23 +7,13 @@
 #include "GroupBehaviour.h"
 #include "Interface.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define CAMERA_MODE_DANCE_FILE "C:\\dev\\black\\CameraModeDance.cpp"
-#elif defined(VERSION_BW1W110)
-#define CAMERA_MODE_DANCE_FILE "C:\\dev\\Black\\CameraModeDance.cpp"
-#elif defined(VERSION_BW1W130)
-#define CAMERA_MODE_DANCE_FILE "D:\\Work\\Games\\dd\\Black\\CameraModeDance.cpp"
-#else
-#define CAMERA_MODE_DANCE_FILE "C:\\dev\\MP\\Black\\CameraModeDance.cpp"
-#endif
-
 CameraModeDance* CameraModeDance::Create(GCamera* camera, GroupBehaviour* group)
 {
 	if (camera->CantExitCurrentMode())
 	{
 		return NULL;
 	}
-	return new (CAMERA_MODE_DANCE_FILE, 16) CameraModeDance(camera, group);
+	return new (FILEPATH, 16) CameraModeDance(camera, group);
 }
 
 CameraModeDance::CameraModeDance(GCamera* camera, GroupBehaviour* group) : CameraMode(camera)

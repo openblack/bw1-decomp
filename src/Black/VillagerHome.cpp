@@ -25,16 +25,6 @@
 #include "VillagerInfo.h"
 #include "VillagerStateTableInfo.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\VillagerHome.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\VillagerHome.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\VillagerHome.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\VillagerHome.cpp"
-#endif
-
 bool32_t Villager::HomeDecideWhatToDo()
 {
 	if (GetAbode() != NULL && GetTown() != NULL && GetTown()->IsInStateOfEmergency())

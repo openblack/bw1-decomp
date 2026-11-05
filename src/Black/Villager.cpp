@@ -75,13 +75,10 @@
 #include "WorshipTotem.h"
 
 #if defined(VERSION_BW1W100)
-#define FILEPATH            "C:\\dev\\black\\Villager.cpp"
 #define VILLAGER_LINE(line) ((line) - ((line) < 231 ? 1 : (line) < 1899 ? 3 : (line) < 3293 ? 19 : 20))
 #elif defined(VERSION_BW1W110)
-#define FILEPATH            "C:\\dev\\Black\\Villager.cpp"
 #define VILLAGER_LINE(line) ((line) - ((line) < 231 ? 1 : (line) < 1009 ? 2 : (line) < 1899 ? 10 : 15))
 #else
-#define FILEPATH            "C:\\dev\\MP\\Black\\Villager.cpp"
 #define VILLAGER_LINE(line) (line)
 #endif
 

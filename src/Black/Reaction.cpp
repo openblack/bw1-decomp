@@ -27,14 +27,6 @@
 
 #include <windef.h> /* For min */
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\Reaction.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\Reaction.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\Reaction.cpp"
-#endif
-
 #define REACTION_DEBUG_CATEGORY 4
 
 #define REACTION_STEALTH_RANDOM_RANGE 1000

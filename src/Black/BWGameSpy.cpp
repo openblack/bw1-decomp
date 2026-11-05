@@ -55,13 +55,10 @@
 // The allocations pass the original file's __LINE__: BW1W110 added twelve lines above them and BW1W120
 // seven more.
 #if defined(VERSION_BW1W100)
-#define BW_GAME_SPY_SOURCE_FILE "C:\\dev\\black\\BWGameSpy.cpp"
 #define BW_GAME_SPY_LINE_OFFSET (-12)
 #elif defined(VERSION_BW1W110)
-#define BW_GAME_SPY_SOURCE_FILE "C:\\dev\\Black\\BWGameSpy.cpp"
 #define BW_GAME_SPY_LINE_OFFSET 0
 #else
-#define BW_GAME_SPY_SOURCE_FILE "C:\\dev\\MP\\Black\\BWGameSpy.cpp"
 #define BW_GAME_SPY_LINE_OFFSET 7
 #endif
 
@@ -578,7 +575,7 @@ void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* m
 	{
 		return;
 	}
-	wchar_t* text = new (BW_GAME_SPY_SOURCE_FILE, 386 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
+	wchar_t* text = new (FILEPATH, 386 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
 	wcscpy(text, LHSPrintfW(L"%s", DECODE_NAME(message)));
 	MPFEMessageObject::ProcessIncomingMessage(text, player, LHSPrintfW(L"%s", DECODE_NAME(nick)));
 	if (text != NULL)
@@ -608,7 +605,7 @@ void BWGameSpy::RoomMessageCallback(PEER peer, RoomType roomType, const char* ni
 	{
 		return;
 	}
-	wchar_t* text = new (BW_GAME_SPY_SOURCE_FILE, 417 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
+	wchar_t* text = new (FILEPATH, 417 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
 	wcscpy(text, LHSPrintfW(L"%s", DECODE_NAME(message)));
 	MPFEMessageObject::ProcessIncomingMessage(text, player, NULL);
 	if (text != NULL)

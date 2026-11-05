@@ -25,7 +25,7 @@
 #include "Abode.h"
 #include "Bubble.h"
 #include "Camera.h"
-#include "CameraHelp.h"
+#include "camerahelp.h"
 #include "CameraModeFollow.h"
 #include "CameraModeNew3.h"
 #include "ControlMap.h"

@@ -12,16 +12,6 @@
 #include "GameInfo.h"
 #include "Rand.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreatureDevelopment.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureDevelopment.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureDevelopment.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureDevelopment.cpp"
-#endif
-
 #ifdef VERSION_BW1WCI
 #define DEVELOPMENT_LINE(line) ((line) + 9)
 #else

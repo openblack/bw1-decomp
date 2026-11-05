@@ -9,7 +9,6 @@ standard as a strict objdiff match on code bytes.
 import hashlib
 import os
 import re
-import shlex
 import shutil
 import subprocess
 import threading
@@ -22,9 +21,14 @@ REL32 = 0x14
 
 
 def ninja_command(target):
-    """The command Ninja runs to build target, as argv."""
+    """The command Ninja runs to build target, as argv (split as its shell or cl's CRT would)."""
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("decomp_verify", ROOT / "tools" / "decomp-verify.py")
+    verify = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verify)
     out = subprocess.run(["ninja", "-t", "commands", "-s", target], cwd=ROOT, capture_output=True, text=True, check=True)
-    return shlex.split(out.stdout.strip().splitlines()[-1], posix=os.name != "nt")
+    return verify.command_words(out.stdout.strip().splitlines()[-1])
 
 
 def compile_command(unit):

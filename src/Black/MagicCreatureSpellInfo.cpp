@@ -6,17 +6,9 @@
 #include "CreatureReceiveSpell.h"
 #include "SpellCreature.h"
 
-#if defined(VERSION_BW1W100)
-#define MAGIC_CREATURE_SPELL_INFO_FILE "C:\\dev\\black\\MagicCreatureSpellInfo.cpp"
-#elif defined(VERSION_BW1W110)
-#define MAGIC_CREATURE_SPELL_INFO_FILE "C:\\dev\\Black\\MagicCreatureSpellInfo.cpp"
-#else
-#define MAGIC_CREATURE_SPELL_INFO_FILE "C:\\dev\\MP\\Black\\MagicCreatureSpellInfo.cpp"
-#endif
-
 Spell* GMagicCreatureSpellInfo::AllocSpell(GameThing* caster) const
 {
-	return new (MAGIC_CREATURE_SPELL_INFO_FILE, 13) SpellCreature(MagicType, caster);
+	return new (FILEPATH, 13) SpellCreature(MagicType, caster);
 }
 
 bool32_t GMagicCreatureSpellInfo::CanCast(const MapCoords& coords, GameThing* caster) const

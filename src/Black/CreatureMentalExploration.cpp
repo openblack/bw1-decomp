@@ -18,16 +18,6 @@
 #include "MapCoordsMeters.h"
 #include "Utils.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreatureMentalExploration.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMentalExploration.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalExploration.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalExploration.cpp"
-#endif
-
 #define CLEAR_POS_SEARCH_RADIUS 240.0f
 #define CLEAR_POS_RADIUS        40.0f
 

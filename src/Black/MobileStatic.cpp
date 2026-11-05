@@ -4,14 +4,6 @@
 #include "Landscape.h"  /* For GLandscape */
 #include "Player.h"
 
-#if defined(VERSION_BW1W100)
-#define MOBILE_STATIC_FILE "C:\\dev\\black\\MobileStatic.cpp"
-#elif defined(VERSION_BW1W110)
-#define MOBILE_STATIC_FILE "C:\\dev\\Black\\MobileStatic.cpp"
-#else
-#define MOBILE_STATIC_FILE "C:\\dev\\MP\\Black\\MobileStatic.cpp"
-#endif
-
 GMobileStaticInfo GMobileStaticInfo::Infos[MOBILE_STATIC_INFO_LAST];
 
 bool32_t MobileStatic::CanBecomeAPhysicsObject()
@@ -89,14 +81,14 @@ bool32_t MobileStatic::CreatureMustAvoid(Creature* creature)
 #ifdef VERSION_BW1WCI
 GBaseOnly* GBaseOnly::Create(const MapCoords& coords, const GObjectInfo* info, float y_angle, float scale)
 {
-	GBaseOnly* base = new (MOBILE_STATIC_FILE, 700) GBaseOnly(coords, info, y_angle, scale);
+	GBaseOnly* base = new (FILEPATH, 700) GBaseOnly(coords, info, y_angle, scale);
 	base->CallVirtualFunctionsForCreation(coords);
 	return base;
 }
 #else
 GBaseOnly* GBaseOnly::Create(const MapCoords& coords, const GObjectInfo* info)
 {
-	GBaseOnly* base = new (MOBILE_STATIC_FILE, 583) GBaseOnly(coords, info);
+	GBaseOnly* base = new (FILEPATH, 583) GBaseOnly(coords, info);
 	base->CallVirtualFunctionsForCreation(coords);
 	return base;
 }

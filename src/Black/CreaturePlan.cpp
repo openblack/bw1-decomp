@@ -30,16 +30,6 @@
 #include "TownDesireFlags.h"
 #include "Utils.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreaturePlan.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreaturePlan.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreaturePlan.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreaturePlan.cpp"
-#endif
-
 #ifdef VERSION_BW1WCI
 #define CREATURE_PLAN_LINE(line) ((line) + ((line) < 1000 ? 156 : 150))
 #else

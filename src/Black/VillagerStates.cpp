@@ -27,8 +27,6 @@
 #include "Utils.h"
 #include "Villager.h"
 
-#define FILEPATH "C:\\dev\\MP\\Black\\VillagerStates.cpp"
-
 GVillagerStateTableInfo GVillagerStateTableInfo::Infos[VILLAGER_STATE_LAST_STATE];
 
 // BW1W120 00769580 BW1M119 015a35b0

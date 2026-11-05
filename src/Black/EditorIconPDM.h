@@ -9,13 +9,7 @@
 
 #include "EditorIcon.h" /* For class EditorIconShow */
 
-#if defined(VERSION_BW1W100)
-#define EDITOR_ICON_PDM_SOURCE_FILE "C:\\dev\\black\\EditorIconPDM.h"
-#elif defined(VERSION_BW1W110)
-#define EDITOR_ICON_PDM_SOURCE_FILE "C:\\dev\\Black\\EditorIconPDM.h"
-#else
-#define EDITOR_ICON_PDM_SOURCE_FILE "C:\\dev\\MP\\Black\\EditorIconPDM.h"
-#endif
+#define EDITOR_ICON_PDM_SOURCE_FILE SOURCE_DIRECTORY "EditorIconPDM.h"
 
 struct LH3DColor;
 

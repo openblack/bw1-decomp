@@ -8,8 +8,6 @@
 #include "LH_BankSample.h"
 #include "LH_SamplePlayOptions.h"
 
-#define FILEPATH LH_AUDIO_SOURCE_DIRECTORY "LHAudioAtmos.cpp"
-
 atmos_list*  LH_atmos = new atmos_list;
 static char* LHLogLibraryName;
 

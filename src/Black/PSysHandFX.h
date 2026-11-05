@@ -18,13 +18,7 @@ class LH3DCreature;
 struct LHMatrix;
 struct LHPoint;
 
-#if defined(VERSION_BW1W100)
-#define P_SYS_HAND_FX_SOURCE_FILE "C:\\dev\\black\\PSysHandFX.h"
-#elif defined(VERSION_BW1W110)
-#define P_SYS_HAND_FX_SOURCE_FILE "C:\\dev\\Black\\PSysHandFX.h"
-#else
-#define P_SYS_HAND_FX_SOURCE_FILE "C:\\dev\\MP\\Black\\PSysHandFX.h"
-#endif
+#define P_SYS_HAND_FX_SOURCE_FILE SOURCE_DIRECTORY "PSysHandFX.h"
 
 class HandGlow
 {

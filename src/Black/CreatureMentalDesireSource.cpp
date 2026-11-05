@@ -20,16 +20,6 @@
 #include "HelpText.h"
 #include "Rand.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\CreatureMentalDesireSource.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMentalDesireSource.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalDesireSource.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalDesireSource.cpp"
-#endif
-
 #define MIN_THRESHOLD_CHANGE              -1.0f
 #define MAX_THRESHOLD_CHANGE              1.0f
 #define HELP_TEXT_CREATURE_ATTITUDE_FIRST 1120

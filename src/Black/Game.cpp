@@ -81,7 +81,7 @@
 #include "Camera.h"
 #include "CameraEditor.h"
 #include "CameraExclusion.h"
-#include "CameraHelp.h"
+#include "camerahelp.h"
 #include "ChallengeRoom.h"
 #include "Citadel.h"
 #include "CitadelHeart.h"

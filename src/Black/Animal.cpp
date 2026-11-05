@@ -9,14 +9,6 @@
 #include "AnimalStateTableInfo.h"
 #include "Game3DObject.h" /* For Game3DObject */
 
-#if defined(VERSION_BW1W100)
-#define ANIMAL_FILE "C:\\dev\\black\\Animal.cpp"
-#elif defined(VERSION_BW1W110)
-#define ANIMAL_FILE "C:\\dev\\Black\\Animal.cpp"
-#else
-#define ANIMAL_FILE "C:\\dev\\MP\\Black\\Animal.cpp"
-#endif
-
 void Animal::SetStateSpeed() {}
 
 void Animal::ResolveLoad()
@@ -321,7 +313,7 @@ uint32_t Animal::ThrownAnimation()
 
 PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	PieceVillager* villager = new (ANIMAL_FILE, 2696) PieceVillager(coords, info, age);
+	PieceVillager* villager = new (FILEPATH, 2696) PieceVillager(coords, info, age);
 	if (villager != NULL)
 	{
 		villager->CallVirtualFunctionsForCreation(coords);

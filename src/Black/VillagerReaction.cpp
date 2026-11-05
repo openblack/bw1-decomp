@@ -45,14 +45,6 @@
 #include "VillagerStateTableInfo.h"
 #include "CreatureAttitudeConstants.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\VillagerReaction.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\VillagerReaction.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\VillagerReaction.cpp"
-#endif
-
 #define VILLAGER_PREDATOR_SPEED_PRIORITY_SCALE   0.5f
 #define VILLAGER_LOOK_TO_SEE_IF_IT_IS_SAFE_TURNS 20
 #define VILLAGER_HIDE_MAX_DISTANCE               100.0f

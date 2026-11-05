@@ -14,7 +14,6 @@
 #include "LHSPrintf.h"
 #include "LHVersion.h"
 
-#define FILEPATH       "LHGenLog.cpp"
 #define LH_LOG_VERSION 2.2
 
 #define LH_LOG_FILTER_TOKEN_SIZE     200

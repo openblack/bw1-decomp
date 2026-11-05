@@ -28,8 +28,6 @@
 #include "Town.h"
 #include "TownCentre.h"
 
-#define FILEPATH "C:\\dev\\MP\\Black\\Bookmark.cpp"
-
 Bookmark Bookmark::Bookmarks[BOOKMARK_INDEX_LAST];
 int      Bookmark::CurrentBookmark;
 int      Bookmark::FollowBookmark = BOOKMARK_INDEX_NONE;

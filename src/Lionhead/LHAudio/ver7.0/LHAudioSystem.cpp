@@ -5,8 +5,6 @@
 #include "LH_ListenerInfo.h"
 #include "LHAudioLog.h"
 
-#define FILEPATH LH_AUDIO_SOURCE_DIRECTORY "LHAudioSystem.cpp"
-
 #define LH_AUDIO_OVERRIDE_REGISTRY_KEY "Software\\Lionhead Studios Ltd\\Audio\\Override"
 
 #define LH_AUDIO_DEFAULT_MAX_SAMPLES 16

@@ -14,8 +14,6 @@
 #include "LH_SamplePlayOptions.h"
 #include "MPGAudioDecoder.h"
 
-#define FILEPATH LH_AUDIO_SOURCE_DIRECTORY "LHAudioSample.cpp"
-
 #define LH_SAMPLE_NO_FILE_NAME            "NONE"
 #define LH_SAMPLE_NAME_LENGTH             0x80
 #define LH_SAMPLE_EMPTY_WAVE_SIZE         0x2c

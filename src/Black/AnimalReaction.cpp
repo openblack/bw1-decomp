@@ -15,14 +15,6 @@
 #include "ReactionInfo.h"
 #include "Utils.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\AnimalReaction.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\AnimalReaction.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\AnimalReaction.cpp"
-#endif
-
 #define ANIMAL_FLEE_FROM_PREDATOR_DISTANCE     10.0f
 #define ANIMAL_FLEE_FLYING_OBJECT_SPEED_FACTOR 2.0f
 #define ANIMAL_FLEE_POSITION_SPREAD            8.0f

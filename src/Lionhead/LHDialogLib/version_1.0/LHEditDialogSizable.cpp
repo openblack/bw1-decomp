@@ -9,7 +9,7 @@
 #define new DEBUG_NEW
 #undef THIS_FILE
 // __FILE__ of the original build.
-static char THIS_FILE[] = "C:\\Dev\\Libs\\LIONHEAD\\LHDialogLib\\VERSION 1.0\\LHEditDialogSizable.cpp";
+static char THIS_FILE[] = FILEPATH;
 #endif
 
 CLHEditDialogSizable::CLHEditDialogSizable(CWnd* parent /*=NULL*/) : CDialog(CLHEditDialogSizable::IDD, parent)

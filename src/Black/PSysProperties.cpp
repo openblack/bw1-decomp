@@ -25,16 +25,6 @@ static float unused;
 #include <chlasm/LHAction.h>
 #include <chlasm/ScriptEnums.h>
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define PSYS_PROPERTIES_FILE "C:\\dev\\black\\PSysProperties.cpp"
-#elif defined(VERSION_BW1W110)
-#define PSYS_PROPERTIES_FILE "C:\\dev\\Black\\PSysProperties.cpp"
-#elif defined(VERSION_BW1W130)
-#define PSYS_PROPERTIES_FILE "D:\\Work\\Games\\dd\\Black\\PSysProperties.cpp"
-#else
-#define PSYS_PROPERTIES_FILE "C:\\dev\\MP\\Black\\PSysProperties.cpp"
-#endif
-
 void PSysFileData::DefineProperties(PropertyList* list)
 {
 	list->AddBoolArrayProperty("InitiallyCreated", this, &PSysFileData::GetMaxGroups, &PSysFileData::SetMaxGroups,
@@ -1813,7 +1803,7 @@ bool PSysFileData::LoadFromFile(PARTICLE_TYPE type, const char* filename)
 	{
 		uint32_t length;
 		LHFileLength(filename, &length);
-		char*    buffer = new (PSYS_PROPERTIES_FILE, 1996) char[length + 2];
+		char*    buffer = new (FILEPATH, 1996) char[length + 2];
 		uint32_t read = 0;
 		if (LHLoadData((char*)filename, buffer, length, &read))
 		{
@@ -1895,11 +1885,11 @@ bool32_t PSysFileData::SaveAsCode(const char* filename)
 #define DECLARE_PARTICLE_CREATOR(CLASS, LINE)                                                                          \
 	static Persistent* StaticCreate_##CLASS(PersistentOwner* owner)                                                    \
 	{                                                                                                                  \
-		return new (PSYS_PROPERTIES_FILE, LINE) CLASS(owner);                                                          \
+		return new (FILEPATH, LINE) CLASS(owner);                                                                      \
 	}                                                                                                                  \
 	static ParticleCreator* PCreator_##CLASS(PersistentOwner* owner)                                                   \
 	{                                                                                                                  \
-		return new (PSYS_PROPERTIES_FILE, LINE) CLASS(owner);                                                          \
+		return new (FILEPATH, LINE) CLASS(owner);                                                                      \
 	}
 
 #define REGISTER_PARTICLE_CREATOR(CLASS)                                                                               \
@@ -1945,11 +1935,11 @@ void RegisterPersistent::RegisterParticleCreators()
 #define DECLARE_CONDITION(CLASS, LINE)                                                                                 \
 	static Persistent* StaticCreate_##CLASS(PersistentOwner* owner)                                                    \
 	{                                                                                                                  \
-		return new (PSYS_PROPERTIES_FILE, LINE) CLASS(owner);                                                          \
+		return new (FILEPATH, LINE) CLASS(owner);                                                                      \
 	}                                                                                                                  \
 	static TEventCondition* ConditionCreate_##CLASS(PersistentOwner* owner)                                            \
 	{                                                                                                                  \
-		return new (PSYS_PROPERTIES_FILE, LINE) CLASS(owner);                                                          \
+		return new (FILEPATH, LINE) CLASS(owner);                                                                      \
 	}
 
 #define REGISTER_CONDITION(CLASS)                                                                                      \
@@ -2011,11 +2001,11 @@ void RegisterPersistent::RegisterConditions()
 #define DECLARE_FLOAT_PROVIDER(CLASS, LINE)                                                                            \
 	static Persistent* StaticCreate_##CLASS(PersistentOwner* owner)                                                    \
 	{                                                                                                                  \
-		return new (PSYS_PROPERTIES_FILE, LINE) CLASS(owner);                                                          \
+		return new (FILEPATH, LINE) CLASS(owner);                                                                      \
 	}                                                                                                                  \
 	static FloatProvider* FloatProviderCreate_##CLASS(PersistentOwner* owner)                                          \
 	{                                                                                                                  \
-		return new (PSYS_PROPERTIES_FILE, LINE) CLASS(owner);                                                          \
+		return new (FILEPATH, LINE) CLASS(owner);                                                                      \
 	}
 
 #define REGISTER_FLOAT_PROVIDER(CLASS)                                                                                 \
@@ -2049,11 +2039,11 @@ void RegisterPersistent::RegisterFloatProviders()
 #define DECLARE_MODIFIER(CLASS, LINE)                                                                                  \
 	static Persistent* StaticCreate_##CLASS(PersistentOwner* owner)                                                    \
 	{                                                                                                                  \
-		return new (PSYS_PROPERTIES_FILE, LINE) CLASS(owner);                                                          \
+		return new (FILEPATH, LINE) CLASS(owner);                                                                      \
 	}                                                                                                                  \
 	static AtomCollectionModifier* ModifierCreate_##CLASS(PersistentOwner* owner)                                      \
 	{                                                                                                                  \
-		return new (PSYS_PROPERTIES_FILE, LINE) CLASS(owner);                                                          \
+		return new (FILEPATH, LINE) CLASS(owner);                                                                      \
 	}
 
 #define REGISTER_MODIFIER(CLASS)                                                                                       \

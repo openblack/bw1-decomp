@@ -51,16 +51,6 @@
 
 #include <math.h> /* For cos, sin */
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define MAGIC_VORTEX_FILE "C:\\dev\\black\\MagicVortex.cpp"
-#elif defined(VERSION_BW1W110)
-#define MAGIC_VORTEX_FILE "C:\\dev\\Black\\MagicVortex.cpp"
-#elif defined(VERSION_BW1W130)
-#define MAGIC_VORTEX_FILE "D:\\Work\\Games\\dd\\Black\\MagicVortex.cpp"
-#else
-#define MAGIC_VORTEX_FILE "C:\\dev\\MP\\Black\\MagicVortex.cpp"
-#endif
-
 const float FadeTime = 5.0f;
 const float VortexRadius = 58.0f;
 const float HeightProfileCentre = 30.0f;
@@ -101,15 +91,15 @@ VILLAGER_INFO GVortexInfo::GetVillagerInfoToCreate(TRIBE_TYPE tribe)
 {
 	VILLAGER_NUMBER number;
 
-	if (GRand::GameFloatRand(1.0f, MAGIC_VORTEX_FILE, 83) < 0.5f)
+	if (GRand::GameFloatRand(1.0f, FILEPATH, 83) < 0.5f)
 	{
 		number = VILLAGER_NUMBER_HOUSEWIFE;
 	}
 	else
 	{
-		number = (VILLAGER_NUMBER)(GRand::GameRand(VILLAGER_NUMBER_LEADER - VILLAGER_NUMBER_FORESTER + 1,
-		                                           MAGIC_VORTEX_FILE, 89) +
-		                           VILLAGER_NUMBER_FORESTER);
+		number =
+			(VILLAGER_NUMBER)(GRand::GameRand(VILLAGER_NUMBER_LEADER - VILLAGER_NUMBER_FORESTER + 1, FILEPATH, 89) +
+		                      VILLAGER_NUMBER_FORESTER);
 	}
 	return (VILLAGER_INFO)(tribe * VILLAGER_NUMBER_LAST + number);
 }
@@ -270,7 +260,7 @@ LandscapeVortexIn::LandscapeVortexIn(const MapCoords& coords, float radius)
 	: LandscapeVortex(coords, VORTEX_TYPE_IN, radius)
 {
 	SetToZero();
-	VortexSaver = new (MAGIC_VORTEX_FILE, 216) VortexSave("vortex.txt", false);
+	VortexSaver = new (FILEPATH, 216) VortexSave("vortex.txt", false);
 }
 
 void LandscapeVortexIn::ToBeDeleted(bool32_t delete_now)
@@ -343,8 +333,8 @@ void LandscapeVortexIn::AddObject(Object* object, const LHPoint& velocity, const
 	}
 	if (object->CanBecomeAPhysicsObject() && ObjectMoverParticle != NULL)
 	{
-		ObjectMoverParticle->AddTarget(new (MAGIC_VORTEX_FILE, 358) VortexObjectInfo(object, from_physics, velocity,
-		                                                                             matrix, indestructible, this));
+		ObjectMoverParticle->AddTarget(
+			new (FILEPATH, 358) VortexObjectInfo(object, from_physics, velocity, matrix, indestructible, this));
 	}
 }
 
@@ -422,7 +412,7 @@ void LandscapeVortexIn::ProcessContentsOfVortex()
 						Object* taken = pile->TakeResourceAndCreateHandPot(VORTEX_PILE_TAKE_AMOUNT);
 						if (taken != NULL)
 						{
-							taken->SetScale((GRand::GameFloatRand(0.3f, MAGIC_VORTEX_FILE, 436) * 0.4f + 0.3f) *
+							taken->SetScale((GRand::GameFloatRand(0.3f, FILEPATH, 436) * 0.4f + 0.3f) *
 							                taken->GetScale());
 							LHMatrix matrix;
 							taken->GetWorldMatrix(&matrix);
@@ -457,7 +447,7 @@ LandscapeVortexOut::LandscapeVortexOut(const MapCoords& coords, float radius)
 {
 	SetToZero();
 	FlockCoords.Set(coords);
-	VortexSaver = new (MAGIC_VORTEX_FILE, 458) VortexSave("vortex.txt", true);
+	VortexSaver = new (FILEPATH, 458) VortexSave("vortex.txt", true);
 }
 
 void LandscapeVortexOut::SetToZero()
@@ -555,7 +545,7 @@ void LandscapeVortexOut::ProcessContentsOfVortex()
 	{
 		return;
 	}
-	float   angle = GRand::GameFloatRand(TWO_PI, MAGIC_VORTEX_FILE, 578);
+	float   angle = GRand::GameFloatRand(TWO_PI, FILEPATH, 578);
 	LHPoint offset((float)sin(angle) * VORTEX_THROW_OUT_DISTANCE, 0.0f, (float)cos(angle) * -VORTEX_THROW_OUT_DISTANCE);
 	MapCoords coords = Pos;
 	coords.SetMapMetersX(coords.MapMetersX() + offset.x);
@@ -598,8 +588,8 @@ void LandscapeVortexOut::ProcessContentsOfVortex()
 	const GVillagerInfo* info = &GVillagerInfo::InfoList[GetVortexInfo()->GetVillagerInfoToCreate(tribe)];
 	Villager*            villager =
 		Villager::Create(coords, info,
-	                     child ? GRand::GameRand(VORTEX_CHILD_AGE_RANGE, MAGIC_VORTEX_FILE, 630) + VORTEX_CHILD_MIN_AGE
-	                           : GRand::GameRand(VORTEX_ADULT_AGE_RANGE, MAGIC_VORTEX_FILE, 630) + VORTEX_ADULT_MIN_AGE,
+	                     child ? GRand::GameRand(VORTEX_CHILD_AGE_RANGE, FILEPATH, 630) + VORTEX_CHILD_MIN_AGE
+	                           : GRand::GameRand(VORTEX_ADULT_AGE_RANGE, FILEPATH, 630) + VORTEX_ADULT_MIN_AGE,
 	                     false);
 	if (villager != NULL)
 	{
@@ -653,7 +643,7 @@ void LandscapeVortexOut::DoPostObjectCreateThings(Object* object, float angle)
 			{
 				AnimalFlock->RemoveLivingFromFlock(animal, true);
 			}
-			AnimalFlock = new (MAGIC_VORTEX_FILE, 687)
+			AnimalFlock = new (FILEPATH, 687)
 				Flock(FlockCoords, (const GFlockInfo*)&GContainerInfo::Definitions[CONTAINER_INFO_FLOCK], GetPlayer(),
 			          FLOCK_MAGIC);
 			if (AnimalFlock != NULL)
@@ -677,9 +667,9 @@ void LandscapeVortexOut::DoPostObjectCreateThings(Object* object, float angle)
 void LandscapeVortex::ThrowOutObject(Object* object, GPlayer* player, float angle, float strength)
 {
 	float   height = object->GetHeight() * 0.5f;
-	float   speed = (GRand::GameFloatRand(5.0f, MAGIC_VORTEX_FILE, 713) + 8.0f) * strength;
+	float   speed = (GRand::GameFloatRand(5.0f, FILEPATH, 713) + 8.0f) * strength;
 	LHPoint velocity((float)sin(angle) * speed, 0.0f, -((float)cos(angle) * speed));
-	float   up = (GRand::GameFloatRand(5.0f, MAGIC_VORTEX_FILE, 716) + 10.0f) * strength;
+	float   up = (GRand::GameFloatRand(5.0f, FILEPATH, 716) + 10.0f) * strength;
 	velocity.y = up;
 	LHPoint spin = velocity ^ LHPoint(0.0f, 1.0f, 0.0f);
 	spin *= 1.0f / height;
@@ -692,13 +682,13 @@ LandscapeVortex* LandscapeVortex::Create(const MapCoords& coords, VORTEX_TYPE ty
 	switch (type)
 	{
 	case VORTEX_TYPE_VOLCANO:
-		vortex = new (MAGIC_VORTEX_FILE, 733) LandscapeVortexVolc(coords, VORTEX_RADIUS);
+		vortex = new (FILEPATH, 733) LandscapeVortexVolc(coords, VORTEX_RADIUS);
 		break;
 	case VORTEX_TYPE_IN:
-		vortex = new (MAGIC_VORTEX_FILE, 736) LandscapeVortexIn(coords, VORTEX_RADIUS);
+		vortex = new (FILEPATH, 736) LandscapeVortexIn(coords, VORTEX_RADIUS);
 		break;
 	case VORTEX_TYPE_OUT:
-		vortex = new (MAGIC_VORTEX_FILE, 739) LandscapeVortexOut(coords, VORTEX_RADIUS);
+		vortex = new (FILEPATH, 739) LandscapeVortexOut(coords, VORTEX_RADIUS);
 		break;
 	}
 	if (vortex != NULL)

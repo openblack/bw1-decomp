@@ -44,16 +44,6 @@
 #include <ddraw.h> /* For DDPIXELFORMAT, DDSURFACEDESC2 */
 #include <float.h> /* For FLT_MAX */
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\Libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DRender.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "C:\\dev\\branches\\P5New\\Libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DRender.cpp"
-#elif defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\Dev\\Libs\\LIONHEAD\\LH3DLIB\\development\\LH3DRender.cpp"
-#else
-#define FILEPATH "C:\\DEV\\Libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DRender.cpp"
-#endif
-
 // The line of OpenD3D's z-buffer enumeration check: 1.10 added eleven lines above it, Creature Isle two more.
 #if defined(VERSION_BW1W100)
 #define LH3D_RENDER_ENUM_ZBUFFER_LINE 961

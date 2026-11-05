@@ -33,16 +33,6 @@
 #include "ToolTips.h"
 #include "Town.h"
 
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-#define FILEPATH "C:\\dev\\black\\CreatureMentalLearn.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMentalLearn.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalLearn.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalLearn.cpp"
-#endif
-
 #if defined(VERSION_BW1W100)
 #define LEARN_LINE(line) ((line) - ((line) < 300 ? 0 : (line) < 530 ? 3 : 9))
 #elif defined(VERSION_BW1WCI)

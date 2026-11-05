@@ -287,7 +287,7 @@ Black/CameraEditor.cpp:
 	.data       start:0x009BD1C8 end:0x009BD664
 	.bss        start:0x00C48A04 end:0x00C49DF4
 
-Black/CameraHelp.cpp:
+Black/camerahelp.cpp:
 	.text       start:0x00446900 end:0x00449730
 	.rdata      start:0x008B765C end:0x008B767C
 	.CRT$XCU    start:0x009B6178 end:0x009B6184 align:4

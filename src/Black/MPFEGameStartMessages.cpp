@@ -34,19 +34,8 @@
 #include "alexmfc.h"                           /* For SetupBox::SetOffHold */
 
 #if defined(VERSION_BW1W100)
-#define MPFE_GAME_START_MESSAGES_FILE       "C:\\dev\\black\\MPFEGameStartMessages.cpp"
 #define MPFE_GAME_START_MESSAGES_LINE(line) ((line) - ((line) < 100 ? 1 : 4))
-#elif defined(VERSION_BW1W110)
-#define MPFE_GAME_START_MESSAGES_FILE       "C:\\dev\\Black\\MPFEGameStartMessages.cpp"
-#define MPFE_GAME_START_MESSAGES_LINE(line) (line)
-#elif defined(VERSION_BW1W130)
-#define MPFE_GAME_START_MESSAGES_FILE       "D:\\Work\\Games\\dd\\Black\\MPFEGameStartMessages.cpp"
-#define MPFE_GAME_START_MESSAGES_LINE(line) (line)
-#elif defined(VERSION_BW1WCI)
-#define MPFE_GAME_START_MESSAGES_FILE       "C:\\dev\\black\\MPFEGameStartMessages.cpp"
-#define MPFE_GAME_START_MESSAGES_LINE(line) (line)
 #else
-#define MPFE_GAME_START_MESSAGES_FILE       "C:\\dev\\MP\\Black\\MPFEGameStartMessages.cpp"
 #define MPFE_GAME_START_MESSAGES_LINE(line) (line)
 #endif
 
@@ -55,7 +44,7 @@
 
 MPFEStartGameOkayToStartMessage::MPFEStartGameOkayToStartMessage()
 {
-	Message = new (MPFE_GAME_START_MESSAGES_FILE, MPFE_GAME_START_MESSAGES_LINE(11)) wchar_t[10];
+	Message = new (FILEPATH, MPFE_GAME_START_MESSAGES_LINE(11)) wchar_t[10];
 	swprintf(Message, L"%c", GetMessageCode(SPECIAL_MESSAGE_TYPE_START_GAME_OKAY_TO_START));
 }
 
@@ -80,7 +69,7 @@ void MPFEStartGameOkayToStartMessage::ProcessIncoming(wchar_t* message, MPFEPlay
 
 MPFEStartGameReadyMessage::MPFEStartGameReadyMessage(wchar_t answer)
 {
-	Message = new (MPFE_GAME_START_MESSAGES_FILE, MPFE_GAME_START_MESSAGES_LINE(41)) wchar_t[60];
+	Message = new (FILEPATH, MPFE_GAME_START_MESSAGES_LINE(41)) wchar_t[60];
 	uint64_t checksum;
 	if (answer == MPFE_START_GAME_READY_YES)
 	{
@@ -152,7 +141,7 @@ void MPFEStartGameReadyMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDeta
 
 MPFEStartGameTransferFilesMessage::MPFEStartGameTransferFilesMessage()
 {
-	Message = new (MPFE_GAME_START_MESSAGES_FILE, MPFE_GAME_START_MESSAGES_LINE(106)) wchar_t[10];
+	Message = new (FILEPATH, MPFE_GAME_START_MESSAGES_LINE(106)) wchar_t[10];
 	swprintf(Message, L"%c", GetMessageCode(SPECIAL_MESSAGE_TYPE_START_GAME_TRANSFER_FILES));
 }
 
@@ -179,7 +168,7 @@ void MPFEStartGameTransferFilesMessage::ProcessIncoming(wchar_t* message, MPFEPl
 
 MPFEStartGameNowMessage::MPFEStartGameNowMessage(wchar_t* name)
 {
-	Message = new (MPFE_GAME_START_MESSAGES_FILE, MPFE_GAME_START_MESSAGES_LINE(135)) wchar_t[100];
+	Message = new (FILEPATH, MPFE_GAME_START_MESSAGES_LINE(135)) wchar_t[100];
 	swprintf(Message, L"%c%s", GetMessageCode(SPECIAL_MESSAGE_TYPE_START_GAME_NOW), name);
 }
 
@@ -204,7 +193,7 @@ void MPFEStartGameNowMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDetail
 
 MPFEDisconnectNowMessage::MPFEDisconnectNowMessage()
 {
-	Message = new (MPFE_GAME_START_MESSAGES_FILE, MPFE_GAME_START_MESSAGES_LINE(165)) wchar_t[10];
+	Message = new (FILEPATH, MPFE_GAME_START_MESSAGES_LINE(165)) wchar_t[10];
 	swprintf(Message, L"%c", GetMessageCode(SPECIAL_MESSAGE_TYPE_DISCONNECT_NOW));
 }
 
@@ -217,7 +206,7 @@ void MPFEDisconnectNowMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDetai
 
 MPFEStopGameStartMessage::MPFEStopGameStartMessage()
 {
-	Message = new (MPFE_GAME_START_MESSAGES_FILE, MPFE_GAME_START_MESSAGES_LINE(178)) wchar_t[10];
+	Message = new (FILEPATH, MPFE_GAME_START_MESSAGES_LINE(178)) wchar_t[10];
 	swprintf(Message, L"%c", GetMessageCode(SPECIAL_MESSAGE_TYPE_STOP_GAME_START));
 }
 

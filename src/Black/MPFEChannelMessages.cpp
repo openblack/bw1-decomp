@@ -10,14 +10,6 @@
 #include "MPFEKickMessageRequest.h" /* For MPFEKickMessageRequest */
 #include "MPFEPlayerDetails.h"      /* For MPFEPlayerDetails */
 
-#if defined(VERSION_BW1W100)
-#define MPFE_CHANNEL_MESSAGES_FILE "C:\\dev\\black\\MPFEChannelMessages.cpp"
-#elif defined(VERSION_BW1W110)
-#define MPFE_CHANNEL_MESSAGES_FILE "C:\\dev\\Black\\MPFEChannelMessages.cpp"
-#else
-#define MPFE_CHANNEL_MESSAGES_FILE "C:\\dev\\MP\\Black\\MPFEChannelMessages.cpp"
-#endif
-
 SpecialMessageTypes MPFEMessageObject::GetMessageType(wchar_t code)
 {
 	if (code >= L'A' && code <= L'Z')
@@ -39,7 +31,7 @@ wchar_t MPFEMessageObject::GetMessageCode(SpecialMessageTypes type)
 
 MPFECancelStartMessage::MPFECancelStartMessage()
 {
-	Message = new (MPFE_CHANNEL_MESSAGES_FILE, 364) wchar_t[10];
+	Message = new (FILEPATH, 364) wchar_t[10];
 	if (MPFEData::Data.GetLocalPlayer()->IsHost)
 	{
 		swprintf(Message, L"%c", GetMessageCode(SPECIAL_MESSAGE_TYPE_CANCEL_START));
@@ -48,13 +40,13 @@ MPFECancelStartMessage::MPFECancelStartMessage()
 
 MPFEKickMessageRequest::MPFEKickMessageRequest(MPFEPlayerDetails* player)
 {
-	Message = new (MPFE_CHANNEL_MESSAGES_FILE, 386) wchar_t[50];
+	Message = new (FILEPATH, 386) wchar_t[50];
 	swprintf(Message, L"%c%u", GetMessageCode(SPECIAL_MESSAGE_TYPE_KICK_REQUEST), (unsigned long)player->DatabaseID);
 }
 
 MPFEKickMessage::MPFEKickMessage(MPFEPlayerDetails* player, MPFEPlayerDetails* by)
 {
-	Message = new (MPFE_CHANNEL_MESSAGES_FILE, 433) wchar_t[50];
+	Message = new (FILEPATH, 433) wchar_t[50];
 	swprintf(Message, L"%c%u:%u:%u", GetMessageCode(SPECIAL_MESSAGE_TYPE_KICK), player->DatabaseID.id,
 	         by->DatabaseID.id, player->Team);
 }

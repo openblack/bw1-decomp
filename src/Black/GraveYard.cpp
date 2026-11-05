@@ -5,14 +5,6 @@
 #include "GameOSFile.h" /* For class GameOSFile */
 #include "Town.h"
 
-#if defined(VERSION_BW1W100)
-#define GRAVEYARD_FILE "C:\\dev\\black\\GraveYard.cpp"
-#elif defined(VERSION_BW1W110)
-#define GRAVEYARD_FILE "C:\\dev\\Black\\GraveYard.cpp"
-#else
-#define GRAVEYARD_FILE "C:\\dev\\MP\\Black\\GraveYard.cpp"
-#endif
-
 // File-level constant: the original keeps it in this unit's .rdata.
 const float GravesToStatus = 0.18f;
 
@@ -59,7 +51,7 @@ void Graveyard::DeleteDependancys()
 Graveyard* Graveyard::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                              float food, int wood)
 {
-	Graveyard* graveyard = new (GRAVEYARD_FILE, 58) Graveyard(coords, info, town, y_angle, scale, food, wood);
+	Graveyard* graveyard = new (FILEPATH, 58) Graveyard(coords, info, town, y_angle, scale, food, wood);
 	if (graveyard != NULL)
 	{
 		graveyard->CallVirtualFunctionsForCreation(coords);

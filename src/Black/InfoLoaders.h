@@ -21,14 +21,6 @@
 // The tag is the declaring header's path, which moved between releases. The macros take the file
 // name alone.
 
-#if defined(VERSION_BW1W100)
-#define INFO_SOURCE_PATH "C:\\dev\\black\\"
-#elif defined(VERSION_BW1W110)
-#define INFO_SOURCE_PATH "C:\\dev\\Black\\"
-#else
-#define INFO_SOURCE_PATH "C:\\dev\\MP\\Black\\"
-#endif
-
 #define INFO_DATA_BLOCK(first, last)                                                                                   \
 	char* get_start()                                                                                                  \
 	{                                                                                                                  \
@@ -69,7 +61,7 @@
 	INFO_ROOT_LOAD()                                                                                                   \
 	void LoadBinary(LHFile* file)                                                                                      \
 	{                                                                                                                  \
-		unsigned char* temp = new (INFO_SOURCE_PATH file_name, line) unsigned char[get_size()];                        \
+		unsigned char* temp = new (SOURCE_DIRECTORY file_name, line) unsigned char[get_size()];                        \
 		file->GetSegmentData(temp, get_size(), -1);                                                                    \
 		memcpy(get_start(), temp, get_size());                                                                         \
 		delete[] temp;                                                                                                 \
@@ -88,7 +80,7 @@
 	void LoadBinary(LHFile* file)                                                                                      \
 	{                                                                                                                  \
 		base::LoadBinary(file);                                                                                        \
-		unsigned char* temp = new (INFO_SOURCE_PATH file_name, line) unsigned char[get_size()];                        \
+		unsigned char* temp = new (SOURCE_DIRECTORY file_name, line) unsigned char[get_size()];                        \
 		file->GetSegmentData(temp, get_size(), -1);                                                                    \
 		memcpy(get_start(), temp, get_size());                                                                         \
 		delete[] temp;                                                                                                 \

@@ -22,16 +22,6 @@
 #include "Villager.h"
 #include "VillagerStateTableInfo.h"
 
-#if defined(VERSION_BW1W100)
-#define FILEPATH "C:\\dev\\black\\CreatureMentalBelief.cpp"
-#elif defined(VERSION_BW1W110)
-#define FILEPATH "C:\\dev\\Black\\CreatureMentalBelief.cpp"
-#elif defined(VERSION_BW1W130)
-#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalBelief.cpp"
-#else
-#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalBelief.cpp"
-#endif
-
 CreatureBelief::CreatureBelief()
 {
 	AssociatedBelief = NULL;

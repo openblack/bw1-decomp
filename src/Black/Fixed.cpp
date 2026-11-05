@@ -49,20 +49,9 @@ struct FixedCounterPad
 };
 
 #if defined(VERSION_BW1W100)
-#define FIXED_SOURCE_FILE "C:\\dev\\black\\Fixed.cpp"
-#define FIXED_LINE_SHIFT  1
-#elif defined(VERSION_BW1W110)
-#define FIXED_SOURCE_FILE "C:\\dev\\Black\\Fixed.cpp"
-#define FIXED_LINE_SHIFT  0
-#elif defined(VERSION_BW1WCI)
-#define FIXED_SOURCE_FILE "C:\\dev\\black\\Fixed.cpp"
-#define FIXED_LINE_SHIFT  0
-#elif defined(VERSION_BW1W130)
-#define FIXED_SOURCE_FILE "D:\\Work\\Games\\dd\\Black\\Fixed.cpp"
-#define FIXED_LINE_SHIFT  0
+#define FIXED_LINE_SHIFT 1
 #else
-#define FIXED_SOURCE_FILE "C:\\dev\\MP\\Black\\Fixed.cpp"
-#define FIXED_LINE_SHIFT  0
+#define FIXED_LINE_SHIFT 0
 #endif
 
 int MultiMapFixed::CompareMultiChilds(const void* first, const void* second)
@@ -523,7 +512,7 @@ void MultiMapFixed::AllocateMultiChild()
 {
 	NewCollideDescriptor descriptor(this);
 	MultiChildrenArray.capacity = descriptor.count;
-	MultiChildrenArray.array = new (FIXED_SOURCE_FILE, 739) MultiChild[descriptor.count];
+	MultiChildrenArray.array = new (FILEPATH, 739) MultiChild[descriptor.count];
 }
 
 SingleMapFixed::~SingleMapFixed()
@@ -652,7 +641,7 @@ bool32_t MultiMapFixed::AddFootpath(GFootpath* footpath)
 {
 	if (GetFootpathLink() == NULL)
 	{
-		FootpathLink = new (FIXED_SOURCE_FILE, 978 - FIXED_LINE_SHIFT) GFootpathLink();
+		FootpathLink = new (FILEPATH, 978 - FIXED_LINE_SHIFT) GFootpathLink();
 	}
 	GetFootpathLink()->AddFootpath(footpath);
 	return true;
@@ -884,18 +873,18 @@ bool32_t MultiMapFixed::CreatureMustAvoid(Creature* creature)
 void SingleMapFixed::CreateCollideData()
 {
 	ReleaseCollideData();
-	CollideData = new (FIXED_SOURCE_FILE, 1279 - FIXED_LINE_SHIFT) NewCollide(Game3dObject);
+	CollideData = new (FILEPATH, 1279 - FIXED_LINE_SHIFT) NewCollide(Game3dObject);
 }
 
 void MultiMapFixed::CreateCollideData()
 {
 	ReleaseCollideData();
-	CollideData = new (FIXED_SOURCE_FILE, 1286 - FIXED_LINE_SHIFT) NewCollide(Game3dObject);
+	CollideData = new (FILEPATH, 1286 - FIXED_LINE_SHIFT) NewCollide(Game3dObject);
 }
 
 BuildingSite* MultiMapFixed::CreateBuildingSite()
 {
-	return new (FIXED_SOURCE_FILE, 1292 - FIXED_LINE_SHIFT) StandardBuildingSite(this);
+	return new (FILEPATH, 1292 - FIXED_LINE_SHIFT) StandardBuildingSite(this);
 }
 
 float MultiMapFixed::ReduceLife(float value, GPlayer* player)
