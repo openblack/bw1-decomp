@@ -78,6 +78,9 @@
 #include "WorshipSite.h"
 #include "WorshipSpellIcon.h"
 
+// BW1W120 0054cb10 BW1M119 010cf8c0
+void DoOKGameRequestor(char16_t* text);
+
 #if defined(VERSION_BW1W100)
 #define PLAYER_LINE(line) ((line) - ((line) < 900 ? 3 : (line) < 2000 ? 211 : 218))
 #elif defined(VERSION_BW1W110)

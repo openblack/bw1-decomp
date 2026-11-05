@@ -602,12 +602,4 @@ template <typename T> inline void GTPointer<T>::SetGameTurnValidated()
 	GameTurnValidated = GGame::g_game->data.GameTurn;
 }
 
-// BW1W120 0054a770 BW1M119 0107d6c0
-void SetTurnOffMouseMove(bool turn_off);
-// BW1W120 0054cb10 BW1M119 010cf8c0
-void DoOKGameRequestor(char16_t* text);
-// Milliseconds since the last frame, at most half a second.
-// BW1W120 005557e0 BW1M119 010caca0
-int GetAlexTimeInc();
-
 #endif /* BW1_DECOMP_GAME_INCLUDED_H */
