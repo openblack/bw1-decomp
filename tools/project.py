@@ -380,6 +380,27 @@ def file_is_obj(path: Path) -> bool:
     return path.suffix.lower() in (".obj", ".o")
 
 
+def lib_member_names(archive: Path) -> Set[str]:
+    # Member names of a COFF archive (.lib), as `llvm-ar p` expects them.
+    data = archive.read_bytes()
+    names: Set[str] = set()
+    long_names = b""
+    offset = 8  # "!<arch>" and newline
+    while offset + 60 <= len(data):
+        name = data[offset : offset + 16].rstrip()
+        size = int(data[offset + 48 : offset + 58])
+        offset += 60
+        if name == b"//":
+            long_names = data[offset : offset + size]
+        elif name.startswith(b"/") and name[1:].isdigit():
+            start = int(name[1:])
+            names.add(long_names[start : long_names.index(b"\0", start)].decode("latin-1"))
+        elif name != b"/":
+            names.add(name.rstrip(b"/").decode("latin-1"))
+        offset += size + (size & 1)
+    return names
+
+
 def lib_extracted_path(config: "ProjectConfig", obj: Object) -> Optional[Path]:
     # Path of an object extracted from a downloaded static library (LibObject),
     # preserving the archive's internal path under build/lib/<archive>/. Returns
@@ -799,6 +820,7 @@ def generate_build_ninja(
     # and copied into place; verbatim members are extracted at build time (see
     # LibObject). `lib_archives` maps a lib id (LibObject's first arg) to the .LIB.
     lib_archives: Dict[str, Path] = {}
+    lib_members: Dict[str, Set[str]] = {}
     llvm_ar: Optional[Path] = None
     if config.static_libs and lld_link is not None:
         # llvm-ar ships alongside lld-link in the LLVM toolchain. Members carry
@@ -830,8 +852,31 @@ def generate_build_ninja(
                     f"Static library {local} not found. Place {lib_file}.lib "
                     f"under orig/libs/{package}/ (see docs/getting_started.md)."
                 )
+            lib_members[lib_id] = lib_member_names(local)
             n.build(outputs=archive, rule="copy_lib", inputs=local)
         n.newline()
+
+    # Extract verbatim members up front, even while bootstrapping without a
+    # build_config: the split reads them, and extracting them only once the unit
+    # list is known would make it run a second time with newer inputs. Objects are
+    # declared for every version, so skip members this version's archive lacks.
+    lib_extracted_added: Set[Path] = set()
+    for obj in objects.values():
+        extracted = lib_extracted_path(config, obj)
+        if extracted is None or extracted in lib_extracted_added:
+            continue
+        archive = lib_archives.get(obj.options["lib_archive"])
+        if archive is None or obj.options["lib_member"] not in lib_members[obj.options["lib_archive"]]:
+            continue
+        lib_extracted_added.add(extracted)
+        n.build(
+            outputs=extracted,
+            rule="extract_lib_obj",
+            inputs=archive,
+            implicit=[llvm_ar],
+            variables={"member": obj.options["lib_member"]},
+        )
+    n.newline()
 
     ###
     # Helper rule for downloading all tools
@@ -1279,7 +1324,6 @@ def generate_build_ninja(
         source_added: Set[Path] = set()
         # Precompiled header outputs already emitted -> the flags they were built with
         shared_pchs: Dict[Path, str] = {}
-        lib_extracted_added: Set[Path] = set()
         missing_source: List[str] = []
         missing_config: List[str] = []
         linker_provided_units: Set[str] = set(config.linker_provided_units or [])
@@ -1552,15 +1596,6 @@ def generate_build_ninja(
                         f"(known: {sorted(lib_archives)})"
                     )
                 extracted = lib_extracted_path(config, obj)
-                if extracted not in lib_extracted_added:
-                    lib_extracted_added.add(extracted)
-                    n.build(
-                        outputs=extracted,
-                        rule="extract_lib_obj",
-                        inputs=archive,
-                        implicit=[llvm_ar],
-                        variables={"member": lib_member},
-                    )
                 if obj.options["add_to_all"]:
                     source_inputs.append(extracted)
                 built_obj_path = extracted
@@ -2056,10 +2091,7 @@ def generate_build_ninja(
         if extracted is None or obj.options["lib_archive"] not in static_libs:
             continue
         lib_object_entries.append((obj.options["lib"], obj.name, extracted.as_posix()))
-        # Only depend on objects that actually have an extraction rule (units in
-        # the link); the rest are skipped by dtk and never opened. lib_extracted_added
-        # only exists when build_config is set (the link section ran).
-        if build_config and extracted in lib_extracted_added:
+        if extracted in lib_extracted_added:
             lib_object_paths.append(extracted)
     # Rewrite the top-level `object:` to a lexically-absolute path. The source
     # config points it at the preprocessed exe via `../../build/...`, which dtk
