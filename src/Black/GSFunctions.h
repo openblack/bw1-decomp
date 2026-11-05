@@ -19,4 +19,7 @@ public:
 	static bool32_t IsEncodedString(const char* text);
 };
 
+#define ENCODE_NAME(name) (GSFunctions::NeedsEncoding(name) ? GSFunctions::EncodeUnicode(name) : WCHAR2CHAR(name))
+#define DECODE_NAME(name) (GSFunctions::IsEncodedString(name) ? GSFunctions::DecodeUnicode(name) : CHAR2WCHAR(name))
+
 #endif /* BW1_DECOMP_GS_FUNCTIONS_INCLUDED_H */

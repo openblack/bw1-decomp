@@ -61,6 +61,10 @@ struct FrontEnd
 	// Cleared by MainMenu's close callback.
 	// BW1W120 00cd0b03
 	static bool StartupMenuActive;
+	// BW1W120 00cd06dc
+	static bool InMultiplayerScreens;
+	// BW1W120 00cd06dd
+	static bool MultiplayerGameRunning;
 	// Original array extent is not established; extracted storage only.
 	// BW1W120 00cd3a18
 	static char16_t PreviousProfile[];
