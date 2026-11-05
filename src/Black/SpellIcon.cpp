@@ -33,6 +33,11 @@ int SpellIcon::GetSpellIconPlacementIndex()
 	return 0;
 }
 
+GSpellSeedInfo* SpellIcon::GetSpellSeedInfo() const
+{
+	return (GSpellSeedInfo*)seed_info.Get();
+}
+
 GBaseInfo* GSpellIconInfo::GetBaseInfo(uint32_t& info_count)
 {
 	info_count = SPELL_ICON_INFO_LAST;

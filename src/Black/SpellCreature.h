@@ -18,7 +18,8 @@ struct SpellCastData;
 class SpellCreature : public Spell
 {
 public:
-	uint8_t field_0xec[0x8];
+	uint32_t CreatureCastOn; /* 0xec */
+	uint8_t  field_0xf0[0x4];
 
 	// Override methods
 

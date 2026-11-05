@@ -39,3 +39,13 @@ void TownCentre::RemoveSpellFromArray(TownCentreSpellIcon* icon)
 		}
 	}
 }
+
+void TownCentre::ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage)
+{
+	Abode::ReactToPhysicsImpact(physics_object, transferred_damage);
+}
+
+MapCoords TownCentre::GetArrivePos()
+{
+	return Pos;
+}

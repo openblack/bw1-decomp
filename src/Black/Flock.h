@@ -59,7 +59,7 @@ public:
 	// BW1W120 0052f920 BW1M119 010e7890
 	virtual ~Flock();
 	// BW1W120 0052ffb0 BW1M119 010e9bf0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0052f870 BW1M119 010e7950
 	virtual Town* GetTown();
 	// BW1W120 0052f910 BW1M119 010e7c10
@@ -125,6 +125,8 @@ public:
 	                   SCRIPT_OBJECT_TYPE param_2, uint32_t param_3);
 	// BW1W120 0052fe10 BW1M119 010ea170
 	Flock* SeperateLivingIntoNewFlock(Living* living, bool32_t delete_if_empty);
+	// BW1W120 0052fe60 BW1M119 010e9c60
+	void DeleteDependancys();
 	// BW1W120 00530570 BW1M119 0106ac10
 	MapCoords* GetFlockPos();
 

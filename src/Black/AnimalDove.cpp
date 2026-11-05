@@ -131,6 +131,11 @@ bool32_t Dove::Save(GameOSFile& file)
 	return Animal::Save(file) != false;
 }
 
+float Dove::GetBankAngle(float param_1, float param_2)
+{
+	return 0.5f;
+}
+
 bool32_t Dove::CanBeHealedByHealSpell()
 {
 	return false;

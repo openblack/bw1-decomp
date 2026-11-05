@@ -31,7 +31,7 @@ public:
 	// BW1W120 007096e0 BW1M119 015035c0
 	static void OnClearMap();
 	uint32_t    field_0x5c;
-	uint32_t    field_0x60;
+	uint32_t    Active;
 	uint8_t     field_0x64[0x14];
 	uint32_t    field_0x78;
 	uint32_t    field_0x7c;
@@ -109,8 +109,8 @@ public:
 	// BW1W120 00709810 BW1M119 01501520
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0070ae40 BW1M119 015016f0
-	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
-	                            void(__cdecl* param_4)(int, Point2D, float, int));
+	virtual void AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
+	                            void(__cdecl* add_function)(int object_id, Point2D position, float radius, int update));
 
 	// BW1W120 00709700 BW1M119 01503500
 	ScriptHighlight();

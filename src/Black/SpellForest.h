@@ -50,8 +50,8 @@ public:
 		creator = NULL;
 	}
 	// BW1W120 00725540 BW1M119 01528a60
-	virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3,
-	                        const PSysProcessInfo& param_4);
+	virtual int InitWithPos(GameThing* game_thing, const MapCoords& coords, SpellCastData* cast_data,
+	                        const PSysProcessInfo& process_info);
 	// BW1W120 007259e0 BW1M119 01527e90
 	virtual float CalculateCostToMaintain();
 	// BW1W120 00725750 BW1M119 01528420

@@ -57,9 +57,9 @@ public:
 	// BW1W120 0041dd60 BW1M119 0117a560
 	virtual bool32_t IAmABird();
 	// BW1W120 0041f260 BW1M119 010527f0
-	virtual uint32_t GetTimeToBank();
+	virtual float GetTimeToBank();
 	// BW1W120 0041f270 BW1M119 010363f0
-	virtual uint32_t GetBankAngle(float param_1, float param_2);
+	virtual float GetBankAngle(float param_1, float param_2);
 	// BW1W120 0041bd30 BW1M119 01036520
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041bd50 BW1M119 01179c00
@@ -115,9 +115,9 @@ public:
 	// BW1W120 0041f4c0 BW1M119 0117c0e0
 	virtual uint32_t ProcessFadeOut();
 	// BW1W120 0041f2d0 BW1M119 0117c2f0
-	virtual uint32_t GetTimeToBank();
+	virtual float GetTimeToBank();
 	// BW1W120 0041f2e0 BW1M119 0117c2b0
-	virtual uint32_t GetBankAngle(float param_1, float param_2);
+	virtual float GetBankAngle(float param_1, float param_2);
 	// BW1W120 0041bda0 BW1M119 01179ad0
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041bdb0 BW1M119 01179a90

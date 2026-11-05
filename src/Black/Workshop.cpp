@@ -1,6 +1,21 @@
 #include "GameTimeConstants.h"
 #include "Workshop.h"
 
+LH3DObject::ObjectType Workshop::Get3DType()
+{
+	return LH3DObject::MORPHABLE;
+}
+
+bool32_t Workshop::IsWorkshop()
+{
+	return true;
+}
+
+bool32_t Workshop::IsWorkshop(Creature* creature)
+{
+	return true;
+}
+
 bool32_t Workshop::CanActAsAContainer(Creature* param_1)
 {
 	return false;
@@ -21,18 +36,13 @@ char* Workshop::GetDebugText()
 	return "WorkShop:";
 }
 
-void Workshop::ResolveLoad()
-{
-	Object::ResolveLoad();
-}
-
-LH3DObject::ObjectType Workshop::Get3DType()
-{
-	return LH3DObject::MORPHABLE;
-}
-
 bool32_t Workshop::DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status)
 {
 	DoDeleteObjectAndTakeResource(object, status);
 	return true;
+}
+
+void Workshop::ResolveLoad()
+{
+	Object::ResolveLoad();
 }

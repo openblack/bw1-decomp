@@ -34,6 +34,11 @@ bool32_t ScriptHighlight::IsScriptHighlight()
 	return true;
 }
 
+bool32_t ScriptHighlight::IsActive() const
+{
+	return Active;
+}
+
 bool32_t ScriptHighlight::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
 	return false;
@@ -94,6 +99,13 @@ SCRIPT_OBJECT_TYPE ScriptHighlight::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_HIGHLIGHT;
 }
 
+void ScriptHighlight::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
+                                     void(__cdecl* add_function)(int object_id, Point2D position, float radius,
+                                                                 int update))
+{
+	SimpleAddToRoutePlan(holder, creature, update, add_function);
+}
+
 char* ScriptHighlight::GetDebugText()
 {
 	return "ScriptHighlight:";
@@ -104,7 +116,7 @@ bool32_t ScriptHighlight::Load(GameOSFile& file)
 	if (Fixed::Load(file))
 	{
 		file.ReadIt(field_0x5c);
-		file.ReadIt(field_0x60);
+		file.ReadIt(Active);
 		file.ReadIt(field_0x7c);
 		file.ReadIt(field_0x80);
 		file.ReadIt(field_0x78);
@@ -119,7 +131,7 @@ bool32_t ScriptHighlight::Save(GameOSFile& file)
 	if (Fixed::Save(file))
 	{
 		file.WriteIt(field_0x5c);
-		file.WriteIt(field_0x60);
+		file.WriteIt(Active);
 		file.WriteIt(field_0x7c);
 		file.WriteIt(field_0x80);
 		file.WriteIt(field_0x78);

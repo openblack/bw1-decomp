@@ -2,6 +2,7 @@
 #include "FeatureInfo.h" /* For GFeatureInfo */
 #include "Flowers.h"
 #include "FlowersInfo.h"
+#include "Game.h" /* For GGame */
 #include "PlannedFeature.h"
 
 GFeatureInfo GFeatureInfo::Infos[FEATURE_INFO_LAST];
@@ -54,4 +55,9 @@ Feature* Feature::Create(const MapCoords& coords, const GFeatureInfo* info, floa
 		feature->CallVirtualFunctionsForCreation(coords);
 	}
 	return feature;
+}
+
+GPlayer* Feature::GetPlayer()
+{
+	return &GGame::g_game->players[GGame::g_game->NeutralPlayerIndex];
 }

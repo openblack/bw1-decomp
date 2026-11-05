@@ -6,6 +6,7 @@
 #include "CreatureAttitudeConstants.h"
 #include "GameOSFile.h"      /* For class GameOSFile */
 #include "InterfaceStatus.h" /* For class GInterfaceStatus */
+#include "Player.h"          /* For class GPlayer */
 
 uint32_t GInterface::GetSaveType()
 {
@@ -40,6 +41,12 @@ bool32_t GInterface::Save(GameOSFile& file)
 		return true;
 	}
 	return false;
+}
+
+void GInterface::SaveExtraData(GameOSFile& file)
+{
+	uint32_t playerNumber = GetPlayer()->GetPlayerNumber();
+	file.WriteIt(playerNumber);
 }
 
 GPlayer* GInterface::GetPlayer()

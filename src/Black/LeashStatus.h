@@ -45,7 +45,7 @@ public:
 	// BW1W120 005db930 BW1M119 01382b00
 	virtual uint32_t GetSaveType();
 	// BW1W120 005e71d0 BW1M119 01383280
-	virtual void SaveExtraData(GameOSFile& param_1);
+	virtual void SaveExtraData(GameOSFile& file);
 	// BW1W120 005e7650 BW1M119 01382be0
 	virtual void ResolveLoad();
 

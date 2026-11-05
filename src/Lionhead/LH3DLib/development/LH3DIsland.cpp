@@ -1140,6 +1140,11 @@ bool32_t LH3DIsland::RayCastFrom2DPoint(const LHCoord& point, float* x, float* z
 	return RayCast(from, to, x, z);
 }
 
+void LH3DIsland::UseLowResTexture(bool32_t use)
+{
+	g_b_use_always_low_texture = use;
+}
+
 void LH3DIsland::SetHeightAsByte(long x, long z, long height)
 {
 	if (x < 0 || x > LAND_MAP_MAX || z < 0 || z > LAND_MAP_MAX)

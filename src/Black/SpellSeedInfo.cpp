@@ -15,3 +15,8 @@ GBaseInfo* GSpellSeedInfo::GetBaseInfo(uint32_t& info_count)
 	info_count = SPELL_SEED_TYPE_LAST;
 	return Infos;
 }
+
+MAGIC_TYPE GSpellSeedInfo::GetFirstMagicType() const
+{
+	return MagicTypes[POWER_UP_TYPE_ONE];
+}

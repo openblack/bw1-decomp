@@ -49,6 +49,11 @@ unsigned int SpellSeed::IsInterfacePowerUpWhenInHand() const
 	return true;
 }
 
+float SpellSeed::GetPSysPower() const
+{
+	return PSysPower;
+}
+
 bool32_t OneOffSpellSeed::IsEffectReceiver(EffectValues* values)
 {
 	return false;

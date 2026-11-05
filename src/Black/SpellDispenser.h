@@ -23,7 +23,7 @@ public:
 	uint32_t   field_0xc4;
 	uint32_t   Charges;
 	GameThing* field_0xcc;
-	uint32_t   field_0xd0;
+	uint32_t   Active;
 	MAGIC_TYPE DispensedMagicType;
 	uint8_t    field_0xd8[0x4];
 

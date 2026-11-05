@@ -27,6 +27,11 @@ GPlayer* MagicWood::GetPlayer()
 	return Player;
 }
 
+void MagicWood::CallVirtualFunctionsForCreation(const MapCoords& coords)
+{
+	PileWood::CallVirtualFunctionsForCreation(coords);
+}
+
 bool32_t MagicWood::Load(GameOSFile& file)
 {
 	if (PileWood::Load(file))

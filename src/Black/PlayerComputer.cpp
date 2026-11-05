@@ -5,6 +5,7 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 #include "GameOSFile.h" /* For class GameOSFile */
+#include "Player.h"     /* For class GPlayer */
 
 SCRIPT_OBJECT_TYPE GComputerPlayer::GetScriptObjectType()
 {
@@ -12,6 +13,12 @@ SCRIPT_OBJECT_TYPE GComputerPlayer::GetScriptObjectType()
 }
 
 void GComputerPlayer::Draw() {}
+
+void GComputerPlayer::SaveExtraData(GameOSFile& file)
+{
+	uint32_t playerNumber = GetPlayer()->GetPlayerNumber();
+	file.WriteIt(playerNumber);
+}
 
 bool32_t GComputerAttitudeToPlayer::Load(GameOSFile& file)
 {
