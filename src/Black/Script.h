@@ -1246,6 +1246,8 @@ public:
 	void SetHitObject(GameThingWithPos* hit_object, GameThingWithPos* object_which_hit);
 	// BW1W120 006f0cc0 BW1M119 014e6610
 	void StopScriptsOfType(VMScriptType param_1);
+	// BW1W120 006f62a0 BW1M119 014ef450
+	static void VMDebugCallBack();
 	// BW1W120 006f62b0 BW1M119 014ef410
 	static void ScriptErrorMessage(char* msg);
 	// BW1W120 006f62c0 BW1M119 010053d0
