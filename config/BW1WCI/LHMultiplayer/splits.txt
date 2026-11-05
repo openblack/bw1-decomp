@@ -996,7 +996,7 @@ LHMultiplayer/lib/libcmt/unlink.obj:
 LHMultiplayer/lib/libcmt/clock.obj:
 	.text       start:0x1004EFC5 end:0x1004F03D align:1
 	.CRT$XIC    start:0x100620A8 end:0x100620AC
-	.bss        start:0x1006DD58 end:0x1006DD80
+	.bss        start:0x1006DD58 end:0x1006DD60
 
 LHMultiplayer/lib/libcmt/atof.obj:
 	.text       start:0x1004F03D end:0x1004F08A align:1

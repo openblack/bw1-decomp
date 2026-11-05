@@ -10,6 +10,7 @@ Sections:
 	.idata$6    type:rodata vaddr:0x100213B0 end:0x10022100
 	.edata      type:rodata vaddr:0x10022100 end:0x10023F61
 	.data       type:data align:4096
+	.rsrc       type:rodata align:4096
 	.CRT$XCA    type:data vaddr:0x10024000 end:0x10024004
 	.CRT$XCU    type:data vaddr:0x10024004 end:0x10024018
 	.CRT$XCZ    type:data vaddr:0x10024018 end:0x1002401C
@@ -24,7 +25,21 @@ Sections:
 	.CRT$XTB    type:data vaddr:0x10024044 end:0x10024048
 	.CRT$XTZ    type:data vaddr:0x10024048 end:0x1002404C
 	.bss        type:bss vaddr:0x1002E8C0 end:0x10044128
-	.rsrc       type:rodata align:4096
+
+Lionhead/LHAudio/ver7.0/LHAudioErrors.cpp:
+	.data       start:0x10024280 end:0x100253AE
+
+Lionhead/LHAudio/ver7.0/MPGAudioDecoder.cpp:
+	.data       start:0x10025480 end:0x10028CD8
+	.bss        start:0x1002F15C end:0x100423E8
+
+LHAudio/LHFile/ver3.0/LHFile.cpp:
+	.text$x     start:0x1001F980 end:0x1001F9A0
+	.xdata$x    start:0x10021038 end:0x10021060
+
+LHAudio/LHFile/ver3.0/LHOSFile.cpp:
+	.text$x     start:0x1001F9A0 end:0x1001F9B5
+	.xdata$x    start:0x10021060 end:0x10021088
 
 LHAudio/lib/libcmt64/crt0init.obj:
 	.CRT$XCA    start:0x10024000 end:0x10024004
@@ -57,9 +72,6 @@ Lionhead/LHAudio/ver7.0/LHAudioDebug.cpp:
 	.data       start:0x10024264 end:0x10024279
 	.bss        start:0x1002E8D8 end:0x1002F0E2
 
-Lionhead/LHAudio/ver7.0/LHAudioErrors.cpp:
-	.data       start:0x10024280 end:0x100253AE
-
 Lionhead/LHAudio/ver7.0/LHAudioHeap.cpp:
 	.text       start:0x10002F80 end:0x100036D0
 	.CRT$XCU    start:0x10024008 end:0x1002400C align:4
@@ -75,10 +87,6 @@ Lionhead/LHAudio/ver7.0/LHAudioMidi.cpp:
 	.rdata      start:0x100202BC end:0x100202E4
 	.data       start:0x100253F0 end:0x1002547A
 	.bss        start:0x1002F0F8 end:0x1002F158
-
-Lionhead/LHAudio/ver7.0/MPGAudioDecoder.cpp:
-	.data       start:0x10025480 end:0x10028CD8
-	.bss        start:0x1002F15C end:0x100423E8
 
 Lionhead/LHAudio/ver7.0/LHAudioMusic.cpp:
 	.text       start:0x100080B0 end:0x1000A370
@@ -188,12 +196,21 @@ LHAudio/lib/libcmt64/pow.obj:
 	.text       start:0x10014430 end:0x1001464D align:1
 	.data       start:0x1002B400 end:0x1002B40C
 
+LHAudio/lib/libcmt64/atox.obj:
+	.text       start:0x1001464D end:0x100146D8 align:1
+
+LHAudio/lib/libcmt64/_ctype.obj:
+	.text       start:0x100146D8 end:0x10014700 align:1
+
 LHAudio/lib/libcmt64/llmul.obj:
 	.text       start:0x10014700 end:0x10014734 align:1
 	.data       start:0x1002B40C end:0x1002B410
 
 LHAudio/lib/libcmt64/ftol.obj:
 	.text       start:0x10014734 end:0x1001475B align:1
+
+LHAudio/lib/libcmt64/thread.obj:
+	.text       start:0x1001475B end:0x100147A0 align:1
 
 LHAudio/lib/libcmt64/strrchr.obj:
 	.text       start:0x100147A0 end:0x100147C7 align:1
@@ -237,6 +254,9 @@ LHAudio/lib/libcmt64/mlock.obj:
 	.data       start:0x1002B438 end:0x1002B4F8
 	.bss        start:0x100429B0 end:0x10042A10
 
+LHAudio/lib/libcmt64/cmiscdat.obj:
+	.data       start:0x1002B4F8 end:0x1002B510
+
 LHAudio/lib/libcmt64/fp8.obj:
 	.text       start:0x1001582C end:0x1001583E align:1
 
@@ -248,9 +268,6 @@ LHAudio/lib/libcmt64/cvt.obj:
 	.text       start:0x100158A5 end:0x10015CCB align:1
 	.rdata      start:0x10020820 end:0x10020828
 
-LHAudio/lib/libcmt64/cmiscdat.obj:
-	.data       start:0x1002B4F8 end:0x1002B510
-
 LHAudio/lib/libcmt64/heapinit.obj:
 	.text       start:0x10015CCB end:0x10015F45 align:1
 	.rdata      start:0x10020828 end:0x10020858
@@ -260,6 +277,9 @@ LHAudio/lib/libcmt64/sbheap.obj:
 	.text       start:0x10015F45 end:0x1001715C align:1
 	.data       start:0x1002B518 end:0x1002D540
 	.bss        start:0x10042A10 end:0x10042A14
+
+LHAudio/lib/libcmt64/_newmode.obj:
+	.bss        start:0x10042A14 end:0x10042A18
 
 LHAudio/lib/libcmt64/exsup3.obj:
 	.text       start:0x1001715C end:0x1001723C align:1
@@ -272,8 +292,11 @@ LHAudio/lib/libcmt64/output.obj:
 	.rdata      start:0x10020858 end:0x100208D0
 	.data       start:0x1002D540 end:0x1002D548
 
-LHAudio/lib/libcmt64/_newmode.obj:
-	.bss        start:0x10042A14 end:0x10042A18
+LHAudio/lib/libcmt64/ctype.obj:
+	.data       start:0x1002D654 end:0x1002D860
+
+LHAudio/lib/libcmt64/nlsdata1.obj:
+	.data       start:0x1002D860 end:0x1002D870
 
 LHAudio/lib/libcmt64/handler.obj:
 	.text       start:0x10017B5E end:0x10017B79 align:1
@@ -287,21 +310,8 @@ LHAudio/lib/libcmt64/msize.obj:
 	.text       start:0x10017EA8 end:0x10017F96 align:1
 	.rdata      start:0x100208E8 end:0x10020900
 
-LHAudio/lib/libcmt64/nlsdata2.obj:
-	.bss        start:0x10042A28 end:0x10042A48
-
-LHAudio/lib/libcmt64/a_map.obj:
-	.text       start:0x10017F96 end:0x100181BA align:1
-	.bss        start:0x10042A48 end:0x10042A4C
-
 LHAudio/lib/libcmt64/isctype.obj:
 	.text       start:0x100181BA end:0x1001822F align:1
-
-LHAudio/lib/libcmt64/ctype.obj:
-	.data       start:0x1002D654 end:0x1002D860
-
-LHAudio/lib/libcmt64/nlsdata1.obj:
-	.data       start:0x1002D860 end:0x1002D870
 
 LHAudio/lib/libcmt64/_file.obj:
 	.text       start:0x1001822F end:0x1001838F align:1
@@ -314,7 +324,10 @@ LHAudio/lib/libcmt64/_filbuf.obj:
 	.text       start:0x1001838F end:0x1001846B align:1
 
 LHAudio/lib/libcmt64/read.obj:
-	.text       start:0x1001846B end:0x100186A9 align:1
+	.text       start:0x1001846B end:0x100186B0 align:1
+
+LHAudio/lib/libcmt64/memcpy.obj:
+	.text       start:0x100186B0 end:0x100189E5 align:1
 
 LHAudio/lib/libcmt64/close.obj:
 	.text       start:0x100189E5 end:0x10018AC5 align:1
@@ -381,6 +394,10 @@ LHAudio/lib/libcmt64/crt0msg.obj:
 	.data       start:0x1002DD98 end:0x1002DE28
 	.bss        start:0x10042B58 end:0x10042B5C
 
+LHAudio/lib/libcmt64/timeset.obj:
+	.rdata      start:0x10020C54 end:0x10020C94 align:1
+	.data       start:0x1002DE30 end:0x1002DEC8
+
 LHAudio/lib/libcmt64/memset.obj:
 	.text       start:0x10019E20 end:0x10019E78 align:1
 	.data       start:0x1002DE28 end:0x1002DE30
@@ -395,14 +412,13 @@ LHAudio/lib/libcmt64/validate.obj:
 	.text       start:0x10019EDC end:0x10019F30 align:1
 
 LHAudio/lib/libcmt64/strcmp.obj:
-	.text       start:0x10019F30 end:0x10019FB4 align:1
+	.text       start:0x10019F30 end:0x10019FC0 align:1
+
+LHAudio/lib/libcmt64/memmove.obj:
+	.text       start:0x10019FC0 end:0x1001A2F5 align:1
 
 LHAudio/lib/libcmt64/abort.obj:
 	.text       start:0x1001A2F5 end:0x1001A30C align:1
-
-LHAudio/lib/libcmt64/timeset.obj:
-	.rdata      start:0x10020C54 end:0x10020C94 align:1
-	.data       start:0x1002DE30 end:0x1002DEC8
 
 LHAudio/lib/libcmt64/tzset.obj:
 	.text       start:0x1001A30C end:0x1001A8CE align:1
@@ -412,6 +428,12 @@ LHAudio/lib/libcmt64/tzset.obj:
 
 LHAudio/lib/libcmt64/days.obj:
 	.data       start:0x1002DEE4 end:0x1002DF50
+
+LHAudio/lib/libcmt64/ieee87.obj:
+	.text       start:0x1001A8CE end:0x1001AA34 align:1
+
+LHAudio/lib/libcmt64/tolower.obj:
+	.text       start:0x1001AA34 end:0x1001AB6E align:1
 
 LHAudio/lib/libcmt64/intrncvt.obj:
 	.text       start:0x1001AB6E end:0x1001AF5A align:1
@@ -486,16 +508,13 @@ LHAudio/lib/libcmt64/initmon.obj:
 LHAudio/lib/libcmt64/initctyp.obj:
 	.bss        start:0x10042C30 end:0x10042C38
 
-LHAudio/lib/libcmt64/nlsdata3.obj:
-	.bss        start:0x10042C38 end:0x10042C5C
-
-LHAudio/lib/libcmt64/getqloc.obj:
-	.bss        start:0x10042C5C end:0x10042C80
-
 LHAudio/lib/libcmt64/a_str.obj:
 	.text       start:0x1001BBAA end:0x1001BCF3 align:1
 	.rdata      start:0x10020C98 end:0x10020CA4
 	.bss        start:0x10042C80 end:0x10042C84
+
+LHAudio/lib/libcmt64/ncommode.obj:
+	.bss        start:0x10042C84 end:0x10042C88
 
 LHAudio/lib/libcmt64/closeall.obj:
 	.text       start:0x1001BCF3 end:0x1001BD74 align:1
@@ -523,8 +542,8 @@ LHAudio/lib/libcmt64/util.obj:
 LHAudio/lib/libcmt64/frnd.obj:
 	.text       start:0x1001D35F end:0x1001D371 align:1
 
-LHAudio/lib/libcmt64/ncommode.obj:
-	.bss        start:0x10042C84 end:0x10042C88
+LHAudio/lib/libcmt64/ieeemisc.obj:
+	.text       start:0x1001D371 end:0x1001D403 align:1
 
 LHAudio/lib/libcmt64/mbctype.obj:
 	.text       start:0x1001D403 end:0x1001D7F7 align:1
@@ -537,6 +556,20 @@ LHAudio/lib/libcmt64/crtmbox.obj:
 	.rdata      start:0x10020CA4 end:0x10020CE0 align:1
 	.bss        start:0x10042C8C end:0x10042C98
 
+LHAudio/lib/libcmt64/winsig.obj:
+	.text       start:0x1001D880 end:0x1001DA3F align:1
+	.bss        start:0x10042C98 end:0x10042CAC
+
+LHAudio/lib/libcmt64/inithelp.obj:
+	.bss        start:0x10042CAC end:0x10042CB4
+
+LHAudio/lib/libcmt64/lconv.obj:
+	.data       start:0x1002E2B8 end:0x1002E2F4
+	.bss        start:0x10042CB4 end:0x10042CB8
+
+LHAudio/lib/libcmt64/getenv.obj:
+	.text       start:0x1001DA3F end:0x1001DABC align:1
+
 LHAudio/lib/libcmt64/mantold.obj:
 	.text       start:0x1001DABC end:0x1001DC5D align:1
 
@@ -548,21 +581,11 @@ LHAudio/lib/libcmt64/x10fout.obj:
 	.rdata      start:0x10020CE0 end:0x10020D00
 
 LHAudio/lib/libcmt64/strftime.obj:
+	.rdata      start:0x10020D00 end:0x10020E24
 	.data       start:0x1002E200 end:0x1002E2B8
-
-LHAudio/lib/libcmt64/winsig.obj:
-	.bss        start:0x10042C98 end:0x10042CAC
-
-LHAudio/lib/libcmt64/inithelp.obj:
-	.bss        start:0x10042CAC end:0x10042CB4
-
-LHAudio/lib/libcmt64/lconv.obj:
-	.data       start:0x1002E2B8 end:0x1002E2F4
-	.bss        start:0x10042CB4 end:0x10042CB8
 
 LHAudio/lib/libcmt64/stricmp.obj:
 	.text       start:0x1001E3D0 end:0x1001E4A0 align:1
-	.data       start:0x1002E2F4 end:0x1002E300
 
 LHAudio/lib/libcmt64/strnicmp.obj:
 	.text       start:0x1001E4A0 end:0x1001E5A1 align:1
@@ -573,9 +596,25 @@ LHAudio/lib/libcmt64/chsize.obj:
 LHAudio/lib/libcmt64/fpexcept.obj:
 	.data       start:0x1002E300 end:0x1002E3D8
 
+LHAudio/lib/libcmt64/matherr.obj:
+	.text       start:0x1001EBB8 end:0x1001EBBB align:1
+	.data       start:0x1002E3D8 end:0x1002E3DC
+
 LHAudio/lib/libcmt64/fpctrl.obj:
 	.text       start:0x1001EBBB end:0x1001EC51 align:1
 	.data       start:0x1002E3DC end:0x1002E3F8
+
+LHAudio/lib/libcmt64/constpow.obj:
+	.data       start:0x1002E3F8 end:0x1002E6B4
+
+LHAudio/lib/libcmt64/w_str.obj:
+	.bss        start:0x10042CB8 end:0x10042CBC
+
+LHAudio/lib/libcmt64/w_loc.obj:
+	.bss        start:0x10042CC0 end:0x10042CC4
+
+LHAudio/lib/libcmt64/a_loc.obj:
+	.bss        start:0x10042CC4 end:0x10042CC8
 
 LHAudio/lib/libcmt64/mbsnbico.obj:
 	.text       start:0x1001EC51 end:0x1001EC90 align:1
@@ -586,9 +625,13 @@ LHAudio/lib/libcmt64/wtombenv.obj:
 LHAudio/lib/libcmt64/tenpow.obj:
 	.text       start:0x1001ECFE end:0x1001EF9A align:1
 
+LHAudio/lib/libcmt64/setmode.obj:
+	.text       start:0x1001EF9A end:0x1001EFFB align:1
+
 LHAudio/lib/libcmt64/a_cmp.obj:
 	.text       start:0x1001EFFB end:0x1001F2A3 align:1
 	.rdata      start:0x10020ED8 end:0x10020EF0
+	.bss        start:0x10042CC8 end:0x10042CCC
 
 LHAudio/lib/libcmt64/setenv.obj:
 	.text       start:0x1001F2A3 end:0x1001F4E9 align:1
@@ -598,26 +641,3 @@ LHAudio/lib/libcmt64/mbschr.obj:
 
 LHAudio/lib/libcmt64/strdup.obj:
 	.text       start:0x1001F580 end:0x1001F5AB align:1
-
-LHAudio/LHFile/ver3.0/LHFile.cpp:
-	.text$x     start:0x1001F980 end:0x1001F9A0
-	.xdata$x    start:0x10021038 end:0x10021060
-
-LHAudio/LHFile/ver3.0/LHOSFile.cpp:
-	.text$x     start:0x1001F9A0 end:0x1001F9B5
-	.xdata$x    start:0x10021060 end:0x10021088
-
-LHAudio/lib/libcmt64/constpow.obj:
-	.data       start:0x1002E3F8 end:0x1002E6B4
-
-LHAudio/lib/libcmt64/w_str.obj:
-	.bss        start:0x10042CB8 end:0x10042CBC
-
-LHAudio/lib/libcmt64/txtmode.obj:
-	.bss        start:0x10042CBC end:0x10042CC0
-
-LHAudio/lib/libcmt64/w_loc.obj:
-	.bss        start:0x10042CC0 end:0x10042CC4
-
-LHAudio/lib/libcmt64/a_loc.obj:
-	.bss        start:0x10042CC4 end:0x10042CC8
