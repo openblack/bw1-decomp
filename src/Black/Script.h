@@ -28,6 +28,44 @@
 	}                                                                                                                  \
 	(condition)
 
+#ifdef VERSION_BW1WCI
+#define SCRIPT_TEXT_ID_LIMIT HELP_TEXT_LAST
+#else
+#define SCRIPT_TEXT_ID_LIMIT 6974
+#endif
+#ifdef VERSION_BW1WCI
+#define SCRIPT_ANIM_LIMIT MAX_COUNT_3D_ANIMS
+#else
+#define SCRIPT_ANIM_LIMIT 441
+#endif
+#define SCRIPT_SNAPSHOT_MAX_VALUES      12
+#define SCRIPT_STATIC_ANIM_DURATION     10.0f
+#define SCRIPT_NEGLIGIBLE_DISTANCE      0.5f
+#define SCRIPT_DELETE_FIZZ_AMOUNT       1.0f
+#define SCRIPT_DELETE_FIZZ_DURATION     2.0f
+#define SCRIPT_SPIN_RANGE               200.0f
+#define SCRIPT_SPIN_OFFSET              100.0f
+#define SCRIPT_SPIN_SCALE               100.0f
+#define SCRIPT_DEGREES_IN_CIRCLE        360.0f
+#define SCRIPT_INVALID_LAND_HEIGHT      (-10.0f)
+#define SCRIPT_SECONDS_PER_MILLISECOND  0.001f
+#define SCRIPT_ACTION_TEXT              828
+#define SCRIPT_BUILD_DESIRE_SCALE       5.0f
+#define SCRIPT_BAD_POS_MIN              (-1.0f)
+#define SCRIPT_BAD_POS_MAX              50.0f
+#define SCRIPT_REMOVE_FIRE_RADIUS       5.0f
+#define SCRIPT_SCORE_NONE               (-1)
+#define SCRIPT_LANDING_PATH_POINTS      1024
+#define SCRIPT_LANDING_MAX_TIME         60.0f
+#define SCRIPT_LANDING_STEP             0.01f
+#define SCRIPT_LANDING_FIRST_CHECK      1.0f
+#define SCRIPT_LANDING_CHECK_INTERVAL   0.05f
+#define SCRIPT_ANIM_REPEATS_LIMIT       31
+#define SCRIPT_HIGHLIGHT_SEARCH_CELLS   81
+#define SCRIPT_ATTACKED_AGGRESSION      0.15
+#define SCRIPT_POPULATE_SPREAD_PER_ITEM 0.1
+#define SCRIPT_POPULATE_SPREAD_MINIMUM  4.0
+
 enum SCRIPT_FEATURE_COMMANDS
 {
 	SCRIPT_FEATURE_COMMANDS_CREATE_MIST = 0x0,
@@ -1334,7 +1372,7 @@ public:
 	void  ProcessFade(bool param_1);
 	float GetCountDownTimerRemainingTime(); // 006eb950
 	// BW1W120 006eba90 BW1M119 014dd990
-	void SetupScreenFadeTo(uint8_t r, uint8_t g, uint8_t b, signed char a);
+	void SetupScreenFadeTo(uint8_t red, uint8_t green, uint8_t blue, signed char time);
 	// BW1W120 006ebb00 BW1M119 014dd890
 	void SetupScreenFadeBackToNormal(signed char time);
 	// BW1W120 006ebb50 BW1M119 014dd830

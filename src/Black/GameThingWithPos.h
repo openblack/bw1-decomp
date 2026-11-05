@@ -573,7 +573,8 @@ public:
 	// BW1W120 00402240 BW1M119 01057c40
 	virtual void SetControlledByScript(bool32_t controlled)
 	{
-		Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) | ((controlled & 1) << 10);
+		Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) |
+		        ((controlled & 1) << GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT_BIT);
 	}
 	// BW1W120 00402270 BW1M119 01568ad0
 	virtual DEATH_REASON GetDeathReason() { return DEATH_REASON_NONE; }

@@ -25,6 +25,8 @@
 class Creature;
 class CreatureInfo;
 
+#define CREATURE_DESIRE_SCRIPT_SUPPRESS_SECONDS 600.0f
+
 class CreatureDesires : public Base
 {
 public:
@@ -59,6 +61,7 @@ public:
 
 	// Non-virtual methods
 
+	// Inliner IL size: 105
 	// BW1W120 inlined BW1M119 inlined
 	void SetLevel(CREATURE_DESIRES desire, float level)
 	{

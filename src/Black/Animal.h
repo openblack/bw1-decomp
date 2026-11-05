@@ -37,6 +37,8 @@ class Reaction;
 class Spell;
 class Town;
 
+#define ANIMAL_SCRIPT_TOWN_RADIUS 500.0f
+
 struct AnimalStateTableEntry
 {
 	int (Animal::*State)();
@@ -414,7 +416,7 @@ public:
 
 	// BW1W120 00419d10 BW1M119 01170710
 	static Animal* CreateFromType(const MapCoords& coords, const GAnimalInfo* info, Town* town, Flock* flock,
-	                              unsigned long param_5);
+	                              unsigned long age);
 	// BW1W120 00419c20 BW1M119 01170920
 	static Animal* CreateFromType(const MapCoords& coords, const GAnimalInfo* info, Town* town, unsigned long age);
 

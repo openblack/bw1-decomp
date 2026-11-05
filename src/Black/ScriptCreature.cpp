@@ -53,11 +53,6 @@ inline GBaseInfo* GScriptOpposingCreature::GetBaseInfo(uint32_t& info_count)
 #include "Serialise.h"
 #endif
 
-#ifdef VERSION_BW1WCI
-#define SCRIPT_MASTER_SUPPRESS_SECONDS  600.0f
-#define SCRIPT_YOUNG_CREATURE_MIND_FILE "temp1"
-#endif
-
 static uint32_t UnusedStatic = 0;
 
 #ifdef VERSION_BW1WCI
@@ -69,7 +64,7 @@ GScriptOpposingCreature GInfoArrays::ScriptOpposingCreatures[CREATURE_TYPE_LAST]
 void GScript::CreateCreatureFromCreature()
 {
 #ifdef VERSION_BW1WCI
-	int dumb = g_scriptDLL->ULONG_POP();
+	bool32_t dumb = g_scriptDLL->ULONG_POP();
 #endif
 	MapCoords     coords;
 	CREATURE_TYPE type = (CREATURE_TYPE)g_scriptDLL->ULONG_POP();
@@ -87,10 +82,7 @@ void GScript::CreateCreatureFromCreature()
 	else
 	{
 		Creature* creature = dynamic_cast<Creature*>(thing);
-		if (creature == NULL)
-		{
-			ScriptErrorMessage("No creature for script");
-		}
+		SCRIPT_ASSERT(creature != NULL, "No creature for script");
 #ifdef VERSION_BW1WCI
 		Creature* newCreature = Creature::ScriptCreateCreatureRelativeToCreature(creature, scale, coords, type, dumb);
 #else
@@ -98,8 +90,8 @@ void GScript::CreateCreatureFromCreature()
 #endif
 		if (newCreature != NULL)
 		{
-			uint32_t id = AddScriptGameThing(newCreature, true);
-			g_scriptDLL->PUSH((void*)id, VMType_OBJECT);
+			uint32_t newId = AddScriptGameThing(newCreature, true);
+			g_scriptDLL->PUSH((void*)newId, VMType_OBJECT);
 			return;
 		}
 		ScriptErrorMessage("Creature not created!");
@@ -127,8 +119,8 @@ void GScript::CreateYoungCreatureWithKnowledge()
 				coords, &CreatureInfo::Infos[((CreatureInfo*)master->info)->CreatureType], NULL, false);
 			if (young != NULL)
 			{
-				tyke->mind->SaveMind(SCRIPT_YOUNG_CREATURE_MIND_FILE, 0);
-				Archive archive(SCRIPT_YOUNG_CREATURE_MIND_FILE, LH_FILE_MODE_READ_ONLY);
+				tyke->mind->SaveMind(CREATURE_MENTAL_YOUNG_MIND_FILE, 0);
+				Archive archive(CREATURE_MENTAL_YOUNG_MIND_FILE, LH_FILE_MODE_READ_ONLY);
 				if (archive.IsOpen)
 				{
 					young->mind->LoadMindIntoPreexistingCreature(archive);
@@ -186,10 +178,7 @@ void GScript::CreatureSetKnowsAction()
 		return;
 	}
 	Creature* creature = dynamic_cast<Creature*>(thing);
-	if (creature == NULL)
-	{
-		ScriptErrorMessage("No script for creature");
-	}
+	SCRIPT_ASSERT(creature != NULL, "No script for creature");
 #ifdef VERSION_BW1WCI
 	creature->ScriptSetKnowsAction(type, action, knows, progress);
 #else
@@ -449,10 +438,7 @@ void GScript::CreatureSetPlayer()
 	if (thing != NULL)
 	{
 		Creature* creature = dynamic_cast<Creature*>(thing);
-		if (creature == NULL)
-		{
-			ScriptErrorMessage("not a creature");
-		}
+		SCRIPT_ASSERT(creature != NULL, "not a creature");
 #ifndef VERSION_BW1WCI
 		GPlayer* player = GGame::g_game->MyPlayer();
 #endif
@@ -1310,7 +1296,7 @@ void GScript::QueueCreatureFightMove()
 			LH3DCreature* creature3d = ((Creature*)thing)->physical->Creature3d;
 			((Creature*)thing)->ClearFightQueue();
 			((Creature*)thing)->QueueAttackOrBlock(move);
-			creature3d->ValidateFightEvent((unsigned long)(FightEventTicksPerSecond * time));
+			creature3d->ValidateFightEvent((uint32_t)(FightEventTicksPerSecond * time));
 #else
 			((Creature*)thing)->QueueAttackOrBlock(move);
 #endif
@@ -1405,19 +1391,17 @@ void GScript::SetCreatureAutoScale()
 	float             scale = g_scriptDLL->FLOAT_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	bool32_t          autoScale = g_scriptDLL->ULONG_POP();
+#ifdef VERSION_BW1WCI
 	if (thing == NULL || !thing->IsCreature())
 	{
 		ScriptErrorMessage("Thing should be valid!");
 	}
-#ifdef VERSION_BW1WCI
 	if (thing != NULL && thing->IsCreature())
 #else
+	SCRIPT_ASSERT(thing != NULL && thing->IsCreature(), "Thing should be valid!");
 	if (thing != NULL)
 #endif
 	{
-#ifndef VERSION_BW1WCI
-		thing->IsCreature();
-#endif
 		((Creature*)thing)->AutoScale = autoScale;
 		((Creature*)thing)->AutoScaleValue = scale;
 	}
@@ -1445,12 +1429,14 @@ void GScript::SetObjectFollowMaster()
 				creature->Friends.Remove((Creature*)creature->ConfinementObject);
 				((Creature*)creature->ConfinementObject)->Friends.Remove(creature);
 				((Creature*)creature->ConfinementObject)
-					->mind->desires.SuppressDesire(CREATURE_DESIRE_TO_BE_FRIENDS, SCRIPT_MASTER_SUPPRESS_SECONDS);
+					->mind->desires.SuppressDesire(CREATURE_DESIRE_TO_BE_FRIENDS,
+				                                   CREATURE_DESIRE_SCRIPT_SUPPRESS_SECONDS);
 			}
 			creature->ConfinedToObject = false;
 			creature->ConfinementObject = NULL;
 			creature->ConfinementPlayerNumber = -1;
-			creature->mind->desires.SuppressDesire(CREATURE_DESIRE_TO_BE_FRIENDS, SCRIPT_MASTER_SUPPRESS_SECONDS);
+			creature->mind->desires.SuppressDesire(CREATURE_DESIRE_TO_BE_FRIENDS,
+			                                       CREATURE_DESIRE_SCRIPT_SUPPRESS_SECONDS);
 			creature->mind->desires.SetActivated(CREATURE_DESIRE_TO_BE_FRIENDS, false);
 			creature->ConfinementRadius = 0.0f;
 		}
@@ -1549,7 +1535,7 @@ void GScript::GetCreatureCurrentAction()
 void GScript::GetCreatureSpellSkill()
 {
 	float             skill;
-	uint32_t          spell = g_scriptDLL->ULONG_POP();
+	MAGIC_TYPE        spell = (MAGIC_TYPE)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	if (thing != NULL && thing->IsCreature())
 	{
@@ -1566,8 +1552,8 @@ void GScript::GetCreatureSpellSkill()
 
 void GScript::CreatureKnowsAction()
 {
-	uint32_t          action = g_scriptDLL->ULONG_POP();
-	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	CREATURE_ACTION_KNOWN_ABOUT action = (CREATURE_ACTION_KNOWN_ABOUT)g_scriptDLL->ULONG_POP();
+	GameThingWithPos*           thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	if (thing != NULL && thing->IsCreature())
 	{
 		bool32_t knows =
@@ -1580,9 +1566,9 @@ void GScript::CreatureKnowsAction()
 
 void GScript::SetObjectTattoo()
 {
-	uint32_t          tattoo = g_scriptDLL->ULONG_POP();
-	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	bool32_t          enabled = g_scriptDLL->ULONG_POP();
+	CREATURE_TATTOO_TYPE tattoo = (CREATURE_TATTOO_TYPE)g_scriptDLL->ULONG_POP();
+	GameThingWithPos*    thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	bool32_t             enabled = g_scriptDLL->ULONG_POP();
 	if (thing != NULL && thing->IsCreature())
 	{
 		Creature* creature = (Creature*)thing;
@@ -1592,31 +1578,31 @@ void GScript::SetObjectTattoo()
 		case CREATURE_TATTOO_TYPE_SUPER_GODS:
 			if (enabled)
 			{
-				creature->Tattoos |= CREATURE_TATTOO_FLAG_GODS;
+				creature->BodyFlags |= CREATURE_TATTOO_FLAG_GODS;
 			}
 			else
 			{
-				creature->Tattoos &= ~CREATURE_TATTOO_FLAG_GODS;
+				creature->BodyFlags &= ~CREATURE_TATTOO_FLAG_GODS;
 			}
 			break;
 		case CREATURE_TATTOO_TYPE_FIGHTER:
 			if (enabled)
 			{
-				creature->Tattoos |= CREATURE_TATTOO_FLAG_FIGHTER;
+				creature->BodyFlags |= CREATURE_TATTOO_FLAG_FIGHTER;
 			}
 			else
 			{
-				creature->Tattoos &= ~CREATURE_TATTOO_FLAG_FIGHTER;
+				creature->BodyFlags &= ~CREATURE_TATTOO_FLAG_FIGHTER;
 			}
 			break;
 		case CREATURE_TATTOO_TYPE_FIGHTER_ALWAYS:
 			if (enabled)
 			{
-				creature->Tattoos |= CREATURE_TATTOO_FLAG_FIGHTER_ALWAYS;
+				creature->BodyFlags |= CREATURE_TATTOO_FLAG_FIGHTER_ALWAYS;
 			}
 			else
 			{
-				creature->Tattoos &= ~CREATURE_TATTOO_FLAG_FIGHTER_ALWAYS;
+				creature->BodyFlags &= ~CREATURE_TATTOO_FLAG_FIGHTER_ALWAYS;
 			}
 			break;
 		}
@@ -1659,9 +1645,9 @@ void GScript::IsCreatureHelpOn()
 
 void GScript::SetCreatureCanLearn()
 {
-	int               lesson = g_scriptDLL->ULONG_POP();
-	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	bool32_t          canLearn = g_scriptDLL->ULONG_POP();
+	CREATURE_ACTION_KNOWN_ABOUT lesson = (CREATURE_ACTION_KNOWN_ABOUT)g_scriptDLL->ULONG_POP();
+	GameThingWithPos*           thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
+	bool32_t                    canLearn = g_scriptDLL->ULONG_POP();
 	SCRIPT_ASSERT(lesson < CREATURE_ACTION_KNOWN_ABOUT_LAST, "Invalid lesson");
 	if (thing != NULL && thing->IsCreature())
 	{
@@ -1730,9 +1716,9 @@ void GScript::GetObjectObjectLeashedTo()
 		else
 		{
 			GInterfaceStatus* status = player->GetLeaderInterfaceStatus();
-			if (status->LeashStatus != NULL && status->LeashStatus->ObjectAttachedTo != NULL)
+			if (status->LeashStatus != NULL && status->LeashStatus->GetObjectAttachedTo() != NULL)
 			{
-				uint32_t id = AddScriptGameThing(status->LeashStatus->ObjectAttachedTo, false);
+				uint32_t id = AddScriptGameThing(status->LeashStatus->GetObjectAttachedTo(), false);
 				g_scriptDLL->PUSH((void*)id, VMType_OBJECT);
 				return;
 			}

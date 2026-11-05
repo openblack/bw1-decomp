@@ -5,7 +5,7 @@
 #include "Script.h"
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
-#include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For PI_F */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For GAME_ANGLE_FULL_TURN, TWO_PI */
 #include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint */
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>         /* For LHSPrintf */
 
@@ -90,10 +90,6 @@
 #else
 #define FILEPATH "C:\\dev\\MP\\Black\\ScriptCreateOrCall.cpp"
 #endif
-
-#define SCRIPT_ANIMAL_TOWN_RADIUS       500.0f
-#define SCRIPT_POPULATE_SPREAD_PER_ITEM 0.1
-#define SCRIPT_POPULATE_SPREAD_MINIMUM  4.0
 
 static uint32_t UnusedStatic = 0;
 
@@ -365,7 +361,7 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 		Flock*  flock = animal->flock.Get();
 		flock->DomainRadius = FLOCK_SCRIPT_ANIMAL_DOMAIN_RADIUS;
 		flock->FlockDistance = FLOCK_SCRIPT_ANIMAL_DISTANCE;
-		animal->SetTownIfNearby(SCRIPT_ANIMAL_TOWN_RADIUS);
+		animal->SetTownIfNearby(ANIMAL_SCRIPT_TOWN_RADIUS);
 		SetScriptState(animal, VILLAGER_STATE_IN_SCRIPT);
 		thing = animal;
 		break;
@@ -490,7 +486,7 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 		break;
 	case SCRIPT_OBJECT_TYPE_PUZZLE_GAME:
 		thing = PuzzleGame::Create(coords, (SCRIPT_PUZZLE_GAME_TYPE)subtype,
-		                           (uint16_t)((y_angle * PUZZLE_GAME_ANGLE_FULL_TURN) / TWO_PI), scale);
+		                           (uint16_t)((y_angle * GAME_ANGLE_FULL_TURN) / TWO_PI), scale);
 		break;
 	case SCRIPT_OBJECT_TYPE_TOTEM:
 		thing = PuzzleTotem::Create(coords, &GAbodeInfo::GetInfo()[subtype], NULL, y_angle, scale, 1.0f, false);

@@ -531,7 +531,7 @@ unsigned long Creature::SaveMindToMemory(char** buffer)
 }
 
 #ifdef VERSION_BW1WCI
-void CreatureMental::SaveMind(char* path, int mode)
+void CreatureMental::SaveMind(char* path, bool32_t substitute_type)
 #else
 void CreatureMental::SaveMind(char* path)
 #endif

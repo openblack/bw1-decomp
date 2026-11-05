@@ -52,8 +52,6 @@ class PhysicsObject;
 class PlannedMultiMapFixed;
 struct RPHolder;
 
-#define PUZZLE_GAME_ANGLE_FULL_TURN 2048.0f
-
 class PuzzleGame : public GameThingWithPos
 {
 public:

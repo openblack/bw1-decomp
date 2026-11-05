@@ -31,6 +31,8 @@ class PlayerSubAction;
 class PlayerSubActionArgument;
 class GameOSFile;
 
+#define COMPUTER_PLAYER_SCRIPT_PAUSE_TIME 60.0f
+
 class GComputerAttitudeToPlayer : public GameThing
 {
 public:

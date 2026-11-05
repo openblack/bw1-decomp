@@ -27,6 +27,8 @@
 
 // Forward Declares
 
+#define CREATURE_DEVELOPMENT_CONFINEMENT_RADIUS 12.0f
+
 enum CREATURE_HEIGHT
 {
 	CREATURE_HEIGHT_VERY_SMALL,
@@ -219,7 +221,7 @@ public:
 	bool32_t RightHandOnly;
 	uint32_t ci_field_0x107c;
 	uint32_t ci_field_0x1080;
-	uint8_t  Tattoos;
+	uint8_t  BodyFlags;
 	uint8_t  ci_field_0x1085[0x3];
 #endif
 	uint32_t                ActionForced;
@@ -1000,8 +1002,8 @@ public:
 	bool32_t FindClearArea(MapCoords* coords, float radius, bool32_t avoid_living);
 	// BW1W120 004c4450 BW1M119 01235990
 	void ForceActivityAndForceAction(CREATURE_DESIRES desire, CreatureBelief* activity_object, CREATURE_ACTION action,
-	                                 CreatureBelief* object_to_act_on, CreatureBelief* object_to_use, int param_6,
-	                                 int param_7);
+	                                 CreatureBelief* object_to_act_on, CreatureBelief* object_to_use,
+	                                 bool32_t forced_by_player, bool32_t stop_current_action);
 	// BW1W120 004c44b0 BW1M119 01235820
 	void ForceActivityAndForceAction(CreaturePlan& plan, bool32_t forced_by_player, bool32_t stop_current_action);
 	// BW1W120 004c8230 BW1M119 01239d00
@@ -1390,10 +1392,11 @@ public:
 	void ScriptDoAction(CREATURE_ACTION action, GameThingWithPos* object, GameThingWithPos* second_object);
 	// BW1W120 004f7080 BW1M119 0128cda0
 	void ScriptLearnEverything();
-	// BW1W120 004f7090 BW1M119 0128cca0
 #ifdef VERSION_BW1WCI
+	// BW1WCI 00508f10 BW1MCI119 012ac280
 	void ScriptSetKnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, bool32_t knows, float progress);
 #else
+	// BW1W120 004f7090 BW1M119 0128cca0
 	void ScriptSetKnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, bool32_t knows);
 #endif
 	// BW1W120 004f70f0 BW1M119 0128cc50
@@ -1401,10 +1404,10 @@ public:
 	// BW1W120 004f6980 BW1M119 0128d6c0
 	void ScriptLearnDistinctionAboutActivityObject(CREATURE_DESIRES desire, ATTRIBUTE_TYPE attribute,
 	                                               unsigned long amount);
-	// BW1W120 004f6610 BW1M119 0128dc50
 #ifdef VERSION_BW1WCI
+	// BW1WCI 00508260 BW1MCI119 012ad470
 	static Creature* ScriptCreateCreatureRelativeToCreature(Creature* creature, float scale, const MapCoords& coords,
-	                                                        CREATURE_TYPE type, int dumb);
+	                                                        CREATURE_TYPE type, bool32_t dumb);
 	// BW1WCI 00709b90 BW1MCI119 0151dd60
 	static void ReleaseTykeFromMaster(Creature* tyke, Creature* master);
 	// BW1WCI 0047ef30 BW1MCI119 011fe6b0
@@ -1412,6 +1415,7 @@ public:
 	// BW1WCI 00488430 BW1MCI119 011ed930
 	void ClearFightQueue();
 #else
+	// BW1W120 004f6610 BW1M119 0128dc50
 	static Creature* ScriptCreateCreatureRelativeToCreature(Creature* creature, float scale, const MapCoords& coords,
 	                                                        CREATURE_TYPE type);
 #endif

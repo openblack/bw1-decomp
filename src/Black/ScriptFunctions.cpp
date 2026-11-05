@@ -8,7 +8,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DAnim.h>   /* For LH3DAnim::GetPackedAnim */
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
-#include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For PI_F */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For DEGREES_TO_RADIANS */
 #include <Lionhead/LH3DLib/development/LH3DText.h>   /* For CHAR2WCHAR */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For IsObjectOnScreen, IsPointOnScreen */
 #include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
@@ -108,52 +108,6 @@
 #else
 #define FILEPATH "C:\\dev\\MP\\Black\\ScriptFunctions.cpp"
 #endif
-
-#ifdef VERSION_BW1WCI
-#define SCRIPT_TEXT_ID_LIMIT HELP_TEXT_LAST
-#else
-#define SCRIPT_TEXT_ID_LIMIT 6974
-#endif
-#define SCRIPT_SNAPSHOT_MAX_VALUES        12
-#define SCRIPT_STATIC_ANIM_DURATION       10.0f
-#define SCRIPT_NEGLIGIBLE_DISTANCE        0.5f
-#define SCRIPT_COMPUTER_PLAYER_PAUSE_TIME 60.0f
-#define SCRIPT_DELETE_FIZZ_AMOUNT         1.0f
-#define SCRIPT_DELETE_FIZZ_DURATION       2.0f
-#define SCRIPT_HEART_EXPLODE_FORCE        80.0f
-#define SCRIPT_HEART_EXPLODE_UNUSED       3.0f
-#define SCRIPT_SPIN_RANGE                 200.0f
-#define SCRIPT_SPIN_OFFSET                100.0f
-#define SCRIPT_SPIN_SCALE                 100.0f
-#define SCRIPT_DEGREES_IN_CIRCLE          360.0f
-#define SCRIPT_INVALID_LAND_HEIGHT        (-10.0f)
-#define SCRIPT_SECONDS_PER_MILLISECOND    0.001f
-#ifdef VERSION_BW1WCI
-#define SCRIPT_ANIM_LIMIT MAX_COUNT_3D_ANIMS
-#else
-#define SCRIPT_ANIM_LIMIT 441
-#endif
-#define SCRIPT_ACTION_TEXT            828
-#define SCRIPT_BUILD_DESIRE_SCALE     5.0f
-#define SCRIPT_BAD_POS_MIN            (-1.0f)
-#define SCRIPT_BAD_POS_MAX            50.0f
-#define SCRIPT_REMOVE_FIRE_RADIUS     5.0f
-#define SCRIPT_SCORE_NONE             (-1)
-#define SCRIPT_LANDING_PATH_POINTS    1024
-#define SCRIPT_LANDING_MAX_TIME       60.0f
-#define SCRIPT_LANDING_STEP           0.01f
-#define SCRIPT_LANDING_FIRST_CHECK    1.0f
-#define SCRIPT_LANDING_CHECK_INTERVAL 0.05f
-#define SCRIPT_COLOUR_RANGE           256
-#define SCRIPT_COLOUR_OPAQUE          0xff
-#define SCRIPT_LANDING_GRAVITY_STEP   0.0981f
-#define SCRIPT_ANIM_REPEATS_LIMIT     31
-#define SCRIPT_GRAVITY                (-9.81f)
-
-#define SCRIPT_DEVELOPMENT_CONFINEMENT_RADIUS 12.0f
-#define SCRIPT_HIGHLIGHT_SEARCH_CELLS         81
-#define SCRIPT_TEMPLE_ENTRANCE_EXTRA_POS      15
-#define SCRIPT_ATTACKED_AGGRESSION            0.15
 
 class CImmMouse;
 
@@ -1039,7 +993,7 @@ void GScript::MoveGameThing()
 	}
 	if (thing->IsComputerPlayer())
 	{
-		((GComputerPlayer*)thing)->ForceComputerPlayerToMoveToPointAndPause(pos, SCRIPT_COMPUTER_PLAYER_PAUSE_TIME);
+		((GComputerPlayer*)thing)->ForceComputerPlayerToMoveToPointAndPause(pos, COMPUTER_PLAYER_SCRIPT_PAUSE_TIME);
 		return;
 	}
 #ifdef VERSION_BW1WCI
@@ -1188,8 +1142,8 @@ void GScript::DeleteObject()
 			{
 				if (heart->DestructionStarted)
 				{
-					PSysGlobal::ExplodeObjectMesh(heart, heart->Pos.GetLHPoint(), SCRIPT_HEART_EXPLODE_FORCE,
-					                              SCRIPT_HEART_EXPLODE_UNUSED, false);
+					PSysGlobal::ExplodeObjectMesh(heart, heart->Pos.GetLHPoint(), CITADEL_HEART_SCRIPT_EXPLODE_FORCE,
+					                              CITADEL_HEART_SCRIPT_EXPLODE_UNUSED, false);
 				}
 				else
 				{
@@ -1348,10 +1302,10 @@ void GScript::GetInfluence()
 {
 	LHPoint pos;
 	g_scriptDLL->POINT_POP(pos);
-	bool32_t anti = g_scriptDLL->ULONG_POP();
+	bool32_t excludeAllies = g_scriptDLL->ULONG_POP();
 	GPlayer* player = GGame::g_game->GetPlayer(ConvertScriptPlayerToGamePlayer((int)g_scriptDLL->FLOAT_POP()));
 	float    influence =
-		Influence::CalculatePlayerInfluence(MapCoords(pos), player, 0, INFL_CALC_TYPE_DEFAULT, anti == false);
+		Influence::CalculatePlayerInfluence(MapCoords(pos), player, 0, INFL_CALC_TYPE_DEFAULT, excludeAllies == false);
 	g_scriptDLL->FLOAT_PUSH(influence);
 }
 
@@ -1466,7 +1420,7 @@ void GScript::HasPlayed()
 
 void GScript::OverrideStateAnimation()
 {
-	int               anim = g_scriptDLL->ULONG_POP();
+	ANIM_LIST         anim = (ANIM_LIST)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	SCRIPT_ASSERT(anim > 0 && anim < SCRIPT_ANIM_LIMIT, "Invalid animation forced");
 	if (thing == NULL)
@@ -1970,7 +1924,7 @@ void GScript::GetScriptState()
 		}
 		if (thing->IsPuzzleGame())
 		{
-			uint32_t status = ((PuzzleGame*)thing)->GetPuzzleGameStatus();
+			SCRIPT_PUZZLE_GAME_STATUS status = (SCRIPT_PUZZLE_GAME_STATUS)((PuzzleGame*)thing)->GetPuzzleGameStatus();
 			g_scriptDLL->PUSH((void*)status, VMType_INT);
 			return;
 		}
@@ -2184,7 +2138,7 @@ void GScript::SetTemperature()
 void GScript::SetIdTarget()
 {
 	float   time = g_scriptDLL->FLOAT_POP();
-	LHPoint gravity(0.0f, SCRIPT_GRAVITY, 0.0f);
+	LHPoint gravity(0.0f, (-OBJECT_GRAVITY), 0.0f);
 	LHPoint target;
 	g_scriptDLL->POINT_POP(target);
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
@@ -2440,7 +2394,7 @@ void GScript::DevFunction()
 		Creature* creature = GGame::g_game->MyPlayer()->GetCreature();
 		creature->MoveToDevelopmentPhase(DEVELOPMENT_PHASE_INITIAL, 0);
 		creature->ConfinementCentre = creature->HomePos;
-		creature->ConfinementRadius = SCRIPT_DEVELOPMENT_CONFINEMENT_RADIUS;
+		creature->ConfinementRadius = CREATURE_DEVELOPMENT_CONFINEMENT_RADIUS;
 		break;
 	}
 	case SCRIPT_DEV_FUNCTION_ROPE_LEASH_ENABLED:
@@ -3524,7 +3478,7 @@ void GScript::SetScaffoldProperties()
 {
 	bool32_t          destroy = g_scriptDLL->ULONG_POP();
 	float             value = g_scriptDLL->FLOAT_POP();
-	ABODE_INFO        type = (ABODE_INFO)g_scriptDLL->ULONG_POP();
+	ABODE_NUMBER      type = (ABODE_NUMBER)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	if (thing == NULL)
 	{
@@ -3833,7 +3787,7 @@ void GScript::GetTownWorshipDeaths()
 	{
 		if (thing->IsTown())
 		{
-			g_scriptDLL->FLOAT_PUSH((float)(uint32_t)((Town*)thing)->GetDeathsFromWorshipping());
+			g_scriptDLL->FLOAT_PUSH((float)((Town*)thing)->GetDeathsFromWorshipping());
 			return;
 		}
 	}
@@ -3908,7 +3862,7 @@ void GScript::InstantSaveForScript()
 
 void GScript::SetObjectCarrying()
 {
-	uint32_t          carrying = g_scriptDLL->ULONG_POP();
+	CARRIED_OBJECT    carrying = (CARRIED_OBJECT)g_scriptDLL->ULONG_POP();
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
 	SCRIPT_ASSERT(thing != NULL && thing->IsVillager(NULL), "Villager invalid!");
 	if (thing != NULL)
@@ -3998,7 +3952,7 @@ void GScript::GetTempleEntrancePosition()
 		CitadelHeart* heart = player->GetCitadel()->GetCitadelHeart();
 		if (heart != NULL)
 		{
-			heart->Game3dObject->GetExtraPos(SCRIPT_TEMPLE_ENTRANCE_EXTRA_POS, &door);
+			heart->Game3dObject->GetExtraPos(CITADEL_HEART_ENTRANCE_EXTRA_POS, &door);
 			door -= point;
 			door.Normalise();
 			door *= radius;
@@ -4142,10 +4096,10 @@ void DrawLandingPath()
 {
 	for (int i = 0; i < LandingPathCount - 1; i++)
 	{
-		uint8_t   red = GRand::LocalRand(SCRIPT_COLOUR_RANGE);
-		uint8_t   green = GRand::LocalRand(SCRIPT_COLOUR_RANGE);
-		uint8_t   blue = GRand::LocalRand(SCRIPT_COLOUR_RANGE);
-		LH3DColor colour(red, green, blue, SCRIPT_COLOUR_OPAQUE);
+		uint8_t   red = GRand::LocalRand((LH3D_COLOR_CHANNEL_MAX + 1));
+		uint8_t   green = GRand::LocalRand((LH3D_COLOR_CHANNEL_MAX + 1));
+		uint8_t   blue = GRand::LocalRand((LH3D_COLOR_CHANNEL_MAX + 1));
+		LH3DColor colour(red, green, blue, LH3D_COLOR_OPAQUE);
 		LH3DLine::AddLine(LandingPath[i], LandingPath[i + 1], &colour, NULL);
 	}
 }
@@ -4182,7 +4136,7 @@ void GScript::GetObjectLandingPos()
 				velocity *= maxSpeed / sqrt(speedSquared);
 			}
 			pos += velocity * SCRIPT_LANDING_STEP;
-			velocity.y -= SCRIPT_LANDING_GRAVITY_STEP;
+			velocity.y -= (OBJECT_GRAVITY * SCRIPT_LANDING_STEP);
 			if (lastCheck + SCRIPT_LANDING_CHECK_INTERVAL < time)
 			{
 				lastCheck = time;
@@ -4243,8 +4197,8 @@ void GScript::SetAffectedBySnow()
 		LH3DObject* object = ((Object*)thing)->Game3dObject;
 		if (object != NULL)
 		{
-			object->Flags2 = (object->Flags2 & ~LH3D_OBJECT_FLAG2_NOT_AFFECTED_BY_SNOW) |
-			                 (((affected == false) & 1) << LH3D_OBJECT_FLAG2_NOT_AFFECTED_BY_SNOW_BIT);
+			object->Flags2 = (object->Flags2 & ~LH3D_OBJECT_FLAGS2_NOT_AFFECTED_BY_SNOW) |
+			                 (((affected == false) & 1) << LH3D_OBJECT_FLAGS2_NOT_AFFECTED_BY_SNOW_BIT);
 		}
 	}
 }
@@ -4322,7 +4276,7 @@ void GScript::SetObjectColour()
 		colour.b = (uint8_t)blue;
 		colour.g = (uint8_t)green;
 		colour.r = (uint8_t)red;
-		colour.a = SCRIPT_COLOUR_OPAQUE;
+		colour.a = LH3D_COLOR_OPAQUE;
 		thing->SetColour(colour);
 	}
 }

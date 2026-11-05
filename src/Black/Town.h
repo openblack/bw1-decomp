@@ -671,7 +671,7 @@ public:
 	// BW1W120 00740c50 BW1M119 01551d80
 	MultiMapFixed* GetBestAttackObject(const MapCoords& pos);
 	// BW1W120 00740d60 BW1M119 01551d40
-	int GetDeathsFromWorshipping();
+	uint32_t GetDeathsFromWorshipping();
 	// BW1W120 00740d70 BW1M119 null
 	int GetDeaths(DEATH_REASON reason);
 	// BW1W120 00740d90 BW1M119 01551c30

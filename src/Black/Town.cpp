@@ -3688,7 +3688,7 @@ MultiMapFixed* Town::GetBestAttackObject(const MapCoords& pos)
 	return best;
 }
 
-int Town::GetDeathsFromWorshipping()
+uint32_t Town::GetDeathsFromWorshipping()
 {
 	return GetDeaths(DEATH_REASON_CHANT);
 }

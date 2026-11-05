@@ -79,8 +79,6 @@ public:
 	static Mist* Create(const MapCoords& coords, float scale, uint8_t red, uint8_t blue, uint8_t green, uint8_t alpha,
 	                    float height_scale);
 
-	// Non-virtual methods
-
 	// BW1W120 00606800 BW1M119 0110e630
 	void SetFade(float start_scale, float end_scale, float start_alpha, float end_alpha, float duration);
 	// BW1W120 00606870 BW1M119 0110e5f0

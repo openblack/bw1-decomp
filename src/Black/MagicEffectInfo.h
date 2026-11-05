@@ -4,8 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/Enum.h> /* For enum CREATURE_DESIRES, MAGIC_TYPE_LAST */
+
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
-#include <chlasm/Enum.h>          /* For enum CREATURE_DESIRES, MAGIC_TYPE_LAST */
 
 #include "EffectInfo.h"  /* For struct GEffectInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
