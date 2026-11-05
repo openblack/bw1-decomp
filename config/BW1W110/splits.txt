@@ -3933,6 +3933,11 @@ Lionhead/LH3DLib/development/SnowCover.cpp:
 	.data       start:0x00C284C8 end:0x00C284E8
 	.bss        start:0x00F91144 end:0x00F912E8
 
+Lionhead/LH3DLib/development/DynamicLightAndShadow.cpp:
+	.text       start:0x0085CD60 end:0x0085D2B0
+	.CRT$XCU    start:0x009B75E4 end:0x009B75E8 align:4
+	.bss        start:0x00F912E8 end:0x00F93B8C
+
 Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.text       start:0x0085DE80 end:0x0085FA10
 	.text$x     start:0x00898110 end:0x008984C8 align:4

@@ -2677,6 +2677,9 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0086E5A1, copy_run(0x0086E514)),  # RPAvoid
     (0x0086E5D2, jmp_run(0x0086E5A1)),  # RPAvoid
     (0x0086E774, jmp_run(0x0086E5D2)),  # RPAvoid
+    (0x008721B5, jmp_run(0x00871D13)),  # DynamicLightAndShadow
+    (0x008721D1, jmp_run(0x008721B5)),  # DynamicLightAndShadow
+    (0x0087261B, jmp_run(0x008721D1)),  # DynamicLightAndShadow
     (0x00884AC3, copy_run(0x00884842)),  # LH3DCT
     (0x00884AF5, jmp_run(0x00884AC3)),  # LH3DCT
     (0x00884B76, jmp_run(0x00884AF5)),  # LH3DCT

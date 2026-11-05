@@ -5,7 +5,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
-struct LHPoint;
+#include "LHPoint.h" /* For struct LHPoint */
 
 class DynamicLightAndShadow
 {
@@ -14,23 +14,23 @@ public:
 	{
 		LIGHT_TYPE_LIGHT = 1,
 		LIGHT_TYPE_SHADOW = 2,
+		LIGHT_TYPE_4 = 4,
+		LIGHT_TYPE_8 = 8,
 	};
 
 	struct StoreInfo
 	{
-		uint32_t field_0x00;
-		uint32_t field_0x04;
-		uint32_t field_0x08;
-		uint32_t field_0x0c;
-		long     Pitch;
-		long     X;
-		long     Z;
-		long     SizeZ;
-		long     SizeX;
-		uint32_t field_0x24;
-		bool32_t MaxBlend;
-		uint32_t Intensity;
-		uint32_t field_0x30;
+		LHPoint   Pos;
+		uint8_t*  Map;
+		long      Pitch;
+		long      X;
+		long      Z;
+		long      SizeZ;
+		long      SizeX;
+		bool32_t  Visible;
+		bool32_t  MaxBlend;
+		uint32_t  Intensity;
+		LightType Type;
 	};
 
 	// BW1W120 0086cff0 BW1M119 010203a0 (LHCombined Release)

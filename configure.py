@@ -1842,6 +1842,7 @@ config.libs = [
             LH3DLibObject(Matching, "Lionhead/LHLib/ver5.0/RPAvoid.cpp", extra_cflags=cflags_route_planner, pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSky.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/SnowCover.cpp", pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/DynamicLightAndShadow.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LHLib/ver5.0/RPlan.cpp", extra_cflags=["/GX", *cflags_route_planner], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DFade.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSRAMTex.cpp", extra_cflags=["/GX"]),
