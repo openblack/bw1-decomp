@@ -14,6 +14,8 @@ IPSpecialDialog::IPSpecialDialog()
 	field_0x24 = false;
 }
 
+IPSpecialDialog::~IPSpecialDialog() {}
+
 void IPSpecialDialog::Destroy()
 {
 	DialogBoxBase::Destroy();

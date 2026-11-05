@@ -29,7 +29,9 @@ struct SnapShotData
 
 struct TempleChallenge
 {
-	uint8_t field_0x0[0xd8];
+	uint8_t field_0x0[0x48];
+	float   Success; /* 0x48 */
+	uint8_t field_0x4c[0x8c];
 
 	// Constructors
 

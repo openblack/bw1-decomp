@@ -89,7 +89,7 @@ public:
 	// BW1W120 00743bc0 BW1M119 01564fb0
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00744380 BW1M119 01563c80
-	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+	virtual void ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage);
 	// BW1W120 00744140 BW1M119 01563f80
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00744940 BW1M119 inlined

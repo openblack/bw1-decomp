@@ -43,7 +43,7 @@ public:
 	// BW1W120 00600dc0 BW1M119 013c2150
 	virtual bool32_t IsAWoodPileOutsideStoragePit(Creature* param_1);
 	// BW1W120 00600f10 BW1M119 013c2340
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 
 	// BW1W120 00600d40 BW1M119 013c25f0
 	MagicWood();

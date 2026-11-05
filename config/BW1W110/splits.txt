@@ -97,6 +97,12 @@ Black/AnimalLion.cpp:
 	.rdata      start:0x008AD05C end:0x008AE8C0
 	.data       start:0x009B8B10 end:0x009B8B60
 
+Black/AnimalPig.cpp:
+	.text       start:0x0041FD60 end:0x0041FD90
+	.rdata      start:0x008AE8C0 end:0x008AE8C8
+	.CRT$XCU    start:0x009B60A4 end:0x009B60A8 align:4
+	.bss        start:0x00C43B54 end:0x00C43B58
+
 Black/AnimalReaction.cpp:
 	.text       start:0x0041FD90 end:0x00420360
 	.rdata      start:0x008AE8C8 end:0x008AE8D4

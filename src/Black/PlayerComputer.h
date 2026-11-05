@@ -97,7 +97,7 @@ public:
 	// BW1W120 0055e370 BW1M119 014b3400
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GCOMPUTER_PLAYER; }
 	// BW1W120 00657cd0 BW1M119 014ae8f0
-	virtual void SaveExtraData(GameOSFile& param_1);
+	virtual void SaveExtraData(GameOSFile& file);
 	// BW1W120 0055e390 BW1M119 014b3480
 	virtual void SetSpeedInMetres(float speed_in_metres, bool32_t scale_speed) { SetSpeed(speed_in_metres); }
 	// BW1W120 0055e3a0 BW1M119 014b34e0

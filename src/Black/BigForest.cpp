@@ -3,6 +3,8 @@
 #include "BigForestInfo.h"
 #include "GameOSFile.h" /* For class GameOSFile */
 #include "Forest.h"
+#include "InterfaceStatus.h" /* For class GInterfaceStatus */
+#include "Villager.h"        /* For class Villager */
 
 GBigForestInfo GBigForestInfo::Infos[BIG_FOREST_INFO_LAST];
 
@@ -29,6 +31,11 @@ bool32_t BigForest::IsTuggable()
 bool32_t BigForest::VillagerMustAvoid(Villager* param_1)
 {
 	return false;
+}
+
+uint32_t BigForest::GetCarriedTreeType()
+{
+	return ((const GBigForestInfo*)info)->CarriedTreeType;
 }
 
 MESH_LIST BigForest::GetMesh() const
@@ -76,6 +83,15 @@ bool32_t BigForest::Save(GameOSFile& file)
 		return true;
 	}
 	return false;
+}
+
+uint32_t BigForest::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager)
+{
+	if (status->GetPlayer() == villager->GetPlayer())
+	{
+		return VILLAGER_DISCIPLE_FORESTER;
+	}
+	return VILLAGER_DISCIPLE_NONE;
 }
 
 BigForest::~BigForest() {}

@@ -102,6 +102,12 @@ Black/AnimalLion.cpp:
 	.data       start:0x00A493F4 end:0x00A49450
 	.bss        start:0x00CD5C50 end:0x00CD5C54
 
+Black/AnimalPig.cpp:
+	.text       start:0x00420160 end:0x004201C0
+	.rdata      start:0x008C38C0 end:0x008C38C8
+	.CRT$XCU    start:0x00A460CC end:0x00A460D4 align:4
+	.bss        start:0x00CD5C54 end:0x00CD5C58
+
 Black/AnimalReaction.cpp:
 	.text       start:0x004201C0 end:0x004207C0
 	.rdata      start:0x008C38C8 end:0x008C38D4
@@ -4718,3 +4724,6 @@ lib/libcmt/mbtoupr.obj:
 lib/libcmt/sehsupp.obj:
 	.text       start:0x008AB576 end:0x008AB5DB align:1
 	.rdata      start:0x00A26548 end:0x00A26558
+
+Black/WorldRoomCamera.cpp:
+	.text       start:0x007A4960 end:0x007A6480

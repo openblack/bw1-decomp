@@ -1,6 +1,7 @@
 #include "GameTimeConstants.h"
 #include "Forest.h"
 
+#include "FootpathLink.h"       /* For FootpathLink */
 #include "Game.h"               /* For GGame */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "Town.h"               /* For Town */
@@ -43,6 +44,16 @@ bool32_t Forest::IsFootpathLink()
 uint32_t Forest::GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3)
 {
 	return 0;
+}
+
+void Forest::UseFootpathIfNecessary(Living* living, const MapCoords& coords, unsigned char state)
+{
+	if (GetFootpathLink() != NULL)
+	{
+		GetFootpathLink()->UseFootpathIfNecessary(living, coords, state, this);
+		return;
+	}
+	GameThingWithPos::UseFootpathIfNecessary(living, coords, state);
 }
 
 void Forest::RemoveForestFromTowns(Forest* forest)

@@ -3,3 +3,5 @@
 #include "ColourConstants.h" /* For White */
 
 void MPFELogin::Destroy() {}
+
+MPFELoginDatabase::MPFELoginDatabase() {}

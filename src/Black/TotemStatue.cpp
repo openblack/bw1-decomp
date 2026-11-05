@@ -4,11 +4,26 @@
 #include "TotemStatue.h"
 
 #include "TotemStatueInfo.h"
+#include "Town.h"
 #include "TownCentre.h"
 
 #include "ColourConstants.h" /* For White */
 
 GTotemStatueInfo GTotemStatueInfo::Infos[TRIBE_TYPE_LAST];
+
+void TotemStatue::ToBeDeleted(bool32_t delete_now)
+{
+	DeleteDependancys();
+	MultiMapFixed::ToBeDeleted(delete_now);
+}
+
+void TotemStatue::DeleteDependancys()
+{
+	if (town_centre.Get())
+	{
+		town_centre->totem_statue.Clear();
+	}
+}
 
 bool TotemStatue::InteractsWithPhysicsObjects()
 {
@@ -32,6 +47,15 @@ Town* TotemStatue::GetTown()
 	if (town_centre.Get() != NULL)
 	{
 		return town_centre.Get()->GetTown();
+	}
+	return NULL;
+}
+
+WorshipSite* TotemStatue::GetWorshipSite()
+{
+	if (GetTown())
+	{
+		return GetTown()->GetWorshipSite();
 	}
 	return NULL;
 }

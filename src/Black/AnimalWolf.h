@@ -51,9 +51,9 @@ public:
 	// BW1W120 00420bf0 BW1M119 01180990
 	virtual uint32_t ProcessFadeOut();
 	// BW1W120 00420ef0 BW1M119 01180440
-	virtual uint32_t GetTimeToBank();
+	virtual float GetTimeToBank();
 	// BW1W120 00420f00 BW1M119 011803e0
-	virtual uint32_t GetBankAngle(float param_1, float param_2);
+	virtual float GetBankAngle(float param_1, float param_2);
 	// BW1W120 0041c600 BW1M119 01177f90
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041c620 BW1M119 01177f10

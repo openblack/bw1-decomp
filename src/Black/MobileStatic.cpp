@@ -1,6 +1,7 @@
 #include "MobileStatic.h"
 #include "MobileStaticInfo.h"
 #include "GameOSFile.h" /* For class GameOSFile */
+#include "Landscape.h"  /* For GLandscape */
 #include "Player.h"
 
 #if defined(VERSION_BW1W100)
@@ -62,6 +63,22 @@ MobileStatic::~MobileStatic() {}
 void MobileStatic::ToBeDeleted(bool32_t delete_now)
 {
 	MultiMapFixed::ToBeDeleted(delete_now);
+}
+
+void MobileStatic::GetWorldMatrix(LHMatrix* matrix)
+{
+	LHPoint pos;
+	GLandscape::ConvertMapCoordToLandscapePoint(Pos, pos);
+	float scale = GetScale();
+	if (scale != 1.0f)
+	{
+		matrix->SetYXZMatrixOnly(GetYAngle(), GetXAngle(), GetZAngle());
+		matrix->PreScale(scale, scale, scale);
+		matrix->SetTranslateOnly(pos);
+		return;
+	}
+	matrix->SetYXZMatrixOnly(GetYAngle(), GetXAngle(), GetZAngle());
+	matrix->SetTranslateOnly(pos);
 }
 
 bool32_t MobileStatic::CreatureMustAvoid(Creature* creature)

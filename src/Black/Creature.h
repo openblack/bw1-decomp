@@ -460,7 +460,7 @@ public:
 	// BW1W120 004794a0 BW1M119 011df790
 	virtual bool32_t IsReadyForNewScriptAction();
 	// BW1W120 0047d2c0 BW1M119 011d7890
-	virtual void SetControlledByScript(int param_1);
+	virtual void SetControlledByScript(int controlled);
 	// BW1W120 0047d8f0 BW1M119 011d6a20
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 0047d940 BW1M119 011d69c0
@@ -486,7 +486,7 @@ public:
 	// BW1W120 00476f70 BW1M119 011e3680
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
 	// BW1W120 00479020 BW1M119 011e0120
-	virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords& param_4);
+	virtual void ApplySingleEffect(EFFECT_TYPE type, float amount, GameThing* applied_by, const MapCoords& coords);
 	// BW1W120 00517910 BW1M119 010cd640
 	virtual void Draw();
 	// BW1W120 00472dc0 BW1M119 011e8d00

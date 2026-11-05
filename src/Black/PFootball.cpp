@@ -19,6 +19,20 @@ GPlayer* PFootball::GetPlayer()
 	return NULL;
 }
 
+bool32_t PFootball::IsRepaired()
+{
+	return GetPercentRepaired() >= 1.0f;
+}
+
+bool32_t PFootball::IsBuilt()
+{
+	if ((FixedFlags & FIXED_FLAG_UNDER_CONSTRUCTION) == FIXED_FLAG_UNDER_CONSTRUCTION)
+	{
+		return false;
+	}
+	return GetPercentBuilt() >= 1.0f;
+}
+
 uint32_t PFootball::SaveObject(LHOSFile& param_1, const MapCoords* param_2)
 {
 	return 0;

@@ -6,9 +6,20 @@ uint32_t Flock::GetSaveType()
 	return GAME_THING_TYPE_FLOCK;
 }
 
+char* Flock::GetDebugText()
+{
+	return "Flock:";
+}
+
 Town* Flock::GetTown()
 {
 	return town;
+}
+
+void Flock::ToBeDeleted(bool32_t delete_now)
+{
+	DeleteDependancys();
+	GameThingWithPos::ToBeDeleted(delete_now);
 }
 
 SCRIPT_OBJECT_TYPE Flock::GetScriptObjectType()
@@ -54,6 +65,11 @@ bool32_t Flock::IsFlock() const
 bool32_t Flock::IsScriptContainer() const
 {
 	return true;
+}
+
+const char* Flock::GetText()
+{
+	return "Flock";
 }
 
 void Flock::ResetForIteration()

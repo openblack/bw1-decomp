@@ -175,6 +175,16 @@ bool32_t Animal::LandAtPos()
 	return false;
 }
 
+float Animal::GetTimeToBank()
+{
+	return 0.0f;
+}
+
+float Animal::GetBankAngle(float param_1, float param_2)
+{
+	return 0.0f;
+}
+
 void Animal::DebugShowText() {}
 
 bool32_t Animal::HideInLair()

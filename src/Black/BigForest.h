@@ -54,7 +54,7 @@ public:
 	// BW1W120 00438f60 BW1M119 010239b0
 	virtual void Draw();
 	// BW1W120 00439550 BW1M119 010b51f0
-	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
+	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager);
 	// BW1W120 00439050 BW1M119 010b5c00
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00438da0 BW1M119 010b4eb0
