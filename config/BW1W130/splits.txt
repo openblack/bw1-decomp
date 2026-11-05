@@ -3043,14 +3043,28 @@ lib/libcpmt/locale0.obj:
 lib/libcpmt/locale.obj:
 	.text       start:0x007B4D2D end:0x007B670E align:1
 	.text$x     start:0x008AB91C end:0x008ABBA4 align:4
+	.rdata      start:0x00A1ED20 end:0x00A1ED30 align:4
+	.xdata$x    start:0x00A3CB58 end:0x00A3CF08 align:8
+	.CRT$XCU    start:0x00A47CD4 end:0x00A47CD8 align:4
+	.bss        start:0x00F04C64 end:0x00F04C78 align:4
 
 lib/libcpmt/iostream.obj:
 	.text       start:0x007B670E end:0x007B6C91 align:1
 	.text$x     start:0x008ABBA4 end:0x008ABC68 align:4
+	.xdata$x    start:0x00A3CF08 end:0x00A3CFB0 align:8
+	.CRT$XCU    start:0x00A47CD8 end:0x00A47CF8 align:4
+	.data       start:0x00CAC174 end:0x00CAC178 align:4
+	.bss        start:0x00F04C78 end:0x00F04E68 align:8
 
 lib/libcpmt/wiostrea.obj:
 	.text       start:0x007B6C91 end:0x007B7B58 align:1
 	.text$x     start:0x008ABC68 end:0x008ABDBC align:4
+	.rdata      start:0x00A1ED30 end:0x00A1EDC8 align:4
+	.rdata$r    start:0x00A3B144 end:0x00A3B2E8 align:8
+	.xdata$x    start:0x00A3CFB0 end:0x00A3D110 align:8
+	.CRT$XCU    start:0x00A47CF8 end:0x00A47D20 align:4
+	.data       start:0x00CAC178 end:0x00CAC2B4 align:8
+	.bss        start:0x00F04E68 end:0x00F05060 align:8
 
 lib/libcpmt/_tolower.obj:
 	.text       start:0x007B7B58 end:0x007B7D67 align:1
@@ -3064,7 +3078,7 @@ lib/libcpmt/xstod.obj:
 lib/libcpmt/fiopen.obj:
 	.text       start:0x007B7F2D end:0x007B7FE8 align:1
 	.rdata      start:0x00A1EDC8 end:0x00A1EE1F align:4
-	.CRT$XCU    start:0x00A47D00 end:0x00A47D04 align:4
+	.CRT$XCU    start:0x00A47D20 end:0x00A47D24 align:4
 	.data       start:0x00CAC2B4 end:0x00CAC2F0 align:4
 
 lib/libcpmt/xwctomb.obj:
@@ -3081,10 +3095,22 @@ lib/libcpmt/nomemory.obj:
 lib/libcpmt/wlocale.obj:
 	.text       start:0x007B838D end:0x007BE2A7 align:1
 	.text$x     start:0x008ABDBC end:0x008AC5AC align:4
+	.rdata      start:0x00A1EE44 end:0x00A1F164 align:4
+	.rdata$r    start:0x00A3B334 end:0x00A3B7EC align:8
+	.xdata$x    start:0x00A3D150 end:0x00A3DE80 align:8
+	.CRT$XCU    start:0x00A47D24 end:0x00A47D28 align:4
+	.data       start:0x00CAC30C end:0x00CAC690 align:8
+	.bss        start:0x00F05074 end:0x00F05110 align:4
 
 lib/libcpmt/xlocale.obj:
 	.text       start:0x007BE2A7 end:0x007C1170 align:1
 	.text$x     start:0x008AC5AC end:0x008ACA68 align:4
+	.rdata      start:0x00A1F164 end:0x00A1F25C align:4
+	.rdata$r    start:0x00A3B7EC end:0x00A3BAD0 align:8
+	.xdata$x    start:0x00A3DE80 end:0x00A3E610 align:8
+	.CRT$XCU    start:0x00A47D28 end:0x00A47D2C align:4
+	.data       start:0x00CAC690 end:0x00CAC8A0 align:8
+	.bss        start:0x00F05110 end:0x00F05170 align:4
 
 lib/libcpmt/xmbtowc.obj:
 	.text       start:0x007C1170 end:0x007C1518 align:1

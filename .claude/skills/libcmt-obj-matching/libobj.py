@@ -432,7 +432,23 @@ def load_symbols(version):
 
 
 def read_exe(version):
-    return (ROOT / "orig" / version / EXECUTABLE.get(version, "runblack-decrypted.exe")).read_bytes()
+    """The image as loaded (indexed by VA - IMAGE_BASE): Creature Isle's file
+    alignment is 0x200, so its file offsets are not RVAs."""
+    raw = (ROOT / "orig" / version / EXECUTABLE.get(version, "runblack-decrypted.exe")).read_bytes()
+    pe = struct.unpack_from("<I", raw, 0x3C)[0]
+    nsec = struct.unpack_from("<H", raw, pe + 6)[0]
+    optsz = struct.unpack_from("<H", raw, pe + 20)[0]
+    headers = struct.unpack_from("<I", raw, pe + 24 + 60)[0]
+    secs = []
+    for i in range(nsec):
+        vsz, va, rsz, rptr = struct.unpack_from("<IIII", raw, pe + 24 + optsz + i * 40 + 8)
+        secs.append((va, vsz, rsz, rptr))
+    image = bytearray(max(va + max(vsz, rsz) for va, vsz, rsz, _ in secs))
+    image[:headers] = raw[:headers]
+    for va, vsz, rsz, rptr in secs:
+        n = min(rsz, len(raw) - rptr)
+        image[va:va + n] = raw[rptr:rptr + n]
+    return bytes(image)
 
 
 # --------------------------------------------------------------------------- #
