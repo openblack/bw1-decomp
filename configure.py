@@ -1811,6 +1811,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/ValueSpinner.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DWeather.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DTexture.cpp", extra_cflags=["/GX"], pch=True),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DLine.cpp", extra_cflags=["/Gy"] if config.version == "BW1W100" else [], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DAnimation.cpp", extra_cflags=cflags_lh3d_animation, pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LandCell.cpp", pch=True),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/Route.cpp", progress_category="sdk"),

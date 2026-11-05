@@ -2751,7 +2751,7 @@ Lionhead/LH3DLib/development/LH3DP3.cpp:
 	.data1      start:0x01045000 end:0x01045B40
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
-	.text       start:0x007C5170 end:0x007C67C0
+	.text       start:0x007C5170 end:0x007C6CC0
 	.text$x     start:0x008D1640 end:0x008D1658 align:4
 	.CRT$XCU    start:0x00A374C0 end:0x00A374C8 align:4
 
@@ -3779,7 +3779,7 @@ Lionhead/LH3DLib/development/PhysOb.cpp:
 	.bss        start:0x00F1EA88 end:0x00F1EA8C
 
 Lionhead/LH3DLib/development/LH3DIsland.cpp:
-	.text       start:0x0081BFC0 end:0x00821520
+	.text       start:0x0081B4A0 end:0x00821B80
 	.text$x     start:0x008D2EE0 end:0x008D2F10 align:4
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
@@ -3847,6 +3847,10 @@ Lionhead/LH3DLib/development/LH3DTexture.cpp:
 	.data       start:0x00CAC4C0 end:0x00CAC64C
 	.bss        start:0x00F61D30 end:0x00F61E14 align:8
 
+Lionhead/LH3DLib/development/LH3DLine.cpp:
+	.text       start:0x00856F20 end:0x00856F80
+	.bss        start:0x00F61E14 end:0x00F61E18
+
 Lionhead/LH3DLib/development/LH3DAnimation.cpp:
 	.text       start:0x00856F80 end:0x008584C0
 	.text$x     start:0x008D3220 end:0x008D3250 align:4
@@ -3885,7 +3889,7 @@ Lionhead/LH3DLib/development/LH3DZSorter.cpp:
 	.bss        start:0x00F626B0 end:0x00F6E6BC align:8
 
 Lionhead/LH3DLib/development/LH3DStorm.cpp:
-	.text       start:0x0085CBC0 end:0x0085DB80
+	.text       start:0x0085CAD0 end:0x0085DB80
 	.text$x     start:0x008D3290 end:0x008D32D0 align:4
 
 Lionhead/LH3DLib/development/LH3DSprite.cpp:
@@ -3911,7 +3915,7 @@ Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x00860490 end:0x00861BA0
 
 Lionhead/LH3DLib/development/Font.cpp:
-	.text       start:0x00861BF0 end:0x008621E0
+	.text       start:0x00861BA0 end:0x008621E0
 	.text$x     start:0x008D32D0 end:0x008D32F0 align:4
 
 Lionhead/LH3DLib/development/LHVideoPlayer.cpp:
@@ -3999,7 +4003,7 @@ Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.bss        start:0x01029C2C end:0x01029C3C
 
 Lionhead/LH3DLib/development/LH3DFade.cpp:
-	.text       start:0x0088EF70 end:0x0088F280
+	.text       start:0x0088EF40 end:0x0088F280
 	.bss        start:0x01029C40 end:0x01029C48
 
 Lionhead/LH3DLib/development/LH3DLandscape.cpp:

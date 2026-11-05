@@ -2990,7 +2990,7 @@ Lionhead/LH3DLib/development/LH3DP3.cpp:
 	.drectve    type:comment start:0x00400330 end:0x004004BB
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
-	.text       start:0x007B2060 end:0x007B36B0
+	.text       start:0x007B2060 end:0x007B3BB0
 	.text$x     start:0x008AB730 end:0x008AB748 align:4
 	.rdata      start:0x00A1EA04 end:0x00A1EA0C
 	.xdata$x    start:0x00A3C680 end:0x00A3C6A8 align:4
@@ -4080,7 +4080,7 @@ Lionhead/LH3DLib/development/PhysOb.cpp:
 	.bss        start:0x00F1B2E0 end:0x00F1B2E4
 
 Lionhead/LH3DLib/development/LH3DIsland.cpp:
-	.text       start:0x00804440 end:0x008099A0
+	.text       start:0x00803920 end:0x0080A000
 	.text$x     start:0x008ACF60 end:0x008ACF90 align:4
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
@@ -4148,6 +4148,10 @@ Lionhead/LH3DLib/development/LH3DTexture.cpp:
 	.data       start:0x00CB9DEC end:0x00CB9F78
 	.bss        start:0x00F5E568 end:0x00F5E64C align:8
 
+Lionhead/LH3DLib/development/LH3DLine.cpp:
+	.text       start:0x0083E9F0 end:0x0083EA50
+	.bss        start:0x00F5E64C end:0x00F5E650
+
 Lionhead/LH3DLib/development/LH3DAnimation.cpp:
 	.text       start:0x0083EA50 end:0x0083FF70
 	.text$x     start:0x008AD2A0 end:0x008AD2D0 align:4
@@ -4186,7 +4190,7 @@ Lionhead/LH3DLib/development/LH3DZSorter.cpp:
 	.bss        start:0x00F5EEE8 end:0x00F6AEF4 align:8
 
 Lionhead/LH3DLib/development/LH3DStorm.cpp:
-	.text       start:0x00844670 end:0x00845630
+	.text       start:0x00844580 end:0x00845630
 	.text$x     start:0x008AD310 end:0x008AD350 align:4
 
 Lionhead/LH3DLib/development/LH3DSprite.cpp:
@@ -4216,7 +4220,7 @@ Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x008480A0 end:0x008497B0
 
 Lionhead/LH3DLib/development/Font.cpp:
-	.text       start:0x00849800 end:0x00849DF0
+	.text       start:0x008497B0 end:0x00849DF0
 	.text$x     start:0x008AD350 end:0x008AD370 align:4
 
 Lionhead/LH3DLib/development/LHVideoPlayer.cpp:
@@ -4298,7 +4302,7 @@ Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.bss        start:0x0102637C end:0x0102638C
 
 Lionhead/LH3DLib/development/LH3DFade.cpp:
-	.text       start:0x00875060 end:0x00875370
+	.text       start:0x00875030 end:0x00875370
 	.bss        start:0x01026390 end:0x01026398
 
 Lionhead/LH3DLib/development/LH3DSRAMTex.cpp:
