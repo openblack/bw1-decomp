@@ -27,3 +27,5 @@ char* FireFly::GetDebugText()
 {
 	return "FireFly:";
 }
+
+void FireFly::DrawAll() {}

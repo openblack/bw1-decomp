@@ -62,6 +62,8 @@ Scaffold::Scaffold(const MapCoords& coords, const GScaffoldInfo* info, Object* p
 	SetToZero();
 }
 
+Scaffold::~Scaffold() {}
+
 Scaffold* Scaffold::Create(const MapCoords& coords, const GScaffoldInfo* info, Town* town, Object* parent,
                            float y_angle, float scale)
 {
@@ -74,4 +76,9 @@ Scaffold* Scaffold::Create(const MapCoords& coords, const GScaffoldInfo* info, T
 		scaffold->SecondPlanned = PlannedAbode::CreateNoInit(coords, NULL, NULL, 0.0f, 1.0f);
 	}
 	return scaffold;
+}
+
+uint32_t Scaffold::ThrowObjectFromHand(GInterfaceStatus* status, bool32_t dont_replant)
+{
+	return Object::ThrowObjectFromHand(status, dont_replant);
 }

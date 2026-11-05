@@ -2,6 +2,7 @@
 #include "GameTimeConstants.h"
 #include "Football.h"
 #include "FootballPositionInfo.h"
+#include "Villager.h"
 
 uint32_t Football::GetSaveType()
 {
@@ -11,6 +12,11 @@ uint32_t Football::GetSaveType()
 bool Football::InteractsWithPhysicsObjects()
 {
 	return false;
+}
+
+bool32_t Villager::FootballWonGoal()
+{
+	return true;
 }
 
 LH3DObject::ObjectType Football::Get3DType()
@@ -38,6 +44,12 @@ Football::Football(const MapCoords& coords, const GAbodeInfo* info, Town* town, 
 	field_0x314 = 0;
 	TheBall = NULL;
 	field_0x30c = 1.0f;
+}
+
+void Football::ToBeDeleted(bool32_t delete_now)
+{
+	DeleteDependancys();
+	Abode::ToBeDeleted(delete_now);
 }
 
 bool32_t Football::IsFootball()

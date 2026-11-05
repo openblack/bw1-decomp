@@ -37,7 +37,7 @@ public:
 	// BW1W120 006e77a0 BW1M119 01145620
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00439720 BW1M119 010b6ac0
-	virtual void SetPlayer(GPlayer* param_1);
+	virtual void SetPlayer(GPlayer* new_player) { player = new_player; }
 	// BW1W120 006e7170 BW1M119 01145c20
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
 	                             const MapCoords* param_5, int param_6);
@@ -58,11 +58,11 @@ public:
 	// BW1W120 006e7a60 BW1M119 01145120
 	virtual uint32_t GetOverwriteTapToolTip();
 	// BW1W120 00439760 BW1M119 010b6ba0
-	virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
+	virtual bool32_t CanBeAttackedByCreature(Creature* creature) { return true; }
 	// BW1W120 006e7a70 BW1M119 011450c0
 	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 00439750 BW1M119 010b6b60
-	virtual uint32_t GetCreatureMimicType();
+	virtual uint32_t GetCreatureMimicType() { return CREATURE_MIMIC_TYPE_ROCK; }
 	// BW1W120 006e7070 BW1M119 01145fe0
 	virtual bool32_t CanBeThrownByPlayer();
 	// BW1W120 006e79e0 BW1M119 01011a70
@@ -72,7 +72,7 @@ public:
 	// BW1W120 00517f10 BW1M119 01045a20
 	virtual void Draw();
 	// BW1W120 00439710 BW1M119 010b6a70
-	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE resource_type) { return false; }
 	// BW1W120 006e70c0 BW1M119 01145ef0
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 006e7090 BW1M119 01145f30

@@ -49,6 +49,8 @@ public:
 	void SetToZero();
 	// BW1W120 00525950 BW1M119 010cfb40
 	EffectValues& operator/=(const EffectNumbers& rhs);
+	// BW1W120 00525100 BW1M119 010d01a0
+	int ApplyEffectToMapPos(const MapCoords& coords);
 };
 
 // BW1W120 00524ed0 BW1M119 010d0b60

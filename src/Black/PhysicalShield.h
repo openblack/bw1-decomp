@@ -43,9 +43,9 @@ public:
 	// BW1W120 0072d7f0 BW1M119 015376a0
 	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
 	// BW1W120 0072ce60 BW1M119 01538690
-	virtual float ApplyEffect(EffectValues& param_1, int param_2);
+	virtual float ApplyEffect(EffectValues& values, int param_2);
 	// BW1W120 0072ce80 BW1M119 01538620
-	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
+	virtual uint32_t DestroyedByEffect(GPlayer* player, float damage);
 	// BW1W120 0072cea0 BW1M119 015385f0
 	virtual void Draw();
 	// BW1W120 0072ccb0 BW1M119 01538990

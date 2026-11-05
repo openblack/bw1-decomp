@@ -6,6 +6,11 @@
 #include "ColourConstants.h" /* For White */
 #include "GameOSFile.h"      /* For class GameOSFile */
 
+float GArena::GetRadius()
+{
+	return Radius;
+}
+
 uint32_t GArena::GetSaveType()
 {
 	return GAME_THING_TYPE_GARENA;

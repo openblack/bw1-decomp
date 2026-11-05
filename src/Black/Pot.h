@@ -46,7 +46,7 @@ public:
 	// BW1W120 0066d100 BW1M119 01125c00
 	virtual ~Pot();
 	// BW1W120 0066d110 BW1M119 01125b70
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0066d2b0 BW1M119 01004160
 	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
 	// BW1W120 0066d410 BW1M119 01124f00
@@ -93,7 +93,7 @@ public:
 	// BW1W120 0066f560 BW1M119 01120190
 	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 0066dd30 BW1M119 01123ac0
-	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status);
 	// BW1W120 0066f520 BW1M119 01120290
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
 	// BW1W120 0055d4c0 BW1M119 010d7bd0
@@ -109,7 +109,7 @@ public:
 	// BW1W120 0066d6d0 BW1M119 01124920
 	virtual void EndOnFire();
 	// BW1W120 0066d710 BW1M119 01124870
-	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* status);
 	// BW1W120 0066dd50 BW1M119 01123990
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 0066ddd0 BW1M119 011237e0
@@ -176,6 +176,13 @@ public:
 	static uint32_t GetPoisonSpecular();
 	// BW1W120 0066d660 BW1M119 01124ab0
 	void SetupReaction();
+	// BW1W120 0066d6a0 BW1M119 01124a40
+	void RemoveReaction();
+	// BW1W120 0066d4a0 BW1M119 01124d90
+	float GetScaleFromAmount();
+	// BW1W120 0066f270 BW1M119 011202e0
+	uint32_t AddResourceToPos(const MapCoords& coords, GInterfaceStatus* status, RESOURCE_TYPE type, uint32_t amount,
+	                          bool param_5, bool param_6);
 };
 
 #endif /* BW1_DECOMP_POT_INCLUDED_H */

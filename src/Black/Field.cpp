@@ -9,6 +9,41 @@
 
 GFieldTypeInfo GFieldTypeInfo::Infos[FIELD_INFO_TYPE_LAST];
 
+bool32_t GFieldTypeInfo::IsOkToCreateAtPos(const MapCoords& coords, float y_angle, float scale) const
+{
+	return coords.IsSuitableForFixed(GetMesh(), y_angle, scale) != false;
+}
+
+void Field::ToBeDeleted(bool32_t delete_now)
+{
+	Abode::ToBeDeleted(delete_now);
+}
+
+char* Field::GetDebugText()
+{
+	return "Field:";
+}
+
+float Field::GetMeshRadius() const
+{
+	return 5.0f;
+}
+
+MapCoords Field::GetDoorPos()
+{
+	return Pos;
+}
+
+float Field::Get2DRadius()
+{
+	return 5.0f;
+}
+
+MapCoords Field::GetArrivePos()
+{
+	return Pos;
+}
+
 uint32_t Field::GetSaveType()
 {
 	return GAME_THING_TYPE_FIELD;

@@ -6,9 +6,69 @@
 #include "PileWood.h"
 #include "GameOSFile.h" /* For class GameOSFile */
 
+Pot::~Pot() {}
+
+void Pot::ToBeDeleted(bool32_t delete_now)
+{
+	RemoveReaction();
+	MobileObject::ToBeDeleted(delete_now);
+}
+
+void Pot::StartOnFire()
+{
+	RemoveReaction();
+}
+
+bool32_t Pot::InterfaceSetInMagicHand(GInterfaceStatus* status)
+{
+	RemoveReaction();
+	return Object::InterfaceSetInMagicHand(status);
+}
+
+void PotStructure::ToBeDeleted(bool32_t delete_now)
+{
+	RemoveFromStructure();
+	Pot::ToBeDeleted(delete_now);
+}
+
+bool32_t Pot::DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status)
+{
+	DoDeleteObjectAndTakeResource(object, status);
+	return true;
+}
+
 uint32_t PileFood::GetSaveType()
 {
 	return GAME_THING_TYPE_PILE_FOOD;
+}
+
+char* PileFood::GetDebugText()
+{
+	return "PileFood:";
+}
+
+PileFood::~PileFood() {}
+
+uint32_t PileFood::GetHandPotInfoType() const
+{
+	return POT_INFO_HAND_FOOD;
+}
+
+uint32_t PileWood::GetHandPotInfoType() const
+{
+	return POT_INFO_HAND_WOOD;
+}
+
+PileWood::~PileWood() {}
+
+PileResource* PileResource::IsPileResource()
+{
+	return this;
+}
+
+float Pot::GetRadiusMultiplierForApplyingPotToPos()
+{
+	return 2.0f;
 }
 
 LH3DObject::ObjectType PileFood::Get3DType()

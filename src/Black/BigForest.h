@@ -101,6 +101,8 @@ public:
 
 	// BW1W120 00439430 BW1M119 010b5490
 	static void SaveAll(LHOSFile& file, const MapCoords& coords);
+	// BW1W120 00439220 BW1M119 010b5730
+	void AddTreeAround();
 };
 
 #endif /* BW1_DECOMP_BIG_FOREST_INCLUDED_H */

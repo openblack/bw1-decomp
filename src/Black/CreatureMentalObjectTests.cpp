@@ -2,6 +2,9 @@
 #include "Creature.h" /* For Creature */
 #include "Abode.h"    /* For Abode */
 #include "Town.h"     /* For Town */
+#include "OneOffSpellSeed.h"
+#include "StoragePit.h"
+#include "Villager.h"
 
 bool32_t MultiMapFixed::IsBuildingWhichIsBeingBuilt(Creature* creature)
 {
@@ -37,4 +40,24 @@ Abode* Town::GetMostImportantAbodeOnFire()
 		}
 	}
 	return found;
+}
+
+bool32_t Villager::IsVillagerNotWorshipping(Creature* creature)
+{
+	return !IsDancing();
+}
+
+bool32_t OneOffSpellSeed::CanBeEatenByCreature(Creature* creature)
+{
+	return false;
+}
+
+bool32_t Villager::CanHaveMagicFoodCastOnMe(Creature* creature)
+{
+	return false;
+}
+
+bool32_t StoragePit::CanHaveMagicWoodCastOnMe(Creature* creature)
+{
+	return true;
 }

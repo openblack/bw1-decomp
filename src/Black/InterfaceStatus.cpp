@@ -17,6 +17,16 @@ const char* GInterfaceStatus::GetText()
 	return "Interface Status";
 }
 
+GInterface* GInterfaceStatus::GetInterface()
+{
+	return iface;
+}
+
+SPELL_SEED_TYPE GInterfaceStatus::GetLastSpellGained()
+{
+	return LastSpellGained;
+}
+
 uint32_t GLeashStatus::GetSaveType()
 {
 	return GAME_THING_TYPE_GLEASH_STATUS;

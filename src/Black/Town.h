@@ -757,6 +757,8 @@ public:
 	static void DisplayHowImpressed();
 	// BW1W120 007489c0 BW1M119 0102c470
 	void Draw();
+	// BW1W120 00747de0 BW1M119 01056220
+	void ProcessTownRepairs();
 };
 
 #endif /* BW1_DECOMP_TOWN_INCLUDED_H */

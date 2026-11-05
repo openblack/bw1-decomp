@@ -18,6 +18,9 @@ class GameThing;
 class GameThingWithPos;
 class LHOSFile;
 struct MapCoords;
+class AtomCore;
+class GMagicFireBallInfo;
+class SpellSeed;
 
 class MagicFireBall : public Object
 {
@@ -99,6 +102,10 @@ public:
 
 	// BW1W120 00682a20 BW1M119 01407330
 	MagicFireBall();
+	// BW1W120 00682e10 BW1M119 01406bd0
+	bool32_t DeleteAndPutIntoSpellSeed(SpellSeed* seed);
+	// BW1W120 00682970 BW1M119 014073b0
+	static MagicFireBall* Create(const MapCoords& coords, const GMagicFireBallInfo* info, AtomCore* atom);
 };
 
 #endif /* BW1_DECOMP_MAGIC_FIRE_BALL_INCLUDED_H */

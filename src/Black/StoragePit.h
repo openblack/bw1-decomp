@@ -98,7 +98,7 @@ public:
 	// BW1W120 007335d0 BW1M119 0115a370
 	virtual void SetPoisoned(int param_1);
 	// BW1W120 00733730 BW1M119 01159ff0
-	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+	virtual void ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage);
 	// BW1W120 00733550 BW1M119 inlined
 	virtual bool IsPoisonedResource(RESOURCE_TYPE type);
 	// BW1W120 00733400 BW1M119 01002830

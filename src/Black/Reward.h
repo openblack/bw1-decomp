@@ -17,6 +17,7 @@ class Town;
 class Base;
 class GInterfaceStatus;
 class GPlayer;
+class GRewardInfo;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
@@ -93,6 +94,11 @@ public:
 
 	// BW1W120 006e5620 BW1M119 01144cd0
 	Reward();
+	// BW1W120 006e64c0 BW1M119 01142a60
+	void ProcessDrawing();
+	// BW1W120 006e58c0 BW1M119 01144650
+	static Reward* Create(const MapCoords& coords, const GRewardInfo* info, GPlayer* player, int param_4, float param_5,
+	                      float param_6, Town* town);
 };
 
 class GRewardProgress : public GBaseInfo

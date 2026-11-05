@@ -54,7 +54,7 @@ public:
 	// BW1W120 00648950 BW1M119 inlined
 	virtual BuildingSite* CreateBuildingSite();
 	// BW1W120 00469660 BW1M119 010c09d0
-	virtual MultiMapFixed* CreatePlanned(float param_1);
+	virtual MultiMapFixed* CreatePlanned(float food) { return NULL; }
 	// BW1W120 00465540 BW1M119 010d6220
 	virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1) { return NULL; }
 	// BW1W120 00648c50 BW1M119 0111e740

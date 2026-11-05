@@ -157,6 +157,11 @@ void AttributeType::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 		Value = ValueRange() - 1;
 }
 
+const char* AttributeType::ValueName(unsigned long value)
+{
+	return ValueNames[value];
+}
+
 void AttributeLife::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 {
 	Object* object = dynamic_cast<Object*>(thing);

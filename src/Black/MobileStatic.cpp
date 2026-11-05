@@ -38,8 +38,8 @@ bool32_t MobileStatic::Load(GameOSFile& file)
 	if (MultiMapFixed::Load(file))
 	{
 		file.ReadPtr((GameThing**)&Player);
-		file.ReadIt(field_0x80);
-		file.ReadIt(field_0x84);
+		file.ReadIt(XAngle);
+		file.ReadIt(ZAngle);
 		return true;
 	}
 	return false;
@@ -50,14 +50,24 @@ bool32_t MobileStatic::Save(GameOSFile& file)
 	if (MultiMapFixed::Save(file))
 	{
 		file.WritePtr(Player);
-		file.WriteIt(field_0x80);
-		file.WriteIt(field_0x84);
+		file.WriteIt(XAngle);
+		file.WriteIt(ZAngle);
 		return true;
 	}
 	return false;
 }
 
 MobileStatic::~MobileStatic() {}
+
+void MobileStatic::ToBeDeleted(bool32_t delete_now)
+{
+	MultiMapFixed::ToBeDeleted(delete_now);
+}
+
+bool32_t MobileStatic::CreatureMustAvoid(Creature* creature)
+{
+	return Object::CreatureMustAvoid(creature);
+}
 
 #ifdef VERSION_BW1WCI
 GBaseOnly* GBaseOnly::Create(const MapCoords& coords, const GObjectInfo* info, float y_angle, float scale)

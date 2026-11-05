@@ -157,6 +157,10 @@ public:
 	virtual void GetAPI();
 	virtual void AutoStart(LHTransport* transport);
 	virtual int  LoadBinary(LHTransport* transport, const char* path);
+	// BW1W120 006f6c30 BW1M119 014ef570
+	int FindFirstRunningTaskID(const char* script_name);
+	// BW1W120 006f6a90 BW1M119 014ef870
+	VMScriptType GetCurrentTaskScriptType();
 };
 
 #endif /* BW1_DECOMP_SCRIPT_DLL_INCLUDED_H */

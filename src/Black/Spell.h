@@ -238,6 +238,8 @@ public:
 	void CreateSpellPoint(float param_1, int param_2);
 	// BW1W120 007216f0 BW1M119 0151db80
 	float GetTribalPower();
+	// BW1W120 00721510 BW1M119 0151deb0
+	bool32_t IsCastFromHand() const;
 };
 
 #endif /* BW1_DECOMP_SPELL_INCLUDED_H */

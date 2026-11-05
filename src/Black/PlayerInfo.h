@@ -51,7 +51,11 @@ public:
 	// Override methods
 
 	// BW1W120 0054b830 BW1M119 014ef3b0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = 1;
+		return &Info;
+	}
 
 	// Static methods
 

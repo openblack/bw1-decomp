@@ -25,3 +25,14 @@ void Workshop::ResolveLoad()
 {
 	Object::ResolveLoad();
 }
+
+LH3DObject::ObjectType Workshop::Get3DType()
+{
+	return LH3DObject::MORPHABLE;
+}
+
+bool32_t Workshop::DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status)
+{
+	DoDeleteObjectAndTakeResource(object, status);
+	return true;
+}

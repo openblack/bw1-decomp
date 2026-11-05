@@ -58,7 +58,7 @@ public:
 	uint32_t                  field_0xa0;
 	uint32_t                  field_0xa4;
 	float                     field_0xa8;
-	uint32_t                  field_0xac;
+	float                     NonInterpedHeartBeatPulseValue;
 	uint32_t                  field_0xb0;
 	uint32_t                  field_0xb4;
 	uint32_t                  field_0xb8;

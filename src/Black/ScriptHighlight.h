@@ -133,6 +133,8 @@ public:
 	void SetActivated(int param_1);
 	// BW1W120 0070ac20 BW1M119 01051a30
 	bool IsDidYouKnow();
+	// BW1W120 0070a750 BW1M119 01502700
+	MESH_LIST GetActiveMesh();
 };
 
 #endif /* BW1_DECOMP_SCRIPT_HIGHLIGHT_INCLUDED_H */

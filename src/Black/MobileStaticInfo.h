@@ -16,7 +16,8 @@ class GObjectInfo;
 class GMobileStaticInfo : public GMultiMapFixedInfo
 {
 public:
-	uint8_t field_0x120[0xc];
+	MESH_LIST MeshId; /* 0x120 */
+	uint8_t   field_0x124[0x8];
 
 	// Override methods
 
@@ -25,7 +26,7 @@ public:
 	// BW1W120 006084f0 BW1M119 013c9000
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 006084e0 BW1M119 01052a20
-	virtual MESH_LIST GetMesh() const;
+	virtual MESH_LIST GetMesh() const { return MeshId; }
 
 	// Static data
 
@@ -38,7 +39,7 @@ public:
 	static GMobileStaticInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in MobileStatic.h.
-	INFO_DATA_BLOCK(field_0x120, field_0x120)
+	INFO_DATA_BLOCK(MeshId, field_0x124)
 	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "MobileStatic.h", 21)
 };
 

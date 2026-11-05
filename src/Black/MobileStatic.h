@@ -34,19 +34,19 @@ class MobileStatic : public MultiMapFixed
 {
 public:
 	GPlayer* Player;
-	uint32_t field_0x80;
-	uint32_t field_0x84;
+	float    XAngle;
+	float    ZAngle;
 
 	// Override methods
 
 	// BW1W120 00608750 BW1M119 013c8b90
 	virtual ~MobileStatic();
 	// BW1W120 00608760 BW1M119 013c8b40
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 006088b0 BW1M119 013c8650
 	virtual GPlayer* GetPlayer();
 	// BW1W120 004396a0 BW1M119 010b6fd0
-	virtual bool32_t IsFunctional();
+	virtual bool32_t IsFunctional() { return IsAvailable(); }
 	// BW1W120 0055d750 BW1M119 013c1970
 	virtual char* GetDebugText() { return "MobileStatic:"; }
 	// BW1W120 00608590 BW1M119 013c8e20
@@ -64,11 +64,11 @@ public:
 	// BW1W120 004e48d0 BW1M119 015ec5e0
 	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 00439640 BW1M119 010b6d00
-	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
+	virtual bool32_t CanBePlayedWithByCreature(Creature* creature) { return true; }
 	// BW1W120 004e4cc0 BW1M119 015eb8c0
 	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 00439630 BW1M119 010b6cb0
-	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* creature) { return true; }
 	// BW1W120 004e4c40 BW1M119 015eb9d0
 	virtual bool32_t IsToyAwayFromHome(Creature* param_1);
 	// BW1W120 00609020 BW1M119 013c7590
@@ -82,9 +82,9 @@ public:
 	// BW1W120 00609110 BW1M119 0104fe20
 	virtual bool32_t IsFence();
 	// BW1W120 004396d0 BW1M119 010b70f0
-	virtual bool32_t CanBeUsedForThrowingDamageByCreature(Creature* param_1);
+	virtual bool32_t CanBeUsedForThrowingDamageByCreature(Creature* creature) { return !IsToy(creature); }
 	// BW1W120 00439650 BW1M119 010b6d50
-	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
+	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* creature) { return true; }
 	// BW1W120 0055d710 BW1M119 013b70f0
 	virtual uint32_t GetCreatureMimicType() { return CREATURE_MIMIC_TYPE_MOBILE_OBJECT; }
 	// BW1W120 004d1af0 BW1M119 01247a50
@@ -94,9 +94,9 @@ public:
 	// BW1W120 00609330 BW1M119 01008370
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00439610 BW1M119 010b6c30
-	virtual float GetXAngle();
+	virtual float GetXAngle() { return XAngle; }
 	// BW1W120 00439620 BW1M119 010b6c70
-	virtual float GetZAngle();
+	virtual float GetZAngle() { return ZAngle; }
 	// BW1W120 00608ce0 BW1M119 013c7c00
 	virtual void SetXYZAngles(float param_1, float param_2, float param_3);
 	// BW1W120 00608d60 BW1M119 013c7ad0
@@ -108,11 +108,11 @@ public:
 	// BW1W120 00609230 BW1M119 01099460
 	virtual float GetHoldLoweringMultiplier();
 	// BW1W120 00439680 BW1M119 010b6e40
-	virtual MESH_LIST GetMesh() const;
+	virtual MESH_LIST GetMesh() const { return info->GetMesh(); }
 	// BW1W120 00517f60 BW1M119 01045990
 	virtual void Draw();
 	// BW1W120 00439670 BW1M119 010b6df0
-	virtual bool32_t CanBePickedUp();
+	virtual bool32_t CanBePickedUp() { return !(Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP); }
 	// BW1W120 00608de0 BW1M119 013c78c0
 	virtual void GetWorldMatrix(LHMatrix* param_1);
 	// BW1W120 00609700 BW1M119 013c60f0
@@ -128,12 +128,12 @@ public:
 	// BW1W120 00608c30 BW1M119 013c7d30
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 004396c0 BW1M119 010b7080
-	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
+	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return 1; }
 	// BW1W120 00608b30 BW1M119 013c8030
 	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 004396b0 BW1M119 010b7030
-	virtual uint32_t ApplyOnlyAfterReleased();
+	virtual uint32_t ApplyOnlyAfterReleased() { return 1; }
 	// BW1W120 00609270 BW1M119 013c6c20
 	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 00608f40 BW1M119 013c7780
@@ -154,7 +154,7 @@ public:
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
 	// BW1W120 00439690 BW1M119 010b6f90
-	virtual bool32_t IsSolidToNewAbode();
+	virtual bool32_t IsSolidToNewAbode() { return false; }
 	// BW1W120 00439660 BW1M119 010b6db0
 	virtual uint32_t GetTastiness() { return 0; }
 	// BW1W120 006088e0 BW1M119 013c82f0

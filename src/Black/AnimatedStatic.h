@@ -71,6 +71,10 @@ public:
 	// BW1W120 00421f50 BW1M119 010ab030
 	static AnimatedStatic* Create(const MapCoords& coords, const GAnimatedStaticInfo* info, float y_angle, float scale,
 	                              float percent_built, bool32_t under_construction);
+	// BW1W120 00422df0 BW1M119 01014790
+	uint32_t CountGateStones();
+	// BW1W120 00422d50 BW1M119 010a9230
+	bool32_t AddGateStone(MESH_LIST mesh);
 };
 
 #endif /* BW1_DECOMP_ANIMATED_STATIC_INCLUDED_H */

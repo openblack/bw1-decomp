@@ -35,9 +35,19 @@ float SpellShield::GetRadius()
 	return Get2DRadius();
 }
 
+float SpellShield::Get2DRadius()
+{
+	return GetSpellMagnitude();
+}
+
 char* SpellShield::GetDebugText()
 {
 	return "SpellShield:";
+}
+
+void SpellShield::CloseDown()
+{
+	SpellWithObjects::CloseDown();
 }
 
 MapShield::MapShield() : spell(NULL), SpellInfo(NULL)
@@ -78,6 +88,16 @@ uint32_t MapShield::GetSaveType()
 	return GAME_THING_TYPE_UNUSED_000;
 }
 
+float MapShield::GetTopPos()
+{
+	return 0.0f;
+}
+
+bool MapShield::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* object)
+{
+	return false;
+}
+
 bool32_t MapShield::CanBecomeAPhysicsObject()
 {
 	return false;
@@ -86,6 +106,21 @@ bool32_t MapShield::CanBecomeAPhysicsObject()
 char* MapShield::GetDebugText()
 {
 	return "MapShield";
+}
+
+bool32_t MagicShield::Load(GameOSFile& file)
+{
+	return MapShield::Load(file) != false;
+}
+
+bool32_t MagicShield::Save(GameOSFile& file)
+{
+	return MapShield::Save(file) != false;
+}
+
+LH3DObject::ObjectType MagicShield::Get3DType()
+{
+	return Object::Get3DType();
 }
 
 void MagicShield::ProcessShield() {}
@@ -107,6 +142,21 @@ char* MagicShield::GetDebugText()
 	return "MagicShield:";
 }
 
+LH3DObject::ObjectType PhysicalShield::Get3DType()
+{
+	return LH3DObject::MORPHABLE;
+}
+
+float PhysicalShield::ApplyEffect(EffectValues& values, int param_2)
+{
+	return Object::ApplyEffect(values, param_2);
+}
+
+uint32_t PhysicalShield::DestroyedByEffect(GPlayer* player, float damage)
+{
+	return Object::DestroyedByEffect(player, damage);
+}
+
 void PhysicalShield::Draw() {}
 
 bool PhysicalShield::InteractsWithPhysicsObjects()
@@ -125,6 +175,16 @@ char* PhysicalShield::GetDebugText()
 }
 
 void MagicShield::Draw() {}
+
+float SpellStormAndTornado::GetRadius()
+{
+	return Get2DRadius();
+}
+
+float SpellStormAndTornado::Get2DRadius()
+{
+	return GetSpellMagnitude();
+}
 
 char* SpellStormAndTornado::GetDebugText()
 {

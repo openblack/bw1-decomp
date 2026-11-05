@@ -1,6 +1,10 @@
 #include "GameTimeConstants.h"
 #include "SpellSeed.h"
 
+#include <chlasm/AllMeshes.h>     /* For MSH_DUMMY */
+#include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
+#include "OneOffSpellSeed.h"
+
 uint32_t SpellSeed::GetSaveType()
 {
 	return GAME_THING_TYPE_SPELL_SEED;
@@ -43,4 +47,29 @@ bool32_t SpellSeed::IsEffectReceiver(EffectValues* param_1)
 unsigned int SpellSeed::IsInterfacePowerUpWhenInHand() const
 {
 	return true;
+}
+
+bool32_t OneOffSpellSeed::IsEffectReceiver(EffectValues* values)
+{
+	return false;
+}
+
+uint32_t OneOffSpellSeed::InterfaceValidToTap(GInterfaceStatus* status)
+{
+	return true;
+}
+
+MESH_LIST OneOffSpellSeed::GetMesh() const
+{
+	return MSH_DUMMY;
+}
+
+PHYSICS_CONSTANTS_TYPE OneOffSpellSeed::GetPhysicsConstantsType()
+{
+	return PHYSICS_CONSTANTS_TYPE_ONE_OFF_SPELL;
+}
+
+uint32_t OneOffSpellSeed::GetOverwriteTapToolTip()
+{
+	return HELP_TEXT_TOOLTIP_125;
 }

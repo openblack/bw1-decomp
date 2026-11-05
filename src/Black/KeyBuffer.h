@@ -25,7 +25,12 @@ public:
 	// Constructors
 
 	// BW1W120 0054b930 BW1M119 inlined
-	GKeyBuffer();
+	GKeyBuffer()
+	{
+		Inputs = NULL;
+		BufferedKeys = 0;
+		field_0xc = 0;
+	}
 	// BW1W120 005e1ac0 BW1M119 01520220
 	bool32_t Init(unsigned short capacity);
 	// BW1W120 005e1bf0 BW1M119 011843b0

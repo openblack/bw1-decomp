@@ -75,6 +75,8 @@ public:
 	static Mist* Create(const MapCoords& coords, float scale, unsigned long colour, float alpha);
 	// BW1W120 006065d0 BW1M119 0110e8f0
 	static void SaveAllMists(LHOSFile& file, const MapCoords& coords);
+	// BW1W120 00606800 BW1M119 0110e630
+	void SetFade(float param_1, float param_2, float param_3, float param_4, float seconds);
 };
 
 #endif /* BW1_DECOMP_MIST_INCLUDED_H */

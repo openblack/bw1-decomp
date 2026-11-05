@@ -57,6 +57,11 @@ bool32_t TownArtifact::Save(GameOSFile& file)
 	return false;
 }
 
+void TownArtifact::ResolveLoad()
+{
+	CreateParticleEffectIfNecessary();
+}
+
 bool32_t Object::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;

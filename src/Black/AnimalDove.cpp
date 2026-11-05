@@ -9,6 +9,11 @@
 #include "AnimalVulture.h"
 #include "ColourConstants.h" /* For White */
 
+bool32_t Dove::IAmABird()
+{
+	return true;
+}
+
 uint32_t Dove::GetSaveType()
 {
 	return GAME_THING_TYPE_DOVE;
@@ -22,6 +27,28 @@ uint32_t SpellDove::GetSaveType()
 char* SpellDove::GetDebugText()
 {
 	return "Animal: SpellDove";
+}
+
+ANIMAL_BEHAVIOUR_RESULT SpellDove::ReactToAnimalNeeds()
+{
+	return ANIMAL_BEHAVIOUR_RESULT_UNHANDLED;
+}
+
+bool32_t Dove::LookForFoodPos(MapCoords* pos)
+{
+	MapCoords grazePos;
+	grazePos.Clear();
+	if (LookForGrazePos(Pos, GetDomainRadius(), &grazePos))
+	{
+		*pos = grazePos;
+		return true;
+	}
+	return false;
+}
+
+uint32_t SpellDove::GetNumTurnsToDieOver()
+{
+	return SPELL_DOVE_NUM_TURNS_TO_DIE_OVER;
 }
 
 uint32_t Crow::GetSaveType()
