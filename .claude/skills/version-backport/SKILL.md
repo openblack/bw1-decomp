@@ -1,18 +1,15 @@
 ---
 name: version-backport
-description: Backport BW1W120's more complete splits.txt file organization (and the symbol names that go with it) onto BW1W110 / BW1W100, which lag behind, and keep BW1W130 in step with it. Script-driven (.claude/skills/version-backport/backport.py) mangled-name correlation with several hard-won safety guards — read this before trusting a "clean" verdict, and read it before loosening any of the guards.
+description: Backport BW1W120's more complete splits.txt file organization (and the symbol names that go with it) onto BW1W110 / BW1W100, which lag behind, and keep BW1W130 / BW1WCI in step with it. Script-driven (.claude/skills/version-backport/backport.py) mangled-name correlation with several hard-won safety guards — read this before trusting a "clean" verdict, and read it before loosening any of the guards.
 ---
 
-# Backport splits/symbols from BW1W120 to BW1W110 / BW1W100 / BW1W130
+# Backport splits/symbols from BW1W120 to BW1W110 / BW1W100 / BW1W130 / BW1WCI
 
-BW1W130 started as a full port of BW1W120's config (`tools/port_version.py`), so it has
-every split 1.20 had at the time. Use `backport.py report BW1W130` to pick up splits carved
-in 1.20 since; do not re-emit with `port_version.py`, which discards the hand fixes made to
-`config/BW1W130/` after the port.
-
-BW1WCI (Creature Isle) is the opposite case: nobody has fixed `config/BW1WCI/` by hand, so it is
-regenerated with `port_version.py` instead of backported (see `docs/porting_versions.md`).
-`backport.py` does not target it.
+BW1W130 and BW1WCI (Creature Isle) started as full ports of BW1W120's config
+(`tools/port_version.py`), so they have every split 1.20 had at the time. Use
+`backport.py report BW1W130` / `report BW1WCI` to pick up splits carved in 1.20 since; do not
+re-emit with `port_version.py`, which discards the hand fixes made to `config/BW1W130/` and
+`config/BW1WCI/` after the port.
 
 BW1W120 is the primary matching target and has ~462 game-code files carved
 out of `config/BW1W120/splits.txt`. BW1W110 has ~169, BW1W100 has ~183. Most

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """backport.py — propose config/<TARGET>/splits.txt + symbols.txt updates for
-BW1W110 / BW1W100 (and BW1W130, ported whole from BW1W120 by tools/port_version.py,
+BW1W110 / BW1W100 (and BW1W130 / BW1WCI, ported whole from BW1W120 by tools/port_version.py,
 for splits carved since), derived from BW1W120's more complete file organization.
 
 BW1W120 is the primary matching target: it has ~462 game-code source files
@@ -97,7 +97,7 @@ from pathlib import Path
 SELF_DIR = Path(__file__).resolve().parent
 ROOT = SELF_DIR.parents[2]
 SRC_VERSION = "BW1W120"
-TARGET_VERSIONS = ["BW1W110", "BW1W100", "BW1W130"]
+TARGET_VERSIONS = ["BW1W100", "BW1W110", "BW1W130", "BW1WCI"]
 
 # Sections with real per-symbol evidence to anchor on. .bss / .CRT$XCU are
 # deliberately excluded — see module docstring.
