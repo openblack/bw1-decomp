@@ -36,6 +36,10 @@ public:
 	// Real emitted RET destructor; preserves insertion temporaries.
 	// BW1W120 00775380
 	~WinCondition();
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	// BW1W120 007753e0
+	void SetTarget(int target);
+#endif
 	// BW1W120 00775720
 	void Add(int amount);
 	// BW1W120 00775740

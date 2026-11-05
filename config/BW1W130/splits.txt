@@ -1820,14 +1820,18 @@ Black/MPFEClanDetails.cpp:
 	.bss        start:0x00DC1DD0 end:0x00DC1DE0
 
 Black/MPFEConditionMessages.cpp:
-	.text       start:0x00630390 end:0x006317C0
-	.rdata      start:0x0095E630 end:0x0095E660
-	.CRT$XCU    start:0x00A46FD8 end:0x00A47000 align:4
-	.bss        start:0x00DC1DE8 end:0x00DC1E30
+	.text       start:0x00630390 end:0x00630AC0
+	.rdata      start:0x0095E630 end:0x0095E650
+	.CRT$XCU    start:0x00A46FD8 end:0x00A46FE8 align:4
+	.data       start:0x00C75710 end:0x00C757E0
+	.bss        start:0x00DC1DE8 end:0x00DC1E00
 
 Black/MPFEConnectionStatus.cpp:
-	.text       start:0x006317C0 end:0x00631810
-	.CRT$XCU    start:0x00A47000 end:0x00A47004 align:4
+	.text       start:0x00630AC0 end:0x00631810
+	.rdata      start:0x0095E650 end:0x0095E660
+	.CRT$XCU    start:0x00A46FE8 end:0x00A47004 align:4
+	.data       start:0x00C757E0 end:0x00C7E288
+	.bss        start:0x00DC1E00 end:0x00DC1E30 align:16
 
 Black/MPFECreatureDownload.cpp:
 	.text       start:0x00631810 end:0x00631CC0
