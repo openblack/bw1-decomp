@@ -37,10 +37,10 @@ struct PlayerProfile
 	bool32_t pushscroll;
 	uint32_t HAND_ORIENTATION;
 	uint32_t IMMERSION_KEY; /* 0x820 */
-	uint32_t field_0x824;   // Flags copied by LHNetBase::UpdateUserData.
 #ifdef VERSION_BW1W130
-	uint32_t field_0x828;
+	uint32_t useglove;
 #endif
+	uint32_t UserDataFlags;
 
 	// BW1W120 inlined BW1M119 inlined
 	PlayerProfile()
