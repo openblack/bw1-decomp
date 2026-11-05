@@ -65,7 +65,7 @@ reproduces.
 - `LHaudiodllR.dll` has no debug directory: it was linked without `/DEBUG`, so with `/OPT:REF`
   and `/OPT:ICF`. Unreferenced code is gone (1.20's dead MPEG layer 1 and 3 decoders), and
   identical functions share one body, which `symbols.txt` names with `alias` labels (the port
-  reads them off the export table, vtables and callers) for the fold to resolve. Its link uses
+  reads them off the export table, vtables and callers) for the fold to resolve (this ICF link is still folded, see `config.icf_links`). Its link uses
   `/OPT:REF` too, with the DLL's exports as roots and the split's function sections plain
   (`function_comdat: false`, which a re-emit keeps). The fold cannot merge a unit's static
   functions onto another unit's copy, so the units with their own copy of `LHLogDebugBreak`

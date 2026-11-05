@@ -211,6 +211,11 @@ class ProjectConfig:
         # /OPT:REF the module links without its /includeglob:*, which would make
         # every symbol a GC root (dtk applies dead_strip to the base image only).
         self.module_ldflags: Dict[str, List[str]] = {}
+        # Links (the base image's name, or a module's) whose image link.exe built
+        # with /OPT:ICF. Which of several identical functions it kept depends on
+        # every candidate in the link, so their recompiled units are folded onto
+        # the split's copies (`dtk coff fold`) instead of linked as compiled (PE).
+        self.icf_links: List[str] = []
         self.asflags: Optional[List[str]] = None  # Assembler flags
         self.ldflags: Optional[List[str]] = None  # Linker flags
         self.libs: Optional[List[Library]] = None  # List of libraries
@@ -1021,7 +1026,7 @@ def generate_build_ninja(
             description="COPY $out",
         )
         n.newline()
-        n.comment("Fold a recompiled unit's shared COMDATs onto the image's copies (see add_unit)")
+        n.comment("Fold a recompiled unit's COMDATs onto the image's copies in an ICF link (see icf_links)")
         n.rule(
             name="fold",
             command=f"{dtk} coff fold $in $config --unit $unit $fold_args -o $out",
@@ -1646,12 +1651,12 @@ def generate_build_ninja(
             if link_built_obj and built_obj_path is not None:
                 if (
                     config.platform == "pe"
+                    and link_step.name in config.icf_links
                     and lib_member is None
                     and obj.src_path is not None
                     and file_is_c_cpp(obj.src_path)
                 ):
-                    # The shipped link resolved every shared COMDAT (inline functions,
-                    # __real@ constants, RTTI, and identical functions it folded) to one
+                    # The shipped link folded identical functions (/OPT:ICF) onto one
                     # copy, which the split objects carry at its shipped address. Fold the
                     # recompiled unit's own copies onto them before linking; objdiff keeps
                     # reading the unfolded object.

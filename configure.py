@@ -388,6 +388,15 @@ if config.version == "BW1WCI":
             "__imp__GetLocaleInfoA@16", "__imp__GetLocaleInfoW@16")),
         *(f"/alternatename:{_name}=_abort" for _name in ("__except1", "__except2", "__handle_qnan1", "__handle_qnan2", "_ldexp")),
     ]
+# The links whose image link.exe built with /OPT:ICF: LHLog's in every version,
+# runblack 1.00's (built with /Gy, below) and Creature Isle's LHAudio. Every other
+# link resolves its shared COMDATs first-wins, as lld-link does, so its recompiled
+# units link as compiled.
+config.icf_links = ["LHLog"]
+if config.version == "BW1W100":
+    config.icf_links.append("runblack")
+if config.version == "BW1WCI":
+    config.icf_links.append("LHAudio")
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,

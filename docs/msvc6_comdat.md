@@ -347,11 +347,17 @@ independently, so a name match is meaningless.
 
 - **Extra symbols of other classes are expected** in a unit's objdiff report: copies the image
   keeps in an earlier unit. `tools/comdat-scan.py where --unit X` lists each one and the unit
-  that holds it. Before linking a recompiled unit, `tools/project.py` runs `dtk coff fold`, which
-  redirects these COMDATs onto the image's copies ("Fold a compiled object's COMDAT definitions
-  onto the copies the shipped image already holds elsewhere"). For example,
-  `WorshipSiteUpgrade.fold.o` defines 24 external symbols where `WorshipSiteUpgrade.o` defines 451.
-  objdiff still reads the unfolded object.
+  that holds it. The split carries the image's copy as a COMDAT too (`comdat` in symbols.txt,
+  vftables as LARGEST sections that start at their locator), so lld-link keeps it as the first in
+  link order and drops the recompiled unit's copy, as link.exe did. Only the ICF links
+  (`config.icf_links`: LHLog, runblack 1.00, Creature Isle's LHAudio) still run `dtk coff fold`,
+  because which of several identical functions link.exe kept depends on every candidate.
+- **Linking a unit as compiled can need config.** A shared COMDAT the split does not mark, or RTTI
+  held in an auto `.rdata$r` object that a later unit also emits, shows as a duplicate symbol or a
+  shifted image. After a build, `tools/mark-shared-comdats.py --version V --fix-sizes --apply`
+  marks what the linked units emit and `tools/rdata-r-ranges.py --version V --apply` gives the
+  `.rdata$r` ranges; run both for each version. A copy the image keeps in a *later* unit than one
+  that emits it means the function is not inline where the recompiled unit has it (section 3).
 - **Keep such functions inline in the headers.** Never move an inline virtual or accessor into
   the "magnet" unit's `.cpp` to make it "belong" there. An out-of-line function becomes a
   `NODUPLICATES` definition that every other unit sees only as an external (section 2). That
