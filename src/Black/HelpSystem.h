@@ -425,6 +425,8 @@ public:
 	bool32_t Load(GameOSFile& file);
 	// BW1W120 005c78b0 BW1M119 013555d0
 	void ResolveLoad();
+	// BW1W120 005c79e0 BW1M119 013553f0
+	void SaveTextOnTempleEntry();
 
 	// BW1W120 005c5460 BW1M119 0135a0a0
 	void SetToZero();
