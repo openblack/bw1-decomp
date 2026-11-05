@@ -17,6 +17,8 @@ class GBaseInfo;
 class GObjectInfo;
 struct DiscipleInfo;
 
+#define VILLAGER_INFOS_PER_TRIBE (VILLAGER_INFO_AFRICAN_HOUSEWIFE_FEMALE - VILLAGER_INFO_CELTIC_HOUSEWIFE_FEMALE)
+
 struct AgeToScale
 {
 	float values[20];

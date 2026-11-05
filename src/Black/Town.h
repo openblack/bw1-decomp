@@ -663,7 +663,7 @@ public:
 	// BW1W120 007408b0 BW1M119 01007f30
 	MapCoords GetCongregationPos();
 	// BW1W120 00740b40 BW1M119 015520c0
-	Abode* FindAbodeNumber(ABODE_NUMBER number, float percent_built, int param_3);
+	Abode* FindAbodeNumber(ABODE_NUMBER number, float percent_built, bool32_t match_required);
 	// BW1W120 00740bb0 BW1M119 01552040
 	bool32_t IsAllowedToCreateWorshipSite();
 	// BW1W120 00740bf0 BW1M119 01551f20
@@ -671,7 +671,7 @@ public:
 	// BW1W120 00740c50 BW1M119 01551d80
 	MultiMapFixed* GetBestAttackObject(const MapCoords& pos);
 	// BW1W120 00740d60 BW1M119 01551d40
-	int GetDeathsFromWorshipping();
+	uint32_t GetDeathsFromWorshipping();
 	// BW1W120 00740d70 BW1M119 null
 	int GetDeaths(DEATH_REASON reason);
 	// BW1W120 00740d90 BW1M119 01551c30

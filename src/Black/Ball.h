@@ -29,6 +29,9 @@ struct MapCoords;
 class Object;
 class Town;
 
+#define BALL_SCRIPT_RADIUS 6.0f
+#define BALL_SCRIPT_HEIGHT 4.0f
+
 class Ball : public MobileObject
 {
 public:
@@ -80,8 +83,8 @@ public:
 	// Static methods
 
 	// BW1W120 00435b90 BW1M119 010b3500
-	static Ball* Create(const MapCoords& param_1, const GBallInfo* param_2, unsigned short param_3, float param_4,
-	                    float param_5);
+	static Ball* Create(const MapCoords& coords, const GBallInfo* info, unsigned short y_angle, float radius,
+	                    float height);
 
 	// Constructors
 

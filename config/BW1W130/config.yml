@@ -945,41 +945,21 @@ add_relocations:
   - source: 0x006FCA33
     type: x86_abs32
     target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
-  - source: 0x006FCCD2
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FCCEE
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x006FCE6B
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FCE88
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x006FCFAA
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FCFC7
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x006FD0F4
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FD111
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
   - source: 0x006FDA0A
     type: x86_abs32
     target: '??_C@_0BG@KIOP@Thing?5no?5longer?5valid?$AA@'
-  - source: 0x006FDA5C
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FDB25
     type: x86_abs32
     target: '??_C@_0BB@CNII@Thing?5not?5found?$CB?$AA@'

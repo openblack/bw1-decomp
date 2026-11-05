@@ -885,6 +885,15 @@ add_relocations:
     type: x86_abs32
     target: '__real@4@3fff8000000000000000'
     addend: 0x0
+  - source: 0x006F0075
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x006F4483
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x006F4498
+    type: x86_abs32
+    target: '?StormCreationActive@GWeather@@2_NA'
 
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 

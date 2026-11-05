@@ -42,6 +42,9 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	ScriptMarker() {}
+
+	// BW1W120 0070d8d0 BW1M119 01508220
+	static ScriptMarker* Create(const MapCoords& coords);
 };
 
 #endif /* BW1_DECOMP_SCRIPT_MARKER_INCLUDED_H */

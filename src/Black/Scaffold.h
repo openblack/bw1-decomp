@@ -51,10 +51,13 @@ public:
 	uint16_t             Appearing : 1;
 	uint16_t             field_0x88_1 : 5;
 	uint16_t             WorkshopPosition : 2;
-	uint16_t             field_0x88_8 : 8;
+	uint16_t             field_0x88_8 : 3;
+	uint16_t             DestroyWhenFinished : 1;
+	uint16_t             field_0x88_c : 4;
 	uint8_t              field_0x8a[0x2];
 	Town*                town;
-	uint8_t              field_0x90[0x8];
+	ABODE_NUMBER         BuildingType;
+	uint32_t             field_0x94;
 	LHListNode<Scaffold> next;
 
 	// Override methods
@@ -170,6 +173,8 @@ public:
 	void SetToZero();
 	// BW1W120 006e8860 BW1M119 0114b700
 	void ForceBuildBuilding(GPlayer* player);
+	// BW1W120 006e9d40 BW1M119 01149010
+	void SetScaffoldValue(uint32_t value);
 	// BW1W120 006ea950 BW1M119 01147a60
 	bool32_t IsPlannedValid(PLANNED_TYPE type);
 	// BW1W120 006e8c60 BW1M119 0114b120

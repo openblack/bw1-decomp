@@ -389,7 +389,7 @@ void RenderLoadingFrame(bool flip)
 		if (now - lastTime >= 150)
 		{
 			int loadingTime = LoadingScreen::Time;
-			if (GGame::LoadingFrameEnabled == 1 && now - lastTime > 350)
+			if (GGame::LoadingFrameEnabled == LOADING_FRAME_ANIMATED && now - lastTime > 350)
 			{
 				loadingTime += 350;
 			}
@@ -401,7 +401,7 @@ void RenderLoadingFrame(bool flip)
 			lastTime = now;
 			if (!LHSys::TheSystem.screen.IsAppMinimized())
 			{
-				if (GGame::LoadingFrameEnabled == 1)
+				if (GGame::LoadingFrameEnabled == LOADING_FRAME_ANIMATED)
 				{
 					DrawLoading(1.0f, (float)LoadingScreen::Time / LoadingBarDuration);
 				}

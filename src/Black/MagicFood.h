@@ -17,7 +17,17 @@ class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 struct MapCoords;
+class MultiMapFixed;
 class Object;
+class Pot;
+
+class MagicResource
+{
+public:
+	// BW1W120 005fa8b0 BW1M119 013b41d0
+	static Pot* Create(const MapCoords& coords, GPlayer* player, RESOURCE_TYPE type, unsigned long amount,
+	                   MultiMapFixed* parent);
+};
 
 class MagicFood : public PileFood
 {

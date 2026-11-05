@@ -65,6 +65,10 @@ class WorshipSite;
 #define CITADEL_SAVE_TEXT_LENGTH       200
 #define CITADEL_SAVE_COORD_TEXT_LENGTH 100
 
+#define CITADEL_HEART_SCRIPT_EXPLODE_FORCE  80.0f
+#define CITADEL_HEART_SCRIPT_EXPLODE_UNUSED 3.0f
+#define CITADEL_HEART_ENTRANCE_EXTRA_POS    15
+
 class LeashObj : public Object
 {
 public:

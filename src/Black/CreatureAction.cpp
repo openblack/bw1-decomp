@@ -7840,10 +7840,11 @@ void Creature::UpdateActionPriority()
 
 void Creature::ForceActivityAndForceAction(CREATURE_DESIRES desire, CreatureBelief* activity_object,
                                            CREATURE_ACTION action, CreatureBelief* object_to_act_on,
-                                           CreatureBelief* object_to_use, int param_6, int param_7)
+                                           CreatureBelief* object_to_use, bool32_t forced_by_player,
+                                           bool32_t stop_current_action)
 {
 	CreaturePlan plan(desire, action, activity_object, object_to_act_on, object_to_use, MaxFloat);
-	ForceActivityAndForceAction(plan, param_6, param_7);
+	ForceActivityAndForceAction(plan, forced_by_player, stop_current_action);
 }
 
 CreatureActionOpinions::CreatureActionOpinions(const CreatureInfo* info)

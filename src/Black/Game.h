@@ -36,6 +36,16 @@
 
 #define GAME_MILLISECONDS_PER_TURN          100
 #define GAME_DEFAULT_MULTIPLAYER_TIME_LIMIT 30
+#define TUTORIAL_STATE_ESCAPE_RESET         1
+
+enum CREATURE_BITS
+{
+	CREATURE_BITS_LEOPARD,
+	CREATURE_BITS_HORSE,
+	CREATURE_BITS_MANDRILL,
+	CREATURE_BITS_GORILLA,
+	CREATURE_BITS_RHINO,
+};
 
 enum GAME_VIEW_MODE
 {
@@ -202,7 +212,22 @@ public:
 	// BW1W120 008df610
 	static char* const NetworkPassword;
 
-	uint32_t         GameFlags;
+	union {
+		uint32_t GameFlags;
+		struct
+		{
+			uint32_t : 18;
+			uint32_t WaitForBuildingWood : 1;
+#ifdef VERSION_BW1WCI
+			uint32_t : 6;
+#else
+			uint32_t : 4;
+#endif
+			uint32_t CanSkipTutorial : 1;
+			uint32_t CanSkipCreatureTraining : 1;
+			uint32_t KeepingOldCreature : 1;
+		};
+	};
 	GPlayer          players[0x8];
 	uint8_t          field_0x5318[0x660];
 	uint8_t          field_0x5978;
@@ -493,7 +518,7 @@ public:
 	// BW1W120 00550c80 BW1M119 015683d0
 	void SetPacket(PACKET_TYPE type, unsigned long value);
 	// BW1W120 00550c50 BW1M119 010a7990
-	void SetPacket(PACKET_TYPE type, unsigned short param_2, unsigned short param_3);
+	void SetPacket(PACKET_TYPE type, unsigned short first_value, unsigned short second_value);
 	// BW1W120 00551530 BW1M119 01108490
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long player_number, float value);
 	// BW1W120 00551690 BW1M119 010086d0
@@ -515,7 +540,7 @@ public:
 	// BW1W120 005537f0 BW1M119 01367db0
 	void SetSpeed(float speed);
 	// BW1W120 00553e10 BW1M119 013cc210
-	void GoInsideCitadel(unsigned long param_1, int param_2);
+	void GoInsideCitadel(unsigned long room, bool32_t force);
 	// BW1W120 00553a70 BW1M119 011aee80
 	void LeaveInsideCitadel();
 	// BW1W120 00555280 BW1M119 01091800
@@ -524,6 +549,10 @@ public:
 	void ForceNeedUpdateInfluence();
 	// BW1W120 inlined BW1M119 0107b840
 	GPlayer* MyPlayer() { return &players[PlayerIndex]; }
+	// BW1W120 inlined BW1M119 014f3e90
+	bool32_t IsInCitadel() const { return ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL; }
+	// BW1W120 00552ac0 BW1M119 013e3180
+	void LoadMyCreatureIntoNewMap(unsigned long x, unsigned long z);
 	// BW1W120 00555820 BW1M119 01029180
 	uint32_t GetCameraTimeInc();
 	// BW1W120 inlined BW1M119 010736c0
@@ -532,6 +561,8 @@ public:
 	unsigned long GetNoPlayers() const;
 	// BW1W120 00555130 BW1M119 01183980
 	unsigned long GetNumberOfPlayersThatHaveLost();
+	// BW1W120 005551d0 BW1M119 01177b60
+	bool IsCreaturePresent(CREATURE_BITS creature);
 	// BW1W120 00555850 BW1M119 01053ef0
 	GInterface* MyInterface();
 	// BW1W120 00555880 BW1M119 01062630

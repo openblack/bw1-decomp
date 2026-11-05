@@ -872,7 +872,7 @@ float Object::ApplyEffect(EffectValues& values, int param_2)
 			Creature* creature = values.AppliedBy->CastCreature();
 			if (creature != NULL)
 			{
-				creature->ObjectsDestroyed += 1.0f;
+				creature->NumTimesPerformedAction[SCRIPT_PERFORMED_ACTION_DESTROY] += 1.0f;
 			}
 		}
 		DestroyedByEffect(values.GetPlayer(), life);

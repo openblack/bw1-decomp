@@ -33,6 +33,8 @@ public:
 	static float GetValue(LAND_BALANCE type) { return Values[type]; }
 	// BW1W120 005e2890 BW1M119 0137faf0
 	static void Init();
+	// BW1W120 005e28f0 BW1M119 0137f9b0
+	static void Init(LAND_BALANCE type, float value, GPlayer* player);
 	// BW1W120 005e2990 BW1M119 0137f7d0
 	static bool SaveAll(GameOSFile& file);
 	// BW1W120 005e29e0 BW1M119 0137f710

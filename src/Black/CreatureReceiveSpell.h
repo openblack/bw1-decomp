@@ -5,6 +5,8 @@
 #include <stddef.h> /* For offsetof */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/Enum.h> /* For enum CREATURE_RECEIVE_SPELL_TYPE */
+
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "GJBaseUtils.h" /* For GJVector */
@@ -18,6 +20,10 @@ class GameThing;
 
 struct CreatureReceiveSpell
 {
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005065f0 BW1MCI119 012a3d50
+	bool TryFinishAllSpells();
+#endif
 	class TPerSpellData
 	{
 	public:
@@ -61,6 +67,8 @@ struct CreatureReceiveSpell
 
 	// BW1W120 004f5230 BW1M119 01284220
 	bool IsQueueFull();
+	// BW1W120 004f51e0 BW1M119 01284390
+	bool32_t IsCreatureSpellActive(CREATURE_RECEIVE_SPELL_TYPE type);
 	// BW1W120 004f4c50 BW1M119 01284d30
 	void Draw();
 	// BW1W120 004f5e60 BW1M119 01282160

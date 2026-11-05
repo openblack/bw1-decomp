@@ -250,6 +250,8 @@ public:
 
 	// BW1W120 inlined BW1M119 014f5770
 	float GetChantStore() { return ChantStore; }
+	// BW1W120 inlined BW1M119 014f5620
+	float GetSacrficeTotal() const { return TotalSacrificeValue; }
 	// BW1W120 inlined BW1M119 010c6110
 	void AddToChantStore(float amount) { ChantStore += amount; }
 	// BW1W120 inlined BW1M119 015b7cf0

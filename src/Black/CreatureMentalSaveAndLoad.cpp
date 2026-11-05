@@ -137,7 +137,7 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WriteIt(autoFightStatus);
 		file.WriteSafe(ControlledVillagers);
 		file.WritePtr(dance);
-		file.WriteIt(field_0x1158);
+		file.WriteIt(CanDie);
 		uint32_t strength = physical->strength;
 		file.WriteIt(strength);
 		file.WriteIt((uint32_t&)physical->Size);
@@ -149,8 +149,8 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WriteIt((uint32_t&)alignment);
 		uint32_t size = physical->field_0x48;
 		file.WriteIt(size);
-		file.WriteIt(field_0x115c);
-		file.WriteIt(field_0x1160);
+		file.WriteIt(AutoScale);
+		file.WriteIt(AutoScaleValue);
 		SubActionAgendaSaved = (Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) != 0 || IsFighting() ||
 		                       ControlledVillagers.count != 0;
 		file.WriteIt(SubActionAgendaSaved);
@@ -334,7 +334,7 @@ bool32_t Creature::Load(GameOSFile& file)
 		SetAutoFightStatus(autoFightStatus);
 		file.ReadSafe(ControlledVillagers);
 		file.ReadPtr((GameThing**)&dance);
-		file.ReadIt(field_0x1158);
+		file.ReadIt(CanDie);
 		float strength;
 		file.ReadIt((uint32_t&)strength);
 		physical->SetStrength(strength);
@@ -345,8 +345,8 @@ bool32_t Creature::Load(GameOSFile& file)
 		float size;
 		file.ReadIt(size);
 		physical->field_0x48 = size;
-		file.ReadIt(field_0x115c);
-		file.ReadIt(field_0x1160);
+		file.ReadIt(AutoScale);
+		file.ReadIt(AutoScaleValue);
 		file.ReadIt(SubActionAgendaSaved);
 		if (SubActionAgendaSaved)
 		{
@@ -443,9 +443,9 @@ void Creature::ResolveLoad()
 		mind->agenda.SubActionAgenda = SubActionAgenda;
 	}
 #ifndef VERSION_BW1W100
-	if (ConfinedToObject && field_0x129c != -1)
+	if (ConfinedToObject && ConfinementPlayerNumber != -1)
 	{
-		GPlayer*  owner = GGame::g_game->GetPlayer(field_0x129c);
+		GPlayer*  owner = GGame::g_game->GetPlayer(ConfinementPlayerNumber);
 		Creature* creature = owner->creature.Get();
 		if (creature != NULL)
 		{
@@ -530,7 +530,11 @@ unsigned long Creature::SaveMindToMemory(char** buffer)
 	return archive.Size;
 }
 
+#ifdef VERSION_BW1WCI
+void CreatureMental::SaveMind(char* path, bool32_t substitute_type)
+#else
 void CreatureMental::SaveMind(char* path)
+#endif
 {
 	if (creature.Get()->RemoteCreature != true)
 	{
@@ -673,7 +677,7 @@ void CreatureMental::SaveMind(Archive& archive)
 	archive << learning.field_0x1522c;
 #ifndef VERSION_BW1W100
 	archive << (int)creature.Get()->ConfinedToObject;
-	archive << (long)creature.Get()->field_0x129c;
+	archive << (long)creature.Get()->ConfinementPlayerNumber;
 #endif // VERSION_BW1W100
 }
 
@@ -1007,7 +1011,7 @@ void CreatureMental::LoadMind(Archive& archive)
 	if (MindVersion >= CREATURE_MIND_VERSION_CONFINEMENT)
 	{
 		archive >> (int&)creature.Get()->ConfinedToObject;
-		archive >> (long&)creature.Get()->field_0x129c;
+		archive >> (long&)creature.Get()->ConfinementPlayerNumber;
 	}
 #endif // VERSION_BW1W100
 }

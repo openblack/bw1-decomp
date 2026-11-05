@@ -55,6 +55,10 @@ public:
 	void CalculateLeashLengthFromCreature(Creature* creature);
 	// BW1W120 005e6f70 BW1M119 01383450
 	void SetOn(Creature* creature, bool32_t on);
+	// BW1W120 005e6bd0 BW1M119 01383840
+	void SetOnObject(Creature* creature, GameThingWithPos* object);
+	// BW1W120 005e6ea0 BW1M119 013836f0
+	void SetOnHand(Creature* creature);
 	// BW1W120 inlined BW1M119 01244b60
 	GameThingWithPos* GetObjectAttachedTo() const { return ObjectAttachedTo; }
 	// BW1W120 inlined BW1M119 inlined

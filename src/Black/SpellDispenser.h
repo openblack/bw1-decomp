@@ -14,6 +14,7 @@ class Base;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
+class GMagicInfo;
 struct MapCoords;
 class Object;
 
@@ -67,6 +68,8 @@ public:
 
 	// BW1W120 00723030 BW1M119 01522220
 	void SetActive(bool32_t active);
+	// BW1W120 00722b20 BW1M119 01522ce0
+	GMagicInfo* GetMagicInfoProduced();
 };
 
 #endif /* BW1_DECOMP_SPELL_DISPENSER_INCLUDED_H */

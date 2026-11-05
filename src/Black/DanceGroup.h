@@ -4,10 +4,11 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h>                        /* For enum SEX_TYPE */
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
-#include <Lionhead/LHLib/ver5.0/LHStack.h>      /* For class LHStack */
-#include <re_common.h>                          /* For bool32_t */
+#include <chlasm/Enum.h>                           /* For enum SEX_TYPE */
+#include <Lionhead/LH3DLib/development/LH3DMath.h> /* For GAME_ANGLE_FULL_TURN */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>    /* For class LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHStack.h>         /* For class LHStack */
+#include <re_common.h>                             /* For bool32_t */
 
 #include "GameThing.h"  /* For struct GameThing */
 #include "DanceShape.h" /* For enum DANCE_SHAPE */
@@ -146,7 +147,7 @@ enum DANCE_GROUP_VILLAGER_TYPE
 #define DANCE_DANCER_ANGLE_FULL_TURN 256.0f
 #define DANCE_DANCER_ANGLE_UNIT      1.0f
 #define DANCE_DANCER_ANGLE_MAX       (DANCE_DANCER_ANGLE_FULL_TURN - DANCE_DANCER_ANGLE_UNIT)
-#define DANCE_SHAPE_ANGLE_FULL_TURN  2048.0f
+#define DANCE_SHAPE_ANGLE_FULL_TURN  GAME_ANGLE_FULL_TURN
 
 struct DancePos
 {

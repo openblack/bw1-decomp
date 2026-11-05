@@ -59,6 +59,8 @@ public:
 	static HelpText* Create(const LHRegion& region, HelpSystem* help_system);
 	// BW1W120 005cb020 BW1M119 0135f670
 	void Reset(bool full);
+	// BW1W120 005cb010 BW1M119 0135f700
+	void CloseDialogWindow();
 };
 
 struct HelpTextData
@@ -118,7 +120,7 @@ struct HelpTextDataBase
 		array = new (HELP_TEXT_FILEPATH, HELP_TEXT_INIT_LINE) HelpTextInfo[count];
 	}
 	// BW1W120 inlined BW1M119 010946e0
-	char16_t* GetHelpText(unsigned long index) const
+	wchar_t* GetHelpText(unsigned long index) const
 	{
 		if (index >= count)
 		{
