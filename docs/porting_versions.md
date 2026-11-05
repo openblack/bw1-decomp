@@ -6,12 +6,13 @@ BW1W120's splits and symbols, translated to the other build's addresses by
 places code, data, RTTI, vtables, import thunks, library objects, initializer tables and `.bss`.
 This page covers the workflow and where the result stands.
 
-BW1W130 has been fixed by hand since it was ported. Keep it in step with the
+Both have been fixed by hand since they were ported. Keep them in step with the
 [version-backport](../.claude/skills/version-backport/SKILL.md) skill's `backport.py`, and never
-re-emit it. BW1WCI has no hand fixes, so regenerate it whenever BW1W120's splits or names
-improve.
+re-emit them: a re-emit discards the hand fixes.
 
-## Regenerating BW1WCI
+## How BW1WCI was generated
+
+The initial port, kept for reference:
 
 ```sh
 python3 tools/port_version.py emit --dst BW1WCI --report /tmp/dropped.txt   # the executable, ~5 minutes
@@ -24,10 +25,8 @@ touch build/BW1WCI/runblack-preprocessed.exe && ninja build/BW1WCI/config.json  
 ninja build/BW1WCI/ok               # relink, post-link patch, SHA-1 check against config/BW1WCI/build.sha1
 ```
 
-Commit the converged files. A re-emit followed by the same convergence reproduces them byte for
-byte, so after regenerating, the diff is exactly what BW1W120's changes carry over to Creature
-Isle. Which units link for Creature Isle (see below) can change with it: if `ok` fails, take the
-units that stopped matching out of their `MatchingFor(...)`.
+Since then `config/BW1WCI/` has been edited by hand, so it is no longer what a re-emit
+reproduces.
 
 - `--reuse` skips the alignment and only rewrites the files from the cached one
   (`build/port/*.pickle`). The cache holds the reference splits and symbols it was computed
