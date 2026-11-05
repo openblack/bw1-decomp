@@ -260,9 +260,10 @@ void MPFEFileTransfer::Decode(char* data, const char* text, unsigned long length
 		unsigned char b = text[i * 4 + 1] - '!';
 		unsigned char c = text[i * 4 + 2] - '!';
 		unsigned char d = text[i * 4 + 3] - '!';
+		unsigned char z = (d << 2) | (c & 3);
 		data[i * 3] = (a << 2) | (b & 3);
 		data[i * 3 + 1] = ((b & 0xfc) << 2) | (c >> 2);
-		data[i * 3 + 2] = (d << 2) | (c & 3);
+		data[i * 3 + 2] = z;
 	}
 }
 
