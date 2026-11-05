@@ -288,19 +288,16 @@ GameThingWithPos* GScript::CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_T
 	GameThingWithPos* thing = NULL;
 	Villager*         villager;
 	MapCoords         coords(pos);
-	bool              valid = false;
-	if (subtype != SCRIPT_FIND_TYPE_ANY || type == SCRIPT_OBJECT_TYPE_TIMER ||
-	    type == SCRIPT_OBJECT_TYPE_SPELL_DISPENSER || type == SCRIPT_OBJECT_TYPE_WHALE ||
-	    type == SCRIPT_OBJECT_TYPE_ARK || type == SCRIPT_OBJECT_TYPE_MARKER || type == SCRIPT_OBJECT_TYPE_BALL ||
-	    type == SCRIPT_OBJECT_TYPE_POO || type == SCRIPT_OBJECT_TYPE_SCAFFOLD
+	bool              valid = subtype != SCRIPT_FIND_TYPE_ANY || type == SCRIPT_OBJECT_TYPE_TIMER ||
+	                          type == SCRIPT_OBJECT_TYPE_SPELL_DISPENSER || type == SCRIPT_OBJECT_TYPE_WHALE ||
+	                          type == SCRIPT_OBJECT_TYPE_ARK || type == SCRIPT_OBJECT_TYPE_MARKER ||
+	                          type == SCRIPT_OBJECT_TYPE_BALL || type == SCRIPT_OBJECT_TYPE_POO ||
+	                          type == SCRIPT_OBJECT_TYPE_SCAFFOLD
 #ifdef VERSION_BW1WCI
-	    || type == SCRIPT_OBJECT_TYPE_DIE || type == SCRIPT_OBJECT_TYPE_DOLPHIN || type == SCRIPT_OBJECT_TYPE_CANNON ||
-	    type == SCRIPT_OBJECT_TYPE_FEMALE_CREATURE
+	             || type == SCRIPT_OBJECT_TYPE_DIE || type == SCRIPT_OBJECT_TYPE_DOLPHIN ||
+	             type == SCRIPT_OBJECT_TYPE_CANNON || type == SCRIPT_OBJECT_TYPE_FEMALE_CREATURE
 #endif
-	)
-	{
-		valid = true;
-	}
+		;
 	SCRIPT_ASSERT(valid, "Trying to create an invalid sub_type");
 	if (!valid)
 	{
