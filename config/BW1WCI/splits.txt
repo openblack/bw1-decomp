@@ -86,10 +86,16 @@ Black/AnimalLeopard.cpp:
 	.bss        start:0x00CC884C end:0x00CC8850
 
 Black/AnimalLion.cpp:
-	.text       start:0x00420AD0 end:0x00420F30
+	.text       start:0x00420AD0 end:0x00420F00
 	.rdata      start:0x008E89D4 end:0x008EA29C
-	.CRT$XCU    start:0x00A360A0 end:0x00A360A8 align:4
-	.bss        start:0x00CC8850 end:0x00CC885C
+	.CRT$XCU    start:0x00A360A0 end:0x00A360A4 align:4
+	.bss        start:0x00CC8850 end:0x00CC8854
+
+Black/AnimalPig.cpp:
+	.text       start:0x00420F00 end:0x00420F30
+	.rdata      start:0x008EA300 end:0x008EA308
+	.CRT$XCU    start:0x00A360A4 end:0x00A360A8 align:4
+	.bss        start:0x00CC8854 end:0x00CC8858
 
 Black/AnimalReaction.cpp:
 	.rdata      start:0x008EA308 end:0x008EA314

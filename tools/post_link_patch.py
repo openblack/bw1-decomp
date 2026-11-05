@@ -889,6 +889,7 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0041DB8A, copy_run(0x0041DB56)),  # AnimalCow
     (0x0041DC36, jmp_run(0x0041DB83)),  # AnimalCow
     (0x0041DC6A, copy_run(0x0041DC36)),  # AnimalCow
+    (0x00420183, copy_run(0x00420126)),  # AnimalPig
     (0x00426B13, jmp_run(0x00426AB7)),  # Audio
     (0x00426B3B, call_rel32(0x00403C49)),  # Audio
     (0x00426B75, jmp_run(0x00426B3B)),  # Audio
