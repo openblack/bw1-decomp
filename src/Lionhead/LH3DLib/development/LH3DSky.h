@@ -45,34 +45,29 @@ struct LHPoint;
 #define LH3D_SKY_OLD_DUSK_END_TIME   8.0f
 #define LH3D_SKY_OLD_DAY_FULL_TIME   8.5f
 
-#define SKY_TEXTURE_HEIGHT_LOW                         0x80
-#define SKY_TEXTURE_HEIGHT                             0x100
-#define SKY_TEXTURE_UPDATE_LINES                       0x20
-#define SKY_TYPE_CHANGE_THRESHOLD                      0.03f
-#define LH3D_SKY_MOON_QUAD_SIZE                        500.0f
-#define LH3D_SKY_MOON_GLOW_UV_MIN                      0.25f
-#define LH3D_SKY_MOON_GLOW_UV_INSET                    0.00625f
-#define LH3D_SKY_MOON_GLOW_UV_MAX                      (0.5f - LH3D_SKY_MOON_GLOW_UV_INSET)
-#define LH3D_SKY_MOON_RED_DIVISOR                      6
-#define LH3D_SKY_MOON_GREEN_DIVISOR                    5
-#define LH3D_SKY_MOON_BLUE_DIVISOR                     4
-#define LH3D_SKY_MOON_TRIANGLE_VERTICES                3
-#define LH3D_SKY_MOON_UV_COMPONENTS                    2
-#define LH3D_SKY_MOON_TRIANGLE_INDEX(triangle, corner) ((triangle) * LH3D_SKY_MOON_TRIANGLE_VERTICES + (corner))
-#define LH3D_SKY_MOON_UV_U(vertex)                     ((vertex) * LH3D_SKY_MOON_UV_COMPONENTS)
-#define LH3D_SKY_MOON_UV_V(vertex)                     (LH3D_SKY_MOON_UV_U(vertex) + 1)
-#define LH3D_SKY_MOON_VERTEX_COUNT                     4
-#define LH3D_SKY_MOON_TRIANGLE_COUNT                   2
-#define LH3D_SKY_MOON_FOG_SCALE                        0.5f
-#define LH3D_SKY_MOON_FOG_OFFSET                       110.0f
-#define LH3D_SKY_MOON_FOG_MAX                          200
-#define LH3D_SKY_FOG_SCALE                             8.0f
-#define LH3D_SKY_TOP_SCALE                             0.5f
-#define LH3D_SKY_TOP_OFFSET                            0.5f
-#define LH3D_SKY_TOP_GREEN_SCALE                       1.7f
-#define LH3D_SKY_TOP_BLUE_SCALE                        1.5f
-#define LH3D_ATMOS_ALIGNMENT_FADE                      150
-#define LH3D_SKY_ALPHA_MAX                             0xff
+#define SKY_TEXTURE_HEIGHT_LOW       0x80
+#define SKY_TEXTURE_HEIGHT           0x100
+#define SKY_TEXTURE_UPDATE_LINES     0x20
+#define SKY_TYPE_CHANGE_THRESHOLD    0.03f
+#define LH3D_SKY_MOON_QUAD_SIZE      500.0f
+#define LH3D_SKY_MOON_GLOW_UV_MIN    0.25f
+#define LH3D_SKY_MOON_GLOW_UV_INSET  0.00625f
+#define LH3D_SKY_MOON_GLOW_UV_MAX    (0.5f - LH3D_SKY_MOON_GLOW_UV_INSET)
+#define LH3D_SKY_MOON_RED_DIVISOR    6
+#define LH3D_SKY_MOON_GREEN_DIVISOR  5
+#define LH3D_SKY_MOON_BLUE_DIVISOR   4
+#define LH3D_SKY_MOON_VERTEX_COUNT   4
+#define LH3D_SKY_MOON_TRIANGLE_COUNT 2
+#define LH3D_SKY_MOON_FOG_SCALE      0.5f
+#define LH3D_SKY_MOON_FOG_OFFSET     110.0f
+#define LH3D_SKY_MOON_FOG_MAX        200
+#define LH3D_SKY_FOG_SCALE           8.0f
+#define LH3D_SKY_TOP_SCALE           0.5f
+#define LH3D_SKY_TOP_OFFSET          0.5f
+#define LH3D_SKY_TOP_GREEN_SCALE     1.7f
+#define LH3D_SKY_TOP_BLUE_SCALE      1.5f
+#define LH3D_ATMOS_ALIGNMENT_FADE    150
+#define LH3D_SKY_ALPHA_MAX           0xff
 
 #define LH3D_SKY_SUN_ALPHA_SCALE    (1.0f / LH3D_SKY_ALPHA_MAX)
 #define LH3D_SKY_SUN_GLOW_COLOUR    0x00a06a35
@@ -101,6 +96,14 @@ struct LHPoint;
 #define SKY_FOG_OVERCAST_NEAR           15.0f
 #define SKY_FOG_OVERCAST_FAR            350.0f
 #define SKY_BLEND_INVERSE_SCALE         (1.0f / LH3D_SKY_COLOUR_BLEND_SCALE)
+
+enum SKY_MOON_VERTEX
+{
+	SKY_MOON_VERTEX_LOWER_LEFT = 0,
+	SKY_MOON_VERTEX_LOWER_RIGHT = 1,
+	SKY_MOON_VERTEX_UPPER_LEFT = 2,
+	SKY_MOON_VERTEX_UPPER_RIGHT = 3
+};
 
 enum SKY_LIGHT_COLOUR
 {

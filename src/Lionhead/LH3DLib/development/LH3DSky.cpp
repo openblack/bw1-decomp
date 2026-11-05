@@ -1,32 +1,32 @@
 #include "LH3DSky.h"
 
 #include <limits.h>
-#include <time.h>
-#include <string.h>
 #include <math.h>
+#include <string.h>
+#include <time.h>
 
 #include <re_common.h>
 
 #include "Bitmap16B.h"
-#include "LH3DMem.h"
-#include <Lionhead/LHFile/ver3.0/LHOSFile.h>
 #include "LH3DArena.h"
-#include "LH3DWater.h"
-#include "LH3DIsland.h"
-#include "LH3DLevelOfDetail.h"
-#include "LH3DDivers.h"
-#include "LH3DMath.h"
-#include "LH3DSubMesh.h"
-#include "LH3DRender.h"
 #include "LH3DAtmos.h"
 #include "LH3DColor.h"
+#include "LH3DDivers.h"
+#include "LH3DIsland.h"
+#include "LH3DLevelOfDetail.h"
 #include "LH3DMaterial.h"
+#include "LH3DMath.h"
+#include "LH3DMem.h"
 #include "LH3DMesh.h"
 #include "LH3DObject.h"
+#include "LH3DRender.h"
+#include "LH3DSubMesh.h"
 #include "LH3DTech.h"
 #include "LH3DTexture.h"
+#include "LH3DWater.h"
 #include "LHMatrix.h"
 #include "LHPoint.h"
+#include <Lionhead/LHFile/ver3.0/LHOSFile.h>
 
 // BW1W120 00869670 BW1M119 inlined
 bool UseBlendedSkyTextures();
@@ -75,8 +75,6 @@ float    LH3DSky::ODUSK_START_TIME = LH3D_SKY_OLD_DUSK_START_TIME;
 float    LH3DSky::ODUSK_END_TIME = LH3D_SKY_OLD_DUSK_END_TIME;
 float    LH3DSky::ODAY_FULL_TIME = LH3D_SKY_OLD_DAY_FULL_TIME;
 
-// BW1W120 00869770 BW1M119 inlined
-uint32_t ClampSkyChannel(uint32_t value);
 // BW1W120 00869790 BW1M119 01038270 (LHCombined Release)
 unsigned long BRIGHTENINTERP(unsigned long from, unsigned long to, unsigned long amount);
 
@@ -126,12 +124,6 @@ LH3DColor LH3DSky::Interpolate444Colour(uint16_t from, uint16_t to, int amount)
 	}
 	result.a = LH3D_COLOR_OPAQUE;
 	return result;
-}
-
-uint32_t ClampSkyChannel(uint32_t value)
-{
-	value = min(LH3D_SKY_ALPHA_MAX, value);
-	return value;
 }
 
 void LH3DSky::CalculateColours()
@@ -487,68 +479,45 @@ void LH3DSky::CalcMoonPhase()
 
 void LH3DSky::DrawMoonPost(LH3DColor& colour, LHMatrix& quad_matrix, LHMatrix& moon_matrix)
 {
-	enum MOON_VERTEX
-	{
-		MOON_VERTEX_LOWER_LEFT = 0,
-		MOON_VERTEX_LOWER_RIGHT = 1,
-		MOON_VERTEX_UPPER_LEFT = 2,
-		MOON_VERTEX_UPPER_RIGHT = 3
-	};
-
-	enum MOON_TRIANGLE
-	{
-		MOON_TRIANGLE_LOWER = 0,
-		MOON_TRIANGLE_UPPER = 1
-	};
-	enum MOON_TRIANGLE_CORNER
-	{
-		MOON_TRIANGLE_CORNER_FIRST = 0,
-		MOON_TRIANGLE_CORNER_SECOND = 1,
-		MOON_TRIANGLE_CORNER_THIRD = 2
-	};
 
 	long*& moonIndices = LH3DAtmos::v_idx[LH3D_ATMOS_BUFFER_SHARED];
-	moonIndices[LH3D_SKY_MOON_TRIANGLE_INDEX(MOON_TRIANGLE_LOWER, MOON_TRIANGLE_CORNER_FIRST)] = MOON_VERTEX_LOWER_LEFT;
-	moonIndices[LH3D_SKY_MOON_TRIANGLE_INDEX(MOON_TRIANGLE_LOWER, MOON_TRIANGLE_CORNER_SECOND)] =
-		MOON_VERTEX_LOWER_RIGHT;
-	moonIndices[LH3D_SKY_MOON_TRIANGLE_INDEX(MOON_TRIANGLE_LOWER, MOON_TRIANGLE_CORNER_THIRD)] =
-		MOON_VERTEX_UPPER_RIGHT;
-	moonIndices[LH3D_SKY_MOON_TRIANGLE_INDEX(MOON_TRIANGLE_UPPER, MOON_TRIANGLE_CORNER_FIRST)] =
-		MOON_VERTEX_UPPER_RIGHT;
-	moonIndices[LH3D_SKY_MOON_TRIANGLE_INDEX(MOON_TRIANGLE_UPPER, MOON_TRIANGLE_CORNER_SECOND)] =
-		MOON_VERTEX_UPPER_LEFT;
-	moonIndices[LH3D_SKY_MOON_TRIANGLE_INDEX(MOON_TRIANGLE_UPPER, MOON_TRIANGLE_CORNER_THIRD)] = MOON_VERTEX_LOWER_LEFT;
+	moonIndices[0] = SKY_MOON_VERTEX_LOWER_LEFT;
+	moonIndices[1] = SKY_MOON_VERTEX_LOWER_RIGHT;
+	moonIndices[2] = SKY_MOON_VERTEX_UPPER_RIGHT;
+	moonIndices[3] = SKY_MOON_VERTEX_UPPER_RIGHT;
+	moonIndices[4] = SKY_MOON_VERTEX_UPPER_LEFT;
+	moonIndices[5] = SKY_MOON_VERTEX_LOWER_LEFT;
 
-	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][LH3D_SKY_MOON_UV_U(MOON_VERTEX_LOWER_LEFT)] = LH3D_SKY_MOON_GLOW_UV_MIN;
-	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][LH3D_SKY_MOON_UV_V(MOON_VERTEX_LOWER_LEFT)] = LH3D_SKY_MOON_GLOW_UV_MIN;
-	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][LH3D_SKY_MOON_UV_U(MOON_VERTEX_LOWER_RIGHT)] = LH3D_SKY_MOON_GLOW_UV_MAX;
-	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][LH3D_SKY_MOON_UV_V(MOON_VERTEX_LOWER_RIGHT)] = LH3D_SKY_MOON_GLOW_UV_MIN;
-	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][LH3D_SKY_MOON_UV_U(MOON_VERTEX_UPPER_LEFT)] = LH3D_SKY_MOON_GLOW_UV_MIN;
-	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][LH3D_SKY_MOON_UV_V(MOON_VERTEX_UPPER_LEFT)] = LH3D_SKY_MOON_GLOW_UV_MAX;
-	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][LH3D_SKY_MOON_UV_U(MOON_VERTEX_UPPER_RIGHT)] = LH3D_SKY_MOON_GLOW_UV_MAX;
-	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][LH3D_SKY_MOON_UV_V(MOON_VERTEX_UPPER_RIGHT)] = LH3D_SKY_MOON_GLOW_UV_MAX;
+	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][0] = LH3D_SKY_MOON_GLOW_UV_MIN;
+	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][1] = LH3D_SKY_MOON_GLOW_UV_MIN;
+	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][2] = LH3D_SKY_MOON_GLOW_UV_MAX;
+	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][3] = LH3D_SKY_MOON_GLOW_UV_MIN;
+	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][4] = LH3D_SKY_MOON_GLOW_UV_MIN;
+	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][5] = LH3D_SKY_MOON_GLOW_UV_MAX;
+	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][6] = LH3D_SKY_MOON_GLOW_UV_MAX;
+	LH3DAtmos::v_uv[LH3D_ATMOS_BUFFER_SHARED][7] = LH3D_SKY_MOON_GLOW_UV_MAX;
 
 	LH3DColor glowColour = colour;
 	glowColour.r /= LH3D_SKY_MOON_RED_DIVISOR;
 	glowColour.g /= LH3D_SKY_MOON_GREEN_DIVISOR;
 	glowColour.b /= LH3D_SKY_MOON_BLUE_DIVISOR;
 
-	LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_SHARED][MOON_VERTEX_LOWER_LEFT] = glowColour;
-	LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_SHARED][MOON_VERTEX_LOWER_RIGHT] = glowColour;
-	LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_SHARED][MOON_VERTEX_UPPER_LEFT] = glowColour;
-	LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_SHARED][MOON_VERTEX_UPPER_RIGHT] = glowColour;
+	LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_SHARED][SKY_MOON_VERTEX_LOWER_LEFT] = glowColour;
+	LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_SHARED][SKY_MOON_VERTEX_LOWER_RIGHT] = glowColour;
+	LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_SHARED][SKY_MOON_VERTEX_UPPER_LEFT] = glowColour;
+	LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_SHARED][SKY_MOON_VERTEX_UPPER_RIGHT] = glowColour;
 
 	LHPoint  lowerLeft(-LH3D_SKY_MOON_QUAD_SIZE, -LH3D_SKY_MOON_QUAD_SIZE, 0.0f);
-	LHPoint& lowerLeftOutput = LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED][MOON_VERTEX_LOWER_LEFT];
+	LHPoint& lowerLeftOutput = LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED][SKY_MOON_VERTEX_LOWER_LEFT];
 	LHMATRIX_TRANSFORM_POINT(lowerLeftOutput, lowerLeft, quad_matrix);
 	LHPoint  lowerRight(LH3D_SKY_MOON_QUAD_SIZE, -LH3D_SKY_MOON_QUAD_SIZE, 0.0f);
-	LHPoint& lowerRightOutput = LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED][MOON_VERTEX_LOWER_RIGHT];
+	LHPoint& lowerRightOutput = LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED][SKY_MOON_VERTEX_LOWER_RIGHT];
 	LHMATRIX_TRANSFORM_POINT(lowerRightOutput, lowerRight, quad_matrix);
 	LHPoint  upperLeft(-LH3D_SKY_MOON_QUAD_SIZE, LH3D_SKY_MOON_QUAD_SIZE, 0.0f);
-	LHPoint& upperLeftOutput = LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED][MOON_VERTEX_UPPER_LEFT];
+	LHPoint& upperLeftOutput = LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED][SKY_MOON_VERTEX_UPPER_LEFT];
 	LHMATRIX_TRANSFORM_POINT(upperLeftOutput, upperLeft, quad_matrix);
 	LHPoint  upperRight(LH3D_SKY_MOON_QUAD_SIZE, LH3D_SKY_MOON_QUAD_SIZE, 0.0f);
-	LHPoint& upperRightOutput = LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED][MOON_VERTEX_UPPER_RIGHT];
+	LHPoint& upperRightOutput = LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED][SKY_MOON_VERTEX_UPPER_RIGHT];
 	LHMATRIX_TRANSFORM_POINT(upperRightOutput, upperRight, quad_matrix);
 
 	LH3DTech::Draw3DWorldTriangle(LH3D_SKY_MOON_VERTEX_COUNT, LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_SHARED],
