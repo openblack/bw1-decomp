@@ -18,7 +18,8 @@ class GStream : public GameThing
 {
 public:
 	LHListHead<GStreamPoint> Points;
-	uint8_t                  field_0x1c[0x8];
+	uint32_t                 ID;
+	uint32_t                 field_0x20;
 	LHListNode<GStream>      next;
 
 	// Override methods
@@ -43,6 +44,13 @@ public:
 
 	// BW1W120 00733ff0 BW1M119 0115c920
 	static void CreateAll();
+
+	// BW1W120 00733ac0 BW1M119 0115d3e0
+	GStream(unsigned long id);
+	// BW1W120 00733b90 BW1M119 0115cf20
+	void AddPoint(LHPoint point);
+	// BW1W120 00733fb0 BW1M119 0115c9b0
+	static void SaveAll(LHOSFile& file);
 };
 
 #endif /* BW1_DECOMP_STREAM_INCLUDED_H */

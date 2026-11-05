@@ -89,8 +89,8 @@ public:
 	// Static methods
 
 	// BW1W120 00438ec0 BW1M119 010b6110
-	static BigForest* Create(const MapCoords& coords, const GBigForestInfo* info, uint32_t param_3, float param_4,
-	                         float param_5);
+	static BigForest* Create(const MapCoords& coords, const GBigForestInfo* info, unsigned long forest_id,
+	                         float y_angle, float scale);
 
 	// Constructors
 
@@ -98,6 +98,9 @@ public:
 	BigForest() {}
 	// BW1W120 00438ce0 BW1M119 010b65a0
 	BigForest(const MapCoords& coords, const GBigForestInfo* info, uint32_t param_3, float param_4, float param_5);
+
+	// BW1W120 00439430 BW1M119 010b5490
+	static void SaveAll(LHOSFile& file, const MapCoords& coords);
 };
 
 #endif /* BW1_DECOMP_BIG_FOREST_INCLUDED_H */

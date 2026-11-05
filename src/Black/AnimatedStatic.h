@@ -8,6 +8,7 @@
 
 // Forward Declares
 
+class GAnimatedStaticInfo;
 class Base;
 class Creature;
 class GameOSFile;
@@ -64,6 +65,12 @@ public:
 
 	// BW1W120 00422580 BW1M119 010aa6c0
 	void SetToZero();
+
+	// BW1W120 00422600 BW1M119 010aa3b0
+	static int GetInfoFromText(char* text);
+	// BW1W120 00421f50 BW1M119 010ab030
+	static AnimatedStatic* Create(const MapCoords& coords, const GAnimatedStaticInfo* info, float y_angle, float scale,
+	                              float percent_built, bool32_t under_construction);
 };
 
 #endif /* BW1_DECOMP_ANIMATED_STATIC_INCLUDED_H */

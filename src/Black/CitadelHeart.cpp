@@ -247,7 +247,7 @@ uint32_t LeashObj::InterfaceTap(GInterfaceStatus* status)
 		LEASH_TYPE type = LeashIndex != LEASH_TYPE_EVIL - 1
 		                      ? (LeashIndex == LEASH_TYPE_ROPE - 1 ? LEASH_TYPE_ROPE : LEASH_TYPE_GOOD)
 		                      : LEASH_TYPE_EVIL;
-		GGame::g_game->SetPacket(PACKET_TYPE_TEMPLE_LEASH, type, 0);
+		GGame::g_game->SetPacket(PACKET_TYPE_TEMPLE_LEASH, (unsigned short)type, (unsigned short)0);
 	}
 	return true;
 }

@@ -6,6 +6,9 @@ class GameOSFile;
 class GLandBalance
 {
 public:
+	// BW1W120 00bf33f0
+	static float LostTownScale;
+
 	enum LAND_BALANCE
 	{
 		LAND_BALANCE_0,

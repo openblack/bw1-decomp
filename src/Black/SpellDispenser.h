@@ -21,10 +21,10 @@ class SpellDispenser : public Abode
 {
 public:
 	uint32_t   field_0xc4;
-	uint32_t   field_0xc8;
+	uint32_t   Charges;
 	GameThing* field_0xcc;
 	uint32_t   field_0xd0;
-	uint32_t   field_0xd4;
+	MAGIC_TYPE DispensedMagicType;
 	uint8_t    field_0xd8[0x4];
 
 	// Override methods
@@ -64,6 +64,9 @@ public:
 	// BW1W120 007228d0 BW1M119 01523040
 	static SpellDispenser* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle,
 	                              float scale, float food, int wood);
+
+	// BW1W120 00723030 BW1M119 01522220
+	void SetActive(bool32_t active);
 };
 
 #endif /* BW1_DECOMP_SPELL_DISPENSER_INCLUDED_H */

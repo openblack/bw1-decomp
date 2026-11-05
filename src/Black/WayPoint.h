@@ -11,6 +11,8 @@
 
 class Base;
 class GameThing;
+class LHOSFile;
+struct MapCoords;
 
 class WayPoint : public GameThingWithPos
 {
@@ -32,6 +34,11 @@ public:
 
 	// BW1W120 00770b70 BW1M119 01167f50
 	WayPoint();
+
+	// BW1W120 00770bc0 BW1M119 01167dd0
+	static WayPoint* Create(const MapCoords& coords);
+	// BW1W120 00770c60 BW1M119 01167b20
+	void SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 #endif /* BW1_DECOMP_WAY_POINT_INCLUDED_H */

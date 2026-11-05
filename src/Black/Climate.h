@@ -12,13 +12,19 @@
 // Forward Declares
 
 class Base;
+class GClimateInfo;
 class GameOSFile;
+class LHOSFile;
+struct MapCoords;
 class LH3DStorm;
 struct LHPoint;
 
 struct RainInfo
 {
-	uint8_t field_0x0[0x10];
+	float   Rain;
+	long    TurnsSinceRain;
+	long    TurnsRaining;
+	uint8_t Raining;
 
 	// BW1W120 00773d10 BW1M119 015aa600
 	RainInfo();
@@ -26,7 +32,8 @@ struct RainInfo
 
 struct TempInfo
 {
-	uint8_t field_0x0[0x8];
+	float ActualTemp;
+	float GoalTemp;
 
 	// BW1W120 00773ec0 BW1M119 015aab40
 	TempInfo();
@@ -34,7 +41,9 @@ struct TempInfo
 
 struct WindInfo
 {
-	uint8_t field_0x0[0xc];
+	float X;
+	float Z;
+	float Angle;
 
 	// BW1W120 00774a80 BW1M119 015ac240
 	WindInfo();
@@ -88,6 +97,20 @@ public:
 	static float GetRain(const LHPoint& pos);
 	// BW1W120 00772e00 BW1M119 015a7540
 	void CreateStorm();
+
+	// BW1W120 00771300 BW1M119 015a96f0
+	static GClimate* Create(const MapCoords& coords, const GClimateInfo* info, float inner_radius, float outer_radius,
+	                        float rotation, long id);
+	// BW1W120 00773200 BW1M119 015a7350
+	static void AttachRainInfo(RainInfo& info, long id);
+	// BW1W120 00773290 BW1M119 015a72a0
+	static void AttachTempInfo(TempInfo& info, long id);
+	// BW1W120 007732d0 BW1M119 015a71e0
+	static void AttachWindInfo(WindInfo& info, long id);
+	// BW1W120 007731b0 BW1M119 015a7480
+	static GClimate* GetClimateWithId(long id);
+	// BW1W120 00772b80 BW1M119 015a7f00
+	static void SaveAllObjectTextFile(LHOSFile& file, const MapCoords& coords);
 };
 
 #endif /* BW1_DECOMP_CLIMATE_INCLUDED_H */

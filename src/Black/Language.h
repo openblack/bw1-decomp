@@ -20,6 +20,11 @@ public:
 
 	// BW1W120 005e6750 BW1M119 0113ed40
 	GLanguage();
+
+	// Non-virtual methods
+
+	// BW1W120 005e67c0 BW1M119 0143f4a0
+	void Load();
 };
 
 #endif /* BW1_DECOMP_LANGUAGE_INCLUDED_H */

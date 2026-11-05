@@ -44,6 +44,11 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	GWaterfall() {}
+
+	// BW1W120 00734180 BW1M119 0115c510
+	static GWaterfall* Create(const MapCoords& coords);
+	// BW1W120 007341c0 BW1M119 0115c470
+	static void SaveAll(LHOSFile& file);
 };
 
 #endif /* BW1_DECOMP_WATERFALL_INCLUDED_H */

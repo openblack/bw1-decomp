@@ -88,6 +88,11 @@ public:
 	FireFly(const MapCoords& coords);
 	// BW1W120 0052a340 BW1M119 010deac0
 	FireFly();
+
+	// BW1W120 0052b630 BW1M119 010dc9e0
+	static void SetSpellRewardProbability(MAGIC_TYPE type, float probability);
+	// BW1W120 0052b670 BW1M119 010dc900
+	static void SaveSpellRewardProbs(LHOSFile& file);
 };
 
 #endif /* BW1_DECOMP_FIRE_FLY_INCLUDED_H */

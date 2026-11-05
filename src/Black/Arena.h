@@ -69,6 +69,9 @@ public:
 	static GArena* FindNearestArena(const MapCoords& coords, float);
 	// BW1W120 00424820 BW1M119 010af680
 	static GArena* Create(const MapCoords& coords, float);
+
+	// BW1W120 00424b80 BW1M119 010aefb0
+	static void SaveAll(LHOSFile& file);
 };
 
 class ArenaSpellIcon : public Fixed

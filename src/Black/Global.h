@@ -29,7 +29,7 @@ struct GGlobal
 	uint32_t field_0x2d2c4;
 	uint32_t field_0x2d2c8;
 	bool32_t RandomiseCreatureMinds;
-	uint32_t field_0x2d2d0;
+	bool32_t LoadNewCreature;
 	uint32_t field_0x2d2d4;
 	uint32_t field_0x2d2d8;
 	uint32_t field_0x2d2dc;

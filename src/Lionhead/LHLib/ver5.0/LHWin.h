@@ -6,6 +6,11 @@
 
 // 00e8c10c is LHSys::TheSystem.MessageHook, not separate storage.
 
+#define LH_KEY_TO_ASCII_TABLE_SIZE 0x100
+
+// BW1W120 00c3122c BW1M119 011db7a4 (LHCombined Release)
+extern char LHKeyToAsciiTable[LH_KEY_TO_ASCII_TABLE_SIZE];
+
 // BW1W120 007db770
 extern "C" float __cdecl Atan2Positive(float x, float y);
 

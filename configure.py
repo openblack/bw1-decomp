@@ -270,7 +270,9 @@ if config.version == "BW1W100":
     # SetGotoWorshipSpeed and CheckRequestGoHome have no callers in 1.00, so
     # they were dropped too, with the only users of WorshipSite's
     # GetWorshipSpeed and AddVillagerRequestingToGoHome. Nothing calls
-    # LH3DAnim::CreateCachedFile, the only user of LHFile::WriteSegment.
+    # LH3DAnim::CreateCachedFile, the only user of LHFile::WriteSegment. Setup's
+    # BrushSizeCommandProcess has no callers in 1.00 either, and it is the only
+    # user of RandomBuildingPlacement's brush settings.
     for _dead_function in [
         "?_Nomemory@std@@YAXXZ",
         "?IsNameUsed@PersistentOwner@@QAEHPBD@Z",
@@ -279,6 +281,9 @@ if config.version == "BW1W100":
         "?GetWorshipSpeed@WorshipSite@@QAEMXZ",
         "?AddVillagerRequestingToGoHome@WorshipSite@@QAEXPAVVillager@@@Z",
         "?WriteSegment@LHFile@@QAEIPAULHSegment@@@Z",
+        "?BrushRadius@RandomBuildingPlacement@@2MA",
+        "?BrushDepth@RandomBuildingPlacement@@2MA",
+        "?BrushWidth@RandomBuildingPlacement@@2MA",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
     # bodge_to_force_compilation_of_versions has no callers, so /OPT:REF dropped it
@@ -1338,7 +1343,8 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Serialise.cpp"),
             GameCodeObject(NonMatching, "Black/ServerLandscapeMap.cpp"),
             GameCodeObject(NonMatching, "Black/Settings.cpp"),
-            GameCodeObject(NonMatching, "Black/Setup.cpp"),
+            GameCodeObject(Matching, "Black/Setup.cpp"),
+            GameCodeObject(Matching, "Black/SetupGameData.cpp"),
             GameCodeObject(NonMatching, "Black/SetupMultiplayerMain.cpp"),
             GameCodeObject(NonMatching, "Black/SetupOnlineLandscapes.cpp"),
             GameCodeObject(NonMatching, "Black/SetupStaticTextNoHit.cpp"),
@@ -1840,6 +1846,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DFade.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSRAMTex.cpp", extra_cflags=["/GX"]),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DLandscape.cpp", extra_cflags=["/GX"], pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DDynamicShadow.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LandBlock.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DWater.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DCT.cpp", pch=True),

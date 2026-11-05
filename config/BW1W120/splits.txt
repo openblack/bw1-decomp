@@ -2446,9 +2446,9 @@ Black/Serialise.cpp:
 
 Black/ServerLandscapeMap.cpp:
 	.text       start:0x00712840 end:0x00714AF0
-	.rdata      start:0x00957280 end:0x009572B0
+	.rdata      start:0x00957280 end:0x009572A8
 	.CRT$XCU    start:0x009C7704 end:0x009C7718 align:4
-	.data       start:0x00C20C58 end:0x00C21FE8
+	.data       start:0x00C20C58 end:0x00C20D50
 	.bss        start:0x00D99054 end:0x00D9927C
 
 Black/Settings.cpp:
@@ -2457,17 +2457,24 @@ Black/Settings.cpp:
 	.bss        start:0x00D9927C end:0x00D99380
 
 Black/Setup.cpp:
-	.text       start:0x00714C90 end:0x007199C0
-	.rdata      start:0x009572B0 end:0x009572C4
-	.CRT$XCU    start:0x009C771C end:0x009C7738 align:4
-	.data       start:0x00C21FE8 end:0x00C22168
-	.bss        start:0x00D99380 end:0x00D99B8C
+	.text       start:0x00714C90 end:0x00719700
+	.rdata      start:0x009572A8 end:0x009572BC
+	.CRT$XCU    start:0x009C771C end:0x009C772C align:4
+	.data       start:0x00C20D50 end:0x00C22148
+	.bss        start:0x00D99380 end:0x00D99728
+
+Black/SetupGameData.cpp:
+	.text       start:0x00719700 end:0x007199C0
+	.rdata      start:0x009572BC end:0x009572C4
+	.CRT$XCU    start:0x009C772C end:0x009C7738 align:4
+	.bss        start:0x00D99728 end:0x00D99730
 
 Black/ShowNeeds.cpp:
 	.text       start:0x007199C0 end:0x0071A450
 	.rdata      start:0x009572C4 end:0x00957304
 	.CRT$XCU    start:0x009C7738 end:0x009C7740 align:4
-	.data       start:0x00C22168 end:0x00C221A4
+	.data       start:0x00C22148 end:0x00C221A4
+	.bss        start:0x00D99730 end:0x00D99B8C
 
 Black/SoundConfirmation.cpp:
 	.text       start:0x0071A450 end:0x0071A960
@@ -4421,6 +4428,12 @@ Lionhead/LH3DLib/development/LH3DLandscape.cpp:
 	.rdata      start:0x009A3C0C end:0x009A3C10
 	.data       start:0x00C397F4 end:0x00C398E4
 	.bss        start:0x00FA51F8 end:0x00FA76D0
+
+Lionhead/LH3DLib/development/LH3DDynamicShadow.cpp:
+	.text       start:0x00874440 end:0x00874AA0
+	.rdata      start:0x009A3C10 end:0x009A3C14
+	.data       start:0x00C398E4 end:0x00C398FC
+	.bss        start:0x00FA76D0 end:0x00FA92D8
 
 Lionhead/LH3DLib/development/LandBlock.cpp:
 	.text       start:0x00874AA0 end:0x008792E0

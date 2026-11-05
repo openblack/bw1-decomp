@@ -7,6 +7,9 @@
 struct Settings
 {
 	char QuestPath[0x104];
+#ifdef VERSION_BW1WCI
+	char MapPath[0x104];
+#endif
 	Settings() { InitialiseToDefaults(); }
 
 	// Non-virtual methods

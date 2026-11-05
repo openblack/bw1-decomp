@@ -106,7 +106,10 @@ class LH3DStorm
 public:
 	uint32_t           field_0x4;
 	StormInfo          Info;
-	uint8_t            field_0x58[0x18];
+	float              Lifetime;    /* 0x58 */
+	LHPoint            Destination; /* 0x5c */
+	float              Radius;      /* 0x68 */
+	uint8_t            field_0x6c[0x4];
 	LH3DLightningSheet Sheet;
 	int                Killed;
 	uint8_t            field_0x98[0x324];

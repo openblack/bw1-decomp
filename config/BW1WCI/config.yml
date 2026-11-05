@@ -29,6 +29,10 @@ block_relocations:
   - source: 0x008357E6
   - source: 0x00835801
   - source: 0x0083599D
+# GSetup::MapCommandProcess's GAME_FLAG_STARTUP_ALLOW_SKIP (0x800000) and GAME_FLAG_STARTUP_FORCE_INTRO (0x1000000) are
+# immediates, not pointers into LHDraw::EmbossedBox24 and NewCols.
+  - source: 0x00730502
+  - source: 0x00730532
 # LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
   - source: 0x00828CB7
   - source: 0x008297F8

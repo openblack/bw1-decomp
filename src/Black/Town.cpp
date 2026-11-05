@@ -112,7 +112,7 @@ Town::Town(const MapCoords& coords, const GTownInfo* info, GPlayer* player, TRIB
            unsigned long id)
 #else
 Town::Town(const MapCoords& coords, const GTownInfo* info, GPlayer* player, TRIBE_TYPE tribe_type, char* name,
-           unsigned long id, int param_7)
+           unsigned long id, bool32_t zero_base_influence)
 #endif
 	: Container(coords, info, player), totem(NULL), graveyard(NULL), next(NULL), NearestTown(NULL), worship_site(NULL),
 	  playtime(NULL), town_centre(NULL), field_0xea8(0)
@@ -130,7 +130,7 @@ Town::Town(const MapCoords& coords, const GTownInfo* info, GPlayer* player, TRIB
 	owner = player;
 	this->tribe_type = tribe_type;
 #ifndef VERSION_BW1W100
-	ZeroBaseInfluence = param_7;
+	ZeroBaseInfluence = zero_base_influence;
 #endif
 	influence = GetBaseInfluence();
 	AddTownToPlayer(player);

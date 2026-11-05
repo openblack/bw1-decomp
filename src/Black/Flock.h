@@ -29,6 +29,9 @@ class Town;
 
 #define FLOCK_MAGIC 0xaba52
 
+#define FLOCK_DEFAULT_DOMAIN_RADIUS 80
+#define FLOCK_DEFAULT_DISTANCE      30
+
 class Flock : public Container
 {
 public:
@@ -49,7 +52,7 @@ public:
 	uint32_t                         field_0x80;
 	GameThing*                       SavedThing;
 	uint32_t                         MaxMembers;
-	uint32_t                         field_0x8c;
+	uint32_t                         ID;
 
 	// Override methods
 
@@ -124,6 +127,11 @@ public:
 	Flock* SeperateLivingIntoNewFlock(Living* living, bool32_t delete_if_empty);
 	// BW1W120 00530570 BW1M119 0106ac10
 	MapCoords* GetFlockPos();
+
+	// BW1W120 inlined BW1M119 01029620
+	SLL<Living, &Living::FlockOrder>* GetFlockMembers() { return &Members; }
+	// BW1W120 00530310 BW1M119 010e9030
+	uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 #endif /* BW1_DECOMP_FLOCK_INCLUDED_H */

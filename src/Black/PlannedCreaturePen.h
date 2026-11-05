@@ -17,9 +17,16 @@ public:
 	// Override methods
 
 	// BW1W120 004ef050 BW1M119 012786b0
-	virtual ~PlannedCreaturePen();
+	virtual ~PlannedCreaturePen() {}
 	// BW1W120 004ef040 BW1M119 01278750
 	virtual const char* GetText();
+
+	// BW1W120 inlined BW1M119 inlined
+	PlannedCreaturePen(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* citadel, float y_angle,
+	                   float scale)
+		: PlannedCitadelPart(coords, info, citadel, y_angle, scale)
+	{
+	}
 };
 
 #endif /* BW1_DECOMP_PLANNED_CREATURE_PEN_INCLUDED_H */

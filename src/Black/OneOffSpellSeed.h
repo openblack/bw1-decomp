@@ -109,6 +109,9 @@ public:
 	void UpdateFrame();
 	// BW1W120 0072a840 BW1M119 0152f5d0
 	void GetSpellGraphicPos(LHMatrix* matrix, float* scale);
+
+	// BW1W120 0072a2f0 BW1M119 01530300
+	static OneOffSpellSeed* Create(const MapCoords& coords, SPELL_SEED_TYPE type, POWER_UP_TYPE power_up, float scale);
 };
 
 #endif /* BW1_DECOMP_ONE_OFF_SPELL_SEED_INCLUDED_H */

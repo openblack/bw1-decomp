@@ -2294,6 +2294,33 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00715FBB, call_rel32(0x004034F9)),  # ScriptTimer
     (0x007160F1, jmp_run(0x00715FBB)),  # ScriptTimer
     (0x007161A1, copy_run(0x00532515)),  # ScriptTimer
+    (0x00719603, copy_run(0x007195AA)),  # Setup
+    (0x0071962B, call_rel32(0x004034F9)),  # Setup
+    (0x00719655, jmp_run(0x0071962B)),  # Setup
+    (0x007199F1, jmp_run(0x00719653)),  # Setup
+    (0x00719A21, copy_run(0x007199F1)),  # Setup
+    (0x00719A76, jmp_run(0x00719A21)),  # Setup
+    (0x00719A98, jmp_run(0x00719A76)),  # Setup
+    (0x00719AC6, copy_run(0x00719A98)),  # Setup
+    (0x0071C9FB, call_rel32(0x004034F9)),  # Setup
+    (0x0071CC73, jmp_run(0x0071C9FB)),  # Setup
+    (0x0071D559, jmp_run(0x0071CC73)),  # Setup
+    (0x0071D581, copy_run(0x0071D559)),  # Setup
+    (0x0071D9F2, jmp_run(0x0071D581)),  # Setup
+    (0x0071DBC2, copy_run(0x0071D9F2)),  # Setup
+    (0x0071DC88, copy_run(0x0071DBC2)),  # Setup
+    (0x0071DFD6, jmp_run(0x0071DC88)),  # Setup
+    (0x0071E0CB, call_rel32(0x004034F9)),  # SetupGameData
+    (0x0071E0F5, jmp_run(0x0071E0CB)),  # SetupGameData
+    (0x0071E19A, jmp_run(0x0071E0F3)),  # SetupGameData
+    (0x0071E1E9, copy_run(0x0071E19A)),  # SetupGameData
+    (0x0071E239, jmp_run(0x0071E1E9)),  # SetupGameData
+    (0x0071E258, jmp_run(0x0071E239)),  # SetupGameData
+    (0x0071E278, jmp_run(0x0071E258)),  # SetupGameData
+    (0x0071E299, jmp_run(0x0071E278)),  # SetupGameData
+    (0x0071E2B9, jmp_run(0x0071E299)),  # SetupGameData
+    (0x0071E2F6, jmp_run(0x0071E2B9)),  # SetupGameData
+    (0x0071E336, jmp_run(0x0071E2F6)),  # SetupGameData
     (0x00764C73, jmp_run(0x00764C12)),  # VillagerHome
     (0x00764D52, jmp_run(0x00764C73)),  # VillagerHome
     (0x00764DE6, copy_run(0x00764D52)),  # VillagerHome

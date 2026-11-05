@@ -2142,8 +2142,8 @@ Black/Serialise.cpp:
 
 Black/ServerLandscapeMap.cpp:
 	.text       start:0x00707570 end:0x00709650
-	.rdata      start:0x009471F8 end:0x00947228
-	.data       start:0x00C0FD84 end:0x00C1002C
+	.rdata      start:0x009471F8 end:0x00947220
+	.data       start:0x00C0FD84 end:0x00C0FE78
 	.bss        start:0x00D87D24 end:0x00D87F4C
 
 Black/Settings.cpp:
@@ -2151,16 +2151,23 @@ Black/Settings.cpp:
 	.bss        start:0x00D87F4C end:0x00D88050
 
 Black/Setup.cpp:
-	.text       start:0x007097C0 end:0x0070E2F0
-	.rdata      start:0x00947228 end:0x0094723C
-	.CRT$XCU    start:0x009B70A4 end:0x009B70B8 align:4
-	.data       start:0x00C1002C end:0x00C11158
-	.bss        start:0x00D88050 end:0x00D8885C
+	.text       start:0x007097C0 end:0x0070E060
+	.rdata      start:0x00947220 end:0x00947234
+	.CRT$XCU    start:0x009B70A4 end:0x009B70B0 align:4
+	.data       start:0x00C0FE78 end:0x00C11230
+	.bss        start:0x00D88050 end:0x00D883F8
+
+Black/SetupGameData.cpp:
+	.text       start:0x0070E060 end:0x0070E2F0
+	.rdata      start:0x00947234 end:0x0094723C
+	.CRT$XCU    start:0x009B70B0 end:0x009B70B8 align:4
+	.bss        start:0x00D883F8 end:0x00D88400
 
 Black/ShowNeeds.cpp:
 	.text       start:0x0070E2F0 end:0x0070ED50
 	.rdata      start:0x0094723C end:0x0094727C
-	.data       start:0x00C11250 end:0x00C1128C
+	.data       start:0x00C11230 end:0x00C1128C
+	.bss        start:0x00D88400 end:0x00D8885C
 
 Black/SoundConfirmation.cpp:
 	.text       start:0x0070EDB0 end:0x0070F200
@@ -3946,6 +3953,12 @@ Lionhead/LH3DLib/development/LH3DLandscape.cpp:
 	.rdata      start:0x00993B0C end:0x00993B10
 	.data       start:0x00C28644 end:0x00C28734
 	.bss        start:0x00F93BC0 end:0x00F96098
+
+Lionhead/LH3DLib/development/LH3DDynamicShadow.cpp:
+	.text       start:0x00864250 end:0x008648B0
+	.rdata      start:0x00993B10 end:0x00993B14
+	.data       start:0x00C28734 end:0x00C2874C
+	.bss        start:0x00F96098 end:0x00F97CA0
 
 Lionhead/LH3DLib/development/LandBlock.cpp:
 	.text       start:0x008648B0 end:0x008690F0

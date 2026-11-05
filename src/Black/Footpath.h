@@ -111,6 +111,11 @@ public:
 	bool32_t SaveObject(LHOSFile& file, const MapCoords* offset);
 	// BW1W120 00538eb0 BW1M119 010ec330
 	void AssertValid();
+
+	// BW1W120 00cd035c
+	static char LinkFilename[];
+	// BW1W120 00cd0488
+	static bool32_t LinksLoaded;
 };
 
 // BW1W120 00535780 BW1M119 010f2bf0

@@ -47,8 +47,7 @@ static int gWindowActive = 1;
 static int gTrackingMouse = 1;
 // UK-layout scancode -> ASCII; low half unshifted, high half shifted
 // (0x9C = 'GBP'). Zero rows cover keypad/function/extended scancodes with no character.
-// BW1W120 00c3122c
-static unsigned char gKeyToAsciiTable[0x100] = {
+char LHKeyToAsciiTable[LH_KEY_TO_ASCII_TABLE_SIZE] = {
 	0x00, 0x00, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x30, 0x2D, 0x3D, 0x08, 0x09, 0x71, 0x77, 0x65,
 	0x72, 0x74, 0x79, 0x75, 0x69, 0x6F, 0x70, 0x5B, 0x5D, 0x00, 0x00, 0x61, 0x73, 0x64, 0x66, 0x67, 0x68, 0x6A, 0x6B,
 	0x6C, 0x3B, 0x27, 0x60, 0x00, 0x23, 0x7A, 0x78, 0x63, 0x76, 0x62, 0x6E, 0x6D, 0x2C, 0x2E, 0x2F, 0x00, 0x2A, 0x00,
@@ -73,12 +72,14 @@ LHSys::LHSys()
 	// TODO: target emits the LHText/LHSpriteList stores at 0x7048/0x704c/0x7044 after
 	// the convert-tail helper; this TU's inferred LHText base constructor emits them early.
 	// Do not suppress the evidenced LHText type without identifying the original ordering.
+#ifndef VERSION_BW1W100
 	for (int i = 0; i < 2; ++i)
 	{
 		joypads.joypads[i].field_0x4 = 0;
 		joypads.joypads[i].field_0x5 = 0;
 	}
 	joypads.count = 0;
+#endif
 }
 
 // The one LHSys instance; its static-init thunk is this TU's .CRT$XCU
@@ -156,7 +157,7 @@ void ProcessWindowMessages()
 
 unsigned char LHKeyboard::LHKeyToAscii(LH_KEY key, bool32_t shift)
 {
-	return gKeyToAsciiTable[key | (shift != 0 ? 0x80 : 0)];
+	return LHKeyToAsciiTable[key | (shift != false ? 0x80 : 0)];
 }
 
 int ResizeWindow(unsigned short width, unsigned short height)
