@@ -57,7 +57,8 @@ def ranges(ver, exe=None):
         '.text': (text[0], tx[0]),
         '.text$x': tx,
         'code': (text[0], max(text[1], tx[1])),
-        '.rdata': (hdr['.idata$5'][1], hdr['.rdata$r'][0]),
+        # Creature Isle's import tables are not in .rdata
+        '.rdata': (hdr['.idata$5'][1] if '.idata$5' in hdr else pe['.rdata'][0], hdr['.rdata$r'][0]),
         '.rdata$r': hdr['.rdata$r'],
         '.xdata$x': hdr['.xdata$x'],
         '.data': (hdr['.CRT$XTZ'][1], hdr['.bss'][0]),

@@ -13,6 +13,8 @@ import sys, re, struct, os, io, subprocess
 _REAL_STDOUT = sys.stdout
 sys.stdout = io.StringIO()
 FORCED_FOLDED = {int(x) for x in os.environ.get('CPPWALK_FORCED', '').split(',') if x}
+# sections the consistency check must not fold (identical stubs whose votes are ambiguous)
+KEEP = {int(x) for x in os.environ.get('CPPWALK_KEEP', '').split(',') if x}
 CONFIRMED = set()   # low-information sections whose presence the following layout proves
 sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 import libobj as L
@@ -637,7 +639,7 @@ def _check_consistency():
         if idx_ in votes or fixed_bytes(sec_) >= 4 or idx_ in CONFIRMED or not sec_.is_comdat: continue
         if _rtti_class(symname(sec_))[0] is not None: continue   # vtable/RTTI: type-name checked
         bad.add(idx_)
-    return bad
+    return bad - KEEP
 _bad = _check_consistency()
 _out = sys.stdout.getvalue()
 sys.stdout = _REAL_STDOUT
