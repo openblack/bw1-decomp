@@ -58,7 +58,7 @@ bool32_t Reward::Load(GameOSFile& file)
 		file.ReadPtr((GameThing**)&Player);
 		file.ReadPtr((GameThing**)&town);
 		file.ReadIt(field_0x78);
-		file.ReadIt(field_0x7c);
+		file.ReadIt(Active);
 		file.ReadIt(field_0x80);
 		file.ReadIt(field_0x84);
 		file.ReadIt(field_0x88);
@@ -80,7 +80,7 @@ bool32_t Reward::Save(GameOSFile& file)
 		file.WritePtr(Player);
 		file.WritePtr(town);
 		file.WriteIt(field_0x78);
-		file.WriteIt(field_0x7c);
+		file.WriteIt(Active);
 		file.WriteIt(field_0x80);
 		file.WriteIt(field_0x84);
 		file.WriteIt(field_0x88);
@@ -99,7 +99,17 @@ GPlayer* Reward::GetPlayer()
 	return Player;
 }
 
+void Reward::Draw()
+{
+	ProcessDrawing();
+}
+
 bool32_t Reward::IsReward() const
 {
 	return true;
+}
+
+bool32_t Reward::IsActive() const
+{
+	return Active;
 }

@@ -434,10 +434,16 @@ public:
 class PuzzleCow : public PieceCow
 {
 public:
+	long BoxX; /* 0x148 */
+	long BoxZ;
+	bool Team; /* 0x150 */
+
 	// Override methods
 
 	// BW1W120 006db140 BW1M119 0112df20
 	virtual bool32_t DecideWhatToDo();
+	// BW1W120 006dcb30 BW1M119 0112aca0
+	virtual void AddToBoxPositionForChessGame(long x, long z);
 	// BW1W120 006dd680 BW1M119 0113aef0
 	virtual char* GetDebugText();
 	// BW1W120 006dd670 BW1M119 0113aeb0
@@ -521,6 +527,10 @@ public:
 class PuzzleHorse : public PieceHorse
 {
 public:
+	long BoxX; /* 0x148 */
+	long BoxZ;
+	bool Team; /* 0x150 */
+
 	// Override methods
 
 	// BW1W120 006dd520 BW1M119 0113b3f0
@@ -565,6 +575,8 @@ public:
 	virtual bool32_t InHand();
 	// BW1W120 006db120 BW1M119 0112dfa0
 	virtual bool32_t DecideWhatToDo();
+	// BW1W120 006dcad0 BW1M119 0112ad60
+	virtual void AddToBoxPositionForChessGame(long x, long z);
 	// BW1W120 005ec8f0 BW1M119 inlined
 	virtual void Birthday();
 	// BW1W120 004179c0 BW1M119 inlined
@@ -640,6 +652,10 @@ public:
 class PuzzlePig : public PiecePig
 {
 public:
+	long BoxX; /* 0x148 */
+	long BoxZ;
+	bool Team; /* 0x150 */
+
 	// Override methods
 
 	// BW1W120 006dd730 BW1M119 0113b190
@@ -650,6 +666,8 @@ public:
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 006db130 BW1M119 0112df60
 	virtual bool32_t DecideWhatToDo();
+	// BW1W120 006dcb60 BW1M119 0112ac40
+	virtual void AddToBoxPositionForChessGame(long x, long z);
 };
 
 class PuzzleSheep : public PieceSheep
@@ -693,10 +711,16 @@ public:
 class PuzzleTortoise : public PieceTortoise
 {
 public:
+	long BoxX; /* 0x148 */
+	long BoxZ;
+	bool Team; /* 0x150 */
+
 	// Override methods
 
 	// BW1W120 006db150 BW1M119 0112dee0
 	virtual bool32_t DecideWhatToDo();
+	// BW1W120 006dcb00 BW1M119 0112ad00
+	virtual void AddToBoxPositionForChessGame(long x, long z);
 	// BW1W120 006dd5d0 BW1M119 0113abf0
 	virtual char* GetDebugText();
 	// BW1W120 006dd5c0 BW1M119 0113abb0

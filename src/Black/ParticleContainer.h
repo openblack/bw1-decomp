@@ -31,7 +31,7 @@ public:
 	LHPTR<GameThingWithPos>        thing;
 	uint32_t                       field_0x2c;
 	uint32_t                       field_0x30;
-	float                          field_0x34;
+	float                          ParticleStrength;
 	bool                           field_0x38;
 	LHListNode<GParticleContainer> next;
 

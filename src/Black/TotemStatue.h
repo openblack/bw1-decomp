@@ -54,7 +54,7 @@ public:
 	// BW1W120 00737bf0 BW1M119 0154f210
 	virtual ~TotemStatue();
 	// BW1W120 00737c20 BW1M119 0154f190
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00738490 BW1M119 0154e1c0
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00738480 BW1M119 0154e280
@@ -149,6 +149,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00737c40 BW1M119 0154f0c0
+	void DeleteDependancys();
 	// BW1W120 00738260 BW1M119 0154e430
 	float GetWorshipSpeed();
 	// BW1W120 00738270 BW1M119 0154e350

@@ -47,7 +47,7 @@ public:
 	uint32_t        field_0x3c;
 	uint32_t        field_0x40;
 	uint32_t        field_0x44;
-	uint32_t        field_0x48;
+	bool32_t        CreatureCasting;
 	uint32_t        field_0x4c;
 	float           field_0x50;
 	float           field_0x54;
@@ -118,7 +118,7 @@ public:
 	// BW1W120 00721630 BW1M119 0151dc80
 	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
 	// BW1W120 007216d0 BW1M119 0151dc10
-	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
+	virtual float GetUpdateOfBoredomValue(Reaction* reaction, GameThingWithPos* reactor);
 	// BW1W120 0055cee0 BW1M119 013b9f80
 	virtual bool32_t IsSuitableForCreatureAction() { return true; }
 	// BW1W120 0055ced0 BW1M119 013b9f30

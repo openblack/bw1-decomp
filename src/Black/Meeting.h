@@ -5,10 +5,12 @@
 #include <stdint.h> /* For uint32_t */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
+#include "LHPTR.h"            /* For LHPTR */
 
 // Forward Declares
 
 class Base;
+class Dance;
 class GPlayer;
 class GameThing;
 class Town;
@@ -16,10 +18,10 @@ class Town;
 class Meeting : public GameThingWithPos
 {
 public:
-	uint8_t  field_0x28[0xc];
-	Town*    town; /* 0x34 */
-	uint8_t  field_0x38[0x4];
-	Meeting* next;
+	uint8_t      field_0x28[0xc];
+	Town*        town;  /* 0x34 */
+	LHPTR<Dance> dance; /* 0x38 */
+	Meeting*     next;
 
 	// Override methods
 

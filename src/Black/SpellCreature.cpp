@@ -13,6 +13,11 @@ char* SpellCreature::GetDebugText()
 	return "SpellCreature:";
 }
 
+uint32_t SpellCreature::GetCreatureCastOn()
+{
+	return CreatureCastOn;
+}
+
 void SpellCreature::CloseDown()
 {
 	Spell::CoreCloseDown();

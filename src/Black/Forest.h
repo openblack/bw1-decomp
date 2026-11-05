@@ -63,7 +63,7 @@ public:
 	// BW1W120 0053acf0 BW1M119 010f9bf0
 	virtual uint32_t GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3);
 	// BW1W120 0053ad60 BW1M119 010f99b0
-	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3);
+	virtual void UseFootpathIfNecessary(Living* living, const MapCoords& coords, unsigned char state);
 	// BW1W120 0053ac50 BW1M119 010f9cf0
 	virtual bool32_t AddFootpath(GFootpath* footpath);
 	// BW1W120 0053acc0 BW1M119 010f9c40

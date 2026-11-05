@@ -114,7 +114,7 @@ public:
 	// BW1W120 00439670 BW1M119 010b6df0
 	virtual bool32_t CanBePickedUp() { return !(Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP); }
 	// BW1W120 00608de0 BW1M119 013c78c0
-	virtual void GetWorldMatrix(LHMatrix* param_1);
+	virtual void GetWorldMatrix(LHMatrix* matrix);
 	// BW1W120 00609700 BW1M119 013c60f0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 006096b0 BW1M119 013c62b0

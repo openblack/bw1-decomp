@@ -1,6 +1,7 @@
 #include "GameTimeConstants.h"
 #include "FishFarm.h"
 #include "FishFarmInfo.h"
+#include "Town.h"
 
 uint32_t FishFarm::GetSaveType()
 {
@@ -138,6 +139,15 @@ void FishFarm::ToBeDeleted(bool32_t delete_now)
 float FishFarm::GetHeightForHandAboveInteractObject()
 {
 	return 5.0f;
+}
+
+GPlayer* FishFarm::GetPlayer()
+{
+	if (GetTown())
+	{
+		return GetTown()->GetPlayer();
+	}
+	return NULL;
 }
 
 MapCoords FishFarm::GetDoorPos()

@@ -26,6 +26,30 @@ void PuzzleLion::AddToBoxPositionForChessGame(long x, long z)
 	BoxZ += z;
 }
 
+void PuzzleHorse::AddToBoxPositionForChessGame(long x, long z)
+{
+	BoxX += x;
+	BoxZ += z;
+}
+
+void PuzzleTortoise::AddToBoxPositionForChessGame(long x, long z)
+{
+	BoxX += x;
+	BoxZ += z;
+}
+
+void PuzzleCow::AddToBoxPositionForChessGame(long x, long z)
+{
+	BoxX += x;
+	BoxZ += z;
+}
+
+void PuzzlePig::AddToBoxPositionForChessGame(long x, long z)
+{
+	BoxX += x;
+	BoxZ += z;
+}
+
 bool32_t PuzzleLion::DecideWhatToDo()
 {
 	return true;

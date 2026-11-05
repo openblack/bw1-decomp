@@ -11,3 +11,8 @@ const char* GCamera::GetText()
 {
 	return "Camera";
 }
+
+bool32_t GCamera::IsMoving() const
+{
+	return CameraDirty;
+}

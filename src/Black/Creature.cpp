@@ -46,9 +46,44 @@ uint32_t Creature::InterfaceGiveObject(GInterfaceStatus* param_1, Object* param_
 	return 22;
 }
 
+ANIM_LIST Creature::GetAnimId()
+{
+	return ANM_INVALID;
+}
+
 GPlayer* Creature::GetPlayer()
 {
 	return owner;
+}
+
+bool32_t Creature::IsFinalState(uint8_t state)
+{
+	return false;
+}
+
+Creature* Creature::CastCreature()
+{
+	return this;
+}
+
+float Creature::GetProjectileSpeed()
+{
+	return 0.0f;
+}
+
+void Creature::ApplySingleEffect(EFFECT_TYPE type, float amount, GameThing* applied_by, const MapCoords& coords)
+{
+	Object::ApplySingleEffect(type, amount, applied_by, coords);
+}
+
+void Creature::SetControlledByScript(int controlled)
+{
+	GameThingWithPos::SetControlledByScript(controlled);
+}
+
+HELP_TEXT Creature::GetQueryLastEnumText()
+{
+	return GetQueryFirstEnumText();
 }
 
 MapCoords* Creature::GetDestPos()

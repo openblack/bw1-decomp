@@ -14,3 +14,5 @@ void DialogBoxSaveMessage::Destroy()
 {
 	DialogBoxBase::Destroy();
 }
+
+DialogBoxSaveMessage::~DialogBoxSaveMessage() {}

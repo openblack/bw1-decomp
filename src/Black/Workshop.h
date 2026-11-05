@@ -69,10 +69,10 @@ public:
 	virtual bool32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 007792f0 BW1M119 0116cc10
 	virtual bool32_t IsStoragePit(Creature* param_1);
-	// BW1W120 007792c0 BW1M119 inlined
-	virtual uint32_t IsWorkshop_0();
-	// BW1W120 007792d0 BW1M119 inlined
-	virtual uint32_t IsWorkshop_1(Creature* param_1);
+	// BW1W120 007792c0 BW1M119 0116cb80
+	virtual bool32_t IsWorkshop();
+	// BW1W120 007792d0 BW1M119 0116cb40
+	virtual bool32_t IsWorkshop(Creature* creature);
 	// BW1W120 0077a6d0 BW1M119 01169f70
 	virtual BuildingSite* CreateBuildingSite();
 	// BW1W120 0077a610 BW1M119 0116a230

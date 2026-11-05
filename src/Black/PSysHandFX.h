@@ -29,7 +29,9 @@ struct LHPoint;
 class HandGlow
 {
 public:
-	uint8_t field_0x0[0x14];
+	uint8_t field_0x0[0x4];
+	float   Scale; /* 0x4 */
+	uint8_t field_0x8[0xc];
 
 	// Static methods
 

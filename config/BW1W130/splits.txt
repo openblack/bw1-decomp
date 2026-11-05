@@ -4718,3 +4718,6 @@ lib/libcmt/mbtoupr.obj:
 lib/libcmt/sehsupp.obj:
 	.text       start:0x008AB576 end:0x008AB5DB align:1
 	.rdata      start:0x00A26548 end:0x00A26558
+
+Black/WorldRoomCamera.cpp:
+	.text       start:0x007A4960 end:0x007A6480

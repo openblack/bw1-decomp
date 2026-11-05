@@ -38,7 +38,8 @@ public:
 	uint8_t                 SpellSeedFlags; /* 0x54 */
 	uint8_t                 field_0x55[0x7];
 	LHPTR<WorshipSpellIcon> Icon; /* 0x5c */
-	uint8_t                 field_0x60[0x30];
+	uint8_t                 field_0x60[0x2c];
+	float                   PSysPower;   /* 0x8c */
 	uint8_t                 DrawnInHand; /* 0x90 */
 	uint8_t                 field_0x91[0xb];
 	LHListNode<SpellSeed>   next; /* 0x9c */

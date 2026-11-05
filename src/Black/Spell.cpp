@@ -25,3 +25,13 @@ char* Spell::GetDebugText()
 {
 	return "Spell:";
 }
+
+bool32_t Spell::IsCreatureCasting()
+{
+	return CreatureCasting;
+}
+
+float Spell::GetUpdateOfBoredomValue(Reaction* reaction, GameThingWithPos* reactor)
+{
+	return GameThingWithPos::GetUpdateOfBoredomValue(reaction, reactor);
+}

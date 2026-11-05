@@ -8,6 +8,12 @@ void SpellForest::SetToZero()
 	TreeAdded = false;
 }
 
+int SpellForest::InitWithPos(GameThing* game_thing, const MapCoords& coords, SpellCastData* cast_data,
+                             const PSysProcessInfo& process_info)
+{
+	return Spell::InitWithPos(game_thing, coords, cast_data, process_info);
+}
+
 bool32_t SpellForest::Load(GameOSFile& file)
 {
 	if (Spell::Load(file))
