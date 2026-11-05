@@ -3967,6 +3967,12 @@ Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.CRT$XCU    start:0x009B75E8 end:0x009B75F0 align:4
 	.bss        start:0x00F93B8C end:0x00F93B9C
 
+Lionhead/LH3DLib/development/LHPoint.cpp:
+	.text       start:0x0085FA10 end:0x0085FCC0
+	.rdata      start:0x00993B08 end:0x00993B0C
+	.CRT$XCU    start:0x009B75F0 end:0x009B75F4 align:4
+	.bss        start:0x00F93B9C end:0x00F93BA0
+
 Lionhead/LH3DLib/development/LH3DFade.cpp:
 	.text       start:0x0085FCC0 end:0x00860000
 	.bss        start:0x00F93BA0 end:0x00F93BA8

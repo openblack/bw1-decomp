@@ -4002,6 +4002,12 @@ Lionhead/LHLib/ver5.0/RPlan.cpp:
 	.CRT$XCU    start:0x00A37664 end:0x00A3766C align:4
 	.bss        start:0x01029C2C end:0x01029C3C
 
+Lionhead/LH3DLib/development/LHPoint.cpp:
+	.text       start:0x0088EC90 end:0x0088EF40
+	.rdata      start:0x00A13F70 end:0x00A13F74
+	.CRT$XCU    start:0x00A3766C end:0x00A37670 align:4
+	.bss        start:0x01029C3C end:0x01029C40
+
 Lionhead/LH3DLib/development/LH3DFade.cpp:
 	.text       start:0x0088EF40 end:0x0088F280
 	.bss        start:0x01029C40 end:0x01029C48

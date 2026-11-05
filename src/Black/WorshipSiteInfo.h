@@ -19,11 +19,6 @@ class GObjectInfo;
 class GWorshipSiteInfo : public GCitadelPartInfo
 {
 public:
-	// Static data
-
-	// BW1W120 00dcbd30
-	static GWorshipSiteInfo Infos[WORSHIP_SITE_INFO_LAST];
-
 	float     RadiusFromCitadel; /* 0x134 */
 	MESH_LIST BaseMesh;
 	POT_INFO  PotForResourceFood;
@@ -54,6 +49,11 @@ public:
 
 	// BW1W120 0077a950 BW1M119 inlined
 	float GetChantsToReserveForMaintaining() const;
+
+	// Static data
+
+	// BW1W120 00dcbd30
+	static GWorshipSiteInfo Infos[WORSHIP_SITE_INFO_LAST];
 
 	// TODO(#377): The original declared this class in Worship.h.
 	// Out of line: LoadBinary at 0042f170, Load at 0042f0d0.

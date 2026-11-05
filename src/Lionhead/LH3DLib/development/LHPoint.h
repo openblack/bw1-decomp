@@ -87,6 +87,8 @@ struct Point2D
 	bool32_t operator==(const Point2D& other) { return x == other.x && y == other.y; }
 	// BW1W120 0086fd00 BW1M119 01086c70 (LHCombined Release)
 	float GetHeading() const;
+	// BW1W120 0086fd50 BW1M119 01086bd0 (LHCombined Release)
+	float GetSize() const;
 	// BW1W120 0086fd70 BW1M119 01086b10 (LHCombined Release)
 	void SetSize(float size);
 	// BW1W120 0086fda0 BW1M119 01086ac0 (LHCombined Release)
@@ -94,7 +96,11 @@ struct Point2D
 	// BW1W120 0086fe80 BW1M119 01086610 (LHCombined Release)
 	float MakeUnit();
 	// BW1W120 0086fdc0 BW1M119 01086a00 (LHCombined Release)
-	float GetRange(const Point2D& param_1) const;
+	float GetRange(const Point2D& other) const;
+#ifndef VERSION_BW1W100
+	// BW1W120 0086fdf0 BW1M119 010866d0 (LHCombined Release)
+	void GetReflectedPoint(Point2D& reflected, const Point2D& line_start, const Point2D& line_end);
+#endif
 };
 
 struct LHPoint
