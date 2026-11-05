@@ -2170,14 +2170,16 @@ Black/ScriptFunctions.cpp:
 	.bss        start:0x00D84D34 end:0x00D84F44
 
 Black/ScriptGFX.cpp:
-	.data       start:0x00C0F6C4 end:0x00C0F720
-	.bss        start:0x00D85048 end:0x00D85058
+	.text       start:0x006FDB50 end:0x006FE470
+	.CRT$XCU    start:0x009B7034 end:0x009B7038 align:4
+	.data       start:0x00C0F658 end:0x00C0F6E7
+	.bss        start:0x00D84F48 end:0x00D8504C
 
 Black/ScriptHighlight.cpp:
 	.text       start:0x006FE470 end:0x006FFD50
 	.rdata      start:0x0093219C end:0x00932A74
-	.data       start:0x00C0F720 end:0x00C0FA58
-	.bss        start:0x00D85058 end:0x00D854B0
+	.data       start:0x00C0F6E8 end:0x00C0FA58
+	.bss        start:0x00D85050 end:0x00D854B0
 
 Black/ScriptManage.cpp:
 	.text       start:0x00701C40 end:0x007026E0

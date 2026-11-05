@@ -1997,13 +1997,16 @@ Black/ScriptFunctions.cpp:
 	.bss        start:0x00CB6DFC end:0x00CB700C
 
 Black/ScriptGFX.cpp:
-	.data       start:0x00B4370C end:0x00B43768
+	.text       start:0x006A2590 end:0x006A2EA0
+	.CRT$XCU    start:0x008F6FE4 end:0x008F6FE8 align:4
+	.data       start:0x00B436A0 end:0x00B4372F
+	.bss        start:0x00CB7010 end:0x00CB7114
 
 Black/ScriptHighlight.cpp:
 	.text       start:0x006A2EA0 end:0x006A4610
 	.rdata      start:0x0087939C end:0x00879C74
-	.data       start:0x00B43768 end:0x00B43AA0
-	.bss        start:0x00CB7120 end:0x00CB7578
+	.data       start:0x00B43730 end:0x00B43AA0
+	.bss        start:0x00CB7118 end:0x00CB7578
 
 Black/ScriptManage.cpp:
 	.text       start:0x006A6500 end:0x006A6F60

@@ -11,6 +11,14 @@
 #define LH3D_EYE_PART_COUNT 5
 #define LH3D_EYE_TYPE_COUNT 3
 
+enum LH3D_EYE_TYPE
+{
+	LH3D_EYE_TYPE_NONE = -1,
+	LH3D_EYE_TYPE_MAN = 0,
+	LH3D_EYE_TYPE_WOMAN = 1,
+	LH3D_EYE_TYPE_BOY = 2,
+};
+
 // Forward Declares
 
 class LH3DAnimatedObject;

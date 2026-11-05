@@ -2400,15 +2400,15 @@ Black/ScriptFunctionTable.cpp:
 Black/ScriptGFX.cpp:
 	.text       start:0x0070D520 end:0x0070DE70
 	.CRT$XCU    start:0x00A47688 end:0x00A47690 align:4
-	.data       start:0x00CA11C0 end:0x00CA1298
-	.bss        start:0x00E17428 end:0x00E17538
+	.data       start:0x00CA11C0 end:0x00CA1259
+	.bss        start:0x00E17428 end:0x00E1752C
 
 Black/ScriptHighlight.cpp:
 	.text       start:0x0070DE70 end:0x0070F780
 	.rdata      start:0x00970034 end:0x0097090C
 	.CRT$XCU    start:0x00A47690 end:0x00A476A4 align:4
-	.data       start:0x00CA1298 end:0x00CA15D8
-	.bss        start:0x00E17538 end:0x00E17990
+	.data       start:0x00CA1260 end:0x00CA15D8
+	.bss        start:0x00E17530 end:0x00E17990
 
 Black/ScriptManage.cpp:
 	.text       start:0x0070F780 end:0x007121C0
