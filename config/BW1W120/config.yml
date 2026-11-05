@@ -765,49 +765,12 @@ add_relocations:
     type: x86_abs32
     target: '?InfoList@GVillagerInfo@@2PAV1@A'
     addend: 0x133CC
-# ScriptFunctions.cpp: g_scriptObjectDispatch[type - 1].Loop leaves the displaced table reference unrelocated.
-  - source: 0x006FA12F
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FA1F2
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FB5EA
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FB612
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FB716
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FBF4E
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FBF78
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FC4CC
     type: x86_abs32
     target: '?CurrentRoom@ScriptGameState@@2HA'
   - source: 0x006FC4D7
     type: x86_abs32
     target: '?CurrentRoom@ScriptGameState@@2HA'
-  - source: 0x006FDC46
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FDE96
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FE589
     type: x86_abs32
     target: '__real@4@4007b400000000000000'
@@ -840,41 +803,21 @@ add_relocations:
   - source: 0x006F8143
     type: x86_abs32
     target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
-  - source: 0x006F83E2
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006F83FE
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x006F857B
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006F8598
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x006F86BA
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006F86D7
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x006F8804
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006F8821
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
   - source: 0x006F911A
     type: x86_abs32
     target: '??_C@_0BG@KIOP@Thing?5no?5longer?5valid?$AA@'
-  - source: 0x006F916C
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006F9235
     type: x86_abs32
     target: '??_C@_0BB@CNII@Thing?5not?5found?$CB?$AA@'

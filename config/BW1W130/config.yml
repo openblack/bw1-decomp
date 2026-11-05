@@ -889,43 +889,6 @@ add_relocations:
     type: x86_abs32
     target: '__real@4@3fff8000000000000000'
     addend: 0x0
-# ScriptFunctions.cpp: g_scriptObjectDispatch[type - 1].Loop leaves the displaced table reference unrelocated.
-  - source: 0x006FEA1F
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FEAE2
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FFEDA
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x006FFF02
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x00700006
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x0070083E
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x00700868
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x00702536
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
-  - source: 0x00702786
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
 
 # ScriptFunctions: string literals and dispatch-table entries dtk leaves as raw immediates.
   - source: 0x006FC5C1
@@ -952,41 +915,21 @@ add_relocations:
   - source: 0x006FCA33
     type: x86_abs32
     target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
-  - source: 0x006FCCD2
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FCCEE
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x006FCE6B
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FCE88
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x006FCFAA
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FCFC7
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x006FD0F4
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FD111
     type: x86_abs32
     target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
   - source: 0x006FDA0A
     type: x86_abs32
     target: '??_C@_0BG@KIOP@Thing?5no?5longer?5valid?$AA@'
-  - source: 0x006FDA5C
-    type: x86_abs32
-    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
-    addend: -4
   - source: 0x006FDB25
     type: x86_abs32
     target: '??_C@_0BB@CNII@Thing?5not?5found?$CB?$AA@'

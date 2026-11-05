@@ -82,6 +82,9 @@ public:
 	void UpdatePlayerFeedback(float feedback);
 	// BW1W120 004c7d20 BW1M119 null
 	void Dump(FILE* file, unsigned long indent);
+
+	// BW1W120 inlined BW1M119 014ec770
+	float GetMostRecentPlayerFeedbackValue() { return MostRecentPlayerFeedbackValue; }
 };
 static_assert(offsetof(CreatureAttitudeToPlayer, PerceivedPlayerDesires) == 0x40, "Data member is at the wrong offset");
 static_assert(sizeof(CreatureAttitudeToPlayer) == 0x1db4, "Data type is of wrong size");

@@ -39,6 +39,8 @@ public:
 	// BW1WCI 00c59964 BW1MCI119 null
 	static float ScriptWait;
 
+	// BW1WCI 0052a6a0 BW1MCI119 01630cf0
+	static ScriptDolphin* Create(const MapCoords& coords, const GMobileObjectInfo* info, float y_angle, float scale);
 	// BW1WCI 0052a700 BW1MCI119 01630b70
 	void MoveRandomlyBetween(const MapCoords& from, const MapCoords& to);
 };

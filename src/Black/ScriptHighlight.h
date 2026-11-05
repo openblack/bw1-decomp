@@ -118,8 +118,8 @@ public:
 	// Static methods
 
 	// BW1W120 00709a40 BW1M119 01502fc0
-	static ScriptHighlight* Create(const MapCoords& coords, const GScriptHighlightInfo* info, uint32_t param_3,
-	                               float param_4, float param_5);
+	static ScriptHighlight* Create(const MapCoords& coords, const GScriptHighlightInfo* info, uint32_t script_id,
+	                               float y_angle, float scale);
 	// BW1W120 0070a460 BW1M119 010588a0
 	static void ProcessHighlights();
 

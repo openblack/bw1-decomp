@@ -2292,6 +2292,37 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006D5064, copy_run(0x00407744)),  # PSysSave
     (0x006D5143, copy_run(0x00407744)),  # PSysSave
     (0x006D5242, copy_run(0x006D5143)),  # PSysSave
+    (0x006F516B, copy_run(0x006F4F5E)),  # ScriptControl
+    (0x006F521A, jmp_run(0x006F516B)),  # ScriptControl
+    (0x006F52A2, copy_run(0x006F521A)),  # ScriptControl
+    (0x006F52C8, copy_run(0x006F52A2)),  # ScriptControl
+    (0x006F5341, copy_run(0x006F52C8)),  # ScriptControl
+    (0x006F5368, copy_run(0x006F5341)),  # ScriptControl
+    (0x006F53F2, jmp_run(0x006F5368)),  # ScriptControl
+    (0x006F55C1, copy_run(0x006F53F2)),  # ScriptControl
+    (0x006F561B, jmp_run(0x006F55C1)),  # ScriptCreateOrCall
+    (0x006F5643, copy_run(0x006F561B)),  # ScriptCreateOrCall
+    (0x006F5794, jmp_run(0x006F5643)),  # ScriptCreateOrCall
+    (0x006F6607, copy_run(0x006F58FD)),  # ScriptCreateOrCall
+    (0x006F668A, copy_run(0x006F6607)),  # ScriptCreateOrCall
+    (0x006F6805, copy_run(0x006F668A)),  # ScriptCreateOrCall
+    (0x006F6CC2, copy_run(0x006F6805)),  # ScriptCreateOrCall
+    (0x006F6EC1, copy_run(0x006F6CC2)),  # ScriptCreateOrCall
+    (0x006F70B9, jmp_run(0x006F6EC1)),  # ScriptCreateOrCall
+    (0x006F7212, jmp_run(0x006F70B9)),  # ScriptCreateOrCall
+    (0x006F7302, copy_run(0x006F7212)),  # ScriptCreateOrCall
+    (0x006F7417, jmp_run(0x006F7302)),  # ScriptCreateOrCall
+    (0x006F7559, jmp_run(0x006F7417)),  # ScriptCreateOrCall
+    (0x006F76F7, jmp_run(0x006F7559)),  # ScriptCreateOrCall
+    (0x006F7839, jmp_run(0x006F76F7)),  # ScriptCreateOrCall
+    (0x006F794B, copy_run(0x006F7839)),  # ScriptCreateOrCall
+    (0x006F79E9, copy_run(0x006F794B)),  # ScriptCreateOrCall
+    (0x006F7AC1, copy_run(0x006F79E9)),  # ScriptCreateOrCall
+    (0x006F7C37, jmp_run(0x006F7AC1)),  # ScriptCreateOrCall
+    (0x006F7CE7, copy_run(0x006F7C37)),  # ScriptCreateOrCall
+    (0x006F7D39, jmp_run(0x006F7CE7)),  # ScriptCreateOrCall
+    (0x006F7E76, jmp_run(0x006F7D39)),  # ScriptCreateOrCall
+    (0x006F7F3B, jmp_run(0x006F7E76)),  # ScriptCreateOrCall
     (0x006FC4AB, copy_run(0x006FC45C)),  # ScriptFunctions
     (0x006FC4D3, jmp_run(0x006FC4AB)),  # ScriptFunctions
     (0x006FC554, jmp_run(0x006FC4D3)),  # ScriptFunctions

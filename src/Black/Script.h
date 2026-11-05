@@ -190,8 +190,8 @@ public:
 	// TODO: Original name unknown; Reset/LoadBinary own this loaded-binary flag.
 	// BW1W120 00d95c0c
 	static bool32_t Dat_00D95C0C;
-	// BW1W120 00c0c740
-	static ScriptObjectDispatch g_scriptObjectDispatch[SCRIPT_OBJECT_TYPE_LAST - 1];
+	// BW1W120 00c0c728
+	static ScriptObjectDispatch g_scriptObjectDispatch[SCRIPT_OBJECT_TYPE_LAST];
 
 	uint32_t CountDownTimerEnabled;
 	uint32_t CountDownTimerRemaining;
@@ -206,7 +206,8 @@ public:
 #endif
 	uint32_t LoopValue;
 	uint32_t LoopValue2;
-	uint8_t  field_0x2c[0x8];
+	char*    StopList;
+	char*    StopFileList;
 	uint32_t LoopCount;
 	uint32_t LoopParam;
 	bool32_t LoopSetControlledByScript;
@@ -487,6 +488,14 @@ public:
 	static void GetDeadLiving();
 	// BW1W120 006f3590 BW1M119 014e7070
 	static void GetSpellIconFromTemple();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00707a20 BW1MCI119 01516490
+	static void CreateTempleForPlayer();
+	// BW1WCI 00709440 BW1MCI119 01513da0
+	static void CreateTown();
+	// BW1WCI 007095a0 BW1MCI119 01513ca0
+	static void CallBuildingWoodPile();
+#endif
 	// BW1W120 006f3790 BW1M119 014ef090
 	static void CreateCreatureFromCreature();
 	// BW1W120 006f38f0 BW1M119 014eefc0
@@ -1332,8 +1341,20 @@ public:
 	// BW1WCI 00718460 BW1MCI119 01521bd0
 	static void IsObjectImmuneToSpells();
 #endif
+	// BW1W120 006f0880 BW1M119 014e6f90
+	static bool NameCheck(const char* script_name, const char* filename);
+	// BW1W120 006f0930 BW1M119 014e6eb0
+	static bool FilenameCheck(const char* script_name, const char* filename);
+	// BW1W120 006f09c0 BW1M119 014e6dc0
+	static bool NotNameCheck(const char* script_name, const char* filename);
+	// BW1W120 006f09e0 BW1M119 014e6c00
+	static bool FilenameAndNotScriptCheck(const char* script_name, const char* filename);
+	// BW1W120 006f0a60 BW1M119 014e6b10
+	static bool NotFilenameCheck(const char* script_name, const char* filename);
+	// BW1W120 006f0a80 BW1M119 014e6ab0
+	bool32_t StopScript(char* names);
 	// BW1W120 006f0cc0 BW1M119 014e6610
-	void StopScriptsOfType(VMScriptType param_1);
+	static void StopScriptsOfType(VMScriptType type);
 	// BW1W120 006f62a0 BW1M119 014ef450
 	static void VMDebugCallBack();
 	// BW1W120 006f62b0 BW1M119 014ef410
@@ -1342,6 +1363,13 @@ public:
 	static void ScriptWarningMessage(char* msg);
 	// BW1W120 006f6d00 BW1M119 014f27d0
 	static uint32_t GetSubType(GameThingWithPos* thing);
+	// BW1W120 006f11a0 BW1M119 014e9830
+	static GameThingWithPos* CreateScriptThing(const LHPoint& pos, SCRIPT_OBJECT_TYPE type, uint32_t subtype,
+	                                           float y_angle, float scale);
+	// BW1W120 006f3b00 BW1M119 null
+	static void CreatureTurnOnDesireAndMakeItMaximum();
+	// BW1W120 006f3400 BW1M119 014e7390
+	static int FindNearDeadLivingCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f6fa0 BW1M119 014f26e0
 	static int FindGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f6ff0 BW1M119 014f25c0
@@ -1493,19 +1521,19 @@ static_assert(sizeof(GScript) == 0xd8, "Data type is of wrong size");
 static_assert(sizeof(GScript) == 0xbc, "Data type is of wrong size");
 #endif
 
+#define SCRIPT_OPPOSING_CREATURE_TYPES 3
+
 class GScriptOpposingCreature : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0xc];
+	uint32_t OpposingTypes[SCRIPT_OPPOSING_CREATURE_TYPES];
 
 	// Override methods
 
-	// BW1W120 006f3770 BW1M119 014eb2a0
-	virtual ~GScriptOpposingCreature();
 	// BW1W120 006f3710 BW1M119 014ef2f0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(OpposingTypes, OpposingTypes)
 	INFO_ROOT_LOADERS("Script.h", 923)
 };
 

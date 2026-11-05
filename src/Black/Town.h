@@ -663,7 +663,7 @@ public:
 	// BW1W120 007408b0 BW1M119 01007f30
 	MapCoords GetCongregationPos();
 	// BW1W120 00740b40 BW1M119 015520c0
-	Abode* FindAbodeNumber(ABODE_NUMBER number, float percent_built, int param_3);
+	Abode* FindAbodeNumber(ABODE_NUMBER number, float percent_built, bool32_t match_required);
 	// BW1W120 00740bb0 BW1M119 01552040
 	bool32_t IsAllowedToCreateWorshipSite();
 	// BW1W120 00740bf0 BW1M119 01551f20

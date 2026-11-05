@@ -90,11 +90,13 @@ public:
 	// Static methods
 
 	// BW1W120 00463240 BW1M119 011c2110
-	static Citadel* CreateCitadel(const MapCoords& coords, const GCitadelHeartInfo* info, uint8_t param_3,
-	                              float param_4, float param_5);
+	static Citadel* CreateCitadel(const MapCoords& coords, const GCitadelHeartInfo* info, uint8_t player_number,
+	                              float y_angle, float scale);
 
 	// Non-virtual methods
 
+	// BW1W120 00463ad0 BW1M119 011c1160
+	SpellIcon* FindSpellIcon(MAGIC_TYPE magic);
 	// BW1W120 00464090 BW1M119 01030680
 	float GetInfluence();
 	// BW1W120 inlined BW1M119 01091bc0

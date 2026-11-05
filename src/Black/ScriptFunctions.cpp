@@ -439,9 +439,9 @@ void GScript::SetScriptState()
 		GGame::g_game->script->LoopValue = state;
 #endif
 		SCRIPT_OBJECT_TYPE type = thing->GetScriptObjectType();
-		if (g_scriptObjectDispatch[type - 1].Loop != NULL)
+		if (g_scriptObjectDispatch[type].Loop != NULL)
 		{
-			g_scriptObjectDispatch[type - 1].Loop(thing, SetStateLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
+			g_scriptObjectDispatch[type].Loop(thing, SetStateLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
 			return;
 		}
 		ScriptErrorMessage("No Loop funtion for type");
@@ -515,9 +515,9 @@ void GScript::GameThingPlayAnim()
 		GGame::g_game->script->LoopValue = anim;
 		GGame::g_game->script->LoopValue2 = (int)repeats;
 		SCRIPT_OBJECT_TYPE type = thing->GetScriptObjectType();
-		if (g_scriptObjectDispatch[type - 1].Loop != NULL)
+		if (g_scriptObjectDispatch[type].Loop != NULL)
 		{
-			g_scriptObjectDispatch[type - 1].Loop(thing, SetPlayAnimLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
+			g_scriptObjectDispatch[type].Loop(thing, SetPlayAnimLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
 			return;
 		}
 		ScriptErrorMessage("No Loop funtion for type");
@@ -615,9 +615,9 @@ void GScript::SetStateWithParams()
 		GGame::g_game->script->LoopState = state;
 		GGame::g_game->script->FocusPos = pos;
 		SCRIPT_OBJECT_TYPE type = thing->GetScriptObjectType();
-		if (g_scriptObjectDispatch[type - 1].Loop != NULL)
+		if (g_scriptObjectDispatch[type].Loop != NULL)
 		{
-			g_scriptObjectDispatch[type - 1].Loop(thing, SetStateWithParamsLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
+			g_scriptObjectDispatch[type].Loop(thing, SetStateWithParamsLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
 			return;
 		}
 		ScriptErrorMessage("No Loop funtion for type");
@@ -675,9 +675,9 @@ void GScript::SetScriptStatePos()
 	{
 		GGame::g_game->script->FocusPos = pos;
 		SCRIPT_OBJECT_TYPE type = thing->GetScriptObjectType();
-		if (g_scriptObjectDispatch[type - 1].Loop != NULL)
+		if (g_scriptObjectDispatch[type].Loop != NULL)
 		{
-			g_scriptObjectDispatch[type - 1].Loop(thing, SetStatePosLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
+			g_scriptObjectDispatch[type].Loop(thing, SetStatePosLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
 			return;
 		}
 		ScriptErrorMessage("No Loop funtion for type");
@@ -717,9 +717,9 @@ void GScript::SetScriptStateFloat()
 	{
 		GGame::g_game->script->FindRadius = value;
 		SCRIPT_OBJECT_TYPE type = thing->GetScriptObjectType();
-		if (g_scriptObjectDispatch[type - 1].Loop != NULL)
+		if (g_scriptObjectDispatch[type].Loop != NULL)
 		{
-			g_scriptObjectDispatch[type - 1].Loop(thing, SetStateFloatLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
+			g_scriptObjectDispatch[type].Loop(thing, SetStateFloatLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
 			return;
 		}
 		ScriptErrorMessage("No Loop funtion for type");
@@ -763,9 +763,9 @@ void GScript::SetScriptStateULData()
 		GGame::g_game->script->LoopValue = value;
 		GGame::g_game->script->LoopValue2 = value2;
 		SCRIPT_OBJECT_TYPE type = thing->GetScriptObjectType();
-		if (g_scriptObjectDispatch[type - 1].Loop != NULL)
+		if (g_scriptObjectDispatch[type].Loop != NULL)
 		{
-			g_scriptObjectDispatch[type - 1].Loop(thing, SetStateULLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
+			g_scriptObjectDispatch[type].Loop(thing, SetStateULLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
 			return;
 		}
 		ScriptErrorMessage("No Loop funtion for type");
@@ -1122,11 +1122,11 @@ void GScript::SetFocus()
 	{
 		objectType = thing->GetScriptObjectType();
 		GGame::g_game->script->FocusPos = pos;
-		if (g_scriptObjectDispatch[objectType - 1].Loop == NULL)
+		if (g_scriptObjectDispatch[objectType].Loop == NULL)
 		{
 			return;
 		}
-		g_scriptObjectDispatch[objectType - 1].Loop(thing, SetFocusLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
+		g_scriptObjectDispatch[objectType].Loop(thing, SetFocusLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
 		return;
 	}
 	object = dynamic_cast<Object*>(thing);
@@ -1588,10 +1588,9 @@ void GScript::RemoveReaction()
 		if (thing->IsScriptContainer())
 		{
 			SCRIPT_OBJECT_TYPE objectType = thing->GetScriptObjectType();
-			if (g_scriptObjectDispatch[objectType - 1].Loop != NULL)
+			if (g_scriptObjectDispatch[objectType].Loop != NULL)
 			{
-				g_scriptObjectDispatch[objectType - 1].Loop(thing, RemoveAllReactionsLoopFn, SCRIPT_OBJECT_TYPE_NONE,
-				                                            0);
+				g_scriptObjectDispatch[objectType].Loop(thing, RemoveAllReactionsLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
 			}
 			return;
 		}
@@ -1619,10 +1618,10 @@ void GScript::RemoveReactionsOfType()
 		{
 			SCRIPT_OBJECT_TYPE objectType = thing->GetScriptObjectType();
 			GGame::g_game->script->LoopValue = reaction;
-			if (g_scriptObjectDispatch[objectType - 1].Loop != NULL)
+			if (g_scriptObjectDispatch[objectType].Loop != NULL)
 			{
-				g_scriptObjectDispatch[objectType - 1].Loop(thing, RemoveAllReactionsOfTypeLoopFn,
-				                                            SCRIPT_OBJECT_TYPE_NONE, 0);
+				g_scriptObjectDispatch[objectType].Loop(thing, RemoveAllReactionsOfTypeLoopFn, SCRIPT_OBJECT_TYPE_NONE,
+				                                        0);
 			}
 			return;
 		}
@@ -2217,10 +2216,10 @@ void GScript::GetPoisonedSize()
 	if (thing != NULL)
 	{
 		SCRIPT_OBJECT_TYPE objectType = thing->GetScriptObjectType();
-		if (g_scriptObjectDispatch[objectType - 1].Loop != NULL)
+		if (g_scriptObjectDispatch[objectType].Loop != NULL)
 		{
 			GGame::g_game->script->LoopCount = 0;
-			g_scriptObjectDispatch[objectType - 1].Loop(thing, CountPoisonedFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
+			g_scriptObjectDispatch[objectType].Loop(thing, CountPoisonedFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
 			g_scriptDLL->FLOAT_PUSH((float)GGame::g_game->script->LoopCount);
 			return;
 		}
@@ -2250,9 +2249,9 @@ void GScript::SetPoisoned()
 		{
 			SCRIPT_OBJECT_TYPE objectType = thing->GetScriptObjectType();
 			GGame::g_game->script->LoopParam = poisoned;
-			if (g_scriptObjectDispatch[objectType - 1].Loop != NULL)
+			if (g_scriptObjectDispatch[objectType].Loop != NULL)
 			{
-				g_scriptObjectDispatch[objectType - 1].Loop(thing, SetPoisonedLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
+				g_scriptObjectDispatch[objectType].Loop(thing, SetPoisonedLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
 			}
 			return;
 		}
@@ -2553,10 +2552,10 @@ void GScript::GetSlowestInId()
 		if (thing->IsScriptContainer())
 		{
 			SCRIPT_OBJECT_TYPE objectType = thing->GetScriptObjectType();
-			if (g_scriptObjectDispatch[objectType - 1].Loop != NULL)
+			if (g_scriptObjectDispatch[objectType].Loop != NULL)
 			{
 				GGame::g_game->script->FindRadius = MaxFloat;
-				g_scriptObjectDispatch[objectType - 1].Loop(thing, GetSlowestLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
+				g_scriptObjectDispatch[objectType].Loop(thing, GetSlowestLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
 				g_scriptDLL->FLOAT_PUSH(GGame::g_game->script->FindRadius);
 				return;
 			}
@@ -3400,9 +3399,9 @@ void GScript::SetSkeleton()
 	{
 		SCRIPT_OBJECT_TYPE objectType = thing->GetScriptObjectType();
 		GGame::g_game->script->LoopParam = skeleton;
-		if (g_scriptObjectDispatch[objectType - 1].Loop != NULL)
+		if (g_scriptObjectDispatch[objectType].Loop != NULL)
 		{
-			g_scriptObjectDispatch[objectType - 1].Loop(thing, SetSkeletonLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
+			g_scriptObjectDispatch[objectType].Loop(thing, SetSkeletonLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
 		}
 		return;
 	}
@@ -3474,9 +3473,9 @@ void GScript::SetIndestructable()
 	{
 		SCRIPT_OBJECT_TYPE objectType = thing->GetScriptObjectType();
 		GGame::g_game->script->LoopParam = indestructible;
-		if (g_scriptObjectDispatch[objectType - 1].Loop != NULL)
+		if (g_scriptObjectDispatch[objectType].Loop != NULL)
 		{
-			g_scriptObjectDispatch[objectType - 1].Loop(thing, SetIndestructableLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
+			g_scriptObjectDispatch[objectType].Loop(thing, SetIndestructableLoopFn, SCRIPT_OBJECT_TYPE_NONE, 0);
 		}
 		return;
 	}

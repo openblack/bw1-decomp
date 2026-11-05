@@ -59,6 +59,20 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 inlined
+	void SetLevel(CREATURE_DESIRES desire, float level)
+	{
+		Levels[desire] = level;
+		if (Levels[desire] < 0.0f)
+		{
+			Levels[desire] = 0.0f;
+		}
+		else if (Levels[desire] > 1.0f)
+		{
+			Levels[desire] = 1.0f;
+		}
+	}
+
 	// BW1W120 004dc100 BW1M119 0125ee30
 	void Initialise(Creature* creature, const CreatureInfo* info);
 	// BW1W120 004dc210 BW1M119 0125ed10

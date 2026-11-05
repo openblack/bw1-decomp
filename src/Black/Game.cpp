@@ -1771,7 +1771,7 @@ void GGame::Loop()
 	RenderLoadingFrame("Starting game loop...");
 	if (!network.session->IsSinglePlayer())
 	{
-		help_system->field_0x4608 = 0;
+		help_system->CreatureHelp = false;
 	}
 	LH3DTech::g_game_time_inc = 0;
 	TimeInc = 0;
@@ -2365,7 +2365,7 @@ void GGame::StartTurn()
 	GGameInfo::Info.Debug();
 	if (IsMultiplayerGame())
 	{
-		help_system->field_0x4608 = 0;
+		help_system->CreatureHelp = false;
 	}
 }
 

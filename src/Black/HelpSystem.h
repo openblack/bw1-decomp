@@ -357,7 +357,7 @@ public:
 	uint8_t                 field_0x4605;
 	uint8_t                 field_0x4606;
 	uint8_t                 field_0x4607;
-	uint32_t                field_0x4608;
+	bool32_t                CreatureHelp;
 	uint32_t                field_0x460c;
 	uint8_t                 field_0x4610;
 	uint8_t                 field_0x4611;

@@ -239,14 +239,14 @@ public:
 	bool32_t                FightEnded;
 	bool32_t                TouchedByLeash;
 	bool32_t                DirectedByLeash;
-	uint32_t                field_0x10bc;
+	bool32_t                SpellReversion;
 	bool32_t                IsShowingDevelopmentHelpScript;
 	uint8_t                 SavedCreatureIndex;
 	uint8_t                 SavedPlayerNumber;
 	uint8_t                 field_0x10c6[0x6];
 	uint32_t                field_0x10cc;
 	uint32_t                field_0x10d0;
-	uint32_t                field_0x10d4;
+	GameThingWithPos*       InteractingObject;
 	uint8_t                 field_0x10d8[0x10];
 	uint32_t                TurnsBeforeConsideringDecision;
 	uint32_t                field_0x10ec;
@@ -263,8 +263,8 @@ public:
 	int                     GameTurn;
 	CreatureRecentTrees     RecentTrees;
 	bool32_t                CanDie;
-	uint32_t                field_0x115c;
-	uint32_t                field_0x1160;
+	bool32_t                AutoScale;
+	float                   AutoScaleValue;
 	MapCoords               field_0x1164;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x119c;
@@ -281,10 +281,8 @@ public:
 	MapCoords                         ConfinementCentre;
 	float                             ConfinementRadius;
 	bool32_t                          GoingBackToConfinedArea;
-	uint32_t                          field_0x11bc;
-	float                             ObjectsDestroyed;
-	uint32_t                          field_0x11c4;
-	uint32_t                          field_0x11c8;
+	float                             NumTimesPerformedAction[SCRIPT_PERFORMED_ACTION_LAST];
+	Object*                           LastDroppedObject;
 	MapCoords                         DestPosBeforeTeleport;
 	MapCoords                         field_0x11d8;
 	GParticleContainer*               ParticleContainer0x11e4;
@@ -677,8 +675,15 @@ public:
 
 	// Static methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0047eda0 BW1MCI119 011feaf0
+	static Creature* Create(const MapCoords& coords, const CreatureInfo* info, GPlayer* player, bool32_t dumb = false);
+	// BW1WCI 0047ed60 BW1MCI119 011fecd0
+	static Creature* CreateFemale(const MapCoords& coords, const CreatureInfo* info, GPlayer* player, bool32_t dumb);
+#else
 	// BW1W120 00474a20 BW1M119 011e7440
 	static Creature* Create(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
+#endif
 	// BW1W120 00474b50 BW1M119 011e7370
 	static Creature* CreateCreature(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
 	// BW1W120 0047cbd0 BW1M119 011d8360
@@ -1218,6 +1223,11 @@ public:
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00488400 BW1MCI119 011ed990
 	uint32_t CountNumberOfHitsInQueue();
+#else
+	// BW1W120 0047d470 BW1M119 011d7490
+	uint32_t CountNumberOfHitsInQueue();
+#endif
+#ifdef VERSION_BW1WCI
 	// BW1WCI 00484aa0 BW1MCI119 011f4c00
 	void ForceMoveMapObjectWithoutWalkingOrChangingWhatDoing(const MapCoords& pos);
 #endif
@@ -1368,6 +1378,32 @@ public:
 	void SetInnateCommunicativenessSource(float value);
 	// BW1W120 004f6930 BW1M119 0128d940
 	void ScriptTurnOffAllDesires();
+	// BW1W120 004f6950 BW1M119 0128d890
+	void ScriptTurnOnDesireAndMakeItMaximum(CREATURE_DESIRES desire);
+	// BW1W120 004f7000 BW1M119 0128ce80
+	void ScriptDoAction(CREATURE_ACTION action, GameThingWithPos* object, GameThingWithPos* second_object);
+	// BW1W120 004f7080 BW1M119 0128cda0
+	void ScriptLearnEverything();
+	// BW1W120 004f7090 BW1M119 0128cca0
+	void ScriptSetKnowsAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action, int knows);
+	// BW1W120 004f70f0 BW1M119 0128cc50
+	void ScriptSetAgendaPriority(float priority);
+	// BW1W120 004f6980 BW1M119 0128d6c0
+	void ScriptLearnDistinctionAboutActivityObject(CREATURE_DESIRES desire, ATTRIBUTE_TYPE attribute,
+	                                               unsigned long amount);
+	// BW1W120 004f6610 BW1M119 0128dc50
+	static Creature* ScriptCreateCreatureRelativeToCreature(Creature* creature, float scale, const MapCoords& coords,
+	                                                        CREATURE_TYPE type);
+	// BW1W120 0047bee0 BW1M119 011da220
+	static void SwapMinds(Creature* new_creature, Creature* my_creature);
+	// BW1W120 0047d320 BW1M119 011d7750
+	void QueueAttackOrBlock(unsigned long move);
+	// BW1W120 0047d340 BW1M119 011d76e0
+	void QueueSpell(unsigned long spell);
+	// BW1W120 0047d360 BW1M119 011d7670
+	void QueueSideStep(unsigned long step);
+	// BW1W120 0047d380 BW1M119 011d7530
+	uint32_t GetCurrentFightAction();
 	// BW1W120 004f78c0 BW1M119 0128e310
 	static float SigmoidThreshold(float threshold, float value);
 };

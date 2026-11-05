@@ -97,8 +97,8 @@ public:
 	// BW1W120 006e64c0 BW1M119 01142a60
 	void ProcessDrawing();
 	// BW1W120 006e58c0 BW1M119 01144650
-	static Reward* Create(const MapCoords& coords, const GRewardInfo* info, GPlayer* player, int param_4, float param_5,
-	                      float param_6, Town* town);
+	static Reward* Create(const MapCoords& coords, const GRewardInfo* info, GPlayer* player, bool32_t from_sky,
+	                      float y_angle, float scale, Town* town);
 };
 
 class GRewardProgress : public GBaseInfo

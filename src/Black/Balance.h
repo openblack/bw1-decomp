@@ -64,14 +64,7 @@ public:
 	}
 };
 
-class GInfoArrays
-{
-public:
-	// BW1W120 00d4f6b0
-	static ReactionInfo ReactionInfos[NUM_REACTION_FUNCTIONS];
-	// BW1W120 00d95e50
-	static GScriptOpposingCreature ScriptOpposingCreatures[CREATURE_TYPE_LAST];
-};
+#include "InfoArrays.h" /* For class GInfoArrays */
 
 inline float GetBalanceMetresPerMapCell()
 {

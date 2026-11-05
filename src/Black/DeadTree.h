@@ -54,8 +54,8 @@ public:
 	// BW1W120 00510b70 BW1M119 010c6ae0
 	static DeadTree* Create(Tree* tree, GPlayer* player);
 	// BW1W120 00510bb0 BW1M119 010c6960
-	static DeadTree* Create(const MapCoords& coords, const GTreeInfo* info, GPlayer* player, float param_4,
-	                        float param_5, float param_6, float param_7, LH3DMesh* mesh);
+	static DeadTree* Create(const MapCoords& coords, const GTreeInfo* info, GPlayer* player, float scale, float x_angle,
+	                        float y_angle, float z_angle, LH3DMesh* mesh);
 
 	// Override methods
 

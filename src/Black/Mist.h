@@ -73,6 +73,9 @@ public:
 
 	// BW1W120 006063d0 BW1M119 0110ed70
 	static Mist* Create(const MapCoords& coords, float scale, unsigned long colour, float alpha);
+	// BW1W120 00606380 BW1M119 0110ee80
+	static Mist* Create(const MapCoords& coords, float scale, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha,
+	                    float fade_rate);
 
 	// Non-virtual methods
 

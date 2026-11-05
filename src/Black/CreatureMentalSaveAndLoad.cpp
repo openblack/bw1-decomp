@@ -149,8 +149,8 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WriteIt((uint32_t&)alignment);
 		uint32_t size = physical->field_0x48;
 		file.WriteIt(size);
-		file.WriteIt(field_0x115c);
-		file.WriteIt(field_0x1160);
+		file.WriteIt(AutoScale);
+		file.WriteIt(AutoScaleValue);
 		SubActionAgendaSaved = (Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) != 0 || IsFighting() ||
 		                       ControlledVillagers.count != 0;
 		file.WriteIt(SubActionAgendaSaved);
@@ -345,8 +345,8 @@ bool32_t Creature::Load(GameOSFile& file)
 		float size;
 		file.ReadIt(size);
 		physical->field_0x48 = size;
-		file.ReadIt(field_0x115c);
-		file.ReadIt(field_0x1160);
+		file.ReadIt(AutoScale);
+		file.ReadIt(AutoScaleValue);
 		file.ReadIt(SubActionAgendaSaved);
 		if (SubActionAgendaSaved)
 		{

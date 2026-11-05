@@ -2134,17 +2134,30 @@ Black/ScriptCamera.cpp:
 
 Black/ScriptContainer.cpp:
 	.text       start:0x00704EC0 end:0x007063F0
-	.rdata      start:0x0099ACD0 end:0x0099ACE4
+	.rdata      start:0x0099ACD0 end:0x0099ACE0
 	.CRT$XCU    start:0x00A3703C end:0x00A37044 align:4
-	.data       start:0x00C7CDF0 end:0x00C7D7D8
-	.bss        start:0x00E17118 end:0x00E17320
+	.data       start:0x00C7CDF0 end:0x00C7D18C
+	.bss        start:0x00E17118 end:0x00E17120
+
+Black/ScriptControl.cpp:
+	.text       start:0x007063F0 end:0x00706870
+	.CRT$XCU    start:0x00A37044 end:0x00A37048 align:4
+	.data       start:0x00C7D18C end:0x00C7D1A8
+	.bss        start:0x00E17120 end:0x00E17324
 
 Black/ScriptCreateOrCall.cpp:
-	.text       start:0x007063F0 end:0x0070D190
-	.rdata      start:0x0099ACE4 end:0x0099AD30
-	.CRT$XCU    start:0x00A37044 end:0x00A3705C align:4
-	.data       start:0x00C7D7E8 end:0x00C7DC58
-	.bss        start:0x00E17320 end:0x00E17554
+	.text       start:0x00706870 end:0x00709620
+	.rdata      start:0x0099ACE0 end:0x0099ACF0
+	.CRT$XCU    start:0x00A37048 end:0x00A37050 align:4
+	.data       start:0x00C7D1A8 end:0x00C7D930
+	.bss        start:0x00E17324 end:0x00E17330
+
+Black/ScriptCreature.cpp:
+	.text       start:0x00709620 end:0x0070D190
+	.rdata      start:0x0099ACF0 end:0x0099AD30
+	.CRT$XCU    start:0x00A37050 end:0x00A3705C align:4
+	.data       start:0x00C7D930 end:0x00C7DC58
+	.bss        start:0x00E17330 end:0x00E17554
 
 Black/ScriptCreatureCurse.cpp:
 	.text       start:0x0070D190 end:0x0070D2A0

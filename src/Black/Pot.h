@@ -168,6 +168,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0066d1a0 BW1M119 0109d7f0
+	void PlayAddResourceSound(const MapCoords& coords, RESOURCE_TYPE type, unsigned long amount);
 	// BW1W120 0066cec0 BW1M119 011260f0
 	void SetToZero();
 	// BW1W120 0051bb50 BW1M119 010c88f0
