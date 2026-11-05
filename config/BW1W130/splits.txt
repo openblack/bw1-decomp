@@ -2343,6 +2343,7 @@ Black/ScriptCreateOrCall.cpp:
 Black/ScriptCreature.cpp:
 	.text       start:0x006F7F70 end:0x006FAA30
 	.rdata      start:0x0096FFC8 end:0x00970004
+	.rdata$r    start:0x00A390D8 end:0x00A39128
 	.CRT$XCU    start:0x00A4763C end:0x00A4764C align:4
 	.data       start:0x00C8DA78 end:0x00C8DDA0
 	.bss        start:0x00E16FF8 end:0x00E171E4
