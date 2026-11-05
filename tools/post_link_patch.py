@@ -2807,6 +2807,12 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00715FBB, call_rel32(0x004034F9)),  # ScriptTimer
     (0x007160F1, jmp_run(0x00715FBB)),  # ScriptTimer
     (0x007161A1, copy_run(0x00532515)),  # ScriptTimer
+    (0x00716313, jmp_run(0x007161A1)),  # SecretCreature
+    (0x007163C7, copy_run(0x00716313)),  # SecretCreature
+    (0x00716495, jmp_run(0x007163C7)),  # SecretCreature
+    (0x007165DA, jmp_run(0x00716495)),  # SecretCreature
+    (0x007166A9, copy_run(0x007165DA)),  # SecretCreature
+    (0x007166D7, jmp_run(0x007166A9)),  # SecretCreature
     (0x00719603, copy_run(0x007195AA)),  # Setup
     (0x0071962B, call_rel32(0x004034F9)),  # Setup
     (0x00719655, jmp_run(0x0071962B)),  # Setup

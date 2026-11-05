@@ -7,6 +7,9 @@ splits: config/BW1W120/splits.txt
 generate_imports: true
 
 block_relocations:
+# SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
+  - source: 0x00711A63
+  - source: 0x00711A69
 # A 0x009C009B in .data that reads as a pointer into the import lookup tables.
   - source: 0x00C3107C
 # Text in Creature3D.cpp's .data that reads as code addresses: "tic" of PhysicalActionNames' "StartStatic" and

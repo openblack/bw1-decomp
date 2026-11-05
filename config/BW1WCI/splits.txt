@@ -2267,15 +2267,16 @@ Black/ScriptTimer.cpp:
 Black/SecretCreature.cpp:
 	.text       start:0x0072CBB0 end:0x0072D0E0
 	.rdata      start:0x009B560C end:0x009B5634
+	.rdata$r    start:0x00A299E8 end:0x00A29A2C
 	.CRT$XCU    start:0x00A370DC end:0x00A370E0 align:4
-	.data       start:0x00C94240 end:0x00C942A4
+	.data       start:0x00C94240 end:0x00C942A6
 	.bss        start:0x00E20418 end:0x00E20428
 
 Black/Serialise.cpp:
 	.text       start:0x0072D0E0 end:0x0072DB60
 	.rdata      start:0x009B5634 end:0x009B5644
 	.CRT$XCU    start:0x00A370E0 end:0x00A370F0 align:4
-	.data       start:0x00C942A4 end:0x00C942D8
+	.data       start:0x00C942A8 end:0x00C942D8
 	.bss        start:0x00E20428 end:0x00E20434
 
 Black/ServerLandscapeMap.cpp:

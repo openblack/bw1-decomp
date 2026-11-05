@@ -7,6 +7,9 @@ splits: config/BW1W130/splits.txt
 generate_imports: true
 
 block_relocations:
+# SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
+  - source: 0x007163B3
+  - source: 0x007163B9
 # redbook_play's MCI_PLAY_PARMS::dwTo value 5100000 is an immediate, not a code pointer.
   - source: 0x006378AE
 # "tMM" of Version.cpp's LH_VERSION_END_TAG reads as a pointer into Creature::CanCreatureCastSpell.
