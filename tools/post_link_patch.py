@@ -2684,6 +2684,29 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0086E5A1, copy_run(0x0086E514)),  # RPAvoid
     (0x0086E5D2, jmp_run(0x0086E5A1)),  # RPAvoid
     (0x0086E774, jmp_run(0x0086E5D2)),  # RPAvoid
+    (0x0086E7C1, copy_run(0x0086E774)),
+    (0x0086E7E1, copy_run(0x0086E7C1)),
+    (0x0086E80B, call_rel32(0x004034F9)),
+    (0x0086E901, copy_run(0x0086E80B)),
+    (0x0086E9C5, copy_run(0x0086E901)),
+    (0x0086F147, copy_run(0x0086E9C5)),
+    (0x0086F2D3, jmp_run(0x0086F147)),
+    (0x0086F323, copy_run(0x0086F2D3)),
+    (0x0086F4A6, copy_run(0x0086F323)),
+    (0x0086F523, copy_run(0x0086F4A6)),
+    (0x0086F8E9, copy_run(0x0086F523)),
+    (0x0086F963, copy_run(0x0086F8E9)),
+    (0x0086FAAB, call_rel32(0x004034F9)),
+    (0x0086FDD1, jmp_run(0x0086FAAB)),
+    (0x0087082B, call_rel32(0x004034F9)),
+    (0x00870967, copy_run(0x0087082B)),
+    (0x00870B19, jmp_run(0x00870967)),
+    (0x00870CD1, jmp_run(0x00870B19)),
+    (0x00870E72, jmp_run(0x00870CD1)),
+    (0x00871193, jmp_run(0x00870E72)),
+    (0x008712B8, jmp_run(0x00871193)),
+    (0x00871399, jmp_run(0x008712B8)),
+    (0x00871447, copy_run(0x00871399)),
     (0x008721B5, jmp_run(0x00871D13)),  # DynamicLightAndShadow
     (0x008721D1, jmp_run(0x008721B5)),  # DynamicLightAndShadow
     (0x0087261B, jmp_run(0x008721D1)),  # DynamicLightAndShadow
