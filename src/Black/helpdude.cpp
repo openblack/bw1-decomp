@@ -1545,7 +1545,7 @@ void HelpDude::ProcessAudioTags(float time, bool32_t play_sound)
 	{
 		while (CurrentTags->Index < CurrentTags->Count && time > CurrentTags->Tags[CurrentTags->Index].Time)
 		{
-			CurrentTags->Tags[CurrentTags->Index].ApplyToDude(this, play_sound, 1);
+			CurrentTags->Tags[CurrentTags->Index].ApplyToDude(this, play_sound, true);
 			CurrentTags->Index++;
 		}
 	}

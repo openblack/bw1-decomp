@@ -2,12 +2,12 @@
 
 #include "HelpDude.h"
 
-void AudioTag::ApplyToDude(HelpDude* dude, int resolve_target, int play_sound)
+void AudioTag::ApplyToDude(HelpDude* dude, bool32_t resolve_target, bool32_t start_animation)
 {
 	if (resolve_target)
 	{
-		HelpDude* second = NULL;
 		HelpDude* target = NULL;
+		HelpDude* second = NULL;
 		switch (Target)
 		{
 		case AUDIO_TAG_TARGET_THIS:
@@ -17,18 +17,10 @@ void AudioTag::ApplyToDude(HelpDude* dude, int resolve_target, int play_sound)
 			target = dude->OtherGuy;
 			break;
 		case AUDIO_TAG_TARGET_GOOD:
-			target = dude;
-			if (dude->IsEvil)
-			{
-				target = dude->OtherGuy;
-			}
+			target = dude->IsEvil ? dude->OtherGuy : dude;
 			break;
 		case AUDIO_TAG_TARGET_EVIL:
-			target = dude;
-			if (!dude->IsEvil)
-			{
-				target = dude->OtherGuy;
-			}
+			target = dude->IsEvil ? dude : dude->OtherGuy;
 			break;
 		case AUDIO_TAG_TARGET_BOTH:
 			target = dude;
@@ -39,52 +31,52 @@ void AudioTag::ApplyToDude(HelpDude* dude, int resolve_target, int play_sound)
 		{
 			ApplyToDude(target, false, true);
 		}
-		if (!second)
+		if (second)
 		{
-			return;
+			ApplyToDude(second, false, true);
 		}
-		play_sound = true;
-		dude = second;
 	}
-
-	Index = Index % ANIM_LAST;
-	if (dude)
+	else
 	{
-		switch (Command)
+		Index = Index % ANIM_LAST;
+		if (dude)
 		{
-		case AUDIO_TAG_COMMAND_EMOTION:
-			dude->SetEmotion(Index, Value / AUDIO_TAG_EMOTION_PERCENT);
-			break;
-		case AUDIO_TAG_COMMAND_ANIM:
-			if (play_sound)
+			switch (Command)
 			{
-				dude->LipSyncAnimTime[Index] = 0.0f;
-				dude->LipSyncAnimState[Index] = HELPDUDE_LIPSYNC_ONCE;
+			case AUDIO_TAG_COMMAND_EMOTION:
+				dude->SetEmotion(Index, Value / AUDIO_TAG_EMOTION_PERCENT);
+				break;
+			case AUDIO_TAG_COMMAND_ANIM:
+				if (start_animation)
+				{
+					dude->LipSyncAnimTime[Index] = 0.0f;
+					dude->LipSyncAnimState[Index] = HELPDUDE_LIPSYNC_ONCE;
+				}
+				break;
+			case AUDIO_TAG_COMMAND_ANIM_START:
+				if (start_animation)
+				{
+					dude->LipSyncAnimTime[Index] = 0.0f;
+					dude->LipSyncAnimState[Index] = HELPDUDE_LIPSYNC_LOOP;
+				}
+				break;
+			case AUDIO_TAG_COMMAND_ANIM_RELEASE:
+				if (dude->LipSyncAnimState[Index] == HELPDUDE_LIPSYNC_LOOP_ALT ||
+				    dude->LipSyncAnimState[Index] == HELPDUDE_LIPSYNC_LOOP)
+				{
+					dude->LipSyncAnimState[Index] = HELPDUDE_LIPSYNC_FINISH;
+				}
+				break;
+			case AUDIO_TAG_COMMAND_LOOK:
+			case AUDIO_TAG_COMMAND_LOOK_START:
+				dude->SavedLookMode = dude->LookMode;
+				dude->LookMode = Index;
+				break;
+			case AUDIO_TAG_COMMAND_LOOK_RELEASE:
+				dude->LookMode = dude->SavedLookMode;
+				dude->SavedLookMode = HELPDUDE_LOOK_AUTO;
+				break;
 			}
-			break;
-		case AUDIO_TAG_COMMAND_ANIM_START:
-			if (play_sound)
-			{
-				dude->LipSyncAnimTime[Index] = 0.0f;
-				dude->LipSyncAnimState[Index] = HELPDUDE_LIPSYNC_LOOP;
-			}
-			break;
-		case AUDIO_TAG_COMMAND_ANIM_RELEASE:
-			if (dude->LipSyncAnimState[Index] == HELPDUDE_LIPSYNC_LOOP_ALT ||
-			    dude->LipSyncAnimState[Index] == HELPDUDE_LIPSYNC_LOOP)
-			{
-				dude->LipSyncAnimState[Index] = HELPDUDE_LIPSYNC_FINISH;
-			}
-			break;
-		case AUDIO_TAG_COMMAND_LOOK:
-		case AUDIO_TAG_COMMAND_LOOK_START:
-			dude->SavedLookMode = dude->LookMode;
-			dude->LookMode = Index;
-			break;
-		case AUDIO_TAG_COMMAND_LOOK_RELEASE:
-			dude->LookMode = dude->SavedLookMode;
-			dude->SavedLookMode = HELPDUDE_LOOK_AUTO;
-			break;
 		}
 	}
 }
