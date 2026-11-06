@@ -10,6 +10,8 @@
 
 #include "Base.h" /* For struct Base */
 
+#define GAME_THING_MAX_ALIGNMENT_CHANGE_PER_GAME_TURN (1.0f / 36000.0f)
+
 enum GAME_THING_TYPE
 {
 	GAME_THING_TYPE_UNUSED_000 = 0x0,
@@ -370,7 +372,7 @@ public:
 	// BW1W120 00405130 BW1M119 013e8040
 	virtual float GetDrawImportance();
 	// BW1W120 00401850 BW1M119 013e7ff0
-	virtual float GetMaxAlignmentChangePerGameTurn() { return maxAlignmentChangePerGameTurn; }
+	virtual float GetMaxAlignmentChangePerGameTurn() { return GAME_THING_MAX_ALIGNMENT_CHANGE_PER_GAME_TURN; }
 	// BW1W120 00401860 BW1M119 01575450
 	virtual GComputerSeen* GetComputerSeen() { return NULL; }
 	// BW1W120 0056ff10 BW1M119 01387ea0

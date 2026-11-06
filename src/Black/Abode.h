@@ -339,7 +339,7 @@ public:
 	// BW1W120 00405b70 BW1M119 015c0360
 	char* GetAbodeText(char* buff);
 	// BW1W120 00405d80 BW1M119 inlined
-	int Destroyed();
+	bool32_t Destroyed();
 	// BW1W120 00405f40 BW1M119 011a5950
 	TRIBE_TYPE GetTribeType() const;
 	// BW1W120 00405fa0 BW1M119 01003a50
@@ -360,7 +360,7 @@ public:
 	// BW1W120 004070f0 BW1M119 011d2000
 	void DrawPercentFull(int villager_in_hand);
 	// BW1W120 00407230 BW1M119 inlined
-	MapCoords GetResourcePos(RESOURCE_TYPE type, uint32_t param_2);
+	MapCoords GetResourcePos(RESOURCE_TYPE type, uint32_t index);
 	// BW1W120 004072e0 BW1M119 0100f890
 	MapCoords GetPosOutside(float divisions, float min_dist, float rand_dist);
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)

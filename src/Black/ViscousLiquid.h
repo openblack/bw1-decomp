@@ -50,7 +50,7 @@ struct FragPrimitive
 
 struct FragMesh
 {
-	uint32_t        LastHitter;
+	Object*         LastHitter;
 	uint32_t        count;
 	uint32_t        field_0x8;
 	FragPrimitive** primitives;

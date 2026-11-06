@@ -587,6 +587,16 @@ def call_indirect(slot):
     return lambda pe, address: b'\xff\x15' + slot.to_bytes(4, 'little')
 
 
+def push_call(target):
+    """SafeDisc's dispatcher left in padding: `push ecx; push eax; call target`."""
+    return lambda pe, address: b'\x51\x50' + call_rel32(target)(pe, address + 2)
+
+
+def padding_bytes(data):
+    """Bytes SafeDisc left in padding as they are: its jump stubs and marker words."""
+    return lambda pe, address: data
+
+
 def call_filler(target, filler):
     """1.30's six-byte padding run: `call target` and one byte of filler."""
     return lambda pe, address: call_rel32(target)(pe, address) + bytes([filler])
@@ -627,6 +637,36 @@ def copy_run(source):
 # addresses; each call is restored over nops of its own length, and rows are skipped
 # where it is already present (the owning unit is still linked from its split object).
 BW1W120_SAFEDISC_CALLS = (
+    (0x0040113B, call_rel32(0x00401879)),  # Abode
+    (0x0040116A, call_indirect(0x008A98A8)),  # Abode: __imp__waveInClose@4
+    (0x004011CC, padding_bytes(b'\x45\x16\xa1\x03')),  # Abode
+    (0x004012A4, padding_bytes(bytes.fromhex('b8ccf9ffff5903c18b00ffe0'))),  # Abode
+    (0x004012B4, padding_bytes(bytes.fromhex('b85cfaffff5903c18b00ffe0'))),  # Abode
+    (0x004012DD, padding_bytes(b'\x25\xa2\x03')),  # Abode
+    (0x0040148B, call_rel32(0x00401879)),  # Abode
+    (0x004015AB, call_rel32(0x00401879)),  # Abode
+    (0x004017F9, push_call(0x004012A4)),  # Abode
+    (0x0040181B, call_rel32(0x00401879)),  # Abode
+    (0x00401879, push_call(0x004012B4)),  # Abode
+    (0x0040195A, call_indirect(0x008A9964)),  # Abode: __imp__BinkCopyToBuffer@28
+    (0x0040198A, call_indirect(0x008A9970)),  # Abode: __imp__GetOpenFileNameA@4
+    (0x00401F5B, call_rel32(0x00401879)),  # Abode
+    (0x0040210B, call_rel32(0x00401879)),  # Abode
+    (0x0040253A, call_indirect(0x008A902C)),  # Abode: __imp__DirectDrawCreate@4
+    (0x0040266B, call_rel32(0x00401879)),  # Abode
+    (0x00402A2A, call_indirect(0x008A9034)),  # Abode: __imp__DirectInputCreateA@4
+    (0x00402B2A, call_indirect(0x008A90D8)),  # Abode: __imp___ChangeParameters_CImmPeriodic__QAEHKKKJJJKPAUFEELIT_ENVELOPE___Z@4
+    (0x0040352B, call_rel32(0x00401879)),  # Abode
+    (0x0040358B, call_rel32(0x00401879)),  # Abode
+    (0x00403F7A, call_indirect(0x008A903C)),  # Abode: __imp__DirectXSetupGetVersion
+    (0x004046BA, call_indirect(0x008A97C0)),  # Abode: __imp__SetWindowTextA@4
+    (0x0040495B, call_rel32(0x00401879)),  # Abode
+    (0x004050DA, call_indirect(0x008A9470)),  # Abode: __imp_?GetTransportInfo@LHConnection@@QAE?AW4LH_RETURN@@PAVLHTransportInfo@@H@Z
+    (0x004056EA, call_indirect(0x008A9978)),  # Abode: __imp__CoFileTimeToDosDateTime@12
+    (0x004059EA, call_indirect(0x008A9014)),  # Abode: __imp__RegSetValueExA@24
+    (0x004061FA, call_indirect(0x008A9890)),  # Abode: __imp__timeKillEvent@4
+    (0x0040729A, call_indirect(0x008A98DC)),  # Abode: __imp__bind@4
+    (0x004073BA, call_indirect(0x008A93DC)),  # Abode: __imp_?_lhbeginthread@@YAKPADP6AXPAX@ZI1J@Z
     (0x0041D4CA, call_indirect(0x008A9978)),  # AnimalCow: __imp__CoFileTimeToDosDateTime@12
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
@@ -865,6 +905,121 @@ BW1W120_SAFEDISC_CALLS = (
 # boundary ends in a `jmp` back to the start of an earlier run (see `jmp_run`), or repeats
 # the bytes in front of one (see `copy_run`).
 BW1W130_SAFEDISC_CALLS = (
+    (0x00401031, padding_bytes(bytes.fromhex('8bcb0fafc8568b74240ce9c0ffffff'))),  # Abode
+    (0x00401063, padding_bytes(bytes.fromhex('b83bdcffff598d04088b00ffe0'))),  # Abode
+    (0x00401093, padding_bytes(bytes.fromhex('b80be3ffff598d04088b00ffe0'))),  # Abode
+    (0x00401116, jmp_run(0x00401093)),  # Abode
+    (0x0040113B, padding_bytes(bytes.fromhex('79e91a04ff'))),  # Abode
+    (0x0040116A, call_indirect(0x008AE990)),  # Abode
+    (0x00401201, copy_run(0x0040116A)),  # Abode
+    (0x00401313, jmp_run(0x00401201)),  # Abode
+    (0x00401343, copy_run(0x00401313)),  # Abode
+    (0x00401428, copy_run(0x00401343)),  # Abode
+    (0x004014C5, copy_run(0x00401468)),  # Abode
+    (0x004014F4, jmp_run(0x004014C5)),  # Abode
+    (0x00401585, copy_run(0x004014F4)),  # Abode
+    (0x004015D5, jmp_run(0x00401585)),  # Abode
+    (0x004015F2, jmp_run(0x004015D5)),  # Abode
+    (0x00401766, copy_run(0x004015F2)),  # Abode
+    (0x004017B6, jmp_run(0x00401766)),  # Abode
+    (0x00401935, jmp_run(0x004017B6)),  # Abode
+    (0x0040195A, call_indirect(0x008AE01C)),  # Abode
+    (0x004019E3, copy_run(0x0040195A)),  # Abode
+    (0x00401A23, copy_run(0x004019E3)),  # Abode
+    (0x00401BA3, copy_run(0x00401A23)),  # Abode
+    (0x00401C05, copy_run(0x00401BA3)),  # Abode
+    (0x00401C75, jmp_run(0x00401C05)),  # Abode
+    (0x00401F05, copy_run(0x00401F05)),  # Abode
+    (0x00401F5B, padding_bytes(bytes.fromhex('87131b04ff'))),  # Abode
+    (0x00402556, jmp_run(0x00401F5B)),  # Abode
+    (0x00402604, copy_run(0x004025B6)),  # Abode
+    (0x004026C2, copy_run(0x00402604)),  # Abode
+    (0x004026F5, jmp_run(0x004026C2)),  # Abode
+    (0x00402A38, jmp_run(0x004026F5)),  # Abode
+    (0x00402B07, copy_run(0x00402A98)),  # Abode
+    (0x00402B54, jmp_run(0x00402B07)),  # Abode
+    (0x00402BB1, jmp_run(0x00402B54)),  # Abode
+    (0x00402C08, copy_run(0x00402BB1)),  # Abode
+    (0x00402C55, jmp_run(0x00402C08)),  # Abode
+    (0x00402CE2, copy_run(0x00402C55)),  # Abode
+    (0x00402DC3, copy_run(0x00402CE2)),  # Abode
+    (0x00402E11, jmp_run(0x00402DC3)),  # Abode
+    (0x00403181, copy_run(0x00402E11)),  # Abode
+    (0x004031F2, jmp_run(0x00403181)),  # Abode
+    (0x004034F9, padding_bytes(bytes.fromhex('5150e863dbffff'))),  # Abode
+    (0x0040352B, call_rel32(0x00403C49)),  # Abode
+    (0x0040358B, call_rel32(0x00403C49)),  # Abode
+    (0x004037D3, jmp_run(0x0040358B)),  # Abode
+    (0x00403A28, copy_run(0x004037D3)),  # Abode
+    (0x00403B85, copy_run(0x00403A28)),  # Abode
+    (0x00403BA2, copy_run(0x00403B85)),  # Abode
+    (0x00403BD7, jmp_run(0x00403BA2)),  # Abode
+    (0x00403C49, padding_bytes(bytes.fromhex('5150e843d4ffff'))),  # Abode
+    (0x00403DF2, jmp_run(0x00403C49)),  # Abode
+    (0x00403F35, jmp_run(0x00403DF2)),  # Abode
+    (0x00403F7A, call_indirect(0x008AE060)),  # Abode
+    (0x00404055, jmp_run(0x00403F7A)),  # Abode
+    (0x00404331, jmp_run(0x00404055)),  # Abode
+    (0x00404434, jmp_run(0x00404331)),  # Abode
+    (0x004045C3, copy_run(0x00404434)),  # Abode
+    (0x004045F4, jmp_run(0x004045C3)),  # Abode
+    (0x00404624, copy_run(0x004045F4)),  # Abode
+    (0x00404675, padding_bytes(bytes.fromhex('ff00003bf81be9a4ffffff'))),  # Abode
+    (0x004046BA, call_indirect(0x008AE340)),  # Abode
+    (0x00404719, jmp_run(0x004046BA)),  # Abode
+    (0x004047A6, copy_run(0x00404719)),  # Abode
+    (0x004047D4, jmp_run(0x004047A6)),  # Abode
+    (0x0040495B, call_rel32(0x00403C49)),  # Abode
+    (0x00404A95, jmp_run(0x0040495B)),  # Abode
+    (0x00404B37, jmp_run(0x00404A95)),  # Abode
+    (0x00404CB3, jmp_run(0x00404B37)),  # Abode
+    (0x00404D52, jmp_run(0x00404CB3)),  # Abode
+    (0x00404D83, copy_run(0x00404D52)),  # Abode
+    (0x00404F01, copy_run(0x00404D83)),  # Abode
+    (0x00405016, jmp_run(0x00404F01)),  # Abode
+    (0x00405071, jmp_run(0x00405016)),  # Abode
+    (0x00405106, copy_run(0x00405071)),  # Abode
+    (0x00405251, jmp_run(0x00405106)),  # Abode
+    (0x00405573, jmp_run(0x00405251)),  # Abode
+    (0x004055B6, jmp_run(0x00405573)),  # Abode
+    (0x00405658, jmp_run(0x004055B6)),  # Abode
+    (0x004056EA, call_indirect(0x008AE8A0)),  # Abode
+    (0x00405708, copy_run(0x004056EA)),  # Abode
+    (0x00405763, copy_run(0x00405708)),  # Abode
+    (0x004057E9, copy_run(0x004057E9)),  # Abode
+    (0x00405916, jmp_run(0x004057E9)),  # Abode
+    (0x00405943, copy_run(0x00405916)),  # Abode
+    (0x004059EA, call_indirect(0x008AE978)),  # Abode
+    (0x00405A67, copy_run(0x004059EA)),  # Abode
+    (0x00405B26, copy_run(0x00405A67)),  # Abode
+    (0x00405BA9, copy_run(0x00405B26)),  # Abode
+    (0x00405D86, copy_run(0x00405BA9)),  # Abode
+    (0x00405FB7, jmp_run(0x00405D86)),  # Abode
+    (0x004061B9, jmp_run(0x00405FB7)),  # Abode
+    (0x004061FA, call_indirect(0x008AE1E0)),  # Abode
+    (0x00406233, jmp_run(0x004061FA)),  # Abode
+    (0x00406638, jmp_run(0x00406233)),  # Abode
+    (0x00406828, copy_run(0x00406638)),  # Abode
+    (0x00406969, copy_run(0x00406828)),  # Abode
+    (0x00406A02, copy_run(0x00406969)),  # Abode
+    (0x00406D11, jmp_run(0x00406A02)),  # Abode
+    (0x004070E3, copy_run(0x00406D11)),  # Abode
+    (0x00407166, copy_run(0x004070E3)),  # Abode
+    (0x004071F9, jmp_run(0x00407166)),  # Abode
+    (0x00407225, copy_run(0x004071F9)),  # Abode
+    (0x00407277, jmp_run(0x00407225)),  # Abode
+    (0x0040729A, call_indirect(0x008AE7C4)),  # Abode
+    (0x004072D5, jmp_run(0x0040729A)),  # Abode
+    (0x004073BA, call_indirect(0x008AE32C)),  # Abode
+    (0x00407419, jmp_run(0x004073BA)),  # Abode
+    (0x00407494, jmp_run(0x00407419)),  # Abode
+    (0x00407613, jmp_run(0x00407494)),  # Abode
+    (0x004076B6, jmp_run(0x00407613)),  # Abode
+    (0x004076F7, jmp_run(0x004076B6)),  # Abode
+    (0x00407744, copy_run(0x004076F7)),  # Abode
+    (0x00407794, jmp_run(0x00407744)),  # Abode
+    (0x004077E4, copy_run(0x004077E4)),  # Abode
+    (0x00407871, jmp_run(0x004077E4)),  # Abode
     (0x0041D0AA, copy_run(0x0041CF56)),  # AnimalCow
     (0x0041D118, jmp_run(0x0041D0A3)),  # AnimalCow
     (0x0041D148, copy_run(0x0041D118)),  # AnimalCow

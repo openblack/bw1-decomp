@@ -73,7 +73,7 @@ public:
 	// Static methods
 
 	// BW1W120 00405a70 BW1M119 015513d0
-	static int GetInfoFromText(const char* text);
+	static int GetInfoFromText(char* text);
 	// BW1W120 00405b30 BW1M119 01071e00
 	static GAbodeInfo* Find(TRIBE_TYPE tribe_type, ABODE_NUMBER abode_number);
 
