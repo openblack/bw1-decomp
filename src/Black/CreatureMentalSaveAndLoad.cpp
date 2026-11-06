@@ -651,9 +651,9 @@ void CreatureMental::SaveMind(Archive& archive)
 	{
 		archive << (int)creature.Get()->LeashEnabled[i];
 	}
-	for (i = 0; i < ARRAY_SIZE(creature.Get()->field_0x1170); i++)
+	for (i = 0; i < ARRAY_SIZE(creature.Get()->Tattoos); i++)
 	{
-		archive << (unsigned long)creature.Get()->field_0x1170[i];
+		archive << (unsigned long)creature.Get()->Tattoos[i];
 	}
 	if (creature.Get()->TattooData != NULL)
 	{
@@ -962,9 +962,9 @@ void CreatureMental::LoadMind(Archive& archive)
 	}
 	if (MindVersion >= CREATURE_MIND_VERSION_TATTOOS)
 	{
-		for (i = 0; i < ARRAY_SIZE(creature.Get()->field_0x1170); i++)
+		for (i = 0; i < ARRAY_SIZE(creature.Get()->Tattoos); i++)
 		{
-			archive >> (unsigned long&)creature.Get()->field_0x1170[i];
+			archive >> (unsigned long&)creature.Get()->Tattoos[i];
 		}
 		unsigned long tattooSize;
 		archive >> tattooSize;

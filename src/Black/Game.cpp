@@ -528,7 +528,7 @@ void GGame::StartGame()
 	if (Init() == 1 && !Dat_00D46AC1)
 	{
 		stop_draw_sprite_to_screen();
-		Plasma* plasma = FrontEnd::Dat_00CD06E8;
+		Plasma* plasma = FrontEnd::PlasmaBackground;
 		if (plasma != NULL)
 		{
 			// Inlined Plasma::Close(), followed by nonvirtual delete.
@@ -536,7 +536,7 @@ void GGame::StartGame()
 			plasma->PinTexture->Release();
 			delete plasma;
 		}
-		FrontEnd::Dat_00CD06E8 = NULL;
+		FrontEnd::PlasmaBackground = NULL;
 
 		// Inlined timer.Reset(0); timer.Start(), as in ResetLocalGameTimer.
 		timer.TickCount = GetTickCount();

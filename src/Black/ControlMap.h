@@ -39,6 +39,10 @@ struct ControlMap
 
 	// Non-virtual methods
 
+	// BW1W120 004713d0 BW1M119 011d1910
+	void LoadCurrentProfileKeys();
+	// BW1W120 004714f0 BW1M119 011d1760
+	void SaveCurrentProfileKeys();
 	// BW1W120 00470910 BW1M119 011d2410
 	void GetText(LH_KEY key, char16_t* out_text);
 	// BW1W120 00470ab0 BW1M119 01092cf0

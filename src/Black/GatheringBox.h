@@ -9,6 +9,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h>        /* For struct LH3DColor */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>            /* For LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHTimer.h>                 /* For LHTimer */
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUser.h>       /* For struct LH_USER_ID */
 #include <Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.h> /* For class LHTransportInfo */
 
@@ -258,6 +259,11 @@ enum MUSIC_PLAYER_CAPABILITY
 	MUSIC_PLAYER_CAPABILITY_SEEK = 0x200
 };
 
+#define FRIEND_ONLINE_TIMEOUT 450000
+
+// BW1W120 00d06320
+extern LHTimer OnlineTimer;
+
 class GatheringBox : public DialogBoxBase
 {
 public:
@@ -425,6 +431,15 @@ public:
 		if (IncomingList.head.Get() != NULL)
 			return IncomingList.head.Get()->payload;
 		return NULL;
+	}
+
+	// BW1W120 inlined
+	GatheringBox()
+	{
+		if (!OnlineTimer.Running())
+		{
+			OnlineTimer.Restart(FRIEND_ONLINE_TIMEOUT);
+		}
 	}
 };
 // BW1W120 00573cd0 BW1M119 0132cdb0

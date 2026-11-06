@@ -888,20 +888,21 @@ Black/Forest.cpp:
 	.text       start:0x0050DFA0 end:0x0050F590
 	.rdata      start:0x0081CB24 end:0x0081D064
 	.CRT$XCU    start:0x008F65C4 end:0x008F65D0 align:4
-	.bss        start:0x00BF1800 end:0x00BF1A50
+	.data       start:0x00B17458 end:0x00B174A4
+	.bss        start:0x00BF1800 end:0x00BF1830
 
 Black/frontend.cpp:
 	.text       start:0x0050F590 end:0x00519870
 	.text$x     start:0x007E9310 end:0x007E9320 align:4
 	.rdata      start:0x0081D064 end:0x0081D390
 	.CRT$XCU    start:0x008F65D0 end:0x008F65DC align:4
-	.data       start:0x00B17740 end:0x00B17990
-	.bss        start:0x00BF1E74 end:0x00BF29A8
+	.data       start:0x00B174A4 end:0x00B17990
+	.bss        start:0x00BF1830 end:0x00BF1EE0
 
 Black/FrontEndSetupGame.cpp:
 	.text       start:0x00519870 end:0x0051D0C0
 	.data       start:0x00B17990 end:0x00B17A5C
-	.bss        start:0x00BF29A8 end:0x00BF29C4
+	.bss        start:0x00BF1EE0 end:0x00BF29C4
 
 Black/FrontEndSetupMultiplayer.cpp:
 	.text       start:0x0051D0C0 end:0x0051D840

@@ -198,7 +198,7 @@ public:
 	int                 field_0x4a88;
 	int                 field_0x4a8c;
 	bool32_t            IsAnimationTimeModified;
-	TattooInfo*         field_0x4a94;
+	TattooInfo*         TattooOverride;
 	LHPoint             ArenaCentre;
 	float               ArenaRadius;
 	float               field_0x4aa8;
@@ -310,7 +310,7 @@ public:
 	float               field_0x5664[3];
 	float               field_0x5670[3];
 	LH3DCreatureTattoo  TattooPositions[8];
-	int                 field_0x569c[8];
+	int                 TattooSlotUsed[8];
 	int                 field_0x56bc[8];
 	int                 field_0x56dc[8];
 	float               field_0x56fc[8];

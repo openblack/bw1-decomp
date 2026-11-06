@@ -48,10 +48,9 @@
 #include "Town.h"
 #include "alexmfc.h"
 
-#define MUSIC_UPDATE_INTERVAL        1000   // ms between music player refreshes
-#define INCOMING_TEXT_DISPLAY_TIME   10000  // ms an incoming message stays up
-#define FRIEND_ONLINE_TIMEOUT        450000 // ms since a friend was last seen before they count as offline
-#define CREATURE_BUBBLE_DISPLAY_TIME 3.0f   // seconds
+#define MUSIC_UPDATE_INTERVAL        1000  // ms between music player refreshes
+#define INCOMING_TEXT_DISPLAY_TIME   10000 // ms an incoming message stays up
+#define CREATURE_BUBBLE_DISPLAY_TIME 3.0f  // seconds
 
 GBCategory*               CurrentPlayers;
 GBCategory*               OtherPlayers;

@@ -1052,7 +1052,7 @@ SetupList::SetupList(int id, int x, int y, int width, int height) : SetupControl
 	ShowScrollbar = false;
 	ScrollPosition = 0;
 	MaxScrollPosition = 0;
-	field_0x244 = false;
+	CentredText = false;
 	UseColorBackground = false;
 	ScrollbackWidth = 24;
 	DrawHighlightBox = true;

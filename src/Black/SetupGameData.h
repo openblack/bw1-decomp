@@ -15,6 +15,9 @@
 class setupgamedata
 {
 public:
+	// BW1W120 00d4f128
+	static setupgamedata Current;
+
 	char    GameName[200];
 	uint8_t CustomMapInfo[812];
 	bool    UseCustomMap;

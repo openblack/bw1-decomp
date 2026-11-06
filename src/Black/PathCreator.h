@@ -29,6 +29,8 @@ struct PathCreator
 	// Non-virtual methods
 	// BW1W120 0078e9b0 BW1M119 01173b00
 	void UpdateCurrentProfile();
+	// BW1W120 0078ea00 BW1M119 0116e5d0
+	void GetProfilePath(char* path);
 	// BW1W120 0078ea20 BW1M119 010e0520
 	void GetCurrentUserPath(char* path);
 

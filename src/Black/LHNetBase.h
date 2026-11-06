@@ -3,7 +3,8 @@
 
 #include <stdint.h>
 
-#include <Lionhead/LHMultiplayer/ver4.0/LHNetUser.h> /* For struct LH_USER_ID */
+#include <Lionhead/LHMultiplayer/ver4.0/LHMPPacketSave.h> /* For struct LHReplayPacketInfo, enum LH_PACKET_SOURCE */
+#include <Lionhead/LHMultiplayer/ver4.0/LHNetUser.h>      /* For struct LH_USER_ID */
 
 class LHLobby;
 class LHSession;
@@ -11,6 +12,12 @@ class LHTransport;
 class LHTransportInfo;
 class LHNetUser;
 struct SetupBox;
+
+enum LH_NET_STATE
+{
+	LH_NET_STATE_INTERNET = 1,
+	LH_NET_STATE_LOCAL_LOBBY = 2,
+};
 
 class LHNetBase
 {
@@ -20,26 +27,28 @@ public:
 	// BW1W120 00d2054c
 	static SetupBox* MessageBox;
 
-	LHLobby*     Lobby; /* 0x0 */
-	LHLobby*     field_0x4;
-	LHLobby*     field_0x8;
-	uint32_t     field_0xc;
-	uint32_t     field_0x10;
-	uint32_t     field_0x14;
-	uint32_t     field_0x18;
-	LHTransport* Transport;
-	uint32_t     field_0x20;
-	LHSession*   Session;
-	LHLobby*     field_0x28;
-	LHNetUser*   User;
-	uint32_t     State;
-	uint32_t     field_0x34;
-	uint32_t     field_0x38;
-	void*        Peer;
-	char         UserName[100];
+	LHLobby*           Lobby; /* 0x0 */
+	LHLobby*           InternetLobby;
+	LHLobby*           field_0x8;
+	uint32_t           field_0xc;
+	LHReplayPacketInfo ReplayInfo; /* 0x10 */
+	LHTransport*       Transport;
+	uint32_t           field_0x20;
+	LHSession*         Session;
+	LHLobby*           field_0x28;
+	LHNetUser*         User;
+	LH_NET_STATE       State;
+	uint32_t           field_0x34;
+	uint32_t           field_0x38;
+	void*              Peer;
+	char               UserName[100];
 
 	// BW1W120 005ea980 BW1M119 0137e440
 	void Shutdown();
+	// BW1W120 005eb970 BW1M119 0137d250
+	static void UpdateUserData();
+	// BW1W120 005ebaf0 BW1M119 0137cd50
+	void StartAGame(LH_PACKET_SOURCE source);
 	// BW1W120 005eb120
 	void Ping(LHTransportInfo* info);
 	// BW1W120 005eab10 BW1M119 0137e360
@@ -53,5 +62,8 @@ public:
 	// BW1W120 005ebd20 BW1M119 0137cbc0
 	int WaitUntilGameLoopStarted();
 };
+
+// BW1W120 005ea750 BW1M119 null
+void OpenURL(char* url);
 
 #endif

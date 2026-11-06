@@ -51,8 +51,6 @@ char         CheckInternetConnectionOptions = -1;
 static wchar_t CurrentProfile[LH_MAX_NAME_LENGTH + 1];
 static char    CurrentProfileKey[LH_NET_PROFILE_KEY_LENGTH + 1];
 
-// BW1W120 10019270 BW1M119 01103e80 (LHCombined Release)
-char* ProfileNameToKey(wchar_t* profile);
 // BW1W120 10019340 BW1M119 01103e00 (LHCombined Release)
 int HEX2INT(char c);
 
