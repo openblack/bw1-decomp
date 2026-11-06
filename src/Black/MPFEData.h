@@ -273,6 +273,10 @@ public:
 	MPFEPlayerDetails* GetHighestNumberedPlayerInTeam(TeamEnums team);
 	// BW1W120 00626490 BW1M119 01399b50
 	void D_UpdateBoxClans();
+	// BW1W120 00620410 BW1M119 01392fb0
+	void D2A_PlayerRequestToJoinTeam(TeamEnums team, wchar_t* name);
+	// BW1W120 006207c0 BW1M119 01392ce0
+	void D2A_YouHaveBeenInvited(TeamEnums team, wchar_t* name);
 };
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
