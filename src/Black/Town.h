@@ -226,7 +226,7 @@ public:
 	virtual char* GetDebugText() { return "Town:"; }
 
 	// BW1W120 00739970 BW1M119 015601d0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0073ff00 BW1M119 01553900
 	virtual float GetVillagerActivityDesire(Villager* villager);
 	// BW1W120 0073ff10 BW1M119 010975f0
@@ -273,8 +273,8 @@ public:
 	// Both return the full register. The member-function pointers are passed in the 16-byte general
 	// representation, so Town.cpp needs /vmg like Fixed.cpp.
 	// BW1W120 007412f0 BW1M119 01025f70
-	static bool32_t FindClearArea(MapCoords& result, MapCoords& pos, float param_3, float param_4, float radius,
-	                              int (Object::*callback)() const, Object* obj);
+	static bool32_t FindClearArea(MapCoords& result, MapCoords& pos, float spiral_radius, float spiral_increment,
+	                              float radius, int (Object::*callback)() const, Object* obj);
 	// BW1W120 007413d0 BW1M119 0103b1f0
 	static bool32_t CheckForClearArea(MapCoords& pos, float radius, int (Object::*callback)() const, Object* obj);
 	// BW1W120 0073fbd0 BW1M119 null
@@ -482,7 +482,7 @@ public:
 	// BW1W120 0073cf00 BW1M119 0155b040
 	bool32_t IsBuildingSiteValid(BuildingSite* site);
 	// BW1W120 0073cf60 BW1M119 01099850
-	BuildingSite* GetBestBuildingSite(const MapCoords& pos, int param_2);
+	BuildingSite* GetBestBuildingSite(const MapCoords& pos, bool32_t include_builder_not_needed);
 	// BW1W120 0073d030 BW1M119 0155ae60
 	void SetWorshipSite(WorshipSite* site);
 	// BW1W120 0073d080 BW1M119 0155ad60
@@ -582,26 +582,26 @@ public:
 	// BW1W120 004f2070 BW1M119 0127a8e0
 	void FillListWithMostImportantDesires(LHStack<TOWN_DESIRE_INFO, TOWN_DESIRE_INFO_LAST>& desires);
 	// BW1W120 0073e440 BW1M119 01558640
-	void VillagerDead(Villager* villager, DEATH_REASON reason, GPlayer* player, float param_4);
+	void VillagerDead(Villager* villager, DEATH_REASON reason, GPlayer* player, float damage);
 	// BW1W120 0073e4b0 BW1M119 01070000
 	float GetBeliefInNeutralPlayer();
 	// BW1W120 0073e4c0 BW1M119 01558470
-	PlannedMultiMapFixed* GetPlannedAtPos(const MapCoords& pos, float radius, int param_3);
+	PlannedMultiMapFixed* GetPlannedAtPos(const MapCoords& pos, float radius, bool32_t constructed_only);
 	// BW1W120 0073e560 BW1M119 01558380
 	static bool32_t ForceBuildingOfPlannedAtPos(const MapCoords& pos, float desire);
 	// BW1W120 0073e5e0 BW1M119 01069430
 	float GetTribalPower(TRIBE_TYPE tribe_type);
 	// BW1W120 0073e600 BW1M119 01558220
 	Villager* FindVillager(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                       SCRIPT_OBJECT_TYPE type, uint32_t param_3);
+	                       SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 0073e670 BW1M119 01558130
 	float GetTownAndVillagerHealthTotal();
 	// BW1W120 0073e6e0 BW1M119 01558030
 	Animal* FindAnimal(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE type,
-	                   uint32_t param_3);
+	                   uint32_t subtype);
 	// BW1W120 0073e720 BW1M119 null
 	Living* FindLiving(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE type,
-	                   uint32_t param_3);
+	                   uint32_t subtype);
 	// BW1W120 0073e750 BW1M119 01557f20
 	FishFarm* FindBestFishFarm(Villager* villager, float* score);
 	// BW1W120 0073e7f0 BW1M119 01557e40
@@ -634,9 +634,9 @@ public:
 	// BW1W120 0073ffd0 BW1M119 01553750
 	bool IsSpaceForNewVillager();
 	// BW1W120 00740030 BW1M119 015535d0
-	float GetGameTurnResourceLastRemovedModifier(unsigned long param_1, RESOURCE_TYPE type);
+	float GetGameTurnResourceLastRemovedModifier(unsigned long player_number, RESOURCE_TYPE type);
 	// BW1W120 007400d0 BW1M119 01553540
-	void SetGameTurnResourceLastRemoved(unsigned long param_1, RESOURCE_TYPE type);
+	void SetGameTurnResourceLastRemoved(unsigned long player_number, RESOURCE_TYPE type);
 	// BW1W120 00740100 BW1M119 null
 	Abode* GetRandomAbode();
 	// BW1W120 00740140 BW1M119 null
@@ -646,7 +646,7 @@ public:
 	// BW1W120 007401d0 BW1M119 01553100
 	void RemoveWorkshop(Workshop* workshop);
 	// BW1W120 00740250 BW1M119 01552ff0
-	Workshop* GetBestWorkshop(MapCoords& pos, int param_2, int param_3);
+	Workshop* GetBestWorkshop(MapCoords& pos, int use_desire, int must_be_functional);
 	// BW1W120 00740300 BW1M119 01552f40
 	bool32_t IsScaffoldAwayFromWorkshops(Scaffold* scaffold);
 	// BW1W120 00740340 BW1M119 01552e90

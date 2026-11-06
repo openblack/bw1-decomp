@@ -19,6 +19,7 @@ class EffectValues;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
+class GTownDesireInfo;
 class LHOSFile;
 struct MapCoords;
 class Town;
@@ -38,7 +39,7 @@ public:
 	// BW1W120 007469d0 BW1M119 015669f0
 	virtual ~TownDesireFlags();
 	// BW1W120 00746a00 BW1M119 01566990
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0055da70 BW1M119 0135c610
 	virtual Town* GetTown() { return ParentTown.Get(); }
 	// BW1W120 0055dad0 BW1M119 01565810
@@ -72,10 +73,12 @@ public:
 	// BW1W120 00746a10 BW1M119 01566940
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00746de0 BW1M119 01566410
-	virtual bool32_t CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* creature);
 	// BW1W120 0055da90 BW1M119 015656f0
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords) { return 0; }
 
+	// BW1W120 00746940 BW1M119 01566ab0
+	TownDesireFlags(Town* town, const MapCoords& coords, TOWN_DESIRE_INFO type, unsigned long slot, MESH_LIST mesh);
 	// BW1W120 inlined BW1M119 inlined
 	TownDesireFlags()
 	{
@@ -87,6 +90,10 @@ public:
 
 	// BW1W120 00746ee0 BW1M119 01565f90
 	unsigned long GetQueryStatEnumText();
+	// BW1W120 00746db0 BW1M119 0102cf40
+	GTownDesireInfo* GetDesireInfo() const;
+	// BW1W120 007472b0 BW1M119 01565850
+	HELP_TEXT GetToolTipForFlagDesire();
 
 	// Static methods
 

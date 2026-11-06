@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For JOB_INFO_LAST, SEASON_LAST, enum JOB_ACTIVITY */
+#include <chlasm/Enum.h> /* For JOB_INFO_LAST, SEASON_LAST, enum JOB_ACTIVITY, enum VILLAGER_JOB */
 
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
@@ -13,10 +13,12 @@
 
 class Base;
 
+#define JOB_INFO_VILLAGER_JOB_COUNT 6
+
 class GJobInfo : public GBaseInfo
 {
 public:
-	uint32_t     field_0x10[6];
+	VILLAGER_JOB VillagerJobs[JOB_INFO_VILLAGER_JOB_COUNT];
 	JOB_ACTIVITY Activity[SEASON_LAST];
 	uint32_t     field_0x38[8];
 
@@ -43,7 +45,7 @@ public:
 	uint32_t GetJobActivity() const;
 
 	// TODO(#377): The original declared this class in Job.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x38)
+	INFO_DATA_BLOCK(VillagerJobs, field_0x38)
 	INFO_ROOT_LOADERS("Job.h", 15)
 };
 
