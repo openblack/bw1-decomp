@@ -59,6 +59,8 @@ public:
 
 	// BW1W120 008829c0 BW1M119 010cc7f0 (LHCombined Release)
 	void CreateWorship();
+	// BW1W120 null BW1M119 01129dd0 (LHCombined Release)
+	void CreateCreatureRoom();
 
 	// Virtual methods
 

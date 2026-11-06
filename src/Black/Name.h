@@ -10,7 +10,8 @@ struct Name
 	// Constructors
 
 	// BW1W120 0046d5e0 BW1M119 011cfca0
-	Name();
+	Name() { string[0] = '\0'; }
 };
+static_assert(sizeof(Name) == 0x20, "Wrong Name size");
 
 #endif /* BW1_DECOMP_NAME_INCLUDED_H */

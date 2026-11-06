@@ -1,3 +1,5 @@
+#include "CreatureAnimInfo.h"
+
 #include "GameTimeConstants.h"
 
 #include "ColourConstants.h" /* For White */
@@ -5,8 +7,7 @@
 #include <stdio.h>  /* For fopen, fgetc, fscanf, sprintf */
 #include <string.h> /* For strcpy */
 
-#include <Lionhead/LH3DLib/development/LH3DAnim.h> /* For struct AnimInfo */
-#include <Lionhead/LHFile/ver3.0/LHFilePath.h>     /* For g_GameDriveCharacter */
+#include <Lionhead/LHFile/ver3.0/LHFilePath.h> /* For g_GameDriveCharacter */
 
 char CatInfo::Read(FILE* file)
 {
@@ -41,7 +42,7 @@ char CatInfo::Read(FILE* file)
 			AnimationType[AnimationCount] = AnimInfoType_Minus;
 			break;
 		}
-		fscanf(file, "%s", AnimationNames[AnimationCount]);
+		fscanf(file, "%s", AnimationNames[AnimationCount].string);
 		AnimationCount++;
 
 		do
@@ -84,7 +85,7 @@ bool32_t AnimInfo::Read(char* spec_filename)
 
 	while (c != 'E')
 	{
-		fscanf(file, "%s", CategoryNames[CategoryCount]);
+		fscanf(file, "%s", CategoryNames[CategoryCount].string);
 		c = Categories[CategoryCount].Read(file);
 		CategoryCount++;
 	}
