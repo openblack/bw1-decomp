@@ -46,7 +46,7 @@ public:
 	// BW1W120 007977a0 BW1M119 01541360
 	void DrawMap();
 	// BW1W120 00797590 BW1M119 01541c30
-	LHPoint CalcPoint(float x, float z, float* param_3);
+	LHPoint CalcPoint(float x, float z, float* map_height);
 	// BW1W120 0079da40 BW1M119 015aea20
 	void DrawMarker(const LH3DColor& colour, LHPoint pos, LH3DObject* object, float angle, float scale);
 

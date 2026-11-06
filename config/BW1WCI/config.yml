@@ -7,6 +7,12 @@ splits: config/BW1WCI/splits.txt
 generate_imports: false
 
 block_relocations:
+  - source: 0x00C9DC68
+  - source: 0x007B5A5F
+  - source: 0x007B5A8B
+  - source: 0x007B64A9
+  - source: 0x007B5CE8
+  - source: 0x007B5D14
 # "tMM" of LHFile's Version.cpp LH_VERSION_END_TAG reads as a pointer into code.
   - source: 0x00C9F59C
 # libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in Creature Isle's larger image both read as pointers.

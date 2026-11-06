@@ -10,6 +10,70 @@
 
 #include "TempleRoom.h" /* For class TempleRoom */
 
+#define WORLD_ROOM_CONTROL_COUNT            11
+#define WORLD_ROOM_STATISTICS_TEXT_CAPACITY 8192
+#define WORLD_ROOM_SIGN_COUNT               7
+#define WORLD_ROOM_SIGN_FADE                (0xff * 4)
+#define WORLD_ROOM_TEXT_ID_OFFSET           4
+#define WORLD_ROOM_CI_TOOLTIP_ID_OFFSET     8
+
+#define WORLD_ROOM_DOOR_DRAW_THRESHOLD   0.01f
+#define WORLD_ROOM_MARKER_SCALE          0.05f
+#define WORLD_ROOM_MARKER_GLOW_SIZE      0.65f
+#define WORLD_ROOM_MARKER_GLOW_LIFT      0.1f
+#define WORLD_ROOM_MARKER_GLOW_RED       0x7c
+#define WORLD_ROOM_MARKER_GLOW_GREEN     0x6e
+#define WORLD_ROOM_MARKER_GLOW_BLUE      0x61
+#define WORLD_ROOM_MARKER_LIGHTEN_AMOUNT 64
+#define WORLD_ROOM_SPELL_MARKER_SCALE    0.1f
+#define WORLD_ROOM_SPELL_HEIGHT_OFFSET   0.5f
+#define WORLD_ROOM_SPELL_SEED_SIZE       0.1f
+
+#define WORLD_ROOM_ANIMATION_TIME_SCALE  0.001f
+#define WORLD_ROOM_WATER_COLOUR_SCALE    208
+#define WORLD_ROOM_WATER_ALPHA_AMPLITUDE 32.0
+#define WORLD_ROOM_WATER_ALPHA_BASE      128.0
+#define WORLD_ROOM_WATER_U_SPEED         0.01f
+#define WORLD_ROOM_WATER_BASE_V_SPEED    0.007f
+#define WORLD_ROOM_WATER_UPPER_V_SPEED   0.005f
+#define WORLD_ROOM_UPPER_WATER_OFFSET    0.05f
+
+#define WORLD_ROOM_EXIT_GLOW_DELAY           2.2
+#define WORLD_ROOM_EXIT_GLOW_INITIAL_RATE    1.5
+#define WORLD_ROOM_EXIT_GLOW_KNEE            2.0f
+#define WORLD_ROOM_EXIT_GLOW_ACCELERATION    1.5f
+#define WORLD_ROOM_EXIT_GLOW_LIMIT           4.0f
+#define WORLD_ROOM_EXIT_GLOW_BRIGHTNESS_RATE 127.0f
+#define WORLD_ROOM_EXIT_GLOW_ALPHA_RATE      75.0f
+#define WORLD_ROOM_EXIT_GLOW_SPREAD_RATE     7.0f
+#define WORLD_ROOM_EXIT_GLOW_START_X         80.0f
+#define WORLD_ROOM_EXIT_GLOW_END_X           60.0f
+#define WORLD_ROOM_EXIT_GLOW_HEIGHT          5.0f
+#define WORLD_ROOM_EXIT_GLOW_START_HEIGHT    20.0f
+#define WORLD_ROOM_EXIT_GLOW_END_HEIGHT_BASE 20.0f
+#define WORLD_ROOM_EXIT_GLOW_END_HEIGHT_RATE 10.0f
+#define WORLD_ROOM_EXIT_GLOW_END_RADIUS_RATE 15.0f
+
+#define WORLD_ROOM_STATISTICS_ZOOM_THRESHOLD 0.5
+#define WORLD_ROOM_INFLUENCE_SCALE_DIVISOR   80.0f
+#define WORLD_ROOM_SCROLL_CAMERA_PITCH       (-30.0f)
+
+enum WORLD_ROOM_BUTTON_PITCH
+{
+	WORLD_ROOM_BUTTON_PITCH_NORMAL = 100,
+	WORLD_ROOM_BUTTON_PITCH_CREATURE = 110,
+	WORLD_ROOM_BUTTON_PITCH_MAGIC = 95,
+	WORLD_ROOM_BUTTON_PITCH_INFLUENCE = 105,
+	WORLD_ROOM_BUTTON_PITCH_CHALLENGES = 108
+};
+
+enum WORLD_ROOM_DRAW_PASS
+{
+	WORLD_ROOM_DRAW_PASS_GLOW = 0,
+	WORLD_ROOM_DRAW_PASS_MARKERS,
+	WORLD_ROOM_DRAW_PASS_COUNT
+};
+
 // Forward Declares
 
 struct CallbackData;
@@ -27,11 +91,6 @@ struct SubmeshName;
 class WorldRoom : public TempleRoom
 {
 public:
-	enum
-	{
-		NUM_CONTROLS = 11
-	};
-
 	// BW1W120 00c2a478
 	static bool32_t ShowInfluence;
 	// BW1W120 00c2a4ec
@@ -45,7 +104,7 @@ public:
 	// BW1W120 00c2a4fc
 	static bool32_t DisplayChallenges;
 	// BW1W120 00e36158
-	static wchar_t WorldStatisticsText[0x2000];
+	static wchar_t WorldStatisticsText[WORLD_ROOM_STATISTICS_TEXT_CAPACITY];
 	// BW1W120 00e3a194
 	static float MarkerAngle;
 	// BW1W120 00e3a198
@@ -64,11 +123,11 @@ public:
 	static bool32_t RoomsAvailable;
 
 	// BW1W120 00c2a7a8
-	static int (*ControlSetCallbacks[NUM_CONTROLS])(CallbackData& data);
+	static int (*ControlSetCallbacks[WORLD_ROOM_CONTROL_COUNT])(CallbackData& data);
 	// BW1W120 00c2a7d4
-	static int (*ControlGetCallbacks[NUM_CONTROLS])(CallbackData& data);
+	static int (*ControlGetCallbacks[WORLD_ROOM_CONTROL_COUNT])(CallbackData& data);
 	// BW1W120 00c2a800
-	static ControlDescriptionData Controls[NUM_CONTROLS];
+	static ControlDescriptionData Controls[WORLD_ROOM_CONTROL_COUNT];
 
 	// Override methods
 
