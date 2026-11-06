@@ -28,15 +28,33 @@ struct PSysProcessInfo;
 class SpellSeed;
 class Reaction;
 class SpellSeedGraphic;
-struct SpellCastData;
 struct SpellEventInfo;
 class WorshipSite;
+
+#define SPELL_CAST_NO_TARGET (-1)
+
+struct SpellCastData
+{
+	float Radius;
+	float Life;
+	float Duration;
+	long  Target;
+#ifdef VERSION_BW1WCI
+	bool32_t CreatesReaction;
+#endif
+};
 
 class Spell : public GameThingWithPos
 {
 public:
 	// BW1W120 00720300 BW1M119 0107fb80
 	static void ProcessSpells();
+	// BW1W120 007217a0 BW1M119 0151d960
+	static Spell* FindSpellWithinRadius(MAGIC_TYPE type, const MapCoords& pos, float radius);
+	// BW1W120 007202e0 BW1M119 01520310
+	void SetSpellMagnitude(float magnitude);
+	// BW1W120 inlined BW1M119 01505670
+	GameThing*  GetCreator() { return creator; }
 	static void DrawSpells(); // 007203f0
 
 	LHPTR<Reaction> SpellReaction;

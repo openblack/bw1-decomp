@@ -2131,14 +2131,14 @@ Black/Scaffold.cpp:
 	.rdata      start:0x0099AC3C end:0x0099AC9C
 	.CRT$XCU    start:0x00A37018 end:0x00A37028 align:4
 	.data       start:0x00C7CA54 end:0x00C7CA88
-	.bss        start:0x00E16E9C end:0x00E170EC
+	.bss        start:0x00E16E9C end:0x00E170E8
 
 Black/Script.cpp:
 	.text       start:0x006FFFF0 end:0x00701930
 	.rdata      start:0x0099AC9C end:0x0099ACD0
 	.CRT$XCU    start:0x00A37028 end:0x00A37030 align:4
 	.data       start:0x00C7CA88 end:0x00C7CBE0
-	.bss        start:0x00E170EC end:0x00E1710C
+	.bss        start:0x00E170E8 end:0x00E1710C
 
 Black/ScriptCamera.cpp:
 	.data       start:0x00C7CBE0 end:0x00C7CDF0
@@ -2209,18 +2209,34 @@ Black/ScriptHighlight.cpp:
 	.text       start:0x00722FE0 end:0x00725280
 	.rdata      start:0x0099AD60 end:0x0099B680
 	.CRT$XCU    start:0x00A3708C end:0x00A3709C align:4
-	.data       start:0x00C93BF8 end:0x00C93F84
+	.data       start:0x00C93BF8 end:0x00C93C3C
+
+Black/ScriptInterface.cpp:
+	.text       start:0x00725280 end:0x00725FF0
+	.CRT$XCU    start:0x00A3709C end:0x00A370A0 align:4
+	.data       start:0x00C93C3C end:0x00C93C9A
+	.bss        start:0x00E1B3C4 end:0x00E1B3C8
+
+Black/ScriptMagic.cpp:
+	.text       start:0x00725FF0 end:0x00727630
+	.rdata      start:0x0099B680 end:0x0099B690
+	.CRT$XCU    start:0x00A370A0 end:0x00A370A8 align:4
+	.data       start:0x00C93C9C end:0x00C93D61
+	.bss        start:0x00E1B3CC end:0x00E1B3D4
 
 Black/ScriptManage.cpp:
-	.text       start:0x00725280 end:0x007280D0
-	.rdata      start:0x0099B680 end:0x0099B6A0
-	.CRT$XCU    start:0x00A3709C end:0x00A370B4 align:4
+	.text       start:0x00727630 end:0x007280D0
+	.rdata      start:0x0099B690 end:0x0099B6A0
+	.rdata$r    start:0x00A29998 end:0x00A299E4
+	.CRT$XCU    start:0x00A370A8 end:0x00A370B4 align:4
+	.data       start:0x00C93D68 end:0x00C93F88
+	.bss        start:0x00E1B3D8 end:0x00E203E4
 
 Black/ScriptMarker.cpp:
 	.text       start:0x007280D0 end:0x0072C8C0
 	.rdata      start:0x0099B6A0 end:0x009B5604
 	.CRT$XCU    start:0x00A370B4 end:0x00A370D8 align:4
-	.data       start:0x00C93F84 end:0x00C941F4
+	.data       start:0x00C93F88 end:0x00C941F4
 	.bss        start:0x00E203E4 end:0x00E20414
 
 Black/ScriptTimer.cpp:
@@ -3292,6 +3308,10 @@ lib/libcmt/strrchr.obj:
 lib/libcmt/ieee87.obj:
 	.text       start:0x007E2567 end:0x007E2754 align:1
 
+lib/libcmt/crt0dat.obj:
+	.text       start:0x007E2754 end:0x007E28A0 align:1
+	.bss        start:0x00F0CAFC end:0x00F0CB40
+
 lib/libcmt/llshr.obj:
 	.text       start:0x007E28A0 end:0x007E28D0 align:1
 
@@ -3309,10 +3329,6 @@ lib/libcmt/mkdir.obj:
 
 lib/libcmt/wcsncat.obj:
 	.text       start:0x007E2A0E end:0x007E2A4E align:1
-
-lib/libcmt/crt0dat.obj:
-	.text       start:0x007E2754 end:0x007E28A0 align:1
-	.bss        start:0x00F0CAFC end:0x00F0CB40
 
 lib/libcmt/wincrt0.obj:
 	.text       start:0x007E2A4E end:0x007E2BA0 align:1
@@ -3422,19 +3438,19 @@ lib/libcmt/cvt.obj:
 	.text       start:0x007E52BC end:0x007E56F0 align:1
 	.rdata      start:0x00A10478 end:0x00A10480
 
-lib/libcmt/msize.obj:
-	.text       start:0x007E5774 end:0x007E5862 align:1
-	.rdata      start:0x00A10480 end:0x00A10498
-
-lib/libcmt/_flsbuf.obj:
-	.text       start:0x007E5862 end:0x007E597A align:1
-
 lib/libcmt/cmiscdat.obj:
 	.data       start:0x00CA144C end:0x00CA1464
 
 lib/libcmt/strcmp.obj:
 	.text       start:0x007E56F0 end:0x007E5774 align:1
 	.data       start:0x00CA1464 end:0x00CA1470
+
+lib/libcmt/msize.obj:
+	.text       start:0x007E5774 end:0x007E5862 align:1
+	.rdata      start:0x00A10480 end:0x00A10498
+
+lib/libcmt/_flsbuf.obj:
+	.text       start:0x007E5862 end:0x007E597A align:1
 
 lib/libcmt/output.obj:
 	.text       start:0x007E597A end:0x007E6184 align:1
@@ -3493,6 +3509,13 @@ lib/libcmt/fpexcept.obj:
 	.rdata      start:0x00A10D3C end:0x00A10DF0
 	.data       start:0x00CA34E8 end:0x00CA35C0 align:1
 
+lib/libcmt/fpctrl.obj:
+	.text       start:0x007EE81A end:0x007EE8B0 align:1
+	.data       start:0x00CA35C0 end:0x00CA35D8 align:1
+
+lib/libcmt/close.obj:
+	.text       start:0x007EE8B0 end:0x007EE990 align:1
+
 lib/libcmt/_freebuf.obj:
 	.text       start:0x007EE990 end:0x007EE9BB align:1
 
@@ -3501,13 +3524,6 @@ lib/libcmt/_open.obj:
 
 lib/libcmt/stream.obj:
 	.text       start:0x007EEB2B end:0x007EEC00 align:1
-
-lib/libcmt/fpctrl.obj:
-	.text       start:0x007EE81A end:0x007EE8B0 align:1
-	.data       start:0x00CA35C0 end:0x00CA35D8 align:1
-
-lib/libcmt/close.obj:
-	.text       start:0x007EE8B0 end:0x007EE990 align:1
 
 lib/libcmt/87disp.obj:
 	.text       start:0x007EEC00 end:0x007EEDD0 align:1
@@ -3741,6 +3757,10 @@ lib/libcmt/w_str.obj:
 lib/libcmt/setenv.obj:
 	.text       start:0x007F63AA end:0x007F65F0 align:1
 
+lib/libcmt/matherr.obj:
+	.text       start:0x007F65F0 end:0x007F65F3 align:1
+	.data       start:0x00CA42A0 end:0x00CA42A4
+
 lib/libcmt/osfinfo.obj:
 	.text       start:0x007F65F3 end:0x007F697B align:1
 
@@ -3770,10 +3790,6 @@ lib/libcmt/ismbbyte.obj:
 lib/libcmt/inithelp.obj:
 	.text       start:0x007F7660 end:0x007F77A0 align:1
 	.bss        start:0x00F0CECC end:0x00F0CED4
-
-lib/libcmt/matherr.obj:
-	.text       start:0x007F65F0 end:0x007F65F3 align:1
-	.data       start:0x00CA42A0 end:0x00CA42A4
 
 lib/libcmt/days.obj:
 	.data       start:0x00CA42A4 end:0x00CA430C align:1

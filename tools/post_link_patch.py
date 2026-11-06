@@ -2502,6 +2502,56 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00704594, jmp_run(0x00704487)),  # ScriptFunctions
     (0x007047D8, jmp_run(0x00704594)),  # ScriptFunctions
     (0x0070485A, jmp_run(0x007047D8)),  # ScriptFunctions
+    (0x0070F79B, jmp_run(0x0070F726)),  # ScriptInterface
+    (0x0070F8C3, copy_run(0x0070F79B)),  # ScriptInterface
+    (0x0070F927, copy_run(0x0070F8C3)),  # ScriptInterface
+    (0x0070F9E9, copy_run(0x0070F927)),  # ScriptInterface
+    (0x0070FA0B, copy_run(0x0070F9E9)),  # ScriptInterface
+    (0x0070FAE3, copy_run(0x0070FA0B)),  # ScriptInterface
+    (0x0070FB0B, copy_run(0x0070FAE3)),  # ScriptInterface
+    (0x00710168, copy_run(0x0070FB0B)),  # ScriptInterface
+    (0x007101F8, jmp_run(0x00710168)),  # ScriptInterface
+    (0x00710283, copy_run(0x007101F8)),  # ScriptInterface
+    (0x007102B5, jmp_run(0x00710283)),  # ScriptInterface
+    (0x007102D4, jmp_run(0x007102B5)),  # ScriptInterface
+    (0x00710309, copy_run(0x007102D4)),  # ScriptInterface
+    (0x0071033B, jmp_run(0x00710309)),  # ScriptInterface
+    (0x00710366, copy_run(0x0071033B)),  # ScriptInterface
+    (0x007103DB, jmp_run(0x00710366)),  # ScriptMagic
+    (0x00710403, copy_run(0x007103DB)),  # ScriptMagic
+    (0x0071064A, copy_run(0x00710403)),  # ScriptMagic
+    (0x00710882, copy_run(0x0071064A)),  # ScriptMagic
+    (0x00710A72, jmp_run(0x00710882)),  # ScriptMagic
+    (0x00710C16, jmp_run(0x00710A72)),  # ScriptMagic
+    (0x00710D44, copy_run(0x00710C16)),  # ScriptMagic
+    (0x00710F45, copy_run(0x00710D44)),  # ScriptMagic
+    (0x007110E4, copy_run(0x00710F45)),  # ScriptMagic
+    (0x00711282, copy_run(0x007110E4)),  # ScriptMagic
+    (0x00711338, jmp_run(0x00711282)),  # ScriptMagic
+    (0x0071146B, call_rel32(0x004034F9)),  # ScriptMagic
+    (0x007114BA, jmp_run(0x0071146B)),  # ScriptMagic
+    (0x0071162B, call_rel32(0x004034F9)),  # ScriptMagic
+    (0x00711665, copy_run(0x0071162B)),  # ScriptMagic
+    (0x0071170B, call_rel32(0x004034F9)),  # ScriptManage
+    (0x00711733, jmp_run(0x0071170B)),  # ScriptManage
+    (0x00711775, jmp_run(0x00711733)),  # ScriptManage
+    (0x00711831, jmp_run(0x00711775)),  # ScriptManage
+    (0x00711874, jmp_run(0x00711831)),  # ScriptManage
+    (0x00711937, jmp_run(0x00711874)),  # ScriptManage
+    (0x00711967, copy_run(0x00711937)),  # ScriptManage
+    (0x007119D2, jmp_run(0x00711967)),  # ScriptManage
+    (0x00711A82, copy_run(0x007119D2)),  # ScriptManage
+    (0x00711B0A, copy_run(0x00711A82)),  # ScriptManage
+    (0x00711BD1, jmp_run(0x00711B0A)),  # ScriptManage
+    (0x00711D27, copy_run(0x00711BD1)),  # ScriptManage
+    (0x00711D6A, copy_run(0x00711D27)),  # ScriptManage
+    (0x00711E23, copy_run(0x00711D6A)),  # ScriptManage
+    (0x00711ED9, jmp_run(0x00711E23)),  # ScriptManage
+    (0x00711F5A, jmp_run(0x00711ED9)),  # ScriptManage
+    (0x0071202A, copy_run(0x00711F5A)),  # ScriptManage
+    (0x007120E9, copy_run(0x0071202A)),  # ScriptManage
+    (0x00712153, jmp_run(0x007120E9)),  # ScriptManage
+    (0x00712185, copy_run(0x00712153)),  # ScriptManage
     (0x00715EE3, copy_run(0x00715E65)),  # ScriptTimer
     (0x00715F56, jmp_run(0x00715EE3)),  # ScriptTimer
     (0x00715F78, jmp_run(0x00715F56)),  # ScriptTimer

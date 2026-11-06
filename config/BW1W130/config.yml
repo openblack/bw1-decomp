@@ -186,6 +186,27 @@ block_relocations:
   - source: 0x00871378
 
 add_relocations:
+# ScriptManage.cpp: the loops over VariableTable compare against the end of the array.
+  - source: 0x007117B2
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x00711862
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x00711C1F
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x00711D18
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x00711E14
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
 # GameSpy gserverlist.c's ServerListReadList: the lea displacement of its static data buffer (dtk leaves it unrelocated).
   - source: 0x0089BD60
     type: x86_abs32

@@ -39,6 +39,8 @@ public:
 	void StartFixedPosAnimation(LHPoint& pos, long anim);
 	// BW1W120 0046c0b0 BW1M119 011d0790
 	void EndGiveToCreature();
+	// BW1W120 0046bf20 BW1M119 011d0c80
+	void SetMaxDistanceFromUser(float distance);
 	union State {
 		struct Named
 		{

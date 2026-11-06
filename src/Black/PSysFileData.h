@@ -30,6 +30,10 @@ public:
 
 	// BW1W120 00672620 BW1M119 013e5f70
 	virtual void OnLoaded();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00687740 BW1MCI119 0140fb80
+	void PreLoadData();
+#endif
 	// BW1W120 006724b0 BW1M119 013e63a0
 	virtual ~PSysFileData();
 	// BW1W120 006aaf80 BW1M119 01474480

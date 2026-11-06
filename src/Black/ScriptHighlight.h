@@ -133,6 +133,8 @@ public:
 	void SetActivated(bool32_t activated);
 	// BW1W120 0070ac20 BW1M119 01051a30
 	bool32_t IsDidYouKnow();
+	// BW1W120 0070ac50 BW1M119 01501b50
+	bool32_t IsVortexEntry();
 	// BW1W120 0070a750 BW1M119 01502700
 	MESH_LIST GetActiveMesh();
 #ifdef VERSION_BW1WCI

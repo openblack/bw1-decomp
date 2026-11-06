@@ -78,7 +78,7 @@ public:
 	// Override methods
 
 	// BW1W120 0055c770 BW1M119 010466a0
-	virtual bool IsClear() const { return UniqueId == 0 && AddressOffset == 0; }
+	virtual bool32_t IsClear() const { return UniqueId == 0 && AddressOffset == 0; }
 
 	// Constructors
 

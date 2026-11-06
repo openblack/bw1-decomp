@@ -49,6 +49,10 @@
 #define SCRIPT_DEGREES_IN_CIRCLE        360.0f
 #define SCRIPT_INVALID_LAND_HEIGHT      (-10.0f)
 #define SCRIPT_SECONDS_PER_MILLISECOND  0.001f
+#define SCRIPT_HAND_FULL_DISTANCE       1800.0f
+#define SCRIPT_HAND_GRAB_DISTANCE       75.0f
+#define SCRIPT_AUTO_PITCH               0.44879895f
+#define SCRIPT_AUTO_PITCH_HEIGHT        15.0f
 #define SCRIPT_ACTION_TEXT              828
 #define SCRIPT_BUILD_DESIRE_SCALE       5.0f
 #define SCRIPT_BAD_POS_MIN              (-1.0f)
@@ -204,6 +208,8 @@ class Living;
 struct MapCoords;
 class Town;
 class Dance;
+class Object;
+class Spell;
 
 struct ScriptObjectDispatch
 {
@@ -230,7 +236,6 @@ public:
 	bool32_t Load(GameOSFile& file);
 	// BW1W120 006eb710 BW1M119 014de060
 	// RET 4 and script-object ECX at callers establish a member, not a static function.
-	// TODO: Existing int result retained pending a complete task-ID caller audit.
 	int StartScript(char* name);
 	// BW1W120 00d95c10
 	static ScriptDLL* g_scriptDLL;
@@ -238,7 +243,6 @@ public:
 	bool32_t IsScriptRunning(char* name) const;
 	// BW1W120 006eb790 BW1M119 014ddf60
 	float GetGlobalVariableValue(char* name);
-	// TODO: Original name unknown; Reset/LoadBinary own this loaded-binary flag.
 	// BW1W120 00d95c0c
 	static bool32_t Dat_00D95C0C;
 	// BW1W120 00c0c728
@@ -270,17 +274,18 @@ public:
 #ifdef VERSION_BW1WCI
 	GameThingWithPos* ObjectHitLand;
 #endif
-	uint8_t  field_0x78[0xc];
-	uint32_t field_0x84;
-	bool32_t HandDemoTrigger;
-	bool32_t HandDemoWithPause;
-	uint32_t field_0x90;
-	bool32_t AlignmentMusic;
-	long     LastMusicLine;
-	long     LastMusicWord;
-	uint32_t CitadelInteract;
-	uint8_t  field_0xa4[0x8];
-	uint32_t GameSpeedTask;
+	uint8_t                field_0x78[0xc];
+	uint32_t               field_0x84;
+	bool32_t               HandDemoTrigger;
+	bool32_t               HandDemoWithPause;
+	uint32_t               field_0x90;
+	bool32_t               AlignmentMusic;
+	long                   LastMusicLine;
+	long                   LastMusicWord;
+	uint32_t               CitadelInteract;
+	SCRIPT_INTERFACE_LEVEL InterfaceLevel;
+	uint32_t               field_0xa8;
+	uint32_t               GameSpeedTask;
 #ifdef VERSION_BW1WCI
 	bool32_t FightLock;
 	bool32_t FightQueueOnly;
@@ -304,17 +309,33 @@ public:
 	// BW1W120 006ec780 BW1M119 014dc4f0
 	static void StopHelpScripts();
 	// BW1W120 0070d080 BW1M119 01507620
-	static void ReplaceScriptGameThing(GameThingWithPos* old_thing, GameThingWithPos* new_thing);
+	static uint32_t ReplaceScriptGameThing(GameThingWithPos* old_thing, GameThingWithPos* new_thing);
 	// BW1W120 006eb9a0 BW1M119 0101e7e0
 	static uint32_t ConvertScriptPlayerToGamePlayer(unsigned long player);
 	// BW1W120 0070cf90 BW1M119 010069f0
 	static void IncrementScriptReference(unsigned long id);
 	// BW1W120 0070cfd0 BW1M119 010029b0
 	static void DecrementScriptReference(unsigned long id);
+	// BW1W120 0070d010 BW1M119 null
+	static uint8_t GetScriptReferenceCount(unsigned long id);
+	// BW1W120 0070d020 BW1M119 01507820
+	static void IncrementScriptReference(GameThingWithPos* thing);
+	// BW1W120 0070d050 BW1M119 01507740
+	static void DecrementScriptReference(GameThingWithPos* thing);
+	// BW1W120 0070bb20 BW1M119 015063f0
+	static Spell* CastSpellOnObject(Object* object, MAGIC_TYPE type, const MapCoords& source, GameThing* creator,
+	                                bool32_t check_can_cast, float radius, float duration, float curl,
+#ifdef VERSION_BW1WCI
+	                                bool32_t creates_reaction,
+#endif
+	                                const LHPoint& velocity);
 	// BW1W120 0070bd60 BW1M119 01506140
-	static GameThing* CastSpellAtPos(const MapCoords& position, MAGIC_TYPE type, const MapCoords& source,
-	                                 GameThing* owner, int param_5, float param_6, float param_7, float param_8,
-	                                 const LHPoint& point);
+	static Spell* CastSpellAtPos(const MapCoords& position, MAGIC_TYPE type, const MapCoords& source,
+	                             GameThing* creator, bool32_t check_can_cast, float radius, float duration, float curl,
+#ifdef VERSION_BW1WCI
+	                             bool32_t creates_reaction,
+#endif
+	                             const LHPoint& velocity);
 	// BW1W120 0070b220 BW1M119 01503f10
 	static void SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level);
 	// BW1W120 006ec8f0 BW1M119 014e2f90
@@ -769,7 +790,7 @@ public:
 	// BW1W120 006f8e80 BW1M119 014fe4c0
 	static void MoveGameThing();
 	// BW1W120 0070d0f0 BW1M119 010031b0
-	static uint32_t AddScriptGameThing(GameThingWithPos* thing, bool32_t take_control);
+	static uint32_t AddScriptGameThing(GameThingWithPos* thing, bool32_t created_by_script);
 	// BW1W120 0070d220 BW1M119 0104f750
 	static GameThingWithPos* GetScriptGameThing(uint32_t id);
 	// BW1W120 0070d540 BW1M119 010037f0
@@ -1186,6 +1207,16 @@ public:
 	static void StopImmersion();
 	// BW1W120 0070ba80 BW1M119 015037c0
 	static void StopAllImmersion();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00725e90 BW1MCI119 01535fd0
+	static void SetObjectInPlayerHand();
+	// BW1WCI 00725f20 BW1MCI119 01535f00
+	static void GetMousePercentageAcross();
+	// BW1WCI 00725f60 BW1MCI119 01535e30
+	static void GetMousePercentageDown();
+	// BW1WCI 00725fa0 BW1MCI119 01535cf0
+	static void MouseButtonDown();
+#endif
 	// BW1W120 0070bfa0 BW1M119 01505ef0
 	static void SpellOnThing();
 	// BW1W120 0070c190 BW1M119 01505d00
@@ -1222,8 +1253,22 @@ public:
 	static void GetManaForSpell();
 	// BW1W120 0070cd80 BW1M119 01504c00
 	static void ClearPlayerSpellCharging();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00727310 BW1MCI119 01537880
+	static void SpecialEffectFromFile();
+	// BW1WCI 00727470 BW1MCI119 01537560
+	static void SpecialEffectFromPos();
+#endif
+	// BW1W120 0070ceb0 BW1M119 01507bd0
+	static void ClearVariableTable();
+	// BW1W120 0070ced0 BW1M119 null
+	static void ValidateVariableTable();
+	// BW1W120 0070d2f0 BW1M119 015070e0
+	static uint32_t FindOrAddScriptGameThing(GameThingWithPos* thing);
 	// BW1W120 0070d360 BW1M119 01506f20
 	static void DeleteAllScriptCreatedGameThings();
+	// BW1W120 0070d480 BW1M119 01046520
+	static void ProcessReferenceTable();
 	// BW1W120 0070dae0 BW1M119 01044780
 	static void GetProperty();
 	// BW1W120 0070f380 BW1M119 015084c0
@@ -1599,25 +1644,31 @@ public:
 	static int FindNearInStateCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
 	                                                      uint32_t subtype);
 	// BW1W120 0070cee0 BW1M119 01003350
-	int FindFreeScriptGameThingSlot();
+	static uint32_t FindFreeScriptGameThingSlot();
 	// BW1W120 006eb8b0 BW1M119 014ddc30
 	void InitialiseCountDownTimer(float seconds);
 	// BW1W120 006eb890 BW1M119 014ddd10
 	void SetPointOutOfWorld(LHPoint* point);
 	// BW1W120 006efd60 BW1M119 014e54e0
-	void DecreaseContainerContentsScriptReference(GameThingWithPos* thing);
+	static void DecreaseContainerContentsScriptReference(GameThingWithPos* thing);
 	// BW1W120 006efcd0 BW1M119 014e55e0
-	void ReleaseContainerContents(GameThingWithPos* thing);
+	static void ReleaseContainerContents(GameThingWithPos* thing);
 	// BW1W120 0070d440 BW1M119 01506e80
-	bool32_t IsCreatedByScript(uint32_t slot);
+	static bool32_t IsCreatedByScript(uint32_t slot);
 	// BW1W120 0070cf50 BW1M119 01507ad0
-	int FindScriptGameThing(GameThingWithPos* thing);
+	static uint32_t FindScriptGameThing(GameThingWithPos* thing);
 	// BW1W120 00710350 BW1M119 0150caf0
 	HELP_SPIRIT_TYPE ConvertScriptSpiritToHelpSpirit(SCRIPT_SPIRIT_TYPE spirit);
 	// BW1W120 0070f600 BW1M119 010021c0
-	void ReleaseScriptThingIntoTheGame(GameThingWithPos* thing, uint32_t slot, bool32_t force);
+	static void ReleaseScriptThingIntoTheGame(GameThingWithPos* thing, uint32_t slot, bool32_t force);
 	// BW1W120 006f0430 BW1M119 014e4880
 	void DetachFromDance(uint32_t slot, Dance* dance);
+	// BW1W120 006f0320 BW1M119 014e4a10
+	static void AttachToDance(unsigned long thing_id, unsigned long target_id, Dance* dance, bool32_t as_leader);
+	// BW1W120 006ef4e0 BW1M119 014e5f50
+	static void AttachToFlock(unsigned long thing_id, unsigned long target_id, bool32_t as_leader);
+	// BW1W120 006ef8a0 BW1M119 014e5bf0
+	static void AttachToTown(unsigned long thing_id, unsigned long target_id, Town* town);
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(GScript) == 0xd8, "Data type is of wrong size");

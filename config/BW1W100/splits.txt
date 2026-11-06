@@ -1946,13 +1946,13 @@ Black/Rock.cpp:
 Black/Scaffold.cpp:
 	.text       start:0x00682E90 end:0x00685C30
 	.rdata      start:0x00879280 end:0x008792E0
-	.bss        start:0x00CB675C end:0x00CB69A8
+	.bss        start:0x00CB675C end:0x00CB69A4
 
 Black/Script.cpp:
 	.text       start:0x00685C30 end:0x00686F80
 	.rdata      start:0x008792E0 end:0x0087930C
 	.data       start:0x00B2F4A4 end:0x00B2F52C
-	.bss        start:0x00CB69A8 end:0x00CB69C4
+	.bss        start:0x00CB69A4 end:0x00CB69C4
 
 Black/ScriptCamera.cpp:
 	.text       start:0x00686F80 end:0x00689850
@@ -2002,14 +2002,28 @@ Black/ScriptGFX.cpp:
 Black/ScriptHighlight.cpp:
 	.text       start:0x006A2EA0 end:0x006A4610
 	.rdata      start:0x0087939C end:0x00879C74
-	.data       start:0x00B43768 end:0x00B43AA0
+	.data       start:0x00B43768 end:0x00B4378C
 	.bss        start:0x00CB7120 end:0x00CB7578
+
+Black/ScriptInterface.cpp:
+	.text       start:0x006A4610 end:0x006A5220
+	.CRT$XCU    start:0x008F6FF8 end:0x008F6FFC align:4
+	.data       start:0x00B4378C end:0x00B437EA
+	.bss        start:0x00CB7578 end:0x00CB757C
+
+Black/ScriptMagic.cpp:
+	.text       start:0x006A5220 end:0x006A6500
+	.rdata      start:0x00879C74 end:0x00879C84
+	.CRT$XCU    start:0x008F6FFC end:0x008F7004 align:4
+	.data       start:0x00B437EC end:0x00B4387E
+	.bss        start:0x00CB7580 end:0x00CB7588
 
 Black/ScriptManage.cpp:
 	.text       start:0x006A6500 end:0x006A6F60
-	.rdata      start:0x00879C74 end:0x00879C94
+	.rdata      start:0x00879C84 end:0x00879C94
 	.CRT$XCU    start:0x008F7004 end:0x008F7010 align:4
-	.bss        start:0x00CB7578 end:0x00CB9D9C
+	.data       start:0x00B43880 end:0x00B43AA0
+	.bss        start:0x00CB7590 end:0x00CB9D9C
 
 Black/ScriptMarker.cpp:
 	.text       start:0x006A6F60 end:0x006A8C80

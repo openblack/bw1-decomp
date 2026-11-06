@@ -36,12 +36,26 @@ class Object;
 struct Leash;
 struct LiquidParticleGroup;
 
+struct GInterfaceLimits
+{
+	uint8_t Inactive : 1;
+	uint8_t OnlyInteractWithHighlights : 1;
+	uint8_t NoEmptyHandApply : 1;
+
+	// BW1W120 inlined BW1M119 inlined
+	void Clear() { *(uint8_t*)this = 0; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetOnlyInteractWithHighlights() { OnlyInteractWithHighlights = 1; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetNoEmptyHandApply() { NoEmptyHandApply = 1; }
+};
+
 class GInterface : public GameThingWithPos
 {
 public:
 	// BW1W120 005d05f0 BW1M119 01360150
 	void                 Validate();
-	uint32_t             field_0x28;
+	GInterfaceLimits     Limits;
 	LiquidParticleGroup* liquid_particle_group;
 	GInterfaceFlags      flags;
 	int                  ActionState;
@@ -92,8 +106,8 @@ public:
 	uint32_t                field_0x41c;
 	uint32_t                field_0x420;
 	uint32_t                field_0x424;
-	uint32_t                field_0x428;
-	uint32_t                field_0x42c;
+	int                     MouseX;
+	int                     MouseY;
 	GInterfaceMessageBuffer MessageBuffers; /* 0x430 */
 	int                     field_0x444;
 	int                     field_0x448;
@@ -101,11 +115,9 @@ public:
 	uint32_t                field_0x450;
 	uint32_t                field_0x454;
 	uint32_t                field_0x458;
-	BaseInfo                field_0x45c;
-	uint32_t                field_0x468;
-	uint32_t                field_0x46c;
-	uint32_t                field_0x470;
-	uint32_t                field_0x474;
+	BaseInfo                RClickedObject; /* 0x45c */
+	uint32_t                RClickedObjectTurn;
+	MapCoords               LastRClickedPos; /* 0x46c */
 	uint32_t                field_0x478;
 
 	// Override methods
@@ -150,8 +162,14 @@ public:
 	MapCoords& GetHandRenderCollidePos() { return interface_collide.pos; }
 	// BW1W120 005d8a10 BW1M119 0136f240
 	void StartImmersion(IMMERSION_EFFECT_TYPE type, unsigned long iterations);
+	// BW1W120 005d8a80 BW1M119 0136f1a0
+	void StopImmersion(IMMERSION_EFFECT_TYPE type);
 	// BW1W120 005d8af0 BW1M119 0136f110
 	void StopAllImmersion();
+	// BW1W120 005d36d0 BW1M119 01365f00
+	void SetRClickedObject(Object* object);
+	// BW1W120 005d0460 BW1M119 01360640
+	bool32_t IsLastRClickedPosNear(const MapCoords& pos, float distance) const;
 	// BW1W120 005d56c0 BW1M119 0107d9c0
 	void SendObjectDrawCollision(Object* object, float distance, LH3DObject* lh3d_object);
 	// BW1W120 005ced10 BW1M119 013629e0

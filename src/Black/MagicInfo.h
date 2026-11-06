@@ -19,6 +19,8 @@ class GSpellSeedInfo;
 class Object;
 class Spell;
 struct MapCoords;
+struct PSysProcessInfo;
+struct SpellCastData;
 
 class GMagicInfo : public GBaseInfo
 {
@@ -68,8 +70,16 @@ public:
 	const char* GetMagicInfoText() const;
 	// BW1W120 005fb400 BW1M119 013b6250
 	GSpellSeedInfo* GetSpellSeedInfo() const;
+	// BW1W120 005fb490 BW1M119 013b5f80
+	void Cast(const MapCoords& coords, GameThing* creator, SpellCastData* data, Spell** spell,
+	          const PSysProcessInfo& info) const;
+	// BW1W120 005fb520 BW1M119 013b5e00
+	void Cast(Object* object, GameThing* creator, SpellCastData* data, Spell** spell,
+	          const PSysProcessInfo& info) const;
 	// BW1W120 005fb680 BW1M119 013b5c30
 	GMagicEffectInfo* GetMagicEffectInfo() const;
+	// BW1W120 005fb800 BW1M119 013b5790
+	float GetCreateCost() const;
 	// BW1W120 inlined BW1M119 013b4610
 	MAGIC_TYPE GetMagicType() const { return MagicType; }
 	// BW1W120 005fb830 BW1M119 013b56b0

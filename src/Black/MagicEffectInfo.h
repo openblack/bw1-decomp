@@ -24,7 +24,7 @@ public:
 	uint32_t         field_0x68;
 	uint32_t         field_0x6c;
 	uint32_t         field_0x70;
-	float            field_0x74;
+	float            Life;
 	float            CostToCreate;
 	float            field_0x7c;
 	float            field_0x80;
@@ -92,7 +92,6 @@ public:
 	// BW1W120 inlined BW1M119 010d0ba0
 	static GMagicEffectInfo* GetInfo() { return Infos; }
 
-	// TODO(#377): The original declared this class in Effect.h.
 	// Out of line: LoadBinary at 0042d5e0, Load at 0042d570.
 #ifdef VERSION_BW1WCI
 	INFO_DATA_BLOCK(name, field_0x11c)
