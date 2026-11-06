@@ -46749,6 +46749,7 @@ _SecondsPerYear = .data:0x00DC1858; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00DC1968; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00DC1DC4; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00DC1DD0; // type:object size:0x4 scope:local
+_White = .data:0x00DC1DD4; // type:object size:0x4 scope:local
 _EighthScale = .data:0x00DC1DD8; // type:object size:0x4 scope:local
 _PI_OVER_2 = .data:0x00DC1DDC; // type:object size:0x4 scope:local
 ?Status@MPFEConnectionStatus@@2U1@A = .data:0x00DC1E00; // type:object size:0x4 scope:global

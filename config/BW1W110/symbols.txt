@@ -38627,6 +38627,7 @@ _g_CircleHugBlockPointValid = .data:0x00D2DCE9; // type:object size:0x1 scope:lo
 ?OOSChecksum@MPFEData@@2_KA = .data:0x00D2F5B0; // type:object size:0x8 scope:global
 ?MaxPlayers@MPFEChannelSelector@@2HA = .data:0x00D2F61C; // type:object size:0x4 scope:global
 ?Instance@MPFEChannelSelector@@2V1@A = .data:0x00D2F628; // type:object size:0x58 scope:global
+_SecondsPerYear = .data:0x00D2FAE8; // type:object size:0x4 scope:local
 _White = .data:0x00D2FAEC; // type:object size:0x4 scope:local
 _EighthScale = .data:0x00D2FAF0; // type:object size:0x4 scope:local
 _PI_OVER_2 = .data:0x00D2FAF4; // type:object size:0x4 scope:local
