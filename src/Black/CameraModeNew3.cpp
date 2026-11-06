@@ -191,8 +191,7 @@ static int Global_00c5b0e8;
 static int Global_00c5b0ec;
 // BW1W120 00c5b0f0
 static int Global_00c5b0f0;
-// BW1W120 00c5b0f4
-int ActiveTricons;
+int        CameraModeNew3::ActiveTricons;
 // BW1W120 00c5b100
 static Zoomer Global_00c5b100;
 // BW1W120 00c5e164
@@ -3961,7 +3960,7 @@ void ResetCameraModeNew3()
 	Global_00c5b0b4 = 0;
 	Global_00c5b0f0 = 0;
 	Global_00c5b100.SetPosition(0.0f);
-	ActiveTricons = 0;
+	CameraModeNew3::ActiveTricons = 0;
 	memset(Global_00c5b0d8, 0, sizeof(Global_00c5b0d8));
 	Global_00c5b0ac = 0.0f;
 }

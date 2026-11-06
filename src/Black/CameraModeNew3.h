@@ -150,6 +150,8 @@ public:
 	static LH3DTexture* ForceFieldTexture;
 	// BW1W120 00c5e154
 	static bool32_t EdgeScrollEnabled;
+	// BW1W120 00c5b0f4
+	static int ActiveTricons;
 
 	// Virtual methods
 

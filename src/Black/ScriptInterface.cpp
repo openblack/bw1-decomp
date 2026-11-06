@@ -5,6 +5,7 @@
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>  /* For LHSys */
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h> /* For LHSPrintf */
 
+#include "CameraModeNew3.h"
 #include "camerahelp.h"
 #include "ControlHand.h"
 #include "ControlMap.h"
@@ -17,9 +18,6 @@
 #endif
 #include "SaveGameRoom.h"
 #include "ScriptHighlight.h"
-
-// BW1W120 00c5b0f4
-extern int ActiveTricons;
 
 void GScript::GameThingClicked()
 {
@@ -291,7 +289,7 @@ void GScript::SetCitadelInteract()
 
 void GScript::GameWithinRotation()
 {
-	g_scriptDLL->PUSH((void*)ActiveTricons, VMType_BOOLEAN);
+	g_scriptDLL->PUSH((void*)CameraModeNew3::ActiveTricons, VMType_BOOLEAN);
 }
 
 void GScript::ScriptKeyDown()
