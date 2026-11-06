@@ -2892,7 +2892,7 @@ Black/WeatherThing.cpp:
 Black/Whale.cpp:
 	.text       start:0x00779830 end:0x0077DB00
 	.text$x     start:0x008AB720 end:0x008AB730 align:16
-	.rdata      start:0x00A1B478 end:0x00A1B4E0
+	.rdata      start:0x00A1B478 end:0x00A1B4FC
 	.xdata$x    start:0x00A3C628 end:0x00A3C680 align:4
 	.CRT$XCU    start:0x00A47AC8 end:0x00A47AEC align:4
 	.data       start:0x00CA58B8 end:0x00CA5B00
@@ -2900,7 +2900,7 @@ Black/Whale.cpp:
 
 Black/Wonder.cpp:
 	.text       start:0x0077DB00 end:0x0077DFF0
-	.rdata      start:0x00A1B4E0 end:0x00A1B504
+	.rdata      start:0x00A1B4FC end:0x00A1B504
 	.CRT$XCU    start:0x00A47AEC end:0x00A47AF8 align:4
 	.data       start:0x00CA5B00 end:0x00CA5B30
 	.bss        start:0x00E4CE48 end:0x00E4CE4C
