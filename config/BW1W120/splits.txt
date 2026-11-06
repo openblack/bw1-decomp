@@ -2486,8 +2486,9 @@ Black/ScriptGFX.cpp:
 Black/ScriptHighlight.cpp:
 	.text       start:0x00709580 end:0x0070AE90
 	.rdata      start:0x00942224 end:0x00942AFC
+	.rdata$r    start:0x009B8F10 end:0x009B8FC8
 	.CRT$XCU    start:0x009C7674 end:0x009C7688 align:4
-	.data       start:0x00C205B8 end:0x00C20928
+	.data       start:0x00C205B8 end:0x00C20614
 	.bss        start:0x00D96380 end:0x00D967E0
 
 Black/ScriptManage.cpp:

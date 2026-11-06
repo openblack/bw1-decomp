@@ -33,6 +33,9 @@ block_relocations:
   - source: 0x0081D786
   - source: 0x0081D7A1
   - source: 0x0081D93D
+# ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
+  - source: 0x0070E9D2
+  - source: 0x0070ED2D
 # LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
   - source: 0x00811157
   - source: 0x00811C98

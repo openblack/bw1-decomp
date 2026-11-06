@@ -341,7 +341,7 @@ public:
 	uint8_t                 field_0x59c[0x4028];
 	uint32_t                field_0x45c4;
 	uint32_t                NumHistoryEntries;
-	uint32_t                field_0x45cc;
+	uint32_t                CurrentScriptId;
 	uint32_t                field_0x45d0;
 	uint16_t                NumBanterSetsSent;
 	uint8_t                 field_0x45d6;
@@ -469,6 +469,8 @@ public:
 #endif
 	// BW1W120 005c8280 BW1M119 0135a370
 	void TriggerCategory(HELP_SET_CATEGORY category);
+	// BW1W120 005c8330 BW1M119 0135ab30
+	void SetBubbleProperties(Object* object, unsigned long script_id, DYK_CATEGORY category);
 	// BW1W120 005c86b0 BW1M119 0108b4f0
 	void ProcessConditions();
 	// BW1W120 005c8720 BW1M119 0135aca0

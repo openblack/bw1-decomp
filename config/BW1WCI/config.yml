@@ -7,6 +7,9 @@ splits: config/BW1WCI/splits.txt
 generate_imports: false
 
 block_relocations:
+# ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
+  - source: 0x0072436D
+  - source: 0x00724711
 # "tMM" of LHFile's Version.cpp LH_VERSION_END_TAG reads as a pointer into code.
   - source: 0x00C9F59C
 # libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in Creature Isle's larger image both read as pointers.

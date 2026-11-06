@@ -28,6 +28,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 inlined
+	float GetYAngle() const { return y_angle; }
 	// BW1W120 0063abc0 BW1M119 013e1fb0
 	float GetAltitudeFondation() const;
 	// BW1W120 0063afc0 BW1M119 inlined

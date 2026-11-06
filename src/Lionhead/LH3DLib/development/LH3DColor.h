@@ -10,6 +10,8 @@
 #define LH3D_COLOR_CHANNEL_MAX 0xff
 #define LH3D_COLOR_RGB_MASK    0xffffff
 
+#define LH3D_COLOR_ARGB(alpha, red, green, blue) (((alpha) << 24) | ((red) << 16) | ((green) << 8) | (blue))
+
 // Halves each colour channel and sets the alpha to 0x20.
 #define LH3D_HALF_COLOR(color) ((((color) & 0xfefefe) | 0x40000000) >> 1)
 
