@@ -1010,7 +1010,7 @@ int LHScreen::SetMSOffset()
 // BW1W120 007de930 BW1M119 0114cc60 (LHCombined Release)
 int LHScreen::SaveBitmap()
 {
-	char fileName[260];
+	char fileName[MAX_PATH];
 	sub_8A5440(fileName);
 
 	int count = 1;

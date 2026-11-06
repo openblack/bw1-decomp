@@ -388,7 +388,7 @@ bool32_t GGame::Init()
 		else
 		{
 			ServerLandscapeMap serverMap(NULL);
-			char               mapPath[0x104];
+			char               mapPath[MAX_PATH];
 			sprintf(mapPath, ".\\Online Maps\\%s.map", mapName ? mapName : "mpm_2p_1");
 			serverMap.LoadMap(mapPath);
 			serverMap.SaveLND(".");
@@ -429,7 +429,7 @@ bool32_t GGame::Init()
 		break;
 	}
 	case 4: {
-		char mapPath[0x104];
+		char mapPath[MAX_PATH];
 		strcpy(mapPath, WCHAR2CHAR(FrontEnd::SkirmishDialog->MapPath));
 		g_game->StartPlaygroundGame(mapPath);
 		SkirmishGame = true;
@@ -581,7 +581,7 @@ void GGame::StartPlaygroundGame(char* path)
 // BW1W120 005538e0 BW1M119 010e8430
 void GGame::OnNewGame()
 {
-	char path[260];
+	char path[MAX_PATH];
 	path_creator.CheckAndRecreateSaveGamePaths();
 	path_creator.GetCurrentGamePath(path);
 	ChallengeRoom::CreateChallengeFiles(path);
