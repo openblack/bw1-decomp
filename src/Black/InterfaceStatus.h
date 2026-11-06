@@ -113,16 +113,14 @@ public:
 	MapCoords& GetHandCollide() { return Pos; }
 	// BW1W120 inlined BW1M119 01099000
 	LHPoint& GetHandPos() { return ReportedHandPos; }
-	// BW1W120 005cedc0 BW1M119 01362540
-	void SetActive(int param_1);
-	// BW1W120 005d29c0 BW1M119 01029660
-	void ResetActionState();
+	// BW1W120 inlined BW1M119 01077a90
+	bool ObjectHeldInHand() { return HandHoldingSomething; }
 	// BW1W120 005dba00 BW1M119 01376eb0
 	void SetToZero(GInterface* param_1);
 	// BW1W120 005dc130 BW1M119 01077b40
 	Object* GetFirstObjectInCurrentHand();
 	// BW1W120 005dc2f0 BW1M119 0107d890
-	bool IsSpaceInHands();
+	bool32_t IsSpaceInHands();
 	// BW1W120 005dc830 BW1M119 01096240
 	SpellSeed* GetSpellSeedInMagicHand();
 	// BW1W120 005dc890 BW1M119 0107d920

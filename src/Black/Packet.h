@@ -11,6 +11,8 @@
 // memory handshake are declared; original enumerator names are unrecovered.
 enum PACKET_TYPE
 {
+	PACKET_TYPE_DROP = 0x14,
+	PACKET_TYPE_END_LOCKED_SELECT = 0x1c,
 	PACKET_TYPE_CLOSE_LESSON_CHOOSER = 0x38,
 	PACKET_TYPE_CHOOSE_LESSON = 0x39,
 	PACKET_TYPE_PREVIOUS_LESSON_ACTION = 0x42,

@@ -1317,10 +1317,16 @@ Black/Interface.cpp:
 	.data       start:0x00BE0F2C end:0x00BE1DE4
 
 Black/InterfaceAction.cpp:
-	.text       start:0x005CBDB0 end:0x005D0C90
-	.rdata      start:0x0091AAE8 end:0x0091AB18
-	.CRT$XCU    start:0x009B68B8 end:0x009B68FC align:4
-	.bss        start:0x00D06BA0 end:0x00D07070
+	.text       start:0x005CBDB0 end:0x005CFD10
+	.rdata      start:0x0091AAE8 end:0x0091AB00
+	.CRT$XCU    start:0x009B68B8 end:0x009B68E0 align:4
+	.bss        start:0x00D06B38 end:0x00D0704C
+
+Black/InterfaceActionStates.cpp:
+	.text       start:0x005CFD10 end:0x005D0C90
+	.rdata      start:0x0091AB00 end:0x0091AB18
+	.CRT$XCU    start:0x009B68E0 end:0x009B68FC align:4
+	.bss        start:0x00D0704C end:0x00D07070
 
 Black/InterfaceCollide.cpp:
 	.text       start:0x005D0C90 end:0x005D3620
