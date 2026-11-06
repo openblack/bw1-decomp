@@ -2232,11 +2232,8 @@ Black/ScriptManage.cpp:
 	.CRT$XCU    start:0x00A3709C end:0x00A370B4 align:4
 
 Black/ScriptMarker.cpp:
-	.text       start:0x007280D0 end:0x0072C8C0
-	.rdata      start:0x0099B6A0 end:0x009B5604
-	.CRT$XCU    start:0x00A370B4 end:0x00A370D8 align:4
-	.data       start:0x00C93F84 end:0x00C941F4
-	.bss        start:0x00E203E4 end:0x00E20414
+	.text       start:0x007280D0 end:0x00728210
+	.data       start:0x00C93F88 end:0x00C93FA6
 
 Black/ScriptTimer.cpp:
 	.text       start:0x0072C8C0 end:0x0072CBB0

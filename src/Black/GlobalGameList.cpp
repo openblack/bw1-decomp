@@ -207,9 +207,9 @@ void GlobalGameLists::ClearMap()
 	}
 	GScript::DeleteAllScriptCreatedGameThings();
 	ScriptHighlights.ToBeDeletedAvailable();
-	for (GameThingWithPos* thing = game_thing_with_pos.GetHead(); thing;)
+	for (GameThingWithPos* thing = ScriptMarkers.GetHead(); thing;)
 	{
-		GameThingWithPos* next = game_thing_with_pos.FindNext(thing);
+		GameThingWithPos* next = ScriptMarkers.FindNext(thing);
 		thing->ToBeDeleted(0);
 		thing = next;
 	}
@@ -297,7 +297,7 @@ bool32_t GlobalGameLists::Save(GameOSFile& file)
 	file.WriteSafe(InfluenceRingList);
 	file.WriteSafe(WeatherThings);
 	file.WriteSafe(ScriptHighlights);
-	file.WriteSafe(game_thing_with_pos);
+	file.WriteSafe(ScriptMarkers);
 	file.WriteSafe(streams);
 	file.WriteSafe(waypoints);
 	file.WriteSafe(footpaths);
@@ -354,7 +354,7 @@ bool32_t GlobalGameLists::Load(GameOSFile& file)
 	file.ReadSafe(InfluenceRingList);
 	file.ReadSafe(WeatherThings);
 	file.ReadSafe(ScriptHighlights);
-	file.ReadSafe(game_thing_with_pos);
+	file.ReadSafe(ScriptMarkers);
 	file.ReadSafe(streams);
 	file.ReadSafe(waypoints);
 	file.ReadSafe(footpaths);

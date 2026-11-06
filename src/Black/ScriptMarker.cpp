@@ -1,22 +1,31 @@
-#include "MapCellConstants.h"
-#include "CreatureAttitudeConstants.h"
-#include "GameTimeConstants.h"
 #include "ScriptMarker.h"
 
-#include "ColourConstants.h" /* For White */
-#include "CellSize.h"
+#include "Game.h"
+
+ScriptMarker* ScriptMarker::Create(const MapCoords& coords)
+{
+	ScriptMarker* marker = new (FILEPATH, 11) ScriptMarker(coords);
+	GGame::g_game->GameLists.ScriptMarkers.Add(marker);
+	return marker;
+}
 
 SCRIPT_OBJECT_TYPE ScriptMarker::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_MARKER;
 }
 
-bool32_t ScriptMarker::Load(GameOSFile& file)
+void ScriptMarker::ToBeDeleted(bool32_t delete_now)
 {
-	return GameThingWithPos::Load(file) != false;
+	GGame::g_game->GameLists.ScriptMarkers.Remove(this);
+	GameThingWithPos::ToBeDeleted(delete_now);
 }
 
 bool32_t ScriptMarker::Save(GameOSFile& file)
 {
 	return GameThingWithPos::Save(file) != false;
+}
+
+bool32_t ScriptMarker::Load(GameOSFile& file)
+{
+	return GameThingWithPos::Load(file) != false;
 }
