@@ -1402,7 +1402,7 @@ void GScript::SetCreatureAutoScale()
 	if (thing != NULL)
 #endif
 	{
-		((Creature*)thing)->AutoScale = autoScale;
+		((Creature*)thing)->AutoScaleEnabled = autoScale;
 		((Creature*)thing)->AutoScaleValue = scale;
 	}
 }

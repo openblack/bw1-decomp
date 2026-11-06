@@ -12,6 +12,7 @@
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 #include <re_common.h>                               /* For bool32_t */
 
+#include "GameReturns.h"          /* For enum GAME_RETURNS */
 #include "GameThingWithPos.h"     /* For struct GameThingWithPos */
 #include "LHPTR.h"                /* For class LHPTR */
 #include "MapCoords.h"            /* For struct MapCoords */
@@ -88,13 +89,6 @@ enum OBJECT_TASTINESS
 {
 	OBJECT_TASTINESS_NONE = 0,
 	OBJECT_TASTINESS_LIVING = 2
-};
-
-enum OBJECT_APPLY_RESULT
-{
-	OBJECT_APPLY_RESULT_NONE = 0,
-	OBJECT_APPLY_RESULT_RESOURCE_TAKEN = 3,
-	OBJECT_APPLY_RESULT_THROWN = 0x16
 };
 
 struct PhysicsInitialisation
@@ -527,7 +521,7 @@ public:
 	// BW1W120 00402940 BW1M119 010a2650
 	virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* status, Object* param_2) { return 0; }
 	// BW1W120 00402950 BW1M119 010a2c30
-	virtual uint32_t InterfaceGiveObject(GInterfaceStatus* status, Object* object);
+	virtual GAME_RETURNS InterfaceGiveObject(GInterfaceStatus* status, Object* object);
 	// BW1W120 00402960 BW1M119 010a2c90
 	virtual uint32_t InterfaceValidToInteractAsMapCoordsObject(GInterfaceStatus* status) { return 0; }
 	// BW1W120 00402970 BW1M119 010a2d00

@@ -129,7 +129,7 @@ public:
 	// BW1W120 0060fc50 BW1M119 01086610
 	virtual void SetSpeed(int new_speed);
 	// BW1W120 00473e40 BW1M119 0107c070
-	virtual void SetTowardsAngle(uint16_t angle);
+	virtual void SetTowardsAngle(uint16_t angle) { SetGameAngle(angle); }
 	// BW1W120 0060aee0 BW1M119 013cbad0
 	virtual int MoveTo3D();
 	// BW1W120 0060bc40 BW1M119 013cb7e0

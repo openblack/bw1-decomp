@@ -455,9 +455,9 @@ uint32_t MobileObject::ApplyThisToObject(GInterfaceStatus* status, Object* targe
 {
 	if (target != NULL && target->DeleteObjectAndTakeResource(this, status))
 	{
-		return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+		return GAME_RETURNS_RESOURCE_TAKEN;
 	}
-	return OBJECT_APPLY_RESULT_NONE;
+	return GAME_RETURNS_NONE;
 }
 
 int MobileObject::GetDefaultResource()
@@ -625,7 +625,7 @@ uint32_t FieldCrop::ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoord
                                         GestureSystemPacketData* packet)
 {
 	ThrowObjectFromHand(status, false);
-	return OBJECT_APPLY_RESULT_THROWN;
+	return GAME_RETURNS_REMOVE_FROM_HAND;
 }
 
 bool32_t FieldCrop::CanBecomeAPhysicsObject()
@@ -666,9 +666,9 @@ uint32_t FieldCrop::ApplyThisToObject(GInterfaceStatus* status, Object* target, 
 {
 	if (target != NULL && target->DeleteObjectAndTakeResource(this, status))
 	{
-		return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+		return GAME_RETURNS_RESOURCE_TAKEN;
 	}
-	return OBJECT_APPLY_RESULT_NONE;
+	return GAME_RETURNS_NONE;
 }
 
 SCRIPT_OBJECT_TYPE Poo::GetScriptObjectType()

@@ -9,7 +9,7 @@ uint32_t Mobile::ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& 
                                      GestureSystemPacketData* param_3)
 {
 	ThrowObjectFromHand(status, false);
-	return 0x16;
+	return GAME_RETURNS_REMOVE_FROM_HAND;
 }
 
 bool32_t Mobile::Save(GameOSFile& file)

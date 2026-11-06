@@ -810,8 +810,8 @@ void CameraModeNew3::DrawFightText()
 	{
 		return;
 	}
-	DrawCreatureFightStats(creature3d1->field_0x4aa8, creature3d1->field_0x4aac, creature1->name,
-	                       creature3d2->field_0x4aa8, creature3d2->field_0x4aac, creature2->name, 0xff);
+	DrawCreatureFightStats(creature3d1->FightHealth, creature3d1->FightStamina, creature1->name,
+	                       creature3d2->FightHealth, creature3d2->FightStamina, creature2->name, 0xff);
 }
 
 void __stdcall CameraModeNew3::tricondraw(void* param)
@@ -3401,10 +3401,10 @@ void CameraModeNew3::Update()
 		centre.y += (creature2->GetHeadHeight() + creature1->GetHeadHeight()) * 0.25f;
 		if (zoom != 0.0f)
 		{
-			FightDistance = (creature1->position.GetDistance2D(creature2->position) + creature1->field_0x5228 +
-			                 FightDistance * creature2->field_0x5228 + zoom * 0.3f -
-			                 creature1->position.GetDistance2D(creature2->position) - creature1->field_0x5228) /
-			                creature2->field_0x5228;
+			FightDistance = (creature1->position.GetDistance2D(creature2->position) + creature1->BodyRadius +
+			                 FightDistance * creature2->BodyRadius + zoom * 0.3f -
+			                 creature1->position.GetDistance2D(creature2->position) - creature1->BodyRadius) /
+			                creature2->BodyRadius;
 		}
 		if (FightDistance > FightMaxDistance)
 		{
@@ -3413,8 +3413,8 @@ void CameraModeNew3::Update()
 		FightDistance =
 			FightDistance > 0.0f ? (FightDistance < FightMaxDistance ? FightDistance : FightMaxDistance) : 0.0f;
 		Pitch0 = Pitch0 > (PI_F / 13) ? (Pitch0 < (HALF_PI_F - PI_F / 13) ? Pitch0 : HALF_PI_F - PI_F / 13) : PI_F / 13;
-		float   fightDistance = creature1->position.GetDistance2D(creature2->position) + creature1->field_0x5228 +
-		                        FightDistance * creature2->field_0x5228;
+		float   fightDistance = creature1->position.GetDistance2D(creature2->position) + creature1->BodyRadius +
+		                        FightDistance * creature2->BodyRadius;
 		float   fightYaw = Yaw0;
 		LHPoint direction = creature2->position - creature1->position;
 		float   heading = field_0x210.GetCurrentValue();

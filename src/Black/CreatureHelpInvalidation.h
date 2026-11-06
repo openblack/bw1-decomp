@@ -1,0 +1,12 @@
+#ifndef BW1_DECOMP_CREATURE_HELP_INVALIDATION_INCLUDED_H
+#define BW1_DECOMP_CREATURE_HELP_INVALIDATION_INCLUDED_H
+
+#include <stdint.h> /* For uint32_t */
+
+struct CreatureHelpInvalidation
+{
+	// BW1W120 00c82850 BW1M119 01aa0e64
+	static uint32_t LastTurn;
+};
+
+#endif /* BW1_DECOMP_CREATURE_HELP_INVALIDATION_INCLUDED_H */

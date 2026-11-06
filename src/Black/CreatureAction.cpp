@@ -443,16 +443,16 @@ MAGIC_TYPE CreatureImpressiveSpells::Spells[NUM_CREATURE_IMPRESSIVE_SPELLS] = {
 
 bool32_t Creature::IsHomeUnderConstruction(CreaturePlan& plan, CREATURE_ACTION action)
 {
-	if (HomeExists && !HasFinishedBuildingHome())
+	if (HomeFootPrint && !HasFinishedBuildingHome())
 	{
-		return TRUE;
+		return true;
 	}
-	return FALSE;
+	return false;
 }
 
 bool32_t Creature::HasNoHome(CreaturePlan& plan, CREATURE_ACTION action)
 {
-	return HomeExists == 0;
+	return HomeFootPrint == NULL;
 }
 
 int CreatureAgenda::ConstructSubActionsForExamineByPickingUp(unsigned long param_1)
@@ -699,7 +699,7 @@ int CreatureAgenda::ConstructSubActionsForExamineByLooking(unsigned long param_1
 
 int CreatureAgenda::ConstructSubActionsForFight(unsigned long param_1)
 {
-	creature->field_0x3b8 = 1;
+	creature->DevelopmentPhaseActionDone[DEVELOPMENT_PHASE_LEARN_TO_FIGHT] = true;
 	if (creature->mind->learning.NumTimesActionPerformed[CREATURE_FIGHT] == 0)
 	{
 		creature->mind->learning.field_0x1522c = -creature->alignment->Value;
@@ -710,34 +710,34 @@ int CreatureAgenda::ConstructSubActionsForFight(unsigned long param_1)
 	Creature* other = CurrentPlan.ObjectToActOn->GetPointer()->CastCreature();
 	if (other != NULL)
 	{
-		creature->GetCreature3D()->field_0x4aa8 = (creature->GetLife() + 1.0f) * 0.5f;
-		creature->GetCreature3D()->field_0x4aac = creature->physical->GetEnergy() - creature->physical->GetExhaustion();
-		CLAMP(creature->GetCreature3D()->field_0x4aac, 0.0f, 1.0f);
-		other->GetCreature3D()->field_0x4aa8 = (other->GetLife() + 1.0f) * 0.5f;
-		other->GetCreature3D()->field_0x4aac = other->physical->GetEnergy() - other->physical->GetExhaustion();
-		CLAMP(other->GetCreature3D()->field_0x4aac, 0.0f, 1.0f);
+		creature->GetCreature3D()->FightHealth = (creature->GetLife() + 1.0f) * 0.5f;
+		creature->GetCreature3D()->FightStamina = creature->physical->GetEnergy() - creature->physical->GetExhaustion();
+		CLAMP(creature->GetCreature3D()->FightStamina, 0.0f, 1.0f);
+		other->GetCreature3D()->FightHealth = (other->GetLife() + 1.0f) * 0.5f;
+		other->GetCreature3D()->FightStamina = other->physical->GetEnergy() - other->physical->GetExhaustion();
+		CLAMP(other->GetCreature3D()->FightStamina, 0.0f, 1.0f);
 		if (creature != NULL)
 		{
 			if (creature->GetPlayer() != NULL && creature->GetPlayer()->type == PLAYER_TYPE_HUMAN)
 			{
-				creature->GetCreature3D()->field_0x579c = 1;
+				creature->GetCreature3D()->AutoFightStatus = FIGHT_CONTROL_AI_NOT_FOR_A_FEW_SECONDS;
 			}
 			else
 			{
-				creature->GetCreature3D()->field_0x579c = 2;
+				creature->GetCreature3D()->AutoFightStatus = FIGHT_CONTROL_AI_FULL_ON;
 			}
 		}
 		else
 		{
-			creature->GetCreature3D()->field_0x579c = 2;
+			creature->GetCreature3D()->AutoFightStatus = FIGHT_CONTROL_AI_FULL_ON;
 		}
 		if (other->GetPlayer() != NULL && other->GetPlayer()->type == PLAYER_TYPE_HUMAN)
 		{
-			other->GetCreature3D()->field_0x579c = 1;
+			other->GetCreature3D()->AutoFightStatus = FIGHT_CONTROL_AI_NOT_FOR_A_FEW_SECONDS;
 		}
 		else
 		{
-			other->GetCreature3D()->field_0x579c = 2;
+			other->GetCreature3D()->AutoFightStatus = FIGHT_CONTROL_AI_FULL_ON;
 		}
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_REQUEST_PARTNER,
 		                             new (FILEPATH, CREATURE_ACTION_LINE(616))
@@ -2440,7 +2440,7 @@ int CreatureAgenda::ConstructSubActionsForCreateHome(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForBuildHome(unsigned long param_1)
 {
 	LHMatrix matrix;
-	creature->field_0x11f4->GetExtraPos(creature->field_0x1210, &matrix);
+	creature->HomeObject->GetExtraPos(creature->HomeBuildingObjects.count, &matrix);
 	LHPoint pos(matrix._41, matrix._42, matrix._43);
 	pos.y = LH3DIsland::GetAltitude(LH3DMapCoords(pos.x, pos.z));
 	LHPoint homePos;
@@ -3115,10 +3115,10 @@ int CreatureAgenda::ConstructSubActionsForRunRaceWithFriend(unsigned long param_
 		GLandscape::ConvertMapCoordToLandscapePoint(finish, myFinish);
 		LHPoint otherFinish;
 		GLandscape::ConvertMapCoordToLandscapePoint(finish, otherFinish);
-		myStart.z += 2.5f * creature->physical->Creature3d->field_0x5228;
-		otherStart.z -= 2.5f * other->physical->Creature3d->field_0x5228;
-		myFinish.z += 2.5f * creature->physical->Creature3d->field_0x5228;
-		otherFinish.z -= 2.5f * other->physical->Creature3d->field_0x5228;
+		myStart.z += 2.5f * creature->physical->Creature3d->BodyRadius;
+		otherStart.z -= 2.5f * other->physical->Creature3d->BodyRadius;
+		myFinish.z += 2.5f * creature->physical->Creature3d->BodyRadius;
+		otherFinish.z -= 2.5f * other->physical->Creature3d->BodyRadius;
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_REQUEST_PARTNER,
 		                             new (FILEPATH, CREATURE_ACTION_LINE(2367))
 		                                 SubArgumentObjectAndInteger(friendBelief, 3),

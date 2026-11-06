@@ -105,20 +105,20 @@ bool32_t Creature::Save(GameOSFile& file)
 		}
 		file.WriteSafe(ReceiveSpell->queueData);
 		file.WriteIt(mind->debug.IsProcessing);
-		file.WriteIt(field_0x374);
-		file.WriteIt(field_0x378);
+		file.WriteIt(MaxBigSize);
+		file.WriteIt(MaxSmallSize);
 		file.WriteIt(field_0x37c);
 		if (ReceiveSpell->data[CREATURE_RECEIVE_SPELL_INVISIBLE].State == 0)
 		{
-			field_0x12b8 = 0;
-			field_0x12b4 = 0;
-			field_0x12b0 = 0;
+			FizzSpeed = 0.0f;
+			FizzDest = 0.0f;
+			FizzCurr = 0.0f;
 		}
-		file.WriteIt(field_0x12ac);
-		file.WriteIt(field_0x12b0);
-		file.WriteIt(field_0x12b4);
-		file.WriteIt(field_0x12b8);
-		file.WriteIt(field_0x12bc);
+		file.WriteIt(FizzLocked);
+		file.WriteIt(FizzCurr);
+		file.WriteIt(FizzDest);
+		file.WriteIt(FizzSpeed);
+		file.WriteIt(FrozAmount);
 		file.WriteIt(IgnoredByVillagers);
 		file.WritePtr(field_0x1078);
 		file.WritePtr(field_0x1084);
@@ -132,7 +132,7 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WritePtr(arena);
 		file.WriteIt(HomePos);
 		LH3DCreature* creature3d = GetCreature3D();
-		file.WriteIt((uint32_t&)creature3d->field_0x4aa8);
+		file.WriteIt((uint32_t&)creature3d->FightHealth);
 		uint32_t autoFightStatus = GetAutoFightStatus();
 		file.WriteIt(autoFightStatus);
 		file.WriteSafe(ControlledVillagers);
@@ -149,7 +149,7 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WriteIt((uint32_t&)alignment);
 		uint32_t size = physical->field_0x48;
 		file.WriteIt(size);
-		file.WriteIt(AutoScale);
+		file.WriteIt(AutoScaleEnabled);
 		file.WriteIt(AutoScaleValue);
 		SubActionAgendaSaved = (Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) != 0 || IsFighting() ||
 		                       ControlledVillagers.count != 0;
@@ -307,14 +307,14 @@ bool32_t Creature::Load(GameOSFile& file)
 		{
 			file.ReadIt(mind->debug.IsProcessing);
 		}
-		file.ReadIt(field_0x374);
-		file.ReadIt(field_0x378);
+		file.ReadIt(MaxBigSize);
+		file.ReadIt(MaxSmallSize);
 		file.ReadIt(field_0x37c);
-		file.ReadIt(field_0x12ac);
-		file.ReadIt(field_0x12b0);
-		file.ReadIt(field_0x12b4);
-		file.ReadIt(field_0x12b8);
-		file.ReadIt(field_0x12bc);
+		file.ReadIt(FizzLocked);
+		file.ReadIt(FizzCurr);
+		file.ReadIt(FizzDest);
+		file.ReadIt(FizzSpeed);
+		file.ReadIt(FrozAmount);
 		file.ReadIt(IgnoredByVillagers);
 		file.ReadPtr((GameThing**)&field_0x1078);
 		file.ReadPtr((GameThing**)&field_0x1084);
@@ -328,7 +328,7 @@ bool32_t Creature::Load(GameOSFile& file)
 		file.ReadPtr((GameThing**)&arena);
 		file.ReadIt(HomePos);
 		LH3DCreature* creature3d = GetCreature3D();
-		file.ReadIt((uint32_t&)creature3d->field_0x4aa8);
+		file.ReadIt((uint32_t&)creature3d->FightHealth);
 		uint32_t autoFightStatus;
 		file.ReadIt(autoFightStatus);
 		SetAutoFightStatus(autoFightStatus);
@@ -345,7 +345,7 @@ bool32_t Creature::Load(GameOSFile& file)
 		float size;
 		file.ReadIt(size);
 		physical->field_0x48 = size;
-		file.ReadIt(AutoScale);
+		file.ReadIt(AutoScaleEnabled);
 		file.ReadIt(AutoScaleValue);
 		file.ReadIt(SubActionAgendaSaved);
 		if (SubActionAgendaSaved)
@@ -653,7 +653,7 @@ void CreatureMental::SaveMind(Archive& archive)
 	}
 	for (i = 0; i < ARRAY_SIZE(creature.Get()->Tattoos); i++)
 	{
-		archive << (unsigned long)creature.Get()->Tattoos[i];
+		archive << (unsigned long&)creature.Get()->Tattoos[i];
 	}
 	if (creature.Get()->TattooData != NULL)
 	{
@@ -670,10 +670,10 @@ void CreatureMental::SaveMind(Archive& archive)
 	for (i = 0; i < OBJECT_TYPE_LAST; i++)
 	{
 		archive << (unsigned long)learning.HeldObjectActionCounts[i];
-		archive << (unsigned long)learning.field_0x15984[i];
+		archive << (unsigned long)learning.ObjectEatenCounts[i];
 		archive << (unsigned long)learning.field_0x15a38[i];
 	}
-	archive << creature.Get()->GetCreature3D()->field_0x4aa8;
+	archive << creature.Get()->GetCreature3D()->FightHealth;
 	archive << learning.field_0x1522c;
 #ifndef VERSION_BW1W100
 	archive << (int)creature.Get()->ConfinedToObject;
@@ -992,7 +992,7 @@ void CreatureMental::LoadMind(Archive& archive)
 		for (i = 0; i < OBJECT_TYPE_LAST; i++)
 		{
 			archive >> (unsigned long&)learning.HeldObjectActionCounts[i];
-			archive >> (unsigned long&)learning.field_0x15984[i];
+			archive >> (unsigned long&)learning.ObjectEatenCounts[i];
 			if (MindVersion >= CREATURE_MIND_VERSION_OBJECT_COUNTS)
 			{
 				archive >> (unsigned long&)learning.field_0x15a38[i];
@@ -1001,7 +1001,7 @@ void CreatureMental::LoadMind(Archive& archive)
 	}
 	if (MindVersion >= CREATURE_MIND_VERSION_FIGHT_HEALTH)
 	{
-		archive >> creature.Get()->GetCreature3D()->field_0x4aa8;
+		archive >> creature.Get()->GetCreature3D()->FightHealth;
 	}
 	if (MindVersion >= CREATURE_MIND_VERSION_LESSON_FEEDBACK)
 	{
@@ -1089,11 +1089,11 @@ void CreaturePhysical::SaveBody(Archive& archive)
 		height = GGame::g_game->script->GetGlobalVariableValue("OriginalSizeOfMyCreature") * CREATURE_HEIGHT_TO_SIZE;
 		strength = GGame::g_game->script->GetGlobalVariableValue("OriginalStrengthOfMyCreature");
 	}
-	archive << (unsigned long)field_0x70;
+	archive << (unsigned long)NumGameTicksAlive;
 	archive << (unsigned long)Age;
 	archive << strength;
 	archive << Fatness;
-	archive << field_0x18;
+	archive << PreviousFatness;
 	archive << Energy;
 	archive << Itchiness;
 	archive << field_0x24;
@@ -1112,11 +1112,11 @@ void CreaturePhysical::LoadBody(Archive& archive)
 {
 	float strength;
 	float height;
-	archive >> (unsigned long&)field_0x70;
+	archive >> (unsigned long&)NumGameTicksAlive;
 	archive >> (unsigned long&)Age;
 	archive >> strength;
 	archive >> Fatness;
-	archive >> field_0x18;
+	archive >> PreviousFatness;
 	if (MindVersion < CREATURE_MIND_VERSION_BODY_AGE)
 	{
 		float unused;

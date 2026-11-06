@@ -104,7 +104,7 @@ CreatureLearning::CreatureLearning(Creature* creature)
 	for (int type = 0; type < OBJECT_TYPE_LAST; type++)
 	{
 		HeldObjectActionCounts[type] = 0;
-		field_0x15984[type] = 0;
+		ObjectEatenCounts[type] = 0;
 		field_0x15a38[type] = 0;
 	}
 }

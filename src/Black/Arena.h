@@ -29,7 +29,8 @@ public:
 	float              Radius;          /* 0x30 */
 	bool32_t           FightInProgress; /* 0x34 */
 	Creature*          Creatures[2];
-	uint8_t            field_0x40[0x8];
+	bool32_t           CreatedForFight;
+	uint32_t           field_0x44;
 	LHListNode<GArena> next;
 
 	// Override methods
@@ -58,6 +59,12 @@ public:
 
 	// BW1W120 inlined BW1M119 011ac8d0
 	Creature* GetCreature(unsigned long index) { return Creatures[index]; }
+	// BW1W120 00424b60 BW1M119 010af060
+	void Deactivate();
+	// BW1W120 null BW1M119 010af0b0
+	void Activate(Creature* creature_a, Creature* creature_b);
+	// BW1W120 00424d10 BW1M119 010173b0
+	static void DrawAll();
 	// BW1W120 00425060 BW1M119 010ae4c0
 	bool32_t IsCreatureInArena(Creature* creature);
 	// BW1W120 004250a0 BW1M119 010ae470

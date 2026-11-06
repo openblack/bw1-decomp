@@ -10,6 +10,7 @@
 #include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE */
 
 #include "BaseInfo.h"               /* For struct BaseInfo */
+#include "GameReturns.h"            /* For enum GAME_RETURNS */
 #include "GameThingWithPos.h"       /* For struct GameThingWithPos */
 #include "InterfaceActionState.h"   /* For enum INTERFACE_ACTION_STATE */
 #include "InterfaceCollide.h"       /* For struct GInterfaceCollide */
@@ -211,7 +212,7 @@ public:
 	// BW1W120 005d0690 BW1M119 0135ffe0
 	bool32_t IsLeaderInterface();
 	// BW1W120 005da100 BW1M119 013725b0
-	uint32_t ApplyChangesToHand(uint32_t ret, Object* object, const MapCoords* coords);
+	GAME_RETURNS ApplyChangesToHand(GAME_RETURNS ret, Object* object, const MapCoords* coords);
 	// BW1W120 005d95e0 BW1M119 0136f9b0
 	float GetLocalLeashAppliedForce();
 	// BW1W120 005d1010 BW1M119 01076e30

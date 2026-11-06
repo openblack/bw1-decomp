@@ -31,6 +31,10 @@ public:
 
 #define CREATURE_HEIGHT_TO_SIZE (1.0f / 15.0f)
 
+#define CREATURE_MAX_FATNESS_CHANGE_PER_TURN 0.01f
+
+#define CREATURE_MIN_MAX_ENERGY 1.0f
+
 class CreaturePhysical : public Base
 {
 public:
@@ -38,7 +42,7 @@ public:
 	float             strength;
 	float             Warmth;
 	float             Fatness;
-	float             field_0x18;
+	float             PreviousFatness;
 	float             Energy;
 	float             Itchiness;
 	uint16_t          field_0x24;
@@ -51,7 +55,7 @@ public:
 	float             field_0x38;
 	float             DefaultSpeedInMetres;
 	float             RunningSpeedInMetres;
-	uint32_t          field_0x44;
+	bool32_t          IsAvoidingObject;
 	float             field_0x48;
 	float             Illness;
 	int               EnvMapped;
@@ -59,7 +63,7 @@ public:
 	LH3DCreature*     Creature3d;
 	CreatureDamageMap DamageMap;
 	float             Size;
-	uint32_t          field_0x70;
+	uint32_t          NumGameTicksAlive;
 
 	// Override methods
 
@@ -73,6 +77,14 @@ public:
 	void SaveBody(Archive& archive);
 	// BW1W120 004e8ff0 BW1M119 0126bd40
 	void LoadBody(Archive& archive);
+	// BW1W120 004efb60 BW1M119 01279d40
+	void UpdateAttributesAfterPerformingAction(unsigned long action);
+	// BW1W120 004ef510 BW1M119 0127a010
+	void UpdateAttributesAsTimePasses(const CreatureInfo* info);
+	// BW1W120 004efc40 BW1M119 01279c20
+	void UpdateAttributesBeforeProcessingCreature3D(const CreatureInfo* info);
+	// BW1W120 004f0170 BW1M119 01279640
+	void ModifyStrength(float amount);
 	// BW1W120 004f0100 BW1M119 01279740
 	void SetStrength(float strength);
 	// BW1W120 004f0210 BW1M119 01279500
@@ -89,6 +101,8 @@ public:
 
 	// BW1W120 004ef4f0 BW1M119 0127a570
 	float GetUserSize();
+	// BW1W120 inlined BW1M119 011db0c0
+	uint32_t GetAge() { return Age; }
 	// BW1W120 004efc20 BW1M119 01279cd0
 	bool32_t IsKnackered(const CreatureInfo* info);
 	// BW1W120 004efc70 BW1M119 01279b30
@@ -97,6 +111,8 @@ public:
 	Object* GetObjectCarried() { return ObjectCarried; }
 	// BW1W120 inlined BW1M119 01509240
 	float GetEnergy() { return Energy; }
+	// BW1W120 inlined BW1M119 0128f490
+	float GetMaxEnergy() { return CREATURE_MIN_MAX_ENERGY > GetUserSize() ? CREATURE_MIN_MAX_ENERGY : GetUserSize(); }
 	// BW1W120 inlined BW1M119 inlined
 	void SetEnergy(float energy)
 	{

@@ -1886,7 +1886,7 @@ uint32_t Villager::ApplyThisToObject(GInterfaceStatus* status, Object* object, G
 	{
 		if (!totem->Site->IsBuilt() || !((uint8_t)((uint16_t)~((GameThingWithPos*)this)->Flags >> 14) & 1))
 		{
-			return 0x17;
+			return GAME_RETURNS_PLACE_ON_MAP;
 		}
 		float        value = GetSacrificeValue();
 		WorshipSite* site = totem->Site.Get();
@@ -1965,7 +1965,7 @@ uint32_t Villager::ApplyThisToObject(GInterfaceStatus* status, Object* object, G
 			spinner->Init(point, CHAR2WCHAR(text), LH3DColor(0xff, 0, 0));
 		}
 		ToBeDeleted(0);
-		return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+		return GAME_RETURNS_RESOURCE_TAKEN;
 	}
 
 	MagicTeleport* teleport = dynamic_cast<MagicTeleport*>(object);

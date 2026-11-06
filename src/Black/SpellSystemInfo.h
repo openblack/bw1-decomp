@@ -14,7 +14,9 @@ class Base;
 class GSpellSystemInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0x3c];
+	uint8_t  field_0x10[0x18];
+	uint32_t SpecialMoveGesture;
+	uint8_t  field_0x2c[0x20];
 
 	// Override methods
 
@@ -34,7 +36,7 @@ public:
 	static GSpellSystemInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in SpellSeedInfo.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(field_0x10, field_0x2c)
 	INFO_ROOT_LOADERS("SpellSeedInfo.h", 21)
 };
 

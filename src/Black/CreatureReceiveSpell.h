@@ -23,6 +23,9 @@ struct CreatureReceiveSpell
 #ifdef VERSION_BW1WCI
 	// BW1WCI 005065f0 BW1MCI119 012a3d50
 	bool TryFinishAllSpells();
+#else
+	// BW1W120 004f4b60 BW1M119 01284fe0
+	bool TryFinishAllSpells();
 #endif
 	class TPerSpellData
 	{
@@ -62,6 +65,8 @@ struct CreatureReceiveSpell
 
 	// BW1W120 004f5240 BW1M119 01284020
 	CreatureReceiveSpell(Creature* creature);
+	// BW1W120 004f5310 BW1M119 01283f60
+	~CreatureReceiveSpell();
 
 	// Non-virtual methods
 
@@ -71,6 +76,10 @@ struct CreatureReceiveSpell
 	bool32_t IsCreatureSpellActive(CREATURE_RECEIVE_SPELL_TYPE type);
 	// BW1W120 004f4c50 BW1M119 01284d30
 	void Draw();
+	// BW1W120 004f4c30 BW1M119 01284e30
+	void CtrGestureCloseDown();
+	// BW1W120 004f5340 BW1M119 01283ec0
+	void CtrGestureDelete();
 	// BW1W120 004f5e60 BW1M119 01282160
 	float GetPhysicalHeightToMentalSave();
 	// BW1W120 004f5ea0 BW1M119 01282090

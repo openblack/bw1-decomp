@@ -27,11 +27,6 @@ public:
 	float Value; /* 0x8 */
 	float ChangeThisTurn;
 
-	// Override methods
-
-	// BW1W120 004740e0 BW1M119 011e63d0
-	virtual ~GAlignment() {}
-
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined

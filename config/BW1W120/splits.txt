@@ -480,11 +480,11 @@ Black/CPUCheck.cpp:
 
 Black/Creature.cpp:
 	.text       start:0x00472A10 end:0x0047F140
-	.rdata      start:0x008CBF44 end:0x008CF074
+	.rdata      start:0x008CBF38 end:0x008CF074
 	.rdata$r    start:0x009A93A0 end:0x009A9910
 	.CRT$XCU    start:0x009C6330 end:0x009C6368 align:4
 	.data       start:0x009CF730 end:0x009D06EC
-	.bss        start:0x00C5FD20 end:0x00C64188
+	.bss        start:0x00C5F880 end:0x00C64188
 
 Black/Creature3D.cpp:
 	.text       start:0x0047F140 end:0x004916C0
@@ -804,14 +804,14 @@ Black/CreatureSelect.cpp:
 	.text       start:0x004F7140 end:0x004F8D20
 	.rdata      start:0x008D15CC end:0x008D1634
 	.CRT$XCU    start:0x009C6628 end:0x009C6658 align:4
-	.data       start:0x00BE0AB8 end:0x00BE64BC
+	.data       start:0x00BE0AB8 end:0x00BE0B98
 	.bss        start:0x00CADAD8 end:0x00CADB00
 
 Black/CreatureSubAction.cpp:
 	.text       start:0x004F8D20 end:0x004FF910
 	.rdata      start:0x008D1634 end:0x008D1654
 	.CRT$XCU    start:0x009C6658 end:0x009C6674 align:4
-	.data       start:0x00BE64BC end:0x00BE6588
+	.data       start:0x00BE0B98 end:0x00BE6588
 	.bss        start:0x00CADB00 end:0x00CADB10
 
 Black/CreatureSubActions.cpp:

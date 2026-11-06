@@ -5,20 +5,14 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
+#include "TattooInfo.h" /* For struct TattooInfo */
+
 #define FLYING_OBJECTS_LIST_SIZE 14
 
 // Forward Declares
 
+class Creature;
 struct LH3DTexture;
-
-struct TattooInfo
-{
-	uint8_t Type : 4;
-	uint8_t Slot : 4;
-	uint8_t Blue;
-	uint8_t Green;
-	uint8_t Red;
-};
 
 class GTattoo
 {
@@ -28,6 +22,13 @@ public:
 	// BW1W120 005df310 BW1M119 0137a190
 	static void Draw(long flip, long rotate, LH3DTexture* skin, float x, float y, float scale, long player,
 	                 TattooInfo* info, int index, unsigned char* data);
+};
+
+class CompressTattoo
+{
+public:
+	// BW1W120 005de010 BW1M119 0137c530
+	static uint32_t* Create(Creature* creature);
 };
 
 struct FlyingObjects

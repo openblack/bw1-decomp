@@ -11,16 +11,19 @@
 #include <chlasm/CreatureEnum.h>  /* For enum CREATURE_ACTION */
 #include <chlasm/Enum.h>          /* For enum CREATURE_DESIRES, enum EFFECT_TYPE, enum IMPRESSIVE_TYPE, enum REACTION */
 #include <chlasm/GStates.h>       /* For enum VILLAGER_STATES */
+#include <chlasm/HitRegions.h>    /* For enum FIGHT_CONTROL_AI */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
-#include <Lionhead/LHFile/ver3.0/LHFile.h>      /* For enum LH_FILE_RESULT */
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
-#include <re_common.h>                          /* For bool32_t */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LHFile/ver3.0/LHFile.h>        /* For enum LH_FILE_RESULT */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>   /* For struct LHLinkedList */
+#include <re_common.h>                            /* For bool32_t */
 
 #include "ClearAreaState.h"    /* For struct ClearAreaState */
-#include "CreatureHelp.h"      /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
+#include "CreatureHelp.h"      /* For struct CreatureHelpStack, struct CreatureHelpState */
 #include "CreaturePlan.h"      /* For CreatureActionsTried */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */
 #include "HandGlowType.h"      /* For enum HAND_GLOW_TYPE */
+#include "TattooInfo.h"        /* For struct TattooInfo */
 #include "Living.h"            /* For struct Living */
 #include "MapCoords.h"         /* For struct MapCoords */
 #include "MobileObject.h"      /* For struct MobileObject */
@@ -28,6 +31,59 @@
 // Forward Declares
 
 #define CREATURE_DEVELOPMENT_CONFINEMENT_RADIUS 12.0f
+#define CREATURE_MIN_IMPRESSIVE_SIZE            1.0f
+#define CREATURE_MAX_IMPRESSIVE_SIZE            4.0f
+#define CREATURE_MAX_FLYING_OBJECT_DAMAGE       100.0f
+#define CREATURE_BIG_SIZE_SCALE                 1.8f
+#define CREATURE_MAX_AUTO_SCALE_HEIGHT          2.0f
+#define CREATURE_EVIL_VICTORY_ALIGNMENT         -0.5f
+#define CREATURE_LIGHTBULB_REPEAT_TURNS         100
+#define CREATURE_MIN_WATER_SPELL_PROGRESS       0.6f
+#define CREATURE_LOW_LIFE                       0.4f
+#define CREATURE_LOW_LIFE_DESIRE_SECONDS        10.0f
+#define CREATURE_TOWN_ON_FIRE_RANGE             150.0f
+#define CREATURE_MUSIC_MOOD_ARGUMENT_SCALE      5.0f
+#define CREATURE_LIGHTBULB_SIZE_DIVISOR         10.0f
+#define CREATURE_LIGHTBULB_HEIGHT_ABOVE_HEAD    1.0f
+#define CREATURE_STUCK_SECONDS                  15.0f
+#define CREATURE_STUCK_SUPPRESS_SECONDS         60.0f
+#define CREATURE_FIGHT_IMPACT_EFFECT_SCALE      0.05f
+#define CREATURE_DOMINANCE_AGE_DIFFERENCE       10
+#define CREATURE_MILLISECONDS_PER_SECOND        1000
+#define CREATURE_NEW_AREA_SECONDS               60.0f
+#define CREATURE_FAR_FROM_HOME_DISTANCE         20.0f
+#define CREATURE_HOME_FINISHED_SIZE             6
+#define CREATURE_SPEECH_FLAG_NO_NAME            0x4
+#define CREATURE_SPEECH_DISPLAY_TIME            3.0f
+#define CREATURE_HOME_SIZE_SCALE                1.2f
+#define CREATURE_TELEPORT_DESTINATION_RADIUS    5.0f
+#define CREATURE_GESTURE_SIZE_SCALE             1.3f
+#define CREATURE_DEFENCE_MIN_SIZE               0.001f
+#define CREATURE_DEFENCE_MAX_SIZE               2.0f
+#define CREATURE_DEFENCE_SIZE_SCALE             1.5f
+#define CREATURE_PHYSICS_MASS                   1000.0f
+#define CREATURE_MIN_PHYSICS_IMPACT_DAMAGE      0.005f
+#define CREATURE_CUT_AREA_SCALE                 15.0f
+#define CREATURE_CUT_MIN_DISTANCE_SQUARED       0.01f
+#define CREATURE_MAX_CUTS                       7
+#define CREATURE_NICENESS_UPDATE_TURNS          600
+#define CREATURE_TIME_WARP_HEAL_SCALE           9600.0f
+#define CREATURE_VALUE_SPINNER_MAX_HEIGHT       30.0f
+#define CREATURE_VALUE_SPINNER_RISE_SPEED       5.0f
+#define CREATURE_SIGHT_DISTANCE                 10.0f
+#define CREATURE_MOVEMENT_DIRECTION_DISTANCE    10.0f
+#define CREATURE_FOOD_VALUE_PER_ENERGY_UNIT     1000.0f
+#define CREATURE_FACING_DIRECTION_OFFSET        2.5f
+#define CREATURE_SCARY_ALIGNMENT                -0.25f
+#define CREATURE_SIZE_TO_HEIGHT                 15.0f
+#define CREATURE_TYKE_MIMIC_DISTANCE            100.0f
+#define CREATURE_TYKE_DESIRE_SECONDS            30.0f
+#define CREATURE_MAX_EYE_LID_LEVEL              0.73f
+#define CREATURE_LONG_SUPPRESS_SECONDS          120.0f
+#define CREATURE_SHORT_SUPPRESS_SECONDS         60.0f
+#define CREATURE_RESTORE_HEALTH_AMOUNT          0.5f
+#define CREATURE_TIREDNESS_DIVISOR              1.3f
+#define CREATURE_ERROR_ANGLE_SCALE              (-56.0f)
 
 enum CREATURE_HEIGHT
 {
@@ -36,6 +92,20 @@ enum CREATURE_HEIGHT
 	CREATURE_HEIGHT_MEDIUM,
 	CREATURE_HEIGHT_BIG,
 	CREATURE_HEIGHT_LAST
+};
+
+enum CREATURE_PHYSICAL_PROBLEM
+{
+	CREATURE_PHYSICAL_PROBLEM_NO_ENERGY = 1,
+	CREATURE_PHYSICAL_PROBLEM_NO_LIFE = 3,
+	CREATURE_PHYSICAL_PROBLEM_EXHAUSTED = 5,
+};
+
+enum CREATURE_HAND_INTERACT_STATE
+{
+	CREATURE_HAND_INTERACT_STATE_NORMAL,
+	CREATURE_HAND_INTERACT_STATE_TURN_TO_FACE_CAMERA,
+	CREATURE_HAND_INTERACT_STATE_PLAY_LAST_DESIRE_ANIM
 };
 
 enum LEASH_CONTROL
@@ -73,21 +143,33 @@ class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 class LH3DCreature;
+struct LH3DJustFootPrint;
+struct LH3DMesh;
 struct MPFEStartGameData;
 class Villager;
 class LH3DObject;
 struct LH3DColor;
 struct LH3DSmoke;
 class LHOSFile;
-struct LHPoint;
 class LandscapeVortex;
 class MobileWallHug;
 class Object;
+class Pot;
+struct MusicMoodPacket;
 struct PSysProcessInfo;
 struct PhysOb;
 class PhysicsObject;
 struct RPHolder;
 class Reaction;
+struct SnapshotData
+{
+	float           Priority;
+	uint32_t        Age;
+	CREATURE_ACTION Action;
+
+	// BW1W120 inlined BW1M119 inlined
+	SnapshotData(float priority, uint32_t age, CREATURE_ACTION action) : Priority(priority), Age(age), Action(action) {}
+};
 class Spell;
 class Town;
 class Tree;
@@ -97,6 +179,9 @@ struct CreatureRecentTrees
 	Tree*    Trees[10];
 	uint32_t Index;
 	uint32_t Count;
+
+	// BW1W120 inlined BW1M119 inlined
+	CreatureRecentTrees() { Clear(); }
 
 	void Add(Tree* tree);
 	void Clear()
@@ -108,8 +193,17 @@ struct CreatureRecentTrees
 
 struct CreatureEmotionsForMusic
 {
-	uint32_t field_0x0;
-	uint32_t field_0x4;
+	float Mood;
+	float Fear;
+
+	// BW1W120 inlined BW1M119 inlined
+	CreatureEmotionsForMusic() { Clear(); }
+	// BW1W120 inlined BW1M119 011dbe00
+	void Clear()
+	{
+		Fear = 0.0f;
+		Mood = 0.0f;
+	}
 };
 
 #ifdef VERSION_BW1WCI
@@ -170,48 +264,44 @@ public:
 	static uint32_t CreatureActionIndex[0x40];
 #endif
 
-	char16_t                              name[0x40];
-	CreaturePhysical*                     physical;
-	CreatureMental*                       mind;
-	GAlignment*                           alignment;
-	uint32_t                              NumPeopleKilled;
-	uint32_t                              NumAnimalsKilled;
-	uint32_t                              NumCreaturesKilled;
-	uint32_t                              NumBattlesFought;
-	uint32_t                              NumBattlesWon;
-	uint32_t                              NumPoos;
-	uint32_t                              NumMushroomsEaten;
-	CreatureHelpState                     HelpState;
-	LHLinkedList<CreatureHelpStackEntry*> HelpStackEntries[0x2a];
-	CreatureReceiveSpell*                 ReceiveSpell;
+	char16_t              name[0x40];
+	CreaturePhysical*     physical;
+	CreatureMental*       mind;
+	GAlignment*           alignment;
+	uint32_t              NumPeopleKilled;
+	uint32_t              NumAnimalsKilled;
+	uint32_t              NumCreaturesKilled;
+	uint32_t              NumBattlesFought;
+	uint32_t              NumBattlesWon;
+	uint32_t              NumPoos;
+	uint32_t              NumMushroomsEaten;
+	CreatureHelpState     HelpState;
+	CreatureHelpStack     HelpStack;
+	CreatureReceiveSpell* ReceiveSpell;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x374;
 	uint32_t ci_field_0x378;
 #endif
-	uint32_t                 field_0x374;
-	uint32_t                 field_0x378;
-	uint8_t                  field_0x37c;
-	uint8_t                  field_0x37d;
-	uint8_t                  field_0x37e;
-	uint8_t                  field_0x37f;
-	LEASH_CONTROL            LeashControl;
-	bool32_t                 Fainted;
-	CreatureEmotionsForMusic EmotionsForMusic;
-	uint32_t                 field_0x390;
-	bool32_t                 HasPickedUpFromHand;
-	uint32_t                 field_0x398[0x8];
-	uint32_t                 field_0x3b8;
-	uint32_t                 field_0x3bc[0x3];
-	uint32_t                 field_0x3c8;
-	uint32_t                 field_0x3cc;
-	LHLinkedList<Creature*>  Friends;
-	ClearAreaState           ClearArea;
-	uint8_t                  field_0x404;
-	uint8_t                  field_0x405;
-	uint8_t                  field_0x406;
-	uint8_t                  field_0x407;
-	CreatureSubActionAgenda  SubActionAgenda;
-	bool32_t                 RemoteCreature;
+	float                        MaxBigSize;
+	float                        MaxSmallSize;
+	uint8_t                      field_0x37c;
+	uint8_t                      field_0x37d;
+	uint8_t                      field_0x37e;
+	uint8_t                      field_0x37f;
+	LEASH_CONTROL                LeashControl;
+	bool32_t                     Fainted;
+	CreatureEmotionsForMusic     EmotionsForMusic;
+	bool32_t                     DevelopmentPhaseActionDone[DEVELOPMENT_PHASE_LAST];
+	uint32_t                     field_0x3c8;
+	CREATURE_HAND_INTERACT_STATE BeforeHandInteractState;
+	LHLinkedList<Creature*>      Friends;
+	ClearAreaState               ClearArea;
+	uint8_t                      field_0x404;
+	uint8_t                      field_0x405;
+	uint8_t                      field_0x406;
+	uint8_t                      field_0x407;
+	CreatureSubActionAgenda      SubActionAgenda;
+	bool32_t                     RemoteCreature;
 #ifdef VERSION_BW1WCI
 	bool32_t CanDrop;
 	uint32_t ci_field_0x1068;
@@ -241,7 +331,7 @@ public:
 	int                     ActionPriorityUpdateIndex;
 	LH3DSmoke*              smoke;
 	GArena*                 arena;
-	uint32_t                field_0x10a4;
+	uint32_t                GameTurnOfLastSnapshot;
 	uint32_t                field_0x10a8;
 	bool32_t                FightStarted;
 	bool32_t                FightEnded;
@@ -252,10 +342,10 @@ public:
 	uint8_t                 SavedCreatureIndex;
 	uint8_t                 SavedPlayerNumber;
 	uint8_t                 field_0x10c6[0x6];
-	uint32_t                field_0x10cc;
+	Creature*               InCreatureHand;
 	uint32_t                field_0x10d0;
 	GameThingWithPos*       InteractingObject;
-	uint8_t                 field_0x10d8[0x10];
+	int                     StolenPowerUps[POWER_UP_TYPE_LAST + 1];
 	uint32_t                TurnsBeforeConsideringDecision;
 	uint32_t                field_0x10ec;
 	uint32_t                field_0x10f0;
@@ -265,13 +355,13 @@ public:
 	DANCE_INFO              LastImpressiveDanceType;
 	bool32_t                SubActionAgendaSaved;
 	bool32_t                LeashEnabled[LEASH_TYPE_LAST + 1];
-	uint32_t                field_0x1118;
-	uint32_t                field_0x111c;
-	uint32_t                field_0x1120;
+	bool32_t                Moving;
+	uint32_t                NumTurnsStuck;
+	CREATURE_ACTION         LastSuccessfulAction;
 	int                     GameTurn;
 	CreatureRecentTrees     RecentTrees;
 	bool32_t                CanDie;
-	bool32_t                AutoScale;
+	bool32_t                AutoScaleEnabled;
 	float                   AutoScaleValue;
 	MapCoords               field_0x1164;
 #ifdef VERSION_BW1WCI
@@ -279,7 +369,7 @@ public:
 	bool32_t Navigation;
 	bool32_t HasYoung;
 #endif
-	uint32_t                          Tattoos[0x8];
+	TattooInfo                        Tattoos[0x8];
 	uint32_t*                         TattooData;
 	CREATURE_DESIRES                  SavedPlanDesire;
 	CREATURE_ACTION                   SavedPlanAction;
@@ -292,7 +382,7 @@ public:
 	float                             NumTimesPerformedAction[SCRIPT_PERFORMED_ACTION_LAST];
 	Object*                           LastDroppedObject;
 	MapCoords                         DestPosBeforeTeleport;
-	MapCoords                         field_0x11d8;
+	LHPoint                           field_0x11d8;
 	GParticleContainer*               ParticleContainer0x11e4;
 	GameThing*                        field_0x11e8;
 	BookmarkGraphic*                  bookmark_graphic;
@@ -300,23 +390,21 @@ public:
 	uint8_t                           field_0x11f1;
 	uint8_t                           field_0x11f2;
 	uint8_t                           field_0x11f3;
-	LH3DObject*                       field_0x11f4;
-	uint32_t                          field_0x11f8;
-	uint32_t                          HomeExists;
+	LH3DObject*                       HomeObject;
+	LH3DMesh*                         field_0x11f8;
+	LH3DJustFootPrint*                HomeFootPrint;
 	MapCoords                         HomePos;
-	uint32_t                          field_0x120c;
-	uint32_t                          field_0x1210;
+	LHLinkedList<GameThingWithPos*>   HomeBuildingObjects;
 	MapCoords                         DestPos;
 	LHLinkedList<LHPoint*>            DebugPath;
 	char                              MindFileName[0x40];
 	DEVELOPMENT_PHASE                 DevelopmentPhase;
 	int                               GameTurnsInDevelopmentPhase;
-	uint32_t                          field_0x1270;
+	float                             HandOverCreatureLevel;
 	LHLinkedList<CreatureSpeechItem*> SpeechItems;
 	Bubble*                           bubble;
-	uint32_t                          field_0x1280;
-	uint32_t                          field_0x1284;
-	uint32_t                          field_0x1288;
+	LHLinkedList<SnapshotData*>       Snapshots;
+	uint32_t                          MaxSnapshots;
 	uint32_t                          ScriptAnim;
 	uint32_t                          ScriptAnimRepeats;
 #ifndef VERSION_BW1W100
@@ -330,14 +418,14 @@ public:
 	float    DistanceFromHome;
 #endif
 	bool32_t Trapped;
-	uint8_t  field_0x12ac;
+	bool     FizzLocked;
 	uint8_t  field_0x12ad;
 	uint8_t  field_0x12ae;
 	uint8_t  field_0x12af;
-	uint32_t field_0x12b0;
-	uint32_t field_0x12b4;
-	uint32_t field_0x12b8;
-	uint32_t field_0x12bc;
+	float    FizzCurr;
+	float    FizzDest;
+	float    FizzSpeed;
+	float    FrozAmount;
 	bool32_t IgnoredByVillagers;
 #ifndef VERSION_BW1W100
 	uint32_t field_0x12c4;
@@ -345,18 +433,18 @@ public:
 
 	// Override methods
 
-	// BW1W120 00474100 BW1M119 011e5f30
+	// BW1W120 00475170 BW1M119 011e5f30
 	virtual ~Creature();
 	// BW1W120 00474f00 BW1M119 011e6910
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00473f20 BW1M119 010a4810
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00473f30 BW1M119 011ea2d0
 	virtual void RemoveDance();
 	// BW1W120 00474090 BW1M119 011ea8b0
 	virtual bool32_t IsCreature(Creature* creature);
-	// BW1W120 00474080 BW1M119 inlined
-	virtual bool IsCreature_1();
+	// BW1W120 00474080 BW1M119 011ea8f0
+	virtual bool32_t IsCreature();
 	// BW1W120 004e4080 BW1M119 015edd20
 	virtual bool32_t IsCreatureNotTooNear(Creature* creature);
 	// BW1W120 0047b1f0 BW1M119 011dc080
@@ -392,7 +480,7 @@ public:
 	// BW1W120 0047b190 BW1M119 011dc210
 	virtual float GetScale();
 	// BW1W120 0047b160 BW1M119 011dc260
-	virtual void SetScale(float param_1);
+	virtual void SetScale(float scale);
 	// BW1W120 0047d810 BW1M119 011d6c80
 	virtual void SetSpeedInMetres(float speed_in_metres, bool32_t scale_speed);
 	// BW1W120 0047c630 BW1M119 011da0a0
@@ -404,15 +492,15 @@ public:
 	// BW1W120 004f8b30 BW1M119 0128e680
 	virtual void GetPSysBeamTargetPos(LHPoint* param_1);
 	// BW1W120 00477ac0 BW1M119 011e21c0
-	virtual void GetMovementDirection(LHPoint* param_1);
+	virtual void GetMovementDirection(LHPoint* direction);
 	// BW1W120 00479e40 BW1M119 011de230
 	virtual bool32_t IsMoving() const;
 	// BW1W120 00477e10 BW1M119 011e1a80
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
 	// BW1W120 0047b150 BW1M119 011dc2e0
-	virtual float GetImpressiveIntensity(IMPRESSIVE_TYPE param_1);
+	virtual float GetImpressiveIntensity(IMPRESSIVE_TYPE type);
 	// BW1W120 0047b200 BW1M119 011dbf10
-	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
+	virtual float GetImpressiveValue(Living* living, Reaction* reaction);
 	// BW1W120 004e4310 BW1M119 015ed580
 	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature);
 	// BW1W120 00474020 BW1M119 011ea6b0
@@ -446,7 +534,7 @@ public:
 	// BW1W120 004740a0 BW1M119 011ea930
 	virtual bool32_t CanBeFoughtByCreature(Creature* param_1);
 	// BW1W120 004792f0 BW1M119 011dfba0
-	virtual bool32_t IsDominantCreature(Creature* param_1);
+	virtual bool32_t IsDominantCreature(Creature* other);
 	// BW1W120 004e4430 BW1M119 015ed2b0
 	virtual bool32_t IsCreatureAvailableForJointActivity(Creature* param_1);
 	// BW1W120 004e4450 BW1M119 015ed230
@@ -480,7 +568,7 @@ public:
 	// BW1W120 00473f50 BW1M119 011ea350
 	virtual bool32_t IsReachable();
 	// BW1W120 00479e50 BW1M119 011de170
-	virtual int MoveMapObject(const MapCoords& param_1);
+	virtual int MoveMapObject(const MapCoords& coords);
 	// BW1W120 0047dd00 BW1M119 011d6190
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0047de20 BW1M119 011d60d0
@@ -488,9 +576,9 @@ public:
 	// BW1W120 00478c00 BW1M119 011e0610
 	virtual void FillInEffectDefenceMultiplier(EffectNumbers& numbers);
 	// BW1W120 00478c80 BW1M119 011e01a0
-	virtual float ApplyEffect(EffectValues& param_1, int param_2);
+	virtual float ApplyEffect(EffectValues& values, int param_2);
 	// BW1W120 00476f70 BW1M119 011e3680
-	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
+	virtual uint32_t DestroyedByEffect(GPlayer* player, float amount);
 	// BW1W120 00479020 BW1M119 011e0120
 	virtual void ApplySingleEffect(EFFECT_TYPE type, float amount, GameThing* applied_by, const MapCoords& coords);
 	// BW1W120 00517910 BW1M119 010cd640
@@ -506,13 +594,13 @@ public:
 	// BW1W120 004f8a10 BW1M119 0128e920
 	virtual bool32_t CanBeSuckedIntoVortex(LandscapeVortex* param_1);
 	// BW1W120 00476e10 BW1M119 011e3ad0
-	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status);
 	// BW1W120 00476e70 BW1M119 011e3a30
-	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* status);
 	// BW1W120 00476eb0 BW1M119 011e3930
 	virtual bool32_t IsReadyForNetworkUnfriendlyLockedSelect();
 	// BW1W120 00476ec0 BW1M119 011e38d0
-	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* info);
 	// BW1W120 00476ed0 BW1M119 011e3830
 	virtual bool32_t GetReadyForNetworkUnfriendlyEndLockedSelect();
 	// BW1W120 00476f00 BW1M119 011e3760
@@ -520,13 +608,13 @@ public:
 	// BW1W120 00476f60 BW1M119 011e3710
 	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 00476e90 BW1M119 011e3990
-	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* status);
 	// BW1W120 00473f60 BW1M119 011ea390
 	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 0047a330 BW1M119 011dda40
-	virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* param_1, Object* param_2);
+	virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* status, Object* object);
 	// BW1W120 0047a320 BW1M119 011ddbd0
-	virtual uint32_t InterfaceGiveObject(GInterfaceStatus* param_1, Object* param_2);
+	virtual GAME_RETURNS InterfaceGiveObject(GInterfaceStatus* status, Object* object);
 	// BW1W120 00476dc0 BW1M119 011e3ce0
 	virtual uint32_t ValidToSelectFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00476dd0 BW1M119 011e3c50
@@ -539,33 +627,33 @@ public:
 	virtual uint32_t ValidToFightThisToObject(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 004c5fe0 BW1M119 012393c0
 	virtual uint32_t FightThisToObject(GInterfaceStatus* param_1, Object* param_2);
-	// BW1W120 0047b1e0 BW1M119 inlined
-	virtual uint32_t CanBeDestroyedBySpell_1(Spell* param_1);
+	// BW1W120 0047b1e0 BW1M119 011dc0f0
+	virtual bool32_t CanBeDestroyedBySpell(Spell* spell);
 	// BW1W120 00479b80 BW1M119 011de770
 	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 00479b90 BW1M119 011de590
-	virtual void SetUpPhysOb(PhysOb* param_1);
+	virtual void SetUpPhysOb(PhysOb* phys_ob);
 	// BW1W120 00479970 BW1M119 011dea80
-	virtual void GetBoundingSphere(LHPoint& param_1, float& param_2);
+	virtual void GetBoundingSphere(LHPoint& centre, float& radius);
 	// BW1W120 00479d20 BW1M119 011de500
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00479990 BW1M119 011de7b0
-	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+	virtual void ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage);
 	// BW1W120 00479d10 BW1M119 011de550
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0047d4b0 BW1M119 011d73d0
-	virtual bool32_t CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* creature);
 	// BW1W120 0047d500 BW1M119 011d7290
-	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
-	                            void(__cdecl* param_4)(int, Point2D, float, int));
+	virtual void AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
+	                            void(__cdecl* add_function)(int object_id, Point2D position, float radius, int update));
 	// BW1W120 00477f00 BW1M119 011e1890
 	virtual bool32_t IsScary();
 	// BW1W120 00477ee0 BW1M119 011e1920
 	virtual float GetFacingPitch();
 	// BW1W120 004770d0 BW1M119 011e3390
-	virtual void SetHeadPos(MapCoords* param_1);
+	virtual void SetHeadPos(MapCoords* pos);
 	// BW1W120 00477f70 BW1M119 011e1520
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* origin);
 	// BW1W120 00477860 BW1M119 011e2650
 	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 004753c0 BW1M119 011e5ef0
@@ -577,13 +665,15 @@ public:
 	// BW1W120 0047b1a0 BW1M119 011dc1d0
 	virtual uint32_t GetAge();
 	// BW1W120 0047b1b0 BW1M119 011dc190
-	virtual void SetAge(uint32_t param_1);
-	// BW1W120 00473f00 BW1M119 inlined
+	virtual void SetAge(uint32_t age);
+	// BW1W120 00473f00 BW1M119 011ea230
 	virtual int CallIntoAnimationFunction(uint8_t state);
-	// BW1W120 00473f10 BW1M119 inlined
+	// BW1W120 00473f10 BW1M119 011ea280
 	virtual int CallOutofAnimationFunction(uint8_t state);
-	// BW1W120 00473f40 BW1M119 inlined
+	// BW1W120 00473f40 BW1M119 011ea310
 	virtual bool32_t IsFinalState(uint8_t state);
+	// BW1W120 00474000 BW1M119 011ea640
+	virtual DANCE_INFO DanceType();
 	// BW1W120 00473f90 BW1M119 inlined
 	virtual void SetAnim(int anim);
 	// BW1W120 00473ef0 BW1M119 011ea1f0
@@ -604,6 +694,8 @@ public:
 	virtual void AddReaction(Reaction* reaction, VILLAGER_STATES state);
 	// BW1W120 004f26d0 BW1M119 01281b70
 	virtual void StartReacting(REACTION type, GameThingWithPos* thing, Reaction* reaction);
+	// BW1W120 00477f20 BW1M119 011e1850
+	virtual uint8_t GetFinalState() const;
 	// BW1W120 00477f30 BW1M119 011e17e0
 	virtual void ResetStateAfterReacting();
 	// BW1W120 004f2b00 BW1M119 01281200
@@ -694,6 +786,10 @@ public:
 #endif
 	// BW1W120 00474b50 BW1M119 011e7370
 	static Creature* CreateCreature(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
+#ifndef VERSION_BW1WCI
+	// BW1W120 00474ba0 BW1M119 011e7120
+	static Creature* CreateTyke(Creature* master, const MapCoords& coords, const CreatureInfo* info);
+#endif
 	// BW1W120 0047cbd0 BW1M119 011d8360
 	static void CheckAllCreaturesForCatching(Object* object, PhysicsObject* physics_object);
 	// BW1W120 0047c6b0 BW1M119 011d8d80
@@ -701,8 +797,8 @@ public:
 	// BW1W120 004c48b0 BW1M119 01235350
 	static void ComputeActionIndices();
 	// BW1W120 00479670 BW1M119 011df1c0
-	static int __stdcall CreatureBubbleCallbackStub(int param_1, unsigned long user, LH3DColor* color, wchar_t** text,
-	                                                float* param_5, GatheringText** font);
+	static int __stdcall CreatureBubbleCallbackStub(int index, unsigned long user, LH3DColor* color, wchar_t** text,
+	                                                float* scale, GatheringText** font);
 
 	// Constructors
 
@@ -715,12 +811,34 @@ public:
 
 	// BW1W120 00474130 BW1M119 011e87b0
 	void SetToZero();
+#ifndef VERSION_BW1WCI
+	// BW1W120 00474c50 BW1M119 011e6de0
+	void UpdateTykesFromAction();
+#endif
 	// BW1W120 004753f0 BW1M119 011e5db0
 	void CantFindRoute();
+	// BW1W120 004d0650 BW1M119 01249d60
+	void UpdateLongRangeVision();
+	// BW1W120 00475450 BW1M119 011e59d0
+	void FinishActionSuccessfully();
 	// BW1W120 00475730 BW1M119 011e57d0
 	void FinishActionUnsuccessfully(char* reason, bool32_t stop_moving, bool32_t end_actions);
+	// BW1W120 00475880 BW1M119 011e5730
+	void FinishActionGeneric(bool32_t stop_moving, bool32_t end_actions);
+	// BW1W120 004758d0 BW1M119 011e51b0
+	void StopWhatIAmDoing(bool32_t stop_moving, bool32_t end_actions);
+	// BW1W120 00475cc0 BW1M119 011e50f0
+	void ClearEyeState();
+	// BW1W120 00475d30 BW1M119 011e4e50
+	void UpdateOnCompletion();
+	// BW1W120 00475f60 BW1M119 011e4d50
+	void DestroyObjectInHand(Object* object);
+	// BW1W120 00475fc0 BW1M119 011e4c20
+	LHPoint CalculateErrorDisplacement(const MapCoords& from, const MapCoords& to);
+	// BW1W120 00476070 BW1M119 011e3d70
+	void DisplayStatistics();
 	// BW1W120 0047daa0 BW1M119 011d6590
-	bool32_t FindSuitableActionToRemoveObstacle(Object* object);
+	CREATURE_ACTION FindSuitableActionToRemoveObstacle(Object* object);
 	// BW1W120 0047d9a0 BW1M119 011d6740
 	void TrappedInEnclosedSpace(unsigned long num_objects, Object** objects);
 	// BW1W120 00477850 BW1M119 011e26b0
@@ -729,12 +847,14 @@ public:
 	void UpdateTattooDataFromLocalMachine();
 	// BW1W120 00474350 BW1M119 011e8360
 	void Initialise(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
+	// BW1W120 004cb3c0 BW1M119 012431a0
+	void GiveCreatureInitialLessons();
 	// BW1W120 00477210 BW1M119 011e3040
 	void Update3DCreatureFromAttributes();
 	// BW1W120 0047d2f0 BW1M119 011d7820
-	void SetAutoFightStatus(uint32_t status);
+	void SetAutoFightStatus(unsigned long status);
 	// BW1W120 0047d310 BW1M119 011d77c0
-	uint32_t GetAutoFightStatus();
+	FIGHT_CONTROL_AI GetAutoFightStatus();
 	// BW1W120 004f8a40 BW1M119 0128e7d0
 	void SetCreedPower(HAND_GLOW_TYPE type, float scale, float power, float time);
 	// BW1W120 004f8ae0 BW1M119 0128e710
@@ -743,6 +863,46 @@ public:
 	bool32_t IsConfinedToArea();
 	// BW1W120 0047cd20 BW1M119 011d81d0
 	bool32_t IsPosOutsideConfinedArea(const MapCoords& pos);
+	// BW1W120 0047c8c0 BW1M119 011d8ae0
+	float GetCurrentNiceness();
+	// BW1W120 0047c930 BW1M119 011d8a80
+	float GetCurrentNastiness();
+	// BW1W120 0047c940 BW1M119 011d8a20
+	float HowUsefulForNiceActivity();
+	// BW1W120 0047c950 BW1M119 011d89b0
+	float HowUsefulForNastyActivity();
+	// BW1W120 0047c960 BW1M119 011d88b0
+	bool32_t IsAvailableToCatch(Object* object);
+	// BW1W120 0047c9d0 BW1M119 011d8530
+	bool32_t HasAChanceOfCatching(GameThingWithPos* object, PhysicsObject* physics_object);
+	// BW1W120 0047cd70 BW1M119 011d8120
+	virtual bool32_t IsDead();
+	// BW1W120 0047ce80 BW1M119 011d7ef0
+	void RespondToBeingStuck();
+	// BW1W120 0047cf00 BW1M119 011d7d70
+	void RespondToPhysicalProblems();
+	// BW1W120 0047cfb0 BW1M119 011d78e0
+	void RespondToEmergencies();
+	// BW1W120 0047d590 BW1M119 011d7120
+	float GetImpressiveSize();
+	// BW1W120 0047d600 BW1M119 011d7080
+	float GetDamageDonebyFlyingObject(float damage);
+	// BW1W120 0047d950 BW1M119 011d6940
+	void ReleaseTattooData();
+	// BW1W120 0047db50 BW1M119 011d64d0
+	float GetBigSize();
+	// BW1W120 0047dbd0 BW1M119 011d6410
+	float GetSmallSize();
+	// BW1W120 0047dc50 BW1M119 011d6320
+	void AutoScale();
+	// BW1W120 0047deb0 BW1M119 011d5f30
+	void BalanceKnowlegeForComputerPlayer();
+	// BW1W120 0047df40 BW1M119 011d5ef0
+	virtual bool32_t CanBeHealedByHealSpell();
+	// BW1W120 0047df50 BW1M119 011d5d70
+	void CheckThatMindAndBodyLoadedCorrectly();
+	// BW1W120 0047e000 BW1M119 011d5ca0
+	static void DeleteMyCreatureFiles();
 	// BW1W120 004e3d30 BW1M119 015ee940
 	float MaximumPickUpWeight();
 	// BW1W120 004c3990 BW1M119 01235120
@@ -851,14 +1011,96 @@ public:
 	void SetInCreatureHand(Creature* creature);
 	// BW1W120 00490910 BW1M119 011ec210
 	bool32_t CanCurrentlyBePickedUp();
+	// BW1W120 00478890 BW1M119 011e0720
+	void BeCutAndScarredByEffect(EffectValues& values);
 	// BW1W120 00479040 BW1M119 011e0070
-	void ReceivedFightImpact(long param_1, float param_2, Creature* attacker);
+	void ReceivedFightImpact(long impact, float strength, Creature* attacker);
+	// BW1W120 00479090 BW1M119 011dff00
+	void SetupCreatureForDanceEditing(const MapCoords& pos);
+	// BW1W120 004791e0 BW1M119 011dfdb0
+	void ReleaseDependents();
+	// BW1W120 004792a0 BW1M119 011dfd50
+	bool32_t IsActionInFinalStage();
+	// BW1W120 00479340 BW1M119 011dfb50
+	void ConsiderSendingCandidateSnapshot();
+	// BW1W120 00479350 BW1M119 011df9e0
+	bool32_t IsHandNear();
+	// BW1W120 004793e0 BW1M119 011df930
+	bool32_t IsAreaNew();
+	// BW1W120 004794d0 BW1M119 011df6c0
+	void UpdateStatsWhenObjectKilled(Object* object);
+	// BW1W120 00479500 BW1M119 011df620
+	void UpdateStatsWhenObjectEaten(Object* object);
+	// BW1W120 004795d0 BW1M119 011df260
+	bool32_t CreatureBubbleCallback(int index, LH3DColor* color, wchar_t** text, float* scale, GatheringText** font);
+	// BW1W120 004798c0 BW1M119 011decc0
+	void CheatLearnEverything();
+	// BW1W120 004798f0 BW1M119 011dec20
+	void CheatLearnNormalThings();
+	// BW1W120 00479920 BW1M119 011deb60
+	void CheatNextDevelopmentPhase();
+	// BW1W120 00479960 BW1M119 011deaf0
+	float GetHomeSize();
+	// BW1W120 00479d30 BW1M119 011de440
+	bool32_t IsPosInsideCreatureHome(const MapCoords& pos);
+	// BW1W120 0047a1d0 BW1M119 011ddc30
+	void TakeFromPlayersHand(GInterfaceStatus* status);
+	// BW1W120 0047a3b0 BW1M119 011dd810
+	void GetGesturePoint(GESTURE_TYPE type, float frac, LHPoint* point);
 	// BW1W120 004f81f0 BW1M119 0128f7e0
 	void DestroySpell();
+	// BW1W120 004f4890 BW1M119 01285650
+	void LastCreatureTargetPosClear();
 	// BW1W120 004f7970 BW1M119 0128fd70
 	void CastSpellOnObject(MAGIC_TYPE type, Object* object, float param_3, int param_4);
 	// BW1W120 00476fa0 BW1M119 011e3550
 	void Faint();
+	// BW1W120 00477060 BW1M119 011e3500
+	void ForceToFallOver();
+	// BW1W120 00477070 BW1M119 011e3430
+	void LookConfused(CreatureBelief* belief, long argument);
+	// BW1W120 00477130 BW1M119 011e32b0
+	void UpdateLocation();
+	// BW1W120 004774d0 BW1M119 011e2d80
+	bool32_t IsFacingObject(GameThingWithPos* object);
+	// BW1W120 004774f0 BW1M119 011e2d10
+	bool32_t IsHeadingTowardsPos(const MapCoords& pos, unsigned long degrees);
+	// BW1W120 00477550 BW1M119 011e2b60
+	bool32_t IsDirectionClose(const MapCoords& pos, unsigned long degrees, float direction);
+	// BW1W120 004777a0 BW1M119 011e27c0
+	bool32_t IsHandOverCreature();
+	// BW1W120 00477800 BW1M119 011e26f0
+	bool32_t CanCreatureSeePlayerHand();
+	// BW1W120 00477880 BW1M119 011e2410
+	LHPoint GetFurthestEdgeOfObject(Object* object);
+	// BW1W120 00477a00 BW1M119 011e2320
+	void UpdateAttitudeToPlayer();
+	// BW1W120 00477a90 BW1M119 011e22b0
+	float CalculateEnergyUnitsFromFoodValue(unsigned long food_value);
+	// BW1W120 00477b20 BW1M119 011e2040
+	void GoIntoStateOfFinishingAction();
+	// BW1W120 00477c50 BW1M119 011e1e60
+	long GetAnimOfBestContextToLearnFrom(CREATURE_DESIRES* desire);
+	// BW1W120 00477d00 BW1M119 011e1d60
+	bool32_t PerformFinishingAction();
+	// BW1W120 00477d70 BW1M119 011e1d10
+	bool32_t PerformAnimShowingLastDesire();
+	// BW1W120 00477d80 BW1M119 011e1c60
+	void UpdateDesiresAfterObservingPlayerAction(CREATURE_DESIRES desire);
+	// BW1W120 00477da0 BW1M119 011e1b90
+	void UpdateDesiresAfterObservingAction(CREATURE_DESIRES desire);
+	// BW1W120 00477e00 BW1M119 011e1af0
+	CREATURE_ACTION CalculatePerceivedCurrentAction() const;
+	// BW1W120 00478080 BW1M119 011e1460
+	void UpdateDesiresFromEffect(EFFECT_TYPE type);
+	// BW1W120 004780d0 BW1M119 011e1390
+	void AddToCheckSum();
+	// BW1W120 00478120 BW1M119 011e1130
+	void AddToMentalCheckSum();
+	// BW1W120 00478310 BW1M119 011e1090
+	void AddTo3DCheckSum();
+	// BW1W120 00478350 BW1M119 011e0ad0
+	void OutputCreatureInformation();
 	// BW1W120 00479480 BW1M119 011df800
 	bool32_t HasFinishedBuildingHome();
 	// BW1W120 inlined BW1M119 inlined
@@ -954,12 +1196,20 @@ public:
 	CREATURE_DESIRES FindBestDesireForActivityObject(CreatureBelief* belief);
 	// BW1W120 0050a760 BW1M119 012a4d90
 	void GiveFoodToWorshippers(CreatureBelief* belief, long argument);
+	// BW1W120 0050a380 BW1M119 012a4ea0
+	void ActOnObjectInHand(CreatureBelief* belief, long argument);
+	// BW1W120 0050a7e0 BW1M119 012a4c00
+	void GoToLastSpecifiedPos(CreatureBelief* belief, long argument);
 	// BW1W120 0050a1f0 BW1M119 012a5390
 	void RepeatLastAction(CreatureBelief* belief, long argument);
+	// BW1W120 00509480 BW1M119 012a63f0
+	void DanceToMusic(CreatureBelief* belief, long argument);
 	// BW1W120 00509130 BW1M119 012a6530
 	void BeSad(CreatureBelief* belief, long argument);
 	// BW1W120 00509070 BW1M119 012a68d0
 	void BeHappy(CreatureBelief* belief, long argument);
+	// BW1W120 00509050 BW1M119 012a69f0
+	void LookCurious(CreatureBelief* belief, long argument);
 	// BW1W120 00509010 BW1M119 012a6a70
 	void BeFrightened(CreatureBelief* belief, long argument);
 	// BW1W120 004f82f0 BW1M119 0128f550
@@ -1218,6 +1468,20 @@ public:
 	void PrepareCreatureForScriptedAction(int stop_moving);
 	// BW1W120 004f8b80 BW1M119 0128e470
 	void ProcessSpells();
+	// BW1W120 004f48c0 BW1M119 01285280
+	void ProcessSpellsReceived();
+	// BW1W120 004efce0 BW1M119 01279890
+	void ShrinkDownIfNearCitadel();
+	// BW1W120 004d0700 BW1M119 01249c50
+	void Look();
+	// BW1W120 004d03b0 BW1M119 01249e90
+	void LookAtMostInterestingObject();
+	// BW1W120 004ca670 BW1M119 0123d7e0
+	void ProcessHelpStack();
+	// BW1W120 004c9c90 BW1M119 0123fac0
+	void UpdateHelp();
+	// BW1W120 004feda0 BW1M119 01290c00
+	void ProcessSubAction();
 	// BW1W120 004ffdd0 BW1M119 012a40a0
 	uint32_t SubStatePerformPickUpParameter(CreatureBelief* param_1);
 	// BW1W120 00501d10 BW1M119 012a0af0
@@ -1232,6 +1496,8 @@ public:
 	const CreatureInfo* GetInfo() const { return (const CreatureInfo*)info; }
 	// BW1W120 00479eb0 BW1M119 011de020
 	void ForceMoveMapObjectWithoutWalking(const MapCoords& pos);
+	// BW1W120 00479f70 BW1M119 011ddde0
+	virtual int MoveByTeleport(const MapCoords& pos);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00488400 BW1MCI119 011ed990
 	uint32_t CountNumberOfHitsInQueue();
@@ -1435,6 +1701,56 @@ public:
 	uint32_t GetCurrentFightAction();
 	// BW1W120 004f78c0 BW1M119 0128e310
 	static float SigmoidThreshold(float threshold, float value);
+	// BW1W120 0047a7a0 BW1M119 011dd300
+	void StartMovingToObject(CreatureBelief* belief, Object* object, float speed, float min_speed);
+	// BW1W120 0047a880 BW1M119 011dd040
+	void StartMovingToPoint(CreatureBelief* belief, const LHPoint& pos, float speed, float min_speed);
+	// BW1W120 0047a980 BW1M119 011dcef0
+	long GetPutDownAction();
+	// BW1W120 0047aa50 BW1M119 011dcd20
+	void ForceMeToActOnObject(GameThingWithPos* object);
+	// BW1W120 0047acb0 BW1M119 011dcb80
+	float GetFizzDest();
+	// BW1W120 0047acc0 BW1M119 011dcb40
+	float GetFizzCurr();
+	// BW1W120 0047acd0 BW1M119 011dc9d0
+	Pot* CreateHandObject(GameThingWithPos* source, const MapCoords& pos, POT_INFO type, unsigned long amount);
+	// BW1W120 0047ad80 BW1M119 011dc830
+	void CalculateCreationPos(const MapCoords& target, MapCoords* pos);
+	// BW1W120 0047b010 BW1M119 011dc3a0
+	void CheatMakeMeFight();
+	// BW1W120 0047b3f0 BW1M119 011dbc30
+	void UpdateMoodsBasedOnMusic(MusicMoodPacket& packet);
+	// BW1W120 0047b420 BW1M119 011dbbb0
+	void CalculateCurrentEmotionsForMusic(CreatureEmotionsForMusic& emotions);
+	// BW1W120 0047b440 BW1M119 011db430
+	void GenerateHTML();
+	// BW1W120 0047ba70 BW1M119 011db250
+	void ConsiderTakingSnapshot();
+	// BW1W120 0047bbe0 BW1M119 011db100
+	void TakeSnapshotIfPriorityIsSufficient(float priority, CREATURE_ACTION action);
+	// BW1W120 0047bc50 BW1M119 011dae60
+	void TakeSnapshot(float priority, CREATURE_ACTION action);
+	// BW1W120 0047bd30 BW1M119 011dacd0
+	void RemoveSnapshot(SnapshotData* snapshot);
+	// BW1W120 0047bd90 BW1M119 011dabb0
+	int GetWorstSnapshotIndex();
+	// BW1W120 0047bdd0 BW1M119 011daae0
+	char* ThingHeLikesMostText(CREATURE_DESIRES desire);
+	// BW1W120 0047be30 BW1M119 011da9c0
+	uint32_t ThingHeLikesMostMesh(CREATURE_DESIRES desire);
+	// BW1W120 004d75c0 BW1M119 012504c0
+	static uint32_t GetMeshForObjectType(OBJECT_TYPE type);
+	// BW1W120 0047c5f0 BW1M119 011da190
+	static CREATURE_ACTION GetCreatureActionFromMagicType(MAGIC_TYPE type);
+	// BW1W120 0047c610 BW1M119 011da150
+	long GetNumSpecialMoves();
+	// BW1W120 0047c620 BW1M119 011da0f0
+	uint32_t GetSpecialMoveGesture(long move);
+	// BW1W120 0047c770 BW1M119 011d8d30
+	void PlaySoundEffectToIndicateMood();
+	// BW1W120 0047c780 BW1M119 011d8bc0
+	void BodgeForceCatch(GameThingWithPos* object);
 };
 
 class Creed : public MobileObject
@@ -1484,9 +1800,8 @@ public:
 	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
-// Constructor boundaries: 00474690; flag stores: 00474130; allocation: 0055a697.
 static_assert(offsetof(Creature, HelpState) == 0x188, "Creature help offset is incorrect");
-static_assert(offsetof(Creature, HelpStackEntries) == 0x220, "Creature help stack offset is incorrect");
+static_assert(offsetof(Creature, HelpStack) == 0x220, "Creature help stack offset is incorrect");
 static_assert(offsetof(Creature, ReceiveSpell) == 0x370, "Creature spell receiver offset is incorrect");
 #ifdef VERSION_BW1WCI
 static_assert(offsetof(Creature, LeashControl) == 0x388, "Creature leash offset is incorrect");

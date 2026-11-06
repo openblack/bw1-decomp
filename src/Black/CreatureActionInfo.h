@@ -31,25 +31,25 @@ public:
 	bool32_t                    ExcludesCarriedObject;
 	uint8_t                     field_0xbc[0x8];
 	CREATURE_DESIRES            Desire;
-	uint8_t                     field_0xc8[0x8];
+	uint8_t                     field_0xc8[0x4];
+	DEVELOPMENT_PHASE           DevelopmentPhase;
 	float                       CompletionFactor;
 	float                       FullSkillCount;
 	bool32_t                    CompletionEnabled;
-	uint8_t                     field_0xdc[0x4];
+	float                       MinSecondsPerformingActionToLearn;
 	float                       LearnWindow;
 	float                       InitialOpinion;
 	uint8_t                     field_0xe8[0x4];
 	bool32_t                    WorthFollowing;
 	bool32_t                    EatCarriedObjectWhenPraised;
 	bool32_t                    ShowsCurrentSource;
-	uint8_t                     field_0xf8[0x4];
+	float                       SnapshotPriority;
 	float                       HowNiceChange;
 	bool32_t                    Learnable;
 	bool32_t                    IsRecoveryAction;
-#ifdef VERSION_BW1W100
-	uint8_t field_0x108[0x4];
-#else
-	uint8_t field_0x108[0x8];
+	uint8_t                     field_0x108[0x4];
+#ifndef VERSION_BW1W100
+	DETECTED_PLAYER_ACTION TykeMimicAction;
 #endif // VERSION_BW1W100
 
 	// Override methods
@@ -68,7 +68,11 @@ public:
 	static CreatureActionInfo* GetInfo() { return g_CreatureActionInfos; }
 
 	// TODO(#377): The original declared this class in CreatureAction.h.
+#ifdef VERSION_BW1W100
 	INFO_DATA_BLOCK(StrengthGain, field_0x108)
+#else
+	INFO_DATA_BLOCK(StrengthGain, TykeMimicAction)
+#endif // VERSION_BW1W100
 	INFO_ROOT_LOADERS("CreatureAction.h", 46)
 };
 #ifdef VERSION_BW1W100

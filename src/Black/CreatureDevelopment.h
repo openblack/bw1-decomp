@@ -52,7 +52,7 @@ public:
 class CreatureDevelopmentPhaseEntry : public GBaseInfo
 {
 public:
-	uint32_t         field_0x10[0xc];
+	char             Name[0x30];
 	float            GoHomeDistance;
 	uint32_t         field_0x44;
 	uint32_t         field_0x48;
@@ -80,7 +80,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureMentalDesire.h.
 	// Out of line: LoadBinary at 0042e030, Load at 0042dff0.
-	INFO_DATA_BLOCK(field_0x10, DeactivatedDesires)
+	INFO_DATA_BLOCK(Name, DeactivatedDesires)
 	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 181)
 };
 

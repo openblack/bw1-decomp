@@ -836,7 +836,7 @@ uint32_t SingleMapFixed::ApplyThisToMapCoord(GInterfaceStatus* status, const Map
                                              GestureSystemPacketData* packet)
 {
 	ThrowObjectFromHand(status, false);
-	return OBJECT_APPLY_RESULT_THROWN;
+	return GAME_RETURNS_REMOVE_FROM_HAND;
 }
 
 void SingleMapFixed::InsertMapObjectToCell(MapCell* cell)

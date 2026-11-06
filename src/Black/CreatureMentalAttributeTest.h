@@ -149,6 +149,8 @@ struct AttributeTest
 
 	// BW1W120 004d74a0 BW1M119 01250560
 	char* CalculateText();
+	// BW1W120 004d7640 BW1M119 01250440
+	uint32_t CalculateMesh();
 };
 
 struct DecisionTreeNode
@@ -169,6 +171,8 @@ struct DecisionTree
 	AttributeTest* CalculateTestForBelief(CreatureBelief* belief);
 	// BW1W120 004d4bf0 BW1M119 012541d0
 	float CalculateUtility(CreatureBelief* belief);
+	// BW1W120 004d4c10 BW1M119 01254170
+	AttributeTest* FindBestNodeInTree();
 };
 
 struct DecisionTreeAgenda

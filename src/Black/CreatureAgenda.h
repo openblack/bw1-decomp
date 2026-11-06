@@ -49,6 +49,7 @@ public:
 	bool32_t                ActionUnavailableWhenConfined[NUM_CREATURE_ACTIONS];
 	uint32_t                GameTurnLastPlanDecided;
 	Town*                   SpellSeedTown;
+	SPELL_SEED_TYPE         SpellSeedType;
 	void (Creature::*ForcedActionFunction)(CreatureBelief* belief, long argument);
 	CreatureBelief* ForcedActionBelief;
 	LHPoint         ForcedActionPos;
@@ -66,6 +67,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 inlined
+	bool IsValid() { return CurrentPlan.IsValid() && SubActionAgenda.IsValid(); }
 	// BW1W120 004d36a0 BW1M119 0124b7f0
 	bool32_t ConstructSubActionsFromActionAgenda(CREATURE_ACTION action);
 	// BW1W120 004d3760 BW1M119 0124b710
