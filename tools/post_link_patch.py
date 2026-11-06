@@ -2502,6 +2502,30 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00704594, jmp_run(0x00704487)),  # ScriptFunctions
     (0x007047D8, jmp_run(0x00704594)),  # ScriptFunctions
     (0x0070485A, jmp_run(0x007047D8)),  # ScriptFunctions
+    (0x0070DE93, jmp_run(0x0070DDF8)),  # ScriptHighlight
+    (0x0070DEBB, jmp_run(0x0070DE93)),  # ScriptHighlight
+    (0x0070DEE7, copy_run(0x0070DEBB)),  # ScriptHighlight
+    (0x0070DF93, jmp_run(0x0070DEE7)),  # ScriptHighlight
+    (0x0070E156, jmp_run(0x0070DF93)),  # ScriptHighlight
+    (0x0070E183, copy_run(0x0070E156)),  # ScriptHighlight
+    (0x0070E1F4, jmp_run(0x0070E183)),  # ScriptHighlight
+    (0x0070E22A, copy_run(0x0070E1F4)),  # ScriptHighlight
+    (0x0070E268, copy_run(0x0070E22A)),  # ScriptHighlight
+    (0x0070E324, copy_run(0x0070E268)),  # ScriptHighlight
+    (0x0070E385, copy_run(0x0070E324)),  # ScriptHighlight
+    (0x0070E544, copy_run(0x0070E385)),  # ScriptHighlight
+    (0x0070ED46, copy_run(0x0070E544)),  # ScriptHighlight
+    (0x0070EE61, copy_run(0x0070ED46)),  # ScriptHighlight
+    (0x0070EEE3, copy_run(0x0070EE61)),  # ScriptHighlight
+    (0x0070EF14, jmp_run(0x0070EEE3)),  # ScriptHighlight
+    (0x0070F04A, copy_run(0x0070EF14)),  # ScriptHighlight
+    (0x0070F1D8, jmp_run(0x0070F04A)),  # ScriptHighlight
+    (0x0070F358, jmp_run(0x0070F1D8)),  # ScriptHighlight
+    (0x0070F4EB, copy_run(0x0070F358)),  # ScriptHighlight
+    (0x0070F533, jmp_run(0x0070F4EB)),  # ScriptHighlight
+    (0x0070F6B3, jmp_run(0x0070F533)),  # ScriptHighlight
+    (0x0070F6F7, jmp_run(0x0070F6B3)),  # ScriptHighlight
+    (0x0070F726, copy_run(0x0070F6F7)),  # ScriptHighlight
     (0x00715EE3, copy_run(0x00715E65)),  # ScriptTimer
     (0x00715F56, jmp_run(0x00715EE3)),  # ScriptTimer
     (0x00715F78, jmp_run(0x00715F56)),  # ScriptTimer

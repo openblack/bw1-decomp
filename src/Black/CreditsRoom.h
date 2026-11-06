@@ -13,6 +13,8 @@ public:
 	static void DYKSave(GameOSFile& file);
 	// BW1W120 0078d150 BW1M119 012a7540
 	static void DYKLoad(GameOSFile& file);
+	// BW1W120 0078cc10 BW1M119 010810f0
+	static bool32_t HasDidYouKnowBeenSeen(unsigned long script_id, DYK_CATEGORY category);
 };
 
 #endif /* BW1_DECOMP_CREDITS_ROOM_INCLUDED_H */

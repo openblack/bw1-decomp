@@ -15,18 +15,21 @@ class GBaseInfo;
 class GScriptHighlightInfo : public GSingleMapFixedInfo
 {
 public:
+	MESH_LIST     ActiveMesh; /* 0x104 */
+	PARTICLE_TYPE ParticleType;
+	PARTICLE_TYPE ActiveParticleType;
 #ifdef VERSION_BW1WCI
-	uint8_t field_0x104[0x10];
-#else
-	uint8_t field_0x104[0xc];
+	HELP_TEXT OverwriteTapToolTip;
 #endif
 
 	// Override methods
 
-	// BW1W120 007096b0 BW1M119 01502b60
-	virtual ~GScriptHighlightInfo();
 	// BW1W120 00709640 BW1M119 01503690
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = SCRIPT_HIGHLIGHT_INFO_LAST;
+		return GetInfo();
+	}
 
 	// Static data
 
@@ -42,9 +45,12 @@ public:
 	HIGHLIGHT_INFO GetType() const { return (HIGHLIGHT_INFO)(this - Infos); }
 #endif
 
-	// TODO(#377): The original declared this class in ScriptHighlight.h.
 	// Out of line: LoadBinary at 0042f8f0, Load at 0042f850.
-	INFO_DATA_BLOCK(field_0x104, field_0x104)
+#ifdef VERSION_BW1WCI
+	INFO_DATA_BLOCK(ActiveMesh, OverwriteTapToolTip)
+#else
+	INFO_DATA_BLOCK(ActiveMesh, ActiveParticleType)
+#endif
 	INFO_DERIVED_LOADERS(GSingleMapFixedInfo, "ScriptHighlight.h", 17)
 };
 

@@ -270,7 +270,13 @@ public:
 #ifdef VERSION_BW1WCI
 	GameThingWithPos* ObjectHitLand;
 #endif
-	uint8_t  field_0x78[0xc];
+	bool32_t DrawLeash;
+	uint32_t field_0x7c;
+#ifdef VERSION_BW1WCI
+	uint32_t field_0x80;
+#else
+	bool32_t DrawHighlight;
+#endif
 	uint32_t field_0x84;
 	bool32_t HandDemoTrigger;
 	bool32_t HandDemoWithPause;
@@ -289,7 +295,9 @@ public:
 	uint8_t field_0xb0[0xc];
 #endif
 #ifdef VERSION_BW1WCI
-	uint8_t ci_field_0xc8[0x10];
+	uint32_t DrawScoreboard : 1;
+	uint32_t DrawHighlight : 1;
+	uint8_t  ci_field_0xcc[0xc];
 #endif
 
 	// Override methods

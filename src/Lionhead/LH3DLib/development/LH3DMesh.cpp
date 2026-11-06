@@ -16,6 +16,7 @@
 #include "LH3DPrimitive.h"        /* For LH3DPrimitive */
 #include "LH3DRender.h"           /* For LH3DRender */
 #include "LH3DSubMesh.h"          /* For LH3DSubMesh */
+#include "LH3DMeshVertices.h"     /* For LH3DMesh::GetVerticesCount */
 #include "LH3DTShadow.h"          /* For LH3D_T_SHADOW_SIZE */
 #include "LH3DTech.h"             /* For LH3DTech, Report3D__FPCce */
 #include "LH3DTexture.h"          /* For LH3DTexture */
@@ -154,16 +155,6 @@ static inline int AddEdge(LH3DLODEdge* edges, int count, int a, int b, int verte
 	edges[i].VerticesA[0] = vertex_a;
 	edges[i].VerticesB[0] = vertex_b;
 	return count + 1;
-}
-
-inline long LH3DMesh::GetVerticesCount()
-{
-	long count = 0;
-	for (int i = 0; i < SubmeshCount; i++)
-	{
-		count += submeshes[i]->GetVerticesCount();
-	}
-	return count;
 }
 
 inline long LH3DSubMesh::GetTriangleCount()

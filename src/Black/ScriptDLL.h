@@ -29,6 +29,8 @@ enum VMScriptType
 
 class LHTransport;
 
+#define SCRIPT_DLL_SCRIPT_TYPE_HELP ((void*)2)
+
 class ScriptDLL : public LHDLL
 {
 public:
@@ -163,7 +165,7 @@ public:
 	// BW1W120 006f6bd0 BW1M119 014ef5e0
 	char* STRING(uint32_t index);
 	// BW1W120 006f6c50 BW1M119 014ef510
-	void* GetScriptType(unsigned long param_1);
+	void* GetScriptType(unsigned long script_id);
 	// BW1W120 006f6aa0 BW1M119 014ef800
 	uint32_t GetScriptInstructionCount();
 
