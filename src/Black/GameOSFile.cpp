@@ -1,6 +1,8 @@
 #include "GameTimeConstants.h"
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "ColourConstants.h"    /* For White */
+#include "ParticleConstants.h"
+#include "HalfLifeConstants.h"
 #include "GameOSFile.h"
 
 #include "BaseInfo.h"
@@ -190,16 +192,25 @@
 #include "WorshipSite.h"
 #include "WorshipSpellIcon.h"
 #include "WorshipTotem.h"
+#include "alexmfc.h"
 #include "PSysRules.h"
 
 #include <stdio.h>
 #include <string.h>
 
+#include <chlasm/HelpTextEnums.h>
+
+#include <Lionhead/LH3DLib/development/LH3DRender.h>
+#include <Lionhead/LH3DLib/development/LH3DTech.h>
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUtils.h>
 
-#define TEMPORARY_FILE_EXTENSION ".tmp"
+#define TEMPORARY_FILE_EXTENSION    ".tmp"
+#define LOAD_SAVE_BOX_HALF_HEIGHT   30
+#define LOAD_SAVE_BOX_SHADOW_HEIGHT 15
+#define LOAD_SAVE_BOX_EDGE_FRACTION 0.4f
 
 // BW1W120 00558db0 BW1M119 null
 void OldTypeWarning(const char* message);
@@ -222,9 +233,10 @@ PhysicsSaveInfo* PhysicsSaveInfo::Buffer;
 int              PhysicsSaveInfo::Count;
 int              PhysicsSaveInfo::ReadIndex;
 
+// BW1W120 00557d10 BW1M119 01312bb0
+void LoadSaveBox(wchar_t* text, bool finished);
 // BW1W120 00557f90 BW1M119 01312b40
 void GameLoadingBox(bool finished);
-
 // BW1W120 00557fc0 BW1M119 01312ae0
 void GameSavingBox(bool finished);
 // BW1W120 005fa000 BW1M119 0110bf80
@@ -233,6 +245,66 @@ void InputReset();
 void DoSaveProblemRequestor(char16_t* message);
 // BW1W120 005580f0 BW1M119 01312550
 void ResetCameraIfNecessary();
+
+void LoadSaveBox(wchar_t* text, bool finished)
+{
+	if (!GGame::g_game->Initialised || GGame::Initialising)
+	{
+		return;
+	}
+	bool enableCallbacks = g_enable_callbacks;
+	g_enable_callbacks = false;
+	if (!finished)
+	{
+		LH3DTech::g_game_time_inc = 0;
+		GGame::g_game->TimeInc = 0;
+		LH3DRender::StartFrame();
+		SetupThing::DrawAlpha = 0xff;
+		int      width = LHSys::TheSystem.screen.width;
+		uint32_t height = LHSys::TheSystem.screen.height;
+		int      top = height / 2 - LOAD_SAVE_BOX_HALF_HEIGHT;
+		int      bottom = height / 2 + LOAD_SAVE_BOX_HALF_HEIGHT;
+		int      edge = (int)(width * LOAD_SAVE_BOX_EDGE_FRACTION);
+		if (SaveGameRoom::CurrentSlot < SAVE_GAME_ROOM_FIRST_CIRCLE_SLOT ||
+		    SaveGameRoom::CurrentSlot > SAVE_GAME_ROOM_LAST_CIRCLE_SLOT)
+		{
+			SetupThing::DrawBox(-1, -1, LHSys::TheSystem.screen.width + 1, LHSys::TheSystem.screen.height + 1,
+			                    0x78000000, 0x78000000, 0x78000000, 0x78000000, 0, 0);
+		}
+		SetupThing::DrawBox(-1, top, width, top - LOAD_SAVE_BOX_SHADOW_HEIGHT, 0x9f000000, 0x9f000000, 0, 0, 0, 0);
+		SetupThing::DrawBox(-1, bottom, width, bottom + LOAD_SAVE_BOX_SHADOW_HEIGHT, 0x9f000000, 0x9f000000, 0, 0, 0,
+		                    0);
+		SetupThing::DrawBox(-1, top, edge, bottom, 0xff202020, 0xff404040, 0xff404040, 0xff202020, 0, 0);
+		SetupThing::DrawBox(edge, top, width - edge, bottom, 0xff404040, 0xff404040, 0xff404040, 0xff404040, 0, 0);
+		SetupThing::DrawBox(width - edge, top, width, bottom, 0xff404040, 0xff202020, 0xff202020, 0xff404040, 0, 0);
+		SetupThing::DrawLine(-1, top, width, top, 0xf0f0f0f0, 0, 0.0f, 100.0f);
+		SetupThing::DrawLine(-1, bottom, width, bottom, 0xf0f0f0f0, 0, 0.0f, 100.0f);
+		LH3DColor color;
+		color.b = 0;
+		color.g = 0;
+		color.r = 0;
+		color.a = 0xff;
+		SetupThing::DrawTextWrap(101, 201, 701, 401, 401, true, text, GetBigTextSize(), &color, true, false);
+		color.b = 0xff;
+		color.g = 0xff;
+		color.r = 0xff;
+		color.a = 0xff;
+		SetupThing::DrawTextWrap(100, 200, 700, 400, 400, true, text, GetBigTextSize(), &color, true, false);
+		LH3DRender::FinishFrame();
+		LHSys::TheSystem.screen.Flip(true);
+	}
+	g_enable_callbacks = enableCallbacks;
+}
+
+void GameLoadingBox(bool finished)
+{
+	LoadSaveBox(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_67), finished);
+}
+
+void GameSavingBox(bool finished)
+{
+	LoadSaveBox(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_102), finished);
+}
 
 GameOSFile::GameOSFile()
 {

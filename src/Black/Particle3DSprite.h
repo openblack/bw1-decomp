@@ -56,16 +56,14 @@ public:
 	virtual bool32_t Load(GameOSFile& file);
 
 	// BW1W120 0055f000 BW1M119 inlined
-	Particle3DSprite()
+	Particle3DSprite() : Alpha(0xff)
 	{
-		Alpha = 0xff;
 		FrameOffset = 0;
 		Flag0 = 0;
 		Flag1 = 0;
 		Flag2 = 0;
 		Flag3 = 0;
-		PreviousScale = 1.0f;
-		Scale = 1.0f;
+		PreviousScale = Scale = 1.0f;
 		Sprite = NULL;
 		Creator = NULL;
 	}

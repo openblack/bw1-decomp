@@ -2698,15 +2698,15 @@ bool32_t Villager::LoadBuilding(GameOSFile& file)
 
 bool32_t Villager::SaveDance(GameOSFile& file)
 {
-	file.WriteIt(field_0x118);
-	file.WriteIt(field_0x11c);
+	file.WriteIt(DancePos.x);
+	file.WriteIt(DancePos.z);
 	return true;
 }
 
 bool32_t Villager::LoadDance(GameOSFile& file)
 {
-	file.ReadIt(field_0x118);
-	file.ReadIt(field_0x11c);
+	file.ReadIt(DancePos.x);
+	file.ReadIt(DancePos.z);
 	return true;
 }
 
