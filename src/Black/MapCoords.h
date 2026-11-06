@@ -59,6 +59,8 @@ struct JustMapXZ
 		x = cell_x;
 		z = cell_z;
 	}
+	// BW1W120 005e18e0 BW1M119 01108620
+	void Init(const MapCoords& coords);
 	// BW1W120 005e1920 BW1M119 01108550
 	void Init(MapCell* cell);
 	// BW1W120 005e1860 BW1M119 01024c60
@@ -67,12 +69,26 @@ struct JustMapXZ
 	bool32_t InExplorationMapBounds();
 	// BW1W120 005e1950 BW1M119 0102d000
 	MapCell* ToMap() const;
+	// BW1W120 inlined BW1M119 inlined
+	bool IsSet() const { return x != 0 || z != 0; }
 };
 
 struct JustWholeMapXZ
 {
-	int32_t x; /* 0x0 */
-	int32_t z;
+	union {
+		struct
+		{
+			int32_t x; /* 0x0 */
+			int32_t z;
+		};
+		struct
+		{
+			uint16_t FractionX;
+			int16_t  CellX;
+			uint16_t FractionZ;
+			int16_t  CellZ;
+		};
+	};
 
 	// BW1W120 inlined BW1M119 0130e030
 	JustWholeMapXZ() { Init(); }
@@ -87,6 +103,10 @@ struct JustWholeMapXZ
 	}
 	// BW1W120 005e1900 BW1M119 011085d0
 	void Init(const MapCoords& coords);
+	// BW1W120 inlined BW1M119 inlined
+	bool IsSet() const { return x != 0 || z != 0; }
+	// BW1W120 inlined BW1M119 inlined
+	bool IsZero() const { return x == 0 && z == 0; }
 };
 
 struct MapCoords : public LH3DMapCoords
@@ -105,6 +125,8 @@ struct MapCoords : public LH3DMapCoords
 	MapCoords(float meters_x, float meters_z);
 	// BW1W120 00602fc0 BW1M119 01057b30
 	MapCoords(unsigned short cell_x, unsigned short cell_z);
+	// BW1W120 00602ff0 BW1M119 01005230
+	MapCoords(JustMapXZ* xz);
 	// BW1W120 00603030 BW1M119 01375af0
 	MapCoords(JustWholeMapXZ* xz);
 	// BW1W120 00603160 BW1M119 0106cbb0

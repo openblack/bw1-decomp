@@ -32,6 +32,10 @@ template <class T> inline T POWER(T value, unsigned long power)
 	return result;
 }
 
+#define GAME_ANGLE_FULL_TURN    0x800
+#define GAME_ANGLE_MASK         (GAME_ANGLE_FULL_TURN - 1)
+#define GAME_ANGLE_QUARTER_TURN (GAME_ANGLE_FULL_TURN / 4)
+
 struct GUtils
 {
 	struct Circle
@@ -129,6 +133,20 @@ struct GUtils
 	static uint32_t ConvertAngle3DToGame(float param_1);
 	// BW1W120 0074cf30 BW1M119 013d2e80
 	static long VeryFastDistance(long x1, long z1, long x2, long z2);
+	// BW1W120 0074ced0 BW1M119 013d2f30
+	static long VeryFastDistance(const MapCoords& from, const MapCoords& to);
+	// BW1W120 0074d090 BW1M119 01008420
+	static long XZWholeMapDistance(const MapCoords& from, const MapCoords& to);
+	// BW1W120 0074d220 BW1M119 01005370
+	static long GetAngleFromXZ(long x1, long z1, long x2, long z2);
+	// BW1W120 0074d6a0 BW1M119 0105a040
+	static MapCoords GetPosFromAngle(uint16_t angle, float distance);
+	// BW1W120 0074d6f0 BW1M119 01036480
+	static long GetAngleSign(long from, long to);
+	// BW1W120 0074d740 BW1M119 01051610
+	static long GetAngleDifference(long from, long to);
+	// BW1W120 0074f310 BW1M119 013cb4a0
+	static MapCoords GetRandomPos(const MapCoords& centre, float radius);
 };
 
 // BW1W120 0074f620 BW1M119 inlined

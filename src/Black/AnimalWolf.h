@@ -41,9 +41,9 @@ public:
 	// BW1W120 004210a0 BW1M119 0117ffc0
 	virtual bool32_t MoveToPosAndLookAround();
 	// BW1W120 004209a0 BW1M119 01180d20
-	virtual uint32_t FinishPouncing();
+	virtual uint32_t FinishPouncing(Living* prey);
 	// BW1W120 00420d60 BW1M119 011806d0
-	virtual uint32_t IsHuntingTargetValid();
+	virtual uint32_t IsHuntingTargetValid(Object* target);
 	// BW1W120 00420f30 BW1M119 01180350
 	virtual uint32_t HuntingMoveToPosAbaondon();
 	// BW1W120 00420a20 BW1M119 01180af0
@@ -108,6 +108,11 @@ public:
 
 	// BW1W120 00420930 BW1M119 01180d80
 	void SetToZero();
+
+	// Static methods
+
+	// BW1W120 004207f0 BW1M119 01180ef0
+	static SpellWolf* Create(const MapCoords& coords, const GAnimalInfo* info);
 };
 
 class Wolf : public Lion
@@ -126,7 +131,7 @@ public:
 	// BW1W120 00421950 BW1M119 01181b20
 	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalNeeds();
 	// BW1W120 00421730 BW1M119 01181c60
-	virtual uint32_t CalculeLairPos();
+	virtual void CalculeLairPos();
 	// BW1W120 0041c4b0 BW1M119 011782c0
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041c500 BW1M119 01178240
@@ -160,6 +165,11 @@ public:
 
 	// BW1W120 0055e590 BW1M119 0130e210
 	Wolf() {}
+
+	// Static methods
+
+	// BW1W120 00421600 BW1M119 01182080
+	static Wolf* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_WOLF_INCLUDED_H */

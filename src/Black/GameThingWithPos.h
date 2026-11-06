@@ -116,8 +116,15 @@ public:
 			LHListNode<GameThingWithPos> MapChildNode; // Next Object in the map cell's fixed or mobile list.
 		};
 	};
-	uint16_t Flags;
-	uint8_t  field_0x26;
+	union {
+		uint16_t Flags;
+		struct
+		{
+			uint16_t : 6;
+			uint16_t InPhysics : 1;
+		};
+	};
+	uint8_t field_0x26;
 
 	// Override methods
 
@@ -734,6 +741,8 @@ public:
 	void SetToZero();
 	// BW1W120 0073ea50 BW1M119 01557d00
 	bool32_t IsFixed() const { return (Flags & GAME_THING_WITH_POS_FLAG_FIXED) != 0; }
+	// BW1W120 inlined BW1M119 inlined
+	bool IsNotInPhysics() const { return !InPhysics; }
 	// BW1W120 inlined BW1M119 01032e80
 	bool32_t IsInMagicHand() const { return (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) != 0; }
 #ifndef VERSION_BW1WCI

@@ -30,7 +30,7 @@ public:
 	// BW1W120 0041ff40 BW1M119 0117e770
 	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalFoodNeeds();
 	// BW1W120 00420010 BW1M119 0117e6f0
-	virtual uint32_t CalculeLairPos();
+	virtual void CalculeLairPos();
 	// BW1W120 0041c0e0 BW1M119 01178d60
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041c120 BW1M119 01178ce0
@@ -70,6 +70,11 @@ public:
 	Lion() {}
 	// BW1W120 0041fd30 BW1M119 0117ecc0
 	Lion(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
+
+	// Static methods
+
+	// BW1W120 0041fde0 BW1M119 0117eb00
+	static Lion* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_LION_INCLUDED_H */

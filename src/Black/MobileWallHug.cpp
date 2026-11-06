@@ -533,7 +533,7 @@ int MobileWallHug::MoveToObjectPos()
 	return 38;
 }
 
-void MobileWallHug::MoveTo3D()
+int MobileWallHug::MoveTo3D()
 {
 	if (Pos.Altitude() > goal.Altitude())
 	{
@@ -543,7 +543,7 @@ void MobileWallHug::MoveTo3D()
 	{
 		Pos.altitude += 0.2f;
 	}
-	MoveTo();
+	return MoveTo();
 }
 
 int MobileWallHug::MoveTo()
@@ -723,7 +723,7 @@ int MobileWallHug::MoveTo()
 		}
 		break;
 	}
-	case MOVE_TO_STATES_0xa:
+	case MOVE_TO_STATES_REACHED_DESTINATION:
 		break;
 	default:
 		result = 0;
@@ -833,16 +833,6 @@ int MobileWallHug::MoveByStep(int& direction)
 	MapCoords pos = Pos;
 	MapCoords next((long)(pos.x + step.x), (long)(pos.z + step.z), pos.Altitude());
 	return MoveMapObject(next);
-}
-
-inline int MobileWallHug::GetDefaultSpeed()
-{
-	return GetInfo()->speed;
-}
-
-inline int MobileWallHug::GetRunningSpeed()
-{
-	return GetInfo()->RunningSpeed;
 }
 
 int MobileWallHug::CollideWithMapCell(uint16_t x, uint16_t z)

@@ -36,6 +36,11 @@ public:
 
 	// BW1W120 0055e990 BW1M119 inlined
 	Seagull() {}
+
+	// Static methods
+
+	// BW1W120 0041edd0 BW1M119 0117cd50
+	static Seagull* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_SEAGULL_INCLUDED_H */

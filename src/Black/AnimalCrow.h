@@ -36,6 +36,11 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Crow() {}
+
+	// Static methods
+
+	// BW1W120 0041eb90 BW1M119 0117d0b0
+	static Crow* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_CROW_INCLUDED_H */

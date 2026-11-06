@@ -128,6 +128,21 @@ block_relocations:
   - source: 0x00C23160
   - source: 0x00C31058
 add_relocations:
+# Animal.cpp's CallSaveStateFunction and CallLoadStateFunction: the lea of the state's SaveState and LoadState
+# member pointers in Animal::StateTable (dtk leaves the displacement unrelocated).
+  - source: 0x0041B9CA
+    type: x86_abs32
+    target: '?StateTable@Animal@@2PAUAnimalStateTableEntry@@A'
+    addend: 0x30
+  - source: 0x0041BA3A
+    type: x86_abs32
+    target: '?StateTable@Animal@@2PAUAnimalStateTableEntry@@A'
+    addend: 0x40
+# Animal.cpp's GAnimalStateTableInfo::Infos destructor loop starts from the end of the array, the end of the unit's .bss.
+  - source: 0x00416E57
+    type: x86_abs32
+    target: '?Infos@GAnimalStateTableInfo@@2PAV1@A'
+    addend: 0x2618
 # SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
 # the lea displacement unrelocated).
   - source: 0x00881491

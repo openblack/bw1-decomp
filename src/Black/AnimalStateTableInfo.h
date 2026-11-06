@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <chlasm/GStates.h> /* For ANIMAL_STATE_LAST_STATE */
 
 #include "BaseInfo.h"    /* For struct GBaseInfo */
@@ -16,14 +18,26 @@ class Base;
 class GAnimalStateTableInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0xa8];
+	int      Anim; /* 0x10 */
+	uint32_t field_0x14;
+	uint32_t field_0x18;
+	bool32_t isFinalState;
+	uint32_t field_0x20; /* 0x20 */
+	uint32_t isScriptState;
+	uint32_t isScriptInterruptableState;
+	int      ReturnState;
+	uint32_t field_0x30; /* 0x30 */
+	char     name[0x80];
+	bool32_t PerformsLivingChecks; /* 0xb4 */
 
 	// Override methods
 
-	// BW1W120 00416e80 BW1M119 01174300
-	virtual ~GAnimalStateTableInfo();
 	// BW1W120 00416e10 BW1M119 01175be0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = ANIMAL_STATE_LAST_STATE;
+		return Infos;
+	}
 
 	// Static data
 
@@ -36,7 +50,7 @@ public:
 	static GAnimalStateTableInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in Animal.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(Anim, PerformsLivingChecks)
 	INFO_ROOT_LOADERS("Animal.h", 52)
 };
 

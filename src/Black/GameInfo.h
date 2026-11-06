@@ -17,7 +17,7 @@ public:
 	uint8_t          field_0x9;
 	uint8_t          field_0xa;
 	uint8_t          field_0xb;
-	int              TimeScale;
+	uint32_t         TimeScale;
 	float            ElapsedDays; /* 0x10 */
 	float            ElapsedYears;
 	float            SecondsPerDay;

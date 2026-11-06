@@ -1611,7 +1611,7 @@ public:
 	// BW1W120 0070d440 BW1M119 01506e80
 	bool32_t IsCreatedByScript(uint32_t slot);
 	// BW1W120 0070cf50 BW1M119 01507ad0
-	int FindScriptGameThing(GameThingWithPos* thing);
+	static unsigned long FindScriptGameThing(GameThingWithPos* thing);
 	// BW1W120 00710350 BW1M119 0150caf0
 	HELP_SPIRIT_TYPE ConvertScriptSpiritToHelpSpirit(SCRIPT_SPIRIT_TYPE spirit);
 	// BW1W120 0070f600 BW1M119 010021c0

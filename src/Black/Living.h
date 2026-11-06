@@ -162,17 +162,27 @@ public:
 	uint32_t                                  field_0xa8;
 	DataPath*                                 data_path;
 	DataForScriptRemind*                      data_for_script_remind;
-	uint16_t                                  status;
-	LHPTR<Flock>                              flock;
-	LHPTR<GameThingWithPos>                   ReactionObject;
-	Object*                                   StructureMovingOn;
-	uint32_t                                  field_0xc4;
-	GFootpath*                                footpath;
-	GFootpathNode*                            footpath_node;
-	LH3DColor                                 SpecularColor;
-	uint32_t                                  field_0xd4;
-	LHPTR<DanceGroup>                         dance_group;
-	uint8_t                                   field_0xdc;
+	union {
+		uint16_t status;
+		struct
+		{
+			uint16_t StatusDying : 1;
+			uint16_t StatusPoisoned : 1;
+			uint16_t : 4;
+			uint16_t StatusSkeleton : 1;
+			uint16_t StatusDowned : 1;
+		};
+	};
+	LHPTR<Flock>            flock;
+	LHPTR<GameThingWithPos> ReactionObject;
+	Object*                 StructureMovingOn;
+	uint32_t                field_0xc4;
+	GFootpath*              footpath;
+	GFootpathNode*          footpath_node;
+	LH3DColor               SpecularColor;
+	uint32_t                field_0xd4;
+	LHPTR<DanceGroup>       dance_group;
+	uint8_t                 field_0xdc;
 
 	// Override methods
 
@@ -182,68 +192,20 @@ public:
 #endif
 	// BW1W120 005ec0a0 BW1M119 0138b460
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 004172d0 BW1M119 01006720
-	virtual bool32_t IsFunctional();
 	// BW1W120 005ee960 BW1M119 013858a0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005ee630 BW1M119 01385da0
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005eed20 BW1M119 01385850
 	virtual void ResolveLoad();
-	// BW1W120 004173c0 BW1M119 01139720
-	virtual bool32_t IsAnimate() { return true; }
-	// BW1W120 004172c0 BW1M119 01139360
-	virtual bool32_t IsStompable();
-	// BW1W120 00417470 BW1M119 01139a60
-	virtual bool32_t IsNotLiving() { return false; }
-	// BW1W120 00417330 BW1M119 011394f0
-	virtual bool32_t IsSuitableForCreatureAction() { return true; }
-	// BW1W120 00417350 BW1M119 01139590
-	virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
-	// BW1W120 004173d0 BW1M119 01139750
-	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
-	// BW1W120 00417390 BW1M119 01139670
-	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
-	// BW1W120 004173e0 BW1M119 011397a0
-	virtual bool32_t CanBeInspectedByCreature(Creature* param_1);
-	// BW1W120 00417410 BW1M119 01139860
-	virtual bool32_t CanBePoodUponByCreature(Creature* param_1) { return false; }
-	// BW1W120 00417430 BW1M119 01139930
-	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
-	// BW1W120 00417340 BW1M119 01139540
-	virtual bool32_t CanBeThrownByCreature(Creature* param_1) { return false; }
-	// BW1W120 00417420 BW1M119 011398b0
-	virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
-	// BW1W120 00417440 BW1M119 011399b0
-	virtual bool32_t CanBeDancedWith(Creature* param_1);
-	// BW1W120 00417450 BW1M119 01139a20
-	virtual bool32_t IsAggressive(Creature* param_1) { return true; }
-	// BW1W120 00417460 BW1M119 01006820
-	virtual bool32_t IsLiving() { return true; }
 	// BW1W120 00768580 BW1M119 0159bf00
 	virtual uint32_t AttitudeToCreatureEating();
-	// BW1W120 00416ff0 BW1M119 011384b0
-	virtual bool32_t IsSkeleton() const;
-	// BW1W120 00416f90 BW1M119 0105a140
-	virtual bool IsPoisoned();
-	// BW1W120 00417000 BW1M119 011384f0
-	virtual void SetSkeleton(bool32_t skeleton);
 	// BW1W120 005ee230 BW1M119 013866d0
 	virtual bool32_t MoveAlongPath();
-	// BW1W120 00417480 BW1M119 inlined
-	virtual void SetSpecularColor(unsigned long color) { SpecularColor = color; }
-	// BW1W120 00417490 BW1M119 01139ae0
-	virtual unsigned long GetSpecularColor() { return SpecularColor.GetColor(); }
 	// BW1W120 0051aec0 BW1M119 010c8e10
 	virtual void Draw();
-	// BW1W120 004172a0 BW1M119 011392e0
-	virtual bool32_t CanBePickedUp() { return !(Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP); }
-	// BW1W120 004172b0 BW1M119 01139320
-	virtual bool32_t CanBeCrushed() { return true; }
 	// BW1W120 005ec9b0 BW1M119 0138a3a0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 00416fa0 BW1M119 01138400
-	virtual void SetPoisoned(bool32_t poisoned);
 	// BW1W120 005ec390 BW1M119 0138ad10
 	virtual bool32_t SetDying();
 	// BW1W120 005eccb0 BW1M119 01389390
@@ -272,12 +234,20 @@ public:
 	virtual uint32_t RemoveFromGame();
 	// BW1W120 005ef340 BW1M119 01384cf0
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
+	// BW1W120 00416f90 BW1M119 0105a140
+	virtual bool IsPoisoned() { return StatusPoisoned; }
+	// BW1W120 00416fa0 BW1M119 01138400
+	virtual void SetPoisoned(bool32_t poisoned) { StatusPoisoned = poisoned; }
 	// BW1W120 005f2710 BW1M119 0138ddf0
 	virtual bool AmILikelyToMove();
 	// BW1W120 00416fd0 BW1M119 01138440
 	virtual void SetFoodSpeedup(bool value) {}
 	// BW1W120 00416fe0 BW1M119 01138470
 	virtual bool IsFoodSpeedUp() { return false; }
+	// BW1W120 00416ff0 BW1M119 011384b0
+	virtual bool32_t IsSkeleton() const { return StatusSkeleton; }
+	// BW1W120 00417000 BW1M119 011384f0
+	virtual void SetSkeleton(bool32_t skeleton) { StatusSkeleton = skeleton; }
 	// BW1W120 005ec3e0 BW1M119 0138acd0
 	virtual uint32_t GetNumTurnsToDieOver();
 	// BW1W120 005ec1e0 BW1M119 0138b350
@@ -345,7 +315,7 @@ public:
 	// BW1W120 005f28e0 BW1M119 01077ec0
 	virtual int SetTopState(uint8_t state);
 	// BW1W120 00417040 BW1M119 01138570
-	virtual void StorePreviousState();
+	virtual void StorePreviousState() { action.SetState(LIVING_ACTION_INDEX_PREVIOUS, GetFinalState()); }
 	// BW1W120 00473e50 BW1M119 011eaa80
 	virtual void SetStateSpeed() {}
 	// BW1W120 purecall BW1M119 null
@@ -419,7 +389,7 @@ public:
 	// BW1W120 00473e90 BW1M119 011eab90
 	virtual bool IsInterestedInFoodObject(Object* param_1);
 	// BW1W120 00417080 BW1M119 011386c0
-	virtual bool IsInterestedInWoodObject(Object* param_1);
+	virtual bool32_t IsInterestedInWoodObject(Object* object) { return false; }
 	// BW1W120 005f11f0 BW1M119 0101c640
 	virtual bool32_t IsAvailableForReaction(REACTION reaction);
 	// BW1W120 00417090 BW1M119 01138710
@@ -623,7 +593,19 @@ public:
 	virtual bool32_t IsStateEntryFunctionSameAs(unsigned long state, unsigned long other_state) const { return false; }
 #endif
 	// BW1W120 00417270 BW1M119 01139210
-	virtual bool32_t IsDead();
+	virtual bool32_t IsDead()
+	{
+		return StatusDying == true || action.GetState(LIVING_ACTION_INDEX_TOP) == VILLAGER_STATE_DEAD ||
+		       IsFunctional() != true;
+	}
+	// BW1W120 004172a0 BW1M119 011392e0
+	virtual bool32_t CanBePickedUp() { return !(Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP); }
+	// BW1W120 004172b0 BW1M119 01139320
+	virtual bool32_t CanBeCrushed() { return true; }
+	// BW1W120 004172c0 BW1M119 01139360
+	virtual bool32_t IsStompable() { return !IsDead(); }
+	// BW1W120 004172d0 BW1M119 01006720
+	virtual bool32_t IsFunctional() { return IsAvailable() == true && GetLife() != 0.0f; }
 	// BW1W120 00473ed0 BW1M119 011ead00
 	virtual bool32_t IsChild() { return false; }
 	// BW1W120 005f2160 BW1M119 0138e660
@@ -642,6 +624,44 @@ public:
 	virtual DANCE_INFO DanceType() { return DANCE_INFO_WORSHIP; }
 	// BW1W120 005ee550 BW1M119 01386470
 	virtual bool32_t CanBeHealedByHealSpell();
+	// BW1W120 00417330 BW1M119 011394f0
+	virtual bool32_t IsSuitableForCreatureAction() { return true; }
+	// BW1W120 00417340 BW1M119 01139540
+	virtual bool32_t CanBeThrownByCreature(Creature* creature) { return false; }
+	// BW1W120 00417350 BW1M119 01139590
+	virtual bool32_t CanBeAttackedByCreature(Creature* creature)
+	{
+		return !IsDead() && info->CanCreatureAttackMe && reinterpret_cast<Object*>(creature) != this;
+	}
+	// BW1W120 00417390 BW1M119 01139670
+	virtual bool32_t CanBePlayedWithByCreature(Creature* creature) { return !IsDead() && info->CanCreaturePlayWithMe; }
+	// BW1W120 004173c0 BW1M119 01139720
+	virtual bool32_t IsAnimate() { return true; }
+	// BW1W120 004173d0 BW1M119 01139750
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return false; }
+	// BW1W120 004173e0 BW1M119 011397a0
+	virtual bool32_t CanBeInspectedByCreature(Creature* creature)
+	{
+		return !IsDead() && Object::CanBeInspectedByCreature(creature);
+	}
+	// BW1W120 00417410 BW1M119 01139860
+	virtual bool32_t CanBePoodUponByCreature(Creature* creature) { return false; }
+	// BW1W120 00417420 BW1M119 011398b0
+	virtual bool32_t CanBeDestroyedByStoning(Creature* creature);
+	// BW1W120 00417430 BW1M119 01139930
+	virtual bool32_t CanBeStompedOnByCreature(Creature* creature);
+	// BW1W120 00417440 BW1M119 011399b0
+	virtual bool32_t CanBeDancedWith(Creature* creature);
+	// BW1W120 00417450 BW1M119 01139a20
+	virtual bool32_t IsAggressive(Creature* creature) { return true; }
+	// BW1W120 00417460 BW1M119 01006820
+	virtual bool32_t IsLiving() { return true; }
+	// BW1W120 00417470 BW1M119 01139a60
+	virtual bool32_t IsNotLiving() { return false; }
+	// BW1W120 00417480 BW1M119 inlined
+	virtual void SetSpecularColor(unsigned long color) { SpecularColor = color; }
+	// BW1W120 00417490 BW1M119 01139ae0
+	virtual unsigned long GetSpecularColor() { return SpecularColor.GetColor(); }
 	// BW1W120 004174a0 BW1M119 0112aa80
 	virtual bool32_t MoveAllowedForChessGame(long x, long z) { return false; }
 	// BW1W120 004174b0 BW1M119 0112aac0
@@ -699,8 +719,12 @@ public:
 	int MoveToPos();
 	// BW1W120 005ec2c0 BW1M119 0138af80
 	bool32_t MoveToObject();
+	// BW1W120 005ec240 BW1M119 0138b2b0
+	int SimpleMoveTo();
 	// BW1W120 005ec330 BW1M119 0138aed0
 	bool32_t Flying();
+	// BW1W120 005ec480 BW1M119 0138aaa0
+	void SetDowned();
 	// BW1W120 005ec520 BW1M119 0138a880
 	bool32_t LookAtObject(GameThingWithPos* object, unsigned long speed);
 	// BW1W120 005ec550 BW1M119 0138a720
@@ -732,7 +756,7 @@ public:
 	// BW1W120 005ecf60 BW1M119 01067e30
 	MapCoords* GetDomainCentrePos();
 	// BW1W120 005ecf70 BW1M119 0104e920
-	bool IAmFlockLeader();
+	bool32_t IAmFlockLeader();
 	// BW1W120 005ecfa0 BW1M119 01067cc0
 	uint16_t GetDomainRadius();
 	// BW1W120 005ecfc0 BW1M119 0106f4d0
