@@ -13,6 +13,12 @@ block_relocations:
 # SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
   - source: 0x0072CD83
   - source: 0x0072CD89
+  - source: 0x00C9DC68
+  - source: 0x007B5A5F
+  - source: 0x007B5A8B
+  - source: 0x007B64A9
+  - source: 0x007B5CE8
+  - source: 0x007B5D14
 # "tMM" of LHFile's Version.cpp LH_VERSION_END_TAG reads as a pointer into code.
   - source: 0x00C9F59C
 # libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in Creature Isle's larger image both read as pointers.
