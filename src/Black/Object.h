@@ -94,7 +94,8 @@ enum OBJECT_APPLY_RESULT
 {
 	OBJECT_APPLY_RESULT_NONE = 0,
 	OBJECT_APPLY_RESULT_RESOURCE_TAKEN = 3,
-	OBJECT_APPLY_RESULT_THROWN = 0x16
+	OBJECT_APPLY_RESULT_THROWN = 0x16,
+	OBJECT_APPLY_RESULT_DROPPED = 0x17
 };
 
 struct PhysicsInitialisation
@@ -255,7 +256,7 @@ public:
 	// BW1W120 00638040 BW1M119 01057b90
 	virtual void ActualMoveMapObject(const MapCoords& coords);
 	// BW1W120 00402570 BW1M119 0136d060
-	virtual Object* GetPtr();
+	virtual Object* GetPtr() { return this; }
 	// BW1W120 00636bd0 BW1M119 013e0600
 	virtual float GetMeshRadius() const;
 	// BW1W120 00402580 BW1M119 01353d20
@@ -488,7 +489,10 @@ public:
 	// BW1W120 00402880 BW1M119 010b4ce0
 	virtual bool32_t ValidToRemoveFromHand(GInterfaceStatus* status, const MapCoords& coords) { return false; }
 	// BW1W120 00402890 BW1M119 010a2bd0
-	virtual uint32_t RemoveFromHand(GInterfaceStatus* status, const MapCoords& coords);
+	virtual uint32_t RemoveFromHand(GInterfaceStatus* status, const MapCoords& coords)
+	{
+		return OBJECT_APPLY_RESULT_DROPPED;
+	}
 	// BW1W120 00636aa0 BW1M119 01095640
 	virtual bool32_t ValidToShakeFromHand();
 	// BW1W120 004028a0 BW1M119 01573f80
@@ -527,7 +531,10 @@ public:
 	// BW1W120 00402940 BW1M119 010a2650
 	virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* status, Object* param_2) { return 0; }
 	// BW1W120 00402950 BW1M119 010a2c30
-	virtual uint32_t InterfaceGiveObject(GInterfaceStatus* status, Object* object);
+	virtual uint32_t InterfaceGiveObject(GInterfaceStatus* status, Object* object)
+	{
+		return OBJECT_APPLY_RESULT_THROWN;
+	}
 	// BW1W120 00402960 BW1M119 010a2c90
 	virtual uint32_t InterfaceValidToInteractAsMapCoordsObject(GInterfaceStatus* status) { return 0; }
 	// BW1W120 00402970 BW1M119 010a2d00

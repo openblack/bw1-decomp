@@ -1782,8 +1782,13 @@ static std::string EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4,
 	std::string text[1];
 	return text[0];
 }
-#elif defined(VERSION_BW1W130) || defined(VERSION_BW1WCI)
+#elif defined(VERSION_BW1W130)
 static void EmptyString()
+{
+	std::string text;
+}
+#elif defined(VERSION_BW1WCI)
+static void EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4)
 {
 	std::string text;
 }

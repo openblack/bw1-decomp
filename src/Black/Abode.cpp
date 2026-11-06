@@ -16,6 +16,9 @@
 #include "Creche.h"
 #include "EditorPhysics.h"
 #include "Field.h"
+#ifdef VERSION_BW1W110
+#include "AbodeInfo.h"
+#endif
 #include "FieldTypeInfo.h"
 #include "FootpathNode.h"
 #include "GameOSFile.h"
@@ -28,12 +31,12 @@
 #include "CitadelHeartInfo.h"
 #include "Creature.h"
 #include "PhysicsObject.h"
+#include "AbodeInfo.h"
 #include "MobileStaticInfo.h"
 #include "StreetLantern.h"
 #include "ScriptHighlightInfo.h"
 #include "ScriptHighlight.h"
 #include "SoundGuidance.h"
-#include "AbodeInfo.h"
 #pragma data_seg(".CRT$XCU")
 static void* CrtPad[15] = {0};
 #pragma data_seg()
@@ -41,6 +44,7 @@ static void* CrtPad[15] = {0};
 #include "GameTimeConstants.h"
 #include "LandscapeConstants.h"
 #include "TimerConstants.h"
+#include "HelpTextDataBase.h"
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #include "ColourConstants.h"
 #endif
@@ -131,22 +135,6 @@ static int  KnockSample = 0;
 static const MESH_LIST WindmillSailsMesh = (MESH_LIST)133;
 // The hand animation for knocking on an abode.
 static const long KnockAnimation = 0x39;
-
-GBaseInfo* GAbodeInfo::GetBaseInfo(uint32_t& num_infos)
-{
-	num_infos = ABODE_INFO_LAST;
-	return &AbodeInfos[0];
-}
-
-Abode* Abode::CastAbode()
-{
-	return this;
-}
-
-Town* Abode::GetTown()
-{
-	return town.Get();
-}
 
 Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* _town, float y_angle, float scale, float food,
              int wood)
@@ -1153,21 +1141,6 @@ GAbodeInfo* PlannedAbode::GetInfo()
 	return (GAbodeInfo*)info.Get();
 }
 
-Town* PlannedAbode::GetTown()
-{
-	return town.Get();
-}
-
-uint32_t PlannedAbode::GetSaveType()
-{
-	return GAME_THING_TYPE_PLANNED_ABODE;
-}
-
-char* PlannedAbode::GetDebugText()
-{
-	return "Planned Abode";
-}
-
 void PlannedAbode::SetPlannedScale(float scale_)
 {
 	scale = scale_;
@@ -1249,16 +1222,6 @@ Windmill* Windmill::Create(const MapCoords& coords, const GAbodeInfo* info, Town
 		windmill->CallVirtualFunctionsForCreation(coords);
 	}
 	return windmill;
-}
-
-uint32_t Windmill::GetSaveType()
-{
-	return GAME_THING_TYPE_WINDMILL;
-}
-
-char* Windmill::GetDebugText()
-{
-	return "Windmill:";
 }
 
 void Windmill::CallVirtualFunctionsForCreation(const MapCoords& coords)
@@ -1716,10 +1679,12 @@ bool32_t Abode::CanBecomeAPhysicsObject()
 	return false;
 }
 
+#ifndef VERSION_BW1W110
 SCRIPT_OBJECT_TYPE Abode::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_ABODE;
 }
+#endif
 
 uint32_t Abode::InterfaceValidToTap(GInterfaceStatus* status)
 {
@@ -1762,6 +1727,13 @@ uint32_t Abode::InterfaceTap(GInterfaceStatus* status)
 	}
 	return 1;
 }
+
+#ifdef VERSION_BW1W110
+SCRIPT_OBJECT_TYPE Abode::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_ABODE;
+}
+#endif
 
 float Abode::GetDesireToBeRepaired()
 {

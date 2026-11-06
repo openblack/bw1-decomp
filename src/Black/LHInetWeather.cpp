@@ -698,6 +698,10 @@ LH_RETURN LHInetWeather::SaveWeatherData()
 	return LH_OK;
 }
 
+#if defined(VERSION_BW1W110)
+static void EmptyLocation(int arg0) {}
+#endif
+
 #ifndef VERSION_BW1W100
 LH_RETURN LHInetWeather::LoadWeatherData()
 {
