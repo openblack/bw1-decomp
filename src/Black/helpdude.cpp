@@ -30,6 +30,10 @@
 #include "HelpSystem.h"
 #include "Rand.h"
 
+// Milliseconds since the last frame, at most half a second.
+// BW1W120 005557e0 BW1M119 010caca0
+int GetAlexTimeInc();
+
 #define HELPDUDE_LINE(line) (line)
 
 #define HELPDUDE_TRAIL_VERTICES  (HELPDUDE_TRAIL_LENGTH * 2)

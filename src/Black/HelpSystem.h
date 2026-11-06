@@ -223,6 +223,13 @@ enum HELP_SYSTEM_CONDITION
 	HELP_SYSTEM_CONDITION_LAST = 18,
 };
 
+enum IMMERSION_LEVEL
+{
+	IMMERSION_LEVEL_0 = 0x0,
+	IMMERSION_LEVEL_1 = 0x1,
+	IMMERSION_LEVEL_2 = 0x2,
+};
+
 enum HELP_EVENT_TYPE
 {
 	HELP_EVENT_TYPE_0 = 0x0,
@@ -378,6 +385,8 @@ public:
 
 	// BW1W120 005c8fe0 BW1M119 0107fa70
 	void Process();
+	// BW1W120 005c7b70 BW1M119 013551b0
+	void SetImmersionLevel(IMMERSION_LEVEL level);
 	// BW1W120 005c9060 BW1M119 null
 	void ProcessSpirits();
 	// BW1W120 005c9090 BW1M119 01048fc0
@@ -419,6 +428,8 @@ public:
 	bool32_t Load(GameOSFile& file);
 	// BW1W120 005c78b0 BW1M119 013555d0
 	void ResolveLoad();
+	// BW1W120 005c79e0 BW1M119 013553f0
+	void SaveTextOnTempleEntry();
 
 	// BW1W120 005c5460 BW1M119 0135a0a0
 	void SetToZero();

@@ -50,6 +50,9 @@
 #include "alexmfc.h"              /* For struct SetupBox */
 #include "CreatureStatsDisplay.h" /* For DrawCreatureFightStats */
 
+// BW1W120 0054a770 BW1M119 0107d6c0
+void SetTurnOffMouseMove(bool turn_off);
+
 const float BigDistance = 3.4028235e+38f;
 
 const float MaxPitch = PI_F * 7 / 16;

@@ -827,6 +827,14 @@ public:
 	inline float GetBreathTime();
 	// BW1W120 inlined BW1M119 inlined
 	float GetRequiredBreathTime() { return field_0x4990; }
+	// BW1W120 inlined BW1M119 0128e640
+	long GetRightHand() { return RightHand; }
+	// BW1W120 inlined BW1M119 01341a10
+	long GetHeadBone() { return HeadBone; }
+	// BW1W120 inlined BW1M119 0136ff60
+	long GetHeadGrowBone() { return HeadGrowBone; }
+	// BW1W120 inlined BW1M119 014f6090
+	long GetBellyBone() { return BellyBone; }
 };
 #ifndef VERSION_BW1WCI
 static_assert(sizeof(LH3DCreature) == 0x57b8, "LH3DCreature size is incorrect");
