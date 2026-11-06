@@ -18,8 +18,8 @@ class Villager;
 
 struct DesireSort
 {
-	uint32_t              field_0x0;
-	float                 field_0x4;
+	float                 Modifier;
+	float                 Desire;
 	enum TOWN_DESIRE_INFO Type;
 
 	// BW1W120 00746570 BW1M119 01080700
@@ -83,11 +83,16 @@ public:
 	// BW1W120 00746660 BW1M119 01566c40
 	float GetDesireSignificanceToVillager(TOWN_DESIRE_INFO desire);
 	// BW1W120 007471c0 BW1M119 015659b0
-	void SaveObject(LHOSFile& file, const MapCoords& offset);
+	uint32_t SaveObject(LHOSFile& file, const MapCoords& offset);
 	// BW1W120 00747150 BW1M119 01086730
 	float CalculateAverageTownNeeds();
 	// BW1W120 00745ea0 BW1M119 01567770
 	TOWN_DESIRE_INFO GetMostSignificantRawDesire(float minimum);
+
+	// Static methods
+
+	// BW1W120 00746110 BW1M119 0105f520
+	static int QSortCompare(const void* a, const void* b);
 
 	// BW1W120 00747270 BW1M119 015658f0
 	static int GetDesireFromText(char* text);

@@ -20,7 +20,7 @@ struct AgeToScale
 class GLivingInfo : public GMobileWallHugInfo
 {
 public:
-	uint32_t field_0x120;
+	uint32_t LivingType;
 	uint8_t  move_to_state;
 	float    life;
 	float    Strength;
@@ -35,7 +35,7 @@ public:
 	uint32_t MaxFlockingValue;
 
 	// TODO(#377): The original declared this class in Living.h.
-	INFO_DATA_BLOCK(field_0x120, MaxFlockingValue)
+	INFO_DATA_BLOCK(LivingType, MaxFlockingValue)
 	INFO_DERIVED_LOADERS(GMobileWallHugInfo, "Living.h", 197)
 };
 

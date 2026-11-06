@@ -60,7 +60,7 @@ public:
 	float    field_0x158;
 	float    field_0x15c;
 	float    DiscipleAlignmentChange;
-	float    field_0x164;
+	float    ForestSearchDistance;
 	uint32_t field_0x168;
 	float    SkirmishBeliefSpeedModifier;
 	float    LandBeliefSpeedModifier[GAME_NUM_CAMPAIGN_LANDS];

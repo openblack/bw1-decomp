@@ -1,5 +1,6 @@
 #include "MapCellConstants.h" /* For MetresPerMapCell */
 #include "GameTimeConstants.h"
+#include "TimerConstants.h"
 #include "Town.h"
 
 #include <limits.h> /* For INT_MAX */
@@ -71,6 +72,7 @@
 #include "Tree.h"
 #include "TribeInfo.h"
 #include "VillagerInfo.h"
+#include "VillagerStates.h"
 #include "Wonder.h"
 #include "Workshop.h"
 #include "WorshipSite.h"
@@ -172,12 +174,12 @@ void Town::DeleteDependancys()
 	{
 		RemoveStructureFromTown(AbodeList.head);
 	}
-	LHLinkedNode<Animal*>* node;
-	Animal*                animal;
-	while ((node = AnimalList.GetStart()) != NULL && (animal = node->payload) != NULL)
+	Animal* animal = AnimalList.GetHead();
+	while (animal != NULL)
 	{
 		animal->SetTown(NULL);
 		AnimalList.Remove(animal);
+		animal = AnimalList.GetStart() != NULL ? AnimalList.GetStart()->payload : NULL;
 	}
 	MeetingList.ToBeDeletedEach();
 	PlannedList.ToBeDeletedEach();
@@ -213,11 +215,11 @@ void Town::DeleteDependancys()
 	MissionaryList.DeleteAll();
 }
 
-void Town::ToBeDeleted(int param_1)
+void Town::ToBeDeleted(bool32_t delete_now)
 {
 	if ((GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE) == 0)
 	{
-		GameThingWithPos::ToBeDeleted(param_1);
+		GameThingWithPos::ToBeDeleted(delete_now);
 		DeleteDependancys();
 		GGame::g_game->ForceNeedUpdateInfluence();
 	}
@@ -392,19 +394,18 @@ int Town::PopulateTown(unsigned long count)
 	TownJobWeight weights[VILLAGER_JOB_LAST];
 	for (int job = 0; job < VILLAGER_JOB_LAST; job++)
 	{
-		for (int i = 0; i < VILLAGER_INFO_LAST; i++)
+		for (GVillagerInfo* info = GVillagerInfo::InfoList; info < &GVillagerInfo::InfoList[VILLAGER_INFO_LAST]; info++)
 		{
-			GVillagerInfo* info = &GVillagerInfo::InfoList[i];
 			if (info->TribeType == tribe)
 			{
-				int jobType = GJobInfo::InfoList[info->PrimaryJob].field_0x10[0];
+				VILLAGER_JOB jobType = GJobInfo::InfoList[info->PrimaryJob].VillagerJobs[0];
 				if (jobType == VILLAGER_JOB_HOUSEWIFE)
 				{
 					femaleInfo = info;
 				}
 				if (GetInfo()->JobWeights[job] != 0 && job == jobType)
 				{
-					if (GJobInfo::InfoList[info->PrimaryJob].field_0x10[0] == VILLAGER_JOB_LEADER)
+					if (GJobInfo::InfoList[info->PrimaryJob].VillagerJobs[0] == VILLAGER_JOB_LEADER)
 					{
 						maleInfo = info;
 					}
@@ -862,11 +863,7 @@ void Town::ResetAllDiscipleStates()
 			}
 		}
 	}
-	FOREACH_LH_LIST_HEAD_SAFE(MissionaryControl, missionary, MissionaryList)
-	{
-		missionary->ToBeDeleted(0);
-	}
-	MissionaryList.Clear();
+	MissionaryList.ToBeDeletedEach();
 }
 
 void Town::SetAverageGameTurnsToTravelToWorshipSite()
@@ -884,10 +881,10 @@ void Town::SetAverageGameTurnsToTravelToWorshipSite()
 void Town::SetTownArea()
 {
 	MapCoords centre;
-	AreaMin.x = INT_MAX;
-	AreaMin.z = INT_MAX;
-	AreaMax.x = 0;
-	AreaMax.z = 0;
+	AreaMin.SetWholeX(INT_MAX);
+	AreaMin.SetWholeZ(INT_MAX);
+	AreaMax.SetWholeX(0);
+	AreaMax.SetWholeZ(0);
 	FOREACH_LH_LIST_HEAD(Abode, abode, AbodeList)
 	{
 		SetTownArea(abode);
@@ -898,7 +895,7 @@ void Town::SetTownArea()
 	}
 	if (totem != NULL)
 	{
-		centre = totem->Pos;
+		centre = GetTotem()->Pos;
 	}
 	else if (GetStoragePit() != NULL)
 	{
@@ -908,10 +905,8 @@ void Town::SetTownArea()
 	{
 		centre = GetAreaCentre();
 	}
-	float width = AreaMax.MetersX() - AreaMin.MetersX();
-	float depth = AreaMax.MetersZ() - AreaMin.MetersZ();
-	float size = width > depth ? width : depth;
-	centre.altitude = 0.0f;
+	float size = max(AreaMax.MetersX() - AreaMin.MetersX(), AreaMax.MetersZ() - AreaMin.MetersZ());
+	centre.SetAltitude(0.0f);
 	LHPoint focus;
 	GLandscape::ConvertMapCoordToLandscapePoint(centre, focus);
 	LHPoint cameraPos;
@@ -1626,8 +1621,7 @@ void Town::AdjustWorshipersWorshipping(long worshippers_needed, int ignore_low_l
 			     node != NULL && worshippers_needed != 0; node = node->next)
 			{
 				Villager* villager = node->GetData();
-				if (ignore_low_life ||
-				    ((const GVillagerInfo*)villager->info)->DamageThresholdToGoHome < villager->GetLife())
+				if (ignore_low_life || villager->GetInfo()->DamageThresholdToGoHome < villager->GetLife())
 				{
 					if (villager->CheckWorshipActivity(num_needed) == 1)
 					{
@@ -1905,7 +1899,9 @@ float Town::GetBeliefNeededToConvertTown(GPlayer* player)
 
 void Town::SetVillagerBuildingSite(BuildingSite* site, Villager* villager)
 {
-	if (IsBuildingSiteValid(site))
+	if (IsBuildingSiteValid(site) &&
+	    VillagerStateTableEntry::StateTable[villager->action.GetState(LIVING_ACTION_INDEX_TOP)].ExitState !=
+	        &Villager::ExitBuilding)
 	{
 		villager->building_site = site;
 	}
@@ -2028,14 +2024,14 @@ bool32_t Town::IsBuildingSiteValid(BuildingSite* site)
 	return false;
 }
 
-BuildingSite* Town::GetBestBuildingSite(const MapCoords& pos, int param_2)
+BuildingSite* Town::GetBestBuildingSite(const MapCoords& pos, bool32_t include_builder_not_needed)
 {
 	BuildingSite* bestSite = NULL;
 	float         bestDist = 99999.0f;
 	for (LHLinkedNode<BuildingSite*>* node = BuildingSiteList.GetStart(); node != NULL; node = node->next.Get())
 	{
 		BuildingSite* site = node->payload;
-		if (site->GetBuilding() != NULL && (site->IsBuilderNeeded() || param_2))
+		if (site->GetBuilding() != NULL && (site->IsBuilderNeeded() || include_builder_not_needed))
 		{
 			MultiMapFixed* building = node->payload->GetBuilding();
 			if (building == NULL)
@@ -2371,7 +2367,8 @@ void Town::ProcessDesireFlags()
 			else
 			{
 				town_desire_flags[i]->Process();
-				town_desire_flags[i]->Desire = GetRawDesire(town_desire_flags[i]->DesireType);
+				TOWN_DESIRE_INFO type = town_desire_flags[i]->DesireType;
+				town_desire_flags[i]->Desire = GetRawDesire(type);
 			}
 		}
 	}
@@ -2457,12 +2454,15 @@ Game3DObject* GAbodeInfo::GetTemporaryMesh() const
 
 float Town::GetWonderPower(const MapCoords& pos)
 {
-	MapCoords coords = pos;
-	float     power = GetRawDesire(TOWN_DESIRE_INFO_TO_BUILD_WONDER);
-	float     radius = max(power * 15.0f, 15.0f);
-	int       count = GUtils::GetMapCellSpiralSizeFromRadius(radius);
-	long      spiralX = 1;
-	long      spiralZ = 1;
+	MapCoords coords;
+	coords.SetWholeX(pos.WholeX());
+	coords.SetWholeZ(pos.WholeZ());
+	coords.SetAltitude(pos.altitude);
+	float power = GetRawDesire(TOWN_DESIRE_INFO_TO_BUILD_WONDER);
+	float radius = max(power * 15.0f, 15.0f);
+	int   count = GUtils::GetMapCellSpiralSizeFromRadius(radius);
+	long  spiralX = 1;
+	long  spiralZ = 1;
 	for (; count != 0; count--)
 	{
 		for (MapCellIterator it = pos.GetFirstIterator(); it.object != NULL;)
@@ -2532,7 +2532,7 @@ Flock* Town::GetFlock(LIVING_TYPE living_type, int include_shepherded)
 		if (flock->Shepherd == NULL || include_shepherded == 1)
 		{
 			Living* first = flock->Members.GetFirst();
-			if (((const GLivingInfo*)first->GetInfo())->field_0x120 == living_type || living_type == LIVING_TYPE_ANY)
+			if (((const GLivingInfo*)first->GetInfo())->LivingType == living_type || living_type == LIVING_TYPE_ANY)
 			{
 				if (flock->Members.GetLast() != NULL)
 				{
@@ -2714,9 +2714,9 @@ float Town::GetRawDesire(TOWN_DESIRE_INFO desire_type)
 	return desire.RawDesire[desire_type] + desire.DesireBoost[desire_type] + desire.DesireCheat[desire_type];
 }
 
-void Town::VillagerDead(Villager* villager, DEATH_REASON reason, GPlayer* player, float param_4)
+void Town::VillagerDead(Villager* villager, DEATH_REASON reason, GPlayer* player, float damage)
 {
-	stats.VillagerDead(villager, reason, player, param_4);
+	stats.VillagerDead(villager, reason, player, damage);
 	GetPlayer()->GetStats()->TotalDeaths++;
 	player->GetStats()->VillagersKilled++;
 	if (graveyard != NULL)
@@ -2732,7 +2732,7 @@ float Town::GetBeliefInNeutralPlayer()
 	return BeliefInNeutralPlayer;
 }
 
-PlannedMultiMapFixed* Town::GetPlannedAtPos(const MapCoords& pos, float radius, int param_3)
+PlannedMultiMapFixed* Town::GetPlannedAtPos(const MapCoords& pos, float radius, bool32_t constructed_only)
 {
 	PlannedMultiMapFixed* best = NULL;
 	float                 bestDistance = radius;
@@ -2740,7 +2740,7 @@ PlannedMultiMapFixed* Town::GetPlannedAtPos(const MapCoords& pos, float radius, 
 	{
 		FOREACH_LH_LIST_HEAD(PlannedMultiMapFixed, planned, PlannedList)
 		{
-			if (planned->WasConstructed || param_3 == 0)
+			if (planned->WasConstructed || !constructed_only)
 			{
 				const GMultiMapFixedInfo* info = planned->info.Get();
 				float                     meshRadius = info->GetMesh2DRadius(planned->GetScale());
@@ -2788,11 +2788,11 @@ float Town::GetTribalPower(TRIBE_TYPE tribe_type)
 }
 
 Villager* Town::FindVillager(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-                             SCRIPT_OBJECT_TYPE type, uint32_t param_3)
+                             SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	FOREACH_LH_LIST_HEAD(Abode, abode, AbodeList)
 	{
-		Villager* villager = abode->FindVillager(callback, type, param_3);
+		Villager* villager = abode->FindVillager(callback, type, subtype);
 		if (villager != NULL)
 		{
 			return villager;
@@ -2800,7 +2800,7 @@ Villager* Town::FindVillager(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OB
 	}
 	FOREACH_LH_LIST_HEAD(Villager, villager, HomelessList)
 	{
-		if (callback(villager, type, param_3))
+		if (callback(villager, type, subtype))
 		{
 			return villager;
 		}
@@ -2824,11 +2824,11 @@ float Town::GetTownAndVillagerHealthTotal()
 }
 
 Animal* Town::FindAnimal(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-                         SCRIPT_OBJECT_TYPE type, uint32_t param_3)
+                         SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
 	for (LHLinkedNode<Flock*>* node = FlockList.GetStart(); node != NULL; node = node->next.Get())
 	{
-		Animal* animal = node->payload->FindAnimal(callback, type, param_3);
+		Animal* animal = node->payload->FindAnimal(callback, type, subtype);
 		if (animal != NULL)
 		{
 			return animal;
@@ -2838,12 +2838,12 @@ Animal* Town::FindAnimal(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT
 }
 
 Living* Town::FindLiving(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-                         SCRIPT_OBJECT_TYPE type, uint32_t param_3)
+                         SCRIPT_OBJECT_TYPE type, uint32_t subtype)
 {
-	Living* living = FindAnimal(callback, type, param_3);
+	Living* living = FindAnimal(callback, type, subtype);
 	if (living == NULL)
 	{
-		living = FindVillager(callback, type, param_3);
+		living = FindVillager(callback, type, subtype);
 	}
 	return living;
 }
@@ -2991,7 +2991,7 @@ void Town::AssignForestsToTown()
 	{
 		MapCoords edge = forest->GetNearestEdgeToPos(pos);
 		float     distance = edge.GetDistance(pos);
-		if (distance < GetInfo()->field_0x164)
+		if (distance < GetInfo()->ForestSearchDistance)
 		{
 			if (forest->GetWoodValue() != 0.0f)
 			{
@@ -3003,10 +3003,10 @@ void Town::AssignForestsToTown()
 
 Forest* Town::FindNearestForestToPos(const MapCoords& pos)
 {
-	float   bestDist = GetInfo()->field_0x164;
+	float   bestDist = GetInfo()->ForestSearchDistance;
 	Forest* best = NULL;
 	Forest* bestScenic = NULL;
-	float   bestScenicDist = GetInfo()->field_0x164;
+	float   bestScenicDist = GetInfo()->ForestSearchDistance;
 	for (LHLinkedNode<Forest*>* node = forests.GetStart(); node != NULL; node = node->next.Get())
 	{
 		Forest*   forest = node->payload;
@@ -3531,7 +3531,7 @@ float Town::GetPosWhereVillagersAre(const MapCoords& from, MapCoords& pos)
 	}
 	pos = GetCongregationPos();
 	locations.Insert(new (FILEPATH, TOWN_LINE(4511)) TownLocation(pos, from));
-	if (GetTownCentre() != NULL)
+	if (town_centre != NULL)
 	{
 		pos = GetTownCentre()->Pos;
 		locations.Insert(new (FILEPATH, TOWN_LINE(4515)) TownLocation(pos, from));
@@ -3547,12 +3547,7 @@ float Town::GetPosWhereVillagersAre(const MapCoords& from, MapCoords& pos)
 		score = locations.GetHead()->GetData()->Score;
 		pos = locations.GetHead()->GetData()->Pos;
 	}
-	while (locations.GetHead() != NULL)
-	{
-		TownLocation* location = locations.GetHead()->GetData();
-		locations.Remove(location);
-		delete location;
-	}
+	locations.DeleteAll();
 	return score;
 }
 
@@ -3695,7 +3690,11 @@ uint32_t Town::GetDeathsFromWorshipping()
 
 int Town::GetDeaths(DEATH_REASON reason)
 {
-	if (reason < 0 || reason >= DEATH_REASON_LAST)
+	if (reason < 0)
+	{
+		return 0;
+	}
+	if (reason >= DEATH_REASON_LAST)
 	{
 		return 0;
 	}
@@ -3758,7 +3757,15 @@ float Town::GetDesireToBeTakenOver(GPlayer* player)
 	{
 		desire += 0.75f;
 	}
-	return desire > 0.1f ? (desire >= 1.0f ? 1.0f : desire) : 0.1f;
+	if (desire > 0.1f)
+	{
+		desire = min(desire, 1.0f);
+	}
+	else
+	{
+		desire = 0.1f;
+	}
+	return desire;
 }
 
 GameThing* Town::GetStoragePitObjectForComputerPlayer(RESOURCE_TYPE type)
@@ -3888,12 +3895,12 @@ StoragePit* Town::GetStoragePitEvenIfPlanned()
 
 void Town::ResolveLoad() {}
 
-bool32_t Town::FindClearArea(MapCoords& result, MapCoords& pos, float param_3, float param_4, float radius,
-                             int (Object::*callback)() const, Object* obj)
+bool32_t Town::FindClearArea(MapCoords& result, MapCoords& pos, float spiral_radius, float spiral_increment,
+                             float radius, int (Object::*callback)() const, Object* obj)
 {
 	MapCoords coords = pos;
 	bool      found = false;
-	int       count = GUtils::GetIncrementSpiralSizeFromRadius(param_3, param_4);
+	int       count = GUtils::GetIncrementSpiralSizeFromRadius(spiral_radius, spiral_increment);
 	long      spiralX = 1;
 	long      spiralZ = 1;
 	while (count != 0)
@@ -3904,7 +3911,7 @@ bool32_t Town::FindClearArea(MapCoords& result, MapCoords& pos, float param_3, f
 			break;
 		}
 		count--;
-		GUtils::SpiralIncrement(coords, spiralX, spiralZ, param_4);
+		GUtils::SpiralIncrement(coords, spiralX, spiralZ, spiral_increment);
 	}
 	if (!found)
 	{
@@ -4164,7 +4171,7 @@ void Town::MakeScenicForest()
 			break;
 		}
 	}
-	float     radius = GetInfo()->field_0x164 + 10.0f;
+	float     radius = GetInfo()->ForestSearchDistance + 10.0f;
 	MapCoords centre = GetAreaCentre();
 	MapCoords pos = centre;
 	int       count = 99999;

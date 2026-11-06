@@ -753,6 +753,10 @@ public:
 			for (unsigned long column = 0; column < columns && WriteEnabled; column++)
 			{
 				WriteIt(values[row][column]);
+				if (!WriteEnabled)
+				{
+					break;
+				}
 			}
 		}
 	}
