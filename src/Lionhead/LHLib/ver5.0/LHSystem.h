@@ -297,16 +297,14 @@ static_assert(offsetof(LHSys, LastKey) == 0x70d0, "LHSys LastKey offset changed"
 
 inline void LHPixel16::Set(LHColor color)
 {
-	value = ((uint8_t)(color.b >> LHSys::TheSystem.screen.BlueScale) << LHSys::TheSystem.screen.BlueShift) +
-	        ((uint8_t)(color.g >> LHSys::TheSystem.screen.GreenScale) << LHSys::TheSystem.screen.GreenShift) +
-	        ((uint8_t)(color.r >> LHSys::TheSystem.screen.redScale) << LHSys::TheSystem.screen.RedShift);
+	value = ((uint8_t)(color.GetB() >> LHSys::GetScreen().GetBlueScale()) << LHSys::GetScreen().GetBlueShift()) +
+	        ((uint8_t)(color.GetG() >> LHSys::GetScreen().GetGreenScale()) << LHSys::GetScreen().GetGreenShift()) +
+	        ((uint8_t)(color.GetR() >> LHSys::GetScreen().GetRedScale()) << LHSys::GetScreen().GetRedShift());
 }
 
 inline LHPixel16::LHPixel16(LHColor color)
 {
-	value = ((uint8_t)(color.b >> LHSys::TheSystem.screen.BlueScale) << LHSys::TheSystem.screen.BlueShift) +
-	        ((uint8_t)(color.g >> LHSys::TheSystem.screen.GreenScale) << LHSys::TheSystem.screen.GreenShift) +
-	        ((uint8_t)(color.r >> LHSys::TheSystem.screen.redScale) << LHSys::TheSystem.screen.RedShift);
+	Set(color);
 }
 
 inline void LHPixel16::Set(uint8_t red, uint8_t green, uint8_t blue)
@@ -329,6 +327,44 @@ inline uint8_t LHPixel16::GetG()
 inline uint8_t LHPixel16::GetB()
 {
 	return (value & LHSys::GetScreen().BlueMask) >> LHSys::GetScreen().BlueShift;
+}
+
+inline uint32_t LHPixel16::GetRShifted()
+{
+	return (uint8_t)(value & LHSys::GetScreen().RedMask);
+}
+
+inline uint32_t LHPixel16::GetGShifted()
+{
+	return (uint8_t)(value & LHSys::GetScreen().GreenMask);
+}
+
+inline uint32_t LHPixel16::GetBShifted()
+{
+	return (uint8_t)(value & LHSys::GetScreen().BlueMask);
+}
+
+inline void LHPixel16::Fade(LHPixel16 color)
+{
+	uint32_t red = GetRShifted() - color.GetRShifted() > 0 ? GetRShifted() - color.GetRShifted() : 0;
+	uint32_t green = GetGShifted() - color.GetGShifted() > 0 ? GetGShifted() - color.GetGShifted() : 0;
+	uint32_t blue = GetBShifted() - color.GetBShifted() > 0 ? GetBShifted() - color.GetBShifted() : 0;
+	value = red + green + blue;
+}
+
+inline void LHPixel16::Brighten(LHPixel16 color)
+{
+	value = (color.GetRShifted() + GetRShifted() < LHSys::GetScreen().RedMask ? color.GetRShifted() + GetRShifted()
+	                                                                          : LHSys::GetScreen().RedMask) +
+	        (color.GetGShifted() + GetGShifted() < LHSys::GetScreen().GreenMask ? color.GetGShifted() + GetGShifted()
+	                                                                            : LHSys::GetScreen().GreenMask) +
+	        (color.GetBShifted() + GetBShifted() < LHSys::GetScreen().BlueMask ? color.GetBShifted() + GetBShifted()
+	                                                                           : LHSys::GetScreen().BlueMask);
+}
+
+inline void LHPixel16::Glass(LHPixel16 color)
+{
+	value = ((value & LHSys::GetScreen().ColorLSBMask) + (color.value & LHSys::GetScreen().ColorLSBMask)) >> 1;
 }
 
 inline int LHDraw::Line(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode)

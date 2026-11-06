@@ -5,6 +5,7 @@
 
 struct LHColor;
 struct LHRegion;
+struct LHSprite;
 
 enum LH_BOX_EDGE
 {
@@ -24,11 +25,28 @@ enum LH_DRAW_STYLE
 	LH_DRAW_STYLE_FILL = 0x10,
 	LH_DRAW_STYLE_NO_FILL = 0x100,
 	LH_DRAW_STYLE_BLEND_FILL = 0x200,
-	LH_DRAW_STYLE_SUNKEN = 0x400
+	LH_DRAW_STYLE_SUNKEN = 0x400,
+	LH_DRAW_STYLE_TINT_ADD = 0x800,
+	LH_DRAW_STYLE_TINT_SUBTRACT = 0x1000,
+	LH_DRAW_STYLE_ALPHA = 0x4000
 };
 
-struct LHPixel16
+#define LH_DRAW_EFFECT_MASK                                                                                            \
+	(LH_DRAW_STYLE_BLEND | LH_DRAW_STYLE_ADD | LH_DRAW_STYLE_SUBTRACT | LH_DRAW_STYLE_TINT_ADD |                       \
+	 LH_DRAW_STYLE_TINT_SUBTRACT | LH_DRAW_STYLE_ALPHA)
+
+#define LH_SPRITE_ALPHA_ONE 0x8000
+
+enum LH_SPRITE_DRAW
 {
+	LH_SPRITE_DRAW_FLIP_X = 0x20,
+	LH_SPRITE_DRAW_FLIP_Y = 0x40,
+	LH_SPRITE_DRAW_FROM_BOTTOM = 0x2000
+};
+
+class LHPixel16
+{
+public:
 	uint16_t value;
 
 	// Constructors
@@ -48,13 +66,22 @@ struct LHPixel16
 	uint8_t GetG();
 	// BW1W120 inlined BW1M119 01132dc0 (LHCombined Release)
 	uint8_t GetB();
-};
-
-struct LHSprite
-{
-	uint16_t Width;
-	uint16_t Height;
-	uint8_t* PixelData;
+	// BW1W120 inlined BW1M119 0113fbb0 (LHCombined Release)
+	uint32_t GetRShifted();
+	// BW1W120 inlined BW1M119 0113fb20 (LHCombined Release)
+	uint32_t GetGShifted();
+	// BW1W120 inlined BW1M119 0113fc40 (LHCombined Release)
+	uint32_t GetBShifted();
+	// BW1W120 007ea470 BW1M119 01148560 (LHCombined Release)
+	int FadeColor(long amount);
+	// BW1W120 inlined BW1M119 inlined
+	bool operator==(LHPixel16 color) const { return color.value == value; }
+	// BW1W120 inlined BW1M119 0114af70 (LHCombined Release)
+	void Fade(LHPixel16 color);
+	// BW1W120 inlined BW1M119 0114b100 (LHCombined Release)
+	void Brighten(LHPixel16 color);
+	// BW1W120 inlined BW1M119 0114b290 (LHCombined Release)
+	void Glass(LHPixel16 color);
 };
 
 class LHDraw

@@ -4,7 +4,7 @@
 #include <chlasm/Enum.h> /* For enum TOWN_DESIRE_INFO */
 
 class CreatureMental;
-struct LHPixel16;
+class LHPixel16;
 struct MapCoords;
 
 class CreatureMentalEditor

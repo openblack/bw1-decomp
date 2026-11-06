@@ -6,7 +6,7 @@
 #include <stdint.h> /* For uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHColor.h> /* For struct LHColor */
-#include <Lionhead/LHLib/ver5.0/LHDraw.h>         /* For struct LHSprite */
+#include <Lionhead/LHLib/ver5.0/LHSprite.h>       /* For struct LHSprite */
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>       /* For enum LH_RETURN */
 
 #define LH_TEXT_RIGHT     0x2

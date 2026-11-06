@@ -3891,6 +3891,8 @@ Lionhead/LHLib/ver5.0/LHScript.cpp:
 
 Lionhead/LHLib/ver5.0/LHDrawSprite.cpp:
 	.text       start:0x008068E0 end:0x0080B170
+	.CRT$XCU    start:0x00A37538 end:0x00A37540 align:4
+	.bss        start:0x00F16838 end:0x00F16840
 
 Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
 	.text       start:0x0080B170 end:0x0080B310

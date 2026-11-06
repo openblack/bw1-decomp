@@ -12,6 +12,7 @@
 #include <Lionhead/LHLib/ver5.0/LHConvert.h>
 #include <Lionhead/LHLib/ver5.0/LHDraw.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
+#include <Lionhead/LHLib/ver5.0/LHSprite.h>
 #include <Lionhead/LHLib/ver5.0/LHString.h>
 #include <Lionhead/LHLib/ver5.0/LHText.h>
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>
@@ -19,9 +20,6 @@
 
 // NB this TU builds with /Ob0, so the LHSys accessors would not inline; the
 // system aggregate's members are reached through LHSys::TheSystem directly.
-
-extern LHPixel16 g_lhTransparentPixel16; // 0xE91EDC TODO: fabricated name
-extern LHColor   g_lhTransparentColour;  // 0xE91EE0 TODO: fabricated name
 
 // Debug copy of the most recently parsed script line, shared by both
 // instantiations (see LoadOneLine). TODO: fabricated name.
@@ -322,8 +320,8 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 			return LHSys::TheSystem.text.LoadFont(LHStringOps<T>::makechar(pram->text[0]),
 			                                      LHSys::TheSystem.screen.Depth() == 16 ? 3 : 1);
 		case LH_SCRIPT_COMMAND_SET_TRANSPARENCY:
-			g_lhTransparentPixel16.Set(pram->number[0], pram->number[1], pram->number[2]);
-			g_lhTransparentColour.Set(pram->number[0], pram->number[1], pram->number[2]);
+			LHSprite::TransparentColor16.Set(pram->number[0], pram->number[1], pram->number[2]);
+			LHSprite::TransparentColor24.Set(pram->number[0], pram->number[1], pram->number[2]);
 			return LH_OK;
 		case LH_SCRIPT_COMMAND_SLONG:
 		case LH_SCRIPT_COMMAND_FLOAT:
