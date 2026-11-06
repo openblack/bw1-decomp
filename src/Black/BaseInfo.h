@@ -83,11 +83,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 0130f570
-	BaseInfo()
-	{
-		AddressOffset = 0;
-		UniqueId = 0;
-	}
+	BaseInfo() { UniqueId = AddressOffset = 0; }
 
 	// Non-virtual methods
 

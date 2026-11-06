@@ -200,13 +200,13 @@ public:
 		};
 		struct
 		{
-			JustWholeMapXZ FirePos;     // MOVE_AROUND_FIRE: destination.
-			FireEffect*    fire_effect; // ON_FIRE / PUT_OUT_FIRE states: active fire.
+			uint32_t       HideTurns; // GO_AND_HIDE_IN_NEARBY_BUILDING / LOOK_TO_SEE_IF_IT_IS_SAFE: turns spent.
+			JustWholeMapXZ HidePos;   // GO_AND_HIDE_IN_NEARBY_BUILDING: hiding place.
 		};
 		struct
 		{
-			uint32_t       HideTurns; // GO_AND_HIDE_IN_NEARBY_BUILDING / LOOK_TO_SEE_IF_IT_IS_SAFE: turns spent.
-			JustWholeMapXZ HidePos;   // GO_AND_HIDE_IN_NEARBY_BUILDING: hiding place.
+			JustWholeMapXZ FirePos;     // MOVE_AROUND_FIRE: destination.
+			FireEffect*    fire_effect; // ON_FIRE / PUT_OUT_FIRE states: active fire.
 		};
 	};
 	// Also selected by Living::action.states; DiscipleType is not a union tag.
@@ -238,6 +238,10 @@ public:
 		};
 		struct
 		{
+			JustWholeMapXZ DancePos;
+		};
+		struct
+		{
 			LHPTR<Villager> Partner;    // Breeding states: partner villager.
 			JustWholeMapXZ  WanderArea; // BREEDER_DISCIPLE: wander position; script states reuse x/z as counters/data.
 		};
@@ -257,11 +261,6 @@ public:
 		{
 			uint16_t ShepherdWaitTurns;
 			uint16_t ShepherdNextState;
-		};
-		struct
-		{
-			uint32_t field_0x118;
-			uint32_t field_0x11c;
 		};
 		struct
 		{
