@@ -3,6 +3,9 @@
 
 #include "LHMatrix.h" /* For struct LHMatrix */
 
+// These can't live in LHMatrix.h: Object.cpp sees that header ahead of its code, so declaring them there moves c2's
+// symbol numbering and takes Creature Isle's Object::SetUpPhysObAsATree out of its matching window.
+
 #ifdef VERSION_BW1WCI
 // BW1WCI inlined BW1MCI119 inlined
 inline void operator+=(LHMatrix& matrix, const LHMatrix& other)

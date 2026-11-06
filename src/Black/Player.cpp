@@ -90,7 +90,6 @@ void DoOKGameRequestor(char16_t* text);
 #endif
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-// Reports the end of a multiplayer game to the lobby server.
 struct LobbyServerAddress
 {
 	unsigned short Port;

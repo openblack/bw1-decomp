@@ -229,8 +229,8 @@ void ScriptHighlight::DrawSignPostText(int value, float angle, float scale)
 
 	if (DigitMaterial == NULL || DigitTexture == NULL || DigitSprite == NULL)
 	{
-		DigitTexture =
-			LH3DTexture::Create(SCRIPT_HIGHLIGHT_DIGIT_TEXTURE, SCRIPT_HIGHLIGHT_DIGIT_TEXTURE_FLAGS, 0, NULL);
+		DigitTexture = LH3DTexture::Create(SCRIPT_HIGHLIGHT_DIGIT_TEXTURE,
+		                                   LH3D_TEXTURE_TYPE_FILE | LH3D_TEXTURE_FLAGS_ALPHA, 0, NULL);
 		DigitMaterial =
 			LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA, DigitTexture);
 		DigitSprite = LH3DOrientSprite::Create(1, true);
@@ -287,7 +287,7 @@ void ScriptHighlight::DrawSignPostText(int value, float angle, float scale)
 						int frame = -1;
 						if (count == 1)
 						{
-							frame = value & SCRIPT_HIGHLIGHT_SINGLE_DIGIT_MASK;
+							frame = value & 0xF;
 						}
 						else if (isdigit(text[i]))
 						{
