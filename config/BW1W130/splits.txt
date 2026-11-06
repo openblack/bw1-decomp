@@ -2070,7 +2070,7 @@ Black/PlayerProfile.cpp:
 	.rdata      start:0x00960BC0 end:0x00960BD0
 	.CRT$XCU    start:0x00A47288 end:0x00A47298 align:4
 	.data       start:0x00C82AB8 end:0x00C82B40
-	.bss        start:0x00DCCEE0 end:0x00DCD71C
+	.bss        start:0x00DCCEE0 end:0x00DCD714
 
 Black/PlaytimeDance.cpp:
 	.text       start:0x00670930 end:0x00671410
