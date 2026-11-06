@@ -83,6 +83,8 @@ struct CreatureReceiveSpell
 	float GetAlignmentToMentalSave();
 	// BW1W120 004f5fe0 BW1M119 01281d80
 	void SetAlignmentMentalLoaded(float alignment);
+	// BW1W120 004f4da0 BW1M119 01284a10
+	bool IsAnySpellActive();
 };
 
 // Constructor stores: 004f5240; allocation of 0x1d8 bytes: 0047472c.

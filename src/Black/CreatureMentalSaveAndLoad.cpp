@@ -289,7 +289,7 @@ bool32_t Creature::Load(GameOSFile& file)
 			sprintf(path, CREATURE_MIND_FILE_PATH, playerInterface->player->UserFilename);
 			Archive  archive(path, LH_FILE_MODE_READ_ONLY);
 			uint32_t length;
-			if (archive.IsOpen && archive.File.Length(&length) == LH_FILE_RESULT_OK && length > 0)
+			if (archive.IsOpen() && archive.File.Length(&length) == LH_FILE_RESULT_OK && length > 0)
 			{
 				unsigned long creatureType;
 				archive >> MindVersion;
@@ -397,7 +397,7 @@ void Creature::ResolveLoad()
 		sprintf(mindPath, SAVED_CREATURE_PATH, path, SavedCreatureIndex);
 	}
 	Archive archive(mindPath, LH_FILE_MODE_READ_ONLY);
-	if (archive.IsOpen && archive.File.Length(&length) == LH_FILE_RESULT_OK && length > 0)
+	if (archive.IsOpen() && archive.File.Length(&length) == LH_FILE_RESULT_OK && length > 0)
 	{
 		unsigned long creatureType;
 		archive >> MindVersion;
@@ -489,7 +489,7 @@ LH3DCreature* Creature::Load3D(char* name)
 	char path[248];
 	sprintf(path, CREATURE_PHYSIQUE_PATH, name);
 	Archive archive(path, LH_FILE_MODE_READ_ONLY);
-	if (archive.IsOpen)
+	if (archive.IsOpen())
 	{
 		unsigned long creatureType;
 		archive >> creatureType;
@@ -711,7 +711,7 @@ void Creature::LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* 
 	}
 	if (archive != NULL)
 	{
-		if (archive->IsOpen && (length > 0 || data != NULL))
+		if (archive->IsOpen() && (length > 0 || data != NULL))
 		{
 			unsigned long creatureType;
 			*archive >> MindVersion;

@@ -1673,14 +1673,27 @@ Black/PlayerComputer.cpp:
 	.text       start:0x006014A0 end:0x00604230
 	.rdata      start:0x0086EEE0 end:0x0086EEFC
 	.CRT$XCU    start:0x008F6C60 end:0x008F6C68 align:4
-	.data       start:0x00B24380 end:0x00B243E0
-	.bss        start:0x00C68D08 end:0x00C68D90
+	.data       start:0x00B24380 end:0x00B243DC
+	.bss        start:0x00C68D08 end:0x00C68D8C
 
 Black/PlayerComputerCreature.cpp:
-	.text       start:0x00606A50 end:0x0060E930
-	.rdata      start:0x0086EEFC end:0x0086EF24
-	.CRT$XCU    start:0x008F6C70 end:0x008F6C88 align:4
-	.bss        start:0x00C68D90 end:0x00C6CAA4
+	.text       start:0x00604230 end:0x00608210
+	.rdata      start:0x0086EEFC end:0x0086EF10
+	.CRT$XCU    start:0x008F6C68 end:0x008F6C70 align:4
+	.data       start:0x00B243DC end:0x00B24558
+	.bss        start:0x00C68D8C end:0x00C68E1C
+
+Black/PlayerComputerFind.cpp:
+	.text       start:0x00608210 end:0x006089D0
+	.rdata      start:0x0086EF10 end:0x0086EF24
+	.CRT$XCU    start:0x008F6C70 end:0x008F6C78 align:4
+	.bss        start:0x00C68E1C end:0x00C68E28
+
+Black/PlayerComputerInfo.cpp:
+	.text       start:0x006089D0 end:0x0060E930
+	.CRT$XCU    start:0x008F6C78 end:0x008F6C88 align:4
+	.data       start:0x00B24558 end:0x00B25448
+	.bss        start:0x00C68E28 end:0x00C6CAA4
 
 Black/PlayerComputerInterface.cpp:
 	.text       start:0x0060E930 end:0x0060F8C0
