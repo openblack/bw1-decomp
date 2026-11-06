@@ -22,8 +22,7 @@
 #include "Interface.h"      /* For GInterface */
 #include "Player.h"         /* For GPlayer */
 
-#define PACKET_TYPE_HAND_ORIENTATION ((PACKET_TYPE)0x64)
-#define CREATURE_MIND_PATH           ".\\Scripts\\CreatureMind"
+#define CREATURE_MIND_PATH ".\\Scripts\\CreatureMind"
 
 PlayerProfile PlayerProfile::Profile;
 
