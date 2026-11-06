@@ -1284,7 +1284,7 @@ uint32_t Object::ThrowObjectFromHand(GInterfaceStatus* status, bool32_t dont_rep
 	{
 		physicsObject->Physics.WindResist = 0.0f;
 	}
-	return 0x16;
+	return GAME_RETURNS_REMOVE_FROM_HAND;
 }
 
 bool32_t Object::IsARootedObject()

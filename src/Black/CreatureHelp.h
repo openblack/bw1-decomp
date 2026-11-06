@@ -4,6 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
+#include <chlasm/CreatureEnum.h>                /* For enum CREATURE_HELP_TYPE */
+
 #include "MapCoords.h" /* For struct MapCoords */
 
 // Forward Declares
@@ -47,6 +50,14 @@ struct CreatureHelpStackEntry
 
 	// BW1W120 004ca6f0 BW1M119 0123d6f0
 	CreatureHelpStackEntry(uint32_t param_2, GameThingWithPos* thing, const MapCoords* coord);
+};
+
+struct CreatureHelpStack
+{
+	LHLinkedList<CreatureHelpStackEntry*> Entries[CREATURE_HELP_TYPE_LAST];
+
+	// BW1W120 004ca600 BW1M119 0123d930
+	~CreatureHelpStack();
 };
 
 #endif /* BW1_DECOMP_CREATURE_HELP_INCLUDED_H */

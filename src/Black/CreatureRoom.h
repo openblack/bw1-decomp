@@ -11,6 +11,8 @@ class CreatureRoom : public TempleRoom
 public:
 	// BW1W120 007899f0 BW1M119 01093ca0
 	static void ProcessScreenShot();
+	// BW1W120 00789a70 BW1M119 012869e0
+	static void TakeScreenShot(uint8_t index, wchar_t* name);
 	// TODO: Original static member name is unrecovered.
 	// BW1W120 00d96270
 	static bool32_t CreatureInTemple;

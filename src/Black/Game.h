@@ -336,7 +336,7 @@ public:
 	uint8_t               field_0x2502cd;
 	uint8_t               field_0x2502ce;
 	uint8_t               field_0x2502cf;
-	FILE*                 field_0x2502d0;
+	FILE*                 CreatureLogFile;
 	FILE*                 field_0x2502d4;
 	FILE*                 TownDesireLogFile;
 	FILE*                 field_0x2502dc;
@@ -529,6 +529,46 @@ public:
 	void SetPacket(PACKET_TYPE type, unsigned short first_value, unsigned short second_value);
 	// BW1W120 00551530 BW1M119 01108490
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long player_number, float value);
+	// BW1W120 00551580 BW1M119 01566500
+	void SetPacket(PACKET_TYPE type, unsigned long object_index, MusicMoodPacket& packet);
+	// BW1W120 null BW1M119 01497220
+	void CancelIntro();
+	// BW1W120 null BW1M119 01028140
+	bool32_t CheckNeedUpdateInfluence(float x, float z);
+	// BW1W120 null BW1M119 011a2940
+	void CloseOneTimeOnly();
+	// BW1W120 null BW1M119 0100ce10
+	void DecompressPacket(GPacket& packet, void* data);
+	// BW1W120 null BW1M119 01566860
+	void DoAreYoSureLeaveLand0Requestor(wchar_t* text);
+	// BW1W120 null BW1M119 013f9590
+	void DoAreYouSureLand0Requestor(wchar_t* text);
+	// BW1W120 null BW1M119 011c6d30
+	void FlushPacketBuffer();
+	// BW1W120 null BW1M119 01011ab0
+	uint32_t GetInterfaceFromReal(unsigned long real_interface);
+	// BW1W120 null BW1M119 0100c0b0
+	uint32_t GetInterfaceUpdateCount();
+	// BW1W120 null BW1M119 0110c080
+	GKeyBuffer* GetKeyBuffer();
+	// BW1W120 null BW1M119 013e1550
+	uint32_t GetKeyFromModifier(uint16_t modifier);
+	// BW1W120 null BW1M119 010d1f40
+	LHPlayer* GetTeamLeaderLHPlayer();
+	// BW1W120 null BW1M119 011193b0
+	GPlayer* OtherPlayer();
+	// BW1W120 null BW1M119 011ce750
+	void PlayIntro(char* video_path, char* sound_path);
+	// BW1W120 null BW1M119 01108720
+	void ProcessDebugGameDataPacket(void* data, int size, GPlayer* player);
+	// BW1W120 null BW1M119 0151a640
+	void RemoveAllPlayerSparkles();
+	// BW1W120 null BW1M119 015634b0
+	void SetPacketWithData(PACKET_TYPE type, void* data, long size);
+	// BW1W120 null BW1M119 01583250
+	void ToggleHelpEditor();
+	// BW1W120 null BW1M119 011c6ac0
+	void ToggleMapEditor();
 	// BW1W120 00551690 BW1M119 010086d0
 	void SendPacketCompressed(PACKET_TYPE type, SETPACKET_FUNCTION_NUMBER function_number);
 	// BW1W120 00552620 BW1M119 0105fc60

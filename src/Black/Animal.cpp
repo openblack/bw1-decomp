@@ -1709,9 +1709,9 @@ uint32_t Animal::ApplyThisToObject(GInterfaceStatus* status, Object* object, Ges
 	{
 		if (!(Flags & GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE) && object->DeleteObjectAndTakeResource(this, status))
 		{
-			return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+			return GAME_RETURNS_RESOURCE_TAKEN;
 		}
-		return OBJECT_APPLY_RESULT_NONE;
+		return GAME_RETURNS_NONE;
 	}
 	if (dynamic_cast<WorshipTotem*>(object) != NULL)
 	{

@@ -60,7 +60,8 @@ public:
 	// BW1W120 00d47828 BW1M119 01a202b0
 	static Object* PredictionObject;
 
-	uint8_t           field_0x8[0x10];
+	float             ImpactDamage;
+	LHPoint           ImpactForce;
 	Object*           object;
 	Object*           CollidedWith;
 	PhysicsObject*    WhoHitMe;

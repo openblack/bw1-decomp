@@ -93,6 +93,8 @@ struct GUtils
 	static float ShapePosToMeters(float pos);
 	// BW1W120 0074dd70 BW1M119 011a8630
 	static Abode* FindClosestAbode(const MapCoords& pos, TRIBE_TYPE tribe_type, int param_3, int param_4, int param_5);
+	// BW1W120 0074e290 BW1M119 015682c0
+	static uint32_t ConvertScawenAngleToGameAngle(float angle);
 	// BW1W120 0074e2b0 BW1M119 013e5570
 	static float ConvertGameAngleToScawenAngle(uint16_t angle);
 	// BW1W120 0074e3a0 BW1M119 01180280

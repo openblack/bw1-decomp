@@ -78,7 +78,7 @@ bool32_t Creature::IsAvailableToMoveToNextDevelopmentPhase()
 	{
 		return false;
 	}
-	if (HelpStackEntries[CREATURE_HELP_TYPE_DEVELOPMENT_PHASE_INITIAL + DevelopmentPhase + 1].count > 0)
+	if (HelpStack.Entries[CREATURE_HELP_TYPE_DEVELOPMENT_PHASE_INITIAL + DevelopmentPhase + 1].count > 0)
 	{
 		return false;
 	}
@@ -173,7 +173,8 @@ bool32_t Creature::HasFinishedDevelopmentStageLeashGoodAndEvil()
 
 bool32_t Creature::HasFinishedDevelopmentStageLearnToEat()
 {
-	return HasPickedUpFromHand || GetSecondsInDevelopmentPhase() > LEARN_TO_EAT_STAGE_SECONDS;
+	return DevelopmentPhaseActionDone[DEVELOPMENT_PHASE_LEARN_TO_TAKE_FROM_PLAYER_AND_EAT] ||
+	       GetSecondsInDevelopmentPhase() > LEARN_TO_EAT_STAGE_SECONDS;
 }
 
 bool32_t Creature::HasFinishedDevelopmentStageGuideTeachesSpells()

@@ -9,6 +9,7 @@
 #include <Lionhead/LHFile/ver3.0/LHReleasedFile.h> /* For struct LHReleasedFile */
 
 #include "DrawingObject.h" /* For struct DrawingObject */
+#include "GJUtils.h"       /* For boundf */
 #include "Name.h"          /* For struct Name */
 
 // Forward Declares
@@ -66,7 +67,7 @@ public:
 	Morphable_field_0x4314_t* field_0x4314[0xe8];
 	MorphableSoundEffect      SoundEffects[16];
 	int                       NumSoundEffects;
-	int                       field_0x47b8;
+	int                       NumBoneMatrices;
 	int                       field_0x47bc;
 	CAnim*                    CycleAnim[4];
 	long                      CycleTime[4];
@@ -155,6 +156,12 @@ public:
 	float GetThinFat() { return ThinFat; }
 	// BW1W120 inlined BW1M119 011effa0
 	LH3DMesh* GetMesh() { return meshes[CurrentMesh]; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetEvilGood(float value) { EvilGood = boundf(-1.0f, value, 1.0f); }
+	// BW1W120 inlined BW1M119 inlined
+	void SetWeakStrong(float value) { WeakStrong = boundf(-1.0f, value, 1.0f); }
+	// BW1W120 inlined BW1M119 inlined
+	void SetThinFat(float value) { ThinFat = boundf(-1.0f, value, 1.0f); }
 };
 
 #endif /* BW1_DECOMP_MORPHABLE_INCLUDED_H */

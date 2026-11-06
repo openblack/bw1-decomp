@@ -36,7 +36,9 @@ public:
 	float    MinDesireIncreaseTime;
 	float    MaxDesireIncreaseTime;
 	uint32_t field_0x284;
-	float    field_0x288[0x6];
+	float    field_0x288[0x2];
+	float    ObservedActionIncreaseTimeScale; /* 0x290 */
+	float    field_0x294[0x3];
 	float    WatchingFeedback;
 	float    MinFeedback;
 	uint32_t ActionNoveltyTurns;
@@ -62,7 +64,9 @@ public:
 	float    InterestInThingToLookAt[THING_TO_LOOK_AT_TYPE_LAST];
 	float    field_0x374[0x4];
 	float    AlignmentChangeScale; /* 0x384 */
-	float    field_0x388[0x3];
+	float    ImpressiveSizeBonus;
+	float    ImpressiveSizeScale;
+	float    field_0x390;
 
 	// Override methods
 
@@ -70,6 +74,9 @@ public:
 	virtual ~CreatureInfo();
 	// BW1W120 00472c10 BW1M119 011e9f90
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+	// BW1W120 00477dd0 BW1M119 inlined
+	float GetObservedActionIncreaseTimeDivisor(CREATURE_DESIRES desire) const;
 
 	// Static data
 
@@ -83,7 +90,7 @@ public:
 
 	// TODO(#377): The original declared this class in Creature.h.
 	// Out of line: LoadBinary at 0042e6c0, Load at 0042e620.
-	INFO_DATA_BLOCK(CreatureType, field_0x388)
+	INFO_DATA_BLOCK(CreatureType, field_0x390)
 	INFO_DERIVED_LOADERS(GLivingInfo, "Creature.h", 160)
 };
 

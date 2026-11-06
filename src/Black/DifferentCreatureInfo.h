@@ -16,7 +16,29 @@ class Base;
 class DifferentCreatureInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0x5c];
+	float    field_0x10;
+	float    field_0x14;
+	float    field_0x18;
+	float    field_0x1c;
+	float    field_0x20;
+	float    field_0x24;
+	float    Strength;
+	float    field_0x2c;
+	float    field_0x30;
+	float    field_0x34;
+	float    WalkSpeed;
+	float    RunSpeed;
+	float    field_0x40;
+	float    field_0x44;
+	float    field_0x48;
+	float    BurnDefenceMultiplier;
+	float    CrushDefenceMultiplier;
+	float    HitDefenceMultiplier;
+	float    field_0x58;
+	uint32_t field_0x5c;
+	float    field_0x60;
+	float    field_0x64;
+	float    AlignmentChangeScale;
 
 	// Override methods
 
@@ -37,7 +59,7 @@ public:
 
 	// TODO(#377): The original declared this class in Creature.h.
 	// Out of line: LoadBinary at 0042e7e0, Load at 0042e7a0.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(field_0x10, AlignmentChangeScale)
 	INFO_ROOT_LOADERS("Creature.h", 169)
 };
 

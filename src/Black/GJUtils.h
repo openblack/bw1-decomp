@@ -92,6 +92,8 @@ public:
 		VOL_FX_MAT_TYPE_6 = 0x6,
 	};
 
+	// BW1W120 0057d500 BW1M119 012c3b60
+	static LH3DMaterial* GetFizzMaterial();
 	// BW1W120 0057d4c0 BW1M119 012c3c30
 	static LH3DMaterial* GetFrozMaterial(FROZ_MAT_TYPE type);
 	// BW1W120 0057d540 BW1M119 012c3a70

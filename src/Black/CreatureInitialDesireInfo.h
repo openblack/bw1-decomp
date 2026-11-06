@@ -31,7 +31,7 @@ public:
 	float                  DecayRateMax;
 	float                  AlignmentChange;
 	float                  AlignmentThreshold;
-	uint32_t               field_0x60;
+	float                  ObservedActionIncreaseTimeDivisor;
 	float                  IncreaseTimeFeedbackDivisor;
 	float                  DistancePriorityScale;
 	uint32_t               field_0x6c[0x3];

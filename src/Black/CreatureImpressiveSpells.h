@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_CREATURE_IMPRESSIVE_SPELLS_INCLUDED_H
 #define BW1_DECOMP_CREATURE_IMPRESSIVE_SPELLS_INCLUDED_H
 
+#include <stdint.h> /* For uint32_t */
+
 #include <chlasm/Enum.h> /* For enum MAGIC_TYPE */
 
 #define NUM_CREATURE_IMPRESSIVE_SPELLS 5
@@ -9,6 +11,10 @@ struct CreatureImpressiveSpells
 {
 	// BW1W120 009d7cf8 BW1M119 0175991c
 	static MAGIC_TYPE Spells[NUM_CREATURE_IMPRESSIVE_SPELLS];
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	// BW1W120 00c64154 BW1M119 null
+	static uint32_t DoneWhen[NUM_CREATURE_IMPRESSIVE_SPELLS];
+#endif
 };
 
 #endif /* BW1_DECOMP_CREATURE_IMPRESSIVE_SPELLS_INCLUDED_H */

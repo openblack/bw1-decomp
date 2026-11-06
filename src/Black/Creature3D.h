@@ -7,6 +7,7 @@
 #include <Lionhead/LH3DLib/development/MeshIntersect.h> /* For struct TextureRef */
 #include <Lionhead/LH3DLib/development/LHPoint.h>       /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/Zoomer.h>        /* For struct Zoomer3d */
+#include <chlasm/HitRegions.h>                          /* For enum FIGHT_CONTROL_AI */
 #include <chlasm/SoundAction.h>                         /* For enum LHSoundAction */
 #include <re_common.h>                                  /* For bool32_t */
 
@@ -17,6 +18,7 @@
 class Archive;
 struct CameraExclusion;
 struct CollideBox;
+struct PhysOb;
 struct HandGlows;
 class LH_AudioBank;
 struct LH3DMesh;
@@ -102,12 +104,27 @@ enum LH3D_CREATURE_STATE
 	LH3D_CREATURE_STATE_TURNING,           // 0x23 StartTurningAction, DoTheTurningBusiness
 	LH3D_CREATURE_STATE_DEAD,              // 0x24 IsActuallyDead
 	LH3D_CREATURE_STATE_CREATION,          // 0x25 LoadBinary; C_FIGHT_EXTRA_CREATION
+	LH3D_CREATURE_STATE_LAST
 };
 
+// BW1W120 009d06f4
+extern char PhysicalActionNames[LH3D_CREATURE_STATE_LAST][64];
+
+enum LH3D_CREATURE_EYE_STATE
+{
+	LH3D_CREATURE_EYE_STATE_CLOSED = 1,
+	LH3D_CREATURE_EYE_STATE_OPEN = 2,
+	LH3D_CREATURE_EYE_STATE_WIDE = 3
+};
+
+#define LH3D_CREATURE_DEFAULT_BLINK_PERIOD       5000
 #define LH3D_CREATURE_RP_LOOK_POINT_REFRESH_TIME 2000
 #define LH3D_CREATURE_IDLE_ACTION_TIME           3000
 #define LH3D_CREATURE_IDLE_LOOK_TIME             6000
 #define LH3D_CREATURE_IDLE_PUZZLED_FACE_TIME     2000
+
+#define LH3D_CREATURE_FIGHT_QUEUE_SPELL     0x4000
+#define LH3D_CREATURE_FIGHT_QUEUE_SIDE_STEP 0x8000
 
 class LH3DCreature : public Morphable
 {
@@ -168,8 +185,8 @@ public:
 	int16_t   GameThrowingAngle;
 	uint8_t   field_0x4986[0x2];
 	float     field_0x4988;
-	float     field_0x498c;
-	float     field_0x4990;
+	float     BreathTime;
+	float     RequiredBreathTime;
 	int       MoveState;
 	int       ObjectActionStatus;
 #ifdef VERSION_BW1WCI
@@ -189,7 +206,7 @@ public:
 	LHPoint             field_0x4a28;
 	int                 PickUpTime;
 	int                 field_0x4a38;
-	int                 field_0x4a3c;
+	int                 CatchTime;
 	int                 PutDownTime;
 	LHPoint             field_0x4a44[4];
 	LHPoint             PointPoint;
@@ -201,15 +218,15 @@ public:
 	TattooInfo*         TattooOverride;
 	LHPoint             ArenaCentre;
 	float               ArenaRadius;
-	float               field_0x4aa8;
-	float               field_0x4aac;
+	float               FightHealth;
+	float               FightStamina;
 	float               field_0x4ab0;
 	int                 field_0x4ab4;
 	int                 field_0x4ab8;
-	int                 field_0x4abc;
-	int                 field_0x4ac0;
-	uint32_t            field_0x4ac4[12];
-	uint32_t            field_0x4af4[12];
+	int                 MaxFightQueueSize;
+	int                 FightQueueSize;
+	uint32_t            FightQueue[12];
+	uint32_t            FightQueueTimes[12];
 	bool                field_0x4b24;
 	uint8_t             field_0x4b25[0x3];
 	int                 field_0x4b28;
@@ -264,7 +281,7 @@ public:
 	int                 field_0x521c;
 	CAnim*              Anim0x5220;
 	float               field_0x5224;
-	float               field_0x5228;
+	float               BodyRadius;
 	int                 ReverseAnim;
 	int                 field_0x5230;
 	int                 field_0x5234;
@@ -296,10 +313,10 @@ public:
 	int                 field_0x5430;
 	MeshIntersect       VomIntersect;
 	int                 field_0x545c;
-	int                 field_0x5460;
-	float               field_0x5464;
+	int                 EyeState;
+	float               EyeLidLevel;
 	int                 field_0x5468;
-	int                 field_0x546c;
+	int                 BlinkPeriod;
 	int                 field_0x5470;
 	float               field_0x5474;
 	MeshIntersect       EyeIntersects[4];
@@ -327,11 +344,11 @@ public:
 	char                FileName[64];
 	int                 field_0x5794;
 	int                 field_0x5798;
-	int                 field_0x579c;
+	FIGHT_CONTROL_AI    AutoFightStatus;
 	int                 field_0x57a0;
 	CollideBox*         Boite;
 	int                 field_0x57a8;
-	int                 field_0x57ac;
+	PhysOb*             PhysicsOb;
 	HandGlows*          Glows;
 	CameraExclusion*    CameraExclusionDome;
 #ifdef VERSION_BW1WCI
@@ -410,6 +427,8 @@ public:
 	void GetBoundingSphere(LHPoint& centre, float& radius);
 	// BW1W120 0047fa20 BW1M119 01202760
 	void SetRequiredSpeed(float speed);
+	// BW1W120 inlined BW1M119 inlined
+	float GetRequiredSpeed() { return RequiredSpeed; }
 	// BW1W120 0047fa80 BW1M119 012026e0
 	float GetMass();
 	// BW1W120 0047fac0 BW1M119 01202510
@@ -823,10 +842,14 @@ public:
 	inline long GetLeftHand();
 	// BW1W120 inlined BW1M119 011fc2f0
 	float GetStandardBreathTime() { return 5.0f / (1.0f / (float)sqrt(Size1)); }
+	// BW1W120 inlined BW1M119 011dd1a0
+	float GetFastBreathTime() { return 3.0f / (1.0f / (float)sqrt(Size1)); }
+	// BW1W120 inlined BW1M119 011dd250
+	float GetVeryFastBreathTime() { return 1.4f / (1.0f / (float)sqrt(Size1)); }
 	// BW1W120 inlined BW1M119 011ec4b0
 	inline float GetBreathTime();
 	// BW1W120 inlined BW1M119 inlined
-	float GetRequiredBreathTime() { return field_0x4990; }
+	float GetRequiredBreathTime() { return RequiredBreathTime; }
 	// BW1W120 inlined BW1M119 0128e640
 	long GetRightHand() { return RightHand; }
 	// BW1W120 inlined BW1M119 01341a10

@@ -115,6 +115,7 @@ enum LIVING_SET_STATE_RESULT
 enum LIVING_STATUS
 {
 	LIVING_STATUS_DYING = 0x1,
+	LIVING_STATUS_CONTROLLED_BY_CREATURE = 0x4,
 	LIVING_STATUS_FOOTPATH_BACKWARDS = 0x8,
 	LIVING_STATUS_SKELETON = 0x40,
 	LIVING_STATUS_SHOW_INFO = 0x200,
@@ -387,7 +388,7 @@ public:
 	// BW1W120 005ecc10 BW1M119 010866f0
 	virtual bool32_t IsDancing();
 	// BW1W120 00473e90 BW1M119 011eab90
-	virtual bool IsInterestedInFoodObject(Object* param_1);
+	virtual bool IsInterestedInFoodObject(Object* object) { return false; }
 	// BW1W120 00417080 BW1M119 011386c0
 	virtual bool32_t IsInterestedInWoodObject(Object* object) { return false; }
 	// BW1W120 005f11f0 BW1M119 0101c640
@@ -583,7 +584,7 @@ public:
 	// BW1W120 00417260 BW1M119 01002690
 	virtual uint32_t IsPosValidForMapCellExistance(const MapCoords& param_1) { return true; }
 	// BW1W120 005ec340 BW1M119 0138adf0
-	virtual void MoveByTeleport(const MapCoords& param_1);
+	virtual int MoveByTeleport(const MapCoords& pos);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00417b00 BW1MCI119 0114beb0
 	virtual bool IsImmuneToSpells();

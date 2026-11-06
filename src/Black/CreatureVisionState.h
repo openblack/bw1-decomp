@@ -7,6 +7,8 @@
 #include "Base.h"      /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
 
+class Creature;
+
 struct CreatureInterestingThingToLookAt
 {
 	uint32_t  field_0x0;
@@ -20,6 +22,11 @@ struct CreatureInterestingThingToLookAt
 
 	// BW1W120 004d1b90 BW1M119 01247730
 	CreatureInterestingThingToLookAt();
+
+	// BW1W120 004d1ed0 BW1M119 01246de0
+	void ConsiderNewMountainsToLookAt(Creature* creature);
+	// BW1W120 004d2050 BW1M119 01246b80
+	void ConsiderNewWaterToLookAt(Creature* creature);
 };
 
 class CreatureVisionState : public Base

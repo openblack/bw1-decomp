@@ -773,16 +773,16 @@ uint32_t Tree::ApplyThisToObject(GInterfaceStatus* status, Object* object, Gestu
 				LHPoint   pos = GGame::g_game->MyInterface()->GetHandRenderCollidePos().GetLHPoint();
 				spinner->Init(pos, CHAR2WCHAR(text), colour);
 			}
-			return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+			return GAME_RETURNS_RESOURCE_TAKEN;
 		}
-		return OBJECT_APPLY_RESULT_NONE;
+		return GAME_RETURNS_NONE;
 	}
 	if (object != NULL && object->IsResourceStore(RESOURCE_TYPE_WOOD) &&
 	    object->DeleteObjectAndTakeResource(this, status))
 	{
-		return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+		return GAME_RETURNS_RESOURCE_TAKEN;
 	}
-	return OBJECT_APPLY_RESULT_NONE;
+	return GAME_RETURNS_NONE;
 }
 
 uint32_t Tree::ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords, GestureSystemPacketData* data)
@@ -790,7 +790,7 @@ uint32_t Tree::ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& co
 	Object* site = Pos.IsWithinBuilingSite();
 	if (site != NULL && site->IsResourceStore(GetResourceType()) && site->DeleteObjectAndTakeResource(this, status))
 	{
-		return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+		return GAME_RETURNS_RESOURCE_TAKEN;
 	}
 	return SingleMapFixed::ApplyThisToMapCoord(status, coords, data);
 }

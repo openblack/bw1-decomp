@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <limits.h> /* For ULONG_MAX */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
@@ -17,6 +18,7 @@ class Creature;
 class CreatureBelief;
 class GameOSFile;
 class GameThing;
+class GInterfaceStatus;
 class SubArgument;
 
 class CreatureSubAction : public Base
@@ -37,7 +39,11 @@ public:
 	// Constructors
 
 	// BW1W120 00473db0 BW1M119 011e7e10
-	CreatureSubAction();
+	CreatureSubAction()
+	{
+		Belief = NULL;
+		field_0x2c = NULL;
+	}
 };
 static_assert(sizeof(CreatureSubAction) == 0x60, "Data type is of wrong size");
 
@@ -63,11 +69,13 @@ public:
 	uint32_t          field_0xc38;
 	bool32_t          AskedToPlayGame;
 	Creature*         Partner;
-	uint32_t          field_0xc44;
+	GInterfaceStatus* HandStatus;
 	uint32_t          field_0xc48;
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	CreatureSubActionAgenda() {}
 	// BW1W120 004ff1b0 BW1M119 01290b00
 	CreatureSubActionAgenda(Creature* creature);
 
@@ -82,6 +90,8 @@ public:
 	unsigned long GetSubActionIndex() const { return CurrentSubAction; }
 	// BW1W120 inlined BW1M119 01299260
 	CreatureBelief* GetObjectArgument() { return SubActions[CurrentSubAction].Belief; }
+	// BW1W120 inlined BW1M119 01249450
+	LHPoint* GetPositionArgument() { return &SubActions[CurrentSubAction].field_0x14; }
 	// BW1W120 004ff5c0 BW1M119 012902d0
 	void ClearSubActionAgenda();
 	// BW1W120 004e5940 BW1M119 012702f0

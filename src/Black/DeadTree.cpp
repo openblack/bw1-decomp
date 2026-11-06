@@ -140,7 +140,7 @@ uint32_t DeadTree::ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords
 	Object* site = Pos.IsWithinBuilingSite();
 	if (site != NULL && site->IsResourceStore(GetResourceType()) && site->DeleteObjectAndTakeResource(this, status))
 	{
-		return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+		return GAME_RETURNS_RESOURCE_TAKEN;
 	}
 	return MobileStatic::ApplyThisToMapCoord(status, coords, data);
 }

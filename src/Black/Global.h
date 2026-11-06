@@ -23,15 +23,15 @@ struct GGlobal
 	bool32_t EditorMode;
 	uint32_t field_0x2d2b0;
 	bool32_t ReactionsEnabled;
-	uint32_t field_0x2d2b8;
-	uint32_t field_0x2d2bc;
-	uint32_t field_0x2d2c0;
-	uint32_t field_0x2d2c4;
-	uint32_t field_0x2d2c8;
+	bool32_t CreatureLookingEnabled;
+	bool32_t CreatureProcessingEnabled;
+	bool32_t CreatureTimePassingEnabled;
+	bool32_t CreatureBodyUpdatesEnabled;
+	bool32_t CreatureUpdatesEnabled;
 	bool32_t RandomiseCreatureMinds;
 	bool32_t LoadNewCreature;
 	uint32_t field_0x2d2d4;
-	uint32_t field_0x2d2d8;
+	bool32_t ShowCreatureFailureReasons;
 	uint32_t field_0x2d2dc;
 	bool32_t CreatureSpellsNeedPlayerMagic;
 	Prss*    Editor; // Active editor interface; concrete subtype unrecovered.

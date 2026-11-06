@@ -296,13 +296,13 @@ void LH3DCreature::GetBoundingSphere(LHPoint& centre, float& radius)
 		BoundingSphereCentre.SetNull();
 		LHMatrix* matrices = GetSafeBuffer();
 		int       i;
-		for (i = 0; i < field_0x47b8; i++)
+		for (i = 0; i < NumBoneMatrices; i++)
 		{
 			BoundingSphereCentre.Add(matrices[i].GetPos());
 		}
-		BoundingSphereCentre *= 1.0f / field_0x47b8;
+		BoundingSphereCentre *= 1.0f / NumBoneMatrices;
 		BoundingSphereRadius = 0.0f;
-		for (i = 0; i < field_0x47b8; i++)
+		for (i = 0; i < NumBoneMatrices; i++)
 		{
 			float distance = matrices[i].GetPos().GetDistance(BoundingSphereCentre);
 			if (distance > BoundingSphereRadius)
@@ -405,17 +405,17 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	LookPitchRate = 0;
 	LookRelativePitch = 0.0f;
 	field_0x4ab8 = (int)Const_8cf0a8;
-	field_0x4abc = 12;
+	MaxFightQueueSize = 12;
 	field_0x4b30 = 0;
-	field_0x4ac0 = 0;
+	FightQueueSize = 0;
 	field_0x5188 = 0;
 	field_0x499c = 0;
 	MoveState = 0;
-	field_0x579c = 0;
+	AutoFightStatus = FIGHT_CONTROL_AI_NEVER;
 	field_0x5044 = 0;
 	field_0x5430 = 0;
 	field_0x545c = 0;
-	field_0x5464 = 0.0f;
+	EyeLidLevel = 0.0f;
 	field_0x4ab0 = 0.0f;
 	field_0x4ab4 = 0;
 	field_0x8c = 1.0f;
@@ -469,7 +469,7 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	DiscardTime = 0;
 	EatTime = 0;
 	field_0x4a38 = 0;
-	field_0x4a3c = 0;
+	CatchTime = 0;
 	field_0x4a8c = 0;
 	field_0x4a80 = 0;
 	field_0x4a88 = 0;
@@ -522,12 +522,12 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 		field_0x56bc[i] = 0;
 		field_0x56dc[i] = 0;
 	}
-	field_0x5460 = 2;
+	EyeState = 2;
 	Boite = NULL;
 	field_0x57a8 = 0;
-	field_0x57ac = 0;
+	PhysicsOb = NULL;
 	field_0x5468 = 1000;
-	field_0x546c = 5000;
+	BlinkPeriod = 5000;
 	field_0x5470 = 0;
 	field_0x5168.SetNull();
 	ImpactTime = 0;
@@ -563,8 +563,8 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	IdleActionTimer = 0;
 	RPLookPoint.SetNull();
 	field_0x5794 = 1;
-	field_0x4aac = 1.0f;
-	field_0x4aa8 = 1.0f;
+	FightStamina = 1.0f;
+	FightHealth = 1.0f;
 }
 
 LH3DCreature::~LH3DCreature()
@@ -622,7 +622,7 @@ LH3DCreature::~LH3DCreature()
 
 void LH3DCreature::ReduceFightHealth(float amount)
 {
-	field_0x4aa8 -= amount;
+	FightHealth -= amount;
 }
 
 void LH3DCreature::StartUnknownAction6A()
@@ -692,8 +692,8 @@ void LH3DCreature::SetSize(float size)
 	Acceleration = 12.0f;
 	field_0x4858 = a * field_0x485c;
 	BodyTurnAccel = a * 3.1415927f;
-	field_0x498c = field_0x4990 = 5.0f / (1.0f / (float)sqrt(Size1));
-	field_0x5228 = Size2 * field_0x5224;
+	BreathTime = RequiredBreathTime = 5.0f / (1.0f / (float)sqrt(Size1));
+	BodyRadius = Size2 * field_0x5224;
 	if (creature && creature->GetPlayer())
 	{
 		for (GInterfaceStatus* status = creature->GetPlayer()->GetNextInterfaceStatus(NULL); status;
@@ -724,7 +724,7 @@ void LH3DCreature::DisconnectFromGame(long param_1)
 	{
 		StartIndividualAction(param_1);
 	}
-	memcpy(SafeBuffer1, SafeBuffer0, field_0x47b8 * sizeof(LHMatrix));
+	memcpy(SafeBuffer1, SafeBuffer0, NumBoneMatrices * sizeof(LHMatrix));
 }
 
 void LH3DCreature::ReconnectToGame()
@@ -813,9 +813,9 @@ float LH3DCreature::GetNavRadius()
 {
 	if (creature && !creature->Trapped)
 	{
-		return creature->physical->Size / Size1 * field_0x5228;
+		return creature->physical->Size / Size1 * BodyRadius;
 	}
-	return field_0x5228;
+	return BodyRadius;
 }
 
 bool32_t LH3DCreature::IsPhysicsObject(Object* object)
@@ -1087,7 +1087,7 @@ long LH3DCreature::FindMirrorBone(long bone)
 	LHPoint   pos(matrices[bone]._41, matrices[bone]._42, matrices[bone]._43);
 	long      mirror = -1;
 	float     best = 100.0f;
-	for (long i = 0; i < field_0x47b8; i++)
+	for (long i = 0; i < NumBoneMatrices; i++)
 	{
 		LHPoint mirrored(-matrices[i]._41, matrices[i]._42, matrices[i]._43);
 		float   distance = mirrored.GetDistance(pos);
@@ -1141,7 +1141,7 @@ void LH3DCreature::AddEvilGoodSparkles()
 			float         y = (int)(GRand::LocalRand(101) - 50) * 0.02f;
 			float         z = (int)(GRand::LocalRand(101) - 50) * 0.02f;
 			float         scale = GetStandingHeight() * 0.05f;
-			LHMatrix*     matrix = &SafeBuffer0[GRand::LocalRand(field_0x47b8)];
+			LHMatrix*     matrix = &SafeBuffer0[GRand::LocalRand(NumBoneMatrices)];
 			LHPoint       pos(matrix->_41 + x * scale, matrix->_42 + y * scale, matrix->_43 + z * scale);
 			unsigned long alpha = (unsigned long)(EvilGood * 32.0f) << 24;
 			switch (GRand::LocalRand(6))
@@ -1184,7 +1184,7 @@ void LH3DCreature::AddEvilGoodSparkles()
 			float     y = (int)(GRand::LocalRand(101) - 50) * 0.02f;
 			float     z = (int)(GRand::LocalRand(101) - 50) * 0.02f;
 			float     scale = GetStandingHeight() * 0.05f;
-			LHMatrix* matrix = &SafeBuffer0[GRand::LocalRand(field_0x47b8)];
+			LHMatrix* matrix = &SafeBuffer0[GRand::LocalRand(NumBoneMatrices)];
 			LHPoint   pos(matrix->_41 + x * scale, matrix->_42 + y * scale, matrix->_43 + z * scale);
 			switch (GRand::LocalRand(6))
 			{
@@ -1477,7 +1477,7 @@ void LH3DCreature::UpdateTime(int time)
 			break;
 		case 2:
 			field_0x5470 = 0;
-			field_0x5468 = GRand::LocalRand(field_0x546c) + (field_0x546c >> 1);
+			field_0x5468 = GRand::LocalRand(BlinkPeriod) + (BlinkPeriod >> 1);
 			break;
 		}
 	}
@@ -1691,7 +1691,7 @@ void LH3DCreature::UpdateTime(int time)
 		LH3DAnim::GetGraspPoint(GetSafeBuffer(), meshes[CurrentMesh], held->GetCreature3D()->position, bone);
 		held->GetCreature3D()->UpdateBuffers();
 	}
-	if (field_0x57ac)
+	if (PhysicsOb != NULL)
 	{
 		PhysicsObject* physics = PhysicsObject::SearchForPhysicsObject(creature);
 		if (physics)
@@ -1706,12 +1706,12 @@ void LH3DCreature::UpdateTime(int time)
 	if (CameraExclusionDome)
 	{
 		CameraExclusion::Adjust(CameraExclusionDome, *(LHPoint*)&DynamicShadow->matrix._41,
-		                        field_0x5228 * CameraExclusionScale, CameraExclusionScale * GetStandingHeight());
+		                        BodyRadius * CameraExclusionScale, CameraExclusionScale * GetStandingHeight());
 	}
 	else
 	{
 		CameraExclusionDome =
-			CameraExclusion::CreateDome(3, *(LHPoint*)&DynamicShadow->matrix._41, field_0x5228 * CameraExclusionScale,
+			CameraExclusion::CreateDome(3, *(LHPoint*)&DynamicShadow->matrix._41, BodyRadius * CameraExclusionScale,
 		                                CameraExclusionScale * GetStandingHeight());
 		if (CameraExclusionDome)
 		{
@@ -1724,9 +1724,9 @@ void LH3DCreature::SetLookPoint(LHPoint* point)
 {
 	if (GGlobal::Global.debug.LogCreatures && (!creature || !(creature->Flags & GAME_THING_WITH_POS_FLAG_INTERACTING)))
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "SetLookPoint x:%20.20f, y:%20.20f, z:%20.20f\n", point->x, point->y,
+		fprintf(GGame::g_game->CreatureLogFile, "SetLookPoint x:%20.20f, y:%20.20f, z:%20.20f\n", point->x, point->y,
 		        point->z);
-		fprintf(GGame::g_game->field_0x2502d0, "STACK: %s\n", GetCurrentStackString());
+		fprintf(GGame::g_game->CreatureLogFile, "STACK: %s\n", GetCurrentStackString());
 	}
 	if (AlwaysSetLookPoint || !creature || !(creature->Flags & GAME_THING_WITH_POS_FLAG_INTERACTING))
 	{
@@ -2221,14 +2221,14 @@ bool32_t LH3DCreature::StartMovingToPoint(const LHPoint& pos, float param_2, flo
 	if (creature)
 	{
 		GLandscape::ConvertLandscapePointToMapCoord(dest, creature->DestPos);
-		creature->field_0x1118 = 1;
+		creature->Moving = true;
 	}
 	return 4;
 }
 
 bool32_t LH3DCreature::StopMoving()
 {
-	field_0x4990 = GetStandardBreathTime();
+	RequiredBreathTime = GetStandardBreathTime();
 	if (MoveState == LH3D_CREATURE_STATE_MOVING)
 	{
 		RpFollow->StopMoving();
@@ -2301,7 +2301,7 @@ bool32_t LH3DCreature::StartFighting(LH3DCreature* other, LHPoint& pos, float pa
 	ValidateFightPositions();
 	InitialiseDestructionBones();
 	FightCreature = other;
-	field_0x4ac0 = 0;
+	FightQueueSize = 0;
 	field_0x4b24 = 0;
 	field_0x4b30 = 0;
 	if (FightCreature)
@@ -2362,7 +2362,7 @@ bool32_t LH3DCreature::EndFighting()
 		}
 		if (creature)
 		{
-			creature->SetLife(creature->GetLife() - (1.0f - field_0x4aa8) * FightLifeLossScale);
+			creature->SetLife(creature->GetLife() - (1.0f - FightHealth) * FightLifeLossScale);
 		}
 		field_0x5238 = 1;
 		return true;
@@ -2736,7 +2736,7 @@ void LH3DCreature::StateSet(long state)
 	case LH3D_CREATURE_STATE_FINISH_STATIC:
 		if (CurrentAnim == C_STATIC_SLEEP)
 		{
-			field_0x5460 = 2;
+			EyeState = 2;
 			InitialiseDestructionBones();
 			StartDestruction();
 		}
@@ -2750,7 +2750,7 @@ void LH3DCreature::StateSet(long state)
 	case LH3D_CREATURE_STATE_DO_STATIC:
 		if (CurrentAnim == C_STATIC_SLEEP)
 		{
-			field_0x5460 = 1;
+			EyeState = 1;
 			ClearField5044();
 		}
 		CycleTime[0] = 0;
@@ -2771,7 +2771,7 @@ void LH3DCreature::StateSet(long state)
 		CycleTime[0] = 0;
 		break;
 	case LH3D_CREATURE_STATE_RESURRECT:
-		field_0x5460 = 2;
+		EyeState = 2;
 		CycleTime[0] = 0;
 		break;
 	case LH3D_CREATURE_STATE_FIGHT_MAIN:
@@ -2797,7 +2797,7 @@ void LH3DCreature::StateSet(long state)
 		break;
 	case LH3D_CREATURE_STATE_DEAD:
 		ClearField5044();
-		field_0x5460 = 1;
+		EyeState = 1;
 		break;
 	}
 }
@@ -2876,7 +2876,7 @@ void LH3DCreature::StateSwitch()
 			AdvanceSimple(CurrentAnim + 1, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 			CurrentAnim = 0;
 			StateSet(LH3D_CREATURE_STATE_FIGHT_MAIN);
-			if (field_0x579c != 2)
+			if (AutoFightStatus != FIGHT_CONTROL_AI_FULL_ON)
 			{
 				CheckFightQueue();
 			}
@@ -3004,7 +3004,7 @@ void LH3DCreature::StateSwitch()
 			AdvanceSimple(C_FIGHT_END_BLOCK, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 			CurrentAnim = 0;
 			StateSet(LH3D_CREATURE_STATE_FIGHT_MAIN);
-			if (field_0x579c != 2)
+			if (AutoFightStatus != FIGHT_CONTROL_AI_FULL_ON)
 			{
 				CheckFightQueue();
 			}
@@ -3078,7 +3078,7 @@ void LH3DCreature::StateSwitch()
 		{
 			AdvanceSimple(CurrentAnim, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 			StateSet(LH3D_CREATURE_STATE_FIGHT_MAIN);
-			if (field_0x579c != 2)
+			if (AutoFightStatus != FIGHT_CONTROL_AI_FULL_ON)
 			{
 				CheckFightQueue();
 			}
@@ -3452,7 +3452,7 @@ bool32_t LH3DCreature::CheckKeepInArenaRule()
 	{
 		LHPoint toCentre = ArenaCentre - position;
 		float   distance = toCentre.GetNorme();
-		float   radius = field_0x5228;
+		float   radius = BodyRadius;
 		if (distance > radius)
 		{
 			// Step back towards the centre, in whichever of the four step directions points at it most.
@@ -3489,7 +3489,7 @@ bool32_t LH3DCreature::CheckKeepInArenaRule()
 
 void LH3DCreature::StateAction()
 {
-	field_0x4988 += FloatTimeInc / field_0x498c;
+	field_0x4988 += FloatTimeInc / BreathTime;
 	field_0x4988 -= (long)field_0x4988;
 	switch (MoveState)
 	{
@@ -3511,12 +3511,12 @@ void LH3DCreature::StateAction()
 		CycleTime[0] = AdvanceCyclic(CurrentAnim - 1, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 		break;
 	case LH3D_CREATURE_STATE_BLOCK:
-		if (field_0x579c == 1)
+		if (AutoFightStatus == FIGHT_CONTROL_AI_NOT_FOR_A_FEW_SECONDS)
 		{
 			field_0x4ab8 -= IntTimeInc;
 			if (field_0x4ab8 < 0)
 			{
-				field_0x579c = 2;
+				AutoFightStatus = FIGHT_CONTROL_AI_FULL_ON;
 			}
 		}
 		CycleAnim[0] = GetAnim(C_FIGHT_BLOCK, 0);
@@ -3528,7 +3528,7 @@ void LH3DCreature::StateAction()
 			Heading = angle_correct(heading);
 			if (!CheckKeepInArenaRule())
 			{
-				if (field_0x579c != 2)
+				if (AutoFightStatus != FIGHT_CONTROL_AI_FULL_ON)
 				{
 					CheckFightQueue();
 				}
@@ -3590,7 +3590,7 @@ void LH3DCreature::StateAction()
 		}
 		break;
 	case LH3D_CREATURE_STATE_BLOCK_RECOIL: {
-		if (field_0x579c == 1)
+		if (AutoFightStatus == FIGHT_CONTROL_AI_NOT_FOR_A_FEW_SECONDS)
 		{
 			field_0x4ab8 -= IntTimeInc;
 		}
@@ -3690,12 +3690,12 @@ void LH3DCreature::StateAction()
 		break;
 	}
 	case LH3D_CREATURE_STATE_FIGHT_MAIN:
-		if (field_0x579c == 1)
+		if (AutoFightStatus == FIGHT_CONTROL_AI_NOT_FOR_A_FEW_SECONDS)
 		{
 			field_0x4ab8 -= IntTimeInc;
 			if (field_0x4ab8 < 0)
 			{
-				field_0x579c = 2;
+				AutoFightStatus = FIGHT_CONTROL_AI_FULL_ON;
 			}
 		}
 		DoFightMainAction();
@@ -3734,7 +3734,7 @@ void LH3DCreature::StateAction()
 		break;
 	}
 	case LH3D_CREATURE_STATE_FIGHT:
-		if (field_0x579c == 1)
+		if (AutoFightStatus == FIGHT_CONTROL_AI_NOT_FOR_A_FEW_SECONDS)
 		{
 			field_0x4ab8 -= IntTimeInc;
 		}
@@ -3784,7 +3784,7 @@ void LH3DCreature::StateAction()
 	}
 	if (!creature || !(creature->Flags & GAME_THING_WITH_POS_FLAG_INTERACTING))
 	{
-		LogCurrentBufferMatrixes(SafeBuffer0, field_0x47b8, MoveState);
+		LogCurrentBufferMatrixes(SafeBuffer0, NumBoneMatrices, MoveState);
 	}
 }
 
@@ -3912,10 +3912,9 @@ void LH3DCreature::DoPickupFromHandAction()
 			DropHeldObject(ActionObject);
 			if (creature)
 			{
-				// TODO: the giving player's interface status; typed as uint32_t in CreatureSubActionAgenda (0xc44).
-				GInterfaceStatus* status = (GInterfaceStatus*)creature->mind->agenda.SubActionAgenda.field_0xc44;
+				GInterfaceStatus* status = creature->mind->agenda.SubActionAgenda.HandStatus;
 				creature->physical->ObjectCarried = HeldObject;
-				uint32_t result = creature->InterfaceGiveObject(status, HeldObject);
+				GAME_RETURNS result = creature->InterfaceGiveObject(status, HeldObject);
 				status->GetInterface()->ApplyChangesToHand(result, HeldObject, NULL);
 				if (GGame::g_game->MyInterfaceStatus() == status)
 				{
@@ -4089,7 +4088,7 @@ void LH3DCreature::DoCatchAction()
 		CycleTime[0] = max(0, CycleTime[0] - AnimTimeInc);
 	}
 	CycleTime[1] = CycleTime[2] = CycleTime[3] = CycleTime[0];
-	if (ObjectActionStatus != 3 && ObjectActionStatus != 2 && CycleTime[0] >= field_0x4a3c)
+	if (ObjectActionStatus != 3 && ObjectActionStatus != 2 && CycleTime[0] >= CatchTime)
 	{
 		LookPoint.SetNull();
 		if (clamped)
@@ -4234,7 +4233,7 @@ void LH3DCreature::DoCatchMain()
 	}
 	// In reach: catch when the object arrives at about the time the catch animation needs.
 	float   half = Size1 * 0.5f;
-	float   catchTime = field_0x4a3c / ((1.6f - half * 0.85f) * 1000.0f);
+	float   catchTime = CatchTime / ((1.6f - half * 0.85f) * 1000.0f);
 	LHPoint velocity(-physics->Physics.Velocity.x, 0.0f, -physics->Physics.Velocity.z);
 	float   arrivalTime = distance / (velocity * forward);
 	if (arrivalTime < catchTime + 0.1f)
@@ -4497,7 +4496,7 @@ void LH3DCreature::DoFightMainAction()
 		if (!CheckKeepInArenaRule())
 		{
 			DoFightPullApart();
-			if (field_0x579c == 2)
+			if (AutoFightStatus == FIGHT_CONTROL_AI_FULL_ON)
 			{
 				bool attack = false;
 				bool step = false;
@@ -4650,12 +4649,12 @@ void LH3DCreature::CheckFightQueue()
 			return;
 		}
 	}
-	if (field_0x4ac0 == 0)
+	if (FightQueueSize == 0)
 	{
 		return;
 	}
 	field_0x4ab8 = (int)Const_8cf0ac;
-	unsigned long action = field_0x4ac4[0];
+	unsigned long action = FightQueue[0];
 	if (MoveState == LH3D_CREATURE_STATE_BLOCK)
 	{
 		if (action == 3)
@@ -4663,12 +4662,12 @@ void LH3DCreature::CheckFightQueue()
 			ShuntFightQueue();
 			StateSet(LH3D_CREATURE_STATE_FINISH_BLOCK);
 		}
-		else if (field_0x4ac0 != 0)
+		else if (FightQueueSize != 0)
 		{
 			StateSet(LH3D_CREATURE_STATE_FINISH_BLOCK);
 		}
 	}
-	else if (MoveState == LH3D_CREATURE_STATE_FIGHT_MAIN && field_0x4ac0 != 0)
+	else if (MoveState == LH3D_CREATURE_STATE_FIGHT_MAIN && FightQueueSize != 0)
 	{
 		if (action & 0x8000)
 		{
@@ -4725,9 +4724,9 @@ void LH3DCreature::CheckFightQueue()
 			{
 				AttemptAttack(action, 0.0f);
 			}
-			else if (field_0x4af4[0] != -1)
+			else if (FightQueueTimes[0] != -1)
 			{
-				AttemptAttack(action, 0.5 + field_0x4af4[0] / 1200.0f);
+				AttemptAttack(action, 0.5 + FightQueueTimes[0] / 1200.0f);
 			}
 		}
 	}
@@ -4735,16 +4734,16 @@ void LH3DCreature::CheckFightQueue()
 
 void LH3DCreature::ShuntFightQueue()
 {
-	if (field_0x579c == 2)
+	if (AutoFightStatus == FIGHT_CONTROL_AI_FULL_ON)
 	{
 		return;
 	}
-	field_0x4ac0--;
+	FightQueueSize--;
 	int i;
-	for (i = 0; i < field_0x4ac0; i++)
+	for (i = 0; i < FightQueueSize; i++)
 	{
-		field_0x4ac4[i] = field_0x4ac4[i + 1];
-		field_0x4af4[i] = field_0x4af4[i + 1];
+		FightQueue[i] = FightQueue[i + 1];
+		FightQueueTimes[i] = FightQueueTimes[i + 1];
 	}
 	if (field_0x4b30 > 0)
 	{
@@ -4763,14 +4762,14 @@ void LH3DCreature::ShuntFightQueue()
 
 void LH3DCreature::AddToFightQueue(unsigned long action, bool param_2)
 {
-	if (field_0x579c == 2)
+	if (AutoFightStatus == FIGHT_CONTROL_AI_FULL_ON)
 	{
-		field_0x579c = 1;
+		AutoFightStatus = FIGHT_CONTROL_AI_NOT_FOR_A_FEW_SECONDS;
 	}
 	field_0x4ab8 = (int)Const_8cf0ac;
 	if (param_2)
 	{
-		field_0x4ac0 = 0;
+		FightQueueSize = 0;
 		if (field_0x4b30 > 1)
 		{
 			field_0x4bc4[0] = field_0x4bc4[field_0x4b30 - 1];
@@ -4780,30 +4779,30 @@ void LH3DCreature::AddToFightQueue(unsigned long action, bool param_2)
 			field_0x4b64[0] = field_0x4b64[field_0x4b30 - 1];
 			field_0x4b30 = 1;
 		}
-		field_0x4ac4[field_0x4ac0] = action;
-		field_0x4af4[field_0x4ac0] = -1;
-		field_0x4ac0++;
+		FightQueue[FightQueueSize] = action;
+		FightQueueTimes[FightQueueSize] = -1;
+		FightQueueSize++;
 	}
 	else
 	{
-		if (field_0x4ac0 == field_0x4abc)
+		if (FightQueueSize == MaxFightQueueSize)
 		{
 			field_0x4b24 = false;
 			return;
 		}
-		field_0x4ac4[field_0x4ac0] = action;
-		field_0x4af4[field_0x4ac0] = -1;
-		field_0x4ac0++;
+		FightQueue[FightQueueSize] = action;
+		FightQueueTimes[FightQueueSize] = -1;
+		FightQueueSize++;
 	}
 	if (action == 4 || action & 0x4000)
 	{
 		field_0x4b24 = false;
-		field_0x4af4[field_0x4ac0 - 1] = 1200;
+		FightQueueTimes[FightQueueSize - 1] = 1200;
 	}
 	else if (action == 3 || action & 0x8000)
 	{
 		field_0x4b24 = false;
-		field_0x4af4[field_0x4ac0 - 1] = 0;
+		FightQueueTimes[FightQueueSize - 1] = 0;
 	}
 	else
 	{
@@ -5035,16 +5034,16 @@ bool LH3DCreature::ReturnTrue()
 void LH3DCreature::IncFightQueueSize()
 {
 	char text[64];
-	field_0x4abc = min(12, field_0x4abc + 1);
-	sprintf(text, "Fight Queue %d", field_0x4abc);
+	MaxFightQueueSize = min(12, MaxFightQueueSize + 1);
+	sprintf(text, "Fight Queue %d", MaxFightQueueSize);
 	GGlobal::Global.AddPlayerTextMessage(-1, text);
 }
 
 void LH3DCreature::DecFightQueueSize()
 {
 	char text[64];
-	field_0x4abc = max(1, field_0x4abc - 1);
-	sprintf(text, "Fight Queue %d", field_0x4abc);
+	MaxFightQueueSize = max(1, MaxFightQueueSize - 1);
+	sprintf(text, "Fight Queue %d", MaxFightQueueSize);
 	GGlobal::Global.AddPlayerTextMessage(-1, text);
 }
 
@@ -5078,9 +5077,9 @@ void LH3DCreature::DoNothing(long param_1) {}
 
 void LH3DCreature::ValidateFightEvent(unsigned long time)
 {
-	if (field_0x4b24 && field_0x4ac0)
+	if (field_0x4b24 && FightQueueSize)
 	{
-		field_0x4af4[field_0x4ac0 - 1] = min(1200, time);
+		FightQueueTimes[FightQueueSize - 1] = min(1200, time);
 		field_0x4b24 = false;
 	}
 }
@@ -5322,7 +5321,7 @@ void LH3DCreature::DoFightActionAction()
 					{
 						FightCreature->creature->DestroySpell();
 					}
-					if (FightCreature->field_0x4aa8 <= 0.0f)
+					if (FightCreature->FightHealth <= 0.0f)
 					{
 						Creature* loser = FightCreature->creature;
 						if (loser)
@@ -5417,7 +5416,7 @@ float LH3DCreature::GetForwardExtent()
 	LHPoint   forward(sin(heading), 0.0f, -cos(heading));
 	float     extent = 0.0f;
 	LHMatrix* matrix = GetSafeBuffer();
-	for (int i = 0; i < field_0x47b8; i++)
+	for (int i = 0; i < NumBoneMatrices; i++)
 	{
 		const LHPoint& pos = matrix->GetPos();
 		LHPoint        offset(pos.x - position.x, pos.y - position.y, pos.z - position.z);
@@ -5433,9 +5432,9 @@ void LH3DCreature::ReceivedFightImpact3d(long param_1, float param_2, Creature* 
 	{
 		creature->ReceivedFightImpact(param_1, param_2 * 0.5f, attacker);
 	}
-	if (field_0x4b24 && field_0x4ac0)
+	if (field_0x4b24 && FightQueueSize)
 	{
-		field_0x4ac0--;
+		FightQueueSize--;
 		field_0x4b24 = false;
 		if (creature == GGame::g_game->players[GGame::g_game->PlayerIndex].creature.Get() && field_0x4b30)
 		{
@@ -5538,7 +5537,7 @@ void LH3DCreature::AttemptToKeepOnFlatLand()
 	}
 	int     count = 0;
 	LHPoint sum(0.0f, 0.0f, 0.0f);
-	for (int i = 0; i < field_0x47b8; i++)
+	for (int i = 0; i < NumBoneMatrices; i++)
 	{
 		const LHPoint* pos = &SafeBuffer0[i].GetPos();
 		if (!IsDestinationValid(pos))
@@ -5560,7 +5559,7 @@ void LH3DCreature::AttemptToKeepOnFlatLand()
 	{
 		return;
 	}
-	sum.SetSize(count * GetStandingHeight() / field_0x47b8 * 0.5f);
+	sum.SetSize(count * GetStandingHeight() / NumBoneMatrices * 0.5f);
 	LHPoint newPos = position + sum;
 	if (IsDestinationValid(&newPos))
 	{
@@ -5867,7 +5866,7 @@ void LH3DCreature::DoDiscardAction()
 				HeldObject->Pos.altitude = handPos.y - altitude;
 				UpdateHeldObjects3Angles();
 				GPlayer* player = creature ? creature->GetPlayer() : NULL;
-				LogCurrentBufferMatrixes(SafeBuffer0, field_0x47b8, MoveState);
+				LogCurrentBufferMatrixes(SafeBuffer0, NumBoneMatrices, MoveState);
 				FillHeldObjectMatrix(SafeBuffer0);
 				if (player)
 				{
@@ -6337,7 +6336,7 @@ void LH3DCreature::Unknown48db40(Object* object, LHPoint* result, long state)
 		float scale = object->GetScale();
 		if (scale * object3d->GetMesh()->BoundingBox.size.y * 2.0f > maxSize)
 		{
-			result->z = -max(-result->z, object->Get2DRadius() + field_0x5228);
+			result->z = -max(-result->z, object->Get2DRadius() + BodyRadius);
 		}
 	}
 }
@@ -6404,7 +6403,7 @@ void LH3DCreature::DrawFightSparkles()
 				pos = field_0x4da4[i];
 				break;
 			}
-			float fraction = (float)(field_0x4abc - i) / field_0x4abc;
+			float fraction = (float)(MaxFightQueueSize - i) / MaxFightQueueSize;
 			long  red;
 			long  green;
 			long  blue;
@@ -6492,11 +6491,11 @@ void LH3DCreature::DrawNow()
 		for (long eye = 0; eye < 2; eye++)
 		{
 			float scale = GetExtraHeadScale() * GetExtraEyesScale() * field_0x5474 * Size1 * EyeSizeScale;
-			if (field_0x5460 == 3)
+			if (EyeState == 3)
 			{
 				scale *= 1.1f;
 			}
-			float time = 0.3f / (field_0x5464 + 2.0f);
+			float time = 0.3f / (EyeLidLevel + 2.0f);
 			if (!field_0x5518[eye])
 			{
 				continue;
@@ -6506,7 +6505,7 @@ void LH3DCreature::DrawNow()
 			GetEyePoint(eye, &pos, &normal);
 			normal.FastNormalize();
 			LHPoint look;
-			switch (field_0x5460)
+			switch (EyeState)
 			{
 			case 0:
 			case 1:
@@ -6524,7 +6523,7 @@ void LH3DCreature::DrawNow()
 					look.y = 0.0f;
 					look.z = -1.0f * -(float)cos(heading);
 				}
-				if (field_0x5460 == 3)
+				if (EyeState == 3)
 				{
 					look.x += ((long)GRand::LocalRand(201) - 100) * 0.009f;
 					look.y += ((long)GRand::LocalRand(201) - 100) * 0.009f;
@@ -6616,7 +6615,7 @@ void LH3DCreature::DrawNow()
 				eyelid->SetColorSpecular(skin.GetColor(), 0);
 			}
 			float angle;
-			switch (field_0x5460)
+			switch (EyeState)
 			{
 			case 0:
 			case 3:
@@ -6627,7 +6626,7 @@ void LH3DCreature::DrawNow()
 				break;
 			case 2:
 			case 4:
-				angle = field_0x5670[1] * PI_F - asin(sinAngle) + field_0x5464 * 0.3f;
+				angle = field_0x5670[1] * PI_F - asin(sinAngle) + EyeLidLevel * 0.3f;
 				switch (field_0x5470)
 				{
 				case 1:
@@ -6835,7 +6834,7 @@ void LH3DCreature::Unknown48f550()
 
 float LH3DCreature::CalculateRadius2D()
 {
-	if (field_0x47b8 == 0)
+	if (NumBoneMatrices == 0)
 	{
 		return 0.0f;
 	}
@@ -6849,7 +6848,7 @@ float LH3DCreature::CalculateRadius2D()
 	anim->FillBuffer(SafeBuffer1, GetMesh(), BaseMatrices, InverseBaseMatrices, 0, frame, NULL, true);
 	LH3DAnim::FinishTransform(SafeBuffer1, GetMesh(), identity);
 	float radius = 0.0f;
-	for (int i = 0; i < field_0x47b8; i++)
+	for (int i = 0; i < NumBoneMatrices; i++)
 	{
 		LHPoint pos;
 		pos = SafeBuffer1[i].GetPos();
@@ -6934,268 +6933,268 @@ uint32_t LH3DCreature::GetInteractionCheckSum()
 {
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "----------------------------------GameTurn %lu\n",
+		fprintf(GGame::g_game->CreatureLogFile, "----------------------------------GameTurn %lu\n",
 		        GGame::g_game->data.GameTurn);
 	}
 	uint32_t checkSum = getint(CurrentSpeed);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "CurrentSpeed %lu\n", getint(CurrentSpeed));
+		fprintf(GGame::g_game->CreatureLogFile, "CurrentSpeed %lu\n", getint(CurrentSpeed));
 	}
 	checkSum += getint(RequiredSpeed);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "RequiredSpeed:%lu\n", getint(RequiredSpeed));
+		fprintf(GGame::g_game->CreatureLogFile, "RequiredSpeed:%lu\n", getint(RequiredSpeed));
 	}
 	checkSum += getint(RequiredHeading);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "RequiredHeading:%lu\n", getint(RequiredHeading));
+		fprintf(GGame::g_game->CreatureLogFile, "RequiredHeading:%lu\n", getint(RequiredHeading));
 	}
 	checkSum += getint(Heading);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "Heading:%lu\n", getint(Heading));
+		fprintf(GGame::g_game->CreatureLogFile, "Heading:%lu\n", getint(Heading));
 	}
 	checkSum += getint(WalkSpeed);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "WalkSpeed:%lu\n", getint(WalkSpeed));
+		fprintf(GGame::g_game->CreatureLogFile, "WalkSpeed:%lu\n", getint(WalkSpeed));
 	}
 	checkSum += getint(RunSpeed);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "RunSpeed:%lu\n", getint(RunSpeed));
+		fprintf(GGame::g_game->CreatureLogFile, "RunSpeed:%lu\n", getint(RunSpeed));
 	}
 	checkSum += getint(Acceleration);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "Acceleration:%lu\n", getint(Acceleration));
+		fprintf(GGame::g_game->CreatureLogFile, "Acceleration:%lu\n", getint(Acceleration));
 	}
 	checkSum += getint(BodyTurnAccel);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "BodyTurnAccel:%lu\n", getint(BodyTurnAccel));
+		fprintf(GGame::g_game->CreatureLogFile, "BodyTurnAccel:%lu\n", getint(BodyTurnAccel));
 	}
 	checkSum += getint(BodyTurnRate);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "BodyTurnRate:%lu\n", getint(BodyTurnRate));
+		fprintf(GGame::g_game->CreatureLogFile, "BodyTurnRate:%lu\n", getint(BodyTurnRate));
 	}
 	checkSum += IntTimeInc;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "IntTimeInc:%lu\n", IntTimeInc);
+		fprintf(GGame::g_game->CreatureLogFile, "IntTimeInc:%lu\n", IntTimeInc);
 	}
 	checkSum += getint(FloatTimeInc);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "FloatTimeInc:%lu\n", getint(FloatTimeInc));
+		fprintf(GGame::g_game->CreatureLogFile, "FloatTimeInc:%lu\n", getint(FloatTimeInc));
 	}
 	checkSum += AnimTimeInc;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "AnimTimeInc:%lu\n", AnimTimeInc);
+		fprintf(GGame::g_game->CreatureLogFile, "AnimTimeInc:%lu\n", AnimTimeInc);
 	}
 	checkSum += DiscardTime;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "DiscardTime:%lu\n", DiscardTime);
+		fprintf(GGame::g_game->CreatureLogFile, "DiscardTime:%lu\n", DiscardTime);
 	}
 	checkSum += getint(DiscardVelocity.x);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "DiscardVelocity.x:%lu\n", getint(DiscardVelocity.x));
+		fprintf(GGame::g_game->CreatureLogFile, "DiscardVelocity.x:%lu\n", getint(DiscardVelocity.x));
 	}
 	checkSum += getint(DiscardVelocity.y);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "DiscardVelocity.y:%lu\n", getint(DiscardVelocity.y));
+		fprintf(GGame::g_game->CreatureLogFile, "DiscardVelocity.y:%lu\n", getint(DiscardVelocity.y));
 	}
 	checkSum += getint(DiscardVelocity.z);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "DiscardVelocity.z:%lu\n", getint(DiscardVelocity.z));
+		fprintf(GGame::g_game->CreatureLogFile, "DiscardVelocity.z:%lu\n", getint(DiscardVelocity.z));
 	}
 	checkSum += getint(DiscardPosition.x);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "DiscardPosition.x:%lu\n", getint(DiscardPosition.x));
+		fprintf(GGame::g_game->CreatureLogFile, "DiscardPosition.x:%lu\n", getint(DiscardPosition.x));
 	}
 	checkSum += getint(DiscardPosition.y);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "DiscardPosition.y:%lu\n", getint(DiscardPosition.y));
+		fprintf(GGame::g_game->CreatureLogFile, "DiscardPosition.y:%lu\n", getint(DiscardPosition.y));
 	}
 	checkSum += getint(DiscardPosition.z);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "DiscardPosition.z:%lu\n", getint(DiscardPosition.z));
+		fprintf(GGame::g_game->CreatureLogFile, "DiscardPosition.z:%lu\n", getint(DiscardPosition.z));
 	}
 	checkSum += getint(ThrowPosHigh.x);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosHigh.x:%lu\n", getint(ThrowPosHigh.x));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowPosHigh.x:%lu\n", getint(ThrowPosHigh.x));
 	}
 	checkSum += getint(ThrowPosHigh.y);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosHigh.y:%lu\n", getint(ThrowPosHigh.y));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowPosHigh.y:%lu\n", getint(ThrowPosHigh.y));
 	}
 	checkSum += getint(ThrowPosHigh.z);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosHigh.z:%lu\n", getint(ThrowPosHigh.z));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowPosHigh.z:%lu\n", getint(ThrowPosHigh.z));
 	}
 	checkSum += getint(ThrowPosFlat.x);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosFlat.x:%lu\n", getint(ThrowPosFlat.x));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowPosFlat.x:%lu\n", getint(ThrowPosFlat.x));
 	}
 	checkSum += getint(ThrowPosFlat.y);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosFlat.y:%lu\n", getint(ThrowPosFlat.y));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowPosFlat.y:%lu\n", getint(ThrowPosFlat.y));
 	}
 	checkSum += getint(ThrowPosFlat.z);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowPosFlat.z:%lu\n", getint(ThrowPosFlat.z));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowPosFlat.z:%lu\n", getint(ThrowPosFlat.z));
 	}
 	checkSum += EatTime;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "EatTime:%lu\n", EatTime);
+		fprintf(GGame::g_game->CreatureLogFile, "EatTime:%lu\n", EatTime);
 	}
 	checkSum += ThrowTime;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowTime:%lu\n", ThrowTime);
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowTime:%lu\n", ThrowTime);
 	}
 	checkSum += getint(ThrowZL);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowZL:%lu\n", getint(ThrowZL));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowZL:%lu\n", getint(ThrowZL));
 	}
 	checkSum += getint(ThrowYL);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowYL:%lu\n", getint(ThrowYL));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowYL:%lu\n", getint(ThrowYL));
 	}
 	checkSum += getint(ThrowZH);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowZH:%lu\n", getint(ThrowZH));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowZH:%lu\n", getint(ThrowZH));
 	}
 	checkSum += getint(ThrowYH);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowYH:%lu\n", getint(ThrowYH));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowYH:%lu\n", getint(ThrowYH));
 	}
 	checkSum += getint(ThrowZR);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowZR:%lu\n", getint(ThrowZR));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowZR:%lu\n", getint(ThrowZR));
 	}
 	checkSum += getint(ThrowYR);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ThrowYR:%lu\n", getint(ThrowYR));
+		fprintf(GGame::g_game->CreatureLogFile, "ThrowYR:%lu\n", getint(ThrowYR));
 	}
 	checkSum += GameThrowingAngle;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "GameThrowingAngle:%lu\n", GameThrowingAngle);
+		fprintf(GGame::g_game->CreatureLogFile, "GameThrowingAngle:%lu\n", GameThrowingAngle);
 	}
 	checkSum += ObjectActionStatus;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ObjectActionStatus:%lu\n", ObjectActionStatus);
+		fprintf(GGame::g_game->CreatureLogFile, "ObjectActionStatus:%lu\n", ObjectActionStatus);
 	}
 	checkSum += PickUpTime;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "PickUpTime:%lu\n", PickUpTime);
+		fprintf(GGame::g_game->CreatureLogFile, "PickUpTime:%lu\n", PickUpTime);
 	}
 	checkSum += PutDownTime;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "PutDownTime:%lu\n", PutDownTime);
+		fprintf(GGame::g_game->CreatureLogFile, "PutDownTime:%lu\n", PutDownTime);
 	}
 	checkSum += DestroyTime;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "DestroyTime:%lu\n", DestroyTime);
+		fprintf(GGame::g_game->CreatureLogFile, "DestroyTime:%lu\n", DestroyTime);
 	}
 	checkSum += getint(field_0x5168.x);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "m_lrb:%lu\n", getint(field_0x5168.x));
+		fprintf(GGame::g_game->CreatureLogFile, "m_lrb:%lu\n", getint(field_0x5168.x));
 	}
 	checkSum += getint(field_0x5168.y);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "m_lrf:%lu\n", getint(field_0x5168.y));
+		fprintf(GGame::g_game->CreatureLogFile, "m_lrf:%lu\n", getint(field_0x5168.y));
 	}
 	checkSum += getint(field_0x5168.z);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "m_bf:%lu\n", getint(field_0x5168.z));
+		fprintf(GGame::g_game->CreatureLogFile, "m_bf:%lu\n", getint(field_0x5168.z));
 	}
 	checkSum += TurningCompleted;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "TurningCompleted:%lu\n", TurningCompleted);
+		fprintf(GGame::g_game->CreatureLogFile, "TurningCompleted:%lu\n", TurningCompleted);
 	}
 	checkSum += HeadBone;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "HeadBone:%lu\n", HeadBone);
+		fprintf(GGame::g_game->CreatureLogFile, "HeadBone:%lu\n", HeadBone);
 	}
 	checkSum += BellyBone;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "BellyBone:%lu\n", BellyBone);
+		fprintf(GGame::g_game->CreatureLogFile, "BellyBone:%lu\n", BellyBone);
 	}
 	checkSum += RightArmpit;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "RightArmpit:%lu\n", RightArmpit);
+		fprintf(GGame::g_game->CreatureLogFile, "RightArmpit:%lu\n", RightArmpit);
 	}
 	checkSum += RightHand;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "RightHand:%lu\n", RightHand);
+		fprintf(GGame::g_game->CreatureLogFile, "RightHand:%lu\n", RightHand);
 	}
 	checkSum += RightFoot;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "RightFoot:%lu\n", RightFoot);
+		fprintf(GGame::g_game->CreatureLogFile, "RightFoot:%lu\n", RightFoot);
 	}
 	checkSum += Anus;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "Anus:%lu\n", Anus);
+		fprintf(GGame::g_game->CreatureLogFile, "Anus:%lu\n", Anus);
 	}
 	checkSum += ImpactTime;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ImpactTime:%lu\n", ImpactTime);
+		fprintf(GGame::g_game->CreatureLogFile, "ImpactTime:%lu\n", ImpactTime);
 	}
 	checkSum += (FightCreature != NULL);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "FightCreature:%lu\n", (FightCreature != NULL));
+		fprintf(GGame::g_game->CreatureLogFile, "FightCreature:%lu\n", (FightCreature != NULL));
 	}
 	checkSum += FightMove;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "FightMove:%lu\n", FightMove);
+		fprintf(GGame::g_game->CreatureLogFile, "FightMove:%lu\n", FightMove);
 	}
 	checkSum += getint(Size1);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "UserSize:%lu\n", getint(Size1));
+		fprintf(GGame::g_game->CreatureLogFile, "UserSize:%lu\n", getint(Size1));
 	}
 	return checkSum;
 }
@@ -7204,7 +7203,7 @@ uint32_t LH3DCreature::GetNormalCheckSum()
 {
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "----------------------------------GameTurn %lu\n",
+		fprintf(GGame::g_game->CreatureLogFile, "----------------------------------GameTurn %lu\n",
 		        GGame::g_game->data.GameTurn);
 	}
 	LHPoint graspPoint;
@@ -7213,82 +7212,82 @@ uint32_t LH3DCreature::GetNormalCheckSum()
 	uint32_t checkSum = getint(graspPoint.x);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "GetGraspPoint.x:%lu\n", getint(graspPoint.x));
+		fprintf(GGame::g_game->CreatureLogFile, "GetGraspPoint.x:%lu\n", getint(graspPoint.x));
 	}
 	checkSum += getint(graspPoint.y);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "GetGraspPoint.y:%lu\n", getint(graspPoint.y));
+		fprintf(GGame::g_game->CreatureLogFile, "GetGraspPoint.y:%lu\n", getint(graspPoint.y));
 	}
 	checkSum += getint(graspPoint.z);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "GetGraspPoint.z:%lu\n", getint(graspPoint.z));
+		fprintf(GGame::g_game->CreatureLogFile, "GetGraspPoint.z:%lu\n", getint(graspPoint.z));
 	}
 	checkSum += MoveState;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "MoveState:%lu\n", MoveState);
+		fprintf(GGame::g_game->CreatureLogFile, "MoveState:%lu\n", MoveState);
 	}
 	checkSum += (uint32_t)(LookRelativeHeading * 1000.0f);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "LookRelativeHeading:%lu\n", getint(LookRelativeHeading));
+		fprintf(GGame::g_game->CreatureLogFile, "LookRelativeHeading:%lu\n", getint(LookRelativeHeading));
 	}
 	checkSum += getint(LookPitchRate);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "LookPitchRate:%lu\n", getint(LookPitchRate));
+		fprintf(GGame::g_game->CreatureLogFile, "LookPitchRate:%lu\n", getint(LookPitchRate));
 	}
 	checkSum += getint(LookRelativePitch);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "LookRelativePitch:%lu\n", getint(LookRelativePitch));
+		fprintf(GGame::g_game->CreatureLogFile, "LookRelativePitch:%lu\n", getint(LookRelativePitch));
 	}
 	checkSum += getint(LookHeadingRate);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "LookHeadingRate:%lu\n", getint(LookHeadingRate));
+		fprintf(GGame::g_game->CreatureLogFile, "LookHeadingRate:%lu\n", getint(LookHeadingRate));
 	}
 	checkSum += ReverseAnim;
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "ReverseAnim:%lu\n", ReverseAnim);
+		fprintf(GGame::g_game->CreatureLogFile, "ReverseAnim:%lu\n", ReverseAnim);
 	}
 	checkSum += CycleTime[0];
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "CycleTime[0]:%lu\n", CycleTime[0]);
+		fprintf(GGame::g_game->CreatureLogFile, "CycleTime[0]:%lu\n", CycleTime[0]);
 	}
 	checkSum += CycleTime[1];
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "CycleTime[1]:%lu\n", CycleTime[1]);
+		fprintf(GGame::g_game->CreatureLogFile, "CycleTime[1]:%lu\n", CycleTime[1]);
 	}
 	checkSum += CycleTime[2];
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "CycleTime[2]:%lu\n", CycleTime[2]);
+		fprintf(GGame::g_game->CreatureLogFile, "CycleTime[2]:%lu\n", CycleTime[2]);
 	}
 	checkSum += CycleTime[3];
 	if (GGlobal::Global.debug.LogCreatures)
 	{
-		fprintf(GGame::g_game->field_0x2502d0, "CycleTime[3]:%lu\n", CycleTime[3]);
+		fprintf(GGame::g_game->CreatureLogFile, "CycleTime[3]:%lu\n", CycleTime[3]);
 	}
 	return checkSum;
 }
 
 inline float LH3DCreature::GetBreathTime()
 {
-	return field_0x498c;
+	return BreathTime;
 }
 
 void LH3DCreature::ProcessBreath()
 {
-	float    difference = field_0x4990 - field_0x498c;
+	float    difference = RequiredBreathTime - BreathTime;
 	uint32_t ticks = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
 		GetRequiredBreathTime() == GetStandardBreathTime() ? 10.0f : 0.5f);
-	field_0x498c = difference / ticks + GetBreathTime();
+	BreathTime = difference / ticks + GetBreathTime();
 }
 
 bool32_t LH3DCreature::SetInHand(int in_hand)
@@ -7350,8 +7349,7 @@ bool32_t Creature::CanCurrentlyBePickedUp()
 
 void Creature::SetInCreatureHand(Creature* creature)
 {
-	// TODO: field_0x10cc should be declared as Creature* (no other users)
-	field_0x10cc = (uint32_t)creature;
+	InCreatureHand = creature;
 }
 
 void LH3DCreature::UpdateMotion()
@@ -7593,11 +7591,11 @@ void LH3DCreature::ProcessMoveStraight()
 			maxSpeed = max(0.1f, (float)sqrt(arcSpeed * arcSpeed +
 			                                 2.0f * MoveAcceleration * (length - RpFollow->DistanceAlongNode)));
 		}
-		float   distance = field_0x5228;
+		float   distance = BodyRadius;
 		float   heading = Heading;
 		LHPoint ahead((float)sin(heading) * distance, 0.0f, -(float)cos(heading) * distance);
 		ahead.Add(position);
-		float slope = 1.0f - (LH3DIsland::GetAltitude(ahead) - position.y) / field_0x5228 * 0.6f;
+		float slope = 1.0f - (LH3DIsland::GetAltitude(ahead) - position.y) / BodyRadius * 0.6f;
 		slope = slope > 0.3f ? (min(slope, 1.1f)) : 0.3f;
 		float requiredSpeed = RpFollow->field_0x6403c * slope;
 		if (RpFollow->field_0x64034 < requiredSpeed)
