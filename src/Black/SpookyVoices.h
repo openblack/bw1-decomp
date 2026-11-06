@@ -16,10 +16,15 @@ public:
 	// BW1W120 0072e310 BW1M119 010913c0
 	static void Process();
 
-	// Override methods
-
 	// BW1W120 0072e250 BW1M119 01150ea0
 	virtual ~GSpookyVoices();
+
+	// BW1W120 0072e5c0 BW1M119 011509a0
+	int GetNextSoundexCode(wchar_t*& text);
+	// BW1W120 0072e630 BW1M119 01150870
+	bool PerformSoundexComparison(wchar_t* first, wchar_t* second);
+	// BW1W120 0072e6e0 BW1M119 01150790
+	bool SoundexOverlap(wchar_t* name, wchar_t* words);
 };
 
 #endif /* BW1_DECOMP_SPOOKY_VOICES_INCLUDED_H */
