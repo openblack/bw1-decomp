@@ -32575,6 +32575,7 @@ _g_CircleHugBlockPointValid = .data:0x00C5FDD9; // type:object size:0x1 scope:lo
 ?InfoFileChecksum@MPFEData@@2_KA = .data:0x00C61690; // type:object size:0x8 scope:global
 ?OOSChecksum@MPFEData@@2_KA = .data:0x00C61698; // type:object size:0x8 scope:global
 ?Instance@MPFEChannelSelector@@2V1@A = .data:0x00C616F8; // type:object size:0x28 scope:global
+_SecondsPerYear = .data:0x00C61BB0; // type:object size:0x4 scope:local
 _White = .data:0x00C61BB4; // type:object size:0x4 scope:local
 _EighthScale = .data:0x00C61BB8; // type:object size:0x4 scope:local
 _PI_OVER_2 = .data:0x00C61BBC; // type:object size:0x4 scope:local
