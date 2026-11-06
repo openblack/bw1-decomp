@@ -1,6 +1,7 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 #include "ControlHand.h"
+#include "CreatureAnimInfo.h"
 
 #include <cstdio> /* For sprintf */
 
@@ -13,16 +14,6 @@
 
 CHand::CHand(LHPoint point, GInterfaceStatus* status)
 {
-	uint32_t i;
-	for (i = 0; i < sizeof(names) / sizeof(names[0]); ++i)
-	{
-		names[i].string[0] = '\0';
-	}
-	for (i = 0; i < 6; ++i)
-	{
-		AnimSets[i] = LH3DAnimSet();
-	}
-
 	Point0x48d4 = LHPoint();
 	Point0x48e0 = LHPoint();
 	Point0x48ec = LHPoint();

@@ -31,6 +31,13 @@ struct LH3DLevelOfDetail
 	static float g_water_tilling;
 	// BW1W120 00eb996c BW1M119 011f2498 (LHCombined Release)
 	static long g_num_rainsplash;
+
+	// Static methods
+
+	// BW1W120 008237b0 BW1M119 010a1fa0 (LHCombined Release)
+	static void UpdateFromCustomRegistry(char* key, bool in_game);
+	// BW1W120 00823ad0 BW1M119 010a0bf0 (LHCombined Release)
+	static void UpdateFromRegistry(char* key, bool in_game, int detail_idx);
 };
 
 #endif /* BW1_DECOMP_LH3D_LEVEL_OF_DETAIL_INCLUDED_H */
