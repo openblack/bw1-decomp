@@ -3788,8 +3788,11 @@ Lionhead/LH3DLib/development/LandBlock.cpp:
 Lionhead/LH3DLib/development/LH3DWater.cpp:
 	.text       start:0x007CB440 end:0x007CC4A0
 	.rdata      start:0x008D9994 end:0x008D99A8
-	.data       start:0x00B5B888 end:0x00B5B8F0
+	.data       start:0x00B5B888 end:0x00B5B8EC
 	.bss        start:0x00EC9140 end:0x00EC91F8
+
+Lionhead/LH3DLib/development/LH3DPolygonIsland.cpp:
+	.data       start:0x00B5B8EC end:0x00B5BA44
 
 Lionhead/LH3DLib/development/LH3DCT.cpp:
 	.text       start:0x007CC4A0 end:0x007CC7D0
