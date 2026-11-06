@@ -1326,6 +1326,32 @@ public:
 	// BW1WCI 00727470 BW1MCI119 01537560
 	static void SpecialEffectFromPos();
 #endif
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00701a20 BW1MCI119 0150fa20
+	static void HoldWideScreen();
+	// BW1WCI 00703fc0 BW1MCI119 0150c6b0
+	static void StartCannonCamera();
+	// BW1WCI 00704010 BW1MCI119 0150c5b0
+	static void EndCannonCamera();
+	// BW1WCI 007040c0 BW1MCI119 0150c4d0
+	static void SetCannonSize();
+	// BW1WCI 00704130 BW1MCI119 0150c3d0
+	static void SetCannonStrength();
+	// BW1WCI 007041c0 BW1MCI119 0150c250
+	static void SetCameraHeadingFollow();
+	// BW1WCI 007042b0 BW1MCI119 0150bff0
+	static void SetCameraAutoTrackFollow();
+	// BW1WCI 0072afc0 BW1MCI119 0153c500
+	static void StopDialogueSound();
+	// BW1WCI 0072afd0 BW1MCI119 0153c490
+	static void SetVillagerSound();
+	// BW1WCI 0072b750 BW1MCI119 0153df80
+	static void SpiritPlayAnimInWorld();
+	// BW1WCI 0072c860 BW1MCI119 0153ede0
+	static void SetCountDownTimerDraw();
+	// BW1WCI 0072c890 BW1MCI119 0153ed60
+	static void GetCountDownTimerTime();
+#endif
 	// BW1W120 0070d360 BW1M119 01506f20
 	static void DeleteAllScriptCreatedGameThings();
 	// BW1W120 0070dae0 BW1M119 01044780

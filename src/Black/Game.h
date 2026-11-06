@@ -237,7 +237,8 @@ public:
 	CreatureDatabase creature_database;
 	bool             GameOver;
 	uint8_t          field_0x599d;
-	uint8_t          field_0x599e[0x2];
+	uint8_t          field_0x599e;
+	uint8_t          field_0x599f;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	uint32_t MultiplayerTimeLimit;
 #endif
@@ -265,7 +266,9 @@ public:
 	uint8_t                field_0x205a5a;
 	uint8_t                NeutralPlayerIndex;
 	uint8_t                field_0x205a5c;
-	uint8_t                field_0x205a5d[0x3];
+	uint8_t                field_0x205a5d;
+	uint8_t                field_0x205a5e;
+	uint8_t                field_0x205a5f;
 	GPacket                Packet;
 	GNetwork               network;
 	uint32_t               field_0x205ba0;
@@ -329,7 +332,10 @@ public:
 	uint32_t              field_0x2502c4;
 	uint8_t               field_0x2502c8;
 	uint8_t               field_0x2502c9[3];
-	uint8_t               field_0x2502cc[0x4];
+	uint8_t               field_0x2502cc;
+	uint8_t               field_0x2502cd;
+	uint8_t               field_0x2502ce;
+	uint8_t               field_0x2502cf;
 	FILE*                 CreatureLogFile;
 	FILE*                 field_0x2502d4;
 	FILE*                 TownDesireLogFile;
