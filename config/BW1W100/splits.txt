@@ -1209,10 +1209,16 @@ Black/Interface.cpp:
 	.data       start:0x00B1EA18 end:0x00B1F81C
 
 Black/InterfaceAction.cpp:
-	.text       start:0x00591000 end:0x00595EB0
-	.rdata      start:0x00868930 end:0x00868960
-	.CRT$XCU    start:0x008F6870 end:0x008F68B4 align:4
-	.bss        start:0x00C38E98 end:0x00C39368
+	.text       start:0x00591000 end:0x00594F50
+	.rdata      start:0x00868930 end:0x00868948
+	.CRT$XCU    start:0x008F6870 end:0x008F6898 align:4
+	.bss        start:0x00C38E30 end:0x00C39344
+
+Black/InterfaceActionStates.cpp:
+	.text       start:0x00594F50 end:0x00595EB0
+	.rdata      start:0x00868948 end:0x00868960
+	.CRT$XCU    start:0x008F6898 end:0x008F68B4 align:4
+	.bss        start:0x00C39344 end:0x00C39368
 
 Black/InterfaceCollide.cpp:
 	.text       start:0x00595EB0 end:0x00598640

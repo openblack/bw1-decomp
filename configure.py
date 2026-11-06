@@ -1108,6 +1108,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/InnerCamera.cpp"),
             GameCodeObject(NonMatching, "Black/Interface.cpp"),
             GameCodeObject(NonMatching, "Black/InterfaceAction.cpp"),
+            GameCodeObject(NonMatching, "Black/InterfaceActionStates.cpp"),
             GameCodeObject(NonMatching, "Black/InterfaceCollide.cpp"),
             GameCodeObject(NonMatching, "Black/InterfaceFlags.cpp"),
             GameCodeObject(NonMatching, "Black/InterfaceHandState.cpp"),

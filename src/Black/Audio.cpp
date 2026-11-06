@@ -76,12 +76,6 @@
 // Alignment music that has run this many game turns without a change is not restarted.
 #define ALIGN_MUSIC_MAX_REPEAT_TURNS 3500
 
-// GInterface::ResetActionState picks this while the player's creature fights.
-#define INTERFACE_ACTION_STATE_CREATURE_FIGHT 16
-#ifdef VERSION_BW1WCI
-#define INTERFACE_ACTION_STATE_FIGHT_SELECT 22
-#define INTERFACE_ACTION_STATE_FIGHT_APPLY  23
-#endif
 // Creature fights from this land on use the big fight music.
 #define BIG_FIGHT_MUSIC_FIRST_LAND 4
 #define FIGHT_MUSIC_DISTANCE       100.0f
@@ -671,11 +665,11 @@ bool32_t GAudio::ProcessFightMusic()
 	if (creature != NULL)
 	{
 #ifdef VERSION_BW1WCI
-		int state = GGame::g_game->MyInterface()->ActionState;
-		if (state == INTERFACE_ACTION_STATE_CREATURE_FIGHT || state == INTERFACE_ACTION_STATE_FIGHT_SELECT ||
-		    state == INTERFACE_ACTION_STATE_FIGHT_APPLY)
+		INTERFACE_ACTION_STATE state = GGame::g_game->MyInterface()->ActionState;
+		if (state == INTERFACE_ACTION_STATE_FIGHTING || state == INTERFACE_ACTION_STATE_FIGHT_APPLY ||
+		    state == INTERFACE_ACTION_STATE_FIGHT_SELECT)
 #else
-		if (GGame::g_game->MyInterface()->ActionState == INTERFACE_ACTION_STATE_CREATURE_FIGHT)
+		if (GGame::g_game->MyInterface()->ActionState == INTERFACE_ACTION_STATE_FIGHTING)
 #endif
 		{
 			PlayFightMusic();

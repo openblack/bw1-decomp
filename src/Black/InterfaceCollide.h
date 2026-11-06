@@ -2,6 +2,7 @@
 #define BW1_DECOMP_INTERFACE_COLLIDE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <float.h>  /* For FLT_MAX */
 #include <stdint.h> /* For uint32_t */
 
 #include "Base.h"      /* For struct Base */
@@ -31,6 +32,12 @@ public:
 	MapCoords& GetPos() { return pos; }
 	// BW1W120 inlined BW1M119 010b9c30
 	Object* GetObjectA() { return object; }
+	// BW1W120 inlined BW1M119 01360430
+	void ClearObject()
+	{
+		object = NULL;
+		ObjectDistance = FLT_MAX;
+	}
 
 	// Implicit destructor, only Base is destroyed.
 	// BW1W120 005ce380
