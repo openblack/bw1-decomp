@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
+#define LH_COLOR_LEVELS 256
+
 struct LHColor
 {
 	uint8_t b;
@@ -15,7 +17,17 @@ struct LHColor
 	// BW1W120 inlined BW1M119 011855a0
 	LHColor(uint8_t red, uint8_t green, uint8_t blue) : b(blue), g(green), r(red) {}
 
-	void Set(uint8_t red, uint8_t green, uint8_t blue);
+	// BW1W120 inlined BW1M119 011408c0 (LHCombined Release)
+	void Set(uint8_t red, uint8_t green, uint8_t blue)
+	{
+		r = red;
+		g = green;
+		b = blue;
+	}
+	// BW1W120 007ea410 BW1M119 011486f0 (LHCombined Release)
+	int FadeColor(long amount);
+	// BW1W120 inlined BW1M119 inlined
+	bool operator==(LHColor color) const { return r == color.r && g == color.g && b == color.b; }
 	// BW1W120 inlined BW1M119 01131cb0 (LHCombined Release)
 	uint8_t GetR() const { return r; }
 	// BW1W120 inlined BW1M119 01131d20 (LHCombined Release)
