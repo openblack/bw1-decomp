@@ -1873,12 +1873,17 @@ Black/MPFEMapMessages.cpp:
 	.data       start:0x00C7E618 end:0x00C7E6BC
 	.bss        start:0x00DC2060 end:0x00DC2070
 
+Black/MPFENumberCodec.cpp:
+	.text       start:0x006352A0 end:0x006354C0
+	.CRT$XCU    start:0x00A4707C end:0x00A47080 align:4
+	.data       start:0x00C7E6BC end:0x00C7E6FC
+	.bss        start:0x00DC2070 end:0x00DC2078
+
 Black/MPFEPlayerDetails.cpp:
-	.text       start:0x006352A0 end:0x00637060
-	.rdata      start:0x0095E7B8 end:0x0095E7DC
-	.CRT$XCU    start:0x00A4707C end:0x00A47090 align:4
-	.data       start:0x00C7E6BC end:0x00C7E83C
-	.bss        start:0x00DC2070 end:0x00DC2090
+	.text       start:0x006354C0 end:0x00636560
+	.CRT$XCU    start:0x00A47080 end:0x00A47088 align:4
+	.data       start:0x00C7E6FC end:0x00C7E760
+	.bss        start:0x00DC2078 end:0x00DC2080
 
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x00637060 end:0x00637760
