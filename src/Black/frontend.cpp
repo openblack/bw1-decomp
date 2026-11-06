@@ -430,8 +430,6 @@ void FrontEnd::Run()
 	if (PlayerProfile::GetNumberOfProfiles() == 0)
 	{
 		PlayerProfile profile;
-		memset(&profile, 0, sizeof(profile));
-		profile.IMMERSION_KEY = 1;
 		size = FRONT_END_USER_NAME_LENGTH - 1;
 		LHRegistrySetCurrentKey(LH_REG_KEY_TYPE_USER);
 		if (RegistryRetrieveString("Software\\Lionhead Studios Ltd\\Black & White", "FirstPlayerName", userName,
@@ -623,8 +621,6 @@ void __stdcall NewProfileBox::ControlCallback(int message, SetupBox* box, SetupC
 	if (control->id == NEW_PROFILE_BOX_CONTROL_ID_OK)
 	{
 		PlayerProfile profile;
-		memset(&profile, 0, sizeof(profile));
-		profile.IMMERSION_KEY = 1;
 		wcscpy(profile.CurrentProfile, Instance->NameEdit->label);
 		if (PlayerProfile::ProfileExists(profile.CurrentProfile))
 		{
