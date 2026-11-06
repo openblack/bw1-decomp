@@ -53,6 +53,10 @@ struct ControlMap
 	bool32_t IsMouseButtonAssignedToAction(BINDABLE_ACTIONS action);
 };
 
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(ControlMap) == 0x6b54, "ControlMap size is incorrect");
+#else
 static_assert(sizeof(ControlMap) == 0x6534, "ControlMap size is incorrect");
+#endif
 
 #endif /* BW1_DECOMP_CONTROL_MAP_INCLUDED_H */

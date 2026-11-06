@@ -1865,7 +1865,8 @@ void LH3DCreature::PlayASoundEffect(long param_1, long param_2, bool param_3)
 		sound[4] = param_1;
 		LH_AudioBank* bank =
 			param_3 ? GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_CREATURE_GENERIC] : SoundBank;
-		if (param_3 || GGame::g_game->script->field_0x84 || creature == GGame::g_game->MyPlayer()->GetCreature())
+		if (param_3 || GGame::g_game->script->PlayCreatureSounds ||
+		    creature == GGame::g_game->MyPlayer()->GetCreature())
 		{
 			// TODO: SamplePlayAnimEffect returns the LH_SampleInfo* of the started sample.
 			LH_SampleInfo* sample = (LH_SampleInfo*)GGlobal::Global.audio->SamplePlayAnimEffect(

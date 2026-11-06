@@ -2447,6 +2447,34 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006D5064, copy_run(0x00407744)),  # PSysSave
     (0x006D5143, copy_run(0x00407744)),  # PSysSave
     (0x006D5242, copy_run(0x006D5143)),  # PSysSave
+    (0x006EF9BB, jmp_run(0x006EF815)),  # Script
+    (0x006EF9E3, copy_run(0x006EF9BB)),  # Script
+    (0x006EFA31, jmp_run(0x006EF9E3)),  # Script
+    (0x006EFA63, copy_run(0x006EFA31)),  # Script
+    (0x006EFAB8, jmp_run(0x006EFA63)),  # Script
+    (0x006EFBB2, jmp_run(0x006EFAB8)),  # Script
+    (0x006EFD54, jmp_run(0x006EFBB2)),  # Script
+    (0x006EFEF8, jmp_run(0x006EFD54)),  # Script
+    (0x006EFF66, copy_run(0x006EFEF8)),  # Script
+    (0x006EFF9B, jmp_run(0x006EFF66)),  # Script
+    (0x006EFFDB, jmp_run(0x006EFF9B)),  # Script
+    (0x006F00C5, copy_run(0x006EFFDB)),  # Script
+    (0x006F0218, jmp_run(0x006F00C5)),  # Script
+    (0x006F0234, jmp_run(0x006F0218)),  # Script
+    (0x006F0378, jmp_run(0x006F0234)),  # Script
+    (0x006F03E9, copy_run(0x006F0378)),  # Script
+    (0x006F0463, copy_run(0x006F03E9)),  # Script
+    (0x006F04A2, copy_run(0x006F0463)),  # Script
+    (0x006F0629, copy_run(0x006F04A2)),  # Script
+    (0x006F06D6, jmp_run(0x006F0629)),  # Script
+    (0x006F0785, copy_run(0x006F06D6)),  # Script
+    (0x006F0F52, jmp_run(0x006F0785)),  # Script
+    (0x006F0FBA, jmp_run(0x006F0F52)),  # Script
+    (0x006F1079, jmp_run(0x006F0FBA)),  # Script
+    (0x006F1096, jmp_run(0x006F1079)),  # Script
+    (0x006F10EA, copy_run(0x006F1096)),  # Script
+    (0x006F1134, jmp_run(0x006F10EA)),  # Script
+    (0x006F1184, copy_run(0x006F1134)),  # Script
     (0x006F516B, copy_run(0x006F4F5E)),  # ScriptControl
     (0x006F521A, jmp_run(0x006F516B)),  # ScriptControl
     (0x006F52A2, copy_run(0x006F521A)),  # ScriptControl

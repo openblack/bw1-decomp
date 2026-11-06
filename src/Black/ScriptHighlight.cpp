@@ -788,13 +788,13 @@ uint32_t ScriptHighlight::InterfaceTap(GInterfaceStatus* status)
 		else
 #endif
 		{
-			if (GGame::g_game->help_system->CurrentScriptId != 0 &&
-			    GScript::g_scriptDLL->GetScriptType(GGame::g_game->help_system->CurrentScriptId) ==
+			if (GGame::g_game->help_system->DialogueControlTask != 0 &&
+			    GScript::g_scriptDLL->GetScriptType(GGame::g_game->help_system->DialogueControlTask) ==
 			        VMScriptType_Help)
 			{
 				GScript::StopHelpScripts();
 			}
-			if (GGame::g_game->help_system->CurrentScriptId == 0)
+			if (GGame::g_game->help_system->DialogueControlTask == 0)
 			{
 				GGame::g_game->temple->StartScript(ScriptId);
 			}

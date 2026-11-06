@@ -5,11 +5,11 @@
 #include "LH3DTech.h"
 
 LH3DMaterial* LH3DFade::g_material;
-uint32_t      LH3DFade::g_color;
+LH3DColor     LH3DFade::g_color(0, 0, 0, 0);
 
 void LH3DFade::Draw()
 {
-	if (((LH3DColor*)&g_color)->a == 0)
+	if (g_color.a == 0)
 	{
 		return;
 	}
@@ -22,28 +22,28 @@ void LH3DFade::Draw()
 	LH3DTech::g_cache_t_points[0].y = (float)height;
 	LH3DTech::g_cache_t_points[0].z = 0.0f;
 	LH3DTech::g_cache_t_points[0].rhw = 1.0f;
-	LH3DTech::g_cache_t_points[0].color = g_color;
+	LH3DTech::g_cache_t_points[0].color = g_color.GetColor();
 	LH3DTech::g_cache_t_points[0].specular = 0;
 	LH3DTech::g_cache_t_points[0].uv.Set(0.0f, 0.0f);
 	LH3DTech::g_cache_t_points[1].x = (float)LH3DTech::g_info_transform.resolution.x - 1.0f;
 	LH3DTech::g_cache_t_points[1].y = (float)height;
 	LH3DTech::g_cache_t_points[1].z = 0.0f;
 	LH3DTech::g_cache_t_points[1].rhw = 1.0f;
-	LH3DTech::g_cache_t_points[1].color = g_color;
+	LH3DTech::g_cache_t_points[1].color = g_color.GetColor();
 	LH3DTech::g_cache_t_points[1].specular = 0;
 	LH3DTech::g_cache_t_points[1].uv.Set(1.0f, 0.0f);
 	LH3DTech::g_cache_t_points[2].x = (float)LH3DTech::g_info_transform.resolution.x - 1.0f;
 	LH3DTech::g_cache_t_points[2].y = (float)LH3DTech::g_info_transform.resolution.y - 1.0f - (float)height;
 	LH3DTech::g_cache_t_points[2].z = 0.0f;
 	LH3DTech::g_cache_t_points[2].rhw = 1.0f;
-	LH3DTech::g_cache_t_points[2].color = g_color;
+	LH3DTech::g_cache_t_points[2].color = g_color.GetColor();
 	LH3DTech::g_cache_t_points[2].specular = 0;
 	LH3DTech::g_cache_t_points[2].uv.Set(1.0f, 1.0f);
 	LH3DTech::g_cache_t_points[3].x = 0.0f;
 	LH3DTech::g_cache_t_points[3].y = (float)LH3DTech::g_info_transform.resolution.y - 1.0f - (float)height;
 	LH3DTech::g_cache_t_points[3].z = 0.0f;
 	LH3DTech::g_cache_t_points[3].rhw = 1.0f;
-	LH3DTech::g_cache_t_points[3].color = g_color;
+	LH3DTech::g_cache_t_points[3].color = g_color.GetColor();
 	LH3DTech::g_cache_t_points[3].specular = 0;
 	LH3DTech::g_cache_t_points[3].uv.Set(0.0f, 1.0f);
 	LH3DTech::g_points_count = 4;
@@ -75,5 +75,5 @@ void LH3DFade::Draw()
 		BackgroundBox::Draw(&region, &black, false);
 	}
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
-	g_color = 0;
+	g_color = LH3DColor(0);
 }

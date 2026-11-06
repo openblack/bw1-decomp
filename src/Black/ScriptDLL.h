@@ -24,6 +24,9 @@ enum VMScriptType
 {
 	VMScriptType_Help = 0x2,
 	VMScriptType_RunWhilePaused = 0x18,
+	VMScriptType_StoppableHelp = 0x4a,
+	VMScriptType_Multiplayer = 0x60,
+	VMScriptType_All = 0x7f,
 };
 
 // Forward Declares
@@ -86,7 +89,7 @@ public:
 	VMScriptType(__cdecl* GetScriptTypeProc)(LHTransport* library_end, unsigned long task); /* 0xd0 */
 #ifndef VERSION_BW1W100
 	float(__cdecl* GetGlobalVariableValueProc)(LHTransport* library_end, const char* name);
-	float(__cdecl* GetLocalVariableValueProc)(LHTransport* library_end, uint32_t task, const char* name);
+	float(__cdecl* GetLocalVariableValueProc)(LHTransport* library_end, const char* script_name, const char* name);
 #endif
 
 	// Non-virtual methods
@@ -249,7 +252,7 @@ public:
 	// BW1W120 006f6c70 BW1M119 014ef4a0
 	float GetGlobalVariableValue(const char* name);
 	// BW1W120 006f6c90 BW1M119 null
-	float GetLocalVariableValue(uint32_t task, const char* name);
+	float GetLocalVariableValue(const char* script_name, const char* name);
 #endif
 };
 

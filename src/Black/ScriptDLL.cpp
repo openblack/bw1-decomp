@@ -357,8 +357,8 @@ float ScriptDLL::GetGlobalVariableValue(const char* name)
 	return GetGlobalVariableValueProc(_library_end, name);
 }
 
-float ScriptDLL::GetLocalVariableValue(uint32_t task, const char* name)
+float ScriptDLL::GetLocalVariableValue(const char* script_name, const char* name)
 {
-	return GetLocalVariableValueProc(_library_end, task, name);
+	return GetLocalVariableValueProc(_library_end, script_name, name);
 }
 #endif

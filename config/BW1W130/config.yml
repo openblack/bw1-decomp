@@ -646,6 +646,15 @@ add_relocations:
     type: x86_abs32
     target: '___rgcode_page_info'
     addend: 0x4
+# GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
+  - source: 0x006F0808
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x006F0B97
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
 # GameSpy gserverlist.c's ServerListReadList: the lea displacement of its static data buffer (dtk leaves it unrelocated).
   - source: 0x0089BD60
     type: x86_abs32

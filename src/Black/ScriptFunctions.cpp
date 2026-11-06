@@ -1752,7 +1752,7 @@ void GScript::StartGameSpeed()
 	}
 }
 
-void GScript::EndGameSpeedForTask(uint32_t task)
+void GScript::ClearGameSpeedControl(unsigned long task)
 {
 	if (GameSpeedTask == task)
 	{

@@ -8,6 +8,8 @@
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "Morphable.h" /* For struct Morphable */
+
+#define CHAND_DEFAULT_MAX_DISTANCE_FROM_USER 1800.0f
 #include "HandState.h"
 #include "HandStateInvisible.h"
 #include "HandStateNormal.h"
@@ -33,6 +35,8 @@ class CHand;
 class CHand : public Morphable
 {
 public:
+	// BW1W120 0046bf20 BW1M119 011d0c80
+	void SetMaxDistanceFromUser(float distance);
 	// BW1W120 0046e8c0 BW1M119 011cd410
 	void OnClearMap();
 	// BW1W120 0046c050 BW1M119 011d0860
