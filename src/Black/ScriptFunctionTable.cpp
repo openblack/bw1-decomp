@@ -493,8 +493,10 @@ ScriptFunctionTable g_scriptFunctionTable[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::GetTempleEntrancePosition, 3, 3, 0, "GET_TEMPLE_ENTRANCE_POSITION"},
 	{GScript::SaySoundEffectPlaying, 2, 1, 0, "SAY_SOUND_EFFECT_PLAYING"},
 	{GScript::SetHandDemoKeys, 1, 0, 0, "SET_HAND_DEMO_KEYS"},
+#ifndef VERSION_BW1W100
 	{GScript::CanSkipTutorial, 0, 1, 0, "CAN_SKIP_TUTORIAL"},
 	{GScript::CanSkipTraining, 0, 1, 0, "CAN_SKIP_CREATURE_TRAINING"},
 	{GScript::IsKeepingOldCreature, 0, 1, 0, "IS_KEEPING_OLD_CREATURE"},
 	{GScript::CurrentProfileHasCreature, 0, 1, 0, "CURRENT_PROFILE_HAS_CREATURE"},
+#endif
 };

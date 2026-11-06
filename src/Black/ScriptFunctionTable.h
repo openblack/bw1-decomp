@@ -5,7 +5,13 @@
 
 #include <re_common.h> /* For bool32_t */
 
+#ifdef VERSION_BW1W100
+#define SCRIPT_FUNCTION_COUNT 460
+#elif defined(VERSION_BW1WCI)
+#define SCRIPT_FUNCTION_COUNT 528
+#else
 #define SCRIPT_FUNCTION_COUNT 464
+#endif
 
 struct ScriptFunctionTable
 {
