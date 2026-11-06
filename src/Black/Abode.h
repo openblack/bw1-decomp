@@ -93,6 +93,8 @@ public:
 
 	// Virtual methods
 
+	// BW1W120 00401640 BW1M119 0151ba40
+	virtual Abode* CastAbode() { return this; }
 	// BW1W120 00401650 BW1M119 01176c50
 	virtual bool32_t GetShouldNotBeAddedToPlanned() { return ShouldNotBeAddedToPlanned; }
 	// BW1W120 00401660 BW1M119 0111a380
@@ -132,6 +134,8 @@ public:
 	virtual bool32_t IsAbode() { return true; }
 	// BW1W120 00401720 BW1M119 013702e0
 	virtual bool32_t IsCastShadowAtNight() { return true; }
+	// BW1W120 00401730 BW1M119 010527c0
+	virtual Town* GetTown() { return town.Get(); }
 	// BW1W120 00401740 BW1M119 013703b0
 	virtual uint32_t GetCreatureBeliefType() { return CREATURE_BELIEF_TYPE_ABODE; }
 	// BW1W120 00401750 BW1M119 013703f0
@@ -154,8 +158,6 @@ public:
 	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 00405f70 BW1M119 0106f7f0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 00401730 BW1M119 010527c0
-	virtual Town* GetTown();
 	// BW1W120 00404d40 BW1M119 01000f50
 	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool poisoned);
 	// BW1W120 00404d60 BW1M119 015a5e60
@@ -167,8 +169,6 @@ public:
 	                             const MapCoords* coords, int from_other_player);
 	// BW1W120 00404f10 BW1M119 01107ae0
 	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* poisoned);
-	// BW1W120 00401640 BW1M119 0151ba40
-	virtual Abode* CastAbode();
 	// BW1W120 00403f10 BW1M119 0143e8b0
 	virtual uint16_t GetNumberOfInstanceForGlobalList();
 	// BW1W120 00406200 BW1M119 01062690

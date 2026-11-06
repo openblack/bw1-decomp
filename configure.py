@@ -231,6 +231,13 @@ _debug_directory_unit = {
     "BW1W120": "auto_01_008A99C0_rdata",
     "BW1W130": "auto_01_008AE9C0_rdata",
 }.get(config.version)
+# The first unit's object holds the RTTI of two vftables one of its functions stores, and cl6
+# emits the two in an order that follows its heap layout, which the checkout path changes. The
+# shipped link has Base's first; lld-link puts the symbols listed here at the start of their
+# sections, as the image does.
+_link_order = Path("config") / config.version / "link_order.txt"
+if _link_order.exists():
+    config.base_ldflags.append(f"/order:@{_link_order}")
 if _debug_directory_unit is not None:
     config.base_ldflags.append("/debug")
     config.linker_provided_units = [_debug_directory_unit]
@@ -788,7 +795,7 @@ config.libs = [
         "cflags": cflags_base,
         "progress_category": "game",
         "objects": [
-            GameCodeObject(NonMatching, "Black/Abode.cpp"),
+            GameCodeObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "Black/Abode.cpp"),
             GameCodeObject(NonMatching, "Black/AbodeInfo.cpp"),
             GameCodeObject(NonMatching, "Black/alexmfc.cpp"),
             GameCodeObject(NonMatching, "Black/Alignment.cpp", pch=PCH_PENDING),

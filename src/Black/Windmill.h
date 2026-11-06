@@ -21,10 +21,10 @@ class Windmill : public Abode
 public:
 	// Override methods
 
-	// BW1W120 00405910 BW1M119 010cfa20
-	virtual char* GetDebugText();
 	// BW1W120 00405900 BW1M119 010cf9e0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WINDMILL; }
+	// BW1W120 00405910 BW1M119 010cfa20
+	virtual char* GetDebugText() { return "Windmill:"; }
 	// BW1W120 00516320 BW1M119 010cf6c0
 	virtual void Draw();
 	// BW1W120 00405950 BW1M119 013436d0

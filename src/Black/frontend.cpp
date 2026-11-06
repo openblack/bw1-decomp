@@ -171,6 +171,13 @@ StartGameBox*            StartGameBox::Instance;
 SkirmishGameBox*         SkirmishGameBox::Instance;
 HistoryBox*              HistoryBox::Instance;
 
+#ifdef VERSION_BW1W120
+static void EmptyFrontEnd(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8,
+                          int arg9, int arg10, int arg11, int arg12, int arg13)
+{
+}
+#endif
+
 char* WCHAR2CHAR(char16_t* text)
 {
 	static char buffer[FRONT_END_TEXT_BUFFER_SIZE];

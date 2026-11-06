@@ -140,60 +140,6 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M119 013bbf00
-	void ReadSafe(uint8_t& value)
-	{
-		if (ReadEnabled)
-		{
-			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
-			{
-				ReadEnabled = false;
-			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
-		}
-	}
-	void ReadSafe(uint16_t& value)
-	{
-		if (ReadEnabled)
-		{
-			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
-			{
-				ReadEnabled = false;
-			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
-		}
-	}
-	// BW1W120 inlined BW1M119 012ae550
-	void ReadSafe(uint32_t& value) { ReadIt(value); }
-	void ReadSafe(int32_t& value)
-	{
-		if (ReadEnabled)
-		{
-			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
-			{
-				ReadEnabled = false;
-			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
-		}
-	}
-	// BW1W120 inlined BW1M119 inlined
-	void ReadSafe(MapCoords& value)
-	{
-		if (ReadEnabled)
-		{
-			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
-			{
-				ReadEnabled = false;
-			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
-		}
-	}
-	// BW1W120 inlined BW1M119 01305b50
-	void ReadSafe(LHPoint& value) { ReadIt(value); }
-	// BW1W120 inlined BW1M119 inlined
-	void ReadSafe(LHMatrix& value) { ReadIt(value); }
-	// BW1W120 inlined BW1M119 inlined
-	void ReadSafe(LH3DColor& value) { ReadIt(value); }
 	// BW1W120 inlined BW1M119 013bc2a0
 	void WriteSafe(uint8_t& value)
 	{
@@ -209,6 +155,8 @@ public:
 			Checksum += first + sizeof(value);
 		}
 	}
+	// BW1W120 inlined BW1M119 inlined
+	void WriteSafe(long& value) { WriteIt(value); }
 	// BW1W120 inlined BW1M119 012aef50
 	void WriteSafe(uint32_t& value) { WriteIt(value); }
 	void WriteSafe(int32_t& value)
@@ -288,6 +236,62 @@ public:
 	void WriteSafe(LHMatrix& value) { WriteIt(value); }
 	// BW1W120 inlined BW1M119 inlined
 	void WriteSafe(LH3DColor& value) { WriteIt(value); }
+	// BW1W120 inlined BW1M119 013bbf00
+	void ReadSafe(uint8_t& value)
+	{
+		if (ReadEnabled)
+		{
+			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	void ReadSafe(uint16_t& value)
+	{
+		if (ReadEnabled)
+		{
+			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	// BW1W120 inlined BW1M119 inlined
+	void ReadSafe(long& value) { ReadIt(value); }
+	// BW1W120 inlined BW1M119 012ae550
+	void ReadSafe(uint32_t& value) { ReadIt(value); }
+	void ReadSafe(int32_t& value)
+	{
+		if (ReadEnabled)
+		{
+			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	// BW1W120 inlined BW1M119 inlined
+	void ReadSafe(MapCoords& value)
+	{
+		if (ReadEnabled)
+		{
+			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	// BW1W120 inlined BW1M119 01305b50
+	void ReadSafe(LHPoint& value) { ReadIt(value); }
+	// BW1W120 inlined BW1M119 inlined
+	void ReadSafe(LHMatrix& value) { ReadIt(value); }
+	// BW1W120 inlined BW1M119 inlined
+	void ReadSafe(LH3DColor& value) { ReadIt(value); }
 	// BW1W120 inlined BW1M119 inlined
 	template <typename T> bool32_t ReadSafe(LHListHead<T>& list)
 	{
@@ -896,10 +900,6 @@ public:
 	void ReadSafe(GameThing*& ptr);
 	// BW1W120 00563430 BW1M119 01303ec0
 	void WriteSafe(GameThing* const& ptr);
-	// BW1W120 inlined BW1M119 inlined
-	void WriteSafe(long& value) { WriteIt(value); }
-	// BW1W120 inlined BW1M119 inlined
-	void ReadSafe(long& value) { ReadIt(value); }
 	// BW1W120 inlined BW1M119 01305880
 	void WriteSafe(Object* const& ptr) { WriteSafe(reinterpret_cast<GameThing* const&>(ptr)); }
 	// BW1W120 inlined BW1M119 014896f0

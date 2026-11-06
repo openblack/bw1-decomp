@@ -11,7 +11,8 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#include "Base.h" /* For struct Base */
+#include "Base.h"             /* For struct Base */
+#include "HelpTextDataBase.h" /* For struct HelpTextDataBase, struct HelpTextInfo */
 
 #define HELP_TEXT_FILEPATH SOURCE_DIRECTORY "HelpText.h"
 #ifdef VERSION_BW1W100
@@ -71,76 +72,11 @@ struct HelpTextData
 	static char16_t* GetTextL(unsigned long index);
 };
 
-struct HelpTextInfo
+inline void HelpTextDataBase::Init(long num_entries)
 {
-	uint32_t  field_0x0;
-	uint32_t  field_0x4;
-	char16_t* Text;
-
-	// BW1W120 inlined BW1M119 0150f7f0
-	HelpTextInfo() : Text(NULL) {}
-	// BW1W120 inlined BW1M119 0135cc50
-	~HelpTextInfo()
-	{
-		if (Text != NULL)
-		{
-			delete Text;
-		}
-	}
-};
-
-static_assert(sizeof(HelpTextInfo) == 0xc, "HelpTextInfo size is incorrect");
-
-struct HelpTextDataBase
-{
-	// BW1W120 00d17c78
-	static int CurrentMultiplayerEntry;
-	// BW1W120 00d17c80
-	static int CurrentPatchEntry;
-	// BW1W120 00d17c88
-	static int CurrentEntry;
-	// BW1W120 00d17ca0
-	static HelpTextDataBase PatchTextDatabase;
-	// TODO: Original global name unknown.
-	// BW1W120 00d17ca8
-	static HelpTextDataBase HelpTextDatabase;
-	// Descriptive name; filled from InfoScriptMultiplayer2.txt.
-	// BW1W120 00d17c98
-	static HelpTextDataBase MultiplayerTextDatabase;
-
-	HelpTextInfo* array; /* 0x0 */
-	uint32_t      count;
-
-	// Non-virtual methods
-
-	// BW1W120 inlined BW1M119 inlined
-	void Init(long num_entries)
-	{
-		count = num_entries;
-		array = new (HELP_TEXT_FILEPATH, HELP_TEXT_INIT_LINE) HelpTextInfo[count];
-	}
-	// BW1W120 004707f0 BW1M119 01243920
-	HelpTextInfo* GetData(unsigned long index) const
-	{
-		if (index >= count)
-		{
-			index = 0;
-		}
-		return index <= 0 ? array : &array[index];
-	}
-	// BW1W120 inlined BW1M119 010946e0
-	wchar_t* GetHelpText(unsigned long index) const
-	{
-		if (index >= count)
-		{
-			index = 0;
-		}
-		return (index <= 0 ? array : &array[index])->Text;
-	}
-
-	// BW1W120 005ccf80 BW1M119 0135cce0
-	void SetData(int index, unsigned long id, HELP_TEXT_NARRATOR narrator, wchar_t* text, wchar_t* speech);
-};
+	count = num_entries;
+	array = new (HELP_TEXT_FILEPATH, HELP_TEXT_INIT_LINE) HelpTextInfo[count];
+}
 
 struct HelpTextDataPatch
 {
