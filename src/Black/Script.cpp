@@ -45,8 +45,6 @@
 #ifdef VERSION_BW1WCI
 // BW1WCI 00d9e6f4 BW1MCI119 null
 extern bool32_t LandscapeLoaded;
-// BW1WCI 0090fc64 BW1MCI119 null
-extern const float DefaultVisualTimeCycle[3];
 #endif
 
 #ifdef VERSION_BW1W100
@@ -165,8 +163,8 @@ void GScript::Reset(bool32_t load_challenge)
 		GGame::g_game->help_system->SpiritHome(HELP_SPIRIT_TYPE_EVIL, false);
 		GGame::g_game->help_system->SpiritHome(HELP_SPIRIT_TYPE_GOOD, false);
 #ifdef VERSION_BW1WCI
-		GGameInfo::Info.SetVisualTimeCycle(DefaultVisualTimeCycle[0], DefaultVisualTimeCycle[1],
-		                                   DefaultVisualTimeCycle[2]);
+		GGameInfo::Info.SetVisualTimeCycle(GGameInfo::DefaultVisualTimeCycle[0], GGameInfo::DefaultVisualTimeCycle[1],
+		                                   GGameInfo::DefaultVisualTimeCycle[2]);
 #endif
 	}
 

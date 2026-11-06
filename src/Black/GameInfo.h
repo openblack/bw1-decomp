@@ -10,6 +10,10 @@
 class GGameInfo : public Base
 {
 public:
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0090fc64 BW1MCI119 null
+	static const float DefaultVisualTimeCycle[3];
+#endif
 	// TODO: Original singleton name is unrecovered. Storage is emitted in Game.
 	// BW1W120 00d019f8
 	static GGameInfo Info;
