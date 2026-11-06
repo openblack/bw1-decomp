@@ -20,9 +20,18 @@ class Reaction;
 class Spell;
 struct SpellCastData;
 
+enum SHIELD_TYPE
+{
+	SHIELD_TYPE_PHYSICAL = 1,
+	SHIELD_TYPE_MAGIC = 2,
+};
+
 class SpellShield : public SpellWithObjects
 {
 public:
+	// BW1W120 0072ba00 BW1M119 0153b560
+	static Spell* IsPointInAShield(const MapCoords& pos, SHIELD_TYPE type);
+
 	uint8_t field_0xf4[0x18];
 
 	// Override methods

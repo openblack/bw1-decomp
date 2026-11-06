@@ -90,8 +90,7 @@ void DoOKGameRequestor(char16_t* text);
 #endif
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-// TODO: original name and home unknown (not in the Mac build). Reports the end of a multiplayer
-// game to the lobby server.
+// Reports the end of a multiplayer game to the lobby server.
 struct LobbyServerAddress
 {
 	unsigned short Port;
@@ -2013,7 +2012,7 @@ bool32_t GPlayer::Save(GameOSFile& file)
 		file.WriteIt(InfiniteInfluence);
 		file.WritePtr(ComputerPlayer);
 		file.WriteIt(TotalPopulation);
-		file.WriteIt(StartPos);
+		file.WriteIt(LastSpell);
 		file.WriteArray(MagicTypeEnabled, MAGIC_TYPE_LAST);
 		file.WriteArray(MagicTypeEverBeenEnabled, MAGIC_TYPE_LAST);
 		file.WritePtr(game_stats);
@@ -2052,7 +2051,7 @@ bool32_t GPlayer::Load(GameOSFile& file)
 		file.ReadIt(InfiniteInfluence);
 		file.ReadPtr((GameThing**)&ComputerPlayer);
 		file.ReadIt(TotalPopulation);
-		file.ReadIt(StartPos);
+		file.ReadIt(LastSpell);
 		file.ReadArray(MagicTypeEnabled);
 		file.ReadArray(MagicTypeEverBeenEnabled);
 		file.ReadPtr((GameThing**)&game_stats);

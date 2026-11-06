@@ -53,18 +53,18 @@ struct GPlayerAlly
 	GPlayerAlly() : Value(0.0f) {}
 };
 
-struct GPlayerStartPos
+struct GPlayerLastSpell
 {
-	MapCoords Pos;
-	uint32_t  field_0xc;
-	int       field_0x10;
+	MapCoords  Pos;
+	MAGIC_TYPE Type;
+	int        GameTurn;
 
 	// BW1W120 inlined BW1M119 inlined
-	GPlayerStartPos()
+	GPlayerLastSpell()
 	{
 		Pos.Clear();
-		field_0xc = 0;
-		field_0x10 = -1;
+		Type = MAGIC_TYPE_NONE;
+		GameTurn = -1;
 	}
 };
 
@@ -82,7 +82,7 @@ public:
 	uint8_t             field_0xb4;
 	uint8_t             player_number;
 	float               MaxTribalPower[TRIBE_TYPE_LAST];
-	GPlayerStartPos     StartPos;
+	GPlayerLastSpell    LastSpell;
 	LHListNode<GPlayer> next;
 	MPFEStartGameData*  StartGameData;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)

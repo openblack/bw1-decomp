@@ -618,6 +618,27 @@ add_relocations:
     type: x86_abs32
     target: '?VariableTable@ScriptManage@@2PAV1@A'
     addend: 0x2800
+# ScriptManage.cpp: the loops over VariableTable compare against the end of the array.
+  - source: 0x0070CEC2
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x0070CF72
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x0070D32F
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x0070D428
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x0070D524
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
 # SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
 # the lea displacement unrelocated).
   - source: 0x00881491

@@ -192,7 +192,7 @@ static int Global_00c5b0ec;
 // BW1W120 00c5b0f0
 static int Global_00c5b0f0;
 // BW1W120 00c5b0f4
-static int Global_00c5b0f4;
+int ActiveTricons;
 // BW1W120 00c5b100
 static Zoomer Global_00c5b100;
 // BW1W120 00c5e164
@@ -872,7 +872,7 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	    (hand != NULL && hand->HandStates.raw[hand->CurrentState] != NULL &&
 	     !hand->HandStates.raw[hand->CurrentState]->AllowCameraTricons()))
 	{
-		Global_00c5b0f4 &= ~0x707;
+		ActiveTricons &= ~0x707;
 	}
 
 	int i;
@@ -880,10 +880,10 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	for (i = 0, mask = 1; i < 4; i++, mask <<= 1)
 	{
 		float speed = TriconFadeSpeed;
-		if (Global_00c5b0f4 & mask)
+		if (ActiveTricons & mask)
 		{
 			float target;
-			if (Global_00c5b0f4 & (0x100 << i))
+			if (ActiveTricons & (0x100 << i))
 			{
 				target = 0.6f;
 			}
@@ -1580,7 +1580,7 @@ void CameraModeNew3::Reinitialise(bool keep_fight)
 	field_0x2ec = 0;
 	field_0x2f0 = 0;
 	RotatePoint = LHPoint(0.0f, 0.0f, 0.0f);
-	Global_00c5b0f4 = 0;
+	ActiveTricons = 0;
 	memset(Global_00c5b0d8, 0, sizeof(Global_00c5b0d8));
 	Global_00c5b0ac = 0.0f;
 	ElapsedTime = 0.0f;
@@ -1712,7 +1712,7 @@ void CameraModeNew3::SetNoCross(int no_cross)
 
 void CameraModeNew3::UpdateTricons()
 {
-	Global_00c5b0f4 = 0;
+	ActiveTricons = 0;
 	GetTickCount();
 	if (NoCross > 0)
 	{
@@ -1771,15 +1771,15 @@ void CameraModeNew3::UpdateTricons()
 	uint32_t flags = MouseTriconFlags;
 	if (flags & 2)
 	{
-		Global_00c5b0f4 |= (MouseTriconFlags & 0x80 ? 0x100 : 0) | 1;
+		ActiveTricons |= (MouseTriconFlags & 0x80 ? 0x100 : 0) | 1;
 	}
 	if (flags & 1)
 	{
-		Global_00c5b0f4 |= (MouseTriconFlags & 0x80 ? 0x200 : 0) | 2;
+		ActiveTricons |= (MouseTriconFlags & 0x80 ? 0x200 : 0) | 2;
 	}
 	if (flags & 8)
 	{
-		Global_00c5b0f4 |= (MouseTriconFlags & 0x80 ? 0x400 : 0) | 4;
+		ActiveTricons |= (MouseTriconFlags & 0x80 ? 0x400 : 0) | 4;
 	}
 	if (MouseButtons != CAMERA_MODE_MOUSE_STATUS_LEFT)
 	{
@@ -1789,40 +1789,40 @@ void CameraModeNew3::UpdateTricons()
 			flags &= ~0x40;
 			Global_00c5b0ac = 0.0f;
 		}
-		if (!(Global_00c5b0f4 & 1) && (KeyTriconFlags & 2))
+		if (!(ActiveTricons & 1) && (KeyTriconFlags & 2))
 		{
-			Global_00c5b0f4 = (Global_00c5b0f4 & ~0x100) | 1 | (Global_00c5b0c4 != 0.0f ? 0 : 0x100);
+			ActiveTricons = (ActiveTricons & ~0x100) | 1 | (Global_00c5b0c4 != 0.0f ? 0 : 0x100);
 		}
-		if (!(Global_00c5b0f4 & 2) && (KeyTriconFlags & 1))
+		if (!(ActiveTricons & 2) && (KeyTriconFlags & 1))
 		{
-			Global_00c5b0f4 = (Global_00c5b0f4 & ~0x200) | 2 | (Global_00c5b0c8 != 0.0f ? 0 : 0x200);
+			ActiveTricons = (ActiveTricons & ~0x200) | 2 | (Global_00c5b0c8 != 0.0f ? 0 : 0x200);
 			flags &= ~0x40;
 			Global_00c5b0ac = 0.0f;
 		}
-		if (!(Global_00c5b0f4 & 4) && (KeyTriconFlags & 8))
+		if (!(ActiveTricons & 4) && (KeyTriconFlags & 8))
 		{
-			Global_00c5b0f4 = (Global_00c5b0f4 & ~0x400) | ((Global_00c5b0cc != 0.0f ? 0 : 0x400) + 4);
+			ActiveTricons = (ActiveTricons & ~0x400) | ((Global_00c5b0cc != 0.0f ? 0 : 0x400) + 4);
 		}
 	}
 	if (Global_00c5b100.GetCurrentValue() > 0.5f)
 	{
-		Global_00c5b0f4 = 4;
+		ActiveTricons = 4;
 	}
 	if (!(GetCameraFeatures() & CAMERA_FEATURE_PITCH))
 	{
-		Global_00c5b0f4 &= ~0x101;
+		ActiveTricons &= ~0x101;
 	}
 	if (!(GetCameraFeatures() & CAMERA_FEATURE_ROTATE))
 	{
-		Global_00c5b0f4 &= ~0x202;
+		ActiveTricons &= ~0x202;
 	}
 	if (!(GetCameraFeatures() & CAMERA_FEATURE_ZOOM))
 	{
-		Global_00c5b0f4 &= ~0x404;
+		ActiveTricons &= ~0x404;
 	}
 	if ((GetCameraFeatures() & CAMERA_FEATURE_HELP) && GGame::g_game->MyInterface()->field_0x48 == 0)
 	{
-		Global_00c5b0f4 |= 8;
+		ActiveTricons |= 8;
 	}
 	if (flags & 0x40)
 	{
@@ -1832,20 +1832,20 @@ void CameraModeNew3::UpdateTricons()
 	{
 		if ((GetTickCount() / 200) & 1)
 		{
-			Global_00c5b0f4 = 8;
+			ActiveTricons = 8;
 		}
 		else
 		{
-			Global_00c5b0f4 &= ~8;
+			ActiveTricons &= ~8;
 		}
 	}
 	if (field_0x2ec || field_0x2f0)
 	{
-		Global_00c5b0f4 = 0;
+		ActiveTricons = 0;
 	}
 	if (field_0x2f0 && (GetCameraFeatures() & CAMERA_FEATURE_HELP))
 	{
-		Global_00c5b0f4 |= 8;
+		ActiveTricons |= 8;
 	}
 }
 
@@ -2933,7 +2933,6 @@ void CameraModeNew3::Update()
 				length = sqrt(across.x * across.x + across.y * across.y);
 				if (length > 0.1f)
 				{
-					// TODO: The x delta is scaled by the height and the y delta by the width.
 					across.x /= length;
 					across.y /= length;
 				}
@@ -3262,7 +3261,6 @@ void CameraModeNew3::Update()
 	{
 		if (GetCameraFeatures() & CAMERA_FEATURE_DOUBLE_CLICK)
 		{
-			// TODO: Meaning of mouse button flag 0x10 unknown.
 			if (LHSys::TheSystem.mouse.ButtonPressed & 0x10)
 			{
 				LHSys::TheSystem.mouse.ButtonPressed &= ~0x10;
@@ -3372,7 +3370,6 @@ void CameraModeNew3::Update()
 					}
 					if (playSound)
 					{
-						// TODO: Sound effect 0x2e-0x31 is a random camera whoosh; its enumerator is not recovered.
 						GGlobal::Global.audio->PlaySoundEffect(NULL, (GetTickCount() & 3) + 0x2e, 3, 0, 0, 0,
 						                                       AUDIO_SFX_BANK_TYPE_IN_GAME);
 					}
@@ -3879,7 +3876,6 @@ skipClick:
 	}
 	if (!GGame::g_game->MyInterface()->IsPlayBack(0))
 	{
-		// TODO: Original name unknown; whether the game was windowed last frame.
 		static bool WasWindowed;
 		if (LHSys::TheSystem.WindowedMode)
 		{
@@ -3965,7 +3961,7 @@ void ResetCameraModeNew3()
 	Global_00c5b0b4 = 0;
 	Global_00c5b0f0 = 0;
 	Global_00c5b100.SetPosition(0.0f);
-	Global_00c5b0f4 = 0;
+	ActiveTricons = 0;
 	memset(Global_00c5b0d8, 0, sizeof(Global_00c5b0d8));
 	Global_00c5b0ac = 0.0f;
 }

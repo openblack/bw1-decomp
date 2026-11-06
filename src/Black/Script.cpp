@@ -558,11 +558,11 @@ void GScript::CleanGameForScriptReboot()
 		if (GGame::g_game->MyPlayer() != NULL)
 		{
 			GGame::g_game->MyInterface()->InterfaceActionForceToNormal();
-			GGame::g_game->MyInterface()->Inactive = false;
+			GGame::g_game->MyInterface()->Limits.Clear();
 			GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 			GGame::g_game->MyInterface()->EndPlayBack();
 		}
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURES_DEFAULT, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURES_NORMAL, CAMERA_FEATURES_ALL);
 		CameraExclusion::ResetExclusionFile(CAMERA_EXCLUSION_ID_SCRIPT);
 		if (GGame::g_game->GetCamera() != NULL)
 		{
@@ -597,11 +597,11 @@ void GScript::LoadScriptState(char* name)
 	sprintf(path, "%s.stb", name);
 	fstream file;
 	file.open(path, ios::in | ios::binary, filebuf::openprot);
-	file.read((char*)ScriptManage::Table, sizeof(ScriptManage::Table));
+	file.read((char*)ScriptManage::VariableTable, sizeof(ScriptManage::VariableTable));
 	file.close();
 	sprintf(path, "%s.ss", name);
 	g_scriptDLL->RestoreState(path);
-	ResolveVariableTable();
+	ValidateVariableTable();
 }
 
 void GScript::SaveScriptState(char* name)
@@ -613,9 +613,9 @@ void GScript::SaveScriptState(char* name)
 	fstream file;
 	sprintf(path, "%s.stb", name);
 	file.open(path, ios::out | ios::binary, filebuf::openprot);
-	file.write((char*)ScriptManage::Table, sizeof(ScriptManage::Table));
+	file.write((char*)ScriptManage::VariableTable, sizeof(ScriptManage::VariableTable));
 	file.close();
-	ResolveVariableTable();
+	ValidateVariableTable();
 }
 #endif
 
@@ -631,7 +631,7 @@ bool32_t GScript::Save(GameOSFile& file)
 
 	for (uint32_t i = SCRIPT_MANAGE_FIRST_SLOT; i < SCRIPT_MANAGE_TABLE_SIZE; i++)
 	{
-		ScriptManage::Table[i].Save(file);
+		ScriptManage::VariableTable[i].Save(file);
 	}
 
 	file.WriteIt(ScriptManage::NextFreeSlot);
@@ -683,7 +683,7 @@ bool32_t GScript::Load(GameOSFile& file)
 
 	for (uint32_t i = SCRIPT_MANAGE_FIRST_SLOT; i < SCRIPT_MANAGE_TABLE_SIZE; i++)
 	{
-		ScriptManage::Table[i].Load(file);
+		ScriptManage::VariableTable[i].Load(file);
 	}
 
 	file.ReadIt(ScriptManage::NextFreeSlot);

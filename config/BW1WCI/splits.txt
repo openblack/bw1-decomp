@@ -2232,10 +2232,26 @@ Black/ScriptHighlight.cpp:
 	.data       start:0x00C93BC0 end:0x00C93C39
 	.bss        start:0x00E1A8A8 end:0x00E1B3C4
 
+Black/ScriptInterface.cpp:
+	.text       start:0x00725280 end:0x00725FF0
+	.CRT$XCU    start:0x00A3709C end:0x00A370A0 align:4
+	.data       start:0x00C93C3C end:0x00C93C9C
+	.bss        start:0x00E1B3C4 end:0x00E1B3C8
+
+Black/ScriptMagic.cpp:
+	.text       start:0x00725FF0 end:0x00727630
+	.rdata      start:0x0099B680 end:0x0099B690
+	.CRT$XCU    start:0x00A370A0 end:0x00A370A8 align:4
+	.data       start:0x00C93C9C end:0x00C93D68
+	.bss        start:0x00E1B3CC end:0x00E1B3D4
+
 Black/ScriptManage.cpp:
-	.text       start:0x00725280 end:0x007280D0
-	.rdata      start:0x0099B680 end:0x0099B6A0
-	.CRT$XCU    start:0x00A3709C end:0x00A370B4 align:4
+	.text       start:0x00727630 end:0x007280D0
+	.rdata      start:0x0099B690 end:0x0099B6A0
+	.rdata$r    start:0x00A29998 end:0x00A299E8
+	.CRT$XCU    start:0x00A370A8 end:0x00A370B4 align:4
+	.data       start:0x00C93D68 end:0x00C93F88
+	.bss        start:0x00E1B3D8 end:0x00E203E4
 
 Black/ScriptMarker.cpp:
 	.text       start:0x007280D0 end:0x00728210

@@ -627,6 +627,27 @@ add_relocations:
     type: x86_abs32
     target: '?VariableTable@ScriptManage@@2PAV1@A'
     addend: 0x5000
+# ScriptManage.cpp: the loops over VariableTable compare against the end of the array.
+  - source: 0x007276F2
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5000
+  - source: 0x007277A2
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5000
+  - source: 0x00727B5F
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5004
+  - source: 0x00727C58
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5004
+  - source: 0x00727D54
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5004
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005DDFC2
     type: x86_abs32

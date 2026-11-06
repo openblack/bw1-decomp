@@ -126,6 +126,10 @@ public:
 	void COORD_PUSH(float value) { PUSH(*(void**)&value, VMType_VECTOR); }
 	// BW1W120 inlined BW1M119 inlined
 	void FLOAT_PUSH(float value) { PUSH(*(void**)&value, VMType_FLOAT); }
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 inlined
+	void THING_PUSH(uint32_t id) { PUSH((void*)id, VMType_OBJECT); }
+#endif
 	// Inliner IL size: 57
 	// BW1W120 inlined BW1M119 inlined
 	void POINT_POP(LHPoint& point)

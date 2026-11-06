@@ -49,7 +49,6 @@ struct LHKeyEvent
 struct LHKeyboard
 {
 	// Same lock formerly named gKeyboardCritSec in LHWin.cpp.
-	// TODO: Descriptive name; original class/file scope is unknown.
 	// BW1W120 00e8c118
 	static CRITICAL_SECTION CriticalSection;
 
@@ -70,6 +69,8 @@ struct LHKeyboard
 
 	// BW1W120 007dcad0 BW1M119 0113f060 (LHCombined Release)
 	unsigned char LHKeyToAscii(LH_KEY key, bool32_t shift);
+	// BW1W120 inlined BW1M119 015039b0
+	uint8_t IsKeyDown(LH_KEY key) { return KeyState[key]; }
 	// BW1W120 007dcaf0 BW1M119 0113ed60 (LHCombined Release)
 	void ProcessKeyboard(unsigned int msg, int key_data);
 	// BW1W120 007dcc90 BW1M119 0113ebc0 (LHCombined Release)
