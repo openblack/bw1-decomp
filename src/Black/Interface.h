@@ -41,7 +41,7 @@ class GInterface : public GameThingWithPos
 public:
 	// BW1W120 005d05f0 BW1M119 01360150
 	void                 Validate();
-	uint32_t             field_0x28;
+	bool                 Inactive;
 	LiquidParticleGroup* liquid_particle_group;
 	GInterfaceFlags      flags;
 	int                  ActionState;
@@ -183,6 +183,10 @@ public:
 	void Process();
 	// BW1W120 005cedb0 BW1M119 01086500
 	void ProcessFrameUpdates();
+	// BW1W120 005d1260 BW1M119 013698e0
+	void InterfaceActionForceToNormal();
+	// BW1W120 005db3f0 BW1M119 01373720
+	void EndPlayBack();
 	// BW1W120 005db710 BW1M119 01074d00
 	bool32_t IsPlayBack(uint32_t playback) const;
 	// BW1W120 inlined BW1M119 010789b0

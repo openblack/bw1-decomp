@@ -6,6 +6,7 @@
 
 #include <Lionhead/LHDLL/ver1.0/LHDLL.h>          /* For struct LHDLL */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHReturn.h>       /* For enum LH_RETURN */
 
 // Types of values on the script VM's stack.
 enum VMType
@@ -21,23 +22,28 @@ enum VMType
 enum VMScriptType
 {
 	VMScriptType_0 = 0x0,
+	VMScriptType_Help = 0x2,
 	VMScriptType_RunWhilePaused = 0x18,
+	VMScriptType_StoppableHelp = 0x4a,
+	VMScriptType_Multiplayer = 0x60,
+	VMScriptType_All = 0x7f,
 	_VMScriptType_COUNT = 0x1
 };
 
 // Forward Declares
 
 class LHTransport;
+struct ScriptFunctionTable;
 
 class ScriptDLL : public LHDLL
 {
 public:
-	uint32_t  field_0x24;
-	uint32_t  field_0x28;
-	uint32_t  field_0x2c;
-	uint32_t  field_0x30;
-	uintptr_t ParseFile;
-	uintptr_t StartScript;
+	uint32_t field_0x24;
+	uint32_t field_0x28;
+	uint32_t field_0x2c;
+	uint32_t field_0x30;
+	LH_RETURN(__cdecl* ParseFile_ptr)(LHTransport* transport, const char* path, const char* game_directory);
+	int(__cdecl* StartScript_ptr)(LHTransport* transport, const char* name, VMScriptType type);
 	uintptr_t FindScript;
 	void(__cdecl* AutoStart_ptr)(LHTransport* transport); /* 0x40 */
 	uintptr_t StopTask;
@@ -48,9 +54,9 @@ public:
 	uintptr_t STRING_ptr;
 	int(__cdecl* LoadBinary_ptr)(LHTransport* transport, const char* path);
 	uintptr_t SaveBinary; /* 0x60 */
-	uintptr_t SaveState;
-	uintptr_t RestoreState;
-	uintptr_t Reboot;
+	uintptr_t SaveState_ptr;
+	uintptr_t RestoreState_ptr;
+	uintptr_t Reboot_ptr;
 	uint32_t  NumTasks; /* 0x70 */
 	uint32_t  LineNumber;
 	uint32_t  TaskNumber_ptr;
@@ -127,8 +133,8 @@ public:
 	uint32_t LoopTaskVariables;
 	uint32_t LoopGlobalVariables;
 	uint32_t GetScriptType_ptr; /* 0xd0 */
-	uint32_t GetGlobalVariableValue;
-	uint32_t field_0xd8;
+	uint32_t GetGlobalVariableValue_ptr;
+	uint32_t GetLocalVariableValue_ptr;
 
 	// Static methods
 
@@ -142,8 +148,26 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 006f67f0 BW1M119 014efe00
+	void Initialise(ScriptFunctionTable* table, void(__cdecl* library_message)(LH_RETURN result, char* message),
+	                void(__cdecl* start_call)(unsigned long function), void(__cdecl* end_call)(unsigned long function),
+	                void(__cdecl* debug_call_back)(), void(__cdecl* task_cleanup)(unsigned long task));
 	// BW1W120 006f6840 BW1M119 0108e380
 	void LookIn(VMScriptType script_type);
+	// BW1W120 006f6860 BW1M119 014efcf0
+	LH_RETURN ParseFile(const char* path, const char* game_directory);
+	// BW1W120 006f6880 BW1M119 014efc80
+	int StartScript(const char* name, VMScriptType type);
+	// BW1W120 006f6960 BW1M119 014efa90
+	void SaveState(const char* path);
+	// BW1W120 006f6980 BW1M119 014efa30
+	void RestoreState(const char* path);
+	// BW1W120 006f69a0 BW1M119 014ef9c0
+	void Reboot();
+	// BW1W120 006f6c70 BW1M119 014ef4a0
+	float GetGlobalVariableValue(const char* name);
+	// BW1W120 006f6c90 BW1M119 null
+	float GetLocalVariableValue(const char* script_name, const char* name);
 	// BW1W120 006f68c0 BW1M119 014efc20
 	void AutoStart();
 	// BW1W120 006f68f0 BW1M119 014efbb0
@@ -163,7 +187,7 @@ public:
 	// BW1W120 006f6bd0 BW1M119 014ef5e0
 	char* STRING(uint32_t index);
 	// BW1W120 006f6c50 BW1M119 014ef510
-	void* GetScriptType(unsigned long param_1);
+	VMScriptType GetScriptType(unsigned long task);
 	// BW1W120 006f6aa0 BW1M119 014ef800
 	uint32_t GetScriptInstructionCount();
 

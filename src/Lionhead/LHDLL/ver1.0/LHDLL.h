@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 // Forward Declares
 
 class LHTransport;
@@ -34,6 +36,15 @@ public:
 
 	// BW1W120 007ad4c0 BW1M119 010da420 (LHCombined Release)
 	~LHDLL();
+
+	// Non-virtual methods
+
+	// BW1W120 007ad4f0 BW1M119 010da180 (LHCombined Release)
+	bool32_t Load(void(__cdecl* on_load)(void*));
+	// BW1W120 007add80 BW1M119 010da050 (LHCombined Release)
+	void UnLoad();
+	// BW1W120 007ae4d0 BW1M119 010d9de0 (LHCombined Release)
+	void UnInitialise();
 
 	virtual void GetAPI() = 0;
 };

@@ -1,17 +1,7 @@
 #include "ColourConstants.h"
 #include "GameThingWithPos.h"
 #include "Script.h"
-
-// The Mac build names the type -- ScriptDLL::Initialise(ScriptFunctionTable *,
-// ...) -- and it is POD there, so on Mac this table is plain static data.
-struct ScriptFunctionEntry
-{
-	void(__cdecl* handler)(); /* 0x00 */
-	uint32_t argCount;        /* 0x04 */
-	uint32_t field_0x8;
-	uint32_t field_0xc;
-	char     name[128]; /* 0x10 */
-};
+#include "ScriptFunctionTable.h"
 
 // Native script function table.
 //
@@ -36,7 +26,7 @@ struct ScriptFunctionEntry
 //     007003A7  mov  edi, 0x00C0EADF  ; name + 7
 //     007003AC  rep  stosd
 //     007003AE  stosb
-ScriptFunctionEntry g_scriptFunctionTable[464] = {
+ScriptFunctionTable g_scriptFunctionTable[SCRIPT_FUNCTION_COUNT] = {
 	{NULL, 0, 0, 0, "NONE"},
 	{GScript::SetCameraPos, 3, 0, 0, "SET_CAMERA_POSITION"},
 	{GScript::SetCameraFocus, 3, 0, 0, "SET_CAMERA_FOCUS"},

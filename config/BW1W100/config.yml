@@ -64,6 +64,15 @@ block_relocations:
   - source: 0x007BF268
 
 add_relocations:
+# GScript::Save and Load: the loop bound is the end of ScriptManage::Table; dtk leaves the cmp immediate unrelocated.
+  - source: 0x006866A8
+    type: x86_abs32
+    target: '?Table@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x00686A37
+    type: x86_abs32
+    target: '?Table@ScriptManage@@2PAV1@A'
+    addend: 0x2800
 # libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
   - source: 0x007E6D90
     type: x86_abs32

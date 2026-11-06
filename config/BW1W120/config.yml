@@ -128,6 +128,15 @@ block_relocations:
   - source: 0x00C23160
   - source: 0x00C31058
 add_relocations:
+# GScript::Save and Load: the loop bound is the end of ScriptManage::Table; dtk leaves the cmp immediate unrelocated.
+  - source: 0x006EBF18
+    type: x86_abs32
+    target: '?Table@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x006EC2A7
+    type: x86_abs32
+    target: '?Table@ScriptManage@@2PAV1@A'
+    addend: 0x2800
 # SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
 # the lea displacement unrelocated).
   - source: 0x00881491

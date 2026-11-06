@@ -88,6 +88,15 @@ block_relocations:
   - source: 0x0085C008
 
 add_relocations:
+# GScript::Save and Load: the loop bound is the end of ScriptManage::Table; dtk leaves the cmp immediate unrelocated.
+  - source: 0x006E1098
+    type: x86_abs32
+    target: '?Table@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x006E1427
+    type: x86_abs32
+    target: '?Table@ScriptManage@@2PAV1@A'
+    addend: 0x2800
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005C4402
     type: x86_abs32

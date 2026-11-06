@@ -1357,7 +1357,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/SaveLoadPtr.cpp"),
             GameCodeObject(NonMatching, "Black/Scaffold.cpp"),
             GameCodeObject(NonMatching, "Black/ScaffoldInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/Script.cpp"),
+            GameCodeObject(Matching, "Black/Script.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptCamera.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptContainer.cpp"),
             GameCodeObject(Matching, "Black/ScriptControl.cpp"),

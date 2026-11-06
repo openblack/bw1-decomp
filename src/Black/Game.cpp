@@ -589,7 +589,7 @@ void GGame::OnNewGame()
 	SaveGameRoom::CreateSaveGameFiles(path);
 
 	bool started = false;
-	if (g_game->script != NULL && GScript::Dat_00D95C0C && g_game->LandNumber == 1)
+	if (g_game->script != NULL && GScript::ScriptsLoaded && g_game->LandNumber == 1)
 	{
 		if (g_game->script->StartScript("LandControlAll"))
 		{

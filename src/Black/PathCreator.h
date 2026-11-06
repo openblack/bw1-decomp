@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
+#include <stdlib.h> /* For _MAX_PATH */
 #include <uchar.h>  /* For char16_t */
 
 struct PathCreator
@@ -13,8 +14,7 @@ struct PathCreator
 	char*   pictures;
 	char*   current; /* 0x10 */
 	char*   field_0x16;
-	char    field_0x18[0x10];
-	uint8_t field_0x28[0xf4];
+	char    GameDir[_MAX_PATH];
 	char    field_0x11c[0x44];
 	uint8_t field_0x160[0xbc];
 	char*   field_0x21c; // ProfileNameToKey returns a narrow registry key.

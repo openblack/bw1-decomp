@@ -2111,13 +2111,15 @@ Black/Scaffold.cpp:
 	.text       start:0x006DD450 end:0x006E0250
 	.rdata      start:0x0093207C end:0x009320DC
 	.data       start:0x00BFB12C end:0x00BFB148
-	.bss        start:0x00D8468C end:0x00D848D8
+	.bss        start:0x00D8468C end:0x00D847D0
 
 Black/Script.cpp:
 	.text       start:0x006E0250 end:0x006E1A20
 	.rdata      start:0x009320DC end:0x00932108
-	.data       start:0x00BFB160 end:0x00BFB164
-	.bss        start:0x00D848D8 end:0x00D848F4
+	.rdata$r    start:0x009A8B28 end:0x009A8B74
+	.CRT$XCU    start:0x009B6FDC end:0x009B6FE4 align:4
+	.data       start:0x00BFB148 end:0x00BFB207
+	.bss        start:0x00D847D0 end:0x00D848F4
 
 Black/ScriptCamera.cpp:
 	.text       start:0x006E1A20 end:0x006E4460

@@ -2317,23 +2317,24 @@ Black/RoutePlan.cpp:
 	.data       start:0x00C8CC14 end:0x00C8CC5C
 
 Black/Scaffold.cpp:
-	.text       start:0x006ECB70 end:0x006EF990
+	.text       start:0x006ECB70 end:0x006EF9A0
 	.rdata      start:0x0096FF10 end:0x0096FF70
 	.CRT$XCU    start:0x00A475EC end:0x00A47600 align:4
-	.data       start:0x00C8CC5C end:0x00C8CC98
-	.bss        start:0x00E16B6C end:0x00E16DB8
+	.data       start:0x00C8CC5C end:0x00C8CC80
+	.bss        start:0x00E16B6C end:0x00E16CB0
 
 Black/Script.cpp:
-	.text       start:0x006EF990 end:0x006F11C0
+	.text       start:0x006EF9A0 end:0x006F11C0
 	.rdata      start:0x0096FF70 end:0x0096FF9C
+	.rdata$r    start:0x00A39088 end:0x00A390D4
 	.CRT$XCU    start:0x00A47600 end:0x00A4760C align:4
-	.data       start:0x00C8CC98 end:0x00C8CE04
-	.bss        start:0x00E16DB8 end:0x00E16DD4
+	.data       start:0x00C8CC80 end:0x00C8CD4B
+	.bss        start:0x00E16CB0 end:0x00E16DD4
 
 Black/ScriptCamera.cpp:
 	.text       start:0x006F11C0 end:0x006F3C60
 	.CRT$XCU    start:0x00A4760C end:0x00A4761C align:4
-	.data       start:0x00C8CE04 end:0x00C8CFF8
+	.data       start:0x00C8CD4C end:0x00C8CFF8
 	.bss        start:0x00E16DD4 end:0x00E16DE0
 
 Black/ScriptContainer.cpp:

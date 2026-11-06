@@ -33,6 +33,11 @@ enum CameraHelpReason
 };
 static_assert(sizeof(enum CameraHelpReason) == 0x4, "Data type is of wrong size");
 
+#define CAMERA_FEATURES_ALL (-1)
+#define CAMERA_FEATURES_DEFAULT                                                                                        \
+	(CAMERA_FEATURE_PITCH | CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_ZOOM | CAMERA_FEATURE_MOVE |                        \
+	 CAMERA_FEATURE_DOUBLE_CLICK | CAMERA_FEATURE_ZOOM_LANDSCAPE | CAMERA_FEATURE_HELP | CAMERA_FEATURE_EDGE_SCROLL)
+
 enum CAMERA_FEATURE
 {
 	CAMERA_FEATURE_PITCH = 0x1,
@@ -56,6 +61,8 @@ public:
 	static float AutoPitchParam2;
 	// BW1W120 009cdd6c
 	static int EnabledFeatures;
+	// BW1W120 00447430 BW1M119 011a69c0
+	static void EnableCameraFeatures(int enable, int mask);
 	// BW1W120 00449140 BW1M119 010018f0
 	static void CameraHelpCallback(CameraHelpReason reason, LHPoint& point, unsigned long param_3);
 	// BW1W120 00447ea0 BW1M119 01063100

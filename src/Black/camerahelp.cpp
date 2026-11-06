@@ -7,9 +7,7 @@
 // TODO: Current splits attribute these bytes to CameraEditor; fix ownership before source linkage.
 float CameraHelp::AutoPitchParam1 = 0.52359879f;
 float CameraHelp::AutoPitchParam2 = 75.0f;
-int   CameraHelp::EnabledFeatures = CAMERA_FEATURE_PITCH | CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_ZOOM |
-                                    CAMERA_FEATURE_MOVE | CAMERA_FEATURE_DOUBLE_CLICK | CAMERA_FEATURE_ZOOM_LANDSCAPE |
-                                    CAMERA_FEATURE_HELP | CAMERA_FEATURE_EDGE_SCROLL;
+int   CameraHelp::EnabledFeatures = CAMERA_FEATURES_DEFAULT;
 
 void CameraHelpAccumulator::Reset()
 {

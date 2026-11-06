@@ -334,7 +334,7 @@ public:
 	uint8_t                 field_0x59c[0x4028];
 	uint32_t                field_0x45c4;
 	uint32_t                field_0x45c8;
-	uint32_t                field_0x45cc;
+	uint32_t                DialogueControlTask;
 	uint32_t                field_0x45d0;
 	uint16_t                NumBanterSetsSent;
 	uint8_t                 field_0x45d6;
@@ -396,6 +396,8 @@ public:
 	void ProcessToolTips();
 	// BW1W120 005c8ec0 BW1M119 null
 	bool32_t HasTimeElapsedSinceCategoryTriggered(HELP_SET_CATEGORY category, float seconds) const;
+	// BW1W120 005c6720 BW1M119 013581d0
+	void SpiritInterruptTalking(HELP_SPIRIT_TYPE type, bool32_t disappear);
 	// BW1W120 005c6740 BW1M119 0100c950
 	bool32_t IsDialogueControlled() const;
 	// BW1W120 005c6550 BW1M119 01358940
@@ -419,6 +421,8 @@ public:
 	bool32_t Load(GameOSFile& file);
 	// BW1W120 005c78b0 BW1M119 013555d0
 	void ResolveLoad();
+	// BW1W120 005c78c0 BW1M119 010a2360
+	void ClearWideScreen(unsigned long task);
 
 	// BW1W120 005c5460 BW1M119 0135a0a0
 	void SetToZero();
@@ -442,6 +446,8 @@ public:
 	void     Draw3D(); // 005c59a0
 	// BW1W120 005c67e0 BW1M119 01357fe0
 	void ClearDialogueControl();
+	// BW1W120 005c6800 BW1M119 010a2440
+	void ReleaseDialogueControl(unsigned long task);
 	// BW1W120 005c68a0 BW1M119 01357f40
 	HelpSpirit* GetSpirit(HELP_SPIRIT_TYPE type) const;
 	// BW1W120 005c6ad0 BW1M119 01357c40
