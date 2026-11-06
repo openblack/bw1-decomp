@@ -2218,14 +2218,16 @@ Black/ScriptFunctionTable.cpp:
 	.data       start:0x00C7E7C0 end:0x00C93B2C
 
 Black/ScriptGFX.cpp:
-	.data       start:0x00C93B2C end:0x00C93BF8
-	.bss        start:0x00E1A7A0 end:0x00E1A8B0
+	.text       start:0x00722450 end:0x00722FE0
+	.CRT$XCU    start:0x00A37088 end:0x00A3708C align:4
+	.data       start:0x00C93B2C end:0x00C93BBB
+	.bss        start:0x00E1A7A0 end:0x00E1A8A4
 
 Black/ScriptHighlight.cpp:
 	.text       start:0x00722FE0 end:0x00725280
 	.rdata      start:0x0099AD60 end:0x0099B680
 	.CRT$XCU    start:0x00A3708C end:0x00A3709C align:4
-	.data       start:0x00C93BF8 end:0x00C93F84
+	.data       start:0x00C93BC0 end:0x00C93F84
 
 Black/ScriptManage.cpp:
 	.text       start:0x00725280 end:0x007280D0

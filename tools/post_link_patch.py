@@ -2685,6 +2685,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00704594, jmp_run(0x00704487)),  # ScriptFunctions
     (0x007047D8, jmp_run(0x00704594)),  # ScriptFunctions
     (0x0070485A, jmp_run(0x007047D8)),  # ScriptFunctions
+    (0x0070D53B, jmp_run(0x007048AB)),  # ScriptGFX
+    (0x0070D595, jmp_run(0x0070D53B)),  # ScriptGFX
+    (0x0070D5C5, copy_run(0x0070D592)),  # ScriptGFX
+    (0x0070D717, jmp_run(0x0070D5C5)),  # ScriptGFX
+    (0x0070D7B8, jmp_run(0x0070D717)),  # ScriptGFX
+    (0x0070DB73, jmp_run(0x0070D7B8)),  # ScriptGFX
+    (0x0070DC97, jmp_run(0x0070DB73)),  # ScriptGFX
+    (0x0070DD19, jmp_run(0x0070DC97)),  # ScriptGFX
+    (0x0070DD55, jmp_run(0x0070DD19)),  # ScriptGFX
+    (0x0070DDF8, jmp_run(0x0070DD55)),  # ScriptGFX
     (0x00712256, jmp_run(0x00712185)),  # ScriptMarker
     (0x007122B7, jmp_run(0x00712256)),  # ScriptMarker
     (0x007122D3, jmp_run(0x007122B7)),  # ScriptMarker
