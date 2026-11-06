@@ -1,5 +1,3 @@
-#include <re_common.h> /* For bool32_t */
-
 #include "LandFeature.h"
 
 bool32_t ForceMinimumNearClipping;

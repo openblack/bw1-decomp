@@ -34,6 +34,7 @@
 #include "HelpSystem.h"
 #include "Interface.h"
 #include "Intro.h"
+#include "LandFeature.h"
 #include "ScriptDLL.h"
 #include "ScriptFunctionTable.h"
 #include "ScriptManage.h"
@@ -41,8 +42,6 @@
 #include "SoundConfirmation.h"
 #include "Utils.h"
 
-// BW1W120 00d1a2f8
-extern bool32_t ForceMinimumNearClipping;
 #ifdef VERSION_BW1WCI
 // BW1WCI 00d9e6f4 BW1MCI119 null
 extern bool32_t LandscapeLoaded;

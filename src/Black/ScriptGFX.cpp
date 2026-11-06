@@ -19,11 +19,10 @@
 #include "Game3DObject.h"
 #include "HelpText.h"
 #include "Intro.h"
+#include "LandFeature.h"
 #include "Landscape.h"
 #include "ScriptDLL.h"
 
-// BW1W120 00d1a2f8
-extern bool32_t ForceMinimumNearClipping;
 #ifdef VERSION_BW1WCI
 // BW1WCI 00c64230 BW1MCI119 null
 extern bool ShowInfluence;
