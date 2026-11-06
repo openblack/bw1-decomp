@@ -1,38 +1,28 @@
-#include "GameTimeConstants.h"
+#include "InterfaceMessageBuffer.h"
 #include "Abode.h"
-
+#include "PlannedAbode.h"
 #include "Lionhead/LH3DLib/development/LH3DSmoke.h"
-
 #include <Lionhead/LH3DLib/development/LH3DMesh.h> /* For struct LH3DMesh */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
 #include <Lionhead/LH3DLib/development/PhysOb.h>   /* For struct PhysOb */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>
 #include <math.h>
-
-#include "AbodeInfo.h"
 #include "Alignment.h"
-
 #include "MapCoords.h"
 #include "MultiMapFixedInfo.h"
 #include "Player.h"
 #include "Villager.h"
 #include "chlasm/Enum.h"
-#include "ColourConstants.h" /* For White */
 #include "Creche.h"
 #include "EditorPhysics.h"
 #include "Field.h"
 #include "FieldTypeInfo.h"
-#include "Football.h"
 #include "FootpathNode.h"
-#include "Game.h"
 #include "GameOSFile.h"
 #include "Game3DObject.h"
-#include "GameStats.h"
 #include "GraveYard.h"
 #include "InterfaceStatus.h"
-#include "Landscape.h"          /* For GoolooGooloo */
-#include "LandscapeConstants.h" /* For LandscapeExtent */
-#include "PlannedAbode.h"
+#include "Landscape.h" /* For GoolooGooloo */
 #include "Rand.h"
 #include "Scaffold.h"
 #include "CitadelHeartInfo.h"
@@ -43,6 +33,21 @@
 #include "ScriptHighlightInfo.h"
 #include "ScriptHighlight.h"
 #include "SoundGuidance.h"
+#include "AbodeInfo.h"
+#pragma data_seg(".CRT$XCU")
+static void* CrtPad[15] = {0};
+#pragma data_seg()
+#include "MapCellConstants.h"
+#include "GameTimeConstants.h"
+#include "LandscapeConstants.h"
+#include "TimerConstants.h"
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+#include "ColourConstants.h"
+#endif
+#include "HelpText.h"
+#include "Football.h"
+#include "Game.h"
+#include "GameStats.h"
 #include "EffectValues.h"
 #include "Camera.h"
 #include "ControlHand.h"
@@ -80,21 +85,33 @@
 	((line) - ((line) < 1019 ? 1 : (line) < 1359 ? 13 : (line) < 1856 ? 71 : (line) < 2210 ? 78 : 83))
 #endif
 
+// BW1W120 00980188 BW1M119 01699580
+extern const float DestroyBuildingGuidanceFraction;
+// BW1W120 00404ab0 BW1M119 null
+uint32_t GetMaxInfosPerTribe();
+// BW1W120 00405040 BW1M119 null
+Object* GetAbodeAt(const MapCoords& coords);
+// BW1W120 00405020 BW1M119 null
+bool32_t IsAbodeAt(const MapCoords& coords);
+
 inline float GCamera::GetDistance(const LHPoint& point)
 {
 	LHPoint pos;
 	GetPosition(pos);
-	return pos.GetDistance(point);
+	float dx = pos.x - point.x;
+	float dy = pos.y - point.y;
+	float dz = pos.z - point.z;
+	return sqrt((dz * dz) + (dy * dy) + (dx * dx));
 }
 
 GAbodeInfo GAbodeInfo::AbodeInfos[ABODE_INFO_LAST];
 
-LH3DObject* Windmill::Sails;
-float       Windmill::SailsAngle;
-float       Windmill::WindPhase;
-
-Town*      Abode::KnockedTown;
-static int KnockSample;
+static int  Unused = 0;
+Town*       Abode::KnockedTown = NULL;
+LH3DObject* Windmill::Sails = NULL;
+float       Windmill::SailsAngle = 0.0f;
+float       Windmill::WindPhase = 0.0f;
+static int  KnockSample = 0;
 
 // Process turns an empty abode stands before it loses life.
 #define ABODE_NEGLECT_TURNS 1000
@@ -234,7 +251,7 @@ void Abode::SetUpPhysOb(PhysOb* obj)
 {
 	if (DestructionMesh != NULL)
 	{
-		DestructionMesh->LastHitter = 0;
+		DestructionMesh->LastHitter = NULL;
 	}
 	obj->SetUpConstants(2000.0f, &EditorPhysics::PhysicsConstants[GetPhysicsConstantsType()], 0);
 	obj->BuildFromVertices();
@@ -319,8 +336,9 @@ Abode* Abode::CreateWithoutSpecial(const MapCoords& coords, const GAbodeInfo* in
 void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 {
 	MultiMapFixed::CallVirtualFunctionsForCreation(coords_);
-	LHPoint chimney_pos;
-	if (Game3dObject->GetChimneyPos(&chimney_pos))
+	LHPoint  chimney_pos;
+	bool32_t hasChimney = Game3dObject->GetChimneyPos(&chimney_pos);
+	if (hasChimney)
 	{
 		smoke = LH3DSmoke::Create(NULL);
 		if (smoke != NULL)
@@ -333,15 +351,21 @@ void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 		}
 	}
 
-	if (!Game3dObject->IsStaticMorphable())
+	bool32_t isStatic = Game3dObject->IsStaticMorphable();
+	if (!isStatic)
 	{
-		float minAltitude = min(-(Get2DRadius() * 0.2f), -0.8f);
+		float minAltitude = min(-(Get2DRadius() / 5.0f), -0.8f);
 		Pos.altitude = max(Game3dObject->GetAltitudeFondation(), minAltitude);
 	}
-	float   scale = GetScale();
-	float   yAngle = GetYAngle();
-	LHPoint position;
-	Game3dObject->LH3DObject::SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
+	float            scale = GetScale();
+	float            yAngle = GetYAngle();
+	const MapCoords& pos = Pos;
+	LH3DObject*      object3d = Game3dObject;
+	{
+		LHPoint position;
+		GLandscape::ConvertMapCoordToLandscapePoint(pos, position);
+		object3d->LH3DObject::SetPosition(position, yAngle, scale);
+	}
 }
 
 struct NewEPEntry
@@ -370,7 +394,8 @@ bool32_t Abode::GetNewEp(ABODE_EPP index, LHPoint* point)
 			{
 				if (ep->entries[i].id == index)
 				{
-					*point = ep->entries[i].matrix.GetPos();
+					NewEPEntry* entry = &ep->entries[i];
+					*point = entry->matrix.GetPos();
 					LHMatrix matrix;
 					GetWorldMatrix(&matrix);
 					matrix.TransformPoint(*point);
@@ -893,6 +918,25 @@ MESH_LIST Abode::GetMesh() const
 	return GetInfo()->GetMesh();
 }
 
+uint32_t GetMaxInfosPerTribe()
+{
+	uint32_t most = 0;
+	uint16_t count[TRIBE_TYPE_LAST];
+	memset(count, 0, sizeof(count));
+	for (GAbodeInfo* info = &GAbodeInfo::AbodeInfos[0]; info < &GAbodeInfo::AbodeInfos[ABODE_INFO_LAST]; info++)
+	{
+		count[info->tribe_type]++;
+	}
+	for (int i = 0; i < TRIBE_TYPE_LAST; i++)
+	{
+		if (count[i] > most)
+		{
+			most = count[i];
+		}
+	}
+	return most;
+}
+
 uint32_t GAbodeInfo::IsOkToCreateAtPos(const MapCoords& coords, float y_angle, float scale, Town* town) const
 {
 	return coords.IsSuitableForFixedAbodeInTown(GetMesh(), town, y_angle, scale) != 0;
@@ -1036,6 +1080,16 @@ uint32_t Abode::DoResourceRemoving(RESOURCE_TYPE type, uint32_t amount, GInterfa
 	return removed;
 }
 
+bool32_t IsAbodeAt(const MapCoords& coords)
+{
+	return GetAbodeAt(coords) != NULL;
+}
+
+Object* GetAbodeAt(const MapCoords& coords)
+{
+	return coords.FindType(OBJECT_TYPE_ABODE, NULL);
+}
+
 PlannedMultiMapFixed* Abode::ConvertToPlanned()
 {
 	PlannedAbode* result = PlannedAbode::Create(this);
@@ -1114,6 +1168,11 @@ char* PlannedAbode::GetDebugText()
 	return "Planned Abode";
 }
 
+void PlannedAbode::SetPlannedScale(float scale_)
+{
+	scale = scale_;
+}
+
 bool32_t PlannedAbode::IsAbodeTypeInMask(int abode_type_mask)
 {
 	return (GetInfo()->AbodeType & abode_type_mask) != 0;
@@ -1148,10 +1207,17 @@ MultiMapFixed* PlannedAbode::CreatePlannedNoFixedCheck(float food)
 	return NULL;
 }
 
+struct PlannedAbodePos : public MapCoords
+{
+	// BW1W120 00603b30 BW1M119 null
+	bool32_t IsSuitableForPlannedFixed(MESH_LIST mesh, float y_angle, float scale) const;
+};
+
 uint32_t PlannedAbode::IsOkToBuild()
 {
+	float       yAngle = YAngle;
 	GAbodeInfo* info = GetInfo();
-	return Pos.IsSuitableForFixed(info->GetMesh(), YAngle, GetScale() * 1.25);
+	return ((const PlannedAbodePos&)Pos).IsSuitableForPlannedFixed(info->GetMesh(), yAngle, GetScale() * 1.25);
 }
 
 bool32_t PlannedAbode::Save(GameOSFile& file)
@@ -1223,7 +1289,7 @@ void Windmill::Close()
 void Windmill::PreDraw()
 {
 	float time = (int)LH3DTech::g_game_time_inc;
-	float step = fabs(cos(WindPhase)) * 0.1 + time * (1.0f / 444.0f);
+	float step = fabs(cos(WindPhase)) * 0.1f + time * (1.0f / 444.0f);
 	SailsAngle -= step;
 	WindPhase += time * (1.0f / 1332.0f);
 	while (WindPhase > 2.0f * (float)M_PI)
@@ -1234,7 +1300,28 @@ void Windmill::PreDraw()
 
 const char* GAbodeInfo::GetDescription()
 {
+	float unused = MetresPerMapCell * MillisecondsPerSecond;
 	return description;
+}
+
+int GAbodeInfo::GetInfoFromText(char* text)
+{
+	for (uint32_t tribe = 0; tribe < TRIBE_TYPE_LAST; tribe++)
+	{
+		char*  tribeText = GTribeInfo::GetTribeTextArray()[GTribeInfo::GetInfo()[tribe].type];
+		size_t length = strlen(tribeText);
+		if (_strnicmp(text, tribeText, length) == 0 && text[length] == '_')
+		{
+			for (uint32_t number = 0; number < ABODE_NUMBER_LAST; number++)
+			{
+				if (_stricmp(&text[length + 1], GetInfo()[tribe * ABODE_NUMBER_LAST + number].GetDescription()) == 0)
+				{
+					return tribe * ABODE_NUMBER_LAST + number;
+				}
+			}
+		}
+	}
+	return -1;
 }
 
 GAbodeInfo* GAbodeInfo::Find(TRIBE_TYPE tribe_type, ABODE_NUMBER abode_number)
@@ -1294,6 +1381,11 @@ uint32_t Abode::SaveObject(LHOSFile& file, const MapCoords* coords)
 	return saved;
 }
 
+bool32_t Abode::Destroyed()
+{
+	return true;
+}
+
 float Abode::ReduceLife(float value, GPlayer* player)
 {
 	float    oldLife = GetLife();
@@ -1333,11 +1425,6 @@ float Abode::ReduceLife(float value, GPlayer* player)
 		}
 	}
 	return life;
-}
-
-int Abode::Destroyed()
-{
-	return 1;
 }
 
 float Abode::IncreaseLife(float value)
@@ -1383,6 +1470,16 @@ void Abode::ArriveHome()
 void Abode::LeaveHome()
 {
 	--PresentAtHome;
+}
+
+bool32_t Abode::GetNearestWaterPos(MapCoords& coords)
+{
+	if (HasDrinkingWater)
+	{
+		coords = DrinkingWater;
+		return true;
+	}
+	return false;
 }
 
 bool32_t Abode::IsCivic()
@@ -1453,6 +1550,13 @@ bool Abode::ChecksVerticesVObjects()
 
 static float AbodeFloatRand(float max);
 
+static inline void ScalePoint(LHPoint& result, const LHPoint& point, float scale)
+{
+	result.x = point.x * scale;
+	result.y = point.y * scale;
+	result.z = point.z * scale;
+}
+
 void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage)
 {
 	PhysicsObject* hitter = physics->WhoHitMe;
@@ -1471,10 +1575,12 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 	{
 		return;
 	}
-	float vx = hitter->Physics.Velocity.x;
-	float vy = hitter->Physics.Velocity.y;
-	float vz = hitter->Physics.Velocity.z;
-	float impact = (float)sqrt(vz * vz + vy * vy + vx * vx) * hitter->Physics.Mass;
+	bool32_t playSound = false;
+	long     sound[5];
+	float    vx = hitter->Physics.Velocity.x;
+	float    vy = hitter->Physics.Velocity.y;
+	float    vz = hitter->Physics.Velocity.z;
+	float    impact = (float)sqrt(vz * vz + vy * vy + vx * vx) * hitter->Physics.Mass;
 	if (impact > ABODE_DAMAGING_IMPACT)
 	{
 		if (IsBuilt())
@@ -1487,7 +1593,7 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 					delete DestructionMesh;
 					DestructionMesh = new (FILEPATH, ABODE_LINE(1912)) FragMesh(Game3dObject);
 				}
-				else if (DestructionMesh->LastHitter == (uint32_t)hitterObject)
+				else if (DestructionMesh->LastHitter == hitterObject)
 				{
 					if (impact > ABODE_LINKING_IMPACT && physics->object == this)
 					{
@@ -1497,14 +1603,15 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 				}
 				else
 				{
-					DestructionMesh->LastHitter = (uint32_t)hitterObject;
+					DestructionMesh->LastHitter = hitterObject;
 				}
 			}
 			else
 			{
 				DestructionMesh = new (FILEPATH, ABODE_LINE(1917)) FragMesh(Game3dObject);
 			}
-			LHPoint velocity = hitter->Physics.Velocity * 0.3f;
+			LHPoint velocity;
+			ScalePoint(velocity, hitter->Physics.Velocity, 0.3f);
 			LHPoint pos = hitter->Physics.Matrix.GetPos();
 			if (transferred_damage)
 			{
@@ -1534,33 +1641,33 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		SmashedByCreature = false;
 #endif
-		return;
 	}
-
-	long sound[5];
-	if (impact > ABODE_MEDIUM_IMPACT_SOUND)
+	else if (impact > ABODE_MEDIUM_IMPACT_SOUND)
 	{
 		sound[0] = IMPACT_SOUND_LEVEL_MEDIUM;
+		sound[2] = IMPACT_SOUND_HITTER_STONE;
+		sound[3] = IMPACT_SOUND_TARGET_GROUND;
+		playSound = true;
 	}
 	else if (impact > ABODE_LIGHT_IMPACT_SOUND)
 	{
 		sound[0] = IMPACT_SOUND_LEVEL_LIGHT;
+		sound[2] = IMPACT_SOUND_HITTER_STONE;
+		sound[3] = IMPACT_SOUND_TARGET_GROUND;
+		playSound = true;
 	}
-	else
+	if (playSound)
 	{
-		return;
-	}
-	sound[2] = IMPACT_SOUND_HITTER_STONE;
-	sound[3] = IMPACT_SOUND_TARGET_GROUND;
-	LHPoint pos;
-	pos = Pos.GetLHPoint();
-	if (GGame::g_game->GetCamera() != NULL)
-	{
-		float distance = GGame::g_game->GetCamera()->GetDistance(pos);
-		sound[1] = 0;
-		sound[4] = IMPACT_SOUND_EVENT_COLLISION;
-		GGlobal::Global.audio->SamplePlayAnimEffect(
-			this, distance, sound, 0, GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 0, 0.0f, 0.0f);
+		LHPoint pos;
+		pos = Pos.GetLHPoint();
+		if (GGame::g_game->GetCamera() != NULL)
+		{
+			float distance = GGame::g_game->GetCamera()->GetDistance(pos);
+			sound[1] = 0;
+			sound[4] = IMPACT_SOUND_EVENT_COLLISION;
+			GGlobal::Global.audio->SamplePlayAnimEffect(
+				this, distance, sound, 0, GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 0, 0.0f, 0.0f);
+		}
 	}
 }
 
@@ -1584,7 +1691,7 @@ void Abode::ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player
 		if (DestructionMesh != NULL)
 		{
 			float remaining = DestructionMesh->FractionRemaining;
-			if (remaining < 0.4f)
+			if (remaining < DestroyBuildingGuidanceFraction)
 			{
 				GInterfaceStatus* status = GGame::g_game->MyInterfaceStatus();
 				if (player != NULL && player->IsMemberOfThisPlayer(status))
@@ -1732,16 +1839,6 @@ bool32_t Abode::Load(GameOSFile& file)
 	return false;
 }
 
-bool32_t Abode::GetNearestWaterPos(MapCoords& coords)
-{
-	if (HasDrinkingWater)
-	{
-		coords = DrinkingWater;
-		return true;
-	}
-	return false;
-}
-
 bool32_t Abode::SetNearestWaterPos(float max_dist)
 {
 	bool32_t found = GUtils::FindNearestDrinkingWater(Pos, DrinkingWater, max_dist);
@@ -1807,6 +1904,15 @@ bool32_t Abode::IsInteractable()
 	return GameThingWithPos::IsInteractable();
 }
 
+MapCoords Abode::GetResourcePos(RESOURCE_TYPE type, uint32_t index)
+{
+	if (type == RESOURCE_TYPE_WOOD && building_site != NULL)
+	{
+		return building_site->GetResourcePosAndYAngle(RESOURCE_TYPE_WOOD, 0, NULL);
+	}
+	return Pos;
+}
+
 bool32_t Abode::CanBeHiddenIn()
 {
 	return IsFunctional();
@@ -1823,14 +1929,23 @@ float Abode::GetInfluence()
 	return (GetNumAdultsInAbode() + ChildCount + 1.0f) * influence;
 }
 
+struct ArrivePos : public MapCoords
+{
+	ArrivePos(const LH3DMapCoords& other)
+	{
+		SetWholeX(other.WholeX());
+		SetWholeZ(other.WholeZ());
+		SetAltitude(other.altitude);
+	}
+};
+
 MapCoords Abode::GetPosOutside(float divisions, float min_dist, float rand_dist)
 {
-	MapCoords pos;
-	pos = GetArrivePos();
-	float angle = (GRand::GameFloatRand(2.0f * (float)M_PI / divisions, FILEPATH, ABODE_LINE(2378))) -
-	              2.0f * (float)M_PI / (divisions + divisions);
-	angle += GUtils::Get3DAngleFromXZ(Pos, pos);
-	float dist = (GRand::GameFloatRand(rand_dist, FILEPATH, ABODE_LINE(2379))) + min_dist;
+	ArrivePos pos(GetArrivePos());
+	float     angle = ((GRand::GameFloatRand(2.0f * (float)M_PI / divisions, FILEPATH, ABODE_LINE(2378))) -
+	                   2.0f * (float)M_PI / (divisions + divisions)) +
+	                  GUtils::Get3DAngleFromXZ(Pos, pos);
+	float     dist = (GRand::GameFloatRand(rand_dist, FILEPATH, ABODE_LINE(2379))) + min_dist;
 	pos += GUtils::GetPosFromAngle(angle, dist);
 	return pos;
 }
