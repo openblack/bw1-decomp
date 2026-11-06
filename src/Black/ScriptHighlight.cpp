@@ -404,9 +404,8 @@ void ScriptHighlight::Draw()
 		LHPoint landscapePoint;
 		GLandscape::ConvertMapCoordToLandscapePoint(coords, landscapePoint);
 		uint32_t distance = GUtils::GetDistance(landscapePoint, cameraOrigin);
-		distance = distance > SCRIPT_HIGHLIGHT_FAR_DISTANCE
-		               ? SCRIPT_HIGHLIGHT_FAR_DISTANCE
-		               : (distance < SCRIPT_HIGHLIGHT_NEAR_DISTANCE ? SCRIPT_HIGHLIGHT_NEAR_DISTANCE : distance);
+		distance = distance > SCRIPT_HIGHLIGHT_FAR_DISTANCE ? SCRIPT_HIGHLIGHT_FAR_DISTANCE
+		                                                    : max(SCRIPT_HIGHLIGHT_NEAR_DISTANCE, distance);
 #ifdef VERSION_BW1WCI
 		if (!IsDidYouKnow() && !IsScoreBoard())
 #else
