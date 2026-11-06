@@ -51,7 +51,7 @@ public:
 	// BW1W120 00726e50 BW1M119 01528be0
 	virtual ~SpellSeedGraphic();
 	// BW1W120 00726fe0 BW1M119 0152a830
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 007276a0 BW1M119 01529ba0
 	virtual GPlayer* GetPlayer();
 	// BW1W120 007276b0 BW1M119 01529af0
@@ -85,7 +85,7 @@ public:
 	// BW1W120 005f8870 BW1M119 0110bac0
 	static void operator delete(void* ptr, size_t size);
 	// BW1W120 00726f60 BW1M119 0152ac10
-	static SpellSeedGraphic* Create(const MapCoords& coords, SPELL_SEED_TYPE type, GPlayer* player, float param_4,
+	static SpellSeedGraphic* Create(const MapCoords& coords, SPELL_SEED_TYPE type, GPlayer* player, float size,
 	                                POWER_UP_TYPE effect);
 
 	// Non-virtual methods
