@@ -123,7 +123,7 @@ LHLog/lib/libcmt_lhlog/splitpat.obj:
 	.text       start:0x10009878 end:0x100099C0 align:1
 
 LHLog/lib/libcmt_lhlog/exsup.obj:
-	.text       start:0x100099C0 end:0x10009AB0 align:1
+	.text       start:0x100099C0 end:0x10009AAE align:1
 	.data       start:0x1001DEF0 end:0x1001DF00
 
 LHLog/lib/libcmt_lhlog/exsup3.obj:
@@ -462,7 +462,7 @@ LHLog/lib/libcmt_lhlog/intrncvt.obj:
 	.data       start:0x1001E860 end:0x1001E890
 
 LHLog/lib/libcmt_lhlog/memmove.obj:
-	.text       start:0x10011580 end:0x100118C0 align:1
+	.text       start:0x10011580 end:0x100118BD align:1
 
 LHLog/lib/libcmt_lhlog/strcat.obj:
 	.text       start:0x100118C0 end:0x100119B8 align:1
