@@ -2378,6 +2378,34 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006FAA7B, jmp_run(0x006FAA53)),  # ScriptCreatureCurse
     (0x006FAAC4, copy_run(0x006FAA7B)),  # ScriptCreatureCurse
     (0x006FAB3A, jmp_run(0x006FAAC4)),  # ScriptCreatureCurse
+    (0x006FAC0B, copy_run(0x006FAB3A)),  # ScriptDLL
+    (0x006FAC6A, copy_run(0x006FAC0B)),  # ScriptDLL
+    (0x006FB014, jmp_run(0x006FAC6A)),  # ScriptDLL
+    (0x006FB0D3, jmp_run(0x006FB014)),  # ScriptDLL
+    (0x006FB123, copy_run(0x006FB0D3)),  # ScriptDLL
+    (0x006FB142, copy_run(0x006FB123)),  # ScriptDLL
+    (0x006FB167, copy_run(0x006FB142)),  # ScriptDLL
+    (0x006FB187, copy_run(0x006FB167)),  # ScriptDLL
+    (0x006FB1BB, jmp_run(0x006FB187)),  # ScriptDLL
+    (0x006FB1D2, jmp_run(0x006FB1BB)),  # ScriptDLL
+    (0x006FB209, copy_run(0x006FB1D2)),  # ScriptDLL
+    (0x006FB222, copy_run(0x006FB209)),  # ScriptDLL
+    (0x006FB242, copy_run(0x006FB222)),  # ScriptDLL
+    (0x006FB262, copy_run(0x006FB242)),  # ScriptDLL
+    (0x006FB282, copy_run(0x006FB262)),  # ScriptDLL
+    (0x006FB2BB, jmp_run(0x006FB282)),  # ScriptDLL
+    (0x006FB2D2, jmp_run(0x006FB2BB)),  # ScriptDLL
+    (0x006FB2F2, jmp_run(0x006FB2D2)),  # ScriptDLL
+    (0x006FB312, jmp_run(0x006FB2F2)),  # ScriptDLL
+    (0x006FB355, jmp_run(0x006FB312)),  # ScriptDLL
+    (0x006FB3F5, jmp_run(0x006FB355)),  # ScriptDLL
+    (0x006FB415, jmp_run(0x006FB3F5)),  # ScriptDLL
+    (0x006FB43A, jmp_run(0x006FB415)),  # ScriptDLL
+    (0x006FB4E5, copy_run(0x006FB43A)),  # ScriptDLL
+    (0x006FB535, jmp_run(0x006FB4E5)),  # ScriptDLL
+    (0x006FB555, jmp_run(0x006FB535)),  # ScriptDLL
+    (0x006FB575, jmp_run(0x006FB555)),  # ScriptDLL
+    (0x006FB59A, jmp_run(0x006FB575)),  # ScriptDLL
     (0x006FC4AB, copy_run(0x006FC45C)),  # ScriptFunctions
     (0x006FC4D3, jmp_run(0x006FC4AB)),  # ScriptFunctions
     (0x006FC554, jmp_run(0x006FC4D3)),  # ScriptFunctions

@@ -2159,8 +2159,10 @@ Black/ScriptCreatureCurse.cpp:
 Black/ScriptDLL.cpp:
 	.text       start:0x006EB2D0 end:0x006EBC80
 	.rdata      start:0x00932174 end:0x00932180
+	.rdata$r    start:0x009A8BC8 end:0x009A8C2C
 	.CRT$XCU    start:0x009B7018 end:0x009B701C align:4
-	.data       start:0x00BFC240 end:0x00BFC4A0
+	.data       start:0x00BFC240 end:0x00BFC49E
+	.bss        start:0x00D84D20 end:0x00D84D24
 
 Black/ScriptFunctions.cpp:
 	.text       start:0x006ECB40 end:0x006F4EF0
