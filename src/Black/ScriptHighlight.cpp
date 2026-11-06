@@ -4,7 +4,8 @@
 #include "HalfLifeConstants.h" /* For OneOverLogHalf */
 #include "ScriptHighlight.h"
 
-#include <math.h> /* For atan2, cos, sin */
+#include <d3dtypes.h> /* For RGBA_MAKE */
+#include <math.h>     /* For atan2, cos, sin */
 
 #include <chlasm/HelpTextEnums.h>                      /* For HELP_TEXT_TOOLTIP_120 */
 #include <chlasm/LHSample.h>                           /* For LH_SAMPLE_G_CLICKONSCROLL_01, LH_SAMPLE_G_CLICKSIGNPOST */
@@ -447,14 +448,14 @@ void ScriptHighlight::Draw()
 			Beam->scale = SCRIPT_HIGHLIGHT_BEAM_SCALE;
 #ifdef VERSION_BW1WCI
 			unsigned long colour = type == SCRIPT_HIGHLIGHT_INFO_SCRIPT_SILVER
-			                           ? LH3D_COLOR_ARGB(BlueBeamAlpha, BlueBeamRed, BlueBeamGreen, BlueBeamBlue)
-			                           : LH3D_COLOR_ARGB((uint8_t)(YellowBeamAlpha * GetNetUnsafeBeamPulseValue()),
-			                                             YellowBeamRed, YellowBeamGreen, YellowBeamBlue);
+			                           ? RGBA_MAKE(BlueBeamRed, BlueBeamGreen, BlueBeamBlue, BlueBeamAlpha)
+			                           : RGBA_MAKE(YellowBeamRed, YellowBeamGreen, YellowBeamBlue,
+			                                       (uint8_t)(YellowBeamAlpha * GetNetUnsafeBeamPulseValue()));
 #else
 			unsigned long colour = type == SCRIPT_HIGHLIGHT_INFO_SCRIPT_GOLD
-			                           ? LH3D_COLOR_ARGB(BlueBeamAlpha, BlueBeamRed, BlueBeamGreen, BlueBeamBlue)
-			                           : LH3D_COLOR_ARGB((uint8_t)(YellowBeamAlpha * (int)GetNetUnsafeBeamPulseValue()),
-			                                             YellowBeamRed, YellowBeamGreen, YellowBeamBlue);
+			                           ? RGBA_MAKE(BlueBeamRed, BlueBeamGreen, BlueBeamBlue, BlueBeamAlpha)
+			                           : RGBA_MAKE(YellowBeamRed, YellowBeamGreen, YellowBeamBlue,
+			                                       (uint8_t)(YellowBeamAlpha * (int)GetNetUnsafeBeamPulseValue()));
 #endif
 			Beam->SetColorSpecular(colour, 0);
 			Beam->SetDrawWithGlobalAlpha(true);
@@ -787,13 +788,13 @@ uint32_t ScriptHighlight::InterfaceTap(GInterfaceStatus* status)
 		else
 #endif
 		{
-			if (GGame::g_game->help_system->DialogueControlTask != 0 &&
+			if (GGame::g_game->help_system->DialogueControlTask != SCRIPT_TASK_NONE &&
 			    GScript::g_scriptDLL->GetScriptType(GGame::g_game->help_system->DialogueControlTask) ==
 			        VMScriptType_Help)
 			{
 				GScript::StopHelpScripts();
 			}
-			if (GGame::g_game->help_system->DialogueControlTask == 0)
+			if (GGame::g_game->help_system->DialogueControlTask == SCRIPT_TASK_NONE)
 			{
 				GGame::g_game->temple->StartScript(ScriptId);
 			}
