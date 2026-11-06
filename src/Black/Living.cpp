@@ -132,7 +132,7 @@ int Living::MoveToPos()
 		return 0;
 	}
 	int result = MoveTo();
-	if (result == MOVE_TO_STATES_0xa)
+	if (result == MOVE_TO_STATES_REACHED_DESTINATION)
 	{
 		SetTopStateToFinal();
 	}

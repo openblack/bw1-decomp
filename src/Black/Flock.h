@@ -42,12 +42,12 @@ public:
 	Town*                            town;
 	LHPTR<CitadelHeart>              citadel_heart;
 	SLL<Living, &Living::FlockOrder> Members;
-	uint32_t                         field_0x4c;
+	uint32_t                         TurnsSinceLeaderReturned;
 	uint16_t                         DomainRadius;
 	uint16_t                         FlockDistance;
 	float                            FlyingHeight;
 	bool32_t                         FollowShepherd;
-	uint32_t                         field_0x5c;
+	bool32_t                         FeedingDisabled;
 	MapCoords                        SavedDomainCentre;
 	MapCoords                        field_0x6c;
 	uint32_t                         field_0x78;
@@ -132,6 +132,8 @@ public:
 	void DeleteDependancys();
 	// BW1W120 00530570 BW1M119 0106ac10
 	MapCoords* GetFlockPos();
+	// BW1W120 005302a0 BW1M119 010e93d0
+	static Flock* MergeSmallerFlockIntoLarger(Flock* first, Flock* second);
 
 	// BW1W120 inlined BW1M119 01029620
 	SLL<Living, &Living::FlockOrder>* GetFlockMembers() { return &Members; }

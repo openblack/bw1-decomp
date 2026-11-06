@@ -879,7 +879,7 @@ bool Villager::IsInterestedInFoodObject(Object* food)
 	return false;
 }
 
-bool Villager::IsInterestedInWoodObject(Object* wood)
+bool32_t Villager::IsInterestedInWoodObject(Object* wood)
 {
 	Town* town = GetTown();
 	if (wood->IsAvailable() && !wood->IsInMagicHand() && GetWoodCapacity() != 0 && town != NULL &&

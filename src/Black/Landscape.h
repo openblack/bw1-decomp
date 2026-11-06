@@ -47,6 +47,8 @@ struct GLandscape
 
 	// BW1W120 005e5c90 BW1M119 null
 	static LHPoint* GetIslandCentre(LHPoint& centre);
+	// BW1W120 005e5bd0 BW1M119 013813c0
+	static void ConvertJustMapXZToLandscapePoint(const JustMapXZ& xz, LHPoint& point);
 	// BW1W120 006137f0 BW1M119 0101c4a0
 	static void ConvertLandscapePointToMapCoord(const LHPoint& point, MapCoords& coords)
 	{

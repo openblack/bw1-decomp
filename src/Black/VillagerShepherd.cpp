@@ -319,7 +319,7 @@ bool32_t Villager::ShepherdSlaughterAnimal()
 		if (animal != NULL)
 		{
 			my_flock->RemoveLivingFromFlock(animal, 1);
-			PickupFood((short)animal->GetFoodValue((FOOD_TYPE)3));
+			PickupFood((short)animal->GetFoodValue(FOOD_TYPE_RESOURCE));
 			animal->TurnsUntilNextStateChange = 0;
 			animal->SetupMoveToPos(Pos, ANIMAL_STATE_DEAD);
 			((uint16_t*)&TargetThing)[1] = VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_DROP_OFF;

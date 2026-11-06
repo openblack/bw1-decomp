@@ -898,7 +898,7 @@ bool32_t Villager::CheckChildGrownUp()
 		}
 		return ChildBecomesAdult();
 	}
-	if (GGame::g_game->data.GameTurn % ((uint32_t)GGameInfo::Info.TimeScale / 4) == 0)
+	if (GGame::g_game->data.GameTurn % (GGameInfo::Info.TimeScale / 4) == 0)
 	{
 		SetScaleForAge(GetAge());
 	}

@@ -537,7 +537,7 @@ public:
 	// BW1W120 00764df0 BW1M119 01598700
 	virtual bool IsInterestedInFoodObject(Object* food);
 	// BW1W120 00764f60 BW1M119 01598410
-	virtual bool IsInterestedInWoodObject(Object* wood);
+	virtual bool32_t IsInterestedInWoodObject(Object* wood);
 	// BW1W120 00763390 BW1M119 01023dd0
 	virtual bool32_t IsAvailableForReaction(REACTION reaction);
 	// BW1W120 00763410 BW1M119 01011930

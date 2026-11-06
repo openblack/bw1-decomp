@@ -7,12 +7,13 @@
 #include <map>
 #include <set>
 
-#include "Collide.h"          /* For struct CircleHugInfo */
-#include "GameThingWithPos.h" /* For struct GameThingWithPos */
-#include "LHPTR.h"            /* For class LHPTR */
-#include "MapCoords.h"        /* For struct MapCoords */
-#include "Mobile.h"           /* For struct Mobile */
-#include "Object.h"           /* For struct Object */
+#include "Collide.h"           /* For struct CircleHugInfo */
+#include "GameThingWithPos.h"  /* For struct GameThingWithPos */
+#include "LHPTR.h"             /* For class LHPTR */
+#include "MapCoords.h"         /* For struct MapCoords */
+#include "Mobile.h"            /* For struct Mobile */
+#include "MobileWallHugInfo.h" /* For class GMobileWallHugInfo */
+#include "Object.h"            /* For struct Object */
 
 #include <Lionhead/LH3DLib/development/LH3DMath.h> /* For LHSinTable */
 
@@ -21,7 +22,7 @@ enum MOVE_TO_STATES
 	MOVE_TO_STATES_ARRIVED = 0x1,
 	MOVE_TO_STATES_FINAL_STEP = 0x4,
 	MOVE_TO_STATES_WANDER = 0x5,
-	MOVE_TO_STATES_0xa = 0xa,
+	MOVE_TO_STATES_REACHED_DESTINATION = 0xa,
 	MOVE_TO_STATES_STEP_THROUGH = 0xb,
 	MOVE_TO_STATES_LINEAR = 0xc,
 	MOVE_TO_STATES_LINEAR_CW = 0xd,
@@ -111,8 +112,6 @@ public:
 	virtual float GetDefaultSpeedInMetresPerSecond();
 	// BW1W120 0060c040 BW1M119 013cb370
 	virtual void GetMovementDirection(LHPoint* direction);
-	// BW1W120 00416f80 BW1M119 0102efb0
-	virtual bool32_t IsMobileWallHug() const { return true; }
 	// BW1W120 0060c020 BW1M119 013cb440
 	virtual float GetFacingDirection();
 	// BW1W120 0060dac0 BW1M119 013c98d0
@@ -124,13 +123,15 @@ public:
 	virtual bool32_t AreWeThere(float extra_distance);
 #endif
 	// BW1W120 00416f70 BW1M119 0104ac10
-	virtual MapCoords* GetDestPos();
+	virtual MapCoords* GetDestPos() { return &goal; }
+	// BW1W120 00416f80 BW1M119 0102efb0
+	virtual bool32_t IsMobileWallHug() const { return true; }
 	// BW1W120 0060fc50 BW1M119 01086610
 	virtual void SetSpeed(int new_speed);
 	// BW1W120 00473e40 BW1M119 0107c070
 	virtual void SetTowardsAngle(uint16_t angle);
 	// BW1W120 0060aee0 BW1M119 013cbad0
-	virtual void MoveTo3D();
+	virtual int MoveTo3D();
 	// BW1W120 0060bc40 BW1M119 013cb7e0
 	virtual void SetNewWander(const MapCoords* centre, long min_dist, long max_dist);
 
@@ -151,9 +152,11 @@ public:
 	// BW1W120 inlined BW1M119 010713d0
 	const GMobileWallHugInfo* GetInfo() const { return (const GMobileWallHugInfo*)info; }
 	// BW1W120 inlined BW1M119 010222a0
-	int GetDefaultSpeed();
+	int GetDefaultSpeed() { return GetInfo()->speed; }
 	// BW1W120 inlined BW1M119 inlined
-	int GetRunningSpeed();
+	int GetRunningSpeed() { return GetInfo()->RunningSpeed; }
+	// BW1W120 inlined BW1M119 01171fd0
+	Object* GetDestObject() { return target.Get(); }
 	// BW1W120 inlined BW1M119 013cd370
 	uint8_t GetMoveState() { return MoveState; }
 	// BW1W120 inlined BW1M119 010a0b30
@@ -169,6 +172,12 @@ public:
 	void InitStepsXZSetAngle(long angle)
 	{
 		SetGameAngle(angle);
+		RebuildMoveByStep();
+	}
+	// BW1W120 inlined BW1M119 0109dfb0
+	void InitStepsXZ(long angle)
+	{
+		SetTowardsAngle(angle);
 		RebuildMoveByStep();
 	}
 	// BW1W120 0060aad0 BW1M119 010303f0

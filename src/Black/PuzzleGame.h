@@ -354,9 +354,9 @@ public:
 	// BW1W120 0041bc00 BW1M119 0116d2c0
 	virtual bool32_t DecideWhatToDo();
 	// BW1W120 0041bb80 BW1M119 0113bfc0
-	virtual uint32_t ProcessNeeds();
+	virtual uint32_t ProcessNeeds() { return ANIMAL_NEEDS_NONE; }
 	// BW1W120 0041bb90 BW1M119 0113c000
-	virtual uint32_t CheckNeeds();
+	virtual uint32_t CheckNeeds() { return ANIMAL_NEEDS_NONE; }
 	// BW1W120 0041cf20 BW1M119 011762c0
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041cf50 BW1M119 01176240
@@ -381,12 +381,12 @@ public:
 	virtual uint32_t LandedAnimation();
 	// BW1W120 0041d040 BW1M119 01175fa0
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 0041bbb0 BW1M119 0116d0d0
-	virtual char* GetDebugText();
 	// BW1W120 0041bba0 BW1M119 0116d090
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PIECE_VILLAGER; }
+	// BW1W120 0041bbb0 BW1M119 0116d0d0
+	virtual char* GetDebugText() { return "Animal: Villager for Puzzle"; }
 	// BW1W120 0041bbc0 BW1M119 0113c040
-	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return false; }
 	// BW1W120 0041cfd0 BW1M119 01176020
 	virtual uint32_t StandAnimation();
 
@@ -422,6 +422,11 @@ public:
 
 	// BW1W120 inlined BW1M119 0130fb10
 	PieceWolf() {}
+
+	// Static methods
+
+	// BW1W120 00421cf0 BW1M119 011814d0
+	static PieceWolf* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 class PieceCow : public Cow

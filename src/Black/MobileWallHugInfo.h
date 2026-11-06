@@ -14,7 +14,7 @@ public:
 	int32_t FleeingSpeed;
 	int32_t FastSpeedThreshold;
 	int32_t WalkingSpeed;
-	float   field_0x114;
+	int32_t ApproachSpeed;
 	int32_t RunningSpeed;
 	int32_t CollideMask;
 

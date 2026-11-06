@@ -10,6 +10,13 @@
 #include "MobileWallHugInfo.h" /* For struct GMobileWallHugInfo */
 #include "InfoLoaders.h"       /* For INFO_DATA_BLOCK */
 
+#define AGE_TO_SCALE_ENTRIES 20
+
+struct AgeToScale
+{
+	float values[AGE_TO_SCALE_ENTRIES];
+};
+
 class GLivingInfo : public GMobileWallHugInfo
 {
 public:

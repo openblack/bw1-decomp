@@ -36,6 +36,11 @@ public:
 
 	// BW1W120 0055e8f0 BW1M119 inlined
 	Pigeon() {}
+
+	// Static methods
+
+	// BW1W120 0041ed10 BW1M119 0117ce70
+	static Pigeon* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_PIGEON_INCLUDED_H */

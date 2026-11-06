@@ -53,7 +53,7 @@ public:
 	// BW1W120 0041e6c0 BW1M119 0117d840
 	virtual bool32_t LookForFoodPos(MapCoords* pos);
 	// BW1W120 0041e720 BW1M119 0117d750
-	virtual uint32_t LookForSleepPos();
+	virtual uint32_t LookForSleepPos(MapCoords* pos);
 	// BW1W120 0041dd60 BW1M119 0117a560
 	virtual bool32_t IAmABird();
 	// BW1W120 0041f260 BW1M119 010527f0
@@ -99,6 +99,11 @@ public:
 
 	// BW1W120 0055e790 BW1M119 0130df90
 	Dove() {}
+
+	// Static methods
+
+	// BW1W120 0041ddd0 BW1M119 0117e060
+	static Dove* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 class SpellDove : public Dove
@@ -148,6 +153,11 @@ public:
 
 	// BW1W120 0041f280 BW1M119 0117c330
 	void SetToZero();
+
+	// Static methods
+
+	// BW1W120 0041eac0 BW1M119 0117d1d0
+	static SpellDove* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_DOVE_INCLUDED_H */

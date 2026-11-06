@@ -19,7 +19,7 @@ public:
 	// Override methods
 
 	// BW1W120 00421470 BW1M119 01181190
-	virtual uint32_t CalculeLairPos();
+	virtual void CalculeLairPos();
 	// BW1W120 0041c360 BW1M119 01178650
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041c3b0 BW1M119 011785d0

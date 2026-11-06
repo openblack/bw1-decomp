@@ -52,7 +52,7 @@ bool32_t Animal::FleeingFromPredatorReaction()
 	GetFleeingPositionFromMovingObject(&fleePos, ReactionObject.Get(), ANIMAL_FLEE_FROM_PREDATOR_DISTANCE);
 	if (fleePos.InBounds())
 	{
-		SetSpeed(GetInfo()->FleeingSpeed);
+		SetSpeed(MobileWallHug::GetInfo()->FleeingSpeed);
 		SetupMoveToPos(fleePos, ANIMAL_STATE_FLEEING_FROM_OBJECT_REACTION);
 	}
 	return true;

@@ -40,6 +40,11 @@ public:
 
 	// BW1W120 0055ea30 BW1M119 inlined
 	Bat() {}
+
+	// Static methods
+
+	// BW1W120 0041ee90 BW1M119 0117cc30
+	static Bat* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 class SpellBat : public SpellDove
@@ -68,6 +73,11 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	SpellBat() { SetToZero(); }
+
+	// Static methods
+
+	// BW1W120 0041ef60 BW1M119 0117c9d0
+	static SpellBat* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_BAT_INCLUDED_H */

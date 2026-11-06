@@ -2961,8 +2961,8 @@ enum     LOADER_VERSIONS
 
 enum FOOD_TYPE
 {
-    FOOD_TYPE_0 = 0x0,
-    _FOOD_TYPE_COUNT = 0x1
+    FOOD_TYPE_RESOURCE = 0x3,
+    FOOD_TYPE_GRASS = 0x4
 };
 
 #endif
