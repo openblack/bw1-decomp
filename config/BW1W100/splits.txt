@@ -2037,14 +2037,14 @@ Black/ScriptHighlight.cpp:
 Black/ScriptInterface.cpp:
 	.text       start:0x006A4610 end:0x006A5220
 	.CRT$XCU    start:0x008F6FF8 end:0x008F6FFC align:4
-	.data       start:0x00B4378C end:0x00B437EC
+	.data       start:0x00B4378C end:0x00B437EA
 	.bss        start:0x00CB7578 end:0x00CB757C
 
 Black/ScriptMagic.cpp:
 	.text       start:0x006A5220 end:0x006A6500
 	.rdata      start:0x00879C74 end:0x00879C84
 	.CRT$XCU    start:0x008F6FFC end:0x008F7004 align:4
-	.data       start:0x00B437EC end:0x00B43880
+	.data       start:0x00B437EC end:0x00B4387E
 	.bss        start:0x00CB7580 end:0x00CB7588
 
 Black/ScriptManage.cpp:

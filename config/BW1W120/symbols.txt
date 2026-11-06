@@ -37417,7 +37417,6 @@ lbl_009B8FC4 = .rdata:0x009B8FC4; // type:object size:0x4
 ??_R2ScriptManage@@8 = .rdata:0x009B8FE0; // type:object size:0x9 scope:global comdat
 ??_R3ScriptManage@@8 = .rdata:0x009B8FF0; // type:object size:0x10 scope:global comdat
 ??_R4ScriptManage@@6B@ = .rdata:0x009B9000; // type:object size:0x14 scope:global comdat
-lbl_009B9014 = .rdata:0x009B9014; // type:object size:0x4
 ??_R1A@?0A@A@SecretCreature@@8 = .rdata:0x009B9018; // type:object size:0x18 scope:global
 ??_R2SecretCreature@@8 = .rdata:0x009B9030; // type:object size:0x8 scope:global
 ??_R3SecretCreature@@8 = .rdata:0x009B9038; // type:object size:0x10 scope:global
