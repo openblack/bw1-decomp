@@ -393,8 +393,8 @@ LHAudio/lib/libcmt64/stream.obj:
 	.text       start:0x10024D76 end:0x10024E40 align:1
 
 LHAudio/lib/libcmt64/87tran.obj:
-	.text       start:0x10024E40 end:0x10025050 align:1
-	.data       start:0x10041410 end:0x10041470
+	.text       start:0x10024E40 end:0x10025047 align:1
+	.data       start:0x10041410 end:0x1004146A
 
 LHAudio/lib/libcmt64/87disp.obj:
 	.text       start:0x10025050 end:0x10025220 align:1

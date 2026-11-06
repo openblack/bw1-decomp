@@ -176,6 +176,445 @@ block_relocations:
   - source: 0x0088B238
 
 add_relocations:
+# pow.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007E05A6
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007E05C3
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007E066A
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007E06CA
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007E0725
+    type: x86_abs32
+    target: '__half'
+# acos.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007E0171
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007E01D5
+    type: x86_rel32
+    target: '__fast_exit'
+# asin.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007DFE4F
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007DFEB5
+    type: x86_rel32
+    target: '__fast_exit'
+# adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x00CA378E
+    type: x86_abs32
+    target: 'label0'
+  - source: 0x00CA3792
+    type: x86_abs32
+    target: 'label1'
+  - source: 0x00CA3796
+    type: x86_abs32
+    target: 'label2'
+  - source: 0x00CA379A
+    type: x86_abs32
+    target: 'label3'
+  - source: 0x00CA379E
+    type: x86_abs32
+    target: 'label4'
+  - source: 0x00CA37A2
+    type: x86_abs32
+    target: 'label5'
+  - source: 0x00CA37A6
+    type: x86_abs32
+    target: 'label6'
+  - source: 0x00CA37AA
+    type: x86_abs32
+    target: 'label7'
+  - source: 0x00CA37AE
+    type: x86_abs32
+    target: 'label8'
+  - source: 0x00CA37B2
+    type: x86_abs32
+    target: 'label9'
+  - source: 0x00CA37B6
+    type: x86_abs32
+    target: 'label10'
+  - source: 0x00CA37BA
+    type: x86_abs32
+    target: 'label11'
+  - source: 0x00CA37BE
+    type: x86_abs32
+    target: 'label12'
+  - source: 0x00CA37C2
+    type: x86_abs32
+    target: 'label13'
+  - source: 0x00CA37C6
+    type: x86_abs32
+    target: 'label14'
+  - source: 0x00CA37CA
+    type: x86_abs32
+    target: 'label15'
+  - source: 0x00CA37CE
+    type: x86_abs32
+    target: 'label16'
+  - source: 0x00CA37D2
+    type: x86_abs32
+    target: 'label17'
+  - source: 0x00CA37D6
+    type: x86_abs32
+    target: 'label18'
+  - source: 0x00CA37DA
+    type: x86_abs32
+    target: 'label19'
+  - source: 0x00CA37DE
+    type: x86_abs32
+    target: 'label20'
+  - source: 0x00CA37E2
+    type: x86_abs32
+    target: 'label21'
+  - source: 0x00CA37E6
+    type: x86_abs32
+    target: 'label22'
+  - source: 0x00CA37EA
+    type: x86_abs32
+    target: 'label23'
+  - source: 0x00CA37EE
+    type: x86_abs32
+    target: 'label24'
+  - source: 0x00CA37F2
+    type: x86_abs32
+    target: 'label25'
+  - source: 0x00CA37F6
+    type: x86_abs32
+    target: 'label26'
+  - source: 0x00CA37FA
+    type: x86_abs32
+    target: 'label27'
+  - source: 0x00CA37FE
+    type: x86_abs32
+    target: 'label28'
+  - source: 0x00CA3802
+    type: x86_abs32
+    target: 'label29'
+  - source: 0x00CA3806
+    type: x86_abs32
+    target: 'label30'
+  - source: 0x00CA380A
+    type: x86_abs32
+    target: 'label31'
+  - source: 0x00CA380E
+    type: x86_abs32
+    target: 'label32'
+  - source: 0x00CA3812
+    type: x86_abs32
+    target: 'label33'
+  - source: 0x00CA3816
+    type: x86_abs32
+    target: 'label34'
+  - source: 0x00CA381A
+    type: x86_abs32
+    target: 'label35'
+  - source: 0x00CA381E
+    type: x86_abs32
+    target: 'label36'
+  - source: 0x00CA3822
+    type: x86_abs32
+    target: 'label37'
+  - source: 0x00CA3826
+    type: x86_abs32
+    target: 'label38'
+  - source: 0x00CA382A
+    type: x86_abs32
+    target: 'label39'
+  - source: 0x00CA382E
+    type: x86_abs32
+    target: 'label40'
+  - source: 0x00CA3832
+    type: x86_abs32
+    target: 'label41'
+  - source: 0x00CA3836
+    type: x86_abs32
+    target: 'label42'
+  - source: 0x00CA383A
+    type: x86_abs32
+    target: 'label43'
+  - source: 0x00CA383E
+    type: x86_abs32
+    target: 'label44'
+  - source: 0x00CA3842
+    type: x86_abs32
+    target: 'label45'
+  - source: 0x00CA3846
+    type: x86_abs32
+    target: 'label46'
+  - source: 0x00CA384A
+    type: x86_abs32
+    target: 'label47'
+  - source: 0x00CA384E
+    type: x86_abs32
+    target: 'label48'
+  - source: 0x00CA3852
+    type: x86_abs32
+    target: 'label49'
+  - source: 0x00CA3856
+    type: x86_abs32
+    target: 'label50'
+  - source: 0x00CA385A
+    type: x86_abs32
+    target: 'label51'
+  - source: 0x00CA385E
+    type: x86_abs32
+    target: 'label52'
+  - source: 0x00CA3862
+    type: x86_abs32
+    target: 'label53'
+  - source: 0x00CA3866
+    type: x86_abs32
+    target: 'label54'
+  - source: 0x00CA386A
+    type: x86_abs32
+    target: 'label55'
+  - source: 0x00CA386E
+    type: x86_abs32
+    target: 'label56'
+  - source: 0x00CA3872
+    type: x86_abs32
+    target: 'label57'
+  - source: 0x00CA3876
+    type: x86_abs32
+    target: 'label58'
+  - source: 0x00CA387A
+    type: x86_abs32
+    target: 'label59'
+  - source: 0x00CA387E
+    type: x86_abs32
+    target: 'label60'
+  - source: 0x00CA3882
+    type: x86_abs32
+    target: 'label61'
+  - source: 0x00CA3886
+    type: x86_abs32
+    target: 'label62'
+  - source: 0x00CA388A
+    type: x86_abs32
+    target: 'label63'
+# woutput.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007E640A
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E644A
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E64CF
+    type: x86_rel32
+    target: '_write_char_7ce271'
+  - source: 0x007E653B
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E6555
+    type: x86_abs32
+    target: '___nullstring'
+  - source: 0x007E6574
+    type: x86_abs32
+    target: '__pctype'
+  - source: 0x007E65D2
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E65E2
+    type: x86_abs32
+    target: '___mb_cur_max'
+  - source: 0x007E663C
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E667B
+    type: x86_abs32
+    target: '___nullstring'
+  - source: 0x007E66C6
+    type: x86_abs32
+    target: '__cfltcvt_tab'
+  - source: 0x007E66E7
+    type: x86_abs32
+    target: '__cfltcvt_tab'
+    addend: 0xc
+  - source: 0x007E66FF
+    type: x86_abs32
+    target: '__cfltcvt_tab'
+    addend: 0x4
+  - source: 0x007E6767
+    type: x86_abs32
+    target: '___wnullstring'
+  - source: 0x007E67D9
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E6814
+    type: x86_rel32
+    target: '_get_int64_arg_w'
+  - source: 0x007E682C
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E6838
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E684D
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E6855
+    type: x86_rel32
+    target: '_get_int_arg_w'
+  - source: 0x007E6981
+    type: x86_rel32
+    target: '_write_multi_char_w'
+  - source: 0x007E6997
+    type: x86_rel32
+    target: '_write_string_w'
+  - source: 0x007E69B3
+    type: x86_rel32
+    target: '_write_multi_char_w'
+  - source: 0x007E69D1
+    type: x86_abs32
+    target: '___mb_cur_max'
+  - source: 0x007E69F4
+    type: x86_rel32
+    target: '_write_char_7ce271'
+  - source: 0x007E6A15
+    type: x86_rel32
+    target: '_write_string_w'
+  - source: 0x007E6A2D
+    type: x86_rel32
+    target: '_write_multi_char_w'
+  - source: 0x007E6A51
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x19b
+  - source: 0x007E6A55
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x75
+  - source: 0x007E6A59
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x90
+  - source: 0x007E6A5D
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0xdb
+  - source: 0x007E6A61
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x113
+  - source: 0x007E6A65
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x11b
+  - source: 0x007E6A69
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x154
+  - source: 0x007E6A6D
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x1b7
+# memmove.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007DE334
+    type: x86_abs32
+    target: 'LeadUp1'
+  - source: 0x007DE338
+    type: x86_abs32
+    target: 'LeadUp2'
+  - source: 0x007DE33C
+    type: x86_abs32
+    target: 'LeadUp3'
+  - source: 0x007DE3AC
+    type: x86_abs32
+    target: 'UnwindUp0'
+  - source: 0x007DE3B0
+    type: x86_abs32
+    target: 'UnwindUp1'
+  - source: 0x007DE3B4
+    type: x86_abs32
+    target: 'UnwindUp2'
+  - source: 0x007DE3B8
+    type: x86_abs32
+    target: 'UnwindUp3'
+  - source: 0x007DE3BC
+    type: x86_abs32
+    target: 'UnwindUp4'
+  - source: 0x007DE3C0
+    type: x86_abs32
+    target: 'UnwindUp5'
+  - source: 0x007DE3C4
+    type: x86_abs32
+    target: 'UnwindUp6'
+  - source: 0x007DE3C8
+    type: x86_abs32
+    target: 'UnwindUp7'
+  - source: 0x007DE418
+    type: x86_abs32
+    target: 'TrailUp0'
+  - source: 0x007DE41C
+    type: x86_abs32
+    target: 'TrailUp1'
+  - source: 0x007DE420
+    type: x86_abs32
+    target: 'TrailUp2'
+  - source: 0x007DE424
+    type: x86_abs32
+    target: 'TrailUp3'
+  - source: 0x007DE4BC
+    type: x86_abs32
+    target: 'LeadDown1'
+  - source: 0x007DE4C0
+    type: x86_abs32
+    target: 'LeadDown2'
+  - source: 0x007DE4C4
+    type: x86_abs32
+    target: 'LeadDown3'
+  - source: 0x007DE544
+    type: x86_abs32
+    target: 'UnwindDown7'
+  - source: 0x007DE548
+    type: x86_abs32
+    target: 'UnwindDown6'
+  - source: 0x007DE54C
+    type: x86_abs32
+    target: 'UnwindDown5'
+  - source: 0x007DE550
+    type: x86_abs32
+    target: 'UnwindDown4'
+  - source: 0x007DE554
+    type: x86_abs32
+    target: 'UnwindDown3'
+  - source: 0x007DE558
+    type: x86_abs32
+    target: 'UnwindDown2'
+  - source: 0x007DE55C
+    type: x86_abs32
+    target: 'UnwindDown1'
+  - source: 0x007DE560
+    type: x86_abs32
+    target: 'UnwindDown0'
+  - source: 0x007DE5B0
+    type: x86_abs32
+    target: 'TrailDown0'
+  - source: 0x007DE5B4
+    type: x86_abs32
+    target: 'TrailDown1'
+  - source: 0x007DE5B8
+    type: x86_abs32
+    target: 'TrailDown2'
+  - source: 0x007DE5BC
+    type: x86_abs32
+    target: 'TrailDown3'
+# mbctype.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007F1BC9
+    type: x86_abs32
+    target: '___rgcode_page_info'
+    addend: 0x10
+  - source: 0x007F1C26
+    type: x86_abs32
+    target: '___rgcode_page_info'
+    addend: 0x4
 # HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
   - source: 0x005DDFC2
     type: x86_abs32
