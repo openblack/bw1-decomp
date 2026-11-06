@@ -4115,7 +4115,7 @@ float Town::GetBeliefAttackImportanceMultiplier(GPlayer* player)
 	return 1.0f;
 }
 
-bool32_t Town::GetHighestTownEffectMagicAndPhysical(float& highest, float& magic, float& physical)
+bool Town::GetHighestTownEffectMagicAndPhysical(float& highest, float& magic, float& physical)
 {
 	magic = 0.0f;
 	float best = 0.0f;

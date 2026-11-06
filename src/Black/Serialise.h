@@ -45,7 +45,7 @@ public:
 	unsigned long                      BufferPos;                   /* 0x50c */
 	LH_FILE_MODE                       Mode;                        /* 0x510 */
 	uint8_t                            Format;                      /* 0x514 */
-	bool32_t                           IsOpen;                      /* 0x518 */
+	bool32_t                           Open;                        /* 0x518 */
 	unsigned long                      Size;                        /* 0x51c */
 	char                               Name[0x100];                 /* 0x520 */
 	LHLinkedList<ArchiveMemoryBlocks*> MemoryBlocks;                /* 0x620 */
@@ -61,7 +61,7 @@ public:
 	{
 		if (File.Open(name, mode) == LH_FILE_RESULT_OK)
 		{
-			IsOpen = true;
+			Open = true;
 			BufferPos = 0;
 			Mode = mode;
 			Format = ARCHIVE_FORMAT;
@@ -73,7 +73,7 @@ public:
 		}
 		else
 		{
-			IsOpen = false;
+			Open = false;
 		}
 		Size = 0;
 		UsingFile = true;
@@ -81,7 +81,7 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	Archive(char** memory, unsigned long length)
 	{
-		IsOpen = true;
+		Open = true;
 		BufferPos = 0;
 		Format = ARCHIVE_FORMAT;
 		Size = 0;
@@ -101,7 +101,7 @@ public:
 	// BW1W120 inlined BW1M119 011012b0
 	~Archive()
 	{
-		if (IsOpen)
+		if (Open)
 		{
 			if (UsingFile)
 			{
@@ -116,6 +116,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 inlined
+	bool32_t IsOpen() { return Open; }
 	// BW1W120 00711e10 BW1M119 0150f240
 	void Flush();
 	// BW1W120 00711f00 BW1M119 inlined
@@ -144,8 +146,7 @@ public:
 			{
 				total += node->payload->Size;
 			}
-			char* dest = (char*)operator new(total, SERIALISE_FILEPATH, 186);
-			*Memory = dest;
+			char* dest = *Memory = new (SERIALISE_FILEPATH, 186) char[total];
 			for (node = MemoryBlocks.GetStart(); node != NULL; node = node->next.Get())
 			{
 				memcpy(dest, node->payload->Data, node->payload->Size);

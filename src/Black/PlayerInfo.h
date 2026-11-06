@@ -24,15 +24,6 @@ enum PLAYER_TYPE
 
 class Base;
 
-class CPDesireNodeInfo
-{
-public:
-	// Override methods
-
-	// BW1W120 00655b70 BW1M119 014b2f20
-	virtual int GetNumChildren();
-};
-
 class GPlayerInfo : public GBaseInfo
 {
 public:

@@ -711,7 +711,7 @@ public:
 	// BW1W120 00741920 BW1M119 015505f0
 	float GetBeliefAttackImportanceMultiplier(GPlayer* player);
 	// BW1W120 00741980 BW1M119 01550450
-	bool32_t GetHighestTownEffectMagicAndPhysical(float& highest, float& magic, float& physical);
+	bool GetHighestTownEffectMagicAndPhysical(float& highest, float& magic, float& physical);
 	// BW1W120 00741a70 BW1M119 01550310
 	void RemoveForest(Forest* forest);
 	// BW1W120 00741af0 BW1M119 015501a0

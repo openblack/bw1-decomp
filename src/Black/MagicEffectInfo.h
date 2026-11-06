@@ -45,7 +45,7 @@ public:
 	float            field_0xbc;
 	float            field_0xc0;
 	float            field_0xc4;
-	float            field_0xc8;
+	float            Impressiveness;
 	uint32_t         field_0xcc;
 	uint32_t         field_0xd0;
 	uint32_t         field_0xd4;

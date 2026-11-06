@@ -869,6 +869,8 @@ public:
 	// BW1W120 004c59a0 BW1M119 012375d0
 	bool32_t CanBeMovedToNextDevelopmentPhase(DEVELOPMENT_PHASE phase);
 #endif // VERSION_BW1W100
+	// BW1W120 0065bce0 BW1M119 014b5ac0
+	void SetupComputerControlledCreature();
 	// BW1W120 004c59c0 BW1M119 01237430
 	void MoveToDevelopmentPhase(DEVELOPMENT_PHASE phase, int unused);
 	// BW1W120 004ca580 BW1M119 0123db20

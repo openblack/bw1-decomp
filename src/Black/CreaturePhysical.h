@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
+#include <re_common.h> /* For CLAMP */
+
 #include "Base.h" /* For struct Base */
 
 // Forward Declares
@@ -51,7 +53,7 @@ public:
 	float             RunningSpeedInMetres;
 	uint32_t          field_0x44;
 	float             field_0x48;
-	uint32_t          field_0x4c;
+	float             Illness;
 	int               EnvMapped;
 	Creature*         creature;
 	LH3DCreature*     Creature3d;
@@ -95,6 +97,12 @@ public:
 	Object* GetObjectCarried() { return ObjectCarried; }
 	// BW1W120 inlined BW1M119 01509240
 	float GetEnergy() { return Energy; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetEnergy(float energy)
+	{
+		Energy = energy;
+		CLAMP(Energy, 0.0f, 1.0f);
+	}
 	// BW1W120 inlined BW1M119 0128f450
 	float GetExhaustion() { return Exhaustion; }
 	// BW1W120 inlined BW1M119 012a0300
