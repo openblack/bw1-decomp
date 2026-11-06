@@ -136,7 +136,7 @@ LHAudio/lib/libcmt64/new.obj:
 	.text       start:0x1001361B end:0x10013629 align:1
 
 LHAudio/lib/libcmt64/trnsctrl.obj:
-	.text       start:0x10013629 end:0x10013910 align:1
+	.text       start:0x10013629 end:0x1001390F align:1
 
 LHAudio/lib/libcmt64/exsup.obj:
 	.text       start:0x10013910 end:0x100139FE align:1

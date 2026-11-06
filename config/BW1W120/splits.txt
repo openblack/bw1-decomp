@@ -3928,7 +3928,7 @@ lib/libcmt/gmtime.obj:
 	.bss        start:0x00E84398 end:0x00E843BC
 
 lib/libcmt/dtoxtime.obj:
-	.text       start:0x007D2B20 end:0x007D2BF0 align:1
+	.text       start:0x007D2B20 end:0x007D2BE2 align:1
 
 lib/libcmt/87tran.obj:
 	.text       start:0x007D2BF0 end:0x007D2DF7 align:1
@@ -4159,7 +4159,7 @@ lib/libcmt/ismbbyte.obj:
 	.text       start:0x007DA4C8 end:0x007DA5D6 align:1
 
 lib/libcmt/inithelp.obj:
-	.text       start:0x007DA5D6 end:0x007DA710 align:1
+	.text       start:0x007DA5D6 end:0x007DA70E align:1
 	.bss        start:0x00E84564 end:0x00E8456C
 
 lib/libcmt/strnicmp.obj:
