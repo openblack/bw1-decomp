@@ -178,8 +178,9 @@ public:
 	// BW1W120 004c45c0 BW1M119 012355d0
 	float CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES desire, GameThingWithPos* activity_object);
 	// BW1W120 004c4640 BW1M119 null
-	float FUN004c4640(CREATURE_DESIRES desire, GameThingWithPos* activity_object, CREATURE_ACTION action,
-	                  GameThingWithPos* object_to_act_on, GameThingWithPos* object_to_use);
+	float CalculateDesirabilityOfProposedAction(CREATURE_DESIRES desire, GameThingWithPos* activity_object,
+	                                            CREATURE_ACTION action, GameThingWithPos* object_to_act_on,
+	                                            GameThingWithPos* object_to_use);
 	// BW1W120 004c47d0 BW1M119 null
 	float FUN004c47d0(CREATURE_DESIRES desire, GameThingWithPos* activity_object);
 	// BW1W120 004c4870 BW1M119 null

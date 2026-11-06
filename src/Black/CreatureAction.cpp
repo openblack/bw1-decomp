@@ -1,5 +1,7 @@
 #include "MaxFloat.h"
 #include "MapCellConstants.h"
+#include "CreatureDesireTableEntry.h"
+#include "CreaturePlanConstants.h"
 #include "CreatureAttitudeConstants.h"
 #include "GameTimeConstants.h"
 #include "CreatureAction.h"
@@ -1093,7 +1095,7 @@ int CreatureAgenda::ConstructSubActionsForGiveWoodFromTreeToStoragePit(unsigned 
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
 	                             new (FILEPATH, CREATURE_ACTION_LINE(899))
 	                                 SubArgumentObjectAndFloat(CurrentPlan.ObjectToActOn, 0.1f),
-	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCompassion);
+	                             &Creature::LookAtObjectArgument, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_CONSIDER_ACTION_COMPLETED, NULL, NULL, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_CLEAR_OBJECT_TO_USE, NULL, NULL, NULL);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_IN_PILE,
@@ -8218,6 +8220,34 @@ float CreatureMental::CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES  
 	return desirability < 0.0f ? 0.0f : (desirability > 1.0f ? 1.0f : desirability);
 }
 
+float CreatureMental::CalculateDesirabilityOfProposedAction(CREATURE_DESIRES desire, GameThingWithPos* activity_object,
+                                                            CREATURE_ACTION action, GameThingWithPos* object_to_act_on,
+                                                            GameThingWithPos* object_to_use)
+{
+	CreatureBelief* activityObject = NULL;
+	CreatureBelief* objectToActOn = AddBeliefAboutObject(creature.Get(), object_to_act_on);
+	if (!CreatureDesireTableEntry::Table[desire].NeedsSeparateObjectToActOn)
+	{
+		activityObject = AddBeliefAboutObject(creature.Get(), activity_object);
+	}
+	CreaturePlan plan(desire, action, activityObject, objectToActOn, NULL, 0.0f);
+	float        priority = creature.Get()->GetActionPriority(action, plan);
+	CLAMP(priority, 0.0f, 1.0f);
+	if (object_to_use != NULL)
+	{
+		CreatureBelief* objectToUse = AddBeliefAboutObject(creature.Get(), object_to_use);
+		priority *= GetUsefulnessOfUsingObject(objectToUse, action);
+	}
+	else
+	{
+		priority *= MinimumUsefulness;
+	}
+	CLAMP(priority, 0.0f, 1.0f);
+	priority += creature.Get()->GetActionPriorityModificationFromWhenLastDone(action);
+	CLAMP(priority, 0.0f, 1.0f);
+	return priority;
+}
+
 float CreatureMental::FUN004c47d0(CREATURE_DESIRES desire, GameThingWithPos* activity_object)
 {
 	CreatureBelief* belief = activity_object ? AddBeliefAboutObject(creature.Get(), activity_object) : NULL;
@@ -8236,6 +8266,6 @@ float CreatureMental::FUN004c47d0(CREATURE_DESIRES desire, GameThingWithPos* act
 float CreatureMental::FUN004c4870(CREATURE_DESIRES desire, GameThingWithPos* activity_object, CREATURE_ACTION action,
                                   GameThingWithPos* object_to_act_on, GameThingWithPos* object_to_use)
 {
-	return FUN004c4640(desire, activity_object, action, object_to_act_on, object_to_use) -
+	return CalculateDesirabilityOfProposedAction(desire, activity_object, action, object_to_act_on, object_to_use) -
 	       FUN004c47d0(desire, activity_object);
 }
