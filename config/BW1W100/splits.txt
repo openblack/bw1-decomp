@@ -178,7 +178,7 @@ Black/AudioMusicThing.cpp:
 	.bss        start:0x00B77A28 end:0x00B79C2C
 
 Black/audiotag.cpp:
-	.text       start:0x00424CA0 end:0x004250F0
+	.text       start:0x00424AF0 end:0x004250F0
 	.rdata      start:0x00803C90 end:0x00803C94
 	.data       start:0x008FA32C end:0x008FA370
 	.bss        start:0x00B79C2C end:0x00B79C38

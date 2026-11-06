@@ -2,6 +2,7 @@
 #define BW1_DECOMP_AUDIO_TAG_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <re_common.h>
 
 // Forward Declares
 
@@ -31,11 +32,11 @@ enum AUDIO_TAG_COMMAND
 
 struct AudioTag
 {
-	float Time;
-	int   Target;
-	int   Command;
-	int   Index;
-	int   Value;
+	float             Time;
+	AUDIO_TAG_TARGET  Target;
+	AUDIO_TAG_COMMAND Command;
+	int               Index;
+	int               Value;
 
 	// BW1W120 00c5836c
 	static int ErrorCount;
@@ -48,7 +49,7 @@ struct AudioTag
 	// Non-virtual methods
 
 	// BW1W120 0042acc0 BW1M119 011887a0
-	void ApplyToDude(HelpDude* dude, int param_2, int param_3);
+	void ApplyToDude(HelpDude* dude, bool32_t resolve_target, bool32_t start_animation);
 };
 static_assert(sizeof(AudioTag) == 0x14, "Data type is of wrong size");
 
