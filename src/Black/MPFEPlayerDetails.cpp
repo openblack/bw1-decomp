@@ -270,12 +270,12 @@ void MPFEPlayerDetails::FillDetails(TeamEnums team, unsigned long team_number, u
 	TeamNumber = team_number;
 	PlayerNumber = player_number;
 	MPFEData::Data.Teams[team].Insert(this);
-	IsTeamLeader = team_number == 1;
+	IsTeamLeader = team_number == MPFE_TEAM_LEADER_NUMBER;
 	if (Team == TEAM_NONE)
 	{
 		IsTeamLeader = false;
 	}
-	IsHost = player_number == 1;
+	IsHost = player_number == MPFE_HOST_PLAYER_NUMBER;
 }
 
 void MPFEPlayerDetails::AssignToTeam(TeamEnums team)
@@ -307,7 +307,7 @@ void MPFEPlayerDetails::AssignToTeam(TeamEnums team)
 	}
 	else
 	{
-		TeamNumber = 1;
+		TeamNumber = MPFE_TEAM_LEADER_NUMBER;
 		if (team != TEAM_NONE)
 		{
 			IsTeamLeader = true;

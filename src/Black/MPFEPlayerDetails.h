@@ -14,6 +14,8 @@
 #define MPFE_PLAYER_DETAILS_DEFAULT_COUNTRY    "en"
 #define MPFE_PLAYER_DETAILS_DEFAULT_BW_VERSION 102
 #define MPFE_MAX_PLAYERS_PER_TEAM              4
+#define MPFE_TEAM_LEADER_NUMBER                1
+#define MPFE_HOST_PLAYER_NUMBER                1
 
 class MPFEClanDetails;
 
