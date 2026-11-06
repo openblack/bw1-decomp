@@ -23,6 +23,7 @@
 #include "Player.h"         /* For GPlayer */
 
 #define PACKET_TYPE_HAND_ORIENTATION ((PACKET_TYPE)0x64)
+#define CREATURE_MIND_PATH           ".\\Scripts\\CreatureMind"
 
 PlayerProfile PlayerProfile::Profile;
 
@@ -133,14 +134,14 @@ void PlayerProfile::GetProfileByName(wchar_t* name, PlayerProfile& profile)
 	GetCurrentProfile(current);
 	LHNetUseProfile(name);
 	wcscpy(profile.CurrentProfile, name);
-	size = PLAYER_PROFILE_REGISTRY_VALUE_SIZE;
+	size = 63;
 	wcscpy(profile.CreatureName, L"?");
 	LHNetGetCurrentProfileWString("creature name", profile.CreatureName, &size);
-	size = PLAYER_PROFILE_REGISTRY_VALUE_SIZE;
+	size = 63;
 	wcscpy(profile.LoginName, L"");
 	LHNetGetCurrentProfileWString((char*)LH_NET_PROFILE_LOGIN_NAME, profile.LoginName, &size);
 	memset(profile.LoginPassword, 0, sizeof(profile.LoginPassword));
-	size = PLAYER_PROFILE_REGISTRY_VALUE_SIZE;
+	size = 63;
 	if (LHNetGetCurrentProfileData("login password", (unsigned char*)password, &size) == LH_OK)
 	{
 		DecryptPassword(password, profile.LoginPassword);
@@ -263,7 +264,7 @@ void PlayerProfile::DeleteProfile(wchar_t* name)
 	size = MAX_PATH;
 	LHNetUseProfile(name);
 	LHNetGetCurrentProfileString("file", file, &size);
-	sprintf(path, ".\\Scripts\\CreatureMind\\%s", file);
+	sprintf(path, CREATURE_MIND_PATH "\\%s", file);
 	_chmod(path, _S_IREAD | _S_IWRITE);
 	_unlink(path);
 	LHNetUseProfile(current);

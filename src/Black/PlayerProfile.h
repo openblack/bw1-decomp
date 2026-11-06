@@ -9,7 +9,6 @@
 #include <re_common.h> /* For bool32_t */
 
 #define PLAYER_PROFILE_DEFAULT_IMMERSION_LEVEL 1
-#define PLAYER_PROFILE_REGISTRY_VALUE_SIZE     63
 
 const char* const HandOrientationKey = "HAND_ORIENTATION";
 

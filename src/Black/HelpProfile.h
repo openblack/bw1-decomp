@@ -44,7 +44,8 @@ public:
 	// BW1W120 005c4840 BW1M119 01352e70
 	void LoadFromProfile();
 	// BW1W120 005c48e0 BW1M119 01352da0
-	void                  SaveToProfile();
+	void SaveToProfile();
+
 	CameraHelpAccumulator accumulators[0x31]; /* 0x8 */
 	uint32_t              field_0x3354;
 
