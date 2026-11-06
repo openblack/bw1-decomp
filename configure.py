@@ -1888,7 +1888,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DDynamicShadow.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LandBlock.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DWater.cpp", pch=True),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPolygonIsland.cpp", extra_cflags=["/GX"], pch=True),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPolygonIsland.cpp", extra_cflags=["/GX", "/GR-"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DCT.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DSubMesh.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LHIlib.cpp", pch=True),
