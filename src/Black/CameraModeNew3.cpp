@@ -2283,7 +2283,7 @@ void CameraModeNew3::Update()
 			Global_00c5b0f0 = 0;
 		}
 		Global_00c5e164 = 0;
-		if (GGame::g_game->MyInterface()->field_0x3e0.bubble != NULL)
+		if (GGame::g_game->MyInterface()->Collide.object != NULL)
 		{
 			Global_00c5e164 = 1;
 		}

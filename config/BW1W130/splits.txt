@@ -1445,16 +1445,22 @@ Black/Influence.cpp:
 
 Black/Interface.cpp:
 	.text       start:0x005D15F0 end:0x005D4110
-	.rdata      start:0x00958388 end:0x0095891C
+	.rdata      start:0x00958388 end:0x00958920
 	.CRT$XCU    start:0x00A46C40 end:0x00A46C68 align:4
 	.data       start:0x00C72440 end:0x00C7330C
-	.bss        start:0x00D98CD0 end:0x00D98D60
+	.bss        start:0x00D98CD0 end:0x00D98CF8
 
 Black/InterfaceAction.cpp:
-	.text       start:0x005D4110 end:0x005D9060
-	.rdata      start:0x0095891C end:0x00958950
-	.CRT$XCU    start:0x00A46C68 end:0x00A46CB4 align:4
-	.bss        start:0x00D98D60 end:0x00D99230
+	.text       start:0x005D4110 end:0x005D80B0
+	.rdata      start:0x00958920 end:0x00958938
+	.CRT$XCU    start:0x00A46C68 end:0x00A46C94 align:4
+	.bss        start:0x00D98CF8 end:0x00D9920C
+
+Black/InterfaceActionStates.cpp:
+	.text       start:0x005D80B0 end:0x005D9060
+	.rdata      start:0x00958938 end:0x00958950
+	.CRT$XCU    start:0x00A46C94 end:0x00A46CB4 align:4
+	.bss        start:0x00D9920C end:0x00D99230
 
 Black/InterfaceCollide.cpp:
 	.text       start:0x005D9060 end:0x005DBB70

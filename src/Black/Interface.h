@@ -11,6 +11,7 @@
 
 #include "BaseInfo.h"               /* For struct BaseInfo */
 #include "GameThingWithPos.h"       /* For struct GameThingWithPos */
+#include "InterfaceActionState.h"   /* For enum INTERFACE_ACTION_STATE */
 #include "InterfaceCollide.h"       /* For struct GInterfaceCollide */
 #include "InterfaceFlags.h"         /* For struct GInterfaceFlags */
 #include "InterfaceHandState.h"     /* For struct InterfaceHandState */
@@ -24,6 +25,7 @@
 
 class Base;
 class CHand;
+class Creature;
 class GInterfaceStatus;
 class GPlayer;
 class GameOSFile;
@@ -40,44 +42,44 @@ class GInterface : public GameThingWithPos
 {
 public:
 	// BW1W120 005d05f0 BW1M119 01360150
-	void                 Validate();
-	uint32_t             field_0x28;
-	LiquidParticleGroup* liquid_particle_group;
-	GInterfaceFlags      flags;
-	int                  ActionState;
-	uint32_t             field_0x48;
-	uint32_t             field_0x4c;
-	LHReleasedOSFile     file;               /* 0x50 */
-	uint32_t             IsSpecificPlayback; /* 0x15c */
-	uint32_t             IsAnyPlayback;      /* 0x160 */
-	uint8_t              field_0x164[0x30];
-	uint32_t             field_0x194;
-	Leash*               Leash0x198;
-	Leash*               Leash0x19c;
-	Leash*               Leash0x1a0;
-	uint32_t             field_0x1a4;
-	uint32_t             field_0x1a8;
-	uint32_t             field_0x1ac;
-	uint32_t             field_0x1b0;
-	uint32_t             field_0x1b4;
-	uint32_t             field_0x1b8;
-	LHPlayer*            player;
-	uint8_t              field_0x1c0[0x1a0];
-	uint32_t             field_0x360;
-	uint32_t             field_0x364;
-	uint32_t             field_0x368;
-	uint32_t             field_0x36c;
-	uint32_t             field_0x370;
-	uint32_t             field_0x374;
-	uint32_t             field_0x378;
-	uint32_t             field_0x37c;
-	uint32_t             field_0x380;
-	uint32_t             field_0x384;
-	uint32_t             field_0x388;
-	uint32_t             field_0x38c;
-	uint32_t             field_0x390;
-	uint32_t             field_0x394;
-	uint32_t             field_0x398;
+	void                   Validate();
+	uint32_t               field_0x28;
+	LiquidParticleGroup*   liquid_particle_group;
+	GInterfaceFlags        flags;
+	INTERFACE_ACTION_STATE ActionState;
+	uint32_t               field_0x48;
+	uint32_t               field_0x4c;
+	LHReleasedOSFile       file;               /* 0x50 */
+	uint32_t               IsSpecificPlayback; /* 0x15c */
+	uint32_t               IsAnyPlayback;      /* 0x160 */
+	uint8_t                field_0x164[0x30];
+	uint32_t               field_0x194;
+	Leash*                 Leash0x198;
+	Leash*                 Leash0x19c;
+	Leash*                 Leash0x1a0;
+	uint32_t               field_0x1a4;
+	uint32_t               field_0x1a8;
+	uint32_t               field_0x1ac;
+	uint32_t               field_0x1b0;
+	uint32_t               field_0x1b4;
+	uint32_t               field_0x1b8;
+	LHPlayer*              player;
+	uint8_t                field_0x1c0[0x1a0];
+	uint32_t               field_0x360;
+	uint32_t               field_0x364;
+	uint32_t               field_0x368;
+	uint32_t               field_0x36c;
+	uint32_t               field_0x370;
+	uint32_t               field_0x374;
+	uint32_t               field_0x378;
+	uint32_t               field_0x37c;
+	uint32_t               field_0x380;
+	uint32_t               field_0x384;
+	uint32_t               field_0x388;
+	uint32_t               field_0x38c;
+	uint32_t               field_0x390;
+	uint32_t               field_0x394;
+	uint32_t               field_0x398;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x39c[0x6];
 #endif
@@ -85,24 +87,21 @@ public:
 	LHFastPointer<CHand>    hand; /* 0x3a0 */
 	InterfaceHandState      HandState;
 	GInterfaceCollide       interface_collide; /* 0x3b0 */
-	GInterfaceCollide       field_0x3e0;
-	float                   field_0x410;
-	float                   field_0x414;
-	uint32_t                field_0x418;
-	uint32_t                field_0x41c;
-	uint32_t                field_0x420;
-	uint32_t                field_0x424;
-	uint32_t                field_0x428;
-	uint32_t                field_0x42c;
+	uint32_t                field_0x3e0;
+	uint32_t                field_0x3e4;
+	GInterfaceCollide       Collide;        /* 0x3e8 */
+	LHCoord                 ScreenCursorXY; /* 0x418 */
+	LHCoord                 ScreenCursorChangeXY;
+	LHCoord                 LocalScreenCursorXY;
 	GInterfaceMessageBuffer MessageBuffers; /* 0x430 */
-	int                     field_0x444;
-	int                     field_0x448;
+	uint32_t                AppliedTurn;
+	uint32_t                ApplyRecievedPacketTurn;
 	bool32_t                CameraMoved;
 	uint32_t                field_0x450;
 	uint32_t                field_0x454;
 	uint32_t                field_0x458;
-	BaseInfo                field_0x45c;
-	uint32_t                field_0x468;
+	BaseInfo                LastRClickedObject;
+	uint32_t                LastRClickedTurn;
 	uint32_t                field_0x46c;
 	uint32_t                field_0x470;
 	uint32_t                field_0x474;
@@ -152,6 +151,8 @@ public:
 	void StartImmersion(IMMERSION_EFFECT_TYPE type, unsigned long iterations);
 	// BW1W120 005d8af0 BW1M119 0136f110
 	void StopAllImmersion();
+	// BW1W120 005d8a80 BW1M119 0136f1a0
+	void StopImmersion(IMMERSION_EFFECT_TYPE type);
 	// BW1W120 005d56c0 BW1M119 0107d9c0
 	void SendObjectDrawCollision(Object* object, float distance, LH3DObject* lh3d_object);
 	// BW1W120 005ced10 BW1M119 013629e0
@@ -213,6 +214,112 @@ public:
 	uint32_t ApplyChangesToHand(uint32_t ret, Object* object, const MapCoords* coords);
 	// BW1W120 005d95e0 BW1M119 0136f9b0
 	float GetLocalLeashAppliedForce();
+	// BW1W120 005d1010 BW1M119 01076e30
+	void InterfaceActionValidateObjectsForStates();
+	// BW1W120 005d1100 BW1M119 0108a420
+	bool32_t InterfaceStateIsHandObjectRelated();
+	// BW1W120 005d1110 BW1M119 010838b0
+	bool32_t InterfaceStateIsCollideObjectRelated();
+	// BW1W120 005d1120 BW1M119 01031930
+	void InterfaceActionProcess();
+	// BW1W120 005d2980 BW1M119 01367fc0
+	void SetActionState(INTERFACE_ACTION_STATE state);
+	// BW1W120 005d2990 BW1M119 010272e0
+	bool32_t IsMyCreatureFighting();
+	// BW1W120 005d29c0 BW1M119 01029660
+	void ResetActionState();
+	// BW1W120 005d1260 BW1M119 013698e0
+	void InterfaceActionForceToNormal();
+	// BW1W120 005cedc0 BW1M119 01362540
+	void SetActive(bool32_t active);
+	// BW1W120 005d1ab0 BW1M119 01097d30
+	void InterfaceActionSetLandscapeMovement();
+	// BW1W120 005d1320 BW1M119 010020f0
+	void InterfaceActionSelect();
+	// BW1W120 005d2c20 BW1M119 01366f00
+	Creature* GetFightingObject();
+	// BW1W120 005d21b0 BW1M119 01368710
+	bool32_t InterfaceActionDrop();
+	// BW1W120 005d2210 BW1M119 01368660
+	bool32_t InterfaceActionEndLockedSelect(Object* object);
+	// BW1W120 005d2730 BW1M119 013684d0
+	bool32_t InterfaceActionStartUsingRSystem(INTERFACE_ACTION_STATE state);
+	// BW1W120 005d2770 BW1M119 01368440
+	void StartUsingRSystem();
+	// BW1W120 005d27b0 BW1M119 013683b0
+	void StopUsingRSystem();
+	// BW1W120 005d3680 BW1M119 01366060
+	void InterfaceActionApplyRecievedPacket();
+	// BW1W120 005d36a0 BW1M119 01365fe0
+	void InterfaceActionAppliedTurn();
+	// BW1W120 005d36d0 BW1M119 01365f00
+	void SetRClickedObject(Object* object);
+	// BW1W120 005d3880 BW1M119 01077bf0
+	bool32_t GetSpellSeedInHand();
+	// BW1W120 005cead0 BW1M119 0109be40
+	void AddToRSystem(LHCoord* coord);
+	// BW1W120 005d27f0 BW1M119 01368340
+	bool32_t InterfaceActionStartApplyOnRelease();
+	// BW1W120 005d4330 BW1M119 01364c40
+	bool32_t InterfaceActionSetBubbleGrip();
+	// BW1W120 005d4650 BW1M119 01364660
+	bool32_t InterfaceActionEndFightAction();
+	// BW1W120 005d1840 BW1M119 01368e20
+	bool32_t InterfaceActionStateCleanHandPluck();
+	// BW1W120 005d36c0 BW1M119 0100c110
+	bool32_t InterfaceActionStateInterfaceOff();
+	// BW1W120 005d4830 BW1M119 0136ca20
+	bool32_t InterfaceActionStateLockedSelect();
+	// BW1W120 005d4870 BW1M119 0136c940
+	bool32_t InterfaceActionStateCleanLockedSelect();
+	// BW1W120 005d48d0 BW1M119 0136c830
+	bool32_t InterfaceActionStateUsingRecSystem();
+	// BW1W120 005d4940 BW1M119 0136c7c0
+	bool32_t InterfaceActionStateCleanRSystem();
+	// BW1W120 005d4960 BW1M119 0136c710
+	bool32_t InterfaceActionStateWaitForSelectLocked();
+	// BW1W120 005d4980 BW1M119 0136c690
+	bool32_t InterfaceActionStateWaitForGive();
+	// BW1W120 005d49a0 BW1M119 0136c610
+	bool32_t InterfaceActionStateCleanGive();
+	// BW1W120 005d49b0 BW1M119 0136c520
+	bool32_t InterfaceActionStateWaitForSelectLockOff();
+	// BW1W120 005d4a10 BW1M119 0136c460
+	bool32_t InterfaceActionStateWaitForSelectLockOffCompletion();
+	// BW1W120 005d4a40 BW1M119 01001ca0
+	bool32_t InterfaceActionStateLandscape();
+	// BW1W120 005d4a90 BW1M119 0136bcb0
+	bool32_t InterfaceActionStateWaitForPlaceInHand();
+	// BW1W120 005d4ac0 BW1M119 0136ba80
+	bool32_t InterfaceActionStateFighting();
+	// BW1W120 005d4c10 BW1M119 0136b940
+	bool32_t InterfaceActionStateHandObjectLockedApplyToPos();
+	// BW1W120 005d4cb0 BW1M119 0136b880
+	bool32_t InterfaceActionStateCleanLockedApply();
+	// BW1W120 005d4d00 BW1M119 0136b790
+	bool32_t InterfaceActionStateHandObjectLockedApplyToObject();
+	// BW1W120 005d4d60 BW1M119 0136b700
+	bool32_t InterfaceActionStateCleanApplyRelease();
+	// BW1W120 005d4d90 BW1M119 0136b670
+	bool32_t InterfaceActionStateWaitForApplyReleaseNoAction();
+	// BW1W120 005d4db0 BW1M119 0136b240
+	bool32_t InterfaceActionStateWaitForApplyRelease();
+	// BW1W120 005d5190 BW1M119 010268f0
+	bool32_t InterfaceActionStateNormal();
+	// BW1W120 005d5250 BW1M119 0136afb0
+	bool32_t InterfaceActionStateWaitForHandPluck();
+	// BW1W120 005d53b0 BW1M119 0136af30
+	bool32_t InterfaceActionStateBubbleGrip();
+	// BW1W120 005d53d0 BW1M119 0136ae00
+	bool32_t InterfaceActionStateWaitForStartLockedSelect();
+	// BW1W120 005d5460 BW1M119 0136ac50
+	bool32_t InterfaceActionStateWaitForDelayOnLeashSupply();
+	// BW1W120 005d5500 BW1M119 0136aa10
+	bool32_t InterfaceActionStateLeashInteract();
+	// BW1W120 005d5650 BW1M119 0136a990
+	bool32_t InterfaceActionStateFightSelect();
+	// BW1W120 005d5670 BW1M119 0136a910
+	bool32_t InterfaceActionStateFightApply();
 };
 
 // LHReleasedOSFile already includes its 0x104-byte filename storage.
