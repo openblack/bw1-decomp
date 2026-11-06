@@ -5,6 +5,9 @@
 #include <stdint.h> /* For uint32_t */
 #include <uchar.h>  /* For char16_t */
 
+#define PLAYER_PROFILE_NAME_LENGTH 64
+#define PLAYER_SYMBOL_COUNT        16
+
 struct PlayerProfile
 {
 	// Descriptive singleton name.
@@ -34,10 +37,18 @@ struct PlayerProfile
 	// BW1W120 0066bfb0 BW1M119 014d1590
 	// Both Windows callers consume AL; the DLL int result is normalized by this bool wrapper.
 	static bool ProfileExists(char16_t* name);
+	// BW1W120 0066b920 BW1M119 014d20c0
+	static int GetProfileIdx(char16_t* name);
+	// BW1W120 0066ba00 BW1M119 014d1d50
+	static void GetProfileNameByIndex(int index, char16_t* name);
 	// BW1W120 0066b900 BW1M119 014d22b0
 	static void GetCurrentProfile(char16_t* name);
 	// BW1W120 0066bad0 BW1M119 014d1a80
 	static void GetProfileByName(char16_t* name, PlayerProfile& profile);
+	// BW1W120 0066bf20 BW1M119 014d1600
+	static void DeleteProfile(char16_t* name);
+	// BW1W120 0066bf10 BW1M119 014d16f0
+	static void CreateProfile(char16_t* name);
 	// BW1W120 0066bcd0 BW1M119 014d1750
 	static void WriteBackToRegistry(PlayerProfile& profile);
 };

@@ -1073,23 +1073,23 @@ Black/Forest.cpp:
 	.text       start:0x00539900 end:0x0053B450
 	.rdata      start:0x008DE3DC end:0x008DE91C
 	.CRT$XCU    start:0x009C68D0 end:0x009C68E0 align:4
-	.data       start:0x00BEA238 end:0x00BEA568
-	.bss        start:0x00CD04A0 end:0x00CD0AF8
+	.data       start:0x00BEA238 end:0x00BEA288
+	.bss        start:0x00CD04A0 end:0x00CD04D0
 
 Black/frontend.cpp:
 	.text       start:0x0053B450 end:0x00546230
 	.text$x     start:0x008A6470 end:0x008A6480 align:4
 	.rdata      start:0x008DE91C end:0x008DECD8
 	.CRT$XCU    start:0x009C68E0 end:0x009C68F0 align:4
-	.data       start:0x00BEA568 end:0x00BEA7C8
-	.bss        start:0x00CD0AF8 end:0x00CD165C
+	.data       start:0x00BEA288 end:0x00BEA7C8
+	.bss        start:0x00CD04D0 end:0x00CD0B94
 
 Black/FrontEndSetupGame.cpp:
 	.text       start:0x00546230 end:0x00549B10
 	.rdata      start:0x008DECD8 end:0x008DED08
 	.CRT$XCU    start:0x009C68F0 end:0x009C68FC align:4
 	.data       start:0x00BEA7C8 end:0x00BEA898
-	.bss        start:0x00CD165C end:0x00CD1678
+	.bss        start:0x00CD0B94 end:0x00CD1678
 
 Black/FrontEndSetupMultiplayer.cpp:
 	.text       start:0x00549B10 end:0x0054A2C0

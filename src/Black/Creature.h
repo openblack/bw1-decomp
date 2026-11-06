@@ -279,7 +279,7 @@ public:
 	bool32_t Navigation;
 	bool32_t HasYoung;
 #endif
-	uint32_t                          field_0x1170[0x8];
+	uint32_t                          Tattoos[0x8];
 	uint32_t*                         TattooData;
 	CREATURE_DESIRES                  SavedPlanDesire;
 	CREATURE_ACTION                   SavedPlanAction;
@@ -725,6 +725,8 @@ public:
 	void TrappedInEnclosedSpace(unsigned long num_objects, Object** objects);
 	// BW1W120 00477850 BW1M119 011e26b0
 	LH3DCreature* GetCreature3D();
+	// BW1W120 0047d980 BW1M119 011d68c0
+	void UpdateTattooDataFromLocalMachine();
 	// BW1W120 00474350 BW1M119 011e8360
 	void Initialise(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
 	// BW1W120 00477210 BW1M119 011e3040

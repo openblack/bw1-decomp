@@ -106,8 +106,8 @@ public:
 	// Override methods
 
 	// BW1W120 0061bcd0 BW1M119 01396e20
-	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
+	virtual void Init(uint32_t background_style, uint32_t tall_background,
+	                  void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 0061ca50 BW1M119 01396dc0
 	virtual void Destroy();
 	// BW1W120 0061ca60 BW1M119 01396ad0
@@ -117,6 +117,24 @@ public:
 
 	// BW1W120 0061cc80 BW1M119 inlined
 	void UpdateAll();
+
+	// BW1W120 00d3f014
+	static ChannelBox* Instance;
+
+	// BW1W120 0061ed30 BW1M119 01393430
+	void __stdcall Callback(int message, SetupBox* box, SetupControl* control, int x, int y);
+
+	// BW1W120 0053bce0 BW1M119 015cc1b0
+	static void __stdcall ControlCallback(int message, SetupBox* box, SetupControl* control, int x, int y)
+	{
+		if (Instance != NULL)
+		{
+			Instance->Callback(message, box, control, x, y);
+		}
+	}
+
+	// BW1W120 0053c610
+	~ChannelBox() {}
 };
 
 static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");

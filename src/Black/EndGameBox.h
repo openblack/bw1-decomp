@@ -66,14 +66,29 @@ public:
 	// Override methods
 
 	// BW1W120 0056e160 BW1M119 01324d10
-	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
+	virtual void Init(uint32_t background_style, uint32_t tall_background,
+	                  void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 0056e730 BW1M119 01324cb0
 	virtual void Destroy();
 	// BW1W120 0053be30 BW1M119 01324100
 	virtual bool CanESCOut() { return false; }
 	// BW1W120 0056e740 BW1M119 013247b0
 	virtual void InitControls();
+
+	// BW1W120 00d0606c
+	static EndGameBox* Instance;
+
+	// BW1W120 0056ec00 BW1M119 01324140
+	void __stdcall Callback(int message, SetupBox* box, SetupControl* control, int x, int y);
+
+	// BW1W120 0053be40 BW1M119 015cc3c0
+	static void __stdcall ControlCallback(int message, SetupBox* box, SetupControl* control, int x, int y)
+	{
+		if (Instance != NULL)
+		{
+			Instance->Callback(message, box, control, x, y);
+		}
+	}
 };
 
 #endif /* BW1_DECOMP_END_GAME_BOX_INCLUDED_H */

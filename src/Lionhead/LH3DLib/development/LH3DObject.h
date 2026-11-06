@@ -623,5 +623,9 @@ extern LH3DMaterial* g_mat_misc0;
 extern LH3DTexture* g_tex_misc0;
 // BW1W120 00ea1a9c BW1M119 012b3730 (LHCombined Release)
 extern LH3DTexture* g_burn_texture;
+// BW1W120 00ea1b10
+extern int special_jc_x;
+// BW1W120 00ea1b14
+extern int special_jc_y;
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_INCLUDED_H */

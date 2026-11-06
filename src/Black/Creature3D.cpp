@@ -387,7 +387,7 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	IsAnimationTimeModified = false;
 	field_0x49a8 = 0.5f;
 	field_0x49a4 = 0.0f;
-	field_0x4a94 = 0;
+	TattooOverride = 0;
 	SparklingCreature = NULL;
 	MorphInit(pos, 0, param_2);
 	SetPos(pos);
@@ -517,7 +517,7 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	}
 	for (i = 0; i < 8; i++)
 	{
-		field_0x569c[i] = 0;
+		TattooSlotUsed[i] = 0;
 		field_0x56fc[i] = 0.5f;
 		field_0x56bc[i] = 0;
 		field_0x56dc[i] = 0;
@@ -3359,7 +3359,7 @@ void LH3DCreature::BeCut(LHPoint& pos, LHPoint& direction, long type, long sub_t
 void LH3DCreature::DrawTestTattoo(long slot)
 {
 	Morphable::MorphTexture();
-	if (field_0x569c[slot])
+	if (TattooSlotUsed[slot])
 	{
 		TattooInfo info;
 		info.Red = 0xff;
@@ -6172,16 +6172,16 @@ void LH3DCreature::MorphTexture()
 	unsigned long playerNumber = player ? player->GetPlayerNumber() : GGame::g_game->PlayerIndex;
 	if (GGame::g_game->GetPlayer(playerNumber)->GetLeaderInterfaceStatus())
 	{
-		TattooInfo* tattoos = creature ? (TattooInfo*)creature->field_0x1170 : NULL;
-		if (field_0x4a94)
+		TattooInfo* tattoos = creature ? (TattooInfo*)creature->Tattoos : NULL;
+		if (TattooOverride)
 		{
-			tattoos = field_0x4a94;
+			tattoos = TattooOverride;
 		}
 		else if (player == GGame::g_game->MyPlayer() || GGame::g_game->ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL)
 		{
 			if (GGame::g_game->MyPlayer()->GetCreature())
 			{
-				tattoos = (TattooInfo*)GGame::g_game->MyPlayer()->GetCreature()->field_0x1170;
+				tattoos = (TattooInfo*)GGame::g_game->MyPlayer()->GetCreature()->Tattoos;
 			}
 		}
 		if (tattoos)
@@ -6189,7 +6189,7 @@ void LH3DCreature::MorphTexture()
 			for (int i = 0; i < 8; i++)
 			{
 				long slot = tattoos[i].Slot;
-				if (slot < 8 && field_0x569c[slot])
+				if (slot < 8 && TattooSlotUsed[slot])
 				{
 					// TODO: LH3DMesh::skins is an array of texture pointers (LH3DTexture**); drop the cast once it is.
 					GTattoo::Draw(field_0x56bc[slot], field_0x56dc[slot],

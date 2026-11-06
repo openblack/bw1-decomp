@@ -429,8 +429,12 @@ public:
 	// Original name unrecovered; increments rendered-frame count.
 	// BW1W120 0054d7f0
 	void fn_0054D7F0();
+	// BW1W120 005553f0 BW1M119 0136b200
+	void QuitBlack();
 	// BW1W120 00555400 BW1M119 014f6640
 	void QuitGameAndGoIntoNetworkLobby();
+	// BW1W120 005558d0 BW1M119 01515800
+	void AttemptQuitOfMultiplayerGame();
 	// Original name unrecovered; flushes packed network data.
 	// BW1W120 005525e0
 	void fn_005525E0();

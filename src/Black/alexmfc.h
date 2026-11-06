@@ -32,6 +32,8 @@ struct SetupList;
 
 #define SETUP_NO_CLIP 40960
 
+#define SETUP_CONTROL_ID_NONE 999
+
 #define SETUP_MP3_ICON_SIZE         16
 #define SETUP_MP3_ICON_COLUMNS      4
 #define SETUP_MP3_ICON_ROWS         4
@@ -180,6 +182,8 @@ struct SetupThing
 	// Set by CMouse::ProcessButtons on a double click (LHMouse button events 0x10 and 0x20).
 	// BW1W120 00c4cd10
 	static int DoubleClicked;
+	// BW1W120 00c4cd14
+	static int RightClicked;
 	// Set while a pressed control is being dragged with the left button held.
 	// BW1W120 00c4ccc8
 	static bool Dragging;
@@ -320,6 +324,7 @@ struct SetupControl
 enum MSGBOXSTYLE
 {
 	MSGBOXSTYLE_SINGLE_BUTTON = 0,
+	MSGBOXSTYLE_YES_NO = 3,
 	MSGBOXSTYLE_NO_BUTTONS = 5,
 };
 
@@ -524,7 +529,7 @@ struct SetupList : public SetupControl
 {
 	bool field_0x23c;
 	int  ScrollbackWidth; /* 0x240 */
-	bool field_0x244;
+	bool CentredText;     /* 0x244 */
 	int  SelectedIndex;
 	int  PrevSelectedIndex;
 	int  NumItems; /* 0x250 */
@@ -690,7 +695,7 @@ struct SetupMultiList : public SetupList
 struct SetupEdit : public SetupControl
 {
 	SetupList* field_0x23c;
-	int        field_0x240;
+	int        MaxLength; /* 0x240 */
 	int        field_0x244;
 	int        field_0x248;
 	int        CursorPosition;
@@ -742,8 +747,7 @@ struct SetupEdit : public SetupControl
 		wcsncpy(label, text, 0xff);
 		label[0xff] = 0;
 		CursorPosition = wcslen(label);
-		SelectEnd = CursorPosition;
-		SelectStart = CursorPosition;
+		SelectStart = SelectEnd = CursorPosition;
 		ScrollOffset = 0;
 	}
 };
@@ -954,7 +958,7 @@ struct SetupPicture : public SetupButton
 	bool          dragging;
 	int           picture_index;
 	int           num_rows;
-	int           NumPictures;
+	uint32_t      NumPictures;
 	bool          clickable; /* 0x290 */
 
 	// Override methods

@@ -119,6 +119,15 @@ struct HelpTextDataBase
 		count = num_entries;
 		array = new (HELP_TEXT_FILEPATH, HELP_TEXT_INIT_LINE) HelpTextInfo[count];
 	}
+	// BW1W120 004707f0 BW1M119 01243920
+	HelpTextInfo* GetData(unsigned long index) const
+	{
+		if (index >= count)
+		{
+			index = 0;
+		}
+		return index <= 0 ? array : &array[index];
+	}
 	// BW1W120 inlined BW1M119 010946e0
 	wchar_t* GetHelpText(unsigned long index) const
 	{
@@ -133,10 +142,16 @@ struct HelpTextDataBase
 	void SetData(int index, unsigned long id, HELP_TEXT_NARRATOR narrator, wchar_t* text, wchar_t* speech);
 };
 
+struct HelpTextDataPatch
+{
+	// BW1W120 inlined BW1M119 015c2470
+	static char16_t* GetTextL(unsigned long index) { return HelpTextDataBase::PatchTextDatabase.GetHelpText(index); }
+};
+
 // BW1W120 inlined BW1M119 0110db70
 inline char16_t* HelpTextData::GetTextL(unsigned long index)
 {
-	return HelpTextDataBase::HelpTextDatabase.GetHelpText(index);
+	return HelpTextDataBase::HelpTextDatabase.GetData(index)->Text;
 }
 
 #endif /* BW1_DECOMP_HELP_TEXT_INCLUDED_H */

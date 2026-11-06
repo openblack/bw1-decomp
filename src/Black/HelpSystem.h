@@ -333,7 +333,7 @@ public:
 	uint32_t                field_0x584[0x6];
 	uint8_t                 field_0x59c[0x4028];
 	uint32_t                field_0x45c4;
-	uint32_t                field_0x45c8;
+	uint32_t                NumHistoryEntries;
 	uint32_t                field_0x45cc;
 	uint32_t                field_0x45d0;
 	uint16_t                NumBanterSetsSent;

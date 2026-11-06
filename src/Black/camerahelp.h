@@ -58,6 +58,8 @@ public:
 	static int EnabledFeatures;
 	// BW1W120 00449140 BW1M119 010018f0
 	static void CameraHelpCallback(CameraHelpReason reason, LHPoint& point, unsigned long param_3);
+	// BW1W120 00447850 BW1M119 0107e660
+	static void DrawMouseCallback();
 	// BW1W120 00447ea0 BW1M119 01063100
 	static void DrawKeyOrMouse(CH_ANIMTYPE anim_type, int key, int mouse_type, wchar_t* text, int x, int y, int size,
 	                           KEYALIGN align, LH3DColor* colour1, LH3DColor* colour2, int alpha);

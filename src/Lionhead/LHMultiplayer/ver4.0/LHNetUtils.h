@@ -39,6 +39,8 @@ LH_MULTIPLAYER_API extern char CheckInternetConnectionOptions;
 
 // BW1W120 100139d0
 LH_MULTIPLAYER_API LHMail* LHLoadInGameEmailSystem(char* address_book);
+// BW1W120 10019270 BW1M119 01103e80 (LHCombined Release)
+LH_MULTIPLAYER_API char* ProfileNameToKey(wchar_t* profile);
 
 // BW1W120 10018420 BW1M119 011060f0 (LHCombined Release)
 LH_MULTIPLAYER_API bool32_t LHNetIsDisconnectionStatus(LH_NET_LOG_ERROR_LIST status);
