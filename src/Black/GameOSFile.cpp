@@ -275,7 +275,7 @@ bool32_t GameOSFile::SaveAllGame(char* filename)
 	GGame::g_game->MyInterface()->StopAllImmersion();
 	GGame::g_game->path_creator.CheckAndRecreateSaveGamePaths();
 
-	char temporaryPath[260];
+	char temporaryPath[MAX_PATH];
 	strcpy(temporaryPath, filename);
 	strcat(temporaryPath, TEMPORARY_FILE_EXTENSION);
 	if (file.Open(temporaryPath, LH_FILE_MODE_READ_WRITE) != LH_FILE_RESULT_OK)
@@ -305,7 +305,7 @@ bool32_t GameOSFile::SaveAllGame(char* filename)
 			}
 		}
 	}
-	char landscape[260];
+	char landscape[MAX_PATH];
 	strcpy(landscape, GLandscape::Filename);
 	length = strlen(landscape) + 1;
 	if (WriteEnabled)
@@ -333,12 +333,12 @@ bool32_t GameOSFile::SaveAllGame(char* filename)
 		file.Delete(filename);
 		file.Rename(temporaryPath, filename);
 		char* basename = GUtils::GetFilenameFromPath(file.Filename);
-		char  directory[260];
+		char  directory[MAX_PATH];
 		GUtils::GetPathFromPath(file.Filename, directory);
 		sprintf(temporaryPath, "%sScript_%s", directory, basename);
 		temporaryPath[strlen(temporaryPath) - (sizeof(TEMPORARY_FILE_EXTENSION) - 1)] = '\0';
 		file.Delete(temporaryPath);
-		char scriptPath[260];
+		char scriptPath[MAX_PATH];
 		strcpy(scriptPath, temporaryPath);
 		strcat(temporaryPath, TEMPORARY_FILE_EXTENSION);
 		file.Rename(temporaryPath, scriptPath);
@@ -413,7 +413,7 @@ bool32_t GameOSFile::LoadAllGame(char* filename)
 	strcpy(file.Filename, filename);
 
 	char revision[256];
-	char landscape[260];
+	char landscape[MAX_PATH];
 	if (ReadEnabled)
 	{
 		uint32_t length;
@@ -1836,7 +1836,7 @@ void GameOSFile::ReadCheckSum(GameThing* thing)
 
 bool32_t GameOSFile::AutoLoad()
 {
-	char filename[260];
+	char filename[MAX_PATH];
 	GGame::g_game->path_creator.GetAutoSavePath(filename);
 	sprintf(filename, "%s\\%s", filename, AutoSaveFilename);
 	SaveGameRoom::CurrentSlot = SAVE_GAME_ROOM_AUTO_SAVE_SLOT;
@@ -1870,7 +1870,7 @@ bool32_t GameOSFile::AutoSave(bool32_t force)
 
 bool32_t GameOSFile::IsAutoSaveValid()
 {
-	char filename[260];
+	char filename[MAX_PATH];
 	GGame::g_game->path_creator.GetAutoSavePath(filename);
 	sprintf(filename, "%s\\%s", filename, AutoSaveFilename);
 	if (LHOSFile::Exists(filename) == LH_FILE_RESULT_NOT_FOUND)

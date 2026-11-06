@@ -89,7 +89,7 @@ bool32_t Creature::Save(GameOSFile& file)
 		}
 		file.WriteIt(playerNumber);
 		char path[256];
-		char mindPath[260];
+		char mindPath[MAX_PATH];
 		GGame::g_game->path_creator.GetSaveGamePath(path);
 		sprintf(path, SAVE_SLOT_PATH, path, SaveGameRoom::CurrentSlot);
 		if (SaveGameRoom::CurrentSlot > SAVE_GAME_ROOM_LAST_NORMAL_SLOT &&
@@ -285,7 +285,7 @@ bool32_t Creature::Load(GameOSFile& file)
 		    (status = player->GetLeaderInterfaceStatus()) != NULL &&
 		    (playerInterface = status->GetInterface()) != NULL && playerInterface->player != NULL)
 		{
-			char path[260];
+			char path[MAX_PATH];
 			sprintf(path, CREATURE_MIND_FILE_PATH, playerInterface->player->UserFilename);
 			Archive  archive(path, LH_FILE_MODE_READ_ONLY);
 			uint32_t length;
@@ -379,7 +379,7 @@ void Creature::ResolveLoad()
 		player = GGame::g_game->GetPlayer(SavedPlayerNumber);
 	}
 	char path[248];
-	char mindPath[260];
+	char mindPath[MAX_PATH];
 	GGame::g_game->path_creator.GetSaveGamePath(path);
 	sprintf(path, SAVE_SLOT_PATH, path, SaveGameRoom::CurrentSlot);
 	if (SaveGameRoom::CurrentSlot > SAVE_GAME_ROOM_LAST_NORMAL_SLOT &&
@@ -494,7 +494,7 @@ LH3DCreature* Creature::Load3D(char* name)
 		unsigned long creatureType;
 		archive >> creatureType;
 		LH3DCreature* creature3d = new (FILEPATH, 577) LH3DCreature(NULL, LHPoint(0.0f, 0.0f, 0.0f), NULL);
-		char          binaryName[260];
+		char          binaryName[MAX_PATH];
 		sprintf(binaryName, "%s", CreatureFileName::Table[creatureType].BinaryName);
 		if (!creature3d->LoadBinary(binaryName, 0))
 		{

@@ -25,7 +25,7 @@ static_assert(sizeof(LHDirDateTime) == 0xa, "Data type is of wrong size");
 
 struct LHDir
 {
-	char                 name[260];         /* 0x0 */
+	char                 name[MAX_PATH];    /* 0x0 */
 	char                 AlternateName[14]; /* 0x104 */
 	uint32_t             attributes;        /* 0x114 */
 	uint32_t             size;              /* 0x118 */
