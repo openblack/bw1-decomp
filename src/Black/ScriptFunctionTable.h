@@ -20,9 +20,9 @@ struct ScriptFunctionTable
 	uint32_t ReturnCount;     /* 0x08 */
 	bool32_t TakesControl;    /* 0x0c */
 	char     Name[128];       /* 0x10 */
-};
 
-// BW1W120 00c0db98
-extern ScriptFunctionTable g_scriptFunctionTable[SCRIPT_FUNCTION_COUNT];
+	// BW1W120 00c0db98
+	static ScriptFunctionTable Table[SCRIPT_FUNCTION_COUNT];
+};
 
 #endif /* BW1_DECOMP_SCRIPT_FUNCTION_TABLE_INCLUDED_H */

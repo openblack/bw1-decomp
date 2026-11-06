@@ -9,8 +9,11 @@
 
 struct LH3DMaterial;
 
-#define LH3D_ORIENT_SPRITE_FRAME_MASK 0x3F
-#define LH3D_ORIENT_SPRITE_USE_MATRIX 0x200
+enum LH3D_ORIENT_SPRITE_FLAG
+{
+	LH3D_ORIENT_SPRITE_FLAG_FRAME_MASK = 0x3F,
+	LH3D_ORIENT_SPRITE_FLAG_USE_MATRIX = 0x200,
+};
 
 struct LH3DOrientSprite
 {
@@ -48,11 +51,11 @@ struct LH3DOrientSprite
 	// BW1W120 null BW1M119 inlined
 	void SetFrame(uint32_t frame)
 	{
-		Flags &= ~LH3D_ORIENT_SPRITE_FRAME_MASK;
-		Flags |= frame & LH3D_ORIENT_SPRITE_FRAME_MASK;
+		Flags &= ~LH3D_ORIENT_SPRITE_FLAG_FRAME_MASK;
+		Flags |= frame & LH3D_ORIENT_SPRITE_FLAG_FRAME_MASK;
 	}
 	// BW1W120 null BW1M119 inlined
-	void SetUseMatrix() { Flags |= LH3D_ORIENT_SPRITE_USE_MATRIX; }
+	void SetUseMatrix() { Flags |= LH3D_ORIENT_SPRITE_FLAG_USE_MATRIX; }
 	// BW1W120 0083c990 BW1M119 010cffa0 (LHCombined Release)
 	void Draw();
 };

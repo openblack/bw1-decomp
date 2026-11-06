@@ -27,9 +27,9 @@ uint32_t GScript::FindFreeScriptGameThingSlot()
 	for (uint32_t tries = 0; tries < SCRIPT_MANAGE_TABLE_SIZE - 1; tries++, ScriptManage::NextFreeSlot++)
 	{
 		ScriptManage::NextFreeSlot &= SCRIPT_MANAGE_TABLE_SIZE - 1;
-		if (ScriptManage::NextFreeSlot == 0)
+		if (ScriptManage::NextFreeSlot == SCRIPT_MANAGE_SLOT_NONE)
 		{
-			ScriptManage::NextFreeSlot = SCRIPT_MANAGE_FIRST_SLOT;
+			ScriptManage::NextFreeSlot = SCRIPT_MANAGE_SLOT_FIRST;
 		}
 		if (ScriptManage::VariableTable[ScriptManage::NextFreeSlot].IsClear())
 		{
@@ -37,27 +37,27 @@ uint32_t GScript::FindFreeScriptGameThingSlot()
 		}
 	}
 	ScriptErrorMessage("Script offsets exceeded - Blimey!");
-	return 0;
+	return SCRIPT_MANAGE_SLOT_NONE;
 }
 
 unsigned long GScript::FindScriptGameThing(GameThingWithPos* thing)
 {
-	for (uint32_t slot = SCRIPT_MANAGE_FIRST_SLOT; slot < SCRIPT_MANAGE_TABLE_SIZE; slot++)
+	for (uint32_t slot = SCRIPT_MANAGE_SLOT_FIRST; slot < SCRIPT_MANAGE_TABLE_SIZE; slot++)
 	{
 		if (ScriptManage::VariableTable[slot].GetBase() == thing)
 		{
 			return slot;
 		}
 	}
-	return 0;
+	return SCRIPT_MANAGE_SLOT_NONE;
 }
 
 void GScript::IncrementScriptReference(unsigned long id)
 {
-	if (id != 0)
+	if (id != SCRIPT_MANAGE_SLOT_NONE)
 	{
-		SCRIPT_ASSERT(id > 0 && id < SCRIPT_MANAGE_TABLE_SIZE, "Jonty - Out of script range");
-		if (id > 0 && id < SCRIPT_MANAGE_TABLE_SIZE)
+		SCRIPT_ASSERT(id > SCRIPT_MANAGE_SLOT_NONE && id < SCRIPT_MANAGE_TABLE_SIZE, "Jonty - Out of script range");
+		if (id > SCRIPT_MANAGE_SLOT_NONE && id < SCRIPT_MANAGE_TABLE_SIZE)
 		{
 			ScriptManage::VariableTable[id].IncreaseReferenceCount();
 		}
@@ -66,10 +66,10 @@ void GScript::IncrementScriptReference(unsigned long id)
 
 void GScript::DecrementScriptReference(unsigned long id)
 {
-	if (id != 0)
+	if (id != SCRIPT_MANAGE_SLOT_NONE)
 	{
-		SCRIPT_ASSERT(id > 0 && id < SCRIPT_MANAGE_TABLE_SIZE, "Jonty - Out of script range");
-		if (id > 0 && id < SCRIPT_MANAGE_TABLE_SIZE)
+		SCRIPT_ASSERT(id > SCRIPT_MANAGE_SLOT_NONE && id < SCRIPT_MANAGE_TABLE_SIZE, "Jonty - Out of script range");
+		if (id > SCRIPT_MANAGE_SLOT_NONE && id < SCRIPT_MANAGE_TABLE_SIZE)
 		{
 			ScriptManage::VariableTable[id].DecreaseReferenceCount();
 		}
@@ -84,7 +84,7 @@ uint8_t GScript::GetScriptReferenceCount(unsigned long id)
 void GScript::IncrementScriptReference(GameThingWithPos* thing)
 {
 	uint32_t id = FindScriptGameThing(thing);
-	if (id == 0)
+	if (id == SCRIPT_MANAGE_SLOT_NONE)
 	{
 		ScriptErrorMessage("Jonty-No slot for thing! VBAD");
 	}
@@ -97,7 +97,7 @@ void GScript::IncrementScriptReference(GameThingWithPos* thing)
 void GScript::DecrementScriptReference(GameThingWithPos* thing)
 {
 	uint32_t id = FindScriptGameThing(thing);
-	if (id == 0)
+	if (id == SCRIPT_MANAGE_SLOT_NONE)
 	{
 		ScriptErrorMessage("Jonty-No slot for thing! VBAD");
 	}
@@ -113,11 +113,11 @@ uint32_t GScript::ReplaceScriptGameThing(GameThingWithPos* old_thing, GameThingW
 	bool32_t valid = old_thing != NULL && new_thing != NULL;
 	if (!valid)
 	{
-		return 0;
+		return SCRIPT_MANAGE_SLOT_NONE;
 	}
 	uint32_t id = FindScriptGameThing(old_thing);
-	SCRIPT_ASSERT(id != 0, "Jonty-Script Thing without slot! VBAD");
-	if (id != 0)
+	SCRIPT_ASSERT(id != SCRIPT_MANAGE_SLOT_NONE, "Jonty-Script Thing without slot! VBAD");
+	if (id != SCRIPT_MANAGE_SLOT_NONE)
 	{
 		ScriptManage::VariableTable[id].Set(new_thing);
 	}
@@ -129,7 +129,7 @@ uint32_t GScript::AddScriptGameThing(GameThingWithPos* thing, bool32_t created_b
 	if (thing == NULL)
 	{
 		ScriptErrorMessage("Adding Null script thing");
-		return 0;
+		return SCRIPT_MANAGE_SLOT_NONE;
 	}
 	if (created_by_script)
 	{
@@ -143,14 +143,14 @@ uint32_t GScript::AddScriptGameThing(GameThingWithPos* thing, bool32_t created_b
 	if (thing->IsInScript())
 	{
 		uint32_t id = FindScriptGameThing(thing);
-		if (id != 0)
+		if (id != SCRIPT_MANAGE_SLOT_NONE)
 		{
 			return id;
 		}
 		ScriptErrorMessage("Jonty-Script Thing without slot!");
 	}
 	uint32_t slot = FindFreeScriptGameThingSlot();
-	if (slot != 0)
+	if (slot != SCRIPT_MANAGE_SLOT_NONE)
 	{
 		ScriptManage::VariableTable[slot].SetThing(thing, created_by_script);
 	}
@@ -159,8 +159,8 @@ uint32_t GScript::AddScriptGameThing(GameThingWithPos* thing, bool32_t created_b
 
 void GScript::RemoveScriptGameThing(uint32_t id)
 {
-	SCRIPT_ASSERT(id > 0 && id < SCRIPT_MANAGE_TABLE_SIZE, "Jonty - Out of script range");
-	if (id > 0 && id < SCRIPT_MANAGE_TABLE_SIZE)
+	SCRIPT_ASSERT(id > SCRIPT_MANAGE_SLOT_NONE && id < SCRIPT_MANAGE_TABLE_SIZE, "Jonty - Out of script range");
+	if (id > SCRIPT_MANAGE_SLOT_NONE && id < SCRIPT_MANAGE_TABLE_SIZE)
 	{
 		GameThingWithPos* thing = GetScriptGameThing(id);
 		SCRIPT_ASSERT(ScriptManage::VariableTable[id].GetNoReferences() >= 1,
@@ -176,13 +176,13 @@ void GScript::RemoveScriptGameThing(uint32_t id)
 GameThingWithPos* GScript::GetScriptGameThing(uint32_t id)
 {
 	GameThingWithPos* thing = NULL;
-	SCRIPT_ASSERT(id != 0, "Jonty - Script looking for null object");
+	SCRIPT_ASSERT(id != SCRIPT_MANAGE_SLOT_NONE, "Jonty - Script looking for null object");
 	SCRIPT_ASSERT(id < SCRIPT_MANAGE_TABLE_SIZE, "Jonty - Out of script range");
 	if (id >= SCRIPT_MANAGE_TABLE_SIZE)
 	{
 		return NULL;
 	}
-	if (id != 0)
+	if (id != SCRIPT_MANAGE_SLOT_NONE)
 	{
 		thing = (GameThingWithPos*)ScriptManage::VariableTable[id].GetBase();
 	}
@@ -210,29 +210,29 @@ GameThingWithPos* GScript::GetScriptGameThing(uint32_t id)
 
 uint32_t GScript::FindOrAddScriptGameThing(GameThingWithPos* thing)
 {
-	uint32_t freeSlot = 0;
-	for (uint32_t slot = SCRIPT_MANAGE_FIRST_SLOT; slot < SCRIPT_MANAGE_TABLE_SIZE; slot++)
+	uint32_t freeSlot = SCRIPT_MANAGE_SLOT_NONE;
+	for (uint32_t slot = SCRIPT_MANAGE_SLOT_FIRST; slot < SCRIPT_MANAGE_TABLE_SIZE; slot++)
 	{
 		if (ScriptManage::VariableTable[slot].GetBase() == thing)
 		{
 			return slot;
 		}
-		if (freeSlot == 0 && ScriptManage::VariableTable[slot].IsClear())
+		if (freeSlot == SCRIPT_MANAGE_SLOT_NONE && ScriptManage::VariableTable[slot].IsClear())
 		{
 			freeSlot = slot;
 		}
 	}
-	if (freeSlot != 0)
+	if (freeSlot != SCRIPT_MANAGE_SLOT_NONE)
 	{
 		ScriptManage::VariableTable[freeSlot].SetThing(thing, false);
 		return freeSlot;
 	}
-	return 0;
+	return SCRIPT_MANAGE_SLOT_NONE;
 }
 
 void GScript::DeleteAllScriptCreatedGameThings()
 {
-	for (uint32_t slot = SCRIPT_MANAGE_FIRST_SLOT; slot < SCRIPT_MANAGE_TABLE_SIZE; slot++)
+	for (uint32_t slot = SCRIPT_MANAGE_SLOT_FIRST; slot < SCRIPT_MANAGE_TABLE_SIZE; slot++)
 	{
 		if (!ScriptManage::VariableTable[slot].IsClear())
 		{
@@ -270,10 +270,10 @@ void GScript::DeleteAllScriptCreatedGameThings()
 	}
 }
 
-bool32_t GScript::IsCreatedByScript(uint32_t slot)
+bool32_t GScript::IsCreatedByScript(unsigned long slot)
 {
-	SCRIPT_ASSERT(slot > 0 && slot < SCRIPT_MANAGE_TABLE_SIZE, "Jonty - Out of script range");
-	bool32_t valid = slot > 0 && slot < SCRIPT_MANAGE_TABLE_SIZE;
+	SCRIPT_ASSERT(slot > SCRIPT_MANAGE_SLOT_NONE && slot < SCRIPT_MANAGE_TABLE_SIZE, "Jonty - Out of script range");
+	bool32_t valid = slot > SCRIPT_MANAGE_SLOT_NONE && slot < SCRIPT_MANAGE_TABLE_SIZE;
 	if (!valid)
 	{
 		return false;
@@ -283,7 +283,7 @@ bool32_t GScript::IsCreatedByScript(uint32_t slot)
 
 void GScript::ProcessReferenceTable()
 {
-	for (uint32_t slot = SCRIPT_MANAGE_FIRST_SLOT; slot < SCRIPT_MANAGE_TABLE_SIZE; slot++)
+	for (uint32_t slot = SCRIPT_MANAGE_SLOT_FIRST; slot < SCRIPT_MANAGE_TABLE_SIZE; slot++)
 	{
 		if (!ScriptManage::VariableTable[slot].IsClear() && ScriptManage::VariableTable[slot].GetNoReferences() == 0)
 		{

@@ -13,7 +13,12 @@
 #else
 #define SCRIPT_MANAGE_TABLE_SIZE 512
 #endif
-#define SCRIPT_MANAGE_FIRST_SLOT 1
+
+enum SCRIPT_MANAGE_SLOT
+{
+	SCRIPT_MANAGE_SLOT_NONE = 0,
+	SCRIPT_MANAGE_SLOT_FIRST = 1,
+};
 
 // Forward Declares
 

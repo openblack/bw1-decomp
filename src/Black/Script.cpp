@@ -98,7 +98,7 @@ void GScript::Initialise()
 {
 	g_scriptDLL = ScriptDLL::Create(".\\Plug Ins\\ScriptLibrary");
 	g_scriptDLL->Load(NULL);
-	g_scriptDLL->Initialise(g_scriptFunctionTable, LibraryMessage, VMStartCall, NULL, VMDebugCallBack,
+	g_scriptDLL->Initialise(ScriptFunctionTable::Table, LibraryMessage, VMStartCall, NULL, VMDebugCallBack,
 	                        CleanupOnScriptTask);
 	LHResetFPU();
 }
@@ -133,7 +133,7 @@ void GScript::Reset(bool32_t load_challenge)
 #endif
 	ScriptsLoaded = false;
 	CountDownTimerEnabled = false;
-	ScriptManage::NextFreeSlot = SCRIPT_MANAGE_FIRST_SLOT;
+	ScriptManage::NextFreeSlot = SCRIPT_MANAGE_SLOT_FIRST;
 #ifdef VERSION_BW1WCI
 	PlayVillagerSounds = true;
 	PlayCreatureSounds = true;
@@ -315,7 +315,7 @@ void GScript::ValidateScriptVariables()
 	ProcessReferenceTable();
 }
 
-int GScript::StartScript(char* name)
+uint32_t GScript::StartScript(char* name)
 {
 	if (g_scriptDLL == NULL)
 	{
@@ -559,7 +559,7 @@ void GScript::CleanGameForScriptReboot()
 			GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 			GGame::g_game->MyInterface()->EndPlayBack();
 		}
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURES_NORMAL, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_NORMAL, CAMERA_FEATURE_ALL);
 		CameraExclusion::ResetExclusionFile(CAMERA_EXCLUSION_ID_SCRIPT);
 		if (GGame::g_game->GetCamera() != NULL)
 		{
@@ -626,7 +626,7 @@ bool32_t GScript::Save(GameOSFile& file)
 	sprintf(path, "%sScript_%s", directory, fileName);
 	SaveState(path);
 
-	for (uint32_t i = SCRIPT_MANAGE_FIRST_SLOT; i < SCRIPT_MANAGE_TABLE_SIZE; i++)
+	for (uint32_t i = SCRIPT_MANAGE_SLOT_FIRST; i < SCRIPT_MANAGE_TABLE_SIZE; i++)
 	{
 		ScriptManage::VariableTable[i].Save(file);
 	}
@@ -678,7 +678,7 @@ bool32_t GScript::Load(GameOSFile& file)
 	g_scriptDLL->Reboot();
 	ValidateScriptVariables();
 
-	for (uint32_t i = SCRIPT_MANAGE_FIRST_SLOT; i < SCRIPT_MANAGE_TABLE_SIZE; i++)
+	for (uint32_t i = SCRIPT_MANAGE_SLOT_FIRST; i < SCRIPT_MANAGE_TABLE_SIZE; i++)
 	{
 		ScriptManage::VariableTable[i].Load(file);
 	}
@@ -763,7 +763,7 @@ void GScript::CleanupOnScriptTask(unsigned long task)
 
 void GScript::VMStartCall(unsigned long function)
 {
-	GGame::g_game->script->LoopSetControlledByScript = g_scriptFunctionTable[function].TakesControl;
+	GGame::g_game->script->LoopSetControlledByScript = ScriptFunctionTable::Table[function].TakesControl;
 }
 
 void GScript::VMEndCall(unsigned long function) {}

@@ -58,6 +58,8 @@ public:
 
 	// BW1W120 005fb3b0 BW1M119 013b6320
 	static MAGIC_TYPE GetInfoFromText(const char* text);
+	// BW1W120 inlined BW1M119 01504d50
+	static GMagicInfo** GetInfo() { return Infos; }
 
 	// Static members
 

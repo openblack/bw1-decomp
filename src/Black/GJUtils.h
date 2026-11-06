@@ -61,6 +61,7 @@ inline float boundf(float low, float value, float high)
 	return value > low ? (value < high ? value : high) : low;
 }
 
+// BW1W120 inlined BW1M119 inlined
 inline void Wrap(float& value, float range)
 {
 	float t = value;

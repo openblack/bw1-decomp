@@ -202,7 +202,7 @@ public:
 	// BW1W120 005db3f0 BW1M119 01373720
 	void EndPlayBack();
 	// BW1W120 005db710 BW1M119 01074d00
-	bool32_t IsPlayBack(uint32_t playback) const;
+	bool32_t IsPlayBack(unsigned long task) const;
 	// BW1W120 inlined BW1M119 010789b0
 	CHand* GetRenderHand() { return hand.Get(); }
 	// BW1W120 inlined BW1M119 01079860

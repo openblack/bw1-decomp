@@ -184,7 +184,7 @@ static float Global_00c5b0d0;
 // BW1W120 00c5b0d4
 static float Global_00c5b0d4;
 // BW1W120 00c5b0d8
-static float Global_00c5b0d8[4];
+static float Global_00c5b0d8[CAMERA_TRICON_INDEX_COUNT];
 // BW1W120 00c5b0e8
 static int Global_00c5b0e8;
 // BW1W120 00c5b0ec
@@ -555,7 +555,7 @@ void CameraExclusion::SaveExclusionFile(LHFile* file, unsigned long id)
 
 void CameraExclusion::LoadExclusionFile(GameOSFile& file)
 {
-	ResetExclusionFile(0);
+	ResetExclusionFile(CAMERA_EXCLUSION_ID_DEFAULT);
 	RemoveAll();
 	int size;
 	file.ReadIt(size); // version
@@ -871,18 +871,19 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	    (hand != NULL && hand->HandStates.raw[hand->CurrentState] != NULL &&
 	     !hand->HandStates.raw[hand->CurrentState]->AllowCameraTricons()))
 	{
-		ActiveTricons &= ~0x707;
+		ActiveTricons &= ~(CAMERA_TRICON_PITCH | CAMERA_TRICON_ROTATE | CAMERA_TRICON_ZOOM | CAMERA_TRICON_PITCH_DIM |
+		                   CAMERA_TRICON_ROTATE_DIM | CAMERA_TRICON_ZOOM_DIM);
 	}
 
 	int i;
 	int mask;
-	for (i = 0, mask = 1; i < 4; i++, mask <<= 1)
+	for (i = 0, mask = CAMERA_TRICON_PITCH; i < CAMERA_TRICON_INDEX_COUNT; i++, mask <<= 1)
 	{
 		float speed = TriconFadeSpeed;
 		if (ActiveTricons & mask)
 		{
 			float target;
-			if (ActiveTricons & (0x100 << i))
+			if (ActiveTricons & (CAMERA_TRICON_PITCH_DIM << i))
 			{
 				target = 0.6f;
 			}
@@ -895,12 +896,12 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 				}
 				target = dimmed ? 0.9f : 1.0f;
 			}
-			if (i == 3)
+			if (i == CAMERA_TRICON_INDEX_HELP)
 			{
 				speed = 0.3f;
 				target = 0.2f;
 			}
-			if (i == 3 && Global_00c5e164 != 0)
+			if (i == CAMERA_TRICON_INDEX_HELP && Global_00c5e164 != 0)
 			{
 				if (Global_00c5e164 == 1)
 				{
@@ -909,15 +910,15 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 				else
 				{
 					target = 1.0f;
-					Global_00c5b0d8[3] = target;
+					Global_00c5b0d8[CAMERA_TRICON_INDEX_HELP] = target;
 				}
 				Global_00c5e164 = 0;
 			}
-			if (i == 3 &&
+			if (i == CAMERA_TRICON_INDEX_HELP &&
 			    ((GGame::g_game->MyInterface() != NULL && GGame::g_game->MyInterface()->IsPlayBack(0)) || NoCross > 0))
 			{
 				target = 0.0f;
-				Global_00c5b0d8[3] = target;
+				Global_00c5b0d8[CAMERA_TRICON_INDEX_HELP] = target;
 			}
 			if (Global_00c5b0d8[i] > target)
 			{
@@ -978,8 +979,8 @@ void CameraModeNew3::Initialise()
 		TriconSprite->SetMaterial(LH3DAtmos::mat0);
 		TriconSprite->SetSize(2.0f);
 		TriconSprite->colour = LH3DColor(0xffffffff);
-		TriconSprite->Frame = 12;
-		TriconSprite->FramesPerRow = 4;
+		TriconSprite->Frame = CAMERA_TRICON_FIRST_FRAME;
+		TriconSprite->FramesPerRow = CAMERA_TRICON_FRAMES_PER_ROW;
 		LH3DRender::RegisterFinishFrameCallback(1000, true, tricondraw, NULL);
 		ForceField = new ("C:\\dev\\MP\\Black\\CameraModeNew3.cpp", 956) LightSheet();
 		ForceField->Init(256);
@@ -1056,15 +1057,15 @@ void CameraModeNew3::DrawHandTricon()
 	TriconSprite->colour = colour;
 	int time = GetTickCount();
 	TriconSprite->angle = 0.0f;
-	TriconSprite->FramesPerRow = 8;
+	TriconSprite->FramesPerRow = CAMERA_HAND_TRICON_FRAMES_PER_ROW;
 	// TriconSprite->SetMaterial(BlobMaterial);
 	TriconSprite->SetSize(size * 0.75f);
-	TriconSprite->Frame = (time / 50) & 0xf;
+	TriconSprite->Frame = (time / 50) & CAMERA_HAND_TRICON_LAST_FRAME;
 	TriconSprite->Draw();
 	TriconSprite->SetSize(size * 0.5f);
-	TriconSprite->Frame = 15 - ((time / 100) & 0xf);
+	TriconSprite->Frame = CAMERA_HAND_TRICON_LAST_FRAME - ((time / 100) & CAMERA_HAND_TRICON_LAST_FRAME);
 	TriconSprite->Draw();
-	TriconSprite->FramesPerRow = 4;
+	TriconSprite->FramesPerRow = CAMERA_TRICON_FRAMES_PER_ROW;
 }
 
 // BW1W120 009ce6bc
@@ -1125,16 +1126,16 @@ void CameraModeNew3::TriconDraw()
 		{
 			LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
 			TriconSprite->SetMaterial(LH3DAtmos::mat0);
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < CAMERA_TRICON_INDEX_COUNT; i++)
 			{
 				if (Global_00c5b0d8[i] > 0.0f)
 				{
 					int alpha = (int)(Global_00c5b0d8[i] * 255.0f);
 					if (alpha != 0)
 					{
-						TriconSprite->colour = LH3DColor((alpha << 24) + 0xffffff);
-						TriconSprite->angle = i == 1 ? Global_00c5b0ac : 0.0f;
-						TriconSprite->Frame = i + 12;
+						TriconSprite->colour = LH3DColor((alpha << 24) + LH3D_COLOR_RGB_MASK);
+						TriconSprite->angle = i == CAMERA_TRICON_INDEX_ROTATE ? Global_00c5b0ac : 0.0f;
+						TriconSprite->Frame = i + CAMERA_TRICON_FIRST_FRAME;
 						TriconSprite->SetSize(size);
 						TriconSprite->Draw();
 					}
@@ -1362,11 +1363,11 @@ void CameraModeNew3::ProcessKeyMovement(uint16_t key)
 	{
 		if (GGame::g_game->control_map->IsActionPerformed(BINDABLE_ACTION_ZOOM_ON))
 		{
-			KeyTriconFlags |= 9;
+			KeyTriconFlags |= CAMERA_TRICON_INPUT_ROTATE | CAMERA_TRICON_INPUT_ZOOM;
 		}
 		else if (IsRotateKeyModifierActive())
 		{
-			KeyTriconFlags |= 3;
+			KeyTriconFlags |= CAMERA_TRICON_INPUT_ROTATE | CAMERA_TRICON_INPUT_PITCH;
 		}
 	}
 	if (GGlobal::Global.EditorMode == false)
@@ -1723,119 +1724,125 @@ void CameraModeNew3::UpdateTricons()
 	}
 	if (MouseButtons == CAMERA_MODE_MOUSE_STATUS_NONE)
 	{
-		MouseTriconFlags = 0x80;
+		MouseTriconFlags = CAMERA_TRICON_INPUT_HOVER;
 		float bottom = LHSys::TheSystem.screen.windowed ? 0.45f : 0.49f;
 		if (FromScreenCentreAbs.x > TriconSideThreshold)
 		{
-			MouseTriconFlags |= 1;
+			MouseTriconFlags |= CAMERA_TRICON_INPUT_ROTATE;
 		}
 		if (FromScreenCentre.y > TriconTopThreshold)
 		{
-			MouseTriconFlags |= 1;
+			MouseTriconFlags |= CAMERA_TRICON_INPUT_ROTATE;
 		}
 		if (FromScreenCentre.y > bottom)
 		{
-			MouseTriconFlags |= 2;
+			MouseTriconFlags |= CAMERA_TRICON_INPUT_PITCH;
 		}
 		if ((!HandHit && FromScreenCentre.y < -0.4f) || FromScreenCentre.y < -bottom)
 		{
-			MouseTriconFlags |= 7;
+			MouseTriconFlags |= CAMERA_TRICON_INPUT_ROTATE | CAMERA_TRICON_INPUT_PITCH | CAMERA_TRICON_INPUT_TOP_EDGE;
 		}
-		if (MouseTriconFlags & 1)
+		if (MouseTriconFlags & CAMERA_TRICON_INPUT_ROTATE)
 		{
-			MouseTriconFlags |= 0x40;
+			MouseTriconFlags |= CAMERA_TRICON_INPUT_TRACK_ANGLE;
 		}
 	}
 	else if (MouseButtons == CAMERA_MODE_MOUSE_STATUS_LEFT)
 	{
-		MouseTriconFlags &= ~0x80;
-		if (MouseTriconFlags & 1)
+		MouseTriconFlags &= ~CAMERA_TRICON_INPUT_HOVER;
+		if (MouseTriconFlags & CAMERA_TRICON_INPUT_ROTATE)
 		{
-			MouseTriconFlags |= 0x40;
+			MouseTriconFlags |= CAMERA_TRICON_INPUT_TRACK_ANGLE;
 		}
 	}
 	if (Global_00c5b0c4 != 0.0f || HandStatus == CAMERA_MODE_HAND_STATUS_0x6 ||
 	    HandStatus == CAMERA_MODE_HAND_STATUS_TILTING)
 	{
-		KeyTriconFlags |= 2;
+		KeyTriconFlags |= CAMERA_TRICON_INPUT_PITCH;
 	}
 	if (Global_00c5b0c8 != 0.0f || HandStatus == CAMERA_MODE_HAND_STATUS_PANNING)
 	{
-		KeyTriconFlags |= 1;
+		KeyTriconFlags |= CAMERA_TRICON_INPUT_ROTATE;
 	}
 	if (HasFight)
 	{
-		MouseTriconFlags &= ~2;
+		MouseTriconFlags &= ~CAMERA_TRICON_INPUT_PITCH;
 	}
 	uint32_t flags = MouseTriconFlags;
-	if (flags & 2)
+	if (flags & CAMERA_TRICON_INPUT_PITCH)
 	{
-		ActiveTricons |= (MouseTriconFlags & 0x80 ? 0x100 : 0) | 1;
+		ActiveTricons |=
+			(MouseTriconFlags & CAMERA_TRICON_INPUT_HOVER ? CAMERA_TRICON_PITCH_DIM : 0) | CAMERA_TRICON_PITCH;
 	}
-	if (flags & 1)
+	if (flags & CAMERA_TRICON_INPUT_ROTATE)
 	{
-		ActiveTricons |= (MouseTriconFlags & 0x80 ? 0x200 : 0) | 2;
+		ActiveTricons |=
+			(MouseTriconFlags & CAMERA_TRICON_INPUT_HOVER ? CAMERA_TRICON_ROTATE_DIM : 0) | CAMERA_TRICON_ROTATE;
 	}
-	if (flags & 8)
+	if (flags & CAMERA_TRICON_INPUT_ZOOM)
 	{
-		ActiveTricons |= (MouseTriconFlags & 0x80 ? 0x400 : 0) | 4;
+		ActiveTricons |=
+			(MouseTriconFlags & CAMERA_TRICON_INPUT_HOVER ? CAMERA_TRICON_ZOOM_DIM : 0) | CAMERA_TRICON_ZOOM;
 	}
 	if (MouseButtons != CAMERA_MODE_MOUSE_STATUS_LEFT)
 	{
 		if (Global_00c5b0ec)
 		{
-			flags |= 3;
-			flags &= ~0x40;
+			flags |= CAMERA_TRICON_INPUT_ROTATE | CAMERA_TRICON_INPUT_PITCH;
+			flags &= ~CAMERA_TRICON_INPUT_TRACK_ANGLE;
 			Global_00c5b0ac = 0.0f;
 		}
-		if (!(ActiveTricons & 1) && (KeyTriconFlags & 2))
+		if (!(ActiveTricons & CAMERA_TRICON_PITCH) && (KeyTriconFlags & CAMERA_TRICON_INPUT_PITCH))
 		{
-			ActiveTricons = (ActiveTricons & ~0x100) | 1 | (Global_00c5b0c4 != 0.0f ? 0 : 0x100);
+			ActiveTricons = (ActiveTricons & ~CAMERA_TRICON_PITCH_DIM) | CAMERA_TRICON_PITCH |
+			                (Global_00c5b0c4 != 0.0f ? 0 : CAMERA_TRICON_PITCH_DIM);
 		}
-		if (!(ActiveTricons & 2) && (KeyTriconFlags & 1))
+		if (!(ActiveTricons & CAMERA_TRICON_ROTATE) && (KeyTriconFlags & CAMERA_TRICON_INPUT_ROTATE))
 		{
-			ActiveTricons = (ActiveTricons & ~0x200) | 2 | (Global_00c5b0c8 != 0.0f ? 0 : 0x200);
-			flags &= ~0x40;
+			ActiveTricons = (ActiveTricons & ~CAMERA_TRICON_ROTATE_DIM) | CAMERA_TRICON_ROTATE |
+			                (Global_00c5b0c8 != 0.0f ? 0 : CAMERA_TRICON_ROTATE_DIM);
+			flags &= ~CAMERA_TRICON_INPUT_TRACK_ANGLE;
 			Global_00c5b0ac = 0.0f;
 		}
-		if (!(ActiveTricons & 4) && (KeyTriconFlags & 8))
+		if (!(ActiveTricons & CAMERA_TRICON_ZOOM) && (KeyTriconFlags & CAMERA_TRICON_INPUT_ZOOM))
 		{
-			ActiveTricons = (ActiveTricons & ~0x400) | ((Global_00c5b0cc != 0.0f ? 0 : 0x400) + 4);
+			ActiveTricons = (ActiveTricons & ~CAMERA_TRICON_ZOOM_DIM) |
+			                ((Global_00c5b0cc != 0.0f ? 0 : CAMERA_TRICON_ZOOM_DIM) + CAMERA_TRICON_ZOOM);
 		}
 	}
 	if (Global_00c5b100.GetCurrentValue() > 0.5f)
 	{
-		ActiveTricons = 4;
+		ActiveTricons = CAMERA_TRICON_ZOOM;
 	}
 	if (!(GetCameraFeatures() & CAMERA_FEATURE_PITCH))
 	{
-		ActiveTricons &= ~0x101;
+		ActiveTricons &= ~(CAMERA_TRICON_PITCH | CAMERA_TRICON_PITCH_DIM);
 	}
 	if (!(GetCameraFeatures() & CAMERA_FEATURE_ROTATE))
 	{
-		ActiveTricons &= ~0x202;
+		ActiveTricons &= ~(CAMERA_TRICON_ROTATE | CAMERA_TRICON_ROTATE_DIM);
 	}
 	if (!(GetCameraFeatures() & CAMERA_FEATURE_ZOOM))
 	{
-		ActiveTricons &= ~0x404;
+		ActiveTricons &= ~(CAMERA_TRICON_ZOOM | CAMERA_TRICON_ZOOM_DIM);
 	}
 	if ((GetCameraFeatures() & CAMERA_FEATURE_HELP) && GGame::g_game->MyInterface()->field_0x48 == 0)
 	{
-		ActiveTricons |= 8;
+		ActiveTricons |= CAMERA_TRICON_HELP;
 	}
-	if (flags & 0x40)
+	if (flags & CAMERA_TRICON_INPUT_TRACK_ANGLE)
 	{
 		Global_00c5b0ac = atan360(FromScreenCentre.x, FromScreenCentre.y) - HALF_PI_F;
 	}
-	if (MouseTriconFlags & 0x10)
+	if (MouseTriconFlags & CAMERA_TRICON_INPUT_TOO_FAR_AWAY)
 	{
 		if ((GetTickCount() / 200) & 1)
 		{
-			ActiveTricons = 8;
+			ActiveTricons = CAMERA_TRICON_HELP;
 		}
 		else
 		{
-			ActiveTricons &= ~8;
+			ActiveTricons &= ~CAMERA_TRICON_HELP;
 		}
 	}
 	if (field_0x2ec || field_0x2f0)
@@ -1844,7 +1851,7 @@ void CameraModeNew3::UpdateTricons()
 	}
 	if (field_0x2f0 && (GetCameraFeatures() & CAMERA_FEATURE_HELP))
 	{
-		ActiveTricons |= 8;
+		ActiveTricons |= CAMERA_TRICON_HELP;
 	}
 }
 
@@ -2652,7 +2659,7 @@ void CameraModeNew3::Update()
 		float heading;
 		float pitch;
 		GCamera::GetHeadingAndPitchFromPoints(originDest, Heading0x12c, &heading, &pitch);
-		Global_00c5b0c4 = (CameraHelp::AutoPitchParam1 - pitch) * 0.2f;
+		Global_00c5b0c4 = (CameraHelp::AutoPitch - pitch) * 0.2f;
 		if (fabs(Global_00c5b0c4) > 0.01)
 		{
 			Global_00c5b0c4 = (Global_00c5b0c4 > -dt ? min(Global_00c5b0c4, dt) : -dt) * -150.0f;
@@ -2685,7 +2692,7 @@ void CameraModeNew3::Update()
 	{
 		UpdateTricons();
 	}
-	if (Global_00c5e168 && (MouseTriconFlags & 0x10))
+	if (Global_00c5e168 && (MouseTriconFlags & CAMERA_TRICON_INPUT_TOO_FAR_AWAY))
 	{
 		CameraHelp::CameraHelpCallback(CameraHelpReason_HandTooFarAway, originDest, 0);
 	}
@@ -2911,7 +2918,7 @@ void CameraModeNew3::Update()
 
 	if (MouseButtons == CAMERA_MODE_MOUSE_STATUS_LEFT)
 	{
-		if (!(MouseTriconFlags & 3))
+		if (!(MouseTriconFlags & (CAMERA_TRICON_INPUT_ROTATE | CAMERA_TRICON_INPUT_PITCH)))
 		{
 			HandStatus = CAMERA_MODE_HAND_STATUS_GRABBING_LAND;
 		}
@@ -2938,7 +2945,8 @@ void CameraModeNew3::Update()
 				HandStatus = CAMERA_MODE_HAND_STATUS_GRABBING_LAND;
 				float alongDrag = drag.x * along.x + drag.y * along.y;
 				float acrossDrag = drag.x * across.x + drag.y * across.y;
-				if ((MouseTriconFlags & 3) == 3)
+				if ((MouseTriconFlags & (CAMERA_TRICON_INPUT_ROTATE | CAMERA_TRICON_INPUT_PITCH)) ==
+				    (CAMERA_TRICON_INPUT_ROTATE | CAMERA_TRICON_INPUT_PITCH))
 				{
 					if ((GetCameraFeatures() & (CAMERA_FEATURE_PITCH | CAMERA_FEATURE_ROTATE)) !=
 					    (CAMERA_FEATURE_PITCH | CAMERA_FEATURE_ROTATE))
@@ -2949,8 +2957,9 @@ void CameraModeNew3::Update()
 						}
 						else
 						{
-							HandStatus =
-								(MouseTriconFlags & 4) ? CAMERA_MODE_HAND_STATUS_0x6 : CAMERA_MODE_HAND_STATUS_TILTING;
+							HandStatus = (MouseTriconFlags & CAMERA_TRICON_INPUT_TOP_EDGE)
+							                 ? CAMERA_MODE_HAND_STATUS_0x6
+							                 : CAMERA_MODE_HAND_STATUS_TILTING;
 						}
 					}
 					else if (fabs(drag.y) < fabs(drag.x))
@@ -2959,11 +2968,12 @@ void CameraModeNew3::Update()
 					}
 					else
 					{
-						HandStatus =
-							(MouseTriconFlags & 4) ? CAMERA_MODE_HAND_STATUS_0x6 : CAMERA_MODE_HAND_STATUS_TILTING;
+						HandStatus = (MouseTriconFlags & CAMERA_TRICON_INPUT_TOP_EDGE)
+						                 ? CAMERA_MODE_HAND_STATUS_0x6
+						                 : CAMERA_MODE_HAND_STATUS_TILTING;
 					}
 				}
-				else if ((MouseTriconFlags & 1) == 1)
+				else if ((MouseTriconFlags & CAMERA_TRICON_INPUT_ROTATE) == CAMERA_TRICON_INPUT_ROTATE)
 				{
 					if ((GetCameraFeatures() & (CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_MOVE)) !=
 					    (CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_MOVE))
@@ -2981,9 +2991,10 @@ void CameraModeNew3::Update()
 						HandStatus = CAMERA_MODE_HAND_STATUS_GRABBING_LAND;
 					}
 				}
-				else if ((MouseTriconFlags & 2) == 2)
+				else if ((MouseTriconFlags & CAMERA_TRICON_INPUT_PITCH) == CAMERA_TRICON_INPUT_PITCH)
 				{
-					HandStatus = (MouseTriconFlags & 4) ? CAMERA_MODE_HAND_STATUS_0x6 : CAMERA_MODE_HAND_STATUS_TILTING;
+					HandStatus = (MouseTriconFlags & CAMERA_TRICON_INPUT_TOP_EDGE) ? CAMERA_MODE_HAND_STATUS_0x6
+					                                                               : CAMERA_MODE_HAND_STATUS_TILTING;
 				}
 				if (HandStatus == CAMERA_MODE_HAND_STATUS_0x6 || HandStatus == CAMERA_MODE_HAND_STATUS_TILTING)
 				{
@@ -3071,7 +3082,7 @@ void CameraModeNew3::Update()
 				yaw += angle;
 				local_b4 = 1;
 				Yaw0 += angle;
-				MouseTriconFlags = 1;
+				MouseTriconFlags = CAMERA_TRICON_INPUT_ROTATE;
 				field_0x4d = 1;
 				SmoothStrafeSpeedX(angle, dt);
 				strafed = 1;
@@ -3124,14 +3135,14 @@ void CameraModeNew3::Update()
 					}
 				}
 				local_b4 = 1;
-				MouseTriconFlags = 2;
+				MouseTriconFlags = CAMERA_TRICON_INPUT_PITCH;
 			}
 		}
 		else if (HandStatus == CAMERA_MODE_HAND_STATUS_GRABBING_LAND)
 		{
 			if (PerpDistance0xec > 3000.0f)
 			{
-				MouseTriconFlags = 0x10;
+				MouseTriconFlags = CAMERA_TRICON_INPUT_TOO_FAR_AWAY;
 				local_4b = true;
 				field_0x2f0 = 1;
 			}
@@ -3173,7 +3184,7 @@ void CameraModeNew3::Update()
 					}
 					else
 					{
-						MouseTriconFlags = 0x10;
+						MouseTriconFlags = CAMERA_TRICON_INPUT_TOO_FAR_AWAY;
 					}
 				}
 				if (local_b4)
@@ -3476,7 +3487,7 @@ void CameraModeNew3::Update()
 	case 2: {
 		if (PerpDistance0xec > 3000.0f)
 		{
-			MouseTriconFlags = 0x10;
+			MouseTriconFlags = CAMERA_TRICON_INPUT_TOO_FAR_AWAY;
 			break;
 		}
 		float tanHalfFov = tan(LH3DTech::g_camera.fov * 0.5f);
@@ -3507,7 +3518,7 @@ void CameraModeNew3::Update()
 		local_86 = false;
 		if (MouseButtons == CAMERA_MODE_MOUSE_STATUS_NONE || autoPitched)
 		{
-			pos.y = LH3DIsland::GetAltitude(LH3DMapCoords(pos.x, pos.z)) + CameraHelp::AutoPitchParam2;
+			pos.y = LH3DIsland::GetAltitude(LH3DMapCoords(pos.x, pos.z)) + CameraHelp::AutoPitchHeight;
 			local_4a = true;
 		}
 	}
@@ -3942,7 +3953,7 @@ void CameraExclusion::DrawSphere(LHPoint& centre, float radius, float height, LH
 void ResetCameraModeNew3()
 {
 	CameraExclusion::RemoveAll();
-	CameraExclusion::ResetExclusionFile(0);
+	CameraExclusion::ResetExclusionFile(CAMERA_EXCLUSION_ID_DEFAULT);
 	CameraModeNew3::NoCross = 0;
 	Global_00c5b0c4 = 0.0f;
 	Global_00c5e13c = BigDistance;

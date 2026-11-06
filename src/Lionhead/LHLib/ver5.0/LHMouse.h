@@ -247,8 +247,6 @@ struct LHMouse
 
 	// Static members
 
-	// Set on WM_ACTIVATEAPP so UpdateDeltaPos skips the stale wheel
-	// delta accumulated while the app was inactive.
 	// BW1W120 00c311a4
 	static uint8_t MouseWheelSkip;
 };

@@ -365,7 +365,7 @@ void GScript::GetSpellLastCastTime()
 	GPlayer* player = GGame::g_game->GetPlayer(ConvertScriptPlayerToGamePlayer((unsigned long)scriptPlayer));
 	if (player != NULL)
 	{
-		int   turns = GGame::g_game->data.GameTurn - player->LastSpell.GameTurn;
+		int   turns = GGame::g_game->data.GetGameTurn() - player->LastSpell.GameTurn;
 		float seconds = (float)turns * GGameInfo::Info.MillisecondsPerGameTurn * SCRIPT_SECONDS_PER_MILLISECOND;
 		g_scriptDLL->FLOAT_PUSH(seconds);
 	}
@@ -400,9 +400,7 @@ void GScript::GetSpellLastCastPos()
 	}
 	else
 	{
-		pos.z = 0.0f;
-		pos.y = 0.0f;
-		pos.x = 0.0f;
+		pos.SetNull();
 	}
 	g_scriptDLL->POINT_PUSH(pos);
 }
@@ -447,7 +445,7 @@ void GScript::SetMagicProperties()
 			}
 			else
 			{
-				dispenser->Charges = (uint32_t)((GAbodeInfo*)dispenser->info)->TimeEachMobileObjectTakesToProduce;
+				dispenser->Charges = (uint32_t)dispenser->GetInfo()->TimeEachMobileObjectTakesToProduce;
 				if (dispenser->Charges == 0)
 				{
 					dispenser->SetActive(false);
@@ -460,7 +458,7 @@ void GScript::SetMagicProperties()
 void GScript::GetManaForSpell()
 {
 	MAGIC_TYPE type = (MAGIC_TYPE)g_scriptDLL->ULONG_POP();
-	g_scriptDLL->FLOAT_PUSH(GMagicInfo::Infos[type]->GetCreateCost());
+	g_scriptDLL->FLOAT_PUSH(GMagicInfo::GetInfo()[type]->GetCreateCost());
 }
 
 void GScript::ClearPlayerSpellCharging()

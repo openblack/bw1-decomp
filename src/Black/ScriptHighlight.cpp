@@ -9,6 +9,7 @@
 
 #include <chlasm/HelpTextEnums.h>                      /* For HELP_TEXT_TOOLTIP_120 */
 #include <chlasm/LHSample.h>                           /* For LH_SAMPLE_G_CLICKONSCROLL_01, LH_SAMPLE_G_CLICKSIGNPOST */
+#include <chlasm/ScriptChallengeEnums.h>               /* For CHALLENGE_LEAVE_THROUGH_VORTEX_LAND1 */
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>   /* For LH3DIsland::GetAltitude */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>     /* For InverseSquareRoot */
 #include <Lionhead/LH3DLib/development/LH3DMaterial.h> /* For struct MaterialProperties */
@@ -38,6 +39,7 @@
 #include "PSysInterface.h"   /* For class PSysInterface */
 #include "PSysProcessInfo.h" /* For struct PSysProcessInfo */
 #include "Script.h"          /* For class GScript */
+#include "ScriptConstants.h" /* For SCRIPT_TASK_NONE */
 #include "ScriptDLL.h"       /* For class ScriptDLL */
 #include "Temple.h"          /* For struct Temple */
 #include "Utils.h"           /* For GUtils::GetDistance */
@@ -47,9 +49,12 @@
 #include <stdio.h>  /* For sprintf */
 #include <string.h> /* For strlen */
 
-#include <Lionhead/LH3DLib/development/LH3DOrientSprite.h> /* For struct LH3DOrientSprite */
-#include <Lionhead/LH3DLib/development/LH3DRender.h>       /* For LH3DRender::CreateMaterial */
-#include <Lionhead/LH3DLib/development/LH3DTexture.h>      /* For struct LH3DTexture */
+#include <Lionhead/LH3DLib/development/LH3DOrientSprite.h>  /* For struct LH3DOrientSprite */
+#include <Lionhead/LH3DLib/development/LH3DRender.h>        /* For LH3DRender::CreateMaterial */
+#include <Lionhead/LH3DLib/development/LHMatrixOperators.h> /* For operator+=, operator*= on LHMatrix */
+#include <Lionhead/LH3DLib/development/LH3DTexture.h>       /* For struct LH3DTexture */
+
+#include "ScriptHighlightScoreBoard.h" /* For ScriptHighlight::IsScoreBoard */
 #endif
 
 static float UnusedStatic = 0.0f;
@@ -58,14 +63,6 @@ static float BeamPulseValue = 0.0f;
 static float LastBeamPulseValue = 0.0f;
 
 GScriptHighlightInfo GScriptHighlightInfo::Infos[SCRIPT_HIGHLIGHT_INFO_LAST];
-
-#ifdef VERSION_BW1WCI
-inline bool32_t ScriptHighlight::IsScoreBoard()
-{
-	return GetInfo()->GetType() == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD ||
-	       GetInfo()->GetType() == SCRIPT_HIGHLIGHT_INFO_SCOREBOARD_BIG;
-}
-#endif
 
 void ScriptHighlight::OnClearMap()
 {
@@ -79,7 +76,7 @@ ScriptHighlight::ScriptHighlight()
 	SetToZero();
 }
 
-ScriptHighlight::ScriptHighlight(const MapCoords& coords, const GScriptHighlightInfo* info, uint32_t script_id,
+ScriptHighlight::ScriptHighlight(const MapCoords& coords, const GScriptHighlightInfo* info, unsigned long script_id,
                                  float y_angle, float scale)
 	: SingleMapFixed(coords, info, y_angle, scale)
 {
@@ -141,14 +138,14 @@ void ScriptHighlight::ToBeDeleted(bool32_t delete_now)
 	Object::ToBeDeleted(delete_now);
 }
 
-void ScriptHighlight::SetScriptId(uint32_t script_id, DYK_CATEGORY category)
+void ScriptHighlight::SetScriptId(unsigned long script_id, DYK_CATEGORY category)
 {
 	ScriptId = script_id;
 	Category = category;
 }
 
-ScriptHighlight* ScriptHighlight::Create(const MapCoords& coords, const GScriptHighlightInfo* info, uint32_t script_id,
-                                         float y_angle, float scale)
+ScriptHighlight* ScriptHighlight::Create(const MapCoords& coords, const GScriptHighlightInfo* info,
+                                         unsigned long script_id, float y_angle, float scale)
 {
 #ifdef VERSION_BW1WCI
 	ScriptHighlight* highlight = new (FILEPATH, 128) ScriptHighlight(coords, info, script_id, y_angle, scale);
@@ -203,7 +200,7 @@ void ScriptHighlight::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	Game3dObject->SetMesh(LH3DMesh::GetPackedMesh(Active ? GetActiveMesh() : GetMesh()), NULL, NULL);
 	if ((GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE) == 0)
 	{
-		PARTICLE_TYPE type = ((const GScriptHighlightInfo*)info)->ParticleType;
+		PARTICLE_TYPE type = GetInfo()->ParticleType;
 		if (type != PARTICLE_TYPE_NONE)
 		{
 			Particle = PSysInterface::Create(NULL, type, coords.GetLHPoint(), LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
@@ -224,38 +221,6 @@ void ScriptHighlight::SetDrawHeight(float height)
 }
 
 #ifdef VERSION_BW1WCI
-inline void AddToMatrix(LHMatrix& matrix, const LHMatrix& other)
-{
-	matrix.m[0] += other.m[0];
-	matrix.m[1] += other.m[1];
-	matrix.m[2] += other.m[2];
-	matrix.m[3] += other.m[3];
-	matrix.m[4] += other.m[4];
-	matrix.m[5] += other.m[5];
-	matrix.m[6] += other.m[6];
-	matrix.m[7] += other.m[7];
-	matrix.m[8] += other.m[8];
-	matrix.m[9] += other.m[9];
-	matrix.m[10] += other.m[10];
-	matrix.m[11] += other.m[11];
-}
-
-inline void ScaleWholeMatrix(LHMatrix& matrix, float scale)
-{
-	matrix.m[0] *= scale;
-	matrix.m[1] *= scale;
-	matrix.m[2] *= scale;
-	matrix.m[3] *= scale;
-	matrix.m[4] *= scale;
-	matrix.m[5] *= scale;
-	matrix.m[6] *= scale;
-	matrix.m[7] *= scale;
-	matrix.m[8] *= scale;
-	matrix.m[9] *= scale;
-	matrix.m[10] *= scale;
-	matrix.m[11] *= scale;
-}
-
 void ScriptHighlight::DrawSignPostText(int value, float angle, float scale)
 {
 	static LH3DTexture*      DigitTexture = NULL;
@@ -297,8 +262,8 @@ void ScriptHighlight::DrawSignPostText(int value, float angle, float scale)
 					{
 						digits = count;
 					}
-					int spare = count - digits;
-					int odd = spare & 1;
+					int      spare = count - digits;
+					bool32_t odd = spare & 1;
 					for (int i = 0; i < digits; i++)
 					{
 						LHMatrix matrix;
@@ -307,8 +272,8 @@ void ScriptHighlight::DrawSignPostText(int value, float angle, float scale)
 						{
 							LHMatrix other;
 							object->GetExtraPos(count - (spare + 1) / 2 - i - 1, &other);
-							AddToMatrix(matrix, other);
-							ScaleWholeMatrix(matrix, 0.5f);
+							matrix += other;
+							matrix *= 0.5f;
 						}
 						matrix.RotateZ(angle - HALF_PI_F);
 						matrix.RotateY(PI_F);
@@ -377,10 +342,10 @@ void ScriptHighlight::Draw()
 	if (!Hidden && (GGame::g_game->script->DrawHighlight || IsDidYouKnow()) && Game3dObject != NULL)
 	{
 #endif
-		int     type = (const GScriptHighlightInfo*)info - GScriptHighlightInfo::GetInfo();
-		LHPoint centre = Game3dObject->GetMesh()->GetBoundingBox().centre;
-		float   spin = LH3DTech::GetGameTimeInc() * PI_F / SCRIPT_HIGHLIGHT_SPIN_HALF_TURN_MS;
-		float   angle = Game3dObject->GetYAngle();
+		HIGHLIGHT_INFO type = (HIGHLIGHT_INFO)(GetInfo() - GScriptHighlightInfo::GetInfo());
+		LHPoint        centre = Game3dObject->GetMesh()->GetBoundingBox().centre;
+		float          spin = LH3DTech::GetGameTimeInc() * PI_F / SCRIPT_HIGHLIGHT_SPIN_HALF_TURN_MS;
+		float          angle = Game3dObject->GetYAngle();
 #ifdef VERSION_BW1WCI
 		if ((Active && IsDidYouKnow()) || IsScoreBoard())
 #else
@@ -436,9 +401,7 @@ void ScriptHighlight::Draw()
 		{
 			LHPoint camera;
 			GGame::g_game->GetCamera()->GetPosition(camera);
-			camera.x -= centre.x;
-			camera.y -= centre.y;
-			camera.z -= centre.z;
+			camera -= centre;
 			float    beamAngle = (float)atan2(camera.z, camera.x) + HALF_PI_F;
 			LHMatrix beamMatrix;
 			beamMatrix.SetRotationY(beamAngle);
@@ -452,7 +415,7 @@ void ScriptHighlight::Draw()
 			                           : RGBA_MAKE(YellowBeamRed, YellowBeamGreen, YellowBeamBlue,
 			                                       (uint8_t)(YellowBeamAlpha * GetNetUnsafeBeamPulseValue()));
 #else
-			unsigned long colour = type == SCRIPT_HIGHLIGHT_INFO_SCRIPT_GOLD
+			unsigned long colour = type == SCRIPT_HIGHLIGHT_INFO_SCRIPT_SILVER
 			                           ? RGBA_MAKE(BlueBeamRed, BlueBeamGreen, BlueBeamBlue, BlueBeamAlpha)
 			                           : RGBA_MAKE(YellowBeamRed, YellowBeamGreen, YellowBeamBlue,
 			                                       (uint8_t)(YellowBeamAlpha * (int)GetNetUnsafeBeamPulseValue()));
@@ -479,11 +442,7 @@ void ScriptHighlight::Draw()
 			ActiveParticle->Process(processInfo, LH3DTech::GetGameTimeInc());
 			ActiveParticle->Draw(1.0f, true);
 		}
-#ifdef VERSION_BW1WCI
 		if (Shower != NULL && GetInfo() == &GScriptHighlightInfo::GetInfo()[SCRIPT_HIGHLIGHT_INFO_SCRIPT_GOLD])
-#else
-		if (Shower != NULL && GetInfo() == &GScriptHighlightInfo::GetInfo()[SCRIPT_HIGHLIGHT_INFO_SCOREBOARD])
-#endif
 		{
 			Shower->SetPosition(top);
 			Shower->AddDrawing();
@@ -511,26 +470,16 @@ void ScriptHighlight::Draw()
 			uint8_t alpha = 0;
 			switch (type)
 			{
-#ifdef VERSION_BW1WCI
 			case SCRIPT_HIGHLIGHT_INFO_SCRIPT_GOLD:
+#ifdef VERSION_BW1WCI
 			case SCRIPT_HIGHLIGHT_INFO_BROTHERHOOD:
-#else
-			case SCRIPT_HIGHLIGHT_INFO_SCOREBOARD:
 #endif
 				alpha = Active ? ActiveMediumAlpha : InactiveMediumAlpha;
 				break;
-#ifdef VERSION_BW1WCI
 			case SCRIPT_HIGHLIGHT_INFO_SCRIPT_SILVER:
-#else
-			case SCRIPT_HIGHLIGHT_INFO_SCRIPT_GOLD:
-#endif
 				alpha = Active ? ActiveStrongAlpha : InactiveStrongAlpha;
 				break;
-#ifdef VERSION_BW1WCI
 			case SCRIPT_HIGHLIGHT_INFO_SCRIPT_BRONZE:
-#else
-			case SCRIPT_HIGHLIGHT_INFO_SCRIPT_SILVER:
-#endif
 				alpha = Active ? ActiveFaintAlpha : InactiveFaintAlpha;
 				break;
 			}
@@ -540,7 +489,7 @@ void ScriptHighlight::Draw()
 			if (!IsDidYouKnow() || !Active)
 #endif
 			{
-				Sprite->colour = LH3DColor((alpha << 24) | LH3D_COLOR_RGB_MASK);
+				Sprite->colour = LH3DColor(RGBA_MAKE(0xff, 0xff, 0xff, alpha));
 				Sprite->AddDrawing();
 			}
 		}
@@ -555,8 +504,7 @@ void ScriptHighlight::ProcessHighlights()
 {
 	static const float BeamPulseSpeed = 5.0f;
 
-	BeamPulseAngle +=
-		GGameInfo::Info.MillisecondsPerGameTurn * BeamPulseSpeed * SCRIPT_HIGHLIGHT_SECONDS_PER_MILLISECOND;
+	BeamPulseAngle += GGameInfo::Info.MillisecondsPerGameTurn * BeamPulseSpeed * SCRIPT_SECONDS_PER_MILLISECOND;
 	if (BeamPulseAngle > TWO_PI)
 	{
 		BeamPulseAngle -= TWO_PI;
@@ -635,7 +583,7 @@ void ScriptHighlight::SetActivated(bool32_t activated)
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 		}
 		mesh = GetActiveMesh();
-		PARTICLE_TYPE type = ((const GScriptHighlightInfo*)info)->ActiveParticleType;
+		PARTICLE_TYPE type = GetInfo()->ActiveParticleType;
 		if (type != PARTICLE_TYPE_NONE)
 		{
 			ActiveParticle = PSysInterface::Create(NULL, type, Pos.GetLHPoint(), LHPoint(0.0f, 0.0f, 0.0f), 1.0f,
@@ -647,7 +595,7 @@ void ScriptHighlight::SetActivated(bool32_t activated)
 
 MESH_LIST ScriptHighlight::GetActiveMesh()
 {
-	return ((const GScriptHighlightInfo*)info)->ActiveMesh;
+	return GetInfo()->ActiveMesh;
 }
 
 bool32_t ScriptHighlight::Save(GameOSFile& file)
@@ -718,9 +666,7 @@ bool ScriptHighlight::ForDrawFXGetVertexPos(int index, LHPoint* pos)
 					if (index < count)
 					{
 						LH3DVertex* vertex = (*primitive)->GetListVertex() + index;
-						pos->x = vertex->position.x;
-						pos->y = vertex->position.y;
-						pos->z = vertex->position.z;
+						pos->Set(vertex->position);
 						Game3dObject->matrix.TransformPoint(*pos);
 						return true;
 					}
@@ -739,17 +685,13 @@ void ScriptHighlight::ShowHelpBubble()
 
 bool32_t ScriptHighlight::IsDidYouKnow()
 {
-#ifdef VERSION_BW1WCI
-	return (const GScriptHighlightInfo*)info - GScriptHighlightInfo::GetInfo() == SCRIPT_HIGHLIGHT_INFO_SCRIPT_BRONZE;
-#else
-	return (const GScriptHighlightInfo*)info - GScriptHighlightInfo::GetInfo() == SCRIPT_HIGHLIGHT_INFO_SCRIPT_SILVER;
-#endif
+	return GetInfo() - GScriptHighlightInfo::GetInfo() == SCRIPT_HIGHLIGHT_INFO_SCRIPT_BRONZE;
 }
 
 bool32_t ScriptHighlight::IsVortexEntry()
 {
-	return ScriptId == SCRIPT_HIGHLIGHT_VORTEX_ENTRY_0 || ScriptId == SCRIPT_HIGHLIGHT_VORTEX_ENTRY_1 ||
-	       ScriptId == SCRIPT_HIGHLIGHT_VORTEX_ENTRY_2 || ScriptId == SCRIPT_HIGHLIGHT_VORTEX_ENTRY_3;
+	return ScriptId == CHALLENGE_LEAVE_THROUGH_VORTEX_LAND1 || ScriptId == CHALLENGE_LEAVE_THROUGH_VORTEX_LAND2 ||
+	       ScriptId == CHALLENGE_LEAVE_THROUGH_VORTEX_LAND3 || ScriptId == CHALLENGE_LEAVE_THROUGH_VORTEX_LAND4;
 }
 
 uint32_t ScriptHighlight::InterfaceTap(GInterfaceStatus* status)

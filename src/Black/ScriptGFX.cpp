@@ -266,7 +266,7 @@ void GScript::ThingJCSpecial()
 	float totemIndex = g_scriptDLL->FLOAT_POP();
 #endif
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
-	uint32_t          special = g_scriptDLL->ULONG_POP();
+	SCRIPT_JC_SPECIAL special = (SCRIPT_JC_SPECIAL)g_scriptDLL->ULONG_POP();
 	bool32_t          value = g_scriptDLL->ULONG_POP();
 	if (thing == NULL)
 	{

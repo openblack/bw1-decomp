@@ -59,7 +59,7 @@ void GScript::IsLockedInteraction()
 	SCRIPT_ASSERT(thing != NULL, "Object no longer valid");
 	if (thing != NULL)
 	{
-		bool32_t locked = (thing->Flags & GAME_THING_WITH_POS_FLAG_INTERACTING) != 0;
+		bool32_t locked = thing->IsInHandInteract();
 		g_scriptDLL->PUSH((void*)locked, VMType_BOOLEAN);
 	}
 	else
@@ -115,7 +115,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 	{
 	case SCRIPT_INTERFACE_LEVEL_NORMAL:
 		GGame::g_game->MyInterface()->Limits.Clear();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURES_NORMAL, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_NORMAL, CAMERA_FEATURE_ALL);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = true;
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
@@ -123,7 +123,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 	case SCRIPT_INTERFACE_LEVEL_JUST_GRAB:
 		GGame::g_game->MyInterface()->Limits.SetOnlyInteractWithHighlights();
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_MOVE, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_MOVE, CAMERA_FEATURE_ALL);
 		CameraHelp::SetAutoPitch(SCRIPT_AUTO_PITCH, SCRIPT_AUTO_PITCH_HEIGHT, true);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(SCRIPT_HAND_GRAB_DISTANCE);
 		GGame::g_game->control_map->CameraControlEnabled = true;
@@ -132,7 +132,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 	case SCRIPT_INTERFACE_LEVEL_JUST_GRAB_FAR_TO_CITADEL:
 		GGame::g_game->MyInterface()->Limits.SetOnlyInteractWithHighlights();
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_MOVE, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_MOVE, CAMERA_FEATURE_ALL);
 		CameraHelp::SetAutoPitch(SCRIPT_AUTO_PITCH, SCRIPT_AUTO_PITCH_HEIGHT, true);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
@@ -141,7 +141,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 	case SCRIPT_INTERFACE_LEVEL_JUST_ROTATE:
 		GGame::g_game->MyInterface()->Limits.SetOnlyInteractWithHighlights();
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ROTATE, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ROTATE, CAMERA_FEATURE_ALL);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = false;
@@ -149,7 +149,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 	case SCRIPT_INTERFACE_LEVEL_JUST_DOUBLE_CLICK_AND_DRAG:
 		GGame::g_game->MyInterface()->Limits.SetOnlyInteractWithHighlights();
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_MOVE | CAMERA_FEATURE_DOUBLE_CLICK, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_MOVE | CAMERA_FEATURE_DOUBLE_CLICK, CAMERA_FEATURE_ALL);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = false;
@@ -157,14 +157,14 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 	case SCRIPT_INTERFACE_LEVEL_JUST_ZOOM:
 		GGame::g_game->MyInterface()->Limits.SetOnlyInteractWithHighlights();
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ZOOM | CAMERA_FEATURE_ZOOM_LANDSCAPE, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ZOOM | CAMERA_FEATURE_ZOOM_LANDSCAPE, CAMERA_FEATURE_ALL);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = false;
 		break;
 	case SCRIPT_INTERFACE_LEVEL_JUST_ROTATE_INTERACT:
 		GGame::g_game->MyInterface()->Limits.Clear();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ROTATE, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ROTATE, CAMERA_FEATURE_ALL);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = false;
@@ -172,7 +172,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 	case SCRIPT_INTERFACE_LEVEL_JUST_ROTATE_INTERACT_AND_ZOOM:
 		GGame::g_game->MyInterface()->Limits.Clear();
 		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_ZOOM | CAMERA_FEATURE_ZOOM_LANDSCAPE,
-		                                 CAMERA_FEATURES_ALL);
+		                                 CAMERA_FEATURE_ALL);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = false;
@@ -180,20 +180,20 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 	case SCRIPT_INTERFACE_LEVEL_JUST_HAND_MOVE:
 		GGame::g_game->MyInterface()->Limits.SetOnlyInteractWithHighlights();
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURES_NONE, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_NONE, CAMERA_FEATURE_ALL);
 		GGame::g_game->control_map->CameraControlEnabled = false;
 		GGame::g_game->control_map->NormalInterface = false;
 		break;
 	case SCRIPT_INTERFACE_LEVEL_JUST_HAND_INTERACTION:
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURES_NONE, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_NONE, CAMERA_FEATURE_ALL);
 		GGame::g_game->control_map->CameraControlEnabled = false;
 		GGame::g_game->control_map->NormalInterface = false;
 		break;
 	case SCRIPT_INTERFACE_LEVEL_JUST_ROTATE_AND_DRAG:
 		GGame::g_game->MyInterface()->Limits.SetOnlyInteractWithHighlights();
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_MOVE, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_MOVE, CAMERA_FEATURE_ALL);
 		CameraHelp::SetAutoPitch(SCRIPT_AUTO_PITCH, SCRIPT_AUTO_PITCH_HEIGHT, true);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
@@ -202,7 +202,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 	case SCRIPT_INTERFACE_LEVEL_JUST_PITCH:
 		GGame::g_game->MyInterface()->Limits.SetOnlyInteractWithHighlights();
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
-		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_PITCH, CAMERA_FEATURES_ALL);
+		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_PITCH, CAMERA_FEATURE_ALL);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = false;
@@ -211,7 +211,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 		GGame::g_game->MyInterface()->Limits.SetOnlyInteractWithHighlights();
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
 		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_MOVE | CAMERA_FEATURE_DOUBLE_CLICK,
-		                                 CAMERA_FEATURES_ALL);
+		                                 CAMERA_FEATURE_ALL);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = false;
@@ -221,7 +221,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 		GGame::g_game->MyInterface()->Limits.SetNoEmptyHandApply();
 		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_PITCH | CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_MOVE |
 		                                     CAMERA_FEATURE_DOUBLE_CLICK,
-		                                 CAMERA_FEATURES_ALL);
+		                                 CAMERA_FEATURE_ALL);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = false;
@@ -232,7 +232,7 @@ void GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level)
 		CameraHelp::EnableCameraFeatures(CAMERA_FEATURE_PITCH | CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_ZOOM |
 		                                     CAMERA_FEATURE_MOVE | CAMERA_FEATURE_DOUBLE_CLICK |
 		                                     CAMERA_FEATURE_ZOOM_LANDSCAPE,
-		                                 CAMERA_FEATURES_ALL);
+		                                 CAMERA_FEATURE_ALL);
 		GGame::g_game->MyInterface()->GetRenderHand()->SetMaxDistanceFromUser(CHAND_DEFAULT_MAX_DISTANCE_FROM_USER);
 		GGame::g_game->control_map->CameraControlEnabled = true;
 		GGame::g_game->control_map->NormalInterface = false;

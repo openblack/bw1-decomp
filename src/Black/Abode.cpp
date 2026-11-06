@@ -445,7 +445,7 @@ void Abode::CreateAbodeSurroundingObjects()
 	if (GetInfo()->DidYouKnow != 0 && GetNewEp(ABODE_EPP_SCRIPT_HIGHLIGHT, &point))
 	{
 		ScriptHighlight* highlight = ScriptHighlight::Create(
-			MapCoords(point), &GScriptHighlightInfo::GetInfo()[SCRIPT_HIGHLIGHT_INFO_SCRIPT_SILVER], 0, 0.0f, 1.0f);
+			MapCoords(point), &GScriptHighlightInfo::GetInfo()[SCRIPT_HIGHLIGHT_INFO_SCRIPT_BRONZE], 0, 0.0f, 1.0f);
 		if (highlight != NULL)
 		{
 			highlight->SetScriptId(GetInfo()->DidYouKnow, GetInfo()->DykCategory);

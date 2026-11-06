@@ -1514,10 +1514,7 @@ float GPlayer::GetSpellChargingFraction(GInterfaceStatus* status)
 			{
 				for (WorshipSpellIcon* icon = site->IconList.head; icon != NULL; icon = icon->next)
 				{
-					if (icon->GetSpellChargingFraction(status) >= fraction)
-					{
-						fraction = icon->GetSpellChargingFraction(status);
-					}
+					fraction = max(fraction, icon->GetSpellChargingFraction(status));
 				}
 			}
 		}
@@ -2130,10 +2127,7 @@ float GPlayer::CalculateDesireToAttack(GPlayer* other)
 		for (Abode* abode = town->AbodeList.head; abode != NULL; abode = abode->next)
 		{
 			float distance = handPos.GetDistance(abode->Pos);
-			if (distance < nearest)
-			{
-				nearest = distance;
-			}
+			nearest = min(distance, nearest);
 		}
 	}
 	float proximityDesire = 1.0f - nearest / 100.0f;
@@ -2358,10 +2352,7 @@ MagicTeleport* GPlayer::FindTeleportBetween(MapCoords& from, MapCoords& to, floa
 			best = teleport;
 		}
 		distance = teleport->Pos.GetDistance(to);
-		if (distance < toDistance)
-		{
-			toDistance = distance;
-		}
+		toDistance = min(distance, toDistance);
 	}
 	if (fromDistance + toDistance < max_distance)
 	{

@@ -16,8 +16,6 @@
 #include "ScriptDLL.h"   /* For enum VMScriptType, enum VMType */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
-#define SCRIPT_TASK_NONE                   0
-#define SCRIPT_PLAYER_NEUTRAL              0
 #define SCRIPT_LIBRARY_MESSAGE_ERROR_LIMIT 3
 #define SCRIPT_LIST_MIN_LINE_LENGTH        4
 #define SCRIPT_FADE_TICKS_PER_SECOND       10.0
@@ -62,7 +60,7 @@
 #define SCRIPT_INVALID_LAND_HEIGHT      (-10.0f)
 #define SCRIPT_SECONDS_PER_MILLISECOND  0.001f
 #define SCRIPT_HAND_GRAB_DISTANCE       75.0f
-#define SCRIPT_AUTO_PITCH               0.44879895f
+#define SCRIPT_AUTO_PITCH               (PI_F / 7)
 #define SCRIPT_AUTO_PITCH_HEIGHT        15.0f
 #define SCRIPT_ACTION_TEXT              828
 #define SCRIPT_BUILD_DESIRE_SCALE       5.0f
@@ -247,7 +245,7 @@ public:
 	// BW1W120 006ec270 BW1M119 014dc700
 	bool32_t Load(GameOSFile& file);
 	// BW1W120 006eb710 BW1M119 014de060
-	int StartScript(char* name);
+	uint32_t StartScript(char* name);
 	// BW1W120 00d95c10
 	static ScriptDLL* g_scriptDLL;
 	// BW1W120 006eb760 BW1M119 014ddfe0
@@ -1325,8 +1323,6 @@ public:
 	static void SpecialEffectFromFile();
 	// BW1WCI 00727470 BW1MCI119 01537560
 	static void SpecialEffectFromPos();
-#endif
-#ifdef VERSION_BW1WCI
 	// BW1WCI 00701a20 BW1MCI119 0150fa20
 	static void HoldWideScreen();
 	// BW1WCI 00703fc0 BW1MCI119 0150c6b0
@@ -1499,6 +1495,8 @@ public:
 
 	// BW1W120 inlined BW1M119 0123b620
 	static ScriptDLL* GetLib() { return g_scriptDLL; }
+	// BW1W120 inlined BW1M119 01014890
+	GameThingWithPos* GetHitObject() { return HitObject; }
 	// BW1W120 inlined BW1M119 inlined
 	static bool32_t AreScriptsLoaded() { return ScriptsLoaded; }
 	// BW1W120 inlined BW1M119 01184d00
@@ -1777,13 +1775,13 @@ public:
 	// BW1W120 006efcd0 BW1M119 014e55e0
 	static void ReleaseContainerContents(GameThingWithPos* thing);
 	// BW1W120 0070d440 BW1M119 01506e80
-	static bool32_t IsCreatedByScript(uint32_t slot);
+	static bool32_t IsCreatedByScript(unsigned long slot);
 	// BW1W120 0070cf50 BW1M119 01507ad0
 	static unsigned long FindScriptGameThing(GameThingWithPos* thing);
 	// BW1W120 00710350 BW1M119 0150caf0
 	HELP_SPIRIT_TYPE ConvertScriptSpiritToHelpSpirit(SCRIPT_SPIRIT_TYPE spirit);
 	// BW1W120 0070f600 BW1M119 010021c0
-	static void ReleaseScriptThingIntoTheGame(GameThingWithPos* thing, uint32_t slot, bool32_t force);
+	static void ReleaseScriptThingIntoTheGame(GameThingWithPos* thing, unsigned long slot, bool32_t force);
 	// BW1W120 006f0430 BW1M119 014e4880
 	void DetachFromDance(uint32_t slot, Dance* dance);
 };

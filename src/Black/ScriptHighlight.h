@@ -9,26 +9,21 @@
 
 #include "Fixed.h" /* For struct SingleMapFixed */
 
-#define SCRIPT_HIGHLIGHT_NEAR_DISTANCE           10
-#define SCRIPT_HIGHLIGHT_FAR_DISTANCE            30
-#define SCRIPT_HIGHLIGHT_FULL_SCALE_DISTANCE     30.0f
-#define SCRIPT_HIGHLIGHT_SPIN_HALF_TURN_MS       1000.0f
-#define SCRIPT_HIGHLIGHT_BEAM_SCALE              3.0f
-#define SCRIPT_HIGHLIGHT_SPRITE_RADIUS_SCALE     1.4f
-#define SCRIPT_HIGHLIGHT_BEAM_PULSE_MIN          0.4f
-#define SCRIPT_HIGHLIGHT_BEAM_PULSE_MAX          1.0f
-#define SCRIPT_HIGHLIGHT_SECONDS_PER_MILLISECOND 0.001f
-#define SCRIPT_HIGHLIGHT_SEEN_CHECK_TURN_MASK    7
-#define SCRIPT_HIGHLIGHT_VORTEX_ENTRY_0          56
-#define SCRIPT_HIGHLIGHT_VORTEX_ENTRY_1          59
-#define SCRIPT_HIGHLIGHT_VORTEX_ENTRY_2          60
-#define SCRIPT_HIGHLIGHT_VORTEX_ENTRY_3          61
+#define SCRIPT_HIGHLIGHT_NEAR_DISTANCE        10
+#define SCRIPT_HIGHLIGHT_FAR_DISTANCE         30
+#define SCRIPT_HIGHLIGHT_FULL_SCALE_DISTANCE  30.0f
+#define SCRIPT_HIGHLIGHT_SPIN_HALF_TURN_MS    1000.0f
+#define SCRIPT_HIGHLIGHT_BEAM_SCALE           3.0f
+#define SCRIPT_HIGHLIGHT_SPRITE_RADIUS_SCALE  1.4f
+#define SCRIPT_HIGHLIGHT_BEAM_PULSE_MIN       0.4f
+#define SCRIPT_HIGHLIGHT_BEAM_PULSE_MAX       1.0f
+#define SCRIPT_HIGHLIGHT_SEEN_CHECK_TURN_MASK 7
 #ifdef VERSION_BW1WCI
 #define SCRIPT_HIGHLIGHT_DIGIT_TEXTURE        "data\\textures\\scoreboard.raw"
 #define SCRIPT_HIGHLIGHT_DIGIT_TEXTURE_FLAGS  0x41
 #define SCRIPT_HIGHLIGHT_DIGIT_FRAMES_PER_ROW 4
 #define SCRIPT_HIGHLIGHT_SINGLE_DIGIT_MASK    0xF
-#define SCRIPT_HIGHLIGHT_DIGIT_LIFT           -0.1f
+#define SCRIPT_HIGHLIGHT_DIGIT_LIFT           (-0.1f)
 #define SCRIPT_HIGHLIGHT_DIGIT_SCALE          0.95f
 #endif
 
@@ -146,13 +141,13 @@ public:
 	// BW1W120 00709700 BW1M119 01503500
 	ScriptHighlight();
 	// BW1W120 007098a0 BW1M119 015033c0
-	ScriptHighlight(const MapCoords& coords, const GScriptHighlightInfo* info, uint32_t script_id, float y_angle,
+	ScriptHighlight(const MapCoords& coords, const GScriptHighlightInfo* info, unsigned long script_id, float y_angle,
 	                float scale);
 
 	// Static methods
 
 	// BW1W120 00709a40 BW1M119 01502fc0
-	static ScriptHighlight* Create(const MapCoords& coords, const GScriptHighlightInfo* info, uint32_t script_id,
+	static ScriptHighlight* Create(const MapCoords& coords, const GScriptHighlightInfo* info, unsigned long script_id,
 	                               float y_angle, float scale);
 	// BW1W120 0070a460 BW1M119 010588a0
 	static void ProcessHighlights();
@@ -164,7 +159,7 @@ public:
 	// BW1W120 00709910 BW1M119 inlined
 	void SetToZero();
 	// BW1W120 00709a20 BW1M119 015030e0
-	void SetScriptId(uint32_t script_id, DYK_CATEGORY category);
+	void SetScriptId(unsigned long script_id, DYK_CATEGORY category);
 	// BW1W120 00709c40 BW1M119 01502c80
 	void SetDrawHeight(float height);
 #ifndef VERSION_BW1W100
