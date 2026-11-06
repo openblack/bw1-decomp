@@ -32,20 +32,22 @@ float    LH3DPrimitive::g_size_fine_wall = 0.2f;
 float    LH3DPrimitive::g_size_thick_wall = 0.35f;
 bool32_t LH3DPrimitive::g_draw_depth = true;
 
-LHPoint        LH3DPrimitive::g_vect_light(1.0f, 0.0f, 0.0f);
-float          LH3DPrimitive::g_fog_max;
-float          LH3DPrimitive::g_fog_min;
-float          LH3DPrimitive::g_delta_fog;
+bool g_volfx_gj_cover_surface;
+
+int            LH3DPrimitive::g_current_index_primitive;
+float*         LH3DPrimitive::g_vertical_translate_vertices;
+LH3DPrimitive* LH3DPrimitive::g_current_primitive;
+float*         LH3DPrimitive::g_lightmap_remap_uvs;
+Vertex3D       LH3DPrimitive::g_vertex_inside_triangle;
 unsigned long  LH3DPrimitive::g_fog_table[LH3D_FOG_TABLE_SIZE][2];
+float          LH3DPrimitive::g_delta_fog;
+float          LH3DPrimitive::g_fog_min;
+float          LH3DPrimitive::g_fog_max;
+LHPoint        LH3DPrimitive::g_vect_light(1.0f, 0.0f, 0.0f);
+float          LH3DPrimitive::g_best_vertex_inside_triangle;
+int            LH3DPrimitive::g_collide_count;
 LHPlane        LH3DPrimitive::g_clipping_plane_world;
 LHPlane        LH3DPrimitive::g_clipping_plane_camera;
-int            LH3DPrimitive::g_collide_count;
-float          LH3DPrimitive::g_best_vertex_inside_triangle;
-Vertex3D       LH3DPrimitive::g_vertex_inside_triangle;
-LH3DPrimitive* LH3DPrimitive::g_current_primitive;
-int            LH3DPrimitive::g_current_index_primitive;
-float*         LH3DPrimitive::g_lightmap_remap_uvs;
-float*         LH3DPrimitive::g_vertical_translate_vertices;
 LHMatrix       LH3DPrimitive::g_froz_wiggle_mat;
 
 float wiggle_speed = 2.0f;
@@ -771,7 +773,8 @@ void LH3DPrimitive::DrawLit()
 			LHPoint sun = LH3DTech::g_sun_light_clipping;
 			LHPoint lightDirection;
 			TransformPointBy(&lightDirection, sun, &inverse);
-			lightDirection *= InverseSquareRoot(lightDirection.GetNorm());
+			float norm = lightDirection.GetNorm();
+			lightDirection *= InverseSquareRoot(norm);
 			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
 			{
 				TransformToClipping(point, vertex->position, matrix);
@@ -887,7 +890,8 @@ void LH3DPrimitive::DrawComplex()
 		LHMatrix         inverse;
 		inverse.SetInverse(*matrix);
 		LHPoint light = inverse * LH3DTech::g_sun_light;
-		light *= InverseSquareRoot(light.GetNorm());
+		float   norm = light.GetNorm();
+		light *= InverseSquareRoot(norm);
 		LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
 		LH3DTech::g_local_to_clipping.PreMultiply(*matrix);
 		for (int j = start; j < start + group->vertex_count; point++, vertex++, j++)
@@ -1893,7 +1897,6 @@ void LH3DPrimitive::DrawFroz()
 }
 
 LHPoint g_vollightgj_u_dirn(0.0f, 1.0f, 0.0f);
-bool    g_volfx_gj_cover_surface;
 
 void LH3DPrimitive::DrawVolLightGJ()
 {
@@ -3644,8 +3647,8 @@ void LH3DPrimitive::DrawRefMapMT()
 	}
 }
 
-LHPoint  l_point[LH3D_MAX_L_POINTS];
 bool32_t l_bool[LH3D_MAX_L_POINTS];
+LHPoint  l_point[LH3D_MAX_L_POINTS];
 
 void LH3DPrimitive::DrawNormals() {}
 
@@ -5754,7 +5757,8 @@ void LH3DPrimitive::DrawLitUnclipped()
 			LHPoint sun = LH3DTech::g_sun_light_clipping;
 			LHPoint lightDirection;
 			TransformPointBy(&lightDirection, sun, &inverse);
-			lightDirection *= InverseSquareRoot(lightDirection.GetNorm());
+			float norm = lightDirection.GetNorm();
+			lightDirection *= InverseSquareRoot(norm);
 			for (int j = start; j < start + group->vertex_count; point++, vertex++, j++)
 			{
 				TransformToClipping(point, vertex->position, matrix);
