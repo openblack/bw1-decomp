@@ -432,7 +432,7 @@ config.custom_build_rules = [
         "description": "PATCH $in",
     },
 ]
-_msvc_dir = f"build/compilers/{config.linker_version}"
+_msvc_dir = f"{(config.compilers_path or Path('build/compilers')).as_posix()}/{config.linker_version}"
 _patch_stamp = f"build/{config.version}/patched_compiler_headers"
 config.custom_build_steps = {
     "pre-split": [
@@ -1557,15 +1557,15 @@ config.libs = [
 
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\delop.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\xlock.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\string.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcpmt", "build\\intel\\mt_obj\\string.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "libcpmt", "build\\intel\\mt_obj\\ios.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\locale.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\locale0.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "libcpmt", "build\\intel\\mt_obj\\locale.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcpmt", "build\\intel\\mt_obj\\locale0.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\uncaught.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\_tolower.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\_toupper.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "libcpmt", "build\\intel\\mt_obj\\xstod.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W120"), "libcpmt", "build\\intel\\mt_obj\\fiopen.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcpmt", "build\\intel\\mt_obj\\fiopen.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "libcpmt", "build\\intel\\mt_obj\\nomemory.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "libcpmt", "build\\intel\\mt_obj\\xwctomb.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\xmbtowc.obj", progress_category="sdk"),
