@@ -36,6 +36,7 @@ import subprocess
 import sys
 
 sys.dont_write_bytecode = True
+import cl6_paths  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 LOCAL = re.compile(r"^\$[LSTE]\d+$|_\$[ES]\d+$|^\$\w+\$\d+$")
 
@@ -71,7 +72,8 @@ def redirected(verify, edge, outdir, pchs):
     """
     digest = hashlib.md5(str(edge.output).encode()).hexdigest()[:8]
     obj = outdir / (edge.output.stem + "-" + digest + ".o")
-    words = verify.command_words(edge.command)
+    # A patched MSVC 6 command sets CL6_MAP (tools/cl6_paths.py): run it through the launcher.
+    env, words = cl6_paths.split_env(verify.command_words(edge.command))
     pch, pch_pdb = pchs.get(edge.pch, (None, None))
     result = []
     for word in words:
@@ -87,7 +89,7 @@ def redirected(verify, edge, outdir, pchs):
         elif word.startswith(("/Fp", "-Fp")) and pch:
             word = "/Fp" + str(pch)
         result.append(word)
-    return obj, result
+    return obj, cl6_paths.launcher(env, result)
 
 
 def compile_all(verify, edges, outdir):

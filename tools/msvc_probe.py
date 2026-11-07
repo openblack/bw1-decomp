@@ -14,6 +14,7 @@ import subprocess
 import threading
 from pathlib import Path
 
+import cl6_paths
 from decomp_binary import Coff
 from decomp_common import ROOT, resolve_unit
 
@@ -28,7 +29,8 @@ def ninja_command(target):
     verify = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(verify)
     out = subprocess.run(["ninja", "-t", "commands", "-s", target], cwd=ROOT, capture_output=True, text=True, check=True)
-    return verify.command_words(out.stdout.strip().splitlines()[-1])
+    # A patched MSVC 6 command sets CL6_MAP (tools/cl6_paths.py): run it through the launcher.
+    return cl6_paths.launcher(*cl6_paths.split_env(verify.command_words(out.stdout.strip().splitlines()[-1])))
 
 
 def compile_command(unit):
@@ -36,11 +38,30 @@ def compile_command(unit):
     obj = unit["base_path"]
     argv = ninja_command(obj)
     source = next(a for a in argv if a.endswith((".cpp", ".c")) and not a.startswith("/"))
+    cl6_map = cl6_paths.launcher_map(argv)
+    if cl6_map and cl6_paths.to_checkout(cl6_map, source):
+        # The command names the source by its original path; return the checkout file.
+        host = cl6_paths.host_path(cl6_paths.to_checkout(cl6_map, source))
+        source = Path(os.path.relpath(host, ROOT)).as_posix()
     return argv, source, obj
+
+
+def _tree_pairs(cl6_map, src_root):
+    """CL6_MAP pairs that give the copy of src/ at src_root the original paths of src/."""
+    src = cl6_paths.windows_path(Path(ROOT) / "src")
+    pairs = [(cl6_paths.windows_path(Path(ROOT) / src_root / "src"), cl6_paths.to_original(cl6_map, src))]
+    for checkout, original in cl6_map and cl6_paths._pairs(cl6_map) or []:
+        if cl6_paths._prefixed(checkout, src):
+            pairs.insert(0, (cl6_paths.windows_path(Path(ROOT) / src_root / "src") + checkout[len(src):], original))
+    return [p for p in pairs if p[1]]
 
 
 def _redirect_includes(argv, src_root):
     """Redirect every include path under src/ to the copy at src_root/src."""
+    cl6_map = cl6_paths.launcher_map(argv)
+    if cl6_map:
+        # The compiler sees original paths: map the copy to them instead of rewriting /I.
+        return cl6_paths.with_pairs(argv, _tree_pairs(cl6_map, src_root)) if src_root else list(argv)
     result = []
     skip = False
     for i, arg in enumerate(argv):
@@ -62,12 +83,17 @@ OUTPUT_OPTIONS += tuple("-" + option[1:] for option in OUTPUT_OPTIONS)
 
 def files_read(argv, cwd=ROOT):
     """Every file a compile reads, from a preprocessor (/E) run of it: cl 6 cannot list them."""
+    argv = cl6_paths.launcher(*cl6_paths.split_env(argv))
+    cl6_map = cl6_paths.launcher_map(argv)
     words = [w for w in argv if w not in ("/c", "-c") and not w.startswith(OUTPUT_OPTIONS)]
     out = subprocess.run(words + ["/E"], cwd=cwd, capture_output=True)
     if out.returncode:
         raise RuntimeError("preprocessor run failed: " + " ".join(words[:3]))
-    names = (m.decode("latin-1").replace("\\\\", "\\").replace("\\", "/") for m in LINE.findall(out.stdout))
-    return list(dict.fromkeys(names))
+    names = [m.decode("latin-1").replace("\\\\", "\\") for m in LINE.findall(out.stdout)]
+    if cl6_map:  # original paths: name the checkout files, relative to cwd like the others
+        names = [os.path.relpath(cl6_paths.host_path(cl6_paths.to_checkout(cl6_map, n)), cwd)
+                 if cl6_paths.to_checkout(cl6_map, n) else n for n in names]
+    return list(dict.fromkeys(n.replace("\\", "/") for n in names))
 
 
 _private_pchs = {}
@@ -94,7 +120,7 @@ def private_pch(pch, out_dir, src_root=None):
         elif arg.startswith("/Fd"):
             pdb = os.path.join(out_dir, os.path.basename(arg[3:]))
             command[i] = "/Fd" + pdb
-        elif src_root and arg.startswith("src/") and arg.endswith((".cpp", ".c")):
+        elif src_root and arg.startswith("src/") and arg.endswith((".cpp", ".c")) and not cl6_paths.launcher_map(command):
             command[i] = os.path.join(src_root, arg)
 
     def digest(files):
@@ -141,7 +167,17 @@ def retarget(argv, source, new_source, new_obj, src_root=None):
             out_dir = os.path.join("build", "probe-pch", os.path.relpath(os.path.dirname(pch), "build"))
         pch, pch_pdb = private_pch(pch, out_dir, src_root)
     result = []
-    for arg in _redirect_includes(argv, src_root):
+    argv = _redirect_includes(argv, src_root)
+    cl6_map = cl6_paths.launcher_map(argv)
+    original_source = cl6_map and cl6_paths.to_original(cl6_map, cl6_paths.windows_path(Path(ROOT) / source))
+    if original_source:
+        # Compile new_source under the original path of source (__FILE__ and the include
+        # directories are the same names as in the build), keeping new_source's file name.
+        original_dir, _, _ = original_source.rpartition("\\")
+        new_dir = cl6_paths.windows_path((Path(ROOT) / new_source).parent)
+        argv = cl6_paths.with_pairs(argv, [(new_dir, original_dir)])
+        source, new_source = original_source, original_dir + "\\" + os.path.basename(new_source)
+    for arg in argv:
         if arg == source:
             result.append(new_source)
         elif arg.startswith("/Fo"):

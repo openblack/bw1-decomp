@@ -38,6 +38,8 @@ import tempfile
 # Lazy shared-helper imports must not create __pycache__ during a read-only plan.
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / 'tools'))
+import cl6_paths  # noqa: E402
 SOURCE_SUFFIXES = {'.c', '.cc', '.cp', '.cpp', '.cxx', '.c++'}
 HEADER_SUFFIXES = {'.h', '.hh', '.hp', '.hpp', '.hxx', '.h++', '.inl', '.inc', '.ipp', '.tpp', '.pch', '.pch++'}
 DIRECTIVE = re.compile(r'^\s*#\s*(include|include_next|import)\s+([^\r\n]+)', re.M)
@@ -152,7 +154,15 @@ def compile_edges(records, root, windows=None):
         output = canonical(record['output'], directory)
         if source.suffix.lower() not in SOURCE_SUFFIXES:
             raise ValueError(f'Unexpected CL input: {source}')
-        words = command_words(record['command'], windows)
+        # A patched MSVC 6 command sets CL6_MAP and names its include directories by their
+        # original paths (tools/cl6_paths.py): read them as the checkout directories.
+        env, words = cl6_paths.split_env(command_words(record['command'], windows))
+        cl6_map = env.get(cl6_paths.MAP_VARIABLE)
+
+        def checkout(value):
+            path = cl6_map and cl6_paths.to_checkout(cl6_map, value)
+            return cl6_paths.host_path(path) if path else value
+
         roots, forced, shared, pchs = [], [], [], []
         i = 0
         while i < len(words):
@@ -168,7 +178,7 @@ def compile_edges(records, root, windows=None):
                         if i == len(words):
                             raise ValueError(f'Missing value for {flag}')
                         value = words[i]
-                    dest.append(value)
+                    dest.append(checkout(value))
                     break
             i += 1
         if '/X' not in words and '-X' not in words:

@@ -2778,7 +2778,22 @@ def c_string_literal(text):
     return '"' + text.replace("\\", "\\\\") + '"'
 
 
+# The rest of the checkout (include/, orig/, build/) has no original directory. The compiler gets it
+# under this fixed name instead, so every checkout hands it the same path strings. Only the length
+# of the strings matters (the memory they take decides some emission orders, such as the order of a
+# unit's RTTI COMDATs); this one gives Abode's RTTI its shipped order in 1.10, 1.20 and 1.30.
+CL6_CHECKOUT_ROOT = r"C:\Black"
+
+
+def uses_patched_msvc6(obj):
+    compiler = obj.options["compiler_version"] or config.linker_version
+    return compiler in config.cl6_compilers and obj.options["compiler_exe"] is None
+
+
 def add_original_source_paths(libs):
+    """Give every unit its original path, as FILEPATH and as the path the patched MSVC 6
+    compiles it from (config.cl6_map, so __FILE__ expands to it)."""
+    checkout_dirs = {}
     for lib in libs:
         for obj in lib["objects"]:
             if not obj.name.endswith((".c", ".cpp")) or obj.options["compiler_exe"] is not None:
@@ -2787,14 +2802,24 @@ def add_original_source_paths(libs):
             original = ORIGINAL_SOURCE_DIRECTORIES.get(directory)
             if original is None:
                 continue
-            prefix = "" if config.version in original.relative else original.sources[config.version] + "\\"
-            defines = {"FILEPATH": prefix + file_name, "SOURCE_DIRECTORY": prefix}
+            relative = config.version in original.relative
+            prefix = "" if relative else original.sources[config.version] + "\\"
+            defines = {"SOURCE_DIRECTORY": prefix}
             if config.version in original.headers:
                 defines["RELEASED_HEADERS_DIRECTORY"] = original.headers[config.version] + "\\"
+            defines["FILEPATH"] = prefix + file_name
+            if not relative and obj.name.endswith(".cpp") and uses_patched_msvc6(obj):
+                source = Path(obj.options["src_dir"] or config.src_dir) / (obj.options["source"] or obj.name)
+                checkout_dirs.setdefault(source.parent, set()).add(prefix[:-1])
             obj.options["extra_cflags"] = [
                 *obj.options["extra_cflags"],
                 *(f"/D{name}={c_string_literal(value)}" for name, value in defines.items()),
             ]
+    for checkout, originals in checkout_dirs.items():
+        if len(originals) != 1:
+            sys.exit(f"{checkout}: several original directories {sorted(originals)}")
+    pairs = sorted(((d, o.pop()) for d, o in checkout_dirs.items()), key=lambda p: -len(p[0].parts))
+    config.cl6_map = [*pairs, (Path("."), CL6_CHECKOUT_ROOT)]
 
 
 add_original_source_paths(config.libs)
