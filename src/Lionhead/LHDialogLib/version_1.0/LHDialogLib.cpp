@@ -10,7 +10,7 @@
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
-static char THIS_FILE[] = FILEPATH;
+static char THIS_FILE[] = __FILE__;
 #endif
 
 enum DIALOG_TYPE
@@ -20,12 +20,12 @@ enum DIALOG_TYPE
 	DIALOG_TYPE_CAMERA_PARAMS = 2,
 };
 
+// BW1W120 1001bbb0
+static int DialogType;
 // BW1W120 1001bac8
 static CLHProgressDialog ProgressDialog;
 // BW1W120 1001ba58
 static CLHCameraParamsDialog CameraParamsDialog;
-// BW1W120 1001bbb0
-static int DialogType;
 
 // BW1W120 10001c10
 UINT DialogThreadProc(LPVOID param)

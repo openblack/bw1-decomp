@@ -77,10 +77,11 @@ class Object:
             # to cl.exe; hand-supplied compilers may keep their own name/layout.
             "compiler_exe": None,
             # MSVC precompiled header: {"header": header to precompile, "source":
-            # .cpp that only includes it}. The PCH is built once, at the source's
-            # path under the build directory, with the cflags of the units naming
-            # it (not their extra_cflags), and each unit is built with /FI<header>
-            # /Yu<header> against it, so its source does not include the header.
+            # .cpp that only includes it, "forced": optional, default True}. The PCH
+            # is built once, at the source's path under the build directory, with the
+            # cflags of the units naming it (not their extra_cflags), and each unit is
+            # built with /Yu<header> against it, and with /FI<header> unless "forced"
+            # is False: a forced header is one the unit's source does not include.
             "pch": None,
             # MSVC: directory to run cl from, passing it the source's file name alone (and every
             # other path relative to the directory), as a build that compiled from within the
@@ -1488,9 +1489,9 @@ def generate_build_ninja(
                 if pch is not None:
                     header = pch["header"]
                     pch_out = config.out_path() / Path(pch["source"]).with_suffix(".pch")
-                    # A /Zi unit needs its own copy of the PDB that built the PCH (C2858, C2859).
-                    # cl writes PDB file names in lower case.
-                    pch_pdb = pch_out.with_name(pch_out.stem.lower() + ".pdb") if "/Zi" in cflags else None
+                    # A /Zi or /ZI unit needs its own copy of the PDB that built the PCH (C2858,
+                    # C2859). cl writes PDB file names in lower case.
+                    pch_pdb = pch_out.with_name(pch_out.stem.lower() + ".pdb") if {"/Zi", "/ZI"} & set(cflags) else None
                     pch_cflags_str = make_flags_str(cflags + ([f"/Fd{pch_pdb}"] if pch_pdb else []))
                     if pch_out in shared_pchs:
                         if shared_pchs[pch_out] != pch_cflags_str:
@@ -1518,7 +1519,7 @@ def generate_build_ninja(
                         n.build(outputs=pdb, rule="copy_pdb", inputs=pch_pdb)
                         unit_order_only.append(pdb)
                     # extra_cflags differing from the PCH's flags override them (cl warns C4652).
-                    pch_flags = [f"/FI{header}", f"/Yu{header}", f"/Fp{pch_out}"]
+                    pch_flags = [*([f"/FI{header}"] if pch.get("forced", True) else []), f"/Yu{header}", f"/Fp{pch_out}"]
                     unit_implicit.append(pch_out)
                     cflags_str = make_flags_str(all_cflags + pch_flags)
                 n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")

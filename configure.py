@@ -707,12 +707,13 @@ def MultiplayerGameSpyObject(completed, name, **options):
 
 # A precompiled header (docs/msvc6_pch.md), for an object's `pch`: `header`, built once per
 # version from `source`, which compiles nothing else (like a StdAfx.cpp), with the cflags of
-# the units using it. It is forced in with /FI, so their sources do not change. With /Yu, cl
+# the units using it. It is forced in with /FI, so their sources do not change, unless `forced`
+# is False: then the units include it themselves, as an AppWizard project does. With /Yu, cl
 # emits the inline bodies of the classes it declares after the scalar deleting destructor of
 # a class derived from them, and lays out a unit's uninitialised statics in reverse order of
 # their first mention instead of in the order of their name hashes.
-def PrecompiledHeader(header, source):
-    return {"header": header, "source": source}
+def PrecompiledHeader(header, source, forced=True):
+    return {"header": header, "source": source, "forced": forced}
 
 
 gamecode_pch = PrecompiledHeader("BlackPCH.h", "src/Black/BlackPCH.cpp")
@@ -758,6 +759,10 @@ def GameCodeObject(completed, name, pch=True, **options):
 # LH3DLib's precompiled header. Its contents are those the units built with it need: the
 # reverse first-mention .bss order of /Yu is the only thing that reproduces their .bss.
 lh3dlib_pch = PrecompiledHeader("LH3DLibPCH.h", "src/Lionhead/LH3DLib/development/LH3DLibPCH.cpp")
+
+# LHDialogLib's AppWizard precompiled header. Built without it, a /ZI unit's __FILE__ is the
+# compiler's lower-case full name of the file, while its strings keep their case in the image.
+lhdialog_pch = PrecompiledHeader("stdafx.h", "src/Lionhead/LHDialogLib/version_1.0/StdAfx.cpp", forced=False)
 
 # LHaudiodllR.dll's precompiled header: its units' function-local statics sit in .bss in
 # reverse order of first mention, as only /Yu lays them out.
@@ -2636,13 +2641,13 @@ config.libs = [
         "cflags": cflags_lhdialog,
         "progress_category": "sdk",
         "objects": [
-            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHCameraParamsDialog.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHDialogLib.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHEditDialog.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHEditDialogSizable.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHProgressDialog.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHSystemSpecDialog.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHSystemSpecSummaryDialog.cpp"),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHCameraParamsDialog.cpp", pch=lhdialog_pch),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHDialogLib.cpp", pch=lhdialog_pch),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHEditDialog.cpp", pch=lhdialog_pch),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHEditDialogSizable.cpp", pch=lhdialog_pch),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHProgressDialog.cpp", pch=lhdialog_pch),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHSystemSpecDialog.cpp", pch=lhdialog_pch),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHSystemSpecSummaryDialog.cpp", pch=lhdialog_pch),
             Object(NonMatching, "MFC/dllmodul.cpp", cflags=cflags_mfcs42d),
             LibObject(Matching, "msvcrtd", "build\\intel\\xdll_obj\\atonexit.obj", module="LHDialog", progress_category="sdk"),
             LibObject(Matching, "msvcrtd", "build\\intel\\xdll_obj\\crtdll.obj", module="LHDialog", progress_category="sdk"),
@@ -2655,7 +2660,6 @@ config.libs = [
 # Where each version's build machine compiled a src/ directory from, as the __FILE__ strings of
 # the executable and DLLs spell it (debug new, asserts, logging, MFC's THIS_FILE). Each unit
 # compiled from one of these gets:
-#   FILEPATH                    the unit's original path, for the calls of a /ZI unit
 #   SOURCE_DIRECTORY            that directory with a trailing backslash, which a header next to
 #                               the unit puts before its include name for the calls inlined from it
 #   RELEASED_HEADERS_DIRECTORY  where its project found the released Lionhead headers (LHALL),
@@ -2793,7 +2797,7 @@ def uses_patched_msvc6(obj):
 def add_original_source_paths(libs):
     """Give every unit its original path, so __FILE__ expands to it: the path the patched MSVC 6
     compiles it from (config.cl6_map), or, for a version that built a directory from within it,
-    the file name alone, cl running in the unit's directory (cl_dir). A /ZI unit gets FILEPATH."""
+    the file name alone, cl running in the unit's directory (cl_dir)."""
     checkout_dirs = {}
     for lib in libs:
         for obj in lib["objects"]:
@@ -2816,11 +2820,6 @@ def add_original_source_paths(libs):
             else:
                 source = Path(obj.options["src_dir"] or config.src_dir) / (obj.options["source"] or obj.name)
                 checkout_dirs.setdefault(source.parent, set()).add(prefix[:-1])
-                # With /ZI, __FILE__ is the compiler's lower-case full name of the file, while
-                # LHDialogLib's strings keep their case in the image.
-                cflags = [*(obj.options["cflags"] or lib.get("cflags") or []), *obj.options["extra_cflags"]]
-                if "/ZI" in cflags:
-                    defines["FILEPATH"] = prefix + file_name
             obj.options["extra_cflags"] = [
                 *obj.options["extra_cflags"],
                 *(f"/D{name}={c_string_literal(value)}" for name, value in defines.items()),
