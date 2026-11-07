@@ -11,17 +11,7 @@
 
 #define CREATURE_BIT_POSITION(byte) ((byte) * 8 + 7)
 
-#define TIMER_VALUE_DIVISOR               2000
-#define TIMER_VALUE_DIVIDED_SHIFT_MODULUS 48
-#define TIMER_VALUE_LEFT_SHIFT            5
-#define TIMER_VALUE_LEFT_SHIFT_MODULUS    120
-#define TIMER_VALUE_MULTIPLIER            2
-#define TIMER_VALUE_RIGHT_SHIFT_MODULUS   37
 #define TIMER_VALUE_KEY (((int64_t)'D' << 48) | ((int64_t)'A' << 32) | ((int64_t)'N' << 16) | (int64_t)'D')
-
-#define PRODUCT_ID_HASH_CHARACTER_SCALE 255
-#define PRODUCT_ID_HASH_SHIFT_STEP      3
-#define PRODUCT_ID_HASH_SHIFT_MASK      64
 
 enum SECRET_CREATURE
 {

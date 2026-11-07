@@ -38,9 +38,8 @@ int64_t        SecretCreature::PresentCreatures;
 
 static void CalcTimerValue(int64_t check_sum, int64_t* timer_value)
 {
-	*timer_value = (((check_sum / TIMER_VALUE_DIVISOR) << (check_sum % TIMER_VALUE_DIVIDED_SHIFT_MODULUS)) |
-	                ((check_sum << TIMER_VALUE_LEFT_SHIFT) << (check_sum % TIMER_VALUE_LEFT_SHIFT_MODULUS)) |
-	                ((check_sum * TIMER_VALUE_MULTIPLIER) >> (check_sum % TIMER_VALUE_RIGHT_SHIFT_MODULUS))) ^
+	*timer_value = (((check_sum / 2000) << (check_sum % 48)) | ((check_sum << 5) << (check_sum % 120)) |
+	                ((check_sum * 2) >> (check_sum % 37))) ^
 	               TIMER_VALUE_KEY;
 }
 
@@ -54,11 +53,11 @@ static int64_t HashProductID(char* product_id)
 	int64_t hash = 0;
 	for (int i = 0; i < (int)strlen(product_id); i++)
 	{
-		hash += product_id[i] * i * PRODUCT_ID_HASH_CHARACTER_SCALE;
+		hash += product_id[i] * i * 255;
 	}
 	for (int j = 0; j < (int)strlen(product_id); j++)
 	{
-		hash |= (int64_t)product_id[j] << ((j * PRODUCT_ID_HASH_SHIFT_STEP) & PRODUCT_ID_HASH_SHIFT_MASK);
+		hash |= (int64_t)product_id[j] << ((j * 3) & 64);
 	}
 	return hash;
 }
