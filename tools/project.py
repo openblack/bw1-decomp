@@ -82,6 +82,10 @@ class Object:
             # it (not their extra_cflags), and each unit is built with /FI<header>
             # /Yu<header> against it, so its source does not include the header.
             "pch": None,
+            # MSVC: directory to run cl from, passing it the source's file name alone (and every
+            # other path relative to the directory), as a build that compiled from within the
+            # directory did: __FILE__ is then the file name.
+            "cl_dir": None,
             "progress_category": None,
             "scratch_preset_id": None,
             "shift_jis": None,
@@ -491,7 +495,7 @@ def check_path_case(path: Path):
         print(f"⚠️  Case mismatch: expected={path} actual={curr}")
 
 
-# Flags holding a quote (a string-valued /D, such as FILEPATH), whitespace or, on
+# Flags holding a quote (a string-valued /D, such as SOURCE_DIRECTORY), whitespace or, on
 # POSIX, a backslash (the original paths of tools/cl6_paths.py) are quoted for the
 # command interpreter: ninja runs commands through /bin/sh on POSIX and passes them
 # to CreateProcess, which cl splits by the CRT's rules, on Windows. Others pass as
@@ -1056,10 +1060,14 @@ def generate_build_ninja(
         if config.cl6_map:
             n.variable("cl6_map", cl6_map_value(config).replace("$", "$$"))
             cl6_env = 'cmd /c set "CL6_MAP=$cl6_map" && ' if is_windows() else "CL6_MAP='$cl6_map' "
+        # A unit with cl_dir runs cl from that directory ($cl_chdir: wibo's -C; $cl_cd: cd on
+        # Windows), and $cl_up leads from it back to the build's working directory. All three are
+        # empty for every other unit.
+        cl_from_dir = cl if cl.is_absolute() else f"${{cl_up}}{cl}"
         n.comment("CL build (MSVC / clang-cl)")
         n.rule(
             name="cl",
-            command=f"${{env}}{cl6_env}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /c $cl_src /Fo$out /Fd$pdb",
+            command=f"${{env}}{cl6_env}${{cl_cd}}{cl_prefix}{wrapper_cmd}${{cl_chdir}}{cl_from_dir} /nologo $cflags /c $cl_src /Fo${{cl_up}}$out /Fd${{cl_up}}$pdb",
             description="CL $out",
         )
         n.newline()
@@ -1514,11 +1522,30 @@ def generate_build_ninja(
                     unit_implicit.append(pch_out)
                     cflags_str = make_flags_str(all_cflags + pch_flags)
                 n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
+                unit_variables = {**cl_variables, "cflags": cflags_str, "cl_src": cl_source(src_path), "pdb": pdb}
+                cl_dir = obj.options["cl_dir"]
+                if cl_dir is not None:
+                    if pch is not None or cl6:
+                        sys.exit(f"{obj.name}: cl_dir does not support a precompiled header or CL6_MAP")
+                    cl_dir = serialize_path(Path(cl_dir))
+                    if config.use_wibo() and wrapper is not None:
+                        unit_variables["cl_chdir"] = f"-C {cl_dir} "
+                    elif is_windows() and wrapper is None:
+                        unit_variables["cl_cd"] = f"{CHAIN}cd /d {cl_dir} && "
+                    else:
+                        sys.exit(f"{obj.name}: cl_dir needs wibo, or cl run natively on Windows")
+                    unit_variables["cl_up"] = os.path.join(os.path.relpath(".", cl_dir), "")
+                    dir_cflags = list(all_cflags)
+                    for i, flag in enumerate(dir_cflags[:-1]):
+                        if flag == "/I" and not Path(dir_cflags[i + 1]).is_absolute():
+                            dir_cflags[i + 1] = os.path.relpath(dir_cflags[i + 1], cl_dir)
+                    unit_variables["cflags"] = make_flags_str(dir_cflags)
+                    unit_variables["cl_src"] = make_flags_str([Path(src_path).name])
                 n.build(
                     outputs=obj.src_obj_path,
                     rule="cl",
                     inputs=src_path,
-                    variables={**cl_variables, "cflags": cflags_str, "cl_src": cl_source(src_path), "pdb": pdb},
+                    variables=unit_variables,
                     implicit=unit_implicit,
                     order_only=unit_order_only,
                 )

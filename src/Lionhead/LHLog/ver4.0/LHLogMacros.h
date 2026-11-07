@@ -79,10 +79,10 @@ bool32_t PassesFilter(char* filter, bool32_t invert, char* string, ...);
 	                                #action);                                                                          \
 	                 action)
 
-#define LH_ASSERT(expr, text, line)        LH_ASSERT_AT(expr, text, FILEPATH, line)
-#define LH_ASSERT_FORCED(expr, text, line) LH_ASSERT_FORCED_AT(expr, text, FILEPATH, line)
+#define LH_ASSERT(expr, text, line)        LH_ASSERT_AT(expr, text, __FILE__, line)
+#define LH_ASSERT_FORCED(expr, text, line) LH_ASSERT_FORCED_AT(expr, text, __FILE__, line)
 #define LH_ASSERT_FAIL(text, line)         LH_ASSERT(!(1), text, line)
-#define LH_LOG_ERROR(code, text, line)     LH_LOG_ERROR_AT(code, text, FILEPATH, line)
-#define LH_LOG_WIN32_ERROR(line)           LH_LOG_WIN32_ERROR_AT(FILEPATH, line)
+#define LH_LOG_ERROR(code, text, line)     LH_LOG_ERROR_AT(code, text, __FILE__, line)
+#define LH_LOG_WIN32_ERROR(line)           LH_LOG_WIN32_ERROR_AT(__FILE__, line)
 
 #endif /* BW1_DECOMP_LH_LOG_MACROS_INCLUDED_H */
