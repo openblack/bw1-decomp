@@ -37,7 +37,7 @@ public:
 	// TODO(#377): The original declared this class in Citadel.h.
 	// Out of line: LoadBinary at 0042ed50, Load at 0042ecf0.
 	INFO_DATA_BLOCK(field_0x14, field_0x14)
-	INFO_DERIVED_LOADERS(GContainerInfo, "Citadel.h", 45)
+	INFO_DERIVED_LOADERS(45, "Citadel.h", GContainerInfo)
 };
 
 #endif /* BW1_DECOMP_CITADEL_INFO_INCLUDED_H */

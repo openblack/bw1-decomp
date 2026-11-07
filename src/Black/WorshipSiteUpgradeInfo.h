@@ -38,7 +38,7 @@ public:
 
 	// TODO(#377): The original declared this class in WorshipSiteUpgrade.h.
 	INFO_DATA_BLOCK(field_0x124, field_0x124)
-	INFO_DERIVED_LOADERS(GFeatureInfo, "WorshipSiteUpgrade.h", 13)
+	INFO_DERIVED_LOADERS(13, "WorshipSiteUpgrade.h", GFeatureInfo)
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_UPGRADE_INFO_INCLUDED_H */

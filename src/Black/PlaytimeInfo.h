@@ -37,7 +37,7 @@ public:
 
 	// TODO(#377): The original declared this class in PlaytimeDance.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("PlaytimeDance.h", 32)
+	INFO_ROOT_LOADERS(32, "PlaytimeDance.h")
 };
 
 #endif /* BW1_DECOMP_PLAYTIME_INFO_INCLUDED_H */

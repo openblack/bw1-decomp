@@ -33,7 +33,7 @@ public:
 
 	// TODO(#377): The original declared this class in AnimatedStatic.h.
 	INFO_DATA_BLOCK(field_0x124, field_0x124)
-	INFO_DERIVED_LOADERS(GFeatureInfo, "AnimatedStatic.h", 10)
+	INFO_DERIVED_LOADERS(10, "AnimatedStatic.h", GFeatureInfo)
 };
 
 #endif /* BW1_DECOMP_ANIMATED_STATIC_INFO_INCLUDED_H */

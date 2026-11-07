@@ -32,7 +32,7 @@ public:
 	// TODO(#377): The original declared this class in SoundMap.h.
 	// Out of line: LoadBinary at 0042f750.
 	INFO_DATA_BLOCK(field_0x10, field_0x44)
-	INFO_ROOT_LOADERS("SoundMap.h", 19)
+	INFO_ROOT_LOADERS(19, "SoundMap.h")
 };
 
 #endif /* BW1_DECOMP_SOUND_INFO_INCLUDED_H */

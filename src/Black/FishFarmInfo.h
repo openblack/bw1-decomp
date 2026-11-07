@@ -39,7 +39,7 @@ public:
 
 	// TODO(#377): The original declared this class in FishFarm.h.
 	INFO_DATA_BLOCK(field_0x120, field_0x120)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "FishFarm.h", 13)
+	INFO_DERIVED_LOADERS(13, "FishFarm.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_FISH_FARM_INFO_INCLUDED_H */

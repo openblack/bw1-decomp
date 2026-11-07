@@ -21,7 +21,7 @@ public:
 
 	// TODO(#377): The original declared this class in MagicShieldInfo.h.
 	INFO_DATA_BLOCK(field_0x58, field_0x58)
-	INFO_DERIVED_LOADERS(GMagicInfo, "MagicShieldInfo.h", 10)
+	INFO_DERIVED_LOADERS(10, "MagicShieldInfo.h", GMagicInfo)
 };
 static_assert(sizeof(GMagicRadiusSpellInfo) == 0x64, "Data type is of wrong size");
 

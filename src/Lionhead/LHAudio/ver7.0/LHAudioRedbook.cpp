@@ -28,14 +28,14 @@ bool32_t LH_AudioSystem::LHRedbookOpen()
 
 	if (RedbookInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_REDBOOK_OPEN_ALREADY_INSTALLED, 33);
+		LH_LOG_ERROR_CODE(33, LH_AUDIO_ERROR_REDBOOK_OPEN_ALREADY_INSTALLED);
 		return false;
 	}
 
 	openParms.lpstrDeviceType = "cdaudio";
 	if (mciSendCommand(0, MCI_OPEN, MCI_OPEN_TYPE, (DWORD)&openParms))
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_REDBOOK_OPEN_MCI_OPEN, 41);
+		LH_LOG_ERROR_CODE(41, LH_AUDIO_ERROR_REDBOOK_OPEN_MCI_OPEN);
 		return false;
 	}
 	RedbookDevice = openParms.wDeviceID;
@@ -43,7 +43,7 @@ bool32_t LH_AudioSystem::LHRedbookOpen()
 	setParms.dwTimeFormat = MCI_FORMAT_TMSF;
 	if (mciSendCommand(RedbookDevice, MCI_SET, MCI_SET_TIME_FORMAT, (DWORD)&setParms))
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_REDBOOK_OPEN_MCI_SET_TIME_FORMAT, 51);
+		LH_LOG_ERROR_CODE(51, LH_AUDIO_ERROR_REDBOOK_OPEN_MCI_SET_TIME_FORMAT);
 		mciSendCommand(RedbookDevice, MCI_CLOSE, 0, 0);
 		return false;
 	}
@@ -148,12 +148,12 @@ unsigned long LH_AudioSystem::LHRedbookPlay(unsigned long from_track, unsigned l
 
 	if (!RedbookInstalled || !SystemInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_REDBOOK_PLAY_NOT_INSTALLED, 184);
+		LH_LOG_ERROR_CODE(184, LH_AUDIO_ERROR_REDBOOK_PLAY_NOT_INSTALLED);
 		return false;
 	}
 	if (!RedbookActive)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_REDBOOK_PLAY_SWITCHED_OFF, 190);
+		LH_LOG_ERROR_CODE(190, LH_AUDIO_ERROR_REDBOOK_PLAY_SWITCHED_OFF);
 		return false;
 	}
 	if (RedbookPlaying)
@@ -167,7 +167,7 @@ unsigned long LH_AudioSystem::LHRedbookPlay(unsigned long from_track, unsigned l
 	if (from_track > to_track || from_track > RedbookTracks || to_track > RedbookTracks || from_track == 0 ||
 	    to_track == 0 || RedbookTracks == 0)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_REDBOOK_PLAY_INVALID_TRACK, 208);
+		LH_LOG_ERROR_CODE(208, LH_AUDIO_ERROR_REDBOOK_PLAY_INVALID_TRACK);
 		return false;
 	}
 
@@ -175,7 +175,7 @@ unsigned long LH_AudioSystem::LHRedbookPlay(unsigned long from_track, unsigned l
 	statusParms.dwTrack = to_track;
 	if (mciSendCommand(RedbookDevice, MCI_STATUS, MCI_STATUS_ITEM | MCI_TRACK, (DWORD)&statusParms))
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_REDBOOK_PLAY_TIME_SETTING, 217);
+		LH_LOG_ERROR_CODE(217, LH_AUDIO_ERROR_REDBOOK_PLAY_TIME_SETTING);
 		return false;
 	}
 
@@ -185,7 +185,7 @@ unsigned long LH_AudioSystem::LHRedbookPlay(unsigned long from_track, unsigned l
 	                               MCI_MSF_FRAME(statusParms.dwReturn));
 	if (mciSendCommand(RedbookDevice, MCI_PLAY, MCI_FROM | MCI_TO, (DWORD)&playParms))
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_REDBOOK_PLAY_MCI_PLAY, 233);
+		LH_LOG_ERROR_CODE(233, LH_AUDIO_ERROR_REDBOOK_PLAY_MCI_PLAY);
 		return false;
 	}
 

@@ -304,12 +304,12 @@ LH_RETURN LHVersion::ProcessFields()
 	char terminator;
 	if (sscanf(Block->Major, "%u%c", &MajorVersion, &terminator) != 1)
 	{
-		LH_ASSERT_FAIL("Tim: Major version number is not a valid integer", 194);
+		LH_ASSERT_FAIL(194, "Tim: Major version number is not a valid integer");
 		return LH_FAIL;
 	}
 	if (sscanf(Block->Minor, "%u%c", &MinorVersion, &terminator) != 1)
 	{
-		LH_ASSERT_FAIL("Tim: Minor version number is not a valid integer", 199);
+		LH_ASSERT_FAIL(199, "Tim: Minor version number is not a valid integer");
 		return LH_FAIL;
 	}
 	return LH_OK;
@@ -332,7 +332,7 @@ LHVersion::LHVersion(LHVersionBlock* block)
 	VALIDATION validation = ValidateBlock();
 	if (validation == VALIDATION_INVALID)
 	{
-		LH_ASSERT_FAIL(LHSPrintf("Tim: Invalid version block <%s>", block->Name), 224);
+		LH_ASSERT_FAIL(224, LHSPrintf("Tim: Invalid version block <%s>", block->Name));
 		exit(0);
 	}
 
@@ -380,7 +380,7 @@ LHVersion::LHVersion(LHVersionBlock* block)
 
 	if (validation == VALIDATION_PLAIN && Block->Password[0])
 	{
-		LH_ASSERT_FORCED(0, "Tim: ***Warning: Unencrypted password block found", 272);
+		LH_ASSERT_FORCED(272, 0, "Tim: ***Warning: Unencrypted password block found");
 	}
 
 	VersionInfo[LH_VERSION_LIST_ALL].Add(this);
@@ -418,7 +418,7 @@ bool32_t LHVersion::CheckExpiry()
 	int year;
 	if (sscanf(Block->Expiry, "%d/%d/%d", &day, &month, &year) != LH_VERSION_EXPIRY_FIELDS)
 	{
-		LH_ASSERT_FAIL("Tim: Invalid expiry date specified use dd/mm/yy", 305);
+		LH_ASSERT_FAIL(305, "Tim: Invalid expiry date specified use dd/mm/yy");
 	}
 
 	if (year < LH_VERSION_EXPIRY_CENTURY_PIVOT)
@@ -452,7 +452,7 @@ bool32_t LHVersion::CheckExpiry()
 
 void LHVersion::SetModuleChecksumError()
 {
-	LH_LOG_ERROR(LH_LOG_CODE_ERROR, "Could not compute module checksum", 334);
+	LH_LOG_ERROR(334, LH_LOG_CODE_ERROR, "Could not compute module checksum");
 	SetModuleChecksumString("Could not compute module checksum");
 	ModuleChecksum = LH_VERSION_INVALID_CHECKSUM;
 }
@@ -466,7 +466,7 @@ void LHVersion::SetModuleChecksumString(char* string)
 	}
 	else
 	{
-		LH_LOG_ERROR(LH_LOG_CODE_NO_MEMORY, LH_LOG_NO_MEMORY_TEXT, 348);
+		LH_LOG_ERROR(348, LH_LOG_CODE_NO_MEMORY, LH_LOG_NO_MEMORY_TEXT);
 		ModuleChecksum = LH_VERSION_INVALID_CHECKSUM;
 	}
 }

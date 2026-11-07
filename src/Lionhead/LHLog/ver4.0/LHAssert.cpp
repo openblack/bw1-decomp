@@ -8,6 +8,14 @@
 #include "LHLogger.h"
 #include "LHLogMacros.h"
 
+#define LH_LOG_ASSERT_ERROR(line, code)                                                                                \
+	{                                                                                                                  \
+		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, line, LHAssertErrorCodes, code))                       \
+		{                                                                                                              \
+			LHLogger::RawLogS(NULL);                                                                                   \
+		}                                                                                                              \
+	}
+
 #define IDD_ASSERT_DIALOG         101
 #define IDB_PRIORITY_HIGH         107
 #define IDB_PRIORITY_MEDIUM       108
@@ -159,11 +167,7 @@ static void DeleteAssertion(LHAssertInfo* info)
 
 	if (node == NULL)
 	{
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, 102, LHAssertErrorCodes,
-		                            LH_ASSERT_ERROR_DELETE_ASSERTION))
-		{
-			LHLogger::RawLogS(NULL);
-		}
+		LH_LOG_ASSERT_ERROR(102, LH_ASSERT_ERROR_DELETE_ASSERTION);
 		return;
 	}
 
@@ -192,11 +196,7 @@ static void DeleteAssertion(short index)
 
 	if (node == NULL)
 	{
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, 121, LHAssertErrorCodes,
-		                            LH_ASSERT_ERROR_DELETE_ASSERTION))
-		{
-			LHLogger::RawLogS(NULL);
-		}
+		LH_LOG_ASSERT_ERROR(121, LH_ASSERT_ERROR_DELETE_ASSERTION);
 		return;
 	}
 
@@ -223,11 +223,7 @@ static LHAssertInfo* GetAssertion(short index)
 
 	if (node == NULL)
 	{
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, 139, LHAssertErrorCodes,
-		                            LH_ASSERT_ERROR_DELETE_ASSERTION))
-		{
-			LHLogger::RawLogS(NULL);
-		}
+		LH_LOG_ASSERT_ERROR(139, LH_ASSERT_ERROR_DELETE_ASSERTION);
 		return NULL;
 	}
 	return node;
@@ -282,17 +278,11 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 		}
 		if (!SetWindowTextA(dialog, LHSPrintf("%s%s", forced, LHLogger::GetFileName(NULL))))
 		{
-			if (LHLogger::LogWin32ErrorS(LHLogLibraryName, __FILE__, 193))
-			{
-				LHLogger::RawLogS(NULL);
-			}
+			LH_LOG_WIN32_ERROR(193);
 		}
 		if (!GetWindowRect(dialog, &rect))
 		{
-			if (LHLogger::LogWin32ErrorS(LHLogLibraryName, __FILE__, 196))
-			{
-				LHLogger::RawLogS(NULL);
-			}
+			LH_LOG_WIN32_ERROR(196);
 		}
 		SetWindowPos(dialog, NULL, DialogX, DialogY, rect.right - rect.left, rect.bottom - rect.top, 0);
 
@@ -358,10 +348,7 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 		case IDC_CONTINUE:
 			if (!GetWindowRect(dialog, &rect))
 			{
-				if (LHLogger::LogWin32ErrorS(LHLogLibraryName, __FILE__, 260))
-				{
-					LHLogger::RawLogS(NULL);
-				}
+				LH_LOG_WIN32_ERROR(260);
 			}
 			DialogX = (uint16_t)rect.left;
 			DialogY = (uint16_t)rect.top;
@@ -560,11 +547,7 @@ LH_ASSERT_RETURN LHAssertStatement(char* library, unsigned long ignore, char* te
 	if (DialogBoxParamA((HINSTANCE)LHLogger::DLLHModule, MAKEINTRESOURCE(IDD_ASSERT_DIALOG), NULL, AssertDialogProc,
 	                    (LPARAM)&info) == -1)
 	{
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, 421, LHAssertErrorCodes,
-		                            LH_ASSERT_ERROR_DIALOG_BOX_PARAM))
-		{
-			LHLogger::RawLogS(NULL);
-		}
+		LH_LOG_ASSERT_ERROR(421, LH_ASSERT_ERROR_DIALOG_BOX_PARAM);
 	}
 	InAssertDialog = false;
 	LHDebugStack::CloseDown();

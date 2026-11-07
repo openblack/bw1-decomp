@@ -39,7 +39,7 @@ public:
 
 	// TODO(#377): The original declared this class in PFootball.h.
 	INFO_DATA_BLOCK(Mesh, Mesh)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "PFootball.h", 36)
+	INFO_DERIVED_LOADERS(36, "PFootball.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_FOOTBALL_INFO_INCLUDED_H */

@@ -60,7 +60,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureAction.h.
 	INFO_DATA_BLOCK(Sources, LessonTryingText)
-	INFO_ROOT_LOADERS("CreatureAction.h", 54)
+	INFO_ROOT_LOADERS(54, "CreatureAction.h")
 };
 static_assert(sizeof(CreatureInitialDesireInfo) == 0x1c0, "Data type is of wrong size");
 

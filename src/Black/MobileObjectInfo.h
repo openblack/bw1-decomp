@@ -46,7 +46,7 @@ public:
 	static GMobileObjectInfo* GetInfo() { return InfoList; }
 
 	INFO_DATA_BLOCK(MobileObjectType, ScalePerLife)
-	INFO_DERIVED_LOADERS(GMobileInfo, "MobileObject.h", 21)
+	INFO_DERIVED_LOADERS(21, "MobileObject.h", GMobileInfo)
 };
 
 #endif /* BW1_DECOMP_MOBILE_OBJECT_INFO_INCLUDED_H */

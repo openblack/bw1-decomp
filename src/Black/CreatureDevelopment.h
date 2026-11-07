@@ -46,7 +46,7 @@ public:
 	// TODO(#377): The original declared this class in CreatureMentalDesire.h.
 	// Out of line: LoadBinary at 0042e0c0, Load at 0042e080.
 	INFO_DATA_BLOCK(Duration, Duration)
-	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 189)
+	INFO_ROOT_LOADERS(189, "CreatureMentalDesire.h")
 };
 
 class CreatureDevelopmentPhaseEntry : public GBaseInfo
@@ -81,7 +81,7 @@ public:
 	// TODO(#377): The original declared this class in CreatureMentalDesire.h.
 	// Out of line: LoadBinary at 0042e030, Load at 0042dff0.
 	INFO_DATA_BLOCK(Name, DeactivatedDesires)
-	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 181)
+	INFO_ROOT_LOADERS(181, "CreatureMentalDesire.h")
 };
 
 #endif /* BW1_DECOMP_CREATURE_DEVELOPMENT_INCLUDED_H */

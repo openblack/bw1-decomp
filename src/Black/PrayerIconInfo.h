@@ -36,7 +36,7 @@ public:
 
 	// TODO(#377): The original declared this class in Prayer.h.
 	INFO_DATA_BLOCK(field_0x104, field_0x104)
-	INFO_DERIVED_LOADERS(GSingleMapFixedInfo, "Prayer.h", 58)
+	INFO_DERIVED_LOADERS(58, "Prayer.h", GSingleMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_PRAYER_ICON_INFO_INCLUDED_H */

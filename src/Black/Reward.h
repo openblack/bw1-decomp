@@ -126,7 +126,7 @@ public:
 
 	// TODO(#377): The original declared this class in reward.h.
 	INFO_DATA_BLOCK(MagicType, AvailableOnLand)
-	INFO_ROOT_LOADERS("reward.h", 15)
+	INFO_ROOT_LOADERS(15, "reward.h")
 };
 
 static_assert(sizeof(GRewardProgress) == 0x2c, "GRewardProgress size is incorrect");

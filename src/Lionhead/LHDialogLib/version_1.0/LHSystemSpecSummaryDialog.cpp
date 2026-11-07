@@ -8,7 +8,6 @@
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
-// __FILE__ of the original build.
 static char THIS_FILE[] = __FILE__;
 #endif
 

@@ -252,7 +252,7 @@ bool32_t LH_AudioSystem::LHMusicOpen()
 	music_system = this;
 	if (MusicInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MUSIC_OPEN_ALREADY_INSTALLED, 233);
+		LH_LOG_ERROR_CODE(233, LH_AUDIO_ERROR_MUSIC_OPEN_ALREADY_INSTALLED);
 		return false;
 	}
 
@@ -1052,7 +1052,7 @@ static bool32_t decompress_it(MPGAudioDecoder* decoder, char* input, int input_l
 			break;
 		}
 		// clang-format off
-		LH_ASSERT(output<decompressed->raw_data+input_length*12, "overrun detected", 1161);
+		LH_ASSERT(1161, output<decompressed->raw_data+input_length*12, "overrun detected");
 		// clang-format on
 	}
 

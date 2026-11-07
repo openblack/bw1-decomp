@@ -36,7 +36,7 @@ public:
 
 	// TODO(#377): The original declared this class in Living.h.
 	INFO_DATA_BLOCK(LivingType, MaxFlockingValue)
-	INFO_DERIVED_LOADERS(GMobileWallHugInfo, "Living.h", 197)
+	INFO_DERIVED_LOADERS(197, "Living.h", GMobileWallHugInfo)
 };
 
 #endif /* BW1_DECOMP_LIVING_INFO_INCLUDED_H */

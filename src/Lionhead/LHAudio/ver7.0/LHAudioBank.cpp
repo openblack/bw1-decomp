@@ -58,7 +58,7 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 {
 	if (!WaveInstalled || !SystemInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_BANK_REGISTER_NOT_INSTALLED, 63);
+		LH_LOG_ERROR_CODE(63, LH_AUDIO_ERROR_BANK_REGISTER_NOT_INSTALLED);
 		return NULL;
 	}
 	if (filename == NULL)
@@ -69,21 +69,21 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 	LH_AudioBank* bank = new LH_AudioBank;
 	if (bank == NULL)
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_BANK_ALLOCATION, 77, filename);
+		LH_LOG_ERROR_CODE1(77, LH_AUDIO_ERROR_BANK_REGISTER_BANK_ALLOCATION, filename);
 		return NULL;
 	}
 
 	bank->File->SetName(filename);
 	if (bank->File->Open(LH_FILE_MODE_READ_ONLY))
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_OPEN_BANK, 85, filename);
+		LH_LOG_ERROR_CODE1(85, LH_AUDIO_ERROR_BANK_REGISTER_OPEN_BANK, filename);
 		delete bank;
 		return NULL;
 	}
 
 	if (bank->File->OpenSegment(LHFileSegmentBankInfo))
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_OPEN_SEGMENT, 92, filename);
+		LH_LOG_ERROR_CODE1(92, LH_AUDIO_ERROR_BANK_REGISTER_OPEN_SEGMENT, filename);
 		delete bank;
 		return NULL;
 	}
@@ -93,7 +93,7 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 
 	if (bank->File->OpenSegment(LHFileSegmentWaveData))
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_OPEN_SEGMENT, 117, filename);
+		LH_LOG_ERROR_CODE1(117, LH_AUDIO_ERROR_BANK_REGISTER_OPEN_SEGMENT, filename);
 		delete bank;
 		return NULL;
 	}
@@ -103,7 +103,7 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 		void*    data = malloc(size);
 		if (data == NULL)
 		{
-			LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_PRELOAD_ALLOCATION, 129, filename);
+			LH_LOG_ERROR_CODE1(129, LH_AUDIO_ERROR_BANK_REGISTER_PRELOAD_ALLOCATION, filename);
 			bank->File->CloseSegment();
 			bank->File->Close();
 			delete bank;
@@ -111,7 +111,7 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 		}
 		if (bank->File->GetSegmentData(data, size, -1))
 		{
-			LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_GET_SEGMENT_DATA, 138, filename);
+			LH_LOG_ERROR_CODE1(138, LH_AUDIO_ERROR_BANK_REGISTER_GET_SEGMENT_DATA, filename);
 			bank->File->CloseSegment();
 			bank->File->Close();
 			delete bank;
@@ -130,7 +130,7 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 	}
 	else
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_BANK_REGISTER_HEAP_NOT_INSTALLED, 161);
+		LH_LOG_ERROR_CODE(161, LH_AUDIO_ERROR_BANK_REGISTER_HEAP_NOT_INSTALLED);
 		bank->File->CloseSegment();
 		bank->File->Close();
 		delete bank;
@@ -140,7 +140,7 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 
 	if (bank->File->OpenSegment(LHFileSegmentBankSampleTable))
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_OPEN_SEGMENT, 174, filename);
+		LH_LOG_ERROR_CODE1(174, LH_AUDIO_ERROR_BANK_REGISTER_OPEN_SEGMENT, filename);
 		bank->File->Close();
 		delete bank;
 		return NULL;
@@ -151,7 +151,7 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 	bank->Samples = new LH_BankSample[samples];
 	if (bank->Samples == NULL)
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_SAMPLE_TABLE_ALLOCATION, 188, filename);
+		LH_LOG_ERROR_CODE1(188, LH_AUDIO_ERROR_BANK_REGISTER_SAMPLE_TABLE_ALLOCATION, filename);
 		bank->File->CloseSegment();
 		bank->File->Close();
 		delete bank;
@@ -159,7 +159,7 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 	}
 	if (bank->File->GetSegmentData(bank->Samples, samples * sizeof(LH_BankSample), -1))
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_GET_SEGMENT_DATA, 197, filename);
+		LH_LOG_ERROR_CODE1(197, LH_AUDIO_ERROR_BANK_REGISTER_GET_SEGMENT_DATA, filename);
 		bank->File->CloseSegment();
 		bank->File->Close();
 		delete bank;
@@ -197,27 +197,27 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 	bank->AnimArray = (long*)malloc(tableSize);
 	if (bank->File->GetSegmentData(bank->AnimArray, tableSize, -1))
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_GET_SEGMENT_DATA, 238, filename);
+		LH_LOG_ERROR_CODE1(238, LH_AUDIO_ERROR_BANK_REGISTER_GET_SEGMENT_DATA, filename);
 		free(bank->AnimArray);
 		bank->AnimArray = NULL;
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_BANK_RELEASE_INVALID_BANK, 241);
+		LH_LOG_ERROR_CODE(241, LH_AUDIO_ERROR_BANK_RELEASE_INVALID_BANK);
 		return NULL;
 	}
 	bank->File->CloseSegment();
 
 	if (bank->File->OpenSegment(LHFileSegmentAnimArrayWaveNumbers))
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_OPEN_SEGMENT, 248, filename);
+		LH_LOG_ERROR_CODE1(248, LH_AUDIO_ERROR_BANK_REGISTER_OPEN_SEGMENT, filename);
 		free(bank->AnimArray);
 		bank->AnimArray = NULL;
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_BANK_RELEASE_INVALID_BANK, 251);
+		LH_LOG_ERROR_CODE(251, LH_AUDIO_ERROR_BANK_RELEASE_INVALID_BANK);
 		return NULL;
 	}
 	uint32_t waveNumbersSize = bank->File->GetSegmentSize();
 	bank->AnimArrayWaveNumbers = (long*)malloc(waveNumbersSize);
 	if (bank->File->GetSegmentData(bank->AnimArrayWaveNumbers, waveNumbersSize, -1))
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_BANK_REGISTER_GET_SEGMENT_DATA, 260, filename);
+		LH_LOG_ERROR_CODE1(260, LH_AUDIO_ERROR_BANK_REGISTER_GET_SEGMENT_DATA, filename);
 		free(bank->AnimArrayWaveNumbers);
 		bank->AnimArrayWaveNumbers = NULL;
 		free(bank->AnimArray);
@@ -241,7 +241,7 @@ void LH_AudioSystem::LHBankRelease(LH_AudioBank* bank)
 {
 	if (bank == NULL || !SystemInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_BANK_RELEASE_INVALID_BANK, 296);
+		LH_LOG_ERROR_CODE(296, LH_AUDIO_ERROR_BANK_RELEASE_INVALID_BANK);
 		return;
 	}
 

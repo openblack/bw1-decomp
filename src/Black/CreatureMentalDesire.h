@@ -204,7 +204,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureAction.h.
 	INFO_DATA_BLOCK(Actions, Actions)
-	INFO_ROOT_LOADERS("CreatureAction.h", 62)
+	INFO_ROOT_LOADERS(62, "CreatureAction.h")
 };
 static_assert(sizeof(CreatureDesireActionEntry) == 0x88, "Data type is of wrong size");
 
@@ -230,7 +230,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureAction.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("CreatureAction.h", 72)
+	INFO_ROOT_LOADERS(72, "CreatureAction.h")
 };
 static_assert(sizeof(CreatureDesireAttributeEntry) == 0x38, "Data type is of wrong size");
 
@@ -257,7 +257,7 @@ public:
 	static CreatureDesireDependency g_CreatureDesireDependency[NUM_CREATURE_DESIRES];
 
 	INFO_DATA_BLOCK(Dependencies, Dependencies)
-	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 165)
+	INFO_ROOT_LOADERS(165, "CreatureMentalDesire.h")
 };
 
 class CreatureDesireForType : public GBaseInfo
@@ -286,7 +286,7 @@ public:
 
 	// Out of line: LoadBinary at 0042dfa0, Load at 0042df60.
 	INFO_DATA_BLOCK(ByCreatureType, ByCreatureType)
-	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 173)
+	INFO_ROOT_LOADERS(173, "CreatureMentalDesire.h")
 };
 
 class CreatureDesireSourceTable : public GBaseInfo
@@ -321,7 +321,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureMentalDesireSource.h.
 	INFO_DATA_BLOCK(Desire, ShortName)
-	INFO_ROOT_LOADERS("CreatureMentalDesireSource.h", 16)
+	INFO_ROOT_LOADERS(16, "CreatureMentalDesireSource.h")
 };
 static_assert(sizeof(CreatureDesireSourceTable) == 0xa4, "Data type is of wrong size");
 

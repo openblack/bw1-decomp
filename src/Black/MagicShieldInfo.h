@@ -26,7 +26,7 @@ public:
 
 	// Out of line: LoadBinary at 0042d990, Load at 0042d8f0.
 	INFO_DATA_BLOCK(field_0x64, field_0x64)
-	INFO_DERIVED_LOADERS(GMagicRadiusSpellInfo, "MagicShieldInfo.h", 17)
+	INFO_DERIVED_LOADERS(17, "MagicShieldInfo.h", GMagicRadiusSpellInfo)
 };
 static_assert(sizeof(GMagicShieldInfo) == 0x74, "Data type is of wrong size");
 

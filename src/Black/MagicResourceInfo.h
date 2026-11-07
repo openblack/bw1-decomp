@@ -31,7 +31,7 @@ public:
 	// its own, so this level loads straight after GMagicInfo.
 	// Out of line: LoadBinary at 0042d780, Load at 0042d720.
 	INFO_DATA_BLOCK(field_0x5c, field_0x5c)
-	INFO_DERIVED_LOADERS(GMagicObjectInfo, "MagicFoodInfo.h", 13)
+	INFO_DERIVED_LOADERS(13, "MagicFoodInfo.h", GMagicObjectInfo)
 };
 static_assert(sizeof(GMagicResourceInfo) == 0x70, "Data type is of wrong size");
 

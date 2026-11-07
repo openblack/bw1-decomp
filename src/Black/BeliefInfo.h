@@ -34,7 +34,7 @@ public:
 	// TODO(#377): The original declared this class in Belief.h.
 	// Out of line: LoadBinary at 0042e440, Load at 0042e400.
 	INFO_DATA_BLOCK(field_0x10, field_0x24)
-	INFO_ROOT_LOADERS("Belief.h", 22)
+	INFO_ROOT_LOADERS(22, "Belief.h")
 };
 
 #endif /* BW1_DECOMP_BELIEF_INFO_INCLUDED_H */

@@ -35,7 +35,7 @@ public:
 
 	// TODO(#377): The original declared this class in CitadelPart.h.
 	INFO_DATA_BLOCK(field_0x120, field_0x130)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "CitadelPart.h", 14)
+	INFO_DERIVED_LOADERS(14, "CitadelPart.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_CITADEL_PART_INFO_INCLUDED_H */

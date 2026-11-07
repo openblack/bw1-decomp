@@ -36,7 +36,7 @@ public:
 
 	// TODO(#377): The original declared this class in Furniture.h.
 	INFO_DATA_BLOCK(field_0x100, field_0x100)
-	INFO_DERIVED_LOADERS(GObjectInfo, "Furniture.h", 18)
+	INFO_DERIVED_LOADERS(18, "Furniture.h", GObjectInfo)
 };
 
 #endif /* BW1_DECOMP_FURNITURE_INFO_INCLUDED_H */

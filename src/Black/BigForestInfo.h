@@ -37,7 +37,7 @@ public:
 
 	// TODO(#377): The original declared this class in BigForest.h.
 	INFO_DATA_BLOCK(field_0x120, CarriedTreeType)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "BigForest.h", 14)
+	INFO_DERIVED_LOADERS(14, "BigForest.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_BIG_FOREST_INFO_INCLUDED_H */

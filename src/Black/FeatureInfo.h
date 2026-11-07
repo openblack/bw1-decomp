@@ -39,7 +39,7 @@ public:
 
 	// TODO(#377): The original declared this class in Feature.h.
 	INFO_DATA_BLOCK(field_0x120, field_0x120)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "Feature.h", 25)
+	INFO_DERIVED_LOADERS(25, "Feature.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_FEATURE_INFO_INCLUDED_H */

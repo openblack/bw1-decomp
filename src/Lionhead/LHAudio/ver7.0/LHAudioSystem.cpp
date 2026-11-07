@@ -90,9 +90,9 @@ void LH_AudioSystem::Create()
 	if (LHSystemAlreadyInstalled)
 	{
 #ifdef VERSION_BW1WCI
-		LH_ASSERT_FORCED(0, "NO, NO, NO!! - one-time audio object only - SEE RUSS", 94);
+		LH_ASSERT_FORCED(94, 0, "NO, NO, NO!! - one-time audio object only - SEE RUSS");
 #else
-		LH_ASSERT_FORCED(0, "NO, NO, NO!! - one-time audio object only - SEE RUSS", 92);
+		LH_ASSERT_FORCED(92, 0, "NO, NO, NO!! - one-time audio object only - SEE RUSS");
 #endif
 	}
 
@@ -109,9 +109,9 @@ void LH_AudioSystem::Create()
 	if (SystemInstalled)
 	{
 #ifdef VERSION_BW1WCI
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_CREATE_ALREADY_INSTALLED, 113);
+		LH_LOG_ERROR_CODE(113, LH_AUDIO_ERROR_CREATE_ALREADY_INSTALLED);
 #else
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_CREATE_ALREADY_INSTALLED, 106);
+		LH_LOG_ERROR_CODE(106, LH_AUDIO_ERROR_CREATE_ALREADY_INSTALLED);
 #endif
 		return;
 	}
@@ -150,9 +150,9 @@ void LH_AudioSystem::Create()
 	if (!WaveInstalled && !MidiInstalled && !RedbookInstalled)
 	{
 #ifdef VERSION_BW1WCI
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_CREATE_NO_COMPONENTS, 161);
+		LH_LOG_ERROR_CODE(161, LH_AUDIO_ERROR_CREATE_NO_COMPONENTS);
 #else
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_CREATE_NO_COMPONENTS, 154);
+		LH_LOG_ERROR_CODE(154, LH_AUDIO_ERROR_CREATE_NO_COMPONENTS);
 #endif
 		SystemInstalled = false;
 	}

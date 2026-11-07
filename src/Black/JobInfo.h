@@ -46,7 +46,7 @@ public:
 
 	// TODO(#377): The original declared this class in Job.h.
 	INFO_DATA_BLOCK(VillagerJobs, field_0x38)
-	INFO_ROOT_LOADERS("Job.h", 15)
+	INFO_ROOT_LOADERS(15, "Job.h")
 };
 
 static_assert(sizeof(GJobInfo) == 0x58, "Data type is of wrong size");

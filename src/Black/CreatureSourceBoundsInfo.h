@@ -42,7 +42,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureMentalDesireSource.h.
 	INFO_DATA_BLOCK(MinThreshold, FeedbackScale)
-	INFO_ROOT_LOADERS("CreatureMentalDesireSource.h", 33)
+	INFO_ROOT_LOADERS(33, "CreatureMentalDesireSource.h")
 };
 static_assert(sizeof(CreatureSourceBoundsInfo) == 0x1c, "Data type is of wrong size");
 

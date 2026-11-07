@@ -39,7 +39,7 @@ public:
 
 	// TODO(#377): The original declared this class in TotemStatue.h.
 	INFO_DATA_BLOCK(field_0x120, field_0x120)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "TotemStatue.h", 19)
+	INFO_DERIVED_LOADERS(19, "TotemStatue.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_TOTEM_STATUE_INFO_INCLUDED_H */

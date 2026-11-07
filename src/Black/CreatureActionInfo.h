@@ -73,7 +73,7 @@ public:
 #else
 	INFO_DATA_BLOCK(StrengthGain, TykeMimicAction)
 #endif // VERSION_BW1W100
-	INFO_ROOT_LOADERS("CreatureAction.h", 46)
+	INFO_ROOT_LOADERS(46, "CreatureAction.h")
 };
 #ifdef VERSION_BW1W100
 static_assert(sizeof(CreatureActionInfo) == 0x10c, "Data type is of wrong size");

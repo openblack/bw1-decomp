@@ -42,7 +42,7 @@ public:
 
 	// Out of line: LoadBinary at 0042de00, Load at 0042dd90.
 	INFO_DATA_BLOCK(Mesh, Mesh)
-	INFO_DERIVED_LOADERS(GObjectInfo, "Fixed.h", 283)
+	INFO_DERIVED_LOADERS(283, "Fixed.h", GObjectInfo)
 };
 
 #endif /* BW1_DECOMP_SINGLE_MAP_FIXED_INFO_INCLUDED_H */

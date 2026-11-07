@@ -51,7 +51,7 @@ public:
 
 	// TODO(#377): The original declared this class in Animal.h.
 	INFO_DATA_BLOCK(Anim, PerformsLivingChecks)
-	INFO_ROOT_LOADERS("Animal.h", 52)
+	INFO_ROOT_LOADERS(52, "Animal.h")
 };
 
 #endif /* BW1_DECOMP_ANIMAL_STATE_TABLE_INFO_INCLUDED_H */

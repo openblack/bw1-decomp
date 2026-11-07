@@ -29,7 +29,7 @@ public:
 	// TODO(#377): The original declared this class in Influence.h.
 	// Out of line: LoadBinary at 0042f700, Load at 0042f6b0.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("Influence.h", 19)
+	INFO_ROOT_LOADERS(19, "Influence.h")
 };
 
 #endif /* BW1_DECOMP_INFLUENCE_INFO_INCLUDED_H */

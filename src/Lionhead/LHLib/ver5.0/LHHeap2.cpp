@@ -63,7 +63,7 @@ unsigned int Heap::GetActualMemoryRequired(unsigned int size) const
 
 Heap* Heap::Create(unsigned int size, unsigned int a2)
 {
-	unsigned char* pool = (unsigned char*)operator new(size, __FILE__, 62);
+	unsigned char* pool = NEW(62) unsigned char[size];
 	if (!pool)
 	{
 		return NULL;
@@ -482,7 +482,7 @@ unsigned int UniqueKeyHeap::GetActualMemoryRequired(unsigned int size) const
 
 UniqueKeyHeap* UniqueKeyHeap::Create(unsigned int size, unsigned int a2)
 {
-	unsigned char* pool = (unsigned char*)operator new(size, __FILE__, 437);
+	unsigned char* pool = NEW(437) unsigned char[size];
 	if (!pool)
 	{
 		return NULL;

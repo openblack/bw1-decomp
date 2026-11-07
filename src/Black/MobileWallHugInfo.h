@@ -21,7 +21,7 @@ public:
 	// TODO(#377): The original declared this class in MobileWallHug.h.
 	// Out of line: LoadBinary at 00431710, Load at 00431680.
 	INFO_DATA_BLOCK(speed, CollideMask)
-	INFO_DERIVED_LOADERS(GMobileInfo, "MobileWallHug.h", 87)
+	INFO_DERIVED_LOADERS(87, "MobileWallHug.h", GMobileInfo)
 };
 
 #endif /* BW1_DECOMP_MOBILE_WALL_HUG_INFO_INCLUDED_H */

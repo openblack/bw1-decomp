@@ -77,7 +77,7 @@ public:
 	static GAnimalInfo* GetInfo() { return Infos; }
 
 	INFO_DATA_BLOCK(AnimalType, field_0x2c8)
-	INFO_DERIVED_LOADERS(GLivingInfo, "Animal.h", 72)
+	INFO_DERIVED_LOADERS(72, "Animal.h", GLivingInfo)
 };
 
 #endif /* BW1_DECOMP_ANIMAL_INFO_INCLUDED_H */

@@ -44,7 +44,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureMentalDesireSource.h.
 	INFO_DATA_BLOCK(ByCreatureType, ByCreatureType)
-	INFO_ROOT_LOADERS("CreatureMentalDesireSource.h", 24)
+	INFO_ROOT_LOADERS(24, "CreatureMentalDesireSource.h")
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(CreatureInitialSourceInfo) == 0x5c, "Data type is of wrong size");

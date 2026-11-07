@@ -36,7 +36,7 @@ public:
 
 	// TODO(#377): The original declared this class in Feature.h.
 	INFO_DATA_BLOCK(field_0x124, field_0x124)
-	INFO_DERIVED_LOADERS(GFeatureInfo, "Feature.h", 106)
+	INFO_DERIVED_LOADERS(106, "Feature.h", GFeatureInfo)
 };
 
 #endif /* BW1_DECOMP_FLOWERS_INFO_INCLUDED_H */

@@ -15,6 +15,8 @@
 #include "LHServerListener.h"
 #include "LHTransportInfo.h"
 
+#define LH_LOG_TEXT(line, text) LHLogger::LogS(LHLogLibraryName, __FILE__, line, text)
+
 // BW1W120 10005c50 BW1M119 010e2a30 (LHCombined Release)
 static LH_RETURN BaseProcessEvent(LHNetEvent* event, LHConnection* connection, void* context);
 // BW1W120 10005c70 BW1M119 010e29b0 (LHCombined Release)
@@ -140,7 +142,7 @@ LH_RETURN LHConnectionServer::Start(LHMPServerStartInfo* start_info, LHTransport
 	unsigned long numSignals;
 	HANDLE*       signals;
 
-	LHLogger::LogS(LHLogLibraryName, __FILE__, 171, "Starting RELEASE server\n");
+	LH_LOG_TEXT(171, "Starting RELEASE server\n");
 
 	if (start_info->RegisteredName == NULL)
 		return LH_FAIL;

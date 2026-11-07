@@ -50,7 +50,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureMimic.h.
 	INFO_DATA_BLOCK(Name, CopiesDesire)
-	INFO_ROOT_LOADERS("CreatureMimic.h", 27)
+	INFO_ROOT_LOADERS(27, "CreatureMimic.h")
 };
 static_assert(sizeof(CreatureMimicInfo) == 0xc0, "Data type is of wrong size");
 

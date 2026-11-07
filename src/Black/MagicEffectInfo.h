@@ -98,7 +98,7 @@ public:
 #else
 	INFO_DATA_BLOCK(name, field_0x118)
 #endif
-	INFO_DERIVED_LOADERS(GEffectInfo, "Effect.h", 38)
+	INFO_DERIVED_LOADERS(38, "Effect.h", GEffectInfo)
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(GMagicEffectInfo) == 0x120, "Data type is of wrong size");

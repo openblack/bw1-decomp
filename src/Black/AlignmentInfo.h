@@ -42,7 +42,7 @@ public:
 
 	// TODO(#377): The original declared this class in Alignment.h.
 	INFO_DATA_BLOCK(Modifiers, Modifiers)
-	INFO_ROOT_LOADERS("Alignment.h", 26)
+	INFO_ROOT_LOADERS(26, "Alignment.h")
 };
 
 #endif /* BW1_DECOMP_ALIGNMENT_INFO_INCLUDED_H */

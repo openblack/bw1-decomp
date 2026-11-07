@@ -71,7 +71,7 @@ public:
 
 	// Out of line: LoadBinary at 0042f620, Load at 0042f5b0.
 	INFO_DATA_BLOCK(Gesture, field_0x180)
-	INFO_DERIVED_LOADERS(GObjectInfo, "SpellSeedInfo.h", 43)
+	INFO_DERIVED_LOADERS(43, "SpellSeedInfo.h", GObjectInfo)
 
 	// BW1W120 0072b170 BW1M119 01535af0
 	static SPELL_SEED_TYPE GetInfoFromText(char* text);

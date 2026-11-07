@@ -30,7 +30,7 @@ public:
 	// TODO(#377): The original declared this class in MagicShieldInfo.h.
 	// Out of line: LoadBinary at 0042dc20, Load at 0042dbb0.
 	INFO_DATA_BLOCK(field_0x58, field_0x58)
-	INFO_DERIVED_LOADERS(GMagicInfo, "MagicShieldInfo.h", 40)
+	INFO_DERIVED_LOADERS(40, "MagicShieldInfo.h", GMagicInfo)
 };
 static_assert(sizeof(GMagicHealInfo) == 0x60, "Data type is of wrong size");
 

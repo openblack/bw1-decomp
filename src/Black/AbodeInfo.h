@@ -99,7 +99,7 @@ public:
 	// TODO(#377): The original declared this class in Abode.h.
 	// Out of line: LoadBinary at 0042e520, Load at 0042e490.
 	INFO_DATA_BLOCK(AbodeType, DykCategory)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "Abode.h", 35)
+	INFO_DERIVED_LOADERS(35, "Abode.h", GMultiMapFixedInfo)
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(GAbodeInfo) == 0x1cc, "Data type is of wrong size");

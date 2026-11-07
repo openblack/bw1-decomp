@@ -74,7 +74,7 @@ public:
 
 	// TODO(#377): The original declared this class in VillagerStates.h.
 	INFO_DATA_BLOCK(Anim, QueryHelpText)
-	INFO_ROOT_LOADERS("VillagerStates.h", 23)
+	INFO_ROOT_LOADERS(23, "VillagerStates.h")
 };
 
 #endif /* BW1_DECOMP_VILLAGER_STATE_TABLE_INFO_INCLUDED_H */

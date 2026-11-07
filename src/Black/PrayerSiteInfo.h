@@ -39,7 +39,7 @@ public:
 
 	// TODO(#377): The original declared this class in Prayer.h.
 	INFO_DATA_BLOCK(field_0x120, field_0x120)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "Prayer.h", 13)
+	INFO_DERIVED_LOADERS(13, "Prayer.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_PRAYER_SITE_INFO_INCLUDED_H */

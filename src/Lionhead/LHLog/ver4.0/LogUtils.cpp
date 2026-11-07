@@ -87,7 +87,7 @@ LH_RETURN RegistryRetrieveVal(char* key, char* value, uint8_t* data, unsigned lo
 	unsigned long bufferSize = *val_size;
 
 	// clang-format off
-	LH_ASSERT_FORCED(*val_size<10000, "Tim: Have you passed an uninitialised length to a registry routine?", 125);
+	LH_ASSERT_FORCED(125, *val_size<10000, "Tim: Have you passed an uninitialised length to a registry routine?");
 	// clang-format on
 
 	uint8_t*      buffer = (uint8_t*)malloc(*val_size);
@@ -119,7 +119,7 @@ LH_RETURN RegistryRetrieveVal(char* key, char* value, uint8_t* data, unsigned lo
 				memcpy(buffer, largeBuffer, bufferSize);
 				if (_stricmp(name, value) == 0)
 				{
-					LH_LOG_ERROR(LH_LOG_CODE_ERROR, LHSPrintf("Registry value truncated %s %s\n", key, value), 155);
+					LH_LOG_ERROR(155, LH_LOG_CODE_ERROR, LHSPrintf("Registry value truncated %s %s\n", key, value));
 				}
 			}
 			operator delete(largeBuffer);
@@ -130,7 +130,7 @@ LH_RETURN RegistryRetrieveVal(char* key, char* value, uint8_t* data, unsigned lo
 		{
 			if (error != ERROR_NO_MORE_ITEMS && _stricmp(name, value) == 0)
 			{
-				LH_LOG_ERROR(LH_LOG_CODE_ERROR, LHSPrintf("Problem retrieving registry item %s %s\n", key, value), 165);
+				LH_LOG_ERROR(165, LH_LOG_CODE_ERROR, LHSPrintf("Problem retrieving registry item %s %s\n", key, value));
 			}
 			break;
 		}

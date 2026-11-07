@@ -30,7 +30,7 @@ public:
 	// TODO(#377): The original declared this class in MagicTeleport.h.
 	// Out of line: LoadBinary at 0042dee0, Load at 0042de80.
 	INFO_DATA_BLOCK(field_0x58, field_0x58)
-	INFO_DERIVED_LOADERS(GMagicInfo, "MagicTeleport.h", 19)
+	INFO_DERIVED_LOADERS(19, "MagicTeleport.h", GMagicInfo)
 };
 static_assert(sizeof(GMagicTeleportInfo) == 0x5c, "Data type is of wrong size");
 
