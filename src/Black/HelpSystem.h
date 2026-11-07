@@ -304,6 +304,16 @@ struct LHPoint;
 class Object;
 struct MapCoords;
 
+#define HELP_SYSTEM_HISTORY_SIZE 1024
+
+struct HelpHistoryEntry
+{
+	unsigned long         Text;
+	HELP_TEXT_INTERACTION Interaction;
+	float                 Number;
+	HELP_TEXT_NARRATOR    Narrator;
+};
+
 class HelpSystem : public Base
 {
 public:
@@ -341,9 +351,10 @@ public:
 	uint32_t                field_0x57c;
 	uint32_t                field_0x580;
 	uint32_t                field_0x584[0x6];
-	uint8_t                 field_0x59c[0x4028];
-	uint32_t                field_0x45c4;
-	uint32_t                NumHistoryEntries;
+	uint8_t                 field_0x59c[0x28];
+	HelpHistoryEntry        History[HELP_SYSTEM_HISTORY_SIZE]; /* 0x5c4 */
+	int                     HistoryHead;
+	int                     NumHistoryEntries;
 	uint32_t                DialogueControlTask;
 	uint32_t                field_0x45d0;
 	uint16_t                NumBanterSetsSent;
@@ -504,10 +515,9 @@ public:
 	bool32_t IsInWideScreenTransition() const;
 	// BW1W120 inlined BW1M119 010867f0
 	int GetWideScreenControl() const { return WideScreenControl; }
-#ifdef VERSION_BW1WCI
+	// BW1W120 inlined BW1M119 inlined
 	// BW1WCI inlined BW1MCI119 01522790
-	bool32_t IsInScriptWideScreen() const { return WideScreen && WideScreenControl; }
-#endif
+	bool32_t IsInScriptWideScreen() const { return WideScreen && GetWideScreenControl(); }
 	// BW1W120 005c8280 BW1M119 0135a370
 	void TriggerCategory(HELP_SET_CATEGORY category);
 	// BW1W120 005c8330 BW1M119 0135ab30
@@ -540,6 +550,8 @@ public:
 	void GetHelpQueryAtPosition(const MapCoords& coords);
 	// BW1W120 005c98e0 BW1M119 0135bea0
 	void HelpQuery();
+	// BW1W120 005c5f50 BW1M119 01359030
+	HelpHistoryEntry* GetFromHistory(int index);
 	// BW1W120 inlined BW1M119 014ffc90
 	HelpText* GetHelpText() { return help_text; }
 };

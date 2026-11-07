@@ -21,6 +21,7 @@ struct MapCoords;
 struct Point2D;
 struct RPHolder;
 struct RPlan;
+class Town;
 
 enum FOOTPATH_POS
 {
@@ -111,6 +112,10 @@ public:
 	bool32_t SaveObject(LHOSFile& file, const MapCoords* offset);
 	// BW1W120 00538eb0 BW1M119 010ec330
 	void AssertValid();
+	// BW1W120 00538900
+	static void DeleteAll();
+	// BW1W120 005356f0
+	static bool GenerateRoutesForTown(Town* town, int max_routes);
 
 	// BW1W120 00cd035c
 	static char LinkFilename[];

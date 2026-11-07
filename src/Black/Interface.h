@@ -162,6 +162,12 @@ public:
 	MapCoords& GetHandRenderCollidePos() { return interface_collide.pos; }
 	// BW1W120 005d8a10 BW1M119 0136f240
 	void StartImmersion(IMMERSION_EFFECT_TYPE type, unsigned long iterations);
+	// BW1W120 005cee20 BW1M119 010059f0
+	bool32_t InGameEditor() const;
+	// BW1W120 005d0410 BW1M119 013606d0
+	void KeyBoardRepeatSpell();
+	// BW1W120 005d03d0 BW1M119 013607c0
+	void KeyBoardStartSpellSelectionSystem();
 	// BW1W120 005d8af0 BW1M119 0136f110
 	void StopAllImmersion();
 	// BW1W120 005d8a80 BW1M119 0136f1a0

@@ -1993,13 +1993,13 @@ Black/PBall.cpp:
 	.text       start:0x0063E800 end:0x0063EB30
 	.rdata      start:0x0093136C end:0x00931C0C
 	.CRT$XCU    start:0x009C711C end:0x009C7128 align:4
-	.data       start:0x00BFE07C end:0x00BFE2D8
+	.data       start:0x00BFE07C end:0x00BFE098
 
 Black/PCInput.cpp:
 	.text       start:0x0063EB30 end:0x00641870
 	.rdata      start:0x00931C0C end:0x00931C2C
 	.CRT$XCU    start:0x009C7128 end:0x009C7160 align:4
-	.data       start:0x00BFE2D8 end:0x00BFE7F8
+	.data       start:0x00BFE098 end:0x00BFE7F8
 	.bss        start:0x00D45610 end:0x00D46A88
 
 Black/PCMain.cpp:

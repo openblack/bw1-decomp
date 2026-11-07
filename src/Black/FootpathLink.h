@@ -44,6 +44,8 @@ public:
 
 	// BW1W120 00536c80 BW1M119 010efa10
 	static bool32_t LoadAll(char* filename);
+	// BW1W120 00536670
+	static bool32_t SaveAll(char* filename);
 
 	// Constructors
 
