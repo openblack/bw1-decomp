@@ -71,16 +71,26 @@ enum GAME_LANGUAGE
 	GAME_LANGUAGE_TRADITIONAL_CHINESE = 11,
 	GAME_LANGUAGE_POLISH = 12,
 	GAME_LANGUAGE_KOREAN = 13,
-	GAME_LANGUAGE_THAI = 14
+	GAME_LANGUAGE_THAI = 14,
+	GAME_LANGUAGE_LAST
+};
+
+enum GAME_START_TYPE
+{
+	GAME_START_TYPE_AUTOSAVE,
+	GAME_START_TYPE_NEW_GAME,
+	GAME_START_TYPE_LOAD_GAME,
+	GAME_START_TYPE_MULTIPLAYER,
+	GAME_START_TYPE_SKIRMISH,
 };
 
 enum GAME_MODE
 {
 	GAME_MODE_RUNNING = 0x0,
-	GAME_MODE_1 = 0x1,
-	GAME_MODE_2 = 0x2,
+	GAME_MODE_NEW_GAME = 0x1,
+	GAME_MODE_RESTART = 0x2,
 	GAME_MODE_ONLINE = 0x3,
-	GAME_MODE_4 = 0x4,
+	GAME_MODE_LOAD_GAME = 0x4,
 	GAME_MODE_SKIRMISH = 0x5,
 	GAME_MODE_QUITTING = 0x6,
 	_GAME_MODE_COUNT = 0x7
@@ -265,9 +275,7 @@ public:
 	uint8_t                field_0x205a5a;
 	uint8_t                NeutralPlayerIndex;
 	uint8_t                field_0x205a5c;
-	uint8_t                field_0x205a5d;
-	uint8_t                field_0x205a5e;
-	uint8_t                field_0x205a5f;
+	uint8_t                field_0x205a5d[3];
 	GPacket                Packet;
 	GNetwork               network;
 	uint32_t               field_0x205ba0;
@@ -315,7 +323,7 @@ public:
 	char*                 PendingMapFeaturesFile;
 	uint8_t               field_0x250174;
 	Config*               config;
-	uint32_t              Enum0x25017c; // TODO: Original enum identity is unrecovered; serialized as four bytes.
+	GAME_START_TYPE       StartType;
 	GAME_MODE             GameMode;
 	uint32_t              field_0x250184;
 	LHVideoPlayer*        VideoPlayer;
@@ -330,11 +338,7 @@ public:
 	GCamera*              camera;
 	uint32_t              field_0x2502c4;
 	uint8_t               field_0x2502c8;
-	uint8_t               field_0x2502c9[3];
-	uint8_t               field_0x2502cc;
-	uint8_t               field_0x2502cd;
-	uint8_t               field_0x2502ce;
-	uint8_t               field_0x2502cf;
+	uint8_t               field_0x2502c9[7];
 	FILE*                 CreatureLogFile;
 	FILE*                 field_0x2502d4;
 	FILE*                 TownDesireLogFile;

@@ -192,6 +192,8 @@ block_relocations:
   - source: 0x008706C8
   - source: 0x0087084B
   - source: 0x00871378
+# start_system's object heap size 0xc00000 is an immediate, not a pointer into AttributeAbodeType::ValueNames.
+  - source: 0x00647A47
 
 add_relocations:
 # ioinit.obj: data references dtk attributes to the neighbouring symbol.
@@ -1600,6 +1602,11 @@ add_relocations:
   - source: 0x0087008D
     type: x86_abs32
     target: '__real@4@bffc860a920000000000'
+# PCMain.cpp's start_system: the cmp against the end of CountryCodes (dtk leaves the immediate unrelocated).
+  - source: 0x00647C64
+    type: x86_abs32
+    target: '?CountryCodes@@3PAY02DA'
+    addend: 0x2d
 timestamp: "2003-03-06T21:30:42+00:00"
 force_size: 0x008C4000
 linker_version: "6.0"

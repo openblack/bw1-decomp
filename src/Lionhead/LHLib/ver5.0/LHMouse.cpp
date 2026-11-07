@@ -243,7 +243,7 @@ void LHMouse::SetButtons(uint8_t button)
 
 int LHMouse::SetPosition(LHCoord* position)
 {
-	if (LHSys::TheSystem.WindowedMode)
+	if (LHSys::TheSystem.TurnOffMouseMove)
 	{
 		ImageMode = 1;
 		PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8007, 0, 0);

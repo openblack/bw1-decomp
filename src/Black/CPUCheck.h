@@ -198,7 +198,7 @@ public:
 	// BW1W120 004726d0 BW1M119 inlined
 	void GetDisplayInfo();
 	// BW1W120 004729a0 BW1M119 010c3410
-	int GetCPUSpeed();
+	static int GetCPUSpeed();
 };
 static_assert(sizeof(CPUCheck) == 0x13d8, "Data type is of wrong size");
 

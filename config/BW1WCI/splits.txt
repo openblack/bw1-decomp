@@ -1762,21 +1762,21 @@ Black/PCInput.cpp:
 	.text       start:0x00654BF0 end:0x00657C40
 	.rdata      start:0x00989E78 end:0x00989E94
 	.CRT$XCU    start:0x00A36C5C end:0x00A36C84 align:4
-	.data       start:0x00C6ED3C end:0x00C6F5C8
-	.bss        start:0x00DC6990 end:0x00DC7E2C
+	.data       start:0x00C6ED3C end:0x00C6F25C
+	.bss        start:0x00DC6990 end:0x00DC7E08
 
 Black/PCMain.cpp:
 	.text       start:0x00657C40 end:0x00659B30
 	.rdata      start:0x00989E94 end:0x00989F40
 	.CRT$XCU    start:0x00A36C84 end:0x00A36C8C align:4
-	.data       start:0x00C6F5C8 end:0x00C6F868
-	.bss        start:0x00DC7E2C end:0x00DC7E54
+	.data       start:0x00C6F260 end:0x00C6F7E4
+	.bss        start:0x00DC7E08 end:0x00DC7E50
 
 Black/PFootball.cpp:
 	.text       start:0x00659B30 end:0x0065A7E0
 	.rdata      start:0x00989F40 end:0x0098AE38
 	.CRT$XCU    start:0x00A36C8C end:0x00A36C98 align:4
-	.data       start:0x00C6F868 end:0x00C6F9B4
+	.data       start:0x00C6F7E8 end:0x00C6F9B4
 	.bss        start:0x00DC7E54 end:0x00DC8B78
 
 Black/PhysicsObject.cpp:

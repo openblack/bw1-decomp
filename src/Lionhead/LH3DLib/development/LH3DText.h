@@ -165,9 +165,9 @@ struct GatheringText
 	// Non-virtual methods
 
 	// BW1W120 00830f60 BW1M119 010c5220 (LHCombined Release)
-	void SetupGameFonts();
+	static void SetupGameFonts();
 	// BW1W120 008310d0 BW1M119 010c5150 (LHCombined Release)
-	void CloseGameFonts();
+	static void CloseGameFonts();
 	// BW1W120 00831130 BW1M119 01033370 (LHCombined Release)
 	float GetStringWidth(char16_t* str, int len, float text_size);
 	// Inliner IL size: 41

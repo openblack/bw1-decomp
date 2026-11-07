@@ -145,8 +145,10 @@ public:
 	static unsigned long UserDataLen;
 	// BW1W120 10068b54 BW1M119 013566cc (LHCombined Release)
 	static void* MGJCallbackParam;
+#endif
 	// BW1W120 10068b58 BW1M119 013566d0 (LHCombined Release)
 	static LH_MGJ_CALLBACK_RETURN (*MGJCallback)(void* param);
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10068b5c BW1M119 013566d4 (LHCombined Release)
 	static LH_OPERATING_MODE MessageServerMode;
 	// BW1W120 10068b64 BW1M119 013566dc (LHCombined Release)

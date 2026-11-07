@@ -1272,7 +1272,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/PathCreator.cpp"),
             GameCodeObject(NonMatching, "Black/PBall.cpp"),
             GameCodeObject(NonMatching, "Black/PCInput.cpp"),
-            GameCodeObject(NonMatching, "Black/PCMain.cpp", pch=PCH_PENDING),
+            GameCodeObject(NonMatching, "Black/PCMain.cpp"),
             GameCodeObject(NonMatching, "Black/Persistent.cpp"),
             GameCodeObject(NonMatching, "Black/PFootball.cpp"),
             GameCodeObject(NonMatching, "Black/PhysicalShield.cpp"),

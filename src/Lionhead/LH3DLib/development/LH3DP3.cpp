@@ -67,7 +67,7 @@ volatile bool LH3DP3::IsPentium4;
 volatile int  LH3DP3::HasCMOV;
 volatile int  LH3DP3::HasMMX;
 volatile int  LH3DP3::HasSSE;
-volatile int  LH3DP3::HasSSE2;
+int           LH3DP3::HasSSE2;
 
 #ifndef VERSION_BW1W100
 void LH3DP3::Init()

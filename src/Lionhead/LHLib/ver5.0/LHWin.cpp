@@ -184,10 +184,7 @@ int ResizeWindow(unsigned short width, unsigned short height)
 	return 0;
 }
 
-// The app-terminate handler (called from WinMain and pc_main).
-// Named for its raw address until its true name is recovered.
-// BW1W120 007dbed0
-void jmp_addr_0x007dbed0()
+void LHTerminate()
 {
 	if (!LHSys::TheSystem.TerminateRequested)
 	{
@@ -199,8 +196,7 @@ void jmp_addr_0x007dbed0()
 	LHSys::GetSystem().SetTerminate();
 }
 
-static bool AnyWindowMessages();
-static int  GetCursorPosClient(int hwnd, POINT* point);
+static int GetCursorPosClient(int hwnd, POINT* point);
 
 // The mouse-input worker thread. When the WndProc hasn't fed us a
 // mouse message (the event times out) it polls the async button/modifier state and the
@@ -219,7 +215,7 @@ void MouseInputThreadProc(void* arg)
 				break;
 			if (wait)
 			{
-				while ((InAssertDialog || LHSys::TheSystem.WindowedMode || !gWindowActive ||
+				while ((InAssertDialog || LHSys::TheSystem.TurnOffMouseMove || !gWindowActive ||
 				        LHSys::TheSystem.field_0x70b8) &&
 				       !LHSys::TheSystem.MouseThreadRunning)
 					Sleep(300);
@@ -459,7 +455,7 @@ int __stdcall jmp_addr_0x007dbc30(HINSTANCE hInstance, HINSTANCE prev_instance, 
 	return 0;
 }
 
-static bool AnyWindowMessages()
+bool AnyWindowMessages()
 {
 	MSG msg;
 	return PeekMessageA(&msg, LHSys::GetWindow(), 0, 0, 0) == TRUE;
@@ -795,7 +791,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 			SetEvent(LHSys::TheSystem.AppEvent);
 			lParam = (unsigned short)lParam | (HIWORD(lParam) << 16);
 		}
-		if (!LHSys::TheSystem.WindowedMode)
+		if (!LHSys::TheSystem.TurnOffMouseMove)
 		{
 			if (!gTrackingMouse)
 			{

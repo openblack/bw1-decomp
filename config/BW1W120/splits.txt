@@ -1999,22 +1999,23 @@ Black/PCInput.cpp:
 	.text       start:0x0063EB30 end:0x00641870
 	.rdata      start:0x00931C0C end:0x00931C2C
 	.CRT$XCU    start:0x009C7128 end:0x009C7160 align:4
-	.data       start:0x00BFE2D8 end:0x00BFEB64
-	.bss        start:0x00D45610 end:0x00D46AAC
+	.data       start:0x00BFE2D8 end:0x00BFE7F8
+	.bss        start:0x00D45610 end:0x00D46A88
 
 Black/PCMain.cpp:
 	.text       start:0x00641870 end:0x00643560
 	.rdata      start:0x00931C2C end:0x00931CD0
+	.rdata$r    start:0x009B2F90 end:0x009B305C
 	.CRT$XCU    start:0x009C7160 end:0x009C716C align:4
-	.data       start:0x00BFEB64 end:0x00BFED90
-	.bss        start:0x00D46AAC end:0x00D46AE4
+	.data       start:0x00BFE7F8 end:0x00BFED10
+	.bss        start:0x00D46A88 end:0x00D46ADC
 
 Black/PFootball.cpp:
 	.text       start:0x00643560 end:0x00644240
 	.rdata      start:0x00931CD0 end:0x00932B88
 	.CRT$XCU    start:0x009C716C end:0x009C717C align:4
-	.data       start:0x00BFED90 end:0x00BFEEDC
-	.bss        start:0x00D46AE4 end:0x00D47808
+	.data       start:0x00BFED10 end:0x00BFEEDC
+	.bss        start:0x00D46AE0 end:0x00D47808
 
 Black/PhysicsObject.cpp:
 	.text       start:0x00644240 end:0x006474C0

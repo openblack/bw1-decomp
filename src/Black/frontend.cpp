@@ -299,7 +299,7 @@ Zoomer FrontEnd::ToolTipZoomer;
 void FrontEnd::SetCursorOn()
 {
 	CursorOn = true;
-	LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_0x01, 0);
+	LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_HIDDEN, 0);
 }
 
 void FrontEnd::SetCursorOff()
@@ -1315,7 +1315,7 @@ void __stdcall ProfileEditor::ControlCallback(int message, SetupBox* box, SetupC
 			if (MessageBoxState == PROFILE_EDITOR_MESSAGE_BOX_QUIT)
 			{
 				Instance->UpdateCurrentProfile();
-				GGame::g_game->GameMode = GAME_MODE_1;
+				GGame::g_game->GameMode = GAME_MODE_NEW_GAME;
 			}
 			if (MessageBoxState == PROFILE_EDITOR_MESSAGE_BOX_2)
 			{
@@ -1386,7 +1386,7 @@ void __stdcall ProfileEditor::ControlCallback(int message, SetupBox* box, SetupC
 			else if (MessageBoxState == PROFILE_EDITOR_MESSAGE_BOX_4)
 			{
 				PauseGame(false);
-				GGame::g_game->GameMode = GAME_MODE_2;
+				GGame::g_game->GameMode = GAME_MODE_RESTART;
 				RestartRequired = false;
 				DialogBoxBase::HideAll();
 			}
@@ -1397,7 +1397,7 @@ void __stdcall ProfileEditor::ControlCallback(int message, SetupBox* box, SetupC
 			{
 				MessageBoxState = PROFILE_EDITOR_MESSAGE_BOX_NONE;
 				PauseGame(false);
-				GGame::g_game->GameMode = GAME_MODE_2;
+				GGame::g_game->GameMode = GAME_MODE_RESTART;
 				RestartRequired = false;
 				DialogBoxBase::HideAll();
 			}
@@ -3495,7 +3495,7 @@ void __stdcall SkirmishGameBox::Callback(int message, SetupBox* box, SetupContro
 	case SETUP_MESSAGE_CLICK:
 		if (control == BackButton)
 		{
-			GGame::g_game->Enum0x25017c = 0;
+			GGame::g_game->StartType = GAME_START_TYPE_AUTOSAVE;
 			StartRequested = false;
 			DialogBoxBase::Hide();
 		}

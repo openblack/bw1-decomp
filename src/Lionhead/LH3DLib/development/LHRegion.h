@@ -41,6 +41,14 @@ struct LHRegion
 	long Width() const { return X2() - X1() + 1; }
 	// BW1W120 inlined BW1M119 01344950
 	long Height() const { return Y2() - Y1() + 1; }
+	// BW1W120 inlined BW1M119 013e81c0
+	void Set(long x, long y, unsigned long width, unsigned long height)
+	{
+		start.x = x;
+		start.y = y;
+		end.x = x + width - 1;
+		end.y = y + height - 1;
+	}
 	// BW1W120 007deab0 BW1M119 0114cbe0 (LHCombined Release)
 	int CoordInRegion(const LHCoord& coord) const;
 	// BW1W120 007deae0 BW1M119 0114cb00 (LHCombined Release)

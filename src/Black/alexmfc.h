@@ -373,6 +373,8 @@ struct SetupBox
 	static bool CanEscape;
 	// BW1W120 00c4cced
 	static bool WantKey;
+	// BW1W120 00c4ccee
+	static bool Showing;
 	// BW1W120 00c4cd1c
 	static SetupBox* CurrentInitBox;
 	// BW1W120 00c4cd20

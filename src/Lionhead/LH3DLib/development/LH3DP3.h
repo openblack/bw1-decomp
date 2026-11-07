@@ -37,7 +37,7 @@ struct LH3DP3
 	// BW1W120 00e83a24 BW1M119 null
 	static volatile int HasSSE;
 	// BW1W120 00e83a20 BW1M119 null
-	static volatile int HasSSE2;
+	static int HasSSE2;
 
 	// Interpolates the intersection of edge inside->outside with the frustum plane named by mask into
 	// LH3DTech::g_cache_t_points[out_index], and classifies the new vertex against the planes not clipped yet. A vertex

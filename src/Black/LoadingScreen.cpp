@@ -137,7 +137,7 @@ void DrawLoading(float fade, float progress)
 			int alphaByte = alpha * 255.0f;
 
 			LH3DRender::g_mode_cleaning = LH3D_CLEANING_MODE_SCREEN;
-			LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_0x01, 0);
+			LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_HIDDEN, 0);
 			GatheringText* font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
 			LH3DRender::StartFrame();
 			SetupThing::DrawAlpha = alphaByte;
