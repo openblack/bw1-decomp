@@ -3789,7 +3789,6 @@ enum     HELP_TEXT
 #define HELP_TEXT_INTERRUPTION_IN_CITADEL_26                                                              3706
 #define HELP_TEXT_TOOLTIP_01                                                                              3707
 #define HELP_TEXT_TOOLTIP_02                                                                              3708
-#define HELP_TEXT_TOOLTIP_03                                                                              3709
 #define HELP_TEXT_TOOLTIP_04                                                                              3710
 #define HELP_TEXT_TOOLTIP_05                                                                              3711
 #define HELP_TEXT_TOOLTIP_06                                                                              3712
@@ -3798,7 +3797,6 @@ enum     HELP_TEXT
 #define HELP_TEXT_TOOLTIP_09                                                                              3715
 #define HELP_TEXT_TOOLTIP_10                                                                              3716
 #define HELP_TEXT_TOOLTIP_11                                                                              3717
-#define HELP_TEXT_TOOLTIP_12                                                                              3718
 #define HELP_TEXT_TOOLTIP_13                                                                              3719
 #define HELP_TEXT_TOOLTIP_14                                                                              3720
 #define HELP_TEXT_TOOLTIP_15                                                                              3721
@@ -3811,22 +3809,9 @@ enum     HELP_TEXT
 #define HELP_TEXT_TOOLTIP_22                                                                              3728
 #define HELP_TEXT_TOOLTIP_23                                                                              3729
 #define HELP_TEXT_TOOLTIP_24                                                                              3730
-#define HELP_TEXT_TOOLTIP_25                                                                              3731
 #define HELP_TEXT_TOOLTIP_26                                                                              3732
 #define HELP_TEXT_TOOLTIP_27                                                                              3733
 #define HELP_TEXT_TOOLTIP_28                                                                              3734
-#define HELP_TEXT_TOOLTIP_29                                                                              3735
-#define HELP_TEXT_TOOLTIP_30                                                                              3736
-#define HELP_TEXT_TOOLTIP_31                                                                              3737
-#define HELP_TEXT_TOOLTIP_32                                                                              3738
-#define HELP_TEXT_TOOLTIP_33                                                                              3739
-#define HELP_TEXT_TOOLTIP_34                                                                              3740
-#define HELP_TEXT_TOOLTIP_35                                                                              3741
-#define HELP_TEXT_TOOLTIP_36                                                                              3742
-#define HELP_TEXT_TOOLTIP_37                                                                              3743
-#define HELP_TEXT_TOOLTIP_38                                                                              3744
-#define HELP_TEXT_TOOLTIP_39                                                                              3745
-#define HELP_TEXT_TOOLTIP_40                                                                              3746
 #define HELP_TEXT_TOOLTIP_41                                                                              3747
 #define HELP_TEXT_TOOLTIP_42                                                                              3748
 #define HELP_TEXT_TOOLTIP_43                                                                              3749
@@ -3898,8 +3883,6 @@ enum     HELP_TEXT
 #define HELP_TEXT_TOOLTIP_109                                                                             3815
 #define HELP_TEXT_TOOLTIP_110                                                                             3816
 #define HELP_TEXT_TOOLTIP_111                                                                             3817
-#define HELP_TEXT_TOOLTIP_112                                                                             3818
-#define HELP_TEXT_TOOLTIP_113                                                                             3819
 #define HELP_TEXT_TOOLTIP_114                                                                             3820
 #define HELP_TEXT_TOOLTIP_115                                                                             3821
 #define HELP_TEXT_TOOLTIP_116                                                                             3822
@@ -3909,7 +3892,6 @@ enum     HELP_TEXT
 #define HELP_TEXT_TOOLTIP_120                                                                             3826
 #define HELP_TEXT_TOOLTIP_121                                                                             3827
 #define HELP_TEXT_TOOLTIP_122                                                                             3828
-#define HELP_TEXT_TOOLTIP_123                                                                             3829
 #define HELP_TEXT_TOOLTIP_124                                                                             3830
 #define HELP_TEXT_TOOLTIP_125                                                                             3831
 #define HELP_TEXT_TOOLTIP_126                                                                             3832
