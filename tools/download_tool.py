@@ -238,8 +238,16 @@ def patch_icl_file_echo(output: Path) -> None:
     )
 
 
+def patch_msvc6(output: Path) -> None:
+    patch_cl_file_echo(output)
+    # Let the build hand the compiler the original source paths (see cl6_paths.py).
+    import cl6_paths
+
+    cl6_paths.apply(output)
+
+
 PATCHES: Dict[str, Callable[[Path], None]] = {
-    "compilers_msvc": patch_cl_file_echo,
+    "compilers_msvc": patch_msvc6,
     "compilers_msvc70": patch_cl_file_echo,
     "icc": patch_icl_file_echo,
 }

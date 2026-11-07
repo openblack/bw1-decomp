@@ -292,6 +292,11 @@ class ProjectConfig:
         self.platform: str = "dol"  # "dol" or "pe"
         self.lld_link_path: Optional[Path] = None  # Path to lld-link binary (if not in PATH)
         self.lld_link_tag: Optional[str] = None  # openblack/llvm-project release tag; if set, download lld-link
+        # The original build's paths (tools/cl6_paths.py): (checkout directory, original path) pairs,
+        # the most specific first. C++ units compiled by cl6_compilers get their source and include
+        # directories as original paths, and the compiler opens them in the checkout.
+        self.cl6_map: List[Tuple[Path, str]] = []
+        self.cl6_compilers: Tuple[str, ...] = ("MSVC/6.4", "MSVC/6.5")
 
     def validate(self) -> None:
         required_attrs = [
@@ -359,6 +364,37 @@ class ProjectConfig:
 
 def is_windows() -> bool:
     return os.name == "nt"
+
+
+# A host path as the compiler sees it: native on Windows, the Z: drive under wibo or wine.
+def cl6_windows_path(path: Path) -> str:
+    full = Path(os.path.abspath(path))
+    return str(full) if is_windows() else "Z:" + full.as_posix().replace("/", "\\")
+
+
+# config.cl6_map as CL6_MAP's value: "checkout=original|...".
+def cl6_map_value(config: "ProjectConfig") -> str:
+    return "|".join(f"{cl6_windows_path(checkout)}={original}" for checkout, original in config.cl6_map)
+
+
+# The original path of a checkout path (tools/cl6_paths.py), or None outside config.cl6_map.
+def cl6_original(config: "ProjectConfig", path: Union[str, Path]) -> Optional[str]:
+    full = Path(os.path.abspath(path))
+    for checkout, original in config.cl6_map:
+        checkout = Path(os.path.abspath(checkout))
+        if full == checkout or checkout in full.parents:
+            rest = full.relative_to(checkout)
+            return original + ("" if str(rest) == "." else "\\" + str(rest).replace("/", "\\"))
+    return None
+
+
+# cl flags with every /I directory replaced by its original path.
+def cl6_flags(config: "ProjectConfig", flags: List[str]) -> List[str]:
+    result = list(flags)
+    for i, flag in enumerate(result[:-1]):
+        if flag == "/I":
+            result[i + 1] = cl6_original(config, result[i + 1]) or result[i + 1]
+    return result
 
 
 # On Windows, we need this to use && in commands
@@ -455,14 +491,15 @@ def check_path_case(path: Path):
         print(f"⚠️  Case mismatch: expected={path} actual={curr}")
 
 
-# Flags holding a quote (a string-valued /D, such as FILEPATH) are quoted for the
+# Flags holding a quote (a string-valued /D, such as FILEPATH), whitespace or, on
+# POSIX, a backslash (the original paths of tools/cl6_paths.py) are quoted for the
 # command interpreter: ninja runs commands through /bin/sh on POSIX and passes them
 # to CreateProcess, which cl splits by the CRT's rules, on Windows. Others pass as
 # they are, so that two-part flags such as "/I include" stay two arguments.
 def quote_flag(flag: str, windows: bool = os.name == "nt") -> str:
-    if '"' not in flag:
-        return flag
-    return subprocess.list2cmdline([flag]) if windows else shlex.quote(flag)
+    if windows:
+        return subprocess.list2cmdline([flag]) if any(c in flag for c in ' \t"') else flag
+    return shlex.quote(flag) if any(c in flag for c in ' \t"\'\\') else flag
 
 
 def make_flags_str(flags: Optional[List[str]], windows: bool = os.name == "nt") -> str:
@@ -738,6 +775,17 @@ def generate_build_ninja(
     wrapper_cmd = f"{wrapper} " if wrapper else ""
 
     compilers: Optional[Path] = config.compilers()
+    # download_tool.py patches MSVC 6 after downloading it (tools/cl6_paths.py): a new patch
+    # downloads it again.
+    cl6_patch = [config.tools_dir / "cl6_paths.py", config.tools_dir / "cl6_paths_code.json"]
+    if config.cl6_map and config.compilers_path is not None:
+        for version in config.cl6_compilers:
+            c1xx = config.compilers_path / version / "c1xx.dll"
+            if c1xx.is_file() and b".cl6\0\0\0\0" not in c1xx.read_bytes()[:0x1000]:
+                sys.exit(
+                    f"{c1xx.parent} is not patched for the original source paths: "
+                    f"run `python {config.tools_dir / 'cl6_paths.py'} apply {c1xx.parent}`"
+                )
     compilers_implicit: Optional[Path] = None
     if config.compilers_path is not None:
         # A local compilers directory: depend on it as a whole. The per-rule
@@ -753,7 +801,7 @@ def generate_build_ninja(
             n.build(
                 outputs=msvc_dir,
                 rule="download_tool",
-                implicit=download_tool,
+                implicit=[download_tool, *cl6_patch],
                 variables={
                     "tool": "compilers_msvc",
                     "tag": config.compilers_tag,
@@ -784,7 +832,7 @@ def generate_build_ninja(
             n.build(
                 outputs=dest,
                 rule="download_tool",
-                implicit=download_tool,
+                implicit=[download_tool, *(cl6_patch if tool == "compilers_msvc" else [])],
                 variables={"tool": tool, "tag": tag},
             )
         n.newline()
@@ -1003,17 +1051,22 @@ def generate_build_ninja(
         cl_prefix = ""
         n.variable("cl_exe", "cl.exe")
         n.newline()
+        # CL6_MAP for the patched MSVC 6 compilers (tools/cl6_paths.py); other compilers ignore it.
+        cl6_env = ""
+        if config.cl6_map:
+            n.variable("cl6_map", cl6_map_value(config).replace("$", "$$"))
+            cl6_env = 'cmd /c set "CL6_MAP=$cl6_map" && ' if is_windows() else "CL6_MAP='$cl6_map' "
         n.comment("CL build (MSVC / clang-cl)")
         n.rule(
             name="cl",
-            command=f"${{env}}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out /Fd$pdb",
+            command=f"${{env}}{cl6_env}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /c $cl_src /Fo$out /Fd$pdb",
             description="CL $out",
         )
         n.newline()
         n.comment("Precompiled header (MSVC /Yc)")
         n.rule(
             name="cl_pch",
-            command=f"${{env}}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /Yc$pch_header /Fp$out /c $in /Fo$pch_obj",
+            command=f"${{env}}{cl6_env}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /Yc$pch_header /Fp$out /c $cl_src /Fo$pch_obj",
             description="PCH $out",
         )
         n.newline()
@@ -1395,6 +1448,24 @@ def generate_build_ninja(
             cflags_str = make_flags_str(all_cflags)
             lib_name = obj.options["lib"]
 
+            # A C++ unit of a patched MSVC 6 is compiled from its original path (tools/cl6_paths.py).
+            cl6 = (
+                config.platform == "pe"
+                and bool(config.cl6_map)
+                and obj.options["compiler_version"] in config.cl6_compilers
+                and obj.options["compiler_exe"] is None
+                and file_is_cpp(src_path)
+            )
+
+            def cl_source(path: Union[str, Path]) -> str:
+                original = cl6_original(config, path) if cl6 else None
+                return make_flags_str([original or serialize_path(Path(path))])
+
+            if cl6:
+                cflags = cl6_flags(config, cflags)
+                all_cflags = cflags + cl6_flags(config, extra_cflags)
+                cflags_str = make_flags_str(all_cflags)
+
             if config.platform == "pe":
                 # CL (MSVC / clang-cl) build rule
                 cl_variables = {
@@ -1427,6 +1498,7 @@ def generate_build_ninja(
                             variables={
                                 **cl_variables,
                                 "cflags": pch_cflags_str,
+                                "cl_src": cl_source(pch["source"]),
                                 "pch_header": header,
                                 "pch_obj": pch_out.with_suffix(".pch.o"),
                             },
@@ -1446,7 +1518,7 @@ def generate_build_ninja(
                     outputs=obj.src_obj_path,
                     rule="cl",
                     inputs=src_path,
-                    variables={**cl_variables, "cflags": cflags_str, "pdb": pdb},
+                    variables={**cl_variables, "cflags": cflags_str, "cl_src": cl_source(src_path), "pdb": pdb},
                     implicit=unit_implicit,
                     order_only=unit_order_only,
                 )

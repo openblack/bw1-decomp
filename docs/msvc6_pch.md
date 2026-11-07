@@ -78,6 +78,10 @@ descriptor of `CreatureLearning` before that of `CreaturePreviousLesson` at 12 o
 lengths without a PCH and at 13 with `/Yu`. Nothing about the original build can be read
 from it.
 
+The order depends on the memory the front end's path strings take, not on the source alone. The build
+therefore hands the compiler the original paths in every checkout (`tools/cl6_paths.py`): the
+order is then the same everywhere, and follows the source and those paths alone.
+
 ### Debug information [verified]
 
 The game was compiled with `/Zi`. It changes code only in rare cases, but those exist:
