@@ -2457,6 +2457,46 @@ Black/ScriptMarker.cpp:
 	.CRT$XCU    start:0x00A476C8 end:0x00A476CC align:4
 	.data       start:0x00CA15D8 end:0x00CA1600
 
+Black/ScriptMisc.cpp:
+	.text       start:0x00712330 end:0x00712380
+	.rdata      start:0x0097092C end:0x00970930
+	.CRT$XCU    start:0x00A476CC end:0x00A476D4 align:4
+	.bss        start:0x00E1A1B4 end:0x00E1A1BC
+
+Black/ScriptProperty.cpp:
+	.text       start:0x00712380 end:0x00713EA0
+	.rdata      start:0x00970930 end:0x00970940
+	.CRT$XCU    start:0x00A476D4 end:0x00A476E0 align:4
+	.data       start:0x00CA1600 end:0x00CA172D
+	.bss        start:0x00E1A1BC end:0x00E1A1C8
+
+Black/ScriptRelease.cpp:
+	.text       start:0x00713EA0 end:0x007140C0
+	.rdata      start:0x00970940 end:0x00970948
+	.CRT$XCU    start:0x00A476E0 end:0x00A476EC align:4
+	.data       start:0x00CA1730 end:0x00CA178D
+	.bss        start:0x00E1A1C8 end:0x00E1A1D0
+
+Black/ScriptSound.cpp:
+	.text       start:0x007140C0 end:0x00714C80
+	.rdata      start:0x00970948 end:0x00999734
+	.CRT$XCU    start:0x00A476EC end:0x00A476F4 align:4
+	.data       start:0x00CA1790 end:0x00CA17CB
+	.bss        start:0x00E1A1D0 end:0x00E1A1D4
+
+Black/ScriptSpirit.cpp:
+	.text       start:0x00714C80 end:0x00715720
+	.CRT$XCU    start:0x00A476F4 end:0x00A476FC align:4
+	.data       start:0x00CA17CC end:0x00CA1831
+	.bss        start:0x00E1A1D4 end:0x00E1A1D8
+
+Black/ScriptTime.cpp:
+	.text       start:0x00715720 end:0x00715EC0
+	.rdata      start:0x00999734 end:0x00999748
+	.CRT$XCU    start:0x00A476FC end:0x00A47708 align:4
+	.data       start:0x00CA1834 end:0x00CA1849
+	.bss        start:0x00E1A1D8 end:0x00E1A1E0
+
 Black/ScriptTimer.cpp:
 	.text       start:0x00715EC0 end:0x007161E0
 	.rdata      start:0x00999748 end:0x00999750
