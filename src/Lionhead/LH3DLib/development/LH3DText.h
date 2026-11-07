@@ -170,6 +170,12 @@ struct GatheringText
 	void CloseGameFonts();
 	// BW1W120 00831130 BW1M119 01033370 (LHCombined Release)
 	float GetStringWidth(char16_t* str, int len, float text_size);
+	// Inliner IL size: 41
+	// BW1W120 inlined BW1M119 inlined
+	float GetStringWidth(char16_t* str, int len, float text_size, float scale)
+	{
+		return GetStringWidth(str, len, text_size) * scale;
+	}
 	// BW1W120 00831550 BW1M119 010c5080 (LHCombined Release)
 	static float GetFrac(float value, float lower, float upper);
 	// BW1W120 008315b0 BW1M119 010c4970 (LHCombined Release)

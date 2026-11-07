@@ -982,7 +982,7 @@ void ProfileEditor::InitControls()
 	ProfileList->SetSelected(index);
 	ProfileList->SelectedIndex = index;
 	UpdateEditableControls();
-	NameEdit->editable = !GGame::g_game->IsMultiplayerGame();
+	NameEdit->Editable = !GGame::g_game->IsMultiplayerGame();
 }
 
 void ProfileEditor::UpdateCurrentProfile()
@@ -2357,7 +2357,7 @@ void LoginBox::InitControls()
 		FullChecksumCheckBox->style = value;
 		LHLobby::SendFullChecksum = FullChecksumCheckBox->style;
 	}
-	ServerEdit->editable = true;
+	ServerEdit->Editable = true;
 }
 
 void LoginBox::HangUp()
@@ -2434,7 +2434,7 @@ void __stdcall LoginBox::ControlCallback(int message, SetupBox* box, SetupContro
 		}
 		if (control->id == LOGIN_BOX_CONTROL_ID_LOGIN)
 		{
-			if (!Instance->ServerEdit->hidden && Instance->ServerEdit->editable)
+			if (!Instance->ServerEdit->hidden && Instance->ServerEdit->Editable)
 			{
 				char* server = WCHAR2CHAR(box->FindControl(LOGIN_BOX_CONTROL_ID_SERVER)->label);
 				char* name = WCHAR2CHAR(box->FindControl(LOGIN_BOX_CONTROL_ID_NAME)->label);

@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <string.h> /* For memcpy */
 #include <uchar.h>  /* For char16_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
@@ -13,6 +14,7 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>     /* For struct LHLinkedList */
 #include <re_common.h>                              /* For bool32_t */
 
+#include <string.h>  /* For memmove */
 #include <wchar.h>   /* For wcsncpy */
 #include <windows.h> /* Before LHSystem.h */
 
@@ -26,9 +28,19 @@ struct LH3DMesh;
 class LH3DObject;
 struct SetupBox;
 struct SetupList;
+struct SetupStaticText;
 
 // Identifier of the IME candidate list that SetupEdit creates.
-#define SETUP_IME_CANDIDATE_LIST_ID 0x85b680
+#define SETUP_IME_CANDIDATE_LIST_ID           0x85b680
+#define SETUP_IME_CANDIDATE_LIST_INITIAL_SIZE 50
+#define SETUP_IME_CANDIDATE_LIST_SIZE         150
+// SetupEdit opens the candidate list below itself while its bottom edge is above this, otherwise above itself.
+#define SETUP_IME_CANDIDATE_LIST_BELOW_LIMIT     400
+#define SETUP_IME_CANDIDATE_LIST_SCROLLBAR_WIDTH 10
+
+#define SETUP_EDIT_MAX_LENGTH 254
+// Milliseconds the edit cursor stays shown, then hidden.
+#define SETUP_EDIT_CURSOR_BLINK_TIME 200
 
 #define SETUP_NO_CLIP 40960
 
@@ -41,9 +53,19 @@ struct SetupList;
 #define SETUP_MP3_ICON_FIRST_ROW    1
 #define SETUP_MP3_ICON_PRESS_OFFSET 1
 
-// Control identifiers of the message box buttons that SetupBox::DefaultCB presses.
+#define SETUP_CLAMP(value, low, high) ((value) > (low) ? min((value), (high)) : (low))
+
+#define SETUP_GRAPH_GRID_MIN_STEP       0.25f
+#define SETUP_GRAPH_GRID_MIN_SPACING    4
+#define SETUP_GRAPH_GRID_MAJOR_INTERVAL 4
+#define SETUP_GRAPH_GRID_COLOUR         0x10ffffff
+#define SETUP_GRAPH_GRID_MAJOR_COLOUR   0x50ffffff
+#define SETUP_GRAPH_DECIMAL_LIMIT       10.0f
+
+// Control identifiers of the message box controls; SetupBox::DefaultCB presses the buttons.
 enum SETUP_MESSAGE_BOX_ID
 {
+	SETUP_MESSAGE_BOX_ID_TEXT = 9999,
 	SETUP_MESSAGE_BOX_ID_OK = 10000,
 	SETUP_MESSAGE_BOX_ID_CANCEL = 10001,
 	SETUP_MESSAGE_BOX_ID_YES = 10002,
@@ -225,6 +247,8 @@ struct SetupThing
 	static float adjust(int& x, int& y);
 	// BW1W120 00411c30 BW1M119 012bb270
 	static float unadjust(int& x, int& y);
+	// BW1W120 00411d30 BW1M119 null
+	static int adjustx(int x);
 	// BW1W120 00411dd0 BW1M119 010d0ff0
 	static int unadjustx(int x);
 	// BW1W120 00411e70 BW1M119 010dc610
@@ -236,15 +260,15 @@ struct SetupThing
 	// BW1W120 00412030 BW1M119 0113e350
 	static float unadjustsize(float size);
 	// BW1W120 00412150 BW1M119 013ea5a0
-	static void DrawBigButton(int x, int y, bool centered, bool interacted, int size, BBSTYLE style, bool shadowed,
+	static void DrawBigButton(int x, int y, bool pressed, bool highlighted, int size, BBSTYLE style, bool shadowed,
 	                          int clip_y_start, int clip_y_end);
 	// BW1W120 004125a0 BW1M119 013ed8d0
-	static void DrawLine(int x_start, int y_start, int x_end, int y_end, unsigned long color, int adjust, float depth,
-	                     float distance);
+	static void DrawLine(int x_start, int y_start, int x_end, int y_end, unsigned long color, bool32_t adjust,
+	                     float depth, float distance);
 	// BW1W120 00412980 BW1M119 0104b340
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
-	                    LH3DMaterial* material, LH3DColor* color, int adjust, int clip_y_start, int clip_y_end,
-	                    bool depth_test, float inv_w);
+	                    LH3DMaterial* material, LH3DColor* color, bool32_t adjust, int clip_y_start, int clip_y_end,
+	                    bool depth_test, float distance);
 	// BW1W120 00412eb0 BW1M119 011cd6d0
 	static void DrawQuad(int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, unsigned long color_1,
 	                     unsigned long color_2, unsigned long color_3, unsigned long color_4, unsigned long use_alpha,
@@ -253,8 +277,8 @@ struct SetupThing
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, unsigned long color_1, unsigned long color_2,
 	                    unsigned long color_3, unsigned long color_4, unsigned long use_alpha, unsigned long adjust);
 	// BW1W120 00413360 BW1M119 013da240
-	static void DrawTab(int x_min, int y_min, int x_max, int y_max, int selected, int first_in_row, int last_in_row,
-	                    char16_t* label, int color, int no_blend);
+	static void DrawTab(int x_min, int y_min, int x_max, int y_max, bool32_t selected, bool32_t first_in_row,
+	                    bool32_t last_in_row, char16_t* label, int color, bool32_t opaque);
 	// BW1W120 00413c20 BW1M119 0158faa0
 	static void DrawBevBox(int x_min, int y_min, int x_max, int y_max, int style, int outline_thickness,
 	                       int horizontal_outline, unsigned long color);
@@ -281,29 +305,32 @@ struct SetupControl
 	// Override methods
 
 	// BW1W120 004092f0 BW1M119 01145230
-	virtual void SetToolTip(const char16_t* tooltip);
+	virtual void SetToolTip(const char16_t* tooltip) { this->tooltip = tooltip; }
 	// BW1W120 00409210 BW1M119 014ddb40
 	virtual void SetToolTip(uint32_t tooltip_id);
 	// BW1W120 00409300 BW1M119 013b74a0
-	virtual void Hide(bool hidden);
+	virtual void Hide(bool hidden) { this->hidden = hidden; }
 	// BW1W120 00409180 BW1M119 01389d10
 	virtual void SetFocus(bool focus);
 	// BW1W120 00409310 BW1M119 0154c610
-	virtual bool HitTest(int x, int y);
+	virtual bool HitTest(int x, int y)
+	{
+		return x >= rect.start.x && y >= rect.start.y && x < rect.end.x && y < rect.end.y;
+	}
 	// BW1W120 purecall
 	virtual void Draw(bool hovered, bool selected) = 0;
 	// BW1W120 00409340 BW1M119 inlined
-	virtual void Drag(int x, int y);
+	virtual void Drag(int x, int y) {}
 	// BW1W120 00409350 BW1M119 0135d4b0
-	virtual void MouseDown(int x, int y, bool button_event);
+	virtual void MouseDown(int x, int y, bool button_event) {}
 	// BW1W120 00409360 BW1M119 01357370
-	virtual void MouseUp(int x, int y, bool button_event);
+	virtual void MouseUp(int x, int y, bool button_event) {}
 	// BW1W120 00409370 BW1M119 0138a080
-	virtual void Click(int x, int y);
+	virtual void Click(int x, int y) {}
 	// BW1W120 00409380 BW1M119 013cc040
-	virtual void KeyDown(int key, int mod);
+	virtual void KeyDown(int key, int mod) {}
 	// BW1W120 00409390 BW1M119 01391ae0
-	virtual void Char(int character);
+	virtual void Char(int character) {}
 	// BW1W120 004093c0 BW1M119 010d5f90
 	virtual ~SetupControl();
 
@@ -324,8 +351,20 @@ struct SetupControl
 enum MSGBOXSTYLE
 {
 	MSGBOXSTYLE_SINGLE_BUTTON = 0,
+	MSGBOXSTYLE_CANCEL = 1,
+	MSGBOXSTYLE_OK_CANCEL = 2,
 	MSGBOXSTYLE_YES_NO = 3,
+	MSGBOXSTYLE_YES_NO_CANCEL = 4,
 	MSGBOXSTYLE_NO_BUTTONS = 5,
+};
+
+// Help texts SetupBox::MessageBoxA labels its buttons with.
+enum SETUP_MESSAGE_BOX_TEXT
+{
+	SETUP_MESSAGE_BOX_TEXT_YES = 2593,
+	SETUP_MESSAGE_BOX_TEXT_NO = 2594,
+	SETUP_MESSAGE_BOX_TEXT_CANCEL = 2595,
+	SETUP_MESSAGE_BOX_TEXT_OK = 2596
 };
 
 struct SetupBox
@@ -368,12 +407,12 @@ struct SetupBox
 	int              HoldHeight;
 	int              DefaultTextSize;
 	void(__stdcall* Callback)(int message, SetupBox* box, SetupControl* control, int data1, int data2);
-	uint32_t      field_0xb4;
-	unsigned long HoldData;
-	SetupControl* HoverWidget; /* 0xbc */
-	int           HoldColour;
-	float         Alpha;
-	uint32_t      field_0xc8;
+	SetupStaticText* MessageText;
+	unsigned long    HoldData;
+	SetupControl*    HoverWidget; /* 0xbc */
+	int              HoldColour;
+	float            Alpha;
+	uint32_t         field_0xc8;
 
 	// Static methods
 
@@ -465,11 +504,15 @@ struct SetupButton : public SetupControl
 	// BW1W120 004097a0 BW1M119 01501fc0
 	virtual void Draw(bool hovered, bool selected);
 	// BW1W120 00409900 BW1M119 0159be80
-	virtual void MouseDown(int x, int y, bool button_event);
+	virtual void MouseDown(int x, int y, bool button_event) { pressed = true; }
 	// BW1W120 00409910 BW1M119 01375da0
-	virtual void MouseUp(int x, int y, bool button_event);
+	virtual void MouseUp(int x, int y, bool button_event) { pressed = false; }
 	// BW1W120 00409920 BW1M119 011723f0
-	virtual void KeyDown(int key, int mod);
+	virtual void KeyDown(int key, int mod)
+	{
+		if (setup_box != NULL)
+			setup_box->ClickKeyDown(key, mod);
+	}
 
 	// Constructors
 
@@ -527,7 +570,7 @@ typedef uint32_t(__stdcall* SetupList__ListBoxDraw_t)(SetupList* list, int index
 
 struct SetupList : public SetupControl
 {
-	bool field_0x23c;
+	bool ListBoxDrawAfterText;
 	int  ScrollbackWidth; /* 0x240 */
 	bool CentredText;     /* 0x244 */
 	int  SelectedIndex;
@@ -575,7 +618,7 @@ struct SetupList : public SetupControl
 	// BW1W120 inlined BW1M119 010ba0a0
 	virtual ~SetupList();
 	// BW1W120 0040a520 BW1M119 014491b0
-	virtual bool IsSelected(int index);
+	virtual bool IsSelected(int index) { return index == SelectedIndex; }
 
 	// Constructors
 
@@ -586,6 +629,8 @@ struct SetupList : public SetupControl
 
 	// BW1W120 00409dd0 BW1M119 0116ea40
 	void AutoScroll(bool to_bottom);
+	// BW1W120 0040a310 BW1M119 null
+	int GetItemAt(int x, int y);
 	// fabricated
 	// BW1W120 inlined BW1M119 inlined
 	void SetSelected(int index);
@@ -611,6 +656,8 @@ struct SetupList : public SetupControl
 		if (index >= 0 && index < NumItems)
 			ItemData[index] = data;
 	}
+	// BW1W120 inlined BW1M119 inlined
+	unsigned long GetCol(int index) { return index >= 0 && index < NumItems ? color[index].GetColor() : 0; }
 	// BW1W120 inlined BW1M119 inlined
 	SetupList__ListBoxDraw_t GetListBoxDraw(int index)
 	{
@@ -694,23 +741,34 @@ struct SetupMultiList : public SetupList
 
 struct SetupEdit : public SetupControl
 {
-	SetupList* field_0x23c;
-	int        MaxLength; /* 0x240 */
-	int        field_0x244;
-	int        field_0x248;
+	SetupList* CandidateList; /* 0x23c */
+	int        MaxLength;
+	int        CompositionStart;
+	int        CompositionEnd;
 	int        CursorPosition;
 	int        SelectStart; /* 0x250 */
 	int        SelectEnd;
 	int        ScrollOffset;
-	bool32_t   editable;
+	bool32_t   Editable;
 	bool       MaskedText; /* 0x260 */
-	char16_t   text[0x100];
+	char16_t   DisplayText[0x100];
 	uint32_t   SelectAllOnClick;
 
 	// Override methods
 
 	// BW1W120 0040c500 BW1M119 0142e440
-	virtual void SetFocus(bool focus);
+	virtual void SetFocus(bool focus)
+	{
+		if (focus && !this->focus)
+			SelectAllOnClick = 1;
+		SetupControl::SetFocus(focus);
+		CursorPosition = wcslen(label);
+		SelectEnd = CursorPosition;
+		SelectStart = CursorPosition;
+		ScrollOffset = 0;
+		if (focus)
+			SelectStart = 0;
+	}
 	// BW1W120 0040c580 BW1M119 013fb450
 	virtual void Draw(bool hovered, bool selected);
 	// BW1W120 0040c150 BW1M119 01368600
@@ -732,11 +790,13 @@ struct SetupEdit : public SetupControl
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 inlined
-	void ClampCursor();
-	// BW1W120 inlined BW1M119 inlined
 	void FixCursor();
 	// BW1W120 inlined BW1M119 inlined
 	void FixSelect();
+	// BW1W120 inlined BW1M119 inlined
+	void DeleteRange(int start, int end);
+	// BW1W120 inlined BW1M119 inlined
+	void InsertChar(int position, char16_t character);
 	// BW1W120 0040c090 BW1M119 013e1d10
 	int CalcCharpos(int pos);
 	// BW1W120 null BW1M119 01576390
@@ -751,6 +811,91 @@ struct SetupEdit : public SetupControl
 		ScrollOffset = 0;
 	}
 };
+
+// Inliner IL size: 495
+// BW1W120 inlined BW1M119 inlined
+inline void SetupEdit::FixCursor()
+{
+	label[MaxLength] = 0;
+	DisplayText[MaxLength] = 0;
+	if (MaskedText)
+	{
+		int len = wcslen(label);
+		int i;
+		for (i = 0; i < len; i++)
+			DisplayText[i] = L'#';
+		DisplayText[i] = 0;
+	}
+	else
+		wcscpy(DisplayText, label);
+	CompositionStart = CursorPosition;
+	CompositionEnd = CursorPosition;
+	if (LHSys::TheSystem.TbIME != NULL && focus && SetupThing::IMEActive && CursorPosition >= 0 &&
+	    CursorPosition <= (int)wcslen(DisplayText))
+	{
+		char16_t* composition = LHSys::TheSystem.TbIME->Composition_Get();
+		if (composition != NULL)
+		{
+			char16_t rest[0x100];
+			wcscpy(rest, &DisplayText[CursorPosition]);
+			wcscpy(&DisplayText[CursorPosition], composition);
+			wcscat(DisplayText, rest);
+			CompositionEnd += wcslen(composition);
+		}
+		CandidateList->rect.end.x = rect.end.x;
+		CandidateList->rect.start.x = rect.end.x - SETUP_IME_CANDIDATE_LIST_SIZE;
+		CandidateList->text_size = GetSmallTextSize();
+		CandidateList->ScrollbackWidth = SETUP_IME_CANDIDATE_LIST_SCROLLBAR_WIDTH;
+		if (rect.end.y < SETUP_IME_CANDIDATE_LIST_BELOW_LIMIT)
+		{
+			CandidateList->rect.start.y = rect.end.y;
+			CandidateList->rect.end.y = CandidateList->rect.start.y + SETUP_IME_CANDIDATE_LIST_SIZE;
+		}
+		else
+		{
+			CandidateList->rect.end.y = rect.start.y;
+			CandidateList->rect.start.y = CandidateList->rect.end.y - SETUP_IME_CANDIDATE_LIST_SIZE;
+		}
+	}
+}
+
+// Inliner IL size: 63
+// BW1W120 inlined BW1M119 inlined
+inline void SetupEdit::FixSelect()
+{
+	if (SelectStart > SelectEnd)
+	{
+		int position = SelectStart;
+		SelectStart = SelectEnd;
+		SelectEnd = position;
+	}
+}
+
+// Inliner IL size: 127
+// BW1W120 inlined BW1M119 inlined
+inline void SetupEdit::DeleteRange(int start, int end)
+{
+	int len = wcslen(label);
+	start = start > 0 ? min(start, len) : 0;
+	end = end > 0 ? min(end, len) : 0;
+	memmove(&label[start], &label[end], (len - end) * sizeof(char16_t));
+	label[len - (end - start)] = 0;
+}
+
+// Inliner IL size: 148
+// BW1W120 inlined BW1M119 inlined
+inline void SetupEdit::InsertChar(int position, char16_t character)
+{
+	int len = wcslen(label);
+	if (len < MaxLength)
+	{
+		position = position > 0 ? min(position, len) : 0;
+		memmove(&label[position + 1], &label[position], (len - position) * sizeof(char16_t));
+		label[position] = character;
+		label[len + 1] = 0;
+		label[MaxLength] = 0;
+	}
+}
 
 struct SetupMP3Button : public SetupButton
 {
@@ -784,12 +929,20 @@ struct SetupBigButton : public SetupButton
 
 	// Override methods
 
+	// BW1W120 0040d2f0 BW1M119 0149bfb0
+	virtual void KeyDown(int key, int mod)
+	{
+		if (setup_box != NULL)
+			setup_box->ClickKeyDown(key, mod);
+	}
 	// BW1W120 0040d310 BW1M119 0149c0c0
-	virtual bool HitTest(int x, int y);
+	virtual bool HitTest(int x, int y)
+	{
+		return SetupControl::HitTest(x, y) ||
+		       (x >= InnerRect.p0.x && y >= InnerRect.p0.y && x < InnerRect.p1.x && y < InnerRect.p1.y);
+	}
 	// BW1W120 0040ceb0 BW1M119 013ec8e0
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 0040d2f0 BW1M119 0149bfb0
-	virtual void KeyDown(int key, int mod);
 
 	// Constructors
 
@@ -798,8 +951,14 @@ struct SetupBigButton : public SetupButton
 
 	// Non-virtual methods
 
-	// BW1W120 0040d380
-	void fn_0040D380();
+	// BW1W120 0040d380 BW1M119 inlined
+	void ClearStyle();
+	// BW1W120 0040d390 BW1M119 null
+	void SetCheckBoxStyle();
+	// BW1W120 0040d3a0 BW1M119 null
+	void SetLeftArrowStyle();
+	// BW1W120 0040d3b0 BW1M119 null
+	void SetRightArrowStyle();
 };
 
 struct VBarData
@@ -835,8 +994,12 @@ struct SetupVBarGraph : public SetupButton
 	// BW1W120 0040e8b0 BW1M119 0135d4f0
 	virtual void Draw(bool hovered, bool selected);
 	// BW1W120 0040ef70 BW1M119 010cf650
-	virtual void KeyDown(int key, int mod);
-	// BW1W120 0040efb0 BW1M119 inlined
+	virtual void KeyDown(int key, int mod)
+	{
+		if (setup_box != NULL)
+			setup_box->ClickKeyDown(key, mod);
+	}
+	// BW1W120 0040efb0 BW1M119 010cde80
 	virtual void Reset();
 	// BW1W120 0040f1b0 BW1M119 01142e70
 	virtual void SetScale(float scale);
@@ -880,6 +1043,15 @@ struct HLineData
 
 	// BW1W120 inlined BW1M119 inlined
 	HLineData() : color(0), PointCount(0), points(NULL) {}
+	// BW1W120 inlined BW1M119 inlined
+	HLineData(HLineData& line) : color(0), PointCount(0), points(NULL)
+	{
+		color = line.color;
+		SetNum(line.PointCount);
+		memcpy(points, line.points, line.PointCount * sizeof(float));
+	}
+	// BW1W120 inlined BW1M119 01146d30
+	~HLineData() { delete[] points; }
 
 	// Non-virtual methods
 
@@ -906,10 +1078,18 @@ struct SetupHLineGraph : public SetupButton
 
 	// BW1W120 0040dab0 BW1M119 01372820
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 0040e5a0 BW1M119 0149d930
-	virtual void MouseUp(int x, int y, bool button_event);
 	// BW1W120 0040e580 BW1M119 013e5ba0
-	virtual void KeyDown(int key, int mod);
+	virtual void KeyDown(int key, int mod)
+	{
+		if (setup_box != NULL)
+			setup_box->ClickKeyDown(key, mod);
+	}
+	// BW1W120 0040e5a0 BW1M119 0149d930
+	virtual void MouseUp(int x, int y, bool button_event)
+	{
+		if (button_event)
+			percent_mode = !percent_mode;
+	}
 	// BW1W120 0040e5e0 BW1M119 01174420
 	virtual void Reset();
 	// BW1W120 0040e650 BW1M119 0151b1f0
@@ -939,7 +1119,11 @@ struct SetupTabButton : public SetupButton
 	// BW1W120 0040f3a0 BW1M119 0140fc20
 	virtual void Draw(bool hovered, bool selected);
 	// BW1W120 0040f670 BW1M119 011d02c0
-	virtual void KeyDown(int key, int mod);
+	virtual void KeyDown(int key, int mod)
+	{
+		if (setup_box != NULL)
+			setup_box->ClickKeyDown(key, mod);
+	}
 
 	// Constructors
 
@@ -947,6 +1131,15 @@ struct SetupTabButton : public SetupButton
 	SetupTabButton(int id, int x, int y, int width, int height, const char16_t* label, int selected, int first_in_row,
 	               int last_in_row);
 };
+
+// While SetupPicture is zoomed open, its pictures sit in two rings over a fading shadow ring.
+#define SETUP_PICTURE_RING_SEGMENTS     32
+#define SETUP_PICTURE_SHADOW_FADE       3
+#define SETUP_PICTURE_RING_MIN_ALPHA    5
+#define SETUP_PICTURE_RING_SELECT_ALPHA 253
+// A dragged picture hangs this far above and left of the pointer, flashing every this many milliseconds.
+#define SETUP_PICTURE_DRAG_OFFSET     32
+#define SETUP_PICTURE_DRAG_FLASH_TIME 400
 
 struct SetupPicture : public SetupButton
 {
@@ -973,10 +1166,14 @@ struct SetupPicture : public SetupButton
 	virtual void MouseDown(int x, int y, bool button_event);
 	// BW1W120 0040f840 BW1M119 0142ea20
 	virtual void MouseUp(int x, int y, bool button_event);
-	// BW1W120 00410710 BW1M119 01361d70
-	virtual void Click(int x, int y);
 	// BW1W120 004106f0 BW1M119 013525c0
-	virtual void KeyDown(int key, int mod);
+	virtual void KeyDown(int key, int mod)
+	{
+		if (setup_box != NULL)
+			setup_box->ClickKeyDown(key, mod);
+	}
+	// BW1W120 00410710 BW1M119 01361d70
+	virtual void Click(int x, int y) {}
 
 	// Constructors
 
@@ -1003,10 +1200,14 @@ struct SetupColourPicker : public SetupButton
 	virtual void MouseDown(int x, int y, bool button_event);
 	// BW1W120 00410800 BW1M119 0142f970
 	virtual void MouseUp(int x, int y, bool button_event);
-	// BW1W120 00410b50 BW1M119 0156c5a0
-	virtual void Click(int x, int y);
 	// BW1W120 00410b30 BW1M119 0117bea0
-	virtual void KeyDown(int key, int mod);
+	virtual void KeyDown(int key, int mod)
+	{
+		if (setup_box != NULL)
+			setup_box->ClickKeyDown(key, mod);
+	}
+	// BW1W120 00410b50 BW1M119 0156c5a0
+	virtual void Click(int x, int y) {}
 
 	// Constructors
 
@@ -1024,13 +1225,30 @@ struct SetupCheckBox : public SetupButton
 	// Override methods
 
 	// BW1W120 00410f90 BW1M119 015ac130
-	virtual bool HitTest(int x, int y);
+	virtual bool HitTest(int x, int y)
+	{
+		int dy = y - (rect.end.y + rect.start.y) / 2;
+		int dx = x - (rect.end.x + rect.start.x) / 2;
+		int radius = (rect.end.x - rect.start.x) / 2;
+		return dx * dx + dy * dy < radius * radius ||
+		       (x >= InnerRect.p0.x && y >= InnerRect.p0.y && x < InnerRect.p1.x && y < InnerRect.p1.y);
+	}
 	// BW1W120 00410b80 BW1M119 010ae920
 	virtual void Draw(bool hovered, bool selected);
 	// BW1W120 00411020 BW1M119 01160800
-	virtual void Click(int x, int y);
+	virtual void Click(int x, int y)
+	{
+		if (RadioButton)
+			style = BBSTYLE_CHECK_BOX_ON;
+		else
+			style = style == BBSTYLE_CHECK_BOX_OFF ? BBSTYLE_CHECK_BOX_ON : BBSTYLE_CHECK_BOX_OFF;
+	}
 	// BW1W120 00411050 BW1M119 0150c300
-	virtual void KeyDown(int key, int mod);
+	virtual void KeyDown(int key, int mod)
+	{
+		if (setup_box != NULL)
+			setup_box->ClickKeyDown(key, mod);
+	}
 
 	// Constructors
 
