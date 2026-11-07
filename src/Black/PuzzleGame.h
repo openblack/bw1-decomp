@@ -798,6 +798,13 @@ public:
 		SetIndestructable(true);
 		MaxHeight = PUZZLE_TOTEM_DEFAULT_MAX_HEIGHT;
 	}
+
+	// Non-virtual methods
+
+	// BW1W120 006da6d0 BW1M119 0112f460
+	void SetActualHeight(float height);
+	// BW1W120 inlined BW1M119 01509160
+	float GetActualHeight() { return ActualHeight; }
 };
 
 class PuzzleVillager : public PieceVillager

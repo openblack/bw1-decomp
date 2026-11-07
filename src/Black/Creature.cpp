@@ -686,7 +686,7 @@ void Creature::SetToZero()
 	FizzLocked = false;
 	MaxSmallSize = 0.2f;
 	MaxBigSize = 2.4f;
-	field_0x37c = 0;
+	CanGoThroughVortex = 0;
 	arena = NULL;
 	GameTurnOfLastSnapshot = 0;
 	MaxSnapshots = 5;

@@ -51,7 +51,9 @@ public:
 	uint16_t             Appearing : 1;
 	uint16_t             field_0x88_1 : 5;
 	uint16_t             WorkshopPosition : 2;
-	uint16_t             field_0x88_8 : 3;
+	uint16_t             field_0x88_8 : 1;
+	uint16_t             HandAngleSet : 1;
+	uint16_t             field_0x88_a : 1;
 	uint16_t             DestroyWhenFinished : 1;
 	uint16_t             field_0x88_c : 4;
 	uint8_t              field_0x8a[0x2];

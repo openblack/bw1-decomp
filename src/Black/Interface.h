@@ -38,6 +38,7 @@ struct LHPoint;
 class Object;
 struct Leash;
 struct LiquidParticleGroup;
+class SpellSeed;
 
 struct GInterfaceLimits
 {
@@ -280,7 +281,7 @@ public:
 	// BW1W120 005d36d0 BW1M119 01365f00
 	void SetRClickedObject(Object* object);
 	// BW1W120 005d3880 BW1M119 01077bf0
-	bool32_t GetSpellSeedInHand();
+	SpellSeed* GetSpellSeedInHand();
 	// BW1W120 005cead0 BW1M119 0109be40
 	void AddToRSystem(LHCoord* coord);
 	// BW1W120 005d27f0 BW1M119 01368340

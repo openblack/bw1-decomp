@@ -1368,6 +1368,8 @@ public:
 	static void DeleteAllScriptCreatedGameThings();
 	// BW1W120 0070dae0 BW1M119 01044780
 	static void GetProperty();
+	// BW1W120 0070e820 BW1M119 015086e0
+	static void SetProperty(GameThingWithPos* thing, SCRIPT_OBJECT_PROPERTY_TYPE property, float value);
 	// BW1W120 0070f350 BW1M119 01508640
 	static bool32_t SetPropertyLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 0070f380 BW1M119 015084c0

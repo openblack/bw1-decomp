@@ -34,7 +34,7 @@ public:
 	GPlayer*   Player;
 	uint8_t    field_0x70[0x4];
 	Town*      town;
-	uint32_t   field_0x78;
+	float      Alignment;
 	uint32_t   Active;
 	uint32_t   field_0x80;
 	uint32_t   field_0x84;

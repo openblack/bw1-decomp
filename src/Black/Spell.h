@@ -98,7 +98,7 @@ public:
 	uint32_t          field_0xd8;
 	uint32_t          field_0xdc;
 	uint32_t          field_0xe0;
-	float             field_0xe4;
+	float             StrengthMult;
 	LHListNode<Spell> next;
 
 	// Override methods
@@ -258,6 +258,8 @@ public:
 	float GetTribalPower();
 	// BW1W120 00721510 BW1M119 0151deb0
 	bool32_t IsCastFromHand() const;
+	// BW1W120 inlined BW1M119 01509300
+	float GetStrengthMult() { return StrengthMult; }
 };
 
 #endif /* BW1_DECOMP_SPELL_INCLUDED_H */

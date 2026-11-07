@@ -74,6 +74,8 @@ public:
 	void AddTarget(const LHPoint& target);
 	// BW1W120 0063e3e0 BW1M119 01119de0
 	void SetParticleStrength(float strength);
+	// BW1W120 inlined BW1M119 01509340
+	float GetParticleStrength() { return ParticleStrength; }
 	// BW1W120 0063e280 BW1M119 0105b480
 	uint32_t Process();
 	// BW1W120 0063e4b0 BW1M119 0109de20

@@ -115,16 +115,7 @@ public:
 	uint32_t field_0x40;
 	MapCell  cells[0x200][0x200];
 	uint16_t Count0x200044;
-	uint8_t  field_0x200046;
-	uint8_t  field_0x200047;
-	uint8_t  field_0x200048;
-	uint8_t  field_0x200049;
-	uint8_t  field_0x20004a;
-	uint8_t  field_0x20004b;
-	uint8_t  field_0x20004c;
-	uint8_t  field_0x20004d;
-	uint8_t  field_0x20004e;
-	uint8_t  field_0x20004f;
+	uint8_t  field_0x200046[0xa];
 
 	// Override methods
 

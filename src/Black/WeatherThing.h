@@ -83,8 +83,12 @@ public:
 	void SetMovement(const LHPoint& velocity);
 	// BW1W120 00774550 BW1M119 015ab470
 	void SetMoveTo(const LHPoint& point);
+	// BW1W120 00774340 BW1M119 015ab920
+	void SetSize(float inner_radius, float outer_radius);
 	// BW1W120 00774370 BW1M119 015ab790
 	void UpdateStats();
+	// BW1W120 007745a0 BW1M119 015ab3d0
+	float GetSpeed();
 	// BW1W120 inlined BW1M119 014fd440
 	bool32_t IsFinished() const { return Storm == NULL; }
 };
