@@ -80,7 +80,7 @@ void Dance::Initialise(const char* file_name, DANCE_INFO type, const MapCoords& 
 	State = DANCE_STATE_WAITING;
 	Target = target;
 	DanceGroups.DeleteAll();
-	DanceGroup* group = new (__FILE__, 127) DanceGroup();
+	DanceGroup* group = NEW(127) DanceGroup();
 	group->Dancer = this;
 	group->behaviour = this;
 	group->Index = 0;
@@ -376,7 +376,7 @@ bool32_t Dance::AddFootpath(GFootpath* footpath)
 {
 	if (GetFootpathLink() == NULL)
 	{
-		FootpathLink = new (__FILE__, 724) GFootpathLink();
+		FootpathLink = NEW(724) GFootpathLink();
 	}
 	GetFootpathLink()->AddFootpath(footpath);
 	return true;

@@ -18,8 +18,6 @@ class LH3DCreature;
 struct LHMatrix;
 struct LHPoint;
 
-#define P_SYS_HAND_FX_SOURCE_FILE SOURCE_DIRECTORY "PSysHandFX.h"
-
 class HandGlow
 {
 public:
@@ -29,7 +27,7 @@ public:
 
 	// Static methods
 
-	static HandGlow* Create() { return new (P_SYS_HAND_FX_SOURCE_FILE, 62) HandGlow(); }
+	static HandGlow* Create() { return NEW(62) HandGlow(); }
 
 	// Constructors
 

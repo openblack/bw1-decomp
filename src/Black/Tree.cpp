@@ -107,7 +107,7 @@ Tree::Tree(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float
 	if (target_scale != scale)
 	{
 		Growing = true;
-		ProcessCountdown = GRand::GameRand(GetInfo()->GrowsAfterNumGameTurns, __FILE__, 76);
+		ProcessCountdown = GAME_RAND(76, GetInfo()->GrowsAfterNumGameTurns);
 	}
 	GGame::g_game->GameLists.trees.Add(this);
 	this->forest = forest;
@@ -124,8 +124,7 @@ Tree::~Tree() {}
 Tree* Tree::Create(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float target_scale, float y_angle,
                    float scale)
 {
-	Tree* tree =
-		new (__FILE__, 99) Tree(coords, info, forest, target_scale, y_angle - (int)(y_angle / TWO_PI) * TWO_PI, scale);
+	Tree* tree = NEW(99) Tree(coords, info, forest, target_scale, y_angle - (int)(y_angle / TWO_PI) * TWO_PI, scale);
 	if (tree != NULL)
 	{
 		tree->CallVirtualFunctionsForCreation(coords);
@@ -153,7 +152,7 @@ void Tree::CreateCollideData()
 	ReleaseCollideData();
 	LHMatrix matrix;
 	GetWorldMatrix(&matrix);
-	CollideData = new (__FILE__, 1179) NewCollide(&matrix.GetPos(), 0.3f);
+	CollideData = NEW(1179) NewCollide(&matrix.GetPos(), 0.3f);
 }
 
 void Tree::SetToZero()
@@ -618,7 +617,7 @@ Object* Tree::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_ma
 			}
 			else if (!NonScenic)
 			{
-				forest = new (__FILE__, 859) Forest(Pos, 0);
+				forest = NEW(859) Forest(Pos, 0);
 				forest->AddTree(this);
 			}
 			if (!NonScenic)
@@ -720,7 +719,7 @@ void Tree::SpecialDrawOnFire(bool selectable)
 
 void Tree::AddPermanentFootPrint()
 {
-	new (__FILE__, 927) RootsPile(Game3dObject, MSH_T_ROOTS_PILE);
+	NEW(927) RootsPile(Game3dObject, MSH_T_ROOTS_PILE);
 }
 
 uint32_t Tree::ValidToApplyThisToObject(GInterfaceStatus* status, Object* object)
@@ -766,7 +765,7 @@ uint32_t Tree::ApplyThisToObject(GInterfaceStatus* status, Object* object, Gestu
 			}
 			if (status == GGame::g_game->MyInterfaceStatus())
 			{
-				ValueSpinner* spinner = new (__FILE__, 976) ValueSpinner;
+				ValueSpinner* spinner = NEW(976) ValueSpinner;
 				char          text[12];
 				sprintf(text, "%3.0f", sacrifice);
 				LH3DColor colour(255, 0, 0);

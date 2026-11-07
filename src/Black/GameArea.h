@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHListNode */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>        /* For NEW */
 
 #include "Base.h"      /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
@@ -12,9 +13,6 @@
 // Forward Declares
 
 class LHOSFile;
-
-#define GAME_AREA_FILEPATH    SOURCE_DIRECTORY "GameArea.h"
-#define GAME_AREA_CREATE_LINE 14
 
 class GameArea : public Base
 {
@@ -31,10 +29,7 @@ public:
 	// BW1W120 005571c0 BW1M119 01300a00
 	GameArea(const MapCoords& coords, float radius);
 	// BW1W120 inlined BW1M119 inlined
-	static GameArea* Create(const MapCoords& coords, float radius)
-	{
-		return new (GAME_AREA_FILEPATH, GAME_AREA_CREATE_LINE) GameArea(coords, radius);
-	}
+	static GameArea* Create(const MapCoords& coords, float radius) { return NEW(14) GameArea(coords, radius); }
 	// BW1W120 00557400 BW1M119 013005c0
 	static void SaveAll(LHOSFile& file, const MapCoords& coords);
 };

@@ -83,19 +83,6 @@ bool32_t Villager::MoveAroundFire()
 }
 
 // BW1W120 0075aa90 BW1M119 01581690
-// TODO: deferred — blocked on UNNAMED fn_0072FEF0 (see file-header cluster) + capped by the
-// GameFloatRand file/line split-TU issue (gamerand-file-line-split-tu). Logic:
-//   if (param_1 == NULL) return false;
-//   Object* obj = param_1->GetObjectA();
-//   if (obj == NULL) return false;
-//   MapCoords firePos;   // {0,0,0}
-//   param_1->fn_0072FEF0(firePos);                       // fill firePos with fire object pos
-//   float angle = GUtils::Get3DAngleFromXZ(firePos, ((GameThingWithPos*)this)->Pos);
-//   float radius = (obj->vf0x64() <= GetSafeFireRadius()) ? GetSafeFireRadius() : obj->vf0x64();
-//   radius += this->vf0x64();                            // slot 0x64 returns a float (bounding radius?)
-//   radius += GameFloatRand(1.0f, __FILE__, __LINE__) + 0.3f;   // push 0x133/1.0f in target
-//   *param_2 = GUtils::GetPosFromAngle(radius, angle) + obj->Pos;   // MapCoords operator+
-//   return true;
 bool32_t Villager::GetFireFightingPos(FireEffect* param_1, MapCoords* param_2)
 {
 	return true;

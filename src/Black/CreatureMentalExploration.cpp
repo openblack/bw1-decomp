@@ -260,7 +260,7 @@ bool32_t ClearAreaState::FindClearArea(const MapCoords& pos, Creature* creature,
 	{
 		delete ClearCells;
 	}
-	ClearCells = new (__FILE__, 439) char[bytes];
+	ClearCells = NEW(439) char[bytes];
 	uint32_t x;
 	uint32_t z;
 	for (x = 0; x < bytes; x++)

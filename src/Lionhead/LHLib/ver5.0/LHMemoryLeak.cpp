@@ -124,7 +124,7 @@ void LHMemoryLeak::LeakNode::GrabFunctionNamesFromDebugStack(LHDebugStack* debug
 
 void LHMemoryLeak::LogAllocation(const char* file, int line, void* ptr, int size)
 {
-	LeakNode* node = new (__FILE__, 80) LeakNode(file, line, size, ShouldLog, Tag);
+	LeakNode* node = NEW(80) LeakNode(file, line, size, ShouldLog, Tag);
 	if (!gDebugStackInitialised)
 	{
 		LHDebugStack::Initialise();

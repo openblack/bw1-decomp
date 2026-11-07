@@ -30,9 +30,8 @@
 #include "re_common.h"
 
 #ifdef VERSION_BW1WCI
-#define MOBILE_OBJECT_LINE(line) ((line) < 109 ? (line) : (line) + 4)
-#else
-#define MOBILE_OBJECT_LINE(line) (line)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) < 109 ? (line) : (line) + 4)
 #endif
 
 GMobileObjectInfo GMobileObjectInfo::InfoList[MOBILE_OBJECT_INFO_LAST];
@@ -87,25 +86,25 @@ MobileObject* MobileObject::Create(const MapCoords& coords, const GMobileObjectI
 	MobileObject* mobileObject = NULL;
 	if (info == &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_LUMP_OF_POO])
 	{
-		mobileObject = new (__FILE__, MOBILE_OBJECT_LINE(97)) Poo(coords, info, parent, y_angle, scale);
+		mobileObject = NEW(97) Poo(coords, info, parent, y_angle, scale);
 	}
 	else if (info->MobileObjectType == MOBILE_OBJECT_INFO_CROP)
 	{
-		mobileObject = new (__FILE__, MOBILE_OBJECT_LINE(101)) FieldCrop(coords, info, parent, y_angle, scale);
+		mobileObject = NEW(101) FieldCrop(coords, info, parent, y_angle, scale);
 	}
 	else if (info->MobileObjectType == MOBILE_OBJECT_INFO_CREED)
 	{
-		mobileObject = new (__FILE__, MOBILE_OBJECT_LINE(105)) Creed(coords, info, parent, y_angle, scale);
+		mobileObject = NEW(105) Creed(coords, info, parent, y_angle, scale);
 	}
 #ifdef VERSION_BW1WCI
 	else if (info->MobileObjectType != MOBILE_OBJECT_DOLPHIN)
 	{
-		mobileObject = new (__FILE__, 113) MobileObject(coords, info, parent, y_angle, scale);
+		mobileObject = NEW(109) MobileObject(coords, info, parent, y_angle, scale);
 	}
 #else
 	else
 	{
-		mobileObject = new (__FILE__, 109) MobileObject(coords, info, parent, y_angle, scale);
+		mobileObject = NEW(109) MobileObject(coords, info, parent, y_angle, scale);
 	}
 #endif
 	if (mobileObject != NULL)
@@ -288,7 +287,7 @@ bool32_t MobileObject::SetupMoveAlongPath(SCRIPT_PATH path, float start, float e
 	{
 		GGame::g_game->GameLists.objects.Add(this);
 	}
-	Path = new (__FILE__, MOBILE_OBJECT_LINE(312)) DataPath();
+	Path = NEW(312) DataPath();
 	Path->scripted_camera = ScriptedCamera::Create(path);
 	Path->EndPercentage = end;
 	Path->Reverse = reverse;
@@ -531,7 +530,7 @@ void FieldCrop::ToBeDeleted(bool32_t delete_now)
 FieldCrop* FieldCrop::Create(const MapCoords& coords, const GMobileObjectInfo* info, Object* field, float y_angle,
                              float scale)
 {
-	FieldCrop* crop = new (__FILE__, MOBILE_OBJECT_LINE(634)) FieldCrop(coords, info, field, y_angle, scale);
+	FieldCrop* crop = NEW(634) FieldCrop(coords, info, field, y_angle, scale);
 	if (crop != NULL)
 	{
 		crop->CallVirtualFunctionsForCreation(coords);

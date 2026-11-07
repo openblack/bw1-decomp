@@ -68,7 +68,7 @@ Heap* Heap::Create(unsigned int size, unsigned int a2)
 	{
 		return NULL;
 	}
-	Heap* heap = new (__FILE__, 66) Heap(pool, size, a2);
+	Heap* heap = NEW(66) Heap(pool, size, a2);
 	if (!heap)
 	{
 		operator delete(pool);
@@ -487,7 +487,7 @@ UniqueKeyHeap* UniqueKeyHeap::Create(unsigned int size, unsigned int a2)
 	{
 		return NULL;
 	}
-	UniqueKeyHeap* heap = new (__FILE__, 441) UniqueKeyHeap(pool, size, a2);
+	UniqueKeyHeap* heap = NEW(441) UniqueKeyHeap(pool, size, a2);
 	if (!heap)
 	{
 		operator delete(pool);

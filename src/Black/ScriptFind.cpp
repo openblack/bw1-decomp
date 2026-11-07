@@ -38,10 +38,6 @@
 // and this spelling is one that sorts after both.
 static float Unused;
 
-// The original name of this file is unknown: it has no __FILE__ string. It sits between
-// ScriptDLL.cpp and ScriptFunctions.cpp and holds the search callbacks and the Find*/Loop
-// entries of GScript::g_scriptObjectDispatch.
-
 // The subtype scripts pass to match any subtype of the requested type.
 #define SCRIPT_SUBTYPE_ANY SCRIPT_FIND_TYPE_ANY
 // GetSubType's answer for a thing it cannot classify.

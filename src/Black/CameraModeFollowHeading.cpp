@@ -21,7 +21,7 @@ CameraModeFollowHeading* CameraModeFollowHeading::Create(GCamera* camera, Object
 	{
 		return NULL;
 	}
-	return new (__FILE__, 20) CameraModeFollowHeading(camera, target, heading, pitch, distance, heading_speed);
+	return NEW(20) CameraModeFollowHeading(camera, target, heading, pitch, distance, heading_speed);
 }
 #endif
 

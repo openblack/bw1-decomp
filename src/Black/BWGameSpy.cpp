@@ -52,14 +52,13 @@
 
 #define BW_SETUP_REGISTRY_KEY "Software\\Lionhead Studios Ltd\\Black & White\\BWSetup"
 
-// The allocations pass the original file's __LINE__: BW1W110 added twelve lines above them and BW1W120
-// seven more.
+// 1.10 added twelve lines above the allocations and 1.20 seven more.
 #if defined(VERSION_BW1W100)
-#define BW_GAME_SPY_LINE_OFFSET (-12)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 19)
 #elif defined(VERSION_BW1W110)
-#define BW_GAME_SPY_LINE_OFFSET 0
-#else
-#define BW_GAME_SPY_LINE_OFFSET 7
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 7)
 #endif
 
 #define BW1W100_MAX_PLAYERS 8
@@ -575,7 +574,7 @@ void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* m
 	{
 		return;
 	}
-	wchar_t* text = new (__FILE__, 386 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
+	wchar_t* text = NEW(393) wchar_t[strlen(message) + 1];
 	wcscpy(text, LHSPrintfW(L"%s", DECODE_NAME(message)));
 	MPFEMessageObject::ProcessIncomingMessage(text, player, LHSPrintfW(L"%s", DECODE_NAME(nick)));
 	if (text != NULL)
@@ -605,7 +604,7 @@ void BWGameSpy::RoomMessageCallback(PEER peer, RoomType roomType, const char* ni
 	{
 		return;
 	}
-	wchar_t* text = new (__FILE__, 417 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
+	wchar_t* text = NEW(424) wchar_t[strlen(message) + 1];
 	wcscpy(text, LHSPrintfW(L"%s", DECODE_NAME(message)));
 	MPFEMessageObject::ProcessIncomingMessage(text, player, NULL);
 	if (text != NULL)

@@ -46,27 +46,6 @@ bool32_t Villager::SetupScriptWanderToPos(const MapCoords& pos, float radius, un
 }
 
 // BW1W120 007686d0 BW1M119 0159e610
-// TODO: deferred (multiple blockers). Reverse-engineered structure (from 0x7686d0 asm):
-//     MapCoords coords(ScriptWanderCentre);              // wander centre @0x10c/0x110
-//     float angle = GRand::GameFloatRand(6.2831855f, __FILE__, __LINE__);   // 0x40c90fdb = 2*pi
-//     float dist  = GRand::GameFloatRand(ScriptWanderRadius, __FILE__, __LINE__); // radius @0x118
-//     GUtils::AddDistanceFromAngle(&coords, angle, dist);
-//     SetupMoveToWithHug(coords, VILLAGER_STATE_SCRIPT_WANDER /*0xc7=199*/);
-//     TurnsUntilNextStateChange =
-//         WanderArea.x + GRand::GameRand(WanderArea.z - WanderArea.x, __FILE__, __LINE__);  // min + rand(max-min)
-//     // NOTE: no explicit return in the target — EAX is left holding (min + rand), so a plain
-//     // `return true` would add an extra `mov eax,1` (the mangled return is `I`/unsigned int).
-// Blockers, all beyond a single-unit fix:
-//  (1) gamerand-file-line-split-tu: 3x GameFloatRand/GameRand bake __FILE__ (a .data label
-//      "C:\dev\MP\Black\VillagerScript.c" @0xc245e0) and __LINE__ (60/61/65) as constant pushes that
-//      can't match a split TU (our path is a COMDAT string, our line numbers differ).
-//  (2) GUtils::AddDistanceFromAngle @0x74d510 is mangled thiscall (`QAE`) yet its body reads ALL
-//      three args (MapCoords*, float, float) off the STACK with caller-cleanup (`ret`, no imm) and
-//      never touches ECX as `this` — a calling-convention contradiction: declaring it thiscall
-//      (to match the QAE symbol) would pass the MapCoords* in ECX, not on the stack. Needs a
-//      dispatcher call-convention decision + a header decl (all other GUtils methods are static/SA).
-//  (3) MapCoords(JustWholeMapXZ&) ctor (??0MapCoords@@QAE@AAVJustWholeMapXZ@@@Z @0x603070) is not
-//      declared in MapCoords.h.
 bool32_t Villager::SetupNewScriptWander()
 {
 	return true;

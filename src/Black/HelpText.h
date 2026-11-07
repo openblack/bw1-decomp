@@ -13,11 +13,9 @@
 
 #include "Base.h" /* For struct Base */
 
-#define HELP_TEXT_FILEPATH SOURCE_DIRECTORY "HelpText.h"
 #ifdef VERSION_BW1W100
-#define HELP_TEXT_INIT_LINE 92
-#else
-#define HELP_TEXT_INIT_LINE 93
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 1)
 #endif
 
 class HelpSystem;
@@ -117,7 +115,7 @@ struct HelpTextDataBase
 	void Init(long num_entries)
 	{
 		count = num_entries;
-		array = new (HELP_TEXT_FILEPATH, HELP_TEXT_INIT_LINE) HelpTextInfo[count];
+		array = NEW(93) HelpTextInfo[count];
 	}
 	// BW1W120 004707f0 BW1M119 01243920
 	HelpTextInfo* GetData(unsigned long index) const
@@ -153,5 +151,8 @@ inline char16_t* HelpTextData::GetTextL(unsigned long index)
 {
 	return HelpTextDataBase::HelpTextDatabase.GetData(index)->Text;
 }
+
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) (line)
 
 #endif /* BW1_DECOMP_HELP_TEXT_INCLUDED_H */

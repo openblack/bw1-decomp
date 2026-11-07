@@ -79,15 +79,15 @@
 #include "MapCoordsMeters.h" /* For MapCoords::MetersX */
 
 #if defined(VERSION_BW1W100)
+#undef ORIGINAL_LINE
 // 1.00 is 4 lines shorter by the constructor and up to 22 by MakeScenicForest; the boundaries between the measured
 // lines (123, 2865, 3947, 4588, 4780, 4848, 5142, 5321) are approximate.
-#define TOWN_LINE(line)                                                                                                \
+#define ORIGINAL_LINE(line)                                                                                            \
 	((line) - ((line) < 2865 ? 4 : (line) < 3947 ? 12 : (line) < 5142 ? 16 : (line) < 5321 ? 19 : 22))
 #elif defined(VERSION_BW1W110)
+#undef ORIGINAL_LINE
 // 1.10 has one line fewer somewhere between the GameRand at 508 and the one at 2865.
-#define TOWN_LINE(line) ((line) < 2865 ? (line) : (line) - 1)
-#else
-#define TOWN_LINE(line) (line)
+#define ORIGINAL_LINE(line) ((line) < 2865 ? (line) : (line) - 1)
 #endif
 
 inline MapCoords::MapCoords(float meters_x, float meters_z)
@@ -135,7 +135,7 @@ Town::Town(const MapCoords& coords, const GTownInfo* info, GPlayer* player, TRIB
 	AddTownToPlayer(player);
 	if (name != NULL)
 	{
-		Name = new (__FILE__, TOWN_LINE(123)) char[strlen(name) + 1];
+		Name = NEW(123) char[strlen(name) + 1];
 		strcpy(Name, name);
 	}
 	LastAttackingPlayer = NULL;
@@ -462,7 +462,7 @@ males:
 	{
 		if (info == NULL)
 		{
-			uint32_t random = GRand::GameRand(100, __FILE__, TOWN_LINE(508));
+			uint32_t random = GAME_RAND(508, 100);
 			int      i;
 			for (i = 0; i < numWeights && random >= weights[i].CumulativeWeight; i++)
 			{
@@ -2389,7 +2389,7 @@ bool32_t Town::TryToCreateNewBuildingAt(PlannedAbode** planned, const MapCoords&
                                         TRIBE_TYPE tribe_type, Object* ignore_object, long abode_number,
                                         int skip_suitability_check)
 {
-	float angle = (GRand::GameFloatRand(TWO_PI, __FILE__, TOWN_LINE(2865)));
+	float angle = (GAME_FLOAT_RAND(2865, TWO_PI));
 	for (unsigned long i = 0; i < 8; i++)
 	{
 		if (GetNewPlannedBuilding(planned, pos, angle, 1.0f, num_scaffolds, ignore_object, tribe_type, abode_number,
@@ -3275,7 +3275,7 @@ TownArtifact* Town::AddArtifact(Fixed* artifact, GPlayer* player)
 	}
 	else
 	{
-		townArtifact = new (__FILE__, TOWN_LINE(3947)) TownArtifact(artifact, this, player);
+		townArtifact = NEW(3947) TownArtifact(artifact, this, player);
 		artifact->town_artifact = townArtifact;
 	}
 	if (townArtifact != NULL)
@@ -3396,13 +3396,13 @@ void Town::SetGameTurnResourceLastRemoved(unsigned long player_number, RESOURCE_
 
 Abode* Town::GetRandomAbode()
 {
-	uint32_t index = GRand::GameRand(AbodeList.count, __FILE__, TOWN_LINE(4077));
+	uint32_t index = GAME_RAND(4077, AbodeList.count);
 	return AbodeList.Get(index);
 }
 
 Villager* Town::GetRandomHomelessVillager()
 {
-	uint32_t index = GRand::GameRand(HomelessList.count, __FILE__, TOWN_LINE(4083));
+	uint32_t index = GAME_RAND(4083, HomelessList.count);
 	return HomelessList.Get(index);
 }
 
@@ -3527,19 +3527,19 @@ float Town::GetPosWhereVillagersAre(const MapCoords& from, MapCoords& pos)
 	if (GetStoragePit() != NULL)
 	{
 		pos = GetStoragePit()->GetDoorPos();
-		locations.Insert(new (__FILE__, TOWN_LINE(4508)) TownLocation(pos, from));
+		locations.Insert(NEW(4508) TownLocation(pos, from));
 	}
 	pos = GetCongregationPos();
-	locations.Insert(new (__FILE__, TOWN_LINE(4511)) TownLocation(pos, from));
+	locations.Insert(NEW(4511) TownLocation(pos, from));
 	if (town_centre != NULL)
 	{
 		pos = GetTownCentre()->Pos;
-		locations.Insert(new (__FILE__, TOWN_LINE(4515)) TownLocation(pos, from));
+		locations.Insert(NEW(4515) TownLocation(pos, from));
 	}
 	for (LHLinkedNode<Field*>* node = FieldList.head.Get(); node != NULL; node = node->next.Get())
 	{
 		pos = node->payload->Pos;
-		locations.Insert(new (__FILE__, TOWN_LINE(4520)) TownLocation(pos, from));
+		locations.Insert(NEW(4520) TownLocation(pos, from));
 	}
 	float score = 0.0f;
 	if (locations.GetHead() != NULL)
@@ -3600,8 +3600,7 @@ MapCoords Town::GetCongregationPos()
 				centre = buildings.Pop();
 			}
 			pos = centre->Pos;
-			pos += GUtils::GetPosFromAngle(GRand::GameFloatRand(TWO_PI, __FILE__, TOWN_LINE(4588)),
-			                               GRand::GameFloatRand(10.0f, __FILE__, TOWN_LINE(4588)) + 10.0f);
+			pos += GUtils::GetPosFromAngle(GAME_FLOAT_RAND(4588, TWO_PI), GAME_FLOAT_RAND(4588, 10.0f) + 10.0f);
 		}
 		CongregationPos.Set(pos);
 	}
@@ -3781,7 +3780,7 @@ GameThing* Town::GetStoragePitObjectForComputerPlayer(RESOURCE_TYPE type)
 
 void Town::AddMissionary(Villager* villager, GPlayer* player)
 {
-	MissionaryList.AddToFirst(new (__FILE__, TOWN_LINE(4780)) MissionaryControl(villager, player));
+	MissionaryList.AddToFirst(NEW(4780) MissionaryControl(villager, player));
 }
 
 bool32_t Town::IsBuildingTownCentre()
@@ -3839,7 +3838,7 @@ void Town::GiveBeliefForArtifactIfNecessary(TownArtifact* artifact)
 	{
 		uint32_t turnsSinceLastGiven =
 			GGame::g_game->data.GetGameTurn() - PlayerInteract[player->GetPlayerNumber()].LastArtifactBeliefGiftTurn;
-		if (turnsSinceLastGiven + GRand::GameRand(GetInfo()->ArtifactBeliefGiftTurns / 4, __FILE__, TOWN_LINE(4848)) >
+		if (turnsSinceLastGiven + GAME_RAND(4848, GetInfo()->ArtifactBeliefGiftTurns / 4) >
 		    GetInfo()->ArtifactBeliefGiftTurns)
 		{
 			PlayerInteract[player->GetPlayerNumber()].LastArtifactBeliefGiftTurn = GGame::g_game->data.GetGameTurn();
@@ -3989,7 +3988,7 @@ void Town::ShuffleVillagersAroundAbodes()
 	{
 		return;
 	}
-	ShuffleAbode* shuffle = new (__FILE__, TOWN_LINE(5142)) ShuffleAbode[count];
+	ShuffleAbode* shuffle = NEW(5142) ShuffleAbode[count];
 	int           index = 0;
 	FOREACH_LH_LIST_HEAD(Abode, candidate, AbodeList)
 	{
@@ -4202,7 +4201,7 @@ void Town::MakeScenicForest()
 			{
 				if (scenicForest == NULL)
 				{
-					scenicForest = new (__FILE__, TOWN_LINE(5321)) Forest(centre, 0);
+					scenicForest = NEW(5321) Forest(centre, 0);
 					scenicForest->IsScenic = 1;
 					if (scenicForest == NULL)
 					{

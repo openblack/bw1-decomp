@@ -99,7 +99,7 @@ public:
 	// BW1W120 00535a80 BW1M119 inlined
 	static void Move(Point2D* point, MultiMapFixed* structure, Point2D target)
 	{
-		RPHolder* holder = new (__FILE__, 981) RPHolder;
+		RPHolder* holder = NEW(981) RPHolder;
 		holder->ObjectMargin = FOOTPATH_ROUTE_OBJECT_MARGIN;
 		Target = target;
 		Point = point;
@@ -211,7 +211,7 @@ int GFootpath::GetID()
 
 void GFootpath::AddPos(const MapCoords& coords)
 {
-	nodes.AddToFirst(new (__FILE__, 169) GFootpathNode(coords, true, false));
+	nodes.AddToFirst(NEW(169) GFootpathNode(coords, true, false));
 }
 
 GFootpathNode* GFootpath::GetEndNonHiddenNode(MapCoords& pos, bool32_t backwards)
@@ -375,7 +375,7 @@ Point2D* MoveOutOfObject::Point;
 
 void GFootpath::GenerateRoutesBetween(GameThingWithPos* from, GameThingWithPos* to)
 {
-	GFootpath* footpath = new (__FILE__, 1005) GFootpath(NULL, NULL);
+	GFootpath* footpath = NEW(1005) GFootpath(NULL, NULL);
 	MapCoords  fromPos = from->GetArrivePos();
 	MapCoords  toPos = to->GetArrivePos();
 	footpath->AddPos(fromPos);
@@ -780,7 +780,7 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 				{
 					node->Hidden = true;
 					GFootpathNode* next = node->next;
-					node->next = new (__FILE__, 2235) GFootpathNode(node->coords, true, true);
+					node->next = NEW(2235) GFootpathNode(node->coords, true, true);
 					node->next.Get()->next = next;
 				}
 			}
@@ -838,7 +838,7 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 									while (entry.GetDistanceSq(exit) > stepSq)
 									{
 										GLandscape::ConvertLandscapePointToMapCoord(entry + centre, entryCoords);
-										previous->next = new (__FILE__, 2290) GFootpathNode(entryCoords, true, true);
+										previous->next = NEW(2290) GFootpathNode(entryCoords, true, true);
 										previous = previous->next;
 										entry = RotateClockwise(entry, FOOTPATH_DETOUR_COS, FOOTPATH_DETOUR_SIN);
 									}
@@ -848,12 +848,12 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 									while (entry.GetDistanceSq(exit) > stepSq)
 									{
 										GLandscape::ConvertLandscapePointToMapCoord(entry + centre, entryCoords);
-										previous->next = new (__FILE__, 2300) GFootpathNode(entryCoords, true, true);
+										previous->next = NEW(2300) GFootpathNode(entryCoords, true, true);
 										previous = previous->next;
 										entry = RotateAnticlockwise(entry, FOOTPATH_DETOUR_COS, FOOTPATH_DETOUR_SIN);
 									}
 								}
-								previous->next = new (__FILE__, 2305) GFootpathNode(exitCoords, true, true);
+								previous->next = NEW(2305) GFootpathNode(exitCoords, true, true);
 								previous->next.Get()->next = node;
 								int count = 0;
 								for (GFootpathNode* counted = footpath->nodes.head; counted != NULL;
@@ -1137,7 +1137,7 @@ void GFootpath::ConvertCreaturePlanToFootpath(RPHolder& holder, RPlan& plan, GFo
 	start->ClearToNextNode();
 	GFootpathNode* rest = EraseNodesBetween(start, end);
 	GFootpathNode* node = start;
-	node->next = new (__FILE__, 2587) GFootpathNode(ConvertPoint2DToMapCoords(plan.Start), true, true);
+	node->next = NEW(2587) GFootpathNode(ConvertPoint2DToMapCoords(plan.Start), true, true);
 	node = node->next;
 	for (; routeNode != NULL; previous = routeNode, routeNode = routeNode->Next)
 	{
@@ -1156,8 +1156,7 @@ void GFootpath::ConvertCreaturePlanToFootpath(RPHolder& holder, RPlan& plan, GFo
 			{
 				while ((from - to).GetNormSq() > stepSq)
 				{
-					node->next =
-						new (__FILE__, 2611) GFootpathNode(ConvertPoint2DToMapCoords(centre + from), true, true);
+					node->next = NEW(2611) GFootpathNode(ConvertPoint2DToMapCoords(centre + from), true, true);
 					node = node->next;
 					from = RotateClockwise(from, FOOTPATH_ARC_COS, FOOTPATH_ARC_SIN);
 				}
@@ -1166,26 +1165,25 @@ void GFootpath::ConvertCreaturePlanToFootpath(RPHolder& holder, RPlan& plan, GFo
 			{
 				while ((from - to).GetNormSq() > stepSq)
 				{
-					node->next =
-						new (__FILE__, 2621) GFootpathNode(ConvertPoint2DToMapCoords(centre + from), true, true);
+					node->next = NEW(2621) GFootpathNode(ConvertPoint2DToMapCoords(centre + from), true, true);
 					node = node->next;
 					from = RotateAnticlockwise(from, FOOTPATH_ARC_COS, FOOTPATH_ARC_SIN);
 				}
 			}
-			node->next = new (__FILE__, 2627) GFootpathNode(ConvertPoint2DToMapCoords(to + centre), true, true);
+			node->next = NEW(2627) GFootpathNode(ConvertPoint2DToMapCoords(to + centre), true, true);
 			node = node->next;
 		}
 		else if (routeNode->Next != NULL)
 		{
-			node->next = new (__FILE__, 2634) GFootpathNode(ConvertPoint2DToMapCoords(routeNode->End), true, true);
+			node->next = NEW(2634) GFootpathNode(ConvertPoint2DToMapCoords(routeNode->End), true, true);
 			node = node->next;
 		}
 	}
-	GFootpathNode* last = new (__FILE__, 2646) GFootpathNode(ConvertPoint2DToMapCoords(plan.Dest), true, true);
+	GFootpathNode* last = NEW(2646) GFootpathNode(ConvertPoint2DToMapCoords(plan.Dest), true, true);
 	node->next = last;
 	if (obstacle != NULL)
 	{
-		GFootpathNode* obstacleNode = new (__FILE__, 2650) GFootpathNode(*obstacle, true, true);
+		GFootpathNode* obstacleNode = NEW(2650) GFootpathNode(*obstacle, true, true);
 		last->next = obstacleNode;
 		last = obstacleNode;
 		last->InsideObstacle = true;
@@ -1362,10 +1360,10 @@ void GFootpath::AssertValid()
 GFootpathFinder::GFootpathFinder(GameThingWithPos* from, GameThingWithPos* to)
 {
 #if defined(VERSION_BW1WCI)
-	planner = new (__FILE__, 2855) GFootpathPlanner;
+	planner = NEW(2855) GFootpathPlanner;
 #endif
 	GGame::g_game->GameLists.footpath_finder.Add(this);
-	Footpath = new (__FILE__, 2856) GFootpath(from, to);
+	Footpath = NEW(2856) GFootpath(from, to);
 	From = from;
 	To = to;
 	MapCoords toPos = to->GetArrivePos();

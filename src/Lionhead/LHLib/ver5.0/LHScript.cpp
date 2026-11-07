@@ -254,7 +254,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		case LH_SCRIPT_COMMAND_LOAD_BMP: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
-			LHSprite* sprite = new (__FILE__, 312) LHSprite;
+			LHSprite* sprite = NEW(312) LHSprite;
 			result = LH_ERROR;
 			LHSys::TheSystem.ScriptResources[pram->number[1]].data = sprite;
 			if (!sprite)
@@ -272,7 +272,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		case LH_SCRIPT_COMMAND_LOAD_SPRITES_DEPTH: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
-			LHSpriteList* spriteList = new (__FILE__, 333) LHSpriteList;
+			LHSpriteList* spriteList = NEW(333) LHSpriteList;
 			result = LH_ERROR;
 			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
 			if (!spriteList)
@@ -296,7 +296,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		case LH_SCRIPT_COMMAND_LOAD_SPRITES: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
-			LHSpriteList* spriteList = new (__FILE__, 358) LHSpriteList;
+			LHSpriteList* spriteList = NEW(358) LHSpriteList;
 			result = LH_ERROR;
 			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
 			if (!spriteList)
@@ -794,7 +794,7 @@ template <class T> LH_RETURN LHScriptX<T>::CommandIf(T* value1, T* condition, T*
 // BW1W120 007e9a10 BW1M119 01152570 (LHCombined Release)
 template <class T> LH_RETURN LHScriptX<T>::CreateVariable(long command, LHScriptPramX<T>* pram)
 {
-	LHScriptVariable<T>* variable = new (__FILE__, 1032) LHScriptVariable<T>;
+	LHScriptVariable<T>* variable = NEW(1032) LHScriptVariable<T>;
 	if (variable)
 	{
 		memset(variable, 0, sizeof(LHScriptVariable<T>));

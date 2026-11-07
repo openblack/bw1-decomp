@@ -22,10 +22,9 @@
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
 #ifdef VERSION_BW1W100
+#undef ORIGINAL_LINE
 // 1.00 lacks the villager step rebuild in MoveToObjectPos, so its later lines sit 8 earlier.
-#define MOBILE_WALL_HUG_LINE(line) ((line) < 1080 ? (line) : (line) - 8)
-#else
-#define MOBILE_WALL_HUG_LINE(line) (line)
+#define ORIGINAL_LINE(line) ((line) < 1080 ? (line) : (line) - 8)
 #endif
 
 inline CircleHugStateInfoT::CircleHugStateInfoT() {}
@@ -44,7 +43,7 @@ inline NewCollide::Obj* CircleHugStateInfoT::fetch(MapCoords coords)
 	}
 	LHPoint point;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-	NewCollide::Obj* obj = new (__FILE__, 215) NewCollide::Obj(7.2f, &point);
+	NewCollide::Obj* obj = NEW(215) NewCollide::Obj(7.2f, &point);
 	LandscapeBlockers[blockPos] = obj;
 	return obj;
 }
@@ -264,7 +263,7 @@ void CircleHugInfo::FetchObjectFromCircHugInfo(NewCollide::Obj* collide_obj, Res
 
 void CircleHugInfo::SetResolutionInfo(Object* object, int index, const MapCoords& coords)
 {
-	obj = (NewCollide::Obj*)new (__FILE__, 312) ResolutionInfoT;
+	obj = (NewCollide::Obj*)NEW(312) ResolutionInfoT;
 	((ResolutionInfoT*)obj)->object = object;
 	((ResolutionInfoT*)obj)->index = index;
 	((ResolutionInfoT*)obj)->coords = coords;
@@ -347,7 +346,7 @@ void CircleHugInfo::SetObjectPtr(NewCollide::Obj* new_obj, MobileWallHug* mwh, b
 		}
 		else
 		{
-			obj = (NewCollide::Obj*)new (__FILE__, 422) ResolutionInfoT;
+			obj = (NewCollide::Obj*)NEW(422) ResolutionInfoT;
 			FetchObjectFromCircHugInfo(new_obj, *(ResolutionInfoT*)obj);
 		}
 		return;
@@ -772,12 +771,12 @@ void MobileWallHug::SetNewWander(const MapCoords* centre, long min_dist, long ma
 		}
 		else
 		{
-			angle += GRand::GameRand(0x80, __FILE__, MOBILE_WALL_HUG_LINE(1080)) - 0x40;
+			angle += GAME_RAND(1080, 0x80) - 0x40;
 		}
 	}
 	else
 	{
-		angle += GRand::GameRand(0x80, __FILE__, MOBILE_WALL_HUG_LINE(1085)) - 0x40;
+		angle += GAME_RAND(1085, 0x80) - 0x40;
 	}
 	SetTowardsAngle(angle & 0x7ff);
 	RebuildMoveByStep();
@@ -1262,9 +1261,8 @@ uint32_t MobileWallHug::MoveToCircleHugLinearSquareSweep(const MapCoords& coords
 	if (it.IsValid())
 	{
 		float                  length = dir.Normalize();
-		IntersectIntervalLine* nearest =
-			new (__FILE__, MOBILE_WALL_HUG_LINE(1771)) IntersectIntervalLine(it, origin, dir);
-		IntersectIntervalLine* current = new (__FILE__, MOBILE_WALL_HUG_LINE(1772)) IntersectIntervalLine;
+		IntersectIntervalLine* nearest = NEW(1771) IntersectIntervalLine(it, origin, dir);
+		IntersectIntervalLine* current = NEW(1772) IntersectIntervalLine;
 		while (nearest->disc <= 0.0f)
 		{
 			it.Next(coords);
@@ -1452,11 +1450,9 @@ inline uint32_t MobileWallHug_InCircleStuff<clockwise>::MoveToCircleHugCircleSqu
 	}
 	else
 	{
-		IntersectIntervalCircle<clockwise>* nearest =
-			new (__FILE__, MOBILE_WALL_HUG_LINE(1846)) IntersectIntervalCircle<clockwise>;
-		IntersectIntervalCircle<clockwise>* current =
-			new (__FILE__, MOBILE_WALL_HUG_LINE(1846)) IntersectIntervalCircle<clockwise>;
-		Point2DCompare<clockwise> start;
+		IntersectIntervalCircle<clockwise>* nearest = NEW(1846) IntersectIntervalCircle<clockwise>;
+		IntersectIntervalCircle<clockwise>* current = NEW(1846) IntersectIntervalCircle<clockwise>;
+		Point2DCompare<clockwise>           start;
 		if (goalInside)
 		{
 			Point2D goal;

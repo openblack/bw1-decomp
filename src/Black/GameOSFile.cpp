@@ -358,7 +358,7 @@ bool32_t GameOSFile::SaveAllGame(char* filename)
 	strcpy(file.Filename, temporaryPath);
 	uint32_t attempts = 1;
 	file.Write(&attempts, sizeof(attempts), NULL);
-	file.SaveLoadPtrList.Add(new (__FILE__, 340) GSaveLoadPtr(GGame::g_game));
+	file.SaveLoadPtrList.Add(NEW(340) GSaveLoadPtr(GGame::g_game));
 
 	char revision[256];
 	revision[0] = '\0';
@@ -441,8 +441,7 @@ void PhysicsSaveInfo::ReadInfo(GameOSFile& file)
 bool32_t GameOSFile::LoadAllGame(char* filename)
 {
 	GameLoadingBox(false);
-	PhysicsSaveInfo::Buffer =
-		(PhysicsSaveInfo*)operator new(sizeof(PhysicsSaveInfo) * PHYSICS_SAVE_INFO_MAX, __FILE__, 440);
+	PhysicsSaveInfo::Buffer = NEW(440) PhysicsSaveInfo[PHYSICS_SAVE_INFO_MAX];
 	PhysicsSaveInfo::Count = 0;
 	PhysicsSaveInfo::ReadIndex = 0;
 	ReadEnabled = true;
@@ -596,103 +595,103 @@ void GameOSFile::LoadInstance(GameThing** out_thing)
 		OldTypeWarning("JEREMY: OLD TYPE FOR LOAD: SAVE_LOAD_FURNITURE");
 		break;
 	case GAME_THING_TYPE_VILLAGER:
-		thing = new (__FILE__, 666) Villager;
+		thing = NEW(666) Villager;
 		break;
 	case GAME_THING_TYPE_ABODE:
-		thing = new (__FILE__, 670) Abode;
+		thing = NEW(670) Abode;
 		break;
 	case GAME_THING_TYPE_STORAGE_PIT:
-		thing = new (__FILE__, 674) StoragePit;
+		thing = NEW(674) StoragePit;
 		break;
 	case GAME_THING_TYPE_SPELL:
-		thing = new (__FILE__, 678) Spell;
+		thing = NEW(678) Spell;
 		break;
 	case GAME_THING_TYPE_SPELL_RESOURCE:
-		thing = new (__FILE__, 682) SpellResource;
+		thing = NEW(682) SpellResource;
 		break;
 	case GAME_THING_TYPE_SPELL_FLOCK_FLYING:
-		thing = new (__FILE__, 686) SpellFlockFlying;
+		thing = NEW(686) SpellFlockFlying;
 		break;
 	case GAME_THING_TYPE_SPELL_FLOCK_GROUND:
-		thing = new (__FILE__, 690) SpellFlockGround;
+		thing = NEW(690) SpellFlockGround;
 		break;
 	case GAME_THING_TYPE_SPELL_WATER:
-		thing = new (__FILE__, 694) SpellWater;
+		thing = NEW(694) SpellWater;
 		break;
 	case GAME_THING_TYPE_SPELL_FOREST:
-		thing = new (__FILE__, 698) SpellForest;
+		thing = NEW(698) SpellForest;
 		break;
 	case GAME_THING_TYPE_SPELL_STORM_AND_TORNADO:
-		thing = new (__FILE__, 702) SpellStormAndTornado;
+		thing = NEW(702) SpellStormAndTornado;
 		break;
 	case GAME_THING_TYPE_SPELL_SHIELD:
-		thing = new (__FILE__, 706) SpellShield;
+		thing = NEW(706) SpellShield;
 		break;
 	case GAME_THING_TYPE_SPELL_HEAL:
-		thing = new (__FILE__, 710) SpellHeal;
+		thing = NEW(710) SpellHeal;
 		break;
 	case GAME_THING_TYPE_SPELL_CREATURE:
-		thing = new (__FILE__, 714) SpellCreature;
+		thing = NEW(714) SpellCreature;
 		break;
 	case GAME_THING_TYPE_SPELL_WITH_OBJECTS:
-		thing = new (__FILE__, 718) SpellWithObjects;
+		thing = NEW(718) SpellWithObjects;
 		break;
 	case GAME_THING_TYPE_SPELL_TELEPORT:
-		thing = new (__FILE__, 722) SpellTeleport;
+		thing = NEW(722) SpellTeleport;
 		break;
 	case GAME_THING_TYPE_PSYS_SOUND:
-		thing = new (__FILE__, 726) PSysSound;
+		thing = NEW(726) PSysSound;
 		break;
 	case GAME_THING_TYPE_PHYSICAL_SHIELD:
-		thing = new (__FILE__, 730) PhysicalShield;
+		thing = NEW(730) PhysicalShield;
 		break;
 	case GAME_THING_TYPE_MAGIC_SHIELD:
-		thing = new (__FILE__, 734) MagicShield;
+		thing = NEW(734) MagicShield;
 		break;
 	case GAME_THING_TYPE_MAGIC_TELEPORT:
-		thing = new (__FILE__, 738) MagicTeleport;
+		thing = NEW(738) MagicTeleport;
 		break;
 	case GAME_THING_TYPE_LANDSCAPE_VORTEX_VOLC:
-		thing = new (__FILE__, 742) LandscapeVortexVolc;
+		thing = NEW(742) LandscapeVortexVolc;
 		break;
 	case GAME_THING_TYPE_LANDSCAPE_VORTEX_IN:
-		thing = new (__FILE__, 746) LandscapeVortexIn;
+		thing = NEW(746) LandscapeVortexIn;
 		break;
 	case GAME_THING_TYPE_LANDSCAPE_VORTEX_OUT:
-		thing = new (__FILE__, 750) LandscapeVortexOut;
+		thing = NEW(750) LandscapeVortexOut;
 		break;
 	case GAME_THING_TYPE_MAGIC_TREE:
-		thing = new (__FILE__, 754) MagicTree;
+		thing = NEW(754) MagicTree;
 		break;
 	case GAME_THING_TYPE_MAGIC_FIREBALL:
-		thing = new (__FILE__, 758) MagicFireBall;
+		thing = NEW(758) MagicFireBall;
 		break;
 	case GAME_THING_TYPE_MAGIC_FOOD:
-		thing = new (__FILE__, 762) MagicFood;
+		thing = NEW(762) MagicFood;
 		break;
 	case GAME_THING_TYPE_MAGIC_WOOD:
-		thing = new (__FILE__, 766) MagicWood;
+		thing = NEW(766) MagicWood;
 		break;
 	case GAME_THING_TYPE_SPELL_SEED_GRAPHIC:
-		thing = new (__FILE__, 770) SpellSeedGraphic;
+		thing = NEW(770) SpellSeedGraphic;
 		break;
 	case GAME_THING_TYPE_SPELL_SEED:
-		thing = new (__FILE__, 774) SpellSeed;
+		thing = NEW(774) SpellSeed;
 		break;
 	case GAME_THING_TYPE_ONE_OFF_SPELL_SEED:
-		thing = new (__FILE__, 778) OneOffSpellSeed;
+		thing = NEW(778) OneOffSpellSeed;
 		break;
 	case GAME_THING_TYPE_REACTION:
-		thing = new (__FILE__, 782) Reaction;
+		thing = NEW(782) Reaction;
 		break;
 	case GAME_THING_TYPE_DANCE:
-		thing = new (__FILE__, 786) Dance;
+		thing = NEW(786) Dance;
 		break;
 	case GAME_THING_TYPE_TOWN:
-		thing = new (__FILE__, 790) Town;
+		thing = NEW(790) Town;
 		break;
 	case GAME_THING_TYPE_FIELD:
-		thing = new (__FILE__, 794) Field;
+		thing = NEW(794) Field;
 		break;
 	case GAME_THING_TYPE_FIELD_CONTENTS:
 		OldTypeWarning("Oliver: FieldContents cannot be instantiated.");
@@ -701,187 +700,187 @@ void GameOSFile::LoadInstance(GameThing** out_thing)
 		OldTypeWarning("Oliver: FieldContentsRow cannot be instantiated.");
 		break;
 	case GAME_THING_TYPE_CITADEL:
-		thing = new (__FILE__, 806) Citadel;
+		thing = NEW(806) Citadel;
 		break;
 	case GAME_THING_TYPE_CITADEL_PART:
-		thing = new (__FILE__, 810) CitadelPart;
+		thing = NEW(810) CitadelPart;
 		break;
 	case GAME_THING_TYPE_PLANNED_CITADEL_PART:
-		thing = new (__FILE__, 814) PlannedCitadelPart;
+		thing = NEW(814) PlannedCitadelPart;
 		break;
 	case GAME_THING_TYPE_PLANNED_MULTI_MAP_FIXED:
-		thing = new (__FILE__, 818) PlannedMultiMapFixed;
+		thing = NEW(818) PlannedMultiMapFixed;
 		break;
 	case GAME_THING_TYPE_PLANNED_TOWN_CITADEL_HEART:
-		thing = new (__FILE__, 822) PlannedTownCitadelHeart;
+		thing = NEW(822) PlannedTownCitadelHeart;
 		break;
 	case GAME_THING_TYPE_CITADEL_HEART_1:
-		thing = new (__FILE__, 826) CitadelHeart;
+		thing = NEW(826) CitadelHeart;
 		break;
 	case GAME_THING_TYPE_CITADEL_ENTRANCE:
-		thing = new (__FILE__, 830) CitadelEntrance;
+		thing = NEW(830) CitadelEntrance;
 		break;
 	case GAME_THING_TYPE_PLANNED_WORSHIP_SITE:
-		thing = new (__FILE__, 834) CitadelHeart;
+		thing = NEW(834) CitadelHeart;
 		break;
 	case GAME_THING_TYPE_WORSHIP_SITE:
-		thing = new (__FILE__, 838) WorshipSite;
+		thing = NEW(838) WorshipSite;
 		break;
 	case GAME_THING_TYPE_FIRE_EFFECT:
-		thing = new (__FILE__, 842) FireEffect;
+		thing = NEW(842) FireEffect;
 		break;
 	case GAME_THING_TYPE_FIREFLY:
-		thing = new (__FILE__, 846) FireFly;
+		thing = NEW(846) FireFly;
 		break;
 	case GAME_THING_TYPE_PUZZLE_GAME:
-		thing = new (__FILE__, 850) PuzzleGame;
+		thing = NEW(850) PuzzleGame;
 		break;
 	case GAME_THING_TYPE_PUZZLE_SHEEP:
-		thing = new (__FILE__, 855) PuzzleSheep;
+		thing = NEW(855) PuzzleSheep;
 		break;
 	case GAME_THING_TYPE_PUZZLE_VILLAGER:
-		thing = new (__FILE__, 858) PuzzleVillager;
+		thing = NEW(858) PuzzleVillager;
 		break;
 	case GAME_THING_TYPE_PUZZLE_LION:
-		thing = new (__FILE__, 862) PuzzleLion;
+		thing = NEW(862) PuzzleLion;
 		break;
 	case GAME_THING_TYPE_TOTEM:
-		thing = new (__FILE__, 866) Totem;
+		thing = NEW(866) Totem;
 		break;
 	case GAME_THING_TYPE_HANOI_BLOCK:
-		thing = new (__FILE__, 870) HanoiBlock;
+		thing = NEW(870) HanoiBlock;
 		break;
 	case GAME_THING_TYPE_PUZZLE_TOTEM:
-		thing = new (__FILE__, 874) PuzzleTotem;
+		thing = NEW(874) PuzzleTotem;
 		break;
 	case GAME_THING_TYPE_PUZZLE_GRAIN:
-		thing = new (__FILE__, 878) PuzzleGrain;
+		thing = NEW(878) PuzzleGrain;
 		break;
 	case GAME_THING_TYPE_SHOW_NEEDS_VISUALS:
-		thing = new (__FILE__, 882) ShowNeedsVisuals;
+		thing = NEW(882) ShowNeedsVisuals;
 		break;
 	case GAME_THING_TYPE_SHOW_NEEDS:
-		thing = new (__FILE__, 886) ShowNeeds;
+		thing = NEW(886) ShowNeeds;
 		break;
 	case GAME_THING_TYPE_SCRIPT_HIGHLIGHT:
-		thing = new (__FILE__, 890) ScriptHighlight;
+		thing = NEW(890) ScriptHighlight;
 		break;
 	case GAME_THING_TYPE_GWATERFALL:
-		thing = new (__FILE__, 894) GWaterfall;
+		thing = NEW(894) GWaterfall;
 		break;
 	case GAME_THING_TYPE_GARENA:
-		thing = new (__FILE__, 898) GArena;
+		thing = NEW(898) GArena;
 		break;
 	case GAME_THING_TYPE_ARENA_SPELL_ICON:
-		thing = new (__FILE__, 902) ArenaSpellIcon;
+		thing = NEW(902) ArenaSpellIcon;
 		break;
 	case GAME_THING_TYPE_WEATHER_THING:
-		thing = new (__FILE__, 906) WeatherThing;
+		thing = NEW(906) WeatherThing;
 		break;
 	case GAME_THING_TYPE_BALL:
-		thing = new (__FILE__, 910) Ball;
+		thing = NEW(910) Ball;
 		break;
 	case GAME_THING_TYPE_FOOTBALL:
-		thing = new (__FILE__, 914) Football;
+		thing = NEW(914) Football;
 		break;
 	case GAME_THING_TYPE_REWARD:
-		thing = new (__FILE__, 918) Reward;
+		thing = NEW(918) Reward;
 		break;
 	case GAME_THING_TYPE_GSTREAM:
-		thing = new (__FILE__, 922) GStream;
+		thing = NEW(922) GStream;
 		break;
 	case GAME_THING_TYPE_MIST:
-		thing = new (__FILE__, 926) Mist;
+		thing = NEW(926) Mist;
 		break;
 	case GAME_THING_TYPE_GSTREET_LIGHT:
-		thing = new (__FILE__, 930) GStreetLight;
+		thing = NEW(930) GStreetLight;
 		break;
 	case GAME_THING_TYPE_GSTREET_LANTERN:
-		thing = new (__FILE__, 933) GStreetLantern;
+		thing = NEW(933) GStreetLantern;
 		break;
 	case GAME_THING_TYPE_INFLUENCE_RING:
-		thing = new (__FILE__, 937) InfluenceRing;
+		thing = NEW(937) InfluenceRing;
 		break;
 	case GAME_THING_TYPE_TOWN_DESIRE_FLAGS:
-		thing = new (__FILE__, 941) TownDesireFlags;
+		thing = NEW(941) TownDesireFlags;
 		break;
 	case GAME_THING_TYPE_BIG_FOREST:
-		thing = new (__FILE__, 945) BigForest;
+		thing = NEW(945) BigForest;
 		break;
 	case GAME_THING_TYPE_FOREST:
-		thing = new (__FILE__, 949) Forest;
+		thing = NEW(949) Forest;
 		break;
 	case GAME_THING_TYPE_TREE:
-		thing = new (__FILE__, 953) Tree;
+		thing = NEW(953) Tree;
 		break;
 	case GAME_THING_TYPE_GFOOTPATH:
-		thing = new (__FILE__, 957) GFootpath;
+		thing = NEW(957) GFootpath;
 		break;
 	case GAME_THING_TYPE_GFOOTPATH_LINK:
-		thing = new (__FILE__, 961) GFootpathLink;
+		thing = NEW(961) GFootpathLink;
 		break;
 	case GAME_THING_TYPE_GFOOTPATH_NODE:
-		thing = new (__FILE__, 965) GFootpathNode;
+		thing = NEW(965) GFootpathNode;
 		break;
 	case GAME_THING_TYPE_GFOOTPATH_LINK_SAVE:
-		thing = new (__FILE__, 969) GFootpathLinkSave;
+		thing = NEW(969) GFootpathLinkSave;
 		break;
 	case GAME_THING_TYPE_GFOOTPATH_FINDER:
-		thing = new (__FILE__, 973) GFootpathFinder;
+		thing = NEW(973) GFootpathFinder;
 		break;
 	case GAME_THING_TYPE_CRECHE:
-		thing = new (__FILE__, 977) Creche;
+		thing = NEW(977) Creche;
 		break;
 	case GAME_THING_TYPE_GRAVEYARD:
-		thing = new (__FILE__, 981) Graveyard;
+		thing = NEW(981) Graveyard;
 		break;
 	case GAME_THING_TYPE_WORKSHOP:
-		thing = new (__FILE__, 985) Workshop;
+		thing = NEW(985) Workshop;
 		break;
 	case GAME_THING_TYPE_MOBILE_OBJECT:
-		thing = new (__FILE__, 989) MobileObject;
+		thing = NEW(989) MobileObject;
 		break;
 	case GAME_THING_TYPE_MOBILE_STATIC:
-		thing = new (__FILE__, 993) MobileStatic;
+		thing = NEW(993) MobileStatic;
 		break;
 	case GAME_THING_TYPE_TOWN_SPELL_ICON:
-		thing = new (__FILE__, 997) TownSpellIcon;
+		thing = NEW(997) TownSpellIcon;
 		break;
 	case GAME_THING_TYPE_TOWN_CENTRE_SPELL_ICON:
-		thing = new (__FILE__, 1001) TownCentreSpellIcon;
+		thing = NEW(1001) TownCentreSpellIcon;
 		break;
 	case GAME_THING_TYPE_POT:
-		thing = new (__FILE__, 1005) Pot;
+		thing = NEW(1005) Pot;
 		break;
 	case GAME_THING_TYPE_PILE_FOOD:
-		thing = new (__FILE__, 1009) PileFood;
+		thing = NEW(1009) PileFood;
 		break;
 	case GAME_THING_TYPE_PILE_WOOD:
-		thing = new (__FILE__, 1013) PileWood;
+		thing = NEW(1013) PileWood;
 		break;
 	case GAME_THING_TYPE_PILE_FISH_FARM:
-		thing = new (__FILE__, 1017) FishFarm;
+		thing = NEW(1017) FishFarm;
 		break;
 	case GAME_THING_TYPE_STANDARD_BUILDING_SITE:
-		thing = new (__FILE__, 1020) StandardBuildingSite;
+		thing = NEW(1020) StandardBuildingSite;
 		break;
 	case GAME_THING_TYPE_CITADEL_BUILDING_SITE:
-		thing = new (__FILE__, 1023) CitadelBuildingSite;
+		thing = NEW(1023) CitadelBuildingSite;
 		break;
 	case GAME_THING_TYPE_WORKSHOP_BUILDING_SITE:
-		thing = new (__FILE__, 1026) WorkshopBuildingSite;
+		thing = NEW(1026) WorkshopBuildingSite;
 		break;
 	case GAME_THING_TYPE_SCAFFOLD:
-		thing = new (__FILE__, 1029) Scaffold;
+		thing = NEW(1029) Scaffold;
 		break;
 	case GAME_THING_TYPE_TOWN_CENTRE:
-		thing = new (__FILE__, 1033) TownCentre;
+		thing = NEW(1033) TownCentre;
 		break;
 	case GAME_THING_TYPE_PLANNED_ABODE:
-		thing = new (__FILE__, 1037) PlannedAbode;
+		thing = NEW(1037) PlannedAbode;
 		break;
 	case GAME_THING_TYPE_PLANNED_TOWN_CENTRE:
-		thing = new (__FILE__, 1041) PlannedTownCentre;
+		thing = NEW(1041) PlannedTownCentre;
 		break;
 	case GAME_THING_TYPE_GPLAYER:
 		thing = GGame::g_game->GetPlayer(player);
@@ -893,493 +892,493 @@ void GameOSFile::LoadInstance(GameThing** out_thing)
 		thing = GGame::g_game->GetPlayer(player)->GetRealInterface(player)->status;
 		break;
 	case GAME_THING_TYPE_GCOMPUTER_PLAYER:
-		thing = new (__FILE__, 1069) GComputerPlayer;
+		thing = NEW(1069) GComputerPlayer;
 		break;
 	case GAME_THING_TYPE_GCOMPUTER_SEEN:
-		thing = new (__FILE__, 1074) GComputerSeen;
+		thing = NEW(1074) GComputerSeen;
 		break;
 	case GAME_THING_TYPE_GCOMPUTER_SPELL_CAST:
-		thing = new (__FILE__, 1077) GComputerSpellCast;
+		thing = NEW(1077) GComputerSpellCast;
 		break;
 	case GAME_THING_TYPE_CREATURE:
-		thing = new (__FILE__, 1081) Creature;
+		thing = NEW(1081) Creature;
 		break;
 	case GAME_THING_TYPE_GGAME:
 		thing = GGame::g_game;
 		break;
 	case GAME_THING_TYPE_POO:
-		thing = new (__FILE__, 1089) Poo;
+		thing = NEW(1089) Poo;
 		break;
 	case GAME_THING_TYPE_CREED:
-		thing = new (__FILE__, 1093) Creed;
+		thing = NEW(1093) Creed;
 		break;
 	case GAME_THING_TYPE_FIELD_CROP:
-		thing = new (__FILE__, 1097) FieldCrop;
+		thing = NEW(1097) FieldCrop;
 		break;
 	case GAME_THING_TYPE_GLEASH_STATUS:
 		thing = GGame::g_game->GetPlayer(player)->GetRealInterface(player)->status->LeashStatus;
 		break;
 	case GAME_THING_TYPE_GPARTICLE_CONTAINER:
-		thing = new (__FILE__, 1107) GParticleContainer;
+		thing = NEW(1107) GParticleContainer;
 		break;
 	case GAME_THING_TYPE_ROCK:
-		thing = new (__FILE__, 1111) Rock;
+		thing = NEW(1111) Rock;
 		break;
 	case GAME_THING_TYPE_DEAD_TREE:
-		thing = new (__FILE__, 1115) DeadTree;
+		thing = NEW(1115) DeadTree;
 		break;
 	case GAME_THING_TYPE_FELLED_TREE:
-		thing = new (__FILE__, 1119) FelledTree;
+		thing = NEW(1119) FelledTree;
 		break;
 	case GAME_THING_TYPE_BONFIRE:
-		thing = new (__FILE__, 1123) Bonfire;
+		thing = NEW(1123) Bonfire;
 		break;
 	case GAME_THING_TYPE_PLANNED_FEATURE:
-		thing = new (__FILE__, 1127) PlannedFeature;
+		thing = NEW(1127) PlannedFeature;
 		break;
 	case GAME_THING_TYPE_FEATURE:
-		thing = new (__FILE__, 1131) Feature;
+		thing = NEW(1131) Feature;
 		break;
 	case GAME_THING_TYPE_SPECIAL_VILLAGER:
-		thing = new (__FILE__, 1135) SpecialVillager;
+		thing = NEW(1135) SpecialVillager;
 		break;
 	case GAME_THING_TYPE_GCAMERA:
 		thing = GGame::g_game->GetCamera();
 		break;
 	case GAME_THING_TYPE_WORSHIP_SPELL_ICON:
-		thing = new (__FILE__, 1143) WorshipSpellIcon;
+		thing = NEW(1143) WorshipSpellIcon;
 		break;
 	case GAME_THING_TYPE_DANCE_KEY_ACTION:
-		thing = new (__FILE__, 1147) DanceKeyAction;
+		thing = NEW(1147) DanceKeyAction;
 		break;
 	case GAME_THING_TYPE_DANCE_KEY_FRAME:
-		thing = new (__FILE__, 1151) DanceKeyFrame;
+		thing = NEW(1151) DanceKeyFrame;
 		break;
 	case GAME_THING_TYPE_DANCE_GROUP:
-		thing = new (__FILE__, 1155) DanceGroup;
+		thing = NEW(1155) DanceGroup;
 		break;
 	case GAME_THING_TYPE_SCRIPT_MARKER:
-		thing = new (__FILE__, 1159) ScriptMarker;
+		thing = NEW(1159) ScriptMarker;
 		break;
 	case GAME_THING_TYPE_SCRIPT_TIMER:
-		thing = new (__FILE__, 1163) ScriptTimer;
+		thing = NEW(1163) ScriptTimer;
 		break;
 	case GAME_THING_TYPE_FLOCK:
-		thing = new (__FILE__, 1167) Flock;
+		thing = NEW(1167) Flock;
 		break;
 	case GAME_THING_TYPE_TOTEM_STATUE:
-		thing = new (__FILE__, 1171) TotemStatue;
+		thing = NEW(1171) TotemStatue;
 		break;
 	case GAME_THING_TYPE_WONDER:
-		thing = new (__FILE__, 1175) Wonder;
+		thing = NEW(1175) Wonder;
 		break;
 	case GAME_THING_TYPE_PIECE_LION:
-		thing = new (__FILE__, 1179) PieceLion;
+		thing = NEW(1179) PieceLion;
 		break;
 	case GAME_THING_TYPE_PIECE_SHEEP:
-		thing = new (__FILE__, 1182) PieceSheep;
+		thing = NEW(1182) PieceSheep;
 		break;
 	case GAME_THING_TYPE_PIECE_WOLF:
-		thing = new (__FILE__, 1185) PieceWolf;
+		thing = NEW(1185) PieceWolf;
 		break;
 	case GAME_THING_TYPE_PIECE_VILLAGER:
-		thing = new (__FILE__, 1188) PieceVillager;
+		thing = NEW(1188) PieceVillager;
 		break;
 	case GAME_THING_TYPE_COW:
-		thing = new (__FILE__, 1191) Cow;
+		thing = NEW(1191) Cow;
 		break;
 	case GAME_THING_TYPE_SHEEP:
-		thing = new (__FILE__, 1194) Sheep;
+		thing = NEW(1194) Sheep;
 		break;
 	case GAME_THING_TYPE_GOAT:
-		thing = new (__FILE__, 1197) Goat;
+		thing = NEW(1197) Goat;
 		break;
 	case GAME_THING_TYPE_HORSE:
-		thing = new (__FILE__, 1200) Horse;
+		thing = NEW(1200) Horse;
 		break;
 	case GAME_THING_TYPE_ZEBRA:
-		thing = new (__FILE__, 1203) Zebra;
+		thing = NEW(1203) Zebra;
 		break;
 	case GAME_THING_TYPE_PIG:
-		thing = new (__FILE__, 1206) Pig;
+		thing = NEW(1206) Pig;
 		break;
 	case GAME_THING_TYPE_TORTOISE:
-		thing = new (__FILE__, 1209) Tortoise;
+		thing = NEW(1209) Tortoise;
 		break;
 	case GAME_THING_TYPE_LION:
-		thing = new (__FILE__, 1212) Lion;
+		thing = NEW(1212) Lion;
 		break;
 	case GAME_THING_TYPE_LEOPARD:
-		thing = new (__FILE__, 1215) Leopard;
+		thing = NEW(1215) Leopard;
 		break;
 	case GAME_THING_TYPE_TIGER:
-		thing = new (__FILE__, 1218) Tiger;
+		thing = NEW(1218) Tiger;
 		break;
 	case GAME_THING_TYPE_WOLF:
-		thing = new (__FILE__, 1221) Wolf;
+		thing = NEW(1221) Wolf;
 		break;
 	case GAME_THING_TYPE_SPELL_WOLF:
-		thing = new (__FILE__, 1224) SpellWolf;
+		thing = NEW(1224) SpellWolf;
 		break;
 	case GAME_THING_TYPE_DOVE:
-		thing = new (__FILE__, 1228) Dove;
+		thing = NEW(1228) Dove;
 		break;
 	case GAME_THING_TYPE_SPELL_DOVE:
-		thing = new (__FILE__, 1231) SpellDove;
+		thing = NEW(1231) SpellDove;
 		break;
 	case GAME_THING_TYPE_SPELL_BAT:
-		thing = new (__FILE__, 1234) SpellBat;
+		thing = NEW(1234) SpellBat;
 		break;
 	case GAME_THING_TYPE_CROW:
-		thing = new (__FILE__, 1237) Crow;
+		thing = NEW(1237) Crow;
 		break;
 	case GAME_THING_TYPE_SWALLOW:
-		thing = new (__FILE__, 1240) Swallow;
+		thing = NEW(1240) Swallow;
 		break;
 	case GAME_THING_TYPE_PIGEON:
-		thing = new (__FILE__, 1243) Pigeon;
+		thing = NEW(1243) Pigeon;
 		break;
 	case GAME_THING_TYPE_SEAGULL:
-		thing = new (__FILE__, 1246) Seagull;
+		thing = NEW(1246) Seagull;
 		break;
 	case GAME_THING_TYPE_BAT:
-		thing = new (__FILE__, 1249) Bat;
+		thing = NEW(1249) Bat;
 		break;
 	case GAME_THING_TYPE_VULTURE:
-		thing = new (__FILE__, 1252) Vulture;
+		thing = NEW(1252) Vulture;
 		break;
 	case GAME_THING_TYPE_WORSHIP_TOTEM:
-		thing = new (__FILE__, 1255) WorshipTotem;
+		thing = NEW(1255) WorshipTotem;
 		break;
 	case GAME_THING_TYPE_WHALE:
-		thing = new (__FILE__, 1258) Whale;
+		thing = NEW(1258) Whale;
 		break;
 	case GAME_THING_TYPE_GBASE_ONLY:
-		thing = new (__FILE__, 1261) GBaseOnly;
+		thing = NEW(1261) GBaseOnly;
 		break;
 	case GAME_THING_TYPE_DATA_PATH:
-		thing = new (__FILE__, 1264) DataPath;
+		thing = NEW(1264) DataPath;
 		break;
 	case GAME_THING_TYPE_FRAGMENT:
-		thing = new (__FILE__, 1268) Fragment;
+		thing = NEW(1268) Fragment;
 		break;
 	case GAME_THING_TYPE_WINDMILL:
-		thing = new (__FILE__, 1272) Windmill;
+		thing = NEW(1272) Windmill;
 		break;
 	case GAME_THING_TYPE_GCLIMATE:
-		thing = new (__FILE__, 1276) GClimate;
+		thing = NEW(1276) GClimate;
 		break;
 	case GAME_THING_TYPE_PLAYER_ACTION_STATE:
-		thing = new (__FILE__, 1282) PlayerActionState;
+		thing = NEW(1282) PlayerActionState;
 		break;
 	case GAME_THING_TYPE_PLAYER_SUB_ACTION:
-		thing = new (__FILE__, 1287) PlayerSubAction;
+		thing = NEW(1287) PlayerSubAction;
 		break;
 	case GAME_THING_TYPE_PLAYER_SUB_ACTION_ARGUMENT:
-		thing = new (__FILE__, 1291) PlayerSubActionArgument;
+		thing = NEW(1291) PlayerSubActionArgument;
 		break;
 	case GAME_THING_TYPE_GMAGIC_HAND_1:
-		thing = new (__FILE__, 1296) GMagicHand;
+		thing = NEW(1296) GMagicHand;
 		break;
 	case GAME_THING_TYPE_GMAGIC_HAND_2:
-		thing = new (__FILE__, 1300) GMagicHand;
+		thing = NEW(1300) GMagicHand;
 		break;
 	case GAME_THING_TYPE_ANIMATED_STATIC:
-		thing = new (__FILE__, 1304) AnimatedStatic;
+		thing = NEW(1304) AnimatedStatic;
 		break;
 	case GAME_THING_TYPE_TOWN_ARTIFACT:
-		thing = new (__FILE__, 1308) TownArtifact;
+		thing = NEW(1308) TownArtifact;
 		break;
 	case GAME_THING_TYPE_VORTEX_SAVE:
-		thing = new (__FILE__, 1312) VortexSave;
+		thing = NEW(1312) VortexSave;
 		break;
 	case GAME_THING_TYPE_THING_MUSIC_INFO:
-		thing = new (__FILE__, 1316) ThingMusicInfo;
+		thing = NEW(1316) ThingMusicInfo;
 		break;
 	case GAME_THING_TYPE_DATA_FOR_SCRIPT_REMIND:
-		thing = new (__FILE__, 1320) DataForScriptRemind;
+		thing = NEW(1320) DataForScriptRemind;
 		break;
 	case GAME_THING_TYPE_FLOWERS:
-		thing = new (__FILE__, 1324) Flowers;
+		thing = NEW(1324) Flowers;
 		break;
 	case GAME_THING_TYPE_SPELL_DISPENSER:
-		thing = new (__FILE__, 1328) SpellDispenser;
+		thing = NEW(1328) SpellDispenser;
 		break;
 	case GAME_THING_TYPE_PUZZLE_MOBILE_OBJECT:
-		thing = new (__FILE__, 1332) PuzzleMobileObject;
+		thing = NEW(1332) PuzzleMobileObject;
 		break;
 	case GAME_THING_TYPE_GCOMPUTER_PLAYER_QUEUE:
-		thing = new (__FILE__, 1336) GComputerPlayerQueue;
+		thing = NEW(1336) GComputerPlayerQueue;
 		break;
 	case GAME_THING_TYPE_GCOMPUTER_ATTITUDE_TO_PLAYER:
-		thing = new (__FILE__, 1340) GComputerAttitudeToPlayer;
+		thing = NEW(1340) GComputerAttitudeToPlayer;
 		break;
 	case GAME_THING_TYPE_GAME_STATS:
 		thing = GGame::g_game->GetPlayer(player)->GetStats();
 		break;
 	case GAME_THING_TYPE_WAYPOINT:
-		thing = new (__FILE__, 1357) WayPoint;
+		thing = NEW(1357) WayPoint;
 		break;
 	case GAME_THING_TYPE_MISSIONARY_CONTROL:
-		thing = new (__FILE__, 1361) MissionaryControl;
+		thing = NEW(1361) MissionaryControl;
 		break;
 	case GAME_THING_TYPE_ATOM_CORE:
-		thing = new (__FILE__, 1364) AtomCore;
+		thing = NEW(1364) AtomCore;
 		break;
 	case GAME_THING_TYPE_ATOM_COLLECTION:
-		thing = new (__FILE__, 1365) AtomCollection;
+		thing = NEW(1365) AtomCollection;
 		break;
 	case GAME_THING_TYPE_PSYS_MANAGER:
-		thing = new (__FILE__, 1366) PSysManager;
+		thing = NEW(1366) PSysManager;
 		break;
 	case GAME_THING_TYPE_GJPSYS_INTERFACE:
-		thing = new (__FILE__, 1367) GJPSysInterface;
+		thing = NEW(1367) GJPSysInterface;
 		break;
 	case GAME_THING_TYPE_DRAW_OFFSET_LT:
-		thing = new (__FILE__, 1368) DrawOffsetLT;
+		thing = NEW(1368) DrawOffsetLT;
 		break;
 	case GAME_THING_TYPE_DRAW_OFFSET_DECAY:
-		thing = new (__FILE__, 1369) DrawOffsetDecay;
+		thing = NEW(1369) DrawOffsetDecay;
 		break;
 	case GAME_THING_TYPE_PARTICLE_3D_PNT:
-		thing = new (__FILE__, 1370) Particle3DPnt;
+		thing = NEW(1370) Particle3DPnt;
 		break;
 	case GAME_THING_TYPE_PARTICLE_3D_OBJ:
-		thing = new (__FILE__, 1371) Particle3DObj;
+		thing = NEW(1371) Particle3DObj;
 		break;
 	case GAME_THING_TYPE_PARTICLE_LIGHT_MAP:
-		thing = new (__FILE__, 1372) ParticleLightMap;
+		thing = NEW(1372) ParticleLightMap;
 		break;
 	case GAME_THING_TYPE_RENDER_PARTICLE_MIST:
-		thing = new (__FILE__, 1373) RenderParticleMist;
+		thing = NEW(1373) RenderParticleMist;
 		break;
 	case GAME_THING_TYPE_PARTICLE_3D_ANIM:
-		thing = new (__FILE__, 1374) Particle3DAnim;
+		thing = NEW(1374) Particle3DAnim;
 		break;
 	case GAME_THING_TYPE_PARTICLE_3D_ANIM_WITH_CAMERA:
-		thing = new (__FILE__, 1375) Particle3DAnimWithCamera;
+		thing = NEW(1375) Particle3DAnimWithCamera;
 		break;
 	case GAME_THING_TYPE_PARTICLE_3D_OBJ_ANIM_TEXTURED:
-		thing = new (__FILE__, 1376) Particle3DObjAnimTextured;
+		thing = NEW(1376) Particle3DObjAnimTextured;
 		break;
 	case GAME_THING_TYPE_RENDER_PARTICLE_CREATURE_REF:
-		thing = new (__FILE__, 1377) RenderParticleCreatureRef;
+		thing = NEW(1377) RenderParticleCreatureRef;
 		break;
 	case GAME_THING_TYPE_RENDER_PARTICLE_GAME_OBJECT_REF:
-		thing = new (__FILE__, 1378) RenderParticleGameObjectRef;
+		thing = NEW(1378) RenderParticleGameObjectRef;
 		break;
 	case GAME_THING_TYPE_RENDER_PARTICLE_GOLDEN_SHOWER:
-		thing = new (__FILE__, 1379) RenderParticleGoldenShower;
+		thing = NEW(1379) RenderParticleGoldenShower;
 		break;
 	case GAME_THING_TYPE_RENDER_PARTICLE_GAME_OBJECT:
-		thing = new (__FILE__, 1380) RenderParticleGameObject;
+		thing = NEW(1380) RenderParticleGameObject;
 		break;
 	case GAME_THING_TYPE_RENDER_PARTICLE_CHAIN_JOINT:
-		thing = new (__FILE__, 1381) ParticleChainJoint;
+		thing = NEW(1381) ParticleChainJoint;
 		break;
 	case GAME_THING_TYPE_RENDER_PARTICLE_3D_SPRITE:
-		thing = new (__FILE__, 1382) Particle3DSprite;
+		thing = NEW(1382) Particle3DSprite;
 		break;
 	case GAME_THING_TYPE_RENDER_PARTICLE_PLAYER_SYMBOL:
-		thing = new (__FILE__, 1383) ParticlePlayerSymbol;
+		thing = NEW(1383) ParticlePlayerSymbol;
 		break;
 	case GAME_THING_TYPE_CHAIN:
-		thing = new (__FILE__, 1384) Chain;
+		thing = NEW(1384) Chain;
 		break;
 	case GAME_THING_TYPE_DEFENSIVE_SPHERE:
-		thing = new (__FILE__, 1385) DefensiveSphere;
+		thing = NEW(1385) DefensiveSphere;
 		break;
 	case GAME_THING_TYPE_UR_LIGHTNING_COLLECTION_DATA:
-		thing = new (__FILE__, 1386) UR_Lightning_CollectionData(NULL);
+		thing = NEW(1386) UR_Lightning_CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_VORTEX_OBJECT_INFO:
-		thing = new (__FILE__, 1387) VortexObjectInfo;
+		thing = NEW(1387) VortexObjectInfo;
 		break;
 	case GAME_THING_TYPE_SPELL_POINT_INF:
-		thing = new (__FILE__, 1388) SpellPointInf;
+		thing = NEW(1388) SpellPointInf;
 		break;
 	case GAME_THING_TYPE_UR_PLASMA_INF:
-		thing = new (__FILE__, 1389) UR_PlasmaInf;
+		thing = NEW(1389) UR_PlasmaInf;
 		break;
 	case GAME_THING_TYPE_UR_VOL_FX_ON_OBJECT_ATOM_DATA:
-		thing = new (__FILE__, 1391) UR_VolFXOnObject::AtomData(NULL);
+		thing = NEW(1391) UR_VolFXOnObject::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_PLASMA_SUB_COLLECTION_DATA:
-		thing = new (__FILE__, 1392) UR_Plasma::SubCollectionData(NULL);
+		thing = NEW(1392) UR_Plasma::SubCollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_PLASMA_ATOM_DATA:
-		thing = new (__FILE__, 1393) UR_Plasma::AtomData(NULL);
+		thing = NEW(1393) UR_Plasma::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_SIMPLE_BEAM_SUB_COLLECTION_DATA:
-		thing = new (__FILE__, 1394) UR_SimpleBeam::SubCollectionData(NULL);
+		thing = NEW(1394) UR_SimpleBeam::SubCollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_SIMPLE_BEAM_ATOM_DATA:
-		thing = new (__FILE__, 1395) UR_SimpleBeam::AtomData(NULL);
+		thing = NEW(1395) UR_SimpleBeam::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_BELIEF_SPRITE_ATOM_DATA:
-		thing = new (__FILE__, 1396) UR_BeliefSprite::AtomData(NULL);
+		thing = NEW(1396) UR_BeliefSprite::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_MANA_PATH_NEW_ATOM_DATA:
-		thing = new (__FILE__, 1397) UR_ManaPathNew::AtomData(NULL);
+		thing = NEW(1397) UR_ManaPathNew::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_CREATURE_SPELL_GENERIC_COLLECTION_DATA:
-		thing = new (__FILE__, 1398) UR_CreatureSpellGeneric::CollectionData(NULL);
+		thing = NEW(1398) UR_CreatureSpellGeneric::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_CREATURE_SPELL_GENERIC_ATOM_DATA:
-		thing = new (__FILE__, 1399) UR_CreatureSpellGeneric::AtomData(NULL);
+		thing = NEW(1399) UR_CreatureSpellGeneric::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_ORIENT_SPRITE_WITH_VELOCITY_ATOM_DATA:
-		thing = new (__FILE__, 1400) UR_OrientSpriteWithVelocity::AtomData(NULL);
+		thing = NEW(1400) UR_OrientSpriteWithVelocity::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_ATOMS_AT_EP_TARGET_COLLECTION_DATA:
-		thing = new (__FILE__, 1401) UR_AtomsAtEPTarget::CollectionData(NULL);
+		thing = NEW(1401) UR_AtomsAtEPTarget::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_CREATURE_SPELL_COMPASSION_COLLECTION_DATA:
-		thing = new (__FILE__, 1402) UR_CreatureSpellCompassion::CollectionData(NULL);
+		thing = NEW(1402) UR_CreatureSpellCompassion::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_CREATURE_SPELL_COLLECTION_DATA:
-		thing = new (__FILE__, 1403) UR_CreatureSpell::CollectionData(NULL);
+		thing = NEW(1403) UR_CreatureSpell::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_CREATURE_SPELL_ITCH_COLLECTION_DATA:
-		thing = new (__FILE__, 1404) UR_CreatureSpellItch::CollectionData(NULL);
+		thing = NEW(1404) UR_CreatureSpellItch::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_CREATURE_SPELL_FREEZE_COLLECTION_DATA:
-		thing = new (__FILE__, 1405) UR_CreatureSpellFreeze::CollectionData(NULL);
+		thing = NEW(1405) UR_CreatureSpellFreeze::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_VORTEX_ATTRACT_ATOM_DATA:
-		thing = new (__FILE__, 1406) UR_VortexAttract::AtomData(NULL);
+		thing = NEW(1406) UR_VortexAttract::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_SPHERE_SURFACE_TRACER_ATOM_DATA:
-		thing = new (__FILE__, 1407) UR_SphereSurfaceTracer::AtomData(NULL);
+		thing = NEW(1407) UR_SphereSurfaceTracer::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_CHECK_SHIELD_DEFLECTIONS_ATOM_DATA:
-		thing = new (__FILE__, 1408) CheckShieldDeflections::AtomData(NULL);
+		thing = NEW(1408) CheckShieldDeflections::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_FOREST_PATH_ATOM_DATA:
-		thing = new (__FILE__, 1409) UR_ForestPath::AtomData(NULL);
+		thing = NEW(1409) UR_ForestPath::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_EXPLOSION_ATOM_DATA:
-		thing = new (__FILE__, 1410) UR_Explosion::AtomData(NULL);
+		thing = NEW(1410) UR_Explosion::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_EXPLOSION_COLLECTION_DATA:
-		thing = new (__FILE__, 1411) UR_Explosion::CollectionData(NULL);
+		thing = NEW(1411) UR_Explosion::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_FLOCKING_COLLECTION_DATA:
-		thing = new (__FILE__, 1412) UR_Flocking::CollectionData(NULL);
+		thing = NEW(1412) UR_Flocking::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_CLOUD_MOVER_NEW_COLLECTION_DATA:
-		thing = new (__FILE__, 1413) UR_CloudMoverNew::CollectionData(NULL);
+		thing = NEW(1413) UR_CloudMoverNew::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_CLOUD_GATHER_COLLECTION_DATA:
-		thing = new (__FILE__, 1414) UR_CloudGather::CollectionData(NULL);
+		thing = NEW(1414) UR_CloudGather::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_CLOUD_GATHER_ATOM_DATA:
-		thing = new (__FILE__, 1415) UR_CloudGather::AtomData(NULL);
+		thing = NEW(1415) UR_CloudGather::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_TORNADO_FLYING_ATOM_DATA:
-		thing = new (__FILE__, 1416) UR_Tornado::FlyingAtomData(NULL);
+		thing = NEW(1416) UR_Tornado::FlyingAtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_TORNADO_DEBRIS_COLLECTION_DATA:
-		thing = new (__FILE__, 1417) UR_Tornado::DebrisCollectionData(NULL);
+		thing = NEW(1417) UR_Tornado::DebrisCollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_TORNADO_FLYING_COLLECTION_DATA:
-		thing = new (__FILE__, 1418) UR_Tornado::FlyingCollectionData(NULL);
+		thing = NEW(1418) UR_Tornado::FlyingCollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_TORNADO_COLLECTION_DATA:
-		thing = new (__FILE__, 1419) UR_Tornado::CollectionData(NULL);
+		thing = NEW(1419) UR_Tornado::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_AR_FADE_OUT_ONCE_CONDITION_TRUE_ATOM_DATA:
-		thing = new (__FILE__, 1420) AR_FadeOutOnceConditionTrue::AtomData(NULL);
+		thing = NEW(1420) AR_FadeOutOnceConditionTrue::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_ATTATCH_FIREBALL_TO_ATOM_ATOM_DATA:
-		thing = new (__FILE__, 1421) AttatchFireBallToAtom::AtomData(NULL);
+		thing = NEW(1421) AttatchFireBallToAtom::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_ADD_SOUND_TO_ATOM_ATOM_DATA:
-		thing = new (__FILE__, 1422) AddSoundToAtom::AtomData(NULL);
+		thing = NEW(1422) AddSoundToAtom::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_REMOVE_SOUND_FROM_ATOM_ATOM_DATA:
-		thing = new (__FILE__, 1423) RemoveSoundFromAtom::AtomData(NULL);
+		thing = NEW(1423) RemoveSoundFromAtom::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UPDATE_RULE_GRAVITY_WITH_FLOOR_ATOM_DATA_RIPPLE:
-		thing = new (__FILE__, 1424) UpdateRuleGravityWithFloor::AtomDataRipple(NULL);
+		thing = NEW(1424) UpdateRuleGravityWithFloor::AtomDataRipple(NULL);
 		break;
 	case GAME_THING_TYPE_UR_BANKED_TURNING_ATOM_DATA:
-		thing = new (__FILE__, 1425) UR_BankedTurning::AtomData(NULL);
+		thing = NEW(1425) UR_BankedTurning::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UPDATE_RULE_SHIELD_SPARK_ATOM_DATA:
-		thing = new (__FILE__, 1426) UpdateRuleShieldSpark::AtomData(NULL);
+		thing = NEW(1426) UpdateRuleShieldSpark::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_VAPOUR_END_EFFECT_ATOM_DATA:
-		thing = new (__FILE__, 1427) UR_VapourEndEffect::AtomData(NULL);
+		thing = NEW(1427) UR_VapourEndEffect::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_ADD_SUB_COLLECTIONS_TO_ATOM_ATOM_DATA:
-		thing = new (__FILE__, 1428) AddSubCollectionsToAtom::AtomData(NULL);
+		thing = NEW(1428) AddSubCollectionsToAtom::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_CREATE_NEW_BASE_ATOM_ATOM_DATA:
-		thing = new (__FILE__, 1429) CreateNewBaseAtom::AtomData(NULL);
+		thing = NEW(1429) CreateNewBaseAtom::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_ER_GLINTS_ON_TARGET_PARENT_ATOM_DATA:
-		thing = new (__FILE__, 1430) ER_GlintsOnTarget::ParentAtomData(NULL);
+		thing = NEW(1430) ER_GlintsOnTarget::ParentAtomData(NULL);
 		break;
 	case GAME_THING_TYPE_ER_GLINTS_ON_TARGET_ATOM_DATA:
-		thing = new (__FILE__, 1431) ER_GlintsOnTarget::AtomData(NULL);
+		thing = NEW(1431) ER_GlintsOnTarget::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_ORIENT_SPRITE_WITH_RANDOM_ANGLE_ATOM_DATA:
-		thing = new (__FILE__, 1432) UR_OrientSpriteWithRandomAngle::AtomData(NULL);
+		thing = NEW(1432) UR_OrientSpriteWithRandomAngle::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_SIDE_SPIN_ATOM_DATA:
-		thing = new (__FILE__, 1433) UR_SideSpin::AtomData(NULL);
+		thing = NEW(1433) UR_SideSpin::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_INITIAL_SPIN_ATOM_DATA:
-		thing = new (__FILE__, 1434) UR_InitialSpin::AtomData(NULL);
+		thing = NEW(1434) UR_InitialSpin::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_REMOVE_RULE_AFTER_CONDITION_TRUE_ATOM_DATA:
-		thing = new (__FILE__, 1435) RemoveRuleAfterConditionTrue::AtomData(NULL);
+		thing = NEW(1435) RemoveRuleAfterConditionTrue::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_ORIENT_WITH_VELOCITY_ATOM_DATA:
-		thing = new (__FILE__, 1436) UR_OrientWithVelocity::AtomData(NULL);
+		thing = NEW(1436) UR_OrientWithVelocity::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_FOLLOW_TARGETS_ATOM_DATA:
-		thing = new (__FILE__, 1437) UR_FollowTargets::AtomData(NULL);
+		thing = NEW(1437) UR_FollowTargets::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_ADD_DEFENSIVE_SPHERE_COLLECTION_DATA:
-		thing = new (__FILE__, 1438) UR_AddDefensiveSphere::CollectionData(NULL);
+		thing = NEW(1438) UR_AddDefensiveSphere::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_EMITTER_RULE_COLLECTION_DATA:
-		thing = new (__FILE__, 1439) EmitterRule::CollectionData(NULL);
+		thing = NEW(1439) EmitterRule::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_WILLOW_WISP_COLLECTION_DATA:
-		thing = new (__FILE__, 1440) UR_WillowWisp::CollectionData(NULL);
+		thing = NEW(1440) UR_WillowWisp::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_BURST_FROM_PARENT_ATOM_COLLECTION_DATA:
-		thing = new (__FILE__, 1441) ER_BurstFromParentAtom::CollectionData(NULL);
+		thing = NEW(1441) ER_BurstFromParentAtom::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_ER_EMIT_FROM_PARENT_ATOM_COLLECTION_DATA:
-		thing = new (__FILE__, 1442) ER_EmitFromParentAtom::CollectionData(NULL);
+		thing = NEW(1442) ER_EmitFromParentAtom::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_FOLLOW_TARGETS_COLLECTION_DATA:
-		thing = new (__FILE__, 1443) UR_FollowTargets::CollectionData(NULL);
+		thing = NEW(1443) UR_FollowTargets::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_HEAL_SPELL_CHAKRA_ATOM_DATA:
-		thing = new (__FILE__, 1444) UR_HealSpellChakra::AtomData(NULL);
+		thing = NEW(1444) UR_HealSpellChakra::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_TRAIL_COLLECTION_DATA:
-		thing = new (__FILE__, 1445) UR_Trail::CollectionData(NULL);
+		thing = NEW(1445) UR_Trail::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_LIGHTNING_FORK_FLICKER_COLLECTION_DATA:
-		thing = new (__FILE__, 1446) LightningForkFlicker::CollectionData(NULL);
+		thing = NEW(1446) LightningForkFlicker::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_EMITTER_RULE_LIGHTNING_SPRITE_COLLECTION_DATA:
-		thing = new (__FILE__, 1447) EmitterRuleLightningSprite::CollectionData(NULL);
+		thing = NEW(1447) EmitterRuleLightningSprite::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_HAND_SPRINKLE_COLLECTION_DATA:
-		thing = new (__FILE__, 1448) UR_HandSprinkle::CollectionData(NULL);
+		thing = NEW(1448) UR_HandSprinkle::CollectionData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_LIGHT_SHEET_ON_OBJECT_ATOM_DATA:
-		thing = new (__FILE__, 1449) UR_LightSheetOnObject::AtomData(NULL);
+		thing = NEW(1449) UR_LightSheetOnObject::AtomData(NULL);
 		break;
 	case GAME_THING_TYPE_UR_LIGHT_SHEET_ON_OBJECT_COLLECTION_DATA:
-		thing = new (__FILE__, 1450) UR_LightSheetOnObject::CollectionData(NULL);
+		thing = NEW(1450) UR_LightSheetOnObject::CollectionData(NULL);
 		break;
 	default:
 		if (type == GAME_THING_TYPE_UNUSED_000)
@@ -1392,7 +1391,7 @@ void GameOSFile::LoadInstance(GameThing** out_thing)
 		}
 		break;
 	}
-	SaveLoadPtrList.Add(new (__FILE__, 1472) GSaveLoadPtr(thing));
+	SaveLoadPtrList.Add(NEW(1472) GSaveLoadPtr(thing));
 	*out_thing = thing;
 	if (thing)
 	{
@@ -1467,7 +1466,7 @@ void GameOSFile::WritePtr(GameThing* ptr)
 				node = node->next.Get();
 				--index;
 			}
-			SaveLoadPtrList.Add(new (__FILE__, 1654) GSaveLoadPtr(ptr));
+			SaveLoadPtrList.Add(NEW(1654) GSaveLoadPtr(ptr));
 			WriteIt(SaveLoadPtrList.count);
 			ptr->Save(*this);
 			return;

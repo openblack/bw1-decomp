@@ -41,7 +41,7 @@ void Creche::DeleteDependancys()
 Creche* Creche::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                        float food, int wood)
 {
-	Creche* creche = new (__FILE__, 50) Creche(coords, info, town, y_angle, scale, food, wood);
+	Creche* creche = NEW(50) Creche(coords, info, town, y_angle, scale, food, wood);
 	if (creche != NULL)
 	{
 		creche->CallVirtualFunctionsForCreation(coords);

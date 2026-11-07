@@ -23,7 +23,7 @@
 
 #define RANDOMISED_PERSONALITY(value, variation, line)                                                                 \
 	(GGlobal::Global.RandomiseCreatureMinds                                                                            \
-	     ? min(max(GRand::GameFloatRand(2.0f * (variation), __FILE__, line) + (value) - (variation), 0.0f), 1.0f)      \
+	     ? min(max(GAME_FLOAT_RAND(line, 2.0f * (variation)) + (value) - (variation), 0.0f), 1.0f)                     \
 	     : (value))
 
 struct UnknownDanceShapeUser

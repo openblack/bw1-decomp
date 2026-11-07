@@ -434,7 +434,7 @@ uint8_t Creature::ReactToFlyingObjectPriority(Reaction* reaction, Reaction* curr
 	}
 	if (reaction->GetPlayer() != NULL && reaction->GetPlayer() != GetPlayer() &&
 	    reaction->GetPlayer()->IsAllied(GetPlayer()) == false &&
-	    GRand::GameRand(CREATURE_REACT_TO_OTHER_PLAYER_CHANCE, __FILE__, 533) > CREATURE_REACT_TO_OTHER_PLAYER_MAX_ROLL)
+	    GAME_RAND(533, CREATURE_REACT_TO_OTHER_PLAYER_CHANCE) > CREATURE_REACT_TO_OTHER_PLAYER_MAX_ROLL)
 	{
 		return 0;
 	}
@@ -498,7 +498,7 @@ void Creature::SetupReactToHandPickUp(GameThingWithPos* thing, Reaction* reactio
 	ReactionObject = thing;
 	AddReaction(reaction, VILLAGER_STATE_INVALID_STATE);
 	TurnsUntilNextStateChange = (int16_t)GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
-		CREATURE_LOOK_AT_HAND_MIN_SECONDS + GRand::GameFloatRand(CREATURE_LOOK_AT_HAND_RANDOM_SECONDS, __FILE__, 604));
+		CREATURE_LOOK_AT_HAND_MIN_SECONDS + GAME_FLOAT_RAND(604, CREATURE_LOOK_AT_HAND_RANDOM_SECONDS));
 }
 
 uint8_t Creature::ReactToHandUsingTotemPriority(Reaction* reaction, Reaction* current_reaction)
@@ -530,7 +530,7 @@ uint8_t Creature::ReactToObjectCrushedPriority(Reaction* reaction, Reaction* cur
 		return 0;
 	}
 	if (reaction->GetPlayer() != NULL && reaction->GetPlayer() != GetPlayer() &&
-	    GRand::GameRand(CREATURE_REACT_TO_OTHER_PLAYER_CHANCE, __FILE__, 644) > CREATURE_REACT_TO_OTHER_PLAYER_MAX_ROLL)
+	    GAME_RAND(644, CREATURE_REACT_TO_OTHER_PLAYER_CHANCE) > CREATURE_REACT_TO_OTHER_PLAYER_MAX_ROLL)
 	{
 		return 0;
 	}

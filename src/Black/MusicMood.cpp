@@ -72,9 +72,9 @@ void MusicMood::SetNumTracks(int num_tracks)
 		if (num_tracks != 0)
 		{
 #ifdef VERSION_BW1W100
-			emotions = new (__FILE__, 150) MusicEmotion[num_tracks];
+			emotions = NEW(150) MusicEmotion[num_tracks];
 #else
-			emotions = new (__FILE__, 154) MusicEmotion[num_tracks];
+			emotions = NEW(154) MusicEmotion[num_tracks];
 #endif
 			if (emotions != NULL)
 			{

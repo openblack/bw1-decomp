@@ -111,8 +111,8 @@ WorshipSpellIcon* WorshipSpellIcon::Create(const MapCoords& coords, const GSpell
                                            const GSpellSeedInfo* seed_info, WorshipSite* site, int16_t slot,
                                            float percent_built, int under_construction)
 {
-	WorshipSpellIcon* icon = new (__FILE__, 91)
-		WorshipSpellIcon(coords, icon_info, seed_info, site, slot, percent_built, under_construction);
+	WorshipSpellIcon* icon =
+		NEW(91) WorshipSpellIcon(coords, icon_info, seed_info, site, slot, percent_built, under_construction);
 	if (icon != NULL)
 	{
 		icon->CallVirtualFunctionsForCreation(coords);

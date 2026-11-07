@@ -18,7 +18,7 @@ Cow::Cow(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : 
 
 Cow* Cow::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Cow* cow = new (__FILE__, 29) Cow(coords, info, age);
+	Cow* cow = NEW(29) Cow(coords, info, age);
 	if (cow != NULL)
 		cow->CallVirtualFunctionsForCreation(coords);
 	if (cow->Game3dObject != NULL)
@@ -147,13 +147,13 @@ bool32_t Cow::LookForFoodPos(MapCoords* pos)
 bool32_t Cow::StartToEat()
 {
 	Animal::StartToEat();
-	TurnsUntilNextStateChange = GRand::GameRand(15, __FILE__, 183) + 20;
+	TurnsUntilNextStateChange = GAME_RAND(183, 15) + 20;
 	return true;
 }
 
 Sheep* Sheep::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Sheep* sheep = new (__FILE__, 250) Sheep(coords, info, age);
+	Sheep* sheep = NEW(250) Sheep(coords, info, age);
 	if (sheep != NULL)
 	{
 		sheep->CallVirtualFunctionsForCreation(coords);
@@ -164,7 +164,7 @@ Sheep* Sheep::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned 
 
 PieceSheep* PieceSheep::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	PieceSheep* sheep = new (__FILE__, 268) PieceSheep(coords, info, age);
+	PieceSheep* sheep = NEW(268) PieceSheep(coords, info, age);
 	if (sheep != NULL)
 	{
 		sheep->CallVirtualFunctionsForCreation(coords);
@@ -175,7 +175,7 @@ PieceSheep* PieceSheep::Create(const MapCoords& coords, const GAnimalInfo* info,
 
 Goat* Goat::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Goat* goat = new (__FILE__, 287) Goat(coords, info, age);
+	Goat* goat = NEW(287) Goat(coords, info, age);
 	if (goat != NULL)
 	{
 		goat->CallVirtualFunctionsForCreation(coords);
@@ -186,7 +186,7 @@ Goat* Goat::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned lo
 
 Horse* Horse::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Horse* horse = new (__FILE__, 303) Horse(coords, info, age);
+	Horse* horse = NEW(303) Horse(coords, info, age);
 	if (horse != NULL)
 	{
 		horse->CallVirtualFunctionsForCreation(coords);
@@ -197,7 +197,7 @@ Horse* Horse::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned 
 
 PieceHorse* PieceHorse::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	PieceHorse* horse = new (__FILE__, 319) PieceHorse(coords, info, age);
+	PieceHorse* horse = NEW(319) PieceHorse(coords, info, age);
 	if (horse != NULL)
 	{
 		horse->CallVirtualFunctionsForCreation(coords);
@@ -208,7 +208,7 @@ PieceHorse* PieceHorse::Create(const MapCoords& coords, const GAnimalInfo* info,
 
 Zebra* Zebra::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Zebra* zebra = new (__FILE__, 335) Zebra(coords, info, age);
+	Zebra* zebra = NEW(335) Zebra(coords, info, age);
 	if (zebra != NULL)
 	{
 		zebra->CallVirtualFunctionsForCreation(coords);
@@ -219,7 +219,7 @@ Zebra* Zebra::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned 
 
 Pig* Pig::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Pig* pig = new (__FILE__, 351) Pig(coords, info, age);
+	Pig* pig = NEW(351) Pig(coords, info, age);
 	if (pig != NULL)
 	{
 		pig->CallVirtualFunctionsForCreation(coords);
@@ -230,7 +230,7 @@ Pig* Pig::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long
 
 PiecePig* PiecePig::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	PiecePig* pig = new (__FILE__, 368) PiecePig(coords, info, age);
+	PiecePig* pig = NEW(368) PiecePig(coords, info, age);
 	if (pig != NULL)
 	{
 		pig->CallVirtualFunctionsForCreation(coords);
@@ -241,7 +241,7 @@ PiecePig* PiecePig::Create(const MapCoords& coords, const GAnimalInfo* info, uns
 
 Tortoise* Tortoise::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Tortoise* tortoise = new (__FILE__, 385) Tortoise(coords, info, age);
+	Tortoise* tortoise = NEW(385) Tortoise(coords, info, age);
 	if (tortoise != NULL)
 	{
 		tortoise->CallVirtualFunctionsForCreation(coords);
@@ -252,7 +252,7 @@ Tortoise* Tortoise::Create(const MapCoords& coords, const GAnimalInfo* info, uns
 
 PieceTortoise* PieceTortoise::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	PieceTortoise* tortoise = new (__FILE__, 401) PieceTortoise(coords, info, age);
+	PieceTortoise* tortoise = NEW(401) PieceTortoise(coords, info, age);
 	if (tortoise != NULL)
 	{
 		tortoise->CallVirtualFunctionsForCreation(coords);

@@ -9,6 +9,7 @@
 #include <Lionhead/LH3DLib/development/LHMatrix.h>  /* For struct LHMatrix */
 #include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>     /* For class LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>            /* For NEW */
 
 #include "CalculateDrawPosInfo.h" /* For class CalculateDrawPosInfo */
 #include "GJBaseUtils.h"          /* For GJArray, GJDoubleLinkList */
@@ -31,8 +32,6 @@ class PSysSoundAction;
 class RenderParticle;
 
 #define PSYS_MAX_ALPHA 255.0f
-
-#define PSYS_ATOM_CORE_HEADER_FILE SOURCE_DIRECTORY "PSysAtomCore.h"
 
 class AtomCollection : public PSysBase
 {
@@ -130,7 +129,7 @@ public:
 				return;
 			}
 		}
-		data = new (PSYS_ATOM_CORE_HEADER_FILE, 206) T(modifier);
+		data = NEW(206) T(modifier);
 		ModifierData.InsertIntoList(data);
 	}
 };
@@ -295,7 +294,7 @@ public:
 				return;
 			}
 		}
-		data = new (PSYS_ATOM_CORE_HEADER_FILE, 506) T(modifier);
+		data = NEW(506) T(modifier);
 		ModifierData.InsertIntoList(data);
 	}
 };
@@ -321,7 +320,5 @@ inline void AtomCollection::SetParentAtom(AtomCore* parent)
 		}
 	}
 }
-
-#undef PSYS_ATOM_CORE_HEADER_FILE
 
 #endif /* BW1_DECOMP_P_SYS_ATOM_CORE_INCLUDED_H */

@@ -75,11 +75,11 @@
 #include "WorshipTotem.h"
 
 #if defined(VERSION_BW1W100)
-#define VILLAGER_LINE(line) ((line) - ((line) < 231 ? 1 : (line) < 1899 ? 3 : (line) < 3293 ? 19 : 20))
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - ((line) < 231 ? 1 : (line) < 1899 ? 3 : (line) < 3293 ? 19 : 20))
 #elif defined(VERSION_BW1W110)
-#define VILLAGER_LINE(line) ((line) - ((line) < 231 ? 1 : (line) < 1009 ? 2 : (line) < 1899 ? 10 : 15))
-#else
-#define VILLAGER_LINE(line) (line)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - ((line) < 231 ? 1 : (line) < 1009 ? 2 : (line) < 1899 ? 10 : 15))
 #endif
 
 // BW1W120 0099a1f0
@@ -132,12 +132,10 @@ Villager::Villager(const MapCoords& coords, const GVillagerInfo* info, uint32_t 
 	{
 		is_pregnant = 0;
 	}
-	food = min(GRand::GameFloatRand(0.6f, __FILE__, VILLAGER_LINE(126)) + GetInfo()->HungryForFood, 1.0f);
+	food = min(GAME_FLOAT_RAND(126, 0.6f) + GetInfo()->HungryForFood, 1.0f);
 	LastCheckTurn =
-		GGame::g_game->data.GameTurn -
-		min(GRand::GameRand(GetInfo()->ProcessChecksEvery, __FILE__, VILLAGER_LINE(127)), GGame::g_game->data.GameTurn);
-	TurnsUntilNextStateChange =
-		GRand::GameRand(VILLAGER_MAX_CREATED_STATE_CHANGE_DELAY, __FILE__, VILLAGER_LINE(128)) + 1;
+		GGame::g_game->data.GameTurn - min(GAME_RAND(127, GetInfo()->ProcessChecksEvery), GGame::g_game->data.GameTurn);
+	TurnsUntilNextStateChange = GAME_RAND(128, VILLAGER_MAX_CREATED_STATE_CHANGE_DELAY) + 1;
 	if (Pos.IsWater())
 	{
 		SetState(LIVING_ACTION_INDEX_TOP, VILLAGER_STATE_DROWNING);
@@ -194,7 +192,7 @@ Villager::~Villager()
 Villager* Villager::Create(const MapCoords& coords, const GVillagerInfo* info, uint32_t age, bool32_t skeleton)
 {
 	Villager* villager = NULL;
-	if (GRand::GameRand(10, __FILE__, VILLAGER_LINE(231)) <= 1)
+	if (GAME_RAND(231, 10) <= 1)
 	{
 		villager = SpecialVillager::Create(coords, info, age, skeleton, NULL);
 		if (villager != NULL && (villager->GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE))
@@ -204,7 +202,7 @@ Villager* Villager::Create(const MapCoords& coords, const GVillagerInfo* info, u
 	}
 	if (villager == NULL)
 	{
-		villager = new (__FILE__, VILLAGER_LINE(243)) Villager(coords, info, age, skeleton);
+		villager = NEW(243) Villager(coords, info, age, skeleton);
 		if (villager != NULL)
 		{
 			villager->CallVirtualFunctionsForCreation(coords);
@@ -831,10 +829,10 @@ bool Villager::GetRandomLookAhead(MapCoords* pos, float distance)
 {
 	if (distance == 0.0f)
 	{
-		distance = GRand::GameFloatRand(GetInfo()->LookAheadDistance, __FILE__, VILLAGER_LINE(1009)) + 1.0f;
+		distance = GAME_FLOAT_RAND(1009, GetInfo()->LookAheadDistance) + 1.0f;
 	}
 	uint16_t angle = GameAngle;
-	angle = (angle + GRand::GameRand(0x200, __FILE__, VILLAGER_LINE(1012)) - 0x100) & 0x7ff;
+	angle = (angle + GAME_RAND(1012, 0x200) - 0x100) & 0x7ff;
 	*pos = Pos;
 	pos->x += GUtils::GetXByAngleMetersDistance(angle, distance);
 	pos->z += GUtils::GetXByAngleMetersDistance(angle, distance);
@@ -1069,7 +1067,7 @@ void Villager::RemoveFromDance(bool32_t is_worshipping)
 bool32_t Villager::IsRandomlyLazy()
 {
 	const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
-	if (GRand::GameRand(100, __FILE__, VILLAGER_LINE(1382)) <= villagerInfo->PercentLazy * 100.0f)
+	if (GAME_RAND(1382, 100) <= villagerInfo->PercentLazy * 100.0f)
 	{
 		return true;
 	}
@@ -1502,7 +1500,7 @@ int Villager::SetTopState(uint8_t state)
 		{
 			life *= 0.5f;
 		}
-		if (GRand::GameFloatRand(1.0f, __FILE__, VILLAGER_LINE(1899)) - POWER(1.0f - life, 3) * 0.5f <
+		if (GAME_FLOAT_RAND(1899, 1.0f) - POWER(1.0f - life, 3) * 0.5f <
 		    ((const GVillagerInfo*)info)->PauseForASecondChance)
 		{
 			if (SetupPauseForASecond((VILLAGER_STATES)state))
@@ -1846,11 +1844,11 @@ void Villager::SetScaleForAge(uint32_t age)
 	if (age < villagerInfo->TeenAge)
 	{
 		float scaleDiff = villagerInfo->ageToScale.values[age + 1] - GetScale();
-		SetScale(GRand::GameFloatRand(scaleDiff * 0.75f, __FILE__, VILLAGER_LINE(2351)) + GetScale());
+		SetScale(GAME_FLOAT_RAND(2351, scaleDiff * 0.75f) + GetScale());
 	}
 	else
 	{
-		SetScale(max(1.0f + (0.05f - GRand::GameFloatRand(0.1f, __FILE__, VILLAGER_LINE(2355))), GetScale()));
+		SetScale(max(1.0f + (0.05f - GAME_FLOAT_RAND(2355, 0.1f)), GetScale()));
 	}
 }
 
@@ -1954,7 +1952,7 @@ uint32_t Villager::ApplyThisToObject(GInterfaceStatus* status, Object* object, G
 
 		if (status == GGame::g_game->MyInterfaceStatus())
 		{
-			ValueSpinner* spinner = new (__FILE__, VILLAGER_LINE(2470)) ValueSpinner;
+			ValueSpinner* spinner = NEW(2470) ValueSpinner;
 			char          text[16];
 			sprintf(text, "%3.0f", value);
 			const MapCoords& spinnerPos = GGame::g_game->MyInterface()->interface_collide.pos;
@@ -2151,8 +2149,8 @@ MapCoords Villager::FindPosOutsideAbode(Abode* abode)
 		abode = GetAbode();
 	}
 	float angle = GUtils::Get3DAngleFromXZ(abode->Pos, abode->GetArrivePos());
-	float distance = GRand::GameFloatRand(1.5f, __FILE__, VILLAGER_LINE(2710)) + 1.5f;
-	angle += 0.39269909f - GRand::GameFloatRand(0.7853982f, __FILE__, VILLAGER_LINE(2711));
+	float distance = GAME_FLOAT_RAND(2710, 1.5f) + 1.5f;
+	angle += 0.39269909f - GAME_FLOAT_RAND(2711, 0.7853982f);
 	MapCoords pos = abode->GetArrivePos() + GUtils::GetPosFromAngle(angle, distance);
 	return pos;
 }
@@ -2269,20 +2267,17 @@ void Villager::SetStateSpeed(uint8_t state)
 	float speed;
 	if (GetLife() <= GetInfo()->LifeWhenCrawlsWounded)
 	{
-		speed = (GRand::GameFloatRand(0.2f, __FILE__, VILLAGER_LINE(2840)) + 0.4f) *
-		        (&GetInfo()->speed)[SPEED_ID_WANDER] * speedScale;
+		speed = (GAME_FLOAT_RAND(2840, 0.2f) + 0.4f) * (&GetInfo()->speed)[SPEED_ID_WANDER] * speedScale;
 	}
 	else if (GetLife() <= GetInfo()->LifeWhenWalksWounded)
 	{
-		speed = (GRand::GameFloatRand(0.25f, __FILE__, VILLAGER_LINE(2844)) + 0.5f) *
-		        (&GetInfo()->speed)[SPEED_ID_DEFAULT] * speedScale;
+		speed = (GAME_FLOAT_RAND(2844, 0.25f) + 0.5f) * (&GetInfo()->speed)[SPEED_ID_DEFAULT] * speedScale;
 	}
 	else
 	{
 		if (town != NULL && town->IsInStateOfEmergency())
 		{
-			speedScale = (GRand::GameFloatRand(0.5f, __FILE__, VILLAGER_LINE(2848)) + 0.75f) *
-			             (&GetInfo()->speed)[SPEED_ID_FLEEING] * speedScale;
+			speedScale = (GAME_FLOAT_RAND(2848, 0.5f) + 0.75f) * (&GetInfo()->speed)[SPEED_ID_FLEEING] * speedScale;
 		}
 		else
 		{
@@ -2335,10 +2330,10 @@ uint32_t Villager::SetupNothingToDo()
 {
 	Town*  town = GetTown();
 	Abode* abode = GetAbode();
-	switch (GRand::GameRand(9, __FILE__, VILLAGER_LINE(2886)))
+	switch (GAME_RAND(2886, 9))
 	{
 	case 0:
-		if ((abode != NULL && abode->IsFunctional()) || GRand::GameRand(100, __FILE__, VILLAGER_LINE(2891)) < 10u)
+		if ((abode != NULL && abode->IsFunctional()) || GAME_RAND(2891, 100) < 10u)
 		{
 			SetTopState(VILLAGER_STATE_GO_HOME);
 			return true;
@@ -2378,11 +2373,9 @@ uint32_t Villager::GetChillOutPos(MapCoords& coords)
 	{
 		MapCoords congregationPos = town->GetCongregationPos();
 		float     radius = ((const GTownInfo*)town->info.Get())->ChillOutRadius / 10.0f;
-		float     angle = (GRand::GameFloatRand(0.7853982f, __FILE__, VILLAGER_LINE(2940)) - 0.39269909f) +
-		                  GUtils::Get3DAngleFromXZ(congregationPos, Pos);
-		coords =
-			congregationPos +
-			GUtils::GetPosFromAngle(angle, GRand::GameFloatRand(radius * 9.0f, __FILE__, VILLAGER_LINE(2941)) + radius);
+		float     angle =
+			(GAME_FLOAT_RAND(2940, 0.7853982f) - 0.39269909f) + GUtils::Get3DAngleFromXZ(congregationPos, Pos);
+		coords = congregationPos + GUtils::GetPosFromAngle(angle, GAME_FLOAT_RAND(2941, radius * 9.0f) + radius);
 		return 1;
 	}
 	return 0;
@@ -2530,7 +2523,7 @@ bool32_t Villager::DiscipleNothingToDo()
 {
 	if (GetTown()->DesireDirty)
 	{
-		TurnsUntilNextStateChange = GRand::GameRand(10, __FILE__, VILLAGER_LINE(3125));
+		TurnsUntilNextStateChange = GAME_RAND(3125, 10);
 	}
 	if (--TurnsUntilNextStateChange <= 0)
 	{
@@ -2567,9 +2560,8 @@ bool32_t Villager::FindDisciplePrayerPos(MapCoords* pos)
 		TownCentre* centre = town->GetTownCentre();
 		if (centre != NULL)
 		{
-			float angle = (GRand::GameFloatRand(1.5707964f, __FILE__, VILLAGER_LINE(3163)) - 0.7853982f) +
-			              GUtils::Get3DAngleFromXZ(centre->Pos, Pos);
-			float distance = GRand::GameFloatRand(4.0f, __FILE__, VILLAGER_LINE(3164)) + centre->Get2DRadius();
+			float angle = (GAME_FLOAT_RAND(3163, 1.5707964f) - 0.7853982f) + GUtils::Get3DAngleFromXZ(centre->Pos, Pos);
+			float distance = GAME_FLOAT_RAND(3164, 4.0f) + centre->Get2DRadius();
 			*pos = centre->Pos + GUtils::GetPosFromAngle(angle, distance);
 			return true;
 		}
@@ -2677,8 +2669,7 @@ bool32_t Villager::LoadStateFunction(GameOSFile& file)
 	{
 		return true;
 	}
-	TurnsUntilNextStateChange =
-		GRand::GameRand(VILLAGER_MAX_LOAD_STATE_CHANGE_DELAY, __FILE__, VILLAGER_LINE(3293)) + 1;
+	TurnsUntilNextStateChange = GAME_RAND(3293, VILLAGER_MAX_LOAD_STATE_CHANGE_DELAY) + 1;
 	return false;
 }
 

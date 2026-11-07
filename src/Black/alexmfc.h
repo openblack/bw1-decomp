@@ -565,11 +565,11 @@ struct SetupSlider : public SetupControl
 	float GetValue(float min_value, float max_value) { return value * (max_value - min_value) + min_value; }
 };
 
-typedef uint32_t(__stdcall* SetupList__ListBoxDraw_t)(SetupList* list, int index, int x_min, int y_min, int x_max,
-                                                      int y_max, int clip_min, int clip_max);
-
 struct SetupList : public SetupControl
 {
+	typedef uint32_t(__stdcall* ListBoxDrawFunc)(SetupList* list, int index, int x_min, int y_min, int x_max, int y_max,
+	                                             int clip_min, int clip_max);
+
 	bool ListBoxDrawAfterText;
 	int  ScrollbackWidth; /* 0x240 */
 	bool CentredText;     /* 0x244 */
@@ -578,26 +578,26 @@ struct SetupList : public SetupControl
 	int  NumItems; /* 0x250 */
 	int  Capacity;
 	char16_t (*item_labels)[0x100];
-	int*                      ItemHeights;
-	void**                    TagData;
-	uint32_t*                 ItemData;
-	LH3DColor*                color;
-	SetupList__ListBoxDraw_t* ListBoxDraw;
-	int                       ScrollDistance; /* 0x270 */
-	bool                      ShowScrollbar;
-	int                       MaxScrollPosition;
-	int                       ScrollPosition;
-	int                       DragStartScroll;
-	bool                      IgnoreKeys;
-	bool                      DraggingScrollbar;
-	LHCoord                   DragStart;
-	bool                      UseColorBackground; /* 0x290 */
-	bool                      DrawHighlightBox;
-	uint8_t                   field_0x292;
-	uint8_t                   field_0x293;
-	unsigned long             BoxOutlineColor;
-	unsigned long             SelectionColor;
-	uint8_t                   field_0x29c;
+	int*             ItemHeights;
+	void**           TagData;
+	uint32_t*        ItemData;
+	LH3DColor*       color;
+	ListBoxDrawFunc* ListBoxDraw;
+	int              ScrollDistance; /* 0x270 */
+	bool             ShowScrollbar;
+	int              MaxScrollPosition;
+	int              ScrollPosition;
+	int              DragStartScroll;
+	bool             IgnoreKeys;
+	bool             DraggingScrollbar;
+	LHCoord          DragStart;
+	bool             UseColorBackground; /* 0x290 */
+	bool             DrawHighlightBox;
+	uint8_t          field_0x292;
+	uint8_t          field_0x293;
+	unsigned long    BoxOutlineColor;
+	unsigned long    SelectionColor;
+	uint8_t          field_0x29c;
 	// Not zeroed by the constructor, so an LHRegion like SetupControl::rect rather than a SetupRect.
 	LHRegion SelectionRect; /* 0x2a0 */
 
@@ -659,12 +659,9 @@ struct SetupList : public SetupControl
 	// BW1W120 inlined BW1M119 inlined
 	unsigned long GetCol(int index) { return index >= 0 && index < NumItems ? color[index].GetColor() : 0; }
 	// BW1W120 inlined BW1M119 inlined
-	SetupList__ListBoxDraw_t GetListBoxDraw(int index)
-	{
-		return index >= 0 && index < NumItems ? ListBoxDraw[index] : NULL;
-	}
+	ListBoxDrawFunc GetListBoxDraw(int index) { return index >= 0 && index < NumItems ? ListBoxDraw[index] : NULL; }
 	// BW1W120 inlined BW1M119 inlined
-	void SetListBoxDraw(int index, SetupList__ListBoxDraw_t draw)
+	void SetListBoxDraw(int index, ListBoxDrawFunc draw)
 	{
 		if (index >= 0 && index < NumItems)
 			ListBoxDraw[index] = draw;

@@ -293,7 +293,7 @@ CreatureActionKnownAbout* CreatureActionsKnownAbout::AddActionLearnt(Creature*  
 		}
 	}
 
-	CreatureActionKnownAbout* learnt = new (__FILE__, 299) CreatureActionKnownAbout;
+	CreatureActionKnownAbout* learnt = NEW(299) CreatureActionKnownAbout;
 	learnt->Action = action;
 	ActionsKnown[type].AddToEnd(learnt);
 

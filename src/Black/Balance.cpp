@@ -130,7 +130,7 @@ void LoadMagic(T* dummy, LoaderAnon* loader, char* info_str, unsigned long count
 	{
 		for (unsigned long i = 0; i < count; i++)
 		{
-			T* info = new (__FILE__, 159) T;
+			T* info = NEW(159) T;
 			info->LoadBinary(file);
 			infos[start + i] = info;
 		}
@@ -139,7 +139,7 @@ void LoadMagic(T* dummy, LoaderAnon* loader, char* info_str, unsigned long count
 	{
 		for (unsigned long i = 0; i < count; i++)
 		{
-			T* info = new (__FILE__, 171) T;
+			T* info = NEW(171) T;
 			loader->Cursor = loader->TextBuffer;
 			unsigned long size = loader->LoadData(info_str, i, (unsigned long*)loader->Cursor);
 			if (size == 0)
@@ -342,7 +342,7 @@ void load_variables(void)
 		os_file.DirFindEnd(&dir);
 
 	char*       load_id = getenv("LH_LOADID");
-	LoaderAnon* loader = new (__FILE__, BALANCE_LOADER_LINE) LoaderAnon((char*)"DETAIL_", (char*)"ENUM_", load_id);
+	LoaderAnon* loader = NEW(BALANCE_LOADER_LINE) LoaderAnon((char*)"DETAIL_", (char*)"ENUM_", load_id);
 
 	if (use_binary)
 	{

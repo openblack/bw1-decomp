@@ -15,4 +15,11 @@ struct GRand
 	static float LocalFloatRand(float scale);
 };
 
+#ifndef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) (line)
+#endif
+
+#define GAME_RAND(line, max)         GRand::GameRand(max, __FILE__, ORIGINAL_LINE(line))
+#define GAME_FLOAT_RAND(line, scale) GRand::GameFloatRand(scale, __FILE__, ORIGINAL_LINE(line))
+
 #endif /* BW1_DECOMP_RAND_INCLUDED_H */
