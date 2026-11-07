@@ -27,7 +27,7 @@ public:
 	// TODO(#377): The original declared this class in SpellFlock.h.
 	// Out of line: LoadBinary at 0042f2b0, Load at 0042f240.
 	INFO_DATA_BLOCK(field_0x58, field_0x58)
-	INFO_DERIVED_LOADERS(GMagicInfo, "SpellFlock.h", 14)
+	INFO_DERIVED_LOADERS(14, "SpellFlock.h", GMagicInfo)
 };
 static_assert(sizeof(GMagicFlockFlyingInfo) == 0x64, "Data type is of wrong size");
 

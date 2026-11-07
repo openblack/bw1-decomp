@@ -153,7 +153,7 @@ public:
 	// TODO(#377): The original declared this class in Villager.h.
 	// Out of line: LoadBinary at 0042e2a0, Load at 0042e190.
 	INFO_DATA_BLOCK(TribeType, MissionaryImpressiveValue)
-	INFO_DERIVED_LOADERS(GLivingInfo, "Villager.h", 124)
+	INFO_DERIVED_LOADERS(124, "Villager.h", GLivingInfo)
 };
 
 #endif /* BW1_DECOMP_VILLAGER_INFO_INCLUDED_H */

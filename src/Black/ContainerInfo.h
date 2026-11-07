@@ -46,7 +46,7 @@ public:
 
 	// TODO(#377): The original declared this class in Container.h.
 	INFO_DATA_BLOCK(ContainerType, ContainerType)
-	INFO_ROOT_LOADERS("Container.h", 27)
+	INFO_ROOT_LOADERS(27, "Container.h")
 };
 
 #endif /* BW1_DECOMP_CONTAINER_INFO_INCLUDED_H */

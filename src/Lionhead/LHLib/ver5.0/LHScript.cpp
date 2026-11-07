@@ -514,7 +514,7 @@ template <class T> LH_RETURN LHScriptX<T>::ScanLine(T* line)
 			if (variable->value)
 				delete (T*)variable->value;
 			unsigned int length = LHStringOps<T>::strlen(word);
-			T*           value = (T*)operator new(sizeof(T) * (length + 1), __FILE__, 737);
+			T*           value = NEW(737) T[length + 1];
 			variable->value = (long)value;
 			if (!value)
 				return LH_ERROR;
@@ -798,7 +798,7 @@ template <class T> LH_RETURN LHScriptX<T>::CreateVariable(long command, LHScript
 	if (variable)
 	{
 		memset(variable, 0, sizeof(LHScriptVariable<T>));
-		T* name = (T*)operator new(sizeof(T) * (LHStringOps<T>::strlen(pram->text[0]) + 1), __FILE__, 1035);
+		T* name = NEW(1035) T[LHStringOps<T>::strlen(pram->text[0]) + 1];
 		variable->name = name;
 		if (name)
 		{

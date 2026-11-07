@@ -31,7 +31,7 @@ public:
 	static GSpotVisualInfo Infos[SPOT_VISUAL_TYPE_LAST];
 
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("SpotVisualInfo.h", 7)
+	INFO_ROOT_LOADERS(7, "SpotVisualInfo.h")
 };
 
 #endif /* BW1_DECOMP_SPOT_VISUAL_INFO_INCLUDED_H */

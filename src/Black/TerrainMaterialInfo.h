@@ -42,7 +42,7 @@ public:
 
 	// TODO(#377): The original declared this class in Terrain.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x54)
-	INFO_ROOT_LOADERS("Terrain.h", 15)
+	INFO_ROOT_LOADERS(15, "Terrain.h")
 };
 
 #endif /* BW1_DECOMP_TERRAIN_MATERIAL_INFO_INCLUDED_H */

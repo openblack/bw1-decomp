@@ -43,7 +43,7 @@ public:
 
 	// TODO(#377): The original declared this class in MobileStatic.h.
 	INFO_DATA_BLOCK(MeshId, BaseOnlyType)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "MobileStatic.h", 21)
+	INFO_DERIVED_LOADERS(21, "MobileStatic.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_MOBILE_STATIC_INFO_INCLUDED_H */

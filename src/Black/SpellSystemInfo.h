@@ -37,7 +37,7 @@ public:
 
 	// TODO(#377): The original declared this class in SpellSeedInfo.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x2c)
-	INFO_ROOT_LOADERS("SpellSeedInfo.h", 21)
+	INFO_ROOT_LOADERS(21, "SpellSeedInfo.h")
 };
 
 #endif /* BW1_DECOMP_SPELL_SYSTEM_INFO_INCLUDED_H */

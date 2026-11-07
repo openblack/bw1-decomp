@@ -50,7 +50,7 @@ public:
 	// TODO(#377): The original declared this class in SpecialVillager.h.
 	// Out of line: LoadBinary at 0042f9f0, Load at 0042f9b0.
 	INFO_DATA_BLOCK(name, field_0x58)
-	INFO_ROOT_LOADERS("SpecialVillager.h", 20)
+	INFO_ROOT_LOADERS(20, "SpecialVillager.h")
 };
 
 #endif /* BW1_DECOMP_SPECIAL_VILLAGER_INFO_INCLUDED_H */

@@ -42,7 +42,7 @@ public:
 	// TODO(#377): The original declared this class in SpellIcon.h.
 	// Out of line: LoadBinary at 0042f4e0, Load at 0042f440.
 	INFO_DATA_BLOCK(field_0x120, GatheringChantAddPerGameTurn)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "SpellIcon.h", 26)
+	INFO_DERIVED_LOADERS(26, "SpellIcon.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_SPELL_ICON_INFO_INCLUDED_H */

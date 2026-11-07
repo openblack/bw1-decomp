@@ -40,7 +40,7 @@ public:
 
 	// TODO(#377): The original declared this class in Dance.h.
 	INFO_DATA_BLOCK(Duration, Impressiveness)
-	INFO_ROOT_LOADERS("Dance.h", 39)
+	INFO_ROOT_LOADERS(39, "Dance.h")
 };
 
 #endif /* BW1_DECOMP_DANCE_INFO_INCLUDED_H */

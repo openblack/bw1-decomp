@@ -37,7 +37,7 @@ public:
 
 	// TODO(#377): The original declared this class in HelpSystemToolTips.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("HelpSystemToolTips.h", 31)
+	INFO_ROOT_LOADERS(31, "HelpSystemToolTips.h")
 };
 
 #endif /* BW1_DECOMP_TOOL_TIPS_INFO_INCLUDED_H */

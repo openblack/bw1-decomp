@@ -22,7 +22,7 @@ public:
 	// Override methods
 
 	INFO_DATA_BLOCK(field_0x100, field_0x100)
-	INFO_DERIVED_LOADERS(GObjectInfo, "Balance.cpp", 85)
+	INFO_DERIVED_LOADERS(85, "Balance.cpp", GObjectInfo)
 };
 
 #endif /* BW1_DECOMP_LEASH_SELECTOR_INFO_INCLUDED_H */

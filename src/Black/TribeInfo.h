@@ -54,7 +54,7 @@ public:
 
 	// TODO(#377): The original declared this class in Tribe.h.
 	INFO_DATA_BLOCK(type, field_0x18)
-	INFO_ROOT_LOADERS("Tribe.h", 14)
+	INFO_ROOT_LOADERS(14, "Tribe.h")
 };
 
 #endif /* BW1_DECOMP_TRIBE_INFO_INCLUDED_H */

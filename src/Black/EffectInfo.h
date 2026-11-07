@@ -50,7 +50,7 @@ public:
 
 	// TODO(#377): The original declared this class in Effect.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x30)
-	INFO_ROOT_LOADERS("Effect.h", 27)
+	INFO_ROOT_LOADERS(27, "Effect.h")
 };
 
 #endif /* BW1_DECOMP_EFFECT_INFO_INCLUDED_H */

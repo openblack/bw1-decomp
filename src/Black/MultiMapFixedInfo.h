@@ -38,7 +38,7 @@ public:
 	// TODO(#377): The original declared this class in Fixed.h.
 	// Out of line: LoadBinary at 004303d0, Load at 00430360.
 	INFO_DATA_BLOCK(EditorMesh, influence)
-	INFO_DERIVED_LOADERS(GObjectInfo, "Fixed.h", 92)
+	INFO_DERIVED_LOADERS(92, "Fixed.h", GObjectInfo)
 };
 
 #endif /* BW1_DECOMP_MULTI_MAP_FIXED_INFO_INCLUDED_H */

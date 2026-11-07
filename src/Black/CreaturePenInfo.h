@@ -37,7 +37,7 @@ public:
 	// TODO(#377): The original declared this class in CreaturePen.h.
 	// Out of line: LoadBinary at 0042eff0, Load at 0042ef40.
 	INFO_DATA_BLOCK(field_0x134, field_0x134)
-	INFO_DERIVED_LOADERS(GCitadelPartInfo, "CreaturePen.h", 17)
+	INFO_DERIVED_LOADERS(17, "CreaturePen.h", GCitadelPartInfo)
 };
 
 #endif /* BW1_DECOMP_CREATURE_PEN_INFO_INCLUDED_H */

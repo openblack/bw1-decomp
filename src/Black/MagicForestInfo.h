@@ -32,7 +32,7 @@ public:
 
 	// Out of line: LoadBinary at 0042d860, Load at 0042d800.
 	INFO_DATA_BLOCK(field_0x58, field_0x58)
-	INFO_DERIVED_LOADERS(GMagicInfo, "MagicForestInfo.h", 11)
+	INFO_DERIVED_LOADERS(11, "MagicForestInfo.h", GMagicInfo)
 };
 static_assert(sizeof(GMagicForestInfo) == 0x6c, "Data type is of wrong size");
 

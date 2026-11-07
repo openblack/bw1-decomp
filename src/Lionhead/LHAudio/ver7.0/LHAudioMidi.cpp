@@ -15,7 +15,7 @@
 #include "LHAudioLog.h"
 #include "LHAudioMidi.h"
 
-#define LH_LOG_DX_ERROR(result, line)                                                                                  \
+#define LH_LOG_DX_ERROR(line, result)                                                                                  \
 	{                                                                                                                  \
 		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, line, LH_DX_Errors, result))                           \
 		{                                                                                                              \
@@ -503,7 +503,7 @@ void LH_AudioSystem::LHMidiReadLoopPoints(char* filename, LH_MidiInfo* info)
 	}
 	if (size == 0)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MIDI_OPEN_NOT_STANDARD_MIDI_FILE, 463);
+		LH_LOG_ERROR_CODE(463, LH_AUDIO_ERROR_MIDI_OPEN_NOT_STANDARD_MIDI_FILE);
 		free(buffer);
 		return;
 	}
@@ -603,7 +603,7 @@ bool32_t LH_AudioSystem::LHMidiInitSoftwareSynth()
 			result = MidiInfos[i].Performance->Init(&MidiDirectMusic, directSound, NULL);
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 637);
+				LH_LOG_DX_ERROR(637, result);
 				return false;
 			}
 			MidiInfos[i].Performance->SetGlobalParam(GUID_PerfAutoDownload, &autoDownload, sizeof(autoDownload));
@@ -616,7 +616,7 @@ bool32_t LH_AudioSystem::LHMidiInitSoftwareSynth()
 			result = MidiInfos[i].Performance->Init(&MidiDirectMusic, NULL, NULL);
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 650);
+				LH_LOG_DX_ERROR(650, result);
 				return false;
 			}
 			MidiInfos[i].Performance->SetGlobalParam(GUID_PerfAutoDownload, &autoDownload, sizeof(autoDownload));
@@ -693,20 +693,20 @@ bool32_t LH_AudioSystem::LHMidiInitSoftwareSynth()
 			result = directSound->CreateSoundBuffer(&desc, &buffer, NULL);
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 762);
+				LH_LOG_DX_ERROR(762, result);
 				return false;
 			}
 			result = port->SetDirectSound(directSound, buffer);
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 768);
+				LH_LOG_DX_ERROR(768, result);
 				return false;
 			}
 			MidiInfos[i].Buffer = buffer;
 			result = buffer->QueryInterface(IID_IDirectSound3DBuffer, (void**)&MidiInfos[i].Buffer3D);
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 775);
+				LH_LOG_DX_ERROR(775, result);
 				return false;
 			}
 		}
@@ -714,13 +714,13 @@ bool32_t LH_AudioSystem::LHMidiInitSoftwareSynth()
 		result = MidiInfos[i].Performance->AddPort(port);
 		if (result != S_OK)
 		{
-			LH_LOG_DX_ERROR(result, 784);
+			LH_LOG_DX_ERROR(784, result);
 			return false;
 		}
 		result = MidiInfos[i].Performance->AssignPChannelBlock(LH_MIDI_PCHANNEL_BLOCK, port, LH_MIDI_PCHANNEL_GROUP);
 		if (result != S_OK)
 		{
-			LH_LOG_DX_ERROR(result, 795);
+			LH_LOG_DX_ERROR(795, result);
 			port->Release();
 			return false;
 		}
@@ -730,7 +730,7 @@ bool32_t LH_AudioSystem::LHMidiInitSoftwareSynth()
 	result = MidiDirectMusic->Activate(true);
 	if (result != S_OK)
 	{
-		LH_LOG_DX_ERROR(result, 806);
+		LH_LOG_DX_ERROR(806, result);
 		port->Release();
 		return false;
 	}
@@ -744,12 +744,12 @@ bool32_t LH_AudioSystem::LHMidiOpen()
 
 	if (MidiInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MIDI_OPEN_ALREADY_INSTALLED, 824);
+		LH_LOG_ERROR_CODE(824, LH_AUDIO_ERROR_MIDI_OPEN_ALREADY_INSTALLED);
 		return false;
 	}
 	if (FAILED(CoInitialize(NULL)))
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_CO_INITIALISE, 832);
+		LH_LOG_ERROR_CODE(832, LH_AUDIO_ERROR_CO_INITIALISE);
 		return false;
 	}
 
@@ -758,14 +758,14 @@ bool32_t LH_AudioSystem::LHMidiOpen()
 		if (FAILED(CoCreateInstance(CLSID_DirectMusic, NULL, CLSCTX_INPROC_SERVER, IID_IDirectMusic,
 		                            (void**)&MidiDirectMusic)))
 		{
-			LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_CO_CREATE_INSTANCE, 844, "DM Object");
+			LH_LOG_ERROR_CODE1(844, LH_AUDIO_ERROR_CO_CREATE_INSTANCE, "DM Object");
 			CoUninitialize();
 			return false;
 		}
 		QSWaveMixGetDirectSound(QMixer, (LPVOID*)&directSound);
 		if (FAILED(MidiDirectMusic->SetDirectSound(directSound, NULL)))
 		{
-			LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MIDI_OPEN_SET_DIRECT_SOUND, 853);
+			LH_LOG_ERROR_CODE(853, LH_AUDIO_ERROR_MIDI_OPEN_SET_DIRECT_SOUND);
 			CoUninitialize();
 			return false;
 		}
@@ -774,7 +774,7 @@ bool32_t LH_AudioSystem::LHMidiOpen()
 	if (FAILED(CoCreateInstance(CLSID_DirectMusicLoader, NULL, CLSCTX_INPROC, IID_IDirectMusicLoader,
 	                            (void**)&MidiLoader)))
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_CO_CREATE_INSTANCE, 865, "DM Loader");
+		LH_LOG_ERROR_CODE1(865, LH_AUDIO_ERROR_CO_CREATE_INSTANCE, "DM Loader");
 		CoUninitialize();
 		return false;
 	}
@@ -790,7 +790,7 @@ bool32_t LH_AudioSystem::LHMidiOpen()
 		if (FAILED(CoCreateInstance(CLSID_DirectMusicPerformance, NULL, CLSCTX_INPROC, IID_IDirectMusicPerformance,
 		                            (void**)&MidiInfos[i].Performance)))
 		{
-			LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_CO_CREATE_INSTANCE, 885, "DM Performance");
+			LH_LOG_ERROR_CODE1(885, LH_AUDIO_ERROR_CO_CREATE_INSTANCE, "DM Performance");
 			CoUninitialize();
 			return false;
 		}
@@ -801,7 +801,7 @@ bool32_t LH_AudioSystem::LHMidiOpen()
 		{
 			if (FAILED(graph->InsertTool(tool, NULL, 0, 0)))
 			{
-				LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MIDI_OPEN_INSERT_GRAPH_TOOL, 908);
+				LH_LOG_ERROR_CODE(908, LH_AUDIO_ERROR_MIDI_OPEN_INSERT_GRAPH_TOOL);
 				CoUninitialize();
 				return false;
 			}
@@ -810,7 +810,7 @@ bool32_t LH_AudioSystem::LHMidiOpen()
 		}
 		else
 		{
-			LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_CO_CREATE_INSTANCE, 916, "DM Graph");
+			LH_LOG_ERROR_CODE1(916, LH_AUDIO_ERROR_CO_CREATE_INSTANCE, "DM Graph");
 			CoUninitialize();
 			return false;
 		}
@@ -819,7 +819,7 @@ bool32_t LH_AudioSystem::LHMidiOpen()
 
 	if (!LHMidiInitSoftwareSynth())
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MIDI_OPEN_INIT_SOFTWARE_SYNTH, 928);
+		LH_LOG_ERROR_CODE(928, LH_AUDIO_ERROR_MIDI_OPEN_INIT_SOFTWARE_SYNTH);
 		CoUninitialize();
 		return false;
 	}
@@ -891,13 +891,13 @@ LH_MidiInfo* LH_AudioSystem::LHMidiPlay(char* filename, LH_MidiPlayOptions* opti
 
 	if (!MidiInstalled || !MidiActive || !SystemInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MIDI_NOT_INSTALLED, 1017);
+		LH_LOG_ERROR_CODE(1017, LH_AUDIO_ERROR_MIDI_NOT_INSTALLED);
 		return NULL;
 	}
 
 	if (GetFileAttributes(filename) == INVALID_FILE_ATTRIBUTES)
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_FILE_DOES_NOT_EXIST, 1023, filename);
+		LH_LOG_ERROR_CODE1(1023, LH_AUDIO_ERROR_FILE_DOES_NOT_EXIST, filename);
 	}
 
 	char* name = LHLogger::GetFileName(filename);
@@ -918,7 +918,7 @@ LH_MidiInfo* LH_AudioSystem::LHMidiPlay(char* filename, LH_MidiPlayOptions* opti
 		{
 			if (FAILED(MidiLoader->GetObject(&desc, IID_IDirectMusicSegment, (void**)&MidiInfos[i].Segment)))
 			{
-				LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MIDI_PLAY_GET_SEGMENT, 1057);
+				LH_LOG_ERROR_CODE(1057, LH_AUDIO_ERROR_MIDI_PLAY_GET_SEGMENT);
 				return NULL;
 			}
 
@@ -959,7 +959,7 @@ LH_MidiInfo* LH_AudioSystem::LHMidiPlay(char* filename, LH_MidiPlayOptions* opti
 
 			if (FAILED(MidiInfos[i].Performance->PlaySegment(MidiInfos[i].Segment, DMUS_SEGF_BEAT, 0, NULL)))
 			{
-				LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MIDI_PLAY_PLAY, 1148);
+				LH_LOG_ERROR_CODE(1148, LH_AUDIO_ERROR_MIDI_PLAY_PLAY);
 				MidiInfos[i].Segment = NULL;
 				return NULL;
 			}
@@ -967,7 +967,7 @@ LH_MidiInfo* LH_AudioSystem::LHMidiPlay(char* filename, LH_MidiPlayOptions* opti
 		}
 	}
 
-	LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_MIDI_PLAY_NO_FREE_SLOTS, 1155);
+	LH_LOG_ERROR_CODE(1155, LH_AUDIO_ERROR_MIDI_PLAY_NO_FREE_SLOTS);
 	return NULL;
 }
 
@@ -986,7 +986,7 @@ void LH_AudioSystem::LHMidiStop(LH_MidiInfo* info)
 			HRESULT result = MidiInfos[i].Performance->Stop(MidiInfos[i].Segment, NULL, 0, 0);
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 1176);
+				LH_LOG_DX_ERROR(1176, result);
 			}
 			MidiInfos[i].Segment->Release();
 			MidiInfos[i].Segment = NULL;
@@ -996,7 +996,7 @@ void LH_AudioSystem::LHMidiStop(LH_MidiInfo* info)
 			result = MidiInfos[i].Performance->SetGlobalParam(GUID_PerfMasterTempo, &tempo, sizeof(tempo));
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 1193);
+				LH_LOG_DX_ERROR(1193, result);
 			}
 		}
 	}
@@ -1017,12 +1017,12 @@ void LH_AudioSystem::LHMidiStopAll()
 			HRESULT result = MidiInfos[i].Performance->Stop(MidiInfos[i].Segment, NULL, 0, 0);
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 1215);
+				LH_LOG_DX_ERROR(1215, result);
 			}
 			result = MidiInfos[i].Segment->SetParam(GUID_Unload, LH_MIDI_ALL_GROUPS, 0, 0, MidiInfos[i].Performance);
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 1220);
+				LH_LOG_DX_ERROR(1220, result);
 			}
 			MidiInfos[i].Segment->Release();
 			MidiInfos[i].Segment = NULL;
@@ -1032,7 +1032,7 @@ void LH_AudioSystem::LHMidiStopAll()
 			result = MidiInfos[i].Performance->SetGlobalParam(GUID_PerfMasterTempo, &tempo, sizeof(tempo));
 			if (result != S_OK)
 			{
-				LH_LOG_DX_ERROR(result, 1230);
+				LH_LOG_DX_ERROR(1230, result);
 			}
 		}
 	}
@@ -1066,14 +1066,14 @@ void LH_AudioSystem::LHMidiSetSequenceVolume(LH_MidiInfo* info, long volume)
 				HRESULT result = MidiInfos[i].Performance->AllocPMsg(sizeof(DMUS_MIDI_PMSG), (DMUS_PMSG**)&message);
 				if (result != S_OK)
 				{
-					LH_LOG_DX_ERROR(result, 1268);
+					LH_LOG_DX_ERROR(1268, result);
 					return;
 				}
 				message->dwSize = sizeof(DMUS_MIDI_PMSG);
 				result = MidiInfos[i].Performance->GetTime(NULL, &message->mtTime);
 				if (result != S_OK)
 				{
-					LH_LOG_DX_ERROR(result, 1276);
+					LH_LOG_DX_ERROR(1276, result);
 					return;
 				}
 				message->rtTime = 0;
@@ -1092,7 +1092,7 @@ void LH_AudioSystem::LHMidiSetSequenceVolume(LH_MidiInfo* info, long volume)
 				result = MidiInfos[i].Performance->QueryInterface(IID_IDirectMusicGraph, (void**)&graph);
 				if (result != S_OK)
 				{
-					LH_LOG_DX_ERROR(result, 1300);
+					LH_LOG_DX_ERROR(1300, result);
 					return;
 				}
 				graph->StampPMsg((DMUS_PMSG*)message);
@@ -1130,14 +1130,14 @@ void LH_AudioSystem::LHMidiSetSequencePan(LH_MidiInfo* info, long pan)
 				HRESULT result = MidiInfos[i].Performance->AllocPMsg(sizeof(DMUS_MIDI_PMSG), (DMUS_PMSG**)&message);
 				if (result != S_OK)
 				{
-					LH_LOG_DX_ERROR(result, 1337);
+					LH_LOG_DX_ERROR(1337, result);
 					return;
 				}
 				message->dwSize = sizeof(DMUS_MIDI_PMSG);
 				result = MidiInfos[i].Performance->GetTime(NULL, &message->mtTime);
 				if (result != S_OK)
 				{
-					LH_LOG_DX_ERROR(result, 1345);
+					LH_LOG_DX_ERROR(1345, result);
 					return;
 				}
 				message->rtTime = 0;
@@ -1156,7 +1156,7 @@ void LH_AudioSystem::LHMidiSetSequencePan(LH_MidiInfo* info, long pan)
 				result = MidiInfos[i].Performance->QueryInterface(IID_IDirectMusicGraph, (void**)&graph);
 				if (result != S_OK)
 				{
-					LH_LOG_DX_ERROR(result, 1369);
+					LH_LOG_DX_ERROR(1369, result);
 					return;
 				}
 				graph->StampPMsg((DMUS_PMSG*)message);
@@ -1190,7 +1190,7 @@ void LH_AudioSystem::LHMidiSetSequenceTempo(LH_MidiInfo* info, long tempo)
 			HRESULT result = MidiInfos[i].Performance->SetGlobalParam(GUID_PerfMasterTempo, &scale, sizeof(scale));
 			if (FAILED(result))
 			{
-				LH_LOG_DX_ERROR(result, 1405);
+				LH_LOG_DX_ERROR(1405, result);
 				return;
 			}
 		}

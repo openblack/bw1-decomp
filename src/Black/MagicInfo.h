@@ -89,7 +89,7 @@ public:
 
 	// Out of line: LoadBinary at 0042d6b0, Load at 0042d670.
 	INFO_DATA_BLOCK(MagicType, field_0x34)
-	INFO_ROOT_LOADERS("MagicInfo.h", 37)
+	INFO_ROOT_LOADERS(37, "MagicInfo.h")
 };
 static_assert(sizeof(GMagicInfo) == 0x58, "Data type is of wrong size");
 

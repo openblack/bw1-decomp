@@ -46,14 +46,14 @@
 #define LH_LOG_DIALOG_STARTING      (-2)
 #define LH_LOG_DIALOG_CLOSE_TIMEOUT 300
 
-#define LH_REG_WRITE_STRING(key, name, line)                                                                           \
+#define LH_REG_WRITE_STRING(line, key, name)                                                                           \
 	if (RegSetValueExA(key, #name, 0, REG_SZ, (BYTE*)name, strlen(name)) != ERROR_SUCCESS)                             \
 	LH_LOG_WIN32_ERROR(line)
-#define LH_REG_WRITE_FLAG(key, name, line)                                                                             \
+#define LH_REG_WRITE_FLAG(line, key, name)                                                                             \
 	if (RegSetValueExA(key, #name, 0, REG_SZ, (BYTE*)(name ? "TRUE" : "FALSE"),                                        \
 	                   name ? sizeof("TRUE") - 1 : sizeof("FALSE") - 1) != ERROR_SUCCESS)                              \
 	LH_LOG_WIN32_ERROR(line)
-#define LH_REG_WRITE_DWORD(key, name, line)                                                                            \
+#define LH_REG_WRITE_DWORD(line, key, name)                                                                            \
 	if (RegSetValueExA(key, #name, 0, REG_DWORD, (BYTE*)&name, sizeof(name)) != ERROR_SUCCESS)                         \
 	LH_LOG_WIN32_ERROR(line)
 
@@ -124,29 +124,29 @@ void LHLogPropsSet::WriteToRegistry()
 		return;
 	}
 
-	LH_REG_WRITE_STRING(key, AssertFilter, 109);
-	LH_REG_WRITE_STRING(key, LogFilter, 110);
-	LH_REG_WRITE_FLAG(key, InvertAssertFilterFlag, 111);
-	LH_REG_WRITE_FLAG(key, AssertFilterAsLogFlag, 112);
-	LH_REG_WRITE_FLAG(key, InvertLogFilterFlag, 113);
-	LH_REG_WRITE_FLAG(key, DisableFilterFlag, 114);
-	LH_REG_WRITE_STRING(key, LogFilename, 115);
-	LH_REG_WRITE_STRING(key, HostIP, 116);
-	LH_REG_WRITE_FLAG(key, SourceFlag, 117);
-	LH_REG_WRITE_FLAG(key, LineFlag, 118);
-	LH_REG_WRITE_FLAG(key, SysTimeFlag, 119);
-	LH_REG_WRITE_FLAG(key, ThreadFlag, 120);
-	LH_REG_WRITE_FLAG(key, TimeFlag, 121);
-	LH_REG_WRITE_FLAG(key, PidFlag, 122);
-	LH_REG_WRITE_FLAG(key, AssertFlag, 123);
-	LH_REG_WRITE_FLAG(key, AutoScrollFlag, 124);
-	LH_REG_WRITE_FLAG(key, DisplayOnStartFlag, 125);
-	LH_REG_WRITE_FLAG(key, TruncateFlag, 126);
-	LH_REG_WRITE_FLAG(key, DebuggerFlag, 127);
-	LH_REG_WRITE_FLAG(key, FileFlag, 128);
-	LH_REG_WRITE_FLAG(key, WindowFlag, 129);
-	LH_REG_WRITE_FLAG(key, RemoteFlag, 130);
-	LH_REG_WRITE_DWORD(key, Level, 131);
+	LH_REG_WRITE_STRING(109, key, AssertFilter);
+	LH_REG_WRITE_STRING(110, key, LogFilter);
+	LH_REG_WRITE_FLAG(111, key, InvertAssertFilterFlag);
+	LH_REG_WRITE_FLAG(112, key, AssertFilterAsLogFlag);
+	LH_REG_WRITE_FLAG(113, key, InvertLogFilterFlag);
+	LH_REG_WRITE_FLAG(114, key, DisableFilterFlag);
+	LH_REG_WRITE_STRING(115, key, LogFilename);
+	LH_REG_WRITE_STRING(116, key, HostIP);
+	LH_REG_WRITE_FLAG(117, key, SourceFlag);
+	LH_REG_WRITE_FLAG(118, key, LineFlag);
+	LH_REG_WRITE_FLAG(119, key, SysTimeFlag);
+	LH_REG_WRITE_FLAG(120, key, ThreadFlag);
+	LH_REG_WRITE_FLAG(121, key, TimeFlag);
+	LH_REG_WRITE_FLAG(122, key, PidFlag);
+	LH_REG_WRITE_FLAG(123, key, AssertFlag);
+	LH_REG_WRITE_FLAG(124, key, AutoScrollFlag);
+	LH_REG_WRITE_FLAG(125, key, DisplayOnStartFlag);
+	LH_REG_WRITE_FLAG(126, key, TruncateFlag);
+	LH_REG_WRITE_FLAG(127, key, DebuggerFlag);
+	LH_REG_WRITE_FLAG(128, key, FileFlag);
+	LH_REG_WRITE_FLAG(129, key, WindowFlag);
+	LH_REG_WRITE_FLAG(130, key, RemoteFlag);
+	LH_REG_WRITE_DWORD(131, key, Level);
 	RegCloseKey(key);
 }
 

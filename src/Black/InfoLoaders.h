@@ -57,7 +57,7 @@
 		SetInfoID();                                                                                                   \
 	}
 
-#define INFO_ROOT_LOADERS(file_name, line)                                                                             \
+#define INFO_ROOT_LOADERS(line, file_name)                                                                             \
 	INFO_ROOT_LOAD()                                                                                                   \
 	void LoadBinary(LHFile* file)                                                                                      \
 	{                                                                                                                  \
@@ -68,7 +68,7 @@
 		SetInfoID();                                                                                                   \
 	}
 
-#define INFO_DERIVED_LOADERS(base, file_name, line)                                                                    \
+#define INFO_DERIVED_LOADERS(line, file_name, base)                                                                    \
 	unsigned long Load(unsigned char** cursor, LHFile* file)                                                           \
 	{                                                                                                                  \
 		unsigned long size = base::Load(cursor, file);                                                                 \

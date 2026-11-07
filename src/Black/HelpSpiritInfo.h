@@ -36,7 +36,7 @@ public:
 
 	// TODO(#377): The original declared this class in HelpSpirit.h.
 	INFO_DATA_BLOCK(field_0x1f4, field_0x1f4)
-	INFO_DERIVED_LOADERS(GLivingInfo, "HelpSpirit.h", 21)
+	INFO_DERIVED_LOADERS(21, "HelpSpirit.h", GLivingInfo)
 };
 
 #endif /* BW1_DECOMP_HELP_SPIRIT_INFO_INCLUDED_H */

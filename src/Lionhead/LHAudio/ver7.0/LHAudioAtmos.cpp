@@ -579,8 +579,8 @@ void LH_AudioSystem::LHAtmosProcess(bool32_t active)
 					sample.Positional = true;
 					sample.Polar = true;
 					sample.AtmosInfo = entry->Info;
-					LH_ASSERT(sample.AtmosInfo,
-					          "RUSS: Whoa there, something has changed this to NULL outside the thread", 632);
+					LH_ASSERT(632, sample.AtmosInfo,
+					          "RUSS: Whoa there, something has changed this to NULL outside the thread");
 					sample.Follow = false;
 					LHSamplePlay(&sample);
 				}

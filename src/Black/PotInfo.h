@@ -47,7 +47,7 @@ public:
 
 	// TODO(#377): The original declared this class in Pot.h.
 	INFO_DATA_BLOCK(field_0x114, field_0x120)
-	INFO_DERIVED_LOADERS(GMobileObjectInfo, "Pot.h", 23)
+	INFO_DERIVED_LOADERS(23, "Pot.h", GMobileObjectInfo)
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(GPotInfo) == 0x148, "GPotInfo size is incorrect");

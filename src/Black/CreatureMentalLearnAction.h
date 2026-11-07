@@ -42,7 +42,7 @@ public:
 	static CreatureActionKnownAboutEntry* GetNormalActionKnownAboutInfo() { return NormalActionKnownAboutInfo; }
 
 	INFO_DATA_BLOCK(Name, CanBeTaughtByComputerPlayer)
-	INFO_ROOT_LOADERS("CreatureMentalLearnAction.h", 18)
+	INFO_ROOT_LOADERS(18, "CreatureMentalLearnAction.h")
 };
 static_assert(sizeof(CreatureActionKnownAboutEntry) == 0x68, "Data type is of wrong size");
 
@@ -63,7 +63,7 @@ public:
 	static CreatureMagicActionKnownAboutEntry* GetMagicActionKnownAboutInfo();
 
 	INFO_DATA_BLOCK(MimickingAction, field_0x6c)
-	INFO_DERIVED_LOADERS(CreatureActionKnownAboutEntry, "CreatureMentalLearnAction.h", 27)
+	INFO_DERIVED_LOADERS(27, "CreatureMentalLearnAction.h", CreatureActionKnownAboutEntry)
 };
 static_assert(sizeof(CreatureMagicActionKnownAboutEntry) == 0x70, "Data type is of wrong size");
 

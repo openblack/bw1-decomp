@@ -42,7 +42,7 @@ public:
 
 	// TODO(#377): The original declared this class in SoundGuidance.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("SoundGuidance.h", 27)
+	INFO_ROOT_LOADERS(27, "SoundGuidance.h")
 };
 
 #endif /* BW1_DECOMP_HELP_SPRITES_GUIDANCE_INCLUDED_H */

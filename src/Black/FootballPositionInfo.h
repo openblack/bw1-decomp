@@ -37,7 +37,7 @@ public:
 
 	// TODO(#377): The original declared this class in Football.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("Football.h", 58)
+	INFO_ROOT_LOADERS(58, "Football.h")
 };
 
 class GPFootballPositionInfo : public GBaseInfo
@@ -64,7 +64,7 @@ public:
 
 	// TODO(#377): The original declared this class in PFootball.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("PFootball.h", 24)
+	INFO_ROOT_LOADERS(24, "PFootball.h")
 };
 
 #endif /* BW1_DECOMP_FOOTBALL_POSITION_INFO_INCLUDED_H */

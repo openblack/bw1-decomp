@@ -34,7 +34,7 @@ public:
 
 	// TODO(#377): The original declared this class in Scaffold.h.
 	INFO_DATA_BLOCK(HandSpinSpeed, field_0x118)
-	INFO_DERIVED_LOADERS(GMobileObjectInfo, "Scaffold.h", 21)
+	INFO_DERIVED_LOADERS(21, "Scaffold.h", GMobileObjectInfo)
 };
 
 #endif /* BW1_DECOMP_SCAFFOLD_INFO_INCLUDED_H */

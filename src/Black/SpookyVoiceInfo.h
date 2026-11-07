@@ -38,7 +38,7 @@ public:
 
 	// TODO(#377): The original declared this class in SpookyVoices.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("SpookyVoices.h", 41)
+	INFO_ROOT_LOADERS(41, "SpookyVoices.h")
 };
 
 #endif /* BW1_DECOMP_SPOOKY_VOICE_INFO_INCLUDED_H */

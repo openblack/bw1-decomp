@@ -319,17 +319,17 @@ bool32_t LH_AudioSystem::LHSampleIsValid(LH_SamplePlayOptions* options)
 {
 	if (options->Bank == NULL && _stricmp(options->FileName, LH_SAMPLE_NO_FILE_NAME) == 0)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_BANK_RELEASE_INVALID_BANK, 292);
+		LH_LOG_ERROR_CODE(292, LH_AUDIO_ERROR_BANK_RELEASE_INVALID_BANK);
 		return false;
 	}
 	if (options->SampleNumber <= 0 && _stricmp(options->FileName, LH_SAMPLE_NO_FILE_NAME) == 0)
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_NUMBER, 298, options->SampleNumber);
+		LH_LOG_ERROR_CODE1(298, LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_NUMBER, options->SampleNumber);
 		return false;
 	}
 	if (options->Bank != NULL && options->SampleNumber > options->Bank->NumberOfSamples)
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_SAMPLE_PLAY_TOO_FEW_SAMPLES, 306, options->Bank->NumberOfSamples);
+		LH_LOG_ERROR_CODE1(306, LH_AUDIO_ERROR_SAMPLE_PLAY_TOO_FEW_SAMPLES, options->Bank->NumberOfSamples);
 		return false;
 	}
 	return true;
@@ -545,14 +545,14 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 
 	tsample_opts = *options;
 	// clang-format off
-	LH_ASSERT_CORRECTIVE(fabs(tsample_opts.XPos)<=5000.f, "sample xpos is too big!", tsample_opts.XPos=0;, 555);
-	LH_ASSERT_CORRECTIVE(fabs(tsample_opts.YPos)<=5000.f, "sample ypos is too big!", tsample_opts.YPos=0;, 556);
-	LH_ASSERT_CORRECTIVE(fabs(tsample_opts.ZPos)<=5000.f, "sample zpos is too big!", tsample_opts.ZPos=0;, 557);
+	LH_ASSERT_CORRECTIVE(555, fabs(tsample_opts.XPos)<=5000.f, "sample xpos is too big!", tsample_opts.XPos=0;);
+	LH_ASSERT_CORRECTIVE(556, fabs(tsample_opts.YPos)<=5000.f, "sample ypos is too big!", tsample_opts.YPos=0;);
+	LH_ASSERT_CORRECTIVE(557, fabs(tsample_opts.ZPos)<=5000.f, "sample zpos is too big!", tsample_opts.ZPos=0;);
 	// clang-format on
 
 	if (DisableSfx == true && tsample_opts.AtmosInfo == NULL)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_SFX_DISABLED, 562);
+		LH_LOG_ERROR_CODE(562, LH_AUDIO_ERROR_SAMPLE_PLAY_SFX_DISABLED);
 		return false;
 	}
 	if (!LHSampleIsValid(&tsample_opts))
@@ -571,7 +571,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 		waveNumber = sample->WaveNumber;
 		if (!sample->Enabled)
 		{
-			LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_SAMPLE_PLAY_SAMPLE_DISABLED, 589, tsample_opts.SampleNumber);
+			LH_LOG_ERROR_CODE1(589, LH_AUDIO_ERROR_SAMPLE_PLAY_SAMPLE_DISABLED, tsample_opts.SampleNumber);
 			return false;
 		}
 		if ((sample->OverrideFlags & LH_SAMPLE_OVERRIDE_POS_X) || (sample->OverrideFlags & LH_SAMPLE_OVERRIDE_POS_Y))
@@ -677,7 +677,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 					}
 					if (info->Wave == NULL)
 					{
-						LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_OPEN_WAVE_EX, 712, LHDebugGetLastQMixerError());
+						LH_LOG_ERROR_CODE1(712, LH_AUDIO_ERROR_QMIXER_OPEN_WAVE_EX, LHDebugGetLastQMixerError());
 						info->SampleNumber = 0;
 						return false;
 					}
@@ -717,7 +717,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 						}
 						if (info->Wave == NULL)
 						{
-							LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_OPEN_WAVE_EX, 784, LHDebugGetLastQMixerError());
+							LH_LOG_ERROR_CODE1(784, LH_AUDIO_ERROR_QMIXER_OPEN_WAVE_EX, LHDebugGetLastQMixerError());
 							info->SampleNumber = 0;
 							return false;
 						}
@@ -755,7 +755,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 						}
 						if (info->Wave == NULL)
 						{
-							LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_OPEN_WAVE_EX, 839, LHDebugGetLastQMixerError());
+							LH_LOG_ERROR_CODE1(839, LH_AUDIO_ERROR_QMIXER_OPEN_WAVE_EX, LHDebugGetLastQMixerError());
 							info->SampleNumber = 0;
 							return false;
 						}
@@ -763,7 +763,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 					}
 					else
 					{
-						LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_LOAD_NO_FREE_MEMORY, 848);
+						LH_LOG_ERROR_CODE(848, LH_AUDIO_ERROR_HEAP_LOAD_NO_FREE_MEMORY);
 						info->SampleNumber = 0;
 						return false;
 					}
@@ -783,7 +783,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 					info->DataSize = 0;
 					if (info->Wave == NULL)
 					{
-						LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_OPEN_WAVE_EX, 878, LHDebugGetLastQMixerError());
+						LH_LOG_ERROR_CODE1(878, LH_AUDIO_ERROR_QMIXER_OPEN_WAVE_EX, LHDebugGetLastQMixerError());
 						info->SampleNumber = 0;
 						return false;
 					}
@@ -847,7 +847,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 					LHSampleCalcPolar(tsample_opts.XPos, tsample_opts.YPos, tsample_opts.ZPos, &polar);
 					if (QSWaveMixSetPolarPosition(QMixer, info->Channel, QMIX_IMMEDIATE, &polar))
 					{
-						LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_SET_POLAR_POSITION, 1038, LHDebugGetLastQMixerError());
+						LH_LOG_ERROR_CODE1(1038, LH_AUDIO_ERROR_QMIXER_SET_POLAR_POSITION, LHDebugGetLastQMixerError());
 						info->SampleNumber = 0;
 						QSWaveMixFreeWave(QMixer, info->Wave);
 						return false;
@@ -881,7 +881,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 					polar.elevation = 0.0f;
 					if (QSWaveMixSetPolarPosition(QMixer, info->Channel, QMIX_IMMEDIATE, &polar))
 					{
-						LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_SET_POLAR_POSITION, 1076, LHDebugGetLastQMixerError());
+						LH_LOG_ERROR_CODE1(1076, LH_AUDIO_ERROR_QMIXER_SET_POLAR_POSITION, LHDebugGetLastQMixerError());
 						info->SampleNumber = 0;
 						QSWaveMixFreeWave(QMixer, info->Wave);
 						return false;
@@ -894,7 +894,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 					polar.elevation = 0.0f;
 					if (QSWaveMixSetPolarPosition(QMixer, info->Channel, QMIX_IMMEDIATE, &polar))
 					{
-						LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_SET_POLAR_POSITION, 1095, LHDebugGetLastQMixerError());
+						LH_LOG_ERROR_CODE1(1095, LH_AUDIO_ERROR_QMIXER_SET_POLAR_POSITION, LHDebugGetLastQMixerError());
 						info->SampleNumber = 0;
 						QSWaveMixFreeWave(QMixer, info->Wave);
 						return false;
@@ -910,7 +910,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 			                       SampleMasterVolume * tsample_opts.Volume / LH_SAMPLE_VOLUME_MAX *
 			                           LH_SAMPLE_QMIXER_VOLUME_SCALE))
 			{
-				LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_SET_VOLUME, 1114, LHDebugGetLastQMixerError());
+				LH_LOG_ERROR_CODE1(1114, LH_AUDIO_ERROR_QMIXER_SET_VOLUME, LHDebugGetLastQMixerError());
 				info->SampleNumber = 0;
 				QSWaveMixFreeWave(QMixer, info->Wave);
 				return false;
@@ -933,7 +933,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 			if (QSWaveMixSetFrequency(QMixer, info->Channel, QMIX_IMMEDIATE,
 			                          info->Frequency * tsample_opts.Pitch / LH_SAMPLE_PITCH_NORMAL))
 			{
-				LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_SET_FREQUENCY, 1138, LHDebugGetLastQMixerError());
+				LH_LOG_ERROR_CODE1(1138, LH_AUDIO_ERROR_QMIXER_SET_FREQUENCY, LHDebugGetLastQMixerError());
 				info->SampleNumber = 0;
 				QSWaveMixFreeWave(QMixer, info->Wave);
 				return false;
@@ -953,7 +953,7 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 			if (QSWaveMixPlayEx(QMixer, info->Channel, QMIX_CLEARQUEUE | QMIX_IMMEDIATE | QMIX_PLAY_NOTIFYSTOP,
 			                    info->Wave, tsample_opts.LoopCount, &playParams))
 			{
-				LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_PLAY_EX, 1171, LHDebugGetLastQMixerError());
+				LH_LOG_ERROR_CODE1(1171, LH_AUDIO_ERROR_QMIXER_PLAY_EX, LHDebugGetLastQMixerError());
 				info->SampleNumber = 0;
 				QSWaveMixFreeWave(QMixer, info->Wave);
 				return false;
@@ -995,17 +995,17 @@ bool32_t LH_AudioSystem::LHSamplePlay(LH_SamplePlayOptions* options, LH_SampleIn
 			}
 			return true;
 		}
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_NO_SLOT, 1220);
+		LH_LOG_ERROR_CODE(1220, LH_AUDIO_ERROR_SAMPLE_PLAY_NO_SLOT);
 		return false;
 	}
 
 	if (!WaveInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_WAVE_OUT_NOT_INSTALLED, 1224);
+		LH_LOG_ERROR_CODE(1224, LH_AUDIO_ERROR_SAMPLE_PLAY_WAVE_OUT_NOT_INSTALLED);
 	}
 	if (!WaveActive)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_DIGITAL_AUDIO_OFF, 1227);
+		LH_LOG_ERROR_CODE(1227, LH_AUDIO_ERROR_SAMPLE_PLAY_DIGITAL_AUDIO_OFF);
 	}
 	return false;
 }
@@ -1081,7 +1081,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleStop(LH_SampleInfo* info)
 {
 	if (info == NULL || !SystemInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO, 1326);
+		LH_LOG_ERROR_CODE(1326, LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO);
 		return NULL;
 	}
 	if (!WaveInstalled)
@@ -1138,7 +1138,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleReleaseLoop(LH_SampleInfo* info)
 	{
 		if (info == NULL)
 		{
-			LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO, 1394);
+			LH_LOG_ERROR_CODE(1394, LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO);
 			return NULL;
 		}
 		for (LH_SampleInfo* current = FirstSampleInfo; current <= LastSampleInfo; current++)
@@ -1175,7 +1175,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleSetPan(LH_AudioBank* bank, unsigned long 
 				}
 				if (info->Positional == true)
 				{
-					LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PAN_WITH_3D_COORDINATES, 1435);
+					LH_LOG_ERROR_CODE(1435, LH_AUDIO_ERROR_SAMPLE_PAN_WITH_3D_COORDINATES);
 					return NULL;
 				}
 				if (info->Pan == pan || (info->OverrideFlags & LH_SAMPLE_OVERRIDE_PAN))
@@ -1209,7 +1209,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleSetPan(LH_SampleInfo* info, unsigned long
 	{
 		if (info == NULL)
 		{
-			LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO, 1475);
+			LH_LOG_ERROR_CODE(1475, LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO);
 			return NULL;
 		}
 		for (LH_SampleInfo* current = FirstSampleInfo; current <= LastSampleInfo; current++)
@@ -1223,7 +1223,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleSetPan(LH_SampleInfo* info, unsigned long
 				}
 				if (current->Positional == true)
 				{
-					LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PAN_WITH_3D_COORDINATES, 1489);
+					LH_LOG_ERROR_CODE(1489, LH_AUDIO_ERROR_SAMPLE_PAN_WITH_3D_COORDINATES);
 					return NULL;
 				}
 				if (current->Pan == pan || (current->OverrideFlags & LH_SAMPLE_OVERRIDE_PAN))
@@ -1294,7 +1294,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleSetVolume(LH_SampleInfo* info, long volum
 	{
 		if (info == NULL)
 		{
-			LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO, 1571);
+			LH_LOG_ERROR_CODE(1571, LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO);
 			return NULL;
 		}
 		if (volume > LH_SAMPLE_VOLUME_MAX)
@@ -1364,7 +1364,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleSetPitch(LH_SampleInfo* info, unsigned lo
 	{
 		if (info == NULL)
 		{
-			LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO, 1652);
+			LH_LOG_ERROR_CODE(1652, LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO);
 			return NULL;
 		}
 		for (LH_SampleInfo* current = FirstSampleInfo; current <= LastSampleInfo; current++)
@@ -1407,7 +1407,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleSet3DPosition(LH_AudioBank* bank, unsigne
 				}
 				if (!info->Positional)
 				{
-					LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_NOT_USING_3D_COORDINATES, 1697);
+					LH_LOG_ERROR_CODE(1697, LH_AUDIO_ERROR_SAMPLE_NOT_USING_3D_COORDINATES);
 					return NULL;
 				}
 				if (info->X == x && info->Y == y && info->Z == z)
@@ -1457,7 +1457,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleSet3DPosition(LH_SampleInfo* info, float 
 	{
 		if (info == NULL)
 		{
-			LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO, 1821);
+			LH_LOG_ERROR_CODE(1821, LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO);
 			return NULL;
 		}
 		for (LH_SampleInfo* current = FirstSampleInfo; current <= LastSampleInfo; current++)
@@ -1471,7 +1471,7 @@ LH_SampleInfo* LH_AudioSystem::LHSampleSet3DPosition(LH_SampleInfo* info, float 
 				}
 				if (!current->Positional)
 				{
-					LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_NOT_USING_3D_COORDINATES, 1835);
+					LH_LOG_ERROR_CODE(1835, LH_AUDIO_ERROR_SAMPLE_NOT_USING_3D_COORDINATES);
 					return NULL;
 				}
 				if (current->X == x && current->Y == y && current->Z == z)
@@ -1596,7 +1596,7 @@ bool32_t LH_AudioSystem::LHSampleIsPlaying(LH_SampleInfo* info)
 	{
 		if (info == NULL)
 		{
-			LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO, 2062);
+			LH_LOG_ERROR_CODE(2062, LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO);
 			return false;
 		}
 		for (LH_SampleInfo* current = FirstSampleInfo; current <= LastSampleInfo; current++)
@@ -1770,7 +1770,7 @@ static long* LHBestAttribRow(long* key, long* first, long* second, long width)
 
 long* LHFindAttribRow(long* key, long* base, long width, long depth)
 {
-	LH_ASSERT(width && depth && base, "Tim: bad search", 2324);
+	LH_ASSERT(2324, width && depth && base, "Tim: bad search");
 
 	long* found = NULL;
 	for (long i = 0; i < depth; i++)
@@ -2042,7 +2042,7 @@ long LH_AudioSystem::LHSampleGetPlayPosition(LH_SampleInfo* info)
 	{
 		if (info == NULL)
 		{
-			LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO, 2647);
+			LH_LOG_ERROR_CODE(2647, LH_AUDIO_ERROR_SAMPLE_PLAY_INVALID_SAMPLE_INFO);
 			return LH_SAMPLE_PLAY_POSITION_INVALID;
 		}
 		MIXWAVE*      wave;
@@ -2126,7 +2126,7 @@ static bool32_t decompress_mpeg(MPGAudioDecoder* decoder, char* input, int input
 			break;
 		}
 		// clang-format off
-		LH_ASSERT(output<decompressed->raw_data+input_length*12, "overrun detected", 2725);
+		LH_ASSERT(2725, output<decompressed->raw_data+input_length*12, "overrun detected");
 		// clang-format on
 	}
 

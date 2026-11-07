@@ -30,7 +30,7 @@ public:
 	// TODO(#377): The original declared this class in HelpSystem.h.
 	// Out of line: LoadBinary at 0042f7f0, Load at 0042f7a0.
 	INFO_DATA_BLOCK(MaxFOVDistance, field_0x14)
-	INFO_ROOT_LOADERS("HelpSystem.h", 67)
+	INFO_ROOT_LOADERS(67, "HelpSystem.h")
 };
 
 #endif /* BW1_DECOMP_HELP_SYSTEM_INFO_INCLUDED_H */

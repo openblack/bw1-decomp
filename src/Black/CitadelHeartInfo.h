@@ -47,7 +47,7 @@ public:
 	// TODO(#377): The original declared this class in CitadelHeart.h.
 	// Out of line: LoadBinary at 0042ee70, Load at 0042edd0.
 	INFO_DATA_BLOCK(field_0x134, TransferedDamageMultiplier)
-	INFO_DERIVED_LOADERS(GCitadelPartInfo, "CitadelHeart.h", 27)
+	INFO_DERIVED_LOADERS(27, "CitadelHeart.h", GCitadelPartInfo)
 };
 
 #endif /* BW1_DECOMP_CITADEL_HEART_INFO_INCLUDED_H */

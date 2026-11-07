@@ -60,7 +60,7 @@ public:
 	// TODO(#377): The original declared this class in Creature.h.
 	// Out of line: LoadBinary at 0042e7e0, Load at 0042e7a0.
 	INFO_DATA_BLOCK(field_0x10, AlignmentChangeScale)
-	INFO_ROOT_LOADERS("Creature.h", 169)
+	INFO_ROOT_LOADERS(169, "Creature.h")
 };
 
 #endif /* BW1_DECOMP_DIFFERENT_CREATURE_INFO_INCLUDED_H */

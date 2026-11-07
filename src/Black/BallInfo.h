@@ -37,7 +37,7 @@ public:
 	// TODO(#377): The original declared this class in Ball.h.
 	// Out of line: LoadBinary at 0042e8c0, Load at 0042e830.
 	INFO_DATA_BLOCK(field_0x114, field_0x114)
-	INFO_DERIVED_LOADERS(GMobileObjectInfo, "Ball.h", 28)
+	INFO_DERIVED_LOADERS(28, "Ball.h", GMobileObjectInfo)
 };
 
 class GPBallInfo : public GMobileObjectInfo
@@ -64,7 +64,7 @@ public:
 
 	// TODO(#377): The original declared this class in PBall.h.
 	INFO_DATA_BLOCK(field_0x114, field_0x114)
-	INFO_DERIVED_LOADERS(GMobileObjectInfo, "PBall.h", 23)
+	INFO_DERIVED_LOADERS(23, "PBall.h", GMobileObjectInfo)
 };
 
 #endif /* BW1_DECOMP_BALL_INFO_INCLUDED_H */

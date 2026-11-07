@@ -47,7 +47,7 @@ public:
 		Head.Set(NULL);
 	}
 	// BW1W120 10007500 BW1M119 0116f010 (LHCombined Release)
-	~LHLinkedList() { LH_ASSERT_AT(!Count, "Must Clear List before destructing", LH_TEMPLATE_FILEPATH, 563); }
+	~LHLinkedList() { LH_ASSERT_AT(563, LH_TEMPLATE_FILEPATH, !Count, "Must Clear List before destructing"); }
 
 	// BW1W120 inlined BW1M119 0116eec0 (LHCombined Release)
 	LHLinkedNode<T>* GetStart() const { return Head.Get(); }
@@ -71,10 +71,10 @@ public:
 	// BW1W120 10007630 BW1M119 null
 	LHLinkedNode<T>* GetNodeAtPosition(long position)
 	{
-		LH_ASSERT_CORRECTIVE_AT(Count > 0, "Paul: Linked List Count Error", return 0;, LH_TEMPLATE_FILEPATH, 679);
-		LH_ASSERT_CORRECTIVE_AT(Head.Get(), "Paul: Linked List Has No Head", return 0;, LH_TEMPLATE_FILEPATH, 680);
-		LH_ASSERT_CORRECTIVE_AT(position < (SLONG)Count, "Paul: Linked List Position Wanted Less than Count", return 0;
-		                        , LH_TEMPLATE_FILEPATH, 681);
+		LH_ASSERT_CORRECTIVE_AT(679, LH_TEMPLATE_FILEPATH, Count > 0, "Paul: Linked List Count Error", return 0;);
+		LH_ASSERT_CORRECTIVE_AT(680, LH_TEMPLATE_FILEPATH, Head.Get(), "Paul: Linked List Has No Head", return 0;);
+		LH_ASSERT_CORRECTIVE_AT(681, LH_TEMPLATE_FILEPATH, position < (SLONG)Count,
+		                        "Paul: Linked List Position Wanted Less than Count", return 0;);
 
 		LHLinkedNode<T>* t_node = Head.Get();
 		for (long i = 0; i < position; i++)
@@ -82,7 +82,7 @@ public:
 			t_node = t_node->Next.Get();
 		}
 
-		LH_ASSERT_AT(t_node, "Paul: Linked List Value Returning Is Null", LH_TEMPLATE_FILEPATH, 691);
+		LH_ASSERT_AT(691, LH_TEMPLATE_FILEPATH, t_node, "Paul: Linked List Value Returning Is Null");
 		return t_node;
 	}
 
@@ -90,7 +90,7 @@ public:
 	T GetAtPosition(long position)
 	{
 		LHLinkedNode<T>* t_node = GetNodeAtPosition(position);
-		LH_ASSERT_CORRECTIVE_AT(t_node, "No node at position", return 0;, LH_TEMPLATE_FILEPATH, 700);
+		LH_ASSERT_CORRECTIVE_AT(700, LH_TEMPLATE_FILEPATH, t_node, "No node at position", return 0;);
 		return t_node->Data;
 	}
 
@@ -98,8 +98,8 @@ public:
 	void Remove(T data, bool only_first = false)
 	{
 		bool deleted_one = false;
-		LH_ASSERT_AT(Count > 0, "Peter: Linked List Count Error", LH_TEMPLATE_FILEPATH, 795);
-		LH_ASSERT_AT(Head.Get(), "Peter: Linked List No Head Error", LH_TEMPLATE_FILEPATH, 796);
+		LH_ASSERT_AT(795, LH_TEMPLATE_FILEPATH, Count > 0, "Peter: Linked List Count Error");
+		LH_ASSERT_AT(796, LH_TEMPLATE_FILEPATH, Head.Get(), "Peter: Linked List No Head Error");
 
 		LHLinkedNode<T>* last_node = NULL;
 		LHLinkedNode<T>* node = Head.Get();
@@ -114,10 +114,10 @@ public:
 				}
 				else
 				{
-					LH_ASSERT_AT(last_node, "Peter: Damn Richard won the bet", LH_TEMPLATE_FILEPATH, 810);
+					LH_ASSERT_AT(810, LH_TEMPLATE_FILEPATH, last_node, "Peter: Damn Richard won the bet");
 					last_node->Next.Set(node->Next.Get());
 				}
-				LH_ASSERT_AT(Count, "Peter: Count in linked list wrong", LH_TEMPLATE_FILEPATH, 813);
+				LH_ASSERT_AT(813, LH_TEMPLATE_FILEPATH, Count, "Peter: Count in linked list wrong");
 				Count--;
 				deleted_one = true;
 				delete node;
@@ -132,7 +132,7 @@ public:
 			}
 			node = next;
 		}
-		LH_ASSERT_AT(deleted_one == true, "Peter: Not Found in linked list", LH_TEMPLATE_FILEPATH, 827);
+		LH_ASSERT_AT(827, LH_TEMPLATE_FILEPATH, deleted_one == true, "Peter: Not Found in linked list");
 	}
 
 	LHFastPointer<LHLinkedNode<T> > Head;

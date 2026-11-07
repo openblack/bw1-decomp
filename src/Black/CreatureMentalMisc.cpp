@@ -21,7 +21,7 @@
 #define EXTROVERSION_VARIATION        0.3f
 #define INTEREST_IN_LOOKING_VARIATION 0.4f
 
-#define RANDOMISED_PERSONALITY(value, variation, line)                                                                 \
+#define RANDOMISED_PERSONALITY(line, value, variation)                                                                 \
 	(GGlobal::Global.RandomiseCreatureMinds                                                                            \
 	     ? min(max(GAME_FLOAT_RAND(line, 2.0f * (variation)) + (value) - (variation), 0.0f), 1.0f)                     \
 	     : (value))
@@ -50,16 +50,16 @@ inline CreatureMagicActionKnownAboutEntry* CreatureMagicActionKnownAboutEntry::G
 
 CreatureInnatePersonality::CreatureInnatePersonality(const CreatureInfo* info)
 {
-	Niceness = RANDOMISED_PERSONALITY(info->InnateNiceness, PERSONALITY_VARIATION, 20);
-	Aggression = RANDOMISED_PERSONALITY(info->InnateAggression, PERSONALITY_VARIATION, 21);
-	Lethargy = RANDOMISED_PERSONALITY(info->InnateLethargy, PERSONALITY_VARIATION, 22);
-	Friendliness = RANDOMISED_PERSONALITY(info->InnateFriendliness, PERSONALITY_VARIATION, 23);
-	Communicativeness = RANDOMISED_PERSONALITY(info->InnateCommunicativeness, PERSONALITY_VARIATION, 24);
-	Extroversion = RANDOMISED_PERSONALITY(info->InnateExtroversion, EXTROVERSION_VARIATION, 25);
+	Niceness = RANDOMISED_PERSONALITY(20, info->InnateNiceness, PERSONALITY_VARIATION);
+	Aggression = RANDOMISED_PERSONALITY(21, info->InnateAggression, PERSONALITY_VARIATION);
+	Lethargy = RANDOMISED_PERSONALITY(22, info->InnateLethargy, PERSONALITY_VARIATION);
+	Friendliness = RANDOMISED_PERSONALITY(23, info->InnateFriendliness, PERSONALITY_VARIATION);
+	Communicativeness = RANDOMISED_PERSONALITY(24, info->InnateCommunicativeness, PERSONALITY_VARIATION);
+	Extroversion = RANDOMISED_PERSONALITY(25, info->InnateExtroversion, EXTROVERSION_VARIATION);
 	for (int type = 0; type < THING_TO_LOOK_AT_TYPE_LAST; type++)
 	{
 		InterestInThingToLookAt[type] =
-			RANDOMISED_PERSONALITY(info->InterestInThingToLookAt[type], INTEREST_IN_LOOKING_VARIATION, 28);
+			RANDOMISED_PERSONALITY(28, info->InterestInThingToLookAt[type], INTEREST_IN_LOOKING_VARIATION);
 	}
 }
 

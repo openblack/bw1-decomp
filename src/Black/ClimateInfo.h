@@ -37,7 +37,7 @@ public:
 
 	// TODO(#377): The original declared this class in Weather.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("Weather.h", 61)
+	INFO_ROOT_LOADERS(61, "Weather.h")
 };
 
 #endif /* BW1_DECOMP_CLIMATE_INFO_INCLUDED_H */

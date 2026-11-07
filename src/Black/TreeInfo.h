@@ -54,7 +54,7 @@ public:
 	// TODO(#377): The original declared this class in Tree.h.
 	// Out of line: LoadBinary at 0042eab0, Load at 0042e9d0.
 	INFO_DATA_BLOCK(GrowingMesh, MaxNumTreesCanProduce)
-	INFO_DERIVED_LOADERS(GSingleMapFixedInfo, "Tree.h", 23)
+	INFO_DERIVED_LOADERS(23, "Tree.h", GSingleMapFixedInfo)
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(GTreeInfo) == 0x144, "Data type is of wrong size");

@@ -58,7 +58,7 @@ public:
 	// TODO(#377): The original declared this class in Worship.h.
 	// Out of line: LoadBinary at 0042f170, Load at 0042f0d0.
 	INFO_DATA_BLOCK(RadiusFromCitadel, ArtifactPowerupMultiplier)
-	INFO_DERIVED_LOADERS(GCitadelPartInfo, "Worship.h", 41)
+	INFO_DERIVED_LOADERS(41, "Worship.h", GCitadelPartInfo)
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INFO_INCLUDED_H */

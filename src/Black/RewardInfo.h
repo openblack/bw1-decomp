@@ -38,7 +38,7 @@ public:
 
 	// TODO(#377): The original declared this class in reward.h.
 	INFO_DATA_BLOCK(field_0x114, field_0x124)
-	INFO_DERIVED_LOADERS(GMobileObjectInfo, "reward.h", 27)
+	INFO_DERIVED_LOADERS(27, "reward.h", GMobileObjectInfo)
 };
 
 #endif /* BW1_DECOMP_REWARD_INFO_INCLUDED_H */

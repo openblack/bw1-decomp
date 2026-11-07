@@ -38,7 +38,7 @@ public:
 
 	// TODO(#377): The original declared this class in ShowNeeds.h.
 	INFO_DATA_BLOCK(field_0x100, field_0x100)
-	INFO_DERIVED_LOADERS(GObjectInfo, "ShowNeeds.h", 13)
+	INFO_DERIVED_LOADERS(13, "ShowNeeds.h", GObjectInfo)
 };
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_INFO_INCLUDED_H */

@@ -51,7 +51,7 @@ public:
 #else
 	INFO_DATA_BLOCK(ActiveMesh, ActiveParticleType)
 #endif
-	INFO_DERIVED_LOADERS(GSingleMapFixedInfo, "ScriptHighlight.h", 17)
+	INFO_DERIVED_LOADERS(17, "ScriptHighlight.h", GSingleMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_SCRIPT_HIGHLIGHT_INFO_INCLUDED_H */

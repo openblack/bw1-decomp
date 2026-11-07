@@ -67,7 +67,7 @@ public:
 
 	// TODO(#377): The original declared this class in TownDesire.h.
 	INFO_DATA_BLOCK(AssociatedPrayerSite, HelpCondition)
-	INFO_ROOT_LOADERS("TownDesire.h", 46)
+	INFO_ROOT_LOADERS(46, "TownDesire.h")
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INFO_INCLUDED_H */

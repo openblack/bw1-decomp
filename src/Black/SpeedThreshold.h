@@ -36,7 +36,7 @@ public:
 
 	// TODO(#377): The original declared this class in Mobile.h.
 	INFO_DATA_BLOCK(WalkThreshold, RunThreshold)
-	INFO_ROOT_LOADERS("Mobile.h", 54)
+	INFO_ROOT_LOADERS(54, "Mobile.h")
 };
 
 #endif /* BW1_DECOMP_SPEED_THRESHOLD_INCLUDED_H */

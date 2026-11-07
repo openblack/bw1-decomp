@@ -34,7 +34,7 @@ public:
 	// TODO(#377): The original declared this class in SpellShield.h.
 	// Out of line: LoadBinary at 0042fad0, Load at 0042fa40.
 	INFO_DATA_BLOCK(field_0x104, field_0x104)
-	INFO_DERIVED_LOADERS(GSingleMapFixedInfo, "SpellShield.h", 125)
+	INFO_DERIVED_LOADERS(125, "SpellShield.h", GSingleMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_MAP_SHIELD_INFO_INCLUDED_H */

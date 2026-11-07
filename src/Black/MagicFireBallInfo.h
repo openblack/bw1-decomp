@@ -36,7 +36,7 @@ public:
 
 	// TODO(#377): The original declared this class in PSysFireBall.h.
 	INFO_DATA_BLOCK(field_0x100, field_0x100)
-	INFO_DERIVED_LOADERS(GObjectInfo, "PSysFireBall.h", 15)
+	INFO_DERIVED_LOADERS(15, "PSysFireBall.h", GObjectInfo)
 };
 
 #endif /* BW1_DECOMP_MAGIC_FIRE_BALL_INFO_INCLUDED_H */

@@ -89,7 +89,7 @@ public:
 
 	// TODO(#377): The original declared this class in Town.h.
 	INFO_DATA_BLOCK(field_0x14, field_0x188)
-	INFO_DERIVED_LOADERS(GContainerInfo, "Town.h", 110)
+	INFO_DERIVED_LOADERS(110, "Town.h", GContainerInfo)
 };
 
 #endif /* BW1_DECOMP_TOWN_INFO_INCLUDED_H */

@@ -44,14 +44,21 @@
 #include <ddraw.h> /* For DDPIXELFORMAT, DDSURFACEDESC2 */
 #include <float.h> /* For FLT_MAX */
 
-// The line of OpenD3D's z-buffer enumeration check: 1.10 added eleven lines above it, Creature Isle two more.
-#if defined(VERSION_BW1W100)
-#define LH3D_RENDER_ENUM_ZBUFFER_LINE 961
-#elif defined(VERSION_BW1WCI)
-#define LH3D_RENDER_ENUM_ZBUFFER_LINE 974
-#else
-#define LH3D_RENDER_ENUM_ZBUFFER_LINE 972
+#ifndef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) (line)
 #endif
+
+// 1.10 added eleven lines above OpenD3D's z-buffer enumeration check, Creature Isle two more.
+#if defined(VERSION_BW1W100)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 11)
+#elif defined(VERSION_BW1WCI)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + 2)
+#endif
+
+#define LH_LOG_DX_ERROR(line, result)                                                                                  \
+	LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, ORIGINAL_LINE(line), LH_DX_Errors, result)
 
 #define LH3D_RENDER_SORT_MAX_TRIANGLES 3000
 #define LH3D_RENDER_SORT_BUCKETS       32
@@ -876,7 +883,7 @@ bool32_t LH3DRender::OpenD3D()
 	result = D3D->EnumZBufferFormats(IID_IDirect3DHALDevice, EnumZBufferCallback, NULL);
 	if (result != D3D_OK)
 	{
-		LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, LH3D_RENDER_ENUM_ZBUFFER_LINE, LH_DX_Errors, result);
+		LH_LOG_DX_ERROR(972, result);
 	}
 	bool32_t found = false;
 	if (g_zddpf_count != 0)

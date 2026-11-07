@@ -45,7 +45,7 @@ public:
 
 	// TODO(#377): The original declared this class in Reaction.h.
 	INFO_DATA_BLOCK(priority, AlignmentForSFX)
-	INFO_ROOT_LOADERS("Reaction.h", 56)
+	INFO_ROOT_LOADERS(56, "Reaction.h")
 };
 
 #endif /* BW1_DECOMP_REACTION_INFO_INCLUDED_H */

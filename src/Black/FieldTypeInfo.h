@@ -44,7 +44,7 @@ public:
 
 	// TODO(#377): The original declared this class in Field.h.
 	INFO_DATA_BLOCK(field_0x120, field_0x138)
-	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "Field.h", 49)
+	INFO_DERIVED_LOADERS(49, "Field.h", GMultiMapFixedInfo)
 };
 
 #endif /* BW1_DECOMP_FIELD_TYPE_INFO_INCLUDED_H */

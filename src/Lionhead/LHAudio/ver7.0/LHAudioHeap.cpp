@@ -89,7 +89,7 @@ bool32_t LH_AudioSystem::LHHeapOpen()
 {
 	if (HeapInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_OPEN_ALREADY_INSTALLED, 121);
+		LH_LOG_ERROR_CODE(121, LH_AUDIO_ERROR_HEAP_OPEN_ALREADY_INSTALLED);
 		return false;
 	}
 	heap_list::TotalAllowed = HeapSize;
@@ -133,7 +133,7 @@ bool32_t LH_AudioSystem::LHHeapLoadWavFile(LH_SamplePlayOptions* options, LH_Ban
 {
 	if (!HeapInstalled || !SystemInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_LOAD_NOT_INSTALLED, 187);
+		LH_LOG_ERROR_CODE(187, LH_AUDIO_ERROR_HEAP_LOAD_NOT_INSTALLED);
 		return false;
 	}
 	if (options->Bank == NULL)
@@ -152,7 +152,7 @@ bool32_t LH_AudioSystem::LHHeapLoadWavFile(LH_SamplePlayOptions* options, LH_Ban
 		{
 			if (HeapList.Count == 0)
 			{
-				LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_LOAD_WAV_TOO_LARGE, 204);
+				LH_LOG_ERROR_CODE(204, LH_AUDIO_ERROR_HEAP_LOAD_WAV_TOO_LARGE);
 				return false;
 			}
 
@@ -176,7 +176,7 @@ bool32_t LH_AudioSystem::LHHeapLoadWavFile(LH_SamplePlayOptions* options, LH_Ban
 				{
 					if (!HeapList.add_last_entry(info))
 					{
-						LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_LOAD_ADD_LAST_ENTRY, 234);
+						LH_LOG_ERROR_CODE(234, LH_AUDIO_ERROR_HEAP_LOAD_ADD_LAST_ENTRY);
 						return false;
 					}
 					HeapList.remove_first_entry();
@@ -213,7 +213,7 @@ bool32_t LH_AudioSystem::LHHeapLoadWavFile(LH_SamplePlayOptions* options, LH_Ban
 			}
 			if (!loaded)
 			{
-				LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_LOAD_NO_FREE_MEMORY, 274);
+				LH_LOG_ERROR_CODE(274, LH_AUDIO_ERROR_HEAP_LOAD_NO_FREE_MEMORY);
 				return false;
 			}
 		}
@@ -223,7 +223,7 @@ bool32_t LH_AudioSystem::LHHeapLoadWavFile(LH_SamplePlayOptions* options, LH_Ban
 			list_entry_info* info = new list_entry_info;
 			if (info == NULL)
 			{
-				LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_LOAD_SAMPLE_TABLE_ALLOCATION, 282);
+				LH_LOG_ERROR_CODE(282, LH_AUDIO_ERROR_HEAP_LOAD_SAMPLE_TABLE_ALLOCATION);
 				return false;
 			}
 			sample->Loaded = true;
@@ -241,14 +241,14 @@ bool32_t LH_AudioSystem::LHHeapLoadWavFile(LH_SamplePlayOptions* options, LH_Ban
 			}
 			if (!HeapList.add_last_entry(info))
 			{
-				LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_LOAD_ADD_LAST_ENTRY, 301);
+				LH_LOG_ERROR_CODE(301, LH_AUDIO_ERROR_HEAP_LOAD_ADD_LAST_ENTRY);
 				return false;
 			}
 			return true;
 		}
 		else
 		{
-			LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_LOAD_GET_SEGMENT_DATA, 307);
+			LH_LOG_ERROR_CODE(307, LH_AUDIO_ERROR_HEAP_LOAD_GET_SEGMENT_DATA);
 			free(sample->Data);
 			heap_list::TotalAllocated -= sample->Size;
 			return false;
@@ -256,7 +256,7 @@ bool32_t LH_AudioSystem::LHHeapLoadWavFile(LH_SamplePlayOptions* options, LH_Ban
 	}
 	else
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_HEAP_LOAD_INVALID_HEAP_HANDLE, 312);
+		LH_LOG_ERROR_CODE(312, LH_AUDIO_ERROR_HEAP_LOAD_INVALID_HEAP_HANDLE);
 		return false;
 	}
 }

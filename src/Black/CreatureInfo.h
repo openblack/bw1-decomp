@@ -91,7 +91,7 @@ public:
 	// TODO(#377): The original declared this class in Creature.h.
 	// Out of line: LoadBinary at 0042e6c0, Load at 0042e620.
 	INFO_DATA_BLOCK(CreatureType, field_0x390)
-	INFO_DERIVED_LOADERS(GLivingInfo, "Creature.h", 160)
+	INFO_DERIVED_LOADERS(160, "Creature.h", GLivingInfo)
 };
 
 #endif /* BW1_DECOMP_CREATURE_INFO_INCLUDED_H */

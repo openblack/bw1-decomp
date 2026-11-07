@@ -16,7 +16,7 @@ static void LHLogDebugBreak()
 	DebugBreak();
 }
 
-#define LH_LOG_ERROR_CODE(code, line)                                                                                  \
+#define LH_LOG_ERROR_CODE(line, code)                                                                                  \
 	{                                                                                                                  \
 		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, line, LHLogErrorCodes, code))                          \
 		{                                                                                                              \
@@ -24,7 +24,7 @@ static void LHLogDebugBreak()
 		}                                                                                                              \
 	}
 
-#define LH_LOG_ERROR_CODE1(code, line, arg)                                                                            \
+#define LH_LOG_ERROR_CODE1(line, code, arg)                                                                            \
 	{                                                                                                                  \
 		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, line, LHLogErrorCodes, code, arg))                     \
 		{                                                                                                              \
@@ -32,7 +32,7 @@ static void LHLogDebugBreak()
 		}                                                                                                              \
 	}
 
-#define LH_ASSERT_REPORT_AT(expr, text, file, line, forced, priority, action)                                          \
+#define LH_ASSERT_REPORT_AT(line, file, expr, text, forced, priority, action)                                          \
 	{                                                                                                                  \
 		char* assertText = (text);                                                                                     \
 		LHLogger::SetErrorStateS(LH_LOG_CODE_ERROR, LH_LOG_LEVEL_ERROR);                                               \
@@ -65,23 +65,23 @@ static void LHLogDebugBreak()
 		}                                                                                                              \
 	}
 
-#define LH_ASSERT_REPORT(expr, text, line, forced, priority, action)                                                   \
-	LH_ASSERT_REPORT_AT(expr, text, __FILE__, line, forced, priority, action)
+#define LH_ASSERT_REPORT(line, expr, text, forced, priority, action)                                                   \
+	LH_ASSERT_REPORT_AT(line, __FILE__, expr, text, forced, priority, action)
 
-#define LH_ASSERT(expr, text, line)                                                                                    \
+#define LH_ASSERT(line, expr, text)                                                                                    \
 	if (!(expr))                                                                                                       \
-	LH_ASSERT_REPORT(expr, text, line, false, LH_ASSERT_PRIORITY_MEDIUM, ;)
+	LH_ASSERT_REPORT(line, expr, text, false, LH_ASSERT_PRIORITY_MEDIUM, ;)
 
-#define LH_ASSERT_FORCED(expr, text, line)                                                                             \
+#define LH_ASSERT_FORCED(line, expr, text)                                                                             \
 	if (!(expr))                                                                                                       \
-	LH_ASSERT_REPORT(expr, text, line, true, LH_ASSERT_PRIORITY_HIGH, ;)
+	LH_ASSERT_REPORT(line, expr, text, true, LH_ASSERT_PRIORITY_HIGH, ;)
 
-#define LH_ASSERT_CORRECTIVE(expr, text, action, line)                                                                 \
+#define LH_ASSERT_CORRECTIVE(line, expr, text, action)                                                                 \
 	if (!(expr))                                                                                                       \
-	LH_ASSERT_REPORT(expr, text, line, false, LH_ASSERT_PRIORITY_MEDIUM, action)
+	LH_ASSERT_REPORT(line, expr, text, false, LH_ASSERT_PRIORITY_MEDIUM, action)
 
-#define LH_ASSERT_CORRECTIVE_AT(expr, text, action, file, line)                                                        \
+#define LH_ASSERT_CORRECTIVE_AT(line, file, expr, text, action)                                                        \
 	if (!(expr))                                                                                                       \
-	LH_ASSERT_REPORT_AT(expr, text, file, line, false, LH_ASSERT_PRIORITY_MEDIUM, action)
+	LH_ASSERT_REPORT_AT(line, file, expr, text, false, LH_ASSERT_PRIORITY_MEDIUM, action)
 
 #endif /* BW1_DECOMP_LH_AUDIO_LOG_MACROS_INCLUDED_H */

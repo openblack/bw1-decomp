@@ -63,7 +63,7 @@ public:
 
 	// TODO(#377): The original declared this class in MagicVortex.h.
 	INFO_DATA_BLOCK(ParticleTypePreLandscape, MaxToCreate)
-	INFO_ROOT_LOADERS("MagicVortex.h", 25)
+	INFO_ROOT_LOADERS(25, "MagicVortex.h")
 };
 
 static_assert(sizeof(GVortexInfo) == 0x40, "GVortexInfo size is incorrect");

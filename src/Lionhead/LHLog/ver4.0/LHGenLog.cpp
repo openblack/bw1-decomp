@@ -14,6 +14,8 @@
 #include "LHSPrintf.h"
 #include "LHVersion.h"
 
+#define LH_LOG_SET_LOCAL_ERROR(line, code) SetLocalError(__FILE__, line, code)
+
 #define LH_LOG_VERSION 2.2
 
 #define LH_LOG_FILTER_TOKEN_SIZE     200
@@ -337,7 +339,7 @@ void LHLogger::RawLogT(char* text)
 {
 	if (!InitFlag)
 	{
-		SetLocalError(__FILE__, 517, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		LH_LOG_SET_LOCAL_ERROR(517, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 		return;
 	}
 	if (LogProps->Level == LH_LOG_PROPS_LEVEL_NONE)
@@ -368,7 +370,7 @@ void LHLogger::RawLogT(char* text)
 		}
 		else
 		{
-			SetLocalError(__FILE__, 543, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+			LH_LOG_SET_LOCAL_ERROR(543, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 			return;
 		}
 	}
@@ -383,7 +385,7 @@ bool32_t LHLogger::LogWin32ErrorT(unsigned long error, char* library, char* file
 	LHSPrintf message;
 	if (!InitFlag)
 	{
-		SetLocalError(__FILE__, 590, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		LH_LOG_SET_LOCAL_ERROR(590, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 		return false;
 	}
 	SetErrorStateT(error, LH_LOG_LEVEL_ERROR);
@@ -553,7 +555,7 @@ bool32_t LHLogger::VCreateLogText(LHSPrintf* output, char* library, char* file, 
 	}
 	if (!InitFlag)
 	{
-		SetLocalError(__FILE__, 457, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		LH_LOG_SET_LOCAL_ERROR(457, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 		return false;
 	}
 	if (output == NULL)
@@ -659,12 +661,12 @@ bool32_t LHLogger::LogErrorCodeT(char* library, char* file, unsigned long line, 
 {
 	if (!InitFlag)
 	{
-		SetLocalError(__FILE__, 327, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		LH_LOG_SET_LOCAL_ERROR(327, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 		return false;
 	}
 	if (codes == NULL)
 	{
-		SetLocalError(__FILE__, 328, LH_LOG_LOCAL_ERROR_NO_LOOKUP_TABLE);
+		LH_LOG_SET_LOCAL_ERROR(328, LH_LOG_LOCAL_ERROR_NO_LOOKUP_TABLE);
 		return false;
 	}
 	unsigned long i;
@@ -744,7 +746,7 @@ unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), uint32_t st
 	unsigned long thread = _beginthread(__special_debug_thread, stack_size, details);
 	if (thread == (unsigned long)-1)
 	{
-		LH_LOG_ERROR(LH_LOG_CODE_ERROR, LHSPrintf("*********Failed to create thread %s*********\n", name), 668);
+		LH_LOG_ERROR(668, LH_LOG_CODE_ERROR, LHSPrintf("*********Failed to create thread %s*********\n", name));
 		free(details->Name);
 		free(details);
 		return (unsigned long)-1;

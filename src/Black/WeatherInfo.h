@@ -39,7 +39,7 @@ public:
 
 	// TODO(#377): The original declared this class in Weather.h.
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
-	INFO_ROOT_LOADERS("Weather.h", 24)
+	INFO_ROOT_LOADERS(24, "Weather.h")
 };
 
 static_assert(sizeof(GWeatherInfo) == 0x64, "GWeatherInfo size is incorrect");

@@ -1804,7 +1804,7 @@ public:
 	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count);
 
 	INFO_DATA_BLOCK(OpposingTypes, OpposingTypes)
-	INFO_ROOT_LOADERS("Script.h", 923)
+	INFO_ROOT_LOADERS(923, "Script.h")
 };
 
 #endif /* BW1_DECOMP_SCRIPT_INCLUDED_H */

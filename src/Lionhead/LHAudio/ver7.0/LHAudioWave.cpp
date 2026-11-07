@@ -34,7 +34,7 @@ bool32_t LH_AudioSystem::LHWaveOpen()
 
 	if (WaveInstalled)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_WAVE_OPEN_ALREADY_INSTALLED, 46);
+		LH_LOG_ERROR_CODE(46, LH_AUDIO_ERROR_WAVE_OPEN_ALREADY_INSTALLED);
 		return false;
 	}
 
@@ -81,7 +81,7 @@ bool32_t LH_AudioSystem::LHWaveOpen()
 	QMixer = QSWaveMixInitEx(&config);
 	if (QMixer == NULL)
 	{
-		LH_LOG_ERROR_CODE1(LH_AUDIO_ERROR_QMIXER_OPEN_WAVE, 107, LHDebugGetLastQMixerError());
+		LH_LOG_ERROR_CODE1(107, LH_AUDIO_ERROR_QMIXER_OPEN_WAVE, LHDebugGetLastQMixerError());
 		WaveInstalled = false;
 		WaveActive = false;
 		return false;
@@ -121,7 +121,7 @@ bool32_t LH_AudioSystem::LHWaveOpen()
 
 	if ((SampleInfos = new LH_SampleInfo[MaxSamples]) == NULL)
 	{
-		LH_LOG_ERROR_CODE(LH_AUDIO_ERROR_WAVE_OPEN_SAMPLE_INFO_ALLOCATION, 138);
+		LH_LOG_ERROR_CODE(138, LH_AUDIO_ERROR_WAVE_OPEN_SAMPLE_INFO_ALLOCATION);
 		QSWaveMixCloseSession(QMixer);
 		WaveInstalled = false;
 		WaveActive = false;

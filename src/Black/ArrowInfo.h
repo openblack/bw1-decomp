@@ -36,7 +36,7 @@ public:
 
 	// TODO(#377): The original declared this class in Arrow.h.
 	INFO_DATA_BLOCK(field_0x114, field_0x114)
-	INFO_DERIVED_LOADERS(GMobileObjectInfo, "Arrow.h", 13)
+	INFO_DERIVED_LOADERS(13, "Arrow.h", GMobileObjectInfo)
 };
 
 #endif /* BW1_DECOMP_ARROW_INFO_INCLUDED_H */

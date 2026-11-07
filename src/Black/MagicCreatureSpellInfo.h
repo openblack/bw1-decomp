@@ -39,7 +39,7 @@ public:
 
 	// Out of line: LoadBinary at 0042dd10, Load at 0042dcb0.
 	INFO_DATA_BLOCK(SpellType, field_0x5c)
-	INFO_DERIVED_LOADERS(GMagicInfo, "MagicCreatureSpellInfo.h", 19)
+	INFO_DERIVED_LOADERS(19, "MagicCreatureSpellInfo.h", GMagicInfo)
 };
 static_assert(sizeof(GMagicCreatureSpellInfo) == 0x9c, "Data type is of wrong size");
 
