@@ -2813,6 +2813,42 @@ BW1W130_SAFEDISC_CALLS = (
     (0x007165DA, jmp_run(0x00716495)),  # SecretCreature
     (0x007166A9, copy_run(0x007165DA)),  # SecretCreature
     (0x007166D7, jmp_run(0x007166A9)),  # SecretCreature
+    (0x007171AB, call_rel32(0x004034F9)),  # ServerLandscapeMap
+    (0x007171D3, jmp_run(0x007171AB)),  # ServerLandscapeMap
+    (0x00717203, copy_run(0x007171D3)),  # ServerLandscapeMap
+    (0x00717255, jmp_run(0x00717203)),  # ServerLandscapeMap
+    (0x00717308, copy_run(0x00717255)),  # ServerLandscapeMap
+    (0x007173C9, copy_run(0x00717308)),  # ServerLandscapeMap
+    (0x00717444, copy_run(0x007173C9)),  # ServerLandscapeMap
+    (0x00717461, copy_run(0x00717444)),  # ServerLandscapeMap
+    (0x00717649, copy_run(0x00717461)),  # ServerLandscapeMap
+    (0x00717869, copy_run(0x00717649)),  # ServerLandscapeMap
+    (0x00717928, copy_run(0x00717869)),  # ServerLandscapeMap
+    (0x00717A81, copy_run(0x00717928)),  # ServerLandscapeMap
+    (0x00717BF2, jmp_run(0x00717A81)),  # ServerLandscapeMap
+    (0x00717D17, jmp_run(0x00717BF2)),  # ServerLandscapeMap
+    (0x00717D36, jmp_run(0x00717D17)),  # ServerLandscapeMap
+    (0x00717D92, jmp_run(0x00717D36)),  # ServerLandscapeMap
+    (0x00717DDA, jmp_run(0x00717D92)),  # ServerLandscapeMap
+    (0x00717E22, copy_run(0x00717DDA)),  # ServerLandscapeMap
+    (0x00717E86, copy_run(0x00717E22)),  # ServerLandscapeMap
+    (0x00717EE7, copy_run(0x00717E86)),  # ServerLandscapeMap
+    (0x00717F42, copy_run(0x00717EE7)),  # ServerLandscapeMap
+    (0x00717FA2, copy_run(0x00717F42)),  # ServerLandscapeMap
+    (0x00718053, jmp_run(0x00717FA2)),  # ServerLandscapeMap
+    (0x00718328, copy_run(0x00718053)),  # ServerLandscapeMap
+    (0x00718377, jmp_run(0x00718328)),  # ServerLandscapeMap
+    (0x007183C7, copy_run(0x00718377)),  # ServerLandscapeMap
+    (0x00718472, jmp_run(0x007183C7)),  # ServerLandscapeMap
+    (0x0071860B, call_rel32(0x004034F9)),  # ServerLandscapeMap
+    (0x00718747, copy_run(0x0071860B)),  # ServerLandscapeMap
+    (0x00718A75, jmp_run(0x00718747)),  # ServerLandscapeMap
+    (0x00718B24, copy_run(0x00718A75)),  # ServerLandscapeMap
+    (0x00718BB1, jmp_run(0x00718B24)),  # ServerLandscapeMap
+    (0x00718C94, jmp_run(0x00718BB1)),  # ServerLandscapeMap
+    (0x00718CE7, copy_run(0x00718C94)),  # ServerLandscapeMap
+    (0x00718D6B, call_rel32(0x004034F9)),  # ServerLandscapeMap
+    (0x00718DD6, jmp_run(0x00718D6B)),  # ServerLandscapeMap
     (0x00719603, copy_run(0x007195AA)),  # Setup
     (0x0071962B, call_rel32(0x004034F9)),  # Setup
     (0x00719655, jmp_run(0x0071962B)),  # Setup

@@ -1386,7 +1386,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/ScriptTimer.cpp"),
             GameCodeObject(Matching, "Black/SecretCreature.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/Serialise.cpp"),
-            GameCodeObject(NonMatching, "Black/ServerLandscapeMap.cpp"),
+            GameCodeObject(Matching, "Black/ServerLandscapeMap.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/Settings.cpp"),
             GameCodeObject(Matching, "Black/Setup.cpp"),
             GameCodeObject(Matching, "Black/SetupGameData.cpp"),
