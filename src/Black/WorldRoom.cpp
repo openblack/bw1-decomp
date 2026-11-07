@@ -7,7 +7,7 @@
 #include <chlasm/AudioSFX.h>      /* For enum AUDIO_SFX_BANK_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For HELP_TEXT */
 #include <chlasm/HelpTextTooltipEnums.h>
-#include <chlasm/LHSample.h> /* For enum LH_SAMPLE */
+#include <chlasm/LHSample.h>
 
 #include <Lionhead/LH3DLib/development/Glow.h>              /* For class GlowManager */
 #include <Lionhead/LH3DLib/development/InfluenceCircle.h>   /* For class InfluenceCircle */
@@ -64,11 +64,22 @@ static float OneOnLogHalf = 1.0f / static_cast<float>(log(0.5));
 
 bool32_t WorldRoom::ShowInfluence = true;
 
-static char* SignNames[WORLD_ROOM_SIGN_COUNT] = {"SIGN CREATURE", "SIGN OPTIONS",  "SIGN EXIT",     "SIGN MULTIPLKAYER",
-                                                 "SIGN CREDITS",  "SIGN SAVEGAME", "SIGN CHALLENGE"};
-static unsigned long SignColours[WORLD_ROOM_SIGN_COUNT][3] = {
-	{0xec, 0xc6, 0x64}, {0xe5, 0xd4, 0x41}, {0xde, 0xe3, 0xef}, {0x6f, 0x92, 0xeb},
-	{0xd4, 0x6b, 0xfb}, {0x9c, 0xd1, 0x40}, {0xeb, 0x92, 0x6f}};
+#define WORLD_ROOM_SIGNS(SIGN)                                                                                         \
+	SIGN("SIGN CREATURE", 0xec, 0xc6, 0x64, HELP_TEXT_ROOM_CREATURE_TITLE)                                             \
+	SIGN("SIGN OPTIONS", 0xe5, 0xd4, 0x41, HELP_TEXT_ROOM_GAMEOPTIONS_TITLE)                                           \
+	SIGN("SIGN EXIT", 0xde, 0xe3, 0xef, HELP_TEXT_ROOM_EXIT_TITLE)                                                     \
+	SIGN("SIGN MULTIPLKAYER", 0x6f, 0x92, 0xeb, HELP_TEXT_ROOM_UNIVERSE_TITLE)                                         \
+	SIGN("SIGN CREDITS", 0xd4, 0x6b, 0xfb, HELP_TEXT_ROOM_CREDITS_TITLE)                                               \
+	SIGN("SIGN SAVEGAME", 0x9c, 0xd1, 0x40, HELP_TEXT_ROOM_SAVEGAME_TITLE)                                             \
+	SIGN("SIGN CHALLENGE", 0xeb, 0x92, 0x6f, HELP_TEXT_ROOM_CHALLENGE_TITLE)
+
+#define WORLD_ROOM_SIGN_NAME(asset_name, red, green, blue, text_id) asset_name,
+static char* SignNames[WORLD_ROOM_SIGN_COUNT] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_NAME)};
+#undef WORLD_ROOM_SIGN_NAME
+
+#define WORLD_ROOM_SIGN_COLOUR(asset_name, red, green, blue, text_id) {red, green, blue},
+static unsigned long SignColours[WORLD_ROOM_SIGN_COUNT][3] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_COLOUR)};
+#undef WORLD_ROOM_SIGN_COLOUR
 
 bool32_t WorldRoom::DisplayCitadel = true;
 bool32_t WorldRoom::DisplayMagicActivity = true;
@@ -260,30 +271,30 @@ void WorldRoom::DrawCitadel(bool glow)
 	for (GPlayer* player = GGame::g_game->GetNextPlayer(NULL); player != NULL;
 	     player = GGame::g_game->GetNextPlayer(player))
 	{
-		if (player->citadel.Get() != NULL)
+		if (player->citadel.Get() == NULL)
 		{
-			MapCoords citadelPos = player->citadel->Pos;
-			if (glow)
+			continue;
+		}
+		MapCoords citadelPos = player->citadel->Pos;
+		if (glow)
+		{
+			LHPoint glowPos = Map->CalcPoint(citadelPos.MapMetersX(), citadelPos.MapMetersZ(), NULL);
+			glowPos.y += WORLD_ROOM_MARKER_GLOW_LIFT;
+			LH3DColor glowColour(WORLD_ROOM_MARKER_GLOW_RED, WORLD_ROOM_MARKER_GLOW_GREEN, WORLD_ROOM_MARKER_GLOW_BLUE);
+			inner_room->Glow->DrawGlowAtPoint(glowPos, glowColour, WORLD_ROOM_MARKER_GLOW_SIZE);
+		}
+		else
+		{
+			LH3DColor markerColour = player->GetPlayer3DColor();
+			uint32_t  packedColour = markerColour.GetColor();
+			if ((packedColour & LH3D_COLOR_RGB_MASK) == 0)
 			{
-				LHPoint glowPos = Map->CalcPoint(citadelPos.MapMetersX(), citadelPos.MapMetersZ(), NULL);
-				glowPos.y += WORLD_ROOM_MARKER_GLOW_LIFT;
-				LH3DColor glowColour(WORLD_ROOM_MARKER_GLOW_RED, WORLD_ROOM_MARKER_GLOW_GREEN,
-				                     WORLD_ROOM_MARKER_GLOW_BLUE);
-				inner_room->Glow->DrawGlowAtPoint(glowPos, glowColour, WORLD_ROOM_MARKER_GLOW_SIZE);
+				packedColour = LH3D_COLOR_WHITE;
 			}
-			else
-			{
-				LH3DColor markerColour = player->GetPlayer3DColor();
-				uint32_t  packedColour = markerColour.GetColor();
-				if ((packedColour & LH3D_COLOR_RGB_MASK) == 0)
-				{
-					packedColour = LH3D_COLOR_WHITE;
-				}
-				markerColour =
-					LH3DColor(LH3D_BLEND_COLOR(packedColour, LH3D_COLOR_WHITE, WORLD_ROOM_MARKER_LIGHTEN_AMOUNT));
-				Map->DrawMarkerAt(markerColour, citadelPos.MapMetersX(), citadelPos.MapMetersZ(), CitadelIconObject,
-				                  MarkerAngle, WORLD_ROOM_MARKER_SCALE);
-			}
+			markerColour =
+				LH3DColor(LH3D_BLEND_COLOR(packedColour, LH3D_COLOR_WHITE, WORLD_ROOM_MARKER_LIGHTEN_AMOUNT));
+			Map->DrawMarkerAt(markerColour, citadelPos.MapMetersX(), citadelPos.MapMetersZ(), CitadelIconObject,
+			                  MarkerAngle, WORLD_ROOM_MARKER_SCALE);
 		}
 	}
 }
@@ -306,32 +317,32 @@ void WorldRoom::DrawCreature(bool glow)
 	     creatureNode = creatureNode->next.Get())
 	{
 		Creature* creature = creatureNode->payload;
-		if (creature != NULL)
+		if (creature == NULL)
 		{
-			MapCoords creaturePos = creature->Pos;
-			if (glow)
+			continue;
+		}
+		MapCoords creaturePos = creature->Pos;
+		if (glow)
+		{
+			LHPoint glowPos = Map->CalcPoint(creaturePos.MapMetersX(), creaturePos.MapMetersZ(), NULL);
+			glowPos.y += WORLD_ROOM_MARKER_GLOW_LIFT;
+			LH3DColor glowColour(WORLD_ROOM_MARKER_GLOW_RED, WORLD_ROOM_MARKER_GLOW_GREEN, WORLD_ROOM_MARKER_GLOW_BLUE);
+			inner_room->Glow->DrawGlowAtPoint(glowPos, glowColour, WORLD_ROOM_MARKER_GLOW_SIZE);
+		}
+		else
+		{
+			GPlayer*  creaturePlayer = creature->GetPlayer();
+			LH3DColor markerColour =
+				creaturePlayer != NULL ? creaturePlayer->GetPlayer3DColor() : LH3DColor(LH3D_COLOR_WHITE);
+			uint32_t packedColour = markerColour.GetColor();
+			if ((packedColour & LH3D_COLOR_RGB_MASK) == 0)
 			{
-				LHPoint glowPos = Map->CalcPoint(creaturePos.MapMetersX(), creaturePos.MapMetersZ(), NULL);
-				glowPos.y += WORLD_ROOM_MARKER_GLOW_LIFT;
-				LH3DColor glowColour(WORLD_ROOM_MARKER_GLOW_RED, WORLD_ROOM_MARKER_GLOW_GREEN,
-				                     WORLD_ROOM_MARKER_GLOW_BLUE);
-				inner_room->Glow->DrawGlowAtPoint(glowPos, glowColour, WORLD_ROOM_MARKER_GLOW_SIZE);
+				packedColour = LH3D_COLOR_WHITE;
 			}
-			else
-			{
-				GPlayer*  creaturePlayer = creature->GetPlayer();
-				LH3DColor markerColour =
-					creaturePlayer != NULL ? creaturePlayer->GetPlayer3DColor() : LH3DColor(LH3D_COLOR_WHITE);
-				uint32_t packedColour = markerColour.GetColor();
-				if ((packedColour & LH3D_COLOR_RGB_MASK) == 0)
-				{
-					packedColour = LH3D_COLOR_WHITE;
-				}
-				markerColour =
-					LH3DColor(LH3D_BLEND_COLOR(packedColour, LH3D_COLOR_WHITE, WORLD_ROOM_MARKER_LIGHTEN_AMOUNT));
-				Map->DrawMarkerAt(markerColour, creaturePos.MapMetersX(), creaturePos.MapMetersZ(), CreatureIconObject,
-				                  MarkerAngle, WORLD_ROOM_MARKER_SCALE);
-			}
+			markerColour =
+				LH3DColor(LH3D_BLEND_COLOR(packedColour, LH3D_COLOR_WHITE, WORLD_ROOM_MARKER_LIGHTEN_AMOUNT));
+			Map->DrawMarkerAt(markerColour, creaturePos.MapMetersX(), creaturePos.MapMetersZ(), CreatureIconObject,
+			                  MarkerAngle, WORLD_ROOM_MARKER_SCALE);
 		}
 	}
 }
@@ -519,9 +530,9 @@ inline int CalcWorldRoomWaterAlpha(float animation_time)
 inline uint32_t CalcWorldRoomWaterColour()
 {
 	uint32_t citadelColour = Temple::CitadelColour.GetColor();
-	uint32_t waterRed = ((citadelColour & 0xff0000) >> 8) * WORLD_ROOM_WATER_COLOUR_SCALE & 0xff0000;
-	uint32_t waterGreen = ((citadelColour >> 8 & 0xff) * WORLD_ROOM_WATER_COLOUR_SCALE >> 8) << 8;
-	uint32_t waterBlue = (citadelColour & 0xff) * WORLD_ROOM_WATER_COLOUR_SCALE >> 8;
+	uint32_t waterRed = (((citadelColour & 0xff0000) >> 8) * WORLD_ROOM_WATER_COLOUR_SCALE) & 0xff0000;
+	uint32_t waterGreen = ((((citadelColour >> 8) & 0xff) * WORLD_ROOM_WATER_COLOUR_SCALE) >> 8) << 8;
+	uint32_t waterBlue = ((citadelColour & 0xff) * WORLD_ROOM_WATER_COLOUR_SCALE) >> 8;
 	return (waterRed | waterGreen | waterBlue) & LH3D_COLOR_RGB_MASK;
 }
 
@@ -617,15 +628,11 @@ void WorldRoom::Draw()
 	Map->DrawMap();
 	TempleRoom::Draw();
 
-	static wchar_t* signTexts[WORLD_ROOM_SIGN_COUNT] = {
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_CREATURE_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_GAMEOPTIONS_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_EXIT_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_UNIVERSE_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_CREDITS_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_SAVEGAME_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_CHALLENGE_TITLE)),
-	};
+#define WORLD_ROOM_SIGN_TEXT(asset_name, red, green, blue, text_id)                                                    \
+	HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(text_id)),
+	static wchar_t* signTexts[WORLD_ROOM_SIGN_COUNT] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_TEXT)};
+#undef WORLD_ROOM_SIGN_TEXT
+#undef WORLD_ROOM_SIGNS
 	DrawWorldRoomSignLabels(this, signTexts);
 
 	// Walking out of the citadel: the exit door fills with light.
@@ -651,11 +658,12 @@ void WorldRoom::Draw()
 			rotation.SetRotationY(static_cast<WorldRoomCamera*>(camera)->SelectedDoor * QUARTER_PI_F);
 			rotation.TransformPoint(start);
 			rotation.TransformPoint(end);
+			uint32_t glowColour =
+				(glowAlpha << 24) + (exitGlowBrightness << 16) + (exitGlowBrightness << 8) + exitGlowBrightness;
 			inner_room->Glow->DrawWhiteGlow(
 				start, end, WORLD_ROOM_EXIT_GLOW_START_HEIGHT,
 				exitGlowProgress * WORLD_ROOM_EXIT_GLOW_END_HEIGHT_RATE + WORLD_ROOM_EXIT_GLOW_END_HEIGHT_BASE,
-				startRadius, exitGlowProgress * WORLD_ROOM_EXIT_GLOW_END_RADIUS_RATE,
-				(glowAlpha << 24) + (exitGlowBrightness << 16) + (exitGlowBrightness << 8) + exitGlowBrightness);
+				startRadius, exitGlowProgress * WORLD_ROOM_EXIT_GLOW_END_RADIUS_RATE, glowColour);
 			LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
 		}
 	}
