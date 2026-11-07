@@ -8,6 +8,8 @@ Matching decompilation of **Black & White 1** (PE/COFF, MSVC 6.0 SP5), use PPC M
 
 Work = get into original devs' heads using only evidence: binary, linker map, debug strings, compiler behavior. Doubt every assumption (names, structure, control flow, whether function "looks right"). Commit only when evidence overwhelming.
 
+Line numbers the binary holds (pushed by `NEW`, `GAME_RAND`, asserts, logging: every macro that took `__LINE__`) are clues to original shape and order of code: which function came before which, how long each was, where lines were added or removed between versions. Implicit `__FILE__` beside them is hard proof of source file the call was compiled in, header included (call inlined from header names header). Check same calls in every version (1.00, 1.10, 1.20, 1.30, Creature Isle): constant offset across a stretch = code untouched there, offset jump = lines added or removed between two calls, call missing or moved = function added, dropped or reordered. Shape a version's lines imply must agree with what others show; disagreement points at wrong assumption about structure.
+
 Tough choice, weak evidence: **leave code nonmatching, move on**. New evidence often appear later (neighbor function, other TU, debug string). Wrong commitment harder to undo than nonmatching function. Forcing 100% usually yield fakematches and debt.
 
 Defer truly hard calls (ambiguous structure, naming disputes, architecture) to humans via PR description or investigation notes (see [Comments](#comments--annotations-in-the-code)), never source comments. Do not refuse complicated tasks because of them. Goal = **human-readable, modifiable source**, not just matching binary.
