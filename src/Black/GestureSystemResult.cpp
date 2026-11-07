@@ -15,6 +15,8 @@
 #include "GestureSystemDataList.h"
 
 #include "GestureConstants.h"
+#include "PSysModifiers.h" /* For the rule base classes */
+#include "PSysRules.h"     /* For UR_GesturingRecognised::TransformedRegion */
 
 enum
 {
@@ -57,7 +59,13 @@ void GestureSystem::fn_0057A9C0(LHRegion* rect, long start, long end)
 	float size = max(width, height);
 	float offsetX = (size - width) * 0.5f;
 	float offsetY = (size - height) * 0.5f;
-	LHSys::GetDraw().Box(rect->start.x, rect->start.y, rect->end.x, rect->end.y, LHColor(0xff, 0xf4, 0xff));
+	LHSys::GetDraw().Box(*rect, LHColor(0xff, 0xf4, 0xff));
+	LHRegion transformedRegion;
+	transformedRegion.start.x = (long)UR_GesturingRecognised::TransformedRegion.start.x;
+	transformedRegion.start.y = (long)UR_GesturingRecognised::TransformedRegion.start.y;
+	transformedRegion.end.x = (long)UR_GesturingRecognised::TransformedRegion.end.x;
+	transformedRegion.end.y = (long)UR_GesturingRecognised::TransformedRegion.end.y;
+	LHSys::GetDraw().Box(transformedRegion, LHColor(0xff, 0xf4, 0xff), LH_DRAW_STYLE_SOLID);
 	float lastY = (float)start;
 	float lastX = lastY;
 	for (long i = (long)lastY; i < PointCount && i <= end; i++)
@@ -116,27 +124,9 @@ void GestureSystem::fn_0057A9C0(LHRegion* rect, long start, long end)
 	}
 }
 
-int LHDraw::Box(long left, long top, long right, long bottom, LHColor color)
-{
-	if (LHSys::GetScreen().depth == 16)
-	{
-		return Box16(left, top, right, bottom, LHPixel16(color));
-	}
-	return Box24(left, top, right, bottom, color);
-}
-
-int LHDraw::Box(long left, long top, long right, long bottom, LHColor color, unsigned long style)
-{
-	if (LHSys::GetScreen().depth == 16)
-	{
-		return Box16(left, top, right, bottom, LHPixel16(color), style);
-	}
-	return Box24(left, top, right, bottom, color, style);
-}
-
 void GestureSystem::fn_0057B0E0(LHRegion* rect, GestureSystemData* data)
 {
-	LHSys::GetDraw().Box(rect->start.x, rect->start.y, rect->end.x, rect->end.y, LHColor(0xff, 0xf4, 0xff));
+	LHSys::GetDraw().Box(*rect, LHColor(0xff, 0xf4, 0xff));
 	if (data == NULL)
 	{
 		return;
@@ -203,7 +193,13 @@ void GestureSystem::fn_0057B4B0(LHRegion* rect)
 {
 	float screenWidth = LHSys::GetScreen().width - 1 + 1.0f;
 	float screenHeight = LHSys::GetScreen().height - 1 + 1.0f;
-	LHSys::GetDraw().Box(rect->start.x, rect->start.y, rect->end.x, rect->end.y, LHColor(0xff, 0xf4, 0xff));
+	LHSys::GetDraw().Box(*rect, LHColor(0xff, 0xf4, 0xff));
+	LHRegion transformedRegion;
+	transformedRegion.start.x = (long)UR_GesturingRecognised::TransformedRegion.start.x;
+	transformedRegion.start.y = (long)UR_GesturingRecognised::TransformedRegion.start.y;
+	transformedRegion.end.x = (long)UR_GesturingRecognised::TransformedRegion.end.x;
+	transformedRegion.end.y = (long)UR_GesturingRecognised::TransformedRegion.end.y;
+	LHSys::GetDraw().Box(transformedRegion, LHColor(0xff, 0xf4, 0xff), LH_DRAW_STYLE_SOLID);
 	float lastX = 0.0f;
 	float lastY = 0.0f;
 	long  first = 0;

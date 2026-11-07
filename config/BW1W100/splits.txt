@@ -1824,14 +1824,14 @@ Black/PSysGeom.cpp:
 	.rdata      start:0x00871324 end:0x00871598
 	.CRT$XCU    start:0x008F6DA4 end:0x008F6DB0 align:4
 	.data       start:0x00B25C38 end:0x00B25EB8
-	.bss        start:0x00C6F494 end:0x00C6F8E8
+	.bss        start:0x00C6F494 end:0x00C6F500
 
 Black/PSysGesture.cpp:
 	.text       start:0x00630150 end:0x00634B70
 	.rdata      start:0x00871598 end:0x00871900
 	.CRT$XCU    start:0x008F6DCC end:0x008F6E10 align:4
 	.data       start:0x00B25EB8 end:0x00B25FD4
-	.bss        start:0x00C6F8E8 end:0x00C6F934
+	.bss        start:0x00C6F500 end:0x00C6F934
 
 Black/PSysHandFX.cpp:
 	.text       start:0x00634B70 end:0x00636A40

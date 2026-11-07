@@ -4,8 +4,8 @@
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>
 
-int LHDraw::ScaledSprite16xxx(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
-                              unsigned long flags)
+LH_RETURN LHDraw::ScaledSprite16xxx(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
+                                    unsigned long flags)
 {
 	(void)x;
 	(void)y;
@@ -13,11 +13,11 @@ int LHDraw::ScaledSprite16xxx(long x, long y, unsigned long destWidth, unsigned 
 	(void)destHeight;
 	(void)sprite;
 	(void)flags;
-	return 0;
+	return LH_OK;
 }
 
-int LHDraw::ScaledSprite24(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
-                           unsigned long flags)
+LH_RETURN LHDraw::ScaledSprite24(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
+                                 unsigned long flags)
 {
 	(void)x;
 	(void)y;
@@ -25,11 +25,11 @@ int LHDraw::ScaledSprite24(long x, long y, unsigned long destWidth, unsigned lon
 	(void)destHeight;
 	(void)sprite;
 	(void)flags;
-	return 0;
+	return LH_OK;
 }
 
-int LHDraw::ScaledSprite24To16(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
-                               unsigned long flags)
+LH_RETURN LHDraw::ScaledSprite24To16(long x, long y, unsigned long destWidth, unsigned long destHeight,
+                                     LHSprite* sprite, unsigned long flags)
 {
 	(void)x;
 	(void)y;
@@ -37,11 +37,11 @@ int LHDraw::ScaledSprite24To16(long x, long y, unsigned long destWidth, unsigned
 	(void)destHeight;
 	(void)sprite;
 	(void)flags;
-	return 0;
+	return LH_OK;
 }
 
-int LHDraw::ScaledSprite16(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
-                           unsigned long flags)
+LH_RETURN LHDraw::ScaledSprite16(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
+                                 unsigned long flags)
 {
 	(void)x;
 	(void)y;
@@ -49,11 +49,11 @@ int LHDraw::ScaledSprite16(long x, long y, unsigned long destWidth, unsigned lon
 	(void)destHeight;
 	(void)sprite;
 	(void)flags;
-	return 0;
+	return LH_OK;
 }
 
-int LHDraw::OneColorScaledSprite16(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
-                                   LHPixel16 color, unsigned long flags)
+LH_RETURN LHDraw::OneColorScaledSprite16(long x, long y, unsigned long destWidth, unsigned long destHeight,
+                                         LHSprite* sprite, LHPixel16 color, unsigned long flags)
 {
 	(void)x;
 	(void)y;
@@ -62,11 +62,11 @@ int LHDraw::OneColorScaledSprite16(long x, long y, unsigned long destWidth, unsi
 	(void)sprite;
 	(void)color;
 	(void)flags;
-	return 0;
+	return LH_OK;
 }
 
-int LHDraw::OneColorScaledSprite24(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
-                                   LHColor color, unsigned long flags)
+LH_RETURN LHDraw::OneColorScaledSprite24(long x, long y, unsigned long destWidth, unsigned long destHeight,
+                                         LHSprite* sprite, LHColor color, unsigned long flags)
 {
 	(void)x;
 	(void)y;
@@ -75,5 +75,5 @@ int LHDraw::OneColorScaledSprite24(long x, long y, unsigned long destWidth, unsi
 	(void)sprite;
 	(void)color;
 	(void)flags;
-	return 0;
+	return LH_OK;
 }

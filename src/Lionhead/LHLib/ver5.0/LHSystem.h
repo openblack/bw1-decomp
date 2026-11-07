@@ -368,7 +368,7 @@ inline void LHPixel16::Glass(LHPixel16 color)
 	value = ((value & LHSys::GetScreen().ColorLSBMask) + (color.value & LHSys::GetScreen().ColorLSBMask)) >> 1;
 }
 
-inline int LHDraw::Line(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode)
+inline LH_RETURN LHDraw::Line(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode)
 {
 	if (LHSys::GetScreen().depth == 16)
 	{
@@ -381,7 +381,35 @@ inline int LHDraw::Line(long x0, long y0, long x1, long y1, LHColor color, unsig
 	              LHSys::GetScreen().backPixelPitch);
 }
 
-inline int LHDraw::Pixel(unsigned long x, unsigned long y, LHColor color, unsigned long mode)
+inline LH_RETURN LHDraw::Box(long left, long top, long right, long bottom, LHColor color)
+{
+	if (LHSys::GetScreen().depth == 16)
+	{
+		return Box16(left, top, right, bottom, LHPixel16(color));
+	}
+	return Box24(left, top, right, bottom, color);
+}
+
+inline LH_RETURN LHDraw::Box(long left, long top, long right, long bottom, LHColor color, unsigned long style)
+{
+	if (LHSys::GetScreen().depth == 16)
+	{
+		return Box16(left, top, right, bottom, LHPixel16(color), style);
+	}
+	return Box24(left, top, right, bottom, color, style);
+}
+
+inline LH_RETURN LHDraw::Box(const LHRegion& region, LHColor color)
+{
+	return Box(region.start.x, region.start.y, region.end.x, region.end.y, color);
+}
+
+inline LH_RETURN LHDraw::Box(const LHRegion& region, LHColor color, unsigned long style)
+{
+	return Box(region.start.x, region.start.y, region.end.x, region.end.y, color, style);
+}
+
+inline LH_RETURN LHDraw::Pixel(unsigned long x, unsigned long y, LHColor color, unsigned long mode)
 {
 	if (LHSys::GetScreen().depth == 16)
 	{
@@ -392,7 +420,7 @@ inline int LHDraw::Pixel(unsigned long x, unsigned long y, LHColor color, unsign
 	return Pixel24(x, y, color, mode);
 }
 
-inline int LHDraw::HVLine(long x0, long y0, long x1, long y1, const LHColor& color, unsigned long mode)
+inline LH_RETURN LHDraw::HVLine(long x0, long y0, long x1, long y1, const LHColor& color, unsigned long mode)
 {
 	if (LHSys::GetScreen().depth == 16)
 	{
@@ -410,15 +438,15 @@ inline int LHDraw::Sprite(long x, long y, LHSprite* sprite)
 	return Sprite24(x, y, sprite);
 }
 
-inline int LHDraw::Sprite(long x, long y, LHSprite* sprite, unsigned long flags, uint32_t drawBuffer,
-                          unsigned long pixelPitch)
+inline LH_RETURN LHDraw::Sprite(long x, long y, LHSprite* sprite, unsigned long flags, uint32_t drawBuffer,
+                                unsigned long pixelPitch)
 {
 	if (LHSys::GetScreen().depth == 16)
 		return Sprite16(x, y, sprite, flags, 0, (LHPixel16*)drawBuffer, pixelPitch);
 	return Sprite24(x, y, sprite, flags, (LHColor*)drawBuffer, pixelPitch);
 }
 
-inline int LHDraw::OneColorSprite(long x, long y, LHSprite* sprite, LHColor color, unsigned long flags)
+inline LH_RETURN LHDraw::OneColorSprite(long x, long y, LHSprite* sprite, LHColor color, unsigned long flags)
 {
 	if (LHSys::GetScreen().depth == 16)
 	{

@@ -11,7 +11,7 @@
 
 static int8_t EmbossShades[LH_BOX_EDGE_LAST] = {2, 1, -2, -1};
 
-int LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color)
+LH_RETURN LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color)
 {
 	LHSys::GetDraw().HVLine16(left, top, right, top, color);
 	LHSys::GetDraw().HVLine16(right, top, right, bottom, color);
@@ -19,7 +19,7 @@ int LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color)
 	return LHSys::GetDraw().HVLine16(left, top, left, bottom, color);
 }
 
-int LHDraw::Box24(long left, long top, long right, long bottom, LHColor color)
+LH_RETURN LHDraw::Box24(long left, long top, long right, long bottom, LHColor color)
 {
 	LHSys::GetDraw().HVLine24(left, top, right, top, color);
 	LHSys::GetDraw().HVLine24(right, top, right, bottom, color);
@@ -27,11 +27,11 @@ int LHDraw::Box24(long left, long top, long right, long bottom, LHColor color)
 	return LHSys::GetDraw().HVLine24(left, top, left, bottom, color);
 }
 
-int LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color, unsigned long style)
+LH_RETURN LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color, unsigned long style)
 {
-	int      result = LH_FAIL;
-	uint32_t clip = 0;
-	LHRegion window = LHSys::GetScreen().GetGraphicsWindow();
+	LH_RETURN result = LH_FAIL;
+	uint32_t  clip = 0;
+	LHRegion  window = LHSys::GetScreen().GetGraphicsWindow();
 	if (left > right)
 	{
 		left ^= right;
@@ -106,11 +106,11 @@ int LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color,
 	return result;
 }
 
-int LHDraw::Box24(long left, long top, long right, long bottom, LHColor color, unsigned long style)
+LH_RETURN LHDraw::Box24(long left, long top, long right, long bottom, LHColor color, unsigned long style)
 {
-	int      result = LH_FAIL;
-	uint32_t clip = 0;
-	LHRegion window = LHSys::GetScreen().GetGraphicsWindow();
+	LH_RETURN result = LH_FAIL;
+	uint32_t  clip = 0;
+	LHRegion  window = LHSys::GetScreen().GetGraphicsWindow();
 	if (left > right)
 	{
 		left ^= right;
@@ -185,10 +185,10 @@ int LHDraw::Box24(long left, long top, long right, long bottom, LHColor color, u
 	return result;
 }
 
-int LHDraw::EmbossedBox16(long left, long top, long right, long bottom, LHPixel16 fillColor, LHPixel16 edgeColor,
-                          uint8_t lightDir, uint8_t bevelWidth, unsigned long style)
+LH_RETURN LHDraw::EmbossedBox16(long left, long top, long right, long bottom, LHPixel16 fillColor, LHPixel16 edgeColor,
+                                uint8_t lightDir, uint8_t bevelWidth, unsigned long style)
 {
-	int       result = LH_FAIL;
+	LH_RETURN result = LH_FAIL;
 	long      x0 = left;
 	long      y0 = top;
 	long      x1 = right;
@@ -362,22 +362,22 @@ int LHDraw::EmbossedBox16(long left, long top, long right, long bottom, LHPixel1
 	return result;
 }
 
-int LHDraw::EmbossedBox24(long left, long top, long right, long bottom, LHColor fillColor, LHColor edgeColor,
-                          uint8_t lightDir, uint8_t bevelWidth, unsigned long style)
+LH_RETURN LHDraw::EmbossedBox24(long left, long top, long right, long bottom, LHColor fillColor, LHColor edgeColor,
+                                uint8_t lightDir, uint8_t bevelWidth, unsigned long style)
 {
-	int      result = LH_FAIL;
-	long     x0 = left;
-	long     y0 = top;
-	long     x1 = right;
-	long     y1 = bottom;
-	LHRegion window = LHSys::GetScreen().GetGraphicsWindow();
-	uint32_t clip[LH_BOX_EDGE_LAST];
-	int      shade[LH_BOX_EDGE_LAST];
-	int      i;
-	LHColor  color;
-	long     pos;
-	long     start;
-	long     end;
+	LH_RETURN result = LH_FAIL;
+	long      x0 = left;
+	long      y0 = top;
+	long      x1 = right;
+	long      y1 = bottom;
+	LHRegion  window = LHSys::GetScreen().GetGraphicsWindow();
+	uint32_t  clip[LH_BOX_EDGE_LAST];
+	int       shade[LH_BOX_EDGE_LAST];
+	int       i;
+	LHColor   color;
+	long      pos;
+	long      start;
+	long      end;
 
 	memset(clip, 0, sizeof(clip));
 
