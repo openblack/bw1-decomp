@@ -64,6 +64,7 @@ int            SetupThing::RightClickCount;
 bool32_t       SetupThing::MouseCaptured;
 int            SetupThing::DoubleClicked;
 int            SetupThing::RightClicked;
+int            SetupThing::AnyDoubleClicked;
 bool           SetupThing::Dragging;
 int            SetupThing::MouseDownX;
 int            SetupThing::MouseDownY;

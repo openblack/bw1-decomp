@@ -206,6 +206,9 @@ struct SetupThing
 	static int DoubleClicked;
 	// BW1W120 00c4cd14
 	static int RightClicked;
+	// Set with DoubleClicked by either button's double click.
+	// BW1W120 00c4cd18
+	static int AnyDoubleClicked;
 	// Set while a pressed control is being dragged with the left button held.
 	// BW1W120 00c4ccc8
 	static bool Dragging;

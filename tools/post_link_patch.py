@@ -858,6 +858,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005E8C5B, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E93EB, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E96CA, call_indirect(0x008A901C)),  # LHInetWeather: __imp__TrackMouseEvent@4
+    (0x005F895A, call_indirect(0x008A97AC)),  # logo: __imp__ShellExecuteA@24
+    (0x005FA06B, call_rel32(0x004017F9)),  # logo
+    (0x005FA35A, call_indirect(0x008A999C)),  # logo: __imp__Disconnect_Dialup...
     (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
     (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
     (0x0060714B, call_rel32(0x004017F9)),  # MobileObject

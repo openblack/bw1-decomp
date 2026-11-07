@@ -600,8 +600,8 @@ void GGame::OnNewGame()
 	if (started && !(g_game->GameFlags & GAME_FLAG_PAUSED))
 	{
 		g_game->script->SetupScreenFadeTo(0, 0, 0, 0);
-		Temple::Dat_00C2A150 = 0.0f;
-		Temple::Dat_00E06020 = 0.0f;
+		Temple::FadeLevel = 0.0f;
+		Temple::FadeTarget = 0.0f;
 	}
 }
 
@@ -2281,7 +2281,7 @@ void GGame::Process3dEngine()
 	}
 	if (ViewMode != GAME_VIEW_MODE_3)
 	{
-		if (Temple::Dat_00E06020 == Temple::Dat_00C2A150 && ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL)
+		if (Temple::FadeTarget == Temple::FadeLevel && ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL)
 			script->ProcessFade(true);
 		else
 			Temple::UpdateFade();

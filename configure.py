@@ -1157,7 +1157,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Lobbybox.cpp"),
             GameCodeObject(NonMatching, "Black/LocalBase.cpp"),
             GameCodeObject(NonMatching, "Black/LoginBox.cpp"),
-            GameCodeObject(NonMatching, "Black/logo.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120"), "Black/logo.cpp"),
             GameCodeObject(NonMatching, "Black/MagicCreatureSpellInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MagicEffectInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MagicFireBallInfo.cpp"),

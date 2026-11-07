@@ -196,6 +196,12 @@ struct LHMouse
 	LHCoord Pos() { return DefaultPos; }
 	// BW1W120 inlined BW1M119 010621e0 (LHCombined Release)
 	LHCoord LButtonPressedPos() { return ButtonPos[0]; }
+	// BW1W120 inlined BW1M119 01093b90
+	LHCoord DeltaPos()
+	{
+		UpdateDeltaPos();
+		return AccumDelta;
+	}
 	// BW1W120 inlined BW1M119 010141f0
 	void ClearDeltaPos()
 	{
