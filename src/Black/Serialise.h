@@ -14,9 +14,6 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#define ARCHIVE_BUFFER_SIZE       0x400
-#define SAVED_GAME_FILE_NAME_SIZE 0x100
-
 enum ARCHIVE_DIRECTION
 {
 	ARCHIVE_DIRECTION_SAVE = 1,
@@ -66,20 +63,20 @@ static_assert(sizeof(ArchiveMemoryBlocks) == 0x8, "Data type is of wrong size");
 class Archive
 {
 public:
-	LHOSFile                           File;                        /* 0x0 */
-	char                               FileName[_MAX_PATH];         /* 0x8 */
-	char                               Buffer[ARCHIVE_BUFFER_SIZE]; /* 0x10c */
-	unsigned long                      BufferPos;                   /* 0x50c */
-	LH_FILE_MODE                       Mode;                        /* 0x510 */
-	uint8_t                            Direction;                   /* 0x514 */
-	bool32_t                           Open;                        /* 0x518 */
-	unsigned long                      Size;                        /* 0x51c */
-	char                               Name[0x100];                 /* 0x520 */
-	LHLinkedList<ArchiveMemoryBlocks*> MemoryBlocks;                /* 0x620 */
-	unsigned long                      MemoryPos;                   /* 0x628 */
-	unsigned long                      MemoryLength;                /* 0x62c */
-	char**                             Memory;                      /* 0x630 */
-	bool32_t                           UsingFile;                   /* 0x634 */
+	LHOSFile                           File;                /* 0x0 */
+	char                               FileName[_MAX_PATH]; /* 0x8 */
+	char                               Buffer[0x400];       /* 0x10c */
+	unsigned long                      BufferPos;           /* 0x50c */
+	LH_FILE_MODE                       Mode;                /* 0x510 */
+	uint8_t                            Direction;           /* 0x514 */
+	bool32_t                           Open;                /* 0x518 */
+	unsigned long                      Size;                /* 0x51c */
+	char                               Name[0x100];         /* 0x520 */
+	LHLinkedList<ArchiveMemoryBlocks*> MemoryBlocks;        /* 0x620 */
+	unsigned long                      MemoryPos;           /* 0x628 */
+	unsigned long                      MemoryLength;        /* 0x62c */
+	char**                             Memory;              /* 0x630 */
+	bool32_t                           UsingFile;           /* 0x634 */
 
 	// Constructors
 
