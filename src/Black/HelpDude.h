@@ -32,14 +32,13 @@ struct LH_SampleInfo;
 class LH3DComplexObject;
 class LH3DObject;
 
-#define HELPDUDE_TRAIL_LENGTH    32
-#define HELPDUDE_TRAIL_SPARKLES  16
-#define HELPDUDE_HOVER_ZONES     6
-#define HELPDUDE_INTERESTS       4
-#define HELPDUDE_EMOTIONS        8
-#define HELPDUDE_SMOKE_PUFFS     16
-#define HELPDUDE_FILENAME_LENGTH 0x80
-#define HELPDUDE_EYE_BONES       3
+#define HELPDUDE_TRAIL_LENGTH   32
+#define HELPDUDE_TRAIL_SPARKLES 16
+#define HELPDUDE_HOVER_ZONES    6
+#define HELPDUDE_INTERESTS      4
+#define HELPDUDE_EMOTIONS       8
+#define HELPDUDE_SMOKE_PUFFS    16
+#define HELPDUDE_EYE_BONES      3
 
 enum HELPDUDE_LOOK
 {
@@ -252,6 +251,8 @@ struct Smoke3
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 inlined
+	float GetY() const { return Pos.y; }
+	// BW1W120 inlined BW1M119 inlined
 	void Init()
 	{
 		uint32_t grey = (int)Random(116.0f, 250.0f);
@@ -259,7 +260,7 @@ struct Smoke3
 		Pos.x = Random(-0.8f, 0.8f);
 		Pos.y = Random(-1.9f, 1.5f);
 		Pos.z = Random(-1.0f, 1.0f);
-		Shrink = 1.0f + (1.0f - Pos.y);
+		Shrink = 1.0f + (1.0f - GetY());
 		Size = Random(4.0f, 8.0f);
 		Spin = Random(-2.0f, 2.0f);
 		Age = 0.0f;
@@ -307,64 +308,73 @@ static_assert(sizeof(HelpDudeBones) == 0x1c, "Data type is of wrong size");
 
 struct HelpDude : public LocalBase
 {
-	bool32_t             Invisible;
-	int                  BoneCount;
-	float                Scale;
-	LH3DMesh*            Mesh;
-	unsigned int         MeshSize;
-	LH3DComplexObject*   Object;
-	LH3DObject*          DrawObject;
-	CAnim**              Anims;
-	CFrame*              Frame;
-	char                 MeshFile[HELPDUDE_FILENAME_LENGTH];
-	char                 AnimFiles[ANIM_LAST][HELPDUDE_FILENAME_LENGTH];
-	LHMatrix*            BaseMatrices;
-	LHMatrix*            InverseBaseMatrices;
-	LHMatrix*            BoneMatrices;
-	LHMatrix*            BaseBoneMatrices;
-	HelpDudeTrail        Trail;
-	LH3DSprite*          GlowSprite;
-	LH3DSprite*          SmokeSprites;
-	Smoke3*              SmokePuffs;
-	float                SmokeTime;
-	bool                 Smoking;
-	float                Visibility;
-	float                TargetVisibility;
-	bool32_t             IsEvil;
-	int                  Emotion;
-	float                EmotionStrength;
-	int                  TargetEmotion;
-	float                TargetEmotionStrength;
-	HelpDudeEmotion      Emotions[HELPDUDE_EMOTIONS];
-	HelpDudeEmotion      CurrentEmotion;
-	float                BlinkTimer;
-	char                 LipSyncAnimFlags[ANIM_LAST];
-	HelpDudeBones        Bones;
-	int                  PupilBone;
-	float                PupilU;
-	float                PupilV;
-	float                PupilScale;
-	LH_AudioSystem*      AudioSystem;
-	LH_AudioBank*        SentenceBank;
-	int                  SentenceCount;
-	AudioTagList*        SentenceTags;
-	AudioTagList*        CurrentTags;
-	int                  CurrentSentence;
-	AutoVoiceParams      VoiceParams;
-	int                  field_0x2f50[4];
-	VoiceKey             Voice;
-	float                TalkTime;
-	int                  SavedLookMode;
-	int                  LookMode;
-	int                  LipSyncAnimState[ANIM_LAST];
-	float                LipSyncAnimTime[ANIM_LAST];
-	float                LastSoundTime[ANIM_LAST];
-	HelpDudeSoundInfo*   SoundInfos;
-	float                MouseSpeed;
-	float                MouseExcitement;
-	bool                 LookAlternative;
-	float                LookSwitchTime;
-	LHMatrix             Transform;
+	bool32_t           Invisible;
+	int                BoneCount;
+	float              Scale;
+	LH3DMesh*          Mesh;
+	unsigned int       MeshSize;
+	LH3DComplexObject* Object;
+	LH3DObject*        DrawObject;
+	CAnim**            Anims;
+	CFrame*            Frame;
+	char               MeshFile[0x80];
+	char               AnimFiles[ANIM_LAST][0x80];
+	LHMatrix*          BaseMatrices;
+	LHMatrix*          InverseBaseMatrices;
+	LHMatrix*          BoneMatrices;
+	LHMatrix*          BaseBoneMatrices;
+	HelpDudeTrail      Trail;
+	LH3DSprite*        GlowSprite;
+	LH3DSprite*        SmokeSprites;
+	Smoke3*            SmokePuffs;
+	float              SmokeTime;
+	bool               Smoking;
+	float              Visibility;
+	float              TargetVisibility;
+	bool32_t           IsEvil;
+	int                Emotion;
+	float              EmotionStrength;
+	int                TargetEmotion;
+	float              TargetEmotionStrength;
+	HelpDudeEmotion    Emotions[HELPDUDE_EMOTIONS];
+	HelpDudeEmotion    CurrentEmotion;
+	float              BlinkTimer;
+	char               LipSyncAnimFlags[ANIM_LAST];
+	HelpDudeBones      Bones;
+	int                PupilBone;
+	float              PupilU;
+	float              PupilV;
+	float              PupilScale;
+	LH_AudioSystem*    AudioSystem;
+	LH_AudioBank*      SentenceBank;
+	int                SentenceCount;
+	AudioTagList*      SentenceTags;
+	AudioTagList*      CurrentTags;
+	int                CurrentSentence;
+	AutoVoiceParams    VoiceParams;
+	int                field_0x2f50[4];
+	VoiceKey           Voice;
+	float              TalkTime;
+	int                SavedLookMode;
+	int                LookMode;
+	int                LipSyncAnimState[ANIM_LAST];
+	float              LipSyncAnimTime[ANIM_LAST];
+	float              LastSoundTime[ANIM_LAST];
+	HelpDudeSoundInfo* SoundInfos;
+	float              MouseSpeed;
+	float              MouseExcitement;
+	bool               LookAlternative;
+	float              LookSwitchTime;
+	union {
+		LHMatrix Transform;
+		struct
+		{
+			LHPoint Right;
+			LHPoint Up;
+			LHPoint Forward;
+			LHPoint Pos;
+		};
+	};
 	HoverZone            HoverZones[HELPDUDE_HOVER_ZONES];
 	DudeInterest         Interests[HELPDUDE_INTERESTS];
 	LHCoord              LastMousePos;

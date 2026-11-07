@@ -81,8 +81,30 @@ void HelpDudeTrail::Update(const LHPoint& pos, float dt)
 
 #define HELPDUDE_TRAIL_MAX_ALPHA 64
 
+static inline float NormaliseTrailDirection(LHPoint& point)
+{
+	float px = point.x;
+	float py = point.y;
+	float pz = point.z;
+	float length;
+	if (px == 0.0f && py == 0.0f && pz == 0.0f)
+	{
+		length = 0.0f;
+	}
+	else
+	{
+		length = sqrt(pz * pz + py * py + px * px);
+		float scale = 1.0f / length;
+		point.x = scale * px;
+		point.y = scale * py;
+		point.z = scale * pz;
+	}
+	return length;
+}
+
 void HelpDudeTrail::Draw(HelpDude* dude, LH3DMaterial* material)
 {
+	float sideScale = 1.0f;
 	float v = 0.0f;
 	if (!dude->IsEvil)
 	{
@@ -112,11 +134,11 @@ void HelpDudeTrail::Draw(HelpDude* dude, LH3DMaterial* material)
 		int prev = i ? i - 1 : 0;
 		int next = i < HELPDUDE_TRAIL_LENGTH - 1 ? i + 1 : HELPDUDE_TRAIL_LENGTH - 1;
 
+		int      current = (Head + i) & (HELPDUDE_TRAIL_LENGTH - 1);
 		LHPoint* from = &Points[(Head + prev) & (HELPDUDE_TRAIL_LENGTH - 1)];
 		LHPoint* to = &Points[(Head + next) & (HELPDUDE_TRAIL_LENGTH - 1)];
-		int      current = (Head + i) & (HELPDUDE_TRAIL_LENGTH - 1);
 		LHPoint  dir = *to - *from;
-		float    width = dir.Normalise();
+		float    width = NormaliseTrailDirection(dir);
 		if (width > 0.0001f)
 		{
 			width += 0.2f;
@@ -134,9 +156,10 @@ void HelpDudeTrail::Draw(HelpDude* dude, LH3DMaterial* material)
 		*colours++ = LH3DColor((alpha << 24) | 0xffffff);
 
 		LHPoint* point = &Points[current];
-		LHPoint  side(dir);
-		positions[0] = dude->ConvertHoverTo3D(point->x + side.y, point->y - side.x, point->z, false);
-		positions[1] = dude->ConvertHoverTo3D(point->x - side.y, point->y + side.x, point->z, false);
+		float    sideX = dir.x * sideScale;
+		float    sideY = dir.y * sideScale;
+		positions[0] = dude->ConvertHoverTo3D(point->x + sideY, point->y - sideX, point->z, false);
+		positions[1] = dude->ConvertHoverTo3D(point->x - sideY, point->y + sideX, point->z, false);
 		positions += 2;
 	}
 
@@ -237,17 +260,11 @@ float HoverZone::Feel(float x, float y)
 	{
 		return 0.0f;
 	}
-	float dx = x - X;
-	if (fabs(dx) > OuterRadius)
+	if (fabs(x - X) > OuterRadius || fabs(y - Y) > OuterRadius)
 	{
 		return 0.0f;
 	}
-	float dy = y - Y;
-	if (fabs(dy) > OuterRadius)
-	{
-		return 0.0f;
-	}
-	float distSq = dy * dy + dx * dx;
+	float distSq = (x - X) * (x - X) + (y - Y) * (y - Y);
 	if (distSq > OuterRadius * OuterRadius)
 	{
 		return 0.0f;
@@ -352,7 +369,6 @@ void HelpDude::DrawFeel()
 	LH3DRender::SetTextureStageState(0, D3DTSS_MAGFILTER, D3DTFG_LINEAR);
 	if (LH3DRender::SetRenderState(D3DRENDERSTATE_ALPHABLENDENABLE, TRUE) != S_OK)
 	{
-		LH3DRender::g_render_states[D3DRENDERSTATE_ALPHABLENDENABLE] = 0xffffffff;
 		LH3DRender::SetRenderState(D3DRENDERSTATE_ALPHABLENDENABLE, TRUE);
 	}
 	LH3DRender::SetRenderState(D3DRENDERSTATE_SRCBLEND, D3DBLEND_ONE);
@@ -426,9 +442,11 @@ void HelpDude::UpdateHoverZ(float min_z)
 	}
 	if (OtherGuy)
 	{
-		Point2D d = Point2D(HoverX.GetCurrentValue(), HoverY.GetCurrentValue()) -
-		            Point2D(OtherGuy->HoverX.GetCurrentValue(), OtherGuy->HoverY.GetCurrentValue());
-		float   distSq = d.GetNormSq();
+		float x = HoverX.GetCurrentValue();
+		float y = HoverY.GetCurrentValue();
+		float otherX = OtherGuy->HoverX.GetCurrentValue();
+		float otherY = OtherGuy->HoverY.GetCurrentValue();
+		float distSq = (x - otherX) * (x - otherX) + (y - otherY) * (y - otherY);
 		OtherGuyDistance = (float)sqrt(distSq);
 		OtherGuy->OtherGuyDistance = OtherGuyDistance;
 		if (distSq < HELPDUDE_OTHER_GUY_RANGE * HELPDUDE_OTHER_GUY_RANGE)
@@ -569,6 +587,11 @@ void HoverZone::Draw()
 	{
 		return;
 	}
+	struct ColourCopy
+	{
+		LHColor colour;
+	};
+
 	const LHColor& colour = Strength > 0.0f ? LHColor(255, 255, 255) : LHColor(255, 0, 0);
 
 	int  halfWidth = LHSys::GetScreen().width >> 1;
@@ -578,8 +601,10 @@ void HoverZone::Draw()
 	long cx = (long)((X + 1.0f) * halfWidth);
 	if (LHSys::GetScreen().depth == 16)
 	{
+		ColourCopy copy;
+		copy.colour = colour;
 		LHPixel16 pixel;
-		pixel.Set(colour);
+		pixel.Set(copy.colour);
 		LHSys::GetDraw().Circle16(cx, cy, radius, pixel, 1);
 	}
 	else
@@ -592,8 +617,10 @@ void HoverZone::Draw()
 	cx = (long)((X + 1.0f) * halfWidth);
 	if (LHSys::GetScreen().depth == 16)
 	{
+		ColourCopy copy;
+		copy.colour = colour;
 		LHPixel16 pixel;
-		pixel.Set(colour);
+		pixel.Set(copy.colour);
 		LHSys::GetDraw().Circle16(cx, cy, radius, pixel, 1);
 	}
 	else
@@ -714,6 +741,12 @@ const char* HelpDude::AnimNames[ANIM_LAST] = {
 	"Spare 9",       "Spare 10",
 };
 
+static uint8_t s_AnimGroups[ANIM_LAST] = {
+	0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 5, 5,
+	5, 5, 5, 5, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5,
+	5, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+};
+
 static LHColor s_DebugColours[6] = {
 	LHColor(200, 200, 200), LHColor(200, 150, 150), LHColor(150, 200, 150),
 	LHColor(150, 150, 200), LHColor(200, 200, 150), LHColor(150, 200, 200),
@@ -823,7 +856,7 @@ float GetSampleAmplitude(LH_AudioSystem* audio_system, unsigned long sample, int
 	{
 		float time = (GetTickCount() - s_SampleStartTick) / 1000.0f;
 		if (time >= 0.0f && time < s_SampleDuration && s_SampleData &&
-		    audio_system->LHSampleIsPlaying(GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_HELP_SPRITES],
+		    audio_system->LHSampleIsPlaying(GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_HELP_SPRITES),
 		                                    HELPDUDE_SAMPLE_OBJECT, sample))
 		{
 			int start = (int)(time / s_SampleDuration * s_SampleCount);
@@ -1766,12 +1799,12 @@ LHPoint HelpDude::ConvertHoverTo3D(float x, float y, float z, bool near_plane)
 	LHPoint pos;
 	if (near_plane)
 	{
-		LHCoord screen((long)((x + 1.0f) * halfWidth), (long)(y * halfWidth + halfHeight));
+		LHCoord screen((long)(x * halfWidth + halfWidth), (long)(y * halfWidth + halfHeight));
 		LH3DTech::Get3DPointFromScreen(screen, pos, LH3DTech::g_info_transform.NearClip * 2.0f);
 	}
 	else
 	{
-		LHCoord screen((long)((x + 1.0f) * halfWidth), (long)(y * halfWidth + halfHeight));
+		LHCoord screen((long)(x * halfWidth + halfWidth), (long)(y * halfWidth + halfHeight));
 		LH3DTech::Get3DPointFromScreen(screen, pos,
 		                               ((TalkDepth - Depth) * Smoothify(ZoomBlend) + Depth) * (z * 0.3f + 1.0f));
 	}
@@ -1824,6 +1857,8 @@ LHCoord HelpDude::GetHomeIdx(int edge)
 
 void HelpDude::SetState(HELPDUDESTATE state, bool32_t force)
 {
+	float hoverX;
+	float hoverY;
 	if (state == HELPDUDESTATE_NONE)
 	{
 		state = NextState;
@@ -1847,7 +1882,6 @@ void HelpDude::SetState(HELPDUDESTATE state, bool32_t force)
 	{
 	case HELPDUDESTATE_POINT_LEFT:
 	case HELPDUDESTATE_POINT_RIGHT:
-	case HELPDUDESTATE_POINT | HELPDUDESTATE_LEFT | HELPDUDESTATE_RIGHT:
 		if (!(state & HELPDUDESTATE_POINT) && !(state & HELPDUDESTATE_CLING))
 		{
 			state = (HELPDUDESTATE)(State | HELPDUDESTATE_OUTRO);
@@ -1871,16 +1905,16 @@ void HelpDude::SetState(HELPDUDESTATE state, bool32_t force)
 	switch (state)
 	{
 	case HELPDUDESTATE_CLING:
-		if (State & HELPDUDESTATE_CLING)
-		{
-			state = HELPDUDESTATE_CLING;
-		}
-		else
+		if (!(State & HELPDUDESTATE_CLING))
 		{
 			ClingAnimTime = 0.0f;
 			state = HELPDUDESTATE_CLING_INTRO;
 			Sethoverx(ClingX, 1.0f, false);
 			Sethovery(ClingY, 1.0f, false);
+		}
+		else
+		{
+			state = HELPDUDESTATE_CLING;
 		}
 		break;
 	case HELPDUDESTATE_PLAY_ANIM:
@@ -1921,63 +1955,59 @@ void HelpDude::SetState(HELPDUDESTATE state, bool32_t force)
 		}
 		break;
 	case HELPDUDESTATE_POINT: {
-		int side = State & 3;
+		int side = State & (HELPDUDESTATE_LEFT | HELPDUDESTATE_RIGHT);
 		if (!side)
 		{
-			side = GRand::LocalRand(2) ? 1 : 2;
+			side = GRand::LocalRand(2) ? HELPDUDESTATE_LEFT : HELPDUDESTATE_RIGHT;
 		}
 		if (HoverX.GetCurrentValue() < PointX || PointX > 0.25f)
 		{
-			side = 1;
+			side = HELPDUDESTATE_LEFT;
 		}
 		if (HoverX.GetCurrentValue() > PointX || PointX < -0.25f)
 		{
-			side = 2;
+			side = HELPDUDESTATE_RIGHT;
 		}
 		if (FlyToPoint != 0.0f)
 		{
-			side = 1;
+			side = HELPDUDESTATE_LEFT;
 		}
-		float x;
-		if (side == 1)
+		if (side == HELPDUDESTATE_LEFT)
 		{
-			x = PointX - 0.2f;
 			state = HELPDUDESTATE_POINT_INTRO_LEFT;
 		}
 		else
 		{
-			side = 2;
-			x = PointX + 0.2f;
+			side = HELPDUDESTATE_RIGHT;
 			state = HELPDUDESTATE_POINT_INTRO_RIGHT;
 		}
+		float x = side == HELPDUDESTATE_LEFT ? PointX - 0.2f : PointX + 0.2f;
 		if (!(State & HELPDUDESTATE_POINT))
 		{
 			Sethovery(PointY, 1.0f, true);
 			Sethoverx(x, 1.0f, true);
 		}
-		else if ((State & 3) == side)
-		{
-			state = State;
-		}
-		else
+		else if ((State & (HELPDUDESTATE_LEFT | HELPDUDESTATE_RIGHT)) != side)
 		{
 			Sethovery(PointY, 1.0f, true);
 			Sethoverx(x, 1.0f, true);
 			state = (HELPDUDESTATE)(State | HELPDUDESTATE_OUTRO);
 			NextState = HELPDUDESTATE_POINT;
 		}
+		else
+		{
+			state = State;
+		}
 		break;
 	}
 	case HELPDUDESTATE_HOVER: {
-		float x;
-		float y;
-		if (!Convert3DToHover((LHPoint&)Transform.GetPos(), &x, &y, true))
+		if (!Convert3DToHover((LHPoint&)Transform.GetPos(), &hoverX, &hoverY, true))
 		{
-			x = 0.0f;
-			y = 0.0f;
+			hoverX = 0.0f;
+			hoverY = 0.0f;
 		}
-		HoverX.SetPosition(x);
-		HoverY.SetPosition(y);
+		HoverX.SetPosition(hoverX);
+		HoverY.SetPosition(hoverY);
 		break;
 	}
 	}
@@ -2072,6 +2102,17 @@ void HelpDude::UpdateInterests(float dt, bool32_t active)
 
 void HelpDude::Update1(float dt, bool32_t active, float min_z, bool32_t play_sound, bool32_t finish)
 {
+	float   unused0 = 0.0f;
+	float   unused1 = 0.0f;
+	float   unused2 = 0.0f;
+	float   unused3 = 0.0f;
+	float   unused4 = 0.0f;
+	float   unused5 = 0.0f;
+	float   unused6 = 0.0f;
+	LHPoint unusedPoint0(0.0f, 0.0f, 0.0f);
+	LHPoint unusedPoint1(0.0f, 0.0f, 0.0f);
+	LHPoint unusedPoint2(0.0f, 0.0f, 0.0f);
+	LHPoint unusedPoint3(0.0f, 0.0f, 0.0f);
 	WobbleTime += dt;
 	StateTime += dt;
 
@@ -2202,9 +2243,8 @@ void HelpDude::Update1(float dt, bool32_t active, float min_z, bool32_t play_sou
 		cling = 1.0f - StateTime;
 	}
 	cling = Smoothify(cling);
-	float notCling = 1.0f - cling;
-	Transform.RotateX(notCling * (HoverZ.CurrentSpeed * 0.3f + Tilt));
-	Transform.RotateY(notCling * (HoverX.GetCurrentValue() * -0.8f));
+	Transform.RotateX((1.0f - cling) * (HoverZ.CurrentSpeed * 0.3f + Tilt));
+	Transform.RotateY((1.0f - cling) * (HoverX.GetCurrentValue() * -0.8f));
 
 	float clingAngle = cling * ((float)(((ClingEdge - 2) & 3) - 2) * HALF_PI_F);
 	if (ClingRoll < 0.0f)
@@ -2795,7 +2835,8 @@ void HelpDude::PointEyesAt(LHPoint* pos)
 		LHMatrix* eye = &BoneMatrices[Bones.Eyes[i][0]];
 		LHMatrix  inverse;
 		inverse.SetInverse(*eye);
-		LHPoint local = inverse * *pos;
+		LHPoint local;
+		LHMATRIX_TRANSFORM_POINT(local, *pos, inverse);
 		if (-local.y < 0.0f)
 		{
 			return;
@@ -2811,9 +2852,11 @@ void HelpDude::PointEyesAt(LHPoint* pos)
 		}
 		eye->RotateZ(-yaw);
 		inverse.SetInverse(*eye);
-		local = inverse * *pos;
-		float pitch = (float)atan2(local.z, -local.y);
-		float limit = (float)(1.0f - fabs(yaw) / QUARTER_PI_F) * (PI_F / 5.0f);
+		LHMATRIX_TRANSFORM_POINT(local, *pos, inverse);
+		volatile float z = local.z;
+		float          negY = -local.y;
+		float          pitch = (float)atan2(z, negY);
+		float          limit = (float)(1.0f - fabs(yaw) / QUARTER_PI_F) * (PI_F / 5.0f);
 		if (pitch > limit)
 		{
 			pitch = limit;
@@ -3012,14 +3055,32 @@ void HelpDude::SetHoverArea(float x, float y, float inner_radius, float outer_ra
 // The evil dude's smoke is a dark red.
 #define HELPDUDE_EVIL_SMOKE_TINT 0x7f1f1f
 
+#define HELPDUDE_SPRITE_FRAMES   16
+#define HELPDUDE_GLOW_FRAME_TIME 200
+
+static inline void SetFrameMasked(int frame, LH3DSprite* sprite)
+{
+	sprite->Frame = frame;
+	sprite->Frame = frame & (HELPDUDE_SPRITE_FRAMES - 1);
+}
+
+static inline void SetFrameOnly(LH3DSprite* sprite, int frame)
+{
+	sprite->Frame = frame & (HELPDUDE_SPRITE_FRAMES - 1);
+}
+
 void HelpDude::Draw(bool deferred)
 {
+	float   unusedTop0 = 0.0f;
+	float   unusedTop1 = 0.0f;
+	float   unusedTop2 = 0.0f;
+	float   unusedTop3 = 0.0f;
 	LHPoint sun = LH3DTech::GetSun();
 	LHPoint point;
 	LH3DTech::Get3DPointFromScreen(LHCoord(0, LHSys::GetScreen().height >> 1), point, -10.0f);
 	if (PointBlend < 0.5f)
 	{
-		point.Add((LH3DTech::GetSun() - point) * PointBlend * 2.0f);
+		point += (LH3DTech::GetSun() - point) * PointBlend * 2.0f;
 		if (!deferred)
 		{
 			LH3DTech::SetSun(point);
@@ -3089,14 +3150,23 @@ void HelpDude::Draw(bool deferred)
 		{
 			GlowSprite = LH3DSprite::Create(1, true);
 			GlowSprite->colour = 0xf0ffffff;
+			GlowSprite->material = g_smoke_mat;
 		}
-		GlowSprite->pos = Object->matrix * GlowOffset;
+		int             unusedGlow0 = 0;
+		int             unusedGlow1 = 0;
+		int             unusedGlow2 = 0;
+		const LHPoint&  offset = GlowOffset;
+		const LHMatrix& matrix = Object->matrix;
+		LHPoint         glowPos;
+		glowPos.x = offset.x * matrix.m[0] + offset.y * matrix.m[3] + offset.z * matrix.m[6] + matrix.m[9];
+		glowPos.y = offset.x * matrix.m[1] + offset.y * matrix.m[4] + offset.z * matrix.m[7] + matrix.m[10];
+		glowPos.z = offset.x * matrix.m[2] + offset.y * matrix.m[5] + offset.z * matrix.m[8] + matrix.m[11];
+		GlowSprite->pos = glowPos;
 		GlowSprite->colour = colour;
 		static int s_GlowTime = 0;
 		s_GlowTime += GetAlexTimeInc();
-		GlowSprite->Frame = (s_GlowTime / 200) & 15;
-		GlowSprite->Aspect = 0.3f;
-		GlowSprite->Size = GlowSize * GetHoverScale() * 100.0f;
+		SetFrameMasked(s_GlowTime / HELPDUDE_GLOW_FRAME_TIME, GlowSprite);
+		GlowSprite->SetShapeOnly((Size * GlowSize) * SizeScale * 100.0f, 0.3f);
 		GlowSprite->Draw();
 	}
 
@@ -3137,13 +3207,14 @@ void HelpDude::Draw(bool deferred)
 				SmokeSprites[i].SetSize(
 					(SmokePuffs[i].Size - SmokePuffs[i].Shrink * SmokePuffs[i].Age * fade * 0.5f + 1.0f) * 0.12f);
 				SmokeSprites[i].angle = SmokePuffs[i].Spin * SmokePuffs[i].Age + i;
-				SmokeSprites[i].Frame = (int)(SmokePuffs[i].Age * 8.0f) & 15;
+				SetFrameOnly(&SmokeSprites[i], (int)(SmokePuffs[i].Age * 8.0f));
 				float x;
 				float y;
 				Convert3DToHover((LHPoint&)Object->matrix.GetPos(), &x, &y, true);
 				SmokeSprites[i].pos = ConvertHoverTo3D(SmokePuffs[i].Pos.x * 0.1f + x, SmokePuffs[i].Pos.y * 0.1f + y,
 				                                       -HoverZ.GetCurrentValue() - 0.6f, false);
 				SmokePuffs[i].Pos.y -= (SmokePuffs[i].Spin + 1.0f) * smokeDt * 3.0f * 0.1f;
+				SmokeSprites[i].material = g_smoke_mat;
 				SmokeSprites[i].Draw();
 			}
 		}
@@ -3236,6 +3307,8 @@ void HelpDude::LoadAnim(int anim, LHFile* file)
 	{
 		return;
 	}
+	LHMatrix*& inverse = InverseBaseMatrices;
+	LHMatrix*& base = BaseMatrices;
 
 	if (file)
 	{
@@ -3274,7 +3347,7 @@ void HelpDude::LoadAnim(int anim, LHFile* file)
 			Scale = LH3DAnim::SetTransform(BaseMatrices, Mesh, identity);
 			for (int i = 0; i < BoneCount; i++)
 			{
-				InverseBaseMatrices[i].SetInverse(BaseMatrices[i]);
+				inverse[i].SetInverse(base[i]);
 			}
 			Frame = Anims[ANIM_STAND]->frames[0];
 		}
@@ -3315,7 +3388,7 @@ void HelpDude::LoadAnim(int anim, LHFile* file)
 			Scale = LH3DAnim::SetTransform(BaseMatrices, Mesh, identity);
 			for (int i = 0; i < BoneCount; i++)
 			{
-				InverseBaseMatrices[i].SetInverse(BaseMatrices[i]);
+				inverse[i].SetInverse(base[i]);
 			}
 		}
 		Anims[anim] = new (FILEPATH, HELPDUDE_LINE(3174)) CAnim(Mesh, BaseMatrices, InverseBaseMatrices, data);
@@ -3420,7 +3493,7 @@ void HelpDude::Uninit(bool reinit)
 	{
 		GlowSprite->Release();
 	}
-	GlowSprite = NULL;
+	memset(&GlowSprite, 0, sizeof(GlowSprite));
 	if (SmokeSprites)
 	{
 		SmokeSprites->Release();
@@ -3512,7 +3585,8 @@ void HelpDude::Init(bool32_t is_evil, LH_AudioSystem* audio_system)
 	WobbleTime = 0.0f;
 	StateTime = 0.0f;
 	WingsBlend = 0.0f;
-	PupilU = HELPDUDE_PUPIL_U;
+	float& pupilU = PupilU;
+	pupilU = HELPDUDE_PUPIL_U;
 	PupilV = HELPDUDE_PUPIL_V;
 	PupilScale = HELPDUDE_PUPIL_SCALE;
 	HoverX.SetPosition(0.0f);
@@ -3677,13 +3751,14 @@ void HelpDude::Load(LHFile* file, LH_AudioSystem* audio_system)
 
 void HelpDude::Save(LHFile* file, bool32_t with_mesh)
 {
+	int i;
 	file->OpenSegment(HELPDUDE_SEGMENT_NAME);
 	int animCount = ANIM_LAST;
 	file->WriteSegmentData(&BoneCount, sizeof(BoneCount));
 	file->WriteSegmentData(&animCount, sizeof(animCount));
 	file->WriteSegmentData(&Scale, sizeof(Scale));
 	file->WriteSegmentData(MeshFile, sizeof(MeshFile));
-	for (int i = 0; i < animCount; i++)
+	for (i = 0; i < animCount; i++)
 	{
 		file->WriteSegmentData(AnimFiles[i], sizeof(AnimFiles[i]));
 	}
@@ -3699,23 +3774,23 @@ void HelpDude::Save(LHFile* file, bool32_t with_mesh)
 	file->WriteSegmentData(&PupilV, sizeof(PupilV));
 	file->WriteSegmentData(&PupilScale, sizeof(PupilScale));
 	file->WriteSegmentData(&Emotion, sizeof(Emotion));
-	int emotionSize = sizeof(Emotions);
-	file->WriteSegmentData(&emotionSize, sizeof(emotionSize));
+	i = sizeof(Emotions);
+	file->WriteSegmentData(&i, sizeof(i));
 	file->WriteSegmentData(Emotions, sizeof(Emotions));
 	file->WriteSegmentData(&Depth, sizeof(Depth));
 	file->WriteSegmentData(&Size, sizeof(Size));
 	file->WriteSegmentData(&Tilt, sizeof(Tilt));
 	int infoCount = ANIM_LAST;
 	file->WriteSegmentData(&infoCount, sizeof(infoCount));
-	for (int j = 0; j < infoCount; j++)
+	for (i = 0; i < infoCount; i++)
 	{
-		file->WriteSegmentData(&SoundInfos[j].SoundCount, sizeof(SoundInfos[j].SoundCount));
-		for (int k = 0; k < SoundInfos[j].SoundCount; k++)
+		file->WriteSegmentData(&SoundInfos[i].SoundCount, sizeof(SoundInfos[i].SoundCount));
+		for (int k = 0; k < SoundInfos[i].SoundCount; k++)
 		{
-			file->WriteSegmentData(&SoundInfos[j].Sounds[k], sizeof(HelpDudeSound));
+			file->WriteSegmentData(&SoundInfos[i].Sounds[k], sizeof(HelpDudeSound));
 		}
-		file->WriteSegmentData(&SoundInfos[j].LoopStart, sizeof(SoundInfos[j].LoopStart));
-		file->WriteSegmentData(&SoundInfos[j].LoopEnd, sizeof(SoundInfos[j].LoopEnd));
+		file->WriteSegmentData(&SoundInfos[i].LoopStart, sizeof(SoundInfos[i].LoopStart));
+		file->WriteSegmentData(&SoundInfos[i].LoopEnd, sizeof(SoundInfos[i].LoopEnd));
 	}
 	file->WriteSegmentData(&FingerSide, sizeof(FingerSide));
 	file->WriteSegmentData(&FingerForward, sizeof(FingerForward));
@@ -3769,13 +3844,16 @@ int HelpDude::PlaySoundFX(int anim, float time, LH_AudioBank* bank)
 		{
 			LHPoint camera = *LH3DTech::GetCameraPosition();
 			LHPoint pos(Transform._41, Transform._42, Transform._43);
+			float   dx = camera.x - pos.x;
+			float   dy = camera.y - pos.y;
+			float   dz = camera.z - pos.z;
 			long    params[5];
 			params[0] = HELPDUDE_SOUND_LEVEL;
 			params[1] = HELPDUDE_SOUND_PARAM_1;
 			params[2] = HELPDUDE_SOUND_HITTER;
 			params[3] = HELPDUDE_SOUND_TARGET;
 			params[4] = info->Sounds[i].Sample;
-			GGlobal::Global.audio->SamplePlayAnimEffect(this, camera.GetDistance(pos), params,
+			GGlobal::Global.audio->SamplePlayAnimEffect(this, SquareRoot((dx * dx) + (dy * dy) + (dz * dz)), params,
 			                                            !info->Sounds[i].Optional, bank, 0, 0.0f, 0.0f);
 		}
 	}

@@ -1213,13 +1213,13 @@ Black/HandStateTotem.cpp:
 	.rdata      start:0x008F0BA0 end:0x008F0BC4
 
 Black/HandStateTug.cpp:
-	.text       start:0x005B3990 end:0x005B4ABC
+	.text       start:0x005B3990 end:0x005B4AA0
 	.rdata      start:0x008F0BC4 end:0x00905410
 	.bss        start:0x00D02E88 end:0x00D048F8
 
 Black/helpdude.cpp:
-	.text       start:0x005B5200 end:0x005BE5F0
-	.data       start:0x00BDF6E0 end:0x00BDFBF0
+	.text       start:0x005B4AA0 end:0x005BE5F0
+	.data       start:0x00BDF6FC end:0x00BDFBF0
 
 Black/HelpDudeControl.cpp:
 	.text       start:0x005BE5F0 end:0x005BFE60
