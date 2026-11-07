@@ -21,6 +21,8 @@ struct LandscapeDetails
 	// BW1W120 inlined BW1M119 014d28e0
 	LandscapeDetails() { memset(this, 0, sizeof(*this)); }
 
+	// BW1W120 00714270 BW1M119 01389e00
+	void TakeFromString(char* string);
 	// BW1W120 00714350 BW1M119 013eed70
 	bool AreWeOnDisk(bool map);
 
