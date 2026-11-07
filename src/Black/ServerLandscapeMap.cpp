@@ -1,6 +1,5 @@
 #include <Lionhead/LH3DLib/development/LH3DScaleConstants.h>
 #include <Lionhead/LH3DLib/development/LH3DMathConstants.h>
-#include "GameTimePerYear.h"
 #include "ServerLandscapeMap.h"
 
 #include <ctype.h>    /* For isdigit */
@@ -27,6 +26,10 @@
 #include "Player.h"           /* For class GPlayer */
 #include "Setup.h"            /* For GSetup::MapFilename */
 #include "Town.h"             /* For class Town */
+
+const float  NumDaysInYear = 365.25f;
+const float  SecondsInDay = 86400.0f;
+static float GameTimePerYear = NumDaysInYear * SecondsInDay;
 
 static const char ServerMapFileHeader[] = "LiOnHeAd server_map_file";
 
