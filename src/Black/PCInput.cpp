@@ -767,7 +767,7 @@ bool32_t LoadCreatureSnapshot()
 				int creatureSize;
 				fread(&creatureSize, 1, sizeof(creatureSize), file);
 				fseek(file, creatureSize, SEEK_CUR);
-				creature3d->DynamicShadow->SetColorSpecular(0xffffffff, 0);
+				creature3d->DynamicShadow->SetColorSpecular(LH3D_COLOR_WHITE, 0);
 				creature3d->DynamicShadow->SetMesh(creature3d->meshes[creature3d->CurrentMesh], NULL, NULL);
 				creature3d->DynamicShadow->BoneMatrices = matrices;
 				LH3DMesh::g_current_list_matrix = matrices;
@@ -835,7 +835,7 @@ bool32_t LoadCreatureSnapshot()
 			}
 			object->SetCurrentCycleTime(animTime);
 			object->matrix = matrix;
-			object->color = 0xffffffff;
+			object->color = LH3D_COLOR_WHITE;
 			object->specular = 0;
 			object->SetNeedClipping(true);
 			object->SetDynamicLighting(true);

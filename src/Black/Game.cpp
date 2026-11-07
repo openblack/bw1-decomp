@@ -1924,7 +1924,8 @@ void GGame::Loop()
 		}
 	}
 	DialogBoxBase::HideAll();
-	if (GameOverStarted == false && !IsMultiplayerGame() && SkirmishGame == 0 && g_game->GameMode != GAME_MODE_LOAD_GAME)
+	if (GameOverStarted == false && !IsMultiplayerGame() && SkirmishGame == false &&
+	    g_game->GameMode != GAME_MODE_LOAD_GAME)
 	{
 		if (GameMode == GAME_MODE_QUITTING)
 		{

@@ -1577,7 +1577,7 @@ void CameraModeNew3::Reinitialise(bool keep_fight)
 	field_0x100 = 0;
 	field_0x8 = 0;
 	IdleTime = 0.0f;
-	InputDisabled = 0;
+	InputDisabled = false;
 	field_0x2f0 = 0;
 	RotatePoint = LHPoint(0.0f, 0.0f, 0.0f);
 	ActiveTricons = 0;
