@@ -11,9 +11,9 @@
 #include "TempleRoom.h" /* For class TempleRoom */
 
 #define WORLD_ROOM_ENGINE_PATH "data\\citadel\\engine\\"
+#define WORLD_ROOM_ICON_PATH   "data\\citadel\\icons\\"
 
 #define WORLD_ROOM_CONTROL_COUNT        11
-#define WORLD_ROOM_SIGN_COUNT           7
 #define WORLD_ROOM_SIGN_FADE            (0xff * 4)
 #define WORLD_ROOM_TEXT_ID_OFFSET       4
 #define WORLD_ROOM_CI_TOOLTIP_ID_OFFSET 8
@@ -172,7 +172,7 @@ public:
 	// Static methods
 
 	// BW1W120 0079f250 BW1M119 015ac8f0
-	static void MakeScrollText(bool32_t show_statistics);
+	static void MakeScrollText(bool32_t use_scroll_submesh);
 	// BW1W120 0079f640 BW1M119 015ac4d0
 	static void SaveButtonConfig(GameOSFile& file);
 	// BW1W120 0079f790 BW1M119 015ac2e0

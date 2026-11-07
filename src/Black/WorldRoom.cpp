@@ -74,11 +74,11 @@ bool32_t WorldRoom::ShowInfluence = true;
 	SIGN("SIGN CHALLENGE", 0xeb, 0x92, 0x6f, HELP_TEXT_ROOM_CHALLENGE_TITLE)
 
 #define WORLD_ROOM_SIGN_NAME(asset_name, red, green, blue, text_id) asset_name,
-static char* SignNames[WORLD_ROOM_SIGN_COUNT] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_NAME)};
+static char* SignNames[] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_NAME)};
 #undef WORLD_ROOM_SIGN_NAME
 
 #define WORLD_ROOM_SIGN_COLOUR(asset_name, red, green, blue, text_id) {red, green, blue},
-static unsigned long SignColours[WORLD_ROOM_SIGN_COUNT][3] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_COLOUR)};
+static unsigned long SignColours[][3] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_COLOUR)};
 #undef WORLD_ROOM_SIGN_COLOUR
 
 bool32_t WorldRoom::DisplayCitadel = true;
@@ -94,6 +94,11 @@ inline MapCoords::MapCoords(float meters_x, float meters_z)
 	SetX(meters_x);
 	SetZ(meters_z);
 	SetAltitude(0.0f);
+}
+
+inline WorldRoom* GetWorldRoom()
+{
+	return static_cast<WorldRoom*>(GGame::g_game->temple->GetRoom(TEMPLE_ROOM_WORLD));
 }
 
 inline char* GetWorldRoomMeshName()
@@ -190,9 +195,9 @@ void WorldRoom::InitEngine()
 		}
 		CreateWorldMapSpells();
 	}
-	CreateWorldRoomCitadelIcon(this, "data\\citadel\\icons\\I_citadel_on_map.l3d");
-	CreateWorldRoomCreatureIcon(this, "data\\citadel\\icons\\I_creature_on_map.l3d");
-	CreateWorldRoomChallengeIcon(this, "data\\citadel\\icons\\I_challenge_on_map.l3d");
+	CreateWorldRoomCitadelIcon(this, WORLD_ROOM_ICON_PATH "I_citadel_on_map.l3d");
+	CreateWorldRoomCreatureIcon(this, WORLD_ROOM_ICON_PATH "I_creature_on_map.l3d");
+	CreateWorldRoomChallengeIcon(this, WORLD_ROOM_ICON_PATH "I_challenge_on_map.l3d");
 	camera->Close();
 	delete camera;
 	camera = NEW(150) WorldRoomCamera;
@@ -201,7 +206,7 @@ void WorldRoom::InitEngine()
 	                                    LH3D_TEXTURE_TYPE_SYSTEM_MEMORY | LH3D_TEXTURE_FLAGS_ALPHA, 0, NULL);
 	ScrollMaterial =
 		LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA, ScrollTexture);
-	InitNameScrolls(SignNames, WORLD_ROOM_SIGN_COUNT);
+	InitNameScrolls(SignNames, ARRAY_SIZE(SignNames));
 	SubmeshNameData* submeshNames = reinterpret_cast<SubmeshNameData*>(inner_room->Mesh->GetNameData());
 	for (unsigned long submeshIndex = 0; submeshIndex < submeshNames->Count; submeshIndex++)
 	{
@@ -302,12 +307,12 @@ void WorldRoom::DrawCitadel(bool glow)
 void MiniMap::DrawMarker(const LH3DColor& colour, LHPoint pos, LH3DObject* object, float angle, float scale)
 {
 	object->SetPosition(pos, angle, scale);
-	unsigned long markerColour;
-	memcpy(&markerColour, &colour, sizeof(markerColour));
-	markerColour |= LH3D_COLOR_WHITE & ~LH3D_COLOR_RGB_MASK;
-	unsigned long specular = 0;
-	ApplyCitadelColoring(markerColour, specular);
-	object->SetColorSpecular(markerColour, specular);
+	unsigned long packedColour;
+	memcpy(&packedColour, &colour, sizeof(packedColour));
+	packedColour |= LH3D_COLOR_WHITE & ~LH3D_COLOR_RGB_MASK;
+	unsigned long packedSpecular = 0;
+	ApplyCitadelColoring(packedColour, packedSpecular);
+	object->SetColorSpecular(packedColour, packedSpecular);
 	object->AddDrawing();
 }
 
@@ -529,11 +534,11 @@ inline int CalcWorldRoomWaterAlpha(float animation_time)
 
 inline uint32_t CalcWorldRoomWaterColour()
 {
-	uint32_t citadelColour = Temple::CitadelColour.GetColor();
-	uint32_t waterRed = (((citadelColour & 0xff0000) >> 8) * WORLD_ROOM_WATER_COLOUR_SCALE) & 0xff0000;
-	uint32_t waterGreen = ((((citadelColour >> 8) & 0xff) * WORLD_ROOM_WATER_COLOUR_SCALE) >> 8) << 8;
-	uint32_t waterBlue = ((citadelColour & 0xff) * WORLD_ROOM_WATER_COLOUR_SCALE) >> 8;
-	return (waterRed | waterGreen | waterBlue) & LH3D_COLOR_RGB_MASK;
+	uint32_t packedCitadelColour = Temple::CitadelColour.GetColor();
+	uint32_t packedRed = (((packedCitadelColour & 0xff0000) >> 8) * WORLD_ROOM_WATER_COLOUR_SCALE) & 0xff0000;
+	uint32_t packedGreen = ((((packedCitadelColour >> 8) & 0xff) * WORLD_ROOM_WATER_COLOUR_SCALE) >> 8) << 8;
+	uint32_t packedBlue = ((packedCitadelColour & 0xff) * WORLD_ROOM_WATER_COLOUR_SCALE) >> 8;
+	return (packedRed | packedGreen | packedBlue) & LH3D_COLOR_RGB_MASK;
 }
 
 inline float CalcWorldRoomExitGlowProgress(float state_time)
@@ -558,22 +563,20 @@ inline float CalcWorldRoomExitGlowProgress(float state_time)
 
 inline void UpdateWorldRoomStatistics()
 {
-	WorldRoom* room = static_cast<WorldRoom*>(GGame::g_game->temple->GetRoom(TEMPLE_ROOM_WORLD));
+	WorldRoom* room = GetWorldRoom();
 	if (!WorldRoom::ShowStatistics)
 	{
 		if (room->camera->ZoomProgress > WORLD_ROOM_STATISTICS_ZOOM_THRESHOLD)
 		{
 			WorldRoom::ShowStatistics = true;
 		}
+		return;
 	}
-	else
+	WorldRoom::MakeScrollText(true);
+	if (room->camera->ZoomProgress <= WORLD_ROOM_STATISTICS_ZOOM_THRESHOLD)
 	{
-		WorldRoom::MakeScrollText(true);
-		if (room->camera->ZoomProgress <= WORLD_ROOM_STATISTICS_ZOOM_THRESHOLD)
-		{
-			WorldRoom::ShowStatistics = false;
-			WorldRoom::MakeScrollText(false);
-		}
+		WorldRoom::ShowStatistics = false;
+		WorldRoom::MakeScrollText(false);
 	}
 }
 
@@ -582,9 +585,9 @@ inline void DrawWorldRoomSignLabels(WorldRoom* room, wchar_t** sign_texts)
 	int highlightedSignIndex = room->camera->HighlightedDoor;
 	if (highlightedSignIndex == WORLD_ROOM_DOOR_CHALLENGE)
 	{
-		highlightedSignIndex = WORLD_ROOM_SIGN_COUNT - 1;
+		highlightedSignIndex = ARRAY_SIZE(SignNames) - 1;
 	}
-	room->DrawNameScrolls(WORLD_ROOM_SIGN_COUNT, WORLD_ROOM_SIGN_FADE, highlightedSignIndex, sign_texts, SignColours,
+	room->DrawNameScrolls(ARRAY_SIZE(SignNames), WORLD_ROOM_SIGN_FADE, highlightedSignIndex, sign_texts, SignColours,
 	                      1.0f, 1.0f);
 }
 
@@ -630,7 +633,7 @@ void WorldRoom::Draw()
 
 #define WORLD_ROOM_SIGN_TEXT(asset_name, red, green, blue, text_id)                                                    \
 	HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(text_id)),
-	static wchar_t* signTexts[WORLD_ROOM_SIGN_COUNT] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_TEXT)};
+	static wchar_t* signTexts[] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_TEXT)};
 #undef WORLD_ROOM_SIGN_TEXT
 #undef WORLD_ROOM_SIGNS
 	DrawWorldRoomSignLabels(this, signTexts);
@@ -760,7 +763,7 @@ bool32_t WorldRoom::WorldButtonDisplayInfluenceUncheckedSet(CallbackData& data)
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_BUTTON_PITCH_INFLUENCE);
 	DisplayInfluence = true;
 	ShowInfluence = true;
-	static_cast<WorldRoom*>(GGame::g_game->temple->GetRoom(TEMPLE_ROOM_WORLD))->CreateWorldMapColours();
+	GetWorldRoom()->CreateWorldMapColours();
 	return true;
 }
 
@@ -864,20 +867,18 @@ bool32_t WorldRoom::WorldScrollSet(CallbackData& data)
 
 inline void UpdateWorldRoomScrollSound(long previous_offset, bool32_t& sound_played)
 {
-	if (WorldRoom::ScrollOffset != previous_offset)
-	{
-		if (!sound_played)
-		{
-			GGlobal::Global.audio->PlaySoundEffect(
-				NULL, LH_SAMPLE_G_SCROLLSQUEAK_01 + GetTickCount() % NUM_SCROLL_SQUEAKS, LH_SAMPLE_PLAY_TYPE_ONCE, 0,
-				false, false, AUDIO_SFX_BANK_TYPE_IN_GAME);
-			sound_played = true;
-		}
-	}
-	else
+	if (WorldRoom::ScrollOffset == previous_offset)
 	{
 		sound_played = false;
+		return;
 	}
+	if (sound_played)
+	{
+		return;
+	}
+	GGlobal::Global.audio->PlaySoundEffect(NULL, LH_SAMPLE_G_SCROLLSQUEAK_01 + GetTickCount() % NUM_SCROLL_SQUEAKS,
+	                                       LH_SAMPLE_PLAY_TYPE_ONCE, 0, false, false, AUDIO_SFX_BANK_TYPE_IN_GAME);
+	sound_played = true;
 }
 
 inline void UpdateWorldRoomScrollToolTip(WorldRoom* room, const CallbackData& data)
@@ -907,7 +908,7 @@ bool32_t WorldRoom::WorldScrollGet(CallbackData& data)
 	data.V0 = 0.0f;
 	data.U0 = 0.0f;
 	data.U1 = data.V1 = 1.0f;
-	WorldRoom* room = static_cast<WorldRoom*>(GGame::g_game->temple->GetRoom(TEMPLE_ROOM_WORLD));
+	WorldRoom* room = GetWorldRoom();
 	if (data.ScrollAmount != 0)
 	{
 		long previousOffset = ScrollOffset;
@@ -937,42 +938,41 @@ bool32_t WorldRoom::WorldScrollGet(CallbackData& data)
 
 inline void BuildWorldRoomStatisticsText()
 {
-	WorldRoom::ClearText(WorldRoom::WorldStatisticsText);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_WORLD_TITLE), 0);
-	WorldRoom::AddNewLine(WorldRoom::WorldStatisticsText);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_TOTAL_POPULATION), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_PERCENT_OF_POPULATION_BELIEVE_IN_YOU),
-	                   0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_PERCENT_OF_POPULATION_THAT_ARE_MALE),
-	                   0);
-	WorldRoom::AddNewLine(WorldRoom::WorldStatisticsText);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_DEATHS_IN_YOUR_REGION), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BIRTHS_IN_YOUR_REGION), 0);
+	wchar_t* statisticsText = WorldRoom::WorldStatisticsText;
+	WorldRoom::ClearText(statisticsText);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_WORLD_TITLE), 0);
+	WorldRoom::AddNewLine(statisticsText);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_TOTAL_POPULATION), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_PERCENT_OF_POPULATION_BELIEVE_IN_YOU), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_PERCENT_OF_POPULATION_THAT_ARE_MALE), 0);
+	WorldRoom::AddNewLine(statisticsText);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_DEATHS_IN_YOUR_REGION), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BIRTHS_IN_YOUR_REGION), 0);
 #ifdef VERSION_BW1WCI
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, HELP_TEXT_PAUSE_STATS_108, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_PAUSE_STATS_108, 0);
 #else
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, HELP_TEXT_PAUSE_STATS_83, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_PAUSE_STATS_83, 0);
 #endif
-	WorldRoom::AddNewLine(WorldRoom::WorldStatisticsText);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BUILDINGS_BUILT), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_WONDERS_BUILT), 0);
-	WorldRoom::AddNewLine(WorldRoom::WorldStatisticsText);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_DISCIPLES), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BUILDERS), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BREEDERS), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FISHERMEN), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FARMERS), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FORESTERS), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_MISSIONARIES), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_CRAFTSMEN), 0);
-	WorldRoom::AddText(WorldRoom::WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_TRADERS), 0);
-	WorldRoom::EndText(WorldRoom::WorldStatisticsText);
+	WorldRoom::AddNewLine(statisticsText);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BUILDINGS_BUILT), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_WONDERS_BUILT), 0);
+	WorldRoom::AddNewLine(statisticsText);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_DISCIPLES), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BUILDERS), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BREEDERS), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FISHERMEN), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FARMERS), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FORESTERS), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_MISSIONARIES), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_CRAFTSMEN), 0);
+	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_TRADERS), 0);
+	WorldRoom::EndText(statisticsText);
 }
 
-void WorldRoom::MakeScrollText(bool32_t show_statistics)
+void WorldRoom::MakeScrollText(bool32_t use_scroll_submesh)
 {
 	BuildWorldRoomStatisticsText();
-	if (show_statistics)
+	if (use_scroll_submesh)
 	{
 		ScrollNumLines =
 			FormatTextureForScroll(ScrollTexture, ScrollFont, WorldStatisticsText, ScrollOffset, ScrollSubMesh);
@@ -982,7 +982,8 @@ void WorldRoom::MakeScrollText(bool32_t show_statistics)
 		ScrollNumLines = FormatTextureForScroll(ScrollTexture, ScrollFont, WorldStatisticsText, ScrollOffset, NULL);
 	}
 	LH3DTexture* texture = ScrollMaterial->texture;
-	if (texture->GetType() == LH3D_TEXTURE_TYPE_NAMED || texture->GetType() == LH3D_TEXTURE_TYPE_SYSTEM_MEMORY)
+	uint32_t     textureType = texture->GetType();
+	if (textureType == LH3D_TEXTURE_TYPE_NAMED || textureType == LH3D_TEXTURE_TYPE_SYSTEM_MEMORY)
 	{
 		texture->ReloadPending = true;
 	}
