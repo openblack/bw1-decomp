@@ -310,6 +310,10 @@ if config.version == "BW1W100":
         "__imp_?LHSampleSet3DPosition@LH_AudioSystem@@QAEPAULH_SampleInfo@@PAVLH_AudioBank@@KKMMMH@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_import}=__imp__ExitProcess@4")
+    # Serialise's ChooseSavedGame has no callers in 1.00; /OPT:REF dropped it and the
+    # comdlg32 import thunks only it calls.
+    for _dead_function in ["_GetSaveFileNameA@4", "_GetOpenFileNameA@4"]:
+        config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
 # LHLogR.dll's project links without /DEBUG: unlike LHAudio (but for Creature
 # Isle's, below), LHMultiplayer, LHDialog (and runblack from 1.10 on) it has no
 # debug directory in any version. Without /DEBUG, link.exe (6.0 and VS.NET 2002's
@@ -1385,7 +1389,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/ScriptMarker.cpp"),
             GameCodeObject(Matching, "Black/ScriptTimer.cpp"),
             GameCodeObject(Matching, "Black/SecretCreature.cpp", pch=False),
-            GameCodeObject(NonMatching, "Black/Serialise.cpp"),
+            GameCodeObject(Matching, "Black/Serialise.cpp"),
             GameCodeObject(NonMatching, "Black/ServerLandscapeMap.cpp"),
             GameCodeObject(NonMatching, "Black/Settings.cpp"),
             GameCodeObject(Matching, "Black/Setup.cpp"),
