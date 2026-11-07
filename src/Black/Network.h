@@ -65,6 +65,8 @@ struct GNetwork
 	uint32_t ProcessOneSuperpacket();
 	// BW1W120 00635650 BW1M119 01021aa0
 	void ProcessLobbyPackets();
+	// BW1W120 inlined BW1M119 01115840
+	bool32_t Close();
 };
 
 #endif /* BW1_DECOMP_NETWORK_INCLUDED_H */

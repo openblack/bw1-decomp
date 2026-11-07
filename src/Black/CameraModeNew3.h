@@ -188,6 +188,10 @@ public:
 	static bool32_t EdgeScrollEnabled;
 	// BW1W120 00c5b0f4
 	static int ActiveTricons;
+	// BW1W120 00c5e158
+	static float StrafeSpeedX;
+	// BW1W120 00c5e15c
+	static float StrafeSpeedZ;
 
 	// Virtual methods
 

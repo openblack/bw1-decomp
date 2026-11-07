@@ -218,31 +218,24 @@ class Spell;
 
 struct ScriptObjectDispatch
 {
-	typedef void*(__cdecl* FindAtPosFunction)(const MapCoords& pos,
-	                                          int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                                          SCRIPT_OBJECT_TYPE type, uint32_t subtype);
-	typedef void*(__cdecl* FindNearPosFunction)(const MapCoords& pos,
-	                                            int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                                            SCRIPT_OBJECT_TYPE type, uint32_t subtype, float radius);
-	typedef void*(__cdecl* FindInFunction)(GameThingWithPos* container,
-	                                       int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                                       SCRIPT_OBJECT_TYPE type, uint32_t subtype);
-	typedef void*(__cdecl* LoopFunction)(GameThingWithPos* container,
-	                                     int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                                     SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	typedef int(__cdecl* CheckFunction)(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	typedef void*(__cdecl* FindAtPosFunction)(const MapCoords& pos, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                                          uint32_t subtype);
+	typedef void*(__cdecl* FindNearPosFunction)(const MapCoords& pos, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                                            uint32_t subtype, float radius);
+	typedef void*(__cdecl* FindInFunction)(GameThingWithPos* container, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                                       uint32_t subtype);
+	typedef void*(__cdecl* LoopFunction)(GameThingWithPos* container, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                                     uint32_t subtype);
 
 	FindAtPosFunction   FindAtPos;   /* 0x00 */
 	FindNearPosFunction FindNearPos; /* 0x04 */
 	FindInFunction      FindIn;      /* 0x08 */
-	void*(__cdecl* FindInNear)(GameThingWithPos* container,
-	                           int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                           SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos,
-	                           float radius); /* 0x0c */
-	void*(__cdecl* FindInNotNear)(GameThingWithPos* container,
-	                              int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                              SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos,
-	                              float radius); /* 0x10 */
-	LoopFunction Loop;                           /* 0x14 */
+	void*(__cdecl* FindInNear)(GameThingWithPos* container, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                           uint32_t subtype, const MapCoords& pos, float radius); /* 0x0c */
+	void*(__cdecl* FindInNotNear)(GameThingWithPos* container, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                              uint32_t subtype, const MapCoords& pos, float radius); /* 0x10 */
+	LoopFunction Loop;                                                                   /* 0x14 */
 };
 
 class GScript : public Base
@@ -1378,6 +1371,8 @@ public:
 	static void ChangeObjectProperties();
 	// BW1W120 0070f7f0 BW1M119 0101f560
 	static void PlaySoundEffect();
+	// BW1W120 0070f8e0 BW1M119 0150a850
+	static void SaySoundEffect(unsigned long text, bool32_t positional, bool32_t extra, LHPoint* pos);
 	// BW1W120 0070f9b0 BW1M119 0150a780
 	static void SaySoundEffect();
 	// BW1W120 0070fa50 BW1M119 0150a670

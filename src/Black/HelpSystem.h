@@ -507,6 +507,10 @@ public:
 	HelpSpirit* GetSpirit(HELP_SPIRIT_TYPE type) const;
 	// BW1W120 005c6e20 BW1M119 013573b0
 	static HELP_SPIRIT_TYPE GetSpiritWhoTalks(unsigned long text);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005dbfe0 BW1MCI119 0137a560
+	void ClearHelpTextSoundAndText();
+#endif
 	// BW1W120 005c6ad0 BW1M119 01357c40
 	void SetWideScreen(bool32_t widescreen, uint32_t task);
 	// BW1W120 005c6b60 BW1M119 01020020
