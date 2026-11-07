@@ -151,12 +151,6 @@
 
 #define NO_OFFSET (*(const MapCoords*)NULL)
 
-#ifdef VERSION_BW1WCI
-#define CREATURE_ISLE_HELP_TEXTS 0
-#else
-#define CREATURE_ISLE_HELP_TEXTS 18
-#endif
-
 #define MPM_3P_1_CAPPED_TOWN_ID  3
 #define MPM_3P_1_TOWN_BELIEF_CAP 2.0f
 
@@ -1571,17 +1565,17 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 		}
 		else
 		{
-			unsigned long id = HELP_TEXT_LAST_LINES_01 - CREATURE_ISLE_HELP_TEXTS;
+			unsigned long id = HELP_TEXT_LAST_LINES_01;
 			switch (params->number[1])
 			{
 			case SCRIPT_GAME_MESSAGE_ADVISOR:
-				id = HELP_TEXT_LAST_LINES_01 - CREATURE_ISLE_HELP_TEXTS;
+				id = HELP_TEXT_LAST_LINES_01;
 				break;
 			case SCRIPT_GAME_MESSAGE_END_OF_GAME_1:
-				id = HELP_TEXT_LAST_LINES_02 - CREATURE_ISLE_HELP_TEXTS;
+				id = HELP_TEXT_LAST_LINES_02;
 				break;
 			case SCRIPT_GAME_MESSAGE_END_OF_GAME_2:
-				id = HELP_TEXT_LAST_LINES_03 - CREATURE_ISLE_HELP_TEXTS;
+				id = HELP_TEXT_LAST_LINES_03;
 				break;
 			}
 			wcscpy(message, HelpTextDataBase::HelpTextDatabase.GetHelpText(id));
@@ -1600,17 +1594,17 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 		}
 		else
 		{
-			unsigned long id = HELP_TEXT_LAST_LINES_01 - CREATURE_ISLE_HELP_TEXTS;
+			unsigned long id = HELP_TEXT_LAST_LINES_01;
 			switch (params->number[1])
 			{
 			case SCRIPT_GAME_MESSAGE_ADVISOR:
-				id = HELP_TEXT_LAST_LINES_01 - CREATURE_ISLE_HELP_TEXTS;
+				id = HELP_TEXT_LAST_LINES_01;
 				break;
 			case SCRIPT_GAME_MESSAGE_END_OF_GAME_1:
-				id = HELP_TEXT_LAST_LINES_02 - CREATURE_ISLE_HELP_TEXTS;
+				id = HELP_TEXT_LAST_LINES_02;
 				break;
 			case SCRIPT_GAME_MESSAGE_END_OF_GAME_2:
-				id = HELP_TEXT_LAST_LINES_03 - CREATURE_ISLE_HELP_TEXTS;
+				id = HELP_TEXT_LAST_LINES_03;
 				break;
 			}
 			wcscpy(message, HelpTextDataBase::HelpTextDatabase.GetHelpText(id));

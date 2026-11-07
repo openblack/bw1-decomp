@@ -231,11 +231,11 @@ void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
 	Open = false;
 	NumIncoming = 0;
 	ShowInterface = true;
-	FriendsText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_96);
-	OtherPlayersText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_98);
-	CurrentPlayersText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DETAIL_06);
-	RemoveFriendText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_72);
-	AddFriendText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_71);
+	FriendsText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_121);
+	OtherPlayersText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_123);
+	CurrentPlayersText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLAYERLIST);
+	RemoveFriendText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_90);
+	AddFriendText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_89);
 	DialogBoxBase::Init(background_style, tall_background, callback);
 	Instance = this;
 	QuickChatOpen = false;
@@ -287,7 +287,7 @@ void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
 	QuickChatList->UseColorBackground = false;
 	for (int i = 0; i < 31; i++)
 	{
-		QuickChatList->AddString(HelpTextData::GetTextL(HELP_TEXT_YOU_ARE_GOOD_01 + i), 0, 0, 0);
+		QuickChatList->AddString(HelpTextData::GetTextL(HELP_TEXT_MULTIPLAYER_TAUNTS_EA_01 + i), 0, 0, 0);
 	}
 	QuickChatList->Hide(true);
 	setup_box->DefaultTextSize = GetSmallTextSize();
@@ -852,11 +852,11 @@ void __stdcall GatheringBox::ControlCallback(int message, SetupBox* box, SetupCo
 						{
 							if (homeless)
 								special->MakeHimSpeak(LHSPrintfW(
-									HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_TEMPLE_SCROLLS_03),
+									HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_11),
 									gatheringBox->GetTopIncoming()->Name, gatheringBox->GetTopIncoming()->Message));
 							else
 								special->MakeHimSpeak(LHSPrintfW(
-									HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_49),
+									HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_67),
 									gatheringBox->GetTopIncoming()->Name, gatheringBox->GetTopIncoming()->Message));
 						}
 					}
@@ -1009,7 +1009,8 @@ void GatheringBox::SendMessageA(bool close, int quick_chat)
 		else
 		{
 			SendPacketToPlayers(PACKET_TYPE_TAUNT, 4, &quick_chat, true);
-			char16_t* taunt = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_YOU_ARE_GOOD_01 + quick_chat);
+			char16_t* taunt =
+				HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_TAUNTS_EA_01 + quick_chat);
 			SendMessageA(Friends, taunt);
 			SendMessageA(OtherPlayers, taunt);
 		}

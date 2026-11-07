@@ -2453,15 +2453,15 @@ HELP_TEXT Villager::GetQueryFirstEnumText()
 		int disciple = DiscipleType;
 		if (disciple >= VILLAGER_DISCIPLE_NONE && disciple <= VILLAGER_DISCIPLE_MISSIONARY)
 		{
-			return (HELP_TEXT)(disciple + 3129);
+			return (HELP_TEXT)(disciple + HELP_TEXT_QUESTION_VILLAGER_DISCIPLE_NONE);
 		}
 		if (disciple == VILLAGER_DISCIPLE_TRADER)
 		{
-			return (HELP_TEXT)2770;
+			return (HELP_TEXT)HELP_TEXT_QUESTION_VILLAGER_INFO_TRADER_MALE_01;
 		}
 		if (disciple == VILLAGER_DISCIPLE_CRAFTSMAN)
 		{
-			return (HELP_TEXT)3129;
+			return (HELP_TEXT)HELP_TEXT_QUESTION_VILLAGER_DISCIPLE_NONE;
 		}
 	}
 	return Object::GetQueryFirstEnumText();
@@ -2477,15 +2477,15 @@ HELP_TEXT Villager::GetQueryLastEnumText()
 			int disciple = DiscipleType;
 			if (disciple >= VILLAGER_DISCIPLE_NONE && disciple <= VILLAGER_DISCIPLE_MISSIONARY)
 			{
-				return (HELP_TEXT)(disciple + 3129);
+				return (HELP_TEXT)(disciple + HELP_TEXT_QUESTION_VILLAGER_DISCIPLE_NONE);
 			}
 			if (disciple == VILLAGER_DISCIPLE_TRADER)
 			{
-				return (HELP_TEXT)2770;
+				return (HELP_TEXT)HELP_TEXT_QUESTION_VILLAGER_INFO_TRADER_MALE_01;
 			}
 			if (disciple == VILLAGER_DISCIPLE_CRAFTSMAN)
 			{
-				return (HELP_TEXT)3129;
+				return (HELP_TEXT)HELP_TEXT_QUESTION_VILLAGER_DISCIPLE_NONE;
 			}
 		}
 		return Object::GetQueryLastEnumText();

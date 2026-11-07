@@ -54,17 +54,6 @@
 // Player.cpp hold the same constant as OneOverLogHalf, which sorts after White.
 static float OneOnLogHalf = 1.0f / (float)log(0.5);
 
-#ifdef VERSION_BW1WCI
-#define ROOM_TEXT(text) (text)
-// Creature Isle's text database has eight more entries ahead of the tooltips than HelpTextEnums.h.
-#define TOOLTIP_TEXT(text) ((text) + 8)
-#else
-// HelpTextEnums.h comes from a later build that has four more entries ahead of the room texts, so its
-// HELP_TEXT_ROOM_* values sit four above the ones this build reads.
-#define ROOM_TEXT(text)    ((text) - 4)
-#define TOOLTIP_TEXT(text) (text)
-#endif
-
 // One name scroll per door; the challenge door's is the last.
 #define NUM_SIGNS 7
 
@@ -558,13 +547,13 @@ void WorldRoom::Draw()
 	TempleRoom::Draw();
 
 	static wchar_t* sign_texts[NUM_SIGNS] = {
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_CREATURE_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_GAMEOPTIONS_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_EXIT_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_UNIVERSE_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_CREDITS_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_SAVEGAME_TITLE)),
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(HELP_TEXT_ROOM_CHALLENGE_TITLE)),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_CREATURE_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_GAMEOPTIONS_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_EXIT_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_UNIVERSE_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_CREDITS_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_SAVEGAME_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_CHALLENGE_TITLE),
 	};
 	int highlighted = camera->HighlightedDoor;
 	if (highlighted == WORLD_ROOM_DOOR_CHALLENGE)
@@ -734,7 +723,7 @@ int WorldRoom::WorldButtonDisplayCitadelCheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_23);
+		ToolTipText = HELP_TEXT_TOOLTIP_31;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -746,7 +735,7 @@ int WorldRoom::WorldButtonDisplayCitadelUncheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_23);
+		ToolTipText = HELP_TEXT_TOOLTIP_31;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -758,7 +747,7 @@ int WorldRoom::WorldButtonDisplayCreatureCheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_21);
+		ToolTipText = HELP_TEXT_TOOLTIP_29;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -770,7 +759,7 @@ int WorldRoom::WorldButtonDisplayCreatureUncheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_21);
+		ToolTipText = HELP_TEXT_TOOLTIP_29;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -782,7 +771,7 @@ int WorldRoom::WorldButtonDisplayMagicActivityCheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_25);
+		ToolTipText = HELP_TEXT_TOOLTIP_33;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -794,7 +783,7 @@ int WorldRoom::WorldButtonDisplayMagicActivityUncheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_25);
+		ToolTipText = HELP_TEXT_TOOLTIP_33;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -806,7 +795,7 @@ int WorldRoom::WorldButtonDisplayInfluenceCheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_24);
+		ToolTipText = HELP_TEXT_TOOLTIP_32;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -818,7 +807,7 @@ int WorldRoom::WorldButtonDisplayInfluenceUncheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_24);
+		ToolTipText = HELP_TEXT_TOOLTIP_32;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -830,7 +819,7 @@ int WorldRoom::WorldButtonDisplayChallengesCheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_22);
+		ToolTipText = HELP_TEXT_TOOLTIP_30;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -842,7 +831,7 @@ int WorldRoom::WorldButtonDisplayChallengesUncheckedGet(CallbackData& data)
 	if (data.Highlighted)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_22);
+		ToolTipText = HELP_TEXT_TOOLTIP_30;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -908,20 +897,20 @@ int WorldRoom::WorldScrollGet(CallbackData& data)
 		if (room->camera->ZoomProgress != 1.0)
 		{
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_105);
+			ToolTipText = HELP_TEXT_TOOLTIP_113;
 			ToolTipAlign = KEYALIGN_0x0;
 		}
 		else
 		{
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_104);
+			ToolTipText = HELP_TEXT_TOOLTIP_112;
 			ToolTipAlign = KEYALIGN_0x300;
 		}
 	}
 	else if (room->camera->State == INNER_CAMERA_STATE_FOCUSED && room->camera->ZoomProgress == 1.0)
 	{
 		ToolTipAction = BINDABLE_ACTION_MOVE;
-		ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_17);
+		ToolTipText = HELP_TEXT_TOOLTIP_25;
 		ToolTipAlign = KEYALIGN_0x0;
 	}
 	return 1;
@@ -930,32 +919,28 @@ int WorldRoom::WorldScrollGet(CallbackData& data)
 void WorldRoom::MakeScrollText(bool32_t show_statistics)
 {
 	ClearText(WorldStatisticsText);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_WORLD_TITLE), 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_WORLD_TITLE, 0);
 	AddNewLine(WorldStatisticsText);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_TOTAL_POPULATION), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_PERCENT_OF_POPULATION_BELIEVE_IN_YOU), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_PERCENT_OF_POPULATION_THAT_ARE_MALE), 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_TOTAL_POPULATION, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_PERCENT_OF_POPULATION_BELIEVE_IN_YOU, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_PERCENT_OF_POPULATION_THAT_ARE_MALE, 0);
 	AddNewLine(WorldStatisticsText);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_DEATHS_IN_YOUR_REGION), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BIRTHS_IN_YOUR_REGION), 0);
-#ifdef VERSION_BW1WCI
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_DEATHS_IN_YOUR_REGION, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_BIRTHS_IN_YOUR_REGION, 0);
 	AddText(WorldStatisticsText, HELP_TEXT_PAUSE_STATS_108, 0);
-#else
-	AddText(WorldStatisticsText, HELP_TEXT_PAUSE_STATS_83, 0);
-#endif
 	AddNewLine(WorldStatisticsText);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BUILDINGS_BUILT), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_WONDERS_BUILT), 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_BUILDINGS_BUILT, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_WONDERS_BUILT, 0);
 	AddNewLine(WorldStatisticsText);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_DISCIPLES), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BUILDERS), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BREEDERS), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FISHERMEN), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FARMERS), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FORESTERS), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_MISSIONARIES), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_CRAFTSMEN), 0);
-	AddText(WorldStatisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_TRADERS), 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_DISCIPLES, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_BUILDERS, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_BREEDERS, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_FISHERMEN, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_FARMERS, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_FORESTERS, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_MISSIONARIES, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_CRAFTSMEN, 0);
+	AddText(WorldStatisticsText, HELP_TEXT_ROOM_NUMBER_OF_TRADERS, 0);
 	EndText(WorldStatisticsText);
 	if (show_statistics)
 	{
@@ -981,20 +966,20 @@ void WorldRoom::PreDraw()
 void WorldRoom::PreToolTipProcess()
 {
 	ToolTipAction = BINDABLE_ACTION_MOVE;
-	ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_04);
+	ToolTipText = HELP_TEXT_TOOLTIP_12;
 	ToolTipAlign = KEYALIGN_0xf00;
 	if (camera->MouseHitType == INNER_CAMERA_HIT_NEAR)
 	{
 		if (camera->ClickHitType == INNER_CAMERA_HIT_NEAR && camera->ZoomProgress == 1.0)
 		{
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_115);
+			ToolTipText = HELP_TEXT_TOOLTIP_123;
 			ToolTipAlign = KEYALIGN_0xf00;
 		}
 		else if (camera->ZoomProgress != 1.0)
 		{
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_INTERRUPTION_IN_CITADEL_21);
+			ToolTipText = HELP_TEXT_TOOLTIP_03;
 			ToolTipAlign = KEYALIGN_0x0;
 		}
 	}
@@ -1005,37 +990,37 @@ void WorldRoom::PreToolTipProcess()
 		{
 		case WORLD_ROOM_DOOR_CREATURE:
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_27);
+			ToolTipText = HELP_TEXT_TOOLTIP_35;
 			ToolTipAlign = KEYALIGN_0x0;
 			break;
 		case WORLD_ROOM_DOOR_CHALLENGE:
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_26);
+			ToolTipText = HELP_TEXT_TOOLTIP_34;
 			ToolTipAlign = KEYALIGN_0x0;
 			break;
 		case WORLD_ROOM_DOOR_SAVE_GAME:
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_28);
+			ToolTipText = HELP_TEXT_TOOLTIP_36;
 			ToolTipAlign = KEYALIGN_0x0;
 			break;
 		case WORLD_ROOM_DOOR_UNIVERSE:
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_32);
+			ToolTipText = HELP_TEXT_TOOLTIP_40;
 			ToolTipAlign = KEYALIGN_0x0;
 			break;
 		case WORLD_ROOM_DOOR_GAME_OPTIONS:
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_31);
+			ToolTipText = HELP_TEXT_TOOLTIP_39;
 			ToolTipAlign = KEYALIGN_0x0;
 			break;
 		case WORLD_ROOM_DOOR_CREDITS:
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_29);
+			ToolTipText = HELP_TEXT_TOOLTIP_37;
 			ToolTipAlign = KEYALIGN_0x0;
 			break;
 		case WORLD_ROOM_DOOR_EXIT:
 			ToolTipAction = BINDABLE_ACTION_MOVE;
-			ToolTipText = TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_30);
+			ToolTipText = HELP_TEXT_TOOLTIP_38;
 			ToolTipAlign = KEYALIGN_0x0;
 			break;
 		}

@@ -7,7 +7,7 @@
 #include <d3dtypes.h> /* For RGBA_MAKE */
 #include <math.h>     /* For atan2, cos, sin */
 
-#include <chlasm/HelpTextEnums.h>                      /* For HELP_TEXT_TOOLTIP_120 */
+#include <chlasm/HelpTextEnums.h>                      /* For HELP_TEXT_TOOLTIP_128 */
 #include <chlasm/LHSample.h>                           /* For LH_SAMPLE_G_CLICKONSCROLL_01, LH_SAMPLE_G_CLICKSIGNPOST */
 #include <chlasm/ScriptChallengeEnums.h>               /* For CHALLENGE_LEAVE_THROUGH_VORTEX_LAND1 */
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>   /* For LH3DIsland::GetAltitude */
@@ -763,7 +763,7 @@ uint32_t ScriptHighlight::GetOverwriteTapToolTip()
 #ifdef VERSION_BW1WCI
 	return GetInfo()->OverwriteTapToolTip;
 #else
-	return info->type == OBJECT_TYPE_CREATURE ? HELP_TEXT_TOOLTIP_120 : 0;
+	return info->type == OBJECT_TYPE_CREATURE ? HELP_TEXT_TOOLTIP_128 : 0;
 #endif
 }
 
