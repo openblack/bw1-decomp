@@ -1113,9 +1113,9 @@ Black/HandStateTug.cpp:
 	.bss        start:0x00C35190 end:0x00C36C00
 
 Black/helpdude.cpp:
-	.text       start:0x0057CF40 end:0x00584D10
+	.text       start:0x0057C9F0 end:0x00584D10
 	.CRT$XCU    start:0x008F67EC end:0x008F67F4 align:4
-	.data       start:0x00B1D198 end:0x00B1D6A8
+	.data       start:0x00B1D1B4 end:0x00B1D6A8
 
 Black/HelpDudeControl.cpp:
 	.text       start:0x00584D10 end:0x00585F30
