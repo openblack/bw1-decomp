@@ -1105,11 +1105,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 		{
 			dispenser->DispensedMagicType = magic;
 			dispenser->SetActive(true);
-			dispenser->Charges = (long)recharge;
-			if (dispenser->Charges == 0)
-			{
-				dispenser->SetActive(false);
-			}
+			dispenser->SetProduceEvery(recharge);
 		}
 		return LH_OK;
 	}

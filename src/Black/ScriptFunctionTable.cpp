@@ -45,9 +45,11 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::TextRead, 0, 1, false, "TEXT_READ"},
 	{GScript::GameThingClicked, 1, 1, false, "GAME_THING_CLICKED"},
 	{GScript::SetScriptState, 2, 0, true, "SET_SCRIPT_STATE"},
+#ifndef VERSION_BW1WCI
 	{GScript::SetScriptStatePos, 4, 0, true, "SET_SCRIPT_STATE_POS"},
 	{GScript::SetScriptStateFloat, 2, 0, true, "SET_SCRIPT_FLOAT"},
 	{GScript::SetScriptStateULData, 3, 0, true, "SET_SCRIPT_ULONG"},
+#endif
 	{GScript::GetProperty, 2, 1, false, "GET_PROPERTY"},
 	{GScript::SetProperty, 3, 0, false, "SET_PROPERTY"},
 	{GScript::GetPosition, 1, 3, false, "GET_POSITION"},
@@ -130,7 +132,9 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::SpiritLookAtGameThing, 2, 0, false, "LOOK_GAME_THING"},
 	{GScript::GetObjectDestination, 1, 3, false, "GET_OBJECT_DESTINATION"},
 	{GScript::CreatureForceFinish, 1, 0, false, "CREATURE_FORCE_FINISH"},
+#ifndef VERSION_BW1WCI
 	{GScript::HideCountDownTimer, 0, 0, false, "HIDE_COUNTDOWN_TIMER"},
+#endif
 	{GScript::GetActionTextForObject, 1, 1, false, "GET_ACTION_TEXT_FOR_OBJECT"},
 	{GScript::CreateCameraBetweenObjectAndPoint, 4, 0, false, "CREATE_DUAL_CAMERA_WITH_POINT"},
 	{GScript::SetCameraToFaceObject, 2, 0, false, "SET_CAMERA_TO_FACE_OBJECT"},
@@ -171,7 +175,9 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::CallInNotNear, 8, 1, false, "CALL_IN_NOT_NEAR"},
 	{GScript::SetCameraZone, 1, 0, false, "SET_CAMERA_ZONE"},
 	{GScript::GetScriptState, 1, 1, false, "GET_OBJECT_STATE"},
+#ifndef VERSION_BW1WCI
 	{GScript::RevealCountDownTimer, 0, 0, false, "REVEAL_COUNTDOWN_TIMER"},
+#endif
 	{GScript::SetTimerTime, 2, 0, false, "SET_TIMER_TIME"},
 	{GScript::CreateTimer, 1, 1, false, "CREATE_TIMER"},
 	{GScript::GetTimeRemaining, 1, 1, false, "GET_TIMER_TIME_REMAINING"},

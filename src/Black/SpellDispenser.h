@@ -22,7 +22,7 @@ class SpellDispenser : public Abode
 {
 public:
 	uint32_t   field_0xc4;
-	uint32_t   Charges;
+	uint32_t   ProduceEvery;
 	GameThing* field_0xcc;
 	uint32_t   Active;
 	MAGIC_TYPE DispensedMagicType;
@@ -68,6 +68,15 @@ public:
 
 	// BW1W120 00723030 BW1M119 01522220
 	void SetActive(bool32_t active);
+	// BW1W120 inlined BW1M119 015234b0
+	void SetProduceEvery(unsigned long every)
+	{
+		ProduceEvery = every;
+		if (every == 0)
+		{
+			SetActive(false);
+		}
+	}
 	// BW1W120 00722b20 BW1M119 01522ce0
 	GMagicInfo* GetMagicInfoProduced();
 };

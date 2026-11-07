@@ -2315,6 +2315,9 @@ void GGame::Process3dEngine()
 	Creature::DrawLeashInfo();
 	Town::DisplayHowImpressed();
 	GPlayer::DrawComputerPlayers();
+#ifdef VERSION_BW1WCI
+	script->DrawCountDownTimer();
+#else
 	if (script->CountDownTimerEnabled && script->CountDownTimerVisible)
 	{
 		char  text[256];
@@ -2328,6 +2331,7 @@ void GGame::Process3dEngine()
 			green = 255;
 		CreatureMentalEditor::DrawTextA(text, 320, 90, 24.0f, red, green, 0);
 	}
+#endif
 	if (ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL && ViewMode != GAME_VIEW_MODE_FALLING_SPELL_VIDEO)
 		LH3DAtmos::Render2D();
 	LHResetFPU();

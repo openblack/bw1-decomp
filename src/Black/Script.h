@@ -261,8 +261,12 @@ public:
 #ifdef VERSION_BW1WCI
 	bool32_t CountDownTimerCountsUp;
 #endif
-	uint32_t  CountDownTimerRemaining;
-	bool32_t  CountDownTimerVisible;
+	uint32_t CountDownTimerRemaining;
+#ifdef VERSION_BW1WCI
+	SCRIPT_COUNTDOWN_DRAW CountDownTimerDraw;
+#else
+	bool32_t CountDownTimerVisible;
+#endif
 	MapCoords FindPos;
 	float     FindRadius;
 #ifdef VERSION_BW1WCI
@@ -824,6 +828,7 @@ public:
 	// BW1WCI 0070f8d0 BW1MCI119 0152fd60
 	static void SetStateWithParams();
 #endif
+#ifndef VERSION_BW1WCI
 	// BW1W120 006f8460 BW1M119 014ff4a0
 	static bool32_t SetStatePosLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f84c0 BW1M119 014ff2b0
@@ -836,6 +841,7 @@ public:
 	static bool32_t SetStateULLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f8770 BW1M119 014fedd0
 	static void SetScriptStateULData();
+#endif
 	// BW1W120 006f88a0 BW1M119 0104d150
 	static void GetPosition();
 	// BW1W120 006f8a00 BW1M119 014fea60
@@ -1347,6 +1353,8 @@ public:
 	static void SetCountDownTimerDraw();
 	// BW1WCI 0072c890 BW1MCI119 0153ed60
 	static void GetCountDownTimerTime();
+	// BW1WCI 0072c380 BW1MCI119 0153efa0
+	static void DrawStopWatch(SCRIPT_COUNTDOWN_DRAW draw, float time, unsigned long colour, float size);
 #endif
 	// BW1W120 0070d360 BW1M119 01506f20
 	static void DeleteAllScriptCreatedGameThings();
@@ -1466,10 +1474,12 @@ public:
 	static void GetCountDownTimer();
 	// BW1W120 007111d0 BW1M119 0150d110
 	static void CountDownTimerExists();
+#ifndef VERSION_BW1WCI
 	// BW1W120 007111f0 BW1M119 0150d0c0
 	static void HideCountDownTimer();
 	// BW1W120 00711210 BW1M119 0150d070
 	static void RevealCountDownTimer();
+#endif
 	// BW1W120 00711230 BW1M119 0150cfd0
 	static void GetMoonPercentage();
 	// BW1W120 00711280 BW1M119 01006d90
@@ -1515,8 +1525,17 @@ public:
 	float GetLocalVariableValue(char* script_name, char* name);
 	// BW1W120 006eb7e0 BW1M119 014dde40
 	bool32_t StartScriptStoppingHelpScriptsInControl(char* name);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0072c310 BW1MCI119 0153f620
+	void ProcessTimer();
+	// BW1WCI 0072c360 BW1MCI119 inlined
+	bool32_t IsCountDownTimerDrawn();
+	// BW1WCI 0072c790 BW1MCI119 0153ee60
+	void DrawCountDownTimer();
+#else
 	// BW1W120 006eb930 BW1M119 inlined
 	void ProcessCountDownTimer();
+#endif
 	// BW1W120 006eb980 BW1M119 inlined
 	void SaveState(char* path);
 #ifndef VERSION_BW1W100
@@ -1766,8 +1785,13 @@ public:
 	                                                      uint32_t subtype);
 	// BW1W120 0070cee0 BW1M119 01003350
 	static uint32_t FindFreeScriptGameThingSlot();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0072c2c0 BW1MCI119 0153f690
+	void InitialiseCountDownTimer(float seconds, bool32_t counts_up);
+#else
 	// BW1W120 006eb8b0 BW1M119 014ddc30
 	void InitialiseCountDownTimer(float seconds);
+#endif
 	// BW1W120 006eb890 BW1M119 014ddd10
 	static void SetPointOutOfWorld(LHPoint* point);
 	// BW1W120 006efd60 BW1M119 014e54e0
