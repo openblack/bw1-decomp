@@ -310,7 +310,7 @@ bool32_t Villager::FleeingFromPredatorReaction()
 		}
 		if ((predator->GetSpeedInMetresPerSecond() > VILLAGER_PREDATOR_CHASING_SPEED &&
 		     IsObjectTravellingTowardsMe(predator)) ||
-		    GRand::GameRand(VILLAGER_HIDE_FROM_PREDATOR_RAND_RANGE, __FILE__, 365) == 0)
+		    GAME_RAND(365, VILLAGER_HIDE_FROM_PREDATOR_RAND_RANGE) == 0)
 		{
 			if (SetupGoAndHideInNearbyBuilding(predator))
 			{
@@ -378,7 +378,7 @@ bool32_t Villager::GoAndHideInNearbyBuilding()
 				}
 			}
 			uint32_t hideTurns = ++HideTurns;
-			if (hideTurns > GRand::GameRand(VILLAGER_HIDE_RAND_TURNS, __FILE__, 422) + VILLAGER_HIDE_MIN_TURNS)
+			if (hideTurns > GAME_RAND(422, VILLAGER_HIDE_RAND_TURNS) + VILLAGER_HIDE_MIN_TURNS)
 			{
 				HideTurns = 0;
 				MapCoords outsidePos = FindPosOutsideAbode(abode);
@@ -431,7 +431,7 @@ bool32_t Villager::LookToSeeIfItIsSafe()
 		}
 	}
 	uint32_t safeTurns = ++HideTurns;
-	if (safeTurns > GRand::GameRand(VILLAGER_LOOK_IF_SAFE_RAND_TURNS, __FILE__, 469) + VILLAGER_LOOK_IF_SAFE_MIN_TURNS)
+	if (safeTurns > GAME_RAND(469, VILLAGER_LOOK_IF_SAFE_RAND_TURNS) + VILLAGER_LOOK_IF_SAFE_MIN_TURNS)
 	{
 		StopReactingAndSetState();
 	}
@@ -478,12 +478,12 @@ uint32_t Villager::NumGameTurnsBeforeReactingAgainToBurningObjectFunction(GameTh
 
 uint32_t Villager::NumGameTurnsToReactToShieldFunction(GameThingWithPos* thing, uint32_t reaction, float distance)
 {
-	if (GetTown() != NULL && GRand::GameRand(VILLAGER_SHIELD_INTEREST_RAND_RANGE, __FILE__, 526) != 0)
+	if (GetTown() != NULL && GAME_RAND(526, VILLAGER_SHIELD_INTEREST_RAND_RANGE) != 0)
 	{
 		uint32_t             gameTurn = GGame::g_game->data.GetGameTurn();
 		uint32_t             lastAttackedTurn = GetTown()->LastAttackedTurn;
 		const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
-		if (GRand::GameRand(VILLAGER_SHIELD_INTEREST_RAND_TURNS, __FILE__, 528) + (gameTurn - lastAttackedTurn) <
+		if (GAME_RAND(528, VILLAGER_SHIELD_INTEREST_RAND_TURNS) + (gameTurn - lastAttackedTurn) <
 		    villagerInfo->NumGameTurnsAfterAggressionInterestedInShield)
 		{
 			return VILLAGER_NUM_GAME_TURNS_FOREVER;
@@ -547,8 +547,8 @@ bool32_t Villager::InspectObjectReaction()
 	}
 	InspectDistance = VILLAGER_INSPECT_OBJECT_START_DISTANCE;
 	uint32_t minTurns = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_OBJECT_MIN_SECONDS);
-	uint32_t extraTurns = GRand::GameRand(
-		GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_OBJECT_RAND_SECONDS), __FILE__, 601);
+	uint32_t extraTurns =
+		GAME_RAND(601, GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_OBJECT_RAND_SECONDS));
 	InspectTurnsUntilApproach = minTurns + extraTurns;
 	SetTopState(VILLAGER_STATE_PERFORM_INSPECTION_REACTION);
 	return true;
@@ -595,8 +595,8 @@ bool32_t Villager::ApproachObjectReaction()
 		return true;
 	}
 	uint32_t minTurns = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_OBJECT_MIN_SECONDS);
-	uint32_t extraTurns = GRand::GameRand(
-		GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_OBJECT_RAND_SECONDS), __FILE__, 665);
+	uint32_t extraTurns =
+		GAME_RAND(665, GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_OBJECT_RAND_SECONDS));
 	InspectTurnsUntilApproach = minTurns + extraTurns;
 	InspectDistance -= VILLAGER_INSPECT_OBJECT_DISTANCE_STEP;
 	SetTopState(VILLAGER_STATE_PERFORM_INSPECTION_REACTION);
@@ -772,7 +772,7 @@ bool32_t Villager::InitialiseBewilderedByMagicTreeReaction()
 			return true;
 		}
 		Forest* forest = tree->GetForest();
-		BewilderedTreeIndex = GRand::GameRand(forest->Trees0.count + forest->Trees1.count - 1, __FILE__, 1057);
+		BewilderedTreeIndex = GAME_RAND(1057, forest->Trees0.count + forest->Trees1.count - 1);
 		BewilderedTreesSeen = 0;
 		SetTopState(VILLAGER_STATE_PERFORM_BEWILDERED_BY_MAGIC_TREE_REACTION);
 		return true;
@@ -791,7 +791,7 @@ bool32_t Villager::PerformBewilderedByMagicTreeReaction()
 			Forest*   forest = tree->GetForest();
 			MapCoords pos;
 			uint32_t  numTrees = forest->Trees1.count + forest->Trees0.count;
-			if (BewilderedTreesSeen < numTrees - GRand::GameRand(numTrees / 2, __FILE__, 1080))
+			if (BewilderedTreesSeen < numTrees - GAME_RAND(1080, numTrees / 2))
 			{
 				ReactionObject = forest->GetTree(BewilderedTreeIndex);
 				BewilderedTreesSeen++;
@@ -802,9 +802,8 @@ bool32_t Villager::PerformBewilderedByMagicTreeReaction()
 				pos.SetZ(edge.z);
 				pos.SetAltitude(0.0f);
 				SetupMoveToWithHug(pos, VILLAGER_STATE_TURN_TO_FACE_MAGIC_TREE);
-				uint8_t turns = GRand::GameRand(
-					GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_MAGIC_TREE_LOOK_RAND_SECONDS), __FILE__,
-					1092);
+				uint8_t turns = GAME_RAND(
+					1092, GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_MAGIC_TREE_LOOK_RAND_SECONDS));
 				turns -= GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(-VILLAGER_MAGIC_TREE_LOOK_MIN_SECONDS);
 				StateTurnsTotal = turns;
 				StateTurnsLeft = turns;
@@ -1084,14 +1083,14 @@ void Villager::SetupReactToMagicShield(GameThingWithPos* thing, Reaction* reacti
 		if (!shield->IsUnder(Pos, edge))
 		{
 			float angle = GUtils::Get3DAngleFromXZ(reaction->GetPos(), Pos);
-			angle += GRand::GameFloatRand(QUARTER_PI_F, __FILE__, 1577) - EIGHTH_PI_F;
+			angle += GAME_FLOAT_RAND(1577, QUARTER_PI_F) - EIGHTH_PI_F;
 			float     inside = shield->GetRadius() - edge;
-			float     distance = inside - POWER(GRand::GameFloatRand(1.0f, __FILE__, 1579), 3) * inside;
+			float     distance = inside - POWER(GAME_FLOAT_RAND(1579, 1.0f), 3) * inside;
 			MapCoords pos = reaction->GetPos() + GUtils::GetPosFromAngle(angle, distance);
 			SetupMoveToWithHug(pos, VILLAGER_STATE_AMAZED_BY_MAGIC_SHIELD_REACTION);
 		}
 		float angle = GUtils::Get3DAngleFromXZ(reaction->GetPos(), Pos);
-		angle += GRand::GameFloatRand(QUARTER_PI_F, __FILE__, 1583) - EIGHTH_PI_F;
+		angle += GAME_FLOAT_RAND(1583, QUARTER_PI_F) - EIGHTH_PI_F;
 		ReactionPos.Init(Pos + GUtils::GetPosFromAngle(angle, VILLAGER_SHIELD_LOOK_DISTANCE));
 	}
 }
@@ -1110,7 +1109,7 @@ void Villager::SetupReactToNewBuilding(GameThingWithPos* thing, Reaction* reacti
 	{
 		DANCE_INFO type =
 			radius < VILLAGER_LARGE_BUILDING_RADIUS ? DANCE_INFO_BUILDING_SMALL : DANCE_INFO_BUILDING_LARGE;
-		dance = new (__FILE__, 1646)
+		dance = NEW(1646)
 			Dance(thing->Pos, &GDanceInfo::Infos[type], building, GDanceInfo::Infos[type].Duration, false, town);
 		if (dance == NULL)
 		{
@@ -1271,7 +1270,7 @@ void Villager::SetupReactToDeath(GameThingWithPos* thing, Reaction* reaction)
 	{
 		AddReaction(reaction, VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION);
 	}
-	else if (GRand::GameRand(2, __FILE__, 1830) == 0)
+	else if (GAME_RAND(1830, 2) == 0)
 	{
 		TurnsUntilNextStateChange = 0;
 		AddReaction(reaction, VILLAGER_STATE_POINT_AT_DEAD_PERSON);
@@ -1298,10 +1297,9 @@ bool32_t Villager::PointAtDeadPerson()
 	if (LookAtObject(ReactionObject.Get(), LIVING_LOOK_AT_SPEED_NORMAL))
 	{
 		TurnsUntilNextStateChange++;
-		if (TurnsUntilNextStateChange >
-		    (int)GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
-				GRand::GameFloatRand(VILLAGER_DEAD_PERSON_POINT_RAND_SECONDS, __FILE__, 1860) +
-				VILLAGER_DEAD_PERSON_POINT_MIN_SECONDS))
+		if (TurnsUntilNextStateChange > (int)GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
+											GAME_FLOAT_RAND(1860, VILLAGER_DEAD_PERSON_POINT_RAND_SECONDS) +
+											VILLAGER_DEAD_PERSON_POINT_MIN_SECONDS))
 		{
 			SetTopState(VILLAGER_STATE_GO_TOWARDS_DEAD_PERSON);
 		}
@@ -1350,9 +1348,9 @@ bool32_t Villager::LookAtDeadPerson()
 bool32_t Villager::MournDeadPerson()
 {
 	TurnsUntilNextStateChange++;
-	if (TurnsUntilNextStateChange > (int)GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
-										GRand::GameFloatRand(VILLAGER_DEAD_PERSON_MOURN_RAND_SECONDS, __FILE__, 1914) +
-										VILLAGER_DEAD_PERSON_MOURN_MIN_SECONDS))
+	if (TurnsUntilNextStateChange >
+	    (int)GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
+			GAME_FLOAT_RAND(1914, VILLAGER_DEAD_PERSON_MOURN_RAND_SECONDS) + VILLAGER_DEAD_PERSON_MOURN_MIN_SECONDS))
 	{
 		StopReactingAndSetState();
 	}
@@ -1389,9 +1387,9 @@ bool32_t Villager::ConfusedReaction()
 	if (action.TurnsSinceStateChange > VILLAGER_CONFUSED_TURNS)
 	{
 		MapCoords pos = Pos;
-		pos.SetMetersX(pos.MetersX() + GRand::GameFloatRand(VILLAGER_CONFUSED_WANDER_RANGE, __FILE__, 1960) -
+		pos.SetMetersX(pos.MetersX() + GAME_FLOAT_RAND(1960, VILLAGER_CONFUSED_WANDER_RANGE) -
 		               VILLAGER_CONFUSED_WANDER_RANGE / 2);
-		pos.SetMetersZ(pos.MetersZ() + GRand::GameFloatRand(VILLAGER_CONFUSED_WANDER_RANGE, __FILE__, 1961) -
+		pos.SetMetersZ(pos.MetersZ() + GAME_FLOAT_RAND(1961, VILLAGER_CONFUSED_WANDER_RANGE) -
 		               VILLAGER_CONFUSED_WANDER_RANGE / 2);
 		SetupMoveToWithHug(pos, VILLAGER_STATE_START_CONFUSED_REACTION);
 	}
@@ -1561,9 +1559,9 @@ void Villager::SetupReactToTownCelebration(GameThingWithPos* thing, Reaction* re
 	{
 		if (reaction->ReactionDance.Get() == NULL)
 		{
-			Dance* dance = new (__FILE__, 2167)
-				Dance(thing->Pos, &GDanceInfo::Infos[DANCE_INFO_DANCE_AROUND_PERSON], NULL,
-			          GDanceInfo::Infos[DANCE_INFO_DANCE_AROUND_PERSON].Duration, false, (Town*)thing);
+			Dance* dance =
+				NEW(2167) Dance(thing->Pos, &GDanceInfo::Infos[DANCE_INFO_DANCE_AROUND_PERSON], NULL,
+			                    GDanceInfo::Infos[DANCE_INFO_DANCE_AROUND_PERSON].Duration, false, (Town*)thing);
 			if (dance == NULL)
 			{
 				return;
@@ -1580,9 +1578,9 @@ void Villager::SetupReactToTownCelebration(GameThingWithPos* thing, Reaction* re
 	if (dance == NULL)
 	{
 		TownCentre* townCentre = dynamic_cast<TownCentre*>(thing);
-		dance = new (__FILE__, 2187) Dance(thing->Pos, &GDanceInfo::Infos[DANCE_INFO_DANCE_TOWN_CELEBRATION], building,
-		                                   GDanceInfo::Infos[DANCE_INFO_DANCE_TOWN_CELEBRATION].Duration, false,
-		                                   townCentre != NULL ? townCentre->GetTown() : NULL);
+		dance = NEW(2187) Dance(thing->Pos, &GDanceInfo::Infos[DANCE_INFO_DANCE_TOWN_CELEBRATION], building,
+		                        GDanceInfo::Infos[DANCE_INFO_DANCE_TOWN_CELEBRATION].Duration, false,
+		                        townCentre != NULL ? townCentre->GetTown() : NULL);
 		if (dance == NULL)
 		{
 			return;

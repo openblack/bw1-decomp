@@ -80,10 +80,10 @@ void CameraModePath::ProcessKeyMovement(uint16_t key)
 
 	if (move != 0 || turn != 0)
 	{
-		new (__FILE__, 93) CameraModeNew3(camera);
+		NEW(93) CameraModeNew3(camera);
 	}
 	if (GGame::g_game->MyInterface()->HandState.hand_state == HAND_STATE_GRIP_LANDSCAPE)
 	{
-		new (__FILE__, 100) CameraModeNew3(camera);
+		NEW(100) CameraModeNew3(camera);
 	}
 }

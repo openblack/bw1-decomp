@@ -268,7 +268,7 @@ bool32_t Creature::Load(GameOSFile& file)
 	{
 		if (alignment == NULL)
 		{
-			alignment = new (__FILE__, 281) GAlignment();
+			alignment = NEW(281) GAlignment();
 		}
 		file.ReadIt(MindVersion);
 		file.ReadIt(MindSavedInsideCitadel);
@@ -493,7 +493,7 @@ LH3DCreature* Creature::Load3D(char* name)
 	{
 		unsigned long creatureType;
 		archive >> creatureType;
-		LH3DCreature* creature3d = new (__FILE__, 577) LH3DCreature(NULL, LHPoint(0.0f, 0.0f, 0.0f), NULL);
+		LH3DCreature* creature3d = NEW(577) LH3DCreature(NULL, LHPoint(0.0f, 0.0f, 0.0f), NULL);
 		char          binaryName[MAX_PATH];
 		sprintf(binaryName, "%s", CreatureFileName::Table[creatureType].BinaryName);
 		if (!creature3d->LoadBinary(binaryName, 0))
@@ -698,7 +698,7 @@ void Creature::LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* 
 	Archive* archive;
 	if (data == NULL)
 	{
-		archive = new (__FILE__, 882) Archive(path, LH_FILE_MODE_READ_ONLY);
+		archive = NEW(882) Archive(path, LH_FILE_MODE_READ_ONLY);
 	}
 	else
 	{
@@ -707,7 +707,7 @@ void Creature::LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* 
 		{
 			return;
 		}
-		archive = new (__FILE__, 890) Archive(&memory, data->CreatureLength);
+		archive = NEW(890) Archive(&memory, data->CreatureLength);
 	}
 	if (archive != NULL)
 	{
@@ -850,7 +850,7 @@ void CreatureMental::LoadMind(Archive& archive)
 				archive >> threshold;
 				archive >> type;
 				CreatureDesireSource* source =
-					new (__FILE__, 1056) CreatureDesireSource((CREATURE_DESIRE_SOURCE)type, creature.Get());
+					NEW(1056) CreatureDesireSource((CREATURE_DESIRE_SOURCE)type, creature.Get());
 				source->Value = value;
 				source->Threshold = threshold;
 				desires.SourceLists[i].AddToEnd(source);
@@ -1037,7 +1037,7 @@ void CreatureActionsKnownAbout::Load(Archive& archive)
 		archive >> numActions;
 		for (unsigned long i = 0; i < numActions; i++)
 		{
-			CreatureActionKnownAbout* action = new (__FILE__, 1264) CreatureActionKnownAbout();
+			CreatureActionKnownAbout* action = NEW(1264) CreatureActionKnownAbout();
 			archive >> action->Action;
 			if (MindVersion < CREATURE_MIND_VERSION_ACTIONS_KNOWN_ABOUT)
 			{
@@ -1231,8 +1231,8 @@ void DecisionTreeAgenda::LoadExamples(Archive& archive)
 	archive >> numExamples;
 	for (unsigned long i = 0; i < numExamples; i++)
 	{
-		CreatureLearningEpisode* episode = new (__FILE__, 1484) CreatureLearningEpisode();
-		CreatureLearningContext* context = new (__FILE__, 1486) CreatureLearningContext();
+		CreatureLearningEpisode* episode = NEW(1484) CreatureLearningEpisode();
+		CreatureLearningContext* context = NEW(1486) CreatureLearningContext();
 		int                      type;
 		int                      beliefType;
 		archive >> type;

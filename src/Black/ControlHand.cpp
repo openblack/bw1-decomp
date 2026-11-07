@@ -81,17 +81,17 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 	field_0x4950 = 0;
 	field_0x4954 = 0;
 
-	// HandStates.named.invisible = new(__FILE__, __LINE__) HandStateInvisible(this);
-	// HandStates.named.normal = new(__FILE__, __LINE__) HandStateNormal(this);
-	// HandStates.named.camera = new(__FILE__, __LINE__) HandStateCamera(this);
-	// HandStates.named.tug = new(__FILE__, __LINE__) HandStateTug(this);
-	// HandStates.named.holding = new(__FILE__, __LINE__) HandStateHolding(this);
-	// HandStates.named.totem = new(__FILE__, __LINE__) HandStateTotem(this);
-	// HandStates.named.MultiPickUp = new(__FILE__, __LINE__) HandStateMultiPickUp(this);
-	// HandStates.named.creature = new(__FILE__, __LINE__) HandStateCreature(this);
-	// HandStates.named.grain = new(__FILE__, __LINE__) HandStateGrain(this);
-	// HandStates.named.PlayAnim = new(__FILE__, __LINE__) HandStatePlayAnim(this);
-	// HandStates.named.citadel = new(__FILE__, __LINE__) HandStateCitadel(this);
+	// HandStates.named.invisible = NEW(__LINE__) HandStateInvisible(this);
+	// HandStates.named.normal = NEW(__LINE__) HandStateNormal(this);
+	// HandStates.named.camera = NEW(__LINE__) HandStateCamera(this);
+	// HandStates.named.tug = NEW(__LINE__) HandStateTug(this);
+	// HandStates.named.holding = NEW(__LINE__) HandStateHolding(this);
+	// HandStates.named.totem = NEW(__LINE__) HandStateTotem(this);
+	// HandStates.named.MultiPickUp = NEW(__LINE__) HandStateMultiPickUp(this);
+	// HandStates.named.creature = NEW(__LINE__) HandStateCreature(this);
+	// HandStates.named.grain = NEW(__LINE__) HandStateGrain(this);
+	// HandStates.named.PlayAnim = NEW(__LINE__) HandStatePlayAnim(this);
+	// HandStates.named.citadel = NEW(__LINE__) HandStateCitadel(this);
 
 	HandStates.raw[CurrentState]->Enter();
 
@@ -141,9 +141,7 @@ uint32_t CHand::LoadBinary(char* filename, int param_1)
 			SetSize(1.0f);
 			if (Matrix0x49ac != NULL)
 			{
-				// __dl__FPv(Matrix0x49ac);
 			}
-			// Matrix0x49ac = (LHMatrix*)__nw__FUl(field_0x47b8 * 0x30, __FILE__, __LINE__);
 			return 1;
 		}
 	}

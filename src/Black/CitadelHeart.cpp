@@ -294,7 +294,7 @@ TempleLeash::TempleLeash(LH3DObject* object, unsigned long player_number)
 		LHPoint pos;
 		object->GetExtraPos(i, &pos);
 		MapCoords coords(pos);
-		LeashObj* leash = new (__FILE__, 204) LeashObj(coords, player_number);
+		LeashObj* leash = NEW(204) LeashObj(coords, player_number);
 		leashes[i] = leash;
 		leash->LeashIndex = i;
 		leash->temple_leash = this;
@@ -365,7 +365,7 @@ void CitadelHeart::CreateLeashes()
 {
 	if (leashes == NULL)
 	{
-		leashes = new (__FILE__, 296) TempleLeash(Object::Get3DObjectForPSys(), GetPlayer()->player_number);
+		leashes = NEW(296) TempleLeash(Object::Get3DObjectForPSys(), GetPlayer()->player_number);
 	}
 }
 
@@ -494,7 +494,7 @@ void CitadelHeart::SetToZero()
 CitadelHeart* CitadelHeart::Create(const MapCoords& coords, const GCitadelHeartInfo* info, Citadel* citadel,
                                    float y_angle, float scale, float food, int wood)
 {
-	CitadelHeart* heart = new (__FILE__, 463) CitadelHeart(coords, info, citadel, y_angle, scale, food, wood);
+	CitadelHeart* heart = NEW(463) CitadelHeart(coords, info, citadel, y_angle, scale, food, wood);
 	if (heart != NULL)
 	{
 		heart->CallVirtualFunctionsForCreation(coords);
@@ -518,7 +518,7 @@ CitadelHeart* CitadelHeart::CreateTownHeart(const MapCoords& coords, const GCita
 		citadel = player->citadel.Get();
 		if (citadel == NULL)
 		{
-			citadel = new (__FILE__, 489) Citadel(coords, GCitadelInfo::GetInfo(), player);
+			citadel = NEW(489) Citadel(coords, GCitadelInfo::GetInfo(), player);
 		}
 	}
 	CitadelHeart* heart = Create(coords, info, citadel, y_angle, scale, food, wood);
@@ -619,7 +619,7 @@ WorshipSite* CitadelHeart::CreateBuiltWorshipSite(const MapCoords& coords, const
 
 Flock* CitadelHeart::CreateAlignmentFlock(const MapCoords& coords, GPlayer* player)
 {
-	Flock* flock = new (__FILE__, 615)
+	Flock* flock = NEW(615)
 		Flock(coords, (const GFlockInfo*)&GContainerInfo::Definitions[CONTAINER_INFO_FLOCK], player, FLOCK_MAGIC);
 	flock->DomainRadius = ALIGNMENT_FLOCK_DOMAIN_RADIUS;
 	flock->FlockDistance = ALIGNMENT_FLOCK_DISTANCE;
@@ -697,14 +697,13 @@ PlannedMultiMapFixed* CitadelHeart::ConvertToPlanned()
 	if (town != NULL)
 	{
 		PlannedTownCitadelHeart* planned =
-			new (__FILE__, 709) PlannedTownCitadelHeart(Pos, GetInfo(), town, GetYAngle(), GetScale());
+			NEW(709) PlannedTownCitadelHeart(Pos, GetInfo(), town, GetYAngle(), GetScale());
 		planned->FootpathLink.Set(FootpathLink);
 		FootpathLink = NULL;
 		ToBeDeleted(false);
 		return planned;
 	}
-	PlannedCitadelHeart* planned =
-		new (__FILE__, 717) PlannedCitadelHeart(Pos, GetInfo(), citadel.Get(), GetYAngle(), GetScale());
+	PlannedCitadelHeart* planned = NEW(717) PlannedCitadelHeart(Pos, GetInfo(), citadel.Get(), GetYAngle(), GetScale());
 	ToBeDeleted(false);
 	return planned;
 }
@@ -893,7 +892,7 @@ void CitadelHeart::DestructionSequenceProcess()
 				float speed = GJUtils::Linterp(DestructionPlasmaStartSpeed, DestructionPlasmaEndSpeed, t);
 				float alpha = GJUtils::Linterp(DestructionPlasmaStartAlpha, DestructionPlasmaEndAlpha, t);
 				DestructionPlasmaContainer->AddTarget(
-					new (__FILE__, 997) UR_PlasmaInf(start, end, startNormal, endNormal, width, speed, alpha));
+					NEW(997) UR_PlasmaInf(start, end, startNormal, endNormal, width, speed, alpha));
 			}
 		}
 	}
@@ -941,8 +940,7 @@ void CitadelHeart::DestructionSequenceProcess()
 		GParticleContainer* smoke = GParticleContainer::CreateSpotVisualWithSpecifiedDuration(
 			Pos, SPOT_VISUAL_EVIL_SMOKE, 1.0f,
 			GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
-				(GRand::GameFloatRand(DESTRUCTION_SMOKE_RANDOM_DURATION, __FILE__, 1046) +
-		         DESTRUCTION_SMOKE_MIN_DURATION) *
+				(GAME_FLOAT_RAND(1046, DESTRUCTION_SMOKE_RANDOM_DURATION) + DESTRUCTION_SMOKE_MIN_DURATION) *
 				DestructionSmokeDuration),
 			NULL);
 		if (smoke != NULL)
@@ -1295,7 +1293,7 @@ void CitadelHeart::CallVirtualFunctionsForCreation(const MapCoords& coords)
 		InitialiseIsFixedForMapList();
 		if (entrance == NULL)
 		{
-			entrance = new (__FILE__, 1504) CitadelEntrance(Pos, &GObjectInfo::Definitions[OBJECT_TYPE_TERRAIN]);
+			entrance = NEW(1504) CitadelEntrance(Pos, &GObjectInfo::Definitions[OBJECT_TYPE_TERRAIN]);
 		}
 		LH3DObject* object = LH3DObject::Create(LH3DObject::MORPHABLE);
 		entrance->Game3dObject = (Game3DObject*)object;
@@ -1462,7 +1460,7 @@ MultiMapFixed* PlannedTownCitadelHeart::CreatePlannedNoFixedCheck(float food)
 		Citadel* citadel = player->citadel.Get();
 		if (citadel == NULL)
 		{
-			citadel = new (__FILE__, 1812) Citadel(Pos, GCitadelInfo::GetInfo(), player);
+			citadel = NEW(1812) Citadel(Pos, GCitadelInfo::GetInfo(), player);
 		}
 		if (citadel != NULL)
 		{
@@ -1688,7 +1686,7 @@ void CitadelHeart::SetTransferedEffectSelf(bool show_effect)
 			endNormal *= -1.0f;
 			if (TransferContainer != NULL)
 			{
-				TransferContainer->AddTarget(new (__FILE__, 2116) UR_PlasmaInf(
+				TransferContainer->AddTarget(NEW(2116) UR_PlasmaInf(
 					start, end, LHPoint(0.0f, 1.0f, 0.0f), endNormal, TransferedEffectPlasmaWidth,
 					TransferedEffectPlasmaSpeed, TransferedEffectPlasmaAlpha));
 			}
@@ -1736,7 +1734,7 @@ void CitadelHeart::SetTransferedEffectObject(Object* object, bool show_effect)
 				options.ZPos = soundPos.z;
 				options.Follow = false;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
-				TransferContainer->AddTarget(new (__FILE__, 2179) UR_PlasmaInf(
+				TransferContainer->AddTarget(NEW(2179) UR_PlasmaInf(
 					start, end, LHPoint(0.0f, 1.0f, 0.0f), LHPoint(0.0f, -1.0f, 0.0f), TransferedEffectPlasmaWidth,
 					TransferedEffectPlasmaSpeed, TransferedEffectPlasmaAlpha));
 			}
@@ -1815,8 +1813,8 @@ void CitadelHeart::ProcessTransferedDamageEffect()
 				options.Follow = false;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
 			}
-			TransferContainer->AddTarget(new (__FILE__, 2255) UR_PlasmaInf(start, end, startNormal, endNormal, width,
-			                                                               TransferedEffectPlasmaSpeed, alpha));
+			TransferContainer->AddTarget(
+				NEW(2255) UR_PlasmaInf(start, end, startNormal, endNormal, width, TransferedEffectPlasmaSpeed, alpha));
 		}
 	}
 }
@@ -1876,12 +1874,12 @@ void CitadelHeart::UpdateLeashes() {}
 
 BuildingSite* CitadelHeart::CreateBuildingSite()
 {
-	return new (__FILE__, 2338) CitadelBuildingSite(this);
+	return NEW(2338) CitadelBuildingSite(this);
 }
 
 BuildingSite* PlannedCitadelHeart::CreateBuildingSite()
 {
-	return new (__FILE__, 2344) CitadelBuildingSite(this);
+	return NEW(2344) CitadelBuildingSite(this);
 }
 
 CitadelEntrance::CitadelEntrance() : Heart(NULL)
@@ -1932,17 +1930,16 @@ HELP_TEXT CitadelEntrance::GetQueryLastEnumText()
 void CitadelHeart::CreateCollideData()
 {
 	ReleaseCollideData();
-	CollideData = new (__FILE__, 2413) NewCollide(Game3dObject);
+	CollideData = NEW(2413) NewCollide(Game3dObject);
 	if (CollideData->obj->IteratorList != NULL)
 	{
 		delete CollideData->obj->IteratorList;
 	}
-	CollideData->obj->IteratorList = new (__FILE__, 2418) NewCollide::List(CITADEL_COLLIDE_OBJ_COUNT);
+	CollideData->obj->IteratorList = NEW(2418) NewCollide::List(CITADEL_COLLIDE_OBJ_COUNT);
 	LHMatrix matrix;
 	GetWorldMatrix(&matrix);
 	LHPoint centre = matrix.GetPos();
-	CollideData->obj->IteratorList->Add(new (__FILE__, 2424)
-	                                        NewCollide::Obj(CollideRadius * CITADEL_COLLIDE_CORE_SCALE, &centre));
+	CollideData->obj->IteratorList->Add(NEW(2424) NewCollide::Obj(CollideRadius * CITADEL_COLLIDE_CORE_SCALE, &centre));
 	float angle = GetYAngle() + CollideAngleOffset;
 	float sphereRadius = CollideRadius * CITADEL_SECTOR_POINT_RADIUS_SCALE;
 	for (int i = 0; i < CITADEL_COLLIDE_SECTORS; i++)
@@ -1977,14 +1974,12 @@ void CitadelHeart::CreateCollideData()
 					float a = angle + (i == 0 ? CITADEL_SECTOR_ARM_ANGLE_3 : -CITADEL_SECTOR_ARM_ANGLE_3);
 					pos.Set(cos(a) * dist + centre.x, centre.y, sin(a) * dist + centre.z);
 				}
-				CollideData->obj->IteratorList->Add(new (__FILE__, 2479)
-				                                        NewCollide::Obj(CollideSphereScale * sphereRadius, &pos));
+				CollideData->obj->IteratorList->Add(NEW(2479) NewCollide::Obj(CollideSphereScale * sphereRadius, &pos));
 			}
 			else if (j < 4)
 			{
 				pos.Set(dist * c + centre.x, centre.y, s * dist + centre.z);
-				CollideData->obj->IteratorList->Add(new (__FILE__, 2487)
-				                                        NewCollide::Obj(CollideSphereScale * sphereRadius, &pos));
+				CollideData->obj->IteratorList->Add(NEW(2487) NewCollide::Obj(CollideSphereScale * sphereRadius, &pos));
 				dist += CollideRadius * CITADEL_SECTOR_STEP_SCALE;
 			}
 		}

@@ -44,7 +44,7 @@ void Bonfire::CallVirtualFunctionsForCreation(const MapCoords& coords)
 
 Bonfire* Bonfire::Create(const MapCoords& coords, float y_angle, float scale, float fire_scale)
 {
-	Bonfire* bonfire = new (__FILE__, 30) Bonfire(coords, y_angle, scale, fire_scale);
+	Bonfire* bonfire = NEW(30) Bonfire(coords, y_angle, scale, fire_scale);
 	if (bonfire)
 	{
 		bonfire->CallVirtualFunctionsForCreation(coords);

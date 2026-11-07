@@ -9,24 +9,22 @@
 
 #include "GatheringBox.h" /* For class GatheringBox */
 
-#ifndef GATHERING_INTERFACE_INCLUDE_NAME
-#define GATHERING_INTERFACE_INCLUDE_NAME "GatheringInterface.h"
+#ifdef VERSION_BW1W100
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 69)
 #endif
-
-#define GATHERING_INTERFACE_SOURCE_FILE SOURCE_DIRECTORY GATHERING_INTERFACE_INCLUDE_NAME
 
 inline IncomingBubbleInfo* AddIncomingText(INCOMINGTEXTTYPE type, char16_t* text)
 {
 	GatheringBox* box = GatheringBox::Instance;
 	box->NumIncoming++;
-#if defined(VERSION_BW1W100)
-	IncomingBubbleInfo* info = new (GATHERING_INTERFACE_SOURCE_FILE, 213) IncomingBubbleInfo(type, text);
-#else
-	IncomingBubbleInfo* info = new (GATHERING_INTERFACE_SOURCE_FILE, 282) IncomingBubbleInfo(type, text);
-#endif
+	IncomingBubbleInfo* info = NEW(282) IncomingBubbleInfo(type, text);
 	box->IncomingList.AddToEnd(info);
 	box->UpdateIncomingText();
 	return info;
 }
+
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) (line)
 
 #endif /* BW1_DECOMP_GATHERING_INTERFACE_INCLUDED_H */

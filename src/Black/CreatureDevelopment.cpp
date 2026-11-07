@@ -13,9 +13,8 @@
 #include "Rand.h"
 
 #ifdef VERSION_BW1WCI
-#define DEVELOPMENT_LINE(line) ((line) + 9)
-#else
-#define DEVELOPMENT_LINE(line) (line)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + 9)
 #endif
 
 #define MILLISECONDS_TO_SECONDS 0.001f
@@ -231,7 +230,7 @@ void Creature::GiveMaximumSkillAtOneSpell()
 		CREATURE_CAST_LIGHTNING_BOLT,  //
 		CREATURE_CAST_LIGHTNING_STORM, //
 	};
-	CREATURE_ACTION spell = spells[GRand::GameRand(ARRAY_SIZE(spells), __FILE__, DEVELOPMENT_LINE(243))];
+	CREATURE_ACTION spell = spells[GAME_RAND(243, ARRAY_SIZE(spells))];
 	mind->learning.SetSkillAtAction(spell, MAXIMUM_SKILL);
 }
 
@@ -245,7 +244,7 @@ void Creature::GiveMaximumSkillAtOnePowerupSpell()
 		CREATURE_CAST_HEAL_SPELL_PU1,     //
 		CREATURE_CAST_SHIELD_PU1,         //
 	};
-	CREATURE_ACTION spell = spells[GRand::GameRand(ARRAY_SIZE(spells), __FILE__, DEVELOPMENT_LINE(261))];
+	CREATURE_ACTION spell = spells[GAME_RAND(261, ARRAY_SIZE(spells))];
 	mind->learning.SetSkillAtAction(spell, MAXIMUM_SKILL);
 }
 #endif // VERSION_BW1W100

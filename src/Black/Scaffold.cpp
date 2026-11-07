@@ -59,7 +59,7 @@ Scaffold::~Scaffold() {}
 Scaffold* Scaffold::Create(const MapCoords& coords, const GScaffoldInfo* info, Town* town, Object* parent,
                            float y_angle, float scale)
 {
-	Scaffold* scaffold = new (__FILE__, 66) Scaffold(coords, info, parent, y_angle, scale);
+	Scaffold* scaffold = NEW(66) Scaffold(coords, info, parent, y_angle, scale);
 	if (scaffold != NULL)
 	{
 		scaffold->town = town;

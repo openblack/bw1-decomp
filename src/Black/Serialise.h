@@ -14,8 +14,6 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#define SERIALISE_FILEPATH SOURCE_DIRECTORY "Serialise.h"
-
 #define ARCHIVE_BUFFER_SIZE 0x400
 #define ARCHIVE_FORMAT      3
 
@@ -146,7 +144,7 @@ public:
 			{
 				total += node->payload->Size;
 			}
-			char* dest = *Memory = new (SERIALISE_FILEPATH, 186) char[total];
+			char* dest = *Memory = NEW(186) char[total];
 			for (node = MemoryBlocks.GetStart(); node != NULL; node = node->next.Get())
 			{
 				memcpy(dest, node->payload->Data, node->payload->Size);

@@ -512,7 +512,7 @@ void MultiMapFixed::AllocateMultiChild()
 {
 	NewCollideDescriptor descriptor(this);
 	MultiChildrenArray.capacity = descriptor.count;
-	MultiChildrenArray.array = new (__FILE__, 739) MultiChild[descriptor.count];
+	MultiChildrenArray.array = NEW(739) MultiChild[descriptor.count];
 }
 
 SingleMapFixed::~SingleMapFixed()
@@ -641,7 +641,7 @@ bool32_t MultiMapFixed::AddFootpath(GFootpath* footpath)
 {
 	if (GetFootpathLink() == NULL)
 	{
-		FootpathLink = new (__FILE__, 978 - FIXED_LINE_SHIFT) GFootpathLink();
+		FootpathLink = NEW(978 - FIXED_LINE_SHIFT) GFootpathLink();
 	}
 	GetFootpathLink()->AddFootpath(footpath);
 	return true;
@@ -873,18 +873,18 @@ bool32_t MultiMapFixed::CreatureMustAvoid(Creature* creature)
 void SingleMapFixed::CreateCollideData()
 {
 	ReleaseCollideData();
-	CollideData = new (__FILE__, 1279 - FIXED_LINE_SHIFT) NewCollide(Game3dObject);
+	CollideData = NEW(1279 - FIXED_LINE_SHIFT) NewCollide(Game3dObject);
 }
 
 void MultiMapFixed::CreateCollideData()
 {
 	ReleaseCollideData();
-	CollideData = new (__FILE__, 1286 - FIXED_LINE_SHIFT) NewCollide(Game3dObject);
+	CollideData = NEW(1286 - FIXED_LINE_SHIFT) NewCollide(Game3dObject);
 }
 
 BuildingSite* MultiMapFixed::CreateBuildingSite()
 {
-	return new (__FILE__, 1292 - FIXED_LINE_SHIFT) StandardBuildingSite(this);
+	return NEW(1292 - FIXED_LINE_SHIFT) StandardBuildingSite(this);
 }
 
 float MultiMapFixed::ReduceLife(float value, GPlayer* player)

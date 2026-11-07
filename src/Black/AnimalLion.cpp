@@ -48,7 +48,7 @@ Lion::Lion(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) 
 
 PieceLion* PieceLion::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	PieceLion* lion = new (__FILE__, 153) PieceLion(coords, info, age);
+	PieceLion* lion = NEW(153) PieceLion(coords, info, age);
 	if (lion != NULL)
 	{
 		lion->CallVirtualFunctionsForCreation(coords);

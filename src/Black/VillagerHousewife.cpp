@@ -242,9 +242,6 @@ bool32_t Villager::HousewifeDoesHousework()
 // BW1W120 00762020 BW1M119 015918f0
 bool32_t Villager::HousewifeGossipsAroundStoragePit()
 {
-	// TODO: deferred — float math (HousewifeGossipTime), GameFloatRand __FILE__/__LINE__
-	// split-TU line/file pushes, GetPosFromAngle + MapCoords::operator+= + Collide. Best-effort
-	// structure below; full match blocked on gamerand-file-line-split-tu family.
 	TurnsUntilNextStateChange--;
 	if (TurnsUntilNextStateChange > 0)
 	{
@@ -269,8 +266,6 @@ bool32_t Villager::HousewifeGossipsAroundStoragePit()
 // BW1W120 007621a0 BW1M119 01591780
 bool32_t Villager::HousewifeStartsGivingBirth()
 {
-	// TODO: deferred — float global (0x00d01a0c) * constant, GameRand __FILE__/__LINE__ split-TU
-	// pushes, __ftol conversions. Blocked on gamerand-file-line-split-tu family.
 	is_pregnant = 0;
 	SetTopState(VILLAGER_STATE_HOUSEWIFE_GIVING_BIRTH);
 	return HousewifeGivingBirth();

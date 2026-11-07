@@ -34,11 +34,11 @@
 #include "Town.h"
 
 #if defined(VERSION_BW1W100)
-#define LEARN_LINE(line) ((line) - ((line) < 300 ? 0 : (line) < 530 ? 3 : 9))
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - ((line) < 300 ? 0 : (line) < 530 ? 3 : 9))
 #elif defined(VERSION_BW1WCI)
-#define LEARN_LINE(line) ((line) + 2)
-#else
-#define LEARN_LINE(line) (line)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + 2)
 #endif
 
 #ifdef VERSION_BW1WCI
@@ -249,7 +249,7 @@ void CreatureMental::RespondToPlayerFeedback(float feedback)
 			agenda.MimicState.StageProgress = 0;
 			uint32_t numActions =
 				CreatureMimicInfo::GetInfo()[agenda.MimicState.DetectedPlayerAction].NumActionsPerStage;
-			agenda.MimicState.StageLimit = numActions + GRand::GameRand(1, __FILE__, LEARN_LINE(217));
+			agenda.MimicState.StageLimit = numActions + GAME_RAND(217, 1);
 			desires.ChangeSource(TO_FOLLOW_PLAYER_DESIRE, FOLLOW_PLAYER_SOURCE_INCREASE);
 		}
 		desires.SuppressDesire(CREATURE_DESIRE_SADNESS, SADNESS_SUPPRESSION_SECONDS);
@@ -269,7 +269,7 @@ void CreatureMental::RespondToPlayerFeedback(float feedback)
 			creature.Get()->SendCandidateHelpScript(CREATURE_HELP_TYPE_MISCELLANEOUS_STACKED,
 			                                        CREATURE_MISCELLANEOUS_HELP_STACKED_PLAYER_SLAP_BUT_NOT_LEARNING,
 			                                        NULL, NULL, 0);
-			if (GRand::GameRand(EMOTIONAL_RESPONSE_CHANCE, __FILE__, LEARN_LINE(240)) == 0)
+			if (GAME_RAND(240, EMOTIONAL_RESPONSE_CHANCE) == 0)
 			{
 				agenda.ForcedActionFunction = &Creature::BeFrightened;
 				agenda.ForcedActionBelief = GetBeliefAboutObject(creature.Get());
@@ -283,7 +283,7 @@ void CreatureMental::RespondToPlayerFeedback(float feedback)
 			creature.Get()->SendCandidateHelpScript(CREATURE_HELP_TYPE_MISCELLANEOUS_STACKED,
 			                                        CREATURE_MISCELLANEOUS_HELP_STACKED_PLAYER_STROKE_BUT_NOT_LEARNING,
 			                                        NULL, NULL, 0);
-			if (GRand::GameRand(EMOTIONAL_RESPONSE_CHANCE, __FILE__, LEARN_LINE(252)) == 0)
+			if (GAME_RAND(252, EMOTIONAL_RESPONSE_CHANCE) == 0)
 			{
 				agenda.ForcedActionFunction = &Creature::BeHappy;
 				agenda.ForcedActionBelief = GetBeliefAboutObject(creature.Get());
@@ -491,8 +491,8 @@ bool32_t CreatureMental::LearnParticularLessonFromFeedback(CreatureContext& cont
 		if (activityObject != NULL)
 		{
 			CREATURE_DESIRES goal = context.plan.CreatureDesire;
-			test = LearnParticularLesson(new (__FILE__, LEARN_LINE(510)) CreatureLearningContext(
-											 LESSON_TYPE_ACTIVITY_OBJECT, goal, activityObject, NO_ACTION_SPECIFIED),
+			test = LearnParticularLesson(NEW(510) CreatureLearningContext(LESSON_TYPE_ACTIVITY_OBJECT, goal,
+			                                                              activityObject, NO_ACTION_SPECIFIED),
 			                             feedback);
 			for (int desire = 0; desire < NUM_CREATURE_DESIRES; desire++)
 			{
@@ -501,9 +501,9 @@ bool32_t CreatureMental::LearnParticularLessonFromFeedback(CreatureContext& cont
 					float dependency = CreatureDesireDependency::GetInfo()[goal].Dependencies[desire];
 					if (dependency != 0.0f)
 					{
-						LearnParticularLesson(new (__FILE__, LEARN_LINE(522)) CreatureLearningContext(
-												  LESSON_TYPE_ACTIVITY_OBJECT, (CREATURE_DESIRES)desire, activityObject,
-												  NO_ACTION_SPECIFIED),
+						LearnParticularLesson(NEW(522) CreatureLearningContext(LESSON_TYPE_ACTIVITY_OBJECT,
+						                                                       (CREATURE_DESIRES)desire, activityObject,
+						                                                       NO_ACTION_SPECIFIED),
 						                      dependency * feedback);
 					}
 				}
@@ -527,9 +527,9 @@ bool32_t CreatureMental::LearnParticularLessonFromFeedback(CreatureContext& cont
 				CLAMP(feedback, -TO_POO_FEEDBACK_LIMIT, TO_POO_FEEDBACK_LIMIT);
 			}
 #endif // VERSION_BW1W100
-			test = LearnParticularLesson(new (__FILE__, LEARN_LINE(555)) CreatureLearningContext(
-											 LESSON_TYPE_ACTION_OBJECT, goal, objectToActOn, NO_ACTION_SPECIFIED),
-			                             feedback);
+			test = LearnParticularLesson(
+				NEW(555) CreatureLearningContext(LESSON_TYPE_ACTION_OBJECT, goal, objectToActOn, NO_ACTION_SPECIFIED),
+				feedback);
 			for (int desire = 0; desire < NUM_CREATURE_DESIRES; desire++)
 			{
 				if (desire != goal)
@@ -537,9 +537,9 @@ bool32_t CreatureMental::LearnParticularLessonFromFeedback(CreatureContext& cont
 					float dependency = CreatureDesireDependency::GetInfo()[goal].Dependencies[desire];
 					if (dependency != 0.0f)
 					{
-						LearnParticularLesson(new (__FILE__, LEARN_LINE(567)) CreatureLearningContext(
-												  LESSON_TYPE_ACTION_OBJECT, (CREATURE_DESIRES)desire, objectToActOn,
-												  NO_ACTION_SPECIFIED),
+						LearnParticularLesson(NEW(567) CreatureLearningContext(LESSON_TYPE_ACTION_OBJECT,
+						                                                       (CREATURE_DESIRES)desire, objectToActOn,
+						                                                       NO_ACTION_SPECIFIED),
 						                      dependency * feedback);
 					}
 				}
@@ -570,7 +570,7 @@ bool32_t CreatureMental::LearnParticularLessonFromFeedback(CreatureContext& cont
 
 AttributeTest* CreatureMental::LearnParticularLesson(CreatureLearningContext* context, float feedback)
 {
-	CreatureLearningEpisode* episode = new (__FILE__, LEARN_LINE(613)) CreatureLearningEpisode(context, feedback);
+	CreatureLearningEpisode* episode = NEW(613) CreatureLearningEpisode(context, feedback);
 	DecisionTreeAgenda*      agenda = decision_tree_collection.GetDecisionTreeFromContext(context);
 	agenda->AddExample(episode);
 	agenda->ConstructBestTreeForExamples();

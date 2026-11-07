@@ -314,7 +314,7 @@ Reaction* Reaction::CreateReaction(GameThingWithPos* initiating_object, uint8_t 
 	Reaction* newReaction = NULL;
 	if (reaction != REACTION_NONE)
 	{
-		newReaction = new (__FILE__, 271) Reaction(initiating_object, reaction, reaction_player);
+		newReaction = NEW(271) Reaction(initiating_object, reaction, reaction_player);
 		SpreadReaction(newReaction->GetPos(), GUtils::GetMapCellSpiralSizeFromRadius(newReaction->GetRadius()),
 		               reaction, initiating_object, newReaction);
 		if (start_now)
@@ -352,7 +352,7 @@ void Reaction::SpreadReaction(const MapCoords& pos, uint16_t spiral_size, uint8_
 					Living* living = dynamic_cast<Living*>(object);
 					if (living != NULL && living != initiating_object)
 					{
-						if (GRand::GameRand(REACTION_STEALTH_RANDOM_RANGE, __FILE__, 310) >
+						if (GAME_RAND(310, REACTION_STEALTH_RANDOM_RANGE) >
 						    spreading_reaction->GetInfo()->StealthRandomChance)
 						{
 							continue;

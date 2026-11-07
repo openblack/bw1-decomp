@@ -69,11 +69,11 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "WorshipTotem.h"
 
 #if defined(VERSION_BW1W100)
-#define WORSHIP_LINE(line) ((line) - ((line) > 242 ? 1 : 0))
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - ((line) > 242 ? 1 : 0))
 #elif defined(VERSION_BW1WCI)
-#define WORSHIP_LINE(line) ((line) + ((line) > 1390 ? 1 : 0))
-#else
-#define WORSHIP_LINE(line) (line)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + ((line) > 1390 ? 1 : 0))
 #endif
 
 #define SECONDS_PER_MILLISECOND         0.001f
@@ -195,8 +195,8 @@ WorshipSite* WorshipSite::Create(const MapCoords& coords, const GWorshipSiteInfo
 		}
 		pos = citadel->Pos;
 	}
-	WorshipSite* site = new (__FILE__, WORSHIP_LINE(190))
-		WorshipSite(pos, info, citadel, slot, tribe_info, angle, scale, percent_built, under_construction);
+	WorshipSite* site =
+		NEW(190) WorshipSite(pos, info, citadel, slot, tribe_info, angle, scale, percent_built, under_construction);
 	if (site != NULL)
 	{
 		site->CallVirtualFunctionsForCreation(pos);
@@ -271,8 +271,7 @@ void WorshipSite::Init(unsigned long slot)
 {
 	MapCoords pos;
 	GetDancePos(&pos);
-	dance = new (__FILE__, WORSHIP_LINE(287))
-		Dance(pos, &GDanceInfo::Infos[DANCE_INFO_CITADEL_DANCE_1 + slot], this, 0, 0, NULL);
+	dance = NEW(287) Dance(pos, &GDanceInfo::Infos[DANCE_INFO_CITADEL_DANCE_1 + slot], this, 0, 0, NULL);
 	SetWorshipSpeed(WORSHIP_SITE_INITIAL_WORSHIP_SPEED);
 	CreateFoodPot();
 }
@@ -411,8 +410,8 @@ void WorshipSite::CreateManaPathSprite(const MapCoords& coords, float speed, Gam
 		                                     LHPoint(0.0f, 0.0f, 0.0f), 1.0f, PSysInterface::NET_GAME_TYPE_LOCAL);
 	}
 	GPlayer* player = target->GetPlayer();
-	ManaPathPSys->AddTarget(new (__FILE__, WORSHIP_LINE(442)) SpellPointInf(
-		coords.GetLHPoint(), speed, target->Pos.GetLHPoint(), player != NULL ? player->GetPlayerColour() : 0));
+	ManaPathPSys->AddTarget(NEW(442) SpellPointInf(coords.GetLHPoint(), speed, target->Pos.GetLHPoint(),
+	                                               player != NULL ? player->GetPlayerColour() : 0));
 }
 
 void WorshipSite::DrawSpellIcons()
@@ -742,7 +741,7 @@ bool32_t WorshipSite::IsBuilt()
 
 MultiMapFixed* WorshipSite::GetBuildingObjectForSpellIcon()
 {
-	uint32_t       random = GRand::GameRand(WORSHIP_SITE_SPELL_ICON_BUILD_RANDOM_RANGE, __FILE__, WORSHIP_LINE(1013));
+	uint32_t       random = GAME_RAND(1013, WORSHIP_SITE_SPELL_ICON_BUILD_RANDOM_RANGE);
 	MultiMapFixed* building = this;
 	float          lowest = GetPercentBuilt();
 	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
@@ -787,8 +786,8 @@ bool32_t PlannedWorshipSite::Load(GameOSFile& file)
 
 PlannedMultiMapFixed* WorshipSite::ConvertToPlanned()
 {
-	PlannedWorshipSite* planned = new (__FILE__, WORSHIP_LINE(1069))
-		PlannedWorshipSite(Pos, GetInfo(), GetTribe()->type, GetCitadel(), GetYAngle(), GetScale());
+	PlannedWorshipSite* planned =
+		NEW(1069) PlannedWorshipSite(Pos, GetInfo(), GetTribe()->type, GetCitadel(), GetYAngle(), GetScale());
 	if (planned != NULL)
 	{
 		ToBeDeleted(false);
@@ -1063,13 +1062,13 @@ void WorshipSite::AddTown(Town* town)
 	{
 		if (GetFootpathLink() == NULL)
 		{
-			FootpathLink = new (__FILE__, WORSHIP_LINE(1386)) GFootpathLink();
+			FootpathLink = NEW(1386) GFootpathLink();
 		}
 		int pathIndex;
 		if (GetFootpathLink()->GetNearestPathToQuick(storagePit->GetArrivePos(), GetArrivePos(),
 		                                             WORSHIP_SITE_FOOTPATH_MAX_DISTANCE, pathIndex, NULL) == NULL)
 		{
-			new (__FILE__, WORSHIP_LINE(1390)) GFootpathFinder(storagePit, this);
+			NEW(1390) GFootpathFinder(storagePit, this);
 		}
 	}
 	AddTownSpells(town);
@@ -1494,7 +1493,7 @@ void WorshipSite::AddArtifact(Fixed* artifact, GPlayer* player)
 	TownArtifact* townArtifact = (TownArtifact*)artifact->GetTownArtifact();
 	if (townArtifact == NULL)
 	{
-		townArtifact = new (__FILE__, WORSHIP_LINE(2092)) TownArtifact(artifact, this, player);
+		townArtifact = NEW(2092) TownArtifact(artifact, this, player);
 		artifact->town_artifact = townArtifact;
 	}
 	if (!Artifacts.IsThisInList(townArtifact))
@@ -1774,20 +1773,19 @@ void WorshipSite::CreateCollideData()
 		LHPoint(22.537f, 3.0f, -35.073f), //
 		LHPoint(26.905f, 3.0f, -33.063f), //
 	};
-	CollideData = new (__FILE__, WORSHIP_LINE(2390)) NewCollide(Game3dObject);
+	CollideData = NEW(2390) NewCollide(Game3dObject);
 	if (CollideData->obj->IteratorList != NULL)
 	{
 		delete CollideData->obj->IteratorList;
 	}
-	CollideData->obj->IteratorList = new (__FILE__, WORSHIP_LINE(2394)) NewCollide::List(WORSHIP_SITE_COLLIDE_POINTS);
+	CollideData->obj->IteratorList = NEW(2394) NewCollide::List(WORSHIP_SITE_COLLIDE_POINTS);
 	LHMatrix matrix;
 	GetWorldMatrix(&matrix);
 	for (int i = 0; i < WORSHIP_SITE_COLLIDE_POINTS; i++)
 	{
 		LHPoint pos = CollidePoints[i];
 		matrix.TransformPoint(pos);
-		CollideData->obj->IteratorList->Add(new (__FILE__, WORSHIP_LINE(2402))
-		                                        NewCollide::Obj(CollideRadiusScale * CollidePoints[i].y, &pos));
+		CollideData->obj->IteratorList->Add(NEW(2402) NewCollide::Obj(CollideRadiusScale * CollidePoints[i].y, &pos));
 	}
 }
 

@@ -31,9 +31,8 @@
 #include "Utils.h"
 
 #ifdef VERSION_BW1WCI
-#define CREATURE_PLAN_LINE(line) ((line) + ((line) < 1000 ? 156 : 150))
-#else
-#define CREATURE_PLAN_LINE(line) (line)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + ((line) < 1000 ? 156 : 150))
 #endif
 
 #define TURNS_BETWEEN_TOWN_DESIRE_CHANGES       30
@@ -901,8 +900,7 @@ CREATURE_ACTION CreatureMental::GetNthActionForPlan(CreaturePlan& plan, unsigned
 							if (min(1.0f, learning.NumTimesMagicActionSeen[MAGIC_TYPE_HEAL] /
 							                  creature.Get()->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(
 												  MAGIC_TYPE_HEAL)) > HEAL_SPELL_NEARLY_LEARNT &&
-							    index == 0 &&
-							    GRand::GameRand(HEAL_SPELL_CHANCE, __FILE__, CREATURE_PLAN_LINE(837)) == 0)
+							    index == 0 && GAME_RAND(837, HEAL_SPELL_CHANCE) == 0)
 							{
 								return CREATURE_CAST_HEAL_SPELL;
 							}
@@ -1151,9 +1149,7 @@ CreaturePreviousActions::CreaturePreviousActions()
 {
 	for (int i = 0; i < NUM_CREATURE_ACTIONS; i++)
 	{
-		TurnsSinceLastDone[i] = GGlobal::Global.RandomiseCreatureMinds
-		                            ? GRand::GameRand(MAX_TURNS_SINCE_LAST_DONE, __FILE__, CREATURE_PLAN_LINE(1126))
-		                            : 0;
+		TurnsSinceLastDone[i] = GGlobal::Global.RandomiseCreatureMinds ? GAME_RAND(1126, MAX_TURNS_SINCE_LAST_DONE) : 0;
 	}
 }
 

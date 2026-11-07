@@ -545,7 +545,7 @@ int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed)
 	if (LHSys::GetMouse().AnimType == 3)
 		SendMessageA(LHSys::GetWindow(), 0x8005, 0, 0);
 	TurnOnMenu();
-	LHSys::TheSystem.TbIME = new (__FILE__, 193) slim::TbIME();
+	LHSys::TheSystem.TbIME = NEW(193) slim::TbIME();
 	return 0;
 }
 

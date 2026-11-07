@@ -155,7 +155,7 @@ void WorldRoom::InitEngine()
 	WaterObject->SetDynamicLighting(true);
 	WaterObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 	Font = GatheringText::GetGameFont(GAME_FONT_NEUTRAL);
-	Map = new (__FILE__, 111) MiniMap;
+	Map = NEW(111) MiniMap;
 	Map->Init();
 	Map->BuildMapTex();
 	if (!Temple::MultiplayerCitadel)
@@ -187,7 +187,7 @@ void WorldRoom::InitEngine()
 	ChallengeIconObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 	camera->Close();
 	delete camera;
-	camera = new (__FILE__, 150) WorldRoomCamera;
+	camera = NEW(150) WorldRoomCamera;
 	camera->Init("data\\citadel\\engine\\main.cam");
 	ScrollTexture = LH3DTexture::Create("Data\\Citadel\\Controls\\ChallengeScroll.raw", 0x44, 0, NULL);
 	ScrollMaterial =

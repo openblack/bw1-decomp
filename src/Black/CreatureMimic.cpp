@@ -64,7 +64,7 @@ void CreatureMimicState::SetCreatureIntoStateOfMimicking(DETECTED_PLAYER_ACTION 
 	Stage = MIMIC_STAGE_NOTICE;
 	StageProgress = 0;
 	uint32_t numActions = CreatureMimicInfo::GetInfo()[DetectedPlayerAction].NumActionsPerStage;
-	StageLimit = numActions + GRand::GameRand(1, __FILE__, 39);
+	StageLimit = numActions + GAME_RAND(39, 1);
 	GameTurnStageStarted = GGame::g_game->data.GameTurn;
 }
 
@@ -165,7 +165,7 @@ void Creature::ProcessMimicState()
 	{
 		mimic->StageProgress = 0;
 		uint32_t numActions = CreatureMimicInfo::GetInfo()[mimic->DetectedPlayerAction].NumActionsPerStage;
-		mimic->StageLimit = numActions + GRand::GameRand(1, __FILE__, 137);
+		mimic->StageLimit = numActions + GAME_RAND(137, 1);
 		mimic->GameTurnStageStarted = GGame::g_game->data.GameTurn;
 		return;
 	}
@@ -239,7 +239,7 @@ void Creature::MimicForceCopyingAction()
 						if (FindBestObjectToUseIfNecessary(plan) && plan.IsValid())
 						{
 							ForceActivityAndForceAction(plan, true, true);
-							if (GRand::GameRand(2, __FILE__, 237) == 0)
+							if (GAME_RAND(237, 2) == 0)
 							{
 								return;
 							}
@@ -272,7 +272,7 @@ void Creature::MimicForceCopyingAction()
 				if (FindBestObjectToUseIfNecessary(plan) && plan.IsValid())
 				{
 					ForceActivityAndForceAction(plan, true, true);
-					if (GRand::GameRand(2, __FILE__, 282) == 0)
+					if (GAME_RAND(282, 2) == 0)
 					{
 						return;
 					}
@@ -303,7 +303,7 @@ void Creature::MimicForceCopyingAction()
 				if (FindBestObjectToUseIfNecessary(plan) && plan.IsValid())
 				{
 					ForceActivityAndForceAction(plan, true, true);
-					if (GRand::GameRand(2, __FILE__, 320) == 0)
+					if (GAME_RAND(320, 2) == 0)
 					{
 						return;
 					}
@@ -347,7 +347,7 @@ void Creature::MimicPlayer(DETECTED_PLAYER_ACTION action, GameThingWithPos* obje
 			{
 				return;
 			}
-			if (GRand::GameRand(2, __FILE__, 364) == 0)
+			if (GAME_RAND(364, 2) == 0)
 			{
 				return;
 			}

@@ -5,5 +5,5 @@
 
 Spell* GMagicForestInfo::AllocSpell(GameThing* caster) const
 {
-	return new (__FILE__, 14) SpellForest(MagicType, caster);
+	return NEW(14) SpellForest(MagicType, caster);
 }

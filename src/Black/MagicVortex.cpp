@@ -91,15 +91,14 @@ VILLAGER_INFO GVortexInfo::GetVillagerInfoToCreate(TRIBE_TYPE tribe)
 {
 	VILLAGER_NUMBER number;
 
-	if (GRand::GameFloatRand(1.0f, __FILE__, 83) < 0.5f)
+	if (GAME_FLOAT_RAND(83, 1.0f) < 0.5f)
 	{
 		number = VILLAGER_NUMBER_HOUSEWIFE;
 	}
 	else
 	{
-		number =
-			(VILLAGER_NUMBER)(GRand::GameRand(VILLAGER_NUMBER_LEADER - VILLAGER_NUMBER_FORESTER + 1, __FILE__, 89) +
-		                      VILLAGER_NUMBER_FORESTER);
+		number = (VILLAGER_NUMBER)(GAME_RAND(89, VILLAGER_NUMBER_LEADER - VILLAGER_NUMBER_FORESTER + 1) +
+		                           VILLAGER_NUMBER_FORESTER);
 	}
 	return (VILLAGER_INFO)(tribe * VILLAGER_NUMBER_LAST + number);
 }
@@ -260,7 +259,7 @@ LandscapeVortexIn::LandscapeVortexIn(const MapCoords& coords, float radius)
 	: LandscapeVortex(coords, VORTEX_TYPE_IN, radius)
 {
 	SetToZero();
-	VortexSaver = new (__FILE__, 216) VortexSave("vortex.txt", false);
+	VortexSaver = NEW(216) VortexSave("vortex.txt", false);
 }
 
 void LandscapeVortexIn::ToBeDeleted(bool32_t delete_now)
@@ -334,7 +333,7 @@ void LandscapeVortexIn::AddObject(Object* object, const LHPoint& velocity, const
 	if (object->CanBecomeAPhysicsObject() && ObjectMoverParticle != NULL)
 	{
 		ObjectMoverParticle->AddTarget(
-			new (__FILE__, 358) VortexObjectInfo(object, from_physics, velocity, matrix, indestructible, this));
+			NEW(358) VortexObjectInfo(object, from_physics, velocity, matrix, indestructible, this));
 	}
 }
 
@@ -412,8 +411,7 @@ void LandscapeVortexIn::ProcessContentsOfVortex()
 						Object* taken = pile->TakeResourceAndCreateHandPot(VORTEX_PILE_TAKE_AMOUNT);
 						if (taken != NULL)
 						{
-							taken->SetScale((GRand::GameFloatRand(0.3f, __FILE__, 436) * 0.4f + 0.3f) *
-							                taken->GetScale());
+							taken->SetScale((GAME_FLOAT_RAND(436, 0.3f) * 0.4f + 0.3f) * taken->GetScale());
 							LHMatrix matrix;
 							taken->GetWorldMatrix(&matrix);
 							AddObject(taken, LHPoint(0.0f, 0.0f, 0.0f), matrix, false);
@@ -447,7 +445,7 @@ LandscapeVortexOut::LandscapeVortexOut(const MapCoords& coords, float radius)
 {
 	SetToZero();
 	FlockCoords.Set(coords);
-	VortexSaver = new (__FILE__, 458) VortexSave("vortex.txt", true);
+	VortexSaver = NEW(458) VortexSave("vortex.txt", true);
 }
 
 void LandscapeVortexOut::SetToZero()
@@ -545,7 +543,7 @@ void LandscapeVortexOut::ProcessContentsOfVortex()
 	{
 		return;
 	}
-	float   angle = GRand::GameFloatRand(TWO_PI, __FILE__, 578);
+	float   angle = GAME_FLOAT_RAND(578, TWO_PI);
 	LHPoint offset((float)sin(angle) * VORTEX_THROW_OUT_DISTANCE, 0.0f, (float)cos(angle) * -VORTEX_THROW_OUT_DISTANCE);
 	MapCoords coords = Pos;
 	coords.SetMapMetersX(coords.MapMetersX() + offset.x);
@@ -586,11 +584,10 @@ void LandscapeVortexOut::ProcessContentsOfVortex()
 		tribe = TownToJoin->tribe_type;
 	}
 	const GVillagerInfo* info = &GVillagerInfo::InfoList[GetVortexInfo()->GetVillagerInfoToCreate(tribe)];
-	Villager*            villager =
-		Villager::Create(coords, info,
-	                     child ? GRand::GameRand(VORTEX_CHILD_AGE_RANGE, __FILE__, 630) + VORTEX_CHILD_MIN_AGE
-	                           : GRand::GameRand(VORTEX_ADULT_AGE_RANGE, __FILE__, 630) + VORTEX_ADULT_MIN_AGE,
-	                     false);
+	Villager* villager = Villager::Create(coords, info,
+	                                      child ? GAME_RAND(630, VORTEX_CHILD_AGE_RANGE) + VORTEX_CHILD_MIN_AGE
+	                                            : GAME_RAND(630, VORTEX_ADULT_AGE_RANGE) + VORTEX_ADULT_MIN_AGE,
+	                                      false);
 	if (villager != NULL)
 	{
 		DoPostObjectCreateThings(villager, angle);
@@ -643,9 +640,9 @@ void LandscapeVortexOut::DoPostObjectCreateThings(Object* object, float angle)
 			{
 				AnimalFlock->RemoveLivingFromFlock(animal, true);
 			}
-			AnimalFlock = new (__FILE__, 687)
-				Flock(FlockCoords, (const GFlockInfo*)&GContainerInfo::Definitions[CONTAINER_INFO_FLOCK], GetPlayer(),
-			          FLOCK_MAGIC);
+			AnimalFlock =
+				NEW(687) Flock(FlockCoords, (const GFlockInfo*)&GContainerInfo::Definitions[CONTAINER_INFO_FLOCK],
+			                   GetPlayer(), FLOCK_MAGIC);
 			if (AnimalFlock != NULL)
 			{
 				AnimalFlock->SetDomainCentrePos(FlockCoords);
@@ -667,9 +664,9 @@ void LandscapeVortexOut::DoPostObjectCreateThings(Object* object, float angle)
 void LandscapeVortex::ThrowOutObject(Object* object, GPlayer* player, float angle, float strength)
 {
 	float   height = object->GetHeight() * 0.5f;
-	float   speed = (GRand::GameFloatRand(5.0f, __FILE__, 713) + 8.0f) * strength;
+	float   speed = (GAME_FLOAT_RAND(713, 5.0f) + 8.0f) * strength;
 	LHPoint velocity((float)sin(angle) * speed, 0.0f, -((float)cos(angle) * speed));
-	float   up = (GRand::GameFloatRand(5.0f, __FILE__, 716) + 10.0f) * strength;
+	float   up = (GAME_FLOAT_RAND(716, 5.0f) + 10.0f) * strength;
 	velocity.y = up;
 	LHPoint spin = velocity ^ LHPoint(0.0f, 1.0f, 0.0f);
 	spin *= 1.0f / height;
@@ -682,13 +679,13 @@ LandscapeVortex* LandscapeVortex::Create(const MapCoords& coords, VORTEX_TYPE ty
 	switch (type)
 	{
 	case VORTEX_TYPE_VOLCANO:
-		vortex = new (__FILE__, 733) LandscapeVortexVolc(coords, VORTEX_RADIUS);
+		vortex = NEW(733) LandscapeVortexVolc(coords, VORTEX_RADIUS);
 		break;
 	case VORTEX_TYPE_IN:
-		vortex = new (__FILE__, 736) LandscapeVortexIn(coords, VORTEX_RADIUS);
+		vortex = NEW(736) LandscapeVortexIn(coords, VORTEX_RADIUS);
 		break;
 	case VORTEX_TYPE_OUT:
-		vortex = new (__FILE__, 739) LandscapeVortexOut(coords, VORTEX_RADIUS);
+		vortex = NEW(739) LandscapeVortexOut(coords, VORTEX_RADIUS);
 		break;
 	}
 	if (vortex != NULL)

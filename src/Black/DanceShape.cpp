@@ -95,8 +95,8 @@ void MakeShape::MakeShapeRandomScatter(unsigned long shape)
 {
 	for (uint32_t i = 0; i < DANCE_SHAPE_NUM_POINTS; i++)
 	{
-		float distance = GRand::GameFloatRand(DANCE_SHAPE_RADIUS, __FILE__, 280);
-		float angle = GRand::GameFloatRand(TWO_PI, __FILE__, 281);
+		float distance = GAME_FLOAT_RAND(280, DANCE_SHAPE_RADIUS);
+		float angle = GAME_FLOAT_RAND(281, TWO_PI);
 		DanceShapePoints[shape][i].x = (int32_t)(cos(angle) * distance);
 		DanceShapePoints[shape][i].z = (int32_t)(sin(angle) * distance);
 	}

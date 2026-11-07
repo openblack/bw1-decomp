@@ -9,8 +9,6 @@
 
 #include "EditorIcon.h" /* For class EditorIconShow */
 
-#define EDITOR_ICON_PDM_SOURCE_FILE SOURCE_DIRECTORY "EditorIconPDM.h"
-
 struct LH3DColor;
 
 class EditorIconPDM
@@ -50,8 +48,7 @@ public:
 	// TODO: fabricated name; the header inline that appends one show icon to the menu.
 	void AddShow(const char* text)
 	{
-		Items.AddToEnd(new (EDITOR_ICON_PDM_SOURCE_FILE, 43)
-		                   EditorIconShow(*GetRegion(), text, 2, NULL, NULL, NULL, NULL));
+		Items.AddToEnd(NEW(43) EditorIconShow(*GetRegion(), text, 2, NULL, NULL, NULL, NULL));
 	}
 };
 

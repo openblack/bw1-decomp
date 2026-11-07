@@ -142,7 +142,7 @@ bool32_t Villager::IsAtValidFishingPos()
 //         // field across Villager/Living/Object/GameThingWithPos/GameThing -- a genuine struct-layout
 //         // gap, not mine to fill (dispatcher-owned; AGENTS.md/skill rules exclude layout changes).
 //     FishFarm* fish_farm = (FishFarm*)TargetThing;
-//     if (GRand::GameRand(fish_farm->villagers.count, __FILE__, 98) != 0) return true;
+//     if (GAME_RAND(98, fish_farm->villagers.count) != 0) return true;
 //         // "lucky roll" gate: only 1-in-N(fisherman count at this farm) ticks do real work.
 //         // gamerand-file-line-split-tu idiom: line/file operands can never match in a split TU.
 //     const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
@@ -195,7 +195,7 @@ bool32_t Villager::Fishing()
 	}
 	// TODO: field_0x90 = 0; -- see TODO above (struct-layout gap, not mine to fill).
 	FishFarm* fish_farm = (FishFarm*)TargetThing;
-	if (GRand::GameRand(fish_farm->villagers.count, __FILE__, 98) != 0)
+	if (GAME_RAND(98, fish_farm->villagers.count) != 0)
 	{
 		return true;
 	}

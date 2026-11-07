@@ -20,6 +20,12 @@ void* operator new(size_t size, const char* file_name, uint32_t line);
 // TODO: address of the definition in the binary not yet identified.
 void operator delete(void* block, const char* file_name, uint32_t line);
 
+#ifndef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) (line)
+#endif
+
+#define NEW(line) new (__FILE__, ORIGINAL_LINE(line))
+
 // BW1W120 007db7a0
 void FreeMemory(void* block);
 

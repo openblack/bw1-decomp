@@ -81,14 +81,14 @@ bool32_t MobileStatic::CreatureMustAvoid(Creature* creature)
 #ifdef VERSION_BW1WCI
 GBaseOnly* GBaseOnly::Create(const MapCoords& coords, const GObjectInfo* info, float y_angle, float scale)
 {
-	GBaseOnly* base = new (__FILE__, 700) GBaseOnly(coords, info, y_angle, scale);
+	GBaseOnly* base = NEW(700) GBaseOnly(coords, info, y_angle, scale);
 	base->CallVirtualFunctionsForCreation(coords);
 	return base;
 }
 #else
 GBaseOnly* GBaseOnly::Create(const MapCoords& coords, const GObjectInfo* info)
 {
-	GBaseOnly* base = new (__FILE__, 583) GBaseOnly(coords, info);
+	GBaseOnly* base = NEW(583) GBaseOnly(coords, info);
 	base->CallVirtualFunctionsForCreation(coords);
 	return base;
 }

@@ -6,7 +6,7 @@
 
 ScriptTimer* ScriptTimer::Create(float seconds)
 {
-	ScriptTimer* timer = new (__FILE__, 13) ScriptTimer();
+	ScriptTimer* timer = NEW(13) ScriptTimer();
 	if (timer != NULL)
 	{
 		timer->SetTime(seconds);

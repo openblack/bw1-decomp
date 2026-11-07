@@ -95,7 +95,7 @@ void WorshipTotem::ToBeDeleted(bool32_t delete_now)
 
 WorshipTotem* WorshipTotem::Create(WorshipSite* site)
 {
-	WorshipTotem* totem = new (__FILE__, 59) WorshipTotem(site);
+	WorshipTotem* totem = NEW(59) WorshipTotem(site);
 	if (totem != NULL)
 	{
 		totem->CallVirtualFunctionsForCreation(totem->Pos);

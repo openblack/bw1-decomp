@@ -235,7 +235,7 @@ LH3DCreature::LH3DCreature(LH3DCreature& other, const LHPoint& pos, void* param_
 {
 	CameraExclusionDome = NULL;
 	creature = NULL;
-	RpFollow = new (__FILE__, 465) RPFollow;
+	RpFollow = NEW(465) RPFollow;
 	field_0x571c = 0x10;
 	RpFollow->Init((int)creature, FollowerCallbackFunction, FollowerCallbackPrepareAnims, FollowerCallbackGetStopDist,
 	               field_0x571c);
@@ -245,7 +245,7 @@ LH3DCreature::LH3DCreature(LH3DCreature& other, const LHPoint& pos, void* param_
 	{
 		((uint32_t*)DynamicShadow->GetShadowInfo())[15] = 0;
 	}
-	Damage = new (__FILE__, 474) LH3DCreatureDamage;
+	Damage = NEW(474) LH3DCreatureDamage;
 	*Damage = *other.Damage;
 	Anim0x5220 = NULL;
 	SoundBank = NULL;
@@ -267,7 +267,7 @@ LH3DCreature::LH3DCreature(Creature* creature, const LHPoint& pos, void* param_3
 {
 	CameraExclusionDome = NULL;
 	this->creature = creature;
-	RpFollow = new (__FILE__, 502) RPFollow;
+	RpFollow = NEW(502) RPFollow;
 	field_0x571c = 0x10;
 	RpFollow->Init((int)creature, FollowerCallbackFunction, FollowerCallbackPrepareAnims, FollowerCallbackGetStopDist,
 	               field_0x571c);
@@ -277,7 +277,7 @@ LH3DCreature::LH3DCreature(Creature* creature, const LHPoint& pos, void* param_3
 	{
 		((uint32_t*)DynamicShadow->GetShadowInfo())[15] = 0;
 	}
-	Damage = new (__FILE__, 511) LH3DCreatureDamage;
+	Damage = NEW(511) LH3DCreatureDamage;
 	Anim0x5220 = NULL;
 	SoundBank = NULL;
 	BoundingSphereValid = false;
@@ -1641,7 +1641,7 @@ void LH3DCreature::UpdateTime(int time)
 								{
 									if (!abode->DestructionMesh)
 									{
-										abode->DestructionMesh = new (__FILE__, 2149) FragMesh(abode->Game3dObject);
+										abode->DestructionMesh = NEW(2149) FragMesh(abode->Game3dObject);
 									}
 									float speed = diff.Normalise() * 10.0f;
 									// TODO: The Mac builds the impulse straight from diff; this copy-then-scale form is the one
@@ -2126,11 +2126,11 @@ long LH3DCreature::GetStartState(LHPoint& param_1, LHPoint& param_2)
 	}
 	if (angle < 1.5707964f)
 	{
-		Anim0x5220 = new (__FILE__, 2799) CAnim(anim0, frame, anim1, frame, angle / 1.5707964f);
+		Anim0x5220 = NEW(2799) CAnim(anim0, frame, anim1, frame, angle / 1.5707964f);
 	}
 	else
 	{
-		Anim0x5220 = new (__FILE__, 2805) CAnim(anim1, frame, anim2, frame, (angle - 1.5707964f) / 1.5707964f);
+		Anim0x5220 = NEW(2805) CAnim(anim1, frame, anim2, frame, (angle - 1.5707964f) / 1.5707964f);
 	}
 	long    frames = Anim0x5220->FrameCount - 1;
 	float   scale = 1.0f / frames;
@@ -2261,7 +2261,7 @@ bool32_t LH3DCreature::IsMoving() const
 
 bool32_t LH3DCreature::StartStaticAction(long action)
 {
-	long random = creature ? GRand::GameRand(2, __FILE__, 2993) : GRand::LocalRand(2);
+	long random = creature ? GAME_RAND(2993, 2) : GRand::LocalRand(2);
 	return StartStaticAction(action, IsAnimationTimeModified ? 0 : random);
 }
 
@@ -2531,8 +2531,8 @@ void LH3DCreature::StopPointing()
 
 bool32_t LH3DCreature::StartIndividualAction(long action)
 {
-	return StartIndividualAction(
-		action, HeldObject ? field_0x5230 == 0 : (creature ? GRand::GameRand(2, __FILE__, 3338) : GRand::LocalRand(2)));
+	return StartIndividualAction(action, HeldObject ? field_0x5230 == 0
+	                                                : (creature ? GAME_RAND(3338, 2) : GRand::LocalRand(2)));
 }
 
 bool32_t LH3DCreature::StartIndividualAction(long action, int param_2)
@@ -2549,7 +2549,7 @@ bool32_t LH3DCreature::StartIndividualAction(long action, int param_2)
 
 bool32_t LH3DCreature::ForceIndividualAction(long action)
 {
-	return ForceIndividualAction(action, creature ? GRand::GameRand(2, __FILE__, 3361) : GRand::LocalRand(2));
+	return ForceIndividualAction(action, creature ? GAME_RAND(3361, 2) : GRand::LocalRand(2));
 }
 
 bool32_t LH3DCreature::ForceIndividualAction(long action, int param_2)
@@ -2584,7 +2584,7 @@ bool32_t LH3DCreature::StartObjectKeepAction(long action)
 
 bool32_t LH3DCreature::StartDeathAction(long action)
 {
-	return StartDeathAction(action, creature ? GRand::GameRand(2, __FILE__, 3403) : GRand::LocalRand(2));
+	return StartDeathAction(action, creature ? GAME_RAND(3403, 2) : GRand::LocalRand(2));
 }
 
 bool32_t LH3DCreature::StartDeathAction(long action, int param_2)
@@ -2679,7 +2679,7 @@ void LH3DCreature::StateSet(long state)
 	case LH3D_CREATURE_STATE_DO_DANCE:
 		do
 		{
-			CurrentAnim = GRand::GameRand(7, __FILE__, 3516) + C_DANCE_A;
+			CurrentAnim = GAME_RAND(3516, 7) + C_DANCE_A;
 		} while (!GetAnim(CurrentAnim, 0));
 		CycleTime[0] = 0;
 		break;
@@ -2981,7 +2981,7 @@ void LH3DCreature::StateSwitch()
 		{
 			do
 			{
-				CurrentAnim = GRand::GameRand(5, __FILE__, 3863) + C_DANCE_A;
+				CurrentAnim = GAME_RAND(3863, 5) + C_DANCE_A;
 			} while (!GetAnim(CurrentAnim, 0));
 			long newDuration = GetAnim(CurrentAnim, 0)->Duration;
 			CycleTime[0] -= duration;
@@ -3372,7 +3372,7 @@ void LH3DCreature::DrawTestTattoo(long slot)
 		static unsigned char* testImage = NULL;
 		if (!testImage)
 		{
-			testImage = new (__FILE__, 4373) unsigned char[0x1550];
+			testImage = NEW(4373) unsigned char[0x1550];
 			memset(testImage, 0xff, 0x1550);
 			long offset = 0;
 			for (long level = 0; level < 5; level++)
@@ -3533,7 +3533,7 @@ void LH3DCreature::StateAction()
 				{
 					CheckFightQueue();
 				}
-				else if (GRand::GameRand(8, __FILE__, 4568) == 1)
+				else if (GAME_RAND(4568, 8) == 1)
 				{
 					StateSet(LH3D_CREATURE_STATE_FINISH_BLOCK);
 				}
@@ -3813,9 +3813,8 @@ void LH3DCreature::DoStaticAction()
 					float   half = size * 0.5f;
 					for (int i = 0; i < 15; i++)
 					{
-						LHPoint spread(GRand::GameFloatRand(size, __FILE__, 4850) - half,
-						               GRand::GameFloatRand(size, __FILE__, 4850) - half,
-						               GRand::GameFloatRand(size, __FILE__, 4850) - half);
+						LHPoint spread(GAME_FLOAT_RAND(4850, size) - half, GAME_FLOAT_RAND(4850, size) - half,
+						               GAME_FLOAT_RAND(4850, size) - half);
 						LHPoint pos = offset + spread;
 						AddLiquidParticle(position, pos, 0x40808080, Size1 * 4.0f, 4);
 					}
@@ -3837,7 +3836,7 @@ void LH3DCreature::DoStaticAction()
 				GLandscape::ConvertLandscapePointToMapCoord(anus, coords);
 				MobileObject* poo =
 					MobileObject::Create(coords, &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_LUMP_OF_POO], NULL,
-				                         (GRand::GameFloatRand(6.2831855f, __FILE__, 4870)), Size1 * 1.5f);
+				                         (GAME_FLOAT_RAND(4870, 6.2831855f)), Size1 * 1.5f);
 				poo->Pos.altitude = anus.y - GetAltitude(anus);
 				float   angle = Heading + 3.1415927f;
 				LHPoint velocity(5.0f * (float)sin(angle), 0.0f, 5.0f * -(float)cos(angle));
@@ -4360,13 +4359,13 @@ void LH3DCreature::DoKickingAction()
 				{
 					if (!abode->DestructionMesh)
 					{
-						abode->DestructionMesh = new (__FILE__, 5452) FragMesh(abode->Game3dObject);
+						abode->DestructionMesh = NEW(5452) FragMesh(abode->Game3dObject);
 					}
 					LHPoint velocity = kickDir * 2.0f;
 					kickPos = position + (kickPos - position) * 0.5f;
-					float randomAngle = (GRand::GameRand(11, __FILE__, 5459) - 5) / 10.0f;
-					float randomHeight1 = GRand::GameRand(100, __FILE__, 5460) / 100.0f;
-					float randomHeight2 = GRand::GameRand(100, __FILE__, 5461) / 100.0f;
+					float randomAngle = (GAME_RAND(5459, 11) - 5) / 10.0f;
+					float randomHeight1 = GAME_RAND(5460, 100) / 100.0f;
+					float randomHeight2 = GAME_RAND(5461, 100) / 100.0f;
 					float altitude = LH3DIsland::GetAltitude(LH3DMapCoords(kickPos.x, kickPos.z));
 					if (kickPos.y < altitude)
 					{
@@ -4529,7 +4528,7 @@ void LH3DCreature::DoFightMainAction()
 						chance = 1;
 						break;
 					}
-					if (!GRand::GameRand(chance, __FILE__, 5638))
+					if (!GAME_RAND(5638, chance))
 					{
 						attack = true;
 					}
@@ -4541,11 +4540,11 @@ void LH3DCreature::DoFightMainAction()
 					if (FightCreature->CurrentAnim >= C_FIGHT_ATTACK_HIGH &&
 					    FightCreature->CurrentAnim <= C_FIGHT_ATTACK_SPECIAL2)
 					{
-						if (style == 2 && GRand::GameRand(5, __FILE__, 5650))
+						if (style == 2 && GAME_RAND(5650, 5))
 						{
 							attack = true;
 						}
-						else if (!GRand::GameRand(4, __FILE__, 5657))
+						else if (!GAME_RAND(5657, 4))
 						{
 							block = true;
 						}
@@ -4556,13 +4555,13 @@ void LH3DCreature::DoFightMainAction()
 					}
 					else if (FightCreature->CurrentAnim == C_FIGHT_STEP_FORWARD)
 					{
-						if (style == 2 && GRand::GameRand(5, __FILE__, 5665))
+						if (style == 2 && GAME_RAND(5665, 5))
 						{
 							attack = true;
 						}
 						else
 						{
-							switch (GRand::GameRand(4, __FILE__, 5672))
+							switch (GAME_RAND(5672, 4))
 							{
 							case 0:
 								block = true;
@@ -4585,13 +4584,13 @@ void LH3DCreature::DoFightMainAction()
 				case LH3D_CREATURE_STATE_START_BLOCK:
 				case LH3D_CREATURE_STATE_BLOCK:
 				case LH3D_CREATURE_STATE_FINISH_BLOCK:
-					if (style == 2 && GRand::GameRand(5, __FILE__, 5699))
+					if (style == 2 && GAME_RAND(5699, 5))
 					{
 						attack = true;
 					}
-					else if (GRand::GameRand(10, __FILE__, 5703) == 1)
+					else if (GAME_RAND(5703, 10) == 1)
 					{
-						switch (GRand::GameRand(2, __FILE__, 5705))
+						switch (GAME_RAND(5705, 2))
 						{
 						case 0:
 							step = true;
@@ -4608,7 +4607,7 @@ void LH3DCreature::DoFightMainAction()
 				}
 				if (attack)
 				{
-					AttemptAttack(GRand::GameRand(3, __FILE__, 5725), field_0x49a8);
+					AttemptAttack(GAME_RAND(5725, 3), field_0x49a8);
 				}
 				if (block)
 				{
@@ -4616,7 +4615,7 @@ void LH3DCreature::DoFightMainAction()
 				}
 				if (step)
 				{
-					switch (GRand::GameRand(3, __FILE__, 5735))
+					switch (GAME_RAND(5735, 3))
 					{
 					case 0:
 						StartFightAction(C_FIGHT_STEP_LEFT, 0.0f);
@@ -5199,8 +5198,8 @@ void LH3DCreature::DoFightActionAction()
 				float   damage = field_0x4ec4[index].y * Size2 / FightCreature->GetHeadHeight();
 				LHPoint cutDir = hitDir * 5.0f * 30.0f;
 				long    cutType = 0;
-				long    cutSize = GRand::GameRand(8, __FILE__, 6523);
-				if (GRand::GameRand(2, __FILE__, 6527))
+				long    cutSize = GAME_RAND(6523, 8);
+				if (GAME_RAND(6527, 2))
 				{
 					switch (field_0x5138[index])
 					{
@@ -5208,7 +5207,7 @@ void LH3DCreature::DoFightActionAction()
 						cutType = 1;
 						break;
 					case 1:
-						switch (GRand::GameRand(3, __FILE__, 6540))
+						switch (GAME_RAND(6540, 3))
 						{
 						case 0:
 							cutType = 3;
@@ -5490,11 +5489,11 @@ bool32_t LH3DCreature::InitialiseTurning(float heading)
 	// Blend between the 0/90 or 90/180 degree spins.
 	if (diff < HALF_PI_F)
 	{
-		Anim0x5220 = new (__FILE__, 6898) CAnim(anim0, frame, anim1, frame, diff / HALF_PI_F);
+		Anim0x5220 = NEW(6898) CAnim(anim0, frame, anim1, frame, diff / HALF_PI_F);
 	}
 	else
 	{
-		Anim0x5220 = new (__FILE__, 6904) CAnim(anim1, frame, anim2, frame, (diff - HALF_PI_F) / HALF_PI_F);
+		Anim0x5220 = NEW(6904) CAnim(anim1, frame, anim2, frame, (diff - HALF_PI_F) / HALF_PI_F);
 	}
 	return true;
 }
@@ -5711,7 +5710,7 @@ void LH3DCreature::DoBlendedAction()
 		Abode* abode = dynamic_cast<Abode*>(ActionObject);
 		if (!abode->DestructionMesh)
 		{
-			abode->DestructionMesh = new (__FILE__, 7164) FragMesh(abode->Game3dObject);
+			abode->DestructionMesh = NEW(7164) FragMesh(abode->Game3dObject);
 		}
 		LHPoint pos = abode->Pos.GetLHPoint();
 		LHPoint direction(0.0f, -1.0f, 0.0f);
@@ -7375,7 +7374,7 @@ void LH3DCreature::UpdateMotion()
 			IdleActionTimer -= AnimTimeInc;
 			if (IdleActionTimer < 0)
 			{
-				long action = IdleActionDone ? GRand::GameRand(3, __FILE__, 8920) : 0;
+				long action = IdleActionDone ? GAME_RAND(8920, 3) : 0;
 				IdleActionDone = true;
 				switch (action)
 				{
@@ -7391,7 +7390,7 @@ void LH3DCreature::UpdateMotion()
 				case 2:
 					if (GetAnim(C_INDIVIDUAL_CONFUSED, 0))
 					{
-						ReverseAnim = GRand::GameRand(2, __FILE__, 8943);
+						ReverseAnim = GAME_RAND(8943, 2);
 						CycleTime[0] = 0;
 						field_0x5190 = 1;
 					}

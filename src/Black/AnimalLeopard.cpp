@@ -15,7 +15,7 @@ uint32_t Leopard::GetSaveType()
 
 Leopard* Leopard::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Leopard* leopard = new (__FILE__, 30) Leopard(coords, info, age);
+	Leopard* leopard = NEW(30) Leopard(coords, info, age);
 	if (leopard != NULL)
 	{
 		leopard->CallVirtualFunctionsForCreation(coords);

@@ -582,9 +582,9 @@ void Living::GetFleeingPositionFromMovingObject(MapCoords* pos, GameThingWithPos
 		side.z = movement.x;
 		side.FastNormalizeInline();
 		LHPoint offset;
-		offset.x = side.x * distance + GRand::GameFloatRand(LIVING_FLEE_SIDEWAYS_RAND_RANGE, __FILE__, 753) -
+		offset.x = side.x * distance + GAME_FLOAT_RAND(753, LIVING_FLEE_SIDEWAYS_RAND_RANGE) -
 		           LIVING_FLEE_SIDEWAYS_RAND_RANGE / 2;
-		offset.z = side.z * distance + GRand::GameFloatRand(LIVING_FLEE_SIDEWAYS_RAND_RANGE, __FILE__, 754) -
+		offset.z = side.z * distance + GAME_FLOAT_RAND(754, LIVING_FLEE_SIDEWAYS_RAND_RANGE) -
 		           LIVING_FLEE_SIDEWAYS_RAND_RANGE / 2;
 		if (side.z * away.z + side.x * away.x >= 0.0f)
 		{

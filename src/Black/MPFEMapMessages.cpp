@@ -40,7 +40,7 @@ MPFEChangedMapMessage::MPFEChangedMapMessage(unsigned long map_id, unsigned long
 	}
 	wchar_t* text = LHSPrintfW(L"%c%u:%u:", GetMessageCode(SPECIAL_MESSAGE_TYPE_CHANGED_MAP), map_id, num_teams);
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	Message = new (__FILE__, 19) wchar_t[wcslen(text) + 40];
+	Message = NEW(19) wchar_t[wcslen(text) + 40];
 #else
 	Message = new wchar_t[wcslen(text) + 40];
 #endif
@@ -125,7 +125,7 @@ void MPFEChangedMapMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDetails*
 MPFEMapErrorMessage::MPFEMapErrorMessage()
 {
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	Message = new (__FILE__, 96) wchar_t[10];
+	Message = NEW(96) wchar_t[10];
 #else
 	Message = new wchar_t[10];
 #endif
