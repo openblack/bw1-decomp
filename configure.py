@@ -738,6 +738,13 @@ PCH_EXCEPT_NO_STRING = PCHExceptNoStringIn("BW1W120", "BW1W130")
 PCH_PENDING = False
 
 
+# For a game-code object's `pch`: the precompiled header, except in the versions named, whose
+# target object shows a compile without it (CreatureMentalLearn: 1.00 and 1.10 emit the RTTI type
+# descriptors in the order a compile without /Yu gives).
+def PCHExceptIn(*versions):
+    return config.version not in versions
+
+
 # A game-code object (Black/), compiled with cflags_gamecode (Pentium Pro, /G6)
 # instead of the plain cflags_base used for the static libraries. Per-object
 # extra_cflags still apply on top, as with Object. The game was built with its
@@ -936,7 +943,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/CreatureMentalDesireTests.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalEditor.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalExploration.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureMentalLearn.cpp"),
+            GameCodeObject(Matching, "Black/CreatureMentalLearn.cpp", pch=PCHExceptIn("BW1W100", "BW1W110")),
             GameCodeObject(NonMatching, "Black/CreatureMentalLearnAction.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalMisc.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalObjectMultipliers.cpp"),
