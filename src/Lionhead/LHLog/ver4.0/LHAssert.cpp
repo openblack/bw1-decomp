@@ -159,7 +159,7 @@ static void DeleteAssertion(LHAssertInfo* info)
 
 	if (node == NULL)
 	{
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, FILEPATH, 102, LHAssertErrorCodes,
+		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, 102, LHAssertErrorCodes,
 		                            LH_ASSERT_ERROR_DELETE_ASSERTION))
 		{
 			LHLogger::RawLogS(NULL);
@@ -192,7 +192,7 @@ static void DeleteAssertion(short index)
 
 	if (node == NULL)
 	{
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, FILEPATH, 121, LHAssertErrorCodes,
+		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, 121, LHAssertErrorCodes,
 		                            LH_ASSERT_ERROR_DELETE_ASSERTION))
 		{
 			LHLogger::RawLogS(NULL);
@@ -223,7 +223,7 @@ static LHAssertInfo* GetAssertion(short index)
 
 	if (node == NULL)
 	{
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, FILEPATH, 139, LHAssertErrorCodes,
+		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, 139, LHAssertErrorCodes,
 		                            LH_ASSERT_ERROR_DELETE_ASSERTION))
 		{
 			LHLogger::RawLogS(NULL);
@@ -282,14 +282,14 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 		}
 		if (!SetWindowTextA(dialog, LHSPrintf("%s%s", forced, LHLogger::GetFileName(NULL))))
 		{
-			if (LHLogger::LogWin32ErrorS(LHLogLibraryName, FILEPATH, 193))
+			if (LHLogger::LogWin32ErrorS(LHLogLibraryName, __FILE__, 193))
 			{
 				LHLogger::RawLogS(NULL);
 			}
 		}
 		if (!GetWindowRect(dialog, &rect))
 		{
-			if (LHLogger::LogWin32ErrorS(LHLogLibraryName, FILEPATH, 196))
+			if (LHLogger::LogWin32ErrorS(LHLogLibraryName, __FILE__, 196))
 			{
 				LHLogger::RawLogS(NULL);
 			}
@@ -358,7 +358,7 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 		case IDC_CONTINUE:
 			if (!GetWindowRect(dialog, &rect))
 			{
-				if (LHLogger::LogWin32ErrorS(LHLogLibraryName, FILEPATH, 260))
+				if (LHLogger::LogWin32ErrorS(LHLogLibraryName, __FILE__, 260))
 				{
 					LHLogger::RawLogS(NULL);
 				}
@@ -560,7 +560,7 @@ LH_ASSERT_RETURN LHAssertStatement(char* library, unsigned long ignore, char* te
 	if (DialogBoxParamA((HINSTANCE)LHLogger::DLLHModule, MAKEINTRESOURCE(IDD_ASSERT_DIALOG), NULL, AssertDialogProc,
 	                    (LPARAM)&info) == -1)
 	{
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, FILEPATH, 421, LHAssertErrorCodes,
+		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, 421, LHAssertErrorCodes,
 		                            LH_ASSERT_ERROR_DIALOG_BOX_PARAM))
 		{
 			LHLogger::RawLogS(NULL);

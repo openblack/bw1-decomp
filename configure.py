@@ -2655,7 +2655,7 @@ config.libs = [
 # Where each version's build machine compiled a src/ directory from, as the __FILE__ strings of
 # the executable and DLLs spell it (debug new, asserts, logging, MFC's THIS_FILE). Each unit
 # compiled from one of these gets:
-#   FILEPATH                    the unit's original path, for its own debug-new and logging calls
+#   FILEPATH                    the unit's original path, for the calls of a /ZI unit
 #   SOURCE_DIRECTORY            that directory with a trailing backslash, which a header next to
 #                               the unit puts before its include name for the calls inlined from it
 #   RELEASED_HEADERS_DIRECTORY  where its project found the released Lionhead headers (LHALL),
@@ -2791,8 +2791,9 @@ def uses_patched_msvc6(obj):
 
 
 def add_original_source_paths(libs):
-    """Give every unit its original path: as the path the patched MSVC 6 compiles it from
-    (config.cl6_map, so __FILE__ expands to it), or else as FILEPATH."""
+    """Give every unit its original path, so __FILE__ expands to it: the path the patched MSVC 6
+    compiles it from (config.cl6_map), or, for a version that built a directory from within it,
+    the file name alone, cl running in the unit's directory (cl_dir). A /ZI unit gets FILEPATH."""
     checkout_dirs = {}
     for lib in libs:
         for obj in lib["objects"]:
@@ -2807,16 +2808,19 @@ def add_original_source_paths(libs):
             defines = {"SOURCE_DIRECTORY": prefix}
             if config.version in original.headers:
                 defines["RELEASED_HEADERS_DIRECTORY"] = original.headers[config.version] + "\\"
-            # A directory some version built from within (file names alone) keeps FILEPATH in every
-            # version, as do C units (c1.dll is not patched) and units of other compilers. So do
-            # /ZI units: with /ZI, __FILE__ is the compiler's lower-case full name of the file
-            # (LHDialogLib's strings keep their case in the image).
-            cflags = [*(obj.options["cflags"] or lib.get("cflags") or []), *obj.options["extra_cflags"]]
-            if original.relative or obj.name.endswith(".c") or not uses_patched_msvc6(obj) or "/ZI" in cflags:
-                defines["FILEPATH"] = prefix + file_name
-            if not relative and obj.name.endswith(".cpp") and uses_patched_msvc6(obj):
+            if relative:
+                obj.options["cl_dir"] = Path(obj.options["src_dir"] or config.src_dir) / directory
+            elif not (obj.name.endswith(".cpp") and uses_patched_msvc6(obj)):
+                # c1.dll and other compilers are not patched: __FILE__ would name the checkout.
+                sys.exit(f"{obj.name}: no original path for __FILE__ (cl6_paths patches MSVC 6's C++ only)")
+            else:
                 source = Path(obj.options["src_dir"] or config.src_dir) / (obj.options["source"] or obj.name)
                 checkout_dirs.setdefault(source.parent, set()).add(prefix[:-1])
+                # With /ZI, __FILE__ is the compiler's lower-case full name of the file, while
+                # LHDialogLib's strings keep their case in the image.
+                cflags = [*(obj.options["cflags"] or lib.get("cflags") or []), *obj.options["extra_cflags"]]
+                if "/ZI" in cflags:
+                    defines["FILEPATH"] = prefix + file_name
             obj.options["extra_cflags"] = [
                 *obj.options["extra_cflags"],
                 *(f"/D{name}={c_string_literal(value)}" for name, value in defines.items()),

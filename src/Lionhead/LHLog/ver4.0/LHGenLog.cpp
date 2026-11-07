@@ -337,7 +337,7 @@ void LHLogger::RawLogT(char* text)
 {
 	if (!InitFlag)
 	{
-		SetLocalError(FILEPATH, 517, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		SetLocalError(__FILE__, 517, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 		return;
 	}
 	if (LogProps->Level == LH_LOG_PROPS_LEVEL_NONE)
@@ -368,7 +368,7 @@ void LHLogger::RawLogT(char* text)
 		}
 		else
 		{
-			SetLocalError(FILEPATH, 543, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+			SetLocalError(__FILE__, 543, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 			return;
 		}
 	}
@@ -383,7 +383,7 @@ bool32_t LHLogger::LogWin32ErrorT(unsigned long error, char* library, char* file
 	LHSPrintf message;
 	if (!InitFlag)
 	{
-		SetLocalError(FILEPATH, 590, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		SetLocalError(__FILE__, 590, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 		return false;
 	}
 	SetErrorStateT(error, LH_LOG_LEVEL_ERROR);
@@ -553,7 +553,7 @@ bool32_t LHLogger::VCreateLogText(LHSPrintf* output, char* library, char* file, 
 	}
 	if (!InitFlag)
 	{
-		SetLocalError(FILEPATH, 457, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		SetLocalError(__FILE__, 457, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 		return false;
 	}
 	if (output == NULL)
@@ -659,12 +659,12 @@ bool32_t LHLogger::LogErrorCodeT(char* library, char* file, unsigned long line, 
 {
 	if (!InitFlag)
 	{
-		SetLocalError(FILEPATH, 327, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		SetLocalError(__FILE__, 327, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
 		return false;
 	}
 	if (codes == NULL)
 	{
-		SetLocalError(FILEPATH, 328, LH_LOG_LOCAL_ERROR_NO_LOOKUP_TABLE);
+		SetLocalError(__FILE__, 328, LH_LOG_LOCAL_ERROR_NO_LOOKUP_TABLE);
 		return false;
 	}
 	unsigned long i;
