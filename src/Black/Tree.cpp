@@ -842,7 +842,7 @@ bool32_t Tree::InterfaceSetInMagicHand(GInterfaceStatus* status)
 
 uint32_t Tree::GetOverwriteDropToolTip()
 {
-	return HELP_TEXT_TOOLTIP_117;
+	return HELP_TEXT_TOOLTIP_125;
 }
 
 bool32_t Tree::IsOkToCreateAtPos(MapCoords& coords)

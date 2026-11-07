@@ -20,7 +20,7 @@ bool32_t Reward::ValidForPlaceInHand(GInterfaceStatus* param_1)
 
 uint32_t Reward::GetOverwriteTapToolTip()
 {
-	return HELP_TEXT_TOOLTIP_126;
+	return HELP_TEXT_TOOLTIP_134;
 }
 
 GBaseInfo* GRewardInfo::GetBaseInfo(uint32_t& info_count)
