@@ -876,7 +876,7 @@ bool32_t LH3DRender::OpenD3D()
 	result = D3D->EnumZBufferFormats(IID_IDirect3DHALDevice, EnumZBufferCallback, NULL);
 	if (result != D3D_OK)
 	{
-		LHLogger::LogErrorCodeS(LHLogLibraryName, FILEPATH, LH3D_RENDER_ENUM_ZBUFFER_LINE, LH_DX_Errors, result);
+		LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, LH3D_RENDER_ENUM_ZBUFFER_LINE, LH_DX_Errors, result);
 	}
 	bool32_t found = false;
 	if (g_zddpf_count != 0)

@@ -34,7 +34,7 @@ bool32_t Totem::Save(GameOSFile& file)
 Totem* Totem::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                      float food, int wood)
 {
-	Totem* totem = new (FILEPATH, 60) Totem(coords, info, town, y_angle, scale, food, wood);
+	Totem* totem = new (__FILE__, 60) Totem(coords, info, town, y_angle, scale, food, wood);
 	if (totem != NULL)
 	{
 		totem->CallVirtualFunctionsForCreation(coords);

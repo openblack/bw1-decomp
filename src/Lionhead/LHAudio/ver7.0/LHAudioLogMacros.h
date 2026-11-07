@@ -18,7 +18,7 @@ static void LHLogDebugBreak()
 
 #define LH_LOG_ERROR_CODE(code, line)                                                                                  \
 	{                                                                                                                  \
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, FILEPATH, line, LHLogErrorCodes, code))                          \
+		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, line, LHLogErrorCodes, code))                          \
 		{                                                                                                              \
 			LHLogger::RawLogS(NULL);                                                                                   \
 		}                                                                                                              \
@@ -26,7 +26,7 @@ static void LHLogDebugBreak()
 
 #define LH_LOG_ERROR_CODE1(code, line, arg)                                                                            \
 	{                                                                                                                  \
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, FILEPATH, line, LHLogErrorCodes, code, arg))                     \
+		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, line, LHLogErrorCodes, code, arg))                     \
 		{                                                                                                              \
 			LHLogger::RawLogS(NULL);                                                                                   \
 		}                                                                                                              \
@@ -66,7 +66,7 @@ static void LHLogDebugBreak()
 	}
 
 #define LH_ASSERT_REPORT(expr, text, line, forced, priority, action)                                                   \
-	LH_ASSERT_REPORT_AT(expr, text, FILEPATH, line, forced, priority, action)
+	LH_ASSERT_REPORT_AT(expr, text, __FILE__, line, forced, priority, action)
 
 #define LH_ASSERT(expr, text, line)                                                                                    \
 	if (!(expr))                                                                                                       \

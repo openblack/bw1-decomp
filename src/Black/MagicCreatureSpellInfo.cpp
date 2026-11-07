@@ -8,7 +8,7 @@
 
 Spell* GMagicCreatureSpellInfo::AllocSpell(GameThing* caster) const
 {
-	return new (FILEPATH, 13) SpellCreature(MagicType, caster);
+	return new (__FILE__, 13) SpellCreature(MagicType, caster);
 }
 
 bool32_t GMagicCreatureSpellInfo::CanCast(const MapCoords& coords, GameThing* caster) const

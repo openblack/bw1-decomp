@@ -110,7 +110,7 @@ void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 		float decayRateMin = CreatureInitialDesireInfo::GetInfo()[i].DecayRateMin;
 		DecayRates[i] =
 			decayRateMin +
-			GRand::GameFloatRand(CreatureInitialDesireInfo::GetInfo()[i].DecayRateMax - decayRateMin, FILEPATH, 100);
+			GRand::GameFloatRand(CreatureInitialDesireInfo::GetInfo()[i].DecayRateMax - decayRateMin, __FILE__, 100);
 		IncreaseTime[i] = CreatureDesireForType::GetInitialIncreaseTime()[i].ByCreatureType[info->CreatureType];
 		RandomiseIncreaseTime(i);
 		MaxLevels[i] = CreatureInitialDesireInfo::GetInfo()[i].MaxLevel;
@@ -170,7 +170,7 @@ void CreatureDesires::RandomiseIncreaseTime(unsigned long desire)
 	if (GGlobal::Global.RandomiseCreatureMinds != false)
 	{
 		float range = IncreaseTime[desire] / INCREASE_TIME_RANDOM_DIVISOR;
-		IncreaseTime[desire] += GRand::GameFloatRand(2.0f * range, FILEPATH, 172) - range;
+		IncreaseTime[desire] += GRand::GameFloatRand(2.0f * range, __FILE__, 172) - range;
 	}
 }
 

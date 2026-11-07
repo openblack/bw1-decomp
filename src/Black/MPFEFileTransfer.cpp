@@ -146,13 +146,13 @@ void MPFEFileTransfer::ProcessThisDataIncomming(wchar_t* message, MPFEPlayerDeta
 		{
 			delete SendText;
 		}
-		SendText = new (FILEPATH, 139) char[EncodedLength + 1];
+		SendText = new (__FILE__, 139) char[EncodedLength + 1];
 		memset(SendText, 0, EncodedLength + 1);
 		if (Data != NULL)
 		{
 			delete Data;
 		}
-		Data = new (FILEPATH, 145) char[DataSize];
+		Data = new (__FILE__, 145) char[DataSize];
 		memset(Data, 0, DataSize);
 		Sender = from;
 	}
@@ -189,7 +189,7 @@ void MPFEFileTransfer::StartSending(char* data, unsigned long size, bool send_he
 	{
 		delete SendText;
 	}
-	Data = new (FILEPATH, 180) char[size];
+	Data = new (__FILE__, 180) char[size];
 	DataSize = size;
 	memset(Data, 0, size);
 	memcpy(Data, data, size);
@@ -208,7 +208,7 @@ void MPFEFileTransfer::StartSending(char* data, unsigned long size, bool send_he
 void MPFEFileTransfer::CompressAndEncode()
 {
 	unsigned long compressedSize = DataSize + DataSize / 9 + 300;
-	char*         compressed = new (FILEPATH, 266) char[compressedSize];
+	char*         compressed = new (__FILE__, 266) char[compressedSize];
 	memset(compressed, 0, compressedSize);
 	if (compress((Bytef*)compressed, &compressedSize, (Bytef*)Data, DataSize) != Z_OK)
 	{
@@ -220,7 +220,7 @@ void MPFEFileTransfer::CompressAndEncode()
 		CompressedLength = compressedSize - compressedSize % 3 + 3;
 	}
 	EncodedLength = CompressedLength + CompressedLength / 3;
-	SendText = new (FILEPATH, 281) char[EncodedLength + 1];
+	SendText = new (__FILE__, 281) char[EncodedLength + 1];
 	memset(SendText, 0, EncodedLength + 1);
 	Encode(SendText, compressed, CompressedLength);
 	delete compressed;
@@ -243,9 +243,9 @@ void MPFEFileTransfer::Encode(char* text, const char* data, unsigned long length
 void MPFEFileTransfer::DecodeAndUncompress()
 {
 	unsigned long size = DataSize + DataSize % 3;
-	char*         compressed = new (FILEPATH, 302) char[CompressedLength];
+	char*         compressed = new (__FILE__, 302) char[CompressedLength];
 	Decode(compressed, SendText, EncodedLength);
-	char* data = new (FILEPATH, 305) char[size];
+	char* data = new (__FILE__, 305) char[size];
 	uncompress((Bytef*)data, &size, (Bytef*)compressed, CompressedLength);
 	memcpy(Data, data, DataSize);
 	delete data;
@@ -269,6 +269,6 @@ void MPFEFileTransfer::Decode(char* data, const char* text, unsigned long length
 
 MPFEFileTransferMessage::MPFEFileTransferMessage(wchar_t* text)
 {
-	Message = new (FILEPATH, 318) wchar_t[wcslen(text) + 10];
+	Message = new (__FILE__, 318) wchar_t[wcslen(text) + 10];
 	swprintf(Message, L"%c%s", GetMessageCode(SPECIAL_MESSAGE_TYPE_FILE_TRANSFER), text);
 }

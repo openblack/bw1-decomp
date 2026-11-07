@@ -132,7 +132,7 @@ LHScreen::LHScreen()
 	// Allocate DeviceInfoArray: 4-byte count header (=5) followed by five 248-byte
 	// display-device records. DeviceInfoArray points past the count header.
 	int*  devices;
-	void* mem = operator new(0x4dc, FILEPATH, 43);
+	void* mem = operator new(0x4dc, __FILE__, 43);
 	if (mem)
 	{
 		*(int*)mem = 5;

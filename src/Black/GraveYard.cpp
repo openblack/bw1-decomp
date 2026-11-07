@@ -51,7 +51,7 @@ void Graveyard::DeleteDependancys()
 Graveyard* Graveyard::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                              float food, int wood)
 {
-	Graveyard* graveyard = new (FILEPATH, 58) Graveyard(coords, info, town, y_angle, scale, food, wood);
+	Graveyard* graveyard = new (__FILE__, 58) Graveyard(coords, info, town, y_angle, scale, food, wood);
 	if (graveyard != NULL)
 	{
 		graveyard->CallVirtualFunctionsForCreation(coords);

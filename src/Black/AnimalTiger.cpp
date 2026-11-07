@@ -9,7 +9,7 @@ uint32_t Tiger::GetSaveType()
 
 Tiger* Tiger::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Tiger* tiger = new (FILEPATH, 26) Tiger(coords, info, age);
+	Tiger* tiger = new (__FILE__, 26) Tiger(coords, info, age);
 	if (tiger != NULL)
 	{
 		tiger->CallVirtualFunctionsForCreation(coords);

@@ -195,5 +195,5 @@ void DanceKeyFrame::AddAction(LHDynamicStack<unsigned long>& groups, DANCE_GROUP
 			break;
 		}
 	}
-	Actions.AddToEnd(new (FILEPATH, 278) DanceKeyAction(groups, action_type, arguments));
+	Actions.AddToEnd(new (__FILE__, 278) DanceKeyAction(groups, action_type, arguments));
 }

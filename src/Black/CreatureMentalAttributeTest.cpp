@@ -16,81 +16,81 @@ void AttributeTest::CreateAttributeArray()
 {
 	Attribute* attribute;
 
-	attribute = new (FILEPATH, 565) AttributeAllegiance;
-	AttributeArray[ATTRIBUTE_TYPE_ALLEGIANCE] = new (FILEPATH, 566) AttributeArrayEntry(attribute, "Allegiance");
+	attribute = new (__FILE__, 565) AttributeAllegiance;
+	AttributeArray[ATTRIBUTE_TYPE_ALLEGIANCE] = new (__FILE__, 566) AttributeArrayEntry(attribute, "Allegiance");
 
-	attribute = new (FILEPATH, 569) AttributeOrigin;
-	AttributeArray[ATTRIBUTE_TYPE_ORIGIN] = new (FILEPATH, 570) AttributeArrayEntry(attribute, "Origin");
+	attribute = new (__FILE__, 569) AttributeOrigin;
+	AttributeArray[ATTRIBUTE_TYPE_ORIGIN] = new (__FILE__, 570) AttributeArrayEntry(attribute, "Origin");
 
-	attribute = new (FILEPATH, 573) AttributeAnimate;
-	AttributeArray[ATTRIBUTE_TYPE_ANIMATE] = new (FILEPATH, 574) AttributeArrayEntry(attribute, "Animate?");
+	attribute = new (__FILE__, 573) AttributeAnimate;
+	AttributeArray[ATTRIBUTE_TYPE_ANIMATE] = new (__FILE__, 574) AttributeArrayEntry(attribute, "Animate?");
 
-	attribute = new (FILEPATH, 577) AttributePlayerNumber;
-	AttributeArray[ATTRIBUTE_TYPE_PLAYER_NUMBER] = new (FILEPATH, 578) AttributeArrayEntry(attribute, "PlayerNumber");
+	attribute = new (__FILE__, 577) AttributePlayerNumber;
+	AttributeArray[ATTRIBUTE_TYPE_PLAYER_NUMBER] = new (__FILE__, 578) AttributeArrayEntry(attribute, "PlayerNumber");
 
-	attribute = new (FILEPATH, 581) AttributeIsHarderThanMe;
-	AttributeArray[ATTRIBUTE_TYPE_HARDER_THAN_ME] = new (FILEPATH, 582) AttributeArrayEntry(attribute, "HarderThanMe");
+	attribute = new (__FILE__, 581) AttributeIsHarderThanMe;
+	AttributeArray[ATTRIBUTE_TYPE_HARDER_THAN_ME] = new (__FILE__, 582) AttributeArrayEntry(attribute, "HarderThanMe");
 
-	attribute = new (FILEPATH, 585) AttributeCreatureType;
-	AttributeArray[ATTRIBUTE_TYPE_CREATURE_TYPE] = new (FILEPATH, 586) AttributeArrayEntry(attribute, "CreatureType");
+	attribute = new (__FILE__, 585) AttributeCreatureType;
+	AttributeArray[ATTRIBUTE_TYPE_CREATURE_TYPE] = new (__FILE__, 586) AttributeArrayEntry(attribute, "CreatureType");
 
-	attribute = new (FILEPATH, 589) AttributeType;
-	AttributeArray[ATTRIBUTE_TYPE_TYPE] = new (FILEPATH, 590) AttributeArrayEntry(attribute, "Type");
+	attribute = new (__FILE__, 589) AttributeType;
+	AttributeArray[ATTRIBUTE_TYPE_TYPE] = new (__FILE__, 590) AttributeArrayEntry(attribute, "Type");
 
-	attribute = new (FILEPATH, 593) AttributeLife;
-	AttributeArray[ATTRIBUTE_TYPE_LIFE] = new (FILEPATH, 594) AttributeArrayEntry(attribute, "Life");
+	attribute = new (__FILE__, 593) AttributeLife;
+	AttributeArray[ATTRIBUTE_TYPE_LIFE] = new (__FILE__, 594) AttributeArrayEntry(attribute, "Life");
 
-	attribute = new (FILEPATH, 597) AttributeTribe;
-	AttributeArray[ATTRIBUTE_TYPE_TRIBE] = new (FILEPATH, 598) AttributeArrayEntry(attribute, "Tribe");
+	attribute = new (__FILE__, 597) AttributeTribe;
+	AttributeArray[ATTRIBUTE_TYPE_TRIBE] = new (__FILE__, 598) AttributeArrayEntry(attribute, "Tribe");
 
-	attribute = new (FILEPATH, 601) AttributeTownReligiousBeliefInYou;
+	attribute = new (__FILE__, 601) AttributeTownReligiousBeliefInYou;
 	AttributeArray[ATTRIBUTE_TYPE_RELIGIOUS_BELIEF_IN_YOU] =
-		new (FILEPATH, 602) AttributeArrayEntry(attribute, "TownReligiousBelief");
+		new (__FILE__, 602) AttributeArrayEntry(attribute, "TownReligiousBelief");
 
-	attribute = new (FILEPATH, 605) AttributeWhatTownNeedsMost;
+	attribute = new (__FILE__, 605) AttributeWhatTownNeedsMost;
 	AttributeArray[ATTRIBUTE_TYPE_TOWN_NEEDS_MOST] =
-		new (FILEPATH, 606) AttributeArrayEntry(attribute, "TownNeedsMost");
+		new (__FILE__, 606) AttributeArrayEntry(attribute, "TownNeedsMost");
 
-	attribute = new (FILEPATH, 609) AttributeTownSize;
-	AttributeArray[ATTRIBUTE_TYPE_TOWN_SIZE] = new (FILEPATH, 610) AttributeArrayEntry(attribute, "TownSize");
+	attribute = new (__FILE__, 609) AttributeTownSize;
+	AttributeArray[ATTRIBUTE_TYPE_TOWN_SIZE] = new (__FILE__, 610) AttributeArrayEntry(attribute, "TownSize");
 
-	attribute = new (FILEPATH, 613) AttributeCreatureDominantDesire;
+	attribute = new (__FILE__, 613) AttributeCreatureDominantDesire;
 	AttributeArray[ATTRIBUTE_TYPE_CREATURE_DOMINANT_DESIRE] =
-		new (FILEPATH, 614) AttributeArrayEntry(attribute, "CreatureDesire");
+		new (__FILE__, 614) AttributeArrayEntry(attribute, "CreatureDesire");
 
-	attribute = new (FILEPATH, 617) AttributeCreatureHeight;
+	attribute = new (__FILE__, 617) AttributeCreatureHeight;
 	AttributeArray[ATTRIBUTE_TYPE_CREATURE_HEIGHT] =
-		new (FILEPATH, 618) AttributeArrayEntry(attribute, "CreatureHeight");
+		new (__FILE__, 618) AttributeArrayEntry(attribute, "CreatureHeight");
 
-	attribute = new (FILEPATH, 621) AttributeCreatureSpellKnowledge;
+	attribute = new (__FILE__, 621) AttributeCreatureSpellKnowledge;
 	AttributeArray[ATTRIBUTE_TYPE_CREATURE_SPELL_KNOWLEDGE] =
-		new (FILEPATH, 622) AttributeArrayEntry(attribute, "CreatureSpellKnowledge");
+		new (__FILE__, 622) AttributeArrayEntry(attribute, "CreatureSpellKnowledge");
 
-	attribute = new (FILEPATH, 625) AttributeCreatureWhatHeIsCarrying;
+	attribute = new (__FILE__, 625) AttributeCreatureWhatHeIsCarrying;
 	AttributeArray[ATTRIBUTE_TYPE_CREATURE_CARRYING] =
-		new (FILEPATH, 626) AttributeArrayEntry(attribute, "CreatureCarryingWhat");
+		new (__FILE__, 626) AttributeArrayEntry(attribute, "CreatureCarryingWhat");
 
-	attribute = new (FILEPATH, 629) AttributeForestSize;
-	AttributeArray[ATTRIBUTE_TYPE_FOREST_SIZE] = new (FILEPATH, 630) AttributeArrayEntry(attribute, "ForestSize");
+	attribute = new (__FILE__, 629) AttributeForestSize;
+	AttributeArray[ATTRIBUTE_TYPE_FOREST_SIZE] = new (__FILE__, 630) AttributeArrayEntry(attribute, "ForestSize");
 
-	attribute = new (FILEPATH, 633) AttributeVillagerJob;
-	AttributeArray[ATTRIBUTE_TYPE_VILLAGER_JOB] = new (FILEPATH, 634) AttributeArrayEntry(attribute, "Job");
+	attribute = new (__FILE__, 633) AttributeVillagerJob;
+	AttributeArray[ATTRIBUTE_TYPE_VILLAGER_JOB] = new (__FILE__, 634) AttributeArrayEntry(attribute, "Job");
 
-	attribute = new (FILEPATH, 637) AttributeSex;
-	AttributeArray[ATTRIBUTE_TYPE_SEX] = new (FILEPATH, 638) AttributeArrayEntry(attribute, "Sex");
+	attribute = new (__FILE__, 637) AttributeSex;
+	AttributeArray[ATTRIBUTE_TYPE_SEX] = new (__FILE__, 638) AttributeArrayEntry(attribute, "Sex");
 
-	attribute = new (FILEPATH, 641) AttributeMobileObjectType;
-	AttributeArray[ATTRIBUTE_TYPE_MOBILE_OBJECT_TYPE] = new (FILEPATH, 642) AttributeArrayEntry(attribute, "SubType");
+	attribute = new (__FILE__, 641) AttributeMobileObjectType;
+	AttributeArray[ATTRIBUTE_TYPE_MOBILE_OBJECT_TYPE] = new (__FILE__, 642) AttributeArrayEntry(attribute, "SubType");
 
-	attribute = new (FILEPATH, 645) AttributeAbodeType;
-	AttributeArray[ATTRIBUTE_TYPE_ABODE_TYPE] = new (FILEPATH, 646) AttributeArrayEntry(attribute, "SubType");
+	attribute = new (__FILE__, 645) AttributeAbodeType;
+	AttributeArray[ATTRIBUTE_TYPE_ABODE_TYPE] = new (__FILE__, 646) AttributeArrayEntry(attribute, "SubType");
 
-	attribute = new (FILEPATH, 649) AttributeAbodeBeingBuilt;
+	attribute = new (__FILE__, 649) AttributeAbodeBeingBuilt;
 	AttributeArray[ATTRIBUTE_TYPE_ABODE_BEING_BUILT] =
-		new (FILEPATH, 650) AttributeArrayEntry(attribute, "AbodeBeingBuilt?");
+		new (__FILE__, 650) AttributeArrayEntry(attribute, "AbodeBeingBuilt?");
 
-	attribute = new (FILEPATH, 653) AttributeCreatureDominantDesire;
-	AttributeArray[ATTRIBUTE_TYPE_ABODE_ON_FIRE] = new (FILEPATH, 654) AttributeArrayEntry(attribute, "OnFire?");
+	attribute = new (__FILE__, 653) AttributeCreatureDominantDesire;
+	AttributeArray[ATTRIBUTE_TYPE_ABODE_ON_FIRE] = new (__FILE__, 654) AttributeArrayEntry(attribute, "OnFire?");
 }
 
 bool32_t AttributeCreatureDominantDesire::IsDynamic()
@@ -300,24 +300,24 @@ CreatureBelief* DecisionTreeAgenda::CreateBelief(CREATURE_BELIEF_TYPE type)
 	switch (type)
 	{
 	case CREATURE_BELIEF_TYPE_TOWN:
-		return new (FILEPATH, 700) CreatureBeliefAboutTown;
+		return new (__FILE__, 700) CreatureBeliefAboutTown;
 	case CREATURE_BELIEF_TYPE_FOREST:
-		return new (FILEPATH, 703) CreatureBeliefAboutForest;
+		return new (__FILE__, 703) CreatureBeliefAboutForest;
 	case CREATURE_BELIEF_TYPE_CREATURE:
-		return new (FILEPATH, 706) CreatureBeliefAboutCreature;
+		return new (__FILE__, 706) CreatureBeliefAboutCreature;
 	case CREATURE_BELIEF_TYPE_VILLAGER:
-		return new (FILEPATH, 709) CreatureBeliefAboutVillager;
+		return new (__FILE__, 709) CreatureBeliefAboutVillager;
 	case CREATURE_BELIEF_TYPE_ABODE:
-		return new (FILEPATH, 712) CreatureBeliefAboutAbode;
+		return new (__FILE__, 712) CreatureBeliefAboutAbode;
 	case CREATURE_BELIEF_TYPE_CITADEL:
-		return new (FILEPATH, 715) CreatureBeliefAboutCitadel;
+		return new (__FILE__, 715) CreatureBeliefAboutCitadel;
 	case CREATURE_BELIEF_TYPE_CONTEXT:
-		return new (FILEPATH, 718) CreatureBeliefAboutContext;
+		return new (__FILE__, 718) CreatureBeliefAboutContext;
 	case CREATURE_BELIEF_TYPE_MOBILE_OBJECT:
-		return new (FILEPATH, 721) CreatureBeliefSmall;
+		return new (__FILE__, 721) CreatureBeliefSmall;
 	case CREATURE_BELIEF_TYPE_FLOCK:
-		return new (FILEPATH, 724) CreatureBeliefAboutFlock;
+		return new (__FILE__, 724) CreatureBeliefAboutFlock;
 	default:
-		return new (FILEPATH, 727) CreatureBeliefSmall;
+		return new (__FILE__, 727) CreatureBeliefSmall;
 	}
 }

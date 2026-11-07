@@ -148,9 +148,9 @@ ScriptHighlight* ScriptHighlight::Create(const MapCoords& coords, const GScriptH
                                          unsigned long script_id, float y_angle, float scale)
 {
 #ifdef VERSION_BW1WCI
-	ScriptHighlight* highlight = new (FILEPATH, 128) ScriptHighlight(coords, info, script_id, y_angle, scale);
+	ScriptHighlight* highlight = new (__FILE__, 128) ScriptHighlight(coords, info, script_id, y_angle, scale);
 #else
-	ScriptHighlight* highlight = new (FILEPATH, 126) ScriptHighlight(coords, info, script_id, y_angle, scale);
+	ScriptHighlight* highlight = new (__FILE__, 126) ScriptHighlight(coords, info, script_id, y_angle, scale);
 #endif
 	if (highlight != NULL)
 	{

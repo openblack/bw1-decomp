@@ -31,7 +31,7 @@ wchar_t MPFEMessageObject::GetMessageCode(SpecialMessageTypes type)
 
 MPFECancelStartMessage::MPFECancelStartMessage()
 {
-	Message = new (FILEPATH, 364) wchar_t[10];
+	Message = new (__FILE__, 364) wchar_t[10];
 	if (MPFEData::Data.GetLocalPlayer()->IsHost)
 	{
 		swprintf(Message, L"%c", GetMessageCode(SPECIAL_MESSAGE_TYPE_CANCEL_START));
@@ -40,13 +40,13 @@ MPFECancelStartMessage::MPFECancelStartMessage()
 
 MPFEKickMessageRequest::MPFEKickMessageRequest(MPFEPlayerDetails* player)
 {
-	Message = new (FILEPATH, 386) wchar_t[50];
+	Message = new (__FILE__, 386) wchar_t[50];
 	swprintf(Message, L"%c%u", GetMessageCode(SPECIAL_MESSAGE_TYPE_KICK_REQUEST), (unsigned long)player->DatabaseID);
 }
 
 MPFEKickMessage::MPFEKickMessage(MPFEPlayerDetails* player, MPFEPlayerDetails* by)
 {
-	Message = new (FILEPATH, 433) wchar_t[50];
+	Message = new (__FILE__, 433) wchar_t[50];
 	swprintf(Message, L"%c%u:%u:%u", GetMessageCode(SPECIAL_MESSAGE_TYPE_KICK), player->DatabaseID.id,
 	         by->DatabaseID.id, player->Team);
 }

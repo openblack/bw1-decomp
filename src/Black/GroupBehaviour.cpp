@@ -124,7 +124,7 @@ void GroupBehaviour::UpdateGroupsBasedOnAction(DanceKeyAction* action)
 		uint32_t group = action->Groups.GetNthMember(i);
 		if (group >= DanceGroups.count)
 		{
-			DanceGroup* danceGroup = new (FILEPATH, 130) DanceGroup();
+			DanceGroup* danceGroup = new (__FILE__, 130) DanceGroup();
 			danceGroup->behaviour = this;
 			Dance* dance = dynamic_cast<Dance*>(this);
 			if (dance != NULL)
@@ -197,7 +197,7 @@ DanceKeyFrame* GroupBehaviour::AddAction(float time, LHDynamicStack<unsigned lon
 		keyFrame->AddAction(groups, action_type, argument);
 		return keyFrame;
 	}
-	keyFrame = new (FILEPATH, 527) DanceKeyFrame((int)time, groups, action_type, argument);
+	keyFrame = new (__FILE__, 527) DanceKeyFrame((int)time, groups, action_type, argument);
 	KeyFrames.Insert(keyFrame);
 	return keyFrame;
 }

@@ -283,7 +283,7 @@ void Bookmark::SetCameraToBookMark(unsigned long index)
 		CameraModeNew3* mode = dynamic_cast<CameraModeNew3*>(GGame::g_game->GetCamera()->GetCurrentMode());
 		if (mode == NULL)
 		{
-			new (FILEPATH, 243) CameraModeNew3(GGame::g_game->GetCamera());
+			new (__FILE__, 243) CameraModeNew3(GGame::g_game->GetCamera());
 			mode = dynamic_cast<CameraModeNew3*>(GGame::g_game->GetCamera()->GetCurrentMode());
 			if (mode == NULL)
 			{

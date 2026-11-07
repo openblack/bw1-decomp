@@ -475,7 +475,7 @@ void GScript::SpecialEffectFromFile()
 	char       path[MAX_PATH];
 	ScriptDLL* dll = g_scriptDLL;
 	sprintf(path, ".\\Data\\Zones\\%s", dll->STRING(dll->ULONG_POP()));
-	FenceVis* fence = new (FILEPATH, 521) FenceVis(path, LH3DColor(0xff, 0xff, 0xff, 0xff));
+	FenceVis* fence = new (__FILE__, 521) FenceVis(path, LH3DColor(0xff, 0xff, 0xff, 0xff));
 	if (fence != NULL)
 	{
 		uint32_t id = AddScriptGameThing(fence, true);
@@ -492,7 +492,7 @@ void GScript::SpecialEffectFromPos()
 	g_scriptDLL->POINT_POP(pos);
 	if (g_scriptDLL->ULONG_POP() == SPOT_VISUAL_ALEX_TYPE_HULA_HOOP)
 	{
-		HulaHoopVis* hoop = new (FILEPATH, 548) HulaHoopVis(pos, HULA_HOOP_VIS_HEIGHT, HULA_HOOP_VIS_RADIUS,
+		HulaHoopVis* hoop = new (__FILE__, 548) HulaHoopVis(pos, HULA_HOOP_VIS_HEIGHT, HULA_HOOP_VIS_RADIUS,
 		                                                    HULA_HOOP_VIS_DENSITY, LH3DColor(0xff, 0xff, 0xff, 0xff));
 		if (hoop != NULL)
 		{

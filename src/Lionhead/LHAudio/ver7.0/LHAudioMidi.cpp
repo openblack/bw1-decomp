@@ -17,7 +17,7 @@
 
 #define LH_LOG_DX_ERROR(result, line)                                                                                  \
 	{                                                                                                                  \
-		if (LHLogger::LogErrorCodeS(LHLogLibraryName, FILEPATH, line, LH_DX_Errors, result))                           \
+		if (LHLogger::LogErrorCodeS(LHLogLibraryName, __FILE__, line, LH_DX_Errors, result))                           \
 		{                                                                                                              \
 			LHLogger::RawLogS(NULL);                                                                                   \
 		}                                                                                                              \

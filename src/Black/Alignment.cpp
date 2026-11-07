@@ -269,7 +269,7 @@ void CAlignmentHistory::DrawTotals()
 {
 	if (Slider == NULL)
 	{
-		Slider = new (FILEPATH, 270) EditorIconSlider<float>(
+		Slider = new (__FILE__, 270) EditorIconSlider<float>(
 			LHRegion(0, 0, ALIGNMENT_HISTORY_SLIDER_WIDTH, LHSys::GetScreen().Height()), ScrollPosition, 0.0f, 1.0f,
 			0.1f, NULL, 2, true, 1, &EditorIconBase::DefaultActiveColor, &EditorIconBase::DefaultActiveColor,
 			&EditorIconBase::DefaultHiliteColor, &EditorIconBase::DefaultTextColor);
@@ -348,7 +348,7 @@ void CAlignmentHistory::Add(Town* town, TOWN_DESIRE_INFO info, float change)
 	AddTotal(town->GetPlayer(), CAlignmentHistoryNode::ALIGNMENT_HISTORY_TYPE_TOWN, change);
 	if (change != 0.0f && Recording)
 	{
-		CAlignmentHistoryNode* node = new (FILEPATH, 356) CAlignmentHistoryNode(town->GetPlayer(), town, info, change);
+		CAlignmentHistoryNode* node = new (__FILE__, 356) CAlignmentHistoryNode(town->GetPlayer(), town, info, change);
 		Nodes[town->GetPlayer()->GetPlayerNumber()].AddToLast(node);
 	}
 }
@@ -359,7 +359,7 @@ void CAlignmentHistory::Add(Object* object, EffectValues* values, EFFECT_TYPE ty
 	if (change != 0.0f && Recording)
 	{
 		CAlignmentHistoryNode* node =
-			new (FILEPATH, 367) CAlignmentHistoryNode(values->GetPlayer(), object, type, change);
+			new (__FILE__, 367) CAlignmentHistoryNode(values->GetPlayer(), object, type, change);
 		Nodes[values->GetPlayer()->GetPlayerNumber()].AddToLast(node);
 	}
 }
@@ -370,7 +370,7 @@ void CAlignmentHistory::Add(Reaction* reaction, float change)
 	if (change != 0.0f && Recording)
 	{
 		CAlignmentHistoryNode* node =
-			new (FILEPATH, 378) CAlignmentHistoryNode(reaction->GetPlayer(), reaction, change);
+			new (__FILE__, 378) CAlignmentHistoryNode(reaction->GetPlayer(), reaction, change);
 		Nodes[reaction->GetPlayer()->GetPlayerNumber()].AddToLast(node);
 	}
 }
@@ -381,7 +381,7 @@ void CAlignmentHistory::Add(Creature* creature, float change)
 	if (change != 0.0f && Recording)
 	{
 		CAlignmentHistoryNode* node =
-			new (FILEPATH, 389) CAlignmentHistoryNode(creature->GetPlayer(), creature, change);
+			new (__FILE__, 389) CAlignmentHistoryNode(creature->GetPlayer(), creature, change);
 		Nodes[creature->GetPlayer()->GetPlayerNumber()].AddToLast(node);
 	}
 }
@@ -391,7 +391,7 @@ void CAlignmentHistory::Add(GPlayer* player, Object* object, DEATH_REASON reason
 	AddTotal(player, CAlignmentHistoryNode::ALIGNMENT_HISTORY_TYPE_DEATH, change);
 	if (change != 0.0f && Recording)
 	{
-		CAlignmentHistoryNode* node = new (FILEPATH, 400) CAlignmentHistoryNode(player, object, reason, change);
+		CAlignmentHistoryNode* node = new (__FILE__, 400) CAlignmentHistoryNode(player, object, reason, change);
 		Nodes[player->GetPlayerNumber()].AddToLast(node);
 	}
 }
@@ -401,7 +401,7 @@ void CAlignmentHistory::Add(GPlayer* player, unsigned long script, float change)
 	AddTotal(player, CAlignmentHistoryNode::ALIGNMENT_HISTORY_TYPE_SCRIPT, change);
 	if (change != 0.0f && Recording)
 	{
-		CAlignmentHistoryNode* node = new (FILEPATH, 411) CAlignmentHistoryNode(player, script, change);
+		CAlignmentHistoryNode* node = new (__FILE__, 411) CAlignmentHistoryNode(player, script, change);
 		Nodes[player->GetPlayerNumber()].AddToLast(node);
 	}
 }
@@ -411,7 +411,7 @@ void CAlignmentHistory::Add(GPlayer* player, float change)
 	AddTotal(player, CAlignmentHistoryNode::ALIGNMENT_HISTORY_TYPE_UPDATE, change);
 	if (change != 0.0f && Recording)
 	{
-		CAlignmentHistoryNode* node = new (FILEPATH, 422) CAlignmentHistoryNode(player, change);
+		CAlignmentHistoryNode* node = new (__FILE__, 422) CAlignmentHistoryNode(player, change);
 		Nodes[player->GetPlayerNumber()].AddToLast(node);
 	}
 }
@@ -421,7 +421,7 @@ void CAlignmentHistory::Add(GPlayer* player, Tree* tree, float change)
 	AddTotal(player, CAlignmentHistoryNode::ALIGNMENT_HISTORY_TYPE_TREE, change);
 	if (change != 0.0f && Recording)
 	{
-		CAlignmentHistoryNode* node = new (FILEPATH, 433) CAlignmentHistoryNode(player, tree, change);
+		CAlignmentHistoryNode* node = new (__FILE__, 433) CAlignmentHistoryNode(player, tree, change);
 		Nodes[player->GetPlayerNumber()].AddToLast(node);
 	}
 }
@@ -431,7 +431,7 @@ void CAlignmentHistory::Add(GPlayer* player, Villager* villager, float change)
 	AddTotal(player, CAlignmentHistoryNode::ALIGNMENT_HISTORY_TYPE_VILLAGER, change);
 	if (change != 0.0f && Recording)
 	{
-		CAlignmentHistoryNode* node = new (FILEPATH, 444) CAlignmentHistoryNode(player, villager, change);
+		CAlignmentHistoryNode* node = new (__FILE__, 444) CAlignmentHistoryNode(player, villager, change);
 		Nodes[player->GetPlayerNumber()].AddToLast(node);
 	}
 }
@@ -441,7 +441,7 @@ void CAlignmentHistory::Add(Abode* abode, RESOURCE_TYPE type, long amount, float
 	AddTotal(abode->GetPlayer(), CAlignmentHistoryNode::ALIGNMENT_HISTORY_TYPE_STORAGE, change);
 	if (change != 0.0f && Recording)
 	{
-		CAlignmentHistoryNode* node = new (FILEPATH, 455) CAlignmentHistoryNode(abode, type, amount, change);
+		CAlignmentHistoryNode* node = new (__FILE__, 455) CAlignmentHistoryNode(abode, type, amount, change);
 		Nodes[abode->GetPlayer()->GetPlayerNumber()].AddToLast(node);
 	}
 }

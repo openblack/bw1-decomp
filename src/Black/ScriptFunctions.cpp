@@ -922,7 +922,7 @@ void GScript::Random()
 {
 	float max = g_scriptDLL->FLOAT_POP();
 	float min = g_scriptDLL->FLOAT_POP();
-	float value = (float)(int)(GRand::GameFloatRand(max - min + 1.0f, FILEPATH, FILELINE(682, 902)) + min);
+	float value = (float)(int)(GRand::GameFloatRand(max - min + 1.0f, __FILE__, FILELINE(682, 902)) + min);
 	g_scriptDLL->PUSH(*(void**)&value, VMType_FLOAT);
 }
 
@@ -930,7 +930,7 @@ void GScript::RandomULONG()
 {
 	uint32_t max = g_scriptDLL->ULONG_POP();
 	uint32_t min = g_scriptDLL->ULONG_POP();
-	uint32_t value = GRand::GameRand(max - min + 1, FILEPATH, FILELINE(697, 917)) + min;
+	uint32_t value = GRand::GameRand(max - min + 1, __FILE__, FILELINE(697, 917)) + min;
 	g_scriptDLL->PUSH((void*)value, VMType_INT);
 }
 
@@ -1431,7 +1431,7 @@ void GScript::OverrideStateAnimation()
 	}
 	if (living->data_for_script_remind == NULL)
 	{
-		living->data_for_script_remind = new (FILEPATH, FILELINE(1217, 1465)) DataForScriptRemind();
+		living->data_for_script_remind = new (__FILE__, FILELINE(1217, 1465)) DataForScriptRemind();
 	}
 	living->data_for_script_remind->KeepThatInMind(living);
 	living->data_for_script_remind->OverrideState = 0;
@@ -1718,11 +1718,11 @@ void GScript::SetVelocityHeadingSpeed()
 		if (randomSpin)
 		{
 			spin.x =
-				((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, FILEPATH, 1795)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
+				((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, __FILE__, 1795)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
 			spin.y =
-				((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, FILEPATH, 1796)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
+				((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, __FILE__, 1796)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
 			spin.z =
-				((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, FILEPATH, 1797)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
+				((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, __FILE__, 1797)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
 		}
 		else
 		{
@@ -1731,9 +1731,9 @@ void GScript::SetVelocityHeadingSpeed()
 			spin.z = spinZ;
 		}
 #else
-		spin.x = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, FILEPATH, 1535)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
-		spin.y = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, FILEPATH, 1536)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
-		spin.z = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, FILEPATH, 1537)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
+		spin.x = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, __FILE__, 1535)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
+		spin.y = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, __FILE__, 1536)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
+		spin.z = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, __FILE__, 1537)) - SCRIPT_SPIN_OFFSET) / SCRIPT_SPIN_SCALE;
 #endif
 		object->InitialisePhysics(velocity, spin, NULL, true, NULL);
 		return;
@@ -2148,11 +2148,11 @@ void GScript::SetIdTarget()
 	GLandscape::ConvertMapCoordToLandscapePoint(thing->Pos, pos);
 	velocity = (target - pos - gravity * (0.5f * time * time)) * (1.0f / time);
 	LHPoint spin;
-	spin.x = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, FILEPATH, FILELINE(2049, 2316))) - SCRIPT_SPIN_OFFSET) /
+	spin.x = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, __FILE__, FILELINE(2049, 2316))) - SCRIPT_SPIN_OFFSET) /
 	         SCRIPT_SPIN_SCALE;
-	spin.y = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, FILEPATH, FILELINE(2050, 2317))) - SCRIPT_SPIN_OFFSET) /
+	spin.y = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, __FILE__, FILELINE(2050, 2317))) - SCRIPT_SPIN_OFFSET) /
 	         SCRIPT_SPIN_SCALE;
-	float   spinZ = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, FILEPATH, FILELINE(2051, 2318))) - SCRIPT_SPIN_OFFSET) /
+	float   spinZ = ((GRand::GameFloatRand(SCRIPT_SPIN_RANGE, __FILE__, FILELINE(2051, 2318))) - SCRIPT_SPIN_OFFSET) /
 	                SCRIPT_SPIN_SCALE;
 	uint8_t flags = object->Flags;
 	spin.z = spinZ;
