@@ -31,7 +31,7 @@ Object* Rock::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_ma
 
 uint32_t Rock::GetOverwriteTapToolTip()
 {
-	return HELP_TEXT_TOOLTIP_125;
+	return HELP_TEXT_TOOLTIP_133;
 }
 
 bool32_t Rock::CanBePickedUpByCreature(Creature* creature)

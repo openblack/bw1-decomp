@@ -757,15 +757,15 @@ void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, flo
 	if (labelWidth == 0.0f)
 	{
 		float width = SetupThing::GetTextWidth(
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_30), size / 2, 0, 1.0f);
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_48), size / 2, 0, 1.0f);
 		labelWidth = max(width, labelWidth);
-		width = SetupThing::GetTextWidth(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_50),
+		width = SetupThing::GetTextWidth(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_68),
 		                                 size / 2, 0, 1.0f);
 		labelWidth = max(width, labelWidth);
-		width = SetupThing::GetTextWidth(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_119),
+		width = SetupThing::GetTextWidth(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_137),
 		                                 size / 2, 0, 1.0f);
 		labelWidth = max(width, labelWidth);
-		width = SetupThing::GetTextWidth(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_100),
+		width = SetupThing::GetTextWidth(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_118),
 		                                 size / 2, 0, 1.0f);
 		labelWidth = max(width, labelWidth);
 		labelWidth += size / 2;
@@ -784,36 +784,36 @@ void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, flo
 		switch (i)
 		{
 		case CREATURE_STAT_LIFE:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_30);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_48);
 			value = life_loss;
 			swprintf(buffer, L"%d%%", (int)(life_loss * 100.0f));
 			break;
 		case CREATURE_STAT_ENERGY:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_50);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_68);
 			value = energy_loss;
 			swprintf(buffer, L"%d%%", (int)(energy_loss * 100.0f));
 			break;
 		case CREATURE_STAT_EXHAUSTION:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_119);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_137);
 			value = exhaustion;
 			swprintf(buffer, L"%d%%", (int)(exhaustion * 100.0f));
 			break;
 		case CREATURE_STAT_HAND:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_100);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_118);
 			value = (hand_value * 0.5f) + 0.5f;
 			if (hand_value < -CREATURE_STATS_NEUTRAL_HAND)
 			{
-				swprintf(buffer, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_05),
+				swprintf(buffer, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_23),
 				         (int)(-hand_value * 100.0f));
 			}
 			else if (hand_value > CREATURE_STATS_NEUTRAL_HAND)
 			{
-				swprintf(buffer, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_47),
+				swprintf(buffer, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_65),
 				         (int)(hand_value * 100.0f));
 			}
 			else
 			{
-				wcscpy(buffer, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_81));
+				wcscpy(buffer, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_99));
 				wcscat(buffer, L" 0%");
 			}
 			break;
@@ -1958,25 +1958,25 @@ bool Villager::DrawVillagerInfo()
 	}
 	if (info->StateHelpText != 0)
 	{
-		char16_t* foodText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_EXTRA_KHAZAR_21);
-		char16_t* lifeText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_EXTRA_KHAZAR_20);
-		char16_t* ageText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_EXTRA_KHAZAR_22);
+		char16_t* foodText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_STATE_INFO_FOOD_IN_BELLY);
+		char16_t* lifeText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_STATE_INFO_LIFE);
+		char16_t* ageText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_STATE_INFO_AGE);
 		char16_t* stateText = HelpTextDataBase::HelpTextDatabase.GetHelpText(info->StateHelpText);
 		swprintf(text + wcslen(text), L"%s\n%s%d %s%.0f%% %s%.0f%%", stateText, ageText, GetAge(), lifeText,
 		         GetLife() * 100.0f, foodText, food * 100.0f);
 		if (IsPregnant())
 		{
-			wcscat(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_EXTRA_KHAZAR_24));
+			wcscat(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_STATE_INFO_PREGNANT));
 		}
 		if (IsPoisoned())
 		{
-			wcscat(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_EXTRA_KHAZAR_23));
+			wcscat(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_STATE_INFO_POISONED));
 		}
 	}
 	else
 	{
 		swprintf(text + wcslen(text), L"%s\n", CHAR2WCHAR(info->name));
-		char16_t* format = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_TEMPLE_SCROLLS_11);
+		char16_t* format = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_19);
 		swprintf(text + wcslen(text), format, GetAge(), GetLife(), food);
 		if (IsPregnant())
 		{

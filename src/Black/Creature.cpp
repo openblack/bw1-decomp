@@ -493,11 +493,7 @@ uint32_t Creature::ProcessState()
 	return 1;
 }
 
-#ifdef VERSION_BW1WCI
 #define CREATURE_DEFAULT_NAME HELP_TEXT_CHIMP_NAME_01
-#else
-#define CREATURE_DEFAULT_NAME 5008
-#endif
 
 Creature::Creature(const MapCoords& coords, const CreatureInfo* info, GPlayer* player)
 	: Living(coords, info),
@@ -3488,12 +3484,6 @@ void Creature::CalculateCurrentEmotionsForMusic(CreatureEmotionsForMusic& emotio
 	emotions.Fear = mind->desires.GetDesire(CREATURE_DESIRE_FEAR);
 }
 
-#ifdef VERSION_BW1WCI
-#define CREATURE_ISLE_CREATURE_HELP_TEXTS 0
-#else
-#define CREATURE_ISLE_CREATURE_HELP_TEXTS 4
-#endif
-
 #define CREATURE_HTML_ATTENTION_LEVELS 5
 
 void Creature::GenerateHTML()
@@ -3548,17 +3538,14 @@ void Creature::GenerateHTML()
 	{
 		if (ReceiveSpell->data[slot].State != 0)
 		{
-			parser->AddKeyValue(LHSPrintf("spell_received_%ld", slot + HELP_TEXT_CREATURE_RECEIVED_SPELL_01 -
-			                                                        CREATURE_ISLE_CREATURE_HELP_TEXTS),
-			                    "1");
+			parser->AddKeyValue(LHSPrintf("spell_received_%ld", slot + HELP_TEXT_CREATURE_RECEIVED_SPELL_01), "1");
 			break;
 		}
 	}
 
 	value = mind->AttitudeToPlayer.HowNicePlayerHasBeenToMe;
 	parser->AddKeyValue("how_nice_player_has_been",
-	                    LHSPrintf("%ld", GAlignment::GetDiscreteAlignmentValue(value) + HELP_TEXT_ALIGNMENT_01 -
-	                                         CREATURE_ISLE_CREATURE_HELP_TEXTS));
+	                    LHSPrintf("%ld", GAlignment::GetDiscreteAlignmentValue(value) + HELP_TEXT_ALIGNMENT_01));
 
 	float    attention = physical->NumGameTicksAlive != 0
 	                         ? (float)mind->AttitudeToPlayer.TotalNumGameTicksPlayerHasBeenWatchingMe /
@@ -3570,7 +3557,7 @@ void Creature::GenerateHTML()
 		attentionLevel = CREATURE_HTML_ATTENTION_LEVELS - 1;
 	}
 	parser->AddKeyValue("how_much_attention_player_has_given_me",
-	                    LHSPrintf("%ld", attentionLevel + HELP_TEXT_HOW_MUCH_01 - CREATURE_ISLE_CREATURE_HELP_TEXTS));
+	                    LHSPrintf("%ld", attentionLevel + HELP_TEXT_HOW_MUCH_01));
 
 	GGame::g_game->path_creator.GetCurrentUserPath(userPath);
 	parser->ParseTemplateFileTo(".\\scripts\\creature_html.tmpl",

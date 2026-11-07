@@ -24,7 +24,7 @@ void Scaffold::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2) {}
 
 uint32_t Scaffold::GetOverwritePickUpToolTip()
 {
-	return HELP_TEXT_TOOLTIP_109;
+	return HELP_TEXT_TOOLTIP_117;
 }
 
 float Scaffold::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2)
