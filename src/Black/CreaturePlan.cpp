@@ -902,7 +902,7 @@ CREATURE_ACTION CreatureMental::GetNthActionForPlan(CreaturePlan& plan, unsigned
 							                  creature.Get()->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(
 												  MAGIC_TYPE_HEAL)) > HEAL_SPELL_NEARLY_LEARNT &&
 							    index == 0 &&
-							    GRand::GameRand(HEAL_SPELL_CHANCE, FILEPATH, CREATURE_PLAN_LINE(837)) == 0)
+							    GRand::GameRand(HEAL_SPELL_CHANCE, __FILE__, CREATURE_PLAN_LINE(837)) == 0)
 							{
 								return CREATURE_CAST_HEAL_SPELL;
 							}
@@ -1152,7 +1152,7 @@ CreaturePreviousActions::CreaturePreviousActions()
 	for (int i = 0; i < NUM_CREATURE_ACTIONS; i++)
 	{
 		TurnsSinceLastDone[i] = GGlobal::Global.RandomiseCreatureMinds
-		                            ? GRand::GameRand(MAX_TURNS_SINCE_LAST_DONE, FILEPATH, CREATURE_PLAN_LINE(1126))
+		                            ? GRand::GameRand(MAX_TURNS_SINCE_LAST_DONE, __FILE__, CREATURE_PLAN_LINE(1126))
 		                            : 0;
 	}
 }

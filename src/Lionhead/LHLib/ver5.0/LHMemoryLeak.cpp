@@ -115,7 +115,7 @@ void LHMemoryLeak::LeakNode::GrabFunctionNamesFromDebugStack(LHDebugStack* debug
 	for (int i = 1; i < debugStack->GetDepth() - 2; ++i)
 	{
 		const char* name = debugStack->GetFunctionName(i);
-		char*       copy = (char*)operator new(strlen(name) + 1, FILEPATH, 63);
+		char*       copy = (char*)operator new(strlen(name) + 1, __FILE__, 63);
 		strcpy(copy, name);
 		LHLinkedList<char*>* list = allocStack ? &AllocStack : &DeleteStack;
 		list->AddToEnd(copy);
@@ -124,7 +124,7 @@ void LHMemoryLeak::LeakNode::GrabFunctionNamesFromDebugStack(LHDebugStack* debug
 
 void LHMemoryLeak::LogAllocation(const char* file, int line, void* ptr, int size)
 {
-	LeakNode* node = new (FILEPATH, 80) LeakNode(file, line, size, ShouldLog, Tag);
+	LeakNode* node = new (__FILE__, 80) LeakNode(file, line, size, ShouldLog, Tag);
 	if (!gDebugStackInitialised)
 	{
 		LHDebugStack::Initialise();

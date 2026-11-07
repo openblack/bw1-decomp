@@ -175,7 +175,7 @@ float GComputerPlayer::FindMyCreatureAndReturnHowSensibleToPlayfullyThrowFoodAtC
 	if (creature)
 	{
 		node.RelevantObject = creature;
-		return (GRand::GameFloatRand(0.3f, FILEPATH, 197)) + 0.2f;
+		return (GRand::GameFloatRand(0.3f, __FILE__, 197)) + 0.2f;
 	}
 	return 0.0f;
 }
@@ -186,7 +186,7 @@ float GComputerPlayer::FindMyCreatureAndReturnHowSensibleToPlayfullySlapCreature
 	if (creature)
 	{
 		node.RelevantObject = creature;
-		return (GRand::GameFloatRand(0.1f, FILEPATH, 208));
+		return (GRand::GameFloatRand(0.1f, __FILE__, 208));
 	}
 	return 0.0f;
 }
@@ -197,7 +197,7 @@ float GComputerPlayer::FindMyCreatureAndReturnHowSensibleToPlayfullyStrokeCreatu
 	if (creature)
 	{
 		node.RelevantObject = creature;
-		return (GRand::GameFloatRand(0.1f, FILEPATH, 222)) + 0.1f;
+		return (GRand::GameFloatRand(0.1f, __FILE__, 222)) + 0.1f;
 	}
 	return 0.0f;
 }
@@ -208,7 +208,7 @@ float GComputerPlayer::FindMyCreatureAndReturnHowSensibleToPlayfullyLeashCreatur
 	if (creature && !creature->GetInterfaceStatusLeashOn())
 	{
 		node.RelevantObject = creature;
-		return (GRand::GameFloatRand(0.3f, FILEPATH, 236)) + 0.2f;
+		return (GRand::GameFloatRand(0.3f, __FILE__, 236)) + 0.2f;
 	}
 	return 0.0f;
 }
@@ -404,7 +404,7 @@ bool32_t GComputerPlayer::GiveObjectToCreature(CPDesireNode& node)
 	{
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_GIVE_OBJECT_IN_HAND_TO_CREATURE,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 482) PlayerSubActionArgument(creature)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 482) PlayerSubActionArgument(creature)));
 		return true;
 	}
 	return false;
@@ -420,16 +420,16 @@ bool32_t GComputerPlayer::CastFoodForMyCreature(CPDesireNode& node)
 	{
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_MOVE_HAND_TO_OBJECT,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 497) PlayerSubActionArgument(icon)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 497) PlayerSubActionArgument(icon)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_MAKE_WORSHIPPERS_CHANT_FOR_SPELL,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 499) PlayerSubActionArgument(MAGIC_TYPE_FOOD),
-		                                        new (FILEPATH, 500) PlayerSubActionArgument(icon)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 499) PlayerSubActionArgument(MAGIC_TYPE_FOOD),
+		                                        new (__FILE__, 500) PlayerSubActionArgument(icon)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_CAST_SPELL_AT_OBJECT,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 502) PlayerSubActionArgument(creature),
-		                                        new (FILEPATH, 502) PlayerSubActionArgument(MAGIC_TYPE_FOOD),
-		                                        new (FILEPATH, 502) PlayerSubActionArgument(icon)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 502) PlayerSubActionArgument(creature),
+		                                        new (__FILE__, 502) PlayerSubActionArgument(MAGIC_TYPE_FOOD),
+		                                        new (__FILE__, 502) PlayerSubActionArgument(icon)));
 		return true;
 	}
 	return false;
@@ -447,16 +447,16 @@ bool32_t GComputerPlayer::MakeCreatureDrink(CPDesireNode& node)
 		{
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_SET_CREATURE_SPEED_FOR_JOURNEY,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 521) PlayerSubActionArgument(creature),
-			                                        new (FILEPATH, 521) PlayerSubActionArgument(pos.GetLHPoint())));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 521) PlayerSubActionArgument(creature),
+			                                        new (__FILE__, 521) PlayerSubActionArgument(pos.GetLHPoint())));
 			ActionState->AddSubAction(PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
 			                          PlayerSubActionArgument::CreateList(
-										  new (FILEPATH, 522) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
+										  new (__FILE__, 522) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
 			ActionState->AddSubAction(PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
 			                          PlayerSubActionArgument::CreateList(
-										  new (FILEPATH, 523) PlayerSubActionArgument(creature),
-										  new (FILEPATH, 523) PlayerSubActionArgument(CREATURE_DRINK_FROM_THE_SEA),
-										  new (FILEPATH, 523) PlayerSubActionArgument(creature)));
+										  new (__FILE__, 523) PlayerSubActionArgument(creature),
+										  new (__FILE__, 523) PlayerSubActionArgument(CREATURE_DRINK_FROM_THE_SEA),
+										  new (__FILE__, 523) PlayerSubActionArgument(creature)));
 			return true;
 		}
 	}
@@ -473,16 +473,16 @@ bool32_t GComputerPlayer::RestoreMyCreatureHealth(CPDesireNode& node)
 	{
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_MOVE_HAND_TO_OBJECT,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 538) PlayerSubActionArgument(icon)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 538) PlayerSubActionArgument(icon)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_MAKE_WORSHIPPERS_CHANT_FOR_SPELL,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 540) PlayerSubActionArgument(MAGIC_TYPE_HEAL),
-		                                        new (FILEPATH, 541) PlayerSubActionArgument(icon)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 540) PlayerSubActionArgument(MAGIC_TYPE_HEAL),
+		                                        new (__FILE__, 541) PlayerSubActionArgument(icon)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_CAST_SPELL_AT_OBJECT,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 542) PlayerSubActionArgument(creature),
-		                                        new (FILEPATH, 542) PlayerSubActionArgument(MAGIC_TYPE_HEAL),
-		                                        new (FILEPATH, 542) PlayerSubActionArgument(icon)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 542) PlayerSubActionArgument(creature),
+		                                        new (__FILE__, 542) PlayerSubActionArgument(MAGIC_TYPE_HEAL),
+		                                        new (__FILE__, 542) PlayerSubActionArgument(icon)));
 		return true;
 	}
 	return false;
@@ -496,16 +496,16 @@ bool32_t GComputerPlayer::MakeCreatureSleep(CPDesireNode& node)
 	{
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_SET_CREATURE_SPEED_FOR_JOURNEY,
 		                          PlayerSubActionArgument::CreateList(
-									  new (FILEPATH, 554) PlayerSubActionArgument(creature),
-									  new (FILEPATH, 554) PlayerSubActionArgument(creature->HomePos.GetLHPoint())));
+									  new (__FILE__, 554) PlayerSubActionArgument(creature),
+									  new (__FILE__, 554) PlayerSubActionArgument(creature->HomePos.GetLHPoint())));
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
 		                          PlayerSubActionArgument::CreateList(
-									  new (FILEPATH, 555) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
+									  new (__FILE__, 555) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 556) PlayerSubActionArgument(creature),
-		                                        new (FILEPATH, 556) PlayerSubActionArgument(CREATURE_SLEEP),
-		                                        new (FILEPATH, 556) PlayerSubActionArgument(creature)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 556) PlayerSubActionArgument(creature),
+		                                        new (__FILE__, 556) PlayerSubActionArgument(CREATURE_SLEEP),
+		                                        new (__FILE__, 556) PlayerSubActionArgument(creature)));
 		return true;
 	}
 	return false;
@@ -519,16 +519,16 @@ bool32_t GComputerPlayer::SendCreatureHome(CPDesireNode& node)
 	{
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_SET_CREATURE_SPEED_FOR_JOURNEY,
 		                          PlayerSubActionArgument::CreateList(
-									  new (FILEPATH, 571) PlayerSubActionArgument(creature),
-									  new (FILEPATH, 571) PlayerSubActionArgument(creature->HomePos.GetLHPoint())));
+									  new (__FILE__, 571) PlayerSubActionArgument(creature),
+									  new (__FILE__, 571) PlayerSubActionArgument(creature->HomePos.GetLHPoint())));
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
 		                          PlayerSubActionArgument::CreateList(
-									  new (FILEPATH, 572) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
+									  new (__FILE__, 572) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 573) PlayerSubActionArgument(creature),
-		                                        new (FILEPATH, 573) PlayerSubActionArgument(CREATURE_GO_HOME),
-		                                        new (FILEPATH, 573) PlayerSubActionArgument(creature)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 573) PlayerSubActionArgument(creature),
+		                                        new (__FILE__, 573) PlayerSubActionArgument(CREATURE_GO_HOME),
+		                                        new (__FILE__, 573) PlayerSubActionArgument(creature)));
 		return true;
 	}
 	return false;
@@ -539,12 +539,12 @@ bool32_t GComputerPlayer::MoveCreatureToWarmerArea(CPDesireNode& node)
 	Creature* creature = node.GetRelevantObject()->CastCreature();
 	ActionState->AddSubAction(
 		PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
-		PlayerSubActionArgument::CreateList(new (FILEPATH, 586) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
+		PlayerSubActionArgument::CreateList(new (__FILE__, 586) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
 	ActionState->AddSubAction(
 		PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
-		PlayerSubActionArgument::CreateList(new (FILEPATH, 587) PlayerSubActionArgument(creature),
-	                                        new (FILEPATH, 587) PlayerSubActionArgument(CREATURE_GO_HOME),
-	                                        new (FILEPATH, 587) PlayerSubActionArgument(creature)));
+		PlayerSubActionArgument::CreateList(new (__FILE__, 587) PlayerSubActionArgument(creature),
+	                                        new (__FILE__, 587) PlayerSubActionArgument(CREATURE_GO_HOME),
+	                                        new (__FILE__, 587) PlayerSubActionArgument(creature)));
 	return true;
 }
 
@@ -553,12 +553,12 @@ bool32_t GComputerPlayer::MoveCreatureToCoolerArea(CPDesireNode& node)
 	Creature* creature = node.GetRelevantObject()->CastCreature();
 	ActionState->AddSubAction(
 		PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
-		PlayerSubActionArgument::CreateList(new (FILEPATH, 595) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
+		PlayerSubActionArgument::CreateList(new (__FILE__, 595) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
 	ActionState->AddSubAction(
 		PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
-		PlayerSubActionArgument::CreateList(new (FILEPATH, 596) PlayerSubActionArgument(creature),
-	                                        new (FILEPATH, 596) PlayerSubActionArgument(CREATURE_GO_HOME),
-	                                        new (FILEPATH, 596) PlayerSubActionArgument(creature)));
+		PlayerSubActionArgument::CreateList(new (__FILE__, 596) PlayerSubActionArgument(creature),
+	                                        new (__FILE__, 596) PlayerSubActionArgument(CREATURE_GO_HOME),
+	                                        new (__FILE__, 596) PlayerSubActionArgument(creature)));
 	return true;
 }
 
@@ -572,12 +572,12 @@ bool32_t GComputerPlayer::TeachCreatureNormalAction(CPDesireNode& node)
 	{
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
 		                          PlayerSubActionArgument::CreateList(
-									  new (FILEPATH, 611) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
+									  new (__FILE__, 611) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 612) PlayerSubActionArgument(creature),
-		                                        new (FILEPATH, 612) PlayerSubActionArgument(CREATURE_LOOK_AT_CAMERA),
-		                                        new (FILEPATH, 612) PlayerSubActionArgument(creature)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 612) PlayerSubActionArgument(creature),
+		                                        new (__FILE__, 612) PlayerSubActionArgument(CREATURE_LOOK_AT_CAMERA),
+		                                        new (__FILE__, 612) PlayerSubActionArgument(creature)));
 		return AddSubActionsToTeachCreature(creature, NULL, type, action);
 	}
 	return false;
@@ -596,7 +596,7 @@ bool32_t GComputerPlayer::TeachCreatureAggressiveMagic(CPDesireNode& node)
 		AggressiveMagicNeed = 0;
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
 		                          PlayerSubActionArgument::CreateList(
-									  new (FILEPATH, 633) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
+									  new (__FILE__, 633) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
 		return AddSubActionsToTeachCreature(creature, icon, type, action);
 	}
 	return false;
@@ -615,7 +615,7 @@ bool32_t GComputerPlayer::TeachCreatureCompassionateMagic(CPDesireNode& node)
 		CompassionateMagicNeed = 0;
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
 		                          PlayerSubActionArgument::CreateList(
-									  new (FILEPATH, 654) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
+									  new (__FILE__, 654) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
 		return AddSubActionsToTeachCreature(creature, icon, type, action);
 	}
 	return false;
@@ -634,7 +634,7 @@ bool32_t GComputerPlayer::TeachCreatureImpressiveMagic(CPDesireNode& node)
 		ImpressiveMagicNeed = 0;
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_MOVE_HAND_TO_POS,
 		                          PlayerSubActionArgument::CreateList(
-									  new (FILEPATH, 675) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
+									  new (__FILE__, 675) PlayerSubActionArgument(creature->Pos.GetLHPoint())));
 		return AddSubActionsToTeachCreature(creature, icon, type, action);
 	}
 	return false;
@@ -663,14 +663,14 @@ bool32_t GComputerPlayer::ThrowFoodAtCreature(CPDesireNode& node)
 			pos = handPos + direction * (distance - 20.0f);
 		}
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_MOVE_HAND_TO_POS, PlayerSubActionArgument::CreateList(new (
-																		  FILEPATH, 707) PlayerSubActionArgument(pos)));
+																		  __FILE__, 707) PlayerSubActionArgument(pos)));
 		LHPoint target = creature->Pos.GetLHPoint();
 		target.y = GetHeightOfCreatureIgnoringShrinkingNearCitadel(*creature);
-		target.x += (GRand::GameFloatRand(4.0f, FILEPATH, 711)) - 2.0f;
-		target.z += (GRand::GameFloatRand(4.0f, FILEPATH, 712)) - 2.0f;
+		target.x += (GRand::GameFloatRand(4.0f, __FILE__, 711)) - 2.0f;
+		target.z += (GRand::GameFloatRand(4.0f, __FILE__, 712)) - 2.0f;
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_THROW_OBJECT_IN_HAND_AT_POS,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 713) PlayerSubActionArgument(target)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 713) PlayerSubActionArgument(target)));
 		return true;
 	}
 	return false;
@@ -684,10 +684,10 @@ bool32_t GComputerPlayer::SlapCreature(CPDesireNode& node)
 	{
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_MOVE_HAND_TO_CREATURE_HEAD,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 726) PlayerSubActionArgument(creature)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 726) PlayerSubActionArgument(creature)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_SLAP_CREATURE,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 727) PlayerSubActionArgument(creature)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 727) PlayerSubActionArgument(creature)));
 		return true;
 	}
 	return false;
@@ -701,10 +701,10 @@ bool32_t GComputerPlayer::StrokeCreature(CPDesireNode& node)
 	{
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_MOVE_HAND_TO_CREATURE_HEAD,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 742) PlayerSubActionArgument(creature)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 742) PlayerSubActionArgument(creature)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_STROKE_CREATURE,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 743) PlayerSubActionArgument(creature)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 743) PlayerSubActionArgument(creature)));
 		return true;
 	}
 	return false;
@@ -720,15 +720,15 @@ bool32_t GComputerPlayer::AttachLeashFromCreatureToObject(CPDesireNode& node)
 	{
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_SET_CREATURE_SPEED_FOR_JOURNEY,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 760) PlayerSubActionArgument(creature),
-		                                        new (FILEPATH, 760) PlayerSubActionArgument(object->Pos.GetLHPoint())));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 760) PlayerSubActionArgument(creature),
+		                                        new (__FILE__, 760) PlayerSubActionArgument(object->Pos.GetLHPoint())));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_MOVE_HAND_TO_OBJECT,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 761) PlayerSubActionArgument(object)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 761) PlayerSubActionArgument(object)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_ATTACH_LEASH_TO_OBJECT,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 762) PlayerSubActionArgument(creature),
-		                                        new (FILEPATH, 762) PlayerSubActionArgument(object)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 762) PlayerSubActionArgument(creature),
+		                                        new (__FILE__, 762) PlayerSubActionArgument(object)));
 		return true;
 	}
 	return false;
@@ -742,23 +742,23 @@ bool32_t GComputerPlayer::CastSpellOnMyCreatureForALaugh(CPDesireNode& node)
 	ValidateObject(icon != NULL, "No icon man");
 	if (creature && !creature->ReceiveSpell->IsAnySpellActive() && icon)
 	{
-		int spell = (GRand::GameRand(MAGIC_TYPE_CREATURE_SPELL_FAT - MAGIC_TYPE_CREATURE_SPELL_FREEZE, FILEPATH, 779)) +
+		int spell = (GRand::GameRand(MAGIC_TYPE_CREATURE_SPELL_FAT - MAGIC_TYPE_CREATURE_SPELL_FREEZE, __FILE__, 779)) +
 		            MAGIC_TYPE_CREATURE_SPELL_FREEZE;
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_MOVE_HAND_TO_OBJECT,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 781) PlayerSubActionArgument(icon)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 781) PlayerSubActionArgument(icon)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_MAKE_WORSHIPPERS_CHANT_FOR_SPELL,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 783) PlayerSubActionArgument(spell),
-		                                        new (FILEPATH, 784) PlayerSubActionArgument(icon)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 783) PlayerSubActionArgument(spell),
+		                                        new (__FILE__, 784) PlayerSubActionArgument(icon)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_CAST_SPELL_AT_OBJECT,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 785) PlayerSubActionArgument(creature),
-		                                        new (FILEPATH, 785) PlayerSubActionArgument(spell),
-		                                        new (FILEPATH, 785) PlayerSubActionArgument(icon)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 785) PlayerSubActionArgument(creature),
+		                                        new (__FILE__, 785) PlayerSubActionArgument(spell),
+		                                        new (__FILE__, 785) PlayerSubActionArgument(icon)));
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_WAIT_FOR_SPELL_TO_WEAR_OFF,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 786) PlayerSubActionArgument(creature)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 786) PlayerSubActionArgument(creature)));
 		return true;
 	}
 	return false;
@@ -810,24 +810,24 @@ bool32_t GComputerPlayer::AddSubActionsToTeachCreatureMagicAction(Creature* crea
                                                                   unsigned long action)
 {
 	ActionState->AddSubAction(PLAYER_SUB_ACTION_MOVE_HAND_TO_OBJECT,
-	                          PlayerSubActionArgument::CreateList(new (FILEPATH, 842) PlayerSubActionArgument(object)));
+	                          PlayerSubActionArgument::CreateList(new (__FILE__, 842) PlayerSubActionArgument(object)));
 	ActionState->AddSubAction(
 		PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
-		PlayerSubActionArgument::CreateList(new (FILEPATH, 843) PlayerSubActionArgument(creature),
-	                                        new (FILEPATH, 843) PlayerSubActionArgument(CREATURE_LOOK_AT_CAMERA),
-	                                        new (FILEPATH, 843) PlayerSubActionArgument(creature)));
+		PlayerSubActionArgument::CreateList(new (__FILE__, 843) PlayerSubActionArgument(creature),
+	                                        new (__FILE__, 843) PlayerSubActionArgument(CREATURE_LOOK_AT_CAMERA),
+	                                        new (__FILE__, 843) PlayerSubActionArgument(creature)));
 	ActionState->AddSubAction(
 		PLAYER_SUB_ACTION_MOVE_HAND_TO_OBJECT,
-		PlayerSubActionArgument::CreateList(new (FILEPATH, 844) PlayerSubActionArgument(creature)));
+		PlayerSubActionArgument::CreateList(new (__FILE__, 844) PlayerSubActionArgument(creature)));
 	ActionState->AddSubAction(PLAYER_SUB_ACTION_MAKE_WORSHIPPERS_CHANT_FOR_SPELL,
-	                          PlayerSubActionArgument::CreateList(new (FILEPATH, 846)
+	                          PlayerSubActionArgument::CreateList(new (__FILE__, 846)
 	                                                                  PlayerSubActionArgument((MAGIC_TYPE)action),
-	                                                              new (FILEPATH, 847) PlayerSubActionArgument(object)));
+	                                                              new (__FILE__, 847) PlayerSubActionArgument(object)));
 	ActionState->AddSubAction(PLAYER_SUB_ACTION_CAST_SPELL_AT_OBJECT,
-	                          PlayerSubActionArgument::CreateList(new (FILEPATH, 848) PlayerSubActionArgument(creature),
-	                                                              new (FILEPATH, 848)
+	                          PlayerSubActionArgument::CreateList(new (__FILE__, 848) PlayerSubActionArgument(creature),
+	                                                              new (__FILE__, 848)
 	                                                                  PlayerSubActionArgument((MAGIC_TYPE)action),
-	                                                              new (FILEPATH, 848) PlayerSubActionArgument(object)));
+	                                                              new (__FILE__, 848) PlayerSubActionArgument(object)));
 	return true;
 }
 
@@ -844,11 +844,11 @@ bool32_t GComputerPlayer::AddSubActionsToThrowTreeNearCreature(Creature* creatur
 		LHPoint pos;
 		pos = creature->Pos.ConvertToLHPoint();
 		float radius = GetHeightOfCreatureIgnoringShrinkingNearCitadel(*creature) * 3.0f;
-		pos.x += (GRand::GameFloatRand(radius * 2.0f, FILEPATH, 866)) - radius;
-		pos.z += (GRand::GameFloatRand(radius * 2.0f, FILEPATH, 867)) - radius;
+		pos.x += (GRand::GameFloatRand(radius * 2.0f, __FILE__, 866)) - radius;
+		pos.z += (GRand::GameFloatRand(radius * 2.0f, __FILE__, 867)) - radius;
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_THROW_OBJECT_IN_HAND_AT_POS,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 868) PlayerSubActionArgument(pos)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 868) PlayerSubActionArgument(pos)));
 		return true;
 	}
 	return false;
@@ -864,7 +864,7 @@ bool32_t GComputerPlayer::AddSubActionsToThrowTreeAtCreature(Creature* creature)
 		GetHeightOfCreatureIgnoringShrinkingNearCitadel(*creature);
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_THROW_OBJECT_IN_HAND_AT_POS,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 884) PlayerSubActionArgument(pos)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 884) PlayerSubActionArgument(pos)));
 		return true;
 	}
 	return false;
@@ -902,14 +902,14 @@ bool32_t GComputerPlayer::AddSubActionsToTeachCreatureToUseTotem(Creature* creat
 	{
 		ActionState->AddSubAction(PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
 		                          PlayerSubActionArgument::CreateList(
-									  new (FILEPATH, 921) PlayerSubActionArgument(creature),
-									  new (FILEPATH, 921) PlayerSubActionArgument(CREATURE_EXAMINE_BY_LOOKING),
-									  new (FILEPATH, 921) PlayerSubActionArgument(totem)));
+									  new (__FILE__, 921) PlayerSubActionArgument(creature),
+									  new (__FILE__, 921) PlayerSubActionArgument(CREATURE_EXAMINE_BY_LOOKING),
+									  new (__FILE__, 921) PlayerSubActionArgument(totem)));
 		LHPoint pos = totem->Pos.ConvertToLHPoint();
 		ActionState->AddSubAction(
 			PLAYER_SUB_ACTION_RAISE_TOTEM,
-			PlayerSubActionArgument::CreateList(new (FILEPATH, 926) PlayerSubActionArgument(totem),
-		                                        new (FILEPATH, 927) PlayerSubActionArgument(1.0f)));
+			PlayerSubActionArgument::CreateList(new (__FILE__, 926) PlayerSubActionArgument(totem),
+		                                        new (__FILE__, 927) PlayerSubActionArgument(1.0f)));
 		return true;
 	}
 	return false;
@@ -1022,16 +1022,16 @@ bool32_t GComputerPlayer::ForceCreatureToHelpTown(CPDesireNode& node)
 			}
 			ActionState->AddSubAction(PLAYER_SUB_ACTION_SET_CREATURE_SPEED_FOR_JOURNEY,
 			                          PlayerSubActionArgument::CreateList(
-										  new (FILEPATH, 1058) PlayerSubActionArgument(creature),
-										  new (FILEPATH, 1058) PlayerSubActionArgument(target->Pos.GetLHPoint())));
+										  new (__FILE__, 1058) PlayerSubActionArgument(creature),
+										  new (__FILE__, 1058) PlayerSubActionArgument(target->Pos.GetLHPoint())));
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_SET_LEASH,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1060) PlayerSubActionArgument(creature),
-			                                        new (FILEPATH, 1060) PlayerSubActionArgument(LEASH_TYPE_GOOD)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1060) PlayerSubActionArgument(creature),
+			                                        new (__FILE__, 1060) PlayerSubActionArgument(LEASH_TYPE_GOOD)));
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_ATTACH_LEASH_TO_OBJECT,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1061) PlayerSubActionArgument(creature),
-			                                        new (FILEPATH, 1061) PlayerSubActionArgument(target)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1061) PlayerSubActionArgument(creature),
+			                                        new (__FILE__, 1061) PlayerSubActionArgument(target)));
 			return true;
 		}
 	}
@@ -1054,20 +1054,20 @@ bool32_t GComputerPlayer::ForceCreatureToHelpTownBuild(CPDesireNode& node)
 			}
 			ActionState->AddSubAction(PLAYER_SUB_ACTION_SET_CREATURE_SPEED_FOR_JOURNEY,
 			                          PlayerSubActionArgument::CreateList(
-										  new (FILEPATH, 1084) PlayerSubActionArgument(creature),
-										  new (FILEPATH, 1084) PlayerSubActionArgument(building->Pos.GetLHPoint())));
+										  new (__FILE__, 1084) PlayerSubActionArgument(creature),
+										  new (__FILE__, 1084) PlayerSubActionArgument(building->Pos.GetLHPoint())));
 			ActionState->AddSubAction(PLAYER_SUB_ACTION_FORCE_CREATURE_TO_PERFORM_ACTION,
 			                          PlayerSubActionArgument::CreateList(
-										  new (FILEPATH, 1085) PlayerSubActionArgument(creature),
-										  new (FILEPATH, 1085) PlayerSubActionArgument(CREATURE_HELP_BUILD_HOUSE),
-										  new (FILEPATH, 1085) PlayerSubActionArgument(building)));
+										  new (__FILE__, 1085) PlayerSubActionArgument(creature),
+										  new (__FILE__, 1085) PlayerSubActionArgument(CREATURE_HELP_BUILD_HOUSE),
+										  new (__FILE__, 1085) PlayerSubActionArgument(building)));
 			ActionState->AddSubAction(PLAYER_SUB_ACTION_WAIT, PlayerSubActionArgument::CreateList(
-																  new (FILEPATH, 1088) PlayerSubActionArgument(0.5f)));
+																  new (__FILE__, 1088) PlayerSubActionArgument(0.5f)));
 			ActionState->AddSubAction(PLAYER_SUB_ACTION_FORCE_CREATURE_DOMINANT_DESIRE,
 			                          PlayerSubActionArgument::CreateList(
-										  new (FILEPATH, 1089) PlayerSubActionArgument(creature),
-										  new (FILEPATH, 1089) PlayerSubActionArgument(CREATURE_DESIRE_COMPASSION),
-										  new (FILEPATH, 1089) PlayerSubActionArgument(120.0f)));
+										  new (__FILE__, 1089) PlayerSubActionArgument(creature),
+										  new (__FILE__, 1089) PlayerSubActionArgument(CREATURE_DESIRE_COMPASSION),
+										  new (__FILE__, 1089) PlayerSubActionArgument(120.0f)));
 			return true;
 		}
 	}
@@ -1094,17 +1094,17 @@ bool32_t GComputerPlayer::ForceCreatureToImpressTown(CPDesireNode& node)
 			AddLookAndLearn(&node, town, town->belief.BeliefInPlayer[Player->GetPlayerNumber()], 1, 500);
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_SET_LEASH,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1116) PlayerSubActionArgument(creature),
-			                                        new (FILEPATH, 1116) PlayerSubActionArgument(LEASH_TYPE_ROPE)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1116) PlayerSubActionArgument(creature),
+			                                        new (__FILE__, 1116) PlayerSubActionArgument(LEASH_TYPE_ROPE)));
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_ATTACH_LEASH_TO_OBJECT,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1117) PlayerSubActionArgument(creature),
-			                                        new (FILEPATH, 1117) PlayerSubActionArgument(target)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1117) PlayerSubActionArgument(creature),
+			                                        new (__FILE__, 1117) PlayerSubActionArgument(target)));
 			ActionState->AddSubAction(PLAYER_SUB_ACTION_FORCE_CREATURE_DOMINANT_DESIRE,
 			                          PlayerSubActionArgument::CreateList(
-										  new (FILEPATH, 1119) PlayerSubActionArgument(creature),
-										  new (FILEPATH, 1119) PlayerSubActionArgument(CREATURE_DESIRE_TO_IMPRESS),
-										  new (FILEPATH, 1119) PlayerSubActionArgument(120.0f)));
+										  new (__FILE__, 1119) PlayerSubActionArgument(creature),
+										  new (__FILE__, 1119) PlayerSubActionArgument(CREATURE_DESIRE_TO_IMPRESS),
+										  new (__FILE__, 1119) PlayerSubActionArgument(120.0f)));
 			return true;
 		}
 	}
@@ -1137,12 +1137,12 @@ bool32_t GComputerPlayer::ForceCreatureToAttackTown(CPDesireNode& node)
 			}
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_SET_LEASH,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1154) PlayerSubActionArgument(creature),
-			                                        new (FILEPATH, 1154) PlayerSubActionArgument(LEASH_TYPE_EVIL)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1154) PlayerSubActionArgument(creature),
+			                                        new (__FILE__, 1154) PlayerSubActionArgument(LEASH_TYPE_EVIL)));
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_ATTACH_LEASH_TO_OBJECT,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1155) PlayerSubActionArgument(creature),
-			                                        new (FILEPATH, 1155) PlayerSubActionArgument(target)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1155) PlayerSubActionArgument(creature),
+			                                        new (__FILE__, 1155) PlayerSubActionArgument(target)));
 			return true;
 		}
 	}
@@ -1174,12 +1174,12 @@ bool32_t GComputerPlayer::ForceCreatureToAttackCreature(CPDesireNode& node)
 		{
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_SET_LEASH,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1195) PlayerSubActionArgument(creature),
-			                                        new (FILEPATH, 1195) PlayerSubActionArgument(LEASH_TYPE_EVIL)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1195) PlayerSubActionArgument(creature),
+			                                        new (__FILE__, 1195) PlayerSubActionArgument(LEASH_TYPE_EVIL)));
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_ATTACH_LEASH_TO_OBJECT,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1196) PlayerSubActionArgument(creature),
-			                                        new (FILEPATH, 1196) PlayerSubActionArgument(other)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1196) PlayerSubActionArgument(creature),
+			                                        new (__FILE__, 1196) PlayerSubActionArgument(other)));
 			return true;
 		}
 	}
@@ -1217,20 +1217,20 @@ bool32_t GComputerPlayer::AttackCreatureWithSpells(CPDesireNode& node)
 		if (creature)
 		{
 			MAGIC_TYPE type = icon->GetMagicType();
-			for (uint32_t i = 0; i < (GRand::GameRand(2, FILEPATH, 1252)) + 2; i++)
+			for (uint32_t i = 0; i < (GRand::GameRand(2, __FILE__, 1252)) + 2; i++)
 			{
 				ActionState->AddSubAction(
 					PLAYER_SUB_ACTION_MOVE_HAND_NEAR_OBJECT,
-					PlayerSubActionArgument::CreateList(new (FILEPATH, 1254) PlayerSubActionArgument(creature)));
+					PlayerSubActionArgument::CreateList(new (__FILE__, 1254) PlayerSubActionArgument(creature)));
 				ActionState->AddSubAction(
 					PLAYER_SUB_ACTION_MAKE_WORSHIPPERS_CHANT_FOR_SPELL,
-					PlayerSubActionArgument::CreateList(new (FILEPATH, 1256) PlayerSubActionArgument(type),
-				                                        new (FILEPATH, 1257) PlayerSubActionArgument(icon)));
+					PlayerSubActionArgument::CreateList(new (__FILE__, 1256) PlayerSubActionArgument(type),
+				                                        new (__FILE__, 1257) PlayerSubActionArgument(icon)));
 				ActionState->AddSubAction(
 					PLAYER_SUB_ACTION_CAST_SPELL_AT_OBJECT,
-					PlayerSubActionArgument::CreateList(new (FILEPATH, 1258) PlayerSubActionArgument(creature),
-				                                        new (FILEPATH, 1258) PlayerSubActionArgument(type),
-				                                        new (FILEPATH, 1258) PlayerSubActionArgument(icon)));
+					PlayerSubActionArgument::CreateList(new (__FILE__, 1258) PlayerSubActionArgument(creature),
+				                                        new (__FILE__, 1258) PlayerSubActionArgument(type),
+				                                        new (__FILE__, 1258) PlayerSubActionArgument(icon)));
 			}
 			return true;
 		}
@@ -1256,7 +1256,7 @@ bool32_t GComputerPlayer::ThrowDestructiveObjectAtTown(CPDesireNode& node)
 			{
 				ActionState->AddSubAction(
 					PLAYER_SUB_ACTION_THROW_OBJECT_IN_HAND_AT_POS,
-					PlayerSubActionArgument::CreateList(new (FILEPATH, 1284) PlayerSubActionArgument(pos)));
+					PlayerSubActionArgument::CreateList(new (__FILE__, 1284) PlayerSubActionArgument(pos)));
 				return true;
 			}
 		}
@@ -1279,16 +1279,16 @@ bool32_t GComputerPlayer::ImpressTownWithSpells(CPDesireNode& node)
 			MAGIC_TYPE type = icon->GetMagicType();
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_MOVE_HAND_TO_OBJECT,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1306) PlayerSubActionArgument(icon)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1306) PlayerSubActionArgument(icon)));
 			ActionState->AddSubAction(
 				PLAYER_SUB_ACTION_MAKE_WORSHIPPERS_CHANT_FOR_SPELL,
-				PlayerSubActionArgument::CreateList(new (FILEPATH, 1308) PlayerSubActionArgument(type),
-			                                        new (FILEPATH, 1309) PlayerSubActionArgument(icon)));
+				PlayerSubActionArgument::CreateList(new (__FILE__, 1308) PlayerSubActionArgument(type),
+			                                        new (__FILE__, 1309) PlayerSubActionArgument(icon)));
 			ActionState->AddSubAction(PLAYER_SUB_ACTION_CAST_SPELL_AT_POS,
 			                          PlayerSubActionArgument::CreateList(
-										  new (FILEPATH, 1310) PlayerSubActionArgument(node.Argument.PointValue),
-										  new (FILEPATH, 1310) PlayerSubActionArgument(type),
-										  new (FILEPATH, 1310) PlayerSubActionArgument(icon)));
+										  new (__FILE__, 1310) PlayerSubActionArgument(node.Argument.PointValue),
+										  new (__FILE__, 1310) PlayerSubActionArgument(type),
+										  new (__FILE__, 1310) PlayerSubActionArgument(icon)));
 			return true;
 		}
 	}
@@ -1315,7 +1315,7 @@ bool32_t GComputerPlayer::ThrowObjectToImpressTown(CPDesireNode& node)
 				{
 					ActionState->AddSubAction(
 						PLAYER_SUB_ACTION_THROW_OBJECT_IN_HAND_AT_POS,
-						PlayerSubActionArgument::CreateList(new (FILEPATH, 1338) PlayerSubActionArgument(pos)));
+						PlayerSubActionArgument::CreateList(new (__FILE__, 1338) PlayerSubActionArgument(pos)));
 					return true;
 				}
 			}

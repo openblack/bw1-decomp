@@ -254,7 +254,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		case LH_SCRIPT_COMMAND_LOAD_BMP: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
-			LHSprite* sprite = new (FILEPATH, 312) LHSprite;
+			LHSprite* sprite = new (__FILE__, 312) LHSprite;
 			result = LH_ERROR;
 			LHSys::TheSystem.ScriptResources[pram->number[1]].data = sprite;
 			if (!sprite)
@@ -272,7 +272,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		case LH_SCRIPT_COMMAND_LOAD_SPRITES_DEPTH: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
-			LHSpriteList* spriteList = new (FILEPATH, 333) LHSpriteList;
+			LHSpriteList* spriteList = new (__FILE__, 333) LHSpriteList;
 			result = LH_ERROR;
 			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
 			if (!spriteList)
@@ -296,7 +296,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		case LH_SCRIPT_COMMAND_LOAD_SPRITES: {
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
-			LHSpriteList* spriteList = new (FILEPATH, 358) LHSpriteList;
+			LHSpriteList* spriteList = new (__FILE__, 358) LHSpriteList;
 			result = LH_ERROR;
 			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
 			if (!spriteList)
@@ -514,7 +514,7 @@ template <class T> LH_RETURN LHScriptX<T>::ScanLine(T* line)
 			if (variable->value)
 				delete (T*)variable->value;
 			unsigned int length = LHStringOps<T>::strlen(word);
-			T*           value = (T*)operator new(sizeof(T) * (length + 1), FILEPATH, 737);
+			T*           value = (T*)operator new(sizeof(T) * (length + 1), __FILE__, 737);
 			variable->value = (long)value;
 			if (!value)
 				return LH_ERROR;
@@ -794,11 +794,11 @@ template <class T> LH_RETURN LHScriptX<T>::CommandIf(T* value1, T* condition, T*
 // BW1W120 007e9a10 BW1M119 01152570 (LHCombined Release)
 template <class T> LH_RETURN LHScriptX<T>::CreateVariable(long command, LHScriptPramX<T>* pram)
 {
-	LHScriptVariable<T>* variable = new (FILEPATH, 1032) LHScriptVariable<T>;
+	LHScriptVariable<T>* variable = new (__FILE__, 1032) LHScriptVariable<T>;
 	if (variable)
 	{
 		memset(variable, 0, sizeof(LHScriptVariable<T>));
-		T* name = (T*)operator new(sizeof(T) * (LHStringOps<T>::strlen(pram->text[0]) + 1), FILEPATH, 1035);
+		T* name = (T*)operator new(sizeof(T) * (LHStringOps<T>::strlen(pram->text[0]) + 1), __FILE__, 1035);
 		variable->name = name;
 		if (name)
 		{

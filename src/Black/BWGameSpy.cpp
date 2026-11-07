@@ -575,7 +575,7 @@ void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* m
 	{
 		return;
 	}
-	wchar_t* text = new (FILEPATH, 386 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
+	wchar_t* text = new (__FILE__, 386 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
 	wcscpy(text, LHSPrintfW(L"%s", DECODE_NAME(message)));
 	MPFEMessageObject::ProcessIncomingMessage(text, player, LHSPrintfW(L"%s", DECODE_NAME(nick)));
 	if (text != NULL)
@@ -605,7 +605,7 @@ void BWGameSpy::RoomMessageCallback(PEER peer, RoomType roomType, const char* ni
 	{
 		return;
 	}
-	wchar_t* text = new (FILEPATH, 417 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
+	wchar_t* text = new (__FILE__, 417 + BW_GAME_SPY_LINE_OFFSET) wchar_t[strlen(message) + 1];
 	wcscpy(text, LHSPrintfW(L"%s", DECODE_NAME(message)));
 	MPFEMessageObject::ProcessIncomingMessage(text, player, NULL);
 	if (text != NULL)

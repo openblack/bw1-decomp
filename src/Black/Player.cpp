@@ -130,7 +130,7 @@ unsigned long GPlayer::CreatureMindDataLength;
 GPlayer::GPlayer() : EditorIcon(NULL)
 {
 	SetToZero();
-	alignment = new (FILEPATH, PLAYER_LINE(125)) GAlignment();
+	alignment = new (__FILE__, PLAYER_LINE(125)) GAlignment();
 }
 
 GPlayer::~GPlayer()
@@ -210,11 +210,11 @@ void GPlayer::Init(PLAYER_TYPE type, unsigned char player_number, char16_t* play
 	}
 	if (ComputerPlayer == NULL)
 	{
-		ComputerPlayer = new (FILEPATH, PLAYER_LINE(259)) GComputerPlayer(this, 90.0f, 30.0f, 50);
+		ComputerPlayer = new (__FILE__, PLAYER_LINE(259)) GComputerPlayer(this, 90.0f, 30.0f, 50);
 	}
 	if (game_stats == NULL)
 	{
-		game_stats = new (FILEPATH, PLAYER_LINE(264)) GameStats();
+		game_stats = new (__FILE__, PLAYER_LINE(264)) GameStats();
 		game_stats->Init(*this);
 	}
 	for (int i = 0; i < _PLAYER_NAME_COUNT; i++)
@@ -223,7 +223,7 @@ void GPlayer::Init(PLAYER_TYPE type, unsigned char player_number, char16_t* play
 	}
 	AverageInfluencePower = InfluencePower;
 	AlignmentSaveTurn = 0;
-	interfaces[player_id] = new (FILEPATH, PLAYER_LINE(278)) GInterface();
+	interfaces[player_id] = new (__FILE__, PLAYER_LINE(278)) GInterface();
 	interfaces[player_id]->Init(player_number);
 }
 
@@ -796,7 +796,7 @@ bool32_t GPlayer::ZoomToCitadel(bool to_island_centre)
 		}
 		if (attempt == 0)
 		{
-			new (FILEPATH, PLAYER_LINE(936)) CameraModeNew3(GGame::g_game->GetCamera());
+			new (__FILE__, PLAYER_LINE(936)) CameraModeNew3(GGame::g_game->GetCamera());
 		}
 	}
 	return TRUE;
@@ -1877,7 +1877,7 @@ MAGIC_TYPE GPlayer::GetNextMagicTypeToEnable()
 	float                  alignmentValue = GetAlignmentValue();
 	if (alignmentValue == 0.0f)
 	{
-		progress = GRand::GameRand(2, FILEPATH, PLAYER_LINE(2303)) ? GRewardProgress::GetInfoGood()
+		progress = GRand::GameRand(2, __FILE__, PLAYER_LINE(2303)) ? GRewardProgress::GetInfoGood()
 		                                                           : GRewardProgress::GetInfoEvil();
 	}
 	else if (alignmentValue > 0.0f)
@@ -2197,7 +2197,7 @@ Town* GPlayer::GetRandomTown()
 		return NULL;
 	}
 	LHLinkedNode<Town*>* node =
-		candidates.GetNodeAtPosition(GRand::GameRand(candidates.count, FILEPATH, PLAYER_LINE(2780)));
+		candidates.GetNodeAtPosition(GRand::GameRand(candidates.count, __FILE__, PLAYER_LINE(2780)));
 	Town* chosen = node == NULL ? NULL : node->payload;
 	while (candidates.GetStart() != NULL)
 	{

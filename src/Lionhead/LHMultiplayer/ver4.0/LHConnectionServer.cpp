@@ -140,7 +140,7 @@ LH_RETURN LHConnectionServer::Start(LHMPServerStartInfo* start_info, LHTransport
 	unsigned long numSignals;
 	HANDLE*       signals;
 
-	LHLogger::LogS(LHLogLibraryName, FILEPATH, 171, "Starting RELEASE server\n");
+	LHLogger::LogS(LHLogLibraryName, __FILE__, 171, "Starting RELEASE server\n");
 
 	if (start_info->RegisteredName == NULL)
 		return LH_FAIL;

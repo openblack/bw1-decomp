@@ -1227,12 +1227,12 @@ void SetupList::SetNum(int num)
 	{
 		Capacity = num + 16;
 		typedef char16_t          Label[256];
-		Label*                    labels = new (FILEPATH, 1365) Label[Capacity];
-		int*                      heights = new (FILEPATH, 1366) int[Capacity];
-		uint32_t*                 data = new (FILEPATH, 1367) uint32_t[Capacity];
-		SetupList__ListBoxDraw_t* callbacks = new (FILEPATH, 1368) SetupList__ListBoxDraw_t[Capacity];
-		LH3DColor*                colors = (LH3DColor*)operator new(Capacity * sizeof(LH3DColor), FILEPATH, 1369);
-		void**                    tags = new (FILEPATH, 1370) void*[Capacity];
+		Label*                    labels = new (__FILE__, 1365) Label[Capacity];
+		int*                      heights = new (__FILE__, 1366) int[Capacity];
+		uint32_t*                 data = new (__FILE__, 1367) uint32_t[Capacity];
+		SetupList__ListBoxDraw_t* callbacks = new (__FILE__, 1368) SetupList__ListBoxDraw_t[Capacity];
+		LH3DColor*                colors = (LH3DColor*)operator new(Capacity * sizeof(LH3DColor), __FILE__, 1369);
+		void**                    tags = new (__FILE__, 1370) void*[Capacity];
 		memset(labels, 0, Capacity * sizeof(Label));
 		memset(heights, 0, Capacity * sizeof(int));
 		memset(data, 0, Capacity * sizeof(uint32_t));
@@ -1279,7 +1279,7 @@ SetupMultiList::SetupMultiList(int id, int x, int y, int width, int height, int 
 {
 	this->size = size;
 	NumSelected = 0;
-	list = new (FILEPATH, 1422) bool[size];
+	list = new (__FILE__, 1422) bool[size];
 	for (int index = 0; index < this->size; ++index)
 		list[index] = false;
 }
@@ -1529,7 +1529,7 @@ SetupEdit::SetupEdit(int id, int x, int y, int width, int height, const char16_t
 	else
 	{
 		CandidateList =
-			new (FILEPATH, 1658) SetupList(SETUP_IME_CANDIDATE_LIST_ID, 0, 0, SETUP_IME_CANDIDATE_LIST_INITIAL_SIZE,
+			new (__FILE__, 1658) SetupList(SETUP_IME_CANDIDATE_LIST_ID, 0, 0, SETUP_IME_CANDIDATE_LIST_INITIAL_SIZE,
 		                                   SETUP_IME_CANDIDATE_LIST_INITIAL_SIZE);
 		CandidateList->Hide(true);
 		CandidateList->UsesIME = true;
@@ -1810,7 +1810,7 @@ void HLineData::SetNum(int num)
 {
 	if (num < 0)
 		num = 0;
-	float* newPoints = new (FILEPATH, 1901) float[num];
+	float* newPoints = new (__FILE__, 1901) float[num];
 	memset(newPoints, 0, num * sizeof(float));
 	memcpy(newPoints, points, min(num, PointCount) * sizeof(float));
 	delete[] points;
@@ -2008,7 +2008,7 @@ void SetupHLineGraph::SetScale(float max_point, float min_point, bool centered_a
 
 void SetupHLineGraph::AddLine(HLineData& line)
 {
-	LineDataList.AddToEnd(new (FILEPATH, 2084) HLineData(line));
+	LineDataList.AddToEnd(new (__FILE__, 2084) HLineData(line));
 }
 
 void SetupHLineGraph::SetLine(int index, HLineData& line)
@@ -2138,7 +2138,7 @@ void SetupVBarGraph::SetScale(float scale)
 
 void SetupVBarGraph::AddBar(const VBarData& bar)
 {
-	BarDataList.AddToEnd(new (FILEPATH, 2192) VBarData(bar));
+	BarDataList.AddToEnd(new (__FILE__, 2192) VBarData(bar));
 }
 
 void SetupVBarGraph::SetBar(int index, const VBarData& bar)
@@ -2588,7 +2588,7 @@ void SetupBox::MessageBoxA(char16_t* text, MSGBOXSTYLE style, unsigned long hold
 	HoldHeight = 200;
 	SetOnHold(hold_data);
 	CurrentInitBox = this;
-	SetupStaticText* message = new (FILEPATH, 2564)
+	SetupStaticText* message = new (__FILE__, 2564)
 		SetupStaticText(SETUP_MESSAGE_BOX_ID_TEXT, 200, 220, 400, 130, text, TEXTJUSTIFY_CENTRE_BREAK);
 	MessageText = message;
 	message->text_size = GetBigTextSize() + 1;
@@ -2603,51 +2603,51 @@ void SetupBox::MessageBoxA(char16_t* text, MSGBOXSTYLE style, unsigned long hold
 	switch (style)
 	{
 	default:
-		button = new (FILEPATH, 2615) SetupButton(SETUP_MESSAGE_BOX_ID_OK, 325, 338, 150, 32,
+		button = new (__FILE__, 2615) SetupButton(SETUP_MESSAGE_BOX_ID_OK, 325, 338, 150, 32,
 		                                          HelpTextData::GetTextL(SETUP_MESSAGE_BOX_TEXT_OK), 0);
 		button->text_size = textSize;
 		break;
 	case MSGBOXSTYLE_CANCEL:
-		button = new (FILEPATH, 2618) SetupButton(SETUP_MESSAGE_BOX_ID_CANCEL, 325, 338, 150, 32,
+		button = new (__FILE__, 2618) SetupButton(SETUP_MESSAGE_BOX_ID_CANCEL, 325, 338, 150, 32,
 		                                          HelpTextData::GetTextL(SETUP_MESSAGE_BOX_TEXT_CANCEL), 0);
 		button->text_size = textSize;
 		break;
 	case MSGBOXSTYLE_OK_CANCEL:
-		button = new (FILEPATH, 2621)
+		button = new (__FILE__, 2621)
 			SetupBigButton(SETUP_MESSAGE_BOX_ID_CANCEL, 200, 338,
 		                   HelpTextDataBase::HelpTextDatabase.GetHelpText(SETUP_MESSAGE_BOX_TEXT_CANCEL), 32,
 		                   SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 		button->text_size = textSize;
-		button = new (FILEPATH, 2622)
+		button = new (__FILE__, 2622)
 			SetupBigButton(SETUP_MESSAGE_BOX_ID_OK, 568, 338,
 		                   HelpTextDataBase::HelpTextDatabase.GetHelpText(SETUP_MESSAGE_BOX_TEXT_OK), 32,
 		                   SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
 		button->text_size = textSize;
 		break;
 	case MSGBOXSTYLE_YES_NO:
-		button = new (FILEPATH, 2626)
+		button = new (__FILE__, 2626)
 			SetupBigButton(SETUP_MESSAGE_BOX_ID_YES, 200, 338,
 		                   HelpTextDataBase::HelpTextDatabase.GetHelpText(SETUP_MESSAGE_BOX_TEXT_YES), 32,
 		                   SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 		button->text_size = textSize;
-		button = new (FILEPATH, 2627)
+		button = new (__FILE__, 2627)
 			SetupBigButton(SETUP_MESSAGE_BOX_ID_NO, 568, 338,
 		                   HelpTextDataBase::HelpTextDatabase.GetHelpText(SETUP_MESSAGE_BOX_TEXT_NO), 32,
 		                   SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
 		button->text_size = textSize;
 		break;
 	case MSGBOXSTYLE_YES_NO_CANCEL:
-		button = new (FILEPATH, 2635)
+		button = new (__FILE__, 2635)
 			SetupBigButton(SETUP_MESSAGE_BOX_ID_YES, 200, 338,
 		                   HelpTextDataBase::HelpTextDatabase.GetHelpText(SETUP_MESSAGE_BOX_TEXT_YES), 32,
 		                   SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 		button->text_size = textSize;
-		button = new (FILEPATH, 2636)
+		button = new (__FILE__, 2636)
 			SetupBigButton(SETUP_MESSAGE_BOX_ID_NO, 568, 338,
 		                   HelpTextDataBase::HelpTextDatabase.GetHelpText(SETUP_MESSAGE_BOX_TEXT_NO), 32,
 		                   SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
 		button->text_size = textSize;
-		button = new (FILEPATH, 2641) SetupButton(SETUP_MESSAGE_BOX_ID_CANCEL, 340, 338, 120, 32,
+		button = new (__FILE__, 2641) SetupButton(SETUP_MESSAGE_BOX_ID_CANCEL, 340, 338, 120, 32,
 		                                          HelpTextData::GetTextL(SETUP_MESSAGE_BOX_TEXT_CANCEL), 0);
 		button->text_size = textSize;
 		break;

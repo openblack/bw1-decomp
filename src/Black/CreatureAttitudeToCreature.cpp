@@ -28,7 +28,7 @@ CreatureAttitudeToCreature* CreatureMental::GetAttitudeToCreature(Creature* othe
 		}
 	}
 
-	CreatureAttitudeToCreature* attitude = new (FILEPATH, 22) CreatureAttitudeToCreature(other_creature);
+	CreatureAttitudeToCreature* attitude = new (__FILE__, 22) CreatureAttitudeToCreature(other_creature);
 	AttitudesToCreatures.AddToEnd(attitude);
 	return attitude;
 }

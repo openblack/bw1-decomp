@@ -427,7 +427,7 @@ LH_RETURN __cdecl GSetup::MapCommandProcess(long command, LHScriptPramX<char>* p
 		GGlobal::Global.LoadNewCreature = false;
 		break;
 	case SCRIPT_MAP_COMMANDS_CONFIG:
-		GGame::g_game->config = new (FILEPATH, 192 + CONFIG_LINE_SHIFT) Config;
+		GGame::g_game->config = new (__FILE__, 192 + CONFIG_LINE_SHIFT) Config;
 		break;
 #ifdef VERSION_BW1WCI
 	case SCRIPT_MAP_COMMANDS_SET_STARTUP:
@@ -546,11 +546,11 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 			player = RandomBuildingPlacement::PlacementPlayer;
 		}
 #ifdef VERSION_BW1W100
-		Town* town = new (FILEPATH, 442 + TOWN_LINE_SHIFT)
+		Town* town = new (__FILE__, 442 + TOWN_LINE_SHIFT)
 			Town(GetScriptPos(params->text[1]), GTownInfo::GetInfo(), player,
 		         GTribeInfo::GetTribeFromText(params->text[4])->GetTribeType(), NULL, params->number[0]);
 #else
-		Town* town = new (FILEPATH, 442 + TOWN_LINE_SHIFT)
+		Town* town = new (__FILE__, 442 + TOWN_LINE_SHIFT)
 			Town(GetScriptPos(params->text[1]), GTownInfo::GetInfo(), player,
 		         GTribeInfo::GetTribeFromText(params->text[4])->GetTribeType(), NULL, params->number[0], false);
 #endif
@@ -855,7 +855,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 		Town* town = GGame::g_game->FindTownWithID(params->number[0]);
 		if (town != NULL && GPlayer::GetPlayerFromText(params->text[3]) != NULL)
 		{
-			PlannedTownCitadelHeart* heart = new (FILEPATH, 776 + PLANNED_LINE_SHIFT)
+			PlannedTownCitadelHeart* heart = new (__FILE__, 776 + PLANNED_LINE_SHIFT)
 				PlannedTownCitadelHeart(GetScriptPos(params->text[1]), &GCitadelHeartInfo::GetInfo()[params->number[2]],
 			                            town, GetSaveFloat(params->number[4]), GetSaveFloat(params->number[5]));
 			LastObject = heart;
@@ -877,7 +877,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 			{
 				if (flags & SCRIPT_CREATURE_PEN_PLANNED)
 				{
-					PlannedCreaturePen* pen = new (FILEPATH, 797 + PLANNED_LINE_SHIFT) PlannedCreaturePen(
+					PlannedCreaturePen* pen = new (__FILE__, 797 + PLANNED_LINE_SHIFT) PlannedCreaturePen(
 						GetScriptPos(params->text[0]), &GCreaturePenInfo::GetInfo()[params->number[1]], citadel,
 						GetSaveFloat(params->number[3]), GetSaveFloat(params->number[4]));
 					LastObject = pen;
@@ -910,7 +910,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 	}
 	case SCRIPT_FEATURE_COMMANDS_CREATE_FOREST: {
 		Forest* forest =
-			new (FILEPATH, 838 + PLANNED_LINE_SHIFT) Forest(GetScriptPos(params->text[1]), params->number[0]);
+			new (__FILE__, 838 + PLANNED_LINE_SHIFT) Forest(GetScriptPos(params->text[1]), params->number[0]);
 		LastObject = forest;
 		return LH_OK;
 	}
@@ -959,7 +959,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 	case SCRIPT_FEATURE_COMMANDS_CREATE_FLOCK: {
 		int    townParam = 4;
 		int    distanceParam = 0;
-		Flock* flock = new (FILEPATH, 889 + PLANNED_LINE_SHIFT)
+		Flock* flock = new (__FILE__, 889 + PLANNED_LINE_SHIFT)
 			Flock(GetScriptPos(params->text[1]), (const GFlockInfo*)&GContainerInfo::GetInfo()[CONTAINER_INFO_FLOCK],
 		          &GGame::g_game->players[GGame::g_game->NeutralPlayerIndex], params->number[0]);
 		LastObject = flock;
@@ -1069,7 +1069,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 	case SCRIPT_FEATURE_COMMANDS_CREATE_FEATURE:
 		if (params->number[4] != 0)
 		{
-			PlannedFeature* planned = new (FILEPATH, 970 + PLANNED_LINE_SHIFT)
+			PlannedFeature* planned = new (__FILE__, 970 + PLANNED_LINE_SHIFT)
 				PlannedFeature(GetScriptPos(params->text[0]), &GFeatureInfo::GetInfo()[params->number[1]], NULL,
 			                   GetSaveFloat(params->number[2]), GetSaveFloat(params->number[3]));
 			LastObject = planned;
@@ -1117,7 +1117,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 	case SCRIPT_FEATURE_COMMANDS_CREATE_NEW_FEATURE:
 		if (params->number[4] != 0)
 		{
-			PlannedFeature* planned = new (FILEPATH, 1007 + PLANNED_LINE_SHIFT)
+			PlannedFeature* planned = new (__FILE__, 1007 + PLANNED_LINE_SHIFT)
 				PlannedFeature(GetScriptPos(params->text[0]), &GFeatureInfo::GetInfo()[params->number[1]], NULL,
 			                   GetSaveFloat(params->number[2]), GetSaveFloat(params->number[3]));
 			LastObject = planned;
@@ -1350,7 +1350,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 		break;
 	}
 	case SCRIPT_FEATURE_COMMANDS_CREATE_STREAM:
-		new (FILEPATH, 1345 + STREAM_LINE_SHIFT) GStream(params->number[0]);
+		new (__FILE__, 1345 + STREAM_LINE_SHIFT) GStream(params->number[0]);
 		break;
 	case SCRIPT_FEATURE_COMMANDS_CREATE_STREAM_POINT: {
 		GStream* stream = NULL;
@@ -1377,7 +1377,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 		LastObject = GArena::Create(GetScriptPos(params->text[0]), params->flt[1]);
 		break;
 	case SCRIPT_FEATURE_COMMANDS_CREATE_FOOTPATH:
-		new (FILEPATH, 1370 + STREAM_LINE_SHIFT) GFootpath(NULL, NULL);
+		new (__FILE__, 1370 + STREAM_LINE_SHIFT) GFootpath(NULL, NULL);
 		break;
 	case SCRIPT_FEATURE_COMMANDS_CREATE_FOOTPATH_NODE: {
 		GFootpath* footpath = NULL;
@@ -1651,7 +1651,7 @@ LH_RETURN __cdecl GSetup::FeatureMapCommandProcess(long command, LHScriptPramX<c
 				}
 				else
 				{
-					artifact = new (FILEPATH, 1653 + ARTIFACT_LINE_SHIFT) TownArtifact(fixed, (Town*)NULL, player);
+					artifact = new (__FILE__, 1653 + ARTIFACT_LINE_SHIFT) TownArtifact(fixed, (Town*)NULL, player);
 					fixed->town_artifact = artifact;
 				}
 				if (artifact != NULL)
@@ -2073,7 +2073,7 @@ bool32_t GSetup::SaveTownFile(char* file_name, Town* town)
 	GameThing::GlobalSaveCount++;
 	uint32_t savedId = town->ID;
 	town->ID =
-		town->Pos.WholeX() + GGame::g_game->data.GameTurn + GRand::GameRand(10000, FILEPATH, 2170 + TOWN_ID_LINE_SHIFT);
+		town->Pos.WholeX() + GGame::g_game->data.GameTurn + GRand::GameRand(10000, __FILE__, 2170 + TOWN_ID_LINE_SHIFT);
 	MapCoords centre = town->GetAreaCentre();
 	town->SaveTown(file, centre);
 	town->ID = savedId;

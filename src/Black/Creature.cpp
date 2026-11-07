@@ -502,11 +502,11 @@ uint32_t Creature::ProcessState()
 Creature::Creature(const MapCoords& coords, const CreatureInfo* info, GPlayer* player)
 	: Living(coords, info),
 	  NumPeopleKilled(NumAnimalsKilled = NumCreaturesKilled = NumBattlesFought = NumBattlesWon = NumMushroomsEaten = 0),
-	  NumPoos(0), ReceiveSpell(new (FILEPATH, 664) CreatureReceiveSpell(this)), owner(NULL), dance(NULL),
+	  NumPoos(0), ReceiveSpell(new (__FILE__, 664) CreatureReceiveSpell(this)), owner(NULL), dance(NULL),
 	  field_0x108c(0)
 {
 	SetToZero();
-	alignment = new (FILEPATH, 667) GAlignment();
+	alignment = new (__FILE__, 667) GAlignment();
 	Initialise(coords, info, player);
 }
 
@@ -717,7 +717,7 @@ void Creature::SetToZero()
 	IgnoredByVillagers = false;
 	BeforeHandInteractState = CREATURE_HAND_INTERACT_STATE_NORMAL;
 	bubble = NULL;
-	bubble = new (FILEPATH, 746) Bubble();
+	bubble = new (__FILE__, 746) Bubble();
 	bubble->SetDefaultSizes(250.0f, 100.0f, 19.0f);
 	Invisible = false;
 	field_0x10d0 = 0;
@@ -741,14 +741,14 @@ void __stdcall CreatureMusicMoodUpdateCallback(MusicEmotion& emotion);
 
 void Creature::Initialise(const MapCoords& coords, const CreatureInfo* info, GPlayer* player)
 {
-	physical = new (FILEPATH, 766) CreaturePhysical(coords, GetGameAngle(), info, this);
+	physical = new (__FILE__, 766) CreaturePhysical(coords, GetGameAngle(), info, this);
 	owner = player;
 	if (player != NULL)
 	{
 		player->SetCreature(this);
 	}
 	mind = NULL;
-	mind = new (FILEPATH, 774) CreatureMental(this, info, coords, player);
+	mind = new (__FILE__, 774) CreatureMental(this, info, coords, player);
 	physical->Creature3d->MorphTexture();
 	ActionForced = ReactionsEnabled = LearningEnabled = true;
 	mind->agenda.creature = this;
@@ -822,7 +822,7 @@ void Creature::Initialise(const MapCoords& coords, const CreatureInfo* info, GPl
 
 Creature::Creature()
 	: NumPeopleKilled(NumAnimalsKilled = NumCreaturesKilled = NumBattlesFought = NumBattlesWon = NumMushroomsEaten = 0),
-	  NumPoos(0), ReceiveSpell(new (FILEPATH, 890) CreatureReceiveSpell(this)), owner(NULL), dance(NULL),
+	  NumPoos(0), ReceiveSpell(new (__FILE__, 890) CreatureReceiveSpell(this)), owner(NULL), dance(NULL),
 	  field_0x108c(0)
 {
 	DevelopmentPhase = DEVELOPMENT_PHASE_INITIAL;
@@ -841,7 +841,7 @@ Creature* Creature::Create(const MapCoords& coords, const CreatureInfo* info, GP
 	{
 		return NULL;
 	}
-	Creature* creature = new (FILEPATH, 903) Creature(coords, info, player);
+	Creature* creature = new (__FILE__, 903) Creature(coords, info, player);
 	if (creature != NULL)
 	{
 		creature->CallVirtualFunctionsForCreation(coords);
@@ -951,7 +951,7 @@ void Creature::UpdateTykesFromAction()
 				}
 				else
 				{
-					if (GRand::GameRand(100, FILEPATH, 1029) > 50)
+					if (GRand::GameRand(100, __FILE__, 1029) > 50)
 					{
 						CreaturePlan plan(mind->agenda.CurrentPlan);
 						if (plan.ActivityObject != NULL && plan.ActivityObject->Pointer != NULL &&
@@ -1149,7 +1149,7 @@ void Creature::FinishActionSuccessfully()
 		{
 			mind->agenda.GameTurnLastPlanDecided = GGame::g_game->data.GameTurn;
 			if (town->GetRawDesire(mind->TownDesireToHelp) > mind->TownDesireToHelpLevel &&
-			    mind->NumTimesTownDesireHelped <= GRand::GameRand(2, FILEPATH, 1284) + 2 &&
+			    mind->NumTimesTownDesireHelped <= GRand::GameRand(2, __FILE__, 1284) + 2 &&
 			    mind->TownDesireToHelp != TOWN_DESIRE_INFO_FOR_RELAXATION)
 			{
 				mind->NumTimesTownDesireHelped++;
@@ -1224,7 +1224,7 @@ void Creature::FinishActionUnsuccessfully(char* reason, bool32_t stop_moving, bo
 	FinishActionGeneric(stop_moving, end_actions);
 	if (reason != NULL && GGlobal::Global.ShowCreatureFailureReasons)
 	{
-		CreatureValueSpinner* spinner = new (FILEPATH, 1375) CreatureValueSpinner;
+		CreatureValueSpinner* spinner = new (__FILE__, 1375) CreatureValueSpinner;
 		LH3DColor             color(0xff, 0, 0, 0xff);
 		LHPoint*              headPos = physical->Creature3d->GetHeadPos();
 		spinner->Init(*headPos, CHAR2WCHAR(reason), color);
@@ -2419,7 +2419,7 @@ void Creature::BeCutAndScarredByEffect(EffectValues& values)
 			if (direction.GetNorm() > CREATURE_CUT_MIN_DISTANCE_SQUARED)
 			{
 				long cuts =
-					GRand::GameRand(5, FILEPATH, 2835) - 2 - (long)(damage * CREATURE_MAX_CUTS - CREATURE_MAX_CUTS);
+					GRand::GameRand(5, __FILE__, 2835) - 2 - (long)(damage * CREATURE_MAX_CUTS - CREATURE_MAX_CUTS);
 				if (cuts > 0)
 				{
 					if (cuts >= CREATURE_MAX_CUTS)
@@ -2436,18 +2436,18 @@ void Creature::BeCutAndScarredByEffect(EffectValues& values)
 		}
 		else
 		{
-			long type = GRand::GameRand(3, FILEPATH, 2842) != 0 ? 0 : 6;
-			if (GRand::GameRand((long)(creature3d->GetDamageFraction() * 140.0f + 10.0f), FILEPATH, 2851) == 0)
+			long type = GRand::GameRand(3, __FILE__, 2842) != 0 ? 0 : 6;
+			if (GRand::GameRand((long)(creature3d->GetDamageFraction() * 140.0f + 10.0f), __FILE__, 2851) == 0)
 			{
 				LHPoint pos;
-				pos.x = GRand::GameFloatRand(quarterSize, FILEPATH, 2854) + anus.x - eighthSize;
-				pos.y = GRand::GameFloatRand(size, FILEPATH, 2855) + anus.y - halfSize;
-				pos.z = GRand::GameFloatRand(quarterSize, FILEPATH, 2856) + anus.z - eighthSize;
+				pos.x = GRand::GameFloatRand(quarterSize, __FILE__, 2854) + anus.x - eighthSize;
+				pos.y = GRand::GameFloatRand(size, __FILE__, 2855) + anus.y - halfSize;
+				pos.z = GRand::GameFloatRand(quarterSize, __FILE__, 2856) + anus.z - eighthSize;
 				LHPoint direction = anus - pos;
 				if (direction.GetNorm() > CREATURE_CUT_MIN_DISTANCE_SQUARED)
 				{
 					long cuts =
-						GRand::GameRand(5, FILEPATH, 2861) - 2 - (long)(damage * CREATURE_MAX_CUTS - CREATURE_MAX_CUTS);
+						GRand::GameRand(5, __FILE__, 2861) - 2 - (long)(damage * CREATURE_MAX_CUTS - CREATURE_MAX_CUTS);
 					if (cuts > 0)
 					{
 						if (cuts >= CREATURE_MAX_CUTS)
@@ -2597,7 +2597,7 @@ void Creature::SetupCreatureForDanceEditing(const MapCoords& pos)
 	mind->agenda.CommandState.Commanded = true;
 	mind->agenda.SubActionAgenda.ClearSubActionAgenda();
 	mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DANCING_DURING_EDITOR,
-	                                          new (FILEPATH, 3052) SubArgumentPoint(point), NULL,
+	                                          new (__FILE__, 3052) SubArgumentPoint(point), NULL,
 	                                          &Creature::SetFaceForActionSmile);
 	SetControlledByScript(true);
 }
@@ -2787,12 +2787,12 @@ void Creature::AddSpeechItem(char16_t* text, LHPlayer* player, unsigned long fla
 {
 	if (flags & CREATURE_SPEECH_FLAG_NO_NAME)
 	{
-		SpeechItems.Add(new (FILEPATH, 3304) CreatureSpeechItem(text, player));
+		SpeechItems.Add(new (__FILE__, 3304) CreatureSpeechItem(text, player));
 		bubble->DisplayTime += CREATURE_SPEECH_DISPLAY_TIME;
 	}
 	else
 	{
-		SpeechItems.Add(new (FILEPATH, 3309) CreatureSpeechItem(LHSPrintfW(L"%s: %s", player->Name, text), player));
+		SpeechItems.Add(new (__FILE__, 3309) CreatureSpeechItem(LHSPrintfW(L"%s: %s", player->Name, text), player));
 	}
 	bubble->field_0xa8 = 0.0f;
 	if (bubble->DisplayTime < CREATURE_SPEECH_DISPLAY_TIME)
@@ -2906,7 +2906,7 @@ void Creature::SetUpPhysOb(PhysOb* phys_ob)
 	phys_ob->NumFaces = 0;
 	phys_ob->Faces = NULL;
 	phys_ob->NumVertices = creature3d->NumBoneMatrices;
-	IPoint* vertices = new (FILEPATH, 3447) IPoint[phys_ob->NumVertices];
+	IPoint* vertices = new (__FILE__, 3447) IPoint[phys_ob->NumVertices];
 	phys_ob->Vertices = vertices;
 	int i;
 	for (i = 0; i < phys_ob->NumVertices; i++)
@@ -3024,10 +3024,10 @@ int Creature::MoveByTeleport(const MapCoords& pos)
 	LHPoint point;
 	GLandscape::ConvertMapCoordToLandscapePoint(pos, point);
 	mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TRANSPORTED_BY_TELEPORT,
-	                                          new (FILEPATH, 3605) SubArgumentPoint(point), NULL, NULL);
+	                                          new (__FILE__, 3605) SubArgumentPoint(point), NULL, NULL);
 	GLandscape::ConvertMapCoordToLandscapePoint(DestPosBeforeTeleport, point);
 	mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                                          new (FILEPATH, 3608)
+	                                          new (__FILE__, 3608)
 	                                              SubArgumentPointAndFloat(point, CREATURE_TELEPORT_DESTINATION_RADIUS),
 	                                          &Creature::LookAtPosition, &Creature::SetFaceForActionSmile);
 	mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_STOP_CONTROLLED_BY_TELEPORT, NULL, NULL, NULL);
@@ -3105,7 +3105,7 @@ void Creature::GetGesturePoint(GESTURE_TYPE type, float frac, LHPoint* point)
 void Creature::GetRunAwayPoint(const LHPoint& from, LHPoint* point)
 {
 	MapCoords pos = Pos;
-	float     distance = GRand::GameRand(40, FILEPATH, 3725) + GetInfo()->field_0x2e0[2];
+	float     distance = GRand::GameRand(40, __FILE__, 3725) + GetInfo()->field_0x2e0[2];
 	LHPoint   direction(Pos.MapMetersX() - from.x, 0.0f, Pos.MapMetersZ() - from.z);
 	if ((float)fabs(direction.x) > 0.001f || (float)fabs(direction.z) > 0.001f)
 	{
@@ -3503,7 +3503,7 @@ void Creature::CalculateCurrentEmotionsForMusic(CreatureEmotionsForMusic& emotio
 void Creature::GenerateHTML()
 {
 	unsigned long size = 200;
-	HTMLParser*   parser = new (FILEPATH, 4291) HTMLParser();
+	HTMLParser*   parser = new (__FILE__, 4291) HTMLParser();
 	char          key[64];
 	char          userPath[256];
 	wchar_t       profileName[200];
@@ -3654,7 +3654,7 @@ void Creature::TakeSnapshot(float priority, CREATURE_ACTION action)
 	         HelpTextDataBase::HelpTextDatabase.GetHelpText(mind->agenda.CurrentPlan.CreatureDesire +
 	                                                        HELP_TEXT_CREATURE_CURRENT_DESIRE_01));
 	CreatureRoom::TakeScreenShot(index, SnapshotName);
-	SnapshotData* snapshot = new (FILEPATH, 4459) SnapshotData(priority, physical->GetAge(), action);
+	SnapshotData* snapshot = new (__FILE__, 4459) SnapshotData(priority, physical->GetAge(), action);
 	Snapshots.AddToEnd(snapshot);
 }
 
@@ -3913,7 +3913,7 @@ void Creature::BodgeForceCatch(GameThingWithPos* object)
 	mind->agenda.SubActionAgenda.ClearSubActionAgenda();
 	CreatureBelief* belief = mind->AddBeliefAboutObject(this, object);
 	mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_CATCH,
-	                                          new (FILEPATH, 4857) SubArgumentObject(belief), NULL,
+	                                          new (__FILE__, 4857) SubArgumentObject(belief), NULL,
 	                                          &Creature::SetFaceForActionSmile);
 }
 
@@ -3988,7 +3988,7 @@ bool32_t Creature::HasAChanceOfCatching(GameThingWithPos* object, PhysicsObject*
 	{
 		GPlayer* player = physics_object->status->GetPlayer();
 		if (player != NULL && player != GetPlayer() && !player->IsAllied(GetPlayer()) &&
-		    GRand::GameRand(100, FILEPATH, 4942) > 2)
+		    GRand::GameRand(100, __FILE__, 4942) > 2)
 		{
 			return false;
 		}
@@ -4091,7 +4091,7 @@ void Creature::CreateLightbulb(float progress)
 		pos.y += CREATURE_LIGHTBULB_HEIGHT_ABOVE_HEAD;
 		wchar_t text[EUREKA_TEXT_LENGTH];
 		swprintf(text, L"%.0f%%", progress * 100.0f);
-		new (FILEPATH, 5067) Eureka(&pos, text, size, 1.0f, NULL);
+		new (__FILE__, 5067) Eureka(&pos, text, size, 1.0f, NULL);
 	}
 }
 
@@ -4505,13 +4505,13 @@ void Creature::TrappedInEnclosedSpace(unsigned long num_objects, Object** object
 		return;
 	}
 	unsigned long index;
-	if (GRand::GameRand(4, FILEPATH, 5552) == 0)
+	if (GRand::GameRand(4, __FILE__, 5552) == 0)
 	{
-		index = GRand::GameRand(num_objects, FILEPATH, 5554);
+		index = GRand::GameRand(num_objects, __FILE__, 5554);
 	}
 	else
 	{
-		index = GRand::GameRand(min(num_objects, 3), FILEPATH, 5558);
+		index = GRand::GameRand(min(num_objects, 3), __FILE__, 5558);
 	}
 	Object*         object = objects[index];
 	CREATURE_ACTION action = FindSuitableActionToRemoveObstacle(object);
@@ -4728,7 +4728,7 @@ void MakeMyCreatureReactToMusic(float mood)
 	creature->physical->Creature3d->EndAnyAnimsRapidly();
 	CreatureBelief* belief = creature->mind->GetBeliefAboutObject(creature);
 	CreaturePlan    plan(CREATURE_DESIRE_TO_IDLE_AROUND_WITH_PLAYER,
-	                     GRand::GameRand(3, FILEPATH, 5805) == 0 ? CREATURE_LOOK_AT_CAMERA : CREATURE_POINT_AT_CAMERA,
+	                     GRand::GameRand(3, __FILE__, 5805) == 0 ? CREATURE_LOOK_AT_CAMERA : CREATURE_POINT_AT_CAMERA,
 	                     NULL, belief, NULL, 1.0f);
 	if (mood < 0.0f)
 	{
@@ -4756,29 +4756,29 @@ void MakeMyCreatureReactToMusic(float mood)
 
 void MakeMyCreatureReactToNewMusic(Creature* creature, float mood)
 {
-	uint32_t count = GRand::GameRand(8, FILEPATH, 5837) + 8;
+	uint32_t count = GRand::GameRand(8, __FILE__, 5837) + 8;
 	void (Creature::*face)();
 	for (uint32_t i = 0; i < count; i++)
 	{
 		face = &Creature::SetFaceForActionCuriosity;
-		if (i == 0 || GRand::GameRand(2, FILEPATH, 5843) == 0)
+		if (i == 0 || GRand::GameRand(2, __FILE__, 5843) == 0)
 		{
 			creature->mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL,
 			                                                    &Creature::LookAtCamera, face);
 		}
-		switch (GRand::GameRand(5, FILEPATH, 5847))
+		switch (GRand::GameRand(5, __FILE__, 5847))
 		{
 		case 0:
 			if (creature->alignment->GetValue() < 0.0f)
 			{
 				creature->mind->agenda.SubActionAgenda.AddSubAction(
-					CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION, new (FILEPATH, 5853) SubArgumentInteger(C_MISC_LAUGH),
+					CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION, new (__FILE__, 5853) SubArgumentInteger(C_MISC_LAUGH),
 					NULL, face);
 			}
 			else
 			{
 				creature->mind->agenda.SubActionAgenda.AddMainSubAction(
-					CREATURE_SUB_STATE_ACTIONS_FACIAL_ANIMATION, new (FILEPATH, 5857) SubArgumentInteger(C_FACE_SMILE),
+					CREATURE_SUB_STATE_ACTIONS_FACIAL_ANIMATION, new (__FILE__, 5857) SubArgumentInteger(C_FACE_SMILE),
 					NULL, NULL);
 			}
 			break;
@@ -4789,7 +4789,7 @@ void MakeMyCreatureReactToNewMusic(Creature* creature, float mood)
 				LHPoint cameraPos = status->GetCameraPos();
 				creature->mind->agenda.SubActionAgenda.AddSubAction(
 					CREATURE_SUB_STATE_ACTIONS_POINT_AT_POINT,
-					new (FILEPATH, 5867) SubArgumentPointAndFloat(cameraPos, 1.0f), &Creature::LookAtPosition, face);
+					new (__FILE__, 5867) SubArgumentPointAndFloat(cameraPos, 1.0f), &Creature::LookAtPosition, face);
 			}
 			break;
 		}
@@ -4799,41 +4799,41 @@ void MakeMyCreatureReactToNewMusic(Creature* creature, float mood)
 		case 3:
 			creature->mind->agenda.SubActionAgenda.AddSubAction(
 				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-				new (FILEPATH, 5877) SubArgumentInteger(C_INDIVIDUAL_CONFUSED), &Creature::LookJustWokenUp, face);
+				new (__FILE__, 5877) SubArgumentInteger(C_INDIVIDUAL_CONFUSED), &Creature::LookJustWokenUp, face);
 			break;
 		case 4:
-			if (GRand::GameRand(100, FILEPATH, 5880) > 50)
+			if (GRand::GameRand(100, __FILE__, 5880) > 50)
 			{
 				creature->mind->agenda.SubActionAgenda.AddSubAction(
 					CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-					new (FILEPATH, 5882) SubArgumentInteger(C_INDIVIDUAL_CONFUSED), &Creature::LookJustWokenUp, face);
+					new (__FILE__, 5882) SubArgumentInteger(C_INDIVIDUAL_CONFUSED), &Creature::LookJustWokenUp, face);
 			}
 			else
 			{
 				creature->mind->agenda.SubActionAgenda.AddSubAction(
 					CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-					new (FILEPATH, 5888) SubArgumentInteger(C_INDIVIDUAL_SCRATCH), &Creature::LookJustWokenUp, face);
+					new (__FILE__, 5888) SubArgumentInteger(C_INDIVIDUAL_SCRATCH), &Creature::LookJustWokenUp, face);
 			}
 			break;
 		}
 	}
 	creature->mind->agenda.SubActionAgenda.AddSubAction(
 		CREATURE_SUB_STATE_ACTIONS_STATIC_ACTION,
-		new (FILEPATH, 5894)
-			SubArgumentIntegerAndFloat(C_STATIC_SIT, GRand::GameFloatRand(15.0f, FILEPATH, 5894) + 20.0f),
+		new (__FILE__, 5894)
+			SubArgumentIntegerAndFloat(C_STATIC_SIT, GRand::GameFloatRand(15.0f, __FILE__, 5894) + 20.0f),
 		&Creature::LookJustWokenUp, face);
 	GInterfaceStatus* status = creature->GetNearestCameraInterfaceStatus();
 	if (status != NULL)
 	{
 		LHPoint cameraPos = status->GetCameraPos();
 		creature->mind->agenda.SubActionAgenda.AddSubAction(
-			CREATURE_SUB_STATE_ACTIONS_POINT_AT_POINT, new (FILEPATH, 5899) SubArgumentPointAndFloat(cameraPos, 1.0f),
+			CREATURE_SUB_STATE_ACTIONS_POINT_AT_POINT, new (__FILE__, 5899) SubArgumentPointAndFloat(cameraPos, 1.0f),
 			&Creature::LookAtPosition, face);
 	}
-	if (GRand::GameRand(100, FILEPATH, 5901) > 50)
+	if (GRand::GameRand(100, __FILE__, 5901) > 50)
 	{
 		creature->mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PRACTICE_DANCE,
-		                                                    new (FILEPATH, 5903) SubArgumentFloat(1.0f), NULL, face);
+		                                                    new (__FILE__, 5903) SubArgumentFloat(1.0f), NULL, face);
 	}
 	creature->mind->agenda.ForcedActionFunction = &Creature::LookCurious;
 	creature->mind->SetCheatDominantDesire(CREATURE_DESIRE_TO_IDLE_AROUND_WITH_PLAYER, 15.0f, true);
@@ -4841,11 +4841,11 @@ void MakeMyCreatureReactToNewMusic(Creature* creature, float mood)
 
 void MakeMyCreatureReactToNiceMusic(Creature* creature, float mood)
 {
-	uint32_t count = GRand::GameRand(8, FILEPATH, 5915) + 8;
+	uint32_t count = GRand::GameRand(8, __FILE__, 5915) + 8;
 	void (Creature::*face)();
 	for (uint32_t i = 0; i < count; i++)
 	{
-		switch (GRand::GameRand(3, FILEPATH, 5920))
+		switch (GRand::GameRand(3, __FILE__, 5920))
 		{
 		case 0:
 			face = &Creature::SetFaceForActionSmile;
@@ -4857,12 +4857,12 @@ void MakeMyCreatureReactToNiceMusic(Creature* creature, float mood)
 			face = &Creature::SetFaceForActionCompassion;
 			break;
 		}
-		if (i == 0 || GRand::GameRand(2, FILEPATH, 5933) == 0)
+		if (i == 0 || GRand::GameRand(2, __FILE__, 5933) == 0)
 		{
 			creature->mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL,
 			                                                    &Creature::LookAtCamera, face);
 		}
-		switch (GRand::GameRand(12, FILEPATH, 5937))
+		switch (GRand::GameRand(12, __FILE__, 5937))
 		{
 		case 0:
 		case 1:
@@ -4870,28 +4870,28 @@ void MakeMyCreatureReactToNiceMusic(Creature* creature, float mood)
 		case 4:
 			creature->mind->agenda.SubActionAgenda.AddSubAction(
 				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-				new (FILEPATH, 5945) SubArgumentInteger(C_INDIVIDUAL_HAPPY), &Creature::LookAtCamera, face);
+				new (__FILE__, 5945) SubArgumentInteger(C_INDIVIDUAL_HAPPY), &Creature::LookAtCamera, face);
 			break;
 		case 5:
 		case 6:
 		case 7:
 			creature->mind->agenda.SubActionAgenda.AddSubAction(
 				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-				new (FILEPATH, 5951) SubArgumentInteger(C_INDIVIDUAL_FRIENDLY_WAVE), &Creature::LookAtCamera, face);
+				new (__FILE__, 5951) SubArgumentInteger(C_INDIVIDUAL_FRIENDLY_WAVE), &Creature::LookAtCamera, face);
 			break;
 		case 2:
 			creature->mind->agenda.SubActionAgenda.AddSubAction(
 				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-				new (FILEPATH, 5955) SubArgumentInteger(C_INDIVIDUAL_LOOK_AT_ME), &Creature::LookAtCamera, face);
+				new (__FILE__, 5955) SubArgumentInteger(C_INDIVIDUAL_LOOK_AT_ME), &Creature::LookAtCamera, face);
 			break;
 		case 8:
 			creature->mind->agenda.SubActionAgenda.AddMainSubAction(
-				CREATURE_SUB_STATE_ACTIONS_FACIAL_ANIMATION, new (FILEPATH, 5958) SubArgumentInteger(C_FACE_SMILE),
+				CREATURE_SUB_STATE_ACTIONS_FACIAL_ANIMATION, new (__FILE__, 5958) SubArgumentInteger(C_FACE_SMILE),
 				&Creature::LookAtCamera, face);
 			break;
 		case 9:
 			creature->mind->agenda.SubActionAgenda.AddMainSubAction(
-				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION, new (FILEPATH, 5962) SubArgumentInteger(C_MISC_LAUGH),
+				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION, new (__FILE__, 5962) SubArgumentInteger(C_MISC_LAUGH),
 				&Creature::LookAtCamera, face);
 			break;
 		case 10:
@@ -4903,14 +4903,14 @@ void MakeMyCreatureReactToNiceMusic(Creature* creature, float mood)
 	}
 	creature->mind->agenda.SubActionAgenda.AddSubAction(
 		CREATURE_SUB_STATE_ACTIONS_STATIC_ACTION,
-		new (FILEPATH, 5972) SubArgumentIntegerAndFloat(C_STATIC_SIT, GRand::GameFloatRand(60.0f, FILEPATH, 5972)),
+		new (__FILE__, 5972) SubArgumentIntegerAndFloat(C_STATIC_SIT, GRand::GameFloatRand(60.0f, __FILE__, 5972)),
 		&Creature::LookAtCamera, &Creature::SetFaceForActionSmile);
 	creature->mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PRACTICE_DANCE,
-	                                                    new (FILEPATH, 5973)
+	                                                    new (__FILE__, 5973)
 	                                                        SubArgumentFloat(min(60.0f, mood * 10.0f + 5.0f)),
 	                                                    &Creature::LookAtCamera, &Creature::SetFaceForActionSmile);
 	creature->mind->agenda.ForcedActionFunction =
-		GRand::GameRand(100, FILEPATH, 5974) > 20 ? &Creature::DanceToMusic : &Creature::BeHappy;
+		GRand::GameRand(100, __FILE__, 5974) > 20 ? &Creature::DanceToMusic : &Creature::BeHappy;
 	creature->SendCandidateHelpScript(CREATURE_HELP_TYPE_MISCELLANEOUS_STACKED,
 	                                  CREATURE_MISCELLANEOUS_HELP_STACKED_NICE_MUSIC, NULL, NULL, 0);
 	creature->mind->SetCheatDominantDesire(CREATURE_DESIRE_TO_PLAY_WITH_PLAYER, 180.0f, true);
@@ -4918,11 +4918,11 @@ void MakeMyCreatureReactToNiceMusic(Creature* creature, float mood)
 
 void MakeMyCreatureReactToNastyMusic(Creature* creature, float mood)
 {
-	uint32_t count = GRand::GameRand(8, FILEPATH, 5985) + 8;
+	uint32_t count = GRand::GameRand(8, __FILE__, 5985) + 8;
 	void (Creature::*face)();
 	for (uint32_t i = 0; i < count; i++)
 	{
-		switch (GRand::GameRand(3, FILEPATH, 5990))
+		switch (GRand::GameRand(3, __FILE__, 5990))
 		{
 		case 0:
 			face = &Creature::SetFaceForActionAnger;
@@ -4934,29 +4934,29 @@ void MakeMyCreatureReactToNastyMusic(Creature* creature, float mood)
 			face = &Creature::SetFaceForMoodSad;
 			break;
 		}
-		if (i == 0 || GRand::GameRand(2, FILEPATH, 6003) == 0)
+		if (i == 0 || GRand::GameRand(2, __FILE__, 6003) == 0)
 		{
 			creature->mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL,
 			                                                    &Creature::LookAtCamera, face);
 		}
-		switch (GRand::GameRand(9, FILEPATH, 6007))
+		switch (GRand::GameRand(9, __FILE__, 6007))
 		{
 		case 0:
 		case 1:
 			creature->mind->agenda.SubActionAgenda.AddSubAction(
-				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION, new (FILEPATH, 6013) SubArgumentInteger(C_INDIVIDUAL_SAD),
+				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION, new (__FILE__, 6013) SubArgumentInteger(C_INDIVIDUAL_SAD),
 				NULL, face);
 			break;
 		case 2:
 			creature->mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-			                                                    new (FILEPATH, 6017) SubArgumentInteger(C_MISC_HOWL),
+			                                                    new (__FILE__, 6017) SubArgumentInteger(C_MISC_HOWL),
 			                                                    NULL, face);
 			break;
 		case 3:
 		case 4:
 			creature->mind->agenda.SubActionAgenda.AddSubAction(
 				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-				new (FILEPATH, 6022) SubArgumentInteger(C_INDIVIDUAL_FRIGHTENED), NULL, face);
+				new (__FILE__, 6022) SubArgumentInteger(C_INDIVIDUAL_FRIGHTENED), NULL, face);
 			break;
 		case 5:
 		case 6:
@@ -4964,23 +4964,23 @@ void MakeMyCreatureReactToNastyMusic(Creature* creature, float mood)
 		case 8:
 			if (creature->alignment->GetValue() < 0.0f)
 			{
-				if (GRand::GameRand(100, FILEPATH, 6030) > 30)
+				if (GRand::GameRand(100, __FILE__, 6030) > 30)
 				{
 					creature->mind->agenda.SubActionAgenda.AddSubAction(
 						CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-						new (FILEPATH, 6033) SubArgumentInteger(C_INDIVIDUAL_ANGRY), NULL, face);
+						new (__FILE__, 6033) SubArgumentInteger(C_INDIVIDUAL_ANGRY), NULL, face);
 				}
 				else
 				{
 					creature->mind->agenda.SubActionAgenda.AddSubAction(
 						CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-						new (FILEPATH, 6038) SubArgumentInteger(C_MISC_FUCK_YOU), NULL, face);
+						new (__FILE__, 6038) SubArgumentInteger(C_MISC_FUCK_YOU), NULL, face);
 				}
 			}
 			else
 			{
 				creature->mind->agenda.SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-				                                                    new (FILEPATH, 6045) SubArgumentInteger(C_MISC_CRY),
+				                                                    new (__FILE__, 6045) SubArgumentInteger(C_MISC_CRY),
 				                                                    NULL, face);
 			}
 			break;
@@ -4990,5 +4990,5 @@ void MakeMyCreatureReactToNastyMusic(Creature* creature, float mood)
 	creature->SendCandidateHelpScript(CREATURE_HELP_TYPE_MISCELLANEOUS_STACKED,
 	                                  CREATURE_MISCELLANEOUS_HELP_STACKED_NASTY_MUSIC, NULL, NULL, 0);
 	creature->mind->SetCheatDominantDesire(
-		GRand::GameRand(100, FILEPATH, 6053) > 50 ? CREATURE_DESIRE_SADNESS : CREATURE_DESIRE_FEAR, 180.0f, true);
+		GRand::GameRand(100, __FILE__, 6053) > 50 ? CREATURE_DESIRE_SADNESS : CREATURE_DESIRE_FEAR, 180.0f, true);
 }

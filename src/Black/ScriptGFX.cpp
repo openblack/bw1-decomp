@@ -161,7 +161,7 @@ void GScript::PlayJCSpecial()
 		Intro::Create(SJC_CANCEL_CAMERA_FOLLOW_FIRE_BALL);
 		break;
 	case SJC_DANS_LES_NUAGES:
-		new (FILEPATH, FILELINE(153, 175)) DansLesNuages();
+		new (__FILE__, FILELINE(153, 175)) DansLesNuages();
 		break;
 	case SJC_CREATE_HAND_WITH_KID:
 		Intro::Create(SJC_CREATE_HAND_WITH_KID);
@@ -182,7 +182,7 @@ void GScript::PlayJCSpecial()
 			delete PetitNavire::Current;
 			PetitNavire::Current = NULL;
 		}
-		new (FILEPATH, 207) PetitNavire(PETIT_NAVIRE_TYPE_BOAT_LAUNCH);
+		new (__FILE__, 207) PetitNavire(PETIT_NAVIRE_TYPE_BOAT_LAUNCH);
 		break;
 	case SJC_CI_BOAT_CRASH:
 		if (PetitNavire::Current != NULL)
@@ -190,7 +190,7 @@ void GScript::PlayJCSpecial()
 			delete PetitNavire::Current;
 			PetitNavire::Current = NULL;
 		}
-		new (FILEPATH, 223) PetitNavire(PETIT_NAVIRE_TYPE_BOAT_CRASH);
+		new (__FILE__, 223) PetitNavire(PETIT_NAVIRE_TYPE_BOAT_CRASH);
 		break;
 	case SJC_CI_BOAT_CRASH2:
 		if (PetitNavire::Current != NULL)
@@ -198,7 +198,7 @@ void GScript::PlayJCSpecial()
 			delete PetitNavire::Current;
 			PetitNavire::Current = NULL;
 		}
-		new (FILEPATH, 232) PetitNavire(PETIT_NAVIRE_TYPE_BOAT_CRASH2);
+		new (__FILE__, 232) PetitNavire(PETIT_NAVIRE_TYPE_BOAT_CRASH2);
 		break;
 	case SJC_CI_BOAT_ARRIVAL_END:
 	case SJC_CI_BOAT_LAUNCH_END:
@@ -221,7 +221,7 @@ void GScript::PlayJCSpecial()
 			AndyEye::Current->Release();
 			AndyEye::Current = NULL;
 		}
-		AndyEye::Current = new (FILEPATH, 256) AndyEye();
+		AndyEye::Current = new (__FILE__, 256) AndyEye();
 		break;
 	case SJC_ZOOM_EYE:
 		if (AndyEye::Current != NULL)
@@ -354,7 +354,7 @@ void GScript::DrawTextA()
 	float    x = g_scriptDLL->FLOAT_POP();
 	wchar_t* text = HelpTextDataBase::HelpTextDatabase.GetHelpText(g_scriptDLL->ULONG_POP());
 
-	CreditTextItem* item = new (FILEPATH, FILELINE(292, 410)) CreditTextItem();
+	CreditTextItem* item = new (__FILE__, FILELINE(292, 410)) CreditTextItem();
 	item->Set(text, x, y, width, height, size, fadeTime);
 }
 
@@ -369,7 +369,7 @@ void GScript::DrawTempText()
 	ScriptDLL* dll = g_scriptDLL;
 	UNICODE_sprintf(TempTextBuffer, L"%s", CHAR2WCHAR(dll->STRING(dll->ULONG_POP())));
 
-	CreditTextItem* item = new (FILEPATH, FILELINE(310, 428)) CreditTextItem();
+	CreditTextItem* item = new (__FILE__, FILELINE(310, 428)) CreditTextItem();
 	item->Set(TempTextBuffer, x, y, width, height, size, fadeTime);
 }
 

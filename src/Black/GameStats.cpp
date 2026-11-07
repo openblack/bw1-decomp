@@ -1063,540 +1063,540 @@ char* GameStatsPackage::GetDatabaseStatsString()
 					clan = LHNetBase::Instance.Session->GamePlayerInfo[i][j].ClanID;
 				}
 			}
-			string = new (FILEPATH, 1165) GameStatsListString;
+			string = new (__FILE__, 1165) GameStatsListString;
 			sprintf(string->GetString(), "CLAN_%ld:", clan);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1170) GameStatsListString;
+			string = new (__FILE__, 1170) GameStatsListString;
 			sprintf(string->GetString(), "USERS_%ld_%ld_%ld_%ld:", users[0], users[1], users[2], users[3]);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1175) GameStatsListString;
+			string = new (__FILE__, 1175) GameStatsListString;
 			sprintf(string->GetString(), "POSITION_%ld:", PerPlayer[i].Position);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1180) GameStatsListString;
+			string = new (__FILE__, 1180) GameStatsListString;
 			sprintf(string->GetString(), "LOHOA_%ld:", PerPlayer[i].LossReason);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1185) GameStatsListString;
+			string = new (__FILE__, 1185) GameStatsListString;
 			strcpy(string->GetString(), "DATA:");
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1191) GameStatsListString;
+			string = new (__FILE__, 1191) GameStatsListString;
 			sprintf(string->GetString(), "TotalBirths=%ld;", PerPlayer[i].TotalBirths);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1196) GameStatsListString;
+			string = new (__FILE__, 1196) GameStatsListString;
 			sprintf(string->GetString(), "TotalDeaths=%ld;", PerPlayer[i].TotalDeaths);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1201) GameStatsListString;
+			string = new (__FILE__, 1201) GameStatsListString;
 			sprintf(string->GetString(), "FinalTotalPopulation=%ld;", PerPlayer[i].FinalTotalPopulation);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1206) GameStatsListString;
+			string = new (__FILE__, 1206) GameStatsListString;
 			sprintf(string->GetString(), "FinalMalePopulation=%ld;", PerPlayer[i].FinalMalePopulation);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1211) GameStatsListString;
+			string = new (__FILE__, 1211) GameStatsListString;
 			sprintf(string->GetString(), "FinalFemalePopulation=%ld;", PerPlayer[i].FinalFemalePopulation);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1216) GameStatsListString;
+			string = new (__FILE__, 1216) GameStatsListString;
 			sprintf(string->GetString(), "FinalTotalPopulationCapacity=%ld;",
 			        PerPlayer[i].FinalTotalPopulationCapacity);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1221) GameStatsListString;
+			string = new (__FILE__, 1221) GameStatsListString;
 			sprintf(string->GetString(), "MaxTotalPopulation=%ld;", PerPlayer[i].MaxTotalPopulation);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1226) GameStatsListString;
+			string = new (__FILE__, 1226) GameStatsListString;
 			sprintf(string->GetString(), "MaxMalePopulation=%ld;", PerPlayer[i].MaxMalePopulation);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1231) GameStatsListString;
+			string = new (__FILE__, 1231) GameStatsListString;
 			sprintf(string->GetString(), "MaxFemalePopulation=%ld;", PerPlayer[i].MaxFemalePopulation);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1236) GameStatsListString;
+			string = new (__FILE__, 1236) GameStatsListString;
 			sprintf(string->GetString(), "MinTotalPopulation=%ld;", PerPlayer[i].MinTotalPopulation);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1241) GameStatsListString;
+			string = new (__FILE__, 1241) GameStatsListString;
 			sprintf(string->GetString(), "MinMalePopulation=%ld;", PerPlayer[i].MinMalePopulation);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1246) GameStatsListString;
+			string = new (__FILE__, 1246) GameStatsListString;
 			sprintf(string->GetString(), "MinFemalePopulation=%ld;", PerPlayer[i].MinFemalePopulation);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1251) GameStatsListString;
+			string = new (__FILE__, 1251) GameStatsListString;
 			sprintf(string->GetString(), "TotalPeopleConverted=%ld;", PerPlayer[i].TotalPeopleConverted);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1256) GameStatsListString;
+			string = new (__FILE__, 1256) GameStatsListString;
 			sprintf(string->GetString(), "AverageSatisfactionOfVillagers=%.2f;",
 			        PerPlayer[i].AverageSatisfactionOfVillagers);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1261) GameStatsListString;
+			string = new (__FILE__, 1261) GameStatsListString;
 			sprintf(string->GetString(), "TownsOwned=%ld;", PerPlayer[i].TownsOwned);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1266) GameStatsListString;
+			string = new (__FILE__, 1266) GameStatsListString;
 			sprintf(string->GetString(), "TotalBuildings=%ld;", PerPlayer[i].TotalBuildings);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1271) GameStatsListString;
+			string = new (__FILE__, 1271) GameStatsListString;
 			sprintf(string->GetString(), "TotalAbodes=%ld;", PerPlayer[i].TotalAbodes);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1276) GameStatsListString;
+			string = new (__FILE__, 1276) GameStatsListString;
 			sprintf(string->GetString(), "TotalCivicBuildings=%ld;", PerPlayer[i].TotalCivicBuildings);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1281) GameStatsListString;
+			string = new (__FILE__, 1281) GameStatsListString;
 			sprintf(string->GetString(), "TotalWonders=%ld;", PerPlayer[i].TotalWonders);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1286) GameStatsListString;
+			string = new (__FILE__, 1286) GameStatsListString;
 			sprintf(string->GetString(), "TotalBuildingsBuilt=%ld;", PerPlayer[i].TotalBuildingsBuilt);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1291) GameStatsListString;
+			string = new (__FILE__, 1291) GameStatsListString;
 			sprintf(string->GetString(), "TotalAbodesBuilt=%ld;", PerPlayer[i].TotalAbodesBuilt);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1296) GameStatsListString;
+			string = new (__FILE__, 1296) GameStatsListString;
 			sprintf(string->GetString(), "TotalCivicBuildingsBuilt=%ld;", PerPlayer[i].TotalCivicBuildingsBuilt);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1301) GameStatsListString;
+			string = new (__FILE__, 1301) GameStatsListString;
 			sprintf(string->GetString(), "TotalWondersBuilt=%ld;", PerPlayer[i].TotalWondersBuilt);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1306) GameStatsListString;
+			string = new (__FILE__, 1306) GameStatsListString;
 			sprintf(string->GetString(), "NumDiscipleFarmers=%ld;", PerPlayer[i].NumDiscipleFarmers);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1311) GameStatsListString;
+			string = new (__FILE__, 1311) GameStatsListString;
 			sprintf(string->GetString(), "NumDiscipleForesters=%ld;", PerPlayer[i].NumDiscipleForesters);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1316) GameStatsListString;
+			string = new (__FILE__, 1316) GameStatsListString;
 			sprintf(string->GetString(), "NumDiscipleFishermen=%ld;", PerPlayer[i].NumDiscipleFishermen);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1321) GameStatsListString;
+			string = new (__FILE__, 1321) GameStatsListString;
 			sprintf(string->GetString(), "NumDiscipleBuilders=%ld;", PerPlayer[i].NumDiscipleBuilders);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1326) GameStatsListString;
+			string = new (__FILE__, 1326) GameStatsListString;
 			sprintf(string->GetString(), "NumDiscipleBreeders=%ld;", PerPlayer[i].NumDiscipleBreeders);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1331) GameStatsListString;
+			string = new (__FILE__, 1331) GameStatsListString;
 			sprintf(string->GetString(), "NumDiscipleTraders=%ld;", PerPlayer[i].NumDiscipleTraders);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1336) GameStatsListString;
+			string = new (__FILE__, 1336) GameStatsListString;
 			sprintf(string->GetString(), "NumDiscipleMissionaries=%ld;", PerPlayer[i].NumDiscipleMissionaries);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1341) GameStatsListString;
+			string = new (__FILE__, 1341) GameStatsListString;
 			sprintf(string->GetString(), "NumDiscipleCraftsmen=%ld;", PerPlayer[i].NumDiscipleCraftsmen);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1346) GameStatsListString;
+			string = new (__FILE__, 1346) GameStatsListString;
 			sprintf(string->GetString(), "TotalFoodEaten=%ld;", PerPlayer[i].TotalFoodEaten);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1351) GameStatsListString;
+			string = new (__FILE__, 1351) GameStatsListString;
 			sprintf(string->GetString(), "WoodUsed=%ld;", PerPlayer[i].WoodUsed);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1356) GameStatsListString;
+			string = new (__FILE__, 1356) GameStatsListString;
 			sprintf(string->GetString(), "NumGodsDefeated=%ld;", PerPlayer[i].NumGodsDefeated);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1361) GameStatsListString;
+			string = new (__FILE__, 1361) GameStatsListString;
 			sprintf(string->GetString(), "AligmentChange=%.2f;", PerPlayer[i].AligmentChange);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1366) GameStatsListString;
+			string = new (__FILE__, 1366) GameStatsListString;
 			sprintf(string->GetString(), "TotalPeopleKilled=%ld;", PerPlayer[i].TotalPeopleKilled);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1371) GameStatsListString;
+			string = new (__FILE__, 1371) GameStatsListString;
 			sprintf(string->GetString(), "FinalTotalBelief=%.2f;", PerPlayer[i].FinalTotalBelief);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1376) GameStatsListString;
+			string = new (__FILE__, 1376) GameStatsListString;
 			sprintf(string->GetString(), "MaxTotalBelief=%.2f;", PerPlayer[i].MaxTotalBelief);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1381) GameStatsListString;
+			string = new (__FILE__, 1381) GameStatsListString;
 			sprintf(string->GetString(), "MinTotalBelief=%.2f;", PerPlayer[i].MinTotalBelief);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1386) GameStatsListString;
+			string = new (__FILE__, 1386) GameStatsListString;
 			sprintf(string->GetString(), "FinalAreaOfInfluence=%.2f;", PerPlayer[i].FinalAreaOfInfluence);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1391) GameStatsListString;
+			string = new (__FILE__, 1391) GameStatsListString;
 			sprintf(string->GetString(), "NumOfArtifacts=%ld;", PerPlayer[i].NumOfArtifacts);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1396) GameStatsListString;
+			string = new (__FILE__, 1396) GameStatsListString;
 			sprintf(string->GetString(), "CreatureGrowth=%.2f;", PerPlayer[i].CreatureGrowth);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1401) GameStatsListString;
+			string = new (__FILE__, 1401) GameStatsListString;
 			sprintf(string->GetString(), "CreatureAlignmentChange=%.2f;", PerPlayer[i].CreatureAlignmentChange);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1406) GameStatsListString;
+			string = new (__FILE__, 1406) GameStatsListString;
 			sprintf(string->GetString(), "BuildingsDestroyed=%ld;", PerPlayer[i].BuildingsDestroyed);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1411) GameStatsListString;
+			string = new (__FILE__, 1411) GameStatsListString;
 			sprintf(string->GetString(), "TotalAgressiveSpellsCast=%ld;", PerPlayer[i].TotalAgressiveSpellsCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1416) GameStatsListString;
+			string = new (__FILE__, 1416) GameStatsListString;
 			sprintf(string->GetString(), "TotalNiceSpellsCast=%ld;", PerPlayer[i].TotalNiceSpellsCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1421) GameStatsListString;
+			string = new (__FILE__, 1421) GameStatsListString;
 			sprintf(string->GetString(), "TotalCreatureSpellsCast=%ld;", PerPlayer[i].TotalCreatureSpellsCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1426) GameStatsListString;
+			string = new (__FILE__, 1426) GameStatsListString;
 			sprintf(string->GetString(), "NumFireballCast=%ld;", PerPlayer[i].NumFireballCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1431) GameStatsListString;
+			string = new (__FILE__, 1431) GameStatsListString;
 			sprintf(string->GetString(), "NumFireballPU1Cast=%ld;", PerPlayer[i].NumFireballPU1Cast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1436) GameStatsListString;
+			string = new (__FILE__, 1436) GameStatsListString;
 			sprintf(string->GetString(), "NumFireballPU2Cast=%ld;", PerPlayer[i].NumFireballPU2Cast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1441) GameStatsListString;
+			string = new (__FILE__, 1441) GameStatsListString;
 			sprintf(string->GetString(), "NumLightningCast=%ld;", PerPlayer[i].NumLightningCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1446) GameStatsListString;
+			string = new (__FILE__, 1446) GameStatsListString;
 			sprintf(string->GetString(), "NumLightningPU1Cast=%ld;", PerPlayer[i].NumLightningPU1Cast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1451) GameStatsListString;
+			string = new (__FILE__, 1451) GameStatsListString;
 			sprintf(string->GetString(), "NumLightningPU2Cast=%ld;", PerPlayer[i].NumLightningPU2Cast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1456) GameStatsListString;
+			string = new (__FILE__, 1456) GameStatsListString;
 			sprintf(string->GetString(), "NumExplosionCast=%ld;", PerPlayer[i].NumExplosionCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1461) GameStatsListString;
+			string = new (__FILE__, 1461) GameStatsListString;
 			sprintf(string->GetString(), "NumExplosionPU1Cast=%ld;", PerPlayer[i].NumExplosionPU1Cast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1466) GameStatsListString;
+			string = new (__FILE__, 1466) GameStatsListString;
 			sprintf(string->GetString(), "NumExplosionPU2Cast=%ld;", PerPlayer[i].NumExplosionPU2Cast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1471) GameStatsListString;
+			string = new (__FILE__, 1471) GameStatsListString;
 			sprintf(string->GetString(), "NumHealCast=%ld;", PerPlayer[i].NumHealCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1476) GameStatsListString;
+			string = new (__FILE__, 1476) GameStatsListString;
 			sprintf(string->GetString(), "NumHealPU1Cast=%ld;", PerPlayer[i].NumHealPU1Cast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1481) GameStatsListString;
+			string = new (__FILE__, 1481) GameStatsListString;
 			sprintf(string->GetString(), "NumTeleportCast=%ld;", PerPlayer[i].NumTeleportCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1486) GameStatsListString;
+			string = new (__FILE__, 1486) GameStatsListString;
 			sprintf(string->GetString(), "NumMagicForestCast=%ld;", PerPlayer[i].NumMagicForestCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1491) GameStatsListString;
+			string = new (__FILE__, 1491) GameStatsListString;
 			sprintf(string->GetString(), "NumMagicFoodCast=%ld;", PerPlayer[i].NumMagicFoodCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1496) GameStatsListString;
+			string = new (__FILE__, 1496) GameStatsListString;
 			sprintf(string->GetString(), "NumMagicFoodPU1Cast=%ld;", PerPlayer[i].NumMagicFoodPU1Cast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1501) GameStatsListString;
+			string = new (__FILE__, 1501) GameStatsListString;
 			sprintf(string->GetString(), "NumStormWindRainCast=%ld;", PerPlayer[i].NumStormWindRainCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1506) GameStatsListString;
+			string = new (__FILE__, 1506) GameStatsListString;
 			sprintf(string->GetString(), "NumStormWindRainLightningCast=%ld;",
 			        PerPlayer[i].NumStormWindRainLightningCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1511) GameStatsListString;
+			string = new (__FILE__, 1511) GameStatsListString;
 			sprintf(string->GetString(), "NumTornadoCast=%ld;", PerPlayer[i].NumTornadoCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1516) GameStatsListString;
+			string = new (__FILE__, 1516) GameStatsListString;
 			sprintf(string->GetString(), "NumMagicShieldCast=%ld;", PerPlayer[i].NumMagicShieldCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1521) GameStatsListString;
+			string = new (__FILE__, 1521) GameStatsListString;
 			sprintf(string->GetString(), "NumPhysicalShieldCast=%ld;", PerPlayer[i].NumPhysicalShieldCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1526) GameStatsListString;
+			string = new (__FILE__, 1526) GameStatsListString;
 			sprintf(string->GetString(), "NumMagicWoodCast=%ld;", PerPlayer[i].NumMagicWoodCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1531) GameStatsListString;
+			string = new (__FILE__, 1531) GameStatsListString;
 			sprintf(string->GetString(), "NumMagicWaterCast=%ld;", PerPlayer[i].NumMagicWaterCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1536) GameStatsListString;
+			string = new (__FILE__, 1536) GameStatsListString;
 			sprintf(string->GetString(), "NumMagicWaterPU1Cast=%ld;", PerPlayer[i].NumMagicWaterPU1Cast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1541) GameStatsListString;
+			string = new (__FILE__, 1541) GameStatsListString;
 			sprintf(string->GetString(), "NumFlockFlyingCast=%ld;", PerPlayer[i].NumFlockFlyingCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1546) GameStatsListString;
+			string = new (__FILE__, 1546) GameStatsListString;
 			sprintf(string->GetString(), "NumFlockGroundCast=%ld;", PerPlayer[i].NumFlockGroundCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1551) GameStatsListString;
+			string = new (__FILE__, 1551) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureFreezeCast=%ld;", PerPlayer[i].NumCreatureFreezeCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1556) GameStatsListString;
+			string = new (__FILE__, 1556) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureSmallCast=%ld;", PerPlayer[i].NumCreatureSmallCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1561) GameStatsListString;
+			string = new (__FILE__, 1561) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureBigCast=%ld;", PerPlayer[i].NumCreatureBigCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1566) GameStatsListString;
+			string = new (__FILE__, 1566) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureWeakCast=%ld;", PerPlayer[i].NumCreatureWeakCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1571) GameStatsListString;
+			string = new (__FILE__, 1571) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureStrongCast=%ld;", PerPlayer[i].NumCreatureStrongCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1576) GameStatsListString;
+			string = new (__FILE__, 1576) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureFatCast=%ld;", PerPlayer[i].NumCreatureFatCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1581) GameStatsListString;
+			string = new (__FILE__, 1581) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureThinCast=%ld;", PerPlayer[i].NumCreatureThinCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1586) GameStatsListString;
+			string = new (__FILE__, 1586) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureInvisibleCast=%ld;", PerPlayer[i].NumCreatureInvisibleCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1591) GameStatsListString;
+			string = new (__FILE__, 1591) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureCompassionCast=%ld;", PerPlayer[i].NumCreatureCompassionCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1596) GameStatsListString;
+			string = new (__FILE__, 1596) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureAngryCast=%ld;", PerPlayer[i].NumCreatureAngryCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1601) GameStatsListString;
+			string = new (__FILE__, 1601) GameStatsListString;
 			sprintf(string->GetString(), "NumCreatureItchyCast=%ld;", PerPlayer[i].NumCreatureItchyCast);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1606) GameStatsListString;
+			string = new (__FILE__, 1606) GameStatsListString;
 			sprintf(string->GetString(), "TotalChantsUsed=%.2f;", PerPlayer[i].TotalChantsUsed);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1611) GameStatsListString;
+			string = new (__FILE__, 1611) GameStatsListString;
 			sprintf(string->GetString(), "TotalNumSacrifices=%ld;", PerPlayer[i].TotalNumSacrifices);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1616) GameStatsListString;
+			string = new (__FILE__, 1616) GameStatsListString;
 			sprintf(string->GetString(), "CreatureAge=%ld;", PerPlayer[i].CreatureAge);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1621) GameStatsListString;
+			string = new (__FILE__, 1621) GameStatsListString;
 			sprintf(string->GetString(), "CreatureAlignment=%.2f;", PerPlayer[i].CreatureAlignment);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
 #if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
-			string = new (FILEPATH, 1626) GameStatsListString;
+			string = new (__FILE__, 1626) GameStatsListString;
 			sprintf(string->GetString(), "CreatureNumPeopleKilled=%ld;", PerPlayer[i].CreatureNumPeopleKilled);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 #endif
 
-			string = new (FILEPATH, 1631) GameStatsListString;
+			string = new (__FILE__, 1631) GameStatsListString;
 			sprintf(string->GetString(), "CreatureNumAnimalsKilled=%ld;", PerPlayer[i].CreatureNumAnimalsKilled);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1636) GameStatsListString;
+			string = new (__FILE__, 1636) GameStatsListString;
 			sprintf(string->GetString(), "CreatureNumCreaturesKilled=%ld;", PerPlayer[i].CreatureNumCreaturesKilled);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1641) GameStatsListString;
+			string = new (__FILE__, 1641) GameStatsListString;
 			sprintf(string->GetString(), "CreatureNumBattlesFought=%ld;", PerPlayer[i].CreatureNumBattlesFought);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1646) GameStatsListString;
+			string = new (__FILE__, 1646) GameStatsListString;
 			sprintf(string->GetString(), "CreatureNumBattlesWon=%ld;", PerPlayer[i].CreatureNumBattlesWon);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1651) GameStatsListString;
+			string = new (__FILE__, 1651) GameStatsListString;
 			sprintf(string->GetString(), "CreatureNumPoos=%ld;", PerPlayer[i].CreatureNumPoos);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1656) GameStatsListString;
+			string = new (__FILE__, 1656) GameStatsListString;
 			sprintf(string->GetString(), "CreatureDamage=%.2f;", PerPlayer[i].CreatureDamage);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1661) GameStatsListString;
+			string = new (__FILE__, 1661) GameStatsListString;
 			sprintf(string->GetString(), "CreatureTiredness=%.2f;", PerPlayer[i].CreatureTiredness);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1666) GameStatsListString;
+			string = new (__FILE__, 1666) GameStatsListString;
 			sprintf(string->GetString(), "CreatureHunger=%.2f;", PerPlayer[i].CreatureHunger);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1671) GameStatsListString;
+			string = new (__FILE__, 1671) GameStatsListString;
 			sprintf(string->GetString(), "CreatureNumMushroomsEaten=%ld;", PerPlayer[i].CreatureNumMushroomsEaten);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1676) GameStatsListString;
+			string = new (__FILE__, 1676) GameStatsListString;
 			sprintf(string->GetString(), "TimePlayed=%ld;", TimePlayed);
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-			string = new (FILEPATH, 1681) GameStatsListString;
+			string = new (__FILE__, 1681) GameStatsListString;
 			strcpy(string->GetString(), "EODP:");
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 		}
 	}
 
-	char* result = new (FILEPATH, 1690) char[length + 1000];
+	char* result = new (__FILE__, 1690) char[length + 1000];
 	strcpy(result, "!!STATSCALC:");
 	unsigned long gameDataLength = GGame::g_game->network.session->GetGameDataLength();
 	char*         mapName;
 	if (gameDataLength == 0)
 	{
-		mapName = new (FILEPATH, 1696) char[0x100];
+		mapName = new (__FILE__, 1696) char[0x100];
 		strcpy(mapName, "NULL");
 	}
 	else

@@ -343,9 +343,9 @@ GAudio::GAudio()
 	OSVERSIONINFO versionInfo;
 
 #ifdef VERSION_BW1WCI
-	AudioSystem = new (FILEPATH, 333) LH_AudioSystem;
+	AudioSystem = new (__FILE__, 333) LH_AudioSystem;
 #else
-	AudioSystem = new (FILEPATH, 325) LH_AudioSystem;
+	AudioSystem = new (__FILE__, 325) LH_AudioSystem;
 #endif
 	AudioSystem->EnableWave = true;
 	AudioSystem->EnableMidi = false;

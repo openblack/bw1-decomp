@@ -128,9 +128,9 @@ void Animal::GetFleeingPositionFromMovingObject(MapCoords* pos, GameThingWithPos
 		side.z = movement.x;
 		side.FastNormalizeInline();
 		LHPoint offset;
-		offset.x = side.x * distance + GRand::GameFloatRand(ANIMAL_FLEE_POSITION_SPREAD, FILEPATH, 204) -
+		offset.x = side.x * distance + GRand::GameFloatRand(ANIMAL_FLEE_POSITION_SPREAD, __FILE__, 204) -
 		           ANIMAL_FLEE_POSITION_SPREAD / 2;
-		offset.z = side.z * distance + GRand::GameFloatRand(ANIMAL_FLEE_POSITION_SPREAD, FILEPATH, 205) -
+		offset.z = side.z * distance + GRand::GameFloatRand(ANIMAL_FLEE_POSITION_SPREAD, __FILE__, 205) -
 		           ANIMAL_FLEE_POSITION_SPREAD / 2;
 		if (side.z * away.z + side.x * away.x >= 0.0f)
 		{

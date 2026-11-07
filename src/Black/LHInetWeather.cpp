@@ -310,10 +310,10 @@ LH_RETURN LHInetWeather::SetServer(char* name, uint16_t port, char* url)
 		return LH_ERROR;
 	}
 	size_t length = strlen(name) + LH_INETWEATHER_STRING_PADDING;
-	ServerName = new (FILEPATH, 511) char[length];
+	ServerName = new (__FILE__, 511) char[length];
 	strcpy(ServerName, name);
 	length = strlen(url) + LH_INETWEATHER_STRING_PADDING;
-	ServerURL = new (FILEPATH, 514) char[length];
+	ServerURL = new (__FILE__, 514) char[length];
 	strcpy(ServerURL, url);
 	ServerPort = port;
 	return LH_OK;
@@ -326,7 +326,7 @@ LH_RETURN LHInetWeather::SetDataFilePath(char* path)
 		return LH_FAIL;
 	}
 	size_t length = strlen(path) + LH_INETWEATHER_STRING_PADDING;
-	DataFilePath = new (FILEPATH, 526) char[length];
+	DataFilePath = new (__FILE__, 526) char[length];
 	strcpy(DataFilePath, path);
 	return LH_OK;
 }
@@ -489,7 +489,7 @@ LH_RETURN LHInetWeather::GetLocationDataForUser(char* user_name, char* password,
 		delete Http;
 		Http = NULL;
 	}
-	Http = new (FILEPATH, 858) LHHttp2;
+	Http = new (__FILE__, 858) LHHttp2;
 	if (Http->Open(ServerName, ServerPort) == LH_OK)
 	{
 		if (Http->PrepareRequest(HTTP_REQUEST_TYPE_GET,
@@ -500,7 +500,7 @@ LH_RETURN LHInetWeather::GetLocationDataForUser(char* user_name, char* password,
 			if (Http->HelperGetDocument(false) == LH_HTTP_STATUS_RECEIVED)
 			{
 				DocumentSize = Http->GetDocumentSize();
-				Document = new (FILEPATH, 867) char[DocumentSize + LH_INETWEATHER_DOCUMENT_PADDING];
+				Document = new (__FILE__, 867) char[DocumentSize + LH_INETWEATHER_DOCUMENT_PADDING];
 				memset(Document, 0, DocumentSize + LH_INETWEATHER_DOCUMENT_PADDING);
 				Http->GetDocument(Document);
 				Document[DocumentSize] = '\0';
@@ -581,7 +581,7 @@ LH_RETURN LHInetWeather::QueryWeather(LHInetWeatherLocation& location)
 		delete Http;
 		Http = NULL;
 	}
-	Http = new (FILEPATH, 965) LHHttp2;
+	Http = new (__FILE__, 965) LHHttp2;
 	if (Http->Open(ServerName, ServerPort) == LH_OK)
 	{
 		if (Http->PrepareRequest(HTTP_REQUEST_TYPE_GET, LHSPrintf("%s?%s", ServerURL, request), NULL, NULL, 0) ==
@@ -590,7 +590,7 @@ LH_RETURN LHInetWeather::QueryWeather(LHInetWeatherLocation& location)
 			if (Http->HelperGetDocument(false) == LH_HTTP_STATUS_RECEIVED)
 			{
 				DocumentSize = Http->GetDocumentSize();
-				Document = new (FILEPATH, 974) char[DocumentSize + LH_INETWEATHER_DOCUMENT_PADDING];
+				Document = new (__FILE__, 974) char[DocumentSize + LH_INETWEATHER_DOCUMENT_PADDING];
 				memset(Document, 0, DocumentSize + LH_INETWEATHER_DOCUMENT_PADDING);
 				Http->GetDocument(Document);
 				Document[DocumentSize] = '\0';
@@ -660,7 +660,7 @@ LH_RETURN LHInetWeather::DecodeWeatherData(LHInetWeatherLocation& location)
 		}
 		if (strcmp(day, "-1") != 0)
 		{
-			LHInetWeatherLocation* entry = new (FILEPATH, 1177) LHInetWeatherLocation();
+			LHInetWeatherLocation* entry = new (__FILE__, 1177) LHInetWeatherLocation();
 			entry->SetLocation(location.GetLocationCountryPtr(), location.GetLocationAreaPtr(),
 			                   location.GetLocationCityPtr());
 			entry->SetDate(atoi(day), atoi(month), atoi(year));
@@ -717,7 +717,7 @@ LH_RETURN LHInetWeather::LoadWeatherData()
 	}
 	for (unsigned long i = 0; i < count; i++)
 	{
-		LHInetWeatherLocation* entry = new (FILEPATH, 1234) LHInetWeatherLocation();
+		LHInetWeatherLocation* entry = new (__FILE__, 1234) LHInetWeatherLocation();
 		if (entry != NULL && fread(entry, sizeof(LHInetWeatherLocation), 1, file) == 1)
 		{
 			Locations.Add(entry);
@@ -737,7 +737,7 @@ bool LHInetWeather::ReadWeatherInfoDataFile(char* path)
 	{
 		while (!feof(file))
 		{
-			LHInetWeatherData* data = new (FILEPATH, 1259) LHInetWeatherData;
+			LHInetWeatherData* data = new (__FILE__, 1259) LHInetWeatherData;
 			if (fread(data, sizeof(LHInetWeatherData), 1, file) == 1)
 			{
 				WeatherData.Add(data);
@@ -865,7 +865,7 @@ void LHInetWeather::LHLoadCountryInformationFile(char* path)
 		{
 			if (fgets(line, sizeof(line), file) != NULL)
 			{
-				LHCountryInfo* info = new (FILEPATH, 1389) LHCountryInfo;
+				LHCountryInfo* info = new (__FILE__, 1389) LHCountryInfo;
 				if (info != NULL)
 				{
 					int i = 0;

@@ -41,7 +41,7 @@ char* Flowers::GetDebugText()
 Feature* Feature::Create(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale,
                          float percent_built, bool32_t under_construction)
 {
-	Feature* feature = new (FILEPATH, 19) Feature(coords, info, y_angle, scale, percent_built, under_construction);
+	Feature* feature = new (__FILE__, 19) Feature(coords, info, y_angle, scale, percent_built, under_construction);
 	if (feature != NULL)
 	{
 		feature->CallVirtualFunctionsForCreation(coords);

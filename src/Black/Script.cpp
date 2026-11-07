@@ -61,9 +61,9 @@ static uint32_t UnusedStatic = 0;
 GScript* GScript::Create()
 {
 #ifdef VERSION_BW1W100
-	GScript* script = new (FILEPATH, 46) GScript();
+	GScript* script = new (__FILE__, 46) GScript();
 #else
-	GScript* script = new (FILEPATH, 47) GScript();
+	GScript* script = new (__FILE__, 47) GScript();
 #endif
 	if (script != NULL)
 	{

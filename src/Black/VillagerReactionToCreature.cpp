@@ -133,7 +133,7 @@ bool32_t Villager::InspectCreatureReaction()
 		InspectDistance = VILLAGER_INSPECT_CREATURE_START_DISTANCE;
 		uint32_t minTurns = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_CREATURE_MIN_SECONDS);
 		uint32_t extraTurns = GRand::GameRand(
-			GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_CREATURE_RAND_SECONDS), FILEPATH, 160);
+			GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_CREATURE_RAND_SECONDS), __FILE__, 160);
 		InspectTurnsUntilApproach = minTurns + extraTurns;
 		SetTopState(VILLAGER_STATE_PERFORM_INSPECT_CREATURE_REACTION);
 		UpdateAttitudeToCreature();
@@ -192,7 +192,7 @@ bool32_t Villager::ApproachCreatureReaction()
 		}
 		uint32_t minTurns = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_CREATURE_MIN_SECONDS);
 		uint32_t extraTurns = GRand::GameRand(
-			GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_REINSPECT_CREATURE_RAND_SECONDS), FILEPATH,
+			GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_REINSPECT_CREATURE_RAND_SECONDS), __FILE__,
 			231);
 		InspectTurnsUntilApproach = minTurns + extraTurns;
 		InspectDistance -= VILLAGER_INSPECT_CREATURE_DISTANCE_STEP;
@@ -290,7 +290,7 @@ bool32_t Villager::FleeingFromCreatureReaction()
 				if (creature != NULL && creature->mind->agenda.CurrentPlan.ObjectToActOn != NULL &&
 				    creature->mind->agenda.CurrentPlan.ObjectToActOn->Pointer != NULL)
 				{
-					if (GRand::GameRand(VILLAGER_FLEE_CREATURE_RAND_RANGE, FILEPATH, 353) != 0)
+					if (GRand::GameRand(VILLAGER_FLEE_CREATURE_RAND_RANGE, __FILE__, 353) != 0)
 					{
 						return true;
 					}

@@ -195,7 +195,7 @@ WorshipSite* WorshipSite::Create(const MapCoords& coords, const GWorshipSiteInfo
 		}
 		pos = citadel->Pos;
 	}
-	WorshipSite* site = new (FILEPATH, WORSHIP_LINE(190))
+	WorshipSite* site = new (__FILE__, WORSHIP_LINE(190))
 		WorshipSite(pos, info, citadel, slot, tribe_info, angle, scale, percent_built, under_construction);
 	if (site != NULL)
 	{
@@ -271,7 +271,7 @@ void WorshipSite::Init(unsigned long slot)
 {
 	MapCoords pos;
 	GetDancePos(&pos);
-	dance = new (FILEPATH, WORSHIP_LINE(287))
+	dance = new (__FILE__, WORSHIP_LINE(287))
 		Dance(pos, &GDanceInfo::Infos[DANCE_INFO_CITADEL_DANCE_1 + slot], this, 0, 0, NULL);
 	SetWorshipSpeed(WORSHIP_SITE_INITIAL_WORSHIP_SPEED);
 	CreateFoodPot();
@@ -411,7 +411,7 @@ void WorshipSite::CreateManaPathSprite(const MapCoords& coords, float speed, Gam
 		                                     LHPoint(0.0f, 0.0f, 0.0f), 1.0f, PSysInterface::NET_GAME_TYPE_LOCAL);
 	}
 	GPlayer* player = target->GetPlayer();
-	ManaPathPSys->AddTarget(new (FILEPATH, WORSHIP_LINE(442)) SpellPointInf(
+	ManaPathPSys->AddTarget(new (__FILE__, WORSHIP_LINE(442)) SpellPointInf(
 		coords.GetLHPoint(), speed, target->Pos.GetLHPoint(), player != NULL ? player->GetPlayerColour() : 0));
 }
 
@@ -742,7 +742,7 @@ bool32_t WorshipSite::IsBuilt()
 
 MultiMapFixed* WorshipSite::GetBuildingObjectForSpellIcon()
 {
-	uint32_t       random = GRand::GameRand(WORSHIP_SITE_SPELL_ICON_BUILD_RANDOM_RANGE, FILEPATH, WORSHIP_LINE(1013));
+	uint32_t       random = GRand::GameRand(WORSHIP_SITE_SPELL_ICON_BUILD_RANDOM_RANGE, __FILE__, WORSHIP_LINE(1013));
 	MultiMapFixed* building = this;
 	float          lowest = GetPercentBuilt();
 	for (WorshipSpellIcon* icon = IconList.head; icon != NULL; icon = icon->next)
@@ -787,7 +787,7 @@ bool32_t PlannedWorshipSite::Load(GameOSFile& file)
 
 PlannedMultiMapFixed* WorshipSite::ConvertToPlanned()
 {
-	PlannedWorshipSite* planned = new (FILEPATH, WORSHIP_LINE(1069))
+	PlannedWorshipSite* planned = new (__FILE__, WORSHIP_LINE(1069))
 		PlannedWorshipSite(Pos, GetInfo(), GetTribe()->type, GetCitadel(), GetYAngle(), GetScale());
 	if (planned != NULL)
 	{
@@ -1063,13 +1063,13 @@ void WorshipSite::AddTown(Town* town)
 	{
 		if (GetFootpathLink() == NULL)
 		{
-			FootpathLink = new (FILEPATH, WORSHIP_LINE(1386)) GFootpathLink();
+			FootpathLink = new (__FILE__, WORSHIP_LINE(1386)) GFootpathLink();
 		}
 		int pathIndex;
 		if (GetFootpathLink()->GetNearestPathToQuick(storagePit->GetArrivePos(), GetArrivePos(),
 		                                             WORSHIP_SITE_FOOTPATH_MAX_DISTANCE, pathIndex, NULL) == NULL)
 		{
-			new (FILEPATH, WORSHIP_LINE(1390)) GFootpathFinder(storagePit, this);
+			new (__FILE__, WORSHIP_LINE(1390)) GFootpathFinder(storagePit, this);
 		}
 	}
 	AddTownSpells(town);
@@ -1494,7 +1494,7 @@ void WorshipSite::AddArtifact(Fixed* artifact, GPlayer* player)
 	TownArtifact* townArtifact = (TownArtifact*)artifact->GetTownArtifact();
 	if (townArtifact == NULL)
 	{
-		townArtifact = new (FILEPATH, WORSHIP_LINE(2092)) TownArtifact(artifact, this, player);
+		townArtifact = new (__FILE__, WORSHIP_LINE(2092)) TownArtifact(artifact, this, player);
 		artifact->town_artifact = townArtifact;
 	}
 	if (!Artifacts.IsThisInList(townArtifact))
@@ -1774,19 +1774,19 @@ void WorshipSite::CreateCollideData()
 		LHPoint(22.537f, 3.0f, -35.073f), //
 		LHPoint(26.905f, 3.0f, -33.063f), //
 	};
-	CollideData = new (FILEPATH, WORSHIP_LINE(2390)) NewCollide(Game3dObject);
+	CollideData = new (__FILE__, WORSHIP_LINE(2390)) NewCollide(Game3dObject);
 	if (CollideData->obj->IteratorList != NULL)
 	{
 		delete CollideData->obj->IteratorList;
 	}
-	CollideData->obj->IteratorList = new (FILEPATH, WORSHIP_LINE(2394)) NewCollide::List(WORSHIP_SITE_COLLIDE_POINTS);
+	CollideData->obj->IteratorList = new (__FILE__, WORSHIP_LINE(2394)) NewCollide::List(WORSHIP_SITE_COLLIDE_POINTS);
 	LHMatrix matrix;
 	GetWorldMatrix(&matrix);
 	for (int i = 0; i < WORSHIP_SITE_COLLIDE_POINTS; i++)
 	{
 		LHPoint pos = CollidePoints[i];
 		matrix.TransformPoint(pos);
-		CollideData->obj->IteratorList->Add(new (FILEPATH, WORSHIP_LINE(2402))
+		CollideData->obj->IteratorList->Add(new (__FILE__, WORSHIP_LINE(2402))
 		                                        NewCollide::Obj(CollideRadiusScale * CollidePoints[i].y, &pos));
 	}
 }

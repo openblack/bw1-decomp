@@ -14,7 +14,7 @@ CameraModeScript* CameraModeScript::Create(GCamera* camera)
 	{
 		return NULL;
 	}
-	return new (FILEPATH, 18) CameraModeScript(camera);
+	return new (__FILE__, 18) CameraModeScript(camera);
 }
 
 CameraModeScript::CameraModeScript(GCamera* camera) : CameraModeFollow(camera, NULL, 0.2f, true, false)

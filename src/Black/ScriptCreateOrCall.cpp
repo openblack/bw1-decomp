@@ -675,8 +675,8 @@ void GScript::PopulateContainer()
 	GLandscape::ConvertMapCoordToLandscapePoint(container->Pos, centre);
 	for (uint32_t i = 0; i < count; i++)
 	{
-		float   offsetX = (GRand::GameFloatRand(spread + spread, FILEPATH, FILELINE(579, 672))) - spread;
-		float   offsetY = (GRand::GameFloatRand(spread + spread, FILEPATH, FILELINE(580, 673))) - spread;
+		float   offsetX = (GRand::GameFloatRand(spread + spread, __FILE__, FILELINE(579, 672))) - spread;
+		float   offsetY = (GRand::GameFloatRand(spread + spread, __FILE__, FILELINE(580, 673))) - spread;
 		LHPoint pos;
 		pos = centre;
 		pos.x += offsetX;
@@ -731,7 +731,7 @@ void GScript::CreateFlock()
 	LHPoint pos;
 	g_scriptDLL->POINT_POP(pos);
 	MapCoords coords(pos);
-	Flock*    flock = new (FILEPATH, FILELINE(646, 739))
+	Flock*    flock = new (__FILE__, FILELINE(646, 739))
 		Flock(coords, (const GFlockInfo*)&GContainerInfo::GetInfo()[CONTAINER_INFO_FLOCK],
 	          GGame::g_game->GetNeutralPlayer(), FLOCK_MAGIC);
 	if (flock == NULL)
@@ -1095,7 +1095,7 @@ void GScript::CreateRandomVillagerOfTribe()
 	g_scriptDLL->POINT_POP(pos);
 	TRIBE_TYPE tribe = (TRIBE_TYPE)g_scriptDLL->ULONG_POP();
 	uint32_t   index =
-		tribe * VILLAGER_INFOS_PER_TRIBE + GRand::GameRand(VILLAGER_INFOS_PER_TRIBE, FILEPATH, FILELINE(1077, 1170));
+		tribe * VILLAGER_INFOS_PER_TRIBE + GRand::GameRand(VILLAGER_INFOS_PER_TRIBE, __FILE__, FILELINE(1077, 1170));
 	const GVillagerInfo* info = &GVillagerInfo::GetInfo()[index];
 	Villager*            villager = Villager::Create(MapCoords(pos), info, info->TeenAge, false);
 	if (villager != NULL)
@@ -1277,7 +1277,7 @@ void GScript::CreateTown()
 			id = node->payload->ID + 1;
 		}
 	}
-	Town* town = new (FILEPATH, 1408) Town(MapCoords(pos), GTownInfo::GetInfo(), player, tribe, NULL, id, false);
+	Town* town = new (__FILE__, 1408) Town(MapCoords(pos), GTownInfo::GetInfo(), player, tribe, NULL, id, false);
 	if (town != NULL)
 	{
 		town->Uninhabitable = true;

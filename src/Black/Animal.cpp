@@ -104,11 +104,11 @@ void Animal::SetScaleForAge(uint32_t age)
 	if (age < animalInfo->TeenAge)
 	{
 		float scaleDiff = animalInfo->ageToScale.values[age + 2] - GetScale();
-		SetScale(GRand::GameFloatRand(scaleDiff * 0.75, FILEPATH, 115) + GetScale());
+		SetScale(GRand::GameFloatRand(scaleDiff * 0.75, __FILE__, 115) + GetScale());
 	}
 	else
 	{
-		SetScale(max(1.0f + (0.05f - (GRand::GameFloatRand(0.1f, FILEPATH, 119))), GetScale()));
+		SetScale(max(1.0f + (0.05f - (GRand::GameFloatRand(0.1f, __FILE__, 119))), GetScale()));
 	}
 }
 
@@ -388,7 +388,7 @@ bool32_t Animal::GivesBirth()
 
 bool32_t Animal::StartToEat()
 {
-	TurnsUntilNextStateChange = GRand::GameRand(10, FILEPATH, 558) + 15;
+	TurnsUntilNextStateChange = GRand::GameRand(10, __FILE__, 558) + 15;
 	SetSpeed(GetDefaultSpeed());
 	PlayAnimThenSetState(ANIMAL_STATE_EAT, 1);
 	return true;
@@ -1021,12 +1021,12 @@ Animal* Animal::CreateFromType(const MapCoords& coords, const GAnimalInfo* info,
 {
 	if (age == 0)
 	{
-		age = GRand::GameRand(ANIMAL_RANDOM_AGE_RANGE, FILEPATH, 1431) + ANIMAL_RANDOM_AGE_MIN;
+		age = GRand::GameRand(ANIMAL_RANDOM_AGE_RANGE, __FILE__, 1431) + ANIMAL_RANDOM_AGE_MIN;
 	}
 	Animal* animal = CreateNewAnimal(coords, info, age);
 	if (animal != NULL)
 	{
-		Flock* flock = new (FILEPATH, 1439) Flock(animal);
+		Flock* flock = new (__FILE__, 1439) Flock(animal);
 		flock->DomainRadius = info->FlockSearchRadius;
 		flock->FlockDistance = info->FlockDistance;
 		if (animal->IsOkToBeShepherd())
@@ -1057,7 +1057,7 @@ Animal* Animal::CreateFromType(const MapCoords& coords, const GAnimalInfo* info,
 	}
 	if (age == 0)
 	{
-		age = GRand::GameRand(ANIMAL_FLOCK_MEMBER_RANDOM_AGE_RANGE, FILEPATH, 1480) + ANIMAL_RANDOM_AGE_MIN;
+		age = GRand::GameRand(ANIMAL_FLOCK_MEMBER_RANDOM_AGE_RANGE, __FILE__, 1480) + ANIMAL_RANDOM_AGE_MIN;
 	}
 	Animal* animal = CreateNewAnimal(coords, info, age);
 	if (flock != NULL)
@@ -1300,7 +1300,7 @@ void Animal::SetNewWander(const MapCoords* centre, long min_dist, long max_dist)
 	{
 		uint16_t angle = GameAngle;
 		uint32_t range = (uint16_t)GetInfo()->TurnAngle;
-		angle = (angle + GRand::GameRand((uint16_t)range, FILEPATH, 1783) - range / 2) & GAME_ANGLE_MASK;
+		angle = (angle + GRand::GameRand((uint16_t)range, __FILE__, 1783) - range / 2) & GAME_ANGLE_MASK;
 		JustXZ wander;
 		wander.x = GetXByAngle(angle);
 		wander.z = GetZByAngle(angle);
@@ -1441,7 +1441,7 @@ void Animal::ReleaseFromScript()
 	}
 	if (flock.Get() == NULL)
 	{
-		Flock* newFlock = new (FILEPATH, 1973) Flock(this);
+		Flock* newFlock = new (__FILE__, 1973) Flock(this);
 		newFlock->DomainRadius = GetInfo()->FlockSearchRadius;
 		newFlock->FlockDistance = GetInfo()->FlockDistance;
 	}
@@ -1856,7 +1856,7 @@ bool32_t Animal::IsChild()
 
 PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	PieceVillager* villager = new (FILEPATH, 2696) PieceVillager(coords, info, age);
+	PieceVillager* villager = new (__FILE__, 2696) PieceVillager(coords, info, age);
 	if (villager != NULL)
 	{
 		villager->CallVirtualFunctionsForCreation(coords);

@@ -4,7 +4,7 @@
 
 ScriptMarker* ScriptMarker::Create(const MapCoords& coords)
 {
-	ScriptMarker* marker = new (FILEPATH, 11) ScriptMarker(coords);
+	ScriptMarker* marker = new (__FILE__, 11) ScriptMarker(coords);
 	GGame::g_game->GameLists.ScriptMarkers.Add(marker);
 	return marker;
 }

@@ -193,11 +193,11 @@ bool CreateRule_GameObjectRef::ModifyAtomCollection(AtomCollection* collection) 
 			core->SetAlpha((uint8_t)Alpha);
 			if (DoShower)
 			{
-				core->Particle = new (FILEPATH, 233) RenderParticleGoldenShower(object);
+				core->Particle = new (__FILE__, 233) RenderParticleGoldenShower(object);
 			}
 			else
 			{
-				core->Particle = new (FILEPATH, 237) RenderParticleGameObjectRef(object);
+				core->Particle = new (__FILE__, 237) RenderParticleGameObjectRef(object);
 			}
 			collection->InitNewAtom(core, NextGroups);
 		}
@@ -494,7 +494,7 @@ bool CreateWithInitialDirection::ModifyAtomCollection(AtomCollection* collection
 		core->Velocity = atomDirection;
 		if (manager->NetUnsafeIsMyInterfaceCasting())
 		{
-			core->SetDrawOffset(new (FILEPATH, 660) DrawOffsetDecay(manager->GetNetUnsafePos() - startPos));
+			core->SetDrawOffset(new (__FILE__, 660) DrawOffsetDecay(manager->GetNetUnsafePos() - startPos));
 		}
 		core->StartSound(sound);
 	}
@@ -778,7 +778,7 @@ void UR_FollowCastPosn::ModifyAtomCore(AtomCore* core) const
 		core->Collection->InterpolateDrawPos = false;
 		if (core->Offset == NULL)
 		{
-			core->SetDrawOffset(new (FILEPATH, 1020) DrawOffsetLT);
+			core->SetDrawOffset(new (__FILE__, 1020) DrawOffsetLT);
 		}
 		if (core->Offset)
 		{
@@ -874,7 +874,7 @@ bool UR_HandSprinkle::ModifyAtomCollection(AtomCollection* collection) const
 		{
 			if (core->Offset == NULL)
 			{
-				core->SetDrawOffset(new (FILEPATH, 1130) DrawOffsetLT());
+				core->SetDrawOffset(new (__FILE__, 1130) DrawOffsetLT());
 			}
 			if (core->Offset)
 			{
@@ -2973,7 +2973,7 @@ bool UR_WillowWisp::ModifyAtomCollection(AtomCollection* collection) const
 			core->LocalPos = pos;
 			if (doDrawOffsets)
 			{
-				core->SetDrawOffset(new (FILEPATH, 3823) DrawOffsetDecay(manager->GetNetUnsafePos() - pos));
+				core->SetDrawOffset(new (__FILE__, 3823) DrawOffsetDecay(manager->GetNetUnsafePos() - pos));
 			}
 			if (RandomiseInitOrientation)
 			{

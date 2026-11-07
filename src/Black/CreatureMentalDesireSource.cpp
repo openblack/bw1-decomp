@@ -110,7 +110,7 @@ CreatureDesireSource::CreatureDesireSource(CREATURE_DESIRE_SOURCE type, Creature
 	if (GGlobal::Global.RandomiseCreatureMinds)
 	{
 		float variation = CreatureDesireSourceTable::GetTable()[type].InitialValueVariation;
-		Value += GRand::GameFloatRand(2.0f * variation, FILEPATH, 95) - variation;
+		Value += GRand::GameFloatRand(2.0f * variation, __FILE__, 95) - variation;
 		CLAMP(Value, MIN_SOURCE_VALUE, MAX_SOURCE_VALUE);
 	}
 
@@ -118,7 +118,7 @@ CreatureDesireSource::CreatureDesireSource(CREATURE_DESIRE_SOURCE type, Creature
 	if (GGlobal::Global.RandomiseCreatureMinds)
 	{
 		float variation = CreatureDesireSourceTable::GetTable()[type].ThresholdVariation;
-		Threshold += GRand::GameFloatRand(2.0f * variation, FILEPATH, 102) - variation;
+		Threshold += GRand::GameFloatRand(2.0f * variation, __FILE__, 102) - variation;
 		CLAMP(Threshold, MIN_SOURCE_VALUE, MAX_SOURCE_VALUE);
 	}
 
@@ -145,7 +145,7 @@ void CreatureDesires::InitialiseSources()
 		{
 			if (CreatureInitialDesireInfo::GetInfo()[i].Sources[j] != INVALID_CREATURE_DESIRE_SOURCE)
 			{
-				SourceLists[i].AddToEnd(new (FILEPATH, 117) CreatureDesireSource(
+				SourceLists[i].AddToEnd(new (__FILE__, 117) CreatureDesireSource(
 					CreatureInitialDesireInfo::GetInfo()[i].Sources[j], creature));
 			}
 		}

@@ -67,23 +67,23 @@ void MPFEFindGame::Init(uint32_t background_style, uint32_t tall_background,
 {
 	DialogBoxBase::Init(background_style, tall_background, callback);
 
-	BackButton = new (FILEPATH, 70)
+	BackButton = new (__FILE__, 70)
 		SetupBigButton(MPFE_FIND_GAME_CONTROL_ID_BACK, 30, 530, L"", 40, SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 	BackButton->ContinueButtonCallback = BackPressed;
-	NextButton = new (FILEPATH, 72) SetupBigButton(MPFE_FIND_GAME_CONTROL_ID_NEXT, 730, 530, L"", 40,
+	NextButton = new (__FILE__, 72) SetupBigButton(MPFE_FIND_GAME_CONTROL_ID_NEXT, 730, 530, L"", 40,
 	                                               SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
 	NextButton->ContinueButtonCallback = NextPressed;
 
-	Text = new (FILEPATH, 76) SetupStaticText(MPFE_FIND_GAME_CONTROL_ID_TEXT, 40, 70, 720, 40, L"", TEXTJUSTIFY_CENTRE);
+	Text = new (__FILE__, 76) SetupStaticText(MPFE_FIND_GAME_CONTROL_ID_TEXT, 40, 70, 720, 40, L"", TEXTJUSTIFY_CENTRE);
 	Text->text_size = GetBigTextSize();
 
 	LanCheckBox =
-		new (FILEPATH, 79) SetupCheckBox(MPFE_FIND_GAME_CONTROL_ID_LAN, 260, 250, true, BBSTYLE_CHECK_BOX_ON, L"", 40);
+		new (__FILE__, 79) SetupCheckBox(MPFE_FIND_GAME_CONTROL_ID_LAN, 260, 250, true, BBSTYLE_CHECK_BOX_ON, L"", 40);
 	LanCheckBox->ContinueButtonCallback = LanPressed;
 	LanCheckBox->text_size = GetBigTextSize();
 	LanCheckBox->text_position = SETUP_TEXT_POSITION_RIGHT;
 
-	InternetCheckBox = new (FILEPATH, 84)
+	InternetCheckBox = new (__FILE__, 84)
 		SetupCheckBox(MPFE_FIND_GAME_CONTROL_ID_INTERNET, 260, 370, false, BBSTYLE_CHECK_BOX_OFF, L"", 40);
 	InternetCheckBox->text_position = SETUP_TEXT_POSITION_RIGHT;
 	InternetCheckBox->ContinueButtonCallback = InternetPressed;

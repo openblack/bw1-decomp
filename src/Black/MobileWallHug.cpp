@@ -44,7 +44,7 @@ inline NewCollide::Obj* CircleHugStateInfoT::fetch(MapCoords coords)
 	}
 	LHPoint point;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-	NewCollide::Obj* obj = new (FILEPATH, 215) NewCollide::Obj(7.2f, &point);
+	NewCollide::Obj* obj = new (__FILE__, 215) NewCollide::Obj(7.2f, &point);
 	LandscapeBlockers[blockPos] = obj;
 	return obj;
 }
@@ -264,7 +264,7 @@ void CircleHugInfo::FetchObjectFromCircHugInfo(NewCollide::Obj* collide_obj, Res
 
 void CircleHugInfo::SetResolutionInfo(Object* object, int index, const MapCoords& coords)
 {
-	obj = (NewCollide::Obj*)new (FILEPATH, 312) ResolutionInfoT;
+	obj = (NewCollide::Obj*)new (__FILE__, 312) ResolutionInfoT;
 	((ResolutionInfoT*)obj)->object = object;
 	((ResolutionInfoT*)obj)->index = index;
 	((ResolutionInfoT*)obj)->coords = coords;
@@ -347,7 +347,7 @@ void CircleHugInfo::SetObjectPtr(NewCollide::Obj* new_obj, MobileWallHug* mwh, b
 		}
 		else
 		{
-			obj = (NewCollide::Obj*)new (FILEPATH, 422) ResolutionInfoT;
+			obj = (NewCollide::Obj*)new (__FILE__, 422) ResolutionInfoT;
 			FetchObjectFromCircHugInfo(new_obj, *(ResolutionInfoT*)obj);
 		}
 		return;
@@ -772,12 +772,12 @@ void MobileWallHug::SetNewWander(const MapCoords* centre, long min_dist, long ma
 		}
 		else
 		{
-			angle += GRand::GameRand(0x80, FILEPATH, MOBILE_WALL_HUG_LINE(1080)) - 0x40;
+			angle += GRand::GameRand(0x80, __FILE__, MOBILE_WALL_HUG_LINE(1080)) - 0x40;
 		}
 	}
 	else
 	{
-		angle += GRand::GameRand(0x80, FILEPATH, MOBILE_WALL_HUG_LINE(1085)) - 0x40;
+		angle += GRand::GameRand(0x80, __FILE__, MOBILE_WALL_HUG_LINE(1085)) - 0x40;
 	}
 	SetTowardsAngle(angle & 0x7ff);
 	RebuildMoveByStep();
@@ -1263,8 +1263,8 @@ uint32_t MobileWallHug::MoveToCircleHugLinearSquareSweep(const MapCoords& coords
 	{
 		float                  length = dir.Normalize();
 		IntersectIntervalLine* nearest =
-			new (FILEPATH, MOBILE_WALL_HUG_LINE(1771)) IntersectIntervalLine(it, origin, dir);
-		IntersectIntervalLine* current = new (FILEPATH, MOBILE_WALL_HUG_LINE(1772)) IntersectIntervalLine;
+			new (__FILE__, MOBILE_WALL_HUG_LINE(1771)) IntersectIntervalLine(it, origin, dir);
+		IntersectIntervalLine* current = new (__FILE__, MOBILE_WALL_HUG_LINE(1772)) IntersectIntervalLine;
 		while (nearest->disc <= 0.0f)
 		{
 			it.Next(coords);
@@ -1453,9 +1453,9 @@ inline uint32_t MobileWallHug_InCircleStuff<clockwise>::MoveToCircleHugCircleSqu
 	else
 	{
 		IntersectIntervalCircle<clockwise>* nearest =
-			new (FILEPATH, MOBILE_WALL_HUG_LINE(1846)) IntersectIntervalCircle<clockwise>;
+			new (__FILE__, MOBILE_WALL_HUG_LINE(1846)) IntersectIntervalCircle<clockwise>;
 		IntersectIntervalCircle<clockwise>* current =
-			new (FILEPATH, MOBILE_WALL_HUG_LINE(1846)) IntersectIntervalCircle<clockwise>;
+			new (__FILE__, MOBILE_WALL_HUG_LINE(1846)) IntersectIntervalCircle<clockwise>;
 		Point2DCompare<clockwise> start;
 		if (goalInside)
 		{

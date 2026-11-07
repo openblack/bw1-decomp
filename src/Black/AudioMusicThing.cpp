@@ -50,7 +50,7 @@ void GAudio::AddThingMusic(MUSIC_TYPE type, GameThingWithPos* thing)
 		}
 		else
 		{
-			info = new (FILEPATH, 51) ThingMusicInfo(type, thing);
+			info = new (__FILE__, 51) ThingMusicInfo(type, thing);
 			if (IsThingMusicPlaying(info))
 				StopMusic(info, false);
 			ThingMusicList.Add(info);

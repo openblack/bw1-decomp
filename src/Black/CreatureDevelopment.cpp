@@ -231,7 +231,7 @@ void Creature::GiveMaximumSkillAtOneSpell()
 		CREATURE_CAST_LIGHTNING_BOLT,  //
 		CREATURE_CAST_LIGHTNING_STORM, //
 	};
-	CREATURE_ACTION spell = spells[GRand::GameRand(ARRAY_SIZE(spells), FILEPATH, DEVELOPMENT_LINE(243))];
+	CREATURE_ACTION spell = spells[GRand::GameRand(ARRAY_SIZE(spells), __FILE__, DEVELOPMENT_LINE(243))];
 	mind->learning.SetSkillAtAction(spell, MAXIMUM_SKILL);
 }
 
@@ -245,7 +245,7 @@ void Creature::GiveMaximumSkillAtOnePowerupSpell()
 		CREATURE_CAST_HEAL_SPELL_PU1,     //
 		CREATURE_CAST_SHIELD_PU1,         //
 	};
-	CREATURE_ACTION spell = spells[GRand::GameRand(ARRAY_SIZE(spells), FILEPATH, DEVELOPMENT_LINE(261))];
+	CREATURE_ACTION spell = spells[GRand::GameRand(ARRAY_SIZE(spells), __FILE__, DEVELOPMENT_LINE(261))];
 	mind->learning.SetSkillAtAction(spell, MAXIMUM_SKILL);
 }
 #endif // VERSION_BW1W100

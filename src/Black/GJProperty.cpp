@@ -56,7 +56,7 @@ RegisterPersistent::RegisterPersistent()
 
 void PropertyList::AddFloatProperty(const char* name, float* value, float min, float max)
 {
-	FloatValueProperty* property = new (FILEPATH, 73) FloatValueProperty;
+	FloatValueProperty* property = new (__FILE__, 73) FloatValueProperty;
 	property->Name = name;
 	property->Value = value;
 	property->Min = min;
@@ -66,7 +66,7 @@ void PropertyList::AddFloatProperty(const char* name, float* value, float min, f
 
 void PropertyList::AddIntegerProperty(const char* name, long* value, long min, long max)
 {
-	IntegerValueProperty* property = new (FILEPATH, 85) IntegerValueProperty;
+	IntegerValueProperty* property = new (__FILE__, 85) IntegerValueProperty;
 	property->Name = name;
 	property->Value = value;
 	property->Min = min;
@@ -76,7 +76,7 @@ void PropertyList::AddIntegerProperty(const char* name, long* value, long min, l
 
 void PropertyList::AddSoundActionProperty(const char* name, PSysSoundAction* value)
 {
-	SoundActionProperty* property = new (FILEPATH, 96) SoundActionProperty;
+	SoundActionProperty* property = new (__FILE__, 96) SoundActionProperty;
 	property->Name = name;
 	property->Value = value;
 	Properties[name] = property;
@@ -84,7 +84,7 @@ void PropertyList::AddSoundActionProperty(const char* name, PSysSoundAction* val
 
 void PropertyList::AddStringProperty(const char* name, std::string* value)
 {
-	StringProperty* property = new (FILEPATH, 105) StringProperty;
+	StringProperty* property = new (__FILE__, 105) StringProperty;
 	property->Name = name;
 	property->Value = value;
 	Properties[name] = property;
@@ -92,7 +92,7 @@ void PropertyList::AddStringProperty(const char* name, std::string* value)
 
 void PropertyList::AddFileNameProperty(const char* name, std::string* value, const std::string& extension)
 {
-	FileNameProperty* property = new (FILEPATH, 114) FileNameProperty;
+	FileNameProperty* property = new (__FILE__, 114) FileNameProperty;
 	property->Name = name;
 	property->Value = value;
 	property->Extension = extension;
@@ -101,7 +101,7 @@ void PropertyList::AddFileNameProperty(const char* name, std::string* value, con
 
 void PropertyList::AddBoolProperty(const char* name, bool* value)
 {
-	BoolProperty* property = new (FILEPATH, 124) BoolProperty;
+	BoolProperty* property = new (__FILE__, 124) BoolProperty;
 	property->Name = name;
 	property->Value = value;
 	Properties[name] = property;
@@ -109,7 +109,7 @@ void PropertyList::AddBoolProperty(const char* name, bool* value)
 
 void PropertyList::AddMeshEnumProperty(const char* name, MESH_LIST* value)
 {
-	MeshEnumProperty* property = new (FILEPATH, 133) MeshEnumProperty;
+	MeshEnumProperty* property = new (__FILE__, 133) MeshEnumProperty;
 	property->Name = name;
 	property->Value = (long*)value;
 	Properties[name] = property;
@@ -117,7 +117,7 @@ void PropertyList::AddMeshEnumProperty(const char* name, MESH_LIST* value)
 
 void PropertyList::AddAnimEnumProperty(const char* name, ANIM_LIST* value)
 {
-	AnimEnumProperty* property = new (FILEPATH, 142) AnimEnumProperty;
+	AnimEnumProperty* property = new (__FILE__, 142) AnimEnumProperty;
 	property->Name = name;
 	property->Value = (long*)value;
 	Properties[name] = property;
@@ -207,7 +207,7 @@ void SoundActionProperty::MakeLHActionFile()
 	{
 		char path[256];
 		sprintf(path, "Data\\SoundAction.h");
-		ActionFile = new (FILEPATH, 285) LHParseFile(path, " \t");
+		ActionFile = new (__FILE__, 285) LHParseFile(path, " \t");
 		if (!ActionFile->Open())
 		{
 			sprintf(path, "%c:\\Data\\SoundAction.h", g_GameDriveCharacter);
@@ -313,7 +313,7 @@ void EnumProperty::MakeEnumFile()
 {
 	if (GetEnumFile() == NULL)
 	{
-		SetEnumFile(new (FILEPATH, 406) LHParseFile((char*)GetEnumFileName(), " \t"));
+		SetEnumFile(new (__FILE__, 406) LHParseFile((char*)GetEnumFileName(), " \t"));
 		if (!GetEnumFile()->Open())
 		{
 			delete GetEnumFile();

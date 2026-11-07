@@ -38,7 +38,7 @@
 #define LESSON_CHOOSER_FEEDBACK_SCALE   1000.0f
 
 #define ADD_LESSON_BUTTON(line, calculate_text, type)                                                                  \
-	LessonButtons[NumLessonButtons] = new (FILEPATH, line) EditorIconButton<CreatureLessonChooser>(                    \
+	LessonButtons[NumLessonButtons] = new (__FILE__, line) EditorIconButton<CreatureLessonChooser>(                    \
 		LHCoord(LESSON_CHOOSER_MARGIN, (NumLessonButtons + 2) * LESSON_CHOOSER_LINE_HEIGHT), calculate_text(), this,   \
 		&CreatureLessonChooser::CallbackLesson, type);                                                                 \
 	NumLessonButtons++
@@ -79,7 +79,7 @@ inline void CreatureLessonChooser::GetFeedbackText(char* text)
 
 void CreatureLessonChooser::InitialiseIcons()
 {
-	TitleText = new (FILEPATH, 33) EditorIconBool(LHCoord(LESSON_CHOOSER_MARGIN, LESSON_CHOOSER_LINE_HEIGHT), TextValue,
+	TitleText = new (__FILE__, 33) EditorIconBool(LHCoord(LESSON_CHOOSER_MARGIN, LESSON_CHOOSER_LINE_HEIGHT), TextValue,
 	                                              "CHOOSE WHICH LESSON YOU WANT THE CREATURE TO LEARN",
 	                                              "CHOOSE WHICH LESSON YOU WANT THE CREATURE TO LEARN", 0);
 	NumLessonButtons = 0;
@@ -95,25 +95,25 @@ void CreatureLessonChooser::InitialiseIcons()
 	}
 	ADD_LESSON_BUTTON(54, CalculateMethodLessonText, LESSON_TYPE_ACTION);
 	char* actionText = CalculateActionText();
-	ActionText = new (FILEPATH, 58) EditorIconBool(LHCoord(LESSON_CHOOSER_MARGIN, LESSON_CHOOSER_ACTION_TEXT_Y),
+	ActionText = new (__FILE__, 58) EditorIconBool(LHCoord(LESSON_CHOOSER_MARGIN, LESSON_CHOOSER_ACTION_TEXT_Y),
 	                                               TextValue, actionText, actionText, 0);
-	PreviousActionButton = new (FILEPATH, 59)
+	PreviousActionButton = new (__FILE__, 59)
 		EditorIconButton<CreatureLessonChooser>(LHCoord(LESSON_CHOOSER_MARGIN, LESSON_CHOOSER_ACTION_BUTTONS_Y),
 	                                            "Previous", this, &CreatureLessonChooser::CallbackPreviousAction);
-	NextActionButton = new (FILEPATH, 60)
+	NextActionButton = new (__FILE__, 60)
 		EditorIconButton<CreatureLessonChooser>(LHCoord(LESSON_CHOOSER_NEXT_BUTTON_X, LESSON_CHOOSER_ACTION_BUTTONS_Y),
 	                                            "Next", this, &CreatureLessonChooser::CallbackNextAction);
-	FeedbackSlider = new (FILEPATH, 61) EditorIconSlider<float>(
+	FeedbackSlider = new (__FILE__, 61) EditorIconSlider<float>(
 		LHRegion(LESSON_CHOOSER_MARGIN, LESSON_CHOOSER_SLIDER_Y, LESSON_CHOOSER_SLIDER_WIDTH,
 	             LESSON_CHOOSER_LINE_HEIGHT),
 		Feedback, LESSON_CHOOSER_MIN_FEEDBACK, LESSON_CHOOSER_MAX_FEEDBACK, LESSON_CHOOSER_FEEDBACK_STEP,
 		"Feedback: %.2f", EDITOR_ICON_FLAG_CONSTANT_TEXT, true, 1, &EditorIconBase::DefaultActiveColor,
 		&EditorIconBase::DefaultActiveColor, &EditorIconBase::DefaultHiliteColor, &EditorIconBase::DefaultTextColor);
-	OKButton = new (FILEPATH, 62)
+	OKButton = new (__FILE__, 62)
 		EditorIconButton<CreatureLessonChooser>(LHCoord(LESSON_CHOOSER_OK_BUTTON_X, LESSON_CHOOSER_BOTTOM_ROW_Y), "OK",
 	                                            this, &CreatureLessonChooser::CallbackOK);
 	char* lessonText = Mental->learning.PreviousLesson.LessonTexts[0];
-	LessonText = new (FILEPATH, 66) EditorIconBool(LHCoord(LESSON_CHOOSER_MARGIN, LESSON_CHOOSER_BOTTOM_ROW_Y),
+	LessonText = new (__FILE__, 66) EditorIconBool(LHCoord(LESSON_CHOOSER_MARGIN, LESSON_CHOOSER_BOTTOM_ROW_Y),
 	                                               TextValue, lessonText, lessonText, 0);
 }
 

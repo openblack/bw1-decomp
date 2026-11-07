@@ -325,7 +325,7 @@ void Abode::Init(int unused, uint32_t food_amount, uint32_t wood_amount)
 Abode* Abode::CreateWithoutSpecial(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle,
                                    float scale, float food, int wood)
 {
-	Abode* result = new (FILEPATH, ABODE_LINE(316)) Abode(coords, info, town, y_angle, scale, food, wood);
+	Abode* result = new (__FILE__, ABODE_LINE(316)) Abode(coords, info, town, y_angle, scale, food, wood);
 	if (result != NULL)
 	{
 		result->CallVirtualFunctionsForCreation(coords);
@@ -837,7 +837,7 @@ void Abode::MakeFunctional()
 
 		if (town->GetStoragePit() && town->GetStoragePit() != this && GGame::g_game->data.GameTurn > 0)
 		{
-			GFootpath*  footpath = new (FILEPATH, ABODE_LINE(1019)) GFootpath(NULL, NULL);
+			GFootpath*  footpath = new (__FILE__, ABODE_LINE(1019)) GFootpath(NULL, NULL);
 			MapCoords   town_coords = GetArrivePos();
 			StoragePit* storage_pit = town->GetStoragePit();
 			MapCoords   pit_coords = storage_pit->GetArrivePos();
@@ -1119,20 +1119,20 @@ void PlannedAbode::Init(Town* town_)
 PlannedAbode* PlannedAbode::CreateNoInit(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle,
                                          float scale)
 {
-	return new (FILEPATH, ABODE_LINE(1359)) PlannedAbode(coords, info, town, y_angle, scale);
+	return new (__FILE__, ABODE_LINE(1359)) PlannedAbode(coords, info, town, y_angle, scale);
 }
 
 PlannedAbode* PlannedAbode::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle,
                                    float scale)
 {
-	PlannedAbode* abode = new (FILEPATH, ABODE_LINE(1367)) PlannedAbode(coords, info, town, y_angle, scale);
+	PlannedAbode* abode = new (__FILE__, ABODE_LINE(1367)) PlannedAbode(coords, info, town, y_angle, scale);
 	abode->Init(town);
 	return abode;
 }
 
 PlannedAbode* PlannedAbode::Create(Abode* abode)
 {
-	PlannedAbode* planned = new (FILEPATH, ABODE_LINE(1376)) PlannedAbode(abode);
+	PlannedAbode* planned = new (__FILE__, ABODE_LINE(1376)) PlannedAbode(abode);
 	planned->FootpathLink = abode->FootpathLink;
 	abode->FootpathLink = NULL;
 	planned->Init(abode->GetTown());
@@ -1243,7 +1243,7 @@ bool32_t PlannedAbode::Load(GameOSFile& file)
 Windmill* Windmill::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                            float food, int wood)
 {
-	Windmill* windmill = new (FILEPATH, ABODE_LINE(1476)) Windmill(coords, info, town, y_angle, scale, food, wood);
+	Windmill* windmill = new (__FILE__, ABODE_LINE(1476)) Windmill(coords, info, town, y_angle, scale, food, wood);
 	if (windmill != NULL)
 	{
 		windmill->CallVirtualFunctionsForCreation(coords);
@@ -1591,7 +1591,7 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 				if (built >= 0.2f && built != 1.0f)
 				{
 					delete DestructionMesh;
-					DestructionMesh = new (FILEPATH, ABODE_LINE(1912)) FragMesh(Game3dObject);
+					DestructionMesh = new (__FILE__, ABODE_LINE(1912)) FragMesh(Game3dObject);
 				}
 				else if (DestructionMesh->LastHitter == hitterObject)
 				{
@@ -1608,7 +1608,7 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 			}
 			else
 			{
-				DestructionMesh = new (FILEPATH, ABODE_LINE(1917)) FragMesh(Game3dObject);
+				DestructionMesh = new (__FILE__, ABODE_LINE(1917)) FragMesh(Game3dObject);
 			}
 			LHPoint velocity;
 			ScalePoint(velocity, hitter->Physics.Velocity, 0.3f);
@@ -1673,7 +1673,7 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 
 static float AbodeFloatRand(float max)
 {
-	return GRand::GameFloatRand(max, FILEPATH, ABODE_LINE(1856));
+	return GRand::GameFloatRand(max, __FILE__, ABODE_LINE(1856));
 }
 
 void Abode::ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player)
@@ -1832,7 +1832,7 @@ bool32_t Abode::Load(GameOSFile& file)
 		if (hasDestructionMesh)
 		{
 			DestructionMesh =
-				new (FILEPATH, ABODE_LINE(2210)) FragMesh(file, LH3DMesh::GetPackedMesh(GetInfo()->GetMesh()));
+				new (__FILE__, ABODE_LINE(2210)) FragMesh(file, LH3DMesh::GetPackedMesh(GetInfo()->GetMesh()));
 		}
 		return true;
 	}
@@ -1942,10 +1942,10 @@ struct ArrivePos : public MapCoords
 MapCoords Abode::GetPosOutside(float divisions, float min_dist, float rand_dist)
 {
 	ArrivePos pos(GetArrivePos());
-	float     angle = ((GRand::GameFloatRand(2.0f * (float)M_PI / divisions, FILEPATH, ABODE_LINE(2378))) -
+	float     angle = ((GRand::GameFloatRand(2.0f * (float)M_PI / divisions, __FILE__, ABODE_LINE(2378))) -
 	                   2.0f * (float)M_PI / (divisions + divisions)) +
 	                  GUtils::Get3DAngleFromXZ(Pos, pos);
-	float     dist = (GRand::GameFloatRand(rand_dist, FILEPATH, ABODE_LINE(2379))) + min_dist;
+	float     dist = (GRand::GameFloatRand(rand_dist, __FILE__, ABODE_LINE(2379))) + min_dist;
 	pos += GUtils::GetPosFromAngle(angle, dist);
 	return pos;
 }

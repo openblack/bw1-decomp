@@ -45,7 +45,7 @@ WorshipSiteUpgrade* WorshipSiteUpgrade::Create(const MapCoords& coords, const GW
                                                bool32_t under_construction)
 {
 	WorshipSiteUpgrade* upgrade =
-		new (FILEPATH, 34) WorshipSiteUpgrade(coords, info, site, y_angle, scale, percent_built, under_construction);
+		new (__FILE__, 34) WorshipSiteUpgrade(coords, info, site, y_angle, scale, percent_built, under_construction);
 	if (upgrade != NULL)
 	{
 		upgrade->CallVirtualFunctionsForCreation(coords);
@@ -70,7 +70,7 @@ GPlayer* WorshipSiteUpgrade::GetPlayer()
 PlannedMultiMapFixed* WorshipSiteUpgrade::ConvertToPlanned()
 {
 	PlannedWorshipSiteUpgrade* planned =
-		new (FILEPATH, 62) PlannedWorshipSiteUpgrade(Pos, GetInfo(), GetWorshipSite(), GetYAngle(), GetScale());
+		new (__FILE__, 62) PlannedWorshipSiteUpgrade(Pos, GetInfo(), GetWorshipSite(), GetYAngle(), GetScale());
 	if (planned != NULL)
 	{
 		ToBeDeleted(false);

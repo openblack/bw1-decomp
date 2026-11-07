@@ -648,98 +648,98 @@ void CreatureBeliefs::Initialise()
 	int i;
 	for (i = 0; i < NUM_ALLOCATED_TOWN_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_TOWN].AddNewBelief(new (FILEPATH, 1074) CreatureBeliefAboutTown());
+		AllocatedLists[CREATURE_BELIEF_TYPE_TOWN].AddNewBelief(new (__FILE__, 1074) CreatureBeliefAboutTown());
 	}
 	for (i = 0; i < NUM_ALLOCATED_FLOCK_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_FLOCK].AddNewBelief(new (FILEPATH, 1079) CreatureBeliefAboutFlock());
+		AllocatedLists[CREATURE_BELIEF_TYPE_FLOCK].AddNewBelief(new (__FILE__, 1079) CreatureBeliefAboutFlock());
 	}
 	for (i = 0; i < NUM_ALLOCATED_FOREST_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_FOREST].AddNewBelief(new (FILEPATH, 1084) CreatureBeliefAboutForest());
+		AllocatedLists[CREATURE_BELIEF_TYPE_FOREST].AddNewBelief(new (__FILE__, 1084) CreatureBeliefAboutForest());
 	}
 	for (i = 0; i < NUM_ALLOCATED_CITADEL_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_CITADEL].AddNewBelief(new (FILEPATH, 1089) CreatureBeliefAboutCitadel());
+		AllocatedLists[CREATURE_BELIEF_TYPE_CITADEL].AddNewBelief(new (__FILE__, 1089) CreatureBeliefAboutCitadel());
 	}
 	for (i = 0; i < NUM_ALLOCATED_ABODE_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_ABODE].AddNewBelief(new (FILEPATH, 1094) CreatureBeliefAboutAbode());
+		AllocatedLists[CREATURE_BELIEF_TYPE_ABODE].AddNewBelief(new (__FILE__, 1094) CreatureBeliefAboutAbode());
 	}
 	for (i = 0; i < NUM_ALLOCATED_CITADEL_PART_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_CITADEL_PART].AddNewBelief(new (FILEPATH, 1099) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_CITADEL_PART].AddNewBelief(new (__FILE__, 1099) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_TREE_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_TREE].AddNewBelief(new (FILEPATH, 1104) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_TREE].AddNewBelief(new (__FILE__, 1104) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_VILLAGER_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_VILLAGER].AddNewBelief(new (FILEPATH, 1109) CreatureBeliefAboutVillager());
+		AllocatedLists[CREATURE_BELIEF_TYPE_VILLAGER].AddNewBelief(new (__FILE__, 1109) CreatureBeliefAboutVillager());
 	}
 	for (i = 0; i < NUM_ALLOCATED_ANIMAL_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_ANIMAL].AddNewBelief(new (FILEPATH, 1114) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_ANIMAL].AddNewBelief(new (__FILE__, 1114) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_CREATURE_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_CREATURE].AddNewBelief(new (FILEPATH, 1119) CreatureBeliefAboutCreature());
+		AllocatedLists[CREATURE_BELIEF_TYPE_CREATURE].AddNewBelief(new (__FILE__, 1119) CreatureBeliefAboutCreature());
 	}
 	for (i = 0; i < NUM_ALLOCATED_MAGIC_LIVING_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_MAGIC_LIVING].AddNewBelief(new (FILEPATH, 1124) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_MAGIC_LIVING].AddNewBelief(new (__FILE__, 1124) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_SPELL_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_SPELL].AddNewBelief(new (FILEPATH, 1129) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_SPELL].AddNewBelief(new (__FILE__, 1129) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_FIELD_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_FIELD].AddNewBelief(new (FILEPATH, 1134) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_FIELD].AddNewBelief(new (__FILE__, 1134) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_ROCK_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_ROCK].AddNewBelief(new (FILEPATH, 1139) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_ROCK].AddNewBelief(new (__FILE__, 1139) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_POO_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_POO].AddNewBelief(new (FILEPATH, 1144) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_POO].AddNewBelief(new (__FILE__, 1144) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_MAGIC_FOOD_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_MAGIC_FOOD].AddNewBelief(new (FILEPATH, 1149) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_MAGIC_FOOD].AddNewBelief(new (__FILE__, 1149) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_FEATURE_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_FEATURE].AddNewBelief(new (FILEPATH, 1154) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_FEATURE].AddNewBelief(new (__FILE__, 1154) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_POT_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_POT].AddNewBelief(new (FILEPATH, 1159) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_POT].AddNewBelief(new (__FILE__, 1159) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_SPELL_ICON_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_SPELL_ICON].AddNewBelief(new (FILEPATH, 1164) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_SPELL_ICON].AddNewBelief(new (__FILE__, 1164) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_SPELL_SEED_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_SPELL_SEED].AddNewBelief(new (FILEPATH, 1169) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_SPELL_SEED].AddNewBelief(new (__FILE__, 1169) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_MOBILE_OBJECT_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_MOBILE_OBJECT].AddNewBelief(new (FILEPATH, 1174) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_MOBILE_OBJECT].AddNewBelief(new (__FILE__, 1174) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_CONTEXT_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_CONTEXT].AddNewBelief(new (FILEPATH, 1179) CreatureBeliefAboutContext());
+		AllocatedLists[CREATURE_BELIEF_TYPE_CONTEXT].AddNewBelief(new (__FILE__, 1179) CreatureBeliefAboutContext());
 	}
 	for (i = 0; i < NUM_ALLOCATED_SMALL_OBJECT_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_SMALL_OBJECT].AddNewBelief(new (FILEPATH, 1184) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_SMALL_OBJECT].AddNewBelief(new (__FILE__, 1184) CreatureBeliefSmall());
 	}
 	for (i = 0; i < NUM_ALLOCATED_TOTEM_STATUE_BELIEFS; i++)
 	{
-		AllocatedLists[CREATURE_BELIEF_TYPE_TOTEM_STATUE].AddNewBelief(new (FILEPATH, 1189) CreatureBeliefSmall());
+		AllocatedLists[CREATURE_BELIEF_TYPE_TOTEM_STATUE].AddNewBelief(new (__FILE__, 1189) CreatureBeliefSmall());
 	}
 }

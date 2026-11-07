@@ -80,7 +80,7 @@ bool32_t Villager::HomeNothingToDo()
 {
 	if (Flags & VILLAGER_FLAG_AT_HOME)
 	{
-		if (GRand::GameRand(VILLAGER_GO_TO_BED_CHANCE, FILEPATH, 75) == 0)
+		if (GRand::GameRand(VILLAGER_GO_TO_BED_CHANCE, __FILE__, 75) == 0)
 		{
 			TurnsUntilNextStateChange = 0;
 			SetTopState(VILLAGER_STATE_GOTO_BED_AT_HOME);
@@ -221,22 +221,22 @@ bool32_t Villager::DoGoingHome(VILLAGER_STATES arrive_state, VILLAGER_STATES ten
 		if (GUtils::GetDistanceInMetres(&Pos, &GetTown()->Pos) > TOWN_FAR_DISTANCE)
 		{
 			endState = action.states[LIVING_ACTION_INDEX_TOP];
-			float angle = GRand::GameFloatRand(HALF_PI_F, FILEPATH, 295) - QUARTER_PI_F +
+			float angle = GRand::GameFloatRand(HALF_PI_F, __FILE__, 295) - QUARTER_PI_F +
 			              GUtils::Get3DAngleFromXZ(town->Pos, Pos);
 			pos = town->Pos +
-			      GUtils::GetPosFromAngle(angle, (GRand::GameFloatRand(TOWN_FAR_APPROACH_DISTANCE, FILEPATH, 296)) +
+			      GUtils::GetPosFromAngle(angle, (GRand::GameFloatRand(TOWN_FAR_APPROACH_DISTANCE, __FILE__, 296)) +
 			                                         TOWN_FAR_MIN_DISTANCE);
 		}
 		else
 		{
-			pos += GUtils::GetPosFromAngle((GRand::GameFloatRand(TWO_PI, FILEPATH, 300)),
-			                               GRand::GameFloatRand(TOWN_NEAR_WANDER_DISTANCE, FILEPATH, 300) +
+			pos += GUtils::GetPosFromAngle((GRand::GameFloatRand(TWO_PI, __FILE__, 300)),
+			                               GRand::GameFloatRand(TOWN_NEAR_WANDER_DISTANCE, __FILE__, 300) +
 			                                   TOWN_NEAR_MIN_DISTANCE);
 			if (!GetTentPos(pos))
 			{
 				endState = action.states[LIVING_ACTION_INDEX_TOP];
-				pos += GUtils::GetPosFromAngle((GRand::GameFloatRand(TWO_PI, FILEPATH, 304)),
-				                               GRand::GameFloatRand(TOWN_TENTLESS_WANDER_DISTANCE, FILEPATH, 304) +
+				pos += GUtils::GetPosFromAngle((GRand::GameFloatRand(TWO_PI, __FILE__, 304)),
+				                               GRand::GameFloatRand(TOWN_TENTLESS_WANDER_DISTANCE, __FILE__, 304) +
 				                                   TOWN_TENTLESS_MIN_DISTANCE);
 			}
 			else
@@ -294,8 +294,8 @@ bool32_t Villager::GetTentPos(MapCoords& coords)
 			}
 		}
 		pos +=
-			GUtils::GetPosFromAngle((GRand::GameFloatRand(TWO_PI, FILEPATH, 365)),
-		                            GRand::GameFloatRand(TENT_RETRY_DISTANCE, FILEPATH, 365) + TENT_RETRY_MIN_DISTANCE);
+			GUtils::GetPosFromAngle((GRand::GameFloatRand(TWO_PI, __FILE__, 365)),
+		                            GRand::GameFloatRand(TENT_RETRY_DISTANCE, __FILE__, 365) + TENT_RETRY_MIN_DISTANCE);
 	}
 	return false;
 }
@@ -379,10 +379,10 @@ bool32_t Villager::ArrivesHome()
 					if (!abode->IsFunctional())
 					{
 						float     angle = (GUtils::Get3DAngleFromXZ(abode->Pos, Pos) +
-						                   (EIGHTH_PI_F - GRand::GameFloatRand(QUARTER_PI_F, FILEPATH, 465)));
+						                   (EIGHTH_PI_F - GRand::GameFloatRand(QUARTER_PI_F, __FILE__, 465)));
 						MapCoords spot =
 							Pos + GUtils::GetPosFromAngle(
-									  angle, (GRand::GameFloatRand(BROKEN_HOME_TENT_DISTANCE, FILEPATH, 466)) +
+									  angle, (GRand::GameFloatRand(BROKEN_HOME_TENT_DISTANCE, __FILE__, 466)) +
 												 BROKEN_HOME_TENT_MIN_DISTANCE);
 						if (GetTentPos(spot))
 						{
@@ -490,9 +490,9 @@ bool32_t Villager::CheckDeathFromOldAge()
 	if (GetAge() > GetInfo()->MiddleAge)
 	{
 		uint32_t oldAgeSpan = GetInfo()->OldAge - GetInfo()->MiddleAge;
-		float    chance = POWER(GRand::GameFloatRand(1.0f, FILEPATH, 600), 3);
+		float    chance = POWER(GRand::GameFloatRand(1.0f, __FILE__, 600), 3);
 		float    span = oldAgeSpan;
-		int      extra = GRand::GameRand((uint32_t)(chance * span), FILEPATH, 602);
+		int      extra = GRand::GameRand((uint32_t)(chance * span), __FILE__, 602);
 		if (GetAge() + extra > GetInfo()->OldAge)
 		{
 			VillagerDead(DEATH_REASON_OLD_AGE, NULL, GetInfo()->life, true);
@@ -575,7 +575,7 @@ bool32_t Villager::HavingSex()
 	{
 		if (GetInfo()->sex == SEX_FEMALE && IsSexuallyActive())
 		{
-			if (GRand::GameFloatRand(1.0f, FILEPATH, 691) < GetInfo()->PregnancyChance)
+			if (GRand::GameFloatRand(1.0f, __FILE__, 691) < GetInfo()->PregnancyChance)
 			{
 				HousewifeGetsPregnant(NULL);
 			}
@@ -667,7 +667,7 @@ bool32_t Villager::IsSexuallyActive()
 
 bool32_t Villager::IsPromiscious()
 {
-	if (GRand::GameFloatRand(1.0f, FILEPATH, 845) < GetPromiscuity())
+	if (GRand::GameFloatRand(1.0f, __FILE__, 845) < GetPromiscuity())
 	{
 		return true;
 	}
@@ -860,8 +860,8 @@ bool32_t Villager::WaitForArtifactDance()
 		{
 			MapCoords pos = dance_group->Dancer->Pos;
 			float     angle =
-				(GRand::GameFloatRand(QUARTER_PI_F, FILEPATH, 1107)) + GUtils::Get3DAngleFromXZ(pos, Pos) - EIGHTH_PI_F;
-			pos += GUtils::GetPosFromAngle(angle, (GRand::GameFloatRand(ARTIFACT_DANCE_WAIT_DISTANCE, FILEPATH, 1108)));
+				(GRand::GameFloatRand(QUARTER_PI_F, __FILE__, 1107)) + GUtils::Get3DAngleFromXZ(pos, Pos) - EIGHTH_PI_F;
+			pos += GUtils::GetPosFromAngle(angle, (GRand::GameFloatRand(ARTIFACT_DANCE_WAIT_DISTANCE, __FILE__, 1108)));
 			if (Town::FindClearArea(pos, pos, ARTIFACT_DANCE_WAIT_DISTANCE, ARTIFACT_DANCE_CLEAR_AREA_STEP, radius,
 			                        &Object::IsObject, this))
 			{

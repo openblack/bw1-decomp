@@ -2791,8 +2791,8 @@ def uses_patched_msvc6(obj):
 
 
 def add_original_source_paths(libs):
-    """Give every unit its original path, as FILEPATH and as the path the patched MSVC 6
-    compiles it from (config.cl6_map, so __FILE__ expands to it)."""
+    """Give every unit its original path: as the path the patched MSVC 6 compiles it from
+    (config.cl6_map, so __FILE__ expands to it), or else as FILEPATH."""
     checkout_dirs = {}
     for lib in libs:
         for obj in lib["objects"]:
@@ -2807,7 +2807,13 @@ def add_original_source_paths(libs):
             defines = {"SOURCE_DIRECTORY": prefix}
             if config.version in original.headers:
                 defines["RELEASED_HEADERS_DIRECTORY"] = original.headers[config.version] + "\\"
-            defines["FILEPATH"] = prefix + file_name
+            # A directory some version built from within (file names alone) keeps FILEPATH in every
+            # version, as do C units (c1.dll is not patched) and units of other compilers. So do
+            # /ZI units: with /ZI, __FILE__ is the compiler's lower-case full name of the file
+            # (LHDialogLib's strings keep their case in the image).
+            cflags = [*(obj.options["cflags"] or lib.get("cflags") or []), *obj.options["extra_cflags"]]
+            if original.relative or obj.name.endswith(".c") or not uses_patched_msvc6(obj) or "/ZI" in cflags:
+                defines["FILEPATH"] = prefix + file_name
             if not relative and obj.name.endswith(".cpp") and uses_patched_msvc6(obj):
                 source = Path(obj.options["src_dir"] or config.src_dir) / (obj.options["source"] or obj.name)
                 checkout_dirs.setdefault(source.parent, set()).add(prefix[:-1])

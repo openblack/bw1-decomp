@@ -13,7 +13,7 @@ CameraModeDance* CameraModeDance::Create(GCamera* camera, GroupBehaviour* group)
 	{
 		return NULL;
 	}
-	return new (FILEPATH, 16) CameraModeDance(camera, group);
+	return new (__FILE__, 16) CameraModeDance(camera, group);
 }
 
 CameraModeDance::CameraModeDance(GCamera* camera, GroupBehaviour* group) : CameraMode(camera)

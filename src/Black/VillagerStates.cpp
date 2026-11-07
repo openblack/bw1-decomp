@@ -520,8 +520,8 @@ bool32_t Villager::Drowning()
 bool32_t Villager::MakeScaredStiff()
 {
 	TurnsUntilNextStateChange =
-		(int16_t)max((float)(uint32_t)GRand::GameRand(GetInfo()->ScaredStiffTime, FILEPATH, 604),
-	                 GRand::GameFloatRand(5.0f, FILEPATH, 604) + 10.0f);
+		(int16_t)max((float)(uint32_t)GRand::GameRand(GetInfo()->ScaredStiffTime, __FILE__, 604),
+	                 GRand::GameFloatRand(5.0f, __FILE__, 604) + 10.0f);
 	SetTopState(VILLAGER_STATE_SCARED_STIFF);
 	ScaredStiff();
 	return true;
@@ -725,12 +725,12 @@ bool32_t Villager::CongregateInTownAfterEmergency()
 {
 	if (GetTown() != NULL && GetTown()->IsInStateOfEmergency())
 	{
-		int state = GRand::GameRand(12, FILEPATH, 944) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
+		int state = GRand::GameRand(12, __FILE__, 944) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
 		                                               : VILLAGER_STATE_GO_HOME;
 		PlayAnimThenSetState(state, 1);
 		return true;
 	}
-	int state = GRand::GameRand(5, FILEPATH, 940) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
+	int state = GRand::GameRand(5, __FILE__, 940) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
 	                                              : VILLAGER_STATE_DECIDE_WHAT_TO_DO;
 	PlayAnimThenSetState(state, 1);
 	return true;
@@ -768,7 +768,7 @@ bool32_t Villager::SitAndChillout()
 	{
 		return true;
 	}
-	if (GRand::GameRand(10, FILEPATH, 1023) == 0)
+	if (GRand::GameRand(10, __FILE__, 1023) == 0)
 	{
 		SetupNothingToDo();
 		return true;

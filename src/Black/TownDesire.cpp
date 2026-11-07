@@ -313,7 +313,7 @@ TownDesireFlags::TownDesireFlags(Town* town, const MapCoords& coords, TOWN_DESIR
 TownDesireFlags* TownDesireFlags::Create(Town* town, TOWN_DESIRE_INFO type, unsigned long slot)
 {
 	MapCoords        coords = town->GetTownNeedsPos(slot);
-	TownDesireFlags* flags = new (FILEPATH, 1017)
+	TownDesireFlags* flags = new (__FILE__, 1017)
 		TownDesireFlags(town, coords, type, slot, GTownDesireInfo::GetInfo()[type].WorshipSiteMesh);
 	if (flags != NULL)
 	{
