@@ -2813,6 +2813,26 @@ BW1W130_SAFEDISC_CALLS = (
     (0x007165DA, jmp_run(0x00716495)),  # SecretCreature
     (0x007166A9, copy_run(0x007165DA)),  # SecretCreature
     (0x007166D7, jmp_run(0x007166A9)),  # SecretCreature
+    (0x00716733, jmp_run(0x007166D7)),  # Serialise
+    (0x0071675B, call_rel32(0x004034F9)),  # Serialise
+    (0x00716926, copy_run(0x0071675B)),  # Serialise
+    (0x00716969, copy_run(0x00716926)),  # Serialise
+    (0x007169A9, copy_run(0x00716969)),  # Serialise
+    (0x00716B29, copy_run(0x007169A9)),  # Serialise
+    (0x00716B75, jmp_run(0x00716B29)),  # Serialise
+    (0x00716BB5, jmp_run(0x00716B75)),  # Serialise
+    (0x00716BF5, jmp_run(0x00716BB5)),  # Serialise
+    (0x00716C3A, jmp_run(0x00716BF5)),  # Serialise
+    (0x00716C7A, jmp_run(0x00716C3A)),  # Serialise
+    (0x00716CB8, jmp_run(0x00716C7A)),  # Serialise
+    (0x00716CF8, jmp_run(0x00716CB8)),  # Serialise
+    (0x00716D38, jmp_run(0x00716CF8)),  # Serialise
+    (0x00716D75, jmp_run(0x00716D38)),  # Serialise
+    (0x00716DB8, jmp_run(0x00716D75)),  # Serialise
+    (0x00716E56, jmp_run(0x00716DB8)),  # Serialise
+    (0x00716EAA, copy_run(0x00716E56)),  # Serialise
+    (0x00716F4A, copy_run(0x00716EAA)),  # Serialise
+    (0x00717155, jmp_run(0x00716F4A)),  # Serialise
     (0x00719603, copy_run(0x007195AA)),  # Setup
     (0x0071962B, call_rel32(0x004034F9)),  # Setup
     (0x00719655, jmp_run(0x0071962B)),  # Setup

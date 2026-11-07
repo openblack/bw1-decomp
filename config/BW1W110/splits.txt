@@ -2286,11 +2286,11 @@ Black/SecretCreature.cpp:
 	.bss        start:0x00D87D08 end:0x00D87D18
 
 Black/Serialise.cpp:
-	.text       start:0x00706980 end:0x00707070
+	.text       start:0x00706980 end:0x007073D0
 	.rdata      start:0x009471E8 end:0x009471F8
 	.CRT$XCU    start:0x009B708C end:0x009B7094 align:4
-	.data       start:0x00C0FD50 end:0x00C0FD84
-	.bss        start:0x00D87D18 end:0x00D87D24
+	.data       start:0x00C0FD50 end:0x00C0FD81
+	.bss        start:0x00D87D18 end:0x00D87D20
 
 Black/ServerLandscapeMap.cpp:
 	.text       start:0x007073D0 end:0x00709650

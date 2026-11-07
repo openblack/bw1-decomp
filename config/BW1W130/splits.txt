@@ -2516,8 +2516,8 @@ Black/Serialise.cpp:
 	.text       start:0x00716710 end:0x00717190
 	.rdata      start:0x00999778 end:0x00999788
 	.CRT$XCU    start:0x00A47714 end:0x00A47720 align:4
-	.data       start:0x00CA18E0 end:0x00CA1920
-	.bss        start:0x00E1A1F8 end:0x00E1A204
+	.data       start:0x00CA18E0 end:0x00CA191D
+	.bss        start:0x00E1A1F8 end:0x00E1A200
 
 Black/ServerLandscapeMap.cpp:
 	.text       start:0x00717190 end:0x00719440
