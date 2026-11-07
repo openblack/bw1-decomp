@@ -1752,7 +1752,7 @@ void GScript::StartGameSpeed()
 	}
 }
 
-void GScript::EndGameSpeedForTask(uint32_t task)
+void GScript::ClearGameSpeedControl(unsigned long task)
 {
 	if (GameSpeedTask == task)
 	{
@@ -2272,7 +2272,7 @@ void GScript::IsHitObject()
 	SCRIPT_ASSERT(thing != NULL, "Object no longer valid");
 	if (thing != NULL)
 	{
-		g_scriptDLL->PUSH((void*)(GGame::g_game->script->HitObject == thing), VMType_BOOLEAN);
+		g_scriptDLL->PUSH((void*)(GGame::g_game->script->GetHitObject() == thing), VMType_BOOLEAN);
 		return;
 	}
 	g_scriptDLL->PUSH((void*)false, VMType_BOOLEAN);

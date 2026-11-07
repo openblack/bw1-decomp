@@ -35,6 +35,8 @@ static_assert(sizeof(enum CameraHelpReason) == 0x4, "Data type is of wrong size"
 
 enum CAMERA_FEATURE
 {
+	CAMERA_FEATURE_ALL = -1,
+	CAMERA_FEATURE_NONE = 0x0,
 	CAMERA_FEATURE_PITCH = 0x1,
 	CAMERA_FEATURE_ROTATE = 0x2,
 	CAMERA_FEATURE_ZOOM = 0x4,
@@ -44,18 +46,24 @@ enum CAMERA_FEATURE
 	CAMERA_FEATURE_AUTO_PITCH = 0x40,
 	CAMERA_FEATURE_HELP = 0x80,
 	CAMERA_FEATURE_EDGE_SCROLL = 0x100,
+	CAMERA_FEATURE_NORMAL = CAMERA_FEATURE_PITCH | CAMERA_FEATURE_ROTATE | CAMERA_FEATURE_ZOOM | CAMERA_FEATURE_MOVE |
+	                        CAMERA_FEATURE_DOUBLE_CLICK | CAMERA_FEATURE_ZOOM_LANDSCAPE | CAMERA_FEATURE_HELP |
+	                        CAMERA_FEATURE_EDGE_SCROLL,
 };
 
 class CameraHelp
 {
 public:
-	// TODO: Original static member names are unrecovered; ownership follows SetAutoPitch/EnableCameraFeatures.
 	// BW1W120 009cdd64
-	static float AutoPitchParam1;
+	static float AutoPitch;
 	// BW1W120 009cdd68
-	static float AutoPitchParam2;
+	static float AutoPitchHeight;
 	// BW1W120 009cdd6c
 	static int EnabledFeatures;
+	// BW1W120 004473f0 BW1M119 011a6a20
+	static void SetAutoPitch(float pitch, float height, bool enable);
+	// BW1W120 00447430 BW1M119 011a69c0
+	static void EnableCameraFeatures(int enable, int disable);
 	// BW1W120 00449140 BW1M119 010018f0
 	static void CameraHelpCallback(CameraHelpReason reason, LHPoint& point, unsigned long param_3);
 	// BW1W120 00447850 BW1M119 0107e660

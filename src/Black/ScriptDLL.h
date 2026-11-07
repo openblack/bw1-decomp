@@ -2,10 +2,12 @@
 #define BW1_DECOMP_SCRIPT_DLL_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uintptr_t */
+#include <stddef.h> /* For NULL */
+#include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LHDLL/ver1.0/LHDLL.h>          /* For struct LHDLL */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHReturn.h>       /* For enum LH_RETURN */
 
 // Types of values on the script VM's stack.
 enum VMType
@@ -20,45 +22,75 @@ enum VMType
 
 enum VMScriptType
 {
-	VMScriptType_0 = 0x0,
+	VMScriptType_Help = 0x2,
 	VMScriptType_RunWhilePaused = 0x18,
-	_VMScriptType_COUNT = 0x1
+	VMScriptType_StoppableHelp = 0x4a,
+	VMScriptType_Multiplayer = 0x60,
+	VMScriptType_All = 0x7f,
 };
 
 // Forward Declares
 
 class LHTransport;
+struct ScriptFunctionTable;
 
 class ScriptDLL : public LHDLL
 {
 public:
-	uint32_t  field_0x24;
-	uint32_t  field_0x28;
-	uint32_t  field_0x2c;
-	uint32_t  field_0x30;
-	uintptr_t ParseFile;
-	uintptr_t StartScript;
-	uintptr_t FindScript;
-	void(__cdecl* AutoStart_ptr)(LHTransport* transport); /* 0x40 */
-	uintptr_t StopTask;
-	void(__cdecl* StopAllTasks_ptr)(LHTransport* transport);
-	uintptr_t StopTasksOfType_ptr;
-	uintptr_t POP_ptr; /* 0x50 */
-	uintptr_t PUSH_ptr;
-	uintptr_t STRING_ptr;
-	int(__cdecl* LoadBinary_ptr)(LHTransport* transport, const char* path);
-	uintptr_t SaveBinary; /* 0x60 */
-	uintptr_t SaveState;
-	uintptr_t RestoreState;
-	uintptr_t Reboot;
-	uint32_t  NumTasks; /* 0x70 */
-	uint32_t  LineNumber;
-	uint32_t  TaskNumber_ptr;
-	char*(__cdecl* TaskName_ptr)(LHTransport* transport);
-	uint32_t TaskFilename; /* 0x80 */
-	uint32_t GetTaskFilename;
-	uint32_t GetTaskName;
-	uint32_t OpCode;
+	typedef bool(__cdecl* ScriptCheck)(const char* script_name, const char* filename);
+	typedef void(__cdecl* VMEventCallback)(unsigned long id);
+	typedef void(__cdecl* VariableCallback)(const char* name, VMType type, float value);
+
+	char*    LastTaskName; /* 0x24 */
+	char*    LastTaskFilename;
+	uint32_t LastTaskNumber;
+	uint32_t LastLineNumber;
+	LH_RETURN(__cdecl* ParseFileProc)(LHTransport* library_end, const char* filename, const char* directory);
+	uint32_t(__cdecl* StartScriptProc)(LHTransport* library_end, const char* name, VMScriptType type);
+	uint32_t(__cdecl* FindScriptProc)(LHTransport* library_end, const char* name);
+	LH_RETURN(__cdecl* AutoStartProc)(LHTransport* library_end); /* 0x40 */
+	LH_RETURN(__cdecl* StopTaskProc)(LHTransport* library_end, uint32_t task);
+	void(__cdecl* StopAllTasksProc)(LHTransport* library_end);
+	void(__cdecl* StopTasksOfTypeProc)(LHTransport* library_end, VMScriptType type);
+	uint32_t(__cdecl* POPProc)(VMType* type); /* 0x50 */
+	void(__cdecl* PUSHProc)(void* value, VMType type);
+	char*(__cdecl* STRINGProc)(unsigned long index);
+	LH_RETURN(__cdecl* LoadBinaryProc)(LHTransport* library_end, const char* path);
+	LH_RETURN(__cdecl* SaveBinaryProc)(LHTransport* library_end, const char* path); /* 0x60 */
+	LH_RETURN(__cdecl* SaveStateProc)(LHTransport* library_end, const char* path);
+	LH_RETURN(__cdecl* RestoreStateProc)(LHTransport* library_end, const char* path);
+	LH_RETURN(__cdecl* RebootProc)(LHTransport* library_end);
+	uint32_t(__cdecl* NumTasksProc)(LHTransport* library_end); /* 0x70 */
+	uint32_t(__cdecl* LineNumberProc)(LHTransport* library_end);
+	uint32_t(__cdecl* TaskNumberProc)(LHTransport* library_end);
+	char*(__cdecl* TaskNameProc)(LHTransport* library_end);
+	char*(__cdecl* TaskFilenameProc)(LHTransport* library_end); /* 0x80 */
+	char*(__cdecl* GetTaskFilenameProc)(LHTransport* library_end, uint32_t task);
+	char*(__cdecl* GetTaskNameProc)(LHTransport* library_end, uint32_t task);
+	uint32_t(__cdecl* OpCodeProc)(LHTransport* library_end);
+	VMScriptType(__cdecl* GetCurrentScriptTypeProc)(LHTransport* library_end); /* 0x90 */
+	uint32_t(__cdecl* GetScriptInstructionCountProc)(LHTransport* library_end);
+	uint32_t(__cdecl* ModeProc)(LHTransport* library_end);
+	uint32_t(__cdecl* TypeProc)(LHTransport* library_end);
+	uint32_t(__cdecl* ValueProc)(LHTransport* library_end); /* 0xa0 */
+	char*(__cdecl* OpCodeNameProc)(LHTransport* library_end, uint32_t opcode);
+	void(__cdecl* StopScriptsProc)(LHTransport* library_end, ScriptCheck check);
+	uint32_t(__cdecl* GetScriptIDProc)(LHTransport* library_end);
+	uint32_t(__cdecl* VersionProc)(LHTransport* library_end); /* 0xb0 */
+	uint32_t(__cdecl* CodeSizeProc)(LHTransport* library_end);
+	uint32_t(__cdecl* GetNextTaskProc)(LHTransport* library_end, uint32_t task);
+	uint32_t(__cdecl* GetPreviousTaskProc)(LHTransport* library_end, uint32_t task);
+	uint32_t(__cdecl* GetHighestRunningTaskProc)(LHTransport* library_end); /* 0xc0 */
+#ifndef VERSION_BW1W100
+	uint32_t(__cdecl* GetFirstRunningTaskIdProc)(LHTransport* library_end, const char* name);
+#endif
+	void(__cdecl* LoopTaskVariablesProc)(LHTransport* library_end, VariableCallback callback, uint32_t task);
+	void(__cdecl* LoopGlobalVariablesProc)(LHTransport* library_end, VariableCallback callback);
+	VMScriptType(__cdecl* GetScriptTypeProc)(LHTransport* library_end, unsigned long task); /* 0xd0 */
+#ifndef VERSION_BW1W100
+	float(__cdecl* GetGlobalVariableValueProc)(LHTransport* library_end, const char* name);
+	float(__cdecl* GetLocalVariableValueProc)(LHTransport* library_end, const char* script_name, const char* name);
+#endif
 
 	// Non-virtual methods
 
@@ -94,6 +126,10 @@ public:
 	void COORD_PUSH(float value) { PUSH(*(void**)&value, VMType_VECTOR); }
 	// BW1W120 inlined BW1M119 inlined
 	void FLOAT_PUSH(float value) { PUSH(*(void**)&value, VMType_FLOAT); }
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 inlined
+	void THING_PUSH(uint32_t id) { PUSH((void*)id, VMType_OBJECT); }
+#endif
 	// Inliner IL size: 57
 	// BW1W120 inlined BW1M119 inlined
 	void POINT_POP(LHPoint& point)
@@ -110,25 +146,6 @@ public:
 		COORD_PUSH(point.y);
 		COORD_PUSH(point.z);
 	}
-	uint32_t GetCurrentScriptType; /* 0x90 */
-	uint32_t(__cdecl* GetScriptInstructionCount_ptr)(LHTransport* transport);
-	uint32_t Mode;
-	uint32_t Type;
-	uint32_t Value; /* 0xa0 */
-	uint32_t OpCodeName;
-	void(__cdecl* StopScripts_ptr)(LHTransport* transport, bool(__cdecl* check)(const char*, const char*));
-	uint32_t GetScriptID;
-	uint32_t Version; /* 0xb0 */
-	uint32_t CodeSize;
-	uint32_t GetNextTask;
-	uint32_t GetPreviousTask;
-	uint32_t GetHighestRunningTask; /* 0xc0 */
-	uint32_t GetFirstRunningTaskId;
-	uint32_t LoopTaskVariables;
-	uint32_t LoopGlobalVariables;
-	uint32_t GetScriptType_ptr; /* 0xd0 */
-	uint32_t GetGlobalVariableValue;
-	uint32_t field_0xd8;
 
 	// Static methods
 
@@ -138,42 +155,109 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	ScriptDLL(const char* library_path) : LHDLL(library_path) { field_0x28 = 0; }
+	ScriptDLL(const char* library_path) : LHDLL(library_path) { LastTaskFilename = NULL; }
+
+	// Override methods
+
+	// BW1W120 006f6380 BW1M119 014effd0
+	virtual bool GetAPI();
+	// BW1W120 006f6730 BW1M119 014efef0
+	virtual bool ResetAPI();
 
 	// Non-virtual methods
 
+	// BW1W120 006f67f0 BW1M119 014efe00
+	LH_RETURN Initialise(ScriptFunctionTable* table, void(__cdecl* error_callback)(LH_RETURN code, char* message),
+	                     VMEventCallback start_call_callback, VMEventCallback end_call_callback,
+	                     void(__cdecl* debug_callback)(), VMEventCallback     end_task_callback);
 	// BW1W120 006f6840 BW1M119 0108e380
-	void LookIn(VMScriptType script_type);
+	LH_RETURN LookIn(VMScriptType script_type);
+	// BW1W120 006f6860 BW1M119 014efcf0
+	LH_RETURN ParseFile(const char* filename, const char* directory);
+	// BW1W120 006f6880 BW1M119 014efc80
+	uint32_t StartScript(const char* name, VMScriptType type);
+	// BW1W120 006f68a0 BW1M119 null
+	uint32_t FindScript(const char* name);
 	// BW1W120 006f68c0 BW1M119 014efc20
-	void AutoStart();
+	LH_RETURN AutoStart();
+	// BW1W120 006f68d0 BW1M119 null
+	LH_RETURN StopTask(uint32_t task);
 	// BW1W120 006f68f0 BW1M119 014efbb0
 	void StopTasksOfType(VMScriptType type);
-	// BW1W120 006f6b10 BW1M119 014ef790
-	void StopScripts(bool(__cdecl* check)(const char* script_name, const char* filename));
 	// BW1W120 006f6910 BW1M119 014efb50
 	void StopAllTasks();
 	// BW1W120 006f6920 BW1M119 014efaf0
-	int LoadBinary(const char* path);
+	LH_RETURN LoadBinary(const char* path);
+	// BW1W120 006f6940 BW1M119 null
+	LH_RETURN SaveBinary(const char* path);
+	// BW1W120 006f6960 BW1M119 014efa90
+	LH_RETURN SaveState(const char* path);
+	// BW1W120 006f6980 BW1M119 014efa30
+	LH_RETURN RestoreState(const char* path);
+	// BW1W120 006f69a0 BW1M119 014ef9c0
+	LH_RETURN Reboot();
+	// BW1W120 006f69c0 BW1M119 null
+	uint32_t NumTasks();
+	// BW1W120 006f69d0 BW1M119 null
+	uint32_t LineNumber();
 	// BW1W120 006f69f0 BW1M119 014ef950
 	uint32_t TaskNumber();
 	// BW1W120 006f6a10 BW1M119 014ef8e0
 	char* TaskName();
+	// BW1W120 006f6a30 BW1M119 null
+	char* GetTaskName(uint32_t task);
+	// BW1W120 006f6a50 BW1M119 null
+	char* TaskFilename();
+	// BW1W120 006f6a70 BW1M119 null
+	char* GetTaskFilename(uint32_t task);
+	// BW1W120 006f6a90 BW1M119 014ef870
+	VMScriptType GetCurrentTaskScriptType();
+	// BW1W120 006f6aa0 BW1M119 014ef800
+	uint32_t GetScriptInstructionCount();
+	// BW1W120 006f6ab0 BW1M119 null
+	uint32_t OpCode();
+	// BW1W120 006f6ac0 BW1M119 null
+	uint32_t Mode();
+	// BW1W120 006f6ad0 BW1M119 null
+	uint32_t Type();
+	// BW1W120 006f6ae0 BW1M119 null
+	uint32_t Value();
+	// BW1W120 006f6af0 BW1M119 null
+	char* OpCodeName(uint32_t opcode);
+	// BW1W120 006f6b10 BW1M119 014ef790
+	void StopScripts(ScriptCheck check);
+	// BW1W120 006f6b30 BW1M119 null
+	void LoopTaskVariables(VariableCallback callback, uint32_t task);
+	// BW1W120 006f6b50 BW1M119 null
+	void LoopGlobalVariables(VariableCallback callback);
+	// BW1W120 006f6b70 BW1M119 null
+	uint32_t GetScriptID();
+	// BW1W120 006f6b80 BW1M119 null
+	uint32_t Version();
+	// BW1W120 006f6b90 BW1M119 null
+	uint32_t CodeSize();
 	// BW1W120 006f6ba0 BW1M119 010458d0
 	void PUSH(void* value, VMType type);
 	// BW1W120 006f6bd0 BW1M119 014ef5e0
-	char* STRING(uint32_t index);
-	// BW1W120 006f6c50 BW1M119 014ef510
-	void* GetScriptType(unsigned long param_1);
-	// BW1W120 006f6aa0 BW1M119 014ef800
-	uint32_t GetScriptInstructionCount();
-
-	virtual void GetAPI();
-	virtual void AutoStart(LHTransport* transport);
-	virtual int  LoadBinary(LHTransport* transport, const char* path);
+	char* STRING(unsigned long index);
+	// BW1W120 006f6be0 BW1M119 null
+	uint32_t GetPreviousTask(uint32_t task);
+	// BW1W120 006f6c00 BW1M119 null
+	uint32_t GetNextTask(uint32_t task);
+	// BW1W120 006f6c20 BW1M119 null
+	uint32_t GetHighestRunningTask();
+#ifndef VERSION_BW1W100
 	// BW1W120 006f6c30 BW1M119 014ef570
-	int FindFirstRunningTaskID(const char* script_name);
-	// BW1W120 006f6a90 BW1M119 014ef870
-	VMScriptType GetCurrentTaskScriptType();
+	uint32_t FindFirstRunningTaskID(const char* script_name);
+#endif
+	// BW1W120 006f6c50 BW1M119 014ef510
+	VMScriptType GetScriptType(unsigned long task);
+#ifndef VERSION_BW1W100
+	// BW1W120 006f6c70 BW1M119 014ef4a0
+	float GetGlobalVariableValue(const char* name);
+	// BW1W120 006f6c90 BW1M119 null
+	float GetLocalVariableValue(const char* script_name, const char* name);
+#endif
 };
 
 #endif /* BW1_DECOMP_SCRIPT_DLL_INCLUDED_H */

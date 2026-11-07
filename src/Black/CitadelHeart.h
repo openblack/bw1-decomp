@@ -313,11 +313,4 @@ public:
 	void UpdateLeashes();
 };
 
-// TODO: placement unproven
-inline void Wrap(float& value, float range)
-{
-	float t = value;
-	value = t - (int)(t / range) * range;
-}
-
 #endif /* BW1_DECOMP_CITADEL_HEART_INCLUDED_H */

@@ -589,7 +589,7 @@ void GGame::OnNewGame()
 	SaveGameRoom::CreateSaveGameFiles(path);
 
 	bool started = false;
-	if (g_game->script != NULL && GScript::Dat_00D95C0C && g_game->LandNumber == 1)
+	if (g_game->script != NULL && GScript::ScriptsLoaded && g_game->LandNumber == 1)
 	{
 		if (g_game->script->StartScript("LandControlAll"))
 		{
@@ -1354,7 +1354,7 @@ void GGame::ClearMap()
 		players[PlayerIndex].creature->Save3D(physiquePath);
 	}
 	CameraExclusion::RemoveAll();
-	CameraExclusion::ResetExclusionFile(0);
+	CameraExclusion::ResetExclusionFile(CAMERA_EXCLUSION_ID_DEFAULT);
 	ResetCameraModeNew3();
 	PhysicsObject::DeleteAll();
 	GInterface& playerInterface = *g_game->MyInterface();
@@ -1391,8 +1391,8 @@ void GGame::ClearMap()
 	ResetState();
 	GameStats::ClearAll();
 	CameraHelp::EnabledFeatures = 0x1bf;
-	CameraHelp::AutoPitchParam2 = 75.0f;
-	CameraHelp::AutoPitchParam1 = 0.5235988f;
+	CameraHelp::AutoPitchHeight = 75.0f;
+	CameraHelp::AutoPitch = 0.5235988f;
 	HelpProfile::AccumulatedTime = 0;
 	for (int j = 0; j < GLandscape::DrawObjectCount; ++j)
 	{
@@ -2721,8 +2721,8 @@ bool32_t GGame::Save(GameOSFile& file)
 	file.WritePtr(climate);
 	CameraExclusion::SaveExclusionFile(file);
 	file.WriteIt(CameraHelp::EnabledFeatures);
-	file.WriteIt(CameraHelp::AutoPitchParam1);
-	file.WriteIt(CameraHelp::AutoPitchParam2);
+	file.WriteIt(CameraHelp::AutoPitch);
+	file.WriteIt(CameraHelp::AutoPitchHeight);
 	file.WriteIt(CreatureRoom::CreatureInTemple);
 
 	// Init/Close manage a stack of current covers and shared texture resources.
@@ -2855,8 +2855,8 @@ bool32_t GGame::Load(GameOSFile& file)
 	file.ReadPtr((GameThing**)&climate);
 	CameraExclusion::LoadExclusionFile(file);
 	file.ReadIt(CameraHelp::EnabledFeatures);
-	file.ReadIt(CameraHelp::AutoPitchParam1);
-	file.ReadIt(CameraHelp::AutoPitchParam2);
+	file.ReadIt(CameraHelp::AutoPitch);
+	file.ReadIt(CameraHelp::AutoPitchHeight);
 	file.ReadIt(CreatureRoom::CreatureInTemple);
 	SnowCover::Reset();
 	SnowCover* temporarySnow = NULL;

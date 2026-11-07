@@ -18,6 +18,12 @@ enum EXCLUSIONTYPE
 	EXCLUSIONTYPE_CYLINDER = 0x1,
 };
 
+enum CAMERA_EXCLUSION_ID
+{
+	CAMERA_EXCLUSION_ID_DEFAULT = 0,
+	CAMERA_EXCLUSION_ID_SCRIPT = 1,
+};
+
 struct CameraExclusion
 {
 	CameraExclusion* next;

@@ -104,7 +104,7 @@ public:
 	LHListHead<WayPoint>            waypoints;
 	LHListHead<GArena>              arenas;
 	LHLinkedList<Town*>             TownList;
-	LHLinkedList<GameThingWithPos*> game_thing_with_pos;
+	LHLinkedList<GameThingWithPos*> ScriptMarkers;
 	LHListHead<ScriptHighlight>     ScriptHighlights;
 	LHListHead<MagicFireBall>       MagicFireBalls;
 	LHListHead<MapShield>           MapShields;

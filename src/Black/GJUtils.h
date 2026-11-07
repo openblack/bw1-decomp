@@ -30,6 +30,11 @@ public:
 	static void GetRandomSurfacePos(LH3DMesh* mesh, LHMatrix& matrix, LHPoint* pos, LHPoint* normal);
 	// BW1W120 inlined BW1M119 01057f60
 	template <class T> static T Linterp(const T& from, const T& to, float t) { return from + (to - from) * t; }
+	// BW1W120 inlined BW1M119 01055100
+	template <class T> static T LinterpNoBoundsCheck(const T& from, const T& to, float t)
+	{
+		return from + (to - from) * t;
+	}
 	// BW1W120 inlined BW1M119 010defc0
 	template <class T> static void Linterp(const T& from, const T& to, float t, T* result)
 	{
@@ -54,6 +59,13 @@ public:
 inline float boundf(float low, float value, float high)
 {
 	return value > low ? (value < high ? value : high) : low;
+}
+
+// BW1W120 inlined BW1M119 inlined
+inline void Wrap(float& value, float range)
+{
+	float t = value;
+	value = t - (int)(t / range) * range;
 }
 
 inline float LinterpTable(const float* keys, const float* values, int count, float key)
@@ -81,6 +93,8 @@ class GlobalTextures
 public:
 	// BW1W120 0057d440 BW1M119 012c3df0
 	static LH3DMaterial* GetLightSheetMaterial();
+	// BW1W120 0057d590 BW1M119 012c39a0
+	static LH3DMaterial* GetHighlightMaterial();
 
 	enum FROZ_MAT_TYPE
 	{

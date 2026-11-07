@@ -13,6 +13,8 @@ public:
 
 	// BW1W120 0071a560 BW1M119 01514920
 	static void Init();
+	// BW1W120 0071a640 BW1M119 01514820
+	static void Stop();
 	// BW1W120 0071a650 BW1M119 0108ffe0
 	static void Process();
 

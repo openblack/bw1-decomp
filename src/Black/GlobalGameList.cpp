@@ -134,7 +134,7 @@ void GlobalGameLists::ClearMap()
 		Tree* next = trees.FindNext(tree);
 		if ((tree->GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE) == 0)
 		{
-			tree->ToBeDeleted(0);
+			tree->ToBeDeleted(false);
 		}
 		tree = next;
 	}
@@ -142,13 +142,13 @@ void GlobalGameLists::ClearMap()
 	for (Town* town = TownList.GetHead(); town;)
 	{
 		Town* next = TownList.FindNext(town);
-		town->ToBeDeleted(0);
+		town->ToBeDeleted(false);
 		town = next;
 	}
 	for (BuildingSite* site = BuildingSites.GetHead(); site;)
 	{
 		BuildingSite* next = BuildingSites.FindNext(site);
-		site->ToBeDeleted(0);
+		site->ToBeDeleted(false);
 		site = next;
 	}
 	footpaths.ToBeDeletedEachLinked();
@@ -157,7 +157,7 @@ void GlobalGameLists::ClearMap()
 	{
 		if ((fixed->GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE) == 0)
 		{
-			fixed->ToBeDeleted(0);
+			fixed->ToBeDeleted(false);
 		}
 	}
 	reactions.ToBeDeletedAvailable();
@@ -165,7 +165,7 @@ void GlobalGameLists::ClearMap()
 	for (AnimatedStatic* animated = AnimatedStatics.GetHead(); animated;)
 	{
 		AnimatedStatic* next = AnimatedStatics.FindNext(animated);
-		animated->ToBeDeleted(0);
+		animated->ToBeDeleted(false);
 		animated = next;
 	}
 	balls.ToBeDeletedAvailable();
@@ -192,7 +192,7 @@ void GlobalGameLists::ClearMap()
 		TownArtifact* next = TownArtifacts.FindNext(artifact);
 		if (artifact->IsAvailable())
 		{
-			artifact->ToBeDeleted(0);
+			artifact->ToBeDeleted(false);
 		}
 		artifact = next;
 	}
@@ -201,16 +201,16 @@ void GlobalGameLists::ClearMap()
 		Fragment* next = fragments.FindNext(fragment);
 		if (fragment->IsAvailable())
 		{
-			fragment->ToBeDeleted(0);
+			fragment->ToBeDeleted(false);
 		}
 		fragment = next;
 	}
 	GScript::DeleteAllScriptCreatedGameThings();
 	ScriptHighlights.ToBeDeletedAvailable();
-	for (GameThingWithPos* thing = game_thing_with_pos.GetHead(); thing;)
+	for (GameThingWithPos* thing = ScriptMarkers.GetHead(); thing;)
 	{
-		GameThingWithPos* next = game_thing_with_pos.FindNext(thing);
-		thing->ToBeDeleted(0);
+		GameThingWithPos* next = ScriptMarkers.FindNext(thing);
+		thing->ToBeDeleted(false);
 		thing = next;
 	}
 	streams.ToBeDeletedEachLinked();
@@ -220,31 +220,31 @@ void GlobalGameLists::ClearMap()
 	for (Flock* flock = flocks.GetHead(); flock;)
 	{
 		Flock* next = flocks.FindNext(flock);
-		flock->ToBeDeleted(0);
+		flock->ToBeDeleted(false);
 		flock = next;
 	}
 	for (MobileObject* mobile = MobileObjects.GetHead(); mobile;)
 	{
 		MobileObject* next = MobileObjects.FindNext(mobile);
-		mobile->ToBeDeleted(0);
+		mobile->ToBeDeleted(false);
 		mobile = next;
 	}
 	for (Reward* reward = rewards.GetHead(); reward;)
 	{
 		Reward* next = rewards.FindNext(reward);
-		reward->ToBeDeleted(0);
+		reward->ToBeDeleted(false);
 		reward = next;
 	}
 	for (Object* object = objects.GetHead(); object;)
 	{
 		Object* next = objects.FindNext(object);
-		object->ToBeDeleted(0);
+		object->ToBeDeleted(false);
 		object = next;
 	}
 	for (GClimate* climate = climates.GetHead(); climate;)
 	{
 		GClimate* next = climates.FindNext(climate);
-		climate->ToBeDeleted(0);
+		climate->ToBeDeleted(false);
 		climate = next;
 	}
 	GGame::g_game->climate = NULL;
@@ -256,7 +256,7 @@ void GlobalGameLists::ClearMap()
 	{
 		if (baseNode->payload->IsAvailable())
 		{
-			baseNode->payload->ToBeDeleted(0);
+			baseNode->payload->ToBeDeleted(false);
 		}
 	}
 	cannons.ToBeDeletedAvailable();
@@ -297,7 +297,7 @@ bool32_t GlobalGameLists::Save(GameOSFile& file)
 	file.WriteSafe(InfluenceRingList);
 	file.WriteSafe(WeatherThings);
 	file.WriteSafe(ScriptHighlights);
-	file.WriteSafe(game_thing_with_pos);
+	file.WriteSafe(ScriptMarkers);
 	file.WriteSafe(streams);
 	file.WriteSafe(waypoints);
 	file.WriteSafe(footpaths);
@@ -354,7 +354,7 @@ bool32_t GlobalGameLists::Load(GameOSFile& file)
 	file.ReadSafe(InfluenceRingList);
 	file.ReadSafe(WeatherThings);
 	file.ReadSafe(ScriptHighlights);
-	file.ReadSafe(game_thing_with_pos);
+	file.ReadSafe(ScriptMarkers);
 	file.ReadSafe(streams);
 	file.ReadSafe(waypoints);
 	file.ReadSafe(footpaths);

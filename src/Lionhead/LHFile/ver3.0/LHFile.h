@@ -67,6 +67,14 @@ public:
 	// Inliner IL size: 61
 	// BW1W120 0042e110 BW1M119 0118cc20
 	LHFile() { ResetData(); }
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 01537a50
+	LHFile(const char* name)
+	{
+		ResetData();
+		SetName(name);
+	}
+#endif
 	// BW1W120 007bda20 BW1M119 01169bc0 (LHCombined Release)
 	~LHFile();
 

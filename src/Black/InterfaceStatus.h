@@ -137,6 +137,10 @@ public:
 	MapCoords GetHandMapCoords();
 	// BW1W120 005dca40 BW1M119 0108dfc0
 	SPELL_SEED_TYPE GetLastSpellGained();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005f17b0 BW1MCI119 0139a280
+	bool32_t AddToCurrentHandArray(Object* object);
+#endif
 };
 
 #endif /* BW1_DECOMP_INTERFACE_STATUS_INCLUDED_H */

@@ -33,6 +33,9 @@ block_relocations:
   - source: 0x0081D786
   - source: 0x0081D7A1
   - source: 0x0081D93D
+# ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
+  - source: 0x0070E9D2
+  - source: 0x0070ED2D
 # LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
   - source: 0x00811157
   - source: 0x00811C98
@@ -643,6 +646,36 @@ add_relocations:
     type: x86_abs32
     target: '___rgcode_page_info'
     addend: 0x4
+# GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
+  - source: 0x006F0808
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x006F0B97
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+# ScriptManage.cpp: the loops over VariableTable compare against the end of the array.
+  - source: 0x007117B2
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x00711862
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x00711C1F
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x00711D18
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x00711E14
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
 # GameSpy gserverlist.c's ServerListReadList: the lea displacement of its static data buffer (dtk leaves it unrelocated).
   - source: 0x0089BD60
     type: x86_abs32

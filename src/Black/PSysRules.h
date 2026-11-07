@@ -1390,6 +1390,10 @@ public:
 	ParticleCreator* PretendObjectCreatorMedium;
 	ParticleCreator* PretendObjectCreatorLarge;
 	PSysSoundAction  SoundTornado;
+#ifdef VERSION_BW1WCI
+	// BW1WCI 006e68f0 BW1MCI119 014c11a0
+	void UpdateBaseAndTopPoints() const;
+#endif
 };
 static_assert(sizeof(UR_Tornado::CollectionData) == 0x74, "Data type is of wrong size");
 static_assert(sizeof(UR_Tornado::DebrisCollectionData) == 0x28, "Data type is of wrong size");

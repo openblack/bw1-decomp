@@ -24,6 +24,12 @@ struct RPHolder;
 class AnimatedStatic : public Feature
 {
 public:
+	enum STATE
+	{
+		STATE_CLOSED = 0,
+		STATE_OPEN = 1,
+	};
+
 	uint32_t GateType;
 	Object*  GateStones[ANIMATED_STATIC_GATE_STONE_COUNT];
 	uint32_t GateStoneIndices[ANIMATED_STATIC_GATE_STONE_COUNT];
@@ -71,6 +77,8 @@ public:
 	// BW1W120 00421f50 BW1M119 010ab030
 	static AnimatedStatic* Create(const MapCoords& coords, const GAnimatedStaticInfo* info, float y_angle, float scale,
 	                              float percent_built, bool32_t under_construction);
+	// BW1W120 00422cc0 BW1M119 010a98c0
+	void SetAnimatedState(STATE state);
 	// BW1W120 00422df0 BW1M119 01014790
 	uint32_t CountGateStones();
 	// BW1W120 00422d50 BW1M119 010a9230

@@ -487,6 +487,36 @@ add_relocations:
     type: x86_abs32
     target: '___pioinfo'
     addend: 0x4
+# GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
+  - source: 0x006866A8
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x00686A37
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+# ScriptManage.cpp: the loops over VariableTable compare against the end of the array.
+  - source: 0x006A65C2
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x006A6662
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x006A6A0F
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x006A6B08
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x006A6C04
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
 # libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
   - source: 0x007E6D90
     type: x86_abs32

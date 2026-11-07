@@ -21,6 +21,8 @@
 #include "HandStatePlayAnim.h"
 #include "HandStateCitadel.h"
 
+#define CHAND_DEFAULT_MAX_DISTANCE_FROM_USER 1800.0f
+
 // Forward Declares
 
 class GInterfaceStatus;
@@ -39,6 +41,8 @@ public:
 	void StartFixedPosAnimation(LHPoint& pos, long anim);
 	// BW1W120 0046c0b0 BW1M119 011d0790
 	void EndGiveToCreature();
+	// BW1W120 0046bf20 BW1M119 011d0c80
+	void SetMaxDistanceFromUser(float distance);
 	union State {
 		struct Named
 		{
