@@ -9,7 +9,7 @@
 #define new DEBUG_NEW
 #undef THIS_FILE
 // __FILE__ of the original build.
-static char THIS_FILE[] = FILEPATH;
+static char THIS_FILE[] = __FILE__;
 #endif
 
 CLHSystemSpecDialog::CLHSystemSpecDialog(CWnd* parent /*=NULL*/) : CDialog(CLHSystemSpecDialog::IDD, parent)
