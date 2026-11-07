@@ -291,13 +291,13 @@ shares it) or of our sources.
   `GestureSystemDataList`, `GestureSystemMatch`, `GestureSystemSamples`, `Language`,
   `MPFEConditionMessages`, `MPFECreatureDownload`, `MPFEDatabase`, `PlayerMessage`,
   `SpellShield`, `TotemStatue`, `VillagerStates`, `WorshipTotem`. Either mechanism gives
-  this. `/YX` needs no eighteen overrides set by hand (and `CPUCheck`'s leading includes, DirectDraw's, are its own), and it
+  this. `/YX` needs no nineteen overrides set by hand (and `CPUCheck`'s leading includes, DirectDraw's, are its own), and it
   fits the GestureSystem files: five are in
   hash order, and `GestureSystemResult`, which follows `GestureSystemMatch` in link order and
   would reuse the PCH it had rebuilt, is the only one of the six in `/Yu` order.
 - **The `<string>` in our PCH** (`PCH_EXCEPT_NO_STRING`, `PCHExceptNoStringIn`): `AudioAnalyse`,
   `CarriedObject`, `Debug`, `DialogBoxKeyBinding`, `HelpDudeControl`, `HelpEditor`,
-  `LivingStates`, `MagicObjectInfo`, `PSysBase`, `PSysBeam`, `ScriptDLL` and `SecretCreature`
+  `LivingStates`, `MagicObjectInfo`, `PSysBase`, `PSysBeam` and `ScriptDLL`
   have no ctype guard in 1.20 and 1.30, `RandomBuildingPlacement` none in 1.20
   and `GameOptionsRoom` and `MPFEConnectionStatus` none in 1.30 (an include that changed between
   versions). `LoadingScreen` has the guard but calls `_iswspace`, which `<ctype.h>` gives only

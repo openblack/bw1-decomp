@@ -6,6 +6,9 @@ symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
 block_relocations:
+# SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
+  - source: 0x006AAE43
+  - source: 0x006AAE49
 # libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x007E6EC8
 # LH3DAtmos::Render3D's 0x7f7f7f colour mask and bias are immediates, not pointers into Swallow's vftable.
