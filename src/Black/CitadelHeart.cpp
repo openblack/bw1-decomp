@@ -249,11 +249,11 @@ uint32_t LeashObj::GetOverwriteInteractableToolTip()
 	switch (LeashIndex)
 	{
 	case LEASH_TYPE_EVIL - 1:
-		return HELP_TEXT_TOOLTIP_78;
+		return HELP_TEXT_TOOLTIP_86;
 	case LEASH_TYPE_ROPE - 1:
-		return HELP_TEXT_TOOLTIP_80;
+		return HELP_TEXT_TOOLTIP_88;
 	default:
-		return HELP_TEXT_TOOLTIP_79;
+		return HELP_TEXT_TOOLTIP_87;
 	}
 }
 
@@ -1919,7 +1919,7 @@ uint32_t CitadelEntrance::InterfaceValidToTap(GInterfaceStatus* status)
 
 HELP_TEXT CitadelEntrance::GetQueryFirstEnumText()
 {
-	return (HELP_TEXT)HELP_TEXT_TAKE_AZTEC_VILLAGE_04;
+	return (HELP_TEXT)HELP_TEXT_CITADEL_GUIDE_03;
 }
 
 HELP_TEXT CitadelEntrance::GetQueryLastEnumText()

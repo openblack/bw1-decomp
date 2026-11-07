@@ -24,8 +24,6 @@
 #include "HelpText.h"
 #include "Landscape.h"
 
-#define HELP_TEXT_WEATHER_INFO (HELP_TEXT_DIALOG_WEATHER_INFO - 8)
-
 typedef BOOL(WINAPI* ISNETWORKALIVE)(LPDWORD flags);
 typedef BOOL(WINAPI* INTERNETGETCONNECTEDSTATE)(LPDWORD flags, DWORD reserved);
 typedef DWORD(WINAPI* RASENUMCONNECTIONS)(void* connections, LPDWORD size, LPDWORD count);
@@ -1060,7 +1058,7 @@ void LHInetWeather::ProcessWeather()
 				}
 				Paused = false;
 				Command = LH_INETWEATHER_COMMAND_NONE;
-				char16_t* helpText = HelpTextData::GetTextL(HELP_TEXT_WEATHER_INFO);
+				char16_t* helpText = HelpTextData::GetTextL(HELP_TEXT_DIALOG_WEATHER_INFO);
 				char      text[300];
 				char*     area = CurrentLocation.GetLocationAreaPtr();
 				if (area != NULL && strcmp(area, "") != 0 && strcmp(area, "(null)") != 0)
