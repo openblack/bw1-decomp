@@ -2291,18 +2291,21 @@ Black/SoundConfirmation.cpp:
 Black/SoundGuidance.cpp:
 	.text       start:0x0070F200 end:0x00711D20
 	.rdata      start:0x0095B9A0 end:0x00970450
-	.data       start:0x00C112F8 end:0x00C115E8
-	.bss        start:0x00D8889C end:0x00D895C4
+	.data       start:0x00C112F8 end:0x00C1134C
+	.bss        start:0x00D8889C end:0x00D895C0
 
 Black/SoundMap.cpp:
 	.text       start:0x00711D20 end:0x00712B00
 	.rdata      start:0x00970450 end:0x009704A0
-	.bss        start:0x00D895C4 end:0x00D89614
+	.rdata$r    start:0x009A8EC8 end:0x009A8F14
+	.CRT$XCU    start:0x009B70D4 end:0x009B70DC align:4
+	.data       start:0x00C1134C end:0x00C115D0
+	.bss        start:0x00D895C0 end:0x00D89614
 
 Black/SoundTag.cpp:
 	.text       start:0x00712B00 end:0x007135C0
 	.rdata      start:0x009704A0 end:0x009704CC
-	.data       start:0x00C115E8 end:0x00C1162C
+	.data       start:0x00C115D0 end:0x00C1162C
 	.bss        start:0x00D89614 end:0x00D8961C
 
 Black/SpecialVillager.cpp:

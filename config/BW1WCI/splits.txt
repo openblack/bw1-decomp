@@ -2321,20 +2321,22 @@ Black/SoundGuidance.cpp:
 	.text       start:0x00735DA0 end:0x007388D0
 	.rdata      start:0x009CF620 end:0x009E9908
 	.CRT$XCU    start:0x00A3711C end:0x00A37128 align:4
-	.data       start:0x00C95938 end:0x00C95C28
-	.bss        start:0x00E20FBC end:0x00E21CE4
+	.data       start:0x00C95938 end:0x00C9598C
+	.bss        start:0x00E20FBC end:0x00E21CE0
 
 Black/SoundMap.cpp:
 	.text       start:0x007388D0 end:0x007396B0
 	.rdata      start:0x009E9908 end:0x009E9958
+	.rdata$r    start:0x00A29B78 end:0x00A29BC4
 	.CRT$XCU    start:0x00A37128 end:0x00A37130 align:4
-	.bss        start:0x00E21CE4 end:0x00E21D34
+	.data       start:0x00C9598C end:0x00C95C10
+	.bss        start:0x00E21CE0 end:0x00E21D34
 
 Black/SoundTag.cpp:
 	.text       start:0x007396B0 end:0x0073A3E0
 	.rdata      start:0x009E9958 end:0x009E9984
 	.CRT$XCU    start:0x00A37130 end:0x00A37138 align:4
-	.data       start:0x00C95C28 end:0x00C95C9C
+	.data       start:0x00C95C10 end:0x00C95C9C
 	.bss        start:0x00E21D34 end:0x00E21D44
 
 Black/SpecialVillager.cpp:

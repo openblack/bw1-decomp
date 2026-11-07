@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h>          /* For TERRAIN_MATERIAL_TYPE_LAST */
+#include <chlasm/Enum.h>          /* For TERRAIN_MATERIAL_TYPE_LAST, enum SOUND_SURFACE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
 #include "BaseInfo.h"    /* For struct GBaseInfo */
@@ -17,10 +17,11 @@ class Base;
 class GTerrainMaterialInfo : public GBaseInfo
 {
 public:
-	uint8_t   field_0x10[0x3c];
-	HELP_TEXT QueryFirstEnumText;
-	HELP_TEXT QueryLastEnumText;
-	uint8_t   field_0x54[0x1c];
+	SOUND_SURFACE_TYPE SoundSurfaceType;
+	uint8_t            field_0x14[0x38];
+	HELP_TEXT          QueryFirstEnumText;
+	HELP_TEXT          QueryLastEnumText;
+	uint8_t            field_0x54[0x1c];
 
 	// Override methods
 
@@ -41,7 +42,7 @@ public:
 	static GTerrainMaterialInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in Terrain.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x54)
+	INFO_DATA_BLOCK(SoundSurfaceType, field_0x54)
 	INFO_ROOT_LOADERS(15, "Terrain.h")
 };
 
