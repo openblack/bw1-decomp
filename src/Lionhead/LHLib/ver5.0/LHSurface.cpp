@@ -55,17 +55,17 @@ LHSurface::LHSurface(LHSpriteFrame* frame, unsigned long flags)
 	Height = rect.end.y - rect.start.y + 1;
 }
 
-int LHSurface::Initialise()
+LH_RETURN LHSurface::Initialise()
 {
-	int result = InitialiseSurface();
-	if (!result)
+	LH_RETURN result = InitialiseSurface();
+	if (result == LH_OK)
 	{
 		Add();
 	}
 	return result;
 }
 
-int LHSurface::InitialiseSurface()
+LH_RETURN LHSurface::InitialiseSurface()
 {
 	DDSURFACEDESC2 desc;
 	memset(&desc, 0, sizeof(desc));
@@ -78,24 +78,24 @@ int LHSurface::InitialiseSurface()
 	return Reset();
 }
 
-int LHSurface::Reset()
+LH_RETURN LHSurface::Reset()
 {
-	int            result = 0;
+	LH_RETURN      result = LH_OK;
 	DDSURFACEDESC2 desc;
 	memset(&desc, 0, sizeof(desc));
 	desc.dwSize = sizeof(DDSURFACEDESC2);
 	if (Surface->Lock(NULL, &desc, DDLOCK_WAIT, NULL))
 	{
-		result = 2;
+		result = LH_FAIL;
 	}
 	Pitch = desc.lPitch;
 	LockedAddress = desc.lpSurface;
 	BitDepth = 8 * desc.lPitch / desc.ddpfPixelFormat.dwRGBBitCount;
 	if (Surface->Unlock(NULL))
 	{
-		result = 2;
+		result = LH_FAIL;
 	}
-	Valid = result == 0;
+	Valid = result == LH_OK;
 	SetTransparentColorSurface();
 	if (Image)
 	{
@@ -104,14 +104,14 @@ int LHSurface::Reset()
 	return result;
 }
 
-int LHSurface::Lock()
+LH_RETURN LHSurface::Lock()
 {
-	int            result = 0;
+	LH_RETURN      result = LH_OK;
 	DDSURFACEDESC2 desc;
 	desc.dwSize = sizeof(DDSURFACEDESC2);
 	if (Surface->Lock(NULL, &desc, DDLOCK_WAIT | DDLOCK_WRITEONLY, NULL))
 	{
-		result = 2;
+		result = LH_FAIL;
 	}
 	Pitch = desc.lPitch;
 	LockedAddress = desc.lpSurface;
@@ -119,32 +119,32 @@ int LHSurface::Lock()
 	return result;
 }
 
-int LHSurface::Unlock()
+LH_RETURN LHSurface::Unlock()
 {
-	int result = 0;
+	LH_RETURN result = LH_OK;
 	if (Surface->Unlock(NULL) != 0)
 	{
-		result = 2;
+		result = LH_FAIL;
 	}
 	return result;
 }
 
-int LHSurface::Clear()
+LH_RETURN LHSurface::Clear()
 {
 	if (!Valid)
 	{
-		return 2;
+		return LH_FAIL;
 	}
-	int result = 0;
+	LH_RETURN result = LH_OK;
 	gLHSurfaceBltFx.dwSize = sizeof(DDBLTFX);
 	if (Surface->Blt(NULL, NULL, NULL, DDBLT_COLORFILL | DDBLT_WAIT, &gLHSurfaceBltFx))
 	{
-		result = 2;
+		result = LH_FAIL;
 	}
 	return result;
 }
 
-int LHSurface::SetTransparentColor(LHColor* color)
+LH_RETURN LHSurface::SetTransparentColor(LHColor* color)
 {
 	HasTransparentColor = 1;
 	*(uint16_t*)&TransparentColor.b = *(uint16_t*)&color->b;
@@ -152,16 +152,16 @@ int LHSurface::SetTransparentColor(LHColor* color)
 	return SetTransparentColorSurface();
 }
 
-int LHSurface::SetTransparentColorSurface()
+LH_RETURN LHSurface::SetTransparentColorSurface()
 {
-	int result = 0;
+	LH_RETURN result = LH_OK;
 	if (!Valid)
 	{
-		return 2;
+		return LH_FAIL;
 	}
 	if (!HasTransparentColor)
 	{
-		return 0;
+		return LH_OK;
 	}
 	IDirectDrawSurface7* surface = Surface;
 	LHColor*             color = &TransparentColor;
@@ -172,17 +172,17 @@ int LHSurface::SetTransparentColorSurface()
 	key.dwColorSpaceHighValue = key.dwColorSpaceLowValue;
 	if (surface->SetColorKey(DDCKEY_SRCBLT, &key))
 	{
-		result = 2;
+		result = LH_FAIL;
 	}
 	return result;
 }
 
-int LHSurface::CopyImageIn()
+LH_RETURN LHSurface::CopyImageIn()
 {
-	int result = 0;
+	LH_RETURN result = LH_OK;
 	if (!Valid)
 	{
-		return 2;
+		return LH_FAIL;
 	}
 	Clear();
 	Lock();
@@ -231,7 +231,7 @@ int LHSurface::CopyImageIn()
 		}
 		else
 		{
-			int r = LHSys::GetDraw().Sprite24(0, 0, sprite, flags, (LHColor*)lockedAddress, bitDepth);
+			LH_RETURN r = LHSys::GetDraw().Sprite24(0, 0, sprite, flags, (LHColor*)lockedAddress, bitDepth);
 			Unlock();
 			return r;
 		}
@@ -242,17 +242,17 @@ int LHSurface::CopyImageIn()
 	return result;
 }
 
-int LHSurface::SetSpriteFlags(unsigned long flags)
+LH_RETURN LHSurface::SetSpriteFlags(unsigned long flags)
 {
 	if (SpriteFlags != flags)
 	{
 		SpriteFlags = flags;
 		return CopyImageIn();
 	}
-	return 0;
+	return LH_OK;
 }
 
-int LHSurface::SetImage(void* image, LH_SURFACE_IMAGE_TYPE imageType)
+LH_RETURN LHSurface::SetImage(void* image, LH_SURFACE_IMAGE_TYPE imageType)
 {
 	// The original hard-codes a single-sprite image regardless of imageType.
 	ImageType = LH_SURFACE_IMAGE_TYPE_0x1;
@@ -260,7 +260,7 @@ int LHSurface::SetImage(void* image, LH_SURFACE_IMAGE_TYPE imageType)
 	return CopyImageIn();
 }
 
-int LHSurface::GetScreenSurface(LHRegion* rect, LHCoord* coord, LH_SCREEN_BUFFER screenBuffer)
+LH_RETURN LHSurface::GetScreenSurface(LHRegion* rect, LHCoord* coord, LH_SCREEN_BUFFER screenBuffer)
 {
 	LHRegion             region = *rect;
 	IDirectDrawSurface7* surface;
@@ -285,15 +285,15 @@ LHSurface::~LHSurface()
 	Surface->Release();
 }
 
-int LHSurface::CopySurface(LHRegion* region, LHCoord* coord, IDirectDrawSurface7* dest, LH_COPY_DIRECTION direction,
-                           int useColorKey)
+LH_RETURN LHSurface::CopySurface(LHRegion* region, LHCoord* coord, IDirectDrawSurface7* dest,
+                                 LH_COPY_DIRECTION direction, int useColorKey)
 {
 	if (!Valid)
 	{
-		return 2;
+		return LH_FAIL;
 	}
-	int  result = 0;
-	RECT srcRect;
+	LH_RETURN result = LH_OK;
+	RECT      srcRect;
 	if (region)
 	{
 		region->GetRect(&srcRect);
@@ -320,7 +320,7 @@ int LHSurface::CopySurface(LHRegion* region, LHCoord* coord, IDirectDrawSurface7
 	}
 	if (hr)
 	{
-		result = 2;
+		result = LH_FAIL;
 	}
 	return result;
 }
@@ -366,10 +366,10 @@ LHSurface* LHSurface::Remove()
 	return result;
 }
 
-int LHSurface::RestoreAll(int recreate)
+LH_RETURN LHSurface::RestoreAll(int recreate)
 {
 	LHSurface* surface = gLHSurfaceList;
-	int        result = 0;
+	LH_RETURN  result = LH_OK;
 	if (gLHSurfaceList)
 	{
 		do
@@ -382,7 +382,7 @@ int LHSurface::RestoreAll(int recreate)
 			{
 				if (surface->Surface->Restore())
 				{
-					result = 2;
+					result = LH_FAIL;
 				}
 				surface->Reset();
 			}

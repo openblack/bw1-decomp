@@ -838,7 +838,7 @@ inline void LHCoord::AddMSWindowOffset()
 // Blit a saved region back onto the screen (primary or back buffer),
 // applying the windowed-mode client offset when copying to the primary surface.
 // BW1W120 007dc8b0
-int LHSurface::CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_primary)
+LH_RETURN LHSurface::CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_primary)
 {
 	LHCoord coord;
 	coord.x = pos->x;

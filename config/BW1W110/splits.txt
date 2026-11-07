@@ -1981,14 +1981,14 @@ Black/PSysGeom.cpp:
 	.rdata      start:0x00926468 end:0x009266E0
 	.CRT$XCU    start:0x009B6DEC end:0x009B6DF8 align:4
 	.data       start:0x00BF1698 end:0x00BF1918
-	.bss        start:0x00D3D3C4 end:0x00D3D818
+	.bss        start:0x00D3D3C4 end:0x00D3D430
 
 Black/PSysGesture.cpp:
 	.text       start:0x0067D000 end:0x00681DB0
 	.rdata      start:0x009266E0 end:0x00926A48
 	.CRT$XCU    start:0x009B6E14 end:0x009B6E58 align:4
 	.data       start:0x00BF1918 end:0x00BF1A34
-	.bss        start:0x00D3D818 end:0x00D3D864
+	.bss        start:0x00D3D430 end:0x00D3D864
 
 Black/PSysHandFX.cpp:
 	.text       start:0x00681DC0 end:0x00683D70

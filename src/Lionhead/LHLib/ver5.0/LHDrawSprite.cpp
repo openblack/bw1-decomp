@@ -9,7 +9,7 @@
 
 #pragma warning(disable : 4716)
 
-int LHDraw::Pixel16(unsigned long x, unsigned long y, LHPixel16 color, unsigned long mode)
+LH_RETURN LHDraw::Pixel16(unsigned long x, unsigned long y, LHPixel16 color, unsigned long mode)
 {
 	LHRegion   window = LHSys::GetScreen().GetGraphicsWindow();
 	LHCoord    start = window.start;
@@ -34,7 +34,7 @@ int LHDraw::Pixel16(unsigned long x, unsigned long y, LHPixel16 color, unsigned 
 	return LH_OK;
 }
 
-int LHDraw::Pixel24(unsigned long x, unsigned long y, LHColor color, unsigned long mode)
+LH_RETURN LHDraw::Pixel24(unsigned long x, unsigned long y, LHColor color, unsigned long mode)
 {
 	LHRegion window = LHSys::GetScreen().GetGraphicsWindow();
 	LHCoord  start = window.start;
@@ -110,7 +110,7 @@ int LHPixel16::FadeColor(long amount)
 	return LH_OK;
 }
 
-int LHDraw::Circle16(long centerX, long centerY, unsigned long radius, LHPixel16 color, unsigned long mode)
+LH_RETURN LHDraw::Circle16(long centerX, long centerY, unsigned long radius, LHPixel16 color, unsigned long mode)
 {
 	long x = 0;
 	long y = radius;
@@ -158,7 +158,7 @@ int LHDraw::Circle16(long centerX, long centerY, unsigned long radius, LHPixel16
 	return LH_OK;
 }
 
-int LHDraw::Circle24(long centerX, long centerY, unsigned long radius, LHColor color, unsigned long mode)
+LH_RETURN LHDraw::Circle24(long centerX, long centerY, unsigned long radius, LHColor color, unsigned long mode)
 {
 	long x = 0;
 	long y = radius;
@@ -272,8 +272,8 @@ int LHDraw::Sprite24To16(long x, long y, LHSprite* sprite)
 	}
 }
 
-int LHDraw::Sprite24(long x, long y, LHSprite* sprite, unsigned long flags, LHColor* drawBuffer,
-                     unsigned long pixelPitch)
+LH_RETURN LHDraw::Sprite24(long x, long y, LHSprite* sprite, unsigned long flags, LHColor* drawBuffer,
+                           unsigned long pixelPitch)
 {
 	long     width = sprite->Width;
 	long     height = sprite->Height;
@@ -431,8 +431,8 @@ int LHDraw::Sprite24(long x, long y, LHSprite* sprite, unsigned long flags, LHCo
 	return LH_OK;
 }
 
-int LHDraw::Sprite24To16(long x, long y, LHSprite* sprite, unsigned long flags, LHPixel16* drawBuffer,
-                         unsigned long pixelPitch)
+LH_RETURN LHDraw::Sprite24To16(long x, long y, LHSprite* sprite, unsigned long flags, LHPixel16* drawBuffer,
+                               unsigned long pixelPitch)
 {
 	long     width = sprite->Width;
 	long     height = sprite->Height;
@@ -554,8 +554,8 @@ int LHDraw::Sprite24To16(long x, long y, LHSprite* sprite, unsigned long flags, 
 	return LH_OK;
 }
 
-int LHDraw::Sprite16(long x, long y, LHSprite* sprite, unsigned long flags, unsigned short alpha, LHPixel16* drawBuffer,
-                     unsigned long pixelPitch)
+LH_RETURN LHDraw::Sprite16(long x, long y, LHSprite* sprite, unsigned long flags, unsigned short alpha,
+                           LHPixel16* drawBuffer, unsigned long pixelPitch)
 {
 	if (alpha)
 		flags = (flags | LH_DRAW_STYLE_ALPHA) & ~(LH_DRAW_STYLE_BLEND | LH_DRAW_STYLE_ADD | LH_DRAW_STYLE_SUBTRACT |
@@ -738,7 +738,7 @@ int LHDraw::Sprite16(long x, long y, LHSprite* sprite, unsigned long flags, unsi
 	return LH_OK;
 }
 
-int LHDraw::HeightSprite16(long x, long y, LHSprite* sprite, unsigned long height, unsigned long flags)
+LH_RETURN LHDraw::HeightSprite16(long x, long y, LHSprite* sprite, unsigned long height, unsigned long flags)
 {
 	long       width = sprite->Width;
 	long       spriteHeight = sprite->Height;
@@ -869,7 +869,7 @@ int LHDraw::HeightSprite16(long x, long y, LHSprite* sprite, unsigned long heigh
 	return LH_OK;
 }
 
-int LHDraw::HeightSprite24(long x, long y, LHSprite* sprite, unsigned long height, unsigned long flags)
+LH_RETURN LHDraw::HeightSprite24(long x, long y, LHSprite* sprite, unsigned long height, unsigned long flags)
 {
 	long     width = sprite->Width;
 	long     spriteHeight = sprite->Height;
@@ -1029,7 +1029,7 @@ int LHDraw::HeightSprite24(long x, long y, LHSprite* sprite, unsigned long heigh
 	return LH_OK;
 }
 
-int LHDraw::HeightSprite24To16(long x, long y, LHSprite* sprite, unsigned long height, unsigned long flags)
+LH_RETURN LHDraw::HeightSprite24To16(long x, long y, LHSprite* sprite, unsigned long height, unsigned long flags)
 {
 	long     width = sprite->Width;
 	long     spriteHeight = sprite->Height;
@@ -1160,7 +1160,7 @@ int LHDraw::HeightSprite24To16(long x, long y, LHSprite* sprite, unsigned long h
 	return LH_OK;
 }
 
-int LHDraw::RegionSprite16(long x, long y, LHSprite* sprite, LHRegion* region, unsigned long flags)
+LH_RETURN LHDraw::RegionSprite16(long x, long y, LHSprite* sprite, LHRegion* region, unsigned long flags)
 {
 	LHRegion   window = LHSys::GetScreen().GetGraphicsWindow();
 	LHCoord    start = window.start;
@@ -1289,7 +1289,7 @@ int LHDraw::RegionSprite16(long x, long y, LHSprite* sprite, LHRegion* region, u
 	return LH_OK;
 }
 
-int LHDraw::RegionSprite24(long x, long y, LHSprite* sprite, LHRegion* region, unsigned long flags)
+LH_RETURN LHDraw::RegionSprite24(long x, long y, LHSprite* sprite, LHRegion* region, unsigned long flags)
 {
 	long     width = sprite->Width;
 	long     spriteHeight = sprite->Height;
@@ -1448,7 +1448,7 @@ int LHDraw::RegionSprite24(long x, long y, LHSprite* sprite, LHRegion* region, u
 	return LH_OK;
 }
 
-int LHDraw::RegionSprite24To16(long x, long y, LHSprite* sprite, LHRegion* region, unsigned long flags)
+LH_RETURN LHDraw::RegionSprite24To16(long x, long y, LHSprite* sprite, LHRegion* region, unsigned long flags)
 {
 	long     width = sprite->Width;
 	long     spriteHeight = sprite->Height;
@@ -1577,7 +1577,7 @@ int LHDraw::RegionSprite24To16(long x, long y, LHSprite* sprite, LHRegion* regio
 	return LH_OK;
 }
 
-int LHDraw::OneColorSprite16(long x, long y, LHSprite* sprite, LHPixel16 color, unsigned long flags)
+LH_RETURN LHDraw::OneColorSprite16(long x, long y, LHSprite* sprite, LHPixel16 color, unsigned long flags)
 {
 	long       width = sprite->Width;
 	long       spriteHeight = sprite->Height;
@@ -1689,7 +1689,7 @@ int LHDraw::OneColorSprite16(long x, long y, LHSprite* sprite, LHPixel16 color, 
 	return LH_OK;
 }
 
-int LHDraw::OneColorSprite24(long x, long y, LHSprite* sprite, LHColor color, unsigned long flags)
+LH_RETURN LHDraw::OneColorSprite24(long x, long y, LHSprite* sprite, LHColor color, unsigned long flags)
 {
 	long     width = sprite->Width;
 	long     spriteHeight = sprite->Height;

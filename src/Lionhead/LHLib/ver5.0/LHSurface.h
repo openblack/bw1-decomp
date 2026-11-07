@@ -8,6 +8,8 @@
 
 #include <Lionhead/LH3DLib/development/LHColor.h>
 
+#include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
+
 #include "LHScreen.h"
 
 struct LHRegion;
@@ -60,36 +62,36 @@ struct LHSurface
 	// Non-virtual methods
 
 	// BW1W120 007e6330 BW1M119 0115d790 (LHCombined Release)
-	int Initialise();
+	LH_RETURN Initialise();
 	// BW1W120 007e6350 BW1M119 0115d6d0 (LHCombined Release)
-	int InitialiseSurface();
+	LH_RETURN InitialiseSurface();
 	// BW1W120 007e63b0 BW1M119 0115d5c0 (LHCombined Release)
-	int Reset();
+	LH_RETURN Reset();
 	// BW1W120 007e6450 BW1M119 0115d500 (LHCombined Release)
-	int Lock();
+	LH_RETURN Lock();
 	// BW1W120 007e64a0 BW1M119 0115d490 (LHCombined Release)
-	int Unlock();
+	LH_RETURN Unlock();
 	// BW1W120 007e64c0 BW1M119 0115d3f0 (LHCombined Release)
-	int Clear();
+	LH_RETURN Clear();
 	// BW1W120 007e6500 BW1M119 0115d370 (LHCombined Release)
-	int SetTransparentColor(LHColor* color);
+	LH_RETURN SetTransparentColor(LHColor* color);
 	// BW1W120 007e6530 BW1M119 0115d290 (LHCombined Release)
-	int SetTransparentColorSurface();
+	LH_RETURN SetTransparentColorSurface();
 	// BW1W120 007e6590 BW1M119 0115d010 (LHCombined Release)
-	int CopyImageIn();
+	LH_RETURN CopyImageIn();
 	// BW1W120 007e66e0 BW1M119 0115cfa0 (LHCombined Release)
-	int SetSpriteFlags(unsigned long flags);
+	LH_RETURN SetSpriteFlags(unsigned long flags);
 	// BW1W120 007e6700 BW1M119 0115cf30 (LHCombined Release)
-	int SetImage(void* image, LH_SURFACE_IMAGE_TYPE imageType);
+	LH_RETURN SetImage(void* image, LH_SURFACE_IMAGE_TYPE imageType);
 	// BW1W120 007e6720 BW1M119 0115ce40 (LHCombined Release)
-	int GetScreenSurface(LHRegion* rect, LHCoord* coord, LH_SCREEN_BUFFER screenBuffer);
+	LH_RETURN GetScreenSurface(LHRegion* rect, LHCoord* coord, LH_SCREEN_BUFFER screenBuffer);
 	// BW1W120 007e67c0 BW1M119 0115cd60 (LHCombined Release)
 	~LHSurface();
 	// BW1W120 007e67e0 BW1M119 0115cb60 (LHCombined Release)
-	int CopySurface(LHRegion* region, LHCoord* coord, IDirectDrawSurface7* dest, LH_COPY_DIRECTION direction,
-	                int useColorKey);
+	LH_RETURN CopySurface(LHRegion* region, LHCoord* coord, IDirectDrawSurface7* dest, LH_COPY_DIRECTION direction,
+	                      int useColorKey);
 	// BW1W120 007dc8b0
-	int CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_primary);
+	LH_RETURN CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_primary);
 	// BW1W120 007e68e0 BW1M119 0115caf0 (LHCombined Release)
 	void Add();
 	// BW1W120 007e6920 BW1M119 0115ca70 (LHCombined Release)
@@ -98,7 +100,7 @@ struct LHSurface
 	// Static methods
 
 	// BW1W120 007e6960 BW1M119 0115c9b0 (LHCombined Release)
-	static int RestoreAll(int recreate);
+	static LH_RETURN RestoreAll(int recreate);
 	// BW1W120 007e69b0 BW1M119 0115c950 (LHCombined Release)
 	static void InvalidateAll();
 };

@@ -21,6 +21,15 @@ public:
 	// BW1W120 007efcf0 BW1M119 011341c0 (LHCombined Release)
 	LH_RETURN ToSprites(char* file_name, LHSpriteList* sprite_list, LHColor* colors, unsigned long flags, long* param_5,
 	                    FlicHeader* flic_header, unsigned long* param_7);
+
+	// BW1W120 007f0270 BW1M119 01133bb0 (LHCombined Release)
+	LH_RETURN CopySpriteIn24(LHSprite* sprite, long param_2, long param_3, LHColor* param_4, LHColor* param_5,
+	                         long param_6, LHColor* param_7, LHColor* param_8, unsigned long flags);
+	// BW1W120 007f03c0 BW1M119 01133dc0 (LHCombined Release)
+	LH_RETURN CopySpriteIn24To16(LHSprite* sprite, long param_2, long param_3, LHColor* param_4, LHColor* param_5,
+	                             long param_6, LHColor* param_7, LHColor* param_8, unsigned long flags);
+	// BW1W120 007f01c0 BW1M119 011340f0 (LHCombined Release)
+	LH_RETURN IsLineAllOneColor(LHColor* start, LHColor* end, LHColor* color);
 };
 
 // BW1W120 007efb60 BW1M119 011346d0 (LHCombined Release)

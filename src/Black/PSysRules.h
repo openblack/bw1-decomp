@@ -7,7 +7,8 @@
 
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST, enum ANIM_LIST */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For LHPoint */
+#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For LHPoint */
+#include <Lionhead/LH3DLib/development/LHRegionF.h> /* For LHRegionF */
 
 #include "GTPointer.h"            /* For GTPointer */
 #include "KPSplineInterpolator.h" /* For KPSplineInterpolator */
@@ -2358,13 +2359,25 @@ static_assert(sizeof(UR_VolFXOnObject) == 0x50, "Data type is of wrong size");
 class UR_GesturingRecognised : public AtomCreateRule
 {
 public:
+	class AtomData
+	{
+	public:
+		// BW1W120 00688200 BW1M119 014129f0
+		virtual ~AtomData();
+	};
+
 	// BW1W120 006883e0 BW1M119 014127e0
 	UR_GesturingRecognised(PersistentOwner* owner);
 
+	// BW1W120 inlined BW1M119 01413180
+	~UR_GesturingRecognised();
 	// BW1W120 006b0560 BW1M119 01469720
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006884f0 BW1M119 0107ef00
 	virtual bool ModifyAtomCollection(AtomCollection* collection) const;
+
+	// BW1W120 00688910 BW1M119 014116b0
+	void ModifySubCollection(AtomCollection* collection, AtomData* data) const;
 
 	float            LightSheetHeightScale;
 	float            TimeToIdeal;
@@ -2395,6 +2408,11 @@ public:
 	bool             DoTransition;
 	uint8_t          field_0x92;
 	uint8_t          field_0x93;
+
+	// Static data
+
+	// BW1W120 00d4eb00
+	static LHRegionF TransformedRegion;
 };
 static_assert(sizeof(UR_GesturingRecognised) == 0x94, "Data type is of wrong size");
 

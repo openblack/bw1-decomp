@@ -4,7 +4,7 @@
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>
 
-int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color)
+LH_RETURN LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color)
 {
 	long left = x0;
 	long right = x1;
@@ -32,7 +32,7 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color)
 			(uint16_t*)(LHSys::GetScreen().backAddress + 2 * (left + top * LHSys::GetScreen().backPixelPitch));
 		for (long i = right - left + 1; i; --i)
 			*p++ = color.value;
-		return 0;
+		return LH_OK;
 	}
 	else if (left == right)
 	{
@@ -44,12 +44,12 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color)
 			*p = color.value;
 			--n;
 		}
-		return 0;
+		return LH_OK;
 	}
-	return 3;
+	return LH_ERROR;
 }
 
-int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color)
+LH_RETURN LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color)
 {
 	long right = x1;
 	long left = x0;
@@ -84,7 +84,7 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color)
 			p += 3;
 			--n;
 		}
-		return 0;
+		return LH_OK;
 	}
 	else if (left == right)
 	{
@@ -99,12 +99,12 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color)
 			--n;
 			p += 3 * LHSys::GetScreen().backPixelPitch;
 		}
-		return 0;
+		return LH_OK;
 	}
-	return 3;
+	return LH_ERROR;
 }
 
-int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsigned long mode)
+LH_RETURN LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsigned long mode)
 {
 	long left = x0;
 	long right = x1;
@@ -131,10 +131,10 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsign
 	{
 		// Vertical run.
 		if (left != right)
-			return 3;
+			return LH_ERROR;
 		if (left > LHSys::GetScreen().GraphicsWindow.end.x || left < LHSys::GetScreen().GraphicsWindow.start.x ||
 		    top > LHSys::GetScreen().GraphicsWindow.end.y || bottom < LHSys::GetScreen().GraphicsWindow.start.y)
-			return 2;
+			return LH_FAIL;
 		if (top < LHSys::GetScreen().GraphicsWindow.start.y)
 			top = LHSys::GetScreen().GraphicsWindow.start.y;
 		if (bottom > LHSys::GetScreen().GraphicsWindow.end.y)
@@ -143,7 +143,7 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsign
 		uint16_t* p =
 			(uint16_t*)(LHSys::GetScreen().backAddress + 2 * (left + top * LHSys::GetScreen().backPixelPitch));
 		if (!n)
-			return 0;
+			return LH_OK;
 		while (true)
 		{
 			if ((mode & 0x580E) == 0)
@@ -198,14 +198,14 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsign
 			}
 			p += LHSys::GetScreen().backPixelPitch;
 			if (!--n)
-				return 0;
+				return LH_OK;
 		}
 	}
 
 	// Horizontal run.
 	if (top > LHSys::GetScreen().GraphicsWindow.end.y || top < LHSys::GetScreen().GraphicsWindow.start.y ||
 	    left > LHSys::GetScreen().GraphicsWindow.end.x || right < LHSys::GetScreen().GraphicsWindow.start.x)
-		return 2;
+		return LH_FAIL;
 	if (left < LHSys::GetScreen().GraphicsWindow.start.x)
 		left = LHSys::GetScreen().GraphicsWindow.start.x;
 	if (right > LHSys::GetScreen().GraphicsWindow.end.x)
@@ -213,7 +213,7 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsign
 	long      n = right - left + 1;
 	uint16_t* p = (uint16_t*)(LHSys::GetScreen().backAddress + 2 * (left + top * LHSys::GetScreen().backPixelPitch));
 	if (!n)
-		return 0;
+		return LH_OK;
 	while (true)
 	{
 		if ((mode & 0x580E) == 0)
@@ -265,11 +265,11 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsign
 		}
 		++p;
 		if (!--n)
-			return 0;
+			return LH_OK;
 	}
 }
 
-int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode)
+LH_RETURN LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode)
 {
 	long right = x1;
 	long left = x0;
@@ -295,10 +295,10 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned
 	if (top != bottom)
 	{
 		if (left != right)
-			return 3;
+			return LH_ERROR;
 		if (left > LHSys::GetScreen().GraphicsWindow.end.x || left < LHSys::GetScreen().GraphicsWindow.start.x ||
 		    top > LHSys::GetScreen().GraphicsWindow.end.y || bottom < LHSys::GetScreen().GraphicsWindow.start.y)
-			return 2;
+			return LH_FAIL;
 		if (top < LHSys::GetScreen().GraphicsWindow.start.y)
 			top = LHSys::GetScreen().GraphicsWindow.start.y;
 		if (bottom > LHSys::GetScreen().GraphicsWindow.end.y)
@@ -353,12 +353,12 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned
 			p += 3 * LHSys::GetScreen().backPixelPitch;
 			--n;
 		}
-		return 0;
+		return LH_OK;
 	}
 
 	if (top > LHSys::GetScreen().GraphicsWindow.end.y || top < LHSys::GetScreen().GraphicsWindow.start.y ||
 	    left > LHSys::GetScreen().GraphicsWindow.end.x || right < LHSys::GetScreen().GraphicsWindow.start.x)
-		return 2;
+		return LH_FAIL;
 	if (left < LHSys::GetScreen().GraphicsWindow.start.x)
 		left = LHSys::GetScreen().GraphicsWindow.start.x;
 	if (right > LHSys::GetScreen().GraphicsWindow.end.x)
@@ -415,11 +415,11 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned
 		p += 3;
 		--n;
 	}
-	return 0;
+	return LH_OK;
 }
 
-int LHDraw::Line24(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode, LHColor* drawBuffer,
-                   unsigned long pixelPitch)
+LH_RETURN LHDraw::Line24(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode, LHColor* drawBuffer,
+                         unsigned long pixelPitch)
 {
 	(void)x0;
 	(void)y0;
@@ -429,11 +429,11 @@ int LHDraw::Line24(long x0, long y0, long x1, long y1, LHColor color, unsigned l
 	(void)mode;
 	(void)drawBuffer;
 	(void)pixelPitch;
-	return 0;
+	return LH_OK;
 }
 
-int LHDraw::Line16(long x0, long y0, long x1, long y1, LHPixel16 color, unsigned long mode, LHPixel16* drawBuffer,
-                   unsigned long pixelPitch)
+LH_RETURN LHDraw::Line16(long x0, long y0, long x1, long y1, LHPixel16 color, unsigned long mode, LHPixel16* drawBuffer,
+                         unsigned long pixelPitch)
 {
 	(void)x0;
 	(void)y0;
@@ -443,5 +443,5 @@ int LHDraw::Line16(long x0, long y0, long x1, long y1, LHPixel16 color, unsigned
 	(void)mode;
 	(void)drawBuffer;
 	(void)pixelPitch;
-	return 0;
+	return LH_OK;
 }
