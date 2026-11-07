@@ -7,7 +7,7 @@
 #include <stdio.h>  /* For sprintf */
 #include <string.h> /* For strcpy, strlen */
 
-#include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_TOOLTIP_56 */
+#include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_TOOLTIP_48 */
 
 #include "ColourConstants.h" /* For White */
 #include "Creature.h"

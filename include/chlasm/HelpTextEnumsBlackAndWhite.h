@@ -35,7 +35,11 @@ enum     HELP_TEXT
     HELP_TEXT_LAST                                                                                 =  6974 ,
 
     // InfoScriptPatch2.txt
+#ifdef VERSION_BW1W110
+    HELP_TEXT_PATCH_LAST = 11,
+#else
     HELP_TEXT_PATCH_LAST = 12,
+#endif
     HELP_TEXT_PATCH_NONE = 0x0,
     HELP_TEXT_PATCH_01 = 0x1,
     HELP_TEXT_PATCH_02 = 0x2,
@@ -47,7 +51,9 @@ enum     HELP_TEXT
     HELP_TEXT_PATCH_08 = 0x8,
     HELP_TEXT_PATCH_09 = 0x9,
     HELP_TEXT_PATCH_10 = 0xa,
+#ifndef VERSION_BW1W110
     HELP_TEXT_PATCH_11 = 0xb,
+#endif
 };
 
 #define HELP_TEXT_VILLAGER_MALE_BANTER_SET1_01                                                            1
