@@ -121,9 +121,9 @@ public:
 	static bool32_t RoomsAvailable;
 
 	// BW1W120 00c2a7a8
-	static int (*ControlSetCallbacks[WORLD_ROOM_CONTROL_COUNT])(CallbackData& data);
+	static bool32_t (*ControlSetCallbacks[WORLD_ROOM_CONTROL_COUNT])(CallbackData& data);
 	// BW1W120 00c2a7d4
-	static int (*ControlGetCallbacks[WORLD_ROOM_CONTROL_COUNT])(CallbackData& data);
+	static bool32_t (*ControlGetCallbacks[WORLD_ROOM_CONTROL_COUNT])(CallbackData& data);
 	// BW1W120 00c2a800
 	static ControlDescriptionData Controls[WORLD_ROOM_CONTROL_COUNT];
 
@@ -178,49 +178,49 @@ public:
 	// BW1W120 0079f790 BW1M119 015ac2e0
 	static void LoadButtonConfig(GameOSFile& file);
 	// BW1W120 0079f0e0 BW1M119 015acb30
-	static int WorldScrollGet(CallbackData& data);
+	static bool32_t WorldScrollGet(CallbackData& data);
 	// BW1W120 0079f090 BW1M119 015acd80
-	static int WorldScrollSet(CallbackData& data);
+	static bool32_t WorldScrollSet(CallbackData& data);
 	// BW1W120 0079f050 BW1M119 015ace30
-	static int WorldButtonDisplayChallengesUncheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayChallengesUncheckedGet(CallbackData& data);
 	// BW1W120 0079f010 BW1M119 015acee0
-	static int WorldButtonDisplayChallengesCheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayChallengesCheckedGet(CallbackData& data);
 	// BW1W120 0079efd0 BW1M119 015acf90
-	static int WorldButtonDisplayInfluenceUncheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayInfluenceUncheckedGet(CallbackData& data);
 	// BW1W120 0079ef90 BW1M119 015ad040
-	static int WorldButtonDisplayInfluenceCheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayInfluenceCheckedGet(CallbackData& data);
 	// BW1W120 0079ef50 BW1M119 015ad0f0
-	static int WorldButtonDisplayMagicActivityUncheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayMagicActivityUncheckedGet(CallbackData& data);
 	// BW1W120 0079ef10 BW1M119 015ad1a0
-	static int WorldButtonDisplayMagicActivityCheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayMagicActivityCheckedGet(CallbackData& data);
 	// BW1W120 0079eed0 BW1M119 015ad250
-	static int WorldButtonDisplayCreatureUncheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayCreatureUncheckedGet(CallbackData& data);
 	// BW1W120 0079ee90 BW1M119 015ad300
-	static int WorldButtonDisplayCreatureCheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayCreatureCheckedGet(CallbackData& data);
 	// BW1W120 0079ee50 BW1M119 015ad3b0
-	static int WorldButtonDisplayCitadelUncheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayCitadelUncheckedGet(CallbackData& data);
 	// BW1W120 0079ee10 BW1M119 015ad450
-	static int WorldButtonDisplayCitadelCheckedGet(CallbackData& data);
+	static bool32_t WorldButtonDisplayCitadelCheckedGet(CallbackData& data);
 	// BW1W120 0079eda0 BW1M119 015ad500
-	static int WorldButtonDisplayChallengesUncheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayChallengesUncheckedSet(CallbackData& data);
 	// BW1W120 0079ed20 BW1M119 015ad5e0
-	static int WorldButtonDisplayChallengesCheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayChallengesCheckedSet(CallbackData& data);
 	// BW1W120 0079ec90 BW1M119 015ad6c0
-	static int WorldButtonDisplayInfluenceUncheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayInfluenceUncheckedSet(CallbackData& data);
 	// BW1W120 0079ec20 BW1M119 015ad7c0
-	static int WorldButtonDisplayInfluenceCheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayInfluenceCheckedSet(CallbackData& data);
 	// BW1W120 0079ebb0 BW1M119 015ad8a0
-	static int WorldButtonDisplayMagicActivityUncheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayMagicActivityUncheckedSet(CallbackData& data);
 	// BW1W120 0079eb30 BW1M119 015ad980
-	static int WorldButtonDisplayMagicActivityCheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayMagicActivityCheckedSet(CallbackData& data);
 	// BW1W120 0079eab0 BW1M119 015ada60
-	static int WorldButtonDisplayCreatureUncheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayCreatureUncheckedSet(CallbackData& data);
 	// BW1W120 0079ea30 BW1M119 015adb40
-	static int WorldButtonDisplayCreatureCheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayCreatureCheckedSet(CallbackData& data);
 	// BW1W120 0079e9c0 BW1M119 015adc20
-	static int WorldButtonDisplayCitadelUncheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayCitadelUncheckedSet(CallbackData& data);
 	// BW1W120 0079e940 BW1M119 015add00
-	static int WorldButtonDisplayCitadelCheckedSet(CallbackData& data);
+	static bool32_t WorldButtonDisplayCitadelCheckedSet(CallbackData& data);
 
 	// Constructors
 

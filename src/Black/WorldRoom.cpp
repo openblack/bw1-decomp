@@ -590,7 +590,7 @@ void WorldRoom::Draw()
 
 	static float waterAnimationTime = 0.0f;
 	waterAnimationTime += LH3DTech::g_delta_time * WORLD_ROOM_ANIMATION_TIME_SCALE;
-	int      waterAlpha = CalcWorldRoomWaterAlpha(waterAnimationTime);
+	uint32_t waterAlpha = static_cast<uint32_t>(CalcWorldRoomWaterAlpha(waterAnimationTime));
 	uint32_t waterColour = CalcWorldRoomWaterColour();
 
 	WaterObject->SetDrawWithGlobalAlpha(true);
@@ -688,88 +688,88 @@ inline void PlayCitadelButtonSound(LH_SamplePlayOptions& options, Base* attached
 	GGlobal::Global.audio->PlaySoundEffect(&options);
 }
 
-int WorldRoom::WorldButtonDisplayCitadelCheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayCitadelCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_NORMAL);
 	DisplayCitadel = false;
-	return 1;
+	return true;
 }
 
-int WorldRoom::WorldButtonDisplayCitadelUncheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayCitadelUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_BUTTON_PITCH_NORMAL);
 	DisplayCitadel = true;
-	return 1;
+	return true;
 }
 
-int WorldRoom::WorldButtonDisplayCreatureCheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayCreatureCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_CREATURE);
 	DisplayCreature = false;
-	return 1;
+	return true;
 }
 
-int WorldRoom::WorldButtonDisplayCreatureUncheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayCreatureUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, reinterpret_cast<Base*>(110), LH_SAMPLE_G_CITADELBUTTONUP_01,
 	                       WORLD_ROOM_BUTTON_PITCH_NORMAL);
 	DisplayCreature = true;
-	return 1;
+	return true;
 }
 
-int WorldRoom::WorldButtonDisplayMagicActivityCheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayMagicActivityCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_MAGIC);
 	DisplayMagicActivity = false;
-	return 1;
+	return true;
 }
 
-int WorldRoom::WorldButtonDisplayMagicActivityUncheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayMagicActivityUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_BUTTON_PITCH_MAGIC);
 	DisplayMagicActivity = true;
-	return 1;
+	return true;
 }
 
-int WorldRoom::WorldButtonDisplayInfluenceCheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayInfluenceCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_INFLUENCE);
 	DisplayInfluence = false;
 	ShowInfluence = false;
-	return 1;
+	return true;
 }
 
-int WorldRoom::WorldButtonDisplayInfluenceUncheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayInfluenceUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_BUTTON_PITCH_INFLUENCE);
 	DisplayInfluence = true;
 	ShowInfluence = true;
 	static_cast<WorldRoom*>(GGame::g_game->temple->GetRoom(TEMPLE_ROOM_WORLD))->CreateWorldMapColours();
-	return 1;
+	return true;
 }
 
-int WorldRoom::WorldButtonDisplayChallengesCheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayChallengesCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_CHALLENGES);
 	DisplayChallenges = false;
-	return 1;
+	return true;
 }
 
-int WorldRoom::WorldButtonDisplayChallengesUncheckedSet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayChallengesUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_BUTTON_PITCH_CHALLENGES);
 	DisplayChallenges = true;
-	return 1;
+	return true;
 }
 
 inline void SetWorldRoomToolTip(unsigned long text, KEYALIGN align)
@@ -789,69 +789,69 @@ inline bool32_t UpdateWorldRoomButtonDisplay(CallbackData& data, bool32_t visibl
 	return true;
 }
 
-int WorldRoom::WorldButtonDisplayCitadelCheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayCitadelCheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, DisplayCitadel == true, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_TEMPLES));
 }
 
-int WorldRoom::WorldButtonDisplayCitadelUncheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayCitadelUncheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, !DisplayCitadel, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_TEMPLES));
 }
 
-int WorldRoom::WorldButtonDisplayCreatureCheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayCreatureCheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, DisplayCreature == true,
 	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_CREATURES));
 }
 
-int WorldRoom::WorldButtonDisplayCreatureUncheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayCreatureUncheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, !DisplayCreature, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_CREATURES));
 }
 
-int WorldRoom::WorldButtonDisplayMagicActivityCheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayMagicActivityCheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, DisplayMagicActivity == true,
 	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_MIRACLE_ACTIVITY));
 }
 
-int WorldRoom::WorldButtonDisplayMagicActivityUncheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayMagicActivityUncheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, !DisplayMagicActivity,
 	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_MIRACLE_ACTIVITY));
 }
 
-int WorldRoom::WorldButtonDisplayInfluenceCheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayInfluenceCheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, DisplayInfluence == true,
 	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_INFLUENCE));
 }
 
-int WorldRoom::WorldButtonDisplayInfluenceUncheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayInfluenceUncheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, !DisplayInfluence, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_INFLUENCE));
 }
 
-int WorldRoom::WorldButtonDisplayChallengesCheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayChallengesCheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, DisplayChallenges == true,
 	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_CHALLENGES));
 }
 
-int WorldRoom::WorldButtonDisplayChallengesUncheckedGet(CallbackData& data)
+bool32_t WorldRoom::WorldButtonDisplayChallengesUncheckedGet(CallbackData& data)
 {
 	return UpdateWorldRoomButtonDisplay(data, !DisplayChallenges, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_CHALLENGES));
 }
 
-int WorldRoom::WorldScrollSet(CallbackData& data)
+bool32_t WorldRoom::WorldScrollSet(CallbackData& data)
 {
 	GGame::g_game->temple->SetCameraToLookAtSubMesh(data.SubMesh, WORLD_ROOM_SCROLL_CAMERA_PITCH, 0.0f, 0.0f);
 	if (!GGame::g_game->temple->HelpSuppressed)
 	{
 		Temple::StartTempleScript("CitadelWorldRoomScrollHelp");
 	}
-	return 1;
+	return true;
 }
 
 inline void UpdateWorldRoomScrollSound(long previous_offset, bool32_t& sound_played)
@@ -891,7 +891,7 @@ inline void UpdateWorldRoomScrollToolTip(WorldRoom* room, const CallbackData& da
 	}
 }
 
-int WorldRoom::WorldScrollGet(CallbackData& data)
+bool32_t WorldRoom::WorldScrollGet(CallbackData& data)
 {
 	static bool32_t scrollSoundPlayed = false;
 
@@ -924,7 +924,7 @@ int WorldRoom::WorldScrollGet(CallbackData& data)
 		data.Material = NULL;
 	}
 	UpdateWorldRoomScrollToolTip(room, data);
-	return 1;
+	return true;
 }
 
 inline void BuildWorldRoomStatisticsText()
