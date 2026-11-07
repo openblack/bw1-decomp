@@ -14,7 +14,17 @@ class Base;
 class GSoundInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0x2c];
+	float   WeatherSilencePercentage;
+	float   RainFullVolume;
+	float   AtmosFullVolumeDistance;
+	float   AtmosZeroVolumeDistance;
+	uint8_t field_0x20[0x4];
+	float   LandFullVolumeHeight;
+	float   LandZeroVolumeHeight;
+	float   AtmosphereStartHeight;
+	float   AtmosphereFullHeight;
+	float   AtmosphereEndHeight;
+	uint8_t field_0x38[0x4];
 	float   TownMusicNearDistance;
 	float   TownMusicFarDistance;
 	uint8_t field_0x44[0x8];
@@ -24,14 +34,16 @@ public:
 
 	// Override methods
 
-	// BW1W120 0071d6b0 BW1M119 0151b400
-	virtual ~GSoundInfo();
 	// BW1W120 0071d660 BW1M119 0151b3c0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = 1;
+		return &Info;
+	}
 
 	// TODO(#377): The original declared this class in SoundMap.h.
 	// Out of line: LoadBinary at 0042f750.
-	INFO_DATA_BLOCK(field_0x10, field_0x44)
+	INFO_DATA_BLOCK(WeatherSilencePercentage, field_0x44)
 	INFO_ROOT_LOADERS(19, "SoundMap.h")
 };
 

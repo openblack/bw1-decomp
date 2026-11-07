@@ -129,6 +129,8 @@ struct MapCoords : public LH3DMapCoords
 	MapCoords(JustMapXZ* xz);
 	// BW1W120 00603030 BW1M119 01375af0
 	MapCoords(JustWholeMapXZ* xz);
+	// BW1W120 00603070 BW1M119 013763c0
+	MapCoords(JustWholeMapXZ& xz);
 	// BW1W120 00603160 BW1M119 0106cbb0
 	MapCoords(const LHPoint& point);
 
@@ -159,6 +161,10 @@ struct MapCoords : public LH3DMapCoords
 	void operator+=(const JustMapXZ& other);
 	// BW1W120 006054a0 BW1M119 inlined
 	void operator-=(const MapCoords& other);
+	// BW1W120 00605400 BW1M119 0101b0d0
+	void operator+=(unsigned long distance);
+	// BW1W120 00605490 BW1M119 0101b080
+	void operator-=(unsigned long distance);
 	// BW1W120 00605520 BW1M119 01052d70
 	MapCoords operator+(const MapCoords& other) const;
 	// BW1W120 006055c0 BW1M119 inlined
@@ -194,12 +200,8 @@ struct MapCoords : public LH3DMapCoords
 	void SetMetersZ(float meters);
 	// BW1W120 inlined BW1M119 inlined
 	void SetX(float _x) { SetWholeX((long)(_x * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL)); }
-	// BW1W120 inlined BW1M119 0104d810
-	void SetWholeX(long _x) { x = _x; }
 	// BW1W120 inlined BW1M119 inlined
 	void SetZ(float _z) { SetWholeZ((long)(_z * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL)); }
-	// BW1W120 inlined BW1M119 0104d850
-	void SetWholeZ(long _z) { z = _z; }
 	// Inliner IL size: 42
 	// BW1W120 0060a010 BW1M119 inlined
 	void AddToWholeX(int dx)
@@ -214,8 +216,6 @@ struct MapCoords : public LH3DMapCoords
 		int whole = WholeZ();
 		z = whole + dz;
 	}
-	// BW1W120 inlined BW1M119 0104d890
-	void SetAltitude(float _altitude) { altitude = _altitude; }
 	// BW1W120 00603430 BW1M119 0104c540
 	MapCell* ToMap() const;
 	// BW1W120 006024d0 BW1M119 011a6820
@@ -298,6 +298,8 @@ struct MapCoords : public LH3DMapCoords
 	MapCoords* operator=(const MapCoords* other);
 	// BW1W120 inlined BW1M119 0104cb80
 	float Altitude() const { return altitude; }
+	// BW1W120 inlined BW1M119 010151a0
+	float GetAltitude() const { return altitude; }
 	// BW1W120 inlined BW1M119 inlined
 	bool IsZero() const { return WholeX() == 0 && WholeZ() == 0 && Altitude() == 0.0f; }
 	// BW1W120 0060d740 BW1M119 0106d020
