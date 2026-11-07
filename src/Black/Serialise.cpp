@@ -407,9 +407,9 @@ char* ChooseSavedGame(ARCHIVE_DIRECTION direction)
 	dialog.nMaxCustFilter = 0;
 	dialog.nFilterIndex = 1;
 	dialog.lpstrFile = "Untitled";
-	dialog.nMaxFile = SAVED_GAME_FILE_NAME_SIZE;
+	dialog.nMaxFile = 0x100;
 	dialog.lpstrFileTitle = NULL;
-	dialog.nMaxFileTitle = SAVED_GAME_FILE_NAME_SIZE;
+	dialog.nMaxFileTitle = 0x100;
 	dialog.lpstrInitialDir = ".";
 	dialog.lpstrTitle = "Saved Games";
 	dialog.Flags = 0;
