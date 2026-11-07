@@ -10,10 +10,8 @@
 class GGameInfo : public Base
 {
 public:
-#ifdef VERSION_BW1WCI
-	// BW1WCI 0090fc64 BW1MCI119 null
+	// BW1W120 008df8e4
 	static const float DefaultVisualTimeCycle[3];
-#endif
 	// TODO: Original singleton name is unrecovered. Storage is emitted in Game.
 	// BW1W120 00d019f8
 	static GGameInfo Info;
@@ -57,6 +55,8 @@ public:
 	uint32_t ConvertRealWorldSecondsToGameTicks(float seconds) { return (uint32_t)(seconds * NumGameTicksPerSecond()); }
 	// BW1W120 005575a0 BW1M119 010695d0
 	float GetVisualTime();
+	// BW1W120 005575b0 BW1M119 013018c0
+	void SetVisualTime(float time, float duration);
 	// BW1W120 005575e0 BW1M119 010711e0
 	bool32_t IsVisualNight();
 	// BW1W120 005575d0 BW1M119 01301870
@@ -65,7 +65,7 @@ public:
 	void SetVisualTimeScale(float scale);
 
 	// BW1W120 00557620 BW1M119 013016a0
-	void SetVisualTimeCycle(float param_1, float param_2, float param_3);
+	void SetVisualTimeCycle(float duration, float percentage_night, float percentage_dusk);
 	// BW1W120 005577d0 BW1M119 013012c0
 	void SetStartDate(int year, int month, int day);
 	// BW1W120 005577f0 BW1M119 01301120
@@ -81,7 +81,7 @@ public:
 	// BW1W120 00557ba0 BW1M119 01090ca0
 	void Debug();
 	// BW1W120 00557bb0 BW1M119 01300b40
-	void SetVisualTimeCycleFromMapEditor(float param_1, float param_2, float param_3);
+	void SetVisualTimeCycleFromMapEditor(float duration, float percentage_night, float percentage_dusk);
 };
 
 static_assert(sizeof(GGameInfo) == 0x58, "GGameInfo size is incorrect");

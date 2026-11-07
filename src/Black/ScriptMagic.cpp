@@ -437,19 +437,11 @@ void GScript::SetMagicProperties()
 			dispenser->DispensedMagicType = type;
 			if (seconds > 0.0f)
 			{
-				dispenser->Charges = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(seconds);
-				if (dispenser->Charges == 0)
-				{
-					dispenser->SetActive(false);
-				}
+				dispenser->SetProduceEvery(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(seconds));
 			}
 			else
 			{
-				dispenser->Charges = (uint32_t)dispenser->GetInfo()->TimeEachMobileObjectTakesToProduce;
-				if (dispenser->Charges == 0)
-				{
-					dispenser->SetActive(false);
-				}
+				dispenser->SetProduceEvery((uint32_t)dispenser->GetInfo()->TimeEachMobileObjectTakesToProduce);
 			}
 		}
 	}
