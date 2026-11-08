@@ -806,17 +806,18 @@ void GScript::SetProperty(GameThingWithPos* thing, SCRIPT_OBJECT_PROPERTY_TYPE p
 #ifdef VERSION_BW1WCI
 			if (thing->IsObject())
 			{
+				Object* obj = (Object*)thing;
 				if (thing->IsFlying())
 				{
 					PhysicsObject::RemoveObject((Object*)thing, true, true);
 				}
-				thing->Pos.SetAltitude(value);
-				if (((Object*)thing)->Game3dObject != NULL)
+				obj->Pos.SetAltitude(value);
+				if (obj->Game3dObject != NULL)
 				{
 					float            scale = thing->GetScale();
-					float            yAngle = ((Object*)thing)->GetYAngle();
-					const MapCoords& coords = thing->Pos;
-					LH3DObject*      object = ((Object*)thing)->Game3dObject;
+					float            yAngle = obj->GetYAngle();
+					const MapCoords& coords = obj->Pos;
+					LH3DObject*      object = obj->Game3dObject;
 					LHPoint          pos;
 					GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 					object->LH3DObject::SetPosition(pos, yAngle, scale);
@@ -849,10 +850,11 @@ void GScript::SetProperty(GameThingWithPos* thing, SCRIPT_OBJECT_PROPERTY_TYPE p
 				thing->Pos.SetAltitude(0.0f);
 				if (((Object*)thing)->Game3dObject != NULL)
 				{
+					Object*          obj = (Object*)thing;
 					float            scale = thing->GetScale();
-					float            yAngle = ((Object*)thing)->GetYAngle();
+					float            yAngle = obj->GetYAngle();
 					const MapCoords& coords = thing->Pos;
-					LH3DObject*      object = ((Object*)thing)->Game3dObject;
+					LH3DObject*      object = obj->Game3dObject;
 					LHPoint          pos;
 					GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 					object->LH3DObject::SetPosition(pos, yAngle, scale);
