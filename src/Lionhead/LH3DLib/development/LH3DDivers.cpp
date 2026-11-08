@@ -5232,13 +5232,13 @@ void LoadTextureCitadel(char* name, uint8_t* rgb_pixels)
 	}
 }
 
-NewCollide::Obj::Obj(float radius, LHPoint* position)
-	: position(*position), radius(radius), r2(radius * radius), angle(0.0f), BoundingBox(radius, 0.0f, radius),
-	  IteratorList(NULL)
+NewCollide::Obj::Obj(float collision_radius, LHPoint* center)
+	: position(*center), radius(collision_radius), r2(collision_radius * collision_radius), angle(0.0f),
+	  BoundingBox(collision_radius, 0.0f, collision_radius), IteratorList(NULL)
 {
 }
 
-NewCollide::Obj::Obj(LHPoint* position, float bb_x, float bb_z, float angle)
+NewCollide::Obj::Obj(LHPoint* center, float bb_x, float bb_z, float heading)
 {
 	if (bb_x < NEW_COLLIDE_MIN_SIZE)
 	{
@@ -5248,10 +5248,10 @@ NewCollide::Obj::Obj(LHPoint* position, float bb_x, float bb_z, float angle)
 	{
 		bb_z = NEW_COLLIDE_MIN_SIZE;
 	}
-	this->position = *position;
+	position = *center;
 	r2 = bb_x * bb_x + bb_z * bb_z;
 	radius = sqrt(r2);
-	this->angle = angle;
+	angle = heading;
 	BoundingBox.Set(bb_x, 0.0f, bb_z);
 	IteratorList = NULL;
 	CreateList();
