@@ -21,6 +21,7 @@ enum TEXTJUSTIFY
 // Forward Declares
 
 struct LH3DColor;
+struct LH3DMaterial;
 struct LHMatrix;
 
 struct FontFile
@@ -150,6 +151,8 @@ struct GatheringText
 {
 	// BW1W120 00eccd08 BW1M119 01332238 (LHCombined Release)
 	static GatheringText* gamefont[GAME_FONT_LAST];
+	// BW1W120 00ed92dc BW1M119 01332234 (LHCombined Release)
+	static LH3DMaterial* bubmat;
 	uint8_t               field_0x0;
 
 	// Static methods

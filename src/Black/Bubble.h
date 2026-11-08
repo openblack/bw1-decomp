@@ -108,4 +108,7 @@ struct Bubble
 };
 static_assert(sizeof(Bubble) == 0xb0, "Data type is of wrong size");
 
+// BW1W120 005766e0 BW1M119 01332270
+float AdjustBubbleZForPitch(float z);
+
 #endif /* BW1_DECOMP_BUBBLE_INCLUDED_H */

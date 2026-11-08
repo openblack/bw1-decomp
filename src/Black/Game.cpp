@@ -185,7 +185,7 @@ static_assert(offsetof(CreaturePhysical, Creature3d) == 0x58, "Creature render p
 static_assert(offsetof(PowerSpin, Position) == 0x9a8, "PowerSpin position offset is incorrect");
 static_assert(offsetof(PowerSpinRunner, Next) == 0x9b4, "PowerSpinRunner link offset is incorrect");
 static_assert(offsetof(ValueSpinner, point) == 8, "ValueSpinner position offset is incorrect");
-static_assert(offsetof(VillagerName, next) == 0x460, "VillagerName link offset is incorrect");
+static_assert(offsetof(VillagerName, Next) == 0x460, "VillagerName link offset is incorrect");
 static_assert(offsetof(TempleRoom, name) == 4, "TempleRoom vptr is missing");
 #ifdef VERSION_BW1WCI
 static_assert(offsetof(GScript, FocusPos) == 0x48, "Script timer fields changed its layout");
@@ -2267,7 +2267,7 @@ void GGame::Process3dEngine()
 			}
 			if (!g_game->help_system->WideScreen || !g_game->help_system->WideScreenControl)
 			{
-				for (VillagerName* name = VillagerName::First; name; name = name->next)
+				for (VillagerName* name = VillagerName::First; name; name = name->Next)
 					name->AddDrawing();
 			}
 			else
