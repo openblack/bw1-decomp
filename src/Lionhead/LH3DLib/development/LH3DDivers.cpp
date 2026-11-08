@@ -1111,10 +1111,11 @@ void LHTGA::GetARGB(unsigned long* alpha_out, unsigned long* red_out, unsigned l
 {
 	if (format == LHTGA_FORMAT_ARGB4444)
 	{
-		unsigned long alpha = (((uint16_t*)source_pixels)[pixel_index] >> 8) & 0xf0;
-		unsigned long green = ((uint16_t*)source_pixels)[pixel_index] & 0xf0;
-		unsigned long red = (((uint16_t*)source_pixels)[pixel_index] >> 4) & 0xf0;
-		unsigned long blue = (((uint16_t*)source_pixels)[pixel_index] & 0xf) << 4;
+		uint16_t      pixel = ((uint16_t*)source_pixels)[pixel_index];
+		unsigned long alpha = (pixel >> 8) & 0xf0;
+		unsigned long green = pixel & 0xf0;
+		unsigned long red = (pixel >> 4) & 0xf0;
+		unsigned long blue = (pixel & 0xf) << 4;
 		*alpha_out = (uint8_t)alpha;
 		*red_out = (uint8_t)red;
 		*green_out = (uint8_t)green;
@@ -1695,14 +1696,13 @@ void ScriptedScreenShot::Process()
 		for (x = 0; x < SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH; x++)
 		{
 			int red = (source[0] + source[3]) >> 1;
-			source++;
-			int green = (source[0] + source[3]) >> 1;
-			source++;
-			int blue = (source[0] + source[3]) >> 1;
-			source += 4;
-			*thumbnail++ = red;
-			*thumbnail++ = green;
-			*thumbnail++ = blue;
+			int green = (source[1] + source[4]) >> 1;
+			int blue = (source[2] + source[5]) >> 1;
+			thumbnail[0] = red;
+			thumbnail[1] = green;
+			thumbnail[2] = blue;
+			source += 6;
+			thumbnail += 3;
 		}
 		thumbnail += SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH * 3;
 		source += CITADEL_TEXTURE_PITCH;
@@ -2532,9 +2532,7 @@ void GlowVillager::AddGlow(LHPoint* pos, float size)
 		g_sprite = LH3DSprite::Create(GLOW_VILLAGER_MAX_GLOWS, true);
 		for (int i = 0; i < GLOW_VILLAGER_MAX_GLOWS; i++)
 		{
-			const uint32_t frame = g_offset;
-			LH3DSprite*    frameSprite = &g_sprite[i];
-			frameSprite->Frame = frame;
+			g_sprite[i].Frame = g_offset;
 			g_sprite[i].material = g_smoke_additif_mat;
 			g_sprite[i].colour = GLOW_VILLAGER_COLOUR;
 		}
@@ -2667,9 +2665,8 @@ Fish::Fish(LHPoint* pos)
 {
 	Sprite = LH3DSprite::Create(1, true);
 	Sprite->SetSize(Random(FISH_MIN_SIZE, FISH_MAX_SIZE));
-	long        frame = (long)Random(0.0f, FISH_SPRITE_FRAMES);
-	LH3DSprite* sprite = Sprite;
-	sprite->Frame = frame;
+	long frame = (long)Random(0.0f, FISH_SPRITE_FRAMES);
+	Sprite->Frame = frame;
 	Sprite->pos.SetNull();
 	Sprite->material = g_mat_misc0;
 	Sprite->angle = Random(0.0f, PI_F);
