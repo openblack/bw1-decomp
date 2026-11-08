@@ -520,9 +520,9 @@ static inline bool operator==(const LHMatrix& a, const LHMatrix& b)
 	       a.m[10] == b.m[10] && a.m[11] == b.m[11];
 }
 
-static LandBlock* GetLandBlock(long x, long z)
+static LandBlock* GetLandBlock(long block_x, long block_z)
 {
-	int index = LH3DIsland::GetIndex(x, z);
+	int index = LH3DIsland::GetIndex(block_x, block_z);
 	return index != 0 ? LH3DIsland::g_ptr_blocks[index] : NULL;
 }
 
@@ -1174,9 +1174,9 @@ bool32_t LH3DInBuild::g_b_fuck = false;
 
 static inline void AddInBuildTriangle(uint16_t a, uint16_t b, uint16_t c)
 {
-	unsigned long flagsC = LH3DTech::g_cache_flags[c];
-	unsigned long flagsB = LH3DTech::g_cache_flags[b];
 	unsigned long flagsA = LH3DTech::g_cache_flags[a];
+	unsigned long flagsB = LH3DTech::g_cache_flags[b];
+	unsigned long flagsC = LH3DTech::g_cache_flags[c];
 	if (flagsA | flagsB | flagsC)
 	{
 		if (!(flagsA & flagsB & flagsC))
@@ -1829,9 +1829,9 @@ Bitmap16B* Bitmap16B::CreateFromHD(char* name, bool32_t keep_format)
 			{
 				for (int x = 0; x < lowRes->Width; x++)
 				{
+					uint16_t pixel = bitmap->Data[(bitmap->Width * y + x) * 2];
 					lowRes->Data[lowRes->Width * y + x] =
-						((bitmap->Data[(bitmap->Width * y + x) * 2] & BITMAP_16B_555_HIGH) << 1) |
-						(bitmap->Data[(bitmap->Width * y + x) * 2] & BITMAP_16B_555_BLUE);
+						((pixel & BITMAP_16B_555_HIGH) << 1) | (pixel & BITMAP_16B_555_BLUE);
 				}
 			}
 		}
