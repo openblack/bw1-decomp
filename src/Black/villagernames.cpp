@@ -3,26 +3,25 @@
 #include <wchar.h>   /* For wcslen, wcsncpy */
 #include <windows.h> /* Before LHSystem.h */
 
-#include <Lionhead/LH3DLib/development/LH3DMesh.h>
-#include <Lionhead/LH3DLib/development/LH3DRender.h>  /* For LH3DRender::g_zsorter */
-#include <Lionhead/LH3DLib/development/LH3DTech.h>    /* For LH3DTech */
-#include <Lionhead/LH3DLib/development/LH3DText.h>    /* For struct GatheringText */
-#include <Lionhead/LH3DLib/development/LH3DZSorter.h> /* For LH3DZSorter */
-#include <Lionhead/LHLib/ver5.0/LHSystem.h>           /* For LHSys::TheSystem */
-#include <Lionhead/LHLib/ver5.0/LHWin.h>              /* For NEW */
+#include <Lionhead/LH3DLib/development/LH3DMesh.h> /* For LH3DBlendColor */
+#include <Lionhead/LH3DLib/development/LH3DTech.h> /* For LH3DTech::ProjectPoint */
+#include <Lionhead/LH3DLib/development/LH3DText.h> /* For struct GatheringText */
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>        /* For LHSys::TheSystem */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For NEW */
 
 #include "Bubble.h"     /* For AdjustBubbleZForPitch */
-#include "CellSize.h"
+#include "CellSize.h"   /* For CellSize */
 #include "Game.h"       /* For GGame::g_game */
 #include "HelpSystem.h" /* For struct HelpSystem */
 #include "alexmfc.h"    /* For struct SetupThing */
 
 VillagerNameBlock* VillagerNameBlock::First;
-VillagerName* VillagerName::First;
+VillagerName*      VillagerName::First;
 
 VillagerName* VillagerNameBlock::Alloc()
 {
-	for (VillagerNameBlock* block = First; block; block = block->Next)
+	VillagerNameBlock* block;
+	for (block = First; block; block = block->Next)
 	{
 		if (block->NumAllocated < block->Size)
 		{
@@ -95,7 +94,7 @@ VillagerName* VillagerName::Add(float scale, LHPoint point, wchar_t* text, LH3DC
 	{
 		return NULL;
 	}
-	if (scale < 0.01f)
+	if (scale < VILLAGER_NAME_MIN_SCALE)
 	{
 		return NULL;
 	}
@@ -104,9 +103,9 @@ VillagerName* VillagerName::Add(float scale, LHPoint point, wchar_t* text, LH3DC
 		scale = 1.0f;
 	}
 
-	int x;
-	int y;
-	float depth;
+	int           x;
+	int           y;
+	float         depth;
 	VillagerName* name = NULL;
 	if (LH3DTech::ProjectPoint(&point, &x, &y, &depth) == LH3D_PROJECT_ON_SCREEN)
 	{
@@ -114,43 +113,44 @@ VillagerName* VillagerName::Add(float scale, LHPoint point, wchar_t* text, LH3DC
 		name->NumLines = 1;
 		name->Point = point;
 		name->Scale = scale;
-		if (color.r < 10 && color.g < 10 && color.b < 10)
+		if (color.r < VILLAGER_NAME_DARK_LEVEL && color.g < VILLAGER_NAME_DARK_LEVEL &&
+		    color.b < VILLAGER_NAME_DARK_LEVEL)
 		{
-			*(uint32_t*)&color = 0xffffff;
+			*(uint32_t*)&color = LH3D_COLOR_RGB_MASK;
 		}
-		*(uint32_t*)&color = LH3DBlendColor(*(uint32_t*)&color, 0xffffffff, 0x80);
+		*(uint32_t*)&color = LH3DBlendColor(*(uint32_t*)&color, LH3D_COLOR_WHITE, VILLAGER_NAME_LIGHTEN);
 		name->Color = color;
 		name->Lines[0] = name->Text;
-		wcsncpy(name->Text, text, 0xff);
-		name->Text[0xff] = 0;
-		for (int i = 0; i < 0xff; i++)
+		wcsncpy(name->Text, text, ARRAY_SIZE(name->Text) - 1);
+		name->Text[ARRAY_SIZE(name->Text) - 1] = L'\0';
+		for (int i = 0; i < (int)ARRAY_SIZE(name->Text) - 1; i++)
 		{
-			if (text[i] == 0)
+			if (text[i] == L'\0')
 			{
 				break;
 			}
-			if (text[i] == '\n')
+			if (text[i] == L'\n')
 			{
-				name->Text[i] = 0;
+				name->Text[i] = L'\0';
 				name->Lines[name->NumLines] = &name->Text[i + 1];
 				name->NumLines++;
-				if (name->NumLines == 8)
+				if (name->NumLines == ARRAY_SIZE(name->Lines))
 				{
 					break;
 				}
 			}
 		}
-		name->ArrowX = (float)x;
-		name->ArrowY = (float)y;
+		name->ArrowX = x;
+		name->ArrowY = y;
 		name->Depth = depth;
-		name->TextSize = scale * 16.0f;
+		name->TextSize = scale * VILLAGER_NAME_TEXT_SIZE;
 
-		float width = 0.0f;
+		float          width = 0.0f;
 		GatheringText* font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
 		for (int line = 0; line < name->NumLines; line++)
 		{
-			float lineWidth =
-			    font->GetStringWidth(name->Lines[line], wcslen(name->Lines[line]), name->TextSize, 1.0f) + scale * 6.0f;
+			float lineWidth = font->GetStringWidth(name->Lines[line], wcslen(name->Lines[line]), name->TextSize, 1.0f) +
+			                  scale * VILLAGER_NAME_LINE_MARGIN;
 			if (lineWidth > width)
 			{
 				width = lineWidth;
@@ -172,9 +172,9 @@ VillagerName* VillagerName::Add(float scale, LHPoint point, wchar_t* text, LH3DC
 			name->Right = screenWidth;
 			name->Left = screenWidth - width;
 		}
-		name->Bottom = name->ArrowY - 50.0f;
-		name->TextPadding = scale * 2.0f;
-		name->Top = name->Bottom - (name->NumLines * name->TextSize + scale * 4.0f);
+		name->Bottom = name->ArrowY - VILLAGER_NAME_ARROW_LENGTH;
+		name->TextPadding = scale * VILLAGER_NAME_TEXT_PADDING;
+		name->Top = name->Bottom - (name->NumLines * name->TextSize + scale * (VILLAGER_NAME_TEXT_PADDING * 2));
 
 		for (VillagerName* other = First; other && other->Left < name->Right; other = other->Next)
 		{
@@ -183,7 +183,7 @@ VillagerName* VillagerName::Add(float scale, LHPoint point, wchar_t* text, LH3DC
 			    other->Bottom >= name->Top)
 			{
 				name->Top -= name->Bottom;
-				name->Bottom = other->Top - 1.0f;
+				name->Bottom = other->Top - VILLAGER_NAME_STACK_GAP;
 				name->Top += name->Bottom;
 				if (other->Top < 0.0f)
 				{
@@ -212,22 +212,26 @@ VillagerName* VillagerName::Add(float scale, LHPoint point, wchar_t* text, LH3DC
 void VillagerName::Draw()
 {
 	Scale = Scale > 0.0f ? min(Scale, 1.0f) : 0.0f;
-	int alpha = (int)(Scale * 120.0f);
+	int   alpha = (int)(Scale * VILLAGER_NAME_BUBBLE_ALPHA);
 	float z = AdjustBubbleZForPitch(Depth);
-	GatheringText::DrawBubble(Left, Top, Right, Bottom, z, (Bottom - Top) * 0.25f, 0.0f, false, 0xff000000, false,
-	                          alpha, alpha);
+	GatheringText::DrawBubble(Left, Top, Right, Bottom, z, (Bottom - Top) * VILLAGER_NAME_CORNER_FRACTION, 0.0f, false,
+	                          LH3D_COLOR_BLACK, false, alpha, alpha);
 	SetupThing::DrawAlpha = alpha;
 	if (GatheringText::bubmat)
 	{
-		SetupThing::DrawBox((int)(ArrowX - 3.0f), (int)Bottom, (int)(ArrowX + 3.0f), (int)(ArrowY - 16.0f), 0.53125f,
-		                    0.05f, 0.59375f, 0.05f, GatheringText::bubmat, &LH3DColor(0, 0, 0, 0xff), false, 0,
-		                    LHSys::GetScreen().height, true, z);
-		SetupThing::DrawBox((int)(ArrowX - 6.0f), (int)(ArrowY - 16.0f), (int)(ArrowX + 6.0f), (int)ArrowY, 0.5f,
-		                    0.05f, 0.625f, 0.125f, GatheringText::bubmat, &LH3DColor(0, 0, 0, 0xff), false, 0,
+		SetupThing::DrawBox((int)(ArrowX - VILLAGER_NAME_STEM_HALF_WIDTH), (int)Bottom,
+		                    (int)(ArrowX + VILLAGER_NAME_STEM_HALF_WIDTH), (int)(ArrowY - VILLAGER_NAME_HEAD_LENGTH),
+		                    VILLAGER_NAME_STEM_U_MIN, VILLAGER_NAME_STEM_V, VILLAGER_NAME_STEM_U_MAX,
+		                    VILLAGER_NAME_STEM_V, GatheringText::bubmat, &LH3DColor(0, 0, 0, LH3D_COLOR_OPAQUE), false,
+		                    0, LHSys::GetScreen().height, true, z);
+		SetupThing::DrawBox((int)(ArrowX - VILLAGER_NAME_HEAD_HALF_WIDTH), (int)(ArrowY - VILLAGER_NAME_HEAD_LENGTH),
+		                    (int)(ArrowX + VILLAGER_NAME_HEAD_HALF_WIDTH), (int)ArrowY, VILLAGER_NAME_HEAD_U_MIN,
+		                    VILLAGER_NAME_HEAD_V_MIN, VILLAGER_NAME_HEAD_U_MAX, VILLAGER_NAME_HEAD_V_MAX,
+		                    GatheringText::bubmat, &LH3DColor(0, 0, 0, LH3D_COLOR_OPAQUE), false, 0,
 		                    LHSys::GetScreen().height, true, z);
 	}
 	GatheringText* font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
-	Color.a = (uint8_t)(Scale * 255.0f);
+	Color.a = (uint8_t)(Scale * LH3D_COLOR_CHANNEL_MAX);
 	for (int i = 0; i < NumLines; i++)
 	{
 		uint16_t height = LHSys::GetScreen().height;

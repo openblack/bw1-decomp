@@ -2424,19 +2424,20 @@ Black/VillagerHousewife.cpp:
 	.bss        start:0x00CDAAB4 end:0x00CDAAB8
 
 Black/VillagerLeader.cpp:
+	.text       start:0x006F0FC0 end:0x006F0FF0
 	.rdata      start:0x008D1AE4 end:0x008D1AF8
+	.CRT$XCU    start:0x008F7244 end:0x008F7248 align:4
 	.bss        start:0x00CDAAB8 end:0x00CDAABC
 
 Black/villagernames.cpp:
-	.text       start:0x006F0FC0 end:0x006F18E0
-	.rdata      start:0x008D1AF8 end:0x008D1B00
-	.CRT$XCU    start:0x008F7244 end:0x008F7248 align:4
-	.data       start:0x00B473D8 end:0x00B47414
+	.text       start:0x006F0FF0 end:0x006F18E0
+	.rdata      start:0x008D1AF8 end:0x008D1B04
+	.data       start:0x00B473D8 end:0x00B47413
 	.bss        start:0x00CDAABC end:0x00CDAAC4
 
 Black/VillagerPlaytime.cpp:
 	.text       start:0x006F18E0 end:0x006F1B30
-	.rdata      start:0x008D1B00 end:0x008D1B0C
+	.rdata      start:0x008D1B04 end:0x008D1B0C
 	.bss        start:0x00CDAAC4 end:0x00CDAAC8
 
 Black/VillagerReaction.cpp:

@@ -7,6 +7,7 @@
 // The alpha of an opaque colour.
 #define LH3D_COLOR_OPAQUE      0xff
 #define LH3D_COLOR_WHITE       0xffffffff
+#define LH3D_COLOR_BLACK       0xff000000
 #define LH3D_COLOR_CHANNEL_MAX 0xff
 #define LH3D_COLOR_RGB_MASK    0xffffff
 

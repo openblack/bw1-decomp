@@ -5,15 +5,35 @@
 #include <stdint.h> /* For uint8_t */
 #include <wchar.h>  /* For wchar_t */
 
-#include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <Lionhead/LH3DLib/development/LH3DColor.h>   /* For struct LH3DColor */
 #include <Lionhead/LH3DLib/development/LH3DRender.h>  /* For LH3DRender::g_zsorter */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>    /* For LH3DTech::GetValueForZSorter */
 #include <Lionhead/LH3DLib/development/LH3DZSorter.h> /* For LH3DZSorter */
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/LHPoint.h>     /* For struct LHPoint */
 
-#include "DrawingObject.h" /* For struct DrawingObject */
+#include "DrawingObject.h" /* For class DrawingObject */
 
-#define VILLAGER_NAME_BLOCK_SIZE 64
+#define VILLAGER_NAME_BLOCK_SIZE      64
+#define VILLAGER_NAME_MIN_SCALE       0.01f
+#define VILLAGER_NAME_DARK_LEVEL      10
+#define VILLAGER_NAME_LIGHTEN         0x80
+#define VILLAGER_NAME_TEXT_SIZE       16.0f
+#define VILLAGER_NAME_TEXT_PADDING    2.0f
+#define VILLAGER_NAME_LINE_MARGIN     6.0f
+#define VILLAGER_NAME_ARROW_LENGTH    50.0f
+#define VILLAGER_NAME_STACK_GAP       1.0f
+#define VILLAGER_NAME_BUBBLE_ALPHA    120.0f
+#define VILLAGER_NAME_CORNER_FRACTION 0.25f
+#define VILLAGER_NAME_STEM_HALF_WIDTH 3.0f
+#define VILLAGER_NAME_HEAD_HALF_WIDTH 6.0f
+#define VILLAGER_NAME_HEAD_LENGTH     16.0f
+#define VILLAGER_NAME_STEM_U_MIN      0.53125f
+#define VILLAGER_NAME_STEM_U_MAX      0.59375f
+#define VILLAGER_NAME_STEM_V          0.05f
+#define VILLAGER_NAME_HEAD_U_MIN      0.5f
+#define VILLAGER_NAME_HEAD_U_MAX      0.625f
+#define VILLAGER_NAME_HEAD_V_MIN      0.05f
+#define VILLAGER_NAME_HEAD_V_MAX      0.125f
 
 struct VillagerName;
 
@@ -28,8 +48,6 @@ struct VillagerNameBlock
 	// BW1W120 00db9e24 BW1M119 null
 	static VillagerNameBlock* First;
 
-	// Static methods
-
 	// BW1W120 00762720 BW1M119 01593260
 	static VillagerName* Alloc();
 	// BW1W120 00762780 BW1M119 01593130
@@ -37,17 +55,11 @@ struct VillagerNameBlock
 	// BW1W120 007627e0 BW1M119 010157c0
 	static void DeleteAll();
 
-	// Constructors
-
 	// BW1W120 00762820 BW1M119 inlined
 	VillagerNameBlock();
 
-	// Destructor
-
 	// BW1W120 inlined BW1M119 inlined
 	~VillagerNameBlock() { FreeAll(); }
-
-	// Non-virtual methods
 
 	// BW1W120 00762970 BW1M119 inlined
 	void FreeAll();
@@ -56,39 +68,32 @@ static_assert(sizeof(VillagerNameBlock) == 0x14, "Data type is of wrong size");
 
 struct VillagerName : public DrawingObject
 {
-public:
 	// BW1W120 00db9e28 BW1M119 null
 	static VillagerName* First;
 
-	float         Left;   /* 0x4 */
-	float         Top;    /* 0x8 */
-	float         Right;  /* 0xc */
-	float         Bottom; /* 0x10 */
-	float         ArrowX; /* 0x14 */
-	float         ArrowY; /* 0x18 */
-	float         Depth;  /* 0x1c */
+	float         Left;        /* 0x4 */
+	float         Top;         /* 0x8 */
+	float         Right;       /* 0xc */
+	float         Bottom;      /* 0x10 */
+	float         ArrowX;      /* 0x14 */
+	float         ArrowY;      /* 0x18 */
+	float         Depth;       /* 0x1c */
 	float         TextSize;    /* 0x20 */
 	float         Scale;       /* 0x24 */
 	int           NumLines;    /* 0x28 */
 	float         TextPadding; /* 0x2c */
-	wchar_t       Text[0x100]; /* 0x30 */
+	wchar_t       Text[256];   /* 0x30 */
 	uint8_t       field_0x230[0x200];
 	wchar_t*      Lines[8]; /* 0x430 */
 	LH3DColor     Color;    /* 0x450 */
 	LHPoint       Point;    /* 0x454 */
 	VillagerName* Next;     /* 0x460 */
 
-	// Constructors
-
 	// BW1W120 inlined BW1M119 01593040
 	VillagerName() {}
 
-	// Destructor
-
 	// BW1W120 inlined BW1M119 01592fc0
 	~VillagerName() {}
-
-	// Override methods
 
 	// BW1W120 007628a0 BW1M119 010e74a0
 	virtual void AddDrawing()
@@ -100,12 +105,8 @@ public:
 		}
 	}
 
-	// Static methods
-
 	// BW1W120 007629e0 BW1M119 015929c0
 	static VillagerName* Add(float scale, LHPoint point, wchar_t* text, LH3DColor& color);
-
-	// Non-virtual methods
 
 	// BW1W120 00762dc0 BW1M119 015925f0
 	void Draw();

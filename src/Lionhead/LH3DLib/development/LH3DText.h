@@ -154,6 +154,8 @@ struct FontCache
 	void ClearInCache(uint8_t font, uint16_t code);
 	// BW1W120 inlined BW1M119 010c2ad0 (LHCombined Release)
 	void SetInCache(uint8_t font, uint16_t code);
+	// BW1W120 inlined BW1M119 01030c70 (LHCombined Release)
+	static uint8_t IsInCache(uint8_t font, uint16_t code);
 };
 
 struct GatheringText
@@ -208,7 +210,7 @@ struct GatheringText
 	                      float param_6, float param_7, float param_8, uint16_t param_9);
 	// BW1W120 00832c60 BW1M119 01030e80 (LHCombined Release)
 	void DrawTextRaw(char16_t* text, int count, float x, float y, float z, float size, LH3DColor* color_top,
-	                 int no_z_test, LH3DColor* color_bottom, float fade_top, float fade_bottom);
+	                 bool32_t no_z_test, LH3DColor* color_bottom, float fade_top, float fade_bottom);
 	// BW1W120 008321c0 BW1M119 010c31f0 (LHCombined Release)
 	void DrawTextRawOriented(LHMatrix& param_1, int param_2, int param_3, const char16_t* param_4, int param_5,
 	                         float param_6, float param_7, float param_8, float param_9, float param_10,

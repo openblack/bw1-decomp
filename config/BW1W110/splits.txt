@@ -2583,7 +2583,8 @@ Black/VillagerHousewife.cpp:
 Black/villagernames.cpp:
 	.text       start:0x007564A0 end:0x00756E00
 	.rdata      start:0x0098A930 end:0x0098A93C
-	.data       start:0x00C135A8 end:0x00C135AC
+	.rdata$r    start:0x009A9AF8 end:0x009A9B44
+	.data       start:0x00C135A8 end:0x00C135E3
 	.bss        start:0x00DA8AF4 end:0x00DA8AFC
 
 Black/VillagerPlaytime.cpp:
