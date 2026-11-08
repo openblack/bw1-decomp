@@ -190,8 +190,8 @@ enum LOGO_FADE
 };
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130) || defined(VERSION_BW1WCI)
-static int           SavedHasSSE2 = 0;
-static volatile int* SSEFlag = &SavedHasSSE2;
+static bool32_t           SavedHasSSE2 = false;
+static volatile bool32_t* SSEFlag = &SavedHasSSE2;
 #endif
 
 bool CDFound = false;
@@ -662,7 +662,7 @@ int pc_main(int argc, char* argv[])
 			if (!FrontEnd::MultiplayerGameRunning || GGame::g_game->StartType == GAME_START_TYPE_NEW_GAME)
 				LHNetBase::Instance.StartAGame(LH_PACKET_SOURCE_NETWORK);
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130) || defined(VERSION_BW1WCI)
-			*SSEFlag = FrontEnd::MultiplayerGameRunning ? 0 : SavedHasSSE2;
+			*SSEFlag = FrontEnd::MultiplayerGameRunning ? false : SavedHasSSE2;
 #endif
 			GGame::g_game->StartGame();
 			GGame::g_game->Close();
