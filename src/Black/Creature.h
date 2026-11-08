@@ -284,7 +284,7 @@ public:
 #endif
 	float                        MaxBigSize;
 	float                        MaxSmallSize;
-	uint8_t                      CanGoThroughVortex;
+	bool                         CanGoThroughVortex;
 	uint8_t                      field_0x37d;
 	uint8_t                      field_0x37e;
 	uint8_t                      field_0x37f;
@@ -894,7 +894,7 @@ public:
 	// BW1W120 0047dbd0 BW1M119 011d6410
 	float GetSmallSize();
 	// BW1W120 inlined BW1M119 01509510
-	uint8_t GetCanGoThroughVortex() { return CanGoThroughVortex; }
+	bool GetCanGoThroughVortex() { return CanGoThroughVortex; }
 	// BW1W120 0047dc50 BW1M119 011d6320
 	void AutoScale();
 	// BW1W120 0047deb0 BW1M119 011d5f30
