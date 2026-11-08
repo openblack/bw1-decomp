@@ -1156,11 +1156,18 @@ Black/GatheringInterface.cpp:
 	.CRT$XCU    start:0x00A469B0 end:0x00A469C8 align:4
 	.data       start:0x00C6FA68 end:0x00C6FABC
 
+Black/GatheringText.cpp:
+	.text       start:0x00579370 end:0x0057A9F0
+	.rdata      start:0x009050D4 end:0x009050F0
+	.CRT$XCU    start:0x00A469C8 end:0x00A469D8 align:4
+	.data       start:0x00C6FABC end:0x00C6FACA
+	.bss        start:0x00D8741C end:0x00D87428
+
 Black/GenerateCreatureHTML.cpp:
-	.text       start:0x0057A9C0 end:0x0057BB10
-	.rdata      start:0x009050D4 end:0x009050FC
-	.CRT$XCU    start:0x00A469D4 end:0x00A469E8 align:4
-	.data       start:0x00C6FB54 end:0x00C6FBC4
+	.text       start:0x0057A9F0 end:0x0057BB10
+	.rdata      start:0x009050F0 end:0x009050FC
+	.CRT$XCU    start:0x00A469D8 end:0x00A469E8 align:4
+	.data       start:0x00C6FACC end:0x00C6FBC4
 	.bss        start:0x00D8742C end:0x00D87440
 
 Black/GestureSystem.cpp:

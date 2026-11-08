@@ -25,6 +25,8 @@ block_relocations:
 # LH3DAtmos::Render3D's 0x7f7f7f colour mask and bias are immediates, not pointers into LH3DPrimitive's code.
   - source: 0x008260A8
   - source: 0x008260AE
+# Bubble::UpdateAndDraw's 0x7f7f7f colour mask is an immediate, not a pointer into LH3DPrimitive's code.
+  - source: 0x0057337D
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x007FB462
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside LH3DObject's code.

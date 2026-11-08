@@ -2786,7 +2786,7 @@ void Creature::AddSpeechItem(char16_t* text, LHPlayer* player, unsigned long fla
 	{
 		SpeechItems.Add(NEW(3309) CreatureSpeechItem(LHSPrintfW(L"%s: %s", player->Name, text), player));
 	}
-	bubble->field_0xa8 = 0.0f;
+	bubble->ScrollPos = 0.0f;
 	if (bubble->DisplayTime < CREATURE_SPEECH_DISPLAY_TIME)
 	{
 		bubble->DisplayTime = CREATURE_SPEECH_DISPLAY_TIME;

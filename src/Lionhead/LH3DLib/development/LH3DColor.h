@@ -13,6 +13,9 @@
 // Halves each colour channel and sets the alpha to 0x20.
 #define LH3D_HALF_COLOR(color) ((((color) & 0xfefefe) | 0x40000000) >> 1)
 
+// Halves each colour channel and makes the colour opaque.
+#define LH3D_HALF_COLOR_OPAQUE(color) ((((color) >> 1) & 0x7f7f7f) | 0xff000000)
+
 struct LH3DColor
 {
 	uint8_t b; /* 0x0 */

@@ -14,6 +14,8 @@ block_relocations:
 # LH3DAtmos::Render3D's 0x7f7f7f colour mask and bias are immediates, not pointers into Swallow's vftable.
   - source: 0x007980D8
   - source: 0x007980DE
+# Bubble::UpdateAndDraw's 0x7f7f7f colour mask is an immediate, not a pointer into Swallow's vftable.
+  - source: 0x00544025
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside Wolf's vftable.
   - source: 0x00773936
   - source: 0x00773951

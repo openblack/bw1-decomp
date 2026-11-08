@@ -1049,18 +1049,21 @@ Black/GameThing.cpp:
 Black/GatheringInterface.cpp:
 	.text       start:0x0056C8C0 end:0x00571FD0
 	.rdata      start:0x008F0010 end:0x008F0090
-	.data       start:0x00BDE654 end:0x00BDE734
-	.bss        start:0x00CF4F14 end:0x00CF527C
+	.data       start:0x00BDE654 end:0x00BDE69C
+	.bss        start:0x00CF4F14 end:0x00CF526C
 
 Black/GatheringText.cpp:
 	.text       start:0x00571FD0 end:0x00573620
 	.rdata      start:0x008F0090 end:0x008F00B0
+	.CRT$XCU    start:0x009B66C4 end:0x009B66D0 align:4
+	.data       start:0x00BDE69C end:0x00BDE6AA
+	.bss        start:0x00CF526C end:0x00CF5278
 
 Black/GenerateCreatureHTML.cpp:
 	.text       start:0x00573620 end:0x00574710
 	.rdata      start:0x008F00B0 end:0x008F00BC
 	.CRT$XCU    start:0x009B66D0 end:0x009B66DC align:4
-	.data       start:0x00BDE734 end:0x00BDEAE0
+	.data       start:0x00BDE6AC end:0x00BDEAE0
 	.bss        start:0x00CF527C end:0x00CF5290
 
 Black/GestureSystem.cpp:

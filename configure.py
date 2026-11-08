@@ -1055,7 +1055,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/GameThing.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/GatheringBox.cpp"),
             GameCodeObject(NonMatching, "Black/GatheringInterface.cpp", pch=PCH_PENDING),
-            GameCodeObject(NonMatching, "Black/GatheringText.cpp"),
+            GameCodeObject(Matching, "Black/GatheringText.cpp"),
             GameCodeObject(NonMatching, "Black/GenerateCreatureHTML.cpp"),
             GameCodeObject(Matching, "Black/GestureSystem.cpp", pch=False),
             GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "Black/GestureSystemData.cpp", pch=False),
