@@ -2021,21 +2021,21 @@ void __fastcall DrawLightLikeHand(float x, float z, uint8_t* light, long size, f
 	unsigned long weightZ;
 	if (gridZ >= 0.0f)
 	{
-		weightZ = (long)(255.0f - (gridZ - cellZ) * 255.0f);
+		weightZ = (long)(LH3D_COLOR_CHANNEL_MAX - (gridZ - cellZ) * LH3D_COLOR_CHANNEL_MAX);
 	}
 	else
 	{
-		weightZ = (long)((cellZ - gridZ) * 255.0f);
+		weightZ = (long)((cellZ - gridZ) * LH3D_COLOR_CHANNEL_MAX);
 		cellZ--;
 	}
 	unsigned long weightX;
 	if (gridX >= 0.0f)
 	{
-		weightX = (long)(255.0f - (gridX - cellX) * 255.0f);
+		weightX = (long)(LH3D_COLOR_CHANNEL_MAX - (gridX - cellX) * LH3D_COLOR_CHANNEL_MAX);
 	}
 	else
 	{
-		weightX = (long)((cellX - gridX) * 255.0f);
+		weightX = (long)((cellX - gridX) * LH3D_COLOR_CHANNEL_MAX);
 		cellX--;
 	}
 	weightX &= 0xff;
@@ -2070,7 +2070,7 @@ void __fastcall DrawLightLikeHand(float x, float z, uint8_t* light, long size, f
 	}
 	int maxDarkness =
 		((LH3DColor&)LandCell::g_darkness_to_color[LAND_CELL_MAX_DARKNESS]).GetG() * LAND_CELL_MIN_DARKNESS >> 8;
-	long alpha = (long)(intensity * 255.0f);
+	long alpha = (long)(intensity * LH3D_COLOR_CHANNEL_MAX);
 	for (int i = 0; i < clippedWidth - 1; i++)
 	{
 		for (int j = 0; j < clippedDepth - 1; j++)
