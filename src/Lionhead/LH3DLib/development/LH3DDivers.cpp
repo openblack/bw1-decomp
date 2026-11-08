@@ -1447,33 +1447,34 @@ void ScriptedScreenShot::TakeFullScreen()
 		unsigned long y;
 		float         scaleY = LHSys::TheSystem.screen.Height() / (float)SCRIPTED_SCREEN_SHOT_FULL_HEIGHT;
 		float         scaleX = LHSys::TheSystem.screen.Width() / (float)SCRIPTED_SCREEN_SHOT_FULL_WIDTH;
-		uint32_t      red;
-		uint32_t      green;
-		uint32_t      blue;
+		uint32_t      previousRed;
+		uint32_t      previousGreen;
+		uint32_t      previousBlue;
 		if (surfaceDesc.ddpfPixelFormat.dwRGBBitCount == 16)
 		{
-			long pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint16_t);
+			uint16_t* pixels = (uint16_t*)surfacePixels;
+			long      pitchPixels = surfaceDesc.lPitch / (long)sizeof(*pixels);
 			if (surfaceDesc.ddpfPixelFormat.dwGBitMask == SCRIPTED_SCREEN_SHOT_565_GREEN)
 			{
 				for (y = 0; y < SCRIPTED_SCREEN_SHOT_FULL_HEIGHT; y++)
 				{
 					long     rowOffset = (long)(y * scaleY) * pitchPixels;
-					uint32_t pixel = ((uint16_t*)surfacePixels)[rowOffset];
-					red = (pixel >> 12) & 0xf;
-					green = (pixel >> 7) & 0xf;
-					blue = (pixel >> 1) & 0xf;
+					uint32_t pixel = pixels[rowOffset];
+					previousRed = (pixel >> 12) & 0xf;
+					previousGreen = (pixel >> 7) & 0xf;
+					previousBlue = (pixel >> 1) & 0xf;
 					for (x = 0; x < SCRIPTED_SCREEN_SHOT_FULL_WIDTH; x++)
 					{
-						pixel = ((uint16_t*)surfacePixels)[rowOffset + (long)(x * scaleX)];
+						pixel = pixels[rowOffset + (long)(x * scaleX)];
 						uint32_t nextRed = (pixel >> 12) & 0xf;
 						uint32_t nextGreen = (pixel >> 7) & 0xf;
 						uint32_t nextBlue = (pixel >> 1) & 0xf;
-						*outputPixels++ = (nextRed + red) << 3;
-						red = nextRed;
-						*outputPixels++ = (nextGreen + green) << 3;
-						green = nextGreen;
-						*outputPixels++ = (nextBlue + blue) << 3;
-						blue = nextBlue;
+						*outputPixels++ = (nextRed + previousRed) << 3;
+						previousRed = nextRed;
+						*outputPixels++ = (nextGreen + previousGreen) << 3;
+						previousGreen = nextGreen;
+						*outputPixels++ = (nextBlue + previousBlue) << 3;
+						previousBlue = nextBlue;
 					}
 				}
 			}
@@ -1482,22 +1483,22 @@ void ScriptedScreenShot::TakeFullScreen()
 				for (y = 0; y < SCRIPTED_SCREEN_SHOT_FULL_HEIGHT; y++)
 				{
 					long     rowOffset = (long)(y * scaleY) * pitchPixels;
-					uint32_t pixel = ((uint16_t*)surfacePixels)[rowOffset];
-					red = (pixel >> 11) & 0xf;
-					green = (pixel >> 6) & 0xf;
-					blue = (pixel >> 1) & 0xf;
+					uint32_t pixel = pixels[rowOffset];
+					previousRed = (pixel >> 11) & 0xf;
+					previousGreen = (pixel >> 6) & 0xf;
+					previousBlue = (pixel >> 1) & 0xf;
 					for (x = 0; x < SCRIPTED_SCREEN_SHOT_FULL_WIDTH; x++)
 					{
-						pixel = ((uint16_t*)surfacePixels)[rowOffset + (long)(x * scaleX)];
+						pixel = pixels[rowOffset + (long)(x * scaleX)];
 						uint32_t nextRed = (pixel >> 11) & 0xf;
 						uint32_t nextGreen = (pixel >> 6) & 0xf;
 						uint32_t nextBlue = (pixel >> 1) & 0xf;
-						*outputPixels++ = (nextRed + red) << 3;
-						red = nextRed;
-						*outputPixels++ = (nextGreen + green) << 3;
-						green = nextGreen;
-						*outputPixels++ = (nextBlue + blue) << 3;
-						blue = nextBlue;
+						*outputPixels++ = (nextRed + previousRed) << 3;
+						previousRed = nextRed;
+						*outputPixels++ = (nextGreen + previousGreen) << 3;
+						previousGreen = nextGreen;
+						*outputPixels++ = (nextBlue + previousBlue) << 3;
+						previousBlue = nextBlue;
 					}
 				}
 			}
@@ -1511,21 +1512,21 @@ void ScriptedScreenShot::TakeFullScreen()
 			{
 				long     rowOffset = (long)(y * scaleY) * pitchPixels;
 				uint32_t pixel = pixels[rowOffset];
-				red = RGBA_GETRED(pixel);
-				green = RGBA_GETGREEN(pixel);
-				blue = RGBA_GETBLUE(pixel);
+				previousRed = RGBA_GETRED(pixel);
+				previousGreen = RGBA_GETGREEN(pixel);
+				previousBlue = RGBA_GETBLUE(pixel);
 				for (x = 0; x < SCRIPTED_SCREEN_SHOT_FULL_WIDTH; x++)
 				{
 					pixel = pixels[rowOffset + (long)(x * scaleX)];
 					uint32_t nextRed = RGBA_GETRED(pixel);
 					uint32_t nextGreen = RGBA_GETGREEN(pixel);
 					uint32_t nextBlue = RGBA_GETBLUE(pixel);
-					*outputPixels++ = (red + nextRed) >> 1;
-					red = nextRed;
-					*outputPixels++ = (green + nextGreen) >> 1;
-					green = nextGreen;
-					*outputPixels++ = (blue + nextBlue) >> 1;
-					blue = nextBlue;
+					*outputPixels++ = (previousRed + nextRed) >> 1;
+					previousRed = nextRed;
+					*outputPixels++ = (previousGreen + nextGreen) >> 1;
+					previousGreen = nextGreen;
+					*outputPixels++ = (previousBlue + nextBlue) >> 1;
+					previousBlue = nextBlue;
 				}
 			}
 		}
@@ -1564,12 +1565,12 @@ void ScriptedScreenShot::Process()
 	unsigned long y;
 	float         scaleY = LHSys::TheSystem.screen.Height() / (float)SCRIPTED_SCREEN_SHOT_HALF_HEIGHT;
 	float         scaleX = LHSys::TheSystem.screen.Width() / (float)CITADEL_TEXTURE_SIZE;
-	uint32_t      red;
-	uint32_t      green;
-	uint32_t      blue;
+	uint32_t      previousRed;
+	uint32_t      previousGreen;
+	uint32_t      previousBlue;
 	if (surfaceDesc.ddpfPixelFormat.dwRGBBitCount == 16)
 	{
-		uint8_t* surfacePixels = (uint8_t*)surfaceDesc.lpSurface;
+		uint16_t* surfacePixels = (uint16_t*)surfaceDesc.lpSurface;
 		if (g_info.Half != 0)
 		{
 			outputPixels = picture + CITADEL_TEXTURE_BYTES / 2;
@@ -1580,22 +1581,22 @@ void ScriptedScreenShot::Process()
 			for (y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
 			{
 				long     rowOffset = (long)(y * scaleY) * pitchPixels;
-				uint32_t pixel = ((uint16_t*)surfacePixels)[rowOffset];
-				red = (pixel >> 12) & 0xf;
-				green = (pixel >> 7) & 0xf;
-				blue = (pixel >> 1) & 0xf;
+				uint32_t pixel = surfacePixels[rowOffset];
+				previousRed = (pixel >> 12) & 0xf;
+				previousGreen = (pixel >> 7) & 0xf;
+				previousBlue = (pixel >> 1) & 0xf;
 				for (x = 0; x < CITADEL_TEXTURE_SIZE; x++)
 				{
-					pixel = ((uint16_t*)surfacePixels)[rowOffset + (long)(x * scaleX)];
+					pixel = surfacePixels[rowOffset + (long)(x * scaleX)];
 					uint32_t nextRed = (pixel >> 12) & 0xf;
 					uint32_t nextGreen = (pixel >> 7) & 0xf;
 					uint32_t nextBlue = (pixel >> 1) & 0xf;
-					*outputPixels++ = (nextRed + red) << 3;
-					red = nextRed;
-					*outputPixels++ = (nextGreen + green) << 3;
-					green = nextGreen;
-					*outputPixels++ = (nextBlue + blue) << 3;
-					blue = nextBlue;
+					*outputPixels++ = (nextRed + previousRed) << 3;
+					previousRed = nextRed;
+					*outputPixels++ = (nextGreen + previousGreen) << 3;
+					previousGreen = nextGreen;
+					*outputPixels++ = (nextBlue + previousBlue) << 3;
+					previousBlue = nextBlue;
 				}
 			}
 		}
@@ -1604,29 +1605,29 @@ void ScriptedScreenShot::Process()
 			for (y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
 			{
 				long     rowOffset = (long)(y * scaleY) * pitchPixels;
-				uint32_t pixel = ((uint16_t*)surfacePixels)[rowOffset];
-				red = (pixel >> 11) & 0xf;
-				green = (pixel >> 6) & 0xf;
-				blue = (pixel >> 1) & 0xf;
+				uint32_t pixel = surfacePixels[rowOffset];
+				previousRed = (pixel >> 11) & 0xf;
+				previousGreen = (pixel >> 6) & 0xf;
+				previousBlue = (pixel >> 1) & 0xf;
 				for (x = 0; x < CITADEL_TEXTURE_SIZE; x++)
 				{
-					pixel = ((uint16_t*)surfacePixels)[rowOffset + (long)(x * scaleX)];
+					pixel = surfacePixels[rowOffset + (long)(x * scaleX)];
 					uint32_t nextRed = (pixel >> 11) & 0xf;
 					uint32_t nextGreen = (pixel >> 6) & 0xf;
 					uint32_t nextBlue = (pixel >> 1) & 0xf;
-					*outputPixels++ = (nextRed + red) << 3;
-					red = nextRed;
-					*outputPixels++ = (nextGreen + green) << 3;
-					green = nextGreen;
-					*outputPixels++ = (nextBlue + blue) << 3;
-					blue = nextBlue;
+					*outputPixels++ = (nextRed + previousRed) << 3;
+					previousRed = nextRed;
+					*outputPixels++ = (nextGreen + previousGreen) << 3;
+					previousGreen = nextGreen;
+					*outputPixels++ = (nextBlue + previousBlue) << 3;
+					previousBlue = nextBlue;
 				}
 			}
 		}
 	}
 	else if (surfaceDesc.ddpfPixelFormat.dwRGBBitCount == 32)
 	{
-		uint8_t* surfacePixels = (uint8_t*)surfaceDesc.lpSurface;
+		uint32_t* surfacePixels = (uint32_t*)surfaceDesc.lpSurface;
 		if (g_info.Half != 0)
 		{
 			outputPixels = picture + CITADEL_TEXTURE_BYTES / 2;
@@ -1635,22 +1636,22 @@ void ScriptedScreenShot::Process()
 		for (y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
 		{
 			long     rowOffset = (long)(y * scaleY) * pitchPixels;
-			uint32_t pixel = ((uint32_t*)surfacePixels)[rowOffset];
-			red = RGBA_GETRED(pixel);
-			green = RGBA_GETGREEN(pixel);
-			blue = RGBA_GETBLUE(pixel);
+			uint32_t pixel = surfacePixels[rowOffset];
+			previousRed = RGBA_GETRED(pixel);
+			previousGreen = RGBA_GETGREEN(pixel);
+			previousBlue = RGBA_GETBLUE(pixel);
 			for (x = 0; x < CITADEL_TEXTURE_SIZE; x++)
 			{
-				pixel = ((uint32_t*)surfacePixels)[rowOffset + (long)(x * scaleX)];
+				pixel = surfacePixels[rowOffset + (long)(x * scaleX)];
 				uint32_t nextRed = RGBA_GETRED(pixel);
 				uint32_t nextGreen = RGBA_GETGREEN(pixel);
 				uint32_t nextBlue = RGBA_GETBLUE(pixel);
-				*outputPixels++ = (red + nextRed) >> 1;
-				red = nextRed;
-				*outputPixels++ = (green + nextGreen) >> 1;
-				green = nextGreen;
-				*outputPixels++ = (blue + nextBlue) >> 1;
-				blue = nextBlue;
+				*outputPixels++ = (previousRed + nextRed) >> 1;
+				previousRed = nextRed;
+				*outputPixels++ = (previousGreen + nextGreen) >> 1;
+				previousGreen = nextGreen;
+				*outputPixels++ = (previousBlue + nextBlue) >> 1;
+				previousBlue = nextBlue;
 			}
 		}
 	}
