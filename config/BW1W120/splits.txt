@@ -2414,14 +2414,14 @@ Black/Script.cpp:
 Black/ScriptCamera.cpp:
 	.text       start:0x006EC8D0 end:0x006EF370
 	.CRT$XCU    start:0x009C75F0 end:0x009C7600 align:4
-	.data       start:0x00C0C0CC end:0x00C0C374
+	.data       start:0x00C0C0CC end:0x00C0C300
 	.bss        start:0x00D95C24 end:0x00D95C30
 
 Black/ScriptContainer.cpp:
 	.text       start:0x006EF370 end:0x006F0860
-	.rdata      start:0x00942190 end:0x009421A0
+	.rdata      start:0x00942198 end:0x009421A0
 	.CRT$XCU    start:0x009C7600 end:0x009C760C align:4
-	.data       start:0x00C0C374 end:0x00C0C710
+	.data       start:0x00C0C300 end:0x00C0C70E
 	.bss        start:0x00D95C30 end:0x00D95C38
 
 Black/ScriptControl.cpp:
