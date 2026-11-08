@@ -237,8 +237,7 @@ public:
 	CreatureDatabase creature_database;
 	bool             GameOver;
 	uint8_t          field_0x599d;
-	uint8_t          field_0x599e;
-	uint8_t          field_0x599f;
+	uint8_t          field_0x599e[2];
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	uint32_t MultiplayerTimeLimit;
 #endif

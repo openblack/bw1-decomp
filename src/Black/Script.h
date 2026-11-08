@@ -1803,7 +1803,7 @@ public:
 	// BW1W120 0070cf50 BW1M119 01507ad0
 	static unsigned long FindScriptGameThing(GameThingWithPos* thing);
 	// BW1W120 00710350 BW1M119 0150caf0
-	HELP_SPIRIT_TYPE ConvertScriptSpiritToHelpSpirit(SCRIPT_SPIRIT_TYPE spirit);
+	static HELP_SPIRIT_TYPE ConvertScriptSpiritToHelpSpirit(SCRIPT_SPIRIT_TYPE spirit);
 	// BW1W120 0070f600 BW1M119 010021c0
 	static void ReleaseScriptThingIntoTheGame(GameThingWithPos* thing, unsigned long slot, bool32_t force);
 	// BW1W120 006f0430 BW1M119 014e4880
