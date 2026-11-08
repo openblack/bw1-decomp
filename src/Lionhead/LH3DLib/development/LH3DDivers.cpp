@@ -1150,10 +1150,11 @@ LHTGA* LHTGA::GetTGA(void* source_pixels, long width, long height, long format, 
 				green = green * alpha / LHTGA_CHANNEL_MAX;
 				blue = blue * alpha / LHTGA_CHANNEL_MAX;
 			}
-			((uint8_t*)tga)[sizeof(LHTGA) + pixelIndex * sizeof(uint32_t) + 3] = alpha;
-			((uint8_t*)tga)[sizeof(LHTGA) + pixelIndex * sizeof(uint32_t) + 0] = blue;
-			((uint8_t*)tga)[sizeof(LHTGA) + pixelIndex * sizeof(uint32_t) + 1] = green;
-			((uint8_t*)tga)[sizeof(LHTGA) + pixelIndex * sizeof(uint32_t) + 2] = red;
+			uint8_t* outputPixel = (uint8_t*)(tga + 1) + pixelIndex * sizeof(uint32_t);
+			outputPixel[3] = alpha;
+			outputPixel[0] = blue;
+			outputPixel[1] = green;
+			outputPixel[2] = red;
 		}
 	}
 	memcpy((char*)tga + totalSize - LHTGA_FOOTER_SIZE, footer, LHTGA_FOOTER_SIZE);
@@ -1450,7 +1451,7 @@ void ScriptedScreenShot::TakeFullScreen()
 		uint32_t      blue;
 		if (surfaceDesc.ddpfPixelFormat.dwRGBBitCount == 16)
 		{
-			long pitchPixels = surfaceDesc.lPitch / 2;
+			long pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint16_t);
 			if (surfaceDesc.ddpfPixelFormat.dwGBitMask == SCRIPTED_SCREEN_SHOT_565_GREEN)
 			{
 				for (y = 0; y < SCRIPTED_SCREEN_SHOT_FULL_HEIGHT; y++)
@@ -1572,7 +1573,7 @@ void ScriptedScreenShot::Process()
 		{
 			outputPixels = picture + CITADEL_TEXTURE_BYTES / 2;
 		}
-		long pitchPixels = surfaceDesc.lPitch / 2;
+		long pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint16_t);
 		if (surfaceDesc.ddpfPixelFormat.dwGBitMask == SCRIPTED_SCREEN_SHOT_565_GREEN)
 		{
 			for (y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
@@ -1629,7 +1630,7 @@ void ScriptedScreenShot::Process()
 		{
 			outputPixels = picture + CITADEL_TEXTURE_BYTES / 2;
 		}
-		long pitchPixels = surfaceDesc.lPitch / 4;
+		long pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint32_t);
 		for (y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
 		{
 			long     rowOffset = (long)(y * scaleY) * pitchPixels;
@@ -2533,8 +2534,7 @@ void GlowVillager::AddGlow(LHPoint* pos, float size)
 		{
 			const uint32_t frame = g_offset;
 			LH3DSprite*    frameSprite = &g_sprite[i];
-			frameSprite->Frame = 0;
-			frameSprite->Frame |= frame;
+			frameSprite->Frame = frame;
 			g_sprite[i].material = g_smoke_additif_mat;
 			g_sprite[i].colour = GLOW_VILLAGER_COLOUR;
 		}
@@ -2669,8 +2669,7 @@ Fish::Fish(LHPoint* pos)
 	Sprite->SetSize(Random(FISH_MIN_SIZE, FISH_MAX_SIZE));
 	long        frame = (long)Random(0.0f, FISH_SPRITE_FRAMES);
 	LH3DSprite* sprite = Sprite;
-	sprite->Frame = 0;
-	sprite->Frame |= frame;
+	sprite->Frame = frame;
 	Sprite->pos.SetNull();
 	Sprite->material = g_mat_misc0;
 	Sprite->angle = Random(0.0f, PI_F);
@@ -5112,7 +5111,7 @@ void SaveTextureCitadel(char* name, void* rgb_pixels)
 			uint16_t* surfacePixels = (uint16_t*)surfaceDesc.lpSurface;
 			if (surfacePixels != NULL)
 			{
-				long     pitchPixels = surfaceDesc.lPitch / 2;
+				long     pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint16_t);
 				uint8_t* sourceChannel = (uint8_t*)rgb_pixels;
 				long     x;
 				long     y;
@@ -5194,7 +5193,7 @@ void LoadTextureCitadel(char* name, uint8_t* rgb_pixels)
 			uint16_t* surfacePixels = (uint16_t*)surfaceDesc.lpSurface;
 			if (surfacePixels != NULL)
 			{
-				long pitchPixels = surfaceDesc.lPitch / 2;
+				long pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint16_t);
 				if (!LH3DTexture::g_b_use_565)
 				{
 					for (long y = 0; y < (long)surfaceDesc.dwHeight; y++)
@@ -5237,13 +5236,9 @@ void LoadTextureCitadel(char* name, uint8_t* rgb_pixels)
 }
 
 NewCollide::Obj::Obj(float radius, LHPoint* position)
+	: position(*position), radius(radius), r2(radius * radius), angle(0.0f), BoundingBox(radius, 0.0f, radius),
+	  IteratorList(NULL)
 {
-	this->position = *position;
-	this->radius = radius;
-	r2 = radius * radius;
-	angle = 0.0f;
-	BoundingBox.Set(radius, 0.0f, radius);
-	IteratorList = NULL;
 }
 
 NewCollide::Obj::Obj(LHPoint* position, float bb_x, float bb_z, float angle)
