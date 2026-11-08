@@ -6,6 +6,8 @@
 
 #include "Base.h" /* For struct Base */
 
+#define SOUNDEX_NO_CODE 0
+
 class GSpookyVoices : public Base
 {
 public:
@@ -19,6 +21,8 @@ public:
 	// BW1W120 0072e250 BW1M119 01150ea0
 	virtual ~GSpookyVoices();
 
+	// BW1W120 0072e4e0 BW1M119 01150a80
+	int SoundExCode(wchar_t* text);
 	// BW1W120 0072e5c0 BW1M119 011509a0
 	int GetNextSoundexCode(wchar_t*& text);
 	// BW1W120 0072e630 BW1M119 01150870

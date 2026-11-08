@@ -13,6 +13,28 @@ GBaseInfo* GSpookyVoiceInfo::GetBaseInfo(uint32_t& info_count)
 
 GSpookyVoices::~GSpookyVoices() {}
 
+int GSpookyVoices::GetNextSoundexCode(wchar_t*& text)
+{
+	int code;
+	do
+	{
+		if (*text == L'\0')
+		{
+			return SOUNDEX_NO_CODE;
+		}
+		if (*text == L' ')
+		{
+			return SOUNDEX_NO_CODE;
+		}
+		code = SoundExCode(text++);
+	} while (code == SOUNDEX_NO_CODE);
+	while (SoundExCode(text) == code)
+	{
+		code++;
+	}
+	return code;
+}
+
 bool GSpookyVoices::PerformSoundexComparison(wchar_t* first, wchar_t* second)
 {
 	if (*first != *second)
