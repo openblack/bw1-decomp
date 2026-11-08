@@ -2801,6 +2801,17 @@ BW1W130_SAFEDISC_CALLS = (
     (0x007122B7, jmp_run(0x00712256)),  # ScriptMarker
     (0x007122D3, jmp_run(0x007122B7)),  # ScriptMarker
     (0x007122F3, jmp_run(0x007122D3)),  # ScriptMarker
+    (0x00714C9B, call_rel32(0x004034F9)),  # ScriptSpirit
+    (0x00714DA6, copy_run(0x00714C9B)),  # ScriptSpirit
+    (0x00714E26, copy_run(0x00714DA6)),  # ScriptSpirit
+    (0x00714EF4, jmp_run(0x00714E26)),  # ScriptSpirit
+    (0x00714F76, jmp_run(0x00714EF4)),  # ScriptSpirit
+    (0x007150C8, copy_run(0x00714F76)),  # ScriptSpirit
+    (0x007151A4, copy_run(0x007150C8)),  # ScriptSpirit
+    (0x0071539A, jmp_run(0x007151A4)),  # ScriptSpirit
+    (0x007153E1, copy_run(0x0071539A)),  # ScriptSpirit
+    (0x007154B6, jmp_run(0x007153E1)),  # ScriptSpirit
+    (0x00715586, copy_run(0x007154B6)),  # ScriptSpirit
     (0x00715743, copy_run(0x00715586)),  # ScriptTime
     (0x0071576B, call_rel32(0x004034F9)),  # ScriptTime
     (0x007157A1, copy_run(0x0071576B)),  # ScriptTime

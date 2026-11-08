@@ -1391,7 +1391,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ScriptProperty.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptRelease.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptSound.cpp"),
-            GameCodeObject(NonMatching, "Black/ScriptSpirit.cpp"),
+            GameCodeObject(Matching, "Black/ScriptSpirit.cpp"),
             GameCodeObject(Matching, "Black/ScriptTime.cpp"),
             GameCodeObject(Matching, "Black/ScriptTimer.cpp"),
             GameCodeObject(Matching, "Black/SecretCreature.cpp", pch=False),
