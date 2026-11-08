@@ -223,18 +223,33 @@ class Spell;
 
 struct ScriptObjectDispatch
 {
-	void*(__cdecl* FindAtPos)(const MapCoords&, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                          SCRIPT_OBJECT_TYPE, uint32_t); /* 0x00 */
-	void*(__cdecl* FindNearPos)(const MapCoords&, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                            SCRIPT_OBJECT_TYPE, uint32_t, float); /* 0x04 */
-	void*(__cdecl* FindIn)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                       SCRIPT_OBJECT_TYPE, uint32_t); /* 0x08 */
-	void*(__cdecl* FindInNear)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                           SCRIPT_OBJECT_TYPE, uint32_t, const MapCoords&, float); /* 0x0c */
-	void*(__cdecl* FindInNotNear)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                              SCRIPT_OBJECT_TYPE, uint32_t, const MapCoords&, float); /* 0x10 */
-	void*(__cdecl* Loop)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                     SCRIPT_OBJECT_TYPE, uint32_t); /* 0x14 */
+	typedef void*(__cdecl* FindAtPosFunction)(const MapCoords& pos,
+	                                          int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                                          SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	typedef void*(__cdecl* FindNearPosFunction)(const MapCoords& pos,
+	                                            int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                                            SCRIPT_OBJECT_TYPE type, uint32_t subtype, float radius);
+	typedef void*(__cdecl* FindInFunction)(GameThingWithPos* container,
+	                                       int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                                       SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	typedef void*(__cdecl* FindInNearFunction)(GameThingWithPos* container,
+	                                           int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                                           SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos,
+	                                           float radius);
+	typedef void*(__cdecl* FindInNotNearFunction)(GameThingWithPos* container,
+	                                              int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                                              SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos,
+	                                              float radius);
+	typedef void*(__cdecl* LoopFunction)(GameThingWithPos* container,
+	                                     int(__cdecl* check)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                                     SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+
+	FindAtPosFunction     FindAtPos;     /* 0x00 */
+	FindNearPosFunction   FindNearPos;   /* 0x04 */
+	FindInFunction        FindIn;        /* 0x08 */
+	FindInNearFunction    FindInNear;    /* 0x0c */
+	FindInNotNearFunction FindInNotNear; /* 0x10 */
+	LoopFunction          Loop;          /* 0x14 */
 };
 
 class GScript : public Base
