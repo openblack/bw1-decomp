@@ -4436,7 +4436,7 @@ Lionhead/LH3DLib/development/LH3DRender.cpp:
 
 Lionhead/LH3DLib/development/LH3DText.cpp:
 	.text       start:0x008300A0 end:0x00833A00
-	.text$x     start:0x008A8070 end:0x008A80A0 align:4
+	.text$x     start:0x008A8070 end:0x008A80A0 align:16
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x00833A00 end:0x00833CF0
