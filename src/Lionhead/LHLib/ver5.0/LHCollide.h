@@ -1,11 +1,14 @@
 #ifndef BW1_DECOMP_LH_COLLIDE_INCLUDED_H
 #define BW1_DECOMP_LH_COLLIDE_INCLUDED_H
 
-#include <stdint.h>    /* For int16_t, uint32_t, uint8_t */
 #include <re_common.h> /* For bool32_t */
+#include <stdint.h>    /* For int16_t, uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint, struct Point2D */
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For struct LH3DObject */
+#include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint, struct Point2D */
+
+#define NEW_COLLIDE_MIN_SIZE  1.0f
+#define NEW_COLLIDE_MAX_RATIO 1.4f
 
 enum ObjectCircleIteratorDirection
 {

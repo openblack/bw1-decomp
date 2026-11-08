@@ -5,12 +5,19 @@
 
 #include <re_common.h> /* For bool32_t */
 
+#define EVIL_OR_ANGEL_VISAGE       1
+#define EVIL_OR_ANGEL_ANGEL_CHANCE 50.0f
+#define EVIL_OR_ANGEL_END_MARGIN   110
+#define EVIL_OR_ANGEL_FADE_TIME    500
+#define EVIL_OR_ANGEL_ALPHA        105
+
 // Forward Declares
 
 struct LH3DAnim;
 class LH3DObject;
 
-// The ghost animations; the DEAD1 ones follow a villager that died playing M_P_DEAD1.
+// The ghost animations; the DEAD1 ones follow a villager that died playing
+// M_P_DEAD1.
 enum EVIL_OR_ANGEL_ANIM
 {
 	EVIL_OR_ANGEL_ANIM_ANGEL,

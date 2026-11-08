@@ -10,13 +10,22 @@
 #include "LHMatrix.h"        /* For struct LHMatrix */
 #include "LHPoint.h"         /* For struct LHPoint */
 
+#define TOUCH_MY_EDGE_LIFE         2000
+#define TOUCH_MY_EDGE_FADE_TIME    1000
+#define TOUCH_MY_EDGE_RING_SPACING 2.0f
+#define TOUCH_MY_EDGE_RING_FRAME   63
+#define TOUCH_MY_EDGE_GROWTH       10.0f
+#define TOUCH_MY_EDGE_MAX_SIZE     14.0f
+#define TOUCH_MY_EDGE_PRECISION    1.0f
+
 #define TOUCH_MY_EDGE_RINGS 7
 
 // Forward Declares
 
 struct LH3DSprite;
 
-// The rings rising from the edge of an influence circle where the hand crosses it.
+// The rings rising from the edge of an influence circle where the hand crosses
+// it.
 class TouchMyEdge
 {
 public:

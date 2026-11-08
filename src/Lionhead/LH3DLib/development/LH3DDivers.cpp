@@ -68,260 +68,6 @@
 #include "TouchMyEdge.h"        /* For class TouchMyEdge */
 #include "TemporaryShadow.h"    /* For class TemporaryShadow */
 
-#define LH3D_FEET_SHADOW_TEXTURE_SIZE         32
-#define LH3D_FEET_SHADOW_TEXTURE_FLAGS        0x44
-#define LH3D_FEET_SHADOW_TEXTURE_FORMAT       2
-#define LH3D_FEET_SHADOW_SIDE_SIZE            0.2f
-#define LH3D_FEET_SHADOW_LIGHT_SIZE           2.0f
-#define LH3D_FEET_SHADOW_SOLID_CORNERS        2
-#define LH3D_FEET_SHADOW_BACK_OFFSET          -0.02f
-#define LH3D_FEET_SHADOW_TEXTURE_PATH         ".\\Data\\Textures\\human_shadow.raw"
-#define LH3D_IN_BUILD_MAX_EDGES               1000
-#define LH3D_IN_BUILD_COLOR_SCALE             0xc0
-#define LHTGA_IMAGE_TYPE_TRUE_COLOR           2
-#define LHTGA_PIXEL_DEPTH                     32
-#define LHTGA_DESCRIPTOR_TOP_LEFT             0x20
-#define LHTGA_DESCRIPTOR                      (LHTGA_DESCRIPTOR_TOP_LEFT | 8)
-#define LHTGA_HD_SIZE                         256
-#define LHTGA_CHANNEL_MAX                     255
-#define LH3D_TOOLS_TEXT_SIZE                  0x400
-#define LH3D_TOOLS_FILE_SIZE                  0x100
-#define LH3D_TEXTURE_PACK_SIZE                256
-#define LH3D_TEXTURE_PACK_NO_OFFSETS          0xffffffff
-#define BITMAP_16B_LOW_RES_SIZE               128
-#define BITMAP_16B_RAW_SIZE                   256
-#define BITMAP_16B_555_HIGH                   0xffe0
-#define BITMAP_16B_555_BLUE                   0x1f
-#define LH3D_TOOLS_SCREEN_SIZE                50
-#define LH3D_TOOLS_SCREEN_DEPTH               16
-#define LH3D_TOOLS_EXTENSION_LENGTH           4
-#define LH3D_TOOLS_TEXTURE_FLAGS              1
-#define LH3D_TOOLS_TEXTURE_ALPHA              0x40
-#define LIGHT_LIKE_HAND_CELLS_PER_UNIT        0.1f
-#define ECLAIRAGE_PUBLIC_OFFSET               50.0f
-#define ECLAIRAGE_PUBLIC_PERIOD               30.0f
-#define ECLAIRAGE_PUBLIC_TYPE_LOW             1
-#define ECLAIRAGE_PUBLIC_LOW_HEIGHT           1.0f
-#define ECLAIRAGE_PUBLIC_HEIGHT               5.0f
-#define ECLAIRAGE_PUBLIC_GLOW                 2
-#define ECLAIRAGE_PUBLIC_SIZE_VARIATION       0.1f
-#define ECLAIRAGE_PUBLIC_FLAME_SIZE           1.0f
-#define ECLAIRAGE_PUBLIC_GLOW_SIZE            3.0f
-#define ECLAIRAGE_PUBLIC_COLOUR               0xfff38421
-#define ECLAIRAGE_PUBLIC_GLOW_FRAME           56
-#define ECLAIRAGE_PUBLIC_FRAMES               32
-#define ECLAIRAGE_PUBLIC_FRAME_STEP           10
-#define ECLAIRAGE_PUBLIC_FRAME_PERIOD         700
-#define ECLAIRAGE_PUBLIC_FLICKER              0.5f
-#define ECLAIRAGE_PUBLIC_LIGHT_SIZE           14
-#define ECLAIRAGE_PUBLIC_SPECULAR_SIZE        (ECLAIRAGE_PUBLIC_LIGHT_SIZE * ECLAIRAGE_PUBLIC_LIGHT_SIZE * 3)
-#define ECLAIRAGE_PUBLIC_DARKNESS             48.0f
-#define ECLAIRAGE_PUBLIC_SPECULAR_PATH        "Data\\Textures\\village_specular.raw"
-#define ECLAIRAGE_PUBLIC_DIFFUSE_PATH         "Data\\Textures\\village_diffuse.raw"
-#define SCRIPTED_SCREEN_SHOT_LOCK             (DDLOCK_WAIT | DDLOCK_READONLY | DDLOCK_NOSYSLOCK)
-#define SCRIPTED_SCREEN_SHOT_565_GREEN        0x7e0
-#define SCRIPTED_SCREEN_SHOT_FULL_WIDTH       400
-#define SCRIPTED_SCREEN_SHOT_FULL_HEIGHT      300
-#define SCRIPTED_SCREEN_SHOT_HALF_HEIGHT      128
-#define SCRIPTED_SCREEN_SHOT_HALF_BLEND       0x80
-#define SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH  128
-#define SCRIPTED_SCREEN_SHOT_THUMBNAIL_HEIGHT 64
-#define SCRIPTED_SCREEN_SHOT_THUMBNAILS       8
-#define CITADEL_TEXTURE_SIZE                  256
-#define CITADEL_TEXTURE_DESC_FLAGS       (DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH | DDSD_PIXELFORMAT | DDSD_MIPMAPCOUNT)
-#define CITADEL_TEXTURE_CAPS             (DDSCAPS_COMPLEX | DDSCAPS_SYSTEMMEMORY | DDSCAPS_TEXTURE | DDSCAPS_MIPMAP)
-#define CITADEL_TEXTURE_LOCK             (DDLOCK_WAIT | DDLOCK_WRITEONLY | DDLOCK_NOSYSLOCK)
-#define CITADEL_TEXTURE_PIXEL_FORMAT     1
-#define CITADEL_TEXTURE_555_OPAQUE       0x8000
-#define CITADEL_TEXTURE_PITCH            (CITADEL_TEXTURE_SIZE * 3)
-#define CITADEL_TEXTURE_BYTES            (CITADEL_TEXTURE_SIZE * CITADEL_TEXTURE_PITCH)
-#define SMOKY_STUFF_FRAME                16
-#define SMOKY_STUFF_BURST_SPEED          1.5f
-#define SMOKY_STUFF_MIN_SPEED            0.3f
-#define SMOKY_STUFF_BURST_LIFE           1.5f
-#define SMOKY_STUFF_LIFE                 3.0f
-#define SMOKY_STUFF_FADE_LIFE            0.7f
-#define SMOKY_STUFF_BURST_COLOUR         0x68503d
-#define SMOKY_STUFF_ALPHA                100.0f
-#define SMOKY_STUFF_COLOUR               0x808080
-#define SMOKY_STUFF_DEFAULT_COLOUR       0xffffffff
-#define SMOKY_STUFF_SPIN                 5.0f
-#define SMOKY_STUFF_FRAMES               15.0f
-#define GLOW_VILLAGER_COLOUR             0x80c18119
-#define GLOW_VILLAGER_HALO_FRAME         32
-#define GLOW_VILLAGER_HALO_COLOUR        0xffffff00
-#define GLOW_VILLAGER_HALO_SCALE         16.0f
-#define GLOW_VILLAGER_HALO_HEIGHT        2.5f
-#define GLOW_VILLAGER_FRAME_PERIOD       500
-#define GLOW_VILLAGER_FRAMES             15.0f
-#define LH3D_TOOLS_PAGE_SIZE             256
-#define LH3D_TOOLS_TILE_SIZE             32
-#define LH3D_TOOLS_PAGE_TILES            (LH3D_TOOLS_PAGE_SIZE / LH3D_TOOLS_TILE_SIZE)
-#define LH3D_TOOLS_RAW_EXTENSION_LENGTH  5
-#define LH3D_TOOLS_PACK_TEXTURE_PATH     "%s\\PAK%x.tga"
-#define FISH_MIN_SIZE                    0.8f
-#define FISH_MAX_SIZE                    1.2f
-#define FISH_SPRITE_FRAMES               15.5f
-#define FISH_FRAMES                      15.0f
-#define FISH_SPREAD                      5.0f
-#define FISH_DEPTH                       1.0f
-#define FISH_MIN_SPEED                   0.5f
-#define FISH_MAX_SPEED                   1.5f
-#define FISH_TURN_VARIATION              0.1f
-#define FISH_TURN_SPEED                  (TWO_PI / 10.0f)
-#define FISH_FEAR_SPEED                  4.0f
-#define FISH_MAX_STEP                    0.1f
-#define FISH_ANIMATION_SPEED             25.0f
-#define FISH_FRAME_MASK                  0xf
-#define FISH_FIRST_FRAME                 8
-#define FISH_RUSH_COLLIDE_RADIUS         2.0f
-#define FISH_RUSH_FEAR_RADIUS            8.0f
-#define FISH_RUSH_FEAR_TIME              2.0f
-#define FISH_RUSH_FADE_DIST              200.0f
-#define FISH_RUSH_FADE_RANGE             100.0f
-#define FISH_RUSH_DRAW_DIST              300.0f
-#define FISH_RUSH_TARGET_TIME            0.5f
-#define FISH_RUSH_ESCAPE_DIST            2.0f
-#define FISH_RUSH_SPLASH_GROWTH          2.0f
-#define FISH_RUSH_SPLASH_FRAME           48
-#define FISH_RUSH_SPLASH_COLOUR          0xffffffff
-#define FISH_RUSH_NET_BOB                0.5f
-#define FISH_RUSH_NET_SHRINK_SPEED       2.0f
-#define FISH_RUSH_NET_RADIUS             10.0f
-#define FISH_RUSH_NET_SPEED              2.0f
-#define FISH_RUSH_NET_MESH_PATH          "Data\\MISC\\Fishplot.l3d"
-#define SMOKY_STUFF_TYPE_BURST           1
-#define ROOTS_PILE_LIFE                  15000
-#define ROOTS_PILE_FADE_TIME             1000
-#define ROOTS_PILE_SIZE                  0.3f
-#define FALLING_ROOT_SIZE                0.15f
-#define FALLING_ROOT_GRAVITY             20.0f
-#define FALLING_ROOT_LIFE                20.0f
-#define FALLING_ROOT_FADE_START          18.0f
-#define FALLING_ROOT_FADE_TIME           2.0f
-#define FALLING_ROOT_ALPHA_REFERENCE     10
-#define INFLUENCE_CIRCLE_HIDDEN_COLOUR   RGBA_MAKE(0xff, 0xff, 0xff, 0)
-#define INFLUENCE_CIRCLE_SEGMENT_LENGTH  20.0f
-#define INFLUENCE_CIRCLE_MIN_SEGMENTS    8
-#define INFLUENCE_CIRCLE_MAX_SEGMENTS    250
-#define INFLUENCE_CIRCLE_ROW_VERTICES    3
-#define INFLUENCE_CIRCLE_SEGMENT_INDICES 24
-#define INFLUENCE_CIRCLE_U_LENGTH        -111.0f
-#define INFLUENCE_CIRCLE_V_RADIUS        60.0f
-#define INFLUENCE_CIRCLE_MAX_V           6
-#define INFLUENCE_CIRCLE_MIDDLE_HEIGHT   20.0f
-#define INFLUENCE_CIRCLE_TOP_HEIGHT      40.0f
-#define INFLUENCE_CIRCLE_MIDDLE_V        0.2f
-#define INFLUENCE_CIRCLE_TOP_V           0.4f
-#define INFLUENCE_CIRCLE_LOW_HEIGHT      100.0f
-#define INFLUENCE_CIRCLE_HIGH_HEIGHT     200.0f
-#define INFLUENCE_CIRCLE_HIGH_ALPHA      120
-#define INFLUENCE_CIRCLE_CITADEL_ALPHA   255
-#define INFLUENCE_CIRCLE_ANIM_PERIOD     10000
-#define INFLUENCE_CIRCLE_U_SPEED         10000.0f
-#define INFLUENCE_CIRCLE_V_SPEED         5000.0f
-#define TOUCH_MY_EDGE_LIFE               2000
-#define TOUCH_MY_EDGE_FADE_TIME          1000
-#define TOUCH_MY_EDGE_RING_SPACING       2.0f
-#define TOUCH_MY_EDGE_RING_FRAME         63
-#define TOUCH_MY_EDGE_GROWTH             10.0f
-#define TOUCH_MY_EDGE_MAX_SIZE           14.0f
-#define TOUCH_MY_EDGE_PRECISION          1.0f
-#define EUREKA_FRAME                     32
-#define EUREKA_LIFE                      6000.0f
-#define EUREKA_FADE_START                2500.0f
-#define EUREKA_FADE_TIME                 3500.0f
-#define EUREKA_RISE_SPEED                0.003f
-#define EUREKA_TEXT_HEIGHT               1.5f
-#define EUREKA_TEXT_OFFSET               7.5f
-#define EUREKA_TEXT_SIZE                 15.0f
-#define EUREKA_TEXT_DEPTH                4096.0f
-#define EUREKA_BULB_HEIGHT               2.6f
-#define EUREKA_BULB_SCALE                3.0f
-#define EUREKA_BLINKS                    6.0f
-
-#define CHEVEAUX_DE_FEU_RUN_UP           4000.0f
-#define CHEVEAUX_DE_FEU_STOP_SHORT       10.0f
-#define CHEVEAUX_DE_FEU_SPEED            450.0f
-#define CHEVEAUX_DE_FEU_MS_PER_SECOND    1000.0f
-#define CHEVEAUX_DE_FEU_SPACING          6.0f
-#define CHEVEAUX_DE_FEU_LAST_FLAME       5
-#define CHEVEAUX_DE_FEU_FLAME_FRAME      48
-#define CHEVEAUX_DE_FEU_STREAK_FRAME     49
-#define CHEVEAUX_DE_FEU_SMOKE_FRAME      50
-#define CHEVEAUX_DE_FEU_SIZE_RANGE       15
-#define CHEVEAUX_DE_FEU_MIN_SIZE         3.0f
-#define CHEVEAUX_DE_FEU_SMOKE_SCALE      2.0f
-#define CHEVEAUX_DE_FEU_FLAME_JITTER     2.0f
-#define CHEVEAUX_DE_FEU_GLOW             (CHEVEAUX_DE_FEU_SPRITES - 2)
-#define CHEVEAUX_DE_FEU_GLOW_ALPHA       0x28
-#define CHEVEAUX_DE_FEU_GLOW_SIZE        80.0f
-#define CHEVEAUX_DE_FEU_STREAK           (CHEVEAUX_DE_FEU_SPRITES - 1)
-#define CHEVEAUX_DE_FEU_STREAK_ALPHA     0x0e
-#define CHEVEAUX_DE_FEU_STREAK_SIZE      350.0f
-#define CHEVEAUX_DE_FEU_STREAK_ASPECT    0.05f
-#define CHEVEAUX_DE_FEU_STREAK_SPIN_TIME 5000.0f
-#define CHEVEAUX_DE_FEU_STREAK_SPIN      0.25f
-#define CHEVEAUX_DE_FEU_NO_Z_TEST_TIME   8237
-#define CHEVEAUX_DE_FEU_CAMERA_DISTANCE  150.0f
-#define CHEVEAUX_DE_FEU_CAMERA_HEIGHT    30.0f
-
-#define EVIL_OR_ANGEL_VISAGE       1
-#define EVIL_OR_ANGEL_ANGEL_CHANCE 50.0f
-#define EVIL_OR_ANGEL_END_MARGIN   110
-#define EVIL_OR_ANGEL_FADE_TIME    500
-#define EVIL_OR_ANGEL_ALPHA        105
-
-#define DANS_LES_NUAGES_MAX_TIME   500
-#define DANS_LES_NUAGES_DISTANCE   1.0f
-#define DANS_LES_NUAGES_SIZE       10.0f
-#define DANS_LES_NUAGES_FRAMES     16
-#define DANS_LES_NUAGES_FRAME_TIME 100.0f
-
-#define LH3D_TOOLS_VIEWER_SIZE  400
-#define LH3D_TOOLS_VIEWER_DEPTH 16
-
-#define DRAW_AND_CLIP_QUAD_VERTICES 4
-#define DRAW_AND_CLIP_EPSILON       0.00001f
-
-#define SUPER_VILLAGER_LOD              1
-#define SUPER_VILLAGER_TURN_SPEED       (1.25f * PI_F)
-#define SUPER_VILLAGER_BLEND_TIME       300
-#define SUPER_VILLAGER_SWIM_ANIM        "M_P_Swim2"
-#define NEW_COLLIDE_MIN_SIZE            1.0f
-#define NEW_COLLIDE_MAX_RATIO           1.4f
-#define HOW_MANY_PEOPLE_TIME            8000
-#define HOW_MANY_PEOPLE_FADE_OUT        7000
-#define HOW_MANY_PEOPLE_FADE_TIME       1000
-#define HOW_MANY_PEOPLE_ALL             -1
-#define HOW_MANY_PEOPLE_FRAME           57
-#define HOW_MANY_PEOPLE_ALPHA_REFERENCE 5
-#define HOW_MANY_PEOPLE_SIZE            0.9f
-#define HOW_MANY_PEOPLE_SPACING         1.3f
-#define HOW_MANY_PEOPLE_COLOUR_IN       0xfff8d235
-#define HOW_MANY_PEOPLE_COLOUR_OUT      0xff5c822f
-#define HOW_MANY_PEOPLE_COLOUR_ALL      0xff4995a9
-
-#define BACKGROUND_BOX_FVF                (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_SPECULAR | D3DFVF_TEX1)
-#define BACKGROUND_BOX_FINISH_PRIORITY    10000
-#define BACKGROUND_BOX_UV                 0.125f
-#define LH3D_DIVERS_WEATHER_TEXTURE_FLAGS 0x41
-#define LH3D_DIVERS_SUN_TEXTURE_FORMAT    1
-#define LH3D_DIVERS_WEATHER_TEXTURE_PATH  "Data\\Textures\\Weather.raw"
-#define LH3D_DIVERS_SUN_TEXTURE_PATH      "Data\\Textures\\Sun.raw"
-#define LH3D_WIDE_SCREEN_ASPECT           (9.0f / 16.0f)
-#define LH3D_JUST_FOOT_PRINT_TO_BLOCK     (1.0f / 160.0f)
-#define LH3D_WET_FEET_CORNER              0.3f
-#define LH3D_WET_FEET_SPRITE_SIZE         0.125f
-#define LH3D_WET_FEET_HEIGHT              0.15f
-#define LH3D_WET_FEET_FADE_PERIOD         200
-#define LH3D_WET_FEET_FADE_SPEED          25.0f
-#define LH3D_WET_FEET_FADE_TIME           1000.0f
-#define LH3D_WET_FEET_ALPHA               0x80
-#define LH3D_WET_FEET_APRIL_FOOL_TYPE     17
-#define LH3D_WET_FEET_APRIL_FOOL_DAY      1
-#define LH3D_WET_FEET_APRIL_FOOL_MONTH    3
-
 BackgroundBox BackgroundBox::g_list_boxes[BACKGROUND_BOX_MAX];
 
 Vertex3D BackgroundBox::g_list_vertex[BACKGROUND_BOX_VERTICES] = {
@@ -1147,9 +893,9 @@ LHTGA* LHTGA::GetTGA(void* source_pixels, long width, long height, long format, 
 			GetARGB(&alpha, &red, &green, &blue, source_pixels, pixelIndex, format);
 			if (premultiply)
 			{
-				red = red * alpha / LHTGA_CHANNEL_MAX;
-				green = green * alpha / LHTGA_CHANNEL_MAX;
-				blue = blue * alpha / LHTGA_CHANNEL_MAX;
+				red = red * alpha / LH3D_COLOR_CHANNEL_MAX;
+				green = green * alpha / LH3D_COLOR_CHANNEL_MAX;
+				blue = blue * alpha / LH3D_COLOR_CHANNEL_MAX;
 			}
 			uint8_t* outputPixel = (uint8_t*)(tga + 1) + pixelIndex * sizeof(uint32_t);
 			outputPixel[3] = alpha;
@@ -2079,7 +1825,7 @@ void __fastcall DrawLightLikeHand(float x, float z, uint8_t* light, long size, f
 				uint8_t*      nextColumn = light + size;
 				unsigned long top = LH3D_BLEND_COLOR(light[0], light[1], weightZ);
 				unsigned long bottom = LH3D_BLEND_COLOR(nextColumn[0], nextColumn[1], weightZ);
-				unsigned long darkness = LH3D_BLEND_COLOR(top, bottom, weightX) * alpha / 255;
+				unsigned long darkness = LH3D_BLEND_COLOR(top, bottom, weightX) * alpha / LH3D_COLOR_CHANNEL_MAX;
 				if (darkness <= (cell->darkness * maxDarkness >> 8))
 				{
 					darkness = cell->darkness;
@@ -2493,7 +2239,7 @@ void SmokyStuff::Process()
 
 void SmokyStuff::ProcessAll()
 {
-	g_dt = LH3DTech::GetGameTimeInc() / 1000.0f;
+	g_dt = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	SmokyStuff* smoke;
 	for (smoke = g_first; smoke != NULL; smoke = smoke->Next)
 	{
@@ -2683,7 +2429,7 @@ Fish::Fish(LHPoint* pos)
 bool32_t Fish::ComputePos(LHPoint* target)
 {
 	float scale = 1.0f;
-	float dt = LH3DTech::GetGameTimeInc() / 1000.0f;
+	float dt = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	if (Fear != 0.0f)
 	{
 		Fear -= dt;
@@ -2854,7 +2600,7 @@ long FishRush::Draw()
 		                                 (FISH_RUSH_FADE_RANGE * FISH_RUSH_FADE_RANGE)) *
 		                     255.0f);
 	}
-	TargetTime -= LH3DTech::GetGameTimeInc() / 1000.0f;
+	TargetTime -= LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	if (TargetTime < 0.0f)
 	{
 		LHPoint target(Random(-Radius, Radius), 0.0f, Random(-Radius, Radius));
@@ -3088,7 +2834,7 @@ void SuperVillager::Draw()
 	else
 	{
 		float headingDelta = angle_correct(objectHeading - Heading);
-		float elapsedSeconds = LH3DTech::GetGameTimeInc() / 1000.0f;
+		float elapsedSeconds = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 		float turnStep = SUPER_VILLAGER_TURN_SPEED * elapsedSeconds;
 		if (turnStep >= fabs(headingDelta))
 		{
@@ -3333,7 +3079,7 @@ FallingRoot* FallingRoot::g_first = NULL;
 
 void FallingRoot::Update()
 {
-	Time += LH3DTech::GetGameTimeInc() / 1000.0f;
+	Time += LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	if (Object->matrix._42 > GroundHeight)
 	{
 		Object->matrix._42 = StartHeight - Time * Time * FALLING_ROOT_GRAVITY;
@@ -3810,7 +3556,7 @@ void TouchMyEdge::PostDraw()
 	{
 		fade = 1.0f;
 	}
-	float    growth = LH3DTech::GetGameTimeInc() / 1000.0f;
+	float    growth = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	LHMatrix matrix = Matrix;
 	matrix.PostMultiply(LH3DTech::g_world_to_clipping);
 	growth *= TOUCH_MY_EDGE_GROWTH;
@@ -4116,7 +3862,7 @@ void CheveauxDeFeu::AddDrawing()
 
 void CheveauxDeFeu::ComputePos(LHPoint* pos)
 {
-	float distance = CHEVEAUX_DE_FEU_SPEED * Time / CHEVEAUX_DE_FEU_MS_PER_SECOND;
+	float distance = CHEVEAUX_DE_FEU_SPEED * Time / LH3D_MILLISECONDS_PER_SECOND;
 	if (distance > CHEVEAUX_DE_FEU_RUN_UP - CHEVEAUX_DE_FEU_STOP_SHORT)
 	{
 		Arrived = true;
@@ -4817,7 +4563,7 @@ void FishRush::PaulNet::Draw()
 
 void FishRush::PaulNet::PreDraw()
 {
-	float dt = LH3DTech::GetGameTimeInc() / 1000.0f;
+	float dt = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	if (Caught && Size != 0.0f)
 	{
 		Size -= dt * FISH_RUSH_NET_SHRINK_SPEED;

@@ -7,6 +7,12 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+#define DANS_LES_NUAGES_MAX_TIME   500
+#define DANS_LES_NUAGES_DISTANCE   1.0f
+#define DANS_LES_NUAGES_SIZE       10.0f
+#define DANS_LES_NUAGES_FRAMES     16
+#define DANS_LES_NUAGES_FRAME_TIME 100.0f
+
 #define DANS_LES_NUAGES_SPRITES 2
 
 // Forward Declares

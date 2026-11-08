@@ -4,6 +4,15 @@
 #include "LH3DColor.h" /* For struct LH3DColor */
 #include "LHPoint.h"   /* For struct LHPoint */
 
+#define LH3D_FEET_SHADOW_TEXTURE_SIZE   32
+#define LH3D_FEET_SHADOW_TEXTURE_FLAGS  0x44
+#define LH3D_FEET_SHADOW_TEXTURE_FORMAT 2
+#define LH3D_FEET_SHADOW_SIDE_SIZE      0.2f
+#define LH3D_FEET_SHADOW_LIGHT_SIZE     2.0f
+#define LH3D_FEET_SHADOW_SOLID_CORNERS  2
+#define LH3D_FEET_SHADOW_BACK_OFFSET    -0.02f
+#define LH3D_FEET_SHADOW_TEXTURE_PATH   ".\\Data\\Textures\\human_shadow.raw"
+
 // Forward Declares
 
 struct ExtraBone;

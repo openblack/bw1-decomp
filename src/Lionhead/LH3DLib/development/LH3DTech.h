@@ -19,7 +19,8 @@ struct LHMatrix;
 struct LHPoint;
 struct LHTimer;
 
-#define LH3D_MAX_POINTS 0x2000
+#define LH3D_MILLISECONDS_PER_SECOND 1000.0f
+#define LH3D_MAX_POINTS              0x2000
 
 enum LH3D_PROJECT_RESULT
 {
@@ -47,7 +48,8 @@ struct InfoTransform
 	} InvHalfRes;
 	float InvHalfTanFovY;
 	float InvHalfTanFovX;
-	// The directions of the right and top edges of the view frustum, in camera space.
+	// The directions of the right and top edges of the view frustum, in camera
+	// space.
 	struct
 	{
 		float x, y, z;
@@ -63,7 +65,8 @@ struct InfoTransform
 	struct Point2D InvHalfRes;
 	float          InvHalfTanFovY;
 	float          InvHalfTanFovX;
-	// The directions of the right and top edges of the view frustum, in camera space.
+	// The directions of the right and top edges of the view frustum, in camera
+	// space.
 	LHPoint FrustumEdgeX; /* 0x28 */
 	LHPoint FrustumEdgeY; /* 0x34 */
 };
@@ -73,8 +76,8 @@ static_assert(sizeof(InfoTransform) == 0x40, "Data type is of wrong size");
 class LH3DTech
 {
 public:
-	// One bit per frustum plane in the cached clip flags. ClipTriangle clips against the plane it is given and
-	// carries on with the next ones.
+	// One bit per frustum plane in the cached clip flags. ClipTriangle clips
+	// against the plane it is given and carries on with the next ones.
 	enum ClipCode
 	{
 		CLIP_CODE_NONE = 0x0,
@@ -87,7 +90,8 @@ public:
 		CLIP_CODE_PLANE = 0x800,
 	};
 
-	// The quarter of the ground plane the camera looks into, from the camera to its focus.
+	// The quarter of the ground plane the camera looks into, from the camera to
+	// its focus.
 	enum VIEW_CONFIGURATION
 	{
 		VIEW_CONFIGURATION_PLUS_X_PLUS_Z = 0,
@@ -296,7 +300,8 @@ public:
 #endif
 };
 
-// What the camera takes from grosse_merde_pos and grosse_merde_foc instead of what it is given.
+// What the camera takes from grosse_merde_pos and grosse_merde_foc instead of
+// what it is given.
 enum GROSSE_MERDE
 {
 	GROSSE_MERDE_OFF = 0,
@@ -311,8 +316,9 @@ extern LHPoint grosse_merde_foc;
 // BW1W120 00ea1b58 BW1M119 012d3e48 (LHCombined Release)
 extern LHPoint grosse_merde_pos;
 
-// Shared by several units, so extern: static gives each unit a zeroed copy; LH3DTech.cpp inits it before g_sun_light.
-// BW1W120 00ea1c88 BW1M119 012dbfbc (LHCombined Release)
+// Shared by several units, so extern: static gives each unit a zeroed copy;
+// LH3DTech.cpp inits it before g_sun_light. BW1W120 00ea1c88 BW1M119 012dbfbc
+// (LHCombined Release)
 extern LHPoint DEFAULT_SUN;
 
 // BW1W120 00ea1d88 BW1M119 012dc178 (LHCombined Release)
