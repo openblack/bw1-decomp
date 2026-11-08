@@ -2012,13 +2012,13 @@ void __fastcall DrawLightLikeHand(float x, float z, uint8_t* light, long size, f
 	{
 		return;
 	}
-	long          clippedWidth = size;
-	long          clippedDepth = size;
-	float         gridX = x * LIGHT_LIKE_HAND_CELLS_PER_UNIT;
-	float         gridZ = z * LIGHT_LIKE_HAND_CELLS_PER_UNIT;
-	long          cellX = (long)gridX;
-	long          cellZ = (long)gridZ;
-	unsigned long weightZ;
+	long    clippedWidth = size;
+	long    clippedDepth = size;
+	float   gridX = x * LIGHT_LIKE_HAND_CELLS_PER_UNIT;
+	float   gridZ = z * LIGHT_LIKE_HAND_CELLS_PER_UNIT;
+	long    cellX = (long)gridX;
+	long    cellZ = (long)gridZ;
+	uint8_t weightZ;
 	if (gridZ >= 0.0f)
 	{
 		weightZ = (long)(LH3D_COLOR_CHANNEL_MAX - (gridZ - cellZ) * LH3D_COLOR_CHANNEL_MAX);
@@ -2028,7 +2028,7 @@ void __fastcall DrawLightLikeHand(float x, float z, uint8_t* light, long size, f
 		weightZ = (long)((cellZ - gridZ) * LH3D_COLOR_CHANNEL_MAX);
 		cellZ--;
 	}
-	unsigned long weightX;
+	uint8_t weightX;
 	if (gridX >= 0.0f)
 	{
 		weightX = (long)(LH3D_COLOR_CHANNEL_MAX - (gridX - cellX) * LH3D_COLOR_CHANNEL_MAX);
@@ -2038,8 +2038,6 @@ void __fastcall DrawLightLikeHand(float x, float z, uint8_t* light, long size, f
 		weightX = (long)((cellX - gridX) * LH3D_COLOR_CHANNEL_MAX);
 		cellX--;
 	}
-	weightX &= 0xff;
-	weightZ &= 0xff;
 	if (cellX > LAND_MAP_SIZE - size)
 	{
 		if (cellX >= LAND_MAP_SIZE)
