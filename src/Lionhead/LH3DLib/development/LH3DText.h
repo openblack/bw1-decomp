@@ -22,6 +22,7 @@ enum TEXTJUSTIFY
 
 struct LH3DColor;
 struct LH3DMaterial;
+struct LH3DTexture;
 struct LHMatrix;
 
 struct FontFile
@@ -30,6 +31,17 @@ struct FontFile
 
 	// BW1W120 008303c0 BW1M119 010c6630 (LHCombined Release)
 	bool ReadFromFile(const char* filename);
+	// BW1W120 inlined BW1M119 010c6590 (LHCombined Release)
+	void Close();
+};
+
+enum GAME_FONT
+{
+	GAME_FONT_DEFAULT,
+	GAME_FONT_GOOD,
+	GAME_FONT_NEUTRAL,
+	GAME_FONT_EVIL,
+	GAME_FONT_LAST
 };
 
 #define FONT_CACHE_ENTRIES      2048
@@ -94,6 +106,8 @@ struct FontCache
 {
 	// BW1W120 00eccd18 BW1M119 01332248 (LHCombined Release)
 	static uint8_t cachetime;
+	// BW1W120 00ecb898 BW1M119 013326ec (LHCombined Release)
+	static FontFile font[GAME_FONT_LAST];
 	// BW1W120 00ecce20 BW1M119 01332b5c (LHCombined Release)
 	static CacheEntry cache[FONT_CACHE_ENTRIES];
 	// BW1W120 00ed0e20 BW1M119 0133224c (LHCombined Release)
@@ -136,15 +150,10 @@ struct FontCache
 	CacheEntry* AddToCache(char16_t param_1, uint8_t param_2);
 	// BW1W120 00832bb0
 	CacheEntry* Find(char16_t param_1, uint8_t param_2);
-};
-
-enum GAME_FONT
-{
-	GAME_FONT_DEFAULT,
-	GAME_FONT_GOOD,
-	GAME_FONT_NEUTRAL,
-	GAME_FONT_EVIL,
-	GAME_FONT_LAST
+	// BW1W120 inlined BW1M119 010c2a70 (LHCombined Release)
+	void ClearInCache(uint8_t font, uint16_t code);
+	// BW1W120 inlined BW1M119 010c2ad0 (LHCombined Release)
+	void SetInCache(uint8_t font, uint16_t code);
 };
 
 struct GatheringText
@@ -153,7 +162,11 @@ struct GatheringText
 	static GatheringText* gamefont[GAME_FONT_LAST];
 	// BW1W120 00ed92dc BW1M119 01332234 (LHCombined Release)
 	static LH3DMaterial* bubmat;
-	uint8_t               field_0x0;
+	// BW1W120 00ed92e0 BW1M119 01332230 (LHCombined Release)
+	static LH3DTexture* bubtex;
+	// BW1W120 00ed92e4 BW1M119 0133222c (LHCombined Release)
+	static int numgt;
+	uint8_t    field_0x0;
 
 	// Static methods
 

@@ -214,8 +214,8 @@ void VillagerName::Draw()
 	Scale = Scale > 0.0f ? min(Scale, 1.0f) : 0.0f;
 	int alpha = (int)(Scale * 120.0f);
 	float z = AdjustBubbleZForPitch(Depth);
-	GatheringText::DrawBubble(Left, Top, Right, Bottom, z, (Bottom - Top) * 0.25f, 0.0f, 0, 0xff000000, 0, alpha,
-	                          alpha);
+	GatheringText::DrawBubble(Left, Top, Right, Bottom, z, (Bottom - Top) * 0.25f, 0.0f, false, 0xff000000, false,
+	                          alpha, alpha);
 	SetupThing::DrawAlpha = alpha;
 	if (GatheringText::bubmat)
 	{
