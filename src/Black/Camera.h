@@ -73,7 +73,9 @@ public:
 	// BW1W120 00442860 BW1M119 011a2d80
 	static float GetHeadingFromPoints(const LHPoint& origin, const LHPoint& focus);
 	// BW1W120 004428d0 BW1M119 01080170
-	static void GetHeadingAndPitchFromPoints(const LHPoint& origin, const LHPoint& heading, float* pitch, float* yaw);
+	static void GetHeadingAndPitchFromPoints(const LHPoint& origin, const LHPoint& focus, float* heading, float* pitch);
+	// BW1W120 00442c20 BW1M119 01099720
+	static bool32_t TranslatePointToScreen(float* x, float* y, LHPoint* point);
 
 	// Constructors
 

@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_GJ_UTILS_INCLUDED_H
 #define BW1_DECOMP_GJ_UTILS_INCLUDED_H
 
+#include <chlasm/Enum.h> /* For enum GESTURE_TYPE */
+
 // Forward Declares
 
 struct LH3DMaterial;
@@ -95,6 +97,8 @@ public:
 	static LH3DMaterial* GetLightSheetMaterial();
 	// BW1W120 0057d590 BW1M119 012c39a0
 	static LH3DMaterial* GetHighlightMaterial();
+	// BW1W120 0057d5d0 BW1M119 012c38a0
+	static LH3DMaterial* GetGestureMaterialAndOffset(GESTURE_TYPE type, long* offset);
 
 	enum FROZ_MAT_TYPE
 	{

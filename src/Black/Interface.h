@@ -170,6 +170,8 @@ public:
 	bool32_t IsLastRClickedPosNear(const MapCoords& pos, float distance) const;
 	// BW1W120 005d56c0 BW1M119 0107d9c0
 	void SendObjectDrawCollision(Object* object, float distance, LH3DObject* lh3d_object);
+	// BW1W120 005d5a30 BW1M119 0136d240
+	bool32_t SendBubbleCollision(Bubble* bubble, float distance);
 	// BW1W120 005ced10 BW1M119 013629e0
 	Object* GetInteractObject();
 	// BW1W120 005da6f0 BW1M119 01371930

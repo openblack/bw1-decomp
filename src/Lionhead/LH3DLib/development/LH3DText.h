@@ -6,6 +6,8 @@
 #include <string.h> /* For memset */
 #include <uchar.h>  /* For char16_t */
 
+#include <re_common.h> /* For bool32_t */
+
 enum TEXTJUSTIFY
 {
 	TEXTJUSTIFY_LEFT = 0x0,
@@ -179,9 +181,9 @@ struct GatheringText
 	// BW1W120 00831550 BW1M119 010c5080 (LHCombined Release)
 	static float GetFrac(float value, float lower, float upper);
 	// BW1W120 008315b0 BW1M119 010c4970 (LHCombined Release)
-	float DrawTextA(char16_t* text, float param_2, float param_3, float param_4, float param_5, float param_6,
-	                float param_7, float param_8, float param_9, float param_10, LH3DColor* p_color, int param_12,
-	                int param_13, int param_14);
+	float DrawTextA(char16_t* text, float x_min, float y_min, float fade_top, float x_max, float fade_bottom,
+	                float y_max, float y, float z, float size, LH3DColor* p_color, bool32_t centred, bool32_t draw,
+	                bool32_t no_z_test);
 	// BW1W120 008319e0 BW1M119 010c43c0 (LHCombined Release)
 	void DrawChar2Texture(CacheEntry* param_1, uint16_t* param_2, int param_3, float param_4, float param_5,
 	                      float param_6, float param_7, uint16_t* param_8);
@@ -199,8 +201,9 @@ struct GatheringText
 	void DrawTextRaw(const char16_t* text, int param_2, float x, float y, float param_5, float param_6,
 	                 LH3DColor* param_7, int param_8, LH3DColor* param_9, float param_10, float param_11);
 	// BW1W120 008334c0 BW1M119 010c1fd0 (LHCombined Release)
-	void DrawBubble(float param_1, float param_2, float param_3, float param_4, float param_5, float param_6,
-	                float param_7, int param_8, uint32_t param_9, int param_10, int param_11, int param_12);
+	static void DrawBubble(float left, float top, float right, float bottom, float z, float corner_size, float tail_x,
+	                       bool32_t tail_on_right, unsigned long colour, bool32_t draw_tail, int alpha_top,
+	                       int alpha_bottom);
 };
 
 // Free functions at the head of this TU (originally declared in Utils.h).

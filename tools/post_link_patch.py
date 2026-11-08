@@ -775,6 +775,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
     (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
     (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...
+    (0x00575DBB, call_rel32(0x004017F9)),  # GatheringText
+    (0x005766DA, call_indirect(0x008A9034)),  # GatheringText: __imp__DirectInputCreateA@4
     (0x00578B0A, call_indirect(0x008A903C)),  # GestureSystem: __imp__DirectXSetupGetVersion
     (0x00578E1A, call_indirect(0x008A97B8)),  # GestureSystemData
     (0x00578E9A, call_indirect(0x008A9490)),  # GestureSystemData
@@ -1446,6 +1448,14 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00573A61, copy_run(0x005739B3)),  # GameThing
     (0x00573B27, copy_run(0x00573A61)),  # GameThing
     (0x00573BE5, copy_run(0x00573B27)),  # GameThing
+    (0x0057938B, call_rel32(0x00403C49)),  # GatheringText
+    (0x005793B3, jmp_run(0x0057938B)),  # GatheringText
+    (0x005793E7, copy_run(0x005793B3)),  # GatheringText
+    (0x00579CAA, call_filler(0x004034F9, 0xC3)),  # GatheringText
+    (0x00579D95, jmp_run(0x00579CAA)),  # GatheringText
+    (0x0057A455, jmp_run(0x00579D95)),  # GatheringText
+    (0x0057A4E9, copy_run(0x0057A455)),  # GatheringText
+    (0x0057A9B8, jmp_run(0x0057A4E9)),  # GatheringText
     (0x0057BB39, jmp_run(0x0057B8F9)),  # GestureSystem
     (0x0057BB89, copy_run(0x0057BB39)),  # GestureSystem
     (0x0057BBB9, jmp_run(0x0057BB89)),  # GestureSystem

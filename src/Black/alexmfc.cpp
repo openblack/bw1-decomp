@@ -2926,9 +2926,15 @@ void SetupThing::DrawLine(int x_start, int y_start, int x_end, int y_end, unsign
 	QuadVertices[0].rhw = QuadVertices[1].rhw = QuadVertices[2].rhw = QuadVertices[3].rhw = 1.0f;
 }
 
+#ifdef VERSION_BW1WCI
+void SetupThing::DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
+                         LH3DMaterial* material, LH3DColor* color, bool32_t adjust, int clip_y_start, int clip_y_end,
+                         bool depth_test, float distance, bool32_t use_draw_alpha)
+#else
 void SetupThing::DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
                          LH3DMaterial* material, LH3DColor* color, bool32_t adjust, int clip_y_start, int clip_y_end,
                          bool depth_test, float distance)
+#endif
 {
 	if (adjust)
 	{
@@ -2940,7 +2946,12 @@ void SetupThing::DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min
 	unsigned long vertexColor = LH3D_COLOR_WHITE;
 	if (color != NULL)
 		vertexColor = color->GetColor();
+#ifdef VERSION_BW1WCI
+	if (use_draw_alpha)
+		vertexColor = (vertexColor & LH3D_COLOR_RGB_MASK) + (DrawAlpha << 24);
+#else
 	vertexColor = (vertexColor & LH3D_COLOR_RGB_MASK) + (DrawAlpha << 24);
+#endif
 	if (y_min > y_max)
 	{
 		int temp = y_min;

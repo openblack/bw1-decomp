@@ -1167,8 +1167,8 @@ Black/GatheringText.cpp:
 	.text       start:0x00575DA0 end:0x00577420
 	.rdata      start:0x009000CC end:0x009000E8
 	.CRT$XCU    start:0x009C69C0 end:0x009C69D0 align:4
-	.data       start:0x00BEF204 end:0x00BEF214
-	.bss        start:0x00D06444 end:0x00D06454
+	.data       start:0x00BEF204 end:0x00BEF212
+	.bss        start:0x00D06444 end:0x00D06450
 
 Black/GenerateCreatureHTML.cpp:
 	.text       start:0x00577420 end:0x00578540

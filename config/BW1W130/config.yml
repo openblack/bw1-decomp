@@ -39,6 +39,10 @@ block_relocations:
 # ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
   - source: 0x0070E9D2
   - source: 0x0070ED2D
+# Bubble::Draw's 0xffffff colour mask reads as an address inside NewCols, and Bubble::UpdateAndDraw's 0x7f7f7f
+# mask as one inside LHDraw::ScaledSprite16.
+  - source: 0x00579E04
+  - source: 0x0057A721
 # LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
   - source: 0x00811157
   - source: 0x00811C98
