@@ -2485,6 +2485,19 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006F10EA, copy_run(0x006F1096)),  # Script
     (0x006F1134, jmp_run(0x006F10EA)),  # Script
     (0x006F1184, copy_run(0x006F1134)),  # Script
+    (0x006F3C7B, jmp_run(0x006F3B27)),  # ScriptContainer
+    (0x006F3CA3, copy_run(0x006F3C7B)),  # ScriptContainer
+    (0x006F3DC8, copy_run(0x006F3CA3)),  # ScriptContainer
+    (0x006F40F5, jmp_run(0x006F3DC8)),  # ScriptContainer
+    (0x006F42C8, copy_run(0x006F40F5)),  # ScriptContainer
+    (0x006F43D5, jmp_run(0x006F42C8)),  # ScriptContainer
+    (0x006F45BB, jmp_run(0x006F43D5)),  # ScriptContainer
+    (0x006F4647, copy_run(0x006F45BB)),  # ScriptContainer
+    (0x006F4839, jmp_run(0x006F4647)),  # ScriptContainer
+    (0x006F4A54, jmp_run(0x006F4839)),  # ScriptContainer
+    (0x006F4C05, copy_run(0x006F4A54)),  # ScriptContainer
+    (0x006F4D17, jmp_run(0x006F4C05)),  # ScriptContainer
+    (0x006F4E8B, copy_run(0x006F4D17)),  # ScriptContainer
     (0x006F516B, copy_run(0x006F4F5E)),  # ScriptControl
     (0x006F521A, jmp_run(0x006F516B)),  # ScriptControl
     (0x006F52A2, copy_run(0x006F521A)),  # ScriptControl

@@ -1370,7 +1370,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ScaffoldInfo.cpp"),
             GameCodeObject(Matching, "Black/Script.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptCamera.cpp"),
-            GameCodeObject(NonMatching, "Black/ScriptContainer.cpp"),
+            GameCodeObject(Matching, "Black/ScriptContainer.cpp"),
             GameCodeObject(Matching, "Black/ScriptControl.cpp"),
             GameCodeObject(Matching, "Black/ScriptCreateOrCall.cpp"),
             GameCodeObject(Matching, "Black/ScriptCreature.cpp"),

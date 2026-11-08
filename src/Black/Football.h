@@ -182,6 +182,11 @@ public:
 	uint32_t GetNumberOfPeopleInHomeTeam() const { return HomeTeam.count; }
 	// BW1W120 inlined BW1M119 014f8870
 	uint32_t GetNumberOfPeopleInAwayTeam() const { return AwayTeam.count; }
+	// BW1W120 inlined BW1M119 014e5230
+	uint32_t GetNumberOfPeoplePlayingFootball() const
+	{
+		return GetNumberOfPeopleInHomeTeam() + GetNumberOfPeopleInAwayTeam();
+	}
 	// BW1W120 005326e0 BW1M119 012be9e0
 	bool32_t RemoveVillagerFromMexicanWave(Villager* villager);
 	// BW1W120 00532eb0 BW1M119 012bdc40
