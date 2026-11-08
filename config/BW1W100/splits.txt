@@ -1984,9 +1984,11 @@ Black/Script.cpp:
 	.bss        start:0x00CB68A0 end:0x00CB69C4
 
 Black/ScriptCamera.cpp:
-	.text       start:0x00686F80 end:0x00689850
-	.CRT$XCU    start:0x008F6F9C end:0x008F6FA4 align:4
-	.data       start:0x00B2F6C8 end:0x00B2F770
+	.text       start:0x00686F80 end:0x00688D30
+	.rdata      start:0x0087930C end:0x00879310
+	.CRT$XCU    start:0x008F6F9C end:0x008F6FA0 align:4
+	.data       start:0x00B2F540 end:0x00B2F71E
+	.bss        start:0x00CB69C4 end:0x00CB69C8
 
 Black/ScriptContainer.cpp:
 	.text       start:0x00689850 end:0x0068AD10

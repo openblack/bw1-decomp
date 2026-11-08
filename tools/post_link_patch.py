@@ -2485,6 +2485,39 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006F10EA, copy_run(0x006F1096)),  # Script
     (0x006F1134, jmp_run(0x006F10EA)),  # Script
     (0x006F1184, copy_run(0x006F1134)),  # Script
+    (0x006F11DB, jmp_run(0x006F1184)),  # ScriptCamera
+    (0x006F128B, copy_run(0x006F11DB)),  # ScriptCamera
+    (0x006F1382, copy_run(0x006F128B)),  # ScriptCamera
+    (0x006F17D5, jmp_run(0x006F1382)),  # ScriptCamera
+    (0x006F1824, copy_run(0x006F17D5)),  # ScriptCamera
+    (0x006F1898, jmp_run(0x006F1824)),  # ScriptCamera
+    (0x006F18DB, jmp_run(0x006F1898)),  # ScriptCamera
+    (0x006F1992, jmp_run(0x006F18DB)),  # ScriptCamera
+    (0x006F1AEA, copy_run(0x006F1992)),  # ScriptCamera
+    (0x006F1B59, jmp_run(0x006F1AEA)),  # ScriptCamera
+    (0x006F1BC9, copy_run(0x006F1B59)),  # ScriptCamera
+    (0x006F1C5B, jmp_run(0x006F1BC9)),  # ScriptCamera
+    (0x006F1CFA, jmp_run(0x006F1C5B)),  # ScriptCamera
+    (0x006F1D4A, copy_run(0x006F1CFA)),  # ScriptCamera
+    (0x006F1FFA, jmp_run(0x006F1D4A)),  # ScriptCamera
+    (0x006F20D5, jmp_run(0x006F1FFA)),  # ScriptCamera
+    (0x006F2173, jmp_run(0x006F20D5)),  # ScriptCamera
+    (0x006F2277, jmp_run(0x006F2173)),  # ScriptCamera
+    (0x006F2428, copy_run(0x006F2277)),  # ScriptCamera
+    (0x006F24E1, copy_run(0x006F2428)),  # ScriptCamera
+    (0x006F25B3, jmp_run(0x006F24E1)),  # ScriptCamera
+    (0x006F2683, copy_run(0x006F25B3)),  # ScriptCamera
+    (0x006F2757, jmp_run(0x006F2683)),  # ScriptCamera
+    (0x006F2811, jmp_run(0x006F2757)),  # ScriptCamera
+    (0x006F28D1, jmp_run(0x006F2811)),  # ScriptCamera
+    (0x006F29D6, jmp_run(0x006F28D1)),  # ScriptCamera
+    (0x006F2A85, copy_run(0x006F29D6)),  # ScriptCamera
+    (0x006F2BC7, copy_run(0x006F2A85)),  # ScriptCamera
+    (0x006F2CAB, copy_run(0x006F2BC7)),  # ScriptCamera
+    (0x006F2D9B, jmp_run(0x006F2CAB)),  # ScriptCamera
+    (0x006F2F18, jmp_run(0x006F2D9B)),  # ScriptCamera
+    (0x006F2F88, copy_run(0x006F2F18)),  # ScriptCamera
+    (0x006F2FF8, jmp_run(0x006F2F88)),  # ScriptCamera
     (0x006F3C7B, jmp_run(0x006F3B27)),  # ScriptContainer
     (0x006F3CA3, copy_run(0x006F3C7B)),  # ScriptContainer
     (0x006F3DC8, copy_run(0x006F3CA3)),  # ScriptContainer

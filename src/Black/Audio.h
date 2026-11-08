@@ -341,6 +341,8 @@ public:
 	void StopPlayingSoundEffect(uint32_t sample, uint32_t object, AUDIO_SFX_BANK_TYPE type) const;
 	// BW1W120 0042a330 BW1M119 011877f0
 	void ReleaseLoopOnSoundEffect(Base* param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a5f0 BW1M119 011873a0
+	void SetGameSFX(bool32_t enabled);
 	// BW1W120 inlined BW1M119 011878b0
 	LH_AudioBank* GetBank(AUDIO_SFX_BANK_TYPE type) const { return AudioBanks[type]; }
 };
