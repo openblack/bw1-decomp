@@ -533,10 +533,10 @@ void InputReset()
 	GGame::g_game->GetKeyBuffer()->BufferedKeys = 0;
 	SetupThing::RightClickCount = 0;
 	SetupThing::LeftClickCount = 0;
-	SetupThing::AnyDoubleClicked = 0;
-	SetupThing::DoubleClicked = 0;
-	SetupThing::RightClicked = 0;
-	SetupThing::MouseCaptured = 0;
+	SetupThing::AnyDoubleClicked = false;
+	SetupThing::DoubleClicked = false;
+	SetupThing::RightClicked = false;
+	SetupThing::MouseCaptured = false;
 }
 
 void DoLogo()

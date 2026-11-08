@@ -62,9 +62,9 @@ bool32_t       SetupThing::IMEActive;
 int            SetupThing::LeftClickCount;
 int            SetupThing::RightClickCount;
 bool32_t       SetupThing::MouseCaptured;
-int            SetupThing::DoubleClicked;
-int            SetupThing::RightClicked;
-int            SetupThing::AnyDoubleClicked;
+bool32_t       SetupThing::DoubleClicked;
+bool32_t       SetupThing::RightClicked;
+bool32_t       SetupThing::AnyDoubleClicked;
 bool           SetupThing::Dragging;
 int            SetupThing::MouseDownX;
 int            SetupThing::MouseDownY;
@@ -439,7 +439,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 			}
 			if (!GGame::g_game->Initialised)
 				LHSys::TheSystem.mouse.ButtonPressed &= ~0x10;
-			SetupThing::DoubleClicked = 0;
+			SetupThing::DoubleClicked = false;
 		}
 
 		if (SetupThing::LeftClickCount)

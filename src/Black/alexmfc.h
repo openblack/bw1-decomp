@@ -203,12 +203,12 @@ struct SetupThing
 	static bool32_t MouseCaptured;
 	// Set by CMouse::ProcessButtons on a double click (LHMouse button events 0x10 and 0x20).
 	// BW1W120 00c4cd10
-	static int DoubleClicked;
+	static bool32_t DoubleClicked;
 	// BW1W120 00c4cd14
-	static int RightClicked;
+	static bool32_t RightClicked;
 	// Set with DoubleClicked by either button's double click.
 	// BW1W120 00c4cd18
-	static int AnyDoubleClicked;
+	static bool32_t AnyDoubleClicked;
 	// Set while a pressed control is being dragged with the left button held.
 	// BW1W120 00c4ccc8
 	static bool Dragging;
