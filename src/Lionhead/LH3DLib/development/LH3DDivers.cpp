@@ -3090,7 +3090,8 @@ void SuperVillager::Draw()
 	else
 	{
 		float headingDelta = angle_correct(objectHeading - Heading);
-		float turnStep = SUPER_VILLAGER_TURN_SPEED * (LH3DTech::GetGameTimeInc() / 1000.0f);
+		float elapsedSeconds = LH3DTech::GetGameTimeInc() / 1000.0f;
+		float turnStep = SUPER_VILLAGER_TURN_SPEED * elapsedSeconds;
 		if (turnStep >= fabs(headingDelta))
 		{
 			Heading = objectHeading;
