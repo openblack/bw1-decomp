@@ -582,44 +582,44 @@ void LH3DWetFeet::Draw()
 	}
 	float fade = g_wet_feet_time * LH3D_WET_FEET_FADE_SPEED / LH3D_WET_FEET_FADE_TIME;
 	g_wet_feet_time = 0;
-	int        dead = 0;
+	int        expiredFeet = 0;
 	LH3DColor* color = g_list_color;
-	for (int i = 0; i < g_feet_count; i++, color += LH3D_WET_FEET_VERTICES_PER_FOOT)
+	for (int fadeFoot = 0; fadeFoot < g_feet_count; fadeFoot++, color += LH3D_WET_FEET_VERTICES_PER_FOOT)
 	{
 		float alpha = color[0].a - fade;
 		if (alpha <= 0.0f)
 		{
-			dead++;
+			expiredFeet++;
 			alpha = 0.0f;
 		}
 		color[0].a = color[1].a = color[2].a = color[3].a = (uint8_t)alpha;
 	}
-	int foot = 0;
-	while (dead != 0)
+	int footIndex = 0;
+	while (expiredFeet != 0)
 	{
-		if (g_list_color[foot].a == 0)
+		if (g_list_color[footIndex].a == 0)
 		{
-			if (foot != g_feet_count - 1)
+			if (footIndex != g_feet_count - 1)
 			{
-				for (int i = foot; i < g_feet_count - 1; i++)
+				for (int copyFoot = footIndex; copyFoot < g_feet_count - 1; copyFoot++)
 				{
-					for (int k = 0; k < LH3D_WET_FEET_VERTICES_PER_FOOT; k++)
+					for (int corner = 0; corner < LH3D_WET_FEET_VERTICES_PER_FOOT; corner++)
 					{
-						int to = i * LH3D_WET_FEET_VERTICES_PER_FOOT + k;
-						int from = to + LH3D_WET_FEET_VERTICES_PER_FOOT;
-						g_vertex_list[to] = g_vertex_list[from];
-						g_list_color[to] = g_list_color[from];
-						g_list_uv[to * 2] = g_list_uv[from * 2];
-						g_list_uv[to * 2 + 1] = g_list_uv[from * 2 + 1];
+						int destinationVertex = copyFoot * LH3D_WET_FEET_VERTICES_PER_FOOT + corner;
+						int sourceVertex = destinationVertex + LH3D_WET_FEET_VERTICES_PER_FOOT;
+						g_vertex_list[destinationVertex] = g_vertex_list[sourceVertex];
+						g_list_color[destinationVertex] = g_list_color[sourceVertex];
+						g_list_uv[destinationVertex * 2] = g_list_uv[sourceVertex * 2];
+						g_list_uv[destinationVertex * 2 + 1] = g_list_uv[sourceVertex * 2 + 1];
 					}
 				}
 			}
 			g_feet_count--;
-			dead--;
+			expiredFeet--;
 		}
 		else
 		{
-			foot++;
+			footIndex++;
 		}
 	}
 }
@@ -1815,9 +1815,9 @@ void __fastcall DrawLightLikeHand(float x, float z, uint8_t* light, long size, f
 	int maxDarkness =
 		((LH3DColor&)LandCell::g_darkness_to_color[LAND_CELL_MAX_DARKNESS]).GetG() * LAND_CELL_MIN_DARKNESS >> 8;
 	long alpha = (long)(intensity * LH3D_COLOR_CHANNEL_MAX);
-	for (int i = 0; i < clippedWidth - 1; i++)
+	for (int column = 0; column < clippedWidth - 1; column++)
 	{
-		for (int j = 0; j < clippedDepth - 1; j++)
+		for (int row = 0; row < clippedDepth - 1; row++)
 		{
 			LandCell* cell = LH3DIsland::GetCell(cellX, cellZ);
 			if (cell != NULL)
@@ -1906,9 +1906,9 @@ void __fastcall ClearLightLikeHand(float x, float z, long size)
 		clippedDepth = cellZ + size;
 		cellZ = 0;
 	}
-	for (int i = 0; i < clippedWidth - 1; i++)
+	for (int column = 0; column < clippedWidth - 1; column++)
 	{
-		for (int j = 0; j < clippedDepth - 1; j++)
+		for (int row = 0; row < clippedDepth - 1; row++)
 		{
 			LandCell* cell = LH3DIsland::GetCell(cellX, cellZ);
 			if (cell != NULL)
@@ -4623,91 +4623,91 @@ void GWater::Process(LHPoint* pos)
 
 void GWater::AddPlouf(LHPoint* pos)
 {
-	for (unsigned long i = 0; i < GWATER_MAX_PLOUFS; i++)
+	for (unsigned long slotIndex = 0; slotIndex < GWATER_MAX_PLOUFS; slotIndex++)
 	{
-		if (Actives[i])
+		if (Actives[slotIndex])
 		{
 			continue;
 		}
-		Actives[i] = true;
+		Actives[slotIndex] = true;
 		switch (State)
 		{
 		case GWATER_STATE_NONE:
-			Types[i] = GWATER_PLOUF_TYPE_SPLASH;
+			Types[slotIndex] = GWATER_PLOUF_TYPE_SPLASH;
 			State = GWATER_STATE_SPLASH;
-			Sprites[i].pos.Set(pos->x, 0.0f, pos->z);
+			Sprites[slotIndex].pos.Set(pos->x, 0.0f, pos->z);
 			SetPlouf(pos);
 			break;
 		case GWATER_STATE_SPLASH:
 			Actives[Last] = false;
 			State = GWATER_STATE_TRAIL_STARTED;
-			Types[i] = GWATER_PLOUF_TYPE_TRAIL_ALONE;
-			Trails[i].Start.Set(LastPos);
-			Trails[i].End.Set(pos->x, 0.0f, pos->z);
+			Types[slotIndex] = GWATER_PLOUF_TYPE_TRAIL_ALONE;
+			Trails[slotIndex].Start.Set(LastPos);
+			Trails[slotIndex].End.Set(pos->x, 0.0f, pos->z);
 			{
-				LHPoint middle(Trails[i].Start);
-				middle.Add(Trails[i].End);
+				LHPoint middle(Trails[slotIndex].Start);
+				middle.Add(Trails[slotIndex].End);
 				middle.Mul(0.5f);
-				Sprites[i].pos.Set(middle);
-				float dz = Trails[i].Start.z - Trails[i].End.z;
-				float dx = Trails[i].Start.x - Trails[i].End.x;
+				Sprites[slotIndex].pos.Set(middle);
+				float dz = Trails[slotIndex].Start.z - Trails[slotIndex].End.z;
+				float dx = Trails[slotIndex].Start.x - Trails[slotIndex].End.x;
 				float length = SquareRoot(dx * dx + dz * dz) * GWATER_PLOUF_TRAIL_WIDTH;
 				if (length < GWATER_PLOUF_MIN_SIZE)
 				{
 					length = GWATER_PLOUF_MIN_SIZE;
 				}
-				Lengths[i] = length;
-				Sprites[i].SetRotation(LH3DMath::GetYAngle(&Trails[i].Start, &Trails[i].End));
-				Sprites[i].SetShapeOnly(1.0f, 1.0f / length);
+				Lengths[slotIndex] = length;
+				Sprites[slotIndex].SetRotation(LH3DMath::GetYAngle(&Trails[slotIndex].Start, &Trails[slotIndex].End));
+				Sprites[slotIndex].SetShapeOnly(1.0f, 1.0f / length);
 			}
 			break;
 		case GWATER_STATE_TRAIL_STARTED:
 			Types[Last] = GWATER_PLOUF_TYPE_TRAIL_START;
-			Types[i] = GWATER_PLOUF_TYPE_TRAIL_END;
+			Types[slotIndex] = GWATER_PLOUF_TYPE_TRAIL_END;
 			State = GWATER_STATE_TRAIL;
-			Trails[i].Start.Set(LastPos);
-			Trails[i].End.Set(pos->x, 0.0f, pos->z);
+			Trails[slotIndex].Start.Set(LastPos);
+			Trails[slotIndex].End.Set(pos->x, 0.0f, pos->z);
 			{
-				LHPoint middle(Trails[i].Start);
-				middle.Add(Trails[i].End);
+				LHPoint middle(Trails[slotIndex].Start);
+				middle.Add(Trails[slotIndex].End);
 				middle.Mul(0.5f);
-				Sprites[i].pos.Set(middle);
-				float dz = Trails[i].Start.z - Trails[i].End.z;
-				float dx = Trails[i].Start.x - Trails[i].End.x;
+				Sprites[slotIndex].pos.Set(middle);
+				float dz = Trails[slotIndex].Start.z - Trails[slotIndex].End.z;
+				float dx = Trails[slotIndex].Start.x - Trails[slotIndex].End.x;
 				float length = SquareRoot(dx * dx + dz * dz) * GWATER_PLOUF_TRAIL_WIDTH;
 				if (length < GWATER_PLOUF_MIN_SIZE)
 				{
 					length = GWATER_PLOUF_MIN_SIZE;
 				}
-				Lengths[i] = length;
-				Sprites[i].SetRotation(LH3DMath::GetYAngle(&Trails[i].Start, &Trails[i].End));
-				Sprites[i].SetShapeOnly(1.0f, 1.0f / length);
+				Lengths[slotIndex] = length;
+				Sprites[slotIndex].SetRotation(LH3DMath::GetYAngle(&Trails[slotIndex].Start, &Trails[slotIndex].End));
+				Sprites[slotIndex].SetShapeOnly(1.0f, 1.0f / length);
 			}
 			break;
 		case GWATER_STATE_TRAIL:
 			Types[Last] = GWATER_PLOUF_TYPE_TRAIL;
-			Types[i] = GWATER_PLOUF_TYPE_TRAIL_END;
-			Trails[i].Start.Set(LastPos);
-			Trails[i].End.Set(pos->x, 0.0f, pos->z);
+			Types[slotIndex] = GWATER_PLOUF_TYPE_TRAIL_END;
+			Trails[slotIndex].Start.Set(LastPos);
+			Trails[slotIndex].End.Set(pos->x, 0.0f, pos->z);
 			{
-				LHPoint middle(Trails[i].Start);
-				middle.Add(Trails[i].End);
+				LHPoint middle(Trails[slotIndex].Start);
+				middle.Add(Trails[slotIndex].End);
 				middle.Mul(0.5f);
-				Sprites[i].pos.Set(middle);
-				float dz = Trails[i].Start.z - Trails[i].End.z;
-				float dx = Trails[i].Start.x - Trails[i].End.x;
+				Sprites[slotIndex].pos.Set(middle);
+				float dz = Trails[slotIndex].Start.z - Trails[slotIndex].End.z;
+				float dx = Trails[slotIndex].Start.x - Trails[slotIndex].End.x;
 				float length = SquareRoot(dx * dx + dz * dz) * GWATER_PLOUF_TRAIL_WIDTH;
 				if (length < GWATER_PLOUF_MIN_SIZE)
 				{
 					length = GWATER_PLOUF_MIN_SIZE;
 				}
-				Lengths[i] = length;
-				Sprites[i].SetRotation(LH3DMath::GetYAngle(&Trails[i].Start, &Trails[i].End));
-				Sprites[i].SetShapeOnly(1.0f, 1.0f / length);
+				Lengths[slotIndex] = length;
+				Sprites[slotIndex].SetRotation(LH3DMath::GetYAngle(&Trails[slotIndex].Start, &Trails[slotIndex].End));
+				Sprites[slotIndex].SetShapeOnly(1.0f, 1.0f / length);
 			}
 			break;
 		}
-		Last = i;
+		Last = slotIndex;
 		LastPos.Set(pos->x, 0.0f, pos->z);
 		Touching = true;
 		return;
