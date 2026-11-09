@@ -443,7 +443,8 @@ void FrontEnd::Run()
 		profile.CurrentProfile[FRONT_END_USER_NAME_LENGTH - 1] = L'\0';
 		if (profile.CurrentProfile[0] == L'\0')
 		{
-			wcscpy(profile.CurrentProfile, HelpTextDataBase::HelpTextDatabase.GetData(HELP_TEXT_DIALOG_USER)->Text);
+			wcscpy(profile.CurrentProfile,
+			       HelpTextDataBase::HelpTextDatabase.GetData(HELP_TEXT_DIALOG_PROFILEPLAYER)->Text);
 		}
 		if (profile.PlayerSymbol > PLAYER_SYMBOL_COUNT - 1)
 		{
@@ -541,20 +542,20 @@ void NewProfileBox::Init(uint32_t background_style, uint32_t tall_background,
 		SetupPicture(NEW_PROFILE_BOX_CONTROL_ID_SYMBOL, 368, 300, FrontEnd::SymbolMaterial, 0, 4, true, 64, false);
 	NEW(538)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 100, 150, 600, 50,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ALLTOOLTIPS), TEXTJUSTIFY_CENTRE);
-	CancelButton =
-		NEW(540) SetupBigButton(NEW_PROFILE_BOX_CONTROL_ID_CANCEL, 610, 400,
-	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FIRE_01), 40,
-	                            SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLEASETYPENAME),
+	                TEXTJUSTIFY_CENTRE);
+	CancelButton = NEW(540) SetupBigButton(NEW_PROFILE_BOX_CONTROL_ID_CANCEL, 610, 400,
+	                                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_REQUESTER_BOXES_03),
+	                                       40, SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
 	OkButton = NEW(541) SetupBigButton(NEW_PROFILE_BOX_CONTROL_ID_OK, 150, 400,
-	                                   HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01),
-	                                   40, SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
+	                                   HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_REQUESTER_BOXES_04), 40,
+	                                   SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 	NEW(546)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 100, 300, 250, 64,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CREATUREHELP), TEXTJUSTIFY_RIGHT);
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLAYER), TEXTJUSTIFY_RIGHT);
 	NEW(547)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 450, 300, 250, 64,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_HELPTEXTSPEED), TEXTJUSTIFY_LEFT);
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_SYMBOL), TEXTJUSTIFY_LEFT);
 	NameEdit = NEW(550) SetupEdit(NEW_PROFILE_BOX_CONTROL_ID_NAME, 200, 230, 400, 50, L"", true);
 	NameEdit->MaxLength = FRONT_END_PROFILE_NAME_EDIT_LENGTH;
 	Instance->Cancelled = false;
@@ -623,7 +624,7 @@ void __stdcall NewProfileBox::ControlCallback(int message, SetupBox* box, SetupC
 		wcscpy(profile.CurrentProfile, Instance->NameEdit->label);
 		if (PlayerProfile::ProfileExists(profile.CurrentProfile))
 		{
-			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BYPASSLOGIN),
+			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLAYERALREADYEXISTS),
 			                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 		}
 		else
@@ -665,7 +666,7 @@ void __stdcall NewProfileBox::ControlCallback(int message, SetupBox* box, SetupC
 			}
 			else
 			{
-				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_FULLCHECKSUM),
+				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_INVALIDPLAYERNAME),
 				                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			}
 		}
@@ -705,16 +706,15 @@ void EditingDebugBox::Init(uint32_t background_style, uint32_t tall_background,
 	TitleText =
 		NEW(708) SetupStaticText(EDITING_DEBUG_BOX_CONTROL_ID_TITLE, 200, 250, 400, 30, L"", TEXTJUSTIFY_CENTRE);
 	TitleText->text_size = GetMidTextSize();
-	CancelButton =
-		NEW(712) SetupBigButton(EDITING_DEBUG_BOX_CONTROL_ID_CANCEL, 570, 350,
-	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FIRE_01), 30,
-	                            SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
+	CancelButton = NEW(712) SetupBigButton(EDITING_DEBUG_BOX_CONTROL_ID_CANCEL, 570, 350,
+	                                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_REQUESTER_BOXES_03),
+	                                       30, SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
 	OkButton = NEW(713) SetupBigButton(EDITING_DEBUG_BOX_CONTROL_ID_OK, 200, 350,
-	                                   HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01),
-	                                   30, SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
+	                                   HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_REQUESTER_BOXES_04), 30,
+	                                   SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 	DoneCallback = NULL;
 	Text = NULL;
-	wcscpy(Title, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_80));
+	wcscpy(Title, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_98));
 }
 
 void EditingDebugBox::Destroy()
@@ -767,24 +767,24 @@ void RegisterBox::Init(uint32_t background_style, uint32_t tall_background,
 	Instance = this;
 	NEW(776)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 100, 150, 600, 250,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BACK), TEXTJUSTIFY_CENTRE_BREAK);
-	RegisterButton =
-		NEW(777) SetupButton(REGISTER_BOX_CONTROL_ID_REGISTER, 310, 430, 200, 50,
-	                         HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLEASETYPENAME), 0);
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_NAMEANDPASSWORD),
+	                TEXTJUSTIFY_CENTRE_BREAK);
+	RegisterButton = NEW(777) SetupButton(REGISTER_BOX_CONTROL_ID_REGISTER, 310, 430, 200, 50,
+	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_REGISTER), 0);
 	OkButton = NEW(778) SetupButton(REGISTER_BOX_CONTROL_ID_OK, 100, 430, 200, 50,
-	                                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_KEYREMINDER), 0);
+	                                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGIN), 0);
 	CancelButton =
 		NEW(779) SetupButton(REGISTER_BOX_CONTROL_ID_CANCEL, 520, 430, 200, 50,
-	                         HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FIRE_01), 0);
+	                         HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_REQUESTER_BOXES_03), 0);
 	NameEdit = NEW(781) SetupEdit(REGISTER_BOX_CONTROL_ID_NAME, 250, 300, 300, 50, L"", true);
 	PasswordEdit = NEW(782) SetupEdit(REGISTER_BOX_CONTROL_ID_PASSWORD, 250, 360, 300, 50, L"", true);
 	PasswordEdit->MaskedText = true;
 	NEW(785)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 50, 300, 200, 50,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONTROLTITLE), TEXTJUSTIFY_RIGHT);
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGINNAME), TEXTJUSTIFY_RIGHT);
 	NEW(786)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 50, 360, 200, 50,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOADDEFAULTS), TEXTJUSTIFY_RIGHT);
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PASSWORD), TEXTJUSTIFY_RIGHT);
 	Cancelled = false;
 }
 
@@ -839,12 +839,12 @@ void __stdcall RegisterBox::ControlCallback(int message, SetupBox* box, SetupCon
 	{
 		if (wcslen(Instance->NameEdit->label) == 0)
 		{
-			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_SAVEPACKETS),
+			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ENTERLOGINNAME),
 			                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 		}
 		if (wcslen(Instance->PasswordEdit->label) == 0)
 		{
-			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_REPLAYPACKETS),
+			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ENTERPASSWORD),
 			                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 		}
 		else
@@ -857,7 +857,7 @@ void __stdcall RegisterBox::ControlCallback(int message, SetupBox* box, SetupCon
 	}
 	if (control->id == REGISTER_BOX_CONTROL_ID_REGISTER)
 	{
-		box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PACKETINFO),
+		box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_WEBLAUNCH),
 		                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 	}
 	if (control->id == REGISTER_BOX_CONTROL_ID_CANCEL && !control->hidden)
@@ -876,38 +876,41 @@ void ProfileEditor::Init(uint32_t background_style, uint32_t tall_background,
 		SetupPicture(PROFILE_EDITOR_CONTROL_ID_SYMBOL, 368, 295, FrontEnd::SymbolMaterial, 0, 4, true, 64, false);
 	NEW(880)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 100, 60, 600, 60,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_WELCOME), TEXTJUSTIFY_CENTRE_BREAK);
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_SELECT_A_PLAYER),
+	                TEXTJUSTIFY_CENTRE_BREAK);
 	ProfileList = NEW(881) SetupList(PROFILE_EDITOR_CONTROL_ID_LIST, 200, 120, 400, 160);
 	ProfileList->CentredText = true;
 	ProfileList->text_size = GetMidTextSize();
 	CloseButton = NEW(884) SetupBigButton(PROFILE_EDITOR_CONTROL_ID_CLOSE, 30, 530,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ALLTEXT), 40,
+	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BACK), 40,
 	                                      SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 	CloseButton->text_size = GetMidTextSize();
 	NEW(888)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 170, 295, 190, 64,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CREATUREHELP), TEXTJUSTIFY_RIGHT);
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLAYER), TEXTJUSTIFY_RIGHT);
 	NEW(889)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 440, 295, 190, 64,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_HELPTEXTSPEED), TEXTJUSTIFY_LEFT);
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_SYMBOL), TEXTJUSTIFY_LEFT);
 	SetupStaticText* nameText = NEW(892) SetupStaticText(
 		SETUP_CONTROL_ID_NONE, 0, 370, 190, 40,
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOADOLDGAME), TEXTJUSTIFY_RIGHT);
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CREATURENAME), TEXTJUSTIFY_RIGHT);
 	nameText->text_size = GetMidTextSize();
 	NameEdit = NEW(893) SetupEdit(PROFILE_EDITOR_CONTROL_ID_NAME, 200, 370, 400, 40, L"", true);
 	NameEdit->text_size = GetMidTextSize();
 	NameEdit->MaxLength = FRONT_END_PROFILE_NAME_EDIT_LENGTH;
-	NewButton = NEW(897) SetupBigButton(PROFILE_EDITOR_CONTROL_ID_NEW, 209, 450,
-	                                    HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOBACK), 25,
-	                                    SETUP_TEXT_POSITION_BELOW, BBSTYLE_CHECK_BOX_OFF);
-	DeleteButton = NEW(898) SetupBigButton(PROFILE_EDITOR_CONTROL_ID_DELETE, 324, 450,
-	                                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOHEAD),
-	                                       25, SETUP_TEXT_POSITION_BELOW, BBSTYLE_CHECK_BOX_OFF);
+	NewButton =
+		NEW(897) SetupBigButton(PROFILE_EDITOR_CONTROL_ID_NEW, 209, 450,
+	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CREATENEWPLAYER), 25,
+	                            SETUP_TEXT_POSITION_BELOW, BBSTYLE_CHECK_BOX_OFF);
+	DeleteButton =
+		NEW(898) SetupBigButton(PROFILE_EDITOR_CONTROL_ID_DELETE, 324, 450,
+	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DELETEPLAYER), 25,
+	                            SETUP_TEXT_POSITION_BELOW, BBSTYLE_CHECK_BOX_OFF);
 	TattooButton = NEW(899) SetupBigButton(PROFILE_EDITOR_CONTROL_ID_TATTOO, 444, 450,
-	                                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOCHEST),
+	                                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_EDITTATOO),
 	                                       25, SETUP_TEXT_POSITION_BELOW, BBSTYLE_CHECK_BOX_OFF);
 	QuitButton = NEW(900) SetupBigButton(PROFILE_EDITOR_CONTROL_ID_QUIT, 559, 450,
-	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_NEW_INTERFACE_30), 25,
+	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_STARTGAME), 25,
 	                                     SETUP_TEXT_POSITION_BELOW, BBSTYLE_CHECK_BOX_OFF);
 	AddOptionsTabs(OPTIONS_TAB_PROFILE);
 }
@@ -1038,7 +1041,7 @@ void ProfileEditor::RebuildList()
 void ProfileEditor::MakeRestartBox()
 {
 	wcscpy(FrontEnd::ProfileEditorDialog->CloseButton->label,
-	       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_FINAL_BEGINNING_48));
+	       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_FRONT_END_12));
 	RestartRequired = true;
 	Instance->UpdateTattooEdit();
 }
@@ -1048,7 +1051,7 @@ void ProfileEditor::MakeCloseBox()
 	if (!FrontEnd::ProfileEditorDialog->ProfileAdded)
 	{
 		wcscpy(FrontEnd::ProfileEditorDialog->CloseButton->label,
-		       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ALLTEXT));
+		       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BACK));
 		RestartRequired = false;
 	}
 	else
@@ -1072,7 +1075,8 @@ void __stdcall ProfileEditor::ControlCallback(int message, SetupBox* box, SetupC
 	         control->id != FRONT_END_TAB_FIRST_ID + OPTIONS_TAB_PROFILE)
 	{
 		MessageBoxState = PROFILE_EDITOR_MESSAGE_BOX_4;
-		box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CDPLAYER), (MSGBOXSTYLE)3, 0);
+		box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_RESTART_WARNING),
+		                 (MSGBOXSTYLE)3, 0);
 	}
 
 	switch (message)
@@ -1080,16 +1084,16 @@ void __stdcall ProfileEditor::ControlCallback(int message, SetupBox* box, SetupC
 	case SETUP_MESSAGE_UPDATE: {
 		SetupControl* hovered = box->FindControl(data1, data2);
 		SetupControl* tattoo = box->FindControl(PROFILE_EDITOR_CONTROL_ID_TATTOO);
-		wcscpy(tattoo->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOCHEST));
+		wcscpy(tattoo->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_EDITTATOO));
 		static char16_t* tooltips[PROFILE_EDITOR_NUM_TOOLTIPS] = {
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CHANGEPLAYER),    //
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_OPTIONS),         //
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_QUIT),            //
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_SELECT_A_PLAYER), //
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLAYERSYMBOL),    //
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CREATURETATOO),   //
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CREATURENAME),    //
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOPOSITION),   //
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOBACK),      //
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOHEAD),      //
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOCHEST),     //
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOBUM),       //
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOLEFTARM),   //
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOORIGHTARM),  //
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOLEFTHAND),  //
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOORIGHTHAND), //
 		};
 		if (hovered != NULL)
 		{
@@ -1209,20 +1213,20 @@ void __stdcall ProfileEditor::ControlCallback(int message, SetupBox* box, SetupC
 			if (FrontEnd::ProfileEditorDialog->ProfileAdded)
 			{
 				MessageBoxState = PROFILE_EDITOR_MESSAGE_BOX_3;
-				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_SOUNDS_OFF_01),
+				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_RESTART),
 				                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			}
 			else if (RestartRequired)
 			{
 				MessageBoxState = PROFILE_EDITOR_MESSAGE_BOX_4;
-				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CDPLAYER),
+				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_RESTART_WARNING),
 				                 (MSGBOXSTYLE)3, 0);
 			}
 			else if (playerSymbol != PlayerProfile::Profile.PlayerSymbol && GGame::g_game->IsMultiplayerGame())
 			{
 				playerSymbol = PlayerProfile::Profile.PlayerSymbol;
 				MessageBoxState = PROFILE_EDITOR_MESSAGE_BOX_6;
-				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_THANK_YOU_FOR_PLAYING),
+				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_SYMBOL_EXTRA_02),
 				                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			}
 			else
@@ -1294,14 +1298,14 @@ void __stdcall ProfileEditor::ControlCallback(int message, SetupBox* box, SetupC
 		{
 			MessageBoxState = PROFILE_EDITOR_MESSAGE_BOX_DELETE;
 			char16_t text[0x400];
-			swprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONTROLOPTIONS),
+			swprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_AERYOUSUREDELETE),
 			         PlayerProfile::Profile.CurrentProfile);
 			box->MessageBoxA(text, (MSGBOXSTYLE)3, 0);
 		}
 		if (control->id == PROFILE_EDITOR_CONTROL_ID_QUIT)
 		{
 			MessageBoxState = PROFILE_EDITOR_MESSAGE_BOX_QUIT;
-			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_02),
+			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_20),
 			                 (MSGBOXSTYLE)3, 0);
 		}
 		break;
@@ -1483,8 +1487,8 @@ bool32_t ProcessOptionsTabs(int message, SetupBox* box, SetupControl* control, i
 		{
 			wcscpy(box->FindControl(FRONT_END_TAB_FIRST_ID)->label,
 			       GGame::g_game->ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL
-			           ? HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_LIKES_SCROLL_COMPASSION)
-			           : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_70));
+			           ? HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_WORLD_TITLE)
+			           : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88));
 		}
 	}
 	return false;
@@ -1507,22 +1511,22 @@ void AddOptionsTabs(int selected)
 		switch (i)
 		{
 		case OPTIONS_TAB_MAIN_MENU:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_70);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88);
 			break;
 		case OPTIONS_TAB_MINI_OPTIONS:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GENERAL_LEAVE_THROUGH_VORTEX_02);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_OPTIONS);
 			break;
 		case OPTIONS_TAB_PROFILE:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DETAIL_06);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLAYERLIST);
 			break;
 		case OPTIONS_TAB_OPTIONS:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_FINAL_BEGINNING_42);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_FRONT_END_06);
 			break;
 		case OPTIONS_TAB_KEY_BINDING:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_STORYTEXT);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONTROLOPTIONS);
 			break;
 		case OPTIONS_TAB_IMMERSION:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_125);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_150);
 			break;
 		}
 		NEW(1582)
@@ -1572,10 +1576,10 @@ void AddMainMenuTabs(int selected)
 		switch (i)
 		{
 		case MAIN_MENU_TAB_MAIN_MENU:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_70);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88);
 			break;
 		case MAIN_MENU_TAB_STATS:
-			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_126);
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_151);
 			break;
 		case MAIN_MENU_TAB_CONDITIONS:
 			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(19);
@@ -1640,8 +1644,8 @@ void MainMenu::Destroy()
 
 void MMQuitButton(SetupBox* box, SetupControl* control)
 {
-	box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_INCOMPATIBLE_VERSION_01),
-	                 MSGBOXSTYLE_YES_NO, 0);
+	box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_QUIT_QUESTION), MSGBOXSTYLE_YES_NO,
+	                 0);
 	MainMenu::QuitPending = true;
 }
 
@@ -1652,7 +1656,7 @@ void MainMenu::InitControls()
 	PlayerProfile::SetCurrentProfile(LHNetGetCurrentProfileNameFromRegistry());
 	PlayerProfile::GetCurrentProfile(currentProfile);
 	PlayerProfile::GetProfileByName(currentProfile, PlayerProfile::Profile);
-	UNICODE_sprintf(ProfileText->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_NEW_INTERFACE_29),
+	UNICODE_sprintf(ProfileText->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_WELCOME),
 	                PlayerProfile::Profile.CurrentProfile);
 	SelectedButton = -1;
 	GGame::g_game->path_creator.UpdateCurrentProfile();
@@ -1666,17 +1670,17 @@ void MainMenu::InitControls()
 		switch (i)
 		{
 		case MAIN_MENU_BUTTON_CONTINUE:
-			wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_NEW_INTERFACE_31));
+			wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONTINUEGAME));
 			button->ContinueButtonCallback = MMContinueButton;
 			break;
 		case MAIN_MENU_BUTTON_SKIRMISH:
 			if (!GGame::g_game->SkirmishGame)
 			{
-				wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_150));
+				wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_169));
 			}
 			else
 			{
-				wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_151));
+				wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_170));
 			}
 			button->Hide(GGame::g_game->IsMultiplayerGame() == true);
 			button->ContinueButtonCallback = MMSkirmishButton;
@@ -1684,23 +1688,21 @@ void MainMenu::InitControls()
 		case MAIN_MENU_BUTTON_ONLINE:
 			if (!GGame::g_game->IsMultiplayerGame())
 			{
-				wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_NEW_INTERFACE_33));
+				wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_JOINGONLINE));
 			}
 			else
 			{
-				wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_FINAL_BEGINNING_39));
+				wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_FRONT_END_03));
 			}
 			button->Hide(GGame::g_game->SkirmishGame == true);
 			button->ContinueButtonCallback = MMOnlineButton;
 			break;
 		case MAIN_MENU_BUTTON_OPTIONS:
-			wcscpy(button->label,
-			       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GENERAL_LEAVE_THROUGH_VORTEX_02));
+			wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_OPTIONS));
 			button->ContinueButtonCallback = MMOptionsButton;
 			break;
 		case MAIN_MENU_BUTTON_QUIT:
-			wcscpy(button->label,
-			       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GENERAL_LEAVE_THROUGH_VORTEX_03));
+			wcscpy(button->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_QUIT));
 			button->ContinueButtonCallback = MMQuitButton;
 			break;
 		}
@@ -1765,7 +1767,7 @@ static void MMOnlineButton(SetupBox* box, SetupControl* control)
 		GGame::g_game->QuitGameAndGoIntoNetworkLobby();
 		return;
 	}
-	box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ENTERPASSWORD),
+	box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ERRORHASOCCURED),
 	                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 }
 
@@ -1775,7 +1777,7 @@ static void MMSkirmishButton(SetupBox* box, SetupControl* control)
 	if (GGame::g_game->SkirmishGame)
 	{
 		MainMenu::SkirmishPending = true;
-		box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_148),
+		box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_167),
 		                 MSGBOXSTYLE_YES_NO, 0);
 	}
 	else
@@ -1891,7 +1893,7 @@ int       MainMenu::CloseTime = -1;
 
 LoginBox::LoginBox()
 {
-	LocalNetworkName = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_INTERNALSYNCRONOUS);
+	LocalNetworkName = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LANSTRING);
 }
 
 void __stdcall LoginBox::DialupCallback(int status, void* data)
@@ -1908,36 +1910,36 @@ void __stdcall LoginBox::DialupStatus(int status, void* data)
 	switch (status)
 	{
 	case DIALUP_STATUS_OPENING_PORT:
-		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_REGISTRATIONNAME));
+		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_CONNECTING));
 		break;
 	case DIALUP_STATUS_DIALING:
-		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_LOGINPASSWORD));
+		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_AUTHENTICATING));
 		break;
 	case DIALUP_STATUS_CONNECTED:
-		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_LOBBYSERVER));
+		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_CONNECTIONESTABLISHED));
 		DialupState = LOGIN_BOX_DIALUP_STATE_CONNECTED;
 		break;
 	case DIALUP_STATUS_AUTHENTICATING:
-		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_PLAYERALREADYEXISTS));
+		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_AUTHENTICATINGOK));
 		break;
 	case DIALUP_STATUS_FAILED:
-		edit->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_INVALIDPLAYERNAME));
+		edit->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_AUTHENTICATINGERROR));
 		LoginButton->Hide(false);
 		break;
 	case DIALUP_STATUS_AUTHENTICATED:
-		edit->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ENTERLOGINNAME));
+		edit->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGGINGON));
 		break;
 	case DIALUP_STATUS_ABORTED:
-		edit->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ENTERPASSWORD));
+		edit->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ERRORHASOCCURED));
 		LoginButton->Hide(false);
 		break;
 	case DIALUP_STATUS_DISCONNECTED:
-		edit->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_WEBLAUNCH));
+		edit->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DISCONNECTED));
 		DialupState = LOGIN_BOX_DIALUP_STATE_DISCONNECTED;
 		LoginButton->Hide(false);
 		break;
 	case DIALUP_STATUS_CONNECTING:
-		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_CONNECTING));
+		edit->SetText(HelpTextData::GetTextL(HELP_TEXT_DIALOG_PASSWORDEXPIRED));
 		LoginButton->Hide(false);
 		break;
 	}
@@ -1994,21 +1996,21 @@ void LoginBox::DoLogin()
 		{
 			if (LHLogger::GetCode() == LH_NET_LOG_ERROR_USER_NOT_REGISTERED)
 			{
-				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_AUTHENTICATING),
+				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_YOUARENOTREGISTERED),
 				                 MSGBOXSTYLE_YES_NO, LOGIN_BOX_MESSAGE_BOX_REGISTER);
 			}
 			else if (LHLogger::GetCode() == LH_NET_LOG_ERROR_INVALID_LOGIN)
 			{
-				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONNECTIONESTABLISHED),
+				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_INVALIDDETAILS),
 				                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			}
 			else
 			{
 				box->MessageBoxA(
 					LHSPrintfW(L"%s %s\n%s %d",
-				               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_AUTHENTICATINGOK),
+				               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGINFAILED),
 				               CHAR2WCHAR(LHLogger::GetText()),
-				               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_AUTHENTICATINGERROR),
+				               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ERRORCODEWAS),
 				               LHLogger::GetCode()),
 					MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			}
@@ -2020,13 +2022,12 @@ void LoginBox::DoLogin()
 	{
 		if (LHNetBase::Instance.User->Login(WCHAR2CHAR(PlayerProfile::Profile.CurrentProfile), NULL) != LH_OK)
 		{
-			box->MessageBoxA(
-				LHSPrintfW(L"%s %s\n%s %d",
-			               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_AUTHENTICATINGOK),
-			               CHAR2WCHAR(LHLogger::GetText()),
-			               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_AUTHENTICATINGERROR),
-			               LHLogger::GetCode()),
-				MSGBOXSTYLE_SINGLE_BUTTON, 0);
+			box->MessageBoxA(LHSPrintfW(L"%s %s\n%s %d",
+			                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGINFAILED),
+			                            CHAR2WCHAR(LHLogger::GetText()),
+			                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ERRORCODEWAS),
+			                            LHLogger::GetCode()),
+			                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			Instance->LoginButton->Hide(false);
 			return;
 		}
@@ -2041,11 +2042,10 @@ void LoginBox::DoLogin()
 	{
 		if (LHNetBase::Instance.Lobby->OpenLocalLobby(&startInfo) != LH_OK)
 		{
-			box->MessageBoxA(
-				LHSPrintfW(L"%s\n%s %d", CHAR2WCHAR(LHLogger::GetText()),
-			               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_AUTHENTICATINGERROR),
-			               LHLogger::GetCode()),
-				MSGBOXSTYLE_SINGLE_BUTTON, 0);
+			box->MessageBoxA(LHSPrintfW(L"%s\n%s %d", CHAR2WCHAR(LHLogger::GetText()),
+			                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ERRORCODEWAS),
+			                            LHLogger::GetCode()),
+			                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			Instance->LoginButton->Hide(false);
 			return;
 		}
@@ -2072,11 +2072,11 @@ void LoginBox::DoLogin()
 						long  errorCode;
 						char* errorText;
 						event->VDecode(LH_NETEVENT_TYPE_SERVER_ERROR, &errorCode, &errorText);
-						box->MessageBoxA(
-							LHSPrintfW(L"%s %s",
-						               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGGINGON),
-						               CHAR2WCHAR(errorText)),
-							MSGBOXSTYLE_SINGLE_BUTTON, 0);
+						box->MessageBoxA(LHSPrintfW(L"%s %s",
+						                            HelpTextDataBase::HelpTextDatabase.GetHelpText(
+														HELP_TEXT_DIALOG_LOBBYRETURNEDERROR),
+						                            CHAR2WCHAR(errorText)),
+						                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 						connection->Close();
 						return;
 					}
@@ -2086,8 +2086,9 @@ void LoginBox::DoLogin()
 			timer.Restart(0);
 			if (timeout < 0)
 			{
-				box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ERRORHASOCCURED),
-				                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
+				box->MessageBoxA(
+					HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_COULDNOTREACHLOBBYSERVER),
+					MSGBOXSTYLE_SINGLE_BUTTON, 0);
 				return;
 			}
 		}
@@ -2137,35 +2138,35 @@ void LoginBox::Init(uint32_t background_style, uint32_t tall_background,
 
 	NEW(2286)
 	SetupStaticText(LOGIN_BOX_CONTROL_ID_TITLE, 100, 50, 600, 80,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DETAIL_01),
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CHOOSEINET),
 	                TEXTJUSTIFY_CENTRE_BREAK);
 	ConnectionList = NEW(2287) SetupList(LOGIN_BOX_CONTROL_ID_CONNECTIONS, 150, 135, 500, 100);
 	ConnectionList->text_size = GetMidTextSize();
 	StatusEdit = NEW(2289) SetupEdit(LOGIN_BOX_CONTROL_ID_STATUS, 200, 530, 400, 30,
-	                                 HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DETAIL_02), false);
+	                                 HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGINHELP), false);
 	StatusEdit->text_size = GetMidTextSize();
 	LoginButton = NEW(2292) SetupBigButton(LOGIN_BOX_CONTROL_ID_LOGIN, 680, 520,
-	                                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_KEYREMINDER),
-	                                       40, SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
+	                                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGIN), 40,
+	                                       SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
 	BackButton = NEW(2293) SetupBigButton(LOGIN_BOX_CONTROL_ID_BACK, 80, 520,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ALLTEXT), 40,
+	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BACK), 40,
 	                                      SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 	InternetCheckBox =
 		NEW(2295) SetupCheckBox(LOGIN_BOX_CONTROL_ID_INTERNET, 150, 255, false, BBSTYLE_CHECK_BOX_OFF,
-	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_SYMBOL), 25);
+	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_USELOBBY), 25);
 	InternetCheckBox->text_position = SETUP_TEXT_POSITION_RIGHT;
 	TitleText = NEW(2297) SetupStaticText(LOGIN_BOX_STATIC_TEXT_ID, 50, 300, 700, 60,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DETAIL_03),
+	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ENTERDETAILS),
 	                                      TEXTJUSTIFY_CENTRE_BREAK);
 	TitleText->text_size = GetBigTextSize();
 	NameEdit = NEW(2300) SetupEdit(LOGIN_BOX_CONTROL_ID_NAME, 320, 360, 330, 30, L"", true);
-	NameText = NEW(2301)
-		SetupStaticText(LOGIN_BOX_STATIC_TEXT_ID, 100, 360, 210, 30,
-	                    HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_REGISTER), TEXTJUSTIFY_RIGHT);
+	NameText = NEW(2301) SetupStaticText(
+		LOGIN_BOX_STATIC_TEXT_ID, 100, 360, 210, 30,
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_REGISTRATIONNAME), TEXTJUSTIFY_RIGHT);
 	PasswordEdit = NEW(2302) SetupEdit(LOGIN_BOX_CONTROL_ID_PASSWORD, 320, 410, 330, 30, L"", true);
 	PasswordText = NEW(2303) SetupStaticText(
 		LOGIN_BOX_STATIC_TEXT_ID, 100, 410, 210, 30,
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONNECTIONLIST), TEXTJUSTIFY_RIGHT);
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGINPASSWORD), TEXTJUSTIFY_RIGHT);
 	PasswordEdit->MaskedText = true;
 	PasswordEdit->UsesIME = false;
 	NameEdit->UsesIME = false;
@@ -2173,28 +2174,31 @@ void LoginBox::Init(uint32_t background_style, uint32_t tall_background,
 	PasswordEdit->text_size = PasswordText->text_size;
 	NameText->text_size = PasswordEdit->text_size;
 	NameEdit->text_size = NameText->text_size;
-	ServerEdit = NEW(2311) SetupEdit(LOGIN_BOX_CONTROL_ID_SERVER, 320, 460, 330, 30,
-	                                 HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_USELOBBY), true);
+	ServerEdit =
+		NEW(2311) SetupEdit(LOGIN_BOX_CONTROL_ID_SERVER, 320, 460, 330, 30,
+	                        HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOBBYSERVER), true);
 	ServerEdit->text_size = GetSmallTextSize();
-	ServerText = NEW(2313)
-		SetupStaticText(LOGIN_BOX_STATIC_TEXT_ID, 10, 460, 300, 30,
-	                    HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_USELOBBY), TEXTJUSTIFY_RIGHT);
+	ServerText = NEW(2313) SetupStaticText(LOGIN_BOX_STATIC_TEXT_ID, 10, 460, 300, 30,
+	                                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOBBYSERVER),
+	                                       TEXTJUSTIFY_RIGHT);
 	ServerText->text_size = GetMidTextSize();
 	BypassLoginCheckBox =
 		NEW(2319) SetupCheckBox(LOGIN_BOX_CONTROL_ID_BYPASS_LOGIN, 70, 570, false, BBSTYLE_CHECK_BOX_OFF,
-	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_AERYOUSUREDELETE), 20);
+	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BYPASSLOGIN), 20);
 	BypassLoginCheckBox->text_size = LOGIN_BOX_OPTION_TEXT_SIZE;
 	FullChecksumCheckBox =
 		NEW(2321) SetupCheckBox(LOGIN_BOX_CONTROL_ID_FULL_CHECKSUM, 200, 570, false, BBSTYLE_CHECK_BOX_OFF,
-	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_NAMEANDPASSWORD), 20);
+	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_FULLCHECKSUM), 20);
 	FullChecksumCheckBox->text_size = LOGIN_BOX_OPTION_TEXT_SIZE;
-	RecordButton = NEW(2324) SetupButton(LOGIN_BOX_CONTROL_ID_RECORD, 320, 580, 100, 25,
-	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGINNAME), 0);
+	RecordButton =
+		NEW(2324) SetupButton(LOGIN_BOX_CONTROL_ID_RECORD, 320, 580, 100, 25,
+	                          HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_SAVEPACKETS), 0);
 	PlaybackButton =
 		NEW(2325) SetupButton(LOGIN_BOX_CONTROL_ID_PLAYBACK, 440, 580, 100, 25,
-	                          HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PASSWORD), 0);
-	ReplayInfoButton = NEW(2326) SetupButton(LOGIN_BOX_CONTROL_ID_REPLAY_INFO, 560, 580, 100, 25,
-	                                         HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGIN), 0);
+	                          HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_REPLAYPACKETS), 0);
+	ReplayInfoButton =
+		NEW(2326) SetupButton(LOGIN_BOX_CONTROL_ID_REPLAY_INFO, 560, 580, 100, 25,
+	                          HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PACKETINFO), 0);
 	RecordButton->text_size = LOGIN_BOX_REPLAY_TEXT_SIZE;
 	PlaybackButton->text_size = LOGIN_BOX_REPLAY_TEXT_SIZE;
 	ReplayInfoButton->text_size = LOGIN_BOX_REPLAY_TEXT_SIZE;
@@ -2250,15 +2254,14 @@ void LoginBox::InitControls()
 				wchar_t* text;
 				if (properties.AlreadyConnected)
 				{
-					text = LHSPrintfW(L"%d.%s %s %s", 1,
-					                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DISCONNECTED),
-					                  properties.EntryName,
-					                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PASSWORDEXPIRED));
+					text = LHSPrintfW(
+						L"%d.%s %s %s", 1, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONNECTED),
+						properties.EntryName, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DEFAULT));
 				}
 				else
 				{
 					text = LHSPrintfW(L"%d. %s %s", 1, properties.EntryName,
-					                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PASSWORDEXPIRED));
+					                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DEFAULT));
 				}
 				ConnectionList->AddString(text, 0, 0, 0);
 				ConnectionList->SetItemData(0, defaultEntry);
@@ -2273,7 +2276,7 @@ void LoginBox::InitControls()
 					if (properties.AlreadyConnected)
 					{
 						text = LHSPrintfW(L"%d.%s %s", number,
-						                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DISCONNECTED),
+						                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONNECTED),
 						                  properties.EntryName);
 					}
 					else
@@ -2299,7 +2302,7 @@ void LoginBox::InitControls()
 		{
 			DialogBoxBase::Hide();
 			MainMenu::Instance->setup_box->MessageBoxA(
-				HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_YOUARENOTREGISTERED),
+				HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_NOCONNECTIONSAVAILABLE),
 				MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			return;
 		}
@@ -2372,7 +2375,7 @@ void __stdcall LoginBox::ControlCallback(int message, SetupBox* box, SetupContro
 	case SETUP_MESSAGE_UPDATE:
 		if (Instance->DialupState == LOGIN_BOX_DIALUP_STATE_CONNECTED && !ConnectedMessageShown)
 		{
-			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_INVALIDDETAILS),
+			box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONNECTIONSUCCESSFULL),
 			                 MSGBOXSTYLE_SINGLE_BUTTON, LOGIN_BOX_MESSAGE_BOX_CONNECTED);
 			ConnectedMessageShown = true;
 		}
@@ -2403,14 +2406,15 @@ void __stdcall LoginBox::ControlCallback(int message, SetupBox* box, SetupContro
 		if (control->id == LOGIN_BOX_CONTROL_ID_REPLAY_INFO)
 		{
 			LHSPrintfW text(L"%d %s\n%d %s\n", LHNetBase::Instance.ReplayInfo.NumberOfPlayers,
-			                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOGINFAILED),
+			                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLAYERS),
 			                LHNetBase::Instance.ReplayInfo.NumberOfSuperPackets,
-			                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ERRORCODEWAS));
+			                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_SUPERPACKETS));
 			if (LHNetBase::Instance.ReplayInfo.OutOfSyncGameTurn != 0)
 			{
-				text.AppendString(L"%s %d\n",
-				                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOBBYRETURNEDERROR),
-				                  LHNetBase::Instance.ReplayInfo.OutOfSyncGameTurn);
+				text.AppendString(
+					L"%s %d\n",
+					HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PREVIOUSGAMEWENTOUTOFSYNC),
+					LHNetBase::Instance.ReplayInfo.OutOfSyncGameTurn);
 			}
 			box->MessageBoxA(text, MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			break;
@@ -2424,9 +2428,8 @@ void __stdcall LoginBox::ControlCallback(int message, SetupBox* box, SetupContro
 				char* password = WCHAR2CHAR(box->FindControl(LOGIN_BOX_CONTROL_ID_PASSWORD)->label);
 				if (strlen(server) == 0 || strlen(name) == 0 || strlen(password) == 0)
 				{
-					box->MessageBoxA(
-						HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_COULDNOTREACHLOBBYSERVER),
-						MSGBOXSTYLE_SINGLE_BUTTON, 0);
+					box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_NOTENOUGHINFO),
+					                 MSGBOXSTYLE_SINGLE_BUTTON, 0);
 					break;
 				}
 			}
@@ -2463,7 +2466,7 @@ void __stdcall LoginBox::ControlCallback(int message, SetupBox* box, SetupContro
 						Instance->DialupProperties.Password, box->FindControl(LOGIN_BOX_CONTROL_ID_STATUS)))
 				{
 					((SetupEdit*)box->FindControl(LOGIN_BOX_CONTROL_ID_STATUS))
-						->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONNECTED));
+						->SetText(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DIALUPERROR));
 				}
 			}
 		}
@@ -2519,15 +2522,15 @@ void TattooEditor::Init(uint32_t background_style, uint32_t tall_background,
 		SetupColourPicker(TATTOO_EDITOR_CONTROL_ID_BRIGHTNESS, 704, 35, 52, 519, true, SetupThing::ButtonMaterial);
 	NEW(2675)
 	SetupStaticText(SETUP_CONTROL_ID_NONE, 150, 30, 500, 100,
-	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_FAILEDTOJOIN),
+	                HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOODRAG),
 	                TEXTJUSTIFY_CENTRE_BREAK);
 	AcceptButton =
 		NEW(2677) SetupBigButton(TATTOO_EDITOR_CONTROL_ID_ACCEPT, 150, 500,
-	                             HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01), 40,
+	                             HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_REQUESTER_BOXES_04), 40,
 	                             SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 	CancelButton =
 		NEW(2678) SetupBigButton(TATTOO_EDITOR_CONTROL_ID_CANCEL, 610, 500,
-	                             HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FIRE_01), 40,
+	                             HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_REQUESTER_BOXES_03), 40,
 	                             SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
 	for (int i = 0; i < TATTOO_EDITOR_NUM_PICTURES; i++)
 	{
@@ -3019,7 +3022,7 @@ void __stdcall TattooEditor::ControlCallback(int message, SetupBox* box, SetupCo
 			if (GGame::g_game->IsMultiplayerGame() && editor->TattooChanged)
 			{
 				editor->setup_box->MessageBoxA(
-					HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ZOOM_TO_VILLAGE_STORE),
+					HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_SYMBOL_EXTRA_01),
 					MSGBOXSTYLE_SINGLE_BUTTON, 0);
 			}
 			else
@@ -3141,13 +3144,14 @@ void CDBox::Init(uint32_t background_style, uint32_t tall_background,
 		SetupBigButton(CD_BOX_CONTROL_ID_STOP, 408, 319, L" ", 32, SETUP_TEXT_POSITION_RIGHT, BBSTYLE_CHECK_BOX_OFF);
 	SetupStaticText* text = NEW(3343) SetupStaticText(
 		SETUP_CONTROL_ID_NONE, 200, 200, 400, 60,
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_HELP_08), TEXTJUSTIFY_CENTRE_BREAK);
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CDPLAYER), TEXTJUSTIFY_CENTRE_BREAK);
 	text->text_size = GetMidTextSize();
 	OkButton = NEW(3345) SetupBigButton(CD_BOX_CONTROL_ID_OK, 230, 390,
-	                                    HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ALLTEXT), 32,
+	                                    HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BACK), 32,
 	                                    SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
-	CheckBox = NEW(3347) SetupCheckBox(CD_BOX_CONTROL_ID_CHECK_BOX, 546, 393, false, BBSTYLE_CHECK_BOX_OFF,
-	                                   HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_HELP_09), 24);
+	CheckBox =
+		NEW(3347) SetupCheckBox(CD_BOX_CONTROL_ID_CHECK_BOX, 546, 393, false, BBSTYLE_CHECK_BOX_OFF,
+	                            HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CDPLAYERPOLL), 24);
 	CheckBox->text_position = SETUP_TEXT_POSITION_LEFT;
 	NumTracks = 0;
 	CurrentTrack = 0;
@@ -3242,7 +3246,7 @@ void SkipBox::Init(uint32_t background_style, uint32_t tall_background,
 	title->text_size = GetMidTextSize();
 	NEW(3434)
 	SetupBigButton(SKIP_BOX_CONTROL_ID_OK, 220, 400,
-	               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01), 32,
+	               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_REQUESTER_BOXES_04), 32,
 	               SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 	Selected = 0;
 	for (int i = 0; i < SKIP_BOX_NUM_OPTIONS; i++)
@@ -3352,7 +3356,7 @@ void StartGameBox::Init(uint32_t background_style, uint32_t tall_background,
 	setup_box->DefaultTextSize = GetBigTextSize();
 	text = NEW(3533) SetupStaticText(START_GAME_BOX_CONTROL_ID_TEXT, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
 	button = NEW(3535) SetupButton(START_GAME_BOX_CONTROL_ID_BUTTON, 320, 530, 160, 40,
-	                               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_44), 1);
+	                               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_62), 1);
 	list = NEW(3536) SetupList(START_GAME_BOX_CONTROL_ID_LIST, 100, 110, 600, 380);
 	list->DrawHighlightBox = false;
 	BigButton = NEW(3539) SetupBigButton(START_GAME_BOX_CONTROL_ID_BUTTON, 30, 530, L"", 40, SETUP_TEXT_POSITION_RIGHT,
@@ -3367,7 +3371,7 @@ void StartGameBox::Destroy()
 
 void StartGameBox::InitControls()
 {
-	wcscpy(BigButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ALLTEXT));
+	wcscpy(BigButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BACK));
 }
 
 void __stdcall StartGameBox::Callback(int message, SetupBox* box, SetupControl* control, int data1, int data2)
@@ -3450,9 +3454,9 @@ static char16_t* GetPlaygroundName(char* file_name)
 
 void SkirmishGameBox::InitControls()
 {
-	wcscpy(BackButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ALLTEXT));
-	wcscpy(StartButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_NOTENOUGHINFO));
-	wcscpy(Text->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_08));
+	wcscpy(BackButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BACK));
+	wcscpy(StartButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_LOBBYSTARTGAME));
+	wcscpy(Text->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_26));
 	WIN32_FIND_DATAA findData;
 	HANDLE           find = FindFirstFileA(SKIRMISH_PLAYGROUND_DIRECTORY "*" SKIRMISH_PLAYGROUND_EXTENSION, &findData);
 	List->DeleteAll();
@@ -3612,13 +3616,13 @@ void HistoryBox::Init(uint32_t background_style, uint32_t tall_background,
 	setup_box->BackgroundStyle = SETUP_BACKGROUND_NONE;
 	setup_box->DefaultTextSize = GetBigTextSize();
 	PreviousButton = NEW(3831) SetupBigButton(HISTORY_BOX_CONTROL_ID_PREVIOUS, 60, 500,
-	                                          HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_150),
+	                                          HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PREVIOUS_LINE),
 	                                          40, SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 	NextButton = NEW(3832) SetupBigButton(HISTORY_BOX_CONTROL_ID_NEXT, 700, 500,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_149), 40,
+	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_NEXT_LINE), 40,
 	                                      SETUP_TEXT_POSITION_LEFT, BBSTYLE_RIGHT_ARROW);
 	DoneButton = NEW(3833) SetupButton(HISTORY_BOX_CONTROL_ID_DONE, 320, 500, 160, 40,
-	                                   HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_63), 1);
+	                                   HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_81), 1);
 	DoneButton->text_size = GetMidTextSize();
 }
 

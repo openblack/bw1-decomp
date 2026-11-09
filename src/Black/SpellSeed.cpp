@@ -76,5 +76,5 @@ PHYSICS_CONSTANTS_TYPE OneOffSpellSeed::GetPhysicsConstantsType()
 
 uint32_t OneOffSpellSeed::GetOverwriteTapToolTip()
 {
-	return HELP_TEXT_TOOLTIP_125;
+	return HELP_TEXT_TOOLTIP_133;
 }

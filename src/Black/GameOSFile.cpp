@@ -298,12 +298,12 @@ void LoadSaveBox(wchar_t* text, bool finished)
 
 void GameLoadingBox(bool finished)
 {
-	LoadSaveBox(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_67), finished);
+	LoadSaveBox(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_85), finished);
 }
 
 void GameSavingBox(bool finished)
 {
-	LoadSaveBox(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_102), finished);
+	LoadSaveBox(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_120), finished);
 }
 
 GameOSFile::GameOSFile()

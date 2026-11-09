@@ -188,8 +188,8 @@ void __stdcall SetupBox::DefaultCB(int message, SetupBox* box, SetupControl* con
 	{
 		if (data2 == 0)
 		{
-			char16_t yes = *HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_120);
-			char16_t no = *HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_119);
+			char16_t yes = *HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_145);
+			char16_t no = *HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_144);
 			if (yes != no)
 			{
 				if (toupper(data1) == toupper(yes) && toupper(data1) &&

@@ -41,11 +41,7 @@
 #define ORIGINAL_LINE(line) ((line) + 2)
 #endif
 
-#ifdef VERSION_BW1WCI
 #define LOOK_AT_CAMERA_TOOLTIP HELP_TEXT_TOOLTIP_48
-#else
-#define LOOK_AT_CAMERA_TOOLTIP 3746
-#endif
 
 #define NEGLIGIBLE_FEEDBACK              0.01f
 #define LOOK_AT_CAMERA_TOOLTIP_DURATION  1.0f
