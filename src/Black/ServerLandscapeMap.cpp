@@ -893,22 +893,10 @@ void ServerLandscapeMap::SaveServerThumbnail(char* description)
 			LandCell* cell = LH3DIsland::GetCell(x, z);
 			if (cell != NULL && cell->altitude != 0)
 			{
-				if (x > maxX)
-				{
-					maxX = x;
-				}
-				if (x < minX)
-				{
-					minX = x;
-				}
-				if (z > maxZ)
-				{
-					maxZ = z;
-				}
-				if (z < minZ)
-				{
-					minZ = z;
-				}
+				maxX = max(x, maxX);
+				minX = min(x, minX);
+				maxZ = max(z, maxZ);
+				minZ = min(z, minZ);
 			}
 		}
 	}
