@@ -94,24 +94,10 @@ public:
 	void     CalculateMapInfluence();
 	uint8_t  Dirty : 1; /* 0x8 */
 	uint8_t  Initialised : 1;
-	uint8_t  field_0x9;
-	uint8_t  field_0xa;
-	uint8_t  field_0xb;
+	uint8_t  field_0x9[0x3];
 	uint32_t CellExtentZx[0x2];
-	uint32_t field_0x14;
-	uint32_t field_0x18;
-	uint32_t field_0x1c;
-	uint32_t field_0x20;
-	uint32_t field_0x24;
-	uint32_t field_0x28;
-	uint32_t field_0x2c;
-	uint32_t field_0x30;
-	uint32_t field_0x34;
-	uint32_t field_0x38;
-	uint8_t  field_0x3c;
-	uint8_t  field_0x3d;
-	uint8_t  field_0x3e;
-	uint8_t  field_0x3f;
+	uint32_t field_0x14[0xa];
+	uint8_t  field_0x3c[0x4];
 	uint32_t field_0x40;
 	MapCell  cells[0x200][0x200];
 	uint16_t Count0x200044;
