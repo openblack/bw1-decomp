@@ -2478,7 +2478,7 @@ Black/ScriptProperty.cpp:
 	.rdata      start:0x00970930 end:0x00970940
 	.CRT$XCU    start:0x00A476D4 end:0x00A476E0 align:4
 	.data       start:0x00CA1600 end:0x00CA172D
-	.bss        start:0x00E1A1BC end:0x00E1A1C8
+	.bss        start:0x00E1A1BC end:0x00E1A1C4
 
 Black/ScriptRelease.cpp:
 	.text       start:0x00713EA0 end:0x007140C0

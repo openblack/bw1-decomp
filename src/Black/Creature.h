@@ -284,7 +284,7 @@ public:
 #endif
 	float                        MaxBigSize;
 	float                        MaxSmallSize;
-	uint8_t                      field_0x37c;
+	bool                         CanGoThroughVortex;
 	uint8_t                      field_0x37d;
 	uint8_t                      field_0x37e;
 	uint8_t                      field_0x37f;
@@ -310,7 +310,7 @@ public:
 	uint32_t GameTurnLastSleptWithConfinedCreature;
 	bool32_t RightHandOnly;
 	uint32_t ci_field_0x107c;
-	uint32_t ci_field_0x1080;
+	float    ScriptScale;
 	uint8_t  BodyFlags;
 	uint8_t  ci_field_0x1085[0x3];
 #endif
@@ -893,6 +893,8 @@ public:
 	float GetBigSize();
 	// BW1W120 0047dbd0 BW1M119 011d6410
 	float GetSmallSize();
+	// BW1W120 inlined BW1M119 01509510
+	bool GetCanGoThroughVortex() { return CanGoThroughVortex; }
 	// BW1W120 0047dc50 BW1M119 011d6320
 	void AutoScale();
 	// BW1W120 0047deb0 BW1M119 011d5f30

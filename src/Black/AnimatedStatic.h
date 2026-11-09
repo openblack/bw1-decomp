@@ -33,6 +33,10 @@ public:
 	uint32_t GateType;
 	Object*  GateStones[ANIMATED_STATIC_GATE_STONE_COUNT];
 	uint32_t GateStoneIndices[ANIMATED_STATIC_GATE_STONE_COUNT];
+#ifdef VERSION_BW1WCI
+	float BalistaXAngle;
+	float BalistaYAngle;
+#endif
 
 	// Override methods
 

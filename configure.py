@@ -1388,7 +1388,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/ScriptManage.cpp"),
             GameCodeObject(Matching, "Black/ScriptMarker.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptMisc.cpp"),
-            GameCodeObject(NonMatching, "Black/ScriptProperty.cpp"),
+            GameCodeObject(Matching, "Black/ScriptProperty.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptRelease.cpp"),
             GameCodeObject(NonMatching, "Black/ScriptSound.cpp"),
             GameCodeObject(Matching, "Black/ScriptSpirit.cpp"),

@@ -38,9 +38,10 @@ public:
 	uint8_t                 SpellSeedFlags; /* 0x54 */
 	uint8_t                 field_0x55[0x7];
 	LHPTR<WorshipSpellIcon> Icon; /* 0x5c */
-	uint8_t                 field_0x60[0x2c];
-	float                   PSysPower;   /* 0x8c */
-	uint8_t                 DrawnInHand; /* 0x90 */
+	uint8_t                 field_0x60[0x28];
+	float                   DurationMultiplier; /* 0x88 */
+	float                   PSysPower;          /* 0x8c */
+	uint8_t                 DrawnInHand;        /* 0x90 */
 	uint8_t                 field_0x91[0xb];
 	LHListNode<SpellSeed>   next; /* 0x9c */
 
@@ -69,7 +70,7 @@ public:
 	// BW1W120 00728a00 BW1M119 01533790
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 00727f50 BW1M119 015353b0
-	virtual bool32_t IsSpellSeed();
+	virtual SpellSeed* IsSpellSeed();
 	// BW1W120 00729c90 BW1M119 01530f80
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00728f30 BW1M119 01532c20
@@ -153,6 +154,8 @@ public:
 	float AddToChantStore(float amount);
 	// BW1W120 00729b30 BW1M119 01530fd0
 	void SetPowerUp(POWER_UP_TYPE power_up);
+	// BW1W120 inlined BW1M119 01509390
+	float GetDurationMultiplier() { return DurationMultiplier; }
 
 	// Static methods
 
