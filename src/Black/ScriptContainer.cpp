@@ -245,9 +245,7 @@ void GScript::AttachToTown(unsigned long thing_id, unsigned long town_id, Town* 
 		if (thing->IsScriptContainer())
 		{
 			GGame::g_game->script->LoopTown = town;
-			void*(__cdecl * loop)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-			                      SCRIPT_OBJECT_TYPE, uint32_t) =
-				g_scriptObjectDispatch[thing->GetScriptObjectType()].Loop;
+			ScriptObjectDispatch::LoopFunction loop = g_scriptObjectDispatch[thing->GetScriptObjectType()].Loop;
 			if (loop != NULL)
 			{
 				loop(thing, AttachToTownLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
@@ -648,8 +646,7 @@ void GScript::AttachToDance(unsigned long thing_id, unsigned long dance_id, Danc
 	if (thing->IsScriptContainer())
 	{
 		GGame::g_game->script->LoopDance = dance;
-		void*(__cdecl * loop)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-		                      SCRIPT_OBJECT_TYPE, uint32_t) = g_scriptObjectDispatch[thing->GetScriptObjectType()].Loop;
+		ScriptObjectDispatch::LoopFunction loop = g_scriptObjectDispatch[thing->GetScriptObjectType()].Loop;
 		if (loop != NULL)
 		{
 			loop(thing, AttachToDanceLoopFunction, SCRIPT_OBJECT_TYPE_NONE, 0);
