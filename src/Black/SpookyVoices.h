@@ -6,7 +6,18 @@
 
 #include "Base.h" /* For struct Base */
 
-#define SOUNDEX_NO_CODE 0
+#define SOUNDEX_CHARACTER_MASK 0x60
+
+enum SOUNDEX_CODE
+{
+	SOUNDEX_CODE_NONE = 0,
+	SOUNDEX_CODE_BFPV,
+	SOUNDEX_CODE_CGJKQSXZ,
+	SOUNDEX_CODE_DT,
+	SOUNDEX_CODE_L,
+	SOUNDEX_CODE_MN,
+	SOUNDEX_CODE_R,
+};
 
 class GSpookyVoices : public Base
 {
