@@ -818,9 +818,11 @@ void GScript::SetProperty(GameThingWithPos* thing, SCRIPT_OBJECT_PROPERTY_TYPE p
 					float            yAngle = obj->GetYAngle();
 					const MapCoords& coords = obj->Pos;
 					LH3DObject*      object = obj->Game3dObject;
-					LHPoint          pos;
-					GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
-					object->LH3DObject::SetPosition(pos, yAngle, scale);
+					{
+						LHPoint pos;
+						GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
+						object->LH3DObject::SetPosition(pos, yAngle, scale);
+					}
 				}
 				return;
 			}
@@ -855,9 +857,11 @@ void GScript::SetProperty(GameThingWithPos* thing, SCRIPT_OBJECT_PROPERTY_TYPE p
 					float            yAngle = obj->GetYAngle();
 					const MapCoords& coords = thing->Pos;
 					LH3DObject*      object = obj->Game3dObject;
-					LHPoint          pos;
-					GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
-					object->LH3DObject::SetPosition(pos, yAngle, scale);
+					{
+						LHPoint pos;
+						GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
+						object->LH3DObject::SetPosition(pos, yAngle, scale);
+					}
 				}
 				return;
 			}
