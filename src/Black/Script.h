@@ -1815,7 +1815,7 @@ public:
 	// BW1W120 0070f600 BW1M119 010021c0
 	static void ReleaseScriptThingIntoTheGame(GameThingWithPos* thing, unsigned long slot, bool32_t force);
 	// BW1W120 006f0430 BW1M119 014e4880
-	void DetachFromDance(uint32_t slot, Dance* dance);
+	static void DetachFromDance(unsigned long thing_id, Dance* dance);
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(GScript) == 0xd8, "Data type is of wrong size");

@@ -137,6 +137,12 @@ public:
 
 	// BW1W120 inlined BW1M119 01029620
 	SLL<Living, &Living::FlockOrder>* GetFlockMembers() { return &Members; }
+	// BW1W120 0052fc70 BW1M119 010ea2e0
+	bool32_t ForceLeaderInFlock(Living* living);
+	// BW1W120 00530180 BW1M119 010e95d0
+	Living* FindRandomFlockMember(Living* exclude);
+	// BW1W120 00530210 BW1M119 010e94a0
+	void MergeWithOtherFlock(Flock* flock);
 	// BW1W120 00530310 BW1M119 010e9030
 	uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 005300d0 BW1M119 010e97e0

@@ -27,6 +27,9 @@ public:
 #endif
 	DBInfo Query;
 
+	// BW1W120 0062b990 BW1M119 013a90d0
+	void Refresh();
+
 	// BW1W120 inlined BW1M119 inlined
 	MPFEClanDetails()
 	{

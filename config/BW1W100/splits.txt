@@ -1501,7 +1501,9 @@ Black/MPFEChooseConnection.cpp:
 Black/MPFEClanDetails.cpp:
 	.text       start:0x005DF650 end:0x005E0170
 	.rdata      start:0x0086E0A0 end:0x0086E0D4
-	.data       start:0x00B21584 end:0x00B21598
+	.CRT$XCU    start:0x008F6AC0 end:0x008F6AD0 align:4
+	.data       start:0x00B214E0 end:0x00B215B8
+	.bss        start:0x00C61BB0 end:0x00C61BC0
 
 Black/MPFEConnectionStatus.cpp:
 	.text       start:0x005E0170 end:0x005E0C70
@@ -1984,12 +1986,14 @@ Black/Script.cpp:
 Black/ScriptCamera.cpp:
 	.text       start:0x00686F80 end:0x00689850
 	.CRT$XCU    start:0x008F6F9C end:0x008F6FA4 align:4
-	.data       start:0x00B2F6C8 end:0x00B2F7E4
+	.data       start:0x00B2F6C8 end:0x00B2F770
 
 Black/ScriptContainer.cpp:
-	.text       start:0x0068A1B0 end:0x0068AD10
-	.rdata      start:0x0087930C end:0x0087931C
-	.data       start:0x00B2F7E4 end:0x00B2FB80
+	.text       start:0x00689850 end:0x0068AD10
+	.rdata      start:0x00879314 end:0x0087931C
+	.CRT$XCU    start:0x008F6FA4 end:0x008F6FAC align:4
+	.data       start:0x00B2F770 end:0x00B2FB7E
+	.bss        start:0x00CB69D0 end:0x00CB69D8
 
 Black/ScriptControl.cpp:
 	.text       start:0x0068AD10 end:0x0068B190
