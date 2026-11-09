@@ -5,6 +5,7 @@ on:
     branches:
       - main
   pull_request:
+  merge_group:
 
 jobs:
   build:
@@ -27,7 +28,7 @@ jobs:
     - name: Prepare
       run: cp -a /orig .
 
-    # Caching doesn't same much time and breaks some changesets such as inline header definitions
+    # Caching doesn't save much time and breaks some changesets such as inline header definitions
     # # Restore cached files
     # - name: Cache build
     #   uses: actions/cache@v4
@@ -39,23 +40,24 @@ jobs:
     #     key: ${{ runner.os }}-${{ matrix.version }}-${{ github.sha }}
     #     restore-keys: ${{ runner.os }}-${{ matrix.version }}-
 
-    # Build the project. Static libs ship in the build container under
-    # orig/libs (copied above via /orig), where configure.py reads them
+    # Build the project, link and verify the artifact hashes against
+    # config/<version>/build.sha1. Static libs ship in the build container
+    # under orig/libs (copied above via /orig), where configure.py reads them
     # verbatim.
     - name: Build
       run: |
-        python configure.py --map --version ${{ matrix.version }}
-        ninja all_source progress build/${{ matrix.version }}/report.json
+        python configure.py --version ${{ matrix.version }}
+        ninja all_source build/${{ matrix.version }}/ok
 
-    # Upload map files
-    - name: Upload map
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ matrix.version }}_maps
-        path: build/${{ matrix.version }}/**/*.map
+    # Merge queue entries skip the progress report: it dominates the run time,
+    # and the pull request and the post-merge push to main produce one anyway.
+    - name: Progress report
+      if: github.event_name != 'merge_group'
+      run: ninja progress build/${{ matrix.version }}/report.json
 
     # Upload progress report
     - name: Upload report
+      if: github.event_name != 'merge_group'
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.version }}_report
