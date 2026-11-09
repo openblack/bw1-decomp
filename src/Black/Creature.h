@@ -1684,6 +1684,8 @@ public:
 	void SetTyke(Creature* master);
 	// BW1WCI 00488430 BW1MCI119 011ed930
 	void ClearFightQueue();
+	// BW1WCI 00508f90 BW1MCI119 012ac1a0
+	void ClearCreatureForScriptActing();
 #else
 	// BW1W120 004f6610 BW1M119 0128dc50
 	static Creature* ScriptCreateCreatureRelativeToCreature(Creature* creature, float scale, const MapCoords& coords,

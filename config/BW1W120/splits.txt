@@ -2412,10 +2412,11 @@ Black/Script.cpp:
 	.bss        start:0x00D95B00 end:0x00D95C24
 
 Black/ScriptCamera.cpp:
-	.text       start:0x006EC8D0 end:0x006EF370
-	.CRT$XCU    start:0x009C75F0 end:0x009C7600 align:4
-	.data       start:0x00C0C0CC end:0x00C0C300
-	.bss        start:0x00D95C24 end:0x00D95C30
+	.text       start:0x006EC8D0 end:0x006EE820
+	.rdata      start:0x00942190 end:0x00942194
+	.CRT$XCU    start:0x009C75F0 end:0x009C75F8 align:4
+	.data       start:0x00C0C0CC end:0x00C0C2AE
+	.bss        start:0x00D95C24 end:0x00D95C28
 
 Black/ScriptContainer.cpp:
 	.text       start:0x006EF370 end:0x006F0860

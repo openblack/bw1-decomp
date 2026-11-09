@@ -198,8 +198,8 @@ static Zoomer Global_00c5b100;
 static int Global_00c5e164;
 // BW1W120 00c5e168
 static bool Global_00c5e168;
-// BW1W120 00c5e13c
-static float Global_00c5e13c = BigDistance;
+
+float CameraExclusion::DistanceFromInclusionEdge = BigDistance;
 
 LightSheet*   CameraModeNew3::ForceField;
 bool32_t      CameraModeNew3::DrawForceField;
@@ -3677,7 +3677,7 @@ void CameraModeNew3::Update()
 			Heading0x12c.Add(originDest);
 			focusDest.Add(originDest);
 			local_4b = true;
-			Global_00c5e13c = 0.0f;
+			CameraExclusion::DistanceFromInclusionEdge = 0.0f;
 			if (Global_00c5e168)
 			{
 				CameraHelp::CameraHelpCallback(CameraHelpReason_CollideWithEdgeOfAllowedArea, originDest, 0);
@@ -3700,12 +3700,12 @@ void CameraModeNew3::Update()
 		}
 		else
 		{
-			Global_00c5e13c = closest.GetDistance2D(originDest);
+			CameraExclusion::DistanceFromInclusionEdge = closest.GetDistance2D(originDest);
 		}
 	}
 	else
 	{
-		Global_00c5e13c = 1.0e10f;
+		CameraExclusion::DistanceFromInclusionEdge = 1.0e10f;
 	}
 
 	if (local_b4 == 3 && pushed)
@@ -3956,7 +3956,7 @@ void ResetCameraModeNew3()
 	CameraExclusion::ResetExclusionFile(CAMERA_EXCLUSION_ID_DEFAULT);
 	CameraModeNew3::NoCross = 0;
 	Global_00c5b0c4 = 0.0f;
-	Global_00c5e13c = BigDistance;
+	CameraExclusion::DistanceFromInclusionEdge = BigDistance;
 	Global_00c5b0c8 = 0.0f;
 	Global_00c5b0cc = 0.0f;
 	Global_00c5b0d0 = 0.0f;
