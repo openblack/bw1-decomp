@@ -151,7 +151,7 @@ bool32_t Field::CanBeDestroyedBySpell(Spell* param_1)
 
 uint32_t Field::GetOverwriteInteractableToolTip()
 {
-	return HELP_TEXT_INTERRUPTION_IN_CITADEL_19;
+	return HELP_TEXT_TOOLTIP_01;
 }
 
 GPlayer* Field::GetPlayer()

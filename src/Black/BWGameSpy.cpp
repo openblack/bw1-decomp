@@ -9,7 +9,7 @@
 #include <string.h> /* For strcpy, strcmp, strnicmp */
 #include <wchar.h>  /* For wcslen, wcscpy, wcsncpy */
 
-#include <chlasm/HelpTextEnums.h>                  /* For HELP_TEXT_DIALOG_ADDITION_18 */
+#include <chlasm/HelpTextEnums.h>                  /* For HELP_TEXT_DIALOG_ADDITION_36 */
 #include <Lionhead/LH3DLib/development/LH3DText.h> /* For CHAR2WCHAR */
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>       /* For LHTimer */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
@@ -380,7 +380,7 @@ bool BWGameSpy::Connect()
 {
 	MPFEData::Data.LocalPlayerID = NO_PLAYER_ID;
 	MPFEChannelSelector::Instance.setup_box->MessageBoxA(
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_18), MSGBOXSTYLE_NO_BUTTONS,
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_36), MSGBOXSTYLE_NO_BUTTONS,
 		LOBBY_MESSAGE_BOX_CONNECTING);
 	MPFEData::OOSChecksum = MPFEData::Data.GetOOSChecksum();
 	if (Connected)
@@ -552,8 +552,8 @@ void BWGameSpy::DisconnectedCallback(PEER peer, const char* reason, void* param)
 		DialogBoxBase::Hide();
 		MPFEConnectionStatus::Status.LeaveLobbyScreen();
 		MPFELogin::Instance.setup_box->MessageBoxA(
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MPFE_STATUS_CC_STATUS_BACK),
-			MSGBOXSTYLE_SINGLE_BUTTON, LOBBY_MESSAGE_BOX_NONE);
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MPFE_GS_DISCONNECTED), MSGBOXSTYLE_SINGLE_BUTTON,
+			LOBBY_MESSAGE_BOX_NONE);
 	}
 }
 
@@ -831,7 +831,7 @@ void BWGameSpy::JoinCallback(PEER peer, PEERBool success, RoomType roomType, voi
 	else
 	{
 		MPFEChannelSelector::Instance.setup_box->MessageBoxA(
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_19), MSGBOXSTYLE_SINGLE_BUTTON,
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_37), MSGBOXSTYLE_SINGLE_BUTTON,
 			LOBBY_MESSAGE_BOX_ERROR);
 	}
 }
@@ -1081,7 +1081,7 @@ void BWGameSpy::NickErrorCallback(PEER peer, int type, const char* nick, void* p
 	}
 #else
 	MPFELogin::Instance.setup_box->MessageBoxA(
-		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_19), MSGBOXSTYLE_SINGLE_BUTTON,
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_37), MSGBOXSTYLE_SINGLE_BUTTON,
 		LOBBY_MESSAGE_BOX_ERROR);
 	peerDisconnect(LHNetBase::Instance.Peer);
 	peerShutdown(LHNetBase::Instance.Peer);
@@ -1108,7 +1108,7 @@ void BWGameSpy::ConnectCallback(PEER peer, PEERBool success, void* param)
 	{
 		MPFEConnectionStatus::Status.LeaveLobbyScreen();
 		MPFELogin::Instance.setup_box->MessageBoxA(
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_20), MSGBOXSTYLE_SINGLE_BUTTON,
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_38), MSGBOXSTYLE_SINGLE_BUTTON,
 			LOBBY_MESSAGE_BOX_ERROR);
 	}
 }
@@ -1134,8 +1134,8 @@ void BWGameSpy::CreateOrJoinRoom(wchar_t* name, wchar_t* password, MPFEChannelDe
 		if (channel->HasPassword && wcslen(password) == 0)
 		{
 			MPFEChannelSelector::Instance.setup_box->MessageBoxA(
-				HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_CONNECT), MSGBOXSTYLE_SINGLE_BUTTON,
-				LOBBY_MESSAGE_BOX_NONE);
+				HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ROOMPASSWORD),
+				MSGBOXSTYLE_SINGLE_BUTTON, LOBBY_MESSAGE_BOX_NONE);
 			MPFEData::Data.CurrentChannel = NULL;
 			MPFEData::Data.IsHost = false;
 			return;
@@ -1150,8 +1150,8 @@ void BWGameSpy::CreateOrJoinRoom(wchar_t* name, wchar_t* password, MPFEChannelDe
 	if (wcslen(name) == 0)
 	{
 		MPFEChannelSelector::Instance.setup_box->MessageBoxA(
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_JOIN), MSGBOXSTYLE_SINGLE_BUTTON,
-			LOBBY_MESSAGE_BOX_NONE);
+			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLEASEENTERROOMNAME),
+			MSGBOXSTYLE_SINGLE_BUTTON, LOBBY_MESSAGE_BOX_NONE);
 		MPFEData::Data.CurrentChannel = NULL;
 		MPFEData::Data.IsHost = false;
 		return;

@@ -237,7 +237,7 @@ void GScript::SpiritSpeaks()
 {
 	uint32_t         text = g_scriptDLL->ULONG_POP();
 	HELP_SPIRIT_TYPE spirit = ConvertScriptSpiritToHelpSpirit((SCRIPT_SPIRIT_TYPE)g_scriptDLL->ULONG_POP());
-	if (text >= SCRIPT_TEXT_ID_LIMIT)
+	if (text >= HELP_TEXT_LAST)
 	{
 		text = 0;
 	}
