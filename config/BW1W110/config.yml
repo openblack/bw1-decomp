@@ -94,6 +94,10 @@ block_relocations:
   - source: 0x0085B358
   - source: 0x0085B4DB
   - source: 0x0085C008
+# start_system's LOW_RES_VIDEO_MEMORY 13000000 and object heap size 0xc00000 are immediates, not pointers into
+# CreatureActionInfo::g_CreatureActionInfos and ScriptFunctionTable::Table.
+  - source: 0x00639ED9
+  - source: 0x00639FE7
 
 add_relocations:
 # pow.obj: references the object relocates but dtk leaves unrelocated.
@@ -1684,6 +1688,11 @@ add_relocations:
   - source: 0x0085AD1D
     type: x86_abs32
     target: '__real@4@bffc860a920000000000'
+# PCMain.cpp's start_system: the cmp against the end of CountryCodes (dtk leaves the immediate unrelocated).
+  - source: 0x0063A204
+    type: x86_abs32
+    target: '?CountryCodes@@3PAY02DA'
+    addend: 0x2d
 force_size: 0x00902a0b
 linker_version: "6.0"
 safe_disc_version: "2.30.33"

@@ -3887,7 +3887,7 @@ skipClick:
 	if (!GGame::g_game->MyInterface()->IsPlayBack(0))
 	{
 		static bool WasWindowed;
-		if (LHSys::TheSystem.WindowedMode)
+		if (LHSys::TheSystem.TurnOffMouseMove)
 		{
 			MousePosCurrent = MousePosPrevious;
 			LHSys::TheSystem.mouse.SetPosition(&MousePosCurrent);
@@ -3896,7 +3896,7 @@ skipClick:
 		{
 			LHSys::TheSystem.mouse.SetPosition(&MousePosCurrent);
 		}
-		WasWindowed = LHSys::TheSystem.WindowedMode;
+		WasWindowed = LHSys::TheSystem.TurnOffMouseMove;
 	}
 }
 

@@ -21,6 +21,14 @@ struct LH3DLevelOfDetail
 {
 	// BW1W120 00c381e0 BW1M119 011ce84c (LHCombined Release)
 	static LH3DCitadelLevelOfDetail g_citadellod;
+	// BW1W120 00c381f0 BW1M119 011ce85c (LHCombined Release)
+	static bool32_t g_b_draw_clouds;
+	// BW1W120 00c381f4 BW1M119 011ce860 (LHCombined Release)
+	static bool32_t g_b_draw_clouds_shadow;
+	// BW1W120 00c381f8 BW1M119 011ce864 (LHCombined Release)
+	static bool32_t g_b_use_small_bump;
+	// BW1W120 00c381fc BW1M119 011ce868 (LHCombined Release)
+	static bool32_t g_b_use_weather_system;
 	// BW1W120 00c3820c BW1M119 011ce878 (LHCombined Release)
 	static bool32_t g_b_draw_dynamic_shadow;
 	// BW1W120 00c38220 BW1M119 011ce88c (LHCombined Release)

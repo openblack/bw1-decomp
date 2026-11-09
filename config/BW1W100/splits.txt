@@ -1634,14 +1634,15 @@ Black/PCInput.cpp:
 	.text       start:0x005EFF50 end:0x005F1200
 	.rdata      start:0x0086EC24 end:0x0086EC44
 	.CRT$XCU    start:0x008F6BD4 end:0x008F6BF0 align:4
-	.data       start:0x00B2201C end:0x00B22424
+	.data       start:0x00B2201C end:0x00B220C0
 	.bss        start:0x00C663C0 end:0x00C677E8
 
 Black/PCMain.cpp:
 	.text       start:0x005F1200 end:0x005F2DF0
 	.rdata      start:0x0086EC44 end:0x0086ECD0
 	.CRT$XCU    start:0x008F6BF0 end:0x008F6BF8 align:4
-	.bss        start:0x00C67870 end:0x00C6788C
+	.data       start:0x00B220C0 end:0x00B225AC
+	.bss        start:0x00C67838 end:0x00C67884
 
 Black/PFootball.cpp:
 	.text       start:0x005F2DF0 end:0x005F2F90

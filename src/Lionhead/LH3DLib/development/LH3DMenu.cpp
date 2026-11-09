@@ -9,23 +9,6 @@
 
 #include "Font.h" /* For Font */
 
-// BW1W120 00ef64f8 BW1M119 013421a8 (LHCombined Release)
-extern LH3DVideo::Col lgreen;
-// BW1W120 00ef64fc BW1M119 013421ac (LHCombined Release)
-extern LH3DVideo::Col lred;
-// BW1W120 00ef6500 BW1M119 013421b0 (LHCombined Release)
-extern LH3DVideo::Col grey;
-// BW1W120 00ef6504 BW1M119 013421b4 (LHCombined Release)
-extern LH3DVideo::Col white;
-// BW1W120 00ef6514 BW1M119 013421c4 (LHCombined Release)
-extern LH3DVideo::Col yellow;
-// BW1W120 00ef651c BW1M119 013421cc (LHCombined Release)
-extern LH3DVideo::Col red;
-// BW1W120 00ef6520 BW1M119 013421d0 (LHCombined Release)
-extern LH3DVideo::Col black;
-// BW1W120 00ef6768 BW1M119 011f6388 (LHCombined Release)
-extern Font Fonts[FONT_SIZE_LAST];
-
 #define BMAN_BUTTON_HEIGHT        12
 #define BMAN_CENTRED_BOX_MARGIN   16
 #define BMAN_CENTRED_BOX_HEIGHT   64

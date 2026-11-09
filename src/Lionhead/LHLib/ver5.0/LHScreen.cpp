@@ -46,8 +46,13 @@ __declspec(dllimport) int LHAssertIgnoreAllAsserts; // assert-suppression flag
 extern int                dword_C3132C;             // 0xC3132C one-time DDraw-init guard
 
 // Device enumeration state.
-extern unsigned int unk_E8C5C8; // number of enumerated devices
-extern void*        unk_E8C5D4; // registry-selected device GUID
+extern unsigned int DDrawDeviceCount;
+// BW1W120 00e8c5cc BW1M119 0136d64c (LHCombined Release)
+extern void (*WindowedNotifyCallBackFunction)(int in_window);
+// BW1W120 00e8c5d0 BW1M119 0136d648 (LHCombined Release)
+extern void (*WindowedNotifyAltTabCallbackFunction)(int active);
+// BW1W120 00e8c5d4
+extern GUID* PreferredDDrawGUID;
 
 // Lock/Unlock bookkeeping and the mouse/render back-buffer publish target.
 extern int unk_E8C5D8;                       // Lock() double-lock marker
@@ -81,13 +86,10 @@ int            sub_7DB910();                                              // win
 void           sub_7DB940();                                              // pump window messages
 
 // RunInMSWindow().
-extern char unk_E8C5E4; // re-entrancy guard (accessed as a byte)
-typedef void (*ScreenModeCallback)(int);
-extern ScreenModeCallback unk_E8C5CC;   // windowed/fullscreen change callback
-void                      sub_7E69B0(); // pre-mode-switch teardown
+extern char unk_E8C5E4;   // re-entrancy guard (accessed as a byte)
+void        sub_7E69B0(); // pre-mode-switch teardown
 
 // AltTab().
-extern ScreenModeCallback unk_E8C5D0; // alt-tab callback
 // Defined here: it sits in this TU's screen-state .data cluster.
 // BW1W120 00e8c5e0
 int LHScreen::AltTabbedAway;
@@ -289,7 +291,7 @@ int __stdcall DDEnumCallback(GUID* guid, char* driverDesc, char* driverName, voi
 	Report3D("  Driver: %s\n", (uint32_t)driverDesc);
 	Report3D("  Name: %s\n", (uint32_t)driverName);
 
-	unsigned int count = unk_E8C5C8;
+	unsigned int count = DDrawDeviceCount;
 	char*        rec;
 	if (guid)
 	{
@@ -341,7 +343,7 @@ int __stdcall DDEnumCallback(GUID* guid, char* driverDesc, char* driverName, voi
 	if (caps.dwCaps & 1)
 	{
 		Report3D("  Accelerated.\n");
-		++unk_E8C5C8;
+		++DDrawDeviceCount;
 	}
 	else
 	{
@@ -358,10 +360,10 @@ int LHScreen::DDrawInitialiseDevices()
 	char deviceIdentifierA[512];
 	char deviceIdentifierB[560];
 
-	unk_E8C5C8 = 0;
+	DDrawDeviceCount = 0;
 	DirectDrawEnumerateA((LPDDENUMCALLBACKA)DDEnumCallback, DeviceInfoArray);
 	unsigned int selected = 0;
-	if (!unk_E8C5C8)
+	if (!DDrawDeviceCount)
 		return 2;
 
 	if (PDirectDraw)
@@ -371,15 +373,15 @@ int LHScreen::DDrawInitialiseDevices()
 	}
 
 	unsigned int i = 0;
-	if (unk_E8C5D4 && unk_E8C5C8)
+	if (PreferredDDrawGUID && DDrawDeviceCount)
 	{
 		char* records = (char*)DeviceInfoArray;
 		char* rec = records + 220; // GUID lives at +220 within each 248-byte record
-		while (memcmp(rec, unk_E8C5D4, 0x10u))
+		while (memcmp(rec, PreferredDDrawGUID, 0x10u))
 		{
 			++i;
 			rec += 248;
-			if (i >= unk_E8C5C8)
+			if (i >= DDrawDeviceCount)
 				goto fallback;
 		}
 		int v7 = 248 * i;
@@ -936,8 +938,8 @@ int LHScreen::GetMSDesktopParams(uint16_t* width, uint16_t* height, uint8_t* dep
 // BW1W120 007de6d0 BW1M119 0114d100 (LHCombined Release)
 void LHScreen::AltTabDeactivate()
 {
-	if (unk_E8C5D0)
-		unk_E8C5D0(0);
+	if (WindowedNotifyAltTabCallbackFunction)
+		WindowedNotifyAltTabCallbackFunction(0);
 	LH3DVRAMTexReleaseAll();
 	AltTabbedAway = 1;
 }
@@ -949,13 +951,13 @@ void LHScreen::AltTabReactivate()
 	PBackSurface->Restore();
 	LH3DRender::ZBufferSurface->Restore();
 	LH3DVRAMTexAllocAllVRAM();
-	if (unk_E8C5D0)
-		unk_E8C5D0(1);
+	if (WindowedNotifyAltTabCallbackFunction)
+		WindowedNotifyAltTabCallbackFunction(1);
 	AltTabbedAway = 0;
 }
 
 // BW1W120 007de730 BW1M119 0114cef0 (LHCombined Release)
-int LHScreen::RunInMSWindow(int param_1)
+int LHScreen::RunInMSWindow(int in_window)
 {
 	if (g_b_voodoo2)
 		return 0;
@@ -967,7 +969,7 @@ int LHScreen::RunInMSWindow(int param_1)
 		EnterCriticalSection(&LHScreen::CriticalSection);
 		LeaveCriticalSection(&LHScreen::CriticalSection);
 		int wasOpened = opened;
-		if (param_1 == windowed)
+		if (in_window == windowed)
 			return 0;
 		sub_7E69B0();
 		windowed = (windowed == 0);
@@ -977,8 +979,8 @@ int LHScreen::RunInMSWindow(int param_1)
 		LHSurfaceRestoreAll(1);
 		LeaveCriticalSection(&LHScreen::CriticalSection);
 		SetMSOffset();
-		if (unk_E8C5CC)
-			unk_E8C5CC(param_1);
+		if (WindowedNotifyCallBackFunction)
+			WindowedNotifyCallBackFunction(in_window);
 		unk_E8C5E4 = 0;
 	}
 	return result;
@@ -1060,7 +1062,7 @@ int LHScreen::SaveBitmap()
 }
 
 // BW1W120 007dec80 BW1M119 0114c650 (LHCombined Release)
-uint32_t LHScreen::GetAvailableVidMem()
+int LHScreen::GetAvailableVidMem()
 {
 	IDirectDraw2* dd2;
 	LHSys::GetScreen().PDirectDraw->QueryInterface(IID_IDirectDraw2, (void**)&dd2);

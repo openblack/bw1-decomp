@@ -11,7 +11,7 @@
 #include <string.h> /* For memset */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <Lionhead/LHLib/ver5.0/LHHeap2.h>          /* For struct UniqueKeyHeap */
+#include <Lionhead/LHLib/ver5.0/LHHeap2.h>          /* For class UniqueKeyHeap */
 #ifndef VERSION_BW1WCI
 #include <Lionhead/LHLib/ver5.0/LHMemoryLeak.h> /* For class LHMemoryLeak */
 #endif

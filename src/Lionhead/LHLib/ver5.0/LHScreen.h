@@ -160,13 +160,13 @@ struct LHScreen
 	// BW1W120 007de6f0 BW1M119 0114d050 (LHCombined Release)
 	void AltTabReactivate();
 	// BW1W120 007de730 BW1M119 0114cef0 (LHCombined Release)
-	int RunInMSWindow(int param_1);
+	int RunInMSWindow(int in_window);
 	// BW1W120 007de820 BW1M119 0114ce00 (LHCombined Release)
 	int SetMSOffset();
 	// BW1W120 007de930 BW1M119 0114cc60 (LHCombined Release)
 	int SaveBitmap();
 	// BW1W120 007dec80 BW1M119 0114c650 (LHCombined Release)
-	uint32_t GetAvailableVidMem();
+	int GetAvailableVidMem();
 	// BW1W120 007decc0 BW1M119 0114c5d0 (LHCombined Release)
 	int WaitForVerticalBlank();
 	// BW1W120 007ded40 BW1M119 0114c4a0 (LHCombined Release)

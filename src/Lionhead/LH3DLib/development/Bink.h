@@ -28,5 +28,8 @@ extern "C" __declspec(dllimport) void __stdcall BinkService(HBINK bink);
 extern "C" __declspec(dllimport) void __stdcall BinkGetRealtime(HBINK bink, BINKREALTIME* realtime,
                                                                 unsigned long frames);
 extern "C" __declspec(dllimport) void __stdcall BinkGoto(HBINK bink, unsigned long frame, long flags);
+extern "C" __declspec(dllimport) void __stdcall BinkNextFrame(HBINK bink);
+extern "C" __declspec(dllimport) long __stdcall BinkWait(HBINK bink);
+extern "C" __declspec(dllimport) long __stdcall BinkSetSoundOnOff(HBINK bink, long on_off);
 
 #endif /* BW1_DECOMP_BINK_INCLUDED_H */

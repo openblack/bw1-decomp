@@ -60,14 +60,14 @@ unsigned long LH3DTech::g_cache_flags[LH3D_MAX_POINTS];
 #endif
 unsigned long LH3DLandscape::g_coeff[LH3D_LANDSCAPE_CELL_TEXELS * LH3D_LANDSCAPE_CELL_TEXELS][4];
 
-volatile bool LH3DP3::IsPentium;
-volatile bool LH3DP3::IsPentiumPro;
-volatile bool LH3DP3::IsPentiumIII;
-volatile bool LH3DP3::IsPentium4;
-volatile int  LH3DP3::HasCMOV;
-volatile int  LH3DP3::HasMMX;
-volatile int  LH3DP3::HasSSE;
-volatile int  LH3DP3::HasSSE2;
+volatile bool     LH3DP3::IsPentium;
+volatile bool     LH3DP3::IsPentiumPro;
+volatile bool     LH3DP3::IsPentiumIII;
+volatile bool     LH3DP3::IsPentium4;
+volatile bool32_t LH3DP3::HasCMOV;
+volatile bool32_t LH3DP3::HasMMX;
+volatile bool32_t LH3DP3::HasSSE;
+bool32_t          LH3DP3::HasSSE2;
 
 #ifndef VERSION_BW1W100
 void LH3DP3::Init()
@@ -88,10 +88,10 @@ __declspec(cpu_specific(generic)) void LH3DP3::CheckCPU()
 	IsPentiumPro = false;
 	IsPentiumIII = false;
 	IsPentium4 = false;
-	HasCMOV = 0;
-	HasMMX = 0;
-	HasSSE = 0;
-	HasSSE2 = 0;
+	HasCMOV = false;
+	HasMMX = false;
+	HasSSE = false;
+	HasSSE2 = false;
 }
 
 __declspec(cpu_specific(pentium)) void LH3DP3::CheckCPU()
@@ -100,10 +100,10 @@ __declspec(cpu_specific(pentium)) void LH3DP3::CheckCPU()
 	IsPentiumPro = false;
 	IsPentiumIII = false;
 	IsPentium4 = false;
-	HasCMOV = 0;
-	HasMMX = 0;
-	HasSSE = 0;
-	HasSSE2 = 0;
+	HasCMOV = false;
+	HasMMX = false;
+	HasSSE = false;
+	HasSSE2 = false;
 }
 
 __declspec(cpu_specific(pentium_pro)) void LH3DP3::CheckCPU()
@@ -112,10 +112,10 @@ __declspec(cpu_specific(pentium_pro)) void LH3DP3::CheckCPU()
 	IsPentiumPro = true;
 	IsPentiumIII = false;
 	IsPentium4 = false;
-	HasCMOV = 1;
-	HasMMX = 0;
-	HasSSE = 0;
-	HasSSE2 = 0;
+	HasCMOV = true;
+	HasMMX = false;
+	HasSSE = false;
+	HasSSE2 = false;
 }
 
 __declspec(cpu_specific(pentium_mmx)) void LH3DP3::CheckCPU()
@@ -124,10 +124,10 @@ __declspec(cpu_specific(pentium_mmx)) void LH3DP3::CheckCPU()
 	IsPentiumPro = false;
 	IsPentiumIII = false;
 	IsPentium4 = false;
-	HasCMOV = 0;
-	HasMMX = 1;
-	HasSSE = 0;
-	HasSSE2 = 0;
+	HasCMOV = false;
+	HasMMX = true;
+	HasSSE = false;
+	HasSSE2 = false;
 }
 
 __declspec(cpu_specific(pentium_ii)) void LH3DP3::CheckCPU()
@@ -136,10 +136,10 @@ __declspec(cpu_specific(pentium_ii)) void LH3DP3::CheckCPU()
 	IsPentiumPro = true;
 	IsPentiumIII = false;
 	IsPentium4 = false;
-	HasCMOV = 1;
-	HasMMX = 1;
-	HasSSE = 0;
-	HasSSE2 = 0;
+	HasCMOV = true;
+	HasMMX = true;
+	HasSSE = false;
+	HasSSE2 = false;
 }
 
 __declspec(cpu_specific(pentium_iii)) void LH3DP3::CheckCPU()
@@ -149,10 +149,10 @@ __declspec(cpu_specific(pentium_iii)) void LH3DP3::CheckCPU()
 	IsPentiumPro = false;
 	IsPentiumIII = true;
 	IsPentium4 = false;
-	HasCMOV = 1;
-	HasMMX = 1;
-	HasSSE = 1;
-	HasSSE2 = 0;
+	HasCMOV = true;
+	HasMMX = true;
+	HasSSE = true;
+	HasSSE2 = false;
 }
 
 __declspec(cpu_specific(pentium_4)) void LH3DP3::CheckCPU()
@@ -162,10 +162,10 @@ __declspec(cpu_specific(pentium_4)) void LH3DP3::CheckCPU()
 	IsPentiumPro = false;
 	IsPentiumIII = false;
 	IsPentium4 = true;
-	HasCMOV = 1;
-	HasMMX = 1;
-	HasSSE = 1;
-	HasSSE2 = 1;
+	HasCMOV = true;
+	HasMMX = true;
+	HasSSE = true;
+	HasSSE2 = true;
 }
 
 void __fastcall LH3DP3::Intersect(uint32_t mask, uint16_t inside, uint16_t outside, uint16_t out_index)
