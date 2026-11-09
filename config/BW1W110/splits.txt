@@ -2302,9 +2302,10 @@ Black/Serialise.cpp:
 
 Black/ServerLandscapeMap.cpp:
 	.text       start:0x007073D0 end:0x00709650
-	.rdata      start:0x009471F8 end:0x00947220
-	.data       start:0x00C0FD84 end:0x00C0FE78
-	.bss        start:0x00D87D24 end:0x00D87F4C
+	.rdata      start:0x009471F8 end:0x0094721D
+	.CRT$XCU    start:0x009B7094 end:0x009B70A4 align:4
+	.data       start:0x00C0FD84 end:0x00C0FE50
+	.bss        start:0x00D87D20 end:0x00D87F4C
 
 Black/Settings.cpp:
 	.text       start:0x00709650 end:0x007097C0
