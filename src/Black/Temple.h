@@ -30,6 +30,10 @@ struct Temple
 	static LH3DColor CitadelColour;
 	// BW1W120 00e0601c
 	static int LeaveCitadel;
+	// BW1W120 00e06024
+	static LH3DColor FadeColour;
+	// BW1W120 00e06028
+	static int FadeCount;
 	// BW1W120 00e0602c
 	static float DoorPosition;
 

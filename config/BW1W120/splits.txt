@@ -2949,8 +2949,9 @@ Black/VillagerLeader.cpp:
 Black/villagernames.cpp:
 	.text       start:0x00762720 end:0x007630B0
 	.rdata      start:0x0099A9B8 end:0x0099A9C4
+	.rdata$r    start:0x009B9DD8 end:0x009B9E24
 	.CRT$XCU    start:0x009C79F4 end:0x009C79F8 align:4
-	.data       start:0x00C24534 end:0x00C24574
+	.data       start:0x00C24534 end:0x00C24573
 	.bss        start:0x00DB9E24 end:0x00DB9E2C
 
 Black/VillagerPlaytime.cpp:
