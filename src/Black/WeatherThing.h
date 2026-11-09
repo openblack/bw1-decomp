@@ -69,6 +69,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00774230 BW1M119 010215e0
+	bool32_t Process();
 	// BW1W120 00774400 BW1M119 015ab6e0
 	void SetProperties(float temperature, float rainfall, float snowfall, float overcast, float fall_speed);
 	// BW1W120 00774460 BW1M119 015ab680

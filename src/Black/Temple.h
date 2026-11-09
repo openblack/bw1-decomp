@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <chlasm/LHKeyBoard.h>                      /* For enum LH_KEY */
 
 #include "ScriptDLL.h"  /* For enum VMType */
 #include "TempleRoom.h" /* For class TempleRoom, enum TempleRoomsEnum */
@@ -74,6 +75,8 @@ struct Temple
 	void Update();
 	// BW1W120 00794370 BW1M119 0153f7c0
 	void Draw();
+	// BW1W120 00794830 BW1M119 0153f3f0
+	void ProcessKey(LH_KEY key, unsigned short modifier);
 	// BW1W120 00794a20 BW1M119 0153f010
 	bool StartScript(unsigned long challenge_id);
 	// BW1W120 00794970 BW1M119 0153f230
