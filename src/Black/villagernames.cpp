@@ -113,12 +113,12 @@ VillagerName* VillagerName::Add(float scale, LHPoint point, wchar_t* text, LH3DC
 		name->NumLines = 1;
 		name->Point = point;
 		name->Scale = scale;
-		if (color.r < VILLAGER_NAME_DARK_LEVEL && color.g < VILLAGER_NAME_DARK_LEVEL &&
-		    color.b < VILLAGER_NAME_DARK_LEVEL)
+		if (color.GetR() < VILLAGER_NAME_DARK_LEVEL && color.GetG() < VILLAGER_NAME_DARK_LEVEL &&
+		    color.GetB() < VILLAGER_NAME_DARK_LEVEL)
 		{
-			*(uint32_t*)&color = LH3D_COLOR_RGB_MASK;
+			color = LH3D_COLOR_RGB_MASK;
 		}
-		*(uint32_t*)&color = LH3DBlendColor(*(uint32_t*)&color, LH3D_COLOR_WHITE, VILLAGER_NAME_LIGHTEN);
+		color = LH3DBlendColor(color.GetColor(), LH3D_COLOR_WHITE, VILLAGER_NAME_LIGHTEN);
 		name->Color = color;
 		name->Lines[0] = name->Text;
 		wcsncpy(name->Text, text, ARRAY_SIZE(name->Text) - 1);
@@ -151,10 +151,7 @@ VillagerName* VillagerName::Add(float scale, LHPoint point, wchar_t* text, LH3DC
 		{
 			float lineWidth = font->GetStringWidth(name->Lines[line], wcslen(name->Lines[line]), name->TextSize, 1.0f) +
 			                  scale * VILLAGER_NAME_LINE_MARGIN;
-			if (lineWidth > width)
-			{
-				width = lineWidth;
-			}
+			width = max(lineWidth, width);
 		}
 		if (LHSys::GetScreen().width < width)
 		{
