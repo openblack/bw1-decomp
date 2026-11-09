@@ -156,6 +156,8 @@ struct FontCache
 	void SetInCache(uint8_t font, uint16_t code);
 	// BW1W120 inlined BW1M119 01030c70 (LHCombined Release)
 	static uint8_t IsInCache(uint8_t font, uint16_t code);
+	// BW1W120 inlined BW1M119 01031ae0 (LHCombined Release)
+	static uint8_t HASH(wchar_t code, uint8_t font);
 };
 
 struct GatheringText
@@ -166,9 +168,7 @@ struct GatheringText
 	static LH3DMaterial* bubmat;
 	// BW1W120 00ed92e0 BW1M119 01332230 (LHCombined Release)
 	static LH3DTexture* bubtex;
-	// BW1W120 00ed92e4 BW1M119 0133222c (LHCombined Release)
-	static int numgt;
-	uint8_t    field_0x0;
+	uint8_t             field_0x0;
 
 	// Static methods
 
@@ -190,6 +190,8 @@ struct GatheringText
 	static void CloseGameFonts();
 	// BW1W120 00831130 BW1M119 01033370 (LHCombined Release)
 	float GetStringWidth(char16_t* str, int len, float text_size);
+	// BW1W120 inlined BW1M119 0135e7a0
+	float GetStringWidth(char* str, int len, float text_size);
 	// Inliner IL size: 41
 	// BW1W120 inlined BW1M119 inlined
 	float GetStringWidth(char16_t* str, int len, float text_size, float scale)
