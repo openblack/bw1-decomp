@@ -940,7 +940,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/CreatureMentalDesireTests.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalEditor.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalExploration.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureMentalLearn.cpp"),
+            GameCodeObject(Matching, "Black/CreatureMentalLearn.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalLearnAction.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalMisc.cpp"),
             GameCodeObject(Matching, "Black/CreatureMentalObjectMultipliers.cpp"),
@@ -2796,8 +2796,13 @@ def c_string_literal(text):
 # The rest of the checkout (include/, orig/, build/) has no original directory. The compiler gets it
 # under this fixed name instead, so every checkout hands it the same path strings. Only the length
 # of the strings matters (the memory they take decides some emission orders, such as the order of a
-# unit's RTTI COMDATs); this one gives Abode's RTTI its shipped order in 1.10, 1.20 and 1.30.
-CL6_CHECKOUT_ROOT = r"C:\Black"
+# unit's RTTI COMDATs). A version can have its own name, because the length that gives the
+# shipped orders is not the same in each. `C:\Black` gives Abode's RTTI its shipped order in 1.10,
+# 1.20 and 1.30. The name of Creature Isle gives CreatureMentalLearn's RTTI its shipped order there.
+CL6_CHECKOUT_ROOTS = {
+    "BW1WCI": r"C:\BlackWhiteCreatureIsleCheckout",
+}
+CL6_CHECKOUT_ROOT = CL6_CHECKOUT_ROOTS.get(config.version, r"C:\Black")
 
 
 def uses_patched_msvc6(obj):
