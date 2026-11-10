@@ -60,7 +60,7 @@ public:
 	// BW1W120 0062e240 BW1M119 013ab6f0
 	void StopQuerying();
 	// BW1W120 0062e130 BW1M119 013ab980
-	void InitFromDisk();
+	static void InitFromDisk();
 	// BW1W120 0062e1e0 BW1M119 null
 	void SaveToDisk();
 	// BW1W120 0062e270 BW1M119 013ab630

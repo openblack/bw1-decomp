@@ -76,13 +76,6 @@
 #define THINK_INTERVAL      10u
 #define BAN_REMOVE_INTERVAL 400u
 
-enum LOBBY_MESSAGE_BOX
-{
-	LOBBY_MESSAGE_BOX_NONE = 0,
-	LOBBY_MESSAGE_BOX_ERROR = 1,
-	LOBBY_MESSAGE_BOX_CONNECTING = 2,
-};
-
 BWGameSpy     BWGameSpy::Instance;
 static DBInfo ChatServerQuery;
 

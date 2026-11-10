@@ -63,7 +63,7 @@ public:
 	int WaitUntilGameLoopStarted();
 };
 
-// BW1W120 005ea750 BW1M119 null
-void OpenURL(char* url);
+// BW1W120 005ea750 BW1M119 0137e980
+void RunWebPage(const char* url);
 
 #endif
