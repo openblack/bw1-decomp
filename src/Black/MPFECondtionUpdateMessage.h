@@ -6,24 +6,16 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-// Forward Declares
-
 struct MPFEPlayerDetails;
 
 class MPFECondtionUpdateMessage : public MPFEMessageObject
 {
 public:
-	// Override methods
-
 	// BW1W120 0062c860 BW1M119 inlined
 	virtual ~MPFECondtionUpdateMessage() {}
 
-	// Static methods
-
 	// BW1W120 0062c890 BW1M119 null
 	static void ProcessIncoming(wchar_t* message, MPFEPlayerDetails* from);
-
-	// Constructors
 
 	// BW1W120 0062c700 BW1M119 null
 	MPFECondtionUpdateMessage();

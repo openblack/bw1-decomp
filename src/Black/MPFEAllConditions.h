@@ -6,25 +6,17 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-// Forward Declares
-
 class WinCondition;
 struct MPFEPlayerDetails;
 
 class MPFEAllConditions : public MPFEMessageObject
 {
 public:
-	// Override methods
-
 	// BW1W120 0062cb70 BW1M119 null
 	virtual ~MPFEAllConditions() {}
 
-	// Static methods
-
 	// BW1W120 0062cba0 BW1M119 null
 	static void ProcessIncoming(wchar_t* message, MPFEPlayerDetails* from);
-
-	// Constructors
 
 	// BW1W120 0062cac0 BW1M119 null
 	MPFEAllConditions(WinCondition* conditions, bool* enabled);
