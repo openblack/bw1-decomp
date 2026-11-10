@@ -45097,6 +45097,7 @@ lbl_00C2051D = .data:0x00C2051D; // type:object size:0x3
 ??_C@_09FIBM@Invalid?5Y?$AA@ = .data:0x00C20B64; // type:object size:0xA scope:global data:string comdat
 ??_C@_0N@KPGI@Invalid?5enum?$AA@ = .data:0x00C20B70; // type:object size:0xD scope:global data:string comdat
 ??_C@_0BF@PDC@Invalid?5script?5thing?$AA@ = .data:0x00C20B80; // type:object size:0x15 scope:global data:string comdat
+??_C@_0CA@NPOH@C?3?2dev?2MP?2Black?2ScriptTimer?4cpp?$AA@ = .data:0x00C20B98; // type:object size:0x20 scope:global data:string comdat
 ??_R0?AVSecretCreature@@@8 = .data:0x00C20BB8; // type:object size:0x1D comdat
 ??_C@_0L@PABB@TimerValue?$AA@ = .data:0x00C20BD8; // type:object size:0xB scope:global data:string comdat
 ??_C@_0O@NJNJ@TimerCheckSum?$AA@ = .data:0x00C20BE4; // type:object size:0xE scope:global data:string comdat

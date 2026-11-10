@@ -2221,6 +2221,7 @@ Black/ScriptFind.cpp:
 	.rdata      start:0x0099AD44 end:0x0099AD4C
 	.CRT$XCU    start:0x00A3706C end:0x00A37074 align:4
 	.data       start:0x00C7DF08 end:0x00C7DF54
+	.bss        start:0x00E17578 end:0x00E17584
 
 Black/ScriptFunctions.cpp:
 	.text       start:0x0070EBA0 end:0x007184A0
