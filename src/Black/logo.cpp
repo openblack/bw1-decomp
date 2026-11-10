@@ -30,7 +30,8 @@
 #include "Temple.h"     /* For struct Temple */
 #include "ControlMap.h" /* For class ControlMap */
 #if defined(VERSION_BW1W130)
-#include "P5Glove.h" /* For struct P5Glove */
+#include "P5Bend.h"   /* For P5Bend_Process */
+#include "P5Motion.h" /* For P5Motion_Process */
 #endif
 
 #if defined(VERSION_BW1W130)
@@ -411,11 +412,12 @@ void RunAlexFX(int stage)
 #if defined(VERSION_BW1W130)
 	if (LHSys::TheSystem.GloveActive)
 	{
-		P5Glove::UpdatePosition();
-		delta.x = P5Glove::Movement.x;
-		delta.y = P5Glove::Movement.y;
-		mouse = P5Glove::Position;
-		wheel = P5Glove::Movement.z * -5.0f;
+		P5Motion_Process();
+		delta.x = fXMickey;
+		delta.y = fYMickey;
+		mouse.x = nXPos;
+		mouse.y = nYPos;
+		wheel = fZMickey * -5.0f;
 	}
 #endif
 	mouseMove.x = (delta.x - mouseMove.x) * 0.1f + mouseMove.x;
@@ -568,8 +570,8 @@ void DoLogo()
 #if defined(VERSION_BW1W130)
 		if (LHSys::TheSystem.GloveActive)
 		{
-			P5Glove::UpdateFingers();
-			if (P5Glove::FingerClicks[P5_GLOVE_FINGER_INDEX] || P5Glove::FingerClicks[P5_GLOVE_FINGER_MIDDLE])
+			P5Bend_Process();
+			if (nP5ClickEdge[P5_INDEX] || nP5ClickEdge[P5_MIDDLE])
 			{
 				Finished = true;
 			}
