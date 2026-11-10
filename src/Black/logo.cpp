@@ -30,8 +30,9 @@
 #include "Temple.h"     /* For struct Temple */
 #include "ControlMap.h" /* For class ControlMap */
 #if defined(VERSION_BW1W130)
-#include "P5Bend.h"   /* For P5Bend_Process */
-#include "P5Motion.h" /* For P5Motion_Process */
+#include <P5/P5dll.h>    /* For P5_INDEX */
+#include <P5/P5Bend.h>   /* For P5Bend_Process */
+#include <P5/P5Motion.h> /* For P5Motion_Process */
 #endif
 
 #if defined(VERSION_BW1W130)
