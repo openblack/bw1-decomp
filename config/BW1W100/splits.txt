@@ -2017,6 +2017,11 @@ Black/ScriptCreature.cpp:
 	.data       start:0x00B30250 end:0x00B30578
 	.bss        start:0x00CB6BE8 end:0x00CB6DD4
 
+Black/ScriptDebug.cpp:
+	.text       start:0x00690530 end:0x00690550
+	.CRT$XCU    start:0x008F6FC4 end:0x008F6FC8 align:4
+	.bss        start:0x00CB6DDC end:0x00CB6DE0
+
 Black/ScriptDLL.cpp:
 	.text       start:0x00690550 end:0x00690C40
 	.rdata      start:0x00879374 end:0x00879380
