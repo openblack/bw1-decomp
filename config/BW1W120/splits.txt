@@ -1644,10 +1644,10 @@ Black/LoadingScreen.cpp:
 
 Black/Lobbybox.cpp:
 	.text       start:0x005F51B0 end:0x005F8790
-	.rdata      start:0x0092B654 end:0x0092B710
+	.rdata      start:0x0092B654 end:0x0092B680
 	.CRT$XCU    start:0x009C6E44 end:0x009C6E50 align:4
-	.data       start:0x00BF3C38 end:0x00BF3D7C
-	.bss        start:0x00D31AEC end:0x00D31B80
+	.data       start:0x00BF3C38 end:0x00BF3CC8
+	.bss        start:0x00D31AEC end:0x00D31AF8
 
 Black/LocalBase.cpp:
 	.text       start:0x005F8790 end:0x005F88C0
@@ -1655,9 +1655,10 @@ Black/LocalBase.cpp:
 
 Black/logo.cpp:
 	.text       start:0x005F88C0 end:0x005FA740
+	.rdata      start:0x0092B680 end:0x0092B710
 	.CRT$XCU    start:0x009C6E54 end:0x009C6E6C align:4
-	.data       start:0x00BF3D7C end:0x00BF3DB8
-	.bss        start:0x00D31B80 end:0x00D37CD8
+	.data       start:0x00BF3CC8 end:0x00BF3DB8
+	.bss        start:0x00D31AF8 end:0x00D37CD8
 
 Black/MagicCreatureSpellInfo.cpp:
 	.text       start:0x005FA740 end:0x005FA880

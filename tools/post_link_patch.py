@@ -858,6 +858,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005E8C5B, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E93EB, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E96CA, call_indirect(0x008A901C)),  # LHInetWeather: __imp__TrackMouseEvent@4
+    (0x005F895A, call_indirect(0x008A97AC)),  # logo: __imp__ShellExecuteA@24
+    (0x005FA06B, call_rel32(0x004017F9)),  # logo
+    (0x005FA35A, call_indirect(0x008A999C)),  # logo: __imp__Disconnect_Dialup...
     (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
     (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
     (0x0060714B, call_rel32(0x004017F9)),  # MobileObject
@@ -1658,6 +1661,18 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005CBEF8, jmp_run(0x005CBE83)),  # HelpSystemConditions
     (0x005CC14B, copy_run(0x005CBEF8)),  # HelpSystemInfo
     (0x005CC1D8, jmp_run(0x005CC14B)),  # HelpSystemLevel
+    (0x005FC3A5, copy_run(0x005FC326)),  # logo
+    (0x005FC3FA, jmp_run(0x005FC3A5)),  # logo
+    (0x005FC449, copy_run(0x005FC3FA)),  # logo
+    (0x005FDB5B, jmp_run(0x005FC449)),  # logo
+    (0x005FDC28, copy_run(0x005FDB5B)),  # logo
+    (0x005FDCC3, padding_bytes(bytes.fromhex('0000000075068125c446c700c3'))),  # logo
+    (0x005FDCE1, copy_run(0x005FDCC3)),  # logo
+    (0x005FDD31, jmp_run(0x005FDCE1)),  # logo
+    (0x005FDD69, copy_run(0x005FC2E1)),  # logo
+    (0x005FDE6A, copy_run(0x005FDD69)),  # logo
+    (0x005FE039, jmp_run(0x005FDE6A)),  # logo
+    (0x005FE216, jmp_run(0x005FE039)),  # logo
     (0x0060A717, jmp_run(0x0060A511)),  # Mobile
     (0x0060A7E4, copy_run(0x0060A717)),  # Mobile
     (0x0060A843, copy_run(0x0060A7E3)),  # MobileObject

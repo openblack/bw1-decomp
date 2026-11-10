@@ -14,6 +14,9 @@
 
 class GCamera;
 
+// How far the camera view sits from its focus, as a fraction of DefaultDistance.
+#define FLY_AND_CLICK_CAMERA_DISTANCE_SCALE (1.0f / 12.0f)
+
 enum FLY_AND_CLICK_TYPE
 {
 	FLY_AND_CLICK_TYPE_CAMERA = 0,
@@ -35,8 +38,6 @@ public:
 	static const float MoveSpeed;
 	// BW1W120 008c7800
 	static const float ZoomTimes[3];
-	// BW1W120 008c780c
-	static const float CameraDistanceScale;
 
 	FLY_AND_CLICK_TYPE Type;
 	LHPoint            Focus;

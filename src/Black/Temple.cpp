@@ -8,8 +8,8 @@
 #include "HelpSystem.h"      /* For class HelpSystem */
 #include "Script.h"          /* For class GScript */
 
-float Temple::Dat_00C2A150 = 1.0f;
-float Temple::Dat_00E06020;
+float Temple::FadeLevel = 1.0f;
+float Temple::FadeTarget;
 
 void Temple::UpdateChallenge(SnapShotData& data, unsigned long count, void** values, VMType* types, int take_picture)
 {

@@ -7,6 +7,9 @@ splits: config/BW1WCI/splits.txt
 generate_imports: false
 
 block_relocations:
+# RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
+  - source: 0x0061175A
+  - source: 0x00611CE0
 # ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
   - source: 0x0072436D
   - source: 0x00724711
