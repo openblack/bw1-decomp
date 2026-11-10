@@ -190,7 +190,8 @@ def compile_edges(records, root, windows=None):
         # edge naming one writes it.
         pch = None
         if any(w.startswith(('/Yu', '-Yu')) for w in words):
-            pch = canonical(pchs[-1], directory) if pchs else None
+            # Kept as spelled: it names the Ninja target too (see below).
+            pch = absolute_path(pchs[-1], directory) if pchs else None
         else:
             shared += pchs
         if any(w.startswith(('/Yc', '-Yc')) for w in words):
