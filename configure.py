@@ -1211,7 +1211,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFEChooseConnection.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEClanDetails.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEClanList.cpp"),
-            GameCodeObject(NonMatching, "Black/MPFEConditionMessages.cpp", pch=False),
+            GameCodeObject(Matching, "Black/MPFEConditionMessages.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/MPFECondtionUpdateMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEConnectionStatus.cpp", pch=PCHExceptNoStringIn("BW1W130")),
             GameCodeObject(NonMatching, "Black/MPFECreateGame.cpp"),
