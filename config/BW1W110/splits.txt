@@ -1471,18 +1471,20 @@ Black/LoadingScreen.cpp:
 
 Black/Lobbybox.cpp:
 	.text       start:0x005EFF00 end:0x005F34B0
-	.rdata      start:0x0091B61C end:0x0091B6D8
+	.rdata      start:0x0091B61C end:0x0091B648
 	.CRT$XCU    start:0x009B6A10 end:0x009B6A18 align:4
-	.data       start:0x00BE3018 end:0x00BE315C
-	.bss        start:0x00D20904 end:0x00D20998
+	.data       start:0x00BE3018 end:0x00BE30A8
+	.bss        start:0x00D20904 end:0x00D20910
 
 Black/LocalBase.cpp:
 	.text       start:0x005F34B0 end:0x005F35B0
 
 Black/logo.cpp:
-	.text       start:0x005F35B0 end:0x005F4F00
-	.CRT$XCU    start:0x009B6A18 end:0x009B6A20 align:4
-	.bss        start:0x00D20998 end:0x00D26AF0
+	.text       start:0x005F35B0 end:0x005F5400
+	.rdata      start:0x0091B648 end:0x0091B6D8
+	.CRT$XCU    start:0x009B6A18 end:0x009B6A2C align:4
+	.data       start:0x00BE30A8 end:0x00BE3194
+	.bss        start:0x00D20910 end:0x00D26AF0
 
 Black/MagicCreatureSpellInfo.cpp:
 	.text       start:0x005F5430 end:0x005F5510
@@ -1701,7 +1703,10 @@ Black/MPFEGameStartMessages.cpp:
 Black/MPFELogin.cpp:
 	.text       start:0x00627A30 end:0x00628500
 	.rdata      start:0x009208E0 end:0x0092091C
+	.rdata$r    start:0x009A2810 end:0x009A28B0
 	.CRT$XCU    start:0x009B6B74 end:0x009B6B80 align:4
+	.data       start:0x00BECCB8 end:0x00BECD10
+	.bss        start:0x00D2FC20 end:0x00D2FD68
 
 Black/MPFEMapMessages.cpp:
 	.text       start:0x00628500 end:0x006287F0
@@ -2197,12 +2202,25 @@ Black/ScriptDLL.cpp:
 	.data       start:0x00BFC240 end:0x00BFC49E
 	.bss        start:0x00D84D20 end:0x00D84D24
 
+Black/ScriptFind.cpp:
+	.text       start:0x006EBC80 end:0x006ECB40
+	.rdata      start:0x00932180 end:0x00932188
+	.CRT$XCU    start:0x009B701C end:0x009B7024 align:4
+	.data       start:0x00BFC4A0 end:0x00BFC4EC
+	.bss        start:0x00D84D28 end:0x00D84D34
+
 Black/ScriptFunctions.cpp:
 	.text       start:0x006ECB40 end:0x006F4EF0
 	.rdata      start:0x00932188 end:0x0093219C
 	.CRT$XCU    start:0x009B7024 end:0x009B702C align:4
 	.data       start:0x00BFC4EC end:0x00BFCCD0
 	.bss        start:0x00D84D34 end:0x00D84F44
+
+Black/ScriptFunctionTable.cpp:
+	.text       start:0x006F4EF0 end:0x006FDB50
+	.CRT$XCU    start:0x009B702C end:0x009B7034 align:4
+	.data       start:0x00BFCCD0 end:0x00C0F658
+	.bss        start:0x00D84F44 end:0x00D84F48
 
 Black/ScriptGFX.cpp:
 	.text       start:0x006FDB50 end:0x006FE470

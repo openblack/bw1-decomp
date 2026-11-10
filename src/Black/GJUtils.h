@@ -30,6 +30,8 @@ public:
 	static void PostRotateByQuaternion(float angle, const LHPoint* axis, LHMatrix* matrix);
 	// BW1W120 005906e0 BW1M119 012ff530
 	static void GetRandomSurfacePos(LH3DMesh* mesh, LHMatrix& matrix, LHPoint* pos, LHPoint* normal);
+	// BW1W120 00590010 BW1M119 012ff280
+	static float Spline(float t, int count, float* keys);
 	// BW1W120 inlined BW1M119 01057f60
 	template <class T> static T Linterp(const T& from, const T& to, float t) { return from + (to - from) * t; }
 	// BW1W120 inlined BW1M119 01055100

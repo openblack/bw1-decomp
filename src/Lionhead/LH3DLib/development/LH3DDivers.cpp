@@ -1299,10 +1299,10 @@ static void SaveScreenshotPictureAndThumbnail(uint8_t* picturePixels)
 	SaveTextureCitadel(ScriptedScreenShot::g_info.PictureTexture, picturePixels);
 	uint8_t* thumbnails = (uint8_t*)malloc(CITADEL_TEXTURE_BYTES);
 	LoadTextureCitadel(ScriptedScreenShot::g_info.ThumbnailTexture, thumbnails);
-	uint8_t* thumbnailPixel =
-		thumbnails +
-		ScriptedScreenShot::g_info.Thumbnail / 2 * SCRIPTED_SCREEN_SHOT_THUMBNAIL_HEIGHT * CITADEL_TEXTURE_PITCH +
-		(ScriptedScreenShot::g_info.Thumbnail & 1) * SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH * 3;
+	long thumbnailRowOffset =
+		ScriptedScreenShot::g_info.Thumbnail / 2 * SCRIPTED_SCREEN_SHOT_THUMBNAIL_HEIGHT * CITADEL_TEXTURE_PITCH;
+	long thumbnailColumnOffset = (ScriptedScreenShot::g_info.Thumbnail & 1) * SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH * 3;
+	uint8_t* thumbnailPixel = thumbnails + thumbnailRowOffset + thumbnailColumnOffset;
 	uint8_t* thumbnailSource = picturePixels;
 	if (ScriptedScreenShot::g_info.Half != 0)
 	{
@@ -1382,7 +1382,8 @@ void LH3DTools::ExportTGA(int argc, char** argv)
 		long offset = 0;
 		for (int textureIndex = 0; textureIndex < pack->Count; textureIndex++, offset += sizeof(long))
 		{
-			long* texture = (long*)((uint8_t*)pack + *(long*)((uint8_t*)pack + offset + pack->Offsets));
+			long  textureOffset = *(long*)((uint8_t*)pack + offset + pack->Offsets);
+			long* texture = (long*)((uint8_t*)pack + textureOffset);
 			sprintf(file, LH3D_TOOLS_PACK_TEXTURE_PATH, path, texture[0]);
 			LHTGA* tga = LHTGA::GetTGA(texture + 1, LH3D_TEXTURE_PACK_SIZE, LH3D_TEXTURE_PACK_SIZE,
 			                           LHTGA_FORMAT_ARGB4444, false);
@@ -1714,23 +1715,23 @@ void __fastcall DrawLightLikeHand(float x, float z, uint8_t* light, long size, f
 	int maxDarkness =
 		((LH3DColor&)LandCell::g_darkness_to_color[LAND_CELL_MAX_DARKNESS]).GetG() * LAND_CELL_MIN_DARKNESS >> 8;
 	long intensityWeight = (long)(intensity * LH3D_COLOR_CHANNEL_MAX);
-	for (int column = 0; column < region.Width - 1; column++)
+	for (int brushColumn = 0; brushColumn < region.Width - 1; brushColumn++)
 	{
-		for (int row = 0; row < region.Depth - 1; row++)
+		for (int brushRow = 0; brushRow < region.Depth - 1; brushRow++)
 		{
-			LandCell* cell = LH3DIsland::GetCell(region.CellX + column, region.CellZ + row);
+			LandCell* cell = LH3DIsland::GetCell(region.CellX + brushColumn, region.CellZ + brushRow);
 			if (cell == NULL)
 			{
 				continue;
 			}
 
-			uint32_t darkness =
-				SampleLightBrush(region.FirstSample + column * size + row, size, weightX, weightZ, intensityWeight);
+			uint32_t darkness = SampleLightBrush(region.FirstSample + brushColumn * size + brushRow, size, weightX,
+			                                     weightZ, intensityWeight);
 			if (darkness <= (cell->darkness * maxDarkness >> 8))
 			{
 				darkness = cell->darkness;
 			}
-			LightCellAndCopies(cell, region.CellX + column, region.CellZ + row, darkness);
+			LightCellAndCopies(cell, region.CellX + brushColumn, region.CellZ + brushRow, darkness);
 		}
 	}
 }
@@ -4394,10 +4395,11 @@ void HowManyPeople::Draw(long max_people, long people, LHPoint* pos)
 		LHPoint offset = g_dir;
 		offset *= spriteIndex / spacing;
 		LH3DSprite* sprite = &g_sprites[spriteIndex];
+		float       spriteScale;
 		if (people == HOW_MANY_PEOPLE_ALL)
 		{
 			g_sprites[spriteIndex].colour = HOW_MANY_PEOPLE_COLOUR_ALL;
-			g_sprites[spriteIndex].SetSize(1.0f / spacing);
+			spriteScale = 1.0f;
 		}
 		else
 		{
@@ -4409,8 +4411,9 @@ void HowManyPeople::Draw(long max_people, long people, LHPoint* pos)
 			{
 				sprite->colour = HOW_MANY_PEOPLE_COLOUR_OUT;
 			}
-			g_sprites[spriteIndex].SetSize(caca_scale / spacing);
+			spriteScale = caca_scale;
 		}
+		g_sprites[spriteIndex].SetSize(spriteScale / spacing);
 		sprite->pos = start;
 		sprite->pos += offset;
 		sprite->Draw();
@@ -4729,6 +4732,18 @@ void __cdecl DrawAndClip(D3DPRIMITIVETYPE primitive_type, unsigned long fvf, Ver
 	LH3DRender::D3DDevice->DrawIndexedPrimitive(primitive_type, fvf, vertices, vertex_count, indices, index_count, 0);
 }
 
+static inline void DescribeCitadelTextureSurface(DDSURFACEDESC2& surface_desc)
+{
+	memset(&surface_desc, 0, sizeof(surface_desc));
+	surface_desc.dwSize = sizeof(surface_desc);
+	surface_desc.dwFlags = CITADEL_TEXTURE_DESC_FLAGS;
+	surface_desc.dwWidth = CITADEL_TEXTURE_SIZE;
+	surface_desc.dwHeight = CITADEL_TEXTURE_SIZE;
+	surface_desc.ddsCaps.dwCaps = CITADEL_TEXTURE_CAPS;
+	surface_desc.dwMipMapCount = 1;
+	surface_desc.ddpfPixelFormat = LH3DVRAMTex::g_pixel_format[CITADEL_TEXTURE_PIXEL_FORMAT].Format;
+}
+
 void SaveTextureCitadel(char* name, void* rgb_pixels)
 {
 	bool32_t savedLowRes = LH3DTexture::g_b_use_low_res;
@@ -4741,14 +4756,7 @@ void SaveTextureCitadel(char* name, void* rgb_pixels)
 	}
 
 	DDSURFACEDESC2 surfaceDesc;
-	memset(&surfaceDesc, 0, sizeof(surfaceDesc));
-	surfaceDesc.dwSize = sizeof(surfaceDesc);
-	surfaceDesc.dwFlags = CITADEL_TEXTURE_DESC_FLAGS;
-	surfaceDesc.dwWidth = CITADEL_TEXTURE_SIZE;
-	surfaceDesc.dwHeight = CITADEL_TEXTURE_SIZE;
-	surfaceDesc.ddsCaps.dwCaps = CITADEL_TEXTURE_CAPS;
-	surfaceDesc.dwMipMapCount = 1;
-	surfaceDesc.ddpfPixelFormat = LH3DVRAMTex::g_pixel_format[CITADEL_TEXTURE_PIXEL_FORMAT].Format;
+	DescribeCitadelTextureSurface(surfaceDesc);
 	LHSys::TheSystem.screen.PDirectDraw->CreateSurface(&surfaceDesc, &surface, NULL);
 	if (surface == NULL)
 	{
@@ -4831,14 +4839,7 @@ void LoadTextureCitadel(char* name, uint8_t* rgb_pixels)
 	}
 
 	DDSURFACEDESC2 surfaceDesc;
-	memset(&surfaceDesc, 0, sizeof(surfaceDesc));
-	surfaceDesc.dwSize = sizeof(surfaceDesc);
-	surfaceDesc.dwFlags = CITADEL_TEXTURE_DESC_FLAGS;
-	surfaceDesc.dwWidth = CITADEL_TEXTURE_SIZE;
-	surfaceDesc.dwHeight = CITADEL_TEXTURE_SIZE;
-	surfaceDesc.ddsCaps.dwCaps = CITADEL_TEXTURE_CAPS;
-	surfaceDesc.dwMipMapCount = 1;
-	surfaceDesc.ddpfPixelFormat = LH3DVRAMTex::g_pixel_format[CITADEL_TEXTURE_PIXEL_FORMAT].Format;
+	DescribeCitadelTextureSurface(surfaceDesc);
 	LHSys::TheSystem.screen.PDirectDraw->CreateSurface(&surfaceDesc, &surface, NULL);
 	if (surface == NULL || surface->Blt(NULL, textureContainer->Surface, NULL, DDBLT_WAIT, NULL) != DD_OK)
 	{
@@ -4978,7 +4979,8 @@ void ExportTexturePackTGA(int argc, char** argv)
 		long offset = 0;
 		for (int textureIndex = 0; textureIndex < pack->Count; textureIndex++, offset += sizeof(long))
 		{
-			long* texture = (long*)((uint8_t*)pack + *(long*)((uint8_t*)pack + offset + pack->Offsets));
+			long  textureOffset = *(long*)((uint8_t*)pack + offset + pack->Offsets);
+			long* texture = (long*)((uint8_t*)pack + textureOffset);
 			long  textureId = texture[0];
 			strcpy(path, name);
 			path[strlen(name) - LH3D_TOOLS_EXTENSION_LENGTH] = '\0';

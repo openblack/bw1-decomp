@@ -858,6 +858,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005E8C5B, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E93EB, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E96CA, call_indirect(0x008A901C)),  # LHInetWeather: __imp__TrackMouseEvent@4
+    (0x005F895A, call_indirect(0x008A97AC)),  # logo: __imp__ShellExecuteA@24
+    (0x005FA06B, call_rel32(0x004017F9)),  # logo
+    (0x005FA35A, call_indirect(0x008A999C)),  # logo: __imp__Disconnect_Dialup...
     (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
     (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
     (0x0060714B, call_rel32(0x004017F9)),  # MobileObject
@@ -867,6 +870,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0060812B, call_rel32(0x004017F9)),  # MobileObject
     (0x006083BB, call_rel32(0x004017F9)),  # MobileObject
     (0x0060843A, call_indirect(0x008A9960)),  # MobileObject: __imp__BinkGetSummary@8
+    (0x0062C6AB, call_rel32(0x004017F9)),  # MPFEConditionMessages
+    (0x0062C6FB, call_rel32(0x004017F9)),  # MPFEConditionMessages
     (0x0062DB2B, call_rel32(0x004017F9)),  # MPFECreatureDownload
     (0x0062DB4B, call_rel32(0x004017F9)),  # MPFECreatureDownload
     (0x0062E55B, call_rel32(0x004017F9)),  # MPFEDownloads
@@ -874,6 +879,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0062FABB, call_rel32(0x004017F9)),  # MPFEGameStartMessages
     (0x0062FB0B, call_rel32(0x004017F9)),  # MPFEGameStartMessages
     (0x0063010B, call_rel32(0x004017F9)),  # MPFEGameStartMessages
+    (0x006304FB, call_rel32(0x004017F9)),  # MPFELogin
     (0x0063114B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x0063119B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x006314BB, call_rel32(0x004017F9)),  # MPFEMapMessages
@@ -1658,6 +1664,18 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005CBEF8, jmp_run(0x005CBE83)),  # HelpSystemConditions
     (0x005CC14B, copy_run(0x005CBEF8)),  # HelpSystemInfo
     (0x005CC1D8, jmp_run(0x005CC14B)),  # HelpSystemLevel
+    (0x005FC3A5, copy_run(0x005FC326)),  # logo
+    (0x005FC3FA, jmp_run(0x005FC3A5)),  # logo
+    (0x005FC449, copy_run(0x005FC3FA)),  # logo
+    (0x005FDB5B, jmp_run(0x005FC449)),  # logo
+    (0x005FDC28, copy_run(0x005FDB5B)),  # logo
+    (0x005FDCC3, padding_bytes(bytes.fromhex('0000000075068125c446c700c3'))),  # logo
+    (0x005FDCE1, copy_run(0x005FDCC3)),  # logo
+    (0x005FDD31, jmp_run(0x005FDCE1)),  # logo
+    (0x005FDD69, copy_run(0x005FC2E1)),  # logo
+    (0x005FDE6A, copy_run(0x005FDD69)),  # logo
+    (0x005FE039, jmp_run(0x005FDE6A)),  # logo
+    (0x005FE216, jmp_run(0x005FE039)),  # logo
     (0x0060A717, jmp_run(0x0060A511)),  # Mobile
     (0x0060A7E4, copy_run(0x0060A717)),  # Mobile
     (0x0060A843, copy_run(0x0060A7E3)),  # MobileObject
@@ -1694,6 +1712,12 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0060BE66, copy_run(0x0060BDF6)),  # MobileObject
     (0x0060BE93, jmp_run(0x0060BE66)),  # MobileObject
     (0x0060BEE6, copy_run(0x0060BE93)),  # MobileObject
+    (0x006303AB, copy_run(0x00630352)),  # MPFEConditionMessages
+    (0x006303D5, jmp_run(0x006303AB)),  # MPFEConditionMessages
+    (0x006303FB, jmp_run(0x006303D3)),  # MPFEConditionMessages
+    (0x00630556, jmp_run(0x006303FB)),  # MPFEConditionMessages
+    (0x00630869, copy_run(0x00630556)),  # MPFEConditionMessages
+    (0x00630A88, copy_run(0x00630869)),  # MPFEConditionMessages
     (0x0063182B, copy_run(0x006317DB)),  # MPFECreatureDownload
     (0x0063184B, copy_run(0x0063182B)),  # MPFECreatureDownload
     (0x00631875, jmp_run(0x0063184B)),  # MPFECreatureDownload
@@ -1711,6 +1735,15 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006327DB, jmp_run(0x00632718)),  # MPFEDownloads
     (0x0063285A, jmp_run(0x006327DB)),  # MPFEDownloads
     (0x00632893, jmp_run(0x0063285A)),  # MPFEDownloads
+    (0x006341FB, jmp_run(0x006341A9)),  # MPFELogin
+    (0x00634225, copy_run(0x006341FB)),  # MPFELogin
+    (0x0063430A, copy_run(0x00634223)),  # MPFELogin
+    (0x006344E4, copy_run(0x0063430A)),  # MPFELogin
+    (0x00634783, copy_run(0x006344E4)),  # MPFELogin
+    (0x00634A73, jmp_run(0x00634783)),  # MPFELogin
+    (0x00634ACD, copy_run(0x00634A73)),  # MPFELogin
+    (0x00634D62, copy_run(0x00634AC3)),  # MPFELogin
+    (0x00634DEA, copy_run(0x00634D62)),  # MPFELogin
     (0x00634E4B, copy_run(0x00634DEA)),  # MPFEMapMessages
     (0x00634E73, jmp_run(0x00634E4B)),  # MPFEMapMessages
     (0x00634E9B, jmp_run(0x00634E73)),  # MPFEMapMessages
@@ -2645,6 +2678,29 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006FB555, jmp_run(0x006FB535)),  # ScriptDLL
     (0x006FB575, jmp_run(0x006FB555)),  # ScriptDLL
     (0x006FB59A, jmp_run(0x006FB575)),  # ScriptDLL
+    (0x006FB5BB, jmp_run(0x006FB59A)),  # ScriptFind
+    (0x006FB5E3, copy_run(0x006FB5BB)),  # ScriptFind
+    (0x006FB8DB, jmp_run(0x006FB5E3)),  # ScriptFind
+    (0x006FB915, jmp_run(0x006FB8DB)),  # ScriptFind
+    (0x006FB955, jmp_run(0x006FB915)),  # ScriptFind
+    (0x006FBA77, jmp_run(0x006FB955)),  # ScriptFind
+    (0x006FBB63, copy_run(0x006FBA77)),  # ScriptFind
+    (0x006FBBC1, copy_run(0x006FBB63)),  # ScriptFind
+    (0x006FBC26, copy_run(0x006FBBC1)),  # ScriptFind
+    (0x006FBDE2, copy_run(0x006FBC26)),  # ScriptFind
+    (0x006FBE09, copy_run(0x006FBDE2)),  # ScriptFind
+    (0x006FBE29, copy_run(0x006FBE09)),  # ScriptFind
+    (0x006FBE56, jmp_run(0x006FBE29)),  # ScriptFind
+    (0x006FBF5A, jmp_run(0x006FBE56)),  # ScriptFind
+    (0x006FC082, copy_run(0x006FBF5A)),  # ScriptFind
+    (0x006FC0EA, copy_run(0x006FC082)),  # ScriptFind
+    (0x006FC131, jmp_run(0x006FC0EA)),  # ScriptFind
+    (0x006FC16B, copy_run(0x006FC131)),  # ScriptFind
+    (0x006FC19B, jmp_run(0x006FC16B)),  # ScriptFind
+    (0x006FC1CB, copy_run(0x006FC19B)),  # ScriptFind
+    (0x006FC1FB, jmp_run(0x006FC1CB)),  # ScriptFind
+    (0x006FC2D7, jmp_run(0x006FC1FB)),  # ScriptFind
+    (0x006FC427, copy_run(0x006FC2D7)),  # ScriptFind
     (0x006FC4AB, copy_run(0x006FC45C)),  # ScriptFunctions
     (0x006FC4D3, jmp_run(0x006FC4AB)),  # ScriptFunctions
     (0x006FC554, jmp_run(0x006FC4D3)),  # ScriptFunctions
@@ -2769,6 +2825,7 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00704594, jmp_run(0x00704487)),  # ScriptFunctions
     (0x007047D8, jmp_run(0x00704594)),  # ScriptFunctions
     (0x0070485A, jmp_run(0x007047D8)),  # ScriptFunctions
+    (0x007048AB, copy_run(0x0070485A)),  # ScriptFunctionTable
     (0x0070D53B, jmp_run(0x007048AB)),  # ScriptGFX
     (0x0070D595, jmp_run(0x0070D53B)),  # ScriptGFX
     (0x0070D5C5, copy_run(0x0070D592)),  # ScriptGFX
@@ -2862,6 +2919,8 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00713C63, copy_run(0x007123C3)),  # ScriptProperty
     (0x00713D61, copy_run(0x00713C63)),  # ScriptProperty
     (0x00713E6A, copy_run(0x00713D61)),  # ScriptProperty
+    (0x00713EBB, call_rel32(0x004034F9)),  # ScriptRelease
+    (0x00713EE3, copy_run(0x00713EBB)),  # ScriptRelease
     (0x007140DB, call_rel32(0x004034F9)),  # ScriptSound
     (0x007141C5, copy_run(0x007140DB)),  # ScriptSound
     (0x007142C8, copy_run(0x007141C5)),  # ScriptSound

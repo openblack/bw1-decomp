@@ -38,6 +38,13 @@ SCN_LNK_COMDAT = 0x1000
 ENTRY = re.compile(r"^(\S+) = \S+:0x([0-9A-Fa-f]+);(.*)$")
 
 
+def link_targets(build):
+    """The links of the build directory `build`, whether or not they have succeeded yet."""
+    out = subprocess.run(["ninja", "-t", "targets", "all"], cwd=ROOT, capture_output=True, text=True).stdout
+    targets = (line.rsplit(":", 1)[0] for line in out.splitlines() if line.endswith(": link"))
+    return sorted(t for t in targets if t.startswith(f"{build}/") and "-linked." in t)
+
+
 def link_inputs(target):
     """The explicit inputs of the build's link of `target`, in order."""
     out = subprocess.run(["ninja", "-t", "query", target], cwd=ROOT, capture_output=True, text=True).stdout
@@ -108,11 +115,12 @@ def main():
                     help="resize the overlapping entries that keep a shared COMDAT from being marked")
     args = ap.parse_args()
 
-    build = Path("build") / args.version
+    # Ninja spells its paths with forward slashes on every platform.
+    build = f"build/{args.version}"
     failed = False
-    for target in sorted([*(ROOT / build).glob("*-linked.exe"), *(ROOT / build).glob("*-linked.dll")]):
-        name = target.name.split("-linked.")[0]
-        inputs = link_inputs(str(build / target.name))
+    for target in link_targets(build):
+        name = target.split("/")[-1].split("-linked.")[0]
+        inputs = link_inputs(target)
         if any(p.endswith(".fold.o") for p in inputs):
             print(f"{name}: an ICF link, its units are folded")
             continue
@@ -171,7 +179,7 @@ def main():
             print(f"  overlaps another entry, not marked: {sym}")
             failed = True
         if args.apply and (marked or cut):
-            (ROOT / sym_path).write_text("\n".join(lines) + "\n")
+            (ROOT / sym_path).write_text("\n".join(lines) + "\n", newline="\n")
     return 1 if failed else 0
 
 
