@@ -1661,6 +1661,18 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005CBEF8, jmp_run(0x005CBE83)),  # HelpSystemConditions
     (0x005CC14B, copy_run(0x005CBEF8)),  # HelpSystemInfo
     (0x005CC1D8, jmp_run(0x005CC14B)),  # HelpSystemLevel
+    (0x005FC3A5, copy_run(0x005FC326)),  # logo
+    (0x005FC3FA, jmp_run(0x005FC3A5)),  # logo
+    (0x005FC449, copy_run(0x005FC3FA)),  # logo
+    (0x005FDB5B, jmp_run(0x005FC449)),  # logo
+    (0x005FDC28, copy_run(0x005FDB5B)),  # logo
+    (0x005FDCC3, padding_bytes(bytes.fromhex('0000000075068125c446c700c3'))),  # logo
+    (0x005FDCE1, copy_run(0x005FDCC3)),  # logo
+    (0x005FDD31, jmp_run(0x005FDCE1)),  # logo
+    (0x005FDD69, copy_run(0x005FC2E1)),  # logo
+    (0x005FDE6A, copy_run(0x005FDD69)),  # logo
+    (0x005FE039, jmp_run(0x005FDE6A)),  # logo
+    (0x005FE216, jmp_run(0x005FE039)),  # logo
     (0x0060A717, jmp_run(0x0060A511)),  # Mobile
     (0x0060A7E4, copy_run(0x0060A717)),  # Mobile
     (0x0060A843, copy_run(0x0060A7E3)),  # MobileObject

@@ -1620,16 +1620,21 @@ Black/LoadingScreen.cpp:
 
 Black/Lobbybox.cpp:
 	.text       start:0x005F8C50 end:0x005FC230
-	.rdata      start:0x00959454 end:0x00959510
+	.rdata      start:0x00959454 end:0x00959480
 	.CRT$XCU    start:0x00A46E4C end:0x00A46E58 align:4
-	.data       start:0x00C74624 end:0x00C7476C
-	.bss        start:0x00DB2AC4 end:0x00DB2B58
+	.data       start:0x00C74624 end:0x00C746B8
+	.bss        start:0x00DB2AC4 end:0x00DB2AD0
+
+Black/LocalBase.cpp:
+	.text       start:0x005FC230 end:0x005FC360
+	.CRT$XCU    start:0x00A46E58 end:0x00A46E5C align:4
 
 Black/logo.cpp:
-	.text       start:0x005FC230 end:0x005FE250
-	.CRT$XCU    start:0x00A46E58 end:0x00A46E74 align:4
-	.data       start:0x00C7476C end:0x00C747AC
-	.bss        start:0x00DB2B58 end:0x00DB8CB0
+	.text       start:0x005FC360 end:0x005FE250
+	.rdata      start:0x00959480 end:0x00959510
+	.CRT$XCU    start:0x00A46E5C end:0x00A46E74 align:4
+	.data       start:0x00C746B8 end:0x00C747AC
+	.bss        start:0x00DB2AD0 end:0x00DB8CB0
 
 Black/MagicCreatureSpellInfo.cpp:
 	.text       start:0x005FE250 end:0x005FE390

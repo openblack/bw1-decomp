@@ -562,8 +562,8 @@ public:
 	uint32_t GetInterfaceFromReal(unsigned long real_interface);
 	// BW1W120 null BW1M119 0100c0b0
 	uint32_t GetInterfaceUpdateCount();
-	// BW1W120 inlined BW1M119 0110c080
-	GKeyBuffer* GetKeyBuffer() { return &key_buffer; }
+	// BW1W120 null BW1M119 0110c080
+	GKeyBuffer* GetKeyBuffer();
 	// BW1W120 005553a0 BW1M119 013e1550
 	static LH_KEY GetKeyFromModifier(uint16_t modifier);
 	// BW1W120 null BW1M119 010d1f40

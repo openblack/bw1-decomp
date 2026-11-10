@@ -29,6 +29,14 @@
 #include "SafeDisc.h"   /* For SafeDiscRecord, CHECK_PROTECTION_MARKER */
 #include "Temple.h"     /* For struct Temple */
 #include "ControlMap.h" /* For class ControlMap */
+#if defined(VERSION_BW1W130)
+#include "P5Glove.h" /* For struct P5Glove */
+#endif
+
+#if defined(VERSION_BW1W130)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) < 1028 ? (line) - 1 : (line) + 8)
+#endif
 
 #if defined(VERSION_BW1W100)
 static SafeDiscRecord Record = {
@@ -394,11 +402,22 @@ void RunAlexFX(int stage)
 	float sizeScale = (zoom * zoom) * (zoom * zoom);
 	sizeScale = sizeScale * sizeScale * 1.54f + 1.0f;
 
-	LHCoord delta = LHSys::TheSystem.mouse.DeltaPos();
+	LHSys::TheSystem.mouse.UpdateDeltaPos();
+	LHCoord delta = LHSys::TheSystem.mouse.AccumDelta;
 	LHCoord mouse = LHSys::TheSystem.mouse.Pos();
 	int     wheel = LHSys::TheSystem.mouse.MouseWheelAccum;
 	LHSys::TheSystem.mouse.AccumDelta.Set(0, 0);
 	LHSys::TheSystem.mouse.MouseWheelAccum = 0;
+#if defined(VERSION_BW1W130)
+	if (LHSys::TheSystem.GloveActive)
+	{
+		P5Glove::UpdatePosition();
+		delta.x = P5Glove::Movement.x;
+		delta.y = P5Glove::Movement.y;
+		mouse = P5Glove::Position;
+		wheel = P5Glove::Movement.z * -5.0f;
+	}
+#endif
 	mouseMove.x = (delta.x - mouseMove.x) * 0.1f + mouseMove.x;
 	mouseMove.y = (delta.y - mouseMove.y) * 0.1f + mouseMove.y;
 	wheel = SETUP_CLAMP(wheel, -240, 240);
@@ -530,7 +549,7 @@ void InputReset()
 	LHSys::GetMouse().MouseWheelAccum = 0;
 	LHSys::GetMouse().ClearDeltaPos();
 	ControlMap::MouseDelta = LHCoord(0, 0);
-	GGame::g_game->GetKeyBuffer()->BufferedKeys = 0;
+	GGame::g_game->key_buffer.BufferedKeys = 0;
 	SetupThing::RightClickCount = 0;
 	SetupThing::LeftClickCount = 0;
 	SetupThing::AnyDoubleClicked = false;
@@ -546,6 +565,16 @@ void DoLogo()
 	while (LHSys::TheSystem.keyboard.CurrentKey == 0 &&
 	       !(LHSys::TheSystem.mouse.Buttons & (LH_MOUSE_BUTTON_LEFT_DOWN | LH_MOUSE_BUTTON_RIGHT_DOWN)) && !Finished)
 	{
+#if defined(VERSION_BW1W130)
+		if (LHSys::TheSystem.GloveActive)
+		{
+			P5Glove::UpdateFingers();
+			if (P5Glove::FingerClicks[P5_GLOVE_FINGER_INDEX] || P5Glove::FingerClicks[P5_GLOVE_FINGER_MIDDLE])
+			{
+				Finished = true;
+			}
+		}
+#endif
 		RunAlexFX(ALEX_FX_STAGE_UPDATE);
 	}
 	RunAlexFX(ALEX_FX_STAGE_RELEASE);
