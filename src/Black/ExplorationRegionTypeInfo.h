@@ -12,7 +12,7 @@
 struct ExplorationRegionTypeInfo
 {
 	bool32_t (MapCoords::*DoesRegionContain)();
-	bool32_t (MapCoords::*GetExactMapSquare)();
+	void (MapCoords::*GetExactMapSquare)();
 	char Name[EXPLORATION_REGION_TYPE_NAME_LENGTH];
 
 	// BW1W120 00bdf610

@@ -10,6 +10,7 @@ typedef uint32_t LH3DMapCoordsFull;
 #define MAP_COORDS_UNITS_PER_CELL  ((float)0x10000)
 #define MAP_COORDS_METRES_PER_CELL 10.0f
 #define MAP_COORDS_FRACTION_MAX    0xffff
+#define MAP_COORDS_UNITS_PER_BLOCK 0x2000
 #define MAP_COORDS_FRACTION_CENTRE 0x8000
 
 struct LH3DMapCoords

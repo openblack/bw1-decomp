@@ -263,6 +263,8 @@ struct NewCollideDescriptor
 
 	// BW1W120 0046a860 BW1M119 011ccbc0
 	NewCollideDescriptor(Object* obj);
+	// BW1W120 0046aad0 BW1M119 011ccb50
+	NewCollideDescriptor(Game3DObject* obj);
 
 	// Non-virtual methods
 

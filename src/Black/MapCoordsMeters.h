@@ -6,12 +6,12 @@
 
 inline float MapCoords::MetersX() const
 {
-	return (float)(WholeX() * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL);
+	return (float)((WholeX() * MetresPerMapCell) / MAP_COORDS_UNITS_PER_CELL);
 }
 
 inline float MapCoords::MetersZ() const
 {
-	return (float)(WholeZ() * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL);
+	return (float)((WholeZ() * MetresPerMapCell) / MAP_COORDS_UNITS_PER_CELL);
 }
 
 inline void MapCoords::SetMetersX(float meters)
