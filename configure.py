@@ -1228,7 +1228,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFEInviteToTeamMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEKickMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEKickMessageRequest.cpp"),
-            GameCodeObject(NonMatching, "Black/MPFELogin.cpp"),
+            GameCodeObject(Matching, "Black/MPFELogin.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEMapErrorMessage.cpp"),
             GameCodeObject(Matching, "Black/MPFEMapMessages.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/MPFEMessageObject.cpp"),

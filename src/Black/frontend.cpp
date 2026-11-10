@@ -2368,7 +2368,7 @@ void __stdcall LoginBox::ControlCallback(int message, SetupBox* box, SetupContro
 		}
 		else if (data2 == LOGIN_BOX_MESSAGE_BOX_REGISTER && data1 == SETUP_MESSAGE_BOX_ID_YES)
 		{
-			OpenURL(RegisterURL);
+			RunWebPage(RegisterURL);
 			ShowWindow(LHSys::TheSystem.screen.MsWindowHandle, SW_MINIMIZE);
 		}
 		break;
