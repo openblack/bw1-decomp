@@ -41,6 +41,15 @@
 #include "WorshipSite.h"            /* For class WorshipSite */
 #include "WorshipSpellIcon.h"       /* For class WorshipSpellIcon */
 
+#ifdef VERSION_BW1WCI
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + 8)
+#endif
+
+#define MAP_COORDS_MAX_TOWN_DISTANCE 10000000
+#define MAP_COORDS_TOWN_AREA_MARGIN  4
+#define MAP_COORDS_IN_OTHER_TOWN     14
+
 #define MAX_ALTITUDE 1000.0f
 
 #define FIND_OBJECT_MIN_CELLS      3
@@ -54,7 +63,15 @@
 
 #define ACTIVITY_CELL_SIZE      10
 #define ACTIVITY_CLEAR_DISTANCE 5.0f
-#define CLIMATE_MAX_DISTANCE    999999
+
+#define CLIMATE_MAX_DISTANCE 999999
+
+enum NEAREST_TOWN
+{
+	NEAREST_TOWN_NONE,
+	NEAREST_TOWN_INSIDE_AREA,
+	NEAREST_TOWN_OUTSIDE_AREA,
+};
 
 struct MapCellNeighbours
 {

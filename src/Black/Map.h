@@ -105,16 +105,6 @@ static_assert(sizeof(MapCellIterator) == 0xc, "MapCellIterator size is incorrect
 struct SafeMapCellIterator : public MapCellIterator
 {
 	Object* next;
-
-	// BW1W120 inlined BW1M119 01526fa0
-	void SafeMoveToMobileObsIfNeededAndPoss()
-	{
-		if (next == NULL && IsFixed)
-		{
-			next = cell->FirstObjectMobile;
-			IsFixed = false;
-		}
-	}
 };
 
 static_assert(sizeof(SafeMapCellIterator) == 0x10, "SafeMapCellIterator size is incorrect");
@@ -167,8 +157,6 @@ public:
 	{
 		return (unsigned long)x < CellExtentZx[1] && (unsigned long)z < CellExtentZx[0];
 	}
-	// BW1W120 inlined BW1M119 0104c500
-	unsigned long ToMapPos(long cell_x, long cell_z) const { return cell_x * CellExtentZx[0] + cell_z; }
 	// BW1W120 00612660 BW1M119 0150df10
 	MapCell* ToMap(long cell_x, long cell_z)
 	{
@@ -176,7 +164,7 @@ public:
 		{
 			return NULL;
 		}
-		return &cells[0][ToMapPos(cell_x, cell_z)];
+		return &cells[0][cell_x * CellExtentZx[0] + cell_z];
 	}
 };
 

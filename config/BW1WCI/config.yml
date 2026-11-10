@@ -130,6 +130,8 @@ block_relocations:
   - source: 0x00C93264
   - source: 0x00C932B4
   - source: 0x00C9395C
+# MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
+  - source: 0x0061A588
 
 # BWGameSpy's L"Username already in use." and MPFEMessageObject's type descriptor name contain
 # words that read as code addresses; they are text, not pointers.

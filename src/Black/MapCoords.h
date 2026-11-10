@@ -10,17 +10,6 @@
 #include <chlasm/ScriptEnums.h>                         /* For enum SCRIPT_OBJECT_TYPE */
 #include <re_common.h>                                  /* For bool32_t */
 
-#define MAP_COORDS_MAX_TOWN_DISTANCE 10000000
-#define MAP_COORDS_TOWN_AREA_MARGIN  4
-#define MAP_COORDS_IN_OTHER_TOWN     14
-
-enum NEAREST_TOWN
-{
-	NEAREST_TOWN_NONE,
-	NEAREST_TOWN_INSIDE_AREA,
-	NEAREST_TOWN_OUTSIDE_AREA,
-};
-
 enum COLLIDE_TYPE
 {
 	COLLIDE_TYPE_NONE = 0x0,

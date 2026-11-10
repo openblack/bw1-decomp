@@ -1541,22 +1541,23 @@ Black/MagicVortex.cpp:
 	.text       start:0x00615300 end:0x00618D60
 	.rdata      start:0x00984A5C end:0x00987034
 	.CRT$XCU    start:0x00A36AB0 end:0x00A36ACC align:4
-	.data       start:0x00C64D7C end:0x00C64EE8
+	.data       start:0x00C64D7C end:0x00C64EB8
 
 Black/Map.cpp:
-	.rdata      start:0x00987940 end:0x0098797C
+	.rdata      start:0x00987940 end:0x00987974
 
 Black/MapCoords.cpp:
 	.text       start:0x0061A4D0 end:0x0061E8D0
-	.rdata      start:0x0098797C end:0x009879AC
+	.rdata      start:0x00987974 end:0x009879AC
 	.CRT$XCU    start:0x00A36AD8 end:0x00A36AE0 align:4
-	.data       start:0x00C64EE8 end:0x00C64F20
+	.data       start:0x00C64EB8 end:0x00C64F03
+	.bss        start:0x00DB6978 end:0x00DB6990
 
 Black/Meeting.cpp:
 	.text       start:0x0061E8D0 end:0x0061EAF0
 	.rdata      start:0x009879AC end:0x00987EF8
 	.CRT$XCU    start:0x00A36AE0 end:0x00A36AE4 align:4
-	.data       start:0x00C64F20 end:0x00C64F3C
+	.data       start:0x00C64F08 end:0x00C64F3C
 
 Black/Mist.cpp:
 	.text       start:0x0061EAF0 end:0x0061F390

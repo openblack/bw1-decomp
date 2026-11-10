@@ -1554,7 +1554,7 @@ Black/MagicTree.cpp:
 Black/MagicVortex.cpp:
 	.text       start:0x005F7D70 end:0x005FB840
 	.rdata      start:0x0091D26C end:0x0091F768
-	.data       start:0x00BE3404 end:0x00BE3570
+	.data       start:0x00BE3404 end:0x00BE3540
 	.bss        start:0x00D27048 end:0x00D27128
 
 Black/MagicWood.cpp:
@@ -1563,21 +1563,21 @@ Black/MagicWood.cpp:
 
 Black/Map.cpp:
 	.text       start:0x005FBA40 end:0x005FC900
-	.rdata      start:0x0091FFE0 end:0x0092001C
+	.rdata      start:0x0091FFE0 end:0x00920014
 	.bss        start:0x00D27128 end:0x00D2713C
 
 Black/MapCoords.cpp:
 	.text       start:0x005FC900 end:0x00600A00
-	.rdata      start:0x0092001C end:0x0092004C
+	.rdata      start:0x00920014 end:0x0092004C
 	.CRT$XCU    start:0x009B6A90 end:0x009B6A98 align:4
-	.data       start:0x00BE3570 end:0x00BE35A8
+	.data       start:0x00BE3540 end:0x00BE358B
 	.bss        start:0x00D2713C end:0x00D27154
 
 Black/Meeting.cpp:
 	.text       start:0x00600A00 end:0x00600C20
 	.rdata      start:0x0092004C end:0x00920558
 	.CRT$XCU    start:0x009B6A98 end:0x009B6A9C align:4
-	.data       start:0x00BE35A8 end:0x00BE35C4
+	.data       start:0x00BE3590 end:0x00BE35C4
 	.bss        start:0x00D27154 end:0x00D27158
 
 Black/Mist.cpp:

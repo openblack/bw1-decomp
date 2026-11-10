@@ -39,6 +39,8 @@ block_relocations:
 # code addresses.
   - source: 0x008FC23C
   - source: 0x008FC3AC
+# MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
+  - source: 0x005BED88
 
 # LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
   - source: 0x0078EC85
