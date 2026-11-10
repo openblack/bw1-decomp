@@ -14,6 +14,11 @@ struct MPFEPlayerDetails;
 class MPFEAllConditions : public MPFEMessageObject
 {
 public:
+	// Override methods
+
+	// BW1W120 0062cb70 BW1M119 null
+	virtual ~MPFEAllConditions() {}
+
 	// Static methods
 
 	// BW1W120 0062cba0 BW1M119 null

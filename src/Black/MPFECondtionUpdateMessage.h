@@ -13,6 +13,11 @@ struct MPFEPlayerDetails;
 class MPFECondtionUpdateMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
+
+	// BW1W120 0062c860 BW1M119 inlined
+	virtual ~MPFECondtionUpdateMessage() {}
+
 	// Static methods
 
 	// BW1W120 0062c890 BW1M119 null
