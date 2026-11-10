@@ -31,12 +31,17 @@ public:
 	int  Current;
 	int  Target;
 	bool Completed;
+
 	// BW1W120 00775370
 	WinCondition();
 	// Real emitted RET destructor; preserves insertion temporaries.
 	// BW1W120 00775380
 	~WinCondition();
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	// BW1W120 00775390
+	void Init(int type);
+	// BW1W120 007753b0
+	void AdjustTarget(int amount);
 	// BW1W120 007753e0
 	void SetTarget(int target);
 #endif
@@ -45,5 +50,6 @@ public:
 	// BW1W120 00775740
 	void Set(int value);
 };
+
 static_assert(sizeof(WinCondition) == 0x10, "WinCondition size is incorrect");
 #endif
