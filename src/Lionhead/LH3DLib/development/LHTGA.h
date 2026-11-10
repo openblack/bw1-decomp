@@ -2,8 +2,14 @@
 #define BW1_DECOMP_LH_TGA_INCLUDED_H
 
 #include <assert.h>    /* For static_assert */
-#include <stdint.h>    /* For int16_t, uint8_t */
 #include <re_common.h> /* For bool32_t */
+#include <stdint.h>    /* For int16_t, uint8_t */
+
+#define LHTGA_IMAGE_TYPE_TRUE_COLOR 2
+#define LHTGA_PIXEL_DEPTH           32
+#define LHTGA_DESCRIPTOR_TOP_LEFT   0x20
+#define LHTGA_DESCRIPTOR            (LHTGA_DESCRIPTOR_TOP_LEFT | 8)
+#define LHTGA_HD_SIZE               256
 
 #define LHTGA_FOOTER_SIZE     26
 #define LHTGA_FORMAT_ARGB4444 0

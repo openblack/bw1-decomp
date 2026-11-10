@@ -5,6 +5,12 @@
 
 #include <re_common.h> /* For bool32_t */
 
+#define EVIL_OR_ANGEL_VISAGE       1
+#define EVIL_OR_ANGEL_ANGEL_CHANCE 50.0f
+#define EVIL_OR_ANGEL_END_MARGIN   110
+#define EVIL_OR_ANGEL_FADE_TIME    500
+#define EVIL_OR_ANGEL_ALPHA        105
+
 // Forward Declares
 
 struct LH3DAnim;

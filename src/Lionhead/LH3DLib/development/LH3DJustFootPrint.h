@@ -8,6 +8,8 @@
 #include "LHCoordF.h" /* For struct LHCoordF */
 #include "LHMatrix.h" /* For struct LHMatrix */
 
+#define LH3D_JUST_FOOT_PRINT_TO_BLOCK (1.0f / 160.0f)
+
 // Forward Declares
 
 class LH3DObject;

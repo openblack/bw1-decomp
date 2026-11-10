@@ -3,6 +3,18 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+#define HOW_MANY_PEOPLE_TIME            8000
+#define HOW_MANY_PEOPLE_FADE_OUT        7000
+#define HOW_MANY_PEOPLE_FADE_TIME       1000
+#define HOW_MANY_PEOPLE_ALL             -1
+#define HOW_MANY_PEOPLE_FRAME           57
+#define HOW_MANY_PEOPLE_ALPHA_REFERENCE 5
+#define HOW_MANY_PEOPLE_SIZE            0.9f
+#define HOW_MANY_PEOPLE_SPACING         1.3f
+#define HOW_MANY_PEOPLE_COLOUR_IN       0xfff8d235
+#define HOW_MANY_PEOPLE_COLOUR_OUT      0xff5c822f
+#define HOW_MANY_PEOPLE_COLOUR_ALL      0xff4995a9
+
 // Forward Declares
 
 struct LH3DMaterial;

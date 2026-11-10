@@ -7,6 +7,38 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
+#define FISH_MIN_SIZE              0.8f
+#define FISH_MAX_SIZE              1.2f
+#define FISH_SPRITE_FRAMES         15.5f
+#define FISH_FRAMES                15.0f
+#define FISH_SPREAD                5.0f
+#define FISH_DEPTH                 1.0f
+#define FISH_MIN_SPEED             0.5f
+#define FISH_MAX_SPEED             1.5f
+#define FISH_TURN_VARIATION        0.1f
+#define FISH_TURN_SPEED            (TWO_PI / 10.0f)
+#define FISH_FEAR_SPEED            4.0f
+#define FISH_MAX_STEP              0.1f
+#define FISH_ANIMATION_SPEED       25.0f
+#define FISH_FRAME_MASK            0xf
+#define FISH_FIRST_FRAME           8
+#define FISH_RUSH_COLLIDE_RADIUS   2.0f
+#define FISH_RUSH_FEAR_RADIUS      8.0f
+#define FISH_RUSH_FEAR_TIME        2.0f
+#define FISH_RUSH_FADE_DIST        200.0f
+#define FISH_RUSH_FADE_RANGE       100.0f
+#define FISH_RUSH_DRAW_DIST        300.0f
+#define FISH_RUSH_TARGET_TIME      0.5f
+#define FISH_RUSH_ESCAPE_DIST      2.0f
+#define FISH_RUSH_SPLASH_GROWTH    2.0f
+#define FISH_RUSH_SPLASH_FRAME     48
+#define FISH_RUSH_SPLASH_COLOUR    0xffffffff
+#define FISH_RUSH_NET_BOB          0.5f
+#define FISH_RUSH_NET_SHRINK_SPEED 2.0f
+#define FISH_RUSH_NET_RADIUS       10.0f
+#define FISH_RUSH_NET_SPEED        2.0f
+#define FISH_RUSH_NET_MESH_PATH    "Data\\MISC\\Fishplot.l3d"
+
 // Forward Declares
 
 struct LH3DMesh;

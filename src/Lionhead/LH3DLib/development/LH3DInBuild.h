@@ -5,6 +5,9 @@
 
 #include <re_common.h> /* For bool32_t */
 
+#define LH3D_IN_BUILD_LAST_EDGE_INDEX 1000
+#define LH3D_IN_BUILD_COLOR_SCALE     0xc0
+
 struct Vertex3D;
 
 // Draws the outline of an object that is being built.
