@@ -416,7 +416,7 @@ public:
 	// BW1W120 0041b1c0 BW1M119 0116e740
 	virtual void DebugShowTime(uint32_t turns, uint8_t state, uint8_t final_state);
 	// BW1W120 00419bc0 BW1M119 01170ad0
-	virtual bool IsInterestedInFoodObject(Object* object);
+	virtual bool32_t IsInterestedInFoodObject(Object* object);
 	// BW1W120 0041a280 BW1M119 0116fe90
 	virtual void ResetStateAfterReacting();
 	// BW1W120 00420440 BW1M119 0117f3b0

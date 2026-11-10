@@ -849,7 +849,7 @@ bool32_t Villager::LookAtMagicTree()
 	return true;
 }
 
-bool Villager::IsInterestedInFoodObject(Object* food)
+bool32_t Villager::IsInterestedInFoodObject(Object* food)
 {
 	if (food->IsAvailable() && !(food->Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) && !food->IsInMagicHand())
 	{
