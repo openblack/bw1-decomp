@@ -286,6 +286,16 @@ if config.version == "BW1W100":
         "?BrushWidth@RandomBuildingPlacement@@2MA",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
+    # MapCoords's GetWholeDistance, GetCollideStep, GetGlobalCollideStep,
+    # AddAngleBigDistance and climate searches have no callers in 1.00, so
+    # /OPT:REF dropped them with the only users of these GUtils and GMap helpers.
+    for _dead_function in [
+        "?GetDistance@GUtils@@SAJABUMapCoords@@0@Z",
+        "?GetCollideStep@GMap@@SAJXZ",
+        "?GetXByAngleBigDistance@GUtils@@SAJGJ@Z",
+        "?GetZByAngleBigDistance@GUtils@@SAJGJ@Z",
+    ]:
+        config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
     # bodge_to_force_compilation_of_versions has no callers, so /OPT:REF dropped it
     # and every LHScriptX/LHScriptCommandX member only it calls.
     for _dead_function in [
@@ -1184,7 +1194,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MagicWood.cpp"),
             GameCodeObject(NonMatching, "Black/MainMenu.cpp"),
             GameCodeObject(NonMatching, "Black/Map.cpp"),
-            GameCodeObject(NonMatching, "Black/MapCoords.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "Black/MapCoords.cpp"),
             GameCodeObject(NonMatching, "Black/MapShield.cpp"),
             GameCodeObject(NonMatching, "Black/MapShieldInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Meeting.cpp"),

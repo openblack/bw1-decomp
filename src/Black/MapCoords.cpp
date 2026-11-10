@@ -99,6 +99,17 @@ inline bool32_t IsCellCoastal(long x, long z)
 	return false;
 }
 
+// Inliner IL size: 103
+// BW1W120 inlined BW1M119 inlined
+inline void SetPositionOnLandscape(Game3DObject* object, const MapCoords& coords, float y_angle, float scale)
+{
+	LHPoint point;
+	point.y = coords.Altitude() + LH3DIsland::GetAltitude(coords);
+	point.x = coords.WholeX() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+	point.z = coords.WholeZ() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+	object->LH3DObject::SetPosition(point, y_angle, scale);
+}
+
 void MapCoords::SetupMapXZ(long x, long z)
 {
 	SetMapX(x);
@@ -302,7 +313,7 @@ void MapCoords::ShowMeshFootprint(MESH_LIST mesh, int, float y_angle, float scal
 	}
 	else
 	{
-		SetPositionOnMap(object, coords, y_angle, scale);
+		SetPositionOnLandscape(object, coords, y_angle, scale);
 		object->SetMesh(LH3DMesh::GetPackedMesh(mesh), NULL, NULL);
 	}
 	if (object != NULL)
@@ -1688,8 +1699,9 @@ bool32_t MapCoords::IsSquareClearForActivity(Creature* creature, long x, long z,
 						NewCollide::List* list = obj->IteratorList;
 						if (list != NULL)
 						{
-							NewCollide::Obj** end = list->objs + list->count;
-							for (NewCollide::Obj** current = list->objs; current < end; current++)
+							NewCollide::Obj** current = list->objs;
+							NewCollide::Obj** end = current + list->count;
+							for (; current < end; current++)
 							{
 								if (GetDistanceBetweenPoints(centre, (*current)->position) - (*current)->radius <
 								    ACTIVITY_CLEAR_DISTANCE)

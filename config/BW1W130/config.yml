@@ -144,8 +144,6 @@ block_relocations:
   - source: 0x00CA08C0
   - source: 0x00CA0FB0
   - source: 0x00CA11D0
-# The printf state table's bytes 0x60, 0x60, 0x60, 0x00 read as the address of MapCoords::ShowMeshFootprint.
-  - source: 0x00A20384
 
 # BWGameSpy's L"Username already in use." and MPFEMessageObject's type descriptor name contain
 # words that read as code addresses; they are text, not pointers.
