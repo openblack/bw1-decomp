@@ -1045,10 +1045,8 @@ public:
 	static void GetThingHelp();
 	// BW1W120 006fd0a0 BW1M119 014f7e30
 	static void GetFirstHelp();
-#ifndef VERSION_BW1W100
 	// BW1W120 006fd180 BW1M119 014f7cd0
 	static void GetLastHelp();
-#endif
 	// BW1W120 006fd260 BW1M119 014f7bc0
 	static void LoadMyCreature();
 	// BW1W120 006fd2f0 BW1M119 014f7a00

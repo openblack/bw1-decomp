@@ -2213,6 +2213,12 @@ Black/ScriptFunctions.cpp:
 	.data       start:0x00BFC4EC end:0x00BFCCD0
 	.bss        start:0x00D84D34 end:0x00D84F44
 
+Black/ScriptFunctionTable.cpp:
+	.text       start:0x006F4EF0 end:0x006FDB50
+	.CRT$XCU    start:0x009B702C end:0x009B7034 align:4
+	.data       start:0x00BFCCD0 end:0x00C0F658
+	.bss        start:0x00D84F44 end:0x00D84F48
+
 Black/ScriptGFX.cpp:
 	.text       start:0x006FDB50 end:0x006FE470
 	.CRT$XCU    start:0x009B7034 end:0x009B7038 align:4
