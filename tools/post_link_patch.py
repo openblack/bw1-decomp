@@ -888,6 +888,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0063114B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x0063119B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x006314BB, call_rel32(0x004017F9)),  # MPFEMapMessages
+    (0x0063173B, call_rel32(0x004017F9)),  # MPFENumberCodec
     (0x006362FB, call_rel32(0x004017F9)),  # Object
     (0x0063673B, call_rel32(0x004017F9)),  # Object
     (0x006377BB, call_rel32(0x004017F9)),  # Object
@@ -1783,6 +1784,9 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006351BB, jmp_run(0x00634F61)),  # MPFEMapMessages
     (0x00635206, copy_run(0x006351BB)),  # MPFEMapMessages
     (0x00635264, copy_run(0x00635206)),  # MPFEMapMessages
+    (0x00635347, copy_run(0x00635264)),  # MPFENumberCodec
+    (0x0063543B, jmp_run(0x00635347)),  # MPFENumberCodec
+    (0x00635497, jmp_run(0x0063543B)),  # MPFENumberCodec
     (0x00639FD3, jmp_run(0x00639F7A)),  # Object
     (0x00639FFB, jmp_run(0x00639FD3)),  # Object
     (0x0063A023, copy_run(0x00639FFB)),  # Object
