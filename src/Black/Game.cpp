@@ -185,7 +185,7 @@ static_assert(offsetof(CreaturePhysical, Creature3d) == 0x58, "Creature render p
 static_assert(offsetof(PowerSpin, Position) == 0x9a8, "PowerSpin position offset is incorrect");
 static_assert(offsetof(PowerSpinRunner, Next) == 0x9b4, "PowerSpinRunner link offset is incorrect");
 static_assert(offsetof(ValueSpinner, point) == 8, "ValueSpinner position offset is incorrect");
-static_assert(offsetof(VillagerName, next) == 0x460, "VillagerName link offset is incorrect");
+static_assert(offsetof(VillagerName, Next) == 0x460, "VillagerName link offset is incorrect");
 static_assert(offsetof(TempleRoom, name) == 4, "TempleRoom vptr is missing");
 #ifdef VERSION_BW1WCI
 static_assert(offsetof(GScript, FocusPos) == 0x48, "Script timer fields changed its layout");
@@ -233,9 +233,8 @@ char* const             GGame::NetworkApplication = "Lionhead";
 char* const             GGame::NetworkChannel = "Channel";
 char* const             GGame::NetworkPassword = "Password";
 
-// TODO: Original name unknown; tail-jumps to LHResetFPU, not an empty function.
-// BW1W120 0054d610
-void             fn_0054D610();
+// BW1W120 0054d610 BW1M119 01017530
+void             SetFPU();
 void             CheckSquareFunction(int x, int z, RPHolder* holder);
 void             AddSpecialRPObjects(RPHolder* holder);
 void             InputReset();                           // 005fa000
@@ -309,7 +308,7 @@ bool32_t GGame::Init()
 	GGameInfo::Info.MillisecondsPerGameTurn = 100;
 	data.InitialRandSeed = RAND_SEED;
 	data.RandSeed = RAND_SEED;
-	fn_0054D610();
+	SetFPU();
 	RenderLoadingFrame("Setting up players...");
 	SetupPlayers();
 	RenderLoadingFrame("Setting up data tables...");
@@ -343,37 +342,37 @@ bool32_t GGame::Init()
 	PlayerInfluenceMultiplier = 1.0f;
 	TownInfluenceMultiplier = 1.0f;
 	camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x112a) GCamera(StartCameraCoords);
-	if (Enum0x25017c == 0 && !GameOSFile::IsAutoSaveValid())
-		Enum0x25017c = 1;
+	if (StartType == GAME_START_TYPE_AUTOSAVE && !GameOSFile::IsAutoSaveValid())
+		StartType = GAME_START_TYPE_NEW_GAME;
 	SkirmishGame = false;
-	field_0x205a10 = 0;
+	GameOverStarted = false;
 	field_0x205a14 = 0;
-	switch (Enum0x25017c)
+	switch (StartType)
 	{
-	case 0:
+	case GAME_START_TYPE_AUTOSAVE:
 		RenderLoadingFrame(true);
 		if (GameOSFile::AutoLoad())
 		{
-			Enum0x25017c = 0;
+			StartType = GAME_START_TYPE_AUTOSAVE;
 			break;
 		}
 		goto newGame;
-	case 2:
+	case GAME_START_TYPE_LOAD_GAME:
 		if (GameOSFile::LoadAllGame(LoadGameFilename))
 		{
-			Enum0x25017c = 2;
+			StartType = GAME_START_TYPE_LOAD_GAME;
 			break;
 		}
 		// Both failed loads use the complete new-game path.
-	case 1:
+	case GAME_START_TYPE_NEW_GAME:
 	newGame:
-		Enum0x25017c = 1;
+		StartType = GAME_START_TYPE_NEW_GAME;
 		delete camera;
 		camera = NULL;
 		setup.LoadMapScript();
 		OnNewGame();
 		break;
-	case 3: {
+	case GAME_START_TYPE_MULTIPLAYER: {
 		char* mapName = NULL;
 		GameFlags &= ~GAME_FLAG_ACTIVATE_CREATURE_DESIRES;
 		if (network.session->LobbyChannel->GetGameDataLength())
@@ -428,7 +427,7 @@ bool32_t GGame::Init()
 #endif
 		break;
 	}
-	case 4: {
+	case GAME_START_TYPE_SKIRMISH: {
 		char mapPath[MAX_PATH];
 		strcpy(mapPath, WCHAR2CHAR(FrontEnd::SkirmishDialog->MapPath));
 		g_game->StartPlaygroundGame(mapPath);
@@ -436,13 +435,14 @@ bool32_t GGame::Init()
 		break;
 	}
 	}
-	if (g_game->Enum0x25017c == 4 || g_game->Enum0x25017c == 1 || g_game->Enum0x25017c == 3)
+	if (g_game->StartType == GAME_START_TYPE_SKIRMISH || g_game->StartType == GAME_START_TYPE_NEW_GAME ||
+	    g_game->StartType == GAME_START_TYPE_MULTIPLAYER)
 	{
 		delete camera;
 		camera = NULL;
 		Citadel* citadel = players[PlayerIndex].citadel.Get();
 		if (((StartCameraCoords.x == 0 && StartCameraCoords.z == 0 && StartCameraCoords.altitude == 0.0f) ||
-		     g_game->Enum0x25017c == 3) &&
+		     g_game->StartType == GAME_START_TYPE_MULTIPLAYER) &&
 		    citadel)
 		{
 			camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x11cc) GCamera(citadel->Pos);
@@ -525,7 +525,7 @@ bool32_t GGame::Init()
 void GGame::StartGame()
 {
 	g_game->GameMode = GAME_MODE_RUNNING;
-	if (Init() == 1 && !Dat_00D46AC1)
+	if (Init() == true && !ARGS_CONVERT)
 	{
 		stop_draw_sprite_to_screen();
 		Plasma* plasma = FrontEnd::PlasmaBackground;
@@ -600,8 +600,8 @@ void GGame::OnNewGame()
 	if (started && !(g_game->GameFlags & GAME_FLAG_PAUSED))
 	{
 		g_game->script->SetupScreenFadeTo(0, 0, 0, 0);
-		Temple::Dat_00C2A150 = 0.0f;
-		Temple::Dat_00E06020 = 0.0f;
+		Temple::FadeLevel = 0.0f;
+		Temple::FadeTarget = 0.0f;
 	}
 }
 
@@ -686,14 +686,14 @@ void PauseGame(int pause)
 void GGame::SetSpeed(float speed)
 {
 	// As in PauseGame, unsigned source conversion produces signed FIADD with the original MSVC.
-	network.field_0x4 = speed;
+	network.Speed = speed;
 	if (!network.session->IsSinglePlayer())
 	{
-		network.session->SetIdlePeriod((unsigned long)(100.0f / network.field_0x4));
+		network.session->SetIdlePeriod((unsigned long)(100.0f / network.Speed));
 	}
 	else
 	{
-		float newSpeed = network.field_0x4;
+		float newSpeed = network.Speed;
 		if (timer.SpeedUpFactor != 0.0f)
 		{
 			unsigned long ticks = GetTickCount() - timer.TickCount;
@@ -828,7 +828,7 @@ uint32_t GGame::InitOneTimeOnly()
 	RenderLoadingFrame("...Finished PSysGlobal");
 	dialog_box_options = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1025) DialogBoxOptions;
 	dialog_box_options->Init(780, 500, DialogBoxOptions::ControlCallback);
-	dialog_box_options->setup_box->field_0xc8 = 1;
+	dialog_box_options->setup_box->KeysPassThrough = true;
 	dialog_box_key_binding = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102a) DialogBoxKeyBinding;
 	dialog_box_key_binding->Init(780, 500, DialogBoxKeyBinding::ControlCallback);
 	dialog_box_save_message = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102e) DialogBoxSaveMessage;
@@ -1125,7 +1125,7 @@ GGame::GGame()
 	config = NULL;
 	temple = NULL;
 	SavingMap = false;
-	Enum0x25017c = 0;
+	StartType = GAME_START_TYPE_AUTOSAVE;
 	GameMode = GAME_MODE_RUNNING;
 	InitializeCriticalSection(&VideoTimerSection);
 	InitializeCriticalSection(&LHVideoPlayer::CriticalSection);
@@ -1194,10 +1194,10 @@ void GGame::ClearVariables()
 	field_0x2502e4 = NULL;
 	GameFlags = GAME_FLAG_UNKNOWN_0x20;
 	SkirmishGame = false;
-	field_0x205a10 = 0;
+	GameOverStarted = false;
 	field_0x205a14 = 0;
-	field_0x205a18 = 0;
-	field_0x205a1c = 0;
+	InstantSaveTurn = 0;
+	InstantLoadTurn = 0;
 }
 
 // BW1W120 0054bfd0 BW1M119 013c9a40
@@ -1322,8 +1322,8 @@ void GGame::ClearMap()
 {
 	LHResetFPU();
 	g_game->GameFlags |= GAME_FLAG_CLEARING_MAP;
-	GameFlags &= ~(GAME_FLAG_UNKNOWN_0x20000 | GAME_FLAG_SHOW_VILLAGER_INFO);
-	field_0x205a10 = 0;
+	GameFlags &= ~(GAME_FLAG_SHOW_VILLAGER_NAMES | GAME_FLAG_SHOW_VILLAGER_INFO);
+	GameOverStarted = false;
 	field_0x205a14 = 0;
 	SuperVillager* superVillager = SuperVillager::g_first;
 	while (superVillager != NULL)
@@ -1733,7 +1733,7 @@ void GGame::ProcessNetworkPackets()
 void GGame::DoNetworkStart()
 {
 	RenderLoadingFrame("Waiting for completion of user data transer...");
-	network.field_0x4 = 1.0f;
+	network.Speed = 1.0f;
 	g_game->data.RealGameTurn = g_game->network.session->SuperPacketGameTurn + 1;
 	RenderLoadingFrame("Waiting for first super packet...");
 	RenderLoadingFrame("Found superpacket.");
@@ -1749,7 +1749,7 @@ void GGame::Loop()
 	{
 		wcscpy(entryProfile, (char16_t*)LHNetGetCurrentUsedProfile());
 	}
-	if (Enum0x25017c == 0)
+	if (StartType == GAME_START_TYPE_AUTOSAVE)
 	{
 		FrontEnd::StartupMenuActive = true;
 		FrontEnd::SetCursorOn();
@@ -1924,7 +1924,8 @@ void GGame::Loop()
 		}
 	}
 	DialogBoxBase::HideAll();
-	if (field_0x205a10 == 0 && !IsMultiplayerGame() && SkirmishGame == 0 && g_game->GameMode != GAME_MODE_4)
+	if (GameOverStarted == false && !IsMultiplayerGame() && SkirmishGame == false &&
+	    g_game->GameMode != GAME_MODE_LOAD_GAME)
 	{
 		if (GameMode == GAME_MODE_QUITTING)
 		{
@@ -1946,7 +1947,7 @@ void GGame::Loop()
 		if (g_game->LandNumber != 6)
 		{
 			if (FrontEnd::PreviousProfile[0] == 0 ||
-			    (g_game->GameMode != GAME_MODE_2 &&
+			    (g_game->GameMode != GAME_MODE_RESTART &&
 			     _wcsicmp(PlayerProfile::Profile.CurrentProfile, FrontEnd::PreviousProfile) == 0))
 			{
 				SaveGameRoom::InstantSaveGame(20);
@@ -2008,7 +2009,7 @@ void GGame::QuitGameAndGoIntoNetworkLobby()
 // BW1W120 0054d620 BW1M119 01020e60
 void GGame::ProcessOneGameTurn()
 {
-	fn_0054D610();
+	SetFPU();
 	network.session->IsSinglePlayer();
 	if (config != NULL)
 	{
@@ -2060,7 +2061,7 @@ void GGame::ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2)
 void GGame::Process3dEngine()
 {
 	bool32_t drewLandscape = false;
-	if (Dat_00D46A74 && (GameFlags & GAME_FLAG_PAUSED) && (g_game->GameFlags & GAME_FLAG_PAUSED))
+	if (PhysicsWhilePaused && (GameFlags & GAME_FLAG_PAUSED) && (g_game->GameFlags & GAME_FLAG_PAUSED))
 	{
 		PhysicsObject::GameTurnUpdate();
 	}
@@ -2250,7 +2251,7 @@ void GGame::Process3dEngine()
 				CameraModeNew3::ForceField->Update((int)LH3DTech::g_game_time_inc * 0.001f);
 				CameraModeNew3::ForceField->DoTheDrawing(CameraModeNew3::ForceFieldMaterial);
 			}
-			float target = (GameFlags & GAME_FLAG_UNKNOWN_0x20000) ? 1.0f : 0.0f;
+			float target = (GameFlags & GAME_FLAG_SHOW_VILLAGER_NAMES) ? 1.0f : 0.0f;
 			float step = (int)LH3DTech::g_game_time_inc * 0.003f;
 			if (field_0x59b0 < target)
 			{
@@ -2266,7 +2267,7 @@ void GGame::Process3dEngine()
 			}
 			if (!g_game->help_system->WideScreen || !g_game->help_system->WideScreenControl)
 			{
-				for (VillagerName* name = VillagerName::First; name; name = name->next)
+				for (VillagerName* name = VillagerName::First; name; name = name->Next)
 					name->AddDrawing();
 			}
 			else
@@ -2280,7 +2281,7 @@ void GGame::Process3dEngine()
 	}
 	if (ViewMode != GAME_VIEW_MODE_3)
 	{
-		if (Temple::Dat_00E06020 == Temple::Dat_00C2A150 && ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL)
+		if (Temple::FadeTarget == Temple::FadeLevel && ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL)
 			script->ProcessFade(true);
 		else
 			Temple::UpdateFade();
@@ -2315,6 +2316,9 @@ void GGame::Process3dEngine()
 	Creature::DrawLeashInfo();
 	Town::DisplayHowImpressed();
 	GPlayer::DrawComputerPlayers();
+#ifdef VERSION_BW1WCI
+	script->DrawCountDownTimer();
+#else
 	if (script->CountDownTimerEnabled && script->CountDownTimerVisible)
 	{
 		char  text[256];
@@ -2328,6 +2332,7 @@ void GGame::Process3dEngine()
 			green = 255;
 		CreatureMentalEditor::DrawTextA(text, 320, 90, 24.0f, red, green, 0);
 	}
+#endif
 	if (ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL && ViewMode != GAME_VIEW_MODE_FALLING_SPELL_VIDEO)
 		LH3DAtmos::Render2D();
 	LHResetFPU();
@@ -2430,21 +2435,21 @@ void GGame::ProcessTurn()
 	if (g_game->help_system != NULL &&
 	    (g_game->help_system->WideScreen == 0 || g_game->help_system->WideScreenControl == 0))
 	{
-		if (!g_game->IsMultiplayerGame() && g_game->field_0x205a10 == 0 && g_game->data.GameTurn % 2000 == 0 &&
+		if (!g_game->IsMultiplayerGame() && g_game->GameOverStarted == false && g_game->data.GameTurn % 2000 == 0 &&
 		    StartTime != 0 && MemoryState == 0 && timeGetTime() > StartTime + 0x36ee80u &&
 		    (unsigned int)Base::ObjectHeap->GetFreeMemory() < 0x80000u &&
-		    abs((int)(g_game->field_0x205a18 - g_game->data.GameTurn)) > 3)
+		    abs((int)(g_game->InstantSaveTurn - g_game->data.GameTurn)) > INSTANT_SAVE_MINIMUM_TURNS)
 		{
 			MemoryState = 1;
-			g_game->field_0x205a18 = g_game->data.GameTurn;
+			g_game->InstantSaveTurn = g_game->data.GameTurn;
 			SetPacket(PACKET_TYPE_INSTANT_SAVE);
 		}
 	}
-	if (MemoryState == 2 && !g_game->IsMultiplayerGame() && g_game->field_0x205a10 == 0 &&
-	    abs((int)(g_game->field_0x205a1c - g_game->data.GameTurn)) > 3)
+	if (MemoryState == 2 && !g_game->IsMultiplayerGame() && g_game->GameOverStarted == false &&
+	    abs((int)(g_game->InstantLoadTurn - g_game->data.GameTurn)) > INSTANT_SAVE_MINIMUM_TURNS)
 	{
 		MemoryState = 0;
-		SetPacket(PACKET_TYPE_0x62);
+		SetPacket(PACKET_TYPE_INSTANT_LOAD);
 	}
 	if (ScriptRebootRequested)
 	{
@@ -2500,18 +2505,18 @@ void GGame::EndTurn()
 	}
 	map.CalculateMapInfluenceX();
 	GameFlags &= ~0x10u;
-	if ((GameFlags & GAME_FLAG_AUTO_SAVE_ENABLED) != 0 && field_0x205a10 == 0)
+	if ((GameFlags & GAME_FLAG_AUTO_SAVE_ENABLED) != 0 && GameOverStarted == false)
 	{
 		GameOSFile::AutoSave(false);
 	}
 	network.UpdateDebug();
-	if (field_0x205a10 == 0 && g_game->SkirmishGame == false && !g_game->IsMultiplayerGame() &&
+	if (GameOverStarted == false && g_game->SkirmishGame == false && !g_game->IsMultiplayerGame() &&
 	    g_game->field_0x205a14 == 1 && &g_game->players[g_game->PlayerIndex] != NULL &&
 	    g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->heart.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->GetCitadelHeart()->DestructionStarted != 0)
 	{
-		field_0x205a10 = 1;
+		GameOverStarted = true;
 		g_game->script->StartScript("GameOver");
 	}
 	uint32_t interval = GameStats::UpdateInterval;
@@ -2769,13 +2774,13 @@ bool32_t GGame::Save(GameOSFile& file)
 		::operator delete(temporarySnow);
 	}
 	file.WriteIt(LH3DAtmos::ambient);
-	file.WriteIt(Enum0x25017c);
+	file.WriteIt(StartType);
 	file.WriteIt(ScriptRebootRequested);
 	file.WriteIt(SkirmishGame);
-	file.WriteIt(field_0x205a10);
+	file.WriteIt(GameOverStarted);
 	file.WriteIt(field_0x205a14);
 	file.WriteIt(GameOSFile::LastAutoSaveTurn);
-	file.WriteIt(field_0x205a18);
+	file.WriteIt(InstantSaveTurn);
 	Bookmark::SaveAll(file);
 	GLandBalance::SaveAll(file);
 	GInterface& playerInterface = *GGame::g_game->MyInterface();
@@ -2894,15 +2899,15 @@ bool32_t GGame::Load(GameOSFile& file)
 	}
 	file.ReadIt(LH3DAtmos::ambient);
 	memset(&LH3DAtmos::ambient, 0, sizeof(LH3DAtmos::ambient));
-	file.ReadIt(Enum0x25017c);
+	file.ReadIt(StartType);
 	file.ReadIt(ScriptRebootRequested);
 	file.ReadIt(SkirmishGame);
-	file.ReadIt(field_0x205a10);
+	file.ReadIt(GameOverStarted);
 	file.ReadIt(field_0x205a14);
 	file.ReadIt(GameOSFile::LastAutoSaveTurn);
 	GameOSFile::LastAutoSaveTurn = GGame::g_game->data.GameTurn;
-	field_0x205a1c = GGame::g_game->data.GameTurn;
-	file.ReadIt(field_0x205a18);
+	InstantLoadTurn = GGame::g_game->data.GameTurn;
+	file.ReadIt(InstantSaveTurn);
 	Bookmark::LoadAll(file);
 	GLandBalance::LoadAll(file);
 	GInterface& playerInterface = *GGame::g_game->MyInterface();

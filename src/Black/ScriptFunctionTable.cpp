@@ -40,14 +40,21 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::SpiritPointAtGameThing, 3, 0, false, "SPIRIT_POINT_GAME_THING"},
 	{GScript::IsGameThingFieldOfView, 1, 1, false, "GAME_THING_FIELD_OF_VIEW"},
 	{GScript::IsPosFieldOfView, 3, 1, false, "POS_FIELD_OF_VIEW"},
+#ifdef VERSION_BW1WCI
+	{GScript::RunText, 4, 0, false, "RUN_TEXT"},
+	{GScript::TempText, 4, 0, false, "TEMP_TEXT"},
+#else
 	{GScript::RunText, 3, 0, false, "RUN_TEXT"},
 	{GScript::TempText, 3, 0, false, "TEMP_TEXT"},
+#endif
 	{GScript::TextRead, 0, 1, false, "TEXT_READ"},
 	{GScript::GameThingClicked, 1, 1, false, "GAME_THING_CLICKED"},
 	{GScript::SetScriptState, 2, 0, true, "SET_SCRIPT_STATE"},
+#ifndef VERSION_BW1WCI
 	{GScript::SetScriptStatePos, 4, 0, true, "SET_SCRIPT_STATE_POS"},
 	{GScript::SetScriptStateFloat, 2, 0, true, "SET_SCRIPT_FLOAT"},
 	{GScript::SetScriptStateULData, 3, 0, true, "SET_SCRIPT_ULONG"},
+#endif
 	{GScript::GetProperty, 2, 1, false, "GET_PROPERTY"},
 	{GScript::SetProperty, 3, 0, false, "SET_PROPERTY"},
 	{GScript::GetPosition, 1, 3, false, "GET_POSITION"},
@@ -71,7 +78,11 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::IsFlockMember, 2, 1, false, "FLOCK_MEMBER"},
 	{GScript::GetHandPosition, 0, 3, false, "GET_HAND_POSITION"},
 	{GScript::PlaySoundEffect, 6, 0, false, "PLAY_SOUND_EFFECT"},
+#ifdef VERSION_BW1WCI
+	{GScript::StartMusic, 2, 0, false, "START_MUSIC"},
+#else
 	{GScript::StartMusic, 1, 0, false, "START_MUSIC"},
+#endif
 	{GScript::StopMusic, 0, 0, false, "STOP_MUSIC"},
 	{GScript::AttachMusic, 2, 0, false, "ATTACH_MUSIC"},
 	{GScript::DetachMusic, 1, 0, false, "DETACH_MUSIC"},
@@ -96,9 +107,17 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::SetGameSpeed, 1, 0, false, "SET_GAMESPEED"},
 	{GScript::CallInNear, 8, 1, false, "CALL_IN_NEAR"},
 	{GScript::OverrideStateAnimation, 2, 0, false, "OVERRIDE_STATE_ANIMATION"},
+#ifdef VERSION_BW1WCI
+	{GScript::CreateCreatureFromCreature, 7, 1, false, "CREATURE_CREATE_RELATIVE_TO_CREATURE"},
+#else
 	{GScript::CreateCreatureFromCreature, 6, 1, false, "CREATURE_CREATE_RELATIVE_TO_CREATURE"},
+#endif
 	{GScript::CreatureLearnEverything, 1, 0, false, "CREATURE_LEARN_EVERYTHING"},
+#ifdef VERSION_BW1WCI
+	{GScript::CreatureSetKnowsAction, 5, 0, false, "CREATURE_SET_KNOWS_ACTION"},
+#else
 	{GScript::CreatureSetKnowsAction, 4, 0, false, "CREATURE_SET_KNOWS_ACTION"},
+#endif
 	{GScript::CreatureSetAgendaPriority, 2, 0, false, "CREATURE_SET_AGENDA_PRIORITY"},
 	{GScript::CreatureTurnOffAllDesires, 1, 0, false, "CREATURE_TURN_OFF_ALL_DESIRES"},
 	{GScript::CreatureLearnDistinction, 4, 0, false, "CREATURE_LEARN_DISTINCTION_ABOUT_ACTIVITY_OBJECT"},
@@ -110,11 +129,19 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::CreatureSetDesireMaximum, 3, 0, false, "CREATURE_SET_DESIRE_MAXIMUM"},
 	{GScript::ConvertCameraEditorPosition, 1, 3, false, "CONVERT_CAMERA_POSITION"},
 	{GScript::ConvertCameraEditorFocus, 1, 3, false, "CONVERT_CAMERA_FOCUS"},
+#ifdef VERSION_BW1WCI
+	{GScript::CreatureSetPlayer, 2, 0, false, "CREATURE_SET_PLAYER"},
+#else
 	{GScript::CreatureSetPlayer, 1, 0, false, "CREATURE_SET_PLAYER"},
+#endif
+#ifndef VERSION_BW1WCI
 	{GScript::StartCountDownTimer, 1, 0, false, "START_COUNTDOWN_TIMER"},
+#endif
 	{GScript::CreatureInitialiseNumTimesPerformedAction, 2, 0, false, "CREATURE_INITIALISE_NUM_TIMES_PERFORMED_ACTION"},
 	{GScript::CreatureGetNumTimesPerformedAction, 2, 1, false, "CREATURE_GET_NUM_TIMES_ACTION_PERFORMED"},
+#ifndef VERSION_BW1WCI
 	{GScript::RemoveCountDownTimer, 0, 0, false, "REMOVE_COUNTDOWN_TIMER"},
+#endif
 	{GScript::GetObjectDropped, 1, 1, false, "GET_OBJECT_DROPPED"},
 	{GScript::ClearDroppedByObject, 1, 0, false, "CLEAR_DROPPED_BY_OBJECT"},
 	{GScript::CreateReaction, 2, 0, false, "CREATE_REACTION"},
@@ -130,7 +157,9 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::SpiritLookAtGameThing, 2, 0, false, "LOOK_GAME_THING"},
 	{GScript::GetObjectDestination, 1, 3, false, "GET_OBJECT_DESTINATION"},
 	{GScript::CreatureForceFinish, 1, 0, false, "CREATURE_FORCE_FINISH"},
+#ifndef VERSION_BW1WCI
 	{GScript::HideCountDownTimer, 0, 0, false, "HIDE_COUNTDOWN_TIMER"},
+#endif
 	{GScript::GetActionTextForObject, 1, 1, false, "GET_ACTION_TEXT_FOR_OBJECT"},
 	{GScript::CreateCameraBetweenObjectAndPoint, 4, 0, false, "CREATE_DUAL_CAMERA_WITH_POINT"},
 	{GScript::SetCameraToFaceObject, 2, 0, false, "SET_CAMERA_TO_FACE_OBJECT"},
@@ -154,7 +183,11 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::SetLightningProperties, 5, 0, false, "CHANGE_LIGHTNING_PROPERTIES"},
 	{GScript::SetTimeFadeProperties, 3, 0, false, "CHANGE_TIME_FADE_PROPERTIES"},
 	{GScript::SetCloudProperties, 4, 0, false, "CHANGE_CLOUD_PROPERTIES"},
+#ifdef VERSION_BW1WCI
+	{GScript::SetVelocityHeadingSpeed, 8, 0, false, "SET_HEADING_AND_SPEED"},
+#else
 	{GScript::SetVelocityHeadingSpeed, 5, 0, false, "SET_HEADING_AND_SPEED"},
+#endif
 	{GScript::StartGameSpeed, 0, 0, false, "START_GAME_SPEED"},
 	{GScript::EndGameSpeed, 0, 0, false, "END_GAME_SPEED"},
 	{GScript::BuildBuilding, 4, 0, false, "BUILD_BUILDING"},
@@ -171,7 +204,9 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::CallInNotNear, 8, 1, false, "CALL_IN_NOT_NEAR"},
 	{GScript::SetCameraZone, 1, 0, false, "SET_CAMERA_ZONE"},
 	{GScript::GetScriptState, 1, 1, false, "GET_OBJECT_STATE"},
+#ifndef VERSION_BW1WCI
 	{GScript::RevealCountDownTimer, 0, 0, false, "REVEAL_COUNTDOWN_TIMER"},
+#endif
 	{GScript::SetTimerTime, 2, 0, false, "SET_TIMER_TIME"},
 	{GScript::CreateTimer, 1, 1, false, "CREATE_TIMER"},
 	{GScript::GetTimeRemaining, 1, 1, false, "GET_TIMER_TIME_REMAINING"},
@@ -217,13 +252,22 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::DetachObjectLeash, 1, 0, false, "DETACH_OBJECT_LEASH"},
 	{GScript::SetCreatureOnlyDesire, 3, 0, false, "SET_CREATURE_ONLY_DESIRE"},
 	{GScript::SetCreatureOnlyDesireOff, 1, 0, false, "SET_CREATURE_ONLY_DESIRE_OFF"},
+#ifdef VERSION_BW1WCI
+	{GScript::RestartMusic, 2, 0, false, "RESTART_MUSIC"},
+#else
 	{GScript::RestartMusic, 1, 0, false, "RESTART_MUSIC"},
+#endif
 	{GScript::MusicPlayed, 1, 1, false, "MUSIC_PLAYED"},
 	{GScript::IsOfType, 3, 1, false, "IS_OF_TYPE"},
 	{GScript::ClearHitObject, 0, 0, false, "CLEAR_HIT_OBJECT"},
 	{GScript::IsHitObject, 1, 1, false, "GAME_THING_HIT"},
+#ifdef VERSION_BW1WCI
+	{GScript::SpellOnThing, 9, 1, false, "SPELL_AT_THING"},
+	{GScript::SpellAtPos, 11, 1, false, "SPELL_AT_POS"},
+#else
 	{GScript::SpellOnThing, 8, 1, false, "SPELL_AT_THING"},
 	{GScript::SpellAtPos, 10, 1, false, "SPELL_AT_POS"},
+#endif
 	{GScript::CallPlayerCreature, 1, 1, false, "CALL_PLAYER_CREATURE"},
 	{GScript::GetSlowestInId, 1, 1, false, "GET_SLOWEST_SPEED"},
 	{GScript::GetHeldObject, 0, 1, false, "GET_OBJECT_HELD"},
@@ -258,8 +302,13 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::SetCreatureCanAttackOwnTown, 2, 0, false, "SET_ATTACK_OWN_TOWN"},
 	{GScript::IsFighting, 1, 1, false, "IS_FIGHTING"},
 	{GScript::SetRadius, 2, 0, false, "SET_MAGIC_RADIUS"},
+#ifdef VERSION_BW1WCI
+	{GScript::TempTextWithNumber, 5, 0, false, "TEMP_TEXT_WITH_NUMBER"},
+	{GScript::RunTextWithNumber, 5, 0, false, "RUN_TEXT_WITH_NUMBER"},
+#else
 	{GScript::TempTextWithNumber, 4, 0, false, "TEMP_TEXT_WITH_NUMBER"},
 	{GScript::RunTextWithNumber, 4, 0, false, "RUN_TEXT_WITH_NUMBER"},
+#endif
 	{GScript::SetCreatureSpellReversion, 2, 0, false, "CREATURE_SPELL_REVERSION"},
 	{GScript::GetDesire, 2, 1, false, "GET_DESIRE"},
 	{GScript::GetEventsPerSecond, 1, 1, false, "GET_EVENTS_PER_SECOND"},
@@ -376,7 +425,11 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::ClearActorMind, 1, 0, false, "CLEAR_ACTOR_MIND"},
 	{GScript::EnterExitCitadel, 1, 0, false, "ENTER_EXIT_CITADEL"},
 	{GScript::StartPitchSound, 1, 0, false, "START_ANGLE_SOUND"},
+#ifdef VERSION_BW1WCI
+	{GScript::ThingJCSpecial, 4, 0, false, "THING_JC_SPECIAL"},
+#else
 	{GScript::ThingJCSpecial, 3, 0, false, "THING_JC_SPECIAL"},
+#endif
 	{GScript::IsMusicPlayed, 1, 1, false, "MUSIC_PLAYED"},
 	{GScript::UpdateSnapShotDetails, 11, 0, false, "UPDATE SNAPSHOT_PICTURE"},
 	{GScript::StopScriptsInFilesExcluding, 2, 0, false, "STOP_SCRIPTS_IN_FILES_EXCLUDING"},
@@ -419,7 +472,11 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::GetObjectAdultCapacity, 1, 1, false, "OBJECT_ADULT_CAPACITY"},
 	{GScript::SetCreatureAutoFighting, 2, 0, false, "SET_CREATURE_AUTO_FIGHTING"},
 	{GScript::IsCreatureAutoFighting, 1, 1, false, "IS_AUTO_FIGHTING"},
+#ifdef VERSION_BW1WCI
+	{GScript::QueueCreatureFightMove, 3, 0, false, "SET_CREATURE_QUEUE_FIGHT_MOVE"},
+#else
 	{GScript::QueueCreatureFightMove, 2, 0, false, "SET_CREATURE_QUEUE_FIGHT_MOVE"},
+#endif
 	{GScript::QueueCreatureFightSpell, 2, 0, false, "SET_CREATURE_QUEUE_FIGHT_SPELL"},
 	{GScript::QueueCreatureFightStep, 2, 0, false, "SET_CREATURE_QUEUE_FIGHT_STEP"},
 	{GScript::GetCreatureFightAction, 1, 1, false, "GET_CREATURE_FIGHT_ACTION"},
@@ -498,5 +555,79 @@ ScriptFunctionTable ScriptFunctionTable::Table[SCRIPT_FUNCTION_COUNT] = {
 	{GScript::CanSkipTraining, 0, 1, false, "CAN_SKIP_CREATURE_TRAINING"},
 	{GScript::IsKeepingOldCreature, 0, 1, false, "IS_KEEPING_OLD_CREATURE"},
 	{GScript::CurrentProfileHasCreature, 0, 1, false, "CURRENT_PROFILE_HAS_CREATURE"},
+#endif
+#ifdef VERSION_BW1WCI
+	{GScript::GameThingPlayAnim, 3, 0, true, "THING_PLAY_ANIM"},
+	{GScript::SetStateWithParams, 8, 0, true, "SET_SCRIPT_STATE_WITH_PARAMS"},
+	{GScript::StartCountDownTimer, 2, 0, false, "START_COUNTDOWN_TIMER"},
+	{GScript::RemoveCountDownTimer, 0, 0, false, "END_COUNTDOWN_TIMER"},
+	{GScript::SetCountDownTimerDraw, 1, 0, false, "SET_COUNTDOWN_TIMER_DRAW"},
+	{GScript::SetObjectScore, 2, 0, false, "SET_OBJECT_SCORE"},
+	{GScript::GetObjectScore, 1, 1, false, "GET_OBJECT_SCORE"},
+	{GScript::SetObjectFollowMaster, 2, 0, false, "SET_CREATURE_FOLLOW_MASTER"},
+	{GScript::SetObjectDistanceFromHome, 2, 0, false, "SET_CREATURE_DISTANCE_FROM_HOME"},
+	{GScript::DeleteFire, 4, 0, false, "GAME_DELETE_FIRE"},
+	{GScript::EpOfObject, 2, 3, false, "GET_OBJECT_EP"},
+	{GScript::GetCountDownTimerTime, 0, 1, false, "GET_COUNTDOWN_TIMER_TIME"},
+	{GScript::SetObjectInPlayerHand, 2, 0, false, "SET_OBJECT_IN_PLAYER_HAND"},
+	{GScript::CreateTempleForPlayer, 4, 1, false, "CREATE_PLAYER_TEMPLE"},
+	{GScript::StartCannonCamera, 0, 0, false, "START_CANNON_CAMERA"},
+	{GScript::EndCannonCamera, 0, 0, false, "END_CANNON_CAMERA"},
+	{GScript::GetObjectLandingPos, 5, 3, false, "GET_LANDING_POS"},
+	{GScript::SetCreatureMaster, 2, 0, false, "SET_CREATURE_MASTER"},
+	{GScript::SetCannonSize, 1, 0, false, "SET_CANNON_PERCENTAGE"},
+	{GScript::SetObjectDieCheck, 2, 0, false, "SET_DIE_ROLL_CHECK"},
+	{GScript::SetCameraHeadingFollow, 2, 0, false, "SET_CAMERA_HEADING_FOLLOW"},
+	{GScript::SetCannonStrength, 1, 0, false, "SET_CANNON_STRENGTH"},
+	{GScript::CreateTown, 5, 1, false, "GAME_CREATE_TOWN"},
+	{GScript::SetObjectNavigation, 2, 0, false, "SET_OBJECT_NAVIGATION"},
+	{GScript::CreatureDoActionAtPos, 6, 0, false, "DO_ACTION_AT_POS"},
+	{GScript::GetCreatureDesire, 3, 1, false, "GET_OBJECT_DESIRE"},
+	{GScript::GetCreatureCurrentAction, 1, 1, false, "GET_CREATURE_CURRENT_ACTION"},
+	{GScript::GetCreatureSpellSkill, 2, 1, false, "GET_CREATURE_SPELL_SKILL"},
+	{GScript::CreatureKnowsAction, 2, 1, false, "GET_CREATURE_KNOWS_ACTION"},
+	{GScript::CallBuildingWoodPile, 1, 1, false, "CALL_BUILDING_WOODPILE_IN_TOWN"},
+	{GScript::GetMousePercentageAcross, 0, 1, false, "GET_MOUSE_ACROSS"},
+	{GScript::GetMousePercentageDown, 0, 1, false, "GET_MOUSE_DOWN"},
+	{GScript::SetDolphinMove, 7, 0, true, "SET_DOLPHIN_MOVE"},
+	{GScript::MouseButtonDown, 1, 1, false, "MOUSE_DOWN"},
+	{GScript::InWidescreen, 0, 1, false, "IN_WIDESCREEN"},
+	{GScript::SetAffectedBySnow, 2, 0, false, "AFFECTED_BY_SNOW"},
+	{GScript::SetDolphinSpeed, 1, 0, false, "SET_DOLPHIN_SPEED"},
+	{GScript::SetDolphinWait, 1, 0, false, "SET_DOLPHIN_WAIT"},
+	{GScript::FireGun, 1, 0, false, "FIRE_GUN"},
+	{GScript::SetGunAnglePitch, 3, 0, false, "GUN_ANGLE_PITCH"},
+	{GScript::SetObjectTattoo, 3, 0, false, "SET_OBJECT_TATTOO"},
+	{GScript::ClearFightQueue, 1, 0, false, "CREATURE_CLEAR_FIGHT_QUEUE"},
+	{GScript::SetCanBeLeashed, 2, 0, false, "CAN_BE_LEASHED"},
+	{GScript::SetBookMarkOnObject, 2, 0, false, "SET_BOOKMARK_ON_OBJECT"},
+	{GScript::SetCreatureLightbulb, 2, 0, false, "SET_OBJECT_LIGHTBULB"},
+	{GScript::SetCreatureCanDrop, 2, 0, false, "SET_CREATURE_CAN_DROP"},
+	{GScript::SpiritPlayAnimInWorld, 6, 0, false, "PLAY_SPIRIT_ANIM_IN_WORLD"},
+	{GScript::SetObjectColour, 4, 0, false, "SET_OBJECT_COLOUR"},
+	{GScript::SpecialEffectFromFile, 1, 1, false, "EFFECT_FROM_FILE"},
+	{GScript::SpecialEffectFromPos, 4, 1, false, "ALEX_SPECIAL_EFFECT_POSITION"},
+	{GScript::DeleteFragmentsInRadius, 4, 0, false, "DELETE_FRAGMENTS_IN_RADIUS"},
+	{GScript::DeleteFragmentsForObject, 1, 0, false, "DELETE_FRAGMENTS_FOR_OBJECT"},
+	{GScript::SetCameraAutoTrackFollow, 2, 0, false, "SET_CAMERA_AUTO_TRACK"},
+	{GScript::IsCreatureHelpOn, 0, 1, false, "CREATURE_HELP_ON"},
+	{GScript::SetCreatureCanLearn, 3, 0, false, "CREATURE_CAN_LEARN"},
+	{GScript::ObjectHandPosition, 2, 3, false, "GET_OBJECT_HAND_POSITION"},
+	{GScript::SetCreatureRightHandOnly, 2, 0, false, "CREATURE_SET_RIGHT_HAND_ONLY"},
+	{GScript::HoldWideScreen, 0, 0, false, "GAME_HOLD_WIDESCREEN"},
+	{GScript::CreateYoungCreatureWithKnowledge, 5, 1, false, "CREATURE_CREATE_YOUNG_WITH_KNOWLEDGE"},
+	{GScript::StopDialogueSound, 0, 0, false, "STOP_DIALOGUE_SOUND"},
+	{GScript::IsHitLandObject, 1, 1, false, "GAME_THING_HIT_LAND"},
+	{GScript::GetLastObjectToHitLand, 0, 1, false, "GET_LAST_OBJECT_WHICH_HIT_LAND"},
+	{GScript::ClearHitLandObject, 0, 0, false, "CLEAR_HIT_LAND_OBJECT"},
+	{GScript::SetDrawScoreboard, 1, 0, false, "SET_DRAW_SCOREBOARD"},
+	{GScript::GetBraceletPos, 1, 3, false, "GET_BRACELET_POSITION"},
+	{GScript::SetFightLock, 1, 0, false, "SET_FIGHT_LOCK"},
+	{GScript::SetVillagerSound, 1, 0, false, "SET_VILLAGER_SOUND"},
+	{GScript::ClearSpellsOnObject, 1, 0, false, "CLEAR_SPELLS_ON_OBJECT"},
+	{GScript::SetObjectImmuneToSpells, 2, 0, false, "ENABLE_OBJECT_IMMUNE_TO_SPELLS"},
+	{GScript::IsObjectImmuneToSpells, 1, 1, false, "IS_OBJECT_IMMUNE_TO_SPELLS"},
+	{GScript::GetObjectObjectLeashedTo, 1, 1, false, "GET_OBJECT_OBJECT_LEASHED_TO"},
+	{GScript::SetFightQueueOnly, 1, 0, false, "SET_FIGHT_QUEUE_ONLY"},
 #endif
 };

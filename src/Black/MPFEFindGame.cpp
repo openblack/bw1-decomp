@@ -124,11 +124,11 @@ void MPFEFindGame::Destroy() {}
 
 void MPFEFindGame::InitControls()
 {
-	wcscpy(Text->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_38));
-	wcscpy(BackButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ALLTEXT));
-	wcscpy(InternetCheckBox->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_86));
-	wcscpy(LanCheckBox->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_87));
-	wcscpy(NextButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_78));
+	wcscpy(Text->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_56));
+	wcscpy(BackButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_BACK));
+	wcscpy(InternetCheckBox->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_104));
+	wcscpy(LanCheckBox->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_105));
+	wcscpy(NextButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_96));
 	LanCheckBox->style = BBSTYLE_CHECK_BOX_OFF;
 	InternetCheckBox->style = BBSTYLE_CHECK_BOX_OFF;
 	if (LanSelected)

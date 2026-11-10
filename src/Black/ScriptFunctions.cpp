@@ -136,7 +136,7 @@ void GScript::RunTextWithNumber()
 	bool32_t              singleLine = g_scriptDLL->ULONG_POP();
 	SCRIPT_ASSERT(!GGame::g_game->IsMultiplayerGame() || interaction == HELP_TEXT_INTERACTION_NONE,
 	              "This is not multiplayer friendly yet!");
-	if (text >= SCRIPT_TEXT_ID_LIMIT)
+	if (text >= HELP_TEXT_LAST)
 	{
 		ScriptErrorMessage("Invalid text");
 		text = 0;
@@ -162,7 +162,7 @@ void GScript::RunText()
 	bool32_t              singleLine = g_scriptDLL->ULONG_POP();
 	SCRIPT_ASSERT(!GGame::g_game->IsMultiplayerGame() || interaction == HELP_TEXT_INTERACTION_NONE,
 	              "This is not multiplayer friendly yet!");
-	if (text >= SCRIPT_TEXT_ID_LIMIT)
+	if (text >= HELP_TEXT_LAST)
 	{
 		ScriptErrorMessage("Invalid text");
 		text = 0;
@@ -2798,7 +2798,6 @@ void GScript::GetFirstHelp()
 	g_scriptDLL->FLOAT_PUSH(0.0f);
 }
 
-#ifndef VERSION_BW1W100
 void GScript::GetLastHelp()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
@@ -2822,7 +2821,6 @@ void GScript::GetLastHelp()
 	}
 	g_scriptDLL->FLOAT_PUSH(0.0f);
 }
-#endif
 
 void GScript::LoadMyCreature()
 {

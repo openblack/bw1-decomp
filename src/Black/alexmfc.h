@@ -203,9 +203,12 @@ struct SetupThing
 	static bool32_t MouseCaptured;
 	// Set by CMouse::ProcessButtons on a double click (LHMouse button events 0x10 and 0x20).
 	// BW1W120 00c4cd10
-	static int DoubleClicked;
+	static bool32_t DoubleClicked;
 	// BW1W120 00c4cd14
-	static int RightClicked;
+	static bool32_t RightClicked;
+	// Set with DoubleClicked by either button's double click.
+	// BW1W120 00c4cd18
+	static bool32_t AnyDoubleClicked;
 	// Set while a pressed control is being dragged with the left button held.
 	// BW1W120 00c4ccc8
 	static bool Dragging;
@@ -265,10 +268,17 @@ struct SetupThing
 	// BW1W120 004125a0 BW1M119 013ed8d0
 	static void DrawLine(int x_start, int y_start, int x_end, int y_end, unsigned long color, bool32_t adjust,
 	                     float depth, float distance);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00412f20 BW1MCI119 014acb40
+	static void DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
+	                    LH3DMaterial* material, LH3DColor* color, bool32_t adjust, int clip_y_start, int clip_y_end,
+	                    bool depth_test, float distance, bool32_t use_draw_alpha = true);
+#else
 	// BW1W120 00412980 BW1M119 0104b340
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
 	                    LH3DMaterial* material, LH3DColor* color, bool32_t adjust, int clip_y_start, int clip_y_end,
 	                    bool depth_test, float distance);
+#endif
 	// BW1W120 00412eb0 BW1M119 011cd6d0
 	static void DrawQuad(int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, unsigned long color_1,
 	                     unsigned long color_2, unsigned long color_3, unsigned long color_4, unsigned long use_alpha,
@@ -373,6 +383,8 @@ struct SetupBox
 	static bool CanEscape;
 	// BW1W120 00c4cced
 	static bool WantKey;
+	// BW1W120 00c4ccee
+	static bool Showing;
 	// BW1W120 00c4cd1c
 	static SetupBox* CurrentInitBox;
 	// BW1W120 00c4cd20
@@ -412,7 +424,7 @@ struct SetupBox
 	SetupControl*    HoverWidget; /* 0xbc */
 	int              HoldColour;
 	float            Alpha;
-	uint32_t         field_0xc8;
+	bool32_t         KeysPassThrough;
 
 	// Static methods
 

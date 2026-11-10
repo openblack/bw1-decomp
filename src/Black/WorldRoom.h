@@ -10,13 +10,12 @@
 
 #include "TempleRoom.h" /* For class TempleRoom */
 
-#define WORLD_ROOM_ENGINE_PATH "data\\citadel\\engine\\"
-#define WORLD_ROOM_ICON_PATH   "data\\citadel\\icons\\"
+#define WORLD_ROOM_ENGINE_PATH         "data\\citadel\\engine\\"
+#define WORLD_ROOM_ICON_PATH           "data\\citadel\\icons\\"
+#define WORLD_ROOM_SCROLL_TEXTURE_PATH "Data\\Citadel\\Controls\\ChallengeScroll.raw"
 
-#define WORLD_ROOM_CONTROL_COUNT        11
-#define WORLD_ROOM_SIGN_FADE            (0xff * 4)
-#define WORLD_ROOM_TEXT_ID_OFFSET       4
-#define WORLD_ROOM_CI_TOOLTIP_ID_OFFSET 8
+#define WORLD_ROOM_CONTROL_COUNT 11
+#define WORLD_ROOM_SIGN_FADE     (0xff * 4)
 
 #define WORLD_ROOM_DOOR_DRAW_THRESHOLD   0.01f
 #define WORLD_ROOM_MARKER_SCALE          0.05f

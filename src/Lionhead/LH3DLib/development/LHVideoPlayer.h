@@ -2,6 +2,9 @@
 #define BW1_DECOMP_LH_VIDEO_PLAYER_INCLUDED_H
 
 #include <windows.h>
+
+#include <re_common.h> /* For bool32_t */
+
 #include "Bink.h"
 #include "LH3DColor.h"
 
@@ -19,7 +22,8 @@ public:
 	unsigned char HiColour;
 	unsigned char field_0x19[3];
 	HBINK         Bink; // 0x1c
-	unsigned char field_0x20[0x18];
+	bool32_t      FrameDecoded;
+	unsigned char field_0x24[0x14];
 	LH3DMaterial* BlurMaterial; // 0x38
 	unsigned char field_0x3c[4];
 	int           BlurWidth;  // 0x40
@@ -38,6 +42,21 @@ public:
 	static void __stdcall thedraw(void* context);
 	// BW1W120 00844e70 BW1M119 010cc480 (LHCombined Release)
 	HBINK Init(char* file_name, bool hi_colour, bool make_blur_texture);
+	// BW1W120 00844d70 BW1M119 010cc8f0 (LHCombined Release)
+	void Close();
+	// BW1W120 inlined BW1M119 inlined
+	void NextFrame()
+	{
+		if (Bink && FrameDecoded)
+			BinkNextFrame(Bink);
+		FrameDecoded = false;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	bool NextFrameReady()
+	{
+		NextFrame();
+		return Bink ? BinkWait(Bink) == 0 : false;
+	}
 	// BW1W120 008450b0 BW1M119 010cc330 (LHCombined Release)
 	void UnpackNextFrame();
 	// BW1W120 00845420 BW1M119 010cbd40 (LHCombined Release)

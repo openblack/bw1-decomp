@@ -157,9 +157,8 @@ void GScript::Call()
 	}
 	if (type > SCRIPT_OBJECT_TYPE_NONE && type < SCRIPT_OBJECT_TYPE_LAST)
 	{
-		MapCoords coords(pos);
-		void*(__cdecl * find)(const MapCoords&, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-		                      SCRIPT_OBJECT_TYPE, uint32_t) = g_scriptObjectDispatch[type].FindAtPos;
+		MapCoords                               coords(pos);
+		ScriptObjectDispatch::FindAtPosFunction find = g_scriptObjectDispatch[type].FindAtPos;
 		if (find != NULL)
 		{
 			GameThingWithPos* thing;
@@ -201,9 +200,8 @@ void GScript::CallNear()
 	}
 	if (type > SCRIPT_OBJECT_TYPE_NONE && type < SCRIPT_OBJECT_TYPE_LAST)
 	{
-		MapCoords coords(pos);
-		void*(__cdecl * find)(const MapCoords&, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-		                      SCRIPT_OBJECT_TYPE, uint32_t, float) = g_scriptObjectDispatch[type].FindNearPos;
+		MapCoords                                 coords(pos);
+		ScriptObjectDispatch::FindNearPosFunction find = g_scriptObjectDispatch[type].FindNearPos;
 		if (find != NULL)
 		{
 			GameThingWithPos* thing;
@@ -755,9 +753,7 @@ void GScript::CallFromId()
 	SCRIPT_OBJECT_TYPE type = (SCRIPT_OBJECT_TYPE)g_scriptDLL->ULONG_POP();
 	if (container != NULL)
 	{
-		void*(__cdecl * find)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-		                      SCRIPT_OBJECT_TYPE, uint32_t) =
-			g_scriptObjectDispatch[container->GetScriptObjectType()].FindIn;
+		ScriptObjectDispatch::FindInFunction find = g_scriptObjectDispatch[container->GetScriptObjectType()].FindIn;
 		if (find != NULL)
 		{
 			GameThingWithPos* thing;
@@ -920,9 +916,7 @@ void GScript::CallPoisonedFromId()
 	SCRIPT_OBJECT_TYPE type = (SCRIPT_OBJECT_TYPE)g_scriptDLL->ULONG_POP();
 	if (container != NULL)
 	{
-		void*(__cdecl * loop)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-		                      SCRIPT_OBJECT_TYPE, uint32_t) =
-			g_scriptObjectDispatch[container->GetScriptObjectType()].Loop;
+		ScriptObjectDispatch::LoopFunction loop = g_scriptObjectDispatch[container->GetScriptObjectType()].Loop;
 		if (loop != NULL)
 		{
 			GameThingWithPos* thing;
@@ -958,9 +952,7 @@ void GScript::CallNotPoisonedFromId()
 	SCRIPT_OBJECT_TYPE type = (SCRIPT_OBJECT_TYPE)g_scriptDLL->ULONG_POP();
 	if (container != NULL)
 	{
-		void*(__cdecl * loop)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-		                      SCRIPT_OBJECT_TYPE, uint32_t) =
-			g_scriptObjectDispatch[container->GetScriptObjectType()].Loop;
+		ScriptObjectDispatch::LoopFunction loop = g_scriptObjectDispatch[container->GetScriptObjectType()].Loop;
 		if (loop != NULL)
 		{
 			GameThingWithPos* thing;

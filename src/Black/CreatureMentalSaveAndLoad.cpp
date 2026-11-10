@@ -107,7 +107,7 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WriteIt(mind->debug.IsProcessing);
 		file.WriteIt(MaxBigSize);
 		file.WriteIt(MaxSmallSize);
-		file.WriteIt(field_0x37c);
+		file.WriteIt(CanGoThroughVortex);
 		if (ReceiveSpell->data[CREATURE_RECEIVE_SPELL_INVISIBLE].State == 0)
 		{
 			FizzSpeed = 0.0f;
@@ -309,7 +309,7 @@ bool32_t Creature::Load(GameOSFile& file)
 		}
 		file.ReadIt(MaxBigSize);
 		file.ReadIt(MaxSmallSize);
-		file.ReadIt(field_0x37c);
+		file.ReadIt(CanGoThroughVortex);
 		file.ReadIt(FizzLocked);
 		file.ReadIt(FizzCurr);
 		file.ReadIt(FizzDest);

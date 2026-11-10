@@ -31,7 +31,7 @@ class OneOffSpellSeed : public MobileObject
 {
 public:
 	SPELL_SEED_TYPE         SeedType;
-	uint8_t                 field_0x6c[0x4];
+	float                   DurationMultiplier;
 	LHPTR<SpellSeedGraphic> Graphic;
 	uint8_t                 field_0x74[0x8];
 
@@ -109,6 +109,8 @@ public:
 	void UpdateFrame();
 	// BW1W120 0072a840 BW1M119 0152f5d0
 	void GetSpellGraphicPos(LHMatrix* matrix, float* scale);
+	// BW1W120 inlined BW1M119 015093d0
+	float GetDurationMultiplier() { return DurationMultiplier; }
 
 	// BW1W120 0072a2f0 BW1M119 01530300
 	static OneOffSpellSeed* Create(const MapCoords& coords, SPELL_SEED_TYPE type, POWER_UP_TYPE power_up, float scale);

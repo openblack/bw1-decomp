@@ -26,6 +26,10 @@ struct LH3DVRAMTex
 
 	// BW1W120 00f05190 BW1M119 01342234 (LHCombined Release)
 	static PixelFormat g_pixel_format[LH3D_VRAM_TEX_PIXEL_FORMATS];
+	// BW1W120 00c392c0 BW1M119 011d17e8 (LHCombined Release)
+	static long g_max_amount_agp_mem;
+	// BW1W120 00c392c4 BW1M119 011d17ec (LHCombined Release)
+	static long g_max_amount_vram_mem;
 
 	IDirectDrawSurface7* Surface;
 	LH3DTexture*         Texture;

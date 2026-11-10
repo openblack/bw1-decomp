@@ -9,12 +9,19 @@
 
 // Forward Declares
 
-struct GCameraEditor__CameraBin;
 struct LH3DWay;
 
 class GCameraEditor : public Prss
 {
 public:
+	struct CameraBin
+	{
+		LHPoint Position;
+		LHPoint Focus;
+		float   field_0x18;
+		float   field_0x1c;
+	};
+
 	// TODO: Original singleton name is unrecovered.
 	// BW1W120 00c59cf8
 	static GCameraEditor* Instance;
@@ -30,7 +37,7 @@ public:
 	// BW1W120 00445e10 BW1M119 011a4600
 	static void Draw3DPart();
 	// BW1W120 00446fe0 BW1M119 011a3fb0
-	static void LoadCameraFromHD(int param_1, GCameraEditor__CameraBin* param_2);
+	static void LoadCameraFromHD(long index, CameraBin& bin);
 };
 
 struct Q213GCameraEditor9InfoTrack

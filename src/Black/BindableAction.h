@@ -77,6 +77,11 @@ struct ControlKey
 
 struct ControlMouse
 {
+	enum MOUSE_CONTROL_BUTTON
+	{
+		MOUSE_CONTROL_BUTTON_NONE = 0
+	};
+
 	uint32_t code; /* 0x0 */
 	char16_t DisplayText[0x80];
 

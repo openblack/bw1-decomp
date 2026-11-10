@@ -164,7 +164,7 @@ struct FrontEnd
 	// BW1W120 00544f90 BW1M119 015c0ab0
 	static void JustDoABox(DialogBoxBase* box);
 	// BW1W120 0053ce70 BW1M119 015caa70
-	void JustDoNewProfileBox();
+	static void JustDoNewProfileBox();
 	// BW1W120 00544f80 BW1M119 015c0eb0
 	static void JustDoSkirmishGameBox();
 	// BW1W120 0053c0f0 BW1M119 015cb560

@@ -3,6 +3,24 @@
 
 #include <stdint.h> /* For uint16_t */
 
+enum ATMOS_TYPE
+{
+	ATMOS_TYPE_NONE = 0,
+	ATMOS_TYPE_SEA = 1,
+	ATMOS_TYPE_STILL_FRESH_WATER = 2,
+	ATMOS_TYPE_COASTAL = 3,
+	ATMOS_TYPE_JUNGLE = 4,
+	ATMOS_TYPE_ARCTIC = 5,
+	ATMOS_TYPE_DESERT = 6,
+	ATMOS_TYPE_COUNTRYSIDE = 7,
+	ATMOS_TYPE_SWAMP = 8,
+	ATMOS_TYPE_RUNNING_WATER = 9,
+	ATMOS_TYPE_STRATOSPHERE = 10,
+	ATMOS_TYPE_NIGHT = 11,
+	ATMOS_TYPE_RAIN = 12,
+	ATMOS_TYPE_WIND = 13,
+};
+
 // Forward Declares
 
 class GTerrainMaterialInfo;
@@ -12,6 +30,8 @@ class Terrain
 public:
 	// Static methods
 
+	// BW1W120 007352b0 BW1M119 01045c70
+	static ATMOS_TYPE GetAtmosType(uint16_t x, uint16_t z);
 	// BW1W120 00735330 BW1M119 0106a3b0
 	static GTerrainMaterialInfo* GetMaterialInfo(uint16_t x, uint16_t z);
 };

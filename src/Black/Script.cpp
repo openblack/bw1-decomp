@@ -190,7 +190,11 @@ void GScript::Reset(bool32_t load_challenge)
 #endif
 
 	FadeColour.Set(0, 0, 0, 0);
+#ifdef VERSION_BW1WCI
+	CountDownTimerDraw = SCRIPT_COUNTDOWN_DRAW_NONE;
+#else
 	CountDownTimerVisible = false;
+#endif
 #ifdef VERSION_BW1WCI
 	CountDownTimerEnabled = false;
 #endif
@@ -300,7 +304,11 @@ void GScript::ValidateHitObjects()
 void GScript::Process()
 {
 	ValidateHitObjects();
+#ifdef VERSION_BW1WCI
+	ProcessTimer();
+#else
 	ProcessCountDownTimer();
+#endif
 	if (!(GGame::g_game->GameFlags & GAME_FLAG_CLEARING_MAP))
 	{
 		g_scriptDLL->LookIn(VMScriptType_All);
@@ -638,7 +646,11 @@ bool32_t GScript::Save(GameOSFile& file)
 	file.WriteIt(CountDownTimerCountsUp);
 #endif
 	file.WriteIt(CountDownTimerRemaining);
+#ifdef VERSION_BW1WCI
+	file.WriteIt(CountDownTimerDraw);
+#else
 	file.WriteIt(CountDownTimerVisible);
+#endif
 	file.WriteIt(StoredCameraPosition);
 	file.WriteIt(StoredCameraFocus);
 	file.WriteIt(DrawLeash);
@@ -690,7 +702,11 @@ bool32_t GScript::Load(GameOSFile& file)
 	file.ReadIt(CountDownTimerCountsUp);
 #endif
 	file.ReadIt(CountDownTimerRemaining);
+#ifdef VERSION_BW1WCI
+	file.ReadIt(CountDownTimerDraw);
+#else
 	file.ReadIt(CountDownTimerVisible);
+#endif
 	file.ReadIt(StoredCameraPosition);
 	file.ReadIt(StoredCameraFocus);
 	file.ReadIt(DrawLeash);

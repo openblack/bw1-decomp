@@ -6,7 +6,6 @@
 
 #include <chlasm/AudioSFX.h>      /* For enum AUDIO_SFX_BANK_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For HELP_TEXT */
-#include <chlasm/HelpTextTooltipEnums.h>
 #include <chlasm/LHSample.h>
 
 #include <Lionhead/LH3DLib/development/Glow.h>              /* For class GlowManager */
@@ -51,14 +50,6 @@
 #include "MapCoordsMeters.h" /* For MapCoords::MapMetersX */
 
 static float OneOnLogHalf = 1.0f / static_cast<float>(log(0.5));
-
-#ifdef VERSION_BW1WCI
-#define ROOM_TEXT(text)    (text)
-#define TOOLTIP_TEXT(text) (text)
-#else
-#define ROOM_TEXT(text)    ((text) - WORLD_ROOM_TEXT_ID_OFFSET)
-#define TOOLTIP_TEXT(text) ((text) - WORLD_ROOM_CI_TOOLTIP_ID_OFFSET)
-#endif
 
 #define NUM_SCROLL_SQUEAKS (LH_SAMPLE_G_SCROLLSQUEAK_06 - LH_SAMPLE_G_SCROLLSQUEAK_01 + 1)
 
@@ -120,31 +111,15 @@ WorldRoom::WorldRoom() : TempleRoom("World Room")
 
 WorldRoom::~WorldRoom() {}
 
-inline void CreateWorldRoomCitadelIcon(WorldRoom* room, char* path)
+inline void CreateWorldRoomIcon(char* path, LH3DMesh*& icon_mesh, LH3DObject*& icon_object)
 {
-	room->CitadelIconMesh = LH3DMesh::CreateFromHD(path, false);
-	room->CitadelIconObject = LH3DObject::Create(LH3DObject::STATIC);
-	room->CitadelIconObject->SetMesh(room->CitadelIconMesh, NULL, NULL);
-	room->CitadelIconObject->SetDynamicLighting(true);
-	room->CitadelIconObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
-}
-
-inline void CreateWorldRoomCreatureIcon(WorldRoom* room, char* path)
-{
-	room->CreatureIconMesh = LH3DMesh::CreateFromHD(path, false);
-	room->CreatureIconObject = LH3DObject::Create(LH3DObject::STATIC);
-	room->CreatureIconObject->SetMesh(room->CreatureIconMesh, NULL, NULL);
-	room->CreatureIconObject->SetDynamicLighting(true);
-	room->CreatureIconObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
-}
-
-inline void CreateWorldRoomChallengeIcon(WorldRoom* room, char* path)
-{
-	room->ChallengeIconMesh = LH3DMesh::CreateFromHD(path, false);
-	room->ChallengeIconObject = LH3DObject::Create(LH3DObject::STATIC);
-	room->ChallengeIconObject->SetMesh(room->ChallengeIconMesh, NULL, NULL);
-	room->ChallengeIconObject->SetDynamicLighting(true);
-	room->ChallengeIconObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
+	icon_mesh = LH3DMesh::CreateFromHD(path, false);
+	LH3DObject* createdIcon = LH3DObject::Create(LH3DObject::STATIC);
+	LH3DMesh*   meshForIcon = icon_mesh;
+	icon_object = createdIcon;
+	icon_object->SetMesh(meshForIcon, NULL, NULL);
+	icon_object->SetDynamicLighting(true);
+	icon_object->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 }
 
 inline void InvalidateWorldRoomTextures()
@@ -195,14 +170,14 @@ void WorldRoom::InitEngine()
 		}
 		CreateWorldMapSpells();
 	}
-	CreateWorldRoomCitadelIcon(this, WORLD_ROOM_ICON_PATH "I_citadel_on_map.l3d");
-	CreateWorldRoomCreatureIcon(this, WORLD_ROOM_ICON_PATH "I_creature_on_map.l3d");
-	CreateWorldRoomChallengeIcon(this, WORLD_ROOM_ICON_PATH "I_challenge_on_map.l3d");
+	CreateWorldRoomIcon(WORLD_ROOM_ICON_PATH "I_citadel_on_map.l3d", CitadelIconMesh, CitadelIconObject);
+	CreateWorldRoomIcon(WORLD_ROOM_ICON_PATH "I_creature_on_map.l3d", CreatureIconMesh, CreatureIconObject);
+	CreateWorldRoomIcon(WORLD_ROOM_ICON_PATH "I_challenge_on_map.l3d", ChallengeIconMesh, ChallengeIconObject);
 	camera->Close();
 	delete camera;
 	camera = NEW(150) WorldRoomCamera;
 	camera->Init(WORLD_ROOM_ENGINE_PATH "main.cam");
-	ScrollTexture = LH3DTexture::Create("Data\\Citadel\\Controls\\ChallengeScroll.raw",
+	ScrollTexture = LH3DTexture::Create(WORLD_ROOM_SCROLL_TEXTURE_PATH,
 	                                    LH3D_TEXTURE_TYPE_SYSTEM_MEMORY | LH3D_TEXTURE_FLAGS_ALPHA, 0, NULL);
 	ScrollMaterial =
 		LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA, ScrollTexture);
@@ -632,7 +607,7 @@ void WorldRoom::Draw()
 	TempleRoom::Draw();
 
 #define WORLD_ROOM_SIGN_TEXT(asset_name, red, green, blue, text_id)                                                    \
-	HelpTextDataBase::HelpTextDatabase.GetHelpText(ROOM_TEXT(text_id)),
+	HelpTextDataBase::HelpTextDatabase.GetHelpText(text_id),
 	static wchar_t* signTexts[] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_TEXT)};
 #undef WORLD_ROOM_SIGN_TEXT
 #undef WORLD_ROOM_SIGNS
@@ -802,57 +777,52 @@ inline bool32_t UpdateWorldRoomButtonDisplay(CallbackData& data, bool32_t visibl
 
 bool32_t WorldRoom::WorldButtonDisplayCitadelCheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, DisplayCitadel == true, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_TEMPLES));
+	return UpdateWorldRoomButtonDisplay(data, DisplayCitadel == true, HELP_TEXT_TOOLTIP_TOGGLE_TEMPLES);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayCitadelUncheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, !DisplayCitadel, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_TEMPLES));
+	return UpdateWorldRoomButtonDisplay(data, !DisplayCitadel, HELP_TEXT_TOOLTIP_TOGGLE_TEMPLES);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayCreatureCheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, DisplayCreature == true,
-	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_CREATURES));
+	return UpdateWorldRoomButtonDisplay(data, DisplayCreature == true, HELP_TEXT_TOOLTIP_TOGGLE_CREATURES);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayCreatureUncheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, !DisplayCreature, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_CREATURES));
+	return UpdateWorldRoomButtonDisplay(data, !DisplayCreature, HELP_TEXT_TOOLTIP_TOGGLE_CREATURES);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayMagicActivityCheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, DisplayMagicActivity == true,
-	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_MIRACLE_ACTIVITY));
+	return UpdateWorldRoomButtonDisplay(data, DisplayMagicActivity == true, HELP_TEXT_TOOLTIP_TOGGLE_MIRACLE_ACTIVITY);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayMagicActivityUncheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, !DisplayMagicActivity,
-	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_MIRACLE_ACTIVITY));
+	return UpdateWorldRoomButtonDisplay(data, !DisplayMagicActivity, HELP_TEXT_TOOLTIP_TOGGLE_MIRACLE_ACTIVITY);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayInfluenceCheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, DisplayInfluence == true,
-	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_INFLUENCE));
+	return UpdateWorldRoomButtonDisplay(data, DisplayInfluence == true, HELP_TEXT_TOOLTIP_TOGGLE_INFLUENCE);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayInfluenceUncheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, !DisplayInfluence, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_INFLUENCE));
+	return UpdateWorldRoomButtonDisplay(data, !DisplayInfluence, HELP_TEXT_TOOLTIP_TOGGLE_INFLUENCE);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayChallengesCheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, DisplayChallenges == true,
-	                                    TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_CHALLENGES));
+	return UpdateWorldRoomButtonDisplay(data, DisplayChallenges == true, HELP_TEXT_TOOLTIP_TOGGLE_CHALLENGES);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayChallengesUncheckedGet(CallbackData& data)
 {
-	return UpdateWorldRoomButtonDisplay(data, !DisplayChallenges, TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TOGGLE_CHALLENGES));
+	return UpdateWorldRoomButtonDisplay(data, !DisplayChallenges, HELP_TEXT_TOOLTIP_TOGGLE_CHALLENGES);
 }
 
 bool32_t WorldRoom::WorldScrollSet(CallbackData& data)
@@ -887,16 +857,16 @@ inline void UpdateWorldRoomScrollToolTip(WorldRoom* room, const CallbackData& da
 	{
 		if (room->camera->ZoomProgress != 1.0)
 		{
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_WORLD_STATISTICS), KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_WORLD_STATISTICS, KEYALIGN_LEFT);
 		}
 		else
 		{
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_SCROLL), KEYALIGN_VERTICAL_ARROWS);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_SCROLL, KEYALIGN_VERTICAL_ARROWS);
 		}
 	}
 	else if (room->camera->State == INNER_CAMERA_STATE_FOCUSED && room->camera->ZoomProgress == 1.0)
 	{
-		SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_ZOOM_OUT), KEYALIGN_LEFT);
+		SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_ZOOM_OUT, KEYALIGN_LEFT);
 	}
 }
 
@@ -940,32 +910,28 @@ inline void BuildWorldRoomStatisticsText()
 {
 	wchar_t* statisticsText = WorldRoom::WorldStatisticsText;
 	WorldRoom::ClearText(statisticsText);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_WORLD_TITLE), 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_WORLD_TITLE, 0);
 	WorldRoom::AddNewLine(statisticsText);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_TOTAL_POPULATION), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_PERCENT_OF_POPULATION_BELIEVE_IN_YOU), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_PERCENT_OF_POPULATION_THAT_ARE_MALE), 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_TOTAL_POPULATION, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_PERCENT_OF_POPULATION_BELIEVE_IN_YOU, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_PERCENT_OF_POPULATION_THAT_ARE_MALE, 0);
 	WorldRoom::AddNewLine(statisticsText);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_DEATHS_IN_YOUR_REGION), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BIRTHS_IN_YOUR_REGION), 0);
-#ifdef VERSION_BW1WCI
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_DEATHS_IN_YOUR_REGION, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_BIRTHS_IN_YOUR_REGION, 0);
 	WorldRoom::AddText(statisticsText, HELP_TEXT_PAUSE_STATS_108, 0);
-#else
-	WorldRoom::AddText(statisticsText, HELP_TEXT_PAUSE_STATS_83, 0);
-#endif
 	WorldRoom::AddNewLine(statisticsText);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BUILDINGS_BUILT), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_WONDERS_BUILT), 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_BUILDINGS_BUILT, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_WONDERS_BUILT, 0);
 	WorldRoom::AddNewLine(statisticsText);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_DISCIPLES), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BUILDERS), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_BREEDERS), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FISHERMEN), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FARMERS), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_FORESTERS), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_MISSIONARIES), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_CRAFTSMEN), 0);
-	WorldRoom::AddText(statisticsText, ROOM_TEXT(HELP_TEXT_ROOM_NUMBER_OF_TRADERS), 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_DISCIPLES, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_BUILDERS, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_BREEDERS, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_FISHERMEN, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_FARMERS, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_FORESTERS, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_MISSIONARIES, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_CRAFTSMEN, 0);
+	WorldRoom::AddText(statisticsText, HELP_TEXT_ROOM_NUMBER_OF_TRADERS, 0);
 	WorldRoom::EndText(statisticsText);
 }
 
@@ -996,16 +962,16 @@ void WorldRoom::PreDraw()
 
 void WorldRoom::PreToolTipProcess()
 {
-	SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_MOVE), KEYALIGN_ALL_ARROWS);
+	SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_MOVE, KEYALIGN_ALL_ARROWS);
 	if (camera->MouseHitType == INNER_CAMERA_HIT_NEAR)
 	{
 		if (camera->ClickHitType == INNER_CAMERA_HIT_NEAR && camera->ZoomProgress == 1.0)
 		{
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_TILT_ROTATE), KEYALIGN_ALL_ARROWS);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_TILT_ROTATE, KEYALIGN_ALL_ARROWS);
 		}
 		else if (camera->ZoomProgress != 1.0)
 		{
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_ZOOM_IN), KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_ZOOM_IN, KEYALIGN_LEFT);
 		}
 	}
 	if (camera->HighlightedDoor != -1 && People == NULL)
@@ -1013,25 +979,25 @@ void WorldRoom::PreToolTipProcess()
 		switch (camera->HighlightedDoor)
 		{
 		case WORLD_ROOM_DOOR_CREATURE:
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_CREATURE_ROOM), KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_CREATURE_ROOM, KEYALIGN_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_CHALLENGE:
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_CHALLENGE_ROOM), KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_CHALLENGE_ROOM, KEYALIGN_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_SAVE_GAME:
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_SAVE_GAME_ROOM), KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_SAVE_GAME_ROOM, KEYALIGN_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_UNIVERSE:
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_FUTURE_ROOM), KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_FUTURE_ROOM, KEYALIGN_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_GAME_OPTIONS:
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_OPTIONS_ROOM), KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_OPTIONS_ROOM, KEYALIGN_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_CREDITS:
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_LIBRARY), KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_LIBRARY, KEYALIGN_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_EXIT:
-			SetWorldRoomToolTip(TOOLTIP_TEXT(HELP_TEXT_TOOLTIP_EXIT_TEMPLE), KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_EXIT_TEMPLE, KEYALIGN_LEFT);
 			break;
 		}
 	}

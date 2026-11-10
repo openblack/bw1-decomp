@@ -25,6 +25,8 @@ block_relocations:
   - source: 0x007DBB1D
   - source: 0x007DCA45
   - source: 0x007DDDA9
+# start_system's low resolution texture threshold 13000000 is an immediate.
+  - source: 0x00643039
 # SetupColourPicker's grey colour 0x808080 is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x00410B14
 # libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
@@ -1842,6 +1844,11 @@ add_relocations:
   - source: 0x0086AF0D
     type: x86_abs32
     target: '__real@4@bffc860a920000000000'
+# PCMain.cpp's start_system: the cmp against the end of CountryCodes (dtk leaves the immediate unrelocated).
+  - source: 0x00643364
+    type: x86_abs32
+    target: '?CountryCodes@@3PAY02DA'
+    addend: 0x2d
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
 linker_version: "6.0"

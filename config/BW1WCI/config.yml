@@ -7,9 +7,20 @@ splits: config/BW1WCI/splits.txt
 generate_imports: false
 
 block_relocations:
+# RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
+  - source: 0x0061175A
+  - source: 0x00611CE0
 # ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
   - source: 0x0072436D
   - source: 0x00724711
+# Bubble::Draw's 0xffffff colour mask reads as an address inside NewCols, and Bubble::UpdateAndDraw's 0x7f7f7f
+# mask as one inside _chsize_lk.
+  - source: 0x0058B564
+  - source: 0x0058BE7B
+# VillagerName::Add's white 0xffffff and colour blend terms 0xff0000 and 0x7f8000 are immediates, not code pointers.
+  - source: 0x0077F030
+  - source: 0x0077F03B
+  - source: 0x0077F064
 # SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
   - source: 0x0072CD83
   - source: 0x0072CD89
@@ -24,6 +35,8 @@ block_relocations:
 # libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in Creature Isle's larger image both read as pointers.
   - source: 0x008CAAB0
   - source: 0x00A16224
+# start_system's object heap size 0x1000000 is an immediate, not a pointer into NewCols.
+  - source: 0x00659747
   - source: 0x00A16240
   - source: 0x00A16244
   - source: 0x00A16248
@@ -1530,6 +1543,11 @@ add_relocations:
   - source: 0x00889F3D
     type: x86_abs32
     target: '__real@4@bffc860a920000000000'
+# PCMain.cpp's start_system: the cmp against the end of CountryCodes (dtk leaves the immediate unrelocated).
+  - source: 0x00659964
+    type: x86_abs32
+    target: '?CountryCodes@@3PAY02DA'
+    addend: 0x2d
 timestamp: "2017-06-23T11:48:16+00:00"
 force_size: 0x008BDC00
 linker_version: "6.0"

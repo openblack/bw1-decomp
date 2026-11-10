@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_GJ_UTILS_INCLUDED_H
 #define BW1_DECOMP_GJ_UTILS_INCLUDED_H
 
+#include <chlasm/Enum.h> /* For enum GESTURE_TYPE */
+
 // Forward Declares
 
 struct LH3DMaterial;
@@ -28,6 +30,8 @@ public:
 	static void PostRotateByQuaternion(float angle, const LHPoint* axis, LHMatrix* matrix);
 	// BW1W120 005906e0 BW1M119 012ff530
 	static void GetRandomSurfacePos(LH3DMesh* mesh, LHMatrix& matrix, LHPoint* pos, LHPoint* normal);
+	// BW1W120 00590010 BW1M119 012ff280
+	static float Spline(float t, int count, float* keys);
 	// BW1W120 inlined BW1M119 01057f60
 	template <class T> static T Linterp(const T& from, const T& to, float t) { return from + (to - from) * t; }
 	// BW1W120 inlined BW1M119 01055100
@@ -95,6 +99,8 @@ public:
 	static LH3DMaterial* GetLightSheetMaterial();
 	// BW1W120 0057d590 BW1M119 012c39a0
 	static LH3DMaterial* GetHighlightMaterial();
+	// BW1W120 0057d5d0 BW1M119 012c38a0
+	static LH3DMaterial* GetGestureMaterialAndOffset(GESTURE_TYPE type, long* offset);
 
 	enum FROZ_MAT_TYPE
 	{

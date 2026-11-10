@@ -15,6 +15,13 @@ block_relocations:
   - source: 0x007A292B
   - source: 0x007A2B88
   - source: 0x007A2BB4
+# VillagerName::Add's white 0xffffff and colour blend terms 0xff0000 and 0x7f8000 are immediates, not code pointers.
+  - source: 0x00767880
+  - source: 0x0076788B
+  - source: 0x007678B4
+# RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
+  - source: 0x005FCF8A
+  - source: 0x005FD562
 # redbook_play's MCI_PLAY_PARMS::dwTo value 5100000 is an immediate, not a code pointer.
   - source: 0x006378AE
 # "tMM" of Version.cpp's LH_VERSION_END_TAG reads as a pointer into Creature::CanCreatureCastSpell.
@@ -44,6 +51,10 @@ block_relocations:
 # ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
   - source: 0x0070E9D2
   - source: 0x0070ED2D
+# Bubble::Draw's 0xffffff colour mask reads as an address inside NewCols, and Bubble::UpdateAndDraw's 0x7f7f7f
+# mask as one inside LHDraw::ScaledSprite16.
+  - source: 0x00579E04
+  - source: 0x0057A721
 # LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
   - source: 0x00811157
   - source: 0x00811C98
@@ -197,6 +208,8 @@ block_relocations:
   - source: 0x008706C8
   - source: 0x0087084B
   - source: 0x00871378
+# start_system's object heap size 0xc00000 is an immediate, not a pointer into AttributeAbodeType::ValueNames.
+  - source: 0x00647A47
 
 add_relocations:
 # ioinit.obj: data references dtk attributes to the neighbouring symbol.
@@ -1605,6 +1618,11 @@ add_relocations:
   - source: 0x0087008D
     type: x86_abs32
     target: '__real@4@bffc860a920000000000'
+# PCMain.cpp's start_system: the cmp against the end of CountryCodes (dtk leaves the immediate unrelocated).
+  - source: 0x00647C64
+    type: x86_abs32
+    target: '?CountryCodes@@3PAY02DA'
+    addend: 0x2d
 timestamp: "2003-03-06T21:30:42+00:00"
 force_size: 0x008C4000
 linker_version: "6.0"

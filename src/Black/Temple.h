@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <chlasm/LHKeyBoard.h>                      /* For enum LH_KEY */
 
 #include "ScriptDLL.h"  /* For enum VMType */
 #include "TempleRoom.h" /* For class TempleRoom, enum TempleRoomsEnum */
@@ -16,11 +17,10 @@ struct SnapShotData;
 struct Temple
 {
 	static void UpdateFade(); // 00794280
-	// TODO: Original names/static scope unrecovered; shared state maintained by Temple::UpdateFade.
 	// BW1W120 00c2a150
-	static float Dat_00C2A150;
+	static float FadeLevel;
 	// BW1W120 00e06020
-	static float Dat_00E06020;
+	static float FadeTarget;
 	// BW1W120 00e05fe0
 	static bool MultiplayerCitadel;
 	// BW1W120 00e05fe4
@@ -29,6 +29,10 @@ struct Temple
 	static LH3DColor CitadelColour;
 	// BW1W120 00e0601c
 	static int LeaveCitadel;
+	// BW1W120 00e06024
+	static LH3DColor FadeColour;
+	// BW1W120 00e06028
+	static int FadeCount;
 	// BW1W120 00e0602c
 	static float DoorPosition;
 
@@ -74,6 +78,8 @@ struct Temple
 	void Update();
 	// BW1W120 00794370 BW1M119 0153f7c0
 	void Draw();
+	// BW1W120 00794830 BW1M119 0153f3f0
+	void ProcessKey(LH_KEY key, unsigned short modifier);
 	// BW1W120 00794a20 BW1M119 0153f010
 	bool StartScript(unsigned long challenge_id);
 	// BW1W120 00794970 BW1M119 0153f230

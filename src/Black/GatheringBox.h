@@ -275,16 +275,18 @@ public:
 	// BW1W120 00d0643c
 	static GatheringBox* Instance;
 
-	SetupList*                        PlayList;
-	SetupSlider*                      VolumeSlider;
-	SetupSlider*                      PositionSlider;
-	SetupStaticTextNoHit*             SongName;
-	SetupMP3Button*                   ShuffleButton;
-	SetupMP3Button*                   RepeatButton;
-	SetupMP3Button*                   MusicButton;
-	HMODULE                           MusicLibrary;
-	MusicPlayer                       Music;
-	int                               LastMusicUpdate;
+#ifndef VERSION_BW1W100
+	SetupList*            PlayList;
+	SetupSlider*          VolumeSlider;
+	SetupSlider*          PositionSlider;
+	SetupStaticTextNoHit* SongName;
+	SetupMP3Button*       ShuffleButton;
+	SetupMP3Button*       RepeatButton;
+	SetupMP3Button*       MusicButton;
+	HMODULE               MusicLibrary;
+	MusicPlayer           Music;
+	int                   LastMusicUpdate;
+#endif
 	bool                              QuickChatOpen;
 	SetupEdit*                        ChatEdit;
 	SetupList*                        PlayerList;
@@ -426,12 +428,7 @@ public:
 		return INCOMINGTEXTTYPE_NONE;
 	}
 	// BW1W120 inlined BW1M119 0132e1d0
-	IncomingBubbleInfo* GetTopIncoming()
-	{
-		if (IncomingList.head.Get() != NULL)
-			return IncomingList.head.Get()->payload;
-		return NULL;
-	}
+	IncomingBubbleInfo* GetTopIncoming() { return IncomingList.GetHead(); }
 
 	// BW1W120 inlined
 	GatheringBox()

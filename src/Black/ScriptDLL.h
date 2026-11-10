@@ -22,6 +22,7 @@ enum VMType
 
 enum VMScriptType
 {
+	VMScriptType_Script = 0x1,
 	VMScriptType_Help = 0x2,
 	VMScriptType_RunWhilePaused = 0x18,
 	VMScriptType_StoppableHelp = 0x4a,

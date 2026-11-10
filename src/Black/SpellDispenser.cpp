@@ -28,7 +28,7 @@ bool32_t SpellDispenser::Load(GameOSFile& file)
 	{
 		file.ReadPtr((GameThing**)&field_0xcc);
 		file.ReadIt(field_0xc4);
-		file.ReadIt(Charges);
+		file.ReadIt(ProduceEvery);
 		file.ReadIt(Active);
 		file.ReadIt(DispensedMagicType);
 		return true;
@@ -42,7 +42,7 @@ bool32_t SpellDispenser::Save(GameOSFile& file)
 	{
 		file.WritePtr(field_0xcc);
 		file.WriteIt(field_0xc4);
-		file.WriteIt(Charges);
+		file.WriteIt(ProduceEvery);
 		file.WriteIt(Active);
 		file.WriteIt(DispensedMagicType);
 		return true;

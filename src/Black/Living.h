@@ -172,6 +172,8 @@ public:
 			uint16_t : 4;
 			uint16_t StatusSkeleton : 1;
 			uint16_t StatusDowned : 1;
+			uint16_t : 1;
+			uint16_t ShowInfo : 1;
 		};
 	};
 	LHPTR<Flock>            flock;

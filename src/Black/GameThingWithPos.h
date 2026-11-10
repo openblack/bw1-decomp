@@ -35,6 +35,7 @@ class Living;
 class Object;
 class PileResource;
 class Reaction;
+class SpellSeed;
 class SpellShield;
 class WorshipSite;
 
@@ -86,12 +87,12 @@ enum GAME_THING_WITH_POS_FLAGS
 	GAME_THING_WITH_POS_FLAG_IN_MAP = 1 << 0,
 	GAME_THING_WITH_POS_FLAG_FIXED = 1 << 1,
 	GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE = 1 << 2,
-	GAME_THING_WITH_POS_FLAG_0x00000008 = 1 << 3,
+	GAME_THING_WITH_POS_FLAG_IN_CREATURE_HAND = 1 << 3,
 	GAME_THING_WITH_POS_FLAG_INTERACTING = 1 << 4,
 	GAME_THING_WITH_POS_FLAG_LOCKED_SELECT = 1 << 5,
 	GAME_THING_WITH_POS_FLAG_IN_PHYSICS = 1 << 6,
 	GAME_THING_WITH_POS_FLAG_ON_STRUCTURE = 1 << 7,
-	GAME_THING_WITH_POS_FLAG_0x00000100 = 1 << 8,
+	GAME_THING_WITH_POS_FLAG_IN_DRAW_LIST = 1 << 8,
 	GAME_THING_WITH_POS_FLAG_IN_SCRIPT = 1 << GAME_THING_WITH_POS_FLAG_IN_SCRIPT_BIT,
 	GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT = 1 << GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT_BIT,
 	GAME_THING_WITH_POS_FLAG_DRAGGED_BY_LEASH = 1 << 11,
@@ -674,7 +675,7 @@ public:
 	virtual void SetImmuneToSpells(bool immune) {}
 #endif
 	// BW1W120 00402470 BW1M119 0107d710
-	virtual bool32_t IsSpellSeed() { return false; }
+	virtual SpellSeed* IsSpellSeed() { return NULL; }
 	// BW1W120 00402480 BW1M119 010a7c40
 	virtual SpellShield* IsSpellShield() { return NULL; }
 	// BW1W120 00402490 BW1M119 010a6f40
@@ -743,10 +744,16 @@ public:
 	bool32_t IsFixed() const { return (Flags & GAME_THING_WITH_POS_FLAG_FIXED) != 0; }
 	// BW1W120 inlined BW1M119 inlined
 	bool IsNotInPhysics() const { return !InPhysics; }
+	// BW1W120 inlined BW1M119 0102fe00
+	bool32_t IsFlying() const { return InPhysics; }
 	// BW1W120 inlined BW1M119 01032e80
 	bool32_t IsInMagicHand() const { return (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) != 0; }
 	// BW1W120 inlined BW1M119 01504b20
 	bool32_t IsInHandInteract() const { return (Flags & GAME_THING_WITH_POS_FLAG_INTERACTING) != 0; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 0153c240
+	bool32_t IsInCreatureHand() { return (Flags & GAME_THING_WITH_POS_FLAG_IN_CREATURE_HAND) != 0; }
+#endif
 	// BW1W120 inlined BW1M119 0100f4b0
 	bool32_t IsControlledByScript() const { return (Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) != 0; }
 	// BW1W120 inlined BW1M119 0112bd40

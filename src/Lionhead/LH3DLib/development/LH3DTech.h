@@ -78,6 +78,7 @@ public:
 	enum ClipCode
 	{
 		CLIP_CODE_NONE = 0x0,
+		CLIP_CODE_FAR = 0x1,
 		CLIP_CODE_BOTTOM = 0x2,
 		CLIP_CODE_TOP = 0x4,
 		CLIP_CODE_LEFT = 0x8,

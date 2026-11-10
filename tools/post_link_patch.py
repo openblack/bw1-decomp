@@ -775,6 +775,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
     (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
     (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...
+    (0x00575DBB, call_rel32(0x004017F9)),  # GatheringText
+    (0x005766DA, call_indirect(0x008A9034)),  # GatheringText: __imp__DirectInputCreateA@4
     (0x00578B0A, call_indirect(0x008A903C)),  # GestureSystem: __imp__DirectXSetupGetVersion
     (0x00578E1A, call_indirect(0x008A97B8)),  # GestureSystemData
     (0x00578E9A, call_indirect(0x008A9490)),  # GestureSystemData
@@ -856,6 +858,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005E8C5B, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E93EB, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E96CA, call_indirect(0x008A901C)),  # LHInetWeather: __imp__TrackMouseEvent@4
+    (0x005F895A, call_indirect(0x008A97AC)),  # logo: __imp__ShellExecuteA@24
+    (0x005FA06B, call_rel32(0x004017F9)),  # logo
+    (0x005FA35A, call_indirect(0x008A999C)),  # logo: __imp__Disconnect_Dialup...
     (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
     (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
     (0x0060714B, call_rel32(0x004017F9)),  # MobileObject
@@ -1446,6 +1451,14 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00573A61, copy_run(0x005739B3)),  # GameThing
     (0x00573B27, copy_run(0x00573A61)),  # GameThing
     (0x00573BE5, copy_run(0x00573B27)),  # GameThing
+    (0x0057938B, call_rel32(0x00403C49)),  # GatheringText
+    (0x005793B3, jmp_run(0x0057938B)),  # GatheringText
+    (0x005793E7, copy_run(0x005793B3)),  # GatheringText
+    (0x00579CAA, call_filler(0x004034F9, 0xC3)),  # GatheringText
+    (0x00579D95, jmp_run(0x00579CAA)),  # GatheringText
+    (0x0057A455, jmp_run(0x00579D95)),  # GatheringText
+    (0x0057A4E9, copy_run(0x0057A455)),  # GatheringText
+    (0x0057A9B8, jmp_run(0x0057A4E9)),  # GatheringText
     (0x0057BB39, jmp_run(0x0057B8F9)),  # GestureSystem
     (0x0057BB89, copy_run(0x0057BB39)),  # GestureSystem
     (0x0057BBB9, jmp_run(0x0057BB89)),  # GestureSystem
@@ -1648,6 +1661,18 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005CBEF8, jmp_run(0x005CBE83)),  # HelpSystemConditions
     (0x005CC14B, copy_run(0x005CBEF8)),  # HelpSystemInfo
     (0x005CC1D8, jmp_run(0x005CC14B)),  # HelpSystemLevel
+    (0x005FC3A5, copy_run(0x005FC326)),  # logo
+    (0x005FC3FA, jmp_run(0x005FC3A5)),  # logo
+    (0x005FC449, copy_run(0x005FC3FA)),  # logo
+    (0x005FDB5B, jmp_run(0x005FC449)),  # logo
+    (0x005FDC28, copy_run(0x005FDB5B)),  # logo
+    (0x005FDCC3, padding_bytes(bytes.fromhex('0000000075068125c446c700c3'))),  # logo
+    (0x005FDCE1, copy_run(0x005FDCC3)),  # logo
+    (0x005FDD31, jmp_run(0x005FDCE1)),  # logo
+    (0x005FDD69, copy_run(0x005FC2E1)),  # logo
+    (0x005FDE6A, copy_run(0x005FDD69)),  # logo
+    (0x005FE039, jmp_run(0x005FDE6A)),  # logo
+    (0x005FE216, jmp_run(0x005FE039)),  # logo
     (0x0060A717, jmp_run(0x0060A511)),  # Mobile
     (0x0060A7E4, copy_run(0x0060A717)),  # Mobile
     (0x0060A843, copy_run(0x0060A7E3)),  # MobileObject
@@ -2475,6 +2500,52 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006F10EA, copy_run(0x006F1096)),  # Script
     (0x006F1134, jmp_run(0x006F10EA)),  # Script
     (0x006F1184, copy_run(0x006F1134)),  # Script
+    (0x006F11DB, jmp_run(0x006F1184)),  # ScriptCamera
+    (0x006F128B, copy_run(0x006F11DB)),  # ScriptCamera
+    (0x006F1382, copy_run(0x006F128B)),  # ScriptCamera
+    (0x006F17D5, jmp_run(0x006F1382)),  # ScriptCamera
+    (0x006F1824, copy_run(0x006F17D5)),  # ScriptCamera
+    (0x006F1898, jmp_run(0x006F1824)),  # ScriptCamera
+    (0x006F18DB, jmp_run(0x006F1898)),  # ScriptCamera
+    (0x006F1992, jmp_run(0x006F18DB)),  # ScriptCamera
+    (0x006F1AEA, copy_run(0x006F1992)),  # ScriptCamera
+    (0x006F1B59, jmp_run(0x006F1AEA)),  # ScriptCamera
+    (0x006F1BC9, copy_run(0x006F1B59)),  # ScriptCamera
+    (0x006F1C5B, jmp_run(0x006F1BC9)),  # ScriptCamera
+    (0x006F1CFA, jmp_run(0x006F1C5B)),  # ScriptCamera
+    (0x006F1D4A, copy_run(0x006F1CFA)),  # ScriptCamera
+    (0x006F1FFA, jmp_run(0x006F1D4A)),  # ScriptCamera
+    (0x006F20D5, jmp_run(0x006F1FFA)),  # ScriptCamera
+    (0x006F2173, jmp_run(0x006F20D5)),  # ScriptCamera
+    (0x006F2277, jmp_run(0x006F2173)),  # ScriptCamera
+    (0x006F2428, copy_run(0x006F2277)),  # ScriptCamera
+    (0x006F24E1, copy_run(0x006F2428)),  # ScriptCamera
+    (0x006F25B3, jmp_run(0x006F24E1)),  # ScriptCamera
+    (0x006F2683, copy_run(0x006F25B3)),  # ScriptCamera
+    (0x006F2757, jmp_run(0x006F2683)),  # ScriptCamera
+    (0x006F2811, jmp_run(0x006F2757)),  # ScriptCamera
+    (0x006F28D1, jmp_run(0x006F2811)),  # ScriptCamera
+    (0x006F29D6, jmp_run(0x006F28D1)),  # ScriptCamera
+    (0x006F2A85, copy_run(0x006F29D6)),  # ScriptCamera
+    (0x006F2BC7, copy_run(0x006F2A85)),  # ScriptCamera
+    (0x006F2CAB, copy_run(0x006F2BC7)),  # ScriptCamera
+    (0x006F2D9B, jmp_run(0x006F2CAB)),  # ScriptCamera
+    (0x006F2F18, jmp_run(0x006F2D9B)),  # ScriptCamera
+    (0x006F2F88, copy_run(0x006F2F18)),  # ScriptCamera
+    (0x006F2FF8, jmp_run(0x006F2F88)),  # ScriptCamera
+    (0x006F3C7B, jmp_run(0x006F3B27)),  # ScriptContainer
+    (0x006F3CA3, copy_run(0x006F3C7B)),  # ScriptContainer
+    (0x006F3DC8, copy_run(0x006F3CA3)),  # ScriptContainer
+    (0x006F40F5, jmp_run(0x006F3DC8)),  # ScriptContainer
+    (0x006F42C8, copy_run(0x006F40F5)),  # ScriptContainer
+    (0x006F43D5, jmp_run(0x006F42C8)),  # ScriptContainer
+    (0x006F45BB, jmp_run(0x006F43D5)),  # ScriptContainer
+    (0x006F4647, copy_run(0x006F45BB)),  # ScriptContainer
+    (0x006F4839, jmp_run(0x006F4647)),  # ScriptContainer
+    (0x006F4A54, jmp_run(0x006F4839)),  # ScriptContainer
+    (0x006F4C05, copy_run(0x006F4A54)),  # ScriptContainer
+    (0x006F4D17, jmp_run(0x006F4C05)),  # ScriptContainer
+    (0x006F4E8B, copy_run(0x006F4D17)),  # ScriptContainer
     (0x006F516B, copy_run(0x006F4F5E)),  # ScriptControl
     (0x006F521A, jmp_run(0x006F516B)),  # ScriptControl
     (0x006F52A2, copy_run(0x006F521A)),  # ScriptControl
@@ -2589,6 +2660,29 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006FB555, jmp_run(0x006FB535)),  # ScriptDLL
     (0x006FB575, jmp_run(0x006FB555)),  # ScriptDLL
     (0x006FB59A, jmp_run(0x006FB575)),  # ScriptDLL
+    (0x006FB5BB, jmp_run(0x006FB59A)),  # ScriptFind
+    (0x006FB5E3, copy_run(0x006FB5BB)),  # ScriptFind
+    (0x006FB8DB, jmp_run(0x006FB5E3)),  # ScriptFind
+    (0x006FB915, jmp_run(0x006FB8DB)),  # ScriptFind
+    (0x006FB955, jmp_run(0x006FB915)),  # ScriptFind
+    (0x006FBA77, jmp_run(0x006FB955)),  # ScriptFind
+    (0x006FBB63, copy_run(0x006FBA77)),  # ScriptFind
+    (0x006FBBC1, copy_run(0x006FBB63)),  # ScriptFind
+    (0x006FBC26, copy_run(0x006FBBC1)),  # ScriptFind
+    (0x006FBDE2, copy_run(0x006FBC26)),  # ScriptFind
+    (0x006FBE09, copy_run(0x006FBDE2)),  # ScriptFind
+    (0x006FBE29, copy_run(0x006FBE09)),  # ScriptFind
+    (0x006FBE56, jmp_run(0x006FBE29)),  # ScriptFind
+    (0x006FBF5A, jmp_run(0x006FBE56)),  # ScriptFind
+    (0x006FC082, copy_run(0x006FBF5A)),  # ScriptFind
+    (0x006FC0EA, copy_run(0x006FC082)),  # ScriptFind
+    (0x006FC131, jmp_run(0x006FC0EA)),  # ScriptFind
+    (0x006FC16B, copy_run(0x006FC131)),  # ScriptFind
+    (0x006FC19B, jmp_run(0x006FC16B)),  # ScriptFind
+    (0x006FC1CB, copy_run(0x006FC19B)),  # ScriptFind
+    (0x006FC1FB, jmp_run(0x006FC1CB)),  # ScriptFind
+    (0x006FC2D7, jmp_run(0x006FC1FB)),  # ScriptFind
+    (0x006FC427, copy_run(0x006FC2D7)),  # ScriptFind
     (0x006FC4AB, copy_run(0x006FC45C)),  # ScriptFunctions
     (0x006FC4D3, jmp_run(0x006FC4AB)),  # ScriptFunctions
     (0x006FC554, jmp_run(0x006FC4D3)),  # ScriptFunctions
@@ -2713,6 +2807,7 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00704594, jmp_run(0x00704487)),  # ScriptFunctions
     (0x007047D8, jmp_run(0x00704594)),  # ScriptFunctions
     (0x0070485A, jmp_run(0x007047D8)),  # ScriptFunctions
+    (0x007048AB, copy_run(0x0070485A)),  # ScriptFunctionTable
     (0x0070D53B, jmp_run(0x007048AB)),  # ScriptGFX
     (0x0070D595, jmp_run(0x0070D53B)),  # ScriptGFX
     (0x0070D5C5, copy_run(0x0070D592)),  # ScriptGFX
@@ -2801,6 +2896,55 @@ BW1W130_SAFEDISC_CALLS = (
     (0x007122B7, jmp_run(0x00712256)),  # ScriptMarker
     (0x007122D3, jmp_run(0x007122B7)),  # ScriptMarker
     (0x007122F3, jmp_run(0x007122D3)),  # ScriptMarker
+    (0x0071239B, call_rel32(0x004034F9)),  # ScriptProperty
+    (0x007123C5, copy_run(0x0071239B)),  # ScriptProperty
+    (0x00713C63, copy_run(0x007123C3)),  # ScriptProperty
+    (0x00713D61, copy_run(0x00713C63)),  # ScriptProperty
+    (0x00713E6A, copy_run(0x00713D61)),  # ScriptProperty
+    (0x00713EBB, call_rel32(0x004034F9)),  # ScriptRelease
+    (0x00713EE3, copy_run(0x00713EBB)),  # ScriptRelease
+    (0x007140DB, call_rel32(0x004034F9)),  # ScriptSound
+    (0x007141C5, copy_run(0x007140DB)),  # ScriptSound
+    (0x007142C8, copy_run(0x007141C5)),  # ScriptSound
+    (0x00714365, copy_run(0x007142C8)),  # ScriptSound
+    (0x0071445A, jmp_run(0x00714365)),  # ScriptSound
+    (0x007145DB, call_rel32(0x004034F9)),  # ScriptSound
+    (0x00714647, copy_run(0x007145DB)),  # ScriptSound
+    (0x007146A1, copy_run(0x00714647)),  # ScriptSound
+    (0x0071471B, call_rel32(0x004034F9)),  # ScriptSound
+    (0x00714792, jmp_run(0x0071471B)),  # ScriptSound
+    (0x0071483B, call_rel32(0x004034F9)),  # ScriptSound
+    (0x0071487B, call_rel32(0x004034F9)),  # ScriptSound
+    (0x007148D8, jmp_run(0x0071487B)),  # ScriptSound
+    (0x00714985, copy_run(0x007148D8)),  # ScriptSound
+    (0x00714A5A, jmp_run(0x00714985)),  # ScriptSound
+    (0x00714A85, copy_run(0x00714A5A)),  # ScriptSound
+    (0x00714B06, copy_run(0x00714A85)),  # ScriptSound
+    (0x00714B63, copy_run(0x00714B06)),  # ScriptSound
+    (0x00714BB3, jmp_run(0x00714B63)),  # ScriptSound
+    (0x00714C9B, call_rel32(0x004034F9)),  # ScriptSpirit
+    (0x00714DA6, copy_run(0x00714C9B)),  # ScriptSpirit
+    (0x00714E26, copy_run(0x00714DA6)),  # ScriptSpirit
+    (0x00714EF4, jmp_run(0x00714E26)),  # ScriptSpirit
+    (0x00714F76, jmp_run(0x00714EF4)),  # ScriptSpirit
+    (0x007150C8, copy_run(0x00714F76)),  # ScriptSpirit
+    (0x007151A4, copy_run(0x007150C8)),  # ScriptSpirit
+    (0x0071539A, jmp_run(0x007151A4)),  # ScriptSpirit
+    (0x007153E1, copy_run(0x0071539A)),  # ScriptSpirit
+    (0x007154B6, jmp_run(0x007153E1)),  # ScriptSpirit
+    (0x00715586, copy_run(0x007154B6)),  # ScriptSpirit
+    (0x00715743, copy_run(0x00715586)),  # ScriptTime
+    (0x0071576B, call_rel32(0x004034F9)),  # ScriptTime
+    (0x007157A1, copy_run(0x0071576B)),  # ScriptTime
+    (0x00715861, copy_run(0x007157A1)),  # ScriptTime
+    (0x007158EA, copy_run(0x00715861)),  # ScriptTime
+    (0x007159B4, jmp_run(0x007158EA)),  # ScriptTime
+    (0x00715A24, copy_run(0x007159B4)),  # ScriptTime
+    (0x00715A94, jmp_run(0x00715A24)),  # ScriptTime
+    (0x00715AE3, copy_run(0x00715A94)),  # ScriptTime
+    (0x00715B19, jmp_run(0x00715AE3)),  # ScriptTime
+    (0x00715B73, jmp_run(0x00715B19)),  # ScriptTime
+    (0x00715E65, copy_run(0x00715B73)),  # ScriptTime
     (0x00715EE3, copy_run(0x00715E65)),  # ScriptTimer
     (0x00715F56, jmp_run(0x00715EE3)),  # ScriptTimer
     (0x00715F78, jmp_run(0x00715F56)),  # ScriptTimer
@@ -2813,6 +2957,62 @@ BW1W130_SAFEDISC_CALLS = (
     (0x007165DA, jmp_run(0x00716495)),  # SecretCreature
     (0x007166A9, copy_run(0x007165DA)),  # SecretCreature
     (0x007166D7, jmp_run(0x007166A9)),  # SecretCreature
+    (0x00716733, jmp_run(0x007166D7)),  # Serialise
+    (0x0071675B, call_rel32(0x004034F9)),  # Serialise
+    (0x00716926, copy_run(0x0071675B)),  # Serialise
+    (0x00716969, copy_run(0x00716926)),  # Serialise
+    (0x007169A9, copy_run(0x00716969)),  # Serialise
+    (0x00716B29, copy_run(0x007169A9)),  # Serialise
+    (0x00716B75, jmp_run(0x00716B29)),  # Serialise
+    (0x00716BB5, jmp_run(0x00716B75)),  # Serialise
+    (0x00716BF5, jmp_run(0x00716BB5)),  # Serialise
+    (0x00716C3A, jmp_run(0x00716BF5)),  # Serialise
+    (0x00716C7A, jmp_run(0x00716C3A)),  # Serialise
+    (0x00716CB8, jmp_run(0x00716C7A)),  # Serialise
+    (0x00716CF8, jmp_run(0x00716CB8)),  # Serialise
+    (0x00716D38, jmp_run(0x00716CF8)),  # Serialise
+    (0x00716D75, jmp_run(0x00716D38)),  # Serialise
+    (0x00716DB8, jmp_run(0x00716D75)),  # Serialise
+    (0x00716E56, jmp_run(0x00716DB8)),  # Serialise
+    (0x00716EAA, copy_run(0x00716E56)),  # Serialise
+    (0x00716F4A, copy_run(0x00716EAA)),  # Serialise
+    (0x00717155, jmp_run(0x00716F4A)),  # Serialise
+    (0x007171AB, call_rel32(0x004034F9)),  # ServerLandscapeMap
+    (0x007171D3, jmp_run(0x007171AB)),  # ServerLandscapeMap
+    (0x00717203, copy_run(0x007171D3)),  # ServerLandscapeMap
+    (0x00717255, jmp_run(0x00717203)),  # ServerLandscapeMap
+    (0x00717308, copy_run(0x00717255)),  # ServerLandscapeMap
+    (0x007173C9, copy_run(0x00717308)),  # ServerLandscapeMap
+    (0x00717444, copy_run(0x007173C9)),  # ServerLandscapeMap
+    (0x00717461, copy_run(0x00717444)),  # ServerLandscapeMap
+    (0x00717649, copy_run(0x00717461)),  # ServerLandscapeMap
+    (0x00717869, copy_run(0x00717649)),  # ServerLandscapeMap
+    (0x00717928, copy_run(0x00717869)),  # ServerLandscapeMap
+    (0x00717A81, copy_run(0x00717928)),  # ServerLandscapeMap
+    (0x00717BF2, jmp_run(0x00717A81)),  # ServerLandscapeMap
+    (0x00717D17, jmp_run(0x00717BF2)),  # ServerLandscapeMap
+    (0x00717D36, jmp_run(0x00717D17)),  # ServerLandscapeMap
+    (0x00717D92, jmp_run(0x00717D36)),  # ServerLandscapeMap
+    (0x00717DDA, jmp_run(0x00717D92)),  # ServerLandscapeMap
+    (0x00717E22, copy_run(0x00717DDA)),  # ServerLandscapeMap
+    (0x00717E86, copy_run(0x00717E22)),  # ServerLandscapeMap
+    (0x00717EE7, copy_run(0x00717E86)),  # ServerLandscapeMap
+    (0x00717F42, copy_run(0x00717EE7)),  # ServerLandscapeMap
+    (0x00717FA2, copy_run(0x00717F42)),  # ServerLandscapeMap
+    (0x00718053, jmp_run(0x00717FA2)),  # ServerLandscapeMap
+    (0x00718328, copy_run(0x00718053)),  # ServerLandscapeMap
+    (0x00718377, jmp_run(0x00718328)),  # ServerLandscapeMap
+    (0x007183C7, copy_run(0x00718377)),  # ServerLandscapeMap
+    (0x00718472, jmp_run(0x007183C7)),  # ServerLandscapeMap
+    (0x0071860B, call_rel32(0x004034F9)),  # ServerLandscapeMap
+    (0x00718747, copy_run(0x0071860B)),  # ServerLandscapeMap
+    (0x00718A75, jmp_run(0x00718747)),  # ServerLandscapeMap
+    (0x00718B24, copy_run(0x00718A75)),  # ServerLandscapeMap
+    (0x00718BB1, jmp_run(0x00718B24)),  # ServerLandscapeMap
+    (0x00718C94, jmp_run(0x00718BB1)),  # ServerLandscapeMap
+    (0x00718CE7, copy_run(0x00718C94)),  # ServerLandscapeMap
+    (0x00718D6B, call_rel32(0x004034F9)),  # ServerLandscapeMap
+    (0x00718DD6, jmp_run(0x00718D6B)),  # ServerLandscapeMap
     (0x00719603, copy_run(0x007195AA)),  # Setup
     (0x0071962B, call_rel32(0x004034F9)),  # Setup
     (0x00719655, jmp_run(0x0071962B)),  # Setup

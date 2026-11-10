@@ -60,10 +60,8 @@ const float MouseTiltRate = 0.002f;
 const float FightBlendStart = 2.0f;
 const float FightBlendTime = 2.0f;
 
-// BW1W120 00c5e158
-static float StrafeSpeedX;
-// BW1W120 00c5e15c
-static float StrafeSpeedZ;
+float CameraModeNew3::StrafeSpeedX;
+float CameraModeNew3::StrafeSpeedZ;
 
 // BW1W120 009ce608
 static float StrafeStopSpeedSq = 0.01f;
@@ -198,8 +196,8 @@ static Zoomer Global_00c5b100;
 static int Global_00c5e164;
 // BW1W120 00c5e168
 static bool Global_00c5e168;
-// BW1W120 00c5e13c
-static float Global_00c5e13c = BigDistance;
+
+float CameraExclusion::DistanceFromInclusionEdge = BigDistance;
 
 LightSheet*   CameraModeNew3::ForceField;
 bool32_t      CameraModeNew3::DrawForceField;
@@ -216,13 +214,13 @@ LH3DTexture*  CameraModeNew3::ForceFieldTexture;
 // BW1W120 00454900 BW1M119 inlined
 static void SmoothStrafeSpeedX(float distance, float time)
 {
-	StrafeSpeedX += (distance / time - StrafeSpeedX) * 0.4f;
+	CameraModeNew3::StrafeSpeedX += (distance / time - CameraModeNew3::StrafeSpeedX) * 0.4f;
 }
 
 // BW1W120 00454930 BW1M119 inlined
 static void SmoothStrafeSpeedZ(float distance, float time)
 {
-	StrafeSpeedZ += (distance / time - StrafeSpeedZ) * 0.4f;
+	CameraModeNew3::StrafeSpeedZ += (distance / time - CameraModeNew3::StrafeSpeedZ) * 0.4f;
 }
 
 CameraExclusion* CameraExclusion::CreateDome(unsigned long id, LHPoint pos, float radius, float height)
@@ -1191,7 +1189,7 @@ void CameraModeNew3::TriconDraw()
 			red.r = 255;
 			red.a = 255;
 			CameraHelp::DrawKeyOrMouse(animType, key, mouseType, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1407),
-			                           x - 32, y, 32, KEYALIGN_RIGHT, &red, &white, 255);
+			                           x - 32, y, 32, KEYALIGN_RIGHT_TEXT_LEFT, &red, &white, 255);
 		}
 		else
 		{
@@ -1577,7 +1575,7 @@ void CameraModeNew3::Reinitialise(bool keep_fight)
 	field_0x100 = 0;
 	field_0x8 = 0;
 	IdleTime = 0.0f;
-	field_0x2ec = 0;
+	InputDisabled = false;
 	field_0x2f0 = 0;
 	RotatePoint = LHPoint(0.0f, 0.0f, 0.0f);
 	ActiveTricons = 0;
@@ -1845,7 +1843,7 @@ void CameraModeNew3::UpdateTricons()
 			ActiveTricons &= ~CAMERA_TRICON_HELP;
 		}
 	}
-	if (field_0x2ec || field_0x2f0)
+	if (InputDisabled || field_0x2f0)
 	{
 		ActiveTricons = 0;
 	}
@@ -2271,7 +2269,7 @@ void CameraModeNew3::Update()
 	Global_00c5b0bc = Global_00c5b0b4;
 	Global_00c5b0b8 = Global_00c5b0ec;
 	MouseDelta = LHCoord(0, 0);
-	if (field_0x2ec == 0)
+	if (InputDisabled == false)
 	{
 		HAND_STATE handState = GGame::g_game->MyInterface()->HandState.GetState();
 		Global_00c5b0f0 = handState == HAND_STATE_GRIP_LANDSCAPE;
@@ -2478,7 +2476,7 @@ void CameraModeNew3::Update()
 	Global_00c5b100.Update(dt);
 
 	int wheel = 0;
-	if (field_0x2ec == 0 && Global_00c5b100.GetCurrentValue() < 0.01f)
+	if (InputDisabled == false && Global_00c5b100.GetCurrentValue() < 0.01f)
 	{
 		if (GGame::g_game->control_map->IsActionPerformed(BINDABLE_ACTION_ZOOM_OUT))
 		{
@@ -3677,7 +3675,7 @@ void CameraModeNew3::Update()
 			Heading0x12c.Add(originDest);
 			focusDest.Add(originDest);
 			local_4b = true;
-			Global_00c5e13c = 0.0f;
+			CameraExclusion::DistanceFromInclusionEdge = 0.0f;
 			if (Global_00c5e168)
 			{
 				CameraHelp::CameraHelpCallback(CameraHelpReason_CollideWithEdgeOfAllowedArea, originDest, 0);
@@ -3700,12 +3698,12 @@ void CameraModeNew3::Update()
 		}
 		else
 		{
-			Global_00c5e13c = closest.GetDistance2D(originDest);
+			CameraExclusion::DistanceFromInclusionEdge = closest.GetDistance2D(originDest);
 		}
 	}
 	else
 	{
-		Global_00c5e13c = 1.0e10f;
+		CameraExclusion::DistanceFromInclusionEdge = 1.0e10f;
 	}
 
 	if (local_b4 == 3 && pushed)
@@ -3887,7 +3885,7 @@ skipClick:
 	if (!GGame::g_game->MyInterface()->IsPlayBack(0))
 	{
 		static bool WasWindowed;
-		if (LHSys::TheSystem.WindowedMode)
+		if (LHSys::TheSystem.TurnOffMouseMove)
 		{
 			MousePosCurrent = MousePosPrevious;
 			LHSys::TheSystem.mouse.SetPosition(&MousePosCurrent);
@@ -3896,7 +3894,7 @@ skipClick:
 		{
 			LHSys::TheSystem.mouse.SetPosition(&MousePosCurrent);
 		}
-		WasWindowed = LHSys::TheSystem.WindowedMode;
+		WasWindowed = LHSys::TheSystem.TurnOffMouseMove;
 	}
 }
 
@@ -3956,7 +3954,7 @@ void ResetCameraModeNew3()
 	CameraExclusion::ResetExclusionFile(CAMERA_EXCLUSION_ID_DEFAULT);
 	CameraModeNew3::NoCross = 0;
 	Global_00c5b0c4 = 0.0f;
-	Global_00c5e13c = BigDistance;
+	CameraExclusion::DistanceFromInclusionEdge = BigDistance;
 	Global_00c5b0c8 = 0.0f;
 	Global_00c5b0cc = 0.0f;
 	Global_00c5b0d0 = 0.0f;

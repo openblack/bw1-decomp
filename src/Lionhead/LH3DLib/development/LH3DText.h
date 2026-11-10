@@ -6,6 +6,8 @@
 #include <string.h> /* For memset */
 #include <uchar.h>  /* For char16_t */
 
+#include <re_common.h> /* For bool32_t */
+
 enum TEXTJUSTIFY
 {
 	TEXTJUSTIFY_LEFT = 0x0,
@@ -19,6 +21,8 @@ enum TEXTJUSTIFY
 // Forward Declares
 
 struct LH3DColor;
+struct LH3DMaterial;
+struct LH3DTexture;
 struct LHMatrix;
 
 struct FontFile
@@ -27,6 +31,17 @@ struct FontFile
 
 	// BW1W120 008303c0 BW1M119 010c6630 (LHCombined Release)
 	bool ReadFromFile(const char* filename);
+	// BW1W120 inlined BW1M119 010c6590 (LHCombined Release)
+	void Close();
+};
+
+enum GAME_FONT
+{
+	GAME_FONT_DEFAULT,
+	GAME_FONT_GOOD,
+	GAME_FONT_NEUTRAL,
+	GAME_FONT_EVIL,
+	GAME_FONT_LAST
 };
 
 #define FONT_CACHE_ENTRIES      2048
@@ -91,6 +106,8 @@ struct FontCache
 {
 	// BW1W120 00eccd18 BW1M119 01332248 (LHCombined Release)
 	static uint8_t cachetime;
+	// BW1W120 00ecb898 BW1M119 013326ec (LHCombined Release)
+	static FontFile font[GAME_FONT_LAST];
 	// BW1W120 00ecce20 BW1M119 01332b5c (LHCombined Release)
 	static CacheEntry cache[FONT_CACHE_ENTRIES];
 	// BW1W120 00ed0e20 BW1M119 0133224c (LHCombined Release)
@@ -133,22 +150,25 @@ struct FontCache
 	CacheEntry* AddToCache(char16_t param_1, uint8_t param_2);
 	// BW1W120 00832bb0
 	CacheEntry* Find(char16_t param_1, uint8_t param_2);
-};
-
-enum GAME_FONT
-{
-	GAME_FONT_DEFAULT,
-	GAME_FONT_GOOD,
-	GAME_FONT_NEUTRAL,
-	GAME_FONT_EVIL,
-	GAME_FONT_LAST
+	// BW1W120 inlined BW1M119 010c2a70 (LHCombined Release)
+	void ClearInCache(uint8_t font, uint16_t code);
+	// BW1W120 inlined BW1M119 010c2ad0 (LHCombined Release)
+	void SetInCache(uint8_t font, uint16_t code);
+	// BW1W120 inlined BW1M119 01030c70 (LHCombined Release)
+	static uint8_t IsInCache(uint8_t font, uint16_t code);
+	// BW1W120 inlined BW1M119 01031ae0 (LHCombined Release)
+	static uint8_t HASH(wchar_t code, uint8_t font);
 };
 
 struct GatheringText
 {
 	// BW1W120 00eccd08 BW1M119 01332238 (LHCombined Release)
 	static GatheringText* gamefont[GAME_FONT_LAST];
-	uint8_t               field_0x0;
+	// BW1W120 00ed92dc BW1M119 01332234 (LHCombined Release)
+	static LH3DMaterial* bubmat;
+	// BW1W120 00ed92e0 BW1M119 01332230 (LHCombined Release)
+	static LH3DTexture* bubtex;
+	uint8_t             field_0x0;
 
 	// Static methods
 
@@ -165,11 +185,13 @@ struct GatheringText
 	// Non-virtual methods
 
 	// BW1W120 00830f60 BW1M119 010c5220 (LHCombined Release)
-	void SetupGameFonts();
+	static void SetupGameFonts();
 	// BW1W120 008310d0 BW1M119 010c5150 (LHCombined Release)
-	void CloseGameFonts();
+	static void CloseGameFonts();
 	// BW1W120 00831130 BW1M119 01033370 (LHCombined Release)
 	float GetStringWidth(char16_t* str, int len, float text_size);
+	// BW1W120 inlined BW1M119 0135e7a0
+	float GetStringWidth(char* str, int len, float text_size);
 	// Inliner IL size: 41
 	// BW1W120 inlined BW1M119 inlined
 	float GetStringWidth(char16_t* str, int len, float text_size, float scale)
@@ -179,9 +201,9 @@ struct GatheringText
 	// BW1W120 00831550 BW1M119 010c5080 (LHCombined Release)
 	static float GetFrac(float value, float lower, float upper);
 	// BW1W120 008315b0 BW1M119 010c4970 (LHCombined Release)
-	float DrawTextA(char16_t* text, float param_2, float param_3, float param_4, float param_5, float param_6,
-	                float param_7, float param_8, float param_9, float param_10, LH3DColor* p_color, int param_12,
-	                int param_13, int param_14);
+	float DrawTextA(char16_t* text, float x_min, float y_min, float fade_top, float x_max, float fade_bottom,
+	                float y_max, float y, float z, float size, LH3DColor* p_color, bool32_t centred, bool32_t draw,
+	                bool32_t no_z_test);
 	// BW1W120 008319e0 BW1M119 010c43c0 (LHCombined Release)
 	void DrawChar2Texture(CacheEntry* param_1, uint16_t* param_2, int param_3, float param_4, float param_5,
 	                      float param_6, float param_7, uint16_t* param_8);
@@ -190,7 +212,7 @@ struct GatheringText
 	                      float param_6, float param_7, float param_8, uint16_t param_9);
 	// BW1W120 00832c60 BW1M119 01030e80 (LHCombined Release)
 	void DrawTextRaw(char16_t* text, int count, float x, float y, float z, float size, LH3DColor* color_top,
-	                 int no_z_test, LH3DColor* color_bottom, float fade_top, float fade_bottom);
+	                 bool32_t no_z_test, LH3DColor* color_bottom, float fade_top, float fade_bottom);
 	// BW1W120 008321c0 BW1M119 010c31f0 (LHCombined Release)
 	void DrawTextRawOriented(LHMatrix& param_1, int param_2, int param_3, const char16_t* param_4, int param_5,
 	                         float param_6, float param_7, float param_8, float param_9, float param_10,
@@ -199,8 +221,9 @@ struct GatheringText
 	void DrawTextRaw(const char16_t* text, int param_2, float x, float y, float param_5, float param_6,
 	                 LH3DColor* param_7, int param_8, LH3DColor* param_9, float param_10, float param_11);
 	// BW1W120 008334c0 BW1M119 010c1fd0 (LHCombined Release)
-	void DrawBubble(float param_1, float param_2, float param_3, float param_4, float param_5, float param_6,
-	                float param_7, int param_8, uint32_t param_9, int param_10, int param_11, int param_12);
+	static void DrawBubble(float left, float top, float right, float bottom, float z, float corner_size, float tail_x,
+	                       bool32_t tail_on_right, unsigned long colour, bool32_t draw_tail, int alpha_top,
+	                       int alpha_bottom);
 };
 
 // Free functions at the head of this TU (originally declared in Utils.h).

@@ -20,7 +20,7 @@ bool32_t Reward::ValidForPlaceInHand(GInterfaceStatus* param_1)
 
 uint32_t Reward::GetOverwriteTapToolTip()
 {
-	return HELP_TEXT_TOOLTIP_126;
+	return HELP_TEXT_TOOLTIP_134;
 }
 
 GBaseInfo* GRewardInfo::GetBaseInfo(uint32_t& info_count)
@@ -57,7 +57,7 @@ bool32_t Reward::Load(GameOSFile& file)
 		file.ReadPtr((GameThing**)&field_0x68);
 		file.ReadPtr((GameThing**)&Player);
 		file.ReadPtr((GameThing**)&town);
-		file.ReadIt(field_0x78);
+		file.ReadIt(Alignment);
 		file.ReadIt(Active);
 		file.ReadIt(field_0x80);
 		file.ReadIt(field_0x84);
@@ -79,7 +79,7 @@ bool32_t Reward::Save(GameOSFile& file)
 		file.WritePtr(field_0x68);
 		file.WritePtr(Player);
 		file.WritePtr(town);
-		file.WriteIt(field_0x78);
+		file.WriteIt(Alignment);
 		file.WriteIt(Active);
 		file.WriteIt(field_0x80);
 		file.WriteIt(field_0x84);
