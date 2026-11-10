@@ -102,7 +102,7 @@ public:
 	// BW1W120 00436000 BW1M119 010b3040
 	bool32_t AddToTown(Town* town);
 	// BW1W120 004360e0 BW1M119 010b2f80
-	bool IsBallFree();
+	bool32_t IsBallFree();
 
 	// BW1W120 inlined BW1M119 010b2fc0
 	void RemoveFromTown();
