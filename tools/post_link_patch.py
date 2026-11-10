@@ -2877,6 +2877,8 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00713C63, copy_run(0x007123C3)),  # ScriptProperty
     (0x00713D61, copy_run(0x00713C63)),  # ScriptProperty
     (0x00713E6A, copy_run(0x00713D61)),  # ScriptProperty
+    (0x00713EBB, call_rel32(0x004034F9)),  # ScriptRelease
+    (0x00713EE3, copy_run(0x00713EBB)),  # ScriptRelease
     (0x007140DB, call_rel32(0x004034F9)),  # ScriptSound
     (0x007141C5, copy_run(0x007140DB)),  # ScriptSound
     (0x007142C8, copy_run(0x007141C5)),  # ScriptSound
