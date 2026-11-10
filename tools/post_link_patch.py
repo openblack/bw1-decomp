@@ -2660,6 +2660,29 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006FB555, jmp_run(0x006FB535)),  # ScriptDLL
     (0x006FB575, jmp_run(0x006FB555)),  # ScriptDLL
     (0x006FB59A, jmp_run(0x006FB575)),  # ScriptDLL
+    (0x006FB5BB, jmp_run(0x006FB59A)),  # ScriptFind
+    (0x006FB5E3, copy_run(0x006FB5BB)),  # ScriptFind
+    (0x006FB8DB, jmp_run(0x006FB5E3)),  # ScriptFind
+    (0x006FB915, jmp_run(0x006FB8DB)),  # ScriptFind
+    (0x006FB955, jmp_run(0x006FB915)),  # ScriptFind
+    (0x006FBA77, jmp_run(0x006FB955)),  # ScriptFind
+    (0x006FBB63, copy_run(0x006FBA77)),  # ScriptFind
+    (0x006FBBC1, copy_run(0x006FBB63)),  # ScriptFind
+    (0x006FBC26, copy_run(0x006FBBC1)),  # ScriptFind
+    (0x006FBDE2, copy_run(0x006FBC26)),  # ScriptFind
+    (0x006FBE09, copy_run(0x006FBDE2)),  # ScriptFind
+    (0x006FBE29, copy_run(0x006FBE09)),  # ScriptFind
+    (0x006FBE56, jmp_run(0x006FBE29)),  # ScriptFind
+    (0x006FBF5A, jmp_run(0x006FBE56)),  # ScriptFind
+    (0x006FC082, copy_run(0x006FBF5A)),  # ScriptFind
+    (0x006FC0EA, copy_run(0x006FC082)),  # ScriptFind
+    (0x006FC131, jmp_run(0x006FC0EA)),  # ScriptFind
+    (0x006FC16B, copy_run(0x006FC131)),  # ScriptFind
+    (0x006FC19B, jmp_run(0x006FC16B)),  # ScriptFind
+    (0x006FC1CB, copy_run(0x006FC19B)),  # ScriptFind
+    (0x006FC1FB, jmp_run(0x006FC1CB)),  # ScriptFind
+    (0x006FC2D7, jmp_run(0x006FC1FB)),  # ScriptFind
+    (0x006FC427, copy_run(0x006FC2D7)),  # ScriptFind
     (0x006FC4AB, copy_run(0x006FC45C)),  # ScriptFunctions
     (0x006FC4D3, jmp_run(0x006FC4AB)),  # ScriptFunctions
     (0x006FC554, jmp_run(0x006FC4D3)),  # ScriptFunctions
@@ -2784,6 +2807,7 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00704594, jmp_run(0x00704487)),  # ScriptFunctions
     (0x007047D8, jmp_run(0x00704594)),  # ScriptFunctions
     (0x0070485A, jmp_run(0x007047D8)),  # ScriptFunctions
+    (0x007048AB, copy_run(0x0070485A)),  # ScriptFunctionTable
     (0x0070D53B, jmp_run(0x007048AB)),  # ScriptGFX
     (0x0070D595, jmp_run(0x0070D53B)),  # ScriptGFX
     (0x0070D5C5, copy_run(0x0070D592)),  # ScriptGFX
@@ -2877,6 +2901,8 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00713C63, copy_run(0x007123C3)),  # ScriptProperty
     (0x00713D61, copy_run(0x00713C63)),  # ScriptProperty
     (0x00713E6A, copy_run(0x00713D61)),  # ScriptProperty
+    (0x00713EBB, call_rel32(0x004034F9)),  # ScriptRelease
+    (0x00713EE3, copy_run(0x00713EBB)),  # ScriptRelease
     (0x007140DB, call_rel32(0x004034F9)),  # ScriptSound
     (0x007141C5, copy_run(0x007140DB)),  # ScriptSound
     (0x007142C8, copy_run(0x007141C5)),  # ScriptSound

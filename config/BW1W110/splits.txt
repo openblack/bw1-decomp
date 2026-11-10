@@ -2199,12 +2199,25 @@ Black/ScriptDLL.cpp:
 	.data       start:0x00BFC240 end:0x00BFC49E
 	.bss        start:0x00D84D20 end:0x00D84D24
 
+Black/ScriptFind.cpp:
+	.text       start:0x006EBC80 end:0x006ECB40
+	.rdata      start:0x00932180 end:0x00932188
+	.CRT$XCU    start:0x009B701C end:0x009B7024 align:4
+	.data       start:0x00BFC4A0 end:0x00BFC4EC
+	.bss        start:0x00D84D28 end:0x00D84D34
+
 Black/ScriptFunctions.cpp:
 	.text       start:0x006ECB40 end:0x006F4EF0
 	.rdata      start:0x00932188 end:0x0093219C
 	.CRT$XCU    start:0x009B7024 end:0x009B702C align:4
 	.data       start:0x00BFC4EC end:0x00BFCCD0
 	.bss        start:0x00D84D34 end:0x00D84F44
+
+Black/ScriptFunctionTable.cpp:
+	.text       start:0x006F4EF0 end:0x006FDB50
+	.CRT$XCU    start:0x009B702C end:0x009B7034 align:4
+	.data       start:0x00BFCCD0 end:0x00C0F658
+	.bss        start:0x00D84F44 end:0x00D84F48
 
 Black/ScriptGFX.cpp:
 	.text       start:0x006FDB50 end:0x006FE470

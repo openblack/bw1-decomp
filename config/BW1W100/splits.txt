@@ -2016,6 +2016,7 @@ Black/ScriptCreateOrCall.cpp:
 Black/ScriptCreature.cpp:
 	.text       start:0x0068DAD0 end:0x00690530
 	.rdata      start:0x00879338 end:0x00879374
+	.rdata$r    start:0x008EBF90 end:0x008EBFDC
 	.CRT$XCU    start:0x008F6FB8 end:0x008F6FC4 align:4
 	.data       start:0x00B30250 end:0x00B30578
 	.bss        start:0x00CB6BE8 end:0x00CB6DD4
@@ -2033,12 +2034,25 @@ Black/ScriptDLL.cpp:
 	.data       start:0x00B30578 end:0x00B3078E
 	.bss        start:0x00CB6DE8 end:0x00CB6DEC
 
+Black/ScriptFind.cpp:
+	.text       start:0x00690C40 end:0x006918B0
+	.rdata      start:0x00879380 end:0x00879388
+	.CRT$XCU    start:0x008F6FCC end:0x008F6FD4 align:4
+	.data       start:0x00B30790 end:0x00B307DC
+	.bss        start:0x00CB6DF0 end:0x00CB6DFC
+
 Black/ScriptFunctions.cpp:
 	.text       start:0x006918B0 end:0x00699A40
 	.rdata      start:0x00879388 end:0x0087939C
 	.CRT$XCU    start:0x008F6FD4 end:0x008F6FDC align:4
 	.data       start:0x00B307DC end:0x00B30FC0
 	.bss        start:0x00CB6DFC end:0x00CB700C
+
+Black/ScriptFunctionTable.cpp:
+	.text       start:0x00699A40 end:0x006A2590
+	.CRT$XCU    start:0x008F6FDC end:0x008F6FE4 align:4
+	.data       start:0x00B30FC0 end:0x00B436A0
+	.bss        start:0x00CB700C end:0x00CB7010
 
 Black/ScriptGFX.cpp:
 	.text       start:0x006A2590 end:0x006A2EA0
