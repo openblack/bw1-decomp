@@ -2862,6 +2862,25 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00713C63, copy_run(0x007123C3)),  # ScriptProperty
     (0x00713D61, copy_run(0x00713C63)),  # ScriptProperty
     (0x00713E6A, copy_run(0x00713D61)),  # ScriptProperty
+    (0x007140DB, call_rel32(0x004034F9)),  # ScriptSound
+    (0x007141C5, copy_run(0x007140DB)),  # ScriptSound
+    (0x007142C8, copy_run(0x007141C5)),  # ScriptSound
+    (0x00714365, copy_run(0x007142C8)),  # ScriptSound
+    (0x0071445A, jmp_run(0x00714365)),  # ScriptSound
+    (0x007145DB, call_rel32(0x004034F9)),  # ScriptSound
+    (0x00714647, copy_run(0x007145DB)),  # ScriptSound
+    (0x007146A1, copy_run(0x00714647)),  # ScriptSound
+    (0x0071471B, call_rel32(0x004034F9)),  # ScriptSound
+    (0x00714792, jmp_run(0x0071471B)),  # ScriptSound
+    (0x0071483B, call_rel32(0x004034F9)),  # ScriptSound
+    (0x0071487B, call_rel32(0x004034F9)),  # ScriptSound
+    (0x007148D8, jmp_run(0x0071487B)),  # ScriptSound
+    (0x00714985, copy_run(0x007148D8)),  # ScriptSound
+    (0x00714A5A, jmp_run(0x00714985)),  # ScriptSound
+    (0x00714A85, copy_run(0x00714A5A)),  # ScriptSound
+    (0x00714B06, copy_run(0x00714A85)),  # ScriptSound
+    (0x00714B63, copy_run(0x00714B06)),  # ScriptSound
+    (0x00714BB3, jmp_run(0x00714B63)),  # ScriptSound
     (0x00714C9B, call_rel32(0x004034F9)),  # ScriptSpirit
     (0x00714DA6, copy_run(0x00714C9B)),  # ScriptSpirit
     (0x00714E26, copy_run(0x00714DA6)),  # ScriptSpirit

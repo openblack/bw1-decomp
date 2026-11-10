@@ -60,10 +60,8 @@ const float MouseTiltRate = 0.002f;
 const float FightBlendStart = 2.0f;
 const float FightBlendTime = 2.0f;
 
-// BW1W120 00c5e158
-static float StrafeSpeedX;
-// BW1W120 00c5e15c
-static float StrafeSpeedZ;
+float CameraModeNew3::StrafeSpeedX;
+float CameraModeNew3::StrafeSpeedZ;
 
 // BW1W120 009ce608
 static float StrafeStopSpeedSq = 0.01f;
@@ -216,13 +214,13 @@ LH3DTexture*  CameraModeNew3::ForceFieldTexture;
 // BW1W120 00454900 BW1M119 inlined
 static void SmoothStrafeSpeedX(float distance, float time)
 {
-	StrafeSpeedX += (distance / time - StrafeSpeedX) * 0.4f;
+	CameraModeNew3::StrafeSpeedX += (distance / time - CameraModeNew3::StrafeSpeedX) * 0.4f;
 }
 
 // BW1W120 00454930 BW1M119 inlined
 static void SmoothStrafeSpeedZ(float distance, float time)
 {
-	StrafeSpeedZ += (distance / time - StrafeSpeedZ) * 0.4f;
+	CameraModeNew3::StrafeSpeedZ += (distance / time - CameraModeNew3::StrafeSpeedZ) * 0.4f;
 }
 
 CameraExclusion* CameraExclusion::CreateDome(unsigned long id, LHPoint pos, float radius, float height)

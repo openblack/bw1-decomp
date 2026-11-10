@@ -48,6 +48,8 @@ public:
 
 	// BW1W120 00734e60 BW1M119 0153e940
 	static GStreetLight* Create(const MapCoords& coords);
+	// BW1W120 00734eb0 BW1M119 0153e7a0
+	uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 00734f70 BW1M119 0153e6b0
 	static void SaveAllStreetLights(LHOSFile& file, const MapCoords& coords);
 };
