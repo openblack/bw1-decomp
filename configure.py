@@ -1194,7 +1194,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MagicWood.cpp"),
             GameCodeObject(NonMatching, "Black/MainMenu.cpp"),
             GameCodeObject(NonMatching, "Black/Map.cpp"),
-            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "Black/MapCoords.cpp"),
+            GameCodeObject(Matching, "Black/MapCoords.cpp"),
             GameCodeObject(NonMatching, "Black/MapShield.cpp"),
             GameCodeObject(NonMatching, "Black/MapShieldInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Meeting.cpp"),

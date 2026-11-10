@@ -66,6 +66,10 @@
 
 #define CLIMATE_MAX_DISTANCE 999999
 
+#define LAND_AVOID_TYPE_MASK 7
+
+#define LAND_CELL_CLOSED_TO_BUILDING_BIT 14
+
 enum NEAREST_TOWN
 {
 	NEAREST_TOWN_NONE,
@@ -87,17 +91,48 @@ const float MapCellNeighbours::Offsets[4][2] = {
 };
 const float DefaultTemperature = 24.7f;
 
+#ifdef VERSION_BW1WCI
+// Inliner IL size: 24
+// BW1WCI inlined BW1MCI119 inlined
+inline LandCell* GetLandCell(long x, long z)
+{
+	return LH3DIsland::GetCell(x, z);
+}
+#endif
+
 // Inliner IL size: 49
 // BW1W120 inlined BW1M119 inlined
 inline bool32_t IsCellCoastal(long x, long z)
 {
+#ifdef VERSION_BW1WCI
+	LandCell* cell = GetLandCell(x, z);
+#else
 	LandCell* cell = LH3DIsland::GetCell(x, z);
+#endif
 	if (cell != NULL)
 	{
 		return cell->IsCoastal();
 	}
 	return false;
 }
+
+#ifdef VERSION_BW1WCI
+// Inliner IL size: 33
+// BW1WCI inlined BW1MCI119 inlined
+inline bool32_t IsLandCellOpenToBuilding(LandCell* cell)
+{
+	uint8_t zone = cell->Flags >> LAND_CELL_CLOSED_TO_BUILDING_BIT;
+	return !(zone & 1);
+}
+
+// Inliner IL size: 39
+// BW1WCI inlined BW1MCI119 inlined
+inline bool32_t IsCellOpenToBuilding(long x, long z)
+{
+	LandCell* cell = LH3DIsland::GetCell(x, z);
+	return cell != NULL && IsLandCellOpenToBuilding(cell);
+}
+#endif
 
 // Inliner IL size: 103
 // BW1W120 inlined BW1M119 inlined
@@ -900,6 +935,21 @@ bool32_t MapCoords::IsSuitableForAbodeBuildFixed(Game3DObject* object, float y_a
 		{
 			return false;
 		}
+#ifdef VERSION_BW1WCI
+		bool32_t water = LH3DIsland::IsWater(cell->GetX(), cell->GetZ());
+		if (water)
+		{
+			return false;
+		}
+		if (IsCellCoastal(cell->GetX(), cell->GetZ()))
+		{
+			return false;
+		}
+		if (!IsCellOpenToBuilding(cell->GetX(), cell->GetZ()))
+		{
+			return false;
+		}
+#else
 		bool32_t water = LH3DIsland::IsWater(MapX(), MapZ());
 		if (water)
 		{
@@ -909,9 +959,18 @@ bool32_t MapCoords::IsSuitableForAbodeBuildFixed(Game3DObject* object, float y_a
 		{
 			return false;
 		}
+#endif
+#ifdef VERSION_BW1WCI
+		for (Object* fixed = cell->GetFirstObjectFixed(); fixed != NULL; fixed = fixed->GetMapChild(*cell))
+#else
 		for (Object* fixed = cell->FirstObjectFixed; fixed != NULL; fixed = fixed->GetMapChild(*cell))
+#endif
 		{
+#ifdef VERSION_BW1WCI
+			if (fixed->IsFixed() && fixed->IsSolidToNewAbode() && fixed != ignore)
+#else
 			if ((fixed->Flags & GAME_THING_WITH_POS_FLAG_FIXED) && fixed->IsSolidToNewAbode() && fixed != ignore)
+#endif
 			{
 				float distance = GetDistance(fixed->Pos);
 				if (fixed->Get2DRadius() + radius > distance)
@@ -1725,7 +1784,11 @@ bool32_t MapCoords::IsSquareClearForActivity(Creature* creature, long x, long z,
 				return false;
 			}
 		}
+#ifdef VERSION_BW1WCI
+		return (LandAvoid[z][x] & LAND_AVOID_TYPE_MASK) == 0;
+#else
 		return LandAvoid[z][x] == 0;
+#endif
 	}
 	return false;
 }
@@ -1819,3 +1882,21 @@ float MapCoords::GetMetresDistanceSq(const MapCoords& other) const
 	float dz = GUtils::ConvertWholeDistanceToMeters(other.WholeZ() - WholeZ());
 	return dx * dx + dz * dz;
 }
+
+#ifdef VERSION_BW1WCI
+// BW1WCI 0061e620 BW1MCI119 014c7e30
+float VariationInAltitude(const MapCoords& coords);
+
+float VariationInAltitude(const MapCoords& coords)
+{
+	LHPoint point = coords.GetLHPoint();
+	float   altitude = LH3DIsland::GetAltitude(point);
+	float   altitudeX = LH3DIsland::GetAltitude(LHPoint(point.x + MAP_COORDS_METRES_PER_CELL, point.y, point.z));
+	float   altitudeZ = LH3DIsland::GetAltitude(LHPoint(point.x, point.y, point.z + MAP_COORDS_METRES_PER_CELL));
+	float   altitudeXZ = LH3DIsland::GetAltitude(
+		LHPoint(point.x + MAP_COORDS_METRES_PER_CELL, point.y, point.z + MAP_COORDS_METRES_PER_CELL));
+	float lowest = min(altitude, min(altitudeX, min(altitudeZ, altitudeXZ)));
+	float highest = max(altitude, max(altitudeX, max(altitudeZ, altitudeXZ)));
+	return highest - lowest;
+}
+#endif
