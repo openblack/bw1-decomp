@@ -5,14 +5,11 @@
 #include <stdint.h> /* For uint8_t */
 
 #define LH3D_TOOLS_TEXT_SIZE            0x400
-#define LH3D_TOOLS_FILE_SIZE            0x100
 #define LH3D_TEXTURE_PACK_SIZE          256
 #define LH3D_TEXTURE_PACK_NO_OFFSETS    0xffffffff
 #define LH3D_TOOLS_SCREEN_SIZE          50
 #define LH3D_TOOLS_SCREEN_DEPTH         16
 #define LH3D_TOOLS_EXTENSION_LENGTH     4
-#define LH3D_TOOLS_TEXTURE_FLAGS        1
-#define LH3D_TOOLS_TEXTURE_ALPHA        0x40
 #define LH3D_TOOLS_PAGE_SIZE            256
 #define LH3D_TOOLS_TILE_SIZE            32
 #define LH3D_TOOLS_PAGE_TILES           (LH3D_TOOLS_PAGE_SIZE / LH3D_TOOLS_TILE_SIZE)

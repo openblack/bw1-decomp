@@ -83,7 +83,7 @@ public:
 	// BW1W120 00826c50 BW1M119 01047c00 (LHCombined Release)
 	static void Reset();
 	// BW1W120 00826c90 BW1M119 0100cef0 (LHCombined Release)
-	static void Draw(int mode);
+	static void Draw(bool32_t world_space);
 	// BW1W120 00826fa0 BW1M119 010bede0 (LHCombined Release)
 	static void Add(long player, const LHPoint& position, float influence);
 	// BW1W120 00827040 BW1M119 011602a0 (LHCombined Release)

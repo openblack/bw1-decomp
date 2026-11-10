@@ -97,6 +97,7 @@ uint32_t __stdcall PlayerDraw(SetupList* list, int index, int x_min, int y_min, 
 	return 1;
 }
 
+#ifndef VERSION_BW1W100
 unsigned long GatheringBox::GetMusicID()
 {
 	if (Music.GetPlayState() != 1)
@@ -224,6 +225,7 @@ void GatheringBox::UpdateMP3()
 		MusicButton->color = SetupThing::DefaultColor;
 	}
 }
+#endif
 
 void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
                         void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
@@ -231,11 +233,11 @@ void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
 	Open = false;
 	NumIncoming = 0;
 	ShowInterface = true;
-	FriendsText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_96);
-	OtherPlayersText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_98);
-	CurrentPlayersText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DETAIL_06);
-	RemoveFriendText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_72);
-	AddFriendText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_71);
+	FriendsText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_121);
+	OtherPlayersText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_123);
+	CurrentPlayersText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLAYERLIST);
+	RemoveFriendText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_90);
+	AddFriendText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_89);
 	DialogBoxBase::Init(background_style, tall_background, callback);
 	Instance = this;
 	QuickChatOpen = false;
@@ -287,11 +289,12 @@ void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
 	QuickChatList->UseColorBackground = false;
 	for (int i = 0; i < 31; i++)
 	{
-		QuickChatList->AddString(HelpTextData::GetTextL(HELP_TEXT_YOU_ARE_GOOD_01 + i), 0, 0, 0);
+		QuickChatList->AddString(HelpTextData::GetTextL(HELP_TEXT_MULTIPLAYER_TAUNTS_EA_01 + i), 0, 0, 0);
 	}
 	QuickChatList->Hide(true);
 	setup_box->DefaultTextSize = GetSmallTextSize();
 
+#ifndef VERSION_BW1W100
 	MusicButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 258)
 		SetupMP3Button(GATHERING_CONTROL_ID_MP3_TOGGLE, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(0),
 	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 10);
@@ -406,6 +409,7 @@ void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
 		}
 	}
 	HideMP3Controls(true);
+#endif
 }
 
 void GatheringBox::ClearSelection(bool rebuild)
@@ -574,32 +578,39 @@ void GatheringBox::UpdateShow()
 	IncomingText->Hide(NumIncoming == 0 ||
 	                   (GGame::g_game->help_system != NULL && GGame::g_game->help_system->WideScreen != 0));
 	OpenButton->Hide(!ShowInterface || Open);
+#ifndef VERSION_BW1W100
 	MusicButton->Hide(!MP3PlayerEnabled || Open || MusicLibrary == NULL);
 	MusicButton->rect.start.x = SetupThing::unadjustx(LHSys::TheSystem.screen.width - 40);
 	MusicButton->rect.end.x = MusicButton->rect.start.x + SetupThing::unadjustsize(20);
 	if (MusicButton->hidden && !SongName->hidden)
 		HideMP3Controls(true);
+#endif
 	IncomingButton->style = (BBSTYLE)flashStyle;
 	SendButton->style = ChatEdit->label[0] != 0 ? BBSTYLE_RIGHT_ARROW : BBSTYLE_NO_SPEECH;
-	if (!IncomingButton->hidden && GetTopIncoming() != NULL &&
-	    GetTickCount() - GetTopIncoming()->Time > INCOMING_TEXT_DISPLAY_TIME)
+	if (!IncomingButton->hidden)
 	{
-		if (NumIncoming > 0)
+		IncomingBubbleInfo* top = GetTopIncoming();
+		if (top != NULL && GetTickCount() - top->Time > INCOMING_TEXT_DISPLAY_TIME)
 		{
-			NumIncoming--;
-			IncomingBubbleInfo* info = GetTopIncoming();
-			if (info != NULL)
+			if (NumIncoming > 0)
 			{
-				IncomingList.Remove(info);
-				delete info;
-				if (GetTopIncoming() != NULL)
-					GetTopIncoming()->Time = GetTickCount();
+				NumIncoming--;
+				IncomingBubbleInfo* info = GetTopIncoming();
+				if (info != NULL)
+				{
+					IncomingList.Remove(info);
+					delete info;
+					top = GetTopIncoming();
+					if (top != NULL)
+						top->Time = GetTickCount();
+				}
 			}
+			UpdateIncomingText();
 		}
-		UpdateIncomingText();
 	}
 }
 
+#ifndef VERSION_BW1W100
 void GatheringBox::MP3Callback(int message, SetupBox* box, SetupControl* control, int x, int y)
 {
 	switch (message)
@@ -703,13 +714,16 @@ void GatheringBox::MP3Callback(int message, SetupBox* box, SetupControl* control
 		break;
 	}
 }
+#endif
 
 void __stdcall GatheringBox::ControlCallback(int message, SetupBox* box, SetupControl* control, int x, int y)
 {
 	int           size = SetupThing::unadjustsize(20);
 	GatheringBox* gatheringBox = Instance;
+#ifndef VERSION_BW1W100
 	if (MP3PlayerEnabled)
 		gatheringBox->MP3Callback(message, box, control, x, y);
+#endif
 	switch (message)
 	{
 	case SETUP_MESSAGE_DRAG:
@@ -852,11 +866,11 @@ void __stdcall GatheringBox::ControlCallback(int message, SetupBox* box, SetupCo
 						{
 							if (homeless)
 								special->MakeHimSpeak(LHSPrintfW(
-									HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_TEMPLE_SCROLLS_03),
+									HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_11),
 									gatheringBox->GetTopIncoming()->Name, gatheringBox->GetTopIncoming()->Message));
 							else
 								special->MakeHimSpeak(LHSPrintfW(
-									HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_49),
+									HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_67),
 									gatheringBox->GetTopIncoming()->Name, gatheringBox->GetTopIncoming()->Message));
 						}
 					}
@@ -953,8 +967,10 @@ void __stdcall GatheringBox::ControlCallback(int message, SetupBox* box, SetupCo
 	case SETUP_MESSAGE_KEY:
 		if (x == LHKEY_ESCAPE)
 		{
+#ifndef VERSION_BW1W100
 			if (!gatheringBox->SongName->hidden)
 				gatheringBox->HideMP3Controls(true);
+#endif
 			gatheringBox->Open = false;
 			LHSys::TheSystem.keyboard.ClearKey();
 			LHSys::TheSystem.charRing.Clear();
@@ -991,7 +1007,9 @@ void GatheringBox::OpenDialog(bool close_after_send)
 	CloseAfterSend = close_after_send;
 	ShowInterface = true;
 	Open = true;
+#ifndef VERSION_BW1W100
 	HideMP3Controls(true);
+#endif
 	ChatEdit->label[0] = 0;
 	setup_box->SetFocusControl(ChatEdit);
 }
@@ -1009,7 +1027,8 @@ void GatheringBox::SendMessageA(bool close, int quick_chat)
 		else
 		{
 			SendPacketToPlayers(PACKET_TYPE_TAUNT, 4, &quick_chat, true);
-			char16_t* taunt = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_YOU_ARE_GOOD_01 + quick_chat);
+			char16_t* taunt =
+				HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_TAUNTS_EA_01 + quick_chat);
 			SendMessageA(Friends, taunt);
 			SendMessageA(OtherPlayers, taunt);
 		}
@@ -1060,9 +1079,11 @@ void GatheringBox::UpdateFrame()
 		if (creatureInteracting)
 			ShowInterface = false;
 	}
+#ifndef VERSION_BW1W100
 	if (MusicLibrary != NULL && MP3PlayerEnabled && GGame::g_game->VideoPlayer == NULL &&
 	    GGame::g_game->help_system->WideScreen == 0 && !creatureInteracting)
 		ShowInterface = true;
+#endif
 	if (SetupBox::GetCurrentActiveBox() == NULL && ShowInterface)
 	{
 		Show();

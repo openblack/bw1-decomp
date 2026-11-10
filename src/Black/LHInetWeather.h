@@ -38,6 +38,20 @@ enum LH_INETWEATHER_OPERATION
 	LH_INETWEATHER_OPERATION_SUBTRACT,
 };
 
+enum LH_INETWEATHER_BUBBLE_ICON
+{
+	LH_INETWEATHER_BUBBLE_ICON_SUNNY,
+	LH_INETWEATHER_BUBBLE_ICON_PARTIALLY_CLOUDY,
+	LH_INETWEATHER_BUBBLE_ICON_CLOUDY,
+	LH_INETWEATHER_BUBBLE_ICON_SCATTERED_SHOWERS,
+	LH_INETWEATHER_BUBBLE_ICON_SHOWERS,
+	LH_INETWEATHER_BUBBLE_ICON_SCATTERED_FLURRIES,
+	LH_INETWEATHER_BUBBLE_ICON_FLURRIES,
+	LH_INETWEATHER_BUBBLE_ICON_HEAVY_FLURRIES,
+	LH_INETWEATHER_BUBBLE_ICON_THUNDER_STORMS,
+	LH_INETWEATHER_BUBBLE_ICON_COUNT
+};
+
 enum LH_INETWEATHER_COMMAND
 {
 	LH_INETWEATHER_COMMAND_NONE,
@@ -121,6 +135,12 @@ public:
 	char* GetLocationAreaPtr() { return Area; }
 	// BW1W120 inlined BW1M119 0135be50
 	char* GetLocationCountryPtr() { return Country; }
+	// BW1W120 inlined BW1M119 inlined
+	int GetWeatherType() { return WeatherType; }
+	// BW1W120 inlined BW1M119 inlined
+	int16_t GetTemperature() { return Temperature; }
+	// BW1W120 inlined BW1M119 inlined
+	int16_t GetCloudCover() { return CloudCover; }
 
 	// BW1W120 005e7ab0 BW1M119 inlined
 	LH_RETURN SetLocation(char* country, char* area, char* city);
@@ -245,6 +265,12 @@ public:
 	LHInetWeatherLocation* FindLocationByDate(int8_t day, int8_t month, int16_t year);
 	// BW1W120 inlined BW1M119 013817f0
 	bool IsPaused() { return Paused; }
+	// BW1W120 inlined BW1M119 inlined
+	void RequestRecalculate() { RecalculateRequested = true; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetStatus(LH_INETWEATHER_STATUS status) { Status = status; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetCommand(LH_INETWEATHER_COMMAND command) { Command = command; }
 };
 
 static_assert(sizeof(LHInetWeather) == 0xec, "LHInetWeather size is incorrect");

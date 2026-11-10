@@ -71,9 +71,9 @@ struct HelpTextData
 
 struct HelpTextInfo
 {
-	uint32_t  field_0x0;
-	uint32_t  field_0x4;
-	char16_t* Text;
+	HELP_TEXT_NARRATOR Narrator;
+	uint32_t           field_0x4;
+	char16_t*          Text;
 
 	// BW1W120 inlined BW1M119 0150f7f0
 	HelpTextInfo() : Text(NULL) {}

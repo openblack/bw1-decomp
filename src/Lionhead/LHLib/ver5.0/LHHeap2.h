@@ -3,13 +3,14 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t */
+#include <string.h> /* For memset */
 
 #include <map>
 
 // Forward declares
-struct Heap;
-struct HeapWithPools;
-struct UniqueKeyHeap;
+class Heap;
+class HeapWithPools;
+class UniqueKeyHeap;
 
 // 12-byte header written at the START of every free region. The free list is
 // doubly linked through Next/Prev; Size counts the whole region including this
@@ -76,8 +77,9 @@ struct timcheck
 // of the Heap family; HeapWithPools and UniqueKeyHeap stack on top by single
 // inheritance. Field names MemoryPool/Size/FreeListCount/Allocates/Deallocates
 // are the original identifiers recovered from GetDebugText's format string.
-struct Heap
+class Heap
 {
+public:
 	// Implicit vptr at 0x0 (Heap::`vftable' = 0x931cc8), emitted by the virtual
 	// methods below.
 	FreeList*      Head;            /* 0x4  first free region (LHListHead2::Head) */
@@ -93,6 +95,8 @@ struct Heap
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 013e82f0
+	Heap() : Head(NULL), FreeListCount(0), Tail(NULL) {}
 	// BW1W120 007e0fa0 BW1M119 0113b8c0 (LHCombined Release)
 	Heap(unsigned char* base, unsigned int size, unsigned int a4);
 
@@ -106,10 +110,7 @@ struct Heap
 	// BW1W120 007e1020 BW1M119 0113b7c0 (LHCombined Release)
 	virtual void SetToZero();
 	// BW1W120 00643400
-	// TODO: symbols.txt records this as ?GetActualMemoryRequired@Heap@@UBEXI@Z
-	// (void return), but the code returns the size unchanged. Out of the
-	// LHHeap2.cpp split (COMDAT-placed at 0x643400).
-	virtual unsigned int GetActualMemoryRequired(unsigned int size) const;
+	virtual unsigned int GetActualMemoryRequired(unsigned int size) const { return size; }
 
 	// Non-virtual methods
 
@@ -156,13 +157,16 @@ static_assert(sizeof(Heap) == 0x2c, "Data type is of wrong size");
 // Adds size-bucketed object pools (LHPool) on top of Heap. Requests smaller than
 // 256 bytes are rounded up to a multiple of 8 and served from a per-bucket
 // LHPool free list; larger requests fall through to Heap.
-struct HeapWithPools : Heap
+class HeapWithPools : public Heap
 {
+public:
 	std::map<int, LHPool*> PoolMap;
 	LHPool*                Pools[HEAP_POOL_COUNT];
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	HeapWithPools() { memset(Pools, 0, sizeof(Pools)); }
 	// BW1W120 inlined
 	HeapWithPools(unsigned char* base, unsigned int size, unsigned int a4);
 
@@ -178,12 +182,15 @@ static_assert(sizeof(HeapWithPools) == 0xbc, "Data type is of wrong size");
 // Tags each allocation with a monotonically increasing unique key, stored in a
 // 4-byte HeapKey header immediately before the returned pointer. Used to catch
 // use-after-free and wild pointers. This is the primary game allocator (gBaseHeap).
-struct UniqueKeyHeap : HeapWithPools
+class UniqueKeyHeap : public HeapWithPools
 {
+public:
 	unsigned int NextUniqueId; /* 0xbc starts at 1 */
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 013e8210
+	UniqueKeyHeap() {}
 	// BW1W120 007e1670 BW1M119 01139ed0 (LHCombined Release)
 	UniqueKeyHeap(unsigned char* base, unsigned int size, unsigned int a4);
 
@@ -197,7 +204,7 @@ struct UniqueKeyHeap : HeapWithPools
 	// BW1W120 007e1780 BW1M119 01139e60 (LHCombined Release)
 	virtual void SetToZero();
 	// BW1W120 00643410
-	virtual unsigned int GetActualMemoryRequired(unsigned int size) const;
+	virtual unsigned int GetActualMemoryRequired(unsigned int size) const { return size + sizeof(HeapKey); }
 
 	// Non-virtual methods
 
@@ -237,10 +244,16 @@ static_assert(sizeof(UniqueKeyHeap) == 0xc0, "Data type is of wrong size");
 // A snapshot buffer that can Store/Restore a whole UniqueKeyHeap (state + pool
 // bytes + pool map). Mirrors the UniqueKeyHeap layout at 0x00-0xbf, then adds the
 // live heap pointer and the saved value of the first free node.
-struct HeapStore : UniqueKeyHeap
+class HeapStore : public UniqueKeyHeap
 {
+public:
 	UniqueKeyHeap* LiveHeap;            /* 0xc0 the UniqueKeyHeap being snapshotted */
 	unsigned int   SavedFirstNodeValue; /* 0xc4 */
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	HeapStore() { Init(NULL); }
 
 	// Non-virtual methods
 

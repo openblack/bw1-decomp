@@ -132,11 +132,6 @@ public:
 	LH_USER_ID                          LastJoinUserID;                                    /* 0x108 */
 	LHLinkedList<LHLobbyServerChannel*> ServerChannels;                                    /* 0x10c */
 
-	// BW1W120 10068b60 BW1M119 013566d8 (LHCombined Release)
-	static bool32_t SendFullChecksum;
-	// BW1W120 10068c70 BW1M119 01356ae4 (LHCombined Release)
-	static char UserFile[_MAX_PATH];
-#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10068b48 BW1M119 013566c0 (LHCombined Release)
 	static bool GameRunning;
 	// BW1W120 10068b4c BW1M119 013566c4 (LHCombined Release)
@@ -149,10 +144,14 @@ public:
 	static LH_MGJ_CALLBACK_RETURN (*MGJCallback)(void* param);
 	// BW1W120 10068b5c BW1M119 013566d4 (LHCombined Release)
 	static LH_OPERATING_MODE MessageServerMode;
+	// BW1W120 10068b60 BW1M119 013566d8 (LHCombined Release)
+	static bool32_t SendFullChecksum;
 	// BW1W120 10068b64 BW1M119 013566dc (LHCombined Release)
 	static bool32_t RunMessageServerOnThisHost;
 	// BW1W120 10068b68 BW1M119 013566e0 (LHCombined Release)
 	static char GameFile[_MAX_PATH];
+	// BW1W120 10068c70 BW1M119 01356ae4 (LHCombined Release)
+	static char UserFile[_MAX_PATH];
 	// BW1W120 10068d98 BW1M119 01356ee8 (LHCombined Release)
 	static char ConnectedLobbyName[LH_MAX_LOBBY_NAME_LENGTH + 1];
 
@@ -177,7 +176,6 @@ private:
 public:
 	// BW1W120 10068d8c BW1M119 01356fd4 (LHCombined Release)
 	static unsigned long OpenLobbyCount;
-#endif
 
 private:
 	// BW1W120 1000d0b0 BW1M119 010ef4a0 (LHCombined Release)

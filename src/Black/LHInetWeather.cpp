@@ -24,8 +24,6 @@
 #include "HelpText.h"
 #include "Landscape.h"
 
-#define HELP_TEXT_WEATHER_INFO (HELP_TEXT_DIALOG_WEATHER_INFO - 8)
-
 typedef BOOL(WINAPI* ISNETWORKALIVE)(LPDWORD flags);
 typedef BOOL(WINAPI* INTERNETGETCONNECTEDSTATE)(LPDWORD flags, DWORD reserved);
 typedef DWORD(WINAPI* RASENUMCONNECTIONS)(void* connections, LPDWORD size, LPDWORD count);
@@ -52,19 +50,6 @@ char GetWeatherBubbleIcon(int weather_type);
 
 char GetWeatherBubbleIcon(int weather_type)
 {
-	enum LH_INETWEATHER_BUBBLE_ICON
-	{
-		LH_INETWEATHER_BUBBLE_ICON_SUNNY,
-		LH_INETWEATHER_BUBBLE_ICON_PARTIALLY_CLOUDY,
-		LH_INETWEATHER_BUBBLE_ICON_CLOUDY,
-		LH_INETWEATHER_BUBBLE_ICON_SCATTERED_SHOWERS,
-		LH_INETWEATHER_BUBBLE_ICON_SHOWERS,
-		LH_INETWEATHER_BUBBLE_ICON_SCATTERED_FLURRIES,
-		LH_INETWEATHER_BUBBLE_ICON_FLURRIES,
-		LH_INETWEATHER_BUBBLE_ICON_HEAVY_FLURRIES,
-		LH_INETWEATHER_BUBBLE_ICON_THUNDER_STORMS,
-	};
-
 	switch (weather_type)
 	{
 	case LH_INETWEATHER_WEATHERTYPES_0:
@@ -1060,7 +1045,7 @@ void LHInetWeather::ProcessWeather()
 				}
 				Paused = false;
 				Command = LH_INETWEATHER_COMMAND_NONE;
-				char16_t* helpText = HelpTextData::GetTextL(HELP_TEXT_WEATHER_INFO);
+				char16_t* helpText = HelpTextData::GetTextL(HELP_TEXT_DIALOG_WEATHER_INFO);
 				char      text[300];
 				char*     area = CurrentLocation.GetLocationAreaPtr();
 				if (area != NULL && strcmp(area, "") != 0 && strcmp(area, "(null)") != 0)

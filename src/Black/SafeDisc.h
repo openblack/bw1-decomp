@@ -115,7 +115,20 @@ struct SafeDiscMarker
 	uint32_t Pad[4];
 };
 
+struct SafeDiscRecord
+{
+	union {
+		uint8_t  Bytes[24];
+		uint32_t Words[6];
+	} Seed; // key material for the loader's section cipher
+	uint8_t  Pad0[4];
+	uint8_t  Checksum;
+	uint8_t  Unk1[91];
+	uint32_t Pad[3];
+};
+
 static_assert(sizeof(SafeDiscMarker) == 0x88, "Data type is of wrong size");
+static_assert(sizeof(SafeDiscRecord) == 0x84, "Data type is of wrong size");
 #elif defined(VERSION_BW1WCI)
 struct SafeDiscMarker
 {
@@ -129,7 +142,20 @@ struct SafeDiscMarker
 	uint32_t Pad[3];
 };
 
+struct SafeDiscRecord
+{
+	union {
+		uint8_t  Bytes[24];
+		uint32_t Words[6];
+	} Seed; // key material for the loader's section cipher
+	uint8_t  Pad0[4];
+	uint8_t  Checksum;
+	uint8_t  Unk1[95];
+	uint32_t Pad[2];
+};
+
 static_assert(sizeof(SafeDiscMarker) == 0x88, "Data type is of wrong size");
+static_assert(sizeof(SafeDiscRecord) == 0x84, "Data type is of wrong size");
 #endif
 
 #define CHECK_PROTECTION_MARKER(marker)                                                                                \

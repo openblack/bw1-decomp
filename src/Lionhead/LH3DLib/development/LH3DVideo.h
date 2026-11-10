@@ -49,4 +49,21 @@ public:
 	static void Setfillcol(long colour);
 };
 
+// BW1W120 00ef64f8 BW1M119 013421a8 (LHCombined Release)
+extern LH3DVideo::Col lgreen;
+// BW1W120 00ef64fc BW1M119 013421ac (LHCombined Release)
+extern LH3DVideo::Col lred;
+// BW1W120 00ef6500 BW1M119 013421b0 (LHCombined Release)
+extern LH3DVideo::Col grey;
+// BW1W120 00ef6504 BW1M119 013421b4 (LHCombined Release)
+extern LH3DVideo::Col white;
+// BW1W120 00ef6514 BW1M119 013421c4 (LHCombined Release)
+extern LH3DVideo::Col yellow;
+// BW1W120 00ef6518 BW1M119 013421c8 (LHCombined Release)
+extern LH3DVideo::Col green;
+// BW1W120 00ef651c BW1M119 013421cc (LHCombined Release)
+extern LH3DVideo::Col red;
+// BW1W120 00ef6520 BW1M119 013421d0 (LHCombined Release)
+extern LH3DVideo::Col black;
+
 #endif /* BW1_DECOMP_LH3D_VIDEO_INCLUDED_H */

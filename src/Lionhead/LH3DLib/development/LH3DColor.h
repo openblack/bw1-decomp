@@ -7,11 +7,15 @@
 // The alpha of an opaque colour.
 #define LH3D_COLOR_OPAQUE      0xff
 #define LH3D_COLOR_WHITE       0xffffffff
+#define LH3D_COLOR_BLACK       0xff000000
 #define LH3D_COLOR_CHANNEL_MAX 0xff
 #define LH3D_COLOR_RGB_MASK    0xffffff
 
 // Halves each colour channel and sets the alpha to 0x20.
 #define LH3D_HALF_COLOR(color) ((((color) & 0xfefefe) | 0x40000000) >> 1)
+
+// Halves each colour channel and makes the colour opaque.
+#define LH3D_HALF_COLOR_OPAQUE(color) ((((color) >> 1) & 0x7f7f7f) | 0xff000000)
 
 struct LH3DColor
 {

@@ -51,6 +51,10 @@ struct ControlMap
 	bool32_t IsActionPerformed(BINDABLE_ACTIONS action);
 	// BW1W120 00471940 BW1M119 01094b00
 	bool32_t IsMouseButtonAssignedToAction(BINDABLE_ACTIONS action);
+	// BW1W120 00470a00 BW1M119 011d2290
+	int GetActionFromKeys(LH_KEY key, LH_KEY modifier_key);
+	// BW1W120 00470a60 BW1M119 010a0f00
+	int IsMouseBeingUsed(ControlMouse::MOUSE_CONTROL_BUTTON button);
 };
 
 #ifdef VERSION_BW1WCI

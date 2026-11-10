@@ -268,14 +268,14 @@ void GInterface::SetRClickedObject(Object* object)
 	LastRClickedTurn = GGame::g_game->data.GetGameTurn();
 }
 
-bool32_t GInterface::GetSpellSeedInHand()
+SpellSeed* GInterface::GetSpellSeedInHand()
 {
 	Object* object = status->GetFirstObjectInCurrentHand();
 	if (object)
 	{
 		return object->IsSpellSeed();
 	}
-	return false;
+	return NULL;
 }
 
 bool32_t GInterface::InterfaceActionSetBubbleGrip()

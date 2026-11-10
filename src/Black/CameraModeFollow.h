@@ -23,13 +23,17 @@ public:
 	float             Pitch;
 	float             ViewingDistance;
 	float             ZoomTimeScale;
-	bool32_t          RelativeHeading;
-	bool32_t          UseOffsets;
-	LHPoint           FocusOffset;
-	LHPoint           OriginOffset;
-	int32_t           KeyMoveX;
-	int32_t           KeyMoveY;
-	bool32_t          AutoReposition;
+#ifdef VERSION_BW1WCI
+	int RelativeHeading;
+#else
+	bool32_t RelativeHeading;
+#endif
+	bool32_t UseOffsets;
+	LHPoint  FocusOffset;
+	LHPoint  OriginOffset;
+	int32_t  KeyMoveX;
+	int32_t  KeyMoveY;
+	bool32_t AutoReposition;
 
 	// Override methods (the inline ones are emitted in the order they are declared here)
 
@@ -92,6 +96,10 @@ public:
 	void Set(GameThingWithPos* target, float viewing_distance);
 	// BW1W120 0044bb30 BW1M119 011a87c0
 	void SetToDestinationPosition();
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 0150c170
+	float GetHeading() const { return Heading; }
+#endif
 };
 static_assert(sizeof(CameraModeFollow) == 0x48, "Data type is of wrong size");
 

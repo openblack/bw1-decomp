@@ -11,8 +11,8 @@
 class Archive;
 class BaseInfo;
 struct LHPoint;
-struct UniqueKeyHeap;
-struct HeapStore;
+class UniqueKeyHeap;
+class HeapStore;
 
 class Base
 {

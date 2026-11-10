@@ -39,11 +39,6 @@
 	(condition)
 
 #ifdef VERSION_BW1WCI
-#define SCRIPT_TEXT_ID_LIMIT HELP_TEXT_LAST
-#else
-#define SCRIPT_TEXT_ID_LIMIT 6974
-#endif
-#ifdef VERSION_BW1WCI
 #define SCRIPT_ANIM_LIMIT MAX_COUNT_3D_ANIMS
 #else
 #define SCRIPT_ANIM_LIMIT 441
@@ -223,18 +218,24 @@ class Spell;
 
 struct ScriptObjectDispatch
 {
-	void*(__cdecl* FindAtPos)(const MapCoords&, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                          SCRIPT_OBJECT_TYPE, uint32_t); /* 0x00 */
-	void*(__cdecl* FindNearPos)(const MapCoords&, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                            SCRIPT_OBJECT_TYPE, uint32_t, float); /* 0x04 */
-	void*(__cdecl* FindIn)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                       SCRIPT_OBJECT_TYPE, uint32_t); /* 0x08 */
-	void*(__cdecl* FindInNear)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                           SCRIPT_OBJECT_TYPE, uint32_t, const MapCoords&, float); /* 0x0c */
-	void*(__cdecl* FindInNotNear)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                              SCRIPT_OBJECT_TYPE, uint32_t, const MapCoords&, float); /* 0x10 */
-	void*(__cdecl* Loop)(GameThingWithPos*, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                     SCRIPT_OBJECT_TYPE, uint32_t); /* 0x14 */
+	typedef int(__cdecl* CheckFunction)(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	typedef void*(__cdecl* FindAtPosFunction)(const MapCoords& pos, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                                          uint32_t subtype);
+	typedef void*(__cdecl* FindNearPosFunction)(const MapCoords& pos, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                                            uint32_t subtype, float radius);
+	typedef void*(__cdecl* FindInFunction)(GameThingWithPos* container, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                                       uint32_t subtype);
+	typedef void*(__cdecl* LoopFunction)(GameThingWithPos* container, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                                     uint32_t subtype);
+
+	FindAtPosFunction   FindAtPos;   /* 0x00 */
+	FindNearPosFunction FindNearPos; /* 0x04 */
+	FindInFunction      FindIn;      /* 0x08 */
+	void*(__cdecl* FindInNear)(GameThingWithPos* container, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                           uint32_t subtype, const MapCoords& pos, float radius); /* 0x0c */
+	void*(__cdecl* FindInNotNear)(GameThingWithPos* container, CheckFunction check, SCRIPT_OBJECT_TYPE type,
+	                              uint32_t subtype, const MapCoords& pos, float radius); /* 0x10 */
+	LoopFunction Loop;                                                                   /* 0x14 */
 };
 
 class GScript : public Base
@@ -261,8 +262,12 @@ public:
 #ifdef VERSION_BW1WCI
 	bool32_t CountDownTimerCountsUp;
 #endif
-	uint32_t  CountDownTimerRemaining;
-	bool32_t  CountDownTimerVisible;
+	uint32_t CountDownTimerRemaining;
+#ifdef VERSION_BW1WCI
+	SCRIPT_COUNTDOWN_DRAW CountDownTimerDraw;
+#else
+	bool32_t CountDownTimerVisible;
+#endif
 	MapCoords FindPos;
 	float     FindRadius;
 #ifdef VERSION_BW1WCI
@@ -824,6 +829,7 @@ public:
 	// BW1WCI 0070f8d0 BW1MCI119 0152fd60
 	static void SetStateWithParams();
 #endif
+#ifndef VERSION_BW1WCI
 	// BW1W120 006f8460 BW1M119 014ff4a0
 	static bool32_t SetStatePosLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f84c0 BW1M119 014ff2b0
@@ -836,6 +842,7 @@ public:
 	static bool32_t SetStateULLoopFunction(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f8770 BW1M119 014fedd0
 	static void SetScriptStateULData();
+#endif
 	// BW1W120 006f88a0 BW1M119 0104d150
 	static void GetPosition();
 	// BW1W120 006f8a00 BW1M119 014fea60
@@ -1347,11 +1354,15 @@ public:
 	static void SetCountDownTimerDraw();
 	// BW1WCI 0072c890 BW1MCI119 0153ed60
 	static void GetCountDownTimerTime();
+	// BW1WCI 0072c380 BW1MCI119 0153efa0
+	static void DrawStopWatch(SCRIPT_COUNTDOWN_DRAW draw, float time, unsigned long colour, float size);
 #endif
 	// BW1W120 0070d360 BW1M119 01506f20
 	static void DeleteAllScriptCreatedGameThings();
 	// BW1W120 0070dae0 BW1M119 01044780
 	static void GetProperty();
+	// BW1W120 0070e820 BW1M119 015086e0
+	static void SetProperty(GameThingWithPos* thing, SCRIPT_OBJECT_PROPERTY_TYPE property, float value);
 	// BW1W120 0070f350 BW1M119 01508640
 	static bool32_t SetPropertyLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 0070f380 BW1M119 015084c0
@@ -1360,6 +1371,8 @@ public:
 	static void ChangeObjectProperties();
 	// BW1W120 0070f7f0 BW1M119 0101f560
 	static void PlaySoundEffect();
+	// BW1W120 0070f8e0 BW1M119 0150a850
+	static void SaySoundEffect(unsigned long text, bool32_t positional, bool32_t extra, LHPoint* pos);
 	// BW1W120 0070f9b0 BW1M119 0150a780
 	static void SaySoundEffect();
 	// BW1W120 0070fa50 BW1M119 0150a670
@@ -1466,10 +1479,12 @@ public:
 	static void GetCountDownTimer();
 	// BW1W120 007111d0 BW1M119 0150d110
 	static void CountDownTimerExists();
+#ifndef VERSION_BW1WCI
 	// BW1W120 007111f0 BW1M119 0150d0c0
 	static void HideCountDownTimer();
 	// BW1W120 00711210 BW1M119 0150d070
 	static void RevealCountDownTimer();
+#endif
 	// BW1W120 00711230 BW1M119 0150cfd0
 	static void GetMoonPercentage();
 	// BW1W120 00711280 BW1M119 01006d90
@@ -1515,8 +1530,17 @@ public:
 	float GetLocalVariableValue(char* script_name, char* name);
 	// BW1W120 006eb7e0 BW1M119 014dde40
 	bool32_t StartScriptStoppingHelpScriptsInControl(char* name);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0072c310 BW1MCI119 0153f620
+	void ProcessTimer();
+	// BW1WCI 0072c360 BW1MCI119 inlined
+	bool32_t IsCountDownTimerDrawn();
+	// BW1WCI 0072c790 BW1MCI119 0153ee60
+	void DrawCountDownTimer();
+#else
 	// BW1W120 006eb930 BW1M119 inlined
 	void ProcessCountDownTimer();
+#endif
 	// BW1W120 006eb980 BW1M119 inlined
 	void SaveState(char* path);
 #ifndef VERSION_BW1W100
@@ -1766,8 +1790,13 @@ public:
 	                                                      uint32_t subtype);
 	// BW1W120 0070cee0 BW1M119 01003350
 	static uint32_t FindFreeScriptGameThingSlot();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0072c2c0 BW1MCI119 0153f690
+	void InitialiseCountDownTimer(float seconds, bool32_t counts_up);
+#else
 	// BW1W120 006eb8b0 BW1M119 014ddc30
 	void InitialiseCountDownTimer(float seconds);
+#endif
 	// BW1W120 006eb890 BW1M119 014ddd10
 	static void SetPointOutOfWorld(LHPoint* point);
 	// BW1W120 006efd60 BW1M119 014e54e0
@@ -1779,11 +1808,11 @@ public:
 	// BW1W120 0070cf50 BW1M119 01507ad0
 	static unsigned long FindScriptGameThing(GameThingWithPos* thing);
 	// BW1W120 00710350 BW1M119 0150caf0
-	HELP_SPIRIT_TYPE ConvertScriptSpiritToHelpSpirit(SCRIPT_SPIRIT_TYPE spirit);
+	static HELP_SPIRIT_TYPE ConvertScriptSpiritToHelpSpirit(SCRIPT_SPIRIT_TYPE spirit);
 	// BW1W120 0070f600 BW1M119 010021c0
 	static void ReleaseScriptThingIntoTheGame(GameThingWithPos* thing, unsigned long slot, bool32_t force);
 	// BW1W120 006f0430 BW1M119 014e4880
-	void DetachFromDance(uint32_t slot, Dance* dance);
+	static void DetachFromDance(unsigned long thing_id, Dance* dance);
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(GScript) == 0xd8, "Data type is of wrong size");

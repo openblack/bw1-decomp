@@ -162,6 +162,8 @@ struct TbIME
 
 	// BW1W120 007f42b0 BW1M119 01171cb0 (LHCombined Release)
 	static int ConvertCHAR8toCHAR16(char c);
+	// BW1W120 007f4300 BW1M119 01171c70 (LHCombined Release)
+	static void DisableDefaultIme(void* window);
 
 	// Non-virtual methods
 
@@ -234,7 +236,7 @@ struct LHSys
 	HWND            Window;       /* 0x70b4 the game's top-level window */
 	uint8_t         field_0x70b8; /* 256-colour failure marker (byte store in LHScreen::ChangeMode) */
 	uint8_t         field_0x70b9;
-	uint8_t         WindowedMode;       /* 0x70ba */
+	bool            TurnOffMouseMove;   /* 0x70ba */
 	uint8_t         AltTabPending;      /* 0x70bb */
 	int             AppMinimized;       /* 0x70bc */
 	int             AppMinimizedByUs;   /* 0x70c0 */
@@ -296,6 +298,13 @@ static_assert(offsetof(LHSys, LastKey) == 0x70d0, "LHSys LastKey offset changed"
 #endif
 #endif
 
+// BW1W120 007db910
+bool AnyWindowMessages();
+// BW1W120 007db940 BW1M119 0115fdb0 (LHCombined Release)
+void ProcessWindowMessages();
+// BW1W120 007dbed0
+void LHTerminate();
+
 inline void LHPixel16::Set(LHColor color)
 {
 	value = ((uint8_t)(color.GetB() >> LHSys::GetScreen().GetBlueScale()) << LHSys::GetScreen().GetBlueShift()) +
@@ -310,9 +319,9 @@ inline LHPixel16::LHPixel16(LHColor color)
 
 inline void LHPixel16::Set(uint8_t red, uint8_t green, uint8_t blue)
 {
-	value = ((uint8_t)(red >> LHSys::GetScreen().GetRedScale()) << LHSys::GetScreen().GetRedShift()) +
-	        ((uint8_t)(green >> LHSys::GetScreen().GetGreenScale()) << LHSys::GetScreen().GetGreenShift()) +
-	        ((uint8_t)(blue >> LHSys::GetScreen().GetBlueScale()) << LHSys::GetScreen().GetBlueShift());
+	value = ((blue >> LHSys::GetScreen().GetBlueScale()) << LHSys::GetScreen().GetBlueShift()) +
+	        ((green >> LHSys::GetScreen().GetGreenScale()) << LHSys::GetScreen().GetGreenShift()) +
+	        ((red >> LHSys::GetScreen().GetRedScale()) << LHSys::GetScreen().GetRedShift());
 }
 
 inline uint8_t LHPixel16::GetR()

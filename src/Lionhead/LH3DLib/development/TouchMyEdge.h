@@ -24,8 +24,7 @@
 
 struct LH3DSprite;
 
-// The rings rising from the edge of an influence circle where the hand crosses
-// it.
+// The rings rising from the edge of an influence circle where the hand crosses it.
 class TouchMyEdge
 {
 public:

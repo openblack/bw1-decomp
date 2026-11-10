@@ -6,6 +6,9 @@
 
 struct Settings
 {
+	// BW1W120 00d9927c
+	static char ConfigFile[0x104];
+
 	char QuestPath[0x104];
 #ifdef VERSION_BW1WCI
 	char MapPath[0x104];

@@ -16,6 +16,7 @@ class FireGraphic;
 class GPlayer;
 class GameOSFile;
 struct LHPoint;
+struct MapCoords;
 class Object;
 
 class FireEffect : public GameThing
@@ -37,6 +38,16 @@ public:
 	static void SetTemperature(Object* object, float temperature, GameThing* source);
 	// BW1W120 0072eec0 BW1M119 01157f80
 	static float ConvertTemperatureToDamage(Object* object, float temperature);
+	// BW1W120 0072ecf0 BW1M119 011582b0
+	static FireEffect* Create(Object* object, GPlayer* player, GameThing* source);
+	// BW1W120 007308f0 BW1M119 01154bb0
+	static void CopyFromObjectToObject(Object* from, Object* to);
+	// BW1W120 00730160 BW1M119 01156200
+	static float ConvertToTemperature(EffectValues& values);
+	// BW1W120 inlined BW1M119 01157010
+	static float ConvertTempDiffToHeatValue(float difference);
+	// BW1W120 00730850 BW1M119 01155130
+	static void DebugDraw();
 
 	float                  temperature;
 	float                  temperature2;
@@ -121,6 +132,18 @@ public:
 	bool32_t RemoveFromFireGroup();
 	// BW1W120 0072fbe0 BW1M119 01156ae0
 	void AddToMyFireGroup(FireEffect* fire);
+	// BW1W120 0072fd20 BW1M119 01156950
+	void ChangeHeadTo(FireEffect* head);
+	// BW1W120 0072f930 BW1M119 01157070
+	void CleanUpPointersToMe();
+	// BW1W120 00730630 BW1M119 01155630
+	void AddHeat(float heat, float max_change);
+	// BW1W120 0072f980 BW1M119 01156ca0
+	void ApplyHeatToCloseObject(Object* object);
+	// BW1W120 0072fef0 BW1M119 01156710
+	void GetFireCentre(MapCoords* centre);
+	// BW1W120 0072ff70 BW1M119 01156560
+	float GetFireHeight();
 };
 
 #endif /* BW1_DECOMP_FIRE_EFFECT_INCLUDED_H */

@@ -16,8 +16,7 @@
 struct LH3DAnim;
 class LH3DObject;
 
-// The ghost animations; the DEAD1 ones follow a villager that died playing
-// M_P_DEAD1.
+// The ghost animations; the DEAD1 ones follow a villager that died playing M_P_DEAD1.
 enum EVIL_OR_ANGEL_ANIM
 {
 	EVIL_OR_ANGEL_ANIM_ANGEL,

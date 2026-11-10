@@ -432,7 +432,7 @@ bool32_t GameThingWithPos::Load(GameOSFile& file)
 		file.ReadSafe(Pos);
 		file.ReadSafe(Flags);
 
-		Flags &= ~GAME_THING_WITH_POS_FLAG_0x00000100;
+		Flags &= ~GAME_THING_WITH_POS_FLAG_IN_DRAW_LIST;
 		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_MAP) != 0)
 		{
 			Flags &= ~GAME_THING_WITH_POS_FLAG_IN_MAP;

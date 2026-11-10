@@ -38,15 +38,7 @@ public:
 	uint32_t            field_0x90;
 	uint32_t            field_0x94;
 	uint32_t            field_0x98;
-	float               field_0x9c;
-	float               field_0xa0;
-	float               field_0xa4;
-	float               field_0xa8;
-	float               field_0xac;
-	float               field_0xb0;
-	float               field_0xb4;
-	float               field_0xb8;
-	float               field_0xbc;
+	float               field_0x9c[0x9];
 	uint8_t             field_0xc0;
 
 	// Override methods

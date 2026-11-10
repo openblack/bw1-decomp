@@ -78,8 +78,7 @@ public:
 };
 static_assert(sizeof(Fish) == 0x24, "Data type is of wrong size");
 
-// A shoal of fish swimming around its centre, which can be herded into a net to
-// complete a challenge.
+// A shoal of fish swimming around its centre, which can be herded into a net to complete a challenge.
 class FishRush
 {
 public:

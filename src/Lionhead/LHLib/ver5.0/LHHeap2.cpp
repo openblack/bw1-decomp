@@ -56,11 +56,6 @@ void Heap::SetToZero()
 	Allocates = 1;
 }
 
-unsigned int Heap::GetActualMemoryRequired(unsigned int size) const
-{
-	return size;
-}
-
 Heap* Heap::Create(unsigned int size, unsigned int a2)
 {
 	unsigned char* pool = NEW(62) unsigned char[size];
@@ -473,11 +468,6 @@ void UniqueKeyHeap::SetToZero()
 {
 	Heap::SetToZero();
 	NextUniqueId = 1;
-}
-
-unsigned int UniqueKeyHeap::GetActualMemoryRequired(unsigned int size) const
-{
-	return size + 4;
 }
 
 UniqueKeyHeap* UniqueKeyHeap::Create(unsigned int size, unsigned int a2)

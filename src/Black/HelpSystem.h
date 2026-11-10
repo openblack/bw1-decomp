@@ -7,8 +7,9 @@
 
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT_NARRATOR */
 
-#include <chlasm/Enum.h> /* For enum HELP_SPIRIT_TYPE */
-#include <re_common.h>   /* For bool32_t */
+#include <chlasm/Enum.h>         /* For enum HELP_SPIRIT_TYPE */
+#include <chlasm/HelpDudeAnim.h> /* For enum ANIMLIST */
+#include <re_common.h>           /* For bool32_t */
 
 #include "Base.h"            /* For struct Base */
 #include "BindableAction.h"  /* For enum BINDABLE_ACTIONS */
@@ -298,8 +299,20 @@ class GameOSFile;
 struct HelpDudeControl;
 class HelpSpirit;
 class HelpText;
+struct LHCoord;
+struct LHPoint;
 class Object;
 struct MapCoords;
+
+#define HELP_SYSTEM_HISTORY_SIZE 1024
+
+struct HelpHistoryEntry
+{
+	unsigned long         Text;
+	HELP_TEXT_INTERACTION Interaction;
+	float                 Number;
+	HELP_TEXT_NARRATOR    Narrator;
+};
 
 class HelpSystem : public Base
 {
@@ -338,9 +351,10 @@ public:
 	uint32_t                field_0x57c;
 	uint32_t                field_0x580;
 	uint32_t                field_0x584[0x6];
-	uint8_t                 field_0x59c[0x4028];
-	uint32_t                field_0x45c4;
-	uint32_t                NumHistoryEntries;
+	uint8_t                 field_0x59c[0x28];
+	HelpHistoryEntry        History[HELP_SYSTEM_HISTORY_SIZE]; /* 0x5c4 */
+	int                     HistoryHead;
+	int                     NumHistoryEntries;
 	uint32_t                DialogueControlTask;
 	uint32_t                field_0x45d0;
 	uint16_t                NumBanterSetsSent;
@@ -411,8 +425,36 @@ public:
 	bool32_t IsDialogueControlled() const;
 	// BW1W120 005c6550 BW1M119 01358940
 	bool32_t IsSpiritEjected(HELP_SPIRIT_TYPE type);
+	// BW1W120 005c6570 BW1M119 013588c0
+	void SpiritEject(HELP_SPIRIT_TYPE type, bool32_t appear);
+	// BW1W120 005c6590 BW1M119 01358830
+	void SpiritPoint(HELP_SPIRIT_TYPE type, const LHPoint& point, bool32_t in_world) const;
+	// BW1W120 005c65b0 BW1M119 013587a0
+	void SpiritPoint(HELP_SPIRIT_TYPE type, const LHCoord& coord) const;
+	// BW1W120 005c65d0 BW1M119 01358710
+	void SpiritLook(HELP_SPIRIT_TYPE type, const LHPoint& point) const;
+	// BW1W120 005c65f0 BW1M119 01358680
+	void SpiritLook(HELP_SPIRIT_TYPE type, GameThingWithPos* thing) const;
+	// BW1W120 005c6610 BW1M119 01358600
+	void StopSpiritLooking(HELP_SPIRIT_TYPE type) const;
+	// BW1W120 005c6630 BW1M119 01358580
+	void StopSpiritPointing(HELP_SPIRIT_TYPE type) const;
+	// BW1W120 005c6650 BW1M119 013584f0
+	void SpiritPoint(HELP_SPIRIT_TYPE type, GameThingWithPos* thing, bool32_t in_world) const;
 	// BW1W120 005c6670 BW1M119 01358470
 	void SpiritHome(HELP_SPIRIT_TYPE type, bool32_t disappear) const;
+	// BW1W120 005c6690 BW1M119 013583e0
+	void SpiritPlayAnim(HELP_SPIRIT_TYPE type, float x, float y, ANIMLIST anim, float speed) const;
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005dbcc0 BW1MCI119 0137acf0
+	void SpiritPlayAnimInWorld(HELP_SPIRIT_TYPE type, const LHPoint& point, ANIMLIST anim, float speed);
+#endif
+	// BW1W120 005c66c0 BW1M119 01358360
+	bool32_t IsSpiritPlayingAnim(HELP_SPIRIT_TYPE type) const;
+	// BW1W120 005c66e0 BW1M119 013582e0
+	void SpiritCling(HELP_SPIRIT_TYPE type, float x, float y) const;
+	// BW1W120 005c6700 BW1M119 01358260
+	void SpiritFly(HELP_SPIRIT_TYPE type, float x, float y) const;
 	// BW1W120 inlined BW1M119 0108fdf0
 	int GetHelpLevel() const
 	{
@@ -455,12 +497,20 @@ public:
 	// BW1W120 005c64e0 BW1M119 013589c0
 	bool32_t IsTextRead();
 	void     Draw3D(); // 005c59a0
+	// BW1W120 005c6790 BW1M119 01358050
+	bool32_t DialogueControlRequest(unsigned long task);
 	// BW1W120 005c67e0 BW1M119 01357fe0
 	void ClearDialogueControl();
 	// BW1W120 005c6800 BW1M119 010a2440
 	void ReleaseDialogueControl(unsigned long task);
 	// BW1W120 005c68a0 BW1M119 01357f40
 	HelpSpirit* GetSpirit(HELP_SPIRIT_TYPE type) const;
+	// BW1W120 005c6e20 BW1M119 013573b0
+	static HELP_SPIRIT_TYPE GetSpiritWhoTalks(unsigned long text);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005dbfe0 BW1MCI119 0137a560
+	void ClearHelpTextSoundAndText();
+#endif
 	// BW1W120 005c6ad0 BW1M119 01357c40
 	void SetWideScreen(bool32_t widescreen, uint32_t task);
 	// BW1W120 005c6b60 BW1M119 01020020
@@ -469,10 +519,9 @@ public:
 	bool32_t IsInWideScreenTransition() const;
 	// BW1W120 inlined BW1M119 010867f0
 	int GetWideScreenControl() const { return WideScreenControl; }
-#ifdef VERSION_BW1WCI
+	// BW1W120 inlined BW1M119 inlined
 	// BW1WCI inlined BW1MCI119 01522790
-	bool32_t IsInScriptWideScreen() const { return WideScreen && WideScreenControl; }
-#endif
+	bool32_t IsInScriptWideScreen() const { return WideScreen && GetWideScreenControl(); }
 	// BW1W120 005c8280 BW1M119 0135a370
 	void TriggerCategory(HELP_SET_CATEGORY category);
 	// BW1W120 005c8330 BW1M119 0135ab30
@@ -505,6 +554,8 @@ public:
 	void GetHelpQueryAtPosition(const MapCoords& coords);
 	// BW1W120 005c98e0 BW1M119 0135bea0
 	void HelpQuery();
+	// BW1W120 005c5f50 BW1M119 01359030
+	HelpHistoryEntry* GetFromHistory(int index);
 	// BW1W120 inlined BW1M119 014ffc90
 	HelpText* GetHelpText() { return help_text; }
 };

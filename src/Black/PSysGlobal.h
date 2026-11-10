@@ -34,6 +34,8 @@ public:
 	// BW1W120 00681260 BW1M119 013fe770
 	static void ExplodeObjectMesh(Object* object, const LHPoint& point, float force, float unused,
 	                              bool use_second_rule);
+	// BW1W120 0068f400 BW1M119 01418cd0
+	static void StartCameraShake(LHPoint pos, float radius, float amplitude, float duration);
 	// BW1W120 0068f450 BW1M119 01418b70
 	static void StartAVISequence(SCRIPT_AVI_SEQUENCE sequence);
 	// BW1W120 0068f4f0 BW1M119 01418af0

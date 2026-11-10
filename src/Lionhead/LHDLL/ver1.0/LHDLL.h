@@ -7,6 +7,7 @@
 
 // Forward Declares
 
+class LHNetEvent;
 class LHTransport;
 
 class LHDLL
@@ -40,6 +41,10 @@ public:
 	LH_RETURN Load(void (*callback)(void*));
 	// BW1W120 007add80 BW1M119 010da050 (LHCombined Release)
 	LH_RETURN UnLoad();
+	// BW1W120 007adec0 BW1M119 010d9fe0 (LHCombined Release)
+	LHNetEvent* Read(unsigned long timeout);
+	// BW1W120 007adfd0 BW1M119 010d9f60 (LHCombined Release)
+	LH_RETURN Write(LHNetEvent* net_event);
 	// BW1W120 007ae0e0 BW1M119 010d9ee0 (LHCombined Release)
 	LH_RETURN Initialise();
 	// BW1W120 007ae2c0 BW1M119 010d9e60 (LHCombined Release)

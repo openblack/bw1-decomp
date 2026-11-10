@@ -41,10 +41,8 @@
 #define TEXT_RGB        255, 255, 255 // Tip text, video and "please wait" text
 #define TEXT_SHADOW_RGB 0, 0, 0
 
-// Tip n is help text TIP_HELP_TEXT_BASE + n, for n in 1..NUM_TIPS. HelpTextEnums.h comes from a later
-// build whose HELP_TEXT_TOTD_* entries sit elsewhere, so its values do not apply here.
-#define NUM_TIPS           34
-#define TIP_HELP_TEXT_BASE 5151
+// Tip n is help text HELP_TEXT_TOTD_01 + n, for n in 1..NUM_TIPS.
+#define NUM_TIPS 34
 
 static int LoadingBarDuration = 15000;
 bool       LoadingScreen::Active = true;
@@ -137,7 +135,7 @@ void DrawLoading(float fade, float progress)
 			int alphaByte = alpha * 255.0f;
 
 			LH3DRender::g_mode_cleaning = LH3D_CLEANING_MODE_SCREEN;
-			LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_0x01, 0);
+			LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_HIDDEN, 0);
 			GatheringText* font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
 			LH3DRender::StartFrame();
 			SetupThing::DrawAlpha = alphaByte;
@@ -334,7 +332,7 @@ void StartTipOfTheDayText()
 		MakeTipVideo();
 	}
 	TipShowing = true;
-	TipHelpTextIndex = TipNumber + TIP_HELP_TEXT_BASE;
+	TipHelpTextIndex = TipNumber + HELP_TEXT_TOTD_01;
 	wcscpy(TipText, HelpTextDataBase::HelpTextDatabase.GetHelpText(TipHelpTextIndex));
 	for (int i = 0; i < (int)wcslen(TipText); i++)
 	{
@@ -429,7 +427,7 @@ void RenderLoadingFrame(bool flip)
 					                    0);
 					SetupThing::DrawLine(-1, top, screenWidth, top, PLEASE_WAIT_LINE_COLOUR, 0, 0.0f, 100.0f);
 					SetupThing::DrawLine(-1, bottom, screenWidth, bottom, PLEASE_WAIT_LINE_COLOUR, 0, 0.0f, 100.0f);
-					char16_t* text = HelpTextDataBase::HelpTextDatabase.GetHelpText(6775);
+					char16_t* text = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_85);
 					SetupThing::DrawTextWrap(101, 201, 701, 401, 401, true, text, GetBigTextSize(),
 					                         &LH3DColor(TEXT_SHADOW_RGB, 255), true, false);
 					SetupThing::DrawTextWrap(100, 200, 700, 400, 400, true, text, GetBigTextSize(),

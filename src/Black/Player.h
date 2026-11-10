@@ -378,6 +378,8 @@ public:
 	float GetAllyValue(GPlayer* other);
 	// BW1W120 0064d6a0 BW1M119 0106ba30
 	float GetAlignmentValue();
+	// BW1W120 inlined BW1M119 010694c0
+	float GetTribePowerValue(unsigned long tribe);
 	// BW1W120 0064d6b0 BW1M119 01497480
 	MagicTeleport* FindTeleportBetween(MapCoords& from, MapCoords& to, float max_distance);
 	// BW1W120 0064d750 BW1M119 01035c90

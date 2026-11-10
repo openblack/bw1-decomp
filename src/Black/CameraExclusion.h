@@ -41,6 +41,8 @@ struct CameraExclusion
 	static CameraExclusion* ExclusionList;
 	// BW1W120 009ce6b0
 	static bool32_t UseExclusions;
+	// BW1W120 00c5e13c
+	static float DistanceFromInclusionEdge;
 	// BW1W120 009ce618
 	static float Margin;
 
@@ -71,6 +73,8 @@ struct CameraExclusion
 	static void LoadExclusionFile(GameOSFile& file);
 	// BW1W120 00455a10 BW1M119 011afbf0
 	static void SaveExclusionFile(GameOSFile& file);
+	// BW1W120 inlined BW1M119 014e0350
+	static float GetDistanceFromInclusionEdge() { return DistanceFromInclusionEdge; }
 	// BW1W120 00455d50 BW1M119 01000050
 	static bool InsideExclusion(LHPoint point);
 	// BW1W120 00455e20 BW1M119 01051ac0

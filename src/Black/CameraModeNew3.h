@@ -150,7 +150,7 @@ public:
 	LHCoord                  field_0x2dc;
 	float                    HeadingDistance;
 	float                    IdleTime;
-	int                      field_0x2ec;
+	bool32_t                 InputDisabled;
 	int                      field_0x2f0;
 	CameraExclusion*         NearbyExclusions;
 	int                      field_0x2f8;
@@ -188,6 +188,10 @@ public:
 	static bool32_t EdgeScrollEnabled;
 	// BW1W120 00c5b0f4
 	static int ActiveTricons;
+	// BW1W120 00c5e158
+	static float StrafeSpeedX;
+	// BW1W120 00c5e15c
+	static float StrafeSpeedZ;
 
 	// Virtual methods
 
