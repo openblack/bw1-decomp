@@ -2359,6 +2359,7 @@ Black/ServerLandscapeMap.cpp:
 
 Black/Settings.cpp:
 	.text       start:0x0072FDB0 end:0x00730190
+	.data       start:0x00C943A8 end:0x00C94401
 	.bss        start:0x00E2065C end:0x00E20760
 
 Black/Setup.cpp:

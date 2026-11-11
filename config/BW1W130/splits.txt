@@ -2560,6 +2560,7 @@ Black/ServerLandscapeMap.cpp:
 Black/Settings.cpp:
 	.text       start:0x00719440 end:0x007195E0
 	.CRT$XCU    start:0x00A47734 end:0x00A47738 align:4
+	.data       start:0x00CA19F8 end:0x00CA1A1E
 	.bss        start:0x00E1A42C end:0x00E1A530
 
 Black/Setup.cpp:

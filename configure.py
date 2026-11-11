@@ -1408,7 +1408,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/SecretCreature.cpp", pch=False),
             GameCodeObject(Matching, "Black/Serialise.cpp"),
             GameCodeObject(Matching, "Black/ServerLandscapeMap.cpp", pch=False),
-            GameCodeObject(NonMatching, "Black/Settings.cpp"),
+            GameCodeObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "Black/Settings.cpp"),
             GameCodeObject(Matching, "Black/Setup.cpp"),
             GameCodeObject(Matching, "Black/SetupGameData.cpp"),
             GameCodeObject(NonMatching, "Black/SetupMultiplayerMain.cpp"),
