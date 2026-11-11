@@ -865,7 +865,7 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	GInterface* playerInterface = GGame::g_game->MyInterface();
 	CHand*      hand = playerInterface != NULL ? playerInterface->hand.Get() : NULL;
 	HelpSystem* helpSystem = GGame::g_game->help_system;
-	if ((helpSystem != NULL && helpSystem->field_0x45fc == 0) ||
+	if ((helpSystem != NULL && helpSystem->TooltipLevel == TOOLTIP_LEVEL_NONE) ||
 	    (hand != NULL && hand->HandStates.raw[hand->CurrentState] != NULL &&
 	     !hand->HandStates.raw[hand->CurrentState]->AllowCameraTricons()))
 	{
@@ -1162,7 +1162,7 @@ void CameraModeNew3::TriconDraw()
 		int         mouseType = GGame::g_game->control_map->IsMouseButtonAssignedToAction(BINDABLE_ACTION_MOVE)
 		                            ? HelpProfile::GetMouseType()
 		                            : 3;
-		CH_ANIMTYPE animType = CH_ANIMTYPE_0x0;
+		CH_ANIMTYPE animType = CH_ANIMTYPE_NONE;
 		if (GGame::g_game->help_system != NULL && (select || apply || both))
 		{
 			BINDABLE_ACTIONS action = both     ? BINDABLE_ACTION_ZOOM_ON
@@ -1173,7 +1173,7 @@ void CameraModeNew3::TriconDraw()
 			{
 				key = 0;
 				mouseType = HelpProfile::GetMouseType();
-				animType = CH_ANIMTYPE_0x0;
+				animType = CH_ANIMTYPE_NONE;
 			}
 		}
 		if (TextOnLeft)

@@ -6,9 +6,11 @@
 #include <uchar.h>  /* For char16_t */
 
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
+#include <re_common.h>         /* For bool32_t */
 
 enum BINDABLE_ACTIONS
 {
+	BINDABLE_ACTION_NONE = -1,
 	BINDABLE_ACTION_HELP = 0x0,
 	BINDABLE_ACTION_MOVE = 0x1,
 	BINDABLE_ACTION_ACTION = 0x2,
@@ -50,6 +52,13 @@ enum BINDABLE_ACTIONS
 	_BINDABLE_ACTIONS_COUNT
 };
 
+#define CONTROL_KEY_SCAN_CODE 0x7f
+#define CONTROL_KEY_EXTENDED  0x80
+#define CONTROL_KEY_DONT_CARE 0x100
+
+#define CONTROL_KEY_NAME_DATA(key)                                                                                     \
+	(((((key) & CONTROL_KEY_EXTENDED) | CONTROL_KEY_DONT_CARE) << 1 | ((key) & CONTROL_KEY_SCAN_CODE)) << 16)
+
 struct CMouse
 {
 	uint32_t field_0x0;
@@ -69,8 +78,22 @@ struct ControlKey
 	LH_KEY   keymod; /* 0x84 */
 	char16_t KeymodDisplayText[0x40];
 
+	// Static methods
+
+	// BW1W120 0046ee60 BW1M119 null
+	static void GetKeyName(long key_data, wchar_t* out_text, int length);
+
+	// Constructors
+
+	// BW1W120 0046ee30 BW1M119 011d48e0
+	ControlKey();
+	// BW1W120 0046ee50 BW1M119 011d4870
+	~ControlKey();
+
 	// Non-virtual methods
 
+	// BW1W120 0046efd0 BW1M119 011d4500
+	bool32_t IsAvailable();
 	// BW1W120 0046efe0 BW1M119 inlined
 	void GetDisplayText(char16_t* out_text);
 };

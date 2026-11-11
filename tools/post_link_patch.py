@@ -893,6 +893,15 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005957EB, call_rel32(0x004017F9)),  # GlobalGameList
     (0x00595ADA, call_indirect(0x008A903C)),  # GlobalGameList: __imp__DirectXSetupGetVersion
     (0x00595BFA, call_indirect(0x008A97C4)),  # GlobalGameList: __imp__LoadImageA@4
+    (0x005C533B, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C557B, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C577A, call_indirect(0x008A95B0)),  # HelpSystem: __imp__GetNextMail_LHMail__QAEPAULHMailEmail__XZ@4
+    (0x005C5EBB, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C633B, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C6B5B, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C6CEA, call_indirect(0x008A9978)),  # HelpSystem: __imp__CoFileTimeToDosDateTime@12
+    (0x005C7CEA, call_indirect(0x008A9004)),  # HelpSystem: __imp__RegCloseKey@4
+    (0x005C7F2A, call_indirect(0x008A98C8)),  # HelpSystem: __imp__mmioRead@4
     (0x005C81BB, call_rel32(0x004017F9)),  # HelpSystemBanter
     (0x005C81DB, call_rel32(0x004017F9)),  # HelpSystemBanter
     (0x005C896B, call_rel32(0x004017F9)),  # HelpSystemInfo

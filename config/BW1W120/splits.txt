@@ -1386,7 +1386,7 @@ Black/HelpEditor.cpp:
 	.text       start:0x005C42E0 end:0x005C4500
 	.CRT$XCU    start:0x009C6BA0 end:0x009C6BA4 align:4
 	.data       start:0x00BF0808 end:0x00BF0BB4
-	.bss        start:0x00D15AC8 end:0x00D16154
+	.bss        start:0x00D15AC8 end:0x00D160D0
 
 Black/HelpProfile.cpp:
 	.text       start:0x005C4500 end:0x005C49B0
@@ -1398,14 +1398,15 @@ Black/HelpSpirit.cpp:
 	.text       start:0x005C49B0 end:0x005C5320
 	.rdata      start:0x00915474 end:0x00915D18
 	.CRT$XCU    start:0x009C6BA8 end:0x009C6BB0 align:4
-	.data       start:0x00BF0C24 end:0x00BF0CC4
+	.data       start:0x00BF0C24 end:0x00BF0C44
 
 Black/HelpSystem.cpp:
 	.text       start:0x005C5320 end:0x005C81A0
 	.rdata      start:0x00915D18 end:0x0092A49C
+	.rdata$r    start:0x009B1350 end:0x009B13EC
 	.CRT$XCU    start:0x009C6BB0 end:0x009C6BC0 align:4
-	.data       start:0x00BF0CC4 end:0x00BF0CEC
-	.bss        start:0x00D16154 end:0x00D16388
+	.data       start:0x00BF0C44 end:0x00BF0CEC
+	.bss        start:0x00D160D0 end:0x00D16388
 
 Black/HelpSystemBanter.cpp:
 	.text       start:0x005C81A0 end:0x005C82D0

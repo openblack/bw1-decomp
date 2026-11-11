@@ -14,10 +14,13 @@
 #include "Base.h"            /* For struct Base */
 #include "BindableAction.h"  /* For enum BINDABLE_ACTIONS */
 #include "CameraHelpTypes.h" /* For enum CH_ANIMTYPE */
+#include "ScriptConstants.h" /* For enum SCRIPT_TASK */
 
 enum HELP_TEXT_INTERACTION
 {
 	HELP_TEXT_INTERACTION_NONE = 0x0,
+	HELP_TEXT_INTERACTION_CLICK_TO_CONTINUE = 0x1,
+	HELP_TEXT_INTERACTION_NO_SKIP = 0x2,
 };
 
 enum HELP_SET_CATEGORY
@@ -231,6 +234,34 @@ enum IMMERSION_LEVEL
 	IMMERSION_LEVEL_2 = 0x2,
 };
 
+enum HELP_LEVEL
+{
+	HELP_LEVEL_NONE = 0,
+	HELP_LEVEL_LOW = 1,
+	HELP_LEVEL_MEDIUM = 2,
+	HELP_LEVEL_FULL = 3,
+};
+
+enum TOOLTIP_LEVEL
+{
+	TOOLTIP_LEVEL_NONE = 0,
+	TOOLTIP_LEVEL_SOME = 1,
+	TOOLTIP_LEVEL_ALL = 2,
+};
+
+enum TEXT_DRAW
+{
+	TEXT_DRAW_NEVER = 0,
+	TEXT_DRAW_WHEN_NEEDED = 1,
+	TEXT_DRAW_ALWAYS = 2,
+};
+
+enum HELP_INTERFACE_RESULT
+{
+	HELP_INTERFACE_RESULT_CONTINUE = 1,
+	HELP_INTERFACE_RESULT_RESET = 20,
+};
+
 enum HELP_EVENT_TYPE
 {
 	HELP_EVENT_TYPE_0 = 0x0,
@@ -294,19 +325,30 @@ struct HelpSystemInterfaceMessageSet
 // Forward Declares
 
 struct Bubble;
+class GameThing;
 class GameThingWithPos;
 class GameOSFile;
 struct HelpDudeControl;
 class HelpSpirit;
 class HelpText;
+struct KMIcon;
 struct LHCoord;
 struct LHPoint;
+struct LHRegion;
 class Object;
 struct MapCoords;
 
-#define HELP_SYSTEM_HISTORY_SIZE 1024
+#define HELP_SYSTEM_HISTORY_SIZE    1024
+#define HELP_SYSTEM_NUM_TEXTS_SHOWN 6
 
-struct HelpHistoryEntry
+char* const TextDrawSetting = "TEXT_DRAW";
+char* const CreatureHelpSetting = "CREATURE_HELP";
+char* const HelpLevelSetting = "HELP_LEVEL";
+char* const ReadSpeedSetting = "READ_SPEED";
+char* const TooltipLevelSetting = "TOOLTIP_LEVEL";
+char* const TextTopToBottomSetting = "TEXT_TOPTOBOTTOM";
+
+struct HelpHistoryLine
 {
 	unsigned long         Text;
 	HELP_TEXT_INTERACTION Interaction;
@@ -323,16 +365,16 @@ public:
 	static bool32_t TextTopToBottom;
 	// BW1W120 005c78f0 BW1M119 01094c50
 	static bool32_t  ConvertActionToKMIcon(BINDABLE_ACTIONS action, CH_ANIMTYPE* anim_type, int* key, int* mouse_type);
-	HelpSpirit*      SpiritType2;
-	HelpSpirit*      SpiritType1;
-	HelpDudeControl* help_dude_control;
-	HelpText*        help_text;
-	Bubble*          bubble;
-	uint32_t         field_0x1c;
-	uint32_t         field_0x20;
-	uint32_t         icon0;
-	uint32_t         icon1;
-	uint32_t         icon2;
+	HelpSpirit*      EvilSpirit;
+	HelpSpirit*      GoodSpirit;
+	HelpDudeControl* DudeControl;
+	HelpText*        Text;
+	Bubble*          SpeechBubble;
+	uint32_t         BubbleText;
+	Object*          BubbleObject;
+	KMIcon*          ContinueIcon;
+	KMIcon*          KeyIcon;
+	KMIcon*          ToolTipIcon;
 #ifdef VERSION_BW1WCI
 	GameThingWithPos* ScriptTextThing;
 #endif
@@ -342,55 +384,48 @@ public:
 	uint32_t                MessageSetSentCount[HELP_SYSTEM_MESSAGE_SET_LAST];
 	HELP_SYSTEM_MESSAGE_SET LastMessageSet;
 	uint32_t                LastMessageTime;
-	bool32_t                FOVActive;
+	GameThing*              LastFOVObject;
 	Object*                 FOVObject;
 	uint16_t                field_0x56c;
-	uint8_t                 field_0x56e;
-	uint8_t                 field_0x56f;
 	float                   FOVDistance;
 	Object*                 LastObjectInHand;
 	bool32_t                FOVLocked;
-	uint32_t                field_0x57c;
-	uint32_t                field_0x580;
-	uint32_t                field_0x584[0x6];
-	uint8_t                 field_0x59c[0x28];
-	HelpHistoryEntry        History[HELP_SYSTEM_HISTORY_SIZE]; /* 0x5c4 */
+	bool32_t                ClickToContinue;
+	bool32_t                NoSkip;
+	uint32_t                TextsShown[HELP_SYSTEM_NUM_TEXTS_SHOWN];
+	SCRIPT_TASK             SavedDialogueControlTask;
+	uint32_t                SavedTextsShown[HELP_SYSTEM_NUM_TEXTS_SHOWN];
+	bool32_t                SavedClickToContinue;
+	bool32_t                SavedNoSkip;
+	bool32_t                TextSaved;
+	HelpHistoryLine         History[HELP_SYSTEM_HISTORY_SIZE]; /* 0x5c4 */
 	int                     HistoryHead;
 	int                     NumHistoryEntries;
-	uint32_t                DialogueControlTask;
-	uint32_t                field_0x45d0;
+	SCRIPT_TASK             DialogueControlTask;
+	uint32_t                LastControlId;
 	uint16_t                NumBanterSetsSent;
-	uint8_t                 field_0x45d6;
-	uint8_t                 field_0x45d7;
-	uint32_t                field_0x45d8;
-	uint32_t                field_0x45dc;
-	uint32_t                field_0x45e0;
-	uint32_t                field_0x45e4;
+	uint32_t                TextStartGameTurn;
+	uint32_t                EndReadGameTurn;
+	uint32_t                TextStartTime;
+	uint32_t                EndReadTime;
 	bool32_t                WideScreen;
-	int                     WideScreenControl;
-	float                   field_0x45f0;
-	int                     HelpLevel;
+	uint32_t                WideScreenControl;
+	float                   WideScreenTime;
+	HELP_LEVEL              HelpLevel;
 	bool32_t                HelpSystemOn;
-	uint32_t                field_0x45fc;
-	uint8_t                 field_0x4600;
-	uint8_t                 field_0x4601;
-	uint8_t                 field_0x4602;
-	uint8_t                 field_0x4603;
-	uint8_t                 field_0x4604;
-	uint8_t                 field_0x4605;
-	uint8_t                 field_0x4606;
-	uint8_t                 field_0x4607;
+	TOOLTIP_LEVEL           TooltipLevel;
+	IMMERSION_LEVEL         ImmersionLevel;
+	TEXT_DRAW               TextDraw;
 	bool32_t                CreatureHelp;
-	uint32_t                field_0x460c;
-	uint8_t                 field_0x4610;
-	uint8_t                 field_0x4611;
-	uint8_t                 field_0x4612;
-	uint8_t                 field_0x4613;
+	bool32_t                SkipNextClick;
+	float                   ReadSpeed;
 
 	// Override methods
 
-	// BW1W120 005c5430 BW1M119 01359c40
+	// BW1W120 005c5680 BW1M119 01359c40
 	virtual ~HelpSystem();
+	// BW1W120 005c5860 BW1M119 01359840
+	virtual void CallVirtualFunctionsForCreation();
 
 	// Constructors
 
@@ -425,6 +460,8 @@ public:
 	void SpiritInterruptTalking(HELP_SPIRIT_TYPE type, bool32_t disappear);
 	// BW1W120 005c6740 BW1M119 0100c950
 	bool32_t IsDialogueControlled() const;
+	// BW1W120 005c6530 BW1M119 inlined
+	bool32_t IsSpiritHome(HELP_SPIRIT_TYPE type);
 	// BW1W120 005c6550 BW1M119 01358940
 	bool32_t IsSpiritEjected(HELP_SPIRIT_TYPE type);
 	// BW1W120 005c6570 BW1M119 013588c0
@@ -476,8 +513,14 @@ public:
 	void ResolveLoad();
 	// BW1W120 005c79e0 BW1M119 013553f0
 	void SaveTextOnTempleEntry();
+	// BW1W120 005c7a80 BW1M119 01355320
+	void ReInitialiseText();
+	// BW1W120 005c7b00 BW1M119 01355240
+	void RestoreTextOnTempleExit();
 	// BW1W120 005c78c0 BW1M119 010a2360
 	void ClearWideScreen(unsigned long task);
+	// BW1W120 005c79c0 BW1M119 inlined
+	void SetHelpLevel(HELP_LEVEL level);
 
 	// BW1W120 005c5460 BW1M119 0135a0a0
 	void SetToZero();
@@ -489,24 +532,59 @@ public:
 	void Reset();
 	// BW1W120 005c5610 BW1M119 01359da0
 	void ResetIcons();
+	// BW1W120 005c5760 BW1M119 01018190
+	bool32_t IsHelpTextBeingDrawn();
+	// BW1W120 005c5780 BW1M119 inlined
+	int GetWideScreenHeight() const;
+	// BW1W120 005c57b0 BW1M119 010202d0
+	void CalculateTextRegion(LHRegion* region) const;
+	// BW1W120 005c5850 BW1M119 inlined
+	void Init();
+	// BW1W120 005c5970 BW1M119 01359760
+	int GetTextIconYPos(LHRegion* region);
 	// BW1W120 005c5eb0 BW1M119 01093c60
 	void PostDrawProcess();
+	// BW1W120 005c5ec0 BW1M119 inlined
+	HelpSpirit* GetSpiritForNarrator(HELP_TEXT_NARRATOR narrator);
+	// BW1W120 005c5ee0 BW1M119 013590c0
+	void AddToHistory(unsigned long text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator);
 	// BW1W120 005c5f90 BW1M119 01358e20
 	void SendText(unsigned long text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator);
 	// BW1W120 005c6100 BW1M119 01358cf0
 	void SendText(wchar_t* text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator,
 	              unsigned long text_id);
+	// BW1W120 005c61b0 BW1M119 01358b30
+	void CalculateEndReadGameTurn(wchar_t* text);
+	// BW1W120 005c62b0 BW1M119 inlined
+	bool32_t IsTextCleared(unsigned long text);
+	// BW1W120 005c62f0 BW1M119 01002020
+	bool32_t IsSoundAvailable(unsigned long text) const;
+	// BW1W120 005c6340 BW1M119 01004640
+	bool32_t IsTextReadTimeComplete();
 	// BW1W120 005c64e0 BW1M119 013589c0
 	bool32_t IsTextRead();
-	void     Draw3D(); // 005c59a0
+	// BW1W120 005c6500 BW1M119 inlined
+	bool32_t IsClickToContinueTextCleared();
+	// BW1W120 005c59a0 BW1M119 01020530
+	void Draw3D();
+	// BW1W120 005c6770 BW1M119 inlined
+	uint32_t GetNewControlId();
+	// BW1W120 005c6780 BW1M119 013580f0
+	void SetCurrentControl(unsigned long task);
 	// BW1W120 005c6790 BW1M119 01358050
 	bool32_t DialogueControlRequest(unsigned long task);
+	// BW1W120 005c67c0 BW1M119 inlined
+	bool32_t IsCurrentControl(unsigned long task);
 	// BW1W120 005c67e0 BW1M119 01357fe0
 	void ClearDialogueControl();
 	// BW1W120 005c6800 BW1M119 010a2440
 	void ReleaseDialogueControl(unsigned long task);
 	// BW1W120 005c68a0 BW1M119 01357f40
 	HelpSpirit* GetSpirit(HELP_SPIRIT_TYPE type) const;
+	// BW1W120 005c68c0 BW1M119 01357d80
+	bool32_t IsClickToContinueTimeComplete() const;
+	// BW1W120 005c69b0 BW1M119 01022840
+	HELP_INTERFACE_RESULT ProcessInterface(LHCoord* pos, bool32_t select_lock_off, bool32_t apply_lock_off);
 	// BW1W120 005c6e20 BW1M119 013573b0
 	static HELP_SPIRIT_TYPE GetSpiritWhoTalks(unsigned long text);
 #ifdef VERSION_BW1WCI
@@ -517,10 +595,24 @@ public:
 	void SetWideScreen(bool32_t widescreen, uint32_t task);
 	// BW1W120 005c6b60 BW1M119 01020020
 	float GetWideScreenPercentage() const;
+	// BW1W120 005c6bb0 BW1M119 01020170
+	void UpdateWideScreen();
+	// BW1W120 005c6c40 BW1M119 013577b0
+	void SetWideScreenTrasitionOff();
 	// BW1W120 005c6c50 BW1M119 0101e730
 	bool32_t IsInWideScreenTransition() const;
+	// BW1W120 005c6c90 BW1M119 inlined
+	void SetReadSpeed(float speed);
+	// BW1W120 005c6ca0 BW1M119 01357670
+	float GetReadSpeed() const;
+	// BW1W120 005c6cb0 BW1M119 013575e0
+	float GetReadSpeedMultiplier() const;
+	// BW1W120 005c6cf0 BW1M119 01357440
+	void ReadRegistrySettings();
+	// BW1W120 005c6e00 BW1M119 inlined
+	bool32_t IsSpiritPointing();
 	// BW1W120 inlined BW1M119 010867f0
-	int GetWideScreenControl() const { return WideScreenControl; }
+	uint32_t GetWideScreenControl() const { return WideScreenControl; }
 	// BW1W120 inlined BW1M119 inlined
 	// BW1WCI inlined BW1MCI119 01522790
 	bool32_t IsInScriptWideScreen() const { return WideScreen && GetWideScreenControl(); }
@@ -528,6 +620,10 @@ public:
 	void TriggerCategory(HELP_SET_CATEGORY category);
 	// BW1W120 005c8330 BW1M119 0135ab30
 	void SetBubbleProperties(Object* object, unsigned long script_id, DYK_CATEGORY category);
+	// BW1W120 005c83d0 BW1M119 01017a30
+	void DrawBubble();
+	// BW1W120 005c8490 BW1M119 0135a9b0
+	void InitBubble();
 	// BW1W120 005c86b0 BW1M119 0108b4f0
 	void ProcessConditions();
 	// BW1W120 005c8720 BW1M119 0135aca0
@@ -561,9 +657,9 @@ public:
 	// BW1W120 005c5b50 BW1M119 013592b0
 	void SetTextIcon(BINDABLE_ACTIONS action);
 	// BW1W120 005c5f50 BW1M119 01359030
-	HelpHistoryEntry* GetFromHistory(int index);
+	HelpHistoryLine* GetFromHistory(int index);
 	// BW1W120 inlined BW1M119 014ffc90
-	HelpText* GetHelpText() { return help_text; }
+	HelpText* GetHelpText() { return Text; }
 };
 
 #endif /* BW1_DECOMP_HELP_SYSTEM_INCLUDED_H */

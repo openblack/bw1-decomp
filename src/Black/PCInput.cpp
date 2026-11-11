@@ -1316,7 +1316,7 @@ void GGame::ProcessGeorgeKey(LH_KEY key, unsigned short modifier)
 		                g_game->help_system->HistoryHead);
 		for (int i = 0; i < g_game->help_system->NumHistoryEntries; i++)
 		{
-			HelpHistoryEntry* entry = g_game->help_system->GetFromHistory(i);
+			HelpHistoryLine* entry = g_game->help_system->GetFromHistory(i);
 			if (entry != NULL)
 			{
 				Report3D__FPCce("%d - %d %s\n", i, entry->Narrator,
