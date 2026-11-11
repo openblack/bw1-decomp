@@ -1,7 +1,18 @@
 #include "GameTimeConstants.h"
+#include "Audio.h"
 #include "GameThingWithPos.h"
+#include "Global.h"
 #include "Rand.h"
 #include "SoundTag.h"
+
+LH_AudioBank* SoundTag::GetBank() const
+{
+	if (IsAtmospheric)
+	{
+		return GGlobal::Global.audio->AtmosBanks[BankIndex];
+	}
+	return GGlobal::Global.audio->GetBank((AUDIO_SFX_BANK_TYPE)BankIndex);
+}
 
 bool32_t SoundTag::Get3DSoundPos(LHPoint* pos)
 {
