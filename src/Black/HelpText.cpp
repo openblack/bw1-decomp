@@ -75,26 +75,12 @@ enum HELP_TEXT_PAUSE_STATE
 
 struct HelpTextMatrix : public LHMatrix
 {
-	void PostRotateXMatrixOnly(float angle)
+	void SetRotationX(float angle)
 	{
-		float c = cos(angle);
-		float s = sin(angle);
-		float t;
-		t = _12 * s;
-		_12 *= c;
-		_12 += _13 * s;
-		_13 *= c;
-		_13 -= t;
-		t = _22 * s;
-		_22 *= c;
-		_22 += _23 * s;
-		_23 *= c;
-		_23 -= t;
-		t = _32 * s;
-		_32 *= c;
-		_32 += _33 * s;
-		_33 *= c;
-		_33 -= t;
+		SetIdentity();
+		m[4] = m[8] = cos(angle);
+		m[7] = sin(angle);
+		m[5] = -m[7];
 	}
 };
 
@@ -699,7 +685,7 @@ void HelpText::DrawPauseText()
 	top -= LHPoint(LH3DTech::GetCameraPosition());
 	centre.SetSize(1.0f);
 	top.SetSize(1.0f);
-	float pitch = acos(centre.DotProductInline(top));
+	float pitch = acos(centre * top);
 	for (int i = 0; i < length; i++)
 	{
 		float   halfWidth = (uint16_t)(LHSys::GetScreen().Width() >> 1);
@@ -727,10 +713,7 @@ void HelpText::DrawPauseText()
 			{
 				angle -= PI_F;
 			}
-			matrix.SetIdentity();
-			matrix._22 = matrix._33 = cos(angle);
-			matrix._32 = sin(angle);
-			matrix._23 = -matrix._32;
+			matrix.SetRotationX(angle);
 		}
 		else
 		{
@@ -745,15 +728,17 @@ void HelpText::DrawPauseText()
 			}
 			matrix.SetRotationY(angle);
 		}
-		matrix.PostRotateXMatrixOnly(pitch);
-		matrix.PostRotateXMatrixOnly(PI_F);
+		matrix.PostRotateX(pitch);
+		matrix.PostRotateX(PI_F);
 		matrix._41 = 0.0f;
 		matrix._42 = 0.0f;
 		matrix._43 = 0.0f;
 		LHMatrix inverse;
 		inverse.SetInverse(LH3DTech::g_world_to_camera);
 		matrix.PostMultiply(inverse);
-		matrix.GetPos() = point;
+		matrix._41 = point.x;
+		matrix._42 = point.y;
+		matrix._43 = point.z;
 		wchar_t character[2];
 		character[0] = texts[CurrentState][i];
 		character[1] = 0;
