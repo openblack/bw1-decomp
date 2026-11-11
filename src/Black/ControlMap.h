@@ -61,9 +61,10 @@ struct ControlMap
 	int GetClickTypeForAction(BINDABLE_ACTIONS action);
 	// BW1W120 00471850 BW1M119 011d1520
 	bool32_t IsKeyAssignedToAction(BINDABLE_ACTIONS action);
-	// BW1W120 inlined BW1M119 inlined
-	ControlKey GetKey(BINDABLE_ACTIONS action) { return BindableActions[action].key; }
 };
+
+// BW1W120 0046ee60 BW1M119 011d4790
+void GetKeyNameText_(long key_data, wchar_t* out_text, int length);
 
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(ControlMap) == 0x6b54, "ControlMap size is incorrect");

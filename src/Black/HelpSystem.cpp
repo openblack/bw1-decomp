@@ -409,7 +409,7 @@ void HelpSystem::SetTextIcon(BINDABLE_ACTIONS action)
 
 	if (action >= BINDABLE_ACTION_ZOOM_ON && action <= BINDABLE_ACTION_ROTATE_ON)
 	{
-		bool32_t available = GGame::g_game->control_map->GetKey(action).IsAvailable();
+		bool32_t available = GGame::g_game->control_map->BindableActions[action].GetPrimaryKey().IsAvailable();
 		if (available)
 		{
 			if (KeyIcon == NULL || action == lastAction)
@@ -430,10 +430,10 @@ void HelpSystem::SetTextIcon(BINDABLE_ACTIONS action)
 					lastAction = action;
 				}
 			}
-			LH_KEY  key = GGame::g_game->control_map->GetKey(action).key;
+			LH_KEY  key = GGame::g_game->control_map->BindableActions[action].GetPrimaryKey().key;
 			wchar_t name[0x20];
 			memset(name, 0, sizeof(name));
-			ControlKey::GetKeyName(CONTROL_KEY_NAME_DATA(key), name, HELP_SYSTEM_KEY_NAME_LENGTH);
+			GetKeyNameText_(CONTROL_KEY_NAME_DATA(key), name, HELP_SYSTEM_KEY_NAME_LENGTH);
 			NumKeyNames++;
 			if (NumKeyNames == 2)
 			{

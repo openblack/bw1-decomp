@@ -78,12 +78,12 @@ struct ControlKey
 	LH_KEY   keymod; /* 0x84 */
 	char16_t KeymodDisplayText[0x40];
 
-	// BW1W120 0046ee60 BW1M119 null
-	static void GetKeyName(long key_data, wchar_t* out_text, int length);
 	// BW1W120 0046ee30 BW1M119 011d48e0
 	ControlKey();
 	// BW1W120 0046ee50 BW1M119 011d4870
 	~ControlKey();
+	// BW1W120 0046eed0 BW1M119 011d4550
+	void SetKey(LH_KEY key, LH_KEY keymod);
 	// BW1W120 0046efd0 BW1M119 011d4500
 	bool32_t IsAvailable();
 	// BW1W120 0046efe0 BW1M119 inlined
@@ -102,6 +102,8 @@ struct ControlMouse
 
 	// Non-virtual methods
 
+	// BW1W120 0046f050 BW1M119 011d4250
+	void SetMouseButton(MOUSE_CONTROL_BUTTON button);
 	// BW1W120 0046f180 BW1M119 011d4130
 	void GetDisplayText(char16_t* out_text);
 };
@@ -130,6 +132,14 @@ struct BindableAction
 	bool32_t IsMouseBeingPressed();
 	// BW1W120 0046f360 BW1M119 011d3c30
 	static bool32_t CompareKeys(LH_KEY key, LH_KEY other_key);
+	// BW1W120 0046f220 BW1M119 011d3f90
+	void SetKey(const ControlKey& new_key);
+	// BW1W120 0046f260 BW1M119 011d3eb0
+	void GetKeyText(wchar_t* out_text);
+	// BW1W120 0046f2b0 BW1M119 011d3e30
+	void GetMouseText(wchar_t* out_text);
+	// BW1W120 inlined BW1M119 011a68f0
+	ControlKey GetPrimaryKey() const { return key; }
 };
 
 #endif /* BW1_DECOMP_BINDABLE_ACTION_INCLUDED_H */
