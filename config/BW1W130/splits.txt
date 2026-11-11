@@ -1795,15 +1795,22 @@ Black/MPFEChannelData.cpp:
 	.rdata      start:0x0095E4A8 end:0x0095E4C8
 	.rdata$r    start:0x00A32300 end:0x00A32368
 	.CRT$XCU    start:0x00A46F78 end:0x00A46F88 align:4
-	.data       start:0x00C75120 end:0x00C75218
+	.data       start:0x00C75120 end:0x00C7517C
 	.bss        start:0x00DC1858 end:0x00DC18A0
 
+Black/MPFEChannelDetails.cpp:
+	.text       start:0x0062A3A0 end:0x0062A6B0
+	.rdata      start:0x0095E4C8 end:0x0095E4D0
+	.CRT$XCU    start:0x00A46F88 end:0x00A46F94 align:4
+	.data       start:0x00C7517C end:0x00C751D4
+	.bss        start:0x00DC18A0 end:0x00DC18A8
+
 Black/MPFEChannelMessages.cpp:
-	.text       start:0x0062A3A0 end:0x0062BF90
-	.rdata      start:0x0095E4C8 end:0x0095E574
-	.CRT$XCU    start:0x00A46F88 end:0x00A46FA0 align:4
+	.text       start:0x0062A6B0 end:0x0062BF90
+	.rdata      start:0x0095E4D0 end:0x0095E574
+	.CRT$XCU    start:0x00A46F94 end:0x00A46FA0 align:4
 	.data       start:0x00C75218 end:0x00C754EC
-	.bss        start:0x00DC18A0 end:0x00DC1968
+	.bss        start:0x00DC18A8 end:0x00DC1968
 
 Black/MPFEChannelSelector.cpp:
 	.text       start:0x0062BF90 end:0x0062E930

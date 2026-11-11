@@ -894,6 +894,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0060812B, call_rel32(0x004017F9)),  # MobileObject
     (0x006083BB, call_rel32(0x004017F9)),  # MobileObject
     (0x0060843A, call_indirect(0x008A9960)),  # MobileObject: __imp__BinkGetSummary@8
+    (0x006266BB, call_rel32(0x004017F9)),  # MPFEChannelDetails
     (0x0062AC4B, call_rel32(0x004017F9)),  # MPFEChooseConnection
     (0x0062B8BB, call_rel32(0x004017F9)),  # MPFEChooseConnection
     (0x0062C6AB, call_rel32(0x004017F9)),  # MPFEConditionMessages
@@ -1854,6 +1855,9 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0060BE66, copy_run(0x0060BDF6)),  # MobileObject
     (0x0060BE93, jmp_run(0x0060BE66)),  # MobileObject
     (0x0060BEE6, copy_run(0x0060BE93)),  # MobileObject
+    (0x0062A3BB, jmp_run(0x0062A362)),  # MPFEChannelDetails
+    (0x0062A3E5, copy_run(0x0062A3BB)),  # MPFEChannelDetails
+    (0x0062A678, jmp_run(0x0062A3E3)),  # MPFEChannelDetails
     (0x0062E94F, copy_run(0x0062E94B)),  # MPFEChooseConnection
     (0x0062E975, jmp_run(0x0062E94B)),  # MPFEChooseConnection
     (0x0062EA27, copy_run(0x0062E973)),  # MPFEChooseConnection
