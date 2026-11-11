@@ -50,10 +50,15 @@ struct HelpDudeControl
 	bool32_t Init(const char* good_file, const char* evil_file, LH_AudioSystem* audio_system);
 	// BW1W120 005c2e40 BW1M119 013524f0
 	void Uninit();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005d8c00 BW1MCI119 01374210
+	void Talk(HELPDUDE_ENUM dude, unsigned long text, int delay);
+#else
 	// BW1W120 005c3660 BW1M119 01351880
 	void SetSoundBank(const LH_AudioBank* good_bank, const LH_AudioBank* evil_bank);
 	// BW1W120 005c36d0 BW1M119 013517a0
 	void Talk(HELPDUDE_ENUM dude, int sample, int delay);
+#endif
 	// BW1W120 005c3750 BW1M119 01351710
 	void DontTalk(HELPDUDE_ENUM dude);
 	// BW1W120 005c3a30 BW1M119 01018450

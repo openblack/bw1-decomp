@@ -65,6 +65,10 @@ public:
 	bool32_t IsHome() const;
 	// BW1W120 005c4c80 BW1M119 01354940
 	void PlayAnim(float x, float y, ANIMLIST anim, float speed);
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005da260 BW1MCI119 01376d90
+	void PlayAnim(const LHPoint& pos, ANIMLIST anim, float speed);
+#endif
 	// BW1W120 005c4d10 BW1M119 013548b0
 	bool32_t IsPlayingAnim();
 	// BW1W120 005c4d40 BW1M119 013547f0

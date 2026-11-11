@@ -17,6 +17,7 @@ char* const EvilDudeFile = ".\\Data\\HelpSprite\\MarkEvil.Hd";
 
 #include "HelpSystem.h"
 #include "HelpTextSamples.h"
+#include "GloveHelpTextSamples.h"
 
 static int     NumKeyNames;
 static wchar_t KeyNames[0x100];
@@ -35,6 +36,10 @@ const float MinTimeBeforeClick = 1.0f;
 #include "Audio.h"
 #include "Bubble.h"
 #include "ControlMap.h"
+#ifdef VERSION_BW1WCI
+#include "Creature.h"
+#include "Creature3D.h"
+#endif
 #include "DialogBoxBase.h"
 #include "Game.h"
 #include "GameInfo.h"
@@ -49,12 +54,20 @@ const float MinTimeBeforeClick = 1.0f;
 #include "ScriptDLL.h"
 #include "camerahelp.h"
 
-#define HELP_SYSTEM_ICON_FADE_TIME       0.3f
-#define HELP_SYSTEM_ICON_ALPHA           0x80
-#define HELP_SYSTEM_ICON_MARGIN          4
-#define HELP_SYSTEM_ICONS_PER_REGION     3
-#define HELP_SYSTEM_DUDE_FADE_SPEED      0.4f
-#define HELP_SYSTEM_SOUND_END_DELAY      450
+#define HELP_SYSTEM_ICON_FADE_TIME           0.3f
+#define HELP_SYSTEM_ICON_ALPHA               0x80
+#define HELP_SYSTEM_ICON_MARGIN              4
+#define HELP_SYSTEM_GLOVE_ICON_MARGIN        24
+#define HELP_SYSTEM_GLOVE_ICON_RAISE         24
+#define HELP_SYSTEM_GLOVE_ACTION_ICON_MARGIN 30
+#define HELP_SYSTEM_GLOVE_ACTION_ICON_RAISE  60
+#define HELP_SYSTEM_ICONS_PER_REGION         3
+#define HELP_SYSTEM_DUDE_FADE_SPEED          0.4f
+#ifdef VERSION_BW1WCI
+#define HELP_SYSTEM_SOUND_END_DELAY 200
+#else
+#define HELP_SYSTEM_SOUND_END_DELAY 450
+#endif
 #define HELP_SYSTEM_WIDESCREEN_RATIO     0.5625f
 #define HELP_SYSTEM_KEY_NAME_LENGTH      0x10
 #define HELP_SYSTEM_SECONDS_PER_MS       0.001f
@@ -65,6 +78,11 @@ const float MinTimeBeforeClick = 1.0f;
 #define HELP_SYSTEM_FAST_READ_SLOPE      2.0
 #define HELP_SYSTEM_FAST_READ_RANGE      0.8
 #define HELP_SYSTEM_FAST_READ_MULTIPLIER 0.2
+
+#ifdef VERSION_BW1WCI
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + 3)
+#endif
 
 HelpSystemInfo HelpSystemInfo::Info;
 
@@ -153,6 +171,9 @@ void HelpSystem::Reset()
 	HistoryHead = 0;
 	BubbleText = 0;
 	BubbleObject = NULL;
+#ifdef VERSION_BW1WCI
+	ScriptTextThing = NULL;
+#endif
 	HelpSystemOn = true;
 }
 
@@ -275,8 +296,10 @@ void HelpSystem::CallVirtualFunctionsForCreation()
 			delete DudeControl;
 			return;
 		}
+#ifndef VERSION_BW1WCI
 		LH_AudioBank* bank = GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_HELP_SPRITES);
 		DudeControl->SetSoundBank(bank, bank);
+#endif
 	}
 	GoodSpirit = HelpSpirit::Create(coords, this, HELP_SPIRIT_TYPE_GOOD);
 	if (GoodSpirit != NULL)
@@ -329,17 +352,49 @@ void HelpSystem::Draw3D()
 				{
 					animType = CH_ANIMTYPE_CLICK;
 				}
+#ifdef VERSION_BW1W130
+				if (LHSys::TheSystem.GloveActive)
+				{
+					LH3DColor white(255, 255, 255, 255);
+					LH3DColor yellow(255, 255, 0, 255);
+					ContinueIcon = CameraHelp::CreateKeyOrMouseIcon(
+						0.0f, 1.0f, MinTimeBeforeClick, animType, key, mouseType, text,
+						LHSys::GetScreen().Width() - HELP_SYSTEM_GLOVE_ICON_MARGIN, y - HELP_SYSTEM_GLOVE_ICON_RAISE,
+						size, KEYALIGN_0x11, &yellow, &white, HELP_SYSTEM_ICON_ALPHA);
+				}
+				else
+				{
+					LH3DColor white(255, 255, 255, 255);
+					LH3DColor yellow(255, 255, 0, 255);
+					ContinueIcon =
+						CameraHelp::CreateKeyOrMouseIcon(0.0f, 1.0f, MinTimeBeforeClick, animType, key, mouseType, text,
+					                                     LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size,
+					                                     KEYALIGN_0x11, &yellow, &white, HELP_SYSTEM_ICON_ALPHA);
+				}
+#else
 				LH3DColor white(255, 255, 255, 255);
 				LH3DColor yellow(255, 255, 0, 255);
 				ContinueIcon =
 					CameraHelp::CreateKeyOrMouseIcon(0.0f, 1.0f, MinTimeBeforeClick, animType, key, mouseType, text,
 				                                     LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size,
 				                                     KEYALIGN_0x11, &yellow, &white, HELP_SYSTEM_ICON_ALPHA);
+#endif
 			}
 		}
 		else
 		{
+#ifdef VERSION_BW1W130
+			if (LHSys::TheSystem.GloveActive)
+			{
+				ContinueIcon->Y = y - HELP_SYSTEM_GLOVE_ICON_RAISE;
+			}
+			else
+			{
+				ContinueIcon->Y = y;
+			}
+#else
 			ContinueIcon->Y = y;
+#endif
 		}
 	}
 	DudeControl->Update(LH3DTech::g_delta_time * HELP_SYSTEM_SECONDS_PER_MS, HELP_SYSTEM_DUDE_FADE_SPEED);
@@ -405,10 +460,43 @@ void HelpSystem::SetTextIcon(BINDABLE_ACTIONS action)
 				ContinueIcon->AnimType = animType;
 				ContinueIcon->Key = key;
 				ContinueIcon->MouseType = mouseType;
+#ifdef VERSION_BW1W130
+				if (LHSys::TheSystem.GloveActive)
+				{
+					ContinueIcon->Y = y - HELP_SYSTEM_GLOVE_ICON_RAISE;
+				}
+				else
+				{
+					ContinueIcon->Y = y;
+				}
+#else
 				ContinueIcon->Y = y;
+#endif
 			}
 			else
 			{
+#ifdef VERSION_BW1W130
+				int size = region->Height() / HELP_SYSTEM_ICONS_PER_REGION;
+				if (LHSys::TheSystem.GloveActive)
+				{
+					LH3DColor white(255, 255, 255, 255);
+					LH3DColor yellow(255, 255, 0, 255);
+					ContinueIcon = CameraHelp::CreateKeyOrMouseIcon(
+						0.0f, 1.0f, HELP_SYSTEM_ICON_FADE_TIME, animType, key, mouseType, NULL,
+						LHSys::GetScreen().Width() - HELP_SYSTEM_GLOVE_ACTION_ICON_MARGIN,
+						y - HELP_SYSTEM_GLOVE_ACTION_ICON_RAISE, size, KEYALIGN_0x11, &yellow, &white,
+						HELP_SYSTEM_ICON_ALPHA);
+				}
+				else
+				{
+					LH3DColor white(255, 255, 255, 255);
+					LH3DColor yellow(255, 255, 0, 255);
+					ContinueIcon = CameraHelp::CreateKeyOrMouseIcon(
+						0.0f, 1.0f, HELP_SYSTEM_ICON_FADE_TIME, animType, key, mouseType, NULL,
+						LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size, KEYALIGN_0x11, &yellow, &white,
+						HELP_SYSTEM_ICON_ALPHA);
+				}
+#else
 				LH3DColor white(255, 255, 255, 255);
 				LH3DColor yellow(255, 255, 0, 255);
 				ContinueIcon =
@@ -416,6 +504,7 @@ void HelpSystem::SetTextIcon(BINDABLE_ACTIONS action)
 				                                     NULL, LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y,
 				                                     region->Height() / HELP_SYSTEM_ICONS_PER_REGION, KEYALIGN_0x11,
 				                                     &yellow, &white, HELP_SYSTEM_ICON_ALPHA);
+#endif
 			}
 		}
 	}
@@ -477,16 +566,18 @@ HelpHistoryLine* HelpSystem::GetFromHistory(int index)
 	return NULL;
 }
 
+#ifdef VERSION_BW1WCI
 void HelpSystem::SendText(unsigned long text, HELP_TEXT_INTERACTION interaction, float number,
                           HELP_TEXT_NARRATOR narrator)
 {
+	GameThingWithPos* thing = ScriptTextThing;
 	if (text >= HELP_TEXT_LAST)
 	{
 		text = 0;
 	}
 	HelpTextInfo*       info = HelpTextDataBase::HelpTextDatabase.GetData(text);
-	uint32_t            sample = HelpTextSamples[text].Sample;
 	AUDIO_SFX_BANK_TYPE bank = HelpTextSamples[text].Bank;
+	uint32_t            sample = HelpTextSamples[text].Sample;
 	if (HelpTextSamples[text].Text != text)
 	{
 		bank = AUDIO_SFX_BANK_TYPE_NONE;
@@ -494,8 +585,92 @@ void HelpSystem::SendText(unsigned long text, HELP_TEXT_INTERACTION interaction,
 	HELP_TEXT_NARRATOR textNarrator = info->Narrator;
 	SendText(info->Text, interaction, number, textNarrator, text);
 	AddToHistory(text, interaction, number, textNarrator);
+	Creature* creature = NULL;
+	if (thing != NULL && thing->IsCreature())
+	{
+		creature = (Creature*)thing;
+	}
+	if (sample != 0 && bank != AUDIO_SFX_BANK_TYPE_NONE && creature != NULL && creature->GetCreature3D() != NULL)
+	{
+		DudeControl->DontTalk(HELPDUDE_EVIL);
+		DudeControl->DontTalk(HELPDUDE_GOOD);
+		creature->GetCreature3D()->Talk(sample, GGlobal::Global.audio->GetBank(bank));
+		return;
+	}
+	if (GAudio::IsHelpSpritesSoundBank(bank))
+	{
+		if (textNarrator == HELP_TEXT_NARRATOR_GOOD_SPIRIT)
+		{
+			DudeControl->DontTalk(HELPDUDE_EVIL);
+			DudeControl->DontTalk(HELPDUDE_GOOD);
+			DudeControl->Talk(HELPDUDE_GOOD, text, 0);
+			return;
+		}
+		if (textNarrator == HELP_TEXT_NARRATOR_EVIL_SPIRIT)
+		{
+			DudeControl->DontTalk(HELPDUDE_EVIL);
+			DudeControl->DontTalk(HELPDUDE_GOOD);
+			DudeControl->Talk(HELPDUDE_EVIL, text, 0);
+			return;
+		}
+	}
+	if (sample != 0 && bank != AUDIO_SFX_BANK_TYPE_NONE)
+	{
+		LH_SamplePlayOptions options;
+		options.SampleNumber = sample;
+		options.Bank = GGlobal::Global.audio->GetBank(bank);
+		options.AttachedObject = (Base*)HELP_SPEECH_OBJECT_TEXT;
+		options.Flags = LH_SAMPLE_FLAG_KEEP_DATA;
+		GGlobal::Global.audio->PlaySoundEffect(&options);
+	}
+}
+#else
+void HelpSystem::SendText(unsigned long text, HELP_TEXT_INTERACTION interaction, float number,
+                          HELP_TEXT_NARRATOR narrator)
+{
+	if (text >= HELP_TEXT_LAST)
+	{
+		text = 0;
+	}
+	HelpTextInfo* info = HelpTextDataBase::HelpTextDatabase.GetData(text);
+#ifdef VERSION_BW1W130
+	uint32_t            sample;
+	AUDIO_SFX_BANK_TYPE bank;
+	if (LHSys::TheSystem.GloveActive)
+	{
+		sample = GloveHelpTextSamples[text].Sample;
+		bank = GloveHelpTextSamples[text].Bank;
+		if (GloveHelpTextSamples[text].Text != text)
+		{
+			bank = AUDIO_SFX_BANK_TYPE_NONE;
+		}
+	}
+	else
+	{
+		sample = HelpTextSamples[text].Sample;
+		bank = HelpTextSamples[text].Bank;
+		if (HelpTextSamples[text].Text != text)
+		{
+			bank = AUDIO_SFX_BANK_TYPE_NONE;
+		}
+	}
+#else
+	uint32_t            sample = HelpTextSamples[text].Sample;
+	AUDIO_SFX_BANK_TYPE bank = HelpTextSamples[text].Bank;
+	if (HelpTextSamples[text].Text != text)
+	{
+		bank = AUDIO_SFX_BANK_TYPE_NONE;
+	}
+#endif
+	HELP_TEXT_NARRATOR textNarrator = info->Narrator;
+	SendText(info->Text, interaction, number, textNarrator, text);
+	AddToHistory(text, interaction, number, textNarrator);
 	if (bank == AUDIO_SFX_BANK_TYPE_HELP_SPRITES)
 	{
+#ifdef VERSION_BW1W130
+		LH_AudioBank* spriteBank = GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_HELP_SPRITES);
+		DudeControl->SetSoundBank(spriteBank, spriteBank);
+#endif
 		if (textNarrator == HELP_TEXT_NARRATOR_GOOD_SPIRIT)
 		{
 			DudeControl->DontTalk(HELPDUDE_EVIL);
@@ -511,6 +686,29 @@ void HelpSystem::SendText(unsigned long text, HELP_TEXT_INTERACTION interaction,
 			return;
 		}
 	}
+#ifdef VERSION_BW1W130
+	if (LHSys::TheSystem.GloveActive && bank == AUDIO_SFX_BANK_TYPE_GLOVE_DIALOGUE)
+	{
+		if (textNarrator == HELP_TEXT_NARRATOR_GOOD_SPIRIT)
+		{
+			DudeControl->DontTalk(HELPDUDE_EVIL);
+			DudeControl->DontTalk(HELPDUDE_GOOD);
+			LH_AudioBank* gloveBank = GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_GLOVE_DIALOGUE);
+			DudeControl->SetSoundBank(gloveBank, gloveBank);
+			DudeControl->Talk(HELPDUDE_GOOD, sample, 0);
+			return;
+		}
+		if (textNarrator == HELP_TEXT_NARRATOR_EVIL_SPIRIT)
+		{
+			DudeControl->DontTalk(HELPDUDE_EVIL);
+			DudeControl->DontTalk(HELPDUDE_GOOD);
+			LH_AudioBank* gloveBank = GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_GLOVE_DIALOGUE);
+			DudeControl->SetSoundBank(gloveBank, gloveBank);
+			DudeControl->Talk(HELPDUDE_EVIL, sample, 0);
+			return;
+		}
+	}
+#endif
 	if (sample != 0 && bank != AUDIO_SFX_BANK_TYPE_NONE)
 	{
 		LH_SamplePlayOptions options;
@@ -521,6 +719,7 @@ void HelpSystem::SendText(unsigned long text, HELP_TEXT_INTERACTION interaction,
 		GGlobal::Global.audio->PlaySoundEffect(&options);
 	}
 }
+#endif
 
 void HelpSystem::SendText(wchar_t* text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator,
                           unsigned long text_id)
@@ -569,6 +768,18 @@ bool32_t HelpSystem::IsTextCleared(unsigned long text)
 
 bool32_t HelpSystem::IsSoundAvailable(unsigned long text) const
 {
+#ifdef VERSION_BW1W130
+	if (LHSys::TheSystem.GloveActive)
+	{
+		if (GloveHelpTextSamples[text].Text == text && text < HELP_TEXT_LAST &&
+		    GloveHelpTextSamples[text].Bank != AUDIO_SFX_BANK_TYPE_NONE && GloveHelpTextSamples[text].Sample != 0 &&
+		    GGlobal::Global.audio->GetBank(GloveHelpTextSamples[text].Bank) != NULL)
+		{
+			return true;
+		}
+		return false;
+	}
+#endif
 	if (HelpTextSamples[text].Text == text && text < HELP_TEXT_LAST &&
 	    HelpTextSamples[text].Bank != AUDIO_SFX_BANK_TYPE_NONE && HelpTextSamples[text].Sample != 0 &&
 	    GGlobal::Global.audio->GetBank(HelpTextSamples[text].Bank) != NULL)
@@ -582,8 +793,24 @@ bool32_t HelpSystem::IsTextReadTimeComplete()
 {
 	if (IsSoundAvailable(TextsShown[0]))
 	{
+#ifdef VERSION_BW1W130
+		AUDIO_SFX_BANK_TYPE bank;
+		if (LHSys::TheSystem.GloveActive)
+		{
+			bank = GloveHelpTextSamples[TextsShown[0]].Bank;
+		}
+		else
+		{
+			bank = HelpTextSamples[TextsShown[0]].Bank;
+		}
+#else
 		AUDIO_SFX_BANK_TYPE bank = HelpTextSamples[TextsShown[0]].Bank;
+#endif
+#ifdef VERSION_BW1WCI
+		if (GAudio::IsHelpSpritesSoundBank(bank))
+#else
 		if (bank == AUDIO_SFX_BANK_TYPE_HELP_SPRITES)
+#endif
 		{
 			if ((!DudeControl->Talking[HELPDUDE_GOOD] || !DudeControl->Dudes[HELPDUDE_GOOD]->IsTalkingWithDelay()) &&
 			    (!DudeControl->Talking[HELPDUDE_EVIL] || !DudeControl->Dudes[HELPDUDE_EVIL]->IsTalkingWithDelay()))
@@ -593,12 +820,36 @@ bool32_t HelpSystem::IsTextReadTimeComplete()
 		}
 		else
 		{
+#ifdef VERSION_BW1W130
+			uint32_t sample;
+			if (LHSys::TheSystem.GloveActive)
+			{
+				sample = GloveHelpTextSamples[TextsShown[0]].Sample;
+			}
+			else
+			{
+				sample = HelpTextSamples[TextsShown[0]].Sample;
+			}
+#else
 			uint32_t sample = HelpTextSamples[TextsShown[0]].Sample;
+#endif
+#ifdef VERSION_BW1WCI
+			uint32_t object = HELP_SPEECH_OBJECT_TEXT;
+			if (HelpDude::s_PlayingSample)
+			{
+				object = HELP_SPEECH_OBJECT_HELP_DUDE;
+				sample = HelpDude::s_PlayingSample;
+			}
+#endif
 			if (bank == AUDIO_SFX_BANK_TYPE_NONE || sample == 0)
 			{
 				return true;
 			}
+#ifdef VERSION_BW1WCI
+			if (GGlobal::Global.audio->IsSamplePlaying(object, sample, bank))
+#else
 			if (GGlobal::Global.audio->IsSamplePlaying(HELP_SPEECH_OBJECT_TEXT, sample, bank))
+#endif
 			{
 				EndReadTime = LH3DTech::g_timer.MSeconds() + HELP_SYSTEM_SOUND_END_DELAY;
 			}
@@ -694,6 +945,13 @@ void HelpSystem::SpiritPlayAnim(HELP_SPIRIT_TYPE type, float x, float y, ANIMLIS
 	GetSpirit(type)->PlayAnim(x, y, anim, speed);
 }
 
+#ifdef VERSION_BW1WCI
+void HelpSystem::SpiritPlayAnimInWorld(HELP_SPIRIT_TYPE type, const LHPoint& point, ANIMLIST anim, float speed)
+{
+	GetSpirit(type)->PlayAnim(point, anim, speed);
+}
+#endif
+
 bool32_t HelpSystem::IsSpiritPlayingAnim(HELP_SPIRIT_TYPE type) const
 {
 	return GetSpirit(type)->IsPlayingAnim();
@@ -735,7 +993,11 @@ void HelpSystem::SetCurrentControl(unsigned long task)
 
 bool32_t HelpSystem::DialogueControlRequest(unsigned long task)
 {
+#ifdef VERSION_BW1WCI
+	if (DialogueControlTask != SCRIPT_TASK_NONE)
+#else
 	if (IsDialogueControlled())
+#endif
 	{
 		return false;
 	}
@@ -803,6 +1065,27 @@ bool32_t HelpSystem::IsClickToContinueTimeComplete() const
 	return (float)turns * GGameInfo::Info.MillisecondsPerGameTurn * HELP_SYSTEM_SECONDS_PER_MS >= minTime;
 }
 
+#ifdef VERSION_BW1WCI
+void HelpSystem::ClearHelpTextSoundAndText()
+{
+	if (TextsShown[0] != 0)
+	{
+		SpiritInterruptTalking(HELP_SPIRIT_TYPE_GOOD, true);
+		SpiritInterruptTalking(HELP_SPIRIT_TYPE_EVIL, true);
+		if (HelpDude::s_PlayingSample)
+		{
+			GGlobal::Global.audio->StopPlayingSoundEffect(0, HELP_SPEECH_OBJECT_HELP_DUDE,
+			                                              AUDIO_SFX_BANK_TYPE_VILLAGERS);
+			GGlobal::Global.audio->StopPlayingSoundEffect(0, HELP_SPEECH_OBJECT_HELP_DUDE,
+			                                              AUDIO_SFX_BANK_TYPE_CI_VILLAGERS);
+		}
+		GGlobal::Global.audio->StopPlayingSoundEffect(0, HELP_SPEECH_OBJECT_TEXT, AUDIO_SFX_BANK_TYPE_VILLAGERS);
+		GGlobal::Global.audio->StopPlayingSoundEffect(0, HELP_SPEECH_OBJECT_TEXT, AUDIO_SFX_BANK_TYPE_CI_VILLAGERS);
+	}
+	ClearTextDisplayed();
+}
+#endif
+
 HELP_INTERFACE_RESULT HelpSystem::ProcessInterface(LHCoord* pos, bool32_t select_lock_off, bool32_t apply_lock_off)
 {
 	uint32_t skipKey = LHSys::GetKeyboard().IsKeyDown(KB_ENTER);
@@ -828,6 +1111,9 @@ HELP_INTERFACE_RESULT HelpSystem::ProcessInterface(LHCoord* pos, bool32_t select
 		}
 		else
 		{
+#ifdef VERSION_BW1WCI
+			ClearHelpTextSoundAndText();
+#else
 			if (TextsShown[0] != 0)
 			{
 				SpiritInterruptTalking(HELP_SPIRIT_TYPE_GOOD, true);
@@ -836,15 +1122,31 @@ HELP_INTERFACE_RESULT HelpSystem::ProcessInterface(LHCoord* pos, bool32_t select
 				                                              AUDIO_SFX_BANK_TYPE_VILLAGERS);
 			}
 			ClearTextDisplayed();
+#endif
 			return HELP_INTERFACE_RESULT_RESET;
 		}
 	}
 	return HELP_INTERFACE_RESULT_CONTINUE;
 }
 
-void HelpSystem::SetWideScreen(bool32_t widescreen, uint32_t task)
+#ifdef VERSION_BW1WCI
+void HelpSystem::SetWideScreen(bool32_t widescreen, long task)
+#else
+void HelpSystem::SetWideScreen(bool32_t widescreen, unsigned long task)
+#endif
 {
+#ifdef VERSION_BW1WCI
+	if (WideScreen == widescreen)
+	{
+		if (WideScreenControl < 0)
+		{
+			WideScreenControl = task;
+		}
+	}
+	else
+#else
 	if (WideScreen != widescreen)
+#endif
 	{
 		float percentage = GetWideScreenPercentage();
 		if (widescreen)
@@ -1090,6 +1392,9 @@ bool32_t HelpSystem::Save(GameOSFile& file)
 	file.WriteIt(HistoryHead);
 	file.WriteIt(NumHistoryEntries);
 	file.WriteArray(History, HELP_SYSTEM_HISTORY_SIZE);
+#ifdef VERSION_BW1WCI
+	file.WritePtr(ScriptTextThing);
+#endif
 	return true;
 }
 
@@ -1139,6 +1444,10 @@ bool32_t HelpSystem::Load(GameOSFile& file)
 	file.ReadIt(HistoryHead);
 	file.ReadIt(NumHistoryEntries);
 	file.ReadArray(History);
+#ifdef VERSION_BW1WCI
+	GameThing** scriptTextThing = (GameThing**)&ScriptTextThing;
+	file.ReadPtr(scriptTextThing);
+#endif
 	return false;
 }
 

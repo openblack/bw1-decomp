@@ -1370,7 +1370,7 @@ Black/HelpEditor.cpp:
 	.text       start:0x005C78C0 end:0x005C7AE0
 	.CRT$XCU    start:0x00A46BA8 end:0x00A46BAC align:4
 	.data       start:0x00C71130 end:0x00C714D4
-	.bss        start:0x00D96AA0 end:0x00D9712C
+	.bss        start:0x00D96AA0 end:0x00D970A8
 
 Black/HelpProfile.cpp:
 	.text       start:0x005C7AE0 end:0x005C7F90
@@ -1382,14 +1382,15 @@ Black/HelpSpirit.cpp:
 	.text       start:0x005C7F90 end:0x005C8900
 	.rdata      start:0x0092EB74 end:0x0092F418
 	.CRT$XCU    start:0x00A46BB0 end:0x00A46BB8 align:4
-	.data       start:0x00C7154C end:0x00C715F4
+	.data       start:0x00C7154C end:0x00C71574
 
 Black/HelpSystem.cpp:
 	.text       start:0x005C8900 end:0x005CB980
 	.rdata      start:0x0092F418 end:0x00958294
+	.rdata$r    start:0x00A315D0 end:0x00A3166C
 	.CRT$XCU    start:0x00A46BB8 end:0x00A46BC8 align:4
-	.data       start:0x00C715F4 end:0x00C7161C
-	.bss        start:0x00D9712C end:0x00D97360
+	.data       start:0x00C71574 end:0x00C71624
+	.bss        start:0x00D970A8 end:0x00D97360
 
 Black/HelpSystemBanter.cpp:
 	.text       start:0x005CB980 end:0x005CBAB0
@@ -1399,7 +1400,7 @@ Black/HelpSystemBanter.cpp:
 Black/HelpSystemBubble.cpp:
 	.text       start:0x005CBAB0 end:0x005CBE60
 	.CRT$XCU    start:0x00A46BD0 end:0x00A46BD8 align:4
-	.data       start:0x00C7161C end:0x00C71668
+	.data       start:0x00C71624 end:0x00C71668
 	.bss        start:0x00D97364 end:0x00D9736C
 
 Black/HelpSystemConditions.cpp:

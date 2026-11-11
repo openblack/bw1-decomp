@@ -409,16 +409,20 @@ public:
 	uint32_t                TextStartTime;
 	uint32_t                EndReadTime;
 	bool32_t                WideScreen;
-	uint32_t                WideScreenControl;
-	float                   WideScreenTime;
-	HELP_LEVEL              HelpLevel;
-	bool32_t                HelpSystemOn;
-	TOOLTIP_LEVEL           TooltipLevel;
-	IMMERSION_LEVEL         ImmersionLevel;
-	TEXT_DRAW               TextDraw;
-	bool32_t                CreatureHelp;
-	bool32_t                SkipNextClick;
-	float                   ReadSpeed;
+#ifdef VERSION_BW1WCI
+	long WideScreenControl;
+#else
+	uint32_t WideScreenControl;
+#endif
+	float           WideScreenTime;
+	HELP_LEVEL      HelpLevel;
+	bool32_t        HelpSystemOn;
+	TOOLTIP_LEVEL   TooltipLevel;
+	IMMERSION_LEVEL ImmersionLevel;
+	TEXT_DRAW       TextDraw;
+	bool32_t        CreatureHelp;
+	bool32_t        SkipNextClick;
+	float           ReadSpeed;
 
 	// Override methods
 
@@ -591,8 +595,13 @@ public:
 	// BW1WCI 005dbfe0 BW1MCI119 0137a560
 	void ClearHelpTextSoundAndText();
 #endif
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005dc150 BW1MCI119 0137a3f0
+	void SetWideScreen(bool32_t widescreen, long task);
+#else
 	// BW1W120 005c6ad0 BW1M119 01357c40
-	void SetWideScreen(bool32_t widescreen, uint32_t task);
+	void SetWideScreen(bool32_t widescreen, unsigned long task);
+#endif
 	// BW1W120 005c6b60 BW1M119 01020020
 	float GetWideScreenPercentage() const;
 	// BW1W120 005c6bb0 BW1M119 01020170

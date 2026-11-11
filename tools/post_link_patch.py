@@ -1837,6 +1837,69 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005991CA, call_filler(0x004034F9, 0x00)),  # GlobalGameList
     (0x005AFFA8, copy_run(0x0059C182)),  # GStates
     (0x005B3359, jmp_run(0x005AFFA8)),  # GStates
+    (0x005C891B, jmp_run(0x005C88C5)),  # HelpSystem
+    (0x005C8943, copy_run(0x005C891B)),  # HelpSystem
+    (0x005C8A09, copy_run(0x005C8943)),  # HelpSystem
+    (0x005C8A33, jmp_run(0x005C8A09)),  # HelpSystem
+    (0x005C8B21, copy_run(0x005C8A33)),  # HelpSystem
+    (0x005C8B5B, jmp_run(0x005C8B21)),  # HelpSystem
+    (0x005C8BE9, copy_run(0x005C8B5B)),  # HelpSystem
+    (0x005C8C51, jmp_run(0x005C8BE9)),  # HelpSystem
+    (0x005C8D5A, call_filler(0x004034F9, 0xFF)),  # HelpSystem
+    (0x005C8E25, copy_run(0x005C8D5A)),  # HelpSystem
+    (0x005C8F41, copy_run(0x005C8E25)),  # HelpSystem
+    (0x005C9181, copy_run(0x005C8F41)),  # HelpSystem
+    (0x005C9583, copy_run(0x005C9181)),  # HelpSystem
+    (0x005C95F7, jmp_run(0x005C9583)),  # HelpSystem
+    (0x005C9875, jmp_run(0x005C95F7)),  # HelpSystem
+    (0x005C9922, copy_run(0x005C9875)),  # HelpSystem
+    (0x005C9A29, copy_run(0x005C9922)),  # HelpSystem
+    (0x005C9A62, copy_run(0x005C9A29)),  # HelpSystem
+    (0x005C9B04, copy_run(0x005C9A62)),  # HelpSystem
+    (0x005C9D09, copy_run(0x005C9B04)),  # HelpSystem
+    (0x005C9D24, copy_run(0x005C9D09)),  # HelpSystem
+    (0x005C9D44, copy_run(0x005C9D24)),  # HelpSystem
+    (0x005C9D69, copy_run(0x005C9D44)),  # HelpSystem
+    (0x005C9DA9, copy_run(0x005C9D69)),  # HelpSystem
+    (0x005C9DC9, copy_run(0x005C9DA9)),  # HelpSystem
+    (0x005C9DE9, copy_run(0x005C9DC9)),  # HelpSystem
+    (0x005C9E04, copy_run(0x005C9DE9)),  # HelpSystem
+    (0x005C9E24, copy_run(0x005C9E04)),  # HelpSystem
+    (0x005C9E69, copy_run(0x005C9E24)),  # HelpSystem
+    (0x005C9E98, jmp_run(0x005C9E69)),  # HelpSystem
+    (0x005C9EB4, jmp_run(0x005C9E98)),  # HelpSystem
+    (0x005C9F19, jmp_run(0x005C9EB4)),  # HelpSystem
+    (0x005C9FB4, jmp_run(0x005C9F19)),  # HelpSystem
+    (0x005C9FD7, jmp_run(0x005C9FB4)),  # HelpSystem
+    (0x005CA093, jmp_run(0x005C9FD7)),  # HelpSystem
+    (0x005CA189, copy_run(0x005CA093)),  # HelpSystem
+    (0x005CA2A3, copy_run(0x005CA189)),  # HelpSystem
+    (0x005CA33B, jmp_run(0x005CA2A3)),  # HelpSystem
+    (0x005CA487, copy_run(0x005CA33B)),  # HelpSystem
+    (0x005CA4CA, call_filler(0x004034F9, 0xC3)),  # HelpSystem
+    (0x005CA687, copy_run(0x005CA4CA)),  # HelpSystem
+    (0x005CABB3, jmp_run(0x005CA687)),  # HelpSystem
+    (0x005CB0C2, copy_run(0x005CABB3)),  # HelpSystem
+    (0x005CB1B2, jmp_run(0x005CB0C2)),  # HelpSystem
+    (0x005CB255, jmp_run(0x005CB1B2)),  # HelpSystem
+    (0x005CB2D7, jmp_run(0x005CB255)),  # HelpSystem
+    (0x005CB344, copy_run(0x005CB2D7)),  # HelpSystem
+    (0x005CB373, jmp_run(0x005CB344)),  # HelpSystem
+    (0x005CB3C4, copy_run(0x005CB373)),  # HelpSystem
+    (0x005CB414, jmp_run(0x005CB3C4)),  # HelpSystem
+    (0x005CB4CA, call_filler(0x004034F9, 0x00)),  # HelpSystem
+    (0x005CB514, jmp_run(0x005CB4CA)),  # HelpSystem
+    (0x005CB564, copy_run(0x005CB514)),  # HelpSystem
+    (0x005CB5B4, jmp_run(0x005CB564)),  # HelpSystem
+    (0x005CB604, copy_run(0x005CB5B4)),  # HelpSystem
+    (0x005CB654, jmp_run(0x005CB604)),  # HelpSystem
+    (0x005CB70A, call_filler(0x004034F9, 0x00)),  # HelpSystem
+    (0x005CB754, jmp_run(0x005CB70A)),  # HelpSystem
+    (0x005CB7A4, copy_run(0x005CB754)),  # HelpSystem
+    (0x005CB7F4, jmp_run(0x005CB7A4)),  # HelpSystem
+    (0x005CB844, copy_run(0x005CB7F4)),  # HelpSystem
+    (0x005CB894, jmp_run(0x005CB844)),  # HelpSystem
+    (0x005CB944, copy_run(0x005CB894)),  # HelpSystem
     (0x005CB99B, jmp_run(0x005CB944)),  # HelpSystemBanter
     (0x005CBA79, jmp_run(0x005CB99B)),  # HelpSystemBanter
     (0x005CBE83, copy_run(0x005CBD03)),  # HelpSystemConditions

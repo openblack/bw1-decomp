@@ -78,20 +78,12 @@ struct ControlKey
 	LH_KEY   keymod; /* 0x84 */
 	char16_t KeymodDisplayText[0x40];
 
-	// Static methods
-
 	// BW1W120 0046ee60 BW1M119 null
 	static void GetKeyName(long key_data, wchar_t* out_text, int length);
-
-	// Constructors
-
 	// BW1W120 0046ee30 BW1M119 011d48e0
 	ControlKey();
 	// BW1W120 0046ee50 BW1M119 011d4870
 	~ControlKey();
-
-	// Non-virtual methods
-
 	// BW1W120 0046efd0 BW1M119 011d4500
 	bool32_t IsAvailable();
 	// BW1W120 0046efe0 BW1M119 inlined
