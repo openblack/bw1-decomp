@@ -5,6 +5,8 @@
 
 #include <Lionhead/LHMultiplayer/ver4.0/LHLobby.h> /* For enum LOBBY_TYPE */
 
+class MPFEConnectionType;
+
 struct MPFEConnectionStatus
 {
 	// Descriptive singleton name; extracted storage.
@@ -20,6 +22,8 @@ struct MPFEConnectionStatus
 	bool IsLanLobby();
 	// BW1W120 0062dac0 BW1M119 013a9330
 	bool IsInternetLobby();
+	// BW1W120 0062d860 BW1M119 013a99d0
+	void SetConnection(MPFEConnectionType* connection);
 	// BW1W120 0062d8a0 BW1M119 013a98e0
 	void SetLobbyType(LOBBY_TYPE lobby_type);
 	// BW1W120 0062d8f0 BW1M119 013a9820
