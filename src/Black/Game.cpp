@@ -195,11 +195,11 @@ static_assert(offsetof(GScript, FocusPos) == 0x40, "Script timer fields changed 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(GPlayer, Conditions) == 0xf8, "GPlayer condition map offset is incorrect");
 static_assert(offsetof(GPlayer, type) == 0x8e0, "GPlayer condition map changed its layout");
+static_assert(offsetof(ChannelBox, ConditionEnabled) == 0xac4, "ChannelBox condition offset is incorrect");
+static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
 #elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
 static_assert(offsetof(GPlayer, type) == 0xf8, "GPlayer layout is incorrect");
 #endif
-static_assert(offsetof(ChannelBox, ConditionEnabled) == 0xac4, "ChannelBox condition offset is incorrect");
-static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
 #if defined(VERSION_BW1WCI)
 static_assert(offsetof(MPFEData, ActiveDialog) == 0xa78, "MPFEData dialog offset is incorrect");
 #else

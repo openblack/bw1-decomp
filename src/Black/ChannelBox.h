@@ -32,28 +32,33 @@ struct SetupTabButton;
 class ChannelBox : public DialogBoxBase
 {
 public:
-	int                           CurrentTab;
-	int                           SelectedTeam; /* 0x14 */
-	bool                          HasMap;
-	int                           NumTeams; /* 0x1c */
-	SetupTabButton*               Tabs[4];
-	SetupStaticText*              CaptionText; /* 0x30 */
-	SetupStaticText*              PanelHeaderText;
-	TeamControls                  Teams[MPFEData::MAX_TEAMS]; /* 0x38 */
-	SetupBigButton*               BackButton;                 /* 0x114 */
-	SetupBigButton*               StartButton;
-	SetupBigButton*               ChooseLandButton;
-	SetupButton*                  KickButton; /* 0x120 */
-	SetupButton*                  InviteButton;
-	SetupButton*                  LeaveTeamButton;
-	int                           KickButtonWidth; /* 0x12c */
-	int                           InviteButtonWidth;
-	LHRegion                      TeamsRegion; /* 0x134 */
-	SetupEdit*                    ChatEdit;    /* 0x144 */
-	SetupList*                    ChatList;
-	SetupStaticText*              ChatTitleText;
-	bool                          NewChatMessage;      /* 0x150 */
-	SetupCheckBox*                LockChannelCheckBox; /* 0x154 */
+	int              CurrentTab;
+	int              SelectedTeam; /* 0x14 */
+	bool             HasMap;
+	int              NumTeams; /* 0x1c */
+	SetupTabButton*  Tabs[4];
+	SetupStaticText* CaptionText; /* 0x30 */
+	SetupStaticText* PanelHeaderText;
+	TeamControls     Teams[MPFEData::MAX_TEAMS]; /* 0x38 */
+	SetupBigButton*  BackButton;                 /* 0x114 */
+	SetupBigButton*  StartButton;
+	SetupBigButton*  ChooseLandButton;
+	SetupButton*     KickButton; /* 0x120 */
+	SetupButton*     InviteButton;
+	SetupButton*     LeaveTeamButton;
+	int              KickButtonWidth; /* 0x12c */
+	int              InviteButtonWidth;
+	LHRegion         TeamsRegion; /* 0x134 */
+	SetupEdit*       ChatEdit;    /* 0x144 */
+	SetupList*       ChatList;
+	SetupStaticText* ChatTitleText;
+	bool             NewChatMessage; /* 0x150 */
+#if !defined(VERSION_BW1W100)
+	SetupCheckBox* LockChannelCheckBox; /* 0x154 */
+#endif
+#if defined(VERSION_BW1WCI)
+	SetupCheckBox* TykeCheckBox;
+#endif
 	SetupStaticText*              ClanPlayerText;
 	SetupStaticText*              ClanTeamText;
 	SetupList*                    ClanList; /* 0x160 */
@@ -85,23 +90,25 @@ public:
 	LHLinkedList<MPFERequesterQ*> Requesters;  /* 0xa3c */
 	MPFEPlayerDetails*            LocalPlayer; /* 0xa44 */
 	bool                          IsTeamLeader;
-	MPFEData*                     Data;                    /* 0xa4c */
-	SetupCheckBox*                ConditionCheckBoxes[15]; /* 0xa50 */
-	SetupList*                    ConditionList;           /* 0xa8c */
-	SetupBigButton*               ConditionIncreaseButton;
-	SetupBigButton*               ConditionDecreaseButton;
-	SetupStaticText*              ConditionValueText; /* 0xa98 */
-	SetupStaticText*              ConditionValueLabel;
-	SetupStaticText*              ConditionTitleText;
-	SetupStaticText*              TimeLimitLabel;
-	SetupStaticText*              TimeLimitText; /* 0xaa8 */
-	SetupBigButton*               TimeLimitIncreaseButton;
-	SetupBigButton*               TimeLimitDecreaseButton;
-	SetupButton*                  LandChatToggleButton; /* 0xab4 */
-	SetupCheckBox*                ReadyCheckBox;
-	bool                          ShowChatOnLandTab;
-	WinCondition*                 SelectedCondition;    /* 0xac0 */
-	bool                          ConditionEnabled[15]; /* 0xac4 */
+	MPFEData*                     Data; /* 0xa4c */
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	SetupCheckBox*   ConditionCheckBoxes[15]; /* 0xa50 */
+	SetupList*       ConditionList;           /* 0xa8c */
+	SetupBigButton*  ConditionIncreaseButton;
+	SetupBigButton*  ConditionDecreaseButton;
+	SetupStaticText* ConditionValueText; /* 0xa98 */
+	SetupStaticText* ConditionValueLabel;
+	SetupStaticText* ConditionTitleText;
+	SetupStaticText* TimeLimitLabel;
+	SetupStaticText* TimeLimitText; /* 0xaa8 */
+	SetupBigButton*  TimeLimitIncreaseButton;
+	SetupBigButton*  TimeLimitDecreaseButton;
+	SetupButton*     LandChatToggleButton; /* 0xab4 */
+	SetupCheckBox*   ReadyCheckBox;
+	bool             ShowChatOnLandTab;
+	WinCondition*    SelectedCondition;    /* 0xac0 */
+	bool             ConditionEnabled[15]; /* 0xac4 */
+#endif
 
 	// Override methods
 
@@ -137,6 +144,14 @@ public:
 	~ChannelBox() {}
 };
 
+#if defined(VERSION_BW1W100)
+static_assert(sizeof(ChannelBox) == 0xa4c, "ChannelBox size is incorrect");
+#elif defined(VERSION_BW1W110)
+static_assert(sizeof(ChannelBox) == 0xa50, "ChannelBox size is incorrect");
+#elif defined(VERSION_BW1WCI)
+static_assert(sizeof(ChannelBox) == 0xa54, "ChannelBox size is incorrect");
+#else
 static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
+#endif
 
 #endif /* BW1_DECOMP_CHANNEL_BOX_INCLUDED_H */
