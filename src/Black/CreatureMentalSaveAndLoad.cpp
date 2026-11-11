@@ -184,7 +184,7 @@ bool32_t Creature::Save(GameOSFile& file)
 
 bool32_t CreatureSubActionAgenda::Save(GameOSFile& file)
 {
-	file.WriteIt(field_0x8);
+	file.WriteIt(IsNewSubAction);
 	file.WriteIt(CurrentSubAction);
 	file.WriteIt(SubActionState);
 	file.WriteIt(NumSubActions);
@@ -203,20 +203,20 @@ bool32_t CreatureSubActionAgenda::Save(GameOSFile& file)
 		{
 			file.WritePtr(NULL);
 		}
-		file.WriteIt(subAction.field_0x10);
-		file.WriteIt(subAction.field_0x14);
-		file.WriteIt((uint32_t&)subAction.field_0x20);
-		file.WriteIt(subAction.field_0x24);
-		file.WriteIt(subAction.field_0x28);
-		if (subAction.field_0x2c != NULL)
+		file.WriteIt(subAction.Integer);
+		file.WriteIt(subAction.Point);
+		file.WriteIt((uint32_t&)subAction.Float);
+		file.WriteIt(subAction.Spell);
+		file.WriteIt(subAction.SecondInteger);
+		if (subAction.OrderTarget != NULL)
 		{
-			file.WritePtr(subAction.field_0x2c);
+			file.WritePtr(subAction.OrderTarget);
 		}
 		else
 		{
 			file.WritePtr(NULL);
 		}
-		file.WriteIt(subAction.field_0x30);
+		file.WriteIt(subAction.OrderAction);
 	}
 	file.WritePtr(creature);
 	file.WritePtr(Partner);
@@ -225,8 +225,8 @@ bool32_t CreatureSubActionAgenda::Save(GameOSFile& file)
 
 bool32_t CreatureSubActionAgenda::Load(GameOSFile& file)
 {
-	file.ReadIt(field_0x8);
-	field_0x8 = 1;
+	file.ReadIt(IsNewSubAction);
+	IsNewSubAction = true;
 	file.ReadIt(CurrentSubAction);
 	file.ReadIt(SubActionState);
 	SubActionState = 0;
@@ -240,22 +240,22 @@ bool32_t CreatureSubActionAgenda::Load(GameOSFile& file)
 		CreatureSubAction& subAction = SubActions[i];
 		file.ReadIt((uint32_t&)subAction.Action);
 		file.ReadPtr((GameThing**)&subAction.Belief);
-		file.ReadIt(subAction.field_0x10);
-		file.ReadIt(subAction.field_0x14);
-		file.ReadIt((uint32_t&)subAction.field_0x20);
-		file.ReadIt(subAction.field_0x24);
-		file.ReadIt(subAction.field_0x28);
+		file.ReadIt(subAction.Integer);
+		file.ReadIt(subAction.Point);
+		file.ReadIt((uint32_t&)subAction.Float);
+		file.ReadIt(subAction.Spell);
+		file.ReadIt(subAction.SecondInteger);
 		GameThing* thing;
 		file.ReadPtr(&thing);
 		if (thing != NULL)
 		{
-			subAction.field_0x2c = thing;
+			subAction.OrderTarget = thing;
 		}
 		else
 		{
-			subAction.field_0x2c = NULL;
+			subAction.OrderTarget = NULL;
 		}
-		file.ReadIt(subAction.field_0x30);
+		file.ReadIt(subAction.OrderAction);
 	}
 	file.ReadPtr((GameThing**)&creature);
 	file.ReadPtr((GameThing**)&Partner);
