@@ -476,6 +476,8 @@ public:
 	void SetRequiredSpeed(float speed);
 	// BW1W120 inlined BW1M119 inlined
 	float GetRequiredSpeed() { return RequiredSpeed; }
+	// BW1W120 inlined BW1M119 inlined
+	float GetBodyRadius() { return BodyRadius; }
 	// BW1W120 0047fa80 BW1M119 012026e0
 	float GetMass();
 	// BW1W120 0047fac0 BW1M119 01202510

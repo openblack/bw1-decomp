@@ -132,7 +132,7 @@ public:
 	// BW1W120 00ea9e90 BW1M119 012d3fa8 (LHCombined Release)
 	static LHPoint g_sun_light;
 	// BW1W120 inlined BW1M119 010e7360
-	static float GetValueForZSorter(const LHPoint& point)
+	static float __fastcall GetValueForZSorter(const LHPoint& point)
 	{
 		return (point.x - g_camera.pos.x) * (point.x - g_camera.pos.x) +
 		       (point.y - g_camera.pos.y) * (point.y - g_camera.pos.y) +

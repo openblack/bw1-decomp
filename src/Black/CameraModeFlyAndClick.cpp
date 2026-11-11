@@ -64,7 +64,7 @@ CameraModeFlyAndClick::CameraModeFlyAndClick(GCamera* camera, FLY_AND_CLICK_TYPE
 		break;
 	case FLY_AND_CLICK_TYPE_ISLAND:
 		Distance = DefaultDistance;
-		GLandscape::GetIslandCentre(Focus);
+		GetCenterWorld(&Focus);
 		break;
 	case FLY_AND_CLICK_TYPE_CITADEL: {
 		Distance = DefaultDistance * 0.25f;

@@ -975,7 +975,7 @@ void LHInetWeather::ProcessWeather()
 	    GetLocationCount() > 0)
 	{
 		LHPoint centre;
-		GLandscape::GetIslandCentre(centre);
+		GetCenterWorld(&centre);
 		StormInfo info(centre, LH_INETWEATHER_STORM_RADIUS, LH_INETWEATHER_STORM_FADE_RADIUS);
 		switch (Command)
 		{
@@ -1076,7 +1076,7 @@ void LHInetWeather::ProcessWeather()
 	{
 		bool    isStorm;
 		LHPoint centre;
-		GLandscape::GetIslandCentre(centre);
+		GetCenterWorld(&centre);
 		StormInfo info(centre, LH_INETWEATHER_STORM_RADIUS, LH_INETWEATHER_STORM_FADE_RADIUS);
 		ReadWeatherInfoDataFile(".\\scripts\\weatherinfo.lhw");
 		if (Storm == NULL)

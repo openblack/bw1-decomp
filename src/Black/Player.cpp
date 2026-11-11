@@ -778,12 +778,12 @@ bool32_t GPlayer::ZoomToCitadel(bool to_island_centre)
 			LHPoint point;
 			if (to_island_centre)
 			{
-				GLandscape::GetIslandCentre(point);
+				GetCenterWorld(&point);
 				mode->ZoomToCitadel(point.x, point.z, ISLAND_CENTRE_ZOOM_DISTANCE, EIGHTH_PI_F, FALSE);
 			}
 			else if (citadel.Get() == NULL)
 			{
-				GLandscape::GetIslandCentre(point);
+				GetCenterWorld(&point);
 				mode->ZoomToCitadel(point.x, point.z, ISLAND_CENTRE_ZOOM_DISTANCE, EIGHTH_PI_F, TRUE);
 			}
 			else

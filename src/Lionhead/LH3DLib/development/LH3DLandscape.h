@@ -200,4 +200,7 @@ public:
 	static void __fastcall SetMaterials(void* data);
 };
 
+// BW1W120 00c397f4 BW1M119 011cf538 (LHCombined Release)
+extern void(__fastcall* FuncDrawSubPixel)(uint16_t* dest, unsigned long pitch, unsigned long x, unsigned long z);
+
 #endif /* BW1_DECOMP_LH3D_LANDSCAPE_INCLUDED_H */

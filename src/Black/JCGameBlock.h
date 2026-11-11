@@ -21,6 +21,10 @@ struct GameBlock
 
 	// Static methods
 
+	// BW1W120 005ddc00 BW1M119 015f0120
+	static void Open();
+	// BW1W120 005ddc90 BW1M119 015f0030
+	static void Close();
 	// BW1W120 005ddce0 BW1M119 01056ec0
 	static void Insert(Object* param_1, MapCell* param_2);
 	// BW1W120 005ddd50 BW1M119 01057130

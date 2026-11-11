@@ -21,6 +21,8 @@ class Whale : public MobileObject
 public:
 	// BW1W120 00775140 BW1M119 01090cd0
 	static void ProcessAll();
+	// BW1W120 00775120 BW1M119 01091d60
+	static void PreDrawAll();
 	// BW1W120 00774c50 BW1M119 01168ea0
 	static Whale* Create(const MapCoords& coords, const GMobileObjectInfo* info, Object* parent, float y_angle,
 	                     float scale);

@@ -76,6 +76,8 @@ public:
 	static void GetHeadingAndPitchFromPoints(const LHPoint& origin, const LHPoint& focus, float* heading, float* pitch);
 	// BW1W120 00442c20 BW1M119 01099720
 	static bool32_t TranslatePointToScreen(float* x, float* y, LHPoint* point);
+	// BW1W120 00442b00 BW1M119 01026b60
+	void ClipToCameraRadius(LHPoint* point);
 	// BW1W120 00443670 BW1M119 011a18e0
 	static float GetDefaultFov();
 

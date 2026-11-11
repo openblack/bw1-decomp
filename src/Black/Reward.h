@@ -29,6 +29,8 @@ class Reward : public MobileObject
 public:
 	// BW1W120 006e6890 BW1M119 01090310
 	static void ProcessList();
+	// BW1W120 006e6770 BW1M119 01019ed0
+	static void DrawAll();
 
 	GameThing* field_0x68;
 	GPlayer*   Player;

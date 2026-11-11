@@ -12,6 +12,8 @@ struct LHMatrix;
 
 #define LH3D_SPRITE_DEFAULT_FRAMES_PER_ROW 8
 
+#define LH3D_SPRITE_FRAME_MASK 0x3f
+
 struct LH3DSprite
 {
 	LHPoint   pos;
@@ -24,10 +26,16 @@ struct LH3DSprite
 	LH3DColor specular;
 	// A Horizontal sprite lies flat in the x/z plane instead of facing the camera; a UseMaterial one sets its own
 	// material before it is drawn.
-	uint32_t      Frame : 6;
-	uint32_t      Horizontal : 1;
-	uint32_t      UseMaterial : 1;
-	uint32_t      field_0x28_8 : 24;
+	union {
+		uint32_t Flags;
+		struct
+		{
+			uint32_t Frame : 6;
+			uint32_t Horizontal : 1;
+			uint32_t UseMaterial : 1;
+			uint32_t field_0x28_8 : 24;
+		};
+	};
 	LH3DMaterial* material;
 	uint8_t       FramesPerRow;
 	uint8_t       field_0x31;
@@ -55,6 +63,13 @@ struct LH3DSprite
 	void SetHorizontal() { Horizontal = true; }
 	// BW1W120 inlined BW1M119 inlined
 	void SetFrame(uint32_t frame) { Frame = frame; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetFrameNumber(long frame)
+	{
+		frame &= LH3D_SPRITE_FRAME_MASK;
+		Flags &= ~LH3D_SPRITE_FRAME_MASK;
+		Flags |= frame;
+	}
 	// BW1W120 inlined BW1M119 inlined
 	void SetSize(float size)
 	{
