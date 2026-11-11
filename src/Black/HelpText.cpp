@@ -427,10 +427,7 @@ void HelpText::CalculateCurrentDisplayWidthAndHeight(const LHRegion& region, wch
 	{
 		if (result == HELP_TEXT_WORD_NEW_LINE)
 		{
-			if (x > maxWidth)
-			{
-				maxWidth = x;
-			}
+			maxWidth = max(x, maxWidth);
 			x = 0;
 			line++;
 			if (line >= maxLines)
@@ -458,10 +455,7 @@ void HelpText::CalculateCurrentDisplayWidthAndHeight(const LHRegion& region, wch
 			int wordWidth = Font->GetStringWidth(word, wcslen(word), TextSize, 1.0f);
 			if (region.Width() - wordWidth - x < 0)
 			{
-				if (x > maxWidth)
-				{
-					maxWidth = x;
-				}
+				maxWidth = max(x, maxWidth);
 				x = 0;
 				line++;
 				if (line >= maxLines)
@@ -473,10 +467,7 @@ void HelpText::CalculateCurrentDisplayWidthAndHeight(const LHRegion& region, wch
 		}
 		current = next;
 	}
-	if (x > maxWidth)
-	{
-		maxWidth = x;
-	}
+	maxWidth = max(x, maxWidth);
 	*width = maxWidth;
 	*height = min(line + 1, maxLines) * TextSize;
 }
@@ -643,10 +634,7 @@ void HelpText::DrawPauseText()
 	}
 	if (PauseTextFade > 0.0f)
 	{
-		if (PauseTextFade >= 1.0f)
-		{
-			PauseTextFade = 1.0f;
-		}
+		PauseTextFade = min(PauseTextFade, 1.0f);
 	}
 	else
 	{
@@ -714,14 +702,7 @@ void HelpText::DrawPauseText()
 		LH3DTech::Get3DPointFromScreen(LHCoord(halfWidth - (length - 1) * spacing * 0.5f + i * spacing, y), point,
 		                               distance);
 		float angle = Angle - i * (1.0f / 3.0f);
-		while (angle < 0.0f)
-		{
-			angle += 2.0f * TWO_PI;
-		}
-		while (angle > 2.0f * TWO_PI)
-		{
-			angle -= 2.0f * TWO_PI;
-		}
+		WRAP(angle, 0.0f, 2.0f * TWO_PI, 2.0f * TWO_PI);
 		LHMatrix matrix;
 		if (angle < TWO_PI)
 		{
