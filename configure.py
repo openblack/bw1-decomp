@@ -1457,7 +1457,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Stream.cpp"),
             GameCodeObject(NonMatching, "Black/StreetLantern.cpp"),
             GameCodeObject(NonMatching, "Black/StreetLight.cpp"),
-            GameCodeObject(NonMatching, "Black/SubArgument.cpp"),
+            GameCodeObject(Matching, "Black/SubArgument.cpp"),
             GameCodeObject(NonMatching, "Black/SubOptionEntry.cpp"),
             GameCodeObject(NonMatching, "Black/TattooEditor.cpp"),
             GameCodeObject(NonMatching, "Black/Temple.cpp"),

@@ -309,7 +309,7 @@ public:
 	uint32_t GameTurnLastFedConfinedCreature;
 	uint32_t GameTurnLastSleptWithConfinedCreature;
 	bool32_t RightHandOnly;
-	uint32_t ci_field_0x107c;
+	uint32_t GameTurnLastCastFastSpell;
 	float    ScriptScale;
 	uint8_t  BodyFlags;
 	uint8_t  ci_field_0x1085[0x3];
@@ -1484,10 +1484,462 @@ public:
 	void UpdateHelp();
 	// BW1W120 004feda0 BW1M119 01290c00
 	void ProcessSubAction();
+	// BW1W120 004ff9c0 BW1M119 012a4820
+	int SubStateInitiatePickUp();
+	// BW1W120 004ff9f0 BW1M119 012a42a0
+	uint32_t SubStateInitiatePickUpParameter(CreatureBelief* belief);
+	// BW1W120 004ffda0 BW1M119 012a4230
+	int SubStatePerformPickUp();
 	// BW1W120 004ffdd0 BW1M119 012a40a0
-	uint32_t SubStatePerformPickUpParameter(CreatureBelief* param_1);
+	uint32_t SubStatePerformPickUpParameter(CreatureBelief* belief);
+	// BW1W120 004ffed0 BW1M119 012a3ee0
+	int SubStateInitiateCreatePickUpThenRemove();
+	// BW1W120 00500020 BW1M119 012a3c70
+	int SubStatePerformCreatePickUpThenRemove();
+	// BW1W120 005001f0 BW1M119 012a3ba0
+	int SubStateInitiateDiscard();
+	// BW1W120 00500260 BW1M119 012a3b10
+	int SubStatePerformDiscard();
+	// BW1W120 00500290 BW1M119 012a3aa0
+	int SubStateFinishDiscard();
+	// BW1W120 005002b0 BW1M119 012a3850
+	int SubStateInitiateEat();
+	// BW1W120 005004b0 BW1M119 012a37c0
+	int SubStatePerformEat();
+	// BW1W120 005004e0 BW1M119 012a36f0
+	int SubStateFinishEatCreatedObject();
+	// BW1W120 005007f0 BW1M119 012a32b0
+	int SubStateFinishEat();
+	// BW1W120 00500860 BW1M119 012a3200
+	int SubStateInitiateHeldObjectAction();
+	// BW1W120 005008b0 BW1M119 012a3180
+	int SubStatePerformHeldObjectAction();
+	// BW1W120 005008d0 BW1M119 012a3100
+	int SubStateInitiateRestToGetBetter();
+	// BW1W120 005008f0 BW1M119 012a2f80
+	int SubStatePerformRestToGetBetter();
+	// BW1W120 00500a10 BW1M119 012a2f00
+	int SubStatePerformStopBeingOnFire();
+	// BW1W120 00500a30 BW1M119 012a2e10
+	int SubStateInitiateStaticAction();
+	// BW1W120 00500ac0 BW1M119 012a2d00
+	int SubStatePerformStaticAction();
+	// BW1W120 00500b50 BW1M119 012a2c80
+	int SubStateFinishStaticAction();
+	// BW1W120 00500b70 BW1M119 012a2bd0
+	int SubStateInitiateCastSpell();
+	// BW1W120 00500bc0 BW1M119 012a2a50
+	int SubStatePerformCastSpellAtObject();
+	// BW1W120 00500cd0 BW1M119 012a28e0
+	int SubStatePerformCastSpellAtPos();
+	// BW1W120 00500e10 BW1M119 012a2830
+	int SubStateFinishCastSpell();
+	// BW1W120 00500e60 BW1M119 012a26b0
+	int SubStateInitiateThrowAtPos();
+	// BW1W120 00500f30 BW1M119 012a23d0
+	int SubStateInitiateThrowInPile();
+	// BW1W120 005010f0 BW1M119 012a2320
+	int SubStateFinishThrowInPile();
+	// BW1W120 00501130 BW1M119 012a20b0
+	int SubStateInitiateThrow();
+	// BW1W120 00501290 BW1M119 012a2040
+	int SubStatePerformThrow();
+	// BW1W120 005012b0 BW1M119 012a1fd0
+	int SubStateFinishThrow();
+	// BW1W120 005012d0 BW1M119 012a1de0
+	int SubStateInitiateTurnToFaceObject();
+	// BW1W120 005013b0 BW1M119 012a1b50
+	int SubStatePerformTurnToFaceObject();
+	// BW1W120 00501520 BW1M119 012a1900
+	int SubStateFinishTurnToFaceObject();
+	// BW1W120 00501660 BW1M119 012a17c0
+	int SubStateInitiateTurnToFacePos();
+	// BW1W120 00501730 BW1M119 012a1730
+	int SubStatePerformTurnToFacePos();
+	// BW1W120 00501760 BW1M119 012a1580
+	int SubStateInitiateMoveToNearestWater();
+	// BW1W120 005018a0 BW1M119 012a1470
+	int SubStateInitiateMoveToPos();
+	// BW1W120 00501950 BW1M119 012a1400
+	int SubStateFinishMoveToPos();
+	// BW1W120 00501970 BW1M119 012a12b0
+	int SubStateInitiateRunAway();
+	// BW1W120 00501a70 BW1M119 012a11e0
+	int SubStatePerformRunAway();
+	// BW1W120 00501af0 BW1M119 012a1070
+	int SubStateInitiateRunAwayFromHand();
+	// BW1W120 00501bc0 BW1M119 012a0f70
+	int SubStatePerformRunAwayFromHand();
+	// BW1W120 00501c90 BW1M119 012a0ee0
+	int SubStateInitiateIndividualAction();
+	// BW1W120 00501cd0 BW1M119 012a0e60
+	int SubStatePerformIndividualAction();
+	// BW1W120 00501cf0 BW1M119 012a0e00
+	int SubStatePerformChooseObjectToHurl();
 	// BW1W120 00501d10 BW1M119 012a0af0
-	bool SubStatePerformAddVillagersToDance();
+	int SubStatePerformAddVillagersToDance();
+	// BW1W120 00501f10 BW1M119 012a08d0
+	int SubStatePerformTellVillagersToGoNearPos();
+	// BW1W120 005020a0 BW1M119 012a0750
+	int SubStatePerformTellVillagersToGoToDancePos();
+	// BW1W120 00502190 BW1M119 012a0630
+	int SubStatePerformTellVillagersToEnterState();
+	// BW1W120 00502210 BW1M119 012a04f0
+	int SubStatePerformTellVillagersToStartDancing();
+	// BW1W120 00502290 BW1M119 012a0460
+	int SubStatePerformFacialAnimation();
+	// BW1W120 005022d0 BW1M119 012a03b0
+	int SubStateInitiateFaint();
+	// BW1W120 00502320 BW1M119 012a0340
+	int SubStatePerformFaint();
+	// BW1W120 00502340 BW1M119 012a0250
+	int SubStateFinishPoo();
+	// BW1W120 00502390 BW1M119 0129fd30
+	int SubStateInitiateMoveToThrowPos();
+	// BW1W120 00502660 BW1M119 0129fa10
+	int SubStateInitiateMoveToThrowAtPos();
+	// BW1W120 00502810 BW1M119 0129f990
+	int SubStatePerformMoveToThrowPos();
+	// BW1W120 00502830 BW1M119 0129f590
+	int SubStateInitiateStomp();
+	// BW1W120 00502b00 BW1M119 0129f380
+	int SubStatePerformStomp();
+	// BW1W120 00502c70 BW1M119 0129f210
+	int SubStatePerformLookAtHand();
+	// BW1W120 00502d70 BW1M119 0129f120
+	int SubStatePerformLookAtCamera();
+	// BW1W120 00502e00 BW1M119 0129f030
+	int SubStatePerformLookAtCameraInWideScreen();
+	// BW1W120 00502ff0 BW1M119 0129ed00
+	int SubStateFinishRenderObjectImmobile();
+	// BW1W120 00503060 BW1M119 0129ecb0
+	int SubStatePerformMoveToDropPos();
+	// BW1W120 00503070 BW1M119 0129ec60
+	int SubStateFinishAddObjectToShape();
+	// BW1W120 00503080 BW1M119 0129ea60
+	int SubStateInitiateTurnToFaceAwayFromObject();
+	// BW1W120 00503160 BW1M119 0129e9e0
+	int SubStatePerformTurnToFaceAwayFromObject();
+	// BW1W120 00503180 BW1M119 0129e5b0
+	int SubStatePerformApproachObject();
+	// BW1W120 005034e0 BW1M119 0129e540
+	int SubStateFinishDance();
+	// BW1W120 00503500 BW1M119 0129e470
+	int SubStatePerformWait();
+	// BW1W120 00503580 BW1M119 0129e360
+	int SubStatePerformWaitForDancersToStopMoving();
+	// BW1W120 005035e0 BW1M119 0129e2d0
+	int SubStatePerformWaitForDancersToStartDancing();
+	// BW1W120 00503600 BW1M119 0129e150
+	int SubStatePerformHeal();
+	// BW1W120 005036c0 BW1M119 0129df60
+	int SubStateInitiateFight();
+	// BW1W120 00503830 BW1M119 0129dbe0
+	int SubStatePerformFight();
+	// BW1W120 00503a50 BW1M119 0129db40
+	int SubStateFinishFight();
+	// BW1W120 00503a90 BW1M119 0129d950
+	int SubStatePerformRequestPartner();
+	// BW1W120 00503bd0 BW1M119 0129d8e0
+	int SubStateInitiateStopMoving();
+	// BW1W120 00503bf0 BW1M119 0129d850
+	int SubStatePerformStopMoving();
+	// BW1W120 00503c20 BW1M119 0129d7b0
+	int SubStateInitiateFollowCamera();
+	// BW1W120 00503c60 BW1M119 0129d5c0
+	int SubStatePerformFollowCamera();
+	// BW1W120 00503de0 BW1M119 0129d430
+	int SubStateInitiateTurnToFaceCamera();
+	// BW1W120 00503ec0 BW1M119 0129d270
+	int SubStatePerformTurnToFaceCamera();
+	// BW1W120 00503fc0 BW1M119 0129d100
+	int SubStateInitiateTurnToFaceOtherPlayersCamera();
+	// BW1W120 00504070 BW1M119 0129cf50
+	int SubStatePerformTurnToFaceOtherPlayersCamera();
+	// BW1W120 00504160 BW1M119 0129ccc0
+	int SubStateInitiateFaceDownSlope();
+	// BW1W120 00504300 BW1M119 0129cc40
+	int SubStatePerformFaceDownSlope();
+	// BW1W120 00504320 BW1M119 0129caa0
+	int SubStateInitiateCommunicateToPlayer();
+	// BW1W120 00504410 BW1M119 0129ca20
+	int SubStatePerformCommunicateToPlayer();
+	// BW1W120 00504430 BW1M119 0129c970
+	int SubStateReduceDesire();
+	// BW1W120 00504470 BW1M119 0129c920
+	int SubStateLoop();
+	// BW1W120 005044a0 BW1M119 0129c880
+	int SubStatePerformCheckValue();
+	// BW1W120 005044e0 BW1M119 0129c790
+	int SubStateRepair();
+	// BW1W120 00504560 BW1M119 0129c6f0
+	int SubStateDestroyObject();
+	// BW1W120 005045b0 BW1M119 0129c5d0
+	int SubStatePerformPutOutFire();
+	// BW1W120 00504660 BW1M119 0129c4b0
+	int SubStateInitiateDanceDuringEditing();
+	// BW1W120 00504700 BW1M119 0129bd80
+	int SubStatePerformDance();
+	// BW1W120 00504cd0 BW1M119 0129bc90
+	int SubStateInitiatePracticeDance();
+	// BW1W120 00504d50 BW1M119 0129bc30
+	int SubStatePerformPracticeDance();
+	// BW1W120 00504d70 BW1M119 0129bb90
+	int SubStateInitiateCastSpotVisual();
+	// BW1W120 00504da0 BW1M119 0129ba60
+	int SubStatePerformCastSpotVisual();
+	// BW1W120 00504e80 BW1M119 0129b9b0
+	int SubStateFinishCastSpotVisual();
+	// BW1W120 00504ec0 BW1M119 0129b8e0
+	int SubStatePerformStartTheDance();
+	// BW1W120 00504ef0 BW1M119 0129b880
+	int SubStatePerformStartLooking();
+	// BW1W120 00504f10 BW1M119 0129b820
+	int SubStatePerformStopLooking();
+	// BW1W120 00504f30 BW1M119 0129b780
+	int SubStateInitiateDance();
+	// BW1W120 00504f70 BW1M119 0129b6d0
+	int SubStateInitiateInteractWithTotem();
+	// BW1W120 00504fc0 BW1M119 0129b4c0
+	int SubStatePerformRaiseTotem();
+	// BW1W120 00505140 BW1M119 0129b2c0
+	int SubStatePerformLowerTotem();
+	// BW1W120 005052b0 BW1M119 0129b220
+	int SubStatePerformDrink();
+	// BW1W120 005052f0 BW1M119 0129b190
+	int SubStatePerformHealHimself();
+	// BW1W120 00505320 BW1M119 0129b0c0
+	int SubStateInitialiseInspectCreature();
+	// BW1W120 00505380 BW1M119 0129afb0
+	int SubStatePerformInspectCreature();
+	// BW1W120 00505400 BW1M119 0129ae30
+	int SubStatePerformCreateHandObjectFromObject();
+	// BW1W120 00505500 BW1M119 0129ada0
+	int SubStateInitiatePickUpCreatedObject();
+	// BW1W120 00505520 BW1M119 0129ad10
+	int SubStatePerformPickUpCreatedObject();
+	// BW1W120 00505540 BW1M119 0129abc0
+	int SubStateInitiatePickUpCreatedByCreature();
+	// BW1W120 005055d0 BW1M119 0129ab00
+	int SubStatePerformAddReactionToObject();
+	// BW1W120 00505620 BW1M119 0129aa10
+	int SubStatePerformRequestDoSomethingWithObject();
+	// BW1W120 00505690 BW1M119 0129a950
+	int SubStatePerformSetOnFire();
+	// BW1W120 005056f0 BW1M119 0129a830
+	int SubStateInitiateGoNearObject();
+	// BW1W120 005057b0 BW1M119 0129a300
+	int SubStatePerformGoNearObject();
+	// BW1W120 00505c30 BW1M119 0129a270
+	int SubStatePerformObserveObject();
+	// BW1W120 00505c60 BW1M119 01299ee0
+	int SubStatePerformFollowInterestingObject();
+	// BW1W120 00505e70 BW1M119 01299e70
+	int SubStateFinishFollowInterestingObject();
+	// BW1W120 00505e90 BW1M119 01299e30
+	int SubStatePerformInScript();
+	// BW1W120 00505ea0 BW1M119 01299d00
+	int SubStatePerformLookAtFlyingObject();
+	// BW1W120 00505f60 BW1M119 01299c60
+	int SubStateInitiateFollowHand();
+	// BW1W120 00505fa0 BW1M119 01299a70
+	int SubStatePerformFollowHand();
+	// BW1W120 005060d0 BW1M119 012997e0
+	int SubStatePerformAddToHome();
+	// BW1W120 00506150 BW1M119 01299740
+	int SubStatePerformWaitForObject();
+	// BW1W120 00506190 BW1M119 012996f0
+	int SubStateInitiateSeeWhoWinsGame();
+	// BW1W120 005061a0 BW1M119 012996a0
+	int SubStatePerformSeeWhoWinsGame();
+	// BW1W120 005061b0 BW1M119 01299590
+	int SubStateInitiateRespondAfterFight();
+	// BW1W120 00506240 BW1M119 01299470
+	int SubStatePerformRespondAfterFight();
+	// BW1W120 005062c0 BW1M119 012993e0
+	int SubStatePerformCreateFootPrint();
+	// BW1W120 005062f0 BW1M119 01298fa0
+	int SubStatePerformOrderCreature();
+	// BW1W120 00506580 BW1M119 01298ef0
+	int SubStatePerformWaitForCreatureToPickUp();
+	// BW1W120 005065d0 BW1M119 01298e40
+	int SubStatePerformDemobiliseObject();
+	// BW1W120 00506620 BW1M119 01298d90
+	int SubStatePerformRemobiliseObject();
+	// BW1W120 00506670 BW1M119 01298d40
+	int SubStatePerformWaitForever();
+	// BW1W120 00506680 BW1M119 01298cb0
+	int SubStatePerformSingleKiss();
+	// BW1W120 005066b0 BW1M119 01298be0
+	int SubStatePerformKiss();
+	// BW1W120 00506720 BW1M119 01298b70
+	int SubStateFinishKiss();
+	// BW1W120 00506740 BW1M119 01298a40
+	int SubStateInitiatePointAtPoint();
+	// BW1W120 00506820 BW1M119 01298960
+	int SubStateInitiatePointAtArena();
+	// BW1W120 00506890 BW1M119 012988d0
+	int SubStatePerformPointAtPoint();
+	// BW1W120 005068c0 BW1M119 012987b0
+	int SubStateInitiatePointAtObject();
+	// BW1W120 005069a0 BW1M119 012986e0
+	int SubStatePerformPointAtObject();
+	// BW1W120 00506a40 BW1M119 01298670
+	int SubStateFinishPoint();
+	// BW1W120 00506a60 BW1M119 01298590
+	int SubStatePerformDoTeleport();
+	// BW1W120 00506ac0 BW1M119 01298520
+	int SubStatePerformStopReacting();
+	// BW1W120 00506ad0 BW1M119 012984a0
+	int SubStatePerformSetSpeed();
+	// BW1W120 00506b10 BW1M119 01298320
+	int SubStateInitiateTurnToFaceHand();
+	// BW1W120 00506be0 BW1M119 01298150
+	int SubStatePerformTurnToFaceHand();
+	// BW1W120 00506cf0 BW1M119 01298080
+	int SubStateInitiatePickUpFromHand();
+	// BW1W120 00506d50 BW1M119 01298000
+	int SubStatePerformPickUpFromHand();
+	// BW1W120 00506d70 BW1M119 01297f10
+	int SubStateInitiateGesture();
+	// BW1W120 00506e10 BW1M119 01297d00
+	int SubStatePerformGesture();
+	// BW1W120 00507000 BW1M119 01297c70
+	int SubStateFinishGesture();
+	// BW1W120 00507030 BW1M119 01297c00
+	int SubStateInitiateWaitForCreatureToBeFree();
+	// BW1W120 00507060 BW1M119 01297b30
+	int SubStatePerformWaitForCreatureToBeFree();
+	// BW1W120 005070d0 BW1M119 01297a50
+	int SubStatePerformActOnObjectInHand();
+	// BW1W120 00507140 BW1M119 012979a0
+	int SubStatePerformCreateFishFromSea();
+	// BW1W120 00507190 BW1M119 012978c0
+	int SubStatePerformCreateMagicFood();
+	// BW1W120 00507210 BW1M119 01297810
+	int SubStateInitiateTransportedByTeleport();
+	// BW1W120 00507250 BW1M119 01297650
+	int SubStatePerformTransportedByTeleport();
+	// BW1W120 00507350 BW1M119 01297520
+	int SubStateFinishTransportedByTeleport();
+	// BW1W120 005073e0 BW1M119 01297420
+	int SubStatePerformLoopAction();
+	// BW1W120 00507470 BW1M119 012973b0
+	int SubStatePerformConsiderActionCompleted();
+	// BW1W120 00507480 BW1M119 01297220
+	int SubStatePerformCreateArena();
+	// BW1W120 005075a0 BW1M119 01297090
+	int SubStateInitiateMoveToArena();
+	// BW1W120 005076a0 BW1M119 01297000
+	int SubStatePerformResurrect();
+	// BW1W120 005076d0 BW1M119 01296ec0
+	int SubStateInitiateSwapMindWithOtherCreature();
+	// BW1W120 00507760 BW1M119 01296a50
+	int SubStatePerformSwapMindWithOtherCreature();
+	// BW1W120 00507a90 BW1M119 01296a00
+	int SubStateFinishSwapMindWithOtherCreature();
+	// BW1W120 00507aa0 BW1M119 012969c0
+	int SubStatePerformFail();
+	// BW1W120 00507ab0 BW1M119 012968f0
+	int SubStatePerformWaitForObjectToBeInMap();
+	// BW1W120 00507b10 BW1M119 01296850
+	int SubStatePerformSetPos();
+	// BW1W120 00507b90 BW1M119 01296780
+	int SubStatePerformHideObjectInHand();
+	// BW1W120 00507be0 BW1M119 012966e0
+	int SubStatePerformDestroyObjectToUse();
+	// BW1W120 00507c10 BW1M119 01296650
+	int SubStatePerformClearObjectToActOn();
+	// BW1W120 00507c40 BW1M119 012965d0
+	int SubStatePerformClearObjectToUse();
+	// BW1W120 00507c70 BW1M119 012964f0
+	int SubStatePerformCatch();
+	// BW1W120 00507ce0 BW1M119 012963e0
+	int SubStatePerformKick();
+	// BW1W120 00507d70 BW1M119 01296320
+	int SubStateInitiateTransportHome();
+	// BW1W120 00507dc0 BW1M119 012961c0
+	int SubStatePerformTransportHome();
+	// BW1W120 00507e80 BW1M119 012960e0
+	int SubStateFinishTransportHome();
+	// BW1W120 00507ee0 BW1M119 01295f70
+	int SubStatePerformRemoveAndCreateSpellFromTotem();
+	// BW1W120 00507fd0 BW1M119 01295e40
+	int SubStatePerformAddAndDestroySpellFromTotem();
+	// BW1W120 00508080 BW1M119 01295dd0
+	int SubStatePerformLightbulb();
+	// BW1W120 00508090 BW1M119 01295d00
+	int SubStatePerformShatterRock();
+	// BW1W120 005080f0 BW1M119 01295c60
+	int SubStatePerformDestroyCreatedObject();
+	// BW1W120 00508130 BW1M119 01295b10
+	int SubStatePerformCreateHandObjectExNihilo();
+	// BW1W120 005081f0 BW1M119 01295a80
+	int SubStatePerformApplyDesireToObject();
+	// BW1W120 00508230 BW1M119 01295a20
+	int SubStatePerformStopControlledByTeleport();
+	// BW1W120 00508250 BW1M119 01295740
+	int SubStatePerformWatchPlayer();
+	// BW1W120 005084d0 BW1M119 01295610
+	int SubStatePerformMakeDisciple();
+	// BW1W120 00508580 BW1M119 01295570
+	int SubStateInitiateSetDance();
+	// BW1W120 005085b0 BW1M119 01295400
+	int SubStatePerformSetDance();
+	// BW1W120 005086b0 BW1M119 01295380
+	int SubStateInitiateSleep();
+	// BW1W120 005086d0 BW1M119 01295190
+	int SubStatePerformSleep();
+	// BW1W120 00508830 BW1M119 01295110
+	int SubStatePerformWaitUntilFree();
+	// BW1W120 00508850 BW1M119 01294dc0
+	int SubStateInitiateGetAwayFromObject();
+	// BW1W120 00508b00 BW1M119 01294d40
+	int SubStatePerformGetAwayFromObject();
+	// BW1W120 00508b20 BW1M119 01294ce0
+	int AbortFizz();
+	// BW1W120 00508b30 BW1M119 01294c80
+	int AbortStaticAction();
+	// BW1W120 00508b40 BW1M119 01294b70
+	int AbortEat();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005133c0 BW1MCI119 012c39b0
+	int SubStateInitiateCastPlannedAbode();
+	// BW1WCI 00513430 BW1MCI119 012c3870
+	int SubStatePerformCastPlannedAbode();
+	// BW1WCI 00513500 BW1MCI119 012c37e0
+	int SubStateFinishCastPlannedAbode();
+	// BW1WCI 005185f0 BW1MCI119 012bacd0
+	int SubStateInitiateGoToOtherSideOfObject();
+	// BW1WCI 00518690 BW1MCI119 012ba980
+	int SubStatePerformGoToOtherSideOfObject();
+	// BW1WCI 0051bba0 BW1MCI119 012b4b40
+	int SubStatePerformCreatePlannedAbode();
+	// BW1WCI 0051bc40 BW1MCI119 012b4a30
+	int SubStatePerformCreatePlannedCivicBuilding();
+	// BW1WCI 0051bce0 BW1MCI119 012b4910
+	int SubStateInitiateGoNearPlannedObject();
+	// BW1WCI 0051bd90 BW1MCI119 012b4730
+	int SubStateInitiateTurnToFacePlannedObject();
+	// BW1WCI 0051be50 BW1MCI119 012b4660
+	int SubStatePerformAddPlannedObject();
+	// BW1WCI 0051beb0 BW1MCI119 012b44a0
+	int SubStateInitiateRespondToDice();
+	// BW1WCI 0051c000 BW1MCI119 012b4450
+	int SubStatePerformTurnOffNavigation();
+	// BW1WCI 0051c010 BW1MCI119 012b4400
+	int SubStatePerformTurnOnNavigation();
+#endif
+	// BW1W120 00508bd0 BW1M119 01294b10
+	int SubStateInitiateTalk();
+	// BW1W120 00508bf0 BW1M119 01294aa0
+	int SubStatePerformTalk();
+	// BW1W120 00508c10 BW1M119 012949d0
+	int SubStatePerformWaitForSpellsToWearOff();
+	// BW1W120 00508c60 BW1M119 01294870
+	int SubStatePerformBuild();
+	// BW1W120 00508d30 BW1M119 012946d0
+	int SubStateEatNearestFoodPile();
 	// BW1W120 00477440 BW1M119 011e2df0
 	bool32_t CanSeePos(const MapCoords& pos);
 	// BW1W120 004796a0 BW1M119 011ded90

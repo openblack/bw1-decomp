@@ -277,19 +277,19 @@ LH3DJustFootPrint* LH3DJustFootPrint::Create(LH3DObject* object)
 			return NULL;
 		}
 	}
-	LH3DJustFootPrint* footPrint = (LH3DJustFootPrint*)LH3DMem::AllocClear(sizeof(LH3DJustFootPrint));
-	footPrint->Mesh = object->GetMesh();
-	footPrint->Next = g_first;
-	footPrint->Matrix = object->matrix;
-	footPrint->UseAlpha = false;
-	footPrint->Opacity = LH3D_JUST_FOOT_PRINT_OPAQUE;
-	LH3DMeshFootprintData* footprintData = (LH3DMeshFootprintData*)footPrint->Mesh->GetFootprintData();
+	LH3DJustFootPrint* footprintInstance = (LH3DJustFootPrint*)LH3DMem::AllocClear(sizeof(LH3DJustFootPrint));
+	footprintInstance->Mesh = object->GetMesh();
+	footprintInstance->Next = g_first;
+	footprintInstance->Matrix = object->matrix;
+	footprintInstance->UseAlpha = false;
+	footprintInstance->Opacity = LH3D_JUST_FOOT_PRINT_OPAQUE;
+	LH3DMeshFootprintData* footprintData = (LH3DMeshFootprintData*)footprintInstance->Mesh->GetFootprintData();
 	if (footprintData != NULL && footprintData->Count != 0)
 	{
-		LH3DMeshFootprint*         footprint = footprintData->First;
-		LH3DMeshFootprintTriangle* triangles = (LH3DMeshFootprintTriangle*)(footprint + 1);
+		LH3DMeshFootprint*         meshFootprint = footprintData->First;
+		LH3DMeshFootprintTriangle* triangles = (LH3DMeshFootprintTriangle*)(meshFootprint + 1);
 		bool32_t                   needsBoundsInitialization = true;
-		for (int triangleIndex = 0; triangleIndex < footprint->NumTriangles; triangleIndex++)
+		for (int triangleIndex = 0; triangleIndex < meshFootprint->NumTriangles; triangleIndex++)
 		{
 			for (int corner = 0; corner < ARRAY_SIZE(triangles[triangleIndex].Points); corner++)
 			{
@@ -299,24 +299,24 @@ LH3DJustFootPrint* LH3DJustFootPrint::Create(LH3DObject* object)
 				if (needsBoundsInitialization)
 				{
 					needsBoundsInitialization = false;
-					footPrint->Min.Set(worldPoint.x, worldPoint.z);
-					footPrint->Max.Set(worldPoint.x, worldPoint.z);
+					footprintInstance->Min.Set(worldPoint.x, worldPoint.z);
+					footprintInstance->Max.Set(worldPoint.x, worldPoint.z);
 				}
 				else
 				{
-					footPrint->Min.x = min(worldPoint.x, footPrint->Min.x);
-					footPrint->Max.x = max(worldPoint.x, footPrint->Max.x);
-					footPrint->Min.y = min(worldPoint.z, footPrint->Min.y);
-					footPrint->Max.y = max(worldPoint.z, footPrint->Max.y);
+					footprintInstance->Min.x = min(worldPoint.x, footprintInstance->Min.x);
+					footprintInstance->Max.x = max(worldPoint.x, footprintInstance->Max.x);
+					footprintInstance->Min.y = min(worldPoint.z, footprintInstance->Min.y);
+					footprintInstance->Max.y = max(worldPoint.z, footprintInstance->Max.y);
 				}
 			}
 		}
 	}
-	g_first = footPrint;
-	int maxBlockX = (int)(footPrint->Max.x * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
-	int minBlockZ = (int)(footPrint->Min.y * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
-	int maxBlockZ = (int)(footPrint->Max.y * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
-	for (int blockX = (int)(footPrint->Min.x * LH3D_JUST_FOOT_PRINT_TO_BLOCK); blockX <= maxBlockX; blockX++)
+	g_first = footprintInstance;
+	int maxBlockX = (int)(footprintInstance->Max.x * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
+	int minBlockZ = (int)(footprintInstance->Min.y * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
+	int maxBlockZ = (int)(footprintInstance->Max.y * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
+	for (int blockX = (int)(footprintInstance->Min.x * LH3D_JUST_FOOT_PRINT_TO_BLOCK); blockX <= maxBlockX; blockX++)
 	{
 		for (int blockZ = minBlockZ; blockZ <= maxBlockZ; blockZ++)
 		{
@@ -327,7 +327,7 @@ LH3DJustFootPrint* LH3DJustFootPrint::Create(LH3DObject* object)
 			}
 		}
 	}
-	return footPrint;
+	return footprintInstance;
 }
 
 void LH3DJustFootPrint::ReleaseAll()
@@ -1250,7 +1250,7 @@ void ScriptedScreenShot::TakeFullScreen()
 	g_b_fullscreen = false;
 }
 
-static void SaveScreenshotPictureAndThumbnail(uint8_t* picturePixels);
+static void SaveScreenshotPictureAndThumbnail(uint8_t* picture_pixels);
 
 void ScriptedScreenShot::Process()
 {
@@ -1288,29 +1288,29 @@ void ScriptedScreenShot::Process()
 	LHSys::TheSystem.screen.PPrimarySurface->Unlock(NULL);
 	SaveScreenshotPictureAndThumbnail(picturePixels);
 }
-static void SaveScreenshotPictureAndThumbnail(uint8_t* picturePixels)
+static void SaveScreenshotPictureAndThumbnail(uint8_t* picture_pixels)
 {
-	uint8_t* blendPixel = picturePixels;
+	uint8_t* blendPixel = picture_pixels;
 	if (ScriptedScreenShot::g_info.Half != 0)
 	{
-		blendPixel = picturePixels + CITADEL_TEXTURE_BYTES / 2;
+		blendPixel = picture_pixels + CITADEL_TEXTURE_BYTES / 2;
 	}
 	BlendScreenshotPixels(blendPixel);
-	SaveTextureCitadel(ScriptedScreenShot::g_info.PictureTexture, picturePixels);
+	SaveTextureCitadel(ScriptedScreenShot::g_info.PictureTexture, picture_pixels);
 	uint8_t* thumbnails = (uint8_t*)malloc(CITADEL_TEXTURE_BYTES);
 	LoadTextureCitadel(ScriptedScreenShot::g_info.ThumbnailTexture, thumbnails);
 	long thumbnailRowOffset =
 		ScriptedScreenShot::g_info.Thumbnail / 2 * SCRIPTED_SCREEN_SHOT_THUMBNAIL_HEIGHT * CITADEL_TEXTURE_PITCH;
 	long thumbnailColumnOffset = (ScriptedScreenShot::g_info.Thumbnail & 1) * SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH * 3;
 	uint8_t* thumbnailPixel = thumbnails + thumbnailRowOffset + thumbnailColumnOffset;
-	uint8_t* thumbnailSource = picturePixels;
+	uint8_t* thumbnailSource = picture_pixels;
 	if (ScriptedScreenShot::g_info.Half != 0)
 	{
-		thumbnailSource = picturePixels + CITADEL_TEXTURE_BYTES / 2;
+		thumbnailSource = picture_pixels + CITADEL_TEXTURE_BYTES / 2;
 	}
 	BuildScreenshotThumbnail(thumbnailPixel, thumbnailSource);
 	SaveTextureCitadel(ScriptedScreenShot::g_info.ThumbnailTexture, thumbnails);
-	free(picturePixels);
+	free(picture_pixels);
 	free(thumbnails);
 }
 
@@ -4242,14 +4242,8 @@ NewCollide::NewCollide(LH3DObject* object) : obj(NULL)
 	centre.y = 0.0f;
 	float x = mesh->BoundingBox.size.x * object->scale;
 	float z = mesh->BoundingBox.size.z * object->scale;
-	if (x < NEW_COLLIDE_MIN_SIZE)
-	{
-		x = NEW_COLLIDE_MIN_SIZE;
-	}
-	if (z < NEW_COLLIDE_MIN_SIZE)
-	{
-		z = NEW_COLLIDE_MIN_SIZE;
-	}
+	x = max(x, NEW_COLLIDE_MIN_SIZE);
+	z = max(z, NEW_COLLIDE_MIN_SIZE);
 	if (x > z)
 	{
 		if (x / z > NEW_COLLIDE_MAX_RATIO)

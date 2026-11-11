@@ -801,21 +801,27 @@ Black/CreatureSelect.cpp:
 	.text       start:0x004F94D0 end:0x004FB0B0
 	.rdata      start:0x008D65D4 end:0x008D663C
 	.CRT$XCU    start:0x00A46630 end:0x00A46660 align:4
-	.data       start:0x00C61120 end:0x00C66B24
+	.data       start:0x00C61120 end:0x00C61200
 	.bss        start:0x00D2EA98 end:0x00D2EAC0
 
 Black/CreatureSubAction.cpp:
-	.text       start:0x004FB0B0 end:0x00501CA0
-	.rdata      start:0x008D663C end:0x008D665C
-	.CRT$XCU    start:0x00A46660 end:0x00A4667C align:4
-	.data       start:0x00C66B24 end:0x00C66BF8
-	.bss        start:0x00D2EAC0 end:0x00D2EAD0
+	.text       start:0x004FB0B0 end:0x005019D0
+	.rdata      start:0x008D663C end:0x008D6648
+	.CRT$XCU    start:0x00A46660 end:0x00A46670 align:4
+	.data       start:0x00C61200 end:0x00C66B9C
+	.bss        start:0x00D2EAC0 end:0x00D2EAC8
+
+Black/SubArgument.cpp:
+	.text       start:0x005019D0 end:0x00501CA0
+	.rdata      start:0x008D6648 end:0x008D665C
+	.CRT$XCU    start:0x00A46670 end:0x00A4667C align:4
+	.bss        start:0x00D2EAC8 end:0x00D2EAD0
 
 Black/CreatureSubActions.cpp:
 	.text       start:0x00501CA0 end:0x0050B200
 	.rdata      start:0x008D665C end:0x008D66A0
 	.CRT$XCU    start:0x00A4667C end:0x00A46690 align:4
-	.data       start:0x00C66BF8 end:0x00C66E40
+	.data       start:0x00C66B9C end:0x00C66E40
 	.bss        start:0x00D2EAD0 end:0x00D2EAEC
 
 Black/CreatureWhatToDoNext.cpp:
