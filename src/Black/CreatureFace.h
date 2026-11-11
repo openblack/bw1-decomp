@@ -6,9 +6,9 @@
 
 struct CreatureFaceState
 {
-	int      field_0x0;
-	float    field_0x4;
-	uint32_t field_0xc;
+	int      TimeSinceFace;
+	float    FaceInterval;
+	uint32_t RandomOffset;
 
 	// BW1W120 004c8490 BW1M119 0123b500
 	CreatureFaceState();

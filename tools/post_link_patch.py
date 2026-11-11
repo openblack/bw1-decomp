@@ -746,6 +746,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004F1B5B, call_rel32(0x00401879)),  # CreaturePlan
     (0x004F218B, call_rel32(0x00401879)),  # CreaturePreviousActionContext
     (0x004F231B, call_rel32(0x00401879)),  # CreaturePreviousContext
+    (0x004F8D6B, call_rel32(0x00401879)),  # CreatureSubAction
+    (0x004FF68B, call_rel32(0x00401879)),  # SubArgument
+    (0x004FF81B, call_rel32(0x00401879)),  # SubArgument
     (0x0050AA4B, call_rel32(0x00401879)),  # Creche
     (0x0050AB3A, call_indirect(0x008A9570)),  # Creche: __imp__db_free_data__YAXPAPAD_Z@4
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
@@ -1369,6 +1372,26 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004F4745, copy_run(0x004F46AB)),  # CreaturePreviousContext
     (0x004F4958, jmp_run(0x004F4743)),  # CreaturePreviousContext
     (0x004F4988, copy_run(0x004F4958)),  # CreaturePreviousContext
+    (0x004FB0D3, padding_bytes(bytes.fromhex('00d90598f38a0083e999ffffff'))),  # CreatureSubAction
+    (0x004FB0FB, padding_bytes(bytes.fromhex('e8498bf0ff'))),  # CreatureSubAction
+    (0x00501129, padding_bytes(bytes.fromhex('d200ffffffffc3'))),  # CreatureSubAction
+    (0x00501536, padding_bytes(bytes.fromhex('c60089156ce9e9fbffff'))),  # CreatureSubAction
+    (0x00501721, padding_bytes(bytes.fromhex('8bcee89265f7ff5f5e5d5b83c414c3'))),  # CreatureSubAction
+    (0x005017A3, padding_bytes(bytes.fromhex('408946145e5d5b83c40cc22800'))),  # CreatureSubAction
+    (0x00501838, padding_bytes(bytes.fromhex('000000e963ffffff'))),  # CreatureSubAction
+    (0x005018C3, padding_bytes(bytes.fromhex('8b4614405f8946145e5bc22c00'))),  # CreatureSubAction
+    (0x00501991, padding_bytes(bytes.fromhex('278bcee874feffff5f5ee923ffffff'))),  # CreatureSubAction
+    (0x005019F3, padding_bytes(bytes.fromhex('0000893883c06049e991ffffff'))),  # SubArgument
+    (0x00501A1B, padding_bytes(bytes.fromhex('e82922f0ff'))),  # SubArgument
+    (0x00501A38, padding_bytes(bytes.fromhex('ead200e9dbffffff'))),  # SubArgument
+    (0x00501A98, padding_bytes(bytes.fromhex('05894ce998ffffff'))),  # SubArgument
+    (0x00501AB8, padding_bytes(bytes.fromhex('05894ce9d8ffffff'))),  # SubArgument
+    (0x00501B05, padding_bytes(bytes.fromhex('40c1e005894c1048c20800'))),  # SubArgument
+    (0x00501B38, padding_bytes(bytes.fromhex('490c89e9c5ffffff'))),  # SubArgument
+    (0x00501BAB, padding_bytes(bytes.fromhex('e89920f0ff'))),  # SubArgument
+    (0x00501BE3, padding_bytes(bytes.fromhex('0c8950488b491089484cc20800'))),  # SubArgument
+    (0x00501C35, padding_bytes(bytes.fromhex('8b49105f8948e9a3ffffff'))),  # SubArgument
+    (0x00501C65, padding_bytes(bytes.fromhex('8b491c5f89484c5ec20800'))),  # SubArgument
     (0x0050CCD3, jmp_run(0x0050CC71)),  # Creche
     (0x0050CD19, jmp_run(0x0050CCD3)),  # Creche
     (0x0050CD86, copy_run(0x0050CD19)),  # Creche

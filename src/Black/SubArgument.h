@@ -157,6 +157,22 @@ public:
 };
 static_assert(sizeof(SubArgumentIntegerAndFloat) == 0xc, "Data type is of wrong size");
 
+#if !defined(VERSION_BW1W100)
+class SubArgumentIntegerFloatAndSpell : public SubArgument
+{
+public:
+	uint32_t Integer; /* 0x4 */
+	float    Float;   /* 0x8 */
+	uint32_t Spell;   /* 0xc */
+
+	// Override methods
+
+	// BW1W120 004ff750 BW1M119 null
+	virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* agenda, uint32_t index);
+};
+static_assert(sizeof(SubArgumentIntegerFloatAndSpell) == 0x10, "Data type is of wrong size");
+#endif
+
 class SubArgumentPoint : public SubArgument
 {
 public:
@@ -296,5 +312,21 @@ public:
 	virtual CreatureBelief* GetObjectA() { return Object; }
 };
 static_assert(sizeof(SubArgumentObjectIntegerPosFloatAndSpell) == 0x20, "Data type is of wrong size");
+
+#if !defined(VERSION_BW1W100)
+class SubArgumentObjectAndTwoIntegers : public SubArgument
+{
+public:
+	CreatureBelief* Object;        /* 0x4 */
+	uint32_t        Integer;       /* 0x8 */
+	uint32_t        SecondInteger; /* 0xc */
+
+	// Override methods
+
+	// BW1W120 004ff8b0 BW1M119 null
+	virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* agenda, uint32_t index);
+};
+static_assert(sizeof(SubArgumentObjectAndTwoIntegers) == 0x10, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_SUB_ARGUMENT_INCLUDED_H */

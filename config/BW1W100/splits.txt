@@ -686,9 +686,17 @@ Black/CreatureSelect.cpp:
 	.data       start:0x00B0EAD4 end:0x00B0EADC
 
 Black/CreatureSubAction.cpp:
-	.text       start:0x004D8320 end:0x004DEC20
-	.CRT$XCU    start:0x008F643C end:0x008F6450 align:4
-	.data       start:0x00B14294 end:0x00B14308
+	.text       start:0x004D8320 end:0x004DE9E0
+	.rdata      start:0x00810444 end:0x00810450
+	.CRT$XCU    start:0x008F643C end:0x008F6448 align:4
+	.data       start:0x00B0EAF8 end:0x00B142AC
+	.bss        start:0x00BCEE60 end:0x00BCEE68
+
+Black/SubArgument.cpp:
+	.text       start:0x004DE9E0 end:0x004DEC20
+	.rdata      start:0x00810450 end:0x00810464
+	.CRT$XCU    start:0x008F6448 end:0x008F6450 align:4
+	.bss        start:0x00BCEE68 end:0x00BCEE70
 
 Black/CreatureSubActions.cpp:
 	.text       start:0x004E5380 end:0x004E7930
