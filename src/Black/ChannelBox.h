@@ -17,6 +17,7 @@
 
 class MPFEClanDetails;
 class MPFERequesterQ;
+class ServerLandscapeMap;
 class WinCondition;
 struct LH3DMaterial;
 struct LH3DTexture;
@@ -124,6 +125,22 @@ public:
 
 	// BW1W120 0061cc80 BW1M119 inlined
 	void UpdateAll();
+	// BW1W120 0061d930 BW1M119 013953d0
+	void UpdateTeams();
+	// BW1W120 0061bc40 BW1M119 01397a10
+	void ReInit();
+	// BW1W120 0061b910 BW1M119 01397ae0
+	void BuildThumbnail(ServerLandscapeMap* map);
+	// BW1W120 0061b4d0 BW1M119 01398270
+	void SetTab(int tab);
+	// BW1W120 0061ea40 BW1M119 01394460
+	void __stdcall ClanCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
+	// BW1W120 0061e640 BW1M119 01394c00
+	void __stdcall ChatCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
+	// BW1W120 0061e8d0 BW1M119 01394820
+	void __stdcall PlayerCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
+	// BW1W120 0061dc70 BW1M119 01394dd0
+	void __stdcall LandCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
 
 	// BW1W120 00d3f014
 	static ChannelBox* Instance;

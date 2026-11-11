@@ -921,6 +921,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x006083BB, call_rel32(0x004017F9)),  # MobileObject
     (0x0060843A, call_indirect(0x008A9960)),  # MobileObject: __imp__BinkGetSummary@8
     (0x006266BB, call_rel32(0x004017F9)),  # MPFEChannelDetails
+    (0x006269CB, call_rel32(0x004017F9)),  # MPFEChannelMessages
+    (0x0062797B, call_rel32(0x004017F9)),  # MPFEChannelMessages
     (0x0062AC4B, call_rel32(0x004017F9)),  # MPFEChooseConnection
     (0x0062B8BB, call_rel32(0x004017F9)),  # MPFEChooseConnection
     (0x0062C6AB, call_rel32(0x004017F9)),  # MPFEConditionMessages
@@ -1889,6 +1891,27 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0062A3BB, jmp_run(0x0062A362)),  # MPFEChannelDetails
     (0x0062A3E5, copy_run(0x0062A3BB)),  # MPFEChannelDetails
     (0x0062A678, jmp_run(0x0062A3E3)),  # MPFEChannelDetails
+    (0x0062A6CB, copy_run(0x0062A678)),  # MPFEChannelMessages
+    (0x0062A6F5, jmp_run(0x0062A6CB)),  # MPFEChannelMessages
+    (0x0062A761, copy_run(0x0062A6F3)),  # MPFEChannelMessages
+    (0x0062AAF1, jmp_run(0x0062A761)),  # MPFEChannelMessages
+    (0x0062ABC8, copy_run(0x0062AAF1)),  # MPFEChannelMessages
+    (0x0062AC28, copy_run(0x0062ABC8)),  # MPFEChannelMessages
+    (0x0062AC83, copy_run(0x0062AC28)),  # MPFEChannelMessages
+    (0x0062B0A9, copy_run(0x0062AC83)),  # MPFEChannelMessages
+    (0x0062B103, copy_run(0x0062B0A9)),  # MPFEChannelMessages
+    (0x0062B179, jmp_run(0x0062B103)),  # MPFEChannelMessages
+    (0x0062B1E9, copy_run(0x0062B179)),  # MPFEChannelMessages
+    (0x0062B2D3, jmp_run(0x0062B1E9)),  # MPFEChannelMessages
+    (0x0062B489, copy_run(0x0062B2D3)),  # MPFEChannelMessages
+    (0x0062B67B, jmp_run(0x0062B489)),  # MPFEChannelMessages
+    (0x0062B789, copy_run(0x0062B67B)),  # MPFEChannelMessages
+    (0x0062BA1A, jmp_run(0x0062B789)),  # MPFEChannelMessages
+    (0x0062BA7A, jmp_run(0x0062BA1A)),  # MPFEChannelMessages
+    (0x0062BC73, jmp_run(0x0062BA7A)),  # MPFEChannelMessages
+    (0x0062BD01, copy_run(0x0062BC73)),  # MPFEChannelMessages
+    (0x0062BD89, copy_run(0x0062BD01)),  # MPFEChannelMessages
+    (0x0062BF52, jmp_run(0x0062BD89)),  # MPFEChannelMessages
     (0x0062E94F, copy_run(0x0062E94B)),  # MPFEChooseConnection
     (0x0062E975, jmp_run(0x0062E94B)),  # MPFEChooseConnection
     (0x0062EA27, copy_run(0x0062E973)),  # MPFEChooseConnection

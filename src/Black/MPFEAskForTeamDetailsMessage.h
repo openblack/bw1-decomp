@@ -5,6 +5,10 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+// Forward Declares
+
+struct MPFEPlayerDetails;
+
 class MPFEAskForTeamDetailsMessage : public MPFEMessageObject
 {
 public:
@@ -12,6 +16,9 @@ public:
 
 	// BW1W120 006332a0 BW1M119 0139c310
 	virtual ~MPFEAskForTeamDetailsMessage() {}
+
+	// BW1W120 006332d0 BW1M119 013b2f50
+	static void ProcessIncoming(wchar_t* message, MPFEPlayerDetails* from);
 
 	// Constructors
 

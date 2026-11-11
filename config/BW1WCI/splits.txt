@@ -1627,15 +1627,17 @@ Black/MPFEChannelDetails.cpp:
 
 Black/MPFEChannelMessages.cpp:
 	.text       start:0x0063DA10 end:0x0063EC70
+	.rdata      start:0x009888E0 end:0x00988960
+	.rdata$r    start:0x00A22BF8 end:0x00A22F18
 	.CRT$XCU    start:0x00A36B2C end:0x00A36B34 align:4
-	.data       start:0x00C654C8 end:0x00C65734
-	.bss        start:0x00DC1A98 end:0x00DC1B58
+	.data       start:0x00C65484 end:0x00C65710
+	.bss        start:0x00DC1A98 end:0x00DC1AA0
 
 Black/MPFEChannelSelector.cpp:
 	.text       start:0x0063EC70 end:0x00641650
 	.CRT$XCU    start:0x00A36B34 end:0x00A36B44 align:4
-	.data       start:0x00C65734 end:0x00C657D0
-	.bss        start:0x00DC1B58 end:0x00DC1B70
+	.data       start:0x00C65710 end:0x00C657D0
+	.bss        start:0x00DC1AA0 end:0x00DC1B70
 
 Black/MPFEChooseConnection.cpp:
 	.text       start:0x00641650 end:0x006422E0
