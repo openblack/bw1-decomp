@@ -7,6 +7,13 @@
 #include "GameOSFile.h"
 #endif
 
+#ifdef VERSION_BW1WCI
+#define SETTINGS_DEFAULT_QUEST_PATH ".\\Scripts\\CreatureIsles\\"
+#define SETTINGS_DEFAULT_MAP_PATH   ".\\Scripts\\CreatureIsles\\IsleMap.txt"
+#else
+#define SETTINGS_DEFAULT_QUEST_PATH ".\\Scripts\\Quests\\"
+#endif
+
 char Settings::ConfigFile[_MAX_PATH];
 
 void Settings::ParseConfigFile(char* path)
@@ -61,11 +68,9 @@ void Settings::ParseConfigFile(char* path)
 
 void Settings::InitialiseToDefaults()
 {
+	SetQuestPath(SETTINGS_DEFAULT_QUEST_PATH);
 #ifdef VERSION_BW1WCI
-	SetQuestPath(".\\Scripts\\CreatureIsles\\");
-	SetMapPath(".\\Scripts\\CreatureIsles\\IsleMap.txt");
-#else
-	SetQuestPath(".\\Scripts\\Quests\\");
+	SetMapPath(SETTINGS_DEFAULT_MAP_PATH);
 #endif
 }
 
