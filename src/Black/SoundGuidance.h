@@ -24,7 +24,9 @@ class Villager;
 
 enum RESOURCE_RAIN_TYPE
 {
-	RESOURCE_RAIN_TYPE_0 = 0
+	RESOURCE_RAIN_TYPE_NONE = 0,
+	RESOURCE_RAIN_TYPE_FOOD,
+	RESOURCE_RAIN_TYPE_WOOD,
 };
 
 class GGuidance : public Base
