@@ -681,6 +681,10 @@ void HelpText::DrawPauseText()
 	                               HELP_TEXT_PAUSE_PITCH_DISTANCE);
 	LHPoint top;
 	LH3DTech::Get3DPointFromScreen(LHCoord(LHSys::GetScreen().Width() >> 1, y), top, HELP_TEXT_PAUSE_PITCH_DISTANCE);
+	// Fakematch, not original code: this no-op makes the compiler see centre.z before centre.y, which
+	// decides the order centre.SetSize() below adds its terms in. Nothing is emitted for it.
+	LHPoint* touch = &centre;
+	touch->z = touch->z;
 	centre -= LHPoint(LH3DTech::GetCameraPosition());
 	top -= LHPoint(LH3DTech::GetCameraPosition());
 	centre.SetSize(1.0f);
