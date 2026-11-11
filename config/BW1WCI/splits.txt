@@ -1614,15 +1614,16 @@ Black/MPFEChannelMessages.cpp:
 Black/MPFEChannelSelector.cpp:
 	.text       start:0x0063EC70 end:0x00641650
 	.CRT$XCU    start:0x00A36B34 end:0x00A36B44 align:4
-	.data       start:0x00C65734 end:0x00C657F4
-	.bss        start:0x00DC1B58 end:0x00DC1FB4
+	.data       start:0x00C65734 end:0x00C657D0
+	.bss        start:0x00DC1B58 end:0x00DC1B70
 
 Black/MPFEChooseConnection.cpp:
 	.text       start:0x00641650 end:0x006422E0
 	.rdata      start:0x009889B8 end:0x009889E8
+	.rdata$r    start:0x00A22FB8 end:0x00A23008
 	.CRT$XCU    start:0x00A36B44 end:0x00A36B50 align:4
-	.data       start:0x00C657F4 end:0x00C65868
-	.bss        start:0x00DC1FB4 end:0x00DC1FC0
+	.data       start:0x00C657D0 end:0x00C65868
+	.bss        start:0x00DC1B70 end:0x00DC1FC0
 
 Black/MPFEClanDetails.cpp:
 	.text       start:0x006422E0 end:0x00643070

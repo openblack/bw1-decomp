@@ -44,4 +44,7 @@ public:
 
 static_assert(sizeof(IPSpecialDialog) == 0x28, "IPSpecialDialog size is incorrect");
 
+// BW1W120 005dd370 BW1M119 01107fa0
+void TimIPSpecial(wchar_t* text, void* data);
+
 #endif /* BW1_DECOMP_IP_SPECIAL_DIALOG_INCLUDED_H */
