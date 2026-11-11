@@ -26,9 +26,9 @@ public:
 	LHPoint              field_0x10;
 	LHPoint              field_0x1c;
 	uint32_t             field_0x28;
-	uint32_t             field_0x2c;
+	uint32_t             BankIndex;
 	bool                 field_0x30;
-	int                  field_0x34;
+	bool32_t             IsAtmospheric;
 	uint32_t             field_0x38;
 	uint32_t             field_0x3c;
 	int                  field_0x40;
