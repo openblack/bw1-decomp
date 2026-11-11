@@ -9,6 +9,21 @@
 #include "LH3DVertex.h" /* For struct Vertex3D */
 #include "LHRegion.h"   /* For struct LHRegion */
 
+#define CITADEL_TEXTURE_SIZE             256
+#define CITADEL_TEXTURE_DESC_FLAGS       (DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH | DDSD_PIXELFORMAT | DDSD_MIPMAPCOUNT)
+#define CITADEL_TEXTURE_CAPS             (DDSCAPS_COMPLEX | DDSCAPS_SYSTEMMEMORY | DDSCAPS_TEXTURE | DDSCAPS_MIPMAP)
+#define CITADEL_TEXTURE_LOCK             (DDLOCK_WAIT | DDLOCK_WRITEONLY | DDLOCK_NOSYSLOCK)
+#define CITADEL_TEXTURE_PIXEL_FORMAT     1
+#define CITADEL_TEXTURE_PITCH            (CITADEL_TEXTURE_SIZE * 3)
+#define CITADEL_TEXTURE_BYTES            (CITADEL_TEXTURE_SIZE * CITADEL_TEXTURE_PITCH)
+#define DRAW_AND_CLIP_QUAD_VERTICES      4
+#define DRAW_AND_CLIP_EPSILON            0.00001f
+#define BACKGROUND_BOX_FINISH_PRIORITY   10000
+#define BACKGROUND_BOX_UV                0.125f
+#define LH3D_DIVERS_WEATHER_TEXTURE_PATH "Data\\Textures\\Weather.raw"
+#define LH3D_DIVERS_SUN_TEXTURE_PATH     "Data\\Textures\\Sun.raw"
+#define LH3D_WIDE_SCREEN_ASPECT          (9.0f / 16.0f)
+
 // Forward Declares
 
 struct LH3DMaterial;

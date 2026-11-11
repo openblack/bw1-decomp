@@ -4,6 +4,17 @@
 #include "LH3DColor.h" /* For struct LH3DColor */
 #include "LHPoint.h"   /* For struct LHPoint */
 
+#define LH3D_WET_FEET_CORNER           0.3f
+#define LH3D_WET_FEET_SPRITE_SIZE      0.125f
+#define LH3D_WET_FEET_HEIGHT           0.15f
+#define LH3D_WET_FEET_FADE_PERIOD      200
+#define LH3D_WET_FEET_FADE_SPEED       25.0f
+#define LH3D_WET_FEET_FADE_TIME        1000.0f
+#define LH3D_WET_FEET_ALPHA            0x80
+#define LH3D_WET_FEET_APRIL_FOOL_TYPE  17
+#define LH3D_WET_FEET_APRIL_FOOL_DAY   1
+#define LH3D_WET_FEET_APRIL_FOOL_MONTH 3
+
 // The wet footprints a creature leaves after walking through water.
 #define LH3D_WET_FEET_MAX               256
 #define LH3D_WET_FEET_VERTICES_PER_FOOT 4

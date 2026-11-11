@@ -19,7 +19,8 @@ struct LHMatrix;
 struct LHPoint;
 struct LHTimer;
 
-#define LH3D_MAX_POINTS 0x2000
+#define LH3D_MILLISECONDS_PER_SECOND 1000.0f
+#define LH3D_MAX_POINTS              0x2000
 
 enum LH3D_PROJECT_RESULT
 {
@@ -326,8 +327,8 @@ extern bool32_t g_b_any_voodoo;
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void __cdecl Report3D__FPCce(const char* fmt, ...);
 // BW1W120 0081f1a0 BW1M119 01013fc0 (LHCombined Release)
-int IsObjectOnScreen(LH3DObject* object);
+bool32_t IsObjectOnScreen(LH3DObject* object);
 // BW1W120 0081f1d0 BW1M119 01005310 (LHCombined Release)
-int IsPointOnScreen(LHPoint* point);
+bool32_t IsPointOnScreen(LHPoint* point);
 
 #endif /* BW1_DECOMP_LH3D_TECH_INCLUDED_H */

@@ -8,6 +8,19 @@
 
 #include "LH3DColor.h" /* For struct LH3DColor */
 
+#define EUREKA_FRAME       32
+#define EUREKA_LIFE        6000.0f
+#define EUREKA_FADE_START  2500.0f
+#define EUREKA_FADE_TIME   3500.0f
+#define EUREKA_RISE_SPEED  0.003f
+#define EUREKA_TEXT_HEIGHT 1.5f
+#define EUREKA_TEXT_OFFSET 7.5f
+#define EUREKA_TEXT_SIZE   15.0f
+#define EUREKA_TEXT_DEPTH  4096.0f
+#define EUREKA_BULB_HEIGHT 2.6f
+#define EUREKA_BULB_SCALE  3.0f
+#define EUREKA_BLINKS      6.0f
+
 #define EUREKA_TEXT_LENGTH 0x40
 
 // Forward Declares

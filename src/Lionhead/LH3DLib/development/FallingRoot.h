@@ -4,6 +4,13 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
+#define FALLING_ROOT_SIZE            0.15f
+#define FALLING_ROOT_GRAVITY         20.0f
+#define FALLING_ROOT_LIFE            20.0f
+#define FALLING_ROOT_FADE_START      18.0f
+#define FALLING_ROOT_FADE_TIME       2.0f
+#define FALLING_ROOT_ALPHA_REFERENCE 10
+
 // Forward Declares
 
 class LH3DObject;

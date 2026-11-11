@@ -6,6 +6,10 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+#define ROOTS_PILE_LIFE      15000
+#define ROOTS_PILE_FADE_TIME 1000
+#define ROOTS_PILE_SIZE      0.3f
+
 // Forward Declares
 
 class LH3DObject;

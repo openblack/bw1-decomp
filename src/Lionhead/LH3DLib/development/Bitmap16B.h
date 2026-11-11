@@ -6,6 +6,9 @@
 
 #include <re_common.h> /* For bool32_t */
 
+#define BITMAP_16B_LOW_RES_SIZE 128
+#define BITMAP_16B_RAW_SIZE     256
+
 // The pixel formats of a raw file read by Bitmap16B::CreateFromRawOnHD.
 enum BITMAP_16B_RAW_FORMAT
 {

@@ -6,6 +6,11 @@
 
 #include "LH3DAnimatedObject.h" /* For LH3DAnimatedObject */
 
+#define SUPER_VILLAGER_LOD        1
+#define SUPER_VILLAGER_TURN_SPEED (1.25f * PI_F)
+#define SUPER_VILLAGER_BLEND_TIME 300
+#define SUPER_VILLAGER_SWIM_ANIM  "M_P_Swim2"
+
 // Forward Declares
 
 class LH3DEye;
