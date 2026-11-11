@@ -214,9 +214,9 @@ struct GatheringText
 	void DrawTextRaw(char16_t* text, int count, float x, float y, float z, float size, LH3DColor* color_top,
 	                 bool32_t no_z_test, LH3DColor* color_bottom, float fade_top, float fade_bottom);
 	// BW1W120 008321c0 BW1M119 010c31f0 (LHCombined Release)
-	void DrawTextRawOriented(LHMatrix& param_1, int param_2, int param_3, const char16_t* param_4, int param_5,
-	                         float param_6, float param_7, float param_8, float param_9, float param_10,
-	                         LH3DColor* param_11, int param_12, LH3DColor* param_13);
+	void DrawTextRawOriented(LHMatrix& matrix, int axis_x, int axis_y, char16_t* text, int count, float x, float y,
+	                         float z, float size, float scale, LH3DColor* color_top, bool32_t z_test,
+	                         LH3DColor* color_bottom);
 	// BW1W120 00832c60 BW1M119 01030e80 (LHCombined Release)
 	void DrawTextRaw(const char16_t* text, int param_2, float x, float y, float param_5, float param_6,
 	                 LH3DColor* param_7, int param_8, LH3DColor* param_9, float param_10, float param_11);
@@ -230,6 +230,12 @@ struct GatheringText
 
 // BW1W120 008300a0 BW1M119 0100f7a0 (LHCombined Release)
 wchar_t* __cdecl CHAR2WCHAR(const char* text);
+
+// BW1W120 inlined BW1M119 0135e7a0
+inline float GatheringText::GetStringWidth(char* str, int len, float text_size)
+{
+	return GetStringWidth(CHAR2WCHAR(str), len, text_size);
+}
 // BW1W120 008300d0
 void __cdecl THAI_RESET();
 // BW1W120 008300e0 BW1M119 01030cd0 (LHCombined Release)

@@ -1290,11 +1290,14 @@ Black/HelpSystemToolTips.cpp:
 	.text       start:0x005DEEF0 end:0x005E0060
 	.rdata      start:0x00981A80 end:0x00981ABC
 	.CRT$XCU    start:0x00A368A0 end:0x00A368A8 align:4
-	.bss        start:0x00D94B9C end:0x00D95F10
+	.bss        start:0x00D94B9C end:0x00D95E68
 
 Black/HelpText.cpp:
+	.text       start:0x005E0060 end:0x005E2530
 	.rdata      start:0x00981ABC end:0x00981B04
-	.bss        start:0x00D95F10 end:0x00D95F54
+	.CRT$XCU    start:0x00A368A8 end:0x00A368BC align:4
+	.data       start:0x00C62540 end:0x00C6259C
+	.bss        start:0x00D95E68 end:0x00D95F30
 
 Black/Influence.cpp:
 	.rdata      start:0x00981B04 end:0x00981B3C

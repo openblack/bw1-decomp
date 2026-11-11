@@ -37,6 +37,8 @@ public:
 		TargetAlpha = 0.0f;
 		Alpha = 0.0f;
 	}
+	// BW1W120 0050b2b0 BW1M119 0101abb0
+	static void DrawAll();
 	// BW1W120 0050afa0 BW1M119 012aac10
 	static void SetClip(float x, float y, float width, float height, float fade_time);
 	// BW1W120 0050b040 BW1M119 012aaba0

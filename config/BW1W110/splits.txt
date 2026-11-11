@@ -1307,13 +1307,14 @@ Black/HelpSystemQuery.cpp:
 Black/HelpSystemToolTips.cpp:
 	.text       start:0x005C52D0 end:0x005C63E0
 	.rdata      start:0x0091A4A0 end:0x0091A4DC
-	.bss        start:0x00D0573C end:0x00D06AA0
+	.bss        start:0x00D0573C end:0x00D06A08
 
 Black/HelpText.cpp:
 	.text       start:0x005C63E0 end:0x005C8780
 	.rdata      start:0x0091A4DC end:0x0091A51C
-	.data       start:0x00BE0E94 end:0x00BE0F10
-	.bss        start:0x00D06AB8 end:0x00D06AF4
+	.CRT$XCU    start:0x009B6878 end:0x009B688C align:4
+	.data       start:0x00BE0E90 end:0x00BE0EEC
+	.bss        start:0x00D06A08 end:0x00D06AD0
 
 Black/Influence.cpp:
 	.text       start:0x005C8780 end:0x005C94E0

@@ -1441,20 +1441,20 @@ Black/HelpSystemToolTips.cpp:
 	.text       start:0x005CD150 end:0x005CE2B0
 	.rdata      start:0x009582D4 end:0x00958310
 	.CRT$XCU    start:0x00A46C0C end:0x00A46C18 align:4
-	.bss        start:0x00D978EC end:0x00D98C68
+	.bss        start:0x00D978EC end:0x00D98BB8
 
 Black/HelpText.cpp:
 	.text       start:0x005CE2B0 end:0x005D0860
 	.rdata      start:0x00958310 end:0x00958350
 	.CRT$XCU    start:0x00A46C18 end:0x00A46C34 align:4
-	.data       start:0x00C7236C end:0x00C72418
-	.bss        start:0x00D98C68 end:0x00D98CB4
+	.data       start:0x00C72368 end:0x00C723F8
+	.bss        start:0x00D98BB8 end:0x00D98C90
 
 Black/Influence.cpp:
 	.text       start:0x005D0860 end:0x005D15F0
 	.rdata      start:0x00958350 end:0x00958388
 	.CRT$XCU    start:0x00A46C34 end:0x00A46C40 align:4
-	.bss        start:0x00D98CB4 end:0x00D98CD0
+	.bss        start:0x00D98C90 end:0x00D98CD0
 
 Black/Interface.cpp:
 	.text       start:0x005D15F0 end:0x005D4110

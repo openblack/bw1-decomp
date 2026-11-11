@@ -66,6 +66,8 @@ public:
 	static void EnableCameraFeatures(int enable, int disable);
 	// BW1W120 00449140 BW1M119 010018f0
 	static void CameraHelpCallback(CameraHelpReason reason, LHPoint& point, unsigned long param_3);
+	// BW1W120 00447ba0 BW1M119 01053100
+	static void DrawGlow(int x1, int y1, int x2, int y2, unsigned long colour);
 	// BW1W120 00447850 BW1M119 0107e660
 	static void DrawMouseCallback();
 	// BW1W120 00447ea0 BW1M119 01063100
