@@ -1010,7 +1010,7 @@ bool32_t Animal::InterfaceSetInMagicHand(GInterfaceStatus* status)
 	return true;
 }
 
-bool Animal::IsInterestedInFoodObject(Object* object)
+bool32_t Animal::IsInterestedInFoodObject(Object* object)
 {
 	return object->IsAvailable() && object->IsNotInPhysics() && !object->IsInMagicHand() &&
 	       GetInfo()->HungerThreshold != ANIMAL_NEED_THRESHOLD_DISABLED && Hunger >= GetInfo()->HungerThreshold &&

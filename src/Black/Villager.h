@@ -534,7 +534,7 @@ public:
 	// BW1W120 007528b0 BW1M119 015745c0
 	virtual void DebugShowTime(uint32_t time, uint8_t current, uint8_t destination);
 	// BW1W120 00764df0 BW1M119 01598700
-	virtual bool IsInterestedInFoodObject(Object* food);
+	virtual bool32_t IsInterestedInFoodObject(Object* food);
 	// BW1W120 00764f60 BW1M119 01598410
 	virtual bool32_t IsInterestedInWoodObject(Object* wood);
 	// BW1W120 00763390 BW1M119 01023dd0

@@ -15,7 +15,7 @@ void TempleRoom::CalculateTooltipsInsideCitadel(BINDABLE_ACTIONS* action, unsign
 	{
 		*action = (BINDABLE_ACTIONS)-1;
 		*text = 0;
-		*align = KEYALIGN_LEFT;
+		*align = KEYALIGN_ANCHOR_LEFT;
 	}
 	ToolTips::SubmitToolTips(*text, *action, *align, false, NULL);
 }

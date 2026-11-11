@@ -22,6 +22,11 @@ block_relocations:
 # RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
   - source: 0x005FCF8A
   - source: 0x005FD562
+# MPFELogin::ControlCallback's 0xe0e0e0 box colour is an immediate, not a pointer.
+  - source: 0x00634B65
+  - source: 0x00634B6C
+  - source: 0x00634B83
+  - source: 0x00634B88
 # redbook_play's MCI_PLAY_PARMS::dwTo value 5100000 is an immediate, not a code pointer.
   - source: 0x006378AE
 # "tMM" of Version.cpp's LH_VERSION_END_TAG reads as a pointer into Creature::CanCreatureCastSpell.

@@ -390,7 +390,7 @@ public:
 	// BW1W120 005ecc10 BW1M119 010866f0
 	virtual bool32_t IsDancing();
 	// BW1W120 00473e90 BW1M119 011eab90
-	virtual bool IsInterestedInFoodObject(Object* object) { return false; }
+	virtual bool32_t IsInterestedInFoodObject(Object* object) { return false; }
 	// BW1W120 00417080 BW1M119 011386c0
 	virtual bool32_t IsInterestedInWoodObject(Object* object) { return false; }
 	// BW1W120 005f11f0 BW1M119 0101c640

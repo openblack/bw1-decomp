@@ -32,6 +32,11 @@ block_relocations:
   - source: 0x007B5D14
 # "tMM" of LHFile's Version.cpp LH_VERSION_END_TAG reads as a pointer into code.
   - source: 0x00C9F59C
+# MPFELogin::ControlCallback's 0xe0e0e0 box colour is an immediate, not a pointer.
+  - source: 0x00646F50
+  - source: 0x00646F55
+  - source: 0x00646F6C
+  - source: 0x00646F71
 # libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in Creature Isle's larger image both read as pointers.
   - source: 0x008CAAB0
   - source: 0x00A16224

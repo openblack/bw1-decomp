@@ -663,21 +663,21 @@ void WorldRoom::UpdateKeyboard(LH_KEY key, uint16_t modifiers)
 }
 
 inline void PlayCitadelButtonSound(LH_SamplePlayOptions& options, Base* attached_object, LH_SAMPLE sample,
-                                   uint32_t pitch)
+                                   uint32_t sound_pitch_percent)
 {
 	options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 	options.AttachedObject = attached_object;
 	options.SampleNumber = sample;
 	options.Positional = false;
 	options.PlayType = LH_SAMPLE_PLAY_TYPE_RESTART;
-	options.Pitch = pitch;
+	options.Pitch = sound_pitch_percent;
 	GGlobal::Global.audio->PlaySoundEffect(&options);
 }
 
 bool32_t WorldRoom::WorldButtonDisplayCitadelCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
-	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_NORMAL);
+	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_SOUND_PITCH_NORMAL_PERCENT);
 	DisplayCitadel = false;
 	return true;
 }
@@ -685,7 +685,7 @@ bool32_t WorldRoom::WorldButtonDisplayCitadelCheckedSet(CallbackData& data)
 bool32_t WorldRoom::WorldButtonDisplayCitadelUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
-	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_BUTTON_PITCH_NORMAL);
+	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_SOUND_PITCH_NORMAL_PERCENT);
 	DisplayCitadel = true;
 	return true;
 }
@@ -693,7 +693,7 @@ bool32_t WorldRoom::WorldButtonDisplayCitadelUncheckedSet(CallbackData& data)
 bool32_t WorldRoom::WorldButtonDisplayCreatureCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
-	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_CREATURE);
+	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_SOUND_PITCH_CREATURE_PERCENT);
 	DisplayCreature = false;
 	return true;
 }
@@ -702,7 +702,7 @@ bool32_t WorldRoom::WorldButtonDisplayCreatureUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
 	PlayCitadelButtonSound(options, reinterpret_cast<Base*>(110), LH_SAMPLE_G_CITADELBUTTONUP_01,
-	                       WORLD_ROOM_BUTTON_PITCH_NORMAL);
+	                       WORLD_ROOM_SOUND_PITCH_NORMAL_PERCENT);
 	DisplayCreature = true;
 	return true;
 }
@@ -710,7 +710,7 @@ bool32_t WorldRoom::WorldButtonDisplayCreatureUncheckedSet(CallbackData& data)
 bool32_t WorldRoom::WorldButtonDisplayMagicActivityCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
-	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_MAGIC);
+	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_SOUND_PITCH_MAGIC_PERCENT);
 	DisplayMagicActivity = false;
 	return true;
 }
@@ -718,7 +718,7 @@ bool32_t WorldRoom::WorldButtonDisplayMagicActivityCheckedSet(CallbackData& data
 bool32_t WorldRoom::WorldButtonDisplayMagicActivityUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
-	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_BUTTON_PITCH_MAGIC);
+	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_SOUND_PITCH_MAGIC_PERCENT);
 	DisplayMagicActivity = true;
 	return true;
 }
@@ -726,7 +726,7 @@ bool32_t WorldRoom::WorldButtonDisplayMagicActivityUncheckedSet(CallbackData& da
 bool32_t WorldRoom::WorldButtonDisplayInfluenceCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
-	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_INFLUENCE);
+	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_SOUND_PITCH_INFLUENCE_PERCENT);
 	DisplayInfluence = false;
 	ShowInfluence = false;
 	return true;
@@ -735,7 +735,7 @@ bool32_t WorldRoom::WorldButtonDisplayInfluenceCheckedSet(CallbackData& data)
 bool32_t WorldRoom::WorldButtonDisplayInfluenceUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
-	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_BUTTON_PITCH_INFLUENCE);
+	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_SOUND_PITCH_INFLUENCE_PERCENT);
 	DisplayInfluence = true;
 	ShowInfluence = true;
 	GetWorldRoom()->CreateWorldMapColours();
@@ -745,7 +745,7 @@ bool32_t WorldRoom::WorldButtonDisplayInfluenceUncheckedSet(CallbackData& data)
 bool32_t WorldRoom::WorldButtonDisplayChallengesCheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
-	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_BUTTON_PITCH_CHALLENGES);
+	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONDOWN_01, WORLD_ROOM_SOUND_PITCH_CHALLENGES_PERCENT);
 	DisplayChallenges = false;
 	return true;
 }
@@ -753,7 +753,7 @@ bool32_t WorldRoom::WorldButtonDisplayChallengesCheckedSet(CallbackData& data)
 bool32_t WorldRoom::WorldButtonDisplayChallengesUncheckedSet(CallbackData& data)
 {
 	LH_SamplePlayOptions options;
-	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_BUTTON_PITCH_CHALLENGES);
+	PlayCitadelButtonSound(options, NULL, LH_SAMPLE_G_CITADELBUTTONUP_01, WORLD_ROOM_SOUND_PITCH_CHALLENGES_PERCENT);
 	DisplayChallenges = true;
 	return true;
 }
@@ -770,7 +770,7 @@ inline bool32_t UpdateWorldRoomButtonDisplay(CallbackData& data, bool32_t visibl
 	data.Visible = visible;
 	if (data.Highlighted)
 	{
-		SetWorldRoomToolTip(tooltip_text, KEYALIGN_LEFT);
+		SetWorldRoomToolTip(tooltip_text, KEYALIGN_ANCHOR_LEFT);
 	}
 	return true;
 }
@@ -857,7 +857,7 @@ inline void UpdateWorldRoomScrollToolTip(WorldRoom* room, const CallbackData& da
 	{
 		if (room->camera->ZoomProgress != 1.0)
 		{
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_WORLD_STATISTICS, KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_WORLD_STATISTICS, KEYALIGN_ANCHOR_LEFT);
 		}
 		else
 		{
@@ -866,7 +866,7 @@ inline void UpdateWorldRoomScrollToolTip(WorldRoom* room, const CallbackData& da
 	}
 	else if (room->camera->State == INNER_CAMERA_STATE_FOCUSED && room->camera->ZoomProgress == 1.0)
 	{
-		SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_ZOOM_OUT, KEYALIGN_LEFT);
+		SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_ZOOM_OUT, KEYALIGN_ANCHOR_LEFT);
 	}
 }
 
@@ -971,7 +971,7 @@ void WorldRoom::PreToolTipProcess()
 		}
 		else if (camera->ZoomProgress != 1.0)
 		{
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_ZOOM_IN, KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_ZOOM_IN, KEYALIGN_ANCHOR_LEFT);
 		}
 	}
 	if (camera->HighlightedDoor != -1 && People == NULL)
@@ -979,25 +979,25 @@ void WorldRoom::PreToolTipProcess()
 		switch (camera->HighlightedDoor)
 		{
 		case WORLD_ROOM_DOOR_CREATURE:
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_CREATURE_ROOM, KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_CREATURE_ROOM, KEYALIGN_ANCHOR_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_CHALLENGE:
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_CHALLENGE_ROOM, KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_CHALLENGE_ROOM, KEYALIGN_ANCHOR_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_SAVE_GAME:
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_SAVE_GAME_ROOM, KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_SAVE_GAME_ROOM, KEYALIGN_ANCHOR_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_UNIVERSE:
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_FUTURE_ROOM, KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_FUTURE_ROOM, KEYALIGN_ANCHOR_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_GAME_OPTIONS:
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_OPTIONS_ROOM, KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_OPTIONS_ROOM, KEYALIGN_ANCHOR_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_CREDITS:
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_LIBRARY, KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_LIBRARY, KEYALIGN_ANCHOR_LEFT);
 			break;
 		case WORLD_ROOM_DOOR_EXIT:
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_EXIT_TEMPLE, KEYALIGN_LEFT);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_EXIT_TEMPLE, KEYALIGN_ANCHOR_LEFT);
 			break;
 		}
 	}
