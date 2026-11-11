@@ -25,7 +25,8 @@ struct DIALUP_PROPERTIES
 {
 	bool32_t AlreadyConnected; /* 0x0 */
 	uint8_t  field_0x4[0xc];
-	wchar_t  EntryName[0x112]; /* 0x10 */
+	wchar_t  EntryName[0x101]; /* 0x10 */
+	wchar_t  IPAddress[0x11];  /* 0x212 */
 	wchar_t  UserName[0x101];  /* 0x234 */
 	wchar_t  Password[0x101];  /* 0x436 */
 	uint8_t  field_0x638[0x204];

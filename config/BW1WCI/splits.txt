@@ -1640,7 +1640,9 @@ Black/MPFEClanDetails.cpp:
 	.bss        start:0x00DC1FC0 end:0x00DC1FD0
 
 Black/MPFEConnectionStatus.cpp:
+	.text       start:0x00643070 end:0x00643D90
 	.rdata      start:0x00988A1C end:0x00988A2C
+	.CRT$XCU    start:0x00A36B60 end:0x00A36B78 align:4
 	.data       start:0x00C65940 end:0x00C6E3E8
 	.bss        start:0x00DC1FE0 end:0x00DC2010
 
