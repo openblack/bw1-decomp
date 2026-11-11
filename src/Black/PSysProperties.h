@@ -65,6 +65,13 @@ public:
 
 	// BW1W120 0068fe20 BW1M119 0141e000
 	UR_Lightning_CollectionData(const AtomCollectionModifier* modifier);
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 010910c0
+	void ValidateRefs();
+	// BW1W120 inlined BW1M119 0141ba90
+	void SetCommonHelper(UR_Lightning_CollectionData* helper, long index);
 };
 
 class UR_PlasmaInf : public PSysBase

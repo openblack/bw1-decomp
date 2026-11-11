@@ -84,17 +84,6 @@ enum HELP_TEXT_PAUSE_STATE
 	HELP_TEXT_PAUSE_STATE_LAST = 3,
 };
 
-struct HelpTextMatrix : public LHMatrix
-{
-	void SetRotationX(float angle)
-	{
-		SetIdentity();
-		m[4] = m[8] = cos(angle);
-		m[7] = sin(angle);
-		m[5] = -m[7];
-	}
-};
-
 HelpTextData HelpTextDataBase::HelpTextDatabase;
 int          HelpTextDataBase::CurrentEntry;
 #ifndef VERSION_BW1W100
@@ -733,7 +722,7 @@ void HelpText::DrawPauseText()
 		{
 			angle -= 2.0f * TWO_PI;
 		}
-		HelpTextMatrix matrix;
+		LHMatrix matrix;
 		if (angle < TWO_PI)
 		{
 			if (angle > PI_F)

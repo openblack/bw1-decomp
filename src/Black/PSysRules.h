@@ -1394,6 +1394,8 @@ public:
 #ifdef VERSION_BW1WCI
 	// BW1WCI 006e68f0 BW1MCI119 014c11a0
 	void UpdateBaseAndTopPoints() const;
+	// BW1WCI 006e7780 BW1MCI119 014c0590
+	void UpdateDebrisAtoms(AtomCollection* collection) const;
 #endif
 };
 static_assert(sizeof(UR_Tornado::CollectionData) == 0x74, "Data type is of wrong size");
