@@ -12,9 +12,13 @@
 #include "HelpText.h"             /* For HelpTextDataBase::HelpTextDatabase, HelpTextDataPatch */
 #include "MPFEConnectionStatus.h" /* For MPFEConnectionStatus::Status */
 
-#if defined(VERSION_BW1W100)
 MPFEChannelDetails::MPFEChannelDetails(wchar_t* name, bool has_password, int num_players, bool closed, GServer server,
-                                       unsigned long game_version, LHLocalLobbyInfo* lobby_info)
+                                       unsigned long game_version, LHLocalLobbyInfo* lobby_info
+#if !defined(VERSION_BW1W100)
+                                       ,
+                                       int max_players
+#endif
+)
 {
 	wcscpy(Name, name);
 	HasPassword = has_password;
@@ -22,29 +26,17 @@ MPFEChannelDetails::MPFEChannelDetails(wchar_t* name, bool has_password, int num
 	Closed = closed;
 	Server = server;
 	GameVersion = game_version;
-	LobbyInfo = lobby_info;
-	MapID = 0;
-	wcscpy(MapName, L"");
-}
-#else
-MPFEChannelDetails::MPFEChannelDetails(wchar_t* name, bool has_password, int num_players, bool closed, GServer server,
-                                       unsigned long game_version, LHLocalLobbyInfo* lobby_info, int max_players)
-{
-	wcscpy(Name, name);
-	HasPassword = has_password;
-	NumPlayers = num_players;
-	Closed = closed;
-	Server = server;
-	GameVersion = game_version;
+#if !defined(VERSION_BW1W100)
 	MaxPlayers = max_players;
 	field_0x4b4 = 2;
+#endif
 	LobbyInfo = lobby_info;
 	MapID = 0;
+#if !defined(VERSION_BW1W100)
 	JoinTime = 0;
+#endif
 	wcscpy(MapName, L"");
 }
-
-#endif
 
 MPFEChannelDetails::~MPFEChannelDetails() {}
 

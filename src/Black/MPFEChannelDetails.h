@@ -30,15 +30,14 @@ struct MPFEChannelDetails
 #endif
 	char Host[0x100];
 
-#if defined(VERSION_BW1W100)
 	// BW1W120 006266f0 BW1M119 013a1750
 	MPFEChannelDetails(wchar_t* name, bool has_password, int num_players, bool closed, GServer server,
-	                   unsigned long game_version, LHLocalLobbyInfo* lobby_info);
-#else
-	// BW1W120 006266f0 BW1M119 013a1750
-	MPFEChannelDetails(wchar_t* name, bool has_password, int num_players, bool closed, GServer server,
-	                   unsigned long game_version, LHLocalLobbyInfo* lobby_info, int max_players);
+	                   unsigned long game_version, LHLocalLobbyInfo* lobby_info
+#if !defined(VERSION_BW1W100)
+	                   ,
+	                   int max_players
 #endif
+	);
 	// BW1W120 00626780 BW1M119 013a16e0
 	~MPFEChannelDetails();
 
