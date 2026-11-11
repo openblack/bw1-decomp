@@ -1422,7 +1422,7 @@ Black/MagicTree.cpp:
 Black/MagicVortex.cpp:
 	.text       start:0x005BA890 end:0x005BE0E0
 	.rdata      start:0x0086B070 end:0x0086D56C
-	.data       start:0x00B20C6C end:0x00B20DD8
+	.data       start:0x00B20C6C end:0x00B20DA8
 	.bss        start:0x00C59138 end:0x00C59218
 
 Black/MagicWood.cpp:
@@ -1431,11 +1431,14 @@ Black/MagicWood.cpp:
 
 Black/Map.cpp:
 	.text       start:0x005BE2B0 end:0x005BECD0
-	.rdata      start:0x0086DDE4 end:0x0086DE1C
+	.rdata      start:0x0086DDE4 end:0x0086DE18
 
 Black/MapCoords.cpp:
 	.text       start:0x005BECD0 end:0x005C1950
+	.rdata      start:0x0086DE18 end:0x0086DE50
 	.CRT$XCU    start:0x008F6A48 end:0x008F6A50 align:4
+	.data       start:0x00B20DA8 end:0x00B20DD6
+	.bss        start:0x00C5922C end:0x00C59244
 
 Black/Mist.cpp:
 	.text       start:0x005C1950 end:0x005C20A0

@@ -1538,8 +1538,8 @@ bool32_t Villager::InitialiseFightReaction()
 		}
 		GetTown();
 		uint16_t angle = GUtils::Spread(index, VILLAGER_GAME_ANGLE_FULL_TURN);
-		pos.SetMetersX(LHSinTable[angle + LH_SIN_TABLE_COSINE_OFFSET] * radius / LH_SIN_TABLE_ONE + pos.MetersX());
-		pos.SetMetersZ(LHSinTable[angle] * radius / LH_SIN_TABLE_ONE + pos.MetersZ());
+		pos.SetMetersX((LHSinTable[angle + LH_SIN_TABLE_COSINE_OFFSET] * radius / LH_SIN_TABLE_ONE) + pos.MetersX());
+		pos.SetMetersZ((LHSinTable[angle] * radius / LH_SIN_TABLE_ONE) + pos.MetersZ());
 		SetupMoveToWithHug(pos, VILLAGER_STATE_PERFORM_FIGHT_REACTION);
 		return true;
 	}

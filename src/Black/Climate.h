@@ -50,6 +50,11 @@ struct WindInfo
 	WindInfo();
 };
 
+enum CLIMATE_FLAGS
+{
+	CLIMATE_FLAG_DISABLED = 1 << 0,
+};
+
 class GClimate : public GameThing
 {
 public:
@@ -69,7 +74,8 @@ public:
 	WindInfo                 Wind;
 	uint32_t                 field_0x58;
 	LHLinkedList<LH3DStorm*> Storms;
-	uint8_t                  field_0x64[0x24];
+	uint32_t                 Flags;
+	uint8_t                  field_0x68[0x20];
 
 	// Override methods
 

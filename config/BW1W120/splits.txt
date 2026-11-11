@@ -1739,7 +1739,7 @@ Black/MagicVortex.cpp:
 	.text       start:0x005FD2A0 end:0x00600D40
 	.rdata      start:0x0092D2A4 end:0x0092F7A0
 	.CRT$XCU    start:0x009C6ED0 end:0x009C6EF0 align:4
-	.data       start:0x00BF3F5C end:0x00BF41A8
+	.data       start:0x00BF3F5C end:0x00BF4178
 	.bss        start:0x00D38218 end:0x00D38310
 
 Black/MagicWood.cpp:
@@ -1749,22 +1749,22 @@ Black/MagicWood.cpp:
 
 Black/Map.cpp:
 	.text       start:0x00600FD0 end:0x00601EF0
-	.rdata      start:0x00930018 end:0x00930054
+	.rdata      start:0x00930018 end:0x0093004C
 	.CRT$XCU    start:0x009C6EF4 end:0x009C6F08 align:4
 	.bss        start:0x00D38310 end:0x00D38324
 
 Black/MapCoords.cpp:
 	.text       start:0x00601EF0 end:0x00606020
-	.rdata      start:0x00930054 end:0x00930084
+	.rdata      start:0x0093004C end:0x00930084
 	.CRT$XCU    start:0x009C6F08 end:0x009C6F14 align:4
-	.data       start:0x00BF41A8 end:0x00BF41E0
+	.data       start:0x00BF4178 end:0x00BF41C6
 	.bss        start:0x00D38324 end:0x00D3833C
 
 Black/Meeting.cpp:
 	.text       start:0x00606020 end:0x00606270
 	.rdata      start:0x00930084 end:0x00930590
 	.CRT$XCU    start:0x009C6F14 end:0x009C6F1C align:4
-	.data       start:0x00BF41E0 end:0x00BF41FC
+	.data       start:0x00BF41C8 end:0x00BF41FC
 	.bss        start:0x00D3833C end:0x00D38340
 
 Black/Mist.cpp:

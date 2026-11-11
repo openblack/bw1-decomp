@@ -63,6 +63,8 @@ block_relocations:
   - source: 0x00C1F954
 # MPFEMessageObject's type descriptor name contains a word that reads as a code address.
   - source: 0x009BCF2C
+# MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
+  - source: 0x005FC9B8
 
 # LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
   - source: 0x00829555

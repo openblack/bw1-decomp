@@ -119,6 +119,10 @@ struct GUtils
 	static float GetXByAngle(unsigned short angle, float distance);
 	// BW1W120 0074d380 BW1M119 015962c0
 	static float GetZByAngle(unsigned short angle, float distance);
+	// BW1W120 0074d3a0 BW1M119 0107c130
+	static long GetXByAngleBigDistance(unsigned short angle, long distance);
+	// BW1W120 0074d3c0 BW1M119 0107c0d0
+	static long GetZByAngleBigDistance(unsigned short angle, long distance);
 	// BW1W120 0074d3e0 BW1M119 01590b30
 	static long GetXByAngleHugeDistance(unsigned short angle, long distance);
 	// BW1W120 0074d400 BW1M119 01590080

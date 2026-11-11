@@ -1206,17 +1206,11 @@ MultiMapFixed* PlannedAbode::CreatePlannedNoFixedCheck(float food)
 	return NULL;
 }
 
-struct PlannedAbodePos : public MapCoords
-{
-	// BW1W120 00603b30 BW1M119 null
-	bool32_t IsSuitableForPlannedFixed(MESH_LIST mesh, float y_angle, float scale) const;
-};
-
 uint32_t PlannedAbode::IsOkToBuild()
 {
 	float       yAngle = YAngle;
 	GAbodeInfo* info = GetInfo();
-	return ((const PlannedAbodePos&)Pos).IsSuitableForPlannedFixed(info->GetMesh(), yAngle, GetScale() * 1.25);
+	return Pos.IsSuitableForPlannedFixed(info->GetMesh(), yAngle, GetScale() * 1.25);
 }
 
 bool32_t PlannedAbode::Save(GameOSFile& file)

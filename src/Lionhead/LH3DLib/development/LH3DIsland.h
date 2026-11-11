@@ -25,6 +25,7 @@ struct TShadowInfo;
 #define LAND_CELL_MAX_ALTITUDE            0xff
 #define LAND_CELL_MIN_DARKNESS            0x30
 #define LAND_CELL_SEA_ALTITUDE            3
+#define LAND_CELL_DRY_ALTITUDE            4
 #define LAND_CELL_SHORE_ALTITUDE          1
 #define LAND_SEA_LEVEL                    4
 #define LAND_CELL_COUNTRY_MASK            0xf

@@ -864,6 +864,25 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005F895A, call_indirect(0x008A97AC)),  # logo: __imp__ShellExecuteA@24
     (0x005FA06B, call_rel32(0x004017F9)),  # logo
     (0x005FA35A, call_indirect(0x008A999C)),  # logo: __imp__Disconnect_Dialup...
+    (0x00601F3B, call_rel32(0x004017F9)),  # MapCoords
+    (0x0060245B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00602C6B, call_rel32(0x004017F9)),  # MapCoords
+    (0x0060310B, call_rel32(0x004017F9)),  # MapCoords
+    (0x0060315B, call_rel32(0x004017F9)),  # MapCoords
+    (0x006034CA, call_indirect(0x008A9024)),  # MapCoords: __imp__DirectDrawCreateEx@4
+    (0x0060371B, call_rel32(0x004017F9)),  # MapCoords
+    (0x006038AA, call_indirect(0x008A9034)),  # MapCoords: __imp__DirectInputCreateA@4
+    (0x006041BA, call_indirect(0x008A90D8)),  # MapCoords: __imp___ChangeParameters_CImmPeriodic...
+    (0x006042EA, call_indirect(0x008A903C)),  # MapCoords: __imp__DirectXSetupGetVersion
+    (0x00604DDB, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604E1B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604E2B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604E3B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604EEB, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604F2B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604F3B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00605E5A, call_indirect(0x008A97D4)),  # MapCoords: __imp__GetKeyNameTextW@4
+    (0x00605FAA, call_indirect(0x008A9630)),  # MapCoords: __imp_?LHNetGetCurrentUsedProfile@@YAPAGXZ
     (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
     (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
     (0x0060714B, call_rel32(0x004017F9)),  # MobileObject
@@ -1701,6 +1720,82 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005FDE6A, copy_run(0x005FDD69)),  # logo
     (0x005FE039, jmp_run(0x005FDE6A)),  # logo
     (0x005FE216, jmp_run(0x005FE039)),  # logo
+    (0x00605A23, copy_run(0x006059C3)),  # MapCoords
+    (0x00605BE5, copy_run(0x00605A23)),  # MapCoords
+    (0x00605C69, copy_run(0x00605BE5)),  # MapCoords
+    (0x00605D05, copy_run(0x00605C69)),  # MapCoords
+    (0x00605DC1, copy_run(0x00605D05)),  # MapCoords
+    (0x00605F6B, copy_run(0x00605DC1)),  # MapCoords
+    (0x00605FD8, jmp_run(0x00605F6B)),  # MapCoords
+    (0x00606003, copy_run(0x00605FD8)),  # MapCoords
+    (0x006061D4, jmp_run(0x00606003)),  # MapCoords
+    (0x006062A6, copy_run(0x006061D4)),  # MapCoords
+    (0x006063D3, jmp_run(0x006062A6)),  # MapCoords
+    (0x0060677B, jmp_run(0x006063D3)),  # MapCoords
+    (0x00606987, copy_run(0x0060677B)),  # MapCoords
+    (0x00606B32, jmp_run(0x00606987)),  # MapCoords
+    (0x00606B76, jmp_run(0x00606B32)),  # MapCoords
+    (0x00606BB6, jmp_run(0x00606B76)),  # MapCoords
+    (0x00606C1B, jmp_run(0x00606BB6)),  # MapCoords
+    (0x00606C6B, copy_run(0x00606C1B)),  # MapCoords
+    (0x00606CB2, jmp_run(0x00606C6B)),  # MapCoords
+    (0x00606CD9, jmp_run(0x00606CB2)),  # MapCoords
+    (0x00606D68, copy_run(0x00606CD9)),  # MapCoords
+    (0x00606D88, copy_run(0x00606D68)),  # MapCoords
+    (0x00606E21, copy_run(0x00606D88)),  # MapCoords
+    (0x00606E47, copy_run(0x00606E21)),  # MapCoords
+    (0x00606E95, jmp_run(0x00606E47)),  # MapCoords
+    (0x00606EF2, jmp_run(0x00606E95)),  # MapCoords
+    (0x00606FB9, jmp_run(0x00606EF2)),  # MapCoords
+    (0x00606FDA, jmp_run(0x00606FB9)),  # MapCoords
+    (0x00607083, copy_run(0x00606FDA)),  # MapCoords
+    (0x006072F2, jmp_run(0x00607083)),  # MapCoords
+    (0x00607366, copy_run(0x006072F2)),  # MapCoords
+    (0x006073BA, jmp_run(0x00607366)),  # MapCoords
+    (0x00607B21, copy_run(0x006073BA)),  # MapCoords
+    (0x00607CCA, copy_run(0x00607B21)),  # MapCoords
+    (0x00607D12, jmp_run(0x00607CCA)),  # MapCoords
+    (0x00607DFA, jmp_run(0x00607D12)),  # MapCoords
+    (0x006080C9, copy_run(0x00607DFA)),  # MapCoords
+    (0x00608374, jmp_run(0x006080C9)),  # MapCoords
+    (0x006085F8, jmp_run(0x00608374)),  # MapCoords
+    (0x00608879, jmp_run(0x006085F8)),  # MapCoords
+    (0x006088A7, copy_run(0x00608879)),  # MapCoords
+    (0x006088EB, copy_run(0x006088A7)),  # MapCoords
+    (0x0060894B, copy_run(0x006088EB)),  # MapCoords
+    (0x006089FB, jmp_run(0x0060894B)),  # MapCoords
+    (0x00608A4B, copy_run(0x006089FB)),  # MapCoords
+    (0x00608A96, jmp_run(0x00608A4B)),  # MapCoords
+    (0x00608AE4, copy_run(0x00608A96)),  # MapCoords
+    (0x00608B12, jmp_run(0x00608AE4)),  # MapCoords
+    (0x00608B57, jmp_run(0x00608B12)),  # MapCoords
+    (0x00608B73, jmp_run(0x00608B57)),  # MapCoords
+    (0x00608B93, jmp_run(0x00608B73)),  # MapCoords
+    (0x00608BB3, jmp_run(0x00608B93)),  # MapCoords
+    (0x00608BD8, jmp_run(0x00608BB3)),  # MapCoords
+    (0x00608C27, copy_run(0x00608BD8)),  # MapCoords
+    (0x00608D55, jmp_run(0x00608C27)),  # MapCoords
+    (0x00608EC4, copy_run(0x00608D55)),  # MapCoords
+    (0x00608EF2, jmp_run(0x00608EC4)),  # MapCoords
+    (0x00608F41, copy_run(0x00608EF2)),  # MapCoords
+    (0x00608FD1, jmp_run(0x00608F41)),  # MapCoords
+    (0x00609026, copy_run(0x00608FD1)),  # MapCoords
+    (0x00609075, jmp_run(0x00609026)),  # MapCoords
+    (0x006090C5, copy_run(0x00609075)),  # MapCoords
+    (0x00609115, jmp_run(0x006090C5)),  # MapCoords
+    (0x00609165, copy_run(0x00609115)),  # MapCoords
+    (0x006091D2, jmp_run(0x00609165)),  # MapCoords
+    (0x006091F2, jmp_run(0x006091D2)),  # MapCoords
+    (0x00609378, jmp_run(0x006091F2)),  # MapCoords
+    (0x006094A2, copy_run(0x00609378)),  # MapCoords
+    (0x00609745, copy_run(0x006094A2)),  # MapCoords
+    (0x00609792, jmp_run(0x00609745)),  # MapCoords
+    (0x006097D7, jmp_run(0x00609792)),  # MapCoords
+    (0x006097F1, jmp_run(0x006097D7)),  # MapCoords
+    (0x00609811, jmp_run(0x006097F1)),  # MapCoords
+    (0x0060996A, copy_run(0x00609811)),  # MapCoords
+    (0x00609ABA, jmp_run(0x0060996A)),  # MapCoords
+    (0x00609AF8, jmp_run(0x00609ABA)),  # MapCoords
     (0x0060A717, jmp_run(0x0060A511)),  # Mobile
     (0x0060A7E4, copy_run(0x0060A717)),  # Mobile
     (0x0060A843, copy_run(0x0060A7E3)),  # MobileObject
