@@ -112,7 +112,7 @@ HelpText::HelpText(const LHRegion& region)
 {
 	Region = region;
 	SetToZero();
-	LH3DRender::RegisterFinishFrameCallback(HELP_TEXT_DRAW_PRIORITY, true, Draw3DTextStub, this);
+	LH3DRender::RegisterFinishFrameCallback(20000, true, Draw3DTextStub, this);
 }
 
 void HelpText::SetToZero()
@@ -121,11 +121,11 @@ void HelpText::SetToZero()
 	HighlightColour.Set(0xff, 0, 0, 0xff);
 	if (NeedsBiggerText())
 	{
-		DefaultTextSize = TextSize = LHSys::TheSystem.screen.height / HELP_TEXT_SCREEN_LINES_BIGGER;
+		DefaultTextSize = TextSize = LHSys::TheSystem.screen.height / HELP_TEXT_FONT_SIZE_BIGGER;
 	}
 	else
 	{
-		DefaultTextSize = TextSize = LHSys::TheSystem.screen.height / HELP_TEXT_SCREEN_LINES;
+		DefaultTextSize = TextSize = LHSys::TheSystem.screen.height / HELP_TEXT_FONT_SIZE;
 	}
 	BeingDrawn = false;
 	Alpha = LH3D_COLOR_OPAQUE;
@@ -569,7 +569,7 @@ float HelpText::DrawAndProcessText(const LHRegion& region, wchar_t* text, ALIGNE
 			{
 				float highlightWidth = Font->GetStringWidth(word, wcslen(word), TextSize, 1.0f);
 				HighlightZoomer.SetDestinationWithTime(
-					LHPoint(region.X1() + x, region.Y1() + y + y_offset, highlightWidth), HELP_TEXT_HIGHLIGHT_TIME);
+					LHPoint(region.X1() + x, region.Y1() + y + y_offset, highlightWidth), 0.18f);
 				HighlightZoomer.Update(GetAlexTimeInc() * 0.001f);
 				LH3DColor glow = colour;
 				glow.a /= 2;
@@ -635,11 +635,11 @@ void HelpText::DrawPauseText()
 	}
 	if (state == CurrentState && state >= HELP_TEXT_PAUSE_STATE_PAUSED)
 	{
-		PauseTextFade += LH3DTech::g_delta_time * HELP_TEXT_PAUSE_FADE_IN_SPEED;
+		PauseTextFade += LH3DTech::g_delta_time * 0.003f;
 	}
 	else
 	{
-		PauseTextFade -= LH3DTech::g_delta_time * HELP_TEXT_PAUSE_FADE_OUT_SPEED;
+		PauseTextFade -= LH3DTech::g_delta_time * 0.002f;
 	}
 	if (PauseTextFade > 0.0f)
 	{
@@ -672,28 +672,28 @@ void HelpText::DrawPauseText()
 	{
 		return;
 	}
-	float    distance = (fade + 1.0f) * HELP_TEXT_PAUSE_DISTANCE;
+	float    distance = (fade + 1.0f) * 15.0f;
 	wchar_t* texts[HELP_TEXT_PAUSE_STATE_LAST] = {
 		HelpTextData::GetTextL(HELP_TEXT_GAME_PAUSED),
 		HelpTextData::GetTextL(HELP_TEXT_GAME_SLOWMO),
 		HelpTextData::GetTextL(HELP_TEXT_GAME_FASTMO),
 	};
 	int length = wcslen(texts[CurrentState]);
-	Angle += LH3DTech::g_delta_time * HELP_TEXT_PAUSE_SPIN_SPEED;
+	Angle += LH3DTech::g_delta_time * 0.0015f;
 	if (Angle > 2.0f * TWO_PI)
 	{
 		Angle -= 2.0f * TWO_PI;
 	}
 #ifdef VERSION_BW1WCI
-	float size = tan(LH3DTech::g_camera.fov * 0.5f) / HELP_TEXT_PAUSE_TEXT_FOV_RATIO;
+	float size = tan(LH3DTech::g_camera.fov * 0.5f) / 0.35f;
 #endif
 	GatheringText* font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
-	int            y = LHSys::GetScreen().Height() / HELP_TEXT_PAUSE_SCREEN_FRACTION;
+	int            y = LHSys::GetScreen().Height() / 20;
 	LHPoint        centre;
 	LH3DTech::Get3DPointFromScreen(LHCoord(LHSys::GetScreen().Width() >> 1, LHSys::GetScreen().Height() >> 1), centre,
-	                               HELP_TEXT_PAUSE_PITCH_DISTANCE);
+	                               10.0f);
 	LHPoint top;
-	LH3DTech::Get3DPointFromScreen(LHCoord(LHSys::GetScreen().Width() >> 1, y), top, HELP_TEXT_PAUSE_PITCH_DISTANCE);
+	LH3DTech::Get3DPointFromScreen(LHCoord(LHSys::GetScreen().Width() >> 1, y), top, 10.0f);
 	// Fakematch, not original code: these no-ops make the compiler see centre.z before centre.y, which
 	// decides the order centre.SetSize() below adds its terms in, and they give the function the size at
 	// which the compiler inlines the right text lookups. Nothing is emitted for them.
@@ -709,11 +709,11 @@ void HelpText::DrawPauseText()
 	for (int i = 0; i < length; i++)
 	{
 		float   halfWidth = (uint16_t)(LHSys::GetScreen().Width() >> 1);
-		float   spacing = halfWidth / length / distance * HELP_TEXT_PAUSE_SPACING;
+		float   spacing = halfWidth / length / distance * 30.0f;
 		LHPoint point;
 		LH3DTech::Get3DPointFromScreen(LHCoord(halfWidth - (length - 1) * spacing * 0.5f + i * spacing, y), point,
 		                               distance);
-		float angle = Angle - i * HELP_TEXT_PAUSE_LETTER_ANGLE;
+		float angle = Angle - i * (1.0f / 3.0f);
 		while (angle < 0.0f)
 		{
 			angle += 2.0f * TWO_PI;
@@ -766,10 +766,10 @@ void HelpText::DrawPauseText()
 		font->DrawTextRawOriented(matrix, 0, 1, character, 1, width * -0.5f, size * -0.5f, 0.0f, size, 1.0f, &colour,
 		                          true, NULL);
 #else
-		float     width = font->GetStringWidth(character, 1, HELP_TEXT_PAUSE_TEXT_SIZE);
+		float     width = font->GetStringWidth(character, 1, 2.0f);
 		LH3DColor colour(0xff, 0xff, 0xff, fade * LH3D_COLOR_OPAQUE);
-		font->DrawTextRawOriented(matrix, 0, 1, character, 1, width * -0.5f, -1.0f, 0.0f, HELP_TEXT_PAUSE_TEXT_SIZE,
-		                          1.0f, &colour, true, NULL);
+		font->DrawTextRawOriented(matrix, 0, 1, character, 1, width * -0.5f, -1.0f, 0.0f, 2.0f, 1.0f, &colour, true,
+		                          NULL);
 #endif
 	}
 }
@@ -827,7 +827,7 @@ void HelpText::DrawScriptText()
 		lastY = y;
 	}
 	int numLines = HELP_TEXT_NUM_LINES;
-	if (ScrollProgress >= HELP_TEXT_SCROLL_FINISHED)
+	if (ScrollProgress >= 0.9999f)
 	{
 		numLines = HELP_TEXT_NUM_SETTLED_LINES;
 	}
@@ -846,7 +846,7 @@ void HelpText::DrawScriptText()
 		Alpha = lineScale * LH3D_COLOR_OPAQUE;
 		if (Alpha < LH3D_COLOR_OPAQUE)
 		{
-			Alpha -= HELP_TEXT_OLD_LINE_ALPHA_DROP;
+			Alpha -= 20;
 		}
 		if (Alpha < 0)
 		{
@@ -863,7 +863,7 @@ void HelpText::DrawScriptText()
 		lastScale = scale;
 		lastY = y;
 		y = topToBottom ? y - height * scale : height * scale + y;
-		scale = (i != 0 ? HELP_TEXT_LINE_SCALE : HELP_TEXT_FIRST_LINE_SCALE) * scale;
+		scale = (i != 0 ? HELP_TEXT_LINE_SCALE : 0.86f) * scale;
 	}
 }
 
@@ -881,14 +881,14 @@ void HelpText::Draw3DText()
 			int y = FrontEnd::GatheringDialog->IncomingText->rect.start.y;
 			int right = FrontEnd::GatheringDialog->IncomingText->rect.end.x;
 			int size = FrontEnd::GatheringDialog->IncomingText->text_size;
-			int alpha = HELP_TEXT_CHAT_ALPHA;
+			int alpha = 200;
 			for (unsigned int i = 1; i < FrontEnd::GatheringDialog->IncomingList.count; i++)
 			{
 				y -= size;
 				x += size / 2;
 				size--;
-				alpha -= HELP_TEXT_CHAT_ALPHA_STEP;
-				if (alpha > HELP_TEXT_CHAT_MIN_ALPHA && size > HELP_TEXT_CHAT_MIN_SIZE)
+				alpha -= 32;
+				if (alpha > 31 && size > HELP_TEXT_CHAT_MIN_SIZE)
 				{
 					wchar_t* text = FrontEnd::GatheringDialog->IncomingList.GetAtPosition(i)->Text;
 					if (text[0] != 0)
@@ -914,7 +914,7 @@ void HelpText::Draw3DText()
 #ifdef VERSION_BW1WCI
 		if (GGame::g_game->ViewMode == GAME_VIEW_MODE_WORLD && CameraModeCannon::CannonAlpha > 0.0f)
 		{
-			float fade = (int)LH3DTech::g_game_time_inc * HELP_TEXT_CANNON_FADE_OUT_SPEED;
+			float fade = (int)LH3DTech::g_game_time_inc * 0.001f;
 			if (dynamic_cast<CameraModeCannon*>(GGame::g_game->GetCamera()->GetCurrentMode()) == NULL)
 			{
 				CameraModeCannon::CannonAlpha -= fade;
@@ -928,8 +928,7 @@ void HelpText::Draw3DText()
 		DrawScriptText();
 		CreditTextItem::DrawAll();
 		g_after_fade_callback = DrawPauseTextCB;
-		if (GGame::g_game->Initialised && GGame::g_game->GetCamera() != NULL &&
-		    CreditTextItem::ClipAlpha < HELP_TEXT_FIGHT_MAX_CLIP_ALPHA)
+		if (GGame::g_game->Initialised && GGame::g_game->GetCamera() != NULL && CreditTextItem::ClipAlpha < 0.1f)
 		{
 #else
 		DrawScriptText();
@@ -961,31 +960,29 @@ void HelpText::Draw3DText()
 				seconds = 0;
 			}
 			LH3DColor colour(0xff, 0xff, 0xff, 0xff);
-			if (seconds < HELP_TEXT_TIMER_LOW)
+			if (seconds < 45)
 			{
 				colour.Set(0xff, 0xff, 0x8c, 0x8c);
 			}
-			if (seconds < HELP_TEXT_TIMER_VERY_LOW)
+			if (seconds < 20)
 			{
 				colour.Set(0xff, 0xff, 0, 0);
 			}
-			unsigned int minutes = seconds / HELP_TEXT_SECONDS_PER_MINUTE % HELP_TEXT_MINUTES_PER_HOUR;
-			unsigned int hours = seconds / (HELP_TEXT_SECONDS_PER_MINUTE * HELP_TEXT_MINUTES_PER_HOUR);
+			unsigned int minutes = seconds / 60 % 60;
+			unsigned int hours = seconds / (60 * 60);
 			wchar_t      buffer[256];
 			memset(buffer, 0, sizeof(buffer));
 			if (hours != 0)
 			{
-				swprintf(buffer, L"%u:%02u:%02u", hours, minutes, seconds % HELP_TEXT_SECONDS_PER_MINUTE);
+				swprintf(buffer, L"%u:%02u:%02u", hours, minutes, seconds % 60);
 			}
 			else
 			{
-				swprintf(buffer, L"%u:%02u", minutes, seconds % HELP_TEXT_SECONDS_PER_MINUTE);
+				swprintf(buffer, L"%u:%02u", minutes, seconds % 60);
 			}
 			GatheringText::GetGameFont(GAME_FONT_DEFAULT)
-				->DrawTextRaw(buffer, wcslen(buffer), HELP_TEXT_TIMER_X,
-			                  LHSys::GetScreen().Height() - HELP_TEXT_TIMER_BOTTOM,
-			                  LH3DTech::g_info_transform.NearClip * 1.5f, HELP_TEXT_TIMER_SIZE, &colour, false, NULL,
-			                  0.0f, 4096.0f);
+				->DrawTextRaw(buffer, wcslen(buffer), 20.0f, LHSys::GetScreen().Height() - 50,
+			                  LH3DTech::g_info_transform.NearClip * 1.5f, 30.0f, &colour, false, NULL, 0.0f, 4096.0f);
 		}
 #endif
 	}
@@ -996,7 +993,7 @@ void HelpText::Draw3D()
 {
 	if (DialogWindowOpen)
 	{
-		LH3DColor colour(BackgroundColour.r, BackgroundColour.g, BackgroundColour.b, HELP_TEXT_BACKGROUND_ALPHA);
+		LH3DColor colour(BackgroundColour.r, BackgroundColour.g, BackgroundColour.b, 128);
 		BackgroundBox::AddBox(&Region, &colour);
 	}
 }
