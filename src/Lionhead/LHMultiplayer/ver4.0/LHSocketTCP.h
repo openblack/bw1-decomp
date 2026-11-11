@@ -118,7 +118,12 @@ public:
 };
 static_assert(sizeof(LHSocketTCP) == 0x50168, "LHSocketTCP size is incorrect");
 
+#ifdef LH_MULTIPLAYER_EXPORTS
 // BW1W120 10021d70 BW1M119 01111cf0 (LHCombined Release)
 LH_MULTIPLAYER_API char* GetIPAddress();
+#else
+// BW1W120 007c5394 BW1M119 01111cf0 (LHCombined Release)
+char* GetIPAddress();
+#endif
 
 #endif /* BW1_DECOMP_LH_SOCKET_TCP_INCLUDED_H */
