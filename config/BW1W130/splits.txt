@@ -1900,16 +1900,14 @@ Black/MPFEMapMessages.cpp:
 	.bss        start:0x00DC2060 end:0x00DC2070
 
 Black/MPFENumberCodec.cpp:
-	.text       start:0x006352A0 end:0x006354C0
-	.CRT$XCU    start:0x00A4707C end:0x00A47080 align:4
+	.text       start:0x006352A0 end:0x006354A0
 	.data       start:0x00C7E6BC end:0x00C7E6FC
-	.bss        start:0x00DC2070 end:0x00DC2078
 
 Black/MPFEPlayerDetails.cpp:
-	.text       start:0x006354C0 end:0x00636560
-	.CRT$XCU    start:0x00A47080 end:0x00A47088 align:4
+	.text       start:0x006354A0 end:0x00636540
+	.CRT$XCU    start:0x00A4707C end:0x00A47084 align:4
 	.data       start:0x00C7E6FC end:0x00C7E760
-	.bss        start:0x00DC2078 end:0x00DC2080
+	.bss        start:0x00DC2070 end:0x00DC2078
 
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x00637060 end:0x00637760

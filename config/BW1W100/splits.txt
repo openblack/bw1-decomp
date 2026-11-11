@@ -1585,16 +1585,14 @@ Black/MPFEMapMessages.cpp:
 	.bss        start:0x00C61E34 end:0x00C61E38
 
 Black/MPFENumberCodec.cpp:
-	.text       start:0x005E40C0 end:0x005E42E0
-	.CRT$XCU    start:0x008F6B3C end:0x008F6B40 align:4
+	.text       start:0x005E40C0 end:0x005E42C0
 	.data       start:0x00B219AC end:0x00B219EC
-	.bss        start:0x00C61E3C end:0x00C61E44
 
 Black/MPFEPlayerDetails.cpp:
-	.text       start:0x005E42E0 end:0x005E5260
-	.CRT$XCU    start:0x008F6B40 end:0x008F6B44 align:4
+	.text       start:0x005E42C0 end:0x005E5240
+	.CRT$XCU    start:0x008F6B3C end:0x008F6B40 align:4
 	.data       start:0x00B219EC end:0x00B21A40
-	.bss        start:0x00C61E44 end:0x00C61E4C
+	.bss        start:0x00C61E3C end:0x00C61E44
 
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x005E5CB0 end:0x005E6390

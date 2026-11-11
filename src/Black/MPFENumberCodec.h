@@ -16,6 +16,9 @@ public:
 	// BW1W120 00631740 BW1M119 013b0360
 	~MPFENumberCodec();
 
+	// BW1W120 00631750 BW1M119 inlined
+	void Clear();
+
 	// BW1W120 inlined BW1M119 inlined
 	char* GetString() { return String; }
 };
