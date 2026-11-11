@@ -1539,7 +1539,7 @@ Black/KeyBuffer.cpp:
 
 Black/LandAlignement.cpp:
 	.text       start:0x005E56B0 end:0x005E62C0
-	.rdata      start:0x00959084 end:0x009590D8
+	.rdata      start:0x00959084 end:0x009590D0
 	.CRT$XCU    start:0x00A46D74 end:0x00A46D84 align:4
 	.bss        start:0x00D9B228 end:0x00D9B2B8
 
@@ -1550,15 +1550,15 @@ Black/LandBalance.cpp:
 Black/LandFeature.cpp:
 	.text       start:0x005E64B0 end:0x005E78D0
 	.CRT$XCU    start:0x00A46D8C end:0x00A46D94 align:4
-	.data       start:0x00C73EC0 end:0x00C73F7C
-	.bss        start:0x00D9B2B8 end:0x00D9B338
+	.data       start:0x00C73EC0 end:0x00C73F18
+	.bss        start:0x00D9B2B8 end:0x00D9B318
 
 Black/Landscape.cpp:
 	.text       start:0x005E78D0 end:0x005EA1D0
-	.rdata      start:0x009590D8 end:0x00959144
+	.rdata      start:0x009590D0 end:0x00959144
 	.CRT$XCU    start:0x00A46D94 end:0x00A46DAC align:4
-	.data       start:0x00C73F7C end:0x00C73FFC
-	.bss        start:0x00D9B338 end:0x00DA117C
+	.data       start:0x00C73F18 end:0x00C73FA1
+	.bss        start:0x00D9B318 end:0x00DA117C
 
 Black/Language.cpp:
 	.text       start:0x005EA1D0 end:0x005EB160

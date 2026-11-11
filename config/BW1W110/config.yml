@@ -106,6 +106,20 @@ block_relocations:
   - source: 0x00639FE7
 
 add_relocations:
+# Landscape.cpp: GLandscape::Open clears LH3DIsland::g_index_block up to its end, and GLandscape::Draw's two loops
+# over GWater::g_circle stop at its end (the first one tests the Flags member of each entry).
+  - source: 0x005E05E8
+    type: x86_abs32
+    target: '?g_index_block@LH3DIsland@@2PAY0CA@EA'
+    addend: 0x400
+  - source: 0x005DFEB4
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE00C
+  - source: 0x005E00B3
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE000
 # pow.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x007B7976
     type: x86_rel32
