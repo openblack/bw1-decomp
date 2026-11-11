@@ -1446,6 +1446,7 @@ Black/HelpSystemToolTips.cpp:
 Black/HelpText.cpp:
 	.text       start:0x005CE2B0 end:0x005D0860
 	.rdata      start:0x00958310 end:0x00958350
+	.rdata$r    start:0x00A316C0 end:0x00A3170C
 	.CRT$XCU    start:0x00A46C18 end:0x00A46C34 align:4
 	.data       start:0x00C72368 end:0x00C723F8
 	.bss        start:0x00D98BB8 end:0x00D98C90
