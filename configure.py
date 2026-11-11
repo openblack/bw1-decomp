@@ -1120,7 +1120,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/HelpSystemProcess.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSystemQuery.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSystemToolTips.cpp"),
-            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "Black/HelpText.cpp"),
+            GameCodeObject(Matching, "Black/HelpText.cpp"),
             GameCodeObject(NonMatching, "Black/HistoryBox.cpp"),
             GameCodeObject(NonMatching, "Black/Influence.cpp"),
             GameCodeObject(NonMatching, "Black/InfluenceInfo.cpp"),

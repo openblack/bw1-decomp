@@ -1295,6 +1295,7 @@ Black/HelpSystemToolTips.cpp:
 Black/HelpText.cpp:
 	.text       start:0x005E0060 end:0x005E2530
 	.rdata      start:0x00981ABC end:0x00981B04
+	.rdata$r    start:0x00A21EF8 end:0x00A21F44
 	.CRT$XCU    start:0x00A368A8 end:0x00A368BC align:4
 	.data       start:0x00C62540 end:0x00C6259C
 	.bss        start:0x00D95E68 end:0x00D95F30

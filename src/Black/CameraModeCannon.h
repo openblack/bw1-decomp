@@ -15,6 +15,8 @@ class CameraModeCannon : public CameraMode
 public:
 	// Static data
 
+	// BW1WCI 00cced00 BW1MCI119 null
+	static float CannonAlpha;
 	// BW1WCI 00cced04 BW1MCI119 null
 	static float CannonSize;
 	// BW1WCI 00cced08 BW1MCI119 null
@@ -26,6 +28,11 @@ public:
 
 	// BW1WCI 00450300 BW1MCI119 0162f580
 	CameraModeCannon(GCamera* camera, float min_pitch, float max_pitch, float min_heading, float max_heading);
+
+	// Static methods
+
+	// BW1WCI 00450a80 BW1MCI119 0162dc70
+	static void DrawCannonOnScreen();
 };
 static_assert(sizeof(CameraModeCannon) == 0x2c, "Data type is of wrong size");
 

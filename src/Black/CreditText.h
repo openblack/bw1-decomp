@@ -15,6 +15,10 @@ public:
 	static LH3DColor NextColor;
 	// BW1W120 00cadb68
 	static CreditTextItem* FirstItem;
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00d25c28 BW1MCI119 null
+	static float ClipAlpha;
+#endif
 
 	float           X;
 	float           Y;

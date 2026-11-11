@@ -17,9 +17,12 @@
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>          /* For struct LHSys */
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>         /* For UNICODE_sprintf */
 
-#include "Audio.h"                /* For class GAudio */
-#include "Camera.h"               /* For class GCamera */
-#include "CameraModeNew3.h"       /* For class CameraModeNew3 */
+#include "Audio.h"          /* For class GAudio */
+#include "Camera.h"         /* For class GCamera */
+#include "CameraModeNew3.h" /* For class CameraModeNew3 */
+#ifdef VERSION_BW1WCI
+#include "CameraModeCannon.h" /* For class CameraModeCannon */
+#endif
 #include "CreatureStatsDisplay.h" /* For DrawCreatureStats */
 #include "CreditText.h"           /* For class CreditTextItem */
 #include "FrontEnd.h"             /* For class FrontEnd */
@@ -52,6 +55,14 @@
 
 // BW1W120 005557e0 BW1M119 010caca0
 int GetAlexTimeInc();
+
+#ifdef VERSION_BW1WCI
+// BW1WCI 00f4ef7c BW1MCI119 null
+extern LH3DRender::FinishFrameCallback g_after_fade_callback;
+
+// BW1WCI 005e1420 BW1MCI119 01382100
+void __stdcall DrawPauseTextCB(void* data);
+#endif
 
 enum HELP_TEXT_WORD
 {
@@ -602,6 +613,16 @@ int HelpText::CountWords(wchar_t* text)
 	return count;
 }
 
+#ifdef VERSION_BW1WCI
+void __stdcall DrawPauseTextCB(void* data)
+{
+	if (GGame::g_game != NULL && GGame::g_game->help_system != NULL && GGame::g_game->help_system->help_text != NULL)
+	{
+		GGame::g_game->help_system->help_text->DrawPauseText();
+	}
+}
+#endif
+
 void HelpText::DrawPauseText()
 {
 	static int   CurrentState = HELP_TEXT_PAUSE_STATE_NONE;
@@ -674,6 +695,9 @@ void HelpText::DrawPauseText()
 	{
 		Angle -= 2.0f * TWO_PI;
 	}
+#ifdef VERSION_BW1WCI
+	float size = tan(LH3DTech::g_camera.fov * 0.5f) / HELP_TEXT_PAUSE_TEXT_FOV_RATIO;
+#endif
 	GatheringText* font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
 	int            y = LHSys::GetScreen().Height() / HELP_TEXT_PAUSE_SCREEN_FRACTION;
 	LHPoint        centre;
@@ -681,10 +705,13 @@ void HelpText::DrawPauseText()
 	                               HELP_TEXT_PAUSE_PITCH_DISTANCE);
 	LHPoint top;
 	LH3DTech::Get3DPointFromScreen(LHCoord(LHSys::GetScreen().Width() >> 1, y), top, HELP_TEXT_PAUSE_PITCH_DISTANCE);
-	// Fakematch, not original code: this no-op makes the compiler see centre.z before centre.y, which
-	// decides the order centre.SetSize() below adds its terms in. Nothing is emitted for it.
+	// Fakematch, not original code: these no-ops make the compiler see centre.z before centre.y, which
+	// decides the order centre.SetSize() below adds its terms in, and they give the function the size at
+	// which the compiler inlines the right text lookups. Nothing is emitted for them.
 	LHPoint* touch = &centre;
 	touch->z = touch->z;
+	touch->y = touch->y;
+	touch->x = touch->x;
 	centre -= LHPoint(LH3DTech::GetCameraPosition());
 	top -= LHPoint(LH3DTech::GetCameraPosition());
 	centre.SetSize(1.0f);
@@ -740,16 +767,21 @@ void HelpText::DrawPauseText()
 		LHMatrix inverse;
 		inverse.SetInverse(LH3DTech::g_world_to_camera);
 		matrix.PostMultiply(inverse);
-		matrix._41 = point.x;
-		matrix._42 = point.y;
-		matrix._43 = point.z;
+		matrix.GetPos() = point;
 		wchar_t character[2];
 		character[0] = texts[CurrentState][i];
 		character[1] = 0;
+#ifdef VERSION_BW1WCI
+		float     width = font->GetStringWidth(character, 1, size);
+		LH3DColor colour(0xff, 0xff, 0xff, fade * LH3D_COLOR_OPAQUE);
+		font->DrawTextRawOriented(matrix, 0, 1, character, 1, width * -0.5f, size * -0.5f, 0.0f, size, 1.0f, &colour,
+		                          true, NULL);
+#else
 		float     width = font->GetStringWidth(character, 1, HELP_TEXT_PAUSE_TEXT_SIZE);
 		LH3DColor colour(0xff, 0xff, 0xff, fade * LH3D_COLOR_OPAQUE);
 		font->DrawTextRawOriented(matrix, 0, 1, character, 1, width * -0.5f, -1.0f, 0.0f, HELP_TEXT_PAUSE_TEXT_SIZE,
 		                          1.0f, &colour, true, NULL);
+#endif
 	}
 }
 
@@ -890,17 +922,46 @@ void HelpText::Draw3DText()
 				}
 			}
 		}
+#ifdef VERSION_BW1WCI
+		if (GGame::g_game->ViewMode == GAME_VIEW_MODE_WORLD && CameraModeCannon::CannonAlpha > 0.0f)
+		{
+			float fade = (int)LH3DTech::g_game_time_inc * HELP_TEXT_CANNON_FADE_OUT_SPEED;
+			if (dynamic_cast<CameraModeCannon*>(GGame::g_game->GetCamera()->GetCurrentMode()) == NULL)
+			{
+				CameraModeCannon::CannonAlpha -= fade;
+				if (CameraModeCannon::CannonAlpha < 0.0f)
+				{
+					CameraModeCannon::CannonAlpha = 0.0f;
+				}
+			}
+			CameraModeCannon::DrawCannonOnScreen();
+		}
+		DrawScriptText();
+		CreditTextItem::DrawAll();
+		g_after_fade_callback = DrawPauseTextCB;
+		if (GGame::g_game->Initialised && GGame::g_game->GetCamera() != NULL &&
+		    CreditTextItem::ClipAlpha < HELP_TEXT_FIGHT_MAX_CLIP_ALPHA)
+		{
+#else
 		DrawScriptText();
 		DrawPauseText();
 		if (GGame::g_game->Initialised && GGame::g_game->GetCamera() != NULL)
 		{
+#endif
 			CameraModeNew3* mode = dynamic_cast<CameraModeNew3*>(GGame::g_game->GetCamera()->GetCurrentMode());
 			if (mode != NULL && mode->HasFight)
 			{
 				mode->DrawFightText();
 			}
 		}
+#ifdef VERSION_BW1WCI
+		if (GGame::g_game->ViewMode == GAME_VIEW_MODE_WORLD && GGame::g_game->script != NULL)
+		{
+			GGame::g_game->script->DrawCountDownTimer();
+		}
+#else
 		CreditTextItem::DrawAll();
+#endif
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		if (GGame::g_game->IsMultiplayerGame())
 		{
