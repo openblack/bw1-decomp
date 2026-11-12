@@ -12,6 +12,9 @@ struct MPFEPlayerDetails;
 class MPFEUserTeamList : public MPFEMessageObject
 {
 public:
+	// BW1W120 00633050 BW1M119 0139da70
+	virtual ~MPFEUserTeamList() {}
+
 	// Override methods
 
 	// BW1W120 00633080 BW1M119 013b30c0

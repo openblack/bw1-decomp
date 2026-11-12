@@ -6,8 +6,6 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-// Forward Declares
-
 struct MPFEPlayerDetails;
 
 class MPFETeamsReadyList : public MPFEMessageObject

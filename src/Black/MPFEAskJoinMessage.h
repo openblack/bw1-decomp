@@ -7,13 +7,14 @@
 #include "MPFEData.h"          /* For enum TeamEnums */
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-// Forward Declares
-
 struct MPFEPlayerDetails;
 
 class MPFEAskJoinMessage : public MPFEMessageObject
 {
 public:
+	// BW1W120 00626f90 BW1M119 0139f840
+	virtual ~MPFEAskJoinMessage() {}
+
 	// BW1W120 00626fc0 BW1M119 013a2c30
 	static void ProcessIncoming(wchar_t* message, MPFEPlayerDetails* from);
 	// BW1W120 00626f30 BW1M119 013a2d30

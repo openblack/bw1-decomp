@@ -6,13 +6,14 @@
 #include "MPFEData.h"          /* For enum TeamEnums */
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-// Forward Declares
-
 struct MPFEPlayerDetails;
 
 class MPFEChangedTeamRequestMessage : public MPFEMessageObject
 {
 public:
+	// BW1W120 00632d20 BW1M119 0139ee20
+	virtual ~MPFEChangedTeamRequestMessage() {}
+
 	// Override methods
 
 	// BW1W120 00632d50 BW1M119 013b36c0

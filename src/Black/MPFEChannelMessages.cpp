@@ -18,6 +18,7 @@
 
 #include "alexmfc.h"                           /* For SetupBox */
 #include "ChannelBox.h"                        /* For ChannelBox */
+#include "CreatureMindPath.h"                  /* For CREATURE_MIND_PATH */
 #include "LayerCommunication.h"                /* For LayerCommunication */
 #include "MPFEAlexDialog.h"                    /* For MPFERequesterQ */
 #include "LHNetBase.h"                         /* For LHNetBase */
@@ -667,7 +668,7 @@ MPFEHasCreature::MPFEHasCreature()
 {
 	Message = NEW(605) wchar_t[10];
 	unsigned long hasCreature = 0;
-	if (LHOSFile::Exists(LHSPrintf(".\\Scripts\\CreatureMind\\%s", LHLobby::UserFile)) == LH_FILE_RESULT_OK)
+	if (LHOSFile::Exists(LHSPrintf(CREATURE_MIND_PATH "\\%s", LHLobby::UserFile)) == LH_FILE_RESULT_OK)
 	{
 		hasCreature = 1;
 	}

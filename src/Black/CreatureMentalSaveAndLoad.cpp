@@ -24,6 +24,7 @@
 #include "CreatureMental.h"
 #include "CreatureMentalAttributeTest.h"
 #include "CreatureMentalBelief.h"
+#include "CreatureMindPath.h" /* For CREATURE_MIND_PATH */
 #include "CreaturePhysical.h"
 #include "CreatureReceiveSpell.h"
 #include "GJUtils.h" /* For boundf */
@@ -49,7 +50,6 @@
 #define SAVE_SLOT_PATH          "%s\\%i"
 #define CREATURE_PHYSIQUE_PATH  ".\\scripts\\CreatureMind\\Physique%s"
 #define CREATURE_MIND_FILE_PATH ".\\scripts\\CreatureMind\\%s"
-#define CREATURE_MIND_PATH      ".\\Scripts\\CreatureMind"
 
 static float OneOverLogHalf = 1.0f / (float)log(0.5);
 
