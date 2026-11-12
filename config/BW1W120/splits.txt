@@ -1821,15 +1821,22 @@ Black/MPFEChannelData.cpp:
 	.rdata      start:0x009306A8 end:0x009306C8
 	.rdata$r    start:0x009B2080 end:0x009B20E8
 	.CRT$XCU    start:0x009C6F70 end:0x009C6F80 align:4
-	.data       start:0x00BF46A8 end:0x00BF4798
+	.data       start:0x00BF46A8 end:0x00BF46FC
 	.bss        start:0x00D40878 end:0x00D408C0
 
+Black/MPFEChannelDetails.cpp:
+	.text       start:0x006266A0 end:0x006269B0
+	.rdata      start:0x009306C8 end:0x009306D0
+	.CRT$XCU    start:0x009C6F80 end:0x009C6F8C align:4
+	.data       start:0x00BF46FC end:0x00BF4754
+	.bss        start:0x00D408C0 end:0x00D408C8
+
 Black/MPFEChannelMessages.cpp:
-	.text       start:0x006266A0 end:0x00628290
-	.rdata      start:0x009306C8 end:0x00930774
-	.CRT$XCU    start:0x009C6F80 end:0x009C6F98 align:4
-	.data       start:0x00BF4798 end:0x00BF4A64
-	.bss        start:0x00D408C0 end:0x00D40988
+	.text       start:0x006269B0 end:0x00628290
+	.rdata      start:0x009306D0 end:0x00930774
+	.CRT$XCU    start:0x009C6F8C end:0x009C6F98 align:4
+	.data       start:0x00BF4754 end:0x00BF4A64
+	.bss        start:0x00D408C8 end:0x00D40988
 
 Black/MPFEChannelSelector.cpp:
 	.text       start:0x00628290 end:0x0062AC30

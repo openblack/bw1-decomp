@@ -1216,6 +1216,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFEChangedMapMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEChangedTeamRequestMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEChannelData.cpp"),
+            GameCodeObject(Matching, "Black/MPFEChannelDetails.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEChannelMessages.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEChannelSelector.cpp"),
             GameCodeObject(Matching, "Black/MPFEChooseConnection.cpp"),

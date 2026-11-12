@@ -1631,12 +1631,19 @@ Black/MPFEChannelData.cpp:
 	.text       start:0x0061AFE0 end:0x0061EA20
 	.rdata      start:0x00920670 end:0x00920690
 	.CRT$XCU    start:0x009B6AD8 end:0x009B6ADC align:4
-	.data       start:0x00BE3A18 end:0x00BE3B08
+	.data       start:0x00BE3A18 end:0x00BE3A6C
+
+Black/MPFEChannelDetails.cpp:
+	.text       start:0x0061EC10 end:0x0061EEF0
+	.rdata      start:0x00920690 end:0x00920698
+	.CRT$XCU    start:0x009B6ADC end:0x009B6AE4 align:4
+	.data       start:0x00BE3A6C end:0x00BE3AC4
+	.bss        start:0x00D2F5B8 end:0x00D2F5C0
 
 Black/MPFEChannelMessages.cpp:
-	.text       start:0x0061EC10 end:0x00620110
-	.rdata      start:0x00920690 end:0x0092071C
-	.CRT$XCU    start:0x009B6ADC end:0x009B6AEC align:4
+	.text       start:0x0061EEF0 end:0x00620110
+	.rdata      start:0x00920698 end:0x0092071C
+	.CRT$XCU    start:0x009B6AE4 end:0x009B6AEC align:4
 	.data       start:0x00BE3B08 end:0x00BE3D50
 	.bss        start:0x00D2F5D0 end:0x00D2F680
 
