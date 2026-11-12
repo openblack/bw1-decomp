@@ -255,18 +255,21 @@ Black/Camera.cpp:
 	.text       start:0x00439550 end:0x0043B6B0
 	.rdata      start:0x00806208 end:0x00806740
 	.CRT$XCU    start:0x008F6120 end:0x008F6124 align:4
+	.data       start:0x008FC44C end:0x008FC518
 
 Black/CameraEditor.cpp:
 	.text       start:0x0043B6B0 end:0x0043C220
-	.rdata      start:0x00806744 end:0x00806748
+	.rdata      start:0x00806740 end:0x0080674C
 	.CRT$XCU    start:0x008F6124 end:0x008F612C align:4
-	.bss        start:0x00B7B454 end:0x00B7C844
+	.data       start:0x008FC518 end:0x008FC594
+	.bss        start:0x00B7B454 end:0x00B7B5C0
 
 Black/camerahelp.cpp:
 	.text       start:0x0043C220 end:0x0043E6C0
-	.rdata      start:0x00806748 end:0x0080676C
+	.rdata      start:0x0080674C end:0x0080676C
 	.CRT$XCU    start:0x008F6134 end:0x008F6140 align:4
-	.bss        start:0x00B7C844 end:0x00B7C880
+	.data       start:0x008FC594 end:0x008FC85C
+	.bss        start:0x00B7B5C0 end:0x00B7C880
 
 Black/CameraModeCitadel.cpp:
 	.text       start:0x0043E6C0 end:0x0043E720

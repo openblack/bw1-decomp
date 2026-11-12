@@ -1497,7 +1497,7 @@ static_assert(offsetof(Town, next) == 0x758, "Town next offset is incorrect");
 static_assert(offsetof(Town, next) == 0x754, "Town next offset is incorrect");
 #endif
 static_assert(sizeof(CMouse) == 4, "CMouse size is incorrect");
-static_assert(offsetof(GCameraEditor, field_0x10) == 0x10, "GCameraEditor flag offset is incorrect");
+static_assert(offsetof(GCameraEditor, InputEnabled) == 0x10, "GCameraEditor flag offset is incorrect");
 static_assert(offsetof(Living, next) == 0xa4, "Living link offset is incorrect");
 static_assert(offsetof(Villager, mother) == 0x100, "Villager mother offset is incorrect");
 
@@ -1538,7 +1538,7 @@ void GGame::ProcessFrameInputs()
 	ProcessMapKeys();
 	if (GGlobal::Global.EditorMode != 0)
 	{
-		if (GCameraEditor::Instance == NULL || GCameraEditor::Instance->field_0x10 != 0)
+		if (GCameraEditor::Instance == NULL || GCameraEditor::Instance->InputEnabled)
 		{
 			EditorProcessInputs();
 		}
