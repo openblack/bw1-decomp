@@ -36,9 +36,7 @@ template <class T> inline void GJVector<T>::Clear()
 template <class T> inline void GJVector<T>::PushBack(const T& value)
 {
 	if (Capacity == Size)
-	{
 		Grow(Size + GrowthIncrement);
-	}
 	MemoryAllocator.Construct(Data + Size, value);
 	++Size;
 }

@@ -235,7 +235,7 @@ class IncludeScanner:
             # without exploding on cycles/diamond-shaped header graphs.
             suffixes = defaultdict(set)
             for base in dict.fromkeys((self.root / 'src', self.root / 'include', *roots)):
-                if base.is_dir():
+                if base.is_dir() and str(base).startswith(str(self.root)):
                     for path in base.rglob('*'):
                         if path.is_file():
                             parts = path.relative_to(base).parts

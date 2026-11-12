@@ -18,6 +18,9 @@ block_relocations:
   - source: 0x009D1148
 # Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate, like SetupColourPicker's.
   - source: 0x00403267
+# LHScreen::ResetDisplay's DEVMODE field mask 0x580000 is an immediate, not a pointer into GJBaseUtils.cpp's code.
+  - source: 0x007DD075
+  - source: 0x007DD0AD
 # CitadelHeart::DrawCreaturePen's sprite colour 0xc18119 is an immediate, not a pointer into g_scriptFunctionTable.
   - source: 0x00466A04
 # WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
@@ -1860,6 +1863,16 @@ add_relocations:
     type: x86_abs32
     target: '?InfoList@GPotInfo@@2PAV1@A'
     addend: 0x180c
+# GJBaseUtils.cpp's std::string::_Copy: the catch funclet's continuation address and the catch handler entry in its
+# .xdata$x handler table point inside the function (dtk leaves both unrelocated).
+  - source: 0x0057F80B
+    type: x86_abs32
+    target: '?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z'
+    addend: 0x80
+  - source: 0x009BBDC4
+    type: x86_abs32
+    target: '?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z'
+    addend: 0x5F
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
 linker_version: "6.0"
