@@ -44,6 +44,8 @@ void __cdecl sparklecbstub__FP19LiquidParticleGroupUl(struct LiquidParticleGroup
 void UpdateLiquidParticles(float time); // 00845d00
 void DrawLiquidParticles();             // 00845c50
 
+#define LIQUID_PARTICLE_TYPE_PUFF 4
+
 // BW1W120 00845c20 BW1M119 01043c90 (LHCombined Release)
 void AddLiquidParticle(LHPoint& pos, LHPoint& velocity, unsigned long colour, float size, long type);
 

@@ -739,6 +739,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004E152A, call_indirect(0x008A9024)),  # CreatureMentalLearn: __imp__DirectDrawCreateEx@4
     (0x004E2D0B, call_rel32(0x00401879)),  # CreatureMentalMisc
     (0x004E35BB, call_rel32(0x00401879)),  # CreatureMentalObjectMultipliers
+    (0x004EAC5B, call_rel32(0x00401879)),  # CreatureMorph
     (0x004F036B, call_rel32(0x00401879)),  # CreaturePlan
     (0x004F11AB, call_rel32(0x00401879)),  # CreaturePlan
     (0x004F126B, call_rel32(0x00401879)),  # CreaturePlan
@@ -1350,6 +1351,22 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004E594B, call_rel32(0x00403C49)),  # CreatureMentalObjectMultipliers
     (0x004E5973, jmp_run(0x004E594B)),  # CreatureMentalObjectMultipliers
     (0x004E59C4, copy_run(0x004E5973)),  # CreatureMentalObjectMultipliers
+    (0x004ECFC3, copy_run(0x004ECF58)),  # CreatureMorph
+    (0x004ECFEB, call_rel32(0x00403C49)),  # CreatureMorph
+    (0x004ED015, jmp_run(0x004ECFEB)),  # CreatureMorph
+    (0x004ED7B1, jmp_run(0x004ED013)),  # CreatureMorph
+    (0x004EE199, jmp_run(0x004ED7B1)),  # CreatureMorph
+    (0x004EE444, copy_run(0x004EE199)),  # CreatureMorph
+    (0x004EE776, jmp_run(0x004EE444)),  # CreatureMorph
+    (0x004EF9C6, copy_run(0x004EE776)),  # CreatureMorph
+    (0x004EFF78, jmp_run(0x004EF9C6)),  # CreatureMorph
+    (0x004F01C9, copy_run(0x004EFF78)),  # CreatureMorph
+    (0x004F0376, jmp_run(0x004F01C9)),  # CreatureMorph
+    (0x004F04B9, jmp_run(0x004F0376)),  # CreatureMorph
+    (0x004F08B8, jmp_run(0x004F04B9)),  # CreatureMorph
+    (0x004F0A57, jmp_run(0x004F08B8)),  # CreatureMorph
+    (0x004F0F59, jmp_run(0x004F0A57)),  # CreatureMorph
+    (0x004F1055, jmp_run(0x004F0F59)),  # CreatureMorph
     (0x004F26D3, jmp_run(0x004F2672)),  # CreaturePlan
     (0x004F26FB, call_rel32(0x00403C49)),  # CreaturePlan
     (0x004F2887, copy_run(0x004F26FB)),  # CreaturePlan

@@ -122,9 +122,55 @@ enum LH3D_CREATURE_EYE_STATE
 #define LH3D_CREATURE_IDLE_ACTION_TIME           3000
 #define LH3D_CREATURE_IDLE_LOOK_TIME             6000
 #define LH3D_CREATURE_IDLE_PUZZLED_FACE_TIME     2000
+#define LH3D_CREATURE_FACIAL_ANIM_TIME           250
+
+#define LH3D_CREATURE_SEGMENT_NAME "Creature"
+
+#ifdef VERSION_BW1WCI
+#define LH3D_CREATURE_FILE_VERSION       23
+#define LH3D_CREATURE_SPEC_VERSION       28
+#define LH3D_CREATURE_SKIN_VERSION       4
+#define LH3D_CREATURE_NUM_TATTOOS        12
+#define LH3D_CREATURE_LEGACY_NUM_TATTOOS 8
+#else
+#define LH3D_CREATURE_FILE_VERSION 21
+#define LH3D_CREATURE_SPEC_VERSION 27
+#define LH3D_CREATURE_SKIN_VERSION 3
+#define LH3D_CREATURE_NUM_TATTOOS  8
+#endif
+
+#define LH3D_CREATURE_BLEND_EPSILON 0.0001f
+#define LH3D_CREATURE_NUM_FORCES    2
+
+#define LH3D_CREATURE_RELEASE_VELOCITY_SAMPLE_TIME 100
+#define LH3D_CREATURE_RELEASE_VELOCITY_SCALE       10.0f
+#define LH3D_CREATURE_ATTACK_VELOCITY_SAMPLE_TIME  50
+#define LH3D_CREATURE_ATTACK_VELOCITY_SCALE        20.0f
+#define LH3D_CREATURE_THROW_SPEED_SCALE            0.707
 
 #define LH3D_CREATURE_FIGHT_QUEUE_SPELL     0x4000
 #define LH3D_CREATURE_FIGHT_QUEUE_SIDE_STEP 0x8000
+
+#define LH3D_CREATURE_MILLISECONDS_PER_SECOND 1000.0f
+#define LH3D_CREATURE_MAX_DRAW_WEIGHT         2.0
+#define LH3D_CREATURE_SLOPE_SCALE             0.6f
+#define LH3D_CREATURE_MAX_SLOPE               0.3f
+
+#define LH3D_CREATURE_PROPORTION_MAX_SIZE      2.0f
+#define LH3D_CREATURE_EYES_SCALE_BASE          1.1f
+#define LH3D_CREATURE_EYES_SCALE_PER_SIZE      0.1f
+#define LH3D_CREATURE_EYES_SCALE_PER_EVIL_GOOD 0.05f
+#define LH3D_CREATURE_HEAD_SCALE_BASE          1.8f
+#define LH3D_CREATURE_HEAD_SCALE_PER_SIZE      0.5f
+#define LH3D_CREATURE_FEET_SCALE_BASE          1.5f
+#define LH3D_CREATURE_FEET_SCALE_PER_SIZE      0.25f
+#define LH3D_CREATURE_GROW_SCALE_BASE          1.4f
+#define LH3D_CREATURE_GROW_SCALE_SIZE_DIVISOR  5.0f
+
+#define LH3D_CREATURE_FOOTSTEP_PUFF_COLOUR      0x40806040
+#define LH3D_CREATURE_FOOTSTEP_PUFF_SPREAD      100
+#define LH3D_CREATURE_FOOTSTEP_PUFF_SPEED_SCALE 0.05f
+#define LH3D_CREATURE_FOOTSTEP_PUFF_SIZE_SCALE  4.0f
 
 class LH3DCreature : public Morphable
 {
@@ -144,8 +190,8 @@ public:
 	float     LookRelativeHeading;
 	float     LookPitchRate;
 	float     LookRelativePitch;
-	LHPoint   Forces[2];
-	LHPoint   field_0x4888[2];
+	LHPoint   Forces[LH3D_CREATURE_NUM_FORCES];
+	LHPoint   ForceOffsets[LH3D_CREATURE_NUM_FORCES];
 	LHPoint   field_0x48a0;
 	bool      ForceApplied;
 	uint8_t   field_0x48ad[0x3];
@@ -166,9 +212,7 @@ public:
 	int       DiscardTime;
 	LHPoint   DiscardVelocity;
 	LHPoint   DiscardPosition;
-	int       field_0x4924;
-	uint8_t   field_0x4928[0x4];
-	float     field_0x492c;
+	LHPoint   PutDownPosition;
 	LHPoint   ThrowPosHigh;
 	LHPoint   ThrowPosFlat;
 	LHPoint   KissPositionA;
@@ -192,7 +236,7 @@ public:
 #ifdef VERSION_BW1WCI
 	int BowlTime;
 #endif
-	int                 field_0x499c;
+	bool32_t            IsBear;
 	int                 CurrentAnim;
 	float               field_0x49a4;
 	float               field_0x49a8;
@@ -201,19 +245,19 @@ public:
 	long                FacialActionTime;
 	long                FacialAnimTime;
 	LHPoint             PickUpFromHandPosition;
-	LHPoint             field_0x49c8[4];
-	LHPoint             field_0x49f8[4];
-	LHPoint             field_0x4a28;
+	LHPoint             PickUpPositions[4];
+	LHPoint             CatchPositions[4];
+	LHPoint             KickPosition;
 	int                 PickUpTime;
-	int                 field_0x4a38;
+	int                 PickUpFromHandTime;
 	int                 CatchTime;
 	int                 PutDownTime;
-	LHPoint             field_0x4a44[4];
+	LHPoint             DestructionPositions[4];
 	LHPoint             PointPoint;
-	int                 field_0x4a80;
+	int                 PointTime;
 	int                 DestroyTime;
-	int                 field_0x4a88;
-	int                 field_0x4a8c;
+	int                 KissTime;
+	int                 KickTime;
 	bool32_t            IsAnimationTimeModified;
 	TattooInfo*         TattooOverride;
 	LHPoint             ArenaCentre;
@@ -238,17 +282,17 @@ public:
 	MeshIntersect       field_0x4bc4[12];
 	LHPoint             field_0x4da4[12];
 	LHPoint             field_0x4e34[12];
-	LHPoint             field_0x4ec4[12];
+	LHPoint             AttackPositions[12];
 	DestructionBone     DestructionBones[12];
 	int                 field_0x5044;
-	LHPoint             field_0x5048[12];
-	int                 field_0x50d8[12];
-	int                 field_0x5108[12];
-	int                 field_0x5138[12];
+	LHPoint             AttackVelocities[12];
+	int                 AttackHitTimes[12];
+	int                 AttackBones[12];
+	int                 AttackCutTypes[12];
 	LHPoint             field_0x5168;
-	void*               SafeBufferMemory0;
+	LHMatrix*           PreviousBuffer;
 	LHMatrix*           SafeBuffer0;
-	void*               SafeBufferMemory1;
+	LHMatrix*           WorkBuffer;
 	LHMatrix*           SafeBuffer1;
 	LH3DCreatureDamage* Damage;
 	int                 field_0x5188;
@@ -265,38 +309,38 @@ public:
 	long                RightArmpit;
 	long                RightHand;
 	long                RightFoot;
-	long                field_0x51d0;
+	long                GrowBone;
 	long                HeadGrowBone;
 	long                Anus;
-	int                 field_0x51dc;
+	bool32_t            BuffersInitialised;
 	int                 ImpactTime;
 	int                 field_0x51e4;
 	int                 field_0x51e8;
-	int                 field_0x51ec;
+	bool32_t            InHand;
 	long*               MirrorBones;
 	LH3DMesh*           field_0x51f4;
 	int                 DanceAnimSpeeds[7];
 	int                 field_0x5214;
-	int                 field_0x5218;
+	bool32_t            SafeBufferLocked;
 	int                 field_0x521c;
-	CAnim*              Anim0x5220;
-	float               field_0x5224;
+	CAnim*              TurnAnim;
+	float               Radius2D;
 	float               BodyRadius;
 	int                 ReverseAnim;
-	int                 field_0x5230;
+	bool32_t            UseLeftHand;
 	int                 field_0x5234;
 	int                 field_0x5238;
 	int                 field_0x523c;
 	float               EventualHeading;
-	int                 field_0x5244;
-	int                 field_0x5248;
-	int                 field_0x524c;
-	int                 field_0x5250;
-	int                 field_0x5254;
-	int                 field_0x5258;
-	int                 field_0x525c;
-	int                 field_0x5260;
-	int                 field_0x5264;
+	bool32_t            KickPositionValid;
+	bool32_t            CatchPositionsValid;
+	bool32_t            PickUpPositionsValid;
+	bool32_t            PickUpFromHandPositionValid;
+	bool32_t            DestructionPositionsValid;
+	bool32_t            ThrowPositionsValid;
+	bool32_t            KissPositionsValid;
+	bool32_t            RemovePositionsValid;
+	bool32_t            FightPositionsValid;
 	int                 field_0x5268;
 	bool32_t            InHandInteraction;
 	bool32_t            SafeBufferSelector;
@@ -310,50 +354,53 @@ public:
 	MeshIntersect       BloodIntersections[8];
 	int                 field_0x53e8[8];
 	MeshIntersect       LipIntersect;
-	int                 field_0x5430;
+	bool32_t            HasLipIntersect;
 	MeshIntersect       VomIntersect;
-	int                 field_0x545c;
+	bool32_t            HasVomIntersect;
 	int                 EyeState;
 	float               EyeLidLevel;
-	int                 field_0x5468;
+	int                 BlinkTimer;
 	int                 BlinkPeriod;
-	int                 field_0x5470;
-	float               field_0x5474;
+	int                 BlinkPhase;
+	float               EyeScale;
 	MeshIntersect       EyeIntersects[4];
-	int                 field_0x5518[4];
-	float               field_0x5528[4];
+	bool32_t            HasEyeIntersect[4];
+	float               EyeNormalOffset[4];
 	Zoomer3d            field_0x5538[2];
-	float               field_0x5658[3];
-	float               field_0x5664[3];
-	float               field_0x5670[3];
-	LH3DCreatureTattoo  TattooPositions[8];
-	int                 TattooSlotUsed[8];
-	int                 field_0x56bc[8];
-	int                 field_0x56dc[8];
-	float               field_0x56fc[8];
+	float               EyeLidWideAngle[3];
+	float               EyeLidClosedAngle[3];
+	float               EyeLidOpenAngle[3];
+	LH3DCreatureTattoo  TattooPositions[LH3D_CREATURE_NUM_TATTOOS];
+	int                 TattooSlotUsed[LH3D_CREATURE_NUM_TATTOOS];
+	int                 TattooFlip[LH3D_CREATURE_NUM_TATTOOS];
+	int                 TattooRotate[LH3D_CREATURE_NUM_TATTOOS];
+	float               TattooScale[LH3D_CREATURE_NUM_TATTOOS];
 	int                 field_0x571c;
 	LHPoint             ThrowTarget;
 	float               ThrowGivenTime;
 	int                 field_0x5730;
-	int                 field_0x5734;
-	int                 field_0x5738;
+	int                 ConcurrentAnimTime;
+	int                 ConcurrentAnim;
 	int                 IdleActionTimer;
 	bool32_t            IdleActionDone;
 	int                 RPLookPointTimer;
 	LHPoint             RPLookPoint;
-	char                FileName[64];
+	char                FileName[32];
+	char                SoundBankName[32];
 	int                 field_0x5794;
 	int                 field_0x5798;
 	FIGHT_CONTROL_AI    AutoFightStatus;
 	int                 field_0x57a0;
-	CollideBox*         Boite;
-	int                 field_0x57a8;
-	PhysOb*             PhysicsOb;
-	HandGlows*          Glows;
-	CameraExclusion*    CameraExclusionDome;
 #ifdef VERSION_BW1WCI
-	uint8_t ci_field_0x57bc[0x3c];
 	LHPoint BraceletPos;
+#endif
+	CollideBox*      Boite;
+	int              field_0x57a8;
+	PhysOb*          PhysicsOb;
+	HandGlows*       Glows;
+	CameraExclusion* CameraExclusionDome;
+#ifdef VERSION_BW1WCI
+	uint8_t ci_field_0x5818[0x14];
 #endif
 
 	// Override methods
@@ -375,7 +422,7 @@ public:
 	// BW1W120 0048e1c0 BW1M119 011eee90
 	virtual uint32_t AddForDrawing();
 	// BW1W120 004eb430 BW1M119 012776d0
-	virtual uint32_t LoadBinary(char* filename, int param_1);
+	virtual uint32_t LoadBinary(char* filename, bool32_t start_creation);
 	// BW1W120 004ed640 BW1M119 012751a0
 	virtual uint32_t SaveBinary(char* filename);
 
@@ -694,7 +741,8 @@ public:
 	// BW1W120 0048dab0 BW1M119 011ef5d0
 	void GetRelativePosition(LHPoint& pos, LHPoint* result);
 	// BW1W120 0048dc70 BW1M119 011ef3f0
-	void GetMultipliers(float* param_1, float* param_2, float* param_3, LHPoint& pos, long param_5, int param_6);
+	void GetMultipliers(float* back_blend, float* front_blend, float* depth_blend, LHPoint& pos, long state,
+	                    int mirror);
 	// BW1W120 0048dd70 BW1M119 011eefb0
 	void DrawFightSparkles();
 	// BW1W120 0048e260 BW1M119 011edf50
@@ -798,8 +846,16 @@ public:
 
 	// Defined in CreatureMorph.cpp
 
+	// BW1W120 004eadd0 BW1M119 null
+	bool32_t LoadSkin(char* name);
+	// BW1W120 004eb140 BW1M119 null
+	bool32_t SaveSkin(char* name);
+	// BW1W120 004ec0c0 BW1M119 01276f00
+	void ApplyYoungOldToBuffer(LHMatrix* buffer, float head_scale, float feet_scale, float grow_scale);
+	// BW1W120 004ec510 BW1M119 inlined
+	float GetExtraGrowScale();
 	// BW1W120 004ed250 BW1M119 01275c80
-	void AddFootstepPuffs(long param_1);
+	void AddFootstepPuffs(long count);
 	// BW1W120 004ee900 BW1M119 012741c0
 	void ValidateCatchPositions();
 	// BW1W120 004ee530 BW1M119 012745f0
@@ -859,7 +915,9 @@ public:
 	// BW1W120 inlined BW1M119 014f6090
 	long GetBellyBone() { return BellyBone; }
 };
-#ifndef VERSION_BW1WCI
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(LH3DCreature) == 0x582c, "LH3DCreature size is incorrect");
+#else
 static_assert(sizeof(LH3DCreature) == 0x57b8, "LH3DCreature size is incorrect");
 #endif
 

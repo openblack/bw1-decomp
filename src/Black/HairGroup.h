@@ -37,6 +37,8 @@ struct HairGroup
 	void Init(long param_1);
 	// BW1W120 00848180 BW1M119 01138420 (LHCombined Release)
 	void ReadBinary(LHFile* param_1);
+	// BW1W120 00848040 BW1M119 011399c0 (LHCombined Release)
+	void WriteBinary(LHFile* file);
 };
 
 #endif /* BW1_DECOMP_HAIR_GROUP_INCLUDED_H */

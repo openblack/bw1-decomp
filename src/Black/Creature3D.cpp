@@ -173,7 +173,7 @@ float LH3DCreature::GetStopDist()
 	}
 	if (field_0x5190 == 5)
 	{
-		LHPoint* offset = (LHPoint*)((uint8_t*)Anim0x5220 + 0x10);
+		LHPoint* offset = (LHPoint*)((uint8_t*)TurnAnim + 0x10);
 		return Size2 * offset->GetNorme() - RpFollow->DistanceAlongNode;
 	}
 	return 0.0f;
@@ -247,12 +247,12 @@ LH3DCreature::LH3DCreature(LH3DCreature& other, const LHPoint& pos, void* param_
 	}
 	Damage = NEW(474) LH3DCreatureDamage;
 	*Damage = *other.Damage;
-	Anim0x5220 = NULL;
+	TurnAnim = NULL;
 	SoundBank = NULL;
 	BoundingSphereValid = false;
 	field_0x57a0 = 1;
 	strcpy(FileName, other.FileName);
-	LoadBinary(FileName, 0);
+	LoadBinary(FileName, false);
 	SetSize(other.Size1);
 	float value = other.GetThinFat();
 	ThinFat = value > -1.0f ? (min(value, 1.0f)) : -1.0f;
@@ -278,7 +278,7 @@ LH3DCreature::LH3DCreature(Creature* creature, const LHPoint& pos, void* param_3
 		((uint32_t*)DynamicShadow->GetShadowInfo())[15] = 0;
 	}
 	Damage = NEW(511) LH3DCreatureDamage;
-	Anim0x5220 = NULL;
+	TurnAnim = NULL;
 	SoundBank = NULL;
 	BoundingSphereValid = false;
 	field_0x57a0 = 0;
@@ -409,12 +409,12 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	field_0x4b30 = 0;
 	FightQueueSize = 0;
 	field_0x5188 = 0;
-	field_0x499c = 0;
+	IsBear = false;
 	MoveState = 0;
 	AutoFightStatus = FIGHT_CONTROL_AI_NEVER;
 	field_0x5044 = 0;
-	field_0x5430 = 0;
-	field_0x545c = 0;
+	HasLipIntersect = false;
+	HasVomIntersect = false;
 	EyeLidLevel = 0.0f;
 	field_0x4ab0 = 0.0f;
 	field_0x4ab4 = 0;
@@ -428,16 +428,16 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	RightFoot = 0;
 	RightHand = 0;
 	RightArmpit = 0;
-	field_0x51d0 = -1;
+	GrowBone = -1;
 	HeadGrowBone = -1;
-	field_0x5474 = 1.0f;
-	SafeBufferMemory0 = NULL;
+	EyeScale = 1.0f;
+	PreviousBuffer = NULL;
 	SafeBuffer0 = NULL;
-	SafeBufferMemory1 = NULL;
+	WorkBuffer = NULL;
 	SafeBuffer1 = NULL;
 	field_0x5190 = 0;
 	ReverseAnim = 0;
-	field_0x5230 = 0;
+	UseLeftHand = false;
 	field_0x5234 = 0;
 	field_0x5238 = 0;
 	field_0x523c = 0;
@@ -452,7 +452,7 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	for (i = 0; i < 2; i++)
 	{
 		Forces[i].SetNull();
-		field_0x4888[i].SetNull();
+		ForceOffsets[i].SetNull();
 	}
 	ForceApplied = false;
 	LeashForce = 0.0f;
@@ -461,18 +461,18 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	ThrowPosFlat.SetNull();
 	KissPositionA.SetNull();
 	KissPositionB.SetNull();
-	field_0x51dc = 0;
+	BuffersInitialised = false;
 	PutDownTime = 0;
 	ThrowTime = 0;
 	DestroyTime = 0;
 	PickUpTime = 0;
 	DiscardTime = 0;
 	EatTime = 0;
-	field_0x4a38 = 0;
+	PickUpFromHandTime = 0;
 	CatchTime = 0;
-	field_0x4a8c = 0;
-	field_0x4a80 = 0;
-	field_0x4a88 = 0;
+	KickTime = 0;
+	PointTime = 0;
+	KissTime = 0;
 	TurningCompleted = 0;
 	field_0x51e8 = 1;
 	for (i = 0; i < 7; i++)
@@ -480,16 +480,16 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 		DanceAnimSpeeds[i] = 1;
 	}
 	field_0x5214 = 0;
-	field_0x5218 = 0;
+	SafeBufferLocked = false;
 	RequiredHeading = 0.0f;
 	DiscardVelocity.SetNull();
 	DiscardPosition.SetNull();
 	for (i = 0; i < 12; i++)
 	{
-		field_0x4ec4[i].SetNull();
-		field_0x50d8[i] = 0;
-		field_0x5108[i] = 0;
-		field_0x5138[i] = 0;
+		AttackPositions[i].SetNull();
+		AttackHitTimes[i] = 0;
+		AttackBones[i] = 0;
+		AttackCutTypes[i] = 0;
 	}
 	ThrowYR = 0.0f;
 	ThrowYL = 0.0f;
@@ -502,33 +502,33 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	CurrentAnim = 0;
 	for (i = 0; i < 4; i++)
 	{
-		field_0x5518[i] = 0;
-		field_0x5528[i] = 0;
+		HasEyeIntersect[i] = false;
+		EyeNormalOffset[i] = 0;
 		if (i < 2)
 		{
 			field_0x5538[i].SetPosition(LHPoint(0.0f, 0.0f, 1.0f));
 		}
 		if (i < 3)
 		{
-			field_0x5658[i] = 0;
-			field_0x5664[i] = 0;
-			field_0x5670[i] = 0;
+			EyeLidWideAngle[i] = 0;
+			EyeLidClosedAngle[i] = 0;
+			EyeLidOpenAngle[i] = 0;
 		}
 	}
 	for (i = 0; i < 8; i++)
 	{
 		TattooSlotUsed[i] = 0;
-		field_0x56fc[i] = 0.5f;
-		field_0x56bc[i] = 0;
-		field_0x56dc[i] = 0;
+		TattooScale[i] = 0.5f;
+		TattooFlip[i] = 0;
+		TattooRotate[i] = 0;
 	}
 	EyeState = 2;
 	Boite = NULL;
 	field_0x57a8 = 0;
 	PhysicsOb = NULL;
-	field_0x5468 = 1000;
+	BlinkTimer = 1000;
 	BlinkPeriod = 5000;
-	field_0x5470 = 0;
+	BlinkPhase = 0;
 	field_0x5168.SetNull();
 	ImpactTime = 0;
 	field_0x51b4 = 0;
@@ -553,11 +553,11 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	field_0x5798 = 0;
 	field_0x5268 = 0;
 	field_0x5730 = 0;
-	field_0x5738 = 0;
-	field_0x5734 = 0;
+	ConcurrentAnim = 0;
+	ConcurrentAnimTime = 0;
 	field_0x485c = 47.12389f;
 	ResetMorphAnims();
-	field_0x51ec = 0;
+	InHand = false;
 	RPLookPointTimer = 0;
 	IdleActionDone = false;
 	IdleActionTimer = 0;
@@ -574,17 +574,17 @@ LH3DCreature::~LH3DCreature()
 		CameraExclusion::Remove(CameraExclusionDome);
 		CameraExclusionDome = NULL;
 	}
-	if (SafeBufferMemory0)
+	if (PreviousBuffer)
 	{
-		delete SafeBufferMemory0;
+		delete PreviousBuffer;
 	}
 	if (SafeBuffer0)
 	{
 		delete SafeBuffer0;
 	}
-	if (SafeBufferMemory1)
+	if (WorkBuffer)
 	{
-		delete SafeBufferMemory1;
+		delete WorkBuffer;
 	}
 	if (SafeBuffer1)
 	{
@@ -613,7 +613,7 @@ LH3DCreature::~LH3DCreature()
 		GGlobal::Global.audio->BankRelease(SoundBank);
 	}
 	delete RpFollow;
-	delete Anim0x5220;
+	delete TurnAnim;
 	if (Glows)
 	{
 		Glows->Release();
@@ -693,7 +693,7 @@ void LH3DCreature::SetSize(float size)
 	field_0x4858 = a * field_0x485c;
 	BodyTurnAccel = a * 3.1415927f;
 	BreathTime = RequiredBreathTime = 5.0f / (1.0f / (float)sqrt(Size1));
-	BodyRadius = Size2 * field_0x5224;
+	BodyRadius = Size2 * Radius2D;
 	if (creature && creature->GetPlayer())
 	{
 		for (GInterfaceStatus* status = creature->GetPlayer()->GetNextInterfaceStatus(NULL); status;
@@ -830,7 +830,7 @@ bool32_t LH3DCreature::StartCatching(Object* object)
 	{
 		return false;
 	}
-	if (field_0x51ec || IsPerformingBodyAction())
+	if (InHand || IsPerformingBodyAction())
 	{
 		return false;
 	}
@@ -875,7 +875,7 @@ bool32_t LH3DCreature::StartKickingAction(Object* object)
 
 void LH3DCreature::SetField5218(long value)
 {
-	field_0x5218 = value;
+	SafeBufferLocked = value;
 }
 
 bool32_t LH3DCreature::StartFacialAction(long action, long time)
@@ -1462,22 +1462,22 @@ void LH3DCreature::UpdateTime(int time)
 	field_0x5268 = 0;
 	AddEvilGoodSparkles();
 	UpdateBlood();
-	field_0x5468 -= IntTimeInc;
-	if (field_0x5468 <= 0)
+	BlinkTimer -= IntTimeInc;
+	if (BlinkTimer <= 0)
 	{
-		switch (field_0x5470)
+		switch (BlinkPhase)
 		{
 		case 0:
-			field_0x5470 = 1;
-			field_0x5468 = 200;
+			BlinkPhase = 1;
+			BlinkTimer = 200;
 			break;
 		case 1:
-			field_0x5470 = 2;
-			field_0x5468 = 200;
+			BlinkPhase = 2;
+			BlinkTimer = 200;
 			break;
 		case 2:
-			field_0x5470 = 0;
-			field_0x5468 = GRand::LocalRand(BlinkPeriod) + (BlinkPeriod >> 1);
+			BlinkPhase = 0;
+			BlinkTimer = GRand::LocalRand(BlinkPeriod) + (BlinkPeriod >> 1);
 			break;
 		}
 	}
@@ -1526,7 +1526,7 @@ void LH3DCreature::UpdateTime(int time)
 			for (int j = 0; j < 10; j++)
 			{
 				LHPoint force = field_0x48a0;
-				force.Add(field_0x4888[i] * stiffness);
+				force.Add(ForceOffsets[i] * stiffness);
 				float lengthSq = Forces[i].GetNormeSq();
 				if (lengthSq > 36.0f)
 				{
@@ -1534,9 +1534,9 @@ void LH3DCreature::UpdateTime(int time)
 				}
 				force -= Forces[i] * damping;
 				Forces[i].Add(force * accel);
-				field_0x4888[i].Add(Forces[i] * dt);
+				ForceOffsets[i].Add(Forces[i] * dt);
 			}
-			if (field_0x4888[i].GetNorme() > 0.05f || Forces[i].GetNorme() > 0.05f)
+			if (ForceOffsets[i].GetNorme() > 0.05f || Forces[i].GetNorme() > 0.05f)
 			{
 				settled = false;
 			}
@@ -1546,16 +1546,16 @@ void LH3DCreature::UpdateTime(int time)
 			ForceApplied = false;
 		}
 	}
-	if (field_0x47bc)
+	if (Inactive)
 	{
 		UpdateBuffers();
 		return;
 	}
 	PlayQueuedSoundEffects();
 	OperateFace();
-	if (field_0x5738)
+	if (ConcurrentAnim)
 	{
-		CAnim* anim = GetAnim(field_0x5738, 0);
+		CAnim* anim = GetAnim(ConcurrentAnim, 0);
 		long   delta = AnimTimeInc;
 		if (field_0x5730)
 		{
@@ -1563,19 +1563,19 @@ void LH3DCreature::UpdateTime(int time)
 		}
 		bool finished;
 		// TODO: CAnim's first field is a signed duration (see UpdateLook), hence the cast.
-		if (field_0x5734 + delta >= (long)anim->Duration)
+		if (ConcurrentAnimTime + delta >= (long)anim->Duration)
 		{
 			finished = true;
-			delta = anim->Duration - field_0x5734;
+			delta = anim->Duration - ConcurrentAnimTime;
 		}
 		else
 		{
 			finished = false;
 		}
-		field_0x5734 = AdvanceCyclic(field_0x5738, field_0x5734, delta);
+		ConcurrentAnimTime = AdvanceCyclic(ConcurrentAnim, ConcurrentAnimTime, delta);
 		if (finished)
 		{
-			field_0x5738 = 0;
+			ConcurrentAnim = 0;
 		}
 	}
 	for (int i = 0; i < 4; i++)
@@ -1687,7 +1687,7 @@ void LH3DCreature::UpdateTime(int time)
 	if (HeldObject && HeldObject->IsCreature())
 	{
 		Creature* held = HeldObject->CastCreature();
-		long      bone = field_0x5230 ? GetMirrorBone(RightHand) : RightHand;
+		long      bone = UseLeftHand ? GetMirrorBone(RightHand) : RightHand;
 		LH3DAnim::GetGraspPoint(GetSafeBuffer(), meshes[CurrentMesh], held->GetCreature3D()->position, bone);
 		held->GetCreature3D()->UpdateBuffers();
 	}
@@ -1772,9 +1772,9 @@ void LH3DCreature::UpdateLook()
 		if (fabs(dir.x) > 0.0001f && fabs(dir.z) > 0.0001f)
 		{
 			float heading = Heading;
-			if (Anim0x5220)
+			if (TurnAnim)
 			{
-				heading += angle_correct(RequiredHeading - Heading) * CycleTime[0] / (long)Anim0x5220->Duration;
+				heading += angle_correct(RequiredHeading - Heading) * CycleTime[0] / (long)TurnAnim->Duration;
 			}
 			yaw = angle_correct(heading_from_direction_vector(dir) - heading);
 		}
@@ -1835,10 +1835,10 @@ void LH3DCreature::ResetLook()
 	field_0x519c = 0;
 	Point2D pos(position.x, position.z);
 	RpFollow->SetPos(pos, GetNavRadius());
-	if (Anim0x5220)
+	if (TurnAnim)
 	{
-		delete Anim0x5220;
-		Anim0x5220 = NULL;
+		delete TurnAnim;
+		TurnAnim = NULL;
 	}
 	field_0x523c = 0;
 	StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -2126,18 +2126,18 @@ long LH3DCreature::GetStartState(LHPoint& param_1, LHPoint& param_2)
 	}
 	if (angle < 1.5707964f)
 	{
-		Anim0x5220 = NEW(2799) CAnim(anim0, frame, anim1, frame, angle / 1.5707964f);
+		TurnAnim = NEW(2799) CAnim(anim0, frame, anim1, frame, angle / 1.5707964f);
 	}
 	else
 	{
-		Anim0x5220 = NEW(2805) CAnim(anim1, frame, anim2, frame, (angle - 1.5707964f) / 1.5707964f);
+		TurnAnim = NEW(2805) CAnim(anim1, frame, anim2, frame, (angle - 1.5707964f) / 1.5707964f);
 	}
-	long    frames = Anim0x5220->FrameCount - 1;
+	long    frames = TurnAnim->FrameCount - 1;
 	float   scale = 1.0f / frames;
 	float   angle2 = angle_correct(RequiredHeading - Heading);
 	LHPoint direction(sin(angle2), 0.0f, -cos(angle2));
-	LHPoint step = Anim0x5220->Movement * scale;
-	Anim0x5220->Duration = (long)(1000.0f * (Size2 * step.DotProduct(direction) / WalkSpeed * frames));
+	LHPoint step = TurnAnim->Movement * scale;
+	TurnAnim->Duration = (long)(1000.0f * (Size2 * step.DotProduct(direction) / WalkSpeed * frames));
 	return 5;
 }
 
@@ -2172,7 +2172,7 @@ bool32_t LH3DCreature::StartMovingToPoint(const LHPoint& pos, float param_2, flo
 	{
 		return 0;
 	}
-	if (field_0x51ec)
+	if (InHand)
 	{
 		return 1;
 	}
@@ -2267,10 +2267,10 @@ bool32_t LH3DCreature::StartStaticAction(long action)
 
 bool32_t LH3DCreature::StartConcurrentAction(long action)
 {
-	if (field_0x5738 == 0 && GetAnim(action, 0))
+	if (ConcurrentAnim == 0 && GetAnim(action, 0))
 	{
-		field_0x5738 = action;
-		field_0x5734 = 0;
+		ConcurrentAnim = action;
+		ConcurrentAnimTime = 0;
 		return true;
 	}
 	return false;
@@ -2295,7 +2295,7 @@ bool32_t LH3DCreature::StartFighting(LH3DCreature* other, LHPoint& pos, float pa
 	{
 		return false;
 	}
-	if (field_0x51ec)
+	if (InHand)
 	{
 		return false;
 	}
@@ -2492,7 +2492,7 @@ bool32_t LH3DCreature::PointAt(LHPoint* pos, bool param_2)
 		TurningCompleted = 1;
 		if (HeldObject)
 		{
-			ReverseAnim = field_0x5230 == 0;
+			ReverseAnim = UseLeftHand == false;
 		}
 		else
 		{
@@ -2531,7 +2531,7 @@ void LH3DCreature::StopPointing()
 
 bool32_t LH3DCreature::StartIndividualAction(long action)
 {
-	return StartIndividualAction(action, HeldObject ? field_0x5230 == 0
+	return StartIndividualAction(action, HeldObject ? UseLeftHand == false
 	                                                : (creature ? GAME_RAND(3338, 2) : GRand::LocalRand(2)));
 }
 
@@ -2578,7 +2578,7 @@ bool32_t LH3DCreature::StartObjectKeepAction(long action)
 	}
 	CurrentAnim = action;
 	StateSet(LH3D_CREATURE_STATE_OBJECT_KEEP);
-	ReverseAnim = field_0x5230;
+	ReverseAnim = UseLeftHand;
 	return true;
 }
 
@@ -2596,10 +2596,10 @@ bool32_t LH3DCreature::StartDeathAction(long action, int param_2)
 	Point2D pos(position.x, position.z);
 	RpFollow->SetPos(pos, GetNavRadius());
 	field_0x5190 = 0;
-	if (Anim0x5220)
+	if (TurnAnim)
 	{
-		delete Anim0x5220;
-		Anim0x5220 = NULL;
+		delete TurnAnim;
+		TurnAnim = NULL;
 	}
 	CurrentAnim = action;
 	ReverseAnim = param_2;
@@ -2638,7 +2638,7 @@ bool32_t LH3DCreature::StartObjectRemoveAction(long action)
 	}
 	CurrentAnim = action;
 	StateSet(LH3D_CREATURE_STATE_OBJECT_REMOVE);
-	ReverseAnim = field_0x5230;
+	ReverseAnim = UseLeftHand;
 	return true;
 }
 
@@ -2784,7 +2784,7 @@ void LH3DCreature::StateSet(long state)
 		CycleTime[0] = 0;
 		break;
 	case LH3D_CREATURE_STATE_CATCH_ACTION:
-		field_0x5230 = ReverseAnim;
+		UseLeftHand = ReverseAnim;
 		ObjectActionStatus = 1;
 		CycleTime[0] = 0;
 		break;
@@ -3170,10 +3170,10 @@ void LH3DCreature::StateSwitch()
 		{
 			Heading = RequiredHeading;
 			StateSet(LH3D_CREATURE_STATE_STANDING);
-			if (Anim0x5220)
+			if (TurnAnim)
 			{
-				delete Anim0x5220;
-				Anim0x5220 = NULL;
+				delete TurnAnim;
+				TurnAnim = NULL;
 			}
 		}
 		break;
@@ -3202,11 +3202,11 @@ float LH3DCreature::CalculateMaximumActionRange(long action)
 	{
 	case LH3D_CREATURE_STATE_PICKING_UP:
 		ValidatePickUpPositions();
-		positions = field_0x49c8;
+		positions = PickUpPositions;
 		break;
 	case LH3D_CREATURE_STATE_DESTRUCTION:
 		ValidateDestructionPositions();
-		positions = field_0x4a44;
+		positions = DestructionPositions;
 		break;
 	}
 	for (int i = 0; i < 4; i++)
@@ -3224,11 +3224,11 @@ float LH3DCreature::CalculateAverageActionRange(long action)
 	{
 	case LH3D_CREATURE_STATE_PICKING_UP:
 		ValidatePickUpPositions();
-		positions = field_0x49c8;
+		positions = PickUpPositions;
 		break;
 	case LH3D_CREATURE_STATE_DESTRUCTION:
 		ValidateDestructionPositions();
-		positions = field_0x4a44;
+		positions = DestructionPositions;
 		break;
 	}
 	float range = 0.0f;
@@ -3287,7 +3287,7 @@ bool32_t LH3DCreature::IsInRangeImmediately(LHPoint& pos, long action, float* he
 	// faces the chosen centre towards the target.
 	LHPoint centre;
 	centre.SetNull();
-	LHPoint* positions = action == LH3D_CREATURE_STATE_PICKING_UP ? field_0x49c8 : field_0x4a44;
+	LHPoint* positions = action == LH3D_CREATURE_STATE_PICKING_UP ? PickUpPositions : DestructionPositions;
 	LHPoint  scaled[4];
 	for (int i = 0; i < 4; i++)
 	{
@@ -3306,7 +3306,7 @@ bool32_t LH3DCreature::IsInRangeImmediately(LHPoint& pos, long action, float* he
 	GetMultipliers(&backBlend, &frontBlend, &depthBlend, relative, action, mirror);
 	if (action == LH3D_CREATURE_STATE_PICKING_UP)
 	{
-		field_0x5230 = mirror;
+		UseLeftHand = mirror;
 	}
 	else
 	{
@@ -3395,9 +3395,9 @@ void LH3DCreature::DrawTestTattoo(long slot)
 			}
 		}
 		// TODO: LH3DMesh::skins is an array of texture pointers (LH3DTexture**); drop the cast once it is.
-		GTattoo::Draw(field_0x56bc[slot], field_0x56dc[slot],
+		GTattoo::Draw(TattooFlip[slot], TattooRotate[slot],
 		              ((LH3DTexture**)meshes[CurrentMesh]->skins)[TattooPositions[slot].Skin], TattooPositions[slot].X,
-		              TattooPositions[slot].Y, field_0x56fc[slot], 1, &info, 0, testImage);
+		              TattooPositions[slot].Y, TattooScale[slot], 1, &info, 0, testImage);
 	}
 }
 
@@ -3897,11 +3897,11 @@ void LH3DCreature::DoPickupFromHandAction()
 	CycleWeight[0] = 1.0f;
 	long lastTime = CycleTime[0];
 	// The animation time at which the object is taken out of the hand.
-	long takeTime = field_0x4a38;
+	long takeTime = PickUpFromHandTime;
 	CycleTime[0] = AdvanceCyclic(C_PICKUP_FROM_HAND, lastTime, AnimTimeInc);
 	if (lastTime <= takeTime && CycleTime[0] > takeTime)
 	{
-		field_0x5230 = ReverseAnim;
+		UseLeftHand = ReverseAnim;
 		if (!ActionObject)
 		{
 			StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3980,7 +3980,7 @@ void LH3DCreature::DoPointAction(bool param_1)
 	{
 		if (HeldObject)
 		{
-			ReverseAnim = field_0x5230 == 0;
+			ReverseAnim = UseLeftHand == false;
 		}
 		else
 		{
@@ -4007,7 +4007,7 @@ void LH3DCreature::DoPointAction(bool param_1)
 	{
 		advance = true;
 	}
-	if (advance || CycleTime[0] < field_0x4a80)
+	if (advance || CycleTime[0] < PointTime)
 	{
 		CycleTime[0] = AdvanceCyclic(C_POINT_LO_LEFT, CycleTime[0], AnimTimeInc);
 	}
@@ -4022,23 +4022,22 @@ void LH3DCreature::DoCatchAction()
 	if (ActionObject)
 	{
 		PhysicsObject* physics = PhysicsObject::SearchForPhysicsObject(ActionObject);
-		// TODO: field_0x49f8 holds the catch hand positions set by ValidateCatchPositions.
-		float lowY = field_0x49f8[1].y * Size2 + position.y;
-		float highY = field_0x49f8[3].y * Size2 + position.y;
+		float          lowY = CatchPositions[1].y * Size2 + position.y;
+		float          highY = CatchPositions[3].y * Size2 + position.y;
 		if (physics)
 		{
 			const LHPoint& objectPos = physics->Physics.Matrix.GetPos();
 			field_0x5168.z = (objectPos.y - lowY) / (highY - lowY);
 			float   angle = Heading - 1.5707964f;
 			LHPoint right((float)sin(angle), 0.0f, -(float)cos(angle));
-			float   rightX = -field_0x49f8[3].x * Size2;
+			float   rightX = -CatchPositions[3].x * Size2;
 			LHPoint offset(objectPos.x - position.x, objectPos.y - position.y, objectPos.z - position.z);
 			float   side = right * offset;
 			if (ReverseAnim)
 			{
 				side = -side;
 			}
-			float leftX = -field_0x49f8[2].x * Size2;
+			float leftX = -CatchPositions[2].x * Size2;
 			field_0x5168.x = field_0x5168.y = (side - leftX) / (rightX - leftX);
 		}
 		else
@@ -4193,7 +4192,7 @@ void LH3DCreature::DoCatchMain()
 	}
 	float   angle = Heading - 1.5707964f;
 	LHPoint right((float)sin(angle), 0.0f, -(float)cos(angle));
-	float   reach = -((field_0x49f8[3].x - field_0x49f8[2].x) * 1.2f + field_0x49f8[2].x) * Size2;
+	float   reach = -((CatchPositions[3].x - CatchPositions[2].x) * 1.2f + CatchPositions[2].x) * Size2;
 	LHPoint sideOffset(objectPos.x - position.x, objectPos.y - position.y, objectPos.z - position.z);
 	float   side = right * sideOffset;
 	if ((float)fabs(side) > reach)
@@ -4261,13 +4260,13 @@ void LH3DCreature::DoKickingAction()
 	CycleAnim[0] = GetAnim(C_DESTROY_KICK_LOW, 0);
 	CycleWeight[0] = 1.0f;
 	long previousTime = CycleTime[0];
-	long kickTime = field_0x4a8c;
+	long kickTime = KickTime;
 	CycleTime[0] = CycleTime[1] = AdvanceCyclic(C_DESTROY_KICK_LOW, CycleTime[0], AnimTimeInc);
 	if (ActionObject && previousTime <= kickTime && CycleTime[0] > kickTime)
 	{
 		LHMatrix matrix;
 		GetPositionMatrix(&matrix);
-		LHPoint kickPos = field_0x4a28;
+		LHPoint kickPos = KickPosition;
 		matrix.TransformPoint(kickPos);
 		LHPoint kickDir(0.0f, 1.0f, -1.0f);
 		matrix.TransformVector(kickDir);
@@ -4454,7 +4453,7 @@ void LH3DCreature::DoKissingAction()
 	CycleAnim[1] = GetAnim(C_MISC_KISS_LO, 0);
 	CycleWeight[1] = 1.0f - KissFraction;
 	long previousTime = CycleTime[0];
-	long kissTime = field_0x4a88;
+	long kissTime = KissTime;
 	CycleTime[0] = CycleTime[1] = AdvanceCyclic(C_MISC_KISS_HI, CycleTime[0], IntTimeInc);
 	if (previousTime <= kissTime && CycleTime[0] > kissTime)
 	{
@@ -4924,8 +4923,8 @@ void LH3DCreature::AttemptAttack(long action, float param_2)
 		long anim = i + C_FIGHT_ATTACK_HIGH;
 		if (anim != C_FIGHT_ATTACK_SPECIAL && GetAnim(anim, 0))
 		{
-			LHPoint attackPos = matrix * LHPoint(0.0f, field_0x4ec4[i].y, field_0x4ec4[i].z);
-			float   height = Size2 * field_0x4ec4[i].y;
+			LHPoint attackPos = matrix * LHPoint(0.0f, AttackPositions[i].y, AttackPositions[i].z);
+			float   height = Size2 * AttackPositions[i].y;
 			if (height <= headHeight)
 			{
 				distances[i] = 1000.0f;
@@ -5136,7 +5135,7 @@ void LH3DCreature::DoFightActionAction()
 			long     tolerance = (long)(AnimTimeInc * 0.6f);
 			LHMatrix positionMatrix;
 			GetPositionMatrix(&positionMatrix);
-			LHMatrix* bone = &SafeBuffer1[field_0x5108[index]];
+			LHMatrix* bone = &SafeBuffer1[AttackBones[index]];
 			long      time = oldTime;
 			CycleAnim[0]->FillBuffer(SafeBuffer1, GetMesh(), BaseMatrices, InverseBaseMatrices, oldTime, frame, NULL,
 			                         true);
@@ -5149,7 +5148,7 @@ void LH3DCreature::DoFightActionAction()
 			for (int i = 0; i < 30; i++)
 			{
 				time += step;
-				if (time < field_0x50d8[index] - tolerance || time > field_0x50d8[index] + tolerance)
+				if (time < AttackHitTimes[index] - tolerance || time > AttackHitTimes[index] + tolerance)
 				{
 					continue;
 				}
@@ -5195,13 +5194,13 @@ void LH3DCreature::DoFightActionAction()
 			}
 			if (!noHit)
 			{
-				float   damage = field_0x4ec4[index].y * Size2 / FightCreature->GetHeadHeight();
+				float   damage = AttackPositions[index].y * Size2 / FightCreature->GetHeadHeight();
 				LHPoint cutDir = hitDir * 5.0f * 30.0f;
 				long    cutType = 0;
 				long    cutSize = GAME_RAND(6523, 8);
 				if (GAME_RAND(6527, 2))
 				{
-					switch (field_0x5138[index])
+					switch (AttackCutTypes[index])
 					{
 					case 0:
 						cutType = 1;
@@ -5281,7 +5280,7 @@ void LH3DCreature::DoFightActionAction()
 					loss *= BlockedHitLossScale;
 				}
 				// Pick the _R/_L/_T/_B variant of the recoil from the direction the attack comes from.
-				LHPoint& hitAngle = field_0x5048[index];
+				LHPoint& hitAngle = AttackVelocities[index];
 				if (sqrt(hitAngle.x * hitAngle.x + hitAngle.y * hitAngle.y) > -hitAngle.z)
 				{
 					if (hitAngle.x >= (float)fabs(hitAngle.y))
@@ -5489,11 +5488,11 @@ bool32_t LH3DCreature::InitialiseTurning(float heading)
 	// Blend between the 0/90 or 90/180 degree spins.
 	if (diff < HALF_PI_F)
 	{
-		Anim0x5220 = NEW(6898) CAnim(anim0, frame, anim1, frame, diff / HALF_PI_F);
+		TurnAnim = NEW(6898) CAnim(anim0, frame, anim1, frame, diff / HALF_PI_F);
 	}
 	else
 	{
-		Anim0x5220 = NEW(6904) CAnim(anim1, frame, anim2, frame, (diff - HALF_PI_F) / HALF_PI_F);
+		TurnAnim = NEW(6904) CAnim(anim1, frame, anim2, frame, (diff - HALF_PI_F) / HALF_PI_F);
 	}
 	return true;
 }
@@ -5501,9 +5500,9 @@ bool32_t LH3DCreature::InitialiseTurning(float heading)
 bool32_t LH3DCreature::DoTheTurningBusiness()
 {
 	CycleWeight[0] = 1.0f;
-	if (Anim0x5220)
+	if (TurnAnim)
 	{
-		CycleAnim[0] = Anim0x5220;
+		CycleAnim[0] = TurnAnim;
 		CAnim* anim = GetAnim(C_MOVE_R_SPIN_90, 0);
 		long   oldTime = (long)anim->Duration * CycleTime[0] / (long)CycleAnim[0]->Duration;
 		CycleTime[0] += AnimTimeInc;
@@ -5522,8 +5521,8 @@ bool32_t LH3DCreature::DoTheTurningBusiness()
 		CycleAnim[0] = GetAnim(C_MOVE_STAND, 0);
 		CycleTime[0] = 0;
 		Heading = RequiredHeading;
-		delete Anim0x5220;
-		Anim0x5220 = NULL;
+		delete TurnAnim;
+		TurnAnim = NULL;
 		return true;
 	}
 	return false;
@@ -5587,7 +5586,7 @@ void LH3DCreature::DoBlendedAction()
 		CycleAnim[1] = GetAnim(C_PICKUP_BACK_RIGHT, 0);
 		CycleAnim[2] = GetAnim(C_PICKUP_FRONT_LEFT, 0);
 		anim = C_PICKUP_FRONT_RIGHT;
-		ReverseAnim = field_0x5230;
+		ReverseAnim = UseLeftHand;
 	}
 	else
 	{
@@ -5797,7 +5796,7 @@ void LH3DCreature::GetThrowPosition(float heading, float slope, LHPoint* result)
 	float   high = ThrowYH / ThrowZH;
 	float   t = (slope - flat) / (high - flat);
 	LHPoint pos = ThrowPosHigh * t + ThrowPosFlat * (1.0f - t);
-	if (field_0x5230)
+	if (UseLeftHand)
 	{
 		pos.x = -pos.x;
 	}
@@ -5836,7 +5835,7 @@ void LH3DCreature::DoDiscardAction()
 				LHMatrix rotation;
 				rotation.SetRotationY(Heading);
 				velocity.Set(DiscardVelocity * 0.6f);
-				if (field_0x5230)
+				if (UseLeftHand)
 				{
 					velocity.x = -velocity.x;
 				}
@@ -5847,7 +5846,7 @@ void LH3DCreature::DoDiscardAction()
 			{
 				velocity.Set(0.0f, 0.0f, 0.0f);
 			}
-			long    hand = field_0x5230 ? GetMirrorBone(RightHand) : RightHand;
+			long    hand = UseLeftHand ? GetMirrorBone(RightHand) : RightHand;
 			LHPoint handPos;
 			LH3DAnim::GetGraspPoint(SafeBuffer0, meshes[CurrentMesh], handPos, hand);
 			GLandscape::ConvertLandscapePointToMapCoord(handPos, HeldObject->Pos);
@@ -5892,7 +5891,7 @@ void LH3DCreature::DoDiscardAction()
 
 void LH3DCreature::UpdateHeldObjects3Angles()
 {
-	LHMatrix matrix = SafeBuffer0[field_0x5230 ? GetLeftHand() : RightHand];
+	LHMatrix matrix = SafeBuffer0[UseLeftHand ? GetLeftHand() : RightHand];
 	matrix.NormaliseMatrixOnly();
 	float scale = HeldObject->GetScale();
 	// Scaled column by column (the translation row too).
@@ -5914,7 +5913,7 @@ void LH3DCreature::UpdateHeldObjects3Angles()
 	temp = *(LHPoint*)&matrix._31;
 	*(LHPoint*)&matrix._31 = *(LHPoint*)&matrix._21;
 	*(LHPoint*)&matrix._21 = temp;
-	if (field_0x5230)
+	if (UseLeftHand)
 	{
 		matrix._21 = -matrix._21;
 		matrix._22 = -matrix._22;
@@ -5983,7 +5982,7 @@ void LH3DCreature::FillAverageHandPos(LHPoint& pos)
 
 void LH3DCreature::ThrowPreCalc()
 {
-	ReverseAnim = field_0x5230;
+	ReverseAnim = UseLeftHand;
 	TurningCompleted = 1;
 	CycleTime[0] = 0;
 	float   heading = heading_from_direction_vector(ThrowTarget - position);
@@ -6032,7 +6031,7 @@ void LH3DCreature::DoThrowingAction()
 	                                            (timeFromRelease / 400.0f) * (AnimTimeInc - throwStep) + throwStep);
 	if (HeldObject && CycleTime[0] >= ThrowTime)
 	{
-		long    hand = field_0x5230 ? GetMirrorBone(RightHand) : RightHand;
+		long    hand = UseLeftHand ? GetMirrorBone(RightHand) : RightHand;
 		LHPoint handPos;
 		LH3DAnim::GetGraspPoint(SafeBuffer0, meshes[CurrentMesh], handPos, hand);
 		GLandscape::ConvertLandscapePointToMapCoord(handPos, HeldObject->Pos);
@@ -6191,9 +6190,9 @@ void LH3DCreature::MorphTexture()
 				if (slot < 8 && TattooSlotUsed[slot])
 				{
 					// TODO: LH3DMesh::skins is an array of texture pointers (LH3DTexture**); drop the cast once it is.
-					GTattoo::Draw(field_0x56bc[slot], field_0x56dc[slot],
+					GTattoo::Draw(TattooFlip[slot], TattooRotate[slot],
 					              ((LH3DTexture**)GetMesh()->skins)[TattooPositions[slot].Skin],
-					              TattooPositions[slot].X, TattooPositions[slot].Y, field_0x56fc[slot], playerNumber,
+					              TattooPositions[slot].X, TattooPositions[slot].Y, TattooScale[slot], playerNumber,
 					              &tattoos[i], i, NULL);
 				}
 			}
@@ -6224,15 +6223,15 @@ void LH3DCreature::MorphTexture()
 
 void LH3DCreature::ResetMorphAnims()
 {
-	field_0x5244 = 0;
-	field_0x5248 = 0;
-	field_0x524c = 0;
-	field_0x5254 = 0;
-	field_0x5258 = 0;
-	field_0x5260 = 0;
-	field_0x5264 = 0;
-	field_0x525c = 0;
-	field_0x5250 = 0;
+	KickPositionValid = false;
+	CatchPositionsValid = false;
+	PickUpPositionsValid = false;
+	DestructionPositionsValid = false;
+	ThrowPositionsValid = false;
+	RemovePositionsValid = false;
+	FightPositionsValid = false;
+	KissPositionsValid = false;
+	PickUpFromHandPositionValid = false;
 }
 
 void LH3DCreature::MorphAnims()
@@ -6323,7 +6322,7 @@ void LH3DCreature::Unknown48db40(Object* object, LHPoint* result, long state)
 	// The target multiplies by a 3.0f constant (0x8cf194) that is not the shared `3.0f` literal (0x8c2c50, also
 	// used elsewhere in this file); dividing by the folded 1/3 gives the reciprocal-named __real@4@4000bfffffa000003000.
 	float    maxSize = Size1 / (1.0f / 3.0f);
-	LHPoint* positions = state == LH3D_CREATURE_STATE_PICKING_UP ? field_0x49c8 : field_0x4a44;
+	LHPoint* positions = state == LH3D_CREATURE_STATE_PICKING_UP ? PickUpPositions : DestructionPositions;
 	LHPoint  scaled[4];
 	for (int i = 0; i < 4; i++)
 	{
@@ -6341,26 +6340,26 @@ void LH3DCreature::Unknown48db40(Object* object, LHPoint* result, long state)
 	}
 }
 
-void LH3DCreature::GetMultipliers(float* param_1, float* param_2, float* param_3, LHPoint& pos, long param_5,
-                                  int param_6)
+void LH3DCreature::GetMultipliers(float* back_blend, float* front_blend, float* depth_blend, LHPoint& pos, long state,
+                                  int mirror)
 {
-	LHPoint* positions = param_5 == LH3D_CREATURE_STATE_PICKING_UP ? field_0x49c8 : field_0x4a44;
+	LHPoint* positions = state == LH3D_CREATURE_STATE_PICKING_UP ? PickUpPositions : DestructionPositions;
 	LHPoint  scaled[4];
 	for (int i = 0; i < 4; i++)
 	{
 		scaled[i] = positions[i] * Size2;
-		if (param_6)
+		if (mirror)
 		{
 			scaled[i].x = -scaled[i].x;
 		}
 	}
-	*param_1 = (pos.x - scaled[0].x) / (scaled[1].x - scaled[0].x);
-	*param_2 = (pos.x - scaled[2].x) / (scaled[3].x - scaled[2].x);
+	*back_blend = (pos.x - scaled[0].x) / (scaled[1].x - scaled[0].x);
+	*front_blend = (pos.x - scaled[2].x) / (scaled[3].x - scaled[2].x);
 	LHPoint front;
-	front = scaled[0] * (1.0f - *param_1) + scaled[1] * *param_1;
+	front = scaled[0] * (1.0f - *back_blend) + scaled[1] * *back_blend;
 	LHPoint back;
-	back = scaled[2] * (1.0f - *param_2) + scaled[3] * *param_2;
-	*param_3 = (pos.z - front.z) / (back.z - front.z);
+	back = scaled[2] * (1.0f - *front_blend) + scaled[3] * *front_blend;
+	*depth_blend = (pos.z - front.z) / (back.z - front.z);
 }
 
 void LH3DCreature::DrawFightSparkles()
@@ -6490,13 +6489,13 @@ void LH3DCreature::DrawNow()
 		bool      lidColourSet = false;
 		for (long eye = 0; eye < 2; eye++)
 		{
-			float scale = GetExtraHeadScale() * GetExtraEyesScale() * field_0x5474 * Size1 * EyeSizeScale;
+			float scale = GetExtraHeadScale() * GetExtraEyesScale() * EyeScale * Size1 * EyeSizeScale;
 			if (EyeState == 3)
 			{
 				scale *= 1.1f;
 			}
 			float time = 0.3f / (EyeLidLevel + 2.0f);
-			if (!field_0x5518[eye])
+			if (!HasEyeIntersect[eye])
 			{
 				continue;
 			}
@@ -6552,7 +6551,7 @@ void LH3DCreature::DrawNow()
 			eyeball->matrix.GetVectorX() = eyeball->matrix.GetVectorZ() ^ LHPoint(0.0f, 1.0f, 0.0f);
 			eyeball->matrix.GetVectorX().FastNormalize();
 			eyeball->matrix.GetVectorY() = eyeball->matrix.GetVectorZ() ^ eyeball->matrix.GetVectorX();
-			pos -= normal * field_0x5528[eye];
+			pos -= normal * EyeNormalOffset[eye];
 			*(LHPoint*)&eyeball->matrix.GetPos() = pos;
 			eyeballMatrix->PreScale(scale, scale, scale);
 			eyeball->SetColorSpecular(DynamicShadow->color, DynamicShadow->specular);
@@ -6573,7 +6572,7 @@ void LH3DCreature::DrawNow()
 					eyeball->Draw();
 				}
 			}
-			if (!field_0x5518[eye + 2])
+			if (!HasEyeIntersect[eye + 2])
 			{
 				continue;
 			}
@@ -6619,21 +6618,21 @@ void LH3DCreature::DrawNow()
 			{
 			case 0:
 			case 3:
-				angle = field_0x5658[1] * PI_F;
+				angle = EyeLidWideAngle[1] * PI_F;
 				break;
 			case 1:
-				angle = field_0x5664[1] * PI_F;
+				angle = EyeLidClosedAngle[1] * PI_F;
 				break;
 			case 2:
 			case 4:
-				angle = field_0x5670[1] * PI_F - asin(sinAngle) + EyeLidLevel * 0.3f;
-				switch (field_0x5470)
+				angle = EyeLidOpenAngle[1] * PI_F - asin(sinAngle) + EyeLidLevel * 0.3f;
+				switch (BlinkPhase)
 				{
 				case 1:
-					angle += (field_0x5664[1] * PI_F - angle) * ((200 - field_0x5468) / 200.0f);
+					angle += (EyeLidClosedAngle[1] * PI_F - angle) * ((200 - BlinkTimer) / 200.0f);
 					break;
 				case 2:
-					angle += (field_0x5664[1] * PI_F - angle) * (field_0x5468 / 200.0f);
+					angle += (EyeLidClosedAngle[1] * PI_F - angle) * (BlinkTimer / 200.0f);
 					break;
 				}
 				break;
@@ -6698,24 +6697,24 @@ void LH3DCreature::DrawNow()
 void LH3DCreature::SetEyeIntersect(long eye, MeshIntersect* intersect)
 {
 	EyeIntersects[eye] = *intersect;
-	field_0x5518[eye] = 1;
+	HasEyeIntersect[eye] = true;
 }
 
 void LH3DCreature::SetLipIntersect(MeshIntersect* intersect)
 {
 	LipIntersect = *intersect;
-	field_0x5430 = 1;
+	HasLipIntersect = true;
 }
 
 void LH3DCreature::SetVomIntersect(MeshIntersect* intersect)
 {
 	VomIntersect = *intersect;
-	field_0x545c = 1;
+	HasVomIntersect = true;
 }
 
 void LH3DCreature::GetEyePoint(long eye, LHPoint* position, LHPoint* normal)
 {
-	if (field_0x5518[eye])
+	if (HasEyeIntersect[eye])
 	{
 		EyeIntersects[eye].GetWorldPositionAndInwardNormal(meshes[CurrentMesh], TransformedMatrices, position, normal);
 	}
@@ -6729,7 +6728,7 @@ void LH3DCreature::GetEyePoint(long eye, LHPoint* position, LHPoint* normal)
 
 void LH3DCreature::GetLipPoint(LHPoint* result)
 {
-	if (field_0x5430)
+	if (HasLipIntersect)
 	{
 		LHPoint normal;
 		LipIntersect.GetWorldPositionAndInwardNormal(GetMesh(), GetSafeBuffer(), result, &normal);
@@ -6743,7 +6742,7 @@ void LH3DCreature::GetLipPoint(LHPoint* result)
 
 void LH3DCreature::GetVomPoint(LHPoint* result)
 {
-	if (field_0x545c)
+	if (HasVomIntersect)
 	{
 		LHPoint normal;
 		VomIntersect.GetWorldPositionAndInwardNormal(GetMesh(), GetSafeBuffer(), result, &normal);
@@ -6764,7 +6763,7 @@ void LH3DCreature::FillHeldObjectMatrix(LHMatrix* matrices)
 {
 	if (HeldObject)
 	{
-		LHMatrix matrix = matrices[field_0x5230 ? GetLeftHand() : RightHand];
+		LHMatrix matrix = matrices[UseLeftHand ? GetLeftHand() : RightHand];
 		matrix.NormaliseMatrixOnly();
 		float scale = HeldObject->GetScale();
 		// Scaled column by column (the translation row too), as in UpdateHeldObjects3Angles.
@@ -6784,7 +6783,7 @@ void LH3DCreature::FillHeldObjectMatrix(LHMatrix* matrices)
 		temp = *(LHPoint*)&matrix._31;
 		*(LHPoint*)&matrix._31 = *(LHPoint*)&matrix._21;
 		*(LHPoint*)&matrix._21 = temp;
-		if (field_0x5230)
+		if (UseLeftHand)
 		{
 			matrix._21 = -matrix._21;
 			matrix._22 = -matrix._22;
@@ -6805,7 +6804,7 @@ void LH3DCreature::FillHeldObjectMatrix(LHMatrix* matrices)
 		if (HeldObject && HeldObject->Game3dObject)
 		{
 			HeldObject->Game3dObject->matrix = matrix;
-			long    hand = field_0x5230 ? GetMirrorBone(RightHand) : RightHand;
+			long    hand = UseLeftHand ? GetMirrorBone(RightHand) : RightHand;
 			LHPoint graspPoint;
 			LH3DAnim::GetGraspPoint(matrices, meshes[CurrentMesh], graspPoint, hand);
 			// Hang the object below the hand along the (swapped) Y axis.
@@ -6921,7 +6920,7 @@ void LH3DCreature::EndAnyActionsThenTurnToHeading(float heading)
 float LH3DCreature::GetPutDownDistance()
 {
 	ValidateRemovePositions();
-	return -Size2 * field_0x492c;
+	return -Size2 * PutDownPosition.z;
 }
 
 uint32_t getint(float value)
@@ -7208,7 +7207,7 @@ uint32_t LH3DCreature::GetNormalCheckSum()
 	}
 	LHPoint graspPoint;
 	LH3DAnim::GetGraspPoint(SafeBuffer0, meshes[CurrentMesh], graspPoint,
-	                        field_0x5230 ? GetMirrorBone(RightHand) : RightHand);
+	                        UseLeftHand ? GetMirrorBone(RightHand) : RightHand);
 	uint32_t checkSum = getint(graspPoint.x);
 	if (GGlobal::Global.debug.LogCreatures)
 	{
@@ -7296,12 +7295,12 @@ bool32_t LH3DCreature::SetInHand(int in_hand)
 	{
 		if (creature && creature->CanCurrentlyBePickedUp())
 		{
-			field_0x51ec = true;
+			InHand = true;
 			return true;
 		}
 		return false;
 	}
-	field_0x51ec = false;
+	InHand = false;
 	return true;
 }
 
@@ -7482,8 +7481,8 @@ void LH3DCreature::UpdateMotion()
 			float   heading = RpFollow->Heading;
 			LHPoint dest((float)sin(heading) * length, 0.0f, -(float)cos(heading) * length);
 			dest.Add(position);
-			delete Anim0x5220;
-			Anim0x5220 = NULL;
+			delete TurnAnim;
+			TurnAnim = NULL;
 			DoStandingAction();
 			field_0x5190 = GetStartState(position, dest);
 		}
@@ -7491,7 +7490,7 @@ void LH3DCreature::UpdateMotion()
 		{
 			Heading = angle_correct(Heading + angle_correct(RpFollow->Heading - RequiredHeading));
 			RequiredHeading = RpFollow->Heading;
-			CycleAnim[0] = Anim0x5220;
+			CycleAnim[0] = TurnAnim;
 			CycleWeight[0] = 1.0f;
 			if (CycleTime[0] + IntTimeInc >= (long)CycleAnim[0]->Duration)
 			{
@@ -7508,8 +7507,8 @@ void LH3DCreature::UpdateMotion()
 				}
 				CurrentSpeed = WalkSpeed;
 				field_0x5190 = 6;
-				delete Anim0x5220;
-				Anim0x5220 = NULL;
+				delete TurnAnim;
+				TurnAnim = NULL;
 				field_0x5190 = 6;
 				ProcessMoveStraight();
 			}
