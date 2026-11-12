@@ -3183,6 +3183,8 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00718CE7, copy_run(0x00718C94)),  # ServerLandscapeMap
     (0x00718D6B, call_rel32(0x004034F9)),  # ServerLandscapeMap
     (0x00718DD6, jmp_run(0x00718D6B)),  # ServerLandscapeMap
+    (0x0071957B, call_rel32(0x004034F9)),  # Settings
+    (0x007195AA, copy_run(0x0071957B)),  # Settings
     (0x00719603, copy_run(0x007195AA)),  # Setup
     (0x0071962B, call_rel32(0x004034F9)),  # Setup
     (0x00719655, jmp_run(0x0071962B)),  # Setup
