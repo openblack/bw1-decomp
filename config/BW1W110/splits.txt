@@ -752,13 +752,13 @@ Black/CreatureSubAction.cpp:
 
 Black/SubArgument.cpp:
 	.text       start:0x004FDC10 end:0x004FDEB0
-	.rdata      start:0x008C1630 end:0x008C1644
+	.rdata      start:0x008C1630 end:0x008C1638
 	.CRT$XCU    start:0x009B648C end:0x009B6494 align:4
 	.bss        start:0x00C9C940 end:0x00C9C948
 
 Black/CreatureSubActions.cpp:
 	.text       start:0x004FDEB0 end:0x00504F50
-	.rdata      start:0x008C1644 end:0x008C1688
+	.rdata      start:0x008C1638 end:0x008C1688
 
 Black/CreatureWhatToDoNext.cpp:
 	.text       start:0x005073C0 end:0x00508E10

@@ -121,8 +121,8 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WriteIt(FrozAmount);
 		file.WriteIt(IgnoredByVillagers);
 		file.WritePtr(field_0x1078);
-		file.WritePtr(field_0x1084);
-		file.WritePtr(field_0x1088);
+		file.WritePtr(SpotVisual);
+		file.WritePtr(SwapMindEffect);
 		file.WritePtr(ParticleContainer0x107c);
 		file.WritePtr(ParticleContainer0x1080);
 		file.WriteIt(field_0x11d8);
@@ -317,8 +317,8 @@ bool32_t Creature::Load(GameOSFile& file)
 		file.ReadIt(FrozAmount);
 		file.ReadIt(IgnoredByVillagers);
 		file.ReadPtr((GameThing**)&field_0x1078);
-		file.ReadPtr((GameThing**)&field_0x1084);
-		file.ReadPtr((GameThing**)&field_0x1088);
+		file.ReadPtr((GameThing**)&SpotVisual);
+		file.ReadPtr((GameThing**)&SwapMindEffect);
 		file.ReadPtr((GameThing**)&ParticleContainer0x107c);
 		file.ReadPtr((GameThing**)&ParticleContainer0x1080);
 		file.ReadIt(field_0x11d8);
@@ -671,7 +671,7 @@ void CreatureMental::SaveMind(Archive& archive)
 	{
 		archive << (unsigned long)learning.HeldObjectActionCounts[i];
 		archive << (unsigned long)learning.ObjectEatenCounts[i];
-		archive << (unsigned long)learning.field_0x15a38[i];
+		archive << (unsigned long)learning.ObjectEatenNoFoodCounts[i];
 	}
 	archive << creature.Get()->GetCreature3D()->FightHealth;
 	archive << learning.field_0x1522c;
@@ -995,7 +995,7 @@ void CreatureMental::LoadMind(Archive& archive)
 			archive >> (unsigned long&)learning.ObjectEatenCounts[i];
 			if (MindVersion >= CREATURE_MIND_VERSION_OBJECT_COUNTS)
 			{
-				archive >> (unsigned long&)learning.field_0x15a38[i];
+				archive >> (unsigned long&)learning.ObjectEatenNoFoodCounts[i];
 			}
 		}
 	}

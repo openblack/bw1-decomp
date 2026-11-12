@@ -65,7 +65,7 @@ public:
 	uint32_t               GameTurnActionLastPerformed[NUM_CREATURE_ACTIONS];
 	uint32_t               HeldObjectActionCounts[OBJECT_TYPE_LAST];
 	uint32_t               ObjectEatenCounts[OBJECT_TYPE_LAST];
-	uint32_t               field_0x15a38[OBJECT_TYPE_LAST];
+	uint32_t               ObjectEatenNoFoodCounts[OBJECT_TYPE_LAST];
 #ifdef VERSION_BW1WCI
 	bool32_t CanLearn[CREATURE_ACTION_KNOWN_ABOUT_LAST];
 #endif

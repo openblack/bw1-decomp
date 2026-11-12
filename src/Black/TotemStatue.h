@@ -151,6 +151,8 @@ public:
 
 	// BW1W120 00737c40 BW1M119 0154f0c0
 	void DeleteDependancys();
+	// BW1W120 00738470 BW1M119 0154e310
+	float GetWorshipPercentage();
 	// BW1W120 00738260 BW1M119 0154e430
 	float GetWorshipSpeed();
 	// BW1W120 00738270 BW1M119 0154e350

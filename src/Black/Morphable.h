@@ -154,6 +154,8 @@ public:
 	float GetWeakStrong() { return WeakStrong; }
 	// BW1W120 inlined BW1M119 01203260
 	float GetThinFat() { return ThinFat; }
+	// BW1W120 inlined BW1M119 01296e80
+	int GetNumBones() { return NumBoneMatrices; }
 	// BW1W120 inlined BW1M119 011effa0
 	LH3DMesh* GetMesh() { return meshes[CurrentMesh]; }
 	// BW1W120 inlined BW1M119 inlined

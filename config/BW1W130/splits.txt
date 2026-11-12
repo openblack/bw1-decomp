@@ -813,13 +813,13 @@ Black/CreatureSubAction.cpp:
 
 Black/SubArgument.cpp:
 	.text       start:0x005019D0 end:0x00501CA0
-	.rdata      start:0x008D6648 end:0x008D665C
+	.rdata      start:0x008D6648 end:0x008D6650
 	.CRT$XCU    start:0x00A46670 end:0x00A4667C align:4
 	.bss        start:0x00D2EAC8 end:0x00D2EAD0
 
 Black/CreatureSubActions.cpp:
 	.text       start:0x00501CA0 end:0x0050B200
-	.rdata      start:0x008D665C end:0x008D66A0
+	.rdata      start:0x008D6650 end:0x008D66A0
 	.CRT$XCU    start:0x00A4667C end:0x00A46690 align:4
 	.data       start:0x00C66B9C end:0x00C66E40
 	.bss        start:0x00D2EAD0 end:0x00D2EAEC

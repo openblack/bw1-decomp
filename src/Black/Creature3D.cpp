@@ -553,8 +553,8 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	field_0x5798 = 0;
 	field_0x5268 = 0;
 	field_0x5730 = 0;
-	field_0x5738 = 0;
-	field_0x5734 = 0;
+	ConcurrentAction = 0;
+	ConcurrentActionTime = 0;
 	field_0x485c = 47.12389f;
 	ResetMorphAnims();
 	field_0x51ec = 0;
@@ -1553,9 +1553,9 @@ void LH3DCreature::UpdateTime(int time)
 	}
 	PlayQueuedSoundEffects();
 	OperateFace();
-	if (field_0x5738)
+	if (ConcurrentAction)
 	{
-		CAnim* anim = GetAnim(field_0x5738, 0);
+		CAnim* anim = GetAnim(ConcurrentAction, 0);
 		long   delta = AnimTimeInc;
 		if (field_0x5730)
 		{
@@ -1563,19 +1563,19 @@ void LH3DCreature::UpdateTime(int time)
 		}
 		bool finished;
 		// TODO: CAnim's first field is a signed duration (see UpdateLook), hence the cast.
-		if (field_0x5734 + delta >= (long)anim->Duration)
+		if (ConcurrentActionTime + delta >= (long)anim->Duration)
 		{
 			finished = true;
-			delta = anim->Duration - field_0x5734;
+			delta = anim->Duration - ConcurrentActionTime;
 		}
 		else
 		{
 			finished = false;
 		}
-		field_0x5734 = AdvanceCyclic(field_0x5738, field_0x5734, delta);
+		ConcurrentActionTime = AdvanceCyclic(ConcurrentAction, ConcurrentActionTime, delta);
 		if (finished)
 		{
-			field_0x5738 = 0;
+			ConcurrentAction = 0;
 		}
 	}
 	for (int i = 0; i < 4; i++)
@@ -2267,10 +2267,10 @@ bool32_t LH3DCreature::StartStaticAction(long action)
 
 bool32_t LH3DCreature::StartConcurrentAction(long action)
 {
-	if (field_0x5738 == 0 && GetAnim(action, 0))
+	if (ConcurrentAction == 0 && GetAnim(action, 0))
 	{
-		field_0x5738 = action;
-		field_0x5734 = 0;
+		ConcurrentAction = action;
+		ConcurrentActionTime = 0;
 		return true;
 	}
 	return false;

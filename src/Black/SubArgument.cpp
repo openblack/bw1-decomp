@@ -1,13 +1,4 @@
 #include "GameTimeConstants.h"
-#include "MaxFloat.h"
-
-inline float GetMaxFloat()
-{
-	return MaxFloat;
-}
-
-#include "CellSize.h"
-#include "CreatureAttitudeConstants.h"
 #include "SubArgument.h"
 
 #include "ColourConstants.h" /* For White */

@@ -107,6 +107,8 @@ public:
 	bool32_t IsKnackered(const CreatureInfo* info);
 	// BW1W120 004efc70 BW1M119 01279b30
 	uint32_t GetVisionRange();
+	// BW1W120 004f00e0 BW1M119 01279810
+	bool32_t StartTurning(float heading);
 	// BW1W120 inlined BW1M119 011e9d60
 	Object* GetObjectCarried() { return ObjectCarried; }
 	// BW1W120 inlined BW1M119 01509240

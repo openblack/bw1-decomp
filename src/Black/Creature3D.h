@@ -335,8 +335,8 @@ public:
 	LHPoint             ThrowTarget;
 	float               ThrowGivenTime;
 	int                 field_0x5730;
-	int                 field_0x5734;
-	int                 field_0x5738;
+	int                 ConcurrentActionTime;
+	int                 ConcurrentAction;
 	int                 IdleActionTimer;
 	bool32_t            IdleActionDone;
 	int                 RPLookPointTimer;

@@ -975,7 +975,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureScript.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureSelect.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureSourceBoundsInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureSubAction.cpp"),
+            GameCodeObject(Matching, "Black/CreatureSubAction.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureSubActions.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureVisionState.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureWhatToDoNext.cpp"),

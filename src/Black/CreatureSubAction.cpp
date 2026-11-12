@@ -345,7 +345,7 @@ CreatureSubActionAgenda::CreatureSubActionAgenda(Creature* creature)
 {
 	CurrentSubAction = 0;
 	IsNewSubAction = true;
-	field_0xc30 = 0;
+	PotResourcesTransferred = false;
 	SubActionState = 0;
 	NumSubActions = 0;
 	TurnsInPart = 0;
@@ -355,7 +355,7 @@ CreatureSubActionAgenda::CreatureSubActionAgenda(Creature* creature)
 	Partner = NULL;
 	field_0x20 = 0;
 	HandStatus = NULL;
-	field_0xc48 = 0;
+	GestureFraction = 0.0f;
 	this->creature = creature;
 	GoesOutsideConfinedArea = false;
 }
@@ -377,6 +377,15 @@ inline bool32_t CreatureSubActionAgenda::CheckGoesOutsideConfinedArea(SubArgumen
 		return true;
 	}
 	return false;
+}
+#endif
+
+#ifdef VERSION_BW1WCI
+static inline float DivideCount(__int64* count, unsigned long seen, float must)
+{
+	((unsigned long*)count)[0] = seen;
+	((unsigned long*)count)[1] = 0;
+	return (float)*count / must;
 }
 #endif
 
@@ -402,33 +411,44 @@ void CreatureSubActionAgenda::AddSubAction(CREATURE_SUB_STATE_ACTIONS action, Su
 		if (mental->ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_MAGIC,
 		                                          MAGIC_TYPE_CREATURE_SPELL_FAST) &&
 		    creature->physical->ObjectCarried == NULL &&
-		    (creature->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) == 0 &&
-		    min(1.0f,
-		        creature->mind->learning.NumTimesMagicActionSeen[MAGIC_TYPE_CREATURE_SPELL_FAST] /
-		            max(1.0f, creature->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(MAGIC_TYPE_CREATURE_SPELL_FAST) -
-		                          1.0f)) >= 1.0f &&
-		    creature->HasEnoughEnergyToCastSpell(MAGIC_TYPE_CREATURE_SPELL_FAST))
+		    (creature->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) == 0)
 		{
-			switch (action)
+			__int64 count[1];
+			float   learnt =
+				1.0f < creature->mind->learning.NumTimesMagicActionSeen[MAGIC_TYPE_CREATURE_SPELL_FAST] /
+							max(1.0f, creature->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(
+										  MAGIC_TYPE_CREATURE_SPELL_FAST) -
+			                              1.0f)
+					? 1.0f
+					: DivideCount(
+						  count, creature->mind->learning.NumTimesMagicActionSeen[MAGIC_TYPE_CREATURE_SPELL_FAST],
+						  max(1.0f,
+			                  creature->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(MAGIC_TYPE_CREATURE_SPELL_FAST) -
+			                      1.0f));
+			if (learnt >= 1.0f && creature->HasEnoughEnergyToCastSpell(MAGIC_TYPE_CREATURE_SPELL_FAST))
 			{
-			case CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT:
-				if (argument->GetObjectA() != NULL &&
-				    GUtils::GetDistanceInMetres(argument->GetObjectA()->GetPos(), creature->Pos) >
-				        CREATURE_FAST_SPELL_DISTANCE)
+				switch (action)
 				{
-					AddCastSpellSubAction(creature->mind->GetBeliefAboutObject(creature),
-					                      MAGIC_TYPE_CREATURE_SPELL_FAST);
-					creature->GameTurnLastCastFastSpell = GGame::g_game->data.GameTurn;
+				case CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT:
+					if (argument->GetObjectA() != NULL &&
+					    GUtils::GetDistanceInMetres(argument->GetObjectA()->GetPos(), creature->Pos) >
+					        CREATURE_FAST_SPELL_DISTANCE)
+					{
+						AddCastSpellSubAction(creature->mind->GetBeliefAboutObject(creature),
+						                      MAGIC_TYPE_CREATURE_SPELL_FAST);
+						creature->GameTurnLastCastFastSpell = GGame::g_game->data.GameTurn;
+					}
+					break;
+				case CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS:
+					if (argument->GetDestination()->GetDistance(creature->Pos.GetLHPoint()) >
+					    CREATURE_FAST_SPELL_DISTANCE)
+					{
+						AddCastSpellSubAction(creature->mind->GetBeliefAboutObject(creature),
+						                      MAGIC_TYPE_CREATURE_SPELL_FAST);
+						creature->GameTurnLastCastFastSpell = GGame::g_game->data.GameTurn;
+					}
+					break;
 				}
-				break;
-			case CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS:
-				if (argument->GetDestination()->GetDistance(creature->Pos.GetLHPoint()) > CREATURE_FAST_SPELL_DISTANCE)
-				{
-					AddCastSpellSubAction(creature->mind->GetBeliefAboutObject(creature),
-					                      MAGIC_TYPE_CREATURE_SPELL_FAST);
-					creature->GameTurnLastCastFastSpell = GGame::g_game->data.GameTurn;
-				}
-				break;
 			}
 		}
 	}

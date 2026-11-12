@@ -102,7 +102,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 005fc790 BW1M119 013b7950
-	void DoTeleport(Living* living, bool force);
+	int DoTeleport(Living* living, bool force);
 	// BW1W120 005fc4f0 BW1M119 013b81d0
 	bool32_t ApplyVillagerDirectlyToTeleport(GInterfaceStatus* status, Villager* villager);
 	// BW1W120 005fc4b0 BW1M119 013b8340
