@@ -136,8 +136,6 @@ struct BindableAction
 	void SetKey(const ControlKey& new_key);
 	// BW1W120 0046f260 BW1M119 011d3eb0
 	void GetKeyText(wchar_t* out_text);
-	// BW1W120 0046f2b0 BW1M119 011d3e30
-	void GetMouseText(wchar_t* out_text);
 	// BW1W120 inlined BW1M119 011a68f0
 	ControlKey GetPrimaryKey() const { return key; }
 };
