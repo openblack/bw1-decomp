@@ -813,7 +813,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/Abode.cpp"),
             GameCodeObject(NonMatching, "Black/AbodeInfo.cpp"),
             GameCodeObject(NonMatching, "Black/alexmfc.cpp"),
-            GameCodeObject(NonMatching, "Black/Alignment.cpp", pch=PCH_PENDING),
+            GameCodeObject(Matching, "Black/Alignment.cpp"),
             GameCodeObject(NonMatching, "Black/AlignmentInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Animal.cpp"),
             GameCodeObject(NonMatching, "Black/AnimalAnimation.cpp"),

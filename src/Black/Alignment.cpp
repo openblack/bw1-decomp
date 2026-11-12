@@ -1,9 +1,8 @@
 #include "GameTimeConstants.h"
+#include "ColourConstants.h"
 #include "Alignment.h"
 #include "AlignmentHistory.h"
-#include "AlignmentInfo.h"
 
-#include "ColourConstants.h"
 #include "ReactionFunction.h"
 
 #include <math.h>   /* For fabs */
@@ -35,10 +34,18 @@
 #include "TownInfo.h"
 #include "Tree.h"
 #include "Villager.h"
+#include "AlignmentInfo.h"
 
 #define ALIGNMENT_HISTORY_SLIDER_WIDTH 12
 #define ALIGNMENT_HISTORY_LINE_WIDTH   240
 #define ALIGNMENT_HISTORY_LINE_HEIGHT  14
+
+#ifdef VERSION_BW1WCI
+#define CREATURE_NEGATIVE_ALIGNMENT_CHANGE_SCALE 10.0f
+
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + 8)
+#endif
 
 inline Object* CreatureBelief::GetObjectPointer()
 {
@@ -54,6 +61,12 @@ void GAlignment::Process(GameThing* thing)
 {
 	CLAMP(ChangeThisTurn, -1.0f, 1.0f);
 	float change = ChangeThisTurn * thing->GetMaxAlignmentChangePerGameTurn();
+#ifdef VERSION_BW1WCI
+	if (thing->CastCreature() != NULL && change < 0.0f)
+	{
+		change *= CREATURE_NEGATIVE_ALIGNMENT_CHANGE_SCALE;
+	}
+#endif
 	CrudeUpdate(change);
 	ChangeThisTurn = 0.0f;
 }
@@ -88,7 +101,11 @@ void GAlignment::Update(Creature& creature)
 		if (desire == CREATURE_DESIRE_HUNGER && creature.mind->agenda.CurrentPlan.ObjectToActOn != NULL)
 		{
 			Object* object = creature.mind->agenda.CurrentPlan.ObjectToActOn->GetObjectPointer();
+#ifdef VERSION_BW1W100
+			if (object != NULL)
+#else
 			if (object != NULL && object->IsVillager(NULL))
+#endif
 			{
 				ALIGNMENT_TYPE type = object->info->GetAlignmentType();
 				if (type >= 0 && type < ALIGNMENT_TYPE_LAST)
@@ -112,9 +129,10 @@ void GAlignment::UpdateFromReaction(Reaction* reaction, float change)
 
 void GAlignment::ScriptUpdate(float change, GPlayer* player, unsigned long script)
 {
-	float updated = GetUpdatedChangeThisTurn(change * player->info->ScriptAlignmentScale);
-	CAlignmentHistory::History.Add(player, script, updated);
-	CrudeUpdate(updated);
+	const GPlayerInfo* info = player->info;
+	change = GetUpdatedChangeThisTurn(change * info->ScriptAlignmentScale);
+	CAlignmentHistory::History.Add(player, script, change);
+	CrudeUpdate(change);
 }
 
 void GAlignment::Update(GPlayer* player, Object* object, DEATH_REASON reason)
@@ -269,13 +287,14 @@ void CAlignmentHistory::DrawTotals()
 {
 	if (Slider == NULL)
 	{
-		Slider = NEW(270) EditorIconSlider<float>(
-			LHRegion(0, 0, ALIGNMENT_HISTORY_SLIDER_WIDTH, LHSys::GetScreen().Height()), ScrollPosition, 0.0f, 1.0f,
-			0.1f, NULL, 2, true, 1, &EditorIconBase::DefaultActiveColor, &EditorIconBase::DefaultActiveColor,
-			&EditorIconBase::DefaultHiliteColor, &EditorIconBase::DefaultTextColor);
+		Slider = NEW(270)
+			EditorIconSlider<float>(LHRegion(0, 0, ALIGNMENT_HISTORY_SLIDER_WIDTH, LHSys::GetScreen().Height()),
+		                            ScrollPosition, 0.0f, 1.0f, 0.1f, NULL, EDITOR_ICON_FLAG_CONSTANT_TEXT, true, 1,
+		                            &EditorIconBase::DefaultActiveColor, &EditorIconBase::DefaultActiveColor,
+		                            &EditorIconBase::DefaultHiliteColor, &EditorIconBase::DefaultTextColor);
 		for (unsigned long i = 0; i < _PLAYER_NAME_COUNT; i++)
 		{
-			StartAlignment[i] = GGame::g_game->GetPlayer(i)->alignment->GetValue();
+			StartAlignment[i] = GGame::g_game->GetPlayer(i)->GetAlignment()->GetValue();
 		}
 	}
 	if (ShowTotals)
@@ -290,7 +309,7 @@ void CAlignmentHistory::DrawTotals()
 		LH3DColor negative(0xff, 0x7d, 0x7d, 0xff);
 		char      text[512];
 
-		float current = GGame::g_game->GetPlayer(0)->alignment->GetValue();
+		float current = GGame::g_game->GetPlayer(0)->GetAlignment()->GetValue();
 		sprintf(text, "Current :%.08f", current);
 		EditorIconBase::DrawText(region, text, 0, current >= 0.0f ? &positive : &negative, NULL, EditorIconBase::Font);
 		int height = region.Height();

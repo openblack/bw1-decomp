@@ -49,24 +49,22 @@ Black/Abode.cpp:
 Black/alexmfc.cpp:
 	.text       start:0x00405D50 end:0x00411F70
 	.rdata      start:0x007ED178 end:0x007ED564
-	.data       start:0x008F7780 end:0x008F7AD0
+	.data       start:0x008F7780 end:0x008F7A48
 	.bss        start:0x00B6E540 end:0x00B6E5F8
 
-Black/AlignmentInfo.cpp:
-	.text       start:0x00411F70 end:0x00412680
-	.rdata      start:0x007ED564 end:0x007ED614
-	.bss        start:0x00B6E8D8 end:0x00B6E8E4
-
 Black/Alignment.cpp:
-	.text       start:0x00412680 end:0x00413AE0
-	.CRT$XCU    start:0x008F6040 end:0x008F6044 align:4
-	.data       start:0x008F7B34 end:0x008F7C84
+	.text       start:0x00411F70 end:0x00413AE0
+	.rdata      start:0x007ED564 end:0x007ED614
+	.rdata$r    start:0x008DAC88 end:0x008DAD78
+	.CRT$XCU    start:0x008F6034 end:0x008F6044 align:4
+	.data       start:0x008F7A48 end:0x008F7B50
+	.bss        start:0x00B6E5F8 end:0x00B6E8E0 align:8
 
 Black/Animal.cpp:
 	.text       start:0x00413AE0 end:0x00418080
 	.rdata      start:0x007ED614 end:0x007EEF1C
-	.data       start:0x008F7C84 end:0x008F7D30
-	.bss        start:0x00B6E8E4 end:0x00B765C0
+	.data       start:0x008F7B50 end:0x008F7D30
+	.bss        start:0x00B6E8E0 end:0x00B765C0
 
 Black/AnimalAnimation.cpp:
 	.text       start:0x00418080 end:0x004189B0
