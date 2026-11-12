@@ -18,7 +18,7 @@ public:
 	LHTransport* _library_end;
 	LHTransport* _black_end;
 	LH_RETURN(__cdecl* _initialise)(LHTransport* library_end, ...);
-	LH_RETURN(__cdecl* _lookin)(LHTransport* library_end, unsigned long mask);
+	LH_RETURN(__cdecl* _lookin)(LHTransport* library_end, ...);
 	LH_RETURN(__cdecl* _uninitialise)(LHTransport* library_end);
 	char* LibraryPath; /* 0x20 */
 
@@ -37,6 +37,8 @@ public:
 
 	// BW1W120 007ad3c0 BW1M119 010da4e0 (LHCombined Release)
 	void Reset();
+	// BW1W120 007ad4e0 BW1M119 010da3f0 (LHCombined Release)
+	bool Valid();
 	// BW1W120 007ad4f0 BW1M119 010da180 (LHCombined Release)
 	LH_RETURN Load(void (*callback)(void*));
 	// BW1W120 007add80 BW1M119 010da050 (LHCombined Release)

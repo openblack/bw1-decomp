@@ -2866,7 +2866,7 @@ Black/WorldRoomCamera.cpp:
 Lionhead/LH3DLib/development/LH3DP3.cpp:
 	.text       start:0x00790B30 end:0x0079C790
 	.CRT$XCU    start:0x009B7400 end:0x009B7440 align:4
-	.data       start:0x00C198C0 end:0x00C19928 align:32
+	.data       start:0x00C198C0 end:0x00C19920 align:32
 	.bss        start:0x00E28BE0 end:0x00E72400 align:32
 	.data1      start:0x00FAF000 end:0x00FAFB40
 	.drectve    type:comment start:0x00400328 end:0x004004B3
@@ -2874,8 +2874,11 @@ Lionhead/LH3DLib/development/LH3DP3.cpp:
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x0079C790 end:0x0079E2E0
 	.text$x     start:0x008963B0 end:0x008963C8 align:16
+	.rdata      start:0x0098EF1C end:0x0098EF24
 	.xdata$x    start:0x009AC070 end:0x009AC098 align:4
 	.CRT$XCU    start:0x009B7440 end:0x009B7448 align:4
+	.data       start:0x00C19920 end:0x00C19FE0
+	.bss        start:0x00E72408 end:0x00E7241C
 
 lib/libcpmt/delop.obj:
 	.text       start:0x0079E5C2 end:0x0079E5CD align:1
