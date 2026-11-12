@@ -1,13 +1,12 @@
 #ifndef BW1_DECOMP_LH3D_MATH_INCLUDED_H
 #define BW1_DECOMP_LH3D_MATH_INCLUDED_H
 
-#define TWO_PI               6.2831855f
-#define PI_F                 3.1415927f
-#define HALF_PI_F            1.5707964f
-#define QUARTER_PI_F         0.7853982f
-#define EIGHTH_PI_F          0.3926991f
-#define DEGREES_TO_RADIANS   (PI_F / 180.0f)
-#define GAME_ANGLE_FULL_TURN 2048.0f
+#define TWO_PI             6.2831855f
+#define PI_F               3.1415927f
+#define HALF_PI_F          1.5707964f
+#define QUARTER_PI_F       0.7853982f
+#define EIGHTH_PI_F        0.3926991f
+#define DEGREES_TO_RADIANS (PI_F / 180.0f)
 
 #define LH3D_BLEND(from, to, t)                 ((from) + ((to) - (from)) * (t))
 #define LH3D_BLEND2(from, to_b, to_c, t_b, t_c) ((from) + ((to_b) - (from)) * (t_b) + ((to_c) - (from)) * (t_c))
