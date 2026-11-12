@@ -959,7 +959,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureMentalUsefulness.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMimic.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMimicInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureMorph.cpp"),
+            GameCodeObject(Matching, "Black/CreatureMorph.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureObjectsInspected.cpp"),
             GameCodeObject(NonMatching, "Black/CreaturePen.cpp"),
             GameCodeObject(NonMatching, "Black/CreaturePenInfo.cpp"),

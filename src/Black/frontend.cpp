@@ -2569,7 +2569,7 @@ void TattooEditor::CreateFakeCreature()
 	if (C3D == NULL)
 	{
 		C3D = NEW(2725) LH3DCreature(NULL, LHPoint(0.0f, 0.0f, 0.0f), NULL);
-		C3D->LoadBinary((char*)CreatureFileName::Table[0].BinaryName, 0);
+		C3D->LoadBinary((char*)CreatureFileName::Table[0].BinaryName, false);
 		C3D->SetSize(1.0f);
 		C3D->ThinFat = 0.5f;
 		C3D->WeakStrong = 0.5f;

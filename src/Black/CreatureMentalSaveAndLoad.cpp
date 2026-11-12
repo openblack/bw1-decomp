@@ -496,7 +496,7 @@ LH3DCreature* Creature::Load3D(char* name)
 		LH3DCreature* creature3d = NEW(577) LH3DCreature(NULL, LHPoint(0.0f, 0.0f, 0.0f), NULL);
 		char          binaryName[MAX_PATH];
 		sprintf(binaryName, "%s", CreatureFileName::Table[creatureType].BinaryName);
-		if (!creature3d->LoadBinary(binaryName, 0))
+		if (!creature3d->LoadBinary(binaryName, false))
 		{
 			return NULL;
 		}
