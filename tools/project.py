@@ -1529,7 +1529,7 @@ def generate_build_ninja(
                     if pch is not None or cl6:
                         sys.exit(f"{obj.name}: cl_dir does not support a precompiled header or CL6_MAP")
                     cl_dir = serialize_path(Path(cl_dir))
-                    if config.use_wibo() and wrapper is not None:
+                    if wrapper is not None and wrapper.name == "wibo":
                         unit_variables["cl_chdir"] = f"-C {cl_dir} "
                     elif is_windows() and wrapper is None:
                         unit_variables["cl_cd"] = f"{'' if config.cl6_map else CHAIN}cd /d {cl_dir} && "

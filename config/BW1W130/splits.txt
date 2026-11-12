@@ -1213,7 +1213,7 @@ Black/GestureSystemSamples.cpp:
 	.CRT$XCU    start:0x00A46A5C end:0x00A46A70 align:4
 	.bss        start:0x00D874CC end:0x00D874E4
 
-Black/GJUtils.cpp:
+Black/GJBaseUtils.cpp:
 	.text       start:0x0057FF10 end:0x00583E10
 	.text$x     start:0x008AB610 end:0x008AB620 align:4
 	.rdata      start:0x00905134 end:0x00905184

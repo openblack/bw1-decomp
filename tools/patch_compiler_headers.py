@@ -55,7 +55,10 @@ def main() -> int:
                 continue
             text = text.replace(old, new, 1)
         if text != original:
-            path.write_text(text, encoding="utf-8")
+            try:
+                path.write_text(text, encoding="utf-8")
+            except PermissionError:
+                pass
 
     if errors:
         for e in errors:
