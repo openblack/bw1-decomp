@@ -2114,21 +2114,22 @@ Black/PlaytimeDance.cpp:
 	.rdata      start:0x00960BD0 end:0x00960E1C
 	.CRT$XCU    start:0x00A4729C end:0x00A472C0 align:4
 	.data       start:0x00C82B98 end:0x00C82BE0
-	.bss        start:0x00DCD71C end:0x00DCD808
+	.bss        start:0x00DCD71C end:0x00DCD800
 
 Black/Pot.cpp:
 	.text       start:0x00671410 end:0x00674030
 	.rdata      start:0x00960E1C end:0x00961F58
+	.rdata$r    start:0x00A33668 end:0x00A3376C
 	.CRT$XCU    start:0x00A472C0 end:0x00A472D4 align:4
 	.data       start:0x00C82BE0 end:0x00C82C1C
-	.bss        start:0x00DCD808 end:0x00DCF024
+	.bss        start:0x00DCD800 end:0x00DCF01C
 
 Black/PowerSpin.cpp:
 	.text       start:0x00674030 end:0x00674F00
 	.rdata      start:0x00961F58 end:0x00961F80
 	.CRT$XCU    start:0x00A472D4 end:0x00A472D8 align:4
 	.data       start:0x00C82C1C end:0x00C82C80
-	.bss        start:0x00DCF024 end:0x00DCF030
+	.bss        start:0x00DCF01C end:0x00DCF030
 
 Black/PrayerSite.cpp:
 	.text       start:0x00674F00 end:0x00675350

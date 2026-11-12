@@ -15,6 +15,7 @@
 
 class Base;
 class Creature;
+class GParticleContainer;
 class GPotInfo;
 class GameOSFile;
 class GameThing;
@@ -28,7 +29,7 @@ class PileFood : public PileResource
 {
 public:
 	LHListNode<PileFood> next;
-	uint32_t             field_0xb8;
+	GParticleContainer*  SpeedUpVisual;
 
 	// Override methods
 
@@ -41,17 +42,17 @@ public:
 	// BW1W120 0066e0e0 BW1M119 011230e0
 	virtual ~PileFood();
 	// BW1W120 0066e100 BW1M119 01122df0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0066f180 BW1M119 011209b0
 	virtual float Get2DRadius();
-	// BW1W120 0066e030 BW1M119 01126830
-	virtual char* GetDebugText();
 	// BW1W120 0066f5e0 BW1M119 0111fff0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0066f5a0 BW1M119 01120080
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0066e020 BW1M119 011267f0
 	virtual uint32_t GetSaveType();
+	// BW1W120 0066e030 BW1M119 01126830
+	virtual char* GetDebugText();
 	// BW1W120 0055d690 BW1M119 011267b0
 	virtual bool32_t IsPileFood() { return true; }
 	// BW1W120 0066e2a0 BW1M119 01122af0
@@ -61,26 +62,28 @@ public:
 	// BW1W120 0051bf80 BW1M119 01033190
 	virtual void Draw();
 	// BW1W120 0066e1a0 BW1M119 01122d60
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0066e380 BW1M119 01122930
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0066ec50 BW1M119 01121b70
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 0066e1f0 BW1M119 01122c70
-	virtual bool32_t CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* creature);
 
 	// Constructors
 
 	// BW1W120 0066dfe0 BW1M119 01123300
 	PileFood();
 	// BW1W120 0066e070 BW1M119 01123170
-	PileFood(const MapCoords& coords, const GPotInfo* param_2, uint32_t param_3, MultiMapFixed* param_4, Town* param_5,
-	         int param_6, float param_7, float param_8);
+	PileFood(const MapCoords& coords, const GPotInfo* info, uint32_t resource, MultiMapFixed* parent, Town* town,
+	         bool32_t create_reaction, float y_angle, float scale);
 
 	// Non-virtual methods
 
 	// BW1W120 0066e1c0 BW1M119 01085cc0
-	void ProcessPileFood();
+	bool32_t ProcessPileFood();
+	// BW1W120 0066e0f0 BW1M119 inlined
+	void ClearSpeedUpVisual();
 };
 
 #endif /* BW1_DECOMP_PILE_FOOD_INCLUDED_H */

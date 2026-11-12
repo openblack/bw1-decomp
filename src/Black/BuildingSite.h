@@ -81,7 +81,7 @@ public:
 	// BW1W120 0043b790 BW1M119 010c18d0
 	virtual void RemovePotFromStructure(PotStructure* structure);
 	// BW1W120 0043d0a0 BW1M119 010bc900
-	virtual bool IsLinkedToThisBuildingSite(Pot* pot);
+	virtual bool32_t IsLinkedToThisBuildingSite(Pot* pot);
 
 	// Constructors
 

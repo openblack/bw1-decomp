@@ -923,6 +923,11 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0063AB7B, call_rel32(0x004017F9)),  # Object3D
     (0x0063B0AB, call_rel32(0x004017F9)),  # Object3D
     (0x0063B8CB, call_rel32(0x004017F9)),  # OnMapTrajectory
+    (0x0066CB5B, call_rel32(0x004017F9)),  # Pot
+    (0x0066D0FB, call_rel32(0x004017F9)),  # Pot
+    (0x0066D69B, call_rel32(0x004017F9)),  # Pot
+    (0x0066D9FB, call_rel32(0x004017F9)),  # Pot
+    (0x0066E0FB, call_rel32(0x004017F9)),  # Pot
     (0x006975FB, call_rel32(0x004017F9)),  # PSysLoad
     (0x00697D5B, call_rel32(0x004017F9)),  # PSysLoad
     (0x006994AB, call_rel32(0x004017F9)),  # PSysLoad
@@ -2012,6 +2017,76 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0063F635, jmp_run(0x0063F5CB)),  # OnMapTrajectory
     (0x0063F6A3, copy_run(0x0063F633)),  # OnMapTrajectory
     (0x0063F892, jmp_run(0x0063F6A3)),  # OnMapTrajectory
+    (0x00671433, jmp_run(0x006713D3)),  # Pot
+    (0x0067145B, jmp_run(0x00671433)),  # Pot
+    (0x00671487, copy_run(0x0067145B)),  # Pot
+    (0x00671533, jmp_run(0x00671487)),  # Pot
+    (0x00671563, copy_run(0x00671533)),  # Pot
+    (0x006715F7, jmp_run(0x00671563)),  # Pot
+    (0x006716D6, jmp_run(0x006715F7)),  # Pot
+    (0x006717C9, copy_run(0x006716D6)),  # Pot
+    (0x006717E9, copy_run(0x006717C9)),  # Pot
+    (0x006719FB, jmp_run(0x006717E9)),  # Pot
+    (0x00671A28, copy_run(0x006719FB)),  # Pot
+    (0x00671A91, jmp_run(0x00671A28)),  # Pot
+    (0x00671B85, copy_run(0x00671A91)),  # Pot
+    (0x00671BAA, copy_run(0x00671B85)),  # Pot
+    (0x00671C21, copy_run(0x00671BAA)),  # Pot
+    (0x00671C82, copy_run(0x00671C21)),  # Pot
+    (0x00671CC4, copy_run(0x00671C82)),  # Pot
+    (0x00671CE4, copy_run(0x00671CC4)),  # Pot
+    (0x00671D0A, copy_run(0x00671CE4)),  # Pot
+    (0x00671D76, jmp_run(0x00671D0A)),  # Pot
+    (0x00671D9A, jmp_run(0x00671D76)),  # Pot
+    (0x00671DE8, copy_run(0x00671D9A)),  # Pot
+    (0x00671E4A, copy_run(0x00671DE8)),  # Pot
+    (0x00671F9B, jmp_run(0x00671E4A)),  # Pot
+    (0x00671FBA, jmp_run(0x00671F9B)),  # Pot
+    (0x00672007, copy_run(0x00671FBA)),  # Pot
+    (0x00672028, copy_run(0x00672007)),  # Pot
+    (0x00672116, jmp_run(0x00672028)),  # Pot
+    (0x00672206, copy_run(0x00672116)),  # Pot
+    (0x00672278, jmp_run(0x00672206)),  # Pot
+    (0x006722A8, copy_run(0x00672278)),  # Pot
+    (0x006722FB, jmp_run(0x006722A8)),  # Pot
+    (0x00672323, copy_run(0x006722FB)),  # Pot
+    (0x00672387, copy_run(0x00672323)),  # Pot
+    (0x00672406, copy_run(0x00672387)),  # Pot
+    (0x00672486, copy_run(0x00672406)),  # Pot
+    (0x006724C2, copy_run(0x00672486)),  # Pot
+    (0x00672583, copy_run(0x006724C2)),  # Pot
+    (0x00672627, copy_run(0x00672583)),  # Pot
+    (0x00672647, copy_run(0x00672627)),  # Pot
+    (0x006726C5, copy_run(0x00672647)),  # Pot
+    (0x00672767, copy_run(0x006726C5)),  # Pot
+    (0x006727F5, jmp_run(0x00672767)),  # Pot
+    (0x00672936, jmp_run(0x006727F5)),  # Pot
+    (0x00672963, copy_run(0x00672936)),  # Pot
+    (0x006729FB, jmp_run(0x00672963)),  # Pot
+    (0x00672A92, jmp_run(0x006729FB)),  # Pot
+    (0x00672B92, jmp_run(0x00672A92)),  # Pot
+    (0x00672BC8, copy_run(0x00672B92)),  # Pot
+    (0x00672BF8, jmp_run(0x00672BC8)),  # Pot
+    (0x00672C86, copy_run(0x00672BF8)),  # Pot
+    (0x00672CC5, copy_run(0x00672C86)),  # Pot
+    (0x00672DE6, copy_run(0x00672CC5)),  # Pot
+    (0x00673146, copy_run(0x00672DE6)),  # Pot
+    (0x006731FA, jmp_run(0x00673146)),  # Pot
+    (0x00673566, copy_run(0x006731FA)),  # Pot
+    (0x006735D3, jmp_run(0x00673566)),  # Pot
+    (0x00673635, jmp_run(0x006735D3)),  # Pot
+    (0x00673663, copy_run(0x00673635)),  # Pot
+    (0x00673852, jmp_run(0x00673663)),  # Pot
+    (0x00673876, jmp_run(0x00673852)),  # Pot
+    (0x006739C3, copy_run(0x00673876)),  # Pot
+    (0x00673B62, copy_run(0x006739C3)),  # Pot
+    (0x00673E36, jmp_run(0x00673B62)),  # Pot
+    (0x00673E65, copy_run(0x00673E36)),  # Pot
+    (0x00673E93, jmp_run(0x00673E65)),  # Pot
+    (0x00673ED1, jmp_run(0x00673E93)),  # Pot
+    (0x00673F11, jmp_run(0x00673ED1)),  # Pot
+    (0x00673F82, copy_run(0x00673F11)),  # Pot
+    (0x00673FF2, jmp_run(0x00673F82)),  # Pot
     (0x00698CF3, jmp_run(0x00698C4B)),  # PSysLoad
     (0x00698DA7, copy_run(0x00698CF3)),  # PSysLoad
     (0x00698DC3, copy_run(0x00698DA7)),  # PSysLoad

@@ -17,6 +17,7 @@ class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 struct MapCoords;
+class MultiMapFixed;
 class Object;
 
 class MagicWood : public PileWood
@@ -41,12 +42,15 @@ public:
 	// BW1W120 00600db0 BW1M119 013c2110
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
 	// BW1W120 00600dc0 BW1M119 013c2150
-	virtual bool32_t IsAWoodPileOutsideStoragePit(Creature* param_1);
+	virtual bool32_t IsAWoodPileOutsideStoragePit(Creature* creature);
 	// BW1W120 00600f10 BW1M119 013c2340
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 
 	// BW1W120 00600d40 BW1M119 013c25f0
 	MagicWood();
+	// BW1W120 00600e20 BW1M119 013c24d0
+	MagicWood(const MapCoords& coords, GPlayer* player, uint32_t resource, MultiMapFixed* parent,
+	          bool32_t create_reaction);
 };
 
 #endif /* BW1_DECOMP_MAGIC_WOOD_INCLUDED_H */

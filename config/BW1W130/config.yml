@@ -1623,6 +1623,11 @@ add_relocations:
     type: x86_abs32
     target: '?CountryCodes@@3PAY02DA'
     addend: 0x2d
+# MOV ESI is the end of GPotInfo::InfoList for its destructor loop, not PowerSpin's data.
+  - source: 0x00671517
+    type: x86_abs32
+    target: '?InfoList@GPotInfo@@2PAV1@A'
+    addend: 0x180c
 timestamp: "2003-03-06T21:30:42+00:00"
 force_size: 0x008C4000
 linker_version: "6.0"

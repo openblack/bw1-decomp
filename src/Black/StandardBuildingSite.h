@@ -49,7 +49,7 @@ public:
 	// BW1W120 0043d800 BW1M119 010bb390
 	virtual void RemovePotFromStructure(PotStructure* param_1);
 	// BW1W120 0043d830 BW1M119 010bb330
-	virtual bool IsLinkedToThisBuildingSite(Pot* param_1);
+	virtual bool32_t IsLinkedToThisBuildingSite(Pot* pot);
 	// BW1W120 0043ce40 BW1M119 inlined
 	virtual float GetNearestEdge(float param_1, float param_2, int* param_3);
 	// BW1W120 0043cf40 BW1M119 inlined

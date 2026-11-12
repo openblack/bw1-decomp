@@ -59,7 +59,7 @@ public:
 	// BW1W120 0043d5b0 BW1M119 010bb9d0
 	virtual void RemovePotFromStructure(PotStructure* param_1);
 	// BW1W120 0043d580 BW1M119 010bba60
-	virtual bool IsLinkedToThisBuildingSite(Pot* param_1);
+	virtual bool32_t IsLinkedToThisBuildingSite(Pot* pot);
 
 	// BW1W120 0043d120 BW1M119 010bc600
 	CitadelBuildingSite();
