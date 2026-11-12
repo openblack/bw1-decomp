@@ -567,6 +567,9 @@ cflags_route_planner = ["/Gy"] if config.version == "BW1W100" else []
 # So is LH3DAnimation: 1.00 drops its unreferenced functions and folds its Release and
 # SetListPtrFrame onto identical functions of other units.
 cflags_lh3d_animation = ["/GX", "/Gy"] if config.version == "BW1W100" else ["/GX"]
+# LHDLL was built without RTTI: its vftable has no locator in front. 1.00 drops its unreferenced
+# Read, Write and LookIn, and folds ResetAPI, GetAPI and Valid.
+cflags_lhdll = ["/GX", "/GR-", "/Gy"] if config.version == "BW1W100" else ["/GX", "/GR-"]
 
 cflags_lhdialog = [
     "/nologo",
@@ -1566,7 +1569,7 @@ config.libs = [
             # "Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Build 001120  : C:\\Dev\\libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DP3.cpp : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -MT -W3 -GX -Zi -O2 -Ob1 -D NDEBUG -D _LH_LIB_RELEASE -D WIN32 -D _WINDOWS -D _LH_3D_LIB_ -D _GOLD -D _GOLD_ -D _USE_INTEL_COMPILER -FAcs -FaGold/ -FoGold/ -FdGold/ -FD -QxiW -G7 -c"
             IntelObject(NonMatching, "Lionhead/LH3DLib/development/LH3DP3.cpp", progress_category="sdk"),
 
-            Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp", progress_category="sdk"),
+            Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp", progress_category="sdk", extra_cflags=cflags_lhdll),
 
             Object(NonMatching, "Lionhead/LHFile/ver3.0/LHFile.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", progress_category="sdk", extra_cflags=["/GX"]),
@@ -2751,7 +2754,8 @@ ORIGINAL_SOURCE_DIRECTORIES = {
         )
     ),
     "Lionhead/LHDLL/ver1.0": OriginalDirectory(
-        paths(library(r"LHDLL\VER1.0"), "shared", r"C:\Dev\LIBS\Lionhead\LHDLL\VER1.0")
+        paths(library(r"LHDLL\VER1.0"), "shared", r"C:\Dev\LIBS\Lionhead\LHDLL\VER1.0"),
+        headers=paths(released_headers, "shared", str.upper),
     ),
     "Lionhead/LHLib/ver5.0": OriginalDirectory(
         paths(
