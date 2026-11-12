@@ -1763,20 +1763,22 @@ Black/PlayerProfile.cpp:
 
 Black/PlaytimeDance.cpp:
 	.text       start:0x00616590 end:0x00616880
-	.rdata      start:0x0086EF68 end:0x0086EFB8
-	.bss        start:0x00C6D310 end:0x00C6D3F8
+	.rdata      start:0x0086EF68 end:0x0086EFB4
+	.bss        start:0x00C6D310 end:0x00C6D3F0
 
 Black/Pot.cpp:
 	.text       start:0x00616880 end:0x00619280
-	.rdata      start:0x0086EFBC end:0x008700F0
-	.data       start:0x00B257C8 end:0x00B257D4
-	.bss        start:0x00C6D3F8 end:0x00C6EC14
+	.rdata      start:0x0086EFB4 end:0x008700F0
+	.rdata$r    start:0x008E69E0 end:0x008E6AE4
+	.CRT$XCU    start:0x008F6CD4 end:0x008F6CE4 align:4
+	.data       start:0x00B257B0 end:0x00B257D4
+	.bss        start:0x00C6D3F0 end:0x00C6EC0C
 
 Black/PowerSpin.cpp:
 	.text       start:0x00619280 end:0x0061A120
 	.rdata      start:0x008700F0 end:0x00870118
 	.data       start:0x00B257D4 end:0x00B25828
-	.bss        start:0x00C6EC14 end:0x00C6EC20
+	.bss        start:0x00C6EC0C end:0x00C6EC20
 
 Black/PrayerSite.cpp:
 	.text       start:0x0061A120 end:0x0061A250

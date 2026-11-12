@@ -35,7 +35,7 @@ public:
 	// BW1W120 0066e900 BW1M119 01006f30
 	virtual void SetSize();
 	// BW1W120 0066d330 BW1M119 01003c70
-	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
+	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool poisoned);
 	// BW1W120 0066f690 BW1M119 0111fe30
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0066f620 BW1M119 0111ff10
@@ -45,34 +45,36 @@ public:
 	// BW1W120 0066e3c0 BW1M119 01122810
 	virtual bool32_t IsField(Creature* creature);
 	// BW1W120 0066e390 BW1M119 01122890
-	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* creature);
 	// BW1W120 0066ed60 BW1M119 01121730
 	virtual PileResource* IsPileResource();
 	// BW1W120 0066e400 BW1M119 011225b0
-	virtual void SetLife(float param_1);
+	virtual void SetLife(float life);
 	// BW1W120 0066e300 BW1M119 01122970
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055d680 BW1M119 01126770
 	virtual bool32_t IsLockedInInteract() { return true; }
 	// BW1W120 0066e4f0 BW1M119 011224f0
-	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status);
 	// BW1W120 0066e710 BW1M119 01121f50
-	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* status);
 	// BW1W120 0066e830 BW1M119 01121ee0
 	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* info);
 	// BW1W120 0066e840 BW1M119 01121e90
 	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 0066e850 BW1M119 01121d60
-	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* status);
 	// BW1W120 0066ece0 BW1M119 011217b0
-	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* status);
 	// BW1W120 0066ef80 BW1M119 01120e00
-	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* status);
 	// BW1W120 0066e3b0 BW1M119 01122850
 	virtual bool32_t IsTuggable();
 	// BW1W120 0066e520 BW1M119 011221b0
-	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
+	virtual uint32_t ProcessInInteract(GInterfaceStatus* status);
 
+	// BW1W120 purecall BW1M119 purecall
+	virtual RESOURCE_TYPE GetResourceType() = 0;
 	// BW1W120 purecall BW1M119 purecall
 	virtual float GetProportionRaised() const = 0;
 	// BW1W120 purecall BW1M119 purecall
@@ -84,7 +86,7 @@ public:
 	PileResource() {}
 	// BW1W120 0066ec70 BW1M119 011218a0
 	PileResource(const MapCoords& coords, const GPotInfo* info, uint32_t resource, MultiMapFixed* parent, Town* town,
-	             int param_6, float y_angle, float scale);
+	             bool32_t create_reaction, float y_angle, float scale);
 
 	// Non-virtual methods
 

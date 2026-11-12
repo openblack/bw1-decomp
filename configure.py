@@ -1322,7 +1322,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Playtime.cpp"),
             GameCodeObject(NonMatching, "Black/PlaytimeDance.cpp"),
             GameCodeObject(NonMatching, "Black/Poo.cpp"),
-            GameCodeObject(NonMatching, "Black/Pot.cpp"),
+            GameCodeObject(Matching, "Black/Pot.cpp"),
             GameCodeObject(NonMatching, "Black/PotInfo.cpp"),
             GameCodeObject(NonMatching, "Black/PotStructure.cpp"),
             GameCodeObject(NonMatching, "Black/PowerSpin.cpp"),

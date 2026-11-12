@@ -8,11 +8,19 @@
 
 class GInterfaceStatus;
 struct LHPoint;
+struct MapCoords;
 class Object;
 
 class PSysGlobal
 {
 public:
+	enum PICKUP_TYPE
+	{
+		PICKUP_TYPE_FOOD = 0,
+		PICKUP_TYPE_POISONED_FOOD = 1,
+		PICKUP_TYPE_WOOD = 2
+	};
+
 	// Static data
 
 	// BW1W120 00c02978
@@ -42,6 +50,14 @@ public:
 	static void StopAVISequence(SCRIPT_AVI_SEQUENCE sequence);
 	// BW1W120 0068f510 BW1M119 01418a60
 	static void FakeGestureOnLandscape(GESTURE_TYPE gesture, const LHPoint& pos, float scale, GInterfaceStatus* status);
+	// BW1W120 0068f8c0 BW1M119 014184d0
+	static void StartMultiPickup(GInterfaceStatus* status, const MapCoords& pos, PICKUP_TYPE type);
+	// BW1W120 0068f930 BW1M119 01418330
+	static void SetMultiPickUpFraction(GInterfaceStatus* status, PICKUP_TYPE type, float fraction);
+	// BW1W120 0068fa50 BW1M119 01418240
+	static void StopMultiPickup(GInterfaceStatus* status);
+	// BW1W120 0068fae0 BW1M119 01418160
+	static void StartMultiPutdown(GInterfaceStatus* status, RESOURCE_TYPE type, bool poisoned, float scale);
 };
 
 #endif /* BW1_DECOMP_P_SYS_GLOBAL_INCLUDED_H */

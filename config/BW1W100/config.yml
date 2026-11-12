@@ -2553,6 +2553,11 @@ add_relocations:
   - source: 0x007BDF7D
     type: x86_abs32
     target: '__real@4@bffc860a920000000000'
+# MOV ESI is the end of GPotInfo::InfoList for its destructor loop, not PowerSpin's data.
+  - source: 0x00616987
+    type: x86_abs32
+    target: '?InfoList@GPotInfo@@2PAV1@A'
+    addend: 0x180c
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the
 # reference graph is fully recovered, keep function sections plain so it cannot

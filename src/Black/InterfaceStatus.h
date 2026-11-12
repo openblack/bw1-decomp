@@ -37,7 +37,7 @@ public:
 	SPELL_SEED_TYPE    LastSpellGained;
 	uint32_t           field_0x38;
 	uint32_t           field_0x3c;
-	uint32_t           field_0x40;
+	long               MultiPickupTicks;
 	LHPoint            ThrowVelocity;
 	LHPoint            ThrowAngularVelocity;
 	LHPoint            HandPos;
@@ -66,7 +66,7 @@ public:
 	uint32_t           field_0x11c;
 	Object*            LastPickedUpObject;
 	Object*            LastDroppedObject;
-	uint32_t           field_0x128;
+	GPlayer*           MultiPickupPlayer;
 	GLeashStatus*      LeashStatus;
 	GVirtualInfluence* influence;
 
@@ -117,6 +117,8 @@ public:
 	LHPoint& GetHandPos() { return ReportedHandPos; }
 	// BW1W120 inlined BW1M119 01077a90
 	bool ObjectHeldInHand() { return HandHoldingSomething; }
+	// BW1W120 inlined BW1M119 inlined
+	long GetMultiPickupTicks() { return MultiPickupTicks; }
 	// BW1W120 005dba00 BW1M119 01376eb0
 	void SetToZero(GInterface* param_1);
 	// BW1W120 005dc130 BW1M119 01077b40
