@@ -1515,7 +1515,7 @@ Black/MPFEChannelMessages.cpp:
 	.bss        start:0x00C616A8 end:0x00C616B0
 
 Black/MPFEChannelSelector.cpp:
-	.text       start:0x005DCC40 end:0x005DE600
+	.text       start:0x005DCC40 end:0x005DE9F0
 	.rdata      start:0x0086E018 end:0x0086E070
 	.CRT$XCU    start:0x008F6AA4 end:0x008F6AB4 align:4
 	.bss        start:0x00C616B0 end:0x00C61760
