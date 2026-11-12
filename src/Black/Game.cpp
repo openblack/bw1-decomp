@@ -712,9 +712,9 @@ void GGame::SetSpeed(float speed)
 // BW1W120 0054af60 BW1M119 013c9950
 void AddSpecialRPObjects(RPHolder* holder)
 {
-	if (holder->field_0x50024 != NULL)
+	if (holder->Follow != NULL)
 	{
-		Creature* creature = (Creature*)holder->field_0x50024->Context;
+		Creature* creature = (Creature*)holder->Follow->Context;
 		for (MapShield* shield = GGame::g_game->GameLists.MapShields.head; shield != NULL; shield = shield->next)
 		{
 			if (shield->CreatureMustAvoid(creature))
@@ -734,7 +734,7 @@ void CheckSquareFunction(int x, int z, RPHolder* holder)
 		mapPos.Init((unsigned short)x, (unsigned short)z);
 		if (mapPos.InBounds())
 		{
-			bool avoidWater = holder->field_0x50024 == NULL;
+			bool avoidWater = holder->Follow == NULL;
 			for (int dx = -1; dx < 2; ++dx)
 			{
 				int cellX = x + dx;
@@ -756,7 +756,7 @@ void CheckSquareFunction(int x, int z, RPHolder* holder)
 				}
 			}
 			MapCell*        cell = mapPos.ToMap();
-			Creature*       creature = avoidWater ? NULL : (Creature*)holder->field_0x50024->Context;
+			Creature*       creature = avoidWater ? NULL : (Creature*)holder->Follow->Context;
 			MapCellIterator iter = cell->GetFirstIterator();
 			while (iter.object != NULL)
 			{

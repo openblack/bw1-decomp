@@ -4489,12 +4489,18 @@ Lionhead/LH3DLib/development/CAnim.cpp:
 	.text       start:0x00863600 end:0x00867B50
 	.bss        start:0x00F863D8 end:0x00F867DC
 
+Lionhead/LH3DLib/development/LH3DHand.cpp:
+	.text       start:0x00867B50 end:0x00868B00
+	.rdata      start:0x00A23598 end:0x00A2359C
+	.bss        start:0x00F867DC end:0x00F87570
+
 Lionhead/LHLib/ver5.0/RPFollow.cpp:
-	.text       start:0x00867B50 end:0x0086A140
+	.text       start:0x00868B00 end:0x0086A140
 	.text$x     start:0x008AD3D0 end:0x008AD410 align:4
-	.rdata      start:0x00A23598 end:0x00A235AC
+	.rdata      start:0x00A2359C end:0x00A235AC
+	.xdata$x    start:0x00A3F1B8 end:0x00A3F218 align:4
 	.CRT$XCU    start:0x00A47E40 end:0x00A47E48 align:4
-	.bss        start:0x00F867DC end:0x00F87578
+	.bss        start:0x00F87570 end:0x00F87578
 
 Lionhead/LH3DLib/development/MeshIntersect.cpp:
 	.text       start:0x0086A140 end:0x0086CE90

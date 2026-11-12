@@ -27,7 +27,7 @@ struct RPHolder
 	int       MaxSquareZ;
 	uint8_t   field_0x5001c;
 	float     ObjectMargin;
-	RPFollow* field_0x50024;
+	RPFollow* Follow;
 	vec2u16   field_0x50028[0x1000];
 	vec2u16   field_0x54028[0x4000];
 	uint32_t  field_0x64028;
@@ -44,6 +44,8 @@ struct RPHolder
 
 	// Non-virtual methods
 
+	// BW1W120 0083b320 BW1M119 010aae50 (LHCombined Release)
+	void Init(RPFollow* follow);
 	// win1.41 0083b330 mac 1061c58c RPHolder::Empty(void)
 	void Empty();
 	// BW1W120 0083b380 BW1M119 010aac90 (LHCombined Release)

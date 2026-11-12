@@ -32,11 +32,7 @@ struct RoutePosItem
 	RoutePosItem() {}
 
 	// BW1W120 inlined BW1M119 010ab1b0 (LHCombined Release)
-	void Init(const Point2D& pos, float length)
-	{
-		Pos = pos;
-		Length = length;
-	}
+	void Init(const Point2D& pos, float length);
 };
 
 struct VisitBlock
