@@ -3178,6 +3178,7 @@ Black/UniverseRoomCamera.cpp:
 Black/WorldRoom.cpp:
 	.text       start:0x007A2120 end:0x007A4940
 	.rdata      start:0x00A1E964 end:0x00A1E9FC
+	.rdata$r    start:0x00A3AEC8 end:0x00A3AF68
 	.CRT$XCU    start:0x00A47C40 end:0x00A47C50 align:4
 	.data       start:0x00CAB330 end:0x00CAB648
 	.bss        start:0x00EB7310 end:0x00EBB36C

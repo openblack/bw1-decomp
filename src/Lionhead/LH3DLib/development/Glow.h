@@ -14,8 +14,8 @@ public:
 	// BW1W120 0083d860 BW1M119 010cec40 (LHCombined Release)
 	void DrawGlowAtPoint(LHPoint& point, LH3DColor& colour, float size);
 	// BW1W120 0083dfe0 BW1M119 010cdc10 (LHCombined Release)
-	void DrawWhiteGlow(LHPoint param_1, LHPoint param_2, float param_3, float param_4, float param_5, float param_6,
-	                   unsigned long colour);
+	void DrawWhiteGlow(LHPoint start, LHPoint end, float start_height, float end_height, float start_radius,
+	                   float end_radius, unsigned long colour);
 };
 
 #endif /* BW1_DECOMP_GLOW_INCLUDED_H */
