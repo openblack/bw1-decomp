@@ -43,6 +43,8 @@ Black/Abode.cpp:
 	.rdata      start:0x008D499C end:0x008D62C8
 	.rdata$r    start:0x00A16950 end:0x00A16BB8
 	.CRT$XCU    start:0x00A36004 end:0x00A3604C align:4
+	.data       start:0x00A376C0 end:0x00A378B0
+	.bss        start:0x00CAFE40 end:0x00CC068C
 
 Black/alexmfc.cpp:
 	.text       start:0x00407810 end:0x00414B10
@@ -942,14 +944,14 @@ Black/Flock.cpp:
 	.rdata      start:0x0090D31C end:0x0090D868
 	.CRT$XCU    start:0x00A36608 end:0x00A3660C align:4
 	.data       start:0x00C5AA38 end:0x00C5AADC
-	.bss        start:0x00D4A208 end:0x00D4A218
+	.bss        start:0x00D4A208 end:0x00D4A210
 
 Black/FootBall.cpp:
 	.text       start:0x00545BF0 end:0x00549970
 	.rdata      start:0x0090D868 end:0x0090E238
 	.CRT$XCU    start:0x00A3660C end:0x00A36628 align:4
 	.data       start:0x00C5AADC end:0x00C5AC68
-	.bss        start:0x00D4A218 end:0x00D4A4A0
+	.bss        start:0x00D4A210 end:0x00D4A4A0
 
 Black/Footpath.cpp:
 	.text       start:0x00549970 end:0x0054E590

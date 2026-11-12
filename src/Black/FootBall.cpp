@@ -4,6 +4,10 @@
 #include "FootballPositionInfo.h"
 #include "Villager.h"
 
+#ifdef VERSION_BW1WCI
+LH3DMesh* Football::Mesh;
+#endif
+
 uint32_t Football::GetSaveType()
 {
 	return GAME_THING_TYPE_FOOTBALL;

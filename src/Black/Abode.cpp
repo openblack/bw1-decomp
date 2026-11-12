@@ -16,7 +16,13 @@
 #include "Creche.h"
 #include "EditorPhysics.h"
 #include "Field.h"
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
+#include "AbodeInfo.h"
+#endif
 #include "FieldTypeInfo.h"
+#ifdef VERSION_BW1WCI
+#include "AbodeInfo.h"
+#endif
 #include "FootpathNode.h"
 #include "GameOSFile.h"
 #include "Game3DObject.h"
@@ -26,25 +32,28 @@
 #include "Rand.h"
 #include "Scaffold.h"
 #include "CitadelHeartInfo.h"
-#include "Creature.h"
 #include "PhysicsObject.h"
 #include "MobileStaticInfo.h"
 #include "StreetLantern.h"
 #include "ScriptHighlightInfo.h"
 #include "ScriptHighlight.h"
 #include "SoundGuidance.h"
-#include "AbodeInfo.h"
+#ifndef VERSION_BW1W100
 #pragma data_seg(".CRT$XCU")
 static void* CrtPad[15] = {0};
 #pragma data_seg()
+#endif
 #include "MapCellConstants.h"
+#include "AbodeInfo.h"
 #include "GameTimeConstants.h"
 #include "LandscapeConstants.h"
 #include "TimerConstants.h"
+#include "HelpTextDataBase.h"
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #include "ColourConstants.h"
 #endif
 #include "HelpText.h"
+#include "Creature.h"
 #include "Football.h"
 #include "Game.h"
 #include "GameStats.h"
@@ -77,7 +86,16 @@ static void* CrtPad[15] = {0};
 
 #define M_PI 3.14159265358979323846
 
-#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
+#if defined(VERSION_BW1WCI)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line)                                                                                            \
+	((line) + ((line) < 1019   ? 4                                                                                     \
+	           : (line) < 1359 ? -2                                                                                    \
+	           : (line) < 1856 ? -60                                                                                   \
+	           : (line) < 2210 ? -67                                                                                   \
+	           : (line) < 2378 ? -56                                                                                   \
+	                           : -53))
+#elif !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 #undef ORIGINAL_LINE
 // 1.10 and 1.00 lack the 1.20 win conditions, so their lines sit earlier.
 #define ORIGINAL_LINE(line)                                                                                            \
@@ -126,26 +144,8 @@ static int  KnockSample = 0;
 #define ABODE_SCRIPT_SCALE    1000.0f
 #define WORKSHOP_SMOKE_COLOUR 0x00808080
 
-// Index of the sails mesh in the packed mesh list; AllMeshes.h is numbered for a different list.
-static const MESH_LIST WindmillSailsMesh = (MESH_LIST)133;
 // The hand animation for knocking on an abode.
 static const long KnockAnimation = 0x39;
-
-GBaseInfo* GAbodeInfo::GetBaseInfo(uint32_t& num_infos)
-{
-	num_infos = ABODE_INFO_LAST;
-	return &AbodeInfos[0];
-}
-
-Abode* Abode::CastAbode()
-{
-	return this;
-}
-
-Town* Abode::GetTown()
-{
-	return town.Get();
-}
 
 Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* _town, float y_angle, float scale, float food,
              int wood)
@@ -157,6 +157,12 @@ Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* _town, float
 		_town->AddStructureToTown(this);
 		index = town->AbodeList.count - 1;
 	}
+#ifdef VERSION_BW1WCI
+	else
+	{
+		GGame::g_game->GameLists.abodes.Add(this);
+	}
+#endif
 	GGame::g_game->map.Dirty = true;
 	SetNearestWaterPos(200.0f);
 }
@@ -695,7 +701,11 @@ bool32_t Abode::MoveAbodeToPlannedAbodes()
 	Town* town = GetTown();
 	if (town != NULL)
 	{
+#ifdef VERSION_BW1WCI
+		if (!GetShouldNotBeAddedToPlanned() && GetNewPlannedAbode(this) != NULL)
+#else
 		if (!GetShouldNotBeAddedToPlanned() && PlannedAbode::Create(this) != NULL)
+#endif
 		{
 			return true;
 		}
@@ -703,6 +713,13 @@ bool32_t Abode::MoveAbodeToPlannedAbodes()
 	}
 	return false;
 }
+
+#ifdef VERSION_BW1WCI
+PlannedAbode* Abode::GetNewPlannedAbode(Abode* abode)
+{
+	return PlannedAbode::Create(abode);
+}
+#endif
 
 void Abode::RemoveAllVillagersFromAbode()
 {
@@ -1152,21 +1169,6 @@ GAbodeInfo* PlannedAbode::GetInfo()
 	return (GAbodeInfo*)info.Get();
 }
 
-Town* PlannedAbode::GetTown()
-{
-	return town.Get();
-}
-
-uint32_t PlannedAbode::GetSaveType()
-{
-	return GAME_THING_TYPE_PLANNED_ABODE;
-}
-
-char* PlannedAbode::GetDebugText()
-{
-	return "Planned Abode";
-}
-
 void PlannedAbode::SetPlannedScale(float scale_)
 {
 	scale = scale_;
@@ -1244,16 +1246,6 @@ Windmill* Windmill::Create(const MapCoords& coords, const GAbodeInfo* info, Town
 	return windmill;
 }
 
-uint32_t Windmill::GetSaveType()
-{
-	return GAME_THING_TYPE_WINDMILL;
-}
-
-char* Windmill::GetDebugText()
-{
-	return "Windmill:";
-}
-
 void Windmill::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 	Abode::CallVirtualFunctionsForCreation(coords);
@@ -1266,7 +1258,7 @@ void Windmill::CallVirtualFunctionsForCreation(const MapCoords& coords)
 void Windmill::Open()
 {
 	Sails = LH3DObject::Create(LH3DObject::STATIC);
-	Sails->SetMesh(LH3DMesh::GetPackedMesh(WindmillSailsMesh), NULL, NULL);
+	Sails->SetMesh(LH3DMesh::GetPackedMesh(MSH_B_GREK_SAIL), NULL, NULL);
 	Sails->SetDynamicLighting(true);
 }
 
@@ -1568,6 +1560,12 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 	{
 		return;
 	}
+#ifdef VERSION_BW1WCI
+	if (Flags & GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE)
+	{
+		return;
+	}
+#endif
 	bool32_t playSound = false;
 	long     sound[5];
 	float    vx = hitter->Physics.Velocity.x;
@@ -1709,10 +1707,12 @@ bool32_t Abode::CanBecomeAPhysicsObject()
 	return false;
 }
 
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 SCRIPT_OBJECT_TYPE Abode::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_ABODE;
 }
+#endif
 
 uint32_t Abode::InterfaceValidToTap(GInterfaceStatus* status)
 {
@@ -1756,8 +1756,21 @@ uint32_t Abode::InterfaceTap(GInterfaceStatus* status)
 	return 1;
 }
 
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
+SCRIPT_OBJECT_TYPE Abode::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_ABODE;
+}
+#endif
+
 float Abode::GetDesireToBeRepaired()
 {
+#ifdef VERSION_BW1WCI
+	if (GetTown() == NULL)
+	{
+		return 0.0f;
+	}
+#endif
 	if (GetPercentRepaired() <= GetTown()->GetInfo()->RepairDesireThreshold &&
 	    ((GetInfo()->AbodeType & ABODE_TYPE_LIVING_QUARTERS) == 0 || villagers.count != 0))
 	{
@@ -1824,7 +1837,27 @@ bool32_t Abode::Load(GameOSFile& file)
 		file.ReadSafe(hasDestructionMesh);
 		if (hasDestructionMesh)
 		{
+#ifdef VERSION_BW1WCI
+			if (IsFootball())
+			{
+				if (Football::Mesh == NULL)
+				{
+					uint32_t length;
+					LHFileLength(".\\data\\football.l3d", &length);
+					void* data = LH3DMem::Alloc(length);
+					LHLoadData(".\\data\\football.l3d", data, length, NULL);
+					Football::Mesh = LH3DMesh::Create(data, false);
+					LH3DMem::Free(data);
+				}
+				DestructionMesh = NEW(2210) FragMesh(file, Football::Mesh);
+			}
+			else
+			{
+				DestructionMesh = NEW(2213) FragMesh(file, LH3DMesh::GetPackedMesh(GetInfo()->GetMesh()));
+			}
+#else
 			DestructionMesh = NEW(2210) FragMesh(file, LH3DMesh::GetPackedMesh(GetInfo()->GetMesh()));
+#endif
 		}
 		return true;
 	}
