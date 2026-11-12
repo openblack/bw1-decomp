@@ -51,6 +51,8 @@ block_relocations:
   - source: 0x0085366E
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x00828342
+# Abode::GetNewEp tests the 0x800000 flag, an address inside LHDraw::EmbossedBox24.
+  - source: 0x004036B4
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside other code.
   - source: 0x008357E6
   - source: 0x00835801
@@ -202,6 +204,11 @@ block_relocations:
   - source: 0x0088B238
 
 add_relocations:
+# GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.
+  - source: 0x00405A9C
+    type: x86_abs32
+    target: '?Infos@GTribeInfo@@2PAV1@A'
+    addend: 0x10C
 # pow.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x007E05A6
     type: x86_rel32

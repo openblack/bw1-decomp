@@ -12,6 +12,9 @@
 static float unused;
 
 #include "PSysProperties.h"
+#if defined(VERSION_BW1W130) || defined(VERSION_BW1WCI)
+static void EmptyPSysProperties(int arg0, int arg1) {}
+#endif
 
 #include "GJProperty.h"        /* For class PropertyList */
 #include "ParticleCreator.h"   /* For the particle creators */

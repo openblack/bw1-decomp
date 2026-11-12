@@ -7,7 +7,6 @@
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE */
 #include <re_common.h>   /* For bool32_t */
 
-#include "AbodeInfo.h"            /* For struct GAbodeInfo */
 #include "PlannedMultiMapFixed.h" /* For struct PlannedMultiMapFixed */
 #include "LHPTR.h"                /* For LHPTR */
 
@@ -15,6 +14,7 @@
 
 class Abode;
 class Base;
+class GAbodeInfo;
 class GMultiMapFixedInfo;
 struct GPlannedAbodeInfo;
 class GameOSFile;
@@ -33,15 +33,15 @@ public:
 	// BW1W120 004056b0 BW1M119 013448c0
 	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 004050e0 BW1M119 0141c550
-	virtual Town* GetTown();
+	virtual Town* GetTown() { return town.Get(); }
+	// BW1W120 004050f0 BW1M119 01418a20
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PLANNED_ABODE; }
 	// BW1W120 00405100 BW1M119 014afde0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Planned Abode"; }
 	// BW1W120 00405860 BW1M119 013dc0f0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00405830 BW1M119 013434f0
 	virtual bool32_t Save(GameOSFile& file);
-	// BW1W120 004050f0 BW1M119 01418a20
-	virtual uint32_t GetSaveType();
 	// BW1W120 004061a0 BW1M119 011d16f0
 	virtual bool32_t IsWonder();
 	// BW1W120 00405710 BW1M119 0157bb20
@@ -65,6 +65,8 @@ public:
 	static PlannedAbode* Create(Abode* abode);
 	// BW1W120 004056d0 BW1M119 01007b00
 	GAbodeInfo* GetInfo();
+	// BW1W120 004056e0 BW1M119 null
+	void SetPlannedScale(float scale);
 
 	// Constructors
 
@@ -79,8 +81,6 @@ public:
 
 	// BW1W120 004055a0 BW1M119 0149c170
 	void Init(Town* town);
-	// BW1W120 004056e0 BW1M119 null
-	void SetPlannedScale(float scale);
 	// BW1W120 004056f0 BW1M119 inlined
 	bool32_t IsAbodeTypeInMask(int abode_type_mask);
 	// BW1W120 004057f0 BW1M119 inlined
