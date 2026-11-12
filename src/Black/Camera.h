@@ -30,7 +30,7 @@ public:
 	LHPoint     pos;
 	float       time; /* 0x68 */
 	float       TimeDelta;
-	uint32_t    field_0x70;
+	bool32_t    ScriptSlomoControl;
 	uint32_t    CameraDirty;
 	uint8_t     field_0x78;
 	uint8_t     field_0x79;

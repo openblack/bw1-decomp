@@ -43,11 +43,10 @@
 
 #include <chlasm/HelpTextEnums.h>
 
-#include "Game.h"          /* For GGame */
-#include "HelpText.h"      /* For HelpTextDataBase::HelpTextDatabase */
-#include "PlayerProfile.h" /* For PlayerProfile */
-#include "Creature.h"      /* For Creature::CanLoad3D */
-#include "CreatureRoom.h"  /* For CreatureRoom::CreatureInTemple */
+#include "Game.h"         /* For GGame */
+#include "HelpText.h"     /* For HelpTextDataBase::HelpTextDatabase */
+#include "Creature.h"     /* For Creature::CanLoad3D */
+#include "CreatureRoom.h" /* For CreatureRoom::CreatureInTemple */
 #include "DialogBoxImmersion.h"
 #include "DialogBoxKeyBinding.h"
 #include "DialogBoxOptions.h"
@@ -107,6 +106,7 @@ extern CImmMouse* ImmersionMouse;
 #include "LHNetBase.h"
 #include "Temple.h"
 #include "SetupGameData.h"
+#include "PlayerProfile.h" /* For PlayerProfile */
 
 NewProfileBox*             NewProfileBox::Instance;
 LoadingBox*                LoadingBox::Instance;

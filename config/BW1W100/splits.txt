@@ -1202,12 +1202,14 @@ Black/HelpSystemQuery.cpp:
 Black/HelpSystemToolTips.cpp:
 	.text       start:0x0058A9C0 end:0x0058BAA0
 	.rdata      start:0x008682E8 end:0x00868324
-	.bss        start:0x00C37A44 end:0x00C38DA8
+	.bss        start:0x00C37A44 end:0x00C38D10
 
 Black/HelpText.cpp:
 	.text       start:0x0058BAA0 end:0x0058DD20
 	.rdata      start:0x00868324 end:0x00868364
-	.bss        start:0x00C38DB8 end:0x00C38DEC
+	.CRT$XCU    start:0x008F6834 end:0x008F6844 align:4
+	.data       start:0x00B1E8C8 end:0x00B1E924
+	.bss        start:0x00C38D10 end:0x00C38DC8
 
 Black/Influence.cpp:
 	.text       start:0x0058DD20 end:0x0058E870

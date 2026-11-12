@@ -62,10 +62,6 @@ struct LH3DMapCoords
 		FractionX = 0x8000;
 		FractionZ = 0x8000;
 	}
-	// BW1W120 inlined BW1M119 inlined
-	void SetFractionX(uint16_t x);
-	// BW1W120 inlined BW1M119 inlined
-	void SetFractionZ(uint16_t z);
 	// BW1W120 inlined BW1M119 0104c450
 	uint16_t MapX() const { return CellX; }
 	// BW1W120 inlined BW1M119 0104c370

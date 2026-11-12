@@ -319,6 +319,8 @@ class HelpSystem : public Base
 public:
 	// BW1W120 005c5710 BW1M119 01359b70
 	static HelpSystem* Create();
+	// BW1W120 00d16180
+	static bool32_t TextTopToBottom;
 	// BW1W120 005c78f0 BW1M119 01094c50
 	static bool32_t  ConvertActionToKMIcon(BINDABLE_ACTIONS action, CH_ANIMTYPE* anim_type, int* key, int* mouse_type);
 	HelpSpirit*      SpiritType2;
@@ -554,6 +556,10 @@ public:
 	void GetHelpQueryAtPosition(const MapCoords& coords);
 	// BW1W120 005c98e0 BW1M119 0135bea0
 	void HelpQuery();
+	// BW1W120 005c6e60 BW1M119 0101f6a0
+	bool32_t CurrentTextShouldBeDrawn();
+	// BW1W120 005c5b50 BW1M119 013592b0
+	void SetTextIcon(BINDABLE_ACTIONS action);
 	// BW1W120 005c5f50 BW1M119 01359030
 	HelpHistoryEntry* GetFromHistory(int index);
 	// BW1W120 inlined BW1M119 014ffc90

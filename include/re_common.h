@@ -24,4 +24,9 @@ inline void WrapScaled(float& value, float range, float inv_range)
 	value = t - (int)(t * inv_range) * range;
 }
 
+// Brings value back into the range [low, high] a period at a time
+// clang-format off
+#define WRAP(value, low, high, period) while (value < low) { value += period; } while (value > high) { value -= period; }
+// clang-format on
+
 #endif /* BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H */

@@ -855,6 +855,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005C945B, call_rel32(0x004017F9)),  # HelpSystemQuery
     (0x005C949A, call_indirect(0x008A991C)),  # HelpSystemQuery: __imp__ioctlsocket@4
     (0x005C98DA, call_indirect(0x008A939C)),  # HelpSystemQuery: __imp_?GetModuleChecksum@LHVersion@@SAKXZ
+    (0x005CAACB, call_rel32(0x004017F9)),  # HelpText
+    (0x005CB00B, call_rel32(0x004017F9)),  # HelpText
     (0x005E79DB, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E7AAB, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E7FAA, call_indirect(0x008A9328)),  # LHInetWeather: __imp_LHEditBox...
@@ -1709,6 +1711,25 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005CBEF8, jmp_run(0x005CBE83)),  # HelpSystemConditions
     (0x005CC14B, copy_run(0x005CBEF8)),  # HelpSystemInfo
     (0x005CC1D8, jmp_run(0x005CC14B)),  # HelpSystemLevel
+    (0x005CE2CB, padding_bytes(bytes.fromhex('01000000c3'))),  # HelpText
+    (0x005CE2F3, jmp_run(0x005CE2CB)),  # HelpText
+    (0x005CE4F1, jmp_run(0x005CE2F3)),  # HelpText
+    (0x005CE5B3, jmp_run(0x005CE4F1)),  # HelpText
+    (0x005CE80B, copy_run(0x005CE5B3)),  # HelpText
+    (0x005CE863, copy_run(0x005CE80B)),  # HelpText
+    (0x005CEBF9, jmp_run(0x005CE863)),  # HelpText
+    (0x005CECB1, jmp_run(0x005CEBF9)),  # HelpText
+    (0x005CED86, copy_run(0x005CECB1)),  # HelpText
+    (0x005CF156, jmp_run(0x005CED86)),  # HelpText
+    (0x005CF703, copy_run(0x005CF156)),  # HelpText
+    (0x005CFF51, jmp_run(0x005CF703)),  # HelpText
+    (0x005D02A5, copy_run(0x005CFF51)),  # HelpText
+    (0x005D0651, jmp_run(0x005D02A5)),  # HelpText
+    (0x005D0698, jmp_run(0x005D0651)),  # HelpText
+    (0x005D06C7, copy_run(0x005D0698)),  # HelpText
+    (0x005D0747, copy_run(0x005D06C7)),  # HelpText
+    (0x005D0773, jmp_run(0x005D0747)),  # HelpText
+    (0x005D07B1, jmp_run(0x005D0773)),  # HelpText
     (0x005FC3A5, copy_run(0x005FC326)),  # logo
     (0x005FC3FA, jmp_run(0x005FC3A5)),  # logo
     (0x005FC449, copy_run(0x005FC3FA)),  # logo
