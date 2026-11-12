@@ -12,10 +12,16 @@ struct MPFEPlayerDetails;
 class MPFEUserTeamList : public MPFEMessageObject
 {
 public:
+	// BW1W120 00633050 BW1M119 0139da70
+	virtual ~MPFEUserTeamList() {}
+
 	// Override methods
 
-	// BW1W120 00633050 BW1M119 0139da70
-	virtual ~MPFEUserTeamList();
+	// BW1W120 00633080 BW1M119 013b30c0
+	static void ProcessIncoming(wchar_t* message, MPFEPlayerDetails* from);
+
+	// BW1W120 00632e10 BW1M119 013b33d0
+	MPFEUserTeamList();
 };
 
 #endif /* BW1_DECOMP_MPFE_USER_TEAM_LIST_INCLUDED_H */

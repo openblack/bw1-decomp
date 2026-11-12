@@ -1642,18 +1642,19 @@ Black/MPFEChannelDetails.cpp:
 	.bss        start:0x00D2F5B8 end:0x00D2F5C0
 
 Black/MPFEChannelMessages.cpp:
-	.text       start:0x0061EEF0 end:0x00620110
-	.rdata      start:0x00920698 end:0x0092071C
+	.text       start:0x0061EEF0 end:0x00620140
+	.rdata      start:0x00920698 end:0x00920718
+	.rdata$r    start:0x009A1F98 end:0x009A22B8
 	.CRT$XCU    start:0x009B6AE4 end:0x009B6AEC align:4
-	.data       start:0x00BE3B08 end:0x00BE3D50
-	.bss        start:0x00D2F5D0 end:0x00D2F680
+	.data       start:0x00BE3AC4 end:0x00BE3D50
+	.bss        start:0x00D2F5C0 end:0x00D2F5C8
 
 Black/MPFEChannelSelector.cpp:
 	.text       start:0x00620140 end:0x00622990
-	.rdata      start:0x0092071C end:0x00920770
+	.rdata      start:0x00920718 end:0x00920770
 	.CRT$XCU    start:0x009B6AEC end:0x009B6AFC align:4
-	.data       start:0x00BE3D74 end:0x00BE3E10
-	.bss        start:0x00D2F680 end:0x00D2F698
+	.data       start:0x00BE3D50 end:0x00BE3E10
+	.bss        start:0x00D2F5C8 end:0x00D2F698
 
 Black/MPFEChooseConnection.cpp:
 	.text       start:0x00622A90 end:0x00623720

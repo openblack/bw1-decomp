@@ -181,6 +181,10 @@ public:
 	MPFEPlayerDetails* GetPlayerDetailsFromDatabaseID(LH_USER_ID id);
 	// BW1W120 00620770 BW1M119 01392db0
 	void D2A_YouWereKickedGame(wchar_t* name);
+	// BW1W120 006206a0 BW1M119 01392e50
+	void D2A_YouWereKicked(wchar_t* name);
+	// BW1W120 00620500 BW1M119 01392f00
+	void D2A_PlayerDeniedJoin(wchar_t* name);
 	// BW1W120 006208c0 BW1M119 01392c60
 	void D2A_RefreshTeams();
 	// BW1W120 006208d0 BW1M119 01392c00
@@ -271,6 +275,8 @@ public:
 	void D_ReShuffleTeam(MPFEPlayerDetails* player, TeamEnums team);
 	// BW1W120 00625270 BW1M119 0139bd10
 	MPFEPlayerDetails* GetHighestNumberedPlayerInTeam(TeamEnums team);
+	// BW1W120 00625340 BW1M119 0139bb30
+	MPFEPlayerDetails* GetLowestNumberedPlayerInTeam(TeamEnums team);
 	// BW1W120 00626490 BW1M119 01399b50
 	void D_UpdateBoxClans();
 	// BW1W120 00620410 BW1M119 01392fb0

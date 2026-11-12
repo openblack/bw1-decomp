@@ -12,17 +12,16 @@
 #include <Lionhead/LHLog/ver4.0/LHVersion.h>          /* For LHVersion */
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUtils.h> /* For LHNetGetProfileList */
 
-#include "CameraModeNew3.h" /* For CameraModeNew3 */
-#include "ControlHand.h"    /* For CHand */
-#include "ControlMap.h"     /* For ControlMap */
-#include "Creature.h"       /* For Creature */
-#include "Game.h"           /* For GGame */
-#include "HelpProfile.h"    /* For HelpProfile */
-#include "HelpSystem.h"     /* For HelpSystem */
-#include "Interface.h"      /* For GInterface */
-#include "Player.h"         /* For GPlayer */
-
-#define CREATURE_MIND_PATH ".\\Scripts\\CreatureMind"
+#include "CameraModeNew3.h"   /* For CameraModeNew3 */
+#include "ControlHand.h"      /* For CHand */
+#include "ControlMap.h"       /* For ControlMap */
+#include "Creature.h"         /* For Creature */
+#include "CreatureMindPath.h" /* For CREATURE_MIND_PATH */
+#include "Game.h"             /* For GGame */
+#include "HelpProfile.h"      /* For HelpProfile */
+#include "HelpSystem.h"       /* For HelpSystem */
+#include "Interface.h"        /* For GInterface */
+#include "Player.h"           /* For GPlayer */
 
 PlayerProfile PlayerProfile::Profile;
 
