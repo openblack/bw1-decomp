@@ -32,8 +32,6 @@ struct HelpDudeControl
 	uint8_t   field_0x7c[0x8];
 	bool32_t  Updated;
 
-	// Non-virtual methods
-
 	// BW1W120 inlined BW1M119 inlined
 	void AddDrawing()
 	{

@@ -48,12 +48,8 @@ public:
 	// BW1W120 005c4aa0 BW1M119 01354e40
 	HelpSpirit(const MapCoords& coords, HELP_SPIRIT_TYPE type);
 
-	// Static methods
-
 	// BW1W120 005c4b30 BW1M119 01354d40
 	static HelpSpirit* Create(const MapCoords& coords, HelpSystem* help_system, HELP_SPIRIT_TYPE type);
-
-	// Non-virtual methods
 
 	// BW1W120 005c4bd0 BW1M119 01354bd0
 	void Eject(bool32_t appear);

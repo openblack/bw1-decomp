@@ -54,15 +54,17 @@ const float MinTimeBeforeClick = 1.0f;
 #include "ScriptDLL.h"
 #include "camerahelp.h"
 
-#define HELP_SYSTEM_ICON_FADE_TIME           0.3f
-#define HELP_SYSTEM_ICON_ALPHA               0x80
-#define HELP_SYSTEM_ICON_MARGIN              4
+#define HELP_SYSTEM_ICON_FADE_TIME 0.3f
+#define HELP_SYSTEM_ICON_ALPHA     0x80
+#define HELP_SYSTEM_ICON_MARGIN    4
+#ifdef VERSION_BW1W130
 #define HELP_SYSTEM_GLOVE_ICON_MARGIN        24
 #define HELP_SYSTEM_GLOVE_ICON_RAISE         24
 #define HELP_SYSTEM_GLOVE_ACTION_ICON_MARGIN 30
 #define HELP_SYSTEM_GLOVE_ACTION_ICON_RAISE  60
-#define HELP_SYSTEM_ICONS_PER_REGION         3
-#define HELP_SYSTEM_DUDE_FADE_SPEED          0.4f
+#endif
+#define HELP_SYSTEM_ICONS_PER_REGION 3
+#define HELP_SYSTEM_DUDE_FADE_SPEED  0.4f
 #ifdef VERSION_BW1WCI
 #define HELP_SYSTEM_SOUND_END_DELAY 200
 #else
@@ -1088,7 +1090,7 @@ void HelpSystem::ClearHelpTextSoundAndText()
 
 HELP_INTERFACE_RESULT HelpSystem::ProcessInterface(LHCoord* pos, bool32_t select_lock_off, bool32_t apply_lock_off)
 {
-	uint32_t skipKey = LHSys::GetKeyboard().IsKeyDown(KB_ENTER);
+	bool32_t skipKey = LHSys::GetKeyboard().IsKeyDown(KB_ENTER);
 	if (!NoSkip && (select_lock_off || skipKey) && !GGame::g_game->MyInterface()->IsPlayBack(SCRIPT_TASK_NONE) &&
 	    !IsTextRead() && (IsClickToContinueTimeComplete() || skipKey))
 	{
@@ -1101,7 +1103,7 @@ HELP_INTERFACE_RESULT HelpSystem::ProcessInterface(LHCoord* pos, bool32_t select
 		{
 			if (ClickToContinue)
 			{
-				ClickToContinue = skipKey;
+				ClickToContinue = false;
 				if (ContinueIcon != NULL)
 				{
 					delete ContinueIcon;
