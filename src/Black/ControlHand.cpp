@@ -12,6 +12,10 @@
 #include "GameTimeConstants.h"
 #include "PSysHandFX.h"
 
+#ifdef VERSION_BW1W130
+CHAND_GLOVE_HELP_CUE CHand::GloveHelpCue;
+#endif
+
 CHand::CHand(LHPoint point, GInterfaceStatus* status)
 {
 	Point0x48d4 = LHPoint();
