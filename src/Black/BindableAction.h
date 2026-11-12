@@ -136,6 +136,26 @@ struct BindableAction
 	void SetKey(const ControlKey& new_key);
 	// BW1W120 0046f260 BW1M119 011d3eb0
 	void GetKeyText(wchar_t* out_text);
+	// BW1W120 0046f2b0 BW1M119 011d3e30
+	void GetMouseText(wchar_t* out_text);
+	// BW1W120 0046f2f0 BW1M119 011d3da0
+	void GetRidOfKey(LH_KEY key, LH_KEY keymod);
+	// BW1W120 0046f330 BW1M119 011d3d00
+	void GetRidOfMouse(ControlMouse::MOUSE_CONTROL_BUTTON button);
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
+	// BW1W120 inlined BW1M119 011d3730
+	bool IsKeyBeingPressed(LH_KEY key, LH_KEY keymod);
+	// BW1W120 inlined BW1M119 01092940
+	bool32_t IsMouseButtonClicked();
+	// BW1W120 inlined BW1M119 010933e0
+	bool32_t IsMouseButtonDoubleClicked();
+	// BW1W120 inlined BW1M119 010a0dc0
+	bool32_t IsMouseButtonReleased();
+	// BW1W120 inlined BW1M119 010a0e90
+	bool32_t IsMouseBeingUsed(ControlMouse::MOUSE_CONTROL_BUTTON button);
+	// BW1W120 inlined BW1M119 01094a90
+	ControlMouse::MOUSE_CONTROL_BUTTON GetMouseButton() const;
+#endif
 	// BW1W120 inlined BW1M119 011a68f0
 	ControlKey GetPrimaryKey() const { return key; }
 };
