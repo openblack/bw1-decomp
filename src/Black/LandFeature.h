@@ -6,6 +6,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
+class LH3DObject;
 class Object;
 
 struct LandFeature
@@ -20,6 +21,9 @@ struct LandFeature
 
 // BW1W120 005e2ff0 BW1M119 01380310
 void RequestChangeTexture(Object* object);
+
+// BW1W120 005e3260 BW1M119 0137fcc0
+void RequestChangeTexture(LH3DObject* object);
 
 // BW1W120 00d1a2f8
 extern bool32_t ForceMinimumNearClipping;

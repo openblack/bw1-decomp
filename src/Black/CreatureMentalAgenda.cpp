@@ -62,7 +62,7 @@ void CreatureAgenda::Clear()
 	CommandState.Commanded = false;
 	CommandState.ForcedByPlayerAction = false;
 	CommandState.Destination.SetToZero();
-	field_0x1ae4 = 0;
+	BodyActionStarted = false;
 	NumTurnsWithoutAction = 0;
 	NumTurnsPerformingAction = 0;
 	MinSecondsPerformingActionToLearn = 0.0f;

@@ -749,6 +749,32 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004F8D6B, call_rel32(0x00401879)),  # CreatureSubAction
     (0x004FF68B, call_rel32(0x00401879)),  # SubArgument
     (0x004FF81B, call_rel32(0x00401879)),  # SubArgument
+    (0x0050025A, call_indirect(0x008A9640)),  # CreatureSubActions
+    (0x005004AA, call_indirect(0x008A9978)),  # CreatureSubActions
+    (0x0050128B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x005012AB, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050189A, call_indirect(0x008A92F4)),  # CreatureSubActions
+    (0x0050231A, call_indirect(0x008A96E4)),  # CreatureSubActions
+    (0x00502FEA, call_indirect(0x008A9950)),  # CreatureSubActions
+    (0x0050305B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x00503A8B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050406B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050455B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050531A, call_indirect(0x008A9970)),  # CreatureSubActions
+    (0x005053FA, call_indirect(0x008A902C)),  # CreatureSubActions
+    (0x0050561B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x00505C5A, call_indirect(0x008A9034)),  # CreatureSubActions
+    (0x00505F5A, call_indirect(0x008A90D8)),  # CreatureSubActions
+    (0x0050614A, call_indirect(0x008A903C)),  # CreatureSubActions
+    (0x005062EB, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050661B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050666B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050746B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050747B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x00507DBB, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x005084CA, call_indirect(0x008A97D4)),  # CreatureSubActions
+    (0x00508C5B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x00508D2B, call_rel32(0x00401879)),  # CreatureSubActions
     (0x0050AA4B, call_rel32(0x00401879)),  # Creche
     (0x0050AB3A, call_indirect(0x008A9570)),  # Creche: __imp__db_free_data__YAXPAPAD_Z@4
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed

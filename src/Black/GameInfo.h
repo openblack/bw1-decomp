@@ -33,9 +33,9 @@ public:
 	int32_t          StartSecond;
 	uint32_t         MillisecondsPerGameTurn;
 	float            VisualTimeScale;
-	float            field_0x48;
-	float            field_0x4c;
-	float            field_0x50;
+	float            VisualTimeCycleDuration;
+	float            VisualTimeCyclePercentageDusk;
+	float            VisualTimeCyclePercentageNight;
 	uint32_t         field_0x54;
 
 	// Override methods

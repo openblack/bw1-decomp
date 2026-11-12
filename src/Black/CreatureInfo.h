@@ -24,7 +24,11 @@ public:
 	uint32_t field_0x210;
 	float    field_0x214[0x2];
 	float    StarvingEnergy; /* 0x21c */
-	float    field_0x220[0xd];
+	float    field_0x220[0x6];
+	float    FoodEnergyGain;     /* 0x238 */
+	float    RestLifeGain;       /* 0x23c */
+	float    RestExhaustionLoss; /* 0x240 */
+	float    field_0x244[0x4];
 	float    WalkSpeed; /* 0x254 */
 	float    RunSpeed;  /* 0x258 */
 	float    field_0x25c[0x3];
@@ -49,7 +53,9 @@ public:
 	float    MaxDesireLevelFeedbackScale;
 	float    field_0x2d4[0x2];
 	float    SecondsBeforeReactingToSameCreatureAgain;
-	float    field_0x2e0[0x16];
+	float    field_0x2e0[0x2];
+	float    RunAwayDistance;
+	float    field_0x2ec[0x13];
 	float    EmpathySourceIncrease; /* 0x338 */
 	float    field_0x33c[0x2];
 	uint32_t field_0x344;
@@ -62,7 +68,10 @@ public:
 	float    InnateCommunicativeness; /* 0x360 */
 	float    InnateExtroversion;
 	float    InterestInThingToLookAt[THING_TO_LOOK_AT_TYPE_LAST];
-	float    field_0x374[0x4];
+	float    SleepTimeScale;
+	float    FoodSizeScale; /* 0x378 */
+	float    field_0x37c;
+	float    PooPerFood;
 	float    AlignmentChangeScale; /* 0x384 */
 	float    ImpressiveSizeBonus;
 	float    ImpressiveSizeScale;

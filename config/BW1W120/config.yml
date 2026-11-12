@@ -148,6 +148,12 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GAnimalStateTableInfo@@2PAV1@A'
     addend: 0x2618
+# CreatureSubActions.cpp's SubStateInitiateFaceDownSlope walks MapXZDirections8 by its z members: the loop ends two bytes
+# past the array.
+  - source: 0x00504250
+    type: x86_abs32
+    target: '?MapXZDirections8@@3PAUJustMapXZ@@A'
+    addend: 0x22
 # adj_fdiv.obj: its dispatch table, the jumps through it and its data references (dtk leaves them unrelocated).
   - source: 0x00C3011E
     type: x86_abs32

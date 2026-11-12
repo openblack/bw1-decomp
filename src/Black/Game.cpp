@@ -2714,9 +2714,9 @@ bool32_t GGame::Save(GameOSFile& file)
 	file.WriteIt(TownInfluenceMultiplier);
 	float visualTime = GGameInfo::Info.GetVisualTime();
 	file.WriteIt(visualTime);
-	file.WriteIt(GGameInfo::Info.field_0x48);
-	file.WriteIt(GGameInfo::Info.field_0x4c);
-	file.WriteIt(GGameInfo::Info.field_0x50);
+	file.WriteIt(GGameInfo::Info.VisualTimeCycleDuration);
+	file.WriteIt(GGameInfo::Info.VisualTimeCyclePercentageDusk);
+	file.WriteIt(GGameInfo::Info.VisualTimeCyclePercentageNight);
 	file.WriteIt(GGameInfo::Info.VisualTimeScale);
 	help_system->Save(file);
 	help_profile->Save(file);
@@ -2840,13 +2840,14 @@ bool32_t GGame::Load(GameOSFile& file)
 	float visualTime;
 	file.ReadIt(visualTime);
 	GGameInfo::Info.ForceVisualTime(visualTime);
-	file.ReadIt(GGameInfo::Info.field_0x48);
-	file.ReadIt(GGameInfo::Info.field_0x4c);
-	file.ReadIt(GGameInfo::Info.field_0x50);
+	file.ReadIt(GGameInfo::Info.VisualTimeCycleDuration);
+	file.ReadIt(GGameInfo::Info.VisualTimeCyclePercentageDusk);
+	file.ReadIt(GGameInfo::Info.VisualTimeCyclePercentageNight);
 	file.ReadIt(GGameInfo::Info.VisualTimeScale);
 	GGameInfo::Info.SetVisualTimeScale(GGameInfo::Info.VisualTimeScale);
-	GGameInfo::Info.SetVisualTimeCycle(GGameInfo::Info.field_0x48, GGameInfo::Info.field_0x50,
-	                                   GGameInfo::Info.field_0x4c);
+	GGameInfo::Info.SetVisualTimeCycle(GGameInfo::Info.VisualTimeCycleDuration,
+	                                   GGameInfo::Info.VisualTimeCyclePercentageNight,
+	                                   GGameInfo::Info.VisualTimeCyclePercentageDusk);
 	terrain_map.Init();
 	GSoundMap* soundMap = SoundMap;
 	soundMap->CalculateRadiusPointAndDistance();

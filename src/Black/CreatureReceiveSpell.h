@@ -22,10 +22,10 @@ struct CreatureReceiveSpell
 {
 #ifdef VERSION_BW1WCI
 	// BW1WCI 005065f0 BW1MCI119 012a3d50
-	bool TryFinishAllSpells();
+	bool32_t TryFinishAllSpells();
 #else
 	// BW1W120 004f4b60 BW1M119 01284fe0
-	bool TryFinishAllSpells();
+	bool32_t TryFinishAllSpells();
 #endif
 	class TPerSpellData
 	{
@@ -54,12 +54,12 @@ struct CreatureReceiveSpell
 	GJVector<QueueData> queueData;
 	uint32_t            field_0x198;
 	LHPoint             field_0x19c;
-	LHPoint             field_0x1a8;
+	LHPoint             GesturePos;
 	LHPoint             field_0x1b4;
 	LHPoint             field_0x1c0;
 	float               field_0x1cc;
 	uint32_t            field_0x1d0;
-	uint8_t             field_0x1d4;
+	bool                IsGestureAtHand;
 
 	// Constructors
 
@@ -76,6 +76,8 @@ struct CreatureReceiveSpell
 	bool32_t IsCreatureSpellActive(CREATURE_RECEIVE_SPELL_TYPE type);
 	// BW1W120 004f4c50 BW1M119 01284d30
 	void Draw();
+	// BW1W120 004f4b90 BW1M119 01284eb0
+	void CtrGestureStart(const LHPoint& pos, float height);
 	// BW1W120 004f4c30 BW1M119 01284e30
 	void CtrGestureCloseDown();
 	// BW1W120 004f5340 BW1M119 01283ec0
@@ -100,7 +102,8 @@ struct CreatureReceiveSpell
 static_assert(offsetof(CreatureReceiveSpell, queueData) == 0x184, "CreatureReceiveSpell queue offset is incorrect");
 static_assert(offsetof(CreatureReceiveSpell, field_0x198) == 0x198, "CreatureReceiveSpell scalar offset is incorrect");
 static_assert(offsetof(CreatureReceiveSpell, field_0x19c) == 0x19c, "CreatureReceiveSpell point offset is incorrect");
-static_assert(offsetof(CreatureReceiveSpell, field_0x1d4) == 0x1d4, "CreatureReceiveSpell flag offset is incorrect");
+static_assert(offsetof(CreatureReceiveSpell, IsGestureAtHand) == 0x1d4,
+              "CreatureReceiveSpell flag offset is incorrect");
 static_assert(sizeof(CreatureReceiveSpell) == 0x1d8, "CreatureReceiveSpell size is incorrect");
 
 #endif /* BW1_DECOMP_CREATURE_RECEIVE_SPELL_INCLUDED_H */

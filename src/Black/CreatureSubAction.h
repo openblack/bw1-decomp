@@ -64,13 +64,13 @@ public:
 	CreatureSubAction SubActions[0x20];
 	Creature*         creature; /* 0xc28 */
 	bool32_t          GoesOutsideConfinedArea;
-	uint32_t          field_0xc30;
-	uint32_t          TurnsInPart;
+	bool32_t          PotResourcesTransferred;
+	int               TurnsInPart;
 	uint32_t          field_0xc38;
 	bool32_t          AskedToPlayGame;
 	Creature*         Partner;
 	GInterfaceStatus* HandStatus;
-	uint32_t          field_0xc48;
+	float             GestureFraction;
 
 	// Constructors
 
@@ -88,10 +88,18 @@ public:
 	}
 	// BW1W120 inlined BW1M119 0129acc0
 	unsigned long GetSubActionIndex() const { return CurrentSubAction; }
+	// BW1W120 inlined BW1M119 inlined
+	CreatureSubAction* GetCurrentSubAction() { return &SubActions[CurrentSubAction]; }
 	// BW1W120 inlined BW1M119 01299260
 	CreatureBelief* GetObjectArgument() { return SubActions[CurrentSubAction].Belief; }
 	// BW1W120 inlined BW1M119 01249450
 	LHPoint* GetPositionArgument() { return &SubActions[CurrentSubAction].Point; }
+	// BW1W120 inlined BW1M119 012992c0
+	uint32_t GetIntegerArgument() { return SubActions[CurrentSubAction].Integer; }
+	// BW1W120 inlined BW1M119 01299320
+	float GetFloatArgument() { return SubActions[CurrentSubAction].Float; }
+	// BW1W120 inlined BW1M119 01299380
+	uint32_t GetSpellArgument() { return SubActions[CurrentSubAction].Spell; }
 	// BW1W120 004ff5b0 BW1M119 inlined
 	void ResetPart();
 	// BW1W120 004ff570 BW1M119 012903d0

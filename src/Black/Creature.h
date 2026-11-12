@@ -30,60 +30,78 @@
 
 // Forward Declares
 
-#define CREATURE_DEVELOPMENT_CONFINEMENT_RADIUS 12.0f
-#define CREATURE_MIN_IMPRESSIVE_SIZE            1.0f
-#define CREATURE_MAX_IMPRESSIVE_SIZE            4.0f
-#define CREATURE_MAX_FLYING_OBJECT_DAMAGE       100.0f
-#define CREATURE_BIG_SIZE_SCALE                 1.8f
-#define CREATURE_MAX_AUTO_SCALE_HEIGHT          2.0f
-#define CREATURE_EVIL_VICTORY_ALIGNMENT         -0.5f
-#define CREATURE_LIGHTBULB_REPEAT_TURNS         100
-#define CREATURE_MIN_WATER_SPELL_PROGRESS       0.6f
-#define CREATURE_LOW_LIFE                       0.4f
-#define CREATURE_LOW_LIFE_DESIRE_SECONDS        10.0f
-#define CREATURE_TOWN_ON_FIRE_RANGE             150.0f
-#define CREATURE_MUSIC_MOOD_ARGUMENT_SCALE      5.0f
-#define CREATURE_LIGHTBULB_SIZE_DIVISOR         10.0f
-#define CREATURE_LIGHTBULB_HEIGHT_ABOVE_HEAD    1.0f
-#define CREATURE_STUCK_SECONDS                  15.0f
-#define CREATURE_STUCK_SUPPRESS_SECONDS         60.0f
-#define CREATURE_FIGHT_IMPACT_EFFECT_SCALE      0.05f
-#define CREATURE_DOMINANCE_AGE_DIFFERENCE       10
-#define CREATURE_MILLISECONDS_PER_SECOND        1000
-#define CREATURE_NEW_AREA_SECONDS               60.0f
-#define CREATURE_FAR_FROM_HOME_DISTANCE         20.0f
-#define CREATURE_HOME_FINISHED_SIZE             6
-#define CREATURE_SPEECH_FLAG_NO_NAME            0x4
-#define CREATURE_SPEECH_DISPLAY_TIME            3.0f
-#define CREATURE_HOME_SIZE_SCALE                1.2f
-#define CREATURE_TELEPORT_DESTINATION_RADIUS    5.0f
-#define CREATURE_GESTURE_SIZE_SCALE             1.3f
-#define CREATURE_DEFENCE_MIN_SIZE               0.001f
-#define CREATURE_DEFENCE_MAX_SIZE               2.0f
-#define CREATURE_DEFENCE_SIZE_SCALE             1.5f
-#define CREATURE_PHYSICS_MASS                   1000.0f
-#define CREATURE_MIN_PHYSICS_IMPACT_DAMAGE      0.005f
-#define CREATURE_CUT_AREA_SCALE                 15.0f
-#define CREATURE_CUT_MIN_DISTANCE_SQUARED       0.01f
-#define CREATURE_MAX_CUTS                       7
-#define CREATURE_NICENESS_UPDATE_TURNS          600
-#define CREATURE_TIME_WARP_HEAL_SCALE           9600.0f
-#define CREATURE_VALUE_SPINNER_MAX_HEIGHT       30.0f
-#define CREATURE_VALUE_SPINNER_RISE_SPEED       5.0f
-#define CREATURE_SIGHT_DISTANCE                 10.0f
-#define CREATURE_MOVEMENT_DIRECTION_DISTANCE    10.0f
-#define CREATURE_FOOD_VALUE_PER_ENERGY_UNIT     1000.0f
-#define CREATURE_FACING_DIRECTION_OFFSET        2.5f
-#define CREATURE_SCARY_ALIGNMENT                -0.25f
-#define CREATURE_SIZE_TO_HEIGHT                 15.0f
-#define CREATURE_TYKE_MIMIC_DISTANCE            100.0f
-#define CREATURE_TYKE_DESIRE_SECONDS            30.0f
-#define CREATURE_MAX_EYE_LID_LEVEL              0.73f
-#define CREATURE_LONG_SUPPRESS_SECONDS          120.0f
-#define CREATURE_SHORT_SUPPRESS_SECONDS         60.0f
-#define CREATURE_RESTORE_HEALTH_AMOUNT          0.5f
-#define CREATURE_TIREDNESS_DIVISOR              1.3f
-#define CREATURE_ERROR_ANGLE_SCALE              (-56.0f)
+#define CREATURE_DEVELOPMENT_CONFINEMENT_RADIUS           12.0f
+#define CREATURE_MIN_IMPRESSIVE_SIZE                      1.0f
+#define CREATURE_MAX_IMPRESSIVE_SIZE                      4.0f
+#define CREATURE_MAX_FLYING_OBJECT_DAMAGE                 100.0f
+#define CREATURE_BIG_SIZE_SCALE                           1.8f
+#define CREATURE_MAX_AUTO_SCALE_HEIGHT                    2.0f
+#define CREATURE_EVIL_VICTORY_ALIGNMENT                   -0.5f
+#define CREATURE_LIGHTBULB_REPEAT_TURNS                   100
+#define CREATURE_MIN_WATER_SPELL_PROGRESS                 0.6f
+#define CREATURE_RESURRECT_LIFE                           0.4f
+#define CREATURE_ARENA_APPROACH_SCALE                     15.0f
+#define CREATURE_LOW_LIFE                                 0.4f
+#define CREATURE_LOW_LIFE_DESIRE_SECONDS                  10.0f
+#define CREATURE_TOWN_ON_FIRE_RANGE                       150.0f
+#define CREATURE_MUSIC_MOOD_ARGUMENT_SCALE                5.0f
+#define CREATURE_LIGHTBULB_SIZE_DIVISOR                   10.0f
+#define CREATURE_LIGHTBULB_HEIGHT_ABOVE_HEAD              1.0f
+#define CREATURE_STUCK_SECONDS                            15.0f
+#define CREATURE_STUCK_SUPPRESS_SECONDS                   60.0f
+#define CREATURE_FIGHT_IMPACT_EFFECT_SCALE                0.05f
+#define CREATURE_DOMINANCE_AGE_DIFFERENCE                 10
+#define CREATURE_MILLISECONDS_PER_SECOND                  1000
+#define CREATURE_NEW_AREA_SECONDS                         60.0f
+#define CREATURE_FAR_FROM_HOME_DISTANCE                   20.0f
+#define CREATURE_HOME_FINISHED_SIZE                       6
+#define CREATURE_SPEECH_FLAG_NO_NAME                      0x4
+#define CREATURE_SPEECH_DISPLAY_TIME                      3.0f
+#define CREATURE_HOME_SIZE_SCALE                          1.2f
+#define CREATURE_TELEPORT_DESTINATION_RADIUS              5.0f
+#define CREATURE_GESTURE_SIZE_SCALE                       1.3f
+#define CREATURE_DRINK_SUPPRESS_SECONDS                   20.0f
+#define CREATURE_EAT_SUPPRESS_SECONDS                     20.0f
+#define CREATURE_PUT_OUT_FIRE_EFFECT_SCALE                5.0f
+#define CREATURE_FOLLOW_HAND_SECONDS                      30.0f
+#define CREATURE_FOLLOW_HAND_DISTANCE                     4.0f
+#define CREATURE_GO_NEAR_OBJECT_RANGE_SCALE               1.1f
+#define CREATURE_GO_NEAR_OBJECT_MIN_MOVEMENT              0.01f
+#define CREATURE_GO_NEAR_OBJECT_SUPPRESS_SECONDS          10.0f
+#define CREATURE_FOLLOW_INTERESTING_OBJECT_MAX_SECONDS    60.0f
+#define CREATURE_FOLLOW_INTERESTING_OBJECT_DISTANCE       15.0f
+#define CREATURE_FOLLOW_INTERESTING_OBJECT_MIN_SECONDS    1.0f
+#define CREATURE_FOLLOW_INTERESTING_OBJECT_RANDOM_SECONDS 3.0f
+#define CREATURE_LOOK_AT_FLYING_OBJECT_MIN_SECONDS        2.0f
+#define CREATURE_HEAL_HIMSELF_TIME_WARP                   0x2580
+#define CREATURE_INSPECT_MIN_SECONDS                      5.0f
+#define CREATURE_INSPECT_RANDOM_SECONDS                   10.0f
+#define CREATURE_DEFENCE_MIN_SIZE                         0.001f
+#define CREATURE_DEFENCE_MAX_SIZE                         2.0f
+#define CREATURE_DEFENCE_SIZE_SCALE                       1.5f
+#define CREATURE_PHYSICS_MASS                             1000.0f
+#define CREATURE_MIN_PHYSICS_IMPACT_DAMAGE                0.005f
+#define CREATURE_CUT_AREA_SCALE                           15.0f
+#define CREATURE_CUT_MIN_DISTANCE_SQUARED                 0.01f
+#define CREATURE_MAX_CUTS                                 7
+#define CREATURE_NICENESS_UPDATE_TURNS                    600
+#define CREATURE_TIME_WARP_HEAL_SCALE                     9600.0f
+#define CREATURE_VALUE_SPINNER_MAX_HEIGHT                 30.0f
+#define CREATURE_VALUE_SPINNER_RISE_SPEED                 5.0f
+#define CREATURE_SIGHT_DISTANCE                           10.0f
+#define CREATURE_MOVEMENT_DIRECTION_DISTANCE              10.0f
+#define CREATURE_FOOD_VALUE_PER_ENERGY_UNIT               1000.0f
+#define CREATURE_FACING_DIRECTION_OFFSET                  2.5f
+#define CREATURE_SCARY_ALIGNMENT                          -0.25f
+#define CREATURE_SIZE_TO_HEIGHT                           15.0f
+#define CREATURE_TYKE_MIMIC_DISTANCE                      100.0f
+#define CREATURE_TYKE_DESIRE_SECONDS                      30.0f
+#define CREATURE_MAX_EYE_LID_LEVEL                        0.73f
+#define CREATURE_LONG_SUPPRESS_SECONDS                    120.0f
+#define CREATURE_SHORT_SUPPRESS_SECONDS                   60.0f
+#define CREATURE_RESTORE_HEALTH_AMOUNT                    0.5f
+#define CREATURE_TIREDNESS_DIVISOR                        1.3f
+#define CREATURE_ERROR_ANGLE_SCALE                        (-56.0f)
 
 enum CREATURE_HEIGHT
 {
@@ -124,6 +142,7 @@ class LHPlayer;
 class Citadel;
 struct ControlHandUpdateInfo;
 class CreatureBelief;
+class CreatureBeliefAboutCreature;
 class CreatureMental;
 class CreaturePhysical;
 class CreaturePlan;
@@ -324,8 +343,8 @@ public:
 	GameThing*              field_0x1078;
 	GParticleContainer*     ParticleContainer0x107c;
 	GParticleContainer*     ParticleContainer0x1080;
-	GameThing*              field_0x1084;
-	GameThing*              field_0x1088;
+	GameThing*              SpotVisual;
+	GParticleContainer*     SwapMindEffect;
 	uint32_t                field_0x108c;
 	LHLinkedList<Villager*> ControlledVillagers;
 	int                     ActionPriorityUpdateIndex;
@@ -363,7 +382,7 @@ public:
 	bool32_t                CanDie;
 	bool32_t                AutoScaleEnabled;
 	float                   AutoScaleValue;
-	MapCoords               field_0x1164;
+	MapCoords               GoNearStartPos;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x119c;
 	bool32_t Navigation;
@@ -1054,7 +1073,9 @@ public:
 	// BW1W120 004f4890 BW1M119 01285650
 	void LastCreatureTargetPosClear();
 	// BW1W120 004f7970 BW1M119 0128fd70
-	void CastSpellOnObject(MAGIC_TYPE type, Object* object, float param_3, int param_4);
+	bool32_t CastSpellOnObject(MAGIC_TYPE type, Object* object, float radius, int flags);
+	// BW1W120 004f7e20 BW1M119 0128f980
+	bool32_t CastSpellAtPos(MAGIC_TYPE type, const MapCoords& coords, float radius, int flags);
 	// BW1W120 00476fa0 BW1M119 011e3550
 	void Faint();
 	// BW1W120 00477060 BW1M119 011e3500
@@ -1204,6 +1225,8 @@ public:
 	void GoToLastSpecifiedPos(CreatureBelief* belief, long argument);
 	// BW1W120 0050a1f0 BW1M119 012a5390
 	void RepeatLastAction(CreatureBelief* belief, long argument);
+	// BW1W120 00509530 BW1M119 012a5a40
+	void BecomeHigh(CreatureBelief* belief, long argument);
 	// BW1W120 00509480 BW1M119 012a63f0
 	void DanceToMusic(CreatureBelief* belief, long argument);
 	// BW1W120 00509130 BW1M119 012a6530
@@ -1508,6 +1531,8 @@ public:
 	int SubStatePerformEat();
 	// BW1W120 005004e0 BW1M119 012a36f0
 	int SubStateFinishEatCreatedObject();
+	// BW1W120 00500540 BW1M119 012a3380
+	int ActuallyEatObject(Object* object);
 	// BW1W120 005007f0 BW1M119 012a32b0
 	int SubStateFinishEat();
 	// BW1W120 00500860 BW1M119 012a3200
@@ -1610,6 +1635,8 @@ public:
 	int SubStatePerformLookAtCamera();
 	// BW1W120 00502e00 BW1M119 0129f030
 	int SubStatePerformLookAtCameraInWideScreen();
+	// BW1W120 00502e70 BW1M119 0129ee10
+	int LookAtPoint(LHPoint& pos, float max_distance, unsigned long max_seconds);
 	// BW1W120 00502ff0 BW1M119 0129ed00
 	int SubStateFinishRenderObjectImmobile();
 	// BW1W120 00503060 BW1M119 0129ecb0
@@ -2108,6 +2135,16 @@ public:
 	void SetInnateFriendlinessSource(float value);
 	// BW1W120 004deff0 BW1M119 01262f40
 	void SetInnateCommunicativenessSource(float value);
+	// BW1W120 004f60b0 BW1M119 015df520
+	int DecideToRespondToCreature(CreatureBeliefAboutCreature* belief);
+	// BW1W120 004f62d0 BW1M119 015df120
+	int RespondToRequestToFight(Creature* requester);
+	// BW1W120 004f6340 BW1M119 015defd0
+	int RespondToRequestToPlay(Creature* requester);
+	// BW1W120 004f6410 BW1M119 015dee80
+	int RespondToRequestToLearnFromFriend(Creature* requester);
+	// BW1W120 004f64d0 BW1M119 015ded40
+	int RespondToRequestToBeFriends(Creature* requester);
 	// BW1W120 004f6930 BW1M119 0128d940
 	void ScriptTurnOffAllDesires();
 	// BW1W120 004f6950 BW1M119 0128d890
@@ -2158,9 +2195,9 @@ public:
 	// BW1W120 004f78c0 BW1M119 0128e310
 	static float SigmoidThreshold(float threshold, float value);
 	// BW1W120 0047a7a0 BW1M119 011dd300
-	void StartMovingToObject(CreatureBelief* belief, Object* object, float speed, float min_speed);
+	int StartMovingToObject(CreatureBelief* belief, Object* object, float speed, float min_speed);
 	// BW1W120 0047a880 BW1M119 011dd040
-	void StartMovingToPoint(CreatureBelief* belief, const LHPoint& pos, float speed, float min_speed);
+	int StartMovingToPoint(CreatureBelief* belief, const LHPoint& pos, float speed, float min_speed);
 	// BW1W120 0047a980 BW1M119 011dcef0
 	long GetPutDownAction();
 	// BW1W120 0047aa50 BW1M119 011dcd20

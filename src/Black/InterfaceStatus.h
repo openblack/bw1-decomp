@@ -46,7 +46,7 @@ public:
 	bool               HandHoldingSomething;
 	LHCoord            field_0x94;
 	uint32_t           field_0x9c;
-	uint32_t           field_0xa0;
+	uint32_t           CameraTurns;
 	LHPoint            field_0xa4;
 	LHPoint            CameraPos;
 	LHPoint            CameraFoc;

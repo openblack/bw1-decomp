@@ -116,6 +116,10 @@ public:
 	void HelpSpritesAlignmentProcess(float change);
 	// BW1W120 0071ce70 BW1M119 01515960
 	void HelpSpritesKillingPeople(Villager& villager);
+	// BW1W120 0071cd70 BW1M119 01515c30
+	void HelpSpritesGeneralBad(MapCoords& coords);
+	// BW1W120 0071cdf0 BW1M119 01515a70
+	void HelpSpritesGeneralGood(MapCoords& coords);
 	// BW1W120 0071cfe0 BW1M119 01515600
 	void HelpSpritesWorshippersDying();
 	// BW1W120 0071d100 BW1M119 01514f40
