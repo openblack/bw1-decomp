@@ -667,6 +667,18 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004061FA, call_indirect(0x008A9890)),  # Abode: __imp__timeKillEvent@4
     (0x0040729A, call_indirect(0x008A98DC)),  # Abode: __imp__bind@4
     (0x004073BA, call_indirect(0x008A93DC)),  # Abode: __imp_?_lhbeginthread@@YAKPADP6AXPAX@ZI1J@Z
+    (0x0041406B, call_rel32(0x00401879)),  # Alignment
+    (0x0041419A, call_indirect(0x008A9804)),  # Alignment: __imp__GetSystemMetrics@4
+    (0x0041440A, call_indirect(0x008A9480)),  # Alignment: __imp_?IsConnected@LHTransport@@QAEHXZ
+    (0x0041465A, call_indirect(0x008A9978)),  # Alignment: __imp__CoFileTimeToDosDateTime@12
+    (0x004146EA, call_indirect(0x008A900C)),  # Alignment: __imp__GetUserNameA@4
+    (0x00414BAA, call_indirect(0x008A98A8)),  # Alignment: __imp__waveInClose@4
+    (0x00414EDB, call_rel32(0x00401879)),  # Alignment
+    (0x0041547B, call_rel32(0x00401879)),  # Alignment
+    (0x004155FB, call_rel32(0x00401879)),  # Alignment
+    (0x00416B7A, call_indirect(0x008A991C)),  # Alignment: __imp__ioctlsocket@4
+    (0x00416BBB, call_rel32(0x00401879)),  # Alignment
+    (0x00416C4B, call_rel32(0x00401879)),  # Alignment
     (0x0041D4CA, call_indirect(0x008A9978)),  # AnimalCow: __imp__CoFileTimeToDosDateTime@12
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
@@ -1090,6 +1102,51 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00407794, jmp_run(0x00407744)),  # Abode
     (0x004077E4, copy_run(0x004077E4)),  # Abode
     (0x00407871, jmp_run(0x004077E4)),  # Abode
+    (0x00414043, copy_run(0x00413FE3)),  # Alignment
+    (0x0041406B, call_rel32(0x00403C49)),  # Alignment
+    (0x0041419A, call_indirect(0x008AE9AC)),  # Alignment: __imp___1Dialup__QAE_XZ@4
+    (0x00414214, jmp_run(0x0041419A)),  # Alignment
+    (0x00414314, jmp_run(0x00414214)),  # Alignment
+    (0x00414353, jmp_run(0x00414314)),  # Alignment
+    (0x004143A3, copy_run(0x00414353)),  # Alignment
+    (0x0041440A, call_indirect(0x008AE03C)),  # Alignment: __imp__DirectXSetupGetVersion
+    (0x00414595, jmp_run(0x0041440A)),  # Alignment
+    (0x0041465A, call_indirect(0x008AE01C)),  # Alignment: __imp__TrackMouseEvent@4
+    (0x004146EA, call_indirect(0x008AE068)),  # Alignment: __imp__SetBkColor@4
+    (0x00414812, jmp_run(0x004146EA)),  # Alignment
+    (0x00414839, jmp_run(0x00414812)),  # Alignment
+    (0x00414B81, copy_run(0x00414839)),  # Alignment
+    (0x00414BAA, call_indirect(0x008AE350)),  # Alignment: __imp_?RegistryRetrieveULong@@YA?AW4LH_RETURN@@PAD0PAK@Z
+    (0x00414C54, jmp_run(0x00414BAA)),  # Alignment
+    (0x00414D3B, jmp_run(0x00414C54)),  # Alignment
+    (0x00414E03, copy_run(0x00414D32)),  # Alignment
+    (0x00414EDB, call_rel32(0x00403C49)),  # Alignment
+    (0x00415107, copy_run(0x00414EDB)),  # Alignment
+    (0x004151B2, jmp_run(0x00415107)),  # Alignment
+    (0x00415302, copy_run(0x004151B2)),  # Alignment
+    (0x004153B2, jmp_run(0x00415302)),  # Alignment
+    (0x0041547B, call_rel32(0x00403C49)),  # Alignment
+    (0x004154F7, jmp_run(0x0041547B)),  # Alignment
+    (0x00415548, copy_run(0x004154F7)),  # Alignment
+    (0x004155A8, copy_run(0x00415548)),  # Alignment
+    (0x004155FB, call_rel32(0x00403C49)),  # Alignment
+    (0x00415642, copy_run(0x004155FB)),  # Alignment
+    (0x004156E2, copy_run(0x00415642)),  # Alignment
+    (0x00415732, jmp_run(0x004156E2)),  # Alignment
+    (0x00415782, copy_run(0x00415732)),  # Alignment
+    (0x004157E8, copy_run(0x00415782)),  # Alignment
+    (0x00415831, jmp_run(0x004157E8)),  # Alignment
+    (0x004158A1, copy_run(0x00415831)),  # Alignment
+    (0x004160B7, jmp_run(0x004158A1)),  # Alignment
+    (0x00416709, copy_run(0x004160B7)),  # Alignment
+    (0x00416747, copy_run(0x00416709)),  # Alignment
+    (0x004169D6, jmp_run(0x00416742)),  # Alignment
+    (0x00416A66, copy_run(0x004169D6)),  # Alignment
+    (0x00416AF3, jmp_run(0x00416A66)),  # Alignment
+    (0x00416B7A, call_indirect(0x008AE8A0)),  # Alignment: __imp__timeSetEvent@4
+    (0x00416BBB, call_rel32(0x00403C49)),  # Alignment
+    (0x00416C14, jmp_run(0x00416BBB)),  # Alignment
+    (0x00416C4B, call_rel32(0x00403C49)),  # Alignment
     (0x0041D0AA, copy_run(0x0041CF56)),  # AnimalCow
     (0x0041D118, jmp_run(0x0041D0A3)),  # AnimalCow
     (0x0041D148, copy_run(0x0041D118)),  # AnimalCow
