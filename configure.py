@@ -810,7 +810,7 @@ config.libs = [
         "cflags": cflags_base,
         "progress_category": "game",
         "objects": [
-            GameCodeObject(NonMatching, "Black/Abode.cpp"),
+            GameCodeObject(Matching, "Black/Abode.cpp"),
             GameCodeObject(NonMatching, "Black/AbodeInfo.cpp"),
             GameCodeObject(NonMatching, "Black/alexmfc.cpp"),
             GameCodeObject(NonMatching, "Black/Alignment.cpp", pch=PCH_PENDING),

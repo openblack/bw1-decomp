@@ -41,6 +41,40 @@ rest of the first group's PCH bodies: `??0K1 k@K1 ??_GK1 g1@G g2@G ??0K2 k@K2 ??
 p1@P p2@P`. Moving a non-PCH body into or out of the class changes the order as well; only a
 complete source reproduces a magnet unit's order.
 
+### A PCH function comes where the unit's code passes its offset [verified]
+
+The rule behind the orders above is one of offsets in the code IL (`ex`, `msvc6_passes.md`). The
+front end writes the IL of every function it parses, inline or not, into that stream in parse
+order, and `c2` emits the functions a unit needs while it reads the stream. A PCH keeps the
+offsets its functions had when it was built (the first function of a compile sits near offset
+1012), while the stream of a `/Yu` unit starts again at 0. `c2` then emits a function of the PCH
+that the unit needs when the unit's own stream passes that function's offset, or when the function
+is first needed if that comes later. Functions needed at the same point come out in offset
+order, the PCH's and the unit's mixed.
+
+```
+pch.h: struct P { int x; P() : x(0) {} };  inline void T() { P a[2]; }
+       compiled alone: ??0P at 1019, T at 1123, ??_H at 1216
+s.cpp: #include "pch.h" / struct H2 { P* p; void Make2(int n) { p = new P[n]; } };
+       int mk0() { return 0; } ... int mk39() { return 39; }      (61 bytes of IL each)
+
+/Yu pch.h:  mk0 .. mk16 (IL offset 1196)  ??_H  mk17 (1257) .. mk39
+```
+
+So a small unit emits the PCH's functions after all of its own, and a large one emits them in
+the middle. In a vftable group the unit's own bodies come before the PCH's while their offsets
+in the unit (how much inline code the unit parses ahead of them) are smaller than the offsets of
+the PCH's bodies (how much inline code the PCH holds ahead of those): inline code added to the
+PCH ahead of a class moves that class's bodies later in every unit, and code added after it moves
+nothing.
+
+The compiler's helpers follow the same rule. The front end generates the vector constructor
+iterator (`??_H`) at the first array of objects with a constructor (a local array, the inline
+constructor of a class with such a member, `new T[n]`), and the vector destructor iterator
+(`??_I`) and a class's vector deleting destructor (`??_E`) likewise. A helper generated in the
+unit is emitted right there, used or not. One the PCH has already generated is emitted by the
+offset rule, in the units that hold such a construct themselves.
+
 ### `.bss`: reverse first-mention order with `/Yu`, name hashes otherwise [verified]
 
 Without a PCH, and in the compile that creates one with `/Yc`, `cl` lays out a unit's
@@ -80,7 +114,54 @@ from it.
 
 The order depends on the memory the front end's path strings take, not on the source alone. The build
 therefore hands the compiler the original paths in every checkout (`tools/cl6_paths.py`): the
-order is then the same everywhere, and follows the source and those paths alone.
+order is then the same in every checkout, and follows the source, those paths and the temporary
+directory's.
+
+### How cl6 orders a unit's RTTI [verified]
+
+`c1xx` keeps the classes whose vtables are still to be emitted in an array sorted by the low 14 bits
+of each class record's address, `pointer & 0x3fff`. In 6.5's `c1xx.dll` the search is at
+`0x10411c67`, the insert at `0x10411d02` and the array's pointer at `0x104d76c4`; 6.4 holds the same
+routine. At the end of the unit it walks the array and emits each class's vtable and RTTI. Among the
+classes whose vtables one function stores, the object ends up with the RTTI of the class with the
+larger value first.
+
+A class's record is made where the class is first declared, a bare `class X;` included. The front
+end's memory is a reserved region filled from the front, so an address counts what was allocated
+before it: a typedef takes 60 bytes and its name rounded up to 4, a `#define` about 36, an opened
+file about 64 with its full path, and the source's path is kept twice, the working and the temporary
+directory once (`TMP`, else `TMPDIR` under wibo, else `/tmp`). Comments, blank lines and unused `/I`
+directories take nothing. In a file of two classes, declarations put before them swap the order for
+a short stretch once every 16,384 bytes. With `/Yu` the classes of the PCH keep the addresses they
+had when it was built, since its image is mapped back where it was, and the unit's own go to a
+second region.
+
+Two classes first declared one after the other therefore keep their order: the second has the higher
+address and its RTTI comes first, unless a 16 KB boundary falls into the 130 bytes between them. Two
+classes declared far apart are in an order that any change ahead of either can swap. Abode.cpp's
+`GAbodeInfo` constructor stores the vtables of `Base`, declared in the PCH, and of `GAbodeInfo`,
+first declared in the unit: the 181 characters by which #788 lengthened macro names in a PCH header
+moved `Base`'s record by 8,064 bytes and swapped the two groups in 1.20, and the five commits after
+it swapped them in 1.00, 1.20 and 1.30. The shipped images do the same. Of the neighbouring pairs of
+object locators, 26 of 924 are the other way round in 1.10 than in 1.00, 39 of 1,005 in 1.20 than in
+1.10, and 26 of 1,013 in 1.30 than in 1.20, which is the same source built in another directory;
+`Base` and `GAbodeInfo` are among them twice. An order in the image tells how Lionhead's memory lay
+in that build, not how the source was written.
+
+`BlackPCH.h` therefore declares `Base` and `GAbodeInfo` back to back ahead of everything else, in
+each version's order. On two revisions of `main` whose own order was right in different versions,
+the pair gave the image's order in 1.00, 1.10, 1.20 and 1.30. It has a price. `GAbodeInfo` is one
+more class in the PCH, so every later symbol's number rises by one
+([`msvc6_symbol_numbering.md`](msvc6_symbol_numbering.md)): 1.00's `Object::SetUpPhysObAsATree` left
+its window, and `BlackPCHPointArray` gives the number back with `new` in place of a local array. The
+two records also move the rest of the PCH's heap, which swaps descriptor pairs in units that are not
+linked (`CreatureMentalLearnAction`, `CreatureMentalExploration`, `PlaytimeDance`). And the pair's
+conditional ends in `#else`: with an `#elif` naming the two versions there, 17 of Creature Isle's
+objects differed from `main`'s although that version skips the whole group, and with `#else` none
+does.
+
+The records' addresses can be read from a copy of `c1xx.dll` patched to pass each class of the array
+to an API that wibo's `-D` log prints.
 
 ### Debug information [verified]
 
@@ -113,6 +194,24 @@ takes a `pch` argument that selects its library's PCH:
 Every unit using a PCH is compiled with `/FI<header> /Yu<header>`: the header is forced in,
 so the unit's source does not include it. The PCH is built once per version at the source's
 path, for example `build/<version>/src/Black/BlackPCH.pch`.
+
+`BlackPCH.h` also holds stand-ins for inline code the original header had and ours lacks (§3):
+functions made of a repeated statement, which nothing calls and no unit emits. They only move
+the offsets of what follows them (§1).
+
+- `BlackPCHCodeBeforeObject`, ahead of `Object.h` in 1.00, 1.10 and Creature Isle: 448
+  statements, 16.4 KB of IL. `Abode`'s order holds from about 15.3 to 17.6 KB: with less,
+  `GObjectInfo`'s bodies come out before `GAbodeInfo`'s. In 1.20 and 1.30 the `<string>` of
+  `GameThingWithPos.h` gives that code.
+- `BlackPCHCodeAfterObject` and `BlackPCHPointArray`, after `Object.h` in 1.00: 4096 statements
+  (246 KB) and then the header's first array of constructed objects, which puts `??_H` at offset
+  349 KB. 1.00's `Abode` needs it between 301 KB (the end of the unit's own functions) and 397 KB
+  (`LHListHead<Villager>::AddToLast`, among the template members instantiated at the end).
+
+Both windows move when inline code is added to the headers: to the PCH's, or to those `Abode.cpp`
+includes ahead of `AbodeInfo.h` (the first window) or at all (the second). `tools/comdat-scan.py
+order --unit Abode` shows the functions out of order; one `BLACK_PCH_REPEAT_64` line is 2.3 KB in
+the first function and 3.8 KB in the second.
 
 `tools/project.py` implements it with the `pch` object option (`header`, `source`):
 
@@ -260,6 +359,14 @@ original but out of line here. The PCH changes no kept function's order in any l
 - `Villager.h` and `Living.h` were not in it: with them complete before
   `VillagerStateTableEntry` and `ReactionFunction` are declared, their member pointers
   become 4 bytes, while the target's tables use 16-byte entries.
+- It held more inline code than `Object.h` gives now. `Abode`, the first unit of the link and so
+  the one whose copy of every shared COMDAT the image keeps, emits `Fixed`'s, `MultiMapFixed`'s
+  and its own bodies before `GameThing`'s in every version: about 16 KB of IL more ahead of the
+  PCH's classes (§1). In 1.00 it emits `??_H` after its last function, although the initializer
+  of `GAbodeInfo::AbodeInfos` needs the iterator before its first: the PCH had generated it, at
+  an offset beyond the unit's own code, about 250 KB further than our headers reach. From 1.10
+  on `Abode` emits it among the headers, after `??_EHelpTextInfo`. `BlackPCH.h` stands in for
+  both (§2).
 
 ### The Mac build and the binaries' strings
 
@@ -373,6 +480,8 @@ an added function.
   `<string>` stands in (§3); with it found, the units of §4's second group return to the PCH.
 - The edge of the PCH's contents: `BaseInfo.h` and `ObjectInfo.h`, which the base-class headers
   being reworked will settle.
+- The inline code `BlackPCH.h` stands in for (§2): which headers held it, and what built 1.00's
+  first array of constructed objects.
 
 ## Reproducing
 

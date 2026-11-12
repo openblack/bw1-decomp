@@ -40,14 +40,15 @@ lib/libcmt/crt0init.obj:
 
 Black/Abode.cpp:
 	.text       start:0x00401000 end:0x00405D50
-	.rdata      start:0x007EB900 end:0x007ED1A0
+	.rdata      start:0x007EB900 end:0x007ED178
 	.rdata$r    start:0x008DA598 end:0x008DA830
+	.CRT$XCU    start:0x008F6004 end:0x008F6010 align:4
 	.data       start:0x008F75A0 end:0x008F7780
 	.bss        start:0x00B5DF40 end:0x00B6E540
 
 Black/alexmfc.cpp:
 	.text       start:0x00405D50 end:0x00411F70
-	.rdata      start:0x007ED1A0 end:0x007ED564
+	.rdata      start:0x007ED178 end:0x007ED564
 	.data       start:0x008F7780 end:0x008F7AD0
 	.bss        start:0x00B6E540 end:0x00B6E5F8
 
