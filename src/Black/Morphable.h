@@ -7,6 +7,7 @@
 #include <Lionhead/LH3DLib/development/LH3DAnim.h> /* For struct LH3DAnimSet */
 #include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
 #include <Lionhead/LHFile/ver3.0/LHReleasedFile.h> /* For struct LHReleasedFile */
+#include <re_common.h>                             /* For bool32_t */
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 #include "GJUtils.h"       /* For boundf */
@@ -25,12 +26,14 @@ class LHFile;
 struct LHMatrix;
 struct Morphable_field_0x4314_t;
 
+#define MORPHABLE_ANIM_COUNT 0xe8
+
 struct MorphableSoundEffect
 {
-	long field_0x0;
-	long Sound;
-	long Param;
-	bool Flag;
+	float Fraction;
+	long  Sound;
+	long  Param;
+	bool  Flag;
 };
 
 class Morphable : public DrawingObject
@@ -64,11 +67,11 @@ public:
 	LH3DMesh*                 meshes[0x8];
 	Name                      names[0x8];
 	LH3DAnimSet               AnimSets[0x6];
-	Morphable_field_0x4314_t* field_0x4314[0xe8];
+	Morphable_field_0x4314_t* field_0x4314[MORPHABLE_ANIM_COUNT];
 	MorphableSoundEffect      SoundEffects[16];
 	int                       NumSoundEffects;
 	int                       NumBoneMatrices;
-	int                       field_0x47bc;
+	bool32_t                  Inactive;
 	CAnim*                    CycleAnim[4];
 	long                      CycleTime[4];
 	float                     CycleWeight[4];
@@ -105,11 +108,6 @@ public:
 	// BW1W120 006171a0 BW1M119 01112650
 	~Morphable();
 
-	// Static methods
-
-	// BW1W120 006186b0 BW1M119 011109f0
-	static uint32_t LoadExtraTexture();
-
 	// Non-virtual methods
 
 	// BW1W120 00617310 BW1M119 01112440
@@ -122,6 +120,12 @@ public:
 	uint32_t ReadBinary(LHFile* file, AnimInfo* info_1, AnimInfo* info_2);
 	// BW1W120 00617ee0 BW1M119 01111220
 	void ReadExtraDataBinary(LHFile* param_1, AnimInfo* param_2, AnimInfo* param_3, long param_4);
+	// BW1W120 00617dc0 BW1M119 011115b0
+	void LoadAllAndClose();
+	// BW1W120 00618150 BW1M119 01110fb0
+	void WriteBinary(LHFile* file, long anim_count);
+	// BW1W120 006186b0 BW1M119 011109f0
+	uint32_t LoadExtraTexture();
 	// BW1W120 00618720 BW1M119 01110510
 	uint32_t LoadMesh(char* param_2, int param_3);
 	// BW1W120 006182f0 BW1M119 01110f20
@@ -165,5 +169,10 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	void SetThinFat(float value) { ThinFat = boundf(-1.0f, value, 1.0f); }
 };
+
+// Free functions
+
+// BW1W120 00617140 BW1M119 01112840
+void morphable_error(char* message, char* detail);
 
 #endif /* BW1_DECOMP_MORPHABLE_INCLUDED_H */

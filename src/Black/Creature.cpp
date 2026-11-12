@@ -2998,7 +2998,7 @@ void Creature::ForceMoveMapObjectWithoutWalking(const MapCoords& pos)
 	GLandscape::ConvertMapCoordToLandscapePoint(pos, point);
 	creature3d->SetPos(point);
 	creature3d->ResetLook();
-	LHMatrix* to = (LHMatrix*)creature3d->SafeBufferMemory0;
+	LHMatrix* to = creature3d->PreviousBuffer;
 	LHMatrix* from = creature3d->SafeBuffer0;
 	for (int i = 0; i < creature3d->NumBoneMatrices; i++)
 	{

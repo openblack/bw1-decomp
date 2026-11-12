@@ -737,18 +737,18 @@ Black/CreatureMimic.cpp:
 
 Black/CreatureMorph.cpp:
 	.text       start:0x004ECFA0 end:0x004F10C0
-	.rdata      start:0x008D5618 end:0x008D563C
+	.rdata      start:0x008D5618 end:0x008D5638
 	.CRT$XCU    start:0x00A465A8 end:0x00A465B8 align:4
-	.data       start:0x00C606BC end:0x00C607E0
-	.bss        start:0x00D2E3D0 end:0x00D2EA3C
+	.data       start:0x00C606BC end:0x00C607C0
+	.bss        start:0x00D2E3D0 end:0x00D2E3DC
 
 Black/CreaturePen.cpp:
 	.text       start:0x004F10C0 end:0x004F1600
-	.rdata      start:0x008D563C end:0x008D64C0
+	.rdata      start:0x008D5638 end:0x008D64C0
 	.rdata$r    start:0x00A2B448 end:0x00A2B570
 	.CRT$XCU    start:0x00A465B8 end:0x00A465C8 align:4
-	.data       start:0x00C607E0 end:0x00C60868
-	.bss        start:0x00D2EA3C end:0x00D2EA44
+	.data       start:0x00C607C0 end:0x00C60868
+	.bss        start:0x00D2E3DC end:0x00D2EA44
 
 Black/CreaturePhysical.cpp:
 	.text       start:0x004F1600 end:0x004F26B0

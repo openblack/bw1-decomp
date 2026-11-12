@@ -751,13 +751,18 @@ static LHColor s_DebugColours[6] = {
 
 #define HELPDUDE_SAMPLE_OBJECT 9996
 
-static int       s_SampleRate;
-static int       s_SampleCount;
-static float     s_SampleDuration;
-static short*    s_SampleData;
-static uint32_t  s_SampleStartTick;
+static int      s_SampleRate;
+static int      s_SampleCount;
+static float    s_SampleDuration;
+static short*   s_SampleData;
+static uint32_t s_SampleStartTick;
+#ifdef VERSION_BW1WCI
+uint32_t HelpDude::s_PlayingSample;
+void*    HelpDude::s_TalkingDude;
+#else
 static uint32_t  s_PlayingSample;
 static HelpDude* s_TalkingDude;
+#endif
 
 #define HELPDUDE_VOICE_SAMPLES 0x200
 static float s_VoiceBuffer[HELPDUDE_VOICE_SAMPLES * 2];
