@@ -45,7 +45,7 @@ struct HelpDudeControl
 		}
 	}
 	// BW1W120 005c2a40 BW1M119 01352670
-	bool32_t Init(const char* good_file, const char* evil_file, LH_AudioSystem* audio_system);
+	int Init(const char* good_file, const char* evil_file, LH_AudioSystem* audio_system);
 	// BW1W120 005c2e40 BW1M119 013524f0
 	void Uninit();
 #ifdef VERSION_BW1WCI

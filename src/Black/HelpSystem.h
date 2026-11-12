@@ -620,8 +620,13 @@ public:
 	void ReadRegistrySettings();
 	// BW1W120 005c6e00 BW1M119 inlined
 	bool32_t IsSpiritPointing();
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 01088620
+	long GetWideScreenControl() const { return WideScreenControl; }
+#else
 	// BW1W120 inlined BW1M119 010867f0
 	uint32_t GetWideScreenControl() const { return WideScreenControl; }
+#endif
 	// BW1W120 inlined BW1M119 inlined
 	// BW1WCI inlined BW1MCI119 01522790
 	bool32_t IsInScriptWideScreen() const { return WideScreen && GetWideScreenControl(); }
