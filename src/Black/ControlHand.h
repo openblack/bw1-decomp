@@ -244,6 +244,8 @@ public:
 	// Non-virtual methods
 	// BW1W120 0046c1b0 BW1M119 011d0600
 	void Show(bool32_t show);
+	// BW1W120 0046c2e0 BW1M119 inlined
+	void SetEditorControl(bool32_t enable);
 	// BW1W120 0046eb10 BW1M119 011cce70
 	bool32_t Save(GameOSFile& file);
 	// BW1W120 0046e930 BW1M119 011cd140

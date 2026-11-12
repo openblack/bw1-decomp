@@ -4,21 +4,23 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include "LH3DColor.h" /* For struct LH3DColor */
+#include "LHPoint.h"   /* For struct LHPoint */
 
-struct LH3DWay
+class LH3DWay
 {
+public:
 	struct Running
 	{
-		uint32_t field_0x0;
+		uint32_t Segment;
 		uint8_t  field_0x4[0x200];
-		float    field_0x204;
+		float    Fraction;
 		LH3DWay* way;
 
 		// Constructors
 
 		// BW1W120 00843ed0 BW1M119 010d2c70 (LHCombined Release)
-		Running(LH3DWay* param_2);
+		Running(LH3DWay* way);
 
 		// Non-virtual methods
 
@@ -26,14 +28,30 @@ struct LH3DWay
 		void GetPosAtTime(long time, LHPoint* point);
 	};
 
-	int      field_0x0;
+	uint16_t Size; /* 0x0 */
+	uint8_t  Type;
+	uint8_t  field_0x3;
 	int      field_0x4;
 	uint32_t field_0x8;
 	float    field_0xc;
 	int32_t  NumFrames; /* 0x10 */
-	uint8_t  field_0x14[0x8];
+	uint8_t  field_0x14[0xc];
+	float*   Speeds; /* 0x20 */
+
+	// BW1W120 00ef6554 BW1M119 01342384 (LHCombined Release)
+	static LH3DColor g_color;
+
+	// Static methods
+
+	// BW1W120 00842e70 BW1M119 010d4160 (LHCombined Release)
+	static LH3DWay* Create(long num_points);
 
 	// Non-virtual methods
+
+	// BW1W120 00842f30 BW1M119 010d4090 (LHCombined Release)
+	void SetPointIndexed(long index, LHPoint* point);
+	// BW1W120 00843050 BW1M119 010d3b40 (LHCombined Release)
+	void FinishSetup();
 
 	// BW1W120 00842f10 BW1M119 010d4100 (LHCombined Release)
 	void Release();
