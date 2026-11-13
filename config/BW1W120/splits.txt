@@ -3087,18 +3087,25 @@ Black/WeatherThing.cpp:
 	.bss        start:0x00DCB978 end:0x00DCB97C
 
 Black/Whale.cpp:
-	.text       start:0x00774A50 end:0x00778D20
+	.text       start:0x00774A50 end:0x00775320
+	.rdata      start:0x0099BA88 end:0x0099BA9C
+	.CRT$XCU    start:0x009C7AA8 end:0x009C7AB8 align:4
+	.data       start:0x00C24A5C end:0x00C24A78
+	.bss        start:0x00DCB97C end:0x00DCB988
+
+Black/WinCondition.cpp:
+	.text       start:0x00775320 end:0x00778DD0
 	.text$x     start:0x008A65A0 end:0x008A65B0 align:16
-	.rdata      start:0x0099BA88 end:0x0099BAF0
+	.rdata      start:0x0099BA9C end:0x0099BAF0
 	.xdata$x    start:0x009BC3A8 end:0x009BC400 align:4
-	.CRT$XCU    start:0x009C7AA8 end:0x009C7ACC align:4
-	.data       start:0x00C24A5C end:0x00C24CA0
-	.bss        start:0x00DCB97C end:0x00DCBC90
+	.CRT$XCU    start:0x009C7AB8 end:0x009C7AD0 align:4
+	.data       start:0x00C24A78 end:0x00C24CA0
+	.bss        start:0x00DCB988 end:0x00DCBC90
 
 Black/Wonder.cpp:
-	.text       start:0x00778D20 end:0x00779210
+	.text       start:0x00778DD0 end:0x00779210
 	.rdata      start:0x0099BAF0 end:0x0099BB14
-	.CRT$XCU    start:0x009C7ACC end:0x009C7AD8 align:4
+	.CRT$XCU    start:0x009C7AD0 end:0x009C7AD8 align:4
 	.data       start:0x00C24CA0 end:0x00C24CC8
 	.bss        start:0x00DCBC90 end:0x00DCBC94
 
