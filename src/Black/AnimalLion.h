@@ -66,6 +66,17 @@ public:
 	// BW1W120 0041c1a0 BW1M119 01178af0
 	virtual uint32_t StandAnimation();
 
+	// BW1W120 0041c1b0 BW1M119 null
+	uint32_t StartToSleepAnimation();
+	// BW1W120 0041c1c0 BW1M119 null
+	uint32_t FinishSleepingAnimation();
+	// BW1W120 0041c1d0 BW1M119 null
+	uint32_t StartToSitAnimation();
+	// BW1W120 0041c1e0 BW1M119 null
+	uint32_t FinishSittingAnimation();
+	// BW1W120 0041c1f0 BW1M119 null
+	uint32_t SitAnimation();
+
 	// BW1W120 0055e4d0 BW1M119 0130e2e0
 	Lion() {}
 	// BW1W120 0041fd30 BW1M119 0117ecc0
