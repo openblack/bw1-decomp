@@ -63,7 +63,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 004059f0 BW1M119 0107fdf0
-	void PreDraw();
+	static void PreDraw();
 };
 
 #endif /* BW1_DECOMP_WINDMILL_INCLUDED_H */

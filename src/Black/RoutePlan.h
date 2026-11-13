@@ -10,6 +10,8 @@ struct LHPoint;
 // object until its current Reward.cpp BSS split is resolved.
 // BW1W120 00d559b0
 extern unsigned char LandAvoid[512][512];
+// BW1W120 00d959b0
+extern bool32_t LandAvoidValid;
 
 // BW1W120 006e7ba0 BW1M119 01146690
 void ValidateLandAvoid();

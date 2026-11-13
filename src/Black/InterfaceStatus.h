@@ -115,6 +115,8 @@ public:
 	MapCoords& GetHandCollide() { return Pos; }
 	// BW1W120 inlined BW1M119 01099000
 	LHPoint& GetHandPos() { return ReportedHandPos; }
+	// BW1W120 inlined BW1M119 01091c10
+	LHPoint* GetHandVelocity() { return &HandVelocity; }
 	// BW1W120 inlined BW1M119 01077a90
 	bool ObjectHeldInHand() { return HandHoldingSomething; }
 	// BW1W120 inlined BW1M119 inlined

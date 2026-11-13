@@ -1294,13 +1294,14 @@ Black/LandBalance.cpp:
 Black/LandFeature.cpp:
 	.text       start:0x005A2580 end:0x005A3970
 	.CRT$XCU    start:0x008F6940 end:0x008F6944 align:4
-	.data       start:0x00B20370 end:0x00B20424
+	.data       start:0x00B20370 end:0x00B203C0
 
 Black/Landscape.cpp:
 	.text       start:0x005A3970 end:0x005A6160
-	.rdata      start:0x00869134 end:0x0086915C
-	.CRT$XCU    start:0x008F6954 end:0x008F6958 align:4
-	.bss        start:0x00C3B470 end:0x00C412B4
+	.rdata      start:0x008690E4 end:0x00869158
+	.CRT$XCU    start:0x008F6944 end:0x008F6958 align:4
+	.data       start:0x00B203C0 end:0x00B2043F
+	.bss        start:0x00C3B450 end:0x00C412B4
 
 Black/Language.cpp:
 	.text       start:0x005A6160 end:0x005A6220

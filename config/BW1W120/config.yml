@@ -157,6 +157,20 @@ add_relocations:
     type: x86_abs32
     target: '?MapXZDirections8@@3PAUJustMapXZ@@A'
     addend: 0x22
+# Landscape.cpp: GLandscape::Open clears LH3DIsland::g_index_block up to its end, and GLandscape::Draw's two loops
+# over GWater::g_circle stop at its end (the first one tests the Flags member of each entry).
+  - source: 0x005E5418
+    type: x86_abs32
+    target: '?g_index_block@LH3DIsland@@2PAY0CA@EA'
+    addend: 0x400
+  - source: 0x005E4CD8
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE00C
+  - source: 0x005E4ED7
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE000
 # adj_fdiv.obj: its dispatch table, the jumps through it and its data references (dtk leaves them unrelocated).
   - source: 0x00C3011E
     type: x86_abs32

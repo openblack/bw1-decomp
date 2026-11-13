@@ -81,6 +81,9 @@ public:
 	// BW1W120 inlined BW1M119 010ab260
 	~Feature() {}
 
+	// BW1W120 inlined BW1M119 010d5df0
+	const GFeatureInfo* GetInfo() const { return (const GFeatureInfo*)info; }
+
 	// Static methods
 
 	// BW1W120 00527350 BW1M119 010d5e70

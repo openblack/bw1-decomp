@@ -34,6 +34,8 @@ public:
 	// BW1W120 00644fc0 BW1M119 0103b7a0
 	static void GameTurnUpdate();
 	static void DrawAll(); // 00646de0
+	// BW1W120 00646fe0 BW1M119 01092110
+	static void DrawAllUnderWater();
 	// BW1W120 00646950 BW1M119 0111bc70
 	static PhysicsObject* SearchForPhysicsObject(Object* object);
 	// BW1W120 00646980 BW1M119 0111bb70

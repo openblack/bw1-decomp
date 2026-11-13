@@ -6,7 +6,8 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include "LH3DColor.h" /* For struct LH3DColor */
+#include "LHPoint.h"   /* For struct LHPoint */
 
 // Forward Declares
 
@@ -94,6 +95,18 @@ public:
 				Flags &= ~CIRCLE_FLAG_VALID;
 			}
 		}
+		// BW1W120 inlined BW1M119 010525c0
+		float GetSizeCircle()
+		{
+			float size = Age * Growth / GWATER_PLOUF_LIFE;
+			if (size < GWATER_PLOUF_MIN_SIZE)
+			{
+				size = GWATER_PLOUF_MIN_SIZE;
+			}
+			return size;
+		}
+		// BW1W120 005e5100 BW1M119 0104ff30
+		void Draw();
 	};
 
 	// A segment of the trail the hand leaves as it moves through the water.
@@ -152,6 +165,14 @@ public:
 		unsigned long time = age % GWATER_PLOUF_LIFE;
 		return (unsigned long)(GWATER_PLOUF_MAX_ALPHA - time * GWATER_PLOUF_MAX_ALPHA / GWATER_PLOUF_LIFE) << 24 |
 		       0xffffff;
+	}
+	// BW1W120 inlined BW1M119 01052500
+	static unsigned long GetColor(unsigned long age, unsigned long colour)
+	{
+		LH3DColor     tint(colour);
+		unsigned long time = age % GWATER_PLOUF_LIFE;
+		long alpha = (long)((GWATER_PLOUF_MAX_ALPHA - time * GWATER_PLOUF_MAX_ALPHA / GWATER_PLOUF_LIFE) * tint.a) >> 8;
+		return ((alpha << 8 | tint.r) << 8 | tint.g) << 8 | tint.b;
 	}
 	// Mac inlines the initialisation of g_circle, g_sprite_circle and g_count_activated_circle into GGame's
 	// constructor.

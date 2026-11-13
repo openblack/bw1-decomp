@@ -123,6 +123,8 @@ public:
 	// BW1W120 0083f840 BW1M119 0103a860 (LHCombined Release)
 	static void UpdateAll(float time);
 	static void DebugDrawAll(); // 0083f890
+	// BW1W120 0083f8b0 BW1M119 0103a940 (LHCombined Release)
+	static void DrawCloudsAll();
 	// BW1W120 0083f810 BW1M119 010ba480 (LHCombined Release)
 	static void ReallyKillAll();
 	// BW1W120 0083f750 BW1M119 010ba660 (LHCombined Release)

@@ -63,7 +63,7 @@ public:
 	LiquidParticleGroup*   liquid_particle_group;
 	GInterfaceFlags        flags;
 	INTERFACE_ACTION_STATE ActionState;
-	uint32_t               field_0x48;
+	uint32_t               InInfluence;
 	uint32_t               field_0x4c;
 	LHReleasedOSFile       file;               /* 0x50 */
 	uint32_t               IsSpecificPlayback; /* 0x15c */
@@ -218,8 +218,20 @@ public:
 	CHand* GetRenderHand() { return hand.Get(); }
 	// BW1W120 inlined BW1M119 01079860
 	GInterfaceStatus* GetStatus() { return status; }
+	// BW1W120 inlined BW1M119 01023a00
+	INTERFACE_ACTION_STATE GetActionState() const { return ActionState; }
+	// BW1W120 inlined BW1M119 01018b30
+	uint32_t IsInInfluence() const { return InInfluence; }
+	// BW1W120 inlined BW1M119 0143c0b0
+	LHPlayer* GetLHPlayer() { return player; }
+	// BW1W120 inlined BW1M119 01080130
+	GInterfaceCollide* GetCollide() { return &Collide; }
+	// BW1W120 inlined BW1M119 01365320
+	LHCoord* GetScreenCursorXY() { return &ScreenCursorXY; }
 	// BW1W120 inlined BW1M119 014f3b00
 	HAND_STATE GetHandState() { return HandState.hand_state; }
+	// BW1W120 inlined BW1M119 01363b60
+	void SetHandState(HAND_STATE state) { HandState.hand_state = state; }
 	// BW1W120 005dad60 BW1M119 013742f0
 	void StartPlayBack(char* path, uint32_t task, bool32_t without_hand_modify);
 	// BW1W120 005d0610 BW1M119 01086440

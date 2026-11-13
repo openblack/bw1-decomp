@@ -76,6 +76,8 @@ public:
 #endif
 	// BW1W120 00734a30 BW1M119 0153da00
 	static uint32_t IsALaternWithinDistance(MapCoords coords, float max_dist);
+	// BW1W120 007349e0 BW1M119 01090430
+	static void SetLanternsOn(bool on);
 
 	// BW1W120 00734800 BW1M119 0153e060
 	void SetToZero();

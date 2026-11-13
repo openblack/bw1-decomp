@@ -818,6 +818,8 @@ public:
 	// BW1W120 00479670 BW1M119 011df1c0
 	static int __stdcall CreatureBubbleCallbackStub(int index, unsigned long user, LH3DColor* color, wchar_t** text,
 	                                                float* scale, GatheringText** font);
+	// BW1W120 inlined BW1M119 01281ec0
+	GAlignment* GetAlignment() { return alignment; }
 
 	// Constructors
 
