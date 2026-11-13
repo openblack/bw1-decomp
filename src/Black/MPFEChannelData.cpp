@@ -1083,8 +1083,7 @@ void MPFEData::D_PlayerLeft(LH_USER_ID id, wchar_t* name)
 	}
 	if (player->IsTeamLeader)
 	{
-		for (LHLinkedNode<TeamEnums*>* node = Data.TeamJoinRequests.GetStart(); node != NULL;
-		     node = node->next.Get())
+		for (LHLinkedNode<TeamEnums*>* node = Data.TeamJoinRequests.GetStart(); node != NULL; node = node->next.Get())
 		{
 			if (player->Team == *node->payload)
 			{
