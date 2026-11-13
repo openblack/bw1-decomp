@@ -577,12 +577,6 @@ struct SetupSlider : public SetupControl
 	float GetValue(float min_value, float max_value) { return value * (max_value - min_value) + min_value; }
 };
 
-#if defined(VERSION_BW1WCI)
-#define SETUP_LIST_LABEL_LENGTH 0x200
-#else
-#define SETUP_LIST_LABEL_LENGTH 0x100
-#endif
-
 struct SetupList : public SetupControl
 {
 	typedef uint32_t(__stdcall* ListBoxDrawFunc)(SetupList* list, int index, int x_min, int y_min, int x_max, int y_max,
@@ -595,7 +589,11 @@ struct SetupList : public SetupControl
 	int  PrevSelectedIndex;
 	int  NumItems; /* 0x250 */
 	int  Capacity;
-	char16_t (*item_labels)[SETUP_LIST_LABEL_LENGTH];
+#if defined(VERSION_BW1WCI)
+	char16_t (*item_labels)[0x200];
+#else
+	char16_t (*item_labels)[0x100];
+#endif
 	int*             ItemHeights;
 	void**           TagData;
 	uint32_t*        ItemData;

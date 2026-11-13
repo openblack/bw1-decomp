@@ -50,12 +50,10 @@
 #define ORIGINAL_LINE(line) ((line) - ((line) < 100 ? 0 : (line) < 800 ? 4 : 2))
 #endif
 
-#define MPFE_CHANNEL_SELECTOR_COLOUR         0xe0e0e0
-#define MPFE_CHANNEL_SELECTOR_JOIN_DELAY     5000
-#define MPFE_CREATE_GAME_MAX_NAME_LENGTH     64
-#define MPFE_CREATE_GAME_MAX_PASSWORD_LENGTH 16
-#define MPFE_CREATE_GAME_MIN_PLAYERS         2
-#define MPFE_CREATE_GAME_MAX_PLAYERS         8
+#define MPFE_CHANNEL_SELECTOR_COLOUR     0xe0e0e0
+#define MPFE_CHANNEL_SELECTOR_JOIN_DELAY 5000
+#define MPFE_CREATE_GAME_MIN_PLAYERS     2
+#define MPFE_CREATE_GAME_MAX_PLAYERS     8
 
 enum MPFE_CHANNEL_SELECTOR_CONTROL_ID
 {
@@ -811,10 +809,7 @@ void MPFEChannelSelector::RefreshChannelList()
 		ChannelList->ScrollPosition = scrollPosition;
 	}
 	list = ChannelList;
-	list->ScrollPosition =
-		list->ScrollPosition > 0
-			? (list->ScrollPosition < list->MaxScrollPosition ? list->ScrollPosition : list->MaxScrollPosition)
-			: 0;
+	list->ScrollPosition = list->ScrollPosition > 0 ? min(list->ScrollPosition, list->MaxScrollPosition) : 0;
 	if (Instance.ChannelList->SelectedIndex == -1)
 	{
 		Instance.PlayerList->DeleteAll();
@@ -948,8 +943,8 @@ void MPFECreateGame::InitControls()
 
 void MPFECreateGame::CopyToChannelSelector()
 {
-	NameEdit->label[MPFE_CREATE_GAME_MAX_NAME_LENGTH] = L'\0';
-	PasswordEdit->label[MPFE_CREATE_GAME_MAX_PASSWORD_LENGTH] = L'\0';
+	NameEdit->label[64] = L'\0';
+	PasswordEdit->label[16] = L'\0';
 	MPFEChannelSelector::Instance.NameEdit->SetText(NameEdit->label);
 	MPFEChannelSelector::Instance.PasswordEdit->SetText(PasswordEdit->label);
 	ChannelNameChanged = true;

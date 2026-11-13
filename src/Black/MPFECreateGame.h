@@ -7,8 +7,6 @@
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 #include "MPFELogin.h"     /* For class MPFELoginDatabase */
 
-// Forward Declares
-
 struct SetupBigButton;
 struct SetupCheckBox;
 struct SetupEdit;

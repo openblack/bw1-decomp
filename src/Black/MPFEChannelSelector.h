@@ -67,8 +67,6 @@ public:
 	// BW1W120 00628380 BW1M119 013a6a20
 	~MPFEChannelSelector();
 
-	// Static methods
-
 	// BW1W120 00629130 BW1M119 013a50a0
 	static void __stdcall ControlCallback(int message, SetupBox* box, SetupControl* control, int data1, int data2);
 
