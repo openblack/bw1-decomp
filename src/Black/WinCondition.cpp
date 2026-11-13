@@ -115,13 +115,13 @@ void SetupWinConditions(std::string file_name)
 			}
 			MPFEData::Data.Conditions[i].SetTarget(WinConditionSettings::DefaultTargets[i]);
 			MPFEData::Data.ActiveDialog->ConditionEnabled[i] = false;
-			MPFEData::Data.ActiveDialog->ConditionCheckBoxes[i]->style = 0;
+			MPFEData::Data.ActiveDialog->ConditionCheckBoxes[i]->style = BBSTYLE_CHECK_BOX_OFF;
 			MPFEData::Data.ActiveDialog->ConditionList->SelectedIndex = -1;
 			MPFEData::Data.ActiveDialog->SelectedCondition = NULL;
 			MPFEData::Data.ActiveDialog->ConditionIncreaseButton->Hide(true);
 			MPFEData::Data.ActiveDialog->ConditionDecreaseButton->Hide(true);
 			MPFEData::Data.ActiveDialog->ConditionValueText->Hide(true);
-			if (MPFEData::Data.IsHost && WinConditionSettings::DefaultTargets[i] != -1)
+			if (MPFEData::Data.IsHost && WinConditionSettings::DefaultTargets[i] != WIN_CONDITION_TARGET_UNAVAILABLE)
 			{
 				MPFEData::Data.ActiveDialog->ConditionList->AddString(
 					HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(i + 1), 0, 0, 0);
