@@ -107,6 +107,8 @@ public:
 
 	// BW1W120 00779af0 BW1M119 0116b890
 	int GetSpaceInStore();
+	// BW1W120 00779b20 BW1M119 0116b7d0
+	uint32_t GetWoodNeedToProduce();
 	// BW1W120 00779b60 BW1M119 0116b720
 	float GetDesireToBeSupplied();
 	// BW1W120 00779b90 BW1M119 0116b630

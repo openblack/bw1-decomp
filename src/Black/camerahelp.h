@@ -8,6 +8,8 @@
 
 #include "CameraHelpTypes.h" /* For enum CH_ANIMTYPE, enum KEYALIGN */
 
+#define CAMERA_HELP_MOUSE_TYPE_NONE 3
+
 // Forward Declares
 
 struct LHPoint;

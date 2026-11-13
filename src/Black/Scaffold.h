@@ -175,6 +175,8 @@ public:
 	void SetToZero();
 	// BW1W120 006e8860 BW1M119 0114b700
 	void ForceBuildBuilding(GPlayer* player);
+	// BW1W120 006e9d10 BW1M119 01149150
+	int GetScaffoldValue();
 	// BW1W120 006e9d40 BW1M119 01149010
 	void SetScaffoldValue(uint32_t value);
 	// BW1W120 006ea950 BW1M119 01147a60
