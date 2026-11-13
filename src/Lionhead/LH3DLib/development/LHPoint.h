@@ -248,6 +248,21 @@ struct LHPoint
 			*this *= size / (float)sqrt(x * x + y * y + z * z);
 		}
 	}
+	// Inliner IL size: 127
+	// BW1W120 inlined BW1M119 inlined
+	void SetLength(float length)
+	{
+		float px = x;
+		float py = y;
+		float pz = z;
+		if (px != 0.0f || py != 0.0f || pz != 0.0f)
+		{
+			float scale = length / (float)sqrt(pz * pz + py * py + px * px);
+			x = scale * px;
+			y = scale * py;
+			z = scale * pz;
+		}
+	}
 	// BW1W120 00460710 BW1M119 inlined
 	float Normalise()
 	{
@@ -263,6 +278,28 @@ struct LHPoint
 		x = scale * px;
 		y = scale * py;
 		z = scale * pz;
+		return length;
+	}
+	// Inliner IL size: 142
+	// BW1W120 inlined BW1M119 0108a7a0 (LHCombined Release)
+	float Normalize()
+	{
+		float px = x;
+		float py = y;
+		float pz = z;
+		float length;
+		if (px == 0.0f && py == 0.0f && pz == 0.0f)
+		{
+			length = 0.0f;
+		}
+		else
+		{
+			length = sqrt(pz * pz + py * py + px * px);
+			float scale = 1.0f / length;
+			x = scale * px;
+			y = scale * py;
+			z = scale * pz;
+		}
 		return length;
 	}
 	// BW1W120 inlined BW1M119 inlined

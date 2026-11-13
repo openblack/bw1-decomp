@@ -893,6 +893,14 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005957EB, call_rel32(0x004017F9)),  # GlobalGameList
     (0x00595ADA, call_indirect(0x008A903C)),  # GlobalGameList: __imp__DirectXSetupGetVersion
     (0x00595BFA, call_indirect(0x008A97C4)),  # GlobalGameList: __imp__LoadImageA@4
+    (0x005B02AB, call_rel32(0x004017F9)),  # HandStateCamera
+    (0x005B0BEB, call_rel32(0x004017F9)),  # HandStateCitadel
+    (0x005B13CB, call_rel32(0x004017F9)),  # HandStateCreature
+    (0x005B3A2B, call_rel32(0x004017F9)),  # HandStateHolding
+    (0x005B57CB, call_rel32(0x004017F9)),  # HandStateMultiPickUp
+    (0x005B74EB, call_rel32(0x004017F9)),  # HandStatePlayAnim
+    (0x005B779B, call_rel32(0x004017F9)),  # HandStateTotem
+    (0x005B7DCB, call_rel32(0x004017F9)),  # HandStateTug
     (0x005C533B, call_rel32(0x004017F9)),  # HelpSystem
     (0x005C557B, call_rel32(0x004017F9)),  # HelpSystem
     (0x005C577A, call_indirect(0x008A95B0)),  # HelpSystem: __imp__GetNextMail_LHMail__QAEPAULHMailEmail__XZ@4
@@ -1837,6 +1845,41 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005991CA, call_filler(0x004034F9, 0x00)),  # GlobalGameList
     (0x005AFFA8, copy_run(0x0059C182)),  # GStates
     (0x005B3359, jmp_run(0x005AFFA8)),  # GStates
+    (0x005B3853, jmp_run(0x005B3359)),  # HandStateCamera
+    (0x005B387B, jmp_run(0x005B3853)),  # HandStateCamera
+    (0x005B38B3, jmp_run(0x005B387B)),  # HandStateCamera
+    (0x005B4193, jmp_run(0x005B38B3)),  # HandStateCitadel
+    (0x005B41BB, jmp_run(0x005B4193)),  # HandStateCitadel
+    (0x005B41D9, jmp_run(0x005B41BB)),  # HandStateCitadel
+    (0x005B42C3, copy_run(0x005B41D9)),  # HandStateCitadel
+    (0x005B4918, jmp_run(0x005B42C3)),  # HandStateCitadel
+    (0x005B4973, jmp_run(0x005B4918)),  # HandStateCreature
+    (0x005B49B2, jmp_run(0x005B4973)),  # HandStateCreature
+    (0x005B4D79, jmp_run(0x005B49B2)),  # HandStateCreature
+    (0x005B6049, copy_run(0x005B4D79)),  # HandStateCreature
+    (0x005B6065, copy_run(0x005B6049)),  # HandStateCreature
+    (0x005B6FD3, jmp_run(0x005B6F87)),  # HandStateHolding
+    (0x005B6FFB, jmp_run(0x005B6FD3)),  # HandStateHolding
+    (0x005B7011, jmp_run(0x005B6FFB)),  # HandStateHolding
+    (0x005B7031, jmp_run(0x005B7011)),  # HandStateHolding
+    (0x005B8D12, jmp_run(0x005B7031)),  # HandStateMultiPickUp
+    (0x005B8D9B, jmp_run(0x005B8D12)),  # HandStateMultiPickUp
+    (0x005B9151, jmp_run(0x005B8D9B)),  # HandStateMultiPickUp
+    (0x005B9195, jmp_run(0x005B9151)),  # HandStateMultiPickUp
+    (0x005B91B4, jmp_run(0x005B9195)),  # HandStateMultiPickUp
+    (0x005BAA93, jmp_run(0x005B9431)),  # HandStatePlayAnim
+    (0x005BAABB, jmp_run(0x005BAA93)),  # HandStatePlayAnim
+    (0x005BAAE8, copy_run(0x005BAABB)),  # HandStatePlayAnim
+    (0x005BAC04, copy_run(0x005BAAE8)),  # HandStatePlayAnim
+    (0x005BAC52, jmp_run(0x005BAC04)),  # HandStateTotem
+    (0x005BAD6B, copy_run(0x005BAC52)),  # HandStateTotem
+    (0x005BB311, jmp_run(0x005BAD6B)),  # HandStateTotem
+    (0x005BB373, jmp_run(0x005BB311)),  # HandStateTug
+    (0x005BB39B, jmp_run(0x005BB373)),  # HandStateTug
+    (0x005BB3B9, jmp_run(0x005BB39B)),  # HandStateTug
+    (0x005BB636, jmp_run(0x005BB3B9)),  # HandStateTug
+    (0x005BC424, copy_run(0x005BB636)),  # HandStateTug
+    (0x005BC458, jmp_run(0x005BC424)),  # HandStateTug
     (0x005C891B, jmp_run(0x005C88C5)),  # HelpSystem
     (0x005C8943, copy_run(0x005C891B)),  # HelpSystem
     (0x005C8A09, copy_run(0x005C8943)),  # HelpSystem

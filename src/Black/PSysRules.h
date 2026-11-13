@@ -1396,6 +1396,12 @@ public:
 	void UpdateBaseAndTopPoints() const;
 	// BW1WCI 006e7780 BW1MCI119 014c0590
 	void UpdateDebrisAtoms(AtomCollection* collection) const;
+	// BW1WCI 006e7e80 BW1MCI119 014bf730
+	void UpdateFlyingAtoms(AtomCollection* collection) const;
+	// BW1WCI 006e7b00 BW1MCI119 014c00a0
+	void CreatePretendObjects(AtomCollection* collection) const;
+	// BW1WCI 006e6e40 BW1MCI119 014c09d0
+	void UpdateGameObjectSearch(AtomCollection* collection) const;
 #endif
 };
 static_assert(sizeof(UR_Tornado::CollectionData) == 0x74, "Data type is of wrong size");

@@ -1286,9 +1286,9 @@ Black/GSFunctions.cpp:
 
 Black/GSLobbybox.cpp:
 	.text       start:0x0059C820 end:0x005A05F0
-	.rdata      start:0x00905A18 end:0x00905A50
+	.rdata      start:0x00905A18 end:0x00905A44
 	.CRT$XCU    start:0x00A46AEC end:0x00A46AF8 align:4
-	.data       start:0x00C70860 end:0x00C70B68
+	.data       start:0x00C70860 end:0x00C709A8
 	.bss        start:0x00D8A160 end:0x00D8A170
 
 Black/GStates.cpp:
@@ -1298,57 +1298,81 @@ Black/GStates.cpp:
 
 Black/HandStateCamera.cpp:
 	.text       start:0x005B3830 end:0x005B4170 align:16
-	.rdata      start:0x00905A50 end:0x00905A70
+	.rdata      start:0x00905A44 end:0x00905A70
+	.rdata$r    start:0x00A31108 end:0x00A31154
 	.CRT$XCU    start:0x00A46B04 end:0x00A46B10 align:4
+	.data       start:0x00C709A8 end:0x00C709C6
 	.bss        start:0x00D94EB0 end:0x00D94EBC
 
 Black/HandStateCitadel.cpp:
 	.text       start:0x005B4170 end:0x005B4950
 	.rdata      start:0x00905A70 end:0x00905A9C
+	.rdata$r    start:0x00A31158 end:0x00A311A4
 	.CRT$XCU    start:0x00A46B10 end:0x00A46B1C align:4
+	.data       start:0x00C709C8 end:0x00C709E7
 	.bss        start:0x00D94EBC end:0x00D94EC8
 
 Black/HandStateCreature.cpp:
-	.text       start:0x005B4950 end:0x005B60D0
+	.text       start:0x005B4950 end:0x005B60A0
 	.rdata      start:0x00905A9C end:0x00905AF8
-	.CRT$XCU    start:0x00A46B1C end:0x00A46B2C align:4
-	.bss        start:0x00D94EC8 end:0x00D94EE8
+	.rdata$r    start:0x00A311A8 end:0x00A311F4
+	.CRT$XCU    start:0x00A46B1C end:0x00A46B28 align:4
+	.data       start:0x00C709E8 end:0x00C70A54
+	.bss        start:0x00D94EC8 end:0x00D94ED4
 
 Black/HandStateGrain.cpp:
 	.text       start:0x005B60D0 end:0x005B6FB0
 	.rdata      start:0x00905AF8 end:0x00905B28
 	.CRT$XCU    start:0x00A46B2C end:0x00A46B40 align:4
-	.bss        start:0x00D94EE8 end:0x00D94F18
+	.data       start:0x00C70A54 end:0x00C70A9D
+	.bss        start:0x00D94ED8 end:0x00D94EF8
 
 Black/HandStateHolding.cpp:
 	.text       start:0x005B6FB0 end:0x005B8D00
 	.rdata      start:0x00905B28 end:0x00905B6C
+	.rdata$r    start:0x00A31260 end:0x00A31294
 	.CRT$XCU    start:0x00A46B40 end:0x00A46B54 align:4
-	.bss        start:0x00D94F18 end:0x00D95018
+	.data       start:0x00C70AA0 end:0x00C70AA8
+	.bss        start:0x00D94EF8 end:0x00D94F30
 
 Black/HandStateMultiPickUp.cpp:
 	.text       start:0x005B8D00 end:0x005B91F0
 	.rdata      start:0x00905B6C end:0x00905B90
+	.rdata$r    start:0x00A31298 end:0x00A312E4
 	.CRT$XCU    start:0x00A46B54 end:0x00A46B58 align:4
+	.data       start:0x00C70AA8 end:0x00C70AD3
+	.bss        start:0x00D94F30 end:0x00D94F34
 
 Black/HandStateNormal.cpp:
 	.text       start:0x005B91F0 end:0x005BAA70
 	.rdata      start:0x00905B90 end:0x00905BBC
 	.CRT$XCU    start:0x00A46B58 end:0x00A46B74 align:4
-	.bss        start:0x00D95018 end:0x00D95028
+	.data       start:0x00C70AD4 end:0x00C70B06
+	.bss        start:0x00D94F38 end:0x00D95028
 
 Black/HandStatePlayAnim.cpp:
-	.text       start:0x005BAA70 end:0x005BB350
-	.rdata      start:0x00905BBC end:0x00905BEC
-	.CRT$XCU    start:0x00A46B74 end:0x00A46B84 align:4
-	.bss        start:0x00D95028 end:0x00D95038
+	.text       start:0x005BAA70 end:0x005BAC40
+	.rdata      start:0x00905BBC end:0x00905BE0
+	.rdata$r    start:0x00A31338 end:0x00A31384
+	.CRT$XCU    start:0x00A46B74 end:0x00A46B80 align:4
+	.data       start:0x00C70B28 end:0x00C70B48
+	.bss        start:0x00D95028 end:0x00D95034
+
+Black/HandStateTotem.cpp:
+	.text       start:0x005BAC40 end:0x005BB350
+	.rdata      start:0x00905BE0 end:0x00905C04
+	.rdata$r    start:0x00A31388 end:0x00A313D4
+	.CRT$XCU    start:0x00A46B80 end:0x00A46B84 align:4
+	.data       start:0x00C70B48 end:0x00C70B65
+	.bss        start:0x00D95034 end:0x00D95038
 
 Black/HandStateTug.cpp:
 	.text       start:0x005BB350 end:0x005BC490
-	.rdata      start:0x00905BEC end:0x00905C38
+	.rdata      start:0x00905C04 end:0x00905C38
+	.rdata$r    start:0x00A313D8 end:0x00A31424
 	.CRT$XCU    start:0x00A46B84 end:0x00A46B90 align:4
-	.data       start:0x00C70B68 end:0x00C70B84
-	.bss        start:0x00D95038 end:0x00D95048
+	.data       start:0x00C70B68 end:0x00C70B83
+	.bss        start:0x00D95038 end:0x00D95044
 
 Black/helpdude.cpp:
 	.text       start:0x005BC490 end:0x005C6010

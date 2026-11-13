@@ -32,11 +32,27 @@ public:
 	MapCoords& GetPos() { return pos; }
 	// BW1W120 inlined BW1M119 010b9c30
 	Object* GetObjectA() { return object; }
+	// BW1W120 inlined BW1M119 01095120
+	Bubble* GetBubble() { return bubble; }
+	// BW1W120 inlined BW1M119 01344a30
+	float GetBubbleDistance() const { return BubbleDistance; }
 	// BW1W120 inlined BW1M119 01360430
 	void ClearObject()
 	{
 		object = NULL;
 		ObjectDistance = FLT_MAX;
+	}
+	// BW1W120 inlined BW1M119 013603e0
+	void ClearBubble()
+	{
+		bubble = NULL;
+		BubbleDistance = FLT_MAX;
+	}
+	// BW1W120 inlined BW1M119 01360390
+	void ClearLeash()
+	{
+		leash = NULL;
+		LeashDistance = FLT_MAX;
 	}
 
 	// Implicit destructor, only Base is destroyed.

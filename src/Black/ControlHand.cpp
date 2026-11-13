@@ -14,12 +14,12 @@
 
 CHand::CHand(LHPoint point, GInterfaceStatus* status)
 {
-	Point0x48d4 = LHPoint();
-	Point0x48e0 = LHPoint();
-	Point0x48ec = LHPoint();
-	Point0x48d4.SetNull();
-	Point0x48e0.SetNull();
-	Point0x48ec.SetNull();
+	ThrowSpin = LHPoint();
+	ThrowPos = LHPoint();
+	ThrowAngles = LHPoint();
+	ThrowSpin.SetNull();
+	ThrowPos.SetNull();
+	ThrowAngles.SetNull();
 
 	HandFx = PSysHandFX::CreateHandFX();
 
@@ -40,9 +40,9 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 	field_0x498c = 0;
 	field_0x4990 = '\x01';
 
-	field_0x4874 = '\0';
-	field_0x486c = 0;
-	field_0x4870 = 0;
+	UseDrawScreenPos = false;
+	DrawScreenPos.x = 0;
+	DrawScreenPos.y = 0;
 	field_0x4844 = 0;
 	HandOrientation = 0;
 
@@ -51,28 +51,28 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 	field_0x483c = 0;
 	field_0x4848 = 0;
 	InterfaceStatus = status;
-	field_0x4854 = 10.0f;
+	DistanceFromView = 10.0f;
 	field_0x48b4 = 0;
 	CurrentState = HAND_STATES_NORMAL;
 	field_0x4840 = 1;
-	HeldObject = 0;
+	HeldObject = NULL;
 	field_0x48fc = 0;
-	field_0x4908 = 0;
+	Tugging = false;
 	field_0x4918 = 0;
 	field_0x48f8 = 0;
 	field_0x49c0 = 0;
-	field_0x49b4 = 0;
-	field_0x49b8 = 0;
-	field_0x49bc = 0;
-	field_0x491c = '\0';
+	InteractCreature = NULL;
+	InteractCreature3d = NULL;
+	CreatureBeingGivenTo = NULL;
+	InFixedPosAnimation = false;
 
 	DynamicShadow->CreateDynamicShadow();
 
-	field_0x4834 = 1.0f;
+	DistanceScale = 1.0f;
 	field_0x499c = 0;
 	field_0x49a0 = 0;
 	field_0x49a4 = 0;
-	field_0x49b0 = 0.13f;
+	BlendTime = 0.13f;
 	field_0x4998 = 1;
 	MaxDistanceFromUser = 1800.0f;
 	field_0x49a8 = 0;
@@ -153,8 +153,8 @@ void CHand::SetSize(float size)
 {
 	CLAMP(size, 0.05f, 2.0f);
 	Size1 = size;
-	float fVar1 = 3.2f; /* = FUN_0046c040() */
-	Size2 = fVar1 / field_0x8c * field_0x4834 * Size1;
+	float standardSize = 3.2f;
+	Size2 = standardSize / field_0x8c * DistanceScale * Size1;
 }
 
-void HandStateInvisible::Update(float, LHMatrix*) {}
+void HandStateInvisible::Update(float dt, LHMatrix* buffer) {}

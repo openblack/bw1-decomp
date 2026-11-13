@@ -175,6 +175,8 @@ public:
 	void StopAllImmersion();
 	// BW1W120 005d8a80 BW1M119 0136f1a0
 	void StopImmersion(IMMERSION_EFFECT_TYPE type);
+	// BW1W120 005d8610 BW1M119 0136f3c0
+	bool32_t IsImmersionPlaying(IMMERSION_EFFECT_TYPE type);
 	// BW1W120 005d0460 BW1M119 01360640
 	bool32_t IsLastRClickedPosNear(const MapCoords& pos, float distance) const;
 	// BW1W120 005d56c0 BW1M119 0107d9c0
@@ -220,6 +222,8 @@ public:
 	GInterfaceStatus* GetStatus() { return status; }
 	// BW1W120 inlined BW1M119 014f3b00
 	HAND_STATE GetHandState() { return HandState.hand_state; }
+	// BW1W120 inlined BW1M119 01023a00
+	INTERFACE_ACTION_STATE GetActionState() const { return ActionState; }
 	// BW1W120 005dad60 BW1M119 013742f0
 	void StartPlayBack(char* path, uint32_t task, bool32_t without_hand_modify);
 	// BW1W120 005d0610 BW1M119 01086440

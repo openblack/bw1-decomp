@@ -36,7 +36,7 @@ public:
 	GGuidance*         guidance;
 	SPELL_SEED_TYPE    LastSpellGained;
 	uint32_t           field_0x38;
-	uint32_t           field_0x3c;
+	Object*            ObjectInteract;
 	long               MultiPickupTicks;
 	LHPoint            ThrowVelocity;
 	LHPoint            ThrowAngularVelocity;

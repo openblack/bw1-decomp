@@ -15,9 +15,67 @@ public:
 	ValueType SecondDerivative; /* 0x8 for float */
 };
 
-// The float instantiation is BW1W120 005b3760 (BW1M119 01342c10).
+// BW1W120 005b3760 BW1M119 01342c10
 template <class T>
-void t_spline(GJArray<KPSI_Element<T> >& elements, long count, float first_derivative, float last_derivative);
+inline void t_spline(GJArray<KPSI_Element<T> >& elements, long count, float first_derivative, float last_derivative)
+{
+	GJArray<T> u;
+	u.SetSize(count - 1);
+	if (first_derivative > 0.99e30)
+	{
+		elements[0].SecondDerivative = 0.0f;
+		u[0] = 0.0f;
+	}
+	else
+	{
+		elements[0].SecondDerivative = -0.5f;
+		float h = elements.Entry(1).T - elements.Entry(0).T;
+		T     slope = (elements.Entry(1).Value - elements.Entry(0).Value) * (1.0f / h);
+		u.Entry(0) = (slope - first_derivative) * (3.0f / h);
+	}
+	for (long i = 1; i < count - 1; i++)
+	{
+		float sig =
+			(elements.Entry(i).T - elements.Entry(i - 1).T) / (elements.Entry(i + 1).T - elements.Entry(i - 1).T);
+		T p = elements.Entry(i - 1).SecondDerivative * sig + 2.0f;
+		elements.Entry(i).SecondDerivative = p * (1.0f / (sig - 1.0f));
+		elements[i].SecondDerivative = 1.0f / elements[i].SecondDerivative;
+		float hNext = elements.Entry(i + 1).T - elements.Entry(i).T;
+		T     slopeNext = (elements.Entry(i + 1).Value - elements.Entry(i).Value) * (1.0f / hNext);
+		float hPrevious = elements.Entry(i).T - elements.Entry(i - 1).T;
+		T     slopePrevious = (elements.Entry(i).Value - elements.Entry(i - 1).Value) * (1.0f / hPrevious);
+		u.Entry(i) = slopeNext - slopePrevious;
+		float span = elements.Entry(i + 1).T - elements.Entry(i - 1).T;
+		u.Entry(i) = u.Entry(i) * (6.0f / span) - u.Entry(i - 1) * sig;
+		T divisor = p;
+		u.Entry(i) *= 1.0f / divisor;
+	}
+	float qn;
+	T     un;
+	if (last_derivative > 0.99e30)
+	{
+		qn = 0.0f;
+		un = 0.0f;
+	}
+	else
+	{
+		qn = 0.5f;
+		float h = elements.Entry(count - 1).T - elements.Entry(count - 2).T;
+		T     slope = (elements.Entry(count - 1).Value - elements.Entry(count - 2).Value) * (1.0f / h);
+		un = last_derivative;
+		un -= slope;
+		un *= 3.0f / h;
+	}
+	elements.Entry(count - 1).SecondDerivative = elements.Entry(count - 2).SecondDerivative * qn + 1.0f;
+	elements[count - 1].SecondDerivative = 1.0f / elements[count - 1].SecondDerivative;
+	elements.Entry(count - 1).SecondDerivative =
+		elements.Entry(count - 1).SecondDerivative * (un - u.Entry(count - 2) * qn);
+	for (long k = count - 2; k >= 0; k--)
+	{
+		elements.Entry(k).SecondDerivative =
+			elements.Entry(k).SecondDerivative * elements.Entry(k + 1).SecondDerivative + u.Entry(k);
+	}
+}
 
 // Evaluates the cubic spline through the key points at t. The float instantiation is BW1W120 006a7eb0
 // (BW1M119 01343220).

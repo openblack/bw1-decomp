@@ -1085,46 +1085,71 @@ Black/GStates.cpp:
 
 Black/HandStateCamera.cpp:
 	.text       start:0x00574050 end:0x00574940 align:16
-	.rdata      start:0x0083E864 end:0x0083E884
+	.rdata      start:0x0083E858 end:0x0083E884
+	.CRT$XCU    start:0x008F6784 end:0x008F678C align:4
+	.data       start:0x00B1CFD8 end:0x00B1CFF6
+	.bss        start:0x00C35008 end:0x00C35014
 
 Black/HandStateCitadel.cpp:
 	.text       start:0x00574940 end:0x005750F0
 	.rdata      start:0x0083E884 end:0x0083E8B0
+	.CRT$XCU    start:0x008F678C end:0x008F6794 align:4
+	.data       start:0x00B1CFF8 end:0x00B1D017
+	.bss        start:0x00C35014 end:0x00C35020
 
 Black/HandStateCreature.cpp:
 	.text       start:0x005750F0 end:0x00576810
 	.rdata      start:0x0083E8B0 end:0x0083E908
+	.CRT$XCU    start:0x008F6794 end:0x008F679C align:4
+	.data       start:0x00B1D018 end:0x00B1D084
+	.bss        start:0x00C35020 end:0x00C3502C
 
 Black/HandStateGrain.cpp:
 	.text       start:0x00576810 end:0x005776A0
 	.rdata      start:0x0083E908 end:0x0083E938
-	.CRT$XCU    start:0x008F67A8 end:0x008F67AC align:4
-	.bss        start:0x00C35040 end:0x00C35070
+	.CRT$XCU    start:0x008F679C end:0x008F67AC align:4
+	.data       start:0x00B1D084 end:0x00B1D0CD
+	.bss        start:0x00C35030 end:0x00C35050
 
 Black/HandStateHolding.cpp:
 	.text       start:0x005776A0 end:0x00579390
 	.rdata      start:0x0083E938 end:0x0083E97C
+	.CRT$XCU    start:0x008F67AC end:0x008F67BC align:4
+	.data       start:0x00B1D0D0 end:0x00B1D0D8
+	.bss        start:0x00C35050 end:0x00C35088
 
 Black/HandStateMultiPickUp.cpp:
 	.text       start:0x00579390 end:0x00579840
 	.rdata      start:0x0083E97C end:0x0083E9A0
+	.data       start:0x00B1D0D8 end:0x00B1D103
+	.bss        start:0x00C35088 end:0x00C3508C
 
 Black/HandStateNormal.cpp:
 	.text       start:0x00579840 end:0x0057B080
 	.rdata      start:0x0083E9A0 end:0x0083E9CC
+	.CRT$XCU    start:0x008F67BC end:0x008F67D4 align:4
+	.data       start:0x00B1D104 end:0x00B1D136
+	.bss        start:0x00C35090 end:0x00C35180
 
 Black/HandStatePlayAnim.cpp:
 	.text       start:0x0057B080 end:0x0057B220
 	.rdata      start:0x0083E9CC end:0x0083E9F0
+	.CRT$XCU    start:0x008F67D4 end:0x008F67DC align:4
+	.data       start:0x00B1D158 end:0x00B1D178
+	.bss        start:0x00C35180 end:0x00C3518C
 
 Black/HandStateTotem.cpp:
 	.text       start:0x0057B220 end:0x0057B900
 	.rdata      start:0x0083E9F0 end:0x0083EA14
+	.data       start:0x00B1D178 end:0x00B1D195
+	.bss        start:0x00C3518C end:0x00C35190
 
 Black/HandStateTug.cpp:
 	.text       start:0x0057B900 end:0x0057C9F0
-	.rdata      start:0x0083EA14 end:0x00853258
-	.bss        start:0x00C35190 end:0x00C36C00
+	.rdata      start:0x0083EA14 end:0x0083EA48
+	.CRT$XCU    start:0x008F67DC end:0x008F67E4 align:4
+	.data       start:0x00B1D198 end:0x00B1D1B3
+	.bss        start:0x00C35190 end:0x00C3519C
 
 Black/helpdude.cpp:
 	.text       start:0x0057C9F0 end:0x00584D10
