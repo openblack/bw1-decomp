@@ -1652,6 +1652,16 @@ add_relocations:
     type: x86_abs32
     target: '?InfoList@GPotInfo@@2PAV1@A'
     addend: 0x180c
+# WinCondition.cpp's std::getline: the catch funclet's continuation address and the catch handler entry in its
+# .xdata$x handler table point inside the function (dtk leaves both unrelocated).
+  - source: 0x0077DAA9
+    type: x86_abs32
+    target: '?getline@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@1@AAV21@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@D@Z'
+    addend: 0x24E
+  - source: 0x00A3C67C
+    type: x86_abs32
+    target: '?getline@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@1@AAV21@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@D@Z'
+    addend: 0x226
 timestamp: "2003-03-06T21:30:42+00:00"
 force_size: 0x008C4000
 linker_version: "6.0"

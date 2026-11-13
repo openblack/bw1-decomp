@@ -1546,6 +1546,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/WeatherRain.cpp"),
             GameCodeObject(NonMatching, "Black/WeatherThing.cpp"),
             GameCodeObject(NonMatching, "Black/Whale.cpp"),
+            GameCodeObject(NonMatching, "Black/WinCondition.cpp"),
             GameCodeObject(NonMatching, "Black/Windmill.cpp"),
             GameCodeObject(NonMatching, "Black/Wonder.cpp"),
             GameCodeObject(NonMatching, "Black/Workshop.cpp"),
