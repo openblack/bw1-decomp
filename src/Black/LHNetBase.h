@@ -7,6 +7,7 @@
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUser.h>      /* For struct LH_USER_ID */
 
 class LHLobby;
+class LHLobbyChannel;
 class LHSession;
 class LHTransport;
 class LHTransportInfo;
@@ -33,9 +34,9 @@ public:
 	uint32_t           field_0xc;
 	LHReplayPacketInfo ReplayInfo; /* 0x10 */
 	LHTransport*       Transport;
-	uint32_t           field_0x20;
+	LHLobbyChannel*    Channel;
 	LHSession*         Session;
-	LHLobby*           field_0x28;
+	LHLobby*           CurrentLobby;
 	LHNetUser*         User;
 	LH_NET_STATE       State;
 	uint32_t           field_0x34;

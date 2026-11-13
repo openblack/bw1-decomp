@@ -127,6 +127,10 @@ public:
 	void UpdateAll();
 	// BW1W120 0061d930 BW1M119 013953d0
 	void UpdateTeams();
+	// BW1W120 0061ccb0 BW1M119 013961b0
+	void UpdateClans();
+	// BW1W120 0061d780 BW1M119 01395950
+	void UpdateCaption();
 	// BW1W120 0061bc40 BW1M119 01397a10
 	void ReInit();
 	// BW1W120 0061b910 BW1M119 01397ae0

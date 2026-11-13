@@ -1624,13 +1624,14 @@ Black/MPFEAlexDialog.cpp:
 	.text       start:0x00614CE0 end:0x0061AFC0
 	.CRT$XCU    start:0x009B6ACC end:0x009B6AD0 align:4
 	.data       start:0x00BE39B8 end:0x00BE39BC
-	.bss        start:0x00D2DE24 end:0x00D2F578
+	.bss        start:0x00D2DE24 end:0x00D2DE30
 
 Black/MPFEChannelData.cpp:
-	.text       start:0x0061AFE0 end:0x0061EA20
+	.text       start:0x0061AFC0 end:0x0061EAA0
 	.rdata      start:0x00920670 end:0x00920690
-	.CRT$XCU    start:0x009B6AD8 end:0x009B6ADC align:4
+	.CRT$XCU    start:0x009B6AD0 end:0x009B6ADC align:4
 	.data       start:0x00BE3A18 end:0x00BE3A6C
+	.bss        start:0x00D2DE30 end:0x00D2F5B8
 
 Black/MPFEChannelDetails.cpp:
 	.text       start:0x0061EC10 end:0x0061EEF0

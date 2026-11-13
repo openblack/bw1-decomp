@@ -52,6 +52,9 @@ public:
 	virtual void SetInvite(bool invite);
 #endif
 
+	// BW1W120 00c59b24
+	static BWLan Instance;
+
 	// Non-virtual methods
 
 	// BW1W120 00440c20 BW1M119 011898e0

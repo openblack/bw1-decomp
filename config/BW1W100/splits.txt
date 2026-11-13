@@ -1490,13 +1490,14 @@ Black/MorphableObject.cpp:
 Black/MPFEAlexDialog.cpp:
 	.text       start:0x005D27E0 end:0x005D8410
 	.CRT$XCU    start:0x008F6A84 end:0x008F6A88 align:4
-	.bss        start:0x00C5FF14 end:0x00C61668
+	.bss        start:0x00C5FF14 end:0x00C5FF20
 
 Black/MPFEChannelData.cpp:
-	.text       start:0x005D8430 end:0x005DBA90
+	.text       start:0x005D8410 end:0x005DBAA0
 	.rdata      start:0x0086DF70 end:0x0086DF90
-	.CRT$XCU    start:0x008F6A90 end:0x008F6A94 align:4
+	.CRT$XCU    start:0x008F6A88 end:0x008F6A94 align:4
 	.data       start:0x00B210E8 end:0x00B2113C
+	.bss        start:0x00C5FF20 end:0x00C616A0
 
 Black/MPFEChannelDetails.cpp:
 	.text       start:0x005DBAA0 end:0x005DBC00

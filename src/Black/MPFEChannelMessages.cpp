@@ -298,10 +298,10 @@ void MPFEReplyToJoinMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDetails
 		wchar_t   reply;
 		TeamEnums team;
 		swscanf(message, L"%c%u", &reply, &team);
-		unsigned long* request = NULL;
-		for (LHLinkedListIterator<unsigned long*> it = MPFEData::Data.TeamJoinRequests.GetStart(); it; it++)
+		TeamEnums* request = NULL;
+		for (LHLinkedListIterator<TeamEnums*> it = MPFEData::Data.TeamJoinRequests.GetStart(); it; it++)
 		{
-			if (*it.Get() == (unsigned long)team)
+			if (*it.Get() == team)
 			{
 				request = it.Get();
 			}
