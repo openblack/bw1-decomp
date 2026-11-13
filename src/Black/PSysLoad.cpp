@@ -114,7 +114,7 @@ bool32_t AtomCore::Load(GameOSFile& file)
 		LoadIt(file, Flags);
 		file.ReadSafe(DrawPosInfo);
 		file.ReadSafe(LastDrawPosInfo);
-		LoadIt(file, field_0x108);
+		LoadIt(file, PreviousFrameTime);
 		LoadIt(file, FrameTime);
 		file.ReadSafe(AnimInfo);
 		LoadIt(file, GravityScale);
@@ -202,10 +202,10 @@ bool32_t RenderParticleMist::Load(GameOSFile& file)
 	{
 		LoadSafe(file, Creator);
 		LoadIt(file, field_0x1c);
-		LoadIt(file, field_0x20);
-		LoadIt(file, field_0x2c);
-		LoadIt(file, field_0x30);
-		LoadIt(file, field_0x3c);
+		LoadIt(file, TakeRatioFromMatrix);
+		LoadIt(file, LightMap.Frame);
+		LoadIt(file, LightMap.Position);
+		LoadIt(file, LightMap.Intensity);
 		return true;
 	}
 	return false;
@@ -216,13 +216,13 @@ bool32_t ParticleLightMap::Load(GameOSFile& file)
 	if (RenderParticle::Load(file))
 	{
 		LoadSafe(file, Creator);
-		LoadIt(file, field_0x1c);
-		LoadIt(file, field_0x20);
+		LoadIt(file, RandJitter);
+		LoadIt(file, UseRandJitter);
 		LoadIt(file, field_0x24);
 		LoadIt(file, field_0x28);
-		LoadIt(file, field_0x34);
-		LoadIt(file, field_0x38);
-		LoadIt(file, field_0x44);
+		LoadIt(file, LightMap.Frame);
+		LoadIt(file, LightMap.Position);
+		LoadIt(file, LightMap.Intensity);
 		return true;
 	}
 	return false;
@@ -233,7 +233,7 @@ bool32_t Particle3DObj::Load(GameOSFile& file)
 	if (RenderParticle::Load(file))
 	{
 		LoadSafe(file, Creator);
-		LoadIt(file, field_0x24);
+		LoadIt(file, Flags);
 		return true;
 	}
 	return false;
@@ -244,10 +244,10 @@ bool32_t Particle3DAnim::Load(GameOSFile& file)
 	if (RenderParticle::Load(file))
 	{
 		LoadSafe(file, Creator);
-		LoadIt(file, field_0x1c);
-		LoadIt(file, field_0x20);
-		LoadIt(file, field_0x24);
-		LoadIt(file, field_0x28);
+		LoadIt(file, FrameToStartBlend);
+		LoadIt(file, FrameToEndBlend);
+		LoadIt(file, UseGlobalAlpha);
+		LoadIt(file, CycleTime);
 		return true;
 	}
 	return false;
@@ -257,12 +257,12 @@ bool32_t Particle3DAnimWithCamera::Load(GameOSFile& file)
 {
 	if (Particle3DAnim::Load(file))
 	{
-		LoadSafe(file, field_0x30);
+		LoadSafe(file, CameraCreator);
 		LoadIt(file, field_0x34);
-		LoadIt(file, field_0x35);
-		LoadIt(file, field_0x36);
-		LoadIt(file, field_0x38);
-		LoadIt(file, field_0x3c);
+		LoadIt(file, CameraActive);
+		LoadIt(file, CameraPositioned);
+		LoadIt(file, PauseBeforePlay);
+		LoadIt(file, PauseFinished);
 		return true;
 	}
 	return false;
@@ -272,12 +272,12 @@ bool32_t Particle3DObjAnimTextured::Load(GameOSFile& file)
 {
 	if (Particle3DObj::Load(file))
 	{
-		LoadIt(file, field_0x28);
-		LoadIt(file, field_0x2c);
-		LoadIt(file, field_0x30);
-		LoadIt(file, field_0x31);
+		LoadIt(file, TextureHeight);
+		LoadIt(file, TextureWidth);
+		LoadIt(file, SlideU);
+		LoadIt(file, SlideV);
 		LoadIt(file, field_0x32);
-		LoadIt(file, field_0x34);
+		LoadIt(file, NumFrames);
 		return true;
 	}
 	return false;
@@ -322,7 +322,7 @@ bool32_t RenderParticleGameObject::Load(GameOSFile& file)
 {
 	if (RenderParticle::Load(file))
 	{
-		file.ReadSafe(field_0x18);
+		file.ReadSafe(GameObject);
 		LoadSafe(file, field_0x20);
 		LoadIt(file, field_0x24);
 		LoadIt(file, field_0x54);
@@ -363,20 +363,20 @@ bool32_t Chain::Load(GameOSFile& file)
 {
 	if (PSysBase::Load(file))
 	{
-		LoadSafe(file, field_0x14);
+		LoadSafe(file, Creator);
 		LoadIt(file, field_0x18);
-		LoadIt(file, field_0x1c);
+		LoadIt(file, FrameHeight);
 		file.ReadIt(field_0x20);
 		LoadIt(file, field_0x24);
 		LoadIt(file, field_0x28);
 		LoadIt(file, field_0x2c);
 		LoadIt(file, field_0x30);
 		LoadIt(file, field_0x34);
-		LoadIt(file, field_0x38);
-		LoadIt(file, field_0x3c);
+		LoadIt(file, UseDynamicLighting);
+		LoadIt(file, ScrollOffset);
 		file.ReadSafe(Joints);
-		LoadIt(file, field_0x4c);
-		LoadIt(file, field_0x40);
+		LoadIt(file, ScrollSpeed);
+		LoadIt(file, JointsUpdated);
 		return true;
 	}
 	return false;
@@ -1256,8 +1256,8 @@ void Particle3DSprite::ResolveLoad()
 
 void ParticleLightMap::ResolveLoad()
 {
-	if (Bitmap == NULL && Creator != NULL)
+	if (LightMap.Bitmap == NULL && Creator != NULL)
 	{
-		Bitmap = Creator->GetBitmap();
+		LightMap.Bitmap = (GJBitmap*)Creator->GetBitmap();
 	}
 }

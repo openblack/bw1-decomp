@@ -6,6 +6,8 @@
 
 #include "Particle3DObj.h" /* For struct Particle3DObj */
 
+#define PARTICLE_ANIM_TEXTURE_SIZE 256
+
 // Forward Declares
 
 class Base;
@@ -14,12 +16,12 @@ class GameOSFile;
 class Particle3DObjAnimTextured : public Particle3DObj
 {
 public:
-	uint32_t field_0x28;
-	uint32_t field_0x2c;
-	uint8_t  field_0x30;
-	uint8_t  field_0x31;
-	uint8_t  field_0x32;
-	uint32_t field_0x34;
+	long    TextureHeight;
+	long    TextureWidth;
+	bool    SlideU;
+	bool    SlideV;
+	uint8_t field_0x32;
+	long    NumFrames;
 
 	// Override methods
 
@@ -29,6 +31,8 @@ public:
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cc160 BW1M119 0148c280
 	virtual bool32_t Save(GameOSFile& file);
+	// BW1W120 0067a530 BW1M119 013f8520
+	virtual void DrawAt(const DrawData& data);
 
 	// BW1W120 006c7df0 BW1M119 014854a0
 	Particle3DObjAnimTextured();

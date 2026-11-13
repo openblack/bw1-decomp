@@ -1985,17 +1985,18 @@ Black/PSysBeam.cpp:
 	.text       start:0x0068C3C0 end:0x0068CCD0
 
 Black/PSysCreature.cpp:
-	.text       start:0x0068CCD0 end:0x0068E650
+	.text       start:0x0068CCD0 end:0x0068E620
 	.rdata      start:0x0098DBC8 end:0x0098DC30
-	.CRT$XCU    start:0x00A36DBC end:0x00A36DD0 align:4
-	.data       start:0x00C72DC8 end:0x00C72DF0
-	.bss        start:0x00DCF574 end:0x00DCF688
+	.CRT$XCU    start:0x00A36DBC end:0x00A36DCC align:4
+	.data       start:0x00C72DC8 end:0x00C72DE8
+	.bss        start:0x00DCF574 end:0x00DCF590
 
 Black/PSysDraw.cpp:
-	.text       start:0x0068E650 end:0x00692380
+	.text       start:0x0068E620 end:0x00692380
 	.rdata      start:0x0098DC30 end:0x0098DC48
-	.CRT$XCU    start:0x00A36DD0 end:0x00A36DEC align:4
-	.bss        start:0x00DCF688 end:0x00DCF6A0
+	.CRT$XCU    start:0x00A36DCC end:0x00A36DEC align:4
+	.data       start:0x00C72DE8 end:0x00C72DEC
+	.bss        start:0x00DCF590 end:0x00DCF69C
 
 Black/PSysEditor.cpp:
 	.text       start:0x00692380 end:0x00692560

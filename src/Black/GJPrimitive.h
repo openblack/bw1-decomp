@@ -11,6 +11,7 @@
 
 // Forward Declares
 
+struct LH3DMaterial;
 struct LH3DPrimitive;
 
 struct UVCoord
@@ -40,13 +41,13 @@ public:
 	// BW1W120 0057d630 BW1M119 012c36d0
 	void AddPoly(LH3DPrimitive* primitive, long triangle);
 
-	uint32_t                field_0x0;
+	LH3DMaterial*           Material;
 	uint32_t                field_0x4;
 	GJVector<LHPoint>       Positions; /* 0x8 */
-	GJVector<LH3DColor>     field_0x1c;
-	GJVector<LH3DColor>     field_0x30;
+	GJVector<LH3DColor>     Colours;
+	GJVector<LH3DColor>     Speculars;
 	GJVector<UVCoord>       UVs; /* 0x44 */
-	GJVector<UVCoord>       field_0x58;
+	GJVector<UVCoord>       SecondUVs;
 	GJVector<SLONGTriangle> Triangles; /* 0x6c */
 	GJVector<LHPoint>       Normals;   /* 0x80 */
 };

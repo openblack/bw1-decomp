@@ -4,8 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-
+#include "PSysLightMap.h"       /* For class PSysLightMap */
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
 // Forward Declares
@@ -19,15 +18,11 @@ class ParticleLightMap : public RenderParticle
 {
 public:
 	ParticleCreator* Creator;
-	float            field_0x1c;
-	uint32_t         field_0x20;
+	float            RandJitter;
+	bool32_t         UseRandJitter;
 	uint32_t         field_0x24;
 	uint32_t         field_0x28;
-	uint8_t          field_0x2c[0x8];
-	uint16_t         field_0x34;
-	LHPoint          field_0x38;
-	uint32_t         field_0x44;
-	void*            Bitmap;
+	PSysLightMap     LightMap;
 
 	// Override methods
 

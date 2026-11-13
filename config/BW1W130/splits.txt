@@ -1247,7 +1247,7 @@ Black/GJSpline.cpp:
 	.text       start:0x005935B0 end:0x00593DE0
 	.rdata      start:0x009053C8 end:0x009053D0 align:8
 	.CRT$XCU    start:0x00A46AB0 end:0x00A46AB8 align:4
-	.data       start:0x00C7066C end:0x00C7068C
+	.data       start:0x00C7066C end:0x00C70694
 	.bss        start:0x00D876A0 end:0x00D876B0
 
 Black/GJVnoise.cpp:
@@ -2179,14 +2179,14 @@ Black/PSysCreature.cpp:
 	.text       start:0x0067C6C0 end:0x0067E040
 	.rdata      start:0x00963550 end:0x009635B8
 	.CRT$XCU    start:0x00A47330 end:0x00A47344 align:4
-	.bss        start:0x00DCF354 end:0x00DCF468
+	.bss        start:0x00DCF354 end:0x00DCF370
 
 Black/PSysDraw.cpp:
 	.text       start:0x0067E040 end:0x00681DA0
 	.rdata      start:0x009635B8 end:0x009635D0
 	.CRT$XCU    start:0x00A47344 end:0x00A47364 align:4
-	.data       start:0x00C82F28 end:0x00C82F30
-	.bss        start:0x00DCF468 end:0x00DCF480
+	.data       start:0x00C82F28 end:0x00C82F2C
+	.bss        start:0x00DCF370 end:0x00DCF47C
 
 Black/PSysEditor.cpp:
 	.text       start:0x00681DA0 end:0x00681F80

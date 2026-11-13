@@ -210,6 +210,16 @@ block_relocations:
   - source: 0x00871378
 # start_system's object heap size 0xc00000 is an immediate, not a pointer into AttributeAbodeType::ValueNames.
   - source: 0x00647A47
+# The 0x00FF0000 colour masks in PSysDraw.cpp's RenderParticleMist, Particle3DSprite and RenderParticleGJMesh::DrawAt
+# read as addresses inside NewCols.
+  - source: 0x0067EFFA
+  - source: 0x0067F909
+  - source: 0x00680A9D
+  - source: 0x00680D06
+  - source: 0x00680F5B
+  - source: 0x00680F6F
+  - source: 0x00681187
+  - source: 0x006811A1
 
 add_relocations:
 # ioinit.obj: data references dtk attributes to the neighbouring symbol.

@@ -172,6 +172,16 @@ block_relocations:
   - source: 0x00CA46BC
 # LH3DWater::g_color_water's initial 0x00FFFFFF reads as an address inside NewCols.
   - source: 0x00CACEBC
+# The 0x00FF0000 channel masks in RenderParticleMist::DrawAt, Particle3DSprite::DrawAt and
+# RenderParticleGJMesh::DrawAt read as addresses inside NewCols.
+  - source: 0x0068F5DA
+  - source: 0x0068FEE9
+  - source: 0x0069107D
+  - source: 0x006912E6
+  - source: 0x0069153B
+  - source: 0x0069154F
+  - source: 0x00691767
+  - source: 0x00691781
 
 
   - source: 0x0088ACA9

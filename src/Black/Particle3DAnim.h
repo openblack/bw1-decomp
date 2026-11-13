@@ -14,14 +14,16 @@ class GameThing;
 class LH3DObject;
 class ParticleCreator;
 
+#define PARTICLE_3D_ANIM_MIN_BLEND 0.0001f
+
 class Particle3DAnim : public RenderParticle
 {
 public:
 	ParticleCreator* Creator;
-	uint32_t         field_0x1c;
-	float            field_0x20;
-	uint8_t          field_0x24;
-	uint32_t         field_0x28;
+	float            FrameToStartBlend;
+	float            FrameToEndBlend;
+	bool             UseGlobalAlpha;
+	long             CycleTime;
 	LH3DObject*      Object3D;
 
 	// Override methods
@@ -43,6 +45,11 @@ public:
 
 	// BW1W120 006c8540 BW1M119 01484380
 	Particle3DAnim();
+
+	// Non-virtual methods
+
+	// BW1W120 006c85f0 BW1M119 01484210
+	long GetCycleTimeFromFrame(long frame);
 };
 
 #endif /* BW1_DECOMP_PARTICLE_3D_ANIM_INCLUDED_H */

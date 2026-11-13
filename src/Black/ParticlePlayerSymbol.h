@@ -10,12 +10,13 @@
 
 class Base;
 class GameOSFile;
+class PlayerSymbolSprite;
 
 class ParticlePlayerSymbol : public RenderParticle
 {
 public:
-	uint32_t field_0x18;
-	uint32_t field_0x1c;
+	PlayerSymbolSprite* Sprite;
+	uint32_t            field_0x1c;
 
 	// Override methods
 

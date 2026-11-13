@@ -11,8 +11,8 @@ class LH3DMist : public LH3DStaticObject
 public:
 	uint32_t  field_0x80;
 	uint32_t  field_0x84;
-	float     field_0x88;
-	float     field_0x8c;
+	float     Scale;
+	float     Ratio;
 	uint32_t  field_0x90;
 	LH3DMist* next;
 	uint32_t  field_0x98;

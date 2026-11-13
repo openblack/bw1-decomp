@@ -1,0 +1,7 @@
+#ifndef BW1_DECOMP_PARTICLE_DRAW_CONSTANTS_INCLUDED_H
+#define BW1_DECOMP_PARTICLE_DRAW_CONSTANTS_INCLUDED_H
+
+const float OneOverTextureSize = 1.0f / 256.0f;
+const float OneOverMaxAlpha = 1.0f / 255.0f;
+
+#endif /* BW1_DECOMP_PARTICLE_DRAW_CONSTANTS_INCLUDED_H */
