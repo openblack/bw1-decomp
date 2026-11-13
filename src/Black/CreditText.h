@@ -15,6 +15,10 @@ public:
 	static LH3DColor NextColor;
 	// BW1W120 00cadb68
 	static CreditTextItem* FirstItem;
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00d25c28 BW1MCI119 null
+	static float ClipAlpha;
+#endif
 
 	float           X;
 	float           Y;
@@ -37,6 +41,8 @@ public:
 		TargetAlpha = 0.0f;
 		Alpha = 0.0f;
 	}
+	// BW1W120 0050b2b0 BW1M119 0101abb0
+	static void DrawAll();
 	// BW1W120 0050afa0 BW1M119 012aac10
 	static void SetClip(float x, float y, float width, float height, float fade_time);
 	// BW1W120 0050b040 BW1M119 012aaba0

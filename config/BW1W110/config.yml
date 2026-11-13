@@ -27,6 +27,8 @@ block_relocations:
   - source: 0x008260AE
 # Bubble::UpdateAndDraw's 0x7f7f7f colour mask is an immediate, not a pointer into LH3DPrimitive's code.
   - source: 0x0057337D
+# VillagerName::Add's colour blend term 0x7f8000 is an immediate, not a pointer into LH3DMesh::ComputeBoundingBox.
+  - source: 0x00756854
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x007FB462
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside LH3DObject's code.
@@ -61,6 +63,8 @@ block_relocations:
   - source: 0x00C1F954
 # MPFEMessageObject's type descriptor name contains a word that reads as a code address.
   - source: 0x009BCF2C
+# MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
+  - source: 0x005FC9B8
 
 # LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
   - source: 0x00829555
@@ -1695,6 +1699,11 @@ add_relocations:
     type: x86_abs32
     target: '?CountryCodes@@3PAY02DA'
     addend: 0x2d
+# MOV ESI is the end of GPotInfo::InfoList for its destructor loop, not PowerSpin's data.
+  - source: 0x00662447
+    type: x86_abs32
+    target: '?InfoList@GPotInfo@@2PAV1@A'
+    addend: 0x180c
 force_size: 0x00902a0b
 linker_version: "6.0"
 safe_disc_version: "2.30.33"

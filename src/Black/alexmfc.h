@@ -203,9 +203,12 @@ struct SetupThing
 	static bool32_t MouseCaptured;
 	// Set by CMouse::ProcessButtons on a double click (LHMouse button events 0x10 and 0x20).
 	// BW1W120 00c4cd10
-	static int DoubleClicked;
+	static bool32_t DoubleClicked;
 	// BW1W120 00c4cd14
-	static int RightClicked;
+	static bool32_t RightClicked;
+	// Set with DoubleClicked by either button's double click.
+	// BW1W120 00c4cd18
+	static bool32_t AnyDoubleClicked;
 	// Set while a pressed control is being dragged with the left button held.
 	// BW1W120 00c4ccc8
 	static bool Dragging;
@@ -421,7 +424,7 @@ struct SetupBox
 	SetupControl*    HoverWidget; /* 0xbc */
 	int              HoldColour;
 	float            Alpha;
-	uint32_t         field_0xc8;
+	bool32_t         KeysPassThrough;
 
 	// Static methods
 
@@ -586,7 +589,11 @@ struct SetupList : public SetupControl
 	int  PrevSelectedIndex;
 	int  NumItems; /* 0x250 */
 	int  Capacity;
+#if defined(VERSION_BW1WCI)
+	char16_t (*item_labels)[0x200];
+#else
 	char16_t (*item_labels)[0x100];
+#endif
 	int*             ItemHeights;
 	void**           TagData;
 	uint32_t*        ItemData;
@@ -1259,7 +1266,12 @@ struct SetupCheckBox : public SetupButton
 	// Constructors
 
 	// BW1W120 00410f10 BW1M119 0111a4f0
+#if defined(VERSION_BW1WCI)
+	SetupCheckBox(int id, int x, int y, bool radio_button, int style, const char16_t* label, int size,
+	              int text_size = GetMidTextSize());
+#else
 	SetupCheckBox(int id, int x, int y, bool radio_button, int style, const char16_t* label, int size);
+#endif
 };
 
 #endif /* BW1_DECOMP_ALEXMFC_INCLUDED_H */

@@ -228,6 +228,8 @@ public:
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00429510 BW1MCI119 01197ea0
 	void StartScriptMusic(MUSIC_TYPE type, unsigned long start_chunk);
+	// BW1WCI 0042b950 BW1MCI119 0119bf70
+	static bool32_t IsHelpSpritesSoundBank(AUDIO_SFX_BANK_TYPE type);
 #endif
 	// BW1W120 00428250 BW1M119 01183210
 	void RegistrySetup();
@@ -310,6 +312,8 @@ public:
 	void SetPlayPosition(GameThingWithPos* thing, const MapCoords& coords);
 	// BW1W120 004298f0 BW1M119 01186340
 	bool32_t IsMusicThingFinished(GameThingWithPos* thing);
+	// BW1W120 00429910 BW1M119 01186250
+	void RestartMusicThing(GameThingWithPos* thing);
 	// BW1W120 00429700 BW1M119 0108ead0
 	void ValidateThingMusic();
 	// BW1W120 00429790 BW1M119 0108ec10
@@ -339,8 +343,12 @@ public:
 	float GetGSFXSampleMaxDistance(uint32_t sample, LH_AudioBank* bank) const;
 	// BW1W120 0042a210 BW1M119 01187ba0
 	void StopPlayingSoundEffect(uint32_t sample, uint32_t object, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a280 BW1M119 01187a90
+	bool32_t IsSamplePlaying(unsigned long object, unsigned long sample, AUDIO_SFX_BANK_TYPE type) const;
 	// BW1W120 0042a330 BW1M119 011877f0
 	void ReleaseLoopOnSoundEffect(Base* param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a5f0 BW1M119 011873a0
+	void SetGameSFX(bool32_t enabled);
 	// BW1W120 inlined BW1M119 011878b0
 	LH_AudioBank* GetBank(AUDIO_SFX_BANK_TYPE type) const { return AudioBanks[type]; }
 };

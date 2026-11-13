@@ -214,7 +214,7 @@ def opcode_names(c2):
 def compile_logged(unit):
     """Compile the unit with a logging copy of its compiler. Returns (log, listing, c2 copy)."""
     stem = Path(mp.compile_command(unit)[1]).stem
-    log, _, work, c2 = c2_patch.compile_logged(unit, WORK, HOOKS, STRINGS, ["/FAs", f"/Fa{WORK}/{stem}.asm"])
+    log, _, work, c2 = c2_patch.compile_logged(unit, WORK, HOOKS, STRINGS, ["/FA", f"/Fa{WORK}/{stem}.asm"])
     return log, (work / f"{stem}.asm").read_text(errors="replace"), c2
 
 

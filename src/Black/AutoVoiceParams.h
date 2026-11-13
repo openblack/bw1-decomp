@@ -43,6 +43,10 @@ struct AutoVoiceParams
 	int   field_0x34;
 	int   field_0x38;
 	int   field_0x3c;
+	float field_0x40;
+	float field_0x44;
+	float field_0x48;
+	float field_0x4c;
 
 	// Constructors
 
@@ -67,12 +71,17 @@ struct AutoVoiceParams
 		field_0x3c = 2;
 	}
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 inlined
+	~AutoVoiceParams() {}
+#endif
+
 	// Non-virtual methods
 
 	// BW1W120 00428850 BW1M119 011855e0
 	void CalcKey(VoiceKey* key, float time, float param_3, short* samples, int sample_count, float sample_rate,
 	             float* buffer, int buffer_size);
 };
-static_assert(sizeof(AutoVoiceParams) == 0x40, "Data type is of wrong size");
+static_assert(sizeof(AutoVoiceParams) == 0x50, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_AUTO_VOICE_PARAMS_INCLUDED_H */

@@ -69,6 +69,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00774230 BW1M119 010215e0
+	bool32_t Process();
 	// BW1W120 00774400 BW1M119 015ab6e0
 	void SetProperties(float temperature, float rainfall, float snowfall, float overcast, float fall_speed);
 	// BW1W120 00774460 BW1M119 015ab680
@@ -81,8 +83,12 @@ public:
 	void SetMovement(const LHPoint& velocity);
 	// BW1W120 00774550 BW1M119 015ab470
 	void SetMoveTo(const LHPoint& point);
+	// BW1W120 00774340 BW1M119 015ab920
+	void SetSize(float inner_radius, float outer_radius);
 	// BW1W120 00774370 BW1M119 015ab790
 	void UpdateStats();
+	// BW1W120 007745a0 BW1M119 015ab3d0
+	float GetSpeed();
 	// BW1W120 inlined BW1M119 014fd440
 	bool32_t IsFinished() const { return Storm == NULL; }
 };

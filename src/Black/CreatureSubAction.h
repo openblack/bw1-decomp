@@ -26,13 +26,13 @@ class CreatureSubAction : public Base
 public:
 	CREATURE_SUB_STATE_ACTIONS Action;
 	CreatureBelief*            Belief;
-	uint32_t                   field_0x10;
-	LHPoint                    field_0x14;
-	float                      field_0x20;
-	uint32_t                   field_0x24;
-	int                        field_0x28;
-	GameThing*                 field_0x2c;
-	unsigned long              field_0x30;
+	uint32_t                   Integer;
+	LHPoint                    Point;
+	float                      Float;
+	uint32_t                   Spell;
+	uint32_t                   SecondInteger;
+	GameThing*                 OrderTarget;
+	unsigned long              OrderAction;
 	int (Creature::*LookFunction)(MapCoords* destination);
 	void (Creature::*FaceFunction)();
 
@@ -42,7 +42,7 @@ public:
 	CreatureSubAction()
 	{
 		Belief = NULL;
-		field_0x2c = NULL;
+		OrderTarget = NULL;
 	}
 };
 static_assert(sizeof(CreatureSubAction) == 0x60, "Data type is of wrong size");
@@ -54,7 +54,7 @@ static_assert(sizeof(CreatureSubAction) == 0x60, "Data type is of wrong size");
 class CreatureSubActionAgenda : public Base
 {
 public:
-	uint32_t          field_0x8;
+	bool32_t          IsNewSubAction;
 	uint32_t          CurrentSubAction;
 	int               SubActionState;
 	uint32_t          NumSubActions;
@@ -64,13 +64,13 @@ public:
 	CreatureSubAction SubActions[0x20];
 	Creature*         creature; /* 0xc28 */
 	bool32_t          GoesOutsideConfinedArea;
-	uint32_t          field_0xc30;
-	uint32_t          field_0xc34;
+	bool32_t          PotResourcesTransferred;
+	int               TurnsInPart;
 	uint32_t          field_0xc38;
 	bool32_t          AskedToPlayGame;
 	Creature*         Partner;
 	GInterfaceStatus* HandStatus;
-	uint32_t          field_0xc48;
+	float             GestureFraction;
 
 	// Constructors
 
@@ -88,16 +88,34 @@ public:
 	}
 	// BW1W120 inlined BW1M119 0129acc0
 	unsigned long GetSubActionIndex() const { return CurrentSubAction; }
+	// BW1W120 inlined BW1M119 inlined
+	CreatureSubAction* GetCurrentSubAction() { return &SubActions[CurrentSubAction]; }
 	// BW1W120 inlined BW1M119 01299260
 	CreatureBelief* GetObjectArgument() { return SubActions[CurrentSubAction].Belief; }
 	// BW1W120 inlined BW1M119 01249450
-	LHPoint* GetPositionArgument() { return &SubActions[CurrentSubAction].field_0x14; }
+	LHPoint* GetPositionArgument() { return &SubActions[CurrentSubAction].Point; }
+	// BW1W120 inlined BW1M119 012992c0
+	uint32_t GetIntegerArgument() { return SubActions[CurrentSubAction].Integer; }
+	// BW1W120 inlined BW1M119 01299320
+	float GetFloatArgument() { return SubActions[CurrentSubAction].Float; }
+	// BW1W120 inlined BW1M119 01299380
+	uint32_t GetSpellArgument() { return SubActions[CurrentSubAction].Spell; }
+	// BW1W120 004ff5b0 BW1M119 inlined
+	void ResetPart();
+	// BW1W120 004ff570 BW1M119 012903d0
+	bool32_t NextPart(Creature* creature);
+	// BW1W120 004ff540 BW1M119 01290480
+	bool32_t NextIndex();
 	// BW1W120 004ff5c0 BW1M119 012902d0
 	void ClearSubActionAgenda();
 	// BW1W120 004e5940 BW1M119 012702f0
 	bool32_t Save(GameOSFile& file);
 	// BW1W120 004e5c80 BW1M119 0126fdf0
 	bool32_t Load(GameOSFile& file);
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 inlined
+	bool32_t CheckGoesOutsideConfinedArea(SubArgument* argument);
+#endif
 	// BW1W120 004ff240 BW1M119 012908a0
 	void AddSubAction(CREATURE_SUB_STATE_ACTIONS action, SubArgument* argument,
 	                  int (Creature::*look_function)(MapCoords* destination), void (Creature::*face_function)());

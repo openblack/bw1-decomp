@@ -14,6 +14,7 @@
 class Fixed;
 class Object;
 struct MapCellIterator;
+struct SafeMapCellIterator;
 struct LH3DColor;
 
 struct MapCell
@@ -44,10 +45,22 @@ struct MapCell
 	Fixed* FindFixedOnMap(Object* param_1);
 	// BW1W120 inlined BW1M119 013dcd10
 	MapCellIterator GetFirstIterator() const;
+	// BW1W120 inlined BW1M119 01029100
+	MapCoords GetMapCoords();
+	// BW1W120 inlined BW1M119 01029d80
+	Object* GetFirstObjectFixed() const { return FirstObjectFixed; }
+	// BW1W120 inlined BW1M119 0117d3e0
+	Object* GetFirstObjectMobile() const { return FirstObjectMobile; }
 	// BW1W120 00601bc0 BW1M119 0111edf0
 	int Collide(COLLIDE_TYPE type);
+	// BW1W120 00601bd0 BW1M119 010345f0
+	int Collide();
+	// BW1W120 00601ce0 BW1M119 01028fe0
+	int Collide(const MapCoords& coords);
 	// BW1W120 00601ea0 BW1M119 01301820
 	bool32_t IsFixed();
+	// BW1W120 00601e00 BW1M119 0102d430
+	bool32_t InBounds() const;
 	// BW1W120 00601d10 BW1M119 01506b50
 	uint32_t CollideWithFixe(const MapCoords& coords);
 	// BW1W120 00601880 BW1M119 015687d0
@@ -62,6 +75,10 @@ struct MapCellIterator
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 010d0fb0
+	Object* operator->() { return object; }
+	// BW1W120 inlined BW1M119 011474a0
+	operator Object*() { return object; }
 	// BW1W120 inlined BW1M119 0102f190
 	void MoveToMobileObsIfNeededAndPoss()
 	{
@@ -85,6 +102,13 @@ inline MapCellIterator MapCell::GetFirstIterator() const
 
 static_assert(sizeof(MapCellIterator) == 0xc, "MapCellIterator size is incorrect");
 
+struct SafeMapCellIterator : public MapCellIterator
+{
+	Object* next;
+};
+
+static_assert(sizeof(SafeMapCellIterator) == 0x10, "SafeMapCellIterator size is incorrect");
+
 class GMap : public Base
 {
 public:
@@ -94,37 +118,17 @@ public:
 	void     CalculateMapInfluence();
 	uint8_t  Dirty : 1; /* 0x8 */
 	uint8_t  Initialised : 1;
-	uint8_t  field_0x9;
-	uint8_t  field_0xa;
-	uint8_t  field_0xb;
+	uint8_t  field_0x9[0x3];
 	uint32_t CellExtentZx[0x2];
-	uint32_t field_0x14;
-	uint32_t field_0x18;
-	uint32_t field_0x1c;
-	uint32_t field_0x20;
-	uint32_t field_0x24;
-	uint32_t field_0x28;
-	uint32_t field_0x2c;
-	uint32_t field_0x30;
-	uint32_t field_0x34;
+	uint32_t field_0x14[0x5];
+	uint32_t BlocksPerCell;
+	uint32_t BlockSize[0x3];
 	uint32_t field_0x38;
-	uint8_t  field_0x3c;
-	uint8_t  field_0x3d;
-	uint8_t  field_0x3e;
-	uint8_t  field_0x3f;
+	uint8_t  field_0x3c[0x4];
 	uint32_t field_0x40;
 	MapCell  cells[0x200][0x200];
 	uint16_t Count0x200044;
-	uint8_t  field_0x200046;
-	uint8_t  field_0x200047;
-	uint8_t  field_0x200048;
-	uint8_t  field_0x200049;
-	uint8_t  field_0x20004a;
-	uint8_t  field_0x20004b;
-	uint8_t  field_0x20004c;
-	uint8_t  field_0x20004d;
-	uint8_t  field_0x20004e;
-	uint8_t  field_0x20004f;
+	uint8_t  field_0x200046[0xa];
 
 	// Override methods
 
@@ -140,8 +144,12 @@ public:
 
 	// BW1W120 006013d0 BW1M119 01562a20
 	void Clean();
+	// BW1W120 00601e80 BW1M119 null
+	static long GetCollideStep();
 	// BW1W120 006016d0 BW1M119 0155b770
 	void UpdateControlMap();
+	// BW1W120 00601770 BW1M119 0155b960
+	void Dump();
 	// BW1W120 00601850 BW1M119 01090d60
 	void CalculateMapInfluenceX();
 	// BW1W120 00612690 BW1M119 0104c5d0

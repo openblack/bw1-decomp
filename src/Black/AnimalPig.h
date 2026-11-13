@@ -45,6 +45,17 @@ public:
 	// BW1W120 0041cd90 BW1M119 010a1f00
 	virtual uint32_t StandAnimation();
 
+	// BW1W120 0041cdb0 BW1M119 null
+	uint32_t StartToSleepAnimation();
+	// BW1W120 0041cdc0 BW1M119 null
+	uint32_t FinishSleepingAnimation();
+	// BW1W120 0041cdd0 BW1M119 null
+	uint32_t StartToSitAnimation();
+	// BW1W120 0041cde0 BW1M119 null
+	uint32_t FinishSittingAnimation();
+	// BW1W120 0041cdf0 BW1M119 null
+	uint32_t SitAnimation();
+
 	// BW1W120 inlined BW1M119 inlined
 	Pig() {}
 	// BW1W120 inlined BW1M119 inlined

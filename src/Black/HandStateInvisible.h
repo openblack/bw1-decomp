@@ -5,24 +5,18 @@
 
 #include "HandState.h" /* For struct HandState */
 
-// Forward Declares
-
 class CHand;
 struct LHMatrix;
 
 class HandStateInvisible : public HandState
 {
 public:
-	// Override methods
-
 	// BW1W120 0046be90 BW1M119 011d11e0
 	virtual void Enter();
 	// BW1W120 0046bed0 BW1M119 011d12b0
 	virtual void Exit();
 	// BW1W120 0046bee0 BW1M119 011d1310
-	virtual void Update(float param_1, LHMatrix* param_2);
-
-	// Constructors
+	virtual void Update(float dt, LHMatrix* buffer);
 
 	// BW1W120 inlined BW1M119 inlined
 	HandStateInvisible(CHand* hand);

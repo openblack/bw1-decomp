@@ -53,12 +53,15 @@ public:
 	// BW1W120 005fa990 BW1M119 013b3d10
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
 	// BW1W120 004e4a20 BW1M119 015ec0b0
-	virtual bool32_t IsAFoodPileOutsideStoragePit(Creature* param_1);
+	virtual bool32_t IsAFoodPileOutsideStoragePit(Creature* creature);
 	// BW1W120 005faab0 BW1M119 013b3ef0
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 
 	// BW1W120 005fa950 BW1M119 013b4160
 	MagicFood();
+	// BW1W120 005fa9f0 BW1M119 013b4030
+	MagicFood(const MapCoords& coords, GPlayer* player, uint32_t resource, MultiMapFixed* parent,
+	          bool32_t create_reaction);
 };
 
 #endif /* BW1_DECOMP_MAGIC_FOOD_INCLUDED_H */

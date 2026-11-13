@@ -2987,7 +2987,7 @@ bool UR_WillowWisp::ModifyAtomCollection(AtomCollection* collection) const
 			{
 				core->BaseScale *= parent->GetCombinedScale();
 			}
-			core->Flag0 = DrawOnFirstUpdate != false;
+			core->DrawOnFirstUpdate = DrawOnFirstUpdate != false;
 			core->StartSound(SoundEmission);
 		}
 	}

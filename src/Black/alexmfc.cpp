@@ -62,8 +62,9 @@ bool32_t       SetupThing::IMEActive;
 int            SetupThing::LeftClickCount;
 int            SetupThing::RightClickCount;
 bool32_t       SetupThing::MouseCaptured;
-int            SetupThing::DoubleClicked;
-int            SetupThing::RightClicked;
+bool32_t       SetupThing::DoubleClicked;
+bool32_t       SetupThing::RightClicked;
+bool32_t       SetupThing::AnyDoubleClicked;
 bool           SetupThing::Dragging;
 int            SetupThing::MouseDownX;
 int            SetupThing::MouseDownY;
@@ -438,7 +439,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 			}
 			if (!GGame::g_game->Initialised)
 				LHSys::TheSystem.mouse.ButtonPressed &= ~0x10;
-			SetupThing::DoubleClicked = 0;
+			SetupThing::DoubleClicked = false;
 		}
 
 		if (SetupThing::LeftClickCount)
@@ -1213,8 +1214,8 @@ void SetupList::SetString(int index, const char16_t* text)
 {
 	if (index >= 0 && index < NumItems)
 	{
-		wcsncpy(item_labels[index], text, 255);
-		item_labels[index][255] = 0;
+		wcsncpy(item_labels[index], text, ARRAY_SIZE(item_labels[index]) - 1);
+		item_labels[index][ARRAY_SIZE(item_labels[index]) - 1] = 0;
 		UpdateHeights();
 	}
 }
@@ -1226,7 +1227,7 @@ void SetupList::SetNum(int num)
 	if (num < Capacity / 2 || num > Capacity)
 	{
 		Capacity = num + 16;
-		typedef char16_t Label[256];
+		typedef char16_t Label[ARRAY_SIZE(*item_labels)];
 		Label*           labels = NEW(1365) Label[Capacity];
 		int*             heights = NEW(1366) int[Capacity];
 		uint32_t*        data = NEW(1367) uint32_t[Capacity];
@@ -2509,13 +2510,22 @@ void SetupCheckBox::Draw(bool hovered, bool selected)
 	InnerRect = SetupThing::TextBounds;
 }
 
+#if defined(VERSION_BW1WCI)
+SetupCheckBox::SetupCheckBox(int id, int x, int y, bool radio_button, int style, const char16_t* label, int size,
+                             int text_size)
+#else
 SetupCheckBox::SetupCheckBox(int id, int x, int y, bool radio_button, int style, const char16_t* label, int size)
+#endif
 	: SetupButton(id, x, y, size, size, label, 0)
 {
 	pressed = false;
 	this->style = style;
 	RadioButton = radio_button;
+#if defined(VERSION_BW1WCI)
+	this->text_size = text_size;
+#else
 	text_size = GetMidTextSize();
+#endif
 	text_position = SETUP_TEXT_POSITION_BELOW;
 }
 

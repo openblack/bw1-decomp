@@ -38,6 +38,7 @@ struct LHPoint;
 class Object;
 struct Leash;
 struct LiquidParticleGroup;
+class SpellSeed;
 
 struct GInterfaceLimits
 {
@@ -162,10 +163,20 @@ public:
 	MapCoords& GetHandRenderCollidePos() { return interface_collide.pos; }
 	// BW1W120 005d8a10 BW1M119 0136f240
 	void StartImmersion(IMMERSION_EFFECT_TYPE type, unsigned long iterations);
+	// BW1W120 005d89f0 BW1M119 0136f2e0
+	static void ActualStartImmersion(IMMERSION_EFFECT_TYPE type, unsigned long iterations);
+	// BW1W120 005cee20 BW1M119 010059f0
+	bool32_t InGameEditor() const;
+	// BW1W120 005d0410 BW1M119 013606d0
+	void KeyBoardRepeatSpell();
+	// BW1W120 005d03d0 BW1M119 013607c0
+	void KeyBoardStartSpellSelectionSystem();
 	// BW1W120 005d8af0 BW1M119 0136f110
 	void StopAllImmersion();
 	// BW1W120 005d8a80 BW1M119 0136f1a0
 	void StopImmersion(IMMERSION_EFFECT_TYPE type);
+	// BW1W120 005d8610 BW1M119 0136f3c0
+	bool32_t IsImmersionPlaying(IMMERSION_EFFECT_TYPE type);
 	// BW1W120 005d0460 BW1M119 01360640
 	bool32_t IsLastRClickedPosNear(const MapCoords& pos, float distance) const;
 	// BW1W120 005d56c0 BW1M119 0107d9c0
@@ -211,6 +222,8 @@ public:
 	GInterfaceStatus* GetStatus() { return status; }
 	// BW1W120 inlined BW1M119 014f3b00
 	HAND_STATE GetHandState() { return HandState.hand_state; }
+	// BW1W120 inlined BW1M119 01023a00
+	INTERFACE_ACTION_STATE GetActionState() const { return ActionState; }
 	// BW1W120 005dad60 BW1M119 013742f0
 	void StartPlayBack(char* path, uint32_t task, bool32_t without_hand_modify);
 	// BW1W120 005d0610 BW1M119 01086440
@@ -274,7 +287,7 @@ public:
 	// BW1W120 005d36d0 BW1M119 01365f00
 	void SetRClickedObject(Object* object);
 	// BW1W120 005d3880 BW1M119 01077bf0
-	bool32_t GetSpellSeedInHand();
+	SpellSeed* GetSpellSeedInHand();
 	// BW1W120 005cead0 BW1M119 0109be40
 	void AddToRSystem(LHCoord* coord);
 	// BW1W120 005d27f0 BW1M119 01368340

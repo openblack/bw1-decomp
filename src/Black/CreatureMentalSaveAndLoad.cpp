@@ -24,6 +24,7 @@
 #include "CreatureMental.h"
 #include "CreatureMentalAttributeTest.h"
 #include "CreatureMentalBelief.h"
+#include "CreatureMindPath.h" /* For CREATURE_MIND_PATH */
 #include "CreaturePhysical.h"
 #include "CreatureReceiveSpell.h"
 #include "GJUtils.h" /* For boundf */
@@ -49,7 +50,6 @@
 #define SAVE_SLOT_PATH          "%s\\%i"
 #define CREATURE_PHYSIQUE_PATH  ".\\scripts\\CreatureMind\\Physique%s"
 #define CREATURE_MIND_FILE_PATH ".\\scripts\\CreatureMind\\%s"
-#define CREATURE_MIND_PATH      ".\\Scripts\\CreatureMind"
 
 static float OneOverLogHalf = 1.0f / (float)log(0.5);
 
@@ -107,7 +107,7 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WriteIt(mind->debug.IsProcessing);
 		file.WriteIt(MaxBigSize);
 		file.WriteIt(MaxSmallSize);
-		file.WriteIt(field_0x37c);
+		file.WriteIt(CanGoThroughVortex);
 		if (ReceiveSpell->data[CREATURE_RECEIVE_SPELL_INVISIBLE].State == 0)
 		{
 			FizzSpeed = 0.0f;
@@ -121,8 +121,8 @@ bool32_t Creature::Save(GameOSFile& file)
 		file.WriteIt(FrozAmount);
 		file.WriteIt(IgnoredByVillagers);
 		file.WritePtr(field_0x1078);
-		file.WritePtr(field_0x1084);
-		file.WritePtr(field_0x1088);
+		file.WritePtr(SpotVisual);
+		file.WritePtr(SwapMindEffect);
 		file.WritePtr(ParticleContainer0x107c);
 		file.WritePtr(ParticleContainer0x1080);
 		file.WriteIt(field_0x11d8);
@@ -184,7 +184,7 @@ bool32_t Creature::Save(GameOSFile& file)
 
 bool32_t CreatureSubActionAgenda::Save(GameOSFile& file)
 {
-	file.WriteIt(field_0x8);
+	file.WriteIt(IsNewSubAction);
 	file.WriteIt(CurrentSubAction);
 	file.WriteIt(SubActionState);
 	file.WriteIt(NumSubActions);
@@ -203,20 +203,20 @@ bool32_t CreatureSubActionAgenda::Save(GameOSFile& file)
 		{
 			file.WritePtr(NULL);
 		}
-		file.WriteIt(subAction.field_0x10);
-		file.WriteIt(subAction.field_0x14);
-		file.WriteIt((uint32_t&)subAction.field_0x20);
-		file.WriteIt(subAction.field_0x24);
-		file.WriteIt(subAction.field_0x28);
-		if (subAction.field_0x2c != NULL)
+		file.WriteIt(subAction.Integer);
+		file.WriteIt(subAction.Point);
+		file.WriteIt((uint32_t&)subAction.Float);
+		file.WriteIt(subAction.Spell);
+		file.WriteIt(subAction.SecondInteger);
+		if (subAction.OrderTarget != NULL)
 		{
-			file.WritePtr(subAction.field_0x2c);
+			file.WritePtr(subAction.OrderTarget);
 		}
 		else
 		{
 			file.WritePtr(NULL);
 		}
-		file.WriteIt(subAction.field_0x30);
+		file.WriteIt(subAction.OrderAction);
 	}
 	file.WritePtr(creature);
 	file.WritePtr(Partner);
@@ -225,8 +225,8 @@ bool32_t CreatureSubActionAgenda::Save(GameOSFile& file)
 
 bool32_t CreatureSubActionAgenda::Load(GameOSFile& file)
 {
-	file.ReadIt(field_0x8);
-	field_0x8 = 1;
+	file.ReadIt(IsNewSubAction);
+	IsNewSubAction = true;
 	file.ReadIt(CurrentSubAction);
 	file.ReadIt(SubActionState);
 	SubActionState = 0;
@@ -240,22 +240,22 @@ bool32_t CreatureSubActionAgenda::Load(GameOSFile& file)
 		CreatureSubAction& subAction = SubActions[i];
 		file.ReadIt((uint32_t&)subAction.Action);
 		file.ReadPtr((GameThing**)&subAction.Belief);
-		file.ReadIt(subAction.field_0x10);
-		file.ReadIt(subAction.field_0x14);
-		file.ReadIt((uint32_t&)subAction.field_0x20);
-		file.ReadIt(subAction.field_0x24);
-		file.ReadIt(subAction.field_0x28);
+		file.ReadIt(subAction.Integer);
+		file.ReadIt(subAction.Point);
+		file.ReadIt((uint32_t&)subAction.Float);
+		file.ReadIt(subAction.Spell);
+		file.ReadIt(subAction.SecondInteger);
 		GameThing* thing;
 		file.ReadPtr(&thing);
 		if (thing != NULL)
 		{
-			subAction.field_0x2c = thing;
+			subAction.OrderTarget = thing;
 		}
 		else
 		{
-			subAction.field_0x2c = NULL;
+			subAction.OrderTarget = NULL;
 		}
-		file.ReadIt(subAction.field_0x30);
+		file.ReadIt(subAction.OrderAction);
 	}
 	file.ReadPtr((GameThing**)&creature);
 	file.ReadPtr((GameThing**)&Partner);
@@ -309,7 +309,7 @@ bool32_t Creature::Load(GameOSFile& file)
 		}
 		file.ReadIt(MaxBigSize);
 		file.ReadIt(MaxSmallSize);
-		file.ReadIt(field_0x37c);
+		file.ReadIt(CanGoThroughVortex);
 		file.ReadIt(FizzLocked);
 		file.ReadIt(FizzCurr);
 		file.ReadIt(FizzDest);
@@ -317,8 +317,8 @@ bool32_t Creature::Load(GameOSFile& file)
 		file.ReadIt(FrozAmount);
 		file.ReadIt(IgnoredByVillagers);
 		file.ReadPtr((GameThing**)&field_0x1078);
-		file.ReadPtr((GameThing**)&field_0x1084);
-		file.ReadPtr((GameThing**)&field_0x1088);
+		file.ReadPtr((GameThing**)&SpotVisual);
+		file.ReadPtr((GameThing**)&SwapMindEffect);
 		file.ReadPtr((GameThing**)&ParticleContainer0x107c);
 		file.ReadPtr((GameThing**)&ParticleContainer0x1080);
 		file.ReadIt(field_0x11d8);
@@ -496,7 +496,7 @@ LH3DCreature* Creature::Load3D(char* name)
 		LH3DCreature* creature3d = NEW(577) LH3DCreature(NULL, LHPoint(0.0f, 0.0f, 0.0f), NULL);
 		char          binaryName[MAX_PATH];
 		sprintf(binaryName, "%s", CreatureFileName::Table[creatureType].BinaryName);
-		if (!creature3d->LoadBinary(binaryName, 0))
+		if (!creature3d->LoadBinary(binaryName, false))
 		{
 			return NULL;
 		}
@@ -671,7 +671,7 @@ void CreatureMental::SaveMind(Archive& archive)
 	{
 		archive << (unsigned long)learning.HeldObjectActionCounts[i];
 		archive << (unsigned long)learning.ObjectEatenCounts[i];
-		archive << (unsigned long)learning.field_0x15a38[i];
+		archive << (unsigned long)learning.ObjectEatenNoFoodCounts[i];
 	}
 	archive << creature.Get()->GetCreature3D()->FightHealth;
 	archive << learning.field_0x1522c;
@@ -995,7 +995,7 @@ void CreatureMental::LoadMind(Archive& archive)
 			archive >> (unsigned long&)learning.ObjectEatenCounts[i];
 			if (MindVersion >= CREATURE_MIND_VERSION_OBJECT_COUNTS)
 			{
-				archive >> (unsigned long&)learning.field_0x15a38[i];
+				archive >> (unsigned long&)learning.ObjectEatenNoFoodCounts[i];
 			}
 		}
 	}

@@ -10,6 +10,7 @@ typedef uint32_t LH3DMapCoordsFull;
 #define MAP_COORDS_UNITS_PER_CELL  ((float)0x10000)
 #define MAP_COORDS_METRES_PER_CELL 10.0f
 #define MAP_COORDS_FRACTION_MAX    0xffff
+#define MAP_COORDS_UNITS_PER_BLOCK 0x2000
 #define MAP_COORDS_FRACTION_CENTRE 0x8000
 
 struct LH3DMapCoords
@@ -61,10 +62,6 @@ struct LH3DMapCoords
 		FractionX = 0x8000;
 		FractionZ = 0x8000;
 	}
-	// BW1W120 inlined BW1M119 inlined
-	void SetFractionX(uint16_t x);
-	// BW1W120 inlined BW1M119 inlined
-	void SetFractionZ(uint16_t z);
 	// BW1W120 inlined BW1M119 0104c450
 	uint16_t MapX() const { return CellX; }
 	// BW1W120 inlined BW1M119 0104c370

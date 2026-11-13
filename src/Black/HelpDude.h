@@ -352,7 +352,6 @@ struct HelpDude : public LocalBase
 	AudioTagList*      CurrentTags;
 	int                CurrentSentence;
 	AutoVoiceParams    VoiceParams;
-	int                field_0x2f50[4];
 	VoiceKey           Voice;
 	float              TalkTime;
 	int                SavedLookMode;
@@ -441,8 +440,19 @@ struct HelpDude : public LocalBase
 	// BW1W120 00bf029c BW1M119 null
 	static const char* AnimNames[ANIM_LAST];
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00d93d14 BW1MCI119 null
+	static uint32_t s_PlayingSample;
+	// BW1WCI 00d93d1c BW1MCI119 null
+	static void* s_TalkingDude;
+#endif
+
 	// Static methods
 
+#ifdef VERSION_BW1WCI
+	// BW1WCI 005d05e0 BW1MCI119 01372010
+	static int CalcLipSync(LH_AudioSystem* audio_system, float time, AutoVoiceParams& params, VoiceKey& key);
+#endif
 	// BW1W120 005bb530 BW1M119 0134f870
 	static LH_SampleInfo* PlaySample(LH_AudioSystem* audio_system, LH_SamplePlayOptions* options);
 	// BW1W120 005bd250 BW1M119 0134d0f0
@@ -604,6 +614,8 @@ struct HelpDude : public LocalBase
 	void SetHoverArea(float x, float y, float inner_radius, float outer_radius, float strength, int index);
 	// BW1W120 005c0700 BW1M119 01348b30
 	void Draw(bool deferred);
+	// BW1W120 inlined BW1M119 01359710
+	void AddDrawing() { Draw(true); }
 	// BW1W120 005c0ec0 BW1M119 null
 	void SaveMesh(LHFile* file, LH3DMesh* mesh, unsigned int size);
 	// BW1W120 005c0f30 BW1M119 01348960

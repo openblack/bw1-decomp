@@ -60,10 +60,8 @@ const float MouseTiltRate = 0.002f;
 const float FightBlendStart = 2.0f;
 const float FightBlendTime = 2.0f;
 
-// BW1W120 00c5e158
-static float StrafeSpeedX;
-// BW1W120 00c5e15c
-static float StrafeSpeedZ;
+float CameraModeNew3::StrafeSpeedX;
+float CameraModeNew3::StrafeSpeedZ;
 
 // BW1W120 009ce608
 static float StrafeStopSpeedSq = 0.01f;
@@ -193,13 +191,13 @@ static int Global_00c5b0ec;
 static int Global_00c5b0f0;
 int        CameraModeNew3::ActiveTricons;
 // BW1W120 00c5b100
-static Zoomer Global_00c5b100;
+Zoomer CameraGrabZoomer;
 // BW1W120 00c5e164
 static int Global_00c5e164;
 // BW1W120 00c5e168
 static bool Global_00c5e168;
-// BW1W120 00c5e13c
-static float Global_00c5e13c = BigDistance;
+
+float CameraExclusion::DistanceFromInclusionEdge = BigDistance;
 
 LightSheet*   CameraModeNew3::ForceField;
 bool32_t      CameraModeNew3::DrawForceField;
@@ -216,13 +214,13 @@ LH3DTexture*  CameraModeNew3::ForceFieldTexture;
 // BW1W120 00454900 BW1M119 inlined
 static void SmoothStrafeSpeedX(float distance, float time)
 {
-	StrafeSpeedX += (distance / time - StrafeSpeedX) * 0.4f;
+	CameraModeNew3::StrafeSpeedX += (distance / time - CameraModeNew3::StrafeSpeedX) * 0.4f;
 }
 
 // BW1W120 00454930 BW1M119 inlined
 static void SmoothStrafeSpeedZ(float distance, float time)
 {
-	StrafeSpeedZ += (distance / time - StrafeSpeedZ) * 0.4f;
+	CameraModeNew3::StrafeSpeedZ += (distance / time - CameraModeNew3::StrafeSpeedZ) * 0.4f;
 }
 
 CameraExclusion* CameraExclusion::CreateDome(unsigned long id, LHPoint pos, float radius, float height)
@@ -867,7 +865,7 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	GInterface* playerInterface = GGame::g_game->MyInterface();
 	CHand*      hand = playerInterface != NULL ? playerInterface->hand.Get() : NULL;
 	HelpSystem* helpSystem = GGame::g_game->help_system;
-	if ((helpSystem != NULL && helpSystem->field_0x45fc == 0) ||
+	if ((helpSystem != NULL && helpSystem->TooltipLevel == TOOLTIP_LEVEL_NONE) ||
 	    (hand != NULL && hand->HandStates.raw[hand->CurrentState] != NULL &&
 	     !hand->HandStates.raw[hand->CurrentState]->AllowCameraTricons()))
 	{
@@ -1098,9 +1096,9 @@ void CameraModeNew3::TriconDraw()
 		depth = 1.0f;
 	}
 	CHand* hand = GGame::g_game->MyInterface()->GetRenderHand();
-	int    handX = hand->field_0x486c;
-	int    handY = hand->field_0x4870;
-	if (Global_00c5b100.GetCurrentValue() <= 0.01f)
+	int    handX = hand->DrawScreenPos.x;
+	int    handY = hand->DrawScreenPos.y;
+	if (CameraGrabZoomer.GetCurrentValue() <= 0.01f)
 	{
 		x = (x * 3 + handX) / 4;
 		y = (y * 3 + handY) / 4;
@@ -1164,7 +1162,7 @@ void CameraModeNew3::TriconDraw()
 		int         mouseType = GGame::g_game->control_map->IsMouseButtonAssignedToAction(BINDABLE_ACTION_MOVE)
 		                            ? HelpProfile::GetMouseType()
 		                            : 3;
-		CH_ANIMTYPE animType = CH_ANIMTYPE_0x0;
+		CH_ANIMTYPE animType = CH_ANIMTYPE_NONE;
 		if (GGame::g_game->help_system != NULL && (select || apply || both))
 		{
 			BINDABLE_ACTIONS action = both     ? BINDABLE_ACTION_ZOOM_ON
@@ -1175,7 +1173,7 @@ void CameraModeNew3::TriconDraw()
 			{
 				key = 0;
 				mouseType = HelpProfile::GetMouseType();
-				animType = CH_ANIMTYPE_0x0;
+				animType = CH_ANIMTYPE_NONE;
 			}
 		}
 		if (TextOnLeft)
@@ -1571,13 +1569,13 @@ void CameraModeNew3::Reinitialise(bool keep_fight)
 		HasFight = false;
 	}
 	MousePosPrevious = MousePos1 = MousePosCurrent;
-	Global_00c5b100.SetPosition(0.0f);
+	CameraGrabZoomer.SetPosition(0.0f);
 	RotateAroundPoint = false;
 	field_0x101 = 0;
 	field_0x100 = 0;
 	field_0x8 = 0;
 	IdleTime = 0.0f;
-	field_0x2ec = 0;
+	InputDisabled = false;
 	field_0x2f0 = 0;
 	RotatePoint = LHPoint(0.0f, 0.0f, 0.0f);
 	ActiveTricons = 0;
@@ -1810,7 +1808,7 @@ void CameraModeNew3::UpdateTricons()
 			                ((Global_00c5b0cc != 0.0f ? 0 : CAMERA_TRICON_ZOOM_DIM) + CAMERA_TRICON_ZOOM);
 		}
 	}
-	if (Global_00c5b100.GetCurrentValue() > 0.5f)
+	if (CameraGrabZoomer.GetCurrentValue() > 0.5f)
 	{
 		ActiveTricons = CAMERA_TRICON_ZOOM;
 	}
@@ -1845,7 +1843,7 @@ void CameraModeNew3::UpdateTricons()
 			ActiveTricons &= ~CAMERA_TRICON_HELP;
 		}
 	}
-	if (field_0x2ec || field_0x2f0)
+	if (InputDisabled || field_0x2f0)
 	{
 		ActiveTricons = 0;
 	}
@@ -2271,7 +2269,7 @@ void CameraModeNew3::Update()
 	Global_00c5b0bc = Global_00c5b0b4;
 	Global_00c5b0b8 = Global_00c5b0ec;
 	MouseDelta = LHCoord(0, 0);
-	if (field_0x2ec == 0)
+	if (InputDisabled == false)
 	{
 		HAND_STATE handState = GGame::g_game->MyInterface()->HandState.GetState();
 		Global_00c5b0f0 = handState == HAND_STATE_GRIP_LANDSCAPE;
@@ -2414,11 +2412,11 @@ void CameraModeNew3::Update()
 		static float   GrabRadius;
 		static float   GrabHeading;
 		static float   GrabPitch;
-		if (Global_00c5b100.GetCurrentValue() < 0.01f)
+		if (CameraGrabZoomer.GetCurrentValue() < 0.01f)
 		{
 			GrabMousePos = MousePosCurrent;
-			Origin0x1ec = originDest;
-			Heading0x204 = focusDest;
+			GrabStartOrigin = originDest;
+			GrabStartFocus = focusDest;
 			GrabCentre = GGame::g_game->MyInterface()->GetRenderHand()->Get3DObject()->matrix.GetPos();
 			GrabObject = GGame::g_game->MyInterface()->interface_collide.object;
 			if (GrabObject != NULL)
@@ -2466,19 +2464,18 @@ void CameraModeNew3::Update()
 			}
 		}
 		GrabCentre.y = LH3DIsland::GetAltitude(LH3DMapCoords(GrabCentre.x, GrabCentre.z));
-		field_0x1f8 = GrabCentre;
-		GCamera::SetPointFromPointDistanceHeadingAndPitch(&field_0x1e0, field_0x1f8, GrabRadius, GrabHeading,
-		                                                  GrabPitch);
-		Global_00c5b100.SetDestination(1.0f, 0.5f);
+		GrabFocus = GrabCentre;
+		GCamera::SetPointFromPointDistanceHeadingAndPitch(&GrabOrigin, GrabFocus, GrabRadius, GrabHeading, GrabPitch);
+		CameraGrabZoomer.SetDestination(1.0f, 0.5f);
 	}
 	else
 	{
-		Global_00c5b100.SetDestination(0.0f, 0.5f);
+		CameraGrabZoomer.SetDestination(0.0f, 0.5f);
 	}
-	Global_00c5b100.Update(dt);
+	CameraGrabZoomer.Update(dt);
 
 	int wheel = 0;
-	if (field_0x2ec == 0 && Global_00c5b100.GetCurrentValue() < 0.01f)
+	if (InputDisabled == false && CameraGrabZoomer.GetCurrentValue() < 0.01f)
 	{
 		if (GGame::g_game->control_map->IsActionPerformed(BINDABLE_ACTION_ZOOM_OUT))
 		{
@@ -3072,9 +3069,9 @@ void CameraModeNew3::Update()
 				}
 				MousePosPrevious = MousePosCurrent;
 				CHand* hand = GGame::g_game->MyInterface()->GetRenderHand();
-				hand->field_0x486c = MousePosCurrent.x;
-				hand->field_0x4870 = MousePosCurrent.y;
-				hand->field_0x4874 = 1;
+				hand->DrawScreenPos.x = MousePosCurrent.x;
+				hand->DrawScreenPos.y = MousePosCurrent.y;
+				hand->UseDrawScreenPos = true;
 				if (!GGame::g_game->MyInterface()->IsPlayBack(0))
 				{
 					LHSys::TheSystem.mouse.SetPosition(&MousePosCurrent);
@@ -3529,10 +3526,10 @@ void CameraModeNew3::Update()
 		focusDest = originDest + offset;
 		Heading0x12c = focusDest;
 	}
-	if (Global_00c5b100.GetCurrentValue() > 0.01f)
+	if (CameraGrabZoomer.GetCurrentValue() > 0.01f)
 	{
-		originDest = (field_0x1e0 - Origin0x1ec) * Global_00c5b100.GetCurrentValue() + Origin0x1ec;
-		focusDest = (field_0x1f8 - Heading0x204) * Global_00c5b100.GetCurrentValue() + Heading0x204;
+		originDest = (GrabOrigin - GrabStartOrigin) * CameraGrabZoomer.GetCurrentValue() + GrabStartOrigin;
+		focusDest = (GrabFocus - GrabStartFocus) * CameraGrabZoomer.GetCurrentValue() + GrabStartFocus;
 	}
 
 	LHPoint savedOrigin = originDest;
@@ -3677,7 +3674,7 @@ void CameraModeNew3::Update()
 			Heading0x12c.Add(originDest);
 			focusDest.Add(originDest);
 			local_4b = true;
-			Global_00c5e13c = 0.0f;
+			CameraExclusion::DistanceFromInclusionEdge = 0.0f;
 			if (Global_00c5e168)
 			{
 				CameraHelp::CameraHelpCallback(CameraHelpReason_CollideWithEdgeOfAllowedArea, originDest, 0);
@@ -3700,12 +3697,12 @@ void CameraModeNew3::Update()
 		}
 		else
 		{
-			Global_00c5e13c = closest.GetDistance2D(originDest);
+			CameraExclusion::DistanceFromInclusionEdge = closest.GetDistance2D(originDest);
 		}
 	}
 	else
 	{
-		Global_00c5e13c = 1.0e10f;
+		CameraExclusion::DistanceFromInclusionEdge = 1.0e10f;
 	}
 
 	if (local_b4 == 3 && pushed)
@@ -3956,7 +3953,7 @@ void ResetCameraModeNew3()
 	CameraExclusion::ResetExclusionFile(CAMERA_EXCLUSION_ID_DEFAULT);
 	CameraModeNew3::NoCross = 0;
 	Global_00c5b0c4 = 0.0f;
-	Global_00c5e13c = BigDistance;
+	CameraExclusion::DistanceFromInclusionEdge = BigDistance;
 	Global_00c5b0c8 = 0.0f;
 	Global_00c5b0cc = 0.0f;
 	Global_00c5b0d0 = 0.0f;
@@ -3970,7 +3967,7 @@ void ResetCameraModeNew3()
 	Global_00c5b0b0 = 0;
 	Global_00c5b0b4 = 0;
 	Global_00c5b0f0 = 0;
-	Global_00c5b100.SetPosition(0.0f);
+	CameraGrabZoomer.SetPosition(0.0f);
 	CameraModeNew3::ActiveTricons = 0;
 	memset(Global_00c5b0d8, 0, sizeof(Global_00c5b0d8));
 	Global_00c5b0ac = 0.0f;

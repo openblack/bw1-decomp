@@ -101,7 +101,7 @@ CreatureLearning::CreatureLearning(Creature* creature)
 	{
 		HeldObjectActionCounts[type] = 0;
 		ObjectEatenCounts[type] = 0;
-		field_0x15a38[type] = 0;
+		ObjectEatenNoFoodCounts[type] = 0;
 	}
 }
 

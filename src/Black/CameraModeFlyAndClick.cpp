@@ -32,7 +32,6 @@ const float CameraModeFlyAndClick::Pitch = EIGHTH_PI_F;
 const float CameraModeFlyAndClick::DefaultDistance = 2200.0f;
 const float CameraModeFlyAndClick::MoveSpeed = 0.01f;
 const float CameraModeFlyAndClick::ZoomTimes[3] = {1.0f, 1.5f, 2.5f};
-const float CameraModeFlyAndClick::CameraDistanceScale = 1.0f / 12.0f;
 
 CameraModeFlyAndClick::CameraModeFlyAndClick(GCamera* camera, FLY_AND_CLICK_TYPE type) : CameraMode(camera)
 {
@@ -60,7 +59,7 @@ CameraModeFlyAndClick::CameraModeFlyAndClick(GCamera* camera, FLY_AND_CLICK_TYPE
 	switch (Type)
 	{
 	case FLY_AND_CLICK_TYPE_CAMERA:
-		Distance = CameraDistanceScale * DefaultDistance;
+		Distance = FLY_AND_CLICK_CAMERA_DISTANCE_SCALE * DefaultDistance;
 		Focus.Set(this->camera->pos);
 		break;
 	case FLY_AND_CLICK_TYPE_ISLAND:

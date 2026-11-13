@@ -849,7 +849,7 @@ bool32_t Villager::LookAtMagicTree()
 	return true;
 }
 
-bool Villager::IsInterestedInFoodObject(Object* food)
+bool32_t Villager::IsInterestedInFoodObject(Object* food)
 {
 	if (food->IsAvailable() && !(food->Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) && !food->IsInMagicHand())
 	{
@@ -1430,7 +1430,7 @@ bool32_t Villager::CrowdReaction()
 	GLandscape::ConvertMapCoordToLandscapePoint(ReactionObject->Pos, objectPoint);
 	LHPoint direction = objectPoint - myPoint;
 	float   distance = direction.GetNorme();
-	direction.SetSize(1.0f);
+	direction.SetLength(1.0f);
 	if (distance > VILLAGER_CROWD_DISTANCE)
 	{
 		LHPoint   destinationPoint = myPoint + direction * (distance - VILLAGER_CROWD_DISTANCE);
@@ -1538,8 +1538,8 @@ bool32_t Villager::InitialiseFightReaction()
 		}
 		GetTown();
 		uint16_t angle = GUtils::Spread(index, VILLAGER_GAME_ANGLE_FULL_TURN);
-		pos.SetMetersX(LHSinTable[angle + LH_SIN_TABLE_COSINE_OFFSET] * radius / LH_SIN_TABLE_ONE + pos.MetersX());
-		pos.SetMetersZ(LHSinTable[angle] * radius / LH_SIN_TABLE_ONE + pos.MetersZ());
+		pos.SetMetersX((LHSinTable[angle + LH_SIN_TABLE_COSINE_OFFSET] * radius / LH_SIN_TABLE_ONE) + pos.MetersX());
+		pos.SetMetersZ((LHSinTable[angle] * radius / LH_SIN_TABLE_ONE) + pos.MetersZ());
 		SetupMoveToWithHug(pos, VILLAGER_STATE_PERFORM_FIGHT_REACTION);
 		return true;
 	}

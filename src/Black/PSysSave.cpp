@@ -113,7 +113,7 @@ bool32_t AtomCore::Save(GameOSFile& file)
 		SaveIt(file, Flags);
 		SaveSafe(file, DrawPosInfo);
 		SaveSafe(file, LastDrawPosInfo);
-		SaveIt(file, field_0x108);
+		SaveIt(file, PreviousFrameTime);
 		SaveIt(file, FrameTime);
 		SaveSafe(file, AnimInfo);
 		SaveIt(file, GravityScale);
@@ -201,10 +201,10 @@ bool32_t RenderParticleMist::Save(GameOSFile& file)
 	{
 		SaveSafe(file, Creator);
 		SaveIt(file, field_0x1c);
-		SaveIt(file, field_0x20);
-		SaveIt(file, field_0x2c);
-		SaveIt(file, field_0x30);
-		SaveIt(file, field_0x3c);
+		SaveIt(file, TakeRatioFromMatrix);
+		SaveIt(file, LightMap.Frame);
+		SaveIt(file, LightMap.Position);
+		SaveIt(file, LightMap.Intensity);
 		return true;
 	}
 	return false;
@@ -215,13 +215,13 @@ bool32_t ParticleLightMap::Save(GameOSFile& file)
 	if (RenderParticle::Save(file))
 	{
 		SaveSafe(file, Creator);
-		SaveIt(file, field_0x1c);
-		SaveIt(file, field_0x20);
+		SaveIt(file, RandJitter);
+		SaveIt(file, UseRandJitter);
 		SaveIt(file, field_0x24);
 		SaveIt(file, field_0x28);
-		SaveIt(file, field_0x34);
-		SaveIt(file, field_0x38);
-		SaveIt(file, field_0x44);
+		SaveIt(file, LightMap.Frame);
+		SaveIt(file, LightMap.Position);
+		SaveIt(file, LightMap.Intensity);
 		return true;
 	}
 	return false;
@@ -232,7 +232,7 @@ bool32_t Particle3DObj::Save(GameOSFile& file)
 	if (RenderParticle::Save(file))
 	{
 		SaveSafe(file, Creator);
-		SaveIt(file, field_0x24);
+		SaveIt(file, Flags);
 		return true;
 	}
 	return false;
@@ -243,10 +243,10 @@ bool32_t Particle3DAnim::Save(GameOSFile& file)
 	if (RenderParticle::Save(file))
 	{
 		SaveSafe(file, Creator);
-		SaveIt(file, field_0x1c);
-		SaveIt(file, field_0x20);
-		SaveIt(file, field_0x24);
-		SaveIt(file, field_0x28);
+		SaveIt(file, FrameToStartBlend);
+		SaveIt(file, FrameToEndBlend);
+		SaveIt(file, UseGlobalAlpha);
+		SaveIt(file, CycleTime);
 		return true;
 	}
 	return false;
@@ -256,12 +256,12 @@ bool32_t Particle3DAnimWithCamera::Save(GameOSFile& file)
 {
 	if (Particle3DAnim::Save(file))
 	{
-		SaveSafe(file, field_0x30);
+		SaveSafe(file, CameraCreator);
 		SaveIt(file, field_0x34);
-		SaveIt(file, field_0x35);
-		SaveIt(file, field_0x36);
-		SaveIt(file, field_0x38);
-		SaveIt(file, field_0x3c);
+		SaveIt(file, CameraActive);
+		SaveIt(file, CameraPositioned);
+		SaveIt(file, PauseBeforePlay);
+		SaveIt(file, PauseFinished);
 		return true;
 	}
 	return false;
@@ -271,12 +271,12 @@ bool32_t Particle3DObjAnimTextured::Save(GameOSFile& file)
 {
 	if (Particle3DObj::Save(file))
 	{
-		SaveIt(file, field_0x28);
-		SaveIt(file, field_0x2c);
-		SaveIt(file, field_0x30);
-		SaveIt(file, field_0x31);
+		SaveIt(file, TextureHeight);
+		SaveIt(file, TextureWidth);
+		SaveIt(file, SlideU);
+		SaveIt(file, SlideV);
 		SaveIt(file, field_0x32);
-		SaveIt(file, field_0x34);
+		SaveIt(file, NumFrames);
 		return true;
 	}
 	return false;
@@ -321,7 +321,7 @@ bool32_t RenderParticleGameObject::Save(GameOSFile& file)
 {
 	if (RenderParticle::Save(file))
 	{
-		file.WriteSafe(field_0x18);
+		file.WriteSafe(GameObject);
 		SaveSafe(file, field_0x20);
 		SaveIt(file, field_0x24);
 		SaveIt(file, field_0x54);
@@ -362,20 +362,20 @@ bool32_t Chain::Save(GameOSFile& file)
 {
 	if (PSysBase::Save(file))
 	{
-		SaveSafe(file, field_0x14);
+		SaveSafe(file, Creator);
 		SaveIt(file, field_0x18);
-		SaveIt(file, field_0x1c);
+		SaveIt(file, FrameHeight);
 		file.WriteIt(field_0x20);
 		SaveIt(file, field_0x24);
 		SaveIt(file, field_0x28);
 		SaveIt(file, field_0x2c);
 		SaveIt(file, field_0x30);
 		SaveIt(file, field_0x34);
-		SaveIt(file, field_0x38);
-		SaveIt(file, field_0x3c);
+		SaveIt(file, UseDynamicLighting);
+		SaveIt(file, ScrollOffset);
 		file.WriteSafe(Joints);
-		SaveIt(file, field_0x4c);
-		SaveIt(file, field_0x40);
+		SaveIt(file, ScrollSpeed);
+		SaveIt(file, JointsUpdated);
 		return true;
 	}
 	return false;

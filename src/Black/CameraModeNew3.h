@@ -136,10 +136,10 @@ public:
 	float                    VerticalDistance;
 	LHPoint                  FallbackOrigin;
 	LHPoint                  FallbackHeading;
-	LHPoint                  field_0x1e0;
-	LHPoint                  Origin0x1ec;
-	LHPoint                  field_0x1f8;
-	LHPoint                  Heading0x204;
+	LHPoint                  GrabOrigin;
+	LHPoint                  GrabStartOrigin;
+	LHPoint                  GrabFocus;
+	LHPoint                  GrabStartFocus;
 	Zoomer                   field_0x210;
 	Zoomer3d                 field_0x240;
 	bool                     field_0x2d0;
@@ -150,7 +150,7 @@ public:
 	LHCoord                  field_0x2dc;
 	float                    HeadingDistance;
 	float                    IdleTime;
-	int                      field_0x2ec;
+	bool32_t                 InputDisabled;
 	int                      field_0x2f0;
 	CameraExclusion*         NearbyExclusions;
 	int                      field_0x2f8;
@@ -188,6 +188,10 @@ public:
 	static bool32_t EdgeScrollEnabled;
 	// BW1W120 00c5b0f4
 	static int ActiveTricons;
+	// BW1W120 00c5e158
+	static float StrafeSpeedX;
+	// BW1W120 00c5e15c
+	static float StrafeSpeedZ;
 
 	// Virtual methods
 

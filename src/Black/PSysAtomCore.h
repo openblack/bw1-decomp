@@ -31,8 +31,6 @@ class PSysSound;
 class PSysSoundAction;
 class RenderParticle;
 
-#define PSYS_MAX_ALPHA 255.0f
-
 class AtomCollection : public PSysBase
 {
 public:
@@ -103,6 +101,8 @@ public:
 	bool IsInGlobalCoords() { return InGlobalCoords; }
 	// BW1W120 inlined BW1M119 013eabc0
 	void SetParentAtom(AtomCore* parent);
+	// BW1W120 006798b0 BW1M119 01054310
+	void DoDrawLoopDrawing(float interpolation);
 
 	template <class T> void FindModifier(const T*& modifier) const
 	{
@@ -138,6 +138,13 @@ static_assert(offsetof(AtomCollection, Manager) == 0x30, "Data member is at wron
 static_assert(offsetof(AtomCollection, Atoms) == 0x40, "Data member is at wrong offset");
 static_assert(sizeof(AtomCollection) == 0x54, "Data type is of wrong size");
 
+enum DRAW_POS_STATE
+{
+	DRAW_POS_STATE_NEW = 0x0,
+	DRAW_POS_STATE_FIRST_UPDATE = 0x1,
+	DRAW_POS_STATE_READY = 0x2,
+};
+
 class AtomCore : public PSysBase
 {
 public:
@@ -158,9 +165,8 @@ public:
 	union {
 		struct
 		{
-			uint8_t Flag0 : 1;
-			uint8_t Flag1 : 1;
-			uint8_t Flag2 : 1;
+			uint8_t DrawOnFirstUpdate : 1;
+			uint8_t DrawPosState : 2;
 			uint8_t HasBeenDeflected : 1;
 			uint8_t InUse : 1;
 			uint8_t field_0x95;
@@ -170,7 +176,7 @@ public:
 	uint16_t             field_0x96;
 	CalculateDrawPosInfo DrawPosInfo;
 	CalculateDrawPosInfo LastDrawPosInfo;
-	float                field_0x108;
+	float                PreviousFrameTime;
 	float                FrameTime;
 	PSysAnimInfo         AnimInfo;
 	float                GravityScale;
@@ -282,6 +288,8 @@ public:
 		*(uint32_t*)&Colour &= 0x00ffffff;
 		*(uint32_t*)&Colour |= alpha << 24;
 	}
+	// BW1W120 00679920 BW1M119 01054d50
+	void DoDrawLoopDrawing(float interpolation);
 
 	// Finds the data this atom keeps for the modifier, creating it on first use.
 	template <class T> void GetModifierData(const AtomCollectionModifier* modifier, T*& data)

@@ -56,9 +56,9 @@ public:
 	GameThing*                    OwnerSpell;
 	bool                          UseGameRand;
 	bool                          field_0xad;
-	uint8_t                       field_0xae;
+	bool                          UseZSorter;
 	uint8_t                       field_0xaf;
-	uint32_t                      field_0xb0;
+	float                         DrawInterpolation;
 	Persistent*                   field_0xb4;
 	SpellTargets                  Targets;
 
@@ -122,7 +122,9 @@ public:
 	// BW1W120 006797d0 BW1M119 010299d0
 	void AddDrawing(float interpolation, const LHPoint& pos);
 	// BW1W120 00679840 BW1M119 01069f50
-	void Draw(float interpolation, bool draw_flag);
+	void Draw(float interpolation, bool use_z_sorter);
+	// BW1W120 00679860 BW1M119 0105a250
+	void DrawNow();
 };
 static_assert(offsetof(PSysManager, Magnitude) == 0xa0, "Data member is at wrong offset");
 static_assert(offsetof(PSysManager, Targets) == 0xb8, "Data member is at wrong offset");

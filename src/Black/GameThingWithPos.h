@@ -35,6 +35,7 @@ class Living;
 class Object;
 class PileResource;
 class Reaction;
+class SpellSeed;
 class SpellShield;
 class WorshipSite;
 
@@ -86,12 +87,12 @@ enum GAME_THING_WITH_POS_FLAGS
 	GAME_THING_WITH_POS_FLAG_IN_MAP = 1 << 0,
 	GAME_THING_WITH_POS_FLAG_FIXED = 1 << 1,
 	GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE = 1 << 2,
-	GAME_THING_WITH_POS_FLAG_0x00000008 = 1 << 3,
+	GAME_THING_WITH_POS_FLAG_IN_CREATURE_HAND = 1 << 3,
 	GAME_THING_WITH_POS_FLAG_INTERACTING = 1 << 4,
 	GAME_THING_WITH_POS_FLAG_LOCKED_SELECT = 1 << 5,
 	GAME_THING_WITH_POS_FLAG_IN_PHYSICS = 1 << 6,
 	GAME_THING_WITH_POS_FLAG_ON_STRUCTURE = 1 << 7,
-	GAME_THING_WITH_POS_FLAG_0x00000100 = 1 << 8,
+	GAME_THING_WITH_POS_FLAG_IN_DRAW_LIST = 1 << 8,
 	GAME_THING_WITH_POS_FLAG_IN_SCRIPT = 1 << GAME_THING_WITH_POS_FLAG_IN_SCRIPT_BIT,
 	GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT = 1 << GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT_BIT,
 	GAME_THING_WITH_POS_FLAG_DRAGGED_BY_LEASH = 1 << 11,
@@ -147,7 +148,7 @@ public:
 	// BW1W120 00401960 BW1M119 010354e0
 	virtual MapCoords GetPos() { return Pos; }
 	// BW1W120 00405260 BW1M119 010cf1e0
-	virtual MapCoords GetArrivePos();
+	virtual MapCoords GetArrivePos() { return Pos; }
 	// BW1W120 00401980 BW1M119 0142f120
 	virtual void PhysicsEditorCreate(int type) { Pos.altitude = 0.0f; }
 	// BW1W120 00405280 BW1M119 015685e0
@@ -159,7 +160,7 @@ public:
 	// BW1W120 00405290 BW1M119 015699d0
 	virtual uint32_t GetOrigin() { return 0; }
 	// BW1W120 004052a0 BW1M119 010d87d0
-	virtual float GetLife();
+	virtual float GetLife() { return 1.0f; }
 	// BW1W120 004247e0 BW1M119 013f9550
 	virtual float GetScale();
 	// BW1W120 004247f0 BW1M119 011ce9c0
@@ -209,11 +210,11 @@ public:
 	// BW1W120 0056ff50 BW1M119 0117b4f0
 	virtual void GetPhysicsMovementDirection(LHPoint* pos);
 	// BW1W120 004019f0 BW1M119 0149b9d0
-	virtual MapCoords GetInteractPos();
+	virtual MapCoords GetInteractPos() { return Pos; }
 	// BW1W120 004052b0 BW1M119 010ad630
 	virtual bool32_t IsMoving() const { return false; }
 	// BW1W120 004052c0 BW1M119 013e0960
-	virtual bool32_t IsObjectInMap();
+	virtual bool32_t IsObjectInMap() { return Flags & GAME_THING_WITH_POS_FLAG_IN_MAP; }
 	// BW1W120 004052d0 BW1M119 011ac2d0
 	virtual bool32_t IsDrowning() { return false; }
 	// BW1W120 00401a10 BW1M119 013e0a00
@@ -244,7 +245,7 @@ public:
 	// BW1W120 00401a40 BW1M119 0111bb10
 	virtual float GetImpressiveIntensity(IMPRESSIVE_TYPE type) { return 1.0f; }
 	// BW1W120 00405300 BW1M119 010026e0
-	virtual float GetImpressiveValue(Living* living, Reaction* reaction);
+	virtual float GetImpressiveValue(Living* living, Reaction* reaction) { return 0.0f; }
 	// BW1W120 0056feb0 BW1M119 01002740
 	virtual float GetUpdateOfBoredomValue(Reaction* reaction, GameThingWithPos* reactor);
 	// BW1W120 00401a50 BW1M119 015efff0
@@ -328,7 +329,7 @@ public:
 	// BW1W120 004053c0 BW1M119 0142fb60
 	virtual bool32_t CanBeSleptNextToByCreature(Creature* creature) { return false; }
 	// BW1W120 004053d0 BW1M119 01376c50
-	virtual bool32_t CanBePickedUpByCreature(Creature* creature);
+	virtual bool32_t CanBePickedUpByCreature(Creature* creature) { return false; }
 	// BW1W120 004053e0 BW1M119 0155e2f0
 	virtual bool32_t CanBeStrokedByCreature(Creature* creature) { return false; }
 	// BW1W120 00401bf0 BW1M119 0136a6f0
@@ -344,7 +345,7 @@ public:
 	// BW1W120 00405420 BW1M119 011adb00
 	virtual bool32_t CanBePutInAStoragePit(Creature* creature) { return false; }
 	// BW1W120 00405430 BW1M119 0156d460
-	virtual bool32_t CanBeDestroyedByStoning(Creature* creature);
+	virtual bool32_t CanBeDestroyedByStoning(Creature* creature) { return false; }
 	// BW1W120 00401c10 BW1M119 01410920
 	virtual bool32_t CanBeStonedAndEatenByCreature(Creature* creature)
 	{
@@ -528,9 +529,9 @@ public:
 	// BW1W120 00402150 BW1M119 0149ccf0
 	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* creature) { return false; }
 	// BW1W120 004054e0 BW1M119 0110e5a0
-	virtual uint32_t GetCreatureMimicType();
+	virtual uint32_t GetCreatureMimicType() { return CREATURE_MIMIC_TYPE_LAST; }
 	// BW1W120 004054f0 BW1M119 0149cc90
-	virtual float GetHowMuchCreatureWantsToLookAtMe();
+	virtual float GetHowMuchCreatureWantsToLookAtMe() { return 0.0f; }
 	// BW1W120 00402160 BW1M119 0105a310
 	virtual bool32_t IsFlock() const { return false; }
 	// BW1W120 00402170 BW1M119 013ea450
@@ -568,7 +569,7 @@ public:
 	// BW1W120 00402220 BW1M119 015a9130
 	virtual float CalculatePeopleHidingIndicator() { return 0.0f; }
 	// BW1W120 00405500 BW1M119 0116fcb0
-	virtual float GetHeight();
+	virtual float GetHeight() { return 0.0f; }
 	// BW1W120 00402230 BW1M119 01379650
 	virtual bool32_t IsReadyForNewScriptAction() { return false; }
 	// BW1W120 00570290 BW1M119 01572b60
@@ -576,7 +577,11 @@ public:
 	// BW1W120 005702a0 BW1M119 01575170
 	virtual bool ForDrawFXGetVertexPos(int index, LHPoint* pos);
 	// BW1W120 00405510 BW1M119 01003450
-	virtual void SetInScript(bool32_t in_script);
+	virtual void SetInScript(bool32_t in_script)
+	{
+		Flags =
+			(Flags & ~GAME_THING_WITH_POS_FLAG_IN_SCRIPT) | ((in_script & 1) << GAME_THING_WITH_POS_FLAG_IN_SCRIPT_BIT);
+	}
 	// BW1W120 00402240 BW1M119 01057c40
 	virtual void SetControlledByScript(bool32_t controlled)
 	{
@@ -674,7 +679,7 @@ public:
 	virtual void SetImmuneToSpells(bool immune) {}
 #endif
 	// BW1W120 00402470 BW1M119 0107d710
-	virtual bool32_t IsSpellSeed() { return false; }
+	virtual SpellSeed* IsSpellSeed() { return NULL; }
 	// BW1W120 00402480 BW1M119 010a7c40
 	virtual SpellShield* IsSpellShield() { return NULL; }
 	// BW1W120 00402490 BW1M119 010a6f40
@@ -743,10 +748,16 @@ public:
 	bool32_t IsFixed() const { return (Flags & GAME_THING_WITH_POS_FLAG_FIXED) != 0; }
 	// BW1W120 inlined BW1M119 inlined
 	bool IsNotInPhysics() const { return !InPhysics; }
+	// BW1W120 inlined BW1M119 0102fe00
+	bool32_t IsFlying() const { return InPhysics; }
 	// BW1W120 inlined BW1M119 01032e80
 	bool32_t IsInMagicHand() const { return (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) != 0; }
 	// BW1W120 inlined BW1M119 01504b20
 	bool32_t IsInHandInteract() const { return (Flags & GAME_THING_WITH_POS_FLAG_INTERACTING) != 0; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 0153c240
+	bool32_t IsInCreatureHand() { return (Flags & GAME_THING_WITH_POS_FLAG_IN_CREATURE_HAND) != 0; }
+#endif
 	// BW1W120 inlined BW1M119 0100f4b0
 	bool32_t IsControlledByScript() const { return (Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) != 0; }
 	// BW1W120 inlined BW1M119 0112bd40

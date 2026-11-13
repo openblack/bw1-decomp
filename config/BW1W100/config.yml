@@ -6,11 +6,34 @@ symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
 block_relocations:
+# Abode::GetNewEp tests the 0x800000 flag, an address inside other code.
+  - source: 0x00402344
 # SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
   - source: 0x006AAE43
   - source: 0x006AAE49
+# MPFEChannelSelector::ControlCallback's and MPFECreateGame::ControlCallback's 0xe0e0e0 box colour is an
+# immediate, not a pointer.
+  - source: 0x005DDA3A
+  - source: 0x005DDA41
+  - source: 0x005DDA58
+  - source: 0x005DDA5D
+  - source: 0x005DDA8D
+  - source: 0x005DDA92
+  - source: 0x005DDA97
+  - source: 0x005DDA9C
+  - source: 0x005DE94D
+  - source: 0x005DE952
+  - source: 0x005DE969
+  - source: 0x005DE96E
+# MPFELogin::ControlCallback's 0xe0e0e0 box colour is an immediate, not a pointer.
+  - source: 0x005E3C30
+  - source: 0x005E3C35
+  - source: 0x005E3C4C
+  - source: 0x005E3C51
 # libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x007E6EC8
+# VillagerName::Add's colour blend term 0x7f8000 is an immediate, not a pointer into Swallow's vftable.
+  - source: 0x006F1334
 # LH3DAtmos::Render3D's 0x7f7f7f colour mask and bias are immediates, not pointers into Swallow's vftable.
   - source: 0x007980D8
   - source: 0x007980DE
@@ -32,6 +55,8 @@ block_relocations:
 # code addresses.
   - source: 0x008FC23C
   - source: 0x008FC3AC
+# MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
+  - source: 0x005BED88
 
 # LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
   - source: 0x0078EC85
@@ -69,6 +94,11 @@ block_relocations:
   - source: 0x007BF268
 
 add_relocations:
+# GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.
+  - source: 0x0040419C
+    type: x86_abs32
+    target: '?Infos@GTribeInfo@@2PAV1@A'
+    addend: 0x10C
 # pow.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x00735886
     type: x86_rel32
@@ -2537,6 +2567,11 @@ add_relocations:
   - source: 0x007BDF7D
     type: x86_abs32
     target: '__real@4@bffc860a920000000000'
+# MOV ESI is the end of GPotInfo::InfoList for its destructor loop, not PowerSpin's data.
+  - source: 0x00616987
+    type: x86_abs32
+    target: '?InfoList@GPotInfo@@2PAV1@A'
+    addend: 0x180c
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the
 # reference graph is fully recovered, keep function sections plain so it cannot

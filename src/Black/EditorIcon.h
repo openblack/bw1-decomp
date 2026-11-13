@@ -16,6 +16,9 @@
 
 #define EDITOR_ICON_TEXT_SIZE 0x100
 
+#define EDITOR_ICON_SLIDER_MAX_BUTTON_SIZE 16.0f
+#define EDITOR_ICON_SLIDER_MIN_BUTTON_SIZE 5.0f
+
 enum EDITOR_ICON_FLAGS
 {
 	EDITOR_ICON_FLAG_CONSTANT_TEXT = 0x2,
@@ -63,14 +66,14 @@ public:
 
 	// Override methods
 
+	// BW1W120 00414c10 BW1M119 010a7f50
+	virtual int IsActive() { return Active; }
 	// BW1W120 00414c20 BW1M119 010a5760
 	virtual LHRegion* GetRegion() { return &Region; }
 	// BW1W120 0051fe30 BW1M119 012ba220
 	virtual int Process();
 	// BW1W120 0051fea0 BW1M119 012ba110
 	virtual void Draw(bool32_t parent_active);
-	// BW1W120 00414c10 BW1M119 010a7f50
-	virtual int IsActive() { return Active; }
 	// BW1W120 00414c30 BW1M119 010a7f90
 	virtual LH3DColor* GetTextColor() { return &TextColor; }
 	// BW1W120 00414c40 BW1M119 010a7fd0
@@ -226,30 +229,8 @@ public:
 
 	// Override methods
 
-	// BW1W120 00416b00 BW1M119 010a82c0
-	virtual int Process()
-	{
-		LeftClicked = false;
-		RightClicked = false;
-		Processed = true;
-		if (MakeActive())
-		{
-			if (LHSys::TheSystem.mouse.ButtonPressed & 1)
-			{
-				LeftClicked = true;
-				LHSys::TheSystem.mouse.ButtonPressed &= ~1;
-				SetValue(GetValue() + Step);
-			}
-			if (LHSys::TheSystem.mouse.ButtonPressed & 2)
-			{
-				RightClicked = true;
-				LHSys::TheSystem.mouse.ButtonPressed &= ~2;
-				SetValue(GetValue() - Step);
-			}
-			return true;
-		}
-		return false;
-	}
+	// BW1W120 00416700 BW1M119 010a5e90
+	virtual T GetValue() { return *Value; }
 	// BW1W120 00416710 BW1M119 010a8210
 	virtual char* GetText()
 	{
@@ -261,10 +242,6 @@ public:
 		return NULL;
 	}
 
-	// Virtual methods
-
-	// BW1W120 00416700 BW1M119 010a5e90
-	virtual T GetValue() { return *Value; }
 	// BW1W120 00416a70 BW1M119 010a7ea0
 	virtual void SetValue(T value)
 	{
@@ -294,6 +271,30 @@ public:
 		{
 			*Value = value;
 		}
+	}
+	// BW1W120 00416b00 BW1M119 010a82c0
+	virtual int Process()
+	{
+		LeftClicked = false;
+		RightClicked = false;
+		Processed = true;
+		if (MakeActive())
+		{
+			if (LHSys::TheSystem.mouse.ButtonPressed & LH_MOUSE_BUTTON_LEFT_DOWN)
+			{
+				LeftClicked = true;
+				LHSys::TheSystem.mouse.ButtonPressed &= ~LH_MOUSE_BUTTON_LEFT_DOWN;
+				SetValue(GetValue() + Step);
+			}
+			if (LHSys::TheSystem.mouse.ButtonPressed & LH_MOUSE_BUTTON_RIGHT_DOWN)
+			{
+				RightClicked = true;
+				LHSys::TheSystem.mouse.ButtonPressed &= ~LH_MOUSE_BUTTON_RIGHT_DOWN;
+				SetValue(GetValue() - Step);
+			}
+			return true;
+		}
+		return false;
 	}
 };
 
@@ -337,6 +338,17 @@ public:
 
 	// Override methods
 
+	// BW1W120 00416060 BW1M119 010a4cd0
+	virtual void Draw(bool32_t parent_active)
+	{
+		bool32_t mouseOverTextWasEmpty = MouseOverText == NULL;
+		EditorIconShow::Draw(false);
+		if (MouseOverText != NULL && mouseOverTextWasEmpty)
+		{
+			MouseOverText = NULL;
+		}
+		DrawBox(&ButtonRegion, &ButtonColor, ButtonColor.a, 0);
+	}
 	// BW1W120 004160c0 BW1M119 010a4d80
 	virtual int Process()
 	{
@@ -346,13 +358,13 @@ public:
 		RightClicked = false;
 		if (MakeActive())
 		{
-			if (LHSys::TheSystem.mouse.ButtonPressed & 1)
+			if (LHSys::TheSystem.mouse.ButtonPressed & LH_MOUSE_BUTTON_LEFT_DOWN)
 			{
 				LeftClicked = true;
 				Dragging = true;
 				if (ButtonRegion.CoordInRegion(LHSys::TheSystem.mouse.Pos()))
 				{
-					LHSys::TheSystem.mouse.ButtonPressed &= ~1;
+					LHSys::TheSystem.mouse.ButtonPressed &= ~LH_MOUSE_BUTTON_LEFT_DOWN;
 					Dragging = true;
 				}
 				else
@@ -366,22 +378,18 @@ public:
 		{
 			LeftClicked = true;
 			SetValue(GetMouseValue());
-			Dragging = LHSys::GetMouse().Buttons & LH_MOUSE_BUTTON_LEFT_DOWN;
+			if (LHSys::GetMouse().Buttons & LH_MOUSE_BUTTON_LEFT_DOWN)
+			{
+				Dragging = true;
+			}
+			else
+			{
+				Dragging = false;
+			}
 			return true;
 		}
 		SetButtonPosition();
 		return processed;
-	}
-	// BW1W120 00416060 BW1M119 010a4cd0
-	virtual void Draw(bool32_t parent_active)
-	{
-		bool32_t mouseOverTextWasEmpty = MouseOverText == NULL;
-		EditorIconShow::Draw(false);
-		if (MouseOverText != NULL && mouseOverTextWasEmpty)
-		{
-			MouseOverText = NULL;
-		}
-		DrawBox(&ButtonRegion, &ButtonColor, ButtonColor.a, 0);
 	}
 	// BW1W120 00416410 BW1M119 010a57f0
 	virtual void SetValue(T value)
@@ -392,8 +400,6 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 00416c20 BW1M119 010a5ee0
-	bool32_t IsBoxVertical() { return GetRegion()->Height() > GetRegion()->Width(); }
 	// BW1W120 inlined BW1M119 010a6660
 	T GetBoxWidth() { return (T)GetRegion()->Width(); }
 	// BW1W120 inlined BW1M119 010a6720
@@ -402,8 +408,12 @@ public:
 	T GetBoxStart();
 	// BW1W120 00416bc0 BW1M119 010a5bf0
 	T GetBoxSize();
+	// BW1W120 00416c20 BW1M119 010a5ee0
+	bool32_t IsBoxVertical();
 	// BW1W120 inlined BW1M119 010a57a0
 	T GetValueRange() { return Max - Min; }
+	// BW1W120 inlined BW1M119 null
+	T GetPageStep() { return PageStep; }
 	// BW1W120 inlined BW1M119 010a5fd0
 	T GetMousePos()
 	{
@@ -454,7 +464,7 @@ public:
 	void SetButtonPosition()
 	{
 		T size = GetBoxSize();
-		T range = GetValueRange();
+		T range = Max - Min;
 		T position = (GetValue() - Min) / range;
 		T x = (T)GetRegion()->X1();
 		T y = (T)GetRegion()->Y1();
@@ -464,19 +474,22 @@ public:
 		{
 			y = size * position + y;
 			width = GetBoxWidth();
-			height = size * (PageStep / GetValueRange());
-			height = min(16.0f, height);
+			height = size * (GetPageStep() / GetValueRange());
+			height = min(EDITOR_ICON_SLIDER_MAX_BUTTON_SIZE, height);
 			y -= height * 0.5f;
 		}
 		else
 		{
 			x = size * position + x;
-			width = size * (PageStep / GetValueRange());
-			width = min(16.0f, width);
+			width = size * (GetPageStep() / GetValueRange());
+			width = min(EDITOR_ICON_SLIDER_MAX_BUTTON_SIZE, width);
 			height = GetBoxHeight();
 			x -= width * 0.5f;
 		}
-		width = max(width, 5.0f);
+		if (width < EDITOR_ICON_SLIDER_MIN_BUTTON_SIZE)
+		{
+			width = EDITOR_ICON_SLIDER_MIN_BUTTON_SIZE;
+		}
 		if (GetRegion()->X1() > x)
 		{
 			x = (T)GetRegion()->X1();
@@ -493,8 +506,7 @@ public:
 		{
 			y = GetRegion()->Y2() - height;
 		}
-		ButtonRegion.start.Set((long)x, (long)y);
-		ButtonRegion.end.Set((long)x + (long)width - 1, (long)y + (long)height - 1);
+		ButtonRegion.Set((long)x, (long)y, (long)width, (long)height);
 	}
 };
 
@@ -514,6 +526,11 @@ template <typename T> T EditorIconSlider<T>::GetBoxSize()
 		return GetBoxHeight();
 	}
 	return GetBoxWidth();
+}
+
+template <typename T> bool32_t EditorIconSlider<T>::IsBoxVertical()
+{
+	return GetRegion()->Height() > GetRegion()->Width();
 }
 
 #endif /* BW1_DECOMP_EDITOR_ICON_INCLUDED_H */

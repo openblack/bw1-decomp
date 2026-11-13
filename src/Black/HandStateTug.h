@@ -2,34 +2,43 @@
 #define BW1_DECOMP_HAND_STATE_TUG_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t, uintptr_t */
+
+#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
+#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/Zoomer.h>   /* For struct Zoomer, struct Zoomer3d */
+#include <re_common.h>                             /* For bool32_t */
 
 #include "HandState.h" /* For struct HandState */
 
-// Forward Declares
-
 class CHand;
-struct LHMatrix;
 
 class HandStateTug : public HandState
 {
 public:
-	uintptr_t TugPosition;
-	uint8_t   field_0xC[0x140];
-
-	// Override methods
+	int      AnimationTime;         /* 0x8 */
+	bool32_t WaitingForBlend;       /* 0xc */
+	bool32_t HeldObjectMatrixValid; /* 0x10 */
+	Zoomer3d UpZoomer;              /* 0x14 */
+	LHPoint  GroundNormal;          /* 0xa4 */
+	LHPoint  GrabPoint;             /* 0xb0 */
+	LHMatrix HeldObjectMatrix;      /* 0xbc */
+	LHMatrix TugMatrix;             /* 0xec */
+	Zoomer   StretchZoomer;         /* 0x11c */
 
 	// BW1W120 005b7df0 BW1M119 01346a30
 	virtual void Enter();
 	// BW1W120 005b8e40 BW1M119 013458c0
 	virtual void DrawTheHeldObject();
 	// BW1W120 005b8070 BW1M119 01345930
-	virtual void Update(float param_1, LHMatrix* param_2);
-
-	// Constructors
+	virtual void Update(float dt, LHMatrix* buffer);
 
 	// BW1W120 005b7dd0 BW1M119 01346cd0
 	HandStateTug(CHand* hand);
+
+	// BW1W120 005b8e60 BW1M119 01345830
+	void UpdateHeldObject();
 };
+
+static_assert(sizeof(HandStateTug) == 0x14c, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_HAND_STATE_TUG_INCLUDED_H */

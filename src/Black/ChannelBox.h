@@ -17,6 +17,7 @@
 
 class MPFEClanDetails;
 class MPFERequesterQ;
+class ServerLandscapeMap;
 class WinCondition;
 struct LH3DMaterial;
 struct LH3DTexture;
@@ -32,28 +33,33 @@ struct SetupTabButton;
 class ChannelBox : public DialogBoxBase
 {
 public:
-	int                           CurrentTab;
-	int                           SelectedTeam; /* 0x14 */
-	bool                          HasMap;
-	int                           NumTeams; /* 0x1c */
-	SetupTabButton*               Tabs[4];
-	SetupStaticText*              CaptionText; /* 0x30 */
-	SetupStaticText*              PanelHeaderText;
-	TeamControls                  Teams[MPFEData::MAX_TEAMS]; /* 0x38 */
-	SetupBigButton*               BackButton;                 /* 0x114 */
-	SetupBigButton*               StartButton;
-	SetupBigButton*               ChooseLandButton;
-	SetupButton*                  KickButton; /* 0x120 */
-	SetupButton*                  InviteButton;
-	SetupButton*                  LeaveTeamButton;
-	int                           KickButtonWidth; /* 0x12c */
-	int                           InviteButtonWidth;
-	LHRegion                      TeamsRegion; /* 0x134 */
-	SetupEdit*                    ChatEdit;    /* 0x144 */
-	SetupList*                    ChatList;
-	SetupStaticText*              ChatTitleText;
-	bool                          NewChatMessage;      /* 0x150 */
-	SetupCheckBox*                LockChannelCheckBox; /* 0x154 */
+	int              CurrentTab;
+	int              SelectedTeam; /* 0x14 */
+	bool             HasMap;
+	int              NumTeams; /* 0x1c */
+	SetupTabButton*  Tabs[4];
+	SetupStaticText* CaptionText; /* 0x30 */
+	SetupStaticText* PanelHeaderText;
+	TeamControls     Teams[MPFEData::MAX_TEAMS]; /* 0x38 */
+	SetupBigButton*  BackButton;                 /* 0x114 */
+	SetupBigButton*  StartButton;
+	SetupBigButton*  ChooseLandButton;
+	SetupButton*     KickButton; /* 0x120 */
+	SetupButton*     InviteButton;
+	SetupButton*     LeaveTeamButton;
+	int              KickButtonWidth; /* 0x12c */
+	int              InviteButtonWidth;
+	LHRegion         TeamsRegion; /* 0x134 */
+	SetupEdit*       ChatEdit;    /* 0x144 */
+	SetupList*       ChatList;
+	SetupStaticText* ChatTitleText;
+	bool             NewChatMessage; /* 0x150 */
+#if !defined(VERSION_BW1W100)
+	SetupCheckBox* LockChannelCheckBox; /* 0x154 */
+#endif
+#if defined(VERSION_BW1WCI)
+	SetupCheckBox* TykeCheckBox;
+#endif
 	SetupStaticText*              ClanPlayerText;
 	SetupStaticText*              ClanTeamText;
 	SetupList*                    ClanList; /* 0x160 */
@@ -85,23 +91,25 @@ public:
 	LHLinkedList<MPFERequesterQ*> Requesters;  /* 0xa3c */
 	MPFEPlayerDetails*            LocalPlayer; /* 0xa44 */
 	bool                          IsTeamLeader;
-	MPFEData*                     Data;                    /* 0xa4c */
-	SetupCheckBox*                ConditionCheckBoxes[15]; /* 0xa50 */
-	SetupList*                    ConditionList;           /* 0xa8c */
-	SetupBigButton*               ConditionIncreaseButton;
-	SetupBigButton*               ConditionDecreaseButton;
-	SetupStaticText*              ConditionValueText; /* 0xa98 */
-	SetupStaticText*              ConditionValueLabel;
-	SetupStaticText*              ConditionTitleText;
-	SetupStaticText*              TimeLimitLabel;
-	SetupStaticText*              TimeLimitText; /* 0xaa8 */
-	SetupBigButton*               TimeLimitIncreaseButton;
-	SetupBigButton*               TimeLimitDecreaseButton;
-	SetupButton*                  LandChatToggleButton; /* 0xab4 */
-	SetupCheckBox*                ReadyCheckBox;
-	bool                          ShowChatOnLandTab;
-	WinCondition*                 SelectedCondition;    /* 0xac0 */
-	bool                          ConditionEnabled[15]; /* 0xac4 */
+	MPFEData*                     Data; /* 0xa4c */
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	SetupCheckBox*   ConditionCheckBoxes[15]; /* 0xa50 */
+	SetupList*       ConditionList;           /* 0xa8c */
+	SetupBigButton*  ConditionIncreaseButton;
+	SetupBigButton*  ConditionDecreaseButton;
+	SetupStaticText* ConditionValueText; /* 0xa98 */
+	SetupStaticText* ConditionValueLabel;
+	SetupStaticText* ConditionTitleText;
+	SetupStaticText* TimeLimitLabel;
+	SetupStaticText* TimeLimitText; /* 0xaa8 */
+	SetupBigButton*  TimeLimitIncreaseButton;
+	SetupBigButton*  TimeLimitDecreaseButton;
+	SetupButton*     LandChatToggleButton; /* 0xab4 */
+	SetupCheckBox*   ReadyCheckBox;
+	bool             ShowChatOnLandTab;
+	WinCondition*    SelectedCondition;    /* 0xac0 */
+	bool             ConditionEnabled[15]; /* 0xac4 */
+#endif
 
 	// Override methods
 
@@ -117,6 +125,26 @@ public:
 
 	// BW1W120 0061cc80 BW1M119 inlined
 	void UpdateAll();
+	// BW1W120 0061d930 BW1M119 013953d0
+	void UpdateTeams();
+	// BW1W120 0061ccb0 BW1M119 013961b0
+	void UpdateClans();
+	// BW1W120 0061d780 BW1M119 01395950
+	void UpdateCaption();
+	// BW1W120 0061bc40 BW1M119 01397a10
+	void ReInit();
+	// BW1W120 0061b910 BW1M119 01397ae0
+	void BuildThumbnail(ServerLandscapeMap* map);
+	// BW1W120 0061b4d0 BW1M119 01398270
+	void SetTab(int tab);
+	// BW1W120 0061ea40 BW1M119 01394460
+	void __stdcall ClanCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
+	// BW1W120 0061e640 BW1M119 01394c00
+	void __stdcall ChatCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
+	// BW1W120 0061e8d0 BW1M119 01394820
+	void __stdcall PlayerCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
+	// BW1W120 0061dc70 BW1M119 01394dd0
+	void __stdcall LandCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
 
 	// BW1W120 00d3f014
 	static ChannelBox* Instance;
@@ -137,6 +165,14 @@ public:
 	~ChannelBox() {}
 };
 
+#if defined(VERSION_BW1W100)
+static_assert(sizeof(ChannelBox) == 0xa4c, "ChannelBox size is incorrect");
+#elif defined(VERSION_BW1W110)
+static_assert(sizeof(ChannelBox) == 0xa50, "ChannelBox size is incorrect");
+#elif defined(VERSION_BW1WCI)
+static_assert(sizeof(ChannelBox) == 0xa54, "ChannelBox size is incorrect");
+#else
 static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
+#endif
 
 #endif /* BW1_DECOMP_CHANNEL_BOX_INCLUDED_H */

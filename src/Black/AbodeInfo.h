@@ -61,14 +61,18 @@ public:
 
 	// Override methods
 
-	// BW1W120 00401270 BW1M119 010a4850
-	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 	// BW1W120 00401240 BW1M119 01112ea0
 	virtual MESH_LIST GetMesh() const { return MeshId; }
 	// BW1W120 00401250 BW1M119 0109a3c0
 	virtual ABODE_TYPE GetAbodeType() const { return AbodeType; }
 	// BW1W120 00401260 BW1M119 0109a400
 	virtual ABODE_NUMBER GetAbodeNumber() const { return AbodeNumber; }
+	// BW1W120 00401270 BW1M119 010a4850
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = ABODE_INFO_LAST;
+		return &AbodeInfos[0];
+	}
 
 	// Static methods
 

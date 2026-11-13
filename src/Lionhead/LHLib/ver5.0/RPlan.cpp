@@ -840,6 +840,12 @@ void RPlan::ImproveRoute(Route* route, int depth)
 	route->Improved = true;
 }
 
+inline void RoutePosItem::Init(const Point2D& pos, float length)
+{
+	Pos = pos;
+	Length = length;
+}
+
 void RPlan::AddVisit(const Point2D& pos, float length)
 {
 	if (VisitBlocks != NULL)

@@ -13,14 +13,23 @@ class GameOSFile;
 class GameThing;
 class LH3DObject;
 class ParticleCreator;
+class PSysShadow;
 
 class Particle3DObj : public RenderParticle
 {
 public:
 	ParticleCreator* Creator;
-	uint32_t         field_0x1c;
+	PSysShadow*      Shadow;
 	LH3DObject*      Object3D;
-	uint8_t          field_0x24;
+	union {
+		struct
+		{
+			uint8_t UseGlobalAlpha : 1;
+			uint8_t DrawWithLandscapeColor : 1;
+			uint8_t DrawCutByPlane : 1;
+		};
+		uint8_t Flags;
+	};
 
 	// Override methods
 
@@ -43,6 +52,13 @@ public:
 
 	// BW1W120 006c7a10 BW1M119 01485b90
 	Particle3DObj();
+
+	// Non-virtual methods
+
+	// BW1W120 00679f20 BW1M119 013f9210
+	void DrawNow();
+	// BW1W120 00679f60 BW1M119 013f90e0
+	void AddDrawing();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_3D_OBJ_INCLUDED_H */

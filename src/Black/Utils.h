@@ -61,6 +61,8 @@ struct GUtils
 	static float GetDistance(const LHPoint& a, const LHPoint& b);
 	// BW1W120 0074caf0 BW1M119 01076080
 	static void __fastcall SetPointFromScreenPointAndDistance(LHCoord* coord, float distance, LHPoint* point);
+	// BW1W120 0074cbd0 BW1M119 01024cd0
+	static void __fastcall SetUnitDirectionVectorFromScreenPoint(const LHCoord& screen_point, LHPoint* direction);
 	// BW1W120 0074d200 BW1M119 010516f0
 	static long GetAngleFromDXDZ(long dx, long dz);
 	// BW1W120 0074d240 BW1M119 01051760
@@ -119,6 +121,10 @@ struct GUtils
 	static float GetXByAngle(unsigned short angle, float distance);
 	// BW1W120 0074d380 BW1M119 015962c0
 	static float GetZByAngle(unsigned short angle, float distance);
+	// BW1W120 0074d3a0 BW1M119 0107c130
+	static long GetXByAngleBigDistance(unsigned short angle, long distance);
+	// BW1W120 0074d3c0 BW1M119 0107c0d0
+	static long GetZByAngleBigDistance(unsigned short angle, long distance);
 	// BW1W120 0074d3e0 BW1M119 01590b30
 	static long GetXByAngleHugeDistance(unsigned short angle, long distance);
 	// BW1W120 0074d400 BW1M119 01590080

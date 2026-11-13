@@ -60,6 +60,8 @@ public:
 	virtual const char* GetText() { return "Mist"; }
 	// BW1W120 00606910 BW1M119 0110e560
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
+	// BW1W120 00606420 BW1M119 0110eb40
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 
 	// Constructors
 

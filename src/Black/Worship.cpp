@@ -1,6 +1,8 @@
 #include "CitadelPart.h"
 #include "FootpathFinder.h"
 #include "Game.h"
+#include <Lionhead/LH3DLib/development/LH3DMesh.h>
+#include "Game3DObject.h"
 #include "WorshipSiteInfo.h"
 #include "Rand.h"
 #include "Town.h"
@@ -28,7 +30,6 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include <Lionhead/LH3DLib/development/LH3DCitadel.h>
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>
 #include <Lionhead/LH3DLib/development/LH3DMath.h>
-#include <Lionhead/LH3DLib/development/LH3DMesh.h>
 #include <Lionhead/LH3DLib/development/LH3DTech.h>
 #include <Lionhead/LHLib/ver5.0/LHCollide.h> /* For class NewCollide */
 
@@ -39,7 +40,6 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "Dance.h"
 #include "DanceInfo.h"
 #include "InterfaceStatus.h"
-#include "Game3DObject.h"
 #include "GameOSFile.h"
 #include "GameStats.h"
 #include "GJUtils.h"

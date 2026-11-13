@@ -4,11 +4,12 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+
 #include "CameraHelpTypes.h" /* For enum CH_ANIMTYPE, enum KEYALIGN */
 
 // Forward Declares
 
-struct LH3DColor;
 struct LHPoint;
 
 enum CameraHelpReason
@@ -51,6 +52,35 @@ enum CAMERA_FEATURE
 	                        CAMERA_FEATURE_EDGE_SCROLL,
 };
 
+struct KMIcon
+{
+	float       StartAlpha;
+	float       EndAlpha;
+	float       FadeTime;
+	float       Alpha;
+	float       Time;
+	CH_ANIMTYPE AnimType;
+	int         Key;
+	int         MouseType;
+	wchar_t     Text[0x80];
+	int         X;
+	int         Y;
+	int         Size;
+	KEYALIGN    Align;
+	LH3DColor   Colour1;
+	LH3DColor   Colour2;
+	int         MaxAlpha;
+	KMIcon*     Next;
+
+	// BW1W120 00448be0 BW1M119 011a5f30
+	KMIcon();
+	// BW1W120 00448c00 BW1M119 011a5e70
+	~KMIcon();
+	// BW1W120 00448ac0 BW1M119 0107e4b0
+	void Draw(float time_inc);
+};
+static_assert(sizeof(KMIcon) == 0x140, "KMIcon size is incorrect");
+
 class CameraHelp
 {
 public:
@@ -66,8 +96,14 @@ public:
 	static void EnableCameraFeatures(int enable, int disable);
 	// BW1W120 00449140 BW1M119 010018f0
 	static void CameraHelpCallback(CameraHelpReason reason, LHPoint& point, unsigned long param_3);
+	// BW1W120 00447ba0 BW1M119 01053100
+	static void DrawGlow(int x1, int y1, int x2, int y2, unsigned long colour);
 	// BW1W120 00447850 BW1M119 0107e660
 	static void DrawMouseCallback();
+	// BW1W120 004489d0 BW1M119 011a6080
+	static KMIcon* CreateKeyOrMouseIcon(float start_alpha, float end_alpha, float fade_time, CH_ANIMTYPE anim_type,
+	                                    int key, int mouse_type, wchar_t* text, int x, int y, int size, KEYALIGN align,
+	                                    LH3DColor* colour1, LH3DColor* colour2, int alpha);
 	// BW1W120 00447ea0 BW1M119 01063100
 	static void DrawKeyOrMouse(CH_ANIMTYPE anim_type, int key, int mouse_type, wchar_t* text, int x, int y, int size,
 	                           KEYALIGN align, LH3DColor* colour1, LH3DColor* colour2, int alpha);

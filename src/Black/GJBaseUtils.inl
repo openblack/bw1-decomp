@@ -1,15 +1,3 @@
-// Member definitions for the templates declared in GJBaseUtils.h, which includes this file.
-//
-// The original allocates with the source path and line of the allocation; every build embeds its own
-// path for this file, and the GJArray::SetSize allocation is on line 428 in all of them.
-#if defined(VERSION_BW1W100)
-#define GJ_BASE_UTILS_FILE "C:\\dev\\black\\GJBaseUtils.inl"
-#elif defined(VERSION_BW1W110)
-#define GJ_BASE_UTILS_FILE "C:\\dev\\Black\\GJBaseUtils.inl"
-#else
-#define GJ_BASE_UTILS_FILE "C:\\dev\\MP\\Black\\GJBaseUtils.inl"
-#endif
-
 // GJVector
 
 template <class T> inline GJVector<T>::GJVector() : Data(NULL), Capacity(0), Size(0), GrowthIncrement(10) {}
@@ -36,11 +24,43 @@ template <class T> inline void GJVector<T>::Clear()
 template <class T> inline void GJVector<T>::PushBack(const T& value)
 {
 	if (Capacity == Size)
-	{
 		Grow(Size + GrowthIncrement);
-	}
 	MemoryAllocator.Construct(Data + Size, value);
 	++Size;
+}
+
+template <class T> inline void GJVector<T>::SetSize(long size)
+{
+	if (size > Size)
+	{
+		IncSizeTo(size);
+	}
+	else if (size < Size)
+	{
+		DecSizeTo(size);
+	}
+}
+
+template <class T> inline void GJVector<T>::IncSizeTo(long size)
+{
+	Grow(size);
+	T* end = Data + size;
+	T* entry = Data + Size;
+	while (entry < end)
+	{
+		MemoryAllocator.Construct(entry++);
+	}
+	Size = size;
+}
+
+template <class T> inline void GJVector<T>::DecSizeTo(long size)
+{
+	T* end = Data + Size;
+	for (T* entry = Data + size; entry < end; ++entry)
+	{
+		entry->~T();
+	}
+	Size = size;
 }
 
 template <class T> inline void GJVector<T>::Grow(long capacity)
@@ -83,6 +103,11 @@ template <class T> inline long GJVector<T>::GetSize() const
 	return Size;
 }
 
+template <class T> inline T* GJVector<T>::GetMemBuffer()
+{
+	return Data;
+}
+
 template <class T> inline T& GJVector<T>::operator[](long index)
 {
 	return Data[index];
@@ -113,7 +138,7 @@ template <class T> inline long GJArray<T>::SetSize(long size)
 	Size = size;
 	if (Size != 0)
 	{
-		Data = new (GJ_BASE_UTILS_FILE, 428) T[Size];
+		Data = NEW(428) T[Size];
 	}
 	if (Data == NULL)
 	{
@@ -206,5 +231,3 @@ template <class T> inline void GJDoubleLinkList<T>::RemoveFromList(T* item)
 	item->Next = NULL;
 	item->Previous = NULL;
 }
-
-#undef GJ_BASE_UTILS_FILE

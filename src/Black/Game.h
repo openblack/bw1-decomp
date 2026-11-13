@@ -37,6 +37,9 @@
 #define GAME_MILLISECONDS_PER_TURN          100
 #define GAME_DEFAULT_MULTIPLAYER_TIME_LIMIT 30
 #define TUTORIAL_STATE_ESCAPE_RESET         1
+#define GAME_SPEED_MINIMUM                  0.5f
+#define GAME_SPEED_MAXIMUM                  2.0f
+#define INSTANT_SAVE_MINIMUM_TURNS          3
 
 enum CREATURE_BITS
 {
@@ -127,6 +130,8 @@ class LHVideoPlayer;
 class LHMail;
 class FallingSpell;
 class LHPlayer;
+struct SetupBox;
+struct SetupControl;
 
 enum GAME_FLAGS
 {
@@ -137,7 +142,7 @@ enum GAME_FLAGS
 	GAME_FLAG_DRAW_VALUE_SPINNERS = 0x4000,
 	GAME_FLAG_CLEARING_MAP = 0x8000,
 	GAME_FLAG_AUTO_SAVE_ENABLED = 0x10000,
-	GAME_FLAG_UNKNOWN_0x20000 = 0x20000,
+	GAME_FLAG_SHOW_VILLAGER_NAMES = 0x20000,
 	GAME_FLAG_WAIT_FOR_BUILDING_WOOD = 0x40000,
 	GAME_FLAG_SHOW_VILLAGER_INFO = 0x200000,
 	GAME_FLAG_FORCE_GAME_TURN = 0x400000,
@@ -226,12 +231,17 @@ public:
 		uint32_t GameFlags;
 		struct
 		{
-			uint32_t : 18;
+			uint32_t : 2;
+			uint32_t Paused : 1;
+			uint32_t : 14;
+			uint32_t ShowVillagerNames : 1;
 			uint32_t WaitForBuildingWood : 1;
+			uint32_t : 2;
+			uint32_t ShowVillagerInfo : 1;
 #ifdef VERSION_BW1WCI
-			uint32_t : 6;
+			uint32_t : 3;
 #else
-			uint32_t : 4;
+			uint32_t : 1;
 #endif
 			uint32_t CanSkipTutorial : 1;
 			uint32_t CanSkipCreatureTraining : 1;
@@ -262,10 +272,10 @@ public:
 #endif
 	uint32_t               LandNumber;
 	bool32_t               SkirmishGame;
-	int                    field_0x205a10;
+	bool32_t               GameOverStarted;
 	int                    field_0x205a14;
-	uint32_t               field_0x205a18;
-	int                    field_0x205a1c;
+	uint32_t               InstantSaveTurn;
+	int                    InstantLoadTurn;
 	GLandscape             landscape;
 	GAME_VIEW_MODE         ViewMode;
 	uint32_t               field_0x205a2c;
@@ -534,7 +544,10 @@ public:
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long player_number, float value);
 	// BW1W120 00551580 BW1M119 01566500
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, MusicMoodPacket& packet);
-	// BW1W120 null BW1M119 01497220
+	// BW1W120 00550f80 BW1M119 01388940
+	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long first_value, unsigned long second_value,
+	               unsigned long third_value);
+	// BW1W120 0054da00 BW1M119 01497220
 	void CancelIntro();
 	// BW1W120 null BW1M119 01028140
 	bool32_t CheckNeedUpdateInfluence(float x, float z);
@@ -542,10 +555,10 @@ public:
 	void CloseOneTimeOnly();
 	// BW1W120 null BW1M119 0100ce10
 	void DecompressPacket(GPacket& packet, void* data);
-	// BW1W120 null BW1M119 01566860
-	void DoAreYoSureLeaveLand0Requestor(wchar_t* text);
-	// BW1W120 null BW1M119 013f9590
-	void DoAreYouSureLand0Requestor(wchar_t* text);
+	// BW1W120 0054cb90 BW1M119 01566860
+	static void DoAreYoSureLeaveLand0Requestor(wchar_t* text);
+	// BW1W120 0054cb50 BW1M119 013f9590
+	static void DoAreYouSureLand0Requestor(wchar_t* text);
 	// BW1W120 null BW1M119 011c6d30
 	void FlushPacketBuffer();
 	// BW1W120 null BW1M119 01011ab0
@@ -554,8 +567,8 @@ public:
 	uint32_t GetInterfaceUpdateCount();
 	// BW1W120 null BW1M119 0110c080
 	GKeyBuffer* GetKeyBuffer();
-	// BW1W120 null BW1M119 013e1550
-	uint32_t GetKeyFromModifier(uint16_t modifier);
+	// BW1W120 005553a0 BW1M119 013e1550
+	static LH_KEY GetKeyFromModifier(uint16_t modifier);
 	// BW1W120 null BW1M119 010d1f40
 	LHPlayer* GetTeamLeaderLHPlayer();
 	// BW1W120 null BW1M119 011193b0
@@ -566,7 +579,7 @@ public:
 	void ProcessDebugGameDataPacket(void* data, int size, GPlayer* player);
 	// BW1W120 null BW1M119 0151a640
 	void RemoveAllPlayerSparkles();
-	// BW1W120 null BW1M119 015634b0
+	// BW1W120 00551040 BW1M119 015634b0
 	void SetPacketWithData(PACKET_TYPE type, void* data, long size);
 	// BW1W120 null BW1M119 01583250
 	void ToggleHelpEditor();
@@ -632,15 +645,38 @@ public:
 	// BW1W120 005557d0
 	void fn_005557D0();
 	// BW1W120 0063f830 BW1M119 010a1090
-	uint32_t ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned long param_3);
+	uint32_t ProcessBindableKeys(LH_KEY key, LH_KEY modifier_key, unsigned long mouse_button);
 	// BW1W120 0063f940 BW1M119 010a1200
-	uint32_t DoAction(unsigned long param_1);
+	uint32_t DoAction(unsigned long action);
+	// BW1W120 00640cb0
+	void ProcessDebugKey(LH_KEY key, unsigned short modifier);
+	// BW1W120 00640cc0
+	void ProcessJeremyKey(LH_KEY key, unsigned short modifier);
+	// BW1W120 00640fa0
+	static void ProcessTimKey(LH_KEY key, unsigned short modifier);
+	// BW1W120 00640fe0
+	void ProcessProfile4Key(LH_KEY key, unsigned short modifier);
+	// BW1W120 00640ff0
+	void ProcessProfile5Key(LH_KEY key, unsigned short modifier);
+	// BW1W120 00641000
+	void ProcessProfile6Key(LH_KEY key, unsigned short modifier);
+	// BW1W120 00641010
+	void ProcessOutOfSyncKey(LH_KEY key, unsigned short modifier);
+	// BW1W120 00641050
+	static void ProcessStatsKey(LH_KEY key, unsigned short modifier);
+	// BW1W120 00641080
+	void ProcessGeorgeKey(LH_KEY key, unsigned short modifier);
+	// BW1W120 00641570
+	static void ProcessTomKey(LH_KEY key, unsigned short modifier);
 
 	// BW1W120 00552ff0 BW1M119 010d4eb0
 	Town* FindClosestTown(const MapCoords& coords);
 	// BW1W120 00555a10 BW1M119 01505ae0
 	LHPlayer* GetMyLHPlayer();
 };
+
+// BW1W120 0054b1a0 BW1M119 012641f0
+void __stdcall GameOverBoxCallback(int message, SetupBox* box, SetupControl* control, int data1, int data2);
 
 template <typename T> inline void GTPointer<T>::SetGameTurnValidated()
 {

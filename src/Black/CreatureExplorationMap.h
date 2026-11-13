@@ -66,6 +66,16 @@ public:
 
 	// BW1W120 004df9c0 BW1M119 01265230
 	void PrecalculateMap();
+	// BW1W120 inlined BW1M119 0116fda0
+	LH3DMapCoords& GetRegionHighestPos(short region_x, short region_z)
+	{
+		return Regions[region_x][region_z].HighestPos;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	float GetRegionHighestAltitude(short region_x, short region_z)
+	{
+		return Regions[region_x][region_z].HighestAltitude;
+	}
 	// BW1W120 004dfa10 BW1M119 012650c0
 	void CalculateMaxAltitudeForRegion(short region_x, short region_z);
 	// BW1W120 004dfb50 BW1M119 01264cf0

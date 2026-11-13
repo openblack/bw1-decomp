@@ -21,6 +21,8 @@ enum TEXTJUSTIFY
 // Forward Declares
 
 struct LH3DColor;
+struct LH3DMaterial;
+struct LH3DTexture;
 struct LHMatrix;
 
 struct FontFile
@@ -29,6 +31,17 @@ struct FontFile
 
 	// BW1W120 008303c0 BW1M119 010c6630 (LHCombined Release)
 	bool ReadFromFile(const char* filename);
+	// BW1W120 inlined BW1M119 010c6590 (LHCombined Release)
+	void Close();
+};
+
+enum GAME_FONT
+{
+	GAME_FONT_DEFAULT,
+	GAME_FONT_GOOD,
+	GAME_FONT_NEUTRAL,
+	GAME_FONT_EVIL,
+	GAME_FONT_LAST
 };
 
 #define FONT_CACHE_ENTRIES      2048
@@ -93,6 +106,8 @@ struct FontCache
 {
 	// BW1W120 00eccd18 BW1M119 01332248 (LHCombined Release)
 	static uint8_t cachetime;
+	// BW1W120 00ecb898 BW1M119 013326ec (LHCombined Release)
+	static FontFile font[GAME_FONT_LAST];
 	// BW1W120 00ecce20 BW1M119 01332b5c (LHCombined Release)
 	static CacheEntry cache[FONT_CACHE_ENTRIES];
 	// BW1W120 00ed0e20 BW1M119 0133224c (LHCombined Release)
@@ -135,22 +150,25 @@ struct FontCache
 	CacheEntry* AddToCache(char16_t param_1, uint8_t param_2);
 	// BW1W120 00832bb0
 	CacheEntry* Find(char16_t param_1, uint8_t param_2);
-};
-
-enum GAME_FONT
-{
-	GAME_FONT_DEFAULT,
-	GAME_FONT_GOOD,
-	GAME_FONT_NEUTRAL,
-	GAME_FONT_EVIL,
-	GAME_FONT_LAST
+	// BW1W120 inlined BW1M119 010c2a70 (LHCombined Release)
+	void ClearInCache(uint8_t font, uint16_t code);
+	// BW1W120 inlined BW1M119 010c2ad0 (LHCombined Release)
+	void SetInCache(uint8_t font, uint16_t code);
+	// BW1W120 inlined BW1M119 01030c70 (LHCombined Release)
+	static uint8_t IsInCache(uint8_t font, uint16_t code);
+	// BW1W120 inlined BW1M119 01031ae0 (LHCombined Release)
+	static uint8_t HASH(wchar_t code, uint8_t font);
 };
 
 struct GatheringText
 {
 	// BW1W120 00eccd08 BW1M119 01332238 (LHCombined Release)
 	static GatheringText* gamefont[GAME_FONT_LAST];
-	uint8_t               field_0x0;
+	// BW1W120 00ed92dc BW1M119 01332234 (LHCombined Release)
+	static LH3DMaterial* bubmat;
+	// BW1W120 00ed92e0 BW1M119 01332230 (LHCombined Release)
+	static LH3DTexture* bubtex;
+	uint8_t             field_0x0;
 
 	// Static methods
 
@@ -172,6 +190,8 @@ struct GatheringText
 	static void CloseGameFonts();
 	// BW1W120 00831130 BW1M119 01033370 (LHCombined Release)
 	float GetStringWidth(char16_t* str, int len, float text_size);
+	// BW1W120 inlined BW1M119 0135e7a0
+	float GetStringWidth(char* str, int len, float text_size);
 	// Inliner IL size: 41
 	// BW1W120 inlined BW1M119 inlined
 	float GetStringWidth(char16_t* str, int len, float text_size, float scale)
@@ -192,11 +212,11 @@ struct GatheringText
 	                      float param_6, float param_7, float param_8, uint16_t param_9);
 	// BW1W120 00832c60 BW1M119 01030e80 (LHCombined Release)
 	void DrawTextRaw(char16_t* text, int count, float x, float y, float z, float size, LH3DColor* color_top,
-	                 int no_z_test, LH3DColor* color_bottom, float fade_top, float fade_bottom);
+	                 bool32_t no_z_test, LH3DColor* color_bottom, float fade_top, float fade_bottom);
 	// BW1W120 008321c0 BW1M119 010c31f0 (LHCombined Release)
-	void DrawTextRawOriented(LHMatrix& param_1, int param_2, int param_3, const char16_t* param_4, int param_5,
-	                         float param_6, float param_7, float param_8, float param_9, float param_10,
-	                         LH3DColor* param_11, int param_12, LH3DColor* param_13);
+	void DrawTextRawOriented(LHMatrix& matrix, int axis_x, int axis_y, char16_t* text, int count, float x, float y,
+	                         float z, float size, float scale, LH3DColor* color_top, bool32_t z_test,
+	                         LH3DColor* color_bottom);
 	// BW1W120 00832c60 BW1M119 01030e80 (LHCombined Release)
 	void DrawTextRaw(const char16_t* text, int param_2, float x, float y, float param_5, float param_6,
 	                 LH3DColor* param_7, int param_8, LH3DColor* param_9, float param_10, float param_11);
@@ -210,6 +230,12 @@ struct GatheringText
 
 // BW1W120 008300a0 BW1M119 0100f7a0 (LHCombined Release)
 wchar_t* __cdecl CHAR2WCHAR(const char* text);
+
+// BW1W120 inlined BW1M119 0135e7a0
+inline float GatheringText::GetStringWidth(char* str, int len, float text_size)
+{
+	return GetStringWidth(CHAR2WCHAR(str), len, text_size);
+}
 // BW1W120 008300d0
 void __cdecl THAI_RESET();
 // BW1W120 008300e0 BW1M119 01030cd0 (LHCombined Release)

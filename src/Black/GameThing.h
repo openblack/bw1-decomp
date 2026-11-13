@@ -375,7 +375,7 @@ public:
 	// BW1W120 00401840 BW1M119 01480930
 	virtual bool32_t IsCreatureNotTooNear(Creature* creature) { return false; }
 	// BW1W120 00405130 BW1M119 013e8040
-	virtual float GetDrawImportance();
+	virtual float GetDrawImportance() { return 0.0f; }
 	// BW1W120 00401850 BW1M119 013e7ff0
 	virtual float GetMaxAlignmentChangePerGameTurn() { return GAME_THING_MAX_ALIGNMENT_CHANGE_PER_GAME_TURN; }
 	// BW1W120 00401860 BW1M119 01575450
@@ -397,9 +397,9 @@ public:
 	// BW1W120 0056fee0 BW1M119 01433210
 	virtual void UpdateSpellInfo(Spell* spell, PSysProcessInfo* info);
 	// BW1W120 00405140 BW1M119 013e5910
-	virtual float GetRadius();
+	virtual float GetRadius() { return 0.0f; }
 	// BW1W120 00405150 BW1M119 01502990
-	virtual float Get2DRadius();
+	virtual float Get2DRadius() { return 0.0f; }
 #ifdef VERSION_BW1WCI
 	// BW1WCI 004018b0 BW1MCI119 011e4d30
 	virtual void SetColour(LH3DColor& colour) {}
@@ -415,13 +415,13 @@ public:
 	// BW1W120 004018c0 BW1M119 011a7300
 	virtual uint32_t AddFootpathLink(GFootpath* footpath) { return 0; }
 	// BW1W120 00405180 BW1M119 010af4e0
-	virtual uint32_t GetNearestPathTo(const MapCoords& coords, float max_distance, bool32_t backwards);
+	virtual uint32_t GetNearestPathTo(const MapCoords& coords, float max_distance, bool32_t backwards) { return 0; }
 	// BW1W120 00570330 BW1M119 011c2750
 	virtual void UseFootpathIfNecessary(Living* living, const MapCoords& coords, uint8_t state);
 	// BW1W120 00405190 BW1M119 011a3bd0
-	virtual bool32_t AddFootpath(GFootpath* footpath);
+	virtual bool32_t AddFootpath(GFootpath* footpath) { return false; }
 	// BW1W120 004051a0 BW1M119 011a2f70
-	virtual bool32_t RemoveFootpath(GFootpath* footpath);
+	virtual bool32_t RemoveFootpath(GFootpath* footpath) { return false; }
 	// BW1W120 005705f0 BW1M119 0111a5c0
 	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool poisoned);
 	// BW1W120 00570600 BW1M119 010e8c60
@@ -429,12 +429,18 @@ public:
 	// BW1W120 00570610 BW1M119 0151aca0
 	virtual uint32_t JustGetResource(RESOURCE_TYPE type, uint32_t amount, bool* poisoned);
 	// BW1W120 004051b0 BW1M119 011a2fc0
-	virtual uint32_t GetResource(RESOURCE_TYPE type);
+	virtual uint32_t GetResource(RESOURCE_TYPE type) { return 0; }
 	// BW1W120 004051c0 BW1M119 010b6040
 	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool poisoned,
-	                             const MapCoords* coords, int from_other_player);
+	                             const MapCoords* coords, int from_other_player)
+	{
+		return 0;
+	}
 	// BW1W120 004051d0 BW1M119 01344990
-	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* poisoned);
+	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* poisoned)
+	{
+		return 0;
+	}
 	// BW1W120 004018d0 BW1M119 01183ae0
 	virtual Creature* CastCreature() { return NULL; }
 	// BW1W120 004018e0 BW1M119 0159bec0
@@ -452,15 +458,15 @@ public:
 	// BW1W120 00401920 BW1M119 010a3070
 	virtual bool32_t IsDeletedOnNewMap() { return true; }
 	// BW1W120 00405200 BW1M119 01577b30
-	virtual uint16_t GetNumberOfInstanceForGlobalList();
+	virtual uint16_t GetNumberOfInstanceForGlobalList() { return 1; }
 	// BW1W120 00405210 BW1M119 015832d0
-	virtual float GetTownArtifactValue();
+	virtual float GetTownArtifactValue() { return 0.0f; }
 	// BW1W120 00405220 BW1M119 0116fb50
 	virtual bool CanBecomeArtifact() { return false; }
 	// BW1W120 00405230 BW1M119 0116ebe0
 	virtual void DrawInHand(GInterfaceStatus* status) {}
 	// BW1W120 00405240 BW1M119 0106a010
-	virtual bool32_t IsFunctional();
+	virtual bool32_t IsFunctional() { return IsAvailable(); }
 	// BW1W120 00425da0 BW1M119 014a3120
 	virtual char* GetDebugText();
 	// BW1W120 0071bc20 BW1M119 01517ad0
@@ -478,10 +484,10 @@ public:
 	// BW1W120 0056fda0 BW1M119 013fd010
 	virtual void SaveExtraData(GameOSFile& file);
 	// BW1W120 00405250 BW1M119 013e3d10
-	virtual void ResolveLoad();
+	virtual void ResolveLoad() {}
 #ifdef VERSION_BW1WCI
 	// BW1WCI 004051f0 BW1MCI119 010dcb70
-	virtual void SetDiseapearFlag();
+	virtual void SetDiseapearFlag() {}
 #endif
 
 	// Static methods

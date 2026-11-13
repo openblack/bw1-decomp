@@ -31,6 +31,8 @@ public:
 		void DeAllocate(T* data, long count) { delete[] (char*)data; }
 		// BW1W120 00564900
 		void Construct(T* destination, const T& value) { new (destination) T(value); }
+		// BW1W120 0067d420
+		void Construct(T* destination) { new (destination) T; }
 	};
 
 	// Instantiations: BW1M119 01002fb0 (GTPointer<GameThing>), 01002f64 (LHPoint).
@@ -46,6 +48,15 @@ public:
 	// (LHPoint), BW1M119 01317390 (GTPointer<GameThing>).
 	// BW1W120 00564920
 	void Grow(long capacity);
+
+	// BW1W120 inlined BW1M119 013fa190
+	void SetSize(long size);
+	// BW1W120 0067d0e0 BW1M119 013fa2d0
+	void IncSizeTo(long size);
+	// BW1W120 0067d180 BW1M119 01002ee0
+	void DecSizeTo(long size);
+	// BW1W120 inlined BW1M119 013fa200
+	T* GetMemBuffer();
 
 	// BW1W120 inlined BW1M119 010348b0
 	long GetSize() const;
@@ -174,9 +185,14 @@ public:
 	// BW1W120 inlined BW1M119 01342690
 	const T& GetValue() { return Value; }
 	// BW1W120 inlined BW1M119 013426e0
-	void Init(const T& value, float time_constant);
-	// BW1W120 inlined BW1M119 013427a0
-	void Update(float time, const T& value);
+	void Init(const T& value, float response)
+	{
+		Value = value;
+		TimeConstant = -10.0f * (float)log(1.0f - response);
+		Initialised = true;
+	}
+	// BW1W120 005b36f0 BW1M119 013425e0
+	void Update(float time, const T& value) { Value += (value - Value) * (1.0f - expf(-TimeConstant * time)); }
 
 	T     Value;
 	float TimeConstant;

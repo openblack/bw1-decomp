@@ -6,13 +6,16 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+struct GameStatsPackage;
+
 class StatsBox : public DialogBoxBase
 {
 public:
-	uint8_t field_0x10[0x30];
-	bool    ShowCurrentGame; /* 0x40 */
-	uint8_t field_0x41[0x2f];
-	void*   StatsBuffer; /* 0x70 */
+	uint8_t           field_0x10[0x30];
+	bool              ShowCurrentGame; /* 0x40 */
+	uint8_t           field_0x41[0x2b];
+	GameStatsPackage* Package;     /* 0x6c */
+	void*             StatsBuffer; /* 0x70 */
 
 	// Override methods
 

@@ -71,8 +71,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004012c0 BW1M119 013e51c0
-	virtual const char* GetDebugText() const { return DebugString; }
 	// BW1W120 0042b380 BW1M119 013e4f50
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
 	{
@@ -87,6 +85,8 @@ public:
 	virtual ALIGNMENT_TYPE GetAlignmentType() const { return AlignmentType; }
 	// BW1W120 004012b0 BW1M119 01064f20
 	virtual FOOD_TYPE GetFoodType() const { return FoodType; }
+	// BW1W120 004012c0 BW1M119 013e51c0
+	virtual const char* GetDebugText() const { return DebugString; }
 
 	// Non-virtual methods
 

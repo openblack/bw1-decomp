@@ -43,10 +43,10 @@ bool32_t Animal::FleeingFromPredatorReaction()
 		LHPoint predatorPos;
 		GLandscape::ConvertMapCoordToLandscapePoint(ReactionObject->Pos, predatorPos);
 		LHPoint away = pos - predatorPos;
-		away.Normalise();
+		away.Normalize();
 		LHPoint movement;
 		ReactionObject->GetMovementDirection(&movement);
-		movement.Normalise();
+		movement.Normalize();
 	}
 	MapCoords fleePos;
 	GetFleeingPositionFromMovingObject(&fleePos, ReactionObject.Get(), ANIMAL_FLEE_FROM_PREDATOR_DISTANCE);

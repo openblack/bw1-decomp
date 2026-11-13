@@ -33,6 +33,10 @@ public:
 	uint32_t GateType;
 	Object*  GateStones[ANIMATED_STATIC_GATE_STONE_COUNT];
 	uint32_t GateStoneIndices[ANIMATED_STATIC_GATE_STONE_COUNT];
+#ifdef VERSION_BW1WCI
+	float BalistaXAngle;
+	float BalistaYAngle;
+#endif
 
 	// Override methods
 
@@ -83,6 +87,8 @@ public:
 	uint32_t CountGateStones();
 	// BW1W120 00422d50 BW1M119 010a9230
 	bool32_t AddGateStone(MESH_LIST mesh);
+	// BW1W120 00422250 BW1M119 010aac50
+	LH3DMesh* GetCurrentPhysicsMesh();
 };
 
 #endif /* BW1_DECOMP_ANIMATED_STATIC_INCLUDED_H */

@@ -667,6 +667,23 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004061FA, call_indirect(0x008A9890)),  # Abode: __imp__timeKillEvent@4
     (0x0040729A, call_indirect(0x008A98DC)),  # Abode: __imp__bind@4
     (0x004073BA, call_indirect(0x008A93DC)),  # Abode: __imp_?_lhbeginthread@@YAKPADP6AXPAX@ZI1J@Z
+    (0x0041406B, call_rel32(0x00401879)),  # Alignment
+    (0x0041419A, call_indirect(0x008A9804)),  # Alignment: __imp__GetSystemMetrics@4
+    (0x0041440A, call_indirect(0x008A9480)),  # Alignment: __imp_?IsConnected@LHTransport@@QAEHXZ
+    (0x0041465A, call_indirect(0x008A9978)),  # Alignment: __imp__CoFileTimeToDosDateTime@12
+    (0x004146EA, call_indirect(0x008A900C)),  # Alignment: __imp__GetUserNameA@4
+    (0x00414BAA, call_indirect(0x008A98A8)),  # Alignment: __imp__waveInClose@4
+    (0x00414EDB, call_rel32(0x00401879)),  # Alignment
+    (0x0041547B, call_rel32(0x00401879)),  # Alignment
+    (0x004155FB, call_rel32(0x00401879)),  # Alignment
+    (0x00416B7A, call_indirect(0x008A991C)),  # Alignment: __imp__ioctlsocket@4
+    (0x00416BBB, call_rel32(0x00401879)),  # Alignment
+    (0x00416C4B, call_rel32(0x00401879)),  # Alignment
+    (0x0041BD4B, call_rel32(0x00401879)),  # AnimalAnimation
+    (0x0041BEDB, call_rel32(0x00401879)),  # AnimalAnimation
+    (0x0041BF4B, call_rel32(0x00401879)),  # AnimalAnimation
+    (0x0041C03A, call_indirect(0x008A9690)),  # AnimalAnimation: __imp_?db_execute_transaction_async@@YA?AW4DBSTATUS@@PAUDBInfo@@PADPAVLHNetUser@@PAVLHTransportInfo@@@Z
+    (0x0041CA9B, call_rel32(0x00401879)),  # AnimalAnimation
     (0x0041D4CA, call_indirect(0x008A9978)),  # AnimalCow: __imp__CoFileTimeToDosDateTime@12
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
@@ -739,6 +756,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004E152A, call_indirect(0x008A9024)),  # CreatureMentalLearn: __imp__DirectDrawCreateEx@4
     (0x004E2D0B, call_rel32(0x00401879)),  # CreatureMentalMisc
     (0x004E35BB, call_rel32(0x00401879)),  # CreatureMentalObjectMultipliers
+    (0x004EAC5B, call_rel32(0x00401879)),  # CreatureMorph
     (0x004F036B, call_rel32(0x00401879)),  # CreaturePlan
     (0x004F11AB, call_rel32(0x00401879)),  # CreaturePlan
     (0x004F126B, call_rel32(0x00401879)),  # CreaturePlan
@@ -746,6 +764,35 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004F1B5B, call_rel32(0x00401879)),  # CreaturePlan
     (0x004F218B, call_rel32(0x00401879)),  # CreaturePreviousActionContext
     (0x004F231B, call_rel32(0x00401879)),  # CreaturePreviousContext
+    (0x004F8D6B, call_rel32(0x00401879)),  # CreatureSubAction
+    (0x004FF68B, call_rel32(0x00401879)),  # SubArgument
+    (0x004FF81B, call_rel32(0x00401879)),  # SubArgument
+    (0x0050025A, call_indirect(0x008A9640)),  # CreatureSubActions
+    (0x005004AA, call_indirect(0x008A9978)),  # CreatureSubActions
+    (0x0050128B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x005012AB, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050189A, call_indirect(0x008A92F4)),  # CreatureSubActions
+    (0x0050231A, call_indirect(0x008A96E4)),  # CreatureSubActions
+    (0x00502FEA, call_indirect(0x008A9950)),  # CreatureSubActions
+    (0x0050305B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x00503A8B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050406B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050455B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050531A, call_indirect(0x008A9970)),  # CreatureSubActions
+    (0x005053FA, call_indirect(0x008A902C)),  # CreatureSubActions
+    (0x0050561B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x00505C5A, call_indirect(0x008A9034)),  # CreatureSubActions
+    (0x00505F5A, call_indirect(0x008A90D8)),  # CreatureSubActions
+    (0x0050614A, call_indirect(0x008A903C)),  # CreatureSubActions
+    (0x005062EB, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050661B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050666B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050746B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x0050747B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x00507DBB, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x005084CA, call_indirect(0x008A97D4)),  # CreatureSubActions
+    (0x00508C5B, call_rel32(0x00401879)),  # CreatureSubActions
+    (0x00508D2B, call_rel32(0x00401879)),  # CreatureSubActions
     (0x0050AA4B, call_rel32(0x00401879)),  # Creche
     (0x0050AB3A, call_indirect(0x008A9570)),  # Creche: __imp__db_free_data__YAXPAPAD_Z@4
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
@@ -846,18 +893,59 @@ BW1W120_SAFEDISC_CALLS = (
     (0x005957EB, call_rel32(0x004017F9)),  # GlobalGameList
     (0x00595ADA, call_indirect(0x008A903C)),  # GlobalGameList: __imp__DirectXSetupGetVersion
     (0x00595BFA, call_indirect(0x008A97C4)),  # GlobalGameList: __imp__LoadImageA@4
+    (0x005B02AB, call_rel32(0x004017F9)),  # HandStateCamera
+    (0x005B0BEB, call_rel32(0x004017F9)),  # HandStateCitadel
+    (0x005B13CB, call_rel32(0x004017F9)),  # HandStateCreature
+    (0x005B3A2B, call_rel32(0x004017F9)),  # HandStateHolding
+    (0x005B57CB, call_rel32(0x004017F9)),  # HandStateMultiPickUp
+    (0x005B74EB, call_rel32(0x004017F9)),  # HandStatePlayAnim
+    (0x005B779B, call_rel32(0x004017F9)),  # HandStateTotem
+    (0x005B7DCB, call_rel32(0x004017F9)),  # HandStateTug
+    (0x005C533B, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C557B, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C577A, call_indirect(0x008A95B0)),  # HelpSystem: __imp__GetNextMail_LHMail__QAEPAULHMailEmail__XZ@4
+    (0x005C5EBB, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C633B, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C6B5B, call_rel32(0x004017F9)),  # HelpSystem
+    (0x005C6CEA, call_indirect(0x008A9978)),  # HelpSystem: __imp__CoFileTimeToDosDateTime@12
+    (0x005C7CEA, call_indirect(0x008A9004)),  # HelpSystem: __imp__RegCloseKey@4
+    (0x005C7F2A, call_indirect(0x008A98C8)),  # HelpSystem: __imp__mmioRead@4
     (0x005C81BB, call_rel32(0x004017F9)),  # HelpSystemBanter
     (0x005C81DB, call_rel32(0x004017F9)),  # HelpSystemBanter
     (0x005C896B, call_rel32(0x004017F9)),  # HelpSystemInfo
     (0x005C945B, call_rel32(0x004017F9)),  # HelpSystemQuery
     (0x005C949A, call_indirect(0x008A991C)),  # HelpSystemQuery: __imp__ioctlsocket@4
     (0x005C98DA, call_indirect(0x008A939C)),  # HelpSystemQuery: __imp_?GetModuleChecksum@LHVersion@@SAKXZ
+    (0x005CAACB, call_rel32(0x004017F9)),  # HelpText
+    (0x005CB00B, call_rel32(0x004017F9)),  # HelpText
     (0x005E79DB, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E7AAB, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E7FAA, call_indirect(0x008A9328)),  # LHInetWeather: __imp_LHEditBox...
     (0x005E8C5B, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E93EB, call_rel32(0x004017F9)),  # LHInetWeather
     (0x005E96CA, call_indirect(0x008A901C)),  # LHInetWeather: __imp__TrackMouseEvent@4
+    (0x005F895A, call_indirect(0x008A97AC)),  # logo: __imp__ShellExecuteA@24
+    (0x005FA06B, call_rel32(0x004017F9)),  # logo
+    (0x005FA35A, call_indirect(0x008A999C)),  # logo: __imp__Disconnect_Dialup...
+    (0x00601F3B, call_rel32(0x004017F9)),  # MapCoords
+    (0x0060245B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00602C6B, call_rel32(0x004017F9)),  # MapCoords
+    (0x0060310B, call_rel32(0x004017F9)),  # MapCoords
+    (0x0060315B, call_rel32(0x004017F9)),  # MapCoords
+    (0x006034CA, call_indirect(0x008A9024)),  # MapCoords: __imp__DirectDrawCreateEx@4
+    (0x0060371B, call_rel32(0x004017F9)),  # MapCoords
+    (0x006038AA, call_indirect(0x008A9034)),  # MapCoords: __imp__DirectInputCreateA@4
+    (0x006041BA, call_indirect(0x008A90D8)),  # MapCoords: __imp___ChangeParameters_CImmPeriodic...
+    (0x006042EA, call_indirect(0x008A903C)),  # MapCoords: __imp__DirectXSetupGetVersion
+    (0x00604DDB, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604E1B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604E2B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604E3B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604EEB, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604F2B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00604F3B, call_rel32(0x004017F9)),  # MapCoords
+    (0x00605E5A, call_indirect(0x008A97D4)),  # MapCoords: __imp__GetKeyNameTextW@4
+    (0x00605FAA, call_indirect(0x008A9630)),  # MapCoords: __imp_?LHNetGetCurrentUsedProfile@@YAPAGXZ
     (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
     (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
     (0x0060714B, call_rel32(0x004017F9)),  # MobileObject
@@ -867,6 +955,13 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0060812B, call_rel32(0x004017F9)),  # MobileObject
     (0x006083BB, call_rel32(0x004017F9)),  # MobileObject
     (0x0060843A, call_indirect(0x008A9960)),  # MobileObject: __imp__BinkGetSummary@8
+    (0x006266BB, call_rel32(0x004017F9)),  # MPFEChannelDetails
+    (0x006269CB, call_rel32(0x004017F9)),  # MPFEChannelMessages
+    (0x0062797B, call_rel32(0x004017F9)),  # MPFEChannelMessages
+    (0x0062AC4B, call_rel32(0x004017F9)),  # MPFEChooseConnection
+    (0x0062B8BB, call_rel32(0x004017F9)),  # MPFEChooseConnection
+    (0x0062C6AB, call_rel32(0x004017F9)),  # MPFEConditionMessages
+    (0x0062C6FB, call_rel32(0x004017F9)),  # MPFEConditionMessages
     (0x0062DB2B, call_rel32(0x004017F9)),  # MPFECreatureDownload
     (0x0062DB4B, call_rel32(0x004017F9)),  # MPFECreatureDownload
     (0x0062E55B, call_rel32(0x004017F9)),  # MPFEDownloads
@@ -874,9 +969,11 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0062FABB, call_rel32(0x004017F9)),  # MPFEGameStartMessages
     (0x0062FB0B, call_rel32(0x004017F9)),  # MPFEGameStartMessages
     (0x0063010B, call_rel32(0x004017F9)),  # MPFEGameStartMessages
+    (0x006304FB, call_rel32(0x004017F9)),  # MPFELogin
     (0x0063114B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x0063119B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x006314BB, call_rel32(0x004017F9)),  # MPFEMapMessages
+    (0x0063173B, call_rel32(0x004017F9)),  # MPFENumberCodec
     (0x006362FB, call_rel32(0x004017F9)),  # Object
     (0x0063673B, call_rel32(0x004017F9)),  # Object
     (0x006377BB, call_rel32(0x004017F9)),  # Object
@@ -890,6 +987,11 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0063AB7B, call_rel32(0x004017F9)),  # Object3D
     (0x0063B0AB, call_rel32(0x004017F9)),  # Object3D
     (0x0063B8CB, call_rel32(0x004017F9)),  # OnMapTrajectory
+    (0x0066CB5B, call_rel32(0x004017F9)),  # Pot
+    (0x0066D0FB, call_rel32(0x004017F9)),  # Pot
+    (0x0066D69B, call_rel32(0x004017F9)),  # Pot
+    (0x0066D9FB, call_rel32(0x004017F9)),  # Pot
+    (0x0066E0FB, call_rel32(0x004017F9)),  # Pot
     (0x006975FB, call_rel32(0x004017F9)),  # PSysLoad
     (0x00697D5B, call_rel32(0x004017F9)),  # PSysLoad
     (0x006994AB, call_rel32(0x004017F9)),  # PSysLoad
@@ -1022,6 +1124,61 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00407794, jmp_run(0x00407744)),  # Abode
     (0x004077E4, copy_run(0x004077E4)),  # Abode
     (0x00407871, jmp_run(0x004077E4)),  # Abode
+    (0x00414043, copy_run(0x00413FE3)),  # Alignment
+    (0x0041406B, call_rel32(0x00403C49)),  # Alignment
+    (0x0041419A, call_indirect(0x008AE9AC)),  # Alignment: __imp___1Dialup__QAE_XZ@4
+    (0x00414214, jmp_run(0x0041419A)),  # Alignment
+    (0x00414314, jmp_run(0x00414214)),  # Alignment
+    (0x00414353, jmp_run(0x00414314)),  # Alignment
+    (0x004143A3, copy_run(0x00414353)),  # Alignment
+    (0x0041440A, call_indirect(0x008AE03C)),  # Alignment: __imp__DirectXSetupGetVersion
+    (0x00414595, jmp_run(0x0041440A)),  # Alignment
+    (0x0041465A, call_indirect(0x008AE01C)),  # Alignment: __imp__TrackMouseEvent@4
+    (0x004146EA, call_indirect(0x008AE068)),  # Alignment: __imp__SetBkColor@4
+    (0x00414812, jmp_run(0x004146EA)),  # Alignment
+    (0x00414839, jmp_run(0x00414812)),  # Alignment
+    (0x00414B81, copy_run(0x00414839)),  # Alignment
+    (0x00414BAA, call_indirect(0x008AE350)),  # Alignment: __imp_?RegistryRetrieveULong@@YA?AW4LH_RETURN@@PAD0PAK@Z
+    (0x00414C54, jmp_run(0x00414BAA)),  # Alignment
+    (0x00414D3B, jmp_run(0x00414C54)),  # Alignment
+    (0x00414E03, copy_run(0x00414D32)),  # Alignment
+    (0x00414EDB, call_rel32(0x00403C49)),  # Alignment
+    (0x00415107, copy_run(0x00414EDB)),  # Alignment
+    (0x004151B2, jmp_run(0x00415107)),  # Alignment
+    (0x00415302, copy_run(0x004151B2)),  # Alignment
+    (0x004153B2, jmp_run(0x00415302)),  # Alignment
+    (0x0041547B, call_rel32(0x00403C49)),  # Alignment
+    (0x004154F7, jmp_run(0x0041547B)),  # Alignment
+    (0x00415548, copy_run(0x004154F7)),  # Alignment
+    (0x004155A8, copy_run(0x00415548)),  # Alignment
+    (0x004155FB, call_rel32(0x00403C49)),  # Alignment
+    (0x00415642, copy_run(0x004155FB)),  # Alignment
+    (0x004156E2, copy_run(0x00415642)),  # Alignment
+    (0x00415732, jmp_run(0x004156E2)),  # Alignment
+    (0x00415782, copy_run(0x00415732)),  # Alignment
+    (0x004157E8, copy_run(0x00415782)),  # Alignment
+    (0x00415831, jmp_run(0x004157E8)),  # Alignment
+    (0x004158A1, copy_run(0x00415831)),  # Alignment
+    (0x004160B7, jmp_run(0x004158A1)),  # Alignment
+    (0x00416709, copy_run(0x004160B7)),  # Alignment
+    (0x00416747, copy_run(0x00416709)),  # Alignment
+    (0x004169D6, jmp_run(0x00416742)),  # Alignment
+    (0x00416A66, copy_run(0x004169D6)),  # Alignment
+    (0x00416AF3, jmp_run(0x00416A66)),  # Alignment
+    (0x00416B7A, call_indirect(0x008AE8A0)),  # Alignment: __imp__timeSetEvent@4
+    (0x00416BBB, call_rel32(0x00403C49)),  # Alignment
+    (0x00416C14, jmp_run(0x00416BBB)),  # Alignment
+    (0x00416C4B, call_rel32(0x00403C49)),  # Alignment
+    (0x0041BEB7, jmp_run(0x0041BCE9)),  # AnimalAnimation
+    (0x0041BF2A, copy_run(0x0041BE16)),  # AnimalAnimation
+    (0x0041BF9A, jmp_run(0x0041BF26)),  # AnimalAnimation
+    (0x0041C00A, copy_run(0x0041BF96)),  # AnimalAnimation
+    (0x0041C78A, copy_run(0x0041BFF6)),  # AnimalAnimation
+    (0x0041C886, copy_run(0x0041C784)),  # AnimalAnimation
+    (0x0041CA9B, call_rel32(0x00403C49)),  # AnimalAnimation
+    (0x0041CAE4, copy_run(0x0041CA9B)),  # AnimalAnimation
+    (0x0041CD34, jmp_run(0x0041CAE4)),  # AnimalAnimation
+    (0x0041D046, copy_run(0x0041CD34)),  # AnimalAnimation
     (0x0041D0AA, copy_run(0x0041CF56)),  # AnimalCow
     (0x0041D118, jmp_run(0x0041D0A3)),  # AnimalCow
     (0x0041D148, copy_run(0x0041D118)),  # AnimalCow
@@ -1317,6 +1474,22 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004E594B, call_rel32(0x00403C49)),  # CreatureMentalObjectMultipliers
     (0x004E5973, jmp_run(0x004E594B)),  # CreatureMentalObjectMultipliers
     (0x004E59C4, copy_run(0x004E5973)),  # CreatureMentalObjectMultipliers
+    (0x004ECFC3, copy_run(0x004ECF58)),  # CreatureMorph
+    (0x004ECFEB, call_rel32(0x00403C49)),  # CreatureMorph
+    (0x004ED015, jmp_run(0x004ECFEB)),  # CreatureMorph
+    (0x004ED7B1, jmp_run(0x004ED013)),  # CreatureMorph
+    (0x004EE199, jmp_run(0x004ED7B1)),  # CreatureMorph
+    (0x004EE444, copy_run(0x004EE199)),  # CreatureMorph
+    (0x004EE776, jmp_run(0x004EE444)),  # CreatureMorph
+    (0x004EF9C6, copy_run(0x004EE776)),  # CreatureMorph
+    (0x004EFF78, jmp_run(0x004EF9C6)),  # CreatureMorph
+    (0x004F01C9, copy_run(0x004EFF78)),  # CreatureMorph
+    (0x004F0376, jmp_run(0x004F01C9)),  # CreatureMorph
+    (0x004F04B9, jmp_run(0x004F0376)),  # CreatureMorph
+    (0x004F08B8, jmp_run(0x004F04B9)),  # CreatureMorph
+    (0x004F0A57, jmp_run(0x004F08B8)),  # CreatureMorph
+    (0x004F0F59, jmp_run(0x004F0A57)),  # CreatureMorph
+    (0x004F1055, jmp_run(0x004F0F59)),  # CreatureMorph
     (0x004F26D3, jmp_run(0x004F2672)),  # CreaturePlan
     (0x004F26FB, call_rel32(0x00403C49)),  # CreaturePlan
     (0x004F2887, copy_run(0x004F26FB)),  # CreaturePlan
@@ -1361,6 +1534,26 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004F4745, copy_run(0x004F46AB)),  # CreaturePreviousContext
     (0x004F4958, jmp_run(0x004F4743)),  # CreaturePreviousContext
     (0x004F4988, copy_run(0x004F4958)),  # CreaturePreviousContext
+    (0x004FB0D3, padding_bytes(bytes.fromhex('00d90598f38a0083e999ffffff'))),  # CreatureSubAction
+    (0x004FB0FB, padding_bytes(bytes.fromhex('e8498bf0ff'))),  # CreatureSubAction
+    (0x00501129, padding_bytes(bytes.fromhex('d200ffffffffc3'))),  # CreatureSubAction
+    (0x00501536, padding_bytes(bytes.fromhex('c60089156ce9e9fbffff'))),  # CreatureSubAction
+    (0x00501721, padding_bytes(bytes.fromhex('8bcee89265f7ff5f5e5d5b83c414c3'))),  # CreatureSubAction
+    (0x005017A3, padding_bytes(bytes.fromhex('408946145e5d5b83c40cc22800'))),  # CreatureSubAction
+    (0x00501838, padding_bytes(bytes.fromhex('000000e963ffffff'))),  # CreatureSubAction
+    (0x005018C3, padding_bytes(bytes.fromhex('8b4614405f8946145e5bc22c00'))),  # CreatureSubAction
+    (0x00501991, padding_bytes(bytes.fromhex('278bcee874feffff5f5ee923ffffff'))),  # CreatureSubAction
+    (0x005019F3, padding_bytes(bytes.fromhex('0000893883c06049e991ffffff'))),  # SubArgument
+    (0x00501A1B, padding_bytes(bytes.fromhex('e82922f0ff'))),  # SubArgument
+    (0x00501A38, padding_bytes(bytes.fromhex('ead200e9dbffffff'))),  # SubArgument
+    (0x00501A98, padding_bytes(bytes.fromhex('05894ce998ffffff'))),  # SubArgument
+    (0x00501AB8, padding_bytes(bytes.fromhex('05894ce9d8ffffff'))),  # SubArgument
+    (0x00501B05, padding_bytes(bytes.fromhex('40c1e005894c1048c20800'))),  # SubArgument
+    (0x00501B38, padding_bytes(bytes.fromhex('490c89e9c5ffffff'))),  # SubArgument
+    (0x00501BAB, padding_bytes(bytes.fromhex('e89920f0ff'))),  # SubArgument
+    (0x00501BE3, padding_bytes(bytes.fromhex('0c8950488b491089484cc20800'))),  # SubArgument
+    (0x00501C35, padding_bytes(bytes.fromhex('8b49105f8948e9a3ffffff'))),  # SubArgument
+    (0x00501C65, padding_bytes(bytes.fromhex('8b491c5f89484c5ec20800'))),  # SubArgument
     (0x0050CCD3, jmp_run(0x0050CC71)),  # Creche
     (0x0050CD19, jmp_run(0x0050CCD3)),  # Creche
     (0x0050CD86, copy_run(0x0050CD19)),  # Creche
@@ -1652,12 +1845,217 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005991CA, call_filler(0x004034F9, 0x00)),  # GlobalGameList
     (0x005AFFA8, copy_run(0x0059C182)),  # GStates
     (0x005B3359, jmp_run(0x005AFFA8)),  # GStates
+    (0x005B3853, jmp_run(0x005B3359)),  # HandStateCamera
+    (0x005B387B, jmp_run(0x005B3853)),  # HandStateCamera
+    (0x005B38B3, jmp_run(0x005B387B)),  # HandStateCamera
+    (0x005B4193, jmp_run(0x005B38B3)),  # HandStateCitadel
+    (0x005B41BB, jmp_run(0x005B4193)),  # HandStateCitadel
+    (0x005B41D9, jmp_run(0x005B41BB)),  # HandStateCitadel
+    (0x005B42C3, copy_run(0x005B41D9)),  # HandStateCitadel
+    (0x005B4918, jmp_run(0x005B42C3)),  # HandStateCitadel
+    (0x005B4973, jmp_run(0x005B4918)),  # HandStateCreature
+    (0x005B49B2, jmp_run(0x005B4973)),  # HandStateCreature
+    (0x005B4D79, jmp_run(0x005B49B2)),  # HandStateCreature
+    (0x005B6049, copy_run(0x005B4D79)),  # HandStateCreature
+    (0x005B6065, copy_run(0x005B6049)),  # HandStateCreature
+    (0x005B6FD3, jmp_run(0x005B6F87)),  # HandStateHolding
+    (0x005B6FFB, jmp_run(0x005B6FD3)),  # HandStateHolding
+    (0x005B7011, jmp_run(0x005B6FFB)),  # HandStateHolding
+    (0x005B7031, jmp_run(0x005B7011)),  # HandStateHolding
+    (0x005B8D12, jmp_run(0x005B7031)),  # HandStateMultiPickUp
+    (0x005B8D9B, jmp_run(0x005B8D12)),  # HandStateMultiPickUp
+    (0x005B9151, jmp_run(0x005B8D9B)),  # HandStateMultiPickUp
+    (0x005B9195, jmp_run(0x005B9151)),  # HandStateMultiPickUp
+    (0x005B91B4, jmp_run(0x005B9195)),  # HandStateMultiPickUp
+    (0x005BAA93, jmp_run(0x005B9431)),  # HandStatePlayAnim
+    (0x005BAABB, jmp_run(0x005BAA93)),  # HandStatePlayAnim
+    (0x005BAAE8, copy_run(0x005BAABB)),  # HandStatePlayAnim
+    (0x005BAC04, copy_run(0x005BAAE8)),  # HandStatePlayAnim
+    (0x005BAC52, jmp_run(0x005BAC04)),  # HandStateTotem
+    (0x005BAD6B, copy_run(0x005BAC52)),  # HandStateTotem
+    (0x005BB311, jmp_run(0x005BAD6B)),  # HandStateTotem
+    (0x005BB373, jmp_run(0x005BB311)),  # HandStateTug
+    (0x005BB39B, jmp_run(0x005BB373)),  # HandStateTug
+    (0x005BB3B9, jmp_run(0x005BB39B)),  # HandStateTug
+    (0x005BB636, jmp_run(0x005BB3B9)),  # HandStateTug
+    (0x005BC424, copy_run(0x005BB636)),  # HandStateTug
+    (0x005BC458, jmp_run(0x005BC424)),  # HandStateTug
+    (0x005C891B, jmp_run(0x005C88C5)),  # HelpSystem
+    (0x005C8943, copy_run(0x005C891B)),  # HelpSystem
+    (0x005C8A09, copy_run(0x005C8943)),  # HelpSystem
+    (0x005C8A33, jmp_run(0x005C8A09)),  # HelpSystem
+    (0x005C8B21, copy_run(0x005C8A33)),  # HelpSystem
+    (0x005C8B5B, jmp_run(0x005C8B21)),  # HelpSystem
+    (0x005C8BE9, copy_run(0x005C8B5B)),  # HelpSystem
+    (0x005C8C51, jmp_run(0x005C8BE9)),  # HelpSystem
+    (0x005C8D5A, call_filler(0x004034F9, 0xFF)),  # HelpSystem
+    (0x005C8E25, copy_run(0x005C8D5A)),  # HelpSystem
+    (0x005C8F41, copy_run(0x005C8E25)),  # HelpSystem
+    (0x005C9181, copy_run(0x005C8F41)),  # HelpSystem
+    (0x005C9583, copy_run(0x005C9181)),  # HelpSystem
+    (0x005C95F7, jmp_run(0x005C9583)),  # HelpSystem
+    (0x005C9875, jmp_run(0x005C95F7)),  # HelpSystem
+    (0x005C9922, copy_run(0x005C9875)),  # HelpSystem
+    (0x005C9A29, copy_run(0x005C9922)),  # HelpSystem
+    (0x005C9A62, copy_run(0x005C9A29)),  # HelpSystem
+    (0x005C9B04, copy_run(0x005C9A62)),  # HelpSystem
+    (0x005C9D09, copy_run(0x005C9B04)),  # HelpSystem
+    (0x005C9D24, copy_run(0x005C9D09)),  # HelpSystem
+    (0x005C9D44, copy_run(0x005C9D24)),  # HelpSystem
+    (0x005C9D69, copy_run(0x005C9D44)),  # HelpSystem
+    (0x005C9DA9, copy_run(0x005C9D69)),  # HelpSystem
+    (0x005C9DC9, copy_run(0x005C9DA9)),  # HelpSystem
+    (0x005C9DE9, copy_run(0x005C9DC9)),  # HelpSystem
+    (0x005C9E04, copy_run(0x005C9DE9)),  # HelpSystem
+    (0x005C9E24, copy_run(0x005C9E04)),  # HelpSystem
+    (0x005C9E69, copy_run(0x005C9E24)),  # HelpSystem
+    (0x005C9E98, jmp_run(0x005C9E69)),  # HelpSystem
+    (0x005C9EB4, jmp_run(0x005C9E98)),  # HelpSystem
+    (0x005C9F19, jmp_run(0x005C9EB4)),  # HelpSystem
+    (0x005C9FB4, jmp_run(0x005C9F19)),  # HelpSystem
+    (0x005C9FD7, jmp_run(0x005C9FB4)),  # HelpSystem
+    (0x005CA093, jmp_run(0x005C9FD7)),  # HelpSystem
+    (0x005CA189, copy_run(0x005CA093)),  # HelpSystem
+    (0x005CA2A3, copy_run(0x005CA189)),  # HelpSystem
+    (0x005CA33B, jmp_run(0x005CA2A3)),  # HelpSystem
+    (0x005CA487, copy_run(0x005CA33B)),  # HelpSystem
+    (0x005CA4CA, call_filler(0x004034F9, 0xC3)),  # HelpSystem
+    (0x005CA687, copy_run(0x005CA4CA)),  # HelpSystem
+    (0x005CABB3, jmp_run(0x005CA687)),  # HelpSystem
+    (0x005CB0C2, copy_run(0x005CABB3)),  # HelpSystem
+    (0x005CB1B2, jmp_run(0x005CB0C2)),  # HelpSystem
+    (0x005CB255, jmp_run(0x005CB1B2)),  # HelpSystem
+    (0x005CB2D7, jmp_run(0x005CB255)),  # HelpSystem
+    (0x005CB344, copy_run(0x005CB2D7)),  # HelpSystem
+    (0x005CB373, jmp_run(0x005CB344)),  # HelpSystem
+    (0x005CB3C4, copy_run(0x005CB373)),  # HelpSystem
+    (0x005CB414, jmp_run(0x005CB3C4)),  # HelpSystem
+    (0x005CB4CA, call_filler(0x004034F9, 0x00)),  # HelpSystem
+    (0x005CB514, jmp_run(0x005CB4CA)),  # HelpSystem
+    (0x005CB564, copy_run(0x005CB514)),  # HelpSystem
+    (0x005CB5B4, jmp_run(0x005CB564)),  # HelpSystem
+    (0x005CB604, copy_run(0x005CB5B4)),  # HelpSystem
+    (0x005CB654, jmp_run(0x005CB604)),  # HelpSystem
+    (0x005CB70A, call_filler(0x004034F9, 0x00)),  # HelpSystem
+    (0x005CB754, jmp_run(0x005CB70A)),  # HelpSystem
+    (0x005CB7A4, copy_run(0x005CB754)),  # HelpSystem
+    (0x005CB7F4, jmp_run(0x005CB7A4)),  # HelpSystem
+    (0x005CB844, copy_run(0x005CB7F4)),  # HelpSystem
+    (0x005CB894, jmp_run(0x005CB844)),  # HelpSystem
+    (0x005CB944, copy_run(0x005CB894)),  # HelpSystem
     (0x005CB99B, jmp_run(0x005CB944)),  # HelpSystemBanter
     (0x005CBA79, jmp_run(0x005CB99B)),  # HelpSystemBanter
     (0x005CBE83, copy_run(0x005CBD03)),  # HelpSystemConditions
     (0x005CBEF8, jmp_run(0x005CBE83)),  # HelpSystemConditions
     (0x005CC14B, copy_run(0x005CBEF8)),  # HelpSystemInfo
     (0x005CC1D8, jmp_run(0x005CC14B)),  # HelpSystemLevel
+    (0x005CE2CB, padding_bytes(bytes.fromhex('01000000c3'))),  # HelpText
+    (0x005CE2F3, jmp_run(0x005CE2CB)),  # HelpText
+    (0x005CE4F1, jmp_run(0x005CE2F3)),  # HelpText
+    (0x005CE5B3, jmp_run(0x005CE4F1)),  # HelpText
+    (0x005CE80B, copy_run(0x005CE5B3)),  # HelpText
+    (0x005CE863, copy_run(0x005CE80B)),  # HelpText
+    (0x005CEBF9, jmp_run(0x005CE863)),  # HelpText
+    (0x005CECB1, jmp_run(0x005CEBF9)),  # HelpText
+    (0x005CED86, copy_run(0x005CECB1)),  # HelpText
+    (0x005CF156, jmp_run(0x005CED86)),  # HelpText
+    (0x005CF703, copy_run(0x005CF156)),  # HelpText
+    (0x005CFF51, jmp_run(0x005CF703)),  # HelpText
+    (0x005D02A5, copy_run(0x005CFF51)),  # HelpText
+    (0x005D0651, jmp_run(0x005D02A5)),  # HelpText
+    (0x005D0698, jmp_run(0x005D0651)),  # HelpText
+    (0x005D06C7, copy_run(0x005D0698)),  # HelpText
+    (0x005D0747, copy_run(0x005D06C7)),  # HelpText
+    (0x005D0773, jmp_run(0x005D0747)),  # HelpText
+    (0x005D07B1, jmp_run(0x005D0773)),  # HelpText
+    (0x005FC3A5, copy_run(0x005FC326)),  # logo
+    (0x005FC3FA, jmp_run(0x005FC3A5)),  # logo
+    (0x005FC449, copy_run(0x005FC3FA)),  # logo
+    (0x005FDB5B, jmp_run(0x005FC449)),  # logo
+    (0x005FDC28, copy_run(0x005FDB5B)),  # logo
+    (0x005FDCC3, padding_bytes(bytes.fromhex('0000000075068125c446c700c3'))),  # logo
+    (0x005FDCE1, copy_run(0x005FDCC3)),  # logo
+    (0x005FDD31, jmp_run(0x005FDCE1)),  # logo
+    (0x005FDD69, copy_run(0x005FC2E1)),  # logo
+    (0x005FDE6A, copy_run(0x005FDD69)),  # logo
+    (0x005FE039, jmp_run(0x005FDE6A)),  # logo
+    (0x005FE216, jmp_run(0x005FE039)),  # logo
+    (0x00605A23, copy_run(0x006059C3)),  # MapCoords
+    (0x00605BE5, copy_run(0x00605A23)),  # MapCoords
+    (0x00605C69, copy_run(0x00605BE5)),  # MapCoords
+    (0x00605D05, copy_run(0x00605C69)),  # MapCoords
+    (0x00605DC1, copy_run(0x00605D05)),  # MapCoords
+    (0x00605F6B, copy_run(0x00605DC1)),  # MapCoords
+    (0x00605FD8, jmp_run(0x00605F6B)),  # MapCoords
+    (0x00606003, copy_run(0x00605FD8)),  # MapCoords
+    (0x006061D4, jmp_run(0x00606003)),  # MapCoords
+    (0x006062A6, copy_run(0x006061D4)),  # MapCoords
+    (0x006063D3, jmp_run(0x006062A6)),  # MapCoords
+    (0x0060677B, jmp_run(0x006063D3)),  # MapCoords
+    (0x00606987, copy_run(0x0060677B)),  # MapCoords
+    (0x00606B32, jmp_run(0x00606987)),  # MapCoords
+    (0x00606B76, jmp_run(0x00606B32)),  # MapCoords
+    (0x00606BB6, jmp_run(0x00606B76)),  # MapCoords
+    (0x00606C1B, jmp_run(0x00606BB6)),  # MapCoords
+    (0x00606C6B, copy_run(0x00606C1B)),  # MapCoords
+    (0x00606CB2, jmp_run(0x00606C6B)),  # MapCoords
+    (0x00606CD9, jmp_run(0x00606CB2)),  # MapCoords
+    (0x00606D68, copy_run(0x00606CD9)),  # MapCoords
+    (0x00606D88, copy_run(0x00606D68)),  # MapCoords
+    (0x00606E21, copy_run(0x00606D88)),  # MapCoords
+    (0x00606E47, copy_run(0x00606E21)),  # MapCoords
+    (0x00606E95, jmp_run(0x00606E47)),  # MapCoords
+    (0x00606EF2, jmp_run(0x00606E95)),  # MapCoords
+    (0x00606FB9, jmp_run(0x00606EF2)),  # MapCoords
+    (0x00606FDA, jmp_run(0x00606FB9)),  # MapCoords
+    (0x00607083, copy_run(0x00606FDA)),  # MapCoords
+    (0x006072F2, jmp_run(0x00607083)),  # MapCoords
+    (0x00607366, copy_run(0x006072F2)),  # MapCoords
+    (0x006073BA, jmp_run(0x00607366)),  # MapCoords
+    (0x00607B21, copy_run(0x006073BA)),  # MapCoords
+    (0x00607CCA, copy_run(0x00607B21)),  # MapCoords
+    (0x00607D12, jmp_run(0x00607CCA)),  # MapCoords
+    (0x00607DFA, jmp_run(0x00607D12)),  # MapCoords
+    (0x006080C9, copy_run(0x00607DFA)),  # MapCoords
+    (0x00608374, jmp_run(0x006080C9)),  # MapCoords
+    (0x006085F8, jmp_run(0x00608374)),  # MapCoords
+    (0x00608879, jmp_run(0x006085F8)),  # MapCoords
+    (0x006088A7, copy_run(0x00608879)),  # MapCoords
+    (0x006088EB, copy_run(0x006088A7)),  # MapCoords
+    (0x0060894B, copy_run(0x006088EB)),  # MapCoords
+    (0x006089FB, jmp_run(0x0060894B)),  # MapCoords
+    (0x00608A4B, copy_run(0x006089FB)),  # MapCoords
+    (0x00608A96, jmp_run(0x00608A4B)),  # MapCoords
+    (0x00608AE4, copy_run(0x00608A96)),  # MapCoords
+    (0x00608B12, jmp_run(0x00608AE4)),  # MapCoords
+    (0x00608B57, jmp_run(0x00608B12)),  # MapCoords
+    (0x00608B73, jmp_run(0x00608B57)),  # MapCoords
+    (0x00608B93, jmp_run(0x00608B73)),  # MapCoords
+    (0x00608BB3, jmp_run(0x00608B93)),  # MapCoords
+    (0x00608BD8, jmp_run(0x00608BB3)),  # MapCoords
+    (0x00608C27, copy_run(0x00608BD8)),  # MapCoords
+    (0x00608D55, jmp_run(0x00608C27)),  # MapCoords
+    (0x00608EC4, copy_run(0x00608D55)),  # MapCoords
+    (0x00608EF2, jmp_run(0x00608EC4)),  # MapCoords
+    (0x00608F41, copy_run(0x00608EF2)),  # MapCoords
+    (0x00608FD1, jmp_run(0x00608F41)),  # MapCoords
+    (0x00609026, copy_run(0x00608FD1)),  # MapCoords
+    (0x00609075, jmp_run(0x00609026)),  # MapCoords
+    (0x006090C5, copy_run(0x00609075)),  # MapCoords
+    (0x00609115, jmp_run(0x006090C5)),  # MapCoords
+    (0x00609165, copy_run(0x00609115)),  # MapCoords
+    (0x006091D2, jmp_run(0x00609165)),  # MapCoords
+    (0x006091F2, jmp_run(0x006091D2)),  # MapCoords
+    (0x00609378, jmp_run(0x006091F2)),  # MapCoords
+    (0x006094A2, copy_run(0x00609378)),  # MapCoords
+    (0x00609745, copy_run(0x006094A2)),  # MapCoords
+    (0x00609792, jmp_run(0x00609745)),  # MapCoords
+    (0x006097D7, jmp_run(0x00609792)),  # MapCoords
+    (0x006097F1, jmp_run(0x006097D7)),  # MapCoords
+    (0x00609811, jmp_run(0x006097F1)),  # MapCoords
+    (0x0060996A, copy_run(0x00609811)),  # MapCoords
+    (0x00609ABA, jmp_run(0x0060996A)),  # MapCoords
+    (0x00609AF8, jmp_run(0x00609ABA)),  # MapCoords
     (0x0060A717, jmp_run(0x0060A511)),  # Mobile
     (0x0060A7E4, copy_run(0x0060A717)),  # Mobile
     (0x0060A843, copy_run(0x0060A7E3)),  # MobileObject
@@ -1694,6 +2092,43 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0060BE66, copy_run(0x0060BDF6)),  # MobileObject
     (0x0060BE93, jmp_run(0x0060BE66)),  # MobileObject
     (0x0060BEE6, copy_run(0x0060BE93)),  # MobileObject
+    (0x0062A3BB, jmp_run(0x0062A362)),  # MPFEChannelDetails
+    (0x0062A3E5, copy_run(0x0062A3BB)),  # MPFEChannelDetails
+    (0x0062A678, jmp_run(0x0062A3E3)),  # MPFEChannelDetails
+    (0x0062A6CB, copy_run(0x0062A678)),  # MPFEChannelMessages
+    (0x0062A6F5, jmp_run(0x0062A6CB)),  # MPFEChannelMessages
+    (0x0062A761, copy_run(0x0062A6F3)),  # MPFEChannelMessages
+    (0x0062AAF1, jmp_run(0x0062A761)),  # MPFEChannelMessages
+    (0x0062ABC8, copy_run(0x0062AAF1)),  # MPFEChannelMessages
+    (0x0062AC28, copy_run(0x0062ABC8)),  # MPFEChannelMessages
+    (0x0062AC83, copy_run(0x0062AC28)),  # MPFEChannelMessages
+    (0x0062B0A9, copy_run(0x0062AC83)),  # MPFEChannelMessages
+    (0x0062B103, copy_run(0x0062B0A9)),  # MPFEChannelMessages
+    (0x0062B179, jmp_run(0x0062B103)),  # MPFEChannelMessages
+    (0x0062B1E9, copy_run(0x0062B179)),  # MPFEChannelMessages
+    (0x0062B2D3, jmp_run(0x0062B1E9)),  # MPFEChannelMessages
+    (0x0062B489, copy_run(0x0062B2D3)),  # MPFEChannelMessages
+    (0x0062B67B, jmp_run(0x0062B489)),  # MPFEChannelMessages
+    (0x0062B789, copy_run(0x0062B67B)),  # MPFEChannelMessages
+    (0x0062BA1A, jmp_run(0x0062B789)),  # MPFEChannelMessages
+    (0x0062BA7A, jmp_run(0x0062BA1A)),  # MPFEChannelMessages
+    (0x0062BC73, jmp_run(0x0062BA7A)),  # MPFEChannelMessages
+    (0x0062BD01, copy_run(0x0062BC73)),  # MPFEChannelMessages
+    (0x0062BD89, copy_run(0x0062BD01)),  # MPFEChannelMessages
+    (0x0062BF52, jmp_run(0x0062BD89)),  # MPFEChannelMessages
+    (0x0062E94F, copy_run(0x0062E94B)),  # MPFEChooseConnection
+    (0x0062E975, jmp_run(0x0062E94B)),  # MPFEChooseConnection
+    (0x0062EA27, copy_run(0x0062E973)),  # MPFEChooseConnection
+    (0x0062EAD7, jmp_run(0x0062EA27)),  # MPFEChooseConnection
+    (0x0062EEF5, jmp_run(0x0062EAD7)),  # MPFEChooseConnection
+    (0x0062F006, copy_run(0x0062EEF5)),  # MPFEChooseConnection
+    (0x0062F5BB, jmp_run(0x0062F006)),  # MPFEChooseConnection
+    (0x006303AB, copy_run(0x00630352)),  # MPFEConditionMessages
+    (0x006303D5, jmp_run(0x006303AB)),  # MPFEConditionMessages
+    (0x006303FB, jmp_run(0x006303D3)),  # MPFEConditionMessages
+    (0x00630556, jmp_run(0x006303FB)),  # MPFEConditionMessages
+    (0x00630869, copy_run(0x00630556)),  # MPFEConditionMessages
+    (0x00630A88, copy_run(0x00630869)),  # MPFEConditionMessages
     (0x0063182B, copy_run(0x006317DB)),  # MPFECreatureDownload
     (0x0063184B, copy_run(0x0063182B)),  # MPFECreatureDownload
     (0x00631875, jmp_run(0x0063184B)),  # MPFECreatureDownload
@@ -1711,6 +2146,15 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006327DB, jmp_run(0x00632718)),  # MPFEDownloads
     (0x0063285A, jmp_run(0x006327DB)),  # MPFEDownloads
     (0x00632893, jmp_run(0x0063285A)),  # MPFEDownloads
+    (0x006341FB, jmp_run(0x006341A9)),  # MPFELogin
+    (0x00634225, copy_run(0x006341FB)),  # MPFELogin
+    (0x0063430A, copy_run(0x00634223)),  # MPFELogin
+    (0x006344E4, copy_run(0x0063430A)),  # MPFELogin
+    (0x00634783, copy_run(0x006344E4)),  # MPFELogin
+    (0x00634A73, jmp_run(0x00634783)),  # MPFELogin
+    (0x00634ACD, copy_run(0x00634A73)),  # MPFELogin
+    (0x00634D62, copy_run(0x00634AC3)),  # MPFELogin
+    (0x00634DEA, copy_run(0x00634D62)),  # MPFELogin
     (0x00634E4B, copy_run(0x00634DEA)),  # MPFEMapMessages
     (0x00634E73, jmp_run(0x00634E4B)),  # MPFEMapMessages
     (0x00634E9B, jmp_run(0x00634E73)),  # MPFEMapMessages
@@ -1718,6 +2162,9 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006351BB, jmp_run(0x00634F61)),  # MPFEMapMessages
     (0x00635206, copy_run(0x006351BB)),  # MPFEMapMessages
     (0x00635264, copy_run(0x00635206)),  # MPFEMapMessages
+    (0x00635347, copy_run(0x00635264)),  # MPFENumberCodec
+    (0x0063543B, jmp_run(0x00635347)),  # MPFENumberCodec
+    (0x00635497, jmp_run(0x0063543B)),  # MPFENumberCodec
     (0x00639FD3, jmp_run(0x00639F7A)),  # Object
     (0x00639FFB, jmp_run(0x00639FD3)),  # Object
     (0x0063A023, copy_run(0x00639FFB)),  # Object
@@ -1827,6 +2274,76 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0063F635, jmp_run(0x0063F5CB)),  # OnMapTrajectory
     (0x0063F6A3, copy_run(0x0063F633)),  # OnMapTrajectory
     (0x0063F892, jmp_run(0x0063F6A3)),  # OnMapTrajectory
+    (0x00671433, jmp_run(0x006713D3)),  # Pot
+    (0x0067145B, jmp_run(0x00671433)),  # Pot
+    (0x00671487, copy_run(0x0067145B)),  # Pot
+    (0x00671533, jmp_run(0x00671487)),  # Pot
+    (0x00671563, copy_run(0x00671533)),  # Pot
+    (0x006715F7, jmp_run(0x00671563)),  # Pot
+    (0x006716D6, jmp_run(0x006715F7)),  # Pot
+    (0x006717C9, copy_run(0x006716D6)),  # Pot
+    (0x006717E9, copy_run(0x006717C9)),  # Pot
+    (0x006719FB, jmp_run(0x006717E9)),  # Pot
+    (0x00671A28, copy_run(0x006719FB)),  # Pot
+    (0x00671A91, jmp_run(0x00671A28)),  # Pot
+    (0x00671B85, copy_run(0x00671A91)),  # Pot
+    (0x00671BAA, copy_run(0x00671B85)),  # Pot
+    (0x00671C21, copy_run(0x00671BAA)),  # Pot
+    (0x00671C82, copy_run(0x00671C21)),  # Pot
+    (0x00671CC4, copy_run(0x00671C82)),  # Pot
+    (0x00671CE4, copy_run(0x00671CC4)),  # Pot
+    (0x00671D0A, copy_run(0x00671CE4)),  # Pot
+    (0x00671D76, jmp_run(0x00671D0A)),  # Pot
+    (0x00671D9A, jmp_run(0x00671D76)),  # Pot
+    (0x00671DE8, copy_run(0x00671D9A)),  # Pot
+    (0x00671E4A, copy_run(0x00671DE8)),  # Pot
+    (0x00671F9B, jmp_run(0x00671E4A)),  # Pot
+    (0x00671FBA, jmp_run(0x00671F9B)),  # Pot
+    (0x00672007, copy_run(0x00671FBA)),  # Pot
+    (0x00672028, copy_run(0x00672007)),  # Pot
+    (0x00672116, jmp_run(0x00672028)),  # Pot
+    (0x00672206, copy_run(0x00672116)),  # Pot
+    (0x00672278, jmp_run(0x00672206)),  # Pot
+    (0x006722A8, copy_run(0x00672278)),  # Pot
+    (0x006722FB, jmp_run(0x006722A8)),  # Pot
+    (0x00672323, copy_run(0x006722FB)),  # Pot
+    (0x00672387, copy_run(0x00672323)),  # Pot
+    (0x00672406, copy_run(0x00672387)),  # Pot
+    (0x00672486, copy_run(0x00672406)),  # Pot
+    (0x006724C2, copy_run(0x00672486)),  # Pot
+    (0x00672583, copy_run(0x006724C2)),  # Pot
+    (0x00672627, copy_run(0x00672583)),  # Pot
+    (0x00672647, copy_run(0x00672627)),  # Pot
+    (0x006726C5, copy_run(0x00672647)),  # Pot
+    (0x00672767, copy_run(0x006726C5)),  # Pot
+    (0x006727F5, jmp_run(0x00672767)),  # Pot
+    (0x00672936, jmp_run(0x006727F5)),  # Pot
+    (0x00672963, copy_run(0x00672936)),  # Pot
+    (0x006729FB, jmp_run(0x00672963)),  # Pot
+    (0x00672A92, jmp_run(0x006729FB)),  # Pot
+    (0x00672B92, jmp_run(0x00672A92)),  # Pot
+    (0x00672BC8, copy_run(0x00672B92)),  # Pot
+    (0x00672BF8, jmp_run(0x00672BC8)),  # Pot
+    (0x00672C86, copy_run(0x00672BF8)),  # Pot
+    (0x00672CC5, copy_run(0x00672C86)),  # Pot
+    (0x00672DE6, copy_run(0x00672CC5)),  # Pot
+    (0x00673146, copy_run(0x00672DE6)),  # Pot
+    (0x006731FA, jmp_run(0x00673146)),  # Pot
+    (0x00673566, copy_run(0x006731FA)),  # Pot
+    (0x006735D3, jmp_run(0x00673566)),  # Pot
+    (0x00673635, jmp_run(0x006735D3)),  # Pot
+    (0x00673663, copy_run(0x00673635)),  # Pot
+    (0x00673852, jmp_run(0x00673663)),  # Pot
+    (0x00673876, jmp_run(0x00673852)),  # Pot
+    (0x006739C3, copy_run(0x00673876)),  # Pot
+    (0x00673B62, copy_run(0x006739C3)),  # Pot
+    (0x00673E36, jmp_run(0x00673B62)),  # Pot
+    (0x00673E65, copy_run(0x00673E36)),  # Pot
+    (0x00673E93, jmp_run(0x00673E65)),  # Pot
+    (0x00673ED1, jmp_run(0x00673E93)),  # Pot
+    (0x00673F11, jmp_run(0x00673ED1)),  # Pot
+    (0x00673F82, copy_run(0x00673F11)),  # Pot
+    (0x00673FF2, jmp_run(0x00673F82)),  # Pot
     (0x00698CF3, jmp_run(0x00698C4B)),  # PSysLoad
     (0x00698DA7, copy_run(0x00698CF3)),  # PSysLoad
     (0x00698DC3, copy_run(0x00698DA7)),  # PSysLoad
@@ -2485,6 +3002,39 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006F10EA, copy_run(0x006F1096)),  # Script
     (0x006F1134, jmp_run(0x006F10EA)),  # Script
     (0x006F1184, copy_run(0x006F1134)),  # Script
+    (0x006F11DB, jmp_run(0x006F1184)),  # ScriptCamera
+    (0x006F128B, copy_run(0x006F11DB)),  # ScriptCamera
+    (0x006F1382, copy_run(0x006F128B)),  # ScriptCamera
+    (0x006F17D5, jmp_run(0x006F1382)),  # ScriptCamera
+    (0x006F1824, copy_run(0x006F17D5)),  # ScriptCamera
+    (0x006F1898, jmp_run(0x006F1824)),  # ScriptCamera
+    (0x006F18DB, jmp_run(0x006F1898)),  # ScriptCamera
+    (0x006F1992, jmp_run(0x006F18DB)),  # ScriptCamera
+    (0x006F1AEA, copy_run(0x006F1992)),  # ScriptCamera
+    (0x006F1B59, jmp_run(0x006F1AEA)),  # ScriptCamera
+    (0x006F1BC9, copy_run(0x006F1B59)),  # ScriptCamera
+    (0x006F1C5B, jmp_run(0x006F1BC9)),  # ScriptCamera
+    (0x006F1CFA, jmp_run(0x006F1C5B)),  # ScriptCamera
+    (0x006F1D4A, copy_run(0x006F1CFA)),  # ScriptCamera
+    (0x006F1FFA, jmp_run(0x006F1D4A)),  # ScriptCamera
+    (0x006F20D5, jmp_run(0x006F1FFA)),  # ScriptCamera
+    (0x006F2173, jmp_run(0x006F20D5)),  # ScriptCamera
+    (0x006F2277, jmp_run(0x006F2173)),  # ScriptCamera
+    (0x006F2428, copy_run(0x006F2277)),  # ScriptCamera
+    (0x006F24E1, copy_run(0x006F2428)),  # ScriptCamera
+    (0x006F25B3, jmp_run(0x006F24E1)),  # ScriptCamera
+    (0x006F2683, copy_run(0x006F25B3)),  # ScriptCamera
+    (0x006F2757, jmp_run(0x006F2683)),  # ScriptCamera
+    (0x006F2811, jmp_run(0x006F2757)),  # ScriptCamera
+    (0x006F28D1, jmp_run(0x006F2811)),  # ScriptCamera
+    (0x006F29D6, jmp_run(0x006F28D1)),  # ScriptCamera
+    (0x006F2A85, copy_run(0x006F29D6)),  # ScriptCamera
+    (0x006F2BC7, copy_run(0x006F2A85)),  # ScriptCamera
+    (0x006F2CAB, copy_run(0x006F2BC7)),  # ScriptCamera
+    (0x006F2D9B, jmp_run(0x006F2CAB)),  # ScriptCamera
+    (0x006F2F18, jmp_run(0x006F2D9B)),  # ScriptCamera
+    (0x006F2F88, copy_run(0x006F2F18)),  # ScriptCamera
+    (0x006F2FF8, jmp_run(0x006F2F88)),  # ScriptCamera
     (0x006F3C7B, jmp_run(0x006F3B27)),  # ScriptContainer
     (0x006F3CA3, copy_run(0x006F3C7B)),  # ScriptContainer
     (0x006F3DC8, copy_run(0x006F3CA3)),  # ScriptContainer
@@ -2612,6 +3162,29 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006FB555, jmp_run(0x006FB535)),  # ScriptDLL
     (0x006FB575, jmp_run(0x006FB555)),  # ScriptDLL
     (0x006FB59A, jmp_run(0x006FB575)),  # ScriptDLL
+    (0x006FB5BB, jmp_run(0x006FB59A)),  # ScriptFind
+    (0x006FB5E3, copy_run(0x006FB5BB)),  # ScriptFind
+    (0x006FB8DB, jmp_run(0x006FB5E3)),  # ScriptFind
+    (0x006FB915, jmp_run(0x006FB8DB)),  # ScriptFind
+    (0x006FB955, jmp_run(0x006FB915)),  # ScriptFind
+    (0x006FBA77, jmp_run(0x006FB955)),  # ScriptFind
+    (0x006FBB63, copy_run(0x006FBA77)),  # ScriptFind
+    (0x006FBBC1, copy_run(0x006FBB63)),  # ScriptFind
+    (0x006FBC26, copy_run(0x006FBBC1)),  # ScriptFind
+    (0x006FBDE2, copy_run(0x006FBC26)),  # ScriptFind
+    (0x006FBE09, copy_run(0x006FBDE2)),  # ScriptFind
+    (0x006FBE29, copy_run(0x006FBE09)),  # ScriptFind
+    (0x006FBE56, jmp_run(0x006FBE29)),  # ScriptFind
+    (0x006FBF5A, jmp_run(0x006FBE56)),  # ScriptFind
+    (0x006FC082, copy_run(0x006FBF5A)),  # ScriptFind
+    (0x006FC0EA, copy_run(0x006FC082)),  # ScriptFind
+    (0x006FC131, jmp_run(0x006FC0EA)),  # ScriptFind
+    (0x006FC16B, copy_run(0x006FC131)),  # ScriptFind
+    (0x006FC19B, jmp_run(0x006FC16B)),  # ScriptFind
+    (0x006FC1CB, copy_run(0x006FC19B)),  # ScriptFind
+    (0x006FC1FB, jmp_run(0x006FC1CB)),  # ScriptFind
+    (0x006FC2D7, jmp_run(0x006FC1FB)),  # ScriptFind
+    (0x006FC427, copy_run(0x006FC2D7)),  # ScriptFind
     (0x006FC4AB, copy_run(0x006FC45C)),  # ScriptFunctions
     (0x006FC4D3, jmp_run(0x006FC4AB)),  # ScriptFunctions
     (0x006FC554, jmp_run(0x006FC4D3)),  # ScriptFunctions
@@ -2736,6 +3309,7 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00704594, jmp_run(0x00704487)),  # ScriptFunctions
     (0x007047D8, jmp_run(0x00704594)),  # ScriptFunctions
     (0x0070485A, jmp_run(0x007047D8)),  # ScriptFunctions
+    (0x007048AB, copy_run(0x0070485A)),  # ScriptFunctionTable
     (0x0070D53B, jmp_run(0x007048AB)),  # ScriptGFX
     (0x0070D595, jmp_run(0x0070D53B)),  # ScriptGFX
     (0x0070D5C5, copy_run(0x0070D592)),  # ScriptGFX
@@ -2824,6 +3398,32 @@ BW1W130_SAFEDISC_CALLS = (
     (0x007122B7, jmp_run(0x00712256)),  # ScriptMarker
     (0x007122D3, jmp_run(0x007122B7)),  # ScriptMarker
     (0x007122F3, jmp_run(0x007122D3)),  # ScriptMarker
+    (0x0071239B, call_rel32(0x004034F9)),  # ScriptProperty
+    (0x007123C5, copy_run(0x0071239B)),  # ScriptProperty
+    (0x00713C63, copy_run(0x007123C3)),  # ScriptProperty
+    (0x00713D61, copy_run(0x00713C63)),  # ScriptProperty
+    (0x00713E6A, copy_run(0x00713D61)),  # ScriptProperty
+    (0x00713EBB, call_rel32(0x004034F9)),  # ScriptRelease
+    (0x00713EE3, copy_run(0x00713EBB)),  # ScriptRelease
+    (0x007140DB, call_rel32(0x004034F9)),  # ScriptSound
+    (0x007141C5, copy_run(0x007140DB)),  # ScriptSound
+    (0x007142C8, copy_run(0x007141C5)),  # ScriptSound
+    (0x00714365, copy_run(0x007142C8)),  # ScriptSound
+    (0x0071445A, jmp_run(0x00714365)),  # ScriptSound
+    (0x007145DB, call_rel32(0x004034F9)),  # ScriptSound
+    (0x00714647, copy_run(0x007145DB)),  # ScriptSound
+    (0x007146A1, copy_run(0x00714647)),  # ScriptSound
+    (0x0071471B, call_rel32(0x004034F9)),  # ScriptSound
+    (0x00714792, jmp_run(0x0071471B)),  # ScriptSound
+    (0x0071483B, call_rel32(0x004034F9)),  # ScriptSound
+    (0x0071487B, call_rel32(0x004034F9)),  # ScriptSound
+    (0x007148D8, jmp_run(0x0071487B)),  # ScriptSound
+    (0x00714985, copy_run(0x007148D8)),  # ScriptSound
+    (0x00714A5A, jmp_run(0x00714985)),  # ScriptSound
+    (0x00714A85, copy_run(0x00714A5A)),  # ScriptSound
+    (0x00714B06, copy_run(0x00714A85)),  # ScriptSound
+    (0x00714B63, copy_run(0x00714B06)),  # ScriptSound
+    (0x00714BB3, jmp_run(0x00714B63)),  # ScriptSound
     (0x00714C9B, call_rel32(0x004034F9)),  # ScriptSpirit
     (0x00714DA6, copy_run(0x00714C9B)),  # ScriptSpirit
     (0x00714E26, copy_run(0x00714DA6)),  # ScriptSpirit
@@ -2879,6 +3479,44 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00716EAA, copy_run(0x00716E56)),  # Serialise
     (0x00716F4A, copy_run(0x00716EAA)),  # Serialise
     (0x00717155, jmp_run(0x00716F4A)),  # Serialise
+    (0x007171AB, call_rel32(0x004034F9)),  # ServerLandscapeMap
+    (0x007171D3, jmp_run(0x007171AB)),  # ServerLandscapeMap
+    (0x00717203, copy_run(0x007171D3)),  # ServerLandscapeMap
+    (0x00717255, jmp_run(0x00717203)),  # ServerLandscapeMap
+    (0x00717308, copy_run(0x00717255)),  # ServerLandscapeMap
+    (0x007173C9, copy_run(0x00717308)),  # ServerLandscapeMap
+    (0x00717444, copy_run(0x007173C9)),  # ServerLandscapeMap
+    (0x00717461, copy_run(0x00717444)),  # ServerLandscapeMap
+    (0x00717649, copy_run(0x00717461)),  # ServerLandscapeMap
+    (0x00717869, copy_run(0x00717649)),  # ServerLandscapeMap
+    (0x00717928, copy_run(0x00717869)),  # ServerLandscapeMap
+    (0x00717A81, copy_run(0x00717928)),  # ServerLandscapeMap
+    (0x00717BF2, jmp_run(0x00717A81)),  # ServerLandscapeMap
+    (0x00717D17, jmp_run(0x00717BF2)),  # ServerLandscapeMap
+    (0x00717D36, jmp_run(0x00717D17)),  # ServerLandscapeMap
+    (0x00717D92, jmp_run(0x00717D36)),  # ServerLandscapeMap
+    (0x00717DDA, jmp_run(0x00717D92)),  # ServerLandscapeMap
+    (0x00717E22, copy_run(0x00717DDA)),  # ServerLandscapeMap
+    (0x00717E86, copy_run(0x00717E22)),  # ServerLandscapeMap
+    (0x00717EE7, copy_run(0x00717E86)),  # ServerLandscapeMap
+    (0x00717F42, copy_run(0x00717EE7)),  # ServerLandscapeMap
+    (0x00717FA2, copy_run(0x00717F42)),  # ServerLandscapeMap
+    (0x00718053, jmp_run(0x00717FA2)),  # ServerLandscapeMap
+    (0x00718328, copy_run(0x00718053)),  # ServerLandscapeMap
+    (0x00718377, jmp_run(0x00718328)),  # ServerLandscapeMap
+    (0x007183C7, copy_run(0x00718377)),  # ServerLandscapeMap
+    (0x00718472, jmp_run(0x007183C7)),  # ServerLandscapeMap
+    (0x0071860B, call_rel32(0x004034F9)),  # ServerLandscapeMap
+    (0x00718747, copy_run(0x0071860B)),  # ServerLandscapeMap
+    (0x00718A75, jmp_run(0x00718747)),  # ServerLandscapeMap
+    (0x00718B24, copy_run(0x00718A75)),  # ServerLandscapeMap
+    (0x00718BB1, jmp_run(0x00718B24)),  # ServerLandscapeMap
+    (0x00718C94, jmp_run(0x00718BB1)),  # ServerLandscapeMap
+    (0x00718CE7, copy_run(0x00718C94)),  # ServerLandscapeMap
+    (0x00718D6B, call_rel32(0x004034F9)),  # ServerLandscapeMap
+    (0x00718DD6, jmp_run(0x00718D6B)),  # ServerLandscapeMap
+    (0x0071957B, call_rel32(0x004034F9)),  # Settings
+    (0x007195AA, copy_run(0x0071957B)),  # Settings
     (0x00719603, copy_run(0x007195AA)),  # Setup
     (0x0071962B, call_rel32(0x004034F9)),  # Setup
     (0x00719655, jmp_run(0x0071962B)),  # Setup
@@ -3251,6 +3889,15 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00847E0A, copy_run(0x00847DB7)),  # LH3DVideo
     (0x00847E45, copy_run(0x00847E0A)),  # LH3DVideo
     (0x00847E67, copy_run(0x00847E45)),  # LH3DVideo
+    (0x00868B23, copy_run(0x00868AF4)),  # RPFollow
+    (0x00868B53, jmp_run(0x00868B23)),  # RPFollow
+    (0x00868BE8, copy_run(0x00868B53)),  # RPFollow
+    (0x00868C32, jmp_run(0x00868BE8)),  # RPFollow
+    (0x00868C75, jmp_run(0x00868C32)),  # RPFollow
+    (0x00869364, copy_run(0x00868C75)),  # RPFollow
+    (0x00869432, jmp_run(0x00869364)),  # RPFollow
+    (0x00869EA7, copy_run(0x00869432)),  # RPFollow
+    (0x0086A134, jmp_run(0x00869EA7)),  # RPFollow
     (0x0086E163, copy_run(0x0086DDF3)),  # RPAvoid
     (0x0086E193, jmp_run(0x0086E163)),  # RPAvoid
     (0x0086E1C6, copy_run(0x0086E193)),  # RPAvoid
@@ -4120,6 +4767,338 @@ BW1WCI_COFF_SYMTAB_POINTER = 0x4854  # "TH" of the decryptor's "MYTH" signature
 BW1WCI_SIZE_OF_HEADERS = 0x1000
 
 
+# The bytes Creature Isle's protector left in the padding between the functions at the start of
+# .text (up to 0x404A30, inside Abode.cpp), which a recompiled Abode.cpp fills with nops.
+BW1WCI_PADDING = (
+    (0x00401031, padding_bytes(bytes.fromhex('ff1560498d0075f75f5d5e5bc21000'))),  # Abode
+    (0x00401063, padding_bytes(bytes.fromhex('ff15bc408d00d91d48feca00c3'))),  # Abode
+    (0x00401093, padding_bytes(bytes.fromhex('ff1518498d00d91d44feca00c3'))),  # Abode
+    (0x00401116, padding_bytes(bytes.fromhex('ff15b0488d005bc20400'))),  # Abode
+    (0x0040114A, padding_bytes(bytes.fromhex('ff15a8478d00'))),  # Abode
+    (0x00401185, padding_bytes(bytes.fromhex('ff15d8488d0075ea5f5ec3'))),  # Abode
+    (0x00401193, padding_bytes(bytes.fromhex('ff1534438d00ea5f5ec3c20400'))),  # Abode
+    (0x004011B8, padding_bytes(bytes.fromhex('ff1558498d000400'))),  # Abode
+    (0x004011C5, padding_bytes(bytes.fromhex('ff159c408d0033c0c20400'))),  # Abode
+    (0x004011D1, padding_bytes(bytes.fromhex('ff15f8488d00408d0033c0c20400c3'))),  # Abode
+    (0x004011E1, padding_bytes(bytes.fromhex('ff15a4488d008d0033c0c20400c3c3'))),  # Abode
+    (0x004011F3, padding_bytes(bytes.fromhex('ff15a8478d000400c3c3c20c00'))),  # Abode
+    (0x00401207, padding_bytes(bytes.fromhex('ff1518498d000000c3'))),  # Abode
+    (0x00401217, padding_bytes(bytes.fromhex('ff155c438d000000c3'))),  # Abode
+    (0x00401227, padding_bytes(bytes.fromhex('ff15c8418d000000c3'))),  # Abode
+    (0x00401242, padding_bytes(bytes.fromhex('ff1550498d00b850feca00c20400'))),  # Abode
+    (0x00401255, padding_bytes(bytes.fromhex('ff15f0408d0033c0c20400'))),  # Abode
+    (0x00401264, padding_bytes(bytes.fromhex('ff15d8488d0004008b4114c3'))),  # Abode
+    (0x00401274, padding_bytes(bytes.fromhex('ff1598488d0014c38b4170c3'))),  # Abode
+    (0x00401284, padding_bytes(bytes.fromhex('ff15a8478d0070c38d4118c3'))),  # Abode
+    (0x004012D3, padding_bytes(bytes.fromhex('ff1584438d00004f75f05f5ec3'))),  # Abode
+    (0x00401303, padding_bytes(bytes.fromhex('ff1548428d00088bc65ec20400'))),  # Abode
+    (0x004013E1, padding_bytes(bytes.fromhex('ff1548498d00005f8bc65e5bc21c00'))),  # Abode
+    (0x004013F5, padding_bytes(bytes.fromhex('ff15d0408d0033c0c20400'))),  # Abode
+    (0x00401408, padding_bytes(bytes.fromhex('ff1518498d000400'))),  # Abode
+    (0x00401418, padding_bytes(bytes.fromhex('ff158c488d000400'))),  # Abode
+    (0x00401435, padding_bytes(bytes.fromhex('ff15a8478d0033c0c20400'))),  # Abode
+    (0x00401446, padding_bytes(bytes.fromhex('ff1540408d00000000c3'))),  # Abode
+    (0x00401458, padding_bytes(bytes.fromhex('ff15ac438d000400'))),  # Abode
+    (0x00401464, padding_bytes(bytes.fromhex('ff15a4428d0004008b4154c3'))),  # Abode
+    (0x00401483, padding_bytes(bytes.fromhex('ff15b0408d00909090908bc1c3'))),  # Abode
+    (0x00401493, padding_bytes(bytes.fromhex('ff15f8488d00908bc1c333c0c3'))),  # Abode
+    (0x004014A3, padding_bytes(bytes.fromhex('ff1580488d00c333c0c333c0c3'))),  # Abode
+    (0x004014B5, padding_bytes(bytes.fromhex('ff15a8478d0033c0c20400'))),  # Abode
+    (0x004014E4, padding_bytes(bytes.fromhex('ff15d4438d009090d9415cc3'))),  # Abode
+    (0x00401505, padding_bytes(bytes.fromhex('ff1518428d0033c0c20400'))),  # Abode
+    (0x00401513, padding_bytes(bytes.fromhex('ff155c498d00c0c204008bc1c3'))),  # Abode
+    (0x00401526, padding_bytes(bytes.fromhex('ff1590408d00000000c3'))),  # Abode
+    (0x00401533, padding_bytes(bytes.fromhex('ff15d8488d00000000c38bc1c3'))),  # Abode
+    (0x00401543, padding_bytes(bytes.fromhex('ff15b8488d00c38bc1c3c20400'))),  # Abode
+    (0x00401575, padding_bytes(bytes.fromhex('ff1540408d0032c0c20400'))),  # Abode
+    (0x004015A1, padding_bytes(bytes.fromhex('ff1528428d00c210009090909090c3'))),  # Abode
+    (0x004015B1, padding_bytes(bytes.fromhex('ff1554498d0010009090909090c3c3'))),  # Abode
+    (0x004015C5, padding_bytes(bytes.fromhex('ff15e4408d0033c0c20400'))),  # Abode
+    (0x004015E2, padding_bytes(bytes.fromhex('ff1518498d00d81bc0f7d8c20400'))),  # Abode
+    (0x00401606, padding_bytes(bytes.fromhex('ff15ac488d00000000c3'))),  # Abode
+    (0x00401614, padding_bytes(bytes.fromhex('ff15a8478d0000c38b4164c3'))),  # Abode
+    (0x00401624, padding_bytes(bytes.fromhex('ff1540408d0064c38b4178c3'))),  # Abode
+    (0x00401633, padding_bytes(bytes.fromhex('ff157c438d008b4178c38bc1c3'))),  # Abode
+    (0x00401667, padding_bytes(bytes.fromhex('ff154c498d00c20400'))),  # Abode
+    (0x00401671, padding_bytes(bytes.fromhex('ff15c4408d00154c498d00c20400c3'))),  # Abode
+    (0x004016D7, padding_bytes(bytes.fromhex('ff15a8478d0033c0c3'))),  # Abode
+    (0x004016E3, padding_bytes(bytes.fromhex('ff1540408d000033c0c333c0c3'))),  # Abode
+    (0x004016F7, padding_bytes(bytes.fromhex('ff15a4438d000000c3'))),  # Abode
+    (0x00401706, padding_bytes(bytes.fromhex('ff150c428d00000000c3'))),  # Abode
+    (0x00401716, padding_bytes(bytes.fromhex('ff1544498d00000000c3'))),  # Abode
+    (0x00401727, padding_bytes(bytes.fromhex('ff15a4408d000000c3'))),  # Abode
+    (0x00401736, padding_bytes(bytes.fromhex('ff15d8488d00000000c3'))),  # Abode
+    (0x00401746, padding_bytes(bytes.fromhex('ff1594488d00000000c3'))),  # Abode
+    (0x00401756, padding_bytes(bytes.fromhex('ff15a8478d00000000c3'))),  # Abode
+    (0x00401774, padding_bytes(bytes.fromhex('ff1540408d008bc65ec20400'))),  # Abode
+    (0x00401786, padding_bytes(bytes.fromhex('ff15cc438d00000000c3'))),  # Abode
+    (0x00401796, padding_bytes(bytes.fromhex('ff1558428d00000000c3'))),  # Abode
+    (0x004017A6, padding_bytes(bytes.fromhex('ff1560498d0077a300c3'))),  # Abode
+    (0x004017D3, padding_bytes(bytes.fromhex('ff1584408d00088bc65ec20400'))),  # Abode
+    (0x004017E9, padding_bytes(bytes.fromhex('ff1518498d0000'))),  # Abode
+    (0x004017F1, padding_bytes(bytes.fromhex('ff1588488d0000ff1518498d0000c3'))),  # Abode
+    (0x00401813, padding_bytes(bytes.fromhex('ff1540408d009090909033c0c3'))),  # Abode
+    (0x00401825, padding_bytes(bytes.fromhex('ff154c438d0033c0c20400'))),  # Abode
+    (0x00401835, padding_bytes(bytes.fromhex('ff1568428d0033c0c20400'))),  # Abode
+    (0x00401845, padding_bytes(bytes.fromhex('ff1558498d0033c0c20400'))),  # Abode
+    (0x00401857, padding_bytes(bytes.fromhex('ff15d8408d008d00c3'))),  # Abode
+    (0x00401863, padding_bytes(bytes.fromhex('ff15f8488d00008d00c333c0c3'))),  # Abode
+    (0x00401873, padding_bytes(bytes.fromhex('ff15c0488d00c333c0c332c0c3'))),  # Abode
+    (0x00401889, padding_bytes(bytes.fromhex('ff15ac408d0000'))),  # Abode
+    (0x00401895, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x004018A5, padding_bytes(bytes.fromhex('ff1574438d0033c0c20400'))),  # Abode
+    (0x004018B3, padding_bytes(bytes.fromhex('ff1558418d00c0c20400c20400'))),  # Abode
+    (0x004018C3, padding_bytes(bytes.fromhex('ff1550498d0000c2040033c0c3'))),  # Abode
+    (0x004018D3, padding_bytes(bytes.fromhex('ff15b8408d000033c0c333c0c3'))),  # Abode
+    (0x004018E5, padding_bytes(bytes.fromhex('ff15d8488d0033c0c20400'))),  # Abode
+    (0x004018F3, padding_bytes(bytes.fromhex('ff15b4488d00c0c2040033c0c3'))),  # Abode
+    (0x00401903, padding_bytes(bytes.fromhex('ff158c408d000033c0c333c0c3'))),  # Abode
+    (0x00401913, padding_bytes(bytes.fromhex('ff1540408d00c333c0c333c0c3'))),  # Abode
+    (0x00401923, padding_bytes(bytes.fromhex('ff159c438d00c333c0c333c0c3'))),  # Abode
+    (0x00401933, padding_bytes(bytes.fromhex('ff1558418d00c333c0c333c0c3'))),  # Abode
+    (0x00401946, padding_bytes(bytes.fromhex('ff1548498d00000000c3'))),  # Abode
+    (0x00401955, padding_bytes(bytes.fromhex('ff1598408d0033c0c20800'))),  # Abode
+    (0x0040197A, padding_bytes(bytes.fromhex('ff1518498d00'))),  # Abode
+    (0x004019AA, padding_bytes(bytes.fromhex('ff154c488d00'))),  # Abode
+    (0x004019B6, padding_bytes(bytes.fromhex('ff1540408d00000000c3'))),  # Abode
+    (0x004019C3, padding_bytes(bytes.fromhex('ff15c4438d00000000c333c0c3'))),  # Abode
+    (0x004019D3, padding_bytes(bytes.fromhex('ff15c8428d00c333c0c3c20400'))),  # Abode
+    (0x004019E3, padding_bytes(bytes.fromhex('ff1540498d00c3c20400c20400'))),  # Abode
+    (0x004019F3, padding_bytes(bytes.fromhex('ff15ec408d0000c20400c20400'))),  # Abode
+    (0x00401A07, padding_bytes(bytes.fromhex('ff15f8488d008d00c3'))),  # Abode
+    (0x00401A13, padding_bytes(bytes.fromhex('ff159c488d00008d00c3c20400'))),  # Abode
+    (0x00401A27, padding_bytes(bytes.fromhex('ff15f0478d008d00c3'))),  # Abode
+    (0x00401A33, padding_bytes(bytes.fromhex('ff1540408d00008d00c333c0c3'))),  # Abode
+    (0x00401A73, padding_bytes(bytes.fromhex('ff155c498d00c390909033c0c3'))),  # Abode
+    (0x00401A99, padding_bytes(bytes.fromhex('ff15d8488d0000'))),  # Abode
+    (0x00401AA5, padding_bytes(bytes.fromhex('ff1590488d0033c0c20400'))),  # Abode
+    (0x00401AB5, padding_bytes(bytes.fromhex('ff1548488d0033c0c20400'))),  # Abode
+    (0x00401AC5, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00401AD5, padding_bytes(bytes.fromhex('ff156c438d0033c0c20400'))),  # Abode
+    (0x00401AE5, padding_bytes(bytes.fromhex('ff1580428d0033c0c20400'))),  # Abode
+    (0x00401AF5, padding_bytes(bytes.fromhex('ff1554498d0033c0c20400'))),  # Abode
+    (0x00401B06, padding_bytes(bytes.fromhex('ff15ac408d00000000c3'))),  # Abode
+    (0x00401B13, padding_bytes(bytes.fromhex('ff1518498d00000000c333c0c3'))),  # Abode
+    (0x00401B26, padding_bytes(bytes.fromhex('ff1584488d00000000c3'))),  # Abode
+    (0x00401B33, padding_bytes(bytes.fromhex('ff151c488d00000000c333c0c3'))),  # Abode
+    (0x00401B43, padding_bytes(bytes.fromhex('ff1540408d00c333c0c333c0c3'))),  # Abode
+    (0x00401B53, padding_bytes(bytes.fromhex('ff1594438d00c333c0c333c0c3'))),  # Abode
+    (0x00401B63, padding_bytes(bytes.fromhex('ff15c8428d00c333c0c333c0c3'))),  # Abode
+    (0x00401B73, padding_bytes(bytes.fromhex('ff154c498d00c333c0c333c0c3'))),  # Abode
+    (0x00401B83, padding_bytes(bytes.fromhex('ff158c408d00c333c0c333c0c3'))),  # Abode
+    (0x00401B93, padding_bytes(bytes.fromhex('ff15f8488d00c333c0c333c0c3'))),  # Abode
+    (0x00401BA3, padding_bytes(bytes.fromhex('ff15bc488d00c333c0c333c0c3'))),  # Abode
+    (0x00401BB3, padding_bytes(bytes.fromhex('ff15cc478d00c333c0c333c0c3'))),  # Abode
+    (0x00401BC3, padding_bytes(bytes.fromhex('ff1540408d00c333c0c333c0c3'))),  # Abode
+    (0x00401BD3, padding_bytes(bytes.fromhex('ff15bc438d00c333c0c333c0c3'))),  # Abode
+    (0x00401BE3, padding_bytes(bytes.fromhex('ff15d8428d00c333c0c333c0c3'))),  # Abode
+    (0x00401BF3, padding_bytes(bytes.fromhex('ff1544498d00c333c0c333c0c3'))),  # Abode
+    (0x00401C03, padding_bytes(bytes.fromhex('ff15e0408d00c333c0c333c0c3'))),  # Abode
+    (0x00401C35, padding_bytes(bytes.fromhex('ff15b0488d0033c0c20400'))),  # Abode
+    (0x00401C45, padding_bytes(bytes.fromhex('ff1548488d0033c0c20400'))),  # Abode
+    (0x00401C55, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00401C65, padding_bytes(bytes.fromhex('ff153c438d0033c0c20400'))),  # Abode
+    (0x00401CA5, padding_bytes(bytes.fromhex('ff1508428d00c05ec20400'))),  # Abode
+    (0x00401CB5, padding_bytes(bytes.fromhex('ff1560498d0033c0c20400'))),  # Abode
+    (0x00401CC5, padding_bytes(bytes.fromhex('ff15c0408d0033c0c20400'))),  # Abode
+    (0x00401CD5, padding_bytes(bytes.fromhex('ff1518498d0033c0c20400'))),  # Abode
+    (0x00401CF5, padding_bytes(bytes.fromhex('ff15a4488d00c040c20400'))),  # Abode
+    (0x00401D05, padding_bytes(bytes.fromhex('ff1524488d0033c0c20400'))),  # Abode
+    (0x00401D15, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00401D25, padding_bytes(bytes.fromhex('ff1564438d0033c0c20400'))),  # Abode
+    (0x00401D35, padding_bytes(bytes.fromhex('ff15f8428d0033c0c20400'))),  # Abode
+    (0x00401D45, padding_bytes(bytes.fromhex('ff1558498d0033c0c20400'))),  # Abode
+    (0x00401D55, padding_bytes(bytes.fromhex('ff15a0408d0033c0c20400'))),  # Abode
+    (0x00401D65, padding_bytes(bytes.fromhex('ff15f8488d0033c0c20400'))),  # Abode
+    (0x00401D75, padding_bytes(bytes.fromhex('ff1598488d0033c0c20400'))),  # Abode
+    (0x00401D85, padding_bytes(bytes.fromhex('ff1574488d0033c0c20400'))),  # Abode
+    (0x00401D95, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00401DA5, padding_bytes(bytes.fromhex('ff158c438d0033c0c20400'))),  # Abode
+    (0x00401DB5, padding_bytes(bytes.fromhex('ff1540418d0033c0c20400'))),  # Abode
+    (0x00401DC5, padding_bytes(bytes.fromhex('ff1550498d0033c0c20400'))),  # Abode
+    (0x00401DD5, padding_bytes(bytes.fromhex('ff1580408d0033c0c20400'))),  # Abode
+    (0x00401DE5, padding_bytes(bytes.fromhex('ff15d8488d0033c0c20400'))),  # Abode
+    (0x00401DF5, padding_bytes(bytes.fromhex('ff1540498d0033c0c20400'))),  # Abode
+    (0x00401E05, padding_bytes(bytes.fromhex('ff154c488d0033c0c20400'))),  # Abode
+    (0x00401E15, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00401E25, padding_bytes(bytes.fromhex('ff15b4438d0033c0c20400'))),  # Abode
+    (0x00401E35, padding_bytes(bytes.fromhex('ff1540418d0033c0c20400'))),  # Abode
+    (0x00401E45, padding_bytes(bytes.fromhex('ff1548498d0033c0c20400'))),  # Abode
+    (0x00401E55, padding_bytes(bytes.fromhex('ff15d4408d0033c0c20400'))),  # Abode
+    (0x00401E63, padding_bytes(bytes.fromhex('ff1518498d00c0c2040033c0c3'))),  # Abode
+    (0x00401E73, padding_bytes(bytes.fromhex('ff155c498d000033c0c333c0c3'))),  # Abode
+    (0x00401E85, padding_bytes(bytes.fromhex('ff1560488d0033c0c20400'))),  # Abode
+    (0x00401E95, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00401EA5, padding_bytes(bytes.fromhex('ff1534438d0033c0c20400'))),  # Abode
+    (0x00401EB5, padding_bytes(bytes.fromhex('ff1540418d0033c0c20400'))),  # Abode
+    (0x00401EC5, padding_bytes(bytes.fromhex('ff1540498d0033c0c20400'))),  # Abode
+    (0x00401ED5, padding_bytes(bytes.fromhex('ff15b4408d0033c0c20400'))),  # Abode
+    (0x00401EE5, padding_bytes(bytes.fromhex('ff15f8488d0033c0c20400'))),  # Abode
+    (0x00401EF5, padding_bytes(bytes.fromhex('ff15dc468d0033c0c20400'))),  # Abode
+    (0x00401F05, padding_bytes(bytes.fromhex('ff1574488d0033c0c20400'))),  # Abode
+    (0x00401F15, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00401F25, padding_bytes(bytes.fromhex('ff155c438d0033c0c20400'))),  # Abode
+    (0x00401F35, padding_bytes(bytes.fromhex('ff1540418d0033c0c20400'))),  # Abode
+    (0x00401F45, padding_bytes(bytes.fromhex('ff155c498d0033c0c20400'))),  # Abode
+    (0x00401F55, padding_bytes(bytes.fromhex('ff1594408d0033c0c20400'))),  # Abode
+    (0x00401F65, padding_bytes(bytes.fromhex('ff15d8488d0033c0c20400'))),  # Abode
+    (0x00401FF1, padding_bytes(bytes.fromhex('ff1570488d00c2040033c05ec20400'))),  # Abode
+    (0x00402005, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00402015, padding_bytes(bytes.fromhex('ff1584438d0033c0c20400'))),  # Abode
+    (0x00402025, padding_bytes(bytes.fromhex('ff1570418d0033c0c20400'))),  # Abode
+    (0x00402035, padding_bytes(bytes.fromhex('ff1554498d0033c0c20400'))),  # Abode
+    (0x00402045, padding_bytes(bytes.fromhex('ff15e8408d0033c0c20400'))),  # Abode
+    (0x00402055, padding_bytes(bytes.fromhex('ff1518498d0033c0c20400'))),  # Abode
+    (0x00402065, padding_bytes(bytes.fromhex('ff1500478d0033c0c20400'))),  # Abode
+    (0x00402075, padding_bytes(bytes.fromhex('ff1574488d0033c0c20400'))),  # Abode
+    (0x00402085, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00402095, padding_bytes(bytes.fromhex('ff15ac438d0033c0c20400'))),  # Abode
+    (0x004020A5, padding_bytes(bytes.fromhex('ff1570418d0033c0c20400'))),  # Abode
+    (0x004020B5, padding_bytes(bytes.fromhex('ff154c498d0033c0c20400'))),  # Abode
+    (0x004020C5, padding_bytes(bytes.fromhex('ff15c8408d0033c0c20400'))),  # Abode
+    (0x004020D5, padding_bytes(bytes.fromhex('ff15f8488d0033c0c20400'))),  # Abode
+    (0x004020E5, padding_bytes(bytes.fromhex('ff1588478d0033c0c20400'))),  # Abode
+    (0x004020F5, padding_bytes(bytes.fromhex('ff15bc478d0033c0c20400'))),  # Abode
+    (0x00402105, padding_bytes(bytes.fromhex('ff1540408d0033c0c20400'))),  # Abode
+    (0x00402115, padding_bytes(bytes.fromhex('ff15d4438d0033c0c20400'))),  # Abode
+    (0x00402125, padding_bytes(bytes.fromhex('ff1570418d0033c0c20400'))),  # Abode
+    (0x00402135, padding_bytes(bytes.fromhex('ff1544498d0033c0c20400'))),  # Abode
+    (0x00402145, padding_bytes(bytes.fromhex('ff15a8408d0033c0c20400'))),  # Abode
+    (0x00402155, padding_bytes(bytes.fromhex('ff15d8488d0033c0c20400'))),  # Abode
+    (0x00402173, padding_bytes(bytes.fromhex('ff15dc478d009090909033c0c3'))),  # Abode
+    (0x00402183, padding_bytes(bytes.fromhex('ff1540408d009033c0c333c0c3'))),  # Abode
+    (0x00402195, padding_bytes(bytes.fromhex('ff1554438d0033c0c20400'))),  # Abode
+    (0x004021A5, padding_bytes(bytes.fromhex('ff1570418d0033c0c20400'))),  # Abode
+    (0x004021B5, padding_bytes(bytes.fromhex('ff1560498d0033c0c20400'))),  # Abode
+    (0x004021C3, padding_bytes(bytes.fromhex('ff1588408d00c0c2040033c0c3'))),  # Abode
+    (0x004021D3, padding_bytes(bytes.fromhex('ff1518498d000033c0c333c0c3'))),  # Abode
+    (0x004021E3, padding_bytes(bytes.fromhex('ff15c0468d00c333c0c333c0c3'))),  # Abode
+    (0x004021F3, padding_bytes(bytes.fromhex('ff15ec478d00c333c0c333c0c3'))),  # Abode
+    (0x00402203, padding_bytes(bytes.fromhex('ff1540408d00c333c0c333c0c3'))),  # Abode
+    (0x00402213, padding_bytes(bytes.fromhex('ff157c438d00c333c0c333c0c3'))),  # Abode
+    (0x00402223, padding_bytes(bytes.fromhex('ff1578418d00c333c0c333c0c3'))),  # Abode
+    (0x00402233, padding_bytes(bytes.fromhex('ff1558498d00c333c0c333c0c3'))),  # Abode
+    (0x00402243, padding_bytes(bytes.fromhex('ff15dc408d00c333c0c333c0c3'))),  # Abode
+    (0x00402253, padding_bytes(bytes.fromhex('ff15f8488d00c333c0c333c0c3'))),  # Abode
+    (0x00402263, padding_bytes(bytes.fromhex('ff1548478d00c333c0c333c0c3'))),  # Abode
+    (0x00402277, padding_bytes(bytes.fromhex('ff15f0478d008d00c3'))),  # Abode
+    (0x00402287, padding_bytes(bytes.fromhex('ff1540408d008d00c3'))),  # Abode
+    (0x00402297, padding_bytes(bytes.fromhex('ff15a4438d008d00c3'))),  # Abode
+    (0x004022A3, padding_bytes(bytes.fromhex('ff1578418d00008d00c333c0c3'))),  # Abode
+    (0x004022D1, padding_bytes(bytes.fromhex('ff1550498d000bc266894124c20400'))),  # Abode
+    (0x004022E3, padding_bytes(bytes.fromhex('ff15bc408d0024c2040033c0c3'))),  # Abode
+    (0x00402303, padding_bytes(bytes.fromhex('ff15e4468d00c390909033c0c3'))),  # Abode
+    (0x00402313, padding_bytes(bytes.fromhex('ff1560488d009033c0c333c0c3'))),  # Abode
+    (0x00402323, padding_bytes(bytes.fromhex('ff1540408d00c333c0c333c0c3'))),  # Abode
+    (0x00402333, padding_bytes(bytes.fromhex('ff15cc438d00c333c0c333c0c3'))),  # Abode
+    (0x00402343, padding_bytes(bytes.fromhex('ff15e8428d00c333c0c333c0c3'))),  # Abode
+    (0x00402353, padding_bytes(bytes.fromhex('ff1548498d00c333c0c333c0c3'))),  # Abode
+    (0x00402363, padding_bytes(bytes.fromhex('ff159c408d00c333c0c333c0c3'))),  # Abode
+    (0x00402373, padding_bytes(bytes.fromhex('ff1578428d00c333c0c333c0c3'))),  # Abode
+    (0x00402383, padding_bytes(bytes.fromhex('ff156c478d00c333c0c333c0c3'))),  # Abode
+    (0x00402393, padding_bytes(bytes.fromhex('ff1574488d00c333c0c333c0c3'))),  # Abode
+    (0x004023A3, padding_bytes(bytes.fromhex('ff1540408d00c333c0c333c0c3'))),  # Abode
+    (0x004023B3, padding_bytes(bytes.fromhex('ff154c438d00c333c0c333c0c3'))),  # Abode
+    (0x004023C3, padding_bytes(bytes.fromhex('ff15e8428d00c333c0c333c0c3'))),  # Abode
+    (0x004023D3, padding_bytes(bytes.fromhex('ff1540498d00c333c0c333c0c3'))),  # Abode
+    (0x004023E3, padding_bytes(bytes.fromhex('ff15f0408d00c333c0c333c0c3'))),  # Abode
+    (0x004023F3, padding_bytes(bytes.fromhex('ff1518428d00c333c0c333c0c3'))),  # Abode
+    (0x00402403, padding_bytes(bytes.fromhex('ff1508478d00c333c0c333c0c3'))),  # Abode
+    (0x00402413, padding_bytes(bytes.fromhex('ff15e4478d00c333c0c333c0c3'))),  # Abode
+    (0x00402423, padding_bytes(bytes.fromhex('ff1540408d00c333c0c333c0c3'))),  # Abode
+    (0x00402433, padding_bytes(bytes.fromhex('ff1574438d00c333c0c333c0c3'))),  # Abode
+    (0x00402443, padding_bytes(bytes.fromhex('ff15e8428d00c333c0c333c0c3'))),  # Abode
+    (0x00402453, padding_bytes(bytes.fromhex('ff155c498d00c333c0c333c0c3'))),  # Abode
+    (0x00402463, padding_bytes(bytes.fromhex('ff15d0408d00c333c0c333c0c3'))),  # Abode
+    (0x00402473, padding_bytes(bytes.fromhex('ff1500418d00c333c0c333c0c3'))),  # Abode
+    (0x00402483, padding_bytes(bytes.fromhex('ff1590478d00c333c0c332c0c3'))),  # Abode
+    (0x00402493, padding_bytes(bytes.fromhex('ff15d0478d00c332c0c332c0c3'))),  # Abode
+    (0x004024A3, padding_bytes(bytes.fromhex('ff1540408d00c332c0c333c0c3'))),  # Abode
+    (0x004024B3, padding_bytes(bytes.fromhex('ff159c438d00c333c0c333c0c3'))),  # Abode
+    (0x004024C3, padding_bytes(bytes.fromhex('ff15e8418d00c333c0c333c0c3'))),  # Abode
+    (0x004024D3, padding_bytes(bytes.fromhex('ff1554498d00c333c0c333c0c3'))),  # Abode
+    (0x004024E3, padding_bytes(bytes.fromhex('ff15b0408d00c333c0c332c0c3'))),  # Abode
+    (0x004024F3, padding_bytes(bytes.fromhex('ff1528418d00c332c0c332c0c3'))),  # Abode
+    (0x00402503, padding_bytes(bytes.fromhex('ff152c478d00c332c0c332c0c3'))),  # Abode
+    (0x00402513, padding_bytes(bytes.fromhex('ff1510488d00c332c0c332c0c3'))),  # Abode
+    (0x00402523, padding_bytes(bytes.fromhex('ff1540408d00c332c0c3c20400'))),  # Abode
+    (0x00402533, padding_bytes(bytes.fromhex('ff15c4438d00c3c20400c20400'))),  # Abode
+    (0x00402543, padding_bytes(bytes.fromhex('ff15e8428d0000c2040033c0c3'))),  # Abode
+    (0x00402553, padding_bytes(bytes.fromhex('ff154c498d000033c0c333c0c3'))),  # Abode
+    (0x00402563, padding_bytes(bytes.fromhex('ff1590408d00c333c0c333c0c3'))),  # Abode
+    (0x00402573, padding_bytes(bytes.fromhex('ff1518418d00c333c0c333c0c3'))),  # Abode
+    (0x00402583, padding_bytes(bytes.fromhex('ff15c8468d00c333c0c333c0c3'))),  # Abode
+    (0x00402597, padding_bytes(bytes.fromhex('ff1510488d008d00c3'))),  # Abode
+    (0x004025A3, padding_bytes(bytes.fromhex('ff1540408d00008d00c3c20400'))),  # Abode
+    (0x004025B7, padding_bytes(bytes.fromhex('ff1544438d008d00c3'))),  # Abode
+    (0x004025C1, padding_bytes(bytes.fromhex('ff15f0428d001544438d008d00c3c3'))),  # Abode
+    (0x004025D7, padding_bytes(bytes.fromhex('ff1544498d008d00c3'))),  # Abode
+    (0x004025E4, padding_bytes(bytes.fromhex('ff15e4408d0000c3d9414cc3'))),  # Abode
+    (0x004025F7, padding_bytes(bytes.fromhex('ff1508418d008d00c3'))),  # Abode
+    (0x00402604, padding_bytes(bytes.fromhex('ff1550478d0000c3d94150c3'))),  # Abode
+    (0x0040261A, padding_bytes(bytes.fromhex('ff15f0478d00'))),  # Abode
+    (0x00402621, padding_bytes(bytes.fromhex('ff1540408d000400ff153c488d00c3'))),  # Abode
+    (0x00402636, padding_bytes(bytes.fromhex('ff156c438d00000000c3'))),  # Abode
+    (0x00402653, padding_bytes(bytes.fromhex('ff1518428d00909090908bc1c3'))),  # Abode
+    (0x00402664, padding_bytes(bytes.fromhex('ff1560498d00c1c38b4140c3'))),  # Abode
+    (0x00402677, padding_bytes(bytes.fromhex('ff15c4408d008d00c3'))),  # Abode
+    (0x00402687, padding_bytes(bytes.fromhex('ff15f8408d008d00c3'))),  # Abode
+    (0x00402696, padding_bytes(bytes.fromhex('ff15ec468d00000000c3'))),  # Abode
+    (0x004026A3, padding_bytes(bytes.fromhex('ff15e0478d00000000c3c20400'))),  # Abode
+    (0x004026B3, padding_bytes(bytes.fromhex('ff1540408d00c3c2040033c0c3'))),  # Abode
+    (0x004026C3, padding_bytes(bytes.fromhex('ff1594438d000033c0c3c20400'))),  # Abode
+    (0x004026D3, padding_bytes(bytes.fromhex('ff15a8428d00c3c2040033c0c3'))),  # Abode
+    (0x004026E4, padding_bytes(bytes.fromhex('ff1558498d00c0c3d94148c3'))),  # Abode
+    (0x00402723, padding_bytes(bytes.fromhex('ff1520418d005ec39090c20400'))),  # Abode
+    (0x00402738, padding_bytes(bytes.fromhex('ff1574478d000400'))),  # Abode
+    (0x00402753, padding_bytes(bytes.fromhex('ff1540408d0090909090b001c3'))),  # Abode
+    (0x00402763, padding_bytes(bytes.fromhex('ff15bc438d0090b001c3c20400'))),  # Abode
+    (0x00402773, padding_bytes(bytes.fromhex('ff1528428d00c3c2040033c0c3'))),  # Abode
+    (0x00402783, padding_bytes(bytes.fromhex('ff1550498d000033c0c333c0c3'))),  # Abode
+    (0x004027A2, padding_bytes(bytes.fromhex('ff1584408d0000d80588538d00c3'))),  # Abode
+    (0x004027D5, padding_bytes(bytes.fromhex('ff1510418d00005ec20400'))),  # Abode
+    (0x00402809, padding_bytes(bytes.fromhex('ff1510478d00c3'))),  # Abode
+    (0x00402813, padding_bytes(bytes.fromhex('ff15e0478d00478d00c333c0c3'))),  # Abode
+    (0x00402823, padding_bytes(bytes.fromhex('ff1540408d00c333c0c333c0c3'))),  # Abode
+    (0x00402834, padding_bytes(bytes.fromhex('ff153c438d00c0c383c8ffc3'))),  # Abode
+    (0x00402843, padding_bytes(bytes.fromhex('ff15d8428d0083c8ffc333c0c3'))),  # Abode
+    (0x00402853, padding_bytes(bytes.fromhex('ff1548498d00c333c0c3c20800'))),  # Abode
+    (0x00402863, padding_bytes(bytes.fromhex('ff15d8408d00c3c20800c20400'))),  # Abode
+    (0x00402873, padding_bytes(bytes.fromhex('ff1500418d0000c2040033c0c3'))),  # Abode
+    (0x00402891, padding_bytes(bytes.fromhex('ff15c8478d0001000000c3909090c3'))),  # Abode
+    (0x004028B6, padding_bytes(bytes.fromhex('ff1564438d00000000c3'))),  # Abode
+    (0x004028C6, padding_bytes(bytes.fromhex('ff1558428d00000000c3'))),  # Abode
+    (0x004028D8, padding_bytes(bytes.fromhex('ff1540498d000400'))),  # Abode
+    (0x004028E6, padding_bytes(bytes.fromhex('ff156c438d00000000c3'))),  # Abode
+    (0x004028F6, padding_bytes(bytes.fromhex('ff1528418d00000000c3'))),  # Abode
+    (0x00402906, padding_bytes(bytes.fromhex('ff1534478d00000000c3'))),  # Abode
+    (0x00402918, padding_bytes(bytes.fromhex('ff1544488d000400'))),  # Abode
+    (0x00402926, padding_bytes(bytes.fromhex('ff1540408d00000000c3'))),  # Abode
+    (0x00402936, padding_bytes(bytes.fromhex('ff158c438d00000000c3'))),  # Abode
+    (0x00402943, padding_bytes(bytes.fromhex('ff15d8428d00000000c333c0c3'))),  # Abode
+    (0x00402955, padding_bytes(bytes.fromhex('ff155c498d0033c0c20400'))),  # Abode
+    (0x00402965, padding_bytes(bytes.fromhex('ff1594438d0033c0c20800'))),  # Abode
+    (0x00402978, padding_bytes(bytes.fromhex('ff1518418d000800'))),  # Abode
+    (0x00402986, padding_bytes(bytes.fromhex('ff15d0468d00000000c3'))),  # Abode
+    (0x00402995, padding_bytes(bytes.fromhex('ff15f4478d0033c0c20800'))),  # Abode
+    (0x004029A5, padding_bytes(bytes.fromhex('ff1540408d0033c0c20c00'))),  # Abode
+    (0x004029B5, padding_bytes(bytes.fromhex('ff15b4438d0033c0c20800'))),  # Abode
+    (0x004029C5, padding_bytes(bytes.fromhex('ff1578428d0033c0c20c00'))),  # Abode
+    (0x004029D5, padding_bytes(bytes.fromhex('ff1554498d0033c0c20400'))),  # Abode
+    (0x004029E8, padding_bytes(bytes.fromhex('ff1564408d000400'))),  # Abode
+    (0x004029F3, padding_bytes(bytes.fromhex('ff1508418d008d00040033c0c3'))),  # Abode
+    (0x00402A03, padding_bytes(bytes.fromhex('ff1558478d000033c0c333c0c3'))),  # Abode
+    (0x00402A13, padding_bytes(bytes.fromhex('ff1570488d00c333c0c333c0c3'))),  # Abode
+)
+
+
+def restore_BW1WCI_padding(path):
+    pe = pefile.PE(data=bytearray(Path(path).read_bytes()))
+    restore_calls(pe, BW1WCI_PADDING)
+    Path(path).write_bytes(pe.write())
+    pe.close()
+
+
 def build_BW1WCI_exe(linked, cfg):
     """The shipped executable's container around the linked sections' contents."""
     lpe = pefile.PE(data=linked)
@@ -4285,6 +5264,7 @@ def main():
     if rich_key is None:
         # a container of its own (see build_BW1WCI_exe)
         out.write_bytes(build_BW1WCI_exe(args.input.read_bytes(), cfg))
+        restore_BW1WCI_padding(out)
         apply_modules_patch(out.parent, cfg, modules)
         return
 

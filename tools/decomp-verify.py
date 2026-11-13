@@ -190,7 +190,8 @@ def compile_edges(records, root, windows=None):
         # edge naming one writes it.
         pch = None
         if any(w.startswith(('/Yu', '-Yu')) for w in words):
-            pch = canonical(pchs[-1], directory) if pchs else None
+            # Kept as spelled: it names the Ninja target too (see below).
+            pch = absolute_path(pchs[-1], directory) if pchs else None
         else:
             shared += pchs
         if any(w.startswith(('/Yc', '-Yc')) for w in words):
@@ -234,7 +235,7 @@ class IncludeScanner:
             # without exploding on cycles/diamond-shaped header graphs.
             suffixes = defaultdict(set)
             for base in dict.fromkeys((self.root / 'src', self.root / 'include', *roots)):
-                if base.is_dir():
+                if base.is_dir() and str(base).startswith(str(self.root)):
                     for path in base.rglob('*'):
                         if path.is_file():
                             parts = path.relative_to(base).parts

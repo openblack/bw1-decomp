@@ -15,21 +15,25 @@ class HelpSystemInfo : public GBaseInfo
 {
 public:
 	float   MaxFOVDistance;
-	uint8_t field_0x14[0xc];
+	float   WideScreenTransitionTime;
+	int32_t BaseReadTime;
+	int32_t ReadTimePerWord;
 
 	// BW1W120 00d16160
 	static HelpSystemInfo Info;
 
 	// Override methods
 
-	// BW1W120 005c53f0 BW1M119 0135a2d0
-	virtual ~HelpSystemInfo();
 	// BW1W120 005c53a0 BW1M119 0135a280
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = 1;
+		return &Info;
+	}
 
 	// TODO(#377): The original declared this class in HelpSystem.h.
 	// Out of line: LoadBinary at 0042f7f0, Load at 0042f7a0.
-	INFO_DATA_BLOCK(MaxFOVDistance, field_0x14)
+	INFO_DATA_BLOCK(MaxFOVDistance, ReadTimePerWord)
 	INFO_ROOT_LOADERS(67, "HelpSystem.h")
 };
 

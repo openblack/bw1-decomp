@@ -11,7 +11,7 @@
 class Base;
 class GameOSFile;
 class GameThing;
-class LH3DSprite;
+struct LH3DSprite;
 class ParticleCreator;
 
 class Particle3DSprite : public RenderParticle
@@ -24,10 +24,10 @@ public:
 	union {
 		struct
 		{
-			uint8_t Flag0 : 1;
-			uint8_t Flag1 : 1;
-			uint8_t Flag2 : 1;
-			uint8_t Flag3 : 1;
+			uint8_t CentreAtBase : 1;
+			uint8_t StretchVertically : 1;
+			uint8_t IgnoreRotation : 1;
+			uint8_t UseLandscapeColor : 1;
 		};
 		uint8_t Flags;
 	};
@@ -59,10 +59,10 @@ public:
 	Particle3DSprite() : Alpha(0xff)
 	{
 		FrameOffset = 0;
-		Flag0 = 0;
-		Flag1 = 0;
-		Flag2 = 0;
-		Flag3 = 0;
+		CentreAtBase = 0;
+		StretchVertically = 0;
+		IgnoreRotation = 0;
+		UseLandscapeColor = 0;
 		PreviousScale = Scale = 1.0f;
 		Sprite = NULL;
 		Creator = NULL;

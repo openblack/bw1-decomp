@@ -17,6 +17,21 @@
 #include "AnimalPig.h"
 #include "AnimalTortoise.h"
 #include "PuzzleGame.h"
+#include "Rand.h"
+#include "SpeedThreshold.h"
+#include "AnimalInfo.h"
+
+// BW1W120 0041bd20
+uint32_t Dove::DecideAnimation()
+{
+	return MoveAnimation();
+}
+
+// BW1W120 0041bd30
+uint32_t Dove::MoveAnimation()
+{
+	return GAME_RAND(17, 2) ? ANM_DOVE_GLIDE : ANM_DOVE_FLAP;
+}
 
 // BW1W120 0041bd50
 uint32_t Dove::DeadAnimation()
@@ -156,6 +171,12 @@ uint32_t SpellBat::ThrownAnimation()
 	return ANM_BAT_GLIDE;
 }
 
+// BW1W120 0041bec0
+uint32_t Crow::MoveAnimation()
+{
+	return GAME_RAND(53, 2) ? ANM_CROW_GLIDE : ANM_CROW_FLAP;
+}
+
 // BW1W120 0041bee0
 uint32_t Crow::DeadAnimation()
 {
@@ -184,6 +205,12 @@ uint32_t Crow::StandAnimation()
 uint32_t Crow::ThrownAnimation()
 {
 	return ANM_CROW_TAKEOFF;
+}
+
+// BW1W120 0041bf30
+uint32_t Pigeon::MoveAnimation()
+{
+	return GAME_RAND(66, 2) ? ANM_PIGEON_GLIDE : ANM_PIGEON_FLAP;
 }
 
 // BW1W120 0041bf50
@@ -216,6 +243,12 @@ uint32_t Pigeon::ThrownAnimation()
 	return ANM_PIGEON_TAKEOFF;
 }
 
+// BW1W120 0041bfa0
+uint32_t Seagull::MoveAnimation()
+{
+	return GAME_RAND(78, 2) ? ANM_SEAGULL_GLIDE : ANM_SEAGULL_FLAP;
+}
+
 // BW1W120 0041bfc0
 uint32_t Seagull::DeadAnimation()
 {
@@ -244,6 +277,17 @@ uint32_t Seagull::StandAnimation()
 uint32_t Seagull::ThrownAnimation()
 {
 	return ANM_SEAGULL_TAKEOFF;
+}
+
+// BW1W120 0041c010
+uint32_t Swallow::MoveAnimation()
+{
+	uint32_t flight = GAME_RAND(91, 3);
+	if (flight == 2)
+	{
+		return ANM_SWALLOW_CALMGLIDE;
+	}
+	return flight == 1 ? ANM_SWALLOW_ERATICGLIDE : ANM_SWALLOW_FLAP;
 }
 
 // BW1W120 0041c040
@@ -306,6 +350,26 @@ uint32_t Vulture::StandAnimation()
 	return ANM_INVALID;
 }
 
+// BW1W120 0041c0e0
+uint32_t Lion::MoveAnimation()
+{
+#ifdef VERSION_BW1WCI
+	if (GetSpeed() < GetDefaultSpeed())
+	{
+		return ANM_A_LION_PROWL;
+	}
+	return GetSpeed() <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_LION].RunThreshold ? ANM_A_LION_WALK
+	                                                                                         : ANM_A_LION_RUN;
+#else
+	if (speed < GetDefaultSpeed())
+	{
+		return ANM_A_LION_PROWL;
+	}
+	return speed <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_LION].RunThreshold ? ANM_A_LION_WALK
+	                                                                                    : ANM_A_LION_RUN;
+#endif
+}
+
 // BW1W120 0041c110
 uint32_t Lion::LandedAnimation()
 {
@@ -366,6 +430,38 @@ uint32_t Lion::StandAnimation()
 	return ANM_A_LION_STAND;
 }
 
+#ifndef VERSION_BW1W100
+// BW1W120 0041c1b0
+uint32_t Lion::StartToSleepAnimation()
+{
+	return ANM_A_LION_GOTO_SLEEP;
+}
+
+// BW1W120 0041c1c0
+uint32_t Lion::FinishSleepingAnimation()
+{
+	return ANM_A_LION_UPFROM_SLEEP;
+}
+
+// BW1W120 0041c1d0
+uint32_t Lion::StartToSitAnimation()
+{
+	return ANM_A_LION_GOTO_SIT;
+}
+
+// BW1W120 0041c1e0
+uint32_t Lion::FinishSittingAnimation()
+{
+	return ANM_A_LION_UPFROM_SIT;
+}
+
+// BW1W120 0041c1f0
+uint32_t Lion::SitAnimation()
+{
+	return ANM_A_LION_SIT;
+}
+#endif
+
 // BW1W120 0041c200
 uint32_t Lion::InHandAnimation()
 {
@@ -376,6 +472,26 @@ uint32_t Lion::InHandAnimation()
 uint32_t Lion::ThrownAnimation()
 {
 	return ANM_A_LION_STAND;
+}
+
+// BW1W120 0041c220
+uint32_t Leopard::MoveAnimation()
+{
+#ifdef VERSION_BW1WCI
+	if (GetSpeed() < GetDefaultSpeed())
+	{
+		return ANM_A_LEOPARD_PROWL;
+	}
+	return GetSpeed() <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_LEOPARD].RunThreshold ? ANM_A_LEOPARD_WALK
+	                                                                                            : ANM_A_LEOPARD_RUN;
+#else
+	if (speed < GetDefaultSpeed())
+	{
+		return ANM_A_LEOPARD_PROWL;
+	}
+	return speed <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_LEOPARD].RunThreshold ? ANM_A_LEOPARD_WALK
+	                                                                                       : ANM_A_LEOPARD_RUN;
+#endif
 }
 
 // BW1W120 0041c250
@@ -438,6 +554,38 @@ uint32_t Leopard::StandAnimation()
 	return ANM_A_LEOPARD_STAND;
 }
 
+#ifndef VERSION_BW1W100
+// BW1W120 0041c2f0
+uint32_t Leopard::StartToSleepAnimation()
+{
+	return ANM_A_LEOPARD_GOTO_SLEEP;
+}
+
+// BW1W120 0041c300
+uint32_t Leopard::FinishSleepingAnimation()
+{
+	return ANM_A_LEOPARD_UPFROM_SLEEP;
+}
+
+// BW1W120 0041c310
+uint32_t Leopard::StartToSitAnimation()
+{
+	return ANM_A_LEOPARD_GOTO_SIT;
+}
+
+// BW1W120 0041c320
+uint32_t Leopard::FinishSittingAnimation()
+{
+	return ANM_A_LEOPARD_UPFROM_SIT;
+}
+
+// BW1W120 0041c330
+uint32_t Leopard::SitAnimation()
+{
+	return ANM_A_LEOPARD_SIT;
+}
+#endif
+
 // BW1W120 0041c340
 uint32_t Leopard::InHandAnimation()
 {
@@ -448,6 +596,26 @@ uint32_t Leopard::InHandAnimation()
 uint32_t Leopard::ThrownAnimation()
 {
 	return ANM_A_LEOPARD_STAND;
+}
+
+// BW1W120 0041c360
+uint32_t Tiger::MoveAnimation()
+{
+#ifdef VERSION_BW1WCI
+	if (GetSpeed() < GetDefaultSpeed())
+	{
+		return ANM_A_TIGER_PROWL;
+	}
+	return GetSpeed() <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_TIGER].RunThreshold ? ANM_A_TIGER_WALK
+	                                                                                          : ANM_A_TIGER_RUN;
+#else
+	if (speed < GetDefaultSpeed())
+	{
+		return ANM_A_TIGER_PROWL;
+	}
+	return speed <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_TIGER].RunThreshold ? ANM_A_TIGER_WALK
+	                                                                                     : ANM_A_TIGER_RUN;
+#endif
 }
 
 // BW1W120 0041c3a0
@@ -510,6 +678,38 @@ uint32_t Tiger::StandAnimation()
 	return ANM_A_TIGER_STAND;
 }
 
+#ifndef VERSION_BW1W100
+// BW1W120 0041c440
+uint32_t Tiger::StartToSleepAnimation()
+{
+	return ANM_A_TIGER_GOTO_SLEEP;
+}
+
+// BW1W120 0041c450
+uint32_t Tiger::FinishSleepingAnimation()
+{
+	return ANM_A_TIGER_UPFROM_SLEEP;
+}
+
+// BW1W120 0041c460
+uint32_t Tiger::StartToSitAnimation()
+{
+	return ANM_A_TIGER_GOTO_SIT;
+}
+
+// BW1W120 0041c470
+uint32_t Tiger::FinishSittingAnimation()
+{
+	return ANM_A_TIGER_UPFROM_SIT;
+}
+
+// BW1W120 0041c480
+uint32_t Tiger::SitAnimation()
+{
+	return ANM_A_TIGER_SIT;
+}
+#endif
+
 // BW1W120 0041c490
 uint32_t Tiger::InHandAnimation()
 {
@@ -520,6 +720,26 @@ uint32_t Tiger::InHandAnimation()
 uint32_t Tiger::ThrownAnimation()
 {
 	return ANM_A_TIGER_STAND;
+}
+
+// BW1W120 0041c4b0
+uint32_t Wolf::MoveAnimation()
+{
+#ifdef VERSION_BW1WCI
+	if (GetSpeed() < GetDefaultSpeed())
+	{
+		return ANM_A_WOLF_PROWL;
+	}
+	return GetSpeed() <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_WOLF].RunThreshold ? ANM_A_WOLF_WALK
+	                                                                                         : ANM_A_WOLF_RUN;
+#else
+	if (speed < GetDefaultSpeed())
+	{
+		return ANM_A_WOLF_PROWL;
+	}
+	return speed <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_WOLF].RunThreshold ? ANM_A_WOLF_WALK
+	                                                                                    : ANM_A_WOLF_RUN;
+#endif
 }
 
 // BW1W120 0041c4f0
@@ -581,6 +801,38 @@ uint32_t Wolf::StandAnimation()
 {
 	return ANM_A_WOLF_STAND;
 }
+
+#ifndef VERSION_BW1W100
+// BW1W120 0041c590
+uint32_t Wolf::StartToSleepAnimation()
+{
+	return ANM_A_WOLF_GOTO_SLEEP;
+}
+
+// BW1W120 0041c5a0
+uint32_t Wolf::FinishSleepingAnimation()
+{
+	return ANM_A_WOLF_UPFROM_SLEEP;
+}
+
+// BW1W120 0041c5b0
+uint32_t Wolf::StartToSitAnimation()
+{
+	return ANM_A_WOLF_GOTO_SIT;
+}
+
+// BW1W120 0041c5c0
+uint32_t Wolf::FinishSittingAnimation()
+{
+	return ANM_A_WOLF_UPFROM_SIT;
+}
+
+// BW1W120 0041c5d0
+uint32_t Wolf::SitAnimation()
+{
+	return ANM_A_WOLF_SIT;
+}
+#endif
 
 // BW1W120 0041c5e0
 uint32_t Wolf::InHandAnimation()
@@ -660,6 +912,38 @@ uint32_t SpellWolf::StandAnimation()
 	return ANM_A_WOLF_STAND;
 }
 
+#ifndef VERSION_BW1W100
+// BW1W120 0041c6b0
+uint32_t SpellWolf::StartToSleepAnimation()
+{
+	return ANM_A_WOLF_GOTO_SLEEP;
+}
+
+// BW1W120 0041c6c0
+uint32_t SpellWolf::FinishSleepingAnimation()
+{
+	return ANM_A_WOLF_UPFROM_SLEEP;
+}
+
+// BW1W120 0041c6d0
+uint32_t SpellWolf::StartToSitAnimation()
+{
+	return ANM_A_WOLF_GOTO_SIT;
+}
+
+// BW1W120 0041c6e0
+uint32_t SpellWolf::FinishSittingAnimation()
+{
+	return ANM_A_WOLF_UPFROM_SIT;
+}
+
+// BW1W120 0041c6f0
+uint32_t SpellWolf::SitAnimation()
+{
+	return ANM_A_WOLF_SIT;
+}
+#endif
+
 // BW1W120 0041c700
 uint32_t SpellWolf::InHandAnimation()
 {
@@ -670,6 +954,41 @@ uint32_t SpellWolf::InHandAnimation()
 uint32_t SpellWolf::ThrownAnimation()
 {
 	return ANM_A_WOLF_STAND;
+}
+
+// BW1W120 0041c720
+uint32_t Cow::MoveAnimation()
+{
+#ifdef VERSION_BW1WCI
+	return GetSpeed() <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_COW].WalkThreshold ? ANM_A_COW_WALK
+	                                                                                         : ANM_A_COW_RUN;
+#else
+	return speed <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_COW].WalkThreshold ? ANM_A_COW_WALK
+	                                                                                    : ANM_A_COW_RUN;
+#endif
+}
+
+// BW1W120 0041c740
+uint32_t Cow::EatAnimation()
+{
+	return GAME_RAND(326, 2) ? ANM_A_COW_EAT_1 : ANM_A_COW_EAT_2;
+}
+
+// BW1W120 0041c760
+uint32_t Cow::LandedAnimation()
+{
+	uint16_t side = StatusFallSide;
+	if (side == 0)
+	{
+		return ANM_A_COW_STAND;
+	}
+	return side == 1 ? ANM_A_COW_LANDED_RIGHT_SIDE : ANM_A_COW_LANDED_LEFT_SIDE;
+}
+
+// BW1W120 0041c790
+uint32_t Cow::DeadAnimation()
+{
+	return StatusFallSide == 1 ? ANM_A_COW_DEAD_ON_RHS : ANM_A_COW_DEAD_ON_LHS;
 }
 
 // BW1W120 0041c7b0
@@ -714,6 +1033,41 @@ uint32_t Cow::ThrownAnimation()
 	return ANM_A_COW_THROWN;
 }
 
+// BW1W120 0041c820
+uint32_t Sheep::MoveAnimation()
+{
+#ifdef VERSION_BW1WCI
+	return GetSpeed() <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_COW].WalkThreshold ? ANM_A_SHEEP_WALK
+	                                                                                         : ANM_A_SHEEP_RUN;
+#else
+	return speed <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_COW].WalkThreshold ? ANM_A_SHEEP_WALK
+	                                                                                    : ANM_A_SHEEP_RUN;
+#endif
+}
+
+// BW1W120 0041c840
+uint32_t Sheep::EatAnimation()
+{
+	return GAME_RAND(375, 2) ? ANM_A_SHEEP_EAT1 : ANM_A_SHEEP_EAT2;
+}
+
+// BW1W120 0041c860
+uint32_t Sheep::LandedAnimation()
+{
+	uint16_t side = StatusFallSide;
+	if (side == 0)
+	{
+		return ANM_A_SHEEP_STAND;
+	}
+	return side == 1 ? ANM_A_SHEEP_LANDED_GETUPRHS : ANM_A_SHEEP_LANDED_GETUPLHS;
+}
+
+// BW1W120 0041c890
+uint32_t Sheep::DeadAnimation()
+{
+	return StatusFallSide == 1 ? ANM_A_SHEEP_DEAD_RHS : ANM_A_SHEEP_DEAD_LHS;
+}
+
 // BW1W120 0041c8b0
 uint32_t Sheep::SleepAnimation()
 {
@@ -743,6 +1097,38 @@ uint32_t Sheep::DyingAnimation()
 {
 	return ANM_A_SHEEP_FALL_DEADLHS;
 }
+
+#ifndef VERSION_BW1W100
+// BW1W120 0041c900
+uint32_t Sheep::StartToSleepAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041c910
+uint32_t Sheep::FinishSleepingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041c920
+uint32_t Sheep::StartToSitAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041c930
+uint32_t Sheep::FinishSittingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041c940
+uint32_t Sheep::SitAnimation()
+{
+	return ANM_INVALID;
+}
+#endif
 
 // BW1W120 0041c950
 uint32_t Sheep::InHandAnimation()
@@ -810,6 +1196,38 @@ uint32_t Goat::DyingAnimation()
 	return ANM_INVALID;
 }
 
+#ifndef VERSION_BW1W100
+// BW1W120 0041ca00
+uint32_t Goat::StartToSleepAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041ca10
+uint32_t Goat::FinishSleepingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041ca20
+uint32_t Goat::StartToSitAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041ca30
+uint32_t Goat::FinishSittingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041ca40
+uint32_t Goat::SitAnimation()
+{
+	return ANM_INVALID;
+}
+#endif
+
 // BW1W120 0041ca50
 uint32_t Goat::InHandAnimation()
 {
@@ -820,6 +1238,49 @@ uint32_t Goat::InHandAnimation()
 uint32_t Goat::ThrownAnimation()
 {
 	return ANM_INVALID;
+}
+
+// BW1W120 0041ca70
+uint32_t Horse::MoveAnimation()
+{
+#ifdef VERSION_BW1WCI
+	if (GetSpeed() <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_HORSE].WalkThreshold)
+	{
+		return ANM_A_HORSE_WALK;
+	}
+	return GetSpeed() <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_HORSE].RunThreshold ? ANM_A_HORSE_TROT
+	                                                                                          : ANM_A_HORSE_RUN;
+#else
+	if (speed <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_HORSE].WalkThreshold)
+	{
+		return ANM_A_HORSE_WALK;
+	}
+	return speed <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_HORSE].RunThreshold ? ANM_A_HORSE_TROT
+	                                                                                     : ANM_A_HORSE_RUN;
+#endif
+}
+
+// BW1W120 0041caa0
+uint32_t Horse::EatAnimation()
+{
+	return GAME_RAND(454, 2) ? ANM_A_HORSE_EAT1 : ANM_A_HORSE_EAT2;
+}
+
+// BW1W120 0041cac0
+uint32_t Horse::LandedAnimation()
+{
+	uint16_t side = StatusFallSide;
+	if (side == 0)
+	{
+		return ANM_A_HORSE_STAND;
+	}
+	return side == 1 ? ANM_A_HORSE_LAND_GET_UPRHS : ANM_A_HORSE_LAND_GET_UPLHS;
+}
+
+// BW1W120 0041caf0
+uint32_t Horse::DeadAnimation()
+{
+	return StatusFallSide == 1 ? ANM_A_HORSE_DEADRHS : ANM_A_HORSE_DEADLHS;
 }
 
 // BW1W120 0041cb10
@@ -851,6 +1312,38 @@ uint32_t Horse::DyingAnimation()
 {
 	return ANM_A_HORSE_DEADLHS;
 }
+
+#ifndef VERSION_BW1W100
+// BW1W120 0041cb60
+uint32_t Horse::StartToSleepAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cb70
+uint32_t Horse::FinishSleepingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cb80
+uint32_t Horse::StartToSitAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cb90
+uint32_t Horse::FinishSittingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cba0
+uint32_t Horse::SitAnimation()
+{
+	return ANM_INVALID;
+}
+#endif
 
 // BW1W120 0041cbb0
 uint32_t Horse::InHandAnimation()
@@ -918,6 +1411,38 @@ uint32_t Zebra::DyingAnimation()
 	return ANM_INVALID;
 }
 
+#ifndef VERSION_BW1W100
+// BW1W120 0041cc60
+uint32_t Zebra::StartToSleepAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cc70
+uint32_t Zebra::FinishSleepingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cc80
+uint32_t Zebra::StartToSitAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cc90
+uint32_t Zebra::FinishSittingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cca0
+uint32_t Zebra::SitAnimation()
+{
+	return ANM_INVALID;
+}
+#endif
+
 // BW1W120 0041ccb0
 uint32_t Zebra::InHandAnimation()
 {
@@ -928,6 +1453,41 @@ uint32_t Zebra::InHandAnimation()
 uint32_t Zebra::ThrownAnimation()
 {
 	return ANM_INVALID;
+}
+
+// BW1W120 0041ccd0
+uint32_t Pig::MoveAnimation()
+{
+#ifdef VERSION_BW1WCI
+	return GetSpeed() <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_COW].WalkThreshold ? ANM_A_PIG_WALK
+	                                                                                         : ANM_A_PIG_RUN;
+#else
+	return speed <= GSpeedThreshold::InfoList[SPEED_THRESHOLD_ANIMAL_COW].WalkThreshold ? ANM_A_PIG_WALK
+	                                                                                    : ANM_A_PIG_RUN;
+#endif
+}
+
+// BW1W120 0041ccf0
+uint32_t Pig::EatAnimation()
+{
+	return GAME_RAND(530, 2) ? ANM_A_PIG_EAT1 : ANM_A_PIG_EAT2;
+}
+
+// BW1W120 0041cd10
+uint32_t Pig::LandedAnimation()
+{
+	uint16_t side = StatusFallSide;
+	if (side == 0)
+	{
+		return ANM_A_PIG_STAND;
+	}
+	return side == 1 ? ANM_A_PIG_LAND_GET_UPRHS : ANM_A_PIG_LAND_GET_UPLHS;
+}
+
+// BW1W120 0041cd40
+uint32_t Pig::DeadAnimation()
+{
+	return StatusFallSide == 1 ? ANM_A_PIG_DEADRHS : ANM_A_PIG_DEADLHS;
 }
 
 // BW1W120 0041cd60
@@ -959,6 +1519,38 @@ uint32_t Pig::DyingAnimation()
 {
 	return ANM_A_PIG_FALL_DEADLHS;
 }
+
+#ifndef VERSION_BW1W100
+// BW1W120 0041cdb0
+uint32_t Pig::StartToSleepAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cdc0
+uint32_t Pig::FinishSleepingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cdd0
+uint32_t Pig::StartToSitAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cde0
+uint32_t Pig::FinishSittingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cdf0
+uint32_t Pig::SitAnimation()
+{
+	return ANM_INVALID;
+}
+#endif
 
 // BW1W120 0041ce00
 uint32_t Pig::InHandAnimation()
@@ -1026,6 +1618,38 @@ uint32_t Tortoise::DyingAnimation()
 	return ANM_A_TORTOISE_STAND;
 }
 
+#ifndef VERSION_BW1W100
+// BW1W120 0041ceb0
+uint32_t Tortoise::StartToSleepAnimation()
+{
+	return ANM_A_TORTOISE_STAND;
+}
+
+// BW1W120 0041cec0
+uint32_t Tortoise::FinishSleepingAnimation()
+{
+	return ANM_A_TORTOISE_STAND;
+}
+
+// BW1W120 0041ced0
+uint32_t Tortoise::StartToSitAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cee0
+uint32_t Tortoise::FinishSittingAnimation()
+{
+	return ANM_INVALID;
+}
+
+// BW1W120 0041cef0
+uint32_t Tortoise::SitAnimation()
+{
+	return ANM_INVALID;
+}
+#endif
+
 // BW1W120 0041cf00
 uint32_t Tortoise::InHandAnimation()
 {
@@ -1036,6 +1660,32 @@ uint32_t Tortoise::InHandAnimation()
 uint32_t Tortoise::ThrownAnimation()
 {
 	return ANM_A_TORTOISE_STAND;
+}
+
+// BW1W120 0041cf20
+uint32_t PieceVillager::MoveAnimation()
+{
+#ifdef VERSION_BW1WCI
+	if (GetSpeed() < GetDefaultSpeed())
+	{
+		return ANM_P_WALK_MAN;
+	}
+	if (GetSpeed() > GetInfo()->ApproachSpeed)
+	{
+		return ANM_P_WALK_MAN;
+	}
+	return ANM_P_WALK_MAN;
+#else
+	if (speed < GetDefaultSpeed())
+	{
+		return ANM_P_WALK_MAN;
+	}
+	if (speed > GetInfo()->ApproachSpeed)
+	{
+		return ANM_P_WALK_MAN;
+	}
+	return ANM_P_WALK_MAN;
+#endif
 }
 
 // BW1W120 0041cf40
@@ -1097,6 +1747,38 @@ uint32_t PieceVillager::StandAnimation()
 {
 	return ANM_P_STAND;
 }
+
+#ifndef VERSION_BW1W100
+// BW1W120 0041cfe0
+uint32_t PieceVillager::StartToSleepAnimation()
+{
+	return ANM_P_STAND;
+}
+
+// BW1W120 0041cff0
+uint32_t PieceVillager::FinishSleepingAnimation()
+{
+	return ANM_P_STAND;
+}
+
+// BW1W120 0041d000
+uint32_t PieceVillager::StartToSitAnimation()
+{
+	return ANM_P_WALK_MAN;
+}
+
+// BW1W120 0041d010
+uint32_t PieceVillager::FinishSittingAnimation()
+{
+	return ANM_P_WALK_MAN;
+}
+
+// BW1W120 0041d020
+uint32_t PieceVillager::SitAnimation()
+{
+	return ANM_P_WALK_MAN;
+}
+#endif
 
 // BW1W120 0041d030
 uint32_t PieceVillager::InHandAnimation()

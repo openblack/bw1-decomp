@@ -27,10 +27,19 @@
 
 class GInterfaceStatus;
 class GameOSFile;
+class LH3DCreature;
 class LHPlayer;
+class Object;
 struct HandFX;
 struct LHMatrix;
 class CHand;
+
+struct ControlHandUpdateInfo
+{
+	float    HeightChange; /* 0x0 */
+	uint32_t field_0x4;
+	uint32_t field_0x8[4];
+};
 
 class CHand : public Morphable
 {
@@ -61,7 +70,7 @@ public:
 		Named      named;
 		HandState* raw[11];
 	};
-	float             field_0x4834;
+	float             DistanceScale; /* 0x4834 */
 	float             MaxDistanceFromUser;
 	int               field_0x483c;
 	uint32_t          field_0x4840;
@@ -69,20 +78,12 @@ public:
 	uint32_t          field_0x4848;
 	int               HandOrientation;
 	GInterfaceStatus* InterfaceStatus; /* 0x4850 */
-	float             field_0x4854;
-	uint8_t           field_0x4858;
-	uint8_t           field_0x4859;
-	uint8_t           field_0x485a;
-	uint8_t           field_0x485b;
+	float             DistanceFromView;
+	bool32_t          ScreenPosChanged; /* 0x4858 */
 	LHCoord           ScreenPos;
-	uint32_t          field_0x4864;
-	uint8_t           field_0x4868;
-	uint8_t           field_0x4869;
-	uint8_t           field_0x486a;
-	uint8_t           field_0x486b;
-	int               field_0x486c;
-	int               field_0x4870;
-	uint8_t           field_0x4874;
+	LHCoord           PreviousScreenPos;
+	LHCoord           DrawScreenPos;
+	bool              UseDrawScreenPos; /* 0x4874 */
 	uint8_t           field_0x4875;
 	uint8_t           field_0x4876;
 	uint8_t           field_0x4877;
@@ -101,8 +102,8 @@ public:
 	uint8_t           field_0x48b2;
 	uint8_t           field_0x48b3;
 	uint32_t          field_0x48b4;
-	float             field_0x48b8;
-	float             field_0x48bc;
+	float             LaggedScreenPosX; /* 0x48b8 */
+	float             LaggedScreenPosY; /* 0x48bc */
 	uint8_t           field_0x48c0;
 	uint8_t           field_0x48c1;
 	uint8_t           field_0x48c2;
@@ -111,27 +112,16 @@ public:
 	uint8_t           field_0x48c5;
 	uint8_t           field_0x48c6;
 	uint8_t           field_0x48c7;
-	uint8_t           field_0x48c8;
-	uint8_t           field_0x48c9;
-	uint8_t           field_0x48ca;
-	uint8_t           field_0x48cb;
-	uint8_t           field_0x48cc;
-	uint8_t           field_0x48cd;
-	uint8_t           field_0x48ce;
-	uint8_t           field_0x48cf;
-	uint8_t           field_0x48d0;
-	uint8_t           field_0x48d1;
-	uint8_t           field_0x48d2;
-	uint8_t           field_0x48d3;
-	LHPoint           Point0x48d4;
-	LHPoint           Point0x48e0;
-	LHPoint           Point0x48ec;
+	LHPoint           ThrowVelocity; /* 0x48c8 */
+	LHPoint           ThrowSpin;     /* 0x48d4 */
+	LHPoint           ThrowPos;      /* 0x48e0 */
+	LHPoint           ThrowAngles;   /* 0x48ec */
 	uint32_t          field_0x48f8;
 	uint32_t          field_0x48fc;
 	uint32_t          field_0x4900;
-	uint32_t          HeldObject;
-	uint32_t          field_0x4908;
-	uint32_t          field_0x490c;
+	Object*           HeldObject;
+	bool32_t          Tugging;  /* 0x4908 */
+	HOLD_TYPE         HoldType; /* 0x490c */
 	uint8_t           field_0x4910;
 	uint8_t           field_0x4911;
 	uint8_t           field_0x4912;
@@ -141,50 +131,14 @@ public:
 	uint8_t           field_0x4916;
 	uint8_t           field_0x4917;
 	uint32_t          field_0x4918;
-	uint8_t           field_0x491c;
+	bool              InFixedPosAnimation;
 	uint8_t           field_0x491d;
 	uint8_t           field_0x491e;
 	uint8_t           field_0x491f;
-	uint8_t           field_0x4920;
-	uint8_t           field_0x4921;
-	uint8_t           field_0x4922;
-	uint8_t           field_0x4923;
-	uint8_t           field_0x4924;
-	uint8_t           field_0x4925;
-	uint8_t           field_0x4926;
-	uint8_t           field_0x4927;
-	uint8_t           field_0x4928;
-	uint8_t           field_0x4929;
-	uint8_t           field_0x492a;
-	uint8_t           field_0x492b;
-	uint8_t           field_0x492c;
-	uint8_t           field_0x492d;
-	uint8_t           field_0x492e;
-	uint8_t           field_0x492f;
-	uint8_t           field_0x4930;
-	uint8_t           field_0x4931;
-	uint8_t           field_0x4932;
-	uint8_t           field_0x4933;
-	uint8_t           field_0x4934;
-	uint8_t           field_0x4935;
-	uint8_t           field_0x4936;
-	uint8_t           field_0x4937;
-	uint8_t           field_0x4938;
-	uint8_t           field_0x4939;
-	uint8_t           field_0x493a;
-	uint8_t           field_0x493b;
-	uint8_t           field_0x493c;
-	uint8_t           field_0x493d;
-	uint8_t           field_0x493e;
-	uint8_t           field_0x493f;
-	uint8_t           field_0x4940;
-	uint8_t           field_0x4941;
-	uint8_t           field_0x4942;
-	uint8_t           field_0x4943;
-	uint8_t           field_0x4944;
-	uint8_t           field_0x4945;
-	uint8_t           field_0x4946;
-	uint8_t           field_0x4947;
+	LHPoint           TugAngularVelocity; /* 0x4920 */
+	LHPoint           PickUpPos;          /* 0x492c */
+	LHPoint           HeldObjectVelocity; /* 0x4938 */
+	float             HoldHeight;         /* 0x4944 */
 	HandFX*           HandFx;
 	int*              field_0x494c;
 	int               field_0x4950;
@@ -215,10 +169,10 @@ public:
 	uint32_t          field_0x49a4;
 	uint32_t          field_0x49a8;
 	LHMatrix*         Matrix0x49ac;
-	float             field_0x49b0;
-	uint32_t          field_0x49b4;
-	uint32_t          field_0x49b8;
-	uint32_t          field_0x49bc;
+	float             BlendTime;            /* 0x49b0 */
+	Creature*         InteractCreature;     /* 0x49b4 */
+	LH3DCreature*     InteractCreature3d;   /* 0x49b8 */
+	Creature*         CreatureBeingGivenTo; /* 0x49bc */
 	uint32_t          field_0x49c0;
 
 	// Override methods
@@ -244,6 +198,8 @@ public:
 	// Non-virtual methods
 	// BW1W120 0046c1b0 BW1M119 011d0600
 	void Show(bool32_t show);
+	// BW1W120 0046c2e0 BW1M119 inlined
+	void SetEditorControl(bool32_t enable);
 	// BW1W120 0046eb10 BW1M119 011cce70
 	bool32_t Save(GameOSFile& file);
 	// BW1W120 0046e930 BW1M119 011cd140
@@ -263,10 +219,32 @@ public:
 	void UpdateHeldObject();
 	// BW1W120 0046d100 BW1M119 01024a70
 	void AddDrawing();
+	// BW1W120 0046e5d0 BW1M119 0108e800
+	HandStateGrain* GetHandStateGrain();
 	// BW1W120 0046e5f0 BW1M119 011cdda0
 	void UpdateLeftRightFromPlayer(LHPlayer* player);
+	// BW1W120 0046d080 BW1M119 0101cde0
+	void SetUpPositionMatrix(LHMatrix& matrix);
+	// BW1W120 0046db70 BW1M119 011cefc0
+	float GetDistanceFromObject(Object* object);
 	// BW1W120 0046df00 BW1M119 0108f950
 	void DrawTheHeldObject();
+	// BW1W120 0046df60 BW1M119 01030120
+	float WorkOutStandardDistanceFromView(int keep_clear_of_land);
+	// BW1W120 0046e160 BW1M119 010273c0
+	void FillStandardPositionMatrix(LHMatrix& matrix, const LHPoint& pos, const LHPoint& up);
+	// BW1W120 0046e2f0 BW1M119 01084d00
+	void FillStandardObjectMatrix(LHMatrix& matrix, const LHPoint& pos, const LHPoint& up);
+	// BW1W120 0046c0d0 BW1M119 010812d0
+	void SetDistanceFromView(float distance);
+	// BW1W120 0046c040 BW1M119 01085c70
+	static float GetStandardSize();
+	// BW1W120 0046bfb0 BW1M119 011d0b90
+	float GetMaxForce();
+	// BW1W120 0046c500 BW1M119 011d0400
+	void BlendToNewPosition();
+	// BW1W120 0046e4b0 BW1M119 010953b0
+	Creature* GetCreatureToGiveTo();
 };
 
 #endif /* BW1_DECOMP_CONTROL_HAND_INCLUDED_H */

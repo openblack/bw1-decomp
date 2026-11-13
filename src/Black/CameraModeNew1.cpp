@@ -22,22 +22,8 @@ float CameraModeNew1::KeyHeldTime;
 
 void CameraSmoother::WrapAngle()
 {
-	while (Destination < -PI_F)
-	{
-		Destination += TWO_PI;
-	}
-	while (Destination > PI_F)
-	{
-		Destination -= TWO_PI;
-	}
-	while (Current < -PI_F)
-	{
-		Current += TWO_PI;
-	}
-	while (Current > PI_F)
-	{
-		Current -= TWO_PI;
-	}
+	WRAP(Destination, -PI_F, PI_F, TWO_PI);
+	WRAP(Current, -PI_F, PI_F, TWO_PI);
 	if (Current - Destination > PI_F)
 	{
 		Current -= TWO_PI;

@@ -18,6 +18,9 @@ block_relocations:
   - source: 0x009D1148
 # Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate, like SetupColourPicker's.
   - source: 0x00403267
+# LHScreen::ResetDisplay's DEVMODE field mask 0x580000 is an immediate, not a pointer into GJBaseUtils.cpp's code.
+  - source: 0x007DD075
+  - source: 0x007DD0AD
 # CitadelHeart::DrawCreaturePen's sprite colour 0xc18119 is an immediate, not a pointer into g_scriptFunctionTable.
   - source: 0x00466A04
 # WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
@@ -148,6 +151,12 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GAnimalStateTableInfo@@2PAV1@A'
     addend: 0x2618
+# CreatureSubActions.cpp's SubStateInitiateFaceDownSlope walks MapXZDirections8 by its z members: the loop ends two bytes
+# past the array.
+  - source: 0x00504250
+    type: x86_abs32
+    target: '?MapXZDirections8@@3PAUJustMapXZ@@A'
+    addend: 0x22
 # adj_fdiv.obj: its dispatch table, the jumps through it and its data references (dtk leaves them unrelocated).
   - source: 0x00C3011E
     type: x86_abs32
@@ -1849,6 +1858,31 @@ add_relocations:
     type: x86_abs32
     target: '?CountryCodes@@3PAY02DA'
     addend: 0x2d
+# MOV ESI is the end of GPotInfo::InfoList for its destructor loop, not PowerSpin's data.
+  - source: 0x0066CC17
+    type: x86_abs32
+    target: '?InfoList@GPotInfo@@2PAV1@A'
+    addend: 0x180c
+# GJBaseUtils.cpp's std::string::_Copy: the catch funclet's continuation address and the catch handler entry in its
+# .xdata$x handler table point inside the function (dtk leaves both unrelocated).
+  - source: 0x0057F80B
+    type: x86_abs32
+    target: '?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z'
+    addend: 0x80
+  - source: 0x009BBDC4
+    type: x86_abs32
+    target: '?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z'
+    addend: 0x5F
+# WinCondition.cpp's std::getline: the catch funclet's continuation address and the catch handler entry in its
+# .xdata$x handler table point inside the function (dtk leaves both unrelocated).
+  - source: 0x00778CC9
+    type: x86_abs32
+    target: '?getline@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@1@AAV21@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@D@Z'
+    addend: 0x24E
+  - source: 0x009BC3FC
+    type: x86_abs32
+    target: '?getline@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@1@AAV21@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@D@Z'
+    addend: 0x226
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
 linker_version: "6.0"

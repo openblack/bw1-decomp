@@ -621,9 +621,10 @@ void LH3DPrimitive::DrawTextureShadow()
 	for (int i = 0; i < NumTriangles; i++)
 	{
 		Vertex3D corners[3];
-		for (int k = 0; k < 3; indices++, k++)
+		for (int k = 0; k < 3; k++, indices++)
 		{
 			LH3DVertex* vertex = &Vertices[*indices];
+			Vertex3D*   corner = &corners[k];
 			LHPoint     position = vertex->position;
 			LH3DTech::g_local_to_clipping.TransformPoint(position);
 			if (position.y < 0.0f)
@@ -631,10 +632,10 @@ void LH3DPrimitive::DrawTextureShadow()
 				position.y = 0.0f;
 			}
 			float t = light.y / (light.y - position.y);
-			corners[k].x = (light.x + (position.x - light.x) * t) * size * LH3D_T_SHADOW_SCALE;
-			corners[k].z = (light.z + (position.z - light.z) * t) * size * LH3D_T_SHADOW_SCALE;
-			corners[k].uv.x = vertex->uv.x * (LH3D_T_SHADOW_BITMAP_SIZE - 1) + 0.5f;
-			corners[k].uv.y = vertex->uv.y * (LH3D_T_SHADOW_BITMAP_SIZE - 1) + 0.5f;
+			corner->x = (light.x + (position.x - light.x) * t) * size * LH3D_T_SHADOW_SCALE;
+			corner->z = (light.z + (position.z - light.z) * t) * size * LH3D_T_SHADOW_SCALE;
+			corner->uv.x = vertex->uv.x * (LH3D_T_SHADOW_BITMAP_SIZE - 1) + 0.5f;
+			corner->uv.y = vertex->uv.y * (LH3D_T_SHADOW_BITMAP_SIZE - 1) + 0.5f;
 		}
 		LH3DTShadow::AddEdge(&corners[0], &corners[1], 1);
 		LH3DTShadow::AddEdge(&corners[1], &corners[2], 1);
@@ -645,8 +646,9 @@ void LH3DPrimitive::DrawTextureShadow()
 
 void LH3DPrimitive::DrawTextureShadow32x32(SubCollideDataRender* collide, SRTextured* rasterizer, TShadowInfo* shadow)
 {
-	float minDepth = shadow->MinDepth;
-	float height = shadow->GroundHeight - shadow->Light.y;
+	LHPoint probe0;
+	float   minDepth = shadow->MinDepth;
+	float   height = shadow->GroundHeight - shadow->Light.y;
 	if (LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		return;
@@ -658,12 +660,11 @@ void LH3DPrimitive::DrawTextureShadow32x32(SubCollideDataRender* collide, SRText
 	int         i;
 	for (i = 0; i < NumVertices; i++, vertex++, point++)
 	{
-		LHPoint   position = vertex->position;
 		LHMatrix* matrix = &LH3DObject::g_current_object_in_draw->matrix;
-		point->x = matrix->m[0] * position.x + matrix->m[3] * position.y + matrix->m[6] * position.z + matrix->m[9];
-		point->y = matrix->m[1] * position.x + matrix->m[4] * position.y + matrix->m[7] * position.z + matrix->m[10];
-		point->z = matrix->m[2] * position.x + matrix->m[5] * position.y + matrix->m[8] * position.z + matrix->m[11];
-		float depth = point->x * shadow->Direction.x + point->z * shadow->Direction.z;
+		LHPoint   position(&vertex->position);
+		TransformPointBy((LHPoint*)point, position, matrix);
+		float depth = point->x * shadow->Direction.x;
+		depth += point->z * shadow->Direction.z;
 		if (depth < minDepth)
 		{
 			minDepth = depth;
@@ -720,12 +721,13 @@ void LH3DPrimitive::DrawLit()
 {
 	unsigned long color = !Material.texture ? Material.ModulateColor(LH3DMesh::g_color) : LH3DMesh::g_color;
 	g_current_primitive = this;
+	int            i;
 	LH3DVertex*    vertex = Vertices;
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
-		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
+		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
 			point->specular = LH3DMesh::g_specular;
@@ -764,9 +766,9 @@ void LH3DPrimitive::DrawLit()
 	else
 	{
 		int start = 0;
-		for (int i = 0; i < NumVertexGroups; i++)
+		for (int k = 0; k < NumVertexGroups; k++)
 		{
-			LH3DVertexGroup* group = &VertexGroups[i];
+			LH3DVertexGroup* group = &VertexGroups[k];
 			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
 			LHMatrix         inverse;
 			inverse.SetInverse(*matrix);
@@ -775,7 +777,7 @@ void LH3DPrimitive::DrawLit()
 			TransformPointBy(&lightDirection, sun, &inverse);
 			float norm = lightDirection.GetNorm();
 			lightDirection *= InverseSquareRoot(norm);
-			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
+			for (i = start; i < start + group->vertex_count; flags++, point++, vertex++, i++)
 			{
 				TransformToClipping(point, vertex->position, matrix);
 				point->specular = LH3DMesh::g_specular;
@@ -889,8 +891,9 @@ void LH3DPrimitive::DrawComplex()
 		LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
 		LHMatrix         inverse;
 		inverse.SetInverse(*matrix);
-		LHPoint light = inverse * LH3DTech::g_sun_light;
-		float   norm = light.GetNorm();
+		LHPoint light;
+		LHMATRIX_TRANSFORM_POINT(light, LH3DTech::GetSun(), inverse);
+		float norm = light.GetNorm();
 		light *= InverseSquareRoot(norm);
 		LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
 		LH3DTech::g_local_to_clipping.PreMultiply(*matrix);
@@ -1290,9 +1293,9 @@ void LH3DPrimitive::DrawComplexEnvMapMT()
 void LH3DPrimitive::DrawComplexRefMapMT()
 {
 	g_current_primitive = this;
-	LH3DVertex* vertex = Vertices;
 	Vertex3DMT* point = (Vertex3DMT*)LH3DTech::g_cache_t_points;
 	int         start = 0;
+	LH3DVertex* vertex = Vertices;
 	for (int i = 0; i < NumVertexGroups; i++)
 	{
 		LH3DVertexGroup* group = &VertexGroups[i];
@@ -1417,6 +1420,9 @@ void LH3DPrimitive::DrawInShadow()
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
+	LHPoint        probe0;
+	LHPoint        probe1;
+	LHPoint        probe2;
 	int            j;
 	float          u;
 	float          v;
@@ -1904,11 +1910,12 @@ void LH3DPrimitive::DrawVolLightGJ()
 	g_current_primitive = this;
 	Vertex3D*   point = &LH3DTech::g_cache_t_points[LH3D_GJ_ANIM_VOL_FX_FIRST_POINT];
 	LH3DVertex* vertex = Vertices;
+	int         i;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		LHMatrix normalMatrix = *LH3DTech::g_current_matrix;
 		normalMatrix.NormaliseMatrixOnly();
-		for (int i = 0; i < NumVertices; i++)
+		for (i = 0; i < NumVertices; i++)
 		{
 			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
 			LHPoint offsetNormal = vertex->normal + LHPoint(LH3DGJAnimVolFX::g_vol_fx_normal_offset_x, 0.0f,
@@ -1957,7 +1964,7 @@ void LH3DPrimitive::DrawVolLightGJ()
 	else
 	{
 		int start = 0;
-		for (int i = 0; i < NumVertexGroups; i++)
+		for (i = 0; i < NumVertexGroups; i++)
 		{
 			LH3DVertexGroup* group = &VertexGroups[i];
 			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
@@ -2283,8 +2290,8 @@ int __fastcall LH3DPrimitive::ComputeProjectedPoints(float* projected, TShadowIn
 	float maxZ = shadow->MaxZ;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
-		float       height = -LH3DObject::g_current_object_in_draw->matrix.m[10];
 		LH3DVertex* vertex = Vertices;
+		float       height = -LH3DObject::g_current_object_in_draw->matrix.m[10];
 		LH3DTech::g_current_matrix->m[10] += height;
 		for (int i = 0; i < NumVertices; i++, vertex++)
 		{
@@ -2834,46 +2841,53 @@ void LH3DPrimitive::DrawSnow()
 				flags = LH3DTech::g_cache_flags;
 				LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
 				int k;
+				int a = 0;
+				int b = 1;
+				int c = 2;
 				if (Material.IsDoubleSided())
 				{
 					for (k = 0; k < count; k++)
 					{
-						int index = k * 3;
-						if (flags[index] | flags[index + 1] | flags[index + 2])
+						if (flags[a] | flags[b] | flags[c])
 						{
-							if (!(flags[index] & flags[index + 1] & flags[index + 2]))
+							if (!(flags[a] & flags[b] & flags[c]))
 							{
-								LH3DTech::ClipTriangle(index, index + 1, index + 2, LH3DTech::CLIP_CODE_NEAR);
+								LH3DTech::ClipTriangle(a, b, c, LH3DTech::CLIP_CODE_NEAR);
 							}
 						}
 						else
 						{
-							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = index;
-							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = index + 1;
-							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = index + 2;
+							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
+							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
+							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
 						}
+						a += 3;
+						b += 3;
+						c += 3;
 					}
 				}
 				else
 				{
 					for (k = 0; k < count; k++)
 					{
-						int index = k * 3;
-						if (flags[index] | flags[index + 1] | flags[index + 2])
+						if (flags[a] | flags[b] | flags[c])
 						{
-							if (!(flags[index] & flags[index + 1] & flags[index + 2]))
+							if (!(flags[a] & flags[b] & flags[c]))
 							{
-								LH3DTech::ClipTriangle(index, index + 1, index + 2, LH3DTech::CLIP_CODE_NEAR);
+								LH3DTech::ClipTriangle(a, b, c, LH3DTech::CLIP_CODE_NEAR);
 							}
 						}
-						else if ((point[index + 2].y - point[index].y) * (point[index + 1].x - point[index].x) -
-						             (point[index + 1].y - point[index].y) * (point[index + 2].x - point[index].x) >
+						else if ((point[c].y - point[a].y) * (point[b].x - point[a].x) -
+						             (point[b].y - point[a].y) * (point[c].x - point[a].x) >
 						         0.0f)
 						{
-							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = index;
-							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = index + 1;
-							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = index + 2;
+							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
+							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
+							LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
 						}
+						a += 3;
+						b += 3;
+						c += 3;
 					}
 				}
 				if (LH3DTech::g_index_count)
@@ -2887,9 +2901,9 @@ void LH3DPrimitive::DrawSnow()
 	}
 	else
 	{
-		LH3DVertex*    vertex = Vertices;
 		Vertex3D*      point = LH3DTech::g_cache_t_points;
 		unsigned long* flags = LH3DTech::g_cache_flags;
+		LH3DVertex*    vertex = Vertices;
 		if (LH3DSubMesh::g_current_sub_mesh->Skinned)
 		{
 			int start = 0;
@@ -2910,10 +2924,11 @@ void LH3DPrimitive::DrawSnow()
 					point->specular = LH3DMesh::g_specular;
 					point->color =
 						ScaleColor(snowColor, GetLightLevel(FloatToInt(light * vertex->normal * LH3D_LIGHT_MAX)));
-					float v = vertex->position.y * 0.3f + vertex->position.z + 10.0f;
-					float u = vertex->position.x + vertex->position.z * 0.1f;
-					u -= (int)u + 5.0f;
-					v -= (int)v + 5.0f;
+					float z = vertex->position.z;
+					float v = vertex->position.y * 0.3f + z + 20.0f;
+					float u = vertex->position.x + z * 0.1f;
+					u -= (int)u + 2.5f;
+					v -= (int)v + 2.5f;
 					point->uv.Set((u - (int)u) * 0.2f + vertex->normal.y, (v - (int)v) * 0.2f + vertex->normal.x);
 					ComputeClipFlags(point, flags);
 					if (!*flags)
@@ -2956,10 +2971,11 @@ void LH3DPrimitive::DrawSnow()
 				point->specular = LH3DMesh::g_specular;
 				point->color =
 					ScaleColor(snowColor, GetLightLevel(FloatToInt(g_vect_light * vertex->normal * LH3D_LIGHT_MAX)));
-				float v = vertex->position.y * 0.3f + vertex->position.z + 10.0f;
-				float u = vertex->position.x + vertex->position.z * 0.1f;
-				u -= (int)u + 5.0f;
-				v -= (int)v + 5.0f;
+				float z = vertex->position.z;
+				float v = vertex->position.y * 0.3f + z + 20.0f;
+				float u = vertex->position.x + z * 0.1f;
+				u -= (int)u + 2.5f;
+				v -= (int)v + 2.5f;
 				point->uv.Set(
 					(u - (int)u) * 0.2f + (envMatrix.m[1] * vertex->normal.x + envMatrix.m[4] * vertex->normal.y +
 				                           envMatrix.m[7] * vertex->normal.z),
@@ -3465,11 +3481,12 @@ void LH3DPrimitive::DrawRefMapMT()
 	Vertex3DMT*    point = (Vertex3DMT*)LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
+	int            i;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		LHPoint eye = *LH3DTech::GetCameraPosition();
 		LH3DTech::g_world_to_local.TransformPoint(eye);
-		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
+		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
 			point->specular = LH3DMesh::g_specular;
@@ -3519,9 +3536,9 @@ void LH3DPrimitive::DrawRefMapMT()
 	else
 	{
 		int start = 0;
-		for (int i = 0; i < NumVertexGroups; i++)
+		for (int k = 0; k < NumVertexGroups; k++)
 		{
-			LH3DVertexGroup* group = &VertexGroups[i];
+			LH3DVertexGroup* group = &VertexGroups[k];
 			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
 			LHMatrix         inverse;
 			inverse.SetInverse(*matrix);
@@ -3537,9 +3554,10 @@ void LH3DPrimitive::DrawRefMapMT()
 			envMatrix.m[9] = 0.0f;
 			envMatrix.m[10] = 0.0f;
 			envMatrix.m[11] = 0.0f;
-			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
+			for (i = start; i < start + group->vertex_count; flags++, point++, vertex++, i++)
 			{
-				TransformToClipping(point, vertex->position, &LH3DTech::g_local_to_clipping);
+				LHMatrix* clipping = &LH3DTech::g_local_to_clipping;
+				TransformToClipping(point, vertex->position, clipping);
 				point->specular = LH3DMesh::g_specular;
 				point->color =
 					ScaleColor(LH3DMesh::g_color, GetLightLevel(FloatToInt(light * vertex->normal * LH3D_LIGHT_MAX)));
@@ -3684,12 +3702,13 @@ bool32_t LH3DPrimitive::CheckTriangleCollide()
 	g_current_primitive = this;
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
+	LHMatrix*      matrix = &LH3DTech::g_local_to_clipping;
 	LH3DVertex*    vertex = Vertices;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
-			TransformToClipping(point, vertex->position, &LH3DTech::g_local_to_clipping);
+			TransformToClipping(point, vertex->position, matrix);
 			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
@@ -3723,7 +3742,6 @@ bool32_t LH3DPrimitive::CheckTriangleCollide()
 		for (int i = 0; i < NumVertexGroups; i++)
 		{
 			LH3DVertexGroup* group = &VertexGroups[i];
-			LHMatrix*        matrix;
 			if (LH3DObject::g_current_object_in_draw->IsComplex())
 			{
 				LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
@@ -4024,13 +4042,14 @@ bool32_t LH3DPrimitive::CheckPixelCollide()
 {
 	g_current_primitive = this;
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
+	LHMatrix*      matrix = &LH3DTech::g_local_to_clipping;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
-			TransformToClipping(point, vertex->position, &LH3DTech::g_local_to_clipping);
+			TransformToClipping(point, vertex->position, matrix);
 			ComputeClipFlags(point, flags);
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
@@ -4070,7 +4089,7 @@ bool32_t LH3DPrimitive::CheckPixelCollide()
 			LH3DTech::g_local_to_clipping.PreMultiply(LH3DMesh::g_current_matrix[group->BoneIndex]);
 			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
 			{
-				TransformToClipping(point, vertex->position, &LH3DTech::g_local_to_clipping);
+				TransformToClipping(point, vertex->position, matrix);
 				ComputeClipFlags(point, flags);
 				point->uv.x = vertex->uv.x;
 				point->uv.y = vertex->uv.y;
@@ -4338,22 +4357,24 @@ bool32_t __fastcall LH3DPrimitive::ComputeVertexInsideTriangle(Vertex3D* top, Ve
 	longEdge.x = s * top->x + t * bottom->x;
 	longEdge.uv.x = (s * (top->uv.x * top->rhw) + (t * bottom->uv.x) * bottom->rhw) / longEdge.rhw;
 	longEdge.uv.y = (s * (top->uv.y * top->rhw) + (t * bottom->uv.y) * bottom->rhw) / longEdge.rhw;
+	Vertex3D* upper = top;
+	Vertex3D* lower = bottom;
 	if (y < middle->y)
 	{
-		bottom = middle;
+		lower = middle;
 	}
 	else
 	{
-		top = middle;
+		upper = middle;
 	}
-	dy1 = top->y - y;
-	dy2 = bottom->y - y;
+	dy1 = upper->y - y;
+	dy2 = lower->y - y;
 	float t2 = dy1 / (dy1 - dy2);
 	float s2 = 1.0f - t2;
-	shortEdge.rhw = s2 * top->rhw + t2 * bottom->rhw;
-	shortEdge.x = s2 * top->x + t2 * bottom->x;
-	shortEdge.uv.x = (s2 * top->uv.x * top->rhw + t2 * bottom->uv.x * bottom->rhw) / shortEdge.rhw;
-	shortEdge.uv.y = (s2 * top->uv.y * top->rhw + t2 * bottom->uv.y * bottom->rhw) / shortEdge.rhw;
+	shortEdge.rhw = s2 * upper->rhw + t2 * lower->rhw;
+	shortEdge.x = s2 * upper->x + t2 * lower->x;
+	shortEdge.uv.x = (s2 * upper->uv.x * upper->rhw + t2 * lower->uv.x * lower->rhw) / shortEdge.rhw;
+	shortEdge.uv.y = (s2 * upper->uv.y * upper->rhw + t2 * lower->uv.y * lower->rhw) / shortEdge.rhw;
 	float x = (float)LH3DObject::g_selected_px;
 	float dx1 = shortEdge.x - x;
 	float dx2 = longEdge.x - x;
@@ -4764,7 +4785,7 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           point->y * (point->rhw * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -5140,7 +5161,8 @@ void LH3DPrimitive::DrawCutByPlane()
 			LH3DTech::g_local_to_clipping.PreMultiply(LH3DMesh::g_current_matrix[group->BoneIndex]);
 			for (i = start; i < start + group->vertex_count; flags++, point++, vertex++, i++)
 			{
-				TransformToClipping(point, vertex->position, &LH3DTech::g_local_to_clipping);
+				LHMatrix* clipping = &LH3DTech::g_local_to_clipping;
+				TransformToClipping(point, vertex->position, clipping);
 				int   light = GetLightLevel(FloatToInt(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
 				float distance = g_clipping_plane_camera.Normal.x * point->x * toCameraX +
 				                 g_clipping_plane_camera.Normal.y * point->y * toCameraY +
@@ -5442,14 +5464,16 @@ void LH3DPrimitive::DrawSnowWithVerticalTranslation()
 		float* translate = g_vertical_translate_vertices;
 		for (i = 0; i < NumVertices; flags++, point++, vertex++, translate += 3, i++)
 		{
-			LHPoint position(vertex->position.x + translate[0], vertex->position.y + translate[1],
-			                 vertex->position.z + translate[2]);
-			TransformToClipping(point, position, LH3DTech::g_current_matrix);
+			LHPoint   position(vertex->position.x + translate[0], vertex->position.y + translate[1],
+			                   vertex->position.z + translate[2]);
+			LHMatrix* matrix = LH3DTech::g_current_matrix;
+			TransformToClipping(point, position, matrix);
 			point->specular = LH3DMesh::g_specular;
 			int light = GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
 			point->color = ScaleColor(grey, light);
-			float v = vertex->position.y * 0.3f + vertex->position.z + 5.0f;
-			float u = vertex->position.x + vertex->position.z * 0.1f;
+			float z = vertex->position.z;
+			float v = vertex->position.y * 0.3f + z + 20.0f;
+			float u = vertex->position.x + z * 0.1f;
 			u -= (int)u + 2.5f;
 			v -= (int)v + 2.5f;
 			point->uv.Set((u - (int)u) * 0.2f + (envMatrix.m[1] * vertex->normal.x + envMatrix.m[4] * vertex->normal.y +
@@ -5489,14 +5513,16 @@ void LH3DPrimitive::DrawSnowWithVerticalTranslation()
 	{
 		for (i = 0; i < NumVertices; flags++, point++, vertex++, g_vertical_translate_vertices++, i++)
 		{
-			LHPoint position(vertex->position.x, vertex->position.y + *g_vertical_translate_vertices,
-			                 vertex->position.z);
-			TransformToClipping(point, position, LH3DTech::g_current_matrix);
+			LHPoint   position(vertex->position.x, vertex->position.y + *g_vertical_translate_vertices,
+			                   vertex->position.z);
+			LHMatrix* matrix = LH3DTech::g_current_matrix;
+			TransformToClipping(point, position, matrix);
 			point->specular = LH3DMesh::g_specular;
 			int light = GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
 			point->color = ScaleColor(LH3DMesh::g_color, light);
-			float v = vertex->position.y * 0.3f + vertex->position.z + 5.0f;
-			float u = vertex->position.x + vertex->position.z * 0.1f;
+			float z = vertex->position.z;
+			float v = vertex->position.y * 0.3f + z + 20.0f;
+			float u = vertex->position.x + z * 0.1f;
 			u -= (int)u + 2.5f;
 			v -= (int)v + 2.5f;
 			point->uv.Set((u - (int)u) * 0.2f + (envMatrix.m[1] * vertex->normal.x + envMatrix.m[4] * vertex->normal.y +
@@ -5707,13 +5733,14 @@ void LH3DPrimitive::DrawInShadowWithVerticalTranslation()
 
 void LH3DPrimitive::DrawLitUnclipped()
 {
+	int           i;
 	unsigned long color = !Material.texture ? Material.ModulateColor(LH3DMesh::g_color) : LH3DMesh::g_color;
 	g_current_primitive = this;
-	LH3DVertex* vertex = Vertices;
 	Vertex3D*   point = LH3DTech::g_cache_t_points;
+	LH3DVertex* vertex = Vertices;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
-		for (int i = 0; i < NumVertices; point++, vertex++, i++)
+		for (i = 0; i < NumVertices; point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
 			point->specular = LH3DMesh::g_specular;
@@ -5748,9 +5775,9 @@ void LH3DPrimitive::DrawLitUnclipped()
 	else
 	{
 		int start = 0;
-		for (int i = 0; i < NumVertexGroups; i++)
+		for (int k = 0; k < NumVertexGroups; k++)
 		{
-			LH3DVertexGroup* group = &VertexGroups[i];
+			LH3DVertexGroup* group = &VertexGroups[k];
 			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
 			LHMatrix         inverse;
 			inverse.SetInverse(*matrix);
@@ -5759,7 +5786,7 @@ void LH3DPrimitive::DrawLitUnclipped()
 			TransformPointBy(&lightDirection, sun, &inverse);
 			float norm = lightDirection.GetNorm();
 			lightDirection *= InverseSquareRoot(norm);
-			for (int j = start; j < start + group->vertex_count; point++, vertex++, j++)
+			for (i = start; i < start + group->vertex_count; point++, vertex++, i++)
 			{
 				TransformToClipping(point, vertex->position, matrix);
 				point->specular = LH3DMesh::g_specular;
@@ -5797,17 +5824,14 @@ void LH3DPrimitive::DrawLitUnclipped()
 	LH3DTech::g_index_count = 0;
 	LH3DTriangle* triangle = Triangles;
 	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
-	int      j;
-	uint16_t a;
-	uint16_t b;
-	uint16_t c;
+	int j;
 	if (Material.IsDoubleSided())
 	{
 		for (j = 0; j < NumTriangles; triangle++, j++)
 		{
-			a = triangle->A;
-			b = triangle->B;
-			c = triangle->C;
+			uint16_t a = triangle->A;
+			uint16_t b = triangle->B;
+			uint16_t c = triangle->C;
 			LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
 			LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
 			LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
@@ -5818,9 +5842,9 @@ void LH3DPrimitive::DrawLitUnclipped()
 		Vertex3D* points = LH3DTech::g_cache_t_points;
 		for (j = 0; j < NumTriangles; triangle++, j++)
 		{
-			a = triangle->A;
-			b = triangle->B;
-			c = triangle->C;
+			uint16_t a = triangle->A;
+			uint16_t b = triangle->B;
+			uint16_t c = triangle->C;
 			if ((points[c].y - points[a].y) * (points[b].x - points[a].x) -
 			        (points[b].y - points[a].y) * (points[c].x - points[a].x) >
 			    0.0f)
@@ -5898,7 +5922,8 @@ void LH3DPrimitive::DrawInShadowTnL()
 			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
 			for (j = start; j < start + group->vertex_count; flags++, out++, vertex++, j++)
 			{
-				TransformPointBy(&point, vertex->position, matrix);
+				LHPoint* position = &vertex->position;
+				TransformPointBy(&point, *position, matrix);
 				out->position.x = point.x;
 				out->position.y = point.y;
 				out->position.z = point.z;
@@ -6032,7 +6057,8 @@ void LH3DPrimitive::DrawUnclipped()
 	{
 		for (int i = 0; i < NumVertices; point++, vertex++, i++)
 		{
-			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
+			LHMatrix* matrix = LH3DTech::g_current_matrix;
+			TransformToClipping(point, vertex->position, matrix);
 			point->color = LH3DMesh::g_color;
 			point->specular = LH3DMesh::g_specular;
 			point->uv.x = vertex->uv.x;
@@ -6101,8 +6127,9 @@ void LH3DPrimitive::DrawUnclipped()
 		}
 	}
 
-	LH3DTech::g_points_count = NumVertices;
+	uint16_t pointsCount = NumVertices;
 	LH3DTech::g_index_count = 0;
+	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
 	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
 	int      j;
@@ -6589,16 +6616,16 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 	else
 	{
 		int start = 0;
-		for (i = 0; i < NumVertexGroups; i++)
+		for (int k = 0; k < NumVertexGroups; k++)
 		{
-			LH3DVertexGroup* group = &VertexGroups[i];
+			LH3DVertexGroup* group = &VertexGroups[k];
 			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
 			LHMatrix         worldMatrix = *matrix;
 			worldMatrix.PostMultiply(LH3DTech::g_clipping_to_world);
-			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
+			for (i = start; i < start + group->vertex_count; flags++, point++, vertex++, i++)
 			{
 				TransformToClipping(point, vertex->position, &worldMatrix);
-				if (i != 1)
+				if (k != 1)
 				{
 					point->color = LH3DMesh::g_special_color & 0xffffff;
 				}

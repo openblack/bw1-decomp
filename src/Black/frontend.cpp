@@ -1,3 +1,7 @@
+static void EmptyFrontend(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8,
+                          int arg9, int arg10)
+{
+}
 #include "ColourConstants.h"   /* For White */
 #include "GameTimeConstants.h" /* For SecondsPerYear */
 
@@ -43,11 +47,10 @@
 
 #include <chlasm/HelpTextEnums.h>
 
-#include "Game.h"          /* For GGame */
-#include "HelpText.h"      /* For HelpTextDataBase::HelpTextDatabase */
-#include "PlayerProfile.h" /* For PlayerProfile */
-#include "Creature.h"      /* For Creature::CanLoad3D */
-#include "CreatureRoom.h"  /* For CreatureRoom::CreatureInTemple */
+#include "Game.h"         /* For GGame */
+#include "HelpText.h"     /* For HelpTextDataBase::HelpTextDatabase */
+#include "Creature.h"     /* For Creature::CanLoad3D */
+#include "CreatureRoom.h" /* For CreatureRoom::CreatureInTemple */
 #include "DialogBoxImmersion.h"
 #include "DialogBoxKeyBinding.h"
 #include "DialogBoxOptions.h"
@@ -107,6 +110,7 @@ extern CImmMouse* ImmersionMouse;
 #include "LHNetBase.h"
 #include "Temple.h"
 #include "SetupGameData.h"
+#include "PlayerProfile.h" /* For PlayerProfile */
 
 NewProfileBox*             NewProfileBox::Instance;
 LoadingBox*                LoadingBox::Instance;
@@ -2368,7 +2372,7 @@ void __stdcall LoginBox::ControlCallback(int message, SetupBox* box, SetupContro
 		}
 		else if (data2 == LOGIN_BOX_MESSAGE_BOX_REGISTER && data1 == SETUP_MESSAGE_BOX_ID_YES)
 		{
-			OpenURL(RegisterURL);
+			RunWebPage(RegisterURL);
 			ShowWindow(LHSys::TheSystem.screen.MsWindowHandle, SW_MINIMIZE);
 		}
 		break;
@@ -2569,7 +2573,7 @@ void TattooEditor::CreateFakeCreature()
 	if (C3D == NULL)
 	{
 		C3D = NEW(2725) LH3DCreature(NULL, LHPoint(0.0f, 0.0f, 0.0f), NULL);
-		C3D->LoadBinary((char*)CreatureFileName::Table[0].BinaryName, 0);
+		C3D->LoadBinary((char*)CreatureFileName::Table[0].BinaryName, false);
 		C3D->SetSize(1.0f);
 		C3D->ThinFat = 0.5f;
 		C3D->WeakStrong = 0.5f;

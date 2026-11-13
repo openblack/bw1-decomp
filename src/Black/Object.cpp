@@ -1,4 +1,3 @@
-#include "EditorPhysics.h"
 #include "MapCellConstants.h"          /* For MetresPerMapCell */
 #include "GameTimeConstants.h"         /* For SecondsPerYear */
 #include "CreatureAttitudeConstants.h" /* For AttitudeFeedbackDecay */
@@ -13,6 +12,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h>
 #include <Lionhead/LH3DLib/development/LH3DMath.h>
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
+#include "EditorPhysics.h"
 #include <Lionhead/LH3DLib/development/LHPoint.h>
 #include <Lionhead/LH3DLib/development/PhysOb.h>
 #include <Lionhead/LH3DLib/development/SmokyStuff.h>

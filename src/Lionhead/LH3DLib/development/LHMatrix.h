@@ -448,6 +448,15 @@ struct LHMatrix
 		point.y = m[1] * x + m[4] * y + m[7] * z;
 		point.z = m[2] * x + m[5] * y + m[8] * z;
 	}
+	// Inliner IL size: 83, plus the nested SetIdentity
+	// BW1W120 inlined BW1M119 inlined
+	void SetRotationX(float angle)
+	{
+		SetIdentity();
+		m[4] = m[8] = cos(angle);
+		m[7] = sin(angle);
+		m[5] = -m[7];
+	}
 };
 
 #endif /* BW1_DECOMP_LH_MATRIX_INCLUDED_H */

@@ -1,5 +1,7 @@
 #include "SpookyVoices.h"
 
+#include <ctype.h>
+
 #include "ColourConstants.h" /* For White */
 #include "SpookyVoiceInfo.h"
 
@@ -13,6 +15,48 @@ GBaseInfo* GSpookyVoiceInfo::GetBaseInfo(uint32_t& info_count)
 
 GSpookyVoices::~GSpookyVoices() {}
 
+int GSpookyVoices::SoundExCode(wchar_t* text)
+{
+	if (!isalpha(*text))
+	{
+		return SOUNDEX_CODE_NONE;
+	}
+	switch (*text | SOUNDEX_CHARACTER_MASK)
+	{
+	case L'b':
+	case L'f':
+	case L'p':
+	case L'v':
+		return SOUNDEX_CODE_BFPV;
+	case L'c':
+	case L'g':
+	case L'j':
+	case L'k':
+	case L'q':
+	case L's':
+	case L'x':
+	case L'z':
+		return SOUNDEX_CODE_CGJKQSXZ;
+	case L'd':
+	case L't':
+		return SOUNDEX_CODE_DT;
+	case L'l':
+		return SOUNDEX_CODE_L;
+	case L'm':
+	case L'n':
+		return SOUNDEX_CODE_MN;
+	case L'r':
+		return SOUNDEX_CODE_R;
+	case L'a':
+	case L'e':
+	case L'i':
+	case L'o':
+	case L'u':
+		return SOUNDEX_CODE_NONE;
+	}
+	return *text;
+}
+
 int GSpookyVoices::GetNextSoundexCode(wchar_t*& text)
 {
 	int code;
@@ -20,14 +64,14 @@ int GSpookyVoices::GetNextSoundexCode(wchar_t*& text)
 	{
 		if (*text == L'\0')
 		{
-			return SOUNDEX_NO_CODE;
+			return SOUNDEX_CODE_NONE;
 		}
 		if (*text == L' ')
 		{
-			return SOUNDEX_NO_CODE;
+			return SOUNDEX_CODE_NONE;
 		}
 		code = SoundExCode(text++);
-	} while (code == SOUNDEX_NO_CODE);
+	} while (code == SOUNDEX_CODE_NONE);
 	while (SoundExCode(text) == code)
 	{
 		code++;

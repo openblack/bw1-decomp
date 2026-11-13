@@ -667,8 +667,8 @@ void Creature::SetToZero()
 	field_0x1078 = NULL;
 	ParticleContainer0x1080 = NULL;
 	ParticleContainer0x107c = NULL;
-	field_0x1084 = NULL;
-	field_0x1088 = NULL;
+	SpotVisual = NULL;
+	SwapMindEffect = NULL;
 	memset(Tattoos, 0, sizeof(Tattoos));
 	Tattoos[0].Slot = TATTOO_EDITOR_NO_SLOT;
 	Tattoos[1].Slot = TATTOO_EDITOR_NO_SLOT;
@@ -686,7 +686,7 @@ void Creature::SetToZero()
 	FizzLocked = false;
 	MaxSmallSize = 0.2f;
 	MaxBigSize = 2.4f;
-	field_0x37c = 0;
+	CanGoThroughVortex = false;
 	arena = NULL;
 	GameTurnOfLastSnapshot = 0;
 	MaxSnapshots = 5;
@@ -1025,15 +1025,15 @@ void Creature::ToBeDeleted(bool32_t delete_now)
 		ParticleContainer0x1080->ToBeDeleted(false);
 		ParticleContainer0x1080 = NULL;
 	}
-	if (field_0x1084 != NULL)
+	if (SpotVisual != NULL)
 	{
-		field_0x1084->ToBeDeleted(false);
-		field_0x1084 = NULL;
+		SpotVisual->ToBeDeleted(false);
+		SpotVisual = NULL;
 	}
-	if (field_0x1088 != NULL)
+	if (SwapMindEffect != NULL)
 	{
-		field_0x1088->ToBeDeleted(false);
-		field_0x1088 = NULL;
+		SwapMindEffect->ToBeDeleted(false);
+		SwapMindEffect = NULL;
 	}
 	ReceiveSpell->CtrGestureDelete();
 	if (ParticleContainer0x11e4 != NULL)
@@ -1307,7 +1307,7 @@ void Creature::StopWhatIAmDoing(bool32_t stop_moving, bool32_t end_actions)
 	physical->Creature3d->EndAnyActions(stop_moving, end_actions);
 	mind->debug.IsLooking = true;
 	ReleaseDependents();
-	mind->agenda.field_0x1ae4 = 0;
+	mind->agenda.BodyActionStarted = false;
 	mind->agenda.ObjectToThrowInPile = NULL;
 	mind->desires.ForceCompletion = false;
 	if (reaction.Get() != NULL)
@@ -1958,7 +1958,7 @@ GInterfaceStatus* Creature::GetInterfaceStatusLookingAtCreature()
 			LHPoint viewDirection = status->GetCameraFocus() - status->GetCameraPos();
 			LHPoint toCreature = physical->Creature3d->GetPos() - status->GetCameraPos();
 			viewDirection.FastNormalizeInline();
-			float distance = toCreature.Normalise();
+			float distance = toCreature.Normalize();
 			if (distance < CREATURE_LOOKED_AT_MAX_DISTANCE)
 			{
 				float dot = viewDirection * toCreature;
@@ -2998,7 +2998,7 @@ void Creature::ForceMoveMapObjectWithoutWalking(const MapCoords& pos)
 	GLandscape::ConvertMapCoordToLandscapePoint(pos, point);
 	creature3d->SetPos(point);
 	creature3d->ResetLook();
-	LHMatrix* to = (LHMatrix*)creature3d->SafeBufferMemory0;
+	LHMatrix* to = creature3d->PreviousBuffer;
 	LHMatrix* from = creature3d->SafeBuffer0;
 	for (int i = 0; i < creature3d->NumBoneMatrices; i++)
 	{
@@ -3141,7 +3141,7 @@ void Creature::GetRunAwayPoint(const LHPoint& from, LHPoint* point)
 const float CreatureDistanceSpeedScale = 2.0f;
 const float CreatureDistanceSpeedOffset = 5000.0f;
 
-void Creature::StartMovingToObject(CreatureBelief* belief, Object* object, float speed, float min_speed)
+int Creature::StartMovingToObject(CreatureBelief* belief, Object* object, float speed, float min_speed)
 {
 	LH3DCreature* creature3d = physical->Creature3d;
 	if (creature3d->RequiredSpeed == GetInfo()->RunSpeed)
@@ -3160,10 +3160,10 @@ void Creature::StartMovingToObject(CreatureBelief* belief, Object* object, float
 		speed = min_speed + 0.01f;
 	}
 	DestPos = object->Pos;
-	physical->Creature3d->StartMovingToObject(object, speed, min_speed, time);
+	return physical->Creature3d->StartMovingToObject(object, speed, min_speed, time);
 }
 
-void Creature::StartMovingToPoint(CreatureBelief* belief, const LHPoint& pos, float speed, float min_speed)
+int Creature::StartMovingToPoint(CreatureBelief* belief, const LHPoint& pos, float speed, float min_speed)
 {
 	LH3DCreature* creature3d = physical->Creature3d;
 	if (creature3d->RequiredSpeed == GetInfo()->RunSpeed)
@@ -3182,7 +3182,7 @@ void Creature::StartMovingToPoint(CreatureBelief* belief, const LHPoint& pos, fl
 		speed = min_speed + 0.01f;
 	}
 	GLandscape::ConvertLandscapePointToMapCoord(pos, DestPos);
-	physical->Creature3d->StartMovingToPoint(pos, speed, min_speed, time);
+	return physical->Creature3d->StartMovingToPoint(pos, speed, min_speed, time);
 }
 
 long Creature::GetPutDownAction()
@@ -3294,7 +3294,7 @@ void Creature::CalculateCreationPos(const MapCoords& target, MapCoords* pos)
 	LHPoint offset;
 	offset = to - from;
 	offset.y = 0.0f;
-	offset.SetSize(range * 0.95f);
+	offset.SetLength(range * 0.95f);
 	offset += from;
 	MapCoords result(offset);
 	*pos = result;
@@ -3859,26 +3859,26 @@ void Creature::CopyDifferentCreatureInfoToCreatureInfo()
 		CreatureInfo::GetInfo()[type].field_0x220[4] = DifferentCreatureInfo::GetInfo()[type].field_0x18;
 		CreatureInfo::GetInfo()[type].field_0x1f8[2] = DifferentCreatureInfo::GetInfo()[type].field_0x1c;
 		CreatureInfo::GetInfo()[type].field_0x220[5] = DifferentCreatureInfo::GetInfo()[type].field_0x20;
-		CreatureInfo::GetInfo()[type].field_0x220[6] = DifferentCreatureInfo::GetInfo()[type].field_0x24;
+		CreatureInfo::GetInfo()[type].FoodEnergyGain = DifferentCreatureInfo::GetInfo()[type].field_0x24;
 		CreatureInfo::GetInfo()[type].Strength = DifferentCreatureInfo::GetInfo()[type].Strength;
 		CreatureInfo::GetInfo()[type].field_0x220[2] = DifferentCreatureInfo::GetInfo()[type].field_0x2c;
 		CreatureInfo::GetInfo()[type].field_0x220[3] = DifferentCreatureInfo::GetInfo()[type].field_0x30;
-		CreatureInfo::GetInfo()[type].field_0x220[12] = DifferentCreatureInfo::GetInfo()[type].field_0x34;
+		CreatureInfo::GetInfo()[type].field_0x244[3] = DifferentCreatureInfo::GetInfo()[type].field_0x34;
 		CreatureInfo::GetInfo()[type].WalkSpeed = DifferentCreatureInfo::GetInfo()[type].WalkSpeed;
 		CreatureInfo::GetInfo()[type].RunSpeed = DifferentCreatureInfo::GetInfo()[type].RunSpeed;
 		CreatureInfo::GetInfo()[type].field_0x25c[0] = DifferentCreatureInfo::GetInfo()[type].field_0x40;
 		CreatureInfo::GetInfo()[type].field_0x220[0] = DifferentCreatureInfo::GetInfo()[type].field_0x44;
-		CreatureInfo::GetInfo()[type].field_0x220[8] = DifferentCreatureInfo::GetInfo()[type].field_0x48;
+		CreatureInfo::GetInfo()[type].RestExhaustionLoss = DifferentCreatureInfo::GetInfo()[type].field_0x48;
 		CreatureInfo::GetInfo()[type].DefenceMultiplier[EFFECT_TYPE_BURN] =
 			DifferentCreatureInfo::GetInfo()[type].BurnDefenceMultiplier;
 		CreatureInfo::GetInfo()[type].DefenceMultiplier[EFFECT_TYPE_CRUSH] =
 			DifferentCreatureInfo::GetInfo()[type].CrushDefenceMultiplier;
 		CreatureInfo::GetInfo()[type].DefenceMultiplier[EFFECT_TYPE_HIT] =
 			DifferentCreatureInfo::GetInfo()[type].HitDefenceMultiplier;
-		CreatureInfo::GetInfo()[type].field_0x220[7] = DifferentCreatureInfo::GetInfo()[type].field_0x58;
+		CreatureInfo::GetInfo()[type].RestLifeGain = DifferentCreatureInfo::GetInfo()[type].field_0x58;
 		CreatureInfo::GetInfo()[type].field_0x210 = DifferentCreatureInfo::GetInfo()[type].field_0x5c;
-		CreatureInfo::GetInfo()[type].field_0x374[3] = DifferentCreatureInfo::GetInfo()[type].field_0x60;
-		CreatureInfo::GetInfo()[type].field_0x374[2] = DifferentCreatureInfo::GetInfo()[type].field_0x64;
+		CreatureInfo::GetInfo()[type].PooPerFood = DifferentCreatureInfo::GetInfo()[type].field_0x60;
+		CreatureInfo::GetInfo()[type].field_0x37c = DifferentCreatureInfo::GetInfo()[type].field_0x64;
 		CreatureInfo::GetInfo()[type].AlignmentChangeScale =
 			DifferentCreatureInfo::GetInfo()[type].AlignmentChangeScale;
 	}

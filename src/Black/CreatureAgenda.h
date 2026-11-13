@@ -38,7 +38,7 @@ public:
 	bool32_t                StartActionAgain;
 	bool32_t                PlayerHasBeenTold;
 	CreatureMimicState      MimicState;
-	Object*                 CreatedObject;
+	GameThingWithPos*       CreatedObject;
 	CreatureBelief*         belief;
 	Object*                 ObjectToThrowInPile;
 	MapCoords               Destination;
@@ -54,7 +54,7 @@ public:
 	CreatureBelief* ForcedActionBelief;
 	LHPoint         ForcedActionPos;
 	long            ForcedActionArgument;
-	uint32_t        field_0x1ae4;
+	bool32_t        BodyActionStarted;
 	uint32_t        NumTurnsPerformingAction;
 	uint32_t        NumTurnsWithoutAction;
 	float           MinSecondsPerformingActionToLearn;

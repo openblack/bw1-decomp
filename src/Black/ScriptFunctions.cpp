@@ -2798,7 +2798,6 @@ void GScript::GetFirstHelp()
 	g_scriptDLL->FLOAT_PUSH(0.0f);
 }
 
-#ifndef VERSION_BW1W100
 void GScript::GetLastHelp()
 {
 	GameThingWithPos* thing = GetScriptGameThing(g_scriptDLL->THING_OR_NULL_POP());
@@ -2822,7 +2821,6 @@ void GScript::GetLastHelp()
 	}
 	g_scriptDLL->FLOAT_PUSH(0.0f);
 }
-#endif
 
 void GScript::LoadMyCreature()
 {

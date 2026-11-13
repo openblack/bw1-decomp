@@ -185,7 +185,7 @@ static_assert(offsetof(CreaturePhysical, Creature3d) == 0x58, "Creature render p
 static_assert(offsetof(PowerSpin, Position) == 0x9a8, "PowerSpin position offset is incorrect");
 static_assert(offsetof(PowerSpinRunner, Next) == 0x9b4, "PowerSpinRunner link offset is incorrect");
 static_assert(offsetof(ValueSpinner, point) == 8, "ValueSpinner position offset is incorrect");
-static_assert(offsetof(VillagerName, next) == 0x460, "VillagerName link offset is incorrect");
+static_assert(offsetof(VillagerName, Next) == 0x460, "VillagerName link offset is incorrect");
 static_assert(offsetof(TempleRoom, name) == 4, "TempleRoom vptr is missing");
 #ifdef VERSION_BW1WCI
 static_assert(offsetof(GScript, FocusPos) == 0x48, "Script timer fields changed its layout");
@@ -195,11 +195,11 @@ static_assert(offsetof(GScript, FocusPos) == 0x40, "Script timer fields changed 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(GPlayer, Conditions) == 0xf8, "GPlayer condition map offset is incorrect");
 static_assert(offsetof(GPlayer, type) == 0x8e0, "GPlayer condition map changed its layout");
+static_assert(offsetof(ChannelBox, ConditionEnabled) == 0xac4, "ChannelBox condition offset is incorrect");
+static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
 #elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
 static_assert(offsetof(GPlayer, type) == 0xf8, "GPlayer layout is incorrect");
 #endif
-static_assert(offsetof(ChannelBox, ConditionEnabled) == 0xac4, "ChannelBox condition offset is incorrect");
-static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
 #if defined(VERSION_BW1WCI)
 static_assert(offsetof(MPFEData, ActiveDialog) == 0xa78, "MPFEData dialog offset is incorrect");
 #else
@@ -345,7 +345,7 @@ bool32_t GGame::Init()
 	if (StartType == GAME_START_TYPE_AUTOSAVE && !GameOSFile::IsAutoSaveValid())
 		StartType = GAME_START_TYPE_NEW_GAME;
 	SkirmishGame = false;
-	field_0x205a10 = 0;
+	GameOverStarted = false;
 	field_0x205a14 = 0;
 	switch (StartType)
 	{
@@ -600,8 +600,8 @@ void GGame::OnNewGame()
 	if (started && !(g_game->GameFlags & GAME_FLAG_PAUSED))
 	{
 		g_game->script->SetupScreenFadeTo(0, 0, 0, 0);
-		Temple::Dat_00C2A150 = 0.0f;
-		Temple::Dat_00E06020 = 0.0f;
+		Temple::FadeLevel = 0.0f;
+		Temple::FadeTarget = 0.0f;
 	}
 }
 
@@ -686,14 +686,14 @@ void PauseGame(int pause)
 void GGame::SetSpeed(float speed)
 {
 	// As in PauseGame, unsigned source conversion produces signed FIADD with the original MSVC.
-	network.field_0x4 = speed;
+	network.Speed = speed;
 	if (!network.session->IsSinglePlayer())
 	{
-		network.session->SetIdlePeriod((unsigned long)(100.0f / network.field_0x4));
+		network.session->SetIdlePeriod((unsigned long)(100.0f / network.Speed));
 	}
 	else
 	{
-		float newSpeed = network.field_0x4;
+		float newSpeed = network.Speed;
 		if (timer.SpeedUpFactor != 0.0f)
 		{
 			unsigned long ticks = GetTickCount() - timer.TickCount;
@@ -712,9 +712,9 @@ void GGame::SetSpeed(float speed)
 // BW1W120 0054af60 BW1M119 013c9950
 void AddSpecialRPObjects(RPHolder* holder)
 {
-	if (holder->field_0x50024 != NULL)
+	if (holder->Follow != NULL)
 	{
-		Creature* creature = (Creature*)holder->field_0x50024->Context;
+		Creature* creature = (Creature*)holder->Follow->Context;
 		for (MapShield* shield = GGame::g_game->GameLists.MapShields.head; shield != NULL; shield = shield->next)
 		{
 			if (shield->CreatureMustAvoid(creature))
@@ -734,7 +734,7 @@ void CheckSquareFunction(int x, int z, RPHolder* holder)
 		mapPos.Init((unsigned short)x, (unsigned short)z);
 		if (mapPos.InBounds())
 		{
-			bool avoidWater = holder->field_0x50024 == NULL;
+			bool avoidWater = holder->Follow == NULL;
 			for (int dx = -1; dx < 2; ++dx)
 			{
 				int cellX = x + dx;
@@ -756,7 +756,7 @@ void CheckSquareFunction(int x, int z, RPHolder* holder)
 				}
 			}
 			MapCell*        cell = mapPos.ToMap();
-			Creature*       creature = avoidWater ? NULL : (Creature*)holder->field_0x50024->Context;
+			Creature*       creature = avoidWater ? NULL : (Creature*)holder->Follow->Context;
 			MapCellIterator iter = cell->GetFirstIterator();
 			while (iter.object != NULL)
 			{
@@ -828,7 +828,7 @@ uint32_t GGame::InitOneTimeOnly()
 	RenderLoadingFrame("...Finished PSysGlobal");
 	dialog_box_options = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1025) DialogBoxOptions;
 	dialog_box_options->Init(780, 500, DialogBoxOptions::ControlCallback);
-	dialog_box_options->setup_box->field_0xc8 = 1;
+	dialog_box_options->setup_box->KeysPassThrough = true;
 	dialog_box_key_binding = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102a) DialogBoxKeyBinding;
 	dialog_box_key_binding->Init(780, 500, DialogBoxKeyBinding::ControlCallback);
 	dialog_box_save_message = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102e) DialogBoxSaveMessage;
@@ -1194,10 +1194,10 @@ void GGame::ClearVariables()
 	field_0x2502e4 = NULL;
 	GameFlags = GAME_FLAG_UNKNOWN_0x20;
 	SkirmishGame = false;
-	field_0x205a10 = 0;
+	GameOverStarted = false;
 	field_0x205a14 = 0;
-	field_0x205a18 = 0;
-	field_0x205a1c = 0;
+	InstantSaveTurn = 0;
+	InstantLoadTurn = 0;
 }
 
 // BW1W120 0054bfd0 BW1M119 013c9a40
@@ -1322,8 +1322,8 @@ void GGame::ClearMap()
 {
 	LHResetFPU();
 	g_game->GameFlags |= GAME_FLAG_CLEARING_MAP;
-	GameFlags &= ~(GAME_FLAG_UNKNOWN_0x20000 | GAME_FLAG_SHOW_VILLAGER_INFO);
-	field_0x205a10 = 0;
+	GameFlags &= ~(GAME_FLAG_SHOW_VILLAGER_NAMES | GAME_FLAG_SHOW_VILLAGER_INFO);
+	GameOverStarted = false;
 	field_0x205a14 = 0;
 	SuperVillager* superVillager = SuperVillager::g_first;
 	while (superVillager != NULL)
@@ -1497,7 +1497,7 @@ static_assert(offsetof(Town, next) == 0x758, "Town next offset is incorrect");
 static_assert(offsetof(Town, next) == 0x754, "Town next offset is incorrect");
 #endif
 static_assert(sizeof(CMouse) == 4, "CMouse size is incorrect");
-static_assert(offsetof(GCameraEditor, field_0x10) == 0x10, "GCameraEditor flag offset is incorrect");
+static_assert(offsetof(GCameraEditor, InputEnabled) == 0x10, "GCameraEditor flag offset is incorrect");
 static_assert(offsetof(Living, next) == 0xa4, "Living link offset is incorrect");
 static_assert(offsetof(Villager, mother) == 0x100, "Villager mother offset is incorrect");
 
@@ -1538,7 +1538,7 @@ void GGame::ProcessFrameInputs()
 	ProcessMapKeys();
 	if (GGlobal::Global.EditorMode != 0)
 	{
-		if (GCameraEditor::Instance == NULL || GCameraEditor::Instance->field_0x10 != 0)
+		if (GCameraEditor::Instance == NULL || GCameraEditor::Instance->InputEnabled)
 		{
 			EditorProcessInputs();
 		}
@@ -1733,7 +1733,7 @@ void GGame::ProcessNetworkPackets()
 void GGame::DoNetworkStart()
 {
 	RenderLoadingFrame("Waiting for completion of user data transer...");
-	network.field_0x4 = 1.0f;
+	network.Speed = 1.0f;
 	g_game->data.RealGameTurn = g_game->network.session->SuperPacketGameTurn + 1;
 	RenderLoadingFrame("Waiting for first super packet...");
 	RenderLoadingFrame("Found superpacket.");
@@ -1924,7 +1924,8 @@ void GGame::Loop()
 		}
 	}
 	DialogBoxBase::HideAll();
-	if (field_0x205a10 == 0 && !IsMultiplayerGame() && SkirmishGame == 0 && g_game->GameMode != GAME_MODE_LOAD_GAME)
+	if (GameOverStarted == false && !IsMultiplayerGame() && SkirmishGame == false &&
+	    g_game->GameMode != GAME_MODE_LOAD_GAME)
 	{
 		if (GameMode == GAME_MODE_QUITTING)
 		{
@@ -2060,7 +2061,7 @@ void GGame::ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2)
 void GGame::Process3dEngine()
 {
 	bool32_t drewLandscape = false;
-	if (Dat_00D46A74 && (GameFlags & GAME_FLAG_PAUSED) && (g_game->GameFlags & GAME_FLAG_PAUSED))
+	if (PhysicsWhilePaused && (GameFlags & GAME_FLAG_PAUSED) && (g_game->GameFlags & GAME_FLAG_PAUSED))
 	{
 		PhysicsObject::GameTurnUpdate();
 	}
@@ -2250,7 +2251,7 @@ void GGame::Process3dEngine()
 				CameraModeNew3::ForceField->Update((int)LH3DTech::g_game_time_inc * 0.001f);
 				CameraModeNew3::ForceField->DoTheDrawing(CameraModeNew3::ForceFieldMaterial);
 			}
-			float target = (GameFlags & GAME_FLAG_UNKNOWN_0x20000) ? 1.0f : 0.0f;
+			float target = (GameFlags & GAME_FLAG_SHOW_VILLAGER_NAMES) ? 1.0f : 0.0f;
 			float step = (int)LH3DTech::g_game_time_inc * 0.003f;
 			if (field_0x59b0 < target)
 			{
@@ -2266,7 +2267,7 @@ void GGame::Process3dEngine()
 			}
 			if (!g_game->help_system->WideScreen || !g_game->help_system->WideScreenControl)
 			{
-				for (VillagerName* name = VillagerName::First; name; name = name->next)
+				for (VillagerName* name = VillagerName::First; name; name = name->Next)
 					name->AddDrawing();
 			}
 			else
@@ -2280,7 +2281,7 @@ void GGame::Process3dEngine()
 	}
 	if (ViewMode != GAME_VIEW_MODE_3)
 	{
-		if (Temple::Dat_00E06020 == Temple::Dat_00C2A150 && ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL)
+		if (Temple::FadeTarget == Temple::FadeLevel && ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL)
 			script->ProcessFade(true);
 		else
 			Temple::UpdateFade();
@@ -2434,21 +2435,21 @@ void GGame::ProcessTurn()
 	if (g_game->help_system != NULL &&
 	    (g_game->help_system->WideScreen == 0 || g_game->help_system->WideScreenControl == 0))
 	{
-		if (!g_game->IsMultiplayerGame() && g_game->field_0x205a10 == 0 && g_game->data.GameTurn % 2000 == 0 &&
+		if (!g_game->IsMultiplayerGame() && g_game->GameOverStarted == false && g_game->data.GameTurn % 2000 == 0 &&
 		    StartTime != 0 && MemoryState == 0 && timeGetTime() > StartTime + 0x36ee80u &&
 		    (unsigned int)Base::ObjectHeap->GetFreeMemory() < 0x80000u &&
-		    abs((int)(g_game->field_0x205a18 - g_game->data.GameTurn)) > 3)
+		    abs((int)(g_game->InstantSaveTurn - g_game->data.GameTurn)) > INSTANT_SAVE_MINIMUM_TURNS)
 		{
 			MemoryState = 1;
-			g_game->field_0x205a18 = g_game->data.GameTurn;
+			g_game->InstantSaveTurn = g_game->data.GameTurn;
 			SetPacket(PACKET_TYPE_INSTANT_SAVE);
 		}
 	}
-	if (MemoryState == 2 && !g_game->IsMultiplayerGame() && g_game->field_0x205a10 == 0 &&
-	    abs((int)(g_game->field_0x205a1c - g_game->data.GameTurn)) > 3)
+	if (MemoryState == 2 && !g_game->IsMultiplayerGame() && g_game->GameOverStarted == false &&
+	    abs((int)(g_game->InstantLoadTurn - g_game->data.GameTurn)) > INSTANT_SAVE_MINIMUM_TURNS)
 	{
 		MemoryState = 0;
-		SetPacket(PACKET_TYPE_0x62);
+		SetPacket(PACKET_TYPE_INSTANT_LOAD);
 	}
 	if (ScriptRebootRequested)
 	{
@@ -2504,18 +2505,18 @@ void GGame::EndTurn()
 	}
 	map.CalculateMapInfluenceX();
 	GameFlags &= ~0x10u;
-	if ((GameFlags & GAME_FLAG_AUTO_SAVE_ENABLED) != 0 && field_0x205a10 == 0)
+	if ((GameFlags & GAME_FLAG_AUTO_SAVE_ENABLED) != 0 && GameOverStarted == false)
 	{
 		GameOSFile::AutoSave(false);
 	}
 	network.UpdateDebug();
-	if (field_0x205a10 == 0 && g_game->SkirmishGame == false && !g_game->IsMultiplayerGame() &&
+	if (GameOverStarted == false && g_game->SkirmishGame == false && !g_game->IsMultiplayerGame() &&
 	    g_game->field_0x205a14 == 1 && &g_game->players[g_game->PlayerIndex] != NULL &&
 	    g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->heart.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->GetCitadelHeart()->DestructionStarted != 0)
 	{
-		field_0x205a10 = 1;
+		GameOverStarted = true;
 		g_game->script->StartScript("GameOver");
 	}
 	uint32_t interval = GameStats::UpdateInterval;
@@ -2713,9 +2714,9 @@ bool32_t GGame::Save(GameOSFile& file)
 	file.WriteIt(TownInfluenceMultiplier);
 	float visualTime = GGameInfo::Info.GetVisualTime();
 	file.WriteIt(visualTime);
-	file.WriteIt(GGameInfo::Info.field_0x48);
-	file.WriteIt(GGameInfo::Info.field_0x4c);
-	file.WriteIt(GGameInfo::Info.field_0x50);
+	file.WriteIt(GGameInfo::Info.VisualTimeCycleDuration);
+	file.WriteIt(GGameInfo::Info.VisualTimeCyclePercentageDusk);
+	file.WriteIt(GGameInfo::Info.VisualTimeCyclePercentageNight);
 	file.WriteIt(GGameInfo::Info.VisualTimeScale);
 	help_system->Save(file);
 	help_profile->Save(file);
@@ -2776,10 +2777,10 @@ bool32_t GGame::Save(GameOSFile& file)
 	file.WriteIt(StartType);
 	file.WriteIt(ScriptRebootRequested);
 	file.WriteIt(SkirmishGame);
-	file.WriteIt(field_0x205a10);
+	file.WriteIt(GameOverStarted);
 	file.WriteIt(field_0x205a14);
 	file.WriteIt(GameOSFile::LastAutoSaveTurn);
-	file.WriteIt(field_0x205a18);
+	file.WriteIt(InstantSaveTurn);
 	Bookmark::SaveAll(file);
 	GLandBalance::SaveAll(file);
 	GInterface& playerInterface = *GGame::g_game->MyInterface();
@@ -2839,13 +2840,14 @@ bool32_t GGame::Load(GameOSFile& file)
 	float visualTime;
 	file.ReadIt(visualTime);
 	GGameInfo::Info.ForceVisualTime(visualTime);
-	file.ReadIt(GGameInfo::Info.field_0x48);
-	file.ReadIt(GGameInfo::Info.field_0x4c);
-	file.ReadIt(GGameInfo::Info.field_0x50);
+	file.ReadIt(GGameInfo::Info.VisualTimeCycleDuration);
+	file.ReadIt(GGameInfo::Info.VisualTimeCyclePercentageDusk);
+	file.ReadIt(GGameInfo::Info.VisualTimeCyclePercentageNight);
 	file.ReadIt(GGameInfo::Info.VisualTimeScale);
 	GGameInfo::Info.SetVisualTimeScale(GGameInfo::Info.VisualTimeScale);
-	GGameInfo::Info.SetVisualTimeCycle(GGameInfo::Info.field_0x48, GGameInfo::Info.field_0x50,
-	                                   GGameInfo::Info.field_0x4c);
+	GGameInfo::Info.SetVisualTimeCycle(GGameInfo::Info.VisualTimeCycleDuration,
+	                                   GGameInfo::Info.VisualTimeCyclePercentageNight,
+	                                   GGameInfo::Info.VisualTimeCyclePercentageDusk);
 	terrain_map.Init();
 	GSoundMap* soundMap = SoundMap;
 	soundMap->CalculateRadiusPointAndDistance();
@@ -2901,12 +2903,12 @@ bool32_t GGame::Load(GameOSFile& file)
 	file.ReadIt(StartType);
 	file.ReadIt(ScriptRebootRequested);
 	file.ReadIt(SkirmishGame);
-	file.ReadIt(field_0x205a10);
+	file.ReadIt(GameOverStarted);
 	file.ReadIt(field_0x205a14);
 	file.ReadIt(GameOSFile::LastAutoSaveTurn);
 	GameOSFile::LastAutoSaveTurn = GGame::g_game->data.GameTurn;
-	field_0x205a1c = GGame::g_game->data.GameTurn;
-	file.ReadIt(field_0x205a18);
+	InstantLoadTurn = GGame::g_game->data.GameTurn;
+	file.ReadIt(InstantSaveTurn);
 	Bookmark::LoadAll(file);
 	GLandBalance::LoadAll(file);
 	GInterface& playerInterface = *GGame::g_game->MyInterface();

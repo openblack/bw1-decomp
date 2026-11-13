@@ -5,8 +5,14 @@
 #include "AbodeInfo.h"
 #include "AnimalInfo.h"
 #include "CreatureInfo.h"
+#ifdef VERSION_BW1WCI
+#include "CreatureIslesBuildingInfo.h"
+#endif
 #include "FeatureInfo.h"
 #include "FieldTypeInfo.h"
+#ifdef VERSION_BW1WCI
+#include "FlowersInfo.h"
+#endif
 #include "MobileObjectInfo.h"
 #include "MobileStaticInfo.h"
 #include "PotInfo.h"
@@ -58,6 +64,10 @@ uint32_t GScript::GetSubType(GameThingWithPos* thing)
 		subtype = (const GAnimalInfo*)((Object*)thing)->info - GAnimalInfo::GetInfo();
 		break;
 	case SCRIPT_OBJECT_TYPE_CREATURE:
+#ifdef VERSION_BW1WCI
+	case SCRIPT_OBJECT_TYPE_DUMB_CREATURE:
+	case SCRIPT_OBJECT_TYPE_FEMALE_CREATURE:
+#endif
 		subtype = ((const CreatureInfo*)((Object*)thing)->info)->CreatureType;
 		break;
 	case SCRIPT_OBJECT_TYPE_STORE:
@@ -71,8 +81,7 @@ uint32_t GScript::GetSubType(GameThingWithPos* thing)
 		subtype = ((Abode*)thing)->GetInfo() - GAbodeInfo::GetInfo();
 		break;
 	case SCRIPT_OBJECT_TYPE_FEATURE:
-		subtype = (const GFeatureInfo*)((Object*)thing)->info - GFeatureInfo::GetInfo();
-		break;
+		return (const GFeatureInfo*)((Object*)thing)->info - GFeatureInfo::GetInfo();
 	case SCRIPT_OBJECT_TYPE_REWARD:
 		subtype = (const GRewardInfo*)((Object*)thing)->info - GRewardInfo::GetInfo();
 		break;
@@ -107,6 +116,9 @@ uint32_t GScript::GetSubType(GameThingWithPos* thing)
 		subtype = ((PuzzleGame*)thing)->GameType;
 		break;
 	case SCRIPT_OBJECT_TYPE_FIELD:
+#ifdef VERSION_BW1WCI
+	case SCRIPT_OBJECT_TYPE_SPECIAL_FIELD:
+#endif
 		subtype = ((Field*)thing)->type_info - GFieldTypeInfo::GetInfo();
 		break;
 	case SCRIPT_OBJECT_TYPE_WORSHIP_SITE:
@@ -118,6 +130,12 @@ uint32_t GScript::GetSubType(GameThingWithPos* thing)
 	case SCRIPT_OBJECT_TYPE_TOTEM_STATUE:
 		subtype = (const GTotemStatueInfo*)((Object*)thing)->info - GTotemStatueInfo::GetInfo();
 		break;
+#ifdef VERSION_BW1WCI
+	case SCRIPT_OBJECT_TYPE_CREATURE_ISLE_BUILDING:
+		return (const GCreatureIslesBuldingsInfo*)((Object*)thing)->info - GCreatureIslesBuldingsInfo::GetInfo();
+	case SCRIPT_OBJECT_TYPE_FLOWERS:
+		return (const GFlowersInfo*)((Object*)thing)->info - GFlowersInfo::GetInfo();
+#endif
 	default:
 		ScriptErrorMessage("Unknown type for search");
 		return SCRIPT_SUBTYPE_INVALID;

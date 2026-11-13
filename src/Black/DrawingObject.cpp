@@ -1828,7 +1828,7 @@ void Living::Draw()
 {
 	GInterface* playerInterface = GGame::g_game->MyInterface();
 	CHand*      hand = playerInterface->hand.Get();
-	if (hand->CurrentState != HAND_STATES_HOLDING || hand->HeldObject != (uint32_t)this)
+	if (hand->CurrentState != HAND_STATES_HOLDING || hand->HeldObject != this)
 	{
 		DrawScale(1.0f);
 	}
@@ -2010,7 +2010,7 @@ void Villager::Draw()
 {
 	GInterface* playerInterface = GGame::g_game->MyInterface();
 	CHand*      hand = playerInterface->hand.Get();
-	if (hand->CurrentState == HAND_STATES_HOLDING && hand->HeldObject == (uint32_t)this)
+	if (hand->CurrentState == HAND_STATES_HOLDING && hand->HeldObject == this)
 	{
 		return;
 	}
@@ -2186,7 +2186,7 @@ void Animal::Draw()
 {
 	GInterface* playerInterface = GGame::g_game->MyInterface();
 	CHand*      hand = playerInterface->hand.Get();
-	if (hand->CurrentState == HAND_STATES_HOLDING && hand->HeldObject == (uint32_t)this)
+	if (hand->CurrentState == HAND_STATES_HOLDING && hand->HeldObject == this)
 	{
 		return;
 	}

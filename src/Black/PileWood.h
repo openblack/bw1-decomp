@@ -11,8 +11,12 @@
 // Forward Declares
 
 class Base;
+class GPotInfo;
 class GameThing;
+struct MapCoords;
+class MultiMapFixed;
 class Object;
+class Town;
 
 class PileWood : public PileResource
 {
@@ -36,6 +40,12 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	PileWood() {}
+	// BW1W120 inlined BW1M119 inlined
+	PileWood(const MapCoords& coords, const GPotInfo* info, uint32_t resource, MultiMapFixed* parent, Town* town,
+	         bool32_t create_reaction, float y_angle, float scale)
+		: PileResource(coords, info, resource, parent, town, create_reaction, y_angle, scale)
+	{
+	}
 };
 
 #endif /* BW1_DECOMP_PILE_WOOD_INCLUDED_H */

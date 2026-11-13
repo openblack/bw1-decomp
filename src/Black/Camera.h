@@ -30,7 +30,7 @@ public:
 	LHPoint     pos;
 	float       time; /* 0x68 */
 	float       TimeDelta;
-	uint32_t    field_0x70;
+	bool32_t    ScriptSlomoControl;
 	uint32_t    CameraDirty;
 	uint8_t     field_0x78;
 	uint8_t     field_0x79;
@@ -68,7 +68,7 @@ public:
 	// BW1W120 00441f20 BW1M119 011a3260
 	static float GetThingViewingDistance(GameThingWithPos* target);
 	// BW1W120 00442810 BW1M119 01034fe0
-	static void SetPointFromPointDistanceHeadingAndPitch(LHPoint* param_1, const LHPoint& point, float distance,
+	static void SetPointFromPointDistanceHeadingAndPitch(LHPoint* result, const LHPoint& point, float distance,
 	                                                     float heading, float pitch);
 	// BW1W120 00442860 BW1M119 011a2d80
 	static float GetHeadingFromPoints(const LHPoint& origin, const LHPoint& focus);
@@ -76,6 +76,8 @@ public:
 	static void GetHeadingAndPitchFromPoints(const LHPoint& origin, const LHPoint& focus, float* heading, float* pitch);
 	// BW1W120 00442c20 BW1M119 01099720
 	static bool32_t TranslatePointToScreen(float* x, float* y, LHPoint* point);
+	// BW1W120 00443670 BW1M119 011a18e0
+	static float GetDefaultFov();
 
 	// Constructors
 
@@ -104,6 +106,8 @@ public:
 	bool32_t IsFollowing(GameThingWithPos* thing);
 	// BW1W120 00442ef0 BW1M119 0102ddf0
 	void UpdateGameThingWithPosData();
+	// BW1W120 00443050 BW1M119 01006af0
+	bool32_t Arrived();
 	// BW1W120 00443680 BW1M119 011a1840
 	void SetCameraFov(float fov, float time);
 	// BW1W120 004438c0 BW1M119 011a13d0
@@ -112,6 +116,8 @@ public:
 	void GetPosition(LHPoint& pos) { pos = LH3DTech::g_camera.pos; }
 	// BW1W120 inlined BW1M119 011a1600
 	void GetFocus(LHPoint& focus) { focus = LHPoint(LH3DTech::GetCameraTarget()); }
+	// BW1W120 00442ce0 BW1M119 011a27b0
+	void GetFocusVector(LHPoint& vector);
 	// BW1W120 inlined BW1M119 inlined
 	void GetUpVector(LHPoint& up);
 	// BW1W120 inlined BW1M119 011a26b0

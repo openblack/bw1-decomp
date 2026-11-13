@@ -4,11 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h>                           /* For enum SEX_TYPE */
-#include <Lionhead/LH3DLib/development/LH3DMath.h> /* For GAME_ANGLE_FULL_TURN */
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>    /* For class LHLinkedList */
-#include <Lionhead/LHLib/ver5.0/LHStack.h>         /* For class LHStack */
-#include <re_common.h>                             /* For bool32_t */
+#include <chlasm/Enum.h>                        /* For enum SEX_TYPE */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHStack.h>      /* For class LHStack */
+#include <re_common.h>                          /* For bool32_t */
 
 #include "GameThing.h"  /* For struct GameThing */
 #include "DanceShape.h" /* For enum DANCE_SHAPE */
@@ -88,10 +87,17 @@ enum DANCE_GROUP_MOVEMENT_KIND
 	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACIAL = 0x26,
 	DANCE_GROUP_MOVEMENT_KIND_CREATURE_GESTURE = 0x27,
 	DANCE_GROUP_MOVEMENT_KIND_CREATURE_POINT = 0x28,
+#ifndef VERSION_BW1WCI
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_TALK = 0x29,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_LAUGH = 0x2a,
+#endif
 };
 
 union DancerActionParam {
-	float    Value;
+	float Value;
+#ifndef VERSION_BW1WCI
+	int32_t Integer;
+#endif
 	bool32_t Direction;
 };
 

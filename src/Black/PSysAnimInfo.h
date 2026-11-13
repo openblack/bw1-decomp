@@ -13,12 +13,12 @@ public:
 	float FrameRate;  /* 0x0 */
 	int   FrameCount; /* 0x4: signed conversion and wraparound in CalculateDrawPos */
 	bool  Loop;       /* 0x8 */
-	bool  field_0x9;  // TODO: Original meaning unknown.
+	bool  LoopAnim;   /* 0x9 */
 };
 
 static_assert(offsetof(PSysAnimInfo, FrameCount) == 0x4, "PSysAnimInfo frame count offset is incorrect");
 static_assert(offsetof(PSysAnimInfo, Loop) == 0x8, "PSysAnimInfo loop offset is incorrect");
-static_assert(offsetof(PSysAnimInfo, field_0x9) == 0x9, "PSysAnimInfo flag offset is incorrect");
+static_assert(offsetof(PSysAnimInfo, LoopAnim) == 0x9, "PSysAnimInfo loop anim offset is incorrect");
 static_assert(sizeof(PSysAnimInfo) == 0xc, "PSysAnimInfo size is incorrect");
 
 #endif /* BW1_DECOMP_P_SYS_ANIM_INFO_INCLUDED_H */

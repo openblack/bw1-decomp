@@ -390,6 +390,17 @@ public:
 	// BW1W120 0041cfd0 BW1M119 01176020
 	virtual uint32_t StandAnimation();
 
+	// BW1W120 0041cfe0 BW1M119 null
+	uint32_t StartToSleepAnimation();
+	// BW1W120 0041cff0 BW1M119 null
+	uint32_t FinishSleepingAnimation();
+	// BW1W120 0041d000 BW1M119 null
+	uint32_t StartToSitAnimation();
+	// BW1W120 0041d010 BW1M119 null
+	uint32_t FinishSittingAnimation();
+	// BW1W120 0041d020 BW1M119 null
+	uint32_t SitAnimation();
+
 	// BW1W120 inlined BW1M119 0130fb80
 	PieceVillager() {}
 
@@ -798,6 +809,13 @@ public:
 		SetIndestructable(true);
 		MaxHeight = PUZZLE_TOTEM_DEFAULT_MAX_HEIGHT;
 	}
+
+	// Non-virtual methods
+
+	// BW1W120 006da6d0 BW1M119 0112f460
+	void SetActualHeight(float height);
+	// BW1W120 inlined BW1M119 01509160
+	float GetActualHeight() { return ActualHeight; }
 };
 
 class PuzzleVillager : public PieceVillager

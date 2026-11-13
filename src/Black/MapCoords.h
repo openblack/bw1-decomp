@@ -14,6 +14,7 @@ enum COLLIDE_TYPE
 {
 	COLLIDE_TYPE_NONE = 0x0,
 	COLLIDE_TYPE_WATER = 0x1,
+	COLLIDE_TYPE_LAND = 0x2,
 	COLLIDE_TYPE_FIXED = 0x8,
 	COLLIDE_TYPE_OFF_MAP = 0x10,
 };
@@ -22,7 +23,10 @@ enum COLLIDE_TYPE
 
 class Citadel;
 class Creature;
+class CreaturePen;
 class Game3DObject;
+class GComputerPlayer;
+class MultiMapFixed;
 class GameThingWithPos;
 struct LH3DColor;
 class WorshipSite;
@@ -30,6 +34,7 @@ struct LHPoint;
 struct MapCell;
 struct MapCellIterator;
 struct MapCoords;
+struct SafeMapCellIterator;
 class Object;
 struct Point2D;
 class GPlayer;
@@ -120,7 +125,7 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 inlined BW1M119 01381f90
 	MapCoords(float x, float z, float altitude);
 	// BW1W120 006031d0 BW1M119 013c72a0
-	MapCoords(const char* str);
+	MapCoords(char* str);
 	// BW1W120 inlined BW1M119 inlined
 	MapCoords(float meters_x, float meters_z);
 	// BW1W120 00602fc0 BW1M119 01057b30
@@ -133,6 +138,12 @@ struct MapCoords : public LH3DMapCoords
 	MapCoords(JustWholeMapXZ& xz);
 	// BW1W120 00603160 BW1M119 0106cbb0
 	MapCoords(const LHPoint& point);
+	// BW1W120 006030b0 BW1M119 null
+	MapCoords(unsigned long cell_index);
+	// BW1W120 00603110 BW1M119 null
+	MapCoords(MapCell* cell);
+	// BW1W120 00603180 BW1M119 null
+	MapCoords(JustXZ* xz);
 
 	// Non-virtual methods
 
@@ -156,8 +167,6 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 00605410 BW1M119 01022670
 	void operator+=(const MapCoords& other);
 	// BW1W120 00605470 BW1M119 0104be60
-	// NOTE: mangled ??YMapCoords@@QAEXABUJustMapXZ@@@Z proves void return, non-const (Rule 1);
-	// zero existing call sites depend on the old (wrong) MapCoords* / const signature.
 	void operator+=(const JustMapXZ& other);
 	// BW1W120 006054a0 BW1M119 inlined
 	void operator-=(const MapCoords& other);
@@ -167,7 +176,7 @@ struct MapCoords : public LH3DMapCoords
 	void operator-=(unsigned long distance);
 	// BW1W120 00605520 BW1M119 01052d70
 	MapCoords operator+(const MapCoords& other) const;
-	// BW1W120 006055c0 BW1M119 inlined
+	// BW1W120 006055c0 BW1M119 0105a390
 	MapCoords operator-(const MapCoords& other) const;
 	// BW1W120 00601f90 BW1M119 013fd5d0
 	uint32_t GetNearestTown(Town** town, unsigned long* distance, const Town* exclude, TRIBE_TYPE tribe_type) const;
@@ -181,11 +190,54 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 00602200 BW1M119 01061800
 	Citadel* GetNearestCitadel(float t_max) const;
 	// BW1W120 00603280 BW1M119 01183eb0
-	void Set(const char* str);
+	void Set(char* str);
 	// BW1W120 00603320 BW1M119 01007700
 	void Set(const MapCoords& other);
 	// BW1W120 00603340 BW1M119 0106cad0
-	MapCoords* Set(const LHPoint& point);
+	void Set(const LHPoint& point);
+	// BW1W120 006031f0 BW1M119 null
+	void Set(MapCell* cell);
+	// BW1W120 00603230 BW1M119 null
+	void Set(JustMapXZ* xz);
+	// BW1W120 00603260 BW1M119 01417440
+	void Set(JustWholeMapXZ* xz);
+	// BW1W120 00602270 BW1M119 null
+	CreaturePen* FindCreaturePen() const;
+	// BW1W120 00602500 BW1M119 null
+	void ShowMeshFootprint(MESH_LIST mesh, int, float y_angle, float scale, int, LH3DColor* colour) const;
+	// BW1W120 006026d0 BW1M119 null
+	void ShowFootprint(Game3DObject* object, LH3DColor* colour) const;
+	// BW1W120 00602720 BW1M119 null
+	void ShowSpiral(unsigned long count, LH3DColor* colour) const;
+	// BW1W120 006027a0 BW1M119 null
+	void ShowRing(unsigned long inner_radius, unsigned long outer_radius, LH3DColor* colour) const;
+	// BW1W120 006028d0 BW1M119 null
+	static void DrawCircle(const MapCoords& centre, float radius, unsigned long segments, LH3DColor* colour,
+	                       float height);
+	// BW1W120 00602a80 BW1M119 null
+	void DrawCircle(float radius, unsigned long segments, LH3DColor* colour, float height) const;
+	// BW1W120 00602aa0 BW1M119 01183b20
+	bool32_t DoesRegionContainObjectOfType(bool32_t (Object::*test)() const = NULL);
+	// BW1W120 00602d40 BW1M119 010bf9d0
+	void GetExactMapSquareForObjectOfType(bool32_t (Object::*test)() const);
+	// BW1W120 00602f40 BW1M119 null
+	void Interpolate(const MapCoords& from, float amount);
+	// BW1W120 00603390 BW1M119 null
+	long GetWholeDistance(const MapCoords& other) const;
+	// BW1W120 006033f0 BW1M119 null
+	long GetCollideStep() const;
+	// BW1W120 00603420 BW1M119 null
+	long GetGlobalCollideStep() const;
+	// BW1W120 00603470 BW1M119 null
+	unsigned long GetCellIndex() const;
+	// BW1W120 00603550 BW1M119 null
+	void SetFirstObjectMobile(Object* object) const;
+	// BW1W120 00603580 BW1M119 null
+	void SetFirstObjectFixed(Object* object) const;
+	// BW1W120 006037b0 BW1M119 null
+	void AddAngleBigDistance(unsigned short angle, long distance);
+	// BW1W120 006037f0 BW1M119 null
+	void AddAngleDistance(unsigned short angle, float distance);
 	// BW1W120 inlined BW1M119 01024700
 	float MetersX() const;
 	// BW1W120 inlined BW1M119 01024770
@@ -239,20 +291,32 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 00603860 BW1M119 015a8790
 	bool32_t IsSuitableForFixedAbodeInTown(MESH_LIST mesh, const Town* town, float y_angle, float scale) const;
 	// BW1W120 006038b0 BW1M119 015aa7d0
-	bool32_t IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3) const;
+	bool32_t IsSuitableForFixed(MESH_LIST mesh, float y_angle, float scale) const;
+	// BW1W120 00603b30 BW1M119 null
+	bool32_t IsSuitableForPlannedFixed(MESH_LIST mesh, float y_angle, float scale) const;
 	// BW1W120 00604020 BW1M119 01121940
 	bool32_t IsSuitableForFixed(Game3DObject* object) const;
 	// BW1W120 00603dc0 BW1M119 0154e6c0
-	bool32_t IsSuitableForAbodeBuildFixed(Game3DObject* object, float param_2, float param_3, Object* param_4) const;
+	bool32_t IsSuitableForAbodeBuildFixed(Game3DObject* object, float y_angle, float scale, Object* ignore) const;
+	// BW1W120 00604210 BW1M119 null
+	void ConvertToLHPoint(LHPoint& point) const;
+	// BW1W120 006042f0 BW1M119 null
+	GameThingWithPos* FindForScript(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                                SCRIPT_OBJECT_TYPE type, uint32_t subtype) const;
 	// BW1W120 006045c0 BW1M119 0101c170
 	Object* FindType(OBJECT_TYPE type, Object* object) const;
+	// BW1W120 00604870 BW1M119 010b9470
+	Object* FindObjectForComputerPlayer(GComputerPlayer& player, float (GComputerPlayer::*rate)(Object*),
+	                                    float            radius) const;
 	// BW1W120 00604af0 BW1M119 013c9d50
 	Object* FindObject(bool32_t (Object::*is_suitable)(), float radius, Object* exclude) const;
+	// BW1W120 00604c30 BW1M119 01567520
+	Object* FindObject(bool32_t(__cdecl* is_suitable)(Object*), float radius, Object* exclude) const;
 	// BW1W120 00604f40 BW1M119 013d1550
 	bool32_t IsEqual(MapCell* cell);
-	// BW1W120 inlined BW1M119 0136d180
+	// BW1W120 006053f0 BW1M119 0136d180
 	bool32_t IsField() const;
-	// BW1W120 inlined BW1M119 01365e00
+	// BW1W120 00605050 BW1M119 01365e00
 	float GetLandscapeAltitude() const;
 	// BW1W120 006022c0 BW1M119 01175440
 	float GetAltitudeOfHighestObjectExcluding(Object* exclude, bool ignore_living_and_moving) const;
@@ -265,16 +329,14 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 inlined BW1M119 011dd770
 	void SetMapMetersZ(float z);
 	// BW1W120 00603500 BW1M119 0132d1c0
-	MapCellIterator GetFirstSafeIterator() const;
+	SafeMapCellIterator GetFirstSafeIterator() const;
 	// BW1W120 00605120 BW1M119 01361a40
 	Object* GetMapChild(Object* object);
 	// BW1W120 00602bd0 BW1M119 01575890
-	bool32_t DoesRegionContainMapCellSatisfyingTest(int (MapCoords::*test)(const void*, const void*));
+	bool32_t DoesRegionContainMapCellSatisfyingTest(bool32_t (MapCoords::*test)() const);
 	// BW1W120 00602e80 BW1M119 01362ff0
-	bool32_t GetExactMapSquareSatisfyingTest(int (MapCoords::*test)(const void*, const void*));
+	void GetExactMapSquareSatisfyingTest(bool32_t (MapCoords::*test)() const);
 	// BW1W120 00605660 BW1M119 01089f30
-	// NOTE: mangled ??8MapCoords@@QBEIABU0@@Z proves const MapCoords& + const method (Rule 1);
-	// zero existing call sites depend on the old (wrong) pointer signature.
 	bool32_t operator==(const MapCoords& other) const;
 	// BW1W120 00605c40 BW1M119 01052890
 	LHPoint GetLHPoint() const;
@@ -291,7 +353,7 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 006057b0 BW1M119 0106b8f0
 	float GetAlignment() const;
 	// BW1W120 00605250 BW1M119 011ab0a0
-	Object* IsWithinBuilingSite();
+	MultiMapFixed* IsWithinBuilingSite();
 	// BW1W120 00605fb0 BW1M119 01034c00
 	float GetMetresDistanceSq(const MapCoords& param_2) const;
 	// BW1W120 inlined BW1M119 010ea620
@@ -309,9 +371,6 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 00603490 BW1M119 013e9960
 	Object* GetFirstObjectMobile() const;
 	// BW1W120 006056b0 BW1M119 0148cf80
-	// NOTE: mangled ??9MapCoords@@QBEIABU0@@Z is the real operator!= (??9), not a plain "__ne"
-	// method -- the plain-name form can never produce this relocation. Renamed + fixed to
-	// const MapCoords& / const method (Rule 1); zero existing call sites depended on the old form.
 	bool32_t operator!=(const MapCoords& other) const;
 	// BW1W120 00604fe0 BW1M119 013621f0
 	int CollideCollideWithFixe() const;
@@ -338,24 +397,70 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 00604e30 BW1M119 011c79a0
 	bool32_t DoesRegionContainLand();
 	// BW1W120 00604e40 BW1M119 01575a00
-	bool32_t GetExactMapSquareForCitadel();
+	void GetExactMapSquareForCitadel();
 	// BW1W120 00604e70 BW1M119 01572ac0
-	bool32_t GetExactMapSquareForHill();
+	void GetExactMapSquareForHill();
 	// BW1W120 00604eb0 BW1M119 015751c0
-	bool32_t GetExactMapSquareForTown();
+	void GetExactMapSquareForTown();
 	// BW1W120 00604ee0 BW1M119 01575230
-	bool32_t GetExactMapSquareForField();
+	void GetExactMapSquareForField();
 	// BW1W120 00604ef0 BW1M119 0138a100
-	bool32_t GetExactMapSquareForForest();
+	void GetExactMapSquareForForest();
 	// BW1W120 00604f20 BW1M119 01391a70
-	bool32_t GetExactMapSquareForCoast();
+	void GetExactMapSquareForCoast();
 	// BW1W120 00604f30 BW1M119 0156dbe0
-	bool32_t GetExactMapSquareForWater();
+	void GetExactMapSquareForWater();
 	// BW1W120 00605870 BW1M119 015364a0
 	bool32_t GetClearAreaForActivity(Creature* creature, MapCoords* result, float search_radius, float radius,
 	                                 bool32_t avoid_living);
 	// BW1W120 006059a0 BW1M119 0151a8c0
 	static bool32_t IsSquareClearForActivity(Creature* creature, long x, long z, bool32_t avoid_living);
+	// BW1W120 00604f90 BW1M119 null
+	bool32_t IsEqual(const MapCoords& other, unsigned long resolution) const;
+	// BW1W120 00605010 BW1M119 null
+	void RandomiseBlock();
+	// BW1W120 00605070 BW1M119 null
+	void SetupMapXZ(JustXZ* xz);
+	// BW1W120 00605090 BW1M119 null
+	void SetupMapXZ(JustXZ& xz);
+	// BW1W120 006050b0 BW1M119 null
+	void Set(JustXZ* xz);
+	// BW1W120 00605110 BW1M119 null
+	float GetMaxAltitude() const;
+	// BW1W120 00605150 BW1M119 null
+	MultiMapFixed* FindNearestBuildingSite(float* distance);
+	// BW1W120 00605310 BW1M119 null
+	bool32_t IsAtWorshipSiteCentre();
+	// BW1W120 00605440 BW1M119 null
+	void operator+=(const LHPoint& point);
+	// BW1W120 006054d0 BW1M119 null
+	void operator-=(const LHPoint& point);
+	// BW1W120 00605500 BW1M119 null
+	void operator-=(const JustMapXZ& other);
+	// BW1W120 00605570 BW1M119 null
+	MapCoords operator+(const JustMapXZ& other) const;
+	// BW1W120 00605610 BW1M119 null
+	MapCoords operator-(const JustMapXZ& other) const;
+	// BW1W120 00605690 BW1M119 null
+	bool32_t operator==(const JustXZ& other) const;
+	// BW1W120 006056d0 BW1M119 null
+	bool32_t operator!=(const JustXZ& other) const;
+	// BW1W120 006056f0 BW1M119 null
+	bool32_t operator>=(const MapCoords& other) const;
+	// BW1W120 00605720 BW1M119 null
+	bool32_t operator>(const MapCoords& other) const;
+	// BW1W120 00605750 BW1M119 null
+	bool32_t operator<=(const MapCoords& other) const;
+	// BW1W120 00605780 BW1M119 null
+	bool32_t operator<(const MapCoords& other) const;
+	// BW1W120 00605850 BW1M119 null
+	DISCRETE_ALIGNMENT_VALUES GetDiscreteAlignment() const;
+	// BW1W120 00605c90 BW1M119 null
+	bool32_t IsWithinDistance(const MapCoords& other, float distance) const;
+	// BW1W120 00605d10 BW1M119 null
+	bool32_t FindNearestWarmerClimate(MapCoords* result) const;
+	// BW1W120 00605e60 BW1M119 null
+	bool32_t FindNearestColderClimate(MapCoords* result) const;
 };
 
 inline MapCoords::MapCoords() {}

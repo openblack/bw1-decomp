@@ -60,6 +60,7 @@ class GPlayer;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
+struct LH3DMesh;
 struct MapCoords;
 class MultiMapFixed;
 class Object;
@@ -155,6 +156,11 @@ public:
 	// BW1W120 00531190 BW1M119 012c0ca0
 	Football(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	         int wood);
+
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00d4a210 BW1MCI119 null
+	static LH3DMesh* Mesh;
+#endif
 
 	// Static methods
 

@@ -27,7 +27,7 @@ class PotStructure : public Pot
 public:
 	LHPTR<MultiMapFixed> ParentMultiMapFixed;
 	GPlayer*             Player;
-	bool                 field_0x80;
+	bool                 CreateReaction;
 
 	// Override methods
 
@@ -40,14 +40,14 @@ public:
 	// BW1W120 0066ef60 BW1M119 011212b0
 	virtual Town* GetTown();
 	// BW1W120 0066d9b0 BW1M119 01124290
-	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3);
+	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* poisoned);
 	// BW1W120 0066ef00 BW1M119 0107a240
-	virtual uint32_t GetResource(RESOURCE_TYPE param_1);
+	virtual uint32_t GetResource(RESOURCE_TYPE type);
 	// BW1W120 0066ed70 BW1M119 011215c0
-	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* param_5, int param_6);
+	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool poisoned,
+	                             const MapCoords* coords, int from_other_player);
 	// BW1W120 0066ee10 BW1M119 011213c0
-	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
+	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* poisoned);
 	// BW1W120 0066db10 BW1M119 01123f10
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0066da90 BW1M119 01124000
@@ -57,9 +57,9 @@ public:
 	// BW1W120 0066db90 BW1M119 01123e50
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0066da30 BW1M119 01124100
-	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE type);
 	// BW1W120 0066da00 BW1M119 0107a190
-	virtual bool32_t IsPartOfStructure();
+	virtual MultiMapFixed* IsPartOfStructure();
 	// BW1W120 0055d630 BW1M119 0111faa0
 	virtual void SetMultiMapFixed(MultiMapFixed* multi_map_fixed) { ParentMultiMapFixed = multi_map_fixed; }
 
@@ -68,8 +68,8 @@ public:
 	// BW1W120 0055d5e0 BW1M119 01123380
 	PotStructure() {}
 	// BW1W120 0066d910 BW1M119 011244a0
-	PotStructure(const MapCoords& coords, const GPotInfo* param_2, uint32_t param_3, MultiMapFixed* param_4,
-	             Town* param_5, int param_6, float param_7, float param_8);
+	PotStructure(const MapCoords& coords, const GPotInfo* info, uint32_t resource, MultiMapFixed* parent, Town* town,
+	             bool32_t create_reaction, float y_angle, float scale);
 	// BW1W120 0066d980 BW1M119 01124370
 	void RemoveFromStructure();
 };

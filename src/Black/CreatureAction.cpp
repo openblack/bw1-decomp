@@ -2217,7 +2217,7 @@ int CreatureAgenda::ConstructSubActionsForBuildHome(unsigned long param_1)
 	LHPoint homePos;
 	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, homePos);
 	LHPoint direction = pos - homePos;
-	direction.SetSize(creature->physical->Creature3d->GetPutDownDistance());
+	direction.SetLength(creature->physical->Creature3d->GetPutDownDistance());
 	LHPoint target = pos + direction;
 	if (creature->physical->GetObjectCarried() == NULL)
 	{

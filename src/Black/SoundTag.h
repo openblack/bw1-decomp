@@ -22,13 +22,13 @@ class SoundTag : public LocalBase
 {
 public:
 	LHListNode<SoundTag> next;
-	GameThingWithPos*    game_thing;
+	GameThingWithPos*    AttachedThing;
 	LHPoint              field_0x10;
 	LHPoint              field_0x1c;
 	uint32_t             field_0x28;
-	uint32_t             field_0x2c;
+	uint32_t             BankIndex;
 	bool                 field_0x30;
-	int                  field_0x34;
+	bool32_t             IsAtmospheric;
 	uint32_t             field_0x38;
 	uint32_t             field_0x3c;
 	int                  field_0x40;
@@ -44,7 +44,7 @@ public:
 	// BW1W120 0071ecb0 BW1M119 0151b5d0
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0071ec90 BW1M119 0151b650
-	virtual int Get3DSoundPos(LHPoint* param_1);
+	virtual bool32_t Get3DSoundPos(LHPoint* pos);
 
 	// Static methods
 
