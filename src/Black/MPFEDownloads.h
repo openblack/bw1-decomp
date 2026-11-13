@@ -48,6 +48,10 @@ public:
 	// Inliner IL size: 23
 	// BW1W120 inlined BW1M119 inlined
 	unsigned long GetCurrentFileNumber() { return FileNumber; }
+	// BW1W120 inlined BW1M119 inlined
+	float GetTransferSpeed() { return TransferSpeed; }
+	// BW1W120 inlined BW1M119 inlined
+	float GetPercentageDownloaded() { return PercentageDownloaded; }
 };
 
 static_assert(sizeof(MPFEDownloads) == 0x280, "MPFEDownloads size is incorrect");

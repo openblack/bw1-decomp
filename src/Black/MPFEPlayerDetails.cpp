@@ -57,9 +57,9 @@ MPFEPlayerDetails::MPFEPlayerDetails(wchar_t* name, bool is_host)
 	IsHost = is_host;
 	IsTeamLeader = false;
 	field_0x119 = false;
-	PlayerNumber = -1;
+	PlayerNumber = MPFE_NO_NUMBER;
 	ID = 0;
-	TeamNumber = -1;
+	TeamNumber = MPFE_NO_NUMBER;
 	Clan = NULL;
 	PlayerQuerying = false;
 	ClanQuerying = false;
@@ -325,8 +325,8 @@ void MPFEPlayerDetails::AssignToTeam(TeamEnums team)
 		MPFEData::Data.Invites.DeleteAll();
 	}
 
-	unsigned long* request = NULL;
-	for (LHLinkedListIterator<unsigned long*> it = MPFEData::Data.TeamJoinRequests.GetStart(); it; it++)
+	TeamEnums* request = NULL;
+	for (LHLinkedListIterator<TeamEnums*> it = MPFEData::Data.TeamJoinRequests.GetStart(); it; it++)
 	{
 		if (*it.Get() == team)
 		{

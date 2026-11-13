@@ -16,6 +16,8 @@
 #define MPFE_MAX_PLAYERS_PER_TEAM              4
 #define MPFE_TEAM_LEADER_NUMBER                1
 #define MPFE_HOST_PLAYER_NUMBER                1
+#define MPFE_NO_NUMBER                         -1
+#define MPFE_NO_JOIN_TIME                      -1
 
 class MPFEClanDetails;
 
@@ -97,6 +99,8 @@ struct MPFEPlayerDetails
 	void AssignToBestFitTeam();
 	// BW1W120 00632670 BW1M119 013b08f0
 	wchar_t* GetName();
+	// BW1W120 00632680 BW1M119 null
+	void SetName(wchar_t* name);
 };
 
 #if defined(VERSION_BW1W100)

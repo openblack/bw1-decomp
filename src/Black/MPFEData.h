@@ -24,6 +24,14 @@
 #include <vector>  /* For std::vector */
 #endif
 
+#define MPFE_DATA_UNPURE_CLIENT_TIMEOUT 10000
+#define MPFE_DATA_DEFAULT_NUM_TEAMS     4
+#define MPFE_DATA_SESSION_PORT          2612
+#define MPFE_DATA_REFRESH_INTERVAL      250
+#define MPFE_DATA_SEND_INTERVAL         400
+#define MPFE_DATA_START_GAME_DELAY      300
+#define MPFE_DATA_TYKE_STATUS_INTERVAL  200
+
 class ChannelBox;
 class LayerCommunication;
 class LHSession;
@@ -34,8 +42,10 @@ struct MPFEPlayerDetails;
 
 enum TeamEnums
 {
+	TEAM_ANY = -2,
 	TEAM_UNASSIGNED = -1,
 	TEAM_NONE = 0,
+	TEAM_FIRST = 1,
 };
 
 struct MPFETeamDetails
@@ -76,7 +86,7 @@ public:
 	LHLinkedList<MPFEPlayerDetails*>       PlayersTransferringFiles;
 	LHLinkedList<MPFEPlayerDetails*>       field_0xae4;
 	LHLinkedList<void*>                    field_0xaec;
-	LHLinkedList<unsigned long*>           TeamJoinRequests;
+	LHLinkedList<TeamEnums*>               TeamJoinRequests;
 	LHLinkedList<MPFEInviteDetails*>       Invites;
 	LHLinkedList<MPFEPlayerDetails*>       PlayersAwaitingStartReply;
 	MPFEFileTransfer                       FileTransfers[MAX_TEAMS];
@@ -139,12 +149,33 @@ public:
 	~MPFEData();
 	// BW1W120 006227c0 BW1M119 013a02f0
 	void Reset();
+	// Inliner IL size: 43
+	// BW1W120 inlined BW1M119 inlined
+	void StopDownloads()
+	{
+		MapDownload.Stop();
+		ThumbDownload.Stop();
+	}
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	// BW1W120 00622a60 BW1M119 null
 	void ResetConditions();
 #endif
+	// BW1W120 00622b30 BW1M119 null
+	void Initialise();
 	// BW1W120 00622c10 BW1M119 013a0150
 	void A2D_LeaveGameChannel();
+#ifndef VERSION_BW1W100
+	// BW1W120 00622c60 BW1M119 null
+	void A2D_LeaveMainRoom();
+#endif
+#ifndef VERSION_BW1W100
+	// BW1W120 00622c70 BW1M119 null
+	static LH_USER_ID GetIDFromNick(char* nick);
+#endif
+#ifndef VERSION_BW1W100
+	// BW1W120 00622d00 BW1M119 null
+	static char* GetNameFromNick(char* nick);
+#endif
 	// BW1W120 00622d40 BW1M119 013a00f0
 	MPFEPlayerDetails* GetLocalPlayer();
 	// BW1W120 inlined BW1M119 inlined
@@ -159,6 +190,10 @@ public:
 	void D_FoundMapSetDetails(unsigned long id);
 	// BW1W120 00625180 BW1M119 0139bef0
 	wchar_t* GetMyPlayerName();
+#ifndef VERSION_BW1W100
+	// BW1W120 00625190 BW1M119 null
+	void SetMyPlayerName(wchar_t* name);
+#endif
 	// BW1W120 00622a00 BW1M119 013a0230
 	void ResetClans();
 	// BW1W120 00625420 BW1M119 0139b8a0
@@ -166,7 +201,7 @@ public:
 	// BW1W120 00622dc0 BW1M119 0139fe40
 	MPFEPlayerDetails* GetPlayerDetailsFromName(wchar_t* name);
 	// BW1W120 00622ee0 BW1M119 0139fbf0
-	MPFEPlayerDetails* GetPlayerDetailsFromID(const LH_USER_ID& id);
+	MPFEPlayerDetails* GetPlayerDetailsFromID(LH_USER_ID id);
 	// BW1W120 006251e0 BW1M119 0139bbd0
 	MPFEPlayerDetails* GetLowestNumberedPlayer();
 	// BW1W120 006252b0 BW1M119 0139bdb0
@@ -227,6 +262,10 @@ public:
 	void D_FinishedPlayerEnumeration(int count);
 	// BW1W120 00624f20 BW1M119 0139bfb0
 	void D_EnumeratingPlayersAdd(const char* nick, bool host, LH_USER_ID id);
+#ifndef VERSION_BW1W100
+	// BW1W120 00624a00 BW1M119 null
+	void D_PlayerChangedNick(const char* old_nick, const char* new_nick);
+#endif
 	// BW1W120 00626020 BW1M119 0139a880
 	LandscapeDetails* A2D_GetLandscapeDetailsFromID(unsigned long id);
 	// BW1W120 00626080 BW1M119 0139a6b0
@@ -261,8 +300,10 @@ public:
 	void ProcessDaniel();
 	// BW1W120 006240f0 BW1M119 0139db50
 	void CheckForUnpureClients();
+#ifndef VERSION_BW1W100
 	// BW1W120 00624160 BW1M119 0139db20
 	void ProcessAlex();
+#endif
 	// BW1W120 00624e60 BW1M119 0139c4c0
 	void D_ReShuffle(MPFEPlayerDetails* player);
 	// BW1W120 00625150 BW1M119 0139bf30
@@ -277,8 +318,48 @@ public:
 	MPFEPlayerDetails* GetHighestNumberedPlayerInTeam(TeamEnums team);
 	// BW1W120 00625340 BW1M119 0139bb30
 	MPFEPlayerDetails* GetLowestNumberedPlayerInTeam(TeamEnums team);
+#ifndef VERSION_BW1W100
+	// BW1W120 00625380 BW1M119 null
+	bool IsAnyPlayerFlagged();
+#endif
+#ifndef VERSION_BW1W100
+	// BW1W120 006253d0 BW1M119 null
+	void A2D_RejectJoinRequest(TeamEnums team, wchar_t* name);
+#endif
 	// BW1W120 00626490 BW1M119 01399b50
 	void D_UpdateBoxClans();
+#ifndef VERSION_BW1W100
+	// BW1W120 00624170 BW1M119 null
+	void D_UpdateBoxCaption();
+#endif
+	// BW1W120 00624de0 BW1M119 null
+	void D_BeginPlayerEnumeration();
+	// BW1W120 00626180 BW1M119 null
+	void D_GetPlayerInfoFromDatabase(MPFEPlayerDetails* player);
+	// BW1W120 006261b0 BW1M119 0139a5a0
+	void D_GetPlayerClanInfoFromDatabase(MPFEPlayerDetails* player);
+#ifndef VERSION_BW1W100
+	// BW1W120 006260f0 BW1M119 null
+	void D_StopQueries();
+#endif
+#ifndef VERSION_BW1W100
+	// BW1W120 00626110 BW1M119 null
+	void D_StopDatabaseQuery();
+#endif
+#ifndef VERSION_BW1W100
+	// BW1W120 00626140 BW1M119 null
+	void D_StopClanQueries();
+#endif
+	// BW1W120 006261e0 BW1M119 0139a4e0
+	void D_RefreshDatabaseQueries();
+	// BW1W120 00626450 BW1M119 01399bb0
+	void D_RefreshPlayerClans();
+	// BW1W120 00622ff0 BW1M119 0139f5f0
+	void A2D_JoinTeam(TeamEnums team);
+	// BW1W120 00623180 BW1M119 0139f4f0
+	void A2D_PlayerReplyToJoinRequest(wchar_t* name, bool accept, TeamEnums team);
+	// BW1W120 00623470 BW1M119 0139ec90
+	void A2D_PlayerReplyToInvite(wchar_t* name, bool accept, TeamEnums team);
 	// BW1W120 00620410 BW1M119 01392fb0
 	void D2A_PlayerRequestToJoinTeam(TeamEnums team, wchar_t* name);
 	// BW1W120 006207c0 BW1M119 01392ce0
