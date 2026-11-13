@@ -1062,7 +1062,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/HelpSystemMessage.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSystemProcess.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSystemQuery.cpp"),
-            GameCodeObject(NonMatching, "Black/HelpSystemToolTips.cpp"),
+            GameCodeObject(Matching, "Black/HelpSystemToolTips.cpp"),
             GameCodeObject(Matching, "Black/HelpText.cpp"),
             GameCodeObject(NonMatching, "Black/Influence.cpp"),
             GameCodeObject(NonMatching, "Black/Interface.cpp"),

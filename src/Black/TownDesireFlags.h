@@ -94,6 +94,8 @@ public:
 	GTownDesireInfo* GetDesireInfo() const;
 	// BW1W120 007472b0 BW1M119 01565850
 	HELP_TEXT GetToolTipForFlagDesire();
+	// BW1W120 inlined BW1M119 inlined
+	TOWN_DESIRE_INFO GetDesireType() const { return DesireType; }
 
 	// Static methods
 

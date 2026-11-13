@@ -10,6 +10,8 @@
 #include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE */
 
 #include "BaseInfo.h"               /* For struct BaseInfo */
+#include "BindableAction.h"         /* For enum BINDABLE_ACTIONS */
+#include "CameraHelpTypes.h"        /* For enum KEYALIGN */
 #include "GameReturns.h"            /* For enum GAME_RETURNS */
 #include "GameThingWithPos.h"       /* For struct GameThingWithPos */
 #include "InterfaceActionState.h"   /* For enum INTERFACE_ACTION_STATE */
@@ -18,6 +20,8 @@
 #include "InterfaceHandState.h"     /* For struct InterfaceHandState */
 #include "InterfaceMessage.h"       /* For enum INTERFACE_MESSAGE_TYPES */
 #include "InterfaceMessageBuffer.h" /* For struct GInterfaceMessageBuffer */
+
+enum HELP_EVENT_TYPE;
 
 // Immersion Foundation Classes: keep an effect's current iteration count
 #define IMM_EFFECT_DONT_CHANGE 0x80000000
@@ -232,6 +236,9 @@ public:
 	void CalculateHandState();
 	// BW1W120 005ce3f0 BW1M119 01363de0
 	static void SetupStatics();
+	// BW1W120 005d78d0 BW1M119 01087140
+	static void CalculateToolTip(BINDABLE_ACTIONS* action, unsigned long* text, KEYALIGN* align,
+	                             HELP_EVENT_TYPE* event);
 	// BW1W120 005ceba0 BW1M119 01362e80
 	bool32_t LoadFiles();
 	// BW1W120 005d9130 BW1M119 01033f60

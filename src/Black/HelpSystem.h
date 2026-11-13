@@ -245,8 +245,9 @@ enum HELP_LEVEL
 enum TOOLTIP_LEVEL
 {
 	TOOLTIP_LEVEL_NONE = 0,
-	TOOLTIP_LEVEL_SOME = 1,
-	TOOLTIP_LEVEL_ALL = 2,
+	TOOLTIP_LEVEL_MINIMUM = 1,
+	TOOLTIP_LEVEL_INTELLIGENT = 2,
+	TOOLTIP_LEVEL_ALL = 3,
 };
 
 enum TEXT_DRAW
@@ -458,6 +459,9 @@ public:
 	void ProcessBubble();
 	// BW1W120 005c9d00 BW1M119 010881e0
 	void ProcessToolTips();
+	// BW1W120 005c9fc0 BW1M119 01087270
+	bool32_t GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH_ANIMTYPE* anim_type, int* key, int* mouse_type,
+	                               KEYALIGN* align, HELP_EVENT_TYPE* event);
 	// BW1W120 005c8ec0 BW1M119 null
 	bool32_t HasTimeElapsedSinceCategoryTriggered(HELP_SET_CATEGORY category, float seconds) const;
 	// BW1W120 005c6720 BW1M119 013581d0
