@@ -31,6 +31,8 @@ public:
 		void DeAllocate(T* data, long count) { delete[] (char*)data; }
 		// BW1W120 00564900
 		void Construct(T* destination, const T& value) { new (destination) T(value); }
+		// BW1W120 0067d420
+		void Construct(T* destination) { new (destination) T; }
 	};
 
 	// Instantiations: BW1M119 01002fb0 (GTPointer<GameThing>), 01002f64 (LHPoint).
@@ -46,6 +48,15 @@ public:
 	// (LHPoint), BW1M119 01317390 (GTPointer<GameThing>).
 	// BW1W120 00564920
 	void Grow(long capacity);
+
+	// BW1W120 inlined BW1M119 013fa190
+	void SetSize(long size);
+	// BW1W120 0067d0e0 BW1M119 013fa2d0
+	void IncSizeTo(long size);
+	// BW1W120 0067d180 BW1M119 01002ee0
+	void DecSizeTo(long size);
+	// BW1W120 inlined BW1M119 013fa200
+	T* GetMemBuffer();
 
 	// BW1W120 inlined BW1M119 010348b0
 	long GetSize() const;

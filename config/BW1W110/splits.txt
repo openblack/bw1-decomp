@@ -1969,13 +1969,14 @@ Black/PSysCreature.cpp:
 	.text       start:0x0066D490 end:0x0066EDE0
 	.rdata      start:0x009256B8 end:0x00925720
 	.CRT$XCU    start:0x009B6D78 end:0x009B6D80 align:4
-	.bss        start:0x00D3CE74 end:0x00D3CF88
+	.bss        start:0x00D3CE74 end:0x00D3CE90
 
 Black/PSysDraw.cpp:
-	.text       start:0x0066EE10 end:0x00672B40
+	.text       start:0x0066EDE0 end:0x00672B40
 	.rdata      start:0x00925720 end:0x00925738
-	.CRT$XCU    start:0x009B6D88 end:0x009B6DA0 align:4
-	.data       start:0x00BF14C8 end:0x00BF14D0
+	.CRT$XCU    start:0x009B6D80 end:0x009B6DA0 align:4
+	.data       start:0x00BF14C8 end:0x00BF14CC
+	.bss        start:0x00D3CE90 end:0x00D3CF9C
 
 Black/PSysEditor.cpp:
 	.text       start:0x00672B40 end:0x00672D20

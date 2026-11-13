@@ -4,6 +4,8 @@
 #include <chlasm/Enum.h>        /* For enum GESTURE_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_AVI_SEQUENCE */
 
+#include <re_common.h> /* For bool32_t */
+
 // Forward Declares
 
 class GInterfaceStatus;
@@ -25,6 +27,40 @@ public:
 
 	// BW1W120 00c02978
 	static long CitadelHeartBeamMesh;
+	// BW1W120 00c0299c
+	static bool32_t DrawParticles;
+	// BW1W120 00c029a0
+	static bool32_t DrawSprites;
+	// BW1W120 00c029a4
+	static bool32_t DrawObjects;
+	// BW1W120 00c029a8
+	static bool32_t RotateSprites;
+	// BW1W120 00c029ac
+	static bool32_t DrawManagers;
+	// BW1W120 00c029b0
+	static bool32_t DrawChainTriangles;
+	// BW1W120 00c029b4
+	static bool32_t DrawChains;
+	// BW1W120 00c029b8
+	static bool32_t AnimateUVs;
+	// BW1W120 00c029bc
+	static bool32_t ZSortObjects;
+	// BW1W120 00c029c0
+	static bool32_t LightMeshesWithSun;
+	// BW1W120 00c029c4
+	static bool32_t FaceCameraVolBlendMeshes;
+	// BW1W120 00c029c8
+	static bool32_t DrawAtoms;
+	// BW1W120 00c029cc
+	static bool32_t InterpolateAtoms;
+	// BW1W120 00d4ec00
+	static bool32_t WireframeMeshes;
+	// BW1W120 00d4ec08
+	static bool32_t FadeMeshEdges;
+	// BW1W120 00d4ec14
+	static bool32_t ChainSharpJoints;
+	// BW1W120 00d4ec1c
+	static bool32_t ChainUseUpVector;
 
 	// Static methods
 

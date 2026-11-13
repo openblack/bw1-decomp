@@ -1820,14 +1820,15 @@ Black/PSysBeam.cpp:
 Black/PSysCreature.cpp:
 	.text       start:0x00620E60 end:0x00622730
 	.rdata      start:0x0087056C end:0x008705D4
-	.CRT$XCU    start:0x008F6D30 end:0x008F6D38 align:4
-	.bss        start:0x00C6EF44 end:0x00C6F058
+	.CRT$XCU    start:0x008F6D28 end:0x008F6D38 align:4
+	.bss        start:0x00C6EF44 end:0x00C6EF60
 
 Black/PSysDraw.cpp:
-	.text       start:0x00622760 end:0x00626270
+	.text       start:0x00622730 end:0x006262C0
 	.rdata      start:0x008705D4 end:0x008705EC
-	.CRT$XCU    start:0x008F6D40 end:0x008F6D54 align:4
-	.data       start:0x00B25A68 end:0x00B25A70
+	.CRT$XCU    start:0x008F6D38 end:0x008F6D58 align:4
+	.data       start:0x00B25A68 end:0x00B25A6C
+	.bss        start:0x00C6EF60 end:0x00C6F06C
 
 Black/PSysEditor.cpp:
 	.text       start:0x006262C0 end:0x00626420

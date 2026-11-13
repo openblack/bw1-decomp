@@ -3,9 +3,32 @@
 
 #include <stdint.h> /* For int32_t */
 
+#include "GJBaseUtils.h" /* For GJDoubleLinkList, GJVector */
+
+// Forward Declares
+
+class LH3DObject;
+struct LH3DDynamicShadow;
+class PSysLightMap;
+
+class PSysShadow
+{
+public:
+	PSysShadow*        Previous;
+	PSysShadow*        Next;
+	LH3DDynamicShadow* DynamicShadow;
+	LH3DObject*        Object3D;
+
+	// BW1W120 006ca340 BW1M119 014813d0
+	PSysShadow();
+};
+
 struct LightMapList
 {
-	int32_t BlurState;
+	int32_t                      BlurState;
+	float                        BlurAmount;
+	GJVector<PSysLightMap*>      Maps;
+	GJDoubleLinkList<PSysShadow> Shadows;
 
 	// Non-virtual methods
 

@@ -8,7 +8,9 @@
 #include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
 #include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
 
+#include "GJMesh.h"             /* For class GJMesh */
 #include "GTPointer.h"          /* For class GTPointer */
+#include "PSysLightMap.h"       /* For class PSysLightMap */
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
 // Forward Declares
@@ -20,6 +22,8 @@ class GameThing;
 class GameThingWithPos;
 class GoldenShower;
 class LH3DMist;
+class LH3DObject;
+struct LH3DMesh;
 class Object;
 class ParticleCreator;
 
@@ -52,6 +56,11 @@ public:
 class RenderParticleGJMesh : public RenderParticle
 {
 public:
+	GJMesh Mesh;               /* 0x18 */
+	bool   ModulateColour;     /* 0x20 */
+	bool   UseLandscapeColour; /* 0x21 */
+	bool   FollowLandscape;    /* 0x22 */
+
 	// Override methods
 
 	// BW1W120 006c8ac0 BW1M119 01483670
@@ -59,20 +68,33 @@ public:
 	// BW1W120 0067c150 BW1M119 013f5b00
 	virtual void DrawAt(const DrawData& data);
 };
+static_assert(sizeof(RenderParticleGJMesh) == 0x24, "Data type is of wrong size");
 
 class RenderParticleGJMeshRotatingUV : public RenderParticleGJMesh
 {
 public:
+	float LastU; /* 0x24 */
+	float LastV; /* 0x28 */
+	float U;     /* 0x2c */
+	float V;     /* 0x30 */
+	float NextU; /* 0x34 */
+	float NextV; /* 0x38 */
+	float WrapU; /* 0x3c */
+	float WrapV; /* 0x40 */
+
 	// Override methods
 
 	// BW1W120 006c8b90 BW1M119 014834c0
 	virtual ~RenderParticleGJMeshRotatingUV();
+	// BW1W120 0067cba0 BW1M119 013f5980
+	virtual void DrawAt(const DrawData& data);
 };
+static_assert(sizeof(RenderParticleGJMeshRotatingUV) == 0x44, "Data type is of wrong size");
 
 class RenderParticleGameObject : public RenderParticle
 {
 public:
-	GTPointer<Object> field_0x18;
+	GTPointer<Object> GameObject;
 	GameThingWithPos* field_0x20;
 	LHMatrix          field_0x24;
 	uint8_t           field_0x54;
@@ -154,18 +176,15 @@ public:
 	RenderParticleGoldenShower(Object* object) : RenderParticleGameObjectRef(object) { Shower = NULL; }
 };
 
+#define PARTICLE_MIST_MIN_MATRIX_SCALE 0.0001f
+
 class RenderParticleMist : public RenderParticle
 {
 public:
 	ParticleCreator* Creator;
 	uint32_t         field_0x1c;
-	uint8_t          field_0x20;
-	uint32_t         field_0x24;
-	uint32_t         field_0x28;
-	uint16_t         field_0x2c;
-	LHPoint          field_0x30;
-	uint32_t         field_0x3c;
-	uint32_t         field_0x40;
+	bool             TakeRatioFromMatrix;
+	PSysLightMap     LightMap;
 	LH3DMist*        Mist;
 
 	// Override methods
@@ -186,10 +205,22 @@ public:
 	// BW1W120 006c9c70 BW1M119 014825e0
 	RenderParticleMist();
 };
+static_assert(sizeof(RenderParticleMist) == 0x48, "Data type is of wrong size");
+
+#define VOL_BLEND_TEXTURE_SIZE 256
 
 class RenderParticleVolBlendMesh : public RenderParticle
 {
 public:
+	float       BlendAmount; /* 0x18 */
+	LH3DMesh*   Mesh1;       /* 0x1c */
+	LH3DMesh*   Mesh2;       /* 0x20 */
+	LH3DMesh*   BlendMesh;   /* 0x24 */
+	LH3DObject* Object3D;    /* 0x28 */
+	long        NumFrames;   /* 0x2c */
+	long        FrameWidth;  /* 0x30 */
+	long        FrameHeight; /* 0x34 */
+
 	// Override methods
 
 	// BW1W120 006ca750 BW1M119 01480cd0
@@ -197,5 +228,6 @@ public:
 	// BW1W120 0067ccb0 BW1M119 013f52e0
 	virtual void DrawAt(const DrawData& data);
 };
+static_assert(sizeof(RenderParticleVolBlendMesh) == 0x38, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_P_SYS_P_CREATOR_INCLUDED_H */

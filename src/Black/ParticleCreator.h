@@ -12,15 +12,20 @@
 
 // Forward Declares
 
+class Particle3DAnim;
 class Particle3DSprite;
 class RenderParticleMist;
 class ParticleLightMap;
 class AtomCore;
 class Chain;
 class FloatProvider;
+class GJBitmap;
+struct LH3DCamera;
+struct LH3DMesh;
 class LH3DObject;
 class LH3DMist;
-class LH3DSprite;
+struct LH3DMaterial;
+struct LH3DSprite;
 class PropertyList;
 class RenderParticle;
 
@@ -57,7 +62,7 @@ public:
 	// BW1W120 00670af0 BW1M119 013e7e40
 	virtual LH3DObject* CreateLH3DObject() { return NULL; }
 	// BW1W120 00670b00 BW1M119 013e7e00
-	virtual void* GetBitmap() { return NULL; }
+	virtual GJBitmap* GetBitmap() { return NULL; }
 	// BW1W120 006a88f0 BW1M119 013e7f10
 	virtual bool32_t IsParticleBaseChainCreator() { return false; }
 
@@ -143,6 +148,9 @@ public:
 	virtual void CreateChain(long index);
 	// BW1W120 inlined BW1M119 null
 	virtual void CreateChainParticle(AtomCore* core, Chain* chain, long index);
+
+	// BW1W120 006aacb0 BW1M119 01443650
+	void ForceMeshLoad(std::string file_name, LH3DMesh** mesh);
 
 	uint32_t    field_0x34;
 	uint32_t    field_0x38;
@@ -275,7 +283,7 @@ public:
 	// BW1W120 006aa530 BW1M119 01444910
 	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006aa540 BW1M119 01444860
-	virtual void* GetBitmap();
+	virtual GJBitmap* GetBitmap();
 
 	// BW1W120 006aa5a0 BW1M119 01444760
 	LH3DMist* CreateLH3DMist();
@@ -318,9 +326,12 @@ public:
 	// BW1W120 006a9760 BW1M119 01446f80
 	virtual LH3DObject* CreateLH3DObject();
 
+	// BW1W120 006a97f0 BW1M119 01446c70
+	void InitAnimParticle(Particle3DAnim* particle, AtomCore* core);
+
 	uint32_t    field_0x34;
-	uint32_t    field_0x38;
-	uint32_t    field_0x3c;
+	LH3DMesh*   Mesh1;
+	LH3DMesh*   Mesh2;
 	uint32_t    field_0x40;
 	float       SpeedUpFactor;
 	MESH_LIST   MeshEnum;
@@ -379,7 +390,7 @@ public:
 	// BW1W120 006a9ae0 BW1M119 01446270
 	virtual LH3DObject* CreateLH3DObject();
 
-	uint32_t    field_0xa8;
+	LH3DCamera* Camera;
 	std::string CameraFileName;
 	float       PauseBeforePlay;
 };
@@ -458,7 +469,7 @@ public:
 	// BW1W120 006a9d30 BW1M119 01445d40
 	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006a9d40 BW1M119 01445c90
-	virtual void* GetBitmap();
+	virtual GJBitmap* GetBitmap();
 
 	uint32_t    field_0x34;
 	uint32_t    field_0x38;
@@ -503,6 +514,9 @@ public:
 	virtual Chain* CreateChain(long index);
 	// BW1W120 006aa900 BW1M119 01443c00
 	virtual RenderParticle* CreateChainParticle(AtomCore* core, Chain* chain, long index);
+
+	// BW1W120 006aa860 BW1M119 01444010
+	LH3DMaterial* GetMaterial();
 
 	std::string TextureFileName;
 	bool        UseAdditiveAlpha;

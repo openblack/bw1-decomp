@@ -13,18 +13,19 @@
 class ChainJoint
 {
 public:
-	LHPoint   Position;   /* 0x0 */
-	float     Scale;      /* 0xc */
-	uint32_t  field_0x10; // TODO: First DrawData color word; original type unknown.
-	LH3DColor Color;      /* 0x14 */
-	bool      Active;     /* 0x18 */
+	LHPoint   Position; /* 0x0 */
+	float     Scale;    /* 0xc */
+	LH3DColor Colour;   /* 0x10 */
+	LH3DColor Specular; /* 0x14 */
+	bool      Active;   /* 0x18 */
 
 	// BW1W120 00695f00 BW1M119 inlined
-	ChainJoint() : Scale(0.0f), field_0x10(0), Color(0), Active(false) { Position.x = Position.y = Position.z = 0.0f; }
+	ChainJoint() : Scale(0.0f), Colour(0), Specular(0), Active(false) { Position.x = Position.y = Position.z = 0.0f; }
 };
 
 static_assert(offsetof(ChainJoint, Scale) == 0xc, "ChainJoint scale offset is incorrect");
-static_assert(offsetof(ChainJoint, Color) == 0x14, "ChainJoint color offset is incorrect");
+static_assert(offsetof(ChainJoint, Colour) == 0x10, "ChainJoint colour offset is incorrect");
+static_assert(offsetof(ChainJoint, Specular) == 0x14, "ChainJoint specular offset is incorrect");
 static_assert(offsetof(ChainJoint, Active) == 0x18, "ChainJoint active offset is incorrect");
 static_assert(sizeof(ChainJoint) == 0x1c, "ChainJoint size is incorrect");
 

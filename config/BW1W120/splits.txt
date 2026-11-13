@@ -2211,14 +2211,14 @@ Black/PSysCreature.cpp:
 	.rdata      start:0x00935740 end:0x009357A8
 	.CRT$XCU    start:0x009C7314 end:0x009C7328 align:4
 	.data       start:0x00C02328 end:0x00C0234C
-	.bss        start:0x00D4E1A4 end:0x00D4E2B8
+	.bss        start:0x00D4E1A4 end:0x00D4E1C0
 
 Black/PSysDraw.cpp:
 	.text       start:0x00679740 end:0x0067D4A0
 	.rdata      start:0x009357A8 end:0x009357C0
 	.CRT$XCU    start:0x009C7328 end:0x009C7348 align:4
 	.data       start:0x00C0234C end:0x00C02350
-	.bss        start:0x00D4E2B8 end:0x00D4E2D0
+	.bss        start:0x00D4E1C0 end:0x00D4E2CC
 
 Black/PSysEditor.cpp:
 	.text       start:0x0067D4A0 end:0x0067D680
