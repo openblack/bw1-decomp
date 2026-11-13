@@ -1113,7 +1113,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/HelpSpirit.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSpiritInfo.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSpritesGuidance.cpp"),
-            GameCodeObject(NonMatching, "Black/HelpSystem.cpp"),
+            GameCodeObject(Matching, "Black/HelpSystem.cpp"),
             GameCodeObject(Matching, "Black/HelpSystemBanter.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSystemBubble.cpp"),
             GameCodeObject(Matching, "Black/HelpSystemConditions.cpp"),

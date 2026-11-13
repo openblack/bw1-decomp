@@ -596,9 +596,9 @@ int HelpText::CountWords(wchar_t* text)
 #ifdef VERSION_BW1WCI
 void __stdcall DrawPauseTextCB(void* data)
 {
-	if (GGame::g_game != NULL && GGame::g_game->help_system != NULL && GGame::g_game->help_system->help_text != NULL)
+	if (GGame::g_game != NULL && GGame::g_game->help_system != NULL && GGame::g_game->help_system->Text != NULL)
 	{
-		GGame::g_game->help_system->help_text->DrawPauseText();
+		GGame::g_game->help_system->Text->DrawPauseText();
 	}
 }
 #endif

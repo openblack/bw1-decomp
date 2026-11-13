@@ -35,13 +35,13 @@ void HelpSystem::Process()
 
 void HelpSystem::ProcessSpirits()
 {
-	if (SpiritType2 != NULL)
+	if (EvilSpirit != NULL)
 	{
-		SpiritType2->Process();
+		EvilSpirit->Process();
 	}
-	if (SpiritType1 != NULL)
+	if (GoodSpirit != NULL)
 	{
-		SpiritType1->Process();
+		GoodSpirit->Process();
 	}
 }
 
@@ -94,7 +94,7 @@ bool32_t HelpSystem::IsFOVPaused()
 
 void HelpSystem::ResetFOV()
 {
-	FOVActive = false;
+	LastFOVObject = NULL;
 	if (!IsDialogueControlled() && GGame::g_game->help_system != NULL)
 	{
 		if (IsSpiritEjected(HELP_SPIRIT_TYPE_GOOD))

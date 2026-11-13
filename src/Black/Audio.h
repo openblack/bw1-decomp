@@ -228,6 +228,8 @@ public:
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00429510 BW1MCI119 01197ea0
 	void StartScriptMusic(MUSIC_TYPE type, unsigned long start_chunk);
+	// BW1WCI 0042b950 BW1MCI119 0119bf70
+	static bool32_t IsHelpSpritesSoundBank(AUDIO_SFX_BANK_TYPE type);
 #endif
 	// BW1W120 00428250 BW1M119 01183210
 	void RegistrySetup();

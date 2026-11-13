@@ -614,6 +614,8 @@ struct HelpDude : public LocalBase
 	void SetHoverArea(float x, float y, float inner_radius, float outer_radius, float strength, int index);
 	// BW1W120 005c0700 BW1M119 01348b30
 	void Draw(bool deferred);
+	// BW1W120 inlined BW1M119 01359710
+	void AddDrawing() { Draw(true); }
 	// BW1W120 005c0ec0 BW1M119 null
 	void SaveMesh(LHFile* file, LH3DMesh* mesh, unsigned int size);
 	// BW1W120 005c0f30 BW1M119 01348960

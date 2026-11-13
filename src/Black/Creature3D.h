@@ -600,6 +600,10 @@ public:
 	bool32_t StartKissing(LH3DCreature* other);
 	// BW1W120 004845f0 BW1M119 011fb9f0
 	bool32_t EndFighting();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0049a130 BW1MCI119 012087c0
+	void Talk(int sample, LH_AudioBank* bank);
+#endif
 	// BW1W120 004846e0 BW1M119 011fb8d0
 	bool32_t StartFightAction(long action, float param_2);
 	// BW1W120 00484790 BW1M119 011fb6e0
