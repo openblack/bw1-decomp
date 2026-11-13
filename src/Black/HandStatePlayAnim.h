@@ -2,11 +2,11 @@
 #define BW1_DECOMP_HAND_STATE_PLAY_ANIM_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <re_common.h>                            /* For bool32_t */
 
 #include "HandState.h" /* For struct HandState */
-
-// Forward Declares
 
 class CHand;
 struct LHMatrix;
@@ -14,21 +14,20 @@ struct LHMatrix;
 class HandStatePlayAnim : public HandState
 {
 public:
-	uint8_t  field_0x8[0x10];
-	uint32_t AnimationTime;
-	uint32_t field_0x1C;
-
-	// Override methods
+	LHPoint  Pos;           /* 0x8 */
+	long     Anim;          /* 0x14 */
+	long     AnimationTime; /* 0x18 */
+	bool32_t Started;       /* 0x1c */
 
 	// BW1W120 005b7510 BW1M119 01344df0
 	virtual void Enter();
 	// BW1W120 005b7520 BW1M119 01344c50
-	virtual void Update(float param_1, LHMatrix* param_2);
-
-	// Constructors
+	virtual void Update(float dt, LHMatrix* buffer);
 
 	// BW1W120 005b74f0 BW1M119 01344e30
 	HandStatePlayAnim(CHand* hand);
 };
+
+static_assert(sizeof(HandStatePlayAnim) == 0x20, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_HAND_STATE_PLAY_ANIM_INCLUDED_H */

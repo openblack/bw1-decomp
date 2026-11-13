@@ -1430,7 +1430,7 @@ bool32_t Villager::CrowdReaction()
 	GLandscape::ConvertMapCoordToLandscapePoint(ReactionObject->Pos, objectPoint);
 	LHPoint direction = objectPoint - myPoint;
 	float   distance = direction.GetNorme();
-	direction.SetSize(1.0f);
+	direction.SetLength(1.0f);
 	if (distance > VILLAGER_CROWD_DISTANCE)
 	{
 		LHPoint   destinationPoint = myPoint + direction * (distance - VILLAGER_CROWD_DISTANCE);

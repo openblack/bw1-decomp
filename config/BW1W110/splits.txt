@@ -1173,7 +1173,7 @@ Black/GSFunctions.cpp:
 Black/GSLobbybox.cpp:
 	.text       start:0x005950A0 end:0x00598E40
 	.CRT$XCU    start:0x009B67B8 end:0x009B67C0 align:4
-	.data       start:0x00BDF3E8 end:0x00BDF6E0
+	.data       start:0x00BDF3E8 end:0x00BDF520
 	.bss        start:0x00CF7FB0 end:0x00CF7FC0
 
 Black/GStates.cpp:
@@ -1183,48 +1183,79 @@ Black/GStates.cpp:
 
 Black/HandStateCamera.cpp:
 	.text       start:0x005AC050 end:0x005AC960 align:16
-	.rdata      start:0x008F0A10 end:0x008F0A30
+	.rdata      start:0x008F0A04 end:0x008F0A30
+	.rdata$r    start:0x009A0D38 end:0x009A0D84
+	.CRT$XCU    start:0x009B67C8 end:0x009B67D0 align:4
+	.data       start:0x00BDF520 end:0x00BDF53E
+	.bss        start:0x00D02D00 end:0x00D02D0C
 
 Black/HandStateCitadel.cpp:
 	.text       start:0x005AC960 end:0x005AD110
 	.rdata      start:0x008F0A30 end:0x008F0A5C
+	.rdata$r    start:0x009A0D88 end:0x009A0DD4
+	.CRT$XCU    start:0x009B67D0 end:0x009B67D8 align:4
+	.data       start:0x00BDF540 end:0x00BDF55F
+	.bss        start:0x00D02D0C end:0x00D02D18
 
 Black/HandStateCreature.cpp:
 	.text       start:0x005AD110 end:0x005AE830
 	.rdata      start:0x008F0A5C end:0x008F0AB8
+	.rdata$r    start:0x009A0DD8 end:0x009A0E24
+	.CRT$XCU    start:0x009B67D8 end:0x009B67E0 align:4
+	.data       start:0x00BDF560 end:0x00BDF5CC
+	.bss        start:0x00D02D18 end:0x00D02D24
 
 Black/HandStateGrain.cpp:
 	.text       start:0x005AE830 end:0x005AF6E0
 	.rdata      start:0x008F0AB8 end:0x008F0AE8
-	.CRT$XCU    start:0x009B67EC end:0x009B67F0 align:4
-	.bss        start:0x00D02D38 end:0x00D02D68
+	.CRT$XCU    start:0x009B67E0 end:0x009B67F0 align:4
+	.data       start:0x00BDF5CC end:0x00BDF615
+	.bss        start:0x00D02D28 end:0x00D02D48
 
 Black/HandStateHolding.cpp:
 	.text       start:0x005AF6E0 end:0x005B1400
 	.rdata      start:0x008F0AE8 end:0x008F0B2C
+	.rdata$r    start:0x009A0E90 end:0x009A0EC4
 	.CRT$XCU    start:0x009B67F0 end:0x009B6800 align:4
+	.data       start:0x00BDF618 end:0x00BDF620
+	.bss        start:0x00D02D48 end:0x00D02D80
 
 Black/HandStateMultiPickUp.cpp:
 	.text       start:0x005B1400 end:0x005B18C0
 	.rdata      start:0x008F0B2C end:0x008F0B50
+	.rdata$r    start:0x009A0EC8 end:0x009A0F14
+	.data       start:0x00BDF620 end:0x00BDF64B
+	.bss        start:0x00D02D80 end:0x00D02D84
 
 Black/HandStateNormal.cpp:
 	.text       start:0x005B18C0 end:0x005B3110
 	.rdata      start:0x008F0B50 end:0x008F0B7C
+	.CRT$XCU    start:0x009B6800 end:0x009B6818 align:4
+	.data       start:0x00BDF64C end:0x00BDF67E
+	.bss        start:0x00D02D88 end:0x00D02E78
 
 Black/HandStatePlayAnim.cpp:
 	.text       start:0x005B3110 end:0x005B32B0
 	.rdata      start:0x008F0B7C end:0x008F0BA0
-	.CRT$XCU    start:0x009B681C end:0x009B6820 align:4
+	.rdata$r    start:0x009A0F68 end:0x009A0FB4
+	.CRT$XCU    start:0x009B6818 end:0x009B6820 align:4
+	.data       start:0x00BDF6A0 end:0x00BDF6C0
+	.bss        start:0x00D02E78 end:0x00D02E84
 
 Black/HandStateTotem.cpp:
 	.text       start:0x005B32B0 end:0x005B3990
 	.rdata      start:0x008F0BA0 end:0x008F0BC4
+	.rdata$r    start:0x009A0FB8 end:0x009A1004
+	.data       start:0x00BDF6C0 end:0x00BDF6DD
+	.bss        start:0x00D02E84 end:0x00D02E88
 
 Black/HandStateTug.cpp:
 	.text       start:0x005B3990 end:0x005B4AA0
-	.rdata      start:0x008F0BC4 end:0x00905410
-	.bss        start:0x00D02E88 end:0x00D048F8
+	.rdata      start:0x008F0BC4 end:0x008F0BF8
+	.rdata$r    start:0x009A1008 end:0x009A1054
+	.CRT$XCU    start:0x009B6820 end:0x009B6828 align:4
+	.data       start:0x00BDF6E0 end:0x00BDF6FB
+	.bss        start:0x00D02E88 end:0x00D02E94
 
 Black/helpdude.cpp:
 	.text       start:0x005B4AA0 end:0x005BE5F0

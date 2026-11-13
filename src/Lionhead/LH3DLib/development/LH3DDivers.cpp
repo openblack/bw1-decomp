@@ -4326,14 +4326,14 @@ bool32_t DansLesNuages::Draw()
 	{
 		pos.Set(grosse_merde_foc);
 		pos -= grosse_merde_pos;
-		pos.SetSize(LH3DTech::GetNearClipping() + DANS_LES_NUAGES_DISTANCE);
+		pos.SetLength(LH3DTech::GetNearClipping() + DANS_LES_NUAGES_DISTANCE);
 		pos += grosse_merde_pos;
 	}
 	else
 	{
 		pos.Set(LH3DTech::GetCameraTarget());
 		pos -= LHPoint(LH3DTech::GetCameraPosition());
-		pos.SetSize(LH3DTech::GetNearClipping() + DANS_LES_NUAGES_DISTANCE);
+		pos.SetLength(LH3DTech::GetNearClipping() + DANS_LES_NUAGES_DISTANCE);
 		pos += LHPoint(LH3DTech::GetCameraPosition());
 	}
 	Time += LH3DTech::g_game_time_inc;

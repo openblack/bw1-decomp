@@ -136,10 +136,10 @@ public:
 	float                    VerticalDistance;
 	LHPoint                  FallbackOrigin;
 	LHPoint                  FallbackHeading;
-	LHPoint                  field_0x1e0;
-	LHPoint                  Origin0x1ec;
-	LHPoint                  field_0x1f8;
-	LHPoint                  Heading0x204;
+	LHPoint                  GrabOrigin;
+	LHPoint                  GrabStartOrigin;
+	LHPoint                  GrabFocus;
+	LHPoint                  GrabStartFocus;
 	Zoomer                   field_0x210;
 	Zoomer3d                 field_0x240;
 	bool                     field_0x2d0;

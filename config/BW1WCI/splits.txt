@@ -1156,9 +1156,9 @@ Black/GSFunctions.cpp:
 
 Black/GSLobbybox.cpp:
 	.text       start:0x005AE790 end:0x005B2530
-	.rdata      start:0x00932FD8 end:0x00933010
+	.rdata      start:0x00932FD8 end:0x00933004
 	.CRT$XCU    start:0x00A367E8 end:0x00A367F0 align:4
-	.data       start:0x00C60A94 end:0x00C60D90
+	.data       start:0x00C60A94 end:0x00C60BD0
 	.bss        start:0x00D87370 end:0x00D87380
 
 Black/GStates.cpp:
@@ -1168,51 +1168,79 @@ Black/GStates.cpp:
 
 Black/HandStateCamera.cpp:
 	.text       start:0x005C5840 end:0x005C6150 align:16
-	.rdata      start:0x00933010 end:0x00933030
+	.rdata      start:0x00933004 end:0x00933030
+	.rdata$r    start:0x00A21940 end:0x00A2198C
 	.CRT$XCU    start:0x00A367F8 end:0x00A36800 align:4
+	.data       start:0x00C60BD0 end:0x00C60BEE
 	.bss        start:0x00D92150 end:0x00D9215C
 
 Black/HandStateCitadel.cpp:
 	.text       start:0x005C6150 end:0x005C6900
 	.rdata      start:0x00933030 end:0x0093305C
+	.rdata$r    start:0x00A21990 end:0x00A219DC
 	.CRT$XCU    start:0x00A36800 end:0x00A36808 align:4
+	.data       start:0x00C60BF0 end:0x00C60C0F
 	.bss        start:0x00D9215C end:0x00D92168
 
 Black/HandStateCreature.cpp:
 	.text       start:0x005C6900 end:0x005C8020
 	.rdata      start:0x0093305C end:0x009330B0
+	.rdata$r    start:0x00A219E0 end:0x00A21A2C
 	.CRT$XCU    start:0x00A36808 end:0x00A36810 align:4
-	.bss        start:0x00D92168 end:0x00D92188
+	.data       start:0x00C60C10 end:0x00C60C7C
+	.bss        start:0x00D92168 end:0x00D92174
 
 Black/HandStateGrain.cpp:
 	.text       start:0x005C8020 end:0x005C8ED0
 	.rdata      start:0x009330B0 end:0x009330E0
 	.CRT$XCU    start:0x00A36810 end:0x00A36820 align:4
-	.bss        start:0x00D92188 end:0x00D921B8
+	.data       start:0x00C60C7C end:0x00C60CC5
+	.bss        start:0x00D92178 end:0x00D92198
 
 Black/HandStateHolding.cpp:
+	.text       start:0x005C8ED0 end:0x005CAC10
 	.rdata      start:0x009330E0 end:0x00933124
-	.bss        start:0x00D921B8 end:0x00D922B8
+	.rdata$r    start:0x00A21A98 end:0x00A21ACC
+	.CRT$XCU    start:0x00A36820 end:0x00A36830 align:4
+	.data       start:0x00C60CC8 end:0x00C60CD0
+	.bss        start:0x00D92198 end:0x00D921D0
+
+Black/HandStateMultiPickUp.cpp:
+	.text       start:0x005CAC10 end:0x005CB0D0
+	.rdata      start:0x00933124 end:0x00933148
+	.rdata$r    start:0x00A21AD0 end:0x00A21B1C
+	.data       start:0x00C60CD0 end:0x00C60CFB
+	.bss        start:0x00D921D0 end:0x00D921D4
 
 Black/HandStateNormal.cpp:
 	.text       start:0x005CB0D0 end:0x005CC970
 	.rdata      start:0x00933148 end:0x00933174
 	.CRT$XCU    start:0x00A36830 end:0x00A36848 align:4
-	.bss        start:0x00D922B8 end:0x00D922C8
+	.data       start:0x00C60CFC end:0x00C60D2E
+	.bss        start:0x00D921D8 end:0x00D922C8
 
 Black/HandStatePlayAnim.cpp:
+	.text       start:0x005CC970 end:0x005CCB10
 	.rdata      start:0x00933174 end:0x00933198
-	.bss        start:0x00D922C8 end:0x00D922D8
+	.rdata$r    start:0x00A21B70 end:0x00A21BBC
+	.CRT$XCU    start:0x00A36848 end:0x00A36850 align:4
+	.data       start:0x00C60D50 end:0x00C60D70
+	.bss        start:0x00D922C8 end:0x00D922D4
 
 Black/HandStateTotem.cpp:
+	.text       start:0x005CCB10 end:0x005CD1F0
 	.rdata      start:0x00933198 end:0x009331BC
+	.rdata$r    start:0x00A21BC0 end:0x00A21C0C
+	.data       start:0x00C60D70 end:0x00C60D8D
+	.bss        start:0x00D922D4 end:0x00D922D8
 
 Black/HandStateTug.cpp:
 	.text       start:0x005CD1F0 end:0x005CE300
 	.rdata      start:0x009331BC end:0x009331F0
+	.rdata$r    start:0x00A21C10 end:0x00A21C5C
 	.CRT$XCU    start:0x00A36850 end:0x00A36858 align:4
-	.data       start:0x00C60D90 end:0x00C60DAC
-	.bss        start:0x00D922D8 end:0x00D922E8
+	.data       start:0x00C60D90 end:0x00C60DAB
+	.bss        start:0x00D922D8 end:0x00D922E4
 
 Black/helpdude.cpp:
 	.text       start:0x005CE300 end:0x005D8050
@@ -3433,6 +3461,10 @@ lib/libcmt/strrchr.obj:
 lib/libcmt/ieee87.obj:
 	.text       start:0x007E2567 end:0x007E2754 align:1
 
+lib/libcmt/crt0dat.obj:
+	.text       start:0x007E2754 end:0x007E28A0 align:1
+	.bss        start:0x00F0CAFC end:0x00F0CB40
+
 lib/libcmt/llshr.obj:
 	.text       start:0x007E28A0 end:0x007E28D0 align:1
 
@@ -3450,10 +3482,6 @@ lib/libcmt/mkdir.obj:
 
 lib/libcmt/wcsncat.obj:
 	.text       start:0x007E2A0E end:0x007E2A4E align:1
-
-lib/libcmt/crt0dat.obj:
-	.text       start:0x007E2754 end:0x007E28A0 align:1
-	.bss        start:0x00F0CAFC end:0x00F0CB40
 
 lib/libcmt/wincrt0.obj:
 	.text       start:0x007E2A4E end:0x007E2BA0 align:1
@@ -3563,19 +3591,19 @@ lib/libcmt/cvt.obj:
 	.text       start:0x007E52BC end:0x007E56F0 align:1
 	.rdata      start:0x00A10478 end:0x00A10480
 
-lib/libcmt/msize.obj:
-	.text       start:0x007E5774 end:0x007E5862 align:1
-	.rdata      start:0x00A10480 end:0x00A10498
-
-lib/libcmt/_flsbuf.obj:
-	.text       start:0x007E5862 end:0x007E597A align:1
-
 lib/libcmt/cmiscdat.obj:
 	.data       start:0x00CA144C end:0x00CA1464
 
 lib/libcmt/strcmp.obj:
 	.text       start:0x007E56F0 end:0x007E5774 align:1
 	.data       start:0x00CA1464 end:0x00CA1470
+
+lib/libcmt/msize.obj:
+	.text       start:0x007E5774 end:0x007E5862 align:1
+	.rdata      start:0x00A10480 end:0x00A10498
+
+lib/libcmt/_flsbuf.obj:
+	.text       start:0x007E5862 end:0x007E597A align:1
 
 lib/libcmt/output.obj:
 	.text       start:0x007E597A end:0x007E6184 align:1
@@ -3634,6 +3662,13 @@ lib/libcmt/fpexcept.obj:
 	.rdata      start:0x00A10D3C end:0x00A10DF0
 	.data       start:0x00CA34E8 end:0x00CA35C0 align:1
 
+lib/libcmt/fpctrl.obj:
+	.text       start:0x007EE81A end:0x007EE8B0 align:1
+	.data       start:0x00CA35C0 end:0x00CA35D8 align:1
+
+lib/libcmt/close.obj:
+	.text       start:0x007EE8B0 end:0x007EE990 align:1
+
 lib/libcmt/_freebuf.obj:
 	.text       start:0x007EE990 end:0x007EE9BB align:1
 
@@ -3642,13 +3677,6 @@ lib/libcmt/_open.obj:
 
 lib/libcmt/stream.obj:
 	.text       start:0x007EEB2B end:0x007EEC00 align:1
-
-lib/libcmt/fpctrl.obj:
-	.text       start:0x007EE81A end:0x007EE8B0 align:1
-	.data       start:0x00CA35C0 end:0x00CA35D8 align:1
-
-lib/libcmt/close.obj:
-	.text       start:0x007EE8B0 end:0x007EE990 align:1
 
 lib/libcmt/87disp.obj:
 	.text       start:0x007EEC00 end:0x007EEDD0 align:1
@@ -3882,6 +3910,10 @@ lib/libcmt/w_str.obj:
 lib/libcmt/setenv.obj:
 	.text       start:0x007F63AA end:0x007F65F0 align:1
 
+lib/libcmt/matherr.obj:
+	.text       start:0x007F65F0 end:0x007F65F3 align:1
+	.data       start:0x00CA42A0 end:0x00CA42A4
+
 lib/libcmt/osfinfo.obj:
 	.text       start:0x007F65F3 end:0x007F697B align:1
 
@@ -3911,10 +3943,6 @@ lib/libcmt/ismbbyte.obj:
 lib/libcmt/inithelp.obj:
 	.text       start:0x007F7660 end:0x007F77A0 align:1
 	.bss        start:0x00F0CECC end:0x00F0CED4
-
-lib/libcmt/matherr.obj:
-	.text       start:0x007F65F0 end:0x007F65F3 align:1
-	.data       start:0x00CA42A0 end:0x00CA42A4
 
 lib/libcmt/days.obj:
 	.data       start:0x00CA42A4 end:0x00CA430C align:1

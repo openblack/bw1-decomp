@@ -3,10 +3,6 @@
 #include "CreatureAttitudeConstants.h" /* For AttitudeFeedbackDecay */
 #include "Object.h"
 #include "ObjectMovementConstants.h"
-#ifdef VERSION_BW1WCI
-static void EmptyObject(int arg0, int arg1, int arg2) {}
-#endif
-#include "EditorPhysics.h"
 
 #include <math.h>  /* For sqrt */
 #include <stdio.h> /* For sprintf */
@@ -16,6 +12,7 @@ static void EmptyObject(int arg0, int arg1, int arg2) {}
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h>
 #include <Lionhead/LH3DLib/development/LH3DMath.h>
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
+#include "EditorPhysics.h"
 #include <Lionhead/LH3DLib/development/LHPoint.h>
 #include <Lionhead/LH3DLib/development/PhysOb.h>
 #include <Lionhead/LH3DLib/development/SmokyStuff.h>

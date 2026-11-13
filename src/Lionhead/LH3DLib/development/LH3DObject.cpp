@@ -1,3 +1,5 @@
+#include <d3dtypes.h> /* For RGBA_MAKE */
+
 #include "LH3DObject.h"
 
 #include "LH3DAnim.h"                  /* For LH3DAnim */
@@ -33,8 +35,6 @@
 #include "LH3DZSorter.h"               /* For LH3DZSorter */
 #include "SnowCover.h"                 /* For SnowCover */
 #include "TShadowInfo.h"               /* For TShadowInfo */
-
-#include <d3dtypes.h> /* For RGBA_MAKE */
 
 // The altitude above which the snow starts to cover an object.
 #define LH3D_OBJECT_SNOW_ALTITUDE 20.0f

@@ -544,6 +544,9 @@ public:
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long player_number, float value);
 	// BW1W120 00551580 BW1M119 01566500
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, MusicMoodPacket& packet);
+	// BW1W120 00550f80 BW1M119 01388940
+	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long first_value, unsigned long second_value,
+	               unsigned long third_value);
 	// BW1W120 0054da00 BW1M119 01497220
 	void CancelIntro();
 	// BW1W120 null BW1M119 01028140

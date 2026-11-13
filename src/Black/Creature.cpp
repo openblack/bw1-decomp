@@ -1958,7 +1958,7 @@ GInterfaceStatus* Creature::GetInterfaceStatusLookingAtCreature()
 			LHPoint viewDirection = status->GetCameraFocus() - status->GetCameraPos();
 			LHPoint toCreature = physical->Creature3d->GetPos() - status->GetCameraPos();
 			viewDirection.FastNormalizeInline();
-			float distance = toCreature.Normalise();
+			float distance = toCreature.Normalize();
 			if (distance < CREATURE_LOOKED_AT_MAX_DISTANCE)
 			{
 				float dot = viewDirection * toCreature;
@@ -3294,7 +3294,7 @@ void Creature::CalculateCreationPos(const MapCoords& target, MapCoords* pos)
 	LHPoint offset;
 	offset = to - from;
 	offset.y = 0.0f;
-	offset.SetSize(range * 0.95f);
+	offset.SetLength(range * 0.95f);
 	offset += from;
 	MapCoords result(offset);
 	*pos = result;

@@ -191,7 +191,7 @@ static int Global_00c5b0ec;
 static int Global_00c5b0f0;
 int        CameraModeNew3::ActiveTricons;
 // BW1W120 00c5b100
-static Zoomer Global_00c5b100;
+Zoomer CameraGrabZoomer;
 // BW1W120 00c5e164
 static int Global_00c5e164;
 // BW1W120 00c5e168
@@ -1096,9 +1096,9 @@ void CameraModeNew3::TriconDraw()
 		depth = 1.0f;
 	}
 	CHand* hand = GGame::g_game->MyInterface()->GetRenderHand();
-	int    handX = hand->field_0x486c;
-	int    handY = hand->field_0x4870;
-	if (Global_00c5b100.GetCurrentValue() <= 0.01f)
+	int    handX = hand->DrawScreenPos.x;
+	int    handY = hand->DrawScreenPos.y;
+	if (CameraGrabZoomer.GetCurrentValue() <= 0.01f)
 	{
 		x = (x * 3 + handX) / 4;
 		y = (y * 3 + handY) / 4;
@@ -1569,7 +1569,7 @@ void CameraModeNew3::Reinitialise(bool keep_fight)
 		HasFight = false;
 	}
 	MousePosPrevious = MousePos1 = MousePosCurrent;
-	Global_00c5b100.SetPosition(0.0f);
+	CameraGrabZoomer.SetPosition(0.0f);
 	RotateAroundPoint = false;
 	field_0x101 = 0;
 	field_0x100 = 0;
@@ -1808,7 +1808,7 @@ void CameraModeNew3::UpdateTricons()
 			                ((Global_00c5b0cc != 0.0f ? 0 : CAMERA_TRICON_ZOOM_DIM) + CAMERA_TRICON_ZOOM);
 		}
 	}
-	if (Global_00c5b100.GetCurrentValue() > 0.5f)
+	if (CameraGrabZoomer.GetCurrentValue() > 0.5f)
 	{
 		ActiveTricons = CAMERA_TRICON_ZOOM;
 	}
@@ -2412,11 +2412,11 @@ void CameraModeNew3::Update()
 		static float   GrabRadius;
 		static float   GrabHeading;
 		static float   GrabPitch;
-		if (Global_00c5b100.GetCurrentValue() < 0.01f)
+		if (CameraGrabZoomer.GetCurrentValue() < 0.01f)
 		{
 			GrabMousePos = MousePosCurrent;
-			Origin0x1ec = originDest;
-			Heading0x204 = focusDest;
+			GrabStartOrigin = originDest;
+			GrabStartFocus = focusDest;
 			GrabCentre = GGame::g_game->MyInterface()->GetRenderHand()->Get3DObject()->matrix.GetPos();
 			GrabObject = GGame::g_game->MyInterface()->interface_collide.object;
 			if (GrabObject != NULL)
@@ -2464,19 +2464,18 @@ void CameraModeNew3::Update()
 			}
 		}
 		GrabCentre.y = LH3DIsland::GetAltitude(LH3DMapCoords(GrabCentre.x, GrabCentre.z));
-		field_0x1f8 = GrabCentre;
-		GCamera::SetPointFromPointDistanceHeadingAndPitch(&field_0x1e0, field_0x1f8, GrabRadius, GrabHeading,
-		                                                  GrabPitch);
-		Global_00c5b100.SetDestination(1.0f, 0.5f);
+		GrabFocus = GrabCentre;
+		GCamera::SetPointFromPointDistanceHeadingAndPitch(&GrabOrigin, GrabFocus, GrabRadius, GrabHeading, GrabPitch);
+		CameraGrabZoomer.SetDestination(1.0f, 0.5f);
 	}
 	else
 	{
-		Global_00c5b100.SetDestination(0.0f, 0.5f);
+		CameraGrabZoomer.SetDestination(0.0f, 0.5f);
 	}
-	Global_00c5b100.Update(dt);
+	CameraGrabZoomer.Update(dt);
 
 	int wheel = 0;
-	if (InputDisabled == false && Global_00c5b100.GetCurrentValue() < 0.01f)
+	if (InputDisabled == false && CameraGrabZoomer.GetCurrentValue() < 0.01f)
 	{
 		if (GGame::g_game->control_map->IsActionPerformed(BINDABLE_ACTION_ZOOM_OUT))
 		{
@@ -3070,9 +3069,9 @@ void CameraModeNew3::Update()
 				}
 				MousePosPrevious = MousePosCurrent;
 				CHand* hand = GGame::g_game->MyInterface()->GetRenderHand();
-				hand->field_0x486c = MousePosCurrent.x;
-				hand->field_0x4870 = MousePosCurrent.y;
-				hand->field_0x4874 = 1;
+				hand->DrawScreenPos.x = MousePosCurrent.x;
+				hand->DrawScreenPos.y = MousePosCurrent.y;
+				hand->UseDrawScreenPos = true;
 				if (!GGame::g_game->MyInterface()->IsPlayBack(0))
 				{
 					LHSys::TheSystem.mouse.SetPosition(&MousePosCurrent);
@@ -3527,10 +3526,10 @@ void CameraModeNew3::Update()
 		focusDest = originDest + offset;
 		Heading0x12c = focusDest;
 	}
-	if (Global_00c5b100.GetCurrentValue() > 0.01f)
+	if (CameraGrabZoomer.GetCurrentValue() > 0.01f)
 	{
-		originDest = (field_0x1e0 - Origin0x1ec) * Global_00c5b100.GetCurrentValue() + Origin0x1ec;
-		focusDest = (field_0x1f8 - Heading0x204) * Global_00c5b100.GetCurrentValue() + Heading0x204;
+		originDest = (GrabOrigin - GrabStartOrigin) * CameraGrabZoomer.GetCurrentValue() + GrabStartOrigin;
+		focusDest = (GrabFocus - GrabStartFocus) * CameraGrabZoomer.GetCurrentValue() + GrabStartFocus;
 	}
 
 	LHPoint savedOrigin = originDest;
@@ -3968,7 +3967,7 @@ void ResetCameraModeNew3()
 	Global_00c5b0b0 = 0;
 	Global_00c5b0b4 = 0;
 	Global_00c5b0f0 = 0;
-	Global_00c5b100.SetPosition(0.0f);
+	CameraGrabZoomer.SetPosition(0.0f);
 	CameraModeNew3::ActiveTricons = 0;
 	memset(Global_00c5b0d8, 0, sizeof(Global_00c5b0d8));
 	Global_00c5b0ac = 0.0f;

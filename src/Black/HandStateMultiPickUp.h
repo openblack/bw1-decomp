@@ -5,14 +5,20 @@
 
 #include "HandState.h" /* For struct HandState */
 
-// Forward Declares
-
 class CHand;
+struct LHMatrix;
 
 class HandStateMultiPickUp : public HandState
 {
 public:
-	// Constructors
+	// BW1W120 005b5750 BW1M119 013447a0
+	virtual void Enter();
+	// BW1W120 005b5bd0 BW1M119 01344230
+	virtual void DrawTheHeldObject();
+	// BW1W120 005b57c0 BW1M119 01344750
+	virtual void Exit();
+	// BW1W120 005b57d0 BW1M119 013442b0
+	virtual void Update(float dt, LHMatrix* buffer);
 
 	// BW1W120 005b5730 BW1M119 01344870
 	HandStateMultiPickUp(CHand* hand);
