@@ -1185,14 +1185,7 @@ float HelpSystem::GetWideScreenPercentage() const
 	{
 		percentage = 1.0f - percentage;
 	}
-	if (percentage < 0.0f)
-	{
-		return 0.0f;
-	}
-	if (percentage > 1.0f)
-	{
-		percentage = 1.0f;
-	}
+	CLAMP(percentage, 0.0f, 1.0f);
 	return percentage;
 }
 
