@@ -169,7 +169,8 @@ public:
 		{
 			uint16_t StatusDying : 1;
 			uint16_t StatusPoisoned : 1;
-			uint16_t : 4;
+			uint16_t : 2;
+			uint16_t StatusFallSide : 2;
 			uint16_t StatusSkeleton : 1;
 			uint16_t StatusDowned : 1;
 			uint16_t : 1;

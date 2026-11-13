@@ -679,6 +679,11 @@ BW1W120_SAFEDISC_CALLS = (
     (0x00416B7A, call_indirect(0x008A991C)),  # Alignment: __imp__ioctlsocket@4
     (0x00416BBB, call_rel32(0x00401879)),  # Alignment
     (0x00416C4B, call_rel32(0x00401879)),  # Alignment
+    (0x0041BD4B, call_rel32(0x00401879)),  # AnimalAnimation
+    (0x0041BEDB, call_rel32(0x00401879)),  # AnimalAnimation
+    (0x0041BF4B, call_rel32(0x00401879)),  # AnimalAnimation
+    (0x0041C03A, call_indirect(0x008A9690)),  # AnimalAnimation: __imp_?db_execute_transaction_async@@YA?AW4DBSTATUS@@PAUDBInfo@@PADPAVLHNetUser@@PAVLHTransportInfo@@@Z
+    (0x0041CA9B, call_rel32(0x00401879)),  # AnimalAnimation
     (0x0041D4CA, call_indirect(0x008A9978)),  # AnimalCow: __imp__CoFileTimeToDosDateTime@12
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
@@ -1147,6 +1152,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00416BBB, call_rel32(0x00403C49)),  # Alignment
     (0x00416C14, jmp_run(0x00416BBB)),  # Alignment
     (0x00416C4B, call_rel32(0x00403C49)),  # Alignment
+    (0x0041BEB7, jmp_run(0x0041BCE9)),  # AnimalAnimation
+    (0x0041BF2A, copy_run(0x0041BE16)),  # AnimalAnimation
+    (0x0041BF9A, jmp_run(0x0041BF26)),  # AnimalAnimation
+    (0x0041C00A, copy_run(0x0041BF96)),  # AnimalAnimation
+    (0x0041C78A, copy_run(0x0041BFF6)),  # AnimalAnimation
+    (0x0041C886, copy_run(0x0041C784)),  # AnimalAnimation
+    (0x0041CA9B, call_rel32(0x00403C49)),  # AnimalAnimation
+    (0x0041CAE4, copy_run(0x0041CA9B)),  # AnimalAnimation
+    (0x0041CD34, jmp_run(0x0041CAE4)),  # AnimalAnimation
+    (0x0041D046, copy_run(0x0041CD34)),  # AnimalAnimation
     (0x0041D0AA, copy_run(0x0041CF56)),  # AnimalCow
     (0x0041D118, jmp_run(0x0041D0A3)),  # AnimalCow
     (0x0041D148, copy_run(0x0041D118)),  # AnimalCow

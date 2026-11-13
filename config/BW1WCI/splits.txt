@@ -61,14 +61,14 @@ Black/Alignment.cpp:
 	.bss        start:0x00CC0748 end:0x00CC0A30 align:8
 
 Black/Animal.cpp:
-	.text       start:0x00417750 end:0x0041CB20
+	.text       start:0x00417750 end:0x0041CAE0
 	.rdata      start:0x008D67BC end:0x008D8194
 	.rdata$r    start:0x00A17138 end:0x00A17348
 	.CRT$XCU    start:0x00A36080 end:0x00A36090 align:4
 	.data       start:0x00A38534 end:0x00A38778
 
 Black/AnimalAnimation.cpp:
-	.text       start:0x0041CB20 end:0x0041DEC0
+	.text       start:0x0041CAE0 end:0x0041DEC0
 	.data       start:0x00A38778 end:0x00A387A0
 
 Black/AnimalCow.cpp:

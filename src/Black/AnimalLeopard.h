@@ -49,6 +49,17 @@ public:
 	// BW1W120 0041c2e0 BW1M119 01178760
 	virtual uint32_t StandAnimation();
 
+	// BW1W120 0041c2f0 BW1M119 null
+	uint32_t StartToSleepAnimation();
+	// BW1W120 0041c300 BW1M119 null
+	uint32_t FinishSleepingAnimation();
+	// BW1W120 0041c310 BW1M119 null
+	uint32_t StartToSitAnimation();
+	// BW1W120 0041c320 BW1M119 null
+	uint32_t FinishSittingAnimation();
+	// BW1W120 0041c330 BW1M119 null
+	uint32_t SitAnimation();
+
 	// BW1W120 inlined BW1M119 inlined
 	Leopard() {}
 	// BW1W120 inlined BW1M119 inlined
