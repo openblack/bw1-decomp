@@ -1033,7 +1033,7 @@ void CameraModeNew3::DrawHandTricon()
 	if ((CameraHelp::EnabledFeatures & CAMERA_FEATURE_HELP) && playerInterface != NULL &&
 	    !playerInterface->IsPlayBack(0))
 	{
-		Fade.SetDestination(GGame::g_game->MyInterface()->field_0x48 ? 1.0f : 0.0f, 1.0f);
+		Fade.SetDestination(GGame::g_game->MyInterface()->InInfluence ? 1.0f : 0.0f, 1.0f);
 	}
 	else
 	{
@@ -1824,7 +1824,7 @@ void CameraModeNew3::UpdateTricons()
 	{
 		ActiveTricons &= ~(CAMERA_TRICON_ZOOM | CAMERA_TRICON_ZOOM_DIM);
 	}
-	if ((GetCameraFeatures() & CAMERA_FEATURE_HELP) && GGame::g_game->MyInterface()->field_0x48 == 0)
+	if ((GetCameraFeatures() & CAMERA_FEATURE_HELP) && GGame::g_game->MyInterface()->InInfluence == 0)
 	{
 		ActiveTricons |= CAMERA_TRICON_HELP;
 	}

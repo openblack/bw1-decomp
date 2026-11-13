@@ -98,6 +98,8 @@ public:
 	Reward();
 	// BW1W120 006e64c0 BW1M119 01142a60
 	void ProcessDrawing();
+	// BW1W120 inlined BW1M119 014f8190
+	const GRewardInfo* GetInfo() { return (const GRewardInfo*)info; }
 	// BW1W120 006e58c0 BW1M119 01144650
 	static Reward* Create(const MapCoords& coords, const GRewardInfo* info, GPlayer* player, bool32_t from_sky,
 	                      float saved_value, float unused, Town* town);

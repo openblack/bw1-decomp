@@ -608,6 +608,8 @@ public:
 	void Update3DInfluence();
 	// BW1W120 00555270 BW1M119 0151aec0
 	void ForceNeedUpdateInfluence();
+	// BW1W120 inlined BW1M119 01001530
+	uint32_t GetGameTurn() const { return data.GetGameTurn(); }
 	// BW1W120 inlined BW1M119 0107b840
 	GPlayer* MyPlayer() { return &players[PlayerIndex]; }
 	// BW1W120 inlined BW1M119 014f3e90

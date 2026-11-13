@@ -14,6 +14,8 @@ block_relocations:
   - source: 0x00767880
   - source: 0x0076788B
   - source: 0x007678B4
+# ProcessAllObjectsOnCells's colour mask 0xffffff is an immediate, not a pointer.
+  - source: 0x005E9D77
 # RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
   - source: 0x005FCF8A
   - source: 0x005FD562

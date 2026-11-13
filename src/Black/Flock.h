@@ -137,6 +137,10 @@ public:
 
 	// BW1W120 inlined BW1M119 01029620
 	SLL<Living, &Living::FlockOrder>* GetFlockMembers() { return &Members; }
+	// BW1W120 inlined BW1M119 010ea2a0
+	uint16_t GetDomainRadius() { return DomainRadius; }
+	// BW1W120 inlined BW1M119 010ea260
+	uint16_t GetFlockDistance() { return FlockDistance; }
 	// BW1W120 0052fc70 BW1M119 010ea2e0
 	bool32_t ForceLeaderInFlock(Living* living);
 	// BW1W120 00530180 BW1M119 010e95d0

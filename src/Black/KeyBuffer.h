@@ -49,6 +49,11 @@ public:
 
 	// BW1W120 005e1b40 BW1M119 010dc500
 	virtual ~GKeyInput();
+
+	// BW1W120 inlined BW1M119 010e0e40
+	LH_KEY GetKey() { return Key; }
+	// BW1W120 inlined BW1M119 014353e0
+	unsigned short GetModifier() { return Modifier; }
 };
 
 static_assert(sizeof(GKeyInput) == 0x10, "GKeyInput stride is incorrect");

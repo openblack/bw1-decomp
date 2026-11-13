@@ -107,7 +107,7 @@ extern int g_caca_object_processed;
 // BW1W120 00ea1ab4 BW1M119 012b3718 (LHCombined Release)
 extern LH3DMaterial* g_cool_effect_mat;
 // BW1W120 00d13f30 BW1M119 null
-extern LHPoint HeldObjectPos;
+extern LHPoint HandLandPos;
 // BW1W120 00d189d8 BW1M119 null
 extern GameBlock* GameBlocks[LAND_BLOCKS_SIDE][LAND_BLOCKS_SIDE];
 // BW1W120 00d199e0 BW1M119 null
@@ -295,8 +295,8 @@ void DrawHandGlowOnWater(LHPoint pos, unsigned long colour)
 	long minZ = (long)(pos.z - HAND_GLOW_SIZE - HAND_GLOW_MARGIN) / (long)LAND_CELL_SIZE;
 	long maxX = (long)(HAND_GLOW_MARGIN + (pos.x + HAND_GLOW_SIZE)) / (long)LAND_CELL_SIZE;
 	long maxZ = (long)(pos.z + HAND_GLOW_SIZE + HAND_GLOW_MARGIN) / (long)LAND_CELL_SIZE;
-	minX = minX > 0 ? (minX < LAND_MAP_MAX ? minX : LAND_MAP_MAX) : 0;
-	minZ = minZ > 0 ? (minZ < LAND_MAP_MAX ? minZ : LAND_MAP_MAX) : 0;
+	minX = minX > 0 ? min(minX, LAND_MAP_MAX) : 0;
+	minZ = minZ > 0 ? min(minZ, LAND_MAP_MAX) : 0;
 	bool       overWater = false;
 	long       lastBlockX = -1;
 	long       lastBlockZ = -1;
@@ -354,14 +354,7 @@ uint32_t GLandscape::Draw()
 		g_wind_hand.Set(*GGame::g_game->MyInterface()->GetStatus()->GetHandVelocity());
 		g_pos_hand.Set(hand->matrix.GetPos());
 		float power = g_wind_hand.GetNorme() / HAND_WIND_SCALE;
-		if (power < HAND_WIND_POWER_MIN)
-		{
-			power = HAND_WIND_POWER_MIN;
-		}
-		else if (power > HAND_WIND_POWER_MAX)
-		{
-			power = HAND_WIND_POWER_MAX;
-		}
+		CLAMP(power, HAND_WIND_POWER_MIN, HAND_WIND_POWER_MAX);
 		g_wind_hand_power = power;
 		SetLength(g_wind_hand, power);
 	}
@@ -369,17 +362,19 @@ uint32_t GLandscape::Draw()
 	LH3DObject::g_selected_px = LHSys::GetMouse().Pos().x;
 	LH3DObject::g_selected_py = LHSys::GetMouse().Pos().y;
 	{
-		LHPoint mouse;
-		LH3DTech::Get3DPointFromScreen(LHSys::GetMouse().Pos(), mouse, 0.0f);
-		LHPoint direction(mouse);
-		direction -= LHPoint(LH3DTech::GetCameraPosition());
-		SetLength(direction, LH3DTech::GetNearClipping());
-		direction += LHPoint(LH3DTech::GetCameraPosition());
+		{
+			LHPoint mouse;
+			LH3DTech::Get3DPointFromScreen(LHSys::GetMouse().Pos(), mouse, 0.0f);
+			LHPoint direction(mouse);
+			direction -= LHPoint(LH3DTech::GetCameraPosition());
+			SetLength(direction, LH3DTech::GetNearClipping());
+			direction += LHPoint(LH3DTech::GetCameraPosition());
+		}
 		special_jc_x = LHSys::GetMouse().Pos().x;
 		special_jc_y = LHSys::GetMouse().Pos().y;
 		if (GGame::g_game->MyInterface()->GetRenderHand()->DynamicShadow->CarriedObject != NULL)
 		{
-			LHPoint held(HeldObjectPos);
+			LHPoint held(HandLandPos);
 			held -= LHPoint(LH3DTech::GetCameraPosition());
 			SetLength(held, LH3DTech::GetNearClipping() * HELD_OBJECT_DISTANCE_SCALE);
 			held += LHPoint(LH3DTech::GetCameraPosition());
@@ -401,13 +396,13 @@ uint32_t GLandscape::Draw()
 		static float       handRadiusScale = 1.2f;
 		float              radius =
 			handRadiusScale * GGame::g_game->MyInterface()->GetRenderHand()->DynamicShadow->scale * HAND_SIZE;
-		int     boneCount = hand->GetMesh()->submeshes[0]->NumBones;
-		LHPoint first(hand->BoneMatrices[1].GetPos());
-		LHPoint min;
-		LHPoint max;
+		LH3DSubMesh* submesh = hand->GetMesh()->submeshes[0];
+		LHPoint      first(hand->BoneMatrices[1].GetPos());
+		LHPoint      min;
+		LHPoint      max;
 		min = first;
 		max = first;
-		for (int i = 1; i < boneCount; i++)
+		for (int i = 1; i < submesh->NumBones; i++)
 		{
 			LHPoint bone(hand->BoneMatrices[i].GetPos());
 			if (min.x > bone.x)
@@ -619,14 +614,7 @@ creature_done:
 		long alpha = (long)(LightHandAlpha * (float)HAND_GLOW_MAX_ALPHA);
 		if (alpha > 0)
 		{
-			if (alpha < HAND_GLOW_MAX_ALPHA)
-			{
-				colour.a = alpha;
-			}
-			else
-			{
-				colour.a = HAND_GLOW_MAX_ALPHA;
-			}
+			colour.a = min(alpha, HAND_GLOW_MAX_ALPHA);
 		}
 		else
 		{
@@ -981,14 +969,7 @@ void SetLight()
 		float alpha = (NIGHT_BRIGHTNESS - brightness) * (1.0f / NIGHT_BRIGHTNESS_RANGE);
 		if (alpha > 0.0f)
 		{
-			if (alpha < 1.0f)
-			{
-				LightHandAlpha = alpha;
-			}
-			else
-			{
-				LightHandAlpha = 1.0f;
-			}
+			LightHandAlpha = min(alpha, 1.0f);
 		}
 		else
 		{

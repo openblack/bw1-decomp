@@ -38,6 +38,10 @@ struct TempInfo
 
 	// BW1W120 00773ec0 BW1M119 015aab40
 	TempInfo();
+	// BW1W120 inlined BW1M119 0107b1c0
+	float GetActualTemp() { return ActualTemp; }
+	// BW1W120 inlined BW1M119 0107af80
+	float GetGoalTemp() { return GoalTemp; }
 };
 
 struct WindInfo
@@ -48,6 +52,8 @@ struct WindInfo
 
 	// BW1W120 00774a80 BW1M119 015ac240
 	WindInfo();
+	// BW1W120 inlined BW1M119 015ac210
+	void Init() {}
 };
 
 enum CLIMATE_FLAGS

@@ -95,6 +95,8 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Forest() {}
+	// BW1W120 inlined BW1M119 010f88d0
+	uint32_t GetCount() { return Trees0.GetSize() + Trees1.GetSize(); }
 	// BW1W120 00539bd0 BW1M119 010fb8f0
 	Forest(const MapCoords& coords, uint32_t param_2);
 
