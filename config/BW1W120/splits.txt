@@ -687,6 +687,7 @@ Black/CreatureMentalExploration.cpp:
 Black/CreatureMentalLearn.cpp:
 	.text       start:0x004E0240 end:0x004E21A0
 	.rdata      start:0x008D00FC end:0x008D046C
+	.rdata$r    start:0x009AAE50 end:0x009AAF40
 	.CRT$XCU    start:0x009C6530 end:0x009C653C align:4
 	.data       start:0x00BDF918 end:0x00BDFAE0
 	.bss        start:0x00CA9C54 end:0x00CA9C5C
