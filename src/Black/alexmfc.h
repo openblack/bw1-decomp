@@ -589,7 +589,11 @@ struct SetupList : public SetupControl
 	int  PrevSelectedIndex;
 	int  NumItems; /* 0x250 */
 	int  Capacity;
+#if defined(VERSION_BW1WCI)
+	char16_t (*item_labels)[0x200];
+#else
 	char16_t (*item_labels)[0x100];
+#endif
 	int*             ItemHeights;
 	void**           TagData;
 	uint32_t*        ItemData;
@@ -1262,7 +1266,12 @@ struct SetupCheckBox : public SetupButton
 	// Constructors
 
 	// BW1W120 00410f10 BW1M119 0111a4f0
+#if defined(VERSION_BW1WCI)
+	SetupCheckBox(int id, int x, int y, bool radio_button, int style, const char16_t* label, int size,
+	              int text_size = GetMidTextSize());
+#else
 	SetupCheckBox(int id, int x, int y, bool radio_button, int style, const char16_t* label, int size);
+#endif
 };
 
 #endif /* BW1_DECOMP_ALEXMFC_INCLUDED_H */

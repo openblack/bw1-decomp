@@ -26,6 +26,20 @@ block_relocations:
   - source: 0x0072CD89
 # "tMM" of LHFile's Version.cpp LH_VERSION_END_TAG reads as a pointer into code.
   - source: 0x00C9F59C
+# MPFEChannelSelector::ControlCallback's and MPFECreateGame::ControlCallback's 0xe0e0e0 box colour is an
+# immediate, not a pointer.
+  - source: 0x0063FC45
+  - source: 0x0063FC4C
+  - source: 0x0063FC63
+  - source: 0x0063FC68
+  - source: 0x0063FC98
+  - source: 0x0063FC9D
+  - source: 0x0063FCA2
+  - source: 0x0063FCA7
+  - source: 0x0064158D
+  - source: 0x00641592
+  - source: 0x006415A9
+  - source: 0x006415AE
 # MPFELogin::ControlCallback's 0xe0e0e0 box colour is an immediate, not a pointer.
   - source: 0x00646F50
   - source: 0x00646F55

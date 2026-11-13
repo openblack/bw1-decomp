@@ -31,6 +31,7 @@
 #include "MPFEChannelSelector.h"          /* For MPFEChannelSelector */
 #include "MPFEConditionMessages.h"        /* For GetInfoFileChecksum */
 #include "MPFEConnectionStatus.h"         /* For MPFEConnectionStatus */
+#include "MPFECreateGame.h"               /* For MPFECreateGame::Instance */
 #include "MPFEData.h"                     /* For MPFEData */
 #include "MPFEDatabaseID.h"               /* For MPFEDatabaseID */
 #include "MPFEHasCreature.h"              /* For MPFEHasCreature */
@@ -1192,7 +1193,7 @@ void BWGameSpy::CreateOrJoinRoom(wchar_t* name, wchar_t* password, MPFEChannelDe
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	MPFEData::Data.ResetConditions();
 #endif
-	peerCreateStagingRoom(LHNetBase::Instance.Peer, roomName.Narrow, MPFEChannelSelector::MaxPlayers,
+	peerCreateStagingRoom(LHNetBase::Instance.Peer, roomName.Narrow, MPFECreateGame::Instance.MaxPlayers,
 	                      passwordText.Narrow, JoinCallback, NULL, PEERTrue);
 #endif
 }
