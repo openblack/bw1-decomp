@@ -120,6 +120,10 @@ public:
 	void RemoveScaffold(Scaffold* scaffold);
 	// BW1W120 0043bcb0 BW1M119 010bf5c0
 	float GetPercentBuilt();
+	// BW1W120 0043bbd0 BW1M119 01062550
+	uint32_t GetMaxVillagersNeededToBuild();
+	// BW1W120 0043be40 BW1M119 010bf1a0
+	void AddToBuildingWorkers(Villager* villager);
 };
 
 #endif /* BW1_DECOMP_BUILDING_SITE_INCLUDED_H */

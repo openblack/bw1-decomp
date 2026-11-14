@@ -61,6 +61,18 @@ struct ControlMap
 	int GetClickTypeForAction(BINDABLE_ACTIONS action);
 	// BW1W120 00471850 BW1M119 011d1520
 	bool32_t IsKeyAssignedToAction(BINDABLE_ACTIONS action);
+	// BW1W120 00470b30 BW1M119 01092770
+	bool32_t IsApplyButtonClicked();
+	// BW1W120 00470de0 BW1M119 01093330
+	bool32_t IsApplyButtonDoubleClicked();
+	// BW1W120 00470e20 BW1M119 010938b0
+	bool32_t IsApplyButtonReleased();
+	// BW1W120 00470e80 BW1M119 01092a10
+	bool32_t IsSelectButtonClicked();
+	// BW1W120 00471130 BW1M119 010934c0
+	bool32_t IsSelectButtonDoubleClicked();
+	// BW1W120 00471170 BW1M119 01093980
+	bool32_t IsSelectButtonReleased();
 };
 
 // BW1W120 0046ee60 BW1M119 011d4790

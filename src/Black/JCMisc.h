@@ -12,6 +12,7 @@
 // Forward Declares
 
 class Creature;
+struct HBITMAP__;
 struct LH3DTexture;
 
 class GTattoo
@@ -48,5 +49,8 @@ struct FlyingObjects
 	// BW1W120 005df1b0 BW1M119 0102d0b0
 	static void Add(LHPoint* pos, long index, float radius);
 };
+
+// BW1W120 005de490 BW1M119 0137bcd0
+void LoadBMPSymbol(HBITMAP__* bitmap, uint8_t* symbol);
 
 #endif /* BW1_DECOMP_JC_MISC_INCLUDED_H */

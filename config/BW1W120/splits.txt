@@ -1829,13 +1829,17 @@ Black/MorphableObject.cpp:
 	.text       start:0x00617090 end:0x0061A110
 	.rdata      start:0x00930690 end:0x009306A8
 	.CRT$XCU    start:0x009C6F58 end:0x009C6F64 align:4
-	.data       start:0x00BF42D0 end:0x00BF4584
+	.data       start:0x00BF42D0 end:0x00BF456C
 	.bss        start:0x00D3EEFC end:0x00D3F00C
 
+Black/Mouse.cpp:
+	.text       start:0x0061A110 end:0x0061A640
+	.CRT$XCU    start:0x009C6F64 end:0x009C6F68 align:4
+
 Black/MPFEAlexDialog.cpp:
-	.text       start:0x0061A110 end:0x00622470
-	.CRT$XCU    start:0x009C6F64 end:0x009C6F70 align:4
-	.data       start:0x00BF4584 end:0x00BF46A8
+	.text       start:0x0061A640 end:0x00622470
+	.CRT$XCU    start:0x009C6F68 end:0x009C6F70 align:4
+	.data       start:0x00BF456C end:0x00BF4668
 	.bss        start:0x00D3F00C end:0x00D3F030
 
 Black/MPFEChannelData.cpp:
@@ -1843,7 +1847,7 @@ Black/MPFEChannelData.cpp:
 	.rdata      start:0x009306A8 end:0x009306C8
 	.rdata$r    start:0x009B2080 end:0x009B20E8
 	.CRT$XCU    start:0x009C6F70 end:0x009C6F80 align:4
-	.data       start:0x00BF46A8 end:0x00BF46FC
+	.data       start:0x00BF4668 end:0x00BF46FC
 	.bss        start:0x00D3F030 end:0x00D408C0
 
 Black/MPFEChannelDetails.cpp:

@@ -54,7 +54,7 @@ struct MPFETeamDetails
 	unsigned long ClanID;      /* 0x200 */
 	unsigned long ClanSetByID; /* 0x204 */
 #if defined(VERSION_BW1WCI)
-	bool field_0x208;
+	bool TykeEnabled;
 #endif
 };
 
@@ -220,6 +220,14 @@ public:
 	void D2A_YouWereKicked(wchar_t* name);
 	// BW1W120 00620500 BW1M119 01392f00
 	void D2A_PlayerDeniedJoin(wchar_t* name);
+#if !defined(VERSION_BW1W100)
+	// BW1W120 006205d0 BW1M119 null
+	void D2A_KickFailed(wchar_t* name);
+#endif
+#if !defined(VERSION_BW1W100)
+	// BW1W120 006208b0 BW1M119 null
+	void D2A_UpdateClanSymbol(unsigned long id);
+#endif
 	// BW1W120 006208c0 BW1M119 01392c60
 	void D2A_RefreshTeams();
 	// BW1W120 006208d0 BW1M119 01392c00
@@ -230,14 +238,26 @@ public:
 	void D2A_IncomingChatString(wchar_t* from, wchar_t* text, bool is_private, bool is_team, bool highlight);
 	// BW1W120 006208f0 BW1M119 01392b00
 	void D2A_CouldNotQueryDatabase();
+#if !defined(VERSION_BW1W100)
+	// BW1W120 00620990 BW1M119 null
+	void D2A_NotFoundInDatabase();
+#endif
 	// BW1W120 00620ae0 BW1M119 013929c0
 	void D2A_CouldNotDownloadThumb();
 	// BW1W120 00620b80 BW1M119 01392910
 	void D2A_PersonCouldNotDownload(wchar_t* name);
+#if !defined(VERSION_BW1W100)
+	// BW1W120 00620c50 BW1M119 null
+	void D2A_PersonStillDownloading(wchar_t* name);
+#endif
 	// BW1W120 00620d20 BW1M119 01392890
 	void D2A_DisableStartGameButton();
 	// BW1W120 00620d40 BW1M119 01392810
 	void D2A_EnableStartGameButton();
+#if !defined(VERSION_BW1W100)
+	// BW1W120 00620d60 BW1M119 null
+	void D2A_WaitingForStartReplies();
+#endif
 	// BW1W120 00620e00 BW1M119 01392720
 	void D2A_TransferringFiles();
 	// BW1W120 00620f10 BW1M119 01392680
@@ -248,6 +268,10 @@ public:
 	void D2A_CouldNotStartBecauseOtherPeopleDownloading();
 	// BW1W120 006211a0 BW1M119 013920b0
 	void D2A_CouldNotStartBecauseIAmDownloading();
+#if !defined(VERSION_BW1W100)
+	// BW1W120 00621240 BW1M119 null
+	void D2A_CouldNotStartBecauseNoMapSelected();
+#endif
 	// BW1W120 006212e0 BW1M119 01392010
 	void D_CreatureErrorMessage();
 	// BW1W120 00621380 BW1M119 01391c40
@@ -300,10 +324,8 @@ public:
 	void ProcessDaniel();
 	// BW1W120 006240f0 BW1M119 0139db50
 	void CheckForUnpureClients();
-#ifndef VERSION_BW1W100
 	// BW1W120 00624160 BW1M119 0139db20
 	void ProcessAlex();
-#endif
 	// BW1W120 00624e60 BW1M119 0139c4c0
 	void D_ReShuffle(MPFEPlayerDetails* player);
 	// BW1W120 00625150 BW1M119 0139bf30

@@ -172,7 +172,7 @@ void MPFEData::ResetClans()
 	for (int i = 1; i < MAX_TEAMS; i++)
 	{
 #if defined(VERSION_BW1WCI)
-		TeamDetails[i].field_0x208 = false;
+		TeamDetails[i].TykeEnabled = false;
 #endif
 		TeamDetails[i].ClanID = 0;
 		TeamDetails[i].ClanSetByID = 0;
@@ -900,9 +900,7 @@ void MPFEData::CheckForUnpureClients()
 	}
 }
 
-#ifndef VERSION_BW1W100
 void MPFEData::ProcessAlex() {}
-#endif
 
 #ifndef VERSION_BW1W100
 void MPFEData::D_UpdateBoxCaption()
@@ -1035,13 +1033,20 @@ void MPFEData::D_PlayerLeft(LH_USER_ID id, wchar_t* name)
 			}
 		}
 	}
-	if (!found && UnassignedPlayers.Contains(player))
+	if (!found)
 	{
-		UnassignedPlayers.Remove(player);
+		for (LHLinkedListIterator<MPFEPlayerDetails*> it = UnassignedPlayers.GetStart(); it; it++)
+		{
+			if (it.Get() == player)
+			{
+				UnassignedPlayers.Remove(player);
+				break;
+			}
+		}
 	}
-	for (LHLinkedNode<MPFEInviteDetails*>* node = Invites.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedListIterator<MPFEInviteDetails*> it = Invites.GetStart(); it; it++)
 	{
-		MPFEInviteDetails* invite = node->payload;
+		MPFEInviteDetails* invite = it.Get();
 		if (invite != NULL && wcscmp(invite->Name, player->GetName()) == 0)
 		{
 			Invites.Remove(invite);
@@ -1083,11 +1088,11 @@ void MPFEData::D_PlayerLeft(LH_USER_ID id, wchar_t* name)
 	}
 	if (player->IsTeamLeader)
 	{
-		for (LHLinkedNode<TeamEnums*>* node = Data.TeamJoinRequests.GetStart(); node != NULL; node = node->next.Get())
+		for (LHLinkedListIterator<TeamEnums*> it = Data.TeamJoinRequests.GetStart(); it; it++)
 		{
-			if (player->Team == *node->payload)
+			if (player->Team == *it.Get())
 			{
-				Data.TeamJoinRequests.Remove(node->payload);
+				Data.TeamJoinRequests.Remove(it.Get());
 				break;
 			}
 		}

@@ -7,6 +7,22 @@ splits: config/BW1WCI/splits.txt
 generate_imports: false
 
 block_relocations:
+# MPFEAlexDialog's pingdraw, TeamControls::InitControls, TeamControls::Callback, UpdateLands, Callback and
+# D2A_IncomingChatString colour and mask immediates (0xff0000, 0xffff00, 0x600000, 0x7f8000, ...) are not pointers.
+  - source: 0x006337BF
+  - source: 0x00633ACC
+  - source: 0x00633D5C
+  - source: 0x00633D76
+  - source: 0x00633D95
+  - source: 0x00633E32
+  - source: 0x00636305
+  - source: 0x00636333
+  - source: 0x00637A2D
+  - source: 0x006381EC
+  - source: 0x00638657
+  - source: 0x0063869F
+  - source: 0x006386C8
+  - source: 0x006388B8
 # RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
   - source: 0x0061175A
   - source: 0x00611CE0

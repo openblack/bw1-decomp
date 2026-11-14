@@ -7,6 +7,21 @@ splits: config/BW1W130/splits.txt
 generate_imports: true
 
 block_relocations:
+# MPFEAlexDialog's pingdraw, TeamControls::InitControls, TeamControls::Callback, UpdateLands, Callback and
+# D2A_IncomingChatString colour and mask immediates (0xff0000, 0xffff00, 0x600000, 0x7f8000, ...) are not pointers.
+  - source: 0x0061E5DF
+  - source: 0x0061E8F5
+  - source: 0x0061EB7C
+  - source: 0x0061EB96
+  - source: 0x0061EBB5
+  - source: 0x0061EC52
+  - source: 0x00621205
+  - source: 0x00621233
+  - source: 0x00622D0A
+  - source: 0x006234F4
+  - source: 0x00623E9F
+  - source: 0x00623EC8
+  - source: 0x006240B8
 # SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
   - source: 0x007163B3
   - source: 0x007163B9
