@@ -7,7 +7,7 @@
 #include <stdio.h>  /* For sprintf */
 #include <string.h> /* For strcpy, strlen */
 
-#include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_TOOLTIP_48 */
+#include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_TOOLTIP_FOCUS_CREATURE */
 
 #include "ColourConstants.h" /* For White */
 #include "Creature.h"
@@ -41,7 +41,7 @@
 #define ORIGINAL_LINE(line) ((line) + 2)
 #endif
 
-#define LOOK_AT_CAMERA_TOOLTIP HELP_TEXT_TOOLTIP_48
+#define LOOK_AT_CAMERA_TOOLTIP HELP_TEXT_TOOLTIP_FOCUS_CREATURE
 
 #define NEGLIGIBLE_FEEDBACK              0.01f
 #define LOOK_AT_CAMERA_TOOLTIP_DURATION  1.0f

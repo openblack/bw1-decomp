@@ -10,6 +10,8 @@
 #include "CameraHelpTypes.h" /* For enum CH_ANIMTYPE, enum KEYALIGN */
 #include "HelpSystem.h"      /* For enum HELP_EVENT_TYPE */
 
+#define TOOLTIP_FIRST_HELP_TEXT (HELP_TEXT_INTERRUPTION_IN_CITADEL_26 + 1)
+
 // Forward Declares
 
 struct KMIcon;
@@ -18,17 +20,17 @@ class ToolTips
 {
 public:
 	// BW1W120 00d17bb0
-	static int field_0xd17bb0;
+	static int LastMinTimeLeft;
 	// BW1W120 00d17bb4
-	static int field_0xd17bb4;
+	static int LastTimeLeft;
 	// BW1W120 00bf19c0
-	static int field_0xbf19c0;
+	static TOOLTIPS_TYPE LastToolTip;
 	// BW1W120 00d17bb8
 	static int PauseTime;
 	// BW1W120 00d17bbc
 	static float Number;
 	// BW1W120 00d17bc0
-	static int field_0xd17bc0;
+	static int ForcedTime;
 	// BW1W120 00d17bc4
 	static bool32_t Forced;
 	// BW1W120 00d17bc8
