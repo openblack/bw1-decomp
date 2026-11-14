@@ -48,18 +48,18 @@ const float ToolTipImportantPriority = 0.9f;
 
 GToolTipsInfo GToolTipsInfo::Infos[TOOLTIPS_TYPE_LAST];
 
-int              ToolTips::field_0xd17bb0 = 0;
-int              ToolTips::field_0xd17bb4 = 0;
-int              ToolTips::field_0xbf19c0 = -1;
+int              ToolTips::LastMinTimeLeft = 0;
+int              ToolTips::LastTimeLeft = 0;
+TOOLTIPS_TYPE    ToolTips::LastToolTip = TOOLTIPS_TYPE_NONE;
 int              ToolTips::PauseTime = 0;
 float            ToolTips::Number = 0.0f;
-int              ToolTips::field_0xd17bc0 = 0;
+int              ToolTips::ForcedTime = 0;
 bool32_t         ToolTips::Forced = false;
 int              ToolTips::MinTimeLeft = 0;
 int              ToolTips::TimeLeft = 0;
 TOOLTIPS_TYPE    ToolTips::CurrentToolTip = TOOLTIPS_TYPE_NONE;
 BINDABLE_ACTIONS ToolTips::Action = BINDABLE_ACTION_NONE;
-KEYALIGN         ToolTips::Align = KEYALIGN_0x0;
+KEYALIGN         ToolTips::Align = KEYALIGN_NONE;
 CH_ANIMTYPE      ToolTips::AnimType = CH_ANIMTYPE_NONE;
 int              ToolTips::Key = 0;
 int              ToolTips::MouseType = CAMERA_HELP_MOUSE_TYPE_NONE;
@@ -83,7 +83,7 @@ void ToolTips::SubmitToolTips(unsigned long help_text, BINDABLE_ACTIONS action, 
 	{
 		return;
 	}
-	help_text -= HELP_TEXT_TOOLTIP_01;
+	help_text -= TOOLTIP_FIRST_HELP_TEXT;
 	if (help_text >= TOOLTIPS_TYPE_LAST)
 	{
 		return;
@@ -145,7 +145,7 @@ void ToolTips::SubmitToolTips(unsigned long help_text, BINDABLE_ACTIONS action, 
 
 void ToolTips::ForceToolTips(unsigned long help_text, float number)
 {
-	SubmitToolTips(help_text, BINDABLE_ACTION_NONE, KEYALIGN_0x0, true, NULL);
+	SubmitToolTips(help_text, BINDABLE_ACTION_NONE, KEYALIGN_NONE, true, NULL);
 	Number = number;
 }
 
@@ -181,7 +181,7 @@ void HelpSystem::ProcessToolTips()
 		if (ToolTips::PauseTime > 0 || !GGame::g_game->Paused || GGame::g_game->IsInCitadel())
 		{
 			wchar_t         text[0x100];
-			KEYALIGN        align = KEYALIGN_0x0;
+			KEYALIGN        align = KEYALIGN_NONE;
 			int             key = 0;
 			int             mouseType = 0;
 			CH_ANIMTYPE     animType;
@@ -289,7 +289,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 		*key = ToolTips::Key;
 		*mouse_type = ToolTips::MouseType;
 		*align = ToolTips::Align;
-		textId = ToolTips::CurrentToolTip + HELP_TEXT_TOOLTIP_01;
+		textId = ToolTips::CurrentToolTip + TOOLTIP_FIRST_HELP_TEXT;
 		action = ToolTips::Action;
 	}
 	else
@@ -309,14 +309,14 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 		*mouse_type = CAMERA_HELP_MOUSE_TYPE_NONE;
 		*anim_type = CH_ANIMTYPE_NONE;
 	}
-	if (textId == HELP_TEXT_TOOLTIP_116)
+	if (textId == HELP_TEXT_TOOLTIP_ZOOM_IN_TO_SLOT)
 	{
-		swprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_TOOLTIP_116),
+		swprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_TOOLTIP_ZOOM_IN_TO_SLOT),
 		         SaveGameRoom::ToolTipSlotName);
 		return true;
 	}
-	if (textId == HELP_TEXT_TOOLTIP_111 || textId == HELP_TEXT_TOOLTIP_48 || textId == HELP_TEXT_TOOLTIP_120 ||
-	    textId == HELP_TEXT_TOOLTIP_121)
+	if (textId == HELP_TEXT_TOOLTIP_GOT_BELIEF || textId == HELP_TEXT_TOOLTIP_FOCUS_CREATURE ||
+	    textId == HELP_TEXT_TOOLTIP_AMOUNT || textId == HELP_TEXT_TOOLTIP_PEOPLE_WORSHIPPING)
 	{
 		UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), ToolTips::Number);
 		return true;
@@ -324,7 +324,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 	Object* object = GGame::g_game->MyInterface()->Collide.object;
 	if (object != NULL)
 	{
-		if (textId == HELP_TEXT_TOOLTIP_130)
+		if (textId == HELP_TEXT_TOOLTIP_BUILDING_COMPLETED)
 		{
 			MultiMapFixed* fixed = dynamic_cast<MultiMapFixed*>(object);
 			if (fixed != NULL)
@@ -335,7 +335,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 				return true;
 			}
 		}
-		if (textId == HELP_TEXT_TOOLTIP_137)
+		if (textId == HELP_TEXT_TOOLTIP_WOOD_REQUIRED)
 		{
 			ShowNeedsVisuals* visuals = dynamic_cast<ShowNeedsVisuals*>(object);
 			if (visuals != NULL)
@@ -353,7 +353,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 				UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), wood);
 				return true;
 			}
-			textId = HELP_TEXT_TOOLTIP_130;
+			textId = HELP_TEXT_TOOLTIP_BUILDING_COMPLETED;
 			if (fixed != NULL)
 			{
 				float percent = !fixed->IsBuilt() ? fixed->GetPercentBuilt() : fixed->GetPercentRepaired();
@@ -412,20 +412,20 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 				return true;
 			}
 		}
-		if (textId == HELP_TEXT_TOOLTIP_118)
+		if (textId == HELP_TEXT_TOOLTIP_TEMPLE_HEALTH)
 		{
 			ToolTips::Forced = true;
 			float life = object->GetLife() * TOOLTIP_PERCENT;
 			UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), life);
 			return true;
 		}
-		if (textId == HELP_TEXT_TOOLTIP_117)
+		if (textId == HELP_TEXT_TOOLTIP_SCAFFOLD_VALUE)
 		{
 			int value = ((Scaffold*)object)->GetScaffoldValue();
 			UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), value);
 			return true;
 		}
-		if (textId == HELP_TEXT_TOOLTIP_119)
+		if (textId == HELP_TEXT_TOOLTIP_PRAYER_ENERGY)
 		{
 			ToolTips::Forced = true;
 			WorshipTotem* totem = dynamic_cast<WorshipTotem*>(object);
@@ -436,7 +436,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 			}
 			return true;
 		}
-		if (textId == HELP_TEXT_TOOLTIP_92 || textId == HELP_TEXT_TOOLTIP_141)
+		if (textId == HELP_TEXT_TOOLTIP_FOOD_DESIRE || textId == HELP_TEXT_TOOLTIP_REST_DESIRE)
 		{
 			ToolTips::Forced = true;
 			ShowNeedsVisuals* visuals = dynamic_cast<ShowNeedsVisuals*>(object);
@@ -447,12 +447,12 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 				return true;
 			}
 		}
-		if (textId == HELP_TEXT_TOOLTIP_139 || textId == HELP_TEXT_TOOLTIP_140)
+		if (textId == HELP_TEXT_TOOLTIP_FOOD_AMOUNT || textId == HELP_TEXT_TOOLTIP_WOOD_AMOUNT)
 		{
 			PileResource* pile = dynamic_cast<PileResource*>(object);
 			if (pile != NULL)
 			{
-				if (textId == HELP_TEXT_TOOLTIP_139)
+				if (textId == HELP_TEXT_TOOLTIP_FOOD_AMOUNT)
 				{
 					UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId),
 					                (float)pile->GetResource(RESOURCE_TYPE_FOOD));
@@ -465,7 +465,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 			}
 			return true;
 		}
-		if (textId == HELP_TEXT_TOOLTIP_22)
+		if (textId == HELP_TEXT_TOOLTIP_NEED)
 		{
 			Town* town;
 			if (object->IsTownDesireFlag() && (town = object->GetTown()) != NULL)
@@ -480,7 +480,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 			}
 			return false;
 		}
-		if (textId == HELP_TEXT_TOOLTIP_90)
+		if (textId == HELP_TEXT_TOOLTIP_BELIEF_LEFT)
 		{
 			if (object->IsTownCentre() || object->IsTotemStatue())
 			{
@@ -490,13 +490,13 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 				if (belief < 0.0f)
 				{
 					belief *= -1.0f;
-					textId = HELP_TEXT_TOOLTIP_110;
+					textId = HELP_TEXT_TOOLTIP_BELIEF_NEEDED;
 				}
 				UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), belief);
 				return true;
 			}
 		}
-		if (textId == HELP_TEXT_TOOLTIP_138)
+		if (textId == HELP_TEXT_TOOLTIP_POPULATION)
 		{
 			if (object->IsTownCentre() || object->IsTotemStatue())
 			{
@@ -507,7 +507,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 				return true;
 			}
 		}
-		if (textId == HELP_TEXT_TOOLTIP_135)
+		if (textId == HELP_TEXT_TOOLTIP_STORED)
 		{
 			if (object->IsStoragePit(NULL))
 			{
