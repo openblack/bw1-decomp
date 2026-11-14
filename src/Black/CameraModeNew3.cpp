@@ -1204,7 +1204,7 @@ void CameraModeNew3::TriconDraw()
 			red.r = 255;
 			red.a = 255;
 			CameraHelp::DrawKeyOrMouse(animType, key, mouseType, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1407),
-			                           x + 32, y, 32, KEYALIGN_0x0, &red, &white, 255);
+			                           x + 32, y, 32, KEYALIGN_NONE, &red, &white, 255);
 		}
 	}
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);

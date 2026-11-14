@@ -1466,9 +1466,11 @@ Black/HelpSystemQuery.cpp:
 
 Black/HelpSystemToolTips.cpp:
 	.text       start:0x005CD150 end:0x005CE2B0
-	.rdata      start:0x009582D4 end:0x00958310
+	.rdata      start:0x009582D0 end:0x00958310
+	.rdata$r    start:0x00A31670 end:0x00A316BC
 	.CRT$XCU    start:0x00A46C0C end:0x00A46C18 align:4
-	.bss        start:0x00D978EC end:0x00D98BB8
+	.data       start:0x00C72300 end:0x00C72368
+	.bss        start:0x00D97398 end:0x00D98BB8
 
 Black/HelpText.cpp:
 	.text       start:0x005CE2B0 end:0x005D0860

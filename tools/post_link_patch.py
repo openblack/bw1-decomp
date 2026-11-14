@@ -1949,6 +1949,10 @@ BW1W130_SAFEDISC_CALLS = (
     (0x005CBEF8, jmp_run(0x005CBE83)),  # HelpSystemConditions
     (0x005CC14B, copy_run(0x005CBEF8)),  # HelpSystemInfo
     (0x005CC1D8, jmp_run(0x005CC14B)),  # HelpSystemLevel
+    (0x005CD173, jmp_run(0x005CD116)),  # HelpSystemToolTips
+    (0x005CD243, copy_run(0x005CD173)),  # HelpSystemToolTips
+    (0x005CD437, jmp_run(0x005CD243)),  # HelpSystemToolTips
+    (0x005CD4D2, jmp_run(0x005CD437)),  # HelpSystemToolTips
     (0x005CE2CB, padding_bytes(bytes.fromhex('01000000c3'))),  # HelpText
     (0x005CE2F3, jmp_run(0x005CE2CB)),  # HelpText
     (0x005CE4F1, jmp_run(0x005CE2F3)),  # HelpText

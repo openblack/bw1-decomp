@@ -105,7 +105,7 @@ void HelpSystem::SetToZero()
 	ToolTipIcon = NULL;
 	ContinueIcon = NULL;
 	KeyIcon = NULL;
-	TooltipLevel = TOOLTIP_LEVEL_ALL;
+	TooltipLevel = TOOLTIP_LEVEL_INTELLIGENT;
 	SetImmersionLevel(IMMERSION_LEVEL_1);
 	LastMessageSet = HELP_SYSTEM_MESSAGE_SET_NONE;
 	LastMessageTime = 0;
@@ -1262,7 +1262,7 @@ void HelpSystem::ReadRegistrySettings()
 	}
 	else
 	{
-		TooltipLevel = TOOLTIP_LEVEL_ALL;
+		TooltipLevel = TOOLTIP_LEVEL_INTELLIGENT;
 	}
 	TextTopToBottom = LHNetGetCurrentProfileUlong(TextTopToBottomSetting, &value) == LH_OK ? value : false;
 	if (LHNetGetCurrentProfileUlong(TextDrawSetting, &value) == LH_OK)

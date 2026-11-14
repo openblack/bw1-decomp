@@ -16,14 +16,18 @@ class Base;
 class GToolTipsInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0xc];
+	float Priority;
+	float MinDisplayTime;
+	float DisplayTime;
 
 	// Override methods
 
-	// BW1W120 005c9a40 BW1M119 0135c7f0
-	virtual ~GToolTipsInfo();
 	// BW1W120 005c99e0 BW1M119 0135cb00
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = TOOLTIPS_TYPE_LAST;
+		return Infos;
+	}
 
 	// Static data
 
@@ -36,7 +40,7 @@ public:
 	static GToolTipsInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in HelpSystemToolTips.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(Priority, DisplayTime)
 	INFO_ROOT_LOADERS(31, "HelpSystemToolTips.h")
 };
 
