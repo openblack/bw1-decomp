@@ -63,6 +63,8 @@ public:
 	void DrawBelief(float scale, GameThingWithPos* thing, GPlayer* player);
 	// BW1W120 00437fd0 BW1M119 010b46f0
 	void ReduceBelief(GPlayer* player, Town* town, float amount);
+	// BW1W120 004383d0 BW1M119 0105ea90
+	void Update(Town* town);
 };
 
 #endif /* BW1_DECOMP_BELIEF_INCLUDED_H */

@@ -759,6 +759,76 @@ public:
 	void Draw();
 	// BW1W120 00747de0 BW1M119 01056220
 	void ProcessTownRepairs();
+	// BW1W120 00747ff0 BW1M119 01061f00
+	float CalculateDesireForWood();
+	// BW1W120 007487b0 BW1M119 01062e60
+	float CalculateDesireForPlaytime();
+	// BW1W120 007488a0 BW1M119 01071d80
+	float CalculateDesireForProtection();
+	// BW1W120 007488b0 BW1M119 01071dc0
+	float CalculateDesireForMercy();
+	// BW1W120 00748210 BW1M119 01064480
+	float CalculateDesireForAbodes();
+	// BW1W120 00748330 BW1M119 01071f50
+	float CalculateDesireForCivicBuildings();
+	// BW1W120 00748320 BW1M119 010720f0
+	float CalculateDesireForSupplyWorship();
+	// BW1W120 00748430 BW1M119 010618c0
+	float CalculateDesireForChildren();
+	// BW1W120 00748640 BW1M119 0106b420
+	float CalculateDesireToBuild();
+	// BW1W120 00748690 BW1M119 01072140
+	float CalculateDesireForRain();
+	// BW1W120 007486a0 BW1M119 01072180
+	float CalculateDesireForSun();
+	// BW1W120 007486b0 BW1M119 01055a80
+	float CalculateDesireToRepair();
+	// BW1W120 00748730 BW1M119 010721c0
+	float CalculateDesireToSupplyWorkshop();
+	// BW1W120 00748740 BW1M119 01063010
+	float CalculateDesireForWonder();
+	// BW1W120 007488c0 BW1M119 01064630
+	float CalculateDesireForRelaxation();
+	// BW1W120 00748960 BW1M119 01069610
+	float CalculateDesireForSleep();
+	// BW1W120 00747af0 BW1M119 010678c0
+	float CalculateFoodNeededForWholeTown();
+	// BW1W120 00747b60 BW1M119 0105b630
+	float CalculateMaximumWoodNeededForWholeTown();
+	// BW1W120 00747be0 BW1M119 01062a80
+	float CalculateMinimumWoodNeededForWholeTown();
+	// BW1W120 00747cf0 BW1M119 01073060
+	uint32_t CalculateActualNumberOfAbodes();
+	// BW1W120 00747d00 BW1M119 01073140
+	uint32_t CalculateDesiredNumberOfAbodes();
+	// BW1W120 00747d50 BW1M119 01073210
+	uint32_t CalculateActualNumberOfCivicBuildings();
+	// BW1W120 00747d60 BW1M119 01073260
+	uint32_t CalculateDesiredNumberOfCivicBuildings();
+	// BW1W120 00747d70 BW1M119 01069750
+	uint32_t CalculateActualAmountForSupplyWorship();
+	// BW1W120 00747dd0 BW1M119 010722f0
+	uint32_t CalculateDesiredAmountForSupplyWorship();
+	// BW1W120 007462a0 BW1M119 01067760
+	float FoodGetDesireVillagerModification(TOWN_DESIRE_INFO desire_type);
+	// BW1W120 00746350 BW1M119 01062920
+	float WoodGetDesireVillagerModification(TOWN_DESIRE_INFO desire_type);
+	// BW1W120 00746400 BW1M119 0106b290
+	float BuildGetDesireVillagerModification(TOWN_DESIRE_INFO desire_type);
+	// BW1W120 00746490 BW1M119 0105f460
+	float DefaultGetDesireVillagerModification(TOWN_DESIRE_INFO desire_type);
+	// BW1W120 00747600 BW1M119 01055c50
+	void ProcessAbodes();
+	// BW1W120 00747660 BW1M119 01073780
+	void ProcessDying();
+	// BW1W120 00747750 BW1M119 010739b0
+	void ProcessSpellIcons();
+	// BW1W120 00747780 BW1M119 01073710
+	void ProcessTownArtifacts();
+	// BW1W120 007489d0 BW1M119 0102c4b0
+	void DrawTownArtifacts();
+	// BW1W120 007479e0 BW1M119 010305f0
+	float CalculateInfluence(const MapCoords& pos, int param_2);
 };
 
 #endif /* BW1_DECOMP_TOWN_INCLUDED_H */

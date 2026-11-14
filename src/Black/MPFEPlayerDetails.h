@@ -41,8 +41,11 @@ static_assert(sizeof(MPFETitleData) == 0x8, "MPFETitleData size is incorrect");
 
 struct MPFEPlayerDetails
 {
-	wchar_t       Name[0x80];
-	bool          IsHost;       /* 0x100 */
+	wchar_t Name[0x80];
+	bool    IsHost; /* 0x100 */
+#if defined(VERSION_BW1WCI)
+	bool TykeEnabled;
+#endif
 	int           PlayerNumber; /* 0x104 */
 	unsigned long ID;           /* 0x108 */
 	unsigned long JoinTime;     /* 0x10c */

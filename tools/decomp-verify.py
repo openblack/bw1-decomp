@@ -262,12 +262,20 @@ class IncludeScanner:
 
             def include(owner, kind, operand):
                 match = re.fullmatch(r'"([^"\r\n]+)"\s*|<([^>\r\n]+)>\s*', operand)
-                if not match or kind == 'include_next':
-                    uncertain[owner].add(f'{owner}: {kind} {operand.strip()} (macro/include_next)')
+                # A named include that cannot reach a changed header (no changed header has its
+                # file name) is not uncertain: only macro includes are.
+                named = match and Path((match[1] or match[2]).replace('\\', '/')).name.lower()
+                changed_names = {p.name.lower() for p in self.changed_headers}
+                if not match:
+                    uncertain[owner].add(f'{owner}: {kind} {operand.strip()} (macro)')
+                    return
+                if kind == 'include_next':
+                    if named in changed_names:
+                        uncertain[owner].add(f'{owner}: {kind} {operand.strip()} (include_next)')
                     return
                 name = match[1] or match[2]
                 dependencies = resolve(name, owner, match[1] is not None)
-                if not dependencies:
+                if not dependencies and named in changed_names:
                     uncertain[owner].add(f'{owner}: unresolved include {name}')
                 for dependency in dependencies:
                     reverse[dependency].add(owner)

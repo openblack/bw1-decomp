@@ -69,6 +69,20 @@ struct CMouse
 	void ProcessButtons();
 	// BW1W120 0061a110 BW1M119 01007c90
 	void ProcessPosition();
+	// BW1W120 0061a420 BW1M119 01112d40
+	void ProcessMoveButtonPressed();
+	// BW1W120 0061a470 BW1M119 0109ee90
+	void ProcessApplyButtonPressed();
+	// BW1W120 0061a4c0 BW1M119 null
+	void ProcessMoveButtonDoubleClick();
+	// BW1W120 0061a510 BW1M119 0109ef30
+	void ProcessApplyButtonDoubleClick();
+	// BW1W120 0061a530 BW1M119 01112c20
+	void ProcessMoveButtonReleased();
+	// BW1W120 0061a580 BW1M119 0109e630
+	void ProcessApplyButtonReleased();
+	// BW1W120 0061a5d0 BW1M119 01093e90
+	void ProcessNoButtonPressed();
 };
 
 struct ControlKey

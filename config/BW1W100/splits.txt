@@ -1507,21 +1507,25 @@ Black/MobileWallHug.cpp:
 	.bss        start:0x00C5FD68 end:0x00C5FE04
 
 Black/MorphableObject.cpp:
-	.text       start:0x005CF950 end:0x005D27E0
+	.text       start:0x005CF950 end:0x005D22E0
 	.rdata      start:0x0086DF54 end:0x0086DF70
 	.CRT$XCU    start:0x008F6A7C end:0x008F6A84 align:4
 	.data       start:0x00B20E98 end:0x00B20E9C
 
+Black/Mouse.cpp:
+	.text       start:0x005D22E0 end:0x005D27E0
+
 Black/MPFEAlexDialog.cpp:
 	.text       start:0x005D27E0 end:0x005D8410
 	.CRT$XCU    start:0x008F6A84 end:0x008F6A88 align:4
+	.data       start:0x00B20FFC end:0x00B210A8
 	.bss        start:0x00C5FF14 end:0x00C5FF20
 
 Black/MPFEChannelData.cpp:
 	.text       start:0x005D8410 end:0x005DBAA0
 	.rdata      start:0x0086DF70 end:0x0086DF90
 	.CRT$XCU    start:0x008F6A88 end:0x008F6A94 align:4
-	.data       start:0x00B210E8 end:0x00B2113C
+	.data       start:0x00B210A8 end:0x00B2113C
 	.bss        start:0x00C5FF20 end:0x00C616A0
 
 Black/MPFEChannelDetails.cpp:

@@ -665,7 +665,12 @@ struct SetupList : public SetupControl
 		SetCol(NumItems - 1, (red << 16) + (green << 8) + blue);
 	}
 	// BW1W120 inlined BW1M119 inlined
-	uint32_t GetItemData(int index) { return index >= 0 && index < NumItems ? ItemData[index] : 0; }
+	uint32_t GetItemData(int index)
+	{
+		if (index >= 0 && index < NumItems)
+			return ItemData[index];
+		return 0;
+	}
 	// BW1W120 inlined BW1M119 inlined
 	void SetItemData(int index, uint32_t data)
 	{

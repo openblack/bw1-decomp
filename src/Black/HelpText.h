@@ -178,6 +178,15 @@ struct HelpTextDataPatch : public HelpTextDataBase
 	static char16_t* GetTextL(unsigned long index);
 };
 
+#define HELP_TEXT_MULTIPLAYER_TOMAP               16
+#define HELP_TEXT_MULTIPLAYER_TOCHAT              17
+#define HELP_TEXT_MULTIPLAYER_READY               18
+#define HELP_TEXT_MULTIPLAYER_TIMELIMIT           21
+#define HELP_TEXT_MULTIPLAYER_CONDITION_VALUE     22
+#define HELP_TEXT_MULTIPLAYER_SELECT_CONDITION    23
+#define HELP_TEXT_MULTIPLAYER_CREATURE_CANT_START 27
+#define HELP_TEXT_MULTIPLAYER_CREDITS             28
+
 struct HelpTextDataMultiplayer : public HelpTextDataBase
 {
 	// BW1W120 inlined BW1M119 null

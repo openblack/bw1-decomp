@@ -238,6 +238,8 @@ public:
 	void UpdateAllLeashes();
 	// BW1W120 005d9d80 BW1M119 010042e0
 	bool SendMessageA(INTERFACE_MESSAGE_TYPES param_1, LHCoord* param_2);
+	// BW1W120 005d9dd0 BW1M119 0109e2e0
+	bool SendMessageA(INTERFACE_MESSAGE_TYPES message);
 	// BW1W120 005ce910 BW1M119 01363530
 	void Cheat();
 	// BW1W120 005d0690 BW1M119 0135ffe0

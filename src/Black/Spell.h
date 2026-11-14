@@ -260,6 +260,14 @@ public:
 	bool32_t IsCastFromHand() const;
 	// BW1W120 inlined BW1M119 01509300
 	float GetStrengthMult() { return StrengthMult; }
+	// BW1W120 00720190 BW1M119 015207a0
+	void CloseParticleSystem();
+	// BW1W120 00720830 BW1M119 0151f8c0
+	float PayForOneGameTurn();
+	// BW1W120 00720910 BW1M119 0151f6e0
+	float TryReclaimAnyShortfall();
+	// BW1W120 00720970 BW1M119 0151f660
+	bool IsCostDividedByTribalPower();
 };
 
 #endif /* BW1_DECOMP_SPELL_INCLUDED_H */

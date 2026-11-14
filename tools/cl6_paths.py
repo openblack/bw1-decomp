@@ -660,7 +660,10 @@ def run(argv: List[str]) -> int:
     import os
 
     split = argv.index("--")
-    env = dict(os.environ, **dict(w.split("=", 1) for w in argv[:split]))
+    # The variables go first: the patched compiler calls getenv("CL6_MAP") on every file
+    # access, and the CRT's getenv scans the environment in order.
+    env = dict(w.split("=", 1) for w in argv[:split])
+    env.update((k, v) for k, v in os.environ.items() if k not in env)
     return subprocess.run(argv[split + 1 :], env=env).returncode
 
 

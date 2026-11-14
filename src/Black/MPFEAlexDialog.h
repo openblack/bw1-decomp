@@ -24,11 +24,13 @@ enum MPFEREQUESTER_ENUM
 	MPFEREQUESTER_COULD_NOT_DOWNLOAD_THUMB = 9,
 	MPFEREQUESTER_PERSON_COULD_NOT_DOWNLOAD = 10,
 	MPFEREQUESTER_STILL_DOWNLOADING = 11,
+	MPFEREQUESTER_WAITING_FOR_START_REPLIES = 12,
 	MPFEREQUESTER_TRANSFERRING_FILES = 13,
 	MPFEREQUESTER_HOST_WAIT_START = 14,
 	MPFEREQUESTER_CLIENT_WAIT_START = 15,
 	MPFEREQUESTER_I_AM_DOWNLOADING = 16,
 	MPFEREQUESTER_OTHER_PEOPLE_DOWNLOADING = 17,
+	MPFEREQUESTER_NO_MAP_SELECTED = 18,
 	MPFEREQUESTER_CREATURE_ERROR = 19,
 	MPFEREQUESTER_CREATURE_UPLOADED_NEXT_TIME = 20,
 	MPFEREQUESTER_CREATURE_CONDITIONS = 21,
@@ -55,17 +57,28 @@ public:
 		{
 			Name[0] = L'\0';
 		}
-		Team = team;
 		Name[0xff] = L'\0';
+		Team = team;
 	}
 };
 
 static_assert(sizeof(MPFERequesterQ) == 0x20c, "MPFERequesterQ size is incorrect");
+
+#if defined(VERSION_BW1W100)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 4)
+#elif defined(VERSION_BW1W110)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 2)
+#endif
 
 // BW1W120 inlined BW1M119 inlined
 inline void AddRequester(ChannelBox* box, MPFEREQUESTER_ENUM type, wchar_t* name, TeamEnums team, unsigned long colour)
 {
 	box->Requesters.AddToEnd(NEW(166) MPFERequesterQ(type, name, team, colour));
 }
+
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) (line)
 
 #endif /* BW1_DECOMP_MPFE_ALEX_DIALOG_INCLUDED_H */

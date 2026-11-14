@@ -9,6 +9,10 @@ public:
 	LHLinkedNode<T>* Node;
 	// BW1W120 inlined BW1M119 inlined
 	LHLinkedListIterator(LHLinkedNode<T>* node) { Node = node; }
+	// BW1W120 inlined BW1M119 01392540
+	LHLinkedListIterator(LHLinkedList<T>& list) { Node = list.head.Get(); }
+	// BW1W120 inlined BW1M119 01392330
+	bool MoreToDo() { return Node != NULL; }
 	// BW1W120 inlined BW1M119 010fee40 (LHCombined Release)
 	T Get() { return Node->payload; }
 	// BW1W120 inlined BW1M119 inlined

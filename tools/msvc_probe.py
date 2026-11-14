@@ -254,7 +254,10 @@ def make_workdir(path, copy_src=False):
     path = Path(ROOT) / path
     path.mkdir(parents=True, exist_ok=True)
     if copy_src and not (path / "src").exists():
-        shutil.copytree(Path(ROOT) / "src", path / "src")
+        if shutil.which("cp"):  # outside the GIL, so parallel slots copy at once; CoW on btrfs/xfs
+            subprocess.run(["cp", "-R", "--reflink=auto", str(Path(ROOT) / "src"), str(path / "src")], check=True)
+        else:
+            shutil.copytree(Path(ROOT) / "src", path / "src")
     return path
 
 

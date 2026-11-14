@@ -5,10 +5,12 @@
 #include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <Lionhead/LH3DLib/development/LHCoord.h>   /* For struct LHCoord */
 #include <chlasm/LHKeyBoard.h>                      /* For enum LH_KEY */
 
-#include "ScriptDLL.h"  /* For enum VMType */
-#include "TempleRoom.h" /* For class TempleRoom, enum TempleRoomsEnum */
+#include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
+#include "ScriptDLL.h"        /* For enum VMType */
+#include "TempleRoom.h"       /* For class TempleRoom, enum TempleRoomsEnum */
 
 // Forward Declares
 
@@ -78,6 +80,8 @@ struct Temple
 	void Update();
 	// BW1W120 00794370 BW1M119 0153f7c0
 	void Draw();
+	// BW1W120 007947c0 BW1M119 0153f560
+	void ProcessMouse(LHCoord coord, INTERFACE_MESSAGE_TYPES message);
 	// BW1W120 00794830 BW1M119 0153f3f0
 	void ProcessKey(LH_KEY key, unsigned short modifier);
 	// BW1W120 00794a20 BW1M119 0153f010

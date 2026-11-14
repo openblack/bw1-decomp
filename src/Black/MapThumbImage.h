@@ -27,6 +27,11 @@ public:
 	// BW1W120 00712b10 BW1M119 011a5ba0
 	~MapThumbImage();
 
+	// BW1W120 inlined BW1M119 01398140
+	char* GetImageData() { return (char*)this + (DescriptionLength + 9); }
+	// BW1W120 inlined BW1M119 013980c0
+	int GetImageByteSize() { return *(int*)(GetImageData() - sizeof(int)); }
+
 	// BW1W120 00712b20 BW1M119 01353470
 	static MapThumbImage* GetFromData(char* data, LHLinkedList<ServerLandscapeMap::Point*>* citadels,
 	                                  LHLinkedList<ServerLandscapeMap::Point*>* towns);

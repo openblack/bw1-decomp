@@ -46,6 +46,20 @@ struct PathCreator
 	bool CheckAndRecreateSaveGamePaths();
 	// BW1W120 0078ef60 BW1M119 01183640
 	bool32_t CheckSaveGamePaths();
+	// BW1W120 0078eb60 BW1M119 013dd1d0
+	static bool32_t CheckPathExists(char* path);
+	// BW1W120 0078ee40 BW1M119 011381c0
+	bool32_t CheckProfilePath();
+	// BW1W120 0078ee70 BW1M119 013ed450
+	bool32_t CheckCurrentUserPath();
+	// BW1W120 0078eea0 BW1M119 011737e0
+	bool32_t CheckSaveGameDirectory();
+	// BW1W120 0078eed0 BW1M119 013ed3e0
+	bool32_t CheckSaveGamePicturesPath();
+	// BW1W120 0078ef00 BW1M119 01566db0
+	bool32_t CheckCurrentGameDirectory();
+	// BW1W120 0078ef30 BW1M119 013022d0
+	bool32_t CheckCurrentAutoSavePath();
 };
 
 #endif /* BW1_DECOMP_PATH_CREATOR_INCLUDED_H */

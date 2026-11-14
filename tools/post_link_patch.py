@@ -955,6 +955,21 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0060812B, call_rel32(0x004017F9)),  # MobileObject
     (0x006083BB, call_rel32(0x004017F9)),  # MobileObject
     (0x0060843A, call_indirect(0x008A9960)),  # MobileObject: __imp__BinkGetSummary@8
+    (0x0061A14B, call_rel32(0x004017F9)),  # Mouse
+    (0x0061A65B, call_rel32(0x004017F9)),  # MPFEAlexDialog
+    (0x0061A7CB, call_rel32(0x004017F9)),  # MPFEAlexDialog
+    (0x0061AD1B, call_rel32(0x004017F9)),  # MPFEAlexDialog
+    (0x0062098A, call_indirect(0x008A9004)),  # MPFEAlexDialog
+    (0x00620A2A, call_indirect(0x008A9890)),  # MPFEAlexDialog
+    (0x00620B7A, call_indirect(0x008A991C)),  # MPFEAlexDialog
+    (0x00620DFA, call_indirect(0x008A9970)),  # MPFEAlexDialog
+    (0x00620FAA, call_indirect(0x008A9024)),  # MPFEAlexDialog
+    (0x0062104A, call_indirect(0x008A9034)),  # MPFEAlexDialog
+    (0x0062123A, call_indirect(0x008A90A0)),  # MPFEAlexDialog
+    (0x006212DA, call_indirect(0x008A903C)),  # MPFEAlexDialog
+    (0x0062137A, call_indirect(0x008A97DC)),  # MPFEAlexDialog
+    (0x0062141A, call_indirect(0x008A9590)),  # MPFEAlexDialog
+    (0x0062241B, call_rel32(0x004017F9)),  # MPFEAlexDialog
     (0x006266BB, call_rel32(0x004017F9)),  # MPFEChannelDetails
     (0x006269CB, call_rel32(0x004017F9)),  # MPFEChannelMessages
     (0x0062797B, call_rel32(0x004017F9)),  # MPFEChannelMessages
@@ -2092,6 +2107,54 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0060BE66, copy_run(0x0060BDF6)),  # MobileObject
     (0x0060BE93, jmp_run(0x0060BE66)),  # MobileObject
     (0x0060BEE6, copy_run(0x0060BE93)),  # MobileObject
+    (0x0061DC75, jmp_run(0x0061D8AB)),  # Mouse
+    (0x0061E051, jmp_run(0x0061DC75)),  # Mouse
+    (0x0061E0C8, copy_run(0x0061E051)),  # Mouse
+    (0x0061E138, jmp_run(0x0061E0C8)),  # Mouse
+    (0x0061E1A8, copy_run(0x0061E138)),  # Mouse
+    (0x0061E238, jmp_run(0x0061E1A8)),  # Mouse
+    (0x0061E2A8, copy_run(0x0061E238)),  # Mouse
+    (0x0061E309, copy_run(0x0061E2A8)),  # Mouse
+    (0x0061E35B, jmp_run(0x0061E309)),  # MPFEAlexDialog
+    (0x0061E4CB, copy_run(0x0061E35B)),  # MPFEAlexDialog
+    (0x0061EA1B, jmp_run(0x0061E4CB)),  # MPFEAlexDialog
+    (0x0061F029, copy_run(0x0061EA1B)),  # MPFEAlexDialog
+    (0x0061F1C1, copy_run(0x0061F029)),  # MPFEAlexDialog
+    (0x0061F609, copy_run(0x0061F1C1)),  # MPFEAlexDialog
+    (0x0061F9C1, copy_run(0x0061F609)),  # MPFEAlexDialog
+    (0x00620975, jmp_run(0x0061F9C1)),  # MPFEAlexDialog
+    (0x006209A6, copy_run(0x00620975)),  # MPFEAlexDialog
+    (0x00621376, jmp_run(0x006209A6)),  # MPFEAlexDialog
+    (0x00622737, jmp_run(0x00621376)),  # MPFEAlexDialog
+    (0x006241F4, jmp_run(0x00622737)),  # MPFEAlexDialog
+    (0x006242C1, copy_run(0x006241F4)),  # MPFEAlexDialog
+    (0x00624391, jmp_run(0x006242C1)),  # MPFEAlexDialog
+    (0x00624461, copy_run(0x00624461)),  # MPFEAlexDialog
+    (0x0062468A, copy_run(0x006242C1)),  # MPFEAlexDialog
+    (0x0062472A, copy_run(0x0062472A)),  # MPFEAlexDialog
+    (0x006247D1, jmp_run(0x0062472A)),  # MPFEAlexDialog
+    (0x0062487A, jmp_run(0x006247D1)),  # MPFEAlexDialog
+    (0x00624941, copy_run(0x0062487A)),  # MPFEAlexDialog
+    (0x00624A11, jmp_run(0x00624941)),  # MPFEAlexDialog
+    (0x00624A34, jmp_run(0x00624A11)),  # MPFEAlexDialog
+    (0x00624A54, jmp_run(0x00624A34)),  # MPFEAlexDialog
+    (0x00624AFA, jmp_run(0x00624A54)),  # MPFEAlexDialog
+    (0x00624C04, copy_run(0x00624AFA)),  # MPFEAlexDialog
+    (0x00624CAA, copy_run(0x00624C04)),  # MPFEAlexDialog
+    (0x00624D4A, copy_run(0x00624D4A)),  # MPFEAlexDialog
+    (0x00624F3A, jmp_run(0x00624D4A)),  # MPFEAlexDialog
+    (0x00624FDA, jmp_run(0x00624F3A)),  # MPFEAlexDialog
+    (0x0062507A, jmp_run(0x00624FDA)),  # MPFEAlexDialog
+    (0x0062511A, jmp_run(0x0062507A)),  # MPFEAlexDialog
+    (0x006255D1, jmp_run(0x0062511A)),  # MPFEAlexDialog
+    (0x00625863, copy_run(0x006255D1)),  # MPFEAlexDialog
+    (0x00625935, jmp_run(0x00625863)),  # MPFEAlexDialog
+    (0x00625AA1, copy_run(0x00625935)),  # MPFEAlexDialog
+    (0x00625D3B, jmp_run(0x00625AA1)),  # MPFEAlexDialog
+    (0x00625DE4, copy_run(0x00625D39)),  # MPFEAlexDialog
+    (0x006260E4, copy_run(0x00625DE4)),  # MPFEAlexDialog
+    (0x0062611B, jmp_run(0x006260E4)),  # MPFEAlexDialog
+    (0x00626137, jmp_run(0x0062611B)),  # MPFEAlexDialog
     (0x0062A3BB, jmp_run(0x0062A362)),  # MPFEChannelDetails
     (0x0062A3E5, copy_run(0x0062A3BB)),  # MPFEChannelDetails
     (0x0062A678, jmp_run(0x0062A3E3)),  # MPFEChannelDetails
