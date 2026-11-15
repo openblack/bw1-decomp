@@ -10,7 +10,8 @@
 #include "FrontEnd.h" /* For FRONT_END_TAB_FIRST_ID */
 #include "Game.h"     /* For GGame::g_game */
 #include "GameStats.h"
-#include "HelpText.h" /* For HelpTextDataBase::HelpTextDatabase */
+#include "GameStatsList.h" /* For NewGameStatsList */
+#include "HelpText.h"      /* For HelpTextDataBase::HelpTextDatabase */
 #include "MultiplayerConditionBox.h"
 #include "Player.h" /* For GPlayer::GetPlayer3DColor */
 #include "StatsBox.h"
@@ -71,7 +72,7 @@ uint32_t StatDetails::Draw(SetupList* list, int index, int x_min, int y_min, int
 
 	if (StatsBox::Instance != NULL)
 	{
-		if ((style != BBSTYLE_CHECK_BOX_OFF || Display == GRAPHDISPLAYTYPE_0) && Display != GRAPHDISPLAYTYPE_1)
+		if ((style != BBSTYLE_CHECK_BOX_OFF || Display == GRAPHDISPLAYTYPE_BAR) && Display != GRAPHDISPLAYTYPE_TEXT)
 		{
 			clip_min = clip_min > y_min ? clip_min < y_max ? clip_min : y_max : y_min;
 			clip_max = clip_max > y_min ? clip_max < y_max ? clip_max : y_max : y_min;
@@ -289,6 +290,388 @@ void StatsBox::ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SH
 	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
 		details->Max = max;
 	details->MakeFormat();
+}
+
+void StatsBox::UpdateDetails()
+{
+	ClearDetails();
+	if (Package != NULL)
+	{
+		uint32_t num_towns = GGame::g_game->GameLists.TownList.count;
+		delete[] StatsBuffer;
+		StatsBuffer = NewGameStatsList<StatDetails>(STATS_BOX_MAX_DETAILS);
+		switch (CurrentTab)
+		{
+		case 2:
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_48),
+			               &Package->PerPlayer[0].CreatureDamage, 2, 100.0f, SHOWMAXTYPE_PERCENT,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_68),
+			               &Package->PerPlayer[0].CreatureHunger, 2, 100.0f, SHOWMAXTYPE_PERCENT,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_137),
+			               &Package->PerPlayer[0].CreatureTiredness, 2, 100.0f, SHOWMAXTYPE_PERCENT,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_158),
+			               &Package->PerPlayer[0].CreatureAge, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_159),
+			               &Package->PerPlayer[0].CreatureAlignment, 2, 1.0f, SHOWMAXTYPE_NONE,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_161),
+			               &Package->PerPlayer[0].CreatureNumAnimalsKilled, 1.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_163),
+			               &Package->PerPlayer[0].CreatureNumBattlesFought, 1.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[1]);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_164),
+			               &Package->PerPlayer[0].CreatureNumBattlesWon, 1.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[0]);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_165),
+			               &Package->PerPlayer[0].CreatureNumPoos, 1.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_166),
+			               &Package->PerPlayer[0].CreatureNumMushroomsEaten, 1.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			break;
+		case 5:
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_09),
+			               &Package->TotalLinesOfCodeExecuted, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[2]);
+			ADDFLOATSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_10),
+			               &Package->MaxFrameRate, 1, 50.0f, SHOWMAXTYPE_NONE, GRAPHDISPLAYTYPE_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[1]);
+			ADDFLOATSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_11),
+			               &Package->MinFrameRate, 1, 50.0f, SHOWMAXTYPE_NONE, GRAPHDISPLAYTYPE_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[0]);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_13),
+			               &Package->NumBaseAllocations, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_14),
+			               &Package->TimePlayed, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_15),
+			               &Package->InstructionCount, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_16),
+			               &Package->StatsVersion, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_17),
+			               &Package->DistanceDragged, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_18),
+			               &Package->TimeLookingAtSky, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_19),
+			               &Package->TimeLookingAtGround, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_20),
+			               &Package->GesturesDone, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_21),
+			               &Package->ZoomCount, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_22),
+			               &Package->RotateCount, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_23),
+			               &Package->PitchCount, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_24),
+			               &Package->TotalInterfaceActions, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_25),
+			               &Package->TotalObjectsThrown, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_26),
+			               &Package->TotalThingsPickedUp, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_27),
+			               &Package->NumFightAttacks, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_28),
+			               &Package->NumFightBlocks, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_29),
+			               &Package->NumFightSteps, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
+			break;
+		case 3:
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_30),
+			               &Package->PerPlayer[0].TotalBirths, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_31),
+			               &Package->PerPlayer[0].TotalDeaths, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_32),
+			               &Package->PerPlayer[0].FinalTotalPopulation, 1000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[2]);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_33),
+			               &Package->PerPlayer[0].FinalMalePopulation,
+			               (float)Package->PerPlayer[0].FinalTotalPopulation, SHOWMAXTYPE_FRACTION,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_34),
+			               &Package->PerPlayer[0].FinalFemalePopulation,
+			               (float)Package->PerPlayer[0].FinalTotalPopulation, SHOWMAXTYPE_FRACTION,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_35),
+			               &Package->PerPlayer[0].FinalTotalPopulationCapacity, 1000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_36),
+			               &Package->PerPlayer[0].MaxTotalPopulation, 1000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_37),
+			               &Package->PerPlayer[0].MaxMalePopulation, (float)Package->PerPlayer[0].MaxTotalPopulation,
+			               SHOWMAXTYPE_FRACTION, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_38),
+			               &Package->PerPlayer[0].MaxFemalePopulation, (float)Package->PerPlayer[0].MaxTotalPopulation,
+			               SHOWMAXTYPE_FRACTION, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_39),
+			               &Package->PerPlayer[0].MinTotalPopulation, 1000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_40),
+			               &Package->PerPlayer[0].MinMalePopulation, (float)Package->PerPlayer[0].MinTotalPopulation,
+			               SHOWMAXTYPE_FRACTION, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_41),
+			               &Package->PerPlayer[0].MinFemalePopulation, (float)Package->PerPlayer[0].MinTotalPopulation,
+			               SHOWMAXTYPE_FRACTION, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_42),
+			               &Package->PerPlayer[0].TotalPeopleConverted, 1000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_43),
+			               &Package->PerPlayer[0].AverageSatisfactionOfVillagers, 2, 1.0f, SHOWMAXTYPE_NONE,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[0]);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_44),
+			               &Package->PerPlayer[0].TownsOwned, 25.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_45),
+			               &Package->PerPlayer[0].TotalBuildings, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_46),
+			               &Package->PerPlayer[0].TotalAbodes, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_47),
+			               &Package->PerPlayer[0].TotalCivicBuildings, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_48),
+			               &Package->PerPlayer[0].TotalWonders, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_49),
+			               &Package->PerPlayer[0].TotalBuildingsBuilt, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[1]);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_50),
+			               &Package->PerPlayer[0].TotalAbodesBuilt, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_51),
+			               &Package->PerPlayer[0].TotalCivicBuildingsBuilt, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_52),
+			               &Package->PerPlayer[0].TotalWondersBuilt, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_53),
+			               &Package->PerPlayer[0].NumDiscipleFarmers, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_54),
+			               &Package->PerPlayer[0].NumDiscipleForesters, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_55),
+			               &Package->PerPlayer[0].NumDiscipleFishermen, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_56),
+			               &Package->PerPlayer[0].NumDiscipleBuilders, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_57),
+			               &Package->PerPlayer[0].NumDiscipleBreeders, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_58),
+			               &Package->PerPlayer[0].NumDiscipleTraders, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_59),
+			               &Package->PerPlayer[0].NumDiscipleMissionaries, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_60),
+			               &Package->PerPlayer[0].NumDiscipleCraftsmen, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_61),
+			               &Package->PerPlayer[0].TotalFoodEaten, 1000000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_62),
+			               &Package->PerPlayer[0].WoodUsed, 1000000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			break;
+		case 4:
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_63),
+			               &Package->PerPlayer[0].TotalAgressiveSpellsCast, 1000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[0]);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_64),
+			               &Package->PerPlayer[0].TotalNiceSpellsCast, 1000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[1]);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_65),
+			               &Package->PerPlayer[0].TotalCreatureSpellsCast, 1000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[2]);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_66),
+			               &Package->PerPlayer[0].NumFireballCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_67),
+			               &Package->PerPlayer[0].NumFireballPU1Cast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_68),
+			               &Package->PerPlayer[0].NumFireballPU2Cast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_69),
+			               &Package->PerPlayer[0].NumLightningCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_70),
+			               &Package->PerPlayer[0].NumLightningPU1Cast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_71),
+			               &Package->PerPlayer[0].NumLightningPU2Cast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_72),
+			               &Package->PerPlayer[0].NumExplosionCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_73),
+			               &Package->PerPlayer[0].NumExplosionPU1Cast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_74),
+			               &Package->PerPlayer[0].NumExplosionPU2Cast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_75),
+			               &Package->PerPlayer[0].NumHealCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_76),
+			               &Package->PerPlayer[0].NumHealPU1Cast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_77),
+			               &Package->PerPlayer[0].NumTeleportCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_78),
+			               &Package->PerPlayer[0].NumMagicForestCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_79),
+			               &Package->PerPlayer[0].NumMagicFoodCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_80),
+			               &Package->PerPlayer[0].NumMagicFoodPU1Cast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_81),
+			               &Package->PerPlayer[0].NumStormWindRainCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_82),
+			               &Package->PerPlayer[0].NumStormWindRainLightningCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_83),
+			               &Package->PerPlayer[0].NumTornadoCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_84),
+			               &Package->PerPlayer[0].NumMagicShieldCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_85),
+			               &Package->PerPlayer[0].NumPhysicalShieldCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_86),
+			               &Package->PerPlayer[0].NumMagicWoodCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_87),
+			               &Package->PerPlayer[0].NumMagicWaterCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_88),
+			               &Package->PerPlayer[0].NumMagicWaterPU1Cast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_89),
+			               &Package->PerPlayer[0].NumFlockFlyingCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_90),
+			               &Package->PerPlayer[0].NumFlockGroundCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_91),
+			               &Package->PerPlayer[0].NumCreatureFreezeCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_92),
+			               &Package->PerPlayer[0].NumCreatureSmallCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_93),
+			               &Package->PerPlayer[0].NumCreatureBigCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_94),
+			               &Package->PerPlayer[0].NumCreatureWeakCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_95),
+			               &Package->PerPlayer[0].NumCreatureStrongCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_96),
+			               &Package->PerPlayer[0].NumCreatureFatCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_97),
+			               &Package->PerPlayer[0].NumCreatureThinCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_98),
+			               &Package->PerPlayer[0].NumCreatureInvisibleCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_99),
+			               &Package->PerPlayer[0].NumCreatureCompassionCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_100),
+			               &Package->PerPlayer[0].NumCreatureAngryCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_106),
+			               &Package->PerPlayer[0].NumCreatureItchyCast, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_107),
+			               &Package->PerPlayer[0].TotalChantsUsed, 1, 1000000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_108),
+			               &Package->PerPlayer[0].TotalNumSacrifices, 100.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			break;
+		case 1:
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_110),
+			               &Package->PerPlayer[0].FinalAreaOfInfluence, 0, 1000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, NULL);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_111),
+			               &Package->PerPlayer[0].NumGodsDefeated, (float)(GameStats::GetNumPlayersInGame() - 1),
+			               SHOWMAXTYPE_FRACTION, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_112),
+			               &Package->PerPlayer[0].AligmentChange, 2, 1.0f, SHOWMAXTYPE_NONE, GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_113),
+			               &Package->PerPlayer[0].TotalPeopleKilled, (float)(num_towns * 20), SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_114),
+			               &Package->PerPlayer[0].FinalTotalBelief, 0, 100000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_115),
+			               &Package->PerPlayer[0].MaxTotalBelief, 0, 100000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_116),
+			               &Package->PerPlayer[0].MinTotalBelief, 0, 100000.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_117),
+			               &Package->PerPlayer[0].NumOfArtifacts, (float)(num_towns * 10), SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_118),
+			               &Package->PerPlayer[0].CreatureGrowth, 2, 1.0f, SHOWMAXTYPE_PERCENT,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_119),
+			               &Package->PerPlayer[0].CreatureAlignmentChange, 2, 1.0f, SHOWMAXTYPE_NONE,
+			               GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_120),
+			               &Package->PerPlayer[0].BuildingsDestroyed, (float)(num_towns * 10), SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+
+			{
+				LineGraphs[1]->Reset();
+				LineGraphs[0]->Reset();
+				HLineData population;
+				HLineData influence;
+				for (int i = 0; i < Package->NumPlayers; i++)
+				{
+					population.SetNum(Package->PerPlayer[i].PopulationGraph.Index);
+					population.color = Package->PerPlayer[i].Colour;
+					for (int j = 0; j < population.PointCount; j++)
+						population.SetPoint(j, Package->PerPlayer[i].PopulationGraph.Data[j]);
+					LineGraphs[1]->AddLine(population);
+					influence.SetNum(Package->PerPlayer[i].InfluenceGraph.Index);
+					influence.color = Package->PerPlayer[i].Colour;
+					for (int k = 0; k < influence.PointCount; k++)
+						influence.SetPoint(k, Package->PerPlayer[i].InfluenceGraph.Data[k]);
+					LineGraphs[0]->AddLine(influence);
+				}
+				LineGraphs[1]->SetScale(0.0f, 0.0f, false);
+				LineGraphs[0]->SetScale(0.0f, 0.0f, false);
+			}
+			break;
+		}
+	}
 }
 
 void StatsBox::ClearDetails()

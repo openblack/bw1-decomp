@@ -1086,6 +1086,12 @@ struct HLineData
 	}
 	// BW1W120 0040da30 BW1M119 01438d50
 	void SetNum(int num);
+	// BW1W120 inlined BW1M119 inlined
+	void SetPoint(int index, float value)
+	{
+		if (index >= 0 && index < PointCount && points != NULL)
+			points[index] = value;
+	}
 };
 
 struct SetupHLineGraph : public SetupButton

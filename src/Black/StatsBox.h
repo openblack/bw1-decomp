@@ -21,6 +21,7 @@ struct SetupVBarGraph;
 #define STATS_BOX_NUM_BAR_GRAPHS   3
 #define STATS_BOX_NUM_LINE_GRAPHS  2
 #define STATS_BOX_NUM_SCORE_GRAPHS 4
+#define STATS_BOX_MAX_DETAILS      256
 
 // How a detail row writes its value: on its own, against the row's maximum, or as a percentage. A row whose
 // maximum is the largest of its values writes it on its own.
@@ -32,10 +33,12 @@ enum SHOWMAXTYPE
 	SHOWMAXTYPE_LARGEST = 3,
 };
 
+// Whether a detail row draws its values as a bar graph, as text, or as either following the box's check box.
 enum GRAPHDISPLAYTYPE
 {
-	GRAPHDISPLAYTYPE_0 = 0,
-	GRAPHDISPLAYTYPE_1 = 1,
+	GRAPHDISPLAYTYPE_BAR = 0,
+	GRAPHDISPLAYTYPE_TEXT = 1,
+	GRAPHDISPLAYTYPE_BAR_OR_TEXT = 2,
 };
 
 class StatsBox : public DialogBoxBase
