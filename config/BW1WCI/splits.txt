@@ -1676,6 +1676,8 @@ Black/MPFEChannelMessages.cpp:
 
 Black/MPFEChannelSelector.cpp:
 	.text       start:0x0063EC70 end:0x00641650
+	.rdata      start:0x00988960 end:0x009889B8
+	.rdata$r    start:0x00A22F18 end:0x00A22FB8
 	.CRT$XCU    start:0x00A36B34 end:0x00A36B44 align:4
 	.data       start:0x00C65710 end:0x00C657D0
 	.bss        start:0x00DC1AA0 end:0x00DC1B70
@@ -1712,30 +1714,34 @@ Black/MPFECreatureDownload.cpp:
 Black/MPFEDatabase.cpp:
 	.text       start:0x00644210 end:0x00644790
 	.rdata      start:0x00988A34 end:0x00988A40
+	.rdata$r    start:0x00A230F8 end:0x00A2313C
 	.CRT$XCU    start:0x00A36B84 end:0x00A36B90 align:4
-	.data       start:0x00C6E410 end:0x00C6E450
-	.bss        start:0x00DC2020 end:0x00DC208C
+	.data       start:0x00C6E410 end:0x00C6E43C
+	.bss        start:0x00DC2020 end:0x00DC2088
 
 Black/MPFEDownloads.cpp:
 	.text       start:0x00644790 end:0x00644DF0
 	.rdata      start:0x00988A40 end:0x00988A7C
 	.rdata$r    start:0x00A2313C end:0x00A231F0
 	.CRT$XCU    start:0x00A36B90 end:0x00A36B94 align:4
-	.data       start:0x00C6E450 end:0x00C6E488
+	.data       start:0x00C6E43C end:0x00C6E488
 	.bss        start:0x00DC208C end:0x00DC2090
 
 Black/MPFEFileTransfer.cpp:
 	.text       start:0x00644DF0 end:0x006456F0
 	.rdata      start:0x00988A7C end:0x00988AA0
+	.rdata$r    start:0x00A231F0 end:0x00A23240
 	.CRT$XCU    start:0x00A36B94 end:0x00A36BA0 align:4
-	.data       start:0x00C6E488 end:0x00C6E50C
+	.data       start:0x00C6E488 end:0x00C6E4F0
+	.bss        start:0x00DC2098 end:0x00DC20A4
 
 Black/MPFEFindGame.cpp:
 	.text       start:0x006456F0 end:0x00645C70
 	.rdata      start:0x00988AA0 end:0x00988AD0
+	.rdata$r    start:0x00A23240 end:0x00A23290
 	.CRT$XCU    start:0x00A36BA0 end:0x00A36BAC align:4
-	.data       start:0x00C6E50C end:0x00C6E530
-	.bss        start:0x00DC20A8 end:0x00DC20E4
+	.data       start:0x00C6E4F0 end:0x00C6E530
+	.bss        start:0x00DC20A8 end:0x00DC20E0
 
 Black/MPFEGameStartMessages.cpp:
 	.text       start:0x00645C70 end:0x00646680
@@ -1768,7 +1774,7 @@ Black/MPFEPlayerDetails.cpp:
 	.text       start:0x00647640 end:0x006486D0
 	.CRT$XCU    start:0x00A36BCC end:0x00A36BD0 align:4
 	.data       start:0x00C6E784 end:0x00C6E7D8
-	.bss        start:0x00DC224C end:0x00DC2254
+	.bss        start:0x00DC224C end:0x00DC2250
 
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x00649440 end:0x00649B00

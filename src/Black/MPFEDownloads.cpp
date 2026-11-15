@@ -16,6 +16,8 @@
 #include "MPFEPlayerDetails.h"   /* For struct MPFEPlayerDetails */
 #include "MPFEThumbDownload.h"   /* For class MPFEThumbDownload */
 
+char* MPFEDownloads::OnlineMapsPath = ".\\Online Maps\\";
+
 MPFEDownloads::MPFEDownloads() {}
 
 MPFEDownloads::~MPFEDownloads()
@@ -37,7 +39,7 @@ bool MPFEDownloads::DownloadFile(LandscapeDetails* details)
 
 	char fileName[0x200];
 	sprintf(fileName, "%s%s", details->FileName, dynamic_cast<MPFEMapDownload*>(this) != NULL ? ".map" : ".thm");
-	sprintf(LocalFileName, "%s%s", MPFEDatabase::OnlineMapsPath, fileName);
+	sprintf(LocalFileName, "%s%s", OnlineMapsPath, fileName);
 	if (LHOSFile::Exists(LocalFileName) == LH_FILE_RESULT_OK)
 	{
 		Downloading = false;

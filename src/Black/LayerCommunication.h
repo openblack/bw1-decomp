@@ -18,20 +18,20 @@ public:
 	// BW1W120 00c59a18
 	static int NumPeopleInRoom;
 
-	// BW1W120 inlined BW1M119 01399af0
-	virtual void SendMessageA(wchar_t* message, bool private_message, MPFEPlayerDetails* player) {}
-	// BW1W120 inlined BW1M119 01399a90
-	virtual void SendMessageA(const char* message, bool private_message, MPFEPlayerDetails* player) {}
-	// BW1W120 inlined BW1M119 01399a50
-	virtual void LeaveMainRoom() {}
-	// BW1W120 inlined BW1M119 01399a10
-	virtual void LeaveGameChannel() {}
-	// BW1W120 inlined BW1M119 013999c0
-	virtual void BeginPlayerEnumeration() {}
+	// BW1W120 006264a0 BW1M119 01399af0
+	virtual void SendMessageA(wchar_t* message, bool private_message, MPFEPlayerDetails* player);
+	// BW1W120 006264b0 BW1M119 01399a90
+	virtual void SendMessageA(const char* message, bool private_message, MPFEPlayerDetails* player);
+	// BW1W120 006264c0 BW1M119 01399a50
+	virtual void LeaveMainRoom();
+	// BW1W120 006264d0 BW1M119 01399a10
+	virtual void LeaveGameChannel();
+	// BW1W120 006264e0 BW1M119 013999c0
+	virtual void BeginPlayerEnumeration();
 	// BW1W120 purecall
 	virtual void PopulateChannelPlayers(MPFEChannelDetails* channel) = 0;
-	// BW1W120 inlined BW1M119 01399980
-	virtual void Process() {}
+	// BW1W120 006264f0 BW1M119 01399980
+	virtual void Process();
 	// BW1W120 purecall
 	virtual bool InitialiseLobbyState() = 0;
 	// BW1W120 purecall

@@ -249,6 +249,11 @@ block_relocations:
   - source: 0x00680F6F
   - source: 0x00681187
   - source: 0x006811A1
+# MPFEFindGame::ControlCallback pushes the label colour 0xe0e0e0, not a pointer.
+  - source: 0x00633700
+  - source: 0x00633707
+  - source: 0x0063371E
+  - source: 0x00633723
 
 add_relocations:
 # ioinit.obj: data references dtk attributes to the neighbouring symbol.

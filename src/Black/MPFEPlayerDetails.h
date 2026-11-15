@@ -88,6 +88,12 @@ struct MPFEPlayerDetails
 	void RefreshPlayerQuery();
 	// BW1W120 00631da0 BW1M119 inlined
 	void ResetPlayerQuery();
+	// BW1W120 inlined BW1M119 null
+	void StopPlayerQuery()
+	{
+		ResetPlayerQuery();
+		PlayerQuerying = false;
+	}
 	// BW1W120 00631db0 BW1M119 013b1850
 	void QueryClans();
 	// BW1W120 00631e50 BW1M119 inlined

@@ -212,6 +212,11 @@ block_relocations:
   - source: 0x0069154F
   - source: 0x00691767
   - source: 0x00691781
+# MPFEFindGame::ControlCallback pushes the label colour 0xe0e0e0, not a pointer.
+  - source: 0x00645C00
+  - source: 0x00645C07
+  - source: 0x00645C1E
+  - source: 0x00645C23
 
 
   - source: 0x0088ACA9

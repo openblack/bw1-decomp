@@ -8,7 +8,6 @@
 #include "LandscapeDetails.h" /* For struct LandscapeDetails */
 #include "LHNetBase.h"        /* For LHNetBase::Instance */
 
-char*                           MPFEDatabase::OnlineMapsPath = ".\\Online Maps\\";
 LHLinkedList<LandscapeDetails*> MPFEDatabase::Landscapes;
 DBInfo                          MPFEDatabase::Query;
 

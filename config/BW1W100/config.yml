@@ -97,6 +97,11 @@ block_relocations:
   - source: 0x007BE5B8
   - source: 0x007BE73B
   - source: 0x007BF268
+# MPFEFindGame::ControlCallback pushes the label colour 0xe0e0e0, not a pointer.
+  - source: 0x005E2A30
+  - source: 0x005E2A37
+  - source: 0x005E2A4E
+  - source: 0x005E2A53
 
 add_relocations:
 # GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.

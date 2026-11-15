@@ -783,7 +783,9 @@ uint32_t GGame::InitOneTimeOnly()
 	Report3D__FPCce("LoadTextScript\n");
 	RenderLoadingFrame(true);
 	RenderLoadingFrame(true);
+#ifndef VERSION_BW1W100
 	MPFEData::CreatureFileChecksum = GetCreatureFileChecksum();
+#endif
 	Report3D__FPCce("LHNetUseProfile\n");
 	LHSys::TheSystem.MessageHook = camera_editor_callback;
 	g_water_drop_cb = water_drop_cb;

@@ -211,7 +211,7 @@ MPFEChangeClanRequest::MPFEChangeClanRequest(unsigned long clan_id, wchar_t* cla
 
 void MPFEChangeClanRequest::ProcessIncoming(wchar_t* message, MPFEPlayerDetails* from)
 {
-	wchar_t* name = message;
+	wchar_t* name;
 	if (from->IsTeamLeader && from->Team != TEAM_UNASSIGNED && MPFEData::Data.GetLocalPlayer()->IsHost)
 	{
 		MPFETeamDetails* team = &MPFEData::Data.TeamDetails[from->Team];

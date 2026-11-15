@@ -20,35 +20,17 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h> /* For class LHLinkedListIterator */
 
 #if defined(VERSION_BW1W100)
-#define MPFE_PLAYER_DETAILS_TITLE_LINE      90
-#define MPFE_PLAYER_DETAILS_CLAN_LINE       167
-#define MPFE_PLAYER_DETAILS_TITLE_DATA_LINE 329
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + ((line) < 100 ? -1 : (line) < 200 ? 1 : 2))
 #elif defined(VERSION_BW1W110) || defined(VERSION_BW1WCI)
-#define MPFE_PLAYER_DETAILS_TITLE_LINE      91
-#define MPFE_PLAYER_DETAILS_CLAN_LINE       168
-#define MPFE_PLAYER_DETAILS_TITLE_DATA_LINE 330
-#else
-#define MPFE_PLAYER_DETAILS_TITLE_LINE      91
-#define MPFE_PLAYER_DETAILS_CLAN_LINE       166
-#define MPFE_PLAYER_DETAILS_TITLE_DATA_LINE 327
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + ((line) < 100 ? 0 : (line) < 200 ? 2 : 3))
 #endif
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #define MPFE_PLAYER_DETAILS_QUERY "PLAYERGETDETAILS2 %u,\"%s\",%u"
 #else
 #define MPFE_PLAYER_DETAILS_QUERY "PLAYERGETDETAILS %u,\"%s\",%u"
-#endif
-
-#if defined(VERSION_BW1W100)
-#define MPFE_PLAYER_DETAILS_FILE "C:\\dev\\black\\MPFEPlayerDetails.cpp"
-#elif defined(VERSION_BW1W110)
-#define MPFE_PLAYER_DETAILS_FILE "C:\\dev\\Black\\MPFEPlayerDetails.cpp"
-#elif defined(VERSION_BW1W130)
-#define MPFE_PLAYER_DETAILS_FILE "D:\\Work\\Games\\dd\\Black\\MPFEPlayerDetails.cpp"
-#elif defined(VERSION_BW1WCI)
-#define MPFE_PLAYER_DETAILS_FILE "C:\\dev\\black\\MPFEPlayerDetails.cpp"
-#else
-#define MPFE_PLAYER_DETAILS_FILE "C:\\dev\\MP\\Black\\MPFEPlayerDetails.cpp"
 #endif
 
 MPFEPlayerDetails::MPFEPlayerDetails(wchar_t* name, bool is_host)
@@ -140,9 +122,8 @@ void MPFEPlayerDetails::RefreshPlayerQuery()
 			Titles.DeleteAll();
 			for (unsigned long i = 0; i < rows; i++)
 			{
-				MPFETitleData* title = new (MPFE_PLAYER_DETAILS_FILE, MPFE_PLAYER_DETAILS_TITLE_LINE)
-					MPFETitleData(LHSPrintfW(L"%s", CHAR2WCHAR(table[i * columns])),
-				                  LHSPrintfW(L"%s", CHAR2WCHAR(table[i * columns + 1])));
+				MPFETitleData* title = NEW(91) MPFETitleData(LHSPrintfW(L"%s", CHAR2WCHAR(table[i * columns])),
+				                                             LHSPrintfW(L"%s", CHAR2WCHAR(table[i * columns + 1])));
 				Titles.AddToEnd(title);
 			}
 			if (rows > 0)
@@ -154,8 +135,7 @@ void MPFEPlayerDetails::RefreshPlayerQuery()
 		}
 		else
 		{
-			ResetPlayerQuery();
-			PlayerQuerying = false;
+			StopPlayerQuery();
 			MPFEData::Data.D2A_CouldNotQueryDatabase();
 		}
 	}
@@ -229,7 +209,7 @@ void MPFEPlayerDetails::RefreshClanQuery()
 					continue;
 				}
 #endif
-				MPFEClanDetails* clan = new (MPFE_PLAYER_DETAILS_FILE, MPFE_PLAYER_DETAILS_CLAN_LINE) MPFEClanDetails;
+				MPFEClanDetails* clan = NEW(166) MPFEClanDetails;
 				clan->ID = atoi(table[i * columns]);
 				wcscpy(clan->Name, CHAR2WCHAR(table[i * columns + 1]));
 				clan->IsLeader = table[i * columns + 2][0] == '1';
@@ -374,10 +354,15 @@ wchar_t* MPFEPlayerDetails::GetName()
 	return Name;
 }
 
+void MPFEPlayerDetails::SetName(wchar_t* name)
+{
+	wcsncpy(Name, name, sizeof(Name) / sizeof(Name[0]));
+}
+
 MPFETitleData::MPFETitleData(wchar_t* title, wchar_t* data)
 {
-	Title = new (MPFE_PLAYER_DETAILS_FILE, MPFE_PLAYER_DETAILS_TITLE_DATA_LINE) wchar_t[wcslen(title) + 1];
-	Data = new (MPFE_PLAYER_DETAILS_FILE, MPFE_PLAYER_DETAILS_TITLE_DATA_LINE + 1) wchar_t[wcslen(data) + 1];
+	Title = NEW(327) wchar_t[wcslen(title) + 1];
+	Data = NEW(328) wchar_t[wcslen(data) + 1];
 	wcscpy(Title, title);
 	wcscpy(Data, data);
 }

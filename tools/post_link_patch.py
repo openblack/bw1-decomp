@@ -970,17 +970,33 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0062137A, call_indirect(0x008A97DC)),  # MPFEAlexDialog
     (0x0062141A, call_indirect(0x008A9590)),  # MPFEAlexDialog
     (0x0062241B, call_rel32(0x004017F9)),  # MPFEAlexDialog
+    (0x0062248B, call_rel32(0x004017F9)),  # MPFEChannelData
+    (0x006227BB, call_rel32(0x004017F9)),  # MPFEChannelData
+    (0x00622C5B, call_rel32(0x004017F9)),  # MPFEChannelData
+    (0x00622FEB, call_rel32(0x004017F9)),  # MPFEChannelData
+    (0x0062397B, call_rel32(0x004017F9)),  # MPFEChannelData
+    (0x0062415B, call_rel32(0x004017F9)),  # MPFEChannelData
+    (0x00624DDB, call_rel32(0x004017F9)),  # MPFEChannelData
+    (0x0062587B, call_rel32(0x004017F9)),  # MPFEChannelData
     (0x006266BB, call_rel32(0x004017F9)),  # MPFEChannelDetails
     (0x006269CB, call_rel32(0x004017F9)),  # MPFEChannelMessages
     (0x0062797B, call_rel32(0x004017F9)),  # MPFEChannelMessages
+    (0x006282AB, call_rel32(0x004017F9)),  # MPFEChannelSelector
+    (0x0062A1DB, call_rel32(0x004017F9)),  # MPFEChannelSelector
+    (0x0062A2BB, call_rel32(0x004017F9)),  # MPFEChannelSelector
     (0x0062AC4B, call_rel32(0x004017F9)),  # MPFEChooseConnection
     (0x0062B8BB, call_rel32(0x004017F9)),  # MPFEChooseConnection
     (0x0062C6AB, call_rel32(0x004017F9)),  # MPFEConditionMessages
     (0x0062C6FB, call_rel32(0x004017F9)),  # MPFEConditionMessages
     (0x0062DB2B, call_rel32(0x004017F9)),  # MPFECreatureDownload
     (0x0062DB4B, call_rel32(0x004017F9)),  # MPFECreatureDownload
+    (0x0062DFDB, call_rel32(0x004017F9)),  # MPFEDatabase
+    (0x0062E50B, call_rel32(0x004017F9)),  # MPFEDatabase
     (0x0062E55B, call_rel32(0x004017F9)),  # MPFEDownloads
     (0x0062EADB, call_rel32(0x004017F9)),  # MPFEDownloads
+    (0x0062EBEB, call_rel32(0x004017F9)),  # MPFEFileTransfer
+    (0x0062EC3B, call_rel32(0x004017F9)),  # MPFEFileTransfer
+    (0x0062F51B, call_rel32(0x004017F9)),  # MPFEFindGame
     (0x0062FABB, call_rel32(0x004017F9)),  # MPFEGameStartMessages
     (0x0062FB0B, call_rel32(0x004017F9)),  # MPFEGameStartMessages
     (0x0063010B, call_rel32(0x004017F9)),  # MPFEGameStartMessages
@@ -989,6 +1005,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0063119B, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x006314BB, call_rel32(0x004017F9)),  # MPFEMapMessages
     (0x0063173B, call_rel32(0x004017F9)),  # MPFENumberCodec
+    (0x006317BB, call_rel32(0x004017F9)),  # MPFEPlayerDetails
     (0x006362FB, call_rel32(0x004017F9)),  # Object
     (0x0063673B, call_rel32(0x004017F9)),  # Object
     (0x006377BB, call_rel32(0x004017F9)),  # Object
@@ -2155,6 +2172,53 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006260E4, copy_run(0x00625DE4)),  # MPFEAlexDialog
     (0x0062611B, jmp_run(0x006260E4)),  # MPFEAlexDialog
     (0x00626137, jmp_run(0x0062611B)),  # MPFEAlexDialog
+    (0x0062618B, copy_run(0x0061A357)),  # MPFEChannelData
+    (0x006261B5, jmp_run(0x0062618B)),  # MPFEChannelData
+    (0x006264BB, jmp_run(0x006261B3)),  # MPFEChannelData
+    (0x00626753, jmp_run(0x006264BB)),  # MPFEChannelData
+    (0x00626824, copy_run(0x00626753)),  # MPFEChannelData
+    (0x0062695B, jmp_run(0x00626824)),  # MPFEChannelData
+    (0x006269F8, jmp_run(0x0062695B)),  # MPFEChannelData
+    (0x00626A39, jmp_run(0x006269F8)),  # MPFEChannelData
+    (0x00626A57, jmp_run(0x00626A39)),  # MPFEChannelData
+    (0x00626B53, jmp_run(0x00626A57)),  # MPFEChannelData
+    (0x00626BD9, jmp_run(0x00626B53)),  # MPFEChannelData
+    (0x00626C16, jmp_run(0x00626BD9)),  # MPFEChannelData
+    (0x00626CEB, copy_run(0x00402CB0)),  # MPFEChannelData
+    (0x00626E7A, jmp_run(0x00626CEB)),  # MPFEChannelData
+    (0x00626EF3, jmp_run(0x00626E7A)),  # MPFEChannelData
+    (0x00627001, copy_run(0x00626EF3)),  # MPFEChannelData
+    (0x00627163, copy_run(0x00626FC6)),  # MPFEChannelData
+    (0x00627604, copy_run(0x00627163)),  # MPFEChannelData
+    (0x00627655, jmp_run(0x00627604)),  # MPFEChannelData
+    (0x0062767B, jmp_run(0x00627655)),  # MPFEChannelData
+    (0x00627696, jmp_run(0x0062767B)),  # MPFEChannelData
+    (0x00627DE9, copy_run(0x00627696)),  # MPFEChannelData
+    (0x00627EE3, copy_run(0x00627DE9)),  # MPFEChannelData
+    (0x00628193, jmp_run(0x00627EE3)),  # MPFEChannelData
+    (0x00628847, copy_run(0x005FBEE4)),  # MPFEChannelData
+    (0x00628ADB, jmp_run(0x00628847)),  # MPFEChannelData
+    (0x00628B5A, jmp_run(0x00628ADB)),  # MPFEChannelData
+    (0x00628BC8, copy_run(0x00628B5A)),  # MPFEChannelData
+    (0x00628E45, copy_run(0x00628BC8)),  # MPFEChannelData
+    (0x00628E87, copy_run(0x00628D66)),  # MPFEChannelData
+    (0x00628ED2, jmp_run(0x00628E87)),  # MPFEChannelData
+    (0x00628F67, copy_run(0x00628ED2)),  # MPFEChannelData
+    (0x00629036, jmp_run(0x00628F67)),  # MPFEChannelData
+    (0x006290CA, copy_run(0x004119AE)),  # MPFEChannelData
+    (0x0062957B, jmp_run(0x006290CA)),  # MPFEChannelData
+    (0x00629A28, copy_run(0x004015AB)),  # MPFEChannelData
+    (0x00629D33, jmp_run(0x00629A28)),  # MPFEChannelData
+    (0x00629D75, jmp_run(0x00629D33)),  # MPFEChannelData
+    (0x00629DC8, copy_run(0x00526FC6)),  # MPFEChannelData
+    (0x00629E01, copy_run(0x00629DC8)),  # MPFEChannelData
+    (0x00629E32, jmp_run(0x00629E01)),  # MPFEChannelData
+    (0x00629E72, jmp_run(0x00629E32)),  # MPFEChannelData
+    (0x00629EAA, copy_run(0x00629E72)),  # MPFEChannelData
+    (0x00629EDA, jmp_run(0x00629EAA)),  # MPFEChannelData
+    (0x00629F23, copy_run(0x00629EDA)),  # MPFEChannelData
+    (0x0062A34A, copy_run(0x00629F23)),  # MPFEChannelData
+    (0x0062A362, copy_run(0x00401C45)),  # MPFEChannelData
     (0x0062A3BB, jmp_run(0x0062A362)),  # MPFEChannelDetails
     (0x0062A3E5, copy_run(0x0062A3BB)),  # MPFEChannelDetails
     (0x0062A678, jmp_run(0x0062A3E3)),  # MPFEChannelDetails
@@ -2179,6 +2243,28 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0062BD01, copy_run(0x0062BC73)),  # MPFEChannelMessages
     (0x0062BD89, copy_run(0x0062BD01)),  # MPFEChannelMessages
     (0x0062BF52, jmp_run(0x0062BD89)),  # MPFEChannelMessages
+    (0x0062BFAB, copy_run(0x0041451F)),  # MPFEChannelSelector
+    (0x0062BFD5, jmp_run(0x0062BFAB)),  # MPFEChannelSelector
+    (0x0062C071, jmp_run(0x0062BFD3)),  # MPFEChannelSelector
+    (0x0062C0D8, jmp_run(0x0062C071)),  # MPFEChannelSelector
+    (0x0062C8F3, jmp_run(0x0062C0D8)),  # MPFEChannelSelector
+    (0x0062CAE1, copy_run(0x0062C8F3)),  # MPFEChannelSelector
+    (0x0062CB21, copy_run(0x0062CAE1)),  # MPFEChannelSelector
+    (0x0062D4A3, copy_run(0x0062CB21)),  # MPFEChannelSelector
+    (0x0062D6BB, jmp_run(0x0062D4A3)),  # MPFEChannelSelector
+    (0x0062D845, copy_run(0x0062D6A2)),  # MPFEChannelSelector
+    (0x0062D948, copy_run(0x0062D845)),  # MPFEChannelSelector
+    (0x0062DDF2, jmp_run(0x0062D948)),  # MPFEChannelSelector
+    (0x0062DEDB, jmp_run(0x0062DDF2)),  # MPFEChannelSelector
+    (0x0062DF17, jmp_run(0x0062DEDB)),  # MPFEChannelSelector
+    (0x0062DF57, jmp_run(0x0062DF17)),  # MPFEChannelSelector
+    (0x0062DFBB, jmp_run(0x0062DF57)),  # MPFEChannelSelector
+    (0x0062E06A, copy_run(0x0062DFBB)),  # MPFEChannelSelector
+    (0x0062E328, copy_run(0x0062E06A)),  # MPFEChannelSelector
+    (0x0062E774, jmp_run(0x0062E328)),  # MPFEChannelSelector
+    (0x0062E791, jmp_run(0x0062E774)),  # MPFEChannelSelector
+    (0x0062E7B1, jmp_run(0x0062E791)),  # MPFEChannelSelector
+    (0x0062E801, copy_run(0x0062E7B1)),  # MPFEChannelSelector
     (0x0062E94F, copy_run(0x0062E94B)),  # MPFEChooseConnection
     (0x0062E975, jmp_run(0x0062E94B)),  # MPFEChooseConnection
     (0x0062EA27, copy_run(0x0062E973)),  # MPFEChooseConnection
@@ -2199,6 +2285,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00631971, jmp_run(0x00631924)),  # MPFECreatureDownload
     (0x006319E6, copy_run(0x00631971)),  # MPFECreatureDownload
     (0x00631C81, copy_run(0x006319E6)),  # MPFECreatureDownload
+    (0x00631CDB, jmp_run(0x00631C81)),  # MPFEDatabase
+    (0x00631D25, copy_run(0x00631CDB)),  # MPFEDatabase
+    (0x00631DF6, jmp_run(0x00631D25)),  # MPFEDatabase
+    # jmp_run(0x00631DF6), whose copy holds a `jmp [slot]` that SafeDisc marked as well (81 25).
+    (0x00631EF3, padding_bytes(bytes.fromhex('00b9601edc008125e9f6feffff'))),  # MPFEDatabase
+    (0x00631F62, copy_run(0x00631EF3)),  # MPFEDatabase
+    (0x00631F99, jmp_run(0x00631F62)),  # MPFEDatabase
+    (0x006321E1, copy_run(0x00631F99)),  # MPFEDatabase
+    (0x0063220B, copy_run(0x006321E1)),  # MPFEDatabase
+    (0x00632233, jmp_run(0x0063220B)),  # MPFEDatabase
     (0x0063225B, jmp_run(0x00632233)),  # MPFEDownloads
     (0x00632276, jmp_run(0x0063225B)),  # MPFEDownloads
     (0x006322B7, jmp_run(0x00632276)),  # MPFEDownloads
@@ -2209,6 +2305,23 @@ BW1W130_SAFEDISC_CALLS = (
     (0x006327DB, jmp_run(0x00632718)),  # MPFEDownloads
     (0x0063285A, jmp_run(0x006327DB)),  # MPFEDownloads
     (0x00632893, jmp_run(0x0063285A)),  # MPFEDownloads
+    (0x006328EB, copy_run(0x00632893)),  # MPFEFileTransfer
+    (0x00632915, jmp_run(0x006328EB)),  # MPFEFileTransfer
+    (0x00632986, copy_run(0x00632913)),  # MPFEFileTransfer
+    (0x00632A11, jmp_run(0x00632986)),  # MPFEFileTransfer
+    (0x00632B81, copy_run(0x00632A11)),  # MPFEFileTransfer
+    (0x00632BC1, copy_run(0x00632B81)),  # MPFEFileTransfer
+    (0x00632DA3, copy_run(0x00632BC1)),  # MPFEFileTransfer
+    (0x00632FB9, jmp_run(0x00632DA3)),  # MPFEFileTransfer
+    (0x00633191, jmp_run(0x00632FB9)),  # MPFEFileTransfer
+    (0x0063321B, jmp_run(0x00633191)),  # MPFEFindGame
+    (0x00633245, copy_run(0x0063321B)),  # MPFEFindGame
+    (0x006332E7, copy_run(0x00633243)),  # MPFEFindGame
+    (0x0063334A, copy_run(0x006332E7)),  # MPFEFindGame
+    (0x00633512, jmp_run(0x0063334A)),  # MPFEFindGame
+    (0x00633559, jmp_run(0x00633512)),  # MPFEFindGame
+    (0x00633587, copy_run(0x00633559)),  # MPFEFindGame
+    (0x006336D9, jmp_run(0x00633587)),  # MPFEFindGame
     (0x006341FB, jmp_run(0x006341A9)),  # MPFELogin
     (0x00634225, copy_run(0x006341FB)),  # MPFELogin
     (0x0063430A, copy_run(0x00634223)),  # MPFELogin
@@ -2228,6 +2341,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00635347, copy_run(0x00635264)),  # MPFENumberCodec
     (0x0063543B, jmp_run(0x00635347)),  # MPFENumberCodec
     (0x00635497, jmp_run(0x0063543B)),  # MPFENumberCodec
+    (0x006354BB, jmp_run(0x00635497)),  # MPFEPlayerDetails
+    (0x00635638, jmp_run(0x006354BB)),  # MPFEPlayerDetails
+    (0x00635773, jmp_run(0x00635638)),  # MPFEPlayerDetails
+    (0x00635B68, copy_run(0x00635773)),  # MPFEPlayerDetails
+    (0x00635E18, jmp_run(0x00635B68)),  # MPFEPlayerDetails
+    (0x006362CA, copy_run(0x00421795)),  # MPFEPlayerDetails
+    (0x00636315, jmp_run(0x006362CA)),  # MPFEPlayerDetails
+    (0x00636373, jmp_run(0x00636315)),  # MPFEPlayerDetails
+    (0x0063639B, jmp_run(0x00636373)),  # MPFEPlayerDetails
+    (0x00636444, copy_run(0x00636396)),  # MPFEPlayerDetails
     (0x00639FD3, jmp_run(0x00639F7A)),  # Object
     (0x00639FFB, jmp_run(0x00639FD3)),  # Object
     (0x0063A023, copy_run(0x00639FFB)),  # Object

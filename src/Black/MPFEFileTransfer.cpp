@@ -96,11 +96,12 @@ void MPFEFileTransfer::Process()
 		return;
 	}
 
-	char  chunk[MPFE_FILE_TRANSFER_CHUNK_SIZE + 1];
-	char* text = SendText + SentLength;
-	int   length = min(MPFE_FILE_TRANSFER_CHUNK_SIZE, strlen(text));
-	strncpy(chunk, text, length);
+	char chunk[MPFE_FILE_TRANSFER_CHUNK_SIZE + 1];
+	// The original swaps memset's size and value (Mac: memset(chunk, 0x191, 0)), so nothing is cleared.
+	memset(chunk, sizeof(chunk), 0);
+	int length = min(MPFE_FILE_TRANSFER_CHUNK_SIZE, strlen(SendText + SentLength));
 	chunk[length] = '\0';
+	strncpy(chunk, SendText + SentLength, length);
 	SentLength += length;
 
 	MPFEFileTransferMessage message(
@@ -228,15 +229,19 @@ void MPFEFileTransfer::CompressAndEncode()
 
 void MPFEFileTransfer::Encode(char* text, const char* data, unsigned long length)
 {
+	int text_index = 0;
+	int data_index = 0;
 	for (int i = 0; i < (int)(length / 3); i++)
 	{
-		unsigned char a = data[i * 3];
-		unsigned char b = data[i * 3 + 1];
-		unsigned char c = data[i * 3 + 2];
-		text[i * 4] = (a >> 2) + '!';
-		text[i * 4 + 1] = (((b >> 2) & 0x3c) | (a & 3)) + '!';
-		text[i * 4 + 2] = (((b & 0xf) << 2) | (c & 3)) + '!';
-		text[i * 4 + 3] = (c >> 2) + '!';
+		unsigned char a = data[data_index];
+		unsigned char b = data[data_index + 1];
+		unsigned char c = data[data_index + 2];
+		text[text_index] = (a >> 2) + '!';
+		text[text_index + 1] = (((b >> 2) & 0x3c) | (a & 3)) + '!';
+		text[text_index + 2] = (((b & 0xf) << 2) | (c & 3)) + '!';
+		text[text_index + 3] = (c >> 2) + '!';
+		data_index += 3;
+		text_index += 4;
 	}
 }
 
@@ -254,16 +259,20 @@ void MPFEFileTransfer::DecodeAndUncompress()
 
 void MPFEFileTransfer::Decode(char* data, const char* text, unsigned long length)
 {
+	int text_index = 0;
+	int data_index = 0;
 	for (int i = 0; i < (int)(length / 4); i++)
 	{
-		unsigned char a = text[i * 4] - '!';
-		unsigned char b = text[i * 4 + 1] - '!';
-		unsigned char c = text[i * 4 + 2] - '!';
-		unsigned char d = text[i * 4 + 3] - '!';
+		unsigned char a = text[text_index] - '!';
+		unsigned char b = text[text_index + 1] - '!';
+		unsigned char c = text[text_index + 2] - '!';
+		unsigned char d = text[text_index + 3] - '!';
 		unsigned char z = (d << 2) | (c & 3);
-		data[i * 3] = (a << 2) | (b & 3);
-		data[i * 3 + 1] = ((b & 0xfc) << 2) | (c >> 2);
-		data[i * 3 + 2] = z;
+		data[data_index] = (a << 2) | (b & 3);
+		data[data_index + 1] = ((b & 0xfc) << 2) | (c >> 2);
+		data[data_index + 2] = z;
+		text_index += 4;
+		data_index += 3;
 	}
 }
 

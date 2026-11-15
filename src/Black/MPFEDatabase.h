@@ -31,8 +31,6 @@ class MPFEDatabase
 public:
 	// BW1W120 00d40eb8
 	static LHLinkedList<LandscapeDetails*> Landscapes;
-	// BW1W120 00bfd83c
-	static char* OnlineMapsPath;
 	// BW1W120 00d40e68
 	static DBInfo Query;
 

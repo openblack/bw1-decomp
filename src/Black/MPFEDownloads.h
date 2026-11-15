@@ -52,6 +52,9 @@ public:
 	float GetTransferSpeed() { return TransferSpeed; }
 	// BW1W120 inlined BW1M119 inlined
 	float GetPercentageDownloaded() { return PercentageDownloaded; }
+
+	// BW1W120 00bfd83c
+	static char* OnlineMapsPath;
 };
 
 static_assert(sizeof(MPFEDownloads) == 0x280, "MPFEDownloads size is incorrect");

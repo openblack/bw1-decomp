@@ -65,7 +65,9 @@
 #include "MPFETeamsReadyList.h"              /* For MPFETeamsReadyList */
 #include "MPFEUserTeamList.h"                /* For MPFEUserTeamList */
 #include "Player.h"                          /* For GPlayer */
-#include "WinConditionSettings.h"            /* For WinConditionSettings */
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+#include "WinConditionSettings.h" /* For WinConditionSettings */
+#endif
 
 #if defined(VERSION_BW1W100)
 #undef ORIGINAL_LINE
@@ -697,14 +699,16 @@ void MPFEData::A2D_RequestForPlayerDetails(wchar_t* name)
 void MPFEData::ProcessDaniel()
 {
 	static unsigned long lastRefreshTime = 0;
-	static unsigned long lastReadySendTime = 0;
-	static unsigned long lastConditionsSendTime = 0;
-	static unsigned long lastTeamsReadySendTime = 0;
 	static unsigned long lastTeamsSendTime = 0;
-	static unsigned long lastClansSendTime = 0;
-	static unsigned long lastMapSendTime = 0;
 #if defined(VERSION_BW1WCI)
 	static unsigned long lastTykeStatusSendTime = 0;
+#endif
+	static unsigned long lastClansSendTime = 0;
+	static unsigned long lastMapSendTime = 0;
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	static unsigned long lastConditionsSendTime = 0;
+	static unsigned long lastTeamsReadySendTime = 0;
+	static unsigned long lastReadySendTime = 0;
 #endif
 
 	Layer->Process();
@@ -1551,37 +1555,36 @@ void MPFEData::A2D_StartGame()
 		}
 	}
 #endif
-	if (StartGameRequested || MapDownload.IsDownloading() || CurrentChannel->MapID == 0 || numPlayers <= 1)
+	if (!StartGameRequested && !MapDownload.IsDownloading() && CurrentChannel->MapID != 0 && numPlayers > 1)
 	{
-		return;
-	}
-	Data.MapChecksum = Data.GetMapChecksum(CurrentChannel->MapID);
-	Data.ActiveDialog->setup_box->SetOffHold();
-	Data.ActiveDialog->Requesters.DeleteAll();
-	Data.D2A_HostWaitStart();
-	MPFEStartGameOkayToStartMessage message;
-	Data.StartGameRequested = true;
+		Data.MapChecksum = Data.GetMapChecksum(CurrentChannel->MapID);
+		Data.ActiveDialog->setup_box->SetOffHold();
+		Data.ActiveDialog->Requesters.DeleteAll();
+		Data.D2A_HostWaitStart();
+		MPFEStartGameOkayToStartMessage message;
+		Data.StartGameRequested = true;
 #ifndef VERSION_BW1W100
-	Data.GetLayer()->SetInvite(true);
+		Data.GetLayer()->SetInvite(true);
 #endif
-	for (int j = 0; j < MAX_TEAMS; j++)
-	{
-		for (OrderedNode<MPFEPlayerDetails>* node = Data.Teams[j].head; node != NULL; node = node->next)
+		for (int j = 0; j < MAX_TEAMS; j++)
 		{
-			if (node->GetData() != Data.GetLocalPlayer())
+			for (OrderedNode<MPFEPlayerDetails>* node = Data.Teams[j].head; node != NULL; node = node->next)
 			{
-				Data.PlayersAwaitingStartReply.AddToEnd(node->GetData());
-				message.Send(node->GetData());
+				if (node->GetData() != Data.GetLocalPlayer())
+				{
+					Data.PlayersAwaitingStartReply.AddToEnd(node->GetData());
+					message.Send(node->GetData());
+				}
 			}
 		}
-	}
-	for (LHLinkedListIterator<MPFEPlayerDetails*> it = Data.UnassignedPlayers.GetStart(); it; it++)
-	{
-		MPFEDisconnectNowMessage disconnect;
-		disconnect.Send(it.Get());
+		for (LHLinkedListIterator<MPFEPlayerDetails*> it = Data.UnassignedPlayers.GetStart(); it; it++)
+		{
+			MPFEDisconnectNowMessage disconnect;
+			disconnect.Send(it.Get());
 #ifndef VERSION_BW1W100
-		Data.GetLayer()->KickPlayerFromChannel(it.Get());
+			Data.GetLayer()->KickPlayerFromChannel(it.Get());
 #endif
+		}
 	}
 }
 
@@ -1942,7 +1945,27 @@ void MPFEData::D_UpdateBoxClans()
 	ActiveDialog->UpdateClans();
 }
 
+void LayerCommunication::SendMessageA(wchar_t* message, bool private_message, MPFEPlayerDetails* player) {}
+
+void LayerCommunication::SendMessageA(const char* message, bool private_message, MPFEPlayerDetails* player) {}
+
+void LayerCommunication::LeaveMainRoom() {}
+
+void LayerCommunication::LeaveGameChannel() {}
+
+void LayerCommunication::BeginPlayerEnumeration() {}
+
+void LayerCommunication::Process() {}
+
+#if defined(VERSION_BW1WCI)
+// BW1WCI 0063d610 BW1MCI119 null
+// Real emitted empty function; nothing calls it and the Mac Creature Isle build has none, so its name is unrecovered.
+void fn_0063D610() {}
+#endif
+
 uint64_t MPFEData::InfoFileChecksum2 = 0;
 uint64_t MPFEData::InfoFileChecksum = 0;
+#ifndef VERSION_BW1W100
 uint64_t MPFEData::CreatureFileChecksum = 0;
+#endif
 uint64_t MPFEData::OOSChecksum = 0;
