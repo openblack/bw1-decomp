@@ -987,6 +987,8 @@ struct VBarData
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
+	VBarData(const LH3DColor& bar_color, float bar_value) : color(bar_color), value(bar_value) {}
+	// BW1W120 inlined BW1M119 inlined
 	VBarData(const VBarData& bar) : color(bar.color), value(bar.value) {}
 
 	// Non-virtual methods
@@ -1040,15 +1042,16 @@ struct SetupHSBarGraph : public SetupVBarGraph
 
 	// BW1W120 0040d3c0 BW1M119 013e4290
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 0056d960 BW1M119 011153b0
-	virtual ~SetupHSBarGraph();
 	// BW1W120 0040d9a0 BW1M119 013e3f50
 	virtual void SetScale(float scale);
 
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	SetupHSBarGraph(int id, int x, int y, int width, int height, const char16_t* label);
+	SetupHSBarGraph(int id, int x, int y, int width, int height, const char16_t* label)
+		: SetupVBarGraph(id, x, y, width, height, label)
+	{
+	}
 };
 
 struct HLineData

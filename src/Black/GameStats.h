@@ -137,7 +137,7 @@ struct GameStatsPackage
 		GameStatsPerPlayer() {}
 	};
 
-	short              NumPlayers;
+	uint16_t           NumPlayers;
 	GameStatsPerPlayer PerPlayer[4];
 	unsigned long      TotalLinesOfCodeExecuted;
 	float              MaxFrameRate;
