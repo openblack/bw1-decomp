@@ -61,6 +61,76 @@ StatsBox*                StatsBox::Instance;
 EndGameBox*              EndGameBox::Instance;
 MultiplayerConditionBox* MultiplayerConditionBox::Instance;
 
+static bool32_t TotalTitleDrawn;
+
+uint32_t StatDetails::Draw(SetupList* list, int index, int x_min, int y_min, int x_max, int y_max, int clip_min,
+                           int clip_max, int style)
+{
+	if (clip_min >= y_max - 1 || clip_max <= y_min + 1)
+		return false;
+
+	if (StatsBox::Instance != NULL)
+	{
+		if ((style != BBSTYLE_CHECK_BOX_OFF || Display == GRAPHDISPLAYTYPE_0) && Display != GRAPHDISPLAYTYPE_1)
+		{
+			clip_min = clip_min > y_min ? clip_min < y_max ? clip_min : y_max : y_min;
+			clip_max = clip_max > y_min ? clip_max < y_max ? clip_max : y_max : y_min;
+			if (clip_min < clip_max - 10 && NumValues >= 1 && NumValues <= STATS_BOX_NUM_SCORE_GRAPHS)
+			{
+				SetupHSBarGraph* graph = StatsBox::Instance->ScoreGraphs[NumValues - 1];
+				graph->rect.end.y = clip_max - 2;
+				graph->rect.start.y = clip_min + 2;
+				graph->rect.end.x = x_max - 4;
+				graph->rect.start.x = x_max - 300;
+				for (int i = 0; i < NumValues; i++)
+					graph->SetBar(i, VBarData(Colors[i], Values[i]));
+				if (NumValues == 1)
+					graph->SetScale(Max);
+				else
+					graph->SetScale(0.0f);
+				graph->Draw(false, false);
+			}
+		}
+		else
+		{
+			int      x = x_max - 300;
+			int      spacing = 300 / (NumValues + 1);
+			float    total = 0.0f;
+			bool32_t single = false;
+			wchar_t  text[256];
+			for (int i = 0; i < NumValues; i++)
+			{
+				total += Values[i];
+				if (ShowMax == SHOWMAXTYPE_PERCENT && Max != 0.0f)
+					swprintf(text, Format, Values[i] / Max * 100.0f, Max);
+				else
+					swprintf(text, Format, Values[i], Max);
+				if (NumValues > 1)
+					SetupThing::DrawTextWrap(x - spacing * 2, y_min, x + spacing * 3, y_max, clip_min + 2, true, text,
+					                         GetSmallTextSize(), &Colors[i], false, false);
+				else
+					single = true;
+				x += spacing;
+			}
+			if (ShowMax != SHOWMAXTYPE_PERCENT)
+			{
+				swprintf(text, Format, total, Max);
+				SetupThing::DrawTextWrap(x - spacing * 2, y_min, x + spacing * 3, y_max, clip_min + 2, true, text,
+				                         GetSmallTextSize(), &SetupThing::NormalColour, false, false);
+			}
+			if (!TotalTitleDrawn && single)
+			{
+				TotalTitleDrawn = true;
+				int      title_y = y_min - GetSmallTextSize();
+				wchar_t* title = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_03);
+				SetupThing::DrawTextWrap(x - spacing * 2, title_y, x + spacing * 3, y_max, title_y, true, title,
+				                         GetSmallTextSize(), &SetupThing::NormalColour, false, false);
+			}
+		}
+	}
+	return true;
+}
+
 void StatsBox::CopyDetailsToDynamic(int index, SetupVBarGraph* graph)
 {
 	if (graph == NULL)
