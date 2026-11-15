@@ -1688,11 +1688,12 @@ Black/MPFEChooseConnection.cpp:
 	.rdata$r    start:0x00A22FB8 end:0x00A23008
 	.CRT$XCU    start:0x00A36B44 end:0x00A36B50 align:4
 	.data       start:0x00C657D0 end:0x00C65868
-	.bss        start:0x00DC1B70 end:0x00DC1FC0
+	.bss        start:0x00DC1B70 end:0x00DC1FBC
 
 Black/MPFEClanDetails.cpp:
 	.text       start:0x006422E0 end:0x00643070
 	.rdata      start:0x009889E8 end:0x00988A1C
+	.rdata$r    start:0x00A23008 end:0x00A230F8
 	.CRT$XCU    start:0x00A36B50 end:0x00A36B60 align:4
 	.data       start:0x00C65868 end:0x00C65940
 	.bss        start:0x00DC1FC0 end:0x00DC1FD0
@@ -1746,9 +1747,10 @@ Black/MPFEFindGame.cpp:
 Black/MPFEGameStartMessages.cpp:
 	.text       start:0x00645C70 end:0x00646680
 	.rdata      start:0x00988AD0 end:0x00988B28
+	.rdata$r    start:0x00A23290 end:0x00A23470
 	.CRT$XCU    start:0x00A36BAC end:0x00A36BBC align:4
 	.data       start:0x00C6E530 end:0x00C6E678
-	.bss        start:0x00DC20E4 end:0x00DC20F8
+	.bss        start:0x00DC20E4 end:0x00DC20F4
 
 Black/MPFELogin.cpp:
 	.text       start:0x00646680 end:0x00647150

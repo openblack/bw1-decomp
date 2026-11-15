@@ -598,6 +598,8 @@ public:
 
 	// Non-virtual functions
 
+	// BW1W120 inlined BW1M119 01380dd0
+	void SetHeading(float heading) { y_angle = heading; }
 	// BW1W120 0080b440 BW1M119 01080190 (LHCombined Release)
 	void SetEnvMap(ENV_MAP_TYPE env_map);
 	// BW1W120 0080bec0 BW1M119 0101c8e0 (LHCombined Release)

@@ -50,32 +50,6 @@ public:
 		}
 		return false;
 	}
-	// The flag stops after the first match; it never controls payload ownership.
-	inline void Remove(T val, bool only_first = false)
-	{
-		LHLinkedNode<T>* prev = NULL;
-		LHLinkedNode<T>* node = head.Get();
-		while (node != NULL)
-		{
-			LHLinkedNode<T>* next = node->next.Get();
-			if (node->payload == val)
-			{
-				if (node == head.Get())
-					head.Set(next);
-				else
-					prev->next.Set(next);
-				count--;
-				delete node;
-				if (only_first)
-					return;
-			}
-			else
-			{
-				prev = node;
-			}
-			node = next;
-		}
-	}
 	// BW1W120 00742230 BW1M119 01560ce0
 	bool32_t IsThisInList(T val)
 	{
@@ -162,6 +136,31 @@ public:
 		for (long i = 0; i < position; i++)
 			node = node->next.Get();
 		return node;
+	}
+	inline void Remove(T val, bool only_first = false)
+	{
+		LHLinkedNode<T>* prev = NULL;
+		LHLinkedNode<T>* node = head.Get();
+		while (node != NULL)
+		{
+			LHLinkedNode<T>* next = node->next.Get();
+			if (node->payload == val)
+			{
+				if (node == head.Get())
+					head.Set(next);
+				else
+					prev->next.Set(next);
+				count--;
+				delete node;
+				if (only_first)
+					return;
+			}
+			else
+			{
+				prev = node;
+			}
+			node = next;
+		}
 	}
 	// BW1W120 inlined BW1M119 010dd460
 	inline T GetAtPosition(long position)

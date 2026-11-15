@@ -1,10 +1,3 @@
-#include "CellSize.h" /* For CellSize, ahead of PI in .rdata */
-#include <Lionhead/LH3DLib/development/LH3DScaleConstants.h>
-#include <Lionhead/LH3DLib/development/LH3DMathConstants.h>
-
-#include "ColourConstants.h"   /* For White */
-#include "GameTimeConstants.h" /* For SecondsPerYear */
-
 #include "MPFEMessageObject.h"
 
 #include <stdio.h> /* For swprintf, swscanf */
@@ -32,6 +25,14 @@
 #include "MPFEStartGameTransferFilesMessage.h" /* For MPFEStartGameTransferFilesMessage */
 #include "MPFEStopGameStartMessage.h"          /* For MPFEStopGameStartMessage */
 #include "alexmfc.h"                           /* For SetupBox::SetOffHold */
+
+#include "MapCoordsMeters.h" /* For MetresPerMapCell */
+
+#include <Lionhead/LH3DLib/development/LH3DMathConstants.h>  /* For PI_OVER_2 */
+#include <Lionhead/LH3DLib/development/LH3DScaleConstants.h> /* For EighthScale */
+
+#include "ColourConstants.h"   /* For White */
+#include "GameTimeConstants.h" /* For SecondsPerYear */
 
 #if defined(VERSION_BW1W100)
 #undef ORIGINAL_LINE

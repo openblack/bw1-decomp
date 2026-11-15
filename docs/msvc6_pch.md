@@ -94,7 +94,28 @@ no PCH, /Yc: Mem Gamma Beta Decl HdrStatic Alpha Delta        (hash order)
 ```
 
 A static the unit defines but never uses still gets its slot in both modes (unnamed in the
-object). A static defined in the PCH gets one only if the unit uses it, at its first use.
+object). A static defined in the PCH gets one only if the unit uses it, at its first use; a use
+in the body of an inline function that nothing calls counts.
+
+### A PCH's statics and constants: initialised and laid out in the PCH's order [verified]
+
+A static with a dynamic initializer that the PCH defines and the unit uses is initialised by the
+unit, but its initializer is one of the PCH's functions: the unit emits it by the offset rule
+above. Defined ahead of the PCH's inline code, the PCH's statics are therefore initialised
+before the unit's own, in the PCH's definition order, while `.bss` holds them in the reverse
+order of their first uses in the unit like any other static:
+
+```
+pch.h: static float Eighth = F(); static float HalfPi = G();
+t.cpp: inline float A() { return HalfPi; }  inline float B() { return Eighth; }
+       static int White = H(); static int Year = I();
+
+/Yu pch.h:  .CRT$XCU  Eighth HalfPi White Year      .bss  Year White Eighth HalfPi
+```
+
+A `const float` goes to `.rdata` only in a unit that uses it (an uncalled inline's use counts
+here too, a literal of the same value does not), in definition order, and the PCH's come first
+in the PCH's order wherever the unit uses them.
 
 ### Initializer numbers continue from the PCH [verified]
 
@@ -195,6 +216,16 @@ Every unit using a PCH is compiled with `/FI<header> /Yu<header>`: the header is
 so the unit's source does not include it. The PCH is built once per version at the source's
 path, for example `build/<version>/src/Black/BlackPCH.pch`.
 
+`BlackPCH.h` defines four constants ahead of everything else (§3): `MaxFloat`, `MetresPerMapCell`
+and LH3DLib's `EighthScale` and `PI_OVER_2`. A unit built with it holds each only if it uses it.
+The two statics are used by nothing we know, so their headers carry a fabricated inline that
+uses them, compiled only where the header's guard is already defined: a unit built with the PCH
+that includes `LH3DScaleConstants.h` or `LH3DMathConstants.h` uses the static at that point, and
+a unit built without it defines it there as before. They stand for the same kind of unknown header
+inline as `CellSize.h`'s `GetCellSize`, and probably the same one: in every version about three in
+four units holding either static also hold a `CellSize` that nothing reads (1.20: 40 of 52), against
+one in twenty of the others (23 of 435).
+
 `BlackPCH.h` also holds stand-ins for inline code the original header had and ours lacks (§3):
 functions made of a repeated statement, which nothing calls and no unit emits. They only move
 the offsets of what follows them (§1).
@@ -288,8 +319,9 @@ include order. `SecondsPerYear` and `White` in 1.20:
 Over every pair of these statics (`comdat-scan.py initializers`), the units in reverse
 `.CRT$XCU` order are 47 of 48 in 1.00, 52 of 54 in 1.10, 192 of 204 in 1.20, 151 of 162 in
 1.30 and 111 of 113 in Creature Isle. Two LH3DLib constants, `EighthScale` and `PI_OVER_2`, are
-left out: in about twenty units they come first in `.bss` although they are initialised
-first, and nothing explains that yet.
+left out: in about twenty units they are initialised first, in this order, yet lie in `.bss`
+in that same order, ahead of or behind the unit's own statics. That is what statics defined in
+the PCH and used by the unit do (§1), so the PCH defined them.
 
 Statics named after the Mac symbols, whose names were not picked, give the same answer without
 the header statics: `Alignment`, `Creature`, `Field`, `GatheringInterface`, `PrayerSite`,
@@ -356,6 +388,15 @@ original but out of line here. The PCH changes no kept function's order in any l
   `GameThing.h` and `GameThingWithPos.h` first, before `Object.h`, loses Abode's gain.
 - `GameTimeConstants.h` was not in it: a static with a dynamic initializer that is defined in
   the PCH is not emitted again by a `/Yu` unit, while most targets hold `SecondsPerYear`.
+- LH3DLib's `EighthScale` and `PI_OVER_2` were in it (above), defined ahead of its inline code:
+  `MPFEClanDetails` and `MPFEGameStartMessages` initialise them before `White` and
+  `SecondsPerYear` and hold them after both in `.bss`.
+- `MaxFloat` and `MetresPerMapCell` were in it, in this order and ahead of `PI`: the units that
+  use them hold them at the head of `.rdata` whatever they define themselves (`FLT_MAX`, `10` in
+  eleven of 1.20's units, `10`, `PI` in thirty-five), which a constant of the PCH does (§1).
+  `CellSize`, the same value, was not: `Abode`, `Object` and four more hold it behind their
+  `GameTimeConstants.h` pair. A unit that holds `MetresPerMapCell` without using it in its own
+  code includes `MapCoordsMeters.h`, whose inline `MapCoords` members use it.
 - `Villager.h` and `Living.h` were not in it: with them complete before
   `VillagerStateTableEntry` and `ReactionFunction` are declared, their member pointers
   become 4 bytes, while the target's tables use 16-byte entries.
@@ -475,7 +516,8 @@ an added function.
 ## 6. Open questions
 
 - Whether the original used `/Yu` with per-file overrides or `/YX`.
-- `EighthScale` and `PI_OVER_2` (§3).
+- The inline code through which units use `EighthScale` and `PI_OVER_2`, for which the two
+  constants' headers stand in (§2).
 - The header that gave 429 of 1.20's units the ctype guard, for which `GameThingWithPos.h`'s
   `<string>` stands in (§3); with it found, the units of §4's second group return to the PCH.
 - The edge of the PCH's contents: `BaseInfo.h` and `ObjectInfo.h`, which the base-class headers

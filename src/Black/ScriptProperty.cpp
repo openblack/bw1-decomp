@@ -1,6 +1,6 @@
 #include "WhiteColour.h"
 #include "GameTimeConstants.h"
-#include "MapCoordsMeters.h"
+#include "CellSize.h" /* For CellSize */
 #include "CreatureAttitudeConstants.h"
 #include "Script.h"
 

@@ -13,4 +13,14 @@ inline float GetOneEighth()
 // Renaming it will move it: re-check both units' .bss first.
 static float EighthScale = GetOneEighth();
 
+#elif !defined(BW1_DECOMP_LH3D_SCALE_CONSTANTS_USED)
+#define BW1_DECOMP_LH3D_SCALE_CONSTANTS_USED
+
+// A unit built with a precompiled header that defines EighthScale holds it only if it uses it.
+// Stand-in for the inline code of the original header through which those units use it; nothing calls it.
+inline float UseEighthScale()
+{
+	return EighthScale;
+}
+
 #endif /* BW1_DECOMP_LH3D_SCALE_CONSTANTS_INCLUDED_H */

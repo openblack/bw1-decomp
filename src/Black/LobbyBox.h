@@ -10,6 +10,9 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+class LHLobby;
+class LHLobbyChannel;
+
 class LobbyBox : public DialogBoxBase
 {
 public:
@@ -31,8 +34,26 @@ public:
 	// BW1W120 005f5a50 BW1M119 015de3c0
 	virtual void InitControls();
 
+	// BW1W120 inlined BW1M119 015da9d0
+	void ResetUsers(LHLobby* lobby, LHLobbyChannel* channel);
+	// BW1W120 005f80c0 BW1M119 015dafe0
+	void LeaveGameState();
+	// BW1W120 inlined BW1M119 015db310
+	void LockInGameState(bool, wchar_t*);
+	// BW1W120 inlined BW1M119 015db580
+	void SelectLobby();
+	// BW1W120 inlined BW1M119 015db950
+	void ProcessNetEvents(int, int, SetupBox* box);
+	// BW1W120 inlined BW1M119 015dcea0
+	void Connect();
+	// BW1W120 inlined BW1M119 015dd0b0
+	void Disconnect();
 	// BW1W120 005f5fb0 BW1M119 015dd220
 	static void __stdcall ControlCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
+	// BW1W120 inlined BW1M119 015ddd40
+	void SetUserColours();
+	// BW1W120 inlined BW1M119 015de080
+	void SendMapsPresentString();
 
 	// BW1W120 inlined
 	LobbyBox()

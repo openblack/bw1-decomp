@@ -986,6 +986,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0062A2BB, call_rel32(0x004017F9)),  # MPFEChannelSelector
     (0x0062AC4B, call_rel32(0x004017F9)),  # MPFEChooseConnection
     (0x0062B8BB, call_rel32(0x004017F9)),  # MPFEChooseConnection
+    (0x0062B90B, call_rel32(0x004017F9)),  # MPFEClanDetails
+    (0x0062B95B, call_rel32(0x004017F9)),  # MPFEClanDetails
+    (0x0062C15B, call_rel32(0x004017F9)),  # MPFEClanDetails
     (0x0062C6AB, call_rel32(0x004017F9)),  # MPFEConditionMessages
     (0x0062C6FB, call_rel32(0x004017F9)),  # MPFEConditionMessages
     (0x0062DB2B, call_rel32(0x004017F9)),  # MPFECreatureDownload
@@ -2272,6 +2275,18 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0062EEF5, jmp_run(0x0062EAD7)),  # MPFEChooseConnection
     (0x0062F006, copy_run(0x0062EEF5)),  # MPFEChooseConnection
     (0x0062F5BB, jmp_run(0x0062F006)),  # MPFEChooseConnection
+    (0x0062F60B, copy_run(0x0062F5BB)),  # MPFEClanDetails
+    (0x0062F635, jmp_run(0x0062F60B)),  # MPFEClanDetails
+    (0x0062F65B, jmp_run(0x0062F633)),  # MPFEClanDetails
+    (0x0062F685, copy_run(0x0062F65B)),  # MPFEClanDetails
+    (0x0062F894, jmp_run(0x0062F683)),  # MPFEClanDetails
+    (0x0062FC27, copy_run(0x0062F70B)),  # MPFEClanDetails
+    (0x0062FDF7, jmp_run(0x0062FC27)),  # MPFEClanDetails
+    (0x0062FE5B, jmp_run(0x0062FDF7)),  # MPFEClanDetails
+    (0x00630052, jmp_run(0x0062FE5B)),  # MPFEClanDetails
+    (0x00630121, copy_run(0x00630052)),  # MPFEClanDetails
+    (0x006301F7, jmp_run(0x00630121)),  # MPFEClanDetails
+    (0x00630352, jmp_run(0x006301F7)),  # MPFEClanDetails
     (0x006303AB, copy_run(0x00630352)),  # MPFEConditionMessages
     (0x006303D5, jmp_run(0x006303AB)),  # MPFEConditionMessages
     (0x006303FB, jmp_run(0x006303D3)),  # MPFEConditionMessages
@@ -2322,6 +2337,19 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00633559, jmp_run(0x00633512)),  # MPFEFindGame
     (0x00633587, copy_run(0x00633559)),  # MPFEFindGame
     (0x006336D9, jmp_run(0x00633587)),  # MPFEFindGame
+    (0x006337BB, jmp_run(0x006336D9)),  # MPFEGameStartMessages
+    (0x006337E5, copy_run(0x006337BB)),  # MPFEGameStartMessages
+    (0x0063380B, copy_run(0x006337E3)),  # MPFEGameStartMessages
+    (0x00633835, jmp_run(0x0063380B)),  # MPFEGameStartMessages
+    (0x00633886, copy_run(0x00633833)),  # MPFEGameStartMessages
+    (0x006339F6, jmp_run(0x00633886)),  # MPFEGameStartMessages
+    (0x00633D46, copy_run(0x005852CD)),  # MPFEGameStartMessages
+    (0x00633E0B, copy_run(0x00580A0F)),  # MPFEGameStartMessages
+    (0x00633E66, copy_run(0x00633E0B)),  # MPFEGameStartMessages
+    (0x00633F65, copy_run(0x0062BA7A)),  # MPFEGameStartMessages
+    (0x00633FB9, jmp_run(0x00633F65)),  # MPFEGameStartMessages
+    (0x00634049, copy_run(0x00580A0F)),  # MPFEGameStartMessages
+    (0x006341A9, copy_run(0x00580A0F)),  # MPFEGameStartMessages
     (0x006341FB, jmp_run(0x006341A9)),  # MPFELogin
     (0x00634225, copy_run(0x006341FB)),  # MPFELogin
     (0x0063430A, copy_run(0x00634223)),  # MPFELogin

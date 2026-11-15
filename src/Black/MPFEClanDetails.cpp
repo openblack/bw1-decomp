@@ -1,9 +1,3 @@
-#include "CellSize.h" /* For CellSize */
-#include <Lionhead/LH3DLib/development/LH3DScaleConstants.h>
-#include <Lionhead/LH3DLib/development/LH3DMathConstants.h>
-#include "ColourConstants.h"   /* For White */
-#include "GameTimeConstants.h" /* For SecondsPerYear */
-
 #include "MPFEClanDetails.h"
 
 #include <stdio.h>  /* For swprintf, swscanf */
@@ -29,6 +23,14 @@
 #include "MPFEResetClan.h"         /* For MPFEResetClan */
 
 #include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h> /* For LHOrderedLinkedListIterator */
+
+#include "MapCoordsMeters.h" /* For MetresPerMapCell */
+
+#include <Lionhead/LH3DLib/development/LH3DMathConstants.h>  /* For PI_OVER_2 */
+#include <Lionhead/LH3DLib/development/LH3DScaleConstants.h> /* For EighthScale */
+
+#include "ColourConstants.h"   /* For White */
+#include "GameTimeConstants.h" /* For SecondsPerYear */
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #define MPFE_CLAN_DETAILS_QUERY "CLANGETINFO2 NULL,%u"

@@ -770,7 +770,9 @@ slow_report_options = {"combineDataSections": False}
 
 
 def GameCodeObject(completed, name, pch=True, **options):
-    return Object(completed, name, cflags=cflags_gamecode, pch=gamecode_pch if pch else None, **options)
+    if pch is True:
+        pch = gamecode_pch
+    return Object(completed, name, cflags=cflags_gamecode, pch=pch or None, **options)
 
 
 # LH3DLib's precompiled header. Its contents are those the units built with it need: the
@@ -1224,7 +1226,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/MPFEChannelMessages.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEChannelSelector.cpp"),
             GameCodeObject(Matching, "Black/MPFEChooseConnection.cpp"),
-            GameCodeObject(NonMatching, "Black/MPFEClanDetails.cpp"),
+            GameCodeObject(Matching, "Black/MPFEClanDetails.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEClanList.cpp"),
             GameCodeObject(Matching, "Black/MPFEConditionMessages.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/MPFECondtionUpdateMessage.cpp"),
@@ -1238,7 +1240,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/MPFEFileTransfer.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/MPFEFileTransferMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEFindGame.cpp"),
-            GameCodeObject(NonMatching, "Black/MPFEGameStartMessages.cpp", pch=False),
+            GameCodeObject(Matching, "Black/MPFEGameStartMessages.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEHasCreature.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEInviteToTeamMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEKickMessage.cpp"),

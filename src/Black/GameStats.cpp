@@ -1,8 +1,4 @@
-#include <float.h> /* For FLT_MAX */
-
-// The FLT_MAX constant of CellSize.h. That header cannot be included here: its fabricated GetCellSize() would put
-// CellSize into this unit's .rdata, which only holds MaxFloat.
-const float MaxFloat = FLT_MAX;
+#include "MaxFloat.h" /* For MaxFloat */
 
 const float BeliefStatsScale = 1000.0f;
 

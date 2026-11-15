@@ -181,7 +181,10 @@ compiler emitted them.
   their own source position. In the tests they came after the base vftable group as well.
 - Template function instances are emitted at the **end of the unit**, after every non-template
   function. Instances called directly come in first-call order. Instances needed only by another
-  instantiated template body come after those.
+  instantiated template body come after those, the members of one class template in the order
+  of their definitions in the template, whatever the order of the calls: `MPFEClanDetails` emits
+  `GetLastNode`, `GetNodeAtPosition`, `Remove` of its `LHLinkedList`, so the template defines
+  `Remove` after `GetNodeAtPosition`.
 
 `t6.cpp` (base declares `A1, A2, A3`; derived declares `N1, A3, N2, A1`):
 

@@ -13,6 +13,17 @@ class GAbodeInfo;
 #endif
 #endif
 
+// MaxFloat, MetresPerMapCell and LH3DLib's EighthScale and PI_OVER_2 are defined here, ahead of everything that
+// holds code. A unit built with this header holds each of them only if it uses it: the constants then lead the
+// unit's .rdata in this order, and the two statics are initialised first and in this order, yet laid out in
+// .bss where the unit first uses them (docs/msvc6_pch.md). A unit that does not use one of the two statics in
+// its own code does so by including its header.
+#include "MaxFloat.h"
+#include "MapCellConstants.h"
+
+#include <Lionhead/LH3DLib/development/LH3DScaleConstants.h>
+#include <Lionhead/LH3DLib/development/LH3DMathConstants.h>
+
 // Stand-ins for inline code the original header held and these headers lack so far: a unit emits
 // the header's inline functions where its own code passes their place in the header's code
 // (docs/msvc6_pch.md). Nothing calls these functions and no unit emits them.
