@@ -8,9 +8,11 @@
 
 #include "EndGameBox.h"
 #include "FrontEnd.h" /* For FRONT_END_TAB_FIRST_ID */
+#include "Game.h"     /* For GGame::g_game */
 #include "GameStats.h"
 #include "HelpText.h" /* For HelpTextDataBase::HelpTextDatabase */
 #include "MultiplayerConditionBox.h"
+#include "Player.h" /* For GPlayer::GetPlayer3DColor */
 #include "StatsBox.h"
 #include "alexmfc.h"
 
@@ -94,7 +96,8 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 	details->DecimalPlaces = decimal_places;
 	details->NumValues = num_players;
 	details->Max = 0.0f;
-	for (int i = 0; i < num_players; i++)
+	for (int i = 0; i < num_players;
+	     i++, value = (float*)((uint8_t*)value + sizeof(GameStatsPackage::GameStatsPerPlayer)))
 	{
 		details->Values[i] = *value;
 		details->Values[i] =
@@ -103,7 +106,6 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 				: StatDetailsMinValue;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
-		value = (float*)((uint8_t*)value + sizeof(GameStatsPackage::GameStatsPerPlayer));
 	}
 	for (int j = 0; j < num_players; j++)
 		details->Colors[j] = players[j].Colour;
@@ -127,6 +129,96 @@ uint32_t __stdcall StatsBox::DetailsDraw(SetupList* list, int index, int x_min, 
 		}
 	}
 	return result;
+}
+
+void StatsBox::ADDULONGPLAYER(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max,
+                              GRAPHDISPLAYTYPE display)
+{
+	int index = DetailsList->NumItems;
+	DetailsList->AddString(name, 0, 0, 0);
+	DetailsList->SetItemData(index, (uint32_t)&StatsBuffer[index]);
+	DetailsList->SetListBoxDraw(index, DetailsDraw);
+
+	GameStatsPackage::GameStatsPerPlayer* players = Package->PerPlayer;
+	int                                   num_players = Package->NumPlayers;
+	StatDetails*                          details = &StatsBuffer[index];
+	details->Display = display;
+	details->DecimalPlaces = 0;
+	details->NumValues = num_players;
+	details->Max = 0.0f;
+	for (int i = 0; i < num_players;
+	     i++, value = (unsigned long*)((uint8_t*)value + sizeof(GameStatsPackage::GameStatsPerPlayer)))
+	{
+		details->Values[i] = *value;
+		if (details->Values[i] > details->Max)
+			details->Max = details->Values[i];
+	}
+	for (int j = 0; j < num_players; j++)
+		details->Colors[j] = players[j].Colour;
+	details->ShowMax = show_max;
+	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
+		details->Max = max;
+	details->MakeFormat();
+}
+
+void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
+                              GRAPHDISPLAYTYPE display)
+{
+	int index = DetailsList->NumItems;
+	DetailsList->AddString(name, 0, 0, 0);
+	DetailsList->SetItemData(index, (uint32_t)&StatsBuffer[index]);
+	DetailsList->SetListBoxDraw(index, DetailsDraw);
+
+	LH3DColor    colour = GGame::g_game->MyPlayer()->GetPlayer3DColor();
+	StatDetails* details = &StatsBuffer[index];
+	details->Display = display;
+	details->DecimalPlaces = decimal_places;
+	details->NumValues = 1;
+	details->Max = 0.0f;
+	for (int i = 0; i < 1; i++)
+	{
+		details->Values[i] = *value;
+		details->Values[i] =
+			details->Values[i] > StatDetailsMinValue
+				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
+				: StatDetailsMinValue;
+		if (details->Values[i] > details->Max)
+			details->Max = details->Values[i];
+	}
+	for (int j = 0; j < 1; j++)
+		details->Colors[j] = colour;
+	details->ShowMax = show_max;
+	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
+		details->Max = max;
+	details->MakeFormat();
+}
+
+void StatsBox::ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max,
+                              GRAPHDISPLAYTYPE display)
+{
+	int index = DetailsList->NumItems;
+	DetailsList->AddString(name, 0, 0, 0);
+	DetailsList->SetItemData(index, (uint32_t)&StatsBuffer[index]);
+	DetailsList->SetListBoxDraw(index, DetailsDraw);
+
+	LH3DColor    colour = GGame::g_game->MyPlayer()->GetPlayer3DColor();
+	StatDetails* details = &StatsBuffer[index];
+	details->Display = display;
+	details->DecimalPlaces = 0;
+	details->NumValues = 1;
+	details->Max = 0.0f;
+	for (int i = 0; i < 1; i++)
+	{
+		details->Values[i] = *value;
+		if (details->Values[i] > details->Max)
+			details->Max = details->Values[i];
+	}
+	for (int j = 0; j < 1; j++)
+		details->Colors[j] = colour;
+	details->ShowMax = show_max;
+	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
+		details->Max = max;
+	details->MakeFormat();
 }
 
 void StatsBox::ClearDetails()

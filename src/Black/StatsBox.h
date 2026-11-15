@@ -92,6 +92,13 @@ public:
 	// BW1W120 0056ae00 BW1M119 01328bb0
 	void ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
 	                    GRAPHDISPLAYTYPE display);
+	// BW1W120 0056b010 BW1M119 013289a0
+	void ADDULONGPLAYER(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max, GRAPHDISPLAYTYPE display);
+	// BW1W120 0056b190 BW1M119 01328740
+	void ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
+	                    GRAPHDISPLAYTYPE display);
+	// BW1W120 0056b330 BW1M119 01328330
+	void ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max, GRAPHDISPLAYTYPE display);
 	// BW1W120 0056b4b0 BW1M119 01326900
 	void UpdateDetails();
 	// BW1W120 0056d220 BW1M119 01326840
