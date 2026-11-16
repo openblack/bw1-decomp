@@ -124,6 +124,10 @@ public:
 	uint32_t GetMaxVillagersNeededToBuild();
 	// BW1W120 0043be40 BW1M119 010bf1a0
 	void AddToBuildingWorkers(Villager* villager);
+	// BW1W120 0043be90 BW1M119 010bf080
+	void RemoveFromBuildingWorkers(Villager* villager);
+	// BW1W120 0043bd00 BW1M119 01067b00
+	static void CheckBuildingSites(LHLinkedList<BuildingSite*>& sites);
 };
 
 #endif /* BW1_DECOMP_BUILDING_SITE_INCLUDED_H */

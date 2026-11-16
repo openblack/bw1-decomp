@@ -566,8 +566,6 @@ public:
 	GKeyBuffer* GetKeyBuffer();
 	// BW1W120 005553a0 BW1M119 013e1550
 	static LH_KEY GetKeyFromModifier(uint16_t modifier);
-	// BW1W120 005559b0 BW1M119 010d1f40
-	LHPlayer* GetTeamLeaderLHPlayer();
 	// BW1W120 null BW1M119 011193b0
 	GPlayer* OtherPlayer();
 	// BW1W120 null BW1M119 011ce750
@@ -672,6 +670,8 @@ public:
 	Town* FindClosestTown(const MapCoords& coords);
 	// BW1W120 00555a10 BW1M119 01505ae0
 	LHPlayer* GetMyLHPlayer();
+	// BW1W120 005559b0 BW1M119 010d1f40
+	LHPlayer* GetTeamLeaderLHPlayer();
 };
 
 // BW1W120 0054b1a0 BW1M119 012641f0

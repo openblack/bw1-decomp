@@ -987,7 +987,11 @@ struct VBarData
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	VBarData(const LH3DColor& bar_color, float bar_value) : color(bar_color), value(bar_value) {}
+	VBarData(const LH3DColor& bar_color, float bar_value) : color(bar_color), value(bar_value)
+	{
+		if (bar_value < 0.0f)
+			bar_value = 0.0f;
+	}
 	// BW1W120 inlined BW1M119 inlined
 	VBarData(const VBarData& bar) : color(bar.color), value(bar.value) {}
 
@@ -1086,6 +1090,8 @@ struct HLineData
 	}
 	// BW1W120 0040da30 BW1M119 01438d50
 	void SetNum(int num);
+	// BW1W120 inlined BW1M119 inlined
+	void SetColor(LH3DColor line_color) { color = line_color; }
 	// BW1W120 inlined BW1M119 inlined
 	void SetPoint(int index, float value)
 	{
