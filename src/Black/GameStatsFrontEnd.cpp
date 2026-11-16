@@ -1,13 +1,21 @@
+#include <math.h>   /* For cos, sin */
 #include <stdio.h>  /* For swprintf */
 #include <string.h> /* For wcscpy */
 
-#include <Lionhead/LHLib/ver5.0/LHWin.h>              /* For NEW */
-#include <Lionhead/LHLog/ver4.0/LHSPrintf.h>          /* For LHSPrintfW */
-#include <Lionhead/LHMultiplayer/ver4.0/LHDatabase.h> /* For DBSTATUS_PENDING */
-#include <Lionhead/LHMultiplayer/ver4.0/LHPlayer.h>   /* For LHPlayer */
-#include <Lionhead/LHMultiplayer/ver4.0/LHSession.h>  /* For LHSession::StopSession */
+#include <Lionhead/LH3DLib/development/LH3DComplexObject.h> /* For LH3DComplexObject::SetNeedClipping */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>          /* For TWO_PI */
+#include <Lionhead/LH3DLib/development/LH3DRender.h>        /* For LH3DRender::SetRenderState */
+#include <Lionhead/LH3DLib/development/LH3DTech.h>          /* For LH3DTech::UpdateCamera */
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>                 /* For LHSys::TheSystem */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>                    /* For NEW */
+#include <Lionhead/LHLog/ver4.0/LHSPrintf.h>                /* For LHSPrintfW */
+#include <Lionhead/LHMultiplayer/ver4.0/LHDatabase.h>       /* For DBSTATUS_PENDING */
+#include <Lionhead/LHMultiplayer/ver4.0/LHPlayer.h>         /* For LHPlayer */
+#include <Lionhead/LHMultiplayer/ver4.0/LHSession.h>        /* For LHSession::StopSession */
 
 #include "ColourConstants.h"   /* For White */
+#include "Creature.h"          /* For Creature::GetCreature3D */
+#include "Creature3D.h"        /* For LH3DCreature::DrawNow */
 #include "GameTimeConstants.h" /* For SecondsPerYear */
 
 #include "EndGameBox.h"
@@ -830,6 +838,157 @@ void StatsBox::InitControls()
 	                           : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88));
 }
 
+void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* control, int x, int y)
+{
+	switch (message)
+	{
+	case SETUP_MESSAGE_UPDATE:
+		TotalTitleDrawn = false;
+		break;
+	case SETUP_MESSAGE_DEACTIVATE:
+		ClearDetails();
+		ShowCurrentGame = false;
+		break;
+	case SETUP_MESSAGE_ACTIVATE:
+		InitControls();
+		break;
+	case SETUP_MESSAGE_CLICK:
+		if (control != NULL)
+		{
+			switch (control->id)
+			{
+			case FRONT_END_TAB_FIRST_ID:
+				Hide();
+				break;
+			case FRONT_END_TAB_FIRST_ID + 1:
+			case FRONT_END_TAB_FIRST_ID + 2:
+			case FRONT_END_TAB_FIRST_ID + 3:
+			case FRONT_END_TAB_FIRST_ID + 4:
+			case FRONT_END_TAB_FIRST_ID + 5:
+				SetTab(control->id - FRONT_END_TAB_FIRST_ID);
+				break;
+			}
+		}
+		if (control == BackButton)
+			Hide();
+		if (control == CheckBoxes[0])
+			CheckBoxes[1]->style = BBSTYLE_CHECK_BOX_OFF;
+		else if (control == CheckBoxes[1])
+			CheckBoxes[0]->style = BBSTYLE_CHECK_BOX_OFF;
+		else if (control == DetailsList && DetailsList->GetSelected() >= 0 &&
+		         DetailsList->GetSelected() != SelectedDetail)
+			CopyDetailsToDynamic(DetailsList->GetSelected(), NULL);
+		break;
+	case SETUP_MESSAGE_PRE_DRAW: {
+		int alpha = SetupThing::DrawAlpha;
+		SetupThing::DrawAlpha = alpha / 2;
+		SetupThing::DrawBox(TitleText->rect.start.x, TitleText->rect.start.y, TitleText->rect.end.x,
+		                    TitleText->rect.end.y, 0x202020, 0x202020, 0x202020, 0x202020, 1, 1);
+		SetupThing::DrawAlpha = alpha;
+		break;
+	}
+	case SETUP_MESSAGE_POST_DRAW:
+		if (CurrentTab == 2)
+		{
+			LHPoint old_position = *LH3DTech::GetCameraPosition();
+			LHPoint old_target = *LH3DTech::GetCameraTarget();
+			float   angle = (GetTickCount() % STATS_BOX_CREATURE_TURN_TIME) * (TWO_PI / STATS_BOX_CREATURE_TURN_TIME);
+			LHPoint target(0.0f, 20.0f, 0.0f);
+			LHPoint position(cos(angle) * 70.0, 40.0f, sin(angle) * 70.0);
+			LH3DTech::UpdateCamera(position, target);
+			LH3DRender::D3DDevice->Clear(0, NULL, D3DCLEAR_ZBUFFER, 0, 1.0f, 0);
+
+			int alpha = SetupThing::DrawAlpha;
+			SetupThing::DrawAlpha = alpha / 2;
+			int num_players = Package->NumPlayers;
+			int y_min = BarGraphs[2]->rect.start.y;
+			int y_max = BarGraphs[2]->rect.end.y;
+			int box_x = 40;
+			int width = (50 - num_players) * 10 / num_players;
+			int row_height = 0;
+			int second_row_x = 0;
+			if (num_players >= 3)
+			{
+				row_height = (y_max - y_min) / 2 + 5;
+				width = 240;
+				y_max = row_height + y_min - 10;
+				if (num_players == 3)
+					second_row_x = 120;
+			}
+			for (int i = 0; i < num_players; i++)
+			{
+				if (i == 2)
+				{
+					y_min += row_height;
+					y_max += row_height;
+					box_x = second_row_x + 40;
+				}
+				unsigned long colour = Package->PerPlayer[i].Colour.GetColor();
+				SetupThing::DrawBox(box_x, y_min, box_x + width, y_max, colour, colour, colour, colour, 1, 1);
+				int screen_x = box_x + width / 2;
+				int screen_y = (int)((y_max - y_min) * 0.9f + y_min);
+				SetupThing::adjust(screen_x, screen_y);
+				int size = min(SetupThing::adjusty(width) - SetupThing::adjusty(0),
+				               SetupThing::adjusty(y_max) - SetupThing::adjusty(y_min));
+				if (size < 10)
+					size = 10;
+				if (GGame::g_game->Initialised && GGame::g_game->GetPlayer(i) != NULL)
+				{
+					Creature* player_creature = GGame::g_game->GetPlayer(i)->creature.Get();
+					if (player_creature != NULL)
+					{
+						LH3DCreature* creature = player_creature->GetCreature3D();
+						if (creature != NULL)
+						{
+							creature->DynamicShadow->SetNeedClipping(true);
+							LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
+							LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, TRUE);
+							float distance = creature->Size1 * 15.0f;
+							if (distance > 0.1f)
+								distance = size / distance;
+							if (distance > 1.0f)
+								distance = 900.0f / distance;
+							float ratio = (float)(SetupThing::adjusty(600) - SetupThing::adjusty(0)) /
+							              LHSys::TheSystem.screen.Height();
+							if (ratio != 0.0f)
+								distance /= ratio;
+							LHPoint point;
+							LH3DTech::Get3DPointFromScreen(LHCoord(screen_x, screen_y), point, distance);
+							LHPoint   centre(0.0f, 0.0f, 0.0f);
+							LHMatrix* matrices = creature->TransformedMatrices;
+							int       num_matrices = creature->NumBoneMatrices;
+							for (int b = 0; b < num_matrices; b++)
+								centre += matrices[b].GetPos();
+							if (num_matrices != 0)
+							{
+								centre.x *= 1.0f / num_matrices;
+								centre.z *= 1.0f / num_matrices;
+							}
+							centre.y = creature->position.y;
+							point -= centre;
+							for (int c = 0; c < num_matrices; c++)
+								matrices[c].GetPos() += point;
+							creature->DynamicShadow->matrix.GetPos().x += point.x;
+							creature->DynamicShadow->matrix.GetPos().y += point.y;
+							creature->DynamicShadow->matrix.GetPos().z += point.z;
+							creature->DrawNow();
+							for (int d = 0; d < num_matrices; d++)
+								matrices[d].GetPos() -= point;
+							creature->DynamicShadow->matrix.GetPos().x -= point.x;
+							creature->DynamicShadow->matrix.GetPos().y -= point.y;
+							creature->DynamicShadow->matrix.GetPos().z -= point.z;
+						}
+					}
+				}
+				box_x += width + 10;
+			}
+			SetupThing::DrawAlpha = alpha;
+			LH3DTech::UpdateCamera(old_position, old_target);
+		}
+		break;
+	}
+}
+
 // BW1W120 0056e6a0
 static void WatchButtonCallback(SetupBox* box, SetupControl* control);
 // BW1W120 0056e6b0
@@ -849,7 +1008,7 @@ void EndGameBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 
-	float tab_width = width * (1.0f / END_GAME_BOX_NUM_TABS);
+	float tab_width = (float)width / END_GAME_BOX_NUM_TABS;
 	float x = (uint32_t)(400 - width / 2);
 	Instance = this;
 	CurrentTab = 0;

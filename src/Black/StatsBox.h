@@ -17,11 +17,12 @@ struct SetupStaticText;
 struct SetupTabButton;
 struct SetupVBarGraph;
 
-#define STATS_BOX_NUM_TABS         6
-#define STATS_BOX_NUM_BAR_GRAPHS   3
-#define STATS_BOX_NUM_LINE_GRAPHS  2
-#define STATS_BOX_NUM_SCORE_GRAPHS 4
-#define STATS_BOX_MAX_DETAILS      256
+#define STATS_BOX_NUM_TABS           6
+#define STATS_BOX_NUM_BAR_GRAPHS     3
+#define STATS_BOX_NUM_LINE_GRAPHS    2
+#define STATS_BOX_NUM_SCORE_GRAPHS   4
+#define STATS_BOX_MAX_DETAILS        256
+#define STATS_BOX_CREATURE_TURN_TIME 0x2000
 
 // How a detail row writes its value: on its own, against the row's maximum, or as a percentage. A row whose
 // maximum is the largest of its values writes it on its own.
