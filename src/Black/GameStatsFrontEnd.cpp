@@ -1021,7 +1021,7 @@ void EndGameBox::Init(uint32_t width, uint32_t height,
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER);
 			break;
 		case 1:
-			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(19);
+			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_MAIN_TAB);
 			break;
 		case 2:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_151);
@@ -1326,7 +1326,7 @@ void MultiplayerConditionBox::Init(uint32_t width, uint32_t height,
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88);
 			break;
 		case 1:
-			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_CONDITIONS);
+			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_MAIN_TAB);
 			break;
 		default:
 			label = L"";
@@ -1347,10 +1347,9 @@ void MultiplayerConditionBox::Init(uint32_t width, uint32_t height,
 	                                     SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
 	ScoreGraph = NEW(897) SetupHLineGraph(0, 40, 100, width - 65, 180, L"", false);
 	ConditionList = NEW(898) SetupList(MULTIPLAYER_CONDITION_BOX_CONTROL_ID_LIST, 40, 345, width - 65, 180);
-	TitleText = NEW(899)
-		SetupStaticText(1, 40, 60, 720, 28,
-	                    HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_CONDITIONS_TITLE),
-	                    TEXTJUSTIFY_CENTRE);
+	TitleText = NEW(899) SetupStaticText(
+		1, 40, 60, 720, 28, HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_STATS_CAPTION),
+		TEXTJUSTIFY_CENTRE);
 
 	x = 100.0f;
 	for (int j = 0; j < MAX_MULTIPLAYER_PLAYERS; j++)
@@ -1399,7 +1398,7 @@ uint32_t __stdcall MultiplayerConditionBox::ConditionDraw(SetupList* list, int i
 				SetupThing::DrawText(x, clip_max, column_width, TEXTJUSTIFY_CENTRE,
 				                     !it->second.Completed ? (wchar_t*)LHSPrintfW(L"%u", value)
 				                                           : HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(
-																 HELP_TEXT_MULTIPLAYER_CONDITION_COMPLETE),
+																 HELP_TEXT_MULTIPLAYER_CONDITION_DONE),
 				                     26, &player->GetPlayer3DColor(), 0);
 				x += column_width;
 			}
