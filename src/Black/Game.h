@@ -448,9 +448,6 @@ public:
 	void QuitGameAndGoIntoNetworkLobby();
 	// BW1W120 005558d0 BW1M119 01515800
 	void AttemptQuitOfMultiplayerGame();
-	// Original name unrecovered; flushes packed network data.
-	// BW1W120 005525e0
-	void fn_005525E0();
 	// BW1W120 0054d620 BW1M119 01020e60
 	void ProcessOneGameTurn();
 	// BW1W120 0054d820 BW1M119 010861b0
@@ -559,7 +556,7 @@ public:
 	static void DoAreYoSureLeaveLand0Requestor(wchar_t* text);
 	// BW1W120 0054cb50 BW1M119 013f9590
 	static void DoAreYouSureLand0Requestor(wchar_t* text);
-	// BW1W120 null BW1M119 011c6d30
+	// BW1W120 005525e0 BW1M119 011c6d30
 	void FlushPacketBuffer();
 	// BW1W120 null BW1M119 01011ab0
 	uint32_t GetInterfaceFromReal(unsigned long real_interface);
@@ -569,7 +566,7 @@ public:
 	GKeyBuffer* GetKeyBuffer();
 	// BW1W120 005553a0 BW1M119 013e1550
 	static LH_KEY GetKeyFromModifier(uint16_t modifier);
-	// BW1W120 null BW1M119 010d1f40
+	// BW1W120 005559b0 BW1M119 010d1f40
 	LHPlayer* GetTeamLeaderLHPlayer();
 	// BW1W120 null BW1M119 011193b0
 	GPlayer* OtherPlayer();
@@ -625,6 +622,8 @@ public:
 	unsigned long GetNoPlayers() const;
 	// BW1W120 00555130 BW1M119 01183980
 	unsigned long GetNumberOfPlayersThatHaveLost();
+	// BW1W120 00555180 BW1M119 null
+	GPlayer* GetWinningPlayer();
 	// BW1W120 005551d0 BW1M119 01177b60
 	bool IsCreaturePresent(CREATURE_BITS creature);
 	// BW1W120 00555850 BW1M119 01053ef0

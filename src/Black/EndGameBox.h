@@ -10,26 +10,43 @@
 
 enum END_GAME_RESULT
 {
+	END_GAME_RESULT_NONE = 0,
 	END_GAME_RESULT_ELIMINATED = 1,
 	END_GAME_RESULT_WON = 2,
 	END_GAME_RESULT_LOST = 3,
 };
 
+#define END_GAME_BOX_NUM_TABS 7
+
 struct GameStatsPackage;
+struct SetupBigButton;
+struct SetupStaticText;
+struct SetupTabButton;
+struct SetupVBarGraph;
 
 class EndGameBox : public DialogBoxBase
 {
 public:
-	uint8_t field_0x10[0x4];
-	bool    Showing;
-	uint8_t field_0x15[0x3f];
+	int  CurrentTab; /* 0x10 */
+	bool Showing;    /* 0x14 */
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	uint8_t field_0x54[4];
+	SetupTabButton*  Tabs[END_GAME_BOX_NUM_TABS]; /* 0x18 */
+	SetupStaticText* ScoreText;                   /* 0x34 */
+	SetupStaticText* ResultText;                  /* 0x38 */
+	SetupStaticText* TeamText;                    /* 0x3c */
+	SetupStaticText* WaitText;                    /* 0x40 */
+	SetupStaticText* GraphTitleText;              /* 0x44 */
+	SetupVBarGraph*  ScoreGraph;                  /* 0x48 */
+	SetupBigButton*  ContinueButton;              /* 0x4c */
+	SetupBigButton*  LeaveGameButton;             /* 0x50 */
+	SetupBigButton*  WatchButton;                 /* 0x54 */
+#else
+	uint8_t field_0x18[0x3c];
 #endif
 	int               PlayerIndex;
 	bool              TeamGame;
 	bool              InternetLobby;
-	bool              field_0x5e;
+	bool              GameContinues;         /* 0x5e */
 	bool              CreatureUploadStarted; /* 0x5f */
 	bool              StatsUploadStarted;    /* 0x60 */
 	bool              UploadErrorShown;      /* 0x61 */
@@ -66,7 +83,7 @@ public:
 	// Override methods
 
 	// BW1W120 0056e160 BW1M119 01324d10
-	virtual void Init(uint32_t background_style, uint32_t tall_background,
+	virtual void Init(uint32_t width, uint32_t height,
 	                  void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 0056e730 BW1M119 01324cb0
 	virtual void Destroy();
@@ -78,6 +95,14 @@ public:
 	// BW1W120 00d0606c
 	static EndGameBox* Instance;
 
+	// BW1W120 0056e130 BW1M119 inlined
+	void SetTab(int tab);
+	// BW1W120 0056ea90 BW1M119 013245c0
+	void SetDisplayableButtons();
+	// BW1W120 0056eaf0 BW1M119 inlined
+	void SetDisplayableStats();
+	// BW1W120 0056ebc0 BW1M119 01324520
+	void DatabaseUploadError(SetupBox* box);
 	// BW1W120 0056ec00 BW1M119 01324140
 	void __stdcall Callback(int message, SetupBox* box, SetupControl* control, int x, int y);
 

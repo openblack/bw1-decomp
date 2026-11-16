@@ -6,6 +6,8 @@
 
 #include <re_common.h> /* For bool32_t */
 
+#define MULTIPLAYER_DATABASE_ERROR 3
+
 // Forward Declares
 
 struct DBInfo;
@@ -13,12 +15,14 @@ struct DBInfo;
 class MultiplayerDatabase
 {
 public:
-	bool32_t field_0x4;
-	DBInfo*  info;
-	char*    field_0xc;
+	int     Status; /* 0x4 */
+	DBInfo* info;
+	char*   field_0xc;
 
 	// Override methods
 
+	// BW1W120 purecall
+	virtual uint32_t Send() = 0;
 	// BW1W120 00633610 BW1M119 01113730
 	virtual uint32_t ReceiveReturnData();
 
@@ -31,6 +35,8 @@ public:
 
 	// BW1W120 006334c0 BW1M119 011138c0
 	void Stop();
+	// BW1W120 00633620 BW1M119 011135b0
+	uint32_t Refresh();
 };
 
 #endif /* BW1_DECOMP_MULTIPLAYER_DATABASE_INCLUDED_H */

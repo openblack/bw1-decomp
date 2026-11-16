@@ -494,7 +494,7 @@ bool32_t GGame::Init()
 			          MyPlayer()->GetCitadel()->GetCreatureHomePos().MapZ(), -1L);
 		}
 	}
-	fn_005525E0();
+	FlushPacketBuffer();
 	RenderLoadingFrame(true);
 	wcscpy(FrontEnd::MultiplayerTab->label, L"");
 	if (g_game->IsMultiplayerGame())
@@ -1851,7 +1851,7 @@ void GGame::Loop()
 		ProcessBufferedKeys();
 		LeaveCriticalSection(&LHKeyboard::CriticalSection);
 		ProcessNetworkPackets();
-		fn_005525E0();
+		FlushPacketBuffer();
 		++data.FrameCount;
 		if (RenderLoopEnabled)
 		{
@@ -1991,9 +1991,7 @@ void GGame::FlipScreen()
 	}
 }
 
-// Original name unrecovered.
-// BW1W120 005525e0
-void GGame::fn_005525E0()
+void GGame::FlushPacketBuffer()
 {
 	if (field_0x5318[0] != 0)
 	{

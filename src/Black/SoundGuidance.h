@@ -39,6 +39,7 @@ public:
 
 	enum ONE_OFF_GUIDANCE_TYPE
 	{
+		ONE_OFF_GUIDANCE_TYPE_0 = 0,
 		ONE_OFF_GUIDANCE_TYPE_3 = 3
 	};
 
