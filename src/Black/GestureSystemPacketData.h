@@ -4,8 +4,6 @@
 #include <stdint.h>
 #include <Lionhead/LH3DLib/development/LHPoint.h>
 
-struct MapCoords;
-
 struct GestureSystemPacketData
 {
 	uint8_t  Gesture;
@@ -20,8 +18,6 @@ struct GestureSystemPacketData
 		field_0x4 = 0;
 	}
 	GestureSystemPacketData() { Clear(); }
-	// BW1W120 0057c960 BW1M119 013352b0
-	void SetCastPosition(const MapCoords& coords);
 };
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_PACKET_DATA_INCLUDED_H */

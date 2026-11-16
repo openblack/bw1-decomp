@@ -5755,6 +5755,7 @@ fn_004EFEC4 = .text:0x004EFEC4; // type:function size:0x1A
 ?Show@DialogBoxBase@@UAEXXZ = .text:0x004F0130; // type:function size:0x50
 ?Hide@DialogBoxBase@@SAXXZ = .text:0x004F0180; // type:function size:0x40
 ?UpdateLastShown@DialogBoxBase@@QAEXPAUSetupBox@@@Z = .text:0x004F01C0; // type:function size:0x30
+?RestoreSetupBox@DialogBoxBase@@SAXXZ = .text:0x004F01F0; // type:function size:0x30
 ?HideAll@DialogBoxBase@@SAXXZ = .text:0x004F0220; // type:function size:0x90
 ?IsVisible@DialogBoxBase@@QAEIXZ = .text:0x004F02B0; // type:function size:0x20
 fn_004F02D0 = .text:0x004F02D0; // type:function size:0x20

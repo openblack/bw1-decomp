@@ -6861,6 +6861,7 @@ crt_xc_fn_atexitCleanupReg_DialogBoxMain_00515900 = .text:0x00515900; // type:fu
 ?Show@DialogBoxBase@@UAEXXZ = .text:0x00515B60; // type:function size:0x50 scope:global
 ?Hide@DialogBoxBase@@SAXXZ = .text:0x00515BB0; // type:function size:0x40
 ?UpdateLastShown@DialogBoxBase@@SAXPAUSetupBox@@@Z = .text:0x00515BF0; // type:function size:0x2A scope:global
+?RestoreSetupBox@DialogBoxBase@@SAXXZ = .text:0x00515C20; // type:function size:0x30
 ?HideAll@DialogBoxBase@@SAXXZ = .text:0x00515C50; // type:function size:0x90 scope:global
 ?IsVisible@DialogBoxBase@@QAEHXZ = .text:0x00515CE0; // type:function size:0x20
 _$E53 = .text:0x00515D00; // type:function size:0x20 scope:local
