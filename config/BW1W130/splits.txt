@@ -1149,6 +1149,7 @@ Black/GameStatsFrontEnd.cpp:
 	.text       start:0x0056DEE0 end:0x00572F60
 	.rdata      start:0x00904ED4 end:0x00904F48
 	.CRT$XCU    start:0x00A46994 end:0x00A469A0 align:4
+	.data       start:0x00C6F8B0 end:0x00C6FA68
 	.bss        start:0x00D87034 end:0x00D8704C
 
 Black/GameThing.cpp:

@@ -33,8 +33,20 @@
 #include "StatsBox.h"
 #include "alexmfc.h"
 
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - ((line) < 562 ? 1 : 27))
+#elif defined(VERSION_BW1WCI)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + ((line) < 562 ? 66 : 85))
+#endif
+
+#if defined(VERSION_BW1WCI)
+#define STAT_DETAILS_MAX_VALUES 8
+#else
 #define STAT_DETAILS_MAX_VALUES 4
-#define STAT_DETAILS_MAX_VALUE  1e20f
+#endif
+#define STAT_DETAILS_MAX_VALUE 1e20f
 
 const float StatDetailsMinValue = -1e20f;
 
@@ -42,12 +54,15 @@ struct StatDetails
 {
 	int              NumValues;
 	float            Values[STAT_DETAILS_MAX_VALUES];
-	LH3DColor        Colors[STAT_DETAILS_MAX_VALUES]; /* 0x14 */
-	float            Max;                             /* 0x24 */
+	LH3DColor        Colors[STAT_DETAILS_MAX_VALUES];
+	float            Max;
 	int              DecimalPlaces;
 	SHOWMAXTYPE      ShowMax;
-	GRAPHDISPLAYTYPE Display; /* 0x30 */
+	GRAPHDISPLAYTYPE Display;
 	wchar_t          Format[16];
+#if defined(VERSION_BW1WCI)
+	int field_0x74;
+#endif
 
 	// BW1W120 inlined BW1M119 013282c0
 	StatDetails() {}
@@ -190,8 +205,8 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 		details->Values[i] = *stat_value;
 		details->Values[i] =
 			details->Values[i] > StatDetailsMinValue
-				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
-				: StatDetailsMinValue;
+		        ? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
+		        : StatDetailsMinValue;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
@@ -272,8 +287,8 @@ void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, f
 		details->Values[i] = *stat_value;
 		details->Values[i] =
 			details->Values[i] > StatDetailsMinValue
-				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
-				: StatDetailsMinValue;
+		        ? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
+		        : StatDetailsMinValue;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
@@ -339,6 +354,11 @@ void StatsBox::UpdateDetails()
 			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_159),
 			               &Package->PerPlayer[0].CreatureAlignment, 2, 1.0f, SHOWMAXTYPE_NONE,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_160),
+			               &Package->PerPlayer[0].CreatureNumPeopleKilled, 1.0f, SHOWMAXTYPE_LARGEST,
+			               GRAPHDISPLAYTYPE_TEXT);
+#endif
 			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_161),
 			               &Package->PerPlayer[0].CreatureNumAnimalsKilled, 1.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
@@ -778,7 +798,7 @@ void StatsBox::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 		}
 		Tabs[i] =
 			NEW(234) SetupTabButton(FRONT_END_TAB_FIRST_ID + i, (int)x, 260 - height / 2, (int)(x + tab_width) - (int)x,
-		                            40, label, i == CurrentTab, i == 0, i == STATS_BOX_NUM_TABS - 1);
+			                        40, label, i == CurrentTab, i == 0, i == STATS_BOX_NUM_TABS - 1);
 		Tabs[i]->text_size = GetSmallTextSize();
 		x += tab_width;
 	}
@@ -820,10 +840,10 @@ void StatsBox::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 
 	CheckBoxes[0] =
 		NEW(269) SetupCheckBox(SETUP_CONTROL_ID_NONE, 290, 530, true, BBSTYLE_CHECK_BOX_ON,
-	                           HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_07), 20);
+		                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_07), 20);
 	CheckBoxes[1] =
 		NEW(270) SetupCheckBox(SETUP_CONTROL_ID_NONE, 490, 530, true, BBSTYLE_CHECK_BOX_OFF,
-	                           HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_08), 20);
+		                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_08), 20);
 	CheckBoxes[1]->text_position = SETUP_TEXT_POSITION_LEFT;
 	CheckBoxes[0]->text_position = SETUP_TEXT_POSITION_RIGHT;
 }
@@ -840,8 +860,8 @@ void StatsBox::InitControls()
 	CurrentTab = 1;
 	SetTab(1);
 	wcscpy(Tabs[0]->label, ShowCurrentGame
-	                           ? HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER)
-	                           : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88));
+							   ? HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER)
+							   : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88));
 }
 
 void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* control, int x, int y)
@@ -1038,10 +1058,14 @@ void EndGameBox::Init(uint32_t width, uint32_t height,
 		case 0:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER);
 			break;
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		case 1:
 			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_MAIN_TAB);
 			break;
 		case 2:
+#else
+		case 1:
+#endif
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_151);
 			break;
 		default:
@@ -1050,7 +1074,7 @@ void EndGameBox::Init(uint32_t width, uint32_t height,
 		}
 		Tabs[i] =
 			NEW(562) SetupTabButton(FRONT_END_TAB_FIRST_ID + i, (int)x, 260 - height / 2, (int)(x + tab_width) - (int)x,
-		                            40, label, i == CurrentTab, i == 0, i == END_GAME_BOX_NUM_TABS - 1);
+			                        40, label, i == CurrentTab, i == 0, i == END_GAME_BOX_NUM_TABS - 1);
 		x += tab_width;
 	}
 	setup_box->DefaultTextSize = GetBigTextSize();
@@ -1099,9 +1123,11 @@ static void LeaveGameButtonCallback(SetupBox* box, SetupControl* control)
 		GGame::g_game->GameMode = GAME_MODE_SKIRMISH;
 		return;
 	}
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
 	if (GGame::g_game->GetMyLHPlayer() == GGame::g_game->GetTeamLeaderLHPlayer() &&
 	    GGame::g_game->MyInterface()->player->ClanID != 0)
 		FrontEnd::EndGameDialog->Result = END_GAME_RESULT_NONE;
+#endif
 	GGame::g_game->QuitGameAndGoIntoNetworkLobby();
 }
 
@@ -1126,8 +1152,10 @@ void EndGameBox::InitControls()
 	{
 	case END_GAME_RESULT_NONE:
 		text = TeamGame || !InternetLobby ? HELP_TEXT_DIALOG_AREYOUSUREQUIT : HELP_TEXT_DIALOG_ADDITION_70;
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		if (GGame::g_game->MyPlayer()->GetPlayerNumber() >= MAX_MULTIPLAYER_PLAYERS)
 			text = HELP_TEXT_DIALOG_AREYOUSUREQUIT;
+#endif
 		break;
 	case END_GAME_RESULT_WON:
 		if (GGame::g_game->MyPlayer()->player_number < MAX_MULTIPLAYER_PLAYERS)
@@ -1140,6 +1168,7 @@ void EndGameBox::InitControls()
 		text = HELP_TEXT_DIALOG_ADDITION_152;
 		break;
 	}
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (text == HELP_TEXT_GAME_OVER)
 	{
 		GPlayer* winner = GGame::g_game->GetWinningPlayer();
@@ -1147,6 +1176,7 @@ void EndGameBox::InitControls()
 		         winner->name);
 	}
 	else
+#endif
 		wcscpy(ResultText->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(text));
 	if (TeamGame)
 		wcscpy(TeamText->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_155));
@@ -1173,21 +1203,34 @@ void EndGameBox::InitControls()
 	if (!GameContinues && Result != END_GAME_RESULT_NONE)
 		GGame::g_game->network.session->StopSession();
 
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
 	int   team = GGame::g_game->GetMyLHPlayer()->TeamMemberNumber - 1;
 	float score = FrontEnd::EndGameDialog->TeamGame ? FrontEnd::EndGameDialog->PlayerTotals[PlayerIndex]
 	                                                : FrontEnd::EndGameDialog->PlayerScores[PlayerIndex][team];
 	wcscpy(ScoreText->label,
 	       LHSPrintfW(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_04), score));
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (GGame::g_game->MyPlayer()->GetPlayerNumber() >= MAX_MULTIPLAYER_PLAYERS)
 	{
 		ScoreText->Hide(true);
 		TeamText->Hide(true);
 	}
+#endif
 
 	ScoreGraph->Reset();
 	for (int i = 0; i < Package->NumPlayers; i++)
 		ScoreGraph->AddBar(VBarData(Package->PerPlayer[i].Colour, FrontEnd::EndGameDialog->PlayerTotals[i]));
 	ScoreGraph->SetScale(0.0f);
+#else
+	wcscpy(ScoreText->label,
+	       LHSPrintfW(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_04),
+	                  Package->PerPlayer[PlayerIndex].Scores[GGame::g_game->GetMyLHPlayer()->TeamMemberNumber - 1]));
+
+	ScoreGraph->Reset();
+	for (int i = 0; i < Package->NumPlayers; i++)
+		ScoreGraph->AddBar(VBarData(Package->PerPlayer[i].Colour, Package->PerPlayer[i].TotalScore));
+	ScoreGraph->SetScale(0.0f);
+#endif
 }
 
 void EndGameBox::SetDisplayableButtons()
@@ -1219,11 +1262,13 @@ void EndGameBox::SetDisplayableStats()
 		ResultText->rect.end.y = 80;
 	}
 	ResultText->rect.end.y += ResultText->rect.start.y;
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (GGame::g_game->MyPlayer()->GetPlayerNumber() >= MAX_MULTIPLAYER_PLAYERS)
 	{
 		ScoreText->Hide(true);
 		TeamText->Hide(true);
 	}
+#endif
 }
 
 void EndGameBox::DatabaseUploadError(SetupBox* box)
@@ -1243,7 +1288,11 @@ void __stdcall EndGameBox::Callback(int message, SetupBox* box, SetupControl* co
 	case SETUP_MESSAGE_UPDATE:
 		if (GGame::g_game->field_0x59a8 == 1 && Result != END_GAME_RESULT_NONE)
 		{
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
 			if (!CreatureUploadStarted && GPlayer::CreatureMindData != NULL)
+#else
+			if (!CreatureUploadStarted && GGame::g_game->MyPlayer()->creature.Get() != NULL)
+#endif
 			{
 				CreatureUploadStarted = true;
 				if (GGame::g_game->creature_database.Send() == MULTIPLAYER_DATABASE_ERROR)
@@ -1295,6 +1344,7 @@ void __stdcall EndGameBox::Callback(int message, SetupBox* box, SetupControl* co
 		case FRONT_END_TAB_FIRST_ID:
 			SetTab(0);
 			break;
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		case FRONT_END_TAB_FIRST_ID + 1:
 			SetTab(1);
 			HideAll();
@@ -1304,6 +1354,10 @@ void __stdcall EndGameBox::Callback(int message, SetupBox* box, SetupControl* co
 			break;
 		case FRONT_END_TAB_FIRST_ID + 2:
 			SetTab(2);
+#else
+		case FRONT_END_TAB_FIRST_ID + 1:
+			SetTab(1);
+#endif
 			HideAll();
 			Show();
 			FrontEnd::StatsDialog->ShowCurrentGame = true;
@@ -1326,6 +1380,7 @@ void __stdcall EndGameBox::Callback(int message, SetupBox* box, SetupControl* co
 	}
 }
 
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 void MultiplayerConditionBox::Init(uint32_t width, uint32_t height,
                                    void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -1517,3 +1572,5 @@ void __stdcall MultiplayerConditionBox::Callback(int message, SetupBox* box, Set
 		break;
 	}
 }
+
+#endif /* defined(VERSION_BW1W120) || defined(VERSION_BW1W130) */

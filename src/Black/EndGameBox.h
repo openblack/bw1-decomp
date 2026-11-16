@@ -16,7 +16,11 @@ enum END_GAME_RESULT
 	END_GAME_RESULT_LOST = 3,
 };
 
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #define END_GAME_BOX_NUM_TABS 7
+#else
+#define END_GAME_BOX_NUM_TABS 6
+#endif
 
 struct GameStatsPackage;
 struct SetupBigButton;
@@ -27,22 +31,18 @@ struct SetupVBarGraph;
 class EndGameBox : public DialogBoxBase
 {
 public:
-	int  CurrentTab; /* 0x10 */
-	bool Showing;    /* 0x14 */
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	SetupTabButton*  Tabs[END_GAME_BOX_NUM_TABS]; /* 0x18 */
-	SetupStaticText* ScoreText;                   /* 0x34 */
-	SetupStaticText* ResultText;                  /* 0x38 */
-	SetupStaticText* TeamText;                    /* 0x3c */
-	SetupStaticText* WaitText;                    /* 0x40 */
-	SetupStaticText* GraphTitleText;              /* 0x44 */
-	SetupVBarGraph*  ScoreGraph;                  /* 0x48 */
-	SetupBigButton*  ContinueButton;              /* 0x4c */
-	SetupBigButton*  LeaveGameButton;             /* 0x50 */
-	SetupBigButton*  WatchButton;                 /* 0x54 */
-#else
-	uint8_t field_0x18[0x3c];
-#endif
+	int               CurrentTab; /* 0x10 */
+	bool              Showing;    /* 0x14 */
+	SetupTabButton*   Tabs[END_GAME_BOX_NUM_TABS];
+	SetupStaticText*  ScoreText;
+	SetupStaticText*  ResultText;
+	SetupStaticText*  TeamText;
+	SetupStaticText*  WaitText;
+	SetupStaticText*  GraphTitleText;
+	SetupVBarGraph*   ScoreGraph;
+	SetupBigButton*   ContinueButton;
+	SetupBigButton*   LeaveGameButton;
+	SetupBigButton*   WatchButton;
 	int               PlayerIndex;
 	bool              TeamGame;
 	bool              InternetLobby;
@@ -52,7 +52,7 @@ public:
 	bool              UploadErrorShown;      /* 0x61 */
 	END_GAME_RESULT   Result;
 	GameStatsPackage* Package;
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
 	float PlayerScores[MAX_MULTIPLAYER_PLAYERS][4]; /* [player][?] */
 	float PlayerTotals[MAX_MULTIPLAYER_PLAYERS];    /* [player]; sum of that player's PlayerScores row */
 #endif
@@ -61,7 +61,7 @@ public:
 	                GameStatsPackage* package)
 	{
 		DialogBoxBase::Hide();
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
 		for (int i = 0; i < MAX_MULTIPLAYER_PLAYERS; i++)
 		{
 			memset(PlayerScores[i], 0, sizeof(PlayerScores[i]));

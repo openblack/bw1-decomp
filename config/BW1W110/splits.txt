@@ -1039,8 +1039,8 @@ Black/GameStats.cpp:
 	.bss        start:0x00CF08D8 end:0x00CF4E88
 
 Black/GameStatsFrontEnd.cpp:
-	.text       start:0x005677B0 end:0x0056B880
-	.rdata      start:0x008EFE94 end:0x008EFEF4
+	.text       start:0x005677B0 end:0x0056BC30
+	.rdata      start:0x008EFE94 end:0x008EFF04
 	.CRT$XCU    start:0x009B669C end:0x009B66A4 align:4
 	.data       start:0x00BDE4EC end:0x00BDE654
 	.bss        start:0x00CF4E88 end:0x00CF4E9C

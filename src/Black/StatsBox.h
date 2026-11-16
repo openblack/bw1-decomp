@@ -17,10 +17,14 @@ struct SetupStaticText;
 struct SetupTabButton;
 struct SetupVBarGraph;
 
-#define STATS_BOX_NUM_TABS           6
-#define STATS_BOX_NUM_BAR_GRAPHS     3
-#define STATS_BOX_NUM_LINE_GRAPHS    2
-#define STATS_BOX_NUM_SCORE_GRAPHS   4
+#define STATS_BOX_NUM_TABS        6
+#define STATS_BOX_NUM_BAR_GRAPHS  3
+#define STATS_BOX_NUM_LINE_GRAPHS 2
+#if defined(VERSION_BW1WCI)
+#define STATS_BOX_NUM_SCORE_GRAPHS 8
+#else
+#define STATS_BOX_NUM_SCORE_GRAPHS 4
+#endif
 #define STATS_BOX_MAX_DETAILS        256
 #define STATS_BOX_CREATURE_TURN_TIME 0x2000
 
@@ -55,9 +59,9 @@ public:
 	SetupVBarGraph*   BarGraphs[STATS_BOX_NUM_BAR_GRAPHS];     /* 0x44 */
 	SetupHLineGraph*  LineGraphs[STATS_BOX_NUM_LINE_GRAPHS];   /* 0x50 */
 	SetupHSBarGraph*  ScoreGraphs[STATS_BOX_NUM_SCORE_GRAPHS]; /* 0x58 */
-	int               SelectedDetail;                          /* 0x68 */
-	GameStatsPackage* Package;                                 /* 0x6c */
-	StatDetails*      StatsBuffer;                             /* 0x70 */
+	int               SelectedDetail;
+	GameStatsPackage* Package;
+	StatDetails*      StatsBuffer;
 
 	// Override methods
 
