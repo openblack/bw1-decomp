@@ -176,17 +176,18 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 	DetailsList->SetItemData(index, (uint32_t)&StatsBuffer[index]);
 	DetailsList->SetListBoxDraw(index, DetailsDraw);
 
-	GameStatsPackage::GameStatsPerPlayer* players = Package->PerPlayer;
-	int                                   num_players = Package->NumPlayers;
-	StatDetails*                          details = &StatsBuffer[index];
+	LH3DColor*   colour = &Package->PerPlayer[0].Colour;
+	int          num_players = Package->NumPlayers;
+	float*       stat_value = value;
+	StatDetails* details = &StatsBuffer[index];
 	details->Display = display;
 	details->DecimalPlaces = decimal_places;
 	details->NumValues = num_players;
 	details->Max = 0.0f;
 	for (int i = 0; i < num_players;
-	     i++, value = (float*)((uint8_t*)value + sizeof(GameStatsPackage::GameStatsPerPlayer)))
+	     i++, stat_value = (float*)((uint8_t*)stat_value + sizeof(GameStatsPackage::GameStatsPerPlayer)))
 	{
-		details->Values[i] = *value;
+		details->Values[i] = *stat_value;
 		details->Values[i] =
 			details->Values[i] > StatDetailsMinValue
 				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
@@ -194,8 +195,9 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
-	for (int j = 0; j < num_players; j++)
-		details->Colors[j] = players[j].Colour;
+	for (int j = 0; j < num_players;
+	     j++, colour = (LH3DColor*)((uint8_t*)colour + sizeof(GameStatsPackage::GameStatsPerPlayer)))
+		details->Colors[j] = *colour;
 	details->ShowMax = show_max;
 	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
 		details->Max = max;
@@ -226,22 +228,24 @@ void StatsBox::ADDULONGPLAYER(wchar_t* name, unsigned long* value, float max, SH
 	DetailsList->SetItemData(index, (uint32_t)&StatsBuffer[index]);
 	DetailsList->SetListBoxDraw(index, DetailsDraw);
 
-	GameStatsPackage::GameStatsPerPlayer* players = Package->PerPlayer;
-	int                                   num_players = Package->NumPlayers;
-	StatDetails*                          details = &StatsBuffer[index];
+	LH3DColor*     colour = &Package->PerPlayer[0].Colour;
+	int            num_players = Package->NumPlayers;
+	unsigned long* stat_value = value;
+	StatDetails*   details = &StatsBuffer[index];
 	details->Display = display;
 	details->DecimalPlaces = 0;
 	details->NumValues = num_players;
 	details->Max = 0.0f;
 	for (int i = 0; i < num_players;
-	     i++, value = (unsigned long*)((uint8_t*)value + sizeof(GameStatsPackage::GameStatsPerPlayer)))
+	     i++, stat_value = (unsigned long*)((uint8_t*)stat_value + sizeof(GameStatsPackage::GameStatsPerPlayer)))
 	{
-		details->Values[i] = *value;
+		details->Values[i] = *stat_value;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
-	for (int j = 0; j < num_players; j++)
-		details->Colors[j] = players[j].Colour;
+	for (int j = 0; j < num_players;
+	     j++, colour = (LH3DColor*)((uint8_t*)colour + sizeof(GameStatsPackage::GameStatsPerPlayer)))
+		details->Colors[j] = *colour;
 	details->ShowMax = show_max;
 	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
 		details->Max = max;
@@ -256,15 +260,16 @@ void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, f
 	DetailsList->SetItemData(index, (uint32_t)&StatsBuffer[index]);
 	DetailsList->SetListBoxDraw(index, DetailsDraw);
 
-	LH3DColor    colour = GGame::g_game->MyPlayer()->GetPlayer3DColor();
+	LH3DColor*   colour = &GGame::g_game->MyPlayer()->GetPlayer3DColor();
+	float*       stat_value = value;
 	StatDetails* details = &StatsBuffer[index];
 	details->Display = display;
 	details->DecimalPlaces = decimal_places;
 	details->NumValues = 1;
 	details->Max = 0.0f;
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 1; i++, stat_value++)
 	{
-		details->Values[i] = *value;
+		details->Values[i] = *stat_value;
 		details->Values[i] =
 			details->Values[i] > StatDetailsMinValue
 				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
@@ -272,8 +277,8 @@ void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, f
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
-	for (int j = 0; j < 1; j++)
-		details->Colors[j] = colour;
+	for (int j = 0; j < 1; j++, colour++)
+		details->Colors[j] = *colour;
 	details->ShowMax = show_max;
 	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
 		details->Max = max;
@@ -288,20 +293,21 @@ void StatsBox::ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SH
 	DetailsList->SetItemData(index, (uint32_t)&StatsBuffer[index]);
 	DetailsList->SetListBoxDraw(index, DetailsDraw);
 
-	LH3DColor    colour = GGame::g_game->MyPlayer()->GetPlayer3DColor();
-	StatDetails* details = &StatsBuffer[index];
+	LH3DColor*     colour = &GGame::g_game->MyPlayer()->GetPlayer3DColor();
+	unsigned long* stat_value = value;
+	StatDetails*   details = &StatsBuffer[index];
 	details->Display = display;
 	details->DecimalPlaces = 0;
 	details->NumValues = 1;
 	details->Max = 0.0f;
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 1; i++, stat_value++)
 	{
-		details->Values[i] = *value;
+		details->Values[i] = *stat_value;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
-	for (int j = 0; j < 1; j++)
-		details->Colors[j] = colour;
+	for (int j = 0; j < 1; j++, colour++)
+		details->Colors[j] = *colour;
 	details->ShowMax = show_max;
 	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
 		details->Max = max;
@@ -672,12 +678,12 @@ void StatsBox::UpdateDetails()
 				for (int i = 0; i < Package->NumPlayers; i++)
 				{
 					population.SetNum(Package->PerPlayer[i].PopulationGraph.Index);
-					population.color = Package->PerPlayer[i].Colour;
+					population.SetColor(Package->PerPlayer[i].Colour);
 					for (int j = 0; j < population.PointCount; j++)
 						population.SetPoint(j, Package->PerPlayer[i].PopulationGraph.Data[j]);
 					LineGraphs[1]->AddLine(population);
 					influence.SetNum(Package->PerPlayer[i].InfluenceGraph.Index);
-					influence.color = Package->PerPlayer[i].Colour;
+					influence.SetColor(Package->PerPlayer[i].Colour);
 					for (int k = 0; k < influence.PointCount; k++)
 						influence.SetPoint(k, Package->PerPlayer[i].InfluenceGraph.Data[k]);
 					LineGraphs[0]->AddLine(influence);
@@ -901,16 +907,16 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 			int alpha = SetupThing::DrawAlpha;
 			SetupThing::DrawAlpha = alpha / 2;
 			int num_players = Package->NumPlayers;
+			int box_x = 40;
 			int y_min = BarGraphs[2]->rect.start.y;
 			int y_max = BarGraphs[2]->rect.end.y;
-			int box_x = 40;
 			int width = (50 - num_players) * 10 / num_players;
 			int row_height = 0;
 			int second_row_x = 0;
 			if (num_players >= 3)
 			{
-				row_height = (y_max - y_min) / 2 + 5;
 				width = 240;
+				row_height = (y_max - y_min) / 2 + 5;
 				y_max = row_height + y_min - 10;
 				if (num_players == 3)
 					second_row_x = 120;
@@ -934,7 +940,7 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 					size = 10;
 				if (GGame::g_game->Initialised && GGame::g_game->GetPlayer(i) != NULL)
 				{
-					Creature* player_creature = GGame::g_game->GetPlayer(i)->creature.Get();
+					Creature* player_creature = GGame::g_game->GetPlayer(i)->GetCreature();
 					if (player_creature != NULL)
 					{
 						LH3DCreature* creature = player_creature->GetCreature3D();
@@ -958,7 +964,11 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 							LHMatrix* matrices = creature->TransformedMatrices;
 							int       num_matrices = creature->NumBoneMatrices;
 							for (int b = 0; b < num_matrices; b++)
-								centre += matrices[b].GetPos();
+							{
+								centre.x += matrices[b].GetPos().x;
+								centre.y += matrices[b].GetPos().y;
+								centre.z += matrices[b].GetPos().z;
+							}
 							if (num_matrices != 0)
 							{
 								centre.x *= 1.0f / num_matrices;
@@ -967,13 +977,21 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 							centre.y = creature->position.y;
 							point -= centre;
 							for (int c = 0; c < num_matrices; c++)
-								matrices[c].GetPos() += point;
+							{
+								matrices[c].GetPos().x += point.x;
+								matrices[c].GetPos().y += point.y;
+								matrices[c].GetPos().z += point.z;
+							}
 							creature->DynamicShadow->matrix.GetPos().x += point.x;
 							creature->DynamicShadow->matrix.GetPos().y += point.y;
 							creature->DynamicShadow->matrix.GetPos().z += point.z;
 							creature->DrawNow();
 							for (int d = 0; d < num_matrices; d++)
-								matrices[d].GetPos() -= point;
+							{
+								matrices[d].GetPos().x -= point.x;
+								matrices[d].GetPos().y -= point.y;
+								matrices[d].GetPos().z -= point.z;
+							}
 							creature->DynamicShadow->matrix.GetPos().x -= point.x;
 							creature->DynamicShadow->matrix.GetPos().y -= point.y;
 							creature->DynamicShadow->matrix.GetPos().z -= point.z;
@@ -1081,8 +1099,8 @@ static void LeaveGameButtonCallback(SetupBox* box, SetupControl* control)
 		GGame::g_game->GameMode = GAME_MODE_SKIRMISH;
 		return;
 	}
-	LHPlayer* leader = GGame::g_game->GetTeamLeaderLHPlayer();
-	if (GGame::g_game->GetMyLHPlayer() == leader && GGame::g_game->MyInterface()->player->ClanID != 0)
+	if (GGame::g_game->GetMyLHPlayer() == GGame::g_game->GetTeamLeaderLHPlayer() &&
+	    GGame::g_game->MyInterface()->player->ClanID != 0)
 		FrontEnd::EndGameDialog->Result = END_GAME_RESULT_NONE;
 	GGame::g_game->QuitGameAndGoIntoNetworkLobby();
 }
@@ -1388,13 +1406,15 @@ uint32_t __stdcall MultiplayerConditionBox::ConditionDraw(SetupList* list, int i
 		}
 		if (num_players != 0)
 		{
-			int column_width = (x_max - x_min) / 3 / num_players;
 			int x = x_min + (x_max - x_min) / 3 * 2;
+			int column_width = (x_max - x_min) / 3 / num_players;
 			for (uint32_t i = 0; i < num_players; i++)
 			{
 				GPlayer*                              player = players[i];
 				std::map<int, WinCondition>::iterator it = player->Conditions.find(type);
-				uint32_t value = min((uint32_t)it->second.Current, (uint32_t)it->second.Target);
+				uint32_t                              value = it->second.Current;
+				if (value > (uint32_t)it->second.Target)
+					value = it->second.Target;
 				SetupThing::DrawText(x, clip_max, column_width, TEXTJUSTIFY_CENTRE,
 				                     !it->second.Completed ? (wchar_t*)LHSPrintfW(L"%u", value)
 				                                           : HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(
@@ -1410,12 +1430,12 @@ uint32_t __stdcall MultiplayerConditionBox::ConditionDraw(SetupList* list, int i
 void MultiplayerConditionBox::InitControls()
 {
 	CurrentTab = 1;
+	uint32_t player_mask = 0;
 	for (int i = 0; i < MAX_MULTIPLAYER_PLAYERS; i++)
 	{
 		CheckBoxes[i]->style = BBSTYLE_CHECK_BOX_ON;
 		CheckBoxes[i]->Hide(true);
 	}
-	uint32_t player_mask = 0;
 	for (GPlayer* player = GGame::g_game->GetNextActivePlayer(NULL); player != NULL;
 	     player = GGame::g_game->GetNextActivePlayer(player))
 	{
@@ -1449,12 +1469,12 @@ void MultiplayerConditionBox::UpdateGraph(uint32_t player_mask)
 {
 	HLineData line;
 	ScoreGraph->Reset();
-	for (int i = 0; i < MAX_MULTIPLAYER_PLAYERS; i++, player_mask >>= 1)
+	for (int i = 0; i < MAX_MULTIPLAYER_PLAYERS; player_mask >>= 1, i++)
 	{
 		if ((player_mask & 1) && CheckBoxes[i]->GetCheck())
 		{
 			line.SetNum(GGame::g_game->GetPlayer(i)->ScoreHistoryIndex);
-			line.color = GGame::g_game->GetPlayer(i)->GetPlayer3DColor();
+			line.SetColor(GGame::g_game->GetPlayer(i)->GetPlayer3DColor());
 			for (int j = 0; j < line.PointCount; j++)
 				line.SetPoint(j, GGame::g_game->GetPlayer(i)->ScoreHistory[j]);
 			ScoreGraph->AddLine(line);
