@@ -1197,7 +1197,7 @@ void EndGameBox::InitControls()
 	ScoreGraph->Hide(true);
 	WaitText->Hide(false);
 	SetDisplayableStats();
-	if (GGame::g_game->field_0x59a8 != 1 || Result == END_GAME_RESULT_NONE)
+	if (GGame::g_game->Lobby != GAME_LOBBY_INTERNET || Result == END_GAME_RESULT_NONE)
 		SetDisplayableButtons();
 	if (!GameContinues && Result != END_GAME_RESULT_NONE)
 		GGame::g_game->network.session->StopSession();
@@ -1285,7 +1285,7 @@ void __stdcall EndGameBox::Callback(int message, SetupBox* box, SetupControl* co
 	switch (message)
 	{
 	case SETUP_MESSAGE_UPDATE:
-		if (GGame::g_game->field_0x59a8 == 1 && Result != END_GAME_RESULT_NONE)
+		if (GGame::g_game->Lobby == GAME_LOBBY_INTERNET && Result != END_GAME_RESULT_NONE)
 		{
 #if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
 			if (!CreatureUploadStarted && GPlayer::CreatureMindData != NULL)

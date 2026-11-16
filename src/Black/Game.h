@@ -40,6 +40,9 @@
 #define GAME_SPEED_MINIMUM                  0.5f
 #define GAME_SPEED_MAXIMUM                  2.0f
 #define INSTANT_SAVE_MINIMUM_TURNS          3
+#define GAME_LOBBY_NONE                     0 /* A single-player game */
+#define GAME_LOBBY_INTERNET                 1
+#define GAME_LOBBY_LAN                      2
 
 enum CREATURE_BITS
 {
@@ -262,7 +265,7 @@ public:
 	uint32_t MultiplayerTimeLimit;
 #endif
 	uint32_t field_0x59a4;
-	uint32_t field_0x59a8;
+	uint32_t Lobby; /* GAME_LOBBY_* */
 	time_t   field_0x59ac;
 	float    field_0x59b0;
 	Temple*  temple;

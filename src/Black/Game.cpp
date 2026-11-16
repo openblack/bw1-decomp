@@ -500,7 +500,7 @@ bool32_t GGame::Init()
 	if (g_game->IsMultiplayerGame())
 	{
 		swprintf(FrontEnd::MultiplayerTab->label, L"%s", HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(19));
-		field_0x59a8 = MPFEConnectionStatus::Status.IsInternetLobby() ? 1 : 2;
+		Lobby = MPFEConnectionStatus::Status.IsInternetLobby() ? GAME_LOBBY_INTERNET : GAME_LOBBY_LAN;
 		for (GPlayer* player = GetNextPlayer(NULL); player; player = GetNextPlayer(player))
 		{
 			float alignment = player->StartGameData ? player->StartGameData->Alignment : 0.0f;
@@ -512,7 +512,7 @@ bool32_t GGame::Init()
 	{
 		players[PlayerIndex].LoadPlayerAlignment();
 		players[PlayerIndex].game_stats->Init(players[PlayerIndex]);
-		field_0x59a8 = 0;
+		Lobby = GAME_LOBBY_NONE;
 	}
 	RenderLoadingFrame(true);
 	LHInetWeather::Weather.InitForGame();

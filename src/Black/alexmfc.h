@@ -989,8 +989,7 @@ struct VBarData
 	// BW1W120 inlined BW1M119 inlined
 	VBarData(const LH3DColor& bar_color, float bar_value) : color(bar_color), value(bar_value)
 	{
-		if (bar_value < 0.0f)
-			bar_value = 0.0f;
+		bar_value = max(bar_value, 0.0f);
 	}
 	// BW1W120 inlined BW1M119 inlined
 	VBarData(const VBarData& bar) : color(bar.color), value(bar.value) {}
