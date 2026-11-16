@@ -180,8 +180,8 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 		details->Values[i] = *value;
 		details->Values[i] =
 			details->Values[i] > StatDetailsMinValue
-		        ? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
-		        : StatDetailsMinValue;
+				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
+				: StatDetailsMinValue;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
@@ -258,8 +258,8 @@ void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, f
 		details->Values[i] = *value;
 		details->Values[i] =
 			details->Values[i] > StatDetailsMinValue
-		        ? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
-		        : StatDetailsMinValue;
+				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
+				: StatDetailsMinValue;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
@@ -763,7 +763,7 @@ void StatsBox::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 		}
 		Tabs[i] =
 			NEW(234) SetupTabButton(FRONT_END_TAB_FIRST_ID + i, (int)x, 260 - height / 2, (int)(x + tab_width) - (int)x,
-			                        40, label, i == CurrentTab, i == 0, i == STATS_BOX_NUM_TABS - 1);
+		                            40, label, i == CurrentTab, i == 0, i == STATS_BOX_NUM_TABS - 1);
 		Tabs[i]->text_size = GetSmallTextSize();
 		x += tab_width;
 	}
@@ -805,10 +805,10 @@ void StatsBox::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 
 	CheckBoxes[0] =
 		NEW(269) SetupCheckBox(SETUP_CONTROL_ID_NONE, 290, 530, true, BBSTYLE_CHECK_BOX_ON,
-		                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_07), 20);
+	                           HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_07), 20);
 	CheckBoxes[1] =
 		NEW(270) SetupCheckBox(SETUP_CONTROL_ID_NONE, 490, 530, true, BBSTYLE_CHECK_BOX_OFF,
-		                       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_08), 20);
+	                           HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_08), 20);
 	CheckBoxes[1]->text_position = SETUP_TEXT_POSITION_LEFT;
 	CheckBoxes[0]->text_position = SETUP_TEXT_POSITION_RIGHT;
 }
@@ -825,8 +825,8 @@ void StatsBox::InitControls()
 	CurrentTab = 1;
 	SetTab(1);
 	wcscpy(Tabs[0]->label, ShowCurrentGame
-							   ? HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER)
-							   : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88));
+	                           ? HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER)
+	                           : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88));
 }
 
 // BW1W120 0056e6a0
@@ -872,7 +872,7 @@ void EndGameBox::Init(uint32_t width, uint32_t height,
 		}
 		Tabs[i] =
 			NEW(562) SetupTabButton(FRONT_END_TAB_FIRST_ID + i, (int)x, 260 - height / 2, (int)(x + tab_width) - (int)x,
-			                        40, label, i == CurrentTab, i == 0, i == END_GAME_BOX_NUM_TABS - 1);
+		                            40, label, i == CurrentTab, i == 0, i == END_GAME_BOX_NUM_TABS - 1);
 		x += tab_width;
 	}
 	setup_box->DefaultTextSize = GetBigTextSize();
