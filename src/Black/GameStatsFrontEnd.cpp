@@ -21,6 +21,7 @@
 #include "MultiplayerConditionBox.h"
 #include "Player.h" /* For GPlayer::GetPlayer3DColor */
 #include "SoundGuidance.h"
+#include "WinCondition.h"
 #include "StatsBox.h"
 #include "alexmfc.h"
 
@@ -1148,8 +1149,193 @@ void __stdcall EndGameBox::Callback(int message, SetupBox* box, SetupControl* co
 	}
 }
 
+void MultiplayerConditionBox::Init(uint32_t width, uint32_t height,
+                                   void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
+{
+	DialogBoxBase::Init(width, height, callback);
+
+	float tab_width = (float)width / MULTIPLAYER_CONDITION_BOX_NUM_TABS;
+	float x = (uint32_t)(400 - width / 2);
+	Instance = this;
+	CurrentTab = 1;
+	for (int i = 0; i < MULTIPLAYER_CONDITION_BOX_NUM_TABS; i++)
+	{
+		wchar_t* label;
+		switch (i)
+		{
+		case 0:
+			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88);
+			break;
+		case 1:
+			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_CONDITIONS);
+			break;
+		default:
+			label = L"";
+			break;
+		}
+		Tabs[i] = NEW(889) SetupTabButton(i == 0 ? MULTIPLAYER_CONDITION_BOX_CONTROL_ID_GAME_OVER_TAB
+		                                         : MULTIPLAYER_CONDITION_BOX_CONTROL_ID_TAB,
+		                                  (int)x, 260 - height / 2, (int)(x + tab_width) - (int)x, 40, label,
+		                                  i == CurrentTab, i == 0, i == MULTIPLAYER_CONDITION_BOX_NUM_TABS - 1);
+		Tabs[i]->text_size = GetSmallTextSize();
+		x += tab_width;
+	}
+	setup_box->DefaultTextSize = GetMidTextSize();
+	SetupBox::CanEscape = true;
+
+	BackButton = NEW(896) SetupBigButton(MULTIPLAYER_CONDITION_BOX_CONTROL_ID_BACK, 20, 530,
+	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_TATOOBACK), 40,
+	                                     SETUP_TEXT_POSITION_RIGHT, BBSTYLE_LEFT_ARROW);
+	ScoreGraph = NEW(897) SetupHLineGraph(0, 40, 100, width - 65, 180, L"", false);
+	ConditionList = NEW(898) SetupList(MULTIPLAYER_CONDITION_BOX_CONTROL_ID_LIST, 40, 345, width - 65, 180);
+	TitleText = NEW(899)
+		SetupStaticText(1, 40, 60, 720, 28,
+	                    HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_CONDITIONS_TITLE),
+	                    TEXTJUSTIFY_CENTRE);
+
+	x = 100.0f;
+	for (int j = 0; j < MAX_MULTIPLAYER_PLAYERS; j++)
+	{
+		CheckBoxes[j] = NEW(904) SetupCheckBox(MULTIPLAYER_CONDITION_BOX_CONTROL_ID_CHECK_BOX_FIRST + j, (int)x, 295,
+		                                       false, BBSTYLE_CHECK_BOX_ON, LHSPrintfW(L"Player %d", j + 1), 25);
+		CheckBoxes[j]->style = BBSTYLE_CHECK_BOX_ON;
+		x += 100.0f;
+	}
+}
+
 void MultiplayerConditionBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	Instance = NULL;
+}
+
+uint32_t __stdcall MultiplayerConditionBox::ConditionDraw(SetupList* list, int index, int x_min, int y_min, int x_max,
+                                                          int y_max, int clip_min, int clip_max)
+{
+	GPlayer* players[MAX_MULTIPLAYER_PLAYERS];
+	uint32_t num_players = 0;
+	if (clip_min >= y_min && clip_max <= y_max)
+	{
+		int type = list->GetItemData(index);
+		players[0] = NULL;
+		players[1] = NULL;
+		players[2] = NULL;
+		players[3] = NULL;
+		for (GPlayer* player = GGame::g_game->GetNextActivePlayer(NULL); player != NULL;
+		     player = GGame::g_game->GetNextActivePlayer(player))
+		{
+			if (player->player_number < MAX_MULTIPLAYER_PLAYERS &&
+			    Instance->CheckBoxes[player->GetPlayerNumber()]->GetCheck())
+				players[num_players++] = player;
+		}
+		if (num_players != 0)
+		{
+			int column_width = (x_max - x_min) / 3 / num_players;
+			int x = x_min + (x_max - x_min) / 3 * 2;
+			for (uint32_t i = 0; i < num_players; i++)
+			{
+				GPlayer*                              player = players[i];
+				std::map<int, WinCondition>::iterator it = player->Conditions.find(type);
+				uint32_t value = min((uint32_t)it->second.Current, (uint32_t)it->second.Target);
+				SetupThing::DrawText(x, clip_max, column_width, TEXTJUSTIFY_CENTRE,
+				                     !it->second.Completed ? (wchar_t*)LHSPrintfW(L"%u", value)
+				                                           : HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(
+																 HELP_TEXT_MULTIPLAYER_CONDITION_COMPLETE),
+				                     26, &player->GetPlayer3DColor(), 0);
+				x += column_width;
+			}
+		}
+	}
+	return true;
+}
+
+void MultiplayerConditionBox::InitControls()
+{
+	CurrentTab = 1;
+	for (int i = 0; i < MAX_MULTIPLAYER_PLAYERS; i++)
+	{
+		CheckBoxes[i]->style = BBSTYLE_CHECK_BOX_ON;
+		CheckBoxes[i]->Hide(true);
+	}
+	uint32_t player_mask = 0;
+	for (GPlayer* player = GGame::g_game->GetNextActivePlayer(NULL); player != NULL;
+	     player = GGame::g_game->GetNextActivePlayer(player))
+	{
+		player_mask |= 1 << player->GetPlayerNumber();
+		CheckBoxes[player->GetPlayerNumber()]->Hide(false);
+	}
+	if (FrontEnd::StatsDialog->ShowCurrentGame)
+	{
+		wcscpy(Tabs[0]->label, HelpTextData::GetTextL(HELP_TEXT_GAME_OVER));
+		FrontEnd::StatsDialog->ShowCurrentGame = false;
+	}
+	else
+		wcscpy(Tabs[0]->label, HelpTextData::GetTextL(HELP_TEXT_DIALOG_ADDITION_88));
+	UpdateGraph(player_mask);
+
+	ConditionList->DeleteAll();
+	std::map<int, WinCondition>::iterator it;
+	for (it = GGame::g_game->MyPlayer()->Conditions.begin(); it != GGame::g_game->MyPlayer()->Conditions.end(); ++it)
+	{
+		WinCondition& condition = it->second;
+		ConditionList->AddString(LHSPrintfW(L"%s (%u)",
+		                                    HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(condition.Type + 1),
+		                                    it->second.Target),
+		                         0, 0, 0);
+		ConditionList->SetItemData(ConditionList->NumItems - 1, condition.Type);
+		ConditionList->SetListBoxDraw(ConditionList->NumItems - 1, ConditionDraw);
+	}
+}
+
+void MultiplayerConditionBox::UpdateGraph(uint32_t player_mask)
+{
+	HLineData line;
+	ScoreGraph->Reset();
+	for (int i = 0; i < MAX_MULTIPLAYER_PLAYERS; i++, player_mask >>= 1)
+	{
+		if ((player_mask & 1) && CheckBoxes[i]->GetCheck())
+		{
+			line.SetNum(GGame::g_game->GetPlayer(i)->ScoreHistoryIndex);
+			line.color = GGame::g_game->GetPlayer(i)->GetPlayer3DColor();
+			for (int j = 0; j < line.PointCount; j++)
+				line.SetPoint(j, GGame::g_game->GetPlayer(i)->ScoreHistory[j]);
+			ScoreGraph->AddLine(line);
+		}
+	}
+	ScoreGraph->SetScale(1.0f, 0.0f, true);
+}
+
+void __stdcall MultiplayerConditionBox::Callback(int message, SetupBox* box, SetupControl* control, int x, int y)
+{
+	switch (message)
+	{
+	case SETUP_MESSAGE_PRE_DRAW: {
+		int alpha = SetupThing::DrawAlpha;
+		SetupThing::DrawAlpha = alpha / 2;
+		SetupThing::DrawBox(TitleText->rect.start.x, TitleText->rect.start.y, TitleText->rect.end.x,
+		                    TitleText->rect.end.y, 0x202020, 0x202020, 0x202020, 0x202020, 1, 1);
+		SetupThing::DrawAlpha = alpha;
+		break;
+	}
+	case SETUP_MESSAGE_ACTIVATE:
+		InitControls();
+		break;
+	case SETUP_MESSAGE_CLICK:
+		if (control->id == MULTIPLAYER_CONDITION_BOX_CONTROL_ID_BACK ||
+		    control->id == MULTIPLAYER_CONDITION_BOX_CONTROL_ID_GAME_OVER_TAB)
+			Hide();
+		if (control->id >= MULTIPLAYER_CONDITION_BOX_CONTROL_ID_CHECK_BOX_FIRST &&
+		    control->id <= MULTIPLAYER_CONDITION_BOX_CONTROL_ID_CHECK_BOX_LAST)
+		{
+			uint32_t player_mask = 0;
+			for (GPlayer* player = GGame::g_game->GetNextActivePlayer(NULL); player != NULL;
+			     player = GGame::g_game->GetNextActivePlayer(player))
+			{
+				if (CheckBoxes[player->GetPlayerNumber()]->GetCheck())
+					player_mask |= 1 << player->GetPlayerNumber();
+			}
+			UpdateGraph(player_mask);
+		}
+		break;
+	}
 }

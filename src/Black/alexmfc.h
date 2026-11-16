@@ -1286,6 +1286,11 @@ struct SetupCheckBox : public SetupButton
 #else
 	SetupCheckBox(int id, int x, int y, bool radio_button, int style, const char16_t* label, int size);
 #endif
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 010d1480
+	int GetCheck() { return style; }
 };
 
 #endif /* BW1_DECOMP_ALEXMFC_INCLUDED_H */
