@@ -28,6 +28,9 @@ struct LHIAddress
 {
 	unsigned short port;
 	char           ip[0x64];
+
+	// BW1W120 inlined BW1M119 01107930
+	unsigned long GetSize() { return strlen(ip) + 3; }
 };
 
 class LH_MULTIPLAYER_API LHTransportInfo : public LHPacketisableObject

@@ -54,6 +54,8 @@ public:
 	static void Hide();
 	// BW1W120 005136e0 BW1M119 012b50d0
 	static void HideAll();
+	// BW1W120 005136b0 BW1M119 012b5210
+	static void RestoreSetupBox();
 	// BW1W120 00513680 BW1M119 012b5290
 	static void UpdateLastShown(SetupBox* box);
 
