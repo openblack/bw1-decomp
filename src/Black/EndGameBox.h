@@ -22,6 +22,17 @@ enum END_GAME_RESULT
 #define END_GAME_BOX_NUM_TABS 6
 #endif
 
+enum END_GAME_BOX_TAB
+{
+	END_GAME_BOX_TAB_GAME_OVER = 0,
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	END_GAME_BOX_TAB_CONDITIONS = 1,
+	END_GAME_BOX_TAB_STATS = 2,
+#else
+	END_GAME_BOX_TAB_STATS = 1,
+#endif
+};
+
 struct GameStatsPackage;
 struct SetupBigButton;
 struct SetupStaticText;

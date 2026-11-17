@@ -28,6 +28,16 @@ struct SetupVBarGraph;
 #define STATS_BOX_MAX_DETAILS        256
 #define STATS_BOX_CREATURE_TURN_TIME 0x2000
 
+enum STATS_BOX_TAB
+{
+	STATS_BOX_TAB_GAME_OVER = 0,
+	STATS_BOX_TAB_SUMMARY = 1,
+	STATS_BOX_TAB_CREATURE = 2,
+	STATS_BOX_TAB_PEOPLE = 3,
+	STATS_BOX_TAB_MIRACLES = 4,
+	STATS_BOX_TAB_GENERAL = 5,
+};
+
 // How a detail row writes its value: on its own, against the row's maximum, or as a percentage. A row whose
 // maximum is the largest of its values writes it on its own.
 enum SHOWMAXTYPE

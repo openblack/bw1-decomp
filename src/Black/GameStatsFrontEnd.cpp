@@ -18,9 +18,9 @@
 #include "Creature3D.h"        /* For LH3DCreature::DrawNow */
 #include "GameTimeConstants.h" /* For SecondsPerYear */
 
-#include "EndGameBox.h"
 #include "FrontEnd.h" /* For FRONT_END_TAB_FIRST_ID */
 #include "Game.h"     /* For GGame::g_game */
+#include "EndGameBox.h"
 #include "GameStats.h"
 #include "GameStatsList.h" /* For NewGameStatsList */
 #include "HelpText.h"      /* For HelpTextDataBase::HelpTextDatabase */
@@ -42,9 +42,9 @@
 #endif
 
 #if defined(VERSION_BW1WCI)
-#define STAT_DETAILS_MAX_VALUES 8
+#define STAT_DETAILS_NUM_VALUES 8
 #else
-#define STAT_DETAILS_MAX_VALUES 4
+#define STAT_DETAILS_NUM_VALUES 4
 #endif
 #define STAT_DETAILS_MAX_VALUE 1e20f
 
@@ -53,8 +53,8 @@ const float StatDetailsMinValue = -1e20f;
 struct StatDetails
 {
 	int              NumValues;
-	float            Values[STAT_DETAILS_MAX_VALUES];
-	LH3DColor        Colors[STAT_DETAILS_MAX_VALUES];
+	float            Values[STAT_DETAILS_NUM_VALUES];
+	LH3DColor        Colors[STAT_DETAILS_NUM_VALUES];
 	float            Max;
 	int              DecimalPlaces;
 	SHOWMAXTYPE      ShowMax;
@@ -341,7 +341,7 @@ void StatsBox::UpdateDetails()
 		StatsBuffer = NewGameStatsList<StatDetails>(STATS_BOX_MAX_DETAILS);
 		switch (CurrentTab)
 		{
-		case 2:
+		case STATS_BOX_TAB_CREATURE:
 			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_48),
 			               &Package->PerPlayer[0].CreatureDamage, 2, 100.0f, SHOWMAXTYPE_PERCENT,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
@@ -379,7 +379,7 @@ void StatsBox::UpdateDetails()
 			               &Package->PerPlayer[0].CreatureNumMushroomsEaten, 1.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
 			break;
-		case 5:
+		case STATS_BOX_TAB_GENERAL:
 			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_09),
 			               &Package->TotalLinesOfCodeExecuted, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
 			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[2]);
@@ -424,7 +424,7 @@ void StatsBox::UpdateDetails()
 			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_29),
 			               &Package->NumFightSteps, 1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_TEXT);
 			break;
-		case 3:
+		case STATS_BOX_TAB_PEOPLE:
 			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_30),
 			               &Package->PerPlayer[0].TotalBirths, 100.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
@@ -529,7 +529,7 @@ void StatsBox::UpdateDetails()
 			               &Package->PerPlayer[0].WoodUsed, 1000000.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
 			break;
-		case 4:
+		case STATS_BOX_TAB_MIRACLES:
 			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_63),
 			               &Package->PerPlayer[0].TotalAgressiveSpellsCast, 1000.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
@@ -657,7 +657,7 @@ void StatsBox::UpdateDetails()
 			               &Package->PerPlayer[0].TotalNumSacrifices, 100.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
 			break;
-		case 1:
+		case STATS_BOX_TAB_SUMMARY:
 			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_110),
 			               &Package->PerPlayer[0].FinalAreaOfInfluence, 0, 1000.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
@@ -748,13 +748,13 @@ void StatsBox::SetTab(int tab)
 	}
 	switch (tab)
 	{
-	case 1:
+	case STATS_BOX_TAB_SUMMARY:
 		BarGraphs[0]->Hide(true);
 		BarGraphs[1]->Hide(true);
 		LineGraphs[0]->Hide(false);
 		LineGraphs[1]->Hide(false);
 		break;
-	case 2:
+	case STATS_BOX_TAB_CREATURE:
 		BarGraphs[0]->Hide(true);
 		BarGraphs[1]->Hide(true);
 		break;
@@ -772,29 +772,29 @@ void StatsBox::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 	float tab_width = width * (1.0f / STATS_BOX_NUM_TABS);
 	float x = (uint32_t)(400 - width / 2);
 	Instance = this;
-	CurrentTab = 1;
+	CurrentTab = STATS_BOX_TAB_SUMMARY;
 	for (int i = 0; i < STATS_BOX_NUM_TABS; i++)
 	{
 		wchar_t* label;
 		switch (i)
 		{
-		case 0:
+		case STATS_BOX_TAB_GAME_OVER:
 			label = ShowCurrentGame ? HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER)
 			                        : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88);
 			break;
-		case 2:
+		case STATS_BOX_TAB_CREATURE:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_46);
 			break;
-		case 1:
+		case STATS_BOX_TAB_SUMMARY:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_111);
 			break;
-		case 3:
+		case STATS_BOX_TAB_PEOPLE:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_138);
 			break;
-		case 4:
+		case STATS_BOX_TAB_MIRACLES:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_87);
 			break;
-		case 5:
+		case STATS_BOX_TAB_GENERAL:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_124);
 			break;
 		}
@@ -859,8 +859,8 @@ void StatsBox::Destroy()
 void StatsBox::InitControls()
 {
 	Package = GameStats::GetPackage();
-	CurrentTab = 1;
-	SetTab(1);
+	CurrentTab = STATS_BOX_TAB_SUMMARY;
+	SetTab(STATS_BOX_TAB_SUMMARY);
 	wcscpy(Tabs[0]->label, ShowCurrentGame
 	                           ? HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER)
 	                           : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88));
@@ -885,14 +885,14 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 		{
 			switch (control->id)
 			{
-			case FRONT_END_TAB_FIRST_ID:
+			case FRONT_END_TAB_FIRST_ID + STATS_BOX_TAB_GAME_OVER:
 				Hide();
 				break;
-			case FRONT_END_TAB_FIRST_ID + 1:
-			case FRONT_END_TAB_FIRST_ID + 2:
-			case FRONT_END_TAB_FIRST_ID + 3:
-			case FRONT_END_TAB_FIRST_ID + 4:
-			case FRONT_END_TAB_FIRST_ID + 5:
+			case FRONT_END_TAB_FIRST_ID + STATS_BOX_TAB_SUMMARY:
+			case FRONT_END_TAB_FIRST_ID + STATS_BOX_TAB_CREATURE:
+			case FRONT_END_TAB_FIRST_ID + STATS_BOX_TAB_PEOPLE:
+			case FRONT_END_TAB_FIRST_ID + STATS_BOX_TAB_MIRACLES:
+			case FRONT_END_TAB_FIRST_ID + STATS_BOX_TAB_GENERAL:
 				SetTab(control->id - FRONT_END_TAB_FIRST_ID);
 				break;
 			}
@@ -916,7 +916,7 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 		break;
 	}
 	case SETUP_MESSAGE_POST_DRAW:
-		if (CurrentTab == 2)
+		if (CurrentTab == STATS_BOX_TAB_CREATURE)
 		{
 			LHPoint old_position = *LH3DTech::GetCameraPosition();
 			LHPoint old_target = *LH3DTech::GetCameraTarget();
@@ -1050,22 +1050,22 @@ void EndGameBox::Init(uint32_t width, uint32_t height,
 	float tab_width = width * (1.0f / END_GAME_BOX_NUM_TABS);
 	float x = (uint32_t)(400 - width / 2);
 	Instance = this;
-	CurrentTab = 0;
+	CurrentTab = END_GAME_BOX_TAB_GAME_OVER;
 	for (int i = 0; i < END_GAME_BOX_NUM_TABS; i++)
 	{
 		wchar_t* label;
 		switch (i)
 		{
-		case 0:
+		case END_GAME_BOX_TAB_GAME_OVER:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER);
 			break;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-		case 1:
+		case END_GAME_BOX_TAB_CONDITIONS:
 			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_MAIN_TAB);
 			break;
-		case 2:
+		case END_GAME_BOX_TAB_STATS:
 #else
-		case 1:
+		case END_GAME_BOX_TAB_STATS:
 #endif
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_151);
 			break;
@@ -1145,8 +1145,8 @@ void EndGameBox::Destroy()
 
 void EndGameBox::InitControls()
 {
-	CurrentTab = 0;
-	SetTab(0);
+	CurrentTab = END_GAME_BOX_TAB_GAME_OVER;
+	SetTab(END_GAME_BOX_TAB_GAME_OVER);
 
 	uint32_t text = HELP_TEXT_DIALOG_ADDITION_152;
 	switch (Result)
@@ -1187,7 +1187,7 @@ void EndGameBox::InitControls()
 	if (Result == END_GAME_RESULT_ELIMINATED)
 	{
 		GInterfaceStatus* status = GGame::g_game->MyInterfaceStatus();
-		status->guidance->HelpSpritesSayOneOffGuidanceIfNecessary(GGuidance::ONE_OFF_GUIDANCE_TYPE_0);
+		status->guidance->HelpSpritesSayOneOffGuidanceIfNecessary(GGuidance::ONE_OFF_GUIDANCE_TYPE_ELIMINATED);
 	}
 
 	LeaveGameButton->Hide(true);
@@ -1296,7 +1296,7 @@ void __stdcall EndGameBox::Callback(int message, SetupBox* box, SetupControl* co
 #endif
 			{
 				CreatureUploadStarted = true;
-				if (GGame::g_game->creature_database.Send() == MULTIPLAYER_DATABASE_ERROR)
+				if (GGame::g_game->creature_database.Send() == MULTIPLAYER_DATABASE_RESULT_ERROR)
 					FrontEnd::EndGameDialog->DatabaseUploadError(box);
 				if (GGame::g_game->GetMyLHPlayer() == GGame::g_game->GetTeamLeaderLHPlayer() &&
 				    GGame::g_game->MyPlayer()->creature.Get() != NULL)
@@ -1307,18 +1307,18 @@ void __stdcall EndGameBox::Callback(int message, SetupBox* box, SetupControl* co
 			}
 			else if (GGame::g_game->creature_database.Status == DBSTATUS_PENDING)
 			{
-				if (GGame::g_game->creature_database.Refresh() == MULTIPLAYER_DATABASE_ERROR)
+				if (GGame::g_game->creature_database.Refresh() == MULTIPLAYER_DATABASE_RESULT_ERROR)
 					FrontEnd::EndGameDialog->DatabaseUploadError(box);
 			}
 			if (!StatsUploadStarted)
 			{
 				StatsUploadStarted = true;
-				if (GGame::g_game->stats_database.Send() == MULTIPLAYER_DATABASE_ERROR)
+				if (GGame::g_game->stats_database.Send() == MULTIPLAYER_DATABASE_RESULT_ERROR)
 					FrontEnd::EndGameDialog->DatabaseUploadError(box);
 			}
 			else if (GGame::g_game->stats_database.Status == DBSTATUS_PENDING)
 			{
-				if (GGame::g_game->stats_database.Refresh() == MULTIPLAYER_DATABASE_ERROR)
+				if (GGame::g_game->stats_database.Refresh() == MULTIPLAYER_DATABASE_RESULT_ERROR)
 					FrontEnd::EndGameDialog->DatabaseUploadError(box);
 			}
 			if (GGame::g_game->creature_database.Status != DBSTATUS_PENDING &&
@@ -1342,22 +1342,22 @@ void __stdcall EndGameBox::Callback(int message, SetupBox* box, SetupControl* co
 		}
 		switch (control->id)
 		{
-		case FRONT_END_TAB_FIRST_ID:
-			SetTab(0);
+		case FRONT_END_TAB_FIRST_ID + END_GAME_BOX_TAB_GAME_OVER:
+			SetTab(END_GAME_BOX_TAB_GAME_OVER);
 			break;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-		case FRONT_END_TAB_FIRST_ID + 1:
-			SetTab(1);
+		case FRONT_END_TAB_FIRST_ID + END_GAME_BOX_TAB_CONDITIONS:
+			SetTab(END_GAME_BOX_TAB_CONDITIONS);
 			HideAll();
 			Show();
 			FrontEnd::StatsDialog->ShowCurrentGame = true;
 			MultiplayerConditionBox::Instance->Show();
 			break;
-		case FRONT_END_TAB_FIRST_ID + 2:
-			SetTab(2);
+		case FRONT_END_TAB_FIRST_ID + END_GAME_BOX_TAB_STATS:
+			SetTab(END_GAME_BOX_TAB_STATS);
 #else
-		case FRONT_END_TAB_FIRST_ID + 1:
-			SetTab(1);
+		case FRONT_END_TAB_FIRST_ID + END_GAME_BOX_TAB_STATS:
+			SetTab(END_GAME_BOX_TAB_STATS);
 #endif
 			HideAll();
 			Show();
@@ -1390,16 +1390,16 @@ void MultiplayerConditionBox::Init(uint32_t width, uint32_t height,
 	float tab_width = (float)width / MULTIPLAYER_CONDITION_BOX_NUM_TABS;
 	float x = (uint32_t)(400 - width / 2);
 	Instance = this;
-	CurrentTab = 1;
+	CurrentTab = MULTIPLAYER_CONDITION_BOX_TAB_CONDITIONS;
 	for (int i = 0; i < MULTIPLAYER_CONDITION_BOX_NUM_TABS; i++)
 	{
 		wchar_t* label;
 		switch (i)
 		{
-		case 0:
+		case MULTIPLAYER_CONDITION_BOX_TAB_GAME_OVER:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_88);
 			break;
-		case 1:
+		case MULTIPLAYER_CONDITION_BOX_TAB_CONDITIONS:
 			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_MAIN_TAB);
 			break;
 		default:
@@ -1485,7 +1485,7 @@ uint32_t __stdcall MultiplayerConditionBox::ConditionDraw(SetupList* list, int i
 
 void MultiplayerConditionBox::InitControls()
 {
-	CurrentTab = 1;
+	CurrentTab = MULTIPLAYER_CONDITION_BOX_TAB_CONDITIONS;
 	uint32_t player_mask = 0;
 	for (int i = 0; i < MAX_MULTIPLAYER_PLAYERS; i++)
 	{

@@ -42,6 +42,8 @@ public:
 	static FireEffect* Create(Object* object, GPlayer* player, GameThing* source);
 	// BW1W120 007308f0 BW1M119 01154bb0
 	static void CopyFromObjectToObject(Object* from, Object* to);
+	// BW1W120 00730960 BW1M119 01154a80
+	static void MoveFromObjectToObject(Object* from, Object* to);
 	// BW1W120 00730160 BW1M119 01156200
 	static float ConvertToTemperature(EffectValues& values);
 	// BW1W120 inlined BW1M119 01157010
@@ -144,6 +146,24 @@ public:
 	void GetFireCentre(MapCoords* centre);
 	// BW1W120 0072ff70 BW1M119 01156560
 	float GetFireHeight();
+	// BW1W120 0072efb0 BW1M119 011571b0
+	void Process();
+	// BW1W120 0072f910 BW1M119 01157110
+	void RemoveAllFiremen();
+	// BW1W120 0072ede0 BW1M119 01158130
+	void PlayBurnSound();
+	// BW1W120 0072edc0 BW1M119 01158220
+	void StopBurnSound();
+	// BW1W120 007303b0 BW1M119 01155be0
+	bool32_t IsLessThanReactionTemperature();
+	// BW1W120 00730600 BW1M119 01155710
+	float GetObjectsTotalHeat();
+	// BW1W120 00730a40 BW1M119 01154860
+	bool32_t IsHeadOfGroup();
+	// BW1W120 00730290 BW1M119 01155f80
+	float GetTotalGroupRadius();
+	// BW1W120 007302e0 BW1M119 01155ec0
+	float GetHighestPriorityValueOfBurningObjects();
 };
 
 #endif /* BW1_DECOMP_FIRE_EFFECT_INCLUDED_H */
