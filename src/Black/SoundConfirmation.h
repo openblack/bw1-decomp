@@ -11,6 +11,9 @@ class GConfirmation : public Base
 public:
 	uint8_t field_0x8[0x1c];
 
+	// BW1W120 0071a4d0 BW1M119 01514a80
+	GConfirmation();
+
 	// BW1W120 0071a560 BW1M119 01514920
 	static void Init();
 	// BW1W120 0071a610 BW1M119 01514860

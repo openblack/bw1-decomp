@@ -18534,6 +18534,7 @@ crt_xc_fn_thunk_sentinelOneEighth_SoundConfirmation_007358F0 = .text:0x007358F0;
 crt_xc_fn_sentinelOneEighth_SoundConfirmation_00735900 = .text:0x00735900; // type:function size:0x10
 _$E34 = .text:0x00735910; // type:function size:0x10 scope:local
 _$E33 = .text:0x00735920; // type:function size:0x20 scope:local
+??0GConfirmation@@QAE@XZ = .text:0x00735940; // type:function size:0x10 scope:global
 ??_GGConfirmation@@UAEPAXI@Z = .text:0x00735950; // type:function size:0x20 scope:global
 ??1GConfirmation@@UAE@XZ = .text:0x00735970; // type:function size:0x10
 crt_xc_fn_SoundConfirmation_00735980 = .text:0x00735980; // type:function size:0x10

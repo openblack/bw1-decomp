@@ -19224,6 +19224,7 @@ _$E47 = .text:0x0071A470; // type:function size:0x10 scope:local
 _$E46 = .text:0x0071A480; // type:function size:0x20 scope:local
 crt_xc_fn_ctypeGuard_SoundConfirmation_0071A4A0 = .text:0x0071A4A0; // type:function size:0x20
 crt_xc_fn_atexitCleanupReg_SoundConfirmation_0071A4C0 = .text:0x0071A4C0; // type:function size:0x10
+??0GConfirmation@@QAE@XZ = .text:0x0071A4D0; // type:function size:0x10 scope:global
 ??_GGConfirmation@@UAEPAXI@Z = .text:0x0071A4E0; // type:function size:0x20 scope:global
 ??1GConfirmation@@UAE@XZ = .text:0x0071A500; // type:function size:0x10
 crt_xc_fn_SoundConfirmation_0071A510 = .text:0x0071A510; // type:function size:0x10

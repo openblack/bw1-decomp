@@ -17419,6 +17419,7 @@ fn_0070ED50 = .text:0x0070ED50; // type:function size:0x10
 fn_0070ED60 = .text:0x0070ED60; // type:function size:0x10
 fn_0070ED70 = .text:0x0070ED70; // type:function size:0x10
 fn_0070ED80 = .text:0x0070ED80; // type:function size:0x20
+??0GConfirmation@@QAE@XZ = .text:0x0070EDA0; // type:function size:0x10 scope:global
 ??_GGConfirmation@@UAEPAXI@Z = .text:0x0070EDB0; // type:function size:0x20
 ??1GConfirmation@@UAE@XZ = .text:0x0070EDD0; // type:function size:0x10
 crt_xc_fn_SoundConfirmation_0071A510 = .text:0x0070EDE0; // type:function size:0x10
