@@ -89,9 +89,11 @@ struct StatDetails
 	              int style);
 };
 
-StatsBox*                StatsBox::Instance;
-EndGameBox*              EndGameBox::Instance;
+StatsBox*   StatsBox::Instance;
+EndGameBox* EndGameBox::Instance;
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 MultiplayerConditionBox* MultiplayerConditionBox::Instance;
+#endif
 
 static bool32_t TotalTitleDrawn;
 
@@ -1045,7 +1047,7 @@ void EndGameBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 
-	float tab_width = (float)width / END_GAME_BOX_NUM_TABS;
+	float tab_width = width * (1.0f / END_GAME_BOX_NUM_TABS);
 	float x = (uint32_t)(400 - width / 2);
 	Instance = this;
 	CurrentTab = 0;
