@@ -403,8 +403,8 @@ section (`.text`, `.text$x`, `.rdata`, `.rdata$r`, `.xdata$x`, `.CRT$XCU`, `.dat
 D=.claude/skills/libcmt-obj-matching
 python3 $D/chainwalk.py BW1W110 string,ios .text=0x79E67E    # walk in link order, chaining ends
 python3 $D/labelplan.py BW1W110 build/agent-tools/walk_BW1W110_ios.txt [--apply]
-python3 $D/funclet_map.py BW1W110 00896280 008963C8          # who owns each .text$x funclet
-python3 $D/textx_holders.py BW1W110 00896280 008963C8 [--apply]
+python3 tools/funclets.py owners BW1W110 00896280 008963C8    # who owns each .text$x funclet
+python3 tools/funclets.py holders BW1W110 00896280 008963C8 [--apply]
 ```
 
 - `cppwalk.py VER OBJ BIN=0xSTART...` walks one object: per section `present` (claim it
@@ -439,10 +439,10 @@ Rules learned on string/ios/locale0:
   boundaries; cut them at the boundary.
 - dtk emits per-function auto units of the `.text$x` region as plain `.text`, which lld
   orders among the `.text` units, so once any lib object claims funclets, every funclet
-  run needs an explicit holder. `funclet_map.py` attributes each funclet from the EH
+  run needs an explicit holder (`eh-funclets` skill). `funclets.py owners` attributes each funclet from the EH
   records (handler thunk `mov eax, FuncInfo; jmp`, registered by its owner with `push`
   or with `mov eax, thunk; call __EH_prolog`; unwind and catch funclets listed in the
-  FuncInfo); `textx_holders.py` writes the ranges. Runs whose owner is in code not split
+  FuncInfo); `funclets.py holders` writes the ranges. Runs whose owner is in code not split
   into units yet are carried by the nearest unit before that code (code order = funclet
   order) that holds extracted bytes, i.e. not a lib object and not linked from source;
   this puts foreign funclets into that unit's objdiff target (LHSurface, LHSprite,
