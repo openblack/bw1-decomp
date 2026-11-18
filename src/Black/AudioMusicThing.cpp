@@ -339,6 +339,11 @@ void GAudio::StopPlayingSoundEffect(uint32_t sample, uint32_t object, AUDIO_SFX_
 	AudioSystem->LHSampleStop(AudioBanks[type], object, sample);
 }
 
+bool32_t GAudio::IsSamplePlaying(unsigned long object, unsigned long sample, AUDIO_SFX_BANK_TYPE type) const
+{
+	return AudioSystem->LHSampleIsPlaying(GetBank(type), object, sample);
+}
+
 float GAudio::GetGSFXSampleMaxDistance(uint32_t sample, LH_AudioBank* bank) const
 {
 	if (bank)
