@@ -61,7 +61,7 @@ struct StatDetails
 	GRAPHDISPLAYTYPE Display;
 	wchar_t          Format[16];
 #if defined(VERSION_BW1WCI)
-	int field_0x74;
+	bool32_t ShowTotal;
 #endif
 
 	// BW1W120 inlined BW1M119 013282c0
@@ -72,14 +72,14 @@ struct StatDetails
 	{
 		switch (ShowMax)
 		{
+		default:
+			swprintf(Format, L"%%0.%df", DecimalPlaces);
+			break;
 		case SHOWMAXTYPE_FRACTION:
 			swprintf(Format, L"%%0.%df/%%0.%df", DecimalPlaces, DecimalPlaces);
 			break;
 		case SHOWMAXTYPE_PERCENT:
 			swprintf(Format, L"%%0.%df%%%%", DecimalPlaces);
-			break;
-		default:
-			swprintf(Format, L"%%0.%df", DecimalPlaces);
 			break;
 		}
 	}
@@ -125,6 +125,11 @@ uint32_t StatDetails::Draw(SetupList* list, int index, int x_min, int y_min, int
 		}
 		else
 		{
+#if defined(VERSION_BW1WCI)
+			bool32_t show_total = ShowTotal;
+			if (NumValues <= 1)
+				show_total = true;
+#endif
 			int      x = x_max - 300;
 			int      spacing = 300 / (NumValues + 1);
 			float    total = 0.0f;
@@ -140,11 +145,19 @@ uint32_t StatDetails::Draw(SetupList* list, int index, int x_min, int y_min, int
 				if (NumValues > 1)
 					SetupThing::DrawTextWrap(x - spacing * 2, y_min, x + spacing * 3, y_max, clip_min + 2, true, text,
 					                         GetSmallTextSize(), &Colors[i], false, false);
+#if defined(VERSION_BW1WCI)
+				else if (show_total)
+#else
 				else
+#endif
 					single = true;
 				x += spacing;
 			}
+#if defined(VERSION_BW1WCI)
+			if ((ShowMax != SHOWMAXTYPE_PERCENT || NumValues == 1) && show_total)
+#else
 			if (ShowMax != SHOWMAXTYPE_PERCENT)
+#endif
 			{
 				swprintf(text, Format, total, Max);
 				SetupThing::DrawTextWrap(x - spacing * 2, y_min, x + spacing * 3, y_max, clip_min + 2, true, text,
@@ -183,8 +196,13 @@ void StatsBox::CopyDetailsToDynamic(int index, SetupVBarGraph* graph)
 	}
 }
 
+#if defined(VERSION_BW1WCI)
+void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
+                              GRAPHDISPLAYTYPE display, bool32_t show_total)
+#else
 void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
                               GRAPHDISPLAYTYPE display)
+#endif
 {
 	int index = DetailsList->NumItems;
 	DetailsList->AddString(name, 0, 0, 0);
@@ -199,6 +217,9 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 	details->DecimalPlaces = decimal_places;
 	details->NumValues = num_players;
 	details->Max = 0.0f;
+#if defined(VERSION_BW1WCI)
+	details->ShowTotal = true;
+#endif
 	for (int i = 0; i < num_players;
 	     i++, stat_value = (float*)((uint8_t*)stat_value + sizeof(GameStatsPackage::GameStatsPerPlayer)))
 	{
@@ -217,6 +238,9 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
 		details->Max = max;
 	details->MakeFormat();
+#if defined(VERSION_BW1WCI)
+	StatsBuffer[index].ShowTotal = show_total;
+#endif
 }
 
 uint32_t __stdcall StatsBox::DetailsDraw(SetupList* list, int index, int x_min, int y_min, int x_max, int y_max,
@@ -235,8 +259,13 @@ uint32_t __stdcall StatsBox::DetailsDraw(SetupList* list, int index, int x_min, 
 	return result;
 }
 
+#if defined(VERSION_BW1WCI)
+void StatsBox::ADDULONGPLAYER(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max,
+                              GRAPHDISPLAYTYPE display, bool32_t show_total)
+#else
 void StatsBox::ADDULONGPLAYER(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max,
                               GRAPHDISPLAYTYPE display)
+#endif
 {
 	int index = DetailsList->NumItems;
 	DetailsList->AddString(name, 0, 0, 0);
@@ -251,6 +280,9 @@ void StatsBox::ADDULONGPLAYER(wchar_t* name, unsigned long* value, float max, SH
 	details->DecimalPlaces = 0;
 	details->NumValues = num_players;
 	details->Max = 0.0f;
+#if defined(VERSION_BW1WCI)
+	details->ShowTotal = true;
+#endif
 	for (int i = 0; i < num_players;
 	     i++, stat_value = (unsigned long*)((uint8_t*)stat_value + sizeof(GameStatsPackage::GameStatsPerPlayer)))
 	{
@@ -265,10 +297,122 @@ void StatsBox::ADDULONGPLAYER(wchar_t* name, unsigned long* value, float max, SH
 	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
 		details->Max = max;
 	details->MakeFormat();
+#if defined(VERSION_BW1WCI)
+	StatsBuffer[index].ShowTotal = show_total;
+#endif
 }
 
+#if defined(VERSION_BW1WCI)
+void StatsBox::ADDFLOATPLAYERWITHTYKE(wchar_t* name, float* value, float* tyke_value, int decimal_places, float max,
+                                      SHOWMAXTYPE show_max, GRAPHDISPLAYTYPE display, bool32_t show_total)
+{
+	int index = DetailsList->NumItems;
+	DetailsList->AddString(name, 0, 0, 0);
+	DetailsList->SetItemData(index, (uint32_t)&StatsBuffer[index]);
+	DetailsList->SetListBoxDraw(index, DetailsDraw);
+
+	float     values[STAT_DETAILS_NUM_VALUES];
+	LH3DColor colours[STAT_DETAILS_NUM_VALUES];
+	int       num_values = 0;
+	int       num_players = Package->NumPlayers;
+	for (int i = 0; i < num_players; i++)
+	{
+		values[num_values] = *value;
+		colours[num_values] = Package->PerPlayer[i].Colour;
+		num_values++;
+		if (Package->PlayerHasTyke[i])
+		{
+			values[num_values] = *tyke_value;
+			colours[num_values] = LH3DColor(
+				LH3DBlendColor(Package->PerPlayer[i].Colour.GetColor(), LH3D_COLOR_WHITE, STATS_BOX_TYKE_LIGHTEN));
+			num_values++;
+		}
+		value = (float*)((uint8_t*)value + sizeof(GameStatsPackage::GameStatsPerPlayer));
+		tyke_value = (float*)((uint8_t*)tyke_value + sizeof(GameStatsPackage::GameStatsPerPlayer));
+	}
+
+	StatDetails* details = &StatsBuffer[index];
+	details->Display = display;
+	details->DecimalPlaces = decimal_places;
+	details->NumValues = num_values;
+	details->Max = 0.0f;
+	details->ShowTotal = true;
+	for (int j = 0; j < num_values; j++)
+	{
+		details->Values[j] = values[j];
+		details->Values[j] =
+			details->Values[j] > STAT_DETAILS_MIN_VALUE
+				? details->Values[j] < STAT_DETAILS_MAX_VALUE ? details->Values[j] : STAT_DETAILS_MAX_VALUE
+				: STAT_DETAILS_MIN_VALUE;
+		if (details->Values[j] > details->Max)
+			details->Max = details->Values[j];
+	}
+	for (int k = 0; k < num_values; k++)
+		details->Colors[k] = colours[k];
+	details->ShowMax = show_max;
+	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
+		details->Max = max;
+	details->MakeFormat();
+	StatsBuffer[index].ShowTotal = show_total;
+}
+
+void StatsBox::ADDULONGPLAYERWITHTYKE(wchar_t* name, unsigned long* value, unsigned long* tyke_value, float max,
+                                      SHOWMAXTYPE show_max, GRAPHDISPLAYTYPE display, bool32_t show_total)
+{
+	int index = DetailsList->NumItems;
+	DetailsList->AddString(name, 0, 0, 0);
+	DetailsList->SetItemData(index, (uint32_t)&StatsBuffer[index]);
+	DetailsList->SetListBoxDraw(index, DetailsDraw);
+
+	unsigned long values[STAT_DETAILS_NUM_VALUES];
+	LH3DColor     colours[STAT_DETAILS_NUM_VALUES];
+	int           num_values = 0;
+	int           num_players = Package->NumPlayers;
+	for (int i = 0; i < num_players; i++)
+	{
+		values[num_values] = *value;
+		colours[num_values] = Package->PerPlayer[i].Colour;
+		num_values++;
+		if (Package->PlayerHasTyke[i])
+		{
+			values[num_values] = *tyke_value;
+			colours[num_values] = LH3DColor(
+				LH3DBlendColor(Package->PerPlayer[i].Colour.GetColor(), LH3D_COLOR_WHITE, STATS_BOX_TYKE_LIGHTEN));
+			num_values++;
+		}
+		value = (unsigned long*)((uint8_t*)value + sizeof(GameStatsPackage::GameStatsPerPlayer));
+		tyke_value = (unsigned long*)((uint8_t*)tyke_value + sizeof(GameStatsPackage::GameStatsPerPlayer));
+	}
+
+	StatDetails* details = &StatsBuffer[index];
+	details->Display = display;
+	details->DecimalPlaces = 0;
+	details->NumValues = num_values;
+	details->Max = 0.0f;
+	details->ShowTotal = true;
+	for (int j = 0; j < num_values; j++)
+	{
+		details->Values[j] = values[j];
+		if (details->Values[j] > details->Max)
+			details->Max = details->Values[j];
+	}
+	for (int k = 0; k < num_values; k++)
+		details->Colors[k] = colours[k];
+	details->ShowMax = show_max;
+	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
+		details->Max = max;
+	details->MakeFormat();
+	StatsBuffer[index].ShowTotal = show_total;
+}
+#endif
+
+#if defined(VERSION_BW1WCI)
+void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
+                              GRAPHDISPLAYTYPE display, bool32_t show_total)
+#else
 void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
                               GRAPHDISPLAYTYPE display)
+#endif
 {
 	int index = DetailsList->NumItems;
 	DetailsList->AddString(name, 0, 0, 0);
@@ -282,6 +426,9 @@ void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, f
 	details->DecimalPlaces = decimal_places;
 	details->NumValues = 1;
 	details->Max = 0.0f;
+#if defined(VERSION_BW1WCI)
+	details->ShowTotal = true;
+#endif
 	for (int i = 0; i < 1; i++, stat_value++)
 	{
 		details->Values[i] = *stat_value;
@@ -298,10 +445,18 @@ void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, f
 	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
 		details->Max = max;
 	details->MakeFormat();
+#if defined(VERSION_BW1WCI)
+	StatsBuffer[index].ShowTotal = show_total;
+#endif
 }
 
+#if defined(VERSION_BW1WCI)
+void StatsBox::ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max,
+                              GRAPHDISPLAYTYPE display, bool32_t show_total)
+#else
 void StatsBox::ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max,
                               GRAPHDISPLAYTYPE display)
+#endif
 {
 	int index = DetailsList->NumItems;
 	DetailsList->AddString(name, 0, 0, 0);
@@ -315,6 +470,9 @@ void StatsBox::ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SH
 	details->DecimalPlaces = 0;
 	details->NumValues = 1;
 	details->Max = 0.0f;
+#if defined(VERSION_BW1WCI)
+	details->ShowTotal = true;
+#endif
 	for (int i = 0; i < 1; i++, stat_value++)
 	{
 		details->Values[i] = *stat_value;
@@ -327,6 +485,9 @@ void StatsBox::ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SH
 	if (details->ShowMax != SHOWMAXTYPE_LARGEST)
 		details->Max = max;
 	details->MakeFormat();
+#if defined(VERSION_BW1WCI)
+	StatsBuffer[index].ShowTotal = show_total;
+#endif
 }
 
 void StatsBox::UpdateDetails()
@@ -340,6 +501,50 @@ void StatsBox::UpdateDetails()
 		switch (CurrentTab)
 		{
 		case STATS_BOX_TAB_CREATURE:
+#if defined(VERSION_BW1WCI)
+			ADDFLOATPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_48),
+			                       &Package->PerPlayer[0].CreatureDamage, &Package->TykePerPlayer[0].CreatureDamage, 2,
+			                       100.0f, SHOWMAXTYPE_PERCENT, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_68),
+			                       &Package->PerPlayer[0].CreatureHunger, &Package->TykePerPlayer[0].CreatureHunger, 2,
+			                       100.0f, SHOWMAXTYPE_PERCENT, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_137),
+			                       &Package->PerPlayer[0].CreatureTiredness,
+			                       &Package->TykePerPlayer[0].CreatureTiredness, 2, 100.0f, SHOWMAXTYPE_PERCENT,
+			                       GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_158),
+			                       &Package->PerPlayer[0].CreatureAge, &Package->TykePerPlayer[0].CreatureAge, 1.0f,
+			                       SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDFLOATPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_159),
+			                       &Package->PerPlayer[0].CreatureAlignment,
+			                       &Package->TykePerPlayer[0].CreatureAlignment, 2, 1.0f, SHOWMAXTYPE_NONE,
+			                       GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_160),
+			                       &Package->PerPlayer[0].CreatureNumPeopleKilled,
+			                       &Package->TykePerPlayer[0].CreatureNumPeopleKilled, 1.0f, SHOWMAXTYPE_LARGEST,
+			                       GRAPHDISPLAYTYPE_TEXT);
+			ADDULONGPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_161),
+			                       &Package->PerPlayer[0].CreatureNumAnimalsKilled,
+			                       &Package->TykePerPlayer[0].CreatureNumAnimalsKilled, 1.0f, SHOWMAXTYPE_LARGEST,
+			                       GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_163),
+			                       &Package->PerPlayer[0].CreatureNumBattlesFought,
+			                       &Package->TykePerPlayer[0].CreatureNumBattlesFought, 1.0f, SHOWMAXTYPE_LARGEST,
+			                       GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[1]);
+			ADDULONGPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_164),
+			                       &Package->PerPlayer[0].CreatureNumBattlesWon,
+			                       &Package->TykePerPlayer[0].CreatureNumBattlesWon, 1.0f, SHOWMAXTYPE_LARGEST,
+			                       GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[0]);
+			ADDULONGPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_165),
+			                       &Package->PerPlayer[0].CreatureNumPoos, &Package->TykePerPlayer[0].CreatureNumPoos,
+			                       1.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+			ADDULONGPLAYERWITHTYKE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_166),
+			                       &Package->PerPlayer[0].CreatureNumMushroomsEaten,
+			                       &Package->TykePerPlayer[0].CreatureNumMushroomsEaten, 1.0f, SHOWMAXTYPE_LARGEST,
+			                       GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+#else
 			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_48),
 			               &Package->PerPlayer[0].CreatureDamage, 2, 100.0f, SHOWMAXTYPE_PERCENT,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
@@ -376,6 +581,7 @@ void StatsBox::UpdateDetails()
 			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_166),
 			               &Package->PerPlayer[0].CreatureNumMushroomsEaten, 1.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+#endif
 			break;
 		case STATS_BOX_TAB_GENERAL:
 			ADDULONGSINGLE(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_09),
@@ -465,9 +671,15 @@ void StatsBox::UpdateDetails()
 			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_42),
 			               &Package->PerPlayer[0].TotalPeopleConverted, 1000.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+#if defined(VERSION_BW1WCI)
+			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_43),
+			               &Package->PerPlayer[0].AverageSatisfactionOfVillagers, 2, 1.0f, SHOWMAXTYPE_NONE,
+			               GRAPHDISPLAYTYPE_BAR_OR_TEXT, false);
+#else
 			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_43),
 			               &Package->PerPlayer[0].AverageSatisfactionOfVillagers, 2, 1.0f, SHOWMAXTYPE_NONE,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+#endif
 			CopyDetailsToDynamic(DetailsList->NumItems - 1, BarGraphs[0]);
 			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_44),
 			               &Package->PerPlayer[0].TownsOwned, 25.0f, SHOWMAXTYPE_LARGEST, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
@@ -660,9 +872,15 @@ void StatsBox::UpdateDetails()
 			               &Package->PerPlayer[0].FinalAreaOfInfluence, 0, 1000.0f, SHOWMAXTYPE_LARGEST,
 			               GRAPHDISPLAYTYPE_BAR_OR_TEXT);
 			CopyDetailsToDynamic(DetailsList->NumItems - 1, NULL);
+#if defined(VERSION_BW1WCI)
+			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_111),
+			               &Package->PerPlayer[0].NumGodsDefeated, (float)(GameStats::GetNumPlayersInGame() - 1),
+			               SHOWMAXTYPE_FRACTION, GRAPHDISPLAYTYPE_BAR_OR_TEXT, false);
+#else
 			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_111),
 			               &Package->PerPlayer[0].NumGodsDefeated, (float)(GameStats::GetNumPlayersInGame() - 1),
 			               SHOWMAXTYPE_FRACTION, GRAPHDISPLAYTYPE_BAR_OR_TEXT);
+#endif
 			ADDFLOATPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_112),
 			               &Package->PerPlayer[0].AligmentChange, 2, 1.0f, SHOWMAXTYPE_NONE, GRAPHDISPLAYTYPE_TEXT);
 			ADDULONGPLAYER(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_113),
@@ -951,6 +1169,98 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 				}
 				unsigned long colour = Package->PerPlayer[i].Colour.GetColor();
 				SetupThing::DrawBox(box_x, y_min, box_x + width, y_max, colour, colour, colour, colour, 1, 1);
+#if defined(VERSION_BW1WCI)
+				int screen_x = box_x + width / 2;
+				int screen_y = (int)((y_max - y_min) * 0.9f + y_min);
+				SetupThing::adjust(screen_x, screen_y);
+				if (GGame::g_game->Initialised && GGame::g_game->GetPlayer(i) != NULL)
+				{
+					Creature* player_creature = GGame::g_game->GetPlayer(i)->GetCreature();
+					if (player_creature != NULL)
+					{
+						LH3DCreature* creature = player_creature->GetCreature3D();
+						bool          has_tyke =
+							Package->PlayerHasTyke[i] && player_creature->ConfinedCreatures.GetHead() != NULL;
+						LH3DCreature* tyke =
+							has_tyke ? player_creature->ConfinedCreatures.GetHead()->GetCreature3D() : NULL;
+						if (tyke != NULL)
+							screen_x = box_x + width * 0.3;
+						int size =
+							min(SetupThing::adjusty(tyke != NULL ? (int)(width * 0.7) : width) - SetupThing::adjusty(0),
+						        SetupThing::adjusty(y_max) - SetupThing::adjusty(y_min));
+						size = max(10, size);
+						float creature_size = creature != NULL ? creature->Size1 * 15.0f : 0.0f;
+						float tyke_size = tyke != NULL ? tyke->Size1 * 15.0f : 0.0f;
+						float largest_size = max(creature_size, tyke_size);
+						while (creature != NULL)
+						{
+							creature->DynamicShadow->SetNeedClipping(true);
+							LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
+							LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, TRUE);
+							float distance = largest_size;
+							if (distance > 0.1f)
+								distance = size / distance;
+							if (distance > 1.0f)
+								distance = 900.0f / distance;
+							float ratio = (float)(SetupThing::adjusty(600) - SetupThing::adjusty(0)) /
+							              LHSys::TheSystem.screen.Height();
+							if (ratio != 0.0f)
+								distance /= ratio;
+							LHPoint point;
+							LH3DTech::Get3DPointFromScreen(LHCoord(screen_x, screen_y), point, distance);
+							LHPoint   centre(0.0f, 0.0f, 0.0f);
+							LHMatrix* matrices = creature->TransformedMatrices;
+							int       num_matrices = creature->NumBoneMatrices;
+							for (int b = 0; b < num_matrices; b++)
+							{
+								centre.x += matrices[b].GetPos().x;
+								centre.y += matrices[b].GetPos().y;
+								centre.z += matrices[b].GetPos().z;
+							}
+							if (num_matrices != 0)
+							{
+								centre.x *= 1.0f / num_matrices;
+								centre.z *= 1.0f / num_matrices;
+							}
+							centre.y = creature->position.y;
+							point -= centre;
+							for (int c = 0; c < num_matrices; c++)
+							{
+								matrices[c].GetPos().x += point.x;
+								matrices[c].GetPos().y += point.y;
+								matrices[c].GetPos().z += point.z;
+							}
+							creature->DynamicShadow->matrix.GetPos().x += point.x;
+							creature->DynamicShadow->matrix.GetPos().y += point.y;
+							creature->DynamicShadow->matrix.GetPos().z += point.z;
+							creature->DrawNow();
+							for (int d = 0; d < num_matrices; d++)
+							{
+								matrices[d].GetPos().x -= point.x;
+								matrices[d].GetPos().y -= point.y;
+								matrices[d].GetPos().z -= point.z;
+							}
+							creature->DynamicShadow->matrix.GetPos().x -= point.x;
+							creature->DynamicShadow->matrix.GetPos().y -= point.y;
+							creature->DynamicShadow->matrix.GetPos().z -= point.z;
+							creature = tyke;
+							tyke = NULL;
+							screen_x += width * 0.4;
+						}
+					}
+					else if (GGame::g_game->GetPlayer(i)->GetStats()->KeepPreviousStats)
+					{
+						LH3DColor shadow(0, 0, 0, 255);
+						SetupThing::DrawTextA(box_x + width / 2 + 1, (y_min + y_max) / 2 + 1, width, TEXTJUSTIFY_CENTRE,
+						                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER),
+						                      GetBigTextSize(), &shadow, 0);
+						LH3DColor colour(255, 255, 255, 255);
+						SetupThing::DrawTextA(box_x + width / 2, (y_min + y_max) / 2, width, TEXTJUSTIFY_CENTRE,
+						                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_GAME_OVER),
+						                      GetBigTextSize(), &colour, 0);
+					}
+				}
+#else
 				int screen_x = box_x + width / 2;
 				int screen_y = (int)((y_max - y_min) * 0.9f + y_min);
 				SetupThing::adjust(screen_x, screen_y);
@@ -1017,6 +1327,7 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 						}
 					}
 				}
+#endif
 				box_x += width + 10;
 			}
 			SetupThing::DrawAlpha = alpha;

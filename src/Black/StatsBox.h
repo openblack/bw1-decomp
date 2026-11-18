@@ -27,6 +27,7 @@ struct SetupVBarGraph;
 #endif
 #define STATS_BOX_MAX_DETAILS        256
 #define STATS_BOX_CREATURE_TURN_TIME 0x2000
+#define STATS_BOX_TYKE_LIGHTEN       0x80
 
 enum STATS_BOX_TAB
 {
@@ -107,6 +108,26 @@ public:
 
 	// BW1W120 0056aca0 BW1M119 01328e00
 	void CopyDetailsToDynamic(int index, SetupVBarGraph* graph);
+#if defined(VERSION_BW1WCI)
+	// BW1WCI 0057fc40 BW1MCI119 01349290
+	void ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
+	                    GRAPHDISPLAYTYPE display, bool32_t show_total = true);
+	// BW1WCI 0057fe90 BW1MCI119 01349060
+	void ADDULONGPLAYER(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max, GRAPHDISPLAYTYPE display,
+	                    bool32_t show_total = true);
+	// BW1WCI 00580030 BW1MCI119 01348ca0
+	void ADDFLOATPLAYERWITHTYKE(wchar_t* name, float* value, float* tyke_value, int decimal_places, float max,
+	                            SHOWMAXTYPE show_max, GRAPHDISPLAYTYPE display, bool32_t show_total = true);
+	// BW1WCI 00580320 BW1MCI119 01348910
+	void ADDULONGPLAYERWITHTYKE(wchar_t* name, unsigned long* value, unsigned long* tyke_value, float max,
+	                            SHOWMAXTYPE show_max, GRAPHDISPLAYTYPE display, bool32_t show_total = true);
+	// BW1WCI 005805d0 BW1MCI119 01348690
+	void ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
+	                    GRAPHDISPLAYTYPE display, bool32_t show_total = true);
+	// BW1WCI 00580780 BW1MCI119 01348260
+	void ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max, GRAPHDISPLAYTYPE display,
+	                    bool32_t show_total = true);
+#else
 	// BW1W120 0056ae00 BW1M119 01328bb0
 	void ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, float max, SHOWMAXTYPE show_max,
 	                    GRAPHDISPLAYTYPE display);
@@ -117,6 +138,7 @@ public:
 	                    GRAPHDISPLAYTYPE display);
 	// BW1W120 0056b330 BW1M119 01328330
 	void ADDULONGSINGLE(wchar_t* name, unsigned long* value, float max, SHOWMAXTYPE show_max, GRAPHDISPLAYTYPE display);
+#endif
 	// BW1W120 0056b4b0 BW1M119 01326900
 	void UpdateDetails();
 	// BW1W120 0056d220 BW1M119 01326840

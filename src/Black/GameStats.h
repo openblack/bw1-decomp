@@ -139,11 +139,11 @@ struct GameStatsPackage
 
 	uint16_t NumPlayers;
 #if defined(VERSION_BW1WCI)
-	uint16_t field_0x2[4];
+	uint16_t PlayerHasTyke[4];
 #endif
 	GameStatsPerPlayer PerPlayer[4];
 #if defined(VERSION_BW1WCI)
-	GameStatsPerPlayer field_0x453c[4];
+	GameStatsPerPlayer TykePerPlayer[4];
 #endif
 	unsigned long TotalLinesOfCodeExecuted;
 	float         MaxFrameRate;
