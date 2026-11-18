@@ -1025,14 +1025,14 @@ Black/GameOSFile.cpp:
 	.bss        start:0x00D7B718 end:0x00D7B760
 
 Black/GameStats.cpp:
-	.text       start:0x00579610 end:0x0057F760
+	.text       start:0x00579610 end:0x0057F730
 	.rdata      start:0x009322EC end:0x0093241C
-	.CRT$XCU    start:0x00A366C0 end:0x00A366D0 align:4
+	.CRT$XCU    start:0x00A366C0 end:0x00A366CC align:4
 
 Black/GameStatsFrontEnd.cpp:
-	.text       start:0x0057F760 end:0x00584670
-	.rdata      start:0x0093241C end:0x00932494
-	.CRT$XCU    start:0x00A366D0 end:0x00A366D4 align:4
+	.text       start:0x0057F730 end:0x00584670
+	.rdata      start:0x00932420 end:0x00932494
+	.CRT$XCU    start:0x00A366CC end:0x00A366D4 align:4
 	.data       start:0x00C5FB9C end:0x00C5FC4C
 	.bss        start:0x00D84248 end:0x00D8425C
 
