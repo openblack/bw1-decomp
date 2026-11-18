@@ -1226,9 +1226,7 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 							point -= centre;
 							for (int c = 0; c < num_matrices; c++)
 							{
-								matrices[c].GetPos().x += point.x;
-								matrices[c].GetPos().y += point.y;
-								matrices[c].GetPos().z += point.z;
+								matrices[c].PostTranslation(point);
 							}
 							creature->DynamicShadow->matrix.GetPos().x += point.x;
 							creature->DynamicShadow->matrix.GetPos().y += point.y;
@@ -1307,9 +1305,7 @@ void __stdcall StatsBox::Callback(int message, SetupBox* box, SetupControl* cont
 							point -= centre;
 							for (int c = 0; c < num_matrices; c++)
 							{
-								matrices[c].GetPos().x += point.x;
-								matrices[c].GetPos().y += point.y;
-								matrices[c].GetPos().z += point.z;
+								matrices[c].PostTranslation(point);
 							}
 							creature->DynamicShadow->matrix.GetPos().x += point.x;
 							creature->DynamicShadow->matrix.GetPos().y += point.y;
