@@ -47,8 +47,7 @@
 #define STAT_DETAILS_NUM_VALUES 4
 #endif
 #define STAT_DETAILS_MAX_VALUE 1e20f
-
-const float StatDetailsMinValue = -1e20f;
+#define STAT_DETAILS_MIN_VALUE -1e20f
 
 struct StatDetails
 {
@@ -206,9 +205,9 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 	{
 		details->Values[i] = *stat_value;
 		details->Values[i] =
-			details->Values[i] > StatDetailsMinValue
+			details->Values[i] > STAT_DETAILS_MIN_VALUE
 				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
-				: StatDetailsMinValue;
+				: STAT_DETAILS_MIN_VALUE;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
@@ -288,9 +287,9 @@ void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, f
 	{
 		details->Values[i] = *stat_value;
 		details->Values[i] =
-			details->Values[i] > StatDetailsMinValue
+			details->Values[i] > STAT_DETAILS_MIN_VALUE
 				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
-				: StatDetailsMinValue;
+				: STAT_DETAILS_MIN_VALUE;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
