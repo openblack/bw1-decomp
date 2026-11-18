@@ -1771,8 +1771,8 @@ uint32_t __stdcall MultiplayerConditionBox::ConditionDraw(SetupList* list, int i
 		}
 		if (num_players != 0)
 		{
-			int x = x_min + (x_max - x_min) / 3 * 2;
 			int column_width = (x_max - x_min) / 3 / num_players;
+			int x = x_min + (x_max - x_min) / 3 * 2;
 			for (uint32_t i = 0; i < num_players; i++)
 			{
 				GPlayer*                              player = players[i];
@@ -1780,11 +1780,14 @@ uint32_t __stdcall MultiplayerConditionBox::ConditionDraw(SetupList* list, int i
 				uint32_t                              value = it->second.Current;
 				if (value > (uint32_t)it->second.Target)
 					value = it->second.Target;
-				SetupThing::DrawText(x, clip_max, column_width, TEXTJUSTIFY_CENTRE,
-				                     !it->second.Completed ? (wchar_t*)LHSPrintfW(L"%u", value)
-				                                           : HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(
-																 HELP_TEXT_MULTIPLAYER_CONDITION_DONE),
-				                     26, &player->GetPlayer3DColor(), 0);
+				if (!it->second.Completed)
+					SetupThing::DrawText(x, clip_max, column_width, TEXTJUSTIFY_CENTRE, LHSPrintfW(L"%u", value), 26,
+					                     &player->GetPlayer3DColor(), 0);
+				else
+					SetupThing::DrawText(
+						x, clip_max, column_width, TEXTJUSTIFY_CENTRE,
+						HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_CONDITION_DONE), 26,
+						&player->GetPlayer3DColor(), 0);
 				x += column_width;
 			}
 		}
