@@ -46,3 +46,6 @@ compile_commands.json
 /.claude/skills/*/__pycache__/
 !/.claude/agents/
 vc60.pdb
+
+# claude plugin eval output
+.claude/skills/*/evals/results/

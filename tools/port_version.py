@@ -61,6 +61,9 @@ from pathlib import Path
 
 import pefile
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ehtables  # noqa: E402
+
 REPO = Path(__file__).resolve().parent.parent
 
 # Where each version's executable lives.
@@ -2208,9 +2211,6 @@ def initializer_ranges(porter, mapped, table):
     return out
 
 
-EH_MAGIC = 0x19930520  # VC6's FuncInfo
-
-
 def eh_extent(image, site):
     """What a C++ EH prologue at `site` (push/mov eax of its handler stub, `mov eax, FuncInfo;
     jmp ___CxxFrameHandler`) owns: ((funclets start, stub end), (tables start, tables end)), the
@@ -2223,28 +2223,19 @@ def eh_extent(image, site):
     if image.read(site, 1)[0] not in (0x68, 0xB8):
         return None
     stub = image.u32(site + 1)
-    if not inside(text, stub, stub + 10):
+    if not inside(text, stub, stub + ehtables.STUB_SIZE):
         return None
-    code = image.read(stub, 10)
-    info = struct.unpack_from("<I", code, 1)[0]
-    if code[0] != 0xB8 or code[5] != 0xE9 or not inside(rdata, info, info + 0x1C):
+    reader = ehtables.ImageReader(image.read)
+    info = ehtables.stub_funcinfo(reader, stub)
+    funcinfo = info and ehtables.read_funcinfo(
+        reader, info, limit=0x1000, valid=lambda loc, size: inside(rdata, loc, loc + size))
+    if not funcinfo:
         return None
-    magic, states, unwind, tries, try_map = struct.unpack("<5I", image.read(info, 20))
-    if magic != EH_MAGIC or states > 0x1000 or tries > 0x1000:
-        return None
-    tables = [(s, e) for s, e in ((info, info + 0x1C), (unwind, unwind + 8 * states), (try_map, try_map + 0x14 * tries)) if e > s]
-    if not all(inside(rdata, s, e) for s, e in tables):
-        return None
-    funclets = [stub] + [a for a in (image.u32(unwind + 8 * k + 4) for k in range(states)) if a and a < stub]
-    for k in range(tries):
-        catches, handlers = struct.unpack("<2I", image.read(try_map + 0x14 * k + 12, 8))
-        if catches and not inside(rdata, handlers, handlers + 0x10 * catches):
-            return None
-        if catches:
-            tables.append((handlers, handlers + 0x10 * catches))
+    funclets = [stub] + [a for a in funcinfo.actions if a and a < stub]
     if stub - min(funclets) > 0x1000:
         return None
-    return (min(funclets), stub + 10), (min(s for s, _ in tables), max(e for _, e in tables))
+    tables = [(loc, loc + size) for loc, size in funcinfo.tables()]
+    return (min(funclets), stub + ehtables.STUB_SIZE), (min(s for s, _ in tables), max(e for _, e in tables))
 
 
 def eh_ranges(porter, mapped, fmap):
