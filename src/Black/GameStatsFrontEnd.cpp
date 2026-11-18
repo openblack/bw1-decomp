@@ -46,8 +46,7 @@
 #else
 #define STAT_DETAILS_NUM_VALUES 4
 #endif
-#define STAT_DETAILS_MAX_VALUE 1e20f
-#define STAT_DETAILS_MIN_VALUE -1e20f
+#define STAT_DETAILS_INF 1e20f
 
 struct StatDetails
 {
@@ -224,10 +223,9 @@ void StatsBox::ADDFLOATPLAYER(wchar_t* name, float* value, int decimal_places, f
 	     i++, stat_value = (float*)((uint8_t*)stat_value + sizeof(GameStatsPackage::GameStatsPerPlayer)))
 	{
 		details->Values[i] = *stat_value;
-		details->Values[i] =
-			details->Values[i] > STAT_DETAILS_MIN_VALUE
-				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
-				: STAT_DETAILS_MIN_VALUE;
+		details->Values[i] = details->Values[i] > -STAT_DETAILS_INF
+		                         ? details->Values[i] < STAT_DETAILS_INF ? details->Values[i] : STAT_DETAILS_INF
+		                         : -STAT_DETAILS_INF;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
@@ -340,10 +338,9 @@ void StatsBox::ADDFLOATPLAYERWITHTYKE(wchar_t* name, float* value, float* tyke_v
 	for (int j = 0; j < num_values; j++)
 	{
 		details->Values[j] = values[j];
-		details->Values[j] =
-			details->Values[j] > STAT_DETAILS_MIN_VALUE
-				? details->Values[j] < STAT_DETAILS_MAX_VALUE ? details->Values[j] : STAT_DETAILS_MAX_VALUE
-				: STAT_DETAILS_MIN_VALUE;
+		details->Values[j] = details->Values[j] > -STAT_DETAILS_INF
+		                         ? details->Values[j] < STAT_DETAILS_INF ? details->Values[j] : STAT_DETAILS_INF
+		                         : -STAT_DETAILS_INF;
 		if (details->Values[j] > details->Max)
 			details->Max = details->Values[j];
 	}
@@ -432,10 +429,9 @@ void StatsBox::ADDFLOATSINGLE(wchar_t* name, float* value, int decimal_places, f
 	for (int i = 0; i < 1; i++, stat_value++)
 	{
 		details->Values[i] = *stat_value;
-		details->Values[i] =
-			details->Values[i] > STAT_DETAILS_MIN_VALUE
-				? details->Values[i] < STAT_DETAILS_MAX_VALUE ? details->Values[i] : STAT_DETAILS_MAX_VALUE
-				: STAT_DETAILS_MIN_VALUE;
+		details->Values[i] = details->Values[i] > -STAT_DETAILS_INF
+		                         ? details->Values[i] < STAT_DETAILS_INF ? details->Values[i] : STAT_DETAILS_INF
+		                         : -STAT_DETAILS_INF;
 		if (details->Values[i] > details->Max)
 			details->Max = details->Values[i];
 	}
@@ -1368,10 +1364,8 @@ void EndGameBox::Init(uint32_t width, uint32_t height,
 		case END_GAME_BOX_TAB_CONDITIONS:
 			label = HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(HELP_TEXT_MULTIPLAYER_MAIN_TAB);
 			break;
-		case END_GAME_BOX_TAB_STATS:
-#else
-		case END_GAME_BOX_TAB_STATS:
 #endif
+		case END_GAME_BOX_TAB_STATS:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_151);
 			break;
 		default:
