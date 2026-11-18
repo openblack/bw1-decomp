@@ -15315,6 +15315,7 @@ fn_006B1BE0 = .text:0x006B1BE0; // type:function size:0x10
 fn_006B1BF0 = .text:0x006B1BF0; // type:function size:0x10
 fn_006B1C00 = .text:0x006B1C00; // type:function size:0x10
 fn_006B1C10 = .text:0x006B1C10; // type:function size:0x20
+??0GConfirmation@@QAE@XZ = .text:0x006B1C30; // type:function size:0x10 scope:global
 ??_GGConfirmation@@QAEPAXI@Z = .text:0x006B1C40; // type:function size:0x20
 fn_006B1C60 = .text:0x006B1C60; // type:function size:0x10
 fn_006B1C70 = .text:0x006B1C70; // type:function size:0x10
