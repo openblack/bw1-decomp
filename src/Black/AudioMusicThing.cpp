@@ -275,6 +275,20 @@ bool32_t GAudio::IsMusicThingFinished(GameThingWithPos* thing)
 	return true;
 }
 
+void GAudio::RestartMusicThing(GameThingWithPos* thing)
+{
+	ThingMusicInfo* info = GetThingMusicInfo(thing);
+	if (info)
+	{
+		info->Finished = false;
+		info->Started = false;
+		if (IsThingMusicPlaying(info))
+		{
+			StopMusic(info, false);
+		}
+	}
+}
+
 bool32_t ThingMusicInfo::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
