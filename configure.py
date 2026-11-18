@@ -1062,7 +1062,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/GameOptionsRoomCamera.cpp"),
             GameCodeObject(NonMatching, "Black/GameOSFile.cpp", objdiff_options=slow_report_options),
             GameCodeObject(NonMatching, "Black/GameStats.cpp"),
-            GameCodeObject(NonMatching, "Black/GameStatsFrontEnd.cpp"),
+            GameCodeObject(MatchingFor("BW1W110"), "Black/GameStatsFrontEnd.cpp"),
             GameCodeObject(NonMatching, "Black/GameStatsList.cpp"),
             GameCodeObject(Matching, "Black/GameThing.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/GatheringBox.cpp"),

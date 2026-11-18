@@ -13,24 +13,25 @@
 #include <Lionhead/LHMultiplayer/ver4.0/LHPlayer.h>         /* For LHPlayer */
 #include <Lionhead/LHMultiplayer/ver4.0/LHSession.h>        /* For LHSession::StopSession */
 
-#include "ColourConstants.h"   /* For White */
-#include "Creature.h"          /* For Creature::GetCreature3D */
-#include "Creature3D.h"        /* For LH3DCreature::DrawNow */
-#include "GameTimeConstants.h" /* For SecondsPerYear */
+#include "Creature.h"   /* For Creature::GetCreature3D */
+#include "Creature3D.h" /* For LH3DCreature::DrawNow */
 
-#include "FrontEnd.h" /* For FRONT_END_TAB_FIRST_ID */
-#include "Game.h"     /* For GGame::g_game */
+#include "GameStatsList.h" /* For NewGameStatsList */
+#include "FrontEnd.h"      /* For FRONT_END_TAB_FIRST_ID */
+#include "Game.h"          /* For GGame::g_game */
 #include "EndGameBox.h"
 #include "GameStats.h"
-#include "GameStatsList.h" /* For NewGameStatsList */
-#include "HelpText.h"      /* For HelpTextDataBase::HelpTextDatabase */
-#include "Interface.h"     /* For GInterface::player */
+#include "HelpText.h"  /* For HelpTextDataBase::HelpTextDatabase */
+#include "Interface.h" /* For GInterface::player */
 #include "InterfaceStatus.h"
 #include "MultiplayerConditionBox.h"
 #include "Player.h" /* For GPlayer::GetPlayer3DColor */
 #include "SoundGuidance.h"
 #include "WinCondition.h"
 #include "StatsBox.h"
+static bool32_t TotalTitleDrawn;
+#include "GameTimeConstants.h" /* For SecondsPerYear */
+#include "ColourConstants.h"   /* For White */
 #include "alexmfc.h"
 
 #if defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
@@ -93,8 +94,6 @@ EndGameBox* EndGameBox::Instance;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 MultiplayerConditionBox* MultiplayerConditionBox::Instance;
 #endif
-
-static bool32_t TotalTitleDrawn;
 
 uint32_t StatDetails::Draw(SetupList* list, int index, int x_min, int y_min, int x_max, int y_max, int clip_min,
                            int clip_max, int style)
