@@ -86,6 +86,8 @@ public:
 
 	// BW1W120 00d06068
 	static StatsBox* Instance;
+	// BW1W120 00d06064
+	static bool32_t TotalTitleDrawn;
 
 	// BW1W120 0056da00 BW1M119 013254f0
 	void __stdcall Callback(int message, SetupBox* box, SetupControl* control, int x, int y);

@@ -29,7 +29,6 @@
 #include "SoundGuidance.h"
 #include "WinCondition.h"
 #include "StatsBox.h"
-static bool32_t TotalTitleDrawn;
 #include "GameTimeConstants.h" /* For SecondsPerYear */
 #include "ColourConstants.h"   /* For White */
 #include "alexmfc.h"
@@ -90,6 +89,7 @@ struct StatDetails
 };
 
 StatsBox*   StatsBox::Instance;
+bool32_t    StatsBox::TotalTitleDrawn;
 EndGameBox* EndGameBox::Instance;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 MultiplayerConditionBox* MultiplayerConditionBox::Instance;
@@ -163,9 +163,9 @@ uint32_t StatDetails::Draw(SetupList* list, int index, int x_min, int y_min, int
 				SetupThing::DrawTextWrap(x - spacing * 2, y_min, x + spacing * 3, y_max, clip_min + 2, true, text,
 				                         GetSmallTextSize(), &SetupThing::NormalColour, false, false);
 			}
-			if (!TotalTitleDrawn && single)
+			if (!StatsBox::TotalTitleDrawn && single)
 			{
-				TotalTitleDrawn = true;
+				StatsBox::TotalTitleDrawn = true;
 				int      title_y = y_min - GetSmallTextSize();
 				wchar_t* title = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_03);
 				SetupThing::DrawTextWrap(x - spacing * 2, title_y, x + spacing * 3, y_max, title_y, true, title,

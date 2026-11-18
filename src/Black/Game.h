@@ -40,9 +40,13 @@
 #define GAME_SPEED_MINIMUM                  0.5f
 #define GAME_SPEED_MAXIMUM                  2.0f
 #define INSTANT_SAVE_MINIMUM_TURNS          3
-#define GAME_LOBBY_NONE                     0 /* A single-player game */
-#define GAME_LOBBY_INTERNET                 1
-#define GAME_LOBBY_LAN                      2
+
+enum GAME_LOBBY
+{
+	GAME_LOBBY_NONE = 0,
+	GAME_LOBBY_INTERNET = 1,
+	GAME_LOBBY_LAN = 2,
+};
 
 enum CREATURE_BITS
 {
@@ -264,12 +268,12 @@ public:
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	uint32_t MultiplayerTimeLimit;
 #endif
-	uint32_t field_0x59a4;
-	uint32_t Lobby; /* GAME_LOBBY_* */
-	time_t   field_0x59ac;
-	float    field_0x59b0;
-	Temple*  temple;
-	GMap     map;
+	uint32_t   field_0x59a4;
+	GAME_LOBBY Lobby;
+	time_t     field_0x59ac;
+	float      field_0x59b0;
+	Temple*    temple;
+	GMap       map;
 #ifdef VERSION_BW1WCI
 	uint8_t ci_field_0x201b04[0x10];
 #endif

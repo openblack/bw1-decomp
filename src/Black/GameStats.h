@@ -151,7 +151,7 @@ struct GameStatsPackage
 	unsigned long NumBaseAllocations;
 	unsigned long TimePlayed;
 #if defined(VERSION_BW1W130)
-	unsigned long field_0x4548;
+	bool32_t PlayedWithGlove;
 #endif
 	unsigned long InstructionCount;
 	unsigned long StatsVersion;
