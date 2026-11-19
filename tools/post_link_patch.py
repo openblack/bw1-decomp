@@ -685,6 +685,10 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0041C03A, call_indirect(0x008A9690)),  # AnimalAnimation: __imp_?db_execute_transaction_async@@YA?AW4DBSTATUS@@PAUDBInfo@@PADPAVLHNetUser@@PAVLHTransportInfo@@@Z
     (0x0041CA9B, call_rel32(0x00401879)),  # AnimalAnimation
     (0x0041D4CA, call_indirect(0x008A9978)),  # AnimalCow: __imp__CoFileTimeToDosDateTime@12
+    (0x0041DCEB, call_rel32(0x00401879)),  # AnimalDove
+    (0x0041DD3B, call_rel32(0x00401879)),  # AnimalDove
+    (0x0041E20B, call_rel32(0x00401879)),  # AnimalDove
+    (0x0041E7EA, call_indirect(0x008A9004)),  # AnimalDove: __imp__RegCloseKey@4
     (0x0041FC6A, call_indirect(0x008A98C0)),  # AnimalLeopard: __imp__mmioOpenA@4
     (0x0042078A, call_indirect(0x008A936C)),  # AnimalReaction: __imp_?RawLogT@LHLogger@@QAEXPAD@Z
     (0x0042165A, call_indirect(0x008A9068)),  # AnimalWolf: __imp__CreateDIBSection@4
@@ -1250,6 +1254,44 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0041DB8A, copy_run(0x0041DB56)),  # AnimalCow
     (0x0041DC36, jmp_run(0x0041DB83)),  # AnimalCow
     (0x0041DC6A, copy_run(0x0041DC36)),  # AnimalCow
+    (0x0041DCC3, copy_run(0x0041DC63)),  # AnimalDove
+    (0x0041DCEB, call_rel32(0x00403C49)),  # AnimalDove
+    (0x0041DD96, jmp_run(0x0041DCEB)),  # AnimalDove
+    (0x0041DDCA, copy_run(0x0041DD96)),  # AnimalDove
+    (0x0041DF42, copy_run(0x0041DDC9)),  # AnimalDove
+    (0x0041E0A2, copy_run(0x0041DF42)),  # AnimalDove
+    (0x0041E20B, call_rel32(0x00403C49)),  # AnimalDove
+    (0x0041E5F1, jmp_run(0x0041E20B)),  # AnimalDove
+    (0x0041E6B6, jmp_run(0x0041E5F1)),  # AnimalDove
+    (0x0041E78A, copy_run(0x0041E6B6)),  # AnimalDove
+    (0x0041E7EA, call_indirect(0x008AE034)),  # AnimalDove
+    (0x0041E886, copy_run(0x0041E7EA)),  # AnimalDove
+    (0x0041EAB3, jmp_run(0x0041E886)),  # AnimalDove
+    (0x0041EB5B, jmp_run(0x0041EAB3)),  # AnimalDove
+    (0x0041EB8A, copy_run(0x0041EB56)),  # AnimalDove
+    (0x0041EC16, jmp_run(0x0041EB89)),  # AnimalDove
+    (0x0041EC4A, copy_run(0x0041EC16)),  # AnimalDove
+    (0x0041ECD6, jmp_run(0x0041EC49)),  # AnimalDove
+    (0x0041ED0A, copy_run(0x0041ECD6)),  # AnimalDove
+    (0x0041ED96, jmp_run(0x0041ED09)),  # AnimalDove
+    (0x0041EDCA, copy_run(0x0041ED96)),  # AnimalDove
+    (0x0041EE56, jmp_run(0x0041EDC9)),  # AnimalDove
+    (0x0041EE8A, copy_run(0x0041EE56)),  # AnimalDove
+    (0x0041EF28, copy_run(0x0041EE89)),  # AnimalDove
+    (0x0041EF59, jmp_run(0x0041EF28)),  # AnimalDove
+    (0x0041F008, copy_run(0x0041EF59)),  # AnimalDove
+    (0x0041F039, jmp_run(0x0041F008)),  # AnimalDove
+    (0x0041F0D8, jmp_run(0x0041F039)),  # AnimalDove
+    (0x0041F109, copy_run(0x0041F0D8)),  # AnimalDove
+    (0x0041F123, copy_run(0x0041F109)),  # AnimalDove
+    (0x0041F143, copy_run(0x0041F123)),  # AnimalDove
+    (0x0041F184, copy_run(0x0041F143)),  # AnimalDove
+    (0x0041F236, jmp_run(0x0041F184)),  # AnimalDove
+    (0x0041F279, jmp_run(0x0041F236)),  # AnimalDove
+    (0x0041F2E9, copy_run(0x0041F279)),  # AnimalDove
+    (0x0041F627, copy_run(0x0041F2E9)),  # AnimalDove
+    (0x0041FB32, jmp_run(0x0041F626)),  # AnimalDove
+    (0x0041FBA2, copy_run(0x0041FB32)),  # AnimalDove
     (0x0041FC03, copy_run(0x0041FBA2)),  # AnimalLeopard
     (0x0041FC96, jmp_run(0x0041FC03)),  # AnimalLeopard
     (0x0041FCCA, copy_run(0x0041FC96)),  # AnimalLeopard

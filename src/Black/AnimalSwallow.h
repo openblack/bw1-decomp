@@ -27,15 +27,17 @@ public:
 	virtual uint32_t SleepAnimation();
 	// BW1W120 0041c080 BW1M119 01178f30
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 0041ecd0 BW1M119 0117a6a0
-	virtual char* GetDebugText();
 	// BW1W120 0041ecc0 BW1M119 0117a660
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SWALLOW; }
+	// BW1W120 0041ecd0 BW1M119 0117a6a0
+	virtual char* GetDebugText() { return "Animal: Swallow"; }
 	// BW1W120 0041c070 BW1M119 01178f70
 	virtual uint32_t StandAnimation();
 
 	// BW1W120 0055e850 BW1M119 inlined
 	Swallow() {}
+	// BW1W120 inlined BW1M119 inlined
+	Swallow(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Dove(coords, info, age) {}
 
 	// Static methods
 

@@ -27,15 +27,17 @@ public:
 	virtual uint32_t SleepAnimation();
 	// BW1W120 0041c000 BW1M119 011790b0
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 0041ee50 BW1M119 0117a7b0
-	virtual char* GetDebugText();
 	// BW1W120 0041ee40 BW1M119 0117a770
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SEAGULL; }
+	// BW1W120 0041ee50 BW1M119 0117a7b0
+	virtual char* GetDebugText() { return "Animal: Seagull"; }
 	// BW1W120 0041bff0 BW1M119 011790f0
 	virtual uint32_t StandAnimation();
 
 	// BW1W120 0055e990 BW1M119 inlined
 	Seagull() {}
+	// BW1W120 inlined BW1M119 inlined
+	Seagull(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Dove(coords, info, age) {}
 
 	// Static methods
 

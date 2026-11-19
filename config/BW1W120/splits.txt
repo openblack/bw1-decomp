@@ -87,6 +87,7 @@ Black/AnimalCow.cpp:
 Black/AnimalDove.cpp:
 	.text       start:0x0041DCA0 end:0x0041FBE0
 	.rdata      start:0x008B563C end:0x008BC428
+	.rdata$r    start:0x009A71C8 end:0x009A75B0
 	.CRT$XCU    start:0x009C60B0 end:0x009C60BC align:4
 	.data       start:0x009C9170 end:0x009C9300
 	.bss        start:0x00C54D04 end:0x00C54D0C

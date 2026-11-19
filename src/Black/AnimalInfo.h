@@ -50,7 +50,9 @@ public:
 	long        FlockSearchRadius;
 	uint32_t    MaxFlockSize; /* 0x260 */
 	uint32_t    LeaderReturnTurns;
-	uint32_t    field_0x268[3];
+	float       MinFlyingAltitudeOffset;
+	float       MaxFlyingAltitudeOffset;
+	float       FlyingAltitudeVariation;
 	float       VerticalSpeed;
 	AgeToScale  ageToScale;
 	uint32_t    field_0x2c8;

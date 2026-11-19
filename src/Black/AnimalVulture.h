@@ -28,15 +28,22 @@ public:
 	virtual uint32_t EatAnimation();
 	// BW1W120 0041c0c0 BW1M119 01178e30
 	virtual uint32_t SleepAnimation();
-	// BW1W120 0041f0c0 BW1M119 0117a460
-	virtual char* GetDebugText();
 	// BW1W120 0041f0b0 BW1M119 0117a420
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_VULTURE; }
+	// BW1W120 0041f0c0 BW1M119 0117a460
+	virtual char* GetDebugText() { return "Animal: Vulture"; }
 	// BW1W120 0041f0d0 BW1M119 0117a4a0
-	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return true; }
 
 	// BW1W120 0055ead0 BW1M119 inlined
 	Vulture() {}
+	// BW1W120 inlined BW1M119 inlined
+	Vulture(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Dove(coords, info, age) {}
+
+	// Static methods
+
+	// BW1W120 0041f040 BW1M119 null
+	static Vulture* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_VULTURE_INCLUDED_H */
