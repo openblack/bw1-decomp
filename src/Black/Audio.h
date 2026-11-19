@@ -283,6 +283,10 @@ public:
 	void ProcessAtmosBanks();
 	// BW1W120 00429100 BW1M119 0108dc20
 	void CalculateAtmosTargetVolumes();
+	// BW1W120 inlined BW1M119 inlined
+	float GetAtmosTargetVolume(int type) const { return AtmosTargetVolumes[type]; }
+	// BW1W120 inlined BW1M119 inlined
+	float GetAtmosVolume(int type) const { return AtmosVolumes[type]; }
 
 	// BW1W120 00429180 BW1M119 010a2570
 	ThingMusicInfo* GetThingMusicInfo(GameThingWithPos* thing);
