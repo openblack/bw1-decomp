@@ -4,6 +4,12 @@
 #include <stddef.h> /* For NULL */
 
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>      /* For NEW */
+
+template <class T> inline T* NewGameStatsList(int count)
+{
+	return NEW(11) T[count];
+}
 
 struct GameStatsListString
 {

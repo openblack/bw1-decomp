@@ -86,6 +86,15 @@ public:
 	static void SetSpellRewardProbability(MAGIC_TYPE type, float probability);
 	// BW1W120 0052b670 BW1M119 010dc900
 	static void SaveSpellRewardProbs(LHOSFile& file);
+	// BW1W120 0052a5d0 BW1M119 010de580
+	static void FindLightToMillAt(const MapCoords& pos, MapCoords* result);
+	// BW1W120 0052a8d0 BW1M119 010de070
+	static void FindPlaceToHide(const MapCoords& pos, MapCoords* result);
+
+	// BW1W120 0052a380 BW1M119 010de9c0
+	void SetToZero();
+	// BW1W120 0052aa10 BW1M119 010ddec0
+	void GoHideAtPos(const MapCoords& pos);
 };
 
 #endif /* BW1_DECOMP_FIRE_FLY_INCLUDED_H */

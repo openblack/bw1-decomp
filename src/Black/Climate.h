@@ -29,6 +29,13 @@ struct RainInfo
 
 	// BW1W120 00773d10 BW1M119 015aa600
 	RainInfo();
+
+	// BW1W120 00773d30 BW1M119 015aa5b0
+	void Init(float time_raining, float rain);
+	// BW1W120 00773d50 BW1M119 015aa570
+	void Reset();
+	// BW1W120 00773d60 BW1M119 010115a0
+	void Process(float time_raining, float rain);
 };
 
 struct TempInfo
@@ -38,6 +45,11 @@ struct TempInfo
 
 	// BW1W120 00773ec0 BW1M119 015aab40
 	TempInfo();
+
+	// BW1W120 00773ed0 BW1M119 015aaa30
+	void Init(float min_temp, float max_temp);
+	// BW1W120 00773f40 BW1M119 0107a8d0
+	void Process(float min_temp, float max_temp);
 };
 
 struct WindInfo
@@ -48,6 +60,11 @@ struct WindInfo
 
 	// BW1W120 00774a80 BW1M119 015ac240
 	WindInfo();
+
+	// BW1W120 00774a90 BW1M119 015ac210
+	void Init();
+	// BW1W120 00774aa0 BW1M119 01011750
+	void Process(float param_1, float param_2, float param_3);
 };
 
 enum CLIMATE_FLAGS
@@ -100,10 +117,22 @@ public:
 	static bool IsSnowing(const LHPoint& pos);
 	// BW1W120 00771a80 BW1M119 01084450
 	static float GetTemp(const LHPoint* pos);
+	// BW1W120 00771ab0 BW1M119 010844f0
+	static float GetWindX(const LHPoint* pos);
+	// BW1W120 00771ae0 BW1M119 01084590
+	static float GetWindZ(const LHPoint* pos);
+	// BW1W120 00771a30 BW1M119 015a8e80
+	static void MoveStormByWind(LH3DStorm* storm, float time);
+	// BW1W120 00772670 BW1M119 0108ee70
+	static void DrawCircles(bool force);
 	// BW1W120 00771570 BW1M119 0108e620
 	static float GetRain(const LHPoint& pos);
 	// BW1W120 00772e00 BW1M119 015a7540
 	void CreateStorm();
+	// BW1W120 00772330 BW1M119 0107aa40
+	void Process(bool param_1);
+	// BW1W120 007727a0 BW1M119 015a7fe0
+	void SaveClimate(LHOSFile& file, const MapCoords& coords);
 
 	// BW1W120 00771300 BW1M119 015a96f0
 	static GClimate* Create(const MapCoords& coords, const GClimateInfo* info, float inner_radius, float outer_radius,

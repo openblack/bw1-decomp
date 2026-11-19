@@ -1036,7 +1036,7 @@ void GatheringBox::SendMessageA(bool close, int quick_chat)
 	else if (wcslen(text) != 0)
 	{
 		GInterfaceStatus* status = GGame::g_game->MyInterfaceStatus();
-		status->guidance->HelpSpritesSayOneOffGuidanceIfNecessary(GGuidance::ONE_OFF_GUIDANCE_TYPE_3);
+		status->guidance->HelpSpritesSayOneOffGuidanceIfNecessary(GGuidance::ONE_OFF_GUIDANCE_TYPE_CHAT);
 		LHNetBase::Instance.SendSpecial(text);
 		if (!IsAtLeastOnePlayerSelected())
 		{

@@ -22,6 +22,8 @@ public:
 
 	// Override methods
 
+	// BW1W120 00788630 BW1M119 01288620
+	virtual void DrawAdditional(bool reflection);
 	// BW1W120 007878e0 BW1M119 01288b10
 	virtual void InitEngine();
 
@@ -29,6 +31,23 @@ public:
 
 	// BW1W120 007865e0 BW1M119 0128b530
 	CreatureRoom();
+
+	// BW1W120 00788a10 BW1M119 012883b0
+	void MakeCreatureScrollText(int param_1);
+	// BW1W120 00788c10 BW1M119 01288210
+	void MakeActionsLearntScrollText(int param_1);
+	// BW1W120 00788d20 BW1M119 01287e30
+	void MakePersonalityScrollText(int param_1);
+	// BW1W120 00789070 BW1M119 01287a60
+	void MakeMagicScrollText(int param_1);
+	// BW1W120 007893c0 BW1M119 01287990
+	void CreatureScrollCreatureSet(CallbackData& data);
+	// BW1W120 00789540 BW1M119 01287660
+	void CreatureScrollFightSet(CallbackData& data);
+	// BW1W120 007896d0 BW1M119 01287330
+	void CreatureScrollLikesSet(CallbackData& data);
+	// BW1W120 00789860 BW1M119 01287000
+	void CreatureScrollMagicSet(CallbackData& data);
 };
 
 // BW1W120 007867b0 BW1M119 0128b2e0

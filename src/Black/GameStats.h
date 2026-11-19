@@ -31,8 +31,8 @@ struct GameStatsPackage
 		LH3DColor      Colour;
 		unsigned long  Position;
 		unsigned long  LossReason;
-		float          field_0xc;
-		float          field_0x10[4];
+		float          TotalScore;
+		float          Scores[4];
 		unsigned long  TotalBirths;
 		unsigned long  TotalDeaths;
 		unsigned long  FinalTotalPopulation;
@@ -137,28 +137,37 @@ struct GameStatsPackage
 		GameStatsPerPlayer() {}
 	};
 
-	short              NumPlayers;
+	uint16_t NumPlayers;
+#if defined(VERSION_BW1WCI)
+	uint16_t PlayerHasTyke[4];
+#endif
 	GameStatsPerPlayer PerPlayer[4];
-	unsigned long      TotalLinesOfCodeExecuted;
-	float              MaxFrameRate;
-	float              MinFrameRate;
-	unsigned long      NumBaseAllocations;
-	unsigned long      TimePlayed;
-	unsigned long      InstructionCount;
-	unsigned long      StatsVersion;
-	unsigned long      DistanceDragged;
-	unsigned long      TimeLookingAtSky;
-	unsigned long      TimeLookingAtGround;
-	unsigned long      GesturesDone;
-	unsigned long      ZoomCount;
-	unsigned long      RotateCount;
-	unsigned long      PitchCount;
-	unsigned long      TotalInterfaceActions;
-	unsigned long      TotalObjectsThrown;
-	unsigned long      TotalThingsPickedUp;
-	unsigned long      NumFightAttacks;
-	unsigned long      NumFightBlocks;
-	unsigned long      NumFightSteps;
+#if defined(VERSION_BW1WCI)
+	GameStatsPerPlayer TykePerPlayer[4];
+#endif
+	unsigned long TotalLinesOfCodeExecuted;
+	float         MaxFrameRate;
+	float         MinFrameRate;
+	unsigned long NumBaseAllocations;
+	unsigned long TimePlayed;
+#if defined(VERSION_BW1W130)
+	bool32_t PlayedWithGlove;
+#endif
+	unsigned long InstructionCount;
+	unsigned long StatsVersion;
+	unsigned long DistanceDragged;
+	unsigned long TimeLookingAtSky;
+	unsigned long TimeLookingAtGround;
+	unsigned long GesturesDone;
+	unsigned long ZoomCount;
+	unsigned long RotateCount;
+	unsigned long PitchCount;
+	unsigned long TotalInterfaceActions;
+	unsigned long TotalObjectsThrown;
+	unsigned long TotalThingsPickedUp;
+	unsigned long NumFightAttacks;
+	unsigned long NumFightBlocks;
+	unsigned long NumFightSteps;
 
 	// BW1W120 inlined BW1M119 inlined
 	GameStatsPackage() { SetToZero(); }
@@ -172,7 +181,13 @@ struct GameStatsPackage
 };
 
 static_assert(sizeof(GameStatsPackage::GameStatsPerPlayer) == 0x114c, "Data type is of wrong size");
+#if defined(VERSION_BW1W130)
+static_assert(sizeof(GameStatsPackage) == 0x4588, "Data type is of wrong size");
+#elif defined(VERSION_BW1WCI)
+static_assert(sizeof(GameStatsPackage) == 0x8abc, "Data type is of wrong size");
+#else
 static_assert(sizeof(GameStatsPackage) == 0x4584, "Data type is of wrong size");
+#endif
 
 class GameStats : public GameThing
 {

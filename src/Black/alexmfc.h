@@ -987,6 +987,11 @@ struct VBarData
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
+	VBarData(const LH3DColor& bar_color, float bar_value) : color(bar_color), value(bar_value)
+	{
+		bar_value = max(bar_value, 0.0f);
+	}
+	// BW1W120 inlined BW1M119 inlined
 	VBarData(const VBarData& bar) : color(bar.color), value(bar.value) {}
 
 	// Non-virtual methods
@@ -1040,15 +1045,16 @@ struct SetupHSBarGraph : public SetupVBarGraph
 
 	// BW1W120 0040d3c0 BW1M119 013e4290
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 0056d960 BW1M119 011153b0
-	virtual ~SetupHSBarGraph();
 	// BW1W120 0040d9a0 BW1M119 013e3f50
 	virtual void SetScale(float scale);
 
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	SetupHSBarGraph(int id, int x, int y, int width, int height, const char16_t* label);
+	SetupHSBarGraph(int id, int x, int y, int width, int height, const char16_t* label)
+		: SetupVBarGraph(id, x, y, width, height, label)
+	{
+	}
 };
 
 struct HLineData
@@ -1083,6 +1089,14 @@ struct HLineData
 	}
 	// BW1W120 0040da30 BW1M119 01438d50
 	void SetNum(int num);
+	// BW1W120 inlined BW1M119 inlined
+	void SetColor(LH3DColor line_color) { color = line_color; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetPoint(int index, float value)
+	{
+		if (index >= 0 && index < PointCount && points != NULL)
+			points[index] = value;
+	}
 };
 
 struct SetupHLineGraph : public SetupButton
@@ -1277,6 +1291,11 @@ struct SetupCheckBox : public SetupButton
 #else
 	SetupCheckBox(int id, int x, int y, bool radio_button, int style, const char16_t* label, int size);
 #endif
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 010d1480
+	int GetCheck() { return style; }
 };
 
 #endif /* BW1_DECOMP_ALEXMFC_INCLUDED_H */

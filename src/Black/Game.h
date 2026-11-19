@@ -41,6 +41,13 @@
 #define GAME_SPEED_MAXIMUM                  2.0f
 #define INSTANT_SAVE_MINIMUM_TURNS          3
 
+enum GAME_LOBBY
+{
+	GAME_LOBBY_NONE = 0,
+	GAME_LOBBY_INTERNET = 1,
+	GAME_LOBBY_LAN = 2,
+};
+
 enum CREATURE_BITS
 {
 	CREATURE_BITS_LEOPARD,
@@ -261,12 +268,12 @@ public:
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	uint32_t MultiplayerTimeLimit;
 #endif
-	uint32_t field_0x59a4;
-	uint32_t field_0x59a8;
-	time_t   field_0x59ac;
-	float    field_0x59b0;
-	Temple*  temple;
-	GMap     map;
+	uint32_t   field_0x59a4;
+	GAME_LOBBY Lobby;
+	time_t     field_0x59ac;
+	float      field_0x59b0;
+	Temple*    temple;
+	GMap       map;
 #ifdef VERSION_BW1WCI
 	uint8_t ci_field_0x201b04[0x10];
 #endif
@@ -448,9 +455,6 @@ public:
 	void QuitGameAndGoIntoNetworkLobby();
 	// BW1W120 005558d0 BW1M119 01515800
 	void AttemptQuitOfMultiplayerGame();
-	// Original name unrecovered; flushes packed network data.
-	// BW1W120 005525e0
-	void fn_005525E0();
 	// BW1W120 0054d620 BW1M119 01020e60
 	void ProcessOneGameTurn();
 	// BW1W120 0054d820 BW1M119 010861b0
@@ -559,7 +563,7 @@ public:
 	static void DoAreYoSureLeaveLand0Requestor(wchar_t* text);
 	// BW1W120 0054cb50 BW1M119 013f9590
 	static void DoAreYouSureLand0Requestor(wchar_t* text);
-	// BW1W120 null BW1M119 011c6d30
+	// BW1W120 005525e0 BW1M119 011c6d30
 	void FlushPacketBuffer();
 	// BW1W120 null BW1M119 01011ab0
 	uint32_t GetInterfaceFromReal(unsigned long real_interface);
@@ -569,8 +573,6 @@ public:
 	GKeyBuffer* GetKeyBuffer();
 	// BW1W120 005553a0 BW1M119 013e1550
 	static LH_KEY GetKeyFromModifier(uint16_t modifier);
-	// BW1W120 null BW1M119 010d1f40
-	LHPlayer* GetTeamLeaderLHPlayer();
 	// BW1W120 null BW1M119 011193b0
 	GPlayer* OtherPlayer();
 	// BW1W120 null BW1M119 011ce750
@@ -625,6 +627,8 @@ public:
 	unsigned long GetNoPlayers() const;
 	// BW1W120 00555130 BW1M119 01183980
 	unsigned long GetNumberOfPlayersThatHaveLost();
+	// BW1W120 00555180 BW1M119 null
+	GPlayer* GetWinningPlayer();
 	// BW1W120 005551d0 BW1M119 01177b60
 	bool IsCreaturePresent(CREATURE_BITS creature);
 	// BW1W120 00555850 BW1M119 01053ef0
@@ -673,6 +677,8 @@ public:
 	Town* FindClosestTown(const MapCoords& coords);
 	// BW1W120 00555a10 BW1M119 01505ae0
 	LHPlayer* GetMyLHPlayer();
+	// BW1W120 005559b0 BW1M119 010d1f40
+	LHPlayer* GetTeamLeaderLHPlayer();
 };
 
 // BW1W120 0054b1a0 BW1M119 012641f0

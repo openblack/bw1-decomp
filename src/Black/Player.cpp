@@ -671,7 +671,7 @@ void GPlayer::ProcessPlayers()
 					GGame::g_game->field_0x599d = true;
 					if (GGame::g_game->GetNumberOfPlayersThatHaveLost() < GGame::g_game->GetNoPlayers() - 1)
 					{
-						FrontEnd::EndGameDialog->field_0x5e = true;
+						FrontEnd::EndGameDialog->GameContinues = true;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 						HideGameOverDialogs();
 #endif
@@ -681,7 +681,7 @@ void GPlayer::ProcessPlayers()
 					}
 					else
 					{
-						FrontEnd::EndGameDialog->field_0x5e = false;
+						FrontEnd::EndGameDialog->GameContinues = false;
 						GGame::g_game->GameOver = true;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 						PingLobbyServer();

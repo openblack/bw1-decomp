@@ -785,10 +785,10 @@ static inline void CopyGraph(EverlastingGraph<float, 500, 50>& graph, GameStatsP
 void GameStats::FillInGameStatsPerPlayer(GameStatsPackage::GameStatsPerPlayer& stats)
 {
 	stats.Colour = GetPlayer()->GetPlayer3DColor();
-	stats.field_0xc = 0.0f;
+	stats.TotalScore = 0.0f;
 	for (int k = 0; k < 4; k++)
 	{
-		stats.field_0x10[k] = 0.0f;
+		stats.Scores[k] = 0.0f;
 	}
 	stats.Position = Position;
 	stats.LossReason = LossReason;
@@ -916,10 +916,10 @@ void GameStatsPackage::SetToZero()
 		stats.Colour.b = 0;
 		stats.Position = 0;
 		stats.LossReason = 0;
-		stats.field_0xc = 0.0f;
+		stats.TotalScore = 0.0f;
 		for (int k = 0; k < 4; k++)
 		{
-			stats.field_0x10[k] = 0.0f;
+			stats.Scores[k] = 0.0f;
 		}
 		memset(stats.InfluenceGraph.Data, 0, sizeof(stats.InfluenceGraph.Data));
 		memset(stats.PopulationGraph.Data, 0, sizeof(stats.PopulationGraph.Data));
