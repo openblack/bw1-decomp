@@ -1336,6 +1336,10 @@ Black/HandStateCreature.cpp:
 	.data       start:0x00BF00E0 end:0x00BF014C
 	.bss        start:0x00D13EF0 end:0x00D13EFC
 
+Black/HandStateGesture.cpp:
+	.text       start:0x005B2AD0 end:0x005B2B00
+	.CRT$XCU    start:0x009C6B20 end:0x009C6B24 align:4
+
 Black/HandStateGrain.cpp:
 	.text       start:0x005B2B00 end:0x005B39E0
 	.rdata      start:0x00900AF0 end:0x00900B20
@@ -1982,6 +1986,10 @@ Black/MPFEPlayerDetails.cpp:
 	.data       start:0x00BFDC34 end:0x00BFDC90
 	.bss        start:0x00D41090 end:0x00D41094
 
+Black/MPFEStartGameData.cpp:
+	.text       start:0x00632840 end:0x00633360
+	.CRT$XCU    start:0x009C707C end:0x009C7088 align:4
+
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x00633360 end:0x00633A60
 	.rdata      start:0x009309DC end:0x00930A14
@@ -2185,6 +2193,10 @@ Black/PlayerProfile.cpp:
 	.data       start:0x00C01F10 end:0x00C01F98
 	.bss        start:0x00D4BD38 end:0x00D4C568
 
+Black/Playtime.cpp:
+	.text       start:0x0066C000 end:0x0066C030
+	.CRT$XCU    start:0x009C727C end:0x009C7280 align:4
+
 Black/PlaytimeDance.cpp:
 	.text       start:0x0066C030 end:0x0066CB10
 	.rdata      start:0x00932DC0 end:0x0093300C
@@ -2287,6 +2299,10 @@ Black/PSysFlock.cpp:
 	.CRT$XCU    start:0x009C73A0 end:0x009C73B0 align:4
 	.data       start:0x00C02458 end:0x00C02518
 	.bss        start:0x00D4E6D8 end:0x00D4E710
+
+Black/PSysFlying.cpp:
+	.text       start:0x006856A0 end:0x00685750
+	.CRT$XCU    start:0x009C73B0 end:0x009C73C0 align:4
 
 Black/PSysGeom.cpp:
 	.text       start:0x00685750 end:0x00687A60
@@ -2472,6 +2488,10 @@ Black/ScriptCamera.cpp:
 	.CRT$XCU    start:0x009C75F0 end:0x009C75F8 align:4
 	.data       start:0x00C0C0CC end:0x00C0C2AE
 	.bss        start:0x00D95C24 end:0x00D95C28
+
+Black/ScriptComputerPlayer.cpp:
+	.text       start:0x006EE820 end:0x006EF370
+	.CRT$XCU    start:0x009C75F8 end:0x009C7600 align:4
 
 Black/ScriptContainer.cpp:
 	.text       start:0x006EF370 end:0x006F0860
@@ -3216,6 +3236,14 @@ Black/CreatureRoomCamera.cpp:
 	.data       start:0x00C277F0 end:0x00C27838
 	.bss        start:0x00DE19E0 end:0x00DE1A04
 
+Black/CreatureRoomInfo.cpp:
+	.text       start:0x0078B000 end:0x0078B030
+	.CRT$XCU    start:0x009C7B70 end:0x009C7B74 align:4
+
+Black/Credits.cpp:
+	.text       start:0x0078B030 end:0x0078B060
+	.CRT$XCU    start:0x009C7B74 end:0x009C7B78 align:4
+
 Black/CreditsRoom.cpp:
 	.text       start:0x0078B060 end:0x0078D600
 	.rdata      start:0x0099EC34 end:0x0099EC84
@@ -3323,6 +3351,10 @@ Black/WorldRoomCamera.cpp:
 	.CRT$XCU    start:0x009C7C30 end:0x009C7C38 align:4
 	.data       start:0x00C2A788 end:0x00C2A7A8
 	.bss        start:0x00E3A1B8 end:0x00E3A204
+
+Black/WorldRoomInfo.cpp:
+	.text       start:0x007A13D0 end:0x007A1400
+	.CRT$XCU    start:0x009C7C38 end:0x009C7C3C align:4
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
 	.text       start:0x007A1400 end:0x007AD060
@@ -3967,6 +3999,9 @@ lib/libcmt/xtoa.obj:
 lib/libcmt/woutput.obj:
 	.text       start:0x007CDB24 end:0x007CE318 align:1
 
+lib/libcmt/_newmode.obj:
+	.bss        start:0x00E842C0 end:0x00E842C4
+
 lib/libcmt/handler.obj:
 	.text       start:0x007CE318 end:0x007CE35D align:1
 	.bss        start:0x00E842C4 end:0x00E842C8
@@ -4284,6 +4319,9 @@ lib/libcmt/strgtold.obj:
 
 lib/libcmt/wcstombs.obj:
 	.text       start:0x007DA10E end:0x007DA349 align:1
+
+lib/libcmt/ncommode.obj:
+	.bss        start:0x00E84554 end:0x00E84558
 
 lib/libcmt/crtmbox.obj:
 	.text       start:0x007DA349 end:0x007DA3D2 align:1
@@ -4825,6 +4863,9 @@ GameSpy/nonport.c:
 	.text       start:0x0088A8D0 end:0x0088AC30
 	.data       start:0x00C3A634 end:0x00C3A6AC
 	.bss        start:0x00FAA81C end:0x00FAA920
+
+GameSpy/Peer/peerUtil.c:
+	.text       start:0x0088AC30 end:0x0088AD10
 
 GameSpy/Peer/peerCEngine.c:
 	.text       start:0x0088AD10 end:0x0088B650
