@@ -701,6 +701,8 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0041FD6A, call_indirect(0x008A98DC)),  # AnimalLion: __imp__bind@4
     (0x0041FDDB, call_rel32(0x00401879)),  # AnimalLion
     (0x0041FE3B, call_rel32(0x00401879)),  # AnimalLion
+    (0x00420A0B, call_rel32(0x00401879)),  # AnimalSpellWolf
+    (0x00420A1B, call_rel32(0x00401879)),  # AnimalSpellWolf
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
     (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
@@ -1355,6 +1357,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0042565B, call_rel32(0x00403C49)),  # Arena
     (0x004256D5, jmp_run(0x0042565B)),  # Arena
     (0x004258B8, jmp_run(0x004256D5)),  # Arena
+    (0x004207E3, copy_run(0x0042078A)),  # AnimalSpellWolf
+    (0x004208D6, jmp_run(0x004207E3)),  # AnimalSpellWolf
+    (0x00420903, copy_run(0x004208D6)),  # AnimalSpellWolf
+    (0x004209B3, jmp_run(0x00420903)),  # AnimalSpellWolf
+    (0x00420A1B, call_rel32(0x00403C49)),  # AnimalSpellWolf
+    (0x00420D56, jmp_run(0x00420A1B)),  # AnimalSpellWolf
+    (0x00420EF7, jmp_run(0x00420D56)),  # AnimalSpellWolf
+    (0x004210A6, copy_run(0x00420EF7)),  # AnimalSpellWolf
+    (0x004212F8, jmp_run(0x004210A6)),  # AnimalSpellWolf
+    (0x00421355, jmp_run(0x004212F8)),  # AnimalSpellWolf
     (0x00426B13, jmp_run(0x00426AB7)),  # Audio
     (0x00426B3B, call_rel32(0x00403C49)),  # Audio
     (0x00426B75, jmp_run(0x00426B3B)),  # Audio

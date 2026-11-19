@@ -124,6 +124,7 @@ Black/AnimalReaction.cpp:
 Black/AnimalSpellWolf.cpp:
 	.text       start:0x004207C0 end:0x00421390
 	.rdata      start:0x008C38D4 end:0x008C4520
+	.rdata$r    start:0x00A27978 end:0x00A279E8
 	.CRT$XCU    start:0x00A460DC end:0x00A460E4 align:4
 	.data       start:0x00A49480 end:0x00A494D8
 	.bss        start:0x00CD5C5C end:0x00CD5C60

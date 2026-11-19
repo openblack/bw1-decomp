@@ -21,12 +21,19 @@ struct MapCoords;
 class MobileWallHug;
 class Object;
 
+#define SPELL_WOLF_NUM_TURNS_TO_DIE_OVER   20
+#define SPELL_WOLF_RUN_SPEED_SCALE         1.1f
+#define SPELL_WOLF_ARRIVE_DISTANCE         30.0f
+#define SPELL_WOLF_CORRIDOR_EPSILON        0.0001f
+#define SPELL_WOLF_FULL_ALPHA              255.0f
+#define SPELL_WOLF_SECONDS_PER_MILLISECOND 0.001f
+
 class SpellWolf : public Lion
 {
 public:
 	MapCoords FinalDestPos;
 	LHPlane   FinalDestPlane;
-	float     field_0x164;
+	float     CorridorWidth;
 	Zoomer    FadeAlpha;
 	GPlayer*  Player;
 
@@ -53,7 +60,7 @@ public:
 	// BW1W120 00420ef0 BW1M119 01180440
 	virtual float GetTimeToBank();
 	// BW1W120 00420f00 BW1M119 011803e0
-	virtual float GetBankAngle(float param_1, float param_2);
+	virtual float GetBankAngle(float speed, float turn);
 	// BW1W120 0041c600 BW1M119 01177f90
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041c620 BW1M119 01177f10
@@ -79,21 +86,21 @@ public:
 	// BW1W120 0041c710 BW1M119 01177c90
 	virtual uint32_t ThrownAnimation();
 	// BW1W120 004208a0 BW1M119 0117fa70
-	virtual GPlayer* GetPlayer();
+	virtual GPlayer* GetPlayer() { return Player; }
 	// BW1W120 004208b0 BW1M119 0117fab0
-	virtual void SetPlayer(GPlayer* param_1);
+	virtual void SetPlayer(GPlayer* player) { Player = player; }
+	// BW1W120 004208c0 BW1M119 0117faf0
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_WOLF; }
 	// BW1W120 004208d0 BW1M119 0117fb30
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Animal: SpellWolf"; }
 	// BW1W120 004210b0 BW1M119 0117fe00
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 004211d0 BW1M119 0117fc30
 	virtual bool32_t Save(GameOSFile& file);
-	// BW1W120 004208c0 BW1M119 0117faf0
-	virtual uint32_t GetSaveType();
 	// BW1W120 0051c560 BW1M119 010c7d90
 	virtual void Draw();
 	// BW1W120 00420910 BW1M119 01180e50
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00420cf0 BW1M119 011808a0
 	virtual bool32_t SetDying();
 	// BW1W120 0041c6a0 BW1M119 01177d10
@@ -110,15 +117,26 @@ public:
 	// BW1W120 0041c6f0 BW1M119 null
 	uint32_t SitAnimation();
 	// BW1W120 004209b0 BW1M119 01180cf0
-	virtual void SetSpeed(int param_1);
+	virtual void SetSpeed(int speed);
 	// BW1W120 00420d50 BW1M119 01180860
 	virtual uint32_t GetNumTurnsToDieOver();
 
 	// BW1W120 inlined BW1M119 inlined
 	SpellWolf() { SetToZero(); }
+	// BW1W120 inlined BW1M119 inlined
+	SpellWolf(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Lion(coords, info, age)
+	{
+		SetToZero();
+	}
 
 	// BW1W120 00420930 BW1M119 01180d80
 	void SetToZero();
+	// BW1W120 004209c0 BW1M119 01180c10
+	bool32_t SetRunToFinalDest();
+	// BW1W120 00420e10 BW1M119 01180480
+	bool IsPosOnCorridor(const MapCoords& coords);
+	// BW1W120 00420f50 BW1M119 01180000
+	void SetFinalDestPos(const MapCoords& from, const MapCoords& to, float width);
 
 	// Static methods
 
