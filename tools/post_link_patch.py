@@ -708,6 +708,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
     (0x004282AB, call_rel32(0x00401879)),  # Audio
     (0x00428C5A, call_indirect(0x008A991C)),  # AudioAnalyse: __imp__ioctlsocket@4
+    (0x0042914A, call_indirect(0x008A937C)),  # AudioAtmos: __imp_?LogErrorCodeS@LHLogger@@SAHPAD0KPAULHErrorCode@@KZZ
     (0x0043641B, call_rel32(0x00401879)),  # Base
     (0x0043681B, call_rel32(0x00401879)),  # Base
     (0x0043686B, call_rel32(0x00401879)),  # Base
@@ -1400,6 +1401,11 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00428C5A, call_indirect(0x008AE380)),  # AudioAnalyse
     (0x00428D41, copy_run(0x00428C5A)),  # AudioAnalyse
     (0x00428EE2, copy_run(0x00428D41)),  # AudioAnalyse
+    (0x00428F22, copy_run(0x00428EE2)),  # AudioAtmos
+    (0x00428F86, copy_run(0x00428F22)),  # AudioAtmos
+    (0x00428FD7, jmp_run(0x00428F86)),  # AudioAtmos
+    (0x004290F6, jmp_run(0x00428FD7)),  # AudioAtmos
+    (0x0042914A, call_indirect(0x008AE8D0)),  # AudioAtmos
     (0x0043641B, call_rel32(0x00403C49)),  # Base
     (0x00436443, copy_run(0x0043641B)),  # Base
     (0x004366E5, copy_run(0x00436443)),  # Base

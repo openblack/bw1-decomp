@@ -2,7 +2,9 @@
 
 #include "Audio.h"
 #include "AtmosTypeInfo.h"
+#include "Game.h"
 #include "Global.h"
+#include "SoundMap.h"
 
 #include <Lionhead/LHAudio/ver7.0/LH_AudioBank.h>
 #include <Lionhead/LHAudio/ver7.0/LH_AudioSystem.h>
@@ -88,14 +90,33 @@ void GAudio::ProcessAtmosBanks()
 		{
 			step = ATMOS_VOLUME_STEP_FAST;
 		}
-		const float currentVolume = AtmosVolumes[i];
-		AtmosVolumes[i] = AtmosTargetVolumes[i] > AtmosVolumes[i] ? min(AtmosTargetVolumes[i], currentVolume + step)
-		                                                          : max(AtmosTargetVolumes[i], currentVolume - step);
+		AtmosVolumes[i] = GetAtmosVolume(i) < GetAtmosTargetVolume(i)
+		                      ? min(GetAtmosTargetVolume(i), GetAtmosVolume(i) + step)
+		                      : max(GetAtmosTargetVolume(i), GetAtmosVolume(i) - step);
 		float volume = AtmosVolumes[i];
 		long  sentVolume = (long)(volume * LH_SAMPLE_VOLUME_MAX);
 		AudioSystem->LHAtmosSetBankVolume(AtmosBanks[i], sentVolume);
 		GGlobal::Global.debug.SetMessage(ATMOS_DEBUG_CATEGORY, "%s Vol=%3.3f Sent=%d Step=%d",
 		                                 AtmosTypeInfo::Types[i].Name, volume, sentVolume,
 		                                 (int)(step * ATMOS_DEBUG_STEP_PERCENT));
+	}
+}
+
+void GAudio::CalculateAtmosTargetVolumes()
+{
+	if (IsInsideCitadel())
+	{
+		for (int i = 0; i <= NUM_ATMOS_TYPES; i++)
+		{
+			AtmosTargetVolumes[i] = 0.0f;
+		}
+	}
+	else
+	{
+		for (int i = 0; i <= NUM_ATMOS_TYPES; i++)
+		{
+			float volume = GGame::g_game->SoundMap->Volumes[i];
+			AtmosTargetVolumes[i] = volume;
+		}
 	}
 }
