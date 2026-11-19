@@ -685,6 +685,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0041C03A, call_indirect(0x008A9690)),  # AnimalAnimation: __imp_?db_execute_transaction_async@@YA?AW4DBSTATUS@@PAUDBInfo@@PADPAVLHNetUser@@PAVLHTransportInfo@@@Z
     (0x0041CA9B, call_rel32(0x00401879)),  # AnimalAnimation
     (0x0041D4CA, call_indirect(0x008A9978)),  # AnimalCow: __imp__CoFileTimeToDosDateTime@12
+    (0x0041FC6A, call_indirect(0x008A98C0)),  # AnimalLeopard: __imp__mmioOpenA@4
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
     (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
@@ -1238,6 +1239,9 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0041DB8A, copy_run(0x0041DB56)),  # AnimalCow
     (0x0041DC36, jmp_run(0x0041DB83)),  # AnimalCow
     (0x0041DC6A, copy_run(0x0041DC36)),  # AnimalCow
+    (0x0041FC03, copy_run(0x0041FBA2)),  # AnimalLeopard
+    (0x0041FC96, jmp_run(0x0041FC03)),  # AnimalLeopard
+    (0x0041FCCA, copy_run(0x0041FC96)),  # AnimalLeopard
     (0x00420183, copy_run(0x00420126)),  # AnimalPig
     (0x00426B13, jmp_run(0x00426AB7)),  # Audio
     (0x00426B3B, call_rel32(0x00403C49)),  # Audio
