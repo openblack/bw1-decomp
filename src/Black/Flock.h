@@ -5,6 +5,7 @@
 #include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
+#include <chlasm/GStates.h>     /* For enum ANIMAL_STATES */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "Container.h" /* For struct Container */
@@ -49,10 +50,10 @@ public:
 	bool32_t                         FollowShepherd;
 	bool32_t                         FeedingDisabled;
 	MapCoords                        SavedDomainCentre;
-	MapCoords                        field_0x6c;
-	uint32_t                         field_0x78;
-	uint32_t                         field_0x7c;
-	uint32_t                         field_0x80;
+	MapCoords                        LandingPos;
+	uint32_t                         FormationState;
+	ANIMAL_STATES                    DestinationState;
+	uint32_t                         Formation;
 	GameThing*                       SavedThing;
 	uint32_t                         MaxMembers;
 	uint32_t                         ID;

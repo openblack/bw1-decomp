@@ -721,6 +721,8 @@ public:
 #endif
 	// BW1W120 005ec270 BW1M119 0104f900
 	int MoveToPos();
+	// BW1W120 005ec2a0 BW1M119 01052460
+	int MoveToPos3D();
 	// BW1W120 005ec2c0 BW1M119 0138af80
 	bool32_t MoveToObject();
 	// BW1W120 005ec240 BW1M119 0138b2b0

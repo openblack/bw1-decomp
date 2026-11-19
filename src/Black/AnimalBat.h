@@ -29,17 +29,19 @@ public:
 	virtual uint32_t SleepAnimation();
 	// BW1W120 0041be50 BW1M119 01179780
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 0041ef10 BW1M119 0117ace0
-	virtual char* GetDebugText();
 	// BW1W120 0041ef00 BW1M119 0117acb0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_BAT; }
+	// BW1W120 0041ef10 BW1M119 0117ace0
+	virtual char* GetDebugText() { return "Animal: Bat"; }
 	// BW1W120 0041ef20 BW1M119 0117ad20
-	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return true; }
 	// BW1W120 0041be40 BW1M119 011797c0
 	virtual uint32_t StandAnimation();
 
 	// BW1W120 0055ea30 BW1M119 inlined
 	Bat() {}
+	// BW1W120 inlined BW1M119 inlined
+	Bat(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Dove(coords, info, age) {}
 
 	// Static methods
 
@@ -62,17 +64,22 @@ public:
 	virtual uint32_t SleepAnimation();
 	// BW1W120 0041beb0 BW1M119 01179600
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 0041eff0 BW1M119 0117ab50
-	virtual char* GetDebugText();
 	// BW1W120 0041efe0 BW1M119 0117ab10
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_BAT; }
+	// BW1W120 0041eff0 BW1M119 0117ab50
+	virtual char* GetDebugText() { return "Animal: SpellBat"; }
 	// BW1W120 0041f000 BW1M119 0117ab90
-	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return true; }
 	// BW1W120 0041bea0 BW1M119 01179640
 	virtual uint32_t StandAnimation();
 
 	// BW1W120 inlined BW1M119 inlined
 	SpellBat() { SetToZero(); }
+	// BW1W120 inlined BW1M119 inlined
+	SpellBat(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : SpellDove(coords, info, age)
+	{
+		SetToZero();
+	}
 
 	// Static methods
 

@@ -29,6 +29,8 @@ block_relocations:
   - source: 0x00767880
   - source: 0x0076788B
   - source: 0x007678B4
+# SpellDove::SetColor's 0xffffff colour mask is an immediate, not a code pointer.
+  - source: 0x0041F662
 # RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
   - source: 0x005FCF8A
   - source: 0x005FD562

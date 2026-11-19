@@ -120,7 +120,7 @@ public:
 	uint32_t ScriptULData2;
 #endif
 	LHPTR<Object> LandedOn;
-	float         field_0x144;
+	uint8_t       LandingPointIndex;
 
 	// Override methods
 
@@ -137,6 +137,9 @@ public:
 	virtual void SetScriptULData2(unsigned long data);
 	// BW1WCI 0041c8f0 BW1MCI119 011826a0
 	virtual bool32_t IsStateEntryFunctionSameAs(unsigned long state, unsigned long other_state) const;
+#else
+	// BW1W120 inlined BW1M119 010073d0
+	int GetSpeed() const { return speed; }
 #endif
 	// BW1W120 0041a9f0 BW1M119 0116f250
 	virtual bool32_t MoveInFlock();

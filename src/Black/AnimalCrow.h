@@ -27,15 +27,17 @@ public:
 	virtual uint32_t SleepAnimation();
 	// BW1W120 0041bf20 BW1M119 01179470
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 0041ec10 BW1M119 0117a9c0
-	virtual char* GetDebugText();
 	// BW1W120 0041ec00 BW1M119 0117a990
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_CROW; }
+	// BW1W120 0041ec10 BW1M119 0117a9c0
+	virtual char* GetDebugText() { return "Animal: Crow"; }
 	// BW1W120 0041bf10 BW1M119 011794b0
 	virtual uint32_t StandAnimation();
 
 	// BW1W120 inlined BW1M119 inlined
 	Crow() {}
+	// BW1W120 inlined BW1M119 inlined
+	Crow(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Dove(coords, info, age) {}
 
 	// Static methods
 

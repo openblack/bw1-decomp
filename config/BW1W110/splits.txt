@@ -84,8 +84,10 @@ Black/AnimalCow.cpp:
 Black/AnimalDove.cpp:
 	.text       start:0x0041D930 end:0x0041F840
 	.rdata      start:0x008A563C end:0x008AC428
-	.CRT$XCU    start:0x009B6098 end:0x009B609C align:4
+	.rdata$r    start:0x009970C4 end:0x009974B0
+	.CRT$XCU    start:0x009B6094 end:0x009B609C align:4
 	.data       start:0x009B8918 end:0x009B8AA0
+	.bss        start:0x00C43B44 end:0x00C43B4C
 
 Black/AnimalLeopard.cpp:
 	.text       start:0x0041F840 end:0x0041F930
