@@ -43,7 +43,7 @@ bool32_t Animal::FleeingFromPredatorReaction()
 		LHPoint predatorPos;
 		GLandscape::ConvertMapCoordToLandscapePoint(ReactionObject->Pos, predatorPos);
 		LHPoint away = pos - predatorPos;
-		away.Normalize();
+		float   length = away.Normalize();
 		LHPoint movement;
 		ReactionObject->GetMovementDirection(&movement);
 		movement.Normalize();
@@ -129,18 +129,18 @@ void Animal::GetFleeingPositionFromMovingObject(MapCoords* pos, GameThingWithPos
 		side.FastNormalizeInline();
 		LHPoint offset;
 		offset.x =
-			side.x * distance + GAME_FLOAT_RAND(204, ANIMAL_FLEE_POSITION_SPREAD) - ANIMAL_FLEE_POSITION_SPREAD / 2;
+			side.x * distance + (GAME_FLOAT_RAND(204, ANIMAL_FLEE_POSITION_SPREAD)) - ANIMAL_FLEE_POSITION_SPREAD / 2;
 		offset.z =
-			side.z * distance + GAME_FLOAT_RAND(205, ANIMAL_FLEE_POSITION_SPREAD) - ANIMAL_FLEE_POSITION_SPREAD / 2;
+			side.z * distance + (GAME_FLOAT_RAND(205, ANIMAL_FLEE_POSITION_SPREAD)) - ANIMAL_FLEE_POSITION_SPREAD / 2;
 		if (side.z * away.z + side.x * away.x >= 0.0f)
 		{
 			pos->SetMetersX(pos->MetersX() + offset.x);
-			pos->SetMetersZ(pos->MetersZ() + offset.z);
+			pos->SetMetersZ((double)pos->MetersZ() + offset.z);
 		}
 		else
 		{
-			pos->SetMetersX(pos->MetersX() - offset.x);
-			pos->SetMetersZ(pos->MetersZ() - offset.z);
+			pos->SetMetersX(pos->MetersX() + (-offset.x));
+			pos->SetMetersZ((double)pos->MetersZ() + (-offset.z));
 		}
 		return;
 	}
