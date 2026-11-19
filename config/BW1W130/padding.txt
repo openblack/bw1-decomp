@@ -955,6 +955,11 @@
 0x0054BDB9 jmp_run 0x0054BC29  # FrontEndSetupGame
 0x0054CC11 jmp_run 0x0054BDB9  # FrontEndSetupGame
 0x0054CD98 jmp_run 0x0054CC11  # FrontEndSetupGame
+0x0054CE3B call_rel32 0x00403C49  # FrontEndSetupMultiplayer
+0x0054CE65 copy_run 0x0054CE3B  # FrontEndSetupMultiplayer
+0x0054D321 copy_run 0x0054CE63  # FrontEndSetupMultiplayer
+0x0054D516 jmp_run 0x0054D321  # FrontEndSetupMultiplayer
+0x0054D597 jmp_run 0x0054D516  # FrontEndSetupMultiplayer
 0x00572F83 copy_run 0x00572F23  # GameThing
 0x00572FAB call_rel32 0x00403C49  # GameThing
 0x00572FD3 jmp_run 0x00572FAB  # GameThing

@@ -83,6 +83,9 @@ public:
 
 	// BW1W120 005471e0 BW1M119 015d3020
 	static void __stdcall ControlCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
+
+	// BW1W120 inlined
+	SetupLandscapeBox() { ReloadSettings = false; }
 };
 static_assert(sizeof(SetupLandscapeBox) == 0x4b0, "Data type is of wrong size");
 
