@@ -63,6 +63,8 @@ Black/Alignment.cpp:
 Black/Animal.cpp:
 	.text       start:0x00413AE0 end:0x00418080
 	.rdata      start:0x007ED614 end:0x007EEF1C
+	.rdata$r    start:0x008DAD78 end:0x008DAF88
+	.CRT$XCU    start:0x008F6044 end:0x008F6054 align:4
 	.data       start:0x008F7B50 end:0x008F7D30
 	.bss        start:0x00B6E8E0 end:0x00B765C0
 
@@ -73,6 +75,7 @@ Black/AnimalAnimation.cpp:
 Black/AnimalCow.cpp:
 	.text       start:0x004189B0 end:0x00419010
 	.rdata      start:0x007EEF1C end:0x007F5064
+	.rdata$r    start:0x008DAF88 end:0x008DB348
 	.CRT$XCU    start:0x008F6054 end:0x008F6058 align:4
 	.data       start:0x008F7D58 end:0x008F7F18
 	.bss        start:0x00B765C0 end:0x00B765C4
@@ -96,6 +99,7 @@ Black/AnimalLeopard.cpp:
 Black/AnimalLion.cpp:
 	.text       start:0x0041AD20 end:0x0041B0E0
 	.rdata      start:0x007FCA5C end:0x007FE2B8
+	.rdata$r    start:0x008DB7B8 end:0x008DB878
 	.CRT$XCU    start:0x008F6064 end:0x008F6068 align:4
 	.data       start:0x008F8100 end:0x008F8160
 	.bss        start:0x00B765D0 end:0x00B765D4
@@ -140,11 +144,17 @@ Black/AnimalWolf.cpp:
 Black/AnimatedStatic.cpp:
 	.text       start:0x0041CA90 end:0x0041DBB0
 	.rdata      start:0x008013A0 end:0x00802614
-	.data       start:0x008F8288 end:0x008F833C
+	.rdata$r    start:0x008DBA38 end:0x008DBB78
+	.CRT$XCU    start:0x008F607C end:0x008F6084 align:4
+	.data       start:0x008F8288 end:0x008F8344
+	.bss        start:0x00B765E8 end:0x00B778B4
 
 Black/Animations.cpp:
 	.text       start:0x0041DBB0 end:0x0041ECF0
 	.rdata      start:0x00802614 end:0x00802660
+	.CRT$XCU    start:0x008F6084 end:0x008F608C align:4
+	.data       start:0x008F8344 end:0x008F8378
+	.bss        start:0x00B778B4 end:0x00B778C0
 
 Black/Arena.cpp:
 	.text       start:0x0041ECF0 end:0x0041FE00
