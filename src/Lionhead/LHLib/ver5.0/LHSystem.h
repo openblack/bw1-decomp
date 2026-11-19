@@ -377,17 +377,16 @@ inline void LHPixel16::Glass(LHPixel16 color)
 	value = ((value & LHSys::GetScreen().ColorLSBMask) + (color.value & LHSys::GetScreen().ColorLSBMask)) >> 1;
 }
 
-inline LH_RETURN LHDraw::Line(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode)
+inline LH_RETURN LHDraw::Line(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode,
+                              uint32_t drawBuffer, unsigned long pixelPitch)
 {
 	if (LHSys::GetScreen().depth == 16)
 	{
 		LHPixel16 pixel;
 		pixel.Set(color);
-		return Line16(x0, y0, x1, y1, pixel, mode, (LHPixel16*)LHSys::GetScreen().backAddress,
-		              LHSys::GetScreen().backPixelPitch);
+		return Line16(x0, y0, x1, y1, pixel, mode, (LHPixel16*)drawBuffer, pixelPitch);
 	}
-	return Line24(x0, y0, x1, y1, color, mode, (LHColor*)LHSys::GetScreen().backAddress,
-	              LHSys::GetScreen().backPixelPitch);
+	return Line24(x0, y0, x1, y1, color, mode, (LHColor*)drawBuffer, pixelPitch);
 }
 
 inline LH_RETURN LHDraw::Box(long left, long top, long right, long bottom, LHColor color)

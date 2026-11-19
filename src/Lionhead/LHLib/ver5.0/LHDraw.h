@@ -111,7 +111,8 @@ public:
 	                 unsigned long pixelPitch);
 
 	// BW1W120 inlined BW1M119 inlined
-	LH_RETURN Line(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode);
+	LH_RETURN Line(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode, uint32_t drawBuffer,
+	               unsigned long pixelPitch);
 
 	// BW1W120 0057af50 BW1M119 null
 	LH_RETURN Box(long left, long top, long right, long bottom, LHColor color);
