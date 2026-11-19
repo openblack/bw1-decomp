@@ -66,6 +66,7 @@ Black/Animal.cpp:
 	.rdata$r    start:0x00A17138 end:0x00A17348
 	.CRT$XCU    start:0x00A36080 end:0x00A36090 align:4
 	.data       start:0x00A38534 end:0x00A38778
+	.bss        start:0x00CC0A30 end:0x00CC8840
 
 Black/AnimalAnimation.cpp:
 	.text       start:0x0041CAE0 end:0x0041DEC0
@@ -145,12 +146,14 @@ Black/AnimatedStatic.cpp:
 	.rdata      start:0x008ED588 end:0x008EE89C
 	.rdata$r    start:0x00A17F00 end:0x00A18040
 	.CRT$XCU    start:0x00A360B8 end:0x00A360C0 align:4
+	.data       start:0x00A38D18 end:0x00A38DD4
 	.bss        start:0x00CC8868 end:0x00CC9CB4
 
 Black/Animations.cpp:
 	.text       start:0x004243C0 end:0x004256F0
 	.rdata      start:0x008EE89C end:0x008EE8E8
 	.CRT$XCU    start:0x00A360C0 end:0x00A360C8 align:4
+	.data       start:0x00A38DD4 end:0x00A38E08
 	.bss        start:0x00CC9CB4 end:0x00CC9CC0
 
 Black/Arena.cpp:
