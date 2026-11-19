@@ -16,6 +16,9 @@ on:
       - '.github/workflows/lint.yml'
       - 'config/**/symbols.txt'
       - 'tools/check_addr_comments.py'
+      - 'config/**/splits.txt'
+      - 'tools/split-gaps.py'
+      - 'configure.py'
 
 permissions:
   contents: read
@@ -48,3 +51,21 @@ jobs:
     # Every `// BW1W120 ...` comment must be `// BW1W120 <w> [BW1M119 <m> [(<module>)]]`
     # on its own line, with a Mac address that exists in config/BW1M119.
     - run: python tools/check_addr_comments.py
+
+  check-split-gaps:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    # Every address of these ranges belongs to a unit in splits.txt. The ranges stop
+    # where the linker's import thunks start.
+    - name: BW1W120 .text
+      run: python tools/split-gaps.py --check -v BW1W120 -s .text --range 0x401000-0x7AEBB0
+
+    # Every configure.py unit has splits in some version.
+    - name: configure.py units
+      run: python tools/split-gaps.py --check --units

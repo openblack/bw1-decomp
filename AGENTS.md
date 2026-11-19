@@ -200,6 +200,8 @@ dtk rewrites this file when splitting, de-duplicates function **and data** names
 
 Maps each source file to section address ranges for dtk's per-TU split.
 
+Lint CI runs `tools/split-gaps.py --check` over address ranges every unit there must cover (versions, sections and ranges in `.github/workflows/lint.yml`): range no unit claims → extend neighbour or carve new unit; widen checked ranges as gaps get fixed. `split-gaps.py --check --units` (also lint) fails on `configure.py` object no version's splits claims: unit compiling to nothing in every version is removed, not kept as stub.
+
 ## Code Conventions
 
 ### Naming
