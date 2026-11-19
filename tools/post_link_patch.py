@@ -694,6 +694,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x00424E6A, call_indirect(0x008A9978)),  # Arena: __imp__CoFileTimeToDosDateTime@12
     (0x0042505B, call_rel32(0x00401879)),  # Arena
     (0x0042565B, call_rel32(0x00401879)),  # Arena
+    (0x0041FD6A, call_indirect(0x008A98DC)),  # AnimalLion: __imp__bind@4
+    (0x0041FDDB, call_rel32(0x00401879)),  # AnimalLion
+    (0x0041FE3B, call_rel32(0x00401879)),  # AnimalLion
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
     (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
@@ -1250,6 +1253,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0041FC03, copy_run(0x0041FBA2)),  # AnimalLeopard
     (0x0041FC96, jmp_run(0x0041FC03)),  # AnimalLeopard
     (0x0041FCCA, copy_run(0x0041FC96)),  # AnimalLeopard
+    (0x0041FD23, copy_run(0x0041FCC3)),  # AnimalLion
+    (0x0041FD86, copy_run(0x0041FD23)),  # AnimalLion
+    (0x0041FDBA, jmp_run(0x0041FD86)),  # AnimalLion
+    (0x0041FDDB, call_rel32(0x00403C49)),  # AnimalLion
+    (0x0041FE3B, call_rel32(0x00403C49)),  # AnimalLion
+    (0x0041FF33, jmp_run(0x0041FE3B)),  # AnimalLion
+    (0x00420007, copy_run(0x0041FF33)),  # AnimalLion
+    (0x00420034, jmp_run(0x00420007)),  # AnimalLion
+    (0x004200E5, copy_run(0x00420034)),  # AnimalLion
+    (0x0042012B, copy_run(0x004200E5)),  # AnimalLion
     (0x00420183, copy_run(0x00420126)),  # AnimalPig
     (0x004201E3, copy_run(0x00420183)),  # AnimalReaction
     (0x004203B8, jmp_run(0x004201E3)),  # AnimalReaction

@@ -241,18 +241,18 @@ class PieceLion : public Lion
 public:
 	// Override methods
 
+	// BW1W120 004200a0 BW1M119 0117e450
+	virtual uint32_t ProcessNeeds() { return false; }
+	// BW1W120 004200b0 BW1M119 0117e490
+	virtual uint32_t CheckNeeds() { return ANIMAL_NEEDS_NONE; }
+	// BW1W120 004200c0 BW1M119 0117e4d0
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PIECE_LION; }
+	// BW1W120 004200d0 BW1M119 0117e510
+	virtual char* GetDebugText() { return "Animal: Lion for Puzzle"; }
+	// BW1W120 004200e0 BW1M119 0117e550
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return false; }
 	// BW1W120 00420120 BW1M119 0117e5a0
 	virtual bool32_t DecideWhatToDo();
-	// BW1W120 004200a0 BW1M119 0117e450
-	virtual uint32_t ProcessNeeds();
-	// BW1W120 004200b0 BW1M119 0117e490
-	virtual uint32_t CheckNeeds();
-	// BW1W120 004200d0 BW1M119 0117e510
-	virtual char* GetDebugText();
-	// BW1W120 004200c0 BW1M119 0117e4d0
-	virtual uint32_t GetSaveType();
-	// BW1W120 004200e0 BW1M119 0117e550
-	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 
 	// BW1W120 inlined BW1M119 inlined
 	PieceLion() {}

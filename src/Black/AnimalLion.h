@@ -16,6 +16,8 @@ class GameThing;
 class GameThingWithPos;
 class Object;
 
+#define LION_SLEEP_TIME 22.0f
+
 class Lion : public Animal
 {
 public:
@@ -55,12 +57,12 @@ public:
 	virtual uint32_t LandedAnimation();
 	// BW1W120 0041c210 BW1M119 01178a70
 	virtual uint32_t ThrownAnimation();
+	// BW1W120 0041fd70 BW1M119 0117ed60
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_LION; }
+	// BW1W120 0041fd80 BW1M119 0117ed90
+	virtual char* GetDebugText() { return "Animal: Lion"; }
 	// BW1W120 0041fdc0 BW1M119 0117ec30
 	virtual ~Lion();
-	// BW1W120 0041fd80 BW1M119 0117ed90
-	virtual char* GetDebugText();
-	// BW1W120 0041fd70 BW1M119 0117ed60
-	virtual uint32_t GetSaveType();
 	// BW1W120 0041fc70 BW1M119 0117a340
 	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return true; }
 	// BW1W120 0041c1a0 BW1M119 01178af0
