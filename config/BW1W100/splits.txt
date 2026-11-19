@@ -113,25 +113,26 @@ Black/AnimalSpellWolf.cpp:
 	.text       start:0x0041B6A0 end:0x0041C1E0
 	.rdata      start:0x007FE2CC end:0x007FEF14
 	.CRT$XCU    start:0x008F6070 end:0x008F6074 align:4
-	.data       start:0x008F8198 end:0x008F81E4
+	.data       start:0x008F8198 end:0x008F81D0
 
 Black/AnimalTiger.cpp:
 	.text       start:0x0041C1E0 end:0x0041C3C0
 	.rdata      start:0x007FEF14 end:0x007FFB44
 	.CRT$XCU    start:0x008F6074 end:0x008F6078 align:4
-	.data       start:0x008F81E4 end:0x008F8218
+	.data       start:0x008F81D0 end:0x008F8218
 
 Black/AnimalWolf.cpp:
 	.text       start:0x0041C3C0 end:0x0041CA90
 	.rdata      start:0x007FFB44 end:0x008013A0
+	.rdata$r    start:0x008DB958 end:0x008DBA38
 	.CRT$XCU    start:0x008F6078 end:0x008F607C align:4
-	.data       start:0x008F822C end:0x008F82E8
-	.bss        start:0x00B765E4 end:0x00B778B0
+	.data       start:0x008F8218 end:0x008F8288
+	.bss        start:0x00B765E4 end:0x00B765E8
 
 Black/AnimatedStatic.cpp:
 	.text       start:0x0041CA90 end:0x0041DBB0
 	.rdata      start:0x008013A0 end:0x00802614
-	.data       start:0x008F8328 end:0x008F833C
+	.data       start:0x008F8288 end:0x008F833C
 
 Black/Animations.cpp:
 	.text       start:0x0041DBB0 end:0x0041ECF0
