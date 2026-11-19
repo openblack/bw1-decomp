@@ -121,8 +121,10 @@ Black/AnimalReaction.cpp:
 Black/AnimalSpellWolf.cpp:
 	.text       start:0x00420360 end:0x00420F00
 	.rdata      start:0x008AE8D4 end:0x008AF520
+	.rdata$r    start:0x009975F8 end:0x00997668
 	.CRT$XCU    start:0x009B60AC end:0x009B60B0 align:4
-	.data       start:0x009B8B98 end:0x009B8BD0
+	.data       start:0x009B8B80 end:0x009B8BD0
+	.bss        start:0x00C43B5C end:0x00C43B60
 
 Black/AnimalTiger.cpp:
 	.text       start:0x00420F00 end:0x00421110
