@@ -13,6 +13,9 @@ class Base;
 class GameThing;
 class Object;
 
+#define TIGER_LAIR_WATER_MAX_DISTANCE  500.0f
+#define TIGER_LAIR_FOREST_MAX_DISTANCE 1000.0f
+
 class Tiger : public Lion
 {
 public:
@@ -44,10 +47,10 @@ public:
 	virtual uint32_t LandedAnimation();
 	// BW1W120 0041c4a0 BW1M119 01178350
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 00421430 BW1M119 01181150
-	virtual char* GetDebugText();
 	// BW1W120 00421420 BW1M119 01181120
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_TIGER; }
+	// BW1W120 00421430 BW1M119 01181150
+	virtual char* GetDebugText() { return "Animal: Tiger"; }
 	// BW1W120 0041c430 BW1M119 011783d0
 	virtual uint32_t StandAnimation();
 

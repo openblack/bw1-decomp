@@ -132,6 +132,7 @@ Black/AnimalSpellWolf.cpp:
 Black/AnimalTiger.cpp:
 	.text       start:0x00421390 end:0x004215D0
 	.rdata      start:0x008C4520 end:0x008C5154
+	.rdata$r    start:0x00A279E8 end:0x00A27A58
 	.CRT$XCU    start:0x00A460E4 end:0x00A460EC align:4
 	.data       start:0x00A494D8 end:0x00A49528
 	.bss        start:0x00CD5C60 end:0x00CD5C64
