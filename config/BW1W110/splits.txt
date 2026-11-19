@@ -771,7 +771,7 @@ Black/SubArgument.cpp:
 	.bss        start:0x00C9C940 end:0x00C9C948
 
 Black/CreatureSubActions.cpp:
-	.text       start:0x004FDEB0 end:0x00504F50
+	.text       start:0x004FDEB0 end:0x005073C0
 	.rdata      start:0x008C1638 end:0x008C1688
 
 Black/CreatureWhatToDoNext.cpp:
@@ -853,7 +853,7 @@ Black/DialogBoxKeyBinding.cpp:
 	.data       start:0x00BD818C end:0x00BD81F0
 
 Black/DialogBoxMain.cpp:
-	.text       start:0x00511570 end:0x00511960
+	.text       start:0x005114D0 end:0x00511960
 	.rdata      start:0x008C85B4 end:0x008C85E4
 	.data       start:0x00BD81F0 end:0x00BD81F4
 
@@ -1025,7 +1025,7 @@ Black/Furniture.cpp:
 	.bss        start:0x00CC243C end:0x00CF0780
 
 Black/Game.cpp:
-	.text       start:0x00547E30 end:0x005540C0
+	.text       start:0x00547CC0 end:0x005540C0
 	.text$x     start:0x00896290 end:0x008962A0 align:4
 	.rdata      start:0x008CF5D0 end:0x008CF87C
 	.rdata$r    start:0x0099CEF8 end:0x0099D22C
@@ -1126,7 +1126,7 @@ Black/GestureSystemSamples.cpp:
 	.bss        start:0x00CF531C end:0x00CF5334
 
 Black/GJBaseUtils.cpp:
-	.text       start:0x00578AB0 end:0x0057C950
+	.text       start:0x00578AB0 end:0x0057C960
 	.text$x     start:0x008962A0 end:0x008962B0 align:4
 	.CRT$XCU    start:0x009B675C end:0x009B6770 align:4
 	.bss        start:0x00CF5338 end:0x00CF53D8
@@ -1448,7 +1448,7 @@ Black/LandAlignement.cpp:
 	.bss        start:0x00D09068 end:0x00D090F8
 
 Black/LandBalance.cpp:
-	.text       start:0x005DDAD0 end:0x005DDC70
+	.text       start:0x005DDAB0 end:0x005DDC70
 
 Black/LandFeature.cpp:
 	.text       start:0x005DDC70 end:0x005DF060
@@ -1482,7 +1482,7 @@ Black/LHInetWeather.cpp:
 	.bss        start:0x00D0EFE0 end:0x00D0F2C0
 
 Black/LHNetBase.cpp:
-	.text       start:0x005E55E0 end:0x005E6CB0
+	.text       start:0x005E55C0 end:0x005E6CB0
 	.text$x     start:0x00896390 end:0x008963A0 align:16
 	.rdata      start:0x0091B390 end:0x0091B3C0
 	.xdata$x    start:0x009ABFC0 end:0x009AC018 align:4
@@ -1544,7 +1544,7 @@ Black/logo.cpp:
 	.bss        start:0x00D20910 end:0x00D26AF0
 
 Black/MagicCreatureSpellInfo.cpp:
-	.text       start:0x005F5430 end:0x005F5510
+	.text       start:0x005F5400 end:0x005F5510
 	.data       start:0x00BE3194 end:0x00BE3198
 
 Black/MagicFood.cpp:
@@ -1664,7 +1664,7 @@ Black/MobileWallHug.cpp:
 	.bss        start:0x00D2DC78 end:0x00D2DD14
 
 Black/MorphableObject.cpp:
-	.text       start:0x006118A0 end:0x006148C0
+	.text       start:0x00611870 end:0x006148C0
 	.CRT$XCU    start:0x009B6AC8 end:0x009B6ACC align:4
 	.data       start:0x00BE3688 end:0x00BE368C
 
@@ -1802,6 +1802,9 @@ Black/MPFEPlayerDetails.cpp:
 	.data       start:0x00BECDC4 end:0x00BECE18
 	.bss        start:0x00D2FD74 end:0x00D2FD78
 
+Black/MPFEStartGameData.cpp:
+	.text       start:0x00629A80 end:0x0062A550
+
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x0062A550 end:0x0062AC40
 	.rdata      start:0x00920958 end:0x00920990
@@ -1918,8 +1921,11 @@ Black/PlayerAction.cpp:
 	.data       start:0x00BEE3FC end:0x00BEFB98
 	.bss        start:0x00D36700 end:0x00D36C18
 
+Black/PlayerActions.cpp:
+	.text       start:0x00648040 end:0x0064B510
+
 Black/PlayerComputer.cpp:
-	.text       start:0x0064B540 end:0x0064EA70
+	.text       start:0x0064B510 end:0x0064EA70
 	.rdata      start:0x00922C8C end:0x00922CA8
 	.CRT$XCU    start:0x009B6CA8 end:0x009B6CB0 align:4
 	.data       start:0x00BEFD00 end:0x00BEFD5C
@@ -1948,11 +1954,15 @@ Black/PlayerComputerInterface.cpp:
 	.text       start:0x00659570 end:0x0065A930
 	.CRT$XCU    start:0x009B6CD0 end:0x009B6CE0 align:4
 
+Black/PlayerComputerReact.cpp:
+	.text       start:0x0065A930 end:0x0065B330
+
 Black/PlayerComputerSpell.cpp:
-	.text       start:0x0065B360 end:0x0065C400
+	.text       start:0x0065B330 end:0x0065C400
 	.CRT$XCU    start:0x009B6CE8 end:0x009B6CEC align:4
 
 Black/PlayerComputerTown.cpp:
+	.text       start:0x0065C400 end:0x00660E80
 	.rdata      start:0x00922CF4 end:0x00922D08
 	.data       start:0x00BF0EAC end:0x00BF1094
 
@@ -2052,7 +2062,7 @@ Black/PSysExplosion.cpp:
 	.bss        start:0x00D3CFD8 end:0x00D3D068
 
 Black/PSysFireball.cpp:
-	.text       start:0x00677E40 end:0x006789C0
+	.text       start:0x00677E40 end:0x006789E0
 	.rdata      start:0x00925888 end:0x00926134
 	.CRT$XCU    start:0x009B6DE0 end:0x009B6DEC align:4
 	.data       start:0x00BF1540 end:0x00BF15D8
@@ -2063,14 +2073,14 @@ Black/PSysFlock.cpp:
 	.data       start:0x00BF15D8 end:0x00BF1698
 
 Black/PSysGeom.cpp:
-	.text       start:0x006789E0 end:0x0067CFD0
+	.text       start:0x006789E0 end:0x0067D000
 	.rdata      start:0x00926468 end:0x009266E0
 	.CRT$XCU    start:0x009B6DEC end:0x009B6DF8 align:4
 	.data       start:0x00BF1698 end:0x00BF1918
 	.bss        start:0x00D3D3C4 end:0x00D3D430
 
 Black/PSysGesture.cpp:
-	.text       start:0x0067D000 end:0x00681DB0
+	.text       start:0x0067D000 end:0x00681DC0
 	.rdata      start:0x009266E0 end:0x00926A48
 	.CRT$XCU    start:0x009B6E14 end:0x009B6E58 align:4
 	.data       start:0x00BF1918 end:0x00BF1A34
@@ -2084,7 +2094,7 @@ Black/PSysHandFX.cpp:
 	.bss        start:0x00D3D864 end:0x00D3D89C
 
 Black/PSysInterface.cpp:
-	.text       start:0x00683D70 end:0x00685250
+	.text       start:0x00683D70 end:0x00685280
 	.rdata      start:0x00926BBC end:0x00926BD8
 	.CRT$XCU    start:0x009B6E68 end:0x009B6E84 align:4
 	.data       start:0x00BF33A4 end:0x00BF33F0
@@ -2123,7 +2133,7 @@ Black/PSysModifiers.cpp:
 	.bss        start:0x00D3DA14 end:0x00D3DA48
 
 Black/PSysPCreator.cpp:
-	.text       start:0x0069D810 end:0x006A0300
+	.text       start:0x0069D7E0 end:0x006A0300
 	.rdata      start:0x00927AB4 end:0x00927D30
 	.CRT$XCU    start:0x009B6EF8 end:0x009B6F04 align:4
 	.data       start:0x00BF3978 end:0x00BF3BE8
@@ -2138,7 +2148,7 @@ Black/PSysProperties.cpp:
 	.bss        start:0x00D3DA60 end:0x00D3DA80
 
 Black/PSysRenderParticle.cpp:
-	.text       start:0x006BC8C0 end:0x006C02F0
+	.text       start:0x006BC8C0 end:0x006C0390
 	.rdata      start:0x00928E34 end:0x0092A1A8
 	.CRT$XCU    start:0x009B6F20 end:0x009B6F38 align:4
 	.data       start:0x00BF85D0 end:0x00BF8888
@@ -2179,9 +2189,11 @@ Black/Rand.cpp:
 	.text       start:0x006D3870 end:0x006D3950
 
 Black/RandomBuildingPlacement.cpp:
+	.text       start:0x006D3950 end:0x006D5380
 	.rdata      start:0x009316B0 end:0x009316C4
 
 Black/RandomBuildingPlacementDefence.cpp:
+	.text       start:0x006D5380 end:0x006D59E0
 	.rdata      start:0x009316C4 end:0x009316D0
 	.bss        start:0x00D3E278 end:0x00D3E378
 
@@ -2231,6 +2243,9 @@ Black/ScriptCamera.cpp:
 	.CRT$XCU    start:0x009B6FE4 end:0x009B6FE8 align:4
 	.data       start:0x00BFB208 end:0x00BFB3E6
 	.bss        start:0x00D848F4 end:0x00D848F8
+
+Black/ScriptComputerPlayer.cpp:
+	.text       start:0x006E3940 end:0x006E4460
 
 Black/ScriptContainer.cpp:
 	.text       start:0x006E4460 end:0x006E5920
@@ -2520,6 +2535,7 @@ Black/SpellShield.cpp:
 	.bss        start:0x00D8F284 end:0x00D8F4D8
 
 Black/SpellWater.cpp:
+	.text       start:0x00722330 end:0x00722680
 	.rdata      start:0x00974CA8 end:0x009893AC
 	.bss        start:0x00D8F4D8 end:0x00D8F51C
 
@@ -2642,23 +2658,23 @@ Black/VillagerCheck.cpp:
 	.CRT$XCU    start:0x009B7244 end:0x009B7250 align:4
 
 Black/VillagerChild.cpp:
-	.text       start:0x0074B910 end:0x0074C170
+	.text       start:0x0074B8E0 end:0x0074C170
 	.data       start:0x00C12768 end:0x00C1276C
 
 Black/VillagerCivic.cpp:
-	.text       start:0x0074C1A0 end:0x0074D830
+	.text       start:0x0074C170 end:0x0074D830
 	.CRT$XCU    start:0x009B7258 end:0x009B725C align:4
 	.data       start:0x00C12788 end:0x00C127B0
 
 Black/VillagerDance.cpp:
-	.text       start:0x0074D860 end:0x0074DB80
+	.text       start:0x0074D830 end:0x0074DB80
 	.CRT$XCU    start:0x009B7260 end:0x009B7264 align:4
 
 Black/VillagerFarmer.cpp:
 	.text       start:0x0074DB80 end:0x0074E330
 
 Black/VillagerFireman.cpp:
-	.text       start:0x0074E700 end:0x0074F3F0
+	.text       start:0x0074E330 end:0x0074F3F0
 
 Black/VillagerFisherman.cpp:
 	.text       start:0x0074F3F0 end:0x0074F840
@@ -2667,11 +2683,11 @@ Black/VillagerFood.cpp:
 	.text       start:0x0074F840 end:0x00750030
 
 Black/VillagerFootball.cpp:
-	.text       start:0x00750080 end:0x00753340
+	.text       start:0x00750030 end:0x00753340
 	.CRT$XCU    start:0x009B727C end:0x009B7288 align:4
 
 Black/VillagerForester.cpp:
-	.text       start:0x00753370 end:0x00753D10
+	.text       start:0x00753340 end:0x00753D10
 
 Black/VillagerHome.cpp:
 	.text       start:0x00753D10 end:0x00755A40
@@ -2683,6 +2699,9 @@ Black/VillagerHome.cpp:
 Black/VillagerHousewife.cpp:
 	.text       start:0x00755A40 end:0x00756460 align:16
 	.data       start:0x00C13500 end:0x00C135A8 align:4
+
+Black/VillagerLeader.cpp:
+	.text       start:0x00756460 end:0x007564A0
 
 Black/villagernames.cpp:
 	.text       start:0x007564A0 end:0x00756E00
@@ -2710,7 +2729,7 @@ Black/VillagerReactionToCreature.cpp:
 	.data       start:0x00C1361C end:0x00C13648
 
 Black/VillagerScript.cpp:
-	.text       start:0x0075C2D0 end:0x0075C840
+	.text       start:0x0075C2A0 end:0x0075C840
 	.CRT$XCU    start:0x009B72B0 end:0x009B72B4 align:4
 	.data       start:0x00C13648 end:0x00C13668
 

@@ -919,7 +919,7 @@ Black/DialogBoxBase.cpp:
 	.CRT$XCU    start:0x00A4673C end:0x00A46744 align:4
 
 Black/DialogBoxKeyBinding.cpp:
-	.text       start:0x00514B50 end:0x005157F0
+	.text       start:0x00514B50 end:0x00515840
 	.rdata      start:0x008DD5A4 end:0x008DD5CC
 	.data       start:0x00C692BC end:0x00C69328
 
@@ -1327,6 +1327,10 @@ Black/HandStateCreature.cpp:
 	.CRT$XCU    start:0x00A46B1C end:0x00A46B28 align:4
 	.data       start:0x00C709E8 end:0x00C70A54
 	.bss        start:0x00D94EC8 end:0x00D94ED4
+
+Black/HandStateGesture.cpp:
+	.text       start:0x005B60A0 end:0x005B60D0
+	.CRT$XCU    start:0x00A46B28 end:0x00A46B2C align:4
 
 Black/HandStateGrain.cpp:
 	.text       start:0x005B60D0 end:0x005B6FB0
@@ -1964,6 +1968,10 @@ Black/MPFEPlayerDetails.cpp:
 	.data       start:0x00C7E6FC end:0x00C7E760
 	.bss        start:0x00DC2070 end:0x00DC2074
 
+Black/MPFEStartGameData.cpp:
+	.text       start:0x00636540 end:0x00637060
+	.CRT$XCU    start:0x00A47084 end:0x00A47090 align:4
+
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x00637060 end:0x00637760
 	.rdata      start:0x0095E7DC end:0x0095E814
@@ -2162,6 +2170,10 @@ Black/PlayerProfile.cpp:
 	.CRT$XCU    start:0x00A47288 end:0x00A47298 align:4
 	.data       start:0x00C82AB8 end:0x00C82B40
 	.bss        start:0x00DCCEE0 end:0x00DCD714
+
+Black/Playtime.cpp:
+	.text       start:0x00670900 end:0x00670930
+	.CRT$XCU    start:0x00A47298 end:0x00A4729C align:4
 
 Black/PlaytimeDance.cpp:
 	.text       start:0x00670930 end:0x00671410
@@ -2436,6 +2448,10 @@ Black/ScriptCamera.cpp:
 	.CRT$XCU    start:0x00A4760C end:0x00A47614 align:4
 	.data       start:0x00C8CD4C end:0x00C8CF32
 	.bss        start:0x00E16DD4 end:0x00E16DD8
+
+Black/ScriptComputerPlayer.cpp:
+	.text       start:0x006F3110 end:0x006F3C60
+	.CRT$XCU    start:0x00A47614 end:0x00A4761C align:4
 
 Black/ScriptContainer.cpp:
 	.text       start:0x006F3C60 end:0x006F5150
@@ -3246,6 +3262,10 @@ Black/WorldRoom.cpp:
 
 Black/WorldRoomCamera.cpp:
 	.text       start:0x007A4940 end:0x007A63D0
+
+Black/WorldRoomInfo.cpp:
+	.text       start:0x007A63D0 end:0x007A6400
+	.CRT$XCU    start:0x00A47C58 end:0x00A47C5C align:4
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
 	.text       start:0x007A6400 end:0x007B2060
@@ -4728,6 +4748,9 @@ GameSpy/nonport.c:
 	.text       start:0x0088FA50 end:0x0088FDB0
 	.data       start:0x00CBB56C end:0x00CBB5E4
 	.bss        start:0x0102B9D4 end:0x0102BAD8
+
+GameSpy/Peer/peerUtil.c:
+	.text       start:0x0088FDB0 end:0x0088FE90
 
 GameSpy/Peer/peerCEngine.c:
 	.text       start:0x0088FE90 end:0x008907D0

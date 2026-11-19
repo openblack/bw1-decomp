@@ -63,8 +63,20 @@ jobs:
 
     # Every address of these ranges belongs to a unit in splits.txt. The ranges stop
     # where the linker's import thunks start.
+    - name: BW1W100 .text
+      run: python tools/split-gaps.py --check -v BW1W100 -s .text --range 0x401000-0x729090
+
+    - name: BW1W110 .text
+      run: python tools/split-gaps.py --check -v BW1W110 -s .text --range 0x401000-0x79E2E0
+
     - name: BW1W120 .text
       run: python tools/split-gaps.py --check -v BW1W120 -s .text --range 0x401000-0x7AEBB0
+
+    - name: BW1W130 .text
+      run: python tools/split-gaps.py --check -v BW1W130 -s .text --range 0x401000-0x7B3BB0
+
+    - name: BW1WCI .text
+      run: python tools/split-gaps.py --check -v BW1WCI -s .text --range 0x401000-0x7C6CC0
 
     # Every configure.py unit has splits in some version.
     - name: configure.py units
