@@ -901,6 +901,18 @@
 0x00532815 jmp_run 0x00532723  # Fixed
 0x00532845 copy_run 0x00532815  # Fixed
 0x00532865 copy_run 0x00532845  # Fixed
+0x0054955B call_rel32 0x00403C49  # FrontEndSetupGame
+0x00549585 copy_run 0x0054955B  # FrontEndSetupGame
+0x00549F32 jmp_run 0x00549583  # FrontEndSetupGame
+0x0054A00B call_rel32 0x00403C49  # FrontEndSetupGame
+0x0054A451 jmp_run 0x0054A00B  # FrontEndSetupGame
+0x0054B0C8 copy_run 0x0054A451  # FrontEndSetupGame
+0x0054B5E1 copy_run 0x0054B0C8  # FrontEndSetupGame
+0x0054BB6A call_filler 0x004034F9 0xC3  # FrontEndSetupGame
+0x0054BC29 copy_run 0x0054BB6A  # FrontEndSetupGame
+0x0054BDB9 jmp_run 0x0054BC29  # FrontEndSetupGame
+0x0054CC11 jmp_run 0x0054BDB9  # FrontEndSetupGame
+0x0054CD98 jmp_run 0x0054CC11  # FrontEndSetupGame
 0x00572F83 copy_run 0x00572F23  # GameThing
 0x00572FAB call_rel32 0x00403C49  # GameThing
 0x00572FD3 jmp_run 0x00572FAB  # GameThing

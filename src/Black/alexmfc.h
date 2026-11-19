@@ -374,6 +374,8 @@ struct SetupControl
 	int GetTextSize();
 	// BW1W120 inlined BW1M119 inlined
 	int GetHalfTextSize();
+	// BW1W120 inlined BW1M119 inlined
+	int GetID() { return id; }
 };
 
 enum MSGBOXSTYLE
@@ -715,6 +717,12 @@ struct SetupList : public SetupControl
 	void InsertString(int index, const char16_t* text);
 	// BW1W120 0040b000 BW1M119 01312fb0
 	void SetString(int index, const char16_t* text);
+	// BW1W120 inlined BW1M119 inlined
+	void GetString(int index, char16_t* text)
+	{
+		if (index >= 0 && index < NumItems)
+			wcscpy(text, item_labels[index]);
+	}
 	// BW1W120 0040afe0 BW1M119 013d9f90
 	void SetTagData(int index, void* data);
 	// BW1W120 0040b050 BW1M119 011cfe80

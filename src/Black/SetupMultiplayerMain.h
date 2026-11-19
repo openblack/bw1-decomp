@@ -10,7 +10,10 @@
 class SetupMultiplayerMain : public DialogBoxBase
 {
 public:
-	bool           field_0x10;
+	// BW1W120 00cd1680
+	static SetupMultiplayerMain* Instance;
+
+	bool           ReloadSettings; /* 0x10 */
 	uint8_t        field_0x11[0x1f];
 	setupgamedata* CurrentData; /* 0x30 */
 	setupgamedata  Data;        /* 0x34 */
@@ -31,7 +34,7 @@ public:
 	static void __stdcall ControlCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
 
 	// BW1W120 inlined
-	SetupMultiplayerMain() { field_0x10 = false; }
+	SetupMultiplayerMain() { ReloadSettings = false; }
 
 	// BW1W120 inlined
 	~SetupMultiplayerMain() {}

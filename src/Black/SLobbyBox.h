@@ -13,6 +13,9 @@
 class GSLobbyBox : public DialogBoxBase
 {
 public:
+	// BW1W120 00d09190
+	static GSLobbyBox* Instance;
+
 	uint8_t                 field_0x10[0x10];
 	bool                    ControlsInitialised; /* 0x20 */
 	uint8_t                 field_0x21[0x253];

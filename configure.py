@@ -327,6 +327,13 @@ if config.version == "BW1W100":
     # comdlg32 import thunks only it calls.
     for _dead_function in ["_GetSaveFileNameA@4", "_GetOpenFileNameA@4"]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
+    # /OPT:ICF folded MPFEAlexDialog's global IsThereAPoint onto FrontEndSetupGame's static
+    # copy. dtk's fold can't export a global alias named after a static its unit defines, so
+    # symbols.txt names the address alias_0051BEA0 and AlexDialog's calls resolve to it here.
+    config.base_ldflags.append(
+        "/alternatename:?IsThereAPoint@@YAPAUPoint@ServerLandscapeMap@@PAV?$LHLinkedList@PAUPoint@ServerLandscapeMap@@@@HH@Z"
+        "=alias_0051BEA0"
+    )
 # LHLogR.dll's project links without /DEBUG: unlike LHAudio (but for Creature
 # Isle's, below), LHMultiplayer, LHDialog (and runblack from 1.10 on) it has no
 # debug directory in any version. Without /DEBUG, link.exe (6.0 and VS.NET 2002's
@@ -982,7 +989,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Footpath.cpp"),
             GameCodeObject(NonMatching, "Black/Forest.cpp"),
             GameCodeObject(NonMatching, "Black/frontend.cpp"),
-            GameCodeObject(NonMatching, "Black/FrontEndSetupGame.cpp"),
+            GameCodeObject(Matching, "Black/FrontEndSetupGame.cpp"),
             GameCodeObject(NonMatching, "Black/FrontEndSetupMultiplayer.cpp"),
             GameCodeObject(NonMatching, "Black/Furniture.cpp"),
             GameCodeObject(NonMatching, "Black/Game.cpp"),

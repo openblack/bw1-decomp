@@ -113,6 +113,8 @@ block_relocations:
   - source: 0x0054818E
   - source: 0x005481A3
   - source: 0x005481A8
+# SetupOnlineLandscapes::ControlCallback's map-list colour 0xff0000 reads as an address inside NewCols.
+  - source: 0x0054BF07
 # GGame::Loop's 0xffffff is an immediate, not an address in 1.30's larger image.
   - source: 0x0055040F
 # GGame::Init's RAND_SEED 0x88f89f is an immediate, not a pointer into the GameSpy SDK's code.

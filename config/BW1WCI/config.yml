@@ -51,6 +51,8 @@ block_relocations:
   - source: 0x00420492
 # GLightSheet::Draw's 0xffffff colour mask reads as an address inside NewCols.
   - source: 0x004258CD
+# SetupOnlineLandscapes::ControlCallback's map-list colour 0xff0000 reads as an address inside NewCols.
+  - source: 0x0055DAA7
 # GatheringInterface: player colour 0xafefff and special user IDs 9999998..10000015 are immediates.
   - source: 0x00588C79
   - source: 0x00588C81

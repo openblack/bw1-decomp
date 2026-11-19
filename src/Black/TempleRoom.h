@@ -87,6 +87,10 @@ struct InnerRoom
 	void DrawFloor(int alpha);
 	// BW1W120 00795310 BW1M119 01544630
 	void Draw(bool reflection, SubMeshDrawData* sub_mesh_data, int num_sub_meshes);
+	// BW1W120 00794e30 BW1M119 015450c0
+	static void SetDoorMatrices();
+	// BW1W120 00794f70 BW1M119 01544f90
+	static void FastCloseDoor();
 };
 
 class TempleRoom
@@ -168,6 +172,12 @@ public:
 	static void EndText(wchar_t* text);
 	// BW1W120 0079a640 BW1M119 01545710
 	static void AddNewLine(wchar_t* text);
+	// BW1W120 0079a680 BW1M119 015456b0
+	static void InitCommon();
+	// BW1W120 0079a8d0 BW1M119 0154adc0
+	static void AddRawText(wchar_t* text, wchar_t* raw_text);
+	// BW1W120 0079c770 BW1M119 015489f0
+	static void SeeIfAnyCuttingUpOfTheTextNeedsDoing(wchar_t* text, wchar_t* new_text);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 007b3120 BW1MCI119 0157c280
 	static void AddText(wchar_t* text, unsigned long help_text, unsigned long param_3, Creature* creature = NULL);
