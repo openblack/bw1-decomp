@@ -102,6 +102,7 @@ Black/AnimalLeopard.cpp:
 Black/AnimalLion.cpp:
 	.text       start:0x0041FD00 end:0x00420160
 	.rdata      start:0x008C205C end:0x008C38C0
+	.rdata$r    start:0x00A278B8 end:0x00A27978
 	.CRT$XCU    start:0x00A460C4 end:0x00A460CC align:4
 	.data       start:0x00A493E4 end:0x00A49450
 	.bss        start:0x00CD5C50 end:0x00CD5C54

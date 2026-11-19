@@ -95,8 +95,10 @@ Black/AnimalLeopard.cpp:
 
 Black/AnimalLion.cpp:
 	.text       start:0x00420AD0 end:0x00420F00
-	.rdata      start:0x008E89D4 end:0x008EA29C
+	.rdata      start:0x008E89D4 end:0x008EA300
+	.rdata$r    start:0x00A17C80 end:0x00A17D40
 	.CRT$XCU    start:0x00A360A0 end:0x00A360A4 align:4
+	.data       start:0x00A38B90 end:0x00A38BF0
 	.bss        start:0x00CC8850 end:0x00CC8854
 
 Black/AnimalPig.cpp:
