@@ -687,6 +687,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0041D4CA, call_indirect(0x008A9978)),  # AnimalCow: __imp__CoFileTimeToDosDateTime@12
     (0x0041FC6A, call_indirect(0x008A98C0)),  # AnimalLeopard: __imp__mmioOpenA@4
     (0x0042078A, call_indirect(0x008A936C)),  # AnimalReaction: __imp_?RawLogT@LHLogger@@QAEXPAD@Z
+    (0x0042165A, call_indirect(0x008A9068)),  # AnimalWolf: __imp__CreateDIBSection@4
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
     (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
@@ -1252,6 +1253,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00420495, jmp_run(0x00420475)),  # AnimalReaction
     (0x00420546, copy_run(0x00420495)),  # AnimalReaction
     (0x0042078A, call_indirect(0x008AE988)),  # AnimalReaction: __imp__GetSaveFileNameA@4
+    (0x004215F3, jmp_run(0x00421463)),  # AnimalWolf
+    (0x00421676, jmp_run(0x004215F3)),  # AnimalWolf
+    (0x004216AA, copy_run(0x00421676)),  # AnimalWolf
+    (0x00421723, copy_run(0x004216A3)),  # AnimalWolf
+    (0x00421946, copy_run(0x00421723)),  # AnimalWolf
+    (0x004219DA, jmp_run(0x00421946)),  # AnimalWolf
+    (0x00421C49, copy_run(0x00421C68)),  # AnimalWolf
+    (0x00421C78, jmp_run(0x00421C49)),  # AnimalWolf
+    (0x00421D98, jmp_run(0x00421C78)),  # AnimalWolf
+    (0x00421DDB, jmp_run(0x00421D95)),  # AnimalWolf
     (0x00426B13, jmp_run(0x00426AB7)),  # Audio
     (0x00426B3B, call_rel32(0x00403C49)),  # Audio
     (0x00426B75, jmp_run(0x00426B3B)),  # Audio

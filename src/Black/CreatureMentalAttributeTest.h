@@ -71,6 +71,14 @@ enum ATTRIBUTE_TOWN_SIZE
 	TOWN_SIZE_LAST
 };
 
+enum FOREST_SIZE
+{
+	FOREST_SIZE_SMALL,
+	FOREST_SIZE_MEDIUM,
+	FOREST_SIZE_LARGE,
+	FOREST_SIZE_LAST
+};
+
 // Yes/no attributes, named "False" and "True" by ValueName.
 enum ATTRIBUTE_BOOL
 {

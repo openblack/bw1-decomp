@@ -126,6 +126,12 @@ public:
 	static SpellWolf* Create(const MapCoords& coords, const GAnimalInfo* info);
 };
 
+#define WOLF_LAIR_FOREST_MAX_DISTANCE 1000.0f
+#define WOLF_LAIR_TIREDNESS_RECOVERY  2
+#define WOLF_LAIR_MIN_VISUAL_TIME     23.0f
+#define WOLF_LAIR_MAX_FLOCK_ALTITUDE  2.0f
+#define WOLF_LAIR_DISTANCE_UNIT       100
+
 class Wolf : public Lion
 {
 public:
@@ -167,10 +173,10 @@ public:
 	virtual uint32_t LandedAnimation();
 	// BW1W120 0041c5f0 BW1M119 01177fd0
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 00421670 BW1M119 011821b0
-	virtual char* GetDebugText();
 	// BW1W120 00421660 BW1M119 01182180
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WOLF; }
+	// BW1W120 00421670 BW1M119 011821b0
+	virtual char* GetDebugText() { return "Animal: Wolf"; }
 	// BW1W120 0041c580 BW1M119 01178050
 	virtual uint32_t StandAnimation();
 
@@ -184,9 +190,21 @@ public:
 	uint32_t FinishSittingAnimation();
 	// BW1W120 0041c5d0 BW1M119 null
 	uint32_t SitAnimation();
+	// BW1W120 00421940 BW1M119 null
+	bool32_t SeekLair();
+	// BW1W120 004219d0 BW1M119 null
+	bool32_t ExitSeekLair(uint8_t state);
+	// BW1W120 00421c60 BW1M119 null
+	bool32_t ExitHideInLair(uint8_t state);
+	// BW1W120 00421c70 BW1M119 null
+	bool32_t ExitWander(uint8_t state);
+	// BW1W120 00421c80 BW1M119 null
+	bool32_t WanderInFlock(uint8_t state);
 
 	// BW1W120 0055e590 BW1M119 0130e210
 	Wolf() {}
+	// BW1W120 inlined BW1M119 inlined
+	Wolf(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Lion(coords, info, age) {}
 
 	// Static methods
 

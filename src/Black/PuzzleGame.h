@@ -421,18 +421,20 @@ public:
 	// BW1W120 00421dd0 BW1M119 01181490
 	virtual bool32_t DecideWhatToDo();
 	// BW1W120 00421d50 BW1M119 0113bb50
-	virtual uint32_t ProcessNeeds();
+	virtual uint32_t ProcessNeeds() { return 0; }
 	// BW1W120 00421d60 BW1M119 0113bb90
-	virtual uint32_t CheckNeeds();
-	// BW1W120 00421d80 BW1M119 01181450
-	virtual char* GetDebugText();
+	virtual uint32_t CheckNeeds() { return ANIMAL_NEEDS_NONE; }
 	// BW1W120 00421d70 BW1M119 01181410
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PIECE_WOLF; }
+	// BW1W120 00421d80 BW1M119 01181450
+	virtual char* GetDebugText() { return "Animal: Wolf for Puzzle"; }
 	// BW1W120 00421d90 BW1M119 0113bbd0
-	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return false; }
 
 	// BW1W120 inlined BW1M119 0130fb10
 	PieceWolf() {}
+	// BW1W120 inlined BW1M119 inlined
+	PieceWolf(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Wolf(coords, info, age) {}
 
 	// Static methods
 

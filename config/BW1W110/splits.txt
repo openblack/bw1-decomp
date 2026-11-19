@@ -117,28 +117,29 @@ Black/AnimalSpellWolf.cpp:
 	.text       start:0x00420360 end:0x00420F00
 	.rdata      start:0x008AE8D4 end:0x008AF520
 	.CRT$XCU    start:0x009B60AC end:0x009B60B0 align:4
-	.data       start:0x009B8B98 end:0x009B8BE4
+	.data       start:0x009B8B98 end:0x009B8BD0
 
 Black/AnimalTiger.cpp:
 	.text       start:0x00420F00 end:0x00421110
 	.rdata      start:0x008AF520 end:0x008B0154
 	.CRT$XCU    start:0x009B60B0 end:0x009B60B4 align:4
-	.data       start:0x009B8BE4 end:0x009B8C18
+	.data       start:0x009B8BD0 end:0x009B8C18
 
 Black/AnimalWolf.cpp:
 	.text       start:0x00421110 end:0x00421920
 	.rdata      start:0x008B0154 end:0x008B19B8
+	.rdata$r    start:0x009976D8 end:0x009977B8
 	.CRT$XCU    start:0x009B60B4 end:0x009B60B8 align:4
-	.data       start:0x009B8C2C end:0x009B8CE8
-	.bss        start:0x00C43B64 end:0x00C44E30
+	.data       start:0x009B8C18 end:0x009B8C88
+	.bss        start:0x00C43B64 end:0x00C43B68
 
 Black/AnimatedStatic.cpp:
 	.text       start:0x00421920 end:0x00422C20
 	.rdata      start:0x008B19B8 end:0x008B2C2C
 	.rdata$r    start:0x00997818 end:0x009978F8
 	.CRT$XCU    start:0x009B60B8 end:0x009B60C0 align:4
-	.data       start:0x009B8D28 end:0x009B8D3C
-	.bss        start:0x00C44E30 end:0x00C44E34
+	.data       start:0x009B8C88 end:0x009B8D3C
+	.bss        start:0x00C43B68 end:0x00C44E34
 
 Black/Animations.cpp:
 	.text       start:0x00422C20 end:0x00423F30

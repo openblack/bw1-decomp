@@ -13,13 +13,6 @@
 // Forward Declares
 
 class LHOSFile;
-enum FOREST_SIZE
-{
-	FOREST_SIZE_SMALL,
-	FOREST_SIZE_MEDIUM,
-	FOREST_SIZE_LARGE,
-	FOREST_SIZE_LAST
-};
 
 class Base;
 class Creature;
@@ -110,6 +103,8 @@ public:
 	Tree* TryToCreateTreeAt(Tree* tree);
 	// BW1W120 0053abf0 BW1M119 010f9e00
 	Tree* GetForestCentreTree();
+	// BW1W120 0053ad00 BW1M119 010f9aa0
+	float GetDesireDistanceModifierForLair(float distance, float max_distance);
 	// BW1W120 0053adb0 BW1M119 010f9860
 	MapCoords GetNearestEdgeToPos(const MapCoords& pos);
 	// BW1W120 0053b280 BW1M119 010f8bf0
