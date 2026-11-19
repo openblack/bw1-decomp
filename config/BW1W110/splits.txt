@@ -143,22 +143,23 @@ Black/AnimatedStatic.cpp:
 
 Black/Animations.cpp:
 	.text       start:0x00422C20 end:0x00423F30
-	.rdata      start:0x008B2C2C end:0x008B2C50
+	.rdata      start:0x008B2C2C end:0x008B2C78
 
 Black/Arena.cpp:
 	.text       start:0x00423F30 end:0x00425370
-	.rdata      start:0x008B2C50 end:0x008B3F14
+	.rdata      start:0x008B2C78 end:0x008B3F14
 	.rdata$r    start:0x009978F8 end:0x009979E8
-	.CRT$XCU    start:0x009B60CC end:0x009B60D0 align:4
-	.data       start:0x009B8D8C end:0x009B8E4C
-	.bss        start:0x00C44E40 end:0x00C44F80
+	.CRT$XCU    start:0x009B60C8 end:0x009B60D0 align:4
+	.data       start:0x009B8D78 end:0x009B8DD8
+	.bss        start:0x00C44E40 end:0x00C44E48
 
 Black/Arrow.cpp:
 	.text       start:0x00425370 end:0x004256A0
 	.rdata      start:0x008B3F14 end:0x008B47B8
 	.rdata$r    start:0x00997A48 end:0x00997AD4
 	.CRT$XCU    start:0x009B60D0 end:0x009B60D4 align:4
-	.data       start:0x009B8E4C end:0x009B8EA8
+	.data       start:0x009B8DD8 end:0x009B8EA8
+	.bss        start:0x00C44E48 end:0x00C44F80
 
 Black/Artifact.cpp:
 	.text       start:0x004256A0 end:0x00426510

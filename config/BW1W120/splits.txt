@@ -151,25 +151,26 @@ Black/AnimatedStatic.cpp:
 
 Black/Animations.cpp:
 	.text       start:0x00423140 end:0x00424480
-	.rdata      start:0x008C2C2C end:0x008C2C50
+	.rdata      start:0x008C2C2C end:0x008C2C78
 	.CRT$XCU    start:0x009C6100 end:0x009C610C align:4
-	.data       start:0x009C95C0 end:0x009C960C
+	.data       start:0x009C95C0 end:0x009C95F8
 	.bss        start:0x00C55FF4 end:0x00C56000
 
 Black/Arena.cpp:
 	.text       start:0x00424480 end:0x004258F0
-	.rdata      start:0x008C2C50 end:0x008C3F14
+	.rdata      start:0x008C2C78 end:0x008C3F14
 	.rdata$r    start:0x009A79F8 end:0x009A7AE8
 	.CRT$XCU    start:0x009C610C end:0x009C6118 align:4
-	.data       start:0x009C960C end:0x009C96CC
-	.bss        start:0x00C56000 end:0x00C56140
+	.data       start:0x009C95F8 end:0x009C9658
+	.bss        start:0x00C56000 end:0x00C56008
 
 Black/Arrow.cpp:
 	.text       start:0x004258F0 end:0x00425C50
 	.rdata      start:0x008C3F14 end:0x008C47B8
 	.rdata$r    start:0x009A7AE8 end:0x009A7BD8
 	.CRT$XCU    start:0x009C6118 end:0x009C6120 align:4
-	.data       start:0x009C96CC end:0x009C9728
+	.data       start:0x009C9658 end:0x009C9728
+	.bss        start:0x00C56008 end:0x00C56140
 
 Black/Artifact.cpp:
 	.text       start:0x00425C50 end:0x00426AF0

@@ -162,7 +162,7 @@ public:
 	// BW1W120 004052a0 BW1M119 010d87d0
 	virtual float GetLife() { return 1.0f; }
 	// BW1W120 004247e0 BW1M119 013f9550
-	virtual float GetScale();
+	virtual float GetScale() { return 1.0f; }
 	// BW1W120 004247f0 BW1M119 011ce9c0
 	virtual void SetScale(float scale) {}
 	// BW1W120 0056fe60 BW1M119 0142c830

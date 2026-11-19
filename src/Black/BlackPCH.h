@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_BLACK_PCH_INCLUDED_H
 #define BW1_DECOMP_BLACK_PCH_INCLUDED_H
 
-// Base and GAbodeInfo are first declared here, in each version's order, so that cl6 emits their RTTI
-// in the image's order whatever the headers hold (docs/msvc6_pch.md).
+// Base and GAbodeInfo, and GameThingWithPos and GArena, are first declared here, in each version's
+// order, so that cl6 emits their RTTI in the image's order whatever the headers hold
+// (docs/msvc6_pch.md).
 #ifndef VERSION_BW1WCI
 #if defined(VERSION_BW1W110) || defined(VERSION_BW1W120)
 class GAbodeInfo;
@@ -11,6 +12,13 @@ class Base;
 class Base;
 class GAbodeInfo;
 #endif
+#endif
+#ifdef VERSION_BW1W110
+class GArena;
+class GameThingWithPos;
+#else
+class GameThingWithPos;
+class GArena;
 #endif
 
 // Stand-ins for inline code the original header held and these headers lack so far: a unit emits

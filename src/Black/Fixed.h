@@ -80,7 +80,7 @@ public:
 	// BW1W120 0052dee0 BW1M119 010e6bc0
 	virtual void InsertMapObjectToCellAssumeFixed(MapCell* cell);
 	// BW1W120 004252f0 BW1M119 010ad5c0
-	virtual bool32_t IsObjectFullyInMap();
+	virtual bool32_t IsObjectFullyInMap() { return IsObjectInMapCheck(); }
 
 	// Constructors
 
