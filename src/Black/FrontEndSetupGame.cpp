@@ -56,7 +56,7 @@ static bool ListDownloadFailed = false;
 
 static const char ServerMapFileHeader[] = "LiOnHeAd server_map_file";
 
-static void UpdateDownloadProgress(SetupBox* box);
+void UpdateDownloadProgress(SetupBox* box);
 
 static void OnSetupSpells(SetupBox* box, SetupControl* control);
 
@@ -500,34 +500,14 @@ static char16_t* GetDownloadingText(SetupOnlineLandscapes::OLB_STATES state)
 	return text;
 }
 
-static ServerLandscapeMap::Point* IsThereAPoint(LHLinkedList<ServerLandscapeMap::Point*>* points, int x, int y)
-{
-	LHLinkedNode<ServerLandscapeMap::Point*>* node = points->GetStart();
-	if (node != NULL)
-	{
-		do
-		{
-			if (node->payload->X == x && node->payload->Y == y)
-			{
-				return node->payload;
-			}
-			node = node->next.Get();
-		} while (node != NULL);
-	}
-	return NULL;
-}
+// In 1.00 MPFEAlexDialog has no copy of IsThereAPoint and calls this one. From 1.10 on it
+// has its own, so this one is static.
+#ifndef VERSION_BW1W100
+static
+#endif
+	ServerLandscapeMap::Point* IsThereAPoint(LHLinkedList<ServerLandscapeMap::Point*>* points, int x, int y);
 
-static void DrawCircle(uint16_t* image, int x, int y, int radius, uint16_t colour)
-{
-	for (; radius != -1; radius--)
-	{
-		for (float angle = TWO_PI; angle > 0.0f; angle -= TWO_PI / 90)
-		{
-			image[((int)((float)cos(angle) * radius + y + 0.5f) << 8) + (int)((float)sin(angle) * radius + x + 0.5f)] =
-				colour;
-		}
-	}
-}
+static void DrawCircle(uint16_t* image, int x, int y, int radius, uint16_t colour);
 
 bool SetupOnlineLandscapes::LoadThumbnail(char* path, SetupBox* box, char16_t* message)
 {
@@ -633,6 +613,35 @@ bool SetupOnlineLandscapes::LoadThumbnail(char* path, SetupBox* box, char16_t* m
 	citadels.DeleteAll();
 	towns.DeleteAll();
 	return true;
+}
+
+ServerLandscapeMap::Point* IsThereAPoint(LHLinkedList<ServerLandscapeMap::Point*>* points, int x, int y)
+{
+	LHLinkedNode<ServerLandscapeMap::Point*>* node = points->GetStart();
+	if (node != NULL)
+	{
+		do
+		{
+			if (node->payload->X == x && node->payload->Y == y)
+			{
+				return node->payload;
+			}
+			node = node->next.Get();
+		} while (node != NULL);
+	}
+	return NULL;
+}
+
+static void DrawCircle(uint16_t* image, int x, int y, int radius, uint16_t colour)
+{
+	for (; radius != -1; radius--)
+	{
+		for (float angle = TWO_PI; angle > 0.0f; angle -= TWO_PI / 90)
+		{
+			image[((int)((float)cos(angle) * radius + y + 0.5f) << 8) + (int)((float)sin(angle) * radius + x + 0.5f)] =
+				colour;
+		}
+	}
 }
 
 void SetupOnlineLandscapes::ReleaseThumbnail()
@@ -977,7 +986,7 @@ void __stdcall SetupOnlineLandscapes::ControlCallback(int message, SetupBox* box
 	}
 }
 
-static void UpdateDownloadProgress(SetupBox* box) {}
+void UpdateDownloadProgress(SetupBox* box) {}
 
 void SetupOnlineLandscapes::Show()
 {
