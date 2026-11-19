@@ -88,21 +88,22 @@ Black/AnimalDove.cpp:
 	.text       start:0x0041DCA0 end:0x0041FBE0
 	.rdata      start:0x008B563C end:0x008BC428
 	.CRT$XCU    start:0x009C60B0 end:0x009C60BC align:4
-	.data       start:0x009C9170 end:0x009C9330
+	.data       start:0x009C9170 end:0x009C9300
 	.bss        start:0x00C54D04 end:0x00C54D0C
 
 Black/AnimalLeopard.cpp:
 	.text       start:0x0041FBE0 end:0x0041FD00
 	.rdata      start:0x008BC428 end:0x008BD05C
+	.rdata$r    start:0x009A75B0 end:0x009A7638
 	.CRT$XCU    start:0x009C60BC end:0x009C60C4 align:4
-	.data       start:0x009C9330 end:0x009C9374
+	.data       start:0x009C9300 end:0x009C9364
 	.bss        start:0x00C54D0C end:0x00C54D10
 
 Black/AnimalLion.cpp:
 	.text       start:0x0041FD00 end:0x00420160
 	.rdata      start:0x008BD05C end:0x008BE8C0
 	.CRT$XCU    start:0x009C60C4 end:0x009C60CC align:4
-	.data       start:0x009C9374 end:0x009C93C8
+	.data       start:0x009C9364 end:0x009C93C8
 	.bss        start:0x00C54D10 end:0x00C54D14
 
 Black/AnimalPig.cpp:

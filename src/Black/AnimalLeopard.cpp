@@ -3,16 +3,6 @@
 #include "AnimalLion.h"
 #include "Game3DObject.h" /* For Game3DObject */
 
-bool32_t Lion::CanBeFrighteningToCreature(Creature* creature)
-{
-	return true;
-}
-
-uint32_t Leopard::GetSaveType()
-{
-	return GAME_THING_TYPE_LEOPARD;
-}
-
 Leopard* Leopard::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
 	Leopard* leopard = NEW(30) Leopard(coords, info, age);
@@ -22,9 +12,4 @@ Leopard* Leopard::Create(const MapCoords& coords, const GAnimalInfo* info, unsig
 		leopard->Game3dObject->SetHumanShadowed(true);
 	}
 	return leopard;
-}
-
-char* Leopard::GetDebugText()
-{
-	return "Animal: Leopard";
 }
