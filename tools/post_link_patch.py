@@ -688,6 +688,12 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0041FC6A, call_indirect(0x008A98C0)),  # AnimalLeopard: __imp__mmioOpenA@4
     (0x0042078A, call_indirect(0x008A936C)),  # AnimalReaction: __imp_?RawLogT@LHLogger@@QAEXPAD@Z
     (0x0042165A, call_indirect(0x008A9068)),  # AnimalWolf: __imp__CreateDIBSection@4
+    (0x004244CB, call_rel32(0x00401879)),  # Arena
+    (0x004246EA, call_indirect(0x008A9640)),  # Arena: __imp__OpenRemoteLobby_LHLobby__QAE_AW4LH_RETURN__PAVLHNetUser__PAVLHTransportInfo___Z@4
+    (0x0042495B, call_rel32(0x00401879)),  # Arena
+    (0x00424E6A, call_indirect(0x008A9978)),  # Arena: __imp__CoFileTimeToDosDateTime@12
+    (0x0042505B, call_rel32(0x00401879)),  # Arena
+    (0x0042565B, call_rel32(0x00401879)),  # Arena
     (0x00426B3B, call_rel32(0x00401879)),  # Audio
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
     (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
@@ -1263,6 +1269,37 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00421C78, jmp_run(0x00421C49)),  # AnimalWolf
     (0x00421D98, jmp_run(0x00421C78)),  # AnimalWolf
     (0x00421DDB, jmp_run(0x00421D95)),  # AnimalWolf
+    (0x004244A3, copy_run(0x00424442)),  # Arena
+    (0x004244CB, call_rel32(0x00403C49)),  # Arena
+    (0x00424529, copy_run(0x004244CB)),  # Arena
+    (0x00424541, copy_run(0x00424529)),  # Arena
+    (0x00424641, copy_run(0x00424541)),  # Arena
+    (0x004246EA, call_indirect(0x008AE03C)),  # Arena: __imp__DirectXSetupGetVersion
+    (0x004247B6, jmp_run(0x004246EA)),  # Arena
+    (0x00424863, copy_run(0x004247B6)),  # Arena
+    (0x004248C6, copy_run(0x00424863)),  # Arena
+    (0x0042495B, call_rel32(0x00403C49)),  # Arena
+    (0x00424AA1, copy_run(0x0042495B)),  # Arena
+    (0x00424B53, jmp_run(0x00424AA1)),  # Arena
+    (0x00424B73, jmp_run(0x00424B53)),  # Arena
+    (0x00424BB5, jmp_run(0x00424B73)),  # Arena
+    (0x00424C93, jmp_run(0x00424BB5)),  # Arena
+    (0x00424CD5, jmp_run(0x00424C93)),  # Arena
+    (0x00424D81, copy_run(0x00424CD5)),  # Arena
+    (0x00424E6A, call_indirect(0x008AE01C)),  # Arena: __imp__TrackMouseEvent@4
+    (0x00425038, jmp_run(0x00424E6A)),  # Arena
+    (0x0042505B, call_rel32(0x00403C49)),  # Arena
+    (0x00425095, jmp_run(0x0042505B)),  # Arena
+    (0x004250C2, copy_run(0x00425095)),  # Arena
+    (0x004251C9, copy_run(0x004250C2)),  # Arena
+    (0x004252C3, copy_run(0x004251C9)),  # Arena
+    (0x00425343, copy_run(0x004252C3)),  # Arena
+    (0x00425515, jmp_run(0x00425343)),  # Arena
+    (0x00425532, jmp_run(0x00425515)),  # Arena
+    (0x004255F7, jmp_run(0x00425532)),  # Arena
+    (0x0042565B, call_rel32(0x00403C49)),  # Arena
+    (0x004256D5, jmp_run(0x0042565B)),  # Arena
+    (0x004258B8, jmp_run(0x004256D5)),  # Arena
     (0x00426B13, jmp_run(0x00426AB7)),  # Audio
     (0x00426B3B, call_rel32(0x00403C49)),  # Audio
     (0x00426B75, jmp_run(0x00426B3B)),  # Audio

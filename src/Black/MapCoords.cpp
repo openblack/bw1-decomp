@@ -1709,7 +1709,7 @@ bool32_t MapCoords::GetClearAreaForActivity(Creature* creature, MapCoords* resul
 	return false;
 }
 
-static bool32_t UseFightCheckForActivity = false;
+bool32_t UseFightCheckForActivity = false;
 
 // Inliner IL size: 66
 // BW1W120 inlined BW1M119 inlined
