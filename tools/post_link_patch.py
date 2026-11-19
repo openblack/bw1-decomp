@@ -691,6 +691,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0041E7EA, call_indirect(0x008A9004)),  # AnimalDove: __imp__RegCloseKey@4
     (0x0041FC6A, call_indirect(0x008A98C0)),  # AnimalLeopard: __imp__mmioOpenA@4
     (0x0042078A, call_indirect(0x008A936C)),  # AnimalReaction: __imp_?RawLogT@LHLogger@@QAEXPAD@Z
+    (0x0042141A, call_indirect(0x008A9114)),  # AnimalTiger: __imp__ImmReleaseContext@4
     (0x0042165A, call_indirect(0x008A9068)),  # AnimalWolf: __imp__CreateDIBSection@4
     (0x004244CB, call_rel32(0x00401879)),  # Arena
     (0x004246EA, call_indirect(0x008A9640)),  # Arena: __imp__OpenRemoteLobby_LHLobby__QAE_AW4LH_RETURN__PAVLHNetUser__PAVLHTransportInfo___Z@4
@@ -1318,6 +1319,9 @@ BW1W130_SAFEDISC_CALLS = (
     (0x00420495, jmp_run(0x00420475)),  # AnimalReaction
     (0x00420546, copy_run(0x00420495)),  # AnimalReaction
     (0x0042078A, call_indirect(0x008AE988)),  # AnimalReaction: __imp__GetSaveFileNameA@4
+    (0x004213B3, jmp_run(0x00421355)),  # AnimalTiger
+    (0x00421436, jmp_run(0x004213B3)),  # AnimalTiger
+    (0x0042146A, copy_run(0x00421436)),  # AnimalTiger
     (0x004215F3, jmp_run(0x00421463)),  # AnimalWolf
     (0x00421676, jmp_run(0x004215F3)),  # AnimalWolf
     (0x004216AA, copy_run(0x00421676)),  # AnimalWolf
