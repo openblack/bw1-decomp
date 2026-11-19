@@ -100,7 +100,8 @@ void GestureSystem::fn_0057A9C0(LHRegion* rect, long start, long end)
 			{
 				long x0 = (long)lastX;
 				long y0 = (long)lastY;
-				LHSys::GetDraw().Line(x0, y0, (long)screenX, (long)screenY, LHColor(0x9b, 0x9b, 0x9b), 1);
+				LHSys::GetDraw().Line(x0, y0, (long)screenX, (long)screenY, LHColor(0x9b, 0x9b, 0x9b), 1,
+				                      LHSys::GetScreen().backAddress, LHSys::GetScreen().backPixelPitch);
 				LHSys::GetDraw().Box16(x0 - 1, y0 - 1, x0 + 1, y0 + 1, LHPixel16(LHColor(0x00, 0x00, 0x00)), 1);
 				LHSys::GetDraw().Pixel(x0, y0, LHColor(0xff, 0xf4, 0xff), 1);
 			}
@@ -142,7 +143,8 @@ void GestureSystem::fn_0057B0E0(LHRegion* rect, GestureSystemData* data)
 		{
 			long x0 = (long)lastX;
 			long y0 = (long)lastY;
-			LHSys::GetDraw().Line(x0, y0, (long)x, (long)y, LHColor(0x9b, 0x9b, 0x9b), 1);
+			LHSys::GetDraw().Line(x0, y0, (long)x, (long)y, LHColor(0x9b, 0x9b, 0x9b), 1,
+			                      LHSys::GetScreen().backAddress, LHSys::GetScreen().backPixelPitch);
 			LHColor black(0x00, 0x00, 0x00);
 			if (LHSys::GetScreen().depth == 16)
 			{
@@ -217,7 +219,8 @@ void GestureSystem::fn_0057B4B0(LHRegion* rect)
 			{
 				long x0 = (long)lastX;
 				long y0 = (long)lastY;
-				LHSys::GetDraw().Line(x0, y0, (long)screenX, (long)screenY, LHColor(0x9b, 0x9b, 0x9b), 1);
+				LHSys::GetDraw().Line(x0, y0, (long)screenX, (long)screenY, LHColor(0x9b, 0x9b, 0x9b), 1,
+				                      LHSys::GetScreen().backAddress, LHSys::GetScreen().backPixelPitch);
 				LHSys::GetDraw().Box16(x0 - 1, y0 - 1, x0 + 1, y0 + 1, LHPixel16(LHColor(0x00, 0x00, 0x00)), 1);
 				LHSys::GetDraw().Pixel(x0, y0, LHColor(0xff, 0xf4, 0xff), 1);
 			}

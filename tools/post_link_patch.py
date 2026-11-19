@@ -707,6 +707,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
     (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
     (0x004282AB, call_rel32(0x00401879)),  # Audio
+    (0x00428C5A, call_indirect(0x008A991C)),  # AudioAnalyse: __imp__ioctlsocket@4
     (0x0043641B, call_rel32(0x00401879)),  # Base
     (0x0043681B, call_rel32(0x00401879)),  # Base
     (0x0043686B, call_rel32(0x00401879)),  # Base
@@ -1394,6 +1395,11 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004287B5, jmp_run(0x00428731)),  # Audio
     (0x004287F2, jmp_run(0x004287B5)),  # Audio
     (0x00428812, jmp_run(0x004287F2)),  # Audio
+    (0x00428A77, jmp_run(0x00428812)),  # AudioAnalyse
+    (0x00428AE2, copy_run(0x00428A77)),  # AudioAnalyse
+    (0x00428C5A, call_indirect(0x008AE380)),  # AudioAnalyse
+    (0x00428D41, copy_run(0x00428C5A)),  # AudioAnalyse
+    (0x00428EE2, copy_run(0x00428D41)),  # AudioAnalyse
     (0x0043641B, call_rel32(0x00403C49)),  # Base
     (0x00436443, copy_run(0x0043641B)),  # Base
     (0x004366E5, copy_run(0x00436443)),  # Base

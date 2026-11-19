@@ -847,7 +847,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ArrowInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Artifact.cpp"),
             GameCodeObject(Matching, "Black/Audio.cpp"),
-            GameCodeObject(NonMatching, "Black/AudioAnalyse.cpp", pch=PCH_EXCEPT_NO_STRING),
+            GameCodeObject(Matching, "Black/AudioAnalyse.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/AudioAtmos.cpp"),
             GameCodeObject(NonMatching, "Black/AudioMusicThing.cpp"),
             GameCodeObject(NonMatching, "Black/audiotag.cpp"),

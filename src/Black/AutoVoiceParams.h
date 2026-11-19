@@ -25,50 +25,49 @@ struct VoiceKey
 };
 static_assert(sizeof(VoiceKey) == 0x10, "Data type is of wrong size");
 
+#define VOICE_BAND_COUNT                   3
+#define AUTO_VOICE_SECONDS_PER_MILLISECOND 0.001f
+#define AUTO_VOICE_SPEED_SCALE             0.18f
+
+struct VoiceBand
+{
+	float LowFrequency;  /* 0x0 */
+	float HighFrequency; /* 0x4 */
+	float Weight;        /* 0x8 */
+};
+
 struct AutoVoiceParams
 {
-	float field_0x0;
-	float field_0x4;
-	float field_0x8;
-	float field_0xc;
-	float field_0x10;
-	float field_0x14;
-	float field_0x18;
-	float field_0x1c;
-	float field_0x20;
-	float field_0x24;
-	float field_0x28;
-	float field_0x2c;
-	float field_0x30;
-	int   field_0x34;
-	int   field_0x38;
-	int   field_0x3c;
-	float field_0x40;
-	float field_0x44;
-	float field_0x48;
-	float field_0x4c;
+	float     TimeOffset;                   /* 0x0 */
+	float     Threshold;                    /* 0x4 */
+	float     Gain;                         /* 0x8 */
+	float     Speed;                        /* 0xc */
+	VoiceBand Bands[VOICE_BAND_COUNT];      /* 0x10 */
+	int       WeightSlot[VOICE_BAND_COUNT]; /* 0x34 */
+	float     Energy[VOICE_BAND_COUNT];     /* 0x40 */
+	float     Total;                        /* 0x4c */
 
 	// Constructors
 
 	// BW1W120 inlined BW1M119 01352c10
 	AutoVoiceParams()
 	{
-		field_0x4 = 0.05f;
-		field_0x0 = 0.0f;
-		field_0x8 = 2.5f;
-		field_0xc = 40.0f;
-		field_0x10 = 200.0f;
-		field_0x14 = 400.0f;
-		field_0x18 = 0.85f;
-		field_0x1c = 400.0f;
-		field_0x20 = 700.0f;
-		field_0x24 = 1.1f;
-		field_0x28 = 700.0f;
-		field_0x2c = 10000.0f;
-		field_0x30 = 10.0f;
-		field_0x34 = 0;
-		field_0x38 = 1;
-		field_0x3c = 2;
+		Threshold = 0.05f;
+		TimeOffset = 0.0f;
+		Gain = 2.5f;
+		Speed = 40.0f;
+		Bands[0].LowFrequency = 200.0f;
+		Bands[0].HighFrequency = 400.0f;
+		Bands[0].Weight = 0.85f;
+		Bands[1].LowFrequency = 400.0f;
+		Bands[1].HighFrequency = 700.0f;
+		Bands[1].Weight = 1.1f;
+		Bands[2].LowFrequency = 700.0f;
+		Bands[2].HighFrequency = 10000.0f;
+		Bands[2].Weight = 10.0f;
+		WeightSlot[0] = 0;
+		WeightSlot[1] = 1;
+		WeightSlot[2] = 2;
 	}
 
 #ifdef VERSION_BW1WCI
@@ -79,7 +78,7 @@ struct AutoVoiceParams
 	// Non-virtual methods
 
 	// BW1W120 00428850 BW1M119 011855e0
-	void CalcKey(VoiceKey* key, float time, float param_3, short* samples, int sample_count, float sample_rate,
+	void CalcKey(VoiceKey* key, float delta_time, float time, short* samples, int sample_count, float sample_rate,
 	             float* buffer, int buffer_size);
 };
 static_assert(sizeof(AutoVoiceParams) == 0x50, "Data type is of wrong size");
