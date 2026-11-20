@@ -14,21 +14,142 @@ block_relocations:
 # SetupBox::FindControl and DrawAll use the 0x85b680 colour, an address inside LH3DPrimitive::CheckPixelCollide.
   - source: 0x00408133
   - source: 0x004087FD
+# SetupBox::DrawAll's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x00408642
+  - source: 0x00408672
+  - source: 0x00408693
+  - source: 0x0040876C
+# SetupEdit::SetupEdit's 0x85b680 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0040C26D
+  - source: 0x0040C2FE
+# SetupEdit::Draw's 0x85b680 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0040CD4B
+# SetupHLineGraph::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0040DDA2
+  - source: 0x0040DEB6
+# SetupPicture::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0040FDB4
+  - source: 0x00410540
 # SetupColourPicker's grey colour 0x808080 is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x00410B14
+# SetupThing::DrawLine's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x004125EC
+# SetupThing::DrawBox's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x004129EC
+# SetupThing::DrawQuad's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x00412F26
+  - source: 0x00412F2C
+  - source: 0x00412F32
+  - source: 0x00412F38
+  - source: 0x00412F62
+  - source: 0x00412F78
+  - source: 0x00412F8E
+  - source: 0x00412FAC
+# SetupThing::DrawTab's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0041354C
+  - source: 0x0041359C
+  - source: 0x004135D2
+  - source: 0x0041386A
+  - source: 0x00413881
+# SetupThing::DrawBevBox's 0xffff00 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00413E4F
 # SpellDove::SetColor's 0xffffff colour mask is an immediate, not a code pointer.
   - source: 0x0041F662
+# GLightSheet::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0042465D
+# CameraModeNew3::Initialise's 0x808080 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00457011
+# CameraModeNew3::TriconDraw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x004577BC
+# CitadelHeart::DrawCreaturePen's 0xc18119 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x004674D4
+  - source: 0x0046761A
+# CitadelHeart::DrawBeam's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x004677FB
+# CitadelHeart::DrawDestruction's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00467B48
+  - source: 0x00467B5E
+# LH3DCreature::AddEvilGoodSparkles's 0xff9090, 0xff90ff and 0xffff90 are immediates, not addresses in 1.30's larger image.
+  - source: 0x004838C7
+  - source: 0x004838DC
+  - source: 0x004838EA
+# MixWithSnowColour's 0xff0000 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x004EF555
+  - source: 0x004EF55E
+  - source: 0x004EF566
+  - source: 0x004EF5A5
+# DrawStatBar's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00519CC4
+# Scaffold::DrawInHand's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0051B7C8
+# OneOffSpellSeed::DrawOutOfMap's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0051BF40
+# OneOffSpellSeed::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0051C168
+# SpellSeedGraphic::DrawSpellGraphic's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0051CEFB
+  - source: 0x0051D0DD
+  - source: 0x0051D11B
+  - source: 0x0051D20F
+# Villager::DrawVillagerInfo's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0051E9D0
+# SpellWolf::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0051F860
+# Workshop::DrawScaffold's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0051FCBD
+# TattooEditor::ControlCallback's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00546B41
+  - source: 0x00546B66
+  - source: 0x00546B99
+  - source: 0x00546B9E
+# SkipBox::ControlCallback's 0x800000 and 0x1000000 are immediates, not addresses in 1.30's larger image.
+  - source: 0x005477AD
+  - source: 0x005477BB
+  - source: 0x005477C9
+  - source: 0x005477E8
+  - source: 0x005477F4
+# SkirmishGameBox::Callback's 0xe0e0e0 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00548189
+  - source: 0x0054818E
+  - source: 0x005481A3
+  - source: 0x005481A8
+# GGame::Loop's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0055040F
 # GGame::Init's RAND_SEED 0x88f89f is an immediate, not a pointer into the GameSpy SDK's code.
   - source: 0x00552850
+# GatheringBox::UpdateMP3's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x005743B9
+  - source: 0x005743C1
+  - source: 0x00574401
 # GatheringInterface: player colour 0xafefff and special user IDs 9999998..10000015 are immediates.
   - source: 0x005774E9
   - source: 0x005774F1
   - source: 0x0057759F
   - source: 0x00577968
+# GBPlayer::Init's 0x7f8000 and 0xff0000 are immediates, not addresses in 1.30's larger image.
+  - source: 0x00577619
+  - source: 0x00577640
+  - source: 0x0057765B
+# GBCategory::Init's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x005776EE
+# GatheringBox::MakeFriends's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x00578F5B
 # Bubble::Draw's 0xffffff colour mask reads as an address inside NewCols, and Bubble::UpdateAndDraw's 0x7f7f7f
 # mask as one inside LHDraw::ScaledSprite16.
   - source: 0x00579E04
   - source: 0x0057A721
+# HelpDudeTrail::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x005BC89B
+# HelpDude::Update1's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x005C1FB8
+  - source: 0x005C1FC1
+  - source: 0x005C2005
+  - source: 0x005C200B
+  - source: 0x005C2021
+# HelpDude::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x005C3E5E
+  - source: 0x005C3F80
+  - source: 0x005C41EC
 # HelpDude::Draw's evil smoke tint 0x7F1F1F is an immediate, not a pointer into LHDraw::ScaledSprite24.
   - source: 0x005C41F6
 
@@ -64,6 +185,11 @@ block_relocations:
   - source: 0x0062E842
   - source: 0x0062E859
   - source: 0x0062E85E
+# MPFEChooseConnection::ControlCallback's 0xe0e0e0 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0062F42D
+  - source: 0x0062F432
+  - source: 0x0062F449
+  - source: 0x0062F44E
 # MPFEFindGame::ControlCallback pushes the label colour 0xe0e0e0, not a pointer.
   - source: 0x00633700
   - source: 0x00633707
@@ -76,6 +202,8 @@ block_relocations:
   - source: 0x00634B88
 # redbook_play's MCI_PLAY_PARMS::dwTo value 5100000 is an immediate, not a code pointer.
   - source: 0x006378AE
+# start_system's 0xc65d40 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00647939
 # start_system's object heap size 0xc00000 is an immediate, not a pointer into AttributeAbodeType::ValueNames.
   - source: 0x00647A47
 # The 0x00FF0000 colour masks in PSysDraw.cpp's RenderParticleMist, Particle3DSprite and RenderParticleGJMesh::DrawAt
@@ -88,21 +216,147 @@ block_relocations:
   - source: 0x00680F6F
   - source: 0x00681187
   - source: 0x006811A1
+# CreateRule_GameObjectRef::ModifyAtomCollection's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A282C
+# UR_FireWorkSimple::ModifyAtomCore's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A4414
+# UR_HealSpellChakra::ModifySubCollection's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A5816
+# LightningForkFlicker::ModifyAtomCollection's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A59B6
+# SetAtomAlpha::ModifyAtomCore's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A70B8
+# UR_SphereSurfaceTracer::ModifyAtomCore's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A7DFE
+# UR_VapourEndEffect::ModifyAtomCore's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A86ED
+# UR_Trail::UpdateTrail's 0xff0000 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x006A8FC4
+  - source: 0x006A918A
+  - source: 0x006A92A8
+  - source: 0x006A92E8
+# AppearanceRuleFadeOut::ModifyAtomCore's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A950C
+# AR_FadeAlpha::ModifyAtomCore's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A958F
+  - source: 0x006A95CB
+# AR_FadeAlphaWithHeightAboveLandscape::ModifyAtomCore's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006A97B4
+# ER_GlintsOnTarget::ModifySubCollection's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006AA0BC
+# ER_BurstFromParentAtom::ModifyAtomCollection's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006AA3B4
+# AR_FadeOutOnceConditionTrue::ModifyAtomCore's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x006AC6F1
 # ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
   - source: 0x0070E9D2
   - source: 0x0070ED2D
 # SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
   - source: 0x007163B3
   - source: 0x007163B9
+# Tree::Draw's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0074FE67
+  - source: 0x0074FE7B
+# Tree::DrawOutOfMap's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00750117
+  - source: 0x0075012B
 # VillagerName::Add's white 0xffffff and colour blend terms 0xff0000 and 0x7f8000 are immediates, not code pointers.
   - source: 0x00767880
   - source: 0x0076788B
   - source: 0x007678B4
+# WorshipTotem::TChargingData::Draw's 0xff0000 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x00785C05
+  - source: 0x00785C2A
+# WorldRoom::DrawCitadel's 0xff0000 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x007A28FF
+  - source: 0x007A292B
+# WorldRoom::DrawCreature's 0xff0000 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x007A2B88
+  - source: 0x007A2BB4
+# WorldRoom::Draw's 0xffff00 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007A3339
+# LH3DP3::GetColorAndSpecular's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x007A8F59
+  - source: 0x007A8F6C
+  - source: 0x007A8F8A
+  - source: 0x007A8FA3
+# LH3DP3::GetColorAndSpecular's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x007A91F9
+  - source: 0x007A920C
+  - source: 0x007A922A
+  - source: 0x007A9243
+# strncpy's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007CE175
+# strlen's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007CF654
+# memcmp's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007CFA8A
+  - source: 0x007CFA90
+# strcat's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007DA0E0
+  - source: 0x007DA14A
 # WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
   - source: 0x007E0BD7
   - source: 0x007E0C1D
   - source: 0x007E1B85
   - source: 0x007E2EE9
+# LHKeyboard::ProcessKeyboard's 0x1000000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007E1C3D
+# LHScreen::ChangeMode's 0x1000000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007E30CB
+# LHScreen::Clear's 0x1000400 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007E3403
+# LHScreen::LHFlip's 0x1000000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007E36F1
+# LHScreen::BlitToMSWindow's 0x1000000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007E3791
+# LHSurface::Clear's 0x1000400 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007EB652
+# LHSurface::CopySurface's 0x1000000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x007EB9E8
+  - source: 0x007EBA15
+# LH3DIsland::GetColorAndSpecular's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00806F7F
+  - source: 0x00806F87
+  - source: 0x00806FC7
+  - source: 0x00806FF5
+  - source: 0x00807001
+  - source: 0x00807045
+  - source: 0x0080706F
+  - source: 0x00807077
+  - source: 0x008070F7
+  - source: 0x008070FF
+  - source: 0x00807119
+  - source: 0x00807173
+  - source: 0x00807179
+  - source: 0x008071BF
+  - source: 0x008071E3
+  - source: 0x008071EA
+# LH3DIsland::GetColorAndSpecular's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x008073A3
+  - source: 0x008073C3
+  - source: 0x00807408
+  - source: 0x00807433
+  - source: 0x0080743A
+  - source: 0x00807464
+  - source: 0x008074A7
+  - source: 0x008074AF
+  - source: 0x008074E0
+  - source: 0x00807527
+  - source: 0x0080752F
+  - source: 0x0080756F
+  - source: 0x008075A1
+  - source: 0x008075A8
+  - source: 0x008075D9
+  - source: 0x00807611
+  - source: 0x00807619
+# LH3DLODData::DrawLOD's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0080B023
+  - source: 0x0080B037
+# LH3DMesh::Create's 0xfc8000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0080B788
+# MultiplyColor's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0080EF39
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x008107E2
 # LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
@@ -130,6 +384,71 @@ block_relocations:
   - source: 0x0081D786
   - source: 0x0081D7A1
   - source: 0x0081D93D
+# LH3DTech::Intersect's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x008230CD
+  - source: 0x008230D8
+  - source: 0x0082312F
+  - source: 0x00823139
+  - source: 0x0082313F
+  - source: 0x0082316B
+  - source: 0x00823176
+  - source: 0x008231C3
+  - source: 0x008231CD
+  - source: 0x008231DB
+# LH3DInBuild::Draw's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00825CDF
+  - source: 0x00825CFF
+# LH3DTools::ConvertLoadOnDiscIntoCT's 0x1000000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00827A3F
+# DrawLightLikeHand's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00827DB0
+  - source: 0x00827DBA
+  - source: 0x00827E39
+  - source: 0x00827E41
+  - source: 0x00827E7D
+  - source: 0x00827EA7
+  - source: 0x00827EEB
+# EclairagePublic::DrawAllFinal's 0xf38421 is an immediate, not an address in 1.30's larger image.
+  - source: 0x008287AE
+  - source: 0x008287D0
+# SmokyStuff::Process's 0x808080 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x008291A2
+  - source: 0x008291B9
+# RootsPile::DrawAll's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082A52D
+# InfluenceCircle::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082C0D5
+# InfluenceCircle::HideContact's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082C305
+  - source: 0x0082C310
+  - source: 0x0082C31E
+  - source: 0x0082C371
+  - source: 0x0082C37A
+  - source: 0x0082C381
+# Eureka::Draw's 0xffff00 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x0082CDF7
+  - source: 0x0082D092
+# CheveauxDeFeu::CheveauxDeFeu's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082D30F
+# CheveauxDeFeu::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082D5E5
+# EvilOrAngel::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082DBBA
+# DansLesNuages::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082DE51
+# GWater::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082F642
+# SaveTextureCitadel's 0x1000000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082FC63
+# LoadTextureCitadel's 0x1000000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0082FDAE
+# LH3DRender::DrawTriangleFastBlending's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x00834F6E
+# RainCell::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x008391BF
+# LH3DAtmos::Render3D's 0x7f7f7f is an immediate, not an address in 1.30's larger image.
+  - source: 0x0083B428
+  - source: 0x0083B42E
 # LH3DTexture's DDBLT_WAIT (0x1000000) Blt flags are immediates; 1.30's larger image reads them as pointers.
   - source: 0x0083D252
   - source: 0x0083D350
@@ -144,10 +463,112 @@ block_relocations:
   - source: 0x0083DFD8
 # LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
   - source: 0x0083E8D5
+# LightSheet::DoTheDrawing's 0xfefefe, 0xff0000 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x00843D4F
+  - source: 0x00843D72
+  - source: 0x00843D88
+  - source: 0x00843F8A
+  - source: 0x00843FA6
+  - source: 0x00843FE6
+# LH3DPrimitive::DrawLit's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0085100A
+  - source: 0x008510E1
+# LH3DPrimitive::DrawComplex's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00851735
+  - source: 0x00851822
+# LH3DPrimitive::DrawComplexFroz's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x00851FC0
+# LH3DPrimitive::DrawComplexEnvMapMT's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0085275E
+# LH3DPrimitive::DrawComplexRefMapMT's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00852EF8
+  - source: 0x00852FED
+# LH3DPrimitive::DrawVolLight's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00853C4F
+  - source: 0x00853C5B
+# LH3DPrimitive::DrawVolLightGJ's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00854C3A
+  - source: 0x00854C4E
+  - source: 0x00854FA1
+  - source: 0x00854FAA
+# LH3DPrimitive::DrawSnow's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00856A41
+  - source: 0x00856A50
+  - source: 0x00856A8A
+  - source: 0x00856B15
+  - source: 0x0085756A
+  - source: 0x008578C1
+# LH3DPrimitive::DrawEnvMapMT's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00858144
+  - source: 0x00858158
+  - source: 0x008585EF
+  - source: 0x00858603
+# LH3DPrimitive::DrawEnvMapST's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00859303
+  - source: 0x00859317
+# LH3DPrimitive::DrawRefMapMT's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00859964
+  - source: 0x0085997C
+  - source: 0x00859ED6
+  - source: 0x00859EEA
+# LH3DPrimitive::DrawLightMap's 0xff0000 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x0085CDCC
+  - source: 0x0085CDE6
+  - source: 0x0085CE28
+  - source: 0x0085CE79
+  - source: 0x0085CE81
+  - source: 0x0085CEC3
+  - source: 0x0085CF11
+# LH3DPrimitive::DrawCutByPlane's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0085DDBB
+  - source: 0x0085DED7
+  - source: 0x0085E138
+  - source: 0x0085E26F
+# LH3DPrimitive::DrawWithVerticalTranslation's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0085E711
+  - source: 0x0085E80D
+  - source: 0x0085E9C0
+  - source: 0x0085EAB7
+# LH3DPrimitive::DrawSnowWithVerticalTranslation's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0085EFBF
+  - source: 0x0085F325
+  - source: 0x0085F3F9
+# LH3DPrimitive::DrawLitUnclipped's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0085FD0D
+  - source: 0x0085FDF9
+  - source: 0x0085FFF0
+  - source: 0x008600CC
+# LH3DPrimitive::DrawInBuild's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00861AC2
+  - source: 0x00861AD6
+  - source: 0x00861D2F
+  - source: 0x00861D43
+# LH3DPrimitive::DrawSpecialLight's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x008621D6
+  - source: 0x00862402
 # The 0x00FF0000 channel masks in TextureRef::DrawCutAroundIntersectionPoint read as addresses inside NewCols.
   - source: 0x0086C35E
   - source: 0x0086C364
   - source: 0x0086C3A6
+# LandBlock::Draw's 0xff0000 and 0xffffff are immediates, not addresses in 1.30's larger image.
+  - source: 0x00879D43
+  - source: 0x00879F30
+  - source: 0x00879F44
+  - source: 0x0087A21D
+  - source: 0x0087A885
+  - source: 0x0087AAF1
+  - source: 0x0087AB05
+  - source: 0x0087AC01
+  - source: 0x0087AC15
+# LH3DWater::DrawSea's 0xffffff is an immediate, not an address in 1.30's larger image.
+  - source: 0x0087EACE
+# LH3DPolygonIsland::LevelGroup::GenerateCountryMap's 0x1010101 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00881B97
+# LH3DEye::Draw's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x00888B88
+  - source: 0x00888B91
+  - source: 0x00888F0B
+  - source: 0x00888F1F
 # libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x008A3D38
 # libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in 1.30's larger image both read as pointers.
@@ -256,7 +677,6 @@ block_relocations:
   - source: 0x008706C8
   - source: 0x0087084B
   - source: 0x00871378
-
 add_relocations:
 # GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.
   - source: 0x00405AFC
