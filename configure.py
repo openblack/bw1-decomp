@@ -415,15 +415,16 @@ config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
 # producing the final exe that is checked against build.sha1.
-_linked = f"build/{config.version}/runblack-linked.exe"
-_patched = f"build/{config.version}/runblack.exe"
+_out = config.out_path().as_posix()
+_linked = f"{_out}/runblack-linked.exe"
+_patched = f"{_out}/runblack.exe"
 _modules = ["LHAudio", "LHLog", "LHMultiplayer", "LHDialog"]
-_module_linked = [f"build/{config.version}/{m}-linked.dll" for m in _modules]
-_module_patched = [f"build/{config.version}/{m}.dll" for m in _modules]
+_module_linked = [f"{_out}/{m}-linked.dll" for m in _modules]
+_module_patched = [f"{_out}/{m}.dll" for m in _modules]
 # Pre-split normalization: strip SafeDisc/decryptor vandalism from the source
 # exe so dtk/lld see pristine linker output (see docs/transformations.md).
 _decrypted = f"orig/{config.version}/" + {"BW1WCI": "CreatureIsle-decrypted.exe"}.get(config.version, "runblack-decrypted.exe")
-_preprocessed = f"build/{config.version}/runblack-preprocessed.exe"
+_preprocessed = f"{_out}/runblack-preprocessed.exe"
 config.custom_build_rules = [
     {
         "name": "predtk",
@@ -449,7 +450,7 @@ config.custom_build_rules = [
 # post_link_patch.py reads every version's padding table (config/<version>/padding.txt).
 _padding_tables = sorted(p.as_posix() for p in Path("config").glob("*/padding.txt"))
 _msvc_dir = f"{(config.compilers_path or Path('build/compilers')).as_posix()}/{config.linker_version}"
-_patch_stamp = f"build/{config.version}/patched_compiler_headers"
+_patch_stamp = f"{_out}/patched_compiler_headers"
 config.custom_build_steps = {
     "pre-split": [
         {
@@ -469,7 +470,7 @@ config.custom_build_steps = {
         # IJG's install.doc: "copy jconfig.vc jconfig.h" for Visual C++. The copy goes
         # into the build include directory so src/jpeg stays the unmodified release.
         {
-            "outputs": f"build/{config.version}/include/jconfig.h",
+            "outputs": f"{_out}/include/jconfig.h",
             "rule": "copy",
             "inputs": "src/jpeg/jconfig.vc",
         },
@@ -500,7 +501,7 @@ includes_project = [
     "/I", "include",
     "/I", "orig/directx7.0/include",
     "/I", "src",
-    f"/I", f"build/{config.version}/include",
+    f"/I", f"{_out}/include",
 ]
 cflags_base = [
     "/nologo",
