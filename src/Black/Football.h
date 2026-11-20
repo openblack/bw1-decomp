@@ -73,6 +73,8 @@ public:
 	{
 		FOOTBALL_STATES_0 = 0x0,
 		FOOTBALL_STATES_1 = 0x1,
+		FOOTBALL_STATES_2 = 0x2,
+		FOOTBALL_STATES_3 = 0x3,
 	};
 
 	GameThing*           SavedThing;
@@ -81,13 +83,13 @@ public:
 	uint32_t             field_0x148;
 	LH3DMapCoords        field_0x14c[12];
 	uint32_t             Functional;
-	uint8_t              field_0x1e0[0x20];
-	FOOTBALL_STATES      PlayState;
 #if defined(VERSION_BW1W100)
-	uint8_t field_0x204[0x1c];
+	uint8_t field_0x1e0[0x1c];
 #else
-	uint8_t field_0x204[0x20];
+	uint8_t field_0x1e0[0x20];
 #endif
+	FOOTBALL_STATES         PlayState;
+	uint8_t                 field_0x204[0x20];
 	LHLinkedList<Villager*> HomeTeam;
 	LHLinkedList<Villager*> AwayTeam;
 	LHLinkedList<Villager*> field_0x234[2];

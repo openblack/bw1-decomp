@@ -82,7 +82,7 @@ VillagerStateTableEntry VillagerStateTableEntry::StateTable[VILLAGER_STATE_LAST_
 	{&Villager::FootballGoalie, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, &Villager::FootballGoalKeeperAnimation, 0, 0},
 	{&Villager::FootballDefender, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, &Villager::FootballDefenderAnimation, 0, 0},
 #ifdef VERSION_BW1WCI
-	{&Villager::FootballWonGoal, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, &Villager::FootballWonGoalAnimation, 0, 0},
+	{&Villager::FootballWonGoal, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, &Villager::FootballCrowdGoalScored, 0, 0},
 #else
 	{&Villager::FootballWonGoal, 0, &Villager::ExitFootball, &Villager::SaveFootball, &Villager::LoadFootball, &Villager::AlwaysReactToTownEmergency, 0, 0, 0},
 #endif

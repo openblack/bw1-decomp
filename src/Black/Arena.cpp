@@ -1,3 +1,4 @@
+#include "CreatureAttitudeConstants.h" /* For AttitudeFeedbackDecay */
 #include "GameTimeConstants.h"
 #include "Arena.h"
 

@@ -21,7 +21,7 @@ struct VillagerStateTableEntry
 	bool32_t (Villager::*LoadState)(GameOSFile& file);
 	uint32_t (Villager::*ReactToTownEmergency)();
 	uint32_t (Villager::*Animation)();
-	uint32_t (Villager::*TransitionAnimation)(uint8_t into, uint8_t state);
+	uint32_t (Villager::*TransitionAnimation)(bool32_t into, uint8_t state);
 	void (Villager::*Validate)();
 
 	// BW1W120 00d09198
