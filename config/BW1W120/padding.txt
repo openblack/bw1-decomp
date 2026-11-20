@@ -114,6 +114,9 @@
 0x0043686B call_rel32 0x00401879  # Base
 0x00436C2A call_indirect 0x008A9114  # Base: __imp__ImmReleaseContext@4
 0x004370CB call_rel32 0x00401879  # Base
+0x00437CAB call_rel32 0x00401879  # Belief
+0x00437D2B call_rel32 0x00401879  # Belief
+0x00437E7B call_rel32 0x00401879  # Belief
 0x0044ABCA call_indirect 0x008A9190  # CameraModeDance: __imp__RemoveDirectoryA@4
 0x0044AC8B call_rel32 0x00401879  # CameraModeDance
 0x0044ACCA call_indirect 0x008A96C4  # CameraModeDance: __imp__LHWaveGetQMixerDirectSoundObject...

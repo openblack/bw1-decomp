@@ -8,6 +8,7 @@
 
 // Forward Declares
 
+class FixedObject;
 class LHOSFile;
 struct MapCoords;
 class Base;
@@ -69,6 +70,16 @@ public:
 	TownArtifact(Fixed* artifact, WorshipSite* site, GPlayer* player);
 
 	// Non-virtual methods
+	// BW1W120 00425df0 BW1M119 010b25f0
+	void Init(FixedObject* object, Town* town, WorshipSite* worship_site, GPlayer* player);
+	// BW1W120 004263d0 BW1M119 010b1830
+	float GetDesireToAddVillager();
+	// BW1W120 00426130 BW1M119 010b1d30
+	void CalculateDanceEffect();
+	// BW1W120 00426100 BW1M119 010b1f00
+	uint32_t GetDanceTimeRemaining();
+	// BW1W120 00426080 BW1M119 010b1fd0
+	void StopDanceIfNecessary(bool force);
 
 	// BW1W120 00425f00 BW1M119 010b23c0
 	void SetToZero();

@@ -11,6 +11,8 @@
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 
+#define VALUE_SPINNER_RISE_PER_SECOND 10.0f
+
 struct ValueSpinner : public DrawingObject
 {
 	enum TEXTTYPE_ENUM
@@ -29,8 +31,8 @@ struct ValueSpinner : public DrawingObject
 	// BW1W120 00ed92e8 BW1M119 013241e8 (LHCombined Release)
 	static ValueSpinner* first;
 
-	// BW1W120 004382d0
-	virtual void UpdatePosition(float time);
+	// BW1W120 004382d0 BW1M119 010059a0
+	virtual void UpdatePosition(float time) { point.y += time * VALUE_SPINNER_RISE_PER_SECOND; }
 	// Inlined into ??_GValueSpinner@@UAEPAXI@Z (BW1W120 004382f0).
 	// BW1W120 inlined BW1M119 010b4c10
 	virtual ~ValueSpinner()
@@ -56,6 +58,8 @@ struct ValueSpinner : public DrawingObject
 	ValueSpinner* Update(float time);
 	// BW1W120 00833ae0 BW1M119 010c1ca0 (LHCombined Release)
 	void Init(const LHPoint& point, float value, TEXTTYPE_ENUM type);
+	// BW1W120 00833a50 BW1M119 010c1de0 (LHCombined Release)
+	void Init(const LHPoint& point, int value, TEXTTYPE_ENUM type);
 	// BW1W120 00833a00 BW1M119 010c1f00 (LHCombined Release)
 	void Init(const LHPoint& point, char16_t* text, const LH3DColor& color);
 	// BW1W120 00833b90 BW1M119 0103e9e0 (LHCombined Release)

@@ -91,6 +91,16 @@ public:
 	BuildingSite(MultiMapFixed* param_1);
 
 	// Non-virtual methods
+	// BW1W120 0043bbb0 BW1M119 0106f1b0
+	bool32_t IsBuilt();
+	// BW1W120 0043bbc0 BW1M119 0106f210
+	bool32_t IsRepaired();
+	// BW1W120 0043b4f0 BW1M119 010bcc70
+	bool32_t GetNearestEdge(float x, float z, long* edge);
+	// BW1W120 0043cdb0 BW1M119 010bcf30
+	void ComputePosForBuilders();
+	// BW1W120 0043bef0 BW1M119 010bef40
+	void AddScaffold(Scaffold* scaffold);
 
 	// BW1W120 0043bc00 BW1M119 0106efd0
 	int GetBuildersNeeded();

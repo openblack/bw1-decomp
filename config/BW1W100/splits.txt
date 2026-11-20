@@ -229,21 +229,22 @@ Black/Base.cpp:
 	.bss        start:0x00B79EA0 end:0x00B79ED4
 
 Black/BaseInfo.cpp:
-	.rdata      start:0x00804960 end:0x008049B4
+	.rdata      start:0x00804960 end:0x00804964
 
 Black/Belief.cpp:
 	.text       start:0x004309B0 end:0x00431880
-	.rdata      start:0x008049B4 end:0x008049C4
-	.CRT$XCU    start:0x008F60E0 end:0x008F60E4 align:4
-	.data       start:0x008FBDE0 end:0x008FBE98
-	.bss        start:0x00B79EF8 end:0x00B7A3D0
+	.rdata      start:0x00804964 end:0x008049C4
+	.rdata$r    start:0x008DC4A8 end:0x008DC560
+	.CRT$XCU    start:0x008F60D0 end:0x008F60E4 align:4
+	.data       start:0x008FBDE0 end:0x008FBE60
+	.bss        start:0x00B79ED8 end:0x00B79F20
 
 Black/BigForest.cpp:
 	.text       start:0x00431880 end:0x00432150
 	.rdata      start:0x008049C4 end:0x00805330
 	.CRT$XCU    start:0x008F60E4 end:0x008F60EC align:4
-	.data       start:0x008FBE98 end:0x008FBF1C
-	.bss        start:0x00B7A3D0 end:0x00B7A574
+	.data       start:0x008FBE60 end:0x008FBF1C
+	.bss        start:0x00B79F20 end:0x00B7A574
 
 Black/Bonfire.cpp:
 	.text       start:0x00432150 end:0x00432490

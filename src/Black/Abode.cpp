@@ -36,6 +36,7 @@
 #include "MobileStaticInfo.h"
 #include "StreetLantern.h"
 #include "ScriptHighlightInfo.h"
+#include "AbodeInfo.h"
 #include "ScriptHighlight.h"
 #include "SoundGuidance.h"
 #ifndef VERSION_BW1W100
@@ -44,7 +45,6 @@ static void* CrtPad[15] = {0};
 #pragma data_seg()
 #endif
 #include "MapCellConstants.h"
-#include "AbodeInfo.h"
 #include "GameTimeConstants.h"
 #include "LandscapeConstants.h"
 #include "TimerConstants.h"
