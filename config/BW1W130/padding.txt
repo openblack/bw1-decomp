@@ -1192,6 +1192,7 @@
 0x005D0747 copy_run 0x005D06C7  # HelpText
 0x005D0773 jmp_run 0x005D0747  # HelpText
 0x005D07B1 jmp_run 0x005D0773  # HelpText
+0x005E5507 padding_bytes 490266894802c20800  # KeyBuffer
 0x005FC3A5 copy_run 0x005FC326  # logo
 0x005FC3FA jmp_run 0x005FC3A5  # logo
 0x005FC449 copy_run 0x005FC3FA  # logo

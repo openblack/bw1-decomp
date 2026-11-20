@@ -14,7 +14,7 @@ class GKeyBuffer : public Base
 {
 public:
 	GKeyInput* Inputs;
-	uint16_t   field_0xc;
+	uint16_t   Capacity;
 	uint16_t   BufferedKeys;
 
 	// Override methods
@@ -29,12 +29,12 @@ public:
 	{
 		Inputs = NULL;
 		BufferedKeys = 0;
-		field_0xc = 0;
+		Capacity = 0;
 	}
 	// BW1W120 005e1ac0 BW1M119 01520220
 	bool32_t Init(unsigned short capacity);
 	// BW1W120 005e1bf0 BW1M119 011843b0
-	void AddKeyIfDifferentToPrevious(LH_KEY key, unsigned short modifier);
+	bool32_t AddKeyIfDifferentToPrevious(LH_KEY key, unsigned short modifier);
 	// BW1W120 005e1bb0 BW1M119 0135bde0
 	bool32_t AddKey(LH_KEY key, unsigned short modifier);
 };
@@ -44,11 +44,6 @@ class GKeyInput : public Base
 public:
 	LH_KEY         Key;      /* 0x8 */
 	unsigned short Modifier; /* 0xc */
-
-	// Override methods
-
-	// BW1W120 005e1b40 BW1M119 010dc500
-	virtual ~GKeyInput();
 };
 
 static_assert(sizeof(GKeyInput) == 0x10, "GKeyInput stride is incorrect");
