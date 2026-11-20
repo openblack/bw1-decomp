@@ -1090,6 +1090,8 @@ public:
 	uint32_t MakeChildOrphaned(Villager* dead_villager);
 	// BW1W120 00758180 BW1M119 01098ee0
 	bool32_t CheckNeededForCivic();
+	// BW1W120 00757c80 BW1M119 0157bf20
+	uint32_t CheckChildTownDesires();
 	// BW1W120 007581a0 BW1M119 01080060
 	uint32_t CheckNeededForTownDesire();
 	// BW1W120 007581e0 BW1M119 01023f00
@@ -1200,6 +1202,8 @@ public:
 	bool32_t MoveAroundFire();
 	// BW1W120 0075aa90 BW1M119 01581690
 	bool32_t GetFireFightingPos(FireEffect* param_1, MapCoords* param_2);
+	// BW1W120 0075aba0 BW1M119 01581540
+	bool32_t AreWeAtFireFightingPos(FireEffect* fire, float extra_distance);
 	// BW1W120 0075ac50 BW1M119 015812c0
 	bool32_t PutOutFireByBeating();
 	// BW1W120 0075ad90 BW1M119 01581240
@@ -1594,6 +1598,8 @@ public:
 	bool32_t HousewifeGivingBirth();
 	// BW1W120 007624a0 BW1M119 015913b0
 	bool32_t HousewifeGivenBirth();
+	// BW1W120 007624b0 BW1M119 01591370
+	bool32_t HousewifeStartPicketing();
 	// BW1W120 007624c0 BW1M119 01591200
 	bool32_t WillHousewifeGetPregnant(Villager* param_1);
 	// BW1W120 00762570 BW1M119 01591170
@@ -2033,14 +2039,22 @@ public:
 	uint32_t KissingAnimation();
 	// BW1W120 004237f0 BW1M119 010acec0
 	uint32_t ThrownAnimation();
+	// BW1W120 00423830 BW1M119 010ace50
+	uint32_t ConsiderDanceAnimation();
 	// BW1W120 00423850 BW1M119 010acb10
 	uint32_t DanceAnimation();
 	// BW1W120 00423a80 BW1M119 010acab0
 	uint32_t LookAtLargeObjectAnimation();
+	// BW1W120 00423aa0 BW1M119 010aca40
+	uint32_t FarmingAnimation();
 	// BW1W120 00423ac0 BW1M119 010aca00
 	uint32_t ForesteringAnimation();
 	// BW1W120 00423ad0 BW1M119 010ac920
 	uint32_t LookAtFlyingObjectAnimation();
+	// BW1W120 00423b30 BW1M119 010ac840
+	uint32_t LeaderAttractAttentionAnimation();
+	// BW1W120 00423b80 BW1M119 010ac760
+	uint32_t LeaderShowNeedAnimation();
 	// BW1W120 00423bd0 BW1M119 010ac690
 	uint32_t FootballWaitForKickOffAnimation();
 	// BW1W120 00423c50 BW1M119 010ac640
@@ -2052,7 +2066,7 @@ public:
 	// BW1W120 00423d20 BW1M119 010ac380
 	uint32_t FootballMatchPausedAnimation();
 	// BW1W120 00423da0 BW1M119 null
-	uint32_t FootballWonGoalAnimation();
+	uint32_t FootballCrowdGoalScored();
 	// BW1W120 00423e20 BW1M119 010ac170
 	uint32_t BuildingAnimation();
 	// BW1W120 00423eb0 BW1M119 010ac060
@@ -2063,6 +2077,8 @@ public:
 	uint32_t ControlledByCreatureAnimation();
 	// BW1W120 00423fd0 BW1M119 010abe60
 	uint32_t PointAtFlyingObjectAnimation();
+	// BW1W120 00424040 BW1M119 010abe20
+	uint32_t WaitForMateAnimation();
 	// BW1W120 00424050 BW1M119 010abdb0
 	uint32_t YawnAnimation();
 	// BW1W120 00424080 BW1M119 0109e6d0
@@ -2075,22 +2091,26 @@ public:
 	uint32_t RandomCrowdAnimation();
 	// BW1W120 00424210 BW1M119 0109f030
 	uint32_t SitDownAnimation();
+	// BW1W120 00424280 BW1M119 010aba60
+	uint32_t ArrivesAtBuildingSiteAnimation();
 
 	// TransitionAnimation slot
 	// BW1W120 00424290 BW1M119 010aba00
-	uint32_t SleepInTentIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	uint32_t SleepInTentIntoOutofAnimation(bool32_t is_into, uint8_t state);
 	// BW1W120 004242b0 BW1M119 01028bb0
-	uint32_t MoveToPosIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	uint32_t MoveToPosIntoOutofAnimation(bool32_t is_into, uint8_t state);
 	// BW1W120 00424300 BW1M119 010ab8f0
-	uint32_t MournIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	uint32_t MournIntoOutofAnimation(bool32_t is_into, uint8_t state);
+	// BW1W120 00424320 BW1M119 010ab870
+	uint32_t DeadIntoOutofAnimation(bool32_t is_into, uint8_t state);
 	// BW1W120 00424350 BW1M119 010ab820
-	uint32_t PrayIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	uint32_t PrayIntoOutofAnimation(bool32_t is_into, uint8_t state);
 	// BW1W120 00424370 BW1M119 010ab650
-	uint32_t ArrivesAtResourceIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	uint32_t ArrivesAtResourceIntoOutofAnimation(bool32_t is_into, uint8_t state);
 	// BW1W120 004243a0 BW1M119 0109e810
-	uint32_t SitDownIntoOutOfAnimation(uint8_t param_1, uint8_t param_2);
+	uint32_t SitDownIntoOutOfAnimation(bool32_t is_into, uint8_t state);
 	// BW1W120 004243e0 BW1M119 010ab510
-	uint32_t BuildingIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	uint32_t BuildingIntoOutofAnimation(bool32_t is_into, uint8_t state);
 
 	// validate slot
 	// BW1W120 00756990 BW1M119 0105a350

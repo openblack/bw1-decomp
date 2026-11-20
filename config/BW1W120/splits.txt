@@ -155,14 +155,14 @@ Black/AnimatedStatic.cpp:
 
 Black/Animations.cpp:
 	.text       start:0x004233B0 end:0x00424480
-	.rdata      start:0x008C2C30 end:0x008C2C78
+	.rdata      start:0x008C2C30 end:0x008C2C74
 	.CRT$XCU    start:0x009C6100 end:0x009C610C align:4
 	.data       start:0x009C95C0 end:0x009C95F8
 	.bss        start:0x00C55FF4 end:0x00C56000
 
 Black/Arena.cpp:
 	.text       start:0x00424480 end:0x004258F0
-	.rdata      start:0x008C2C78 end:0x008C3F14
+	.rdata      start:0x008C2C74 end:0x008C3F14
 	.rdata$r    start:0x009A79F8 end:0x009A7AE8
 	.CRT$XCU    start:0x009C610C end:0x009C6118 align:4
 	.data       start:0x009C95F8 end:0x009C9658

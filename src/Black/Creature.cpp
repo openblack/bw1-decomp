@@ -698,7 +698,7 @@ void Creature::SetToZero()
 	ConfinementRadius = 0.0f;
 	GoingBackToConfinedArea = false;
 	SpellReversion = true;
-	field_0x10a8 = 0;
+	GameTurnOfLastFightImpact = 0;
 	IsShowingDevelopmentHelpScript = false;
 	field_0x3c8 = 0;
 	InCreatureHand = NULL;
@@ -2574,7 +2574,7 @@ void Creature::ApplySingleEffect(EFFECT_TYPE type, float amount, GameThing* appl
 
 void Creature::ReceivedFightImpact(long impact, float strength, Creature* attacker)
 {
-	field_0x10a8 = GGame::g_game->data.GameTurn;
+	GameTurnOfLastFightImpact = GGame::g_game->data.GameTurn;
 	ReceivingFightImpact = true;
 	ApplySingleEffect(EFFECT_TYPE_HIT, strength * CREATURE_FIGHT_IMPACT_EFFECT_SCALE, attacker, Pos);
 	ReceivingFightImpact = false;

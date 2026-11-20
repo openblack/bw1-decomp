@@ -351,7 +351,7 @@ public:
 	LH3DSmoke*              smoke;
 	GArena*                 arena;
 	uint32_t                GameTurnOfLastSnapshot;
-	uint32_t                field_0x10a8;
+	uint32_t                GameTurnOfLastFightImpact;
 	bool32_t                FightStarted;
 	bool32_t                FightEnded;
 	bool32_t                TouchedByLeash;

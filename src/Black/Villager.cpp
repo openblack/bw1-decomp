@@ -307,7 +307,7 @@ static inline VillagerAnimationFn GetAnimationFn(uint8_t state)
 	return VillagerStateTableEntry::StateTable[state].Animation;
 }
 
-typedef uint32_t (Villager::*VillagerTransitionAnimationFn)(uint8_t, uint8_t);
+typedef uint32_t (Villager::*VillagerTransitionAnimationFn)(bool32_t, uint8_t);
 static inline VillagerTransitionAnimationFn GetTransitionAnimationFn(uint8_t state)
 {
 	return VillagerStateTableEntry::StateTable[state].TransitionAnimation;
@@ -3236,13 +3236,13 @@ bool32_t Villager::LoadLanded(GameOSFile& file)
 
 int Villager::CallIntoAnimationFunction(uint8_t state)
 {
-	uint32_t (Villager::*transition)(uint8_t, uint8_t) =
+	uint32_t (Villager::*transition)(bool32_t, uint8_t) =
 		VillagerStateTableEntry::StateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
 	if (transition)
 	{
-		uint32_t (Villager::*function)(uint8_t, uint8_t) =
+		uint32_t (Villager::*function)(bool32_t, uint8_t) =
 			VillagerStateTableEntry::StateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
-		int result = (this->*function)(1, state);
+		int result = (this->*function)(true, state);
 		if (result != -1)
 		{
 			Flags = Flags & ~VILLAGER_FLAG_INTO_ANIMATION_PENDING | VILLAGER_FLAG_IN_TRANSITION_ANIMATION;
@@ -3256,13 +3256,13 @@ int Villager::CallOutofAnimationFunction(uint8_t state)
 {
 	if (GVillagerStateTableInfo::Infos[state].SkipOutofAnimation == false)
 	{
-		uint32_t (Villager::*transition)(uint8_t, uint8_t) =
+		uint32_t (Villager::*transition)(bool32_t, uint8_t) =
 			VillagerStateTableEntry::StateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
 		if (transition)
 		{
-			uint32_t (Villager::*function)(uint8_t, uint8_t) =
+			uint32_t (Villager::*function)(bool32_t, uint8_t) =
 				VillagerStateTableEntry::StateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
-			int result = (this->*function)(0, state);
+			int result = (this->*function)(false, state);
 			if (result != -1)
 			{
 				Flags |= VILLAGER_FLAG_IN_TRANSITION_ANIMATION | VILLAGER_FLAG_INTO_ANIMATION_PENDING;

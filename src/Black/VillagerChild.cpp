@@ -29,8 +29,8 @@ uint32_t Villager::ChildGotoCreche()
 	return false;
 }
 
-// BW1W120 00757c80 BW1M119 01070040
-bool32_t Villager::ChildAtCreche()
+// BW1W120 00757c80 BW1M119 0157bf20
+uint32_t Villager::CheckChildTownDesires()
 {
 	return CheckNeededForTownDesire();
 }

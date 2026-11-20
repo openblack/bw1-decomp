@@ -2,8 +2,9 @@
 #include "FootpathFinder.h"
 #include "Game.h"
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
-#include "Game3DObject.h"
+#include "PotInfo.h"
 #include "WorshipSiteInfo.h"
+#include "Game3DObject.h"
 #include "Rand.h"
 #include "Town.h"
 #include "GameTimeConstants.h"
@@ -51,7 +52,6 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "PhysicsObject.h"
 #include "HelpProfile.h"
 #include "Pot.h"
-#include "PotInfo.h"
 #include "PSysInterface.h"
 #include "GameInfo.h"
 #include "PSysProcessInfo.h"
