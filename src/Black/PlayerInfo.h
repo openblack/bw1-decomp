@@ -32,7 +32,7 @@ public:
 	float    TreeAlignmentChange;
 	float    EffectAlignmentBase;
 	float    DeathAlignmentChange[DEATH_REASON_LAST]; /* 0x20 */
-	float    field_0x48;
+	float    BeliefGainScale;
 	float    field_0x4c;
 	char16_t NetworkName[32]; /* 0x50; passed to WCHAR2CHAR by SetupPlayers. */
 

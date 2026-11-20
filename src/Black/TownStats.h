@@ -71,6 +71,8 @@ public:
 	TownStats() { SetToZero(); }
 
 	// Non-virtual methods
+	// BW1W120 00749be0 BW1M119 010730b0
+	float GetAverageAbodeSize();
 
 	// BW1W120 inlined BW1M119 null
 	uint32_t GetVillagerSpaceLeftInAbodes() const { return VillagerSpaceLeftInAbodes; }

@@ -16,6 +16,7 @@
 
 // Forward Declares
 
+class Villager;
 class Base;
 struct ControlHandUpdateInfo;
 class Creature;
@@ -157,6 +158,12 @@ public:
 	static FishFarm* FindClosestFishFarm(const MapCoords& pos, float max_distance);
 
 	// Non-virtual methods
+	// BW1W120 0052d250 BW1M119 010e0400
+	void AddFisherman(Villager* villager);
+	// BW1W120 0052d240 BW1M119 010e04e0
+	float GetPercentFull();
+	// BW1W120 0052c870 BW1M119 010e14d0
+	MapCoords GetRandomFishFarmPos();
 
 	// BW1W120 0052c6b0 BW1M119 010e1980
 	void DeleteDependancys();

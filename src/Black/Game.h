@@ -240,7 +240,9 @@ public:
 		{
 			uint32_t : 2;
 			uint32_t Paused : 1;
-			uint32_t : 14;
+			uint32_t : 11;
+			uint32_t ShowBeliefValues : 1;
+			uint32_t : 2;
 			uint32_t ShowVillagerNames : 1;
 			uint32_t WaitForBuildingWood : 1;
 			uint32_t : 2;
