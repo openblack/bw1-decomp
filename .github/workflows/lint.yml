@@ -16,6 +16,9 @@ on:
       - '.github/workflows/lint.yml'
       - 'config/**/symbols.txt'
       - 'tools/check_addr_comments.py'
+      - 'config/**/splits.txt'
+      - 'tools/split-gaps.py'
+      - 'configure.py'
 
 permissions:
   contents: read
@@ -48,3 +51,67 @@ jobs:
     # Every `// BW1W120 ...` comment must be `// BW1W120 <w> [BW1M119 <m> [(<module>)]]`
     # on its own line, with a Mac address that exists in config/BW1M119.
     - run: python tools/check_addr_comments.py
+
+  check-split-gaps:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    # Every address of these ranges belongs to a unit in splits.txt. The ranges stop
+    # where the linker's import thunks start.
+    - name: BW1W100 .text
+      run: python tools/split-gaps.py --check -v BW1W100 -s .text --range 0x401000-0x729090
+
+    - name: BW1W110 .text
+      run: python tools/split-gaps.py --check -v BW1W110 -s .text --range 0x401000-0x79E2E0
+
+    - name: BW1W120 .text
+      run: python tools/split-gaps.py --check -v BW1W120 -s .text --range 0x401000-0x7AEBB0
+
+    - name: BW1W130 .text
+      run: python tools/split-gaps.py --check -v BW1W130 -s .text --range 0x401000-0x7B3BB0
+
+    - name: BW1WCI .text
+      run: python tools/split-gaps.py --check -v BW1WCI -s .text --range 0x401000-0x7C6CC0
+
+    - name: BW1W100 .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W100 -s .data
+
+    - name: BW1W110 .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W110 -s .data
+
+    - name: BW1W120 .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W120 -s .data
+
+    - name: BW1W130 .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W130 -s .data
+
+    # Creature Isle's libcmt and libjpeg data past the range still has unclaimed objects.
+    - name: BW1WCI .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1WCI -s .data --range 0xA36000-0xCA09DC
+
+    # The ranges stop where the static library data begins, after LHDLL (Immersion, DirectX
+    # and DirectInput objects the project does not have).
+    - name: BW1W100 .rdata
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W100 -s .rdata --range 0x7EB000-0x8D52C4
+
+    - name: BW1W110 .rdata
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W110 -s .rdata --range 0x899000-0x98EF24
+
+    - name: BW1W120 .rdata
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W120 -s .rdata --range 0x8A9000-0x99F01C
+
+    # 0x9582A8 holds a 1000.0f that no 1.30 code reads and that no linked unit's object emits.
+    - name: BW1W130 .rdata
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W130 -s .rdata --range 0x8AE000-0x9582A8 --range 0x9582AC-0xA1EA0C
+
+    - name: BW1WCI .rdata
+      run: python tools/split-gaps.py --check --allow-padding -v BW1WCI -s .rdata --range 0x8D4000-0xA0EB5C
+
+    # Every configure.py unit has splits in some version.
+    - name: configure.py units
+      run: python tools/split-gaps.py --check --units

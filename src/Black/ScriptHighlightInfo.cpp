@@ -1,1 +1,0 @@
-#include "ScriptHighlightInfo.h"

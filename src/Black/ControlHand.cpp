@@ -157,4 +157,6 @@ void CHand::SetSize(float size)
 	Size2 = standardSize / field_0x8c * DistanceScale * Size1;
 }
 
+HandStateInvisible::HandStateInvisible(CHand* hand) : HandState(hand) {}
+
 void HandStateInvisible::Update(float dt, LHMatrix* buffer) {}

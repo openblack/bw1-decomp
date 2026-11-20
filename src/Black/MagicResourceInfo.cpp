@@ -1,1 +1,0 @@
-#include "MagicResourceInfo.h"
