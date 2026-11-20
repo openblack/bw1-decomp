@@ -1867,9 +1867,8 @@ void LH3DCreature::PlayASoundEffect(long param_1, long param_2, bool param_3)
 		if (param_3 || GGame::g_game->script->PlayCreatureSounds ||
 		    creature == GGame::g_game->MyPlayer()->GetCreature())
 		{
-			// TODO: SamplePlayAnimEffect returns the LH_SampleInfo* of the started sample.
-			LH_SampleInfo* sample = (LH_SampleInfo*)GGlobal::Global.audio->SamplePlayAnimEffect(
-				(void*)field_0x4, distance, sound, param_2, bank, 1, 0.0f, 0.0f);
+			LH_SampleInfo* sample = GGlobal::Global.audio->SamplePlayAnimEffect((void*)field_0x4, distance, sound,
+			                                                                    param_2, bank, 1, 0.0f, 0.0f);
 			if (sample && !field_0x4)
 			{
 				GGlobal::Global.audio->SampleSet3DPosition(sample, position.x, position.y, position.z, false);

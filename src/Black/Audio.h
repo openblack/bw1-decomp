@@ -116,6 +116,13 @@ enum ANIM_SOUND_EVENT
 
 #define MUSIC_DEFAULT_PLAY_DISTANCE 100.0f
 
+enum SFX_PLAY_CONDITION
+{
+	SFX_PLAY_CONDITION_NOT_IN_WIDESCREEN = 1,
+	SFX_PLAY_CONDITION_IN_CITADEL = 2,
+	SFX_PLAY_CONDITION_NOT_IN_FIGHT = 4,
+};
+
 enum THING_MUSIC_RESULT
 {
 	THING_MUSIC_RESULT_NONE = 0,
@@ -129,6 +136,7 @@ class GameOSFile;
 class GameThingWithPos;
 class LH_AudioBank;
 class LH_AudioSystem;
+class LH3DStorm;
 class LH_MusicPlayOptions;
 class ThingMusicInfo;
 class Town;
@@ -324,33 +332,69 @@ public:
 	bool32_t ProcessThingMusic();
 	// BW1W120 00429cb0 BW1M119 01188200
 	void InitSFX();
-	// BW1W120 0042a370 BW1M119 011876f0
-	void ReleaseSFXBanks();
+	// BW1W120 00429ce0 BW1M119 01188140
+	static void __stdcall SheetLightningCallback(LH3DStorm* storm, LHPoint& pos, float radius);
 	// BW1W120 00429d60 BW1M119 010001c0
-	void PlaySoundEffect(Base* object, uint32_t sample, uint32_t play_type, uint32_t loop_count, bool32_t doppler,
-	                     bool32_t positional, AUDIO_SFX_BANK_TYPE bank_type);
+	LH_SampleInfo* PlaySoundEffect(Base* object, unsigned long sample, unsigned long play_type,
+	                               unsigned long loop_count, bool32_t doppler, bool32_t positional,
+	                               AUDIO_SFX_BANK_TYPE bank_type);
 	// BW1W120 00429da0 BW1M119 01000240
-	void PlaySoundEffect(Base* object, unsigned long sample, unsigned long play_type, unsigned long loop_count,
-	                     bool32_t doppler, bool32_t positional, LH_AudioBank* bank);
+	LH_SampleInfo* PlaySoundEffect(Base* object, unsigned long sample, unsigned long play_type,
+	                               unsigned long loop_count, bool32_t doppler, bool32_t positional, LH_AudioBank* bank);
 	// BW1W120 00429e30 BW1M119 010230f0
-	void PlaySoundEffect(LH_SamplePlayOptions* options);
-	// BW1W120 0042a040 BW1M119 010004c0
-	void PlaySoundEffect(Base* object, const LHPoint& pos, uint32_t sample, uint32_t play_type, uint32_t loop_count,
-	                     bool32_t doppler, bool32_t positional, LH_AudioBank* bank);
+	LH_SampleInfo* PlaySoundEffect(LH_SamplePlayOptions* options);
 	// BW1W120 0042a000 BW1M119 01187f00
-	void PlaySoundEffect(Base* object, const LHPoint& pos, uint32_t sample, uint32_t play_type, uint32_t loop_count,
-	                     bool32_t doppler, bool32_t positional, AUDIO_SFX_BANK_TYPE bank_type);
-	// BW1W120 0042a4b0 BW1M119 01062bd0
-	uint32_t SamplePlayAnimEffect(void* object, float distance, long* sound, int param_4, LH_AudioBank* bank,
-	                              int param_6, float param_7, float param_8);
-	// BW1W120 0042a430 BW1M119 01187520
-	float GetGSFXSampleMaxDistance(uint32_t sample, LH_AudioBank* bank) const;
+	LH_SampleInfo* PlaySoundEffect(Base* object, const LHPoint& pos, unsigned long sample, unsigned long play_type,
+	                               unsigned long loop_count, bool32_t doppler, bool32_t positional,
+	                               AUDIO_SFX_BANK_TYPE bank_type);
+	// BW1W120 0042a040 BW1M119 010004c0
+	LH_SampleInfo* PlaySoundEffect(Base* object, const LHPoint& pos, unsigned long sample, unsigned long play_type,
+	                               unsigned long loop_count, bool32_t doppler, bool32_t positional, LH_AudioBank* bank);
+	// BW1W120 0042a100 BW1M119 01187c30
+	LH_SampleInfo* PlaySoundEffect(Base* object, const LHPoint& pos, const LHPoint& offset, unsigned long sample,
+	                               bool follow, unsigned long play_type, unsigned long loop_count, bool32_t doppler,
+	                               bool32_t positional, LH_AudioBank* bank);
+	// BW1W120 0042a1d0 BW1M119 inlined
+	LH_SampleInfo* GetSoundEffectInfo(Base* object, unsigned long sample, LH_AudioBank* bank) const;
+	// BW1W120 0042a1f0 BW1M119 null
+	LH_SampleInfo* GetSoundEffectInfo(Base* object, unsigned long sample, AUDIO_SFX_BANK_TYPE type) const;
 	// BW1W120 0042a210 BW1M119 01187ba0
 	void StopPlayingSoundEffect(uint32_t sample, uint32_t object, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a240 BW1M119 01187b20
+	void StopPlayingSoundEffect(Base* object, unsigned long sample, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a260 BW1M119 null
+	void StopPlayingSoundEffect(LH_SampleInfo* info) const;
 	// BW1W120 0042a280 BW1M119 01187a90
 	bool32_t IsSamplePlaying(unsigned long object, unsigned long sample, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a2b0 BW1M119 01187a10
+	bool32_t IsSamplePlaying(Base* object, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a2d0 BW1M119 01001b40
+	bool32_t IsSamplePlaying(Base* object, unsigned long sample, LH_AudioBank* bank) const;
+	// BW1W120 0042a2f0 BW1M119 null
+	bool32_t IsSamplePlaying(Base* object, unsigned long sample, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a310 BW1M119 01187900
+	void ReleaseLoopOnSoundEffect(Base* object, unsigned long sample, LH_AudioBank* bank) const;
 	// BW1W120 0042a330 BW1M119 011877f0
-	void ReleaseLoopOnSoundEffect(Base* param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const;
+	void ReleaseLoopOnSoundEffect(Base* object, uint32_t sample, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a350 BW1M119 01187770
+	void LoadSFXBanks();
+	// BW1W120 0042a370 BW1M119 011876f0
+	void ReleaseSFXBanks();
+	// BW1W120 0042a390 BW1M119 01187650
+	void LoadSFXBank(AUDIO_SFX_BANK_TYPE type);
+	// BW1W120 0042a3d0 BW1M119 011875b0
+	void ReleaseSFXBank(AUDIO_SFX_BANK_TYPE type);
+	// BW1W120 0042a410 BW1M119 null
+	float GetGSFXSampleMaxDistance(uint32_t sample, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a430 BW1M119 01187520
+	float GetGSFXSampleMaxDistance(uint32_t sample, LH_AudioBank* bank) const;
+	// BW1W120 0042a460 BW1M119 01187480
+	bool32_t IsSampleLooped(Base* object, unsigned long sample, LH_AudioBank* bank) const;
+	// BW1W120 0042a490 BW1M119 null
+	bool32_t IsSampleLooped(Base* object, unsigned long sample, AUDIO_SFX_BANK_TYPE type) const;
+	// BW1W120 0042a4b0 BW1M119 01062bd0
+	LH_SampleInfo* SamplePlayAnimEffect(void* object, float distance, long* sound, int action, LH_AudioBank* bank,
+	                                    bool32_t follow, float min_distance, float max_distance);
 	// BW1W120 0042a5f0 BW1M119 011873a0
 	void SetGameSFX(bool32_t enabled);
 	// BW1W120 inlined BW1M119 011878b0
