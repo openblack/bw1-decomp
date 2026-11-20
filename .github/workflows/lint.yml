@@ -94,6 +94,11 @@ jobs:
     - name: BW1WCI .data
       run: python tools/split-gaps.py --check --allow-padding -v BW1WCI -s .data --range 0xA36000-0xCA09DC
 
+    # The range stops where the static library data begins, after LHDLL (Immersion, DirectX
+    # and DirectInput objects the project does not have).
+    - name: BW1W120 .rdata
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W120 -s .rdata --range 0x8A9000-0x99F01C
+
     # Every configure.py unit has splits in some version.
     - name: configure.py units
       run: python tools/split-gaps.py --check --units
