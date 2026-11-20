@@ -633,7 +633,7 @@ Black/CreatureMentalAttributeTest.cpp:
 	.rdata      start:0x008CF9A4 end:0x008CFE00
 	.rdata$r    start:0x009AA4A0 end:0x009AAA08
 	.CRT$XCU    start:0x009C6498 end:0x009C64A4 align:4
-	.data       start:0x00BDEA70 end:0x00BDF390
+	.data       start:0x00BDEA54 end:0x00BDF390
 	.bss        start:0x00C831B8 end:0x00C84390
 
 Black/CreatureMentalBelief.cpp:
@@ -1989,6 +1989,7 @@ Black/MPFEPlayerDetails.cpp:
 Black/MPFEStartGameData.cpp:
 	.text       start:0x00632840 end:0x00633360
 	.CRT$XCU    start:0x009C707C end:0x009C7088 align:4
+	.data       start:0x00BFDC90 end:0x00BFDD6C
 
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x00633360 end:0x00633A60
@@ -2492,6 +2493,7 @@ Black/ScriptCamera.cpp:
 Black/ScriptComputerPlayer.cpp:
 	.text       start:0x006EE820 end:0x006EF370
 	.CRT$XCU    start:0x009C75F8 end:0x009C7600 align:4
+	.data       start:0x00C0C2B0 end:0x00C0C300
 
 Black/ScriptContainer.cpp:
 	.text       start:0x006EF370 end:0x006F0860
@@ -3214,7 +3216,7 @@ Black/ChallengeRoomCamera.cpp:
 	.text       start:0x00785230 end:0x007864E0
 	.rdata      start:0x0099EB18 end:0x0099EB20
 	.CRT$XCU    start:0x009C7B38 end:0x009C7B40 align:4
-	.data       start:0x00C25148 end:0x00C25168
+	.data       start:0x00C25148 end:0x00C26F38
 	.bss        start:0x00DD0C0C end:0x00DD0C10
 
 Black/CreatureCitadel.cpp:
@@ -3233,7 +3235,7 @@ Black/CreatureRoomCamera.cpp:
 	.text       start:0x00789D50 end:0x0078B000
 	.rdata      start:0x0099EBFC end:0x0099EC34
 	.CRT$XCU    start:0x009C7B5C end:0x009C7B70 align:4
-	.data       start:0x00C277F0 end:0x00C27838
+	.data       start:0x00C277F0 end:0x00C27958
 	.bss        start:0x00DE19E0 end:0x00DE1A04
 
 Black/CreatureRoomInfo.cpp:
@@ -3248,7 +3250,7 @@ Black/CreditsRoom.cpp:
 	.text       start:0x0078B060 end:0x0078D600
 	.rdata      start:0x0099EC34 end:0x0099EC84
 	.CRT$XCU    start:0x009C7B78 end:0x009C7B84 align:4
-	.data       start:0x00C27958 end:0x00C28100
+	.data       start:0x00C27958 end:0x00C282C0
 	.bss        start:0x00DE1A04 end:0x00E01EBC
 
 Black/CreditsRoomCamera.cpp:
@@ -3330,7 +3332,7 @@ Black/UniverseRoom.cpp:
 	.text       start:0x0079CCE0 end:0x0079D110
 	.rdata      start:0x0099EF24 end:0x0099EF74
 	.CRT$XCU    start:0x009C7C10 end:0x009C7C1C align:4
-	.data       start:0x00C2A358 end:0x00C2A474
+	.data       start:0x00C2A358 end:0x00C2A478
 	.bss        start:0x00E36150 end:0x00E36158
 
 Black/UniverseRoomCamera.cpp:
@@ -3349,7 +3351,7 @@ Black/WorldRoomCamera.cpp:
 	.text       start:0x0079F940 end:0x007A13D0
 	.rdata      start:0x0099F00C end:0x0099F014
 	.CRT$XCU    start:0x009C7C30 end:0x009C7C38 align:4
-	.data       start:0x00C2A788 end:0x00C2A7A8
+	.data       start:0x00C2A788 end:0x00C2AAC0
 	.bss        start:0x00E3A1B8 end:0x00E3A204
 
 Black/WorldRoomInfo.cpp:
@@ -3510,6 +3512,7 @@ zlib/uncompr.c:
 
 Lionhead/LHFile/ver3.0/LHParseFile.cpp:
 	.text       start:0x007BE400 end:0x007BF1C0
+	.data       start:0x00C2BA80 end:0x00C2BDC8
 
 Lionhead/LHFile/ver3.0/Version.cpp:
 	.text       start:0x007BF1C0 end:0x007BF210
@@ -4377,23 +4380,26 @@ lib/libcmt/a_loc.obj:
 lib/libcmt/setmode.obj:
 	.text       start:0x007DB352 end:0x007DB410 align:1
 
+lib/libcmt/constpow.obj:
+	.data       start:0x00C30CB0 end:0x00C30F6C align:1
+
 Lionhead/LHLib/ver5.0/LHSystem.cpp:
 	.text       start:0x007DB410 end:0x007DB7B0
+	.data       start:0x00C30F6C end:0x00C311A4
 
 Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x007DB7B0 end:0x007DCE20
 	.text$x     start:0x008A7970 end:0x008A79C0 align:4
 	.CRT$XCU    start:0x009C7CF4 end:0x009C7CFC align:4
+	.data       start:0x00C311A4 end:0x00C3132C
 
 Lionhead/LHLib/ver5.0/LHScreen.cpp:
 	.text       start:0x007DCE20 end:0x007DEEF0
 	.text$x     start:0x008A79C0 end:0x008A79E0 align:4
+	.data       start:0x00C3132C end:0x00C33FBC
 
 Lionhead/LHLib/ver5.0/LHDrawLine.cpp:
 	.text       start:0x007DEEF0 end:0x007E0440
-
-lib/libcmt/constpow.obj:
-	.data       start:0x00C30CB0 end:0x00C30F6C align:1
 
 Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
 	.text       start:0x007E0440 end:0x007E0FA0
@@ -4403,6 +4409,7 @@ Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
 Lionhead/LHLib/ver5.0/LHHeap2.cpp:
 	.text       start:0x007E0FA0 end:0x007E2810
 	.text$x     start:0x008A79E0 end:0x008A7A70 align:4
+	.data       start:0x00C34098 end:0x00C34178
 
 Lionhead/LHLib/ver5.0/LHDraw.cpp:
 	.text       start:0x007E2810 end:0x007E3C20
@@ -4416,6 +4423,7 @@ Lionhead/LHLib/ver5.0/LHText.cpp:
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x007E4810 end:0x007E6290
 	.text$x     start:0x008A7A70 end:0x008A7AE0 align:4
+	.data       start:0x00C34188 end:0x00C341C0
 	.bss        start:0x00E90650 end:0x00E90670 align:8
 
 Lionhead/LHLib/ver5.0/LHSurface.cpp:
@@ -4448,6 +4456,7 @@ Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
 
 Lionhead/LHLib/ver5.0/LHConvert.cpp:
 	.text       start:0x007EE6E0 end:0x007F04D0
+	.data       start:0x00C34DF0 end:0x00C36A50
 
 Lionhead/LHLib/ver5.0/LHSprite.cpp:
 	.text       start:0x007F04D0 end:0x007F1990
@@ -4550,6 +4559,7 @@ Lionhead/LH3DLib/development/LH3DRender.cpp:
 Lionhead/LH3DLib/development/LH3DText.cpp:
 	.text       start:0x008300A0 end:0x00833A00
 	.text$x     start:0x008A8070 end:0x008A80A0 align:4
+	.data       start:0x00C38D9C end:0x00C38E10
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x00833A00 end:0x00833CF0
@@ -4620,6 +4630,7 @@ Lionhead/LH3DLib/development/LH3DStorm.cpp:
 
 Lionhead/LH3DLib/development/LH3DSprite.cpp:
 	.text       start:0x008404A0 end:0x00841170
+	.data       start:0x00C390CC end:0x00C390EC
 
 Lionhead/LH3DLib/development/LH3DMath.cpp:
 	.text       start:0x00841170 end:0x008412B0
@@ -4639,6 +4650,7 @@ Lionhead/LH3DLib/development/LH3DVideo.cpp:
 
 Lionhead/LH3DLib/development/LH3DMem.cpp:
 	.text       start:0x00842CE0 end:0x00842E40
+	.data       start:0x00C39114 end:0x00C39164
 	.bss        start:0x00EF6540 end:0x00EF6554 align:8
 
 Lionhead/LH3DLib/development/LH3DWay.cpp:
@@ -4649,13 +4661,16 @@ Lionhead/LH3DLib/development/LH3DWay.cpp:
 Lionhead/LH3DLib/development/Font.cpp:
 	.text       start:0x00844620 end:0x00844C60
 	.text$x     start:0x008A81D0 end:0x008A81F0 align:4
+	.data       start:0x00C39164 end:0x00C391B0
 
 Lionhead/LH3DLib/development/LHVideoPlayer.cpp:
 	.text       start:0x00844C60 end:0x00845BA0
+	.data       start:0x00C391B0 end:0x00C3923C
 
 Lionhead/LH3DLib/development/Blob.cpp:
 	.text       start:0x00845BA0 end:0x00846680
 	.CRT$XCU    start:0x009C7DE0 end:0x009C7DE8 align:4
+	.data       start:0x00C3923C end:0x00C3924C
 
 Lionhead/LH3DLib/development/LH3DHair.cpp:
 	.text       start:0x00846680 end:0x008483C0
@@ -4663,6 +4678,7 @@ Lionhead/LH3DLib/development/LH3DHair.cpp:
 
 Lionhead/LH3DLib/development/Leash.cpp:
 	.text       start:0x008483C0 end:0x008499C0
+	.data       start:0x00C3924C end:0x00C39264
 
 Lionhead/LH3DLib/development/LH3DObjectCollide.cpp:
 	.text       start:0x008499C0 end:0x0084A350
@@ -4677,6 +4693,7 @@ Lionhead/LH3DLib/development/LH3DPrimitive.cpp:
 
 Lionhead/LH3DLib/development/LH3DVRAMTex.cpp:
 	.text       start:0x0085D7F0 end:0x0085E480
+	.data       start:0x00C392C0 end:0x00C394D0
 
 Lionhead/LH3DLib/development/CAnim.cpp:
 	.text       start:0x0085E480 end:0x008629D0
@@ -4685,6 +4702,7 @@ Lionhead/LH3DLib/development/CAnim.cpp:
 Lionhead/LH3DLib/development/LH3DHand.cpp:
 	.text       start:0x008629D0 end:0x00863980
 	.rdata      start:0x009A3BB0 end:0x009A3BB4
+	.data       start:0x00C394D0 end:0x00C394E4
 	.bss        start:0x00F05624 end:0x00F063B8
 
 Lionhead/LHLib/ver5.0/RPFollow.cpp:
@@ -4699,7 +4717,7 @@ Lionhead/LH3DLib/development/MeshIntersect.cpp:
 	.text       start:0x00864FC0 end:0x00867D10
 	.rdata      start:0x009A3BC4 end:0x009A3BC8
 	.CRT$XCU    start:0x009C7E04 end:0x009C7E14 align:4
-	.data       start:0x00C394E4 end:0x00C39544
+	.data       start:0x00C394E4 end:0x00C395A8
 	.bss        start:0x00F063C0 end:0x00FA23E0
 
 Lionhead/LH3DLib/development/CollideBox.cpp:
@@ -4866,6 +4884,7 @@ GameSpy/nonport.c:
 
 GameSpy/Peer/peerUtil.c:
 	.text       start:0x0088AC30 end:0x0088AD10
+	.data       start:0x00C3A6AC end:0x00C3A6B0
 
 GameSpy/Peer/peerCEngine.c:
 	.text       start:0x0088AD10 end:0x0088B650

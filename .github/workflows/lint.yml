@@ -78,6 +78,9 @@ jobs:
     - name: BW1WCI .text
       run: python tools/split-gaps.py --check -v BW1WCI -s .text --range 0x401000-0x7C6CC0
 
+    - name: BW1W120 .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W120 -s .data
+
     # Every configure.py unit has splits in some version.
     - name: configure.py units
       run: python tools/split-gaps.py --check --units

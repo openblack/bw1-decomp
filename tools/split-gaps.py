@@ -20,6 +20,9 @@ is not reported.
 --check the script exits with status 1 when it reports a gap; CI runs it over the ranges
 that every version should cover completely.
 
+--allow-padding leaves out alignment padding: a gap shorter than 16 bytes and than the
+alignment of the address it ends at, which the linker inserts to align the next object.
+
 --units instead lists the objects of configure.py that no version's splits.txt (executable
 or module) claims: they compile to nothing in any build. The names are read from
 configure.py's source, not by running it, so this needs no original files.
@@ -124,6 +127,12 @@ def split_units():
     return units
 
 
+def is_padding(start, end):
+    """A gap the linker leaves to align the object at `end`: shorter than that alignment, at most 15 bytes."""
+    size = end - start
+    return size < 16 and size < (end & -end)
+
+
 def parse_range(text):
     start, sep, end = text.partition("-")
     if not sep or int(end, 16) <= int(start, 16):
@@ -139,6 +148,8 @@ def main():
     ap.add_argument("--min-size", type=lambda x: int(x, 0), default=1, help="skip gaps smaller than this")
     ap.add_argument("--range", action="append", type=parse_range, metavar="START-END",
                     help="only report gaps inside this address range, repeatable (default: everywhere)")
+    ap.add_argument("--allow-padding", action="store_true",
+                    help="leave out gaps that only align the next object (shorter than 16 bytes and its end's alignment)")
     ap.add_argument("--units", action="store_true", help="list configure.py units no version's splits.txt claims")
     ap.add_argument("--check", action="store_true", help="exit with status 1 if anything is reported")
     args = ap.parse_args()
@@ -173,6 +184,8 @@ def main():
         if args.range:
             found = [(max(s, lo), min(e, hi)) for s, e in found for lo, hi in args.range if s < hi and lo < e]
         found = [g for g in found if g[1] - g[0] >= args.min_size]
+        if args.allow_padding:
+            found = [g for g in found if not is_padding(*g)]
         if not found:
             continue
         size = sum(e - s for s, e in found)
