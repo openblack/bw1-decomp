@@ -18,14 +18,23 @@ class GObjectInfo;
 class GFeatureInfo : public GMultiMapFixedInfo
 {
 public:
-	uint32_t field_0x120;
+	MESH_LIST Mesh;
 
 	// Override methods
 
-	// BW1W120 00421eb0 BW1M119 010ab420
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00421ea0 BW1M119 010a8550
-	virtual MESH_LIST GetMesh() const;
+	virtual MESH_LIST GetMesh() const { return Mesh; }
+	// BW1W120 00421eb0 BW1M119 010ab420
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = FEATURE_INFO_LAST;
+		return Infos;
+	}
+
+	// Non-virtual methods
+
+	// BW1W120 00527700 BW1M119 010d51e0
+	const char* GetInfoText() const;
 
 	// Static data
 
@@ -38,7 +47,7 @@ public:
 	static GFeatureInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in Feature.h.
-	INFO_DATA_BLOCK(field_0x120, field_0x120)
+	INFO_DATA_BLOCK(Mesh, Mesh)
 	INFO_DERIVED_LOADERS(25, "Feature.h", GMultiMapFixedInfo)
 };
 

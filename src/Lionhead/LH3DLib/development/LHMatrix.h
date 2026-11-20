@@ -43,9 +43,9 @@
 // accessors return the rows at 0x0, 0xc, 0x18 and 0x24.
 // The union is inferred from MSVC6 inliner costs, not from symbols: a store to a named float member costs
 // less IL than a store to m[i]. The helpers written against the named members (SetIdentity, SetScale,
-// PostTranslation, RotateY) give inline sizes that reproduce the target's inlining decisions in every
-// LH3DObject::SetPosition caller (Object::SetXYZAngles, Abode::CallVirtualFunctionsForCreation, ...), while
-// Translation's cost fits only with m[] stores. See docs/msvc6_inliner.md.
+// Translation, PostTranslation, RotateY) give inline sizes that reproduce the target's inlining decisions in
+// every LH3DObject::SetPosition caller (Object::SetXYZAngles, Abode::CallVirtualFunctionsForCreation, ...)
+// and in LH3DObject::SetPosition's own copy, which inlines all of them. See docs/msvc6_inliner.md.
 struct LHMatrix
 {
 	union {
@@ -61,22 +61,18 @@ struct LHMatrix
 
 	// Non-virtual methods
 
-	// Inliner IL size: 101
+	// Inliner IL size: 93
 	// BW1W120 00403500 BW1M119 01044210
 	void SetIdentity()
 	{
-		_43 = 0.0f;
-		_42 = 0.0f;
-		_41 = 0.0f;
+		_41 = _42 = _43 = 0.0f;
 		_32 = 0.0f;
 		_31 = 0.0f;
 		_23 = 0.0f;
 		_21 = 0.0f;
 		_13 = 0.0f;
 		_12 = 0.0f;
-		_33 = 1.0f;
-		_22 = 1.0f;
-		_11 = 1.0f;
+		_11 = _22 = _33 = 1.0f;
 	}
 	// Inliner IL size: 105
 	// BW1W120 00519320 BW1M119 inlined
@@ -95,23 +91,22 @@ struct LHMatrix
 		_22 = scale;
 		_11 = scale;
 	}
-	// Inliner IL size: 68, plus the nested SetIdentity
+	// Inliner IL size: 62, plus the nested SetIdentity
 	// BW1W120 00403530 BW1M119 inlined
 	void __fastcall Translation(const LHPoint& translation)
 	{
 		SetIdentity();
-		m[9] = translation.x;
-		m[10] = translation.y;
-		m[11] = translation.z;
+		_41 = translation.x;
+		_42 = translation.y;
+		_43 = translation.z;
 	}
-	// Inliner IL size: 69
+	// Inliner IL size: 51
 	// BW1W120 00403570 BW1M119 inlined
 	void __fastcall PostTranslation(const LHPoint& translation)
 	{
-		// Mac loads _41 first.
-		_41 = _41 + translation.x;
-		_42 = _42 + translation.y;
-		_43 = _43 + translation.z;
+		_41 += translation.x;
+		_42 += translation.y;
+		_43 += translation.z;
 	}
 	// Inliner IL size: 60
 	// BW1W120 004607b0 BW1M119 013eb4b0

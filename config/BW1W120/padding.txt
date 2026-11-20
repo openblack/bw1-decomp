@@ -91,6 +91,9 @@
 0x00420A1B call_rel32 0x00401879  # AnimalSpellWolf
 0x0042141A call_indirect 0x008A9114  # AnimalTiger: __imp__ImmReleaseContext@4
 0x0042165A call_indirect 0x008A9068  # AnimalWolf: __imp__CreateDIBSection@4
+0x00421FDA call_indirect 0x008A9328  # AnimatedStatic: __imp__LHEditBox__YAHPBDKKKK0HPAD_Z@4
+0x0042217B call_rel32 0x00401879  # AnimatedStatic
+0x00422CCA call_indirect 0x008A901C  # AnimatedStatic: __imp__TrackMouseEvent@4
 0x004244CB call_rel32 0x00401879  # Arena
 0x004246EA call_indirect 0x008A9640  # Arena: __imp__OpenRemoteLobby_LHLobby__QAE_AW4LH_RETURN__PAVLHNetUser__PAVLHTransportInfo___Z@4
 0x0042495B call_rel32 0x00401879  # Arena

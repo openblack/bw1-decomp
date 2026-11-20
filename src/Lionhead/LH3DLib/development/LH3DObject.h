@@ -90,18 +90,6 @@ public:
 		LINKED_TYPE_CI_PAD9,
 		LINKED_TYPE_CI_PAD10,
 		LINKED_TYPE_CI_PAD11,
-		LINKED_TYPE_CI_PAD12,
-		LINKED_TYPE_CI_PAD13,
-		LINKED_TYPE_CI_PAD14,
-		LINKED_TYPE_CI_PAD15,
-		LINKED_TYPE_CI_PAD16,
-		LINKED_TYPE_CI_PAD17,
-		LINKED_TYPE_CI_PAD18,
-		LINKED_TYPE_CI_PAD19,
-		LINKED_TYPE_CI_PAD20,
-		LINKED_TYPE_CI_PAD21,
-		LINKED_TYPE_CI_PAD22,
-		LINKED_TYPE_CI_PAD23,
 #endif
 	};
 
@@ -222,37 +210,7 @@ public:
 	virtual void SetPosition(float x, float y, float z);
 	// Inliner IL size: 194
 	// BW1W120 00423140 BW1M119 01020820 (LHCombined Release)
-	virtual void __fastcall SetPosition(const LHPoint& point, float y_angle, float scale)
-	{
-		if (y_angle != 0.0f)
-		{
-			if (scale != 1.0f)
-			{
-				matrix.SetScale(scale);
-				matrix.PostTranslation(point);
-				matrix.RotateY(y_angle);
-			}
-			else
-			{
-				matrix.Translation(point);
-				matrix.RotateY(y_angle);
-			}
-		}
-		else
-		{
-			if (scale != 1.0f)
-			{
-				matrix.SetScale(scale);
-				matrix.PostTranslation(point);
-			}
-			else
-			{
-				matrix.Translation(point);
-			}
-		}
-		this->scale = scale;
-		this->y_angle = y_angle;
-	}
+	virtual void __fastcall SetPosition(const LHPoint& point, float y_angle, float scale);
 	// BW1W120 00815fa0 BW1M119 01073c20 (LHCombined Release)
 	virtual void __fastcall SetLinkedPosition(LH3DObject* linked_obj, float weight, LinkedType type);
 	// BW1W120 007f9770 BW1M119 010205e0 (LHCombined Release)
@@ -627,5 +585,7 @@ extern LH3DTexture* g_burn_texture;
 extern int special_jc_x;
 // BW1W120 00ea1b14
 extern int special_jc_y;
+
+#include "LH3DObjectInline.h"
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_INCLUDED_H */

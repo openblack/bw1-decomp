@@ -464,6 +464,18 @@ void GScript::GetProperty()
 	g_scriptDLL->FLOAT_PUSH(0.0f);
 }
 
+#ifdef VERSION_BW1WCI
+static inline Game3DObject* GetGame3DObject(GameThingWithPos* thing)
+{
+	return ((Object*)thing)->Game3dObject;
+}
+
+static inline void SetObject3DPosition(LH3DObject* object, const LHPoint& pos, float y_angle, float scale)
+{
+	object->LH3DObject::SetPosition(pos, y_angle, scale);
+}
+#endif
+
 void GScript::SetProperty(GameThingWithPos* thing, SCRIPT_OBJECT_PROPERTY_TYPE property, float value)
 {
 	Creature* creature = thing->CastCreature();
@@ -850,8 +862,9 @@ void GScript::SetProperty(GameThingWithPos* thing, SCRIPT_OBJECT_PROPERTY_TYPE p
 					PhysicsObject::RemoveObject((Object*)thing, true, true);
 				}
 				thing->Pos.SetAltitude(0.0f);
-				if (((Object*)thing)->Game3dObject != NULL)
+				if (GetGame3DObject(thing) != NULL)
 				{
+					LHPoint          unused;
 					Object*          obj = (Object*)thing;
 					float            scale = thing->GetScale();
 					float            yAngle = obj->GetYAngle();
@@ -860,7 +873,7 @@ void GScript::SetProperty(GameThingWithPos* thing, SCRIPT_OBJECT_PROPERTY_TYPE p
 					{
 						LHPoint pos;
 						GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
-						object->LH3DObject::SetPosition(pos, yAngle, scale);
+						SetObject3DPosition(object, pos, yAngle, scale);
 					}
 				}
 				return;

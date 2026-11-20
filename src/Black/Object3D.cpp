@@ -88,12 +88,7 @@ Game3DObject* Game3DObject::Create(const MapCoords& coords, LH3DObject::ObjectTy
 	if (object != NULL)
 	{
 		object->SetMesh(LH3DMesh::GetPackedMesh(mesh), NULL, NULL);
-		LHPoint point;
-		LHPoint unused0;
-		LHPoint unused1;
-		GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-		LH3DObject* object3d = object;
-		object3d->LH3DObject::SetPosition(point, y_angle, scale);
+		SetPositionOnMap(object, coords, y_angle, scale);
 	}
 	return object;
 }
@@ -196,6 +191,7 @@ void __fastcall Game3DObject::SetPositionAndXZYScale(const MapCoords& coords, fl
 void __fastcall Game3DObject::SetPositionAndXZYScale(const LHPoint& point, float y_angle, float scale, float xz_scale,
                                                      float y_scale)
 {
+	LH3DMesh::GetPackedMesh(0);
 	LH3DMesh::GetPackedMesh(0);
 	scale *= xz_scale;
 	if (y_angle != 0.0f)

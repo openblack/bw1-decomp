@@ -1857,13 +1857,7 @@ void Living::PreDrawScale(float scale)
 	}
 	else
 	{
-		float       yAngle = GetYAngle() + HALF_PI_F;
-		LH3DObject* object = Game3dObject;
-		{
-			LHPoint pos;
-			GLandscape::ConvertMapCoordToLandscapePoint(Pos, pos);
-			object->LH3DObject::SetPosition(pos, yAngle, scale);
-		}
+		SetPositionOnMap(Game3dObject, Pos, GetYAngle() + HALF_PI_F, scale);
 		Game3dObject->SetCurrentCycleTime(MoveAnimByTime(Game3dObject->GetCurrentAnim(),
 		                                                 Game3dObject->GetCurrentCycleTime(), GGame::g_game->TimeInc));
 	}

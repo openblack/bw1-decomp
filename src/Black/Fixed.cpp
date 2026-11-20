@@ -481,6 +481,16 @@ void SingleMapFixed::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	Object::CallVirtualFunctionsForCreation(coords);
 }
 
+static inline bool32_t IsUnavailable(const GameThing* thing)
+{
+	return (thing->Flags & GAME_THING_FLAG_UNAVAILABLE) != 0;
+}
+
+static inline bool32_t IsPSysFlying(const GameThing* thing)
+{
+	return (thing->Flags & GAME_THING_FLAG_PSYS_FLYING) != 0;
+}
+
 void MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 	Create3DObject();
@@ -497,7 +507,7 @@ void MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	}
 	InitialiseIsFixedForMapList();
 	AllocateMultiChild();
-	if (!IsInMagicHand() && !IsUnavailableOrFlying())
+	if (!IsInMagicHand() && !IsUnavailable(this) && !IsPSysFlying(this))
 	{
 		InsertMapObject();
 	}

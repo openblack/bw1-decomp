@@ -34,7 +34,7 @@ struct Zoomer
 	float GetDestination() { return destination; }
 	// BW1W120 inlined BW1M119 inlined
 	float GetDuration() { return duration; }
-	// Inliner IL size: 343
+	// Inliner IL size: 347
 	// BW1W120 00407d60 BW1M119 010517e0
 	void SetDestinationWithSpeedAndTime(float destination, float speed, float time)
 	{
@@ -64,8 +64,8 @@ struct Zoomer
 		matrix._31 = t2;
 		matrix._32 = time;
 		matrix._33 = 1.0f;
-		matrix._43 = 0.0f;
-		matrix._42 = 0.0f;
+		matrix.m[11] = 0.0f;
+		matrix.m[10] = 0.0f;
 		matrix._41 = 0.0f;
 		LHMatrix inverse;
 		inverse.SetInverse(matrix);
