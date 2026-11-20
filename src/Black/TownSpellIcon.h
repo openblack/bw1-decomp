@@ -13,6 +13,8 @@
 
 // Forward Declares
 
+class GSpellSeedInfo;
+class GSpellIconInfo;
 class Base;
 class GPlayer;
 class GameOSFile;
@@ -95,6 +97,10 @@ public:
 	void SetToZero();
 
 	// Non-virtual methods
+	// BW1W120 00748cb0 BW1M119 0156a620
+	static TownCentreSpellIcon* Create(const MapCoords& coords, const GSpellIconInfo* icon_info,
+	                                   const GSpellSeedInfo* seed_info, TownCentre* town_centre, float y_angle,
+	                                   float scale, float param_7, int param_8);
 
 	// BW1W120 00748eb0 BW1M119 0156a350
 	void SetPULevel(POWER_UP_TYPE power_up_type, bool enabled);

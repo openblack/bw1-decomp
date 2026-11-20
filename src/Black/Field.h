@@ -193,6 +193,12 @@ public:
 	      float y_angle, float food, int wood);
 
 	// Non-virtual methods
+	// BW1W120 00528970 BW1M119 010d9310
+	MapCoords GetRandomFieldPos();
+	// BW1W120 00529240 BW1M119 010d8630
+	bool32_t GetHarvestCropPos(Villager* villager, MapCoords& pos);
+	// BW1W120 00528340 BW1M119 010d9a20
+	void RemoveFarmer(Villager* villager);
 
 	// BW1W120 005283e0 BW1M119 010d9920
 	void AddFarmer(Villager* villager);

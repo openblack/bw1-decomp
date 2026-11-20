@@ -81,6 +81,8 @@ public:
 
 	// BW1W120 0071b020 BW1M119 01084710
 	static void ProcessTownDesireSFX(GInterfaceStatus& status);
+	// BW1W120 0071bf70 BW1M119 01517000
+	static void BeliefSFX(GInterfaceStatus& status, MapCoords& pos, float strength, GUIDANCE_ALIGNMENT alignment);
 	// BW1W120 0071b570 BW1M119 01518d40
 	static void ResourceDropSFX(GInterfaceStatus& status, const MapCoords& pos, RESOURCE_RAIN_TYPE type);
 	// BW1W120 0071b7c0 BW1M119 01517b10
@@ -109,6 +111,8 @@ public:
 	void HelpSpritesDestroyBuilding(Abode& abode);
 	// BW1W120 0071c990 BW1M119 015166c0
 	void HelpSpritesLosingVillagers(Villager* villager);
+	// BW1W120 0071ccc0 BW1M119 01515ee0
+	void HelpSpritesLosingBelief(Town& town);
 	// BW1W120 0071cbe0 BW1M119 01516150
 	void HelpSpritesLowOnPeople(Town& param_1);
 	// BW1W120 0071cd40 BW1M119 01515df0

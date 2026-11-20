@@ -9,6 +9,7 @@
 // Forward Declares
 
 class GInterfaceStatus;
+class GameThingWithPos;
 struct LHPoint;
 struct MapCoords;
 class Object;
@@ -65,6 +66,8 @@ public:
 	// Static methods
 
 	static void DrawLoop(); // 0068f5e0
+	// BW1W120 0069b550 BW1M119 0142ff90
+	static void CreateBeliefSprite(GameThingWithPos* thing, const LHPoint& point, long value, unsigned long color);
 	// BW1W120 0068f750 BW1M119 01418710
 	static void InitializeOneTimeOnly();
 	// BW1W120 0068f590 BW1M119 01091210

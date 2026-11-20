@@ -60,6 +60,8 @@ public:
 	TownDesire();
 
 	// Non-virtual methods
+	// BW1W120 00745ca0 BW1M119 010613c0
+	void ProcessDesire(unsigned long desire);
 
 	// BW1W120 00745770 BW1M119 01567d40
 	void Init(Town* town);
@@ -78,6 +80,9 @@ public:
 	TOWN_DESIRE_INFO GetMostDesired() const;
 	// BW1W120 00745f80 BW1M119 0105ff30
 	GTownDesireInfo* GetInfo(unsigned long desire) const;
+	// Inliner IL size: 51
+	// BW1W120 inlined BW1M119 inlined
+	float GetTotalDesire(unsigned long desire) { return DesireCheat[desire] + DesireBoost[desire] + Desire[desire]; }
 	// BW1W120 007465d0 BW1M119 01566d00
 	DesireSort* GetSortedDesire(uint32_t index);
 	// BW1W120 00746660 BW1M119 01566c40
