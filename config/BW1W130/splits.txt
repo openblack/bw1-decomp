@@ -146,16 +146,16 @@ Black/AnimalWolf.cpp:
 	.bss        start:0x00CD5C64 end:0x00CD5C68
 
 Black/AnimatedStatic.cpp:
-	.text       start:0x00421E10 end:0x00423140
-	.rdata      start:0x008C69B8 end:0x008C7C2C
+	.text       start:0x00421E10 end:0x004233B0
+	.rdata      start:0x008C69B8 end:0x008C7C30
 	.rdata$r    start:0x00A27B38 end:0x00A27C78
 	.CRT$XCU    start:0x00A460F4 end:0x00A46100 align:4
 	.data       start:0x00A495A8 end:0x00A49670
 	.bss        start:0x00CD5C68 end:0x00CD6F34
 
 Black/Animations.cpp:
-	.text       start:0x00423140 end:0x00424480
-	.rdata      start:0x008C7C2C end:0x008C7C78
+	.text       start:0x004233B0 end:0x00424480
+	.rdata      start:0x008C7C30 end:0x008C7C78
 	.CRT$XCU    start:0x00A46100 end:0x00A4610C align:4
 	.data       start:0x00A49670 end:0x00A496B0
 	.bss        start:0x00CD6F34 end:0x00CD6F40

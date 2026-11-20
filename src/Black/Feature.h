@@ -26,40 +26,52 @@ class Feature : public MultiMapFixed
 public:
 	// Override methods
 
+	// BW1W120 004220d0 BW1M119 010a84f0
+	virtual MESH_LIST GetMesh() const { return info->GetMesh(); }
+	// BW1W120 004220e0 BW1M119 010a8590
+	virtual bool32_t IsFeature() { return true; }
+	// BW1W120 004220f0 BW1M119 010a85c0
+	virtual bool32_t IsRepaired() { return GetPercentRepaired() >= 1.0f; }
+	// BW1W120 00422110 BW1M119 010a8630
+	virtual bool32_t IsBuilt()
+	{
+		if ((FixedFlags & FIXED_FLAG_UNDER_CONSTRUCTION) == FIXED_FLAG_UNDER_CONSTRUCTION)
+		{
+			return false;
+		}
+		return GetPercentBuilt() >= 1.0f;
+	}
+	// BW1W120 00422140 BW1M119 010a86d0
+	virtual uint32_t GetCreatureBeliefType() { return CREATURE_BELIEF_TYPE_FEATURE; }
+	// BW1W120 00422150 BW1M119 010a8710
+	virtual bool32_t CanBePickedUpByCreature(Creature* creature)
+	{
+		return IsMushroom(creature) && (Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP) == 0;
+	}
+	// BW1W120 00422e70 BW1M119 010d6340
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_FEATURE; }
+	// BW1W120 00422e80 BW1M119 010d6380
+	virtual char* GetDebugText() { return "Feature:"; }
+	// BW1W120 inlined BW1M119 010ab260
+	~Feature() {}
 	// BW1W120 005273b0 BW1M119 010d5e20
 	virtual GPlayer* GetPlayer();
-	// BW1W120 004220f0 BW1M119 010a85c0
-	virtual bool32_t IsRepaired();
-	// BW1W120 00422110 BW1M119 010a8630
-	virtual bool32_t IsBuilt();
 	// BW1W120 00527790 BW1M119 0102a790
 	virtual bool32_t IsDrawBuilding();
 	// BW1W120 005273d0 BW1M119 010d5cb0
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
-	// BW1W120 00422e80 BW1M119 010d6380
-	virtual char* GetDebugText();
-	// BW1W120 00422e70 BW1M119 010d6340
-	virtual uint32_t GetSaveType();
-	// BW1W120 00422140 BW1M119 010a86d0
-	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00422150 BW1M119 010a8710
-	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 005276d0 BW1M119 010d5220
-	virtual bool32_t IsMushroom(Creature* param_1);
-	// BW1W120 004220e0 BW1M119 010a8590
-	virtual bool32_t IsFeature();
+	virtual bool32_t IsMushroom(Creature* creature);
 	// BW1W120 005277d0 BW1M119 010d4dd0
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 00527820 BW1M119 010d4cf0
 	virtual HELP_TEXT GetQueryLastEnumText();
 	// BW1W120 005276c0 BW1M119 01008280
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 004220d0 BW1M119 010a84f0
-	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00518690 BW1M119 01026430
 	virtual void Draw();
 	// BW1W120 005275b0 BW1M119 010d57e0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 0053c520 BW1MCI119 010e61f0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
@@ -78,8 +90,17 @@ public:
 		: MultiMapFixed(coords, (const GMultiMapFixedInfo*)info, y_angle, scale, percent_built, under_construction)
 	{
 	}
-	// BW1W120 inlined BW1M119 010ab260
-	~Feature() {}
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 010d5df0
+	const GFeatureInfo* GetInfo() const { return (const GFeatureInfo*)info; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0053c5e0 BW1MCI119 010e5fb0
+	bool32_t IsEggTree();
+#endif
+	// BW1W120 00527710 BW1M119 010d5160
+	char* GetInfoText(char* buffer);
 
 	// Static methods
 

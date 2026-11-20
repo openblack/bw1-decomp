@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/AllMeshes.h> /* For enum ANIM_LIST */
+
 #include "FeatureInfo.h" /* For struct GFeatureInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
@@ -14,12 +16,8 @@ class Base;
 class GAnimatedStaticInfo : public GFeatureInfo
 {
 public:
-	uint8_t field_0x124[0x8];
-
-	// Override methods
-
-	// BW1W120 00421f20 BW1M119 010a9ff0
-	virtual ~GAnimatedStaticInfo();
+	uint32_t  field_0x124;
+	ANIM_LIST Anim;
 
 	// Static data
 
@@ -32,7 +30,7 @@ public:
 	static GAnimatedStaticInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in AnimatedStatic.h.
-	INFO_DATA_BLOCK(field_0x124, field_0x124)
+	INFO_DATA_BLOCK(field_0x124, Anim)
 	INFO_DERIVED_LOADERS(10, "AnimatedStatic.h", GFeatureInfo)
 };
 

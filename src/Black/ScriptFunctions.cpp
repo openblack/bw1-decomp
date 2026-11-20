@@ -760,6 +760,11 @@ inline void StorePreviousPosition(Object* object)
 }
 
 #ifdef VERSION_BW1WCI
+static inline void SetObjectPositionOnMap(Object* object, const MapCoords& coords, float y_angle, float scale)
+{
+	SetPositionOnMap(object->Game3dObject, coords, y_angle, scale);
+}
+
 void GScript::SetPosition()
 {
 	LHPoint pos;
@@ -819,7 +824,7 @@ void GScript::SetPosition()
 				object->MoveMapObject(coords);
 				if (object->Game3dObject != NULL)
 				{
-					SetPositionOnMap(object->Game3dObject, coords, object->GetYAngle(), object->GetScale());
+					SetObjectPositionOnMap(object, coords, object->GetYAngle(), object->GetScale());
 				}
 				StorePreviousPosition(object);
 				if (object->IsLiving())

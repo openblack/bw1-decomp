@@ -16,7 +16,7 @@ struct Point2D
 	// BW1W120 inlined BW1M119 inlined
 	Point2D() {}
 	// BW1W120 inlined BW1M119 inlined
-	Point2D(float x, float y) : x(x), y(y) {}
+	Point2D(float x, float y);
 	// BW1W120 00468480 BW1M119 010eb810
 	Point2D(const Point2D& other) : x(other.x), y(other.y) {}
 
@@ -356,5 +356,7 @@ struct LHPoint
 		}
 	}
 };
+
+#include "Point2DInline.h"
 
 #endif /* BW1_DECOMP_LH_POINT_INCLUDED_H */
