@@ -487,7 +487,7 @@ Black/CPUCheck.cpp:
 
 Black/Creature.cpp:
 	.text       start:0x00474D50 end:0x004814D0
-	.rdata      start:0x008D0F4C end:0x008D407C
+	.rdata      start:0x008D0F3C end:0x008D407C
 	.rdata$r    start:0x00A29620 end:0x00A29B90
 	.CRT$XCU    start:0x00A46338 end:0x00A46370 align:4
 	.data       start:0x00A4FCD8 end:0x00A50CA0
@@ -629,7 +629,7 @@ Black/CreatureMentalAttribute.cpp:
 
 Black/CreatureMentalAttributeTest.cpp:
 	.text       start:0x004D65B0 end:0x004D9B50
-	.rdata      start:0x008D49AC end:0x008D4E08
+	.rdata      start:0x008D49A4 end:0x008D4E08
 	.rdata$r    start:0x00A2A720 end:0x00A2AC88
 	.CRT$XCU    start:0x00A464A0 end:0x00A464AC align:4
 	.data       start:0x00C5F048 end:0x00C5F988
@@ -762,7 +762,7 @@ Black/CreaturePen.cpp:
 
 Black/CreaturePhysical.cpp:
 	.text       start:0x004F1600 end:0x004F26B0
-	.rdata      start:0x008D64C0 end:0x008D64F8
+	.rdata      start:0x008D64C0 end:0x008D6530
 	.CRT$XCU    start:0x00A465C8 end:0x00A465D4 align:4
 	.data       start:0x00C60868 end:0x00C608C0
 	.bss        start:0x00D2EA44 end:0x00D2EA4C
@@ -1486,7 +1486,7 @@ Black/HelpSystemQuery.cpp:
 
 Black/HelpSystemToolTips.cpp:
 	.text       start:0x005CD150 end:0x005CE2B0
-	.rdata      start:0x009582D4 end:0x00958310
+	.rdata      start:0x009582D0 end:0x00958310
 	.CRT$XCU    start:0x00A46C0C end:0x00A46C18 align:4
 	.data       start:0x00C72300 end:0x00C72368
 	.bss        start:0x00D978EC end:0x00D98BB8
@@ -1981,6 +1981,7 @@ Black/MPFEPlayerDetails.cpp:
 
 Black/MPFEStartGameData.cpp:
 	.text       start:0x00636540 end:0x00637060
+	.rdata      start:0x0095E7B8 end:0x0095E7DC
 	.CRT$XCU    start:0x00A47084 end:0x00A47090 align:4
 	.data       start:0x00C7E760 end:0x00C7E83C
 
@@ -2027,7 +2028,7 @@ Black/OnMapTrajectory.cpp:
 
 Black/OOSDebug.cpp:
 	.text       start:0x0063F8D0 end:0x00640080
-	.rdata      start:0x0095F124 end:0x0095F130
+	.rdata      start:0x0095F124 end:0x0095F144
 	.CRT$XCU    start:0x00A470FC end:0x00A47110 align:4
 	.data       start:0x00C7EA40 end:0x00C7EAFC
 
@@ -2362,7 +2363,7 @@ Black/PSysProperties.cpp:
 
 Black/PSysRenderParticle.cpp:
 	.text       start:0x006CBD50 end:0x006CF820
-	.rdata      start:0x00966CCC end:0x00967F10
+	.rdata      start:0x00966CCC end:0x00968040
 	.CRT$XCU    start:0x00A4750C end:0x00A47528 align:4
 	.data       start:0x00C8A0A0 end:0x00C8A360
 	.bss        start:0x00DCFF60 end:0x00DCFFD0
@@ -2467,6 +2468,7 @@ Black/ScriptCamera.cpp:
 
 Black/ScriptComputerPlayer.cpp:
 	.text       start:0x006F3110 end:0x006F3C60
+	.rdata      start:0x0096FFA0 end:0x0096FFA4
 	.CRT$XCU    start:0x00A47614 end:0x00A4761C align:4
 	.data       start:0x00C8CF34 end:0x00C8CF84
 
@@ -2681,7 +2683,7 @@ Black/SoundConfirmation.cpp:
 
 Black/SoundGuidance.cpp:
 	.text       start:0x0071F3E0 end:0x00721F60
-	.rdata      start:0x009C260C end:0x009EB7D0
+	.rdata      start:0x009ADF14 end:0x009EB7D0
 	.CRT$XCU    start:0x00A47770 end:0x00A47780 align:4
 	.data       start:0x00CA2F30 end:0x00CA2F90
 	.bss        start:0x00E1AD7C end:0x00E1BAA0
@@ -3280,6 +3282,7 @@ Black/WorldRoom.cpp:
 
 Black/WorldRoomCamera.cpp:
 	.text       start:0x007A4940 end:0x007A63D0
+	.rdata      start:0x00A1E9FC end:0x00A1EA04
 	.data       start:0x00CAB648 end:0x00CAB980
 
 Black/WorldRoomInfo.cpp:
@@ -4430,6 +4433,7 @@ Lionhead/LH3DLib/development/PhysOb.cpp:
 Lionhead/LH3DLib/development/LH3DIsland.cpp:
 	.text       start:0x00803920 end:0x0080A000
 	.text$x     start:0x008ACF60 end:0x008ACF90 align:4
+	.rdata      start:0x00A225C4 end:0x00A225E0
 	.data       start:0x00CB8128 end:0x00CB8CB4
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
@@ -4476,6 +4480,7 @@ Lionhead/LH3DLib/development/LH3DRender.cpp:
 Lionhead/LH3DLib/development/LH3DText.cpp:
 	.text       start:0x00835230 end:0x00838B90
 	.text$x     start:0x008AD1F0 end:0x008AD220 align:4
+	.rdata      start:0x00A23378 end:0x00A23484
 	.data       start:0x00CB9CD4 end:0x00CB9D48
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
@@ -4517,6 +4522,7 @@ Lionhead/LH3DLib/development/LandCell.cpp:
 
 Lionhead/LHLib/ver5.0/Route.cpp:
 	.text       start:0x00840410 end:0x008419C0
+	.rdata      start:0x00A234C8 end:0x00A234E8
 
 Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
 	.text       start:0x008419C0 end:0x00841F90
@@ -4543,6 +4549,7 @@ Lionhead/LH3DLib/development/LH3DZSorter.cpp:
 Lionhead/LH3DLib/development/LH3DStorm.cpp:
 	.text       start:0x00844580 end:0x00845630
 	.text$x     start:0x008AD310 end:0x008AD350 align:4
+	.rdata      start:0x00A234E8 end:0x00A23504
 
 Lionhead/LH3DLib/development/LH3DSprite.cpp:
 	.text       start:0x00845630 end:0x00846300
@@ -4571,6 +4578,7 @@ Lionhead/LH3DLib/development/LH3DMem.cpp:
 
 Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x00847FD0 end:0x008497B0
+	.rdata      start:0x00A23558 end:0x00A23578
 	.CRT$XCU    start:0x00A47E20 end:0x00A47E24 align:4
 	.bss        start:0x00F7770C end:0x00F77714
 
@@ -4593,10 +4601,12 @@ Lionhead/LH3DLib/development/LH3DHair.cpp:
 
 Lionhead/LH3DLib/development/Leash.cpp:
 	.text       start:0x0084D550 end:0x0084EB50
+	.rdata      start:0x00A23578 end:0x00A23580
 	.data       start:0x00CBA18C end:0x00CBA19C
 
 Lionhead/LH3DLib/development/LH3DPrimitive.cpp:
 	.text       start:0x0084EB50 end:0x00862970
+	.rdata      start:0x00A23580 end:0x00A23598
 	.CRT$XCU    start:0x00A47E2C end:0x00A47E40 align:4
 	.data       start:0x00CBA19C end:0x00CBA1F8
 
@@ -4643,14 +4653,13 @@ Lionhead/LHLib/ver5.0/RPAvoid.cpp:
 
 Lionhead/LH3DLib/development/LH3DSky.cpp:
 	.text       start:0x0086E780 end:0x00871450
-	.rdata      start:0x00A235B8 end:0x00A235CC
+	.rdata      start:0x00A235B8 end:0x00A235E8
 	.CRT$XCU    start:0x00A47E60 end:0x00A47E6C align:4
 	.data       start:0x00CBA4E0 end:0x00CBA5B0
 	.bss        start:0x010236C8 end:0x01023934
 
 Lionhead/LH3DLib/development/SnowCover.cpp:
 	.text       start:0x00871450 end:0x008720D0
-	.rdata      start:0x00A235CC end:0x00A235D0
 	.data       start:0x00CBA5B0 end:0x00CBA5D0
 	.bss        start:0x01023934 end:0x01023AD8
 
@@ -4733,6 +4742,7 @@ Lionhead/LH3DLib/development/LHIlib.cpp:
 Lionhead/LH3DLib/development/LH3DShadow.cpp:
 	.text       start:0x00884ED0 end:0x008861D0
 	.text$x     start:0x008AD7B0 end:0x008AD7C8 align:4
+	.rdata      start:0x00A2365C end:0x00A23770
 	.xdata$x    start:0x00A3F5B8 end:0x00A3F5E0 align:4
 	.data       start:0x00CBAA00 end:0x00CBAA60
 
