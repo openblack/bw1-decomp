@@ -446,6 +446,8 @@ config.custom_build_rules = [
         "description": "PATCH $in",
     },
 ]
+# post_link_patch.py reads every version's padding table (config/<version>/padding.txt).
+_padding_tables = sorted(p.as_posix() for p in Path("config").glob("*/padding.txt"))
 _msvc_dir = f"{(config.compilers_path or Path('build/compilers')).as_posix()}/{config.linker_version}"
 _patch_stamp = f"build/{config.version}/patched_compiler_headers"
 config.custom_build_steps = {
@@ -477,7 +479,7 @@ config.custom_build_steps = {
             "outputs": _patched,
             "rule": "postpatch",
             "inputs": _linked,
-            "implicit": ["tools/post_link_patch.py", *_module_linked],
+            "implicit": ["tools/post_link_patch.py", *_padding_tables, *_module_linked],
             "implicit_outputs": _module_patched,
         },
     ],
@@ -802,6 +804,10 @@ def IntelObject(completed, name, **options):
 
 
 config.warn_missing_config = True
+# cl numbers a unit's dynamic initializers (_$E) and their .CRT$XCU slots (_$S) in an order any
+# header change shifts. The build renames them after the target split's names right after cl
+# (tools/label-objects.py), which symbols.txt gives after their address.
+config.label_objects = True
 config.warn_missing_source = False
 config.libs = [
     {

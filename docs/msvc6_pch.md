@@ -100,8 +100,9 @@ object). A static defined in the PCH gets one only if the unit uses it, at its f
 
 `cl` numbers the `_$E` initializer functions and `_$S` pointers of a unit in one sequence.
 With `/Yu` the sequence continues after the numbers the PCH's headers used, so every
-initializer of the unit gets another name. The numbers do not reach the executable; the
-labels in `symbols.txt` were fitted to our compiles.
+initializer of the unit gets another name. The numbers do not reach the executable: the build
+renames each compiled object's labels after the target's (`tools/label-objects.py`), and
+`symbols.txt` names them after their addresses (`_$E_<address>`, `_$S_<address>`).
 
 ### RTTI order is not a PCH signal [verified]
 
@@ -245,21 +246,23 @@ does not implement.
 
 ### After a rebase
 
-The `_$E`/`_$S` names in `symbols.txt` follow the compiled objects (§1). When they conflict,
-take `main`'s `symbols.txt` and regenerate them, for each version:
+The `_$E`/`_$S` names in `symbols.txt` are their addresses (§1), which no header change moves,
+so a rebase does not renumber them, and a conflict there is a real one. The build renames the
+labels of each compiled object after the target split's right after `cl` (`label_objects` in
+`configure.py`, `tools/label-objects.py`), pairing each target initializer with the compiled
+one by structure: `.CRT$XCU` slots in order, the ctype guard's registration by its use of the
+guard, the stub's calls (body, atexit thunk) by position, and, where the two objects
+initialise their statics in another order, the static initialised or the code.
+
+A label the target does not name yet (a new split, or a numbered label from before) gets its
+address name from `relabel-initializers.py`, for each version:
 
 ```sh
 python configure.py -v BW1W120 && ninja && python tools/relabel-initializers.py --prefix runblack/ --apply && ninja
 ```
 
-The first `ninja` splits the target with `main`'s names and compiles the units, which the tool
-reads; the second splits with the new names. `relabel-initializers.py` pairs each target
-initializer with the compiled one by structure: `.CRT$XCU` slots in order, the ctype guard's
-registration by its use of the guard, the stub's calls (body, atexit thunk) by position, and,
-where the two objects initialise their statics in another order, the static initialised or the
-code. It renames only names that are already such labels, and slots dtk left unnamed, and a
-second run renames nothing. It also renames labels `main` already had out of step with its own
-compiles (`GameThing`'s, for one), so a run on `main` alone is not empty.
+The first `ninja` splits the target and compiles the units, which the tool reads; the second
+splits with the new names. A second run renames nothing.
 
 ## 3. Which units used it
 

@@ -87,6 +87,10 @@ class Object:
             # other path relative to the directory), as a build that compiled from within the
             # directory did: __FILE__ is then the file name.
             "cl_dir": None,
+            # Rename the compiled object's initializer labels after the target split's names
+            # (tools/label-objects.py) right after cl, so symbols.txt need not follow cl's
+            # numbering. None takes ProjectConfig.label_objects.
+            "label_objects": None,
             "progress_category": None,
             "scratch_preset_id": None,
             "shift_jis": None,
@@ -230,6 +234,9 @@ class ProjectConfig:
         self.linker_version: Optional[str] = None  # mwld version
         self.version: Optional[str] = None  # Version name
         self.warn_missing_config: bool = False  # Warn on missing unit configuration
+        # Rename each compiled C/C++ object's initializer labels after the target split's names
+        # right after cl (tools/label-objects.py). An Object's label_objects overrides it.
+        self.label_objects: bool = False
         self.warn_missing_source: bool = False  # Warn on missing source file
         self.rel_strip_partial: bool = True  # Generate PLFs with -strip_partial
         self.rel_empty_file: Optional[str] = (
@@ -1071,6 +1078,12 @@ def generate_build_ninja(
             command=f"${{env}}{cl6_env}${{cl_cd}}{cl_prefix}{wrapper_cmd}${{cl_chdir}}{cl_from_dir} /nologo $cflags /c $cl_src /Fo${{cl_up}}$out /Fd${{cl_up}}$pdb",
             description="CL $out",
         )
+        n.rule(
+            name="cl_label",
+            command=f"${{env}}{cl6_env}${{cl_cd}}{cl_prefix}{wrapper_cmd}${{cl_chdir}}{cl_from_dir} /nologo $cflags /c $cl_src /Fo${{cl_up}}$out /Fd${{cl_up}}$pdb"
+            f" && $python ${{label_up}}tools/label-objects.py ${{label_up}}$label_target ${{label_up}}$out",
+            description="CL $out",
+        )
         n.newline()
         n.comment("Precompiled header (MSVC /Yc)")
         n.rule(
@@ -1398,6 +1411,8 @@ def generate_build_ninja(
             n.newline()
 
     link_outputs: List[Path] = []
+    # Target objects of the split that label steps read (implicit outputs of the split).
+    label_targets: List[Path] = []
     if build_config:
         link_steps: List[LinkStep] = []
         used_compiler_versions: Set[str] = set()
@@ -1445,7 +1460,7 @@ def generate_build_ninja(
                 )
                 n.newline()
 
-        def c_build(obj: Object, src_path: Path) -> Optional[Path]:
+        def c_build(obj: Object, src_path: Path, target_obj: Optional[str] = None) -> Optional[Path]:
             # Avoid creating duplicate build rules
             if obj.src_obj_path is None or obj.src_obj_path in source_added:
                 return obj.src_obj_path
@@ -1542,9 +1557,27 @@ def generate_build_ninja(
                             dir_cflags[i + 1] = os.path.relpath(dir_cflags[i + 1], cl_dir)
                     unit_variables["cflags"] = make_flags_str(dir_cflags)
                     unit_variables["cl_src"] = make_flags_str([Path(src_path).name])
+                cl_rule = "cl"
+                label_objects = obj.options["label_objects"]
+                if label_objects is None:
+                    label_objects = config.label_objects
+                if label_objects and target_obj is not None:
+                    cl_rule = "cl_label"
+                    label_target = Path(target_obj)
+                    unit_variables["label_target"] = serialize_path(label_target)
+                    # cl run in cl_dir through cd /d leaves the label step there too.
+                    if unit_variables.get("cl_cd"):
+                        unit_variables["label_up"] = unit_variables["cl_up"]
+                    unit_implicit = [
+                        *unit_implicit,
+                        label_target,
+                        "tools/label-objects.py",
+                        "tools/relabel-initializers.py",
+                    ]
+                    label_targets.append(label_target)
                 n.build(
                     outputs=obj.src_obj_path,
-                    rule="cl",
+                    rule=cl_rule,
                     inputs=src_path,
                     variables=unit_variables,
                     implicit=unit_implicit,
@@ -1722,7 +1755,7 @@ def generate_build_ninja(
                 check_path_case(obj.src_path)
                 if file_is_c_cpp(obj.src_path):
                     # Add C/C++ build rule
-                    built_obj_path = c_build(obj, obj.src_path)
+                    built_obj_path = c_build(obj, obj.src_path, obj_path)
                 elif file_is_asm(obj.src_path):
                     # Add assembler build rule
                     built_obj_path = asm_build(obj, obj.src_path, obj.src_obj_path)
@@ -2277,6 +2310,8 @@ def generate_build_ninja(
     n.build(
         inputs=split_config_path,
         outputs=build_config_path,
+        # dtk rewrites only the objects that changed (restat).
+        implicit_outputs=label_targets,
         rule="split",
         implicit=[dtk, config.config_path, *lib_object_paths],
         order_only="pre-split",

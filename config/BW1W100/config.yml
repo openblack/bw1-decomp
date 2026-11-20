@@ -6,16 +6,20 @@ symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
 block_relocations:
+# Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate.
+  - source: 0x00401FE7
+# Abode::GetNewEp tests the 0x800000 flag, an address inside other code.
+  - source: 0x00402344
+# Bubble::UpdateAndDraw's 0x7f7f7f colour mask is an immediate, not a pointer into Swallow's vftable.
+  - source: 0x00544025
+# MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
+  - source: 0x005BED88
+
 # MPFEAlexDialog's pingdraw, TeamControls::InitControls, TeamControls::Callback, UpdateLands, Callback and
 # D2A_IncomingChatString colour and mask immediates (0xff0000, 0xffff00, 0x600000, 0x7f8000, ...) are not pointers.
   - source: 0x005D2FCC
   - source: 0x005D74D7
   - source: 0x005D7548
-# Abode::GetNewEp tests the 0x800000 flag, an address inside other code.
-  - source: 0x00402344
-# SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
-  - source: 0x006AAE43
-  - source: 0x006AAE49
 # MPFEChannelSelector::ControlCallback's and MPFECreateGame::ControlCallback's 0xe0e0e0 box colour is an
 # immediate, not a pointer.
   - source: 0x005DDA3A
@@ -30,26 +34,32 @@ block_relocations:
   - source: 0x005DE952
   - source: 0x005DE969
   - source: 0x005DE96E
+# MPFEFindGame::ControlCallback pushes the label colour 0xe0e0e0, not a pointer.
+  - source: 0x005E2A30
+  - source: 0x005E2A37
+  - source: 0x005E2A4E
+  - source: 0x005E2A53
 # MPFELogin::ControlCallback's 0xe0e0e0 box colour is an immediate, not a pointer.
   - source: 0x005E3C30
   - source: 0x005E3C35
   - source: 0x005E3C4C
   - source: 0x005E3C51
-# libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
-  - source: 0x007E6EC8
+# SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
+  - source: 0x006AAE43
+  - source: 0x006AAE49
 # VillagerName::Add's colour blend term 0x7f8000 is an immediate, not a pointer into Swallow's vftable.
   - source: 0x006F1334
-# LH3DAtmos::Render3D's 0x7f7f7f colour mask and bias are immediates, not pointers into Swallow's vftable.
-  - source: 0x007980D8
-  - source: 0x007980DE
-# Bubble::UpdateAndDraw's 0x7f7f7f colour mask is an immediate, not a pointer into Swallow's vftable.
-  - source: 0x00544025
 # LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside Wolf's vftable.
   - source: 0x00773936
   - source: 0x00773951
   - source: 0x00773AED
-# Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate.
-  - source: 0x00401FE7
+# LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
+  - source: 0x0078EC85
+# LH3DAtmos::Render3D's 0x7f7f7f colour mask and bias are immediates, not pointers into Swallow's vftable.
+  - source: 0x007980D8
+  - source: 0x007980DE
+# libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
+  - source: 0x007E6EC8
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.
   - source: 0x008FA414
   - source: 0x008FA478
@@ -60,11 +70,6 @@ block_relocations:
 # code addresses.
   - source: 0x008FC23C
   - source: 0x008FC3AC
-# MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
-  - source: 0x005BED88
-
-# LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
-  - source: 0x0078EC85
 # Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
   - source: 0x00B4609C
   - source: 0x00B53544
@@ -97,11 +102,6 @@ block_relocations:
   - source: 0x007BE5B8
   - source: 0x007BE73B
   - source: 0x007BF268
-# MPFEFindGame::ControlCallback pushes the label colour 0xe0e0e0, not a pointer.
-  - source: 0x005E2A30
-  - source: 0x005E2A37
-  - source: 0x005E2A4E
-  - source: 0x005E2A53
 
 add_relocations:
 # GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.
@@ -109,556 +109,631 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GTribeInfo@@2PAV1@A'
     addend: 0x10C
-# pow.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x00735886
-    type: x86_rel32
-    target: '__fast_exit'
-  - source: 0x007358A3
-    type: x86_rel32
-    target: '__fast_exit'
-  - source: 0x0073594A
-    type: x86_rel32
-    target: '__fast_exit'
-  - source: 0x007359AA
-    type: x86_rel32
-    target: '__fast_exit'
-  - source: 0x00735A05
-    type: x86_abs32
-    target: '__half'
-# acos.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x00735451
-    type: x86_rel32
-    target: '__fast_exit'
-  - source: 0x007354B5
-    type: x86_rel32
-    target: '__fast_exit'
-# asin.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x0073512F
-    type: x86_rel32
-    target: '__fast_exit'
-  - source: 0x00735195
-    type: x86_rel32
-    target: '__fast_exit'
-# adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x00B5261E
-    type: x86_abs32
-    target: 'label0'
-  - source: 0x00B52622
-    type: x86_abs32
-    target: 'label1'
-  - source: 0x00B52626
-    type: x86_abs32
-    target: 'label2'
-  - source: 0x00B5262A
-    type: x86_abs32
-    target: 'label3'
-  - source: 0x00B5262E
-    type: x86_abs32
-    target: 'label4'
-  - source: 0x00B52632
-    type: x86_abs32
-    target: 'label5'
-  - source: 0x00B52636
-    type: x86_abs32
-    target: 'label6'
-  - source: 0x00B5263A
-    type: x86_abs32
-    target: 'label7'
-  - source: 0x00B5263E
-    type: x86_abs32
-    target: 'label8'
-  - source: 0x00B52642
-    type: x86_abs32
-    target: 'label9'
-  - source: 0x00B52646
-    type: x86_abs32
-    target: 'label10'
-  - source: 0x00B5264A
-    type: x86_abs32
-    target: 'label11'
-  - source: 0x00B5264E
-    type: x86_abs32
-    target: 'label12'
-  - source: 0x00B52652
-    type: x86_abs32
-    target: 'label13'
-  - source: 0x00B52656
-    type: x86_abs32
-    target: 'label14'
-  - source: 0x00B5265A
-    type: x86_abs32
-    target: 'label15'
-  - source: 0x00B5265E
-    type: x86_abs32
-    target: 'label16'
-  - source: 0x00B52662
-    type: x86_abs32
-    target: 'label17'
-  - source: 0x00B52666
-    type: x86_abs32
-    target: 'label18'
-  - source: 0x00B5266A
-    type: x86_abs32
-    target: 'label19'
-  - source: 0x00B5266E
-    type: x86_abs32
-    target: 'label20'
-  - source: 0x00B52672
-    type: x86_abs32
-    target: 'label21'
-  - source: 0x00B52676
-    type: x86_abs32
-    target: 'label22'
-  - source: 0x00B5267A
-    type: x86_abs32
-    target: 'label23'
-  - source: 0x00B5267E
-    type: x86_abs32
-    target: 'label24'
-  - source: 0x00B52682
-    type: x86_abs32
-    target: 'label25'
-  - source: 0x00B52686
-    type: x86_abs32
-    target: 'label26'
-  - source: 0x00B5268A
-    type: x86_abs32
-    target: 'label27'
-  - source: 0x00B5268E
-    type: x86_abs32
-    target: 'label28'
-  - source: 0x00B52692
-    type: x86_abs32
-    target: 'label29'
-  - source: 0x00B52696
-    type: x86_abs32
-    target: 'label30'
-  - source: 0x00B5269A
-    type: x86_abs32
-    target: 'label31'
-  - source: 0x00B5269E
-    type: x86_abs32
-    target: 'label32'
-  - source: 0x00B526A2
-    type: x86_abs32
-    target: 'label33'
-  - source: 0x00B526A6
-    type: x86_abs32
-    target: 'label34'
-  - source: 0x00B526AA
-    type: x86_abs32
-    target: 'label35'
-  - source: 0x00B526AE
-    type: x86_abs32
-    target: 'label36'
-  - source: 0x00B526B2
-    type: x86_abs32
-    target: 'label37'
-  - source: 0x00B526B6
-    type: x86_abs32
-    target: 'label38'
-  - source: 0x00B526BA
-    type: x86_abs32
-    target: 'label39'
-  - source: 0x00B526BE
-    type: x86_abs32
-    target: 'label40'
-  - source: 0x00B526C2
-    type: x86_abs32
-    target: 'label41'
-  - source: 0x00B526C6
-    type: x86_abs32
-    target: 'label42'
-  - source: 0x00B526CA
-    type: x86_abs32
-    target: 'label43'
-  - source: 0x00B526CE
-    type: x86_abs32
-    target: 'label44'
-  - source: 0x00B526D2
-    type: x86_abs32
-    target: 'label45'
-  - source: 0x00B526D6
-    type: x86_abs32
-    target: 'label46'
-  - source: 0x00B526DA
-    type: x86_abs32
-    target: 'label47'
-  - source: 0x00B526DE
-    type: x86_abs32
-    target: 'label48'
-  - source: 0x00B526E2
-    type: x86_abs32
-    target: 'label49'
-  - source: 0x00B526E6
-    type: x86_abs32
-    target: 'label50'
-  - source: 0x00B526EA
-    type: x86_abs32
-    target: 'label51'
-  - source: 0x00B526EE
-    type: x86_abs32
-    target: 'label52'
-  - source: 0x00B526F2
-    type: x86_abs32
-    target: 'label53'
-  - source: 0x00B526F6
-    type: x86_abs32
-    target: 'label54'
-  - source: 0x00B526FA
-    type: x86_abs32
-    target: 'label55'
-  - source: 0x00B526FE
-    type: x86_abs32
-    target: 'label56'
-  - source: 0x00B52702
-    type: x86_abs32
-    target: 'label57'
-  - source: 0x00B52706
-    type: x86_abs32
-    target: 'label58'
-  - source: 0x00B5270A
-    type: x86_abs32
-    target: 'label59'
-  - source: 0x00B5270E
-    type: x86_abs32
-    target: 'label60'
-  - source: 0x00B52712
-    type: x86_abs32
-    target: 'label61'
-  - source: 0x00B52716
-    type: x86_abs32
-    target: 'label62'
-  - source: 0x00B5271A
-    type: x86_abs32
-    target: 'label63'
-# woutput.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x0073A726
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073A766
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073A857
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073A871
-    type: x86_abs32
-    target: '___nullstring'
-  - source: 0x0073A890
-    type: x86_abs32
-    target: '__pctype'
-  - source: 0x0073A8EE
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073A8FE
-    type: x86_abs32
-    target: '___mb_cur_max'
-  - source: 0x0073A958
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073A997
-    type: x86_abs32
-    target: '___nullstring'
-  - source: 0x0073A9E2
-    type: x86_abs32
-    target: '__cfltcvt_tab'
-  - source: 0x0073AA03
-    type: x86_abs32
-    target: '__cfltcvt_tab'
-    addend: 0xc
-  - source: 0x0073AA1B
-    type: x86_abs32
-    target: '__cfltcvt_tab'
-    addend: 0x4
-  - source: 0x0073AA83
-    type: x86_abs32
-    target: '___wnullstring'
-  - source: 0x0073AAF5
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073AB30
-    type: x86_rel32
-    target: '_get_int64_arg'
-  - source: 0x0073AB48
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073AB54
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073AB69
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073AB71
-    type: x86_rel32
-    target: '_get_int_arg'
-  - source: 0x0073ACED
-    type: x86_abs32
-    target: '___mb_cur_max'
-  - source: 0x0073AD6D
-    type: x86_abs32
-    target: '__woutput'
-    addend: 0x19b
-  - source: 0x0073AD71
-    type: x86_abs32
-    target: '__woutput'
-    addend: 0x75
-  - source: 0x0073AD75
-    type: x86_abs32
-    target: '__woutput'
-    addend: 0x90
-  - source: 0x0073AD79
-    type: x86_abs32
-    target: '__woutput'
-    addend: 0xdb
-  - source: 0x0073AD7D
-    type: x86_abs32
-    target: '__woutput'
-    addend: 0x113
-  - source: 0x0073AD81
-    type: x86_abs32
-    target: '__woutput'
-    addend: 0x11b
-  - source: 0x0073AD85
-    type: x86_abs32
-    target: '__woutput'
-    addend: 0x154
-  - source: 0x0073AD89
-    type: x86_abs32
-    target: '__woutput'
-    addend: 0x1b7
-# memmove.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x007340C4
-    type: x86_abs32
-    target: 'LeadUp1'
-  - source: 0x007340C8
-    type: x86_abs32
-    target: 'LeadUp2'
-  - source: 0x007340CC
-    type: x86_abs32
-    target: 'LeadUp3'
-  - source: 0x0073413C
-    type: x86_abs32
-    target: 'UnwindUp0'
-  - source: 0x00734140
-    type: x86_abs32
-    target: 'UnwindUp1'
-  - source: 0x00734144
-    type: x86_abs32
-    target: 'UnwindUp2'
-  - source: 0x00734148
-    type: x86_abs32
-    target: 'UnwindUp3'
-  - source: 0x0073414C
-    type: x86_abs32
-    target: 'UnwindUp4'
-  - source: 0x00734150
-    type: x86_abs32
-    target: 'UnwindUp5'
-  - source: 0x00734154
-    type: x86_abs32
-    target: 'UnwindUp6'
-  - source: 0x00734158
-    type: x86_abs32
-    target: 'UnwindUp7'
-  - source: 0x007341A8
-    type: x86_abs32
-    target: 'TrailUp0'
-  - source: 0x007341AC
-    type: x86_abs32
-    target: 'TrailUp1'
-  - source: 0x007341B0
-    type: x86_abs32
-    target: 'TrailUp2'
-  - source: 0x007341B4
-    type: x86_abs32
-    target: 'TrailUp3'
-  - source: 0x0073424C
-    type: x86_abs32
-    target: 'LeadDown1'
-  - source: 0x00734250
-    type: x86_abs32
-    target: 'LeadDown2'
-  - source: 0x00734254
-    type: x86_abs32
-    target: 'LeadDown3'
-  - source: 0x007342D4
-    type: x86_abs32
-    target: 'UnwindDown7'
-  - source: 0x007342D8
-    type: x86_abs32
-    target: 'UnwindDown6'
-  - source: 0x007342DC
-    type: x86_abs32
-    target: 'UnwindDown5'
-  - source: 0x007342E0
-    type: x86_abs32
-    target: 'UnwindDown4'
-  - source: 0x007342E4
-    type: x86_abs32
-    target: 'UnwindDown3'
-  - source: 0x007342E8
-    type: x86_abs32
-    target: 'UnwindDown2'
-  - source: 0x007342EC
-    type: x86_abs32
-    target: 'UnwindDown1'
-  - source: 0x007342F0
-    type: x86_abs32
-    target: 'UnwindDown0'
-  - source: 0x00734340
-    type: x86_abs32
-    target: 'TrailDown0'
-  - source: 0x00734344
-    type: x86_abs32
-    target: 'TrailDown1'
-  - source: 0x00734348
-    type: x86_abs32
-    target: 'TrailDown2'
-  - source: 0x0073434C
-    type: x86_abs32
-    target: 'TrailDown3'
-# mbctype.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x00740A11
-    type: x86_abs32
-    target: '___rgcode_page_info'
-    addend: 0x10
-  - source: 0x00740A6E
-    type: x86_abs32
-    target: '___rgcode_page_info'
-    addend: 0x4
-# ioinit.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x00740F42
-    type: x86_abs32
-    target: '___pioinfo'
-    addend: 0x4
-# GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
-  - source: 0x006866A8
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x2800
-  - source: 0x00686A37
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x2800
-# ScriptManage.cpp: the loops over VariableTable compare against the end of the array.
-  - source: 0x006A65C2
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x2800
-  - source: 0x006A6662
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x2800
-  - source: 0x006A6A0F
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x2804
-  - source: 0x006A6B08
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x2804
-  - source: 0x006A6C04
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x2804
-# libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
-  - source: 0x007E6D90
-    type: x86_abs32
-    target: '_rgb_ycc_start'
-  - source: 0x007E6D97
-    type: x86_abs32
-    target: '_rgb_ycc_convert'
-  - source: 0x007E6E0C
-    type: x86_abs32
-    target: '_rgb_ycc_start'
-  - source: 0x007E6E13
-    type: x86_abs32
-    target: '_cmyk_ycck_convert'
-  - source: 0x007E6E60
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x36
-  - source: 0x007E6E64
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x3e
-  - source: 0x007E6E68
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x3e
-  - source: 0x007E6E6C
-    type: x86_abs32
-    target: '_jinit_color_converter'
+# GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
+  - source: 0x00404201
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x10730
+# Balance: the info-array loops compare against each array's one-past-end, not the next unit's data.
+  - source: 0x00425246
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xA8
+  - source: 0x0042603E
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xA8
+  - source: 0x00426097
+    type: x86_abs32
+    target: '?Infos@GSpellSeedInfo@@2PAV1@A'
+    addend: 0x2EE0
+  - source: 0x00426152
+    type: x86_abs32
+    target: '?Infos@GSpellSeedInfo@@2PAV1@A'
+    addend: 0x2EE0
+  - source: 0x004261BA
+    type: x86_abs32
+    target: '?Infos@GAnimalInfo@@2PAV1@A'
+    addend: 0x56B4
+  - source: 0x004261DF
+    type: x86_abs32
+    target: '?Infos@GAnimalInfo@@2PAV1@A'
+    addend: 0x56B4
+  - source: 0x004261FE
+    type: x86_abs32
+    target: '?Infos@CreatureInfo@@2PAV1@A'
+    addend: 0x3CD4
+  - source: 0x00426261
+    type: x86_abs32
+    target: '?Infos@CreatureInfo@@2PAV1@A'
+    addend: 0x3CD4
+  - source: 0x004262B7
+    type: x86_abs32
+    target: '?Infos@DifferentCreatureInfo@@2PAV1@A'
+    addend: 0x72C
+  - source: 0x004262E1
+    type: x86_abs32
+    target: '?Infos@DifferentCreatureInfo@@2PAV1@A'
+    addend: 0x72C
+  - source: 0x004264E2
+    type: x86_abs32
+    target: '?Infos@GCitadelInfo@@2PAV1@A'
     addend: 0x54
-  - source: 0x007E6E70
+  - source: 0x0042653A
     type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x54
-  - source: 0x007E6E74
+    target: '?Infos@GCitadelHeartInfo@@2PAV1@A'
+    addend: 0x158
+  - source: 0x00426576
     type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x95
-  - source: 0x007E6E78
+    target: '?Infos@GCreaturePenInfo@@2PAV1@A'
+    addend: 0x654
+  - source: 0x004265D9
     type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0xe9
-  - source: 0x007E6E7C
+    target: '?Infos@GCreaturePenInfo@@2PAV1@A'
+    addend: 0x654
+  - source: 0x00426635
     type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x11f
-  - source: 0x007E6E80
+    target: '?Infos@GWorshipSiteInfo@@2PAV1@A'
+    addend: 0xC60
+  - source: 0x00426662
     type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x16d
-  - source: 0x007E6E84
+    target: '?Infos@GWorshipSiteInfo@@2PAV1@A'
+    addend: 0xC60
+  - source: 0x00426681
     type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x19d
-# LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
-  - source: 0x00788F93
+    target: '?Infos@GSpellIconInfo@@2PAV1@A'
+    addend: 0x258
+  - source: 0x004266E4
     type: x86_abs32
-    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    target: '?Infos@GSpellIconInfo@@2PAV1@A'
+    addend: 0x258
+  - source: 0x00426740
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x105D8
+  - source: 0x0042676D
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x105D8
+  - source: 0x0042678C
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x004267EF
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x00426845
+    type: x86_abs32
+    target: '?Infos@GSpecialVillagerInfo@@2PAV1@A'
+    addend: 0x1200
+  - source: 0x0042686F
+    type: x86_abs32
+    target: '?Infos@GSpecialVillagerInfo@@2PAV1@A'
+    addend: 0x1200
+  - source: 0x0042688E
+    type: x86_abs32
+    target: '?Infos@GTreeInfo@@2PAV1@A'
+    addend: 0x1CC0
+  - source: 0x004268F1
+    type: x86_abs32
+    target: '?Infos@GTreeInfo@@2PAV1@A'
+    addend: 0x1CC0
+  - source: 0x0042694D
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
+  - source: 0x0042697A
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
+  - source: 0x00426999
+    type: x86_abs32
+    target: '?Infos@GScriptHighlightInfo@@2PAV1@A'
+    addend: 0x440
+  - source: 0x004269FC
+    type: x86_abs32
+    target: '?Infos@GScriptHighlightInfo@@2PAV1@A'
+    addend: 0x440
+  - source: 0x00426A54
+    type: x86_abs32
+    target: '?Infos@GMapShieldInfo@@2PAV1@A'
+    addend: 0x210
+  - source: 0x00426A81
+    type: x86_abs32
+    target: '?Infos@GMapShieldInfo@@2PAV1@A'
+    addend: 0x210
+  - source: 0x00426AEC
+    type: x86_abs32
+    target: '?Infos@GBallInfo@@2PAV1@A'
+    addend: 0x140
+# BWGameSpy::Connect keeps a pointer one past the colon of ChatServer, inside the buffer.
+  - source: 0x00436786
+    type: x86_abs32
+    target: '?ChatServer@BWGameSpy@@2PADA'
+    addend: 0x1
+# BWGameSpy::Think indexes Bans[NumBans - 1] from one element before the array.
+  - source: 0x00436B60
+    type: x86_abs32
+    target: '?Bans@BWGameSpy@@2PAY0CA@DA'
+    addend: -0x20
+  - source: 0x008061B8
+    type: x86_abs32
+    target: '??_EMPFEMessageObject@@UAEPAXI@Z'
+  - source: 0x006DFC07
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x006E0203
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x006E024B
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x006E03B8
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x60
+  - source: 0x006E2189
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x133CC
+  - source: 0x006E438A
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x30
-  - source: 0x00788FCC
+  - source: 0x006E43FA
     type: x86_abs32
-    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
-    addend: 0x30
-  - source: 0x0078900C
-    type: x86_abs32
-    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
-    addend: 0x30
-# LH3DRender::Close2TexStuff and ResetAllState: loop bounds one past the end of an array.
-  - source: 0x007858C5
-    type: x86_abs32
-    target: '?g_stateblock2tex@LH3DRender@@2PAULH3DStateBlock2Tex@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x40
-  - source: 0x00785BF3
+  - source: 0x006E5C47
     type: x86_abs32
-    target: '?g_original_render_states@@3PAIA'
-    addend: 0x400
-# LH3DRender::FinishFrame: loop bounds one past the end of an array (dtk reads them as the next symbol).
-  - source: 0x00788689
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
+  - source: 0x006E5CF9
     type: x86_abs32
-    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
-    addend: 0x88
-  - source: 0x0078870C
-    type: x86_abs32
-    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
-    addend: 0x88
-  - source: 0x00788830
-    type: x86_abs32
-    target: '?cache@FontCache@@2PAUCacheEntry@@A'
-    addend: 0x4000
-  - source: 0x00788871
-    type: x86_abs32
-    target: '?page@FontCache@@2PAUCachePage@@A'
-    addend: 0x4B9
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
+
 # CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
   - source: 0x0044E24C
     type: x86_abs32
     target: '?Objects@CarriedObject@@2PAPAVLH3DObject@@A'
     addend: 0x40
+# MOV ESI is the end of GContainerInfo::Definitions for its destructor loop, not ControlHand's data.
+  - source: 0x00456837
+    type: x86_abs32
+    target: '?Definitions@GContainerInfo@@2PAV1@A'
+    addend: 0x50
+# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
+  - source: 0x00504097
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
+# MOV ESI is the end of GMobileObjectInfo::InfoList for its destructor loop, not g_MobileObjectCheckSum.
+  - source: 0x005C22F7
+    type: x86_abs32
+    target: '?InfoList@GMobileObjectInfo@@2PAV1@A'
+    addend: 0x2280
+# MOV ESI is the end of GPotInfo::InfoList for its destructor loop, not PowerSpin's data.
+  - source: 0x00616987
+    type: x86_abs32
+    target: '?InfoList@GPotInfo@@2PAV1@A'
+    addend: 0x180c
+# PSysProperties shared callback aliases and istream exception boundaries.
+  - source: 0x006511C0
+    type: x86_abs32
+    target: '?GetMaxGroups@PSysFileData@@QAEKXZ'
+  - source: 0x006511C7
+    type: x86_abs32
+    target: '?SetMaxGroups@PSysFileData@@QAEXK@Z'
+  - source: 0x006512AC
+    type: x86_abs32
+    target: '?GetMaxGroups@PSysFileData@@QAEKXZ'
+  - source: 0x006512B3
+    type: x86_abs32
+    target: '?SetMaxGroups@PSysFileData@@QAEXK@Z'
+  - source: 0x006518F6
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00651C2A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00651C5F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00651DA4
+    type: x86_abs32
+    target: '?GetAccnType@UR_Flocking@@QAEJXZ'
+  - source: 0x00651E6D
+    type: x86_abs32
+    target: '?GetNeighbourAccnType@UR_Flocking@@QAEJXZ'
+  - source: 0x00651F5A
+    type: x86_abs32
+    target: '?GetIdealVelAccnType@UR_Flocking@@QAEJXZ'
+  - source: 0x006520AA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065210F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006521AC
+    type: x86_abs32
+    target: '?SetGravity@UpdateRuleGravity@@QAEXM@Z'
+  - source: 0x006524EA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065255A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006525AA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006525FA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065266F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006526CE
+    type: x86_abs32
+    target: '?GetAxis@UpdateRuleRotatePrincipalAxis@@QAEJXZ'
+  - source: 0x006527DF
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00652A3A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00652A6A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00652A9A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00652ACA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653BAA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653C1A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653CBA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653D2F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653FFF
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065408B
+    type: x86_abs32
+    target: '?GetStartX@UR_MoveAtom@@QBEMXZ'
+  - source: 0x00654092
+    type: x86_abs32
+    target: '?SetStartX@UR_MoveAtom@@QAEXM@Z'
+  - source: 0x00654129
+    type: x86_abs32
+    target: '?GetStartY@UR_MoveAtom@@QBEMXZ'
+  - source: 0x006541D6
+    type: x86_abs32
+    target: '?SetStartZ@UR_MoveAtom@@QAEXM@Z'
+  - source: 0x0065424F
+    type: x86_abs32
+    target: '?GetStopX@UR_MoveAtom@@QBEMXZ'
+  - source: 0x00654256
+    type: x86_abs32
+    target: '?SetStopX@UR_MoveAtom@@QAEXM@Z'
+  - source: 0x0065428B
+    type: x86_abs32
+    target: '?GetStopY@UR_MoveAtom@@QBEMXZ'
+  - source: 0x0065432F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00654613
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006548CA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006548FF
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00654BAF
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065515F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065528A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065533A
+    type: x86_abs32
+    target: '?NextGroupsGetSize@AddSubCollectionsToAtom@@QAEKXZ'
+  - source: 0x00655341
+    type: x86_abs32
+    target: '?NextGroupsSetSize@AddSubCollectionsToAtom@@QAEXK@Z'
+  - source: 0x00655348
+    type: x86_abs32
+    target: '?NextGroupsGet@AddSubCollectionsToAtom@@QAEJK@Z'
+  - source: 0x0065534F
+    type: x86_abs32
+    target: '?NextGroupsSet@AddSubCollectionsToAtom@@QAEXKJ@Z'
+  - source: 0x00656F3A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006571FA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065766A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065785A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006586BA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00658F0A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00658F7A
+    type: x86_rel32
+    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00658FCA
+    type: x86_rel32
+    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065900A
+    type: x86_rel32
+    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065903F
+    type: x86_rel32
+    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065AA2E
+    type: x86_abs32
+    target: '?PCreator_ParticleSpriteCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AA91
+    type: x86_abs32
+    target: '?PCreator_ParticleSymbolSpriteCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AAF4
+    type: x86_abs32
+    target: '?PCreator_ParticleLightMapCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AB57
+    type: x86_abs32
+    target: '?PCreator_ParticleChainCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065ABBA
+    type: x86_abs32
+    target: '?PCreator_ParticlePointCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AC1D
+    type: x86_abs32
+    target: '?PCreator_ParticleMeshCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AC80
+    type: x86_abs32
+    target: '?PCreator_ParticleVolBlendMeshCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AD09
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065AD28
+    type: x86_abs32
+    target: '?PCreator_ParticleGJMeshCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065ADDC
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065ADF2
+    type: x86_abs32
+    target: '?PCreator_ParticleMeshCreatorAnimTextured@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AEAF
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065AEC5
+    type: x86_abs32
+    target: '?PCreator_ParticleMistCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AF82
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065AF98
+    type: x86_abs32
+    target: '?PCreator_ParticleAnimCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B09E
+    type: x86_abs32
+    target: '?PCreator_ParticleGoodEvilCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B182
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x0065B190
+    type: x86_abs32
+    target: '?PCreator_ParticleAnimWithCameraCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B4BE
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionCollectionDelay@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B521
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionTrueOnCloseDown@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B584
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionTrueWhenEnabled@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B5E7
+    type: x86_abs32
+    target: '?ConditionCreate_EC_DeflectionInAtomsHierarchy@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B64A
+    type: x86_abs32
+    target: '?ConditionCreate_EC_CollectionShouldBeEmitting@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B6AD
+    type: x86_abs32
+    target: '?ConditionCreate_EC_DeflectionInCollectionsHierarchy@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B710
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionNever@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B773
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionCollectionLimitedTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B7D6
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomDelay@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B839
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomNearVillagers@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B89C
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomLimitedTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B906
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065B91C
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionRandom@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B9A4
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065B9BA
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionParentFrameTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BA77
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BA8D
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionFrameTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BB4A
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BB60
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomBelowHeight@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BC1D
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BC33
+    type: x86_abs32
+    target: '?ConditionCreate_EC_AtomAlphaAbove@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BCF0
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BD06
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomCloseWater@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BDFC
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BE12
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionFireBallSteam@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BF19
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomInUse@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C008
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomBelowSpeed@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C0E5
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomHasBeenDeflected@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C6DE
+    type: x86_abs32
+    target: '?FloatProviderCreate_ConstFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C741
+    type: x86_abs32
+    target: '?FloatProviderCreate_FloatProvider_ParentAtomScale@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C7A4
+    type: x86_abs32
+    target: '?FloatProviderCreate_StrengthFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C843
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVFloatProvider@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065C859
+    type: x86_abs32
+    target: '?FloatProviderCreate_MagnitudeFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C916
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVFloatProvider@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065C92C
+    type: x86_abs32
+    target: '?FloatProviderCreate_MagnitudeTimesStrengthFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C9F9
+    type: x86_abs32
+    target: '?FloatProviderCreate_RenderHandScaleFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CAD5
+    type: x86_abs32
+    target: '?FloatProviderCreate_RenderHandScaleTimesStrengthFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CAEA
+    type: x86_rel32
+    target: '??1Persistent@@UAE@XZ'
+  - source: 0x00661038
+    type: x86_rel32
+    target: '??1Persistent@@UAE@XZ'
+  - source: 0x00662A81
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662AB0
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662B16
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662BB1
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662BE0
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662C46
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662CE1
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662D10
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662D76
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662E11
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662E40
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662EA6
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662F41
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662F70
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662FD6
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x006643D8
+    type: x86_rel32
+    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
+  - source: 0x00664648
+    type: x86_rel32
+    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
+  - source: 0x00664B28
+    type: x86_rel32
+    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
+  - source: 0x00664D98
+    type: x86_rel32
+    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
+  - source: 0x00666D61
+    type: x86_abs32
+    target: '?id@?$ctype@G@std@@$E'
+  - source: 0x00666DC1
+    type: x86_abs32
+    target: '?id@?$num_put@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@$E'
+  - source: 0x00666DD1
+    type: x86_abs32
+    target: '?id@?$num_get@DV?$istreambuf_iterator@DU?$char_traits@D@std@@@$E'
+  - source: 0x00666DE1
+    type: x86_abs32
+    target: '?id@?$numpunct@D@std@@$E'
 # PSysProperties shared callback aliases and istream exception boundaries.
   - source: 0x0065A9E8
     type: x86_abs32
@@ -1224,456 +1299,6 @@ add_relocations:
   - source: 0x00662794
     type: x86_rel32
     target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-# PSysProperties shared callback aliases and istream exception boundaries.
-  - source: 0x006511C0
-    type: x86_abs32
-    target: '?GetMaxGroups@PSysFileData@@QAEKXZ'
-  - source: 0x006511C7
-    type: x86_abs32
-    target: '?SetMaxGroups@PSysFileData@@QAEXK@Z'
-  - source: 0x006512AC
-    type: x86_abs32
-    target: '?GetMaxGroups@PSysFileData@@QAEKXZ'
-  - source: 0x006512B3
-    type: x86_abs32
-    target: '?SetMaxGroups@PSysFileData@@QAEXK@Z'
-  - source: 0x006518F6
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00651C2A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00651C5F
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00651DA4
-    type: x86_abs32
-    target: '?GetAccnType@UR_Flocking@@QAEJXZ'
-  - source: 0x00651E6D
-    type: x86_abs32
-    target: '?GetNeighbourAccnType@UR_Flocking@@QAEJXZ'
-  - source: 0x00651F5A
-    type: x86_abs32
-    target: '?GetIdealVelAccnType@UR_Flocking@@QAEJXZ'
-  - source: 0x006520AA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065210F
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x006521AC
-    type: x86_abs32
-    target: '?SetGravity@UpdateRuleGravity@@QAEXM@Z'
-  - source: 0x006524EA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065255A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x006525AA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x006525FA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065266F
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x006526CE
-    type: x86_abs32
-    target: '?GetAxis@UpdateRuleRotatePrincipalAxis@@QAEJXZ'
-  - source: 0x006527DF
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00652A3A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00652A6A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00652A9A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00652ACA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00653BAA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00653C1A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00653CBA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00653D2F
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00653FFF
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065408B
-    type: x86_abs32
-    target: '?GetStartX@UR_MoveAtom@@QBEMXZ'
-  - source: 0x00654092
-    type: x86_abs32
-    target: '?SetStartX@UR_MoveAtom@@QAEXM@Z'
-  - source: 0x00654129
-    type: x86_abs32
-    target: '?GetStartY@UR_MoveAtom@@QBEMXZ'
-  - source: 0x006541D6
-    type: x86_abs32
-    target: '?SetStartZ@UR_MoveAtom@@QAEXM@Z'
-  - source: 0x0065424F
-    type: x86_abs32
-    target: '?GetStopX@UR_MoveAtom@@QBEMXZ'
-  - source: 0x00654256
-    type: x86_abs32
-    target: '?SetStopX@UR_MoveAtom@@QAEXM@Z'
-  - source: 0x0065428B
-    type: x86_abs32
-    target: '?GetStopY@UR_MoveAtom@@QBEMXZ'
-  - source: 0x0065432F
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00654613
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x006548CA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x006548FF
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00654BAF
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065515F
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065528A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065533A
-    type: x86_abs32
-    target: '?NextGroupsGetSize@AddSubCollectionsToAtom@@QAEKXZ'
-  - source: 0x00655341
-    type: x86_abs32
-    target: '?NextGroupsSetSize@AddSubCollectionsToAtom@@QAEXK@Z'
-  - source: 0x00655348
-    type: x86_abs32
-    target: '?NextGroupsGet@AddSubCollectionsToAtom@@QAEJK@Z'
-  - source: 0x0065534F
-    type: x86_abs32
-    target: '?NextGroupsSet@AddSubCollectionsToAtom@@QAEXKJ@Z'
-  - source: 0x00656F3A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x006571FA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065766A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065785A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x006586BA
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00658F0A
-    type: x86_rel32
-    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00658F7A
-    type: x86_rel32
-    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x00658FCA
-    type: x86_rel32
-    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065900A
-    type: x86_rel32
-    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065903F
-    type: x86_rel32
-    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
-  - source: 0x0065AA2E
-    type: x86_abs32
-    target: '?PCreator_ParticleSpriteCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065AA91
-    type: x86_abs32
-    target: '?PCreator_ParticleSymbolSpriteCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065AAF4
-    type: x86_abs32
-    target: '?PCreator_ParticleLightMapCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065AB57
-    type: x86_abs32
-    target: '?PCreator_ParticleChainCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065ABBA
-    type: x86_abs32
-    target: '?PCreator_ParticlePointCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065AC1D
-    type: x86_abs32
-    target: '?PCreator_ParticleMeshCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065AC80
-    type: x86_abs32
-    target: '?PCreator_ParticleVolBlendMeshCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065AD09
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065AD28
-    type: x86_abs32
-    target: '?PCreator_ParticleGJMeshCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065ADDC
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065ADF2
-    type: x86_abs32
-    target: '?PCreator_ParticleMeshCreatorAnimTextured@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065AEAF
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065AEC5
-    type: x86_abs32
-    target: '?PCreator_ParticleMistCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065AF82
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065AF98
-    type: x86_abs32
-    target: '?PCreator_ParticleAnimCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B09E
-    type: x86_abs32
-    target: '?PCreator_ParticleGoodEvilCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B182
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x0065B190
-    type: x86_abs32
-    target: '?PCreator_ParticleAnimWithCameraCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B4BE
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionCollectionDelay@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B521
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionTrueOnCloseDown@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B584
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionTrueWhenEnabled@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B5E7
-    type: x86_abs32
-    target: '?ConditionCreate_EC_DeflectionInAtomsHierarchy@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B64A
-    type: x86_abs32
-    target: '?ConditionCreate_EC_CollectionShouldBeEmitting@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B6AD
-    type: x86_abs32
-    target: '?ConditionCreate_EC_DeflectionInCollectionsHierarchy@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B710
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionNever@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B773
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionCollectionLimitedTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B7D6
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionAtomDelay@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B839
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionAtomNearVillagers@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B89C
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionAtomLimitedTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B906
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065B91C
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionRandom@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065B9A4
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065B9BA
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionParentFrameTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065BA77
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065BA8D
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionFrameTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065BB4A
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065BB60
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionAtomBelowHeight@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065BC1D
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065BC33
-    type: x86_abs32
-    target: '?ConditionCreate_EC_AtomAlphaAbove@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065BCF0
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065BD06
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionAtomCloseWater@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065BDFC
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065BE12
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionFireBallSteam@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065BF19
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionAtomInUse@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065C008
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionAtomBelowSpeed@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065C0E5
-    type: x86_abs32
-    target: '?ConditionCreate_EventConditionAtomHasBeenDeflected@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
-  - source: 0x0065C6DE
-    type: x86_abs32
-    target: '?FloatProviderCreate_ConstFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
-  - source: 0x0065C741
-    type: x86_abs32
-    target: '?FloatProviderCreate_FloatProvider_ParentAtomScale@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
-  - source: 0x0065C7A4
-    type: x86_abs32
-    target: '?FloatProviderCreate_StrengthFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
-  - source: 0x0065C843
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVFloatProvider@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065C859
-    type: x86_abs32
-    target: '?FloatProviderCreate_MagnitudeFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
-  - source: 0x0065C916
-    type: x86_rel32
-    target: '??0?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVFloatProvider@@PAVPersistentOwner@@@Z@Z'
-  - source: 0x0065C92C
-    type: x86_abs32
-    target: '?FloatProviderCreate_MagnitudeTimesStrengthFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
-  - source: 0x0065C9F9
-    type: x86_abs32
-    target: '?FloatProviderCreate_RenderHandScaleFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
-  - source: 0x0065CAD5
-    type: x86_abs32
-    target: '?FloatProviderCreate_RenderHandScaleTimesStrengthFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
-  - source: 0x0065CAEA
-    type: x86_rel32
-    target: '??1Persistent@@UAE@XZ'
-  - source: 0x00661038
-    type: x86_rel32
-    target: '??1Persistent@@UAE@XZ'
-  - source: 0x00662A81
-    type: x86_rel32
-    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
-  - source: 0x00662AB0
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x00662B16
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x00662BB1
-    type: x86_rel32
-    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
-  - source: 0x00662BE0
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x00662C46
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x00662CE1
-    type: x86_rel32
-    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
-  - source: 0x00662D10
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x00662D76
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x00662E11
-    type: x86_rel32
-    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
-  - source: 0x00662E40
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x00662EA6
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x00662F41
-    type: x86_rel32
-    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
-  - source: 0x00662F70
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x00662FD6
-    type: x86_rel32
-    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
-  - source: 0x006643D8
-    type: x86_rel32
-    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
-  - source: 0x00664648
-    type: x86_rel32
-    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
-  - source: 0x00664B28
-    type: x86_rel32
-    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
-  - source: 0x00664D98
-    type: x86_rel32
-    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
-  - source: 0x00666D61
-    type: x86_abs32
-    target: '?id@?$ctype@G@std@@$E'
-  - source: 0x00666DC1
-    type: x86_abs32
-    target: '?id@?$num_put@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@$E'
-  - source: 0x00666DD1
-    type: x86_abs32
-    target: '?id@?$num_get@DV?$istreambuf_iterator@DU?$char_traits@D@std@@@$E'
-  - source: 0x00666DE1
-    type: x86_abs32
-    target: '?id@?$numpunct@D@std@@$E'
-# BackgroundBox::AddBox addresses g_list_boxes[i].Region (dtk leaves the displacement unrelocated).
-  - source: 0x00778D71
-    type: x86_abs32
-    target: '?g_list_boxes@BackgroundBox@@2PAV1@A'
-    addend: 0x4
-# FishRush::DrawPreAll's loop ends one past GWater::g_circle, inside LH3DExtraDotLight::g_list.
-  - source: 0x0077E77E
-    type: x86_abs32
-    target: '?g_circle@GWater@@2PAUCircle@1@A'
-    addend: 0xE00C
-# SuperVillager::Draw's immediates: LH3DTech::g_current_matrix = &g_local_to_clipping, and the swimming
-# animation's name.
-  - source: 0x0077F26F
-    type: x86_abs32
-    target: '?g_local_to_clipping@LH3DTech@@2ULHMatrix@@A'
-    addend: 0x0
-  - source: 0x0077F279
-    type: x86_abs32
-    target: '??_C@_09NHHM@M_P_Swim2?$AA@'
-    addend: 0x0
-  - source: 0x00696876
-    type: x86_abs32
-    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
-  - source: 0x006968BF
-    type: x86_abs32
-    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
-  - source: 0x00696974
-    type: x86_abs32
-    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
-  - source: 0x0068EC61
-    type: x86_abs32
-    target: '?Infos@CreatureDevelopmentPhaseEntry@@2PAV1@A'
-    addend: 76
-  - source: 0x0068EC8A
-    type: x86_abs32
-    target: '?Infos@CreatureDevelopmentPhaseEntry@@2PAV1@A'
-    addend: 116
-
 # PSysProperties weak deleting-destructor aliases and istream exception metadata.
   - source: 0x006668FC
     type: x86_abs32
@@ -2017,26 +1642,36 @@ add_relocations:
   - source: 0x008D52A0
     type: x86_abs32
     target: '??_EWorldRoomCamera@@UAEPAXI@Z'
-# GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
-  - source: 0x00404201
+# GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
+  - source: 0x006866A8
     type: x86_abs32
-    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
-    addend: 0x10730
-# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
-  - source: 0x00504097
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x00686A37
     type: x86_abs32
-    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
-    addend: 0x410
-# MOV ESI is the end of GMobileObjectInfo::InfoList for its destructor loop, not g_MobileObjectCheckSum.
-  - source: 0x005C22F7
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+# ScriptManage.cpp: the loops over VariableTable compare against the end of the array.
+  - source: 0x006A65C2
     type: x86_abs32
-    target: '?InfoList@GMobileObjectInfo@@2PAV1@A'
-    addend: 0x2280
-# MOV ESI is the end of GContainerInfo::Definitions for its destructor loop, not ControlHand's data.
-  - source: 0x00456837
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x006A6662
     type: x86_abs32
-    target: '?Definitions@GContainerInfo@@2PAV1@A'
-    addend: 0x50
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2800
+  - source: 0x006A6A0F
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x006A6B08
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
+  - source: 0x006A6C04
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x2804
 # CMP is the end of GMagicInfo::Infos for Town::SaveObject's loop over the town's magic types.
   - source: 0x006CEF58
     type: x86_abs32
@@ -2047,189 +1682,429 @@ add_relocations:
     type: x86_abs32
     target: '?InfoList@GTownDesireInfo@@2PAV1@A'
     addend: 0x9C0
-# Balance: the info-array loops compare against each array's one-past-end, not the next unit's data.
-  - source: 0x00425246
+# memmove.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007340C4
     type: x86_abs32
-    target: '?Infos@GMagicInfo@@2PAPAV1@A'
-    addend: 0xA8
-  - source: 0x0042603E
+    target: 'LeadUp1'
+  - source: 0x007340C8
     type: x86_abs32
-    target: '?Infos@GMagicInfo@@2PAPAV1@A'
-    addend: 0xA8
-  - source: 0x00426097
+    target: 'LeadUp2'
+  - source: 0x007340CC
     type: x86_abs32
-    target: '?Infos@GSpellSeedInfo@@2PAV1@A'
-    addend: 0x2EE0
-  - source: 0x00426152
+    target: 'LeadUp3'
+  - source: 0x0073413C
     type: x86_abs32
-    target: '?Infos@GSpellSeedInfo@@2PAV1@A'
-    addend: 0x2EE0
-  - source: 0x004261BA
+    target: 'UnwindUp0'
+  - source: 0x00734140
     type: x86_abs32
-    target: '?Infos@GAnimalInfo@@2PAV1@A'
-    addend: 0x56B4
-  - source: 0x004261DF
+    target: 'UnwindUp1'
+  - source: 0x00734144
     type: x86_abs32
-    target: '?Infos@GAnimalInfo@@2PAV1@A'
-    addend: 0x56B4
-  - source: 0x004261FE
+    target: 'UnwindUp2'
+  - source: 0x00734148
     type: x86_abs32
-    target: '?Infos@CreatureInfo@@2PAV1@A'
-    addend: 0x3CD4
-  - source: 0x00426261
+    target: 'UnwindUp3'
+  - source: 0x0073414C
     type: x86_abs32
-    target: '?Infos@CreatureInfo@@2PAV1@A'
-    addend: 0x3CD4
-  - source: 0x004262B7
+    target: 'UnwindUp4'
+  - source: 0x00734150
     type: x86_abs32
-    target: '?Infos@DifferentCreatureInfo@@2PAV1@A'
-    addend: 0x72C
-  - source: 0x004262E1
+    target: 'UnwindUp5'
+  - source: 0x00734154
     type: x86_abs32
-    target: '?Infos@DifferentCreatureInfo@@2PAV1@A'
-    addend: 0x72C
-  - source: 0x004264E2
+    target: 'UnwindUp6'
+  - source: 0x00734158
     type: x86_abs32
-    target: '?Infos@GCitadelInfo@@2PAV1@A'
-    addend: 0x54
-  - source: 0x0042653A
+    target: 'UnwindUp7'
+  - source: 0x007341A8
     type: x86_abs32
-    target: '?Infos@GCitadelHeartInfo@@2PAV1@A'
-    addend: 0x158
-  - source: 0x00426576
+    target: 'TrailUp0'
+  - source: 0x007341AC
     type: x86_abs32
-    target: '?Infos@GCreaturePenInfo@@2PAV1@A'
-    addend: 0x654
-  - source: 0x004265D9
+    target: 'TrailUp1'
+  - source: 0x007341B0
     type: x86_abs32
-    target: '?Infos@GCreaturePenInfo@@2PAV1@A'
-    addend: 0x654
-  - source: 0x00426635
+    target: 'TrailUp2'
+  - source: 0x007341B4
     type: x86_abs32
-    target: '?Infos@GWorshipSiteInfo@@2PAV1@A'
-    addend: 0xC60
-  - source: 0x00426662
+    target: 'TrailUp3'
+  - source: 0x0073424C
     type: x86_abs32
-    target: '?Infos@GWorshipSiteInfo@@2PAV1@A'
-    addend: 0xC60
-  - source: 0x00426681
+    target: 'LeadDown1'
+  - source: 0x00734250
     type: x86_abs32
-    target: '?Infos@GSpellIconInfo@@2PAV1@A'
-    addend: 0x258
-  - source: 0x004266E4
+    target: 'LeadDown2'
+  - source: 0x00734254
     type: x86_abs32
-    target: '?Infos@GSpellIconInfo@@2PAV1@A'
-    addend: 0x258
-  - source: 0x00426740
+    target: 'LeadDown3'
+  - source: 0x007342D4
     type: x86_abs32
-    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
-    addend: 0x105D8
-  - source: 0x0042676D
+    target: 'UnwindDown7'
+  - source: 0x007342D8
     type: x86_abs32
-    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
-    addend: 0x105D8
-  - source: 0x0042678C
+    target: 'UnwindDown6'
+  - source: 0x007342DC
     type: x86_abs32
-    target: '?InfoList@GVillagerInfo@@2PAV1@A'
-    addend: 0x131D0
-  - source: 0x004267EF
+    target: 'UnwindDown5'
+  - source: 0x007342E0
     type: x86_abs32
-    target: '?InfoList@GVillagerInfo@@2PAV1@A'
-    addend: 0x131D0
-  - source: 0x00426845
+    target: 'UnwindDown4'
+  - source: 0x007342E4
     type: x86_abs32
-    target: '?Infos@GSpecialVillagerInfo@@2PAV1@A'
-    addend: 0x1200
-  - source: 0x0042686F
+    target: 'UnwindDown3'
+  - source: 0x007342E8
     type: x86_abs32
-    target: '?Infos@GSpecialVillagerInfo@@2PAV1@A'
-    addend: 0x1200
-  - source: 0x0042688E
+    target: 'UnwindDown2'
+  - source: 0x007342EC
     type: x86_abs32
-    target: '?Infos@GTreeInfo@@2PAV1@A'
-    addend: 0x1CC0
-  - source: 0x004268F1
+    target: 'UnwindDown1'
+  - source: 0x007342F0
     type: x86_abs32
-    target: '?Infos@GTreeInfo@@2PAV1@A'
-    addend: 0x1CC0
-  - source: 0x0042694D
+    target: 'UnwindDown0'
+  - source: 0x00734340
     type: x86_abs32
-    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
-    addend: 0x410
-  - source: 0x0042697A
+    target: 'TrailDown0'
+  - source: 0x00734344
     type: x86_abs32
-    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
-    addend: 0x410
-  - source: 0x00426999
+    target: 'TrailDown1'
+  - source: 0x00734348
     type: x86_abs32
-    target: '?Infos@GScriptHighlightInfo@@2PAV1@A'
-    addend: 0x440
-  - source: 0x004269FC
+    target: 'TrailDown2'
+  - source: 0x0073434C
     type: x86_abs32
-    target: '?Infos@GScriptHighlightInfo@@2PAV1@A'
-    addend: 0x440
-  - source: 0x00426A54
+    target: 'TrailDown3'
+# asin.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x0073512F
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x00735195
+    type: x86_rel32
+    target: '__fast_exit'
+# acos.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x00735451
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007354B5
+    type: x86_rel32
+    target: '__fast_exit'
+# pow.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x00735886
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007358A3
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x0073594A
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007359AA
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x00735A05
     type: x86_abs32
-    target: '?Infos@GMapShieldInfo@@2PAV1@A'
-    addend: 0x210
-  - source: 0x00426A81
+    target: '__half'
+# woutput.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x0073A726
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073A766
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073A857
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073A871
     type: x86_abs32
-    target: '?Infos@GMapShieldInfo@@2PAV1@A'
-    addend: 0x210
-  - source: 0x00426AEC
+    target: '___nullstring'
+  - source: 0x0073A890
     type: x86_abs32
-    target: '?Infos@GBallInfo@@2PAV1@A'
-    addend: 0x140
-# BWGameSpy::Connect keeps a pointer one past the colon of ChatServer, inside the buffer.
-  - source: 0x00436786
+    target: '__pctype'
+  - source: 0x0073A8EE
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073A8FE
     type: x86_abs32
-    target: '?ChatServer@BWGameSpy@@2PADA'
-    addend: 0x1
-# BWGameSpy::Think indexes Bans[NumBans - 1] from one element before the array.
-  - source: 0x00436B60
+    target: '___mb_cur_max'
+  - source: 0x0073A958
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073A997
     type: x86_abs32
-    target: '?Bans@BWGameSpy@@2PAY0CA@DA'
-    addend: -0x20
-  - source: 0x008061B8
+    target: '___nullstring'
+  - source: 0x0073A9E2
     type: x86_abs32
-    target: '??_EMPFEMessageObject@@UAEPAXI@Z'
-  - source: 0x006DFC07
+    target: '__cfltcvt_tab'
+  - source: 0x0073AA03
     type: x86_abs32
-    target: '?InfoList@GVillagerInfo@@2PAV1@A'
-    addend: 0x131D0
-  - source: 0x006E0203
+    target: '__cfltcvt_tab'
+    addend: 0xc
+  - source: 0x0073AA1B
     type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x80
-  - source: 0x006E024B
+    target: '__cfltcvt_tab'
+    addend: 0x4
+  - source: 0x0073AA83
     type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x80
-  - source: 0x006E03B8
+    target: '___wnullstring'
+  - source: 0x0073AAF5
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073AB30
+    type: x86_rel32
+    target: '_get_int64_arg'
+  - source: 0x0073AB48
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073AB54
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073AB69
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073AB71
+    type: x86_rel32
+    target: '_get_int_arg'
+  - source: 0x0073ACED
     type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x60
-  - source: 0x006E2189
+    target: '___mb_cur_max'
+  - source: 0x0073AD6D
     type: x86_abs32
-    target: '?InfoList@GVillagerInfo@@2PAV1@A'
-    addend: 0x133CC
-  - source: 0x006E438A
+    target: '__woutput'
+    addend: 0x19b
+  - source: 0x0073AD71
     type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x30
-  - source: 0x006E43FA
+    target: '__woutput'
+    addend: 0x75
+  - source: 0x0073AD75
     type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x40
-  - source: 0x006E5C47
+    target: '__woutput'
+    addend: 0x90
+  - source: 0x0073AD79
     type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x70
-  - source: 0x006E5CF9
+    target: '__woutput'
+    addend: 0xdb
+  - source: 0x0073AD7D
     type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x70
+    target: '__woutput'
+    addend: 0x113
+  - source: 0x0073AD81
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x11b
+  - source: 0x0073AD85
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x154
+  - source: 0x0073AD89
+    type: x86_abs32
+    target: '__woutput'
+    addend: 0x1b7
+# mbctype.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x00740A11
+    type: x86_abs32
+    target: '___rgcode_page_info'
+    addend: 0x10
+  - source: 0x00740A6E
+    type: x86_abs32
+    target: '___rgcode_page_info'
+    addend: 0x4
+# ioinit.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x00740F42
+    type: x86_abs32
+    target: '___pioinfo'
+    addend: 0x4
+# BackgroundBox::AddBox addresses g_list_boxes[i].Region (dtk leaves the displacement unrelocated).
+  - source: 0x00778D71
+    type: x86_abs32
+    target: '?g_list_boxes@BackgroundBox@@2PAV1@A'
+    addend: 0x4
+# FishRush::DrawPreAll's loop ends one past GWater::g_circle, inside LH3DExtraDotLight::g_list.
+  - source: 0x0077E77E
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE00C
+# SuperVillager::Draw's immediates: LH3DTech::g_current_matrix = &g_local_to_clipping, and the swimming
+# animation's name.
+  - source: 0x0077F26F
+    type: x86_abs32
+    target: '?g_local_to_clipping@LH3DTech@@2ULHMatrix@@A'
+    addend: 0x0
+  - source: 0x0077F279
+    type: x86_abs32
+    target: '??_C@_09NHHM@M_P_Swim2?$AA@'
+    addend: 0x0
+  - source: 0x00696876
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x006968BF
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x00696974
+    type: x86_abs32
+    target: '?g_scriptDLL@GScript@@2PAVScriptDLL@@A'
+  - source: 0x0068EC61
+    type: x86_abs32
+    target: '?Infos@CreatureDevelopmentPhaseEntry@@2PAV1@A'
+    addend: 76
+  - source: 0x0068EC8A
+    type: x86_abs32
+    target: '?Infos@CreatureDevelopmentPhaseEntry@@2PAV1@A'
+    addend: 116
 
+# LH3DRender::Close2TexStuff and ResetAllState: loop bounds one past the end of an array.
+  - source: 0x007858C5
+    type: x86_abs32
+    target: '?g_stateblock2tex@LH3DRender@@2PAULH3DStateBlock2Tex@@A'
+    addend: 0x40
+  - source: 0x00785BF3
+    type: x86_abs32
+    target: '?g_original_render_states@@3PAIA'
+    addend: 0x400
+# LH3DRender::FinishFrame: loop bounds one past the end of an array (dtk reads them as the next symbol).
+  - source: 0x00788689
+    type: x86_abs32
+    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
+    addend: 0x88
+  - source: 0x0078870C
+    type: x86_abs32
+    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
+    addend: 0x88
+  - source: 0x00788830
+    type: x86_abs32
+    target: '?cache@FontCache@@2PAUCacheEntry@@A'
+    addend: 0x4000
+  - source: 0x00788871
+    type: x86_abs32
+    target: '?page@FontCache@@2PAUCachePage@@A'
+    addend: 0x4B9
+# LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
+  - source: 0x00788F93
+    type: x86_abs32
+    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    addend: 0x30
+  - source: 0x00788FCC
+    type: x86_abs32
+    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    addend: 0x30
+  - source: 0x0078900C
+    type: x86_abs32
+    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    addend: 0x30
+# LH3DPrimitive::CalcFogTable's loop compares against the end of g_fog_table, not g_vertex_inside_triangle.
+  - source: 0x007A0854
+    type: x86_abs32
+    target: '?g_fog_table@LH3DPrimitive@@2PAY01KA'
+    addend: 0x2000
+
+  - source: 0x007BDF37
+    type: x86_rel32
+    target: '?Set@LHMatrix@@QAIXABU1@@Z'
+  - source: 0x007BD14B
+    type: x86_abs32
+    target: '__real@4@4002c000000000000000'
+  - source: 0x007BCC8F
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x007BCD22
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x007BD815
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x007BD840
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x007BE9F7
+    type: x86_abs32
+    target: '?sky_texture@@3PAPAULH3DTexture@@A'
+    addend: 0xC
+  - source: 0x007BD16C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD3
+  - source: 0x007BD170
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD9
+  - source: 0x007BD174
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xE9
+  - source: 0x007BD178
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xF9
+  - source: 0x007BD17C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0x109
+
+  - source: 0x007BCDC5
+    type: x86_abs32
+    target: '__real@4@3ff6a3d70a0000000000'
+  - source: 0x007BCE0D
+    type: x86_abs32
+    target: '__real@4@3ff6a3d70a0000000000'
+  - source: 0x007BCEE3
+    type: x86_abs32
+    target: '__real@4@3ffb8888888888888800'
+  - source: 0x007BCFCA
+    type: x86_rel32
+    target: '?SetFogMinMax@LH3DIsland@@SAXMM@Z'
+  - source: 0x007BCFE9
+    type: x86_rel32
+    target: '?SetFogColor@LH3DIsland@@SAXMMMK@Z'
+  - source: 0x007BD3D2
+    type: x86_abs32
+    target: '__real@8@3ff9f5c28f0000000000'
+  - source: 0x007BD471
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x007BE0AF
+    type: x86_abs32
+    target: '__real@4@4005dc00000000000000'
+  - source: 0x007BE225
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x007BE867
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x007BF0A9
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+  - source: 0x007BF0B8
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+  - source: 0x007BF156
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+  - source: 0x007BF18A
+    type: x86_abs32
+    target: '__real@4@40039000000000000000'
+
+  - source: 0x007BD8DD
+    type: x86_abs32
+    target: '__real@8@3ffa8ab41e3304e97800'
+  - source: 0x007BF146
+    type: x86_abs32
+    target: '__real@4@4005aa00000000000000'
+  - source: 0x007BF167
+    type: x86_abs32
+    target: '__real@4@4003a800000000000000'
+  - source: 0x007BF17E
+    type: x86_abs32
+    target: '__real@4@400bea60000000000000'
+  - source: 0x007BF190
+    type: x86_abs32
+    target: '__real@4@4005aa00000000000000'
+  - source: 0x007BF1A2
+    type: x86_abs32
+    target: '__real@4@400bea60000000000000'
+  - source: 0x007BDF7D
+    type: x86_abs32
+    target: '__real@4@bffc860a920000000000'
 # LH3DPrimitive: dtk leaves LEA displacements into the transformed vertex cache (LH3DTech::g_cache_t_points) as raw
 # immediates.
   - source: 0x007A0BAD
@@ -2461,127 +2336,252 @@ add_relocations:
     type: x86_abs32
     target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
 
-# LH3DPrimitive::CalcFogTable's loop compares against the end of g_fog_table, not g_vertex_inside_triangle.
-  - source: 0x007A0854
+# libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
+  - source: 0x007E6D90
     type: x86_abs32
-    target: '?g_fog_table@LH3DPrimitive@@2PAY01KA'
-    addend: 0x2000
-
-  - source: 0x007BDF37
-    type: x86_rel32
-    target: '?Set@LHMatrix@@QAIXABU1@@Z'
-  - source: 0x007BD14B
+    target: '_rgb_ycc_start'
+  - source: 0x007E6D97
     type: x86_abs32
-    target: '__real@4@4002c000000000000000'
-  - source: 0x007BCC8F
+    target: '_rgb_ycc_convert'
+  - source: 0x007E6E0C
     type: x86_abs32
-    target: '?g_darkness_to_color@LandCell@@2PAKA'
-    addend: 0x400
-  - source: 0x007BCD22
+    target: '_rgb_ycc_start'
+  - source: 0x007E6E13
     type: x86_abs32
-    target: '?g_darkness_to_color@LandCell@@2PAKA'
-    addend: 0x400
-  - source: 0x007BD815
+    target: '_cmyk_ycck_convert'
+  - source: 0x007E6E60
     type: x86_abs32
-    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
-  - source: 0x007BD840
+    target: '_jinit_color_converter'
+    addend: 0x36
+  - source: 0x007E6E64
     type: x86_abs32
-    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
-    addend: 0x28
-  - source: 0x007BE9F7
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x007E6E68
     type: x86_abs32
-    target: '?sky_texture@@3PAPAULH3DTexture@@A'
-    addend: 0xC
-  - source: 0x007BD16C
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x007E6E6C
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0xD3
-  - source: 0x007BD170
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x007E6E70
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0xD9
-  - source: 0x007BD174
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x007E6E74
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0xE9
-  - source: 0x007BD178
+    target: '_jinit_color_converter'
+    addend: 0x95
+  - source: 0x007E6E78
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0xF9
-  - source: 0x007BD17C
+    target: '_jinit_color_converter'
+    addend: 0xe9
+  - source: 0x007E6E7C
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0x109
-
-  - source: 0x007BCDC5
+    target: '_jinit_color_converter'
+    addend: 0x11f
+  - source: 0x007E6E80
     type: x86_abs32
-    target: '__real@4@3ff6a3d70a0000000000'
-  - source: 0x007BCE0D
+    target: '_jinit_color_converter'
+    addend: 0x16d
+  - source: 0x007E6E84
     type: x86_abs32
-    target: '__real@4@3ff6a3d70a0000000000'
-  - source: 0x007BCEE3
+    target: '_jinit_color_converter'
+    addend: 0x19d
+# adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x00B5261E
     type: x86_abs32
-    target: '__real@4@3ffb8888888888888800'
-  - source: 0x007BCFCA
-    type: x86_rel32
-    target: '?SetFogMinMax@LH3DIsland@@SAXMM@Z'
-  - source: 0x007BCFE9
-    type: x86_rel32
-    target: '?SetFogColor@LH3DIsland@@SAXMMMK@Z'
-  - source: 0x007BD3D2
+    target: 'label0'
+  - source: 0x00B52622
     type: x86_abs32
-    target: '__real@8@3ff9f5c28f0000000000'
-  - source: 0x007BD471
-    type: x86_rel32
-    target: '?UseBlendedSkyTextures@@YA_NXZ'
-  - source: 0x007BE0AF
+    target: 'label1'
+  - source: 0x00B52626
     type: x86_abs32
-    target: '__real@4@4005dc00000000000000'
-  - source: 0x007BE225
-    type: x86_rel32
-    target: '?UseBlendedSkyTextures@@YA_NXZ'
-  - source: 0x007BE867
-    type: x86_rel32
-    target: '?UseBlendedSkyTextures@@YA_NXZ'
-  - source: 0x007BF0A9
+    target: 'label2'
+  - source: 0x00B5262A
     type: x86_abs32
-    target: '__real@4@40039000000000000000'
-  - source: 0x007BF0B8
+    target: 'label3'
+  - source: 0x00B5262E
     type: x86_abs32
-    target: '__real@4@40039000000000000000'
-  - source: 0x007BF156
+    target: 'label4'
+  - source: 0x00B52632
     type: x86_abs32
-    target: '__real@4@40039000000000000000'
-  - source: 0x007BF18A
+    target: 'label5'
+  - source: 0x00B52636
     type: x86_abs32
-    target: '__real@4@40039000000000000000'
-
-  - source: 0x007BD8DD
+    target: 'label6'
+  - source: 0x00B5263A
     type: x86_abs32
-    target: '__real@8@3ffa8ab41e3304e97800'
-  - source: 0x007BF146
+    target: 'label7'
+  - source: 0x00B5263E
     type: x86_abs32
-    target: '__real@4@4005aa00000000000000'
-  - source: 0x007BF167
+    target: 'label8'
+  - source: 0x00B52642
     type: x86_abs32
-    target: '__real@4@4003a800000000000000'
-  - source: 0x007BF17E
+    target: 'label9'
+  - source: 0x00B52646
     type: x86_abs32
-    target: '__real@4@400bea60000000000000'
-  - source: 0x007BF190
+    target: 'label10'
+  - source: 0x00B5264A
     type: x86_abs32
-    target: '__real@4@4005aa00000000000000'
-  - source: 0x007BF1A2
+    target: 'label11'
+  - source: 0x00B5264E
     type: x86_abs32
-    target: '__real@4@400bea60000000000000'
-  - source: 0x007BDF7D
+    target: 'label12'
+  - source: 0x00B52652
     type: x86_abs32
-    target: '__real@4@bffc860a920000000000'
-# MOV ESI is the end of GPotInfo::InfoList for its destructor loop, not PowerSpin's data.
-  - source: 0x00616987
+    target: 'label13'
+  - source: 0x00B52656
     type: x86_abs32
-    target: '?InfoList@GPotInfo@@2PAV1@A'
-    addend: 0x180c
+    target: 'label14'
+  - source: 0x00B5265A
+    type: x86_abs32
+    target: 'label15'
+  - source: 0x00B5265E
+    type: x86_abs32
+    target: 'label16'
+  - source: 0x00B52662
+    type: x86_abs32
+    target: 'label17'
+  - source: 0x00B52666
+    type: x86_abs32
+    target: 'label18'
+  - source: 0x00B5266A
+    type: x86_abs32
+    target: 'label19'
+  - source: 0x00B5266E
+    type: x86_abs32
+    target: 'label20'
+  - source: 0x00B52672
+    type: x86_abs32
+    target: 'label21'
+  - source: 0x00B52676
+    type: x86_abs32
+    target: 'label22'
+  - source: 0x00B5267A
+    type: x86_abs32
+    target: 'label23'
+  - source: 0x00B5267E
+    type: x86_abs32
+    target: 'label24'
+  - source: 0x00B52682
+    type: x86_abs32
+    target: 'label25'
+  - source: 0x00B52686
+    type: x86_abs32
+    target: 'label26'
+  - source: 0x00B5268A
+    type: x86_abs32
+    target: 'label27'
+  - source: 0x00B5268E
+    type: x86_abs32
+    target: 'label28'
+  - source: 0x00B52692
+    type: x86_abs32
+    target: 'label29'
+  - source: 0x00B52696
+    type: x86_abs32
+    target: 'label30'
+  - source: 0x00B5269A
+    type: x86_abs32
+    target: 'label31'
+  - source: 0x00B5269E
+    type: x86_abs32
+    target: 'label32'
+  - source: 0x00B526A2
+    type: x86_abs32
+    target: 'label33'
+  - source: 0x00B526A6
+    type: x86_abs32
+    target: 'label34'
+  - source: 0x00B526AA
+    type: x86_abs32
+    target: 'label35'
+  - source: 0x00B526AE
+    type: x86_abs32
+    target: 'label36'
+  - source: 0x00B526B2
+    type: x86_abs32
+    target: 'label37'
+  - source: 0x00B526B6
+    type: x86_abs32
+    target: 'label38'
+  - source: 0x00B526BA
+    type: x86_abs32
+    target: 'label39'
+  - source: 0x00B526BE
+    type: x86_abs32
+    target: 'label40'
+  - source: 0x00B526C2
+    type: x86_abs32
+    target: 'label41'
+  - source: 0x00B526C6
+    type: x86_abs32
+    target: 'label42'
+  - source: 0x00B526CA
+    type: x86_abs32
+    target: 'label43'
+  - source: 0x00B526CE
+    type: x86_abs32
+    target: 'label44'
+  - source: 0x00B526D2
+    type: x86_abs32
+    target: 'label45'
+  - source: 0x00B526D6
+    type: x86_abs32
+    target: 'label46'
+  - source: 0x00B526DA
+    type: x86_abs32
+    target: 'label47'
+  - source: 0x00B526DE
+    type: x86_abs32
+    target: 'label48'
+  - source: 0x00B526E2
+    type: x86_abs32
+    target: 'label49'
+  - source: 0x00B526E6
+    type: x86_abs32
+    target: 'label50'
+  - source: 0x00B526EA
+    type: x86_abs32
+    target: 'label51'
+  - source: 0x00B526EE
+    type: x86_abs32
+    target: 'label52'
+  - source: 0x00B526F2
+    type: x86_abs32
+    target: 'label53'
+  - source: 0x00B526F6
+    type: x86_abs32
+    target: 'label54'
+  - source: 0x00B526FA
+    type: x86_abs32
+    target: 'label55'
+  - source: 0x00B526FE
+    type: x86_abs32
+    target: 'label56'
+  - source: 0x00B52702
+    type: x86_abs32
+    target: 'label57'
+  - source: 0x00B52706
+    type: x86_abs32
+    target: 'label58'
+  - source: 0x00B5270A
+    type: x86_abs32
+    target: 'label59'
+  - source: 0x00B5270E
+    type: x86_abs32
+    target: 'label60'
+  - source: 0x00B52712
+    type: x86_abs32
+    target: 'label61'
+  - source: 0x00B52716
+    type: x86_abs32
+    target: 'label62'
+  - source: 0x00B5271A
+    type: x86_abs32
+    target: 'label63'
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the
 # reference graph is fully recovered, keep function sections plain so it cannot

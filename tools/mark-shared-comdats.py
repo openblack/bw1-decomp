@@ -20,6 +20,10 @@ where the image holds code pointers there.
 
   python tools/mark-shared-comdats.py --version BW1W120           # report
   python tools/mark-shared-comdats.py --version BW1W120 --apply   # rewrite symbols.txt
+  python tools/mark-shared-comdats.py --version BW1W120 --unit AnimalDove --apply
+
+--unit only reads the COMDATs one unit's object leads (a source basename or path under src/,
+without .cpp), so a unit PR marks what it links and leaves the rest of the file to sync PRs.
 """
 
 import argparse
@@ -113,6 +117,7 @@ def main():
     ap.add_argument("--apply", action="store_true", help="add the marks to symbols.txt")
     ap.add_argument("--fix-sizes", action="store_true",
                     help="resize the overlapping entries that keep a shared COMDAT from being marked")
+    ap.add_argument("--unit", help="only the COMDATs this unit leads (e.g. AnimalDove or Black/AnimalDove)")
     args = ap.parse_args()
 
     # Ninja spells its paths with forward slashes on every platform.
@@ -125,6 +130,10 @@ def main():
             print(f"{name}: an ICF link, its units are folded")
             continue
         recompiled = [p for p in inputs if p.startswith(f"{build}/src/")]
+        if args.unit:
+            recompiled = [p for p in recompiled if p.endswith(f"/{args.unit.removesuffix('.cpp')}.o")]
+            if not recompiled:
+                continue
         shared = {}
         for p in recompiled:
             shared.update(shared_comdats(p))

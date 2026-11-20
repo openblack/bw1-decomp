@@ -147,6 +147,24 @@ Concurrent Ninja runs in one build directory race on shared objects and logs. Wo
 
 Full build of one version saturates cores only while compiling. Run independent builds side by side (e.g. `main` against branch, or five versions of one revision) in separate `git worktree` checkouts, use `tools/tiebreak-probe.py --variants FILE -j <cores>` or `tools/variant-sweep.py` for sweeps over one unit instead of looping single-object rebuilds. `tiebreak-probe` and `variant-sweep` leave 100s of MB in `build/probe-*`: delete after each run or disk fills (ENOSPC). Setup details (symlinks, backdated timestamps, per-checkout version lists) in [`docs/parallel_builds.md`](docs/parallel_builds.md).
 
+### Rebasing and merge conflicts
+
+`config/**/symbols.txt` merges per symbol through `tools/merge-symbols.py` (`.gitattributes`). Enable once per clone: `python tools/setup-merge-drivers.py` (`--check` to confirm). Without it git merges them line by line and nearly every rebase conflicts there.
+
+- Output in dtk's order (section, address; ties keep file order), so next split does not rewrite it. Never hand-sort or hand-merge `symbols.txt` in other order.
+- Initializer labels (`_$E`, `_$S`) named by address (`_$E_<address>`, `_$S_<address>`): never renumber, build renames each compiled object's labels after target's (`label_objects`, `tools/label-objects.py`). `relabel-initializers.py --apply` names new ones.
+- Compiler-numbered labels (`?$S`, `$L`) both sides renumbered: driver takes upstream side, prints relabel commands. After rebase: build every version listed, run `funclets.py relabel --apply` as printed, rebuild, commit result.
+- `config/<V>/padding.txt` (`post_link_patch.py`'s SafeDisc padding rows) merges with `merge=union`, `config.yml` `block_relocations`/`add_relocations` groups sit in source-address order: add rows and groups at their address, not at the end. `python tools/check-tables.py --fix` and `tools/check-symbols-order.py --fix` restore order (CI checks both).
+- Real conflicts (same symbol renamed differently, deleted against changed, overlap or duplicate name the merge would create) get conflict markers around those symbols only, exit non-zero. Resolve from evidence like any naming dispute: same address named twice = duplicate work, ask other PR's author, not pick by recency. Unparseable file falls back to `git merge-file`.
+
+Keep PRs from colliding (study of 200 merged PRs, Nov 2026: 56 of the 116 that had merges land while open conflicted):
+
+- **No PRs open on neighbouring units at once** (adjacent `configure.py` lines, touching split ranges): AnimalLeopard/Lion/Wolf/Reaction/Arena (#823–#831) collided pairwise; `configure.py` (8 PRs) and `splits.txt` (5–9 per version) are the largest causes the driver cannot merge. Finish one, rebase the next.
+- **Header change that renumbers labels (`?$S`, `$L`) lands alone**, others rebase after: 83% of 1,054 conflicting `symbols.txt` hunks were renumbered `_$E`/`_$S`/`?$S`/`$L` labels (before initializer labels went by address); 70 of 200 merges rewrote >40 label lines.
+- **Unit PR runs passes scoped to its unit**: `relabel-initializers.py --unit U`, `funclets.py relabel --unit U`, `mark-shared-comdats.py --version V --unit U`, `version-backport` `backport.py apply V --only <file>`. Whole-file runs (no `--unit`, `rdata-r-ranges.py`) go in separate sync PRs: 42% of `symbols.txt` lines a unit PR changed lay outside its units (27% labels, 15% shared COMDATs, flags, neighbours).
+- **Claim shared globals and classes, not only units**, before naming them: 9 PRs named one address two ways (`HandHoldingAbove` #797 vs `HandUnknown` #812).
+- **Keep PRs short-lived**: conflict rate 30% with 1–3 merges landing while open, 61% with 4–9, 82% with 10+. Rebase often; split large work.
+
 ## Source Organization
 
 Each `.o` maps 1:1 to a `.cpp`, listed in `configure.py` under `config.libs`, with status:
@@ -247,7 +265,7 @@ Do not commit decompilation commentary: TODOs, "fabricated", match percentages, 
 
 Include can change generated code even when declarations unused: TU-local constants, dynamic initializers, template storage/helpers, inlining can all change. Keep enum-only headers lightweight, place complete types where consumers need them. Verify header consumers after layout, virtual-interface, include-boundary changes.
 
-Every static data member declared in header bumps cl6's `_$E`/`_$S` counter in each including TU, renumbering initializers. Game's numbering shows it never saw DLL module's statics → hide with that module's own build define (e.g. `#ifdef LH_MULTIPLAYER_EXPORTS`). DLL modules only. After adding statics to widely included header, run `relabel-initializers.py --prefix runblack/ --apply` per version after full build; it does not touch function-local static guards `?$S<n>@...`, rename those whose number moved by exactly added count by hand (symptom: `.CRT$XCU` drops / `_$E` lost_match across ~100 units while exe hashes pass).
+Every static data member declared in header bumps cl6's `_$E`/`_$S` counter in each including TU, renumbering initializers. Game's numbering shows it never saw DLL module's statics → hide with that module's own build define (e.g. `#ifdef LH_MULTIPLAYER_EXPORTS`). DLL modules only. Renumbered `_$E`/`_$S` do not show: build renames each compiled object's initializer labels after target's (`tools/label-objects.py`). Function-local static guards `?$S<n>@...` still renumber: after adding statics to widely included header, rename those whose number moved by exactly added count by hand (symptom: `?$S` lost_match across many units while exe hashes pass).
 
 EH unwind funclets and handlers (`$L<n>`: the DLL units built with `/GX`, and STL template code in a few Black units) are numbered the same way: any declaration added to a header such a unit includes renumbers them, and objdiff pairs them by name, so the reports drop while hashes pass. After changing a header they include, per version after full build: `python tools/funclets.py relabel --apply`, then `ninja` (`eh-funclets` skill). It pairs funclets through each function's EH tables and renames only byte-identical ones; `--check` exits 1 when a label is out of date.
 

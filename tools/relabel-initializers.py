@@ -1,27 +1,28 @@
 #!/usr/bin/env python3
-"""Rename the target's initializer labels (_$E, _$S) in symbols.txt after the compiled objects.
+"""Name the target's initializer labels (_$E, _$S) in symbols.txt after their addresses.
 
 cl numbers a unit's dynamic-initializer stubs and bodies (_$E) and their .CRT$XCU slots (_$S) in
-one sequence, and a precompiled header shifts that sequence (docs/msvc6_pch.md). The numbers are
-not in the binary: objdiff pairs these local labels by name, so the labels in symbols.txt follow
-the compiled objects, and have to follow them again whenever the numbering changes.
+one sequence, and any header change can shift it (docs/msvc6_pch.md). The numbers are not in the
+binary, and objdiff pairs these local labels by name. The build therefore renames the labels of
+each compiled object after the target split's names right after cl (tools/label-objects.py,
+configure.py's label_objects), and symbols.txt names them after their address, which no header
+change moves: _$E_<address> for a stub, body or atexit thunk, _$S_<address> for a .CRT$XCU slot.
 
-This pairs each target initializer with the compiled one by structure, not by name. The
-std::ctype guard's registration (recognised by its use of the guard) pairs with the compiled
-one. The other .CRT$XCU entries pair in order, as both objects run their initializers in
-declaration order, where they initialise the same named static or, failing a name on either
-side, have the same code: the same bytes and the same named relocation targets. A unit whose
-source is still incomplete compiles fewer initializers than the target holds; the entries it
-does compile still pair, the earliest compatible ones first.
+For each compiled unit this names:
+- every numbered label (_$E<n>, _$S<n>) and crt_xc_fn_<what>_<unit>_<address> placeholder in its
+  .text, and every .CRT$XCU slot in its range (a symbol that spans several slots is cut into one
+  per slot, a slot no symbol covers gets one);
+- dtk's fn_<address> where the function pairs with an initializer of the compiled object. Pairing
+  is by structure, not by name: the std::ctype guard's registration (recognised by its use of the
+  guard) pairs with the compiled one, and the other .CRT$XCU entries pair in order where they
+  initialise the same named static or, failing a name on either side, have the same code (the
+  same bytes and the same named relocation targets). A unit whose source is still incomplete
+  compiles fewer initializers than the target holds; the entries it does compile still pair, the
+  earliest compatible ones first.
 
-A split can still hold more than one original object, each ending in its own guard. Its
-entries are then cut into one part per guard, and only the part holding the functions the
-compiled object defines pairs with it (`--parts` lists the splits that need a new unit).
-
-The target names renamed are the labels, the crt_xc_fn_<what>_<unit>_<address> placeholders and
-dtk's fn_/lbl_<address>. A .CRT$XCU symbol that spans several slots is cut into one symbol per
-slot, so that each slot can take its label. A label that would collide with a new name moves to
-an unused number.
+A split can still hold more than one original object, each ending in its own guard. Its entries
+are then cut into one part per guard, and only the part holding the functions the compiled object
+defines pairs with it (`--parts` lists the splits that need a new unit).
 
 Run it for the configured version after ninja has split the target and compiled the units, then
 run ninja again to split with the new names:
@@ -49,6 +50,12 @@ AUTO_SLOT = re.compile(r"^lbl_[0-9A-F]{8}$")
 # Names that only stand in for a label: the crt_xc_fn_<what>_<unit>_<address> placeholders given
 # to initializer stubs, bodies and the ctype guard's stub and atexit thunk, and dtk's fn_<address>.
 PLACEHOLDER = re.compile(r"^(crt_xc_fn_\w+_[0-9A-F]{8}|fn_[0-9A-F]{8})$")
+CRT_PLACEHOLDER = re.compile(r"^crt_xc_fn_\w+_[0-9A-F]{8}$")
+# dtk's name for a repeated data name it de-duplicated: a .CRT$XCU slot named so takes its label.
+DATA_PLACEHOLDER = re.compile(r"^data_0x[0-9a-f]{8}$")
+# A label named after its address rather than its number (tools/label-objects.py): _$E_<address>
+# for an initializer stub or body, _$S_<address> for its .CRT$XCU slot.
+ADDRESS_LABEL = re.compile(r"^_\$[ES]_[0-9A-F]{8}$")
 CTYPE_GUARD = "ctype@G"
 STORAGE_STATIC = 3
 COMDAT = 0x1000
@@ -61,7 +68,12 @@ SLOT = 4
 
 
 def renameable(name):
-    return bool(LABEL.match(name) or PLACEHOLDER.match(name))
+    return bool(LABEL.match(name) or PLACEHOLDER.match(name) or ADDRESS_LABEL.match(name))
+
+
+def address_label(kind, address):
+    """The label symbols.txt gives an initializer function (kind "E") or .CRT$XCU slot ("S")."""
+    return f"_${kind}_{address:08X}"
 
 
 class Initializers:
@@ -338,7 +350,7 @@ def slot_lines(lines, entries, xcu, slots):
         if size == SLOT and slots[address] == name:
             kept[i] = name
             continue
-        if size % SLOT or not (renameable(name) or AUTO_SLOT.match(name)):
+        if size % SLOT or not (renameable(name) or AUTO_SLOT.match(name) or DATA_PLACEHOLDER.match(name)):
             continue
         new = []
         for a in range(address, address + size, SLOT):
@@ -354,12 +366,13 @@ def slot_lines(lines, entries, xcu, slots):
 
 
 def slot_line(label, section, address):
-    scope = " scope:local" if LABEL.match(label) else ""
+    scope = " scope:local" if LABEL.match(label) or ADDRESS_LABEL.match(label) else ""
     return f"{label} = .{section}:0x{address:08X}; // type:object size:0x{SLOT:X}{scope}"
 
 
 def relabel(config, units, apply, verbose=True):
     ranges = read_ranges(config / "splits.txt")
+    texts = read_ranges(config / "splits.txt", r"\.text")
     xcus = read_ranges(config / "splits.txt", r"\.CRT\$XCU")
     path = config / "symbols.txt"
     lines = path.read_text().split("\n")
@@ -370,72 +383,82 @@ def relabel(config, units, apply, verbose=True):
             entries.append((int(match.group(3), 16), i, match.group(1)))
     entries.sort()
     starts = [address for address, _, _ in entries]
+    address_of = {i: address for address, i, _ in entries}
     total = 0
-    replaced, added = {}, collections.defaultdict(list)
+    new_name, replaced, added = {}, {}, collections.defaultdict(list)
     for unit in units:
         split = unit["metadata"]["source_path"].removeprefix("src/")
         target_path, base_path = ROOT / unit["target_path"], ROOT / unit["base_path"]
-        if split not in ranges or not target_path.is_file() or not base_path.is_file():
+        if split not in ranges or not base_path.is_file():
             continue
-        lines_of = collections.defaultdict(list)  # name -> its lines in the unit, in address order
-        for lo, hi in sorted(ranges[split]):
-            for _, i, name in entries[bisect.bisect_left(starts, lo):bisect.bisect_left(starts, hi)]:
-                lines_of[name].append(i)
-        target, compiled = Initializers(target_path), Initializers(base_path)
-        found, slots = renames(target, compiled)
-        if any(target.count[target.name(index)] != len(lines_of[target.name(index)]) for index in found):
-            print(f"{split}: the target object is older than symbols.txt; run ninja first", file=sys.stderr)
-            continue
-        assigned = {lines_of[target.name(index)][target.occurrence[index]]: new for index, new in found.items()}
-        new_name = {i: new for i, new in assigned.items() if lines[i].split(" = ", 1)[0] != new}
-        slot_new, slot_add = {}, {}
-        if slots and split in xcus and len(xcus[split]) == 1:
-            start = xcus[split][0][0]
-            # The target's .CRT$XCU starts at the split's start; its named slots say so.
-            known = {name: [a for a, _, n in entries if n == name] for name in
-                     {target.name(slot) for _, slot, _ in target.entries if slot is not None}}
-            if all(start + target.symbols[slot].value in known[target.name(slot)]
-                   for _, slot, _ in target.entries if slot is not None and known[target.name(slot)]):
-                slot_new, slot_add, kept = slot_lines(lines, entries, xcus[split][0],
-                                                      {start + offset: name for offset, name in slots.items()})
-                assigned.update(kept)
+        named = {}
+        # Every numbered label and placeholder in the unit's code is one of its initializers.
+        for lo, hi in texts.get(split, []):
+            for address, i, name in entries[bisect.bisect_left(starts, lo):bisect.bisect_left(starts, hi)]:
+                if LABEL.match(name) or CRT_PLACEHOLDER.match(name) or ADDRESS_LABEL.match(name):
+                    named[i] = address_label("E", address)
+        # dtk's fn_<address> only where it pairs with an initializer of the compiled object: one
+        # still numbered, or one tools/label-objects.py renamed after the target.
+        if target_path.is_file():
+            lines_of = collections.defaultdict(list)  # name -> its lines in the unit, in address order
+            for lo, hi in sorted(ranges[split]):
+                for _, i, name in entries[bisect.bisect_left(starts, lo):bisect.bisect_left(starts, hi)]:
+                    lines_of[name].append(i)
+            target, compiled = Initializers(target_path), Initializers(base_path)
+            pairs = [(a, b) for (_, _, t_stub), (_, _, c_stub) in pair(target, compiled)
+                     for a, b in zip(target.chain(t_stub), compiled.chain(c_stub))]
+            found = [a for a, b in pairs if renameable(target.name(a))
+                     and (LABEL.match(compiled.name(b)) or compiled.name(b) == target.name(a))]
+            if any(target.count[target.name(a)] != len(lines_of[target.name(a)]) for a in found):
+                print(f"{split}: the target object is older than symbols.txt; run ninja first", file=sys.stderr)
             else:
-                print(f"{split}: .CRT$XCU does not start at the split's start", file=sys.stderr)
-        if not new_name and not slot_new and not slot_add:
+                for a in found:
+                    i = lines_of[target.name(a)][target.occurrence[a]]
+                    named[i] = address_label("E", address_of[i])
+        slot_new, slot_add = {}, {}
+        if split in xcus and len(xcus[split]) == 1:
+            lo, hi = xcus[split][0]
+            slots = {a: address_label("S", a) for a in range(lo, hi, SLOT)}
+            slot_new, slot_add, _ = slot_lines(lines, entries, xcus[split][0], slots)
+        elif split in xcus:
+            print(f"{split}: more than one .CRT$XCU range", file=sys.stderr)
+        named = {i: new for i, new in named.items() if lines[i].split(" = ", 1)[0] != new}
+        if not named and not slot_new and not slot_add:
             continue
-        # A label already in the unit that a new name would duplicate moves to an unused number.
-        taken = set(assigned.values()) | {SYMBOL.match(text).group(1) for new in list(slot_new.values()) +
-                                          list(slot_add.values()) for text in new}
-        taken = {name for name in taken if LABEL.match(name)}
-        names = [n for n in lines_of if LABEL.match(n)] + list(taken)
-        names += [compiled.name(i) for i in compiled.symbols if LABEL.match(compiled.name(i))]
-        fresh = max((int(n.lstrip("_$ES")) for n in names), default=0) + 1
-        for name in sorted(lines_of, key=lambda n: lines_of[n][0]):
-            for i in lines_of[name]:
-                if name in taken and i not in assigned and i not in slot_new:
-                    new_name[i] = re.sub(r"\d+$", str(fresh), name)
-                    fresh += 1
-        for i in sorted(new_name):
-            old = lines[i].split(" = ", 1)[0]
-            lines[i] = new_name[i] + lines[i][len(old):]
-            if "scope:" not in lines[i]:
-                # A label is local to its unit; dtk renames a repeated global name.
-                lines[i] += " scope:local"
+        for i in sorted(named):
             if verbose:
-                print(f"{split}: {old} -> {new_name[i]}")
+                print(f"{split}: {lines[i].split(' = ', 1)[0]} -> {named[i]}")
         for i, new in slot_new.items():
             if verbose:
                 print(f"{split}: {lines[i].split(' = ', 1)[0]} -> {', '.join(t.split(' = ', 1)[0] for t in new)}")
         for i, new in slot_add.items():
             if verbose:
                 print(f"{split}: + {', '.join(t.split(' = ', 1)[0] for t in new)}")
+        new_name.update(named)
         replaced.update(slot_new)
         for i, new in slot_add.items():
             added[i].extend(new)
-        total += len(new_name) + sum(len(new) for new in slot_new.values()) + sum(len(new) for new in slot_add.values())
+        total += len(named) + sum(len(new) for new in slot_new.values()) + sum(len(new) for new in slot_add.values())
+    # An address names one symbol: never write a name twice.
+    final = collections.Counter()
+    for i, line in enumerate(lines):
+        for text in replaced.get(i, [new_name[i] + " = " if i in new_name else line]):
+            final[text.split(" = ", 1)[0]] += 1
+        for text in added.get(i, []):
+            final[text.split(" = ", 1)[0]] += 1
+    twice = sorted(name for name, count in final.items() if count > 1 and ADDRESS_LABEL.match(name))
+    if twice:
+        print(f"{path}: names given twice, nothing written: {', '.join(twice)}", file=sys.stderr)
+        return 0
     if apply and total:
         out = []
         for i, line in enumerate(lines):
+            if i in new_name:
+                old = line.split(" = ", 1)[0]
+                line = new_name[i] + line[len(old):]
+                if "scope:" not in line:
+                    # A label is local to its unit; dtk renames a repeated global name.
+                    line += " scope:local"
             out.extend(replaced.get(i, [line]))
             out.extend(added.get(i, []))
         path.write_text("\n".join(out))
@@ -479,11 +502,16 @@ def main():
     else:
         units = [u for u in project["units"] if u["name"].startswith(args.prefix)
                  and u.get("target_path") and u.get("base_path") and u.get("metadata", {}).get("source_path")]
+    # Only the units the build compiles from src/, not the library members.
+    units = [u for u in units if u["metadata"]["source_path"].replace("\\", "/").startswith("src/")]
     by_config = collections.defaultdict(list)
     for unit in units:
         parts_ = Path(unit["target_path"]).parts
-        # build/<version>/obj/... or build/<version>/<module>/obj/...
-        config = ROOT / "config" / parts_[1] if parts_[2] == "obj" else ROOT / "config" / parts_[1] / parts_[2]
+        # <build dir>/<version>/obj/... or <build dir>/<version>/<module>/obj/...
+        at = parts_.index("obj")
+        config = ROOT / "config" / parts_[at - 1]
+        if not config.is_dir():
+            config = ROOT / "config" / parts_[at - 2] / parts_[at - 1]
         by_config[config].append(unit)
     total = 0
     for config, members in sorted(by_config.items()):
