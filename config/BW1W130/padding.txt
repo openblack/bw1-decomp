@@ -3069,6 +3069,14 @@
 0x00785F0A copy_run 0x00785E93  # ZipData
 0x00785F99 jmp_run 0x00785F0A  # ZipData
 0x00792897 jmp_run 0x007927C6  # InterfaceHelp
+0x007A1CDB call_rel32 0x004034F9  # UniverseRoom
+0x007A1D05 copy_run 0x007A1CDB  # UniverseRoom
+0x007A1E63 copy_run 0x007A1D03  # UniverseRoom
+0x007A1E93 jmp_run 0x007A1E63  # UniverseRoom
+0x007A1F78 jmp_run 0x007A1E93  # UniverseRoom
+0x007A1FA7 copy_run 0x007A1F78  # UniverseRoom
+0x007A1FD6 jmp_run 0x007A1FA7  # UniverseRoom
+0x007A20BA jmp_run 0x007A1FD6  # UniverseRoom
 0x007EBB97 jmp_run 0x007EBB1A  # LHMem
 0x007EBBB2 jmp_run 0x007EBB97  # LHMem
 0x007EBBEA copy_run 0x007EBBB2  # LHMem

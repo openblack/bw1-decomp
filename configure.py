@@ -320,6 +320,9 @@ if config.version == "BW1W100":
         "__imp_?LHSampleSet3DPosition@LH_AudioSystem@@QAEPAULH_SampleInfo@@PAVLH_AudioBank@@KKMMMH@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_import}=__imp__ExitProcess@4")
+    # UniverseRoom's destructor has no callers in 1.00; /OPT:REF dropped it and
+    # PictureRoomBase's, which only it calls.
+    config.base_ldflags.append("/alternatename:??1PictureRoomBase@@QAE@XZ=_abort")
     # Serialise's ChooseSavedGame has no callers in 1.00; /OPT:REF dropped it and the
     # comdlg32 import thunks only it calls.
     for _dead_function in ["_GetSaveFileNameA@4", "_GetOpenFileNameA@4"]:
@@ -1266,7 +1269,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/TownStats.cpp"),
             GameCodeObject(NonMatching, "Black/Tree.cpp"),
             GameCodeObject(NonMatching, "Black/TribeInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/UniverseRoom.cpp"),
+            GameCodeObject(Matching, "Black/UniverseRoom.cpp"),
             GameCodeObject(Matching, "Black/UniverseRoomCamera.cpp"),
             GameCodeObject(NonMatching, "Black/Utils.cpp"),
             GameCodeObject(Matching, "Black/Version.cpp", pch=False),
