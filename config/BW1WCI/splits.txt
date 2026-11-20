@@ -48,14 +48,15 @@ Black/Abode.cpp:
 
 Black/alexmfc.cpp:
 	.text       start:0x00407810 end:0x00414AF0
-	.rdata      start:0x008D62C8 end:0x008D66B0
+	.rdata      start:0x008D62C8 end:0x008D66AC
 	.rdata$r    start:0x00A16BB8 end:0x00A17010
 	.CRT$XCU    start:0x00A3604C end:0x00A36070 align:4
 	.data       start:0x00A378B0 end:0x00A37B78
+	.bss        start:0x00CC0690 end:0x00CC0748
 
 Black/Alignment.cpp:
 	.text       start:0x00414AF0 end:0x00417750
-	.rdata      start:0x008D66B0 end:0x008D67BC
+	.rdata      start:0x008D66AC end:0x008D67BC
 	.rdata$r    start:0x00A17010 end:0x00A17138
 	.CRT$XCU    start:0x00A36070 end:0x00A36080 align:4
 	.data       start:0x00A37B78 end:0x00A38534

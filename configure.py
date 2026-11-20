@@ -818,7 +818,7 @@ config.libs = [
         "progress_category": "game",
         "objects": [
             GameCodeObject(Matching, "Black/Abode.cpp"),
-            GameCodeObject(NonMatching, "Black/alexmfc.cpp"),
+            GameCodeObject(Matching, "Black/alexmfc.cpp"),
             GameCodeObject(Matching, "Black/Alignment.cpp"),
             GameCodeObject(NonMatching, "Black/Animal.cpp"),
             GameCodeObject(Matching, "Black/AnimalAnimation.cpp"),

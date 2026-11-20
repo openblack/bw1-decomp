@@ -1,3 +1,4 @@
+#include "HalfLifeConstants.h"
 #include "alexmfc.h"
 
 #include <ctype.h>
@@ -26,11 +27,52 @@
 #include "GJUtils.h"
 #include "Game.h"
 #include "Global.h"
-#include "HalfLifeConstants.h"
 #include "HelpText.h"
 #include "Interface.h"
 
+#if defined(VERSION_BW1W110) || defined(VERSION_BW1WCI)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 3)
+#elif defined(VERSION_BW1W100)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - ((line) < 1901 ? 28 : 41))
+#endif
+
+#ifdef VERSION_BW1WCI
+#define SETUP_LABEL_HIGHLIGHTED(hovered, selected) (hovered)
+#else
+#define SETUP_LABEL_HIGHLIGHTED(hovered, selected) ((hovered) || ((selected) && !label[0]))
+#endif
+
 #define SETUP_MP3_ICON_UV ((float)SETUP_MP3_ICON_SIZE / LH3D_ATMOS_TEXTURE_SIZE)
+
+struct SetupFadeIn : public Zoomer
+{
+	// BW1W120 inlined BW1M119 inlined
+	float GetTime() { return CurrentTime; }
+	// BW1W120 inlined BW1M119 inlined
+	void Update(float dt)
+	{
+		CurrentTime += dt;
+		if (CurrentTime >= duration)
+		{
+			CurrentValue = destination;
+			CurrentSpeed = DestinationSpeed;
+			TimeM2 = 0.0f;
+			CurrentTime = duration;
+		}
+		else
+		{
+			float t2 = 0.5f * (GetTime() * GetTime());
+			float t3 = (1.0f / 3.0f) * (t2 * CurrentTime);
+			float t4 = (1.0f / 6.0f) * (t2 * t2);
+			CurrentSpeed = NonLinearAcceleration.x * CurrentTime + NonLinearAcceleration.y * t2 +
+			               NonLinearAcceleration.z * t3 + StartSpeed;
+			CurrentValue = NonLinearAcceleration.z * t4 + NonLinearAcceleration.y * t3 + NonLinearAcceleration.x * t2 +
+			               StartSpeed * (CurrentTime) + StartValue;
+		}
+	}
+};
 
 int SetupThing::DrawAlpha = 0xff;
 
@@ -42,36 +84,37 @@ static Vertex3D QuadVertices[] = {
 };
 static uint16_t QuadIndices[] = {0, 1, 3, 1, 2, 3};
 
-LH3DColor SetupThing::SelectedColour = LH3DColor(0xffffffff);
-LH3DColor SetupThing::HighlightColour = LH3DColor(0xffc08020);
-LH3DColor SetupThing::TextColour = LH3DColor(0xff000000);
-LH3DColor SetupThing::ShadowColour = LH3DColor(0xff000000);
-LH3DColor SetupThing::DefaultColor = LH3DColor(0xffffffff);
-LH3DColor SetupThing::NormalColour = LH3DColor(0xffd0d0d0);
+LH3DObject*   SetupThing::Object;
+LH3DMesh*     SetupThing::Mesh;
+bool          SetupBox::Showing;
+bool          SetupBox::WantKey;
+bool          SetupBox::CanEscape;
+LH3DColor     SetupThing::SelectedColour = LH3DColor(LH3D_COLOR_WHITE);
+LH3DColor     SetupThing::HighlightColour = LH3DColor(0xffc08020);
+LH3DColor     SetupThing::TextColour = LH3DColor(0xff000000);
+LH3DColor     SetupThing::ShadowColour = LH3DColor(0xff000000);
+LH3DColor     SetupThing::DefaultColor = LH3DColor(LH3D_COLOR_WHITE);
+LH3DColor     SetupThing::NormalColour = LH3DColor(0xffd0d0d0);
+int           SetupThing::MouseDownX;
+int           SetupThing::MouseDownY;
+bool32_t      SetupThing::PrevLeftButton;
+bool          SetupThing::Dragging;
+SetupRect     SetupThing::TextBounds;
+SetupFadeIn   SetupBox::FadeIn;
+LH3DMaterial* SetupThing::ButtonMaterial;
 
-LH3DMaterial*  SetupThing::ButtonMaterial;
-bool           SetupBox::CanEscape;
-bool           SetupBox::WantKey;
-SetupBox*      SetupBox::CurrentInitBox;
-SetupBox*      SetupBox::CurrentActiveBox;
-SetupBox*      SetupBox::CurrentFadeBox;
-bool32_t       SetupThing::PrevLeftButton;
-LH3DMesh*      SetupThing::Mesh;
-LH3DObject*    SetupThing::Object;
-bool32_t       SetupThing::IMEActive;
-int            SetupThing::LeftClickCount;
-int            SetupThing::RightClickCount;
-bool32_t       SetupThing::MouseCaptured;
-bool32_t       SetupThing::DoubleClicked;
-bool32_t       SetupThing::RightClicked;
-bool32_t       SetupThing::AnyDoubleClicked;
-bool           SetupThing::Dragging;
-int            SetupThing::MouseDownX;
-int            SetupThing::MouseDownY;
-SetupRect      SetupThing::TextBounds;
-Zoomer         SetupBox::FadeIn;
-bool32_t       SetupThing::Initialised;
-GatheringText* SetupThing::Font;
+bool32_t       SetupThing::IMEActive = false;
+int            SetupThing::LeftClickCount = 0;
+int            SetupThing::RightClickCount = 0;
+bool32_t       SetupThing::MouseCaptured = false;
+bool32_t       SetupThing::DoubleClicked = false;
+bool32_t       SetupThing::RightClicked = false;
+bool32_t       SetupThing::AnyDoubleClicked = false;
+SetupBox*      SetupBox::CurrentInitBox = NULL;
+SetupBox*      SetupBox::CurrentActiveBox = NULL;
+SetupBox*      SetupBox::CurrentFadeBox = NULL;
+bool32_t       SetupThing::Initialised = false;
+GatheringText* SetupThing::Font = NULL;
 
 bool NeedsBiggerText()
 {
@@ -104,7 +147,18 @@ void SetupBox::SetCurrentActiveBox(SetupBox* box)
 {
 	if (box != NULL)
 	{
-		FadeIn.SetPosition(0.0f);
+		FadeIn.destination = 0.0f;
+		FadeIn.CurrentValue = 0.0f;
+		FadeIn.StartValue = 0.0f;
+		FadeIn.duration = 0.0f;
+		FadeIn.CurrentTime = 0.0f;
+		FadeIn.NonLinearAcceleration.z = 0.0f;
+		FadeIn.NonLinearAcceleration.y = 0.0f;
+		FadeIn.TimeM2 = 0.0f;
+		FadeIn.NonLinearAcceleration.x = 0.0f;
+		FadeIn.CurrentSpeed = 0.0f;
+		FadeIn.StartSpeed = 0.0f;
+		FadeIn.DestinationSpeed = 0.0f;
 		FadeIn.SetDestination(1.0f, 0.6f);
 	}
 	SetupThing::LeftClickCount = 0;
@@ -133,7 +187,14 @@ void SetupBox::SetCurrentActiveBox(SetupBox* box)
 	LHSys::TheSystem.charRing.Clear();
 	SetupThing::RightClickCount = 0;
 	SetupThing::LeftClickCount = 0;
-	SetupThing::PrevLeftButton = SetupThing::MouseCaptured = LHSys::TheSystem.mouse.Buttons & 1;
+#ifdef VERSION_BW1W100
+	SetupThing::PrevLeftButton = SetupThing::MouseCaptured =
+		(LHSys::TheSystem.mouse.Buttons & LH_MOUSE_BUTTON_LEFT_DOWN) ||
+		(LHSys::TheSystem.mouse.Buttons & LH_MOUSE_BUTTON_RIGHT_DOWN) ||
+		(LHSys::TheSystem.mouse.Buttons & LH_MOUSE_BUTTON_MIDDLE_DOWN);
+#else
+	SetupThing::PrevLeftButton = SetupThing::MouseCaptured = LHSys::TheSystem.mouse.Buttons & LH_MOUSE_BUTTON_LEFT_DOWN;
+#endif
 	if (box != NULL)
 	{
 		box->Fade.SetPosition(0.0f);
@@ -306,9 +367,10 @@ void SetupBox::SetOffHold()
 
 void RussClickNoise()
 {
-	GGlobal::Global.audio->PlaySoundEffect(NULL, 159, 3, 0, 0, 0, GGlobal::Global.audio->AudioBanks[1]);
+	GGlobal::Global.audio->PlaySoundEffect(NULL, LH_SAMPLE_G_MENUBUTTON, LH_SAMPLE_PLAY_TYPE_RESTART, 0, false, false,
+	                                       GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME]);
 	if (GGame::g_game->MyInterface() != NULL)
-		GGame::g_game->MyInterface()->StartImmersion(IMMERSION_EFFECT_TYPE_COMMAND_SUCCESS, 0x80000000);
+		GGame::g_game->MyInterface()->StartImmersion(IMMERSION_EFFECT_TYPE_COMMAND_SUCCESS, IMM_EFFECT_DONT_CHANGE);
 }
 
 void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool no_input)
@@ -344,13 +406,14 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 	}
 
 	LH3DMaterial::g_list_render_func = LH3DMaterial::g_list_render_func_global_alpha;
+	SetupControl* control;
 	if (OnHold)
 	{
 		SetupThing::DrawAlpha = alpha;
-		for (SetupControl* held = HoldWidgetList; held != NULL; held = held->next)
+		for (control = HoldWidgetList; control != NULL; control = control->next)
 		{
-			if (!held->hidden)
-				held->Draw(false, false);
+			if (!control->hidden)
+				control->Draw(false, false);
 		}
 		if (Callback != NULL)
 			Callback(SETUP_MESSAGE_POST_DRAW, this, FocusedWidget, x, y);
@@ -365,7 +428,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 	}
 
 	HoverWidget = no_input ? NULL : FindControl(x, y);
-	SetupControl* control = WidgetList;
+	control = WidgetList;
 	if (left_button && FocusedWidget != NULL && left_button == SetupThing::PrevLeftButton &&
 	    HoverWidget != FocusedWidget)
 		HoverWidget = NULL;
@@ -438,7 +501,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 				RussClickNoise();
 			}
 			if (!GGame::g_game->Initialised)
-				LHSys::TheSystem.mouse.ButtonPressed &= ~0x10;
+				LHSys::TheSystem.mouse.ButtonPressed &= ~LH_MOUSE_BUTTON_LEFT_DOUBLE_CLICK;
 			SetupThing::DoubleClicked = false;
 		}
 
@@ -479,7 +542,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 				SetupThing::MouseDownY = y;
 				SetFocusControl(HoverWidget);
 				if (HoverWidget != NULL)
-					HoverWidget->RightButton = LHSys::TheSystem.mouse.Buttons & 2;
+					HoverWidget->RightButton = LHSys::TheSystem.mouse.Buttons & LH_MOUSE_BUTTON_RIGHT_DOWN;
 				if (Callback != NULL)
 					Callback(SETUP_MESSAGE_MOUSE_DOWN, FocusedWidget != NULL ? FocusedWidget->setup_box : NULL,
 					         FocusedWidget, x, y);
@@ -514,7 +577,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 			if (SetupThing::Dragging && FocusedWidget != NULL)
 				FocusedWidget->Drag(x, y);
 			if (FocusedWidget != NULL)
-				FocusedWidget->RightButton |= LHSys::TheSystem.mouse.Buttons & 2;
+				FocusedWidget->RightButton |= LHSys::TheSystem.mouse.Buttons & LH_MOUSE_BUTTON_RIGHT_DOWN;
 			if (Callback != NULL && FocusedWidget != NULL)
 				Callback(SETUP_MESSAGE_DRAG, this, FocusedWidget, x, y);
 			if (HoverWidget != HeldOverWidget)
@@ -642,7 +705,7 @@ SetupControl::SetupControl(int id, int x, int y, int width, int height, const ch
 	SetupBox::CurrentInitBox->WidgetList = this;
 	hidden = false;
 	focus = false;
-	UsesIME = 0;
+	UsesIME = false;
 	Style = 0;
 	ContinueButtonCallback = NULL;
 	TabStop = true;
@@ -733,14 +796,17 @@ void SetupStaticText::Draw(bool hovered, bool selected)
 	}
 	if (textHeight > rect.end.y - rect.start.y || textWidth > rect.end.x - rect.start.x)
 	{
+#ifndef VERSION_BW1W100
 		if (DisplayTextSize > 10)
+#endif
 			DisplayTextSize--;
 	}
 }
 
 void SetupButton::Draw(bool hovered, bool selected)
 {
-	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, hovered ? 2 : 1, 16, -1, 0xffffffff);
+	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, hovered ? 2 : 1,
+	                       SETUP_BEVEL_THICKNESS_BOX, SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 	int size = GetTextSize();
 	while (size > 10)
 	{
@@ -761,10 +827,10 @@ void SetupButton::Draw(bool hovered, bool selected)
 	                      TEXTJUSTIFY_CENTRE, label, size, color, 0);
 }
 
-SetupButton::SetupButton(int id, int x, int y, int width, int height, const char16_t* label, int param_8)
+SetupButton::SetupButton(int id, int x, int y, int width, int height, const char16_t* label, int user_value)
 	: SetupControl(id, x, y, width, height, label)
 {
-	field_0x240 = param_8;
+	UserValue = user_value;
 	pressed = false;
 }
 
@@ -798,12 +864,15 @@ void SetupSlider::KeyDown(int key, int mod)
 
 void SetupSlider::Draw(bool hovered, bool selected)
 {
-	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, 16, -1, 0xffffffff);
+	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, SETUP_BEVEL_THICKNESS_BOX,
+	                       SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 	int x = rect.start.x + (int)((rect.end.x - height - rect.start.x) * value);
+#ifndef VERSION_BW1W100
 	if (Style & SETUP_SLIDER_STYLE_LABEL_ABOVE)
 	{
 		int size = rect.end.y - rect.start.y;
-		SetupThing::DrawBevBox(x, rect.start.y + size / 2, x + height, rect.start.y + size - 2, 0, 16, -1, 0xffffffff);
+		SetupThing::DrawBevBox(x, rect.start.y + size / 2, x + height, rect.start.y + size - 2, 0,
+		                       SETUP_BEVEL_THICKNESS_BOX, SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 		int textSize = size / 2 + 2;
 		SetupThing::DrawTextA((rect.start.x + rect.end.x) / 2, rect.start.y + 2, rect.end.x - rect.start.x,
 		                      TEXTJUSTIFY_CENTRE, label, textSize,
@@ -811,6 +880,7 @@ void SetupSlider::Draw(bool hovered, bool selected)
 		                      selected ? &SetupThing::DefaultColor : &SetupThing::NormalColour, 0);
 	}
 	else
+#endif
 	{
 		SetupThing::DrawBigButton(x + 3, rect.start.y + 3, true, hovered || selected, height - 6, BBSTYLE_CHECK_BOX_OFF,
 		                          false, -SETUP_NO_CLIP, SETUP_NO_CLIP);
@@ -972,6 +1042,7 @@ void SetupList::Drag(int x, int y)
 	}
 }
 
+#ifndef VERSION_BW1W100
 int SetupList::GetItemAt(int x, int y)
 {
 	int top = rect.start.y - ScrollPosition;
@@ -984,12 +1055,13 @@ int SetupList::GetItemAt(int x, int y)
 	}
 	return index < NumItems ? index : -1;
 }
+#endif
 
 void SetupList::Click(int x, int y) {}
 
 void SetupList::MouseDown(int x, int y, bool button_event)
 {
-	if (UsesIME == 0 && button_event)
+	if (!UsesIME && button_event)
 	{
 		DragStart.x = x;
 		DragStart.y = y;
@@ -1004,13 +1076,15 @@ void SetupList::MouseDown(int x, int y, bool button_event)
 
 void SetupList::MouseUp(int x, int y, bool button_event)
 {
-	if (UsesIME != 0)
+	if (UsesIME)
 		return;
 	if (DraggingScrollbar)
 	{
 		if (button_event)
 			SelectedIndex = PrevSelectedIndex;
+#ifndef VERSION_BW1W100
 		DraggingScrollbar = false;
+#endif
 	}
 	else if (button_event)
 	{
@@ -1024,8 +1098,8 @@ void SetupList::MouseUp(int x, int y, bool button_event)
 SetupList::SetupList(int id, int x, int y, int width, int height) : SetupControl(id, x, y, width, height, L"")
 {
 	ListBoxDrawAfterText = false;
-	field_0x29c = 0;
-	SelectionColor = 0xffffffff;
+	SelectionRectSet = false;
+	SelectionColor = LH3D_COLOR_WHITE;
 	IgnoreKeys = false;
 	PrevSelectedIndex = -1;
 	SelectedIndex = -1;
@@ -1046,7 +1120,7 @@ SetupList::SetupList(int id, int x, int y, int width, int height) : SetupControl
 	UseColorBackground = false;
 	ScrollbackWidth = 24;
 	DrawHighlightBox = true;
-	BoxOutlineColor = 0xffffffff;
+	BoxOutlineColor = LH3D_COLOR_WHITE;
 }
 
 void SetupList::Draw(bool hovered, bool selected)
@@ -1058,7 +1132,8 @@ void SetupList::Draw(bool hovered, bool selected)
 	int style = UseColorBackground ? 0 : 1;
 	if (UsesIME && SetupThing::IMEActive)
 		style += 16;
-	SetupThing::DrawBevBox(rect.start.x, rect.start.y, right, rect.end.y, style, 16, -1, BoxOutlineColor);
+	SetupThing::DrawBevBox(rect.start.x, rect.start.y, right, rect.end.y, style, SETUP_BEVEL_THICKNESS_BOX,
+	                       SETUP_BEVEL_OUTLINE_ALL, BoxOutlineColor);
 	SelectionRect.start.x = SelectionRect.end.x = rect.start.x;
 	SelectionRect.start.y = SelectionRect.end.y = rect.start.y;
 	for (int i = 0; i < NumItems; i++)
@@ -1077,8 +1152,8 @@ void SetupList::Draw(bool hovered, bool selected)
 			SelectionRect.start.y = top;
 			SelectionRect.end.y = bottom;
 			if (top != bottom)
-				SetupThing::DrawBevBox(rect.start.x, top, right, bottom, UseColorBackground ? 1 : 0, 16, -1,
-				                       SelectionColor);
+				SetupThing::DrawBevBox(rect.start.x, top, right, bottom, UseColorBackground ? 1 : 0,
+				                       SETUP_BEVEL_THICKNESS_BOX, SETUP_BEVEL_OUTLINE_ALL, SelectionColor);
 			if (bottom >= rect.start.y && top <= rect.end.y && drawText)
 				SetupThing::DrawTextWrap(rect.start.x + 4, rect.start.y, right - 4, rect.end.y, y + 2, CentredText,
 				                         item_labels[i], GetTextSize(), &SetupThing::DefaultColor, false, false);
@@ -1127,10 +1202,11 @@ void SetupList::Draw(bool hovered, bool selected)
 		int thumbTop = (int)((float)ScrollPosition / ScrollDistance * (rect.end.y - rect.start.y - 6));
 		int thumbBottom = (int)((float)(rect.end.y - rect.start.y + ScrollPosition - 8) / ScrollDistance *
 		                        (rect.end.y - rect.start.y - 6));
-		SetupThing::DrawBevBox(right, rect.start.y, right + ScrollbackWidth, rect.end.y, UseColorBackground ? 0 : 1, 16,
-		                       -1, LH3D_COLOR_WHITE);
+		SetupThing::DrawBevBox(right, rect.start.y, right + ScrollbackWidth, rect.end.y, UseColorBackground ? 0 : 1,
+		                       SETUP_BEVEL_THICKNESS_BOX, SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 		SetupThing::DrawBevBox(right + 3, rect.start.y + thumbTop + 3, right + ScrollbackWidth - 3,
-		                       rect.start.y + thumbBottom + 3, UseColorBackground ? 1 : 0, 16, -1, LH3D_COLOR_WHITE);
+		                       rect.start.y + thumbBottom + 3, UseColorBackground ? 1 : 0, SETUP_BEVEL_THICKNESS_BOX,
+		                       SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 	}
 }
 
@@ -1504,13 +1580,13 @@ void SetupEdit::MouseUp(int x, int y, bool button_event)
 			SelectStart = SelectEnd;
 			SelectEnd = position;
 		}
-		if (SelectStart == SelectEnd && SelectAllOnClick != 0)
+		if (SelectStart == SelectEnd && SelectAllOnClick)
 		{
 			SelectStart = 0;
 			CursorPosition = wcslen(label);
 			SelectEnd = CursorPosition;
 		}
-		SelectAllOnClick = 0;
+		SelectAllOnClick = false;
 	}
 }
 
@@ -1546,11 +1622,13 @@ void SetupEdit::Draw(bool hovered, bool selected)
 	if (!Editable)
 	{
 		SetupThing::DrawAlpha /= 2;
-		SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, 16, -1, 0xffffffff);
+		SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, SETUP_BEVEL_THICKNESS_BOX,
+		                       SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 		SetupThing::DrawAlpha *= 2;
 	}
 	else
-		SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, 16, -1, 0xffffffff);
+		SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, SETUP_BEVEL_THICKNESS_BOX,
+		                       SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 	int len = wcslen(DisplayText);
 	int maxScroll;
 	for (maxScroll = 0; maxScroll < len; maxScroll++)
@@ -1640,6 +1718,7 @@ void SetupEdit::Draw(bool hovered, bool selected)
 	}
 }
 
+#ifndef VERSION_BW1W100
 void SetupMP3Button::Draw(bool hovered, bool selected)
 {
 	if (ShowButton)
@@ -1657,9 +1736,10 @@ void SetupMP3Button::Draw(bool hovered, bool selected)
 	          SETUP_MP3_ICON_UV;
 	SetupThing::DrawBox(x, y, x + SETUP_MP3_ICON_SIZE, y + SETUP_MP3_ICON_SIZE, u, v, u + SETUP_MP3_ICON_UV,
 	                    v + SETUP_MP3_ICON_UV, LH3DAtmos::mat0,
-	                    hovered || Style ? &SetupThing::HighlightColour : &color, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP,
+	                    hovered || Style ? &SetupThing::HighlightColour : &color, true, -SETUP_NO_CLIP, SETUP_NO_CLIP,
 	                    false, 100.0f);
 }
+#endif
 
 void SetupBigButton::Draw(bool hovered, bool selected)
 {
@@ -1667,7 +1747,7 @@ void SetupBigButton::Draw(bool hovered, bool selected)
 	SetupThing::TextBounds.p0.y = rect.start.y;
 	SetupThing::TextBounds.p1.x = rect.end.x;
 	SetupThing::TextBounds.p1.y = rect.end.y;
-	SetupThing::DrawBigButton(rect.start.x, rect.start.y, pressed, hovered || (selected && !label[0]),
+	SetupThing::DrawBigButton(rect.start.x, rect.start.y, pressed, SETUP_LABEL_HIGHLIGHTED(hovered, selected),
 	                          rect.end.x - rect.start.x, style, true, -SETUP_NO_CLIP, SETUP_NO_CLIP);
 	if (text_position == SETUP_TEXT_POSITION_BELOW)
 	{
@@ -1675,7 +1755,7 @@ void SetupBigButton::Draw(bool hovered, bool selected)
 		                      GetTextSize(), &SetupThing::ShadowColour, 0);
 		SetupThing::DrawTextA(
 			(rect.start.x + rect.end.x) / 2, rect.end.y + 2, 1000, TEXTJUSTIFY_CENTRE, label, GetTextSize(),
-			hovered || (selected && !label[0]) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
+			SETUP_LABEL_HIGHLIGHTED(hovered, selected) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
 	}
 	else if (text_position != SETUP_TEXT_POSITION_RIGHT)
 	{
@@ -1684,7 +1764,7 @@ void SetupBigButton::Draw(bool hovered, bool selected)
 		SetupThing::DrawTextA(
 			rect.start.x, (rect.start.y + rect.end.y) / 2 - GetHalfTextSize(), 1000, TEXTJUSTIFY_RIGHT, label,
 			GetTextSize(),
-			hovered || (selected && !label[0]) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
+			SETUP_LABEL_HIGHLIGHTED(hovered, selected) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
 	}
 	else
 	{
@@ -1693,7 +1773,7 @@ void SetupBigButton::Draw(bool hovered, bool selected)
 		SetupThing::DrawTextA(
 			rect.end.x, (rect.start.y + rect.end.y) / 2 - GetHalfTextSize(), 1000, TEXTJUSTIFY_LEFT, label,
 			GetTextSize(),
-			hovered || (selected && !label[0]) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
+			SETUP_LABEL_HIGHLIGHTED(hovered, selected) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
 	}
 	InnerRect = SetupThing::TextBounds;
 }
@@ -1714,25 +1794,32 @@ void SetupBigButton::ClearStyle()
 	style = BBSTYLE_CHECK_BOX_OFF;
 }
 
+#ifndef VERSION_BW1W100
 void SetupBigButton::SetCheckBoxStyle()
 {
 	style = BBSTYLE_CHECK_BOX_OFF;
 }
+#endif
 
+#ifndef VERSION_BW1W100
 void SetupBigButton::SetLeftArrowStyle()
 {
 	style = BBSTYLE_LEFT_ARROW;
 }
+#endif
 
+#ifndef VERSION_BW1W100
 void SetupBigButton::SetRightArrowStyle()
 {
 	style = BBSTYLE_RIGHT_ARROW;
 }
+#endif
 
 void SetupHSBarGraph::Draw(bool hovered, bool selected)
 {
 	char16_t text[256];
-	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, 16, -1, LH3D_COLOR_WHITE);
+	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, SETUP_BEVEL_THICKNESS_BOX,
+	                       SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 	SetupThing::DrawTextWrap(rect.start.x + 1, rect.end.y + 1, rect.end.x + 1, rect.end.y + 1 + GetTextSize(),
 	                         rect.end.y + 1, true, label, GetTextSize(), &SetupThing::ShadowColour, true, false);
 	SetupThing::DrawTextWrap(
@@ -1821,12 +1908,14 @@ void HLineData::SetNum(int num)
 void SetupHLineGraph::Draw(bool hovered, bool selected)
 {
 	char16_t text[256];
-	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, 16, -1, LH3D_COLOR_WHITE);
+	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, SETUP_BEVEL_THICKNESS_BOX,
+	                       SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 	SetupThing::DrawTextWrap(rect.start.x + 1, rect.end.y + 1, rect.end.x + 1, rect.end.y + 1 + GetTextSize(),
 	                         rect.end.y + 1, true, label, GetTextSize(), &SetupThing::ShadowColour, true, false);
 	SetupThing::DrawTextWrap(
 		rect.start.x, rect.end.y, rect.end.x, rect.end.y + GetTextSize(), rect.end.y, true, label, GetTextSize(),
-		hovered || (selected && !label[0]) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, true, false);
+		SETUP_LABEL_HIGHLIGHTED(hovered, selected) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, true,
+		false);
 	float range = max_point - min_point;
 
 	if (percent_mode)
@@ -1894,7 +1983,7 @@ void SetupHLineGraph::Draw(bool hovered, bool selected)
 					int nextY = (int)((rect.end.y - 2) -
 					                  (rect.end.y - rect.start.y - 4) * ((line->points[index] - min_point) / range));
 					nextY = SETUP_CLAMP(nextY, rect.start.y + 4, rect.end.y - 4);
-					SetupThing::DrawLine((int)x, y, (int)(x + step), nextY, solid, 1, 0.0f, 100.0f);
+					SetupThing::DrawLine((int)x, y, (int)(x + step), nextY, solid, true, 0.0f, 100.0f);
 					x += step;
 					y = nextY;
 				}
@@ -2036,7 +2125,8 @@ void SetupHLineGraph::GetLine(int index, HLineData& result)
 void SetupVBarGraph::Draw(bool hovered, bool selected)
 {
 	char16_t text[256];
-	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, 16, -1, LH3D_COLOR_WHITE);
+	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, SETUP_BEVEL_THICKNESS_BOX,
+	                       SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 	SetupThing::DrawTextWrap(rect.start.x + 1, rect.end.y + 1, rect.end.x + 1, rect.end.y + 1 + GetTextSize(),
 	                         rect.end.y + 1, true, label, GetTextSize(), &SetupThing::ShadowColour, true, false);
 	SetupThing::DrawTextWrap(
@@ -2197,7 +2287,7 @@ SetupTabButton::SetupTabButton(int id, int x, int y, int width, int height, cons
                                int first_in_row, int last_in_row)
 	: SetupButton(id, x, y, width, height, label, 0)
 {
-	color = 0xffffffff;
+	color = LH3D_COLOR_WHITE;
 	this->first_in_row = first_in_row;
 	this->last_in_row = last_in_row;
 	pressed = false;
@@ -2254,13 +2344,13 @@ void SetupPicture::Draw(bool hovered, bool selected)
 		colour = selected ? SetupThing::DefaultColor : SetupThing::NormalColour;
 	if (material != NULL && tint == 0)
 		SetupThing::DrawBox(rect.start.x + 2, rect.start.y + 2, rect.end.x + 2, rect.end.y + 2, u, v, u + size,
-		                    v + size, material, &SetupThing::ShadowColour, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+		                    v + size, material, &SetupThing::ShadowColour, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
 		                    100.0f);
 	if (material != NULL)
 	{
 		SetupThing::DrawBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, u, v, u + size, v + size, material,
-		                    hovered ? &SetupThing::HighlightColour : &colour, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
-		                    100.0f);
+		                    hovered ? &SetupThing::HighlightColour : &colour, true, -SETUP_NO_CLIP, SETUP_NO_CLIP,
+		                    false, 100.0f);
 		float zoom = zoomer.GetCurrentValue() * 255.0f;
 		int   zoomAlpha = (int)(zoom > 0.0f ? min(zoom, 255.0f) : 0.0f);
 		float spin = (255 - zoomAlpha) * (HALF_PI_F / 255);
@@ -2279,31 +2369,33 @@ void SetupPicture::Draw(bool hovered, bool selected)
 			int           innerRadius = radius - SETUP_PICTURE_SHADOW_FADE;
 			unsigned long shadow = RGBA_MAKE(0, 0, 0, zoomAlpha / 2);
 			unsigned long clear = RGBA_TORGB(shadow);
+			double        ringOuter = zoomAlpha > SETUP_PICTURE_RING_MIN_ALPHA ? outerRadius : (double)radius;
+			double        ringEdge = zoomAlpha > SETUP_PICTURE_RING_MIN_ALPHA ? edgeRadius : (double)innerRadius;
 			for (int i = 0; i < SETUP_PICTURE_RING_SEGMENTS; i++)
 			{
 				float angle = i * TWO_PI / SETUP_PICTURE_RING_SEGMENTS;
 				SetupThing::DrawQuad(
 					(int)(centreX + sin(angle) * radius), (int)(centreY + cos(angle) * radius),
-					(int)(centreX + sin((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * radius),
-					(int)(centreY + cos((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * radius),
-					(int)(centreX + sin((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * outerRadius),
-					(int)(centreY + cos((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * outerRadius),
-					(int)(centreX + sin(angle) * outerRadius), (int)(centreY + cos(angle) * outerRadius), shadow,
-					shadow, shadow, shadow, 0, 1);
+					(int)(centreX + sin(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * radius),
+					(int)(centreY + cos(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * radius),
+					(int)(centreX + sin(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * ringOuter),
+					(int)(centreY + cos(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * ringOuter),
+					(int)(centreX + sin(angle) * ringOuter), (int)(centreY + cos(angle) * ringOuter), shadow, shadow,
+					shadow, shadow, 0, 1);
 				SetupThing::DrawQuad(
-					(int)(centreX + sin(angle) * edgeRadius), (int)(centreY + cos(angle) * edgeRadius),
-					(int)(centreX + sin((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * edgeRadius),
-					(int)(centreY + cos((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * edgeRadius),
-					(int)(centreX + sin((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * outerRadius),
-					(int)(centreY + cos((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * outerRadius),
-					(int)(centreX + sin(angle) * outerRadius), (int)(centreY + cos(angle) * outerRadius), clear, clear,
+					(int)(centreX + sin(angle) * ringEdge), (int)(centreY + cos(angle) * ringEdge),
+					(int)(centreX + sin(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * ringEdge),
+					(int)(centreY + cos(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * ringEdge),
+					(int)(centreX + sin(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * ringOuter),
+					(int)(centreY + cos(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * ringOuter),
+					(int)(centreX + sin(angle) * ringOuter), (int)(centreY + cos(angle) * ringOuter), clear, clear,
 					shadow, shadow, 0, 1);
 				SetupThing::DrawQuad(
 					(int)(centreX + sin(angle) * innerRadius), (int)(centreY + cos(angle) * innerRadius),
-					(int)(centreX + sin((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * innerRadius),
-					(int)(centreY + cos((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * innerRadius),
-					(int)(centreX + sin((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * radius),
-					(int)(centreY + cos((i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * radius),
+					(int)(centreX + sin(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * innerRadius),
+					(int)(centreY + cos(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * innerRadius),
+					(int)(centreX + sin(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * radius),
+					(int)(centreY + cos(float(i + 1.0f) * TWO_PI / SETUP_PICTURE_RING_SEGMENTS) * radius),
 					(int)(centreX + sin(angle) * radius), (int)(centreY + cos(angle) * radius), clear, clear, shadow,
 					shadow, 0, 1);
 			}
@@ -2320,16 +2412,15 @@ void SetupPicture::Draw(bool hovered, bool selected)
 			{
 				float iconU = (float)(j % num_rows) / num_rows + 1.0f / 512;
 				float iconV = (float)(j / num_rows) / num_rows + 1.0f / 512;
-				float angle = j * step + spin;
-				int   x = (int)(centreX + sin(angle) * radius);
-				int   y = (int)(centreY - cos(angle) * radius);
+				int   x = (int)(centreX + sin(j * step + spin) * radius);
+				int   y = (int)(centreY - cos(j * step + spin) * radius);
 				bool  iconHovered = (x - mouseX) * (x - mouseX) + (y - mouseY) * (y - mouseY) < iconSize * iconSize;
 				SetupThing::DrawBox(x - iconSize + 2, y - iconSize + 2, x + iconSize + 2, y + iconSize + 2, iconU,
-				                    iconV, iconU + size, iconV + size, material, &SetupThing::ShadowColour, 1,
+				                    iconV, iconU + size, iconV + size, material, &SetupThing::ShadowColour, true,
 				                    -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 				SetupThing::DrawBox(x - iconSize, y - iconSize, x + iconSize, y + iconSize, iconU, iconV, iconU + size,
 				                    iconV + size, material,
-				                    iconHovered ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 1,
+				                    iconHovered ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, true,
 				                    -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 				if (iconHovered && zoomAlpha > SETUP_PICTURE_RING_SELECT_ALPHA)
 					HoveredPictureIndex = j;
@@ -2341,16 +2432,15 @@ void SetupPicture::Draw(bool hovered, bool selected)
 			{
 				float iconU = (float)((j + innerCount) % num_rows) / num_rows + 1.0f / 512;
 				float iconV = (float)((j + innerCount) / num_rows) / num_rows + 1.0f / 512;
-				float angle = j * step - spin;
-				int   x = (int)(centreX + sin(angle) * radius);
-				int   y = (int)(centreY - cos(angle) * radius);
+				int   x = (int)(centreX + sin(j * step - spin) * radius);
+				int   y = (int)(centreY - cos(j * step - spin) * radius);
 				bool  iconHovered = (x - mouseX) * (x - mouseX) + (y - mouseY) * (y - mouseY) < iconSize * iconSize;
 				SetupThing::DrawBox(x - iconSize + 2, y - iconSize + 2, x + iconSize + 2, y + iconSize + 2, iconU,
-				                    iconV, iconU + size, iconV + size, material, &SetupThing::ShadowColour, 1,
+				                    iconV, iconU + size, iconV + size, material, &SetupThing::ShadowColour, true,
 				                    -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 				SetupThing::DrawBox(x - iconSize, y - iconSize, x + iconSize, y + iconSize, iconU, iconV, iconU + size,
 				                    iconV + size, material,
-				                    iconHovered ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 1,
+				                    iconHovered ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, true,
 				                    -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 				if (iconHovered && zoomAlpha > SETUP_PICTURE_RING_SELECT_ALPHA)
 					HoveredPictureIndex = j + innerCount;
@@ -2371,12 +2461,12 @@ void SetupPicture::Draw(bool hovered, bool selected)
 		int bottom = y + height;
 		if (material != NULL && tint == 0)
 			SetupThing::DrawBox(x - 2, y + 2, right - 2, bottom + 2, u, v, u + size, v + size, material,
-			                    &SetupThing::ShadowColour, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+			                    &SetupThing::ShadowColour, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 		bool32_t  blink = (GetTickCount() / SETUP_PICTURE_DRAG_FLASH_TIME) & 1;
 		LH3DColor inverse(colour.GetColor() ^ LH3D_COLOR_RGB_MASK);
 		if (material != NULL)
 			SetupThing::DrawBox(x, y, right, bottom, u, v, u + size, v + size, material,
-			                    Style >= 0 && blink ? &inverse : &colour, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+			                    Style >= 0 && blink ? &inverse : &colour, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
 			                    100.0f);
 		if (setup_box != NULL)
 			setup_box->SetFocusControl(this);
@@ -2432,8 +2522,8 @@ void SetupColourPicker::Draw(bool hovered, bool selected)
 	int mouseX = LHSys::GetMouse().Pos().x;
 	int mouseY = LHSys::GetMouse().Pos().y;
 	SetupThing::unadjust(mouseX, mouseY);
-	SetupThing::DrawBevBox(rect.start.x + 14, rect.start.y - 2, rect.end.x - 14, rect.end.y + 2, hovered ? 2 : 1, 16,
-	                       -1, 0xffffffff);
+	SetupThing::DrawBevBox(rect.start.x + 14, rect.start.y - 2, rect.end.x - 14, rect.end.y + 2, hovered ? 2 : 1,
+	                       SETUP_BEVEL_THICKNESS_BOX, SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
 	SliderPosition = SliderPosition > 0.0f ? min(SliderPosition, 1.0f) : 0.0f;
 	int y = (int)(SliderPosition * (rect.end.y - rect.start.y) + rect.start.y);
 	if (brightness_slider)
@@ -2441,7 +2531,8 @@ void SetupColourPicker::Draw(bool hovered, bool selected)
 		unsigned long c = color;
 		int           middle = (rect.start.y + rect.end.y) / 2;
 		SetupThing::DrawBox(rect.start.x + 16, rect.start.y, rect.end.x - 16, middle, 0, 0, c, c, 1, 1);
-		SetupThing::DrawBox(rect.start.x + 16, middle, rect.end.x - 16, rect.end.y, c, c, 0xffffffff, 0xffffffff, 1, 1);
+		SetupThing::DrawBox(rect.start.x + 16, middle, rect.end.x - 16, rect.end.y, c, c, LH3D_COLOR_WHITE,
+		                    LH3D_COLOR_WHITE, 1, 1);
 		hovered = hovered && mouseX > rect.end.x - 16;
 		SetupThing::DrawBigButton(rect.end.x - 16, y - 8, true, hovered, 16, BBSTYLE_LEFT_ARROW, false, -SETUP_NO_CLIP,
 		                          SETUP_NO_CLIP);
@@ -2451,9 +2542,9 @@ void SetupColourPicker::Draw(bool hovered, bool selected)
 		hovered = hovered && mouseX < rect.start.x + 16;
 		if (material != NULL)
 		{
-			LH3DColor white(0xffffffff);
+			LH3DColor white(LH3D_COLOR_WHITE);
 			SetupThing::DrawBox(rect.start.x + 16, rect.start.y, rect.end.x - 16, rect.end.y, 1.0f / 512, 65.0f / 512,
-			                    63.0f / 512, 511.0f / 512, material, &white, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
+			                    63.0f / 512, 511.0f / 512, material, &white, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false,
 			                    100.0f);
 		}
 		SetupThing::DrawBigButton(rect.start.x, y - 8, true, hovered, 16, BBSTYLE_RIGHT_ARROW, false, -SETUP_NO_CLIP,
@@ -2467,7 +2558,7 @@ SetupColourPicker::SetupColourPicker(int id, int x, int y, int width, int height
 {
 	this->brightness_slider = brightness_slider;
 	this->material = material;
-	Color0x244 = LH3DColor(0xff000000);
+	BaseColor = LH3DColor(0xff000000);
 	color = 0x00808080;
 	SliderPosition = 0.5f;
 }
@@ -2487,7 +2578,7 @@ void SetupCheckBox::Draw(bool hovered, bool selected)
 		                      GetTextSize(), &SetupThing::ShadowColour, 0);
 		SetupThing::DrawTextA(
 			(rect.start.x + rect.end.x) / 2, rect.end.y + 2, 1000, TEXTJUSTIFY_CENTRE, label, GetTextSize(),
-			hovered || (selected && !label[0]) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
+			SETUP_LABEL_HIGHLIGHTED(hovered, selected) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
 	}
 	else if (text_position != SETUP_TEXT_POSITION_RIGHT)
 	{
@@ -2496,7 +2587,7 @@ void SetupCheckBox::Draw(bool hovered, bool selected)
 		SetupThing::DrawTextA(
 			rect.start.x - 4, (rect.start.y + rect.end.y) / 2 - GetHalfTextSize(), 1000, TEXTJUSTIFY_RIGHT, label,
 			GetTextSize(),
-			hovered || (selected && !label[0]) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
+			SETUP_LABEL_HIGHLIGHTED(hovered, selected) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
 	}
 	else
 	{
@@ -2505,7 +2596,7 @@ void SetupCheckBox::Draw(bool hovered, bool selected)
 		SetupThing::DrawTextA(
 			rect.end.x + 4, (rect.start.y + rect.end.y) / 2 - GetHalfTextSize(), 1000, TEXTJUSTIFY_LEFT, label,
 			GetTextSize(),
-			hovered || (selected && !label[0]) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
+			SETUP_LABEL_HIGHLIGHTED(hovered, selected) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
 	}
 	InnerRect = SetupThing::TextBounds;
 }
@@ -2664,7 +2755,7 @@ float SetupThing::GetTextHeight(int x_min, int y_min, int x_max, int y_max, int 
 {
 	if (*text == 0)
 		return 0.0f;
-	LH3DColor color = 0xffffffff;
+	LH3DColor color = LH3D_COLOR_WHITE;
 	return Font->DrawTextA(text, (float)x_min, (float)y_min, (float)y_min, (float)x_max, (float)y_max, (float)y_max,
 	                       (float)start_y, LH3DTech::g_info_transform.NearClip * 1.5f, (float)line_height, &color,
 	                       centered, 0, 0);
@@ -2761,7 +2852,8 @@ float SetupThing::DrawTextA(int x, int y, int width, TEXTJUSTIFY justify, char16
 	TextBounds.p1.y = (int)(y + textSize);
 	unadjust(TextBounds.p0.x, TextBounds.p0.y);
 	unadjust(TextBounds.p1.x, TextBounds.p1.y);
-	return unadjustsize(textSize);
+	float height = textSize;
+	return unadjustsize(height);
 }
 
 float SetupThing::adjust(int& x, int& y)
@@ -2798,6 +2890,7 @@ float SetupThing::unadjust(int& x, int& y)
 	return scale;
 }
 
+#ifndef VERSION_BW1W100
 int SetupThing::adjustx(int x)
 {
 	int width = LHSys::GetScreen().width;
@@ -2807,6 +2900,7 @@ int SetupThing::adjustx(int x)
 	float scale = max(850.0f / width, 650.0f / height);
 	return (int)((width - 800.0f / scale) * 0.5f + x / scale);
 }
+#endif
 
 int SetupThing::unadjustx(int x)
 {
@@ -2886,6 +2980,126 @@ void SetupThing::Close()
 	ButtonMaterial = NULL;
 }
 
+void SetupThing::DrawBigButton(int x, int y, bool pressed, bool highlighted, int size, BBSTYLE style, bool shadowed,
+                               int clip_y_start, int clip_y_end)
+{
+	int      x_max = x + size;
+	int      y_max = y + size;
+	float    u;
+	float    uvSize = 0.125f;
+	float    v = 0.0f;
+	float    shadowU = 0.0f;
+	float    shadowV = 0.0f;
+	float    shadowSize = 0.125f;
+	bool32_t flip = false;
+	int      bevel = 0;
+	bool     weather = false;
+	switch (style)
+	{
+	case BBSTYLE_ROTATION:
+		pressed = true;
+		shadowed = false;
+		u = highlighted ? 0.625f : 0.25f;
+		v = 0.625f;
+		uvSize = 0.375f;
+		break;
+	case BBSTYLE_ENVELOPE_ARROW:
+		shadowed = false;
+		u = 0.875f;
+		v = 0.375f;
+		uvSize = 0.125f;
+		break;
+	case BBSTYLE_ENVELOPE:
+		shadowed = false;
+		u = 0.875f;
+		v = 0.5f;
+		uvSize = 0.125f;
+		break;
+	case BBSTYLE_WEATHER_SUNNY:
+	case BBSTYLE_WEATHER_PARTIALLY_CLOUDY:
+	case BBSTYLE_WEATHER_CLOUDY:
+	case BBSTYLE_WEATHER_SCATTERED_SHOWERS:
+	case BBSTYLE_WEATHER_SHOWERS:
+	case BBSTYLE_WEATHER_SCATTERED_FLURRIES:
+	case BBSTYLE_WEATHER_FLURRIES:
+	case BBSTYLE_WEATHER_HEAVY_FLURRIES:
+	case BBSTYLE_WEATHER_THUNDER_STORMS:
+	case BBSTYLE_WEATHER_UNKNOWN: {
+		int cell = style - BBSTYLE_WEATHER_SUNNY + SETUP_BIG_BUTTON_FIRST_WEATHER_CELL;
+		shadowed = false;
+		u = (cell & (SETUP_BIG_BUTTON_WEATHER_COLUMNS - 1)) * (1.0f / SETUP_BIG_BUTTON_WEATHER_COLUMNS) + 1.0f / 256;
+		v = (cell / SETUP_BIG_BUTTON_WEATHER_COLUMNS) * (1.0f / SETUP_BIG_BUTTON_WEATHER_COLUMNS) + 1.0f / 256;
+		weather = true;
+		uvSize = 1.0f / SETUP_BIG_BUTTON_WEATHER_COLUMNS - 1.0f / 128;
+		break;
+	}
+	case BBSTYLE_SPEECH:
+		shadowed = false;
+		u = highlighted ? 0.5f : 0.125f;
+		v = 0.25f;
+		uvSize = 0.1875f;
+		break;
+	case BBSTYLE_NO_SPEECH:
+		shadowed = false;
+		u = highlighted ? 0.6875f : 0.3125f;
+		v = 0.25f;
+		uvSize = 0.1875f;
+		break;
+	case BBSTYLE_SPEECH_ARROW:
+		shadowed = false;
+		u = highlighted ? 0.5f : 0.125f;
+		v = 0.4375f;
+		uvSize = 0.1875f;
+		break;
+	case BBSTYLE_EXCLAIM_ARROW:
+		shadowed = false;
+		u = highlighted ? 0.6875f : 0.3125f;
+		v = 0.4375f;
+		uvSize = 0.1875f;
+		break;
+	case BBSTYLE_CHECK_BOX_ON:
+		v = 0.125f;
+		bevel = 1;
+	default:
+		u = highlighted ? 0.8125f : 0.6875f;
+		shadowU = 0.1875f;
+		bevel++;
+		break;
+	case BBSTYLE_RIGHT_ARROW:
+		flip = true;
+	case BBSTYLE_LEFT_ARROW:
+		u = highlighted ? 0.4375f : 0.3125f;
+		shadowU = 0.5625f;
+		break;
+	}
+	u += 1.0f / 512;
+	v += 1.0f / 512;
+	uvSize -= 1.0f / 256;
+	if (flip)
+	{
+		shadowV += shadowSize;
+		u += uvSize;
+		shadowU += shadowSize;
+		v += uvSize;
+		uvSize = -uvSize;
+		shadowSize = -shadowSize;
+	}
+	if (shadowed)
+		DrawBox(x + (pressed ? 2 : 4), y + (pressed ? 2 : 4), x_max + (pressed ? 2 : 4), y_max + (pressed ? 2 : 4),
+		        shadowU, shadowV, shadowU + shadowSize, shadowV + shadowSize, ButtonMaterial, NULL, true, clip_y_start,
+		        clip_y_end, false, 100.0f);
+	if (bevel)
+		DrawBevBox(x + (pressed ? 0 : -2) + 1, y + (pressed ? 0 : -2) + 1, x_max + (pressed ? 0 : -2) - 1,
+		           y_max + (pressed ? 0 : -2) - 1,
+		           (bevel == 2 ? SETUP_BEVEL_STYLE_TICKED : 0) +
+		               (highlighted ? SETUP_BEVEL_STYLE_CHECK_BOX_HIGHLIGHT : SETUP_BEVEL_STYLE_CHECK_BOX),
+		           SETUP_BEVEL_THICKNESS_CHECK_BOX, SETUP_BEVEL_OUTLINE_ALL, LH3D_COLOR_WHITE);
+	else
+		DrawBox(x + (pressed ? 0 : -2), y + (pressed ? 0 : -2), x_max + (pressed ? 0 : -2), y_max + (pressed ? 0 : -2),
+		        u, v, u + uvSize, v + uvSize, weather ? GatheringText::bubmat : ButtonMaterial, NULL, true,
+		        clip_y_start, clip_y_end, false, 100.0f);
+}
+
 void SetupThing::DrawLine(int x_start, int y_start, int x_end, int y_end, unsigned long color, bool32_t adjust,
                           float depth, float distance)
 {
@@ -2935,6 +3149,131 @@ void SetupThing::DrawLine(int x_start, int y_start, int x_end, int y_end, unsign
 	QuadVertices[0].z = QuadVertices[1].z = QuadVertices[2].z = QuadVertices[3].z = 0.0f;
 	QuadVertices[0].rhw = QuadVertices[1].rhw = QuadVertices[2].rhw = QuadVertices[3].rhw = 1.0f;
 }
+
+#ifdef VERSION_BW1WCI
+void SetupThing::DrawBoxRota(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max,
+                             float v_max, LH3DMaterial* material, LH3DColor* color, bool32_t adjust, int clip_y_start,
+                             int clip_y_end, bool depth_test, float distance, bool32_t use_draw_alpha, float rotation)
+{
+	if (adjust)
+	{
+		SetupThing::adjust(x_min, y_min);
+		SetupThing::adjust(x_max, y_max);
+		clip_y_start = adjusty(clip_y_start);
+		clip_y_end = adjusty(clip_y_end);
+	}
+	unsigned long vertexColor = LH3D_COLOR_WHITE;
+	if (color != NULL)
+		vertexColor = color->GetColor();
+	vertexColor = (vertexColor & LH3D_COLOR_RGB_MASK) + (DrawAlpha << 24);
+	if (y_min > y_max)
+	{
+		int temp = y_min;
+		y_min = y_max;
+		y_max = temp;
+		float tempUV = v_min;
+		v_min = v_max;
+		v_max = tempUV;
+		temp = x_min;
+		x_min = y_max;
+		x_max = temp;
+		tempUV = u_min;
+		u_min = v_max;
+		u_max = tempUV;
+	}
+	if (x_min > x_max)
+	{
+		int temp = x_min;
+		x_min = y_max;
+		x_max = temp;
+		float tempUV = u_min;
+		u_min = v_max;
+		u_max = tempUV;
+	}
+	if (y_min >= clip_y_end || y_max <= clip_y_start)
+		return;
+	float vPerPixel = 0.0f;
+	if (y_max > y_min)
+		vPerPixel = (v_max - v_min) / (y_max - y_min);
+	if (y_min < clip_y_start)
+	{
+		v_min += (clip_y_start - y_min) * vPerPixel;
+		y_min = clip_y_start;
+	}
+	if (y_max > clip_y_end)
+	{
+		v_max -= (y_max - clip_y_end) * vPerPixel;
+		y_max = clip_y_end;
+	}
+	if (y_min > y_max)
+		return;
+	QuadVertices[0].x = x_min + 0.5f;
+	QuadVertices[0].y = y_min + 0.5f;
+	QuadVertices[0].uv.x = u_min;
+	QuadVertices[0].uv.y = v_min;
+	QuadVertices[0].color = vertexColor;
+	QuadVertices[1].x = x_max + 0.5f;
+	QuadVertices[1].y = y_min + 0.5f;
+	QuadVertices[1].uv.x = u_max;
+	QuadVertices[1].uv.y = v_min;
+	QuadVertices[1].color = vertexColor;
+	QuadVertices[2].x = x_max + 0.5f;
+	QuadVertices[2].y = y_max + 0.5f;
+	QuadVertices[2].uv.x = u_max;
+	QuadVertices[2].uv.y = v_max;
+	QuadVertices[2].color = vertexColor;
+	QuadVertices[3].x = x_min + 0.5f;
+	QuadVertices[3].y = y_max + 0.5f;
+	QuadVertices[3].uv.x = u_min;
+	QuadVertices[3].uv.y = v_max;
+	QuadVertices[3].color = vertexColor;
+	if (rotation != 0.0f)
+	{
+		int   centreX = (x_min + x_max) / 2;
+		int   centreY = (y_min + y_max) / 2;
+		int   halfWidth = x_max - centreX;
+		int   halfHeight = y_max - centreY;
+		float cosine = cos(rotation);
+		float sine = sin(rotation);
+		QuadVertices[0].x = centreX + 0.5f - halfWidth * cosine + halfHeight * sine;
+		QuadVertices[0].y = centreY + 0.5f - halfWidth * sine - halfHeight * cosine;
+		QuadVertices[1].x = halfHeight * sine + halfWidth * cosine + centreX + 0.5f;
+		QuadVertices[1].y = halfWidth * sine + centreY + 0.5f - halfHeight * cosine;
+		QuadVertices[2].x = halfWidth * cosine + centreX + 0.5f - halfHeight * sine;
+		QuadVertices[2].y = halfHeight * cosine + halfWidth * sine + centreY + 0.5f;
+		QuadVertices[3].x = centreX + 0.5f - halfWidth * cosine - halfHeight * sine;
+		QuadVertices[3].y = centreY + 0.5f - halfWidth * sine + halfHeight * cosine;
+	}
+	LH3DRender::SetMaterial(material, 0);
+	unsigned long zWriteEnable;
+	unsigned long zFunc;
+	LH3DRender::GetRenderState(D3DRENDERSTATE_ZWRITEENABLE, zWriteEnable);
+	LH3DRender::GetRenderState(D3DRENDERSTATE_ZFUNC, zFunc);
+	if (!depth_test)
+	{
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, false);
+	}
+	else
+	{
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, false);
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
+		float rhw = LH3DTech::g_info_transform.NearClip / distance;
+		QuadVertices[0].z = QuadVertices[1].z = QuadVertices[2].z = QuadVertices[3].z = 1.0f - rhw;
+		QuadVertices[0].rhw = QuadVertices[1].rhw = QuadVertices[2].rhw = QuadVertices[3].rhw = rhw;
+	}
+	unsigned long lastPixel;
+	LH3DRender::GetRenderState(D3DRENDERSTATE_LASTPIXEL, lastPixel);
+	LH3DRender::SetRenderState(D3DRENDERSTATE_LASTPIXEL, false);
+	DrawAndClip2D(D3DPT_TRIANGLELIST, D3DFVF_TLVERTEX, QuadVertices, ARRAY_SIZE(QuadVertices), QuadIndices,
+	              ARRAY_SIZE(QuadIndices));
+	LH3DRender::SetRenderState(D3DRENDERSTATE_LASTPIXEL, lastPixel);
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, zFunc);
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, zWriteEnable);
+	QuadVertices[0].z = QuadVertices[1].z = QuadVertices[2].z = QuadVertices[3].z = 0.0f;
+	QuadVertices[0].rhw = QuadVertices[1].rhw = QuadVertices[2].rhw = QuadVertices[3].rhw = 1.0f;
+}
+#endif
 
 #ifdef VERSION_BW1WCI
 void SetupThing::DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
@@ -3053,6 +3392,116 @@ void SetupThing::DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min
 	QuadVertices[0].rhw = QuadVertices[1].rhw = QuadVertices[2].rhw = QuadVertices[3].rhw = 1.0f;
 }
 
+#ifdef VERSION_BW1WCI
+void SetupThing::DrawBoxTextureOnSide(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max,
+                                      float v_max, LH3DMaterial* material, LH3DColor* color, bool32_t adjust,
+                                      int clip_y_start, int clip_y_end, bool depth_test, float distance,
+                                      bool32_t use_draw_alpha)
+{
+	if (adjust)
+	{
+		SetupThing::adjust(x_min, y_min);
+		SetupThing::adjust(x_max, y_max);
+		clip_y_start = adjusty(clip_y_start);
+		clip_y_end = adjusty(clip_y_end);
+	}
+	unsigned long vertexColor = LH3D_COLOR_WHITE;
+	if (color != NULL)
+		vertexColor = color->GetColor();
+	if (use_draw_alpha)
+		vertexColor = (vertexColor & LH3D_COLOR_RGB_MASK) + (DrawAlpha << 24);
+	if (y_min > y_max)
+	{
+		int temp = y_min;
+		y_min = y_max;
+		y_max = temp;
+		float tempUV = v_min;
+		v_min = v_max;
+		v_max = tempUV;
+		temp = x_min;
+		x_min = y_max;
+		x_max = temp;
+		tempUV = u_min;
+		u_min = v_max;
+		u_max = tempUV;
+	}
+	if (x_min > x_max)
+	{
+		int temp = x_min;
+		x_min = y_max;
+		x_max = temp;
+		float tempUV = u_min;
+		u_min = v_max;
+		u_max = tempUV;
+	}
+	if (y_min >= clip_y_end || y_max <= clip_y_start)
+		return;
+	float vPerPixel = 0.0f;
+	if (y_max > y_min)
+		vPerPixel = (v_max - v_min) / (y_max - y_min);
+	if (y_min < clip_y_start)
+	{
+		v_min += (clip_y_start - y_min) * vPerPixel;
+		y_min = clip_y_start;
+	}
+	if (y_max > clip_y_end)
+	{
+		v_max -= (y_max - clip_y_end) * vPerPixel;
+		y_max = clip_y_end;
+	}
+	if (y_min > y_max)
+		return;
+	QuadVertices[0].x = x_min + 0.5f;
+	QuadVertices[0].y = y_min + 0.5f;
+	QuadVertices[0].uv.x = u_max;
+	QuadVertices[0].uv.y = v_min;
+	QuadVertices[0].color = vertexColor;
+	QuadVertices[1].x = x_max + 0.5f;
+	QuadVertices[1].y = y_min + 0.5f;
+	QuadVertices[1].uv.x = u_max;
+	QuadVertices[1].uv.y = v_max;
+	QuadVertices[1].color = vertexColor;
+	QuadVertices[2].x = x_max + 0.5f;
+	QuadVertices[2].y = y_max + 0.5f;
+	QuadVertices[2].uv.x = u_min;
+	QuadVertices[2].uv.y = v_max;
+	QuadVertices[2].color = vertexColor;
+	QuadVertices[3].x = x_min + 0.5f;
+	QuadVertices[3].y = y_max + 0.5f;
+	QuadVertices[3].uv.x = u_min;
+	QuadVertices[3].uv.y = v_min;
+	QuadVertices[3].color = vertexColor;
+	LH3DRender::SetMaterial(material, 0);
+	unsigned long zWriteEnable;
+	unsigned long zFunc;
+	LH3DRender::GetRenderState(D3DRENDERSTATE_ZWRITEENABLE, zWriteEnable);
+	LH3DRender::GetRenderState(D3DRENDERSTATE_ZFUNC, zFunc);
+	if (!depth_test)
+	{
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, false);
+	}
+	else
+	{
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, false);
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
+		float rhw = LH3DTech::g_info_transform.NearClip / distance;
+		QuadVertices[0].z = QuadVertices[1].z = QuadVertices[2].z = QuadVertices[3].z = 1.0f - rhw;
+		QuadVertices[0].rhw = QuadVertices[1].rhw = QuadVertices[2].rhw = QuadVertices[3].rhw = rhw;
+	}
+	unsigned long lastPixel;
+	LH3DRender::GetRenderState(D3DRENDERSTATE_LASTPIXEL, lastPixel);
+	LH3DRender::SetRenderState(D3DRENDERSTATE_LASTPIXEL, false);
+	DrawAndClip2D(D3DPT_TRIANGLELIST, D3DFVF_TLVERTEX, QuadVertices, ARRAY_SIZE(QuadVertices), QuadIndices,
+	              ARRAY_SIZE(QuadIndices));
+	LH3DRender::SetRenderState(D3DRENDERSTATE_LASTPIXEL, lastPixel);
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, zFunc);
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, zWriteEnable);
+	QuadVertices[0].z = QuadVertices[1].z = QuadVertices[2].z = QuadVertices[3].z = 0.0f;
+	QuadVertices[0].rhw = QuadVertices[1].rhw = QuadVertices[2].rhw = QuadVertices[3].rhw = 1.0f;
+}
+#endif
+
 void SetupThing::DrawQuad(int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, unsigned long color_1,
                           unsigned long color_2, unsigned long color_3, unsigned long color_4, unsigned long use_alpha,
                           unsigned long adjust)
@@ -3166,13 +3615,13 @@ void SetupThing::DrawTab(int x_min, int y_min, int x_max, int y_max, bool32_t se
 	LH3DRender::SetTextureStageState(1, D3DTSS_MINFILTER, D3DTFN_POINT);
 	if (!selected)
 	{
-		DrawLine(x_min + (first_in_row ? 2 : 0), y_max + 2, x_max - (last_in_row ? 2 : 0), y_max + 2, 0x00ffffff, 1,
+		DrawLine(x_min + (first_in_row ? 2 : 0), y_max + 2, x_max - (last_in_row ? 2 : 0), y_max + 2, 0x00ffffff, true,
 		         0.0f, 100.0f);
 	}
 	else
 	{
-		DrawLine(x_min + (first_in_row ? 2 : 0), y_max + 2, x_min + 10, y_max + 2, 0x00ffffff, 1, 0.0f, 100.0f);
-		DrawLine(x_max - 10, y_max + 2, x_max - (last_in_row ? 2 : 0), y_max + 2, 0x00ffffff, 1, 0.0f, 100.0f);
+		DrawLine(x_min + (first_in_row ? 2 : 0), y_max + 2, x_min + 10, y_max + 2, 0x00ffffff, true, 0.0f, 100.0f);
+		DrawLine(x_max - 10, y_max + 2, x_max - (last_in_row ? 2 : 0), y_max + 2, 0x00ffffff, true, 0.0f, 100.0f);
 	}
 	float cornerTop = 0.0f;
 	float cornerBottom = 6.0f / 256;
@@ -3180,29 +3629,29 @@ void SetupThing::DrawTab(int x_min, int y_min, int x_max, int y_max, bool32_t se
 	float cornerVMax = cornerBottom + (selected ? 32.0f / 256 : 40.0f / 256);
 	if (!selected)
 	{
-		DrawBox(x_min, y_max - 8, x_max, y_max, 54.0f / 256, 0.0f, 74.0f / 256, 6.0f / 256, ButtonMaterial, NULL, 1,
+		DrawBox(x_min, y_max - 8, x_max, y_max, 54.0f / 256, 0.0f, 74.0f / 256, 6.0f / 256, ButtonMaterial, NULL, true,
 		        -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 		DrawAlpha = (int)(DrawAlpha * 0.5f);
 	}
 	if (label[0])
 	{
 		DrawBox(x_min + 8, y_min, x_max - 8, y_min + 8, 54.0f / 256, 0.0f, 74.0f / 256, 6.0f / 256, ButtonMaterial,
-		        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+		        NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 		DrawBox(x_min, y_min + 8, x_min + 8, y_max - 8, 48.0f / 256, 6.0f / 256, 54.0f / 256, 26.0f / 256,
-		        ButtonMaterial, NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+		        ButtonMaterial, NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 		DrawBox(x_max - 8, y_min + 8, x_max, y_max - 8, 74.0f / 256, 6.0f / 256, 80.0f / 256, 26.0f / 256,
-		        ButtonMaterial, NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
-		DrawBox(x_min, y_min, x_min + 8, y_min + 8, 48.0f / 256, 0.0f, 54.0f / 256, 6.0f / 256, ButtonMaterial, NULL, 1,
-		        -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
-		DrawBox(x_max - 8, y_min, x_max, y_min + 8, 74.0f / 256, 0.0f, 80.0f / 256, 6.0f / 256, ButtonMaterial, NULL, 1,
-		        -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+		        ButtonMaterial, NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+		DrawBox(x_min, y_min, x_min + 8, y_min + 8, 48.0f / 256, 0.0f, 54.0f / 256, 6.0f / 256, ButtonMaterial, NULL,
+		        true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+		DrawBox(x_max - 8, y_min, x_max, y_min + 8, 74.0f / 256, 0.0f, 80.0f / 256, 6.0f / 256, ButtonMaterial, NULL,
+		        true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 		DrawBox(x_min, y_max - 8, x_min + 8, y_max, 240.0f / 256, cornerVMin, 246.0f / 256, cornerVMax, ButtonMaterial,
-		        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+		        NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 		DrawBox(x_max - 8, y_max - 8, x_max, y_max, 250.0f / 256, cornerVMin, 256.0f / 256, cornerVMax, ButtonMaterial,
-		        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
-		DrawBevBox(x_min + 8, y_min + 8, x_max - 8, y_max, opaque ? 16 : 0, 16, 1, color);
-		DrawLine(x_max - 10, y_max + 2, x_max - 10, y_max - 4, 0x00ffffff, 1, 0.0f, 100.0f);
-		DrawLine(x_min + 10, y_max + 2, x_min + 10, y_max - 4, 0x00ffffff, 1, 0.0f, 100.0f);
+		        NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+		DrawBevBox(x_min + 8, y_min + 8, x_max - 8, y_max, opaque ? 16 : 0, SETUP_BEVEL_THICKNESS_BOX, 1, color);
+		DrawLine(x_max - 10, y_max + 2, x_max - 10, y_max - 4, 0x00ffffff, true, 0.0f, 100.0f);
+		DrawLine(x_min + 10, y_max + 2, x_min + 10, y_max - 4, 0x00ffffff, true, 0.0f, 100.0f);
 	}
 	LH3DRender::SetTextureStageState(0, D3DTSS_MAGFILTER, D3DTFG_LINEAR);
 	LH3DRender::SetTextureStageState(1, D3DTSS_MAGFILTER, D3DTFG_LINEAR);
@@ -3216,28 +3665,29 @@ void SetupThing::DrawBg(int x_min, int y_min, int x_max, int y_max, int color, i
 	int drawAlpha = DrawAlpha;
 	if (!opaque)
 		DrawAlpha = (int)(DrawAlpha * (5.0f / 6.0f));
-	DrawBevBox(x_min, y_min, x_max, y_max, opaque ? 16 : 0, 16, top_border ? -1 : 2, color);
+	DrawBevBox(x_min, y_min, x_max, y_max, opaque ? 16 : 0, SETUP_BEVEL_THICKNESS_BOX,
+	           top_border ? SETUP_BEVEL_OUTLINE_ALL : 2, color);
 	x_min -= 8;
 	y_min -= 8;
 	x_max += 8;
 	y_max += 8;
-	DrawBox(x_min, y_min, x_min + 8, y_min + 8, 48.0f / 256, 0.0f, 54.0f / 256, 6.0f / 256, ButtonMaterial, NULL, 1,
+	DrawBox(x_min, y_min, x_min + 8, y_min + 8, 48.0f / 256, 0.0f, 54.0f / 256, 6.0f / 256, ButtonMaterial, NULL, true,
 	        -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
-	DrawBox(x_max - 8, y_min, x_max, y_min + 8, 74.0f / 256, 0.0f, 80.0f / 256, 6.0f / 256, ButtonMaterial, NULL, 1,
+	DrawBox(x_max - 8, y_min, x_max, y_min + 8, 74.0f / 256, 0.0f, 80.0f / 256, 6.0f / 256, ButtonMaterial, NULL, true,
 	        -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_min, y_max - 8, x_min + 8, y_max, 48.0f / 256, 26.0f / 256, 54.0f / 256, 32.0f / 256, ButtonMaterial,
-	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+	        NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_max - 8, y_max - 8, x_max, y_max, 74.0f / 256, 26.0f / 256, 80.0f / 256, 32.0f / 256, ButtonMaterial,
-	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+	        NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	if (top_border)
 		DrawBox(x_min + 8, y_min, x_max - 8, y_min + 8, 54.0f / 256, 0.0f, 74.0f / 256, 6.0f / 256, ButtonMaterial,
-		        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+		        NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_min + 8, y_max - 8, x_max - 8, y_max, 54.0f / 256, 26.0f / 256, 74.0f / 256, 32.0f / 256, ButtonMaterial,
-	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+	        NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_min, y_min + 8, x_min + 8, y_max - 8, 48.0f / 256, 6.0f / 256, 54.0f / 256, 26.0f / 256, ButtonMaterial,
-	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+	        NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawBox(x_max - 8, y_min + 8, x_max, y_max - 8, 74.0f / 256, 6.0f / 256, 80.0f / 256, 26.0f / 256, ButtonMaterial,
-	        NULL, 1, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
+	        NULL, true, -SETUP_NO_CLIP, SETUP_NO_CLIP, false, 100.0f);
 	DrawAlpha = drawAlpha;
 }
 
@@ -3251,7 +3701,7 @@ void SetupThing::DrawBevBox(int x_min, int y_min, int x_max, int y_max, int styl
 	float vStart;
 	float uEnd;
 	float vEnd;
-	if (outline_thickness != 16)
+	if (outline_thickness != SETUP_BEVEL_THICKNESS_BOX)
 	{
 		vStart = 0.0f;
 		uStart = 0.0f;
@@ -3277,33 +3727,36 @@ void SetupThing::DrawBevBox(int x_min, int y_min, int x_max, int y_max, int styl
 	LH3DRender::SetTextureStageState(1, D3DTSS_MAGFILTER, D3DTFG_POINT);
 	LH3DRender::SetTextureStageState(0, D3DTSS_MINFILTER, D3DTFN_POINT);
 	LH3DRender::SetTextureStageState(1, D3DTSS_MINFILTER, D3DTFN_POINT);
-	DrawBox(x_min, y_min, x_max, y_max, uStart, vStart, uEnd, vEnd, ButtonMaterial, &boxColor, 1, -SETUP_NO_CLIP,
+	DrawBox(x_min, y_min, x_max, y_max, uStart, vStart, uEnd, vEnd, ButtonMaterial, &boxColor, true, -SETUP_NO_CLIP,
 	        SETUP_NO_CLIP, false, 100.0f);
-	if (outline_thickness == 16 ||
-	    (outline_thickness == 8 && (style == 13 || style == 11 || style == 45 || style == 43)))
+	if (outline_thickness == SETUP_BEVEL_THICKNESS_BOX ||
+	    (outline_thickness == SETUP_BEVEL_THICKNESS_CHECK_BOX &&
+	     (style == SETUP_BEVEL_STYLE_CHECK_BOX_HIGHLIGHT || style == SETUP_BEVEL_STYLE_CHECK_BOX ||
+	      style == SETUP_BEVEL_STYLE_TICKED + SETUP_BEVEL_STYLE_CHECK_BOX_HIGHLIGHT ||
+	      style == SETUP_BEVEL_STYLE_TICKED + SETUP_BEVEL_STYLE_CHECK_BOX)))
 	{
 		unsigned long tint = BevelColours[style & 3];
-		if (outline_thickness == 8)
+		if (outline_thickness == SETUP_BEVEL_THICKNESS_CHECK_BOX)
 		{
 			tint = BevelColours[0];
-			if ((style & 0x1f) == 13)
+			if ((style & (SETUP_BEVEL_STYLE_TICKED - 1)) == SETUP_BEVEL_STYLE_CHECK_BOX_HIGHLIGHT)
 				tint = BevelColours[2];
 		}
 		unsigned long lineColor = (GJUtils::ModulateColor(tint, boxColor.GetColor()) & LH3D_COLOR_RGB_MASK) ^
 		                          (boxColor.GetColor() & 0xff000000);
 		if (horizontal_outline & 1)
 		{
-			DrawLine(x_min + 2, y_min + 2, x_max - 2, y_min + 2, lineColor, 1, 0.0f, 100.0f);
+			DrawLine(x_min + 2, y_min + 2, x_max - 2, y_min + 2, lineColor, true, 0.0f, 100.0f);
 		}
 		else
 		{
-			DrawLine(x_min + 2, y_min + 2, x_min + 4, y_min + 2, lineColor, 1, 0.0f, 100.0f);
-			DrawLine(x_max - 4, y_min + 2, x_max - 2, y_min + 2, lineColor, 1, 0.0f, 100.0f);
+			DrawLine(x_min + 2, y_min + 2, x_min + 4, y_min + 2, lineColor, true, 0.0f, 100.0f);
+			DrawLine(x_max - 4, y_min + 2, x_max - 2, y_min + 2, lineColor, true, 0.0f, 100.0f);
 		}
 		if (horizontal_outline & 2)
-			DrawLine(x_max - 2, y_max - 2, x_min + 2, y_max - 2, lineColor, 1, 0.0f, 100.0f);
-		DrawLine(x_min + 2, y_max - 2, x_min + 2, y_min + 2, lineColor, 1, 0.0f, 100.0f);
-		DrawLine(x_max - 2, y_min + 2, x_max - 2, y_max - 2, lineColor, 1, 0.0f, 100.0f);
+			DrawLine(x_max - 2, y_max - 2, x_min + 2, y_max - 2, lineColor, true, 0.0f, 100.0f);
+		DrawLine(x_min + 2, y_max - 2, x_min + 2, y_min + 2, lineColor, true, 0.0f, 100.0f);
+		DrawLine(x_max - 2, y_min + 2, x_max - 2, y_max - 2, lineColor, true, 0.0f, 100.0f);
 	}
 	LH3DRender::SetTextureStageState(0, D3DTSS_MAGFILTER, D3DTFG_LINEAR);
 	LH3DRender::SetTextureStageState(1, D3DTSS_MAGFILTER, D3DTFG_LINEAR);

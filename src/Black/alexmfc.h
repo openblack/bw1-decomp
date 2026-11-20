@@ -27,6 +27,7 @@ struct LH3DMaterial;
 struct LH3DMesh;
 class LH3DObject;
 struct SetupBox;
+struct SetupFadeIn;
 struct SetupList;
 struct SetupStaticText;
 
@@ -45,6 +46,16 @@ struct SetupStaticText;
 #define SETUP_NO_CLIP 40960
 
 #define SETUP_CONTROL_ID_NONE 999
+
+#define SETUP_BEVEL_STYLE_CHECK_BOX           11
+#define SETUP_BEVEL_STYLE_CHECK_BOX_HIGHLIGHT 13
+#define SETUP_BEVEL_STYLE_TICKED              32
+#define SETUP_BEVEL_THICKNESS_CHECK_BOX       8
+#define SETUP_BEVEL_THICKNESS_BOX             16
+#define SETUP_BEVEL_OUTLINE_ALL               -1
+
+#define SETUP_BIG_BUTTON_WEATHER_COLUMNS    4
+#define SETUP_BIG_BUTTON_FIRST_WEATHER_CELL 4
 
 #define SETUP_MP3_ICON_SIZE         16
 #define SETUP_MP3_ICON_COLUMNS      4
@@ -132,7 +143,7 @@ enum BBSTYLE
 	BBSTYLE_WEATHER_FLURRIES = 0x11,
 	BBSTYLE_WEATHER_HEAVY_FLURRIES = 0x12,
 	BBSTYLE_WEATHER_THUNDER_STORMS = 0x13,
-	BBSTYLE_0x14 = 0x14,
+	BBSTYLE_WEATHER_UNKNOWN = 0x14,
 	_BBSTYLE_COUNT = 0x15
 };
 
@@ -183,7 +194,6 @@ struct SetupThing
 	static LH3DColor SelectedColour;
 	// BW1W120 00c4ccf8
 	static LH3DColor DefaultColor;
-	// Only SetupThing::Close touches these: it releases them, but nothing in the binary ever sets them.
 	// BW1W120 00c4ccf0
 	static LH3DMesh* Mesh;
 	// BW1W120 00c4ccf4
@@ -273,6 +283,15 @@ struct SetupThing
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
 	                    LH3DMaterial* material, LH3DColor* color, bool32_t adjust, int clip_y_start, int clip_y_end,
 	                    bool depth_test, float distance, bool32_t use_draw_alpha = true);
+	// BW1WCI 004128a0 BW1MCI119 014b27e0
+	static void DrawBoxRota(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max,
+	                        float v_max, LH3DMaterial* material, LH3DColor* color, bool32_t adjust, int clip_y_start,
+	                        int clip_y_end, bool depth_test, float distance, bool32_t use_draw_alpha, float rotation);
+	// BW1WCI 00413450 BW1MCI119 014b3100
+	static void DrawBoxTextureOnSide(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max,
+	                                 float v_max, LH3DMaterial* material, LH3DColor* color, bool32_t adjust,
+	                                 int clip_y_start, int clip_y_end, bool depth_test, float distance,
+	                                 bool32_t use_draw_alpha);
 #else
 	// BW1W120 00412980 BW1M119 0104b340
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
@@ -296,7 +315,7 @@ struct SetupThing
 
 struct SetupControl
 {
-	uint32_t        UsesIME;
+	bool32_t        UsesIME;
 	LHRegion        rect;
 	int             id; /* 0x18 */
 	int             Style;
@@ -353,7 +372,6 @@ struct SetupControl
 
 	// BW1W120 inlined BW1M119 inlined
 	int GetTextSize();
-	// fabricated
 	// BW1W120 inlined BW1M119 inlined
 	int GetHalfTextSize();
 };
@@ -371,10 +389,14 @@ enum MSGBOXSTYLE
 // Help texts SetupBox::MessageBoxA labels its buttons with.
 enum SETUP_MESSAGE_BOX_TEXT
 {
+#ifdef VERSION_BW1WCI
+	SETUP_MESSAGE_BOX_TEXT_YES = 2597,
+#else
 	SETUP_MESSAGE_BOX_TEXT_YES = 2593,
-	SETUP_MESSAGE_BOX_TEXT_NO = 2594,
-	SETUP_MESSAGE_BOX_TEXT_CANCEL = 2595,
-	SETUP_MESSAGE_BOX_TEXT_OK = 2596
+#endif
+	SETUP_MESSAGE_BOX_TEXT_NO,
+	SETUP_MESSAGE_BOX_TEXT_CANCEL,
+	SETUP_MESSAGE_BOX_TEXT_OK,
 };
 
 struct SetupBox
@@ -393,7 +415,7 @@ struct SetupBox
 	static SetupBox* CurrentFadeBox;
 	// Restarted towards 1 whenever a box becomes active.
 	// BW1W120 00c4cc88
-	static Zoomer FadeIn;
+	static SetupFadeIn FadeIn;
 	// BW1W120 00409170 BW1M119 01445730
 	virtual void     ClickKeyDown(int key, int mod);
 	Zoomer           Fade;
@@ -509,7 +531,7 @@ struct SetupStaticText : public SetupControl
 struct SetupButton : public SetupControl
 {
 	bool32_t pressed; /* 0x23c */
-	int      field_0x240;
+	int      UserValue;
 
 	// Override methods
 
@@ -529,7 +551,7 @@ struct SetupButton : public SetupControl
 	// Constructors
 
 	// BW1W120 004098b0 BW1M119 01416ad0
-	SetupButton(int id, int x, int y, int width, int height, const char16_t* label, int param_8);
+	SetupButton(int id, int x, int y, int width, int height, const char16_t* label, int user_value);
 };
 
 enum SETUP_SLIDER_STYLE
@@ -613,9 +635,8 @@ struct SetupList : public SetupControl
 	uint8_t          field_0x293;
 	unsigned long    BoxOutlineColor;
 	unsigned long    SelectionColor;
-	uint8_t          field_0x29c;
-	// Not zeroed by the constructor, so an LHRegion like SetupControl::rect rather than a SetupRect.
-	LHRegion SelectionRect; /* 0x2a0 */
+	uint8_t          SelectionRectSet;
+	LHRegion         SelectionRect; /* 0x2a0 */
 
 	// Override methods
 
@@ -647,8 +668,7 @@ struct SetupList : public SetupControl
 	void AutoScroll(bool to_bottom);
 	// BW1W120 0040a310 BW1M119 null
 	int GetItemAt(int x, int y);
-	// fabricated
-	// BW1W120 inlined BW1M119 inlined
+	// BW1W120 00547150 BW1M119 inlined
 	void SetSelected(int index);
 	// BW1W120 inlined BW1M119 015c5360
 	int GetSelected() { return SelectedIndex; }
@@ -701,8 +721,6 @@ struct SetupList : public SetupControl
 	void SetNum(int num);
 	// BW1W120 005471c0 BW1M119 01376730
 	void SetCol(int index, unsigned long col);
-	// BW1W120 00547150
-	void fn_00547150(int index);
 };
 
 // BW1W120 inlined BW1M119 010ba0a0
@@ -770,7 +788,7 @@ struct SetupEdit : public SetupControl
 	bool32_t   Editable;
 	bool       MaskedText; /* 0x260 */
 	char16_t   DisplayText[0x100];
-	uint32_t   SelectAllOnClick;
+	bool32_t   SelectAllOnClick;
 
 	// Override methods
 
@@ -778,7 +796,7 @@ struct SetupEdit : public SetupControl
 	virtual void SetFocus(bool focus)
 	{
 		if (focus && !this->focus)
-			SelectAllOnClick = 1;
+			SelectAllOnClick = true;
 		SetupControl::SetFocus(focus);
 		CursorPosition = wcslen(label);
 		SelectEnd = CursorPosition;
@@ -915,6 +933,7 @@ inline void SetupEdit::InsertChar(int position, char16_t character)
 	}
 }
 
+#ifndef VERSION_BW1W100
 struct SetupMP3Button : public SetupButton
 {
 	int       IconIndex;
@@ -929,8 +948,8 @@ struct SetupMP3Button : public SetupButton
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	SetupMP3Button(int id, int x, int y, int width, int height, const char16_t* label, int param_8, int icon_index)
-		: SetupButton(id, x, y, width, height, label, param_8)
+	SetupMP3Button(int id, int x, int y, int width, int height, const char16_t* label, int user_value, int icon_index)
+		: SetupButton(id, x, y, width, height, label, user_value)
 	{
 		color = SetupThing::DefaultColor;
 		ShowButton = true;
@@ -938,6 +957,7 @@ struct SetupMP3Button : public SetupButton
 		IconIndex = icon_index;
 	}
 };
+#endif
 
 struct SetupBigButton : public SetupButton
 {
@@ -1216,7 +1236,7 @@ struct SetupPicture : public SetupButton
 
 struct SetupColourPicker : public SetupButton
 {
-	LH3DColor     Color0x244;
+	LH3DColor     BaseColor;
 	LH3DMaterial* material;
 	bool32_t      brightness_slider;
 	float         SliderPosition; /* 0x250 */

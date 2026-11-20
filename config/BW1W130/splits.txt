@@ -49,7 +49,7 @@ Black/Abode.cpp:
 
 Black/alexmfc.cpp:
 	.text       start:0x00407880 end:0x00414020
-	.rdata      start:0x008B0250 end:0x008B0638
+	.rdata      start:0x008B0250 end:0x008B0634
 	.rdata$r    start:0x00A267F0 end:0x00A26C48
 	.CRT$XCU    start:0x00A46054 end:0x00A4607C align:4
 	.data       start:0x00A480C0 end:0x00A48390
@@ -57,7 +57,7 @@ Black/alexmfc.cpp:
 
 Black/Alignment.cpp:
 	.text       start:0x00414020 end:0x00416C80
-	.rdata      start:0x008B0638 end:0x008B0744
+	.rdata      start:0x008B0634 end:0x008B0744
 	.rdata$r    start:0x00A26C48 end:0x00A26D70
 	.CRT$XCU    start:0x00A4607C end:0x00A46090 align:4
 	.data       start:0x00A48390 end:0x00A48D58
