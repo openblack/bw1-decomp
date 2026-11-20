@@ -499,6 +499,8 @@
 0x00429874 jmp_run 0x00429785  # AudioMusicThing
 0x00429898 jmp_run 0x00429874  # AudioMusicThing
 0x00429AD9 jmp_run 0x00429898  # AudioMusicThing
+0x0042A6C2 copy_run 0x0042A61A  # audiotag
+0x0042B2B6 jmp_run 0x0042A6C2  # audiotag
 0x0043641B call_rel32 0x00403C49  # Base
 0x00436443 copy_run 0x0043641B  # Base
 0x004366E5 copy_run 0x00436443  # Base

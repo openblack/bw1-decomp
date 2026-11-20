@@ -717,7 +717,7 @@ void EyeBlinker::Update(EyePositions* out, EyePositions* in, float* timer, float
 	*timer = time;
 }
 
-static const char* EmotionNames[HELPDUDE_EMOTIONS] = {
+const char* HelpDude::EmotionNames[HELPDUDE_EMOTIONS] = {
 	"Normal", "Pleased", "Displeased", "Sad", "Sarcastic", "Afraid", "Confused", "Furious",
 };
 

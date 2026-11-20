@@ -19,6 +19,7 @@ enum AUDIO_TAG_TARGET
 
 enum AUDIO_TAG_COMMAND
 {
+	AUDIO_TAG_COMMAND_NONE = 0,
 	AUDIO_TAG_COMMAND_ANIM = 1,
 	AUDIO_TAG_COMMAND_ANIM_START = 2,
 	AUDIO_TAG_COMMAND_ANIM_RELEASE = 3,
@@ -26,6 +27,17 @@ enum AUDIO_TAG_COMMAND
 	AUDIO_TAG_COMMAND_LOOK = 5,
 	AUDIO_TAG_COMMAND_LOOK_START = 6,
 	AUDIO_TAG_COMMAND_LOOK_RELEASE = 7,
+};
+
+enum AUDIO_TAG_LOOK
+{
+	AUDIO_TAG_LOOK_OTHER_GUY = 'O',
+	AUDIO_TAG_LOOK_AHEAD = 'C',
+	AUDIO_TAG_LOOK_POINT = 'P',
+	AUDIO_TAG_LOOK_MOUSE = 'M',
+	AUDIO_TAG_LOOK_MOUSE_ALIAS = 'H',
+	AUDIO_TAG_LOOK_AUTO = 'D',
+	AUDIO_TAG_LOOK_AUTO_ALIAS = 'N',
 };
 
 #define AUDIO_TAG_EMOTION_PERCENT 100.0f
@@ -47,6 +59,14 @@ struct AudioTag
 	static int BuildAudioTags(void* data, int size, AudioTag** tags);
 
 	// Non-virtual methods
+
+#if !defined(VERSION_BW1W100)
+	// BW1W120 0042a650 BW1M119 null
+	void ParseText(char* text);
+#endif
+
+	// BW1W120 0042a6d0 BW1M119 01188a40
+	char* Parse(char* text);
 
 	// BW1W120 0042acc0 BW1M119 011887a0
 	void ApplyToDude(HelpDude* dude, bool32_t resolve_target, bool32_t start_animation);

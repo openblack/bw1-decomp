@@ -149,6 +149,16 @@ add_relocations:
     type: x86_abs32
     target: '?Draw@SetupStaticText@@UAEX_N0@Z'
     addend: 0x1C0
+# audiotag.cpp's AudioTag::Parse: the end-of-array compares of the HelpDude::AnimNames and
+# EmotionNames name searches (one past the end, which dtk resolves to the next symbol).
+  - source: 0x0042497F
+    type: x86_abs32
+    target: '?AnimNames@HelpDude@@2PAPBDA'
+    addend: 0x140
+  - source: 0x00424A12
+    type: x86_abs32
+    target: '?EmotionNames@HelpDude@@2PAPBDA'
+    addend: 0x20
 # Balance: the info-array loops compare against each array's one-past-end, not the next unit's data.
   - source: 0x00425246
     type: x86_abs32
