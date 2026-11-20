@@ -1395,12 +1395,14 @@ Black/JobInfo.cpp:
 Black/KeyBuffer.cpp:
 	.text       start:0x005A1650 end:0x005A17F0
 	.rdata      start:0x00869074 end:0x00869094
-	.data       start:0x00B201A8 end:0x00B20370
+	.rdata$r    start:0x008E5260 end:0x008E52AC
+	.data       start:0x00B201A8 end:0x00B201C3
 
 Black/LandAlignement.cpp:
 	.text       start:0x005A17F0 end:0x005A23C0
 	.rdata      start:0x00869094 end:0x00869108
 	.CRT$XCU    start:0x008F6930 end:0x008F693C align:4
+	.data       start:0x00B201C4 end:0x00B20370
 	.bss        start:0x00C3B360 end:0x00C3B3F0
 
 Black/LandBalance.cpp:

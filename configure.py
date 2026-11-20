@@ -1055,7 +1055,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/JCGameBlock.cpp"),
             GameCodeObject(NonMatching, "Black/JCMisc.cpp"),
             GameCodeObject(NonMatching, "Black/JobInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/KeyBuffer.cpp"),
+            GameCodeObject(Matching, "Black/KeyBuffer.cpp"),
             GameCodeObject(NonMatching, "Black/LandAlignement.cpp"),
             GameCodeObject(NonMatching, "Black/LandBalance.cpp"),
             GameCodeObject(NonMatching, "Black/LandFeature.cpp"),
