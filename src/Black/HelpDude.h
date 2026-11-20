@@ -437,6 +437,8 @@ struct HelpDude : public LocalBase
 
 	// Static members
 
+	// BW1W120 00bf027c BW1M119 null
+	static const char* EmotionNames[HELPDUDE_EMOTIONS];
 	// BW1W120 00bf029c BW1M119 null
 	static const char* AnimNames[ANIM_LAST];
 
