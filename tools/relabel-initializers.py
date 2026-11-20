@@ -9,16 +9,19 @@ configure.py's label_objects), and symbols.txt names them after their address, w
 change moves: _$E_<address> for a stub, body or atexit thunk, _$S_<address> for a .CRT$XCU slot.
 
 For each compiled unit this names:
-- every numbered label (_$E<n>, _$S<n>) and crt_xc_fn_<what>_<unit>_<address> placeholder in its
-  .text, and every .CRT$XCU slot in its range (a symbol that spans several slots is cut into one
-  per slot, a slot no symbol covers gets one);
-- dtk's fn_<address> where the function pairs with an initializer of the compiled object. Pairing
-  is by structure, not by name: the std::ctype guard's registration (recognised by its use of the
-  guard) pairs with the compiled one, and the other .CRT$XCU entries pair in order where they
-  initialise the same named static or, failing a name on either side, have the same code (the
-  same bytes and the same named relocation targets). A unit whose source is still incomplete
-  compiles fewer initializers than the target holds; the entries it does compile still pair, the
-  earliest compatible ones first.
+- every crt_xc_fn_<what>_<unit>_<address> placeholder in its .text, and every .CRT$XCU slot in
+  its range dtk or a placeholder names (a symbol that spans several slots is cut into one per
+  slot, a slot no symbol covers gets one);
+- every numbered label (_$E<n>, _$S<n>) and dtk fn_<address> that pairs with a label of the
+  compiled object. Pairing is by structure, not by name: the std::ctype guard's registration
+  (recognised by its use of the guard) pairs with the compiled one, and the other .CRT$XCU
+  entries pair in order where they initialise the same named static or, failing a name on either
+  side, have the same code (the same bytes and the same named relocation targets). A unit whose
+  source is still incomplete compiles fewer initializers than the target holds; the entries it
+  does compile still pair, the earliest compatible ones first. A label no .CRT$XCU entry reaches
+  (a function-local static's atexit thunk) pairs through the function both objects define that
+  refers to it. A numbered label that does not pair keeps its number, by which objdiff may still
+  pair it.
 
 A split can still hold more than one original object, each ending in its own guard. Its entries
 are then cut into one part per guard, and only the part holding the functions the compiled object
@@ -51,6 +54,8 @@ AUTO_SLOT = re.compile(r"^lbl_[0-9A-F]{8}$")
 # to initializer stubs, bodies and the ctype guard's stub and atexit thunk, and dtk's fn_<address>.
 PLACEHOLDER = re.compile(r"^(crt_xc_fn_\w+_[0-9A-F]{8}|fn_[0-9A-F]{8})$")
 CRT_PLACEHOLDER = re.compile(r"^crt_xc_fn_\w+_[0-9A-F]{8}$")
+# dtk's name for a symbol after its address.
+DTK_ADDRESS = re.compile(r"^(?:fn|lbl|data)_(?:0x)?([0-9A-Fa-f]{8})$")
 # dtk's name for a repeated data name it de-duplicated: a .CRT$XCU slot named so takes its label.
 DATA_PLACEHOLDER = re.compile(r"^data_0x[0-9a-f]{8}$")
 # A label named after its address rather than its number (tools/label-objects.py): _$E_<address>
@@ -299,17 +304,62 @@ def pair(target, compiled):
     return pairs + align(target, t_rest, compiled, c_rest)
 
 
+def references(obj):
+    """Each function the object defines once under a name that is not a label -> the labels it
+    refers to, in code order."""
+    out = {}
+    for index in obj.functions:
+        name = obj.name(index)
+        if renameable(name) or obj.count[name] != 1:
+            continue
+        refs = [r.symbol_index for r in obj.relocations(index)
+                if r.symbol_index in obj.functions and renameable(obj.name(r.symbol_index))]
+        if refs:
+            out[name] = refs
+    return out
+
+
+def referenced_pairs(target, compiled):
+    """(target index, compiled index) for the labels no .CRT$XCU entry reaches (a function-local
+    static's atexit thunk), paired through the function of both objects that refers to them:
+    in order, where it refers to as many in both. A label paired two ways pairs with neither."""
+    t_refs, c_refs = references(target), references(compiled)
+    found, back = collections.defaultdict(set), collections.defaultdict(set)
+    for name, refs in t_refs.items():
+        mine = c_refs.get(name)
+        if mine is not None and len(mine) == len(refs):
+            for a, b in zip(refs, mine):
+                found[a].add(b)
+                back[b].add(a)
+    out = []
+    for a, bs in found.items():
+        if len(bs) == 1:
+            (b,) = bs
+            if len(back[b]) == 1:
+                out.append((a, b))
+    return out
+
+
+def chain_pairs(target, compiled):
+    """(target index, compiled index) for the functions of the paired initializers, then for the
+    labels paired through the functions referring to them."""
+    pairs = [(a, b) for (_, _, t_stub), (_, _, c_stub) in pair(target, compiled)
+             for a, b in zip(target.chain(t_stub), compiled.chain(c_stub))]
+    seen = {a for a, _ in pairs} | {b for _, b in pairs}
+    return pairs + [(a, b) for a, b in referenced_pairs(target, compiled) if a not in seen and b not in seen]
+
+
 def renames(target, compiled):
     """(target symbol index -> compiled label, target slot offset -> compiled slot label) for the
     paired initializers."""
     found = collections.defaultdict(set)
     slots = {}
-    for (t_offset, _, t_stub), (_, c_slot, c_stub) in pair(target, compiled):
+    for (t_offset, _, _), (_, c_slot, _) in pair(target, compiled):
         if c_slot is not None and LABEL.match(compiled.name(c_slot)):
             slots[t_offset] = compiled.name(c_slot)
-        for a, b in zip(target.chain(t_stub), compiled.chain(c_stub)):
-            if renameable(target.name(a)) and LABEL.match(compiled.name(b)):
-                found[a].add(compiled.name(b))
+    for a, b in chain_pairs(target, compiled):
+        if renameable(target.name(a)) and LABEL.match(compiled.name(b)):
+            found[a].add(compiled.name(b))
     return {index: names.pop() for index, names in found.items() if len(names) == 1}, slots
 
 
@@ -392,34 +442,56 @@ def relabel(config, units, apply, verbose=True):
         if split not in ranges or not base_path.is_file():
             continue
         named = {}
-        # Every numbered label and placeholder in the unit's code is one of its initializers.
+        # A crt_xc_fn_ placeholder in the unit's code is one of its initializers, and no compiled
+        # label has its name; an address label goes with its address.
         for lo, hi in texts.get(split, []):
             for address, i, name in entries[bisect.bisect_left(starts, lo):bisect.bisect_left(starts, hi)]:
-                if LABEL.match(name) or CRT_PLACEHOLDER.match(name) or ADDRESS_LABEL.match(name):
+                if CRT_PLACEHOLDER.match(name) or ADDRESS_LABEL.match(name):
                     named[i] = address_label("E", address)
-        # dtk's fn_<address> only where it pairs with an initializer of the compiled object: one
-        # still numbered, or one tools/label-objects.py renamed after the target.
+        # A numbered label or dtk's fn_<address> where it pairs with a label of the compiled object:
+        # one still numbered, or one tools/label-objects.py renamed after the target. A numbered
+        # label that does not pair keeps its number, by which objdiff may still pair it.
+        xcu = xcus[split][0] if len(xcus.get(split, [])) == 1 else None
+        paired_slots = set()
         if target_path.is_file():
             lines_of = collections.defaultdict(list)  # name -> its lines in the unit, in address order
             for lo, hi in sorted(ranges[split]):
                 for _, i, name in entries[bisect.bisect_left(starts, lo):bisect.bisect_left(starts, hi)]:
                     lines_of[name].append(i)
             target, compiled = Initializers(target_path), Initializers(base_path)
-            pairs = [(a, b) for (_, _, t_stub), (_, _, c_stub) in pair(target, compiled)
-                     for a, b in zip(target.chain(t_stub), compiled.chain(c_stub))]
-            found = [a for a, b in pairs if renameable(target.name(a))
+            found = [a for a, b in chain_pairs(target, compiled) if renameable(target.name(a))
                      and (LABEL.match(compiled.name(b)) or compiled.name(b) == target.name(a))]
-            if any(target.count[target.name(a)] != len(lines_of[target.name(a)]) for a in found):
+            at = {address: i for lo, hi in ranges[split]
+                  for address, i, _ in entries[bisect.bisect_left(starts, lo):bisect.bisect_left(starts, hi)]}
+            stale = False
+            for a in found:
+                name = target.name(a)
+                # dtk keeps a name repeated in symbols.txt on its lowest address and calls the
+                # others after theirs (fn_<address>).
+                own = DTK_ADDRESS.match(name)
+                if own and int(own.group(1), 16) in at:
+                    i = at[int(own.group(1), 16)]
+                elif target.count[name] <= len(lines_of[name]):
+                    i = lines_of[name][target.occurrence[a]]
+                else:
+                    stale = True
+                    continue
+                named[i] = address_label("E", address_of[i])
+            if stale:
                 print(f"{split}: the target object is older than symbols.txt; run ninja first", file=sys.stderr)
-            else:
-                for a in found:
-                    i = lines_of[target.name(a)][target.occurrence[a]]
-                    named[i] = address_label("E", address_of[i])
+            if xcu is not None:
+                # The target's .CRT$XCU starts at the split's start.
+                paired_slots = {xcu[0] + t_offset for (t_offset, _, _), _ in pair(target, compiled)}
         slot_new, slot_add = {}, {}
-        if split in xcus and len(xcus[split]) == 1:
-            lo, hi = xcus[split][0]
-            slots = {a: address_label("S", a) for a in range(lo, hi, SLOT)}
-            slot_new, slot_add, _ = slot_lines(lines, entries, xcus[split][0], slots)
+        if xcu is not None:
+            lo, hi = xcu
+            current = {address: name for address, _, name in entries[bisect.bisect_left(starts, lo):bisect.bisect_left(starts, hi)]}
+            slots = {}
+            for a in range(lo, hi, SLOT):
+                name = current.get(a)
+                keep = name is not None and LABEL.match(name) and a not in paired_slots
+                slots[a] = name if keep else address_label("S", a)
+            slot_new, slot_add, _ = slot_lines(lines, entries, xcu, slots)
         elif split in xcus:
             print(f"{split}: more than one .CRT$XCU range", file=sys.stderr)
         named = {i: new for i, new in named.items() if lines[i].split(" = ", 1)[0] != new}

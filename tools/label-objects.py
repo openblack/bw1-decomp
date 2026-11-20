@@ -9,8 +9,9 @@ for an initializer stub, body or atexit thunk, _$S_<address> for its .CRT$XCU sl
 objdiff pairs the two by name as before. The labels are local symbols, so the link (and every
 hash) does not see the names.
 
-Pairing is relabel-initializers.py's: .CRT$XCU slots in order, by code shape. A label that does
-not pair keeps its number.
+Pairing is relabel-initializers.py's: .CRT$XCU slots in order, by code shape, and a label no
+slot reaches (a function-local static's atexit thunk) through the function both objects define
+that refers to it. A label that does not pair keeps its number.
 
     python tools/label-objects.py <target .o> <compiled .o>     # rename in place
     python tools/label-objects.py <target .o> <compiled .o> -n  # only print the renames
