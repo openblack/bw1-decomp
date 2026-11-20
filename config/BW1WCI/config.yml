@@ -7,6 +7,41 @@ splits: config/BW1WCI/splits.txt
 generate_imports: false
 
 block_relocations:
+# Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate, like SetupColourPicker's.
+  - source: 0x00403357
+# Abode::GetNewEp tests the 0x800000 flag, an address inside LHDraw::EmbossedBox24.
+  - source: 0x004036B4
+# SetupBox's IME candidate list control ID 0x85b680 is an immediate, not a pointer into
+# LH3DPrimitive::DrawInShadowTnL.
+  - source: 0x004080C3
+  - source: 0x0040878D
+  - source: 0x0040C1FD
+  - source: 0x0040C28E
+  - source: 0x0040CCDB
+# SetupColourPicker's grey colour 0x808080 is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
+  - source: 0x00410A54
+# SpellDove::SetColor's 0xffffff colour mask reads as an address inside NewCols.
+  - source: 0x00420492
+# GLightSheet::Draw's 0xffffff colour mask reads as an address inside NewCols.
+  - source: 0x004258CD
+# GatheringInterface: player colour 0xafefff and special user IDs 9999998..10000015 are immediates.
+  - source: 0x00588C79
+  - source: 0x00588C81
+  - source: 0x00588D2F
+  - source: 0x005890F8
+# Bubble::Draw's 0xffffff colour mask reads as an address inside NewCols, and Bubble::UpdateAndDraw's 0x7f7f7f
+# mask as one inside _chsize_lk.
+  - source: 0x0058B564
+  - source: 0x0058BE7B
+# HelpDude::Draw's evil smoke tint 0x7F1F1F is an immediate, not a pointer into LHDraw::ScaledSprite24.
+  - source: 0x005D6176
+
+# RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
+  - source: 0x0061175A
+  - source: 0x00611CE0
+# MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
+  - source: 0x0061A588
+
 # MPFEAlexDialog's pingdraw, TeamControls::InitControls, TeamControls::Callback, UpdateLands, Callback and
 # D2A_IncomingChatString colour and mask immediates (0xff0000, 0xffff00, 0x600000, 0x7f8000, ...) are not pointers.
   - source: 0x006337BF
@@ -23,25 +58,6 @@ block_relocations:
   - source: 0x0063869F
   - source: 0x006386C8
   - source: 0x006388B8
-# RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
-  - source: 0x0061175A
-  - source: 0x00611CE0
-# ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
-  - source: 0x0072436D
-  - source: 0x00724711
-# Bubble::Draw's 0xffffff colour mask reads as an address inside NewCols, and Bubble::UpdateAndDraw's 0x7f7f7f
-# mask as one inside _chsize_lk.
-  - source: 0x0058B564
-  - source: 0x0058BE7B
-# VillagerName::Add's white 0xffffff and colour blend terms 0xff0000 and 0x7f8000 are immediates, not code pointers.
-  - source: 0x0077F030
-  - source: 0x0077F03B
-  - source: 0x0077F064
-# SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
-  - source: 0x0072CD83
-  - source: 0x0072CD89
-# "tMM" of LHFile's Version.cpp LH_VERSION_END_TAG reads as a pointer into code.
-  - source: 0x00C9F59C
 # MPFEChannelSelector::ControlCallback's and MPFECreateGame::ControlCallback's 0xe0e0e0 box colour is an
 # immediate, not a pointer.
   - source: 0x0063FC45
@@ -56,166 +72,6 @@ block_relocations:
   - source: 0x00641592
   - source: 0x006415A9
   - source: 0x006415AE
-# MPFELogin::ControlCallback's 0xe0e0e0 box colour is an immediate, not a pointer.
-  - source: 0x00646F50
-  - source: 0x00646F55
-  - source: 0x00646F6C
-  - source: 0x00646F71
-# libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in Creature Isle's larger image both read as pointers.
-  - source: 0x008CAAB0
-  - source: 0x00A16224
-# start_system's object heap size 0x1000000 is an immediate, not a pointer into NewCols.
-  - source: 0x00659747
-  - source: 0x00A16240
-  - source: 0x00A16244
-  - source: 0x00A16248
-  - source: 0x00A16260
-  - source: 0x00A1626C
-  - source: 0x00A16318
-# libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
-  - source: 0x008CA288
-# SpellDove::SetColor's 0xffffff colour mask reads as an address inside NewCols.
-  - source: 0x00420492
-# GLightSheet::Draw's 0xffffff colour mask reads as an address inside NewCols.
-  - source: 0x004258CD
-# RainCell::Draw's 0xffffff colour mask and LH3DAtmos::Render3D's 0x7f7f7f mask and bias are immediates, not
-# pointers into data or code.
-  - source: 0x008513FF
-  - source: 0x00853668
-  - source: 0x0085366E
-# LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
-  - source: 0x00828342
-# Abode::GetNewEp tests the 0x800000 flag, an address inside LHDraw::EmbossedBox24.
-  - source: 0x004036B4
-# LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside other code.
-  - source: 0x008357E6
-  - source: 0x00835801
-  - source: 0x0083599D
-# GSetup::MapCommandProcess's GAME_FLAG_STARTUP_ALLOW_SKIP (0x800000) and GAME_FLAG_STARTUP_FORCE_INTRO (0x1000000) are
-# immediates, not pointers into LHDraw::EmbossedBox24 and NewCols.
-  - source: 0x00730502
-  - source: 0x00730532
-# LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
-  - source: 0x00828CB7
-  - source: 0x008297F8
-  - source: 0x0082A976
-  - source: 0x0082D1CA
-  - source: 0x0082D334
-  - source: 0x0082D5C9
-  - source: 0x0082D5CF
-  - source: 0x0082D5EC
-  - source: 0x00830351
-  - source: 0x00830823
-  - source: 0x00830A95
-  - source: 0x00830A9B
-  - source: 0x00830ABE
-  - source: 0x00830DE2
-  - source: 0x008313BF
-  - source: 0x00832DB7
-  - source: 0x00833DF8
-  - source: 0x00835214
-  - source: 0x0083521A
-  - source: 0x00835237
-# The 0x00FF0000 channel masks in TextureRef::DrawCutAroundIntersectionPoint read as addresses inside NewCols.
-  - source: 0x00885F0E
-  - source: 0x00885F14
-  - source: 0x00885F56
-# A 0x009C009B in .data that reads as a pointer into the import lookup tables.
-  - source: 0x00CA46DC
-# Text in Creature3D.cpp's .data that reads as code addresses: "tic" of PhysicalActionNames' "StartStatic" and
-# "l3d" of "Data\eyelid.l3d".
-  - source: 0x00A4043C
-  - source: 0x00A40E28
-# Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate, like SetupColourPicker's.
-  - source: 0x00403357
-# WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
-  - source: 0x007F8C67
-  - source: 0x007F8CAD
-  - source: 0x007F9BD5
-  - source: 0x007FAFE9
-# SetupColourPicker's grey colour 0x808080 is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
-  - source: 0x00410A54
-# The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside LoadIt<GFurnitureInfo>.
-  - source: 0x00CA4164
-# GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874, inside Town::ProcessTownEmergency.
-# The script keyword "..._DEPTH" ends in "PTH\0", which reads as 0x00485450, inside LH3DCreature::StateSwitch.
-  - source: 0x00CA81D4
-# GatheringInterface: player colour 0xafefff and special user IDs 9999998..10000015 are immediates.
-  - source: 0x00588C79
-  - source: 0x00588C81
-  - source: 0x00588D2F
-  - source: 0x005890F8
-# UTF-16 text ("Pl", "pl", "tl", "dl") reads as 0x006C00xx, inside PSysProperties'
-# static ModifierCreate_UR_Trail; these words are not pointers.
-  - source: 0x00C59900
-  - source: 0x00C59924
-  - source: 0x00C5B2AC
-  - source: 0x00C9B08C
-  - source: 0x00C9B520
-# Import-name bytes "\0\0l\0" read as 0x006C0000, inside the static
-# ModifierCreate_UR_CreatureSpellCompassion.
-# Script strings whose tails read as .text addresses ("TON\0" ending IS_SKELETON reads as
-# 0x004E4F54): ScriptFind's "Not implemented", the command names after g_scriptFunctionTable
-# and ScriptGFX's model paths.
-  - source: 0x00C7DF2C
-  - source: 0x00C919DC
-  - source: 0x00C91E78
-  - source: 0x00C92634
-  - source: 0x00C92670
-  - source: 0x00C927BC
-  - source: 0x00C93264
-  - source: 0x00C932B4
-  - source: 0x00C9395C
-# MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
-  - source: 0x0061A588
-
-# BWGameSpy's L"Username already in use." and MPFEMessageObject's type descriptor name contain
-# words that read as code addresses; they are text, not pointers.
-  - source: 0x00A3D3AC
-
-# mbctype's code page table holds 0x005BA2E8, which reads as an address inside HelpDude::UpdateHoverZ.
-  - source: 0x00CA394C
-# HelpDude::Draw's evil smoke tint 0x7F1F1F is an immediate, not a pointer into LHDraw::ScaledSprite24.
-  - source: 0x005D6176
-
-# SetupBox's IME candidate list control ID 0x85b680 is an immediate, not a pointer into
-# LH3DPrimitive::DrawInShadowTnL.
-  - source: 0x004080C3
-  - source: 0x0040878D
-  - source: 0x0040C1FD
-  - source: 0x0040C28E
-  - source: 0x0040CCDB
-# LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
-  - source: 0x00856E05
-# LH3DTexture's DDBLT_WAIT (0x1000000) Blt flags are immediates; Creature Isle's larger image reads them as pointers.
-  - source: 0x00855492
-  - source: 0x00855590
-  - source: 0x0085560C
-  - source: 0x00855629
-  - source: 0x00855645
-  - source: 0x00855CD6
-  - source: 0x00855F82
-  - source: 0x00856289
-  - source: 0x0085649F
-  - source: 0x0085680D
-# LH3DTexture::Lock's memset fill 0x1010101 is an immediate.
-  - source: 0x00856508
-# Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
-  - source: 0x008D4998
-  - source: 0x00C9689C
-  - source: 0x00CA46BC
-# LH3DWater::g_color_water's initial 0x00FFFFFF reads as an address inside NewCols.
-  - source: 0x00CACEBC
-# The 0x00FF0000 channel masks in RenderParticleMist::DrawAt, Particle3DSprite::DrawAt and
-# RenderParticleGJMesh::DrawAt read as addresses inside NewCols.
-  - source: 0x0068F5DA
-  - source: 0x0068FEE9
-  - source: 0x0069107D
-  - source: 0x006912E6
-  - source: 0x0069153B
-  - source: 0x0069154F
-  - source: 0x00691767
-  - source: 0x00691781
 # MPFEFindGame::ControlCallback pushes the label colour 0xe0e0e0, not a pointer.
   - source: 0x00645C00
   - source: 0x00645C07
@@ -251,6 +107,150 @@ block_relocations:
   - source: 0x0088A578
   - source: 0x0088A6FB
   - source: 0x0088B238
+# MPFELogin::ControlCallback's 0xe0e0e0 box colour is an immediate, not a pointer.
+  - source: 0x00646F50
+  - source: 0x00646F55
+  - source: 0x00646F6C
+  - source: 0x00646F71
+# start_system's object heap size 0x1000000 is an immediate, not a pointer into NewCols.
+  - source: 0x00659747
+  - source: 0x00A16240
+  - source: 0x00A16244
+  - source: 0x00A16248
+  - source: 0x00A16260
+  - source: 0x00A1626C
+  - source: 0x00A16318
+# The 0x00FF0000 channel masks in RenderParticleMist::DrawAt, Particle3DSprite::DrawAt and
+# RenderParticleGJMesh::DrawAt read as addresses inside NewCols.
+  - source: 0x0068F5DA
+  - source: 0x0068FEE9
+  - source: 0x0069107D
+  - source: 0x006912E6
+  - source: 0x0069153B
+  - source: 0x0069154F
+  - source: 0x00691767
+  - source: 0x00691781
+# ScriptHighlight::Draw's 0x00FFFF00 and 0x00FFFFFF colours read as addresses inside NewCols.
+  - source: 0x0072436D
+  - source: 0x00724711
+# SecretCreature's TIMER_VALUE_KEY 0x00440041004E0044 is a pair of immediates, not pointers into code.
+  - source: 0x0072CD83
+  - source: 0x0072CD89
+# GSetup::MapCommandProcess's GAME_FLAG_STARTUP_ALLOW_SKIP (0x800000) and GAME_FLAG_STARTUP_FORCE_INTRO (0x1000000) are
+# immediates, not pointers into LHDraw::EmbossedBox24 and NewCols.
+  - source: 0x00730502
+  - source: 0x00730532
+# VillagerName::Add's white 0xffffff and colour blend terms 0xff0000 and 0x7f8000 are immediates, not code pointers.
+  - source: 0x0077F030
+  - source: 0x0077F03B
+  - source: 0x0077F064
+# WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
+  - source: 0x007F8C67
+  - source: 0x007F8CAD
+  - source: 0x007F9BD5
+  - source: 0x007FAFE9
+# LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
+  - source: 0x00828342
+# LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
+  - source: 0x00828CB7
+  - source: 0x008297F8
+  - source: 0x0082A976
+  - source: 0x0082D1CA
+  - source: 0x0082D334
+  - source: 0x0082D5C9
+  - source: 0x0082D5CF
+  - source: 0x0082D5EC
+  - source: 0x00830351
+  - source: 0x00830823
+  - source: 0x00830A95
+  - source: 0x00830A9B
+  - source: 0x00830ABE
+  - source: 0x00830DE2
+  - source: 0x008313BF
+  - source: 0x00832DB7
+  - source: 0x00833DF8
+  - source: 0x00835214
+  - source: 0x0083521A
+  - source: 0x00835237
+# LH3DMeshedObject::GetNewEP and HowManyNewEp test the 0x800000 flag, an address inside other code.
+  - source: 0x008357E6
+  - source: 0x00835801
+  - source: 0x0083599D
+# RainCell::Draw's 0xffffff colour mask and LH3DAtmos::Render3D's 0x7f7f7f mask and bias are immediates, not
+# pointers into data or code.
+  - source: 0x008513FF
+  - source: 0x00853668
+  - source: 0x0085366E
+# LH3DTexture's DDBLT_WAIT (0x1000000) Blt flags are immediates; Creature Isle's larger image reads them as pointers.
+  - source: 0x00855492
+  - source: 0x00855590
+  - source: 0x0085560C
+  - source: 0x00855629
+  - source: 0x00855645
+  - source: 0x00855CD6
+  - source: 0x00855F82
+  - source: 0x00856289
+  - source: 0x0085649F
+  - source: 0x0085680D
+# LH3DTexture::Lock's memset fill 0x1010101 is an immediate.
+  - source: 0x00856508
+# LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
+  - source: 0x00856E05
+# The 0x00FF0000 channel masks in TextureRef::DrawCutAroundIntersectionPoint read as addresses inside NewCols.
+  - source: 0x00885F0E
+  - source: 0x00885F14
+  - source: 0x00885F56
+# libjpeg rgb_ycc_start's CBCR_OFFSET + ONE_HALF-1 (0x807fff) is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
+  - source: 0x008CA288
+# libjpeg jcmaster validate_script's 0xffffff mask is an immediate, and the std_huff_tables bit counts are bytes; in Creature Isle's larger image both read as pointers.
+  - source: 0x008CAAB0
+  - source: 0x00A16224
+# Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
+  - source: 0x008D4998
+  - source: 0x00C9689C
+  - source: 0x00CA46BC
+# BWGameSpy's L"Username already in use." and MPFEMessageObject's type descriptor name contain
+# words that read as code addresses; they are text, not pointers.
+  - source: 0x00A3D3AC
+
+# Text in Creature3D.cpp's .data that reads as code addresses: "tic" of PhysicalActionNames' "StartStatic" and
+# "l3d" of "Data\eyelid.l3d".
+  - source: 0x00A4043C
+  - source: 0x00A40E28
+# UTF-16 text ("Pl", "pl", "tl", "dl") reads as 0x006C00xx, inside PSysProperties'
+# static ModifierCreate_UR_Trail; these words are not pointers.
+  - source: 0x00C59900
+  - source: 0x00C59924
+  - source: 0x00C5B2AC
+  - source: 0x00C9B08C
+  - source: 0x00C9B520
+# Import-name bytes "\0\0l\0" read as 0x006C0000, inside the static
+# ModifierCreate_UR_CreatureSpellCompassion.
+# Script strings whose tails read as .text addresses ("TON\0" ending IS_SKELETON reads as
+# 0x004E4F54): ScriptFind's "Not implemented", the command names after g_scriptFunctionTable
+# and ScriptGFX's model paths.
+  - source: 0x00C7DF2C
+  - source: 0x00C919DC
+  - source: 0x00C91E78
+  - source: 0x00C92634
+  - source: 0x00C92670
+  - source: 0x00C927BC
+  - source: 0x00C93264
+  - source: 0x00C932B4
+  - source: 0x00C9395C
+# "tMM" of LHFile's Version.cpp LH_VERSION_END_TAG reads as a pointer into code.
+  - source: 0x00C9F59C
+# mbctype's code page table holds 0x005BA2E8, which reads as an address inside HelpDude::UpdateHoverZ.
+  - source: 0x00CA394C
+# The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside LoadIt<GFurnitureInfo>.
+  - source: 0x00CA4164
+# A 0x009C009B in .data that reads as a pointer into the import lookup tables.
+  - source: 0x00CA46DC
+# GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874, inside Town::ProcessTownEmergency.
+# The script keyword "..._DEPTH" ends in "PTH\0", which reads as 0x00485450, inside LH3DCreature::StateSwitch.
+  - source: 0x00CA81D4
+# LH3DWater::g_color_water's initial 0x00FFFFFF reads as an address inside NewCols.
+  - source: 0x00CACEBC
 
 add_relocations:
 # GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.
@@ -258,6 +258,431 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GTribeInfo@@2PAV1@A'
     addend: 0x10C
+# GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
+  - source: 0x00405B01
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x10980
+  - source: 0x00409590
+    type: x86_abs32
+    target: '?ShadowColour@SetupThing@@2ULH3DColor@@A'
+  - source: 0x004095D4
+    type: x86_abs32
+    target: '?SelectedColour@SetupThing@@2ULH3DColor@@A'
+  - source: 0x00409607
+    type: x86_abs32
+    target: '?ShadowColour@SetupThing@@2ULH3DColor@@A'
+  - source: 0x00409634
+    type: x86_abs32
+    target: '?SelectedColour@SetupThing@@2ULH3DColor@@A'
+  - source: 0x00409714
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x178
+  - source: 0x00409718
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x286
+  - source: 0x0040971C
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x244
+  - source: 0x00409720
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x1BB
+  - source: 0x00409724
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x1BB
+# Audio's sound_effect_callback_function: the __except handler restores the SEH chain.
+  - source: 0x00428590
+    type: x86_abs32
+    target: '__except_list'
+# Balance: the info-array loops compare against each array's one-past-end, not the next unit's data.
+  - source: 0x0042C7C6
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xB0
+# BWGameSpy::Connect keeps a pointer one past the colon of ChatServer, inside the buffer.
+  - source: 0x00444626
+    type: x86_abs32
+    target: '?ChatServer@BWGameSpy@@2PADA'
+    addend: 0x1
+# CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
+  - source: 0x0046C4EC
+    type: x86_abs32
+    target: '?Objects@CarriedObject@@2PAPAVLH3DObject@@A'
+    addend: 0x40
+# MOV ESI is the end of GMobileObjectInfo::InfoList for its destructor loop, not g_MobileObjectCheckSum.
+# MOV ESI is the end of GContainerInfo::Definitions for its destructor loop, not ControlHand's data.
+  - source: 0x00475337
+    type: x86_abs32
+    target: '?Definitions@GContainerInfo@@2PAV1@A'
+    addend: 0x50
+# LH3DCreature::StateAction's jump table (dtk misses it): one entry per case block.
+  - source: 0x00492B1C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x49
+  - source: 0x00492B20
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x55
+  - source: 0x00492B24
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x61
+  - source: 0x00492B28
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x23E
+  - source: 0x00492B2C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x2EE
+  - source: 0x00492B30
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x337
+  - source: 0x00492B34
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x5AD
+  - source: 0x00492B38
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x8F9
+  - source: 0x00492B3C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x991
+  - source: 0x00492B40
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x991
+  - source: 0x00492B44
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x9AB
+  - source: 0x00492B48
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x9AB
+  - source: 0x00492B4C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA2F
+  - source: 0x00492B50
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA3B
+  - source: 0x00492B5C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA77
+  - source: 0x00492B64
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA47
+  - source: 0x00492B68
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA53
+  - source: 0x00492B74
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x37A
+  - source: 0x00492B78
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x8C4
+  - source: 0x00492B7C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA06
+  - source: 0x00492B80
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x93C
+# LH3DCreature::UpdateMotion's second jump table (dtk misses it).
+  - source: 0x0049E584
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x265
+  - source: 0x0049E588
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x274
+  - source: 0x0049E58C
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x2B3
+  - source: 0x0049E590
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x2C8
+  - source: 0x0049E594
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x2D8
+  - source: 0x0049E598
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x333
+  - source: 0x0049E59C
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x316
+# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
+  - source: 0x00542AF7
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x420
+# CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
+  - source: 0x005616CE
+    type: x86_abs32
+    target: '?PacketTimeHistory@GGame@@2PAHA'
+    addend: 0x28
+# HelpDude::ApplyLipSync's switch jump table follows a cmp/fstp/ja sequence that dtk does not trace, so neither
+# the table nor the case block it alone reaches (0x005BCF33) gets relocations.
+  - source: 0x005D2598
+    type: x86_abs32
+    target: '?ApplyLipSync@HelpDude@@QAEHMH@Z'
+    addend: 0x19C
+  - source: 0x005D259C
+    type: x86_abs32
+    target: '?ApplyLipSync@HelpDude@@QAEHMH@Z'
+    addend: 0x233
+  - source: 0x005D25A0
+    type: x86_abs32
+    target: '?ApplyLipSync@HelpDude@@QAEHMH@Z'
+    addend: 0x233
+  - source: 0x005D25A4
+    type: x86_abs32
+    target: '?ApplyLipSync@HelpDude@@QAEHMH@Z'
+    addend: 0x19C
+  - source: 0x005D2439
+    type: x86_abs32
+    target: '__real@4@00000000000000000000'
+  - source: 0x005D2461
+    type: x86_abs32
+    target: '__real@4@3fff8000000000000000'
+  - source: 0x005D24E6
+    type: x86_abs32
+    target: '__real@4@3fff8000000000000000'
+
+# HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
+  - source: 0x005DDFC2
+    type: x86_abs32
+    target: '_InterfaceMessageSets'
+    addend: 0x38
+# PCMain.cpp's start_system: the cmp against the end of CountryCodes (dtk leaves the immediate unrelocated).
+  - source: 0x00659964
+    type: x86_abs32
+    target: '?CountryCodes@@3PAY02DA'
+    addend: 0x2d
+# MOV ESI is the end of GPotInfo::InfoList for its destructor loop, not PowerSpin's data.
+  - source: 0x00681C47
+    type: x86_abs32
+    target: '?InfoList@GPotInfo@@2PAV1@A'
+    addend: 0x1858
+# istream::operator>>(unsigned long&) returns the address of its catch continuation.
+  - source: 0x006DBE2D
+    type: x86_abs32
+    target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
+    addend: 0x1A2
+# GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
+  - source: 0x00700E88
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5000
+  - source: 0x00701277
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5000
+# ScriptFunctions: string literals and dispatch-table entries dtk leaves as raw immediates.
+  - source: 0x0070F0B3
+    type: x86_abs32
+    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
+  - source: 0x0070F183
+    type: x86_abs32
+    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
+  - source: 0x0070F43E
+    type: x86_abs32
+    target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
+  - source: 0x0071050A
+    type: x86_abs32
+    target: '??_C@_0BG@KIOP@Thing?5no?5longer?5valid?$AA@'
+  - source: 0x00710645
+    type: x86_abs32
+    target: '??_C@_0BB@CNII@Thing?5not?5found?$CB?$AA@'
+
+# ScriptManage.cpp: the loops over VariableTable compare against the end of the array.
+  - source: 0x007276F2
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5000
+  - source: 0x007277A2
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5000
+  - source: 0x00727B5F
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5004
+  - source: 0x00727C58
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5004
+  - source: 0x00727D54
+    type: x86_abs32
+    target: '?VariableTable@ScriptManage@@2PAV1@A'
+    addend: 0x5004
+# CMP is the end of GMagicInfo::Infos for Town::SaveObject's loop over the town's magic types.
+  - source: 0x007586C8
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xB0
+# CMP is the end of GTownDesireInfo::InfoList for Town::CreateTownDesireFlags' loop.
+  - source: 0x0075A137
+    type: x86_abs32
+    target: '?InfoList@GTownDesireInfo@@2PAV1@A'
+    addend: 0x9C0
+# BWGameSpy::Think indexes Bans[NumBans - 1] from one element before the array.
+  - source: 0x0076C833
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x0076C87B
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x0076CA08
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x60
+  - source: 0x0077114A
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x30
+  - source: 0x007711BA
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x40
+  - source: 0x00772C27
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
+  - source: 0x00772CD9
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
+# memmove.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007DE334
+    type: x86_abs32
+    target: 'LeadUp1'
+  - source: 0x007DE338
+    type: x86_abs32
+    target: 'LeadUp2'
+  - source: 0x007DE33C
+    type: x86_abs32
+    target: 'LeadUp3'
+  - source: 0x007DE3AC
+    type: x86_abs32
+    target: 'UnwindUp0'
+  - source: 0x007DE3B0
+    type: x86_abs32
+    target: 'UnwindUp1'
+  - source: 0x007DE3B4
+    type: x86_abs32
+    target: 'UnwindUp2'
+  - source: 0x007DE3B8
+    type: x86_abs32
+    target: 'UnwindUp3'
+  - source: 0x007DE3BC
+    type: x86_abs32
+    target: 'UnwindUp4'
+  - source: 0x007DE3C0
+    type: x86_abs32
+    target: 'UnwindUp5'
+  - source: 0x007DE3C4
+    type: x86_abs32
+    target: 'UnwindUp6'
+  - source: 0x007DE3C8
+    type: x86_abs32
+    target: 'UnwindUp7'
+  - source: 0x007DE418
+    type: x86_abs32
+    target: 'TrailUp0'
+  - source: 0x007DE41C
+    type: x86_abs32
+    target: 'TrailUp1'
+  - source: 0x007DE420
+    type: x86_abs32
+    target: 'TrailUp2'
+  - source: 0x007DE424
+    type: x86_abs32
+    target: 'TrailUp3'
+  - source: 0x007DE4BC
+    type: x86_abs32
+    target: 'LeadDown1'
+  - source: 0x007DE4C0
+    type: x86_abs32
+    target: 'LeadDown2'
+  - source: 0x007DE4C4
+    type: x86_abs32
+    target: 'LeadDown3'
+  - source: 0x007DE544
+    type: x86_abs32
+    target: 'UnwindDown7'
+  - source: 0x007DE548
+    type: x86_abs32
+    target: 'UnwindDown6'
+  - source: 0x007DE54C
+    type: x86_abs32
+    target: 'UnwindDown5'
+  - source: 0x007DE550
+    type: x86_abs32
+    target: 'UnwindDown4'
+  - source: 0x007DE554
+    type: x86_abs32
+    target: 'UnwindDown3'
+  - source: 0x007DE558
+    type: x86_abs32
+    target: 'UnwindDown2'
+  - source: 0x007DE55C
+    type: x86_abs32
+    target: 'UnwindDown1'
+  - source: 0x007DE560
+    type: x86_abs32
+    target: 'UnwindDown0'
+  - source: 0x007DE5B0
+    type: x86_abs32
+    target: 'TrailDown0'
+  - source: 0x007DE5B4
+    type: x86_abs32
+    target: 'TrailDown1'
+  - source: 0x007DE5B8
+    type: x86_abs32
+    target: 'TrailDown2'
+  - source: 0x007DE5BC
+    type: x86_abs32
+    target: 'TrailDown3'
+# asin.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007DFE4F
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007DFEB5
+    type: x86_rel32
+    target: '__fast_exit'
+# acos.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x007E0171
+    type: x86_rel32
+    target: '__fast_exit'
+  - source: 0x007E01D5
+    type: x86_rel32
+    target: '__fast_exit'
 # pow.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x007E05A6
     type: x86_rel32
@@ -274,213 +699,6 @@ add_relocations:
   - source: 0x007E0725
     type: x86_abs32
     target: '__half'
-# acos.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x007E0171
-    type: x86_rel32
-    target: '__fast_exit'
-  - source: 0x007E01D5
-    type: x86_rel32
-    target: '__fast_exit'
-# asin.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x007DFE4F
-    type: x86_rel32
-    target: '__fast_exit'
-  - source: 0x007DFEB5
-    type: x86_rel32
-    target: '__fast_exit'
-# adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x00CA378E
-    type: x86_abs32
-    target: 'label0'
-  - source: 0x00CA3792
-    type: x86_abs32
-    target: 'label1'
-  - source: 0x00CA3796
-    type: x86_abs32
-    target: 'label2'
-  - source: 0x00CA379A
-    type: x86_abs32
-    target: 'label3'
-  - source: 0x00CA379E
-    type: x86_abs32
-    target: 'label4'
-  - source: 0x00CA37A2
-    type: x86_abs32
-    target: 'label5'
-  - source: 0x00CA37A6
-    type: x86_abs32
-    target: 'label6'
-  - source: 0x00CA37AA
-    type: x86_abs32
-    target: 'label7'
-  - source: 0x00CA37AE
-    type: x86_abs32
-    target: 'label8'
-  - source: 0x00CA37B2
-    type: x86_abs32
-    target: 'label9'
-  - source: 0x00CA37B6
-    type: x86_abs32
-    target: 'label10'
-  - source: 0x00CA37BA
-    type: x86_abs32
-    target: 'label11'
-  - source: 0x00CA37BE
-    type: x86_abs32
-    target: 'label12'
-  - source: 0x00CA37C2
-    type: x86_abs32
-    target: 'label13'
-  - source: 0x00CA37C6
-    type: x86_abs32
-    target: 'label14'
-  - source: 0x00CA37CA
-    type: x86_abs32
-    target: 'label15'
-  - source: 0x00CA37CE
-    type: x86_abs32
-    target: 'label16'
-  - source: 0x00CA37D2
-    type: x86_abs32
-    target: 'label17'
-  - source: 0x00CA37D6
-    type: x86_abs32
-    target: 'label18'
-  - source: 0x00CA37DA
-    type: x86_abs32
-    target: 'label19'
-  - source: 0x00CA37DE
-    type: x86_abs32
-    target: 'label20'
-  - source: 0x00CA37E2
-    type: x86_abs32
-    target: 'label21'
-  - source: 0x00CA37E6
-    type: x86_abs32
-    target: 'label22'
-  - source: 0x00CA37EA
-    type: x86_abs32
-    target: 'label23'
-  - source: 0x00CA37EE
-    type: x86_abs32
-    target: 'label24'
-  - source: 0x00CA37F2
-    type: x86_abs32
-    target: 'label25'
-  - source: 0x00CA37F6
-    type: x86_abs32
-    target: 'label26'
-  - source: 0x00CA37FA
-    type: x86_abs32
-    target: 'label27'
-  - source: 0x00CA37FE
-    type: x86_abs32
-    target: 'label28'
-  - source: 0x00CA3802
-    type: x86_abs32
-    target: 'label29'
-  - source: 0x00CA3806
-    type: x86_abs32
-    target: 'label30'
-  - source: 0x00CA380A
-    type: x86_abs32
-    target: 'label31'
-  - source: 0x00CA380E
-    type: x86_abs32
-    target: 'label32'
-  - source: 0x00CA3812
-    type: x86_abs32
-    target: 'label33'
-  - source: 0x00CA3816
-    type: x86_abs32
-    target: 'label34'
-  - source: 0x00CA381A
-    type: x86_abs32
-    target: 'label35'
-  - source: 0x00CA381E
-    type: x86_abs32
-    target: 'label36'
-  - source: 0x00CA3822
-    type: x86_abs32
-    target: 'label37'
-  - source: 0x00CA3826
-    type: x86_abs32
-    target: 'label38'
-  - source: 0x00CA382A
-    type: x86_abs32
-    target: 'label39'
-  - source: 0x00CA382E
-    type: x86_abs32
-    target: 'label40'
-  - source: 0x00CA3832
-    type: x86_abs32
-    target: 'label41'
-  - source: 0x00CA3836
-    type: x86_abs32
-    target: 'label42'
-  - source: 0x00CA383A
-    type: x86_abs32
-    target: 'label43'
-  - source: 0x00CA383E
-    type: x86_abs32
-    target: 'label44'
-  - source: 0x00CA3842
-    type: x86_abs32
-    target: 'label45'
-  - source: 0x00CA3846
-    type: x86_abs32
-    target: 'label46'
-  - source: 0x00CA384A
-    type: x86_abs32
-    target: 'label47'
-  - source: 0x00CA384E
-    type: x86_abs32
-    target: 'label48'
-  - source: 0x00CA3852
-    type: x86_abs32
-    target: 'label49'
-  - source: 0x00CA3856
-    type: x86_abs32
-    target: 'label50'
-  - source: 0x00CA385A
-    type: x86_abs32
-    target: 'label51'
-  - source: 0x00CA385E
-    type: x86_abs32
-    target: 'label52'
-  - source: 0x00CA3862
-    type: x86_abs32
-    target: 'label53'
-  - source: 0x00CA3866
-    type: x86_abs32
-    target: 'label54'
-  - source: 0x00CA386A
-    type: x86_abs32
-    target: 'label55'
-  - source: 0x00CA386E
-    type: x86_abs32
-    target: 'label56'
-  - source: 0x00CA3872
-    type: x86_abs32
-    target: 'label57'
-  - source: 0x00CA3876
-    type: x86_abs32
-    target: 'label58'
-  - source: 0x00CA387A
-    type: x86_abs32
-    target: 'label59'
-  - source: 0x00CA387E
-    type: x86_abs32
-    target: 'label60'
-  - source: 0x00CA3882
-    type: x86_abs32
-    target: 'label61'
-  - source: 0x00CA3886
-    type: x86_abs32
-    target: 'label62'
-  - source: 0x00CA388A
-    type: x86_abs32
-    target: 'label63'
 # woutput.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x007E640A
     type: x86_rel32
@@ -597,97 +815,12 @@ add_relocations:
     type: x86_abs32
     target: '__woutput'
     addend: 0x1b7
-# memmove.obj: references the object relocates but dtk leaves unrelocated.
-  - source: 0x007DE334
+# UnDecorator::getOperatorName indexes nameTable by the operator character from '2',
+# so dtk reads the folded base (nameTable - '2' * 4) as msize's scope table.
+  - source: 0x007E98D8
     type: x86_abs32
-    target: 'LeadUp1'
-  - source: 0x007DE338
-    type: x86_abs32
-    target: 'LeadUp2'
-  - source: 0x007DE33C
-    type: x86_abs32
-    target: 'LeadUp3'
-  - source: 0x007DE3AC
-    type: x86_abs32
-    target: 'UnwindUp0'
-  - source: 0x007DE3B0
-    type: x86_abs32
-    target: 'UnwindUp1'
-  - source: 0x007DE3B4
-    type: x86_abs32
-    target: 'UnwindUp2'
-  - source: 0x007DE3B8
-    type: x86_abs32
-    target: 'UnwindUp3'
-  - source: 0x007DE3BC
-    type: x86_abs32
-    target: 'UnwindUp4'
-  - source: 0x007DE3C0
-    type: x86_abs32
-    target: 'UnwindUp5'
-  - source: 0x007DE3C4
-    type: x86_abs32
-    target: 'UnwindUp6'
-  - source: 0x007DE3C8
-    type: x86_abs32
-    target: 'UnwindUp7'
-  - source: 0x007DE418
-    type: x86_abs32
-    target: 'TrailUp0'
-  - source: 0x007DE41C
-    type: x86_abs32
-    target: 'TrailUp1'
-  - source: 0x007DE420
-    type: x86_abs32
-    target: 'TrailUp2'
-  - source: 0x007DE424
-    type: x86_abs32
-    target: 'TrailUp3'
-  - source: 0x007DE4BC
-    type: x86_abs32
-    target: 'LeadDown1'
-  - source: 0x007DE4C0
-    type: x86_abs32
-    target: 'LeadDown2'
-  - source: 0x007DE4C4
-    type: x86_abs32
-    target: 'LeadDown3'
-  - source: 0x007DE544
-    type: x86_abs32
-    target: 'UnwindDown7'
-  - source: 0x007DE548
-    type: x86_abs32
-    target: 'UnwindDown6'
-  - source: 0x007DE54C
-    type: x86_abs32
-    target: 'UnwindDown5'
-  - source: 0x007DE550
-    type: x86_abs32
-    target: 'UnwindDown4'
-  - source: 0x007DE554
-    type: x86_abs32
-    target: 'UnwindDown3'
-  - source: 0x007DE558
-    type: x86_abs32
-    target: 'UnwindDown2'
-  - source: 0x007DE55C
-    type: x86_abs32
-    target: 'UnwindDown1'
-  - source: 0x007DE560
-    type: x86_abs32
-    target: 'UnwindDown0'
-  - source: 0x007DE5B0
-    type: x86_abs32
-    target: 'TrailDown0'
-  - source: 0x007DE5B4
-    type: x86_abs32
-    target: 'TrailDown1'
-  - source: 0x007DE5B8
-    type: x86_abs32
-    target: 'TrailDown2'
-  - source: 0x007DE5BC
-    type: x86_abs32
-    target: 'TrailDown3'
+    target: 'nameTable'
+    addend: -0xC8
 # mbctype.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x007F1BC9
     type: x86_abs32
@@ -697,407 +830,6 @@ add_relocations:
     type: x86_abs32
     target: '___rgcode_page_info'
     addend: 0x4
-# GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
-  - source: 0x00700E88
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x5000
-  - source: 0x00701277
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x5000
-# ScriptManage.cpp: the loops over VariableTable compare against the end of the array.
-  - source: 0x007276F2
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x5000
-  - source: 0x007277A2
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x5000
-  - source: 0x00727B5F
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x5004
-  - source: 0x00727C58
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x5004
-  - source: 0x00727D54
-    type: x86_abs32
-    target: '?VariableTable@ScriptManage@@2PAV1@A'
-    addend: 0x5004
-# HelpSystem::ProcessInterfaceMessageSets compares against the end of InterfaceMessageSets, which is the start of the next table.
-  - source: 0x005DDFC2
-    type: x86_abs32
-    target: '_InterfaceMessageSets'
-    addend: 0x38
-# SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
-# the lea displacement unrelocated).
-  - source: 0x008A05D1
-    type: x86_abs32
-    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
-  - source: 0x008A05FC
-    type: x86_abs32
-    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
-  - source: 0x008A061F
-    type: x86_abs32
-    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
-  - source: 0x008A1715
-    type: x86_abs32
-    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
-  - source: 0x008A1740
-    type: x86_abs32
-    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
-  - source: 0x008A1763
-    type: x86_abs32
-    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
-# libjpeg jddctmgr start_pass: the end of aanscalefactor (dtk leaves the loop bound unrelocated).
-  - source: 0x008C2E40
-    type: x86_abs32
-    target: '_?aanscalefactor@?L@??start_pass@@9@9'
-    addend: 0x40
-  - source: 0x008C2E53
-    type: x86_abs32
-    target: '_?aanscalefactor@?L@??start_pass@@9@9'
-    addend: 0x40
-# libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
-  - source: 0x008CA150
-    type: x86_abs32
-    target: '_rgb_ycc_start'
-  - source: 0x008CA157
-    type: x86_abs32
-    target: '_rgb_ycc_convert'
-  - source: 0x008CA1CC
-    type: x86_abs32
-    target: '_rgb_ycc_start'
-  - source: 0x008CA1D3
-    type: x86_abs32
-    target: '_cmyk_ycck_convert'
-  - source: 0x008CA220
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x36
-  - source: 0x008CA224
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x3e
-  - source: 0x008CA228
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x3e
-  - source: 0x008CA22C
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x54
-  - source: 0x008CA230
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x54
-  - source: 0x008CA234
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x95
-  - source: 0x008CA238
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0xe9
-  - source: 0x008CA23C
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x11f
-  - source: 0x008CA240
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x16d
-  - source: 0x008CA244
-    type: x86_abs32
-    target: '_jinit_color_converter'
-    addend: 0x19d
-# Audio's sound_effect_callback_function: the __except handler restores the SEH chain.
-  - source: 0x00428590
-    type: x86_abs32
-    target: '__except_list'
-# LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
-  - source: 0x0084D2B3
-    type: x86_abs32
-    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
-    addend: 0x30
-  - source: 0x0084D2EC
-    type: x86_abs32
-    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
-    addend: 0x30
-  - source: 0x0084D32C
-    type: x86_abs32
-    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
-    addend: 0x30
-# LH3DRender::Close2TexStuff and ResetAllState: loop bounds one past the end of an array.
-  - source: 0x008499D5
-    type: x86_abs32
-    target: '?g_stateblock2tex@LH3DRender@@2PAULH3DStateBlock2Tex@@A'
-    addend: 0x40
-  - source: 0x00849D03
-    type: x86_abs32
-    target: '?g_original_render_states@@3PAIA'
-    addend: 0x400
-# LH3DRender::FinishFrame: loop bounds one past the end of an array (dtk reads them as the next symbol).
-  - source: 0x0084C979
-    type: x86_abs32
-    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
-    addend: 0x88
-  - source: 0x0084C9FC
-    type: x86_abs32
-    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
-    addend: 0x88
-  - source: 0x0084CB34
-    type: x86_abs32
-    target: '?cache@FontCache@@2PAUCacheEntry@@A'
-    addend: 0x4000
-  - source: 0x0084CB75
-    type: x86_abs32
-    target: '?page@FontCache@@2PAUCachePage@@A'
-    addend: 0x4B9
-# UnDecorator::getOperatorName indexes nameTable by the operator character from '2',
-# so dtk reads the folded base (nameTable - '2' * 4) as msize's scope table.
-  - source: 0x007E98D8
-    type: x86_abs32
-    target: 'nameTable'
-    addend: -0xC8
-# CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
-  - source: 0x0046C4EC
-    type: x86_abs32
-    target: '?Objects@CarriedObject@@2PAPAVLH3DObject@@A'
-    addend: 0x40
-# LH3DCreature::StateAction's jump table (dtk misses it): one entry per case block.
-  - source: 0x00492B1C
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x49
-  - source: 0x00492B20
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x55
-  - source: 0x00492B24
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x61
-  - source: 0x00492B28
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x23E
-  - source: 0x00492B2C
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x2EE
-  - source: 0x00492B30
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x337
-  - source: 0x00492B34
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x5AD
-  - source: 0x00492B38
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x8F9
-  - source: 0x00492B3C
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x991
-  - source: 0x00492B40
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x991
-  - source: 0x00492B44
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x9AB
-  - source: 0x00492B48
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x9AB
-  - source: 0x00492B4C
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0xA2F
-  - source: 0x00492B50
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0xA3B
-  - source: 0x00492B5C
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0xA77
-  - source: 0x00492B64
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0xA47
-  - source: 0x00492B68
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0xA53
-  - source: 0x00492B74
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x37A
-  - source: 0x00492B78
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x8C4
-  - source: 0x00492B7C
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0xA06
-  - source: 0x00492B80
-    type: x86_abs32
-    target: '?StateAction@LH3DCreature@@QAEXXZ'
-    addend: 0x93C
-# LH3DCreature::UpdateMotion's second jump table (dtk misses it).
-  - source: 0x0049E584
-    type: x86_abs32
-    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
-    addend: 0x265
-  - source: 0x0049E588
-    type: x86_abs32
-    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
-    addend: 0x274
-  - source: 0x0049E58C
-    type: x86_abs32
-    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
-    addend: 0x2B3
-  - source: 0x0049E590
-    type: x86_abs32
-    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
-    addend: 0x2C8
-  - source: 0x0049E594
-    type: x86_abs32
-    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
-    addend: 0x2D8
-  - source: 0x0049E598
-    type: x86_abs32
-    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
-    addend: 0x333
-  - source: 0x0049E59C
-    type: x86_abs32
-    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
-    addend: 0x316
-# The catch handler in the istream exception table is inside operator>>(unsigned long&).
-  - source: 0x00A2CDD4
-    type: x86_abs32
-    target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
-    addend: 0x177
-# istream::operator>>(unsigned long&) EH funclet: mov eax, <its exception-state table>.
-  - source: 0x008D1621
-    type: x86_abs32
-    target: '$T99795'
-# istream::operator>>(unsigned long&) returns the address of its catch continuation.
-  - source: 0x006DBE2D
-    type: x86_abs32
-    target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
-    addend: 0x1A2
-# GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
-  - source: 0x00405B01
-    type: x86_abs32
-    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
-    addend: 0x10980
-  - source: 0x00409590
-    type: x86_abs32
-    target: '?ShadowColour@SetupThing@@2ULH3DColor@@A'
-  - source: 0x004095D4
-    type: x86_abs32
-    target: '?SelectedColour@SetupThing@@2ULH3DColor@@A'
-  - source: 0x00409607
-    type: x86_abs32
-    target: '?ShadowColour@SetupThing@@2ULH3DColor@@A'
-  - source: 0x00409634
-    type: x86_abs32
-    target: '?SelectedColour@SetupThing@@2ULH3DColor@@A'
-  - source: 0x00409714
-    type: x86_abs32
-    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
-    addend: 0x178
-  - source: 0x00409718
-    type: x86_abs32
-    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
-    addend: 0x286
-  - source: 0x0040971C
-    type: x86_abs32
-    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
-    addend: 0x244
-  - source: 0x00409720
-    type: x86_abs32
-    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
-    addend: 0x1BB
-  - source: 0x00409724
-    type: x86_abs32
-    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
-    addend: 0x1BB
-# CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
-  - source: 0x005616CE
-    type: x86_abs32
-    target: '?PacketTimeHistory@GGame@@2PAHA'
-    addend: 0x28
-# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
-  - source: 0x00542AF7
-    type: x86_abs32
-    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
-    addend: 0x420
-# MOV ESI is the end of GMobileObjectInfo::InfoList for its destructor loop, not g_MobileObjectCheckSum.
-# MOV ESI is the end of GContainerInfo::Definitions for its destructor loop, not ControlHand's data.
-  - source: 0x00475337
-    type: x86_abs32
-    target: '?Definitions@GContainerInfo@@2PAV1@A'
-    addend: 0x50
-# CMP is the end of GMagicInfo::Infos for Town::SaveObject's loop over the town's magic types.
-  - source: 0x007586C8
-    type: x86_abs32
-    target: '?Infos@GMagicInfo@@2PAPAV1@A'
-    addend: 0xB0
-# CMP is the end of GTownDesireInfo::InfoList for Town::CreateTownDesireFlags' loop.
-  - source: 0x0075A137
-    type: x86_abs32
-    target: '?InfoList@GTownDesireInfo@@2PAV1@A'
-    addend: 0x9C0
-# Balance: the info-array loops compare against each array's one-past-end, not the next unit's data.
-  - source: 0x0042C7C6
-    type: x86_abs32
-    target: '?Infos@GMagicInfo@@2PAPAV1@A'
-    addend: 0xB0
-# BWGameSpy::Connect keeps a pointer one past the colon of ChatServer, inside the buffer.
-  - source: 0x00444626
-    type: x86_abs32
-    target: '?ChatServer@BWGameSpy@@2PADA'
-    addend: 0x1
-# BWGameSpy::Think indexes Bans[NumBans - 1] from one element before the array.
-  - source: 0x0076C833
-    type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x80
-  - source: 0x0076C87B
-    type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x80
-  - source: 0x0076CA08
-    type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x60
-  - source: 0x0077114A
-    type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x30
-  - source: 0x007711BA
-    type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x40
-  - source: 0x00772C27
-    type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x70
-  - source: 0x00772CD9
-    type: x86_abs32
-    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
-    addend: 0x70
 # BackgroundBox::AddBox addresses g_list_boxes[i].Region (dtk leaves the displacement unrelocated).
   - source: 0x0083B571
     type: x86_abs32
@@ -1217,51 +949,143 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GMobileStaticInfo@@2PAV1@A'
 
-# ScriptFunctions: string literals and dispatch-table entries dtk leaves as raw immediates.
-  - source: 0x0070F0B3
+# LH3DRender::Close2TexStuff and ResetAllState: loop bounds one past the end of an array.
+  - source: 0x008499D5
     type: x86_abs32
-    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
-  - source: 0x0070F183
+    target: '?g_stateblock2tex@LH3DRender@@2PAULH3DStateBlock2Tex@@A'
+    addend: 0x40
+  - source: 0x00849D03
     type: x86_abs32
-    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
-  - source: 0x0070F43E
+    target: '?g_original_render_states@@3PAIA'
+    addend: 0x400
+# LH3DRender::FinishFrame: loop bounds one past the end of an array (dtk reads them as the next symbol).
+  - source: 0x0084C979
     type: x86_abs32
-    target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
-  - source: 0x0071050A
+    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
+    addend: 0x88
+  - source: 0x0084C9FC
     type: x86_abs32
-    target: '??_C@_0BG@KIOP@Thing?5no?5longer?5valid?$AA@'
-  - source: 0x00710645
+    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
+    addend: 0x88
+  - source: 0x0084CB34
     type: x86_abs32
-    target: '??_C@_0BB@CNII@Thing?5not?5found?$CB?$AA@'
+    target: '?cache@FontCache@@2PAUCacheEntry@@A'
+    addend: 0x4000
+  - source: 0x0084CB75
+    type: x86_abs32
+    target: '?page@FontCache@@2PAUCachePage@@A'
+    addend: 0x4B9
+# LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
+  - source: 0x0084D2B3
+    type: x86_abs32
+    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    addend: 0x30
+  - source: 0x0084D2EC
+    type: x86_abs32
+    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    addend: 0x30
+  - source: 0x0084D32C
+    type: x86_abs32
+    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    addend: 0x30
+# LH3DPrimitive::CalcFogTable's loop compares against the end of g_fog_table, not g_vertex_inside_triangle.
+  - source: 0x00868024
+    type: x86_abs32
+    target: '?g_fog_table@LH3DPrimitive@@2PAY01KA'
+    addend: 0x2000
 
-# HelpDude::ApplyLipSync's switch jump table follows a cmp/fstp/ja sequence that dtk does not trace, so neither
-# the table nor the case block it alone reaches (0x005BCF33) gets relocations.
-  - source: 0x005D2598
+  - source: 0x00889EF7
+    type: x86_rel32
+    target: '?Set@LHMatrix@@QAIXABU1@@Z'
+  - source: 0x00888E0B
     type: x86_abs32
-    target: '?ApplyLipSync@HelpDude@@QAEHMH@Z'
-    addend: 0x19C
-  - source: 0x005D259C
+    target: '__real@4@4002c000000000000000'
+  - source: 0x0088894F
     type: x86_abs32
-    target: '?ApplyLipSync@HelpDude@@QAEHMH@Z'
-    addend: 0x233
-  - source: 0x005D25A0
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x008889E2
     type: x86_abs32
-    target: '?ApplyLipSync@HelpDude@@QAEHMH@Z'
-    addend: 0x233
-  - source: 0x005D25A4
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x008897D5
     type: x86_abs32
-    target: '?ApplyLipSync@HelpDude@@QAEHMH@Z'
-    addend: 0x19C
-  - source: 0x005D2439
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x00889800
     type: x86_abs32
-    target: '__real@4@00000000000000000000'
-  - source: 0x005D2461
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x0088A9B7
     type: x86_abs32
-    target: '__real@4@3fff8000000000000000'
-  - source: 0x005D24E6
+    target: '?sky_texture@@3PAPAULH3DTexture@@A'
+    addend: 0xC
+  - source: 0x00888E2C
     type: x86_abs32
-    target: '__real@4@3fff8000000000000000'
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD3
+  - source: 0x00888E30
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD9
+  - source: 0x00888E34
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xE9
+  - source: 0x00888E38
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xF9
+  - source: 0x00888E3C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0x109
 
+  - source: 0x00888A85
+    type: x86_abs32
+    target: '__real@4@3ff6a3d70a0000000000'
+  - source: 0x00888ACD
+    type: x86_abs32
+    target: '__real@4@3ff6a3d70a0000000000'
+  - source: 0x00888BA3
+    type: x86_abs32
+    target: '__real@4@3ffb8888888888888800'
+  - source: 0x00889092
+    type: x86_abs32
+    target: '__real@8@3ff9f5c28f0000000000'
+  - source: 0x0088912F
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x0088A06F
+    type: x86_abs32
+    target: '__real@4@4005dc00000000000000'
+  - source: 0x0088A1E5
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+  - source: 0x0088A827
+    type: x86_rel32
+    target: '?UseBlendedSkyTextures@@YA_NXZ'
+
+  - source: 0x0088989D
+    type: x86_abs32
+    target: '__real@8@3ffa8ab41e3304e97800'
+  - source: 0x0088B116
+    type: x86_abs32
+    target: '__real@4@4005aa00000000000000'
+  - source: 0x0088B137
+    type: x86_abs32
+    target: '__real@4@4003a800000000000000'
+  - source: 0x0088B14E
+    type: x86_abs32
+    target: '__real@4@400bea60000000000000'
+  - source: 0x0088B160
+    type: x86_abs32
+    target: '__real@4@4005aa00000000000000'
+  - source: 0x0088B172
+    type: x86_abs32
+    target: '__real@4@400bea60000000000000'
+  - source: 0x00889F3D
+    type: x86_abs32
+    target: '__real@4@bffc860a920000000000'
 # LH3DPrimitive: dtk leaves LEA displacements into the transformed vertex cache (LH3DTech::g_cache_t_points) as raw
 # immediates.
   - source: 0x0086837D
@@ -1502,114 +1326,290 @@ add_relocations:
     type: x86_abs32
     target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
 
-# LH3DPrimitive::CalcFogTable's loop compares against the end of g_fog_table, not g_vertex_inside_triangle.
-  - source: 0x00868024
+# SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
+# the lea displacement unrelocated).
+  - source: 0x008A05D1
     type: x86_abs32
-    target: '?g_fog_table@LH3DPrimitive@@2PAY01KA'
-    addend: 0x2000
-
-  - source: 0x00889EF7
-    type: x86_rel32
-    target: '?Set@LHMatrix@@QAIXABU1@@Z'
-  - source: 0x00888E0B
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A05FC
     type: x86_abs32
-    target: '__real@4@4002c000000000000000'
-  - source: 0x0088894F
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A061F
     type: x86_abs32
-    target: '?g_darkness_to_color@LandCell@@2PAKA'
-    addend: 0x400
-  - source: 0x008889E2
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A1715
     type: x86_abs32
-    target: '?g_darkness_to_color@LandCell@@2PAKA'
-    addend: 0x400
-  - source: 0x008897D5
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A1740
     type: x86_abs32
-    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
-  - source: 0x00889800
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008A1763
     type: x86_abs32
-    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
-    addend: 0x28
-  - source: 0x0088A9B7
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+# libjpeg jddctmgr start_pass: the end of aanscalefactor (dtk leaves the loop bound unrelocated).
+  - source: 0x008C2E40
     type: x86_abs32
-    target: '?sky_texture@@3PAPAULH3DTexture@@A'
-    addend: 0xC
-  - source: 0x00888E2C
+    target: '_?aanscalefactor@?L@??start_pass@@9@9'
+    addend: 0x40
+  - source: 0x008C2E53
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0xD3
-  - source: 0x00888E30
+    target: '_?aanscalefactor@?L@??start_pass@@9@9'
+    addend: 0x40
+# libjpeg jinit_color_converter: the in_color_space jump table and the forward method pointers (dtk leaves them unrelocated).
+  - source: 0x008CA150
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0xD9
-  - source: 0x00888E34
+    target: '_rgb_ycc_start'
+  - source: 0x008CA157
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0xE9
-  - source: 0x00888E38
+    target: '_rgb_ycc_convert'
+  - source: 0x008CA1CC
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0xF9
-  - source: 0x00888E3C
+    target: '_rgb_ycc_start'
+  - source: 0x008CA1D3
     type: x86_abs32
-    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
-    addend: 0x109
-
-  - source: 0x00888A85
+    target: '_cmyk_ycck_convert'
+  - source: 0x008CA220
     type: x86_abs32
-    target: '__real@4@3ff6a3d70a0000000000'
-  - source: 0x00888ACD
+    target: '_jinit_color_converter'
+    addend: 0x36
+  - source: 0x008CA224
     type: x86_abs32
-    target: '__real@4@3ff6a3d70a0000000000'
-  - source: 0x00888BA3
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x008CA228
     type: x86_abs32
-    target: '__real@4@3ffb8888888888888800'
-  - source: 0x00889092
+    target: '_jinit_color_converter'
+    addend: 0x3e
+  - source: 0x008CA22C
     type: x86_abs32
-    target: '__real@8@3ff9f5c28f0000000000'
-  - source: 0x0088912F
-    type: x86_rel32
-    target: '?UseBlendedSkyTextures@@YA_NXZ'
-  - source: 0x0088A06F
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x008CA230
     type: x86_abs32
-    target: '__real@4@4005dc00000000000000'
-  - source: 0x0088A1E5
-    type: x86_rel32
-    target: '?UseBlendedSkyTextures@@YA_NXZ'
-  - source: 0x0088A827
-    type: x86_rel32
-    target: '?UseBlendedSkyTextures@@YA_NXZ'
-
-  - source: 0x0088989D
+    target: '_jinit_color_converter'
+    addend: 0x54
+  - source: 0x008CA234
     type: x86_abs32
-    target: '__real@8@3ffa8ab41e3304e97800'
-  - source: 0x0088B116
+    target: '_jinit_color_converter'
+    addend: 0x95
+  - source: 0x008CA238
     type: x86_abs32
-    target: '__real@4@4005aa00000000000000'
-  - source: 0x0088B137
+    target: '_jinit_color_converter'
+    addend: 0xe9
+  - source: 0x008CA23C
     type: x86_abs32
-    target: '__real@4@4003a800000000000000'
-  - source: 0x0088B14E
+    target: '_jinit_color_converter'
+    addend: 0x11f
+  - source: 0x008CA240
     type: x86_abs32
-    target: '__real@4@400bea60000000000000'
-  - source: 0x0088B160
+    target: '_jinit_color_converter'
+    addend: 0x16d
+  - source: 0x008CA244
     type: x86_abs32
-    target: '__real@4@4005aa00000000000000'
-  - source: 0x0088B172
+    target: '_jinit_color_converter'
+    addend: 0x19d
+# istream::operator>>(unsigned long&) EH funclet: mov eax, <its exception-state table>.
+  - source: 0x008D1621
     type: x86_abs32
-    target: '__real@4@400bea60000000000000'
-  - source: 0x00889F3D
+    target: '$T99795'
+# The catch handler in the istream exception table is inside operator>>(unsigned long&).
+  - source: 0x00A2CDD4
     type: x86_abs32
-    target: '__real@4@bffc860a920000000000'
-# PCMain.cpp's start_system: the cmp against the end of CountryCodes (dtk leaves the immediate unrelocated).
-  - source: 0x00659964
+    target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
+    addend: 0x177
+# adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
+  - source: 0x00CA378E
     type: x86_abs32
-    target: '?CountryCodes@@3PAY02DA'
-    addend: 0x2d
-# MOV ESI is the end of GPotInfo::InfoList for its destructor loop, not PowerSpin's data.
-  - source: 0x00681C47
+    target: 'label0'
+  - source: 0x00CA3792
     type: x86_abs32
-    target: '?InfoList@GPotInfo@@2PAV1@A'
-    addend: 0x1858
+    target: 'label1'
+  - source: 0x00CA3796
+    type: x86_abs32
+    target: 'label2'
+  - source: 0x00CA379A
+    type: x86_abs32
+    target: 'label3'
+  - source: 0x00CA379E
+    type: x86_abs32
+    target: 'label4'
+  - source: 0x00CA37A2
+    type: x86_abs32
+    target: 'label5'
+  - source: 0x00CA37A6
+    type: x86_abs32
+    target: 'label6'
+  - source: 0x00CA37AA
+    type: x86_abs32
+    target: 'label7'
+  - source: 0x00CA37AE
+    type: x86_abs32
+    target: 'label8'
+  - source: 0x00CA37B2
+    type: x86_abs32
+    target: 'label9'
+  - source: 0x00CA37B6
+    type: x86_abs32
+    target: 'label10'
+  - source: 0x00CA37BA
+    type: x86_abs32
+    target: 'label11'
+  - source: 0x00CA37BE
+    type: x86_abs32
+    target: 'label12'
+  - source: 0x00CA37C2
+    type: x86_abs32
+    target: 'label13'
+  - source: 0x00CA37C6
+    type: x86_abs32
+    target: 'label14'
+  - source: 0x00CA37CA
+    type: x86_abs32
+    target: 'label15'
+  - source: 0x00CA37CE
+    type: x86_abs32
+    target: 'label16'
+  - source: 0x00CA37D2
+    type: x86_abs32
+    target: 'label17'
+  - source: 0x00CA37D6
+    type: x86_abs32
+    target: 'label18'
+  - source: 0x00CA37DA
+    type: x86_abs32
+    target: 'label19'
+  - source: 0x00CA37DE
+    type: x86_abs32
+    target: 'label20'
+  - source: 0x00CA37E2
+    type: x86_abs32
+    target: 'label21'
+  - source: 0x00CA37E6
+    type: x86_abs32
+    target: 'label22'
+  - source: 0x00CA37EA
+    type: x86_abs32
+    target: 'label23'
+  - source: 0x00CA37EE
+    type: x86_abs32
+    target: 'label24'
+  - source: 0x00CA37F2
+    type: x86_abs32
+    target: 'label25'
+  - source: 0x00CA37F6
+    type: x86_abs32
+    target: 'label26'
+  - source: 0x00CA37FA
+    type: x86_abs32
+    target: 'label27'
+  - source: 0x00CA37FE
+    type: x86_abs32
+    target: 'label28'
+  - source: 0x00CA3802
+    type: x86_abs32
+    target: 'label29'
+  - source: 0x00CA3806
+    type: x86_abs32
+    target: 'label30'
+  - source: 0x00CA380A
+    type: x86_abs32
+    target: 'label31'
+  - source: 0x00CA380E
+    type: x86_abs32
+    target: 'label32'
+  - source: 0x00CA3812
+    type: x86_abs32
+    target: 'label33'
+  - source: 0x00CA3816
+    type: x86_abs32
+    target: 'label34'
+  - source: 0x00CA381A
+    type: x86_abs32
+    target: 'label35'
+  - source: 0x00CA381E
+    type: x86_abs32
+    target: 'label36'
+  - source: 0x00CA3822
+    type: x86_abs32
+    target: 'label37'
+  - source: 0x00CA3826
+    type: x86_abs32
+    target: 'label38'
+  - source: 0x00CA382A
+    type: x86_abs32
+    target: 'label39'
+  - source: 0x00CA382E
+    type: x86_abs32
+    target: 'label40'
+  - source: 0x00CA3832
+    type: x86_abs32
+    target: 'label41'
+  - source: 0x00CA3836
+    type: x86_abs32
+    target: 'label42'
+  - source: 0x00CA383A
+    type: x86_abs32
+    target: 'label43'
+  - source: 0x00CA383E
+    type: x86_abs32
+    target: 'label44'
+  - source: 0x00CA3842
+    type: x86_abs32
+    target: 'label45'
+  - source: 0x00CA3846
+    type: x86_abs32
+    target: 'label46'
+  - source: 0x00CA384A
+    type: x86_abs32
+    target: 'label47'
+  - source: 0x00CA384E
+    type: x86_abs32
+    target: 'label48'
+  - source: 0x00CA3852
+    type: x86_abs32
+    target: 'label49'
+  - source: 0x00CA3856
+    type: x86_abs32
+    target: 'label50'
+  - source: 0x00CA385A
+    type: x86_abs32
+    target: 'label51'
+  - source: 0x00CA385E
+    type: x86_abs32
+    target: 'label52'
+  - source: 0x00CA3862
+    type: x86_abs32
+    target: 'label53'
+  - source: 0x00CA3866
+    type: x86_abs32
+    target: 'label54'
+  - source: 0x00CA386A
+    type: x86_abs32
+    target: 'label55'
+  - source: 0x00CA386E
+    type: x86_abs32
+    target: 'label56'
+  - source: 0x00CA3872
+    type: x86_abs32
+    target: 'label57'
+  - source: 0x00CA3876
+    type: x86_abs32
+    target: 'label58'
+  - source: 0x00CA387A
+    type: x86_abs32
+    target: 'label59'
+  - source: 0x00CA387E
+    type: x86_abs32
+    target: 'label60'
+  - source: 0x00CA3882
+    type: x86_abs32
+    target: 'label61'
+  - source: 0x00CA3886
+    type: x86_abs32
+    target: 'label62'
+  - source: 0x00CA388A
+    type: x86_abs32
+    target: 'label63'
 timestamp: "2017-06-23T11:48:16+00:00"
 force_size: 0x008BDC00
 linker_version: "6.0"

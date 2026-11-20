@@ -63,5 +63,6 @@ explicit holder (details in the `libcmt-obj-matching` skill).
 
 - The EH tables (handler stub, FuncInfo, unwind and try maps) are read by `tools/ehtables.py`,
   which `tools/port_version.py` also uses for each unit's `.text$x`/`.xdata$x` ranges when porting.
-- The `_$E`/`_$S` initializer labels renumber the same way. They have their own tool,
-  `tools/relabel-initializers.py` (AGENTS.md, "Header dependencies").
+- The `_$E`/`_$S` initializer labels renumber the same way in our objects, but the build renames
+  them after the target's right after `cl` (`tools/label-objects.py`), and `symbols.txt` names
+  them by address (`tools/relabel-initializers.py`, AGENTS.md, "Header dependencies").

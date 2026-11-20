@@ -11,3 +11,10 @@
 
 # decomp-toolkit writes files with LF
 config/**/*.txt  text eol=lf
+
+# Merge symbols.txt per symbol, not per line (tools/merge-symbols.py; enable with
+# `python tools/setup-merge-drivers.py`). Without the driver configured git merges them as text.
+config/**/symbols.txt  merge=dtk-symbols
+
+# post_link_patch.py's padding rows: one row per line, sorted on load (tools/check-tables.py).
+config/*/padding.txt  merge=union

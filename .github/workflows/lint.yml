@@ -19,6 +19,13 @@ on:
       - 'config/**/splits.txt'
       - 'tools/split-gaps.py'
       - 'configure.py'
+      - 'tools/check-symbols-order.py'
+      - 'tools/check-tables.py'
+      - 'config/*/padding.txt'
+      - 'config/*/config.yml'
+      - 'tools/merge-symbols.py'
+      - 'tools/symbols_txt.py'
+      - 'tools/tests/test_merge_symbols.py'
 
 permissions:
   contents: read
@@ -115,3 +122,24 @@ jobs:
     # Every configure.py unit has splits in some version.
     - name: configure.py units
       run: python tools/split-gaps.py --check --units
+
+  check-table-order:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    # dtk rewrites a symbols.txt it finds out of its order on the next split; the rewrite then
+    # lands in an unrelated PR and conflicts with every PR touching the lines it moves.
+    - run: python tools/check-symbols-order.py
+
+    # Tables PRs append to (post_link_patch.py's padding rows, config.yml relocation lists) stay
+    # in address order, so concurrent additions do not collide at the end.
+    - run: python tools/check-tables.py
+
+    # The symbols.txt merge driver shares the ordering code.
+    - run: python -m unittest discover -s tools/tests -p 'test_merge_symbols.py'
+    - run: python -m unittest discover -s tools/tests -p 'test_check_tables.py'
