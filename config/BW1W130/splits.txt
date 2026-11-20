@@ -202,18 +202,24 @@ Black/AudioAtmos.cpp:
 	.data       start:0x00A4B120 end:0x00A4B478
 
 Black/AudioMusicThing.cpp:
-	.text       start:0x00429180 end:0x0042A650
+	.text       start:0x00429180 end:0x00429C90
 	.rdata      start:0x008C9A10 end:0x008C9B10
-	.CRT$XCU    start:0x00A46140 end:0x00A4614C align:4
-	.data       start:0x00A4B478 end:0x00A4B6E4
-	.bss        start:0x00CD70A8 end:0x00CD92AC
+	.rdata$r    start:0x00A27EF8 end:0x00A27F44
+	.CRT$XCU    start:0x00A46140 end:0x00A46144 align:4
+	.data       start:0x00A4B478 end:0x00A4B4D8
+
+Black/AudioSFX.cpp:
+	.text       start:0x00429C90 end:0x0042A650
+	.CRT$XCU    start:0x00A46144 end:0x00A4614C align:4
+	.data       start:0x00A4B4D8 end:0x00A4B664
+	.bss        start:0x00CD70A8 end:0x00CD70AC
 
 Black/audiotag.cpp:
 	.text       start:0x0042A650 end:0x0042B2F0
 	.rdata      start:0x008C9B10 end:0x008C9B14
 	.CRT$XCU    start:0x00A4614C end:0x00A46150 align:4
-	.data       start:0x00A4B6E4 end:0x00A4B730
-	.bss        start:0x00CD92AC end:0x00CD92B8
+	.data       start:0x00A4B664 end:0x00A4B730
+	.bss        start:0x00CD70AC end:0x00CD92B8
 
 Black/Balance.cpp:
 	.text       start:0x0042B2F0 end:0x004358D0

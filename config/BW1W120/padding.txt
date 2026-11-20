@@ -109,6 +109,14 @@
 0x004282AB call_rel32 0x00401879  # Audio
 0x00428C5A call_indirect 0x008A991C  # AudioAnalyse: __imp__ioctlsocket@4
 0x0042914A call_indirect 0x008A937C  # AudioAtmos: __imp_?LogErrorCodeS@LHLogger@@SAHPAD0KPAULHErrorCode@@KZZ
+0x004293DA call_indirect 0x008A9114  # AudioMusicThing: __imp__ImmReleaseContext@4
+0x004296BA call_indirect 0x008A906C  # AudioMusicThing: __imp__DeleteObject@4
+0x00429CAB call_rel32 0x00401879  # AudioSFX
+0x0042A1EB call_rel32 0x00401879  # AudioSFX
+0x0042A2EB call_rel32 0x00401879  # AudioSFX
+0x0042A32B call_rel32 0x00401879  # AudioSFX
+0x0042A5EA call_indirect 0x008A9328  # AudioSFX: __imp__LHEditBox__YAHPBDKKKK0HPAD_Z@4
+0x0042A61A call_indirect 0x008A901C  # AudioSFX: __imp__TrackMouseEvent@4
 0x0043641B call_rel32 0x00401879  # Base
 0x0043681B call_rel32 0x00401879  # Base
 0x0043686B call_rel32 0x00401879  # Base

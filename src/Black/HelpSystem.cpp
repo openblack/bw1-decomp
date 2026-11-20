@@ -1076,13 +1076,15 @@ void HelpSystem::ClearHelpTextSoundAndText()
 		SpiritInterruptTalking(HELP_SPIRIT_TYPE_EVIL, true);
 		if (HelpDude::s_PlayingSample)
 		{
-			GGlobal::Global.audio->StopPlayingSoundEffect(0, HELP_SPEECH_OBJECT_HELP_DUDE,
+			GGlobal::Global.audio->StopPlayingSoundEffect((unsigned long)0, HELP_SPEECH_OBJECT_HELP_DUDE,
 			                                              AUDIO_SFX_BANK_TYPE_VILLAGERS);
-			GGlobal::Global.audio->StopPlayingSoundEffect(0, HELP_SPEECH_OBJECT_HELP_DUDE,
+			GGlobal::Global.audio->StopPlayingSoundEffect((unsigned long)0, HELP_SPEECH_OBJECT_HELP_DUDE,
 			                                              AUDIO_SFX_BANK_TYPE_CI_VILLAGERS);
 		}
-		GGlobal::Global.audio->StopPlayingSoundEffect(0, HELP_SPEECH_OBJECT_TEXT, AUDIO_SFX_BANK_TYPE_VILLAGERS);
-		GGlobal::Global.audio->StopPlayingSoundEffect(0, HELP_SPEECH_OBJECT_TEXT, AUDIO_SFX_BANK_TYPE_CI_VILLAGERS);
+		GGlobal::Global.audio->StopPlayingSoundEffect((unsigned long)0, HELP_SPEECH_OBJECT_TEXT,
+		                                              AUDIO_SFX_BANK_TYPE_VILLAGERS);
+		GGlobal::Global.audio->StopPlayingSoundEffect((unsigned long)0, HELP_SPEECH_OBJECT_TEXT,
+		                                              AUDIO_SFX_BANK_TYPE_CI_VILLAGERS);
 	}
 	ClearTextDisplayed();
 }
@@ -1120,7 +1122,7 @@ HELP_INTERFACE_RESULT HelpSystem::ProcessInterface(LHCoord* pos, bool32_t select
 			{
 				SpiritInterruptTalking(HELP_SPIRIT_TYPE_GOOD, true);
 				SpiritInterruptTalking(HELP_SPIRIT_TYPE_EVIL, true);
-				GGlobal::Global.audio->StopPlayingSoundEffect(0, HELP_SPEECH_OBJECT_TEXT,
+				GGlobal::Global.audio->StopPlayingSoundEffect((unsigned long)0, HELP_SPEECH_OBJECT_TEXT,
 				                                              AUDIO_SFX_BANK_TYPE_VILLAGERS);
 			}
 			ClearTextDisplayed();

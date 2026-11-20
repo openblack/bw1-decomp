@@ -488,6 +488,17 @@
 0x00428FD7 jmp_run 0x00428F86  # AudioAtmos
 0x004290F6 jmp_run 0x00428FD7  # AudioAtmos
 0x0042914A call_indirect 0x008AE8D0  # AudioAtmos
+0x004291A1 copy_run 0x0042914A  # AudioMusicThing
+0x00429316 jmp_run 0x004291A1  # AudioMusicThing
+0x004293DA call_indirect 0x008AE964  # AudioMusicThing
+0x00429412 jmp_run 0x004293DA  # AudioMusicThing
+0x004294F5 jmp_run 0x00429412  # AudioMusicThing
+0x00429672 jmp_run 0x004294F5  # AudioMusicThing
+0x004296BA call_indirect 0x008AE2F0  # AudioMusicThing
+0x00429785 copy_run 0x004296BA  # AudioMusicThing
+0x00429874 jmp_run 0x00429785  # AudioMusicThing
+0x00429898 jmp_run 0x00429874  # AudioMusicThing
+0x00429AD9 jmp_run 0x00429898  # AudioMusicThing
 0x0043641B call_rel32 0x00403C49  # Base
 0x00436443 copy_run 0x0043641B  # Base
 0x004366E5 copy_run 0x00436443  # Base

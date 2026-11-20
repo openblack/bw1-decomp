@@ -11,16 +11,6 @@
 #include "Landscape.h"
 #include "ThingMusicInfo.h"
 
-uint32_t ThingMusicInfo::GetSaveType()
-{
-	return GAME_THING_TYPE_THING_MUSIC_INFO;
-}
-
-char* ThingMusicInfo::GetDebugText()
-{
-	return "AudioMusicThing:";
-}
-
 ThingMusicInfo* GAudio::GetThingMusicInfo(GameThingWithPos* thing)
 {
 	for (LHLinkedNode<ThingMusicInfo*>* node = ThingMusicList.GetStart(); node != NULL; node = node->next.Get())
@@ -68,6 +58,16 @@ void GAudio::RemoveThingMusic(GameThingWithPos* thing)
 	}
 }
 
+float GAudio::GetPlayDistance(GameThingWithPos* thing)
+{
+	ThingMusicInfo* info = GetThingMusicInfo(thing);
+	if (info)
+	{
+		return GetPlayDistance(info->MusicType);
+	}
+	return 0.0f;
+}
+
 float GAudio::GetPlayDistance(MUSIC_TYPE type)
 {
 	float distance = MUSIC_DEFAULT_PLAY_DISTANCE;
@@ -82,74 +82,16 @@ float GAudio::GetPlayDistance(MUSIC_TYPE type)
 	return distance;
 }
 
-float GAudio::GetPlayDistance(GameThingWithPos* thing)
-{
-	ThingMusicInfo* info = GetThingMusicInfo(thing);
-	if (info)
-	{
-		return GetPlayDistance(info->MusicType);
-	}
-	return 0.0f;
-}
-
-void GAudio::ValidateThingMusic()
-{
-	LHLinkedNode<ThingMusicInfo*>* node = ThingMusicList.GetStart();
-	while (node)
-	{
-		ThingMusicInfo*                info = node->payload;
-		LHLinkedNode<ThingMusicInfo*>* next = node->next.Get();
-		if (!info->Thing->IsAvailable())
-		{
-			ThingMusicList.Remove(info);
-			info->ToBeDeleted(false);
-		}
-		node = next;
-	}
-}
-
-bool32_t GAudio::ProcessThingMusic()
-{
-	int                            result = THING_MUSIC_RESULT_NONE;
-	LHLinkedNode<ThingMusicInfo*>* node = ThingMusicList.GetStart();
-	while (node)
-	{
-		ThingMusicInfo*                info = node->payload;
-		GameThingWithPos*              thing = info->Thing;
-		LHLinkedNode<ThingMusicInfo*>* next = node->next.Get();
-		if (thing->IsAvailable())
-		{
-			if (info->Enabled && !info->Finished)
-			{
-				if (ProcessThingMusic(info, thing))
-				{
-					return true;
-				}
-			}
-			else if (ThingMusicInRange(info->MusicType, thing))
-			{
-				result |= THING_MUSIC_RESULT_IN_RANGE;
-			}
-		}
-		else
-		{
-			ThingMusicList.Remove(info);
-			info->ToBeDeleted(false);
-		}
-		node = next;
-	}
-	return result;
-}
-
 bool32_t GAudio::ThingMusicInRange(MUSIC_TYPE type, GameThingWithPos* thing)
 {
 	if (MusicBanks[type])
 	{
 		LHPoint pos;
 		GLandscape::ConvertMapCoordToLandscapePoint(thing->Pos, pos);
+		LHPoint cameraPos;
 		GGame::g_game->GetCamera();
-		LHPoint cameraPos = LH3DTech::g_camera.pos;
-		float   distance = pos.GetDistance(cameraPos);
+		cameraPos = LH3DTech::g_camera.pos;
+		float distance = pos.GetDistance(cameraPos);
 		if (distance < GetPlayDistance(type))
 		{
 			return true;
@@ -233,6 +175,55 @@ void GAudio::StopMusic(ThingMusicInfo* info, int fade)
 			}
 		}
 	}
+}
+
+void GAudio::ValidateThingMusic()
+{
+	LHLinkedNode<ThingMusicInfo*>* node = ThingMusicList.GetStart();
+	while (node)
+	{
+		ThingMusicInfo*                info = node->payload;
+		LHLinkedNode<ThingMusicInfo*>* next = node->next.Get();
+		if (!info->Thing->IsAvailable())
+		{
+			ThingMusicList.Remove(info);
+			info->ToBeDeleted(false);
+		}
+		node = next;
+	}
+}
+
+bool32_t GAudio::ProcessThingMusic()
+{
+	int                            result = THING_MUSIC_RESULT_NONE;
+	LHLinkedNode<ThingMusicInfo*>* node = ThingMusicList.GetStart();
+	while (node)
+	{
+		ThingMusicInfo*                info = node->payload;
+		GameThingWithPos*              thing = info->Thing;
+		LHLinkedNode<ThingMusicInfo*>* next = node->next.Get();
+		if (thing->IsAvailable())
+		{
+			if (info->Enabled && !info->Finished)
+			{
+				if (ProcessThingMusic(info, thing))
+				{
+					return true;
+				}
+			}
+			else if (ThingMusicInRange(info->MusicType, thing))
+			{
+				result |= THING_MUSIC_RESULT_IN_RANGE;
+			}
+		}
+		else
+		{
+			ThingMusicList.Remove(info);
+			info->ToBeDeleted(false);
+		}
+		node = next;
+	}
+	return result;
 }
 
 void GAudio::SwapThingMusic(GameThingWithPos* thing, GameThingWithPos* other)
@@ -319,36 +310,4 @@ bool32_t ThingMusicInfo::Load(GameOSFile& file)
 		return true;
 	}
 	return false;
-}
-
-void GAudio::PlaySoundEffect(Base* object, uint32_t sample, uint32_t priority, uint32_t volume, int distance,
-                             int positional, AUDIO_SFX_BANK_TYPE bank_type)
-{
-	PlaySoundEffect(object, (unsigned long)sample, (unsigned long)priority, (unsigned long)volume, distance, positional,
-	                GetBank(bank_type));
-}
-
-void GAudio::PlaySoundEffect(Base* object, const LHPoint& pos, uint32_t sample, uint32_t priority, uint32_t volume,
-                             int distance, int positional, AUDIO_SFX_BANK_TYPE bank_type)
-{
-	PlaySoundEffect(object, pos, sample, priority, volume, distance, positional, GetBank(bank_type));
-}
-
-void GAudio::StopPlayingSoundEffect(uint32_t sample, uint32_t object, AUDIO_SFX_BANK_TYPE type) const
-{
-	AudioSystem->LHSampleStop(AudioBanks[type], object, sample);
-}
-
-bool32_t GAudio::IsSamplePlaying(unsigned long object, unsigned long sample, AUDIO_SFX_BANK_TYPE type) const
-{
-	return AudioSystem->LHSampleIsPlaying(GetBank(type), object, sample);
-}
-
-float GAudio::GetGSFXSampleMaxDistance(uint32_t sample, LH_AudioBank* bank) const
-{
-	if (bank)
-	{
-		return AudioSystem->LHSampleGetMaxDistance(bank, sample);
-	}
-	return 0.0f;
 }

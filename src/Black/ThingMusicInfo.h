@@ -26,14 +26,14 @@ public:
 	bool32_t          UseFixedPos;
 	MapCoords         FixedPos;
 
+	// BW1W120 00429300 BW1M119 01185d10
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_THING_MUSIC_INFO; }
 	// BW1W120 00429310 BW1M119 01185d50
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "AudioMusicThing:"; }
 	// BW1W120 00429ae0 BW1M119 01185d90
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00429950 BW1M119 01185fe0
 	virtual bool32_t Save(GameOSFile& file);
-	// BW1W120 00429300 BW1M119 01185d10
-	virtual uint32_t GetSaveType();
 
 	// BW1W120 inlined BW1M119 inlined
 	ThingMusicInfo(MUSIC_TYPE type, GameThingWithPos* thing)
