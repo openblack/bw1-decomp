@@ -78,8 +78,21 @@ jobs:
     - name: BW1WCI .text
       run: python tools/split-gaps.py --check -v BW1WCI -s .text --range 0x401000-0x7C6CC0
 
+    - name: BW1W100 .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W100 -s .data
+
+    - name: BW1W110 .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W110 -s .data
+
     - name: BW1W120 .data
       run: python tools/split-gaps.py --check --allow-padding -v BW1W120 -s .data
+
+    - name: BW1W130 .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1W130 -s .data
+
+    # Creature Isle's libcmt and libjpeg data past the range still has unclaimed objects.
+    - name: BW1WCI .data
+      run: python tools/split-gaps.py --check --allow-padding -v BW1WCI -s .data --range 0xA36000-0xCA09DC
 
     # Every configure.py unit has splits in some version.
     - name: configure.py units
