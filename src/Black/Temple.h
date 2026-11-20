@@ -78,6 +78,8 @@ struct Temple
 
 	// BW1W120 00793ee0 BW1M119 0153fe70
 	void Update();
+	// BW1W120 00793d90 BW1M119 01540450
+	void GoToRoom(TempleRoomsEnum room);
 	// BW1W120 00794370 BW1M119 0153f7c0
 	void Draw();
 	// BW1W120 007947c0 BW1M119 0153f560

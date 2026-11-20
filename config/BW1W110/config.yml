@@ -774,6 +774,10 @@ add_relocations:
     type: x86_abs32
     target: '?InfoList@GTownDesireInfo@@2PAV1@A'
     addend: 0x9C0
+# UniverseRoom::~UniverseRoom's jump to PictureRoomBase::~PictureRoomBase (dtk leaves it unrelocated).
+  - source: 0x0078C6E7
+    type: x86_rel32
+    target: '??1PictureRoomBase@@QAE@XZ'
 # memmove.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x007B5944
     type: x86_abs32

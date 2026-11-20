@@ -3333,13 +3333,15 @@ Black/TempleRoomAddText.cpp:
 Black/UniverseRoom.cpp:
 	.text       start:0x0079CCE0 end:0x0079D110
 	.rdata      start:0x0099EF24 end:0x0099EF74
+	.rdata$r    start:0x009BABF8 end:0x009BAC44
 	.CRT$XCU    start:0x009C7C10 end:0x009C7C1C align:4
-	.data       start:0x00C2A358 end:0x00C2A478
+	.data       start:0x00C2A358 end:0x00C2A472
 	.bss        start:0x00E36150 end:0x00E36158
 
 Black/UniverseRoomCamera.cpp:
 	.text       start:0x0079D110 end:0x0079D140
 	.CRT$XCU    start:0x009C7C1C end:0x009C7C20 align:4
+	.data       start:0x00C2A474 end:0x00C2A478
 
 Black/WorldRoom.cpp:
 	.text       start:0x0079D140 end:0x0079F940
