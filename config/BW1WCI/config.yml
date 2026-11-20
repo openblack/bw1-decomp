@@ -18,6 +18,33 @@ block_relocations:
   - source: 0x0040C1FD
   - source: 0x0040C28E
   - source: 0x0040CCDB
+# alexmfc's 0x00ffffff colour masks are immediates, not pointers into NewCols.
+  - source: 0x004085D2
+  - source: 0x00408602
+  - source: 0x00408623
+  - source: 0x004086FC
+  - source: 0x0040DCCF
+  - source: 0x0040DDE3
+  - source: 0x0040FCE8
+  - source: 0x00410481
+  - source: 0x0041250C
+  - source: 0x00412911
+  - source: 0x00412F94
+  - source: 0x004134C4
+  - source: 0x004139F6
+  - source: 0x004139FC
+  - source: 0x00413A02
+  - source: 0x00413A08
+  - source: 0x00413A32
+  - source: 0x00413A48
+  - source: 0x00413A5E
+  - source: 0x00413A7C
+  - source: 0x0041401C
+  - source: 0x0041406C
+  - source: 0x004140A2
+  - source: 0x0041434D
+  - source: 0x0041436A
+  - source: 0x00414950
 # SetupColourPicker's grey colour 0x808080 is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x00410A54
 # SpellDove::SetColor's 0xffffff colour mask reads as an address inside NewCols.

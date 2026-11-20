@@ -1,3 +1,4 @@
+#include "CreatureAttitudeConstants.h"
 #include "GameTimeConstants.h"
 #include "ColourConstants.h"
 #include "Alignment.h"

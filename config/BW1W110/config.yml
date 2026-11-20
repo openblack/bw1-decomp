@@ -24,6 +24,12 @@ block_relocations:
   - source: 0x00C2B488
   - source: 0x00C2B48C
   - source: 0x00FAF75C
+# SetupBox's IME candidate list control ID 0x85b680 is an immediate, not a pointer into code.
+  - source: 0x00407EC3
+  - source: 0x0040858D
+  - source: 0x0040BFFD
+  - source: 0x0040C08E
+  - source: 0x0040CADB
 # Bubble::UpdateAndDraw's 0x7f7f7f colour mask is an immediate, not a pointer into LH3DPrimitive's code.
   - source: 0x0057337D
 # MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
@@ -117,6 +123,46 @@ add_relocations:
     type: x86_abs32
     target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
     addend: 0x10730
+# alexmfc.cpp, ?DrawAll@SetupBox@@QAEXHHHH_N@Z: references dtk leaves unrelocated.
+  - source: 0x00408642
+    type: x86_rel32
+    target: '?CandidateList_GetSize@TbIME@slim@@QAEHXZ'
+  - source: 0x00408668
+    type: x86_rel32
+    target: '?CandidateList_HasContentsChanged@TbIME@slim@@QAE_NXZ'
+# alexmfc.cpp, ?Draw@SetupStaticText@@UAEX_N0@Z: references dtk leaves unrelocated.
+  - source: 0x00409390
+    type: x86_abs32
+    target: '?ShadowColour@SetupThing@@2ULH3DColor@@A'
+  - source: 0x004093D4
+    type: x86_abs32
+    target: '?SelectedColour@SetupThing@@2ULH3DColor@@A'
+  - source: 0x00409407
+    type: x86_abs32
+    target: '?ShadowColour@SetupThing@@2ULH3DColor@@A'
+  - source: 0x00409434
+    type: x86_abs32
+    target: '?SelectedColour@SetupThing@@2ULH3DColor@@A'
+  - source: 0x00409514
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x178
+  - source: 0x00409518
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x286
+  - source: 0x0040951C
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x244
+  - source: 0x00409520
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x1BB
+  - source: 0x00409524
+    type: x86_abs32
+    target: '?Draw@SetupStaticText@@UAEX_N0@Z'
+    addend: 0x1BB
 # Balance: the info-array loops compare against each array's one-past-end, not the next unit's data.
   - source: 0x0042AD86
     type: x86_abs32

@@ -33,6 +33,33 @@
 0x004061FA call_indirect 0x008A9890  # Abode: __imp__timeKillEvent@4
 0x0040729A call_indirect 0x008A98DC  # Abode: __imp__bind@4
 0x004073BA call_indirect 0x008A93DC  # Abode: __imp_?_lhbeginthread@@YAKPADP6AXPAX@ZI1J@Z
+0x004078CB call_rel32 0x00401879  # alexmfc
+0x004078EB call_rel32 0x00401879  # alexmfc
+0x0040790B call_rel32 0x00401879  # alexmfc
+0x0040792B call_rel32 0x00401879  # alexmfc
+0x0040794B call_rel32 0x00401879  # alexmfc
+0x0040796B call_rel32 0x00401879  # alexmfc
+0x004080FA call_indirect 0x008A902C  # alexmfc: __imp__DirectDrawCreate@4
+0x0040833A call_indirect 0x008A9034  # alexmfc: __imp__DirectInputCreateA@4
+0x0040993B call_rel32 0x00401879  # alexmfc
+0x00409BEA call_indirect 0x008A90E0  # alexmfc: __imp___ChangeScreenResolution_CImmMouse__UAEHHKK_Z@4
+0x00409D8B call_rel32 0x00401879  # alexmfc
+0x0040A3EB call_rel32 0x00401879  # alexmfc
+0x0040C19B call_rel32 0x00401879  # alexmfc
+0x0040D30B call_rel32 0x00401879  # alexmfc
+0x0040D35B call_rel32 0x00401879  # alexmfc
+0x0040D38B call_rel32 0x00401879  # alexmfc
+0x0040D39B call_rel32 0x00401879  # alexmfc
+0x0040D3AB call_rel32 0x00401879  # alexmfc
+0x0040D3BB call_rel32 0x00401879  # alexmfc
+0x0040E59B call_rel32 0x00401879  # alexmfc
+0x0040EF8B call_rel32 0x00401879  # alexmfc
+0x0040F68B call_rel32 0x00401879  # alexmfc
+0x0041070B call_rel32 0x00401879  # alexmfc
+0x004107EB call_rel32 0x00401879  # alexmfc
+0x00410B4B call_rel32 0x00401879  # alexmfc
+0x0041106B call_rel32 0x00401879  # alexmfc
+0x004120EA call_indirect 0x008A903C  # alexmfc: __imp__DirectXSetupGetVersion
 0x0041406B call_rel32 0x00401879  # Alignment
 0x0041419A call_indirect 0x008A9804  # Alignment: __imp__GetSystemMetrics@4
 0x0041440A call_indirect 0x008A9480  # Alignment: __imp_?IsConnected@LHTransport@@QAEHXZ
