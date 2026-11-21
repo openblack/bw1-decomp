@@ -990,7 +990,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Forest.cpp"),
             GameCodeObject(NonMatching, "Black/frontend.cpp"),
             GameCodeObject(Matching, "Black/FrontEndSetupGame.cpp"),
-            GameCodeObject(NonMatching, "Black/FrontEndSetupMultiplayer.cpp"),
+            GameCodeObject(Matching, "Black/FrontEndSetupMultiplayer.cpp"),
             GameCodeObject(NonMatching, "Black/Furniture.cpp"),
             GameCodeObject(NonMatching, "Black/Game.cpp"),
             GameCodeObject(NonMatching, "Black/GameArea.cpp"),

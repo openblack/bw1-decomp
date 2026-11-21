@@ -3,9 +3,10 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint8_t */
-#include <string.h> /* For memset */
 
 #include <chlasm/Enum.h> /* For enum SPELL_SEED_TYPE */
+
+#include "LandscapeDetails.h" /* For struct LandscapeDetails */
 
 #define SETUP_GAME_DATA_NUM_SPELLS                 11
 #define SETUP_GAME_DATA_NUM_SLIDERS                3
@@ -18,30 +19,26 @@ public:
 	// BW1W120 00d4f128
 	static setupgamedata Current;
 
-	char    GameName[200];
-	uint8_t CustomMapInfo[812];
-	bool    UseCustomMap;
-	bool    CitadelTowns;
-	bool    NeutralTowns;
-	bool    OneShotSpells[SETUP_GAME_DATA_NUM_SPELLS];
-	bool    Spells[SETUP_GAME_DATA_NUM_SPELLS];
-	bool    CreatureAllowed;
-	bool    RocksAllowed;
-	bool    TreesAllowed;
-	bool    FieldsAllowed;
-	bool    FishAllowed;
-	bool    RandomTownsAllowed;
-	int32_t GuaranteedPlayers;
-	float   Sliders[SETUP_GAME_DATA_NUM_SLIDERS];
-	int32_t FirstMapOption;
-	int32_t SecondMapOption;
+	char             GameName[200];
+	LandscapeDetails CustomMap;
+	bool             UseCustomMap;
+	bool             CitadelTowns;
+	bool             NeutralTowns;
+	bool             OneShotSpells[SETUP_GAME_DATA_NUM_SPELLS];
+	bool             Spells[SETUP_GAME_DATA_NUM_SPELLS];
+	bool             CreatureAllowed;
+	bool             RocksAllowed;
+	bool             TreesAllowed;
+	bool             FieldsAllowed;
+	bool             FishAllowed;
+	bool             RandomTownsAllowed;
+	int32_t          GuaranteedPlayers;
+	float            Sliders[SETUP_GAME_DATA_NUM_SLIDERS];
+	int32_t          FirstMapOption;
+	int32_t          SecondMapOption;
 
 	// BW1W120 inlined BW1M119 015cc8d0
-	setupgamedata()
-	{
-		memset(CustomMapInfo, 0, sizeof(CustomMapInfo));
-		reset_to_defaults();
-	}
+	setupgamedata() { reset_to_defaults(); }
 
 	// BW1W120 00719750 BW1M119 01514380
 	void reset_to_defaults();

@@ -1,3 +1,5 @@
+#include <string.h> /* For memset */
+
 #include "ColourConstants.h"   /* For White */
 #include "GameTimeConstants.h" /* For SecondsPerYear */
 #include "SetupGameData.h"
@@ -20,7 +22,7 @@ void setupgamedata::reset_to_defaults()
 	FirstMapOption = 0;
 	SecondMapOption = 0;
 	UseCustomMap = false;
-	memset(CustomMapInfo, 0, sizeof(CustomMapInfo));
+	memset(&CustomMap, 0, sizeof(CustomMap));
 	for (int i = 0; i < SETUP_GAME_DATA_NUM_SPELLS; i++)
 	{
 		Spells[i] = true;
