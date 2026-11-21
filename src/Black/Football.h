@@ -176,6 +176,8 @@ public:
 	void CreateBall();
 	// BW1W120 00531410 BW1M119 012c0a10
 	Ball* GetBall();
+	// BW1W120 00531c20 BW1M119 012bfdb0
+	void StopGame();
 	// BW1W120 00531fd0 BW1M119 012bf550
 	void StopFootballGame();
 	// BW1W120 00532500 BW1M119 012bedd0

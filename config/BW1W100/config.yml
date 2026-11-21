@@ -300,7 +300,7 @@ add_relocations:
     addend: 0x210
   - source: 0x00426AEC
     type: x86_abs32
-    target: '?Infos@GBallInfo@@2PAV1@A'
+    target: '?Info@GBallInfo@@2V1@A'
     addend: 0x140
 # BWGameSpy::Connect keeps a pointer one past the colon of ChatServer, inside the buffer.
   - source: 0x00436786

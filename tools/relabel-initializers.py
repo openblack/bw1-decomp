@@ -152,6 +152,16 @@ class Initializers:
             return []
         return [index] + [r.symbol_index for r in self.relocations(index) if r.symbol_index in self.functions]
 
+    def destructor_thunks(self, index):
+        """The thunks the chain's atexit thunks register: they run a static's destructor at exit and
+        nothing else refers to them, so they pair through the stub that leads to them."""
+        out = []
+        for f in self.chain(index)[1:]:
+            if renameable(self.name(f)) and any(self.name(r.symbol_index) == "_atexit" for r in self.relocations(f)):
+                out += [r.symbol_index for r in self.relocations(f)
+                        if r.symbol_index in self.functions and r.symbol_index not in out]
+        return out
+
     def guard(self, index):
         return any(CTYPE_GUARD in self.name(r.symbol_index) for f in self.chain(index) for r in self.relocations(f))
 
@@ -344,7 +354,8 @@ def chain_pairs(target, compiled):
     """(target index, compiled index) for the functions of the paired initializers, then for the
     labels paired through the functions referring to them."""
     pairs = [(a, b) for (_, _, t_stub), (_, _, c_stub) in pair(target, compiled)
-             for a, b in zip(target.chain(t_stub), compiled.chain(c_stub))]
+             for a, b in (list(zip(target.chain(t_stub), compiled.chain(c_stub)))
+                          + list(zip(target.destructor_thunks(t_stub), compiled.destructor_thunks(c_stub))))]
     seen = {a for a, _ in pairs} | {b for _, b in pairs}
     # Labels a paired label refers to (the atexit thunk a stub registers, the guard that thunk
     # sets) pair in order, where both refer to as many.

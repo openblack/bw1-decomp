@@ -19,20 +19,22 @@ public:
 
 	// Override methods
 
-	// BW1W120 00435980 BW1M119 010b3ad0
-	virtual ~GBallInfo();
 	// BW1W120 00435930 BW1M119 010b3b70
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = 1;
+		return &Info;
+	}
 
 	// Static data
 
 	// BW1W120 00c58498
-	static GBallInfo Infos[1];
+	static GBallInfo Info;
 
 	// Static methods
 
 	// BW1W120 inlined BW1M119 010b3a40
-	static GBallInfo* GetInfo() { return Infos; }
+	static GBallInfo* GetInfo() { return &Info; }
 
 	// TODO(#377): The original declared this class in Ball.h.
 	// Out of line: LoadBinary at 0042e8c0, Load at 0042e830.
@@ -50,7 +52,7 @@ public:
 	// BW1W120 0063e8c0 BW1M119 0111a820
 	virtual ~GPBallInfo();
 	// BW1W120 0063e870 BW1M119 0111a8c0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count);
 
 	// Static data
 
