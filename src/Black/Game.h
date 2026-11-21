@@ -691,4 +691,8 @@ template <typename T> inline void GTPointer<T>::SetGameTurnValidated()
 	GameTurnValidated = GGame::g_game->data.GameTurn;
 }
 
+#if defined(VERSION_BW1W130)
+extern bool32_t HelpTextReloadPending;
+#endif
+
 #endif /* BW1_DECOMP_GAME_INCLUDED_H */

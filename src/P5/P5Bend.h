@@ -7,6 +7,8 @@ extern unsigned char nBendSensitivity[5];
 
 void P5Bend_Init(CP5DLL *device, int id);
 void P5Bend_SetClickSensitivity(int finger, unsigned char value);
+void P5Bend_SetClickSensitivityLevel(unsigned char level);
+extern int nP5ClickSensorLevel;
 void P5Bend_Process();
 
 
