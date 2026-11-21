@@ -10,6 +10,7 @@
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
 
 #include "LocalBase.h" /* For struct LocalBase */
+#include "Terrain.h"   /* For enum ATMOS_TYPE */
 
 // Forward Declares
 
@@ -55,6 +56,10 @@ public:
 	static SoundTag* Create(GameThingWithPos* thing, unsigned long sample, bool follow, unsigned long play_type,
 	                        unsigned long loop_count, bool32_t doppler, bool32_t positional,
 	                        AUDIO_SFX_BANK_TYPE bank_type, int delay);
+	// BW1W120 0071e920 BW1M119 0151ba70
+	static SoundTag* Create(const LHPoint& pos, unsigned long sample, bool follow, unsigned long play_type,
+	                        unsigned long loop_count, bool32_t doppler, bool32_t positional, ATMOS_TYPE atmos_type,
+	                        int delay);
 	// BW1W120 0071ea40 BW1M119 0109dc20
 	static SoundTag* Create(const LHPoint& pos, unsigned long sample, bool follow, unsigned long play_type,
 	                        unsigned long loop_count, bool32_t doppler, bool32_t positional,
