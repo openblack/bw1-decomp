@@ -722,6 +722,11 @@ add_relocations:
     type: x86_abs32
     target: '?Draw@SetupStaticText@@UAEX_N0@Z'
     addend: 0x1BB
+# Artifact.cpp's TownArtifact::SetVillagerActivity: the lea of the dance info in GDanceInfo::Infos (dtk leaves the
+# displacement unrelocated).
+  - source: 0x004264C9
+    type: x86_abs32
+    target: '?Infos@GDanceInfo@@2PAV1@A'
 # audiotag.cpp's AudioTag::Parse: the end-of-array compares of the HelpDude::AnimNames and
 # EmotionNames name searches (one past the end, which dtk resolves to the next symbol).
   - source: 0x0042AB4F

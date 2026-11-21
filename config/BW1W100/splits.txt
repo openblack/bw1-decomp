@@ -169,13 +169,16 @@ Black/Arrow.cpp:
 	.text       start:0x0041FE00 end:0x0041FEF0
 	.rdata      start:0x008038FC end:0x0080393C
 	.CRT$XCU    start:0x008F6094 end:0x008F6098 align:4
-	.data       start:0x008F83D8 end:0x008F8478
+	.data       start:0x008F83D8 end:0x008F8448
 	.bss        start:0x00B778C8 end:0x00B77A00
 
 Black/Artifact.cpp:
 	.text       start:0x0041FEF0 end:0x00420D30
 	.rdata      start:0x0080393C end:0x00803A50
-	.data       start:0x008F8478 end:0x008F8498
+	.rdata$r    start:0x008DBCF8 end:0x008DBD48
+	.CRT$XCU    start:0x008F6098 end:0x008F60A4 align:4
+	.data       start:0x008F8448 end:0x008F8498
+	.bss        start:0x00B77A00 end:0x00B77A1C
 
 Black/Audio.cpp:
 	.text       start:0x00420D30 end:0x004229A0

@@ -838,7 +838,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/Animations.cpp"),
             GameCodeObject(Matching, "Black/Arena.cpp"),
             GameCodeObject(NonMatching, "Black/Arrow.cpp"),
-            GameCodeObject(NonMatching, "Black/Artifact.cpp"),
+            GameCodeObject(Matching, "Black/Artifact.cpp"),
             GameCodeObject(Matching, "Black/Audio.cpp"),
             GameCodeObject(Matching, "Black/AudioAnalyse.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(Matching, "Black/AudioAtmos.cpp"),

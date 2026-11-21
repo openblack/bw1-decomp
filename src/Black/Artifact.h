@@ -8,17 +8,24 @@
 
 // Forward Declares
 
-class FixedObject;
 class LHOSFile;
 struct MapCoords;
 class Base;
+class Dance;
 class Fixed;
+class GParticleContainer;
 class GPlayer;
 class GameOSFile;
 class PlayerSymbolSprite;
 class Town;
 class Villager;
 class WorshipSite;
+
+#define TOWN_ARTIFACT_PARTICLE_SCALE        1.0f
+#define TOWN_ARTIFACT_SYMBOL_SCALE          0.5f
+#define TOWN_ARTIFACT_VALUE_GAIN            300.0f
+#define TOWN_ARTIFACT_VALUE_INCREMENT       0.1f
+#define TOWN_ARTIFACT_VILLAGER_MAX_DISTANCE 250.0f
 
 class TownArtifact : public GameThing
 {
@@ -29,36 +36,34 @@ public:
 	LHListNode<TownArtifact> next;
 	GPlayer*                 Player;
 	float                    Value;
-	GameThing*               field_0x2c;
-	uint32_t                 field_0x30;
-	uint32_t                 field_0x34;
-	GameThing*               field_0x38;
+	Dance*                   ArtifactDance;
+	bool32_t                 DanceStarted;
+	uint32_t                 DanceStartTurn;
+	GParticleContainer*      Particles;
 	PlayerSymbolSprite*      Symbol;
 
 	// Override methods
 
 	// BW1W120 004267e0 BW1M119 010b1280
 	virtual void ResolveLoad();
-	// BW1W120 00425d80 BW1M119 010b0ae0
-	virtual ~TownArtifact();
 	// BW1W120 00425e70 BW1M119 010b2410
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00425d40 BW1M119 010b0b70
-	virtual GPlayer* GetPlayer();
+	virtual GPlayer* GetPlayer() { return Player; }
 	// BW1W120 00425d50 BW1M119 010b0bb0
-	virtual void SetPlayer(GPlayer* param_1);
+	virtual void SetPlayer(GPlayer* player) { Player = player; }
 	// BW1W120 00425d60 BW1M119 010b0bf0
-	virtual Town* GetTown();
+	virtual Town* GetTown() { return town; }
 	// BW1W120 004262d0 BW1M119 010b1940
-	virtual float GetVillagerActivityDesire(Villager* param_1);
+	virtual float GetVillagerActivityDesire(Villager* villager);
 	// BW1W120 00426470 BW1M119 010b1640
-	virtual uint32_t SetVillagerActivity(Villager* param_1);
+	virtual uint32_t SetVillagerActivity(Villager* villager);
 	// BW1W120 004266c0 BW1M119 010b12d0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 004265a0 BW1M119 010b1480
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00425d70 BW1M119 010b0c30
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_TOWN_ARTIFACT; }
 
 	// Constructors
 
@@ -71,7 +76,7 @@ public:
 
 	// Non-virtual methods
 	// BW1W120 00425df0 BW1M119 010b25f0
-	void Init(FixedObject* object, Town* town, WorshipSite* worship_site, GPlayer* player);
+	void Init(Fixed* artifact, Town* town, WorshipSite* site, GPlayer* player);
 	// BW1W120 004263d0 BW1M119 010b1830
 	float GetDesireToAddVillager();
 	// BW1W120 00426130 BW1M119 010b1d30
@@ -97,8 +102,12 @@ public:
 	void Validate();
 	// BW1W120 0051c8e0 BW1M119 010c77b0
 	void Draw();
+	// BW1W120 inlined BW1M119 inlined
+	float GetValue() { return Value; }
 	// BW1W120 00426a80 BW1M119 010b0c70
 	void AddToValue(float amount);
+	// BW1W120 00426810 BW1M119 null
+	void IncrementValue();
 	// BW1W120 00426820 BW1M119 010b1180
 	void SetValue(float value);
 	// BW1W120 004269c0 BW1M119 010b0cf0

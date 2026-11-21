@@ -103,6 +103,8 @@
 0x00424E6A call_indirect 0x008A9978  # Arena: __imp__CoFileTimeToDosDateTime@12
 0x0042505B call_rel32 0x00401879  # Arena
 0x0042565B call_rel32 0x00401879  # Arena
+0x00425D5A call_indirect 0x008A9014  # Artifact: __imp__RegSetValueExA@24
+0x0042681B call_rel32 0x00401879  # Artifact
 0x00426B3B call_rel32 0x00401879  # Audio
 0x00426C9B call_rel32 0x00401879  # Audio
 0x004271FA call_indirect 0x008A98A8  # Audio: __imp__waveInClose@4

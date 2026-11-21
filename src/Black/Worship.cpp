@@ -3,6 +3,7 @@
 #include "Game.h"
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
 #include "PotInfo.h"
+#include "PhysicsObject.h"
 #include "WorshipSiteInfo.h"
 #include "Game3DObject.h"
 #include "Rand.h"
@@ -49,7 +50,6 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "Landscape.h"
 #include "Utils.h"
 #include "Player.h"
-#include "PhysicsObject.h"
 #include "HelpProfile.h"
 #include "Pot.h"
 #include "PSysInterface.h"

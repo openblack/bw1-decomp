@@ -148,6 +148,8 @@ public:
 	uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 005300d0 BW1M119 010e97e0
 	bool32_t AllMembersWithinFlockDistance();
+	// BW1W120 0052ffd0 BW1M119 010e99e0
+	static Flock* FindClosestFlock(const MapCoords& coords, float max_distance);
 };
 
 #endif /* BW1_DECOMP_FLOCK_INCLUDED_H */

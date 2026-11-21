@@ -15,14 +15,14 @@
 #include "chlasm/Enum.h"
 #include "Creche.h"
 #include "EditorPhysics.h"
+#ifdef VERSION_BW1WCI
+#include "AbodeInfo.h"
+#endif
 #include "Field.h"
 #if defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
 #include "AbodeInfo.h"
 #endif
 #include "FieldTypeInfo.h"
-#ifdef VERSION_BW1WCI
-#include "AbodeInfo.h"
-#endif
 #include "FootpathNode.h"
 #include "GameOSFile.h"
 #include "Game3DObject.h"
