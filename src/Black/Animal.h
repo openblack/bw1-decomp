@@ -12,7 +12,9 @@
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For class JustXZ */
 #include <Lionhead/LH3DLib/development/Zoomer.h>        /* For struct Zoomer */
 
-#include "Living.h" /* For struct Living */
+#include "AnimalStateTableInfo.h" /* For class GAnimalStateTableInfo */
+#include "AnimalInfo.h"           /* For class GAnimalInfo */
+#include "Living.h"               /* For struct Living */
 
 // Forward Declares
 
@@ -278,13 +280,19 @@ public:
 	// BW1W120 00417530 BW1M119 01137480
 	virtual RESOURCE_TYPE GetResourceType() { return RESOURCE_TYPE_FOOD; }
 	// BW1W120 00417540 BW1M119 011374c0
-	virtual MESH_LIST GetMesh() const;
+	virtual MESH_LIST GetMesh() const { return GetInfo()->DetailMeshes[DETAIL_LEVEL_NORMAL]; }
 	// BW1W120 00417550 BW1M119 01137570
-	virtual int GetDetailMesh(int detail) const;
+	virtual int GetDetailMesh(int detail) const { return GetInfo()->DetailMeshes[detail]; }
 	// BW1W120 00417570 BW1M119 011375f0
-	virtual bool32_t IsScriptState(unsigned long state) const;
+	virtual bool32_t IsScriptState(unsigned long state) const
+	{
+		return GAnimalStateTableInfo::GetInfo()[state].IsScriptState;
+	}
 	// BW1W120 00417590 BW1M119 01137660
-	virtual bool32_t IsScriptInterruptableState(unsigned long state) const;
+	virtual bool32_t IsScriptInterruptableState(unsigned long state) const
+	{
+		return GAnimalStateTableInfo::GetInfo()[state].IsScriptInterruptableState;
+	}
 	// BW1W120 004175b0 BW1M119 011376e0
 	virtual bool32_t IAmABird() { return false; }
 	// BW1W120 004175c0 BW1M119 01137710
