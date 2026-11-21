@@ -24,7 +24,12 @@ struct MusicMoodPacket
 	unsigned int MusicID;
 	MusicEmotion Emotion;
 	// BW1W120 0054b910 BW1M119 0101b3a0
-	MusicMoodPacket();
+	MusicMoodPacket()
+	{
+		MusicID = 0;
+		NumTracks = 0;
+		Track = 0;
+	}
 };
 
 class Archive;

@@ -159,6 +159,9 @@ enum GAME_FLAGS
 #endif
 };
 
+// BW1W120 00cd3af0
+extern SetupBox* RequestorBox;
+
 class GGame : public GameThing
 {
 public:
@@ -258,8 +261,8 @@ public:
 		};
 	};
 	GPlayer          players[0x8];
-	uint8_t          field_0x5318[0x660];
-	uint8_t          field_0x5978;
+	uint8_t          PacketBuffer[0x660];
+	uint8_t          PacketBufferLength;
 	uint8_t          field_0x5979;
 	uint8_t          field_0x597a[2];
 	StatsDatabase    stats_database;
@@ -559,8 +562,8 @@ public:
 	bool32_t CheckNeedUpdateInfluence(float x, float z);
 	// BW1W120 null BW1M119 011a2940
 	void CloseOneTimeOnly();
-	// BW1W120 null BW1M119 0100ce10
-	void DecompressPacket(GPacket& packet, void* data);
+	// BW1W120 00551ee0 BW1M119 0100ce10
+	void* DecompressPacket(GPacket& packet, void* data);
 	// BW1W120 0054cb90 BW1M119 01566860
 	static void DoAreYoSureLeaveLand0Requestor(wchar_t* text);
 	// BW1W120 0054cb50 BW1M119 013f9590
