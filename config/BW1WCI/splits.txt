@@ -2793,11 +2793,16 @@ Black/TribeInfo.cpp:
 	.bss        start:0x00E2D85C end:0x00E2D868
 
 Black/Utils.cpp:
-	.text       start:0x007692C0 end:0x0076C040
-	.rdata      start:0x00A09AD4 end:0x00A09AF8
+	.text       start:0x007692C0 end:0x0076BE50
+	.rdata      start:0x00A09AD4 end:0x00A09AF0
 	.CRT$XCU    start:0x00A37270 end:0x00A37288 align:4
-	.data       start:0x00C967B4 end:0x00C96A88
-	.bss        start:0x00E2D868 end:0x00E2E9D8
+	.data       start:0x00C967B4 end:0x00C96A83
+	.bss        start:0x00E2D868 end:0x00E2D9C8
+
+Black/UtilsMath.cpp:
+	.text       start:0x0076BE50 end:0x0076C040
+	.rdata      start:0x00A09AF0 end:0x00A09AF8
+	.bss        start:0x00E2D9C8 end:0x00E2E9D8
 
 Black/Version.cpp:
 	.text       start:0x0076C040 end:0x0076C090

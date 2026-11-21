@@ -262,6 +262,9 @@ block_relocations:
 # Tree::DrawOutOfMap's 0xff0000 is an immediate, not an address in 1.30's larger image.
   - source: 0x00750117
   - source: 0x0075012B
+# build_inv_sqrt_table's mantissa mask 0x7fe000 is an immediate, not a pointer into code.
+  - source: 0x007543CF
+  - source: 0x007543DA
 # VillagerName::Add's white 0xffffff and colour blend terms 0xff0000 and 0x7f8000 are immediates, not code pointers.
   - source: 0x00767880
   - source: 0x0076788B
@@ -628,13 +631,9 @@ block_relocations:
   - source: 0x00CA0FB0
   - source: 0x00CA11D0
 
-# Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
-  - source: 0x00CA3F30
-  - source: 0x00CB1F18
-# Two 16-bit tables (Tree.cpp's and one in the .data after it) counting 0x9D, 0x9E, ...: "a1 00 a2 00" reads as
-# 0x00A200A1, inside the $T16943 constant.
-  - source: 0x00CA3F60
-  - source: 0x00CB1F48
+# Utils' arctangent and sigmoid tables hold 16-bit and float values that read as addresses.
+  - source: 0x00CA3E4C
+    end: 0x00CA40F8
 # "tMM" of Version.cpp's LH_VERSION_END_TAG reads as a pointer into Creature::CanCreatureCastSpell.
   - source: 0x00CA42B4
 # The same "tMM" in LHFile's Version.cpp.
@@ -643,8 +642,12 @@ block_relocations:
   - source: 0x00CB119C
 # The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside LoadIt<GFurnitureInfo>.
   - source: 0x00CB19C4
+# Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
+  - source: 0x00CB1F18
 # A 0x009C009B in .data that reads as a pointer into the import lookup tables.
   - source: 0x00CB1F3C
+# A 16-bit table counting 0x9D, 0x9E, ...: "a1 00 a2 00" reads as 0x00A200A1, inside the $T16943 constant.
+  - source: 0x00CB1F48
 # The script keyword "..._DEPTH" ends in "PTH\0", which reads as 0x00485450, inside LH3DCreature::StateSwitch.
   - source: 0x00CB5B6C
 # MeshLodInfo's triangle tables (LH3DIsland) hold pairs of vertex indices that read as code addresses.

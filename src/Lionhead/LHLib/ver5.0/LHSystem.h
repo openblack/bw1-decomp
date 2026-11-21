@@ -304,6 +304,14 @@ bool AnyWindowMessages();
 void ProcessWindowMessages();
 // BW1W120 007dbed0
 void LHTerminate();
+// BW1W120 007db8e0 BW1M119 0115fe80 (LHCombined Release)
+int TurnOffMenu();
+// BW1W120 007db8f0 BW1M119 0115fe20 (LHCombined Release)
+int TurnOnMenu();
+// BW1W120 007dc9a0 BW1M119 0115f290 (LHCombined Release)
+int LHResetMSWindow(unsigned short width, unsigned short height);
+// BW1W120 007dcab0 BW1M119 0113f0c0 (LHCombined Release)
+void LHResetKeyboard();
 
 inline void LHPixel16::Set(LHColor color)
 {
@@ -315,13 +323,6 @@ inline void LHPixel16::Set(LHColor color)
 inline LHPixel16::LHPixel16(LHColor color)
 {
 	Set(color);
-}
-
-inline void LHPixel16::Set(uint8_t red, uint8_t green, uint8_t blue)
-{
-	value = ((blue >> LHSys::GetScreen().GetBlueScale()) << LHSys::GetScreen().GetBlueShift()) +
-	        ((green >> LHSys::GetScreen().GetGreenScale()) << LHSys::GetScreen().GetGreenShift()) +
-	        ((red >> LHSys::GetScreen().GetRedScale()) << LHSys::GetScreen().GetRedShift());
 }
 
 inline uint8_t LHPixel16::GetR()

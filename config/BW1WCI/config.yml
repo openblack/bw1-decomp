@@ -169,6 +169,9 @@ block_relocations:
 # immediates, not pointers into LHDraw::EmbossedBox24 and NewCols.
   - source: 0x00730502
   - source: 0x00730532
+# build_inv_sqrt_table's mantissa mask 0x7fe000 is an immediate, not a pointer into code.
+  - source: 0x0076BEAF
+  - source: 0x0076BEBA
 # VillagerName::Add's white 0xffffff and colour blend terms 0xff0000 and 0x7f8000 are immediates, not code pointers.
   - source: 0x0077F030
   - source: 0x0077F03B
@@ -236,7 +239,6 @@ block_relocations:
   - source: 0x00A16224
 # Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
   - source: 0x008D4998
-  - source: 0x00C9689C
   - source: 0x00CA46BC
 # BWGameSpy's L"Username already in use." and MPFEMessageObject's type descriptor name contain
 # words that read as code addresses; they are text, not pointers.
@@ -267,6 +269,9 @@ block_relocations:
   - source: 0x00C93264
   - source: 0x00C932B4
   - source: 0x00C9395C
+# Utils' arctangent and sigmoid tables hold 16-bit and float values that read as addresses.
+  - source: 0x00C967B4
+    end: 0x00C96A60
 # "tMM" of LHFile's Version.cpp LH_VERSION_END_TAG reads as a pointer into code.
   - source: 0x00C9F59C
 # mbctype's code page table holds 0x005BA2E8, which reads as an address inside HelpDude::UpdateHoverZ.

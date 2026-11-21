@@ -97,9 +97,7 @@
 #define CREATURE_DANCE_LOOK_AT_RANGE           0.1f
 #define CREATURE_COMMUNICATE_FEEDBACK_SECONDS  10.0f
 #define CREATURE_COMMUNICATE_SUPPRESS_SECONDS  60.0f
-// BW1W120 00da59d8
-extern JustMapXZ MapXZDirections8[8];
-const float      TransportSeconds = 2.0f;
+const float TransportSeconds = 2.0f;
 #define CREATURE_TRANSPORT_HOME_FIZZ_SECONDS    2.0f
 #define CREATURE_TRANSPORT_HOME_MAX_NEED        0.9f
 #define CREATURE_TRANSPORT_HOME_MIN_ENERGY      0.1f

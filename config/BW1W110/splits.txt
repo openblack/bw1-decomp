@@ -2699,18 +2699,26 @@ Black/TownStats.cpp:
 Black/Tree.cpp:
 	.text       start:0x0073DE90 end:0x007409B0
 	.rdata      start:0x0098A084 end:0x0098A0FC
-	.data       start:0x00C12030 end:0x00C123E0
+	.data       start:0x00C12030 end:0x00C12068
 	.bss        start:0x00D927A0 end:0x00D94574
 
 Black/TribeInfo.cpp:
 	.text       start:0x007409B0 end:0x00740B20
 	.rdata      start:0x0098A0FC end:0x0098A134
-	.bss        start:0x00D94574 end:0x00D956F0
+	.data       start:0x00C12068 end:0x00C1210C
+	.bss        start:0x00D94574 end:0x00D94580
 
 Black/Utils.cpp:
-	.text       start:0x00740B20 end:0x007438A0
-	.rdata      start:0x0098A134 end:0x0098A15C
-	.CRT$XCU    start:0x009B7224 end:0x009B7228 align:4
+	.text       start:0x00740B20 end:0x007436B0
+	.rdata      start:0x0098A134 end:0x0098A150
+	.CRT$XCU    start:0x009B7218 end:0x009B7230 align:4
+	.data       start:0x00C1210C end:0x00C123DB
+	.bss        start:0x00D94580 end:0x00D946E0
+
+Black/UtilsMath.cpp:
+	.text       start:0x007436B0 end:0x007438A0
+	.rdata      start:0x0098A150 end:0x0098A158
+	.bss        start:0x00D946E0 end:0x00D956F0
 
 Black/Version.cpp:
 	.text       start:0x007438A0 end:0x007438F0
@@ -2720,7 +2728,7 @@ Black/Version.cpp:
 
 Black/Villager.cpp:
 	.text       start:0x007438F0 end:0x0074AD30
-	.rdata      start:0x0098A15C end:0x0098A89C
+	.rdata      start:0x0098A158 end:0x0098A89C
 	.CRT$XCU    start:0x009B7240 end:0x009B7244 align:4
 	.data       start:0x00C12574 end:0x00C12768
 	.bss        start:0x00D95890 end:0x00DA8A90

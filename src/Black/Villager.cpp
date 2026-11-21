@@ -1219,7 +1219,7 @@ bool32_t Villager::DiscipleDecideWhatToDo()
 		GPlayer* player = GetPlayer();
 #endif
 		SetVillagerDisciple(this, VILLAGER_DISCIPLE_NONE, 0);
-		if (CheckMoveHouse(GUtils::FindClosestAbode(Pos, TRIBE_TYPE_NONE, 0, 0, 0)) == true)
+		if (CheckMoveHouse(GUtils::FindClosestAbode(Pos, TRIBE_TYPE_NONE, false, false, false)) == true)
 		{
 			SetTopState(VILLAGER_STATE_GO_HOME_AND_CHANGE);
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)

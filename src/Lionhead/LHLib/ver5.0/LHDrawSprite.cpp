@@ -6,6 +6,7 @@
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHLib/ver5.0/LHSprite.h>
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>
+#include <Lionhead/LHLib/ver5.0/LHPixel16Inline.h>
 
 #pragma warning(disable : 4716)
 

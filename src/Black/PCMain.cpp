@@ -33,6 +33,7 @@
 #include <Lionhead/LHFile/ver3.0/LHFilePath.h>              /* For g_GameDriveCharacter */
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>                /* For LHOSFile */
 #include <Lionhead/LHLib/ver5.0/LHHeap2.h>                  /* For HeapStore, UniqueKeyHeap */
+#include <Lionhead/LHLib/ver5.0/LHPixel16Inline.h>          /* For LHPixel16::Set */
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>                 /* For LHResetFPU */
 #include <Lionhead/LHLib/ver5.0/LHSprite.h>                 /* For LHSprite */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>                 /* For LHSys::TheSystem */

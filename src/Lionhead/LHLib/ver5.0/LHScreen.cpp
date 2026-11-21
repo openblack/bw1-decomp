@@ -39,8 +39,6 @@ void LHSurfaceRestoreAll(int restore);
 void LHSPrintfSetString(void* self, const char* fmt, ...);
 void LHPixel16Set(uint16_t value);
 
-int TurnOffMenu();
-
 // Fixed-address globals (MEMORY[...] in the dump).
 __declspec(dllimport) int LHAssertIgnoreAllAsserts; // assert-suppression flag
 extern int                dword_C3132C;             // 0xC3132C one-time DDraw-init guard

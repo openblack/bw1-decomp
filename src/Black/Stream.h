@@ -54,7 +54,7 @@ public:
 	// BW1W120 00734010 BW1M119 0115c790
 	uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 00733d30 BW1M119 0115ca60
-	bool32_t FindNearestPosTo(MapCoords& pos, MapCoords& nearest_pos, float max_distance);
+	static bool32_t FindNearestPosTo(MapCoords& pos, MapCoords& nearest_pos, float max_distance);
 };
 
 #endif /* BW1_DECOMP_STREAM_INCLUDED_H */
