@@ -44,6 +44,13 @@
 	                 : (line))
 #endif
 
+#if defined(VERSION_BW1W130)
+// BW1W120 null BW1M119 null
+extern bool32_t GloveInstalled;
+// BW1W120 null BW1M119 null
+extern bool32_t HelpTextReloadPending;
+#endif
+
 static int PendingTabControlId = 0;
 
 DialogBoxOptions::DialogBoxOptions() {}

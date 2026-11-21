@@ -466,8 +466,4 @@ inline LH_RETURN LHDraw::OneColorSprite(long x, long y, LHSprite* sprite, LHColo
 	return OneColorSprite24(x, y, sprite, color, flags);
 }
 
-#if defined(VERSION_BW1W130)
-extern bool32_t GloveInstalled;
-#endif
-
 #endif /* BW1_DECOMP_LH_SYSTEM_INCLUDED_H */
