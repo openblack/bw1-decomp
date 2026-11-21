@@ -8,6 +8,7 @@
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>
+#include <Lionhead/LHLib/ver5.0/LHPixel16Inline.h>
 
 static int8_t EmbossShades[LH_BOX_EDGE_LAST] = {2, 1, -2, -1};
 

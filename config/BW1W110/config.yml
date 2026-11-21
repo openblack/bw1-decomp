@@ -78,6 +78,9 @@ block_relocations:
   - source: 0x009BE9A0
 # The "rip" of Interface.cpp's "Bubble Grip" reads as a pointer into SecretCreature::IsCreaturePresent.
   - source: 0x00BE13A4
+# Utils' arctangent and sigmoid tables hold 16-bit and float values that read as addresses.
+  - source: 0x00C1210C
+    end: 0x00C123B8
 # "tMM" of Version.cpp's LH_VERSION_END_TAG reads as a pointer into DecisionTreeAgenda::CreateBelief.
   - source: 0x00C1256C
 # The same "tMM" in LHFile's Version.cpp.

@@ -286,11 +286,10 @@ if config.version == "BW1W100":
         "?BrushWidth@RandomBuildingPlacement@@2MA",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
-    # MapCoords's GetWholeDistance, GetCollideStep, GetGlobalCollideStep,
-    # AddAngleBigDistance and climate searches have no callers in 1.00, so
-    # /OPT:REF dropped them with the only users of these GUtils and GMap helpers.
+    # MapCoords's GetCollideStep, GetGlobalCollideStep, AddAngleBigDistance and
+    # climate searches have no callers in 1.00, so /OPT:REF dropped them with the
+    # only users of these GUtils and GMap helpers.
     for _dead_function in [
-        "?GetDistance@GUtils@@SAJABUMapCoords@@0@Z",
         "?GetCollideStep@GMap@@SAJXZ",
         "?GetXByAngleBigDistance@GUtils@@SAJGJ@Z",
         "?GetZByAngleBigDistance@GUtils@@SAJGJ@Z",
@@ -326,6 +325,14 @@ if config.version == "BW1W100":
     # Serialise's ChooseSavedGame has no callers in 1.00; /OPT:REF dropped it and the
     # comdlg32 import thunks only it calls.
     for _dead_function in ["_GetSaveFileNameA@4", "_GetOpenFileNameA@4"]:
+        config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
+    # Utils's GUtils::DrawTextBox has no callers in 1.00; /OPT:REF dropped it and the
+    # LHText and LHDraw members that only it calls.
+    for _dead_function in [
+        "?StringHeight@LHText@@QAEHPAD0@Z",
+        "?Draw@LHText@@QAEHJJPADK@Z",
+        "?EmbossedBox16@LHDraw@@QAE?AW4LH_RETURN@@JJJJVLHPixel16@@0EEK@Z",
+    ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
 # LHLogR.dll's project links without /DEBUG: unlike LHAudio (but for Creature
 # Isle's, below), LHMultiplayer, LHDialog (and runblack from 1.10 on) it has no
@@ -1272,7 +1279,8 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/TribeInfo.cpp"),
             GameCodeObject(Matching, "Black/UniverseRoom.cpp"),
             GameCodeObject(Matching, "Black/UniverseRoomCamera.cpp"),
-            GameCodeObject(NonMatching, "Black/Utils.cpp"),
+            GameCodeObject(Matching, "Black/Utils.cpp"),
+            GameCodeObject(NonMatching, "Black/UtilsMath.cpp", pch=False),
             GameCodeObject(Matching, "Black/Version.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/Villager.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerCheck.cpp"),

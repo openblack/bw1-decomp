@@ -2892,18 +2892,27 @@ Black/Tree.cpp:
 	.text       start:0x0074EAB0 end:0x00751610
 	.rdata      start:0x00A19AFC end:0x00A19B74
 	.CRT$XCU    start:0x00A47938 end:0x00A47948 align:4
-	.data       start:0x00CA3D88 end:0x00CA4128
+	.data       start:0x00CA3D88 end:0x00CA3DA8
 	.bss        start:0x00E24C88 end:0x00E26A5C
 
 Black/TribeInfo.cpp:
-	.text       start:0x00751610 end:0x00752D80
-	.rdata      start:0x00A19B74 end:0x00A19BD0
-	.CRT$XCU    start:0x00A47948 end:0x00A47964 align:4
-	.bss        start:0x00E26A5C end:0x00E27BD8
+	.text       start:0x00751610 end:0x007517B0
+	.rdata      start:0x00A19B74 end:0x00A19BAC
+	.CRT$XCU    start:0x00A47948 end:0x00A47958 align:4
+	.data       start:0x00CA3DA8 end:0x00CA3E4C
+	.bss        start:0x00E26A5C end:0x00E26A68
 
 Black/Utils.cpp:
-	.text       start:0x00752D80 end:0x00754560
-	.CRT$XCU    start:0x00A47964 end:0x00A47974 align:4
+	.text       start:0x007517B0 end:0x00754370
+	.rdata      start:0x00A19BAC end:0x00A19BC8
+	.CRT$XCU    start:0x00A47958 end:0x00A47974 align:4
+	.data       start:0x00CA3E4C end:0x00CA4127
+	.bss        start:0x00E26A68 end:0x00E26BC8
+
+Black/UtilsMath.cpp:
+	.text       start:0x00754370 end:0x00754560
+	.rdata      start:0x00A19BC8 end:0x00A19BD0
+	.bss        start:0x00E26BC8 end:0x00E27BD8
 
 Black/Version.cpp:
 	.text       start:0x00754560 end:0x007545B0

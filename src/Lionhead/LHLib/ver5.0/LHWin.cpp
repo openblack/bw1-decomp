@@ -157,7 +157,7 @@ unsigned char LHKeyboard::LHKeyToAscii(LH_KEY key, bool32_t shift)
 	return LHKeyToAsciiTable[key | (shift != false ? 0x80 : 0)];
 }
 
-int ResizeWindow(unsigned short width, unsigned short height)
+int LHResetMSWindow(unsigned short width, unsigned short height)
 {
 	if (LHSys::GetScreen().windowed)
 	{
@@ -287,7 +287,7 @@ void MouseMoveHandler(int hwnd, int lparam, int msg_time)
 
 // Reset all key-down state and the modifier flags.
 // BW1W120 007dcab0
-void ClearKeyboardState()
+void LHResetKeyboard()
 {
 	memset(LHSys::GetKeyboard().KeyState, 0, 0xFF);
 	LHSys::GetKeyboard().ModifierFlags = 0;

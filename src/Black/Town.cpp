@@ -3201,7 +3201,7 @@ void Town::BuildNearestTownSitesCheat()
 	MapCoords pos;
 	GLandscape::ConvertLandscapePointToMapCoord(focus, pos);
 	Town*  nearestTown = NULL;
-	Abode* abode = GUtils::FindClosestAbode(pos, TRIBE_TYPE_NONE, 0, 0, 0);
+	Abode* abode = GUtils::FindClosestAbode(pos, TRIBE_TYPE_NONE, false, false, false);
 	if (abode != NULL)
 	{
 		nearestTown = abode->GetTown();

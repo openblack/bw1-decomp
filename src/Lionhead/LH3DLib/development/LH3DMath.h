@@ -61,12 +61,10 @@ inline float SquareRoot(float x)
 	return (float)sqrt(x);
 }
 
-// TODO: Judging by the function address, this is the wrong TU for this:
-
 // BW1W120 0074f680 BW1M119 0104c020
-int __cdecl hypotenuse(int param_1, int param_2);
+int __cdecl hypotenuse(int dx, int dz);
 // BW1W120 0074d0c0 BW1M119 0102fd80 (LHCombined Release)
-long __cdecl LHArcTan(long param_1, long param_2);
+uint16_t __cdecl LHArcTan(long x, long z);
 // BW1W120 007fa990 BW1M119 0100f5a0 (LHCombined Release)
 float __cdecl atan360(float x, float y);
 // BW1W120 007faa50 BW1M119 0100f420 (LHCombined Release)

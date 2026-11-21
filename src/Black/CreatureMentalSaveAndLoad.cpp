@@ -456,10 +456,12 @@ void Creature::ResolveLoad()
 #endif // VERSION_BW1W100
 }
 
+#ifndef VERSION_BW1W100
 void CreatureMental::SaveMindToChosenFile()
 {
 	SaveMind(GUtils::GetFileNameFromDialog(false, "Save Mind", "", CREATURE_MIND_PATH));
 }
+#endif // VERSION_BW1W100
 
 void Creature::Save3D(char* path)
 {
