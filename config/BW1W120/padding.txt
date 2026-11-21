@@ -241,6 +241,7 @@
 0x0054624B call_rel32 0x00401879  # FrontEndSetupGame
 0x00546CFB call_rel32 0x00401879  # FrontEndSetupGame
 0x0054885A call_indirect 0x008A98DC  # FrontEndSetupGame
+0x00549B2B call_rel32 0x00401879  # FrontEndSetupMultiplayer
 0x005649EB call_rel32 0x004017F9  # GameStats
 0x00564ADA call_indirect 0x008A90A0  # GameStats: __imp_?GetCurrentPosition@CImmMouse@@UAEHAAJ0@Z
 0x00564EDB call_rel32 0x004017F9  # GameStats

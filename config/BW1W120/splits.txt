@@ -1120,16 +1120,17 @@ Black/FrontEndSetupGame.cpp:
 Black/FrontEndSetupMultiplayer.cpp:
 	.text       start:0x00549B10 end:0x0054A2C0
 	.rdata      start:0x008DED08 end:0x008DED60
+	.rdata$r    start:0x009ACEC0 end:0x009ACF60
 	.CRT$XCU    start:0x009C68FC end:0x009C6908 align:4
-	.data       start:0x00BEA898 end:0x00BEA940
-	.bss        start:0x00CD1678 end:0x00CD360C
+	.data       start:0x00BEA898 end:0x00BEA908
+	.bss        start:0x00CD1678 end:0x00CD1684
 
 Black/Furniture.cpp:
 	.text       start:0x0054A2C0 end:0x0054A4D0
 	.rdata      start:0x008DED60 end:0x008DF608
 	.CRT$XCU    start:0x009C6908 end:0x009C6918 align:4
-	.data       start:0x00BEA940 end:0x00BEC32C
-	.bss        start:0x00CD360C end:0x00D01950
+	.data       start:0x00BEA908 end:0x00BEC32C
+	.bss        start:0x00CD1684 end:0x00D01950
 
 Black/Game.cpp:
 	.text       start:0x0054A4D0 end:0x00557180
