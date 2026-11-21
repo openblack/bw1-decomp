@@ -167,17 +167,19 @@ Black/Arena.cpp:
 	.bss        start:0x00CC9CC0 end:0x00CC9CC8
 
 Black/Arrow.cpp:
-	.text       start:0x00426B30 end:0x00426E70
+	.text       start:0x00426B30 end:0x00426E90
 	.rdata      start:0x008EFC4C end:0x008F0540
 	.rdata$r    start:0x00A18130 end:0x00A18220
 	.CRT$XCU    start:0x00A360D0 end:0x00A360D4 align:4
-	.data       start:0x00A38E68 end:0x00A38F38
+	.data       start:0x00A38E68 end:0x00A38F08
 	.bss        start:0x00CC9CC8 end:0x00CC9E08
 
 Black/Artifact.cpp:
-	.text       start:0x00426E70 end:0x00427CF0
+	.text       start:0x00426E90 end:0x00427CF0
 	.rdata      start:0x008F0540 end:0x008F0664
-	.data       start:0x00A38F38 end:0x00A38F58
+	.rdata$r    start:0x00A18220 end:0x00A18270
+	.CRT$XCU    start:0x00A360D4 end:0x00A360E0 align:4
+	.data       start:0x00A38F08 end:0x00A38F58
 	.bss        start:0x00CC9E08 end:0x00CC9E24
 
 Black/Audio.cpp:

@@ -10,6 +10,9 @@ struct LHPoint;
 class PlayerSymbolSprite
 {
 public:
+	// BW1W120 0069d540 BW1M119 0142e770
+	static PlayerSymbolSprite* Create(uint8_t player_number);
+
 	// Non-virtual methods
 
 	// BW1W120 0069d690 BW1M119 01083370

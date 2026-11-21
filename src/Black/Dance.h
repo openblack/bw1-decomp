@@ -118,6 +118,8 @@ public:
 	bool32_t HasDanceProperlyStarted();
 	// BW1W120 0050c440 BW1M119 012ac050
 	uint32_t GetGameTurnsActiveFor();
+	// BW1W120 inlined BW1M119 inlined
+	uint32_t GetDuration() const { return Duration; }
 	// BW1W120 0050c460 BW1M119 012abe30
 	GDanceInfo* GetInfo();
 	// BW1W120 0050c340 BW1M119 012ac220

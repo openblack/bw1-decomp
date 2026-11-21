@@ -57,6 +57,8 @@ public:
 	virtual GameThing* GetTownArtifact() { return town_artifact; }
 	// BW1W120 00401480 BW1M119 013e07d0
 	virtual bool32_t IsTownArtifact() { return town_artifact != NULL; }
+	// BW1W120 0050ca20 BW1M119 012ab5d0
+	DANCE_INFO GetArtifactDanceInfo();
 	// BW1W120 004d1b80 BW1M119 012477c0
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 0052de30 BW1M119 010e6df0
