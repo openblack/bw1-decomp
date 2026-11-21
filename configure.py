@@ -853,7 +853,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/AudioSFX.cpp"),
             GameCodeObject(Matching, "Black/audiotag.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/Balance.cpp"),
-            GameCodeObject(NonMatching, "Black/Ball.cpp"),
+            GameCodeObject(Matching, "Black/Ball.cpp"),
             GameCodeObject(Matching, "Black/Base.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/BaseInfo.cpp"),
             GameCodeObject(Matching, "Black/Belief.cpp", pch=False),

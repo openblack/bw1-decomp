@@ -407,7 +407,7 @@ void load_variables(void)
 	LOAD_INFO_ARRAY("DETAIL_MISC_INFO", GSingleMapFixedInfo::Infos);
 	LOAD_INFO_ARRAY("DETAIL_HIGHLIGHT_INFO", GScriptHighlightInfo::Infos);
 	LOAD_INFO_ARRAY("DETAIL_MAP_SHIELD_INFO", GMapShieldInfo::Infos);
-	LOAD_INFO_ARRAY("DETAIL_BALL_INFO", GBallInfo::Infos);
+	LoadIt(loader, (char*)"DETAIL_BALL_INFO", GBallInfo::GetInfo(), 1, use_binary, &file);
 	LOAD_INFO_ARRAY("DETAIL_TOWN_INFO", GTownInfo::Definitions);
 	LOAD_INFO_ARRAY("DETAIL_JOB_INFO", GJobInfo::InfoList);
 	LOAD_INFO_ARRAY("DETAIL_FEATURE_INFO", GFeatureInfo::Infos);

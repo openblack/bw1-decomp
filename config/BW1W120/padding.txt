@@ -119,6 +119,8 @@
 0x0042A32B call_rel32 0x00401879  # AudioSFX
 0x0042A5EA call_indirect 0x008A9328  # AudioSFX: __imp__LHEditBox__YAHPBDKKKK0HPAD_Z@4
 0x0042A61A call_indirect 0x008A901C  # AudioSFX: __imp__TrackMouseEvent@4
+0x004360BB call_rel32 0x00401879  # Ball
+0x004360CB call_rel32 0x00401879  # Ball
 0x0043641B call_rel32 0x00401879  # Base
 0x0043681B call_rel32 0x00401879  # Base
 0x0043686B call_rel32 0x00401879  # Base
