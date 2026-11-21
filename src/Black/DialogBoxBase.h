@@ -14,6 +14,12 @@ struct SetupControl;
 class DialogBoxBase
 {
 public:
+	// The active boxes Show replaced, so Hide can restore them; the top entry is the box being shown.
+	// BW1W120 00cc6258
+	static SetupBox* BoxStack[16];
+	// BW1W120 00cc62a0
+	static uint32_t BoxStackCount;
+
 	// Descriptive name for the intrusive dialog list.
 	// BW1W120 00cc6298
 	static DialogBoxBase* First;
@@ -29,7 +35,7 @@ public:
 	// Override methods
 
 	// BW1W120 00513400 BW1M119 012b55a0
-	virtual void Init(uint32_t background_style, uint32_t tall_background,
+	virtual void Init(uint32_t width, uint32_t height,
 	                  void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 00513590 BW1M119 012b5480
 	virtual void Destroy();

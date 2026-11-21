@@ -30,6 +30,7 @@ struct SetupBox;
 struct SetupFadeIn;
 struct SetupList;
 struct SetupStaticText;
+struct TextRangeArray;
 
 // Identifier of the IME candidate list that SetupEdit creates.
 #define SETUP_IME_CANDIDATE_LIST_ID           0x85b680
@@ -432,9 +433,7 @@ struct SetupBox
 	uint32_t         field_0x7c;
 	uint32_t         field_0x80;
 	float            field_0x84;
-	uint32_t         field_0x88;
-	uint32_t         field_0x8c;
-	uint32_t         field_0x90;
+	LHPoint          field_0x88;
 	SETUP_BACKGROUND BackgroundStyle;
 	int              TallBackground;
 	int              BackgroundWidth;
@@ -449,6 +448,46 @@ struct SetupBox
 	int              HoldColour;
 	float            Alpha;
 	bool32_t         KeysPassThrough;
+
+	// BW1W120 inlined BW1M119 inlined
+	SetupBox(int width, int height)
+	{
+		HoldColour = -1;
+		TallBackground = 0;
+		Alpha = 1.0f;
+		BackgroundWidth = width;
+		BackgroundHeight = height;
+		HoldWidth = 600;
+		HoldHeight = 200;
+		OnHold = false;
+		ActiveWhileOnHold = false;
+		HeldOverWidget = NULL;
+		WidgetList = NULL;
+		FocusedWidget = NULL;
+		HoldWidgetList = NULL;
+		Callback = NULL;
+		DefaultTextSize = GetBigTextSize();
+		CurrentInitBox = this;
+		Fade.SetPosition(0.0f);
+		HoldFade.SetPosition(0.0f);
+		HoldFade.SetDestination(0.0f, 0.5f);
+		Fade.SetDestination(Alpha, 0.5f);
+		field_0x78 = 1;
+		field_0x7c = 400;
+		field_0x80 = 300;
+		field_0x84 = 1.0f;
+		field_0x88 = LHPoint(0.0f, 0.0f, 0.0f);
+		BackgroundStyle = SETUP_BACKGROUND_FRAMED;
+		KeysPassThrough = false;
+		HoverWidget = NULL;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	~SetupBox()
+	{
+		CurrentInitBox = NULL;
+		SetOffHold();
+		DeleteAll();
+	}
 
 	// Static methods
 
@@ -487,7 +526,7 @@ struct SetupBox
 	void SetFocusPrev();
 	// BW1W120 00411150 BW1M119 014efd50
 	void CleanOld();
-	// BW1W120 null BW1M119 012b5520
+	// BW1W120 inlined BW1M119 012b5520
 	void DeleteAll();
 	// BW1W120 00411190 BW1M119 013ccd30
 	void MessageBoxA(char16_t* text, MSGBOXSTYLE style, unsigned long hold_data);
@@ -845,6 +884,8 @@ struct SetupEdit : public SetupControl
 	int CalcCharpos(int pos);
 	// BW1W120 null BW1M119 01576390
 	void UnderlineRange(short, int, int);
+	// BW1W120 null BW1M119 01390f80
+	void UpdateActiveInlineInputArea(char16_t*, int, int, TextRangeArray*);
 	// BW1W120 inlined BW1M119 inlined
 	void SetText(const char16_t* text)
 	{

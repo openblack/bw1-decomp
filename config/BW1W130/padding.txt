@@ -846,6 +846,12 @@
 0x0050CE53 jmp_run 0x0050CDDB  # Creche
 0x0050CF13 jmp_run 0x0050CE53  # Creche
 0x0050CF32 jmp_run 0x0050CF13  # Creche
+0x00515961 copy_run 0x005151AA  # DialogBoxMain
+0x00515AF4 jmp_run 0x00515961  # DialogBoxMain
+0x00515BE8 copy_run 0x00515AF4  # DialogBoxMain
+0x00515C1A call_indirect 0x008AE028  # DialogBoxMain
+0x00515C43 copy_run 0x00515C1A  # DialogBoxMain
+0x00515CF2 jmp_run 0x00515C43  # DialogBoxMain
 0x00530CB3 jmp_run 0x00530C52  # Fixed
 0x00530CDB call_rel32 0x00403C49  # Fixed
 0x00530D59 jmp_run 0x00530CDB  # Fixed

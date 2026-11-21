@@ -869,23 +869,26 @@ Black/Debug.cpp:
 	.text       start:0x0050FD80 end:0x005104E0
 	.rdata      start:0x008C727C end:0x008C858C
 	.CRT$XCU    start:0x009B6508 end:0x009B6510 align:4
-	.bss        start:0x00CB4E64 end:0x00CB50E4
+	.bss        start:0x00CB4E64 end:0x00CB4E70
 
 Black/DialogBoxKeyBinding.cpp:
-	.text       start:0x005104E0 end:0x005114D0
+	.text       start:0x005104E0 end:0x00511570
 	.rdata      start:0x008C858C end:0x008C85B4
 	.data       start:0x00BD818C end:0x00BD81F0
+	.bss        start:0x00CB4E70 end:0x00CB5090
 
 Black/DialogBoxMain.cpp:
-	.text       start:0x005114D0 end:0x00511960
+	.text       start:0x00511570 end:0x00511960
 	.rdata      start:0x008C85B4 end:0x008C85E4
-	.data       start:0x00BD81F0 end:0x00BD829F
+	.rdata$r    start:0x0099B82C end:0x0099B8A8
+	.data       start:0x00BD81F0 end:0x00BD8210
+	.bss        start:0x00CB5090 end:0x00CB50DC
 
 Black/DialogBoxOptions.cpp:
 	.text       start:0x00511960 end:0x00513B00
 	.rdata      start:0x008C85E4 end:0x008C8688
 	.CRT$XCU    start:0x009B651C end:0x009B6524 align:4
-	.data       start:0x00BD82A0 end:0x00BD836C
+	.data       start:0x00BD8210 end:0x00BD836C
 	.bss        start:0x00CB50E4 end:0x00CB50F8
 
 Black/DialogBoxSaveMessage.cpp:

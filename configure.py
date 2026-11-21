@@ -955,7 +955,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Debug.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/DialogBoxBase.cpp"),
             GameCodeObject(NonMatching, "Black/DialogBoxKeyBinding.cpp", pch=PCH_EXCEPT_NO_STRING),
-            GameCodeObject(NonMatching, "Black/DialogBoxMain.cpp"),
+            GameCodeObject(Matching, "Black/DialogBoxMain.cpp"),
             GameCodeObject(NonMatching, "Black/DialogBoxOptions.cpp"),
             GameCodeObject(NonMatching, "Black/DialogBoxSaveMessage.cpp"),
             GameCodeObject(NonMatching, "Black/DrawingObject.cpp"),
