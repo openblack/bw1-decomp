@@ -23,9 +23,7 @@ class GAnimalInfo : public GLivingInfo
 public:
 	ANIMAL_INFO AnimalType; /* 0x1f4 */
 	uint32_t    field_0x1f8;
-	MESH_LIST   HighDetail;
-	MESH_LIST   StdDetail; /* 0x200 */
-	MESH_LIST   LowDetail;
+	MESH_LIST   DetailMeshes[DETAIL_LEVEL_LAST];
 	uint32_t    field_0x208;
 	int32_t     HungerThreshold;
 	int32_t     ThirstThreshold; /* 0x210 */
@@ -60,7 +58,7 @@ public:
 	// Override methods
 
 	// BW1W120 00416d20 BW1M119 01175af0
-	virtual MESH_LIST GetMesh() const { return StdDetail; }
+	virtual MESH_LIST GetMesh() const { return DetailMeshes[DETAIL_LEVEL_NORMAL]; }
 	// BW1W120 00416d30 BW1M119 01175b30
 	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
 	{
