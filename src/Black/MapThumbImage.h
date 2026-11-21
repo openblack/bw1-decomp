@@ -27,6 +27,8 @@ public:
 	// BW1W120 00712b10 BW1M119 011a5ba0
 	~MapThumbImage();
 
+	// BW1W120 inlined BW1M119 015d22f0
+	char* GetDescription() { return Description; }
 	// BW1W120 inlined BW1M119 01398140
 	char* GetImageData() { return (char*)this + (DescriptionLength + 9); }
 	// BW1W120 inlined BW1M119 013980c0

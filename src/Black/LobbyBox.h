@@ -13,9 +13,12 @@
 class LobbyBox : public DialogBoxBase
 {
 public:
+	// BW1W120 00d31af4
+	static LobbyBox* Instance;
+
 	uint8_t                 field_0x10[0x10];
 	bool                    ControlsInitialised; /* 0x20 */
-	bool                    field_0x21;
+	bool                    MapChanged;
 	uint8_t                 field_0x22[0x5a];
 	bool                    field_0x7c;
 	uint8_t                 field_0x7d[0x7];
@@ -34,10 +37,21 @@ public:
 	// BW1W120 005f5fb0 BW1M119 015dd220
 	static void __stdcall ControlCallback(int message, SetupBox* box, SetupControl* control, int x, int y);
 
+	// BW1W120 005f80c0 BW1M119 015dafe0
+	void LeaveGameState();
+	// BW1W120 005f5eb0 BW1M119 015ddd40
+	void SetUserColours();
+	// BW1W120 005f5da0 BW1M119 015ddee0
+	void SendSecretChatMessage(const char* tag, char* text, char* recipient);
+	// BW1W120 inlined BW1M119 015de080
+	void SendMapsPresentString();
+	// BW1W120 005f5b50 BW1M119 015de130
+	void SendMessageA();
+
 	// BW1W120 inlined
 	LobbyBox()
 	{
-		field_0x21 = false;
+		MapChanged = false;
 		field_0x7c = false;
 	}
 

@@ -982,7 +982,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Footpath.cpp"),
             GameCodeObject(NonMatching, "Black/Forest.cpp"),
             GameCodeObject(NonMatching, "Black/frontend.cpp"),
-            GameCodeObject(NonMatching, "Black/FrontEndSetupGame.cpp"),
+            GameCodeObject(Matching, "Black/FrontEndSetupGame.cpp"),
             GameCodeObject(NonMatching, "Black/FrontEndSetupMultiplayer.cpp"),
             GameCodeObject(NonMatching, "Black/Furniture.cpp"),
             GameCodeObject(NonMatching, "Black/Game.cpp"),

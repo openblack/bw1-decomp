@@ -94,6 +94,8 @@ struct Temple
 	void SetCameraToLookAtSubMesh(unsigned long sub_mesh, float pitch, float yaw, float roll);
 	// BW1W120 inlined BW1M119 015aef90
 	TempleRoom*& GetRoom(TempleRoomsEnum room) { return rooms[room]; }
+	// BW1W120 00793c60 BW1M119 01540790
+	void InitEngine(TempleRoomsEnum room, int start_in_room, int unused);
 };
 
 #endif /* BW1_DECOMP_TEMPLE_INCLUDED_H */
