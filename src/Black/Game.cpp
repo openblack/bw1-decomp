@@ -1185,9 +1185,9 @@ void GGame::ClearVariables()
 	field_0x205d50 = 0;
 	field_0x205d54 = 0;
 	field_0x205d58 = 0;
-	field_0x5978 = 1;
+	PacketBufferLength = 1;
 	field_0x5979 = 0;
-	field_0x5318[0] = 0;
+	PacketBuffer[0] = 0;
 	CreatureLogFile = NULL;
 	field_0x2502d4 = NULL;
 	TownDesireLogFile = NULL;
@@ -1424,17 +1424,11 @@ void GGame::ClearMap()
 }
 
 // BW1W120 0054b910 BW1M119 0101b3a0
-MusicMoodPacket::MusicMoodPacket()
-{
-	MusicID = 0;
-	NumTracks = 0;
-	Track = 0;
-}
 static_assert(sizeof(GPacket) == 0x110, "GPacket size is incorrect");
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-static_assert(offsetof(GGame, field_0x5978) == 0x5978, "Packet length offset is incorrect");
+static_assert(offsetof(GGame, PacketBufferLength) == 0x5978, "Packet length offset is incorrect");
 #elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
-static_assert(offsetof(GGame, field_0x5978) == 0x1a38, "Packet length offset is incorrect");
+static_assert(offsetof(GGame, PacketBufferLength) == 0x1a38, "Packet length offset is incorrect");
 #endif
 static_assert(sizeof(GNetwork) == 0x30, "GNetwork size is incorrect");
 static_assert(sizeof(GTerrainMap) == 0x4a130, "GTerrainMap size is incorrect");
@@ -1993,11 +1987,11 @@ void GGame::FlipScreen()
 
 void GGame::FlushPacketBuffer()
 {
-	if (field_0x5318[0] != 0)
+	if (PacketBuffer[0] != 0)
 	{
-		network.fn_00635450(field_0x5318, field_0x5978);
-		field_0x5978 = 1;
-		field_0x5318[0] = 0;
+		network.SendPacket((GPacket*)PacketBuffer, PacketBufferLength);
+		PacketBufferLength = 1;
+		PacketBuffer[0] = 0;
 	}
 }
 

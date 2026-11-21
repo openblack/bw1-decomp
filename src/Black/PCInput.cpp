@@ -253,8 +253,6 @@ static SafeDiscRecord Record = {
 };
 #endif
 
-// BW1W120 00cd3af0
-extern SetupBox* RequestorBox;
 // BW1W120 00d01984
 extern bool VideoUnskippable;
 // BW1W120 00d019d4

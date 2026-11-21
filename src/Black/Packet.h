@@ -116,11 +116,6 @@ public:
 		{
 			PhysicsData Physics;
 		};
-		// Unlike the Mac build's LH3DMapCoords, the Windows alternative emits no initialization.
-		struct
-		{
-			LH3DMapCoords MapPosition;
-		};
 		struct
 		{
 			MapCoords Start;

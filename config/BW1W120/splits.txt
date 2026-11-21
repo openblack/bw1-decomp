@@ -2016,15 +2016,15 @@ Black/MusicMood.cpp:
 	.text       start:0x00633A60 end:0x00634400
 	.rdata      start:0x00930A14 end:0x00930A24
 	.CRT$XCU    start:0x009C709C end:0x009C70AC align:4
-	.data       start:0x00BFDE04 end:0x00BFDE34
-	.bss        start:0x00D410D0 end:0x00D41320
+	.data       start:0x00BFDE04 end:0x00BFDE24
+	.bss        start:0x00D410D0 end:0x00D410F4
 
 Black/Network.cpp:
 	.text       start:0x00634400 end:0x006362B0
 	.rdata      start:0x00930A24 end:0x00930A44
 	.CRT$XCU    start:0x009C70AC end:0x009C70C4 align:4
-	.data       start:0x00BFDE34 end:0x00BFDF30
-	.bss        start:0x00D41320 end:0x00D414A4
+	.data       start:0x00BFDE24 end:0x00BFDF30
+	.bss        start:0x00D410F8 end:0x00D414A4
 
 Black/Object.cpp:
 	.text       start:0x006362B0 end:0x0063AB60
