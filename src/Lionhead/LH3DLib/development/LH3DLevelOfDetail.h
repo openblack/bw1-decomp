@@ -6,6 +6,13 @@
 
 #include <re_common.h> /* For bool32_t */
 
+enum LH3D_DETAIL
+{
+	LH3D_DETAIL_DEFAULT = 3,
+	LH3D_DETAIL_CUSTOM = 5,
+	LH3D_DETAIL_COUNT = 7,
+};
+
 struct LH3DCitadelLevelOfDetail
 {
 	bool    Reflections;
@@ -21,6 +28,8 @@ struct LH3DLevelOfDetail
 {
 	// BW1W120 00c381e0 BW1M119 011ce84c (LHCombined Release)
 	static LH3DCitadelLevelOfDetail g_citadellod;
+	static long                     g_max_detail_idx;
+	static long                     g_detail_idx;
 	// BW1W120 00c381f0 BW1M119 011ce85c (LHCombined Release)
 	static bool32_t g_b_draw_clouds;
 	// BW1W120 00c381f4 BW1M119 011ce860 (LHCombined Release)
@@ -29,14 +38,19 @@ struct LH3DLevelOfDetail
 	static bool32_t g_b_use_small_bump;
 	// BW1W120 00c381fc BW1M119 011ce868 (LHCombined Release)
 	static bool32_t g_b_use_weather_system;
+	static bool32_t g_b_use_day_and_night;
+	static bool32_t g_b_use_creature_foot_print;
 	// BW1W120 00c3820c BW1M119 011ce878 (LHCombined Release)
 	static bool32_t g_b_draw_dynamic_shadow;
+	static bool32_t g_b_use_liquid_particle;
+	static bool32_t g_b_use_hair;
 	// BW1W120 00c38220 BW1M119 011ce88c (LHCombined Release)
 	static bool32_t g_b_objects_cast_shadow;
 	// BW1W120 00c38224 BW1M119 011ce890 (LHCombined Release)
 	static bool32_t g_b_dynamic_lighting_on_objects;
 	// BW1W120 00c38228 BW1M119 011ce894 (LHCombined Release)
 	static float g_water_tilling;
+	static float g_colour_boost;
 	// BW1W120 00eb996c BW1M119 011f2498 (LHCombined Release)
 	static long g_num_rainsplash;
 

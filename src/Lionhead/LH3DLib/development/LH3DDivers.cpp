@@ -10,6 +10,7 @@
 #include <Lionhead/LHLib/ver5.0/LHCollide.h> /* For class NewCollide */
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>  /* For struct LHScreen */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>  /* For struct LHSys */
+#include <Lionhead/LHLog/ver4.0/LHRegistry.h>
 
 #include "Bitmap16B.h"          /* For struct Bitmap16B */
 #include "CheveauxDeFeu.h"      /* For class CheveauxDeFeu */
@@ -69,14 +70,11 @@
 #include "TemporaryShadow.h"    /* For class TemporaryShadow */
 
 #define LH3D_FEET_SHADOW_TEXTURE_SIZE         32
-#define LH3D_FEET_SHADOW_TEXTURE_FLAGS        0x44
-#define LH3D_FEET_SHADOW_TEXTURE_FORMAT       2
 #define LH3D_FEET_SHADOW_SIDE_SIZE            0.2f
 #define LH3D_FEET_SHADOW_LIGHT_SIZE           2.0f
 #define LH3D_FEET_SHADOW_SOLID_CORNERS        2
 #define LH3D_FEET_SHADOW_BACK_OFFSET          -0.02f
 #define LH3D_FEET_SHADOW_TEXTURE_PATH         ".\\Data\\Textures\\human_shadow.raw"
-#define LH3D_IN_BUILD_MAX_EDGES               1000
 #define LH3D_IN_BUILD_COLOR_SCALE             0xc0
 #define LHTGA_IMAGE_TYPE_TRUE_COLOR           2
 #define LHTGA_PIXEL_DEPTH                     32
@@ -85,19 +83,13 @@
 #define LHTGA_HD_SIZE                         256
 #define LHTGA_CHANNEL_MAX                     255
 #define LH3D_TOOLS_TEXT_SIZE                  0x400
-#define LH3D_TOOLS_FILE_SIZE                  0x100
 #define LH3D_TEXTURE_PACK_SIZE                256
 #define LH3D_TEXTURE_PACK_NO_OFFSETS          0xffffffff
 #define BITMAP_16B_LOW_RES_SIZE               128
 #define BITMAP_16B_RAW_SIZE                   256
-#define BITMAP_16B_555_HIGH                   0xffe0
-#define BITMAP_16B_555_BLUE                   0x1f
 #define LH3D_TOOLS_SCREEN_SIZE                50
 #define LH3D_TOOLS_SCREEN_DEPTH               16
 #define LH3D_TOOLS_EXTENSION_LENGTH           4
-#define LH3D_TOOLS_TEXTURE_FLAGS              1
-#define LH3D_TOOLS_TEXTURE_ALPHA              0x40
-#define LIGHT_LIKE_HAND_CELLS_PER_UNIT        0.1f
 #define ECLAIRAGE_PUBLIC_OFFSET               50.0f
 #define ECLAIRAGE_PUBLIC_PERIOD               30.0f
 #define ECLAIRAGE_PUBLIC_TYPE_LOW             1
@@ -128,199 +120,195 @@
 #define SCRIPTED_SCREEN_SHOT_THUMBNAIL_HEIGHT 64
 #define SCRIPTED_SCREEN_SHOT_THUMBNAILS       8
 #define CITADEL_TEXTURE_SIZE                  256
-#define CITADEL_TEXTURE_DESC_FLAGS       (DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH | DDSD_PIXELFORMAT | DDSD_MIPMAPCOUNT)
-#define CITADEL_TEXTURE_CAPS             (DDSCAPS_COMPLEX | DDSCAPS_SYSTEMMEMORY | DDSCAPS_TEXTURE | DDSCAPS_MIPMAP)
-#define CITADEL_TEXTURE_LOCK             (DDLOCK_WAIT | DDLOCK_WRITEONLY | DDLOCK_NOSYSLOCK)
-#define CITADEL_TEXTURE_PIXEL_FORMAT     1
-#define CITADEL_TEXTURE_555_OPAQUE       0x8000
-#define CITADEL_TEXTURE_PITCH            (CITADEL_TEXTURE_SIZE * 3)
-#define CITADEL_TEXTURE_BYTES            (CITADEL_TEXTURE_SIZE * CITADEL_TEXTURE_PITCH)
-#define SMOKY_STUFF_FRAME                16
-#define SMOKY_STUFF_BURST_SPEED          1.5f
-#define SMOKY_STUFF_MIN_SPEED            0.3f
-#define SMOKY_STUFF_BURST_LIFE           1.5f
-#define SMOKY_STUFF_LIFE                 3.0f
-#define SMOKY_STUFF_FADE_LIFE            0.7f
-#define SMOKY_STUFF_BURST_COLOUR         0x68503d
-#define SMOKY_STUFF_ALPHA                100.0f
-#define SMOKY_STUFF_COLOUR               0x808080
-#define SMOKY_STUFF_DEFAULT_COLOUR       0xffffffff
-#define SMOKY_STUFF_SPIN                 5.0f
-#define SMOKY_STUFF_FRAMES               15.0f
-#define GLOW_VILLAGER_COLOUR             0x80c18119
-#define GLOW_VILLAGER_HALO_FRAME         32
-#define GLOW_VILLAGER_HALO_COLOUR        0xffffff00
-#define GLOW_VILLAGER_HALO_SCALE         16.0f
-#define GLOW_VILLAGER_HALO_HEIGHT        2.5f
-#define GLOW_VILLAGER_FRAME_PERIOD       500
-#define GLOW_VILLAGER_FRAMES             15.0f
-#define LH3D_TOOLS_PAGE_SIZE             256
-#define LH3D_TOOLS_TILE_SIZE             32
-#define LH3D_TOOLS_PAGE_TILES            (LH3D_TOOLS_PAGE_SIZE / LH3D_TOOLS_TILE_SIZE)
-#define LH3D_TOOLS_RAW_EXTENSION_LENGTH  5
-#define LH3D_TOOLS_PACK_TEXTURE_PATH     "%s\\PAK%x.tga"
-#define FISH_MIN_SIZE                    0.8f
-#define FISH_MAX_SIZE                    1.2f
-#define FISH_SPRITE_FRAMES               15.5f
-#define FISH_FRAMES                      15.0f
-#define FISH_SPREAD                      5.0f
-#define FISH_DEPTH                       1.0f
-#define FISH_MIN_SPEED                   0.5f
-#define FISH_MAX_SPEED                   1.5f
-#define FISH_TURN_VARIATION              0.1f
-#define FISH_TURN_SPEED                  (TWO_PI / 10.0f)
-#define FISH_FEAR_SPEED                  4.0f
-#define FISH_MAX_STEP                    0.1f
-#define FISH_ANIMATION_SPEED             25.0f
-#define FISH_FRAME_MASK                  0xf
-#define FISH_FIRST_FRAME                 8
-#define FISH_RUSH_COLLIDE_RADIUS         2.0f
-#define FISH_RUSH_FEAR_RADIUS            8.0f
-#define FISH_RUSH_FEAR_TIME              2.0f
-#define FISH_RUSH_FADE_DIST              200.0f
-#define FISH_RUSH_FADE_RANGE             100.0f
-#define FISH_RUSH_DRAW_DIST              300.0f
-#define FISH_RUSH_TARGET_TIME            0.5f
-#define FISH_RUSH_ESCAPE_DIST            2.0f
-#define FISH_RUSH_SPLASH_GROWTH          2.0f
-#define FISH_RUSH_SPLASH_FRAME           48
-#define FISH_RUSH_SPLASH_COLOUR          0xffffffff
-#define FISH_RUSH_NET_BOB                0.5f
-#define FISH_RUSH_NET_SHRINK_SPEED       2.0f
-#define FISH_RUSH_NET_RADIUS             10.0f
-#define FISH_RUSH_NET_SPEED              2.0f
-#define FISH_RUSH_NET_MESH_PATH          "Data\\MISC\\Fishplot.l3d"
-#define SMOKY_STUFF_TYPE_BURST           1
-#define ROOTS_PILE_LIFE                  15000
-#define ROOTS_PILE_FADE_TIME             1000
-#define ROOTS_PILE_SIZE                  0.3f
-#define FALLING_ROOT_SIZE                0.15f
-#define FALLING_ROOT_GRAVITY             20.0f
-#define FALLING_ROOT_LIFE                20.0f
-#define FALLING_ROOT_FADE_START          18.0f
-#define FALLING_ROOT_FADE_TIME           2.0f
-#define FALLING_ROOT_ALPHA_REFERENCE     10
-#define INFLUENCE_CIRCLE_HIDDEN_COLOUR   RGBA_MAKE(0xff, 0xff, 0xff, 0)
-#define INFLUENCE_CIRCLE_SEGMENT_LENGTH  20.0f
-#define INFLUENCE_CIRCLE_MIN_SEGMENTS    8
-#define INFLUENCE_CIRCLE_MAX_SEGMENTS    250
-#define INFLUENCE_CIRCLE_ROW_VERTICES    3
-#define INFLUENCE_CIRCLE_SEGMENT_INDICES 24
-#define INFLUENCE_CIRCLE_U_LENGTH        -111.0f
-#define INFLUENCE_CIRCLE_V_RADIUS        60.0f
-#define INFLUENCE_CIRCLE_MAX_V           6
-#define INFLUENCE_CIRCLE_MIDDLE_HEIGHT   20.0f
-#define INFLUENCE_CIRCLE_TOP_HEIGHT      40.0f
-#define INFLUENCE_CIRCLE_MIDDLE_V        0.2f
-#define INFLUENCE_CIRCLE_TOP_V           0.4f
-#define INFLUENCE_CIRCLE_LOW_HEIGHT      100.0f
-#define INFLUENCE_CIRCLE_HIGH_HEIGHT     200.0f
-#define INFLUENCE_CIRCLE_HIGH_ALPHA      120
-#define INFLUENCE_CIRCLE_CITADEL_ALPHA   255
-#define INFLUENCE_CIRCLE_ANIM_PERIOD     10000
-#define INFLUENCE_CIRCLE_U_SPEED         10000.0f
-#define INFLUENCE_CIRCLE_V_SPEED         5000.0f
-#define TOUCH_MY_EDGE_LIFE               2000
-#define TOUCH_MY_EDGE_FADE_TIME          1000
-#define TOUCH_MY_EDGE_RING_SPACING       2.0f
-#define TOUCH_MY_EDGE_RING_FRAME         63
-#define TOUCH_MY_EDGE_GROWTH             10.0f
-#define TOUCH_MY_EDGE_MAX_SIZE           14.0f
-#define TOUCH_MY_EDGE_PRECISION          1.0f
-#define EUREKA_FRAME                     32
-#define EUREKA_LIFE                      6000.0f
-#define EUREKA_FADE_START                2500.0f
-#define EUREKA_FADE_TIME                 3500.0f
-#define EUREKA_RISE_SPEED                0.003f
-#define EUREKA_TEXT_HEIGHT               1.5f
-#define EUREKA_TEXT_OFFSET               7.5f
-#define EUREKA_TEXT_SIZE                 15.0f
-#define EUREKA_TEXT_DEPTH                4096.0f
-#define EUREKA_BULB_HEIGHT               2.6f
-#define EUREKA_BULB_SCALE                3.0f
-#define EUREKA_BLINKS                    6.0f
-
-#define CHEVEAUX_DE_FEU_RUN_UP           4000.0f
-#define CHEVEAUX_DE_FEU_STOP_SHORT       10.0f
-#define CHEVEAUX_DE_FEU_SPEED            450.0f
-#define CHEVEAUX_DE_FEU_MS_PER_SECOND    1000.0f
-#define CHEVEAUX_DE_FEU_SPACING          6.0f
-#define CHEVEAUX_DE_FEU_LAST_FLAME       5
-#define CHEVEAUX_DE_FEU_FLAME_FRAME      48
-#define CHEVEAUX_DE_FEU_STREAK_FRAME     49
-#define CHEVEAUX_DE_FEU_SMOKE_FRAME      50
-#define CHEVEAUX_DE_FEU_SIZE_RANGE       15
-#define CHEVEAUX_DE_FEU_MIN_SIZE         3.0f
-#define CHEVEAUX_DE_FEU_SMOKE_SCALE      2.0f
-#define CHEVEAUX_DE_FEU_FLAME_JITTER     2.0f
-#define CHEVEAUX_DE_FEU_GLOW             (CHEVEAUX_DE_FEU_SPRITES - 2)
-#define CHEVEAUX_DE_FEU_GLOW_ALPHA       0x28
-#define CHEVEAUX_DE_FEU_GLOW_SIZE        80.0f
-#define CHEVEAUX_DE_FEU_STREAK           (CHEVEAUX_DE_FEU_SPRITES - 1)
-#define CHEVEAUX_DE_FEU_STREAK_ALPHA     0x0e
-#define CHEVEAUX_DE_FEU_STREAK_SIZE      350.0f
-#define CHEVEAUX_DE_FEU_STREAK_ASPECT    0.05f
-#define CHEVEAUX_DE_FEU_STREAK_SPIN_TIME 5000.0f
-#define CHEVEAUX_DE_FEU_STREAK_SPIN      0.25f
-#define CHEVEAUX_DE_FEU_NO_Z_TEST_TIME   8237
-#define CHEVEAUX_DE_FEU_CAMERA_DISTANCE  150.0f
-#define CHEVEAUX_DE_FEU_CAMERA_HEIGHT    30.0f
-
-#define EVIL_OR_ANGEL_VISAGE       1
-#define EVIL_OR_ANGEL_ANGEL_CHANCE 50.0f
-#define EVIL_OR_ANGEL_END_MARGIN   110
-#define EVIL_OR_ANGEL_FADE_TIME    500
-#define EVIL_OR_ANGEL_ALPHA        105
-
-#define DANS_LES_NUAGES_MAX_TIME   500
-#define DANS_LES_NUAGES_DISTANCE   1.0f
-#define DANS_LES_NUAGES_SIZE       10.0f
-#define DANS_LES_NUAGES_FRAMES     16
-#define DANS_LES_NUAGES_FRAME_TIME 100.0f
-
-#define LH3D_TOOLS_VIEWER_SIZE  400
-#define LH3D_TOOLS_VIEWER_DEPTH 16
-
-#define DRAW_AND_CLIP_QUAD_VERTICES 4
-#define DRAW_AND_CLIP_EPSILON       0.00001f
-
-#define SUPER_VILLAGER_LOD              1
-#define SUPER_VILLAGER_TURN_SPEED       (1.25f * PI_F)
-#define SUPER_VILLAGER_BLEND_TIME       300
-#define SUPER_VILLAGER_SWIM_ANIM        "M_P_Swim2"
-#define NEW_COLLIDE_MIN_SIZE            1.0f
-#define NEW_COLLIDE_MAX_RATIO           1.4f
-#define HOW_MANY_PEOPLE_TIME            8000
-#define HOW_MANY_PEOPLE_FADE_OUT        7000
-#define HOW_MANY_PEOPLE_FADE_TIME       1000
-#define HOW_MANY_PEOPLE_ALL             -1
-#define HOW_MANY_PEOPLE_FRAME           57
-#define HOW_MANY_PEOPLE_ALPHA_REFERENCE 5
-#define HOW_MANY_PEOPLE_SIZE            0.9f
-#define HOW_MANY_PEOPLE_SPACING         1.3f
-#define HOW_MANY_PEOPLE_COLOUR_IN       0xfff8d235
-#define HOW_MANY_PEOPLE_COLOUR_OUT      0xff5c822f
-#define HOW_MANY_PEOPLE_COLOUR_ALL      0xff4995a9
-
-#define BACKGROUND_BOX_FVF                (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_SPECULAR | D3DFVF_TEX1)
-#define BACKGROUND_BOX_FINISH_PRIORITY    10000
-#define BACKGROUND_BOX_UV                 0.125f
-#define LH3D_DIVERS_WEATHER_TEXTURE_FLAGS 0x41
-#define LH3D_DIVERS_SUN_TEXTURE_FORMAT    1
-#define LH3D_DIVERS_WEATHER_TEXTURE_PATH  "Data\\Textures\\Weather.raw"
-#define LH3D_DIVERS_SUN_TEXTURE_PATH      "Data\\Textures\\Sun.raw"
-#define LH3D_WIDE_SCREEN_ASPECT           (9.0f / 16.0f)
-#define LH3D_JUST_FOOT_PRINT_TO_BLOCK     (1.0f / 160.0f)
-#define LH3D_WET_FEET_CORNER              0.3f
-#define LH3D_WET_FEET_SPRITE_SIZE         0.125f
-#define LH3D_WET_FEET_HEIGHT              0.15f
-#define LH3D_WET_FEET_FADE_PERIOD         200
-#define LH3D_WET_FEET_FADE_SPEED          25.0f
-#define LH3D_WET_FEET_FADE_TIME           1000.0f
-#define LH3D_WET_FEET_ALPHA               0x80
-#define LH3D_WET_FEET_APRIL_FOOL_TYPE     17
-#define LH3D_WET_FEET_APRIL_FOOL_DAY      1
-#define LH3D_WET_FEET_APRIL_FOOL_MONTH    3
+#define CITADEL_TEXTURE_DESC_FLAGS          (DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH | DDSD_PIXELFORMAT | DDSD_MIPMAPCOUNT)
+#define CITADEL_TEXTURE_CAPS                (DDSCAPS_COMPLEX | DDSCAPS_SYSTEMMEMORY | DDSCAPS_TEXTURE | DDSCAPS_MIPMAP)
+#define CITADEL_TEXTURE_LOCK                (DDLOCK_WAIT | DDLOCK_WRITEONLY | DDLOCK_NOSYSLOCK)
+#define CITADEL_TEXTURE_PIXEL_FORMAT        1
+#define CITADEL_TEXTURE_PITCH               (CITADEL_TEXTURE_SIZE * 3)
+#define CITADEL_TEXTURE_BYTES               (CITADEL_TEXTURE_SIZE * CITADEL_TEXTURE_PITCH)
+#define SMOKY_STUFF_FRAME                   16
+#define SMOKY_STUFF_BURST_SPEED             1.5f
+#define SMOKY_STUFF_MIN_SPEED               0.3f
+#define SMOKY_STUFF_BURST_LIFE              1.5f
+#define SMOKY_STUFF_LIFE                    3.0f
+#define SMOKY_STUFF_FADE_LIFE               0.7f
+#define SMOKY_STUFF_BURST_COLOUR            0x68503d
+#define SMOKY_STUFF_ALPHA                   100.0f
+#define SMOKY_STUFF_COLOUR                  0x808080
+#define SMOKY_STUFF_DEFAULT_COLOUR          0xffffffff
+#define SMOKY_STUFF_SPIN                    5.0f
+#define SMOKY_STUFF_FRAMES                  15.0f
+#define GLOW_VILLAGER_COLOUR                0x80c18119
+#define GLOW_VILLAGER_HALO_FRAME            32
+#define GLOW_VILLAGER_HALO_COLOUR           0xffffff00
+#define GLOW_VILLAGER_HALO_SCALE            16.0f
+#define GLOW_VILLAGER_HALO_HEIGHT           2.5f
+#define GLOW_VILLAGER_FRAME_PERIOD          500
+#define GLOW_VILLAGER_FRAMES                15.0f
+#define LH3D_TOOLS_PAGE_SIZE                256
+#define LH3D_TOOLS_TILE_SIZE                32
+#define LH3D_TOOLS_PAGE_TILES               (LH3D_TOOLS_PAGE_SIZE / LH3D_TOOLS_TILE_SIZE)
+#define LH3D_TOOLS_RAW_EXTENSION_LENGTH     5
+#define LH3D_TOOLS_PACK_TEXTURE_PATH        "%s\\PAK%x.tga"
+#define FISH_MIN_SIZE                       0.8f
+#define FISH_MAX_SIZE                       1.2f
+#define FISH_SPRITE_FRAMES                  15.5f
+#define FISH_FRAMES                         15.0f
+#define FISH_SPREAD                         5.0f
+#define FISH_DEPTH                          1.0f
+#define FISH_MIN_SPEED                      0.5f
+#define FISH_MAX_SPEED                      1.5f
+#define FISH_TURN_VARIATION                 0.1f
+#define FISH_TURN_SPEED                     (TWO_PI / 10.0f)
+#define FISH_FEAR_SPEED                     4.0f
+#define FISH_MAX_STEP                       0.1f
+#define FISH_ANIMATION_SPEED                25.0f
+#define FISH_FRAME_MASK                     0xf
+#define FISH_FIRST_FRAME                    8
+#define FISH_RUSH_COLLIDE_RADIUS            2.0f
+#define FISH_RUSH_FEAR_RADIUS               8.0f
+#define FISH_RUSH_FEAR_TIME                 2.0f
+#define FISH_RUSH_FADE_DIST                 200.0f
+#define FISH_RUSH_FADE_RANGE                100.0f
+#define FISH_RUSH_DRAW_DIST                 300.0f
+#define FISH_RUSH_TARGET_TIME               0.5f
+#define FISH_RUSH_ESCAPE_DIST               2.0f
+#define FISH_RUSH_SPLASH_GROWTH             2.0f
+#define FISH_RUSH_SPLASH_FRAME              48
+#define FISH_RUSH_SPLASH_COLOUR             0xffffffff
+#define FISH_RUSH_NET_BOB                   0.5f
+#define FISH_RUSH_NET_SHRINK_SPEED          2.0f
+#define FISH_RUSH_NET_RADIUS                10.0f
+#define FISH_RUSH_NET_SPEED                 2.0f
+#define FISH_RUSH_NET_MESH_PATH             "Data\\MISC\\Fishplot.l3d"
+#define SMOKY_STUFF_TYPE_BURST              1
+#define ROOTS_PILE_LIFE                     15000
+#define ROOTS_PILE_FADE_TIME                1000
+#define ROOTS_PILE_SIZE                     0.3f
+#define FALLING_ROOT_SIZE                   0.15f
+#define FALLING_ROOT_GRAVITY                20.0f
+#define FALLING_ROOT_LIFE                   20.0f
+#define FALLING_ROOT_FADE_START             18.0f
+#define FALLING_ROOT_FADE_TIME              2.0f
+#define FALLING_ROOT_ALPHA_REFERENCE        10
+#define INFLUENCE_CIRCLE_HIDDEN_COLOUR      RGBA_MAKE(0xff, 0xff, 0xff, 0)
+#define INFLUENCE_CIRCLE_SEGMENT_LENGTH     20.0f
+#define INFLUENCE_CIRCLE_MIN_SEGMENTS       8
+#define INFLUENCE_CIRCLE_MAX_SEGMENTS       250
+#define INFLUENCE_CIRCLE_ROW_VERTICES       3
+#define INFLUENCE_CIRCLE_SEGMENT_INDICES    24
+#define INFLUENCE_CIRCLE_U_LENGTH           -111.0f
+#define INFLUENCE_CIRCLE_V_RADIUS           60.0f
+#define INFLUENCE_CIRCLE_MAX_V              6
+#define INFLUENCE_CIRCLE_MIDDLE_HEIGHT      20.0f
+#define INFLUENCE_CIRCLE_TOP_HEIGHT         40.0f
+#define INFLUENCE_CIRCLE_MIDDLE_V           0.2f
+#define INFLUENCE_CIRCLE_TOP_V              0.4f
+#define INFLUENCE_CIRCLE_LOW_HEIGHT         100.0f
+#define INFLUENCE_CIRCLE_HIGH_HEIGHT        200.0f
+#define INFLUENCE_CIRCLE_HIGH_ALPHA         120
+#define INFLUENCE_CIRCLE_CITADEL_ALPHA      255
+#define INFLUENCE_CIRCLE_ANIM_PERIOD        10000
+#define INFLUENCE_CIRCLE_U_SPEED            10000.0f
+#define INFLUENCE_CIRCLE_V_SPEED            5000.0f
+#define TOUCH_MY_EDGE_LIFE                  2000
+#define TOUCH_MY_EDGE_FADE_TIME             1000
+#define TOUCH_MY_EDGE_RING_SPACING          2.0f
+#define TOUCH_MY_EDGE_RING_FRAME            63
+#define TOUCH_MY_EDGE_GROWTH                10.0f
+#define TOUCH_MY_EDGE_MAX_SIZE              14.0f
+#define TOUCH_MY_EDGE_PRECISION             1.0f
+#define EUREKA_FRAME                        32
+#define EUREKA_LIFE                         6000.0f
+#define EUREKA_FADE_START                   2500.0f
+#define EUREKA_FADE_TIME                    3500.0f
+#define EUREKA_RISE_SPEED                   0.003f
+#define EUREKA_TEXT_HEIGHT                  1.5f
+#define EUREKA_TEXT_OFFSET                  7.5f
+#define EUREKA_TEXT_SIZE                    15.0f
+#define EUREKA_TEXT_DEPTH                   4096.0f
+#define EUREKA_BULB_HEIGHT                  2.6f
+#define EUREKA_BULB_SCALE                   3.0f
+#define EUREKA_BLINKS                       6.0f
+#define CHEVEAUX_DE_FEU_RUN_UP              4000.0f
+#define CHEVEAUX_DE_FEU_STOP_SHORT          10.0f
+#define CHEVEAUX_DE_FEU_SPEED               450.0f
+#define CHEVEAUX_DE_FEU_SPACING             6.0f
+#define CHEVEAUX_DE_FEU_LAST_FLAME          5
+#define CHEVEAUX_DE_FEU_FLAME_FRAME         48
+#define CHEVEAUX_DE_FEU_STREAK_FRAME        49
+#define CHEVEAUX_DE_FEU_SMOKE_FRAME         50
+#define CHEVEAUX_DE_FEU_SIZE_RANGE          15
+#define CHEVEAUX_DE_FEU_MIN_SIZE            3.0f
+#define CHEVEAUX_DE_FEU_SMOKE_SCALE         2.0f
+#define CHEVEAUX_DE_FEU_FLAME_JITTER        2.0f
+#define CHEVEAUX_DE_FEU_GLOW                (CHEVEAUX_DE_FEU_SPRITES - 2)
+#define CHEVEAUX_DE_FEU_GLOW_ALPHA          0x28
+#define CHEVEAUX_DE_FEU_GLOW_SIZE           80.0f
+#define CHEVEAUX_DE_FEU_STREAK              (CHEVEAUX_DE_FEU_SPRITES - 1)
+#define CHEVEAUX_DE_FEU_STREAK_ALPHA        0x0e
+#define CHEVEAUX_DE_FEU_STREAK_SIZE         350.0f
+#define CHEVEAUX_DE_FEU_STREAK_ASPECT       0.05f
+#define CHEVEAUX_DE_FEU_STREAK_SPIN_TIME    5000.0f
+#define CHEVEAUX_DE_FEU_STREAK_SPIN         0.25f
+#define CHEVEAUX_DE_FEU_NO_Z_TEST_TIME      8237
+#define CHEVEAUX_DE_FEU_CAMERA_DISTANCE     150.0f
+#define CHEVEAUX_DE_FEU_CAMERA_HEIGHT       30.0f
+#define EVIL_OR_ANGEL_VISAGE                1
+#define EVIL_OR_ANGEL_ANGEL_CHANCE          50.0f
+#define EVIL_OR_ANGEL_END_MARGIN            110
+#define EVIL_OR_ANGEL_FADE_TIME             500
+#define EVIL_OR_ANGEL_ALPHA                 105
+#define DANS_LES_NUAGES_MAX_TIME            500
+#define DANS_LES_NUAGES_DISTANCE            1.0f
+#define DANS_LES_NUAGES_SIZE                10.0f
+#define DANS_LES_NUAGES_FRAMES              16
+#define DANS_LES_NUAGES_FRAME_TIME          100.0f
+#define LH3D_TOOLS_VIEWER_SIZE              400
+#define LH3D_TOOLS_VIEWER_DEPTH             16
+#define DRAW_AND_CLIP_EPSILON               0.00001f
+#define SUPER_VILLAGER_LOD                  1
+#define SUPER_VILLAGER_TURN_SPEED           (1.25f * PI_F)
+#define SUPER_VILLAGER_BLEND_TIME           300
+#define SUPER_VILLAGER_SWIM_ANIM            "M_P_Swim2"
+#define NEW_COLLIDE_MIN_SIZE                1.0f
+#define NEW_COLLIDE_MAX_RATIO               1.4f
+#define HOW_MANY_PEOPLE_TIME                8000
+#define HOW_MANY_PEOPLE_FADE_OUT            7000
+#define HOW_MANY_PEOPLE_FADE_TIME           1000
+#define HOW_MANY_PEOPLE_ALL                 -1
+#define HOW_MANY_PEOPLE_FRAME               57
+#define HOW_MANY_PEOPLE_ALPHA_REFERENCE     5
+#define HOW_MANY_PEOPLE_SIZE                0.9f
+#define HOW_MANY_PEOPLE_SPACING             1.3f
+#define HOW_MANY_PEOPLE_COLOUR_IN           0xfff8d235
+#define HOW_MANY_PEOPLE_COLOUR_OUT          0xff5c822f
+#define HOW_MANY_PEOPLE_COLOUR_ALL          0xff4995a9
+#define BACKGROUND_BOX_FINISH_PRIORITY      10000
+#define BACKGROUND_BOX_UV                   0.125f
+#define LH3D_DIVERS_WEATHER_TEXTURE_PATH    "Data\\Textures\\Weather.raw"
+#define LH3D_DIVERS_SUN_TEXTURE_PATH        "Data\\Textures\\Sun.raw"
+#define LH3D_WIDE_SCREEN_ASPECT             (9.0f / 16.0f)
+#define LH3D_JUST_FOOT_PRINT_TO_BLOCK       (1.0f / 160.0f)
+#define LH3D_WET_FEET_CORNER                0.3f
+#define LH3D_WET_FEET_SPRITE_SIZE           0.125f
+#define LH3D_WET_FEET_HEIGHT                0.15f
+#define LH3D_WET_FEET_FADE_PERIOD           200
+#define LH3D_WET_FEET_FADE_SPEED            25.0f
+#define LH3D_WET_FEET_FADE_TIME             1000.0f
+#define LH3D_WET_FEET_ALPHA                 0x80
+#define LH3D_WET_FEET_APRIL_FOOL_TYPE       17
+#define LH3D_WET_FEET_APRIL_FOOL_DAY        1
+#define LH3D_WET_FEET_APRIL_FOOL_MONTH      3
+#define LH3D_FEET_SHADOW_HUMAN_QUADS        2
+#define LH3D_FEET_SHADOW_TRIANGLES_PER_QUAD 2
+#define LH3D_FEET_SHADOW_INDICES_PER_QUAD   6
+#define LH3D_IN_BUILD_LAST_EDGE_INDEX       1000
+#define LH3D_LEVEL_OF_DETAIL_REGISTRY_DEFAULT   5000
+#define LH3D_LEVEL_OF_DETAIL_REGISTRY_UNITS     10000.0f
+#define LH3D_LEVEL_OF_DETAIL_WATER_TILING_UNITS 100.0f
+#define LH3D_LEVEL_OF_DETAIL_SETUP_KEY          "Software\\Lionhead Studios Ltd\\Black & White\\BWSetup"
+#define LH3D_MILLISECONDS_PER_SECOND            1000.0f
 
 BackgroundBox BackgroundBox::g_list_boxes[BACKGROUND_BOX_MAX];
 
@@ -335,6 +323,21 @@ float    DEFAULT_TRANS_TO_ADD = 0.2f;
 float    TRANS_TO_ADD = DEFAULT_TRANS_TO_ADD;
 
 LH3DCitadelLevelOfDetail LH3DLevelOfDetail::g_citadellod = {false, true, true, true, true, {0, 0, 0}};
+long                     LH3DLevelOfDetail::g_max_detail_idx = LH3D_DETAIL_CUSTOM;
+long                     LH3DLevelOfDetail::g_detail_idx = LH3D_DETAIL_DEFAULT;
+bool32_t                 LH3DLevelOfDetail::g_b_draw_clouds = true;
+bool32_t                 LH3DLevelOfDetail::g_b_draw_clouds_shadow = true;
+bool32_t                 LH3DLevelOfDetail::g_b_use_weather_system = true;
+bool32_t                 LH3DLevelOfDetail::g_b_use_day_and_night = true;
+bool32_t                 LH3DLevelOfDetail::g_b_use_creature_foot_print = true;
+bool32_t                 LH3DLevelOfDetail::g_b_draw_dynamic_shadow = true;
+bool32_t                 LH3DLevelOfDetail::g_b_use_liquid_particle = true;
+bool32_t                 LH3DLevelOfDetail::g_b_use_hair = true;
+bool32_t                 LH3DLevelOfDetail::g_b_objects_cast_shadow = true;
+bool32_t                 LH3DLevelOfDetail::g_b_dynamic_lighting_on_objects = true;
+float                    LH3DLevelOfDetail::g_water_tilling = 1.0f;
+long                     LH3DLevelOfDetail::g_num_rainsplash = 0;
+float                    LH3DLevelOfDetail::g_colour_boost = 0.0f;
 long                     g_bulb_index = 0;
 int                      BackgroundBox::g_count = 0;
 float                    LH3DWideScreen::g_fvalue = 0.0f;
@@ -364,10 +367,10 @@ void BackgroundBox::DrawAll()
 	}
 	LH3DRender::SetMaterial(g_material, 0);
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
-	LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, FALSE);
-	for (int i = 0; i < g_count; i++)
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, false);
+	for (int boxIndex = 0; boxIndex < g_count; boxIndex++)
 	{
-		BackgroundBox* box = &g_list_boxes[i];
+		BackgroundBox* box = &g_list_boxes[boxIndex];
 		g_list_vertex[0].x = (float)box->Region.start.X();
 		g_list_vertex[0].y = (float)box->Region.start.Y();
 		g_list_vertex[1].x = (float)box->Region.end.X();
@@ -376,12 +379,12 @@ void BackgroundBox::DrawAll()
 		g_list_vertex[2].y = (float)box->Region.end.Y();
 		g_list_vertex[3].x = (float)box->Region.start.X();
 		g_list_vertex[3].y = (float)box->Region.end.Y();
-		g_list_vertex[3].color = g_list_vertex[2].color = g_list_vertex[1].color = g_list_vertex[0].color =
+		g_list_vertex[0].color = g_list_vertex[1].color = g_list_vertex[2].color = g_list_vertex[3].color =
 			box->Color.GetColor();
-		DrawAndClip2D(D3DPT_TRIANGLELIST, BACKGROUND_BOX_FVF, g_list_vertex, BACKGROUND_BOX_VERTICES, g_index,
+		DrawAndClip2D(D3DPT_TRIANGLELIST, D3DFVF_TLVERTEX, g_list_vertex, BACKGROUND_BOX_VERTICES, g_index,
 		              BACKGROUND_BOX_INDICES);
 	}
-	LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, TRUE);
+	LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, true);
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
 	g_count = 0;
 }
@@ -396,7 +399,7 @@ void BackgroundBox::Draw(LHRegion* region, LH3DColor* color, bool32_t keep_z)
 	}
 	else
 	{
-		LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, FALSE);
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, false);
 	}
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
 	g_list_vertex[0].x = (float)region->start.X();
@@ -407,14 +410,14 @@ void BackgroundBox::Draw(LHRegion* region, LH3DColor* color, bool32_t keep_z)
 	g_list_vertex[2].y = (float)region->end.Y();
 	g_list_vertex[3].x = (float)region->start.X();
 	g_list_vertex[3].y = (float)region->end.Y();
-	g_list_vertex[3].color = g_list_vertex[2].color = g_list_vertex[1].color = g_list_vertex[0].color =
+	g_list_vertex[0].color = g_list_vertex[1].color = g_list_vertex[2].color = g_list_vertex[3].color =
 		drawColor.GetColor();
-	DrawAndClip2D(D3DPT_TRIANGLELIST, BACKGROUND_BOX_FVF, g_list_vertex, BACKGROUND_BOX_VERTICES, g_index,
+	DrawAndClip2D(D3DPT_TRIANGLELIST, D3DFVF_TLVERTEX, g_list_vertex, BACKGROUND_BOX_VERTICES, g_index,
 	              BACKGROUND_BOX_INDICES);
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
 	if (!keep_z)
 	{
-		LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, TRUE);
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZWRITEENABLE, true);
 	}
 }
 
@@ -424,14 +427,10 @@ bool32_t BackgroundBox::Open()
 	{
 		g_material = LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_SMOOTH_ALPHA, NULL);
 	}
-	g_list_vertex[0].uv.x = 0.0f;
-	g_list_vertex[0].uv.y = 0.0f;
-	g_list_vertex[1].uv.x = BACKGROUND_BOX_UV;
-	g_list_vertex[1].uv.y = 0.0f;
-	g_list_vertex[2].uv.x = BACKGROUND_BOX_UV;
-	g_list_vertex[2].uv.y = BACKGROUND_BOX_UV;
-	g_list_vertex[3].uv.x = 0.0f;
-	g_list_vertex[3].uv.y = BACKGROUND_BOX_UV;
+	g_list_vertex[0].uv.Set(0.0f, 0.0f);
+	g_list_vertex[1].uv.Set(BACKGROUND_BOX_UV, 0.0f);
+	g_list_vertex[2].uv.Set(BACKGROUND_BOX_UV, BACKGROUND_BOX_UV);
+	g_list_vertex[3].uv.Set(0.0f, BACKGROUND_BOX_UV);
 	LH3DRender::RegisterFinishFrameCallback(BACKGROUND_BOX_FINISH_PRIORITY, true, drawallcb, NULL);
 	return true;
 }
@@ -455,11 +454,11 @@ bool32_t BackgroundBox::Close()
 bool32_t LH3DDivers::Open()
 {
 	BackgroundBox::Open();
-	g_weather_texture =
-		LH3DTexture::Create(LH3D_DIVERS_WEATHER_TEXTURE_PATH, LH3D_DIVERS_WEATHER_TEXTURE_FLAGS, 0, NULL);
+	g_weather_texture = LH3DTexture::Create(LH3D_DIVERS_WEATHER_TEXTURE_PATH,
+	                                        LH3D_TEXTURE_TYPE_FILE | LH3D_TEXTURE_FLAGS_ALPHA, 0, NULL);
 	TextureFormat format;
-	format.Type = LH3D_DIVERS_SUN_TEXTURE_FORMAT;
-	g_sun_texture = LH3DTexture::Create(LH3D_DIVERS_SUN_TEXTURE_PATH, 1, 0, &format);
+	format.Type = LH3D_TEXTURE_FORMAT_555;
+	g_sun_texture = LH3DTexture::Create(LH3D_DIVERS_SUN_TEXTURE_PATH, LH3D_TEXTURE_TYPE_FILE, 0, &format);
 	return true;
 }
 
@@ -515,9 +514,9 @@ static inline bool operator==(const LHMatrix& a, const LHMatrix& b)
 	       a.m[10] == b.m[10] && a.m[11] == b.m[11];
 }
 
-static LandBlock* GetLandBlock(long x, long z)
+static LandBlock* GetLandBlock(long block_x, long block_z)
 {
-	int index = LH3DIsland::GetIndex(x, z);
+	int index = LH3DIsland::GetIndex(block_x, block_z);
 	return index != 0 ? LH3DIsland::g_ptr_blocks[index] : NULL;
 }
 
@@ -530,101 +529,103 @@ LH3DJustFootPrint* LH3DJustFootPrint::Create(LH3DObject* object)
 			return NULL;
 		}
 	}
-	LH3DJustFootPrint* footPrint = (LH3DJustFootPrint*)LH3DMem::AllocClear(sizeof(LH3DJustFootPrint));
-	footPrint->Mesh = object->GetMesh();
-	footPrint->Next = g_first;
-	footPrint->Matrix = object->matrix;
-	footPrint->UseAlpha = false;
-	footPrint->Opacity = LH3D_JUST_FOOT_PRINT_OPAQUE;
-	LH3DMeshFootprintData* data = (LH3DMeshFootprintData*)footPrint->Mesh->GetFootprintData();
-	if (data != NULL && data->Count != 0)
+	LH3DJustFootPrint* footprintInstance = (LH3DJustFootPrint*)LH3DMem::AllocClear(sizeof(LH3DJustFootPrint));
+	footprintInstance->Mesh = object->GetMesh();
+	footprintInstance->Next = g_first;
+	footprintInstance->Matrix = object->matrix;
+	footprintInstance->UseAlpha = false;
+	footprintInstance->Opacity = LH3D_JUST_FOOT_PRINT_OPAQUE;
+	const LH3DMeshFootprintData* footprintData =
+		reinterpret_cast<const LH3DMeshFootprintData*>(footprintInstance->Mesh->GetFootprintData());
+	if (footprintData != NULL && footprintData->Count != 0)
 	{
-		LH3DMeshFootprint*         footprint = data->First;
-		LH3DMeshFootprintTriangle* triangles = (LH3DMeshFootprintTriangle*)(footprint + 1);
-		bool32_t                   first = true;
-		for (int i = 0; i < footprint->NumTriangles; i++)
+		const LH3DMeshFootprint*         meshFootprint = footprintData->First;
+		const LH3DMeshFootprintTriangle* triangles =
+			reinterpret_cast<const LH3DMeshFootprintTriangle*>(meshFootprint + 1);
+		bool32_t needsBoundsInitialization = true;
+		for (int triangleIndex = 0; triangleIndex < meshFootprint->NumTriangles; triangleIndex++)
 		{
-			LHPoint point(triangles[i].Points[0].x, 0.0f, triangles[i].Points[0].y);
-			object->matrix.TransformPoint(point);
-			if (first)
+			LHPoint worldPoint(triangles[triangleIndex].Points[0].x, 0.0f, triangles[triangleIndex].Points[0].y);
+			object->matrix.TransformPoint(worldPoint);
+			if (needsBoundsInitialization)
 			{
-				first = false;
-				footPrint->Min.Set(point.x, point.z);
-				footPrint->Max.Set(point.x, point.z);
+				needsBoundsInitialization = false;
+				footprintInstance->Min.Set(worldPoint.x, worldPoint.z);
+				footprintInstance->Max.Set(worldPoint.x, worldPoint.z);
 			}
 			else
 			{
-				if (footPrint->Min.x > point.x)
+				if (footprintInstance->Min.x > worldPoint.x)
 				{
-					footPrint->Min.x = point.x;
+					footprintInstance->Min.x = worldPoint.x;
 				}
-				if (footPrint->Max.x < point.x)
+				if (footprintInstance->Max.x < worldPoint.x)
 				{
-					footPrint->Max.x = point.x;
+					footprintInstance->Max.x = worldPoint.x;
 				}
-				if (footPrint->Min.y > point.z)
+				if (footprintInstance->Min.y > worldPoint.z)
 				{
-					footPrint->Min.y = point.z;
+					footprintInstance->Min.y = worldPoint.z;
 				}
-				if (footPrint->Max.y < point.z)
+				if (footprintInstance->Max.y < worldPoint.z)
 				{
-					footPrint->Max.y = point.z;
+					footprintInstance->Max.y = worldPoint.z;
 				}
 			}
-			point.Set(triangles[i].Points[1].x, 0.0f, triangles[i].Points[1].y);
-			object->matrix.TransformPoint(point);
-			if (footPrint->Min.x > point.x)
+			worldPoint.Set(triangles[triangleIndex].Points[1].x, 0.0f, triangles[triangleIndex].Points[1].y);
+			object->matrix.TransformPoint(worldPoint);
+			if (footprintInstance->Min.x > worldPoint.x)
 			{
-				footPrint->Min.x = point.x;
+				footprintInstance->Min.x = worldPoint.x;
 			}
-			if (footPrint->Max.x < point.x)
+			if (footprintInstance->Max.x < worldPoint.x)
 			{
-				footPrint->Max.x = point.x;
+				footprintInstance->Max.x = worldPoint.x;
 			}
-			if (footPrint->Min.y > point.z)
+			if (footprintInstance->Min.y > worldPoint.z)
 			{
-				footPrint->Min.y = point.z;
+				footprintInstance->Min.y = worldPoint.z;
 			}
-			if (footPrint->Max.y < point.z)
+			if (footprintInstance->Max.y < worldPoint.z)
 			{
-				footPrint->Max.y = point.z;
+				footprintInstance->Max.y = worldPoint.z;
 			}
-			point.Set(triangles[i].Points[2].x, 0.0f, triangles[i].Points[2].y);
-			object->matrix.TransformPoint(point);
-			if (footPrint->Min.x > point.x)
+			worldPoint.Set(triangles[triangleIndex].Points[2].x, 0.0f, triangles[triangleIndex].Points[2].y);
+			object->matrix.TransformPoint(worldPoint);
+			if (footprintInstance->Min.x > worldPoint.x)
 			{
-				footPrint->Min.x = point.x;
+				footprintInstance->Min.x = worldPoint.x;
 			}
-			if (footPrint->Max.x < point.x)
+			if (footprintInstance->Max.x < worldPoint.x)
 			{
-				footPrint->Max.x = point.x;
+				footprintInstance->Max.x = worldPoint.x;
 			}
-			if (footPrint->Min.y > point.z)
+			if (footprintInstance->Min.y > worldPoint.z)
 			{
-				footPrint->Min.y = point.z;
+				footprintInstance->Min.y = worldPoint.z;
 			}
-			if (footPrint->Max.y < point.z)
+			if (footprintInstance->Max.y < worldPoint.z)
 			{
-				footPrint->Max.y = point.z;
+				footprintInstance->Max.y = worldPoint.z;
 			}
 		}
 	}
-	g_first = footPrint;
-	int maxX = (int)(footPrint->Max.x * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
-	int minZ = (int)(footPrint->Min.y * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
-	int maxZ = (int)(footPrint->Max.y * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
-	for (int x = (int)(footPrint->Min.x * LH3D_JUST_FOOT_PRINT_TO_BLOCK); x <= maxX; x++)
+	g_first = footprintInstance;
+	int maxBlockX = (int)(footprintInstance->Max.x * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
+	int minBlockZ = (int)(footprintInstance->Min.y * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
+	int maxBlockZ = (int)(footprintInstance->Max.y * LH3D_JUST_FOOT_PRINT_TO_BLOCK);
+	for (int blockX = (int)(footprintInstance->Min.x * LH3D_JUST_FOOT_PRINT_TO_BLOCK); blockX <= maxBlockX; blockX++)
 	{
-		for (int z = minZ; z <= maxZ; z++)
+		for (int blockZ = minBlockZ; blockZ <= maxBlockZ; blockZ++)
 		{
-			LandBlock* block = GetLandBlock(x, z);
+			LandBlock* block = GetLandBlock(blockX, blockZ);
 			if (block != NULL)
 			{
 				block->SetNeedUpdate();
 			}
 		}
 	}
-	return footPrint;
+	return footprintInstance;
 }
 
 void LH3DJustFootPrint::ReleaseAll()
@@ -681,24 +682,25 @@ void LH3DJustFootPrint::DrawDebug()
 	from.y = LH3DIsland::GetAltitude(from);
 	to.y = LH3DIsland::GetAltitude(to);
 	LH3DLine::AddLine(from, to, &red, NULL);
-	LH3DMeshFootprintData* data = (LH3DMeshFootprintData*)Mesh->GetFootprintData();
-	if (data != NULL && data->Count != 0)
+	LH3DMeshFootprintData* footprintData = (LH3DMeshFootprintData*)Mesh->GetFootprintData();
+	if (footprintData == NULL || footprintData->Count == 0)
 	{
-		LH3DMeshFootprint*         footprint = data->First;
-		LH3DMeshFootprintTriangle* triangles = (LH3DMeshFootprintTriangle*)(footprint + 1);
-		for (int i = 0; i < footprint->NumTriangles; i++)
-		{
-			LH3DMeshFootprintTriangle* triangle = &triangles[i];
-			LHPoint                    a(triangle->Points[0].x, 0.0f, triangle->Points[0].y);
-			Matrix.TransformPoint(a);
-			LHPoint b(triangle->Points[1].x, 0.0f, triangle->Points[1].y);
-			Matrix.TransformPoint(b);
-			LHPoint c(triangle->Points[2].x, 0.0f, triangle->Points[2].y);
-			Matrix.TransformPoint(c);
-			LH3DLine::AddLine(a, b, &green, NULL);
-			LH3DLine::AddLine(b, c, &green, NULL);
-			LH3DLine::AddLine(c, a, &green, NULL);
-		}
+		return;
+	}
+	LH3DMeshFootprint*         footprint = footprintData->First;
+	LH3DMeshFootprintTriangle* triangles = (LH3DMeshFootprintTriangle*)(footprint + 1);
+	for (int triangleIndex = 0; triangleIndex < footprint->NumTriangles; triangleIndex++)
+	{
+		LH3DMeshFootprintTriangle* triangle = &triangles[triangleIndex];
+		LHPoint                    a(triangle->Points[0].x, 0.0f, triangle->Points[0].y);
+		Matrix.TransformPoint(a);
+		LHPoint b(triangle->Points[1].x, 0.0f, triangle->Points[1].y);
+		Matrix.TransformPoint(b);
+		LHPoint c(triangle->Points[2].x, 0.0f, triangle->Points[2].y);
+		Matrix.TransformPoint(c);
+		LH3DLine::AddLine(a, b, &green, NULL);
+		LH3DLine::AddLine(b, c, &green, NULL);
+		LH3DLine::AddLine(c, a, &green, NULL);
 	}
 }
 
@@ -710,7 +712,7 @@ void LH3DJustFootPrint::DrawDebugAll()
 	}
 }
 
-int IsObjectOnScreen(LH3DObject* object)
+bool32_t IsObjectOnScreen(LH3DObject* object)
 {
 	if (object->GetMesh() != NULL)
 	{
@@ -719,26 +721,28 @@ int IsObjectOnScreen(LH3DObject* object)
 	return false;
 }
 
-int IsPointOnScreen(LHPoint* point)
+bool32_t IsPointOnScreen(LHPoint* point)
 {
-	float w = LH3DTech::g_world_to_clipping.m[2] * point->x + LH3DTech::g_world_to_clipping.m[5] * point->y +
-	          LH3DTech::g_world_to_clipping.m[8] * point->z + LH3DTech::g_world_to_clipping.m[11];
-	if (w < LH3DTech::g_info_transform.NearClip)
+	float clipW = LH3DTech::g_world_to_clipping.m[2] * point->x + LH3DTech::g_world_to_clipping.m[5] * point->y +
+	              LH3DTech::g_world_to_clipping.m[8] * point->z + LH3DTech::g_world_to_clipping.m[11];
+	if (clipW < LH3DTech::g_info_transform.NearClip)
 	{
 		return false;
 	}
-	float rhw = 1.0f / w;
-	int   x = (int)(((LH3DTech::g_world_to_clipping.m[0] * point->x + LH3DTech::g_world_to_clipping.m[3] * point->y +
-	                  LH3DTech::g_world_to_clipping.m[6] * point->z + LH3DTech::g_world_to_clipping.m[9]) *
-	                     rhw +
-	                 1.0f) *
-	                LH3DTech::g_info_transform.HalfRes.x);
-	int   y =
+	float inverseClipW = 1.0f / clipW;
+	int   screenX =
+		(int)(((LH3DTech::g_world_to_clipping.m[0] * point->x + LH3DTech::g_world_to_clipping.m[3] * point->y +
+	            LH3DTech::g_world_to_clipping.m[6] * point->z + LH3DTech::g_world_to_clipping.m[9]) *
+	               inverseClipW +
+	           1.0f) *
+	          LH3DTech::g_info_transform.HalfRes.x);
+	int screenY =
 		(int)((1.0f - (LH3DTech::g_world_to_clipping.m[1] * point->x + LH3DTech::g_world_to_clipping.m[4] * point->y +
 	                   LH3DTech::g_world_to_clipping.m[7] * point->z + LH3DTech::g_world_to_clipping.m[10]) *
-	                      rhw) *
+	                      inverseClipW) *
 	          LH3DTech::g_info_transform.HalfRes.y);
-	if (x < 0 || y < 0 || x >= LH3DTech::g_info_transform.resolution.x || y >= LH3DTech::g_info_transform.resolution.y)
+	if (screenX < 0 || screenY < 0 || screenX >= LH3DTech::g_info_transform.resolution.x ||
+	    screenY >= LH3DTech::g_info_transform.resolution.y)
 	{
 		return false;
 	}
@@ -816,6 +820,103 @@ long LH3DWetFeet::GetSpriteOffsetFromCreatureType(unsigned long creature_type)
 	return g_wet_feet_sprites[creature_type].Offset;
 }
 
+void LH3DWetFeet::Add(LHPoint* pos, float heading, float size, long creature_type, int left)
+{
+	if (!LH3DLevelOfDetail::g_b_use_creature_foot_print)
+	{
+		return;
+	}
+	static LHPoint corners[LH3D_WET_FEET_VERTICES_PER_FOOT] = {
+		LHPoint(-LH3D_WET_FEET_CORNER, 0.0f, LH3D_WET_FEET_CORNER),
+		LHPoint(LH3D_WET_FEET_CORNER, 0.0f, LH3D_WET_FEET_CORNER),
+		LHPoint(LH3D_WET_FEET_CORNER, 0.0f, -LH3D_WET_FEET_CORNER),
+		LHPoint(-LH3D_WET_FEET_CORNER, 0.0f, -LH3D_WET_FEET_CORNER),
+	};
+	static bool32_t s_first = true;
+	bool32_t        aprilFool = false;
+	s_first = false;
+	time_t now;
+	time(&now);
+	tm* date = localtime(&now);
+	if (date->tm_mday == LH3D_WET_FEET_APRIL_FOOL_DAY && date->tm_mon == LH3D_WET_FEET_APRIL_FOOL_MONTH)
+	{
+		aprilFool = true;
+	}
+	size *= g_wet_feet_sprites[creature_type].Scale;
+	long spriteType = creature_type;
+	if (aprilFool)
+	{
+		spriteType = LH3D_WET_FEET_APRIL_FOOL_TYPE;
+	}
+	else if (spriteType > LH3D_WET_FEET_CREATURE_TYPES)
+	{
+		spriteType = 0;
+	}
+	if (g_feet_count == LH3D_WET_FEET_MAX)
+	{
+		return;
+	}
+	if (g_vertex_list == NULL)
+	{
+		g_vertex_list =
+			(LHPoint*)LH3DMem::AllocClear(LH3D_WET_FEET_MAX * LH3D_WET_FEET_VERTICES_PER_FOOT * sizeof(LHPoint));
+		g_list_color =
+			(LH3DColor*)LH3DMem::AllocClear(LH3D_WET_FEET_MAX * LH3D_WET_FEET_VERTICES_PER_FOOT * sizeof(LH3DColor));
+		g_list_uv =
+			(float*)LH3DMem::AllocClear(LH3D_WET_FEET_MAX * LH3D_WET_FEET_VERTICES_PER_FOOT * 2 * sizeof(float));
+		g_list_index = (long*)LH3DMem::AllocClear(LH3D_WET_FEET_MAX * LH3D_WET_FEET_INDICES_PER_FOOT * sizeof(long));
+		for (long index = 0, baseVertex = 0; index < LH3D_WET_FEET_MAX * LH3D_WET_FEET_INDICES_PER_FOOT;
+		     index += LH3D_WET_FEET_INDICES_PER_FOOT, baseVertex += LH3D_WET_FEET_VERTICES_PER_FOOT)
+		{
+			g_list_index[index] = baseVertex;
+			g_list_index[index + 1] = baseVertex + 1;
+			g_list_index[index + 2] = baseVertex + 3;
+			g_list_index[index + 3] = baseVertex + 1;
+			g_list_index[index + 4] = baseVertex + 2;
+			g_list_index[index + 5] = baseVertex + 3;
+		}
+	}
+	LHMatrix matrix;
+	LHPoint& translation = matrix.GetPos();
+	matrix.SetRotationY(heading);
+	translation.z = -pos->z;
+	translation.y = -pos->y;
+	translation.x = -pos->x;
+	matrix.TransformVector(translation);
+	translation += *pos;
+	long vertex = g_feet_count * LH3D_WET_FEET_VERTICES_PER_FOOT;
+	for (int corner = 0; corner < LH3D_WET_FEET_VERTICES_PER_FOOT; corner++, vertex++)
+	{
+		g_vertex_list[vertex] = LHPoint(pos);
+		g_vertex_list[vertex] += corners[corner] * size;
+		matrix.TransformPoint(g_vertex_list[vertex]);
+		LH3DMapCoords coords(g_vertex_list[vertex].x, g_vertex_list[vertex].z);
+		g_vertex_list[vertex].y = LH3DIsland::GetAltitude(coords) + LH3D_WET_FEET_HEIGHT;
+		g_list_color[vertex] = LH3DColor(0, 0, 0, LH3D_WET_FEET_ALPHA);
+		g_list_uv[vertex * 2] =
+			g_wet_feet_uv[left][corner][0] * LH3D_WET_FEET_SPRITE_SIZE + g_wet_feet_sprites[spriteType].U;
+		g_list_uv[vertex * 2 + 1] =
+			g_wet_feet_uv[left][corner][1] * LH3D_WET_FEET_SPRITE_SIZE + g_wet_feet_sprites[spriteType].V;
+	}
+	g_feet_count++;
+}
+
+static inline void ShiftWetFeetSlots(int footIndex)
+{
+	for (int copyFoot = footIndex; copyFoot < LH3DWetFeet::g_feet_count - 1; copyFoot++)
+	{
+		for (int corner = 0; corner < LH3D_WET_FEET_VERTICES_PER_FOOT; corner++)
+		{
+			int destinationVertex = copyFoot * LH3D_WET_FEET_VERTICES_PER_FOOT + corner;
+			int sourceVertex = destinationVertex + LH3D_WET_FEET_VERTICES_PER_FOOT;
+			LH3DWetFeet::g_vertex_list[destinationVertex] = LH3DWetFeet::g_vertex_list[sourceVertex];
+			LH3DWetFeet::g_list_color[destinationVertex] = LH3DWetFeet::g_list_color[sourceVertex];
+			LH3DWetFeet::g_list_uv[destinationVertex * 2] = LH3DWetFeet::g_list_uv[sourceVertex * 2];
+			LH3DWetFeet::g_list_uv[destinationVertex * 2 + 1] = LH3DWetFeet::g_list_uv[sourceVertex * 2 + 1];
+		}
+	}
+}
+
 void LH3DWetFeet::Draw()
 {
 	if (g_feet_count == 0)
@@ -831,44 +932,33 @@ void LH3DWetFeet::Draw()
 	}
 	float fade = g_wet_feet_time * LH3D_WET_FEET_FADE_SPEED / LH3D_WET_FEET_FADE_TIME;
 	g_wet_feet_time = 0;
-	int        dead = 0;
+	int        expiredFeet = 0;
 	LH3DColor* color = g_list_color;
-	for (int i = 0; i < g_feet_count; i++, color += LH3D_WET_FEET_VERTICES_PER_FOOT)
+	for (int fadeFoot = 0; fadeFoot < g_feet_count; fadeFoot++, color += LH3D_WET_FEET_VERTICES_PER_FOOT)
 	{
 		float alpha = color[0].a - fade;
 		if (alpha <= 0.0f)
 		{
-			dead++;
+			expiredFeet++;
 			alpha = 0.0f;
 		}
 		color[0].a = color[1].a = color[2].a = color[3].a = (uint8_t)alpha;
 	}
-	int foot = 0;
-	while (dead != 0)
+	int footIndex = 0;
+	while (expiredFeet != 0)
 	{
-		if (g_list_color[foot].a == 0)
+		if (g_list_color[footIndex].a == 0)
 		{
-			if (foot != g_feet_count - 1)
+			if (footIndex != g_feet_count - 1)
 			{
-				for (int i = foot; i < g_feet_count - 1; i++)
-				{
-					for (int k = 0; k < LH3D_WET_FEET_VERTICES_PER_FOOT; k++)
-					{
-						int to = i * LH3D_WET_FEET_VERTICES_PER_FOOT + k;
-						int from = to + LH3D_WET_FEET_VERTICES_PER_FOOT;
-						g_vertex_list[to] = g_vertex_list[from];
-						g_list_color[to] = g_list_color[from];
-						g_list_uv[to * 2] = g_list_uv[from * 2];
-						g_list_uv[to * 2 + 1] = g_list_uv[from * 2 + 1];
-					}
-				}
+				ShiftWetFeetSlots(footIndex);
 			}
 			g_feet_count--;
-			dead--;
+			expiredFeet--;
 		}
 		else
 		{
-			foot++;
+			footIndex++;
 		}
 	}
 }
@@ -899,6 +989,35 @@ static inline void SetLength(LHPoint& point, float size)
 	point.z = scale * pz;
 }
 
+static inline void InitialiseFeetShadowQuads(const float (*uv)[2])
+{
+	for (int quad = 0; quad < LH3D_FEET_SHADOW_QUADS; quad++)
+	{
+		int first = quad * 4;
+		for (int corner = 0; corner < 4; corner++)
+		{
+			int vertex = first + corner;
+			LH3DFeetShadow::g_vertex_list[vertex].SetNull();
+			if (corner > LH3D_FEET_SHADOW_SOLID_CORNERS - 1)
+			{
+				LH3DFeetShadow::g_list_color[vertex] = LH3DColor(0);
+			}
+			else
+			{
+				LH3DFeetShadow::g_list_color[vertex] = LH3DColor(LH3D_COLOR_WHITE);
+			}
+			LH3DFeetShadow::g_list_uv[vertex * 2] = uv[corner][0];
+			LH3DFeetShadow::g_list_uv[vertex * 2 + 1] = uv[corner][1];
+		}
+		LH3DFeetShadow::g_list_index[quad * LH3D_FEET_SHADOW_INDICES_PER_QUAD + 0] = quad * 4 + 0;
+		LH3DFeetShadow::g_list_index[quad * LH3D_FEET_SHADOW_INDICES_PER_QUAD + 1] = quad * 4 + 1;
+		LH3DFeetShadow::g_list_index[quad * LH3D_FEET_SHADOW_INDICES_PER_QUAD + 2] = quad * 4 + 2;
+		LH3DFeetShadow::g_list_index[quad * LH3D_FEET_SHADOW_INDICES_PER_QUAD + 3] = quad * 4 + 0;
+		LH3DFeetShadow::g_list_index[quad * LH3D_FEET_SHADOW_INDICES_PER_QUAD + 4] = quad * 4 + 2;
+		LH3DFeetShadow::g_list_index[quad * LH3D_FEET_SHADOW_INDICES_PER_QUAD + 5] = quad * 4 + 3;
+	}
+}
+
 void LH3DFeetShadow::Open()
 {
 	static bool32_t s_first = true;
@@ -914,39 +1033,16 @@ void LH3DFeetShadow::Open()
 		return;
 	}
 
-	SetLength(g_left, LH3D_FEET_SHADOW_SIDE_SIZE);
-	SetLength(g_right, LH3D_FEET_SHADOW_SIDE_SIZE);
+	g_left.SetLength(LH3D_FEET_SHADOW_SIDE_SIZE);
+	g_right.SetLength(LH3D_FEET_SHADOW_SIDE_SIZE);
 	s_first = false;
 
-	for (int quad = 0; quad < LH3D_FEET_SHADOW_QUADS; quad++)
-	{
-		int first = quad * 4;
-		for (int corner = 0; corner < 4; corner++)
-		{
-			int vertex = first + corner;
-			g_vertex_list[vertex].SetNull();
-			if (corner > 1)
-			{
-				g_list_color[vertex] = LH3DColor(0);
-			}
-			else
-			{
-				g_list_color[vertex] = LH3DColor(0xffffffff);
-			}
-			g_list_uv[vertex * 2] = s_uv[corner][0];
-			g_list_uv[vertex * 2 + 1] = s_uv[corner][1];
-		}
-		g_list_index[quad * 6 + 0] = quad * 4 + 0;
-		g_list_index[quad * 6 + 1] = quad * 4 + 1;
-		g_list_index[quad * 6 + 2] = quad * 4 + 2;
-		g_list_index[quad * 6 + 3] = quad * 4 + 0;
-		g_list_index[quad * 6 + 4] = quad * 4 + 2;
-		g_list_index[quad * 6 + 5] = quad * 4 + 3;
-	}
+	InitialiseFeetShadowQuads(s_uv);
 
 	TextureFormat format;
-	format.Type = LH3D_FEET_SHADOW_TEXTURE_FORMAT;
-	g_texture_shadow_feet = LH3DTexture::Create(NULL, LH3D_FEET_SHADOW_TEXTURE_FLAGS, 0xffffffff, &format);
+	format.Type = LH3D_TEXTURE_FORMAT_32X32_4444;
+	g_texture_shadow_feet =
+		LH3DTexture::Create(NULL, LH3D_TEXTURE_TYPE_SYSTEM_MEMORY | LH3D_TEXTURE_FLAGS_ALPHA, 0xffffffff, &format);
 	uint8_t* heights = (uint8_t*)LH3DMem::AllocClear(LH3D_FEET_SHADOW_TEXTURE_SIZE * LH3D_FEET_SHADOW_TEXTURE_SIZE);
 	LHLoadData(LH3D_FEET_SHADOW_TEXTURE_PATH, heights, LH3D_FEET_SHADOW_TEXTURE_SIZE * LH3D_FEET_SHADOW_TEXTURE_SIZE,
 	           NULL);
@@ -974,7 +1070,7 @@ void LH3DFeetShadow::Open()
 	g_material_shadow_feet->Flags |= LH3DMaterial::FLAG_DOUBLE_SIDED;
 	g_feet_shadow_light.Set(1.0f, 0.0f, 1.0f);
 	g_feet_shadow_light.Normalise();
-	SetLength(g_feet_shadow_light, LH3D_FEET_SHADOW_LIGHT_SIZE);
+	g_feet_shadow_light.SetLength(LH3D_FEET_SHADOW_LIGHT_SIZE);
 	LH3DMem::Free(heights);
 }
 
@@ -1005,6 +1101,12 @@ void SetVertices(LHPoint* vertices, LHPoint* direction, LHPoint* center)
 
 void LH3DFeetShadow::Draw(LH3DObject* object, LHPoint* normal, ExtraBone* bone)
 {
+	enum HumanFootBone
+	{
+		HUMAN_BONE_LEFT_FOOT = 18,
+		HUMAN_BONE_RIGHT_FOOT = 21,
+	};
+
 	LHPoint up = *normal;
 	LHPoint light = g_feet_shadow_light;
 	light *= object->scale;
@@ -1013,57 +1115,59 @@ void LH3DFeetShadow::Draw(LH3DObject* object, LHPoint* normal, ExtraBone* bone)
 	direction += light;
 	if (bone != NULL)
 	{
-		long     quads = 2;
+		long     quads = LH3D_FEET_SHADOW_HUMAN_QUADS;
 		LHMatrix matrix = LH3DMesh::g_current_list_matrix[bone->BoneIndex[0]];
 		matrix.PostMultiply(LH3DTech::g_clipping_to_world);
 		matrix.PreMultiply(bone->Matrix[0]);
-		LHPoint left = matrix.GetPos();
-		left.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
+		LHPoint firstFoot = matrix.GetPos();
+		firstFoot.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
 		matrix = LH3DMesh::g_current_list_matrix[bone->BoneIndex[1]];
 		matrix.PostMultiply(LH3DTech::g_clipping_to_world);
 		matrix.PreMultiply(bone->Matrix[1]);
-		LHPoint right = matrix.GetPos();
-		right.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
-		LHPoint offset = direction + (right - left) * 0.5f;
-		SetVertices(&g_vertex_list[0], &direction, &left);
-		offset = (left - right) * 0.5f + direction;
-		SetVertices(&g_vertex_list[4], &offset, &right);
+		LHPoint secondFoot = matrix.GetPos();
+		secondFoot.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
+		LHPoint offset = (secondFoot - firstFoot) * 0.5f + direction;
+		SetVertices(&g_vertex_list[0], &direction, &firstFoot);
+		offset = (firstFoot - secondFoot) * 0.5f + direction;
+		SetVertices(&g_vertex_list[4], &offset, &secondFoot);
 		if (bone->BoneIndex[2] != -1)
 		{
-			quads = 4;
+			quads = LH3D_FEET_SHADOW_QUADS;
 			matrix = LH3DMesh::g_current_list_matrix[bone->BoneIndex[2]];
 			matrix.PostMultiply(LH3DTech::g_clipping_to_world);
 			matrix.PreMultiply(bone->Matrix[2]);
-			left = matrix.GetPos();
-			left.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
+			firstFoot = matrix.GetPos();
+			firstFoot.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
 			matrix = LH3DMesh::g_current_list_matrix[bone->BoneIndex[3]];
 			matrix.PostMultiply(LH3DTech::g_clipping_to_world);
 			matrix.PreMultiply(bone->Matrix[3]);
-			right = matrix.GetPos();
-			right.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
-			offset = direction + (right - left) * 0.5f;
-			SetVertices(&g_vertex_list[8], &direction, &left);
-			offset = (left - right) * 0.5f + direction;
-			SetVertices(&g_vertex_list[12], &offset, &right);
+			secondFoot = matrix.GetPos();
+			secondFoot.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
+			offset = (secondFoot - firstFoot) * 0.5f + direction;
+			SetVertices(&g_vertex_list[2 * 4], &direction, &firstFoot);
+			offset = (firstFoot - secondFoot) * 0.5f + direction;
+			SetVertices(&g_vertex_list[3 * 4], &offset, &secondFoot);
 		}
-		LH3DTech::Draw3DWorldTriangle(quads * 4, g_vertex_list, g_list_color, g_list_uv, quads * 2, g_list_index,
-		                              g_material_shadow_feet, false);
+		LH3DTech::Draw3DWorldTriangle(quads * 4, g_vertex_list, g_list_color, g_list_uv,
+		                              quads * LH3D_FEET_SHADOW_TRIANGLES_PER_QUAD, g_list_index, g_material_shadow_feet,
+		                              false);
 	}
 	else
 	{
-		LHMatrix matrix = LH3DMesh::g_current_list_matrix[21];
+		LHMatrix matrix = LH3DMesh::g_current_list_matrix[HUMAN_BONE_RIGHT_FOOT];
 		matrix.PostMultiply(LH3DTech::g_clipping_to_world);
-		LHPoint left = matrix.GetPos();
-		left.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
-		matrix = LH3DMesh::g_current_list_matrix[18];
+		LHPoint firstFoot = matrix.GetPos();
+		firstFoot.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
+		matrix = LH3DMesh::g_current_list_matrix[HUMAN_BONE_LEFT_FOOT];
 		matrix.PostMultiply(LH3DTech::g_clipping_to_world);
-		LHPoint right = matrix.GetPos();
-		right.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
-		LHPoint offset = direction + (right - left) * 0.5f;
-		SetVertices(&g_vertex_list[0], &offset, &left);
-		offset = (left - right) * 0.5f + direction;
-		SetVertices(&g_vertex_list[4], &offset, &right);
-		LH3DTech::Draw3DWorldTriangle(2 * 4, g_vertex_list, g_list_color, g_list_uv, 2 * 2, g_list_index,
+		LHPoint secondFoot = matrix.GetPos();
+		secondFoot.y = LH3DIsland::GetAltitude(matrix.GetPos()) + TRANS_TO_ADD;
+		LHPoint offset = direction + (secondFoot - firstFoot) * 0.5f;
+		SetVertices(&g_vertex_list[0], &offset, &firstFoot);
+		offset = (firstFoot - secondFoot) * 0.5f + direction;
+		SetVertices(&g_vertex_list[4], &offset, &secondFoot);
+		LH3DTech::Draw3DWorldTriangle(LH3D_FEET_SHADOW_HUMAN_QUADS * 4, g_vertex_list, g_list_color, g_list_uv,
+		                              LH3D_FEET_SHADOW_HUMAN_QUADS * LH3D_FEET_SHADOW_TRIANGLES_PER_QUAD, g_list_index,
 		                              g_material_shadow_feet, false);
 	}
 }
@@ -1101,20 +1205,20 @@ LHTGA* LHTGA::CreateFromHD(char* name)
 	return tga;
 }
 
-void LHTGA::GetARGB(unsigned long* a, unsigned long* r, unsigned long* g, unsigned long* b, void* data, long index,
-                    long format)
+void LHTGA::GetARGB(unsigned long* alpha_out, unsigned long* red_out, unsigned long* green_out, unsigned long* blue_out,
+                    void* source_pixels, long pixel_index, long format)
 {
 	if (format == LHTGA_FORMAT_ARGB4444)
 	{
-		uint16_t pixel = ((uint16_t*)data)[index];
-		uint8_t  alpha = (pixel >> 8) & 0xf0;
-		uint8_t  red = (pixel >> 4) & 0xf0;
-		uint8_t  green = pixel & 0xf0;
-		uint8_t  blue = (pixel & 0xf) << 4;
-		*a = alpha;
-		*r = red;
-		*g = green;
-		*b = blue;
+		const uint16_t* pixels = static_cast<const uint16_t*>(source_pixels);
+		unsigned long   alpha = (pixels[pixel_index] >> 8) & 0xf0;
+		unsigned long   green = pixels[pixel_index] & 0xf0;
+		unsigned long   red = (pixels[pixel_index] >> 4) & 0xf0;
+		unsigned long   blue = (pixels[pixel_index] & 0xf) << 4;
+		*alpha_out = (uint8_t)alpha;
+		*red_out = (uint8_t)red;
+		*green_out = (uint8_t)green;
+		*blue_out = (uint8_t)blue;
 	}
 }
 
@@ -1130,7 +1234,6 @@ LHTGA* LHTGA::GetTGA(void* data, long width, long height, long format, bool32_t 
 	tga->Height = height;
 	tga->PixelDepth = LHTGA_PIXEL_DEPTH;
 	tga->ImageDescriptor = LHTGA_DESCRIPTOR;
-	uint8_t* pixels = (uint8_t*)(tga + 1);
 	for (long y = 0; y < height; y++)
 	{
 		for (long x = 0; x < width; x++)
@@ -1147,11 +1250,10 @@ LHTGA* LHTGA::GetTGA(void* data, long width, long height, long format, bool32_t 
 				green = green * alpha / LHTGA_CHANNEL_MAX;
 				blue = blue * alpha / LHTGA_CHANNEL_MAX;
 			}
-			uint8_t* pixel = &pixels[index * sizeof(uint32_t)];
-			pixel[3] = alpha;
-			pixel[0] = blue;
-			pixel[1] = green;
-			pixel[2] = red;
+			((uint8_t*)tga)[sizeof(LHTGA) + index * sizeof(uint32_t) + 3] = alpha;
+			((uint8_t*)tga)[sizeof(LHTGA) + index * sizeof(uint32_t) + 0] = blue;
+			((uint8_t*)tga)[sizeof(LHTGA) + index * sizeof(uint32_t) + 1] = green;
+			((uint8_t*)tga)[sizeof(LHTGA) + index * sizeof(uint32_t) + 2] = red;
 		}
 	}
 	memcpy((char*)tga + size - LHTGA_FOOTER_SIZE, footer, LHTGA_FOOTER_SIZE);
@@ -1168,23 +1270,52 @@ int      LH3DInBuild::ec1 = 0;
 int      LH3DInBuild::ec2 = 0;
 bool32_t LH3DInBuild::g_b_fuck = false;
 
-static inline void AddInBuildTriangle(uint16_t a, uint16_t b, uint16_t c)
+static inline void ClassifyInBuildVertex(const Vertex3D* clipVertex, unsigned long* clipFlags)
 {
-	unsigned long flags_c = LH3DTech::g_cache_flags[c];
-	unsigned long flags_b = LH3DTech::g_cache_flags[b];
-	unsigned long flags_a = LH3DTech::g_cache_flags[a];
-	if (flags_a | flags_b | flags_c)
+	if (clipVertex->rhw < LH3DTech::g_info_transform.NearClip)
 	{
-		if (!(flags_a & flags_b & flags_c))
-		{
-			LH3DTech::ClipTriangle(a, b, c, LH3DTech::CLIP_CODE_NEAR);
-		}
+		*clipFlags = LH3DTech::CLIP_CODE_NEAR;
 	}
 	else
 	{
-		LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
-		LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
-		LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
+		*clipFlags = LH3DTech::CLIP_CODE_NONE;
+	}
+	if (clipVertex->x > clipVertex->rhw)
+	{
+		*clipFlags |= LH3DTech::CLIP_CODE_RIGHT;
+	}
+	else if (-clipVertex->rhw > clipVertex->x)
+	{
+		*clipFlags |= LH3DTech::CLIP_CODE_LEFT;
+	}
+	if (clipVertex->y > clipVertex->rhw)
+	{
+		*clipFlags |= LH3DTech::CLIP_CODE_TOP;
+	}
+	else if (-clipVertex->rhw > clipVertex->y)
+	{
+		*clipFlags |= LH3DTech::CLIP_CODE_BOTTOM;
+	}
+}
+
+static inline void ProjectInBuildVertex(const Vertex3D* clipVertex, Vertex3D* screenVertex,
+                                        const unsigned long* clipFlags)
+{
+	if (*clipFlags == LH3DTech::CLIP_CODE_NONE)
+	{
+		screenVertex->rhw = 1.0f / clipVertex->rhw;
+		screenVertex->x = (screenVertex->rhw * clipVertex->x + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
+		CLAMP(screenVertex->x, 0.0f, LH3DTech::g_max_screen[0]);
+		screenVertex->y = (1.0f - screenVertex->rhw * clipVertex->y) * LH3DTech::g_info_transform.HalfRes.y;
+		CLAMP(screenVertex->y, 0.0f, LH3DTech::g_max_screen[1]);
+		screenVertex->rhw = LH3DTech::g_info_transform.NearClip * screenVertex->rhw;
+		screenVertex->z = 1.0f - screenVertex->rhw;
+	}
+	else
+	{
+		screenVertex->x = clipVertex->x;
+		screenVertex->y = clipVertex->y;
+		screenVertex->rhw = clipVertex->rhw;
 	}
 }
 
@@ -1198,85 +1329,70 @@ void LH3DInBuild::Draw()
 	}
 
 	unsigned long  color = LH3D_SCALE_COLOR(LH3DMesh::g_color, LH3D_IN_BUILD_COLOR_SCALE);
-	Vertex3D*      src = GetListVertex();
-	Vertex3D*      dst = LH3DTech::g_cache_t_points;
-	unsigned long* flags = LH3DTech::g_cache_flags;
-	uint16_t       edge_count = g_edge_count;
-	uint16_t       count = edge_count * 2;
-	for (int i = 0; i < count; i++)
+	Vertex3D*      clipVertex = GetListVertex();
+	Vertex3D*      screenVertex = LH3DTech::g_cache_t_points;
+	unsigned long* clipFlags = LH3DTech::g_cache_flags;
+	uint16_t       edgeCount = g_edge_count;
+	uint16_t       vertexCount = edgeCount * 2;
+	for (int vertexIndex = 0; vertexIndex < vertexCount; vertexIndex++)
 	{
-		if (src->rhw < LH3DTech::g_info_transform.NearClip)
-		{
-			*flags = LH3DTech::CLIP_CODE_NEAR;
-		}
-		else
-		{
-			*flags = LH3DTech::CLIP_CODE_NONE;
-		}
-		if (src->x > src->rhw)
-		{
-			*flags |= LH3DTech::CLIP_CODE_RIGHT;
-		}
-		else if (-src->rhw > src->x)
-		{
-			*flags |= LH3DTech::CLIP_CODE_LEFT;
-		}
-		if (src->y > src->rhw)
-		{
-			*flags |= LH3DTech::CLIP_CODE_TOP;
-		}
-		else if (-src->rhw > src->y)
-		{
-			*flags |= LH3DTech::CLIP_CODE_BOTTOM;
-		}
-		if (*flags == LH3DTech::CLIP_CODE_NONE)
-		{
-			dst->rhw = 1.0f / src->rhw;
-			dst->x = (dst->rhw * src->x + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
-			if (dst->x < 0.0f)
-			{
-				dst->x = 0.0f;
-			}
-			else if (dst->x > LH3DTech::g_max_screen[0])
-			{
-				dst->x = LH3DTech::g_max_screen[0];
-			}
-			dst->y = (1.0f - dst->rhw * src->y) * LH3DTech::g_info_transform.HalfRes.y;
-			if (dst->y < 0.0f)
-			{
-				dst->y = 0.0f;
-			}
-			else if (dst->y > LH3DTech::g_max_screen[1])
-			{
-				dst->y = LH3DTech::g_max_screen[1];
-			}
-			dst->rhw = LH3DTech::g_info_transform.NearClip * dst->rhw;
-			dst->z = 1.0f - dst->rhw;
-		}
-		else
-		{
-			dst->x = src->x;
-			dst->y = src->y;
-			dst->rhw = src->rhw;
-		}
-		dst->uv = src->uv;
-		dst->color = color;
-		dst->specular = src->specular;
-		flags++;
-		dst++;
-		src++;
+		ClassifyInBuildVertex(clipVertex, clipFlags);
+		ProjectInBuildVertex(clipVertex, screenVertex, clipFlags);
+		screenVertex->uv = clipVertex->uv;
+		screenVertex->color = color;
+		screenVertex->specular = clipVertex->specular;
+		clipFlags++;
+		screenVertex++;
+		clipVertex++;
 	}
 
 	LH3DTech::g_index_count = 0;
-	LH3DTech::g_points_count = count;
+	LH3DTech::g_points_count = vertexCount;
 	LH3DTech::g_clip_with_double_sided = true;
-	for (int j = 0; j < edge_count / 2; j++)
+	for (int stripIndex = 0; stripIndex < edgeCount / 2; stripIndex++)
 	{
-		uint16_t a = j * 2;
-		uint16_t b = a + 1;
-		uint16_t c = a + edge_count;
-		AddInBuildTriangle(a, b, c);
-		AddInBuildTriangle(c + 1, b, c);
+		uint16_t firstRowVertex = stripIndex * 2;
+		uint16_t nextFirstRowVertex = firstRowVertex + 1;
+		uint16_t secondRowVertex = firstRowVertex + edgeCount;
+		{
+			unsigned long flagsThird = LH3DTech::g_cache_flags[secondRowVertex];
+			unsigned long flagsSecond = LH3DTech::g_cache_flags[nextFirstRowVertex];
+			unsigned long flagsFirst = LH3DTech::g_cache_flags[firstRowVertex];
+			if (flagsFirst | flagsSecond | flagsThird)
+			{
+				if (!(flagsFirst & flagsSecond & flagsThird))
+				{
+					LH3DTech::ClipTriangle(firstRowVertex, nextFirstRowVertex, secondRowVertex,
+					                       LH3DTech::CLIP_CODE_NEAR);
+				}
+			}
+			else
+			{
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = firstRowVertex;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = nextFirstRowVertex;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = secondRowVertex;
+			}
+		}
+		{
+			uint16_t      nextSecondRowVertex = secondRowVertex + 1;
+			unsigned long flagsThird = LH3DTech::g_cache_flags[secondRowVertex];
+			unsigned long flagsSecond = LH3DTech::g_cache_flags[nextFirstRowVertex];
+			unsigned long flagsFirst = LH3DTech::g_cache_flags[nextSecondRowVertex];
+			if (flagsFirst | flagsSecond | flagsThird)
+			{
+				if (!(flagsFirst & flagsSecond & flagsThird))
+				{
+					LH3DTech::ClipTriangle(nextSecondRowVertex, nextFirstRowVertex, secondRowVertex,
+					                       LH3DTech::CLIP_CODE_NEAR);
+				}
+			}
+			else
+			{
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = nextSecondRowVertex;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = nextFirstRowVertex;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = secondRowVertex;
+			}
+		}
 	}
 
 	if (LH3DTech::g_index_count != 0)
@@ -1289,7 +1405,7 @@ void LH3DInBuild::Draw()
 
 void LH3DInBuild::AddEdge(Vertex3D* a, Vertex3D* b)
 {
-	if (g_edge_count > LH3D_IN_BUILD_MAX_EDGES)
+	if (g_edge_count > LH3D_IN_BUILD_LAST_EDGE_INDEX)
 	{
 		g_b_fuck = true;
 		return;
@@ -1305,9 +1421,9 @@ long              LH3DExtraDotLight::g_count = 0;
 
 void LH3DExtraDotLight::Draw()
 {
-	for (int i = 0; i < g_count; i++)
+	for (int lightIndex = 0; lightIndex < g_count; lightIndex++)
 	{
-		LH3DExtraDotLight* light = &g_list[i];
+		LH3DExtraDotLight* light = &g_list[lightIndex];
 		LandCell*          cell = LH3DIsland::GetCell(light->X, light->Z);
 		if (cell != NULL)
 		{
@@ -1318,9 +1434,9 @@ void LH3DExtraDotLight::Draw()
 
 void LH3DExtraDotLight::Clear()
 {
-	for (int i = 0; i < g_count; i++)
+	for (int lightIndex = 0; lightIndex < g_count; lightIndex++)
 	{
-		LandCell* cell = LH3DIsland::GetCell(g_list[i].X, g_list[i].Z);
+		LandCell* cell = LH3DIsland::GetCell(g_list[lightIndex].X, g_list[lightIndex].Z);
 		if (cell != NULL)
 		{
 			*(unsigned long*)cell = cell->SaveColor << 24;
@@ -1353,34 +1469,33 @@ void LH3DCameraChecker::AdjustCameraPosTarget(LHPoint* pos, LHPoint* target)
 	}
 
 	LH3DCameraChecker* checker = closest->Next;
-	float              smallest_dist = LH3DMath::GetDistance(&closest->Point, LH3DTech::GetCameraPosition());
+	float              closestDistance = LH3DMath::GetDistance(&closest->Point, LH3DTech::GetCameraPosition());
 	for (; checker != NULL; checker = checker->Next)
 	{
-		float dist = LH3DMath::GetDistance(&checker->Point, LH3DTech::GetCameraPosition());
-		if (dist < smallest_dist)
+		float distance = LH3DMath::GetDistance(&checker->Point, LH3DTech::GetCameraPosition());
+		if (distance < closestDistance)
 		{
-			smallest_dist = dist;
+			closestDistance = distance;
 			closest = checker;
 		}
 	}
 
-	if (smallest_dist < closest->MaxDistance)
+	if (!(closestDistance < closest->MaxDistance))
 	{
-		float amplitude = (float)closest->TimeLeft / closest->Duration * closest->Amplitude;
-		if (closest->YOnly)
-		{
-			float shake = Random(-amplitude, amplitude);
-			pos->y += shake;
-			shake = Random(-amplitude, amplitude);
-			target->y += shake;
-		}
-		else
-		{
-			*pos +=
-				LHPoint(Random(-amplitude, amplitude), Random(-amplitude, amplitude), Random(-amplitude, amplitude));
-			*target +=
-				LHPoint(Random(-amplitude, amplitude), Random(-amplitude, amplitude), Random(-amplitude, amplitude));
-		}
+		return;
+	}
+	float amplitude = (float)closest->TimeLeft / closest->Duration * closest->Amplitude;
+	if (closest->YOnly)
+	{
+		float shake = Random(-amplitude, amplitude);
+		pos->y += shake;
+		shake = Random(-amplitude, amplitude);
+		target->y += shake;
+	}
+	else
+	{
+		*pos += LHPoint(Random(-amplitude, amplitude), Random(-amplitude, amplitude), Random(-amplitude, amplitude));
+		*target += LHPoint(Random(-amplitude, amplitude), Random(-amplitude, amplitude), Random(-amplitude, amplitude));
 	}
 }
 
@@ -1424,6 +1539,20 @@ bool32_t                 ScriptedScreenShot::g_b_fullscreen_ready = false;
 bool32_t                 ScriptedScreenShot::g_b_fullscreen = false;
 bool32_t                 ScriptedScreenShot::g_b_do_it = false;
 
+static inline void ReadScreen565(uint32_t pixel, uint32_t& red, uint32_t& green, uint32_t& blue)
+{
+	red = (pixel >> 12) & 0xf;
+	green = (pixel >> 7) & 0xf;
+	blue = (pixel >> 1) & 0xf;
+}
+
+static inline void ReadScreen555(uint32_t pixel, uint32_t& red, uint32_t& green, uint32_t& blue)
+{
+	red = (pixel >> 11) & 0xf;
+	green = (pixel >> 6) & 0xf;
+	blue = (pixel >> 1) & 0xf;
+}
+
 void ScriptedScreenShot::TakeFullScreen()
 {
 	if (g_info.FullScreen == NULL)
@@ -1431,42 +1560,45 @@ void ScriptedScreenShot::TakeFullScreen()
 		return;
 	}
 	Report3D__FPCce("Request Snapshot.\n");
-	DDSURFACEDESC2 desc;
-	memset(&desc, 0, sizeof(desc));
-	desc.dwSize = sizeof(desc);
-	LHSys::TheSystem.screen.PPrimarySurface->Lock(NULL, &desc, SCRIPTED_SCREEN_SHOT_LOCK, NULL);
-	uint8_t* surface = (uint8_t*)desc.lpSurface;
-	if (surface != NULL)
+	DDSURFACEDESC2 surfaceDesc;
+	memset(&surfaceDesc, 0, sizeof(surfaceDesc));
+	surfaceDesc.dwSize = sizeof(surfaceDesc);
+	LHSys::TheSystem.screen.PPrimarySurface->Lock(NULL, &surfaceDesc, SCRIPTED_SCREEN_SHOT_LOCK, NULL);
+	const uint8_t* surfacePixels = static_cast<const uint8_t*>(surfaceDesc.lpSurface);
+	if (surfacePixels != NULL)
 	{
-		uint8_t*      out = g_info.FullScreen;
+		uint8_t*      outputPixels = g_info.FullScreen;
 		unsigned long x;
 		unsigned long y;
 		float         scaleY = LHSys::TheSystem.screen.Height() / (float)SCRIPTED_SCREEN_SHOT_FULL_HEIGHT;
 		float         scaleX = LHSys::TheSystem.screen.Width() / (float)SCRIPTED_SCREEN_SHOT_FULL_WIDTH;
-		if (desc.ddpfPixelFormat.dwRGBBitCount == 16)
+		uint32_t      previousRed;
+		uint32_t      previousGreen;
+		uint32_t      previousBlue;
+		if (surfaceDesc.ddpfPixelFormat.dwRGBBitCount == 16)
 		{
-			long pitch = desc.lPitch / 2;
-			if (desc.ddpfPixelFormat.dwGBitMask == SCRIPTED_SCREEN_SHOT_565_GREEN)
+			const uint16_t* pixels = reinterpret_cast<const uint16_t*>(surfacePixels);
+			long            pitchPixels = surfaceDesc.lPitch / (long)sizeof(*pixels);
+			if (surfaceDesc.ddpfPixelFormat.dwGBitMask == SCRIPTED_SCREEN_SHOT_565_GREEN)
 			{
 				for (y = 0; y < SCRIPTED_SCREEN_SHOT_FULL_HEIGHT; y++)
 				{
-					long     row = (long)(y * scaleY) * pitch;
-					uint32_t pixel = ((uint16_t*)surface)[row];
-					uint32_t red = (pixel >> 12) & 0xf;
-					uint32_t green = (pixel >> 7) & 0xf;
-					uint32_t blue = (pixel >> 1) & 0xf;
+					long     rowOffset = (long)(y * scaleY) * pitchPixels;
+					uint32_t pixel = pixels[rowOffset];
+					ReadScreen565(pixel, previousRed, previousGreen, previousBlue);
 					for (x = 0; x < SCRIPTED_SCREEN_SHOT_FULL_WIDTH; x++)
 					{
-						pixel = ((uint16_t*)surface)[row + (long)(x * scaleX)];
-						uint32_t nextRed = (pixel >> 12) & 0xf;
-						uint32_t nextGreen = (pixel >> 7) & 0xf;
-						uint32_t nextBlue = (pixel >> 1) & 0xf;
-						*out++ = (nextRed + red) << 3;
-						red = nextRed;
-						*out++ = (nextGreen + green) << 3;
-						green = nextGreen;
-						*out++ = (nextBlue + blue) << 3;
-						blue = nextBlue;
+						pixel = pixels[rowOffset + (long)(x * scaleX)];
+						uint32_t nextRed;
+						uint32_t nextGreen;
+						uint32_t nextBlue;
+						ReadScreen565(pixel, nextRed, nextGreen, nextBlue);
+						*outputPixels++ = (nextRed + previousRed) << 3;
+						previousRed = nextRed;
+						*outputPixels++ = (nextGreen + previousGreen) << 3;
+						previousGreen = nextGreen;
+						*outputPixels++ = (nextBlue + previousBlue) << 3;
+						previousBlue = nextBlue;
 					}
 				}
 			}
@@ -1474,50 +1606,50 @@ void ScriptedScreenShot::TakeFullScreen()
 			{
 				for (y = 0; y < SCRIPTED_SCREEN_SHOT_FULL_HEIGHT; y++)
 				{
-					long     row = (long)(y * scaleY) * pitch;
-					uint32_t pixel = ((uint16_t*)surface)[row];
-					uint32_t red = (pixel >> 11) & 0xf;
-					uint32_t green = (pixel >> 6) & 0xf;
-					uint32_t blue = (pixel >> 1) & 0xf;
+					long     rowOffset = (long)(y * scaleY) * pitchPixels;
+					uint32_t pixel = pixels[rowOffset];
+					ReadScreen555(pixel, previousRed, previousGreen, previousBlue);
 					for (x = 0; x < SCRIPTED_SCREEN_SHOT_FULL_WIDTH; x++)
 					{
-						pixel = ((uint16_t*)surface)[row + (long)(x * scaleX)];
-						uint32_t nextRed = (pixel >> 11) & 0xf;
-						uint32_t nextGreen = (pixel >> 6) & 0xf;
-						uint32_t nextBlue = (pixel >> 1) & 0xf;
-						*out++ = (nextRed + red) << 3;
-						red = nextRed;
-						*out++ = (nextGreen + green) << 3;
-						green = nextGreen;
-						*out++ = (nextBlue + blue) << 3;
-						blue = nextBlue;
+						pixel = pixels[rowOffset + (long)(x * scaleX)];
+						uint32_t nextRed;
+						uint32_t nextGreen;
+						uint32_t nextBlue;
+						ReadScreen555(pixel, nextRed, nextGreen, nextBlue);
+						*outputPixels++ = (nextRed + previousRed) << 3;
+						previousRed = nextRed;
+						*outputPixels++ = (nextGreen + previousGreen) << 3;
+						previousGreen = nextGreen;
+						*outputPixels++ = (nextBlue + previousBlue) << 3;
+						previousBlue = nextBlue;
 					}
 				}
 			}
 		}
-		else if (desc.ddpfPixelFormat.dwRGBBitCount == 32)
+		else if (surfaceDesc.ddpfPixelFormat.dwRGBBitCount == 32)
 		{
-			long pitch = desc.lPitch / 4;
-			Report3D__FPCce("%d PITCH\n", pitch);
+			const uint32_t* pixels = static_cast<const uint32_t*>(surfaceDesc.lpSurface);
+			long            pitchPixels = surfaceDesc.lPitch / (long)sizeof(*pixels);
+			Report3D__FPCce("%d PITCH\n", pitchPixels);
 			for (y = 0; y < SCRIPTED_SCREEN_SHOT_FULL_HEIGHT; y++)
 			{
-				long      row = (long)(y * scaleY) * pitch;
-				LH3DColor pixel = ((LH3DColor*)surface)[row];
-				uint32_t  red = pixel.r;
-				uint32_t  green = pixel.g;
-				uint32_t  blue = pixel.b;
+				long     rowOffset = (long)(y * scaleY) * pitchPixels;
+				uint32_t pixel = pixels[rowOffset];
+				previousRed = RGBA_GETRED(pixel);
+				previousGreen = RGBA_GETGREEN(pixel);
+				previousBlue = RGBA_GETBLUE(pixel);
 				for (x = 0; x < SCRIPTED_SCREEN_SHOT_FULL_WIDTH; x++)
 				{
-					pixel = ((LH3DColor*)surface)[row + (long)(x * scaleX)];
-					uint32_t nextRed = pixel.r;
-					uint32_t nextGreen = pixel.g;
-					uint32_t nextBlue = pixel.b;
-					*out++ = (red + nextRed) >> 1;
-					*out++ = (green + nextGreen) >> 1;
-					*out++ = (blue + nextBlue) >> 1;
-					red = nextRed;
-					green = nextGreen;
-					blue = nextBlue;
+					pixel = pixels[rowOffset + (long)(x * scaleX)];
+					uint32_t nextRed = RGBA_GETRED(pixel);
+					uint32_t nextGreen = RGBA_GETGREEN(pixel);
+					uint32_t nextBlue = RGBA_GETBLUE(pixel);
+					*outputPixels++ = (previousRed + nextRed) >> 1;
+					previousRed = nextRed;
+					*outputPixels++ = (previousGreen + nextGreen) >> 1;
+					previousGreen = nextGreen;
+					*outputPixels++ = (previousBlue + nextBlue) >> 1;
+					previousBlue = nextBlue;
 				}
 			}
 		}
@@ -1525,6 +1657,49 @@ void ScriptedScreenShot::TakeFullScreen()
 	LHSys::TheSystem.screen.PPrimarySurface->Unlock(NULL);
 	g_b_fullscreen_ready = true;
 	g_b_fullscreen = false;
+}
+
+static inline void BlendScreenshotQuad(uint8_t*& blendPixel)
+{
+	LH3DColor color(blendPixel[0], blendPixel[1], blendPixel[2], LH3D_COLOR_OPAQUE);
+	LH3DColor right(blendPixel[3], blendPixel[4], blendPixel[5], LH3D_COLOR_OPAQUE);
+	LH3DColor below(blendPixel[CITADEL_TEXTURE_PITCH], blendPixel[CITADEL_TEXTURE_PITCH + 1],
+	                blendPixel[CITADEL_TEXTURE_PITCH + 2], LH3D_COLOR_OPAQUE);
+	LH3DColor belowRight(blendPixel[CITADEL_TEXTURE_PITCH + 3], blendPixel[CITADEL_TEXTURE_PITCH + 4],
+	                     blendPixel[CITADEL_TEXTURE_PITCH + 5], LH3D_COLOR_OPAQUE);
+	color.Blend(right, SCRIPTED_SCREEN_SHOT_HALF_BLEND);
+	below.Blend(belowRight, SCRIPTED_SCREEN_SHOT_HALF_BLEND);
+	color.Blend(below, SCRIPTED_SCREEN_SHOT_HALF_BLEND);
+	blendPixel[0] = color.r;
+	blendPixel[1] = color.g;
+	blendPixel[2] = color.b;
+	blendPixel += 3;
+}
+
+static inline void AverageThumbnailPair(uint8_t*& thumbnailPixel, uint8_t*& thumbnailSource)
+{
+	int red = (thumbnailSource[0] + thumbnailSource[3]) >> 1;
+	thumbnailSource++;
+	int green = (thumbnailSource[0] + thumbnailSource[3]) >> 1;
+	thumbnailSource++;
+	int blue = (thumbnailSource[0] + thumbnailSource[3]) >> 1;
+	thumbnailSource += 4;
+	*thumbnailPixel++ = red;
+	*thumbnailPixel++ = green;
+	*thumbnailPixel++ = blue;
+}
+
+static inline void BuildScreenshotThumbnail(uint8_t* thumbnailPixel, uint8_t* thumbnailSource)
+{
+	for (unsigned long y = 0; y < SCRIPTED_SCREEN_SHOT_THUMBNAIL_HEIGHT; y++)
+	{
+		for (unsigned long x = 0; x < SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH; x++)
+		{
+			AverageThumbnailPair(thumbnailPixel, thumbnailSource);
+		}
+		thumbnailPixel += SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH * 3;
+		thumbnailSource += CITADEL_TEXTURE_PITCH;
+	}
 }
 
 void ScriptedScreenShot::Process()
@@ -1540,161 +1715,139 @@ void ScriptedScreenShot::Process()
 		return;
 	}
 	Report3D__FPCce("Request Snapshot.\n");
-	DDSURFACEDESC2 desc;
-	memset(&desc, 0, sizeof(desc));
-	desc.dwSize = sizeof(desc);
-	LHSys::TheSystem.screen.PPrimarySurface->Lock(NULL, &desc, SCRIPTED_SCREEN_SHOT_LOCK, NULL);
-	if (desc.lpSurface == NULL)
+	DDSURFACEDESC2 surfaceDesc;
+	memset(&surfaceDesc, 0, sizeof(surfaceDesc));
+	surfaceDesc.dwSize = sizeof(surfaceDesc);
+	LHSys::TheSystem.screen.PPrimarySurface->Lock(NULL, &surfaceDesc, SCRIPTED_SCREEN_SHOT_LOCK, NULL);
+	if (surfaceDesc.lpSurface == NULL)
 	{
 		LHSys::TheSystem.screen.PPrimarySurface->Unlock(NULL);
 		return;
 	}
-	uint8_t* picture = (uint8_t*)malloc(CITADEL_TEXTURE_BYTES);
-	LoadTextureCitadel(g_info.PictureTexture, picture);
-	uint8_t* out = picture;
-	float    scaleY = LHSys::TheSystem.screen.Height() / (float)SCRIPTED_SCREEN_SHOT_HALF_HEIGHT;
-	float    scaleX = LHSys::TheSystem.screen.Width() / (float)CITADEL_TEXTURE_SIZE;
-	if (desc.ddpfPixelFormat.dwRGBBitCount == 16)
+	uint8_t* picturePixels = (uint8_t*)malloc(CITADEL_TEXTURE_BYTES);
+	LoadTextureCitadel(g_info.PictureTexture, picturePixels);
+	uint8_t*      capturePixel = picturePixels;
+	unsigned long x;
+	unsigned long y;
+	float         scaleY = LHSys::TheSystem.screen.Height() / (float)SCRIPTED_SCREEN_SHOT_HALF_HEIGHT;
+	float         scaleX = LHSys::TheSystem.screen.Width() / (float)CITADEL_TEXTURE_SIZE;
+	uint32_t      previousRed;
+	uint32_t      previousGreen;
+	uint32_t      previousBlue;
+	if (surfaceDesc.ddpfPixelFormat.dwRGBBitCount == 16)
 	{
-		uint8_t* surface = (uint8_t*)desc.lpSurface;
+		const uint16_t* surfacePixels = static_cast<const uint16_t*>(surfaceDesc.lpSurface);
 		if (g_info.Half != 0)
 		{
-			out = picture + CITADEL_TEXTURE_BYTES / 2;
+			capturePixel = picturePixels + CITADEL_TEXTURE_BYTES / 2;
 		}
-		long pitch = desc.lPitch / 2;
-		if (desc.ddpfPixelFormat.dwGBitMask == SCRIPTED_SCREEN_SHOT_565_GREEN)
+		long pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint16_t);
+		if (surfaceDesc.ddpfPixelFormat.dwGBitMask == SCRIPTED_SCREEN_SHOT_565_GREEN)
 		{
-			for (unsigned long y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
+			for (y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
 			{
-				long     row = (long)(y * scaleY) * pitch;
-				uint32_t pixel = ((uint16_t*)surface)[row];
-				uint32_t red = (pixel >> 12) & 0xf;
-				uint32_t green = (pixel >> 7) & 0xf;
-				uint32_t blue = (pixel >> 1) & 0xf;
-				for (unsigned long x = 0; x < CITADEL_TEXTURE_SIZE; x++)
+				long     rowOffset = (long)(y * scaleY) * pitchPixels;
+				uint32_t pixel = surfacePixels[rowOffset];
+				ReadScreen565(pixel, previousRed, previousGreen, previousBlue);
+				for (x = 0; x < CITADEL_TEXTURE_SIZE; x++)
 				{
-					pixel = ((uint16_t*)surface)[row + (long)(x * scaleX)];
-					uint32_t nextRed = (pixel >> 12) & 0xf;
-					uint32_t nextGreen = (pixel >> 7) & 0xf;
-					uint32_t nextBlue = (pixel >> 1) & 0xf;
-					*out++ = (nextRed + red) << 3;
-					red = nextRed;
-					*out++ = (nextGreen + green) << 3;
-					green = nextGreen;
-					*out++ = (nextBlue + blue) << 3;
-					blue = nextBlue;
+					pixel = surfacePixels[rowOffset + (long)(x * scaleX)];
+					uint32_t nextRed;
+					uint32_t nextGreen;
+					uint32_t nextBlue;
+					ReadScreen565(pixel, nextRed, nextGreen, nextBlue);
+					*capturePixel++ = (nextRed + previousRed) << 3;
+					previousRed = nextRed;
+					*capturePixel++ = (nextGreen + previousGreen) << 3;
+					previousGreen = nextGreen;
+					*capturePixel++ = (nextBlue + previousBlue) << 3;
+					previousBlue = nextBlue;
 				}
 			}
 		}
 		else
 		{
-			for (unsigned long y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
+			for (y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
 			{
-				long     row = (long)(y * scaleY) * pitch;
-				uint32_t pixel = ((uint16_t*)surface)[row];
-				uint32_t red = (pixel >> 11) & 0xf;
-				uint32_t green = (pixel >> 6) & 0xf;
-				uint32_t blue = (pixel >> 1) & 0xf;
-				for (unsigned long x = 0; x < CITADEL_TEXTURE_SIZE; x++)
+				long     rowOffset = (long)(y * scaleY) * pitchPixels;
+				uint32_t pixel = surfacePixels[rowOffset];
+				ReadScreen555(pixel, previousRed, previousGreen, previousBlue);
+				for (x = 0; x < CITADEL_TEXTURE_SIZE; x++)
 				{
-					pixel = ((uint16_t*)surface)[row + (long)(x * scaleX)];
-					uint32_t nextRed = (pixel >> 11) & 0xf;
-					uint32_t nextGreen = (pixel >> 6) & 0xf;
-					uint32_t nextBlue = (pixel >> 1) & 0xf;
-					*out++ = (nextRed + red) << 3;
-					red = nextRed;
-					*out++ = (nextGreen + green) << 3;
-					green = nextGreen;
-					*out++ = (nextBlue + blue) << 3;
-					blue = nextBlue;
+					pixel = surfacePixels[rowOffset + (long)(x * scaleX)];
+					uint32_t nextRed;
+					uint32_t nextGreen;
+					uint32_t nextBlue;
+					ReadScreen555(pixel, nextRed, nextGreen, nextBlue);
+					*capturePixel++ = (nextRed + previousRed) << 3;
+					previousRed = nextRed;
+					*capturePixel++ = (nextGreen + previousGreen) << 3;
+					previousGreen = nextGreen;
+					*capturePixel++ = (nextBlue + previousBlue) << 3;
+					previousBlue = nextBlue;
 				}
 			}
 		}
 	}
-	else if (desc.ddpfPixelFormat.dwRGBBitCount == 32)
+	else if (surfaceDesc.ddpfPixelFormat.dwRGBBitCount == 32)
 	{
-		uint8_t* surface = (uint8_t*)desc.lpSurface;
+		const uint32_t* surfacePixels = static_cast<const uint32_t*>(surfaceDesc.lpSurface);
 		if (g_info.Half != 0)
 		{
-			out = picture + CITADEL_TEXTURE_BYTES / 2;
+			capturePixel = picturePixels + CITADEL_TEXTURE_BYTES / 2;
 		}
-		long pitch = desc.lPitch / 4;
-		for (unsigned long y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
+		long pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint32_t);
+		for (y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT; y++)
 		{
-			long      row = (long)(y * scaleY) * pitch;
-			LH3DColor pixel = ((LH3DColor*)surface)[row];
-			uint32_t  red = pixel.r;
-			uint32_t  green = pixel.g;
-			uint32_t  blue = pixel.b;
-			for (unsigned long x = 0; x < CITADEL_TEXTURE_SIZE; x++)
+			long     rowOffset = (long)(y * scaleY) * pitchPixels;
+			uint32_t pixel = surfacePixels[rowOffset];
+			previousRed = RGBA_GETRED(pixel);
+			previousGreen = RGBA_GETGREEN(pixel);
+			previousBlue = RGBA_GETBLUE(pixel);
+			for (x = 0; x < CITADEL_TEXTURE_SIZE; x++)
 			{
-				pixel = ((LH3DColor*)surface)[row + (long)(x * scaleX)];
-				uint32_t nextRed = pixel.r;
-				uint32_t nextGreen = pixel.g;
-				uint32_t nextBlue = pixel.b;
-				*out++ = (red + nextRed) >> 1;
-				*out++ = (green + nextGreen) >> 1;
-				*out++ = (blue + nextBlue) >> 1;
-				red = nextRed;
-				green = nextGreen;
-				blue = nextBlue;
+				pixel = surfacePixels[rowOffset + (long)(x * scaleX)];
+				uint32_t nextRed = RGBA_GETRED(pixel);
+				uint32_t nextGreen = RGBA_GETGREEN(pixel);
+				uint32_t nextBlue = RGBA_GETBLUE(pixel);
+				*capturePixel++ = (previousRed + nextRed) >> 1;
+				previousRed = nextRed;
+				*capturePixel++ = (previousGreen + nextGreen) >> 1;
+				previousGreen = nextGreen;
+				*capturePixel++ = (previousBlue + nextBlue) >> 1;
+				previousBlue = nextBlue;
 			}
 		}
 	}
 	LHSys::TheSystem.screen.PPrimarySurface->Unlock(NULL);
-	uint8_t* pixel = picture;
-	if (g_info.Half != 0)
+	uint8_t* blendPixel = picturePixels;
+	if (ScriptedScreenShot::g_info.Half != 0)
 	{
-		pixel = picture + CITADEL_TEXTURE_BYTES / 2;
+		blendPixel = picturePixels + CITADEL_TEXTURE_BYTES / 2;
 	}
-	unsigned long x;
-	unsigned long y;
-	for (y = 0; y < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT - 1; y++)
+	for (uint32_t blendRow = 0; blendRow < SCRIPTED_SCREEN_SHOT_HALF_HEIGHT - 1; blendRow++)
 	{
-		for (x = 0; x < CITADEL_TEXTURE_SIZE - 1; x++)
+		for (uint32_t blendColumn = 0; blendColumn < CITADEL_TEXTURE_SIZE - 1; blendColumn++)
 		{
-			LH3DColor color(pixel[0], pixel[1], pixel[2], LH3D_COLOR_OPAQUE);
-			LH3DColor right(pixel[3], pixel[4], pixel[5], LH3D_COLOR_OPAQUE);
-			LH3DColor below(pixel[CITADEL_TEXTURE_PITCH], pixel[CITADEL_TEXTURE_PITCH + 1],
-			                pixel[CITADEL_TEXTURE_PITCH + 2], LH3D_COLOR_OPAQUE);
-			LH3DColor belowRight(pixel[CITADEL_TEXTURE_PITCH + 3], pixel[CITADEL_TEXTURE_PITCH + 4],
-			                     pixel[CITADEL_TEXTURE_PITCH + 5], LH3D_COLOR_OPAQUE);
-			color.Blend(right, SCRIPTED_SCREEN_SHOT_HALF_BLEND);
-			below.Blend(belowRight, SCRIPTED_SCREEN_SHOT_HALF_BLEND);
-			color.Blend(below, SCRIPTED_SCREEN_SHOT_HALF_BLEND);
-			pixel[0] = color.r;
-			pixel[1] = color.g;
-			pixel[2] = color.b;
-			pixel += 3;
+			BlendScreenshotQuad(blendPixel);
 		}
-		pixel += 3;
+		blendPixel += 3;
 	}
-	SaveTextureCitadel(g_info.PictureTexture, picture);
+	SaveTextureCitadel(ScriptedScreenShot::g_info.PictureTexture, picturePixels);
 	uint8_t* thumbnails = (uint8_t*)malloc(CITADEL_TEXTURE_BYTES);
-	LoadTextureCitadel(g_info.ThumbnailTexture, thumbnails);
-	uint8_t* thumbnail = thumbnails +
-	                     g_info.Thumbnail / 2 * SCRIPTED_SCREEN_SHOT_THUMBNAIL_HEIGHT * CITADEL_TEXTURE_PITCH +
-	                     (g_info.Thumbnail & 1) * SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH * 3;
-	uint8_t* source = picture;
-	if (g_info.Half != 0)
+	LoadTextureCitadel(ScriptedScreenShot::g_info.ThumbnailTexture, thumbnails);
+	long thumbnailRowOffset =
+		ScriptedScreenShot::g_info.Thumbnail / 2 * SCRIPTED_SCREEN_SHOT_THUMBNAIL_HEIGHT * CITADEL_TEXTURE_PITCH;
+	long thumbnailColumnOffset = (ScriptedScreenShot::g_info.Thumbnail & 1) * SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH * 3;
+	uint8_t* thumbnailPixel = thumbnails + thumbnailRowOffset + thumbnailColumnOffset;
+	uint8_t* thumbnailSource = picturePixels;
+	if (ScriptedScreenShot::g_info.Half != 0)
 	{
-		source = picture + CITADEL_TEXTURE_BYTES / 2;
+		thumbnailSource = picturePixels + CITADEL_TEXTURE_BYTES / 2;
 	}
-	for (y = 0; y < SCRIPTED_SCREEN_SHOT_THUMBNAIL_HEIGHT; y++)
-	{
-		for (x = 0; x < SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH; x++)
-		{
-			thumbnail[0] = (source[0] + source[3]) >> 1;
-			thumbnail[1] = (source[1] + source[4]) >> 1;
-			thumbnail[2] = (source[2] + source[5]) >> 1;
-			thumbnail += 3;
-			source += 6;
-		}
-		thumbnail += SCRIPTED_SCREEN_SHOT_THUMBNAIL_WIDTH * 3;
-		source += CITADEL_TEXTURE_PITCH;
-	}
-	SaveTextureCitadel(g_info.ThumbnailTexture, thumbnails);
-	free(picture);
+	BuildScreenshotThumbnail(thumbnailPixel, thumbnailSource);
+	SaveTextureCitadel(ScriptedScreenShot::g_info.ThumbnailTexture, thumbnails);
+	free(picturePixels);
 	free(thumbnails);
 }
 
@@ -1721,9 +1874,9 @@ void LH3DTools::ConvertTgaTo16B(int argc, char** argv)
 void LH3DTools::DeteleTexture(int argc, char** argv)
 {
 	char error[LH3D_TOOLS_TEXT_SIZE];
-	for (int i = 1; i < argc; i++)
+	for (int argumentIndex = 1; argumentIndex < argc; argumentIndex++)
 	{
-		char*    name = argv[i];
+		char*    name = argv[argumentIndex];
 		uint32_t size;
 		if (LHFileLength(name, &size) != LH_FILE_RESULT_OK)
 		{
@@ -1732,7 +1885,7 @@ void LH3DTools::DeteleTexture(int argc, char** argv)
 		}
 		LH3DTexturePackFile* pack = (LH3DTexturePackFile*)malloc(size);
 		LHLoadData(name, pack, size, NULL);
-		unsigned long packSize = pack->Offsets;
+		uint32_t packSize = pack->Offsets;
 		pack->Offsets = LH3D_TEXTURE_PACK_NO_OFFSETS;
 		pack->Count = 0;
 		LHSaveData(name, pack, packSize, NULL);
@@ -1740,9 +1893,15 @@ void LH3DTools::DeteleTexture(int argc, char** argv)
 	}
 }
 
+static inline long* GetTexturePackEntry(LH3DTexturePackFile* pack, long offset)
+{
+	long textureOffset = *(long*)((uint8_t*)pack + offset + pack->Offsets);
+	return (long*)((uint8_t*)pack + textureOffset);
+}
+
 void LH3DTools::ExportTGA(int argc, char** argv)
 {
-	char file[LH3D_TOOLS_FILE_SIZE];
+	char file[0x100];
 	char path[LH3D_TOOLS_TEXT_SIZE];
 	char error[LH3D_TOOLS_TEXT_SIZE];
 	strcpy(path, argv[0]);
@@ -1752,20 +1911,23 @@ void LH3DTools::ExportTGA(int argc, char** argv)
 		exe++;
 	}
 	*exe = '\0';
-	for (int i = 1; i < argc; i++)
+	for (int argumentIndex = 1; argumentIndex < argc; argumentIndex++)
 	{
+		char*    name = argv[argumentIndex];
 		uint32_t size;
-		if (LHFileLength(argv[i], &size) != LH_FILE_RESULT_OK)
+		if (LHFileLength(name, &size) != LH_FILE_RESULT_OK)
 		{
 			sprintf(error, "Can't find %s", error);
 			return;
 		}
 		LH3DTexturePackFile* pack = (LH3DTexturePackFile*)malloc(size);
-		LHLoadData(argv[i], pack, size, NULL);
-		for (int j = 0; j < pack->Count; j++)
+		LHLoadData(name, pack, size, NULL);
+		long offset = 0;
+		for (int textureIndex = 0; textureIndex < pack->Count; textureIndex++, offset += sizeof(long))
 		{
-			long* texture = (long*)((uint8_t*)pack + ((long*)((uint8_t*)pack + pack->Offsets))[j]);
-			sprintf(file, LH3D_TOOLS_PACK_TEXTURE_PATH, path, texture[0]);
+			long* texture = GetTexturePackEntry(pack, offset);
+			long  textureId = texture[0];
+			sprintf(file, LH3D_TOOLS_PACK_TEXTURE_PATH, path, textureId);
 			LHTGA* tga = LHTGA::GetTGA(texture + 1, LH3D_TEXTURE_PACK_SIZE, LH3D_TEXTURE_PACK_SIZE,
 			                           LHTGA_FORMAT_ARGB4444, false);
 			LHSaveData(file, tga, LHTGA::GetSize(tga->Width, tga->Height), NULL);
@@ -1813,9 +1975,8 @@ Bitmap16B* Bitmap16B::CreateFromHD(char* name, bool32_t keep_format)
 			{
 				for (int x = 0; x < lowRes->Width; x++)
 				{
-					uint16_t pixel = bitmap->Data[(bitmap->Width * y + x) * 2];
-					lowRes->Data[lowRes->Width * y + x] =
-						((pixel & BITMAP_16B_555_HIGH) << 1) | (pixel & BITMAP_16B_555_BLUE);
+					lowRes->Data[lowRes->Width * y + x] = ((bitmap->Data[(bitmap->Width * y + x) * 2] & 0xffe0) << 1) |
+					                                      (bitmap->Data[(bitmap->Width * y + x) * 2] & 0x1f);
 				}
 			}
 		}
@@ -1839,11 +2000,16 @@ Bitmap16B* Bitmap16B::CreateFromHD(char* name, bool32_t keep_format)
 			for (int x = 0; x < bitmap->Width; x++)
 			{
 				uint16_t* pixel = &bitmap->Data[bitmap->Width * y + x];
-				*pixel = ((*pixel & BITMAP_16B_555_HIGH) << 1) | (*pixel & BITMAP_16B_555_BLUE);
+				*pixel = ((*pixel & 0xffe0) << 1) | (*pixel & 0x1f);
 			}
 		}
 	}
 	return bitmap;
+}
+
+static inline uint16_t PackARGB4444(uint8_t alpha, uint8_t red, uint8_t green, uint8_t blue)
+{
+	return ((alpha >> 4) << 12) | ((red >> 4) << 8) | ((green >> 4) << 4) | (blue >> 4);
 }
 
 Bitmap16B* Bitmap16B::CreateFromRawOnHD(char* name, bool32_t check_size, long format)
@@ -1859,37 +2025,38 @@ Bitmap16B* Bitmap16B::CreateFromRawOnHD(char* name, bool32_t check_size, long fo
 	{
 		return NULL;
 	}
-	uint8_t* data = (uint8_t*)malloc(size);
-	LHLoadData(name, data, size, NULL);
+	uint8_t* fileData = (uint8_t*)malloc(size);
+	LHLoadData(name, fileData, size, NULL);
 	Bitmap16B* bitmap = Create(BITMAP_16B_RAW_SIZE, BITMAP_16B_RAW_SIZE, 0);
 	if (format == BITMAP_16B_RAW_FORMAT_RGBA)
 	{
-		uint8_t* src = data;
-		for (int i = 0; i < BITMAP_16B_RAW_SIZE * BITMAP_16B_RAW_SIZE; i++, src += 4)
+		const uint8_t* sourcePixel = fileData;
+		for (int pixelIndex = 0; pixelIndex < BITMAP_16B_RAW_SIZE * BITMAP_16B_RAW_SIZE; pixelIndex++, sourcePixel += 4)
 		{
-			bitmap->Data[i] = ((src[3] >> 4) << 12) | ((src[0] >> 4) << 8) | ((src[1] >> 4) << 4) | (src[2] >> 4);
+			bitmap->Data[pixelIndex] = PackARGB4444(sourcePixel[3], sourcePixel[0], sourcePixel[1], sourcePixel[2]);
 		}
 	}
 	else
 	{
-		uint8_t* src = data;
-		for (int i = 0; i < BITMAP_16B_RAW_SIZE * BITMAP_16B_RAW_SIZE; i++, src += 3)
+		const uint8_t* sourcePixel = fileData;
+		for (int pixelIndex = 0; pixelIndex < BITMAP_16B_RAW_SIZE * BITMAP_16B_RAW_SIZE; pixelIndex++, sourcePixel += 3)
 		{
-			bitmap->Data[i] = ((src[0] >> 3) << 10) | ((src[1] >> 3) << 5) | (src[2] >> 3);
+			bitmap->Data[pixelIndex] =
+				((sourcePixel[0] >> 3) << 10) | ((sourcePixel[1] >> 3) << 5) | (sourcePixel[2] >> 3);
 		}
 	}
-	free(data);
+	free(fileData);
 	return bitmap;
 }
 
 Bitmap16B* Bitmap16B::CreateFromTGAOnHD(char* name)
 {
-	LHTGA*     tga = LHTGA::CreateFromHD(name);
-	Bitmap16B* bitmap = Create(BITMAP_16B_RAW_SIZE, BITMAP_16B_RAW_SIZE, 0);
-	uint8_t*   src = (uint8_t*)(tga + 1);
-	for (int i = 0; i < BITMAP_16B_RAW_SIZE * BITMAP_16B_RAW_SIZE; i++, src += 4)
+	LHTGA*         tga = LHTGA::CreateFromHD(name);
+	Bitmap16B*     bitmap = Create(BITMAP_16B_RAW_SIZE, BITMAP_16B_RAW_SIZE, 0);
+	const uint8_t* sourcePixel = reinterpret_cast<const uint8_t*>(tga + 1);
+	for (int pixelIndex = 0; pixelIndex < BITMAP_16B_RAW_SIZE * BITMAP_16B_RAW_SIZE; pixelIndex++, sourcePixel += 4)
 	{
-		bitmap->Data[i] = ((src[0] >> 4) << 12) | ((src[1] >> 4) << 8) | ((src[2] >> 4) << 4) | (src[3] >> 4);
+		bitmap->Data[pixelIndex] = PackARGB4444(sourcePixel[0], sourcePixel[1], sourcePixel[2], sourcePixel[3]);
 	}
 	free(tga);
 	return bitmap;
@@ -1902,80 +2069,90 @@ void Bitmap16B::SaveOnHD(char* name)
 
 void UpdateClippingPlane(LHPlane* plane)
 {
-	LH3DPrimitive::g_clipping_plane_world = *plane;
-	LHPoint normal = LH3DPrimitive::g_clipping_plane_world.Normal;
-	LHPoint point = normal * -(LH3DPrimitive::g_clipping_plane_world.Distance / normal.GetNormeSq());
+	float distance = plane->Distance;
+	LH3DPrimitive::g_clipping_plane_world.Normal.Set(plane->Normal.x, plane->Normal.y, plane->Normal.z);
+	LH3DPrimitive::g_clipping_plane_world.Distance = distance;
+	const LHPoint& worldNormal = LH3DPrimitive::g_clipping_plane_world.Normal;
+	LHPoint        normal;
+	normal.Set(worldNormal.x, worldNormal.y, worldNormal.z);
+	float   distanceOverSquaredNormal = -(LH3DPrimitive::g_clipping_plane_world.Distance / worldNormal.GetNormeSq());
+	LHPoint pointOnPlane;
+	pointOnPlane.Set(worldNormal.x * distanceOverSquaredNormal, worldNormal.y * distanceOverSquaredNormal,
+	                 worldNormal.z * distanceOverSquaredNormal);
 	LH3DTech::g_world_to_camera.TransformVector(normal);
-	LH3DTech::g_world_to_camera.TransformPoint(point);
 	LH3DPrimitive::g_clipping_plane_camera.Normal = normal;
-	LH3DPrimitive::g_clipping_plane_camera.Distance = -normal.DotProduct(point);
+	LH3DTech::g_world_to_camera.TransformPoint(pointOnPlane);
+	LH3DPrimitive::g_clipping_plane_camera.Distance = -normal.DotProduct(pointOnPlane);
 }
 
 void LH3DTools::ConvertLandscape(int argc, char** argv)
 {
-	if (argc == 2)
+	if (argc != 2)
 	{
-		LH3DIsland::SetFileToLoad(argv[1]);
-		LH3DIsland::Create();
-		int length = strlen(argv[1]);
-		argv[1][length - 3] = 'l';
-		argv[1][length - 2] = 'n';
-		argv[1][length - 1] = 'd';
-		LH3DRender::StartFrame();
-		LH3DIsland::Draw();
-		LH3DRender::FinishFrame();
-		LH3DIsland::SaveOnDisk(argv[1]);
-		LH3DIsland::Release();
+		return;
 	}
+	LH3DIsland::SetFileToLoad(argv[1]);
+	LH3DIsland::Create();
+	int length = strlen(argv[1]);
+	argv[1][length - 3] = 'l';
+	argv[1][length - 2] = 'n';
+	argv[1][length - 1] = 'd';
+	LH3DRender::StartFrame();
+	LH3DIsland::Draw();
+	LH3DRender::FinishFrame();
+	LH3DIsland::SaveOnDisk(argv[1]);
+	LH3DIsland::Release();
 }
 
 void LH3DTools::ConvertLoadOnDiscIntoCT(int argc, char** argv)
 {
-	if (argc == 2)
+	if (argc != 2)
 	{
-		LHSys::TheSystem.screen.SetDriver(0);
-		LHIlib::LH3DRenderSetNeedInit(true);
-		LHSys::TheSystem.screen.Open(LH3D_TOOLS_SCREEN_SIZE, LH3D_TOOLS_SCREEN_SIZE, LH3D_TOOLS_SCREEN_DEPTH);
-		char name[LH3D_TOOLS_TEXT_SIZE];
-		strcpy(name, argv[1]);
-		int length = strlen(name);
-		name[length - LH3D_TOOLS_EXTENSION_LENGTH] = '\0';
-		strcat(name, "a.raw");
-		uint32_t      size;
-		unsigned long alpha = 0;
-		if (LHFileLength(name, &size) == LH_FILE_RESULT_OK)
-		{
-			alpha = LH3D_TOOLS_TEXTURE_ALPHA;
-		}
-		LH3DTexture* texture = LH3DTexture::Create(argv[1], alpha | LH3D_TOOLS_TEXTURE_FLAGS, 0, NULL);
-		texture->Activate(0);
-		LH3DCT* ct = LH3DCT::Create(NULL, (bool)alpha);
-		if (texture->VRAMTex != NULL)
-		{
-			ct->Surface->Blt(NULL, texture->VRAMTex->Surface, NULL, DDBLT_WAIT, NULL);
-		}
-		name[length - LH3D_TOOLS_EXTENSION_LENGTH] = '\0';
-		strcat(name, ".cmp");
-		ct->SaveOnDisk(name);
-		ct->Release();
+		return;
 	}
+	LHSys::TheSystem.screen.SetDriver(0);
+	LHIlib::LH3DRenderSetNeedInit(true);
+	LHSys::TheSystem.screen.Open(LH3D_TOOLS_SCREEN_SIZE, LH3D_TOOLS_SCREEN_SIZE, LH3D_TOOLS_SCREEN_DEPTH);
+	char name[LH3D_TOOLS_TEXT_SIZE];
+	strcpy(name, argv[1]);
+	int length = strlen(name);
+	name[length - LH3D_TOOLS_EXTENSION_LENGTH] = '\0';
+	strcat(name, "a.raw");
+	uint32_t size;
+	uint32_t alphaFlags = 0;
+	if (LHFileLength(name, &size) == LH_FILE_RESULT_OK)
+	{
+		alphaFlags = LH3D_TEXTURE_FLAGS_ALPHA;
+	}
+	LH3DTexture* texture = LH3DTexture::Create(argv[1], alphaFlags | LH3D_TEXTURE_TYPE_FILE, 0, NULL);
+	texture->Activate(0);
+	LH3DCT* ct = LH3DCT::Create(NULL, (bool)alphaFlags);
+	if (texture->VRAMTex != NULL)
+	{
+		ct->Surface->Blt(NULL, texture->VRAMTex->Surface, NULL, DDBLT_WAIT, NULL);
+	}
+	name[length - LH3D_TOOLS_EXTENSION_LENGTH] = '\0';
+	strcat(name, ".cmp");
+	ct->SaveOnDisk(name);
+	ct->Release();
 }
 
 void LH3DTools::ProcessLED(int argc, char** argv)
 {
-	if (argc == 2)
+	if (argc != 2)
 	{
-		LHSys::TheSystem.screen.SetDriver(0);
-		LHIlib::LH3DRenderSetNeedInit(true);
-		LHSys::TheSystem.screen.Open(LH3D_TOOLS_SCREEN_SIZE, LH3D_TOOLS_SCREEN_SIZE, LH3D_TOOLS_SCREEN_DEPTH);
-		LH3DIsland::SetFileToLoad(argv[1]);
-		argv[1][strlen(argv[1]) - 3] = '\0';
-		strcat(argv[1], "tga");
-		LH3DIsland::Create();
-		LH3DIsland::Draw();
-		LH3DRender::FinishFrame();
-		LH3DIsland::BuildSoundTGA(argv[1]);
+		return;
 	}
+	LHSys::TheSystem.screen.SetDriver(0);
+	LHIlib::LH3DRenderSetNeedInit(true);
+	LHSys::TheSystem.screen.Open(LH3D_TOOLS_SCREEN_SIZE, LH3D_TOOLS_SCREEN_SIZE, LH3D_TOOLS_SCREEN_DEPTH);
+	LH3DIsland::SetFileToLoad(argv[1]);
+	argv[1][strlen(argv[1]) - 3] = '\0';
+	strcat(argv[1], "tga");
+	LH3DIsland::Create();
+	LH3DIsland::Draw();
+	LH3DRender::FinishFrame();
+	LH3DIsland::BuildSoundTGA(argv[1]);
 }
 
 static inline void LightCell(LandCell* cell, uint8_t darkness)
@@ -1992,113 +2169,120 @@ void __fastcall DrawLightLikeHand(float x, float z, uint8_t* light, long size, f
 	{
 		return;
 	}
-	long          sizeX = size;
-	long          sizeZ = size;
-	float         cellX = x * LIGHT_LIKE_HAND_CELLS_PER_UNIT;
-	float         cellZ = z * LIGHT_LIKE_HAND_CELLS_PER_UNIT;
-	long          px = (long)cellX;
-	long          pz = (long)cellZ;
-	unsigned long weightZ;
-	if (cellZ >= 0.0f)
+	long  clippedWidth = size;
+	long  clippedDepth = size;
+	float gridX = x * (1.0f / MAP_COORDS_METRES_PER_CELL);
+	float gridZ = z * (1.0f / MAP_COORDS_METRES_PER_CELL);
+	long  cellX = (long)gridX;
+	long  cellZ = (long)gridZ;
+	long  weightZResult;
+	if (gridZ >= 0.0f)
 	{
-		weightZ = (uint8_t)(255.0f - (cellZ - pz) * 255.0f);
+		weightZResult = (long)(LH3D_COLOR_CHANNEL_MAX - (gridZ - cellZ) * LH3D_COLOR_CHANNEL_MAX);
 	}
 	else
 	{
-		weightZ = (uint8_t)((pz - cellZ) * 255.0f);
-		pz--;
+		weightZResult = (long)((cellZ - gridZ) * LH3D_COLOR_CHANNEL_MAX);
+		cellZ--;
 	}
-	unsigned long weightX;
-	if (cellX >= 0.0f)
+	long weightXResult;
+	if (gridX >= 0.0f)
 	{
-		weightX = (uint8_t)(255.0f - (cellX - px) * 255.0f);
+		weightXResult = (long)(LH3D_COLOR_CHANNEL_MAX - (gridX - cellX) * LH3D_COLOR_CHANNEL_MAX);
 	}
 	else
 	{
-		weightX = (uint8_t)((px - cellX) * 255.0f);
-		px--;
+		weightXResult = (long)((cellX - gridX) * LH3D_COLOR_CHANNEL_MAX);
+		cellX--;
 	}
-	if (px > LAND_MAP_SIZE - size)
+	const uint32_t weightX = static_cast<uint8_t>(weightXResult);
+	const uint32_t weightZ = static_cast<uint8_t>(weightZResult);
+	if (cellX > LAND_MAP_SIZE - size)
 	{
-		if (px >= LAND_MAP_SIZE)
+		if (cellX >= LAND_MAP_SIZE)
 		{
 			return;
 		}
-		sizeX = LAND_MAP_SIZE - px;
+		clippedWidth = LAND_MAP_SIZE - cellX;
 	}
-	else if (px < 0)
+	else if (cellX < 0)
 	{
-		sizeX = px + size;
-		light -= px * size;
-		px = 0;
+		clippedWidth = cellX + size;
+		light -= cellX * size;
+		cellX = 0;
 	}
-	if (pz > LAND_MAP_SIZE - size)
+	if (cellZ > LAND_MAP_SIZE - size)
 	{
-		if (pz >= LAND_MAP_SIZE)
+		if (cellZ >= LAND_MAP_SIZE)
 		{
 			return;
 		}
-		sizeZ = LAND_MAP_SIZE - pz;
+		clippedDepth = LAND_MAP_SIZE - cellZ;
 	}
-	else if (pz < 0)
+	else if (cellZ < 0)
 	{
-		sizeZ = pz + size;
-		light -= pz;
-		pz = 0;
+		clippedDepth = cellZ + size;
+		light -= cellZ;
+		cellZ = 0;
 	}
 	int maxDarkness =
-		((LH3DColor&)LandCell::g_darkness_to_color[LAND_CELL_MAX_DARKNESS]).GetG() * LAND_CELL_MIN_DARKNESS >> 8;
-	long alpha = (long)(intensity * 255.0f);
-	for (int i = 0; i < sizeX - 1; i++)
+		RGBA_GETGREEN(LandCell::g_darkness_to_color[LAND_CELL_MAX_DARKNESS]) * LAND_CELL_MIN_DARKNESS >> 8;
+	long intensityWeight = (long)(intensity * LH3D_COLOR_CHANNEL_MAX);
+	if (clippedDepth <= 1)
 	{
-		for (int j = 0; j < sizeZ - 1; j++)
+		return;
+	}
+	for (int brushColumn = 0; brushColumn < clippedWidth - 1; brushColumn++)
+	{
+		for (int brushRow = 0; brushRow < clippedDepth - 1; brushRow++)
 		{
-			LandCell* cell = LH3DIsland::GetCell(px, pz);
+			LandCell* cell = LH3DIsland::GetCell(cellX, cellZ);
 			if (cell != NULL)
 			{
-				uint8_t*      next = light + size;
-				unsigned long top = LH3D_BLEND_COLOR(light[0], light[1], weightZ);
-				unsigned long bottom = LH3D_BLEND_COLOR(next[0], next[1], weightZ);
-				unsigned long darkness = LH3D_BLEND_COLOR(top, bottom, weightX) * alpha / 255;
+				uint8_t* nextColumn = light + size;
+				uint32_t columnDarkness = LH3D_BLEND_COLOR(light[0], light[1], weightZ);
+				uint32_t nextColumnDarkness = LH3D_BLEND_COLOR(nextColumn[0], nextColumn[1], weightZ);
+				uint32_t darkness = LH3D_BLEND_COLOR(columnDarkness, nextColumnDarkness, weightX) * intensityWeight /
+				                    LH3D_COLOR_CHANNEL_MAX;
 				if (darkness <= (cell->darkness * maxDarkness >> 8))
 				{
 					darkness = cell->darkness;
 				}
 				LightCell(cell, darkness);
-				if ((pz & LAND_BLOCK_MASK) == 0)
+				if (((cellZ)&LAND_BLOCK_MASK) == 0)
 				{
-					LandCell* edge = LH3DIsland::GetCell(px, pz - 1);
-					if (edge != NULL)
+					LandCell* boundaryCopy = LH3DIsland::GetCell(cellX, cellZ - 1);
+					if (boundaryCopy != NULL)
 					{
-						edge += 1;
-						LightCell(edge, darkness);
-						if ((px & LAND_BLOCK_MASK) == 0)
+						boundaryCopy += 1;
+						LightCell(boundaryCopy, darkness);
+						if (((cellX)&LAND_BLOCK_MASK) == 0)
 						{
-							edge = LH3DIsland::GetCell(px - 1, pz - 1);
-							if (edge != NULL)
+							boundaryCopy = LH3DIsland::GetCell(cellX - 1, cellZ - 1);
+							if (boundaryCopy != NULL)
 							{
-								edge += LAND_BLOCK_SIDE_POINTS + 1;
-								LightCell(edge, darkness);
+								boundaryCopy += LAND_BLOCK_SIDE_POINTS + 1;
+								LightCell(boundaryCopy, darkness);
 							}
 						}
 					}
 				}
-				if ((px & LAND_BLOCK_MASK) == 0)
+				if (((cellX)&LAND_BLOCK_MASK) == 0)
 				{
-					LandCell* edge = LH3DIsland::GetCell(px - 1, pz);
-					if (edge != NULL)
+					LandCell* boundaryCopy = LH3DIsland::GetCell(cellX - 1, cellZ);
+					if (boundaryCopy != NULL)
 					{
-						edge += LAND_BLOCK_SIDE_POINTS;
-						LightCell(edge, darkness);
+						boundaryCopy += LAND_BLOCK_SIDE_POINTS;
+						LightCell(boundaryCopy, darkness);
 					}
 				}
 			}
 			light++;
-			pz++;
+			cellZ++;
 		}
-		light += size - (sizeZ - 1);
-		pz -= sizeZ - 1;
-		px++;
+		light += size - (clippedDepth - 1);
+		cellZ -= clippedDepth - 1;
+		cellX++;
 	}
 }
 
@@ -2110,76 +2294,76 @@ static inline void ClearCell(LandCell* cell)
 
 void __fastcall ClearLightLikeHand(float x, float z, long size)
 {
-	long sizeX = size;
-	long sizeZ = size;
-	long px = (long)(x / MAP_COORDS_METRES_PER_CELL);
-	long pz = (long)(z / MAP_COORDS_METRES_PER_CELL);
-	if (px > LAND_MAP_SIZE - size)
+	long clippedWidth = size;
+	long clippedDepth = size;
+	long cellX = (long)(x / MAP_COORDS_METRES_PER_CELL);
+	long cellZ = (long)(z / MAP_COORDS_METRES_PER_CELL);
+	if (cellX > LAND_MAP_SIZE - size)
 	{
-		if (px >= LAND_MAP_SIZE)
+		if (cellX >= LAND_MAP_SIZE)
 		{
 			return;
 		}
-		sizeX = LAND_MAP_SIZE - px;
+		clippedWidth = LAND_MAP_SIZE - cellX;
 	}
-	else if (px < 0)
+	else if (cellX < 0)
 	{
-		sizeX = px + size;
-		px = 0;
+		clippedWidth = cellX + size;
+		cellX = 0;
 	}
-	if (pz > LAND_MAP_SIZE - size)
+	if (cellZ > LAND_MAP_SIZE - size)
 	{
-		if (pz >= LAND_MAP_SIZE)
+		if (cellZ >= LAND_MAP_SIZE)
 		{
 			return;
 		}
-		sizeZ = LAND_MAP_SIZE - pz;
+		clippedDepth = LAND_MAP_SIZE - cellZ;
 	}
-	else if (pz < 0)
+	else if (cellZ < 0)
 	{
-		sizeZ = pz + size;
-		pz = 0;
+		clippedDepth = cellZ + size;
+		cellZ = 0;
 	}
-	for (int i = 0; i < sizeX - 1; i++)
+	for (int column = 0; column < clippedWidth - 1; column++)
 	{
-		for (int j = 0; j < sizeZ - 1; j++)
+		for (int row = 0; row < clippedDepth - 1; row++)
 		{
-			LandCell* cell = LH3DIsland::GetCell(px, pz);
+			LandCell* cell = LH3DIsland::GetCell(cellX, cellZ);
 			if (cell != NULL)
 			{
 				ClearCell(cell);
-				if ((pz & LAND_BLOCK_MASK) == 0)
+				if ((cellZ & LAND_BLOCK_MASK) == 0)
 				{
-					LandCell* edge = LH3DIsland::GetCell(px, pz - 1);
-					if (edge != NULL)
+					LandCell* boundaryCopy = LH3DIsland::GetCell(cellX, cellZ - 1);
+					if (boundaryCopy != NULL)
 					{
-						edge += 1;
-						ClearCell(edge);
-						if ((px & LAND_BLOCK_MASK) == 0)
+						boundaryCopy += 1;
+						ClearCell(boundaryCopy);
+						if ((cellX & LAND_BLOCK_MASK) == 0)
 						{
-							edge = LH3DIsland::GetCell(px - 1, pz - 1);
-							if (edge != NULL)
+							boundaryCopy = LH3DIsland::GetCell(cellX - 1, cellZ - 1);
+							if (boundaryCopy != NULL)
 							{
-								edge += LAND_BLOCK_SIDE_POINTS + 1;
-								ClearCell(edge);
+								boundaryCopy += LAND_BLOCK_SIDE_POINTS + 1;
+								ClearCell(boundaryCopy);
 							}
 						}
 					}
 				}
-				if ((px & LAND_BLOCK_MASK) == 0)
+				if ((cellX & LAND_BLOCK_MASK) == 0)
 				{
-					LandCell* edge = LH3DIsland::GetCell(px - 1, pz);
-					if (edge != NULL)
+					LandCell* boundaryCopy = LH3DIsland::GetCell(cellX - 1, cellZ);
+					if (boundaryCopy != NULL)
 					{
-						edge += LAND_BLOCK_SIDE_POINTS;
-						ClearCell(edge);
+						boundaryCopy += LAND_BLOCK_SIDE_POINTS;
+						ClearCell(boundaryCopy);
 					}
 				}
 			}
-			pz++;
+			cellZ++;
 		}
-		pz -= sizeZ - 1;
-		px++;
+		cellZ -= clippedDepth - 1;
+		cellX++;
 	}
 }
 
@@ -2192,9 +2376,7 @@ static inline float Wrap(float value, float min, float max)
 
 static inline void WrapRef(float& value, float min, float max)
 {
-	float range = max - min;
-	float offset = value - min;
-	value = min + (offset - (int)(offset / range) * range);
+	value = Wrap(value, min, max);
 }
 
 long             EclairagePublic::g_off[ECLAIRAGE_PUBLIC_SPRITES] = {0, 13, 0};
@@ -2215,9 +2397,9 @@ EclairagePublic* EclairagePublic::Create(LHPoint* pos, long type)
 	light->OffsetZ = 0.0f;
 	light->OffsetX = 0.0f;
 	light->Type = type;
-	for (int i = 0; i < ECLAIRAGE_PUBLIC_SPRITES; i++)
+	for (int spriteIndex = 0; spriteIndex < ECLAIRAGE_PUBLIC_SPRITES; spriteIndex++)
 	{
-		LH3DSprite* sprite = &light->Sprites[i];
+		LH3DSprite* sprite = &light->Sprites[spriteIndex];
 		sprite->pos = *pos;
 		if (type == ECLAIRAGE_PUBLIC_TYPE_LOW)
 		{
@@ -2227,7 +2409,7 @@ EclairagePublic* EclairagePublic::Create(LHPoint* pos, long type)
 		{
 			sprite->pos.y += ECLAIRAGE_PUBLIC_HEIGHT;
 		}
-		if (i < ECLAIRAGE_PUBLIC_GLOW)
+		if (spriteIndex < ECLAIRAGE_PUBLIC_GLOW)
 		{
 			sprite->material = g_fire_mat;
 			sprite->SetSize(Random(-ECLAIRAGE_PUBLIC_SIZE_VARIATION, ECLAIRAGE_PUBLIC_SIZE_VARIATION) +
@@ -2242,28 +2424,33 @@ EclairagePublic* EclairagePublic::Create(LHPoint* pos, long type)
 			sprite->colour = ECLAIRAGE_PUBLIC_COLOUR;
 			sprite->Frame = ECLAIRAGE_PUBLIC_GLOW_FRAME;
 		}
-		g_off[i] = (long)Random(0.0f, ECLAIRAGE_PUBLIC_FRAMES - 1);
+		g_off[spriteIndex] = (long)Random(0.0f, ECLAIRAGE_PUBLIC_FRAMES - 1);
 	}
 	return light;
 }
 
-void EclairagePublic::Release()
+template <class Effect> static inline void UnlinkEffect(Effect*& first, Effect* effect)
 {
-	if (g_first == this)
+	if (first == effect)
 	{
-		g_first = Next;
+		first = effect->Next;
 	}
 	else
 	{
-		EclairagePublic* previous = g_first;
-		EclairagePublic* light = previous->Next;
-		while (light != this)
+		Effect* previous = first;
+		Effect* current = previous->Next;
+		while (current != effect)
 		{
-			previous = light;
-			light = light->Next;
+			previous = current;
+			current = current->Next;
 		}
-		previous->Next = Next;
+		previous->Next = effect->Next;
 	}
+}
+
+void EclairagePublic::Release()
+{
+	UnlinkEffect(g_first, this);
 	LH3DMem::Free(this);
 }
 
@@ -2311,14 +2498,14 @@ void EclairagePublic::DrawAllFinal()
 	int frame = time * (ECLAIRAGE_PUBLIC_FRAMES - 1) / period;
 	for (EclairagePublic* light = g_first; light != NULL; light = light->Next)
 	{
-		for (int i = 0; i < ECLAIRAGE_PUBLIC_SPRITES; i++)
+		for (int spriteIndex = 0; spriteIndex < ECLAIRAGE_PUBLIC_SPRITES; spriteIndex++)
 		{
-			int         flame = ECLAIRAGE_PUBLIC_FRAMES - 1 - ((frame + g_off[i]) & (ECLAIRAGE_PUBLIC_FRAMES - 1));
-			LH3DSprite* sprite = &light->Sprites[i];
-			if (i < ECLAIRAGE_PUBLIC_GLOW)
+			int flame = ECLAIRAGE_PUBLIC_FRAMES - 1 - ((frame + g_off[spriteIndex]) & (ECLAIRAGE_PUBLIC_FRAMES - 1));
+			LH3DSprite* sprite = &light->Sprites[spriteIndex];
+			if (spriteIndex < ECLAIRAGE_PUBLIC_GLOW)
 			{
 				sprite->colour = RGBA_SETALPHA(ECLAIRAGE_PUBLIC_COLOUR, (long)g_alpha);
-				sprite->Frame = (flame + i * ECLAIRAGE_PUBLIC_FRAME_STEP) & (ECLAIRAGE_PUBLIC_FRAMES - 1);
+				sprite->Frame = (flame + spriteIndex * ECLAIRAGE_PUBLIC_FRAME_STEP) & (ECLAIRAGE_PUBLIC_FRAMES - 1);
 			}
 			else
 			{
@@ -2326,6 +2513,23 @@ void EclairagePublic::DrawAllFinal()
 			}
 			sprite->AddDrawing();
 		}
+	}
+}
+
+static inline void LoadPublicLightDiffuse(uint8_t*& diffuse)
+{
+	uint32_t size;
+	LHFileLength(ECLAIRAGE_PUBLIC_DIFFUSE_PATH, &size);
+	diffuse = (uint8_t*)LH3DMem::Alloc(size);
+	LHLoadData(ECLAIRAGE_PUBLIC_DIFFUSE_PATH, diffuse, size, NULL);
+	for (uint32_t texelIndex = 0; texelIndex < ECLAIRAGE_PUBLIC_LIGHT_SIZE * ECLAIRAGE_PUBLIC_LIGHT_SIZE; texelIndex++)
+	{
+		float darkness = diffuse[texelIndex] * ECLAIRAGE_PUBLIC_DARKNESS / 255.0f + 0.5f;
+		if (darkness >= ECLAIRAGE_PUBLIC_DARKNESS)
+		{
+			darkness = ECLAIRAGE_PUBLIC_DARKNESS - 1.0f;
+		}
+		diffuse[texelIndex] = (uint8_t)darkness;
 	}
 }
 
@@ -2338,19 +2542,7 @@ void EclairagePublic::DrawAllPost()
 	static uint8_t* diffuse = NULL;
 	if (diffuse == NULL)
 	{
-		uint32_t size;
-		LHFileLength(ECLAIRAGE_PUBLIC_DIFFUSE_PATH, &size);
-		diffuse = (uint8_t*)LH3DMem::Alloc(size);
-		LHLoadData(ECLAIRAGE_PUBLIC_DIFFUSE_PATH, diffuse, size, NULL);
-		for (uint32_t i = 0; i < ECLAIRAGE_PUBLIC_LIGHT_SIZE * ECLAIRAGE_PUBLIC_LIGHT_SIZE; i++)
-		{
-			float darkness = diffuse[i] * ECLAIRAGE_PUBLIC_DARKNESS / 255.0f + 0.5f;
-			if (darkness >= ECLAIRAGE_PUBLIC_DARKNESS)
-			{
-				darkness = ECLAIRAGE_PUBLIC_DARKNESS - 1.0f;
-			}
-			diffuse[i] = (uint8_t)darkness;
-		}
+		LoadPublicLightDiffuse(diffuse);
 	}
 	for (EclairagePublic* light = g_first; light != NULL; light = light->Next)
 	{
@@ -2369,6 +2561,206 @@ void EclairagePublic::ClearAll()
 	}
 }
 
+struct LH3DDetailSettings
+{
+	unsigned long LevelOfDetail[LH3D_DETAIL_COUNT];
+	bool32_t      UseSmallBump[LH3D_DETAIL_COUNT];
+	bool32_t      DrawClouds[LH3D_DETAIL_COUNT];
+	bool32_t      DrawCloudShadows[LH3D_DETAIL_COUNT];
+	unsigned long WaterTiling[LH3D_DETAIL_COUNT];
+	bool32_t      LandReflections[LH3D_DETAIL_COUNT];
+	bool32_t      CitadelReflections[LH3D_DETAIL_COUNT];
+	bool32_t      CitadelLightmaps[LH3D_DETAIL_COUNT];
+	bool32_t      CitadelGlows[LH3D_DETAIL_COUNT];
+	bool32_t      CitadelVolumeLight[LH3D_DETAIL_COUNT];
+	bool32_t      CitadelPeople[LH3D_DETAIL_COUNT];
+	unsigned long RainSplashCount[LH3D_DETAIL_COUNT];
+	bool32_t      UseFog[LH3D_DETAIL_COUNT];
+	bool32_t      UseWeather[LH3D_DETAIL_COUNT];
+	bool32_t      DynamicLighting[LH3D_DETAIL_COUNT];
+	bool32_t      AlwaysUseLowTexture[LH3D_DETAIL_COUNT];
+	bool32_t      ObjectsCastShadows[LH3D_DETAIL_COUNT];
+	bool32_t      UseLowResolution[LH3D_DETAIL_COUNT];
+	bool32_t      UseLowLandscapeResolution[LH3D_DETAIL_COUNT];
+};
+
+static const LH3DDetailSettings s_detail_settings = {
+	{2000, 3000, 4000, 5000, 5000, 5000, 5000},
+	{true, true, true, true, true, true, true},
+	{false, false, false, true, true, true, true},
+	{false, false, false, true, true, true, true},
+	{0, 20, 40, 60, 80, 50, 100},
+	{false, false, false, true, true, true, true},
+	{false, false, false, false, true, true, true},
+	{false, true, true, true, true, true, true},
+	{false, false, true, true, true, true, true},
+	{false, false, false, true, true, true, true},
+	{false, false, true, true, true, true, true},
+	{0, 0, 3, 5, 8, 8, 8},
+	{false, false, false, true, true, true, true},
+	{false, false, false, true, true, true, true},
+	{false, false, true, true, true, true, true},
+	{false, false, false, false, false, false, false},
+	{false, false, false, true, true, true, true},
+	{true, true, false, false, false, false, false},
+	{true, false, false, false, false, false, false},
+};
+
+void LH3DLevelOfDetail::UpdateFromCustomRegistry(char* key, bool in_game)
+{
+	unsigned long value;
+	double        waterTiling = 0.0;
+	if (RegistryRetrieveULong(key, "LevelOfDetail", &value) != LH_OK)
+	{
+		value = LH3D_LEVEL_OF_DETAIL_REGISTRY_DEFAULT;
+	}
+	LH3DTech::g_level_of_detail = value / LH3D_LEVEL_OF_DETAIL_REGISTRY_UNITS;
+	if (RegistryRetrieveULong(key, "UseSmallBump", &value) == LH_OK)
+	{
+		LH3DIsland::g_b_use_small_bump = value;
+		if (LH3DRender::b_open)
+		{
+			if (LH3DIsland::g_b_use_small_bump)
+			{
+				LH3DIsland::CreateSmallBump();
+			}
+			else
+			{
+				LH3DIsland::ReleaseSmallBump();
+			}
+		}
+	}
+	if (RegistryRetrieveULong(key, "Clouds", &value) == LH_OK)
+	{
+		g_b_draw_clouds = value;
+	}
+	if (RegistryRetrieveULong(key, "CloudShadows", &value) == LH_OK)
+	{
+		g_b_draw_clouds_shadow = value;
+	}
+	if (RegistryRetrieveDouble(key, "WaterTiling", &waterTiling) == LH_OK)
+	{
+		g_water_tilling = waterTiling;
+	}
+	if (RegistryRetrieveULong(key, "LandRef", &value) == LH_OK)
+	{
+		LH3DIsland::g_b_draw_reflection = value;
+	}
+	RegistryRetrieveULong(key, "MaxObjectDistance", &value);
+	if (RegistryRetrieveULong(key, "CitadelReflections", &value) == LH_OK)
+	{
+		g_citadellod.Reflections = value != 0;
+	}
+	if (RegistryRetrieveULong(key, "CitadelLightmaps", &value) == LH_OK)
+	{
+		g_citadellod.Lightmaps = value != 0;
+	}
+	if (RegistryRetrieveULong(key, "CitadelGlows", &value) == LH_OK)
+	{
+		g_citadellod.Glows = value != 0;
+	}
+	if (RegistryRetrieveULong(key, "CitadelVolumeLight", &value) == LH_OK)
+	{
+		g_citadellod.VolumeLight = value != 0;
+	}
+	if (RegistryRetrieveULong(key, "CitadelPeople", &value) == LH_OK)
+	{
+		g_citadellod.People = value != 0;
+	}
+	if (RegistryRetrieveULong(key, "RainSplash", &value) == LH_OK)
+	{
+		g_num_rainsplash = value;
+	}
+	double colourBoost = 0.0;
+	if (RegistryRetrieveDouble(key, "LightBoost", &colourBoost) == LH_OK)
+	{
+		g_colour_boost = colourBoost;
+	}
+	if (RegistryRetrieveULong(LH3D_LEVEL_OF_DETAIL_SETUP_KEY, "Fog", &value) == LH_OK)
+	{
+		LH3DIsland::g_b_use_fog = value;
+	}
+	if (!in_game)
+	{
+		if (RegistryRetrieveULong(key, "Weather", &value) == LH_OK)
+		{
+			g_b_use_weather_system = value;
+		}
+		if (RegistryRetrieveULong(key, "Light", &value) == LH_OK)
+		{
+			g_b_dynamic_lighting_on_objects = value;
+		}
+		if (RegistryRetrieveULong(key, "FixeLand", &value) == LH_OK)
+		{
+			LH3DIsland::g_b_use_always_low_texture = !value;
+		}
+		if (RegistryRetrieveULong(key, "ShadowsOnObjects", &value) == LH_OK)
+		{
+			g_b_objects_cast_shadow = value;
+		}
+		if (RegistryRetrieveULong(LH3D_LEVEL_OF_DETAIL_SETUP_KEY, "UseHighTexture", &value) == LH_OK)
+		{
+			LH3DTexture::g_b_use_low_res = !value;
+		}
+		if (RegistryRetrieveULong(LH3D_LEVEL_OF_DETAIL_SETUP_KEY, "UseMultiLayerOnLandscape", &value) == LH_OK)
+		{
+			LH3DIsland::UseLowResTexture(!value);
+		}
+	}
+}
+
+void LH3DLevelOfDetail::UpdateFromRegistry(char* key, bool in_game, int detail_idx)
+{
+	unsigned long value;
+	if (RegistryRetrieveULong(key, "maxdetailidx", &value) == LH_OK)
+	{
+		g_max_detail_idx = value;
+	}
+	else
+	{
+		g_max_detail_idx = LH3D_DETAIL_CUSTOM;
+	}
+	g_detail_idx = detail_idx;
+	LH3DTech::g_level_of_detail = s_detail_settings.LevelOfDetail[detail_idx] / LH3D_LEVEL_OF_DETAIL_REGISTRY_UNITS;
+	LH3DIsland::g_b_use_small_bump = s_detail_settings.UseSmallBump[detail_idx];
+	if (LH3DRender::b_open)
+	{
+		if (LH3DIsland::g_b_use_small_bump)
+		{
+			LH3DIsland::CreateSmallBump();
+		}
+		else
+		{
+			LH3DIsland::ReleaseSmallBump();
+		}
+	}
+	g_b_draw_clouds = s_detail_settings.DrawClouds[detail_idx];
+	g_b_draw_clouds_shadow = s_detail_settings.DrawCloudShadows[detail_idx];
+	g_water_tilling = s_detail_settings.WaterTiling[detail_idx] / LH3D_LEVEL_OF_DETAIL_WATER_TILING_UNITS;
+	LH3DIsland::g_b_draw_reflection = s_detail_settings.LandReflections[detail_idx];
+	g_citadellod.Reflections = s_detail_settings.CitadelReflections[detail_idx] != false;
+	g_citadellod.Lightmaps = s_detail_settings.CitadelLightmaps[detail_idx] != false;
+	g_citadellod.Glows = s_detail_settings.CitadelGlows[detail_idx] != false;
+	g_citadellod.VolumeLight = s_detail_settings.CitadelVolumeLight[detail_idx] != false;
+	g_citadellod.People = s_detail_settings.CitadelPeople[detail_idx] != false;
+	g_num_rainsplash = s_detail_settings.RainSplashCount[detail_idx];
+	g_colour_boost = 0.0f;
+	LH3DIsland::g_b_use_fog = s_detail_settings.UseFog[detail_idx];
+	if (!in_game)
+	{
+		g_b_use_weather_system = s_detail_settings.UseWeather[detail_idx];
+		g_b_dynamic_lighting_on_objects = s_detail_settings.DynamicLighting[detail_idx];
+		LH3DIsland::g_b_use_always_low_texture = s_detail_settings.AlwaysUseLowTexture[detail_idx];
+		g_b_objects_cast_shadow = s_detail_settings.ObjectsCastShadows[detail_idx];
+		LH3DTexture::g_b_use_low_res = s_detail_settings.UseLowResolution[detail_idx];
+		LH3DIsland::UseLowResTexture(s_detail_settings.UseLowLandscapeResolution[detail_idx]);
+	}
+	if (g_detail_idx == LH3D_DETAIL_CUSTOM)
+	{
+		UpdateFromCustomRegistry(key, in_game);
+	}
+}
+
 SmokyStuff* SmokyStuff::g_first = NULL;
 float       SmokyStuff::g_dt = 1.0f;
 
@@ -2380,21 +2772,21 @@ SmokyStuff* SmokyStuff::Create(const LHPoint* pos, long type, float size, LH3DCo
 	smoke->Type = type;
 	smoke->Size = size;
 	smoke->Color = color;
-	for (int i = 0; i < SMOKY_STUFF_PUFFS; i++)
+	for (int puffIndex = 0; puffIndex < SMOKY_STUFF_PUFFS; puffIndex++)
 	{
-		LH3DSprite* sprite = &smoke->Sprites[i];
+		LH3DSprite* sprite = &smoke->Sprites[puffIndex];
 		sprite->material = g_smoke_mat;
 		sprite->Frame = SMOKY_STUFF_FRAME;
 		sprite->pos.Set(Random(-size, size), Random(-size, size), Random(-size, size));
-		sprite->angle = Random(0.0f, TWO_PI);
-		smoke->Directions[i].Set(Random(-size, size), size, Random(-size, size));
+		sprite->SetRotation(Random(0.0f, TWO_PI));
+		smoke->Directions[puffIndex].Set(Random(-size, size), size, Random(-size, size));
 		if (smoke->Type != 0)
 		{
-			SetLength(smoke->Directions[i], size * SMOKY_STUFF_BURST_SPEED);
+			SetLength(smoke->Directions[puffIndex], size * SMOKY_STUFF_BURST_SPEED);
 		}
 		else
 		{
-			SetLength(smoke->Directions[i], Random(SMOKY_STUFF_MIN_SPEED, 1.0f) * size);
+			SetLength(smoke->Directions[puffIndex], Random(SMOKY_STUFF_MIN_SPEED, 1.0f) * size);
 		}
 		sprite->pos += LHPoint(pos);
 	}
@@ -2425,7 +2817,8 @@ void SmokyStuff::Release()
 
 void SmokyStuff::Process()
 {
-	if (Type != 0)
+	const bool32_t burst = Type != 0;
+	if (burst)
 	{
 		Life -= g_dt / SMOKY_STUFF_BURST_LIFE;
 	}
@@ -2446,8 +2839,9 @@ void SmokyStuff::Process()
 	{
 		alpha = 255.0f;
 	}
-	unsigned long colour;
-	if (Type != 0)
+	unsigned long  colour;
+	const bool32_t useBurstColour = Type != 0;
+	if (useBurstColour)
 	{
 		colour = RGBA_SETALPHA(SMOKY_STUFF_BURST_COLOUR, (long)alpha);
 	}
@@ -2459,13 +2853,14 @@ void SmokyStuff::Process()
 	{
 		colour = RGBA_SETALPHA(Color.GetColor(), RGBA_GETALPHA(colour));
 	}
-	for (int i = 0; i < SMOKY_STUFF_PUFFS; i++)
+	for (int puffIndex = 0; puffIndex < SMOKY_STUFF_PUFFS; puffIndex++)
 	{
-		LH3DSprite* sprite = &Sprites[i];
+		LH3DSprite* sprite = &Sprites[puffIndex];
 		sprite->colour = colour;
-		sprite->angle = (Directions[i].x > Directions[i].z ? -1 : 1) * Life * SMOKY_STUFF_SPIN + Directions[i].x;
+		sprite->angle = (Directions[puffIndex].x > Directions[puffIndex].z ? -1 : 1) * Life * SMOKY_STUFF_SPIN +
+		                Directions[puffIndex].x;
 		sprite->SetSize(((1.0f - Life) * 2.0f + 1.0f) * Size * 0.5f);
-		sprite->pos += Directions[i] * g_dt;
+		sprite->pos += Directions[puffIndex] * g_dt;
 		sprite->Frame = (long)(Life * SMOKY_STUFF_FRAMES);
 		sprite->AddDrawing();
 	}
@@ -2473,7 +2868,7 @@ void SmokyStuff::Process()
 
 void SmokyStuff::ProcessAll()
 {
-	g_dt = LH3DTech::GetGameTimeInc() / 1000.0f;
+	g_dt = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	SmokyStuff* smoke;
 	for (smoke = g_first; smoke != NULL; smoke = smoke->Next)
 	{
@@ -2509,11 +2904,14 @@ void GlowVillager::AddGlow(LHPoint* pos, float size)
 	if (g_sprite == NULL)
 	{
 		g_sprite = LH3DSprite::Create(GLOW_VILLAGER_MAX_GLOWS, true);
-		for (int i = 0; i < GLOW_VILLAGER_MAX_GLOWS; i++)
+		for (int spriteIndex = 0; spriteIndex < GLOW_VILLAGER_MAX_GLOWS; spriteIndex++)
 		{
-			g_sprite[i].Frame = g_offset;
-			g_sprite[i].material = g_smoke_additif_mat;
-			g_sprite[i].colour = GLOW_VILLAGER_COLOUR;
+			const uint32_t frame = g_offset;
+			LH3DSprite*    frameSprite = &g_sprite[spriteIndex];
+			frameSprite->Frame = 0;
+			frameSprite->Frame |= frame;
+			g_sprite[spriteIndex].material = g_smoke_additif_mat;
+			g_sprite[spriteIndex].colour = GLOW_VILLAGER_COLOUR;
 		}
 		g_material = LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_NZ,
 		                                        Leash::GetTexture());
@@ -2558,64 +2956,71 @@ void GlowVillager::SetNewFrame()
 	g_offset = (long)(time * (GLOW_VILLAGER_FRAMES / period));
 }
 
+static inline void SplitTileRow(uint8_t*& pageAlpha, uint8_t*& pageRgb, const uint8_t*& sourcePixel)
+{
+	for (int x = 0; x < LH3D_TOOLS_TILE_SIZE; x++)
+	{
+		*pageAlpha++ = sourcePixel[3];
+		pageRgb[0] = sourcePixel[0];
+		pageRgb[1] = sourcePixel[1];
+		pageRgb[2] = sourcePixel[2];
+		pageRgb += 3;
+		sourcePixel += 4;
+	}
+}
+
 void LH3DTools::BuildPaginationFromRawFile(int argc, char** argv)
 {
-	uint8_t* alpha = (uint8_t*)LH3DMem::AllocClear(LH3D_TOOLS_PAGE_SIZE * LH3D_TOOLS_PAGE_SIZE);
-	uint8_t* rgb = (uint8_t*)LH3DMem::AllocClear(LH3D_TOOLS_PAGE_SIZE * LH3D_TOOLS_PAGE_SIZE * 3);
-	uint8_t* tile = (uint8_t*)LH3DMem::AllocClear(LH3D_TOOLS_TILE_SIZE * LH3D_TOOLS_TILE_SIZE * 4);
-	char*    name = argv[1];
-	uint32_t size;
-	char     base[LH3D_TOOLS_TEXT_SIZE];
-	char     file[LH3D_TOOLS_TEXT_SIZE];
-	LHFileLength(name, &size);
+	uint8_t*       alphaPage = (uint8_t*)LH3DMem::AllocClear(LH3D_TOOLS_PAGE_SIZE * LH3D_TOOLS_PAGE_SIZE);
+	uint8_t*       rgbPage = (uint8_t*)LH3DMem::AllocClear(LH3D_TOOLS_PAGE_SIZE * LH3D_TOOLS_PAGE_SIZE * 3);
+	uint8_t*       tilePixels = (uint8_t*)LH3DMem::AllocClear(LH3D_TOOLS_TILE_SIZE * LH3D_TOOLS_TILE_SIZE * 4);
+	const uint8_t* sourcePixel = tilePixels;
+	char*          inputName = argv[1];
+	uint32_t       size;
+	char           baseName[LH3D_TOOLS_TEXT_SIZE];
+	char           tilePath[LH3D_TOOLS_TEXT_SIZE];
+	LHFileLength(inputName, &size);
 	if (size != LH3D_TOOLS_TILE_SIZE * LH3D_TOOLS_TILE_SIZE * 4)
 	{
 		return;
 	}
-	int length = strlen(name) - LH3D_TOOLS_RAW_EXTENSION_LENGTH;
-	int i = 0;
+	int baseNameLength = strlen(inputName) - LH3D_TOOLS_RAW_EXTENSION_LENGTH;
+	int tileIndex = 0;
 	while (true)
 	{
-		int      index = ((i / LH3D_TOOLS_PAGE_TILES) & (LH3D_TOOLS_PAGE_TILES - 1)) * LH3D_TOOLS_PAGE_SIZE +
-		                 (i & (LH3D_TOOLS_PAGE_TILES - 1));
-		uint8_t* pageAlpha = alpha + index * LH3D_TOOLS_TILE_SIZE;
-		uint8_t* pageRgb = rgb + index * LH3D_TOOLS_TILE_SIZE * 3;
-		strcpy(base, name);
-		base[length] = '\0';
-		sprintf(file, "%s%d.raw", base, i);
-		LHFileLength(file, &size);
+		int      tileRow = (tileIndex / LH3D_TOOLS_PAGE_TILES) & (LH3D_TOOLS_PAGE_TILES - 1);
+		int      tileColumn = tileIndex & (LH3D_TOOLS_PAGE_TILES - 1);
+		int      pageOffset = tileRow * LH3D_TOOLS_PAGE_SIZE + tileColumn;
+		uint8_t* pageAlpha = alphaPage + pageOffset * LH3D_TOOLS_TILE_SIZE;
+		uint8_t* pageRgb = rgbPage + pageOffset * LH3D_TOOLS_TILE_SIZE * 3;
+		strcpy(baseName, inputName);
+		baseName[baseNameLength] = '\0';
+		sprintf(tilePath, "%s%d.raw", baseName, tileIndex);
+		LHFileLength(tilePath, &size);
 		if (size == 0)
 		{
 			break;
 		}
-		LHLoadData(file, tile, LH3D_TOOLS_TILE_SIZE * LH3D_TOOLS_TILE_SIZE * 4, NULL);
-		uint8_t* pixel = tile;
+		LHLoadData(tilePath, tilePixels, LH3D_TOOLS_TILE_SIZE * LH3D_TOOLS_TILE_SIZE * 4, NULL);
 		for (int y = 0; y < LH3D_TOOLS_TILE_SIZE; y++)
 		{
-			for (int x = 0; x < LH3D_TOOLS_TILE_SIZE; x++)
-			{
-				*pageAlpha++ = pixel[3];
-				pageRgb[0] = pixel[0];
-				pageRgb[1] = pixel[1];
-				pageRgb[2] = pixel[2];
-				pageRgb += 3;
-				pixel += 4;
-			}
+			SplitTileRow(pageAlpha, pageRgb, sourcePixel);
 			pageAlpha += LH3D_TOOLS_PAGE_SIZE - LH3D_TOOLS_TILE_SIZE;
 			pageRgb += (LH3D_TOOLS_PAGE_SIZE - LH3D_TOOLS_TILE_SIZE) * 3;
 		}
-		i++;
+		sourcePixel = tilePixels;
+		tileIndex++;
 	}
-	strcpy(base, name);
-	base[length] = '\0';
-	sprintf(file, "%sa.raw", base);
-	LHSaveData(file, alpha, LH3D_TOOLS_PAGE_SIZE * LH3D_TOOLS_PAGE_SIZE, NULL);
-	base[length] = '\0';
-	sprintf(file, "%s.raw", base);
-	LHSaveData(file, rgb, LH3D_TOOLS_PAGE_SIZE * LH3D_TOOLS_PAGE_SIZE * 3, NULL);
-	LH3DMem::Free(tile);
-	LH3DMem::Free(alpha);
-	LH3DMem::Free(rgb);
+	strcpy(baseName, inputName);
+	baseName[baseNameLength] = '\0';
+	sprintf(tilePath, "%sa.raw", baseName);
+	LHSaveData(tilePath, alphaPage, LH3D_TOOLS_PAGE_SIZE * LH3D_TOOLS_PAGE_SIZE, NULL);
+	baseName[baseNameLength] = '\0';
+	sprintf(tilePath, "%s.raw", baseName);
+	LHSaveData(tilePath, rgbPage, LH3D_TOOLS_PAGE_SIZE * LH3D_TOOLS_PAGE_SIZE * 3, NULL);
+	LH3DMem::Free(tilePixels);
+	LH3DMem::Free(alphaPage);
+	LH3DMem::Free(rgbPage);
 }
 
 LHPoint              FishRush::g_emergency(0.0f, 0.0f, 0.0f);
@@ -2643,8 +3048,10 @@ Fish::Fish(LHPoint* pos)
 {
 	Sprite = LH3DSprite::Create(1, true);
 	Sprite->SetSize(Random(FISH_MIN_SIZE, FISH_MAX_SIZE));
-	long frame = (long)Random(0.0f, FISH_SPRITE_FRAMES);
-	Sprite->Frame = frame;
+	long        frame = (long)Random(0.0f, FISH_SPRITE_FRAMES);
+	LH3DSprite* sprite = Sprite;
+	sprite->Frame = 0;
+	sprite->Frame |= frame;
 	Sprite->pos.SetNull();
 	Sprite->material = g_mat_misc0;
 	Sprite->angle = Random(0.0f, PI_F);
@@ -2659,32 +3066,39 @@ Fish::Fish(LHPoint* pos)
 	Fear = 0.0f;
 }
 
+static inline void AdvanceFishAnimation(Fish* fish, float stepSeconds)
+{
+	fish->Frame += stepSeconds * fish->Speed * FISH_ANIMATION_SPEED;
+	fish->Sprite->Frame = ((long)fish->Frame & FISH_FRAME_MASK) + FISH_FIRST_FRAME;
+	float unwrappedFrame = fish->Frame;
+	fish->Frame = unwrappedFrame - (long)(unwrappedFrame * (1.0f / FISH_FRAMES)) * FISH_FRAMES;
+}
+
 bool32_t Fish::ComputePos(LHPoint* target)
 {
-	float scale = 1.0f;
-	float dt = LH3DTech::GetGameTimeInc() / 1000.0f;
+	float movementScale = 1.0f;
+	float stepSeconds = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	if (Fear != 0.0f)
 	{
-		Fear -= dt;
+		Fear -= stepSeconds;
 		if (Fear < 0.0f)
 		{
 			Fear = 0.0f;
 		}
-		scale = FISH_FEAR_SPEED;
+		movementScale = FISH_FEAR_SPEED;
 		if (Fear < 1.0f)
 		{
-			scale = LH3D_BLEND(1.0f, FISH_FEAR_SPEED, 1.0f - (1.0f - Fear));
+			float fearWeight = 1.0f - (1.0f - Fear);
+			movementScale = LH3D_BLEND(1.0f, FISH_FEAR_SPEED, fearWeight);
 		}
 	}
-	dt = min(dt, FISH_MAX_STEP);
-	Frame += dt * Speed * FISH_ANIMATION_SPEED;
-	Sprite->Frame = ((long)Frame & FISH_FRAME_MASK) + FISH_FIRST_FRAME;
-	float value = Frame;
-	Frame = value - (long)(value * (1.0f / FISH_FRAMES)) * FISH_FRAMES;
-	Pos += LHPoint((float)cos(Angle) * Speed * dt * scale, 0.0f, (float)sin(Angle) * Speed * dt * scale);
+	stepSeconds = min(stepSeconds, FISH_MAX_STEP);
+	AdvanceFishAnimation(this, stepSeconds);
+	Pos += LHPoint((float)cos(Angle) * Speed * stepSeconds * movementScale, 0.0f,
+	               (float)sin(Angle) * Speed * stepSeconds * movementScale);
 	LHPoint direction(cos(Angle), 0.0f, sin(Angle));
 	LHPoint cross = direction ^ (LHPoint(target) - Pos);
-	Angle += (cross.y < 0.0f ? 1.0f : -1.0f) * TurnSpeed * dt;
+	Angle += (cross.y < 0.0f ? 1.0f : -1.0f) * TurnSpeed * stepSeconds;
 	WrapRef(Angle, 0.0f, TWO_PI);
 	if (Angle > PI_F)
 	{
@@ -2692,12 +3106,8 @@ bool32_t Fish::ComputePos(LHPoint* target)
 	}
 	Sprite->SetRotation(Angle);
 	Sprite->pos = Pos;
-	if (FishRush::g_challenge != NULL &&
-	    Pos.GetDistance2DSq(FishRush::g_challenge->Pos) < FishRush::g_challenge->Radius * FishRush::g_challenge->Radius)
-	{
-		return true;
-	}
-	return false;
+	return FishRush::g_challenge != NULL && Pos.GetDistance2DSq(FishRush::g_challenge->Pos) <
+	                                            FishRush::g_challenge->Radius * FishRush::g_challenge->Radius;
 }
 
 FishRush* FishRush::CollideWithFish(LHPoint* pos)
@@ -2706,10 +3116,10 @@ FishRush* FishRush::CollideWithFish(LHPoint* pos)
 	{
 		if (rush->Goal == NULL)
 		{
-			long count = (long)(rush->Density * FISH_RUSH_MAX_FISH);
-			for (long i = 0; i < count; i++)
+			long activeFishCount = (long)(rush->Density * FISH_RUSH_MAX_FISH);
+			for (long fishIndex = 0; fishIndex < activeFishCount; fishIndex++)
 			{
-				if (rush->Fishes[i]->Sprite->pos.GetDistance2DSq(*pos) <
+				if (rush->Fishes[fishIndex]->Sprite->pos.GetDistance2DSq(*pos) <
 				    FISH_RUSH_COLLIDE_RADIUS * FISH_RUSH_COLLIDE_RADIUS)
 				{
 					return rush;
@@ -2718,6 +3128,21 @@ FishRush* FishRush::CollideWithFish(LHPoint* pos)
 		}
 	}
 	return NULL;
+}
+
+static inline void InitialiseCatchSplash(uint32_t circleIndex, const LHPoint* splash)
+{
+	GWater::g_circle[circleIndex].SetValid(true);
+	GWater::g_circle[circleIndex].Pos.Set(*splash);
+	GWater::g_circle[circleIndex].Growth = FISH_RUSH_SPLASH_GROWTH;
+	GWater::g_circle[circleIndex].Age = 0;
+	GWater::g_circle[circleIndex].Size = 1.0f;
+	GWater::g_circle[circleIndex].Aspect = 1.0f;
+	GWater::g_circle[circleIndex].Frame = FISH_RUSH_SPLASH_FRAME;
+	GWater::g_circle[circleIndex].Angle = 0.0f;
+	GWater::g_circle[circleIndex].Colour = FISH_RUSH_SPLASH_COLOUR;
+	GWater::g_circle[circleIndex].AgeSpeed = 1.0f;
+	GWater::g_count_activated_circle++;
 }
 
 void FishRush::DrawPreAll()
@@ -2732,14 +3157,14 @@ void FishRush::DrawPreAll()
 	}
 	for (rush = g_first; rush != NULL; rush = rush->Next)
 	{
-		long       count = rush->Draw();
+		long       fishInChallenge = rush->Draw();
 		Challenge* goal = rush->Goal;
 		if (goal == NULL)
 		{
 			continue;
 		}
 		goal->Net->PreDraw();
-		goal->Count += count;
+		goal->Count += fishInChallenge;
 		if (goal->Count < goal->Target || goal->Done)
 		{
 			continue;
@@ -2757,26 +3182,17 @@ void FishRush::DrawPreAll()
 			{
 				continue;
 			}
-			for (long i = 0; i < FISH_RUSH_MAX_FISH; i++)
+			for (long fishIndex = 0; fishIndex < FISH_RUSH_MAX_FISH; fishIndex++)
 			{
-				LHPoint* splash = &other->Fishes[i]->Pos;
-				for (uint32_t j = 0; j < GWATER_MAX_CIRCLES; j++)
+				LHPoint* splash = &other->Fishes[fishIndex]->Pos;
+				for (uint32_t circleIndex = 0; circleIndex < GWATER_MAX_CIRCLES; circleIndex++)
 				{
-					if (!GWater::g_circle[j].IsValid())
+					if (GWater::g_circle[circleIndex].IsValid())
 					{
-						GWater::g_circle[j].SetValid(true);
-						GWater::g_circle[j].Pos.Set(*splash);
-						GWater::g_circle[j].Growth = FISH_RUSH_SPLASH_GROWTH;
-						GWater::g_circle[j].Age = 0;
-						GWater::g_circle[j].Size = 1.0f;
-						GWater::g_circle[j].Aspect = 1.0f;
-						GWater::g_circle[j].Frame = FISH_RUSH_SPLASH_FRAME;
-						GWater::g_circle[j].Angle = 0.0f;
-						GWater::g_circle[j].Colour = FISH_RUSH_SPLASH_COLOUR;
-						GWater::g_circle[j].AgeSpeed = 1.0f;
-						GWater::g_count_activated_circle++;
-						break;
+						continue;
 					}
+					InitialiseCatchSplash(circleIndex, splash);
+					break;
 				}
 			}
 		}
@@ -2821,19 +3237,20 @@ long FishRush::Draw()
 			return 0;
 		}
 	}
-	float distance = LH3DTech::g_camera.pos.GetDistanceSq(Center);
-	if (distance > FISH_RUSH_DRAW_DIST * FISH_RUSH_DRAW_DIST)
+	LHPoint center = Center;
+	float   distanceSquared = LH3DTech::g_camera.pos.GetDistanceSq(center);
+	if (distanceSquared > FISH_RUSH_DRAW_DIST * FISH_RUSH_DRAW_DIST)
 	{
 		return 0;
 	}
 	LH3DColor colour(LH3D_COLOR_OPAQUE, LH3D_COLOR_OPAQUE, LH3D_COLOR_OPAQUE, LH3D_COLOR_OPAQUE);
-	if (distance > FISH_RUSH_FADE_DIST * FISH_RUSH_FADE_DIST)
+	if (distanceSquared > FISH_RUSH_FADE_DIST * FISH_RUSH_FADE_DIST)
 	{
-		colour.a = (uint8_t)((1.0f - (distance - FISH_RUSH_FADE_DIST * FISH_RUSH_FADE_DIST) /
+		colour.a = (uint8_t)((1.0f - (distanceSquared - FISH_RUSH_FADE_DIST * FISH_RUSH_FADE_DIST) /
 		                                 (FISH_RUSH_FADE_RANGE * FISH_RUSH_FADE_RANGE)) *
 		                     255.0f);
 	}
-	TargetTime -= LH3DTech::GetGameTimeInc() / 1000.0f;
+	TargetTime -= LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	if (TargetTime < 0.0f)
 	{
 		LHPoint target(Random(-Radius, Radius), 0.0f, Random(-Radius, Radius));
@@ -2849,20 +3266,22 @@ long FishRush::Draw()
 		rotation.TransformPoint(Target);
 		Target += Center;
 	}
-	long count = 0;
-	long fishes = (long)(Density * FISH_RUSH_MAX_FISH);
-	for (long i = 0; i < fishes; i++)
+	long fishInChallenge = 0;
+	long activeFishCount = (long)(Density * FISH_RUSH_MAX_FISH);
+	for (long fishIndex = 0; fishIndex < activeFishCount; fishIndex++)
 	{
-		if (g_b_er_valid && g_emergency.GetDistanceSq(Fishes[i]->Pos) < FISH_RUSH_FEAR_RADIUS * FISH_RUSH_FEAR_RADIUS)
+		if (g_b_er_valid &&
+		    g_emergency.GetDistanceSq(Fishes[fishIndex]->Pos) < FISH_RUSH_FEAR_RADIUS * FISH_RUSH_FEAR_RADIUS)
 		{
-			Fishes[i]->Fear = FISH_RUSH_FEAR_TIME;
+			Fishes[fishIndex]->Fear = FISH_RUSH_FEAR_TIME;
 			TargetTime = FISH_RUSH_FEAR_TIME;
-			Fishes[i]->Angle = atan2(Fishes[i]->Pos.z - g_emergency.z, Fishes[i]->Pos.x - g_emergency.x);
+			Fishes[fishIndex]->Angle =
+				atan2(Fishes[fishIndex]->Pos.z - g_emergency.z, Fishes[fishIndex]->Pos.x - g_emergency.x);
 		}
-		Fishes[i]->Sprite->colour = colour.GetColor();
-		count += Fishes[i]->Draw(&Target);
+		Fishes[fishIndex]->Sprite->colour = colour;
+		fishInChallenge += Fishes[fishIndex]->Draw(&Target);
 	}
-	return count;
+	return fishInChallenge;
 }
 
 TemporaryShadow* TemporaryShadow::g_first = NULL;
@@ -2982,10 +3401,10 @@ void RootsPile::DrawAll()
 	{
 		LH3DObject* object = pile->Object;
 		LH3DIsland::GetColorAndSpecular(&object->matrix.GetPos(), &object->color, &object->specular);
-		long time = pile->TimeLeft;
-		if (time <= ROOTS_PILE_FADE_TIME)
+		long remainingMilliseconds = pile->TimeLeft;
+		if (remainingMilliseconds <= ROOTS_PILE_FADE_TIME)
 		{
-			object->color = RGBA_SETALPHA(object->color, (long)(time * 255.0f / ROOTS_PILE_FADE_TIME));
+			object->color = RGBA_SETALPHA(object->color, (long)(remainingMilliseconds * 255.0f / ROOTS_PILE_FADE_TIME));
 			object->SetDrawWithGlobalAlpha(true);
 		}
 		pile->TimeLeft -= LH3DTech::g_game_time_inc;
@@ -3033,7 +3452,7 @@ bool32_t g_b_caca_intro = false;
 
 void SuperVillager::DrawAll()
 {
-	LHPoint        sun = LH3DTech::GetSun();
+	LHPoint        savedSun = LH3DTech::GetSun();
 	SuperVillager* villager = g_first;
 	LH3DTech::SetSun(DEFAULT_SUN);
 	while (villager != NULL)
@@ -3045,7 +3464,22 @@ void SuperVillager::DrawAll()
 		villager->AddDrawing();
 		villager = villager->Next;
 	}
-	LH3DTech::SetSun(sun);
+	LH3DTech::SetSun(savedSun);
+}
+
+static inline void DrawSwimmingVillagerMesh(LH3DMesh* mesh)
+{
+	LH3DMesh::InitMatrixDrawing();
+	for (int submeshIndex = 0; submeshIndex < mesh->SubmeshCount; submeshIndex++)
+	{
+		LH3DSubMesh* submesh = mesh->submeshes[submeshIndex];
+		if ((submesh->GetLod() & LH3DMesh::g_current_lod) == 0)
+		{
+			continue;
+		}
+		submesh->DrawCutByPlane();
+		LH3DMesh::UpdateMatrixDrawing(submesh->NumBones);
+	}
 }
 
 void SuperVillager::Draw()
@@ -3056,33 +3490,34 @@ void SuperVillager::Draw()
 	}
 	LH3DMesh::g_current_lod = SUPER_VILLAGER_LOD;
 	LH3DIsland::GetColorAndSpecular(&Object->matrix.GetPos(), &Object->color, &Object->specular);
-	float angle = Object->y_angle;
-	float heading = angle_correct(angle);
+	float objectYaw = Object->y_angle;
+	float objectHeading = angle_correct(objectYaw);
 	Heading = angle_correct(Heading);
-	LHMatrix matrix = Object->matrix;
-	if (Heading == heading || NoSmoothing)
+	LHMatrix worldMatrix = Object->matrix;
+	if (Heading == objectHeading || NoSmoothing)
 	{
-		Heading = heading;
+		Heading = objectHeading;
 	}
 	else
 	{
-		float diff = angle_correct(heading - Heading);
-		float step = SUPER_VILLAGER_TURN_SPEED * (LH3DTech::GetGameTimeInc() / 1000.0f);
-		if (step >= fabs(diff))
+		float headingDelta = angle_correct(objectHeading - Heading);
+		float elapsedSeconds = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
+		float turnStep = SUPER_VILLAGER_TURN_SPEED * elapsedSeconds;
+		if (turnStep >= fabs(headingDelta))
 		{
-			Heading = heading;
+			Heading = objectHeading;
 		}
 		else
 		{
-			if (diff > 0.0f)
+			if (headingDelta > 0.0f)
 			{
-				Heading += step;
+				Heading += turnStep;
 			}
 			else
 			{
-				Heading -= step;
+				Heading -= turnStep;
 			}
-			matrix.RotateY(Heading - heading);
+			worldMatrix.RotateY(Heading - objectHeading);
 		}
 	}
 	static long blend_time = SUPER_VILLAGER_BLEND_TIME;
@@ -3111,15 +3546,15 @@ void SuperVillager::Draw()
 	LH3DPrimitive::g_current_index_primitive = 0;
 	LH3DTech::g_current_matrix = &LH3DTech::g_local_to_clipping;
 	bool32_t swimming = strcmp(Object->GetCurrentAnim()->name, SUPER_VILLAGER_SWIM_ANIM) == 0;
-	LHMatrix clipping;
+	LHMatrix localToClip;
 	if (Object->BlendTime != 0 && !NoSmoothing)
 	{
-		LHMATRIX_MULTIPLY(clipping, matrix, LH3DTech::g_world_to_clipping);
+		LHMATRIX_MULTIPLY(localToClip, worldMatrix, LH3DTech::g_world_to_clipping);
 		Object->CurrentAnim->CombineTransform(LH3DMesh::g_current_list_matrix, Object->CurrentCycleTime,
 		                                      1.0f - Object->BlendFactor, true);
 		Object->LastAnim->CombineTransform(LH3DMesh::g_current_list_matrix, Object->LastCycleTime, Object->BlendFactor,
 		                                   false);
-		LH3DAnim::FinishTransform(LH3DMesh::g_current_list_matrix, Object->mesh, clipping);
+		LH3DAnim::FinishTransform(LH3DMesh::g_current_list_matrix, Object->mesh, localToClip);
 	}
 	else if (swimming)
 	{
@@ -3128,73 +3563,28 @@ void SuperVillager::Draw()
 	}
 	else
 	{
-		LHMATRIX_MULTIPLY(clipping, matrix, LH3DTech::g_world_to_clipping);
+		LHMATRIX_MULTIPLY(localToClip, worldMatrix, LH3DTech::g_world_to_clipping);
 		if (Object->CurrentAnim != NULL)
 		{
 			Object->CurrentAnim->SetTransform(LH3DMesh::g_current_list_matrix, Object->mesh, Object->CurrentCycleTime,
-			                                  clipping);
+			                                  localToClip);
 		}
 		else
 		{
-			LH3DAnim::SetTransform(LH3DMesh::g_current_list_matrix, Object->mesh, clipping);
+			LH3DAnim::SetTransform(LH3DMesh::g_current_list_matrix, Object->mesh, localToClip);
 		}
 	}
-	unsigned long specular = Object->specular;
+	uint32_t specular = Object->specular;
 	LH3DMesh::g_color = Object->color;
 	LH3DMesh::g_specular = specular;
-	LH3DTech::g_world_to_local.SetInverse(matrix);
+	LH3DTech::g_world_to_local.SetInverse(worldMatrix);
 	if (swimming)
 	{
-		LH3DMesh* mesh = Object->Meshes[0];
-		LH3DMesh::g_current_matrix = LH3DMesh::g_current_list_matrix;
-		for (int i = 0; i < mesh->SubmeshCount; i++)
-		{
-			LH3DSubMesh* submesh = mesh->submeshes[i];
-			if (submesh->GetLod() & LH3DMesh::g_current_lod)
-			{
-				LH3DSubMesh::g_current_sub_mesh = submesh;
-				for (int j = 0; j < submesh->NumPrimitives; j++)
-				{
-					submesh->primitives_[j]->DrawCutByPlane();
-				}
-				LH3DMesh::g_current_matrix += submesh->NumBones;
-			}
-		}
+		DrawSwimmingVillagerMesh(Object->Meshes[0]);
 	}
 	else
 	{
-		LH3DMesh* mesh = Object->Meshes[0];
-		LH3DMesh::g_current_matrix = LH3DMesh::g_current_list_matrix;
-		for (int i = 0; i < mesh->SubmeshCount; i++)
-		{
-			LH3DSubMesh* submesh = mesh->submeshes[i];
-			if (LH3DMesh::g_window_state && submesh->IsWindow())
-			{
-				unsigned long savedColor = LH3DMesh::g_color;
-				LH3DMesh::g_color = LH3DMesh::g_window_col;
-				if (submesh->GetStatus() <= LH3DSubMesh::g_current_status)
-				{
-					LH3DSubMesh::g_current_sub_mesh = submesh;
-					for (int j = 0; j < submesh->NumPrimitives; j++)
-					{
-						submesh->primitives_[j]->Draw();
-					}
-				}
-				LH3DMesh::g_color = savedColor;
-			}
-			else if (submesh->GetLod() & LH3DMesh::g_current_lod)
-			{
-				if (submesh->GetStatus() <= LH3DSubMesh::g_current_status)
-				{
-					LH3DSubMesh::g_current_sub_mesh = submesh;
-					for (int j = 0; j < submesh->NumPrimitives; j++)
-					{
-						submesh->primitives_[j]->DrawLit();
-					}
-				}
-				LH3DMesh::g_current_matrix += submesh->NumBones;
-			}
-		}
+		Object->Meshes[0]->Draw(true);
 	}
 	LH3DRender::g_b_need_tilling = false;
 	LH3DRender::g_b_need_anim_uv = false;
@@ -3228,21 +3618,7 @@ SuperVillager::~SuperVillager()
 	Object->LastCycleTime = 0;
 	Object->LastAnim = NULL;
 	Object = NULL;
-	if (g_first == this)
-	{
-		g_first = Next;
-	}
-	else
-	{
-		SuperVillager* previous = g_first;
-		SuperVillager* villager = previous->Next;
-		while (villager != this)
-		{
-			previous = villager;
-			villager = villager->Next;
-		}
-		previous->Next = Next;
-	}
+	UnlinkEffect(g_first, this);
 	if (Eyes != NULL)
 	{
 		delete Eyes;
@@ -3311,13 +3687,13 @@ FallingRoot* FallingRoot::g_first = NULL;
 
 void FallingRoot::Update()
 {
-	Time += LH3DTech::GetGameTimeInc() / 1000.0f;
-	if (Object->matrix._42 > GroundHeight)
+	Time += LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
+	if (Object->matrix.GetPos().y > GroundHeight)
 	{
-		Object->matrix._42 = StartHeight - Time * Time * FALLING_ROOT_GRAVITY;
+		Object->matrix.GetPos().y = StartHeight - Time * Time * FALLING_ROOT_GRAVITY;
 		return;
 	}
-	Object->matrix._42 = GroundHeight;
+	Object->matrix.GetPos().y = GroundHeight;
 	if (Time > FALLING_ROOT_LIFE)
 	{
 		delete this;
@@ -3346,28 +3722,14 @@ FallingRoot::FallingRoot(LH3DObject* object, int mesh)
 
 FallingRoot::~FallingRoot()
 {
-	if (g_first == this)
-	{
-		g_first = Next;
-	}
-	else
-	{
-		FallingRoot* previous = g_first;
-		FallingRoot* root = previous->Next;
-		while (root != this)
-		{
-			previous = root;
-			root = root->Next;
-		}
-		previous->Next = Next;
-	}
+	UnlinkEffect(g_first, this);
 	Object->Release();
 	Object = NULL;
 }
 
 void FallingRoot::Reset()
 {
-	StartHeight = Object->matrix._42;
+	StartHeight = Object->matrix.GetPos().y;
 	LH3DBoundingBox& box = Object->GetMesh()->BoundingBox;
 	float            width = max(box.size.x, box.size.z);
 	LHPoint          pos = Object->matrix.GetPos();
@@ -3409,6 +3771,22 @@ LH3DColor        InfluenceCircle::g_players_color[INFLUENCE_CIRCLE_PLAYER_COUNT]
 	LH3DColor(0xff, 0xa2, 0x47, 0x00), //
 	LH3DColor(0xff, 0xff, 0xff, 0x00), //
 };
+
+static inline void WriteInfluenceStripIndices(long*& index, long vertex)
+{
+	*index++ = vertex;
+	*index++ = vertex + 3;
+	*index++ = vertex + 4;
+	*index++ = vertex;
+	*index++ = vertex + 4;
+	*index++ = vertex + 1;
+	*index++ = vertex + 1;
+	*index++ = vertex + 4;
+	*index++ = vertex + 5;
+	*index++ = vertex + 1;
+	*index++ = vertex + 5;
+	*index++ = vertex + 2;
+}
 
 InfluenceCircle::InfluenceCircle(long player, const LHPoint& pos, float radius)
 {
@@ -3463,18 +3841,7 @@ InfluenceCircle::InfluenceCircle(long player, const LHPoint& pos, float radius)
 		*uv++ = v + INFLUENCE_CIRCLE_TOP_V;
 		u += uStep;
 		v += vStep;
-		*index++ = vertex;
-		*index++ = vertex + 3;
-		*index++ = vertex + 4;
-		*index++ = vertex;
-		*index++ = vertex + 4;
-		*index++ = vertex + 1;
-		*index++ = vertex + 1;
-		*index++ = vertex + 4;
-		*index++ = vertex + 5;
-		*index++ = vertex + 1;
-		*index++ = vertex + 5;
-		*index++ = vertex + 2;
+		WriteInfluenceStripIndices(index, vertex);
 		vertex += INFLUENCE_CIRCLE_ROW_VERTICES;
 	}
 	float x = Radius + pos.x;
@@ -3552,11 +3919,27 @@ void InfluenceCircle::Reset()
 	g_first = NULL;
 }
 
-void InfluenceCircle::Draw(int mode)
+static inline void UpdateInfluenceRowAlpha(InfluenceCircle* circle, uint32_t alpha)
+{
+	if (circle->Alpha != alpha && InfluenceCircle::g_b_valid[circle->Player])
+	{
+		circle->Alpha = alpha;
+		for (long rowIndex = 0; rowIndex < circle->Segments + 1; rowIndex++)
+		{
+			if (!circle->Hidden[rowIndex])
+			{
+				circle->Colours[rowIndex * INFLUENCE_CIRCLE_ROW_VERTICES + 1] =
+					RGBA_SETALPHA(circle->Colours[rowIndex * INFLUENCE_CIRCLE_ROW_VERTICES + 1], 0) | alpha;
+			}
+		}
+	}
+}
+
+void InfluenceCircle::Draw(bool32_t world_space)
 {
 	InfluenceCircle* circle = g_first;
-	unsigned long    alpha = INFLUENCE_CIRCLE_HIGH_ALPHA;
-	if (mode)
+	uint32_t         alpha = INFLUENCE_CIRCLE_HIGH_ALPHA;
+	if (world_space)
 	{
 		float height = LH3DTech::g_camera.pos.y;
 		if (height <= INFLUENCE_CIRCLE_LOW_HEIGHT)
@@ -3584,10 +3967,10 @@ void InfluenceCircle::Draw(int mode)
 	time = (time + LH3DTech::GetGameTimeInc()) % INFLUENCE_CIRCLE_ANIM_PERIOD;
 	alpha = RGBA_MAKE(0, 0, 0, alpha);
 	LH3DRender::g_b_need_anim_uv = true;
-	LH3DTech::g_current_matrix = NULL;
+	LH3DTech::g_current_matrix = &LH3DTech::g_local_to_clipping;
 	LH3DRender::g_adu = time / INFLUENCE_CIRCLE_U_SPEED;
 	LH3DRender::g_adv = -time / INFLUENCE_CIRCLE_V_SPEED;
-	if (mode)
+	if (world_space)
 	{
 		LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
 	}
@@ -3600,18 +3983,7 @@ void InfluenceCircle::Draw(int mode)
 	}
 	for (; circle != NULL; circle = circle->Next)
 	{
-		if (circle->Alpha != alpha && g_b_valid[circle->Player])
-		{
-			circle->Alpha = alpha;
-			for (long i = 0; i < circle->Segments + 1; i++)
-			{
-				if (!circle->Hidden[i])
-				{
-					circle->Colours[i * INFLUENCE_CIRCLE_ROW_VERTICES + 1] =
-						RGBA_SETALPHA(circle->Colours[i * INFLUENCE_CIRCLE_ROW_VERTICES + 1], 0) | alpha;
-				}
-			}
-		}
+		UpdateInfluenceRowAlpha(circle, alpha);
 		LH3DTech::Draw3DWorldTriangle((circle->Segments + 1) * INFLUENCE_CIRCLE_ROW_VERTICES, circle->Points,
 		                              (LH3DColor*)circle->Colours, circle->UVs, circle->Segments * 4, circle->Indices,
 		                              g_material, true);
@@ -3659,24 +4031,29 @@ void InfluenceCircle::DeleteContact(InfluenceCircle* circle, InfluenceCircle* ot
 	other->HideContact(circle);
 }
 
+static inline void HideInfluenceRow(unsigned long*& colour, bool32_t* hidden)
+{
+	*colour = RGBA_SETALPHA(*colour, 0);
+	colour++;
+	*colour = RGBA_SETALPHA(*colour, 0);
+	colour++;
+	*colour = RGBA_SETALPHA(*colour, 0);
+	colour++;
+	*hidden = true;
+}
+
 void InfluenceCircle::HideContact(InfluenceCircle* other)
 {
 	unsigned long* colour = Colours;
 	bool32_t*      hidden = Hidden;
-	for (long i = 0; i < Segments; i++)
+	for (long segmentIndex = 0; segmentIndex < Segments; segmentIndex++)
 	{
-		float angle = i * TWO_PI / Segments;
+		float angle = segmentIndex * TWO_PI / Segments;
 		float x = (float)cos(angle) * Radius + Pos.x;
 		float z = (float)sin(angle) * Radius + Pos.z;
 		if (other->Contains(x, z))
 		{
-			*colour = RGBA_SETALPHA(*colour, 0);
-			colour++;
-			*colour = RGBA_SETALPHA(*colour, 0);
-			colour++;
-			*colour = RGBA_SETALPHA(*colour, 0);
-			colour++;
-			*hidden = true;
+			HideInfluenceRow(colour, hidden);
 		}
 		else
 		{
@@ -3697,11 +4074,7 @@ void InfluenceCircle::HideContact(InfluenceCircle* other)
 
 bool32_t InfluenceCircle::Contains(float x, float z)
 {
-	if (LHPoint(x, 0.0f, z).GetDistance2DSq(Pos) < Radius * Radius)
-	{
-		return true;
-	}
-	return false;
+	return LHPoint(x, 0.0f, z).GetDistance2DSq(Pos) < Radius * Radius;
 }
 
 TouchMyEdge* TouchMyEdge::g_first = NULL;
@@ -3718,47 +4091,23 @@ TouchMyEdge::TouchMyEdge(LHPoint* pos, LH3DColor colour, float angle)
 	Next = g_first;
 	g_first = this;
 	Sprites = LH3DSprite::Create(TOUCH_MY_EDGE_RINGS, true);
-	for (long i = 0; i < TOUCH_MY_EDGE_RINGS; i++)
+	for (long ringIndex = 0; ringIndex < TOUCH_MY_EDGE_RINGS; ringIndex++)
 	{
-		FirstGrowth[i] = true;
-		Sprites[i].pos = position;
-		Sprites[i].material = g_smoke_mat;
-		Sprites[i].Frame = TOUCH_MY_EDGE_RING_FRAME;
-		Sprites[i].SetSize(i * TOUCH_MY_EDGE_RING_SPACING);
-		Sprites[i].angle = Random(0.0f, TWO_PI);
+		FirstGrowth[ringIndex] = true;
+		Sprites[ringIndex].pos = position;
+		Sprites[ringIndex].material = g_smoke_mat;
+		Sprites[ringIndex].SetFrame(TOUCH_MY_EDGE_RING_FRAME);
+		Sprites[ringIndex].SetSize(ringIndex * TOUCH_MY_EDGE_RING_SPACING);
+		Sprites[ringIndex].angle = Random(0.0f, TWO_PI);
 	}
-	Matrix._43 = 0.0f;
-	Matrix._42 = 0.0f;
-	Matrix._41 = 0.0f;
-	Matrix._31 = 0.0f;
-	Matrix._21 = 0.0f;
-	Matrix._13 = 0.0f;
-	Matrix._12 = 0.0f;
-	Matrix._11 = 1.0f;
-	Matrix.m[4] = Matrix.m[8] = cos(HALF_PI_F);
-	Matrix.m[7] = sin(HALF_PI_F);
-	Matrix.m[5] = -Matrix.m[7];
+	Matrix.SetRotationX(HALF_PI_F);
 	Matrix.PostRotateY(angle);
 	Matrix.PostTranslation(position);
 }
 
 TouchMyEdge::~TouchMyEdge()
 {
-	if (g_first == this)
-	{
-		g_first = Next;
-	}
-	else
-	{
-		TouchMyEdge* previous = g_first;
-		TouchMyEdge* edge = previous->Next;
-		while (edge != this)
-		{
-			previous = edge;
-			edge = edge->Next;
-		}
-		previous->Next = Next;
-	}
+	UnlinkEffect(g_first, this);
 	if (Sprites != NULL)
 	{
 		Sprites->Release();
@@ -3788,23 +4137,23 @@ void TouchMyEdge::PostDraw()
 	{
 		fade = 1.0f;
 	}
-	float    growth = LH3DTech::GetGameTimeInc() / 1000.0f;
+	float    growth = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	LHMatrix matrix = Matrix;
 	matrix.PostMultiply(LH3DTech::g_world_to_clipping);
 	growth *= TOUCH_MY_EDGE_GROWTH;
-	for (long i = 0; i < TOUCH_MY_EDGE_RINGS; i++)
+	for (long ringIndex = 0; ringIndex < TOUCH_MY_EDGE_RINGS; ringIndex++)
 	{
-		LH3DSprite* sprite = &Sprites[i];
+		LH3DSprite* sprite = &Sprites[ringIndex];
 		float       size = sprite->Size + growth;
 		if (size > TOUCH_MY_EDGE_MAX_SIZE)
 		{
-			FirstGrowth[i] = false;
+			FirstGrowth[ringIndex] = false;
 			size -= (long)(size / TOUCH_MY_EDGE_MAX_SIZE) * TOUCH_MY_EDGE_MAX_SIZE;
 		}
 		Colour.a = (uint8_t)((1.0f - size / TOUCH_MY_EDGE_MAX_SIZE) * fade * 255.0f);
-		Sprites[i].SetSize(size);
-		Sprites[i].colour = Colour;
-		Sprites[i].DrawSpecial1(&matrix);
+		Sprites[ringIndex].SetSize(size);
+		Sprites[ringIndex].colour = Colour;
+		Sprites[ringIndex].DrawSpecial1(&matrix);
 	}
 }
 
@@ -3853,6 +4202,17 @@ InfluenceCircle* TouchMyEdge::GetCircle(LHPoint* from, LHPoint* to, long player)
 	return NULL;
 }
 
+static inline void FindInfluenceContainingPosition(const LHPoint& position, bool32_t* playerInside)
+{
+	for (InfluenceCircle* circle = InfluenceCircle::g_first; circle != NULL; circle = circle->Next)
+	{
+		if (circle->Contains(position.x, position.z))
+		{
+			playerInside[circle->Player] = true;
+		}
+	}
+}
+
 void TouchMyEdge::Check(LHPoint& pos)
 {
 	g_b_collide = false;
@@ -3860,23 +4220,17 @@ void TouchMyEdge::Check(LHPoint& pos)
 	position.y = 0.0f;
 	bool32_t inside[INFLUENCE_CIRCLE_PLAYER_COUNT];
 	memset(inside, 0, sizeof(inside));
-	for (InfluenceCircle* circle = InfluenceCircle::g_first; circle != NULL; circle = circle->Next)
-	{
-		if (circle->Contains(position.x, position.z))
-		{
-			inside[circle->Player] = true;
-		}
-	}
+	FindInfluenceContainingPosition(position, inside);
 	if (g_b_init)
 	{
-		for (long i = 0; i < INFLUENCE_CIRCLE_PLAYER_COUNT; i++)
+		for (long playerIndex = 0; playerIndex < INFLUENCE_CIRCLE_PLAYER_COUNT; playerIndex++)
 		{
-			if (inside[i] == g_player_inside[i])
+			if (inside[playerIndex] == g_player_inside[playerIndex])
 			{
 				continue;
 			}
-			g_player_inside[i] = inside[i];
-			InfluenceCircle* circle = GetCircle(&g_last_pos, &position, i);
+			g_player_inside[playerIndex] = inside[playerIndex];
+			InfluenceCircle* circle = GetCircle(&g_last_pos, &position, playerIndex);
 			if (circle == NULL || !InfluenceCircle::g_b_valid[circle->Player])
 			{
 				continue;
@@ -3893,7 +4247,7 @@ void TouchMyEdge::Check(LHPoint& pos)
 			float angle = LH3DMath::GetYAngle(&circle->Pos, &edge) + HALF_PI_F;
 			float altitude = LH3DIsland::GetAltitude(LH3DMapCoords(edge.x, edge.z));
 			edge.y = max(pos.y, altitude);
-			new TouchMyEdge(&edge, InfluenceCircle::g_players_color[i], angle);
+			new TouchMyEdge(&edge, InfluenceCircle::g_players_color[playerIndex], angle);
 			g_b_collide = true;
 		}
 	}
@@ -3964,45 +4318,45 @@ void Eureka::DrawAll()
 
 bool32_t Eureka::Draw()
 {
-	uint32_t dt = LH3DTech::g_game_time_inc;
-	float    age = (float)(Age += dt);
-	if (age >= EUREKA_LIFE)
+	uint32_t elapsedMilliseconds = LH3DTech::g_game_time_inc;
+	float    ageMilliseconds = (float)(Age += elapsedMilliseconds);
+	if (ageMilliseconds >= EUREKA_LIFE)
 	{
 		return true;
 	}
-	float         scale = (age / EUREKA_LIFE + 1.0f) * Size;
-	long          alpha = 0xff;
-	unsigned long colour = 0xffffffff;
-	if (age >= EUREKA_FADE_START)
+	float    spriteScale = (ageMilliseconds / EUREKA_LIFE + 1.0f) * Size;
+	long     alpha = LH3D_COLOR_OPAQUE;
+	uint32_t colour = LH3D_COLOR_WHITE;
+	if (ageMilliseconds >= EUREKA_FADE_START)
 	{
-		alpha = (long)(((1.0f - (age - EUREKA_FADE_START) / EUREKA_FADE_TIME) * 255.0f) * Opacity);
+		alpha = (long)(((1.0f - (ageMilliseconds - EUREKA_FADE_START) / EUREKA_FADE_TIME) * 255.0f) * Opacity);
 		colour = RGBA_MAKE(0xff, 0xff, 0xff, alpha);
 	}
 	Sprite->colour = colour;
 	Sprite->Frame = 0;
-	Sprite->pos.y += (dt * EUREKA_RISE_SPEED) * Size;
-	Sprite->SetSize(scale);
+	Sprite->pos.y += (elapsedMilliseconds * EUREKA_RISE_SPEED) * Size;
+	Sprite->SetSize(spriteScale);
 	if (Text[0] != L'\0')
 	{
-		LHPoint above = Sprite->pos;
-		above.y += scale * EUREKA_TEXT_HEIGHT;
-		float x;
-		float y;
-		float z;
-		if (LH3DTech::ProjectPoint(&above, &x, &y, &z))
+		LHPoint textPosition = Sprite->pos;
+		textPosition.y += spriteScale * EUREKA_TEXT_HEIGHT;
+		float screenX;
+		float screenY;
+		float screenDepth;
+		if (LH3DTech::ProjectPoint(&textPosition, &screenX, &screenY, &screenDepth))
 		{
 			Colour.a = alpha > 0 ? (min(alpha, 0xff)) : 0;
-			y -= EUREKA_TEXT_OFFSET;
-			x -= GatheringText::GetGameFont(GAME_FONT_DEFAULT)
-			         ->GetStringWidth((char16_t*)Text, wcslen(Text), EUREKA_TEXT_SIZE) *
-			     0.5f;
+			screenY -= EUREKA_TEXT_OFFSET;
+			screenX -=
+				GatheringText::GetGameFont(GAME_FONT_DEFAULT)->GetStringWidth(Text, wcslen(Text), EUREKA_TEXT_SIZE) *
+				0.5f;
 			LH3DColor shadow(0, 0, 0, alpha);
 			GatheringText::GetGameFont(GAME_FONT_DEFAULT)
-				->DrawTextRaw((char16_t*)Text, wcslen(Text), x + 1.0f, y + 1.0f, z, EUREKA_TEXT_SIZE, &shadow, true,
-			                  NULL, 0.0f, EUREKA_TEXT_DEPTH);
+				->DrawTextRaw(Text, wcslen(Text), screenX + 1.0f, screenY + 1.0f, screenDepth, EUREKA_TEXT_SIZE,
+			                  &shadow, true, NULL, 0.0f, EUREKA_TEXT_DEPTH);
 			GatheringText::GetGameFont(GAME_FONT_DEFAULT)
-				->DrawTextRaw((char16_t*)Text, wcslen(Text), x, y, z, EUREKA_TEXT_SIZE, &Colour, true, NULL, 0.0f,
-			                  EUREKA_TEXT_DEPTH);
+				->DrawTextRaw(Text, wcslen(Text), screenX, screenY, screenDepth, EUREKA_TEXT_SIZE, &Colour, true, NULL,
+			                  0.0f, EUREKA_TEXT_DEPTH);
 		}
 	}
 	static LH3DObject* bulb = NULL;
@@ -4014,8 +4368,8 @@ bool32_t Eureka::Draw()
 	}
 	{
 		LHPoint pos = Sprite->pos;
-		pos.y -= scale * EUREKA_BULB_HEIGHT / EUREKA_BULB_SCALE;
-		bulb->SetPosition(pos, 0.0f, scale * (1.0f / EUREKA_BULB_SCALE));
+		pos.y -= spriteScale * EUREKA_BULB_HEIGHT / EUREKA_BULB_SCALE;
+		bulb->SetPosition(pos, 0.0f, spriteScale * (1.0f / EUREKA_BULB_SCALE));
 	}
 	long glow = (long)((float)fabs(cos(TWO_PI * EUREKA_BLINKS * Age / EUREKA_LIFE)) * 255.0f);
 	bulb->SetColorSpecular(glow | 0xffffff00, 0);
@@ -4036,35 +4390,36 @@ CheveauxDeFeu::CheveauxDeFeu(LHPoint* pos, LHPoint* dir, LH3DMaterial* material)
 	Start += LHPoint(pos);
 	Pos = Start;
 	Sprites = LH3DSprite::Create(CHEVEAUX_DE_FEU_SPRITES, true);
-	for (long i = 0; i < CHEVEAUX_DE_FEU_SPRITES; i++)
+	for (long spriteIndex = 0; spriteIndex < CHEVEAUX_DE_FEU_SPRITES; spriteIndex++)
 	{
-		Sprites[i].material = material;
-		Sprites[i].pos = Pos;
+		Sprites[spriteIndex].material = material;
+		Sprites[spriteIndex].pos = Pos;
 		LHPoint offset(Dir);
-		offset *= -i * CHEVEAUX_DE_FEU_SPACING;
-		Sprites[i].pos += offset;
-		if (i > CHEVEAUX_DE_FEU_LAST_FLAME)
+		offset *= -spriteIndex * CHEVEAUX_DE_FEU_SPACING;
+		Sprites[spriteIndex].pos += offset;
+		if (spriteIndex > CHEVEAUX_DE_FEU_LAST_FLAME)
 		{
-			Sprites[i].SetFrame(CHEVEAUX_DE_FEU_SMOKE_FRAME);
-			Sprites[i].SetSize(
-				((CHEVEAUX_DE_FEU_STREAK - i) * CHEVEAUX_DE_FEU_SIZE_RANGE / (float)CHEVEAUX_DE_FEU_SPRITES +
+			Sprites[spriteIndex].SetFrame(CHEVEAUX_DE_FEU_SMOKE_FRAME);
+			Sprites[spriteIndex].SetSize(
+				((CHEVEAUX_DE_FEU_STREAK - spriteIndex) * CHEVEAUX_DE_FEU_SIZE_RANGE / (float)CHEVEAUX_DE_FEU_SPRITES +
 			     CHEVEAUX_DE_FEU_MIN_SIZE) *
 				CHEVEAUX_DE_FEU_SMOKE_SCALE);
 		}
 		else
 		{
-			Sprites[i].SetFrame(CHEVEAUX_DE_FEU_FLAME_FRAME);
-			Sprites[i].SetSize((CHEVEAUX_DE_FEU_STREAK - i) * CHEVEAUX_DE_FEU_SIZE_RANGE /
-			                       (float)CHEVEAUX_DE_FEU_SPRITES +
-			                   CHEVEAUX_DE_FEU_MIN_SIZE);
+			Sprites[spriteIndex].SetFrame(CHEVEAUX_DE_FEU_FLAME_FRAME);
+			Sprites[spriteIndex].SetSize((CHEVEAUX_DE_FEU_STREAK - spriteIndex) * CHEVEAUX_DE_FEU_SIZE_RANGE /
+			                                 (float)CHEVEAUX_DE_FEU_SPRITES +
+			                             CHEVEAUX_DE_FEU_MIN_SIZE);
 		}
-		Sprites[i].angle = Random(0.0f, TWO_PI);
-		Sprites[i].colour = RGBA_MAKE(0xff, 0xff, 0xff, (CHEVEAUX_DE_FEU_STREAK - i) * 0xff / CHEVEAUX_DE_FEU_SPRITES);
-		if (i == CHEVEAUX_DE_FEU_GLOW)
+		Sprites[spriteIndex].angle = Random(0.0f, TWO_PI);
+		Sprites[spriteIndex].colour =
+			RGBA_MAKE(0xff, 0xff, 0xff, (CHEVEAUX_DE_FEU_STREAK - spriteIndex) * 0xff / CHEVEAUX_DE_FEU_SPRITES);
+		if (spriteIndex == CHEVEAUX_DE_FEU_GLOW)
 		{
-			Sprites[i].colour = RGBA_MAKE(0xff, 0xff, 0xff, CHEVEAUX_DE_FEU_GLOW_ALPHA);
-			Sprites[i].SetSize(CHEVEAUX_DE_FEU_GLOW_SIZE);
-			Sprites[i].pos = Pos;
+			Sprites[spriteIndex].colour = RGBA_MAKE(0xff, 0xff, 0xff, CHEVEAUX_DE_FEU_GLOW_ALPHA);
+			Sprites[spriteIndex].SetSize(CHEVEAUX_DE_FEU_GLOW_SIZE);
+			Sprites[spriteIndex].pos = Pos;
 		}
 	}
 	Sprites[CHEVEAUX_DE_FEU_STREAK].pos = Pos;
@@ -4094,7 +4449,7 @@ void CheveauxDeFeu::AddDrawing()
 
 void CheveauxDeFeu::ComputePos(LHPoint* pos)
 {
-	float distance = CHEVEAUX_DE_FEU_SPEED * Time / CHEVEAUX_DE_FEU_MS_PER_SECOND;
+	float distance = CHEVEAUX_DE_FEU_SPEED * Time / LH3D_MILLISECONDS_PER_SECOND;
 	if (distance > CHEVEAUX_DE_FEU_RUN_UP - CHEVEAUX_DE_FEU_STOP_SHORT)
 	{
 		Arrived = true;
@@ -4140,61 +4495,59 @@ void CheveauxDeFeu::Draw()
 		Sprites->angle = Random(0.0f, TWO_PI);
 		Sprites->Draw();
 		LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
+		return;
 	}
-	else
+	ComputePos(&Pos);
+	if (Arrived)
 	{
-		ComputePos(&Pos);
-		if (Arrived)
+		State = CHEVEAUX_DE_FEU_STATE_STOPPED;
+		timer = stopTime;
+	}
+	long spriteIndex;
+	for (spriteIndex = 0; spriteIndex < CHEVEAUX_DE_FEU_SPRITES; spriteIndex++)
+	{
+		if (spriteIndex == CHEVEAUX_DE_FEU_STREAK)
 		{
-			State = CHEVEAUX_DE_FEU_STATE_STOPPED;
-			timer = stopTime;
+			Sprites[spriteIndex].angle +=
+				LH3DTech::GetGameTimeInc() / CHEVEAUX_DE_FEU_STREAK_SPIN_TIME * PI_F * CHEVEAUX_DE_FEU_STREAK_SPIN;
 		}
-		long i;
-		for (i = 0; i < CHEVEAUX_DE_FEU_SPRITES; i++)
+		Sprites[spriteIndex].pos = Pos;
+		if (spriteIndex < CHEVEAUX_DE_FEU_GLOW)
 		{
-			if (i == CHEVEAUX_DE_FEU_STREAK)
+			LHPoint offset(Dir);
+			offset *= -spriteIndex * CHEVEAUX_DE_FEU_SPACING;
+			Sprites[spriteIndex].pos += offset;
+			if (LH3DTech::g_game_time_inc != 0)
 			{
-				Sprites[i].angle +=
-					LH3DTech::GetGameTimeInc() / CHEVEAUX_DE_FEU_STREAK_SPIN_TIME * PI_F * CHEVEAUX_DE_FEU_STREAK_SPIN;
-			}
-			Sprites[i].pos = Pos;
-			if (i < CHEVEAUX_DE_FEU_GLOW)
-			{
-				LHPoint offset(Dir);
-				offset *= -i * CHEVEAUX_DE_FEU_SPACING;
-				Sprites[i].pos += offset;
-				if (LH3DTech::g_game_time_inc != 0)
+				Sprites[spriteIndex].angle = Random(0.0f, TWO_PI);
+				if (spriteIndex < CHEVEAUX_DE_FEU_LAST_FLAME)
 				{
-					Sprites[i].angle = Random(0.0f, TWO_PI);
-					if (i < CHEVEAUX_DE_FEU_LAST_FLAME)
-					{
-						Sprites[i].SetSize(Random(-CHEVEAUX_DE_FEU_FLAME_JITTER, CHEVEAUX_DE_FEU_FLAME_JITTER) +
-						                   (CHEVEAUX_DE_FEU_STREAK - i) * CHEVEAUX_DE_FEU_SIZE_RANGE /
-						                       (float)CHEVEAUX_DE_FEU_SPRITES +
-						                   CHEVEAUX_DE_FEU_MIN_SIZE);
-					}
+					Sprites[spriteIndex].SetSize(Random(-CHEVEAUX_DE_FEU_FLAME_JITTER, CHEVEAUX_DE_FEU_FLAME_JITTER) +
+					                             (CHEVEAUX_DE_FEU_STREAK - spriteIndex) * CHEVEAUX_DE_FEU_SIZE_RANGE /
+					                                 (float)CHEVEAUX_DE_FEU_SPRITES +
+					                             CHEVEAUX_DE_FEU_MIN_SIZE);
 				}
 			}
 		}
-		if (Time > CHEVEAUX_DE_FEU_NO_Z_TEST_TIME)
-		{
-			LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
-		}
-		for (i = 0; i < CHEVEAUX_DE_FEU_SPRITES; i++)
-		{
-			Sprites[i].Draw();
-		}
-		if (Time > CHEVEAUX_DE_FEU_NO_Z_TEST_TIME)
-		{
-			LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
-		}
-		Time += LH3DTech::g_game_time_inc;
-		ComputePos(&grosse_merde_pos);
-		LHPoint back(Dir);
-		back *= CHEVEAUX_DE_FEU_CAMERA_DISTANCE;
-		grosse_merde_pos -= back;
-		grosse_merde_pos.y += CHEVEAUX_DE_FEU_CAMERA_HEIGHT;
 	}
+	if (Time > CHEVEAUX_DE_FEU_NO_Z_TEST_TIME)
+	{
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_ALWAYS);
+	}
+	for (spriteIndex = 0; spriteIndex < CHEVEAUX_DE_FEU_SPRITES; spriteIndex++)
+	{
+		Sprites[spriteIndex].Draw();
+	}
+	if (Time > CHEVEAUX_DE_FEU_NO_Z_TEST_TIME)
+	{
+		LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);
+	}
+	Time += LH3DTech::g_game_time_inc;
+	ComputePos(&grosse_merde_pos);
+	LHPoint back(Dir);
+	back *= CHEVEAUX_DE_FEU_CAMERA_DISTANCE;
+	grosse_merde_pos -= back;
+	grosse_merde_pos.y += CHEVEAUX_DE_FEU_CAMERA_HEIGHT;
 }
 
 void CheveauxDeFeu::GetSittingPos(LHPoint* pos)
@@ -4346,20 +4699,20 @@ bool32_t DansLesNuages::Draw()
 	{
 		alpha = (long)((1.0f - (float)(Time - MIN_TIME_DLN) / (MAX_TIME_DLN - MIN_TIME_DLN)) * 255.0f);
 	}
-	unsigned long colour = RGBA_MAKE(0xff, 0xff, 0xff, alpha);
-	float         step = LH3DTech::GetGameTimeInc() / DANS_LES_NUAGES_FRAME_TIME;
-	LH3DSprite*   sprite = Sprites;
-	for (long i = 0; i < DANS_LES_NUAGES_SPRITES; i++, sprite++)
+	uint32_t    colour = RGBA_MAKE(0xff, 0xff, 0xff, alpha);
+	float       step = LH3DTech::GetGameTimeInc() / DANS_LES_NUAGES_FRAME_TIME;
+	LH3DSprite* sprite = Sprites;
+	for (long spriteIndex = 0; spriteIndex < DANS_LES_NUAGES_SPRITES; spriteIndex++, sprite++)
 	{
-		Frames[i] += step;
-		if (Frames[i] > DANS_LES_NUAGES_FRAMES - 1)
+		Frames[spriteIndex] += step;
+		if (Frames[spriteIndex] > DANS_LES_NUAGES_FRAMES - 1)
 		{
-			Frames[i] = 0.0f;
+			Frames[spriteIndex] = 0.0f;
 		}
 		sprite->SetSize((LH3DTech::GetNearClipping() + DANS_LES_NUAGES_DISTANCE) * DANS_LES_NUAGES_SIZE);
 		sprite->pos = pos;
-		sprite->pos += Offsets[i];
-		sprite->Frame = (long)Frames[i] & (DANS_LES_NUAGES_FRAMES - 1);
+		sprite->pos += Offsets[spriteIndex];
+		sprite->Frame = (long)Frames[spriteIndex] & (DANS_LES_NUAGES_FRAMES - 1);
 		sprite->colour = colour;
 		sprite->AddDrawing();
 	}
@@ -4372,11 +4725,11 @@ DansLesNuages::DansLesNuages()
 	Next = g_first;
 	g_first = this;
 	Sprites = LH3DSprite::Create(DANS_LES_NUAGES_SPRITES, true);
-	for (long i = 0; i < DANS_LES_NUAGES_SPRITES; i++)
+	for (long spriteIndex = 0; spriteIndex < DANS_LES_NUAGES_SPRITES; spriteIndex++)
 	{
-		Offsets[i].SetNull();
-		Frames[i] = Random(0.0f, DANS_LES_NUAGES_FRAMES - 1);
-		Sprites[i].material = g_smoke_mat;
+		Offsets[spriteIndex].SetNull();
+		Frames[spriteIndex] = Random(0.0f, DANS_LES_NUAGES_FRAMES - 1);
+		Sprites[spriteIndex].material = g_smoke_mat;
 	}
 }
 
@@ -4448,44 +4801,56 @@ NewCollide::DeleteCallback NewCollide::g_collide_del_callback = NULL;
 
 void NewCollide::Obj::CreateList()
 {
-	int      count;
-	float    length;
-	float    width;
+	int      segmentCount;
+	float    majorLength;
+	float    minorRadius;
 	bool32_t alongX;
 	if (BoundingBox.x > BoundingBox.z)
 	{
-		count = (int)(BoundingBox.x / BoundingBox.z);
-		length = BoundingBox.x * 2;
-		width = BoundingBox.z;
+		segmentCount = (int)(BoundingBox.x / BoundingBox.z);
+		majorLength = BoundingBox.x * 2;
+		minorRadius = BoundingBox.z;
 		alongX = true;
 	}
 	else
 	{
-		count = (int)(BoundingBox.z / BoundingBox.x);
-		length = BoundingBox.z * 2;
-		width = BoundingBox.x;
+		segmentCount = (int)(BoundingBox.z / BoundingBox.x);
+		majorLength = BoundingBox.z * 2;
+		minorRadius = BoundingBox.x;
 		alongX = false;
 	}
-	count++;
-	IteratorList = new List(count);
+	segmentCount++;
+	IteratorList = new List(segmentCount);
 	LHMatrix matrix;
 	matrix.SetRotationY(angle);
 	matrix.PostTranslation(position);
-	float step = length / count;
-	for (int i = 0; i < count; i++)
+	float segmentSpacing = majorLength / segmentCount;
+	for (int segmentIndex = 0; segmentIndex < segmentCount; segmentIndex++)
 	{
-		LHPoint point;
+		LHPoint segmentCenter;
 		if (alongX)
 		{
-			point = LHPoint((i + 0.5f) * step - length * 0.5f, 0.0f, 0.0f);
+			segmentCenter.Set((segmentIndex + 0.5f) * segmentSpacing - majorLength * 0.5f, 0.0f, 0.0f);
 		}
 		else
 		{
-			point = LHPoint(0.0f, 0.0f, (i + 0.5f) * step - length * 0.5f);
+			segmentCenter.Set(0.0f, 0.0f, (segmentIndex + 0.5f) * segmentSpacing - majorLength * 0.5f);
 		}
-		point = matrix * point;
-		IteratorList->Add(new Obj(width, &point));
+		matrix.TransformPoint(segmentCenter);
+		IteratorList->Add(new Obj(minorRadius, &segmentCenter));
 	}
+}
+
+static inline bool32_t CollidesWithChild(const NewCollide::List* children, NewCollide::Obj* probe)
+{
+	for (int objectIndex = 0; objectIndex < children->count; objectIndex++)
+	{
+		if (children->objs[objectIndex]->Collide(probe))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 bool32_t NewCollide::Obj::Collide(Obj* other)
@@ -4496,41 +4861,27 @@ bool32_t NewCollide::Obj::Collide(Obj* other)
 	{
 		return false;
 	}
-	if (IteratorList == NULL)
+	List* ownChildren = IteratorList;
+	if (ownChildren == NULL)
 	{
-		if (other->IteratorList == NULL)
+		List* otherChildren = other->IteratorList;
+		if (otherChildren == NULL)
 		{
 			return true;
 		}
-		for (int i = 0; i < other->IteratorList->count; i++)
-		{
-			if (other->IteratorList->objs[i]->Collide(this))
-			{
-				return true;
-			}
-		}
-		return false;
+		return CollidesWithChild(otherChildren, this);
 	}
 	if (other->IteratorList == NULL)
 	{
-		for (int i = 0; i < IteratorList->count; i++)
-		{
-			if (IteratorList->objs[i]->Collide(other))
-			{
-				return true;
-			}
-		}
-		return false;
+		return CollidesWithChild(ownChildren, other);
 	}
-	for (int i = 0; i < IteratorList->count; i++)
+	for (int objectIndex = 0; objectIndex < IteratorList->count; objectIndex++)
 	{
-		Obj* obj = IteratorList->objs[i];
-		for (int j = 0; j < other->IteratorList->count; j++)
+		Obj*  ownChild = IteratorList->objs[objectIndex];
+		List* otherChildren = other->IteratorList;
+		if (CollidesWithChild(otherChildren, ownChild))
 		{
-			if (other->IteratorList->objs[j]->Collide(obj))
-			{
-				return true;
-			}
+			return true;
 		}
 	}
 	return false;
@@ -4540,9 +4891,9 @@ NewCollide::List::~List()
 {
 	if (objs != NULL)
 	{
-		for (int i = 0; i < count; i++)
+		for (int objectIndex = 0; objectIndex < count; objectIndex++)
 		{
-			delete objs[i];
+			delete objs[objectIndex];
 		}
 		LH3DMem::Free(objs);
 		objs = NULL;
@@ -4560,28 +4911,23 @@ NewCollide::List::List(long initial_size)
 
 void NewCollide::List::IncreaseSize()
 {
-	Obj** list = (Obj**)LH3DMem::AllocClear(size * 2 * sizeof(Obj*));
-	memcpy(list, objs, size * sizeof(Obj*));
+	Obj** expandedObjects = (Obj**)LH3DMem::AllocClear(size * 2 * sizeof(Obj*));
+	memcpy(expandedObjects, objs, size * sizeof(Obj*));
 	size *= 2;
 	LH3DMem::Free(objs);
-	objs = list;
+	objs = expandedObjects;
 }
 
 NewCollide::NewCollide(LH3DObject* object) : obj(NULL)
 {
 	LH3DMesh* mesh = object->GetMesh();
-	LHPoint   centre = object->matrix * mesh->BoundingBox.centre;
+	LHPoint   centre = mesh->BoundingBox.centre;
+	object->matrix.TransformPoint(centre);
 	centre.y = 0.0f;
 	float x = mesh->BoundingBox.size.x * object->scale;
 	float z = mesh->BoundingBox.size.z * object->scale;
-	if (x < NEW_COLLIDE_MIN_SIZE)
-	{
-		x = NEW_COLLIDE_MIN_SIZE;
-	}
-	if (z < NEW_COLLIDE_MIN_SIZE)
-	{
-		z = NEW_COLLIDE_MIN_SIZE;
-	}
+	x = max(x, NEW_COLLIDE_MIN_SIZE);
+	z = max(z, NEW_COLLIDE_MIN_SIZE);
 	if (x > z)
 	{
 		if (x / z > NEW_COLLIDE_MAX_RATIO)
@@ -4619,11 +4965,11 @@ void LH3DArena::ComputeLight()
 	{
 		float light = (float)LHSys::TheSystem.mouse.DefaultPos.Y() / LH3DTech::g_info_transform.resolution.y;
 		g_b_end_sequence_dark = 1.0f - light;
-		long          level = (long)(light * 255.0f);
-		unsigned long colour = RGBA_MAKE(level, level, level, LH3D_COLOR_OPAQUE);
-		for (int i = 0; i < LAND_CELL_MAX_DARKNESS + 1; i++)
+		long     level = (long)(light * 255.0f);
+		uint32_t colour = RGBA_MAKE(level, level, level, LH3D_COLOR_OPAQUE);
+		for (int darknessIndex = 0; darknessIndex < LAND_CELL_MAX_DARKNESS + 1; darknessIndex++)
 		{
-			LandCell::g_darkness_to_color[i] = colour;
+			LandCell::g_darkness_to_color[darknessIndex] = colour;
 		}
 	}
 }
@@ -4711,31 +5057,30 @@ void HowManyPeople::Draw(long max_people, long people, LHPoint* pos)
 		}
 		g_sprites = LH3DSprite::Create(max_people, true);
 		g_count = max_people;
-		for (int i = 0; i < g_count; i++)
+		for (int spriteIndex = 0; spriteIndex < g_count; spriteIndex++)
 		{
-			g_sprites[i].material = g_material;
-			g_sprites[i].SetFrame(HOW_MANY_PEOPLE_FRAME);
-			g_sprites[i].SetSize(HOW_MANY_PEOPLE_SIZE);
+			g_sprites[spriteIndex].material = g_material;
+			g_sprites[spriteIndex].SetFrame(HOW_MANY_PEOPLE_FRAME);
+			g_sprites[spriteIndex].SetSize(HOW_MANY_PEOPLE_SIZE);
 		}
 	}
 	static float spacing = HOW_MANY_PEOPLE_SPACING;
 	LHPoint      start = g_dir;
 	start *= -max_people * 0.5f;
 	start += LHPoint(pos);
-	for (int i = 0; i < max_people; i++)
+	for (int spriteIndex = 0; spriteIndex < max_people; spriteIndex++)
 	{
 		LHPoint offset = g_dir;
-		offset *= i / spacing;
-		LH3DSprite* sprite = &g_sprites[i];
+		offset *= spriteIndex / spacing;
+		LH3DSprite* sprite = &g_sprites[spriteIndex];
 		if (people == HOW_MANY_PEOPLE_ALL)
 		{
-			sprite->colour = HOW_MANY_PEOPLE_COLOUR_IN;
-			g_sprites[i].colour = HOW_MANY_PEOPLE_COLOUR_ALL;
-			g_sprites[i].SetSize(1.0f / spacing);
+			g_sprites[spriteIndex].colour = HOW_MANY_PEOPLE_COLOUR_ALL;
+			g_sprites[spriteIndex].SetSize(1.0f / spacing);
 		}
 		else
 		{
-			if (i < people)
+			if (spriteIndex < people)
 			{
 				sprite->colour = HOW_MANY_PEOPLE_COLOUR_IN;
 			}
@@ -4743,7 +5088,7 @@ void HowManyPeople::Draw(long max_people, long people, LHPoint* pos)
 			{
 				sprite->colour = HOW_MANY_PEOPLE_COLOUR_OUT;
 			}
-			g_sprites[i].SetSize(caca_scale / spacing);
+			g_sprites[spriteIndex].SetSize(caca_scale / spacing);
 		}
 		sprite->pos = start;
 		sprite->pos += offset;
@@ -4759,12 +5104,12 @@ FishRush::PaulNet::PaulNet(LHPoint* pos, float radius)
 	Object->SetDynamicLighting(true);
 	Object->SetMesh(Mesh, NULL, NULL);
 	Phase = 0.0f;
-	for (long i = 0; i < FISH_RUSH_NET_SEGMENTS; i++)
+	for (long segmentIndex = 0; segmentIndex < FISH_RUSH_NET_SEGMENTS; segmentIndex++)
 	{
-		float angle = i * (TWO_PI / FISH_RUSH_NET_SEGMENTS);
-		Points[i].Set(radius * (float)cos(angle), 0.0f, radius * (float)sin(angle));
-		Points[i] += LHPoint(pos);
-		Bob[i] = 0.0f;
+		float angle = segmentIndex * TWO_PI / FISH_RUSH_NET_SEGMENTS;
+		Points[segmentIndex].Set(radius * (float)cos(angle), 0.0f, radius * (float)sin(angle));
+		Points[segmentIndex] += LHPoint(pos);
+		Bob[segmentIndex] = 0.0f;
 	}
 	Caught = false;
 	Size = 1.0f;
@@ -4778,12 +5123,17 @@ FishRush::PaulNet::~PaulNet()
 	Mesh = NULL;
 }
 
+static inline float GetNetSegmentBob(long segmentIndex, float phase)
+{
+	return (float)cos(segmentIndex * segmentIndex + phase) * FISH_RUSH_NET_BOB;
+}
+
 void FishRush::PaulNet::Draw()
 {
-	for (long i = 0; i < FISH_RUSH_NET_SEGMENTS; i++)
+	for (long segmentIndex = 0; segmentIndex < FISH_RUSH_NET_SEGMENTS; segmentIndex++)
 	{
-		LHPoint pos = Points[i];
-		pos.y += (float)cos(i * i + Phase) * FISH_RUSH_NET_BOB;
+		LHPoint pos = Points[segmentIndex];
+		pos.y += GetNetSegmentBob(segmentIndex, Phase);
 		Object->SetPosition(pos, 0.0f, 1.0f);
 		Object->DrawCutByPlane();
 	}
@@ -4791,7 +5141,7 @@ void FishRush::PaulNet::Draw()
 
 void FishRush::PaulNet::PreDraw()
 {
-	float dt = LH3DTech::GetGameTimeInc() / 1000.0f;
+	float dt = LH3DTech::GetGameTimeInc() / LH3D_MILLISECONDS_PER_SECOND;
 	if (Caught && Size != 0.0f)
 	{
 		Size -= dt * FISH_RUSH_NET_SHRINK_SPEED;
@@ -4800,12 +5150,12 @@ void FishRush::PaulNet::PreDraw()
 			Size = 0.0f;
 		}
 		float radius = Size * FISH_RUSH_NET_RADIUS + 1.0f;
-		for (long i = 0; i < FISH_RUSH_NET_SEGMENTS; i++)
+		for (long segmentIndex = 0; segmentIndex < FISH_RUSH_NET_SEGMENTS; segmentIndex++)
 		{
-			float angle = i * (TWO_PI / FISH_RUSH_NET_SEGMENTS);
-			Points[i].Set(radius * (float)cos(angle), 0.0f, radius * (float)sin(angle));
-			Points[i] += Pos;
-			Bob[i] = 0.0f;
+			float angle = segmentIndex * TWO_PI / FISH_RUSH_NET_SEGMENTS;
+			Points[segmentIndex].Set(radius * (float)cos(angle), 0.0f, radius * (float)sin(angle));
+			Points[segmentIndex] += Pos;
+			Bob[segmentIndex] = 0.0f;
 		}
 	}
 	Phase += dt * FISH_RUSH_NET_SPEED;
@@ -4813,12 +5163,12 @@ void FishRush::PaulNet::PreDraw()
 	plane.Normal.Set(0.0f, -1.0f, 0.0f);
 	plane.Distance = 0.0f;
 	UpdateClippingPlane(&plane);
-	for (long j = 0; j < FISH_RUSH_NET_SEGMENTS; j++)
+	for (long drawSegmentIndex = 0; drawSegmentIndex < FISH_RUSH_NET_SEGMENTS; drawSegmentIndex++)
 	{
-		LHPoint pos = Points[j];
-		float   bob = (float)cos(j * j + Phase) * FISH_RUSH_NET_BOB;
+		LHPoint pos = Points[drawSegmentIndex];
+		float   bob = GetNetSegmentBob(drawSegmentIndex, Phase);
 		pos.y += bob;
-		Bob[j] = bob;
+		Bob[drawSegmentIndex] = bob;
 		Object->SetPosition(pos, 0.0f, 1.0f);
 		Object->DrawCutByPlane();
 	}
@@ -4849,93 +5199,91 @@ void GWater::Process(LHPoint* pos)
 	}
 }
 
+static inline float GetWakeTrailLength(float dx, float dz)
+{
+	float length = SquareRoot(dx * dx + dz * dz) * GWATER_PLOUF_TRAIL_WIDTH;
+	if (length < GWATER_PLOUF_MIN_SIZE)
+	{
+		length = GWATER_PLOUF_MIN_SIZE;
+	}
+	return length;
+}
+
 void GWater::AddPlouf(LHPoint* pos)
 {
-	for (unsigned long i = 0; i < GWATER_MAX_PLOUFS; i++)
+	for (uint32_t slotIndex = 0; slotIndex < GWATER_MAX_PLOUFS; slotIndex++)
 	{
-		if (Actives[i])
+		if (Actives[slotIndex])
 		{
 			continue;
 		}
-		Actives[i] = true;
+		Actives[slotIndex] = true;
 		switch (State)
 		{
 		case GWATER_STATE_NONE:
-			Types[i] = GWATER_PLOUF_TYPE_SPLASH;
+			Types[slotIndex] = GWATER_PLOUF_TYPE_SPLASH;
 			State = GWATER_STATE_SPLASH;
-			Sprites[i].pos.Set(pos->x, 0.0f, pos->z);
+			Sprites[slotIndex].pos.Set(pos->x, 0.0f, pos->z);
 			SetPlouf(pos);
 			break;
 		case GWATER_STATE_SPLASH:
 			Actives[Last] = false;
 			State = GWATER_STATE_TRAIL_STARTED;
-			Types[i] = GWATER_PLOUF_TYPE_TRAIL_ALONE;
-			Trails[i].Start.Set(LastPos);
-			Trails[i].End.Set(pos->x, 0.0f, pos->z);
+			Types[slotIndex] = GWATER_PLOUF_TYPE_TRAIL_ALONE;
+			Trails[slotIndex].Start.Set(LastPos);
+			Trails[slotIndex].End.Set(pos->x, 0.0f, pos->z);
 			{
-				LHPoint middle(Trails[i].Start);
-				middle.Add(Trails[i].End);
+				LHPoint middle(Trails[slotIndex].Start);
+				middle.Add(Trails[slotIndex].End);
 				middle.Mul(0.5f);
-				Sprites[i].pos.Set(middle);
-				float dz = Trails[i].Start.z - Trails[i].End.z;
-				float dx = Trails[i].Start.x - Trails[i].End.x;
-				float length = SquareRoot(dx * dx + dz * dz) * GWATER_PLOUF_TRAIL_WIDTH;
-				if (length < GWATER_PLOUF_MIN_SIZE)
-				{
-					length = GWATER_PLOUF_MIN_SIZE;
-				}
-				Lengths[i] = length;
-				Sprites[i].SetRotation(LH3DMath::GetYAngle(&Trails[i].Start, &Trails[i].End));
-				Sprites[i].SetShapeOnly(1.0f, 1.0f / length);
+				Sprites[slotIndex].pos.Set(middle);
+				float dz = Trails[slotIndex].Start.z - Trails[slotIndex].End.z;
+				float dx = Trails[slotIndex].Start.x - Trails[slotIndex].End.x;
+				float length = GetWakeTrailLength(dx, dz);
+				Lengths[slotIndex] = length;
+				Sprites[slotIndex].SetRotation(LH3DMath::GetYAngle(&Trails[slotIndex].Start, &Trails[slotIndex].End));
+				Sprites[slotIndex].SetShapeOnly(1.0f, 1.0f / length);
 			}
 			break;
 		case GWATER_STATE_TRAIL_STARTED:
 			Types[Last] = GWATER_PLOUF_TYPE_TRAIL_START;
-			Types[i] = GWATER_PLOUF_TYPE_TRAIL_END;
+			Types[slotIndex] = GWATER_PLOUF_TYPE_TRAIL_END;
 			State = GWATER_STATE_TRAIL;
-			Trails[i].Start.Set(LastPos);
-			Trails[i].End.Set(pos->x, 0.0f, pos->z);
+			Trails[slotIndex].Start.Set(LastPos);
+			Trails[slotIndex].End.Set(pos->x, 0.0f, pos->z);
 			{
-				LHPoint middle(Trails[i].Start);
-				middle.Add(Trails[i].End);
+				LHPoint middle(Trails[slotIndex].Start);
+				middle.Add(Trails[slotIndex].End);
 				middle.Mul(0.5f);
-				Sprites[i].pos.Set(middle);
-				float dz = Trails[i].Start.z - Trails[i].End.z;
-				float dx = Trails[i].Start.x - Trails[i].End.x;
-				float length = SquareRoot(dx * dx + dz * dz) * GWATER_PLOUF_TRAIL_WIDTH;
-				if (length < GWATER_PLOUF_MIN_SIZE)
-				{
-					length = GWATER_PLOUF_MIN_SIZE;
-				}
-				Lengths[i] = length;
-				Sprites[i].SetRotation(LH3DMath::GetYAngle(&Trails[i].Start, &Trails[i].End));
-				Sprites[i].SetShapeOnly(1.0f, 1.0f / length);
+				Sprites[slotIndex].pos.Set(middle);
+				float dz = Trails[slotIndex].Start.z - Trails[slotIndex].End.z;
+				float dx = Trails[slotIndex].Start.x - Trails[slotIndex].End.x;
+				float length = GetWakeTrailLength(dx, dz);
+				Lengths[slotIndex] = length;
+				Sprites[slotIndex].SetRotation(LH3DMath::GetYAngle(&Trails[slotIndex].Start, &Trails[slotIndex].End));
+				Sprites[slotIndex].SetShapeOnly(1.0f, 1.0f / length);
 			}
 			break;
 		case GWATER_STATE_TRAIL:
 			Types[Last] = GWATER_PLOUF_TYPE_TRAIL;
-			Types[i] = GWATER_PLOUF_TYPE_TRAIL_END;
-			Trails[i].Start.Set(LastPos);
-			Trails[i].End.Set(pos->x, 0.0f, pos->z);
+			Types[slotIndex] = GWATER_PLOUF_TYPE_TRAIL_END;
+			Trails[slotIndex].Start.Set(LastPos);
+			Trails[slotIndex].End.Set(pos->x, 0.0f, pos->z);
 			{
-				LHPoint middle(Trails[i].Start);
-				middle.Add(Trails[i].End);
+				LHPoint middle(Trails[slotIndex].Start);
+				middle.Add(Trails[slotIndex].End);
 				middle.Mul(0.5f);
-				Sprites[i].pos.Set(middle);
-				float dz = Trails[i].Start.z - Trails[i].End.z;
-				float dx = Trails[i].Start.x - Trails[i].End.x;
-				float length = SquareRoot(dx * dx + dz * dz) * GWATER_PLOUF_TRAIL_WIDTH;
-				if (length < GWATER_PLOUF_MIN_SIZE)
-				{
-					length = GWATER_PLOUF_MIN_SIZE;
-				}
-				Lengths[i] = length;
-				Sprites[i].SetRotation(LH3DMath::GetYAngle(&Trails[i].Start, &Trails[i].End));
-				Sprites[i].SetShapeOnly(1.0f, 1.0f / length);
+				Sprites[slotIndex].pos.Set(middle);
+				float dz = Trails[slotIndex].Start.z - Trails[slotIndex].End.z;
+				float dx = Trails[slotIndex].Start.x - Trails[slotIndex].End.x;
+				float length = GetWakeTrailLength(dx, dz);
+				Lengths[slotIndex] = length;
+				Sprites[slotIndex].SetRotation(LH3DMath::GetYAngle(&Trails[slotIndex].Start, &Trails[slotIndex].End));
+				Sprites[slotIndex].SetShapeOnly(1.0f, 1.0f / length);
 			}
 			break;
 		}
-		Last = i;
+		Last = slotIndex;
 		LastPos.Set(pos->x, 0.0f, pos->z);
 		Touching = true;
 		return;
@@ -4944,59 +5292,80 @@ void GWater::AddPlouf(LHPoint* pos)
 
 void GWater::Draw()
 {
-	for (unsigned long i = 0; i < GWATER_MAX_PLOUFS; i++)
+	for (uint32_t slotIndex = 0; slotIndex < GWATER_MAX_PLOUFS; slotIndex++)
 	{
-		if (!Actives[i])
+		if (!Actives[slotIndex])
 		{
 			continue;
 		}
 		if (Wind)
 		{
-			Sprites[i].pos.x += g_speed * LH3DTech::g_ambient_wind_direction.x;
-			Sprites[i].pos.z += g_speed * LH3DTech::g_ambient_wind_direction.z;
+			Sprites[slotIndex].pos.x += g_speed * LH3DTech::g_ambient_wind_direction.x;
+			Sprites[slotIndex].pos.z += g_speed * LH3DTech::g_ambient_wind_direction.z;
 		}
-		unsigned long age = Ages[i] + LH3DTech::g_game_time_inc;
+		uint32_t age = Ages[slotIndex] + LH3DTech::g_game_time_inc;
 		if (age > GWATER_PLOUF_LIFE)
 		{
 			age = 0;
-			Actives[i] = false;
+			Actives[slotIndex] = false;
 		}
-		Ages[i] = age;
-		switch (Types[i])
+		Ages[slotIndex] = age;
+		switch (Types[slotIndex])
 		{
 		case GWATER_PLOUF_TYPE_SPLASH:
-			Sprites[i].Size = GetSize(age);
+			Sprites[slotIndex].Size = GetSize(age);
 			break;
 		case GWATER_PLOUF_TYPE_TRAIL: {
 			float size = GetSize(age);
-			Sprites[i].SetShapeOnly(Lengths[i], size / Lengths[i]);
+			Sprites[slotIndex].SetShapeOnly(Lengths[slotIndex], size / Lengths[slotIndex]);
 			break;
 		}
 		default:
-			Sprites[i].SetShapeOnly(1.0f, 1.0f);
-			Sprites[i].Size = GetSize(age);
+			Sprites[slotIndex].SetShapeOnly(1.0f, 1.0f);
+			Sprites[slotIndex].Size = GetSize(age);
 			break;
 		}
-		Sprites[i].SetFrame(Types[i] + GWATER_PLOUF_FRAME);
-		Sprites[i].colour = GetColor(age);
-		Sprites[i].Draw();
+		Sprites[slotIndex].SetFrame(Types[slotIndex] + GWATER_PLOUF_FRAME);
+		Sprites[slotIndex].colour = GetColor(age);
+		Sprites[slotIndex].Draw();
 	}
 }
 
 void __fastcall GWater::SetPlouf(LHPoint* pos) {}
 #endif
 
-void __cdecl DrawAndClip(D3DPRIMITIVETYPE primitive_type, unsigned long fvf, Vertex3D* vertices,
-                         unsigned long vertex_count, uint16_t* indices, unsigned long index_count)
+template <class Vertex> static inline void ClampScreenVertices(Vertex* vertices, unsigned long vertex_count)
 {
 	float maxX = LH3DTech::g_max_screen[0];
 	float maxY = LH3DTech::g_max_screen[1];
-	for (unsigned long i = 0; i < vertex_count; i++)
+	for (uint32_t vertexIndex = 0; vertexIndex < vertex_count; vertexIndex++)
 	{
-		CLAMP(vertices[i].x, 0.0f, maxX);
-		CLAMP(vertices[i].y, 0.0f, maxY);
+		CLAMP(vertices[vertexIndex].x, 0.0f, maxX);
+		CLAMP(vertices[vertexIndex].y, 0.0f, maxY);
 	}
+}
+
+void __cdecl DrawAndClip(D3DPRIMITIVETYPE primitive_type, unsigned long fvf, Vertex3D* vertices,
+                         unsigned long vertex_count, uint16_t* indices, unsigned long index_count)
+{
+	ClampScreenVertices(vertices, vertex_count);
 	LH3DRender::D3DDevice->DrawIndexedPrimitive(primitive_type, fvf, vertices, vertex_count, indices, index_count, 0);
+}
+
+static inline void ClampAndProjectQuadUV(Vertex3D* vertex, float maxX, float maxY, const LHPoint& uPlaneNormal,
+                                         const float& uPlaneDistance, const LHPoint& vPlaneNormal,
+                                         const float& vPlaneDistance)
+{
+	CLAMP(vertex->x, 0.0f, maxX);
+	CLAMP(vertex->y, 0.0f, maxY);
+	if (fabs(uPlaneNormal.z) > DRAW_AND_CLIP_EPSILON)
+	{
+		vertex->uv.x = (uPlaneDistance - uPlaneNormal.x * vertex->x - uPlaneNormal.y * vertex->y) / uPlaneNormal.z;
+	}
+	if (fabs(vPlaneNormal.z) > DRAW_AND_CLIP_EPSILON)
+	{
+		vertex->uv.y = (vPlaneDistance - vPlaneNormal.x * vertex->x - vPlaneNormal.y * vertex->y) / vPlaneNormal.z;
+	}
 }
 
 void __cdecl DrawAndClip2D(D3DPRIMITIVETYPE primitive_type, unsigned long fvf, Vertex3D* vertices,
@@ -5004,41 +5373,35 @@ void __cdecl DrawAndClip2D(D3DPRIMITIVETYPE primitive_type, unsigned long fvf, V
 {
 	float   maxX = LH3DTech::g_max_screen[0];
 	float   maxY = LH3DTech::g_max_screen[1];
-	long    lastQuad = -1;
-	float   uDistance;
-	LHPoint uNormal;
-	LHPoint vNormal;
-	float   vDistance;
-	for (unsigned long i = 0; i < vertex_count; i++)
+	long    lastClippedQuad = -1;
+	float   uPlaneDistance;
+	LHPoint uPlaneNormal;
+	LHPoint vPlaneNormal;
+	float   vPlaneDistance;
+	for (uint32_t vertexIndex = 0; vertexIndex < vertex_count; vertexIndex++)
 	{
-		Vertex3D* vertex = &vertices[i];
-		if (vertex->x < 0.0f || vertex->y < 0.0f || vertex->x > maxX || vertex->y > maxY)
+		Vertex3D* vertex = &vertices[vertexIndex];
+		if (!(vertex->x < 0.0f || vertex->y < 0.0f || vertex->x > maxX || vertex->y > maxY))
 		{
-			long quad = i & ~(DRAW_AND_CLIP_QUAD_VERTICES - 1);
-			if (lastQuad != quad && quad < (long)vertex_count - 2)
-			{
-				lastQuad = quad;
-				Vertex3D* corner = &vertices[quad];
-				LHPoint   uSide(corner[0].x - corner[1].x, corner[0].y - corner[1].y, corner[0].uv.x - corner[1].uv.x);
-				LHPoint   uOther(corner[2].x - corner[1].x, corner[2].y - corner[1].y, corner[2].uv.x - corner[1].uv.x);
-				uNormal.CrossProduct(uSide, uOther);
-				uDistance = uNormal.x * corner[0].x + uNormal.y * corner[0].y + uNormal.z * corner[0].uv.x;
-				LHPoint vSide(corner[0].x - corner[1].x, corner[0].y - corner[1].y, corner[0].uv.y - corner[1].uv.y);
-				LHPoint vOther(corner[2].x - corner[1].x, corner[2].y - corner[1].y, corner[2].uv.y - corner[1].uv.y);
-				vNormal.CrossProduct(vSide, vOther);
-				vDistance = vNormal.x * corner[0].x + vNormal.y * corner[0].y + vNormal.z * corner[0].uv.y;
-			}
-			CLAMP(vertex->x, 0.0f, maxX);
-			CLAMP(vertex->y, 0.0f, maxY);
-			if (fabs(uNormal.z) > DRAW_AND_CLIP_EPSILON)
-			{
-				vertex->uv.x = (uDistance - uNormal.x * vertex->x - uNormal.y * vertex->y) / uNormal.z;
-			}
-			if (fabs(vNormal.z) > DRAW_AND_CLIP_EPSILON)
-			{
-				vertex->uv.y = (vDistance - vNormal.x * vertex->x - vNormal.y * vertex->y) / vNormal.z;
-			}
+			continue;
 		}
+		long quadStart = vertexIndex & ~(4 - 1);
+		if (lastClippedQuad != quadStart && quadStart < (long)vertex_count - 2)
+		{
+			lastClippedQuad = quadStart;
+			Vertex3D* corner = &vertices[quadStart];
+			LHPoint   uSide(corner[0].x - corner[1].x, corner[0].y - corner[1].y, corner[0].uv.x - corner[1].uv.x);
+			LHPoint   uOther(corner[2].x - corner[1].x, corner[2].y - corner[1].y, corner[2].uv.x - corner[1].uv.x);
+			uPlaneNormal.CrossProduct(uSide, uOther);
+			uPlaneDistance =
+				uPlaneNormal.x * corner[0].x + uPlaneNormal.y * corner[0].y + uPlaneNormal.z * corner[0].uv.x;
+			LHPoint vSide(corner[0].x - corner[1].x, corner[0].y - corner[1].y, corner[0].uv.y - corner[1].uv.y);
+			LHPoint vOther(corner[2].x - corner[1].x, corner[2].y - corner[1].y, corner[2].uv.y - corner[1].uv.y);
+			vPlaneNormal.CrossProduct(vSide, vOther);
+			vPlaneDistance =
+				vPlaneNormal.x * corner[0].x + vPlaneNormal.y * corner[0].y + vPlaneNormal.z * corner[0].uv.y;
+		}
+		ClampAndProjectQuadUV(vertex, maxX, maxY, uPlaneNormal, uPlaneDistance, vPlaneNormal, vPlaneDistance);
 	}
 	LH3DRender::D3DDevice->DrawIndexedPrimitive(primitive_type, fvf, vertices, vertex_count, indices, index_count, 0);
 }
@@ -5046,172 +5409,202 @@ void __cdecl DrawAndClip2D(D3DPRIMITIVETYPE primitive_type, unsigned long fvf, V
 void __cdecl DrawAndClip(D3DPRIMITIVETYPE primitive_type, unsigned long fvf, Vertex3DMT* vertices,
                          unsigned long vertex_count, uint16_t* indices, unsigned long index_count)
 {
-	float maxX = LH3DTech::g_max_screen[0];
-	float maxY = LH3DTech::g_max_screen[1];
-	for (unsigned long i = 0; i < vertex_count; i++)
-	{
-		CLAMP(vertices[i].x, 0.0f, maxX);
-		CLAMP(vertices[i].y, 0.0f, maxY);
-	}
+	ClampScreenVertices(vertices, vertex_count);
 	LH3DRender::D3DDevice->DrawIndexedPrimitive(primitive_type, fvf, vertices, vertex_count, indices, index_count, 0);
 }
 
-void SaveTextureCitadel(char* name, void* data)
+static inline void DescribeCitadelTextureSurface(DDSURFACEDESC2& surface_desc)
 {
-	bool32_t lowRes = LH3DTexture::g_b_use_low_res;
+	memset(&surface_desc, 0, sizeof(surface_desc));
+	surface_desc.dwSize = sizeof(surface_desc);
+	surface_desc.dwFlags = CITADEL_TEXTURE_DESC_FLAGS;
+	surface_desc.dwWidth = CITADEL_TEXTURE_SIZE;
+	surface_desc.dwHeight = CITADEL_TEXTURE_SIZE;
+	surface_desc.ddsCaps.dwCaps = CITADEL_TEXTURE_CAPS;
+	surface_desc.dwMipMapCount = 1;
+	surface_desc.ddpfPixelFormat = LH3DVRAMTex::g_pixel_format[CITADEL_TEXTURE_PIXEL_FORMAT].Format;
+}
+
+static inline uint16_t PackCitadelRGB555(const uint8_t*& sourceChannel)
+{
+	long red = *sourceChannel++ >> 3;
+	long green = *sourceChannel++ >> 3;
+	long blue = *sourceChannel++ >> 3;
+	return 0x8000 | red << 10 | green << 5 | blue;
+}
+
+static inline uint16_t PackCitadelRGB565(const uint8_t*& sourceChannel)
+{
+	long red = *sourceChannel++ >> 3;
+	long green = (*sourceChannel++ >> 3) << 1;
+	long blue = *sourceChannel++ >> 3;
+	return red << 11 | green << 5 | blue;
+}
+
+void SaveTextureCitadel(char* name, void* rgb_pixels)
+{
+	bool32_t savedLowRes = LH3DTexture::g_b_use_low_res;
 	LH3DTexture::g_b_use_low_res = false;
 	IDirectDrawSurface7* surface = NULL;
-	LH3DCT*              ct = LH3DCT::Create(NULL, false);
-	if (ct != NULL)
+	LH3DCT*              textureContainer = LH3DCT::Create(NULL, false);
+	if (textureContainer == NULL)
 	{
-		DDSURFACEDESC2 desc;
-		memset(&desc, 0, sizeof(desc));
-		desc.dwSize = sizeof(desc);
-		desc.dwFlags = CITADEL_TEXTURE_DESC_FLAGS;
-		desc.dwWidth = CITADEL_TEXTURE_SIZE;
-		desc.dwHeight = CITADEL_TEXTURE_SIZE;
-		desc.ddsCaps.dwCaps = CITADEL_TEXTURE_CAPS;
-		desc.dwMipMapCount = 1;
-		desc.ddpfPixelFormat = LH3DVRAMTex::g_pixel_format[CITADEL_TEXTURE_PIXEL_FORMAT].Format;
-		LHSys::TheSystem.screen.PDirectDraw->CreateSurface(&desc, &surface, NULL);
-		if (surface != NULL)
+		goto cleanup;
+	}
+
+	DDSURFACEDESC2 surfaceDesc;
+	DescribeCitadelTextureSurface(surfaceDesc);
+	LHSys::TheSystem.screen.PDirectDraw->CreateSurface(&surfaceDesc, &surface, NULL);
+	if (surface == NULL)
+	{
+		goto cleanup;
+	}
+	{
+		memset(&surfaceDesc, 0, sizeof(surfaceDesc));
+		surfaceDesc.dwSize = sizeof(surfaceDesc);
+		surface->Lock(NULL, &surfaceDesc, CITADEL_TEXTURE_LOCK, NULL);
+		uint16_t* surfacePixels = (uint16_t*)surfaceDesc.lpSurface;
+		if (surfacePixels != NULL)
 		{
-			memset(&desc, 0, sizeof(desc));
-			desc.dwSize = sizeof(desc);
-			surface->Lock(NULL, &desc, CITADEL_TEXTURE_LOCK, NULL);
-			uint16_t* bits = (uint16_t*)desc.lpSurface;
-			if (bits != NULL)
+			long           pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint16_t);
+			const uint8_t* sourceChannel = static_cast<const uint8_t*>(rgb_pixels);
+			long           x;
+			long           y;
+			if (!LH3DTexture::g_b_use_565)
 			{
-				long     pitch = desc.lPitch / 2;
-				uint8_t* pixel = (uint8_t*)data;
-				long     x;
-				long     y;
-				if (!LH3DTexture::g_b_use_565)
+				for (y = 0; y < (long)surfaceDesc.dwHeight; y++)
 				{
-					for (y = 0; y < (long)desc.dwHeight; y++)
+					for (x = 0; x < (long)surfaceDesc.dwWidth; x++)
 					{
-						for (x = 0; x < (long)desc.dwWidth; x++)
-						{
-							long red = *pixel++ >> 3;
-							long green = *pixel++ >> 3;
-							long blue = *pixel++ >> 3;
-							bits[y * pitch + x] = CITADEL_TEXTURE_555_OPAQUE | red << 10 | green << 5 | blue;
-						}
-					}
-				}
-				else
-				{
-					for (y = 0; y < (long)desc.dwHeight; y++)
-					{
-						for (x = 0; x < (long)desc.dwWidth; x++)
-						{
-							long red = *pixel++ >> 3;
-							long green = (*pixel++ >> 3) << 1;
-							long blue = *pixel++ >> 3;
-							bits[y * pitch + x] = red << 11 | green << 5 | blue;
-						}
+						surfacePixels[y * pitchPixels + x] = PackCitadelRGB555(sourceChannel);
 					}
 				}
 			}
-			surface->Unlock(NULL);
-			if (ct->Surface->Blt(NULL, surface, NULL, DDBLT_WAIT, NULL) == DD_OK)
+			else
 			{
-				ct->SaveOnDisk(name);
+				for (y = 0; y < (long)surfaceDesc.dwHeight; y++)
+				{
+					for (x = 0; x < (long)surfaceDesc.dwWidth; x++)
+					{
+						surfacePixels[y * pitchPixels + x] = PackCitadelRGB565(sourceChannel);
+					}
+				}
 			}
 		}
+		surface->Unlock(NULL);
+		if (textureContainer->Surface->Blt(NULL, surface, NULL, DDBLT_WAIT, NULL) == DD_OK)
+		{
+			textureContainer->SaveOnDisk(name);
+		}
 	}
+
+cleanup:
 	if (surface != NULL)
 	{
 		surface->Release();
 	}
 	surface = NULL;
-	if (ct != NULL)
+	if (textureContainer != NULL)
 	{
-		ct->Release();
+		textureContainer->Release();
 	}
-	LH3DTexture::g_b_use_low_res = lowRes;
+	LH3DTexture::g_b_use_low_res = savedLowRes;
 }
 
-void LoadTextureCitadel(char* name, uint8_t* data)
+static inline void UnpackCitadelRGB555(uint16_t pixel, uint8_t*& rgb_pixels)
+{
+	*rgb_pixels++ = (pixel >> 10) << 3;
+	*rgb_pixels++ = (pixel >> 5) << 3;
+	*rgb_pixels++ = pixel << 3;
+}
+
+static inline void UnpackCitadelRGB565(uint16_t pixel, uint8_t*& rgb_pixels)
+{
+	*rgb_pixels++ = (pixel >> 11) << 3;
+	*rgb_pixels++ = (pixel >> 6) << 3;
+	*rgb_pixels++ = pixel << 3;
+}
+
+void LoadTextureCitadel(char* name, uint8_t* rgb_pixels)
 {
 	uint32_t size = 0;
 	LHFileLength(name, &size);
 	if (size == 0 || IsRawFile(name))
 	{
 		Report3D__FPCce("LoadTextureCitadel %s not present\n", name);
-		memset(data, 0, CITADEL_TEXTURE_BYTES);
+		memset(rgb_pixels, 0, CITADEL_TEXTURE_BYTES);
 		return;
 	}
 	Report3D__FPCce("LoadTextureCitadel %s\n", name);
 	IDirectDrawSurface7* surface = NULL;
-	LH3DCT*              ct = LH3DCT::CreateFromDisk(name);
-	if (ct != NULL)
+	LH3DCT*              textureContainer = LH3DCT::CreateFromDisk(name);
+	if (textureContainer == NULL)
 	{
-		DDSURFACEDESC2 desc;
-		memset(&desc, 0, sizeof(desc));
-		desc.dwSize = sizeof(desc);
-		desc.dwFlags = CITADEL_TEXTURE_DESC_FLAGS;
-		desc.dwWidth = CITADEL_TEXTURE_SIZE;
-		desc.dwHeight = CITADEL_TEXTURE_SIZE;
-		desc.ddsCaps.dwCaps = CITADEL_TEXTURE_CAPS;
-		desc.dwMipMapCount = 1;
-		desc.ddpfPixelFormat = LH3DVRAMTex::g_pixel_format[CITADEL_TEXTURE_PIXEL_FORMAT].Format;
-		LHSys::TheSystem.screen.PDirectDraw->CreateSurface(&desc, &surface, NULL);
-		if (surface != NULL && surface->Blt(NULL, ct->Surface, NULL, DDBLT_WAIT, NULL) == DD_OK)
+		goto cleanup;
+	}
+
+	DDSURFACEDESC2 surfaceDesc;
+	DescribeCitadelTextureSurface(surfaceDesc);
+	LHSys::TheSystem.screen.PDirectDraw->CreateSurface(&surfaceDesc, &surface, NULL);
+	if (surface == NULL || surface->Blt(NULL, textureContainer->Surface, NULL, DDBLT_WAIT, NULL) != DD_OK)
+	{
+		goto cleanup;
+	}
+	{
+		surface->Lock(NULL, &surfaceDesc, CITADEL_TEXTURE_LOCK, NULL);
+		const uint16_t* surfacePixels = static_cast<const uint16_t*>(surfaceDesc.lpSurface);
+		if (surfacePixels != NULL)
 		{
-			surface->Lock(NULL, &desc, CITADEL_TEXTURE_LOCK, NULL);
-			uint16_t* bits = (uint16_t*)desc.lpSurface;
-			if (bits != NULL)
+			long pitchPixels = surfaceDesc.lPitch / (long)sizeof(uint16_t);
+			if (!LH3DTexture::g_b_use_565)
 			{
-				long pitch = desc.lPitch / 2;
-				if (!LH3DTexture::g_b_use_565)
+				for (long y = 0; y < (long)surfaceDesc.dwHeight; y++)
 				{
-					for (long y = 0; y < (long)desc.dwHeight; y++)
+					for (long x = 0; x < (long)surfaceDesc.dwWidth; x++)
 					{
-						for (long x = 0; x < (long)desc.dwWidth; x++)
-						{
-							uint16_t pixel = bits[y * pitch + x];
-							*data++ = (pixel >> 10) << 3;
-							*data++ = (pixel >> 5) << 3;
-							*data++ = pixel << 3;
-						}
-					}
-				}
-				else
-				{
-					for (long y = 0; y < (long)desc.dwHeight; y++)
-					{
-						for (long x = 0; x < (long)desc.dwWidth; x++)
-						{
-							uint16_t pixel = bits[y * pitch + x];
-							*data++ = (pixel >> 11) << 3;
-							*data++ = (pixel >> 6) << 3;
-							*data++ = pixel << 3;
-						}
+						uint16_t pixel = surfacePixels[y * pitchPixels + x];
+						UnpackCitadelRGB555(pixel, rgb_pixels);
 					}
 				}
 			}
-			surface->Unlock(NULL);
+			else
+			{
+				for (long y = 0; y < (long)surfaceDesc.dwHeight; y++)
+				{
+					for (long x = 0; x < (long)surfaceDesc.dwWidth; x++)
+					{
+						uint16_t pixel = surfacePixels[y * pitchPixels + x];
+						UnpackCitadelRGB565(pixel, rgb_pixels);
+					}
+				}
+			}
 		}
+		surface->Unlock(NULL);
 	}
+
+cleanup:
 	if (surface != NULL)
 	{
 		surface->Release();
 	}
 	surface = NULL;
-	if (ct != NULL)
+	if (textureContainer != NULL)
 	{
-		ct->Release();
+		textureContainer->Release();
 	}
 }
 
-NewCollide::Obj::Obj(float radius, LHPoint* position)
-	: position(*position), radius(radius), r2(radius * radius), angle(0.0f), BoundingBox(radius, 0.0f, radius),
-	  IteratorList(NULL)
+NewCollide::Obj::Obj(float collision_radius, LHPoint* center)
 {
+	position = *center;
+	radius = collision_radius;
+	r2 = collision_radius * collision_radius;
+	angle = 0.0f;
+	BoundingBox.Set(collision_radius, 0.0f, collision_radius);
+	IteratorList = NULL;
 }
 
-NewCollide::Obj::Obj(LHPoint* position, float bb_x, float bb_z, float angle)
+NewCollide::Obj::Obj(LHPoint* center, float bb_x, float bb_z, float heading)
 {
 	if (bb_x < NEW_COLLIDE_MIN_SIZE)
 	{
@@ -5221,11 +5614,11 @@ NewCollide::Obj::Obj(LHPoint* position, float bb_x, float bb_z, float angle)
 	{
 		bb_z = NEW_COLLIDE_MIN_SIZE;
 	}
-	this->position = *position;
+	position = *center;
 	r2 = bb_x * bb_x + bb_z * bb_z;
 	radius = sqrt(r2);
-	this->angle = angle;
-	BoundingBox = LHPoint(bb_x, 0.0f, bb_z);
+	angle = heading;
+	BoundingBox.Set(bb_x, 0.0f, bb_z);
 	IteratorList = NULL;
 	CreateList();
 }
@@ -5269,3 +5662,39 @@ void ClearAllStuff()
 		delete dead;
 	}
 }
+
+#if defined(VERSION_BW1W110) || defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+void UnidentifiedDiversRoutine() {}
+
+void ExportTexturePackTGA(int argc, char** argv)
+{
+	char file[0x100];
+	char path[LH3D_TOOLS_TEXT_SIZE];
+	for (int argumentIndex = 1; argumentIndex < argc; argumentIndex++)
+	{
+		char*    name = argv[argumentIndex];
+		uint32_t size;
+		if (LHFileLength(name, &size) != LH_FILE_RESULT_OK)
+		{
+			sprintf(path, "Can't find %s", path);
+			return;
+		}
+		LH3DTexturePackFile* pack = (LH3DTexturePackFile*)malloc(size);
+		LHLoadData(name, pack, size, NULL);
+		long offset = 0;
+		for (int textureIndex = 0; textureIndex < pack->Count; textureIndex++, offset += sizeof(long))
+		{
+			long* texture = GetTexturePackEntry(pack, offset);
+			long  textureId = texture[0];
+			strcpy(path, name);
+			path[strlen(name) - LH3D_TOOLS_EXTENSION_LENGTH] = '\0';
+			sprintf(file, "%s%x.tga", path, textureId);
+			LHTGA* tga = LHTGA::GetTGA(texture + 1, LH3D_TEXTURE_PACK_SIZE, LH3D_TEXTURE_PACK_SIZE,
+			                           LHTGA_FORMAT_ARGB4444, false);
+			LHSaveData(file, tga, LHTGA::GetSize(tga->Width, tga->Height), NULL);
+			free(tga);
+		}
+		free(pack);
+	}
+}
+#endif
