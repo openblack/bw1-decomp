@@ -4,6 +4,10 @@
 #include <stddef.h>
 #include <assert.h>
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
+#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For NEW */
+
+#include "LandscapeDetails.h" /* For struct LandscapeDetails */
+#include "MapList.h"          /* For class MapList */
 
 class MapThumbImage;
 
@@ -84,4 +88,17 @@ public:
 static_assert(sizeof(ServerLandscapeMap::Point) == 9, "ServerLandscapeMap::Point size is incorrect");
 static_assert(offsetof(ServerLandscapeMap, TownPoints) == 0x430, "ServerLandscapeMap list offset is incorrect");
 static_assert(sizeof(ServerLandscapeMap) == 0x440, "ServerLandscapeMap size is incorrect");
+
+// BW1W120 inlined BW1M119 inlined
+inline void CopyMapList(MapList* to, MapList* from)
+{
+	to->Landscapes.DeleteAll();
+	for (LandscapeDetails* details = from->Landscapes.GetHead(); details != NULL;
+	     details = from->Landscapes.FindNext(details))
+	{
+		to->Landscapes.AddToEnd(NEW(173) LandscapeDetails(*details));
+	}
+	to->Host = from->Host;
+}
+
 #endif /* BW1_DECOMP_SERVER_LANDSCAPE_MAP_INCLUDED_H */

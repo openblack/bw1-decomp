@@ -2,7 +2,7 @@
 #define BW1_DECOMP_LANDSCAPE_DETAILS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <string.h> /* For memset */
+#include <string.h> /* For memcpy, memset */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
 
@@ -20,6 +20,8 @@ struct LandscapeDetails
 
 	// BW1W120 inlined BW1M119 014d28e0
 	LandscapeDetails() { memset(this, 0, sizeof(*this)); }
+	// BW1W120 inlined BW1M119 015d9880
+	LandscapeDetails(LandscapeDetails& other) { memcpy(this, &other, sizeof(*this)); }
 
 	// BW1W120 00714270 BW1M119 01389e00
 	void TakeFromString(char* string);
