@@ -23,6 +23,9 @@ public:
 		PlayerName = NULL;
 	}
 
+	// BW1W120 inlined BW1M119 015d9a10
+	~MapList() { Clear(); }
+
 	// BW1W120 inlined BW1M119 inlined
 	LandscapeDetails* GetNext(LandscapeDetails* details) { return Landscapes.FindNext(details); }
 
