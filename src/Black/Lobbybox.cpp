@@ -42,7 +42,7 @@ static const char LandscapeLoadedTag[] = "lOaDeDLaNdScApE";
 static const char MapsPresentTag[] = "I-_H_A_V_E_-M_A+P-z";
 
 // BW1W120 005f5200 BW1M119 inlined
-static char* SkipTag(char* text, const char* tag)
+char* SkipTag(char* text, const char* tag)
 {
 	int i;
 	for (i = 0; i < (int)strlen(tag); i++)

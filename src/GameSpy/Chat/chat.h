@@ -31,6 +31,7 @@ extern "C"
 	                                        const char* name, const char* address, int numChannels,
 	                                        const char** channels, void* param);
 
+	char* chatGetNick(CHAT chat);
 	void chatSetChannelMode(CHAT chat, const char* channel, CHATChannelMode* mode);
 	void chatGetChannelMode(CHAT chat, const char* channel, chatGetChannelModeCallback callback, void* param,
 	                        CHATBool blocking);

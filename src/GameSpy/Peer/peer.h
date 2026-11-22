@@ -119,6 +119,7 @@ extern "C"
 	const char* peerGetRoomChannel(PEER peer, RoomType roomType);
 	void peerEnumPlayers(PEER peer, RoomType roomType, peerEnumPlayersCallback callback, void* param);
 	void peerMessagePlayer(PEER peer, const char* nick, const char* message, MessageType messageType);
+	void peerStartGame(PEER peer, const char* message, PEERBool stopReporting);
 	void peerStopGame(PEER peer);
 	void peerStateChanged(PEER peer);
 

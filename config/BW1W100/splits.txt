@@ -1163,18 +1163,20 @@ Black/GraveYard.cpp:
 Black/GroupBehaviour.cpp:
 	.text       start:0x0055CFD0 end:0x0055F690
 	.rdata      start:0x0083E208 end:0x0083E82C
-	.data       start:0x00B1CF20 end:0x00B1CF60
-	.bss        start:0x00C27C20 end:0x00C2A2B8
+	.data       start:0x00B1CF20 end:0x00B1CF5C
+	.bss        start:0x00C27C20 end:0x00C27C2C
 
 Black/GSFunctions.cpp:
 	.text       start:0x0055F690 end:0x0055FA90
+	.data       start:0x00B1CF5C end:0x00B1CF60
+	.bss        start:0x00C27C2C end:0x00C28EE8
 
 Black/GSLobbybox.cpp:
 	.text       start:0x0055FA90 end:0x00560EA0
 	.rdata      start:0x0083E82C end:0x0083E858
 	.CRT$XCU    start:0x008F6774 end:0x008F677C align:4
 	.data       start:0x00B1CF60 end:0x00B1CFD8
-	.bss        start:0x00C2A2B8 end:0x00C2A2C8
+	.bss        start:0x00C28EE8 end:0x00C2A2C8
 
 Black/GStates.cpp:
 	.text       start:0x00560EA0 end:0x00574050
