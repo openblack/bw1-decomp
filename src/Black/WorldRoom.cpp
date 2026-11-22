@@ -49,15 +49,6 @@
 
 #include "MapCoordsMeters.h" /* For MapCoords::MapMetersX */
 
-// cl6 orders .bss by a hash of the symbol name, and Draw's sign_texts guard $S<n> lands in the
-// original's slot only for some n. The headers above declare a different number of static data
-// members than the original's did, so this pads the guard onto one of them.
-struct WorldRoomCounterPad
-{
-	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8, Pad9, Pad10, Pad11, Pad12, Pad13, Pad14, Pad15,
-		Pad16, Pad17, Pad18, Pad19, Pad20, Pad21, Pad22, Pad23, Pad24, Pad25, Pad26;
-};
-
 // The name is a guess, but not a free one: cl6 orders .bss by a hash of the symbol name, and this
 // unit's .bss has the constant between Draw's sign_texts guard and White. PSysProperties.cpp and
 // Player.cpp hold the same constant as OneOverLogHalf, which sorts after White.
@@ -93,8 +84,6 @@ bool32_t WorldRoom::DisplayMagicActivity = true;
 bool32_t WorldRoom::DisplayInfluence = true;
 bool32_t WorldRoom::DisplayCreature = true;
 bool32_t WorldRoom::DisplayChallenges = true;
-
-wchar_t WorldRoom::WorldStatisticsText[0x2000];
 
 static uint32_t UnusedStatic = 0;
 
@@ -1035,6 +1024,8 @@ void WorldRoom::PreToolTipProcess()
 		}
 	}
 }
+
+wchar_t WorldRoom::WorldStatisticsText[0x2000];
 
 float         WorldRoom::MarkerAngle = 0.0f;
 SubmeshName*  WorldRoom::ScrollSubMesh = NULL;
