@@ -30,7 +30,7 @@ public:
 
 	LHLobby*           Lobby; /* 0x0 */
 	LHLobby*           InternetLobby;
-	LHLobby*           field_0x8;
+	LHLobby*           RemoteLobby;
 	uint32_t           field_0xc;
 	LHReplayPacketInfo ReplayInfo; /* 0x10 */
 	LHTransport*       Transport;

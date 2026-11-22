@@ -14,6 +14,8 @@ public:
 
 	// BW1W120 00735890 BW1M119 0115d7b0
 	TextConversion(wchar_t* text);
+	// BW1W120 007358f0 BW1M119 0115d6a0
+	TextConversion(char* text);
 	// BW1W120 00735980 BW1M119 0115d5f0
 	~TextConversion();
 };
