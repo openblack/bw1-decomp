@@ -329,6 +329,26 @@ add_relocations:
     type: x86_abs32
     target: '?Draw@SetupStaticText@@UAEX_N0@Z'
     addend: 0x1BB
+# Animal.cpp's info array destructor loops start from the end of each array: GAnimalInfo::Infos ends where
+# GAnimalStateTableInfo::Infos starts, and GAnimalStateTableInfo::Infos at the end of the unit's .bss.
+  - source: 0x00417837
+    type: x86_abs32
+    target: '?Infos@GAnimalInfo@@2PAV1@A'
+    addend: 0x5730
+  - source: 0x00417917
+    type: x86_abs32
+    target: '?Infos@GAnimalStateTableInfo@@2PAV1@A'
+    addend: 0x26D0
+# Animal.cpp's CallSaveStateFunction and CallLoadStateFunction: the lea of the state's SaveState and LoadState
+# member pointers in Animal::StateTable (dtk leaves the displacement unrelocated).
+  - source: 0x0041C61A
+    type: x86_abs32
+    target: '?StateTable@Animal@@2PAUAnimalStateTableEntry@@A'
+    addend: 0x30
+  - source: 0x0041C68A
+    type: x86_abs32
+    target: '?StateTable@Animal@@2PAUAnimalStateTableEntry@@A'
+    addend: 0x40
 # Artifact.cpp's TownArtifact::SetVillagerActivity: the lea of the dance info in GDanceInfo::Infos (dtk leaves the
 # displacement unrelocated).
   - source: 0x004276E9
