@@ -851,12 +851,14 @@ Black/DialogBoxMain.cpp:
 Black/DialogBoxOptions.cpp:
 	.text       start:0x004F02D0 end:0x004F22B0
 	.rdata      start:0x00816EE4 end:0x00816F88
-	.data       start:0x00B167D0 end:0x00B1692B
+	.CRT$XCU    start:0x008F64D8 end:0x008F64E0 align:4
+	.data       start:0x00B167D0 end:0x00B16908
+	.bss        start:0x00BE760C end:0x00BE7620
 
 Black/DialogBoxSaveMessage.cpp:
 	.text       start:0x004F22B0 end:0x004F27A0
 	.rdata      start:0x00816F88 end:0x00816FAC
-	.data       start:0x00B1692C end:0x00B1699C
+	.data       start:0x00B16908 end:0x00B1699C
 
 Black/DrawingObject.cpp:
 	.text       start:0x004F27A0 end:0x004F9050

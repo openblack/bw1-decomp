@@ -434,7 +434,7 @@ void __stdcall DialogBoxOptions::ControlCallback(int event, SetupBox* box, Setup
 				((SetupCheckBox*)box->FindControl(DIALOG_BOX_OPTIONS_CONTROL_ID_USE_GLOVE))->style;
 			LHSys::TheSystem.GloveActive = ((SetupCheckBox*)box->FindControl(control->id))->style;
 			LHNetSetCurrentProfileUlong("useglove", PlayerProfile::Profile.useglove);
-			if (GGame::g_game->help_system->IsDialogueControlled())
+			if (GGame::g_game->help_system->DialogueControlTask != SCRIPT_TASK_NONE)
 			{
 				HelpTextReloadPending = true;
 				return;
@@ -463,11 +463,22 @@ void DialogBoxOptions::ReadRegistrySettings()
 {
 	unsigned long value;
 	double        readSpeed;
-	SetToolTipRadio(LHNetGetCurrentProfileUlong(TooltipLevelSetting, &value) == LH_OK
-	                    ? value
-	                    : GGame::g_game->help_system->TooltipLevel);
-	SetTextRadio(LHNetGetCurrentProfileUlong(TextDrawSetting, &value) == LH_OK ? value
-	                                                                           : GGame::g_game->help_system->TextDraw);
+	if (LHNetGetCurrentProfileUlong(TooltipLevelSetting, &value) == LH_OK)
+	{
+		SetToolTipRadio(value);
+	}
+	else
+	{
+		SetToolTipRadio(GGame::g_game->help_system->TooltipLevel);
+	}
+	if (LHNetGetCurrentProfileUlong(TextDrawSetting, &value) == LH_OK)
+	{
+		SetTextRadio(value);
+	}
+	else
+	{
+		SetTextRadio(GGame::g_game->help_system->TextDraw);
+	}
 	if (LHNetGetCurrentProfileUlong(CreatureHelpSetting, &value) == LH_OK)
 	{
 		CreatureHelp->style = value;
@@ -476,9 +487,14 @@ void DialogBoxOptions::ReadRegistrySettings()
 	{
 		CreatureHelp->style = GGame::g_game->help_system->CreatureHelp;
 	}
-	SetHelpRadio(LHNetGetCurrentProfileUlong(HelpLevelSetting, &value) == LH_OK
-	                 ? value
-	                 : GGame::g_game->help_system->GetHelpLevel());
+	if (LHNetGetCurrentProfileUlong(HelpLevelSetting, &value) == LH_OK)
+	{
+		SetHelpRadio(value);
+	}
+	else
+	{
+		SetHelpRadio(GGame::g_game->help_system->GetHelpLevel());
+	}
 	if (LHNetGetCurrentProfileDouble(ReadSpeedSetting, &readSpeed) == LH_OK)
 	{
 		HelpTextSpeed->value = readSpeed;
@@ -577,7 +593,9 @@ void DialogBoxOptions::WriteRegistrySettings()
 	LHNetSetCurrentProfileUlong(TextDrawSetting, GetTextRadio());
 	LHNetSetCurrentProfileUlong(CreatureHelpSetting, CreatureHelp->style);
 	LHNetSetCurrentProfileUlong(HelpLevelSetting, GetHelpRadio());
-	LHNetSetCurrentProfileDouble(ReadSpeedSetting, HelpTextSpeed->value);
+	float  sliderValue = HelpTextSpeed->value;
+	double readSpeed = sliderValue;
+	LHNetSetCurrentProfileDouble(ReadSpeedSetting, readSpeed);
 	PlayerProfile::Profile.HAND_ORIENTATION = LeftHanded->style;
 #if defined(VERSION_BW1W130)
 	LHNetSetCurrentProfileUlong("useglove", mini->UseGlove->style);
@@ -592,7 +610,8 @@ void DialogBoxOptions::WriteRegistrySettings()
 	{
 		GGame::g_game->ReadRegistrySettings();
 		GGame::g_game->help_system->ReadRegistrySettings();
-		GGame::g_game->MyInterface()->hand.Get()->ReadRegistrySettings();
+		GInterface* playerInterface = GGame::g_game->MyInterface();
+		playerInterface->hand.Get()->ReadRegistrySettings();
 	}
 	PlayerProfile::WriteBackToRegistry(PlayerProfile::Profile);
 }
@@ -1041,7 +1060,6 @@ void MiniDialogBoxOptions::InitControls()
 			VideoButton->rect.start.y = 390;
 			VideoUp->rect.start.y = 389;
 			VideoDown->rect.start.y = 389;
-			GloveTitle->rect.start.y = 200;
 		}
 		else
 		{
@@ -1049,8 +1067,8 @@ void MiniDialogBoxOptions::InitControls()
 			VideoButton->rect.start.y = 120;
 			VideoUp->rect.start.y = 119;
 			VideoDown->rect.start.y = 119;
-			GloveTitle->rect.start.y = 200;
 		}
+		GloveTitle->rect.start.y = 200;
 	}
 	else if (audioInstalled)
 	{
