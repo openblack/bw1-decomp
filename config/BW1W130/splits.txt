@@ -947,14 +947,14 @@ Black/DialogBoxOptions.cpp:
 	.text       start:0x00515D30 end:0x00518B40
 	.rdata      start:0x008DD5FC end:0x008DD69C
 	.CRT$XCU    start:0x00A46754 end:0x00A46760 align:4
-	.data       start:0x00C69354 end:0x00C69428
+	.data       start:0x00C69354 end:0x00C695D8
 	.bss        start:0x00D4726C end:0x00D47280
 
 Black/DialogBoxSaveMessage.cpp:
 	.text       start:0x00518B40 end:0x00519070
 	.rdata      start:0x008DD69C end:0x008DD6C4
 	.CRT$XCU    start:0x00A46760 end:0x00A46764 align:4
-	.data       start:0x00C69428 end:0x00C69674
+	.data       start:0x00C695D8 end:0x00C69674
 
 Black/DrawingObject.cpp:
 	.text       start:0x00519070 end:0x0051FE00
