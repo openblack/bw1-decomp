@@ -15,15 +15,13 @@ class GObjectInfo;
 class GBigForestInfo : public GMultiMapFixedInfo
 {
 public:
-	uint8_t  field_0x120[0x4];
-	uint32_t CarriedTreeType; /* 0x124 */
+	MESH_LIST Mesh;            /* 0x120 */
+	uint32_t  CarriedTreeType; /* 0x124 */
 
 	// Override methods
 
-	// BW1W120 00438cb0 BW1M119 010b5f30
-	virtual ~GBigForestInfo();
 	// BW1W120 00438c50 BW1M119 010b5090
-	virtual MESH_LIST GetMesh() const;
+	virtual MESH_LIST GetMesh() const { return Mesh; }
 
 	// Static data
 
@@ -36,7 +34,7 @@ public:
 	static GBigForestInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in BigForest.h.
-	INFO_DATA_BLOCK(field_0x120, CarriedTreeType)
+	INFO_DATA_BLOCK(Mesh, CarriedTreeType)
 	INFO_DERIVED_LOADERS(14, "BigForest.h", GMultiMapFixedInfo)
 };
 
