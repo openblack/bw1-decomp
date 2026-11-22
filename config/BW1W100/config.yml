@@ -1712,6 +1712,11 @@ add_relocations:
   - source: 0x008D52A0
     type: x86_abs32
     target: '??_EWorldRoomCamera@@UAEPAXI@Z'
+# ValidateLandAvoid's row loop ends at the end of LandAvoid, not at LandAvoidValid.
+  - source: 0x00682BDD
+    type: x86_abs32
+    target: '?LandAvoid@@3PAY0CAA@EA'
+    addend: 0x40000
 # GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
   - source: 0x006866A8
     type: x86_abs32

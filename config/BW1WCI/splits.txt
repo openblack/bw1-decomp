@@ -2349,21 +2349,23 @@ Black/Reward.cpp:
 	.text       start:0x006F9F40 end:0x006FBAE0
 	.rdata      start:0x0099A300 end:0x0099AC3C
 	.data       start:0x00C7C918 end:0x00C7C9D4
-	.bss        start:0x00DD1AA8 end:0x00E16E9C
+	.bss        start:0x00DD1AA8 end:0x00DD6E84
 
 Black/Rock.cpp:
-	.text       start:0x006FBAE0 end:0x006FCE20
-	.data       start:0x00C7C9D4 end:0x00C7CA10
+	.text       start:0x006FBAE0 end:0x006FC5C0
+	.data       start:0x00C7C9D4 end:0x00C7C9EE
+	.bss        start:0x00DD6E84 end:0x00DD6E90
 
 Black/RoutePlan.cpp:
-	.text       start:0x006FCE20 end:0x006FD1E0
-	.data       start:0x00C7CA10 end:0x00C7CA54
+	.text       start:0x006FC5C0 end:0x006FD1E0
+	.data       start:0x00C7C9F0 end:0x00C7CA34
+	.bss        start:0x00DD6E90 end:0x00E16E9C
 
 Black/Scaffold.cpp:
 	.text       start:0x006FD1E0 end:0x00700000
 	.rdata      start:0x0099AC3C end:0x0099AC9C
 	.CRT$XCU    start:0x00A37018 end:0x00A37028 align:4
-	.data       start:0x00C7CA54 end:0x00C7CA70
+	.data       start:0x00C7CA38 end:0x00C7CA70
 	.bss        start:0x00E16E9C end:0x00E16FE4
 
 Black/Script.cpp:
