@@ -17,15 +17,16 @@ struct SetupStaticText;
 class MiniDialogBoxOptions : public DialogBoxBase
 {
 public:
+	SetupSlider* MasterVolume;
+	SetupSlider* MusicVolume;
 #if defined(VERSION_BW1W130)
-	SetupSlider*     MasterVolume;
-	SetupSlider*     MusicVolume;
-	SetupButton*     AccelerationButton;
-	SetupBigButton*  AccelerationUp;
-	SetupBigButton*  AccelerationDown;
-	SetupButton*     ClickSensorButton;
-	SetupBigButton*  ClickSensorUp;
-	SetupBigButton*  ClickSensorDown;
+	SetupButton*    AccelerationButton;
+	SetupBigButton* AccelerationUp;
+	SetupBigButton* AccelerationDown;
+	SetupButton*    ClickSensorButton;
+	SetupBigButton* ClickSensorUp;
+	SetupBigButton* ClickSensorDown;
+#endif // defined(VERSION_BW1W130)
 	SetupBigButton*  VideoDown;
 	SetupBigButton*  VideoUp;
 	SetupBigButton*  Back;
@@ -33,29 +34,17 @@ public:
 	SetupStaticText* SoundTitle;
 	SetupStaticText* VideoTitle;
 	SetupStaticText* SoundsOffText;
+#if defined(VERSION_BW1W130)
 	SetupStaticText* GloveTitle;
-	SetupCheckBox*   AutoSave;
-	SetupCheckBox*   UseGlove;
-	SetupCheckBox*   PushScroll;
-	uint32_t         field_0x5c;
-	uint32_t         field_0x60;
-	SetupButton*     VideoButton;
-#else
-	SetupSlider*     MasterVolume;
-	SetupSlider*     MusicVolume;
-	SetupBigButton*  VideoDown;
-	SetupBigButton*  VideoUp;
-	SetupBigButton*  Back;
-	SetupBigButton*  QuitButton;
-	SetupStaticText* SoundTitle;
-	SetupStaticText* VideoTitle;
-	SetupStaticText* SoundsOffText;
-	SetupCheckBox*   AutoSave;
-	SetupCheckBox*   PushScroll;
-	uint32_t         field_0x3c;
-	uint32_t         field_0x40;
-	SetupButton*     VideoButton;
-#endif
+#endif // defined(VERSION_BW1W130)
+	SetupCheckBox* AutoSave;
+#if defined(VERSION_BW1W130)
+	SetupCheckBox* UseGlove;
+#endif // defined(VERSION_BW1W130)
+	SetupCheckBox* PushScroll;
+	uint32_t       field_0x5c;
+	uint32_t       field_0x60;
+	SetupButton*   VideoButton;
 
 	// BW1W120 00514f50 BW1M119 012b5bd0
 	virtual void Init(uint32_t background_style, uint32_t tall_background,

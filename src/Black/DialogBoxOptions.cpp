@@ -30,8 +30,6 @@
 #if defined(VERSION_BW1W130)
 #include <Lionhead/LHLib/ver5.0/LHSystem.h> /* For LHSys::TheSystem */
 #include <P5/P5dll.h>                       /* For CP5DLL */
-#include <P5/P5Bend.h>                      /* For P5Bend_SetClickSensitivityLevel */
-#include <P5/P5Motion.h>                    /* For P5Motion_SetAcceleration */
 #endif
 
 #if defined(VERSION_BW1W130)
@@ -49,6 +47,13 @@
 extern bool32_t GloveInstalled;
 // BW1W120 null BW1M119 null
 extern bool32_t HelpTextReloadPending;
+// BW1W120 null BW1M119 null
+extern int nP5ClickSensorLevel;
+
+// BW1W120 null BW1M119 null
+void P5Bend_SetClickSensitivityLevel(unsigned char level);
+// BW1W120 null BW1M119 null
+void P5Motion_SetAcceleration(int level);
 #endif
 
 static int PendingTabControlId = 0;
