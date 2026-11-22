@@ -3770,8 +3770,8 @@
 0x0088FCC9 copy_run 0x0088FC22  # GameSpy nonport
 0x0088FD24 copy_run 0x0088FCC9  # GameSpy nonport
 0x0088FDA4 copy_run 0x0088FD24  # GameSpy nonport
-0x0088FE04 copy_run 0x0088FDA4  # GameSpy <hole>
-0x0088FE84 copy_run 0x0088FE04  # GameSpy <hole>
+0x0088FE04 copy_run 0x0088FDA4  # GameSpy peerRand
+0x0088FE84 copy_run 0x0088FE04  # GameSpy peerRand
 0x0088FF41 copy_run 0x0088FE84  # GameSpy peerCEngine
 0x00890172 jmp_run 0x0088FF41  # GameSpy peerCEngine
 0x00890228 copy_run 0x00890172  # GameSpy peerCEngine

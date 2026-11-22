@@ -4307,8 +4307,12 @@ GameSpy/Peer/peerOperations.c:
 
 GameSpy/nonport.c:
 	.text       start:0x007D3DF0 end:0x007D40F0
-	.data       start:0x00B5C4EC end:0x00B5C568
+	.data       start:0x00B5C4EC end:0x00B5C564
 	.bss        start:0x00ECA67C end:0x00ECA780
+
+GameSpy/Peer/peerRand.c:
+	.text       start:0x007D40F0 end:0x007D4110
+	.data       start:0x00B5C564 end:0x00B5C568
 
 GameSpy/Peer/peerCEngine.c:
 	.text       start:0x007D4110 end:0x007D49F0
