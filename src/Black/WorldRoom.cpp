@@ -59,22 +59,15 @@ static float OneOnLogHalf = 1.0f / static_cast<float>(log(0.5));
 
 bool32_t WorldRoom::ShowInfluence = true;
 
-#define WORLD_ROOM_SIGNS(SIGN)                                                                                         \
-	SIGN("SIGN CREATURE", 0xec, 0xc6, 0x64, HELP_TEXT_ROOM_CREATURE_TITLE)                                             \
-	SIGN("SIGN OPTIONS", 0xe5, 0xd4, 0x41, HELP_TEXT_ROOM_GAMEOPTIONS_TITLE)                                           \
-	SIGN("SIGN EXIT", 0xde, 0xe3, 0xef, HELP_TEXT_ROOM_EXIT_TITLE)                                                     \
-	SIGN("SIGN MULTIPLKAYER", 0x6f, 0x92, 0xeb, HELP_TEXT_ROOM_UNIVERSE_TITLE)                                         \
-	SIGN("SIGN CREDITS", 0xd4, 0x6b, 0xfb, HELP_TEXT_ROOM_CREDITS_TITLE)                                               \
-	SIGN("SIGN SAVEGAME", 0x9c, 0xd1, 0x40, HELP_TEXT_ROOM_SAVEGAME_TITLE)                                             \
-	SIGN("SIGN CHALLENGE", 0xeb, 0x92, 0x6f, HELP_TEXT_ROOM_CHALLENGE_TITLE)
+static char* SignNames[] = {
+	"SIGN CREATURE", "SIGN OPTIONS",  "SIGN EXIT",      "SIGN MULTIPLKAYER",
+	"SIGN CREDITS",  "SIGN SAVEGAME", "SIGN CHALLENGE",
+};
 
-#define WORLD_ROOM_SIGN_NAME(asset_name, red, green, blue, text_id) asset_name,
-static char* SignNames[] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_NAME)};
-#undef WORLD_ROOM_SIGN_NAME
-
-#define WORLD_ROOM_SIGN_COLOUR(asset_name, red, green, blue, text_id) {red, green, blue},
-static unsigned long SignColours[][3] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_COLOUR)};
-#undef WORLD_ROOM_SIGN_COLOUR
+static unsigned long SignColours[][3] = {
+	{0xec, 0xc6, 0x64}, {0xe5, 0xd4, 0x41}, {0xde, 0xe3, 0xef}, {0x6f, 0x92, 0xeb},
+	{0xd4, 0x6b, 0xfb}, {0x9c, 0xd1, 0x40}, {0xeb, 0x92, 0x6f},
+};
 
 bool32_t WorldRoom::DisplayCitadel = true;
 bool32_t WorldRoom::DisplayMagicActivity = true;
@@ -626,11 +619,15 @@ void WorldRoom::Draw()
 	Map->DrawMap();
 	TempleRoom::Draw();
 
-#define WORLD_ROOM_SIGN_TEXT(asset_name, red, green, blue, text_id)                                                    \
-	HelpTextDataBase::HelpTextDatabase.GetHelpText(text_id),
-	static wchar_t* signTexts[] = {WORLD_ROOM_SIGNS(WORLD_ROOM_SIGN_TEXT)};
-#undef WORLD_ROOM_SIGN_TEXT
-#undef WORLD_ROOM_SIGNS
+	static wchar_t* signTexts[] = {
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_CREATURE_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_GAMEOPTIONS_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_EXIT_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_UNIVERSE_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_CREDITS_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_SAVEGAME_TITLE),
+		HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROOM_CHALLENGE_TITLE),
+	};
 	DrawWorldRoomSignLabels(this, signTexts);
 
 	// Walking out of the citadel: the exit door fills with light.
@@ -974,7 +971,8 @@ void WorldRoom::PreDraw()
 
 void WorldRoom::PreToolTipProcess()
 {
-	SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_MOVE, KEYALIGN_ALL_ARROWS);
+	SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_MOVE,
+	                    static_cast<KEYALIGN>(KEYALIGN_VERTICAL_ARROWS | KEYALIGN_ARROW_LEFT | KEYALIGN_ARROW_RIGHT));
 #ifdef VERSION_BW1W130
 	CHand::GloveHelpCue = CHAND_GLOVE_HELP_CUE_DEFAULT;
 #endif
@@ -982,7 +980,9 @@ void WorldRoom::PreToolTipProcess()
 	{
 		if (camera->ClickHitType == INNER_CAMERA_HIT_NEAR && camera->ZoomProgress == 1.0)
 		{
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_TILT_ROTATE, KEYALIGN_ALL_ARROWS);
+			SetWorldRoomToolTip(
+				HELP_TEXT_TOOLTIP_TILT_ROTATE,
+				static_cast<KEYALIGN>(KEYALIGN_VERTICAL_ARROWS | KEYALIGN_ARROW_LEFT | KEYALIGN_ARROW_RIGHT));
 		}
 		else if (camera->ZoomProgress != 1.0)
 		{
