@@ -241,7 +241,7 @@ void __stdcall LobbyBox::ControlCallback(int message, SetupBox* box, SetupContro
 		Instance->ControlsInitialised = false;
 		break;
 	case SETUP_MESSAGE_CHAR:
-		if (x == '\r')
+		if (x == VK_RETURN)
 		{
 			if (control != NULL && control->id == LOBBY_BOX_CONTROL_ID_MESSAGE)
 			{
@@ -250,7 +250,7 @@ void __stdcall LobbyBox::ControlCallback(int message, SetupBox* box, SetupContro
 			}
 			control = Instance->StartGameButton;
 		}
-		else if (x == 0x1b)
+		else if (x == VK_ESCAPE)
 		{
 			control = Instance->BackButton;
 		}
