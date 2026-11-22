@@ -252,20 +252,20 @@ Black/BigForest.cpp:
 	.text       start:0x00431880 end:0x00432150
 	.rdata      start:0x008049C4 end:0x00805330
 	.CRT$XCU    start:0x008F60E4 end:0x008F60EC align:4
-	.data       start:0x008FBE60 end:0x008FBF1C
-	.bss        start:0x00B79F20 end:0x00B7A574
+	.data       start:0x008FBE60 end:0x008FBEC0
+	.bss        start:0x00B79F28 end:0x00B7A3D8
 
 Black/Bonfire.cpp:
 	.text       start:0x00432150 end:0x00432490
 	.rdata      start:0x00805330 end:0x00805C44
-	.data       start:0x008FBF1C end:0x008FBF88
+	.data       start:0x008FBEC0 end:0x008FBF88
 
 Black/Bookmark.cpp:
 	.text       start:0x00432490 end:0x004335F0
 	.rdata      start:0x00805C44 end:0x00805C74
 	.CRT$XCU    start:0x008F60EC end:0x008F60F8 align:4
 	.data       start:0x008FBF88 end:0x008FBFC4
-	.bss        start:0x00B7A574 end:0x00B7A588
+	.bss        start:0x00B7A3D8 end:0x00B7A588
 
 Black/BuildingSite.cpp:
 	.text       start:0x004335F0 end:0x004361F0

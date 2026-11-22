@@ -857,7 +857,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/Base.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/BaseInfo.cpp"),
             GameCodeObject(Matching, "Black/Belief.cpp", pch=False),
-            GameCodeObject(NonMatching, "Black/BigForest.cpp"),
+            GameCodeObject(Matching, "Black/BigForest.cpp"),
             GameCodeObject(NonMatching, "Black/Bonfire.cpp"),
             GameCodeObject(NonMatching, "Black/Bookmark.cpp"),
             GameCodeObject(NonMatching, "Black/BuildingSite.cpp"),

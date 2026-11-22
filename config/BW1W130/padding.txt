@@ -594,6 +594,21 @@
 0x00438A18 jmp_run 0x004389F8  # Belief
 0x00438A34 jmp_run 0x00438A18  # Belief
 0x00438B16 jmp_run 0x00438A34  # Belief
+0x00438C03 copy_run 0x00438B16  # BigForest
+0x00438CA3 copy_run 0x00438C03  # BigForest
+0x00438CD3 jmp_run 0x00438CA3  # BigForest
+0x00438DEA call_indirect 0x008AE8B8  # BigForest: __imp__waveInStart@4
+0x00438E16 jmp_run 0x00438DEA  # BigForest
+0x00438E43 copy_run 0x00438E16  # BigForest
+0x00438EBB call_rel32 0x00403C49  # BigForest
+0x00438F58 jmp_run 0x00438EBB  # BigForest
+0x00439048 copy_run 0x00438F58  # BigForest
+0x004390A3 copy_run 0x00439048  # BigForest
+0x004390C3 copy_run 0x004390A3  # BigForest
+0x00439217 jmp_run 0x004390C3  # BigForest
+0x00439353 jmp_run 0x00439217  # BigForest
+0x00439461 copy_run 0x00439353  # BigForest
+0x00439576 jmp_run 0x00439461  # BigForest
 0x0044B338 jmp_run 0x0044B2CB  # CameraModeDance
 0x0044B3A6 copy_run 0x0044B338  # CameraModeDance
 0x0044B3DA jmp_run 0x0044B3A6  # CameraModeDance
