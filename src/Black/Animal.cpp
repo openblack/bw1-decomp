@@ -1,8 +1,9 @@
+#include "AnimalStateTableInfo.h"
+#include "AnimalInfo.h"
+#include "Animal.h"
 #include "MapCellConstants.h"
 #include "GameTimeConstants.h"
-#include "AnimalInfo.h"
-#include "AnimalStateTableInfo.h"
-#include "Animal.h"
+#include "TimerConstants.h"
 
 #include <limits.h> /* For LONG_MAX */
 #include <stdio.h>  /* For sprintf */
@@ -61,7 +62,8 @@ inline uint16_t Animal::GetTurnAngle() const
 Animal::Animal(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Living(coords, info)
 {
 	SetToZero();
-	SetSpeed(GetDefaultSpeed());
+	Animal* self = this;
+	self->SetSpeed(GetDefaultSpeed());
 	SetState(LIVING_ACTION_INDEX_TOP, ANIMAL_STATE_DECIDE_WHAT_TO_DO);
 	SetAge(age);
 }
@@ -544,12 +546,11 @@ void Animal::SetTowardsAngle(uint16_t angle)
 int Animal::MoveTo3D()
 {
 	int   result;
-	float verticalSpeed;
 	float destAltitude = GetDestPos()->altitude;
 	if (destAltitude < ANIMAL_MIN_FLYING_ALTITUDE)
 	{
 		float altitude = Pos.altitude;
-		verticalSpeed = GetInfo()->VerticalSpeed;
+		float verticalSpeed = GetInfo()->VerticalSpeed;
 		if (altitude > destAltitude + verticalSpeed)
 		{
 			Pos.altitude -= verticalSpeed;
@@ -578,10 +579,11 @@ int Animal::MoveTo3D()
 		LHPoint point;
 		GLandscape::ConvertMapCoordToLandscapePoint(Pos, point);
 		point.y = start.y;
-		verticalSpeed = GetInfo()->VerticalSpeed;
+		float verticalSpeed = GetInfo()->VerticalSpeed;
 		if (point.y > dest.y + verticalSpeed)
 		{
-			point.y -= verticalSpeed;
+			verticalSpeed = -verticalSpeed;
+			point.y += verticalSpeed;
 		}
 		else if (point.y < dest.y - verticalSpeed)
 		{
@@ -589,11 +591,15 @@ int Animal::MoveTo3D()
 		}
 		MapCoords coords;
 		GLandscape::ConvertLHPointToMapCoord(point, coords);
-		if (coords.altitude < ANIMAL_MIN_FLYING_ALTITUDE)
+		if (coords.Altitude() < ANIMAL_MIN_FLYING_ALTITUDE)
 		{
-			coords.altitude = ANIMAL_MIN_FLYING_ALTITUDE;
+			coords.SetAltitude(ANIMAL_MIN_FLYING_ALTITUDE);
 		}
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
+		Pos = coords;
+#else
 		MoveMapObject(coords);
+#endif
 	}
 	return result;
 }
@@ -704,7 +710,7 @@ uint32_t Animal::HuntingMoveToPosAbaondon()
 
 bool32_t Animal::TargetPounce()
 {
-	float   travelled = ((speed * ANIMAL_SPEED_TO_METRES_PER_SECOND) / MAP_COORDS_UNITS_PER_CELL) *
+	float   travelled = ((GetSpeed() * ANIMAL_SPEED_TO_METRES_PER_SECOND) / MAP_COORDS_UNITS_PER_CELL) *
 	                    (GGameInfo::Info.MillisecondsPerGameTurn / ANIMAL_MILLISECONDS_PER_SECOND) *
 	                    action.TurnsSinceStateChange;
 	float   pounceDistance = Game3dObject->GetCurrentAnim()->Distance * GetScale();
@@ -970,17 +976,19 @@ bool32_t Animal::IsOnlyFlockMemberAtPos(const MapCoords& pos, ANIMAL_INFO type)
 	return true;
 }
 
+#ifndef VERSION_BW1W100
 void Animal::DebugText(bool32_t drawing)
 {
 	if (GGlobal::Global.debug.ShowVillagerDebugText && drawing == false)
 	{
 		char text[224];
 		sprintf(text, "number %f flock pos %d hunger:%d speed:%.2f sleep %d/%d sleeppos %d,%d foodpos %d,%d breed %d",
-		        this, GetPositionInFlock(), GetHunger(), speed / SpeedUnitsPerMetrePerSecond, Tiredness,
+		        this, GetPositionInFlock(), GetHunger(), GetSpeed() / SpeedUnitsPerMetrePerSecond, Tiredness,
 		        GetInfo()->TirednessThreshold, SleepPos.x, SleepPos.z, FoodPos.x, FoodPos.z, BreedingUrge);
 		GGlobal::Global.debug.SetMessage(text);
 	}
 }
+#endif
 
 bool32_t Animal::ValidForPlaceInHand(GInterfaceStatus* status)
 {
@@ -1288,8 +1296,8 @@ void Animal::SetNewWander(const MapCoords* centre, long min_dist, long max_dist)
 		{
 			long x = GetXByAngle(angle);
 			long z = GetZByAngle(angle);
-			x = Fraction(x, speed * 9 / 10, speed);
-			z = Fraction(z, speed * 9 / 10, speed);
+			x = Fraction(x, GetSpeed() * 9 / 10, GetSpeed());
+			z = Fraction(z, GetSpeed() * 9 / 10, GetSpeed());
 			JustXZ towards;
 			towards.x = x;
 			towards.z = z;
@@ -1322,8 +1330,8 @@ bool32_t Animal::Accumulate(JustXZ* movement, JustXZ* step)
 	{
 		long  largest = max(abs(step->x), abs(step->z));
 		long  length = min(largest, remaining);
-		float x = (float)step->x * length / speed;
-		float z = (float)step->z * length / speed;
+		float x = (float)step->x * length / GetSpeed();
+		float z = (float)step->z * length / GetSpeed();
 		movement->x += (long)x;
 		movement->z += (long)z;
 		return length == remaining;
@@ -1333,7 +1341,7 @@ bool32_t Animal::Accumulate(JustXZ* movement, JustXZ* step)
 
 long Animal::GetAccumulateRemaining(JustXZ* movement)
 {
-	return speed - max(abs(movement->x), abs(movement->z));
+	return GetSpeed() - max(abs(movement->x), abs(movement->z));
 }
 
 bool32_t Animal::LookForFlocksInSpiral(const MapCoords& coords, const GAnimalInfo* info, long max_dist,
@@ -1580,8 +1588,8 @@ bool32_t Animal::CalculateFlockingMovement(JustXZ* movement)
 			long angle = GUtils::GetAngleFromXZ(Pos.WholeX(), Pos.WholeZ(), total.x, total.z);
 			long x = GetXByAngle(angle);
 			long z = GetZByAngle(angle);
-			x = Fraction(x, speed / 5, speed);
-			z = Fraction(z, speed / 5, speed);
+			x = Fraction(x, GetSpeed() / 5, GetSpeed());
+			z = Fraction(z, GetSpeed() / 5, GetSpeed());
 			offset.x = x;
 			offset.z = z;
 			if (Accumulate(movement, &offset))
@@ -1594,19 +1602,19 @@ bool32_t Animal::CalculateFlockingMovement(JustXZ* movement)
 			uint32_t distanceZ = abs(dz);
 			if (distanceX > GetFlockDistance())
 			{
-				offset.x += (dx >= 0 ? 1 : -1) * (speed / 5 * 8 / 5);
+				offset.x += (dx >= 0 ? 1 : -1) * (GetSpeed() / 5 * 8 / 5);
 			}
 			else if (distanceX < GetFlockDistance())
 			{
-				offset.x -= (dx >= 0 ? 1 : -1) * (speed / 5 * 2);
+				offset.x -= (dx >= 0 ? 1 : -1) * (GetSpeed() / 5 * 2);
 			}
 			if (distanceZ > GetFlockDistance())
 			{
-				offset.z += (dz >= 0 ? 1 : -1) * (speed / 5 * 8 / 5);
+				offset.z += (dz >= 0 ? 1 : -1) * (GetSpeed() / 5 * 8 / 5);
 			}
 			else if (distanceZ < GetFlockDistance())
 			{
-				offset.z -= (dz >= 0 ? 1 : -1) * (speed / 5 * 2);
+				offset.z -= (dz >= 0 ? 1 : -1) * (GetSpeed() / 5 * 2);
 			}
 			if (Accumulate(movement, &offset))
 			{
@@ -1614,8 +1622,8 @@ bool32_t Animal::CalculateFlockingMovement(JustXZ* movement)
 			}
 			x = nearest->step.x;
 			z = nearest->step.z;
-			x = Fraction(x, speed * 3 / 5, speed);
-			z = Fraction(z, speed * 3 / 5, speed);
+			x = Fraction(x, GetSpeed() * 3 / 5, GetSpeed());
+			z = Fraction(z, GetSpeed() * 3 / 5, GetSpeed());
 			offset.x = x;
 			offset.z = z;
 			if (Accumulate(movement, &offset))
@@ -1789,6 +1797,9 @@ bool32_t Animal::Load(GameOSFile& file)
 void Animal::ResolveLoad()
 {
 	Living::ResolveLoad();
+#ifdef VERSION_BW1WCI
+	SetDiseapearFlag();
+#endif
 }
 
 bool32_t Animal::CallSaveStateFunction(GameOSFile& file, STATE_TYPE type)
@@ -1873,15 +1884,45 @@ bool32_t PieceVillager::DecideWhatToDo()
 void Animal::ReactToPhysicsImpact(PhysicsObject* physics_object, bool hit_ground)
 {
 	Object* hitter = physics_object->GetGameObjectWhoHitMe();
-	if (hitter == NULL || hitter->IsAvailable() != true || IsAvailable() != true ||
-	    !hitter->IsResourceStore(GetResourceType()) ||
-	    !hitter->DeleteObjectAndTakeResource(this, physics_object->status))
+	if (hitter != NULL && hitter->IsAvailable() == true && IsAvailable() == true &&
+	    hitter->IsResourceStore(GetResourceType()))
 	{
-		Living::ReactToPhysicsImpact(physics_object, hit_ground);
+		GInterfaceStatus* status = physics_object->status;
+		if (hitter->DeleteObjectAndTakeResource(this, status))
+		{
+			return;
+		}
 	}
+	Living::ReactToPhysicsImpact(physics_object, hit_ground);
 }
 
 int Animal::GetDefaultResource()
 {
 	return (int)GetFoodValue(FOOD_TYPE_RESOURCE);
 }
+
+#ifdef VERSION_BW1WCI
+uint32_t Animal::ScriptAnimation()
+{
+	return GetScriptULData1();
+}
+
+bool32_t Animal::IsStateEntryFunctionSameAs(unsigned long state, unsigned long other_state) const
+{
+	return StateTable[state].EntryState == StateTable[other_state].EntryState;
+}
+
+bool32_t Animal::SaveScriptPos(GameOSFile& file)
+{
+	file.WriteIt(ScriptULData1);
+	file.WriteIt(ScriptULData2);
+	return true;
+}
+
+bool32_t Animal::LoadScriptPos(GameOSFile& file)
+{
+	file.ReadIt(ScriptULData1);
+	file.ReadIt(ScriptULData2);
+	return true;
+}
+#endif

@@ -46,6 +46,8 @@ class CHand : public Morphable
 public:
 	// BW1W120 0046e8c0 BW1M119 011cd410
 	void OnClearMap();
+	// BW1W120 0046e630 BW1M119 011cdd60
+	void ReadRegistrySettings();
 	// BW1W120 0046c050 BW1M119 011d0860
 	void StartFixedPosAnimation(LHPoint& pos, long anim);
 	// BW1W120 0046c0b0 BW1M119 011d0790

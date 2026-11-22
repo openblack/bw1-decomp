@@ -501,9 +501,9 @@ void LobbyBox::SendMessageA()
 		{
 			if (PlayerList->SelectedIndex >= 0)
 			{
-				LHNetBase::Instance.Channel->ChatOnChannel(
-					MessageEdit->label, (wcslen(MessageEdit->label) + 1) * 2,
-					((LHPlayer*)PlayerList->GetItemData(PlayerList->SelectedIndex))->UserId, false);
+				LH_USER_ID to = ((LHPlayer*)PlayerList->GetItemData(PlayerList->SelectedIndex))->UserId;
+				LHNetBase::Instance.Channel->ChatOnChannel(MessageEdit->label, (wcslen(MessageEdit->label) + 1) * 2, to,
+				                                           false);
 			}
 			else
 			{
@@ -581,9 +581,10 @@ void LobbyBox::Disconnect()
 
 void LobbyBox::Connect()
 {
-	if (GameList->SelectedIndex >= 0)
+	int selected = GameList->SelectedIndex;
+	if (selected >= 0)
 	{
-		LHLocalLobbyInfo* lobby = (LHLocalLobbyInfo*)GameList->GetItemData(GameList->SelectedIndex);
+		LHLocalLobbyInfo* lobby = (LHLocalLobbyInfo*)GameList->GetItemData(selected);
 		LHTransportInfo   info(lobby->ConnectionAcceptor.GetIP(), lobby->ConnectionAcceptor.GetPort());
 		if (LHNetBase::Instance.RemoteLobby->OpenRemoteLobby(LHNetBase::Instance.User, &info) == LH_OK)
 		{
@@ -595,10 +596,11 @@ void LobbyBox::Connect()
 		}
 		else
 		{
-			LHSPrintfW message(L"%s\n%s %d", CHAR2WCHAR(LHLogger::GetText()),
-			                   HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ERRORCODEWAS),
-			                   LHLogger::GetCode());
-			setup_box->MessageBoxA(message, MSGBOXSTYLE_SINGLE_BUTTON, 0);
+			setup_box->MessageBoxA(
+				LHSPrintfW(L"%s\n%s %d", CHAR2WCHAR(LHLogger::GetText()),
+			               HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ERRORCODEWAS),
+			               LHLogger::GetCode()),
+				MSGBOXSTYLE_SINGLE_BUTTON, 0);
 		}
 	}
 }
@@ -608,6 +610,7 @@ void LobbyBox::ProcessNetEvents(int internet, int keep_connection, SetupBox* box
 	LHSPrintf       mserve_text;
 	LH_USER_ID      mserve_user;
 	LHTransportInfo mserve_info;
+	LHLobbyChannel* channel;
 	LH_USER_ID      broadcast_user;
 
 	bool lobby_ready = LHNetBase::Instance.Lobby->Open && !LHNetBase::Instance.Lobby->IsDisconnected() &&
@@ -726,10 +729,9 @@ void LobbyBox::ProcessNetEvents(int internet, int keep_connection, SetupBox* box
 		}
 		break;
 	case LH_NETEVENT_TYPE_LOBBY_CHAT_ON_CHANNEL: {
-		LHLobbyChannel* channel;
-		LHPlayer*       player;
-		void*           data;
-		bool32_t        is_private;
+		LHPlayer* player;
+		void*     data;
+		bool32_t  is_private;
 		connection->GetChatOnChannelInfo(event, &channel, &player, &data, &is_private);
 		LHPlayer*                me = channel->GetPlayer(connection->GetNetUser()->GetID());
 		LH_USER_ID               user_id;
@@ -765,6 +767,25 @@ void LobbyBox::ProcessNetEvents(int internet, int keep_connection, SetupBox* box
 			}
 			else if (maps != NULL)
 			{
+				if (host == me)
+				{
+					MapList list;
+					list.Decode(maps);
+					MapList* existing = MapList::GetForPlayer((unsigned long)player);
+					if (existing != NULL)
+					{
+						CopyMapList(existing, &list);
+					}
+					else
+					{
+						existing = NEW(768) MapList;
+						existing->PlayerID = (unsigned long)player;
+						existing->Host = player == host;
+						CopyMapList(existing, &list);
+						MapList::List.AddToEnd(existing);
+					}
+					ResetUsers(connection, channel);
+				}
 			}
 			else
 			{
@@ -795,21 +816,21 @@ void LobbyBox::ProcessNetEvents(int internet, int keep_connection, SetupBox* box
 		void*         game_data;
 		event->VDecode(LH_NETEVENT_TYPE_LOBBY_CONNECT_TO_MSERVE, &channel_name, &mserve_user, &mserve_info,
 		               &mserve_name, &mgj, &game_data_length, &game_data);
-		LHLobbyChannel* channel = connection->FindChannel(event->GetChannelName());
+		channel = connection->FindChannel(event->GetChannelName());
 		switch (mserve_info.type)
 		{
 		case LH_TRANSPORT_TYPE_SYNC:
 			mserve_text.SetString(
 				WCHAR2CHAR(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_INTERNALSYNCRONOUS)));
 			break;
-		case LH_TRANSPORT_TYPE_TCP:
-			mserve_text.SetString(
-				"MServe Info: %s:%d(%s@%s)\n", mserve_info.GetIP(), mserve_info.GetPort(),
-				WCHAR2CHAR(channel->GetPlayer(mserve_user) != NULL
-			                   ? channel->GetPlayer(mserve_user)->Name
-			                   : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_USER)),
-				mserve_name);
+		case LH_TRANSPORT_TYPE_TCP: {
+			char* user = WCHAR2CHAR(channel->GetPlayer(mserve_user) != NULL
+			                            ? channel->GetPlayer(mserve_user)->Name
+			                            : HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_USER));
+			mserve_text.SetString("MServe Info: %s:%d(%s@%s)\n", mserve_info.GetIP(), mserve_info.GetPort(), user,
+			                      mserve_name);
 			break;
+		}
 		}
 		break;
 	}
@@ -817,9 +838,9 @@ void LobbyBox::ProcessNetEvents(int internet, int keep_connection, SetupBox* box
 		Disconnect();
 		break;
 	case LH_NETEVENT_TYPE_LOBBY_VERIFY_CODE_CHECKSUMS: {
-		LHLobbyChannel* channel = connection->FindChannel(event->GetChannelName());
-		char*           channel_name;
-		char*           text;
+		channel = connection->FindChannel(event->GetChannelName());
+		char* channel_name;
+		char* text;
 		event->VDecode(LH_NETEVENT_TYPE_LOBBY_VERIFY_CODE_CHECKSUMS, &channel_name, &text);
 		setup_box->MessageBoxA(
 			LHSPrintfW(L"%s\n%s\n",
@@ -850,7 +871,7 @@ void LobbyBox::ProcessNetEvents(int internet, int keep_connection, SetupBox* box
 		break;
 	}
 	case LH_NETEVENT_TYPE_LOBBY_SESSION_READY: {
-		LHLobbyChannel* channel = connection->FindChannel(event->GetChannelName());
+		channel = connection->FindChannel(event->GetChannelName());
 		LHNetBase::Instance.Channel = connection->FindChannel(event->GetChannelName());
 		LHNetBase::Instance.Session = channel->GetSession();
 		LHNetBase::Instance.CurrentLobby = connection;

@@ -23,8 +23,8 @@ public:
 	uint32_t field_0x18;
 	bool32_t isFinalState;
 	uint32_t field_0x20; /* 0x20 */
-	uint32_t isScriptState;
-	uint32_t isScriptInterruptableState;
+	bool32_t IsScriptState;
+	bool32_t IsScriptInterruptableState;
 	int      ReturnState;
 	uint32_t field_0x30; /* 0x30 */
 	char     name[0x80];

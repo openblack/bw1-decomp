@@ -26,10 +26,7 @@ public:
 	// BW1W120 00cc629c
 	static DialogBoxBase* LastShown;
 	SetupBox*             setup_box; /* 0x4 */
-	uint8_t               field_0x8;
-	uint8_t               field_0x9;
-	uint8_t               field_0xa;
-	uint8_t               field_0xb;
+	bool32_t              InterfaceActive;
 	DialogBoxBase*        next;
 
 	// Override methods

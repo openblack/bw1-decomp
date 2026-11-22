@@ -6,7 +6,8 @@ one sequence, and any header change can shift it (docs/msvc6_pch.md). The number
 binary, and objdiff pairs these local labels by name. The build therefore renames the labels of
 each compiled object after the target split's names right after cl (tools/label-objects.py,
 configure.py's label_objects), and symbols.txt names them after their address, which no header
-change moves: _$E_<address> for a stub, body or atexit thunk, _$S_<address> for a .CRT$XCU slot.
+change moves: _$E_<address> for a stub, body or atexit thunk, _$S_<address> for a .CRT$XCU slot
+or for the guard byte an atexit thunk keeps in .bss.
 
 For each compiled unit this names:
 - every crt_xc_fn_<what>_<unit>_<address> placeholder in its .text, and every .CRT$XCU slot in
@@ -20,8 +21,9 @@ For each compiled unit this names:
   source is still incomplete compiles fewer initializers than the target holds; the entries it
   does compile still pair, the earliest compatible ones first. A label no .CRT$XCU entry reaches
   (a function-local static's atexit thunk) pairs through the function both objects define that
-  refers to it. A numbered label that does not pair keeps its number, by which objdiff may still
-  pair it.
+  refers to it, and the labels a paired label refers to (the atexit thunk a stub registers, the
+  guard byte that thunk sets) pair in order, where both refer to as many. A numbered label that
+  does not pair keeps its number, by which objdiff may still pair it.
 
 A split can still hold more than one original object, each ending in its own guard. Its entries
 are then cut into one part per guard, and only the part holding the functions the compiled object
@@ -503,7 +505,7 @@ def relabel(config, units, apply, verbose=True):
                 else:
                     stale = True
                     continue
-                named[i] = address_label("E", address_of[i])
+                named[i] = address_label("E" if a in target.functions else "S", address_of[i])
             if stale:
                 print(f"{split}: the target object is older than symbols.txt; run ninja first", file=sys.stderr)
             if xcu is not None:
