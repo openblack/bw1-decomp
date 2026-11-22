@@ -4,22 +4,26 @@
 The build (configure.py `label_objects`, on for every compiled unit) renames the labels cl gave
 our object (_$E<n>, _$S<n>) to whatever the target split calls the same initializer, right
 after cl. symbols.txt names them after their address instead of their number: _$E_<address>
-for an initializer stub, body or atexit thunk, _$S_<address> for its .CRT$XCU slot
-(tools/relabel-initializers.py gives them). A header change then cannot renumber them, and
-objdiff pairs the two by name as before. The labels are local symbols, so the link (and every
-hash) does not see the names.
+for an initializer stub, body or atexit thunk, _$S_<address> for its .CRT$XCU slot or for the
+guard byte an atexit thunk keeps in .bss (tools/relabel-initializers.py gives them). A header
+change then cannot renumber them, and objdiff pairs the two by name as before. The labels are
+local symbols, so the link (and every hash) does not see the names.
 
-Pairing is relabel-initializers.py's: .CRT$XCU slots in order, by code shape, and a label no
-slot reaches (a function-local static's atexit thunk) through the function both objects define
-that refers to it. A label that does not pair keeps its number.
+Pairing is relabel-initializers.py's: .CRT$XCU slots in order, by code shape, a label no slot
+reaches (a function-local static's atexit thunk) through the function both objects define that
+refers to it, and the thunks and guards a paired label refers to, in order. A function-local
+static's guard (_?$S<n>@<scope>) pairs with the target's guard of the same function and block.
+A label that does not pair keeps its number.
 
     python tools/label-objects.py <target .o> <compiled .o>     # rename in place
     python tools/label-objects.py <target .o> <compiled .o> -n  # only print the renames
 """
 
 import argparse
+import collections
 import importlib.util
 from pathlib import Path
+import re
 import struct
 import sys
 
@@ -31,10 +35,29 @@ _spec.loader.exec_module(relabel)
 
 SYMBOL_SIZE = 18
 STORAGE_STATIC = 3
+# A function-local static's guard: cl numbers it in the same sequence, and the rest of its name
+# says which function and block it belongs to.
+SCOPED_GUARD = re.compile(r"^_\?\$S\d+(@.+)$")
+
+
+def guard_renames(target, compiled):
+    """{compiled guard: target guard} for the function-local static guards (_?$S<n>@<scope>) of
+    one function and block that each object defines once."""
+    def guards(obj):
+        found = collections.defaultdict(list)
+        for sym in obj.symbols.values():
+            match = SCOPED_GUARD.match(sym.name)
+            if match and sym.section > 0:
+                found[match.group(1)].append(sym.name)
+        return found
+    mine, theirs = guards(compiled), guards(target)
+    return {mine[scope][0]: theirs[scope][0] for scope in mine.keys() & theirs.keys()
+            if len(mine[scope]) == 1 and len(theirs[scope]) == 1}
 
 
 def renames(target_path, compiled_path):
-    """{compiled label: target name} for the initializers the two objects pair."""
+    """{compiled label: target name} for the initializers and the function-local static guards
+    the two objects pair."""
     target, compiled = relabel.Initializers(target_path), relabel.Initializers(compiled_path)
     found, slots = relabel.renames(target, compiled)
     out = {}
@@ -46,6 +69,9 @@ def renames(target_path, compiled_path):
     for offset, label in slots.items():
         name = slot_names.get(offset)
         if name is not None and name != label:
+            out[label] = name
+    for label, name in guard_renames(target, compiled).items():
+        if name != label:
             out[label] = name
     # Never give two symbols one name, nor take a name the object already uses.
     names = {compiled.name(i) for i in compiled.symbols}

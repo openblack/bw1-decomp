@@ -45,7 +45,7 @@
 // original's did, so this pads the guard onto one of them.
 struct FixedCounterPad
 {
-	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8, Pad9;
+	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8;
 };
 
 #if defined(VERSION_BW1W100)

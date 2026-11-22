@@ -1,4 +1,6 @@
+#include <Lionhead/LH3DLib/development/LH3DStorm.h> /* For LH3DStorm::g_sheetcallback */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>  /* For LH3DTech::g_camera */
+#include <Lionhead/LHAudio/ver7.0/LH_AudioBank.h>   /* For LH_BANK_MODE_HEAP */
 #include <Lionhead/LHAudio/ver7.0/LH_AudioSystem.h> /* For class LH_AudioSystem */
 #include <Lionhead/LHAudio/ver7.0/LH_SampleInfo.h>  /* For struct LH_SampleInfo */
 
@@ -11,6 +13,11 @@
 #include "HelpSystem.h"
 #include "Interface.h"
 #include "Script.h"
+#include "SoundTag.h"
+
+#define FIRST_THUNDER_SAMPLE 2
+#define NUM_THUNDER_SAMPLES  11
+#define THUNDER_DELAY        1
 
 static char* SFXBankFileNames[AUDIO_SFX_BANK_TYPE_LAST] = {
 	NULL,                                 //
@@ -38,6 +45,13 @@ void GAudio::InitSFX()
 {
 	memset(AudioBanks, 0, sizeof(AudioBanks));
 	LoadSFXBanks();
+	LH3DStorm::g_sheetcallback = SheetLightningCallback;
+}
+
+void __stdcall GAudio::SheetLightningCallback(LH3DStorm* storm, LHPoint& pos, float radius)
+{
+	unsigned long sample = GetTickCount() % NUM_THUNDER_SAMPLES + FIRST_THUNDER_SAMPLE;
+	SoundTag::Create(pos, sample, false, LH_SAMPLE_PLAY_TYPE_ONCE, 0, false, true, ATMOS_TYPE_RAIN, THUNDER_DELAY);
 }
 
 // BW1W120 00429d20 BW1M119 inlined
@@ -293,7 +307,7 @@ void GAudio::LoadSFXBank(AUDIO_SFX_BANK_TYPE type)
 {
 	if (SFXBankFileNames[type] != NULL && AudioBanks[type] == NULL)
 	{
-		AudioBanks[type] = AudioSystem->LHBankRegister(SFXBankFileNames[type], 0);
+		AudioBanks[type] = AudioSystem->LHBankRegister(SFXBankFileNames[type], LH_BANK_MODE_HEAP);
 	}
 }
 
