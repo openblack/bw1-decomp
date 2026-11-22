@@ -926,6 +926,10 @@ LHMultiplayer/GameSpy/nonport.c:
 	.data       start:0x100678EC end:0x10067964
 	.bss        start:0x1006AB50 end:0x1006AC58
 
+LHMultiplayer/GameSpy/Peer/peerRand.c:
+	.text       start:0x1003F230 end:0x1003F310
+	.data       start:0x10067964 end:0x10067968
+
 LHMultiplayer/GameSpy/Chat/chatMain.c:
 	.text       start:0x1003F310 end:0x10040650
 	.data       start:0x10067968 end:0x10067BA0

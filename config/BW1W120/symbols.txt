@@ -47732,6 +47732,7 @@ _randomnum = .data:0x00C3A634; // type:object size:0x4 scope:local
 ??_C@_05MNJN@Crypt?$AA@ = .data:0x00C3A638; // type:object size:0x6 scope:global data:string comdat
 ??_C@_0CJ@NBIL@Software?2GameSpy?2GameSpy?53D?2Regi@ = .data:0x00C3A640; // type:object size:0x29 scope:global align:4 data:string comdat
 ??_C@_0DP@NDA@0123456789abcdefghijklmnopqrstuv@ = .data:0x00C3A66C; // type:object size:0x3F scope:global align:4 data:string comdat
+_randomnum_00c3a6ac = .data:0x00C3A6AC; // type:object size:0x4 scope:local
 ??_C@_0BA@GJID@groupid?5is?5null?$AA@ = .data:0x00C3A6B0; // type:object size:0x10 align:4 data:string comdat
 ??_C@_0L@NBO@groupid?$DN?$CFd?$AA@ = .data:0x00C3A6C0; // type:object size:0xB data:string comdat
 ??_C@_08JHFF@?2delete?2?$AA@ = .data:0x00C3A6CC; // type:object size:0x9 align:4 data:string comdat
