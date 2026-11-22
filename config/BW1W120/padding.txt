@@ -364,6 +364,10 @@
 0x005E8C5B call_rel32 0x004017F9  # LHInetWeather
 0x005E93EB call_rel32 0x004017F9  # LHInetWeather
 0x005E96CA call_indirect 0x008A901C  # LHInetWeather: __imp__TrackMouseEvent@4
+0x005F51CB call_rel32 0x004017F9  # Lobbybox
+0x005F5B4A call_indirect 0x008A9328  # Lobbybox: __imp_?LHEditBox@@YAHPBDKKKK0HPAD@Z
+0x005F5D9B call_rel32 0x004017F9  # Lobbybox
+0x005F7F6A call_indirect 0x008A901C  # Lobbybox: __imp__TrackMouseEvent@4
 0x005F895A call_indirect 0x008A97AC  # logo: __imp__ShellExecuteA@24
 0x005FA06B call_rel32 0x004017F9  # logo
 0x005FA35A call_indirect 0x008A999C  # logo: __imp__Disconnect_Dialup...

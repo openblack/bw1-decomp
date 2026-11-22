@@ -1492,16 +1492,17 @@ Black/LoaderAnon.cpp:
 
 Black/LoadingScreen.cpp:
 	.text       start:0x005B2150 end:0x005B34D0
+	.rdata      start:0x00869444 end:0x00869448
 	.CRT$XCU    start:0x008F69C0 end:0x008F69C8 align:4
 	.data       start:0x00B20848 end:0x00B20868
 	.bss        start:0x00C529CC end:0x00C529DC
 
 Black/Lobbybox.cpp:
 	.text       start:0x005B34D0 end:0x005B69D0
-	.rdata      start:0x00869444 end:0x00869478
+	.rdata      start:0x00869448 end:0x00869478
 	.CRT$XCU    start:0x008F69C8 end:0x008F69D0 align:4
 	.data       start:0x00B20868 end:0x00B208F8
-	.bss        start:0x00C529FC end:0x00C52A00
+	.bss        start:0x00C529F4 end:0x00C52A00
 
 Black/LocalBase.cpp:
 	.text       start:0x005B69D0 end:0x005B6A20
