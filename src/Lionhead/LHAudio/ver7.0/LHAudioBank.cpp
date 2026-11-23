@@ -24,7 +24,7 @@ LH_AudioBank::LH_AudioBank()
 
 LH_AudioBank::~LH_AudioBank()
 {
-	if (UsingHeap && File->opened)
+	if (UsingHeap && File->Opened)
 	{
 		File->Close();
 	}

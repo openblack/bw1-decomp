@@ -4,11 +4,13 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include "LHSegment.h" /* For LH_SEGMENT_NAME_LENGTH */
+
 struct LHSegmentDesc
 {
-	char     name[0x21]; /* 0x0 */
-	uint32_t offset;     /* 0x24 */
-	uint32_t size;       /* 0x28 */
+	char     name[LH_SEGMENT_NAME_LENGTH + 1]; /* 0x0 */
+	uint32_t offset;                           /* 0x24 */
+	uint32_t size;                             /* 0x28 */
 
 	// Constructors
 

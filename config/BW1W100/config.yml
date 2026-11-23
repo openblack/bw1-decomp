@@ -2499,6 +2499,10 @@ add_relocations:
     type: x86_abs32
     target: '_jinit_color_converter'
     addend: 0x19d
+# LHFile's unwind funclet jumps to its segment list's empty destructor, folded into Object::EndOnFire.
+  - source: 0x007E98F7
+    type: x86_rel32
+    target: '??1?$LHLinkedList@PAULHSegmentDesc@@@@QAE@XZ'
 # adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x00B5261E
     type: x86_abs32

@@ -604,7 +604,7 @@ LH3DCreature::~LH3DCreature()
 		delete Boite;
 	}
 	delete Damage;
-	if (file.opened)
+	if (file.Opened)
 	{
 		file.CloseSegment();
 		file.Close();

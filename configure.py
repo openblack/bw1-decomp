@@ -1336,7 +1336,7 @@ config.libs = [
 
             Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp", progress_category="sdk", extra_cflags=cflags_lhdll),
 
-            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHFile.cpp", progress_category="sdk"),
+            Object(Matching, "Lionhead/LHFile/ver3.0/LHFile.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             Object(NonMatching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", progress_category="sdk", extra_cflags=["/GX"]),
 
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "zlib/compress.c", progress_category="sdk"),
