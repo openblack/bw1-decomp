@@ -90,9 +90,9 @@ void CreditTextItem::Draw()
 	if (Alpha > 0.001f)
 	{
 		int alpha = (int)(Alpha * 255.0f);
-		Color.a = alpha > 0 ? min(alpha, 255) : 0;
+		Color.a = alpha > 0 ? min(alpha, LH3D_COLOR_CHANNEL_MAX) : 0;
 		GatheringText* font = GatheringText::GetGameFont(GAME_FONT_DEFAULT);
-		LH3DColor      shadow(Color.GetColor() & 0x00ffffff);
+		LH3DColor      shadow(Color.GetColor() & LH3D_COLOR_RGB_MASK);
 		font->DrawTextA(Text, X + CREDIT_TEXT_SHADOW_OFFSET, Y + CREDIT_TEXT_SHADOW_OFFSET,
 		                Y + CREDIT_TEXT_SHADOW_OFFSET, X + Width + CREDIT_TEXT_SHADOW_OFFSET,
 		                Y + Height + CREDIT_TEXT_SHADOW_OFFSET, Y + Height + CREDIT_TEXT_SHADOW_OFFSET,
@@ -166,18 +166,17 @@ void CreditTextItem::DrawClip()
 	{
 		int oldAlpha = SetupThing::DrawAlpha;
 		int alpha = (int)(ClipAlpha * 255.0f);
-		SetupThing::DrawAlpha = alpha > 0 ? min(alpha, 255) : 0;
+		SetupThing::DrawAlpha = alpha > 0 ? min(alpha, LH3D_COLOR_CHANNEL_MAX) : 0;
 		int width = LHSys::TheSystem.screen.Width();
 		int height = LHSys::TheSystem.screen.Height();
-		SetupThing::DrawBox(-1, -1, width, (int)ClipY, CREDIT_TEXT_CLIP_COLOUR, CREDIT_TEXT_CLIP_COLOUR,
-		                    CREDIT_TEXT_CLIP_COLOUR, CREDIT_TEXT_CLIP_COLOUR, 0, 0);
-		SetupThing::DrawBox(-1, (int)(ClipY + ClipHeight), width, height, CREDIT_TEXT_CLIP_COLOUR,
-		                    CREDIT_TEXT_CLIP_COLOUR, CREDIT_TEXT_CLIP_COLOUR, CREDIT_TEXT_CLIP_COLOUR, 0, 0);
-		SetupThing::DrawBox(-1, (int)ClipY, (int)ClipX, (int)(ClipY + ClipHeight), CREDIT_TEXT_CLIP_COLOUR,
-		                    CREDIT_TEXT_CLIP_COLOUR, CREDIT_TEXT_CLIP_COLOUR, CREDIT_TEXT_CLIP_COLOUR, 0, 0);
-		SetupThing::DrawBox((int)(ClipX + ClipWidth), (int)ClipY, width, (int)(ClipY + ClipHeight),
-		                    CREDIT_TEXT_CLIP_COLOUR, CREDIT_TEXT_CLIP_COLOUR, CREDIT_TEXT_CLIP_COLOUR,
-		                    CREDIT_TEXT_CLIP_COLOUR, 0, 0);
+		SetupThing::DrawBox(-1, -1, width, (int)ClipY, LH3D_COLOR_BLACK, LH3D_COLOR_BLACK, LH3D_COLOR_BLACK,
+		                    LH3D_COLOR_BLACK, 0, 0);
+		SetupThing::DrawBox(-1, (int)(ClipY + ClipHeight), width, height, LH3D_COLOR_BLACK, LH3D_COLOR_BLACK,
+		                    LH3D_COLOR_BLACK, LH3D_COLOR_BLACK, 0, 0);
+		SetupThing::DrawBox(-1, (int)ClipY, (int)ClipX, (int)(ClipY + ClipHeight), LH3D_COLOR_BLACK, LH3D_COLOR_BLACK,
+		                    LH3D_COLOR_BLACK, LH3D_COLOR_BLACK, 0, 0);
+		SetupThing::DrawBox((int)(ClipX + ClipWidth), (int)ClipY, width, (int)(ClipY + ClipHeight), LH3D_COLOR_BLACK,
+		                    LH3D_COLOR_BLACK, LH3D_COLOR_BLACK, LH3D_COLOR_BLACK, 0, 0);
 		SetupThing::DrawAlpha = oldAlpha;
 	}
 }

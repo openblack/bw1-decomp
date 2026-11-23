@@ -829,7 +829,7 @@ Black/CreditText.cpp:
 	.text       start:0x0051DD00 end:0x0051E400
 	.rdata      start:0x009002C4 end:0x009002CC
 	.CRT$XCU    start:0x00A364D8 end:0x00A364E4 align:4
-	.bss        start:0x00D25C20 end:0x00D25C50
+	.bss        start:0x00D25C20 end:0x00D25C4C
 
 Black/Creed.cpp:
 	.text       start:0x0051E400 end:0x0051E600

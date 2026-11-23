@@ -940,6 +940,14 @@
 0x0050CE53 jmp_run 0x0050CDDB  # Creche
 0x0050CF13 jmp_run 0x0050CE53  # Creche
 0x0050CF32 jmp_run 0x0050CF13  # Creche
+0x0050CF8B call_rel32 0x00403C49  # CreditText
+0x0050CFB3 jmp_run 0x0050CF8B  # CreditText
+0x0050CFD1 jmp_run 0x0050CFB3  # CreditText
+0x0050D025 copy_run 0x0050CFD1  # CreditText
+0x0050D324 copy_run 0x0050D025  # CreditText
+0x0050D3C9 copy_run 0x0050D324  # CreditText
+0x0050D632 jmp_run 0x0050D3C9  # CreditText
+0x0050D663 copy_run 0x0050D632  # CreditText
 0x00515961 copy_run 0x005151AA  # DialogBoxMain
 0x00515AF4 jmp_run 0x00515961  # DialogBoxMain
 0x00515BE8 copy_run 0x00515AF4  # DialogBoxMain

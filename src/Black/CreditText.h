@@ -9,7 +9,6 @@
 
 #define CREDIT_TEXT_ITEM_MAX_LENGTH 0x400
 #define CREDIT_TEXT_SHADOW_OFFSET   1.0f
-#define CREDIT_TEXT_CLIP_COLOUR     0xff000000
 
 class CreditTextItem
 {

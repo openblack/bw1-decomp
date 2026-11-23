@@ -78,6 +78,8 @@ block_relocations:
   - source: 0x004EF55E
   - source: 0x004EF566
   - source: 0x004EF5A5
+# CreditTextItem::Draw's 0xffffff colour mask is an immediate, not an address in 1.30's larger image.
+  - source: 0x0050D236
 # DrawStatBar's 0xff0000 is an immediate, not an address in 1.30's larger image.
   - source: 0x00519CC4
 # Scaffold::DrawInHand's 0xffffff is an immediate, not an address in 1.30's larger image.
