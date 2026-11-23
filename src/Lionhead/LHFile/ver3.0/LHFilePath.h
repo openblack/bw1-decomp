@@ -7,7 +7,8 @@
 // BW1W120 00c2b9e8
 extern char g_GameDriveCharacter;
 
-#define GAME_DRIVE_PATH_FORMAT "%c:\\%s"
+#define GAME_DRIVE_PATH_FORMAT       "%c:\\%s"
+#define PARENT_DIRECTORY_PATH_FORMAT "..\\%s"
 
 // Builds a game drive rooted copy of a path ("<drive>:\<path>") into an inline
 // buffer. Always inlined; no out-of-line symbol exists in any Windows build.

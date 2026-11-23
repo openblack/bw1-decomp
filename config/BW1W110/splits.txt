@@ -4134,12 +4134,15 @@ Lionhead/LHLib/ver5.0/LHDrawSprite.cpp:
 Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
 	.text       start:0x007DE350 end:0x007DE4F0
 
+Lionhead/LHLib/ver5.0/LHFlic.cpp:
+	.text       start:0x007DE4F0 end:0x007DF6F0
+	.data       start:0x00C23C40 end:0x00C23C6D
+
 Lionhead/LHLib/ver5.0/LHConvert.cpp:
-	.text       start:0x007DE4F0 end:0x007E0CC0
-	.data       start:0x00C23C40 end:0x00C258A0
+	.text       start:0x007DF6F0 end:0x007E02E0
 
 Lionhead/LHLib/ver5.0/LHSprite.cpp:
-	.text       start:0x007E0CC0 end:0x007E3990
+	.text       start:0x007E02E0 end:0x007E3990
 
 Lionhead/LHLib/ver5.0/TbIME.cpp:
 	.text       start:0x007E3990 end:0x007E4380
@@ -4147,13 +4150,16 @@ Lionhead/LHLib/ver5.0/TbIME.cpp:
 	.xdata$x    start:0x009AE488 end:0x009AE4D8 align:4
 	.CRT$XCU    start:0x009B74C4 end:0x009B74C8 align:4
 
+Lionhead/LHLib/ver5.0/LHSelfMod.cpp:
+	.data       start:0x00C23C70 end:0x00C2589C align:4
+
 Lionhead/LHLib/ver5.0/TbIMEImpl.cpp:
 	.text       start:0x007E4380 end:0x007E6CF0
 	.text$x     start:0x00897A80 end:0x00897BA0 align:4
 	.rdata      start:0x009921BC end:0x009921DC
 	.xdata$x    start:0x009AE4D8 end:0x009AE640 align:4
 	.CRT$XCU    start:0x009B74C8 end:0x009B74D4 align:4
-	.data       start:0x00C258A0 end:0x00C25FF8
+	.data       start:0x00C258A0 end:0x00C25FF8 align:8
 	.bss        start:0x00E808AC end:0x00E80AB0
 
 Lionhead/LH3DLib/development/LH3DFragMesh.cpp:

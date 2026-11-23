@@ -7,7 +7,8 @@
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For offsetof */
 
-#include <Lionhead/LHLib/ver5.0/LHSystem.h> /* For struct LHSystem */
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>       /* For struct LHSystem */
+#include <Lionhead/LHLib/ver5.0/LHSystemInline.h> /* For LHKeyboard::LHKeyboard */
 
 #include <Lionhead/LH3DLib/development/LHCoord.h>  /* For struct LHCoord */
 #include <Lionhead/LH3DLib/development/LHRegion.h> /* For struct LHRegion */
@@ -61,23 +62,7 @@ char LHKeyToAsciiTable[LH_KEY_TO_ASCII_TABLE_SIZE] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-// Construct TheSystem's embedded screen, mouse, input, and text state.
-// BW1W120 007db800
-LHSys::LHSys()
-{
-	InitializeCriticalSection(&LHKeyboard::CriticalSection);
-	// TODO: target emits the LHText/LHSpriteList stores at 0x7048/0x704c/0x7044 after
-	// the convert-tail helper; this TU's inferred LHText base constructor emits them early.
-	// Do not suppress the evidenced LHText type without identifying the original ordering.
-#ifndef VERSION_BW1W100
-	for (int i = 0; i < 2; ++i)
-	{
-		joypads.joypads[i].field_0x4 = 0;
-		joypads.joypads[i].field_0x5 = 0;
-	}
-	joypads.count = 0;
-#endif
-}
+LHSys::LHSys() {}
 
 // The one LHSys instance; its static-init thunk is this TU's .CRT$XCU
 // entry (0x9C7CF4), and the registered atexit dtor tail-jumps into LHScreen::~LHScreen.

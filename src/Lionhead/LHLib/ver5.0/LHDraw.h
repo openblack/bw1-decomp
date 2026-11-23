@@ -60,6 +60,8 @@ public:
 
 	// BW1W120 00449650 BW1M119 0114d640 (LHCombined Release)
 	void Set(LHColor color);
+	// BW1W120 inlined BW1M119 01133f90 (LHCombined Release)
+	void Set(LHColor* color);
 	// BW1W120 00521a90
 	void Set(uint8_t red, uint8_t green, uint8_t blue);
 	// BW1W120 inlined BW1M119 01132d20 (LHCombined Release)
