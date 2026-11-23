@@ -11,7 +11,7 @@
 #include <chlasm/HelpTextEnums.h>                          /* For HELP_TEXT_* */
 #include <GameSpy/CEngine/goaceng.h>                       /* For ServerGetIntValue, ServerGetStringValue */
 #include <GameSpy/Chat/chat.h>                             /* For chatGetNick */
-#include <GameSpy/darray.h>                                /* For ArrayNew */
+#include <GameSpy/src/GameSpy/darray.h>                    /* For ArrayNew */
 #include <Lionhead/LH3DLib/development/LH3DText.h>         /* For CHAR2WCHAR */
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>               /* For LHTimer */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>                   /* For NEW */
