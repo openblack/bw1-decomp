@@ -5149,6 +5149,7 @@ _$E_004E2A70 = .text:0x004E2A70; // type:function size:0xB scope:local
 ?CheckIfIHaveSeenTheMostImportantObjects@CreatureMental@@QAEXXZ = .text:0x004E2EA0; // type:function size:0x40 scope:global
 ?CheckIfIHaveSeenAnImportantObject@CreatureMental@@QAEXPAVCreatureBelief@@HH@Z = .text:0x004E2EE0; // type:function size:0x80 scope:global
 ?EmpathiseWithPlayer@CreatureMental@@QAEXW4CREATURE_DESIRE_SOURCE@@@Z = .text:0x004E2F60; // type:function size:0x60
+?UnreferencedEmptyFunction@CreatureMental@@QAEHXZ = .text:0x004E2FC0; // type:function size:0x3 scope:global
 ?Remove@?$LHLinkedList@PAVCreatureAttitudeToCreature@@@@QAEXPAVCreatureAttitudeToCreature@@_N@Z = .text:0x004E2FD0; // type:function size:0x50 scope:global
 _$E_004E3020 = .text:0x004E3020; // type:function size:0x10 scope:local
 _$E_004E3030 = .text:0x004E3030; // type:function size:0x20 scope:local
