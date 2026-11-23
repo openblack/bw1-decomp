@@ -10,11 +10,13 @@
 
 #include "Abode.h"
 #include "AbodeInfo.h"
+#include "Animal.h"
 #include "Creature.h"
 #include "CreatureActionInfo.h"
 #include "CreatureInfo.h"
 #include "CreatureInitialDesireInfo.h"
 #include "CreaturePhysical.h"
+#include "Debug.h" /* For GDebug::ObjectTypeNames */
 #include "DesireFunctions.h"
 #include "Forest.h"
 #include "MobileObject.h"
@@ -293,6 +295,11 @@ void AttributeCreatureWhatHeIsCarrying::UpdateValue(GameThingWithPos* thing, GPl
 		Value = ValueRange() - 1;
 }
 
+const char* AttributeCreatureWhatHeIsCarrying::ValueName(unsigned long value)
+{
+	return GDebug::ObjectTypeNames[value];
+}
+
 void AttributeForestSize::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 {
 	Forest*  forest = dynamic_cast<Forest*>(thing);
@@ -314,6 +321,11 @@ void AttributeVillagerJob::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 	Value = GVillagerStateTableInfo::GetInfo()[state].TownDesireType;
 	if (Value > ValueRange() - 1)
 		Value = ValueRange() - 1;
+}
+
+const char* AttributeVillagerJob::ValueName(unsigned long value)
+{
+	return GVillagerInfo::JobTextArray[value];
 }
 
 void AttributeSex::UpdateValue(GameThingWithPos* thing, GPlayer* player)
@@ -385,6 +397,18 @@ const char* AttributePlayerNumber::ValueName(unsigned long value)
 
 void AttributeIsHarderThanMe::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 {
+#ifdef VERSION_BW1WCI
+	if (thing->IsAnimal())
+	{
+		Animal* animal = dynamic_cast<Animal*>(thing);
+		if (animal != NULL)
+		{
+			Value = animal->GetInfo()->AnimalType;
+			return;
+		}
+	}
+	Value = ANIMAL_INFO_LAST - 1;
+#else
 	Creature* creature = thing->CastCreature();
 	if (creature != NULL && player != NULL && player->GetCreature() != NULL)
 		Value = creature->GetHeight() > player->GetCreature()->GetHeight();
@@ -392,6 +416,7 @@ void AttributeIsHarderThanMe::UpdateValue(GameThingWithPos* thing, GPlayer* play
 		Value = ATTRIBUTE_BOOL_FALSE;
 	if (Value > ValueRange() - 1)
 		Value = ValueRange() - 1;
+#endif
 }
 
 const char* AttributeIsHarderThanMe::ValueName(unsigned long value)

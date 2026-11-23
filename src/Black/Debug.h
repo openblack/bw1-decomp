@@ -55,6 +55,11 @@ struct GDebug
 	// TODO: Original member name is unrecovered. Mac constructor establishes the list type.
 	LHLinkedList<CellBox*> CellBoxes; /* 0x2d2a0 */
 
+	// Static members
+
+	// BW1W120 008d729c BW1M119 015f9230
+	static const char ObjectTypeNames[][64];
+
 	// Constructors
 
 	// BW1W120 00511ba0 BW1M119 011c16e0
