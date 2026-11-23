@@ -1,16 +1,17 @@
+#include <winsock2.h> /* For inet_ntoa; first, as the GameSpy SDK headers in SLobbyBox.h include <winsock.h> */
+
 #include "ColourConstants.h"   /* For White */
 #include "GameTimeConstants.h" /* For NumDaysInYear, SecondsInDay, SecondsPerYear */
 #include "SLobbyBox.h"
 
-#include <stdio.h>    /* For sprintf, swprintf */
-#include <stdlib.h>   /* For atoi, calloc, free, malloc */
-#include <string.h>   /* For memcpy, memset, strchr, strcpy, strlen, strncmp, strncpy */
-#include <wchar.h>    /* For wcscpy, wcslen */
-#include <winsock2.h> /* For inet_ntoa */
+#include <stdio.h>  /* For sprintf, swprintf */
+#include <stdlib.h> /* For atoi, calloc, free, malloc */
+#include <string.h> /* For memcpy, memset, strchr, strcpy, strlen, strncmp, strncpy */
+#include <wchar.h>  /* For wcscpy, wcslen */
 
 #include <chlasm/HelpTextEnums.h>                          /* For HELP_TEXT_* */
-#include <GameSpy/CEngine/goaceng.h>                       /* For ServerGetIntValue, ServerGetStringValue */
-#include <GameSpy/Chat/chat.h>                             /* For chatGetNick */
+#include <GameSpy/src/GameSpy/CEngine/goaceng.h>           /* For ServerGetIntValue, ServerGetStringValue */
+#include <GameSpy/src/GameSpy/Chat/chat.h>                 /* For chatGetNick */
 #include <GameSpy/src/GameSpy/darray.h>                    /* For ArrayNew */
 #include <Lionhead/LH3DLib/development/LH3DText.h>         /* For CHAR2WCHAR */
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>               /* For LHTimer */

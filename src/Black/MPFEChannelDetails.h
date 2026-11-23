@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint8_t */
 #include <wchar.h>  /* For wchar_t */
 
-#include <GameSpy/CEngine/goaceng.h> /* For GServer */
+#include <GameSpy/src/GameSpy/CEngine/goaceng.h> /* For GServer */
 
 class LHLocalLobbyInfo;
 

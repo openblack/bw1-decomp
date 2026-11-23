@@ -6,13 +6,13 @@
 
 #include <uchar.h> /* For char16_t */
 
-#include <GameSpy/Peer/peer.h>                  /* For RoomType, GServer */
+#include <GameSpy/src/GameSpy/darray.h>         /* For DArray */
+#include <GameSpy/src/GameSpy/Peer/peer.h>      /* For RoomType, GServer */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For LHLinkedList */
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
 class LHSession;
-typedef struct DArrayImplementation* DArray;
 struct SetupBigButton;
 struct SetupButton;
 struct SetupCheckBox;

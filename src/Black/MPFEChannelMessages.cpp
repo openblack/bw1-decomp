@@ -9,7 +9,7 @@
 #endif
 #include <wchar.h> /* For wcscmp, wcscpy, wcslen */
 
-#include <GameSpy/Peer/peer.h>                          /* For peerStateChanged, peerThink */
+#include <GameSpy/src/GameSpy/Peer/peer.h>              /* For peerStateChanged, peerThink */
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>            /* For LHOSFile */
 #include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h> /* For LHLinkedListIterator */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>                /* For operator new(size_t, const char*, uint32_t) */

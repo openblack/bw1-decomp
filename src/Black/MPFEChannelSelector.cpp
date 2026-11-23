@@ -11,7 +11,7 @@
 #include <wchar.h>   /* For wcscmp, wcscpy, wcslen, wcsncmp, wcsstr, towlower, _wcsnicmp */
 #include <windows.h> /* For timeGetTime */
 
-#include <GameSpy/Peer/peer.h>                      /* For peerStartListingGames, peerStopListingGames */
+#include <GameSpy/src/GameSpy/Peer/peer.h>          /* For peerStartListingGames, peerStopListingGames */
 #include <Lionhead/LH3DLib/development/LH3DAtmos.h> /* For LH3DAtmos::mat0 */
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>        /* For LHOSFile */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>            /* For operator new(size_t, const char*, uint32_t) */
