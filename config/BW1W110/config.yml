@@ -329,6 +329,28 @@ add_relocations:
     type: x86_abs32
     target: '?Info@GBallInfo@@2V1@A'
     addend: 0x140
+# Bookmark::SetBookMark and SetCameraToBookMark address Bookmarks[index].Pos and CameraOffset (dtk leaves the lea
+# displacements unrelocated).
+  - source: 0x0043963F
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x8
+  - source: 0x0043968F
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x18
+  - source: 0x00439741
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x8
+  - source: 0x00439794
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x18
+  - source: 0x004398DB
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x8
 # BWGameSpy::Connect keeps a pointer one past the colon of ChatServer, inside the buffer.
   - source: 0x0043DAD6
     type: x86_abs32

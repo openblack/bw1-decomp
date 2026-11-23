@@ -23,6 +23,7 @@ enum BOOKMARK_INDEX
 	BOOKMARK_INDEX_USER_FIRST = 0,
 	BOOKMARK_INDEX_TOWN = 8,
 	BOOKMARK_INDEX_USER_LAST = BOOKMARK_INDEX_TOWN,
+	BOOKMARK_INDEX_CREATURE = 9,
 	BOOKMARK_INDEX_BEFORE_JUMP = 10,
 	BOOKMARK_INDEX_LAST = 11,
 };
@@ -32,29 +33,23 @@ enum BOOKMARK_FLAG
 	BOOKMARK_FLAG_SET = 1,
 };
 
-#define BOOKMARK_PULSE_PERIOD       2000
-#define BOOKMARK_PULSE_PHASE_OFFSET 200
-#define BOOKMARK_PULSE_RATE         0.0005f
-#define BOOKMARK_PULSE_MINIMUM      0.2
-#define BOOKMARK_HEIGHT_OFFSET      2.0f
-#define BOOKMARK_FLY_TIME           0.3f
-#define BOOKMARK_TOWN_OFFSET_X      24.45f
-#define BOOKMARK_TOWN_OFFSET_Y      28.3786f
-#define BOOKMARK_TOWN_OFFSET_Z      47.4f
+#define BOOKMARK_PULSE_PERIOD          2000
+#define BOOKMARK_PULSE_PHASE_OFFSET    200
+#define BOOKMARK_PULSE_MINIMUM         0.2f
+#define BOOKMARK_SPRITE_COLOUR         0xffffff00
+#define BOOKMARK_SPRITE_FRAME_FIRST    24
+#define BOOKMARK_SPRITE_FRAME_CREATURE 56
+#define BOOKMARK_CREATURE_SCALE        0.7f
+#define BOOKMARK_HEIGHT_OFFSET         2.0f
+#define BOOKMARK_FLY_TIME              0.3f
+#define BOOKMARK_TOWN_OFFSET_X         24.45f
+#define BOOKMARK_TOWN_OFFSET_Y         28.3786f
+#define BOOKMARK_TOWN_OFFSET_Z         47.4f
 
 struct BookmarkGraphic
 {
 	LH3DSprite*   sprite; /* 0x0 */
 	CREATURE_TYPE type;
-
-	// Static data
-
-	// BW1W120 00c58cc8
-	static int PulseTime;
-	// BW1W120 00c58b24
-	static float PulseWidth;
-	// BW1W120 00c58b20
-	static float PulseHeight;
 
 	// Static methods
 
@@ -105,6 +100,10 @@ public:
 
 	// BW1W120 00439cb0 BW1M119 010ba040
 	Bookmark();
+#ifndef VERSION_BW1W100
+	// BW1W120 00439cc0 BW1M119 null
+	Bookmark(const MapCoords& pos, Object* target);
+#endif
 
 	// Static methods
 
@@ -132,6 +131,14 @@ public:
 	static void SetFocusPreviousBookmark();
 	// BW1W120 0043aa60 BW1M119 010b7b00
 	static void SetFocusToOwnedTown();
+#ifndef VERSION_BW1W100
+	// BW1W120 0043ac90 BW1M119 null
+	static void FollowCreature();
+	// BW1W120 0043ad30 BW1M119 null
+	static void Hide();
+	// BW1W120 0043ad50 BW1M119 null
+	static void Show();
+#endif
 	// BW1W120 0043a3f0 BW1M119 010b8990
 	static uint32_t SaveAll(GameOSFile& file);
 	// BW1W120 0043a5e0 BW1M119 010b8600
@@ -144,6 +151,10 @@ public:
 
 	// Non-virtual methods
 
+#ifndef VERSION_BW1W100
+	// BW1W120 00439cf0 BW1M119 null
+	void Reset();
+#endif
 	// BW1W120 00439d30 BW1M119 010ba180
 	void GetBookMarkSet();
 	// BW1W120 00439d80 BW1M119 inlined
