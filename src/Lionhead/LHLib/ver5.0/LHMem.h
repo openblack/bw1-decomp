@@ -5,16 +5,19 @@
 #include <stdint.h> /* For uint8_t */
 
 #include "LHReturn.h" /* For enum LH_RETURN */
+#include "LHScript.h" /* For struct LHScriptResource */
 
 class LHMem
 {
 public:
+	LHScriptResource Banks[100];
+
 	// BW1W120 007e69d0 BW1M119 01141da0 (LHCombined Release)
-	static void* __stdcall Alloc(size_t size);
+	void* Alloc(size_t size);
 	// BW1W120 007e69e0
-	static void* __stdcall AllocFilled(size_t size, int fill);
+	void* AllocFilled(size_t size, int fill);
 	// BW1W120 007e6a30 BW1M119 01141cc0 (LHCombined Release)
-	static int __stdcall Free(void* mem);
+	int Free(void* mem);
 };
 
 struct LHBankToMem

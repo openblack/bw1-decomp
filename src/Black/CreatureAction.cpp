@@ -52,6 +52,8 @@
 #include "Villager.h"                   /* For struct Villager */
 #include "WorshipSite.h"                /* For struct WorshipSite */
 #include "MapCoordsMeters.h"            /* For MapCoords::MetersX */
+#include "Ball.h"
+#include "PileResource.h"
 
 #if defined(VERSION_BW1W100)
 #undef ORIGINAL_LINE

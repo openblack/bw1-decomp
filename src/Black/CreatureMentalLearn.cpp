@@ -633,7 +633,7 @@ void CreatureMental::UpdateLessonText(CreatureContext& context, unsigned long le
 	        "Feedback: %.4f on action %s satisfying desire %s (acting on object %s)", learning.GetLessonFeedback(),
 	        CreatureAgenda::ActionTable[context.plan.creature_action].Name,
 	        CreatureInitialDesireInfo::GetInfo()[context.plan.CreatureDesire].Name,
-	        AttributeType::ValueNames[context.plan.ObjectToActOn->GetType()]);
+	        Creature::CreatureBeliefTypeName[context.plan.ObjectToActOn->GetType()]);
 
 	char increaseText[0x100];
 	char chooseText[0x100];

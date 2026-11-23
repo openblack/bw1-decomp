@@ -28,6 +28,7 @@
 #include "Poo.h"
 #include "Setup.h"
 #include "re_common.h"
+#include "Creed.h"
 
 #ifdef VERSION_BW1WCI
 #undef ORIGINAL_LINE

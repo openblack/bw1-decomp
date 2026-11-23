@@ -36,7 +36,8 @@ struct LHSystem
 #include "LHMouse.h"   /* For struct LHMouse */
 #include "LHDraw.h"    /* For struct LHDraw */
 #include "LHScreen.h"  /* For struct LHScreen */
-#include "LHScript.h"  /* For class LHScriptX, struct LHScriptResource */
+#include "LHScript.h"  /* For class LHScriptX */
+#include "LHMem.h"     /* For class LHMem */
 #include "LHText.h"    /* For struct LHText */
 
 struct LHKeyEvent
@@ -67,6 +68,8 @@ struct LHKeyboard
 	int          StringEndKey;
 	int          StringActive;
 
+	// BW1W120 inlined BW1M119 0115dd00 (LHCombined Release)
+	LHKeyboard();
 	// BW1W120 007dcad0 BW1M119 0113f060 (LHCombined Release)
 	unsigned char LHKeyToAscii(LH_KEY key, bool32_t shift);
 	// BW1W120 inlined BW1M119 015039b0
@@ -199,14 +202,14 @@ struct LHSys
 #ifndef VERSION_BW1W100
 	LHJoypads joypads; /* 0x5a8 */
 #endif
-	LHDraw             draw;                 /* 0x82c */
-	LHConvert          convert;              /* 0x834 */
-	LHScriptX<char>    script;               /* 0x8c4 */
-	LHScriptX<wchar_t> wscript;              /* 0x8f4 */
-	LHScriptResource   ScriptResources[100]; /* 0x924 the front-end script resource bank */
-	LHText             text;                 /* 0x7044 */
-	unsigned int       LastCommand;          /* 0x706c most recent WM_* the app was told about */
-	unsigned int       LastCommandParam;     /* 0x7070 */
+	LHDraw             draw;             /* 0x82c */
+	LHConvert          convert;          /* 0x834 */
+	LHScriptX<char>    script;           /* 0x8c4 */
+	LHScriptX<wchar_t> wscript;          /* 0x8f4 */
+	LHMem              mem;              /* 0x924 */
+	LHText             text;             /* 0x7044 */
+	unsigned int       LastCommand;      /* 0x706c */
+	unsigned int       LastCommandParam; /* 0x7070 */
 #ifdef VERSION_BW1W100
 	uint8_t field_0x6df0[0x10];
 #else
@@ -281,13 +284,13 @@ static_assert(offsetof(LHSys, keyboard) == 0x32c, "LHSys keyboard offset changed
 static_assert(offsetof(LHSys, charRing) == 0x560, "LHSys charRing offset changed");
 #if defined(VERSION_BW1W100)
 static_assert(offsetof(LHSys, draw) == 0x5a8, "LHSys draw offset changed");
-static_assert(offsetof(LHSys, ScriptResources) == 0x6a0, "LHSys ScriptResources offset changed");
+static_assert(offsetof(LHSys, mem) == 0x6a0, "LHSys mem offset changed");
 static_assert(offsetof(LHSys, text) == 0x6dc0, "LHSys text offset changed");
 static_assert(offsetof(LHSys, Window) == 0x6e34, "LHSys Window offset changed");
 static_assert(offsetof(LHSys, LastKey) == 0x6e50, "LHSys LastKey offset changed");
 #else
 static_assert(offsetof(LHSys, draw) == 0x82c, "LHSys draw offset changed");
-static_assert(offsetof(LHSys, ScriptResources) == 0x924, "LHSys ScriptResources offset changed");
+static_assert(offsetof(LHSys, mem) == 0x924, "LHSys mem offset changed");
 static_assert(offsetof(LHSys, text) == 0x7044, "LHSys text offset changed");
 #if defined(VERSION_BW1W130)
 static_assert(offsetof(LHSys, Window) == 0x70c4, "LHSys Window offset changed");
@@ -318,6 +321,13 @@ inline void LHPixel16::Set(LHColor color)
 	value = ((uint8_t)(color.GetB() >> LHSys::GetScreen().GetBlueScale()) << LHSys::GetScreen().GetBlueShift()) +
 	        ((uint8_t)(color.GetG() >> LHSys::GetScreen().GetGreenScale()) << LHSys::GetScreen().GetGreenShift()) +
 	        ((uint8_t)(color.GetR() >> LHSys::GetScreen().GetRedScale()) << LHSys::GetScreen().GetRedShift());
+}
+
+inline void LHPixel16::Set(LHColor* color)
+{
+	value = ((color->GetB() >> LHSys::GetScreen().GetBlueScale()) << LHSys::GetScreen().GetBlueShift()) +
+	        ((color->GetG() >> LHSys::GetScreen().GetGreenScale()) << LHSys::GetScreen().GetGreenShift()) +
+	        ((color->GetR() >> LHSys::GetScreen().GetRedScale()) << LHSys::GetScreen().GetRedShift());
 }
 
 inline LHPixel16::LHPixel16(LHColor color)

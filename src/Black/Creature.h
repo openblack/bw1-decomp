@@ -26,7 +26,6 @@
 #include "TattooInfo.h"        /* For struct TattooInfo */
 #include "Living.h"            /* For struct Living */
 #include "MapCoords.h"         /* For struct MapCoords */
-#include "MobileObject.h"      /* For struct MobileObject */
 
 // Forward Declares
 
@@ -252,6 +251,10 @@ public:
 	static void OnClearMap();
 	// BW1W120 00c5fcf8 BW1M119 01a7e57c
 	static LHLinkedList<Creature*> CreatureList;
+	// BW1W120 008cbf68 BW1M119 016180a0
+	static const char CreatureBeliefTypeName[CREATURE_BELIEF_TYPE_LAST][64];
+	// BW1W120 008cc570 BW1M119 016186b4
+	static const uint32_t DesireToSoundTable[NUM_CREATURE_DESIRES][3];
 #if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 	// BW1W120 null BW1M119 01756bac
 	static uint32_t ImpressiveSpellDoneWhen[5];
@@ -2244,53 +2247,6 @@ public:
 	void PlaySoundEffectToIndicateMood();
 	// BW1W120 0047c780 BW1M119 011d8bc0
 	void BodgeForceCatch(GameThingWithPos* object);
-};
-
-class Creed : public MobileObject
-{
-public:
-	HandGlow* Glow;
-
-	// Constructors
-
-	// BW1W120 0050b310 BW1M119 010c3c20
-	Creed();
-	// BW1W120 inlined BW1M119 inlined
-	Creed(const MapCoords& coords, const GMobileObjectInfo* info, Object* param_3, float param_4, float param_5)
-		: MobileObject(coords, info, param_3, param_4, param_5)
-	{
-	}
-
-	// Override methods
-
-	// BW1W120 inlined BW1M119 010c36c0
-	virtual ~Creed() {}
-	// BW1W120 0050b3d0 BW1M119 010c3ae0
-	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0050b360 BW1M119 010c3800
-	virtual char* GetDebugText();
-	// BW1W120 0050b4e0 BW1M119 010c3890
-	virtual bool32_t Load(GameOSFile& file);
-	// BW1W120 0050b4c0 BW1M119 010c38f0
-	virtual bool32_t Save(GameOSFile& file);
-	// BW1W120 0050b350 BW1M119 010c37d0
-	virtual uint32_t GetSaveType();
-	// BW1W120 0050b4a0 BW1M119 010c3950
-	virtual void SetScale(float param_1);
-	// BW1W120 0050b500 BW1M119 010c3840
-	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
-	// BW1W120 0050b420 BW1M119 010c39b0
-	virtual void Create3DObject();
-	// BW1W120 005186a0 BW1M119 010cc440
-	virtual void Draw();
-	// BW1W120 005186d0 BW1M119 010cc390
-	virtual void DrawOutOfMap(bool selectable);
-	// BW1W120 0050b3a0 BW1M119 010c3b80
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 0050b330 BW1M119 010c3750
-	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 0050b340 BW1M119 010c3790
-	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
 static_assert(offsetof(Creature, HelpState) == 0x188, "Creature help offset is incorrect");

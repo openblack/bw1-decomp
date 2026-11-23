@@ -888,6 +888,28 @@ add_relocations:
     type: x86_abs32
     target: '?Info@GBallInfo@@2V1@A'
     addend: 0x140
+# Bookmark::SetBookMark and SetCameraToBookMark address Bookmarks[index].Pos and CameraOffset (dtk leaves the lea
+# displacements unrelocated).
+  - source: 0x00439EBF
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x8
+  - source: 0x00439F0F
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x18
+  - source: 0x00439FC1
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x8
+  - source: 0x0043A014
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x18
+  - source: 0x0043A15B
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x8
 # BWGameSpy::Connect keeps a pointer one past the colon of ChatServer, inside the buffer.
   - source: 0x0043E3D6
     type: x86_abs32
@@ -1130,6 +1152,19 @@ add_relocations:
     type: x86_abs32
     target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
     addend: 0x316
+# AttributeCreatureWhatHeIsCarrying::ValueName indexes GDebug::ObjectTypeNames by an immediate.
+  - source: 0x004D6178
+    type: x86_abs32
+    target: '?ObjectTypeNames@GDebug@@2QAY0EA@$$CBDA'
+# The atexit thunks of CreatureMentalMisc's static arrays start from one past their last entry.
+  - source: 0x004E5127
+    type: x86_abs32
+    target: '?NormalActionKnownAboutInfo@CreatureActionKnownAboutEntry@@2PAV1@A'
+    addend: 0x270
+  - source: 0x004E51C7
+    type: x86_abs32
+    target: '?MagicActionKnownAboutInfo@CreatureMagicActionKnownAboutEntry@@2PAV1@A'
+    addend: 0x1260
 # MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
   - source: 0x00530E77
     type: x86_abs32
@@ -1303,6 +1338,11 @@ add_relocations:
     type: x86_abs32
     target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
     addend: 0x1A2
+# ValidateLandAvoid's row loop ends at the end of LandAvoid, not at LandAvoidValid.
+  - source: 0x006EC7DD
+    type: x86_abs32
+    target: '?LandAvoid@@3PAY0CAA@EA'
+    addend: 0x40000
 # GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
   - source: 0x006F0808
     type: x86_abs32

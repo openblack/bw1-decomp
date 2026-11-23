@@ -74,6 +74,8 @@
 #include "TownCentre.h"
 #include "Utils.h"
 #include "ViscousLiquid.h"
+#include "PileFood.h"
+#include "MobileObject.h"
 
 // Size of a route-planner square in world units.
 const float RouteSquareSize = 80.0f;
@@ -602,7 +604,7 @@ LH3DCreature::~LH3DCreature()
 		delete Boite;
 	}
 	delete Damage;
-	if (file.opened)
+	if (file.Opened)
 	{
 		file.CloseSegment();
 		file.Close();

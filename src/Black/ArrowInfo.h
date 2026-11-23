@@ -19,10 +19,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 00425980 BW1M119 010b00c0
-	virtual ~GArrowInfo();
 	// BW1W120 00425930 BW1M119 010b03b0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = ARRAY_SIZE(Infos);
+		return Infos;
+	}
 
 	// Static data
 

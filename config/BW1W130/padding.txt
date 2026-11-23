@@ -451,6 +451,10 @@
 0x0042565B call_rel32 0x00403C49  # Arena
 0x004256D5 jmp_run 0x0042565B  # Arena
 0x004258B8 jmp_run 0x004256D5  # Arena
+0x004259A3 padding_bytes 00005ec204005f33c05ec20400  # Arrow
+0x00425B66 padding_bytes 0083c4088bc65ec20400  # Arrow
+0x00425BEA padding_bytes b808000000c3  # Arrow
+0x00425C6A padding_bytes b8b097a400c3  # Arrow
 0x00425C93 jmp_run 0x00425C65  # Artifact
 0x00425CF3 jmp_run 0x00425C93  # Artifact
 0x00425D76 jmp_run 0x00425CF3  # Artifact
@@ -746,6 +750,23 @@
 0x004D5757 jmp_run 0x004D56E7  # CreatureMentalActionTests
 0x004D5793 jmp_run 0x004D5757  # CreatureMentalActionTests
 0x004D57BA call_indirect 0x008AE3E0  # CreatureMentalActionTests
+0x004D5C23 copy_run 0x004D5BCB  # CreatureMentalAttribute
+0x004D5C4B call_rel32 0x00403C49  # CreatureMentalAttribute
+0x004D5D97 jmp_run 0x004D5C4B  # CreatureMentalAttribute
+0x004D5DE5 copy_run 0x004D5D97  # CreatureMentalAttribute
+0x004D5EE7 copy_run 0x004D5DE5  # CreatureMentalAttribute
+0x004D5F0A call_indirect 0x008AE8C8  # CreatureMentalAttribute: __imp__waveInUnprepareHeader@4
+0x004D5FDB call_rel32 0x00403C49  # CreatureMentalAttribute
+0x004D5FF8 jmp_run 0x004D5FDB  # CreatureMentalAttribute
+0x004D6094 jmp_run 0x004D5FF8  # CreatureMentalAttribute
+0x004D60EB call_rel32 0x00403C49  # CreatureMentalAttribute
+0x004D61E5 copy_run 0x004D60EB  # CreatureMentalAttribute
+0x004D62A8 copy_run 0x004D61E5  # CreatureMentalAttribute
+0x004D62F8 jmp_run 0x004D62A8  # CreatureMentalAttribute
+0x004D6348 copy_run 0x004D62F8  # CreatureMentalAttribute
+0x004D63F2 jmp_run 0x004D6348  # CreatureMentalAttribute
+0x004D6504 copy_run 0x004D63F2  # CreatureMentalAttribute
+0x004D6556 jmp_run 0x004D6504  # CreatureMentalAttribute
 0x004DB9F3 jmp_run 0x004DB994  # CreatureMentalBeliefs
 0x004DBA1B call_rel32 0x00403C49  # CreatureMentalBeliefs
 0x004DBB84 copy_run 0x004DBA1B  # CreatureMentalBeliefs
@@ -3355,6 +3376,22 @@
 0x007A4406 copy_run 0x007A4224  # WorldRoom
 0x007A4635 jmp_run 0x007A4406  # WorldRoom
 0x007A490B call_rel32 0x004034F9  # WorldRoom
+0x007C236B call_rel32 0x004034F9  # LHFile
+0x007C23A5 copy_run 0x007C236B  # LHFile
+0x007C243A jmp_run 0x007C23A5  # LHFile
+0x007C24A3 copy_run 0x007C243A  # LHFile
+0x007C274B call_rel32 0x004034F9  # LHFile
+0x007C27E1 copy_run 0x007C274B  # LHFile
+0x007C2B33 jmp_run 0x007C27E1  # LHFile
+0x007C2BD8 jmp_run 0x007C2B33  # LHFile
+0x007C2CE2 copy_run 0x007C2BD8  # LHFile
+0x007C2D77 jmp_run 0x007C2CE2  # LHFile
+0x007C2DE6 copy_run 0x007C2D77  # LHFile
+0x007C2F67 copy_run 0x007C2DE6  # LHFile
+0x007C3052 jmp_run 0x007C2F67  # LHFile
+0x007C30AA copy_run 0x007C3052  # LHFile
+0x007C3131 jmp_run 0x007C30AA  # LHFile
+0x007C3206 copy_run 0x007C3131  # LHFile
 0x007EBB97 jmp_run 0x007EBB1A  # LHMem
 0x007EBBB2 jmp_run 0x007EBB97  # LHMem
 0x007EBBEA copy_run 0x007EBBB2  # LHMem
@@ -3388,6 +3425,27 @@
 0x007EC385 copy_run 0x007EC324  # LHStringOps
 0x007EC3A8 copy_run 0x007EC385  # LHStringOps
 0x007EC3C8 copy_run 0x007EC3A8  # LHStringOps
+0x007F3897 jmp_run 0x007F3809  # LHFlic
+0x007F38CB call_rel32 0x004034F9  # LHFlic
+0x007F39F5 jmp_run 0x007F38CB  # LHFlic
+0x007F3D64 copy_run 0x007F39F5  # LHFlic
+0x007F3E29 copy_run 0x007F3D64  # LHFlic
+0x007F3E87 copy_run 0x007F3E29  # LHFlic
+0x007F40DB call_rel32 0x004034F9  # LHFlic
+0x007F4432 jmp_run 0x007F40DB  # LHFlic
+0x007F46DA jmp_run 0x007F4432  # LHFlic
+0x007F4724 copy_run 0x007F46DA  # LHFlic
+0x007F4783 copy_run 0x007F4724  # LHFlic
+0x007F4807 copy_run 0x007F4783  # LHFlic
+0x007F4882 copy_run 0x007F4807  # LHFlic
+0x007F48F9 jmp_run 0x007F4882  # LHFlic
+0x007F4949 copy_run 0x007F48F9  # LHFlic
+0x007F4A4A copy_run 0x007F4949  # LHFlic
+0x007F4CC3 copy_run 0x007F4A4A  # LHConvert
+0x007F5326 copy_run 0x007F4CC3  # LHConvert
+0x007F5378 jmp_run 0x007F5326  # LHConvert
+0x007F5525 copy_run 0x007F5378  # LHConvert
+0x007F5634 jmp_run 0x007F5525  # LHConvert
 0x0080A011 jmp_run 0x00809FF4  # LH3DMesh
 0x0080A031 jmp_run 0x0080A011  # LH3DMesh
 0x0080AE16 jmp_run 0x0080A031  # LH3DMesh
@@ -3809,8 +3867,8 @@
 0x0088FCC9 copy_run 0x0088FC22  # GameSpy nonport
 0x0088FD24 copy_run 0x0088FCC9  # GameSpy nonport
 0x0088FDA4 copy_run 0x0088FD24  # GameSpy nonport
-0x0088FE04 copy_run 0x0088FDA4  # GameSpy <hole>
-0x0088FE84 copy_run 0x0088FE04  # GameSpy <hole>
+0x0088FE04 copy_run 0x0088FDA4  # GameSpy peerRand
+0x0088FE84 copy_run 0x0088FE04  # GameSpy peerRand
 0x0088FF41 copy_run 0x0088FE84  # GameSpy peerCEngine
 0x00890172 jmp_run 0x0088FF41  # GameSpy peerCEngine
 0x00890228 copy_run 0x00890172  # GameSpy peerCEngine

@@ -156,8 +156,6 @@ public:
 	virtual bool32_t IsBuildingMaterial();
 	// BW1W120 004e48c0 BW1M119 015ec660
 	virtual bool32_t CanBeEatenByCreature(Creature* creature);
-	// BW1W120 00425c60 BW1M119 010b0a10
-	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 	// BW1W120 004e3b40 BW1M119 015eedf0
 	virtual bool32_t CanBeInspectedByCreature(Creature* creature);
 	// BW1W120 004e3eb0 BW1M119 015ee3c0
@@ -352,6 +350,8 @@ public:
 	virtual bool32_t CanBePickedUp() { return false; }
 	// BW1W120 00425c50 BW1M119 010b0910
 	virtual bool32_t CanBeCrushed() { return false; }
+	// BW1W120 00425c60 BW1M119 010b0a10
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return false; }
 	// BW1W120 00638160 BW1M119 013dd350
 	virtual float GetTopPos();
 	// BW1W120 004026b0 BW1M119 010e0380

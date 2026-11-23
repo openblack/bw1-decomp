@@ -272,21 +272,21 @@ Black/Bonfire.cpp:
 	.rdata      start:0x008CB218 end:0x008CBB2C
 	.rdata$r    start:0x00A28778 end:0x00A28810
 	.CRT$XCU    start:0x00A461B0 end:0x00A461B4 align:4
-	.data       start:0x00A4D638 end:0x00A4D708
+	.data       start:0x00A4D638 end:0x00A4D6B8
 
 Black/Bookmark.cpp:
 	.text       start:0x00439AD0 end:0x0043AD90
-	.rdata      start:0x008CBB2C end:0x008CBB58
+	.rdata      start:0x008CBB2C end:0x008CBB50
 	.CRT$XCU    start:0x00A461B4 end:0x00A461C4 align:4
-	.data       start:0x00A4D708 end:0x00A4D74C
-	.bss        start:0x00CD9A60 end:0x00CD9C10
+	.data       start:0x00A4D6B8 end:0x00A4D72C
+	.bss        start:0x00CD9A60 end:0x00CD9C0C
 
 Black/BuildingSite.cpp:
 	.text       start:0x0043AD90 end:0x0043DD40
-	.rdata      start:0x008CBB58 end:0x008CC050
+	.rdata      start:0x008CBB50 end:0x008CC050
 	.rdata$r    start:0x00A28810 end:0x00A28968
 	.CRT$XCU    start:0x00A461C4 end:0x00A461D4 align:4
-	.data       start:0x00A4D74C end:0x00A4D838
+	.data       start:0x00A4D730 end:0x00A4D838
 	.bss        start:0x00CD9C10 end:0x00CD9E20
 
 Black/BWGameSpy.cpp:
@@ -634,7 +634,7 @@ Black/CreatureMentalAttribute.cpp:
 	.text       start:0x004D5C00 end:0x004D65B0
 	.rdata      start:0x008D4994 end:0x008D49A4
 	.CRT$XCU    start:0x00A46494 end:0x00A464A0 align:4
-	.data       start:0x00A5DF04 end:0x00C5F044
+	.data       start:0x00A5DF04 end:0x00C5F05D
 	.bss        start:0x00D03F30 end:0x00D04178
 
 Black/CreatureMentalAttributeTest.cpp:
@@ -642,7 +642,7 @@ Black/CreatureMentalAttributeTest.cpp:
 	.rdata      start:0x008D49A4 end:0x008D4E08
 	.rdata$r    start:0x00A2A720 end:0x00A2AC88
 	.CRT$XCU    start:0x00A464A0 end:0x00A464AC align:4
-	.data       start:0x00C5F048 end:0x00C5F988
+	.data       start:0x00C5F060 end:0x00C5F988
 	.bss        start:0x00D04178 end:0x00D05350
 
 Black/CreatureMentalBelief.cpp:
@@ -2450,23 +2450,25 @@ Black/Reward.cpp:
 	.rdata      start:0x0096F624 end:0x0096FF10
 	.CRT$XCU    start:0x00A475CC end:0x00A475E0 align:4
 	.data       start:0x00C8CB08 end:0x00C8CBD4
-	.bss        start:0x00DD1870 end:0x00E16B6C
+	.bss        start:0x00DD1870 end:0x00DD6B54
 
 Black/Rock.cpp:
 	.text       start:0x006EB830 end:0x006EC3A0
 	.CRT$XCU    start:0x00A475E0 end:0x00A475E8 align:4
-	.data       start:0x00C8CBD4 end:0x00C8CC14
+	.data       start:0x00C8CBD4 end:0x00C8CBF4
+	.bss        start:0x00DD6B54 end:0x00DD6B60
 
 Black/RoutePlan.cpp:
 	.text       start:0x006EC3A0 end:0x006ECB70
 	.CRT$XCU    start:0x00A475E8 end:0x00A475EC align:4
-	.data       start:0x00C8CC14 end:0x00C8CC5C
+	.data       start:0x00C8CBF4 end:0x00C8CC39
+	.bss        start:0x00DD6B60 end:0x00E16B6C
 
 Black/Scaffold.cpp:
 	.text       start:0x006ECB70 end:0x006EF9A0
 	.rdata      start:0x0096FF10 end:0x0096FF70
 	.CRT$XCU    start:0x00A475EC end:0x00A47600 align:4
-	.data       start:0x00C8CC5C end:0x00C8CC80
+	.data       start:0x00C8CC40 end:0x00C8CC80
 	.bss        start:0x00E16B6C end:0x00E16CB0
 
 Black/Script.cpp:
@@ -3457,12 +3459,15 @@ Lionhead/LHFile/ver3.0/LHOSFile.cpp:
 	.text       start:0x007C1670 end:0x007C2350
 	.text$x     start:0x008ACA68 end:0x008ACAD0 align:4
 	.rdata      start:0x00A1F25C end:0x00A1F268
-	.data       start:0x00CAC8A0 end:0x00CAC934
+	.data       start:0x00CAC8A0 end:0x00CAC8A8
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x007C2350 end:0x007C32B0
 	.text$x     start:0x008ACAD0 end:0x008ACAF0 align:4
+	.xdata$x    start:0x00A3E688 end:0x00A3E6B0 align:4
 	.CRT$XCU    start:0x00A47D2C end:0x00A47D30 align:4
+	.data       start:0x00CAC8A8 end:0x00CAC934
+	.bss        start:0x00F0517C end:0x00F05184
 
 zlib/compress.c:
 	.text       start:0x007C32B0 end:0x007C3380
@@ -4344,7 +4349,7 @@ Lionhead/LHLib/ver5.0/LHSystem.cpp:
 
 Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x007E07D0 end:0x007E1F60
-	.text$x     start:0x008ACAF0 end:0x008ACB40 align:4
+	.text$x     start:0x008ACAF0 end:0x008ACB40 align:16
 	.CRT$XCU    start:0x00A47D34 end:0x00A47D40 align:4
 	.data       start:0x00CB206C end:0x00CB2200
 
@@ -4407,9 +4412,12 @@ Lionhead/LHLib/ver5.0/LHDrawSprite.cpp:
 Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
 	.text       start:0x007F36B0 end:0x007F3850
 
+Lionhead/LHLib/ver5.0/LHFlic.cpp:
+	.text       start:0x007F3850 end:0x007F4A50
+	.data       start:0x00CB5D10 end:0x00CB5D4C
+
 Lionhead/LHLib/ver5.0/LHConvert.cpp:
-	.text       start:0x007F3850 end:0x007F5640
-	.data       start:0x00CB5D10 end:0x00CB7970
+	.text       start:0x007F4A50 end:0x007F5640
 
 Lionhead/LHLib/ver5.0/LHSprite.cpp:
 	.text       start:0x007F5640 end:0x007F6B00
@@ -4423,13 +4431,16 @@ Lionhead/LHLib/ver5.0/TbIME.cpp:
 	.xdata$x    start:0x00A3E9B8 end:0x00A3EA08 align:4
 	.CRT$XCU    start:0x00A47D4C end:0x00A47D50 align:4
 
+Lionhead/LHLib/ver5.0/LHSelfMod.cpp:
+	.data       start:0x00CB5D4C end:0x00CB7978 align:4
+
 Lionhead/LHLib/ver5.0/TbIMEImpl.cpp:
 	.text       start:0x007F96E0 end:0x007FC050
 	.text$x     start:0x008ACD80 end:0x008ACEA0 align:4
 	.rdata      start:0x00A21CAC end:0x00A21CCC
 	.xdata$x    start:0x00A3EA08 end:0x00A3EB70 align:4
 	.CRT$XCU    start:0x00A47D50 end:0x00A47D5C align:4
-	.data       start:0x00CB7970 end:0x00CB80D0
+	.data       start:0x00CB7978 end:0x00CB80D0 align:8
 	.bss        start:0x00F1309C end:0x00F132A0
 
 Lionhead/LH3DLib/development/LH3DFragMesh.cpp:
@@ -4826,7 +4837,7 @@ GameSpy/nonport.c:
 	.data       start:0x00CBB56C end:0x00CBB5E4
 	.bss        start:0x0102B9D4 end:0x0102BAD8
 
-GameSpy/Peer/peerUtil.c:
+GameSpy/Peer/peerRand.c:
 	.text       start:0x0088FDB0 end:0x0088FE90
 	.data       start:0x00CBB5E4 end:0x00CBB5E8
 

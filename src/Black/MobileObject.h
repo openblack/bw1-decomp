@@ -8,9 +8,10 @@
 #include <chlasm/Enum.h>          /* For enum HOLD_TYPE, enum RESOURCE_TYPE */
 #include <chlasm/ScriptEnums.h>   /* For enum SCRIPT_OBJECT_TYPE */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
-#include "LHPTR.h"    /* For class LHPTR */
-#include "Mobile.h"   /* For struct Mobile */
+#include "BaseInfo.h"         /* For struct GBaseInfo */
+#include "LHPTR.h"            /* For class LHPTR */
+#include "Mobile.h"           /* For struct Mobile */
+#include "MobileObjectInfo.h" /* For class GMobileObjectInfo */
 
 #define MOBILE_OBJECT_SCRIPT_SCALE 1000.0f
 
@@ -20,7 +21,6 @@ class Base;
 class Creature;
 class DataPath;
 class GInterfaceStatus;
-class GMobileObjectInfo;
 class GPlayer;
 class GameOSFile;
 class GameThing;
@@ -50,40 +50,53 @@ public:
 	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00607230 BW1M119 013c51d0
 	virtual GPlayer* GetPlayer();
+	// BW1W120 00425b10 BW1M119 010b0410
+	virtual float GetXAngle() { return XAngle; }
+	// BW1W120 00425b20 BW1M119 010b0450
+	virtual float GetZAngle() { return ZAngle; }
+	// BW1W120 00425b30 BW1M119 010b0490
+	virtual bool32_t CanBePickedUp() { return !(Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP); }
+	// BW1W120 00425b40 BW1M119 010b04e0
+	virtual MESH_LIST GetMesh() const { return info->GetMesh(); }
+	// BW1W120 00425b50 BW1M119 010b0550
+	virtual uint32_t GetTastiness() { return OBJECT_TASTINESS_NONE; }
+	// BW1W120 00425b60 BW1M119 010b0590
+	virtual uint32_t GetCreatureMimicType() { return CREATURE_MIMIC_TYPE_MOBILE_OBJECT; }
+	// BW1W120 00425b70 BW1M119 010b05e0
+	virtual bool32_t CanBeUsedToHoldWater(Creature* creature)
+	{
+		return GetInfo()->MobileObjectType == MOBILE_OBJECT_INFO_WATER_JUG;
+	}
+	// BW1W120 00425b90 BW1M119 010b0660
+	virtual bool32_t CanBeStompedOnByCreature(Creature* creature) { return true; }
+	// BW1W120 00425ba0 BW1M119 010b06b0
+	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* creature) { return true; }
+	// BW1W120 00425bb0 BW1M119 010b0710
+	virtual bool32_t CanBePlayedWithByCreature(Creature* creature) { return true; }
+	// BW1W120 00425bc0 BW1M119 010b0760
+	virtual bool32_t IsMobileObject() { return true; }
+	// BW1W120 00425bd0 BW1M119 010b07a0
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_MOBILE_OBJECT; }
 	// BW1W120 00425be0 BW1M119 010b07e0
 	virtual char* GetDebugText() { return "MobileObject:"; }
 	// BW1W120 00607d00 BW1M119 013c3760
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00607c40 BW1M119 013c38a0
 	virtual bool32_t Save(GameOSFile& file);
-	// BW1W120 00425bd0 BW1M119 010b07a0
-	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_MOBILE_OBJECT; }
 	// BW1W120 00607ab0 BW1M119 013c3d80
 	virtual void PhysicsEditorCreate(bool32_t keep_altitude);
 	// BW1W120 00607430 BW1M119 013c4ca0
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00425bb0 BW1M119 010b0710
-	virtual bool32_t CanBePlayedWithByCreature(Creature* creature) { return true; }
-	// BW1W120 00425b90 BW1M119 010b0660
-	virtual bool32_t CanBeStompedOnByCreature(Creature* creature) { return true; }
 	// BW1W120 004e4ce0 BW1M119 015eb7d0
 	virtual bool32_t IsMushroom(Creature* creature);
-	// BW1W120 00425b70 BW1M119 010b05e0
-	virtual bool32_t CanBeUsedToHoldWater(Creature* creature);
-	// BW1W120 00425ba0 BW1M119 010b06b0
-	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* creature) { return true; }
-	// BW1W120 00425b60 BW1M119 010b0590
-	virtual uint32_t GetCreatureMimicType() { return CREATURE_MIMIC_TYPE_MOBILE_OBJECT; }
-	// BW1W120 00425bc0 BW1M119 010b0760
-	virtual bool32_t IsMobileObject() { return true; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI 004f5530 BW1MCI119 01620a50
+	virtual bool32_t CanBePickedUpByCreature(Creature* creature);
+#endif
 	// BW1W120 006079e0 BW1M119 013c4150
 	virtual bool IsPoisoned();
 	// BW1W120 00607b60 BW1M119 013c3d40
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 00425b10 BW1M119 010b0410
-	virtual float GetXAngle() { return XAngle; }
-	// BW1W120 00425b20 BW1M119 010b0450
-	virtual float GetZAngle() { return ZAngle; }
 	// BW1W120 00607460 BW1M119 013c4b70
 	virtual void SetXYZAngles(float x_angle, float y_angle, float z_angle);
 	// BW1W120 006074e0 BW1M119 013c4a40
@@ -100,12 +113,8 @@ public:
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 00607130 BW1M119 013c5490
 	virtual float GetHoldLoweringMultiplier();
-	// BW1W120 00425b40 BW1M119 010b04e0
-	virtual MESH_LIST GetMesh() const { return info->GetMesh(); }
 	// BW1W120 00518150 BW1M119 01038d70
 	virtual void Draw();
-	// BW1W120 00425b30 BW1M119 010b0490
-	virtual bool32_t CanBePickedUp() { return !(Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP); }
 	// BW1W120 00607560 BW1M119 013c4830
 	virtual void GetWorldMatrix(LHMatrix* matrix);
 	// BW1W120 00607150 BW1M119 013c52a0
@@ -127,8 +136,6 @@ public:
 	// BW1W120 00607410 BW1M119 013c4d30
 	virtual void AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 	                            void(__cdecl* add_function)(int object_id, Point2D position, float radius, int update));
-	// BW1W120 00425b50 BW1M119 010b0550
-	virtual uint32_t GetTastiness();
 	// BW1W120 00607270 BW1M119 013c4db0
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* origin);
 

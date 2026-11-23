@@ -317,6 +317,28 @@ add_relocations:
     type: x86_abs32
     target: '?Info@GBallInfo@@2V1@A'
     addend: 0x140
+# Bookmark::SetBookMark and SetCameraToBookMark address Bookmarks[index].Pos and CameraOffset (dtk leaves the lea
+# displacements unrelocated).
+  - source: 0x0043282F
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x8
+  - source: 0x0043287F
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x18
+  - source: 0x00432931
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x8
+  - source: 0x00432984
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x18
+  - source: 0x00432ACB
+    type: x86_abs32
+    target: '?Bookmarks@Bookmark@@2PAV1@A'
+    addend: 0x8
 # BWGameSpy::Connect keeps a pointer one past the colon of ChatServer, inside the buffer.
   - source: 0x00436786
     type: x86_abs32
@@ -377,6 +399,19 @@ add_relocations:
     type: x86_abs32
     target: '?Definitions@GContainerInfo@@2PAV1@A'
     addend: 0x50
+# AttributeCreatureWhatHeIsCarrying::ValueName indexes GDebug::ObjectTypeNames by an immediate.
+  - source: 0x004B73B8
+    type: x86_abs32
+    target: '?ObjectTypeNames@GDebug@@2QAY0EA@$$CBDA'
+# The atexit thunks of CreatureMentalMisc's static arrays start from one past their last entry.
+  - source: 0x004C43B7
+    type: x86_abs32
+    target: '?NormalActionKnownAboutInfo@CreatureActionKnownAboutEntry@@2PAV1@A'
+    addend: 0x270
+  - source: 0x004C4437
+    type: x86_abs32
+    target: '?MagicActionKnownAboutInfo@CreatureMagicActionKnownAboutEntry@@2PAV1@A'
+    addend: 0x1260
 # MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
   - source: 0x00504097
     type: x86_abs32
@@ -1712,6 +1747,11 @@ add_relocations:
   - source: 0x008D52A0
     type: x86_abs32
     target: '??_EWorldRoomCamera@@UAEPAXI@Z'
+# ValidateLandAvoid's row loop ends at the end of LandAvoid, not at LandAvoidValid.
+  - source: 0x00682BDD
+    type: x86_abs32
+    target: '?LandAvoid@@3PAY0CAA@EA'
+    addend: 0x40000
 # GScript::Save and Load: the loop bound is the end of ScriptManage::VariableTable; dtk leaves the cmp immediate unrelocated.
   - source: 0x006866A8
     type: x86_abs32
@@ -2459,6 +2499,10 @@ add_relocations:
     type: x86_abs32
     target: '_jinit_color_converter'
     addend: 0x19d
+# LHFile's unwind funclet jumps to its segment list's empty destructor, folded into Object::EndOnFire.
+  - source: 0x007E98F7
+    type: x86_rel32
+    target: '??1?$LHLinkedList@PAULHSegmentDesc@@@@QAE@XZ'
 # adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x00B5261E
     type: x86_abs32

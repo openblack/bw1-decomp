@@ -4,8 +4,6 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
-#define LH_COLOR_LEVELS 256
-
 struct LHColor
 {
 	uint8_t b;
@@ -28,6 +26,8 @@ struct LHColor
 	int FadeColor(long amount);
 	// BW1W120 inlined BW1M119 inlined
 	bool operator==(LHColor color) const { return r == color.r && g == color.g && b == color.b; }
+	// BW1W120 inlined BW1M119 inlined
+	bool operator==(LHColor* color) const { return r == color->r && g == color->g && b == color->b; }
 	// BW1W120 inlined BW1M119 01131cb0 (LHCombined Release)
 	uint8_t GetR() const { return r; }
 	// BW1W120 inlined BW1M119 01131d20 (LHCombined Release)
@@ -36,5 +36,7 @@ struct LHColor
 	uint8_t GetB() const { return b; }
 };
 static_assert(sizeof(LHColor) == 0x3, "Data type is of wrong size");
+
+#define LH_COLOR_LEVELS 256
 
 #endif /* BW1_DECOMP_LH_COLOR_INCLUDED_H */

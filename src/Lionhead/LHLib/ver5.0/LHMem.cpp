@@ -7,14 +7,14 @@
 #include <stdlib.h> /* For malloc, free */
 #include <string.h> /* For memset */
 
-void* __stdcall LHMem::Alloc(size_t size)
+void* LHMem::Alloc(size_t size)
 {
 	return malloc(size);
 }
 
 #ifndef VERSION_BW1W100
 
-void* __stdcall LHMem::AllocFilled(size_t size, int fill)
+void* LHMem::AllocFilled(size_t size, int fill)
 {
 	void* mem = malloc(size);
 	if (mem)
@@ -26,7 +26,7 @@ void* __stdcall LHMem::AllocFilled(size_t size, int fill)
 
 #endif // VERSION_BW1W100
 
-int __stdcall LHMem::Free(void* mem)
+int LHMem::Free(void* mem)
 {
 	free(mem);
 	return 0;
@@ -39,7 +39,7 @@ LH_RETURN LHBankToMem::Convert()
 	LHBankToMem* entry = this;
 	while (entry->Mem != NULL)
 	{
-		*entry->Mem = LHSys::TheSystem.ScriptResources[entry->Bank].data;
+		*entry->Mem = LHSys::TheSystem.mem.Banks[entry->Bank].data;
 		entry++;
 	}
 	return LH_OK;

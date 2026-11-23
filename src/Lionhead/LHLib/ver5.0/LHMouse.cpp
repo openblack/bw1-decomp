@@ -273,7 +273,7 @@ int LHMouse::SetPositionRel(LHCoord* delta)
 
 static LHSurface* AllocWorkSurface(uint16_t width, uint16_t height)
 {
-	LHSurface* surface = (LHSurface*)LHMem::Alloc(sizeof(LHSurface));
+	LHSurface* surface = (LHSurface*)LHSys::TheSystem.mem.Alloc(sizeof(LHSurface));
 	if (surface)
 	{
 		surface->HasTransparentColor = 0;
@@ -301,7 +301,7 @@ int LHMouse::SetWorkingArea(uint16_t width, uint16_t height)
 	if (SingleSurface)
 	{
 		SingleSurface->~LHSurface();
-		LHMem::Free(SingleSurface);
+		LHSys::TheSystem.mem.Free(SingleSurface);
 		SingleSurface = NULL;
 	}
 	if (field_10)
@@ -310,7 +310,7 @@ int LHMouse::SetWorkingArea(uint16_t width, uint16_t height)
 	}
 	else if (ImageMode == 32)
 	{
-		void* mem = LHMem::Alloc(sizeof(LHSurface));
+		void* mem = LHSys::TheSystem.mem.Alloc(sizeof(LHSurface));
 		SingleSurface = mem ? new (mem) LHSurface(SingleSprite, 0) : NULL;
 	}
 
@@ -329,19 +329,19 @@ int LHMouse::SetWorkingArea(uint16_t width, uint16_t height)
 	if (SaveSurface[0])
 	{
 		SaveSurface[0]->~LHSurface();
-		LHMem::Free(SaveSurface[0]);
+		LHSys::TheSystem.mem.Free(SaveSurface[0]);
 		SaveSurface[0] = NULL;
 		if (SaveSurface[1])
 		{
 			SaveSurface[1]->~LHSurface();
-			LHMem::Free(SaveSurface[1]);
+			LHSys::TheSystem.mem.Free(SaveSurface[1]);
 		}
 		SaveSurface[1] = NULL;
 	}
 	if (Mode8Surface)
 	{
 		Mode8Surface->~LHSurface();
-		LHMem::Free(Mode8Surface);
+		LHSys::TheSystem.mem.Free(Mode8Surface);
 		Mode8Surface = NULL;
 	}
 
@@ -790,10 +790,10 @@ void LHMouse::SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, un
 			if (frame)
 			{
 				frame->~LHSurface();
-				LHMem::Free(frame);
+				LHSys::TheSystem.mem.Free(frame);
 			}
 		}
-		LHMem::Free(FrameSurfaces);
+		LHSys::TheSystem.mem.Free(FrameSurfaces);
 		FrameSurfaces = NULL;
 		FrameCount16 = 0;
 	}
@@ -810,10 +810,10 @@ void LHMouse::SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, un
 			IsMultiFrame = 1;
 			FrameBank = (void*)((uint32_t*)images)[1];
 			FrameCount16 = ((uint16_t*)images)[4];
-			FrameSurfaces = (LHSurface**)LHMem::Alloc(4 * FrameCount16);
+			FrameSurfaces = (LHSurface**)LHSys::TheSystem.mem.Alloc(4 * FrameCount16);
 			for (uint16_t i = 0; i < FrameCount16; ++i)
 			{
-				void* mem = LHMem::Alloc(sizeof(LHSurface));
+				void* mem = LHSys::TheSystem.mem.Alloc(sizeof(LHSurface));
 				FrameSurfaces[i] = mem ? new (mem) LHSurface((LHSprite*)FrameBank + i, SpriteFlags & 0x60) : NULL;
 			}
 		}
@@ -823,11 +823,11 @@ void LHMouse::SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, un
 			void* bank = (void*)(*(uint32_t*)images + 76 * index);
 			FrameBank = bank;
 			FrameCount16 = ((uint32_t*)bank)[2];
-			FramePartOffsets = (int*)LHMem::Alloc(8 * FrameCount16);
-			FrameSurfaces = (LHSurface**)LHMem::Alloc(4 * FrameCount16);
+			FramePartOffsets = (int*)LHSys::TheSystem.mem.Alloc(8 * FrameCount16);
+			FrameSurfaces = (LHSurface**)LHSys::TheSystem.mem.Alloc(4 * FrameCount16);
 			for (uint16_t i = 0; i < FrameCount16; ++i)
 			{
-				void* mem = LHMem::Alloc(sizeof(LHSurface));
+				void* mem = LHSys::TheSystem.mem.Alloc(sizeof(LHSurface));
 				FrameSurfaces[i] =
 					mem ? new (mem) LHSurface((LHSpriteFrame*)(*(uint32_t*)FrameBank + 16 * i), SpriteFlags & 0x60)
 						: NULL;

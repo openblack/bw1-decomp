@@ -358,7 +358,7 @@ def chain_pairs(target, compiled):
     pairs = [(a, b) for (_, _, t_stub), (_, _, c_stub) in pair(target, compiled)
              for a, b in (list(zip(target.chain(t_stub), compiled.chain(c_stub)))
                           + list(zip(target.destructor_thunks(t_stub), compiled.destructor_thunks(c_stub))))]
-    seen = {a for a, _ in pairs} | {b for _, b in pairs}
+    seen_t, seen_c = {a for a, _ in pairs}, {b for _, b in pairs}
     # Labels a paired label refers to (the atexit thunk a stub registers, the guard that thunk
     # sets) pair in order, where both refer to as many.
     queue = list(pairs)
@@ -371,11 +371,12 @@ def chain_pairs(target, compiled):
         if len(t_refs) != len(c_refs):
             continue
         for x, y in zip(t_refs, c_refs):
-            if x not in seen and y not in seen:
-                seen.update((x, y))
+            if x not in seen_t and y not in seen_c:
+                seen_t.add(x)
+                seen_c.add(y)
                 pairs.append((x, y))
                 queue.append((x, y))
-    return pairs + [(a, b) for a, b in referenced_pairs(target, compiled) if a not in seen and b not in seen]
+    return pairs + [(a, b) for a, b in referenced_pairs(target, compiled) if a not in seen_t and b not in seen_c]
 
 
 def renames(target, compiled):

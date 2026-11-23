@@ -9,7 +9,11 @@
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For LHLinkedList */
 
-#include "LHSegment.h" /* For LHSegment */
+#include "LHSegment.h" /* For LHSegment, LH_SEGMENT_NAME_LENGTH */
+
+#define LH_FILE_HEADER_SIZE    8
+#define LH_SEGMENT_HEADER_SIZE (LH_SEGMENT_NAME_LENGTH + sizeof(uint32_t))
+#define LH_SEGMENT_MAX_SIZE    80000000
 
 enum LH_FILE_RESULT
 {
@@ -41,20 +45,20 @@ class LHFile
 {
 public:
 	LHLinkedList<LHSegmentDesc*> SegmentList;
-	bool32_t                     opened;
-	void*                        handle;
-	LHSegment                    LastSegment;                                              /* 0x14 */
-	uint32_t (*custom_write_function)(const void* data, uint32_t length, void* user_data); /* 0x40 */
-	uint32_t (*custom_read_function)(void* data, uint32_t length, void* user_data);        /* 0x44 */
-	uint32_t (*custom_set_file_pointer_function)(uint32_t distance_to_move, uint32_t move_method, void* user_data);
+	bool32_t                     Opened;
+	void*                        Handle;
+	LHSegment                    LastSegment;                                            /* 0x14 */
+	uint32_t (*CustomWriteFunction)(const void* data, uint32_t length, void* user_data); /* 0x40 */
+	uint32_t (*CustomReadFunction)(void* data, uint32_t length, void* user_data);        /* 0x44 */
+	uint32_t (*CustomSetFilePointerFunction)(uint32_t distance_to_move, uint32_t move_method, void* user_data);
 	void*        CustomFunctionUserData;
 	LH_FILE_MODE FileMode;
-	uint32_t     SegmentOpenFlag;
-	uint32_t     segment_size;
+	bool32_t     SegmentOpenFlag;
+	uint32_t     SegmentSize;
 	uint32_t     CurrentFileOffset;
 	uint32_t     SegmentOffset;
-	char*        segment_name;
-	char*        file_name;
+	char*        SegmentName;
+	char*        FileName;
 
 	// Override methods
 
@@ -83,14 +87,14 @@ public:
 	// BW1W120 0042e160 BW1M119 010d14c0
 	uint32_t ResetData()
 	{
-		file_name = NULL;
-		opened = 0;
-		handle = NULL;
-		custom_write_function = NULL;
-		custom_read_function = NULL;
-		custom_set_file_pointer_function = NULL;
-		SegmentOpenFlag = 0;
-		segment_size = 0;
+		FileName = NULL;
+		Opened = false;
+		Handle = NULL;
+		CustomWriteFunction = NULL;
+		CustomReadFunction = NULL;
+		CustomSetFilePointerFunction = NULL;
+		SegmentOpenFlag = false;
+		SegmentSize = 0;
 		CurrentFileOffset = 0;
 		SegmentOffset = 0;
 		return 0;
@@ -100,12 +104,12 @@ public:
 	// BW1W120 007bd420 BW1M119 0116aaa0 (LHCombined Release)
 	uint32_t GetSegmentDataInChunks(char* segment_name, char* data, uint32_t total_size, uint32_t chunk_size,
 	                                void (*callback)(void), int offset);
-	// BW1W120 007bd490
+	// BW1W120 007bd490 BW1M119 01004ee0 (LHCombined Release)
 	uint32_t GetSegmentData(char* segment_name, void* data, uint32_t data_size, int offset);
 	// BW1W120 007bd7d0 BW1M119 01169eb0 (LHCombined Release)
 	uint32_t VerifyFile();
 	// BW1W120 007bd930 BW1M119 01169d40 (LHCombined Release)
-	uint32_t GetNextSegment(LHSegment* segment, int allocate_memory);
+	uint32_t GetNextSegment(LHSegment* segment, bool32_t allocate_memory);
 	// BW1W120 007bd9d0 BW1M119 01169c50 (LHCombined Release)
 	uint32_t AllocSegDataMem(LHSegment* segment);
 	// BW1W120 007bda70 BW1M119 01169b50 (LHCombined Release)
@@ -123,20 +127,17 @@ public:
 	// BW1W120 007bdd60 BW1M119 01168fe0 (LHCombined Release)
 	uint32_t GetSegmentSize(char* segment_name);
 	// BW1W120 inlined BW1M119 inlined
-	uint32_t GetSegmentSize()
-	{
-		if (!SegmentOpenFlag)
-			return LH_FILE_RESULT_ERROR;
-		return GetSegmentSize(segment_name);
-	}
+	uint32_t GetSegmentSize() { return SegmentOpenFlag ? GetSegmentSize(SegmentName) : LH_FILE_RESULT_ERROR; }
 	// BW1W120 007bddd0 BW1M119 01168df0 (LHCombined Release)
-	uint32_t GetSegment(char* param_2, LHSegment* segment, int param_4);
+	uint32_t GetSegment(char* name, LHSegment* segment, bool32_t allocate_memory);
 	// BW1W120 007bdec0 BW1M119 01004fd0 (LHCombined Release)
 	uint32_t OpenSegment(char* name);
 	// BW1W120 007bdf50 BW1M119 01004d80 (LHCombined Release)
 	uint32_t CloseSegment();
 	// BW1W120 007bdfc0 BW1M119 01168460 (LHCombined Release)
 	uint32_t WriteSegmentData(const void* data, uint32_t length);
+	// BW1W120 007be000 BW1M119 01168360 (LHCombined Release)
+	uint32_t OverwriteSegment(LHSegment segment);
 	// BW1W120 007be040 BW1M119 01168210 (LHCombined Release)
 	uint32_t GetSegmentData(void* data, uint32_t data_size, int offset);
 	// BW1W120 007be090 BW1M119 01168120 (LHCombined Release)
@@ -144,12 +145,9 @@ public:
 	// BW1W120 007be120 BW1M119 01004c80 (LHCombined Release)
 	uint32_t ReadData(void* data, uint32_t length);
 	// BW1W120 007be1b0 BW1M119 01167ad0 (LHCombined Release)
-	uint32_t SetFileFunctions(void* read_function, void* write_function, void* set_file_pointer_function,
-	                          void* user_data);
+	void SetFileFunctions(void* read_function, void* write_function, void* set_file_pointer_function, void* user_data);
 	// BW1W120 007be1f0 BW1M119 011679c0 (LHCombined Release)
-	uint32_t TruncateFromSegment(const char* segment_name);
-	// BW1W120 null BW1M119 01167940 (LHCombined Release)
-	void FlushCache();
+	uint32_t TruncateFromSegment(char* segment_name);
 	// BW1W120 inlined BW1M119 inlined
 	long ReadLong()
 	{

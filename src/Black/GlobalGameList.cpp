@@ -13,6 +13,10 @@
 #include "PuzzleGame.h"     /* For PuzzleGame::AppliedMapPos */
 #include "Script.h"         /* For GScript::DeleteAllScriptCreatedGameThings */
 #include "Waterfall.h"      /* For GWaterfall::DesignedWaterFallNeedsReset */
+#include "Ball.h"
+#include "PileFood.h"
+#include "Reward.h"
+#include "Whale.h"
 #ifdef VERSION_BW1WCI
 #include "Abode.h"          /* For class Abode */
 #include "Cannon.h"         /* For class Cannon */
