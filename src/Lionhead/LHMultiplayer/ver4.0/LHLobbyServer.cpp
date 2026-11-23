@@ -799,7 +799,8 @@ bool32_t LHLobbyServerChannel::CheckGameFileTransferComplete()
 	bool32_t complete = true;
 	for (LHPlayer* player = GetNextPlayer(NULL); player != NULL; player = GetNextPlayer(player))
 	{
-		if (player->GetUserID().IsType(LH_USER_ID::CATEGORY_PLAYER) && !GetSysInfo(player)->FileTransferComplete)
+		if (player != NULL && player->GetUserID().IsType(LH_USER_ID::CATEGORY_PLAYER) &&
+		    !GetSysInfo(player)->FileTransferComplete)
 		{
 			complete = false;
 			break;
