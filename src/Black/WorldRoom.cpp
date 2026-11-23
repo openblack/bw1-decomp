@@ -870,7 +870,8 @@ inline void UpdateWorldRoomScrollToolTip(WorldRoom* room, const CallbackData& da
 		}
 		else
 		{
-			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_SCROLL, KEYALIGN_VERTICAL_ARROWS);
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_SCROLL,
+			                    static_cast<KEYALIGN>(KEYALIGN_ARROW_UP | KEYALIGN_ARROW_DOWN));
 		}
 	}
 	else if (room->camera->State == INNER_CAMERA_STATE_FOCUSED && room->camera->ZoomProgress == 1.0)
@@ -971,8 +972,8 @@ void WorldRoom::PreDraw()
 
 void WorldRoom::PreToolTipProcess()
 {
-	SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_MOVE,
-	                    static_cast<KEYALIGN>(KEYALIGN_VERTICAL_ARROWS | KEYALIGN_ARROW_LEFT | KEYALIGN_ARROW_RIGHT));
+	SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_MOVE, static_cast<KEYALIGN>(KEYALIGN_ARROW_UP | KEYALIGN_ARROW_DOWN |
+	                                                                  KEYALIGN_ARROW_LEFT | KEYALIGN_ARROW_RIGHT));
 #ifdef VERSION_BW1W130
 	CHand::GloveHelpCue = CHAND_GLOVE_HELP_CUE_DEFAULT;
 #endif
@@ -980,9 +981,9 @@ void WorldRoom::PreToolTipProcess()
 	{
 		if (camera->ClickHitType == INNER_CAMERA_HIT_NEAR && camera->ZoomProgress == 1.0)
 		{
-			SetWorldRoomToolTip(
-				HELP_TEXT_TOOLTIP_TILT_ROTATE,
-				static_cast<KEYALIGN>(KEYALIGN_VERTICAL_ARROWS | KEYALIGN_ARROW_LEFT | KEYALIGN_ARROW_RIGHT));
+			SetWorldRoomToolTip(HELP_TEXT_TOOLTIP_TILT_ROTATE,
+			                    static_cast<KEYALIGN>(KEYALIGN_ARROW_UP | KEYALIGN_ARROW_DOWN | KEYALIGN_ARROW_LEFT |
+			                                          KEYALIGN_ARROW_RIGHT));
 		}
 		else if (camera->ZoomProgress != 1.0)
 		{
