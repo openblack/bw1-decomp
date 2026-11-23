@@ -215,6 +215,13 @@ public:
 		{
 			uint8_t DeathReason; // Death states: DEATH_REASON value.
 		};
+#ifdef VERSION_BW1WCI
+		struct
+		{
+			uint32_t ScriptULData1;
+			uint32_t ScriptULData2;
+		};
+#endif
 		struct
 		{
 			float ScriptWanderRadius; // SCRIPT_WANDER_AROUND_POSITION: wander radius.
@@ -358,6 +365,16 @@ public:
 	virtual bool32_t IsFemaleVillager();
 	// BW1W120 0055cb00 BW1M119 0109c270
 	virtual bool32_t IsAChild() { return IsChild() == true; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00570f20 BW1MCI119 01164a10
+	virtual uint32_t GetScriptULData1() { return ScriptULData1; }
+	// BW1WCI 00570f30 BW1MCI119 01164a50
+	virtual void SetScriptULData1(unsigned long data) { ScriptULData1 = data; }
+	// BW1WCI 00570f40 BW1MCI119 01164a90
+	virtual uint32_t GetScriptULData2() { return ScriptULData2; }
+	// BW1WCI 00570f50 BW1MCI119 01164ad0
+	virtual void SetScriptULData2(unsigned long data) { ScriptULData2 = data; }
+#endif
 	// BW1W120 007562c0 BW1M119 0156e0e0
 	virtual void SetSkeleton(bool32_t skeleton);
 	// BW1W120 00753f20 BW1M119 015724c0

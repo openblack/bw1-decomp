@@ -206,6 +206,7 @@
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUtils.h>
+#include "Creed.h"
 
 #define TEMPORARY_FILE_EXTENSION    ".tmp"
 #define LOAD_SAVE_BOX_HALF_HEIGHT   30

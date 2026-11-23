@@ -493,12 +493,14 @@ struct HelpDude : public LocalBase
 	void UpdateHoverZ(float min_z);
 	// BW1W120 005ba350 BW1M119 01350020
 	void UpdateHoverPos(float dt);
+#ifndef VERSION_BW1WCI
 	// BW1W120 005bb060 BW1M119 0134fc10
 	LH_AudioBank* SetSentenceBank(LH_AudioSystem* audio_system, LH_AudioBank* bank);
 	// BW1W120 005bb1b0 BW1M119 null
 	LH_AudioBank* SetSentenceBank(LH_AudioSystem* audio_system, char* name);
 	// BW1W120 005bb2c0 BW1M119 0134fb30
 	void FreeSentenceBank();
+#endif
 	// BW1W120 005bb340 BW1M119 0134fa00
 	void SaySentence(int sample, bool32_t dont_interrupt, int delay);
 	// BW1W120 005bb610 BW1M119 010182c0

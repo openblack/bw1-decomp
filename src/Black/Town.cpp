@@ -77,6 +77,7 @@
 #include "Workshop.h"
 #include "WorshipSite.h"
 #include "MapCoordsMeters.h" /* For MapCoords::MetersX */
+#include "Reward.h"
 
 #if defined(VERSION_BW1W100)
 #undef ORIGINAL_LINE

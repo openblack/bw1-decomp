@@ -852,11 +852,6 @@ public:
 class AttributeType : public Attribute
 {
 public:
-	// Static members
-
-	// BW1W120 008cbf68 BW1M119 null
-	static const char ValueNames[CREATURE_BELIEF_TYPE_LAST][64];
-
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined

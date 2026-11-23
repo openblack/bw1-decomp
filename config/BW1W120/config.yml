@@ -627,6 +627,15 @@ add_relocations:
     type: x86_abs32
     target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
     addend: 0x316
+# The atexit thunks of CreatureMentalMisc's static arrays start from one past their last entry.
+  - source: 0x004E2D97
+    type: x86_abs32
+    target: '?NormalActionKnownAboutInfo@CreatureActionKnownAboutEntry@@2PAV1@A'
+    addend: 0x270
+  - source: 0x004E2E37
+    type: x86_abs32
+    target: '?MagicActionKnownAboutInfo@CreatureMagicActionKnownAboutEntry@@2PAV1@A'
+    addend: 0x1260
 # CreatureSubActions.cpp's SubStateInitiateFaceDownSlope walks MapXZDirections8 by its z members: the loop ends two bytes
 # past the array.
   - source: 0x00504250

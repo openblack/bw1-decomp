@@ -22,6 +22,11 @@ public:
 
 	// BW1W120 0050b310 BW1M119 010c3c20
 	Creed();
+	// BW1W120 inlined BW1M119 inlined
+	Creed(const MapCoords& coords, const GMobileObjectInfo* info, Object* parent, float y_angle, float scale)
+		: MobileObject(coords, info, parent, y_angle, scale)
+	{
+	}
 
 	// Non-virtual methods
 
@@ -52,6 +57,10 @@ public:
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0050b500 BW1M119 010c3840
 	virtual bool32_t CanBePickedUpByCreature(Creature* creature);
+	// BW1W120 005186a0 BW1M119 010cc440
+	virtual void Draw();
+	// BW1W120 005186d0 BW1M119 010cc390
+	virtual void DrawOutOfMap(bool selectable);
 };
 static_assert(sizeof(Creed) == 0x6c, "Data type is of wrong size");
 

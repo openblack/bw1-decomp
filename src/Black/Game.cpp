@@ -165,6 +165,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <wchar.h>
+#include "Ball.h"
+#include "Reward.h"
+#include "Whale.h"
 
 #define RAND_SEED 0x88f89f
 
