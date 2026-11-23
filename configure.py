@@ -950,7 +950,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/Creche.cpp"),
             GameCodeObject(NonMatching, "Black/CreditsRoom.cpp"),
             GameCodeObject(Matching, "Black/CreditsRoomCamera.cpp"),
-            GameCodeObject(NonMatching, "Black/CreditText.cpp"),
+            GameCodeObject(Matching, "Black/CreditText.cpp"),
             GameCodeObject(NonMatching, "Black/Creed.cpp"),
             GameCodeObject(NonMatching, "Black/Dance.cpp"),
             GameCodeObject(NonMatching, "Black/DanceGroup.cpp"),
