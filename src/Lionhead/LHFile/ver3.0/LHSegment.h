@@ -6,10 +6,12 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <string.h> /* For memset */
 
+#define LH_SEGMENT_NAME_LENGTH 32
+
 struct LHSegment
 {
-	uint8_t  name[0x21]; /* 0x0 */
-	uint32_t size;       /* 0x24 */
+	char     name[LH_SEGMENT_NAME_LENGTH + 1]; /* 0x0 */
+	uint32_t size;                             /* 0x24 */
 	uint8_t* buffer;
 
 	// Constructors

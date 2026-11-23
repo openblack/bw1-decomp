@@ -3182,12 +3182,15 @@ Lionhead/LHFile/ver3.0/LHOSFile.cpp:
 	.text       start:0x007AC470 end:0x007AD150
 	.text$x     start:0x0089776C end:0x008977D0 align:4
 	.rdata      start:0x0098F774 end:0x0098F780
-	.data       start:0x00C1A828 end:0x00C1A8BC
+	.data       start:0x00C1A828 end:0x00C1A830
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x007AD150 end:0x007AE0B0
 	.text$x     start:0x008977D0 end:0x008977F0 align:4
+	.xdata$x    start:0x009AE158 end:0x009AE180 align:4
 	.CRT$XCU    start:0x009B74A8 end:0x009B74AC align:4
+	.data       start:0x00C1A830 end:0x00C1A8BC
+	.bss        start:0x00E729A4 end:0x00E729AC
 
 zlib/compress.c:
 	.text       start:0x007AE0B0 end:0x007AE180
@@ -4071,7 +4074,7 @@ Lionhead/LHLib/ver5.0/LHSystem.cpp:
 
 Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x007CB5C0 end:0x007CCC30
-	.text$x     start:0x008977F0 end:0x00897840 align:4
+	.text$x     start:0x008977F0 end:0x00897840 align:16
 	.CRT$XCU    start:0x009B74B0 end:0x009B74B8 align:4
 	.data       start:0x00C20000 end:0x00C2017C
 

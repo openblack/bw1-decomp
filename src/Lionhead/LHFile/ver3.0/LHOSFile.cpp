@@ -8,9 +8,6 @@
 #include <Lionhead/LHFile/ver3.0/LHFilePath.h>
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h>
 
-// the drive letter the game was launched from ('D' by default)
-char g_GameDriveCharacter = 'D';
-
 LHOSFile::LHOSFile()
 {
 	handle = NULL;

@@ -141,7 +141,7 @@ bool32_t LH_AudioSystem::LHHeapLoadWavFile(LH_SamplePlayOptions* options, LH_Ban
 		return false;
 	}
 
-	if (options->Bank->File->opened)
+	if (options->Bank->File->Opened)
 	{
 		if (sample->Size + heap_list::TotalAllocated <= heap_list::TotalAllowed)
 		{
