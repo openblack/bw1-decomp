@@ -11,6 +11,9 @@ struct LHJoypad
 	uint8_t  field_0x5;
 	uint8_t  field_0x6[0x2];
 	uint8_t  field_0x8[0x138];
+
+	// BW1W120 inlined BW1M119 0115dcc0 (LHCombined Release)
+	LHJoypad();
 };
 static_assert(sizeof(LHJoypad) == 0x140, "Data type is of wrong size");
 
@@ -18,6 +21,9 @@ struct LHJoypads
 {
 	struct LHJoypad joypads[0x2]; /* 0x0 */
 	uint32_t        count;        /* 0x280 */
+
+	// BW1W120 inlined BW1M119 0115dc40 (LHCombined Release)
+	LHJoypads();
 };
 static_assert(sizeof(LHJoypads) == 0x284, "Data type is of wrong size");
 

@@ -190,6 +190,8 @@ struct LHScreen
 };
 static_assert(sizeof(LHScreen) == 0x1b4, "Data type is of wrong size");
 
+#define LH_SCREEN_DEPTH_16 16
+
 // fabricated name
 // BW1W120 007dee00
 void LHResetFPU();

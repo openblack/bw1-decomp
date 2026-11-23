@@ -240,11 +240,11 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
 			result = (LH_RETURN)LHLoadDataToMemory(LHStringOps<T>::makechar(pram->text[0]),
-			                                       &LHSys::TheSystem.ScriptResources[pram->number[1]].data, NULL);
+			                                       &LHSys::TheSystem.mem.Banks[pram->number[1]].data, NULL);
 			if (result)
 				return result;
-			LHSys::TheSystem.ScriptResources[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_DATA;
-			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
+			LHSys::TheSystem.mem.Banks[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_DATA;
+			strcpy(LHSys::TheSystem.mem.Banks[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return result;
 		}
 		// TODO: the original shares a single "return result" tail and the type=3 +
@@ -256,7 +256,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				return LH_ERROR;
 			LHSprite* sprite = NEW(312) LHSprite;
 			result = LH_ERROR;
-			LHSys::TheSystem.ScriptResources[pram->number[1]].data = sprite;
+			LHSys::TheSystem.mem.Banks[pram->number[1]].data = sprite;
 			if (!sprite)
 				return result;
 			result = LHLoadABMP(LHStringOps<T>::makechar(pram->text[0]), sprite, 0);
@@ -265,8 +265,8 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				delete sprite;
 				return result;
 			}
-			LHSys::TheSystem.ScriptResources[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_SPRITE;
-			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
+			LHSys::TheSystem.mem.Banks[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_SPRITE;
+			strcpy(LHSys::TheSystem.mem.Banks[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return LH_OK;
 		}
 		case LH_SCRIPT_COMMAND_LOAD_SPRITES_DEPTH: {
@@ -274,7 +274,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				return LH_ERROR;
 			LHSpriteList* spriteList = NEW(333) LHSpriteList;
 			result = LH_ERROR;
-			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
+			LHSys::TheSystem.mem.Banks[pram->number[1]].data = spriteList;
 			if (!spriteList)
 				return result;
 			if (pram->number[2] != 16 && pram->number[2] != 24)
@@ -289,8 +289,8 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				delete spriteList;
 				return result;
 			}
-			LHSys::TheSystem.ScriptResources[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_SPRITE_LIST;
-			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
+			LHSys::TheSystem.mem.Banks[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_SPRITE_LIST;
+			strcpy(LHSys::TheSystem.mem.Banks[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return result;
 		}
 		case LH_SCRIPT_COMMAND_LOAD_SPRITES: {
@@ -298,7 +298,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				return LH_ERROR;
 			LHSpriteList* spriteList = NEW(358) LHSpriteList;
 			result = LH_ERROR;
-			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
+			LHSys::TheSystem.mem.Banks[pram->number[1]].data = spriteList;
 			if (!spriteList)
 				return result;
 			result =
@@ -309,8 +309,8 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				delete spriteList;
 				return result;
 			}
-			LHSys::TheSystem.ScriptResources[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_SPRITE_LIST;
-			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
+			LHSys::TheSystem.mem.Banks[pram->number[1]].type = LH_SCRIPT_RESOURCE_TYPE_SPRITE_LIST;
+			strcpy(LHSys::TheSystem.mem.Banks[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return result;
 		}
 		case LH_SCRIPT_COMMAND_LOAD_FONT_DEPTH:
