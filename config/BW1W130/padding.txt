@@ -451,6 +451,10 @@
 0x0042565B call_rel32 0x00403C49  # Arena
 0x004256D5 jmp_run 0x0042565B  # Arena
 0x004258B8 jmp_run 0x004256D5  # Arena
+0x004259A3 padding_bytes 00005ec204005f33c05ec20400  # Arrow
+0x00425B66 padding_bytes 0083c4088bc65ec20400  # Arrow
+0x00425BEA padding_bytes b808000000c3  # Arrow
+0x00425C6A padding_bytes b8b097a400c3  # Arrow
 0x00425C93 jmp_run 0x00425C65  # Artifact
 0x00425CF3 jmp_run 0x00425C93  # Artifact
 0x00425D76 jmp_run 0x00425CF3  # Artifact

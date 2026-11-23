@@ -1475,7 +1475,7 @@ void Creature::DisplayStatistics()
 				GGlobal::Global.debug.SetMessage(
 					CREATURE_DEBUG_CATEGORY, "Activity: %s on %s at %d, %d (priority: %.2f)",
 					CreatureInitialDesireInfo::GetInfo()[mind->agenda.CurrentPlan.CreatureDesire].Name,
-					AttributeType::ValueNames[activityObject->GetType()], activityObject->GetPos().MapX(),
+					CreatureBeliefTypeName[activityObject->GetType()], activityObject->GetPos().MapX(),
 					activityObject->GetPos().MapZ(), mental->agenda.CurrentPlan.AgendaPriority);
 			}
 			else
@@ -1491,12 +1491,12 @@ void Creature::DisplayStatistics()
 			    mind->agenda.CurrentPlan.ObjectToActOn != mind->agenda.CurrentPlan.ActivityObject)
 			{
 				sprintf(text + strlen(text), " on %s",
-				        AttributeType::ValueNames[mind->agenda.CurrentPlan.ObjectToActOn->GetType()]);
+				        CreatureBeliefTypeName[mind->agenda.CurrentPlan.ObjectToActOn->GetType()]);
 			}
 			if (mind->agenda.CurrentPlan.ObjectToUse != NULL)
 			{
 				sprintf(text + strlen(text), " using %s",
-				        AttributeType::ValueNames[mind->agenda.CurrentPlan.ObjectToUse->GetType()]);
+				        CreatureBeliefTypeName[mind->agenda.CurrentPlan.ObjectToUse->GetType()]);
 			}
 			sprintf(text + strlen(text), " (priority %.2f)", mind->agenda.CurrentPlan.ActionPriority);
 			GGlobal::Global.debug.SetMessage(CREATURE_DEBUG_CATEGORY, text);

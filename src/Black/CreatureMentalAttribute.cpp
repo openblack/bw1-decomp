@@ -159,7 +159,7 @@ void AttributeType::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 
 const char* AttributeType::ValueName(unsigned long value)
 {
-	return ValueNames[value];
+	return Creature::CreatureBeliefTypeName[value];
 }
 
 void AttributeLife::UpdateValue(GameThingWithPos* thing, GPlayer* player)

@@ -35,8 +35,9 @@
 #include "PhysicsObject.h"
 #include "MobileStaticInfo.h"
 #include "StreetLantern.h"
-#include "ScriptHighlightInfo.h"
+#include "SingleMapFixedInfo.h"
 #include "AbodeInfo.h"
+#include "ScriptHighlightInfo.h"
 #include "ScriptHighlight.h"
 #include "SoundGuidance.h"
 #ifndef VERSION_BW1W100

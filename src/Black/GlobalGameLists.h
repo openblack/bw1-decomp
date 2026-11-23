@@ -172,7 +172,6 @@ public:
 #include "AnimatedStatic.h"    /* For struct AnimatedStatic */
 #include "Arena.h"             /* For struct GArena */
 #include "Artifact.h"          /* For struct TownArtifact */
-#include "Ball.h"              /* For struct Ball */
 #include "BaseInfo.h"          /* For struct GBaseInfo */
 #include "BigForest.h"         /* For struct BigForest */
 #include "BuildingSite.h"      /* For struct BuildingSite */
@@ -194,14 +193,11 @@ public:
 #include "MagicFireBall.h"     /* For struct MagicFireBall */
 #include "MapShield.h"         /* For struct MapShield */
 #include "Mist.h"              /* For struct Mist */
-#include "MobileObject.h"      /* For struct MobileObject */
 #include "MultiMapFixed.h"     /* For struct MultiMapFixed */
 #include "Object.h"            /* For struct Object */
 #include "ParticleContainer.h" /* For struct GParticleContainer */
-#include "PileFood.h"          /* For struct PileFood */
 #include "Player.h"            /* For struct GPlayer */
 #include "Reaction.h"          /* For struct Reaction */
-#include "Reward.h"            /* For struct Reward */
 #include "ScriptHighlight.h"   /* For struct ScriptHighlight */
 #include "SoundTag.h"          /* For struct SoundTag */
 #include "Spell.h"             /* For struct Spell */
@@ -214,6 +210,5 @@ public:
 #include "Villager.h"          /* For struct Villager */
 #include "WayPoint.h"          /* For struct WayPoint */
 #include "WeatherThing.h"      /* For struct WeatherThing */
-#include "Whale.h"             /* For struct Whale */
 
 #endif /* BW1_DECOMP_GLOBAL_GAME_LISTS_INCLUDED_H */

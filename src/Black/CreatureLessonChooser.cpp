@@ -242,17 +242,19 @@ char* CreatureLessonChooser::CalculateActionText()
 	sprintf(text, "Feedback for Action: %s", CreatureInitialDesireInfo::GetInfo()[context.plan.CreatureDesire].Name);
 	if (context.plan.ActivityObject != NULL)
 	{
-		sprintf(text + strlen(text), " on %s", AttributeType::ValueNames[context.plan.ActivityObject->GetType()]);
+		sprintf(text + strlen(text), " on %s",
+		        Creature::CreatureBeliefTypeName[context.plan.ActivityObject->GetType()]);
 	}
 	sprintf(text + strlen(text), ": ");
 	sprintf(text + strlen(text), CreatureAgenda::ActionTable[context.plan.creature_action].Name);
 	if (context.plan.ObjectToActOn->Pointer != Mental->creature.Get())
 	{
-		sprintf(text + strlen(text), " on %s", AttributeType::ValueNames[context.plan.ObjectToActOn->GetType()]);
+		sprintf(text + strlen(text), " on %s", Creature::CreatureBeliefTypeName[context.plan.ObjectToActOn->GetType()]);
 	}
 	if (context.plan.ObjectToUse != NULL)
 	{
-		sprintf(text + strlen(text), " using %s", AttributeType::ValueNames[context.plan.ObjectToUse->GetType()]);
+		sprintf(text + strlen(text), " using %s",
+		        Creature::CreatureBeliefTypeName[context.plan.ObjectToUse->GetType()]);
 	}
 	return text;
 }
@@ -274,7 +276,7 @@ char* CreatureLessonChooser::CalculateActivityObjectLessonText()
 	GetFeedbackText(feedback);
 	CreatureContext* context = Mental->learning.GetSelectedContext();
 	sprintf(text, "%s %s on %s", feedback, CreatureInitialDesireInfo::GetInfo()[context->plan.CreatureDesire].Name,
-	        AttributeType::ValueNames[context->plan.ActivityObject->GetType()]);
+	        Creature::CreatureBeliefTypeName[context->plan.ActivityObject->GetType()]);
 	return text;
 }
 
@@ -285,7 +287,7 @@ char* CreatureLessonChooser::CalculateObjectToActOnLessonText()
 	GetFeedbackText(feedback);
 	CreatureContext* context = Mental->learning.GetSelectedContext();
 	sprintf(text, "%s choosing %s when having %s", feedback,
-	        AttributeType::ValueNames[context->plan.ObjectToActOn->GetType()],
+	        Creature::CreatureBeliefTypeName[context->plan.ObjectToActOn->GetType()],
 	        CreatureInitialDesireInfo::GetInfo()[context->plan.CreatureDesire].Name);
 	return text;
 }
@@ -309,7 +311,7 @@ char* CreatureLessonChooser::CalculateObjectToUseLessonText()
 	GetFeedbackText(feedback);
 	CreatureContext* context = Mental->learning.GetSelectedContext();
 	sprintf(text, "%s choosing %s when trying to %s", feedback,
-	        AttributeType::ValueNames[context->plan.ObjectToUse->GetType()],
+	        Creature::CreatureBeliefTypeName[context->plan.ObjectToUse->GetType()],
 	        CreatureAgenda::ActionTable[context->plan.creature_action].Name);
 	return text;
 }

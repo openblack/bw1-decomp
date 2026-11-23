@@ -31,6 +31,12 @@ public:
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00606cd0 BW1M119 013c2680
 	virtual bool32_t BlocksTownClearArea() const;
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0061f540 BW1MCI119 013ea8d0
+	virtual bool32_t AreWeThere(const MapCoords& coords, float extra_distance);
+	// BW1WCI 00426d40 BW1MCI119 010c2000
+	virtual int GetSpeed() const { return 0; }
+#endif
 	// BW1W120 00425b00 BW1M119 010b0820
 	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1) { return true; }
 	// BW1W120 00416f50 BW1M119 010b0870
@@ -40,12 +46,6 @@ public:
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 00416f60 BW1M119 010b08d0
 	virtual uint32_t ApplyOnlyAfterReleased() { return 1; }
-#ifdef VERSION_BW1WCI
-	// BW1WCI 0061f540 BW1MCI119 013ea8d0
-	virtual bool32_t AreWeThere(const MapCoords& coords, float extra_distance);
-	// BW1WCI 00426d40 BW1MCI119 010c2000
-	virtual int GetSpeed() const { return 0; }
-#endif
 
 	// Constructors
 

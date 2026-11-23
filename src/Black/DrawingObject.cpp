@@ -8,6 +8,7 @@
 #include <math.h> /* For log */
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include "Creed.h"
 
 static float OneOverLogHalf = 1.0f / (float)log(0.5);
 

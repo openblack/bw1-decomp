@@ -767,6 +767,7 @@ static HelpDude* s_TalkingDude;
 #define HELPDUDE_VOICE_SAMPLES 0x200
 static float s_VoiceBuffer[HELPDUDE_VOICE_SAMPLES * 2];
 
+#ifndef VERSION_BW1WCI
 LH_AudioBank* HelpDude::SetSentenceBank(LH_AudioSystem* audio_system, LH_AudioBank* bank)
 {
 	SentenceBank = bank;
@@ -813,6 +814,7 @@ void HelpDude::FreeSentenceBank()
 		CurrentSentence = 0;
 	}
 }
+#endif
 
 void HelpDude::SaySentence(int sample, bool32_t dont_interrupt, int delay)
 {
@@ -3445,7 +3447,9 @@ void HelpDude::SaveAnims(LHFile* file)
 
 void HelpDude::Uninit(bool reinit)
 {
+#ifndef VERSION_BW1WCI
 	FreeSentenceBank();
+#endif
 	if (s_SampleData)
 	{
 		delete[] s_SampleData;

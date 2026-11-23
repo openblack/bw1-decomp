@@ -414,6 +414,15 @@ add_relocations:
     type: x86_abs32
     target: '?Definitions@GContainerInfo@@2PAV1@A'
     addend: 0x50
+# The atexit thunks of CreatureMentalMisc's static arrays start from one past their last entry.
+  - source: 0x004E17A7
+    type: x86_abs32
+    target: '?NormalActionKnownAboutInfo@CreatureActionKnownAboutEntry@@2PAV1@A'
+    addend: 0x270
+  - source: 0x004E1847
+    type: x86_abs32
+    target: '?MagicActionKnownAboutInfo@CreatureMagicActionKnownAboutEntry@@2PAV1@A'
+    addend: 0x1260
 # MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
   - source: 0x0052B837
     type: x86_abs32
