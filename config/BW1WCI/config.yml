@@ -530,6 +530,10 @@ add_relocations:
     type: x86_abs32
     target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
     addend: 0x316
+# AttributeCreatureWhatHeIsCarrying::ValueName indexes GDebug::ObjectTypeNames by an immediate.
+  - source: 0x004E4518
+    type: x86_abs32
+    target: '?ObjectTypeNames@GDebug@@2QAY0EA@$$CBDA'
 # The atexit thunks of CreatureMentalMisc's static arrays start from one past their last entry.
   - source: 0x004F35B7
     type: x86_abs32

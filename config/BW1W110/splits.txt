@@ -597,7 +597,7 @@ Black/CreatureMentalAttribute.cpp:
 	.text       start:0x004D24C0 end:0x004D2E40
 	.rdata      start:0x008BF97C end:0x008BF98C
 	.CRT$XCU    start:0x009B6334 end:0x009B633C align:4
-	.data       start:0x009CCEF4 end:0x00BCE034
+	.data       start:0x009CCEF4 end:0x00BCE04D
 	.bss        start:0x00C71DA8 end:0x00C71FF0
 
 Black/CreatureMentalAttributeTest.cpp:
@@ -605,7 +605,7 @@ Black/CreatureMentalAttributeTest.cpp:
 	.rdata      start:0x008BF98C end:0x008BFDF0
 	.rdata$r    start:0x0099A3A0 end:0x0099A904
 	.CRT$XCU    start:0x009B633C end:0x009B6344 align:4
-	.data       start:0x00BCE038 end:0x00BCE968
+	.data       start:0x00BCE050 end:0x00BCE968
 	.bss        start:0x00C71FF0 end:0x00C731C8
 
 Black/CreatureMentalBelief.cpp:

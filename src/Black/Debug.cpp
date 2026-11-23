@@ -5,12 +5,43 @@
 
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>  /* For LHSys */
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl> /* For LHTimer */
+#include <chlasm/Enum.h>                     /* For OBJECT_TYPE_LAST */
 
 #include "ColourConstants.h" /* For White */
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 
 static const float GDebugInitialValue2d284 = 1000.0f;
+
+const char GDebug::ObjectTypeNames[OBJECT_TYPE_LAST][64] = {
+	"Abode",           //
+	"Creature",        //
+	"Villager",        //
+	"Magic",           //
+	"Animal",          //
+	"Lightning",       //
+	"ForestTree",      //
+	"FirewallSection", //
+	"CitadelPart",     //
+	"Terrain",         //
+	"MagicLiving",     //
+	"Wall",            //
+	"FakeWall",        //
+	"SpellSeed",       //
+	"Boundry",         //
+	"Ball",            //
+	"Shot",            //
+	"ComputerPlayer",  //
+	"Field",           //
+	"Feature",         //
+	"MobileObject",    //
+	"Pot",             //
+	"Football",        //
+	"Ground",          //
+	"Prayer",          //
+	"ShowNeed",        //
+	"Dummy",           //
+};
 
 GDebug::GDebug()
 {
