@@ -135,18 +135,18 @@ uint16_t LH3DTech::g_list_indices_2[LH3D_MAX_POINTS];
 Vertex3D      LH3DTech::g_cache_t_points[LH3D_MAX_POINTS];
 unsigned long LH3DTech::g_cache_flags[LH3D_MAX_POINTS];
 #endif
-LH3DCamera LH3DTech::g_camera;
-LHMatrix   g_mat_paper;
-LHMatrix   LH3DTech::g_copy_of_world_to_clipping;
-LHMatrix   LH3DTech::g_world_to_camera;
-LHMatrix   LH3DTech::g_camera_to_world;
-LHMatrix   LH3DTech::g_world_to_local;
-LHMatrix   LH3DTech::g_mist;
-LHPoint    DEFAULT_SUN(-500000.0f, 500000.0f, -500000.0f);
-LHPoint    LH3DTech::g_sun_light(DEFAULT_SUN);
-LHPoint    LH3DTech::g_sun_light_clipping(0.0f, 1.0f, 0.0f);
-LHPoint    LH3DTech::g_ambient_wind_direction(1.0f, 0.0f, 0.0f);
-LHTimer    LH3DTech::g_timer;
+LH3DCameraView LH3DTech::g_camera;
+LHMatrix       g_mat_paper;
+LHMatrix       LH3DTech::g_copy_of_world_to_clipping;
+LHMatrix       LH3DTech::g_world_to_camera;
+LHMatrix       LH3DTech::g_camera_to_world;
+LHMatrix       LH3DTech::g_world_to_local;
+LHMatrix       LH3DTech::g_mist;
+LHPoint        DEFAULT_SUN(-500000.0f, 500000.0f, -500000.0f);
+LHPoint        LH3DTech::g_sun_light(DEFAULT_SUN);
+LHPoint        LH3DTech::g_sun_light_clipping(0.0f, 1.0f, 0.0f);
+LHPoint        LH3DTech::g_ambient_wind_direction(1.0f, 0.0f, 0.0f);
+LHTimer        LH3DTech::g_timer;
 
 #ifdef VERSION_BW1W100
 float LH3DTech::g_max_screen[2] = {639.0f, 479.0f};
