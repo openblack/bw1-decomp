@@ -3837,6 +3837,12 @@
 0x008721B5 jmp_run 0x00871D13  # DynamicLightAndShadow
 0x008721D1 jmp_run 0x008721B5  # DynamicLightAndShadow
 0x0087261B jmp_run 0x008721D1  # DynamicLightAndShadow
+0x00872658 jmp_run 0x00872618  # LH3DCamera
+0x008728D8 jmp_run 0x00872658  # LH3DCamera
+0x00872BC7 copy_run 0x008728D8  # LH3DCamera
+0x00872C3A jmp_run 0x00872BC7  # LH3DCamera
+0x00872CB9 jmp_run 0x00872C3A  # LH3DCamera
+0x008731E2 copy_run 0x00872CB9  # LH3DCamera
 0x00874DA3 copy_run 0x00874506  # LHPoint
 0x00874E74 jmp_run 0x00874DA3  # LHPoint
 0x00874EC7 copy_run 0x00874E74  # LHPoint
