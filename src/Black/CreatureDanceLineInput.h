@@ -4,81 +4,127 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include <assert.h>
+#include <re_common.h> /* For bool32_t */
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
 
-// TODO: Original Windows-only names are unrecovered. The analysis arrays are
-// established by 00437360/00437430; Init inlines their constructor at 0054f5a6.
+#define LINE_INPUT_HISTORY_COUNT       0x400
+#define LINE_INPUT_WINDOW_SIZE         0x200
+#define LINE_INPUT_HOP_SIZE            0x80
+#define LINE_INPUT_BIN_COUNT           (LINE_INPUT_WINDOW_SIZE / 2)
+#define LINE_INPUT_FIRST_FLUX_BIN      0x20
+#define LINE_INPUT_BEAT_COUNT          0x20
+#define LINE_INPUT_TEMPO_BIN_COUNT     0xc8
+#define LINE_INPUT_TEMPO_KERNEL_SIZE   11
+#define LINE_INPUT_MIN_TEMPO           81
+#define LINE_INPUT_MAX_TEMPO           163
+#define LINE_INPUT_DEFAULT_TEMPO       120
+#define LINE_INPUT_DEFAULT_THRESHOLD   1000.0f
+#define LINE_INPUT_MAX_USABLE_GAIN     50.0f
+#define LINE_INPUT_DETECTION_TIMEOUT   4000
+#define LINE_INPUT_STALE_DETECTION_AGE 10000
+#define LINE_INPUT_SAMPLE_RATE         22050
+#define LINE_INPUT_CHANNEL_COUNT       1
+#define LINE_INPUT_HOP_SECONDS         ((float)LINE_INPUT_HOP_SIZE / LINE_INPUT_SAMPLE_RATE)
+#define LINE_INPUT_BITS_PER_SAMPLE     16
+#define LINE_INPUT_BYTES_PER_SAMPLE    (LINE_INPUT_BITS_PER_SAMPLE / 8)
+#define LINE_INPUT_BUFFER_COUNT        2
+#define LINE_INPUT_BUFFER_SIZE         0x200
+#define LINE_INPUT_SECONDS_PER_MINUTE  60.0f
+#define LINE_INPUT_ENERGY_SMOOTHING    0.9f
+#define LINE_INPUT_PEAK_DECAY          0.01f
+#define LINE_INPUT_MIN_PEAK_ENERGY     0.01f
+#define LINE_INPUT_SPECTRUM_SMOOTHING  0.1f
+#define LINE_INPUT_FLUX_DECAY          0.05f
+#define LINE_INPUT_BEAT_FLUX_RATIO     1.5
+#define LINE_INPUT_MIN_BEAT_INTERVAL   4
+#define LINE_INPUT_SYNC_MARGIN_SCALE   0.004f
+#define LINE_INPUT_SYNC_MARGIN_MAX     0.2f
+#define LINE_INPUT_HARMONIC_WEIGHT     0.3f
+#define LINE_INPUT_TEMPO_PEAK_RATIO    2.5f
+
 struct LineInputAnalysis
 {
-	float History[0x400];
-	int   HistoryIndex;
-	float Threshold;
-	float field_0x1008;
-	float Transform[0x400];
-	float Spectrum[0x200];
-	float Samples[0x200];
-	int   field_0x300c;
-	int   Active;
-	int   field_0x3014;
-	int   field_0x3018;
-	float field_0x301c;
-	float field_0x3020;
-	float field_0x3024;
-	float field_0x3028;
-	int   field_0x302c;
-	int   Tempo;
-	int   field_0x3034;
-	int   field_0x3038;
-	float field_0x303c;
-	float StrengthHistory[0x20];
-	int   TempoHistory[0x20];
-	float field_0x3140[0x20];
-	float TempoBins[0xc8];
-	DWORD LastDetectionTick;
-	float field_0x34e4;
+	float    History[LINE_INPUT_HISTORY_COUNT];
+	int      HistoryIndex;
+	float    Threshold;
+	float    LastEnergy;
+	float    Transform[LINE_INPUT_WINDOW_SIZE * 2];
+	float    Spectrum[LINE_INPUT_WINDOW_SIZE];
+	float    Samples[LINE_INPUT_WINDOW_SIZE];
+	int      SampleCount;
+	bool32_t Active;
+	int      LastTempo;
+	int      BeatCount;
+	float    Energy;
+	float    NormalizedEnergy;
+	float    PeakEnergy;
+	float    Gain;
+	int      BeatSyncCount;
+	int      Tempo;
+	int      FramesSinceBeat;
+	int      TempoHistoryIndex;
+	float    BeatPhase;
+	float    StrengthHistory[LINE_INPUT_BEAT_COUNT];
+	int      TempoHistory[LINE_INPUT_BEAT_COUNT];
+	float    MomentHistory[LINE_INPUT_BEAT_COUNT];
+	float    TempoBins[LINE_INPUT_TEMPO_BIN_COUNT];
+	DWORD    LastDetectionTick;
+	float    PeakStrength;
 	LineInputAnalysis()
 	{
 		memset(this, 0, sizeof(*this));
-		Threshold = 1000.0f;
-		Tempo = 120;
-		fn_00437340();
+		Threshold = LINE_INPUT_DEFAULT_THRESHOLD;
+		Tempo = LINE_INPUT_DEFAULT_TEMPO;
+		Start();
 	}
-	~LineInputAnalysis() { fn_004373E0(); }
-	// BW1W120 00437340
-	void fn_00437340();
-	// BW1W120 004373e0
-	void fn_004373E0();
+	~LineInputAnalysis() { Stop(); }
+	// BW1W120 004371a0 BW1M119 null
+	void four1(float* data, int complex_count, int isign);
+	// BW1W120 00437340 BW1M119 null
+	void Start();
+	// BW1W120 00437360 BW1M119 null
+	void Reset();
+	// BW1W120 004373e0 BW1M119 null
+	void Stop();
+	// BW1W120 00437400 BW1M119 null
+	void Restart();
+	// BW1W120 00437430 BW1M119 null
+	void Analyse();
+	// BW1W120 004378f0 BW1M119 null
+	void AddSamples(short* samples, int count);
 };
 
 struct CreatureDanceLineInput
 {
 	WAVEFORMATEX      Format;
-	int               Active; /* 0x14 */
-	int               field_0x18;
-	int               field_0x1c;
-	HWAVEIN           Handle; /* 0x20 */
-	void*             Buffer;
-	LineInputAnalysis Analysis; /* 0x28 */
-	uint32_t          field_0x3510;
-	uint32_t          field_0x3514;
-	uint32_t          field_0x3518; // Not initialized by the original constructor.
+	bool32_t          Active;
+	int               DeviceId;
+	int               BufferIndex;
+	HWAVEIN           Handle;
+	WAVEHDR*          Headers;
+	LineInputAnalysis Analysis;
+	float             LineBeat;
+	float             DanceBeat;
+	float             BeatsPerMinute;
 	CreatureDanceLineInput()
 	{
-		Active = 0;
-		field_0x1c = 0;
-		field_0x18 = 0;
+		Active = false;
+		BufferIndex = 0;
+		DeviceId = 0;
 		Handle = 0;
-		Buffer = 0;
-		field_0x3510 = 0;
-		field_0x3514 = 0;
+		Headers = NULL;
+		LineBeat = 0.0f;
+		DanceBeat = 0.0f;
 	}
-	~CreatureDanceLineInput() { fn_00437C00(); }
-	// BW1W120 00437a40
-	void fn_00437A40();
-	// BW1W120 00437c00
-	void fn_00437C00();
+	~CreatureDanceLineInput() { Close(); }
+	// BW1W120 004379b0 BW1M119 null
+	void HandleWaveIn(HWAVEIN hwi, UINT msg, DWORD param1, DWORD param2);
+	// BW1W120 00437a40 BW1M119 null
+	void Open();
+	// BW1W120 00437c00 BW1M119 null
+	void Close();
 };
 
 static_assert(sizeof(LineInputAnalysis) == 0x34e8, "LineInputAnalysis size is incorrect");

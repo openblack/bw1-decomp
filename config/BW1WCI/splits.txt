@@ -241,12 +241,13 @@ Black/Base.cpp:
 
 Black/BaseInfo.cpp:
 	.text       start:0x0043D4C0 end:0x0043DFD0
-	.rdata      start:0x008F1590 end:0x008F1600
+	.rdata      start:0x008F1590 end:0x008F15FC
 	.CRT$XCU    start:0x00A36114 end:0x00A3611C align:4
+	.bss        start:0x00CCC318 end:0x00CCC320
 
 Black/Belief.cpp:
 	.text       start:0x0043DFD0 end:0x0043EEE0
-	.rdata      start:0x008F1600 end:0x008F165C
+	.rdata      start:0x008F15FC end:0x008F165C
 	.rdata$r    start:0x00A18980 end:0x00A18A38
 	.CRT$XCU    start:0x00A3611C end:0x00A36130 align:4
 	.data       start:0x00A3CD10 end:0x00A3CD90

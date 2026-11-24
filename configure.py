@@ -855,7 +855,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Balance.cpp"),
             GameCodeObject(Matching, "Black/Ball.cpp"),
             GameCodeObject(Matching, "Black/Base.cpp", pch=False),
-            GameCodeObject(NonMatching, "Black/BaseInfo.cpp"),
+            GameCodeObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "Black/BaseInfo.cpp"),
             GameCodeObject(Matching, "Black/Belief.cpp", pch=False),
             GameCodeObject(Matching, "Black/BigForest.cpp"),
             GameCodeObject(NonMatching, "Black/Bonfire.cpp"),
