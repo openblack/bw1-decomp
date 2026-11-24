@@ -232,8 +232,8 @@ static inline void TransformToClipping(Vertex3D* point, const LHPoint& position,
 void LH3DPrimitive::DrawForMouse()
 {
 	g_current_primitive = this;
-	LH3DVertex* vertex = Vertices;
 	Vertex3D*   point = LH3DTech::g_cache_t_points;
+	LH3DVertex* vertex = Vertices;
 	int         start = 0;
 	float       minX = LH3D_HAND_BOUNDS_START;
 	float       minY = LH3D_HAND_BOUNDS_START;
