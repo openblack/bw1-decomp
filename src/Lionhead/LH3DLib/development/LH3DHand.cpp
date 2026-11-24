@@ -229,6 +229,13 @@ static inline void TransformToClipping(Vertex3D* point, const LHPoint& position,
 	point->rhw = matrix->m[2] * position.x + matrix->m[5] * position.y + matrix->m[8] * position.z + matrix->m[11];
 }
 
+static inline void AddTriangleIndices(uint16_t a, uint16_t b, uint16_t c)
+{
+	LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
+	LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
+	LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
+}
+
 void LH3DPrimitive::DrawForMouse()
 {
 	g_current_primitive = this;
@@ -247,13 +254,13 @@ void LH3DPrimitive::DrawForMouse()
 		LHMatrix         inverse;
 		inverse.SetInverse(*matrix);
 		LHPoint lightDirection;
-		lightDirection.x = inverse._11 * LH3DTech::GetSun().x + inverse._21 * LH3DTech::GetSun().y +
-		                   inverse._31 * LH3DTech::GetSun().z + inverse._41;
-		lightDirection.y = inverse._12 * LH3DTech::GetSun().x + inverse._22 * LH3DTech::GetSun().y +
-		                   inverse._32 * LH3DTech::GetSun().z + inverse._42;
-		lightDirection.z = inverse._13 * LH3DTech::GetSun().x + inverse._23 * LH3DTech::GetSun().y +
-		                   inverse._33 * LH3DTech::GetSun().z + inverse._43;
-		float norm = lightDirection.GetNorm();
+		lightDirection.x = (inverse._11 * LH3DTech::GetSun().x + inverse._21 * LH3DTech::GetSun().y +
+		                    inverse._31 * LH3DTech::GetSun().z + inverse._41);
+		lightDirection.y = (inverse._12 * LH3DTech::GetSun().x + inverse._22 * LH3DTech::GetSun().y +
+		                    inverse._32 * LH3DTech::GetSun().z + inverse._42);
+		lightDirection.z = (inverse._13 * LH3DTech::GetSun().x + inverse._23 * LH3DTech::GetSun().y +
+		                    inverse._33 * LH3DTech::GetSun().z + inverse._43);
+		float norm = (lightDirection.GetNorm());
 		lightDirection *= InverseSquareRoot(norm);
 		LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
 		LH3DTech::g_local_to_clipping.PreMultiply(*matrix);
@@ -311,8 +318,9 @@ void LH3DPrimitive::DrawForMouse()
 	maxX = (float)(FloatToInt(maxX) + 1);
 	maxY = (float)(FloatToInt(maxY) + 1);
 
+	uint16_t pointsCount = NumVertices;
 	LH3DTech::g_index_count = 0;
-	LH3DTech::g_points_count = NumVertices;
+	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
 	int           j;
 	uint16_t      a;
@@ -322,12 +330,7 @@ void LH3DPrimitive::DrawForMouse()
 	{
 		for (j = 0; j < NumTriangles; triangle++, j++)
 		{
-			a = triangle->A;
-			b = triangle->B;
-			c = triangle->C;
-			LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
-			LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
-			LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
+			AddTriangleIndices(triangle->A, triangle->B, triangle->C);
 		}
 	}
 	else

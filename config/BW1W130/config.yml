@@ -1901,6 +1901,22 @@ add_relocations:
     type: x86_abs32
     target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
     addend: 0x30
+# LH3DHand::Draw compares its row pointer, biased into the row, against one past LH3DHand::g_line's end.
+  - source: 0x0086832A
+    type: x86_abs32
+    target: '?g_line@LH3DHand@@2PAULH3DHandLine@@A'
+    addend: 0xD98
+# LH3DPrimitive::DrawForMouse (LH3DHand.cpp): the backface test's g_cache_t_points corners (dtk leaves the lea
+# displacements unrelocated).
+  - source: 0x00868856
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x0086885C
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x0086886B
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
 # LH3DLandscape::BlendCountry128 compares against the end of g_coeff plus 8 (dtk leaves the immediate unrelocated).
   - source: 0x00879590
     type: x86_abs32
