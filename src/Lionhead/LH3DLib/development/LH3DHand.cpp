@@ -7,7 +7,7 @@
 
 #include "LH3DMath.h"        /* For FloatToInt, InverseSquareRoot */
 #include "LH3DMesh.h"        /* For LH3DMesh */
-#include "LH3DPrimitive.h"   /* For LH3DPrimitive, TransformPointBy */
+#include "LH3DPrimitive.h"   /* For LH3DPrimitive, LH3D_LIGHT_MAX */
 #include "LH3DRender.h"      /* For LH3DRender */
 #include "LH3DTech.h"        /* For LH3DTech */
 #include "LH3DVertexGroup.h" /* For LH3DVertexGroup */
