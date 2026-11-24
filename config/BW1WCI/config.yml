@@ -280,6 +280,9 @@ block_relocations:
   - source: 0x00856508
 # LH3DTexture::CreateBufferSurcfaces's surface caps 0x401808 are an immediate, not a pointer into code.
   - source: 0x00856E05
+# Leash::GetNodeColour's 0xffffff colour mask and Leash::Draw's 0xff0000 read as addresses inside NewCols.
+  - source: 0x00866669
+  - source: 0x00866BBB
 # The 0x00FF0000 channel masks in TextureRef::DrawCutAroundIntersectionPoint read as addresses inside NewCols.
   - source: 0x00885F0E
   - source: 0x00885F14

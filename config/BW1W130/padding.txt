@@ -3785,6 +3785,16 @@
 0x00847E0A copy_run 0x00847DB7  # LH3DVideo
 0x00847E45 copy_run 0x00847E0A  # LH3DVideo
 0x00847E67 copy_run 0x00847E45  # LH3DVideo
+0x0084D642 copy_run 0x0084D541  # Leash
+0x0084D74B call_rel32 0x004034F9  # Leash
+0x0084D766 copy_run 0x0084D74B  # Leash
+0x0084D943 copy_run 0x0084D766  # Leash
+0x0084D9BB call_rel32 0x004034F9  # Leash
+0x0084DE47 copy_run 0x0084D9BB  # Leash
+0x0084DEA7 copy_run 0x0084DE47  # Leash
+0x0084DEF3 jmp_run 0x0084DEA7  # Leash
+0x0084E335 jmp_run 0x0084DEF3  # Leash
+0x0084EB41 copy_run 0x0084E335  # Leash
 0x008681A9 copy_run 0x00867051  # LH3DHand
 0x00868341 copy_run 0x008681A9  # LH3DHand
 0x00868AF4 jmp_run 0x00868341  # LH3DHand
