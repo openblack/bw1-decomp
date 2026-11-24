@@ -303,6 +303,9 @@ block_relocations:
 # "l3d" of "Data\eyelid.l3d".
   - source: 0x00A4043C
   - source: 0x00A40E28
+# ExplorationRegionTypeInfo::Table's "Citadel" ends in "del\0", which reads as 0x006C6564, inside
+# UR_FireWorkSimple::DefineProperties.
+  - source: 0x00C4FA34
 # UTF-16 text ("Pl", "pl", "tl", "dl") reads as 0x006C00xx, inside PSysProperties'
 # static ModifierCreate_UR_Trail; these words are not pointers.
   - source: 0x00C59900

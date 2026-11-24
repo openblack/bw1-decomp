@@ -219,6 +219,10 @@
 0x004DEC9A call_indirect 0x008A920C  # CreatureMentalDesireSourceValues: __imp__SetEndOfFile@4
 0x004DF08B call_rel32 0x00401879  # CreatureMentalDesireTests
 0x004DF26B call_rel32 0x00401879  # CreatureMentalEditor
+0x004DF3CB call_rel32 0x00401879  # CreatureMentalExploration
+0x004DF4EA call_indirect 0x008A9754  # CreatureMentalExploration: __imp_?LHSampleSet3DPosition@LH_AudioSystem@@QAEPAULH_SampleInfo@@PAU2@MMMH@Z
+0x004DF61A call_indirect 0x008A993C  # CreatureMentalExploration: __imp__BinkGetRealtime@12
+0x004DFBCA call_indirect 0x008A9970  # CreatureMentalExploration: __imp__GetOpenFileNameA@4
 0x004E028B call_rel32 0x00401879  # CreatureMentalLearn
 0x004E0FBB call_rel32 0x00401879  # CreatureMentalLearn
 0x004E152A call_indirect 0x008A9024  # CreatureMentalLearn: __imp__DirectDrawCreateEx@4

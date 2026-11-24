@@ -7,13 +7,11 @@
 #include "CreatureExplorationMap.h" /* For REGION_TYPE_LAST */
 #include "MapCoords.h"              /* For struct MapCoords */
 
-#define EXPLORATION_REGION_TYPE_NAME_LENGTH 0x40
-
 struct ExplorationRegionTypeInfo
 {
 	bool32_t (MapCoords::*DoesRegionContain)();
 	void (MapCoords::*GetExactMapSquare)();
-	char Name[EXPLORATION_REGION_TYPE_NAME_LENGTH];
+	char Name[64];
 
 	// BW1W120 00bdf610
 	static ExplorationRegionTypeInfo Table[REGION_TYPE_LAST];
