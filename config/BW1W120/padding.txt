@@ -137,6 +137,17 @@
 0x004407CB call_rel32 0x00401879  # BWLan
 0x0044081B call_rel32 0x00401879  # BWLan
 0x0044092A call_indirect 0x008A9984  # BWLan: __imp_?GetDefaultEntryIndex@Dialup@@QAEHXZ
+0x0044164B call_rel32 0x00401879  # Camera
+0x00441B8A call_indirect 0x008A9224  # Camera: __imp__FindClose@4
+0x00441D3B call_rel32 0x00401879  # Camera
+0x00441EDA call_indirect 0x008A9784  # Camera: __imp_?LHRedbookGetHandle@LH_AudioSystem@@QAEIXZ
+0x00441F1A call_indirect 0x008A9948  # Camera: __imp__BinkSetSoundSystem@8
+0x00441F4A call_indirect 0x008A9970  # Camera: __imp__GetOpenFileNameA@4
+0x004427AA call_indirect 0x008A9024  # Camera: __imp__DirectDrawCreateEx@4
+0x0044285B call_rel32 0x00401879  # Camera
+0x00442AFA call_indirect 0x008A9034  # Camera: __imp__DirectInputCreateA@4
+0x0044306A call_indirect 0x008A9048  # Camera: __imp__TextOutA@20
+0x004430DA call_indirect 0x008A9328  # Camera: __imp__LHEditBox__YAHPBDKKKK0HPAD_Z@4
 0x0044ABCA call_indirect 0x008A9190  # CameraModeDance: __imp__RemoveDirectoryA@4
 0x0044AC8B call_rel32 0x00401879  # CameraModeDance
 0x0044ACCA call_indirect 0x008A96C4  # CameraModeDance: __imp__LHWaveGetQMixerDirectSoundObject...

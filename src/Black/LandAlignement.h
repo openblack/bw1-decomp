@@ -9,6 +9,8 @@ public:
 	static float VisualTime;
 	// BW1W120 00bf337c
 	static float TargetAlignement;
+	// BW1W120 00d1a26c
+	static float Overcast;
 	static void  DrawSky(); // 005e2160
 	// BW1W120 005e1fe0 BW1M119 01085950
 	static void UpdateTime(float time_increment, float delta_time);

@@ -203,16 +203,35 @@ the offsets of what follows them (§1).
 - `BlackPCHCodeBeforeObject`, ahead of `Object.h` in 1.00, 1.10 and Creature Isle: 448
   statements, 16.4 KB of IL. `Abode`'s order holds from about 15.3 to 17.6 KB: with less,
   `GObjectInfo`'s bodies come out before `GAbodeInfo`'s. In 1.20 and 1.30 the `<string>` of
-  `GameThingWithPos.h` gives that code.
+  `GameThingWithPos.h` gives that code, after `LH3DObject.h`'s (`Object.h` includes it first). The
+  stand-in follows `LH3DObject.h` too: ahead of it, `LHPoint(float, float, float)` comes after
+  `Zoomer::Update` in `Camera`, not before it as in the image.
 - `BlackPCHCodeAfterObject` and `BlackPCHPointArray`, after `Object.h` in 1.00: 4096 statements
   (246 KB) and then the header's first array of constructed objects, which puts `??_H` at offset
   349 KB. 1.00's `Abode` needs it between 301 KB (the end of the unit's own functions) and 397 KB
   (`LHListHead<Villager>::AddToLast`, among the template members instantiated at the end).
+- `BlackPCHCodeAfterObject` and `BlackPCHCodeAfterLH3DMapCoords`, after `Object.h` in the other
+  versions: 11264 statements in all, with `LH3DMapCoords`'s default constructor
+  (`LH3DMapCoordsInline.h`) held back between them. `Camera` emits it after `??_GGCamera` and
+  before `CantExitCurrentMode`, as the image has it, only with 1378 to 1392 statements ahead of it
+  in 1.20 and 1.30 (1384 used), 2455 to 2468 in 1.10 (2464) and 2511 to 2525 in Creature Isle
+  (2520), where `Camera.cpp` also includes `HelpSystem.h` (without it the constructor comes out
+  after `GCamera::Save`). The rest follows it, so that nothing else moves. `LH3DObject::SetPosition` and
+  `Point2D::Point2D` follow both functions (`AnimatedStatic`).
+- `BLACK_PCH_PADDING`: the split above and the out-of-class constructor add 5 declarations ahead of
+  every unit's own code (3 and 2), which moves c2's symbol-number tie-breaks
+  (`msvc6_symbol_numbering.md`). 57 enumerators after the split in 1.10 to Creature Isle, and an
+  empty enum after 1.00's stand-ins, put every affected function back.
 
 Both windows move when inline code is added to the headers: to the PCH's, or to those `Abode.cpp`
-includes ahead of `AbodeInfo.h` (the first window) or at all (the second). `tools/comdat-scan.py
-order --unit Abode` shows the functions out of order; one `BLACK_PCH_REPEAT_64` line is 2.3 KB in
-the first function and 3.8 KB in the second.
+includes ahead of `AbodeInfo.h` (the first window) or at all (the second). `Camera`'s moves with the
+inline code of every header `Camera.cpp` includes: `BigForest.h`'s virtual bodies, reached through
+`Game.h`, moved it up by about 117 statements in every version, and `GlobalGameLists.h` no longer
+including `MobileObject.h` and four other headers (#860) moved it down by 300 (285 in Creature Isle,
+where `Villager.h` gained four inline accessors in the same change), and the inline code #854 added
+to headers it includes moved it up by 8. `tools/comdat-scan.py order --unit Abode` shows the
+functions out of order; one `BLACK_PCH_REPEAT_64` line is 2.3 KB in the first function and 3.8 KB in
+the second.
 
 `tools/project.py` implements it with the `pch` object option (`header`, `source`):
 

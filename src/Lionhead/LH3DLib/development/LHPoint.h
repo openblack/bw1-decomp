@@ -186,8 +186,8 @@ struct LHPoint
 	{
 		return LHPoint(y * rhs.z - z * rhs.y, z * rhs.x - x * rhs.z, x * rhs.y - y * rhs.x);
 	}
-	// BW1W120 inlined BW1M119 inlined
-	bool operator==(const LHPoint& other) const { return x == other.x && y == other.y && z == other.z; }
+	// BW1W120 00460640 BW1M119 inlined
+	bool32_t operator==(const LHPoint& other) const { return x == other.x && y == other.y && z == other.z; }
 	// BW1W120 inlined BW1M119 inlined
 	float DotProductInline(const LHPoint& other) const { return z * other.z + y * other.y + x * other.x; }
 	// BW1W120 inlined BW1M119 inlined

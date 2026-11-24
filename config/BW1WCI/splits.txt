@@ -301,6 +301,7 @@ Black/BWLan.cpp:
 Black/Camera.cpp:
 	.text       start:0x004477D0 end:0x00449D20
 	.rdata      start:0x008F2F7C end:0x008F34F0
+	.rdata$r    start:0x00A18DE0 end:0x00A18E34
 	.CRT$XCU    start:0x00A3616C end:0x00A36170 align:4
 	.data       start:0x00A3D44C end:0x00A3D518
 	.bss        start:0x00CCD848 end:0x00CCD8D4

@@ -27,7 +27,22 @@ class GArena;
 #define BLACK_PCH_REPEAT_8(x)  x x x x x x x x
 #define BLACK_PCH_REPEAT_64(x) BLACK_PCH_REPEAT_8(BLACK_PCH_REPEAT_8(x))
 
+// LH3DObject::SetPosition(const LHPoint&, float, float) and Point2D::Point2D(float, float) stood later
+// in the original header's code than the classes they belong to: a unit whose own code ends before
+// their place emits them last, SetPosition first (AnimatedStatic). Their definitions are held back
+// until after the stand-in below. LH3DMapCoords's default constructor stood inside it, between the
+// GCamera constructor and CantExitCurrentMode in Camera's own code: Camera emits it after ??_GGCamera.
+#define BW1_DECOMP_LH3D_OBJECT_INLINE_INCLUDED_H
+#define BW1_DECOMP_POINT2D_INLINE_INCLUDED_H
+#ifndef VERSION_BW1W100
+#define BW1_DECOMP_LH3D_MAP_COORDS_INLINE_INCLUDED_H
+#endif
+
+// In 1.20 and 1.30 the <string> of GameThingWithPos.h gives this code, after LH3DObject.h's: Camera
+// emits LHPoint's constructor before Zoomer::Update.
 #if defined(VERSION_BW1W100) || defined(VERSION_BW1W110) || defined(VERSION_BW1WCI)
+#include <Lionhead/LH3DLib/development/LH3DObject.h>
+
 inline void BlackPCHCodeBeforeObject(float* values)
 {
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
@@ -40,17 +55,13 @@ inline void BlackPCHCodeBeforeObject(float* values)
 }
 #endif
 
-// LH3DObject::SetPosition(const LHPoint&, float, float) and Point2D::Point2D(float, float) stood later
-// in the original header's code than the classes they belong to: a unit whose own code ends before
-// their place emits them last, SetPosition first (AnimatedStatic). Their definitions are held back
-// until after the stand-in below.
-#define BW1_DECOMP_LH3D_OBJECT_INLINE_INCLUDED_H
-#define BW1_DECOMP_POINT2D_INLINE_INCLUDED_H
-
 #include "Object.h"
 
 #undef BW1_DECOMP_LH3D_OBJECT_INLINE_INCLUDED_H
 #undef BW1_DECOMP_POINT2D_INLINE_INCLUDED_H
+#ifndef VERSION_BW1W100
+#undef BW1_DECOMP_LH3D_MAP_COORDS_INLINE_INCLUDED_H
+#endif
 
 #ifndef VERSION_BW1W100
 inline void BlackPCHCodeAfterObject(float* values)
@@ -76,6 +87,12 @@ inline void BlackPCHCodeAfterObject(float* values)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+#if defined(VERSION_BW1W110) || defined(VERSION_BW1WCI)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
@@ -92,146 +109,269 @@ inline void BlackPCHCodeAfterObject(float* values)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
-	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+#ifdef VERSION_BW1WCI
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+#endif
+#endif
 }
+
+#include <Lionhead/LH3DLib/development/LH3DMapCoordsInline.h>
+
+inline void BlackPCHCodeAfterLH3DMapCoords(float* values)
+{
+#ifndef VERSION_BW1WCI
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+#endif
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+#endif
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+}
+
+// Splitting the stand-in and defining LH3DMapCoords's constructor outside its class add declarations ahead of
+// every unit's own code, which moves c2's symbol-number tie-breaks (docs/msvc6_symbol_numbering.md). These
+// enumerators make up a count that every unit's code matches with again.
+enum BLACK_PCH_PADDING
+{
+	BLACK_PCH_PADDING_0,
+	BLACK_PCH_PADDING_1,
+	BLACK_PCH_PADDING_2,
+	BLACK_PCH_PADDING_3,
+	BLACK_PCH_PADDING_4,
+	BLACK_PCH_PADDING_5,
+	BLACK_PCH_PADDING_6,
+	BLACK_PCH_PADDING_7,
+	BLACK_PCH_PADDING_8,
+	BLACK_PCH_PADDING_9,
+	BLACK_PCH_PADDING_10,
+	BLACK_PCH_PADDING_11,
+	BLACK_PCH_PADDING_12,
+	BLACK_PCH_PADDING_13,
+	BLACK_PCH_PADDING_14,
+	BLACK_PCH_PADDING_15,
+	BLACK_PCH_PADDING_16,
+	BLACK_PCH_PADDING_17,
+	BLACK_PCH_PADDING_18,
+	BLACK_PCH_PADDING_19,
+	BLACK_PCH_PADDING_20,
+	BLACK_PCH_PADDING_21,
+	BLACK_PCH_PADDING_22,
+	BLACK_PCH_PADDING_23,
+	BLACK_PCH_PADDING_24,
+	BLACK_PCH_PADDING_25,
+	BLACK_PCH_PADDING_26,
+	BLACK_PCH_PADDING_27,
+	BLACK_PCH_PADDING_28,
+	BLACK_PCH_PADDING_29,
+	BLACK_PCH_PADDING_30,
+	BLACK_PCH_PADDING_31,
+	BLACK_PCH_PADDING_32,
+	BLACK_PCH_PADDING_33,
+	BLACK_PCH_PADDING_34,
+	BLACK_PCH_PADDING_35,
+	BLACK_PCH_PADDING_36,
+	BLACK_PCH_PADDING_37,
+	BLACK_PCH_PADDING_38,
+	BLACK_PCH_PADDING_39,
+	BLACK_PCH_PADDING_40,
+	BLACK_PCH_PADDING_41,
+	BLACK_PCH_PADDING_42,
+	BLACK_PCH_PADDING_43,
+	BLACK_PCH_PADDING_44,
+	BLACK_PCH_PADDING_45,
+	BLACK_PCH_PADDING_46,
+	BLACK_PCH_PADDING_47,
+	BLACK_PCH_PADDING_48,
+	BLACK_PCH_PADDING_49,
+	BLACK_PCH_PADDING_50,
+	BLACK_PCH_PADDING_51,
+	BLACK_PCH_PADDING_52,
+	BLACK_PCH_PADDING_53,
+	BLACK_PCH_PADDING_54,
+	BLACK_PCH_PADDING_55,
+	BLACK_PCH_PADDING_56,
+};
 #else
 inline void BlackPCHCodeAfterObject(LHPoint* points)
 {
@@ -242,6 +382,11 @@ inline void BlackPCHPointArray()
 {
 	new LHPoint[2];
 }
+
+// The same for LH3DMapCoords's constructor alone.
+enum BLACK_PCH_PADDING
+{
+};
 #endif
 
 #include <Lionhead/LH3DLib/development/LH3DObjectInline.h>
