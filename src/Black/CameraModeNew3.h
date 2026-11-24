@@ -11,7 +11,8 @@
 #include <Lionhead/LH3DLib/development/Zoomer.h>   /* For struct Zoomer, struct Zoomer3d */
 #include <re_common.h>                             /* For bool32_t */
 
-#include "CameraMode.h" /* For enum CAMERA_MODE_HAND_STATUS, enum CAMERA_MODE_MOUSE_STATUS, class CameraMode */
+#include "CameraMode.h"  /* For enum CAMERA_MODE_HAND_STATUS, enum CAMERA_MODE_MOUSE_STATUS, class CameraMode */
+#include "CameraStore.h" /* For struct CameraStore */
 
 // Forward Declares
 
@@ -71,8 +72,7 @@ public:
 	};
 
 	uint32_t                 field_0x8;
-	LHPoint                  origin;
-	LHPoint                  heading;
+	CameraStore              CameraView;
 	LHPoint                  field_0x24;
 	LHPoint                  field_0x30;
 	uint32_t                 field_0x3c;

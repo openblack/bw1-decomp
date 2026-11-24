@@ -37,12 +37,7 @@ struct LH3DMapCoords
 
 	// Inliner IL size: 62
 	// BW1W120 00441b60 BW1M119 0104cbc0
-	LH3DMapCoords()
-	{
-		SetWholeX(0);
-		SetWholeZ(0);
-		SetAltitude(0.0f);
-	}
+	LH3DMapCoords();
 	// World units to 16.16 fixed point: a cell is 10 units across.
 	LH3DMapCoords(float _x, float _z)
 		: x((LH3DMapCoordsFull)((float)(_x * MAP_COORDS_UNITS_PER_CELL) / MAP_COORDS_METRES_PER_CELL)),
@@ -101,5 +96,7 @@ public:
 };
 
 static_assert(sizeof(JustXZ) == 0x8, "Data type is of wrong size");
+
+#include "LH3DMapCoordsInline.h"
 
 #endif /* BW1_DECOMP_LH3D_MAP_COORDS_INCLUDED_H */

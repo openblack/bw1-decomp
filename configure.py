@@ -340,6 +340,13 @@ if config.version == "BW1W100":
         "/alternatename:__imp_?GetLANPlayers@LHLobby@@SAPAV?$LHLinkedList@PAVLHPlayer@@@@PAVLHLocalLobbyInfo@@@Z"
         "=__imp__ExitProcess@4"
     )
+    # Camera's GCamera::SetFocus and SetHeadingAndPitch have no callers in 1.00;
+    # /OPT:REF dropped them and the CameraModeNew3 members only they call.
+    for _dead_function in [
+        "?SetFocus@CameraModeNew3@@QAEXABULHPoint@@@Z",
+        "?SetHeadingAndPitch@CameraModeNew3@@QAEXMM@Z",
+    ]:
+        config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
 # LHLogR.dll's project links without /DEBUG: unlike LHAudio (but for Creature
 # Isle's, below), LHMultiplayer, LHDialog (and runblack from 1.10 on) it has no
 # debug directory in any version. Without /DEBUG, link.exe (6.0 and VS.NET 2002's
@@ -869,7 +876,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/BuildingSite.cpp"),
             GameCodeObject(NonMatching, "Black/BWGameSpy.cpp", pch=PCH_PENDING),
             GameCodeObject(Matching, "Black/BWLan.cpp"),
-            GameCodeObject(NonMatching, "Black/Camera.cpp"),
+            GameCodeObject(Matching, "Black/Camera.cpp"),
             GameCodeObject(NonMatching, "Black/CameraEditor.cpp"),
             GameCodeObject(NonMatching, "Black/camerahelp.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeCitadel.cpp"),

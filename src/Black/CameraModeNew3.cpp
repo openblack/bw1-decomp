@@ -961,8 +961,8 @@ void CameraModeNew3::Initialise()
 		FallbackHeading = LHPoint(0.0f, 0.0f, 0.0f);
 		FallbackOrigin = FallbackHeading;
 	}
-	origin = FallbackOrigin;
-	heading = FallbackHeading;
+	CameraView.Position = FallbackOrigin;
+	CameraView.Focus = FallbackHeading;
 	HasFight = false;
 	arena = NULL;
 	LHCoord mousePos = LHSys::TheSystem.mouse.DefaultPos;
@@ -1516,7 +1516,7 @@ void CameraModeNew3::ProcessKeyMovement(uint16_t key)
 void CameraModeNew3::Restart()
 {
 	Reinitialise(true);
-	FlyToPosFoc(origin, heading, 0.1f);
+	FlyToPosFoc(CameraView.Position, CameraView.Focus, 0.1f);
 }
 
 void CameraModeNew3::FlyToPosFoc(LHPoint& pos, LHPoint& focus, float time)
@@ -3714,7 +3714,7 @@ void CameraModeNew3::Update()
 		local_4b = true;
 		pushed = true;
 	}
-	if (!GGame::g_game->GetCamera()->field_0x78 && originDest.y < groundAltitude)
+	if (!GGame::g_game->GetCamera()->IgnoreLandHeight && originDest.y < groundAltitude)
 	{
 		originDest.y = groundAltitude;
 		pushed = true;
@@ -3872,8 +3872,8 @@ skipClick:
 		camera->CameraOriginZoomer.SetDestinationWithTime(originDest, originTime);
 		camera->CameraHeadingZoomer.SetDestinationWithTime(focusDest, focusTime);
 	}
-	this->origin = camera->CameraOriginZoomer.GetCurrentValue();
-	heading = camera->CameraHeadingZoomer.GetCurrentValue();
+	CameraView.Position = camera->CameraOriginZoomer.GetCurrentValue();
+	CameraView.Focus = camera->CameraHeadingZoomer.GetCurrentValue();
 	if (!strafed)
 	{
 		SmoothStrafeSpeedX(0.0f, dt);

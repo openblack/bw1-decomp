@@ -5,6 +5,10 @@
 #include <stdint.h>    /* For uint16_t, uint32_t */
 #include <re_common.h> /* For bool32_t */
 
+#ifdef VERSION_BW1WCI
+#include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE */
+#endif
+
 enum CAMERA_MODE_HAND_STATUS
 {
 	CAMERA_MODE_HAND_STATUS_NORMAL = 0x0,
@@ -80,7 +84,7 @@ public:
 	// BW1WCI 00450620 BW1MCI119 011b74c0
 	virtual bool32_t IsCameraModeCannon() { return false; }
 	// BW1WCI 00449ce0 BW1MCI119 011b4a40
-	virtual int GetCameraImmersion();
+	virtual IMMERSION_EFFECT_TYPE GetCameraImmersion();
 #endif
 	// BW1W120 0044a330 BW1M119 011a2260
 	virtual int GetSaveID() { return 0; }
