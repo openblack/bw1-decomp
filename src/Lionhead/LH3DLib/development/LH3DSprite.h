@@ -14,6 +14,8 @@ struct LHMatrix;
 
 #define LH3D_SPRITE_FRAME_MASK 0x3f
 
+#define LH3D_SPRITE_CORNER_COUNT 4
+
 struct LH3DSprite
 {
 	LHPoint   pos;
@@ -33,7 +35,7 @@ struct LH3DSprite
 			uint32_t Frame : 6;
 			uint32_t Horizontal : 1;
 			uint32_t UseMaterial : 1;
-			uint32_t field_0x28_8 : 24;
+			uint32_t Unused : 24;
 		};
 	};
 	LH3DMaterial* material;
@@ -42,12 +44,8 @@ struct LH3DSprite
 	uint8_t       field_0x32;
 	uint8_t       field_0x33;
 
-	// Static methods
-
 	// BW1W120 008404a0 BW1M119 010b4f00 (LHCombined Release)
 	static LH3DSprite* __fastcall Create(long count, bool32_t use_material);
-
-	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 01577070
 	void SetMaterial(LH3DMaterial* new_material) { material = new_material; }
@@ -107,8 +105,8 @@ struct LH3DSprite
 
 // Texture coordinates of the four corners of a frame, in units of a 1/8 frame grid.
 // BW1W120 00c390cc BW1M119 011d14ac (LHCombined Release)
-extern float utex[4];
+extern float utex[LH3D_SPRITE_CORNER_COUNT];
 // BW1W120 00c390dc BW1M119 011d14bc (LHCombined Release)
-extern float vtex[4];
+extern float vtex[LH3D_SPRITE_CORNER_COUNT];
 
 #endif /* BW1_DECOMP_LH3D_SPRITE_INCLUDED_H */
