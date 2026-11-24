@@ -3314,6 +3314,16 @@
 0x0077198A copy_run 0x00771952  # VillagerWorshipper
 0x007719BA jmp_run 0x0077198A  # VillagerWorshipper
 0x007719DB call_rel32 0x004034F9  # VillagerWorshipper
+0x0077A11B call_rel32 0x004034F9  # WinCondition
+0x0077A143 copy_run 0x0077A11B  # WinCondition
+0x0077A161 copy_run 0x0077A143  # WinCondition
+0x0077A18B call_rel32 0x004034F9  # WinCondition
+0x0077A1CA copy_run 0x0077A18B  # WinCondition
+0x0077A231 jmp_run 0x0077A1CA  # WinCondition
+0x0077A51A jmp_run 0x0077A231  # WinCondition
+0x0077A533 jmp_run 0x0077A51A  # WinCondition
+0x0077A5C2 copy_run 0x0077A533  # WinCondition
+0x0077A636 jmp_run 0x0077A5C2  # WinCondition
 0x0077F5B3 jmp_run 0x0077F529  # Worship
 0x0077F613 jmp_run 0x0077F5B3  # Worship
 0x0077F647 copy_run 0x0077F613  # Worship
