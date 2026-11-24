@@ -15,11 +15,6 @@ permissions:
   issues: write
   pull-requests: write
 
-# Every run rescans all open pull requests, so only the newest one matters
-concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: true
-
 jobs:
   merge-conflicts:
     runs-on: ubuntu-latest
