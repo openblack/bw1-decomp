@@ -23,11 +23,18 @@ struct MusicMoodPacket
 	unsigned int NumTracks;
 	unsigned int MusicID;
 	MusicEmotion Emotion;
+	// Inliner IL size: 52
 	// BW1W120 0054b910 BW1M119 0101b3a0
-	MusicMoodPacket();
+	MusicMoodPacket()
+	{
+		MusicID = 0;
+		NumTracks = 0;
+		Track = 0;
+	}
 };
 
 class Archive;
+struct MusicMood;
 
 class MusicMoodController
 {
@@ -48,6 +55,14 @@ public:
 	static void ReadDatabase(Archive* archive, bool local_player);
 	// BW1W120 00634300 BW1M119 01113c90
 	static void CleanMem();
+	// BW1W120 00634050 BW1M119 01114170
+	static MusicMood* GetNewMood();
+	// BW1W120 00633ec0 BW1M119 011143c0
+	static void UpdateCallback();
+	// BW1W120 00633e40 BW1M119 011144d0
+	static void SendPacket();
+	// BW1W120 00633e00 BW1M119 011145c0
+	static void SetNullMood();
 };
 
 #endif /* BW1_DECOMP_MUSIC_MOOD_CONTROLLER_INCLUDED_H */

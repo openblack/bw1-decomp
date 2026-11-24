@@ -11,7 +11,7 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 
-static const float GDebugInitialValue2d284 = 1000.0f;
+static const float GDebugInitialTimeSinceSpeedChange = 1000.0f;
 
 const char GDebug::ObjectTypeNames[OBJECT_TYPE_LAST][64] = {
 	"Abode",           //
@@ -74,7 +74,7 @@ GDebug::GDebug()
 	{
 		CategoryEnabled[category] = false;
 	}
-	field_0x2d284 = (int)GDebugInitialValue2d284;
+	TimeSinceSpeedChange = (int)GDebugInitialTimeSinceSpeedChange;
 	field_0x2d288 = 0;
 }
 

@@ -100,6 +100,8 @@ inline MapCoords::MapCoords(float meters_x, float meters_z)
 
 GTownInfo GTownInfo::Definitions[1];
 
+uint32_t Town::CheckSum;
+
 Town::Town()
 	: totem(NULL), graveyard(NULL), next(NULL), NearestTown(NULL), worship_site(NULL), playtime(NULL),
 	  town_centre(NULL), field_0xea8(0)

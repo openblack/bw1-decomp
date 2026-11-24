@@ -236,10 +236,8 @@ public:
 	bool32_t IsGlobalLobbyConnection() { return GetConnectedUserID().IsGlobal(); }
 	// BW1W120 10002df0 BW1M119 inlined
 	unsigned long GetNumberOfChannels() { return Channels.count; }
-#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10002e00 BW1M119 inlined
 	static LHLobby* GetInternalLobbyServerConnection() { return InternalLobbyServerConnection; }
-#endif
 
 private:
 	// BW1W120 1000c740 BW1M119 010f0aa0 (LHCombined Release)

@@ -1914,25 +1914,25 @@ Black/MultiplayerDatabase.cpp:
 	.bss        start:0x00DC2278 end:0x00DC2298
 
 Black/MusicMood.cpp:
-	.text       start:0x00649B00 end:0x0064A4A0
+	.text       start:0x00649B00 end:0x0064A470
 	.rdata      start:0x00988BE4 end:0x00988BF4
-	.CRT$XCU    start:0x00A36BEC end:0x00A36BFC align:4
-	.data       start:0x00C6E974 end:0x00C6E9A0
-	.bss        start:0x00DC2298 end:0x00DC24E8
+	.CRT$XCU    start:0x00A36BEC end:0x00A36BF8 align:4
+	.data       start:0x00C6E974 end:0x00C6E990
+	.bss        start:0x00DC2298 end:0x00DC22BC
 
 Black/Network.cpp:
-	.text       start:0x0064A4A0 end:0x0064C2E0
-	.rdata      start:0x00988BF4 end:0x00988C14
-	.CRT$XCU    start:0x00A36BFC end:0x00A36C0C align:4
-	.data       start:0x00C6E9A0 end:0x00C6EA98
-	.bss        start:0x00DC24E8 end:0x00DC266C
+	.text       start:0x0064A470 end:0x0064C2E0
+	.rdata      start:0x00988BF4 end:0x00988C12
+	.CRT$XCU    start:0x00A36BF8 end:0x00A36C0C align:4
+	.data       start:0x00C6E990 end:0x00C6EA56
+	.bss        start:0x00DC22C0 end:0x00DC266C
 
 Black/Object.cpp:
 	.text       start:0x0064C2E0 end:0x00650BA0
 	.rdata      start:0x00988C14 end:0x00989520
 	.rdata$r    start:0x00A237D8 end:0x00A23850
 	.CRT$XCU    start:0x00A36C0C end:0x00A36C20 align:4
-	.data       start:0x00C6EA98 end:0x00C6EAB0
+	.data       start:0x00C6EA58 end:0x00C6EAB0
 	.bss        start:0x00DC266C end:0x00DC5704
 
 Black/Object3D.cpp:

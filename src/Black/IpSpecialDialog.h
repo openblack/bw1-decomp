@@ -10,13 +10,20 @@ struct SetupButton;
 struct SetupEdit;
 struct SetupStaticText;
 
+enum IP_SPECIAL_DIALOG_MODE
+{
+	IP_SPECIAL_DIALOG_MODE_TEXT_REPLY = -2,
+	IP_SPECIAL_DIALOG_MODE_YES_NO = -1,
+	IP_SPECIAL_DIALOG_MODE_IP_ADDRESS = 0,
+};
+
 class IPSpecialDialog : public DialogBoxBase
 {
 public:
 	// Descriptive singleton name.
 	// BW1W120 00d189c8
 	static IPSpecialDialog* Instance;
-	int                     field_0x10;
+	IP_SPECIAL_DIALOG_MODE  Mode;
 	SetupButton*            field_0x14;
 	SetupButton*            field_0x18;
 	SetupEdit*              field_0x1c;

@@ -11,6 +11,7 @@ class LHLobbyChannel;
 class LHSession;
 class LHTransport;
 class LHTransportInfo;
+class LHNetEvent;
 class LHNetUser;
 struct SetupBox;
 
@@ -44,8 +45,16 @@ public:
 	void*              Peer;
 	char               UserName[100];
 
+	// BW1W120 005ebaa0 BW1M119 0137d1d0
+	void ListenForChats();
 	// BW1W120 005ea980 BW1M119 0137e440
 	void Shutdown();
+	// BW1W120 005eb890 BW1M119 0137d420
+	LHNetEvent* Read(unsigned long timeout);
+	// BW1W120 005eb430 BW1M119 0137d9d0
+	void BroadcastIAmHere();
+	// BW1W120 005eb020 BW1M119 0137dba0
+	void RequestOnlineStatus(unsigned long count, unsigned long* user_ids, LHTransportInfo* transport_info);
 	// BW1W120 005eb970 BW1M119 0137d250
 	static void UpdateUserData();
 	// BW1W120 005ebaf0 BW1M119 0137cd50

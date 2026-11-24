@@ -66,6 +66,9 @@ public:
 	// BW1W120 0068e910 BW1M119 010052d0
 	static PSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, const LHPoint& position,
 	                             const LHPoint& velocity, float strength, NET_GAME_TYPE game_type);
+
+	// BW1W120 00d4ebe4 BW1M119 01b4294c
+	static uint32_t PSysCheckSum;
 };
 
 #endif /* BW1_DECOMP_P_SYS_INTERFACE_INCLUDED_H */

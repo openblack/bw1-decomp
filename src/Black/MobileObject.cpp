@@ -37,7 +37,7 @@
 
 GMobileObjectInfo GMobileObjectInfo::InfoList[MOBILE_OBJECT_INFO_LAST];
 
-uint32_t g_MobileObjectCheckSum = 0;
+uint32_t MobileObject::MobileObjectCheckSum = 0;
 
 MobileObject::MobileObject(const MapCoords& coords, const GMobileObjectInfo* info, Object* parent, float y_angle,
                            float scale)
@@ -76,8 +76,8 @@ void MobileObject::AddMobileObjectCheckSum()
 	     node = node->next.Get())
 	{
 		MobileObject* mobileObject = node->payload;
-		g_MobileObjectCheckSum += mobileObject->Pos.x;
-		g_MobileObjectCheckSum += mobileObject->Pos.z;
+		MobileObjectCheckSum += mobileObject->Pos.x;
+		MobileObjectCheckSum += mobileObject->Pos.z;
 	}
 }
 

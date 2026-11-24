@@ -24,6 +24,10 @@ struct LH3DMem
 	static void* Alloc(long size);
 	// BW1W120 00842d60 BW1M119 010c86b0 (LHCombined Release)
 	static void Free(void* ptr);
+	// BW1W120 00842df0 BW1M119 010c8960 (LHCombined Release)
+	static void* AllocAligned(long size, int alignment);
+	// BW1W120 00842e20 BW1M119 01094d90 (LHCombined Release)
+	static void FreeAligned(void* ptr);
 	// BW1W120 inlined BW1M119 011a44f0
 	static void* AllocClear(long size)
 	{

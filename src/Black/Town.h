@@ -280,6 +280,9 @@ public:
 	// BW1W120 0073fbd0 BW1M119 null
 	static void BuildNearestTownSitesCheat();
 
+	// BW1W120 00da2770 BW1M119 01b8577c
+	static uint32_t CheckSum;
+
 	// Constructors
 
 	// BW1W120 00738ff0 BW1M119 01561fd0

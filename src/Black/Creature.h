@@ -260,22 +260,24 @@ public:
 	static uint32_t ImpressiveSpellDoneWhen[5];
 	// BW1W120 null BW1M119 01756cf0
 	static char FileName[0x88];
-	// BW1W120 null BW1M119 01a7e554
+#endif
+	// BW1W120 00c5fcec BW1M119 01a7e554
 	static uint32_t CheckSum3D;
-	// BW1W120 null BW1M119 01a7e558
+	// BW1W120 00c64180 BW1M119 01a7e558
 	static uint32_t DestPosCheckSum;
-	// BW1W120 null BW1M119 01a7e55c
+	// BW1W120 00c6417c BW1M119 01a7e55c
 	static uint32_t PosCheckSum;
-	// BW1W120 null BW1M119 01a7e560
+	// BW1W120 00c64178 BW1M119 01a7e560
 	static uint32_t MentalMiscCheckSum;
-	// BW1W120 null BW1M119 01a7e564
+	// BW1W120 00c64174 BW1M119 01a7e564
 	static uint32_t MentalValueSystemCheckSum;
-	// BW1W120 null BW1M119 01a7e568
+	// BW1W120 00c64170 BW1M119 01a7e568
 	static uint32_t MentalDesiresCheckSum;
-	// BW1W120 null BW1M119 01a7e56c
+	// BW1W120 00c6416c BW1M119 01a7e56c
 	static uint32_t MentalBeliefsCheckSum;
-	// BW1W120 null BW1M119 01a7e570
+	// BW1W120 00c64168 BW1M119 01a7e570
 	static uint32_t MentalAgendaCheckSum;
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 	// BW1W120 null BW1M119 01a7e574
 	static bool32_t LeashOverridesScript;
 	// BW1W120 null BW1M119 01a7e578
@@ -1240,6 +1242,10 @@ public:
 	void LookCurious(CreatureBelief* belief, long argument);
 	// BW1W120 00509010 BW1M119 012a6a70
 	void BeFrightened(CreatureBelief* belief, long argument);
+	// BW1W120 004f8260 BW1M119 0128f700
+	float ConvertSpellChantsToEnergyDiff(float chants);
+	// BW1W120 004f82a0 BW1M119 0128f620
+	float GetMaxSpellChantsAvailable();
 	// BW1W120 004f82f0 BW1M119 0128f550
 	bool32_t HasEnoughEnergyToCastSpell(MAGIC_TYPE magic_type);
 	// BW1W120 004f8940 BW1M119 0128eaa0
@@ -1468,6 +1474,8 @@ public:
 	bool32_t NothingScareyNearHome(CreaturePlan& plan, CREATURE_ACTION action);
 	// BW1W120 004e44a0 BW1M119 015ed0b0
 	bool32_t NothingScareyNearMe(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004e44b0 BW1M119 015ecfd0
+	bool32_t NothingScareyNearPos(const MapCoords& pos);
 	// BW1W120 004e4680 BW1M119 015ecc10
 	bool32_t CanCastAmusingSpellOnCreature(CreaturePlan& plan, CREATURE_ACTION action);
 	// BW1W120 004f0810 BW1M119 0127da80

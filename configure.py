@@ -334,6 +334,12 @@ if config.version == "BW1W100":
         "?EmbossedBox16@LHDraw@@QAE?AW4LH_RETURN@@JJJJVLHPixel16@@0EEK@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
+    # Network's UpdateLANPlayerList has no callers in any version; /OPT:REF dropped
+    # it and its LHLobby::GetLANPlayers import.
+    config.base_ldflags.append(
+        "/alternatename:__imp_?GetLANPlayers@LHLobby@@SAPAV?$LHLinkedList@PAVLHPlayer@@@@PAVLHLocalLobbyInfo@@@Z"
+        "=__imp__ExitProcess@4"
+    )
 # LHLogR.dll's project links without /DEBUG: unlike LHAudio (but for Creature
 # Isle's, below), LHMultiplayer, LHDialog (and runblack from 1.10 on) it has no
 # debug directory in any version. Without /DEBUG, link.exe (6.0 and VS.NET 2002's
@@ -983,7 +989,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/FireFly.cpp"),
             GameCodeObject(NonMatching, "Black/FishFarm.cpp"),
             # EndPhysics passes a 16-byte member-function pointer to MapCoords::FindObject.
-            GameCodeObject(Matching, "Black/Fixed.cpp", extra_cflags=["/vmg"], pch=False),
+            GameCodeObject(Matching, "Black/Fixed.cpp", extra_cflags=["/vmg"]),
             GameCodeObject(NonMatching, "Black/Flock.cpp"),
             GameCodeObject(NonMatching, "Black/FootBall.cpp"),
             GameCodeObject(NonMatching, "Black/Footpath.cpp"),
@@ -1127,7 +1133,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFEStartGameData.cpp"),
             GameCodeObject(NonMatching, "Black/MultiplayerDatabase.cpp"),
             GameCodeObject(NonMatching, "Black/MusicMood.cpp"),
-            GameCodeObject(NonMatching, "Black/Network.cpp"),
+            GameCodeObject(Matching, "Black/Network.cpp"),
             GameCodeObject(Matching, "Black/Object.cpp"),
             GameCodeObject(Matching, "Black/Object3D.cpp", pch=PCH_PENDING),
             GameCodeObject(Matching, "Black/OnMapTrajectory.cpp", pch=PCH_PENDING),

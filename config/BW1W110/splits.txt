@@ -1878,22 +1878,22 @@ Black/MusicMood.cpp:
 	.text       start:0x0062AC40 end:0x0062B5B0
 	.rdata      start:0x00920990 end:0x009209A0
 	.CRT$XCU    start:0x009B6BA4 end:0x009B6BAC align:4
-	.data       start:0x00BECF8C end:0x00BECFB8
-	.bss        start:0x00D2FDB0 end:0x00D30000
+	.data       start:0x00BECF8C end:0x00BECFA8
+	.bss        start:0x00D2FDB0 end:0x00D2FDD4
 
 Black/Network.cpp:
 	.text       start:0x0062B5B0 end:0x0062D380
-	.rdata      start:0x009209A0 end:0x009209C0
+	.rdata      start:0x009209A0 end:0x009209BE
 	.CRT$XCU    start:0x009B6BAC end:0x009B6BC0 align:4
-	.data       start:0x00BECFB8 end:0x00BED0B0
-	.bss        start:0x00D30000 end:0x00D30184
+	.data       start:0x00BECFA8 end:0x00BED06E
+	.bss        start:0x00D2FDD8 end:0x00D30184
 
 Black/Object.cpp:
 	.text       start:0x0062D380 end:0x00631C00
 	.rdata      start:0x009209C0 end:0x00921280
 	.rdata$r    start:0x009A2B28 end:0x009A2B9C
 	.CRT$XCU    start:0x009B6BC0 end:0x009B6BD4 align:4
-	.data       start:0x00BED0B0 end:0x00BED0C8
+	.data       start:0x00BED070 end:0x00BED0C8
 	.bss        start:0x00D30184 end:0x00D33064
 
 Black/Object3D.cpp:
