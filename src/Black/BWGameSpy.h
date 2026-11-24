@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <GameSpy/Peer/peer.h>                        /* For PEER, RoomType, PEERCallbacks */
+#include <GameSpy/src/GameSpy/Peer/peer.h>            /* For PEER, RoomType, PEERCallbacks */
 #include <Lionhead/LHMultiplayer/ver4.0/LHDatabase.h> /* For struct DBInfo */
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUser.h>  /* For struct LH_USER_ID */
 

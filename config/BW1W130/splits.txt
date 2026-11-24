@@ -1309,19 +1309,21 @@ Black/GroupBehaviour.cpp:
 	.text       start:0x005995F0 end:0x0059C3F0
 	.rdata      start:0x009053F0 end:0x00905A18
 	.CRT$XCU    start:0x00A46ADC end:0x00A46AE8 align:4
-	.data       start:0x00C70810 end:0x00C70860
-	.bss        start:0x00D87AC8 end:0x00D8A160
+	.data       start:0x00C70810 end:0x00C70858
+	.bss        start:0x00D87AC8 end:0x00D87AD4
 
 Black/GSFunctions.cpp:
 	.text       start:0x0059C3F0 end:0x0059C820
 	.CRT$XCU    start:0x00A46AE8 end:0x00A46AEC align:4
+	.data       start:0x00C70858 end:0x00C7085C
+	.bss        start:0x00D87AD4 end:0x00D88D90
 
 Black/GSLobbybox.cpp:
 	.text       start:0x0059C820 end:0x005A05F0
 	.rdata      start:0x00905A18 end:0x00905A44
 	.CRT$XCU    start:0x00A46AEC end:0x00A46AF8 align:4
-	.data       start:0x00C70860 end:0x00C709A8
-	.bss        start:0x00D8A160 end:0x00D8A170
+	.data       start:0x00C7085C end:0x00C709A8
+	.bss        start:0x00D88D90 end:0x00D8A170
 
 Black/GStates.cpp:
 	.text       start:0x005A05F0 end:0x005B3830

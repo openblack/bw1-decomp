@@ -1346,7 +1346,7 @@ void BWGameSpy::LockChannel(bool lock)
 	char channel[0x100];
 	strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
 	Locked = lock;
-	ChannelMode.InviteOnly = lock == true;
+	ChannelMode.InviteOnly = (CHATBool)(lock == true);
 	chatSetChannelMode(Chat, channel, &ChannelMode);
 	peerStateChanged(LHNetBase::Instance.Peer);
 }
@@ -1355,7 +1355,7 @@ void BWGameSpy::SetInvite(bool invite)
 {
 	char channel[0x100];
 	strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
-	ChannelMode.InviteOnly = invite == true;
+	ChannelMode.InviteOnly = (CHATBool)(invite == true);
 	chatSetChannelMode(Chat, channel, &ChannelMode);
 	peerStateChanged(LHNetBase::Instance.Peer);
 }

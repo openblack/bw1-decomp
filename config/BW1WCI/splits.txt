@@ -1248,17 +1248,19 @@ Black/GroupBehaviour.cpp:
 	.rdata      start:0x0093295C end:0x00932FD8
 	.CRT$XCU    start:0x00A367E0 end:0x00A367E8 align:4
 	.data       start:0x00C60A58 end:0x00C60A94
-	.bss        start:0x00D84CD8 end:0x00D87370
+	.bss        start:0x00D84CD8 end:0x00D84CE4
 
 Black/GSFunctions.cpp:
 	.text       start:0x005AE390 end:0x005AE790
+	.data       start:0x00C60A94 end:0x00C60A98
+	.bss        start:0x00D84CE4 end:0x00D85FA0
 
 Black/GSLobbybox.cpp:
 	.text       start:0x005AE790 end:0x005B2530
 	.rdata      start:0x00932FD8 end:0x00933004
 	.CRT$XCU    start:0x00A367E8 end:0x00A367F0 align:4
-	.data       start:0x00C60A94 end:0x00C60BD0
-	.bss        start:0x00D87370 end:0x00D87380
+	.data       start:0x00C60A98 end:0x00C60BD0
+	.bss        start:0x00D85FA0 end:0x00D87380
 
 Black/GStates.cpp:
 	.text       start:0x005B2530 end:0x005C5840

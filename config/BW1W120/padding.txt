@@ -340,6 +340,12 @@
 0x005957EB call_rel32 0x004017F9  # GlobalGameList
 0x00595ADA call_indirect 0x008A903C  # GlobalGameList: __imp__DirectXSetupGetVersion
 0x00595BFA call_indirect 0x008A97C4  # GlobalGameList: __imp__LoadImageA@4
+0x0059926B call_rel32 0x004017F9  # GSLobbybox
+0x00599F9B call_rel32 0x004017F9  # GSLobbybox
+0x0059C3FB call_rel32 0x004017F9  # GSLobbybox
+0x0059C4FB call_rel32 0x004017F9  # GSLobbybox
+0x0059CC4A call_indirect 0x008A98A0  # GSLobbybox: __imp__waveInGetNumDevs@4
+0x0059CF7A call_indirect 0x008A98FC  # GSLobbybox: __imp__sendto@4
 0x005B02AB call_rel32 0x004017F9  # HandStateCamera
 0x005B0BEB call_rel32 0x004017F9  # HandStateCitadel
 0x005B13CB call_rel32 0x004017F9  # HandStateCreature

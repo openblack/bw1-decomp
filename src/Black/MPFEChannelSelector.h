@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <GameSpy/CEngine/goaceng.h>                   /* For GServer */
+#include <GameSpy/src/GameSpy/CEngine/goaceng.h>       /* For GServer */
 #include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h> /* For LHOrderedLinkedList */
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
