@@ -1188,8 +1188,9 @@ void CameraModeNew3::TriconDraw()
 			red.g = 0;
 			red.r = 255;
 			red.a = 255;
-			CameraHelp::DrawKeyOrMouse(animType, key, mouseType, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1407),
-			                           x - 32, y, 32, KEYALIGN_0x11, &red, &white, 255);
+			CameraHelp::DrawKeyOrMouse(
+				animType, key, mouseType, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1407), x - 32, y, 32,
+				static_cast<KEYALIGN>(KEYALIGN_ANCHOR_RIGHT | KEYALIGN_TEXT_BEFORE_ICON), &red, &white, 255);
 		}
 		else
 		{
@@ -1204,7 +1205,7 @@ void CameraModeNew3::TriconDraw()
 			red.r = 255;
 			red.a = 255;
 			CameraHelp::DrawKeyOrMouse(animType, key, mouseType, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1407),
-			                           x + 32, y, 32, KEYALIGN_0x0, &red, &white, 255);
+			                           x + 32, y, 32, KEYALIGN_ANCHOR_LEFT, &red, &white, 255);
 		}
 	}
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_LESSEQUAL);

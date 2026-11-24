@@ -202,7 +202,7 @@ bool ProcessGestureOrKey(wchar_t* text, float text_scale, float scale, float tex
 				LH3DColor keyColour(0xff, 0xff, 0xff, alpha * LH3D_COLOR_CHANNEL_MAX);
 				CameraHelp::DrawKeyOrMouse(animType, key, mouseType, L"", size * 0.5f + centre,
 				                           (iconTop + iconBottom) * 0.5f - size / BUBBLE_KEY_RAISE_DIVISOR, size,
-				                           KEYALIGN_RIGHT, &keyColour, NULL, 0);
+				                           KEYALIGN_ANCHOR_RIGHT, &keyColour, NULL, 0);
 			}
 		}
 	}

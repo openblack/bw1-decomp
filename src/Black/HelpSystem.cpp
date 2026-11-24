@@ -362,24 +362,27 @@ void HelpSystem::Draw3D()
 					ContinueIcon = CameraHelp::CreateKeyOrMouseIcon(
 						0.0f, 1.0f, MinTimeBeforeClick, animType, key, mouseType, text,
 						LHSys::GetScreen().Width() - HELP_SYSTEM_GLOVE_ICON_MARGIN, y - HELP_SYSTEM_GLOVE_ICON_RAISE,
-						size, KEYALIGN_0x11, &yellow, &white, HELP_SYSTEM_ICON_ALPHA);
+						size, static_cast<KEYALIGN>(KEYALIGN_ANCHOR_RIGHT | KEYALIGN_TEXT_BEFORE_ICON), &yellow, &white,
+						HELP_SYSTEM_ICON_ALPHA);
 				}
 				else
 				{
 					LH3DColor white(255, 255, 255, 255);
 					LH3DColor yellow(255, 255, 0, 255);
-					ContinueIcon =
-						CameraHelp::CreateKeyOrMouseIcon(0.0f, 1.0f, MinTimeBeforeClick, animType, key, mouseType, text,
-					                                     LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size,
-					                                     KEYALIGN_0x11, &yellow, &white, HELP_SYSTEM_ICON_ALPHA);
+					ContinueIcon = CameraHelp::CreateKeyOrMouseIcon(
+						0.0f, 1.0f, MinTimeBeforeClick, animType, key, mouseType, text,
+						LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size,
+						static_cast<KEYALIGN>(KEYALIGN_ANCHOR_RIGHT | KEYALIGN_TEXT_BEFORE_ICON), &yellow, &white,
+						HELP_SYSTEM_ICON_ALPHA);
 				}
 #else
 				LH3DColor white(255, 255, 255, 255);
 				LH3DColor yellow(255, 255, 0, 255);
-				ContinueIcon =
-					CameraHelp::CreateKeyOrMouseIcon(0.0f, 1.0f, MinTimeBeforeClick, animType, key, mouseType, text,
-				                                     LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size,
-				                                     KEYALIGN_0x11, &yellow, &white, HELP_SYSTEM_ICON_ALPHA);
+				ContinueIcon = CameraHelp::CreateKeyOrMouseIcon(
+					0.0f, 1.0f, MinTimeBeforeClick, animType, key, mouseType, text,
+					LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size,
+					static_cast<KEYALIGN>(KEYALIGN_ANCHOR_RIGHT | KEYALIGN_TEXT_BEFORE_ICON), &yellow, &white,
+					HELP_SYSTEM_ICON_ALPHA);
 #endif
 			}
 		}
@@ -427,7 +430,8 @@ void HelpSystem::SetTextIcon(BINDABLE_ACTIONS action)
 					LH3DColor yellow(255, 255, 0, 255);
 					KeyIcon = CameraHelp::CreateKeyOrMouseIcon(
 						0.0f, 1.0f, HELP_SYSTEM_ICON_FADE_TIME, CH_ANIMTYPE_KEY, 0, (int)KeyNames, NULL,
-						LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size, KEYALIGN_0x11, &yellow, &white,
+						LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size,
+						static_cast<KEYALIGN>(KEYALIGN_ANCHOR_RIGHT | KEYALIGN_TEXT_BEFORE_ICON), &yellow, &white,
 						HELP_SYSTEM_ICON_ALPHA);
 					lastAction = action;
 				}
@@ -486,7 +490,8 @@ void HelpSystem::SetTextIcon(BINDABLE_ACTIONS action)
 					ContinueIcon = CameraHelp::CreateKeyOrMouseIcon(
 						0.0f, 1.0f, HELP_SYSTEM_ICON_FADE_TIME, animType, key, mouseType, NULL,
 						LHSys::GetScreen().Width() - HELP_SYSTEM_GLOVE_ACTION_ICON_MARGIN,
-						y - HELP_SYSTEM_GLOVE_ACTION_ICON_RAISE, size, KEYALIGN_0x11, &yellow, &white,
+						y - HELP_SYSTEM_GLOVE_ACTION_ICON_RAISE, size,
+						static_cast<KEYALIGN>(KEYALIGN_ANCHOR_RIGHT | KEYALIGN_TEXT_BEFORE_ICON), &yellow, &white,
 						HELP_SYSTEM_ICON_ALPHA);
 				}
 				else
@@ -495,17 +500,19 @@ void HelpSystem::SetTextIcon(BINDABLE_ACTIONS action)
 					LH3DColor yellow(255, 255, 0, 255);
 					ContinueIcon = CameraHelp::CreateKeyOrMouseIcon(
 						0.0f, 1.0f, HELP_SYSTEM_ICON_FADE_TIME, animType, key, mouseType, NULL,
-						LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size, KEYALIGN_0x11, &yellow, &white,
+						LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y, size,
+						static_cast<KEYALIGN>(KEYALIGN_ANCHOR_RIGHT | KEYALIGN_TEXT_BEFORE_ICON), &yellow, &white,
 						HELP_SYSTEM_ICON_ALPHA);
 				}
 #else
 				LH3DColor white(255, 255, 255, 255);
 				LH3DColor yellow(255, 255, 0, 255);
-				ContinueIcon =
-					CameraHelp::CreateKeyOrMouseIcon(0.0f, 1.0f, HELP_SYSTEM_ICON_FADE_TIME, animType, key, mouseType,
-				                                     NULL, LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y,
-				                                     region->Height() / HELP_SYSTEM_ICONS_PER_REGION, KEYALIGN_0x11,
-				                                     &yellow, &white, HELP_SYSTEM_ICON_ALPHA);
+				ContinueIcon = CameraHelp::CreateKeyOrMouseIcon(
+					0.0f, 1.0f, HELP_SYSTEM_ICON_FADE_TIME, animType, key, mouseType, NULL,
+					LHSys::GetScreen().Width() - HELP_SYSTEM_ICON_MARGIN, y,
+					region->Height() / HELP_SYSTEM_ICONS_PER_REGION,
+					static_cast<KEYALIGN>(KEYALIGN_ANCHOR_RIGHT | KEYALIGN_TEXT_BEFORE_ICON), &yellow, &white,
+					HELP_SYSTEM_ICON_ALPHA);
 #endif
 			}
 		}

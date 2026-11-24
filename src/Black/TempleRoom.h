@@ -43,9 +43,9 @@ struct Zoomer3d;
 
 struct CallbackData
 {
-	int           Visible;
+	bool32_t      Visible;
 	unsigned long SubMesh;
-	int           Highlighted;
+	bool32_t      Highlighted;
 	float         U0;
 	float         V0;
 	float         U1;

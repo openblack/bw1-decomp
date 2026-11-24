@@ -23,6 +23,14 @@
 
 #define CHAND_DEFAULT_MAX_DISTANCE_FROM_USER 1800.0f
 
+#ifdef VERSION_BW1W130
+enum CHAND_GLOVE_HELP_CUE
+{
+	CHAND_GLOVE_HELP_CUE_DEFAULT = 0,
+	CHAND_GLOVE_HELP_CUE_INTERACT = 0x20
+};
+#endif
+
 // Forward Declares
 
 class GInterfaceStatus;
@@ -44,6 +52,11 @@ struct ControlHandUpdateInfo
 class CHand : public Morphable
 {
 public:
+#ifdef VERSION_BW1W130
+	// BW1W120 null BW1M119 null
+	static CHAND_GLOVE_HELP_CUE GloveHelpCue;
+#endif
+
 	// BW1W120 0046e8c0 BW1M119 011cd410
 	void OnClearMap();
 	// BW1W120 0046e630 BW1M119 011cdd60

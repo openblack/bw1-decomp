@@ -176,6 +176,13 @@ block_relocations:
   - source: 0x0077F030
   - source: 0x0077F03B
   - source: 0x0077F064
+# WorldRoom's literal constants and an interior word of an asset path.
+  - source: 0x007B5A5F
+  - source: 0x007B5A8B
+  - source: 0x007B5CE8
+  - source: 0x007B5D14
+  - source: 0x007B64A9
+  - source: 0x00C9DC68
 # WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
   - source: 0x007F8C67
   - source: 0x007F8CAD
