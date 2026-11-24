@@ -493,7 +493,7 @@ bool32_t GGame::Init()
 		GInterfaceStatus* leader = players[PlayerIndex].GetLeaderInterfaceStatus();
 		if (MyInterfaceStatus() == leader)
 		{
-			SetPacket((PACKET_TYPE)0x4e, MyPlayer()->GetCitadel()->GetCreatureHomePos().MapX(),
+			SetPacket(PACKET_TYPE_LOAD_MY_CREATURE, MyPlayer()->GetCitadel()->GetCreatureHomePos().MapX(),
 			          MyPlayer()->GetCitadel()->GetCreatureHomePos().MapZ(), -1L);
 		}
 	}
@@ -2631,7 +2631,7 @@ GPlayer* GGame::GetPlayer(PLAYER_NAME player_name)
 void GGame::SetPacket(PACKET_TYPE type)
 {
 	Packet.Type = (uint8_t)type;
-	SendPacketCompressed(type, SETPACKET_FUNCTION_NUMBER_0xc);
+	SendPacketCompressed(type, SETPACKET_FUNCTION_NUMBER_TYPE_ONLY);
 }
 
 // BW1W120 00552f80 BW1M119 01039330

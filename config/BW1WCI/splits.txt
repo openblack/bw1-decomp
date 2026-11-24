@@ -1952,15 +1952,15 @@ Black/OnMapTrajectory.cpp:
 Black/OOSDebug.cpp:
 	.text       start:0x00651BB0 end:0x00652330
 	.rdata      start:0x0098953C end:0x00989548
-	.data       start:0x00C6EAB0 end:0x00C6EB48
-	.bss        start:0x00DC571C end:0x00DC57D8
+	.data       start:0x00C6EAB0 end:0x00C6EAD4
+	.bss        start:0x00DC571C end:0x00DC5754
 
 Black/Packet.cpp:
 	.text       start:0x00652330 end:0x006540D0
 	.rdata      start:0x00989548 end:0x00989554
 	.CRT$XCU    start:0x00A36C40 end:0x00A36C48 align:4
-	.data       start:0x00C6EB48 end:0x00C6EB7E
-	.bss        start:0x00DC57D8 end:0x00DC6990
+	.data       start:0x00C6EAD4 end:0x00C6EB7E
+	.bss        start:0x00DC5754 end:0x00DC6990
 
 Black/ParticleContainer.cpp:
 	.text       start:0x006540D0 end:0x006548C0

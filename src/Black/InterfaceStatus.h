@@ -28,6 +28,14 @@ struct PSysProcessInfo;
 class Spell;
 class SpellSeed;
 
+struct HandPhysicsInfo
+{
+	LHPoint ThrowVelocity;
+	LHPoint ThrowAngularVelocity;
+	LHPoint HandPos;
+	LHPoint HandAngles;
+};
+
 class GInterfaceStatus : public GameThingWithPos
 {
 public:
@@ -38,10 +46,7 @@ public:
 	uint32_t           field_0x38;
 	Object*            ObjectInteract;
 	long               MultiPickupTicks;
-	LHPoint            ThrowVelocity;
-	LHPoint            ThrowAngularVelocity;
-	LHPoint            HandPos;
-	LHPoint            HandAngles;
+	HandPhysicsInfo    HandPhysics;
 	GMagicHand         magic_hand[1];
 	bool               HandHoldingSomething;
 	LHCoord            field_0x94;
@@ -139,6 +144,16 @@ public:
 	MapCoords GetHandMapCoords();
 	// BW1W120 005dca40 BW1M119 0108dfc0
 	SPELL_SEED_TYPE GetLastSpellGained();
+	// Inliner IL size: <= 40
+	// BW1W120 inlined BW1M119 01364c00
+	HandPhysicsInfo& GetHandPhysics() { return HandPhysics; }
+	// BW1W120 005dbfb0 BW1M119 0101f220
+	void UpdateInfo(const MapCoords& coords, const LHPoint& velocity, const LHPoint& direction, const LHPoint& up,
+	                unsigned char sequence);
+	// BW1W120 005dc060 BW1M119 01097ae0
+	void UpdateHandInfo(const MapCoords& coords, const LHPoint& point);
+	// BW1W120 005dc0d0 BW1M119 01001df0
+	void UpdateCameraInfo(const LHPoint& camera_pos, const LHPoint& camera_focus);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 005f17b0 BW1MCI119 0139a280
 	bool32_t AddToCurrentHandArray(Object* object);

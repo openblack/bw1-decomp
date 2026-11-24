@@ -1821,13 +1821,13 @@ Black/OOSDebug.cpp:
 	.text       start:0x005ED9A0 end:0x005EDAD0
 	.rdata      start:0x0086EB9C end:0x0086EBA8
 	.CRT$XCU    start:0x008F6B9C end:0x008F6BAC align:4
-	.bss        start:0x00C6514C end:0x00C65208
+	.bss        start:0x00C6514C end:0x00C65184
 
 Black/Packet.cpp:
 	.text       start:0x005EDAD0 end:0x005EF6C0
 	.rdata      start:0x0086EBA8 end:0x0086EBB4
 	.data       start:0x00B21CF0 end:0x00B21D98
-	.bss        start:0x00C65208 end:0x00C663C0
+	.bss        start:0x00C65184 end:0x00C663C0
 
 Black/ParticleContainer.cpp:
 	.text       start:0x005EF6C0 end:0x005EFE90

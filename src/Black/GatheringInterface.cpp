@@ -52,7 +52,7 @@
 #define INCOMING_TEXT_DISPLAY_TIME   10000 // ms an incoming message stays up
 #define CREATURE_BUBBLE_DISPLAY_TIME 3.0f  // seconds
 
-GBCategory*               CurrentPlayers;
+GBCategory*               GatheringBox::CurrentPlayers;
 GBCategory*               OtherPlayers;
 GBCategory*               Friends;
 LHLinkedList<GBCategory*> PeopleList;

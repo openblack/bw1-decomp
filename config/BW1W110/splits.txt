@@ -1915,14 +1915,14 @@ Black/OOSDebug.cpp:
 	.text       start:0x00632C10 end:0x00633390
 	.rdata      start:0x0092129C end:0x009212A8
 	.CRT$XCU    start:0x009B6BE4 end:0x009B6BF4 align:4
-	.data       start:0x00BED0C8 end:0x00BED15C
-	.bss        start:0x00D3307C end:0x00D33138
+	.data       start:0x00BED0C8 end:0x00BED0EC
+	.bss        start:0x00D3307C end:0x00D330B4
 
 Black/Packet.cpp:
 	.text       start:0x00633390 end:0x00634FA0
 	.rdata      start:0x009212A8 end:0x009212B4
-	.data       start:0x00BED15C end:0x00BED196
-	.bss        start:0x00D33138 end:0x00D342F0
+	.data       start:0x00BED0EC end:0x00BED196
+	.bss        start:0x00D330B4 end:0x00D342F0
 
 Black/ParticleContainer.cpp:
 	.text       start:0x00634FA0 end:0x00635790

@@ -40,6 +40,8 @@ class LH3DObject;
 class LHPlayer;
 struct LHPoint;
 class Object;
+class WorshipSpellIcon;
+struct GestureSystemPacketData;
 struct Leash;
 struct LiquidParticleGroup;
 class SpellSeed;
@@ -89,7 +91,7 @@ public:
 	uint32_t               field_0x364;
 	uint32_t               field_0x368;
 	uint32_t               field_0x36c;
-	uint32_t               field_0x370;
+	bool                   SelectingLeashType;
 	uint32_t               field_0x374;
 	uint32_t               field_0x378;
 	uint32_t               field_0x37c;
@@ -189,6 +191,47 @@ public:
 	bool32_t SendBubbleCollision(Bubble* bubble, float distance);
 	// BW1W120 005ced10 BW1M119 013629e0
 	Object* GetInteractObject();
+	// BW1W120 005dbf40 BW1M119 0100f650
+	void UpdateStatusInfo(const MapCoords& coords, const LHPoint& velocity, const LHPoint& direction, const LHPoint& up,
+	                      unsigned char sequence);
+	// BW1W120 005dbf70 BW1M119 01004900
+	void UpdateStatusInfo(const MapCoords& coords, const LHPoint& point);
+	// BW1W120 005dbf90 BW1M119 01001d80
+	void UpdateStatusInfo(const LHPoint& camera_pos, const LHPoint& camera_focus);
+	// BW1W120 005da8a0 BW1M119 01371860
+	bool32_t ApplyUnlockProcess(Object* object, unsigned long unlock_value);
+	// BW1W120 005da950 BW1M119 01371640
+	bool32_t StartLockedSelect(Object* object);
+	// BW1W120 005daa10 BW1M119 01371560
+	bool32_t EndLockedSelect(Object* object);
+	// BW1W120 005da8f0 BW1M119 01371770
+	bool32_t EmptyHand();
+	// BW1W120 005da2d0 BW1M119 013721d0
+	bool32_t GiveHandObjectToInterfaceObject(Object* object, int give_value);
+	// BW1W120 005da650 BW1M119 01371be0
+	bool32_t TapInterfaceObject(Object* object);
+	// BW1W120 005daa70 BW1M119 01371480
+	bool32_t InteractWithMapCoordObject(Object* object);
+	// BW1W120 005daad0 BW1M119 013713a0
+	bool32_t FightApplyToObject(Object* object, unsigned long action);
+	// BW1W120 005dab50 BW1M119 01371230
+	bool32_t FightSelectToObject(Object* object, unsigned long action);
+	// BW1W120 005dab20 BW1M119 01371310
+	bool32_t EndFightToObject(unsigned long time);
+	// BW1W120 005daba0 BW1M119 01371160
+	bool32_t InterfaceRequestSpell(SPELL_SEED_TYPE type);
+	// BW1W120 005dabf0 BW1M119 013710b0
+	bool32_t InterfaceRequestSpellPrevious();
+	// BW1W120 005dac30 BW1M119 01370fe0
+	bool32_t RequestPowerUp(WorshipSpellIcon* icon, POWER_UP_TYPE type);
+	// BW1W120 005da1a0 BW1M119 013723c0
+	bool32_t ApplyInterfaceObjectToHandObject(Object* object, GestureSystemPacketData* data);
+	// BW1W120 005da400 BW1M119 01372050
+	bool32_t ApplyCoordToHandObject(GestureSystemPacketData* data);
+	// BW1W120 005da4d0 BW1M119 01371ec0
+	bool32_t SelectMapCoordToFight(const MapCoords& coords);
+	// BW1W120 005da590 BW1M119 01371d30
+	bool32_t ApplyMapCoordToFight(const MapCoords& coords);
 	// BW1W120 005da6f0 BW1M119 01371930
 	void PlaceObjectInMagicHand(Object* object);
 	// BW1W120 00519960 BW1M119 010261b0
@@ -271,6 +314,8 @@ public:
 	void ResetActionState();
 	// BW1W120 005d1260 BW1M119 013698e0
 	void InterfaceActionForceToNormal();
+	// BW1W120 005d4350 BW1M119 01364a70
+	bool32_t InterfaceActionSetEmptyHandPacket();
 	// BW1W120 005cedc0 BW1M119 01362540
 	void SetActive(bool32_t active);
 	// BW1W120 005d1ab0 BW1M119 01097d30
