@@ -1567,6 +1567,22 @@ add_relocations:
     type: x86_abs32
     target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
 
+# LH3DHand::Draw compares its row pointer, biased into the row, against one past LH3DHand::g_line's end.
+  - source: 0x00852FBA
+    type: x86_abs32
+    target: '?g_line@LH3DHand@@2PAULH3DHandLine@@A'
+    addend: 0xD98
+# LH3DPrimitive::DrawForMouse (LH3DHand.cpp): the backface test's g_cache_t_points corners (dtk leaves the lea
+# displacements unrelocated).
+  - source: 0x008534E6
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008534EC
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
+  - source: 0x008534FB
+    type: x86_abs32
+    target: '?g_cache_t_points@LH3DTech@@2PAUVertex3D@@A'
 # SRTextured.cpp's DrawCollide and DrawMaskForBuildingPos: the triangle corners' g_cache_t_points entries (dtk leaves
 # the lea displacement unrelocated).
   - source: 0x008712A1

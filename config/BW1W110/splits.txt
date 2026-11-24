@@ -4382,7 +4382,7 @@ Lionhead/LH3DLib/development/LH3DPrimitive.cpp:
 
 Lionhead/LH3DLib/development/LH3DVRAMTex.cpp:
 	.text       start:0x0084D600 end:0x0084E290
-	.data       start:0x00C28110 end:0x00C28334
+	.data       start:0x00C28110 end:0x00C28320
 
 Lionhead/LH3DLib/development/CAnim.cpp:
 	.text       start:0x0084E290 end:0x008527E0
@@ -4391,7 +4391,8 @@ Lionhead/LH3DLib/development/CAnim.cpp:
 Lionhead/LH3DLib/development/LH3DHand.cpp:
 	.text       start:0x008527E0 end:0x00853790
 	.rdata      start:0x00993AB0 end:0x00993AB4
-	.bss        start:0x00EF3FEC end:0x00EF4D80
+	.data       start:0x00C28320 end:0x00C28334
+	.bss        start:0x00EF3FF0 end:0x00EF4D80
 
 Lionhead/LHLib/ver5.0/RPFollow.cpp:
 	.text       start:0x00853790 end:0x00854DD0

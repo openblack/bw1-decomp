@@ -1682,7 +1682,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPrimitive.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DVRAMTex.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp"),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DHand.cpp"),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DHand.cpp", pch=True),
             LH3DLibObject(Matching, "Lionhead/LHLib/ver5.0/RPFollow.cpp", extra_cflags=["/GX", *cflags_route_planner], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/MeshIntersect.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/CollideBox.cpp", pch=True),
