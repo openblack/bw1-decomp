@@ -70,7 +70,7 @@ WeatherInfo*  LH3DAtmos::amap;
 WeatherInfo   LH3DAtmos::ambient;
 SnowCover*    LH3DAtmos::scv;
 int8_t        LH3DAtmos::amaptime;
-static long   v_max[LH3D_ATMOS_BUFFER_COUNT];
+int           v_max[LH3D_ATMOS_BUFFER_COUNT];
 LH3DColor*    LH3DAtmos::v_col[LH3D_ATMOS_BUFFER_COUNT];
 LHPoint*      LH3DAtmos::v_pnt[LH3D_ATMOS_BUFFER_COUNT];
 long*         LH3DAtmos::v_idx[LH3D_ATMOS_BUFFER_COUNT];

@@ -486,6 +486,11 @@ struct LH3DMesh
 	// Inliner IL size: 87
 	// BW1W120 inlined BW1M119 inlined
 	void DrawComplex();
+#ifdef VERSION_BW1WCI
+	// Inliner IL size: 103
+	// BW1WCI inlined BW1MCI119 inlined
+	void DrawComplexPlasma(float inflate, float explode, float twist, float shatter);
+#endif
 	// Inliner IL size: 101
 	// BW1W120 inlined BW1M119 inlined
 	void DrawFroz();

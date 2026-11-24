@@ -60,14 +60,65 @@ unsigned long LH3DTech::g_cache_flags[LH3D_MAX_POINTS];
 #endif
 unsigned long LH3DLandscape::g_coeff[LH3D_LANDSCAPE_CELL_TEXELS * LH3D_LANDSCAPE_CELL_TEXELS][4];
 
-volatile bool     LH3DP3::IsPentium;
-volatile bool     LH3DP3::IsPentiumPro;
-volatile bool     LH3DP3::IsPentiumIII;
-volatile bool     LH3DP3::IsPentium4;
-volatile bool32_t LH3DP3::HasCMOV;
-volatile bool32_t LH3DP3::HasMMX;
-volatile bool32_t LH3DP3::HasSSE;
-bool32_t          LH3DP3::HasSSE2;
+volatile bool     IsPentium;
+volatile bool     IsPentiumPro;
+volatile bool     IsPentiumIII;
+volatile bool     IsPentium4;
+volatile bool32_t HasCMOV;
+volatile bool32_t HasMMX;
+volatile bool32_t HasSSE;
+bool32_t          HasSSE2;
+
+// BW1W120 007a1400 BW1M119 null
+extern "C" long __cdecl _ftol();
+
+// clang-format off
+extern "C" __declspec(naked) long __cdecl _ftol()
+{
+	__asm mov       eax, HasSSE2
+	__asm lea       ecx, [esp - 8]
+	__asm and       ecx, 0xfffffff8
+	__asm test      eax, eax
+	__asm je        x87
+	__asm fstp      qword ptr [ecx]
+	__asm movsd     xmm0, qword ptr [ecx]
+	__asm cvttsd2si eax, xmm0
+	__asm ret
+x87:
+	__asm sub       esp, 0x10
+	__asm fld       st(0)
+	__asm fistp     qword ptr [ecx]
+	__asm fild      qword ptr [ecx]
+	__asm mov       edx, [ecx + 4]
+	__asm mov       eax, [ecx]
+	__asm test      eax, eax
+	__asm je        integer_qnan_or_zero
+not_integer_qnan:
+	__asm fsubp     st(1), st
+	__asm test      edx, edx
+	__asm jns       positive
+	__asm fstp      dword ptr [ecx]
+	__asm mov       ecx, [ecx]
+	__asm add       esp, 0x10
+	__asm xor       ecx, 0x80000000
+	__asm add       ecx, 0x7fffffff
+	__asm adc       eax, 0
+	__asm ret
+positive:
+	__asm fstp      dword ptr [ecx]
+	__asm mov       ecx, [ecx]
+	__asm add       esp, 0x10
+	__asm add       ecx, 0x7fffffff
+	__asm sbb       eax, 0
+	__asm ret
+integer_qnan_or_zero:
+	__asm test      edx, 0x7fffffff
+	__asm jne       not_integer_qnan
+	__asm fcompp
+	__asm add       esp, 0x10
+	__asm ret
+}
+// clang-format on
 
 #ifndef VERSION_BW1W100
 void LH3DP3::Init()
@@ -2934,13 +2985,13 @@ void __fastcall LH3DP3::BlendCountry(uint16_t* dest, unsigned long dest_pitch, u
 
 void __fastcall LH3DP3::DrawTShadowAlpha(int unused)
 {
-	int    vmax = (int)LH3DTShadow::VMAX;
-	__m128 zero = _mm_setzero_ps();
+	int vmax = (int)LH3DTShadow::VMAX;
 	for (int i = 0; i < LH3DTShadow::g_pitch; i++)
 	{
 		LH3DTShadow::ScanLine& line = LH3DTShadow::g_list_scan_line[i];
 		if (line.Used)
 		{
+			__m128 zero = _mm_setzero_ps();
 			int    x = line.Min;
 			int    end = line.Max;
 			__m128 u = _mm_load_ss(&line.MinU);

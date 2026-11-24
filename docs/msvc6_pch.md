@@ -200,9 +200,13 @@ path, for example `build/<version>/src/Black/BlackPCH.pch`.
 functions made of a repeated statement, which nothing calls and no unit emits. They only move
 the offsets of what follows them (§1).
 
-- `BlackPCHCodeBeforeObject`, ahead of `Object.h` in 1.00, 1.10 and Creature Isle: 448
-  statements, 16.4 KB of IL. `Abode`'s order holds from about 15.3 to 17.6 KB: with less,
-  `GObjectInfo`'s bodies come out before `GAbodeInfo`'s. In 1.20 and 1.30 the `<string>` of
+- `BlackPCHCodeBeforeObject`, ahead of `Object.h` in 1.00, 1.10 and Creature Isle: 472
+  statements, 17.3 KB of IL. `Abode`'s order holds from about 15.3 to 17.6 KB: with less,
+  `GObjectInfo`'s bodies come out before `GAbodeInfo`'s. Moving the `LH3DAnimatedObject`,
+  `LH3DComplexObject` and `LH3DStaticMorphableObject` constructors and destructor out of their
+  headers took 1.10 under the window with 448; 456 to 504 put it back in 1.10 and Creature Isle,
+  and `BlackPCHCodeAfterObject` gives up the 24 added in those versions so that `Camera`'s window
+  does not move. In 1.20 and 1.30 the `<string>` of
   `GameThingWithPos.h` gives that code, after `LH3DObject.h`'s (`Object.h` includes it first). The
   stand-in follows `LH3DObject.h` too: ahead of it, `LHPoint(float, float, float)` comes after
   `Zoomer::Update` in `Camera`, not before it as in the image.

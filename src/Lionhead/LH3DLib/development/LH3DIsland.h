@@ -80,14 +80,8 @@ struct TShadowInfo;
 #define LOW_RES_TEXTURE_LOW_RES_TILE_SIZE (LOW_RES_TEXTURE_TILE_SIZE / LOW_RES_TEXTURE_LOW_RES_SCALE)
 #define LOW_RES_TEXTURE_SAMPLE_STEP       4
 #define LOW_RES_TEXTURE_FIXED_ONE         0x10000
-
-enum LAND_RAY_CLIP
-{
-	LAND_RAY_CLIP_LOW_X = 0x1,
-	LAND_RAY_CLIP_HIGH_X = 0x2,
-	LAND_RAY_CLIP_LOW_Y = 0x4,
-	LAND_RAY_CLIP_HIGH_Y = 0x8,
-};
+// The room a low resolution texture takes on disk once compressed, at most a byte per texel.
+#define LOW_RES_TEXTURE_SAVED_SIZE (LOW_RES_TEXTURE_SIZE * LOW_RES_TEXTURE_SIZE)
 
 enum LAND_CELL_SOUND
 {
@@ -382,19 +376,21 @@ static_assert(sizeof(LandBlock) == 0x9d8, "Data type is of wrong size");
 // The name of a block's texture, "Block%d".
 #define LAND_BLOCK_TEXTURE_NAME_LENGTH 32
 
-// The start of a landscape file written by LH3DIsland::SaveOnDisk. The blocks, countries, materials, the noise bitmap
-// and the bump map follow.
-struct LandFileHeader
-{
-	int      BlockCount;                                     /* 0x000 */
-	uint8_t  IndexBlock[LAND_BLOCKS_SIDE][LAND_BLOCKS_SIDE]; /* 0x004 */
-	int      MaterialCount;                                  /* 0x404 */
-	int      CountryCount;                                   /* 0x408 */
-	uint32_t BlockSize;                                      /* 0x40c */
-	uint32_t MaterialSize;                                   /* 0x410 */
-	uint32_t CountrySize;                                    /* 0x414 */
-};
-static_assert(sizeof(LandFileHeader) == 0x418, "Data type is of wrong size");
+#define LAND_MESH_LOD_01_DISTANCE                300.0f
+#define LAND_MESH_LOD_12_DISTANCE                600.0f
+#define LAND_MESH_LOD_WIDTH                      50.0f
+#define LAND_TEXTURE_LOD_HIGH_DETAIL_DISTANCE    400.0f
+#define LAND_TEXTURE_LOD_HIGH_DETAIL_WIDTH       70.0f
+#define LAND_TEXTURE_LOD_P4_LARGE_VRAM           600
+#define LAND_TEXTURE_LOD_P4_LARGE_VRAM_DISTANCE  800.0f
+#define LAND_TEXTURE_LOD_P4_MEDIUM_VRAM          500
+#define LAND_TEXTURE_LOD_P4_MEDIUM_VRAM_DISTANCE 700.0f
+#define LAND_TEXTURE_LOD_P4_SMALL_VRAM           400
+#define LAND_TEXTURE_LOD_P4_SMALL_VRAM_DISTANCE  600.0f
+#define LAND_TEXTURE_LOD_P4_WIDTH                170.0f
+#define LAND_MESH_LOD_P4_01_DISTANCE             1600.0f
+#define LAND_MESH_LOD_P4_12_DISTANCE             2500.0f
+#define LAND_MESH_LOD_P4_WIDTH                   550.0f
 
 class LH3DIsland
 {
@@ -451,6 +447,14 @@ public:
 	static LH3DTexture* g_bump_texture;
 	// BW1W120 00e9cd6c BW1M119 01202698 (LHCombined Release)
 	static LandBlock* g_current_block;
+	// BW1W120 00e9cd70 BW1M119 01202688 (LHCombined Release)
+	static int g_block_count;
+	// BW1W120 00e9cd74 BW1M119 012018a4 (LHCombined Release)
+	static bool32_t g_b_do_pre_draw;
+	// BW1W120 00e9cd78 BW1M119 012018a0 (LHCombined Release)
+	static bool32_t g_b_already_drawn_island;
+	// BW1W120 00e9cd7c BW1M119 0120149c (LHCombined Release)
+	static bool32_t g_b_created;
 	// BW1W120 00e9cd88 BW1M119 01200490 (LHCombined Release)
 	static int g_max_index_country;
 	// BW1W120 00c37204 BW1M119 011ceb20 (LHCombined Release)
@@ -567,6 +571,7 @@ public:
 	static void UseLowResTexture(bool32_t use);
 	// BW1W120 00800da0 BW1M119 01049540 (LHCombined Release)
 	static void SetHeightAsByte(long x, long z, long height);
+#ifndef VERSION_BW1W100
 	// BW1W120 00800ff0 BW1M119 010492c0 (LHCombined Release)
 	static void SetColor(long x, long z, uint8_t color);
 	// BW1W120 00801250 BW1M119 01049200 (LHCombined Release)
@@ -575,6 +580,7 @@ public:
 	static void SetCountry(long x, long z, long country);
 	// BW1W120 008015a0 BW1M119 01048da0 (LHCombined Release)
 	static void RequestUpdateAllTextures();
+#endif
 	// BW1W120 008015d0 BW1M119 010487a0 (LHCombined Release)
 	static void LoadFromDisk(char* name);
 	// BW1W120 00801870 BW1M119 01047fd0 (LHCombined Release)
@@ -594,8 +600,10 @@ public:
 	static void ReleaseSmallBump();
 	// BW1W120 00804cf0 BW1M119 01034330 (LHCombined Release)
 	static unsigned long __fastcall GetTerrainMaterial(unsigned long x, unsigned long z);
+#ifndef VERSION_BW1W100
 	// BW1W120 00804d80 BW1M119 null
 	static bool32_t IsSteep(long x, long z);
+#endif
 	// BW1W120 00804790 BW1M119 01045ba0 (LHCombined Release)
 	static bool32_t Release();
 	// BW1W120 00804ca0 BW1M119 010452e0 (LHCombined Release)
@@ -649,7 +657,18 @@ public:
 	}
 };
 
+// BW1W120 007ff7c0 BW1M119 null
+bool32_t TouchesSea(uint8_t* map, long x, long z);
+
+#ifndef VERSION_BW1W100
 // BW1W120 00804e60 BW1M119 01045220 (LHCombined Release)
 bool32_t IsP4Improvement();
+// BW1W120 007ff980 BW1M119 null
+uint8_t __fastcall GetHighestCorner(uint8_t* map, long x, long z);
+// BW1W120 007ff9c0 BW1M119 null
+uint8_t __fastcall GetLowestCorner(uint8_t* map, long x, long z);
+// BW1W120 007ffa00 BW1M119 null
+void SmoothCoast();
+#endif
 
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

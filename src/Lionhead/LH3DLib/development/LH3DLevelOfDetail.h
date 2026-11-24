@@ -28,8 +28,10 @@ struct LH3DLevelOfDetail
 {
 	// BW1W120 00c381e0 BW1M119 011ce84c (LHCombined Release)
 	static LH3DCitadelLevelOfDetail g_citadellod;
-	static long                     g_max_detail_idx;
-	static long                     g_detail_idx;
+	// BW1W120 00c381e8 BW1M119 011ce854 (LHCombined Release)
+	static long g_max_detail_idx;
+	// BW1W120 00c381ec BW1M119 011ce858 (LHCombined Release)
+	static long g_detail_idx;
 	// BW1W120 00c381f0 BW1M119 011ce85c (LHCombined Release)
 	static bool32_t g_b_draw_clouds;
 	// BW1W120 00c381f4 BW1M119 011ce860 (LHCombined Release)

@@ -1,3 +1,5 @@
+#include <winsock2.h> /* First, as <ddraw.h> in LH3DText.h includes <windows.h> */
+
 #include "BWLan.h"
 
 #include <string.h> /* For strlen */

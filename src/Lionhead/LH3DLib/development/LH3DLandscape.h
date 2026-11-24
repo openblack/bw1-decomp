@@ -200,4 +200,7 @@ public:
 	static void __fastcall SetMaterials(void* data);
 };
 
+// BW1W120 00fa76c0 BW1M119 01204fc4 (LHCombined Release)
+extern uint8_t* shadow_buffer;
+
 #endif /* BW1_DECOMP_LH3D_LANDSCAPE_INCLUDED_H */

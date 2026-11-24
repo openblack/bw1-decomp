@@ -13,6 +13,7 @@
 #include "LH3DGJAnimVolFX.h"           /* For LH3DGJAnimVolFX */
 #include "LH3DHand.h"                  /* For LH3DHand */
 #include "LH3DIsland.h"                /* For LH3DIsland */
+#include "LH3DLandscape.h"             /* For shadow_buffer */
 #include "LH3DLevelOfDetail.h"         /* For LH3DLevelOfDetail */
 #include "LH3DLine.h"                  /* For LH3DLine */
 #include "LH3DMaterial.h"              /* For LH3DMaterial */
@@ -35,6 +36,8 @@
 #include "LH3DZSorter.h"               /* For LH3DZSorter */
 #include "SnowCover.h"                 /* For SnowCover */
 #include "TShadowInfo.h"               /* For TShadowInfo */
+#include "Blob.h"                      /* For caca_color_hair, caca_specular_hair */
+#include "LH3DDivers.h"                /* For g_left, g_right, TRANS_TO_ADD */
 
 // The altitude above which the snow starts to cover an object.
 #define LH3D_OBJECT_SNOW_ALTITUDE 20.0f
@@ -64,6 +67,8 @@
 
 // BW1W120 inlined BW1M119 01095540 (LHCombined Release)
 inline void UpdateClippingPlane(LHPlane* plane);
+// BW1W120 inlined BW1M119 inlined
+inline void ComputeShadowFactors();
 
 float DISTANCE_LOD_1 = 23.333334f;
 float DISTANCE_LOD_2 = 66.666664f;
@@ -108,35 +113,100 @@ LH3DMaterial*      g_smoke_mat;
 LH3DMaterial*      g_fire_mat;
 LH3DMaterial*      g_cool_effect_mat;
 LH3DMaterial*      g_mat_misc0;
-LH3DMaterial*      g_mat_p4t;
-LH3DTexture*       g_p4t_texture;
-LH3DMaterial*      g_mat_p4;
-LH3DTexture*       g_p4_texture;
-LH3DTexture*       g_burn_texture;
-LH3DTexture*       g_smoke_texture;
-LH3DTexture*       g_fire_texture;
-LH3DTexture*       g_tex_misc0;
-LH3DTexture*       g_cool_effect_texture;
-int                caca_static_draw;
-LH3DEnvMatInfo     LH3DObject::g_env_mat_info[LH3D_OBJECT_ENV_MATS];
-LH3DEnvMatInfo*    LH3DObject::g_cur_env_mat_info;
-LH3DMaterial*      LH3DObject::g_fb_list_mat[LH3D_OBJECT_FAST_BLENDING_MATERIALS];
-
-float LH3DStaticObject::g_fizz_r_v;
-float LH3DStaticObject::g_fizz_r_u;
+#ifndef VERSION_BW1W100
+LH3DMaterial* g_mat_p4t;
+LH3DTexture*  g_p4t_texture;
+LH3DMaterial* g_mat_p4;
+LH3DTexture*  g_p4_texture;
+#endif
+LH3DTexture*    g_burn_texture;
+LH3DTexture*    g_smoke_texture;
+LH3DTexture*    g_fire_texture;
+LH3DTexture*    g_tex_misc0;
+LH3DTexture*    g_cool_effect_texture;
+int             caca_static_draw;
+LH3DEnvMatInfo  LH3DObject::g_env_mat_info[LH3D_OBJECT_ENV_MATS];
+LH3DEnvMatInfo* LH3DObject::g_cur_env_mat_info;
+LH3DMaterial*   LH3DObject::g_fb_list_mat[LH3D_OBJECT_FAST_BLENDING_MATERIALS];
 
 LHPoint special_jc_mouse_pos(0.0f, 0.0f, 0.0f);
 
-LHPoint       g_right(1.0f, 0.0f, -1.0f);
-LHPoint       g_left(-1.0f, 0.0f, 1.0f);
-float         DEFAULT_TRANS_TO_ADD = 0.2f;
-float         TRANS_TO_ADD = DEFAULT_TRANS_TO_ADD;
-unsigned long caca_color_hair;
-unsigned long caca_specular_hair;
-uint8_t*      shadow_buffer;
-
 float r_u_speed = 0.1f;
 float r_v_speed = 0.2f;
+
+inline LH3DStaticObject::~LH3DStaticObject()
+{
+	g_count_static_object--;
+}
+
+inline LH3DStaticMorphableObject::LH3DStaticMorphableObject()
+{
+	g_count_static_object++;
+	LandAltitudes = NULL;
+}
+
+inline LH3DCitadel::LH3DCitadel()
+{
+	g_count_static_object++;
+}
+
+inline LH3DAnimatedObject::LH3DAnimatedObject()
+{
+	g_count_animated_object++;
+	CurrentAnim = NULL;
+	CurrentCycleTime = 0;
+	LastAnim = NULL;
+	LastCycleTime = 0;
+	BlendFactor = 0.0f;
+	BlendTime = 0;
+	for (int i = 0; i < LH3D_MESH_LOD_LEVEL_LAST; i++)
+	{
+		Meshes[i] = NULL;
+	}
+}
+
+inline LH3DComplexObject::LH3DComplexObject()
+{
+	g_count_complex_object++;
+	BoneMatrices = NULL;
+	ShadowInfo = NULL;
+	hair = NULL;
+	CarriedObject = NULL;
+	DrawAfterFrame = false;
+	DrawnAfterFrame = false;
+	next = g_first_co;
+	g_first_co = this;
+	FrozMaterial = NULL;
+	FrozAmount = 0.0f;
+	FrozParam = LH3D_COMPLEX_OBJECT_DEFAULT_FROZ_COLOR;
+	FizzMaterial = NULL;
+	FizzAmount = 0.0f;
+	FizzU = 0.0f;
+	FizzV = 0.0f;
+	Hidden = false;
+}
+
+inline LH3DComplexObject::~LH3DComplexObject()
+{
+	LH3DComplexObject* previous = NULL;
+	for (LH3DComplexObject* object = g_first_co; object != this; object = object->next)
+	{
+		previous = object;
+	}
+	if (previous != NULL)
+	{
+		previous->next = next;
+	}
+	else
+	{
+		g_first_co = next;
+	}
+	if (ShadowInfo != NULL)
+	{
+		ShadowInfo->Release();
+		ShadowInfo = NULL;
+	}
+}
 
 void LH3DEnvMatInfo::LoadEnvMat(char* name, float offset_u, float offset_v, float scale_u, float scale_v)
 {
@@ -240,6 +310,7 @@ bool32_t LH3DObject::Open()
 	g_count_animated_object = 0;
 	g_count_complex_object = 0;
 	g_first = NULL;
+#ifndef VERSION_BW1W100
 	g_p4t_texture = LH3DTexture::Create(".\\data\\Textures\\p4t.raw", LH3D_OBJECT_TEXTURE_FLAGS, -1, NULL);
 	g_mat_p4t =
 		LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_NZ, g_p4t_texture);
@@ -248,6 +319,7 @@ bool32_t LH3DObject::Open()
 	g_mat_p4 =
 		LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_NZ, g_p4_texture);
 	g_mat_p4->Flags |= LH3DMaterial::FLAG_DOUBLE_SIDED;
+#endif
 	g_smoke_texture = LH3DTexture::Create(".\\data\\Textures\\smoke.raw", LH3D_OBJECT_TEXTURE_FLAGS, -1, NULL);
 	g_smoke_mat =
 		LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_NZ, g_smoke_texture);
@@ -351,10 +423,10 @@ void LH3DObject::CombineColorWithCurrent(unsigned long color, unsigned long spec
 	unsigned long red = RGBA_GETRED(this->specular) + RGBA_GETRED(specular);
 	unsigned long green = RGBA_GETGREEN(this->specular) + RGBA_GETGREEN(specular);
 	unsigned long blue = RGBA_GETBLUE(this->specular) + RGBA_GETBLUE(specular);
-	alpha = RGBA_MAKE(0, 0, 0, min(alpha, 0xff));
-	red = RGBA_MAKE(min(red, 0xff), 0, 0, 0);
-	green = RGBA_MAKE(0, min(green, 0xff), 0, 0);
-	blue = min(blue, 0xff);
+	alpha = RGBA_MAKE(0, 0, 0, min(alpha, LH3D_COLOR_CHANNEL_MAX));
+	red = RGBA_MAKE(min(red, LH3D_COLOR_CHANNEL_MAX), 0, 0, 0);
+	green = RGBA_MAKE(0, min(green, LH3D_COLOR_CHANNEL_MAX), 0, 0);
+	blue = min(blue, LH3D_COLOR_CHANNEL_MAX);
 	this->specular = alpha | red | green | blue;
 	unsigned long current = this->color;
 	this->color = RGBA_MAKE(
@@ -503,7 +575,7 @@ void LH3DStaticObject::DrawReverse()
 
 void LH3DStaticObject::DrawGlassFronted(float zoom, float alpha)
 {
-	uint8_t glassAlpha = alpha * 255.0f;
+	uint8_t glassAlpha = alpha * LH3D_OBJECT_MAX_ALPHA;
 	DrawReverse();
 	g_env_map_zoom_x = g_env_map_zoom_y = zoom;
 	g_env_map_tex_color_env_alpha = true;
@@ -1056,15 +1128,16 @@ void LH3DStaticMorphableObject::Draw()
 		{
 			if (shadow->IsUseable() && !shadow->DynamicShadow && shadow->Caster != this)
 			{
-				float radius = scale * mesh->BoundingBox.DiagonalLength;
+				float objectScale = scale;
+				float radius = objectScale * mesh->BoundingBox.DiagonalLength;
 				float size =
 					max(shadow->MaxX - shadow->MinX, shadow->MaxZ - shadow->MinZ) * LH3D_OBJECT_SHADOW_DIAGONAL_SCALE;
 				LHPoint position = mesh->GetBoundingBox().centre;
 				matrix.TransformPoint(position);
-				LHPoint centre((shadow->MinX + shadow->MaxX) * 0.5f, 0.0f, (shadow->MinZ + shadow->MaxZ) * 0.5f);
-				float   dz = position.z - centre.z;
-				float   dx = position.x - centre.x;
-				if (dx * dx + dz * dz < (radius + size) * (radius + size))
+				float centreX = (shadow->MinX + shadow->MaxX) * 0.5f;
+				float centreZ = (shadow->MinZ + shadow->MaxZ) * 0.5f;
+				if ((position.x - centreX) * (position.x - centreX) + (position.z - centreZ) * (position.z - centreZ) <
+				    (radius + size) * (radius + size))
 				{
 					LH3DPrimitive::g_vertical_translate_vertices = LandAltitudes;
 					mesh->DrawInShadowWithVerticalTranslation(shadow);
@@ -1141,6 +1214,20 @@ void LH3DStaticObject::Blend(LH3DObject* obj1, LH3DObject* obj2, float blend)
 	mesh->Blend(obj1->GetMesh(), obj2->GetMesh(), blend, false);
 }
 
+inline void ComputeShadowFactors()
+{
+	static bool32_t computeFactors = true;
+	if (computeFactors)
+	{
+		LHPoint sun;
+		sun = DEFAULT_SUN;
+		float norm = sun.GetNorm();
+		sun *= InverseSquareRoot(norm);
+		LH3DTShadow::g_factorX = -sun.x / sun.y;
+		LH3DTShadow::g_factorZ = -sun.z / sun.y;
+	}
+}
+
 void LH3DStaticObject::DrawTextureShadow(unsigned long tile_x, unsigned long tile_z) const
 {
 	g_current_object_in_draw = (LH3DObject*)this;
@@ -1151,14 +1238,7 @@ void LH3DStaticObject::DrawTextureShadow(unsigned long tile_x, unsigned long til
 	LH3DTech::g_local_to_clipping._41 -= tile_x * LH3D_T_SHADOW_TILE_SIZE;
 	LH3DTech::g_local_to_clipping._42 += height;
 	LH3DTech::g_local_to_clipping._43 -= tile_z * LH3D_T_SHADOW_TILE_SIZE;
-	static bool32_t computeFactors = true;
-	if (computeFactors)
-	{
-		LHPoint sun = DEFAULT_SUN;
-		sun *= InverseSquareRoot(sun.GetNormeSq());
-		LH3DTShadow::g_factorX = -sun.x / sun.y;
-		LH3DTShadow::g_factorZ = -sun.z / sun.y;
-	}
+	ComputeShadowFactors();
 	LH3DTShadow::g_buffer = buffer;
 	LH3DMesh* drawnMesh = mesh;
 	for (int i = 0; i < drawnMesh->SubmeshCount; i++)
@@ -1487,11 +1567,12 @@ bool32_t LH3DMeshedObject::GetExtraPos(long index, LHPoint* point) const
 	}
 	if (index < metrics->Count)
 	{
-		point->Set(metrics->Matrices[index]._41, metrics->Matrices[index]._42, metrics->Matrices[index]._43);
+		const LHMatrix& extraMatrix = metrics->Matrices[index];
+		point->Set(extraMatrix._41, extraMatrix._42, extraMatrix._43);
 		matrix.TransformPoint(*point);
 		if (IsStaticMorphable())
 		{
-			point->y += LH3DIsland::GetAltitude(*point) - LH3DIsland::GetAltitude(matrix.GetPos());
+			point->y += LH3DIsland::GetAltitude(point) - LH3DIsland::GetAltitude(*(LHPoint*)&matrix.m[9]);
 		}
 		return true;
 	}
@@ -1511,16 +1592,17 @@ void LH3DMeshedObject::DrawExtraMetric()
 	{
 		LHMatrix matrix;
 		GetExtraPos(i, &matrix);
-		LHPoint pos(matrix.GetPos().x, matrix.GetPos().y, matrix.GetPos().z);
-		LHPoint axisX(matrix._11, matrix._21, matrix._31);
-		LHPoint axisY(matrix._12, matrix._22, matrix._32);
-		LHPoint axisZ(matrix._13, matrix._23, matrix._33);
-		axisX += pos;
-		axisY += pos;
-		axisZ += pos;
-		LH3DLine::AddLine(pos, axisX, &color, NULL);
-		LH3DLine::AddLine(pos, axisY, &color, NULL);
-		LH3DLine::AddLine(pos, axisZ, &color, NULL);
+		LHPoint pos(matrix._41, matrix._42, matrix._43);
+		LHPoint axis[3];
+		axis[0].Set(matrix._11, matrix._21, matrix._31);
+		axis[1].Set(matrix._12, matrix._22, matrix._32);
+		axis[2].Set(matrix._13, matrix._23, matrix._33);
+		axis[0] += pos;
+		axis[1] += pos;
+		axis[2] += pos;
+		LH3DLine::AddLine(pos, axis[0], &color, NULL);
+		LH3DLine::AddLine(pos, axis[1], &color, NULL);
+		LH3DLine::AddLine(pos, axis[2], &color, NULL);
 	}
 }
 
@@ -1578,8 +1660,8 @@ void LH3DStaticObject::DoFrozPart(float froz_amount, unsigned long froz_color, L
 		LH3DTech::g_local_to_clipping.PostMultiply(LH3DTech::g_world_to_clipping);
 		LH3DRender::SetMaterial(material, 0);
 		LH3DRender::g_b_do_update_material = false;
-		unsigned long frozColor =
-			ModulateColor(RGBA_SETALPHA(LH3D_COLOR_WHITE, FloatToInt(froz_amount * 255.0f)), RGB_TORGBA(color));
+		unsigned long frozColor = ModulateColor(
+			RGBA_SETALPHA(LH3D_COLOR_WHITE, FloatToInt(froz_amount * LH3D_OBJECT_MAX_ALPHA)), RGB_TORGBA(color));
 		unsigned long objectSpecular = specular;
 		LH3DMesh::g_color = frozColor;
 		LH3DMesh::g_specular = objectSpecular;
@@ -1601,6 +1683,13 @@ void LH3DStaticObject::DoFrozPart(float froz_amount, unsigned long froz_color, L
 	}
 }
 
+#ifdef VERSION_BW1WCI
+void LH3DStaticObject::DrawPlasma(float inflate, float explode, float twist, LH3DMaterial* material, LH3DColor colour,
+                                  float shatter)
+{
+}
+#endif
+
 void LH3DStaticObject::DrawFroz(float froz_amount, unsigned long froz_color, LH3DMaterial* material)
 {
 	caca_static_draw++;
@@ -1618,8 +1707,9 @@ void LH3DStaticObject::DrawFroz(float froz_amount, unsigned long froz_color, LH3
 	if (froz_amount > 0.0f)
 	{
 		LH3DPrimitive::g_do_vertex_blending = false;
-		objectColor = ModulateColor(LH3DBlendColor(LH3D_COLOR_WHITE, froz_color, FloatToInt(froz_amount * 255.0f)),
-		                            RGB_TORGBA(color));
+		objectColor =
+			ModulateColor(LH3DBlendColor(LH3D_COLOR_WHITE, froz_color, FloatToInt(froz_amount * LH3D_OBJECT_MAX_ALPHA)),
+		                  RGB_TORGBA(color));
 	}
 	if (IsDrawWithGlobalAlpha())
 	{
@@ -2491,7 +2581,7 @@ void LH3DComplexObject::AddDrawing()
 
 void LH3DComplexObject::DrawFizz()
 {
-	uint8_t alpha = FizzAmount * 255.0f;
+	uint8_t alpha = FizzAmount * LH3D_OBJECT_MAX_ALPHA;
 	if (alpha == LH3D_COLOR_OPAQUE)
 	{
 		return;
@@ -2533,6 +2623,9 @@ void LH3DComplexObject::DrawFizz()
 	SetCastDynamicShadow(castDynamicShadow);
 }
 
+float LH3DStaticObject::g_fizz_r_u = 0.0f;
+float LH3DStaticObject::g_fizz_r_v = 0.0f;
+
 void LH3DStaticObject::StartFrameIncFizzVars()
 {
 	float timeInc = LH3DTech::GetGameTimeInc() * 0.001f;
@@ -2542,8 +2635,8 @@ void LH3DStaticObject::StartFrameIncFizzVars()
 
 void LH3DStaticObject::DrawFizz(float amount, LH3DMaterial* material)
 {
-	uint8_t alpha = amount * 255.0f;
-	if (alpha == 255)
+	uint8_t alpha = amount * LH3D_OBJECT_MAX_ALPHA;
+	if (alpha == LH3D_COLOR_OPAQUE)
 	{
 		return;
 	}
@@ -2620,7 +2713,7 @@ void LH3DComplexObject::Draw()
 	if (FrozAmount > 0.0f)
 	{
 		LH3DPrimitive::g_do_vertex_blending = false;
-		uint8_t       frozAlpha = FloatToInt(FrozAmount * 255.0f);
+		uint8_t       frozAlpha = FloatToInt(FrozAmount * LH3D_OBJECT_MAX_ALPHA);
 		unsigned long frozColor = LH3D_BLEND_COLOR(LH3D_COLOR_WHITE, FrozParam, frozAlpha);
 		drawColor = ModulateColor(frozColor, RGB_TORGBA(color));
 	}
@@ -2693,8 +2786,8 @@ void LH3DAnimatedObject::DoFrozPart(float froz_amount, unsigned long froz_color,
 	{
 		LH3DRender::SetMaterial(material, 0);
 		LH3DRender::SetDoUpdateMaterial(false);
-		unsigned long frozColor =
-			ModulateColor(RGBA_SETALPHA(LH3D_COLOR_WHITE, FloatToInt(froz_amount * 255.0f)), RGB_TORGBA(color));
+		unsigned long frozColor = ModulateColor(
+			RGBA_SETALPHA(LH3D_COLOR_WHITE, FloatToInt(froz_amount * LH3D_OBJECT_MAX_ALPHA)), RGB_TORGBA(color));
 		g_current_object_in_draw = this;
 		LH3DSubMesh::g_current_status = GetStatus();
 		LH3DPrimitive::g_current_index_primitive = 0;
@@ -2728,14 +2821,59 @@ void LH3DAnimatedObject::DoFrozPart(float froz_amount, unsigned long froz_color,
 	}
 }
 
+#ifdef VERSION_BW1WCI
+void LH3DComplexObject::DrawPlasma(float inflate, float explode, float twist, LH3DMaterial* material, LH3DColor colour,
+                                   float shatter)
+{
+	if (material != NULL)
+	{
+		LH3DRender::SetMaterial(material, 0);
+	}
+	LH3DRender::g_b_do_update_material = false;
+	unsigned long plasmaColor = ModulateColor(colour.GetColor(), RGB_TORGBA(color));
+	g_current_object_in_draw = this;
+	LH3DSubMesh::g_current_status = GetStatus();
+	LH3DTech::g_current_matrix = &LH3DTech::g_local_to_clipping;
+	LH3DMesh::g_current_list_matrix = BoneMatrices;
+	LH3DTech::g_local_to_clipping.Set(matrix);
+	LH3DTech::g_local_to_clipping.PostMultiply(LH3DTech::g_world_to_clipping);
+	if (IsDrawWithGlobalAlpha())
+	{
+		unsigned long objectSpecular = specular;
+		LH3DMesh::g_color = plasmaColor;
+		LH3DMesh::g_specular = objectSpecular;
+		LH3DMaterial::SetGlobalAlpha(true);
+		LH3DTech::g_world_to_local.SetInverse(matrix);
+		mesh->DrawComplexPlasma(inflate, explode, twist, shatter);
+		LH3DMaterial::SetGlobalAlpha(false);
+	}
+	else
+	{
+		unsigned long objectSpecular = specular;
+		LH3DMesh::g_color = plasmaColor;
+		LH3DMesh::g_specular = objectSpecular;
+		LH3DTech::g_world_to_local.SetInverse(matrix);
+		LH3DMesh* drawnMesh = mesh;
+		LH3DMesh::InitMatrixDrawing();
+		for (int i = 0; i < drawnMesh->SubmeshCount; i++)
+		{
+			drawnMesh->submeshes[i]->DrawComplexPlasma(inflate, explode, twist, shatter);
+			LH3DMesh::UpdateMatrixDrawing(drawnMesh->submeshes[i]->NumBones);
+		}
+	}
+	LH3DRender::g_b_do_update_material = true;
+	LH3DMesh::g_current_list_matrix = LH3DMesh::g_my_list_matrix;
+}
+#endif
+
 void LH3DComplexObject::DoFrozPart()
 {
 	if (FrozMaterial != NULL)
 	{
 		LH3DRender::SetMaterial(FrozMaterial, 0);
 		LH3DRender::g_b_do_update_material = false;
-		unsigned long frozColor =
-			ModulateColor(RGBA_SETALPHA(LH3D_COLOR_WHITE, FloatToInt(FrozAmount * 255.0f)), RGB_TORGBA(color));
+		unsigned long frozColor = ModulateColor(
+			RGBA_SETALPHA(LH3D_COLOR_WHITE, FloatToInt(FrozAmount * LH3D_OBJECT_MAX_ALPHA)), RGB_TORGBA(color));
 		g_current_object_in_draw = this;
 		LH3DSubMesh::g_current_status = GetStatus();
 		LH3DTech::g_current_matrix = &LH3DTech::g_local_to_clipping;
@@ -2852,6 +2990,56 @@ void LH3DComplexObject::DrawEnvMapMT()
 	}
 	LH3DMesh::g_current_list_matrix = LH3DMesh::g_my_list_matrix;
 }
+
+#ifdef VERSION_BW1WCI
+void LH3DComplexObject::DrawEnvMapST()
+{
+	g_current_object_in_draw = this;
+	LH3DSubMesh::g_current_status = GetStatus();
+	LH3DTech::g_current_matrix = &LH3DTech::g_local_to_clipping;
+	LH3DMesh::g_current_list_matrix = BoneMatrices;
+	LH3DTech::g_local_to_clipping.Set(matrix);
+	LH3DTech::g_local_to_clipping.PostMultiply(LH3DTech::g_world_to_clipping);
+	unsigned long objectColor = color;
+	unsigned long objectSpecular = specular;
+	LH3DMesh::g_color = objectColor;
+	LH3DMesh::g_specular = objectSpecular;
+	LH3DPrimitive::UpdatePreComputeLight(&matrix);
+	if (IsDrawWithGlobalAlpha())
+	{
+		unsigned long objectColor = color;
+		unsigned long objectSpecular = specular;
+		LH3DMesh::g_color = objectColor;
+		LH3DMesh::g_specular = objectSpecular;
+		LH3DMaterial::g_list_render_func = LH3DMaterial::g_list_render_func_global_alpha;
+		LH3DTech::g_world_to_local.SetInverse(matrix);
+		LH3DMesh* drawnMesh = mesh;
+		LH3DMesh::InitMatrixDrawing();
+		for (int i = 0; i < drawnMesh->SubmeshCount; i++)
+		{
+			drawnMesh->submeshes[i]->DrawComplexEnvMapST();
+			LH3DMesh::UpdateMatrixDrawing(drawnMesh->submeshes[i]->NumBones);
+		}
+		LH3DMaterial::g_list_render_func = LH3DMaterial::g_list_render_func_normal;
+	}
+	else
+	{
+		unsigned long objectColor = color;
+		unsigned long objectSpecular = specular;
+		LH3DMesh::g_color = objectColor;
+		LH3DMesh::g_specular = objectSpecular;
+		LH3DTech::g_world_to_local.SetInverse(matrix);
+		LH3DMesh* drawnMesh = mesh;
+		LH3DMesh::InitMatrixDrawing();
+		for (int i = 0; i < drawnMesh->SubmeshCount; i++)
+		{
+			drawnMesh->submeshes[i]->DrawComplexEnvMapST();
+			LH3DMesh::UpdateMatrixDrawing(drawnMesh->submeshes[i]->NumBones);
+		}
+	}
+	LH3DMesh::g_current_list_matrix = LH3DMesh::g_my_list_matrix;
+}
+#endif
 
 void LH3DComplexObject::DrawSnow()
 {
@@ -3011,9 +3199,9 @@ void LH3DComplexObject::PrepareShadow()
 	}
 	ShadowInfo->Enabled = true;
 	float alpha;
-	if ((alpha = GetAlphaForShadow(this)) < 255.0f)
+	if ((alpha = GetAlphaForShadow(this)) < LH3D_OBJECT_MAX_ALPHA)
 	{
-		ShadowInfo->Alpha = ShadowInfo->BaseAlpha * alpha * (1.0f / 255.0f);
+		ShadowInfo->Alpha = ShadowInfo->BaseAlpha * alpha * (1.0f / LH3D_OBJECT_MAX_ALPHA);
 		if (ShadowInfo->Alpha == 0)
 		{
 			return;
@@ -3092,12 +3280,12 @@ LH3DSpriteObject::LH3DSpriteObject(long type)
 	case LH3D_SPRITE_OBJECT_TYPE_FIRE_00:
 		smoke->SetMaterial(g_fire_mat);
 		offset.Set(0.0f, LH3D_SPRITE_OBJECT_FIRE_00_OFFSET, 0.0f);
-		smoke->offset = offset;
+		smoke->SetOffset(offset);
 		break;
 	case LH3D_SPRITE_OBJECT_TYPE_FIRE_35:
 		smoke->SetMaterial(g_fire_mat);
 		offset.SetNull();
-		smoke->offset = offset;
+		smoke->SetOffset(offset);
 		break;
 	}
 }
@@ -3192,6 +3380,13 @@ void LH3DObject::DrawSnow(LH3DMaterial* material) {}
 void LH3DObject::DrawSnow() {}
 
 void LH3DObject::DrawFroz() {}
+
+#ifdef VERSION_BW1WCI
+void LH3DObject::DrawPlasma(float inflate, float explode, float twist, LH3DMaterial* material, LH3DColor colour,
+                            float shatter)
+{
+}
+#endif
 
 void LH3DComplexObject::DrawFroz() {}
 
@@ -3306,11 +3501,15 @@ bool32_t LH3DMeshedObject::DrawWithClipping()
 	}
 	if (IsDisappear())
 	{
-		LHPoint pos = matrix.GetPos();
-		LHPoint delta = pos - LH3DTech::g_camera.pos;
-		float   distanceSq = delta.GetNormeSq();
-		if (distanceSq > GetMesh()->BoundingBox.DiagonalLength * scale * LH3D_OBJECT_DISAPPEAR_DISTANCE *
-		                     (GetMesh()->BoundingBox.DiagonalLength * scale * LH3D_OBJECT_DISAPPEAR_DISTANCE))
+		const LHPoint& pos = matrix.GetPos();
+		float          z = pos.z;
+		float          y = pos.y;
+		float          x = pos.x;
+		float          distanceSq = (x - LH3DTech::g_camera.pos.x) * (x - LH3DTech::g_camera.pos.x) +
+		                            (y - LH3DTech::g_camera.pos.y) * (y - LH3DTech::g_camera.pos.y) +
+		                            (z - LH3DTech::g_camera.pos.z) * (z - LH3DTech::g_camera.pos.z);
+		if (distanceSq > (GetMesh()->GetBoundingBox().DiagonalLength * scale * LH3D_OBJECT_DISAPPEAR_DISTANCE) *
+		                     (GetMesh()->GetBoundingBox().DiagonalLength * scale * LH3D_OBJECT_DISAPPEAR_DISTANCE))
 		{
 			return false;
 		}
@@ -3995,6 +4194,13 @@ void LH3DAnimatedObject::DrawSpecialLight(float time, unsigned long special_colo
 	}
 }
 
+#ifdef VERSION_BW1WCI
+void LH3DAnimatedObject::DrawPlasma(float inflate, float explode, float twist, LH3DMaterial* material, LH3DColor colour,
+                                    float shatter)
+{
+}
+#endif
+
 bool do_non_froz_part = true;
 
 void LH3DAnimatedObject::DrawFroz(float froz_amount, unsigned long froz_color, LH3DMaterial* material)
@@ -4142,8 +4348,9 @@ void LH3DAnimatedObject::DrawFroz(float froz_amount, unsigned long froz_color, L
 	if (froz_amount > 0.0f)
 	{
 		LH3DPrimitive::g_do_vertex_blending = false;
-		objectColor = ModulateColor(LH3DBlendColor(LH3D_COLOR_WHITE, froz_color, FloatToInt(froz_amount * 255.0f)),
-		                            RGB_TORGBA(color));
+		objectColor =
+			ModulateColor(LH3DBlendColor(LH3D_COLOR_WHITE, froz_color, FloatToInt(froz_amount * LH3D_OBJECT_MAX_ALPHA)),
+		                  RGB_TORGBA(color));
 	}
 	if (IsDrawWithGlobalAlpha())
 	{

@@ -45,11 +45,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 0107fe50 (LHCombined Release)
-	LH3DStaticMorphableObject()
-	{
-		g_count_static_object++;
-		LandAltitudes = NULL;
-	}
+	LH3DStaticMorphableObject();
 
 	// Destructor
 

@@ -509,6 +509,7 @@ void LH3DLandscape::UpdateListElement::Update()
 		LH3DIsland::g_current_block = LH3DIsland::g_ptr_blocks[BlockIndex];
 		if (Line < LH3D_LANDSCAPE_CELL_TEXELS)
 		{
+#ifndef VERSION_BW1W100
 			if (IsP4Improvement())
 			{
 				for (int i = 0; i < LH3D_LANDSCAPE_CELL_TEXELS; i++)
@@ -518,6 +519,7 @@ void LH3DLandscape::UpdateListElement::Update()
 				}
 			}
 			else
+#endif
 			{
 				ProcessTextureLine(Line, buffer, Pitch, (void*)BlockIndex);
 			}

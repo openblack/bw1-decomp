@@ -30,6 +30,8 @@ struct LH3DVRAMTex
 	static long g_max_amount_agp_mem;
 	// BW1W120 00c392c4 BW1M119 011d17ec (LHCombined Release)
 	static long g_max_amount_vram_mem;
+	// BW1W120 00f05200 BW1M119 013422a4 (LHCombined Release)
+	static int g_count;
 
 	IDirectDrawSurface7* Surface;
 	LH3DTexture*         Texture;

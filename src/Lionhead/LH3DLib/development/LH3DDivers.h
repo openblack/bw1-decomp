@@ -13,6 +13,7 @@
 
 struct LH3DMaterial;
 struct LHPlane;
+struct LHPoint;
 
 #define BACKGROUND_BOX_MAX      256
 #define BACKGROUND_BOX_VERTICES 4
@@ -31,6 +32,15 @@ public:
 
 // BW1W120 0082aed0 BW1M119 01047360 (LHCombined Release)
 void ClearAllStuff();
+
+// BW1W120 00eaa190 BW1M119 011f2250 (LHCombined Release)
+extern LHPoint g_left;
+// BW1W120 00eaa180 BW1M119 011f2244 (LHCombined Release)
+extern LHPoint g_right;
+// BW1W120 00c381dc BW1M119 011ce848 (LHCombined Release)
+extern float DEFAULT_TRANS_TO_ADD;
+// BW1W120 00eaa3c4 BW1M119 011f24a8 (LHCombined Release)
+extern float TRANS_TO_ADD;
 
 class BackgroundBox
 {

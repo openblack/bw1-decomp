@@ -886,6 +886,28 @@ add_relocations:
   - source: 0x0079CEC7
     type: x86_rel32
     target: '??1PictureRoomBase@@QAE@XZ'
+# LH3DP3::CheckCPU's dispatch jumps to its CPU-specific versions (dtk leaves them unrelocated).
+  - source: 0x007ACA0C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$J'
+  - source: 0x007ACA1C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$H'
+  - source: 0x007ACA2C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$E'
+  - source: 0x007ACA3C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$D'
+  - source: 0x007ACA4C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$C'
+  - source: 0x007ACA5C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$B'
+  - source: 0x007ACA6C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$A'
 # memmove.obj: its jump tables and the jumps through them (dtk leaves them unrelocated).
   - source: 0x007C6128
     type: x86_abs32
@@ -1379,6 +1401,25 @@ add_relocations:
     type: x86_abs32
     target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
     addend: 0x30
+# FontCache::bits is the displacement of a base+index lea, which is not read as a pointer.
+  - source: 0x008309C5
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x0083120F
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x008313F2
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x00831FE4
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x008325AF
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x00832F55
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
 # LH3DPrimitive::CalcFogTable's loop compares against the end of g_fog_table, not g_vertex_inside_triangle.
   - source: 0x0084A6B4
     type: x86_abs32

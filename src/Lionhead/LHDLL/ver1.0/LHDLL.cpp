@@ -80,8 +80,8 @@ void LHDLL::Destroy()
 
 LHDLL::LHDLL(const char* library_path)
 {
-	sprintf(LibraryPath = (char*)malloc(strlen(library_path) + sizeof(LH_DLL_RELEASE_SUFFIX)),
-	        "%s" LH_DLL_RELEASE_SUFFIX, library_path);
+	LibraryPath = (char*)malloc(strlen(library_path) + sizeof(LH_DLL_RELEASE_SUFFIX));
+	sprintf(LibraryPath, "%s" LH_DLL_RELEASE_SUFFIX, library_path);
 	_valid = false;
 	Reset();
 }

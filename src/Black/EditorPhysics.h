@@ -12,12 +12,6 @@ class EditorPhysics
 public:
 	// BW1W120 inlined BW1M119 012bbec0
 	static PhysicsData* GetData() { return PhysicsConstants; }
-	enum SymbolNumberingPadding
-	{
-		SYMBOL_NUMBERING_PADDING_0,
-		SYMBOL_NUMBERING_PADDING_1,
-		SYMBOL_NUMBERING_PADDING_2,
-	};
 	// BW1W120 00cc63e0
 	static PhysicsData PhysicsConstants[0x18];
 

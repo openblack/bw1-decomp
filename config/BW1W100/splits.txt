@@ -3977,7 +3977,10 @@ Lionhead/LH3DLib/development/LH3DIsland.cpp:
 	.text       start:0x0075CDB0 end:0x00762AC0
 	.text$x     start:0x007E9CA0 end:0x007E9CD0 align:4
 	.rdata      start:0x008D896C end:0x008D8988
+	.xdata$x    start:0x008EF460 end:0x008EF498 align:4
+	.CRT$XCU    start:0x008F7440 end:0x008F745C align:4
 	.data       start:0x00B59344 end:0x00B59ECC
+	.bss        start:0x00D70F60 end:0x00D73BD0 align:8
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
 	.text       start:0x00762AC0 end:0x00767640
@@ -4023,15 +4026,17 @@ Lionhead/LH3DLib/development/LH3DRender.cpp:
 Lionhead/LH3DLib/development/LH3DText.cpp:
 	.text       start:0x00789090 end:0x0078C9F0
 	.text$x     start:0x007E9EE0 end:0x007E9F10 align:4
-	.rdata      start:0x008D9710 end:0x008D9820
+	.rdata      start:0x008D9710 end:0x008D981C
+	.xdata$x    start:0x008EF720 end:0x008EF750 align:4
 	.data       start:0x00B5AE24 end:0x00B5AE98
+	.bss        start:0x00DE94F0 end:0x00DF8148 align:8
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x0078C9F0 end:0x0078CCE0
 
 Lionhead/LH3DLib/development/LH3DTexture.cpp:
 	.text       start:0x0078CCE0 end:0x0078EDA0
-	.text$x     start:0x007E9F10 end:0x007E9F30 align:4
+	.text$x     start:0x007E9F10 end:0x007E9F30 align:16
 	.xdata$x    start:0x008EF750 end:0x008EF778 align:4
 	.CRT$XCU    start:0x008F74D8 end:0x008F74DC align:4
 	.data       start:0x00B5AE98 end:0x00B5B034

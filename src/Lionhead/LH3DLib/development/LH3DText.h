@@ -3,10 +3,12 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t, uint16_t, uint32_t */
-#include <string.h> /* For memset */
+#include <string.h> /* For memset, wchar_t */
 #include <uchar.h>  /* For char16_t */
 
 #include <re_common.h> /* For bool32_t */
+
+#include "LH3DTexture.h" /* For class LH3DSurfDesc */
 
 enum TEXTJUSTIFY
 {
@@ -20,20 +22,56 @@ enum TEXTJUSTIFY
 
 // Forward Declares
 
+class LHOSFile;
 struct LH3DColor;
 struct LH3DMaterial;
 struct LH3DTexture;
 struct LHMatrix;
 
+struct FontCharSpacing
+{
+	float LeftBearing;  /* 0x0 */
+	float Width;        /* 0x4 */
+	float RightBearing; /* 0x8 */
+};
+static_assert(sizeof(FontCharSpacing) == 0xc, "Data type is of wrong size");
+
+struct FontChar
+{
+	uint16_t        Code;  /* 0x0 */
+	uint16_t        Width; /* 0x2 */
+	uint8_t         field_0x4[4];
+	FontCharSpacing Spacing; /* 0x8 */
+	uint32_t        Offset;  /* 0x14 */
+	uint32_t        Size;    /* 0x18 */
+};
+static_assert(sizeof(FontChar) == 0x1c, "Data type is of wrong size");
+
 struct FontFile
 {
+	uint32_t  Height;        /* 0x0 */
+	char      Unused[0x100]; /* 0x4 */
+	int       NumChars;      /* 0x104 */
+	FontChar* Chars;         /* 0x108 */
+	LHOSFile* File;          /* 0x10c */
+	union {
+		FontCharSpacing Space; /* 0x110 */
+		struct
+		{
+			float SpaceLeftBearing;
+			float SpaceWidth;
+			float SpaceRightBearing;
+		};
+	};
+
 	// Non-virtual methods
 
 	// BW1W120 008303c0 BW1M119 010c6630 (LHCombined Release)
-	bool ReadFromFile(const char* filename);
-	// BW1W120 inlined BW1M119 010c6590 (LHCombined Release)
+	void ReadFromFile(char* filename);
+	// BW1W120 00830650 BW1M119 010c6590 (LHCombined Release)
 	void Close();
 };
+static_assert(sizeof(FontFile) == 0x11c, "Data type is of wrong size");
 
 enum GAME_FONT
 {
@@ -48,12 +86,19 @@ enum GAME_FONT
 #define FONT_CACHE_PAGES        4
 #define FONT_CACHE_LINES        4
 #define FONT_CACHE_LINE_ENTRIES 16
-#define FONT_CACHE_BITS_SIZE    0x8000
+#define FONT_CACHE_HASH_SIZE    256
+#define FONT_CACHE_BITS_STRIDE  (0x10000 / 8)
+#define FONT_CACHE_BITS_SIZE    (GAME_FONT_LAST * FONT_CACHE_BITS_STRIDE)
 
 struct CacheEntry
 {
-	wchar_t Code;
-	uint8_t field_0x2[6];
+	wchar_t  Code;  /* 0x0 */
+	uint16_t Index; /* 0x2 */
+	uint8_t  Font;  /* 0x4 */
+	uint8_t  Page : 4;
+	uint8_t  Line : 4;
+	uint8_t  X;        /* 0x6 */
+	uint8_t  LastUsed; /* 0x7 */
 };
 static_assert(sizeof(CacheEntry) == 0x8, "Data type is of wrong size");
 
@@ -65,6 +110,7 @@ struct CacheLine
 
 	// Non-virtual methods
 
+	// Inliner IL size: 76
 	// BW1W120 inlined BW1M119 010a01b0 (LHCombined Release)
 	void Clear()
 	{
@@ -82,25 +128,32 @@ static_assert(sizeof(CacheLine) == 0x44, "Data type is of wrong size");
 
 struct CachePage
 {
-	uint8_t   field_0x0[0x18];
-	CacheLine Lines[FONT_CACHE_LINES];
+	bool          Locked;
+	bool          Damaged;
+	LH3DSurfDesc  Desc;     /* 0x4 */
+	LH3DMaterial* Material; /* 0x14 */
+	CacheLine     Lines[FONT_CACHE_LINES];
 
 	// Non-virtual methods
 
 	// BW1W120 00830210 BW1M119 010c7090 (LHCombined Release)
 	void Init();
-	// BW1W120 00830320 BW1M119 010c5480 (LHCombined Release)
+	// Inliner IL size: 57
+	// BW1W120 inlined BW1M119 010c5480 (LHCombined Release)
 	void Clear();
 	// BW1W120 00830350 BW1M119 01034d30 (LHCombined Release)
 	void Lock();
 	// BW1W120 00830370 BW1M119 01034ed0 (LHCombined Release)
 	void Unlock();
-	// BW1W120 00830650 BW1M119 010c7000 (LHCombined Release)
+	// BW1W120 00830320 BW1M119 010c7000 (LHCombined Release)
 	void Close();
 	// BW1W120 00830c10 BW1M119 010c5590 (LHCombined Release)
 	void RenderChar(CacheEntry* entry);
 };
 static_assert(sizeof(CachePage) == 0x128, "Data type is of wrong size");
+
+// BW1W120 00eccd1c BW1M119 0133fb64 (LHCombined Release)
+extern uint8_t HASHTABLE[FONT_CACHE_HASH_SIZE];
 
 struct FontCache
 {
@@ -116,9 +169,14 @@ struct FontCache
 	static uint8_t bits[FONT_CACHE_BITS_SIZE];
 	// BW1W120 00ed92c8 BW1M119 0133fc64 (LHCombined Release)
 	static int cachedamage;
+	// BW1W120 00ed92c0 BW1M119 0133fc68 (LHCombined Release)
+	static int overhang_bottom;
+	// BW1W120 00ed92c4 BW1M119 0133fc6c (LHCombined Release)
+	static int overhang_top;
 
 	// Static methods
 
+	// Inliner IL size: 127
 	// BW1W120 inlined BW1M119 010a0050 (LHCombined Release)
 	static void Reset()
 	{
@@ -137,27 +195,30 @@ struct FontCache
 		memset(bits, 0, sizeof(bits));
 		cachedamage = 0;
 	}
-
-	// Non-virtual methods
-
 	// BW1W120 008306a0 BW1M119 010c63d0 (LHCombined Release)
-	void Close();
+	static void Close();
 	// BW1W120 00830750 BW1M119 010c6220 (LHCombined Release)
-	void Init();
+	static void Init();
 	// BW1W120 008307e0 BW1M119 010c5da0 (LHCombined Release)
-	void AddToCacheWork(CacheEntry* entry);
-	// BW1W120 00831380
-	CacheEntry* AddToCache(char16_t param_1, uint8_t param_2);
-	// BW1W120 00832bb0
-	CacheEntry* Find(char16_t param_1, uint8_t param_2);
+	static int AddToCacheWork(CacheEntry* entry);
+	// Inliner IL size: 39
 	// BW1W120 inlined BW1M119 010c2a70 (LHCombined Release)
-	void ClearInCache(uint8_t font, uint16_t code);
+	static void ClearInCache(uint8_t font, uint16_t code);
+	// Inliner IL size: 38
 	// BW1W120 inlined BW1M119 010c2ad0 (LHCombined Release)
-	void SetInCache(uint8_t font, uint16_t code);
+	static void SetInCache(uint8_t font, uint16_t code);
+	// Inliner IL size: 41
 	// BW1W120 inlined BW1M119 01030c70 (LHCombined Release)
 	static uint8_t IsInCache(uint8_t font, uint16_t code);
+	// Inliner IL size: 13
 	// BW1W120 inlined BW1M119 01031ae0 (LHCombined Release)
-	static uint8_t HASH(wchar_t code, uint8_t font);
+	static int HASH(wchar_t code, uint8_t font);
+	// Inliner IL size: 133
+	// BW1W120 00832bb0 BW1M119 010318f0 (LHCombined Release)
+	static CacheEntry* Find(wchar_t code, uint8_t font);
+	// Inliner IL size: 262
+	// BW1W120 00831380 BW1M119 010c2660 (LHCombined Release)
+	static CacheEntry* AddToCache(wchar_t code, uint8_t font);
 };
 
 struct GatheringText
@@ -168,10 +229,25 @@ struct GatheringText
 	static LH3DMaterial* bubmat;
 	// BW1W120 00ed92e0 BW1M119 01332230 (LHCombined Release)
 	static LH3DTexture* bubtex;
-	uint8_t             field_0x0;
+	// BW1W120 00ed92e4 BW1M119 0133222c (LHCombined Release)
+	static int numgt;
+	int        Font;
+
+	// Constructors
+
+	// Inliner IL size: 33
+	// BW1W120 inlined BW1M119 inlined
+	GatheringText(int font);
+
+	// Destructor
+
+	// Inliner IL size: 21
+	// BW1W120 inlined BW1M119 inlined
+	~GatheringText();
 
 	// Static methods
 
+	// Inliner IL size: 51
 	// BW1W120 inlined BW1M119 inlined
 	static GatheringText* GetGameFont(GAME_FONT font)
 	{
@@ -189,48 +265,44 @@ struct GatheringText
 	// BW1W120 008310d0 BW1M119 010c5150 (LHCombined Release)
 	static void CloseGameFonts();
 	// BW1W120 00831130 BW1M119 01033370 (LHCombined Release)
-	float GetStringWidth(char16_t* str, int len, float text_size);
+	float GetStringWidth(wchar_t* str, int len, float text_size);
 	// BW1W120 inlined BW1M119 0135e7a0
 	float GetStringWidth(char* str, int len, float text_size);
 	// Inliner IL size: 41
 	// BW1W120 inlined BW1M119 inlined
-	float GetStringWidth(char16_t* str, int len, float text_size, float scale)
+	float GetStringWidth(wchar_t* str, int len, float text_size, float scale)
 	{
 		return GetStringWidth(str, len, text_size) * scale;
 	}
 	// BW1W120 00831550 BW1M119 010c5080 (LHCombined Release)
 	static float GetFrac(float value, float lower, float upper);
 	// BW1W120 008315b0 BW1M119 010c4970 (LHCombined Release)
-	float DrawTextA(char16_t* text, float x_min, float y_min, float fade_top, float x_max, float fade_bottom,
-	                float y_max, float y, float z, float size, LH3DColor* p_color, bool32_t centred, bool32_t draw,
-	                bool32_t no_z_test);
+	float DrawTextA(wchar_t* text, float x_min, float y_min, float fade_top, float x_max, float fade_bottom,
+	                float y_max, float y, float z, float size, LH3DColor* color, bool32_t centred, bool32_t draw,
+	                bool32_t z_test);
 	// BW1W120 008319e0 BW1M119 010c43c0 (LHCombined Release)
-	void DrawChar2Texture(CacheEntry* param_1, uint16_t* param_2, int param_3, float param_4, float param_5,
-	                      float param_6, float param_7, uint16_t* param_8);
+	void DrawChar2Texture(CacheEntry* entry, uint16_t* buffer, int stride, float x, float y, float scale, float size,
+	                      uint16_t* colours);
 	// BW1W120 00831df0 BW1M119 010c3e20 (LHCombined Release)
-	void DrawText2Texture(uint16_t* param_1, int param_2, const char16_t* param_3, int param_4, float param_5,
-	                      float param_6, float param_7, float param_8, uint16_t param_9);
+	void DrawText2Texture(uint16_t* buffer, int stride, wchar_t* text, int len, float x, float y, float size,
+	                      float aspect, uint16_t colour);
 	// BW1W120 00832c60 BW1M119 01030e80 (LHCombined Release)
-	void DrawTextRaw(char16_t* text, int count, float x, float y, float z, float size, LH3DColor* color_top,
-	                 bool32_t no_z_test, LH3DColor* color_bottom, float fade_top, float fade_bottom);
+	void DrawTextRaw(wchar_t* text, int count, float x, float y, float z, float size, LH3DColor* color_top,
+	                 bool32_t z_test, LH3DColor* color_bottom, float clip_top, float clip_bottom);
 	// BW1W120 008321c0 BW1M119 010c31f0 (LHCombined Release)
-	void DrawTextRawOriented(LHMatrix& matrix, int axis_x, int axis_y, char16_t* text, int count, float x, float y,
+	void DrawTextRawOriented(LHMatrix& matrix, int axis_x, int axis_y, wchar_t* text, int count, float x, float y,
 	                         float z, float size, float scale, LH3DColor* color_top, bool32_t z_test,
 	                         LH3DColor* color_bottom);
-	// BW1W120 00832c60 BW1M119 01030e80 (LHCombined Release)
-	void DrawTextRaw(const char16_t* text, int param_2, float x, float y, float param_5, float param_6,
-	                 LH3DColor* param_7, int param_8, LH3DColor* param_9, float param_10, float param_11);
 	// BW1W120 008334c0 BW1M119 010c1fd0 (LHCombined Release)
 	static void DrawBubble(float left, float top, float right, float bottom, float z, float corner_size, float tail_x,
 	                       bool32_t tail_on_right, unsigned long colour, bool32_t draw_tail, int alpha_top,
 	                       int alpha_bottom);
 };
 
-// Free functions at the head of this TU (originally declared in Utils.h).
-
 // BW1W120 008300a0 BW1M119 0100f7a0 (LHCombined Release)
-wchar_t* __cdecl CHAR2WCHAR(const char* text);
+wchar_t* __cdecl CHAR2WCHAR(const char* string);
 
+// Inliner IL size: 42
 // BW1W120 inlined BW1M119 0135e7a0
 inline float GatheringText::GetStringWidth(char* str, int len, float text_size)
 {
@@ -239,6 +311,6 @@ inline float GatheringText::GetStringWidth(char* str, int len, float text_size)
 // BW1W120 008300d0
 void __cdecl THAI_RESET();
 // BW1W120 008300e0 BW1M119 01030cd0 (LHCombined Release)
-char16_t __cdecl THAI_PROCESS(char16_t param_1); /* return type inferred; confirm from disassembly */
+wchar_t __cdecl THAI_PROCESS(wchar_t c);
 
 #endif /* BW1_DECOMP_LH3D_TEXT_INCLUDED_H */

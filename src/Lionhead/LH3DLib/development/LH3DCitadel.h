@@ -137,7 +137,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	LH3DCitadel() { g_count_static_object++; }
+	LH3DCitadel();
 
 	// Destructor
 

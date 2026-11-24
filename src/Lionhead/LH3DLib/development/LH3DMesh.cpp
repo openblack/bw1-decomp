@@ -600,17 +600,17 @@ void LH3DLODData::DrawLOD(LH3DMesh* mesh, int lod)
 			LH3DTech::g_points_count = 0;
 			for (int t = 0; t < primitive->NumTriangles; t++, triangle++)
 			{
-				unsigned long* flags = &LH3DTech::g_cache_flags[LH3DTech::g_points_count];
 				Vertex3D*      point = &LH3DTech::g_cache_t_points[LH3DTech::g_points_count];
-				int            a = triangle->A + firstVertex;
-				int            b = triangle->B + firstVertex;
-				int            c = triangle->C + firstVertex;
-				int            ta = Indices[a].TVertex;
-				int            tb = Indices[b].TVertex;
-				int            tc = Indices[c].TVertex;
-				int            va = Indices[a].Vertex;
-				int            vb = Indices[b].Vertex;
-				int            vc = Indices[c].Vertex;
+				unsigned long* flags = &LH3DTech::g_cache_flags[LH3DTech::g_points_count];
+				int            va = triangle->A + firstVertex;
+				int            vb = triangle->B + firstVertex;
+				int            vc = triangle->C + firstVertex;
+				int            ta = Indices[va].TVertex;
+				int            tb = Indices[vb].TVertex;
+				int            tc = Indices[vc].TVertex;
+				va = Indices[va].Vertex;
+				vb = Indices[vb].Vertex;
+				vc = Indices[vc].Vertex;
 				while (ta >= lod)
 				{
 					ta = TVertices[ta].Parent;
@@ -648,16 +648,18 @@ void LH3DLODData::DrawLOD(LH3DMesh* mesh, int lod)
 				{
 					continue;
 				}
-				int ia;
-				int ib;
-				int ic;
+				int             ia;
+				int             ib;
+				int             ic;
+				LH3DLODTVertex* tv;
+				LH3DLODVertex*  lodVertex;
 				if (Vertices[va].PointPrimitive == j)
 				{
 					ia = Vertices[va].PointIndex;
 				}
 				else
 				{
-					LH3DLODTVertex* tv = &TVertices[ta];
+					tv = &TVertices[ta];
 					*flags = tv->ClipFlags;
 					point->x = tv->Transformed.x;
 					point->y = tv->Transformed.y;
@@ -666,7 +668,7 @@ void LH3DLODData::DrawLOD(LH3DMesh* mesh, int lod)
 					{
 						point->z = 1.0f - point->rhw;
 					}
-					LH3DLODVertex* lodVertex = &Vertices[va];
+					lodVertex = &Vertices[va];
 					point->color = lodVertex->Color;
 					point->specular = 0;
 					flags++;
@@ -683,7 +685,7 @@ void LH3DLODData::DrawLOD(LH3DMesh* mesh, int lod)
 				}
 				else
 				{
-					LH3DLODTVertex* tv = &TVertices[tb];
+					tv = &TVertices[tb];
 					*flags = tv->ClipFlags;
 					point->x = tv->Transformed.x;
 					point->y = tv->Transformed.y;
@@ -692,11 +694,11 @@ void LH3DLODData::DrawLOD(LH3DMesh* mesh, int lod)
 					{
 						point->z = 1.0f - point->rhw;
 					}
-					LH3DLODVertex* lodVertex = &Vertices[vb];
+					lodVertex = &Vertices[vb];
 					point->color = lodVertex->Color;
 					point->specular = 0;
-					flags++;
 					point->uv = lodVertex->UV;
+					flags++;
 					ib = LH3DTech::g_points_count;
 					point++;
 					Vertices[vb].PointIndex = ib;
@@ -709,7 +711,7 @@ void LH3DLODData::DrawLOD(LH3DMesh* mesh, int lod)
 				}
 				else
 				{
-					LH3DLODTVertex* tv = &TVertices[tc];
+					tv = &TVertices[tc];
 					*flags = tv->ClipFlags;
 					point->x = tv->Transformed.x;
 					point->y = tv->Transformed.y;
@@ -718,11 +720,11 @@ void LH3DLODData::DrawLOD(LH3DMesh* mesh, int lod)
 					{
 						point->z = 1.0f - point->rhw;
 					}
-					LH3DLODVertex* lodVertex = &Vertices[vc];
+					lodVertex = &Vertices[vc];
 					point->color = lodVertex->Color;
 					point->specular = 0;
-					flags++;
 					point->uv = lodVertex->UV;
+					flags++;
 					ic = LH3DTech::g_points_count;
 					point++;
 					Vertices[vc].PointIndex = ic;
@@ -858,9 +860,9 @@ LH3DMesh* LH3DMesh::Create(void* buf, bool32_t dont_care_about_texture)
 				{
 					LH3DMeshFootprint* footprint = (LH3DMeshFootprint*)data;
 					int                count = footprint->NumTriangles;
-					footprint->Previous = previous;
 					footprint->Pixels =
 						(uint16_t*)(data + count * sizeof(LH3DMeshFootprintTriangle) + sizeof(LH3DMeshFootprint));
+					footprint->Previous = previous;
 					data += footprint->Height * footprint->Width * sizeof(uint16_t) +
 					        count * sizeof(LH3DMeshFootprintTriangle) + sizeof(LH3DMeshFootprint);
 					previous = current;
@@ -1457,15 +1459,12 @@ void LH3DMesh::Blend(LH3DMesh* from, LH3DMesh* to, float blend, bool blend_skins
 	uint8_t* to_metrics = to->GetEMetricsData();
 	if (metrics)
 	{
-		LHMatrix* matrix = ((LH3DMeshExtraMetrics*)metrics)->Matrices;
 		LHMatrix* from_matrix = ((LH3DMeshExtraMetrics*)from_metrics)->Matrices;
 		LHMatrix* to_matrix = ((LH3DMeshExtraMetrics*)to_metrics)->Matrices;
-		for (uint32_t j = 0; j < ((LH3DMeshExtraMetrics*)metrics)->Count; j++)
+		LHMatrix* matrix = ((LH3DMeshExtraMetrics*)metrics)->Matrices;
+		for (int j = 0; j < ((LH3DMeshExtraMetrics*)metrics)->Count; j++, from_matrix++, to_matrix++, matrix++)
 		{
 			matrix->SetBlend(*from_matrix, *to_matrix, blend);
-			matrix++;
-			from_matrix++;
-			to_matrix++;
 		}
 	}
 	if (blend_skins)
@@ -1852,112 +1851,117 @@ void __fastcall ComputeNornal(LH3DMesh* mesh)
 	g_can_be_only_one_vertex = (LH3DVertex*)LH3DMem::Alloc(count * sizeof(LH3DVertex));
 	g_nb_pt_cboo = 0;
 	int i;
+	int j;
+	int k;
+	int g;
+	int t;
 	if (mesh->flags & LH3D_MESH_FLAGS_HAS_BONES)
 	{
 		LHMatrix identity;
 		identity.SetIdentity();
 		LH3DAnim::SetTransform(LH3DMesh::g_current_list_matrix, mesh, identity);
 		LH3DSubMesh* submesh = mesh->GetListPtrSubmesh()[0];
-		for (i = 0; i < submesh->GetPrimitiveCount(); i++)
+		for (j = 0; j < submesh->GetPrimitiveCount(); j++)
 		{
-			LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[i];
-			int            k = 0;
-			for (int g = 0; g < primitive->NumVertexGroups; g++)
+			LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[j];
+			int            index = 0;
+			for (g = 0; g < primitive->NumVertexGroups; g++)
 			{
 				LH3DVertexGroup* group = &primitive->VertexGroups[g];
 				LHMatrix         matrix = LH3DMesh::g_current_list_matrix[group->BoneIndex];
-				for (int j = 0; j < group->vertex_count; j++)
+				for (k = 0; k < group->vertex_count; k++)
 				{
-					LHPoint point = primitive->GetListVertex()[k].position;
+					LHPoint point = primitive->GetListVertex()[index].position;
 					matrix.TransformPoint(point);
 					AddThisPoint(&point);
-					k++;
+					index++;
 				}
 			}
 		}
-		for (i = 0; i < submesh->GetPrimitiveCount(); i++)
+		for (j = 0; j < submesh->GetPrimitiveCount(); j++)
 		{
-			LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[i];
-			int            k = 0;
-			for (int g = 0; g < primitive->NumVertexGroups; g++)
+			LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[j];
+			int            index = 0;
+			for (g = 0; g < primitive->NumVertexGroups; g++)
 			{
 				LH3DVertexGroup* group = &primitive->VertexGroups[g];
 				LHMatrix         matrix = LH3DMesh::g_current_list_matrix[group->BoneIndex];
-				for (int j = 0; j < group->vertex_count; j++)
+				for (k = 0; k < group->vertex_count; k++)
 				{
-					LHPoint* point = &g_tmp_can_be_only_one[k];
-					point->Set(primitive->GetListVertex()[k].position);
+					LHPoint* point = &g_tmp_can_be_only_one[index];
+					point->Set(primitive->GetListVertex()[index].position);
 					matrix.TransformPoint(*point);
-					k++;
+					index++;
 				}
 			}
-			for (int t = 0; t < primitive->GetTriangleCount(); t++)
+			for (t = 0; t < primitive->GetTriangleCount(); t++)
 			{
 				LH3DTriangle* triangle = &primitive->Triangles[t];
 				LHPoint       a = g_tmp_can_be_only_one[triangle->GetA()];
 				a -= g_tmp_can_be_only_one[triangle->GetB()];
 				LHPoint c = g_tmp_can_be_only_one[triangle->GetC()];
 				c -= g_tmp_can_be_only_one[triangle->GetB()];
-				LHPoint normal = c ^ a;
+				LHPoint normal;
+				normal.CrossProduct(c, a);
 				normal.Normalise();
-				AddNormal(&g_tmp_can_be_only_one[triangle->GetA()], &normal);
-				AddNormal(&g_tmp_can_be_only_one[triangle->GetB()], &normal);
-				AddNormal(&g_tmp_can_be_only_one[triangle->GetC()], &normal);
+				AddNormal(&g_tmp_can_be_only_one[triangle->A], &normal);
+				AddNormal(&g_tmp_can_be_only_one[triangle->B], &normal);
+				AddNormal(&g_tmp_can_be_only_one[triangle->C], &normal);
 			}
 		}
 		for (i = 0; i < g_nb_pt_cboo; i++)
 		{
 			g_can_be_only_one_normal[i].Normalise();
 		}
-		for (i = 0; i < submesh->GetPrimitiveCount(); i++)
+		for (j = 0; j < submesh->GetPrimitiveCount(); j++)
 		{
-			LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[i];
-			int            k = 0;
-			for (int g = 0; g < primitive->NumVertexGroups; g++)
+			LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[j];
+			int            index = 0;
+			for (g = 0; g < primitive->NumVertexGroups; g++)
 			{
 				LH3DVertexGroup* group = &primitive->VertexGroups[g];
 				LHMatrix         matrix = LH3DMesh::g_current_list_matrix[group->BoneIndex];
-				for (int j = 0; j < group->vertex_count; j++)
+				for (k = 0; k < group->vertex_count; k++)
 				{
-					LHPoint* point = &g_tmp_can_be_only_one[k];
-					point->Set(primitive->GetListVertex()[k].position);
+					LHPoint* point = &g_tmp_can_be_only_one[index];
+					point->Set(primitive->GetListVertex()[index].position);
 					matrix.TransformPoint(*point);
-					k++;
+					index++;
 				}
 			}
-			for (int t = 0; t < primitive->GetTriangleCount(); t++)
+			for (t = 0; t < primitive->GetTriangleCount(); t++)
 			{
 				LH3DTriangle* triangle = &primitive->Triangles[t];
 				LHPoint       normal;
-				GetNormal(&g_tmp_can_be_only_one[triangle->GetA()], &normal);
+				GetNormal(&g_tmp_can_be_only_one[triangle->A], &normal);
 				primitive->GetListVertex()[triangle->GetA()].normal.Set(normal);
-				GetNormal(&g_tmp_can_be_only_one[triangle->GetB()], &normal);
+				GetNormal(&g_tmp_can_be_only_one[triangle->B], &normal);
 				primitive->GetListVertex()[triangle->GetB()].normal.Set(normal);
-				GetNormal(&g_tmp_can_be_only_one[triangle->GetC()], &normal);
+				GetNormal(&g_tmp_can_be_only_one[triangle->C], &normal);
 				primitive->GetListVertex()[triangle->GetC()].normal.Set(normal);
 			}
 		}
-		for (i = 0; i < submesh->GetPrimitiveCount(); i++)
+		for (j = 0; j < submesh->GetPrimitiveCount(); j++)
 		{
-			LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[i];
-			int            k = 0;
-			for (int g = 0; g < primitive->NumVertexGroups; g++)
+			LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[j];
+			int            index = 0;
+			for (g = 0; g < primitive->NumVertexGroups; g++)
 			{
 				LH3DVertexGroup* group = &primitive->VertexGroups[g];
 				LHMatrix         matrix = LH3DMesh::g_current_list_matrix[group->BoneIndex];
 				LHMatrix         inverse;
 				inverse.SetInverse(matrix);
 				inverse.GetPos().SetNull();
-				for (int j = 0; j < group->vertex_count; j++)
+				for (k = 0; k < group->vertex_count; k++)
 				{
-					LHPoint normal = primitive->GetListVertex()[k].normal;
+					LHPoint normal = primitive->GetListVertex()[index].normal;
 					inverse.TransformPoint(normal);
 					if (normal.x == 0.0f && normal.y == 0.0f && normal.z == 0.0f)
 					{
 						normal.Set(0.0f, 1.0f, 0.0f);
 					}
-					primitive->GetListVertex()[k].normal = normal;
-					k++;
+					primitive->GetListVertex()[index].normal.Set(normal);
+					index++;
 				}
 			}
 		}
@@ -1967,10 +1971,10 @@ void __fastcall ComputeNornal(LH3DMesh* mesh)
 		for (i = 0; i < mesh->GetSubmeshCount(); i++)
 		{
 			LH3DSubMesh* submesh = mesh->GetListPtrSubmesh()[i];
-			for (int j = 0; j < submesh->GetPrimitiveCount(); j++)
+			for (j = 0; j < submesh->GetPrimitiveCount(); j++)
 			{
 				LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[j];
-				for (int k = 0; k < primitive->GetVerticesCount(); k++)
+				for (k = 0; k < primitive->GetVerticesCount(); k++)
 				{
 					AddThisVertex(&primitive->Vertices[k]);
 				}
@@ -1979,21 +1983,22 @@ void __fastcall ComputeNornal(LH3DMesh* mesh)
 		for (i = 0; i < mesh->GetSubmeshCount(); i++)
 		{
 			LH3DSubMesh* submesh = mesh->GetListPtrSubmesh()[i];
-			for (int j = 0; j < submesh->GetPrimitiveCount(); j++)
+			for (j = 0; j < submesh->GetPrimitiveCount(); j++)
 			{
 				LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[j];
-				for (int t = 0; t < primitive->GetTriangleCount(); t++)
+				for (t = 0; t < primitive->GetTriangleCount(); t++)
 				{
 					LH3DTriangle* triangle = &primitive->Triangles[t];
 					LHPoint       a = primitive->GetListVertex()[triangle->GetA()].position;
 					a -= primitive->GetListVertex()[triangle->GetB()].position;
 					LHPoint c = primitive->GetListVertex()[triangle->GetC()].position;
 					c -= primitive->GetListVertex()[triangle->GetB()].position;
-					LHPoint normal = c ^ a;
+					LHPoint normal;
+					normal.CrossProduct(c, a);
 					normal.Normalise();
-					AddNormal(&primitive->Vertices[triangle->GetA()], &normal);
-					AddNormal(&primitive->Vertices[triangle->GetB()], &normal);
-					AddNormal(&primitive->Vertices[triangle->GetC()], &normal);
+					AddNormal(&primitive->Vertices[triangle->A], &normal);
+					AddNormal(&primitive->Vertices[triangle->B], &normal);
+					AddNormal(&primitive->Vertices[triangle->C], &normal);
 				}
 			}
 		}
@@ -2004,10 +2009,10 @@ void __fastcall ComputeNornal(LH3DMesh* mesh)
 		for (i = 0; i < mesh->GetSubmeshCount(); i++)
 		{
 			LH3DSubMesh* submesh = mesh->GetListPtrSubmesh()[i];
-			for (int j = 0; j < submesh->GetPrimitiveCount(); j++)
+			for (j = 0; j < submesh->GetPrimitiveCount(); j++)
 			{
 				LH3DPrimitive* primitive = submesh->GetListPtrPrimitive()[j];
-				for (int k = 0; k < primitive->GetVerticesCount(); k++)
+				for (k = 0; k < primitive->GetVerticesCount(); k++)
 				{
 					LHPoint normal;
 					GetNormal(&primitive->Vertices[k], &normal);
@@ -2230,12 +2235,7 @@ int __fastcall LH3DMesh::DrawLightMap(SubMeshDrawData* draw_data, int num_draw_d
 				SubmeshName* name = &name_data->Names[i];
 				if (name->Bone >= 0 && name->Bone < LH3D_MESH_LIST_MATRIX_SIZE)
 				{
-					matrix.m[9] = matrix.m[0] * name->Pivot.x + matrix.m[3] * name->Pivot.y +
-					              matrix.m[6] * name->Pivot.z + matrix.m[9];
-					matrix.m[10] = matrix.m[1] * name->Pivot.x + matrix.m[4] * name->Pivot.y +
-					               matrix.m[7] * name->Pivot.z + matrix.m[10];
-					matrix.m[11] = matrix.m[2] * name->Pivot.x + matrix.m[5] * name->Pivot.y +
-					               matrix.m[8] * name->Pivot.z + matrix.m[11];
+					TransformPoint(matrix.GetPos(), name->Pivot, matrix);
 					matrix.PreMultiply(g_my_list_matrix[name->Bone]);
 					LHPoint pivot(-name->Pivot.x, -name->Pivot.y, -name->Pivot.z);
 					matrix.m[9] = matrix.m[0] * pivot.x + matrix.m[3] * pivot.y + matrix.m[6] * pivot.z + matrix.m[9];
@@ -2284,7 +2284,8 @@ int __fastcall LH3DMesh::DrawLightMap(SubMeshDrawData* draw_data, int num_draw_d
 				int max_y = 0;
 				for (int k = 0; k < LH3D_MESH_BOX_CORNERS; k++)
 				{
-					LHPoint point = box_matrix * corners[k];
+					LHPoint point;
+					TransformPoint(point, corners[k], box_matrix);
 					corners[k] = point;
 					int      x;
 					int      y;
@@ -2333,9 +2334,8 @@ int __fastcall LH3DMesh::DrawLightMap(SubMeshDrawData* draw_data, int num_draw_d
 				{
 					if (behind != 0)
 					{
-						min_x = 0;
+						min_x = min_y = 0;
 						max_x = width;
-						min_y = 0;
 						max_y = height;
 					}
 					if (mouse_x >= min_x && mouse_x < max_x && mouse_y >= min_y && mouse_y < max_y)
