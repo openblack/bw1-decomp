@@ -2,10 +2,11 @@
 
 #include <string.h> /* For memcpy */
 
-#include "LH3DMem.h"    /* For LH3DMem */
-#include "LH3DObject.h" /* For LH3DObject */
-#include "LH3DTech.h"   /* For LH3DTech */
-#include "LHMatrix.h"   /* For LHMatrix */
+#include "LH3DMem.h"           /* For LH3DMem */
+#include "LH3DObject.h"        /* For LH3DObject */
+#include "LH3DTech.h"          /* For LH3DTech */
+#include "LHMatrix.h"          /* For LHMatrix */
+#include "LHMatrixOperators.h" /* For PostScale */
 
 struct LH3DCameraKey
 {
@@ -105,10 +106,10 @@ void __fastcall LH3DCamera::GetCamera(LH3DObject* object, unsigned long time, LH
 	delta *= blend;
 	*focus += delta;
 	matrix->Set(((LH3DCameraMatrixKey*)(this + 1))[key].Matrix);
-	matrix->PostScale(1.0f - blend);
+	PostScale(*matrix, 1.0f - blend);
 	LHMatrix nextMatrix;
 	nextMatrix.Set(((LH3DCameraMatrixKey*)(this + 1))[next].Matrix);
-	nextMatrix.PostScale(blend);
+	PostScale(nextMatrix, blend);
 	*matrix += nextMatrix;
 	if (object != NULL)
 	{
