@@ -349,7 +349,7 @@ void FontFile::ReadFromFile(char* filename)
 		File = NULL;
 	}
 	LHReleasedOSFile file;
-	if (file.Open(path, LH_FILE_MODE_READ_ONLY) == LH_FILE_RESULT_OK)
+	if (file.Open(path, LH_FILE_READ_ONLY) == LH_FILE_RESULT_OK)
 	{
 		file.Read(&Height, sizeof(Height), NULL);
 		file.Read(Unused, sizeof(Unused), NULL);
@@ -366,7 +366,7 @@ void FontFile::ReadFromFile(char* filename)
 	strcpy(path, filename);
 	strcat(path, ".fnt");
 	File = new LHReleasedOSFile;
-	if (File->Open(path, LH_FILE_MODE_READ_ONLY) != LH_FILE_RESULT_OK)
+	if (File->Open(path, LH_FILE_READ_ONLY) != LH_FILE_RESULT_OK)
 	{
 		delete File;
 		File = NULL;

@@ -351,7 +351,7 @@ bool32_t GameOSFile::SaveAllGame(char* filename)
 	char temporaryPath[MAX_PATH];
 	strcpy(temporaryPath, filename);
 	strcat(temporaryPath, TEMPORARY_FILE_EXTENSION);
-	if (file.Open(temporaryPath, LH_FILE_MODE_READ_WRITE) != LH_FILE_RESULT_OK)
+	if (file.Open(temporaryPath, LH_FILE_NEW) != LH_FILE_RESULT_OK)
 	{
 		return false;
 	}
@@ -448,7 +448,7 @@ bool32_t GameOSFile::LoadAllGame(char* filename)
 	ReadEnabled = true;
 	GameOSFile file;
 	LoadCount = 0;
-	if (file.Open(filename, LH_FILE_MODE_READ_WRITE_CREATE) != LH_FILE_RESULT_OK)
+	if (file.Open(filename, LH_FILE_READ_WRITE) != LH_FILE_RESULT_OK)
 	{
 		operator delete(PhysicsSaveInfo::Buffer);
 		PhysicsSaveInfo::Buffer = NULL;
@@ -474,7 +474,7 @@ bool32_t GameOSFile::LoadAllGame(char* filename)
 	file.Write(&attempts, sizeof(attempts), NULL);
 	file.Seek(position, LH_SEEK_BEGIN, NULL);
 	file.Close();
-	if (file.Open(filename, LH_FILE_MODE_READ_ONLY) != LH_FILE_RESULT_OK)
+	if (file.Open(filename, LH_FILE_READ_ONLY) != LH_FILE_RESULT_OK)
 	{
 		operator delete(PhysicsSaveInfo::Buffer);
 		PhysicsSaveInfo::Buffer = NULL;
@@ -537,7 +537,7 @@ bool32_t GameOSFile::LoadAllGame(char* filename)
 		}
 	}
 	file.Close();
-	if (file.Open(filename, LH_FILE_MODE_READ_WRITE_CREATE) == LH_FILE_RESULT_OK)
+	if (file.Open(filename, LH_FILE_READ_WRITE) == LH_FILE_RESULT_OK)
 	{
 		attempts = 0;
 		file.Seek(0, LH_SEEK_END, NULL);
@@ -1950,7 +1950,7 @@ bool32_t GameOSFile::IsAutoSaveValid()
 		return false;
 	}
 	GameOSFile file;
-	if (file.Open(filename, LH_FILE_MODE_READ_ONLY) != LH_FILE_RESULT_OK)
+	if (file.Open(filename, LH_FILE_READ_ONLY) != LH_FILE_RESULT_OK)
 	{
 		return false;
 	}

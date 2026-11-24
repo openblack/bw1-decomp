@@ -144,7 +144,7 @@ bool32_t GestureSystemDataList::Load(char* path)
 {
 	LHReleasedOSFile file;
 	Reset();
-	if (file.Open(path, LH_FILE_MODE_READ_ONLY) != LH_FILE_RESULT_OK)
+	if (file.Open(path, LH_FILE_READ_ONLY) != LH_FILE_RESULT_OK)
 	{
 		file.Close();
 		return false;

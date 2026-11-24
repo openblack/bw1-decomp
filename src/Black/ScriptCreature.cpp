@@ -120,7 +120,7 @@ void GScript::CreateYoungCreatureWithKnowledge()
 			if (young != NULL)
 			{
 				tyke->mind->SaveMind(CREATURE_MENTAL_YOUNG_MIND_FILE, 0);
-				Archive archive(CREATURE_MENTAL_YOUNG_MIND_FILE, LH_FILE_MODE_READ_ONLY);
+				Archive archive(CREATURE_MENTAL_YOUNG_MIND_FILE, LH_FILE_READ_ONLY);
 				if (archive.IsOpen())
 				{
 					young->mind->LoadMindIntoPreexistingCreature(archive);

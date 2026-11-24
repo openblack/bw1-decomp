@@ -1503,12 +1503,12 @@ void LH3DMesh::CreatePackInternal(void* data)
 
 void LH3DMesh::CreatePack()
 {
-	g_cached_tex_file.Open(LH_FILE_MODE_READ_ONLY);
+	g_cached_tex_file.Open(LH_FILE_READ_ONLY);
 	LH3DTexture::SetPackedTexture();
 	LHSegment segment;
 	if (g_cached_tex_file.GetSegment(LH3D_MESH_SEGMENT_NAME, &segment, true) != LH_FILE_RESULT_NOT_FOUND)
 	{
-		CreatePackInternal(segment.buffer);
+		CreatePackInternal(segment.Data);
 	}
 }
 
@@ -1516,11 +1516,11 @@ void LH3DMesh::CreatePack()
 void LH3DMesh::SavePack(void* data, long size, const char* filename)
 {
 	LHReleasedFile file(filename);
-	file.Open(LH_FILE_MODE_UPDATE);
+	file.Open(LH_FILE_APPEND);
 	LHSegment segment;
-	segment.buffer = (uint8_t*)data;
-	segment.size = size;
-	strcpy((char*)segment.name, LH3D_MESH_SEGMENT_NAME);
+	segment.Data = (uint8_t*)data;
+	segment.Size = size;
+	strcpy((char*)segment.Name, LH3D_MESH_SEGMENT_NAME);
 	file.WriteSegment(&segment);
 	file.Close();
 }

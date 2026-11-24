@@ -347,14 +347,14 @@ void load_variables(void)
 
 	if (use_binary)
 	{
-		file.Open(LH_FILE_MODE_READ_ONLY);
+		file.Open(LH_FILE_READ_ONLY);
 	}
 	else
 	{
 		for (unsigned long i = 0; i < GInfoFileTable::GetNoOfElementsInInfoFileTable(); i++)
 			loader->ReadVariableFile(GInfoFileTable::GetInfoFile() + i * INFO_FILE_NAME_LENGTH);
 		file.SetName(tmp_name);
-		file.Open(LH_FILE_MODE_READ_WRITE);
+		file.Open(LH_FILE_NEW);
 	}
 	file.OpenSegment((char*)"Info");
 

@@ -907,7 +907,7 @@ void GComputerPlayer::CreateCreatureFromFile(CREATURE_TYPE type, const MapCoords
 {
 	char path[256];
 	sprintf(path, ".\\Scripts\\CreatureMind\\%s", file_name);
-	Archive archive(path, LH_FILE_MODE_READ_ONLY);
+	Archive archive(path, LH_FILE_READ_ONLY);
 	if (archive.IsOpen())
 	{
 		Creature* creature = Creature::Create(coords, &CreatureInfo::GetInfo()[type], Player);

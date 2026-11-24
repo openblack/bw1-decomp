@@ -8,9 +8,9 @@
 
 struct LHSegmentDesc
 {
-	char     name[LH_SEGMENT_NAME_LENGTH + 1]; /* 0x0 */
-	uint32_t offset;                           /* 0x24 */
-	uint32_t size;                             /* 0x28 */
+	char     Name[LH_SEGMENT_NAME_LENGTH + 1]; /* 0x0 */
+	uint32_t Offset;                           /* 0x24 */
+	uint32_t Size;                             /* 0x28 */
 
 	// Constructors
 

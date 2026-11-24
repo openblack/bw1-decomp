@@ -102,7 +102,7 @@ bool32_t LH3DCreature::LoadSkin(char* name)
 	sprintf(path, "data\\ctr\\%s.skn", name);
 	LHReleasedFile file;
 	file.SetName(path);
-	if (file.Open(LH_FILE_MODE_READ_ONLY) != LH_FILE_RESULT_OK)
+	if (file.Open(LH_FILE_READ_ONLY) != LH_FILE_RESULT_OK)
 	{
 		morphable_error("Can't open skin : ", path);
 		return false;
@@ -186,7 +186,7 @@ bool32_t LH3DCreature::SaveSkin(char* name)
 	LHReleasedFile file;
 	file.SetName(name);
 	LoadAllAndClose();
-	if (file.Open(LH_FILE_MODE_READ_WRITE) != LH_FILE_RESULT_OK)
+	if (file.Open(LH_FILE_NEW) != LH_FILE_RESULT_OK)
 	{
 		morphable_error("Can't create file : ", name);
 		return false;
@@ -256,7 +256,7 @@ uint32_t LH3DCreature::LoadBinary(char* filename, bool32_t start_creation)
 	AnimInfo* oldInfo = NULL;
 	sprintf(path, "data\\ctr\\%s.cbn", filename);
 	file.SetName(path);
-	if (file.Open(LH_FILE_MODE_READ_ONLY) != LH_FILE_RESULT_OK)
+	if (file.Open(LH_FILE_READ_ONLY) != LH_FILE_RESULT_OK)
 	{
 		morphable_error("Can't open creature : ", path);
 		return 0;
@@ -975,7 +975,7 @@ uint32_t LH3DCreature::SaveBinary(char* filename)
 	LHReleasedFile file;
 	file.SetName(filename);
 	LoadAllAndClose();
-	if (file.Open(LH_FILE_MODE_READ_WRITE) != LH_FILE_RESULT_OK)
+	if (file.Open(LH_FILE_NEW) != LH_FILE_RESULT_OK)
 	{
 		morphable_error("Can't create file : ", filename);
 		return 0;

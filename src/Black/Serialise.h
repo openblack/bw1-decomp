@@ -89,7 +89,7 @@ public:
 			BufferPos = 0;
 			Mode = mode;
 			Direction = ARCHIVE_DIRECTION_EITHER;
-			if (mode == LH_FILE_MODE_READ_ONLY)
+			if (mode == LH_FILE_READ_ONLY)
 			{
 				File.Read(Buffer, sizeof(Buffer), NULL);
 			}
@@ -149,7 +149,7 @@ public:
 	// BW1W120 004e6980 BW1M119 01101240
 	void CloseFile()
 	{
-		if (Mode != LH_FILE_MODE_READ_ONLY)
+		if (Mode != LH_FILE_READ_ONLY)
 		{
 			Flush();
 		}

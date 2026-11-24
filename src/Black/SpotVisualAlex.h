@@ -65,7 +65,7 @@ struct FenceVis : public SpotVisualAlex
 		Radius = FENCE_VIS_RADIUS;
 		StreakSize = FENCE_VIS_STREAK_SIZE;
 		LHFile file(file_name);
-		if (file.Open(LH_FILE_MODE_READ_ONLY) == LH_FILE_RESULT_OK)
+		if (file.Open(LH_FILE_READ_ONLY) == LH_FILE_RESULT_OK)
 		{
 			SetFromFile(&file, true);
 			file.Close();

@@ -3746,12 +3746,12 @@ void Creature::SwapMinds(Creature* new_creature, Creature* my_creature)
 	float myMentalAlignment = my_creature->ReceiveSpell->GetAlignmentToMentalSave();
 	new_creature->mind->SaveMind("temp1");
 	my_creature->mind->SaveMind("temp2");
-	Archive myArchive("temp2", LH_FILE_MODE_READ_ONLY);
+	Archive myArchive("temp2", LH_FILE_READ_ONLY);
 	if (myArchive.IsOpen())
 	{
 		new_creature->mind->LoadMindIntoPreexistingCreature(myArchive);
 	}
-	Archive newArchive("temp1", LH_FILE_MODE_READ_ONLY);
+	Archive newArchive("temp1", LH_FILE_READ_ONLY);
 	if (newArchive.IsOpen())
 	{
 		my_creature->mind->LoadMindIntoPreexistingCreature(newArchive);

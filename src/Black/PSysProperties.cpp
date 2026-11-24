@@ -1849,7 +1849,7 @@ bool32_t PSysFileData::SaveToFile(const char* filename)
 	}
 	{
 		LHReleasedOSFile file;
-		if (file.Open(filename, LH_FILE_MODE_READ_WRITE) != LH_FILE_RESULT_OK)
+		if (file.Open(filename, LH_FILE_NEW) != LH_FILE_RESULT_OK)
 		{
 			return false;
 		}
@@ -1875,7 +1875,7 @@ bool32_t PSysFileData::SaveAsCode(const char* filename)
 	}
 	{
 		LHReleasedOSFile file;
-		if (file.Open(filename, LH_FILE_MODE_READ_WRITE) != LH_FILE_RESULT_OK)
+		if (file.Open(filename, LH_FILE_NEW) != LH_FILE_RESULT_OK)
 		{
 			return false;
 		}
