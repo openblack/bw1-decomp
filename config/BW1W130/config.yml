@@ -139,7 +139,7 @@ block_relocations:
 # GatheringBox::MakeFriends's 0xffffff is an immediate, not an address in 1.30's larger image.
   - source: 0x00578F5B
 # Bubble::Draw's 0xffffff colour mask reads as an address inside NewCols, and Bubble::UpdateAndDraw's 0x7f7f7f
-# mask as one inside LHDraw::ScaledSprite16.
+# mask as one inside LHDraw::ScaledSprite16xxx.
   - source: 0x00579E04
   - source: 0x0057A721
 # HelpDudeTrail::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
