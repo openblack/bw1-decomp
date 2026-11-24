@@ -97,21 +97,24 @@ void __fastcall LH3DHand::AddEdge(Vertex3D* a, Vertex3D* b)
 	{
 		stepY = 1;
 	}
-	int error = 0;
-	int i;
+	int   error = 0;
+	int   i;
+	float du;
+	float dv;
+	float dl;
 	if (dx < dy)
 	{
 		if (dy)
 		{
-			float du = (b->uv.x - a->uv.x) / dy;
-			float dv = (b->uv.y - a->uv.y) / dy;
-			float dl = ((float)b->color - (float)a->color) / dy;
+			du = (b->uv.x - a->uv.x) / dy;
+			dv = (b->uv.y - a->uv.y) / dy;
+			dl = ((float)b->color - (float)a->color) / dy;
 			for (i = 0; i < dy + 1; i++)
 			{
 				AddPoint(y, x, u, v, light);
+				y += stepY;
 				error += dx;
 				v += dv;
-				y += stepY;
 				u += du;
 				light += dl;
 				if (error > dy)
@@ -131,15 +134,15 @@ void __fastcall LH3DHand::AddEdge(Vertex3D* a, Vertex3D* b)
 	{
 		if (dx)
 		{
-			float du = (b->uv.x - a->uv.x) / dx;
-			float dv = (b->uv.y - a->uv.y) / dx;
-			float dl = ((float)b->color - (float)a->color) / dx;
+			du = (b->uv.x - a->uv.x) / dx;
+			dv = (b->uv.y - a->uv.y) / dx;
+			dl = ((float)b->color - (float)a->color) / dx;
 			for (i = 0; i < dx + 1; i++)
 			{
 				AddPoint(y, x, u, v, light);
+				x += stepX;
 				error += dy;
 				u += du;
-				x += stepX;
 				v += dv;
 				light += dl;
 				if (error > dx)
