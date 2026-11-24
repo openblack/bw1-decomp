@@ -61,12 +61,7 @@ static_assert(sizeof(LivingMapCell) == 0x28, "Data type is of wrong size");
 class DataForScriptRemind : public GameThing
 {
 public:
-	uint32_t field_0x14;
-	uint32_t field_0x18;
-	uint32_t field_0x1c;
-	uint32_t field_0x20;
-	uint32_t field_0x24;
-	uint32_t field_0x28;
+	uint32_t field_0x14[0x6];
 	uint32_t field_0x2c;
 	uint32_t field_0x30;
 	uint32_t field_0x34;

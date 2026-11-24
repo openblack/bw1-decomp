@@ -287,7 +287,7 @@ Black/BuildingSite.cpp:
 	.rdata$r    start:0x009A8590 end:0x009A86E8
 	.CRT$XCU    start:0x009C61C4 end:0x009C61D4 align:4
 	.data       start:0x009CD3F0 end:0x009CD4F0
-	.bss        start:0x00C58CD0 end:0x00C58EE0
+	.bss        start:0x00C58CD0 end:0x00C58EDC
 
 Black/BWGameSpy.cpp:
 	.text       start:0x0043DD40 end:0x004407B0

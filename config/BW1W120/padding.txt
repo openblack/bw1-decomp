@@ -134,6 +134,15 @@
 0x00437E7B call_rel32 0x00401879  # Belief
 0x00438DEA call_indirect 0x008A901C  # BigForest: __imp__TrackMouseEvent@4
 0x00438EBB call_rel32 0x00401879  # BigForest
+0x0043ADAB call_rel32 0x00401879  # BuildingSite
+0x0043C11A call_indirect 0x008A9954  # BuildingSite: __imp__BinkClose@4
+0x0043C5EB call_rel32 0x00401879  # BuildingSite
+0x0043CDAA call_indirect 0x008A991C  # BuildingSite: __imp__ioctlsocket@4
+0x0043D4FB call_rel32 0x00401879  # BuildingSite
+0x0043D7FA call_indirect 0x008A939C  # BuildingSite: __imp_?GetModuleChecksum@LHVersion@@SAKXZ
+0x0043DB8B call_rel32 0x00401879  # BuildingSite
+0x0043DCAA call_indirect 0x008A9104  # BuildingSite: __imp__ImmGetProperty@4
+0x0043DD0A call_indirect 0x008A9074  # BuildingSite: __imp__DeleteDC@4
 0x004407CB call_rel32 0x00401879  # BWLan
 0x0044081B call_rel32 0x00401879  # BWLan
 0x0044092A call_indirect 0x008A9984  # BWLan: __imp_?GetDefaultEntryIndex@Dialup@@QAEHXZ

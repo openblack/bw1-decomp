@@ -358,8 +358,8 @@ public:
 		{
 			return false;
 		}
-		uint32_t count = list.count;
 		int      written = 0;
+		uint32_t count = list.count;
 		WriteIt(list.count);
 		for (LHLinkedNode<T>* node = list.head.Get(); node != NULL; node = node->next.Get())
 		{

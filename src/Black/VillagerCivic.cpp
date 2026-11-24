@@ -203,9 +203,9 @@ bool32_t Villager::ArrivesAtBuildingSite()
 	if (GetTown()->IsBuildingSiteValid(building_site))
 	{
 		int index = (int)TargetThing;
-		if (index >= 0 && index < 128)
+		if (index >= 0 && index < POS_BUILDER_POSITION_COUNT)
 		{
-			LHPoint*  buildPoint = &building_site->BuildingPositions[index];
+			LHPoint*  buildPoint = &building_site->BuilderPositions.Positions[index];
 			MapCoords buildPos;
 			buildPos.SetX(buildPoint->x);
 			buildPos.SetZ(buildPoint->z);

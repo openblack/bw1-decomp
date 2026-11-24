@@ -13,6 +13,7 @@
 // Forward Declares
 
 class Base;
+class BuildingSite;
 class Creature;
 class GInterfaceStatus;
 class GameOSFile;
@@ -40,7 +41,7 @@ enum PLANNED_TYPE
 class Scaffold : public MobileObject
 {
 public:
-	uint32_t             field_0x68;
+	BuildingSite*        building_site;
 	PlannedAbode*        Planned;
 	PlannedAbode*        SecondPlanned;
 	Game3DObject*        HandObject;

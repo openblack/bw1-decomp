@@ -63,8 +63,7 @@ public:
 	uint8_t                field_0x38;
 	LHListNode<FireEffect> next;
 	uint8_t                field_0x40[0x8];
-	uint32_t               field_0x48;
-	uint32_t               field_0x4c;
+	uint32_t               field_0x48[0x2];
 
 	// Override methods
 

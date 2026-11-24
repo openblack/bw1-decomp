@@ -267,9 +267,10 @@ Black/Bookmark.cpp:
 Black/BuildingSite.cpp:
 	.text       start:0x004335F0 end:0x004361F0
 	.rdata      start:0x00805C68 end:0x0080616C
+	.rdata$r    start:0x008DC6B0 end:0x008DC808
 	.CRT$XCU    start:0x008F60F8 end:0x008F6104 align:4
 	.data       start:0x008FBFA8 end:0x008FC0A8
-	.bss        start:0x00B7A588 end:0x00B7A798
+	.bss        start:0x00B7A588 end:0x00B7A794
 
 Black/BWGameSpy.cpp:
 	.text       start:0x004361F0 end:0x004387A0

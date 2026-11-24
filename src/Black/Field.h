@@ -43,8 +43,7 @@ public:
 	uint8_t                 field_0xcc;
 	uint32_t                field_0xd0;
 	LHLinkedList<Villager*> Farmers;
-	uint32_t                field_0xdc;
-	uint32_t                field_0xe0;
+	uint32_t                field_0xdc[0x2];
 	float                   field_0xe4;
 	Zoomer                  GrowthZoomer;
 	LHPTR<Town>             town;

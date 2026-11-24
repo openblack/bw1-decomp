@@ -17,7 +17,7 @@ PHYSICS_CONSTANTS_TYPE Scaffold::GetPhysicsConstantsType()
 
 bool32_t Scaffold::IsAvailableToBeBuiltWith()
 {
-	return field_0x68 == 0;
+	return building_site == NULL;
 }
 
 void Scaffold::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2) {}

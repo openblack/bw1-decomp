@@ -78,6 +78,8 @@ block_relocations:
 # Utils' arctangent and sigmoid tables hold 16-bit and float values that read as addresses.
   - source: 0x00B45FCC
     end: 0x00B46278
+# The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside BuildingSite::CheckBuildingSites.
+  - source: 0x00B53004
 # Tables of 16-bit values whose word pairs read as addresses inside the GameSpy SDK's code.
   - source: 0x00B53544
 

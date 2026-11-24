@@ -30,11 +30,8 @@ public:
 	uint32_t             BankIndex;
 	bool                 field_0x30;
 	bool32_t             IsAtmospheric;
-	uint32_t             field_0x38;
-	uint32_t             field_0x3c;
-	int                  field_0x40;
-	int                  field_0x44;
-	int                  field_0x48;
+	uint32_t             field_0x38[0x2];
+	int                  field_0x40[0x3];
 	uint32_t             field_0x4c;
 	uint16_t             field_0x50;
 
