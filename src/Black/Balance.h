@@ -8,25 +8,16 @@
 
 #include "MapCellConstants.h" /* For MetresPerMapCell */
 
-// Forward Declares
-
 class GScriptOpposingCreature;
 class ReactionInfo;
+
+#define INFO_FILE_NAME_LENGTH 50
 
 class GInfoFileTable
 {
 public:
-	enum
-	{
-		FILE_NAME_LENGTH = 50
-	};
-
-	// Static data
-
 	// BW1W120 009cb628
-	static char InfoFiles[][FILE_NAME_LENGTH];
-
-	// Static methods
+	static char InfoFiles[][INFO_FILE_NAME_LENGTH];
 
 	// BW1W120 inlined BW1M119 0118cda0
 	static char* GetInfoFile() { return InfoFiles[0]; }
@@ -36,7 +27,7 @@ public:
 		int count = 0;
 		while (true)
 		{
-			if (_stricmp(GetInfoFile() + count * FILE_NAME_LENGTH, "") == 0)
+			if (_stricmp(GetInfoFile() + count * INFO_FILE_NAME_LENGTH, "") == 0)
 				return count;
 			count++;
 		}
@@ -56,8 +47,8 @@ public:
 	{
 		for (int index = GetNoOfElementsInInfoFileTable(); index >= 0; index--)
 		{
-			if (_stricmp(name, GetInfoFile() + index * FILE_NAME_LENGTH) == 0 ||
-			    _stricmp(name, JustFileName(GetInfoFile() + index * FILE_NAME_LENGTH, FILE_NAME_LENGTH)) == 0)
+			if (_stricmp(name, GetInfoFile() + index * INFO_FILE_NAME_LENGTH) == 0 ||
+			    _stricmp(name, JustFileName(GetInfoFile() + index * INFO_FILE_NAME_LENGTH, INFO_FILE_NAME_LENGTH)) == 0)
 				return index;
 		}
 		return -1;

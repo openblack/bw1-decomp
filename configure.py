@@ -866,6 +866,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/AudioSFX.cpp"),
             GameCodeObject(Matching, "Black/audiotag.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/Balance.cpp"),
+            GameCodeObject(Matching, "Black/BalanceData.cpp"),
             GameCodeObject(Matching, "Black/Ball.cpp"),
             GameCodeObject(Matching, "Black/Base.cpp", pch=False),
             GameCodeObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "Black/Beat.cpp"),

@@ -223,12 +223,16 @@ Black/audiotag.cpp:
 	.bss        start:0x00CD70AC end:0x00CD92B8
 
 Black/Balance.cpp:
-	.text       start:0x0042B2F0 end:0x004358D0
+	.text       start:0x0042B2F0 end:0x004358A0
 	.rdata      start:0x008C9B14 end:0x008C9F24
 	.rdata$r    start:0x00A27F48 end:0x00A28548
-	.CRT$XCU    start:0x00A46150 end:0x00A46164 align:4
+	.CRT$XCU    start:0x00A46150 end:0x00A46160 align:4
 	.data       start:0x00A4B730 end:0x00A4D378
 	.bss        start:0x00CD92B8 end:0x00CD93CC
+
+Black/BalanceData.cpp:
+	.text       start:0x004358A0 end:0x004358D0
+	.CRT$XCU    start:0x00A46160 end:0x00A46164 align:4
 
 Black/Ball.cpp:
 	.text       start:0x004358D0 end:0x00436400

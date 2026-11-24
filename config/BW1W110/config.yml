@@ -205,10 +205,18 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GMagicInfo@@2PAPAV1@A'
     addend: 0xA8
+  - source: 0x0042BBB8
+    type: x86_abs32
+    target: '?Infos@GMagicEffectInfo@@2PAV1@A'
+    addend: 0x2E98
   - source: 0x0042BBD7
     type: x86_abs32
     target: '?Infos@GSpellSeedInfo@@2PAV1@A'
     addend: 0x2EE0
+  - source: 0x0042BC3A
+    type: x86_abs32
+    target: '?Infos@GMagicEffectInfo@@2PAV1@A'
+    addend: 0x2E98
   - source: 0x0042BC92
     type: x86_abs32
     target: '?Infos@GSpellSeedInfo@@2PAV1@A'
@@ -237,6 +245,30 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@DifferentCreatureInfo@@2PAV1@A'
     addend: 0x72C
+  - source: 0x0042BE52
+    type: x86_abs32
+    target: '?InitialIncreaseTime@CreatureDesireForType@@2PAV1@A'
+    addend: 0xD20
+  - source: 0x0042BE71
+    type: x86_abs32
+    target: '?Infos@CreatureDevelopmentPhaseEntry@@2PAV1@A'
+    addend: 0x738
+  - source: 0x0042BED2
+    type: x86_abs32
+    target: '?InitialIncreaseTime@CreatureDesireForType@@2PAV1@A'
+    addend: 0xD20
+  - source: 0x0042BF2A
+    type: x86_abs32
+    target: '?Infos@CreatureDevelopmentPhaseEntry@@2PAV1@A'
+    addend: 0x738
+  - source: 0x0042BF90
+    type: x86_abs32
+    target: '?Infos@CreatureDevelopmentDurationEntry@@2PAV1@A'
+    addend: 0x4C8
+  - source: 0x0042BFB2
+    type: x86_abs32
+    target: '?Infos@CreatureDevelopmentDurationEntry@@2PAV1@A'
+    addend: 0x4C8
   - source: 0x0042C022
     type: x86_abs32
     target: '?Infos@GCitadelInfo@@2PAV1@A'

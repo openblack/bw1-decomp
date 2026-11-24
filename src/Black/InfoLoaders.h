@@ -21,6 +21,18 @@
 // The tag is the declaring header's path, which moved between releases. The macros take the file
 // name alone.
 
+#ifdef VERSION_BW1WCI
+#define INFO_SET_ID_AFTER_LOAD()
+#define INFO_FREE_TEMP_AND_SET_ID(temp)                                                                                \
+	SetInfoID();                                                                                                       \
+	delete[] temp;
+#else
+#define INFO_SET_ID_AFTER_LOAD() SetInfoID();
+#define INFO_FREE_TEMP_AND_SET_ID(temp)                                                                                \
+	delete[] temp;                                                                                                     \
+	SetInfoID();
+#endif
+
 #define INFO_DATA_BLOCK(first, last)                                                                                   \
 	char* get_start()                                                                                                  \
 	{                                                                                                                  \
@@ -41,7 +53,7 @@
 		SaveBinary(*cursor, get_size(), file);                                                                         \
 		memcpy(get_start(), *cursor, get_size());                                                                      \
 		*cursor += get_size();                                                                                         \
-		SetInfoID();                                                                                                   \
+		INFO_SET_ID_AFTER_LOAD()                                                                                       \
 		return get_size();                                                                                             \
 	}
 
@@ -53,19 +65,17 @@
 		unsigned char* temp = new unsigned char[get_size()];                                                           \
 		file->GetSegmentData(temp, get_size(), -1);                                                                    \
 		memcpy(get_start(), temp, get_size());                                                                         \
-		delete[] temp;                                                                                                 \
-		SetInfoID();                                                                                                   \
+		INFO_FREE_TEMP_AND_SET_ID(temp)                                                                                \
 	}
 
 #define INFO_ROOT_LOADERS(line, file_name)                                                                             \
 	INFO_ROOT_LOAD()                                                                                                   \
 	void LoadBinary(LHFile* file)                                                                                      \
 	{                                                                                                                  \
-		unsigned char* temp = new (SOURCE_DIRECTORY file_name, line) unsigned char[get_size()];                        \
+		unsigned char* temp = new (SOURCE_DIRECTORY file_name, ORIGINAL_LINE(line)) unsigned char[get_size()];         \
 		file->GetSegmentData(temp, get_size(), -1);                                                                    \
 		memcpy(get_start(), temp, get_size());                                                                         \
-		delete[] temp;                                                                                                 \
-		SetInfoID();                                                                                                   \
+		INFO_FREE_TEMP_AND_SET_ID(temp)                                                                                \
 	}
 
 #define INFO_DERIVED_LOADERS(line, file_name, base)                                                                    \
@@ -80,7 +90,7 @@
 	void LoadBinary(LHFile* file)                                                                                      \
 	{                                                                                                                  \
 		base::LoadBinary(file);                                                                                        \
-		unsigned char* temp = new (SOURCE_DIRECTORY file_name, line) unsigned char[get_size()];                        \
+		unsigned char* temp = new (SOURCE_DIRECTORY file_name, ORIGINAL_LINE(line)) unsigned char[get_size()];         \
 		file->GetSegmentData(temp, get_size(), -1);                                                                    \
 		memcpy(get_start(), temp, get_size());                                                                         \
 		delete[] temp;                                                                                                 \
