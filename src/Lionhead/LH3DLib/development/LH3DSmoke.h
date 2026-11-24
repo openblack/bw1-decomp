@@ -43,6 +43,8 @@ struct LH3DSmoke
 
 	// BW1W120 inlined BW1M119 inlined
 	void SetMaterial(LH3DMaterial* new_material) { material = new_material; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetOffset(const LHPoint& new_offset) { offset = new_offset; }
 
 	// BW1W120 007f8d10 BW1M119 010b3290 (LHCombined Release)
 	void Release();

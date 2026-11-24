@@ -20,7 +20,7 @@ struct MeshLodInfo
 	int      South;
 	int      West;
 	int      East;
-	int      field_0x14;
+	int      Reserved;
 
 	// BW1W120 00e9a130 BW1M119 011ceb4c (LHCombined Release)
 	static MeshLodInfo g_mesh_lod_info[MESH_LOD_TYPE_COUNT];

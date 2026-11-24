@@ -3025,7 +3025,6 @@ Black/WeatherThing.cpp:
 
 Black/Whale.cpp:
 	.text       start:0x00790C50 end:0x00792E50
-	.text$x     start:0x008D1630 end:0x008D1640 align:16
 	.rdata      start:0x00A0B478 end:0x00A0BE18
 	.CRT$XCU    start:0x00A37358 end:0x00A37368 align:4
 	.data       start:0x00C98158 end:0x00C98170
@@ -3191,8 +3190,9 @@ Lionhead/LH3DLib/development/LH3DP3.cpp:
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x007C5170 end:0x007C6CC0
-	.text$x     start:0x008D1640 end:0x008D1658 align:4
+	.text$x     start:0x008D1630 end:0x008D1648 align:4
 	.rdata      start:0x00A0EB54 end:0x00A0EB5C
+	.xdata$x    start:0x00A2CDD8 end:0x00A2CE00 align:4
 	.CRT$XCU    start:0x00A374C0 end:0x00A374C8 align:4
 	.data       start:0x00C9E120 end:0x00C9E7E0
 	.bss        start:0x00F0C368 end:0x00F0C37C
@@ -3206,7 +3206,7 @@ lib/libcpmt/xlock.obj:
 
 lib/libcpmt/string.obj:
 	.text       start:0x007C704C end:0x007C73AB align:1
-	.text$x     start:0x008D1658 end:0x008D16E2 align:4
+	.text$x     start:0x008D1648 end:0x008D16D2 align:4
 	.rdata$r    start:0x00A2B610 end:0x00A2B6FC align:8
 	.xdata$x    start:0x00A2CE00 end:0x00A2CFD8 align:8
 	.CRT$XCU    start:0x00A374C8 end:0x00A374CC align:4
@@ -3214,7 +3214,7 @@ lib/libcpmt/string.obj:
 
 lib/libcpmt/ios.obj:
 	.text       start:0x007C73AB end:0x007C79A7 align:1
-	.text$x     start:0x008D16E2 end:0x008D1776 align:1
+	.text$x     start:0x008D16D2 end:0x008D1776 align:1
 	.rdata$r    start:0x00A2B6FC end:0x00A2B79C align:8
 	.xdata$x    start:0x00A2CFD8 end:0x00A2D198 align:8
 	.data       start:0x00C9E840 end:0x00C9E890 align:8
@@ -4324,7 +4324,10 @@ Lionhead/LH3DLib/development/LH3DIsland.cpp:
 	.text       start:0x0081B4A0 end:0x00821B80
 	.text$x     start:0x008D2EE0 end:0x008D2F10 align:4
 	.rdata      start:0x00A12F24 end:0x00A12F40
+	.xdata$x    start:0x00A2F498 end:0x00A2F4D0 align:4
+	.CRT$XCU    start:0x00A3755C end:0x00A37578 align:4
 	.data       start:0x00CAA780 end:0x00CAB30C
+	.bss        start:0x00F1EA90 end:0x00F21700 align:8
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
 	.text       start:0x00821B80 end:0x00828040
@@ -4371,14 +4374,16 @@ Lionhead/LH3DLib/development/LH3DText.cpp:
 	.text       start:0x0084D470 end:0x00850DD0
 	.text$x     start:0x008D3170 end:0x008D31A0 align:4
 	.rdata      start:0x00A13CF0 end:0x00A13DFC
+	.xdata$x    start:0x00A2F7B8 end:0x00A2F7E8 align:4
 	.data       start:0x00CAC3A8 end:0x00CAC41C
+	.bss        start:0x00F4F010 end:0x00F5DC68 align:8
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x00850DD0 end:0x008510C0
 
 Lionhead/LH3DLib/development/LH3DWeather.cpp:
 	.text       start:0x008510C0 end:0x008546D0
-	.text$x     start:0x008D31A0 end:0x008D31D0 align:4
+	.text$x     start:0x008D31A0 end:0x008D31D0 align:16
 	.rdata      start:0x00A13DFC end:0x00A13E34
 	.xdata$x    start:0x00A2F7E8 end:0x00A2F818 align:4
 	.CRT$XCU    start:0x00A375F0 end:0x00A375F4 align:4

@@ -113,6 +113,18 @@ struct LH3DSubMesh
 			primitives_[i]->DrawComplexFroz();
 		}
 	}
+#ifdef VERSION_BW1WCI
+	// Inliner IL size: 85
+	// BW1WCI 008312c0 BW1MCI119 01076a20 (LHCombined Release)
+	void DrawComplexPlasma(float inflate, float explode, float twist, float shatter)
+	{
+		g_current_sub_mesh = this;
+		for (int i = 0; i < NumPrimitives; i++)
+		{
+			primitives_[i]->DrawComplexPlasma(inflate, explode, twist, shatter);
+		}
+	}
+#endif
 	// BW1W120 inlined BW1M119 01067ee0 (LHCombined Release)
 	void DrawCutByPlane()
 	{
@@ -387,6 +399,17 @@ struct LH3DSubMesh
 			primitives_[i]->DrawComplexEnvMapMT();
 		}
 	}
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 01075eb0 (LHCombined Release)
+	void DrawComplexEnvMapST()
+	{
+		g_current_sub_mesh = this;
+		for (int i = 0; i < NumPrimitives; i++)
+		{
+			primitives_[i]->DrawComplexEnvMapST();
+		}
+	}
+#endif
 	// BW1W120 inlined BW1M119 010756c0 (LHCombined Release)
 	void DrawComplexRefMapMT()
 	{
@@ -522,5 +545,17 @@ inline void LH3DMesh::DrawComplex()
 		UpdateMatrixDrawing(submeshes[i]->NumBones);
 	}
 }
+
+#ifdef VERSION_BW1WCI
+inline void LH3DMesh::DrawComplexPlasma(float inflate, float explode, float twist, float shatter)
+{
+	InitMatrixDrawing();
+	for (int i = 0; i < SubmeshCount; i++)
+	{
+		submeshes[i]->DrawComplexPlasma(inflate, explode, twist, shatter);
+		UpdateMatrixDrawing(submeshes[i]->NumBones);
+	}
+}
+#endif
 
 #endif /* BW1_DECOMP_LH3D_SUB_MESH_INCLUDED_H */

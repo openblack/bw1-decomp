@@ -18,7 +18,7 @@
 #include <Lionhead/LH3DLib/development/Font.h>              /* For Fonts, LoadFonts, FreeFonts */
 #include <Lionhead/LH3DLib/development/LH3DAtmos.h>         /* For LH3DAtmos */
 #include <Lionhead/LH3DLib/development/LH3DLevelOfDetail.h> /* For LH3DLevelOfDetail */
-#include <Lionhead/LH3DLib/development/LH3DP3.h>            /* For LH3DP3::HasSSE2 */
+#include <Lionhead/LH3DLib/development/LH3DP3.h>            /* For HasSSE2 */
 #include <Lionhead/LH3DLib/development/LH3DRender.h>        /* For LH3DRender */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>          /* For LH3DTech::g_delta_time, Report3D__FPCce */
 #include <Lionhead/LH3DLib/development/LH3DText.h>          /* For GatheringText */
@@ -611,8 +611,8 @@ int pc_main(int argc, char* argv[])
 		InitialiseStartup();
 		SetFPU();
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130) || defined(VERSION_BW1WCI)
-		SavedHasSSE2 = LH3DP3::HasSSE2;
-		SSEFlag = &LH3DP3::HasSSE2;
+		SavedHasSSE2 = HasSSE2;
+		SSEFlag = &HasSSE2;
 #endif
 		slim::TbIME::DisableDefaultIme(LHSys::GetScreen().MsWindowHandle);
 		PlayLogoScreens();

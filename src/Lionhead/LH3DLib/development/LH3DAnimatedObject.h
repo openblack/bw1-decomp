@@ -93,7 +93,8 @@ public:
 	virtual void DrawFroz(float froz_amount, unsigned long froz_color, LH3DMaterial* material);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00834b10 BW1MCI119 010718b0 (LHCombined Release)
-	virtual void DrawPlasma(float, float, float, LH3DMaterial* material, LH3DColor colour, float);
+	virtual void DrawPlasma(float inflate, float explode, float twist, LH3DMaterial* material, LH3DColor colour,
+	                        float shatter);
 #endif
 	// BW1W120 00813190 BW1M119 01077b80 (LHCombined Release)
 	virtual void __fastcall DrawIntoSprite(void* sprite_data);
@@ -105,20 +106,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	LH3DAnimatedObject()
-	{
-		g_count_animated_object++;
-		CurrentAnim = NULL;
-		CurrentCycleTime = 0;
-		LastAnim = NULL;
-		LastCycleTime = 0;
-		BlendFactor = 0.0f;
-		BlendTime = 0;
-		for (int i = 0; i < LH3D_MESH_LOD_LEVEL_LAST; i++)
-		{
-			Meshes[i] = NULL;
-		}
-	}
+	LH3DAnimatedObject();
 
 	// Destructor
 

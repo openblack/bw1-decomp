@@ -1,25 +1,59 @@
 #include "LH3DIsland.h"
 
-#include <Lionhead/LHFile/ver3.0/LHOSFile.h> /* For LHSaveData */
+#include <Lionhead/LHFile/ver3.0/LHOSFile.h>       /* For LHSaveData */
+#include <Lionhead/LHFile/ver3.0/LHReleasedFile.h> /* For LHReleasedFile */
 
-#include "LH3DColor.h"     /* For LH3DColor */
-#include "LH3DLandscape.h" /* For LH3DLandscape */
-#include "LH3DMath.h"      /* For FloatToInt */
-#include "LH3DMaterial.h"  /* For LH3DMaterial */
-#include "LH3DMem.h"       /* For LH3DMem */
-#include "LH3DP3.h"        /* For LH3DP3 */
-#include "LH3DTech.h"      /* For LH3DTech */
-#include "LH3DTexture.h"   /* For LH3DTexture */
-#include "LHTGA.h"         /* For LHTGA */
-#include "MeshLodInfo.h"   /* For MeshLodInfo */
+#include "LH3DCT.h"            /* For LH3DCT */
+#include "LH3DColor.h"         /* For LH3DColor */
+#include "LH3DJustFootPrint.h" /* For LH3DJustFootPrint */
+#include "LH3DLandscape.h"     /* For LH3DLandscape */
+#include "LH3DLevelOfDetail.h" /* For LH3DLevelOfDetail */
+#include "LH3DMath.h"          /* For FloatToInt */
+#include "LH3DMaterial.h"      /* For LH3DMaterial */
+#include "LH3DMem.h"           /* For LH3DMem */
+#include "LH3DP3.h"            /* For LH3DP3 */
+#include "LH3DRender.h"        /* For LH3DRender */
+#include "LH3DTech.h"          /* For LH3DTech */
+#include "LH3DTexture.h"       /* For LH3DTexture */
+#include "LH3DVRAMTex.h"       /* For LH3DVRAMTex */
+#include "LHTGA.h"             /* For LHTGA */
+#include "MeshLodInfo.h"       /* For MeshLodInfo */
+#include "InfluenceCircle.h"   /* For ResetAllWhenLandscapeChange */
+#include "SnowCover.h"         /* For SnowCover */
+#include "TShadowInfo.h"       /* For TShadowInfo */
 
-float LH3DIsland::g_height_unit = 0.67f;
-float LH3DIsland::g_max_fogr = 64.0f;
-float LH3DIsland::g_max_fogg = 64.0f;
-float LH3DIsland::g_max_fogb = 64.0f;
-float LH3DIsland::g_fog_min = 15.0f;
-float LH3DIsland::g_fog_max = 400.0f;
-int   LH3DIsland::g_max_fadefac = 256;
+enum LAND_RAY_CLIP
+{
+	LAND_RAY_CLIP_LOW_X = 0x1,
+	LAND_RAY_CLIP_HIGH_X = 0x2,
+	LAND_RAY_CLIP_LOW_Y = 0x4,
+	LAND_RAY_CLIP_HIGH_Y = 0x8,
+};
+
+struct LandFileHeader
+{
+	int      BlockCount;                                     /* 0x000 */
+	uint8_t  IndexBlock[LAND_BLOCKS_SIDE][LAND_BLOCKS_SIDE]; /* 0x004 */
+	int      MaterialCount;                                  /* 0x404 */
+	int      CountryCount;                                   /* 0x408 */
+	uint32_t BlockSize;                                      /* 0x40c */
+	uint32_t MaterialSize;                                   /* 0x410 */
+	uint32_t CountrySize;                                    /* 0x414 */
+};
+static_assert(sizeof(LandFileHeader) == 0x418, "Data type is of wrong size");
+
+float    LH3DIsland::g_distance_vanish = 700.0f;
+bool32_t LH3DIsland::g_b_use_fog = true;
+bool32_t LH3DIsland::g_b_view_has_changed = true;
+float    LH3DIsland::g_height_unit = 0.67f;
+bool32_t LH3DIsland::g_b_use_small_bump = true;
+float    LH3DIsland::g_max_fogr = 64.0f;
+float    LH3DIsland::g_max_fogg = 64.0f;
+float    LH3DIsland::g_max_fogb = 64.0f;
+float    LH3DIsland::g_fog_min = 15.0f;
+float    LH3DIsland::g_fog_max = 400.0f;
+int      LH3DIsland::g_max_fadefac = 256;
+bool32_t LH3DIsland::g_b_need_rebuild_all = true;
 
 uint16_t MeshLodInfo::g_NORTH_01[24][3] = {
 	{0, 2, 18},   //
@@ -470,20 +504,35 @@ uint16_t MeshLodInfo::g_SOUTH_EAST_12[22][3] = {
 	{218, 220, 252}, //
 };
 
-TextureLOD    LH3DIsland::g_sbump_lod(50.0f, 40.0f);
-TextureLOD    LH3DIsland::g_texture_lod(300.0f, 40.0f);
-LH3DMaterial* LH3DIsland::g_bump_material = NULL;
-LandBlock*    LH3DIsland::g_current_block = NULL;
-uint8_t       LH3DIsland::g_index_block[LAND_BLOCKS_SIDE][LAND_BLOCKS_SIDE];
-float         LH3DIsland::g_fog_delta = g_fog_max - g_fog_min;
-LH3DColor     LH3DIsland::g_max_color_fog((uint8_t)g_max_fogr, (uint8_t)g_max_fogg, (uint8_t)g_max_fogb, 0);
-bool32_t      g_b_dont_do_d3d_activated_texture = false;
-MeshLodInfo   MeshLodInfo::g_mesh_lod_info[MESH_LOD_TYPE_COUNT];
-LandBlock*    LH3DIsland::g_ptr_blocks[LAND_MAX_BLOCKS];
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-float LH3DIsland::g_hitx;
-float LH3DIsland::g_hity;
-#endif
+TextureLOD     LH3DIsland::g_sbump_lod(50.0f, 40.0f);
+TextureLOD     LH3DIsland::g_texture_lod(300.0f, 40.0f);
+MeshLOD        LH3DIsland::g_mesh_red_01(LAND_MESH_LOD_01_DISTANCE, LAND_MESH_LOD_WIDTH);
+MeshLOD        LH3DIsland::g_mesh_red_12(LAND_MESH_LOD_12_DISTANCE, LAND_MESH_LOD_WIDTH);
+char           LH3DIsland::g_name_mnt_to_load[1024];
+LandBlock      LH3DIsland::g_dummy_block;
+LHPoint        LH3DIsland::g_hand_position(2560.0f, 0.0f, 2560.0f);
+float          LH3DIsland::g_fog_delta = g_fog_max - g_fog_min;
+LH3DColor      LH3DIsland::g_max_color_fog((uint8_t)g_max_fogr, (uint8_t)g_max_fogg, (uint8_t)g_max_fogb, 0);
+float          LH3DIsland::g_distance_array[LAND_DISTANCE_ARRAY_SIZE];
+float          LH3DIsland::g_inv_sqr_array[LAND_INV_SQR_ARRAY_SIZE];
+LowResTexture* LowResTexture::g_list[LOW_RES_TEXTURE_MAX];
+MeshLodInfo    MeshLodInfo::g_mesh_lod_info[MESH_LOD_TYPE_COUNT];
+LandBlock*     LH3DIsland::g_ptr_blocks[LAND_MAX_BLOCKS];
+uint8_t        LH3DIsland::g_index_block[LAND_BLOCKS_SIDE][LAND_BLOCKS_SIDE];
+LH3DMaterial*  LH3DIsland::g_bump_material = NULL;
+LH3DTexture*   LH3DIsland::g_bump_texture = NULL;
+LandBlock*     LH3DIsland::g_current_block = NULL;
+int            LH3DIsland::g_block_count = 0;
+bool32_t       LH3DIsland::g_b_do_pre_draw = false;
+bool32_t       LH3DIsland::g_b_already_drawn_island = false;
+bool32_t       LH3DIsland::g_b_created = false;
+float          LH3DIsland::g_hitx = 0.0f;
+float          LH3DIsland::g_hity = 0.0f;
+int            LH3DIsland::g_max_index_country = 0;
+bool32_t       LH3DIsland::g_b_draw_reflection = false;
+bool32_t       LH3DIsland::g_b_use_always_low_texture = false;
+bool32_t       g_b_dont_do_d3d_activated_texture = false;
+int            LowResTexture::g_count = 0;
 
 static inline void* AllocClear(long size)
 {
@@ -505,6 +554,24 @@ static inline void* AllocClear(long size)
 	((((a) & 0xf000) + ((b) & 0xf000)) / 2 & 0xf000 | (((a) & 0xf00) + ((b) & 0xf00)) / 2 & 0xf00 |                    \
 	 (((a) & 0xf0) + ((b) & 0xf0)) / 2 & 0xf0 | (((a) & 0xf) + ((b) & 0xf)) / 2 & 0xf)
 
+void InitBlockInfo(LandBlock* block)
+{
+	block->BeforeMaterial = NULL;
+	block->AfterMaterial = NULL;
+	block->DrawFlags = 0;
+	int       maxAltitude = 0;
+	LandCell* cell = &block->Cells[0][0];
+	for (int i = 0; i < LAND_BLOCK_SIDE_POINTS * LAND_BLOCK_SIDE_POINTS; i++)
+	{
+		if (maxAltitude < cell->altitude)
+		{
+			maxAltitude = cell->altitude;
+		}
+		cell++;
+	}
+	block->MaxAltitude = maxAltitude;
+}
+
 void LH3DIsland::SetFogMinMax(float fog_min, float fog_max)
 {
 	g_fog_min = fog_min;
@@ -519,6 +586,124 @@ void LH3DIsland::SetFogColor(float red, float green, float blue, unsigned long f
 	g_max_fogg = green;
 	g_max_fogb = blue;
 	g_max_color_fog = LH3DColor((uint8_t)red, (uint8_t)green, (uint8_t)blue, 0);
+}
+
+unsigned long LH3DIsland::GetFogValue(const LHPoint* pos, unsigned long specular, unsigned long* color)
+{
+	if (!g_b_use_fog)
+	{
+		return specular;
+	}
+	LHPoint point(pos);
+	float   x = point.x;
+	float   y = point.y;
+	float   z = point.z;
+	point.z = x * LH3DTech::g_world_to_clipping._13 + y * LH3DTech::g_world_to_clipping._23 +
+	          z * LH3DTech::g_world_to_clipping._33 + LH3DTech::g_world_to_clipping._43;
+	float distance = point.z;
+	if (point.z < g_fog_min)
+	{
+		return specular;
+	}
+	if (point.z > g_fog_max)
+	{
+		distance = g_fog_max;
+	}
+	float fog = (distance - g_fog_min) / g_fog_delta;
+	if (color != NULL)
+	{
+		long fade = LAND_WEIGHT_ONE - (unsigned long)((LAND_WEIGHT_ONE - g_max_fadefac) * fog);
+		if (fade < LAND_WEIGHT_ONE)
+		{
+			unsigned long faded = *color;
+			*color = ((((faded & 0xff0000) * fade) & 0xff000000 | ((faded & 0xff00) * fade) & 0xff0000 |
+			           ((faded & 0xff) * fade) & 0xff00) >>
+			          8) |
+			         (faded & 0xff000000);
+		}
+	}
+	unsigned long fogColor =
+		RGBA_MAKE(FloatToInt(g_max_fogr * fog), FloatToInt(g_max_fogg * fog), FloatToInt(g_max_fogb * fog), 0xff);
+	if (specular != 0)
+	{
+		LH3DColor*    spec = (LH3DColor*)&specular;
+		LH3DColor*    fogged = (LH3DColor*)&fogColor;
+		unsigned long red = spec->r + fogged->r;
+		if (red > 0xff)
+		{
+			red = 0xff;
+		}
+		unsigned long green = spec->g + fogged->g;
+		if (green > 0xff)
+		{
+			green = 0xff;
+		}
+		unsigned long blue = spec->b + fogged->b;
+		if (blue > 0xff)
+		{
+			blue = 0xff;
+		}
+		return RGBA_MAKE(red, green, blue, 0xff);
+	}
+	return fogColor;
+}
+
+LowResTexture* LowResTexture::GetNewTexture(long* u, long* v)
+{
+	int found = -1;
+	for (int i = 0; i < g_count; i++)
+	{
+		if (g_list[i] != NULL && g_list[i]->Count != LOW_RES_TEXTURE_TILES)
+		{
+			found = i;
+		}
+	}
+	if (found == -1)
+	{
+		if (g_count == LOW_RES_TEXTURE_MAX * LOW_RES_TEXTURE_TILES)
+		{
+			found = 0;
+		}
+		else
+		{
+			found = g_count;
+			g_list[found] = Create();
+		}
+	}
+	g_list[found]->Count++;
+	int tile = g_list[found]->Count - 1;
+	*u = (tile & (LOW_RES_TEXTURE_TILES_SIDE - 1)) * LOW_RES_TEXTURE_TILE_SIZE;
+	*v = (tile / LOW_RES_TEXTURE_TILES_SIDE) * LOW_RES_TEXTURE_TILE_SIZE;
+	return g_list[found];
+}
+
+LowResTexture* LowResTexture::Create()
+{
+	LowResTexture* texture = (LowResTexture*)AllocClear(sizeof(LowResTexture));
+	texture->Texture = LH3DTexture::Create(NULL, LH3D_TEXTURE_FLAGS_ALPHA | LH3D_TEXTURE_TYPE_SYSTEM_MEMORY,
+	                                       LH3D_TEXTURE_ID_NONE, NULL);
+	texture->Material = LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_OPAQUE,
+	                                               texture->Texture);
+	texture->Index = g_count;
+	g_count++;
+	return texture;
+}
+
+void LowResTexture::Release()
+{
+	if (Texture != NULL)
+	{
+		Texture->Release();
+		Texture = NULL;
+	}
+	if (Material != NULL)
+	{
+		delete Material;
+		Material = NULL;
+	}
+	Count = 0;
+	g_count = 0;
+	LH3DMem::Free(this);
 }
 
 struct Plane
@@ -569,7 +754,11 @@ static inline bool32_t IntersectPlanes(const Plane& plane1, const Plane& plane2,
 
 void TextureLOD::ComputeXLine()
 {
+#ifdef VERSION_BW1WCI
+	static float s_max_height = 300.0f;
+#else
 	static float s_max_height = 165.0f;
+#endif
 
 	float maxHeight = s_max_height * LH3DIsland::g_height_unit;
 	float height = LH3DTech::g_camera.pos.y;
@@ -593,6 +782,176 @@ void MeshLOD::ComputeXLine()
 	pos += *LH3DTech::GetCameraPosition();
 	Plane plane(target.x, target.y, target.z, -pos.DotProductInline(target));
 	Valid = IntersectPlanes(ground, plane, Normal, Point);
+}
+
+void LH3DIsland::PreDraw()
+{
+	if (g_b_do_pre_draw)
+	{
+		return;
+	}
+	LH3DTech::g_current_matrix = &LH3DTech::g_world_to_clipping;
+	g_texture_lod.ComputeXLine();
+	g_mesh_red_01.ComputeXLine();
+	g_mesh_red_12.ComputeXLine();
+	g_sbump_lod.ComputeXLine();
+	int i;
+	for (i = 1; i < g_block_count; i++)
+	{
+		g_ptr_blocks[i]->ComputeInfo();
+	}
+	for (i = 1; i < g_block_count; i++)
+	{
+		g_ptr_blocks[i]->ComputeMeshLodType();
+	}
+	if (g_b_need_rebuild_all)
+	{
+		g_b_need_rebuild_all = false;
+		if (!g_b_use_always_low_texture)
+		{
+			g_b_dont_do_d3d_activated_texture = true;
+			for (i = 1; i < g_block_count; i++)
+			{
+				if (!IsCompressed())
+				{
+					LH3DRender::SetMaterial(g_ptr_blocks[i]->Material, 0);
+				}
+				if (!g_b_use_always_low_texture)
+				{
+					g_ptr_blocks[i]->Texture->ProcessFunc = LH3DLandscape::ProcessTextureInBackground;
+				}
+			}
+			g_b_dont_do_d3d_activated_texture = false;
+		}
+	}
+	LandBlock::g_first_sorting = NULL;
+	for (i = 1; i < g_block_count; i++)
+	{
+		LandBlock* block = g_ptr_blocks[i];
+		if (block->IsVisibleThisFrame())
+		{
+			LandBlock* previous = NULL;
+			LandBlock* next = LandBlock::g_first_sorting;
+			while (next != NULL && next->Distance < block->Distance)
+			{
+				previous = next;
+				next = next->Next;
+			}
+			if (previous != NULL)
+			{
+				previous->Next = block;
+				block->Next = next;
+			}
+			else
+			{
+				block->Next = LandBlock::g_first_sorting;
+				LandBlock::g_first_sorting = block;
+			}
+		}
+	}
+	g_b_do_pre_draw = true;
+}
+
+void LH3DIsland::DrawUnderWater()
+{
+	if (!g_b_draw_reflection)
+	{
+		return;
+	}
+	unsigned long darknessToColor[LAND_CELL_MAX_DARKNESS + 1];
+	LH3DTech::g_current_matrix = &LH3DTech::g_world_to_clipping;
+	PreDraw();
+	g_height_unit *= -1.0f;
+	LandBlock::g_draw_reflection = true;
+	memcpy(darknessToColor, LandCell::g_darkness_to_color, sizeof(darknessToColor));
+	for (int i = 0; i < LAND_CELL_MAX_DARKNESS + 1; i++)
+	{
+		LH3DColor* color = (LH3DColor*)&LandCell::g_darkness_to_color[i];
+		color->b /= 2;
+		color->g /= 2;
+		color->r /= 2;
+	}
+	bool32_t useSmallBump = g_b_use_small_bump;
+	g_b_use_small_bump = false;
+	LandBlock* block = LandBlock::g_first_sorting;
+	while (block != NULL)
+	{
+		if (block->MeshLodZone == LAND_MESH_ZONE_NEAR_TO_MEDIUM || block->MeshLodZone == LAND_MESH_ZONE_MEDIUM_TO_FAR)
+		{
+			g_dummy_block = *block;
+			g_dummy_block.MorphBlock(block->MeshLodZone == LAND_MESH_ZONE_NEAR_TO_MEDIUM);
+			block = &g_dummy_block;
+		}
+		block->Draw();
+		block = block->Next;
+	}
+	g_b_use_small_bump = useSmallBump;
+	g_height_unit *= -1.0f;
+	memcpy(LandCell::g_darkness_to_color, darknessToColor, sizeof(darknessToColor));
+	LandBlock::g_draw_reflection = false;
+}
+
+void LH3DIsland::Draw()
+{
+	LH3DTech::g_current_matrix = &LH3DTech::g_world_to_clipping;
+	PreDraw();
+	g_b_view_has_changed = false;
+	LandBlock* block = LandBlock::g_first_sorting;
+	while (block != NULL)
+	{
+		LandBlock* original = block;
+		if (block->MeshLodZone == LAND_MESH_ZONE_NEAR_TO_MEDIUM || block->MeshLodZone == LAND_MESH_ZONE_MEDIUM_TO_FAR)
+		{
+			g_dummy_block = *block;
+			g_dummy_block.MorphBlock(block->MeshLodZone == LAND_MESH_ZONE_NEAR_TO_MEDIUM);
+			block = &g_dummy_block;
+		}
+		bool32_t drawn = block->Draw();
+		if (drawn)
+		{
+			block->Flags |= LAND_BLOCK_VISIBLE;
+		}
+		else
+		{
+			block->Flags &= ~LAND_BLOCK_VISIBLE;
+		}
+		if (drawn)
+		{
+			original->Flags |= LAND_BLOCK_VISIBLE;
+		}
+		else
+		{
+			original->Flags &= ~LAND_BLOCK_VISIBLE;
+		}
+		if (drawn)
+		{
+			for (TShadowInfo* shadow = TShadowInfo::g_first; shadow != NULL; shadow = shadow->Next)
+			{
+				if (shadow->IsUseable() && block->GridX * LAND_BLOCK_WIDTH <= shadow->Bounds.MaxX &&
+				    (block->GridX + 1) * LAND_BLOCK_WIDTH >= shadow->Bounds.MinX &&
+				    block->GridZ * LAND_BLOCK_WIDTH <= shadow->Bounds.MaxZ &&
+				    (block->GridZ + 1) * LAND_BLOCK_WIDTH >= shadow->Bounds.MinZ)
+				{
+					block->DrawWithDynamicShadow(shadow);
+				}
+			}
+		}
+		if ((block->Flags & LAND_BLOCK_VISIBLE) != ((block->Flags >> 1) & LAND_BLOCK_VISIBLE))
+		{
+			if (block->Flags & LAND_BLOCK_VISIBLE)
+			{
+				original->Flags |= LAND_BLOCK_WAS_VISIBLE;
+			}
+			else
+			{
+				original->Flags &= ~LAND_BLOCK_WAS_VISIBLE;
+			}
+			g_b_view_has_changed = true;
+		}
+		block = block->Next;
+	}
+	g_b_do_pre_draw = false;
+	g_b_already_drawn_island = true;
 }
 
 bool32_t TouchesSea(uint8_t* map, long x, long z)
@@ -684,6 +1043,7 @@ void RaiseCornersTo(uint8_t* map, long x, long z, uint8_t altitude)
 	}
 }
 
+#ifndef VERSION_BW1W100
 uint8_t __fastcall GetHighestCorner(uint8_t* map, long x, long z)
 {
 	map += x * LAND_MAP_SIZE + z;
@@ -723,6 +1083,7 @@ uint8_t __fastcall GetLowestCorner(uint8_t* map, long x, long z)
 }
 
 void SmoothCoast() {}
+#endif
 
 void LH3DIsland::AdjustAlti(void* data)
 {
@@ -1119,6 +1480,11 @@ void __fastcall LowResTexture::UpdateSmallTexture(LandBlock* block, uint16_t* de
 	}
 }
 
+void LH3DIsland::SetFileToLoad(char* name)
+{
+	strncpy(g_name_mnt_to_load, name, sizeof(g_name_mnt_to_load));
+}
+
 bool32_t LH3DIsland::RayCastFrom2DPoint(const LHCoord& point, float* x, float* z, bool from_near_plane,
                                         float near_distance)
 {
@@ -1257,6 +1623,7 @@ void LH3DIsland::SetHeightAsByte(long x, long z, long height)
 	g_ptr_blocks[block]->SetNeedUpdate();
 }
 
+#ifndef VERSION_BW1W100
 void LH3DIsland::SetColor(long x, long z, uint8_t color)
 {
 	if (x < 0 || x > LAND_MAP_MAX || z < 0 || z > LAND_MAP_MAX)
@@ -1383,6 +1750,269 @@ bool32_t LH3DIsland::GetCountry(long x, long z, uint8_t& country)
 	country = g_ptr_blocks[block]->Cells[x & LAND_BLOCK_MASK][z & LAND_BLOCK_MASK].GetCountry();
 	return true;
 }
+#endif
+
+#ifndef VERSION_BW1W100
+void LH3DIsland::SetCountry(long x, long z, long country)
+{
+	if (country > g_max_index_country)
+	{
+		return;
+	}
+	if (x < 0 || x > LAND_MAP_MAX || z < 0 || z > LAND_MAP_MAX)
+	{
+		return;
+	}
+	long cellX = x & LAND_BLOCK_MASK;
+	long cellZ = z & LAND_BLOCK_MASK;
+	long offset;
+	int  block;
+	if (cellX != 0)
+	{
+		if (cellZ != 0)
+		{
+			block = g_index_block[0][((x >> 4) << 5) + (z >> 4)];
+			if (block == 0)
+			{
+				return;
+			}
+			g_ptr_blocks[block]->Cells[cellX][cellZ].SetCountry(country);
+			g_ptr_blocks[block]->SetNeedUpdate();
+			return;
+		}
+		offset = ((x >> 4) << 5) + (z >> 4);
+		block = g_index_block[0][offset];
+		if (block != 0)
+		{
+			g_ptr_blocks[block]->Cells[cellX][0].SetCountry(country);
+			g_ptr_blocks[block]->SetNeedUpdate();
+		}
+		if (z == 0)
+		{
+			return;
+		}
+		block = g_index_block[0][offset - 1];
+		if (block == 0)
+		{
+			return;
+		}
+		g_ptr_blocks[block]->Cells[cellX][LAND_MESH_LOD_0_CELLS].SetCountry(country);
+		g_ptr_blocks[block]->SetNeedUpdate();
+		return;
+	}
+	if (cellZ != 0)
+	{
+		offset = ((x >> 4) << 5) + (z >> 4);
+		block = g_index_block[0][offset];
+		if (block != 0)
+		{
+			g_ptr_blocks[block]->Cells[0][cellZ].SetCountry(country);
+			g_ptr_blocks[block]->SetNeedUpdate();
+		}
+		if (x == 0)
+		{
+			return;
+		}
+		block = g_index_block[0][offset - LAND_BLOCKS_SIDE];
+		if (block == 0)
+		{
+			return;
+		}
+		g_ptr_blocks[block]->Cells[LAND_MESH_LOD_0_CELLS][cellZ].SetCountry(country);
+		g_ptr_blocks[block]->SetNeedUpdate();
+		return;
+	}
+	offset = x * (LAND_BLOCKS_SIDE / LAND_MESH_LOD_0_CELLS) + (z >> 4);
+	block = g_index_block[0][offset];
+	if (block != 0)
+	{
+		g_ptr_blocks[block]->Cells[0][0].SetCountry(country);
+		g_ptr_blocks[block]->SetNeedUpdate();
+	}
+	if (x != 0)
+	{
+		block = g_index_block[0][offset - LAND_BLOCKS_SIDE];
+		if (block != 0)
+		{
+			g_ptr_blocks[block]->Cells[LAND_MESH_LOD_0_CELLS][0].SetCountry(country);
+			g_ptr_blocks[block]->SetNeedUpdate();
+		}
+		if (z == 0)
+		{
+			return;
+		}
+		block = g_index_block[0][offset - 1];
+		if (block != 0)
+		{
+			g_ptr_blocks[block]->Cells[0][LAND_MESH_LOD_0_CELLS].SetCountry(country);
+			g_ptr_blocks[block]->SetNeedUpdate();
+		}
+		block = g_index_block[0][offset - LAND_BLOCKS_SIDE - 1];
+		if (block == 0)
+		{
+			return;
+		}
+		g_ptr_blocks[block]->Cells[LAND_MESH_LOD_0_CELLS][LAND_MESH_LOD_0_CELLS].SetCountry(country);
+		g_ptr_blocks[block]->SetNeedUpdate();
+		return;
+	}
+	if (z == 0)
+	{
+		return;
+	}
+	block = g_index_block[0][offset - 1];
+	if (block == 0)
+	{
+		return;
+	}
+	g_ptr_blocks[block]->Cells[0][LAND_MESH_LOD_0_CELLS].SetCountry(country);
+	g_ptr_blocks[block]->SetNeedUpdate();
+}
+
+void LH3DIsland::RequestUpdateAllTextures()
+{
+	for (int i = 1; i < g_block_count; i++)
+	{
+		g_ptr_blocks[i]->SetNeedUpdate();
+	}
+}
+#endif
+
+void LH3DIsland::LoadFromDisk(char* name)
+{
+	CreateCommonPart();
+	uint32_t length = 0;
+	LHFileLength(name, &length);
+	uint8_t* data = (uint8_t*)LH3DMem::Alloc(length);
+	LHLoadData(name, data, length, NULL);
+	LandFileHeader* header = (LandFileHeader*)data;
+	g_block_count = header->BlockCount;
+	int countryCount = header->CountryCount;
+	int materialCount = header->MaterialCount;
+	memcpy(g_index_block, header->IndexBlock, sizeof(g_index_block));
+	uint8_t* buffer = LowResTexture::LoadThemAll(data + sizeof(LandFileHeader));
+	int      i;
+	for (i = 1; i < g_block_count; i++)
+	{
+		LandBlock* block = (LandBlock*)AllocClear(sizeof(LandBlock));
+		g_ptr_blocks[i] = block;
+		memcpy(block, buffer, sizeof(LandBlock));
+		memset(&block->NeedClipping, 0, (char*)&block->Texture - (char*)&block->NeedClipping);
+		block->SmallTextureUpdated = false;
+		if (!g_b_use_always_low_texture)
+		{
+			char textureName[LAND_BLOCK_TEXTURE_NAME_LENGTH];
+			sprintf(textureName, "Block%d", i);
+			block->Texture = LH3DTexture::Create(textureName, LH3D_TEXTURE_FLAGS_ALPHA | LH3D_TEXTURE_TYPE_NAMED,
+			                                     block->Index, NULL);
+			block->Texture->ProcessFunc = LH3DLandscape::ProcessTexture;
+			block->Material = LH3DRender::CreateMaterial(
+				LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_OPAQUE, block->Texture);
+		}
+		else
+		{
+			block->Texture = NULL;
+			block->Material = NULL;
+		}
+		block->LowRes = LowResTexture::GetTexture((long)block->LowRes);
+		block->SmallTextureUpdated = false;
+		InitBlockInfo(block);
+		buffer += sizeof(LandBlock);
+	}
+	for (i = 0; i < countryCount; i++)
+	{
+		LH3DLandscape::g_list_country[i] = (LH3DLandscape::Country*)AllocClear(sizeof(LH3DLandscape::Country));
+		memcpy(LH3DLandscape::g_list_country[i], buffer, sizeof(LH3DLandscape::Country));
+		buffer += sizeof(LH3DLandscape::Country);
+	}
+	for (i = 0; i < materialCount; i++)
+	{
+		if (g_b_use_always_low_texture)
+		{
+			LH3DLandscape::g_list_material[i] = NULL;
+			LH3DLandscape::g_list_terrain_type[i] = ((LH3DLandscape::Material*)buffer)->Type;
+		}
+		else
+		{
+			LH3DLandscape::g_list_material[i] = (LH3DLandscape::Material*)AllocClear(sizeof(LH3DLandscape::Material));
+			memcpy(LH3DLandscape::g_list_material[i], buffer, sizeof(LH3DLandscape::Material));
+		}
+		buffer += sizeof(LH3DLandscape::Material);
+	}
+	if (!g_b_use_always_low_texture)
+	{
+		memcpy(LH3DLandscape::g_noise_bitmap, buffer, LH3D_LANDSCAPE_BITMAP_SIZE);
+		memcpy(LH3DLandscape::g_bump, buffer + LH3D_LANDSCAPE_BITMAP_SIZE, LH3D_LANDSCAPE_BITMAP_SIZE);
+	}
+	LH3DMem::Free(data);
+}
+
+void LH3DIsland::SaveOnDisk(char* name)
+{
+	LandFileHeader header;
+	int            materialCount = 0;
+	int            countryCount = 0;
+	int            i;
+	for (i = 0; i < LH3D_LANDSCAPE_MAX_MATERIALS; i++)
+	{
+		if (LH3DLandscape::g_list_material[i] != NULL)
+		{
+			materialCount++;
+		}
+	}
+	for (i = 0; i < LH3D_LANDSCAPE_MAX_COUNTRIES; i++)
+	{
+		if (LH3DLandscape::g_list_country[i] != NULL)
+		{
+			countryCount++;
+		}
+	}
+	header.BlockCount = g_block_count;
+	header.CountryCount = countryCount;
+	header.MaterialCount = materialCount;
+	memcpy(header.IndexBlock, g_index_block, sizeof(header.IndexBlock));
+	header.BlockSize = sizeof(LandBlock);
+	header.MaterialSize = sizeof(LH3DLandscape::Material);
+	header.CountrySize = sizeof(LH3DLandscape::Country);
+	uint32_t size = sizeof(LandFileHeader) + g_block_count * sizeof(LandBlock) +
+	                countryCount * sizeof(LH3DLandscape::Country) +
+	                LowResTexture::g_count * (sizeof(LowResTexture) + LOW_RES_TEXTURE_SAVED_SIZE) +
+	                materialCount * sizeof(LH3DLandscape::Material) + 2 * LH3D_LANDSCAPE_BITMAP_SIZE;
+	uint8_t* data = (uint8_t*)LH3DMem::AllocClear(size);
+	memcpy(data, &header, sizeof(header));
+	uint8_t* buffer = LowResTexture::SaveThemAll(data + sizeof(LandFileHeader));
+	for (i = 1; i < g_block_count; i++)
+	{
+		if (g_ptr_blocks[i] != NULL)
+		{
+			LowResTexture* lowRes = g_ptr_blocks[i]->LowRes;
+			g_ptr_blocks[i]->LowRes = (LowResTexture*)lowRes->Index;
+			memcpy(buffer, g_ptr_blocks[i], sizeof(LandBlock));
+			g_ptr_blocks[i]->LowRes = lowRes;
+			buffer += sizeof(LandBlock);
+		}
+	}
+	for (i = 0; i < countryCount; i++)
+	{
+		if (LH3DLandscape::g_list_country[i] != NULL)
+		{
+			memcpy(buffer, LH3DLandscape::g_list_country[i], sizeof(LH3DLandscape::Country));
+			buffer += sizeof(LH3DLandscape::Country);
+		}
+	}
+	for (i = 0; i < LH3D_LANDSCAPE_MAX_MATERIALS; i++)
+	{
+		if (LH3DLandscape::g_list_material[i] != NULL)
+		{
+			memcpy(buffer, LH3DLandscape::g_list_material[i], sizeof(LH3DLandscape::Material));
+			buffer += sizeof(LH3DLandscape::Material);
+		}
+	}
+	memcpy(buffer, LH3DLandscape::g_noise_bitmap, LH3D_LANDSCAPE_BITMAP_SIZE);
+	memcpy(buffer + LH3D_LANDSCAPE_BITMAP_SIZE, LH3DLandscape::g_bump, LH3D_LANDSCAPE_BITMAP_SIZE);
+	LHSaveData(name, data, size, NULL);
+	LH3DMem::Free(data);
+}
 
 bool32_t LH3DIsland::BuildSoundTGA(char* name)
 {
@@ -1405,7 +2035,7 @@ bool32_t LH3DIsland::BuildSoundTGA(char* name)
 				if (surface != NULL)
 				{
 					long dest = (x * LAND_MAP_SIZE + z) * LAND_MESH_LOD_0_CELLS;
-					long source = (block->LowResPixelV << 8) + block->LowResPixelU;
+					long source = block->LowResPixelV * LOW_RES_TEXTURE_SIZE + block->LowResPixelU;
 					for (int j = 0; j < LAND_MESH_LOD_0_CELLS; j++)
 					{
 						for (int i = 0; i < LAND_MESH_LOD_0_CELLS; i++)
@@ -1433,11 +2063,13 @@ bool32_t LH3DIsland::BuildSoundTGA(char* name)
 
 void LH3DIsland::GetColorAndSpecular(const LHPoint* pos, unsigned long* color, unsigned long* specular)
 {
+#ifndef VERSION_BW1W100
 	if (LH3DTech::g_b_P3)
 	{
 		LH3DP3::GetColorAndSpecularWrapper(pos, color, specular);
 		return;
 	}
+#endif
 	long      cellX = (long)(pos->x / MAP_COORDS_METRES_PER_CELL);
 	long      cellZ = (long)(pos->z / MAP_COORDS_METRES_PER_CELL);
 	LandCell* cell = GetCell(cellX, cellZ);
@@ -1471,11 +2103,13 @@ void LH3DIsland::GetColorAndSpecular(const LHPoint* pos, unsigned long* color, u
 
 void LH3DIsland::GetColorAndSpecular(const LH3DMapCoords& coords, unsigned long* color, unsigned long* specular)
 {
+#ifndef VERSION_BW1W100
 	if (LH3DTech::g_b_P3)
 	{
 		LH3DP3::GetColorAndSpecularWrapper(coords, color, specular);
 		return;
 	}
+#endif
 	LandCell* cell = GetCell(coords.MapX(), coords.MapZ());
 	if (cell != NULL)
 	{
@@ -1501,6 +2135,42 @@ void LH3DIsland::GetColorAndSpecular(const LH3DMapCoords& coords, unsigned long*
 		*color = LandCell::g_darkness_to_color[LAND_CELL_MAX_DARKNESS];
 		*specular = 0xff000000;
 	}
+}
+
+bool32_t __fastcall LH3DIsland::RayCast(const LHPoint& from, const LHPoint& to, float* x, float* z)
+{
+	if (RayCastInternal(from.x / LAND_CELL_SIZE, from.z / LAND_CELL_SIZE, from.y / g_height_unit, to.x / LAND_CELL_SIZE,
+	                    to.z / LAND_CELL_SIZE, to.y / g_height_unit))
+	{
+		*x = g_hitx * LAND_CELL_SIZE;
+		*z = g_hity * LAND_CELL_SIZE;
+		return true;
+	}
+	if (to.y > from.y)
+	{
+		return false;
+	}
+	float dy = to.y - from.y;
+	if ((float)fabs(dy) < LAND_RAY_CAST_EPSILON)
+	{
+		return false;
+	}
+	float t = -(from.y / dy);
+	*x = (to.x - from.x) * t + from.x;
+	*z = (to.z - from.z) * t + from.z;
+	Point2D hit;
+	hit.x = *x;
+	hit.y = *z;
+	Point2D camera;
+	camera.x = LH3DTech::GetCameraPosition()->x;
+	camera.y = LH3DTech::GetCameraPosition()->z;
+	float dz = hit.y - camera.y;
+	float dx = hit.x - camera.x;
+	if (dx * dx + dz * dz > LAND_RAY_CAST_SEA_RANGE * LAND_RAY_CAST_SEA_RANGE)
+	{
+		return false;
+	}
+	return true;
 }
 
 bool32_t __stdcall LH3DIsland::RayCastInternal(float from_x, float from_y, float from_z, float to_x, float to_y,
@@ -2230,6 +2900,665 @@ float __fastcall LH3DIsland::GetAltitudeAndSetColorSpecular(const LH3DMapCoords&
 	return altitude * g_height_unit * (1.0f / LAND_WEIGHT_ONE);
 }
 
+void __fastcall LH3DIsland::GetNormal(const LH3DMapCoords& coords, LHPoint* normal)
+{
+	if (!IsOnMap(coords))
+	{
+		normal->Set(0.0f, 1.0f, 0.0f);
+		return;
+	}
+	LandCell* cell = GetCell(coords);
+	if (cell == NULL)
+	{
+		normal->Set(0.0f, 1.0f, 0.0f);
+		return;
+	}
+	float x0;
+	float z0;
+	float z1;
+	float z2;
+	int   altitude0;
+	int   altitude1;
+	int   altitude2;
+	if (cell->Flags & LAND_CELL_SPLIT)
+	{
+		z1 = 0.0f;
+		altitude1 = cell[LAND_BLOCK_SIDE_POINTS].altitude;
+		altitude2 = cell[1].altitude;
+		z2 = LAND_CELL_SIZE;
+		if (coords.BlockZ() > MAP_COORDS_FRACTION_MAX - coords.BlockX())
+		{
+			x0 = LAND_CELL_SIZE;
+			altitude0 = cell[LAND_BLOCK_SIDE_POINTS + 1].altitude;
+			z0 = LAND_CELL_SIZE;
+		}
+		else
+		{
+			x0 = 0.0f;
+			altitude0 = cell[0].altitude;
+			z0 = 0.0f;
+		}
+	}
+	else
+	{
+		z1 = LAND_CELL_SIZE;
+		altitude2 = cell[0].altitude;
+		altitude1 = cell[LAND_BLOCK_SIDE_POINTS + 1].altitude;
+		z2 = 0.0f;
+		if (coords.BlockX() > coords.BlockZ())
+		{
+			x0 = LAND_CELL_SIZE;
+			altitude0 = cell[LAND_BLOCK_SIDE_POINTS].altitude;
+			z0 = 0.0f;
+		}
+		else
+		{
+			x0 = 0.0f;
+			altitude0 = cell[1].altitude;
+			z0 = LAND_CELL_SIZE;
+		}
+	}
+	int     dy1 = altitude1 - altitude0;
+	int     dy2 = altitude2 - altitude0;
+	float   scale = g_distance_array[abs(dy1)] * g_distance_array[abs(dy2)];
+	LHPoint a;
+	LHPoint b;
+	a.x = 0.0f - x0;
+	a.y = dy2 * g_height_unit;
+	a.z = z2 - z0;
+	b.x = LAND_CELL_SIZE - x0;
+	b.y = dy1 * g_height_unit;
+	b.z = z1 - z0;
+	normal->CrossProduct(a, b);
+	normal->Mul(scale);
+	normal->Mul(g_inv_sqr_array[FloatToInt(normal->GetNorm() * (LAND_INV_SQR_ARRAY_SIZE - 1))]);
+	if (normal->y < 0.0f)
+	{
+		normal->x = -normal->x;
+		normal->y = -normal->y;
+		normal->z = -normal->z;
+	}
+}
+
+static inline uint16_t HalveMeshIndex(uint16_t index)
+{
+	return (index - (index / LAND_BLOCK_SIDE_POINTS) * (LAND_BLOCK_SIDE_POINTS - (LAND_MESH_LOD_1_CELLS + 1))) / 2;
+}
+
+void LH3DIsland::CreateCommonPart()
+{
+	if (g_b_created)
+	{
+		Release();
+	}
+	g_b_created = true;
+	g_b_need_rebuild_all = true;
+	LH3DLandscape::Create();
+	if (LH3DRender::b_open)
+	{
+		if (g_b_use_small_bump)
+		{
+			CreateSmallBump();
+		}
+		else
+		{
+			ReleaseSmallBump();
+		}
+	}
+	LowResTexture::Open();
+	SnowCover::Reset();
+	int i;
+	for (i = 0; i < LAND_DISTANCE_ARRAY_SIZE; i++)
+	{
+		LandCell::g_darkness_to_color[i] = RGBA_MAKE(i, i, i, 0xff);
+		LandCell::g_darkness[i] = i;
+		g_distance_array[i] =
+			1.0f / (float)sqrt((i * g_height_unit) * (i * g_height_unit) + LAND_CELL_SIZE * LAND_CELL_SIZE);
+	}
+	g_inv_sqr_array[0] = 1.0f;
+	for (i = 1; i < LAND_INV_SQR_ARRAY_SIZE; i++)
+	{
+		g_inv_sqr_array[i] = 1.0 / sqrt(i * (1.0f / (LAND_INV_SQR_ARRAY_SIZE - 1)));
+	}
+	static bool32_t s_first_time = true;
+	if (s_first_time)
+	{
+		s_first_time = false;
+		for (i = 0; i < MESH_LOD_TYPE_COUNT; i++)
+		{
+			MeshLodInfo::g_mesh_lod_info[i].East = false;
+			MeshLodInfo::g_mesh_lod_info[i].West = false;
+			MeshLodInfo::g_mesh_lod_info[i].South = false;
+			MeshLodInfo::g_mesh_lod_info[i].North = false;
+			MeshLodInfo::g_mesh_lod_info[i].HasBorder = false;
+			MeshLodInfo::g_mesh_lod_info[i].Reserved = false;
+		}
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_NORTH].North = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_NORTH].HasBorder = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_SOUTH].South = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_SOUTH].HasBorder = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_WEST].West = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_WEST].HasBorder = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_EAST].East = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_EAST].HasBorder = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_NORTH | MESH_LOD_EAST].North = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_NORTH | MESH_LOD_EAST].East = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_NORTH | MESH_LOD_EAST].HasBorder = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_NORTH | MESH_LOD_WEST].North = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_NORTH | MESH_LOD_WEST].West = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_NORTH | MESH_LOD_WEST].HasBorder = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_SOUTH | MESH_LOD_WEST].South = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_SOUTH | MESH_LOD_WEST].West = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_SOUTH | MESH_LOD_WEST].HasBorder = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_SOUTH | MESH_LOD_EAST].South = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_SOUTH | MESH_LOD_EAST].East = true;
+		MeshLodInfo::g_mesh_lod_info[MESH_LOD_SOUTH | MESH_LOD_EAST].HasBorder = true;
+		for (i = 0; i < (int)(sizeof(MeshLodInfo::g_NORTH_12) / sizeof(MeshLodInfo::g_NORTH_12[0][0])); i++)
+		{
+			MeshLodInfo::g_NORTH_12[0][i] = HalveMeshIndex(MeshLodInfo::g_NORTH_12[0][i]);
+			MeshLodInfo::g_SOUTH_12[0][i] = HalveMeshIndex(MeshLodInfo::g_SOUTH_12[0][i]);
+			MeshLodInfo::g_WEST_12[0][i] = HalveMeshIndex(MeshLodInfo::g_WEST_12[0][i]);
+			MeshLodInfo::g_EAST_12[0][i] = HalveMeshIndex(MeshLodInfo::g_EAST_12[0][i]);
+		}
+		for (i = 0; i < (int)(sizeof(MeshLodInfo::g_NORTH_WEST_12) / sizeof(MeshLodInfo::g_NORTH_WEST_12[0][0])); i++)
+		{
+			MeshLodInfo::g_NORTH_WEST_12[0][i] = HalveMeshIndex(MeshLodInfo::g_NORTH_WEST_12[0][i]);
+			MeshLodInfo::g_NORTH_EAST_12[0][i] = HalveMeshIndex(MeshLodInfo::g_NORTH_EAST_12[0][i]);
+			MeshLodInfo::g_SOUTH_WEST_12[0][i] = HalveMeshIndex(MeshLodInfo::g_SOUTH_WEST_12[0][i]);
+			MeshLodInfo::g_SOUTH_EAST_12[0][i] = HalveMeshIndex(MeshLodInfo::g_SOUTH_EAST_12[0][i]);
+		}
+	}
+	memset(g_ptr_blocks, 0, sizeof(g_ptr_blocks));
+	memset(g_index_block, 0, sizeof(g_index_block));
+	g_block_count = 1;
+}
+
+uint32_t LH3DIsland::Create()
+{
+	if (LH3DLevelOfDetail::g_detail_idx == 4)
+	{
+		g_texture_lod.SetParameters(LAND_TEXTURE_LOD_HIGH_DETAIL_DISTANCE, LAND_TEXTURE_LOD_HIGH_DETAIL_WIDTH);
+	}
+#ifndef VERSION_BW1W100
+	if (IsP4Improvement())
+	{
+		if (LH3DVRAMTex::g_count > LAND_TEXTURE_LOD_P4_LARGE_VRAM)
+		{
+			g_texture_lod.SetParameters(LAND_TEXTURE_LOD_P4_LARGE_VRAM_DISTANCE, LAND_TEXTURE_LOD_P4_WIDTH);
+		}
+		else if (LH3DVRAMTex::g_count > LAND_TEXTURE_LOD_P4_MEDIUM_VRAM)
+		{
+			g_texture_lod.SetParameters(LAND_TEXTURE_LOD_P4_MEDIUM_VRAM_DISTANCE, LAND_TEXTURE_LOD_P4_WIDTH);
+		}
+		else if (LH3DVRAMTex::g_count > LAND_TEXTURE_LOD_P4_SMALL_VRAM)
+		{
+			g_texture_lod.SetParameters(LAND_TEXTURE_LOD_P4_SMALL_VRAM_DISTANCE, LAND_TEXTURE_LOD_P4_WIDTH);
+		}
+		g_mesh_red_01.SetParameters(LAND_MESH_LOD_P4_01_DISTANCE, LAND_MESH_LOD_P4_WIDTH);
+		g_mesh_red_12.SetParameters(LAND_MESH_LOD_P4_12_DISTANCE, LAND_MESH_LOD_P4_WIDTH);
+	}
+#endif
+	ResetAllWhenLandscapeChange();
+	if (IsCompressed())
+	{
+		LoadFromDisk(g_name_mnt_to_load);
+		return true;
+	}
+	if (g_b_use_always_low_texture)
+	{
+		g_b_use_always_low_texture = false;
+	}
+	CreateCommonPart();
+	LHReleasedFile file(g_name_mnt_to_load);
+	file.Open(LH_FILE_MODE_READ_ONLY);
+	LHSegment segment;
+	uint8_t*  soundMap = NULL;
+	if (file.GetSegment("LH_FILE_NEW_COUNTRY_MASK_SEGMENT", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
+	{
+		return false;
+	}
+	uint8_t* blockMask = (uint8_t*)LH3DMem::AllocClear(LAND_BLOCKS_SIDE * LAND_BLOCKS_SIDE);
+	memcpy(blockMask, segment.buffer, LAND_BLOCKS_SIDE * LAND_BLOCKS_SIDE);
+	if (file.GetSegment("LH_FILE_NEW_HEIGHT_SEGMENT", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
+	{
+		return false;
+	}
+	uint8_t* heightMap = (uint8_t*)LH3DMem::AllocClear(LAND_MAP_POINTS);
+	memcpy(heightMap, segment.buffer, LAND_MAP_SIZE * LAND_MAP_SIZE);
+	int      i;
+	uint8_t* mask = blockMask;
+	for (i = 0; i < LAND_BLOCKS_SIDE; i++)
+	{
+		for (int j = 0; j < LAND_BLOCKS_SIDE; j++)
+		{
+			if (*mask == 0)
+			{
+				for (int line = 0; line < LAND_MESH_LOD_0_CELLS; line++)
+				{
+					memset(&heightMap[(i * LAND_MAP_SIZE + j) * LAND_MESH_LOD_0_CELLS + line * LAND_MAP_SIZE], 0,
+					       LAND_MESH_LOD_0_CELLS);
+				}
+			}
+			mask++;
+		}
+	}
+	AdjustAlti(heightMap);
+	if (file.GetSegment("LH_FILE_NEW_LIGHT_SEGMENT", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
+	{
+		return false;
+	}
+	uint8_t* lightMap = (uint8_t*)LH3DMem::AllocClear(LAND_MAP_POINTS);
+	memcpy(lightMap, segment.buffer, LAND_MAP_SIZE * LAND_MAP_SIZE);
+	if (file.GetSegment("LH_FILE_NEW_COUNTRY_SEGMENT", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
+	{
+		return false;
+	}
+	uint8_t* countryMap = (uint8_t*)LH3DMem::AllocClear(LAND_MAP_POINTS);
+	memcpy(countryMap, segment.buffer, LAND_MAP_SIZE * LAND_MAP_SIZE);
+	if (file.GetSegment("LH_FILE_NOISE_BITMAP", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
+	{
+		return false;
+	}
+	LH3DLandscape::SetNoiseMaps(segment.buffer);
+	if (file.GetSegment("LH_FILE_COUNTRIES_MATERIALS_BLEN", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
+	{
+		return false;
+	}
+	LH3DLandscape::SetCountries(segment.buffer);
+	if (file.GetSegment("LH_FILE_MATERIALS_RAW", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
+	{
+		return false;
+	}
+	LH3DLandscape::SetMaterials(segment.buffer);
+	if (file.GetSegment("LH_FILE_BUMP", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
+	{
+		return false;
+	}
+	LH3DLandscape::SetBump(segment.buffer);
+	if (file.GetSegment("LH_FILE_FLAGS", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
+	{
+		LH3DLandscape::g_town_index = 0;
+		LH3DLandscape::g_filed_index = 0;
+	}
+	else
+	{
+		LH3DLandscape::g_filed_index = ((unsigned long*)segment.buffer)[0];
+		LH3DLandscape::g_town_index = ((unsigned long*)segment.buffer)[1];
+	}
+	if (file.GetSegment("LH_FILE_SOUND_MAP", &segment, true) != LH_FILE_RESULT_NOT_FOUND)
+	{
+		soundMap = (uint8_t*)LH3DMem::AllocClear(LAND_MAP_POINTS);
+		memcpy(soundMap, segment.buffer, LAND_MAP_SIZE * LAND_MAP_SIZE);
+	}
+	file.FreeLastSeg();
+	file.Close();
+	for (uint32_t x = 0; x < LAND_BLOCKS_SIDE; x++)
+	{
+		for (uint32_t z = 0; z < LAND_BLOCKS_SIDE; z++)
+		{
+			if (blockMask[x * LAND_BLOCKS_SIDE + z] != 0)
+			{
+				long     offset = (x * LAND_MAP_SIZE + z) * LAND_MESH_LOD_0_CELLS;
+				uint8_t* heights = &heightMap[offset];
+				bool32_t notEmpty = false;
+				int      k;
+				int      l;
+				for (k = 0; k < LAND_BLOCK_SIDE_POINTS; k++)
+				{
+					for (l = 0; l < LAND_BLOCK_SIDE_POINTS; l++)
+					{
+						if (heights[k * LAND_MAP_SIZE + l] != 0)
+						{
+							notEmpty = true;
+						}
+					}
+				}
+				if (!notEmpty)
+				{
+					char text[256];
+					sprintf(text, "JC: Block completely empty (%d,%d)", x, z);
+				}
+				else if (g_block_count < LAND_MAX_BLOCKS)
+				{
+					LandBlock* block = (LandBlock*)LH3DMem::AllocClear(sizeof(LandBlock));
+					g_ptr_blocks[g_block_count] = block;
+					block->X = x * LAND_BLOCK_WIDTH;
+					block->Z = z * LAND_BLOCK_WIDTH;
+					block->Index = g_block_count;
+					g_index_block[x][z] = g_block_count;
+					block->GridX = x;
+					block->GridZ = z;
+					if (!g_b_use_always_low_texture)
+					{
+						char textureName[LAND_BLOCK_TEXTURE_NAME_LENGTH];
+						sprintf(textureName, "Block%d", g_block_count);
+						block->Texture = LH3DTexture::Create(
+							textureName, LH3D_TEXTURE_FLAGS_ALPHA | LH3D_TEXTURE_TYPE_NAMED, block->Index, NULL);
+						block->Texture->ProcessFunc = LH3DLandscape::ProcessTexture;
+						block->Material = LH3DRender::CreateMaterial(
+							LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_OPAQUE, block->Texture);
+					}
+					else
+					{
+						block->Texture = NULL;
+						block->Material = NULL;
+					}
+					block->LowRes = LowResTexture::GetNewTexture(&block->LowResPixelU, &block->LowResPixelV);
+					block->SmallTextureUpdated = false;
+					block->LowResU = block->LowResPixelU * (1.0f / LOW_RES_TEXTURE_SIZE);
+					block->LowResV = block->LowResPixelV * (1.0f / LOW_RES_TEXTURE_SIZE);
+					for (k = 0; k < LAND_BLOCK_SIDE_POINTS; k++)
+					{
+						for (l = 0; l < LAND_BLOCK_SIDE_POINTS; l++)
+						{
+							LandCell* cell = &block->Cells[k][l];
+							cell->altitude = heightMap[offset + k * LAND_MAP_SIZE + l];
+							int country = countryMap[offset + k * LAND_MAP_SIZE + l];
+							if (country > g_max_index_country)
+							{
+								country = 0;
+							}
+							cell->SetCountry(country);
+							cell->darkness = lightMap[offset + k * LAND_MAP_SIZE + l];
+							if (cell->darkness < LAND_CELL_MIN_DARKNESS)
+							{
+								cell->darkness = LAND_CELL_MIN_DARKNESS;
+							}
+							cell->SaveColor = cell->darkness;
+						}
+					}
+					for (k = 0; k < LAND_MESH_LOD_0_CELLS; k++)
+					{
+						for (l = 0; l < LAND_MESH_LOD_0_CELLS; l++)
+						{
+							LandCell* cell = &block->Cells[k][l];
+							cell->ComputeSplit();
+							if (cell[0].altitude == 0 && cell[1].altitude == 0 &&
+							    cell[LAND_BLOCK_SIDE_POINTS].altitude == 0 &&
+							    cell[LAND_BLOCK_SIDE_POINTS + 1].altitude == 0)
+							{
+								cell->Flags |= LAND_CELL_SUBMERGED;
+							}
+						}
+					}
+					InitBlockInfo(block);
+					g_block_count++;
+				}
+				else
+				{
+					x = LAND_BLOCKS_SIDE;
+					z = LAND_BLOCKS_SIDE;
+				}
+			}
+		}
+	}
+	int materialCount = 0;
+	while (LH3DLandscape::g_list_material[materialCount] != NULL)
+	{
+		materialCount++;
+	}
+	int countryCount = 0;
+	while (LH3DLandscape::g_list_country[countryCount] != NULL)
+	{
+		countryCount++;
+	}
+	char      text[256];
+	uint32_t* used = (uint32_t*)LH3DMem::AllocClear(countryCount * sizeof(uint32_t));
+	for (i = 0; i < LAND_MAP_SIZE * LAND_MAP_SIZE; i++)
+	{
+		used[countryMap[i]] = true;
+	}
+	for (i = 0; i < countryCount; i++)
+	{
+		if (!used[i])
+		{
+			sprintf(text, "country %d not used", i);
+		}
+	}
+	LH3DMem::Free(used);
+	used = (uint32_t*)LH3DMem::AllocClear(materialCount * sizeof(uint32_t));
+	for (i = 0; i < LH3D_LANDSCAPE_MAX_COUNTRIES; i++)
+	{
+		LH3DLandscape::Country* country = LH3DLandscape::g_list_country[i];
+		if (country != NULL)
+		{
+			for (int altitude = 0; altitude < LH3D_LANDSCAPE_NB_ALTITUDES; altitude++)
+			{
+				used[country->Altitudes[altitude].Material1] = true;
+				used[country->Altitudes[altitude].Material2] = true;
+			}
+		}
+	}
+	for (i = 0; i < materialCount; i++)
+	{
+		if (!used[i])
+		{
+			sprintf(text, "Material %d not used", i);
+		}
+	}
+	LH3DMem::Free(used);
+	Report3D__FPCce("Count mat = %d\n", materialCount);
+	ComputeFlags(soundMap);
+	if (heightMap != NULL)
+	{
+		LH3DMem::Free(heightMap);
+	}
+	if (lightMap != NULL)
+	{
+		LH3DMem::Free(lightMap);
+	}
+	if (blockMask != NULL)
+	{
+		LH3DMem::Free(blockMask);
+	}
+	if (countryMap != NULL)
+	{
+		LH3DMem::Free(countryMap);
+	}
+	if (soundMap != NULL)
+	{
+		LH3DMem::Free(soundMap);
+	}
+	return true;
+}
+
+bool32_t LH3DIsland::Release()
+{
+	if (!g_b_created)
+	{
+		return false;
+	}
+	SnowCover::Reset();
+	g_b_created = false;
+	g_b_need_rebuild_all = true;
+	LowResTexture::Close();
+	ReleaseSmallBump();
+	LH3DLandscape::Release();
+	for (uint32_t i = 0; i < LAND_MAX_BLOCKS; i++)
+	{
+		if (g_ptr_blocks[i] != NULL)
+		{
+			g_ptr_blocks[i]->Release();
+			g_ptr_blocks[i] = NULL;
+		}
+	}
+	LH3DJustFootPrint::ReleaseAll();
+	g_block_count = 0;
+	memset(g_ptr_blocks, 0, sizeof(g_ptr_blocks));
+	memset(g_index_block, 0, sizeof(g_index_block));
+	g_current_block = NULL;
+	g_b_view_has_changed = true;
+	return true;
+}
+
+void LH3DIsland::CreateSmallBump()
+{
+	if (g_bump_texture == NULL)
+	{
+		g_bump_texture =
+			LH3DTexture::Create(".\\data\\Textures\\smallbump.raw", LH3D_TEXTURE_FLAGS_ALPHA | LH3D_TEXTURE_TYPE_FILE,
+		                        LH3D_TEXTURE_ID_NONE, NULL);
+		g_bump_material = LH3DRender::CreateMaterial(
+			LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_OPAQUE, g_bump_texture);
+	}
+}
+
+void LH3DIsland::ReleaseSmallBump()
+{
+	if (g_bump_texture != NULL)
+	{
+		g_bump_texture->Release();
+		g_bump_texture = NULL;
+	}
+	if (g_bump_material != NULL)
+	{
+		delete g_bump_material;
+		g_bump_material = NULL;
+	}
+}
+
+void LowResTexture::Open()
+{
+	memset(g_list, 0, sizeof(g_list));
+	g_count = 0;
+}
+
+void LowResTexture::Close()
+{
+	for (uint32_t i = 0; i < LOW_RES_TEXTURE_MAX; i++)
+	{
+		if (g_list[i] != NULL)
+		{
+			g_list[i]->Release();
+			g_list[i] = NULL;
+		}
+	}
+	g_count = 0;
+}
+
+uint8_t* LowResTexture::SaveThemAll(uint8_t* buffer)
+{
+	*(int*)buffer = g_count;
+	buffer += sizeof(int);
+	for (int i = 0; i < g_count; i++)
+	{
+		LowResTexture* texture = g_list[i];
+		*(LowResTexture*)buffer = *texture;
+		buffer += sizeof(LowResTexture);
+		DDSURFACEDESC2 desc;
+		memset(&desc, 0, sizeof(desc));
+		desc.dwSize = sizeof(desc);
+		GLock(LH3DTexture::g_surface_for_load_4444, NULL, &desc, DDLOCK_WAIT | DDLOCK_WRITEONLY | DDLOCK_NOSYSLOCK,
+		      NULL);
+		long      pitch = desc.lPitch / (long)sizeof(uint16_t);
+		uint16_t* dest = (uint16_t*)desc.lpSurface;
+		uint16_t* source = texture->Texture->SRAMTex->GetSoftSurface();
+		if (dest != NULL && source != NULL)
+		{
+			for (int y = 0; y < LOW_RES_TEXTURE_SIZE; y++)
+			{
+				for (int x = 0; x < LOW_RES_TEXTURE_SIZE; x++)
+				{
+					dest[y * pitch + x] = *source++;
+				}
+			}
+		}
+		LH3DTexture::g_surface_for_load_4444->Unlock(NULL);
+		LH3DCT* ct = LH3DCT::Create(NULL, true);
+		ct->Surface->Blt(NULL, LH3DTexture::g_surface_for_load_4444, NULL, DDBLT_WAIT, NULL);
+		LH3DCT::DataOnDisk* saving = ct->CreateSavingData();
+		memcpy(buffer, saving, saving->Size);
+		buffer += saving->Size;
+		ct->Release();
+	}
+	return buffer;
+}
+
+uint8_t* LowResTexture::LoadThemAll(uint8_t* buffer)
+{
+	if (g_count != 0)
+	{
+		g_count = 0;
+	}
+	int count = *(int*)buffer;
+	buffer += sizeof(int);
+	for (int i = 0; i < count; i++)
+	{
+		LowResTexture* texture = Create();
+		g_list[i] = texture;
+		texture->Count = ((LowResTexture*)buffer)->Count;
+		texture->Index = ((LowResTexture*)buffer)->Index;
+		buffer += sizeof(LowResTexture);
+		LH3DCT* ct = LH3DCT::Create((LH3DCT::DataOnDisk*)buffer, true);
+		buffer += ((LH3DCT::DataOnDisk*)buffer)->Size;
+		LH3DTexture::g_surface_for_load_4444->Blt(NULL, ct->Surface, NULL, DDBLT_WAIT, NULL);
+		ct->Release();
+		DDSURFACEDESC2 desc;
+		memset(&desc, 0, sizeof(desc));
+		desc.dwSize = sizeof(desc);
+		if (LH3DTexture::g_surface_for_load_4444->IsLost())
+		{
+			LH3DTexture::g_surface_for_load_4444->Restore();
+		}
+		GLock(LH3DTexture::g_surface_for_load_4444, NULL, &desc, DDLOCK_WAIT | DDLOCK_WRITEONLY | DDLOCK_NOSYSLOCK,
+		      NULL);
+		uint16_t*    source = (uint16_t*)desc.lpSurface;
+		long         pitch = desc.lPitch / (long)sizeof(uint16_t);
+		LH3DSRAMTex* sram = texture->Texture->SRAMTex;
+		uint16_t*    dest = sram->GetSoftSurface();
+		if (dest != NULL && source != NULL)
+		{
+#ifdef VERSION_BW1W100
+			for (int y = 0; y < sram->Format.GetWidth(); y++)
+#else
+			for (int y = 0; y < sram->Format.GetHeight(); y++)
+#endif
+			{
+				for (int x = 0; x < sram->Format.GetWidth(); x++)
+				{
+					dest[y * sram->Format.GetWidth() + x] = source[y * pitch + x];
+				}
+			}
+		}
+		LH3DTexture::g_surface_for_load_4444->Unlock(NULL);
+		if (LH3DIsland::g_b_use_always_low_texture)
+		{
+			texture->Texture->Compress();
+		}
+	}
+	return buffer;
+}
+
+LowResTexture* LowResTexture::GetTexture(long index)
+{
+	for (int i = 0; i < g_count; i++)
+	{
+		if (index == g_list[i]->Index)
+		{
+			return g_list[i];
+		}
+	}
+	return g_list[0];
+}
+
+bool32_t LH3DIsland::IsCompressed()
+{
+	size_t length = strlen(g_name_mnt_to_load);
+	if (g_name_mnt_to_load[length - 3] != 'l' && g_name_mnt_to_load[length - 3] != 'L')
+	{
+		return false;
+	}
+	if (g_name_mnt_to_load[length - 2] != 'n' && g_name_mnt_to_load[length - 2] != 'N')
+	{
+		return false;
+	}
+	if (g_name_mnt_to_load[length - 1] != 'd' && g_name_mnt_to_load[length - 1] != 'D')
+	{
+		return false;
+	}
+	return true;
+}
+
 unsigned long __fastcall LH3DIsland::GetTerrainMaterial(unsigned long x, unsigned long z)
 {
 	LandCell* cell = GetCell(x, z);
@@ -2243,6 +3572,7 @@ unsigned long __fastcall LH3DIsland::GetTerrainMaterial(unsigned long x, unsigne
 
 int g_max_steepness = 10;
 
+#ifndef VERSION_BW1W100
 bool32_t LH3DIsland::IsSteep(long x, long z)
 {
 	long blockX = x / LAND_MESH_LOD_0_CELLS;
@@ -2274,3 +3604,13 @@ bool32_t LH3DIsland::IsSteep(long x, long z)
 }
 
 bool32_t g_b_p4_improvement = true;
+
+bool32_t IsP4Improvement()
+{
+	if (IsPentium4 && LH3DLevelOfDetail::g_detail_idx == 4 && g_b_p4_improvement)
+	{
+		return true;
+	}
+	return false;
+}
+#endif

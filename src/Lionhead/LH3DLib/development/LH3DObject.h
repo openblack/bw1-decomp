@@ -391,7 +391,8 @@ public:
 	virtual void DrawFroz(float froz_amount, unsigned long froz_color, LH3DMaterial* material);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00832940 BW1MCI119 01074960 (LHCombined Release)
-	virtual void DrawPlasma(float, float, float, LH3DMaterial* material, LH3DColor colour, float);
+	virtual void DrawPlasma(float inflate, float explode, float twist, LH3DMaterial* material, LH3DColor colour,
+	                        float shatter);
 #endif
 	// BW1W120 008158e0 BW1M119 01074210 (LHCombined Release)
 	virtual void DrawTextureShadow(unsigned long tile_x, unsigned long tile_z) const;
@@ -564,9 +565,6 @@ public:
 	void __fastcall CombineColorWithCurrent(unsigned long color, unsigned long specular);
 };
 
-// TODO(bwrsandman): These externs stay until we find a correct declaration. Two other ways did not work:
-// - As LH3DObject static members, they move the Object.cpp .bss and runblack.exe fails in 1.00, 1.10 and 1.20.
-// - Without them, TempleLeash::TempleLeash and CitadelHeart::DrawCreaturePen do not match.
 // BW1W120 00ea1a88 BW1M119 012b3744 (LHCombined Release)
 extern int caca_static_draw;
 // BW1W120 00ea1abc BW1M119 012b3710 (LHCombined Release)

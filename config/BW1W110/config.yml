@@ -851,6 +851,28 @@ add_relocations:
   - source: 0x0078C6E7
     type: x86_rel32
     target: '??1PictureRoomBase@@QAE@XZ'
+# LH3DP3::CheckCPU's dispatch jumps to its CPU-specific versions (dtk leaves them unrelocated).
+  - source: 0x0079C13C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$J'
+  - source: 0x0079C14C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$H'
+  - source: 0x0079C15C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$E'
+  - source: 0x0079C16C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$D'
+  - source: 0x0079C17C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$C'
+  - source: 0x0079C18C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$B'
+  - source: 0x0079C19C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$A'
 # memmove.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x007B5944
     type: x86_abs32
@@ -1051,6 +1073,31 @@ add_relocations:
     type: x86_abs32
     target: '___pioinfo'
     addend: 0x4
+# LH3DIsland: loop bounds one past the end of an array (dtk reads them as the next symbol).
+  - source: 0x007EF370
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x402
+  - source: 0x007F169D
+    type: x86_abs32
+    target: '?g_list_material@LH3DLandscape@@2PAPAUMaterial@1@A'
+    addend: 0xC8
+  - source: 0x007F16B2
+    type: x86_abs32
+    target: '?g_list_country@LH3DLandscape@@2PAPAUCountry@1@A'
+    addend: 0xC8
+  - source: 0x007F1822
+    type: x86_abs32
+    target: '?g_list_material@LH3DLandscape@@2PAPAUMaterial@1@A'
+    addend: 0xC8
+  - source: 0x007F1A3A
+    type: x86_abs32
+    target: '?g_index_block@LH3DIsland@@2PAY0CA@EA'
+    addend: 0x400
+  - source: 0x007F44BB
+    type: x86_abs32
+    target: '?g_list_country@LH3DLandscape@@2PAPAUCountry@1@A'
+    addend: 0xC8
 # BackgroundBox::AddBox addresses g_list_boxes[i].Region (dtk leaves the displacement unrelocated).
   - source: 0x0080E191
     type: x86_abs32
@@ -1209,6 +1256,25 @@ add_relocations:
     type: x86_abs32
     target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
     addend: 0x30
+# FontCache::bits is the displacement of a base+index lea, which is not read as a pointer.
+  - source: 0x008207D5
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x0082101F
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x00821202
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x00821DF4
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x008223BF
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x00822D65
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
 # LH3DPrimitive::CalcFogTable's loop compares against the end of g_fog_table, not g_vertex_inside_triangle.
   - source: 0x0083A4C4
     type: x86_abs32

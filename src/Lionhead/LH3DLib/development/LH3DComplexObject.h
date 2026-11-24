@@ -68,6 +68,10 @@ public:
 	virtual void DrawUnderWater();
 	// BW1W120 00814910 BW1M119 01075770 (LHCombined Release)
 	virtual void DrawSnow();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 008318d0 BW1MCI119 01075cb0 (LHCombined Release)
+	virtual void DrawEnvMapST();
+#endif
 	// BW1W120 00814680 BW1M119 01075b30 (LHCombined Release)
 	virtual void DrawEnvMapMT();
 	// BW1W120 00814c20 BW1M119 01075440 (LHCombined Release)
@@ -78,7 +82,8 @@ public:
 	virtual void DrawFroz();
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00831050 BW1MCI119 010766d0 (LHCombined Release)
-	virtual void DrawPlasma(float, float, float, LH3DMaterial* material, LH3DColor colour, float);
+	virtual void DrawPlasma(float inflate, float explode, float twist, LH3DMaterial* material, LH3DColor colour,
+	                        float shatter);
 #endif
 	// BW1W120 00814e80 BW1M119 01075250 (LHCombined Release)
 	virtual void DrawForMouse();
@@ -92,51 +97,12 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	LH3DComplexObject()
-	{
-		g_count_complex_object++;
-		BoneMatrices = NULL;
-		ShadowInfo = NULL;
-		hair = NULL;
-		CarriedObject = NULL;
-		DrawAfterFrame = false;
-		DrawnAfterFrame = false;
-		next = g_first_co;
-		g_first_co = this;
-		FrozMaterial = NULL;
-		FrozAmount = 0.0f;
-		FrozParam = LH3D_COMPLEX_OBJECT_DEFAULT_FROZ_COLOR;
-		FizzMaterial = NULL;
-		FizzAmount = 0.0f;
-		FizzU = 0.0f;
-		FizzV = 0.0f;
-		Hidden = false;
-	}
+	LH3DComplexObject();
 
 	// Destructor
 
 	// BW1W120 00816740 BW1M119 inlined
-	~LH3DComplexObject()
-	{
-		LH3DComplexObject* previous = NULL;
-		for (LH3DComplexObject* object = g_first_co; object != this; object = object->next)
-		{
-			previous = object;
-		}
-		if (previous != NULL)
-		{
-			previous->next = next;
-		}
-		else
-		{
-			g_first_co = next;
-		}
-		if (ShadowInfo != NULL)
-		{
-			ShadowInfo->Release();
-			ShadowInfo = NULL;
-		}
-	}
+	~LH3DComplexObject();
 
 	// Non-virtual methods
 

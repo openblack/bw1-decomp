@@ -83,7 +83,8 @@ public:
 	virtual void DrawFroz(float froz_amount, unsigned long froz_color, LH3DMaterial* material);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 0082d410 BW1MCI119 0107a380 (LHCombined Release)
-	virtual void DrawPlasma(float, float, float, LH3DMaterial* material, LH3DColor colour, float);
+	virtual void DrawPlasma(float inflate, float explode, float twist, LH3DMaterial* material, LH3DColor colour,
+	                        float shatter);
 #endif
 	// BW1W120 0080ecb0 BW1M119 0107bc80 (LHCombined Release)
 	virtual void DrawTextureShadow(unsigned long tile_x, unsigned long tile_z) const;
@@ -111,7 +112,7 @@ public:
 	// Destructor
 
 	// BW1W120 007fa180 BW1M119 01073020 (LHCombined Release)
-	~LH3DStaticObject() { g_count_static_object--; }
+	~LH3DStaticObject();
 
 	// Non-virtual methods
 

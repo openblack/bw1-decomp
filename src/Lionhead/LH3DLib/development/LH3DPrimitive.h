@@ -177,10 +177,18 @@ struct LH3DPrimitive
 	void DrawComplex();
 	// BW1W120 0084ce20 BW1M119 0109cd20 (LHCombined Release)
 	void DrawComplexFroz();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0086ac30 BW1MCI119 0109dd90 (LHCombined Release)
+	void DrawComplexPlasma(float inflate, float explode, float twist, float shatter);
+#endif
 	// BW1W120 0084d2c0 BW1M119 0109ccc0 (LHCombined Release)
 	void DrawComplexSnow();
 	// BW1W120 0084d2d0 BW1M119 0109c4b0 (LHCombined Release)
 	void DrawComplexEnvMapMT();
+#ifdef VERSION_BW1WCI
+	// BW1WCI 0086c150 BW1MCI119 0109cd70 (LHCombined Release)
+	void DrawComplexEnvMapST();
+#endif
 	// BW1W120 0084daa0 BW1M119 0109bc80 (LHCombined Release)
 	void DrawComplexRefMapMT();
 	// BW1W120 0084e200 BW1M119 01038bc0 (LHCombined Release)

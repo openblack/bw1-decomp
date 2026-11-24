@@ -190,6 +190,47 @@ block_relocations:
   - source: 0x007F8CAD
   - source: 0x007F9BD5
   - source: 0x007FAFE9
+# LH3DIsland::GetColorAndSpecular's 0x00FF0000 colour masks read as addresses inside NewCols.
+  - source: 0x0081EAFF
+  - source: 0x0081EB07
+  - source: 0x0081EB47
+  - source: 0x0081EB75
+  - source: 0x0081EB81
+  - source: 0x0081EBC5
+  - source: 0x0081EBEF
+  - source: 0x0081EBF7
+  - source: 0x0081EC77
+  - source: 0x0081EC7F
+  - source: 0x0081EC99
+  - source: 0x0081ECF3
+  - source: 0x0081ECF9
+  - source: 0x0081ED3F
+  - source: 0x0081ED63
+  - source: 0x0081ED6A
+  - source: 0x0081EF23
+  - source: 0x0081EF43
+  - source: 0x0081EF88
+  - source: 0x0081EFB3
+  - source: 0x0081EFBA
+  - source: 0x0081EFE4
+  - source: 0x0081F027
+  - source: 0x0081F02F
+  - source: 0x0081F060
+  - source: 0x0081F0A7
+  - source: 0x0081F0AF
+  - source: 0x0081F0EF
+  - source: 0x0081F121
+  - source: 0x0081F128
+  - source: 0x0081F159
+  - source: 0x0081F191
+  - source: 0x0081F199
+# LowResTexture::SaveThemAll and LoadThemAll push the constant 0x1000000, which dtk reads as an address.
+  - source: 0x008216EB
+  - source: 0x008217CD
+# LH3DLODData::DrawLOD's and MultiplyColor's 0x00FF0000 red masks are immediates, not pointers into NewCols.
+  - source: 0x00822BA3
+  - source: 0x00822BB7
+  - source: 0x00826AB9
 # LH3DObject::Create's frozen colour 0x6090ff is an immediate, not a pointer into MobileStatic.
   - source: 0x00828342
 # LH3DObject's 0x00FF0000 and 0x00FFFFFF colour masks read as addresses inside NewCols.
@@ -217,6 +258,8 @@ block_relocations:
   - source: 0x008357E6
   - source: 0x00835801
   - source: 0x0083599D
+# GatheringText::DrawBubble's 0xffffff colour mask is an immediate, not an address in Creature Isle's larger image.
+  - source: 0x008509AD
 # RainCell::Draw's 0xffffff colour mask and LH3DAtmos::Render3D's 0x7f7f7f mask and bias are immediates, not
 # pointers into data or code.
   - source: 0x008513FF
@@ -292,6 +335,9 @@ block_relocations:
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874, inside Town::ProcessTownEmergency.
 # The script keyword "..._DEPTH" ends in "PTH\0", which reads as 0x00485450, inside LH3DCreature::StateSwitch.
   - source: 0x00CA81D4
+# MeshLodInfo's triangle tables (LH3DIsland) hold pairs of vertex indices that read as code addresses.
+  - source: 0x00CAA7B0
+    end: 0x00CAB170
 # LH3DWater::g_color_water's initial 0x00FFFFFF reads as an address inside NewCols.
   - source: 0x00CACEBC
 
@@ -705,6 +751,28 @@ add_relocations:
   - source: 0x007B5067
     type: x86_rel32
     target: '??1PictureRoomBase@@QAE@XZ'
+# LH3DP3::CheckCPU's dispatch jumps to its CPU-specific versions (dtk leaves them unrelocated).
+  - source: 0x007C4B1C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$J'
+  - source: 0x007C4B2C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$H'
+  - source: 0x007C4B3C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$E'
+  - source: 0x007C4B4C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$D'
+  - source: 0x007C4B5C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$C'
+  - source: 0x007C4B6C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$B'
+  - source: 0x007C4B7C
+    type: x86_rel32
+    target: '?CheckCPU@LH3DP3@@SAXXZ$A'
 # memmove.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x007DE334
     type: x86_abs32
@@ -957,6 +1025,31 @@ add_relocations:
     type: x86_abs32
     target: '___rgcode_page_info'
     addend: 0x4
+# LH3DIsland: loop bounds one past the end of an array (dtk reads them as the next symbol).
+  - source: 0x0081C250
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x402
+  - source: 0x0081E57D
+    type: x86_abs32
+    target: '?g_list_material@LH3DLandscape@@2PAPAUMaterial@1@A'
+    addend: 0xC8
+  - source: 0x0081E592
+    type: x86_abs32
+    target: '?g_list_country@LH3DLandscape@@2PAPAUCountry@1@A'
+    addend: 0xC8
+  - source: 0x0081E702
+    type: x86_abs32
+    target: '?g_list_material@LH3DLandscape@@2PAPAUMaterial@1@A'
+    addend: 0xC8
+  - source: 0x0081E91A
+    type: x86_abs32
+    target: '?g_index_block@LH3DIsland@@2PAY0CA@EA'
+    addend: 0x400
+  - source: 0x0082139B
+    type: x86_abs32
+    target: '?g_list_country@LH3DLandscape@@2PAPAUCountry@1@A'
+    addend: 0xC8
 # BackgroundBox::AddBox addresses g_list_boxes[i].Region (dtk leaves the displacement unrelocated).
   - source: 0x0083B571
     type: x86_abs32
@@ -1115,6 +1208,25 @@ add_relocations:
     type: x86_abs32
     target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
     addend: 0x30
+# FontCache::bits is the displacement of a base+index lea, which is not read as a pointer.
+  - source: 0x0084DD95
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x0084E5DF
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x0084E7C2
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x0084F3B4
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x0084F97F
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
+  - source: 0x00850325
+    type: x86_abs32
+    target: '?bits@FontCache@@2PAEA'
 # LH3DPrimitive::CalcFogTable's loop compares against the end of g_fog_table, not g_vertex_inside_triangle.
   - source: 0x00868024
     type: x86_abs32

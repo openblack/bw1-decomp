@@ -16,29 +16,29 @@ struct LHPoint;
 class LH3DObject;
 struct LH3DP3;
 
+// Runtime CPU capabilities, written by LH3DP3::CheckCPU.
+// BW1W120 00e83a3c BW1M119 null
+extern volatile bool IsPentium;
+// BW1W120 00e83a38 BW1M119 null
+extern volatile bool IsPentiumPro;
+// BW1W120 00e83a34 BW1M119 null
+extern volatile bool IsPentiumIII;
+// BW1W120 00e83a30 BW1M119 null
+extern volatile bool IsPentium4;
+// BW1W120 00e83a2c BW1M119 null
+extern volatile bool32_t HasCMOV;
+// BW1W120 00e83a28 BW1M119 null
+extern volatile bool32_t HasMMX;
+// BW1W120 00e83a24 BW1M119 null
+extern volatile bool32_t HasSSE;
+// BW1W120 00e83a20 BW1M119 null
+extern bool32_t HasSSE2;
+
 // Pentium III / SSE fast paths for LH3DLib, built with Intel C++ 5.0. The
 // generic routines check the CPU dispatch flag and tail-call these instead of
 // the scalar versions when SSE is available.
 struct LH3DP3
 {
-	// Runtime CPU capabilities, written by CheckCPU.
-	// BW1W120 00e83a3c BW1M119 null
-	static volatile bool IsPentium;
-	// BW1W120 00e83a38 BW1M119 null
-	static volatile bool IsPentiumPro;
-	// BW1W120 00e83a34 BW1M119 null
-	static volatile bool IsPentiumIII;
-	// BW1W120 00e83a30 BW1M119 null
-	static volatile bool IsPentium4;
-	// BW1W120 00e83a2c BW1M119 null
-	static volatile bool32_t HasCMOV;
-	// BW1W120 00e83a28 BW1M119 null
-	static volatile bool32_t HasMMX;
-	// BW1W120 00e83a24 BW1M119 null
-	static volatile bool32_t HasSSE;
-	// BW1W120 00e83a20 BW1M119 null
-	static bool32_t HasSSE2;
-
 	// Interpolates the intersection of edge inside->outside with the frustum plane named by mask into
 	// LH3DTech::g_cache_t_points[out_index], and classifies the new vertex against the planes not clipped yet. A vertex
 	// with no clip flags has already been projected, so an inside vertex is unprojected first, and a new vertex that

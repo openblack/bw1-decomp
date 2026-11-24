@@ -488,7 +488,7 @@ void RunAlexFX(int stage)
 	if (SetupThing::DrawAlpha > 0)
 	{
 #ifndef VERSION_BW1W100
-		if (LH3DP3::IsPentium4 && g_b_p4_improvement)
+		if (IsPentium4 && g_b_p4_improvement)
 		{
 			float scale = LHSys::GetScreen().Width() * (1.0f / 800.0f);
 			int   left = scale * 20.0f;
