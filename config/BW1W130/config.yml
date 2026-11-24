@@ -2034,6 +2034,15 @@ add_relocations:
   - source: 0x008380E5
     type: x86_abs32
     target: '?bits@FontCache@@2PAEA'
+# LH3DSprite::Draw and DrawSpecial1 index utex from one element before it, inside the previous unit's data.
+  - source: 0x00845C4A
+    type: x86_abs32
+    target: '?utex@@3PAMA'
+    addend: -0x4
+  - source: 0x0084614D
+    type: x86_abs32
+    target: '?utex@@3PAMA'
+    addend: -0x4
 # LH3DHand::Draw compares its row pointer, biased into the row, against one past LH3DHand::g_line's end.
   - source: 0x0086832A
     type: x86_abs32

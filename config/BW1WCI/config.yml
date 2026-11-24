@@ -1244,6 +1244,15 @@ add_relocations:
   - source: 0x00850325
     type: x86_abs32
     target: '?bits@FontCache@@2PAEA'
+# LH3DSprite::Draw and DrawSpecial1 index utex from one element before it, inside the previous unit's data.
+  - source: 0x0085E19A
+    type: x86_abs32
+    target: '?utex@@3PAMA'
+    addend: -0x4
+  - source: 0x0085E69D
+    type: x86_abs32
+    target: '?utex@@3PAMA'
+    addend: -0x4
 # LH3DPrimitive::CalcFogTable's loop compares against the end of g_fog_table, not g_vertex_inside_triangle.
   - source: 0x00868024
     type: x86_abs32
