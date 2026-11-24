@@ -35,7 +35,7 @@ struct WinConditionSettings
 	static int DefaultTargets[WC_LAST];
 
 	// BW1W120 00dcbb40
-	static std::pair<std::string, WIN_CONDITION_TYPE> TypeNames[WC_LAST];
+	static std::pair<std::string, WIN_CONDITION_TYPE> TypeNameTable[WC_LAST];
 
 	// BW1W120 007753f0 BW1M119 null
 	static void ResetLimits();

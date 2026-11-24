@@ -13,7 +13,7 @@ struct WinConditionTemplate
 	std::string                         MapName;
 
 	// BW1W120 00dcbc70 BW1M119 null
-	static std::list<WinConditionTemplate*> Templates;
+	static std::list<WinConditionTemplate*> List;
 };
 
 // BW1W120 007760a0 BW1M119 null
