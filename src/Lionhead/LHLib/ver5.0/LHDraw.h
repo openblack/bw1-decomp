@@ -39,6 +39,9 @@ enum LH_DRAW_STYLE
 
 #define LH_SPRITE_ALPHA_ONE 0x8000
 
+#define LH_SPRITE_SCALE_ONE           0x1000
+#define LH_SPRITE_SCALE_FRACTION_MASK (LH_SPRITE_SCALE_ONE - 1)
+
 enum LH_SPRITE_DRAW
 {
 	LH_SPRITE_DRAW_FLIP_X = 0x20,
@@ -194,18 +197,18 @@ public:
 	// BW1W120 007ee050 BW1M119 011548a0 (LHCombined Release)
 	LH_RETURN OneColorSprite24(long x, long y, LHSprite* sprite, LHColor color, unsigned long flags);
 
-	// BW1W120 007f1990 BW1M119 0114a240 (LHCombined Release)
-	LH_RETURN ScaledSprite16xxx(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
-	                            unsigned long flags);
+	// BW1W120 007f1990 BW1M119 0114bc00 (LHCombined Release)
+	LH_RETURN ScaledSprite16(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
+	                         unsigned long flags);
 	// BW1W120 007f1e70 BW1M119 0114b400 (LHCombined Release)
 	LH_RETURN ScaledSprite24(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
 	                         unsigned long flags);
 	// BW1W120 007f23b0 BW1M119 0114a910 (LHCombined Release)
 	LH_RETURN ScaledSprite24To16(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
 	                             unsigned long flags);
-	// BW1W120 007f2a50 BW1M119 0114bc00 (LHCombined Release)
-	LH_RETURN ScaledSprite16(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
-	                         unsigned long flags);
+	// BW1W120 007f2a50 BW1M119 0114a240 (LHCombined Release)
+	LH_RETURN ScaledSprite16xxx(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
+	                            unsigned long flags);
 	// BW1W120 007f2f30 BW1M119 01149960 (LHCombined Release)
 	LH_RETURN OneColorScaledSprite16(long x, long y, unsigned long destWidth, unsigned long destHeight,
 	                                 LHSprite* sprite, LHPixel16 color, unsigned long flags);

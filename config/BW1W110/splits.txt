@@ -4150,7 +4150,10 @@ Lionhead/LHLib/ver5.0/LHConvert.cpp:
 	.text       start:0x007DF6F0 end:0x007E02E0
 
 Lionhead/LHLib/ver5.0/LHSprite.cpp:
-	.text       start:0x007E02E0 end:0x007E3990
+	.text       start:0x007E02E0 end:0x007E17A0
+
+Lionhead/LHLib/ver5.0/LHDrawScaledSprite.cpp:
+	.text       start:0x007E17A0 end:0x007E3990
 
 Lionhead/LHLib/ver5.0/TbIME.cpp:
 	.text       start:0x007E3990 end:0x007E4380
