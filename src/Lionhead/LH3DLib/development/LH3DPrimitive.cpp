@@ -69,33 +69,33 @@ static inline void TransformToClipping(Vertex3D* point, const LHPoint& position,
 	point->rhw = position.x * matrix->m[2] + position.y * matrix->m[5] + position.z * matrix->m[8] + matrix->m[11];
 }
 
-#define COMPUTE_CLIP_FLAGS(point, flags)                                                                               \
-	{                                                                                                                  \
-		if ((point)->rhw < LH3DTech::g_info_transform.NearClip)                                                        \
-		{                                                                                                              \
-			*(flags) = LH3DTech::CLIP_CODE_NEAR;                                                                       \
-		}                                                                                                              \
-		else                                                                                                           \
-		{                                                                                                              \
-			*(flags) = 0;                                                                                              \
-		}                                                                                                              \
-		if ((point)->x > (point)->rhw)                                                                                 \
-		{                                                                                                              \
-			*(flags) |= LH3DTech::CLIP_CODE_RIGHT;                                                                     \
-		}                                                                                                              \
-		else if (-(point)->rhw > (point)->x)                                                                           \
-		{                                                                                                              \
-			*(flags) |= LH3DTech::CLIP_CODE_LEFT;                                                                      \
-		}                                                                                                              \
-		if ((point)->y > (point)->rhw)                                                                                 \
-		{                                                                                                              \
-			*(flags) |= LH3DTech::CLIP_CODE_TOP;                                                                       \
-		}                                                                                                              \
-		else if (-(point)->rhw > (point)->y)                                                                           \
-		{                                                                                                              \
-			*(flags) |= LH3DTech::CLIP_CODE_BOTTOM;                                                                    \
-		}                                                                                                              \
+static inline void ComputeClipFlags(Vertex3D* point, unsigned long* flags)
+{
+	if (point->rhw < LH3DTech::g_info_transform.NearClip)
+	{
+		*flags = LH3DTech::CLIP_CODE_NEAR;
 	}
+	else
+	{
+		*flags = 0;
+	}
+	if (point->x > point->rhw)
+	{
+		*flags |= LH3DTech::CLIP_CODE_RIGHT;
+	}
+	else if (-point->rhw > point->x)
+	{
+		*flags |= LH3DTech::CLIP_CODE_LEFT;
+	}
+	if (point->y > point->rhw)
+	{
+		*flags |= LH3DTech::CLIP_CODE_TOP;
+	}
+	else if (-point->rhw > point->y)
+	{
+		*flags |= LH3DTech::CLIP_CODE_BOTTOM;
+	}
+}
 
 void LH3DPrimitive::ReverseTriangles()
 {
@@ -737,7 +737,7 @@ void LH3DPrimitive::DrawLit()
 			point->color = ScaleColor(color, light);
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -786,7 +786,7 @@ void LH3DPrimitive::DrawLit()
 				int light = GetLightLevel(FloatToInt(lightDirection * vertex->normal * LH3D_LIGHT_MAX));
 				point->color = ScaleColor(color, light);
 				point->uv = vertex->uv;
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -994,7 +994,7 @@ void Draw3DClipTriangle(long num_points, Vertex3D* points, long num_triangles, l
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	for (int i = 0; i < num_points; flags++, points++, i++)
 	{
-		COMPUTE_CLIP_FLAGS(points, flags);
+		ComputeClipFlags(points, flags);
 		if (!*flags)
 		{
 			points->rhw = 1.0f / points->rhw;
@@ -1443,7 +1443,7 @@ void LH3DPrimitive::DrawInShadow()
 			depth = LH3DMesh::g_current_shadow->CalcShadowUV_Clipping(position, point->uv.x, point->uv.y);
 			u = point->uv.x;
 			v = point->uv.y;
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -1512,7 +1512,7 @@ void LH3DPrimitive::DrawInShadow()
 				depth = LH3DMesh::g_current_shadow->CalcShadowUV_Clipping(position, point->uv.x, point->uv.y);
 				u = point->uv.x;
 				v = point->uv.y;
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -1678,7 +1678,7 @@ void __fastcall LH3DPrimitive::DrawVolLight(LHPoint* light, float intensity)
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	for (int i = 0; i < NumVertices * 2; point++, flags++, i++)
 	{
-		COMPUTE_CLIP_FLAGS(point, flags);
+		ComputeClipFlags(point, flags);
 		if (!*flags)
 		{
 			point->rhw = 1.0f / point->rhw;
@@ -2141,7 +2141,7 @@ void LH3DPrimitive::DrawCage(float scale)
 			point->specular = LH3DMesh::g_specular;
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -2183,7 +2183,7 @@ void LH3DPrimitive::DrawCage(float scale)
 				point->specular = LH3DMesh::g_specular;
 				point->uv.x = vertex->uv.x;
 				point->uv.y = vertex->uv.y;
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -2746,7 +2746,7 @@ void LH3DPrimitive::DrawSnow()
 			point->specular = LH3DMesh::g_specular;
 			GetSnowUV(&point->uv.x, &point->uv.y, &normal, a);
 			TransformToClipping(point, a->position, LH3DTech::g_current_matrix);
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -2779,7 +2779,7 @@ void LH3DPrimitive::DrawSnow()
 			point->specular = LH3DMesh::g_specular;
 			GetSnowUV(&point->uv.x, &point->uv.y, &normal, b);
 			TransformToClipping(point, b->position, LH3DTech::g_current_matrix);
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -2812,7 +2812,7 @@ void LH3DPrimitive::DrawSnow()
 			point->specular = LH3DMesh::g_specular;
 			GetSnowUV(&point->uv.x, &point->uv.y, &normal, c);
 			TransformToClipping(point, c->position, LH3DTech::g_current_matrix);
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -2939,7 +2939,7 @@ void LH3DPrimitive::DrawSnow()
 					u -= (int)u + 2.5f;
 					v -= (int)v + 2.5f;
 					point->uv.Set((u - (int)u) * 0.2f + vertex->normal.y, (v - (int)v) * 0.2f + vertex->normal.x);
-					COMPUTE_CLIP_FLAGS(point, flags);
+					ComputeClipFlags(point, flags);
 					if (!*flags)
 					{
 						point->rhw = 1.0f / point->rhw;
@@ -2990,7 +2990,7 @@ void LH3DPrimitive::DrawSnow()
 				                           envMatrix.m[7] * vertex->normal.z),
 					(v - (int)v) * 0.2f + (envMatrix.m[0] * vertex->normal.x + envMatrix.m[3] * vertex->normal.y +
 				                           envMatrix.m[6] * vertex->normal.z));
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -3129,7 +3129,7 @@ void LH3DPrimitive::DrawEnvMapMT()
 			          LH3D_ENV_MAP_UV_SCALE;
 			point->uv2.x = u * LH3DObject::g_cur_env_mat_info->ScaleU + LH3DObject::g_cur_env_mat_info->OffsetU;
 			point->uv2.y = v * LH3DObject::g_cur_env_mat_info->ScaleV + LH3DObject::g_cur_env_mat_info->OffsetV;
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -3192,7 +3192,7 @@ void LH3DPrimitive::DrawEnvMapMT()
 				          LH3D_ENV_MAP_UV_SCALE;
 				point->uv2.x = u * LH3DObject::g_cur_env_mat_info->ScaleU + LH3DObject::g_cur_env_mat_info->OffsetU;
 				point->uv2.y = v * LH3DObject::g_cur_env_mat_info->ScaleV + LH3DObject::g_cur_env_mat_info->OffsetV;
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -3327,7 +3327,7 @@ void LH3DPrimitive::DrawEnvMapST()
 			          LH3D_ENV_MAP_UV_SCALE;
 			point->uv.x = u;
 			point->uv.y = v;
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -3389,7 +3389,7 @@ void LH3DPrimitive::DrawEnvMapST()
 				          LH3D_ENV_MAP_UV_SCALE;
 				point->uv.x = u;
 				point->uv.y = v;
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -3514,7 +3514,7 @@ void LH3DPrimitive::DrawRefMapMT()
 			}
 			point->uv2.x = u;
 			point->uv2.y = v;
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -3579,7 +3579,7 @@ void LH3DPrimitive::DrawRefMapMT()
 				          LH3D_ENV_MAP_UV_SCALE;
 				point->uv2.x = u;
 				point->uv2.y = v;
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -3718,7 +3718,7 @@ bool32_t LH3DPrimitive::CheckTriangleCollide()
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, matrix);
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -3764,7 +3764,7 @@ bool32_t LH3DPrimitive::CheckTriangleCollide()
 			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
 			{
 				TransformToClipping(point, vertex->position, matrix);
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -3912,7 +3912,7 @@ bool32_t LH3DPrimitive::CheckTriangleCollideMorph()
 	{
 		LHPoint position(vertex->position.x, vertex->position.y + *g_vertical_translate_vertices, vertex->position.z);
 		TransformToClipping(point, position, LH3DTech::g_current_matrix);
-		COMPUTE_CLIP_FLAGS(point, flags);
+		ComputeClipFlags(point, flags);
 		if (!*flags)
 		{
 			point->rhw = 1.0f / point->rhw;
@@ -4059,7 +4059,7 @@ bool32_t LH3DPrimitive::CheckPixelCollide()
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, matrix);
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
 			if (!*flags)
@@ -4099,7 +4099,7 @@ bool32_t LH3DPrimitive::CheckPixelCollide()
 			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
 			{
 				TransformToClipping(point, vertex->position, matrix);
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				point->uv.x = vertex->uv.x;
 				point->uv.y = vertex->uv.y;
 				if (!*flags)
@@ -4416,7 +4416,7 @@ void LH3DPrimitive::Draw()
 			point->specular = LH3DMesh::g_specular;
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -4457,7 +4457,7 @@ void LH3DPrimitive::Draw()
 				point->color = LH3DMesh::g_color;
 				point->specular = LH3DMesh::g_specular;
 				point->uv = vertex->uv;
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -4580,7 +4580,7 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 				(g_lightmap_remap_uvs[LH3D_LIGHTMAP_REMAP_MAX_V] - g_lightmap_remap_uvs[LH3D_LIGHTMAP_REMAP_MIN_V]) *
 					vertex->uv.y +
 				g_lightmap_remap_uvs[LH3D_LIGHTMAP_REMAP_MIN_V];
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -4628,7 +4628,7 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 				               g_lightmap_remap_uvs[LH3D_LIGHTMAP_REMAP_MIN_V]) *
 				                  vertex->uv.y +
 				              g_lightmap_remap_uvs[LH3D_LIGHTMAP_REMAP_MIN_V];
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -4780,7 +4780,7 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 				point->uv.x = vertex->uv.x;
 				point->uv.y = vertex->uv.y;
 			}
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -4825,7 +4825,7 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 				point->uv2.y = *uvs++;
 				point->uv.x = vertex->uv.x;
 				point->uv.y = vertex->uv.y;
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -5316,12 +5316,12 @@ void LH3DPrimitive::DrawWithVerticalTranslation()
 			                 vertex->position.z + translate[2]);
 			TransformToClipping(point, position, LH3DTech::g_current_matrix);
 			point->specular = LH3DMesh::g_specular;
-			int light = GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
-			point->color = ScaleColor(LH3DMesh::g_color, light);
+			point->color =
+				ScaleColor(LH3DMesh::g_color, GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX)));
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
-			COMPUTE_CLIP_FLAGS(point, flags);
-			if (*flags == 0)
+			ComputeClipFlags(point, flags);
+			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
 				point->x = (point->x * point->rhw + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
@@ -5357,12 +5357,12 @@ void LH3DPrimitive::DrawWithVerticalTranslation()
 			                 vertex->position.z);
 			TransformToClipping(point, position, LH3DTech::g_current_matrix);
 			point->specular = LH3DMesh::g_specular;
-			int light = GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
-			point->color = ScaleColor(LH3DMesh::g_color, light);
+			point->color =
+				ScaleColor(LH3DMesh::g_color, GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX)));
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
-			COMPUTE_CLIP_FLAGS(point, flags);
-			if (*flags == 0)
+			ComputeClipFlags(point, flags);
+			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
 				point->x = (point->x * point->rhw + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
@@ -5489,7 +5489,7 @@ void LH3DPrimitive::DrawSnowWithVerticalTranslation()
 			                                     envMatrix.m[7] * vertex->normal.z),
 			              (v - (int)v) * 0.2f + (envMatrix.m[0] * vertex->normal.x + envMatrix.m[3] * vertex->normal.y +
 			                                     envMatrix.m[6] * vertex->normal.z));
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -5538,7 +5538,7 @@ void LH3DPrimitive::DrawSnowWithVerticalTranslation()
 			                                     envMatrix.m[7] * vertex->normal.z),
 			              (v - (int)v) * 0.2f + (envMatrix.m[0] * vertex->normal.x + envMatrix.m[3] * vertex->normal.y +
 			                                     envMatrix.m[6] * vertex->normal.z));
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -5654,7 +5654,7 @@ void LH3DPrimitive::DrawInShadowWithVerticalTranslation()
 		depth = LH3DMesh::g_current_shadow->CalcShadowUV_Clipping(position, point->uv.x, point->uv.y);
 		u = point->uv.x;
 		v = point->uv.y;
-		COMPUTE_CLIP_FLAGS(point, flags);
+		ComputeClipFlags(point, flags);
 		if (!*flags)
 		{
 			point->rhw = 1.0f / point->rhw;
@@ -6594,7 +6594,7 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 			point->specular = LH3DMesh::g_specular;
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
-			COMPUTE_CLIP_FLAGS(point, flags);
+			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -6648,7 +6648,7 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 				float v = vertex->uv.y - 0.5f;
 				point->uv.x = u * cosAngle + v * sinAngle + 0.5f;
 				point->uv.y = u * sinAngle - v * cosAngle + 0.5f;
-				COMPUTE_CLIP_FLAGS(point, flags);
+				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
