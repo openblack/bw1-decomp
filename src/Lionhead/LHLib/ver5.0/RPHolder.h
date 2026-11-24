@@ -36,6 +36,10 @@ struct RPHolder
 
 	// win1.41 0083b300 mac 1061e7c4 RPHolder::InitialiseSystem(void (__cdecl *)(int, int, struct RPHolder *), void (__cdecl *)(struct RPHolder *))
 	static void InitialiseSystem(void(__cdecl* param_1)(int, int, RPHolder*), void(__cdecl* param_2)(RPHolder*));
+	// BW1W120 00eddd14 BW1M119 012d1f60 (LHCombined Release)
+	static void(__cdecl* SearchSquare)(int x, int z, RPHolder* holder);
+	// BW1W120 00eddd18 BW1M119 012d1f5c (LHCombined Release)
+	static void(__cdecl* AddSpecialObjects)(RPHolder* holder);
 
 	// Constructors
 
@@ -54,6 +58,8 @@ struct RPHolder
 	bool32_t SquareDoesNotContain(int object_id, int x, int z);
 	// BW1W120 0083b450 BW1M119 010aa7b0 (LHCombined Release)
 	void AddObject(int object_id, const Point2D& point, float radius, int update);
+	// BW1W120 0083b770 BW1M119 010aa630 (LHCombined Release)
+	void RegisterOnMapSquares(RPAvoid* avoid, int index);
 	// BW1W120 0083b860 BW1M119 010aa3f0 (LHCombined Release)
 	bool32_t GetSidePointOfStartObject(int avoid, const Point2D& from, Point2D& side_point, int side);
 	// BW1W120 0083b9e0 BW1M119 010aa170 (LHCombined Release)

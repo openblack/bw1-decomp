@@ -30,6 +30,19 @@ struct LivingAction
 	uint8_t  field_0x3;
 	uint16_t TurnsSinceStateChange;
 
+	// BW1W120 00d30480 BW1M119 01b34254
+	static uint32_t StateDebugCount;
+	// BW1W120 00d3047c BW1M119 01b34250
+	static uint32_t StateCheckSum;
+	// BW1W120 00d30884 BW1M119 01b3424c
+	static uint32_t PosCheckSum;
+	// BW1W120 00d30880 BW1M119 01b34248
+	static uint32_t DestPosCheckSum;
+	// BW1W120 00d3087c BW1M119 01b34244
+	static uint32_t DataCheckSum;
+	// BW1W120 00d30878 BW1M119 01b34240
+	static uint32_t ReactionCheckSum;
+
 	// Constructors
 
 	// BW1W120 005ecc70 BW1M119 01389490

@@ -2017,22 +2017,22 @@ Black/MusicMood.cpp:
 	.text       start:0x00637760 end:0x00638100
 	.rdata      start:0x0095E814 end:0x0095E824
 	.CRT$XCU    start:0x00A470A4 end:0x00A470B4 align:4
-	.data       start:0x00C7E8DC end:0x00C7E914
-	.bss        start:0x00DC20B0 end:0x00DC2300
+	.data       start:0x00C7E8DC end:0x00C7E904
+	.bss        start:0x00DC20B0 end:0x00DC20D4
 
 Black/Network.cpp:
 	.text       start:0x00638100 end:0x00639FB0
-	.rdata      start:0x0095E824 end:0x0095E844
+	.rdata      start:0x0095E824 end:0x0095E842
 	.CRT$XCU    start:0x00A470B4 end:0x00A470CC align:4
-	.data       start:0x00C7E914 end:0x00C7EA1C
-	.bss        start:0x00DC2300 end:0x00DC2484
+	.data       start:0x00C7E904 end:0x00C7E9DA
+	.bss        start:0x00DC20D8 end:0x00DC2484
 
 Black/Object.cpp:
 	.text       start:0x00639FB0 end:0x0063E860
 	.rdata      start:0x0095E844 end:0x0095F108
 	.rdata$r    start:0x00A33088 end:0x00A33100
 	.CRT$XCU    start:0x00A470CC end:0x00A470E4 align:4
-	.data       start:0x00C7EA1C end:0x00C7EA40
+	.data       start:0x00C7E9DC end:0x00C7EA40
 	.bss        start:0x00DC2484 end:0x00DC5364
 
 Black/Object3D.cpp:

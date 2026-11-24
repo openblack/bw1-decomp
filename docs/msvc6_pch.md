@@ -418,13 +418,15 @@ shares it) or of our sources.
   Creature Isle. They get it back once `<string>` moves to the header that gave the other units
   the guard.
 
-- **`/vmg`: `Fixed`, `Town` and `VillagerHome`.** cl only warns (C4652) when a `/Yu` compile's
+- **`/vmg`: `Town` and `VillagerHome`.** cl only warns (C4652) when a `/Yu` compile's
   pointer-to-member representation differs from the PCH's, so under `/Yu` they could have used
   it, and `/YX` would rebuild it for them. They are out because `project.py` once shared a PCH
   only between units with all the same flags, not because of their targets. Their `extra_cflags`
-  now override the PCH's, so whether they used it is open. `Fixed`'s `.bss` guard follows the
-  name hash of its `$S` number, which every static data member its headers declare bumps:
-  `FixedCounterPad` keeps the guard in the original's slot.
+  now override the PCH's, so whether they used it is open. `Fixed`, the third `/vmg` unit, is
+  built with the PCH: its `.bss` is in reverse first-mention order once `SingleMapFixedInfo.h`,
+  whose inline accessors mention `GSingleMapFixedInfo::Infos`, comes before the constants
+  headers. Without the PCH its `$S` guard went by the name hash of a number that every static
+  data member of its headers bumps.
 - **`PCH_PENDING`**: sources fitted to the layout of a compile without the PCH, whose targets
   do not rule it out. This is not a property of the original build, and they are follow-up
   work: `/Yu` puts their statics in the reverse order of their first mention, so the

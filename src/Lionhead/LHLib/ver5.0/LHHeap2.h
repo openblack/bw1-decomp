@@ -148,6 +148,10 @@ public:
 	unsigned int GetLargestMemoryFragment() const;
 	// BW1W120 007e14b0 BW1M119 0113a790 (LHCombined Release)
 	char* GetDebugText(char* buf) const;
+	// BW1W120 inlined BW1M119 inlined
+	int GetNumberOfNews() const { return Allocates; }
+	// BW1W120 inlined BW1M119 inlined
+	int GetNumberOfDeletes() const { return Deallocates; }
 };
 static_assert(sizeof(Heap) == 0x2c, "Data type is of wrong size");
 

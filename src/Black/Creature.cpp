@@ -145,11 +145,15 @@ GBaseInfo* DifferentCreatureInfo::GetBaseInfo(uint32_t& info_count)
 
 LHLinkedList<Creature*> Creature::CreatureList;
 
-static uint32_t    CheckSum3D;
-static uint32_t    PosCheckSum;
-static uint32_t    MentalMiscCheckSum;
-static uint32_t    MentalBeliefsCheckSum;
-static uint32_t    MentalAgendaCheckSum;
+uint32_t Creature::CheckSum3D;
+uint32_t Creature::DestPosCheckSum;
+uint32_t Creature::PosCheckSum;
+uint32_t Creature::MentalMiscCheckSum;
+uint32_t Creature::MentalValueSystemCheckSum;
+uint32_t Creature::MentalDesiresCheckSum;
+uint32_t Creature::MentalBeliefsCheckSum;
+uint32_t Creature::MentalAgendaCheckSum;
+
 static const float FightStaminaRecoveryRate = 0.0016666f;
 static const float HandOverCreatureDecay = 0.9f;
 

@@ -1,3 +1,4 @@
+#include "SingleMapFixedInfo.h"
 #include "GameTimeConstants.h"
 #include "Fixed.h"
 
@@ -35,18 +36,9 @@
 #include "PhysicsObject.h"
 #include "Player.h"
 #include "Reaction.h"
-#include "SingleMapFixedInfo.h"
 #include "StandardBuildingSite.h"
 #include "Town.h"
 #include "WorshipSite.h"
-
-// cl6 orders .bss by a hash of the symbol name, and the $S<n> guard lands in the original's slot
-// only for some n. The headers above declare a different number of static data members than the
-// original's did, so this pads the guard onto one of them.
-struct FixedCounterPad
-{
-	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7;
-};
 
 #if defined(VERSION_BW1W100)
 #define FIXED_LINE_SHIFT 1

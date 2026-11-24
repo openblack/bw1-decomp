@@ -11,6 +11,13 @@
 const uint32_t NumTurnsToDieOver = 600;
 const int16_t  NumTurnsDowned = 300;
 
+uint32_t LivingAction::StateDebugCount;
+uint32_t LivingAction::StateCheckSum;
+uint32_t LivingAction::PosCheckSum;
+uint32_t LivingAction::DestPosCheckSum;
+uint32_t LivingAction::DataCheckSum;
+uint32_t LivingAction::ReactionCheckSum;
+
 uint32_t DataForScriptRemind::GetSaveType()
 {
 	return GAME_THING_TYPE_DATA_FOR_SCRIPT_REMIND;

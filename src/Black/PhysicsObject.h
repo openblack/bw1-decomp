@@ -47,6 +47,19 @@ public:
 	static Object* RemoveObject(Object* object, bool insert_back_into_map, bool end_physics);
 	// BW1W120 00644800 BW1M119 0111d080
 	static void RaiseUntilNotIntersecting(PhysicsObject** physics_object);
+	// BW1W120 00646fe0 BW1M119 01092110
+	static void DrawAllUnderWater();
+	// BW1W120 00646d60 BW1M119 0111b350
+	static void RemoveReferencesToObject(Object* object);
+	// BW1W120 006464f0 BW1M119 0111bd00
+	static void AttemptToAddSoundEvent(PhysicsObject* physics_object, LHPoint& position, Object* object, Object* hit_by,
+	                                   long type);
+	// BW1W120 00644f20 BW1M119 0111cb40
+	static void UpdateFakeObject(long count);
+	// BW1W120 00644df0 BW1M119 0111cd50
+	static void InternalAddToSystem(Object* object);
+	// BW1W120 00644c40 BW1M119 0111cf00
+	static void MakeSureEndSlotIsFree();
 
 	// BW1W120 00644f00 BW1M119 0111ccf0
 	Object* GetGameObjectWhoHitMe();

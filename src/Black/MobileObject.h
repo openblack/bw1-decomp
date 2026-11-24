@@ -148,6 +148,9 @@ public:
 	// BW1W120 00606fc0 BW1M119 01090540
 	static void AddMobileObjectCheckSum();
 
+	// BW1W120 00d3a6c8 BW1M119 01b370dc
+	static uint32_t MobileObjectCheckSum;
+
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 0112d3c0

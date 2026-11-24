@@ -11,12 +11,9 @@ struct ScriptCreatureCurse
 	float Strength;
 	float Alignment;
 
-	ScriptCreatureCurse()
-	{
-		Alignment = 0.0f;
-		Strength = 0.0f;
-		Height = 0.0f;
-	}
+	// Inliner IL size: <= 40
+	// BW1W120 inlined BW1M119 inlined
+	ScriptCreatureCurse() { Height = Strength = Alignment = 0.0f; }
 
 	// BW1W120 006f6190 BW1M119 015f04a0
 	void Init(Creature* creature);

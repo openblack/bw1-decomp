@@ -48,6 +48,8 @@ struct PathCreator
 	bool32_t CheckSaveGamePaths();
 	// BW1W120 0078eb60 BW1M119 013dd1d0
 	static bool32_t CheckPathExists(char* path);
+	// BW1W120 inlined BW1M119 01179dc0
+	static char* GetFileInDataFolder(const char* file) { return (char*)file; }
 	// BW1W120 0078ee40 BW1M119 011381c0
 	bool32_t CheckProfilePath();
 	// BW1W120 0078ee70 BW1M119 013ed450

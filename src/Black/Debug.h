@@ -45,7 +45,7 @@ struct GDebug
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0x2d284;
 #endif
-	int      field_0x2d284;
+	int      TimeSinceSpeedChange;
 	uint32_t field_0x2d288;
 	uint32_t field_0x2d28c;
 	bool     field_0x2d290;

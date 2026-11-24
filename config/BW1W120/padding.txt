@@ -470,6 +470,11 @@
 0x006314BB call_rel32 0x004017F9  # MPFEMapMessages
 0x0063173B call_rel32 0x004017F9  # MPFENumberCodec
 0x006317BB call_rel32 0x004017F9  # MPFEPlayerDetails
+0x0063444B call_rel32 0x004017F9  # Network
+0x006345DB call_rel32 0x004017F9  # Network
+0x006347DB call_rel32 0x004017F9  # Network
+0x0063498B call_rel32 0x004017F9  # Network
+0x00635D9B call_rel32 0x004017F9  # Network
 0x006362FB call_rel32 0x004017F9  # Object
 0x0063673B call_rel32 0x004017F9  # Object
 0x006377BB call_rel32 0x004017F9  # Object

@@ -225,7 +225,7 @@ void MPFEChooseConnection::InitControls()
 	RegistryRetrieveULong(MPFE_CHOOSE_CONNECTION_REGISTRY_KEY, "ForceLan", &forceLan);
 	if (forceLan != 0 && !AskedForIPAddress)
 	{
-		TimIPSpecial(L"Enter IP Address to connect to", NULL);
+		TimIPSpecial(L"Enter IP Address to connect to", (void*)IP_SPECIAL_DIALOG_MODE_IP_ADDRESS);
 		AskedForIPAddress = true;
 	}
 

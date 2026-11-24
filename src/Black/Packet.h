@@ -61,7 +61,7 @@ public:
 	uint8_t  field_0x0;
 	uint8_t  Type;
 	uint16_t field_0x2;
-	uint32_t field_0x4;
+	uint32_t CheckSum;
 	// Both original compilers construct every anonymous-union alternative.
 	// Anonymous type numbers in the Mac symbols confirm this nesting. Member names
 	// are descriptive; scalar-only packet alternatives are still represented by Bytes.
@@ -115,11 +115,6 @@ public:
 		struct
 		{
 			PhysicsData Physics;
-		};
-		// Unlike the Mac build's LH3DMapCoords, the Windows alternative emits no initialization.
-		struct
-		{
-			LH3DMapCoords MapPosition;
 		};
 		struct
 		{

@@ -6,14 +6,15 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <string.h> /* For memset */
 
-// Forward Declares
+#include "LH3DObject.h" /* For g_smoke_additif_mat */
+#include "LH3DSprite.h" /* For struct LH3DSprite */
+#include "LHPoint.h"    /* For struct LHPoint */
 
-struct LH3DSprite;
-
-#define GWATER_MAX_CIRCLES 0x400
-#define GWATER_MAX_PLOUFS  30
+#define GWATER_MAX_CIRCLES   0x400
+#define GWATER_MAX_PLOUFS    30
+#define GWATER_CIRCLE_GROWTH 0.05f
 
 // A plouf grows for GROW_TIME, then widens up to MAX_SIZE until it dies at LIFE.
 #define GWATER_PLOUF_LIFE        700
@@ -153,10 +154,20 @@ public:
 		return (unsigned long)(GWATER_PLOUF_MAX_ALPHA - time * GWATER_PLOUF_MAX_ALPHA / GWATER_PLOUF_LIFE) << 24 |
 		       0xffffff;
 	}
-	// Mac inlines the initialisation of g_circle, g_sprite_circle and g_count_activated_circle into GGame's
-	// constructor.
-	// BW1W120 0054ba40
-	static void InitialiseCircles();
+	// Inliner IL size: 93
+	// BW1W120 0054ba40 BW1M119 inlined
+	static void InitialiseCircles()
+	{
+		memset(g_circle, 0, sizeof(g_circle));
+		for (unsigned long i = 0; i < GWATER_MAX_CIRCLES; i++)
+		{
+			g_circle[i].Growth = GWATER_CIRCLE_GROWTH;
+		}
+		g_sprite_circle = LH3DSprite::Create(1, true);
+		g_sprite_circle->SetMaterial(g_smoke_additif_mat);
+		g_sprite_circle->SetHorizontal();
+		g_count_activated_circle = 0;
+	}
 
 	// Non-virtual methods
 
