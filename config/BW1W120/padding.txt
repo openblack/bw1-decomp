@@ -126,6 +126,9 @@
 0x0043686B call_rel32 0x00401879  # Base
 0x00436C2A call_indirect 0x008A9114  # Base: __imp__ImmReleaseContext@4
 0x004370CB call_rel32 0x00401879  # Base
+0x0043719B call_rel32 0x00401879  # BaseInfo
+0x0043735A call_indirect 0x008A9048  # BaseInfo: __imp__TextOutA@20
+0x00437A3A call_indirect 0x008A9328  # BaseInfo: __imp__LHEditBox__YAHPBDKKKK0HPAD_Z@4
 0x00437CAB call_rel32 0x00401879  # Belief
 0x00437D2B call_rel32 0x00401879  # Belief
 0x00437E7B call_rel32 0x00401879  # Belief

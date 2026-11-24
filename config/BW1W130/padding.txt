@@ -581,6 +581,17 @@
 0x00437089 copy_run 0x00436C52  # Base
 0x004370CB call_rel32 0x00403C49  # Base
 0x00437113 jmp_run 0x004370CB  # Base
+0x00437173 jmp_run 0x00437113  # BaseInfo
+0x0043719B call_rel32 0x00403C49  # BaseInfo
+0x00437335 jmp_run 0x0043719B  # BaseInfo
+0x0043735A call_indirect 0x008AE048  # BaseInfo: __imp__CreateFontIndirectA@4
+0x004373F5 jmp_run 0x0043735A  # BaseInfo
+0x00437428 copy_run 0x004373F5  # BaseInfo
+0x00437979 jmp_run 0x00437428  # BaseInfo
+0x004379A4 copy_run 0x00437979  # BaseInfo
+0x00437A3A call_indirect 0x008AE350  # BaseInfo: __imp_?RegistryRetrieveULong@@YA?AW4LH_RETURN@@PAD0PAK@Z
+0x00437BF7 jmp_run 0x00437A3A  # BaseInfo
+0x00437C59 jmp_run 0x00437BF7  # BaseInfo
 0x00437CAB call_rel32 0x00403C49  # Belief
 0x00437CD5 jmp_run 0x00437CAB  # Belief
 0x00437D03 copy_run 0x00437CD3  # Belief
