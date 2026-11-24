@@ -104,3 +104,8 @@ void CreatureMental::EmpathiseWithPlayer(CREATURE_DESIRE_SOURCE source)
 		creature.Get()->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_INCREASE_SOURCE, source, NULL, NULL, 0);
 	}
 }
+
+bool32_t CreatureMental::UnreferencedEmptyFunction()
+{
+	return false;
+}

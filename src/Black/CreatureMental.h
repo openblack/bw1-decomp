@@ -227,6 +227,8 @@ public:
 	bool32_t IsObjectSuitableForAction(GameThingWithPos* object, CREATURE_ACTION action);
 	// BW1W120 004d2800 BW1M119 null
 	void EmpathiseWithPlayer(CREATURE_DESIRE_SOURCE source);
+	// BW1W120 004d2860 BW1M119 null
+	bool32_t UnreferencedEmptyFunction();
 	// BW1W120 004c4c80 BW1M119 012364d0
 	CreatureAttitudeToCreature* GetAttitudeToCreature(Creature* other_creature);
 	// BW1W120 004c4d20 BW1M119 012363b0
