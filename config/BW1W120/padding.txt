@@ -134,6 +134,9 @@
 0x00437E7B call_rel32 0x00401879  # Belief
 0x00438DEA call_indirect 0x008A901C  # BigForest: __imp__TrackMouseEvent@4
 0x00438EBB call_rel32 0x00401879  # BigForest
+0x004407CB call_rel32 0x00401879  # BWLan
+0x0044081B call_rel32 0x00401879  # BWLan
+0x0044092A call_indirect 0x008A9984  # BWLan: __imp_?GetDefaultEntryIndex@Dialup@@QAEHXZ
 0x0044ABCA call_indirect 0x008A9190  # CameraModeDance: __imp__RemoveDirectoryA@4
 0x0044AC8B call_rel32 0x00401879  # CameraModeDance
 0x0044ACCA call_indirect 0x008A96C4  # CameraModeDance: __imp__LHWaveGetQMixerDirectSoundObject...

@@ -11,7 +11,7 @@ IPSpecialDialog::IPSpecialDialog()
 	field_0x18 = 0;
 	field_0x1c = 0;
 	field_0x20 = 0;
-	field_0x24 = false;
+	JoinedRoom = false;
 }
 
 IPSpecialDialog::~IPSpecialDialog() {}

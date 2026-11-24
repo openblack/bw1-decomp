@@ -70,8 +70,6 @@
 #define JOINING_PLAYER_NAME "abcdef123"
 #endif
 
-#define NO_PLAYER_ID 0xffffffff
-
 #define UNKNOWN_PLAYER_NAME "-1"
 
 #define THINK_INTERVAL      10u

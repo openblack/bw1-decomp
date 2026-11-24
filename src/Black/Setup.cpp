@@ -2008,7 +2008,7 @@ bool32_t GSetup::SaveMapRegion(char* file_name, const MapCoords& corner_a, const
 			for (Object* object = cell.FindType(OBJECT_TYPE_ANY, NULL); object != NULL;
 			     object = cell.FindType(OBJECT_TYPE_ANY, object))
 			{
-				if (object->IsTouching(corner_a, corner_b) && !objects.Contains(object))
+				if (object->IsTouching(corner_a, corner_b) && !objects.IsThisInList(object))
 				{
 					objects.Add(object);
 				}
@@ -2017,7 +2017,7 @@ bool32_t GSetup::SaveMapRegion(char* file_name, const MapCoords& corner_a, const
 	}
 	for (Object* object = objects.FindNext(NULL); object != NULL; object = objects.FindNext(object))
 	{
-		if (object->GetTown() != NULL && !towns.Contains(object->GetTown()))
+		if (object->GetTown() != NULL && !towns.IsThisInList(object->GetTown()))
 		{
 			towns.Add(object->GetTown());
 		}

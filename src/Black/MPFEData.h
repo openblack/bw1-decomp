@@ -31,6 +31,7 @@
 #define MPFE_DATA_SEND_INTERVAL         400
 #define MPFE_DATA_START_GAME_DELAY      300
 #define MPFE_DATA_TYKE_STATUS_INTERVAL  200
+#define NO_PLAYER_ID                    0xffffffff
 
 class ChannelBox;
 class LayerCommunication;

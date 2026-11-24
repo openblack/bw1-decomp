@@ -1013,7 +1013,7 @@ void MPFEData::D_PlayerLeft(LH_USER_ID id, wchar_t* name)
 		MPFEResetClan message(player->Team);
 		message.Send(NULL);
 	}
-	if (field_0xae4.count != 0 && field_0xae4.Contains(player))
+	if (field_0xae4.count != 0 && field_0xae4.IsThisInList(player))
 	{
 		field_0xae4.Remove(player);
 	}
@@ -1057,7 +1057,7 @@ void MPFEData::D_PlayerLeft(LH_USER_ID id, wchar_t* name)
 			break;
 		}
 	}
-	if (PlayersAwaitingStartReply.Contains(player))
+	if (PlayersAwaitingStartReply.IsThisInList(player))
 	{
 		PlayersAwaitingStartReply.Remove(player);
 		if (Data.IsHost && player->IsTeamLeader)
@@ -1067,7 +1067,7 @@ void MPFEData::D_PlayerLeft(LH_USER_ID id, wchar_t* name)
 			MPFEStopGameStartMessage::ProcessIncoming(message.Message + 1, Data.GetLocalPlayer());
 		}
 	}
-	if (Data.PlayersTransferringFiles.Contains(player))
+	if (Data.PlayersTransferringFiles.IsThisInList(player))
 	{
 		Data.PlayersTransferringFiles.Remove(player);
 		if (Data.IsHost && player->IsTeamLeader)
