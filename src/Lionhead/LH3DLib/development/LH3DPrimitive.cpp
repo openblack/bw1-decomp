@@ -53,7 +53,7 @@ LHMatrix       LH3DPrimitive::g_froz_wiggle_mat;
 float wiggle_speed = 2.0f;
 float wiggle_amp = 0.02f;
 
-#define LERP(a, b, t) (((a) * (t)) + (b) * (1.0f - (t)))
+#define BLEND(a, b, amount) (((a) * (amount)) + (b) * (1.0f - (amount)))
 
 static inline void RotatePointBy(LHPoint* out, const LHPoint& in, const LHMatrix* m)
 {
@@ -3687,14 +3687,14 @@ void __fastcall LH3DPrimitive::Blend(LH3DPrimitive* from, LH3DPrimitive* to, flo
 	blend = 1.0f - blend;
 	for (int i = 0; i < NumVertices; vertex++, fromVertex++, toVertex++, i++)
 	{
-		vertex->position.x = LERP(fromVertex->position.x, toVertex->position.x, blend);
-		vertex->position.y = LERP(fromVertex->position.y, toVertex->position.y, blend);
-		vertex->position.z = LERP(fromVertex->position.z, toVertex->position.z, blend);
-		vertex->normal.x = LERP(fromVertex->normal.x, toVertex->normal.x, blend);
-		vertex->normal.y = LERP(fromVertex->normal.y, toVertex->normal.y, blend);
-		vertex->normal.z = LERP(fromVertex->normal.z, toVertex->normal.z, blend);
-		vertex->uv.x = LERP(fromVertex->uv.x, toVertex->uv.x, blend);
-		vertex->uv.y = LERP(fromVertex->uv.y, toVertex->uv.y, blend);
+		vertex->position.x = BLEND(fromVertex->position.x, toVertex->position.x, blend);
+		vertex->position.y = BLEND(fromVertex->position.y, toVertex->position.y, blend);
+		vertex->position.z = BLEND(fromVertex->position.z, toVertex->position.z, blend);
+		vertex->normal.x = BLEND(fromVertex->normal.x, toVertex->normal.x, blend);
+		vertex->normal.y = BLEND(fromVertex->normal.y, toVertex->normal.y, blend);
+		vertex->normal.z = BLEND(fromVertex->normal.z, toVertex->normal.z, blend);
+		vertex->uv.x = BLEND(fromVertex->uv.x, toVertex->uv.x, blend);
+		vertex->uv.y = BLEND(fromVertex->uv.y, toVertex->uv.y, blend);
 	}
 }
 
