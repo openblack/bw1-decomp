@@ -19,6 +19,11 @@ struct DiscipleInfo;
 
 #define VILLAGER_INFOS_PER_TRIBE (VILLAGER_INFO_AFRICAN_HOUSEWIFE_FEMALE - VILLAGER_INFO_CELTIC_HOUSEWIFE_FEMALE)
 
+#ifdef VERSION_BW1W100
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 1)
+#endif
+
 class GVillagerInfo : public GLivingInfo
 {
 public:
@@ -155,5 +160,8 @@ public:
 	INFO_DATA_BLOCK(TribeType, MissionaryImpressiveValue)
 	INFO_DERIVED_LOADERS(124, "Villager.h", GLivingInfo)
 };
+
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) (line)
 
 #endif /* BW1_DECOMP_VILLAGER_INFO_INCLUDED_H */

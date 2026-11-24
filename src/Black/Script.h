@@ -1820,6 +1820,11 @@ static_assert(sizeof(GScript) == 0xbc, "Data type is of wrong size");
 
 #define SCRIPT_OPPOSING_CREATURE_TYPES 3
 
+#ifdef VERSION_BW1W100
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 7)
+#endif
+
 class GScriptOpposingCreature : public GBaseInfo
 {
 public:
@@ -1833,5 +1838,8 @@ public:
 	INFO_DATA_BLOCK(OpposingTypes, OpposingTypes)
 	INFO_ROOT_LOADERS(923, "Script.h")
 };
+
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) (line)
 
 #endif /* BW1_DECOMP_SCRIPT_INCLUDED_H */

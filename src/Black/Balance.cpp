@@ -111,13 +111,12 @@
 #include "WorshipSiteInfo.h"
 #include "WorshipSiteUpgradeInfo.h"
 
-// Each info file missing from the older releases' table is a line less above load_variables.
 #if defined(VERSION_BW1W100)
-#define BALANCE_LOADER_LINE 529
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) < 200 ? (line) : (line) - 2)
 #elif defined(VERSION_BW1W110)
-#define BALANCE_LOADER_LINE 530
-#else
-#define BALANCE_LOADER_LINE 531
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) < 200 ? (line) : (line) - 1)
 #endif
 
 GLeashSelectorInfo GLeashSelectorInfo::Instance;
@@ -132,7 +131,7 @@ void LoadMagic(T* dummy, LoaderAnon* loader, char* info_str, unsigned long count
 		{
 			T* info = NEW(159) T;
 			info->LoadBinary(file);
-			infos[start + i] = info;
+			infos[start++] = info;
 		}
 	}
 	else
@@ -146,7 +145,7 @@ void LoadMagic(T* dummy, LoaderAnon* loader, char* info_str, unsigned long count
 				return;
 			if (info->Load(&loader->Cursor, file) != size)
 				loader->ErrorCount++;
-			infos[start + i] = info;
+			infos[start++] = info;
 		}
 	}
 }
@@ -157,7 +156,9 @@ void LoadIt(LoaderAnon* loader, char* info_str, T* info_array, unsigned long cou
 	if (use_binary)
 	{
 		for (unsigned long i = 0; i < count; i++)
+		{
 			info_array[i].LoadBinary(file);
+		}
 	}
 	else
 	{
@@ -179,7 +180,7 @@ void LoadIt(LoaderAnon* loader, char* info_str, T* info_array, unsigned long cou
 	}
 }
 
-char GInfoFileTable::InfoFiles[][GInfoFileTable::FILE_NAME_LENGTH] = {
+char GInfoFileTable::InfoFiles[][INFO_FILE_NAME_LENGTH] = {
 	"scripts\\InfoHelp1.txt",
 	"scripts\\InfoScript1.txt",
 	"scripts\\Info1.txt",
@@ -207,12 +208,12 @@ void generate_variable_ammendments(void)
 	for (int i = MAGIC_TYPE_FIREBALL; i < MAGIC_TYPE_LAST; i++)
 	{
 		SPELL_SEED_TYPE seed = GSpellSeedInfo::GetFirstSpellSeedForMagicType((MAGIC_TYPE)i);
-		if (seed != -1 && GMagicInfo::Infos[i] != NULL)
+		if (seed != SPELL_SEED_TYPE_NONE && GMagicInfo::Infos[i] != NULL)
 			GMagicInfo::Infos[i]->SpellSeedType = seed;
 
-		POWER_UP_TYPE power_up = (POWER_UP_TYPE)-1;
+		POWER_UP_TYPE power_up = POWER_UP_TYPE_NONE;
 		GESTURE_TYPE  gesture = GSpellSeedInfo::GetFirstGestureForMagicType((MAGIC_TYPE)i, &power_up);
-		if (gesture != 0 && GMagicInfo::Infos[i] != NULL)
+		if (gesture != GESTURE_TYPE_NONE && GMagicInfo::Infos[i] != NULL)
 		{
 			GMagicInfo::Infos[i]->GestureType = gesture;
 			GMagicInfo::Infos[i]->PowerUpType = power_up;
@@ -233,45 +234,45 @@ void load_variables(void)
 	LHReleasedOSFile os_file;
 	bool             use_binary = true;
 	bool             had_errors = false;
-	LHDir            tmp_dir;
-	if (os_file.DirFindFirst(tmp_name, &tmp_dir, -1) != LH_FILE_RESULT_OK)
+	LHDir            dat_dir;
+	if (os_file.DirFindFirst(dat_name, &dat_dir, -1) != LH_FILE_RESULT_OK)
 	{
 		num_files = 0;
 		use_binary = false;
 	}
-	os_file.DirFindEnd(&tmp_dir);
+	os_file.DirFindEnd(&dat_dir);
 
 	LHDir dir;
 	if (os_file.DirFindFirst("Balance.cpp", &dir, -1) == LH_FILE_RESULT_OK)
 	{
-		if (dir.WriteTime.year != tmp_dir.WriteTime.year)
+		if (dir.WriteTime.year != dat_dir.WriteTime.year)
 		{
-			if (dir.WriteTime.year > tmp_dir.WriteTime.year)
+			if (dir.WriteTime.year > dat_dir.WriteTime.year)
 				use_binary = false;
 		}
-		else if (dir.WriteTime.month != tmp_dir.WriteTime.month)
+		else if (dir.WriteTime.month != dat_dir.WriteTime.month)
 		{
-			if (dir.WriteTime.month > tmp_dir.WriteTime.month)
+			if (dir.WriteTime.month > dat_dir.WriteTime.month)
 				use_binary = false;
 		}
-		else if (dir.WriteTime.day != tmp_dir.WriteTime.day)
+		else if (dir.WriteTime.day != dat_dir.WriteTime.day)
 		{
-			if (dir.WriteTime.day > tmp_dir.WriteTime.day)
+			if (dir.WriteTime.day > dat_dir.WriteTime.day)
 				use_binary = false;
 		}
-		else if (dir.WriteTime.hour != tmp_dir.WriteTime.hour)
+		else if (dir.WriteTime.hour != dat_dir.WriteTime.hour)
 		{
-			if (dir.WriteTime.hour > tmp_dir.WriteTime.hour)
+			if (dir.WriteTime.hour > dat_dir.WriteTime.hour)
 				use_binary = false;
 		}
-		else if (dir.WriteTime.minute != tmp_dir.WriteTime.minute)
+		else if (dir.WriteTime.minute != dat_dir.WriteTime.minute)
 		{
-			if (dir.WriteTime.minute > tmp_dir.WriteTime.minute)
+			if (dir.WriteTime.minute > dat_dir.WriteTime.minute)
 				use_binary = false;
 		}
-		else if (dir.WriteTime.second != tmp_dir.WriteTime.second)
+		else if (dir.WriteTime.second != dat_dir.WriteTime.second)
 		{
-			if (dir.WriteTime.second > tmp_dir.WriteTime.second)
+			if (dir.WriteTime.second > dat_dir.WriteTime.second)
 				use_binary = false;
 		}
 		os_file.DirFindEnd(&dir);
@@ -285,49 +286,49 @@ void load_variables(void)
 		searched = true;
 		if (GInfoFileTable::FindInfoFile(dir.name) != -1)
 		{
-			if (dir.WriteTime.year != tmp_dir.WriteTime.year)
+			if (dir.WriteTime.year != dat_dir.WriteTime.year)
 			{
-				if (dir.WriteTime.year > tmp_dir.WriteTime.year)
+				if (dir.WriteTime.year > dat_dir.WriteTime.year)
 				{
 					use_binary = false;
 					break;
 				}
 			}
-			else if (dir.WriteTime.month != tmp_dir.WriteTime.month)
+			else if (dir.WriteTime.month != dat_dir.WriteTime.month)
 			{
-				if (dir.WriteTime.month > tmp_dir.WriteTime.month)
+				if (dir.WriteTime.month > dat_dir.WriteTime.month)
 				{
 					use_binary = false;
 					break;
 				}
 			}
-			else if (dir.WriteTime.day != tmp_dir.WriteTime.day)
+			else if (dir.WriteTime.day != dat_dir.WriteTime.day)
 			{
-				if (dir.WriteTime.day > tmp_dir.WriteTime.day)
+				if (dir.WriteTime.day > dat_dir.WriteTime.day)
 				{
 					use_binary = false;
 					break;
 				}
 			}
-			else if (dir.WriteTime.hour != tmp_dir.WriteTime.hour)
+			else if (dir.WriteTime.hour != dat_dir.WriteTime.hour)
 			{
-				if (dir.WriteTime.hour > tmp_dir.WriteTime.hour)
+				if (dir.WriteTime.hour > dat_dir.WriteTime.hour)
 				{
 					use_binary = false;
 					break;
 				}
 			}
-			else if (dir.WriteTime.minute != tmp_dir.WriteTime.minute)
+			else if (dir.WriteTime.minute != dat_dir.WriteTime.minute)
 			{
-				if (dir.WriteTime.minute > tmp_dir.WriteTime.minute)
+				if (dir.WriteTime.minute > dat_dir.WriteTime.minute)
 				{
 					use_binary = false;
 					break;
 				}
 			}
-			else if (dir.WriteTime.second != tmp_dir.WriteTime.second)
+			else if (dir.WriteTime.second != dat_dir.WriteTime.second)
 			{
-				if (dir.WriteTime.second > tmp_dir.WriteTime.second)
+				if (dir.WriteTime.second > dat_dir.WriteTime.second)
 				{
 					use_binary = false;
 					break;
@@ -342,7 +343,7 @@ void load_variables(void)
 		os_file.DirFindEnd(&dir);
 
 	char*       load_id = getenv("LH_LOADID");
-	LoaderAnon* loader = NEW(BALANCE_LOADER_LINE) LoaderAnon((char*)"DETAIL_", (char*)"ENUM_", load_id);
+	LoaderAnon* loader = NEW(531) LoaderAnon((char*)"DETAIL_", (char*)"ENUM_", load_id);
 
 	if (use_binary)
 	{
@@ -350,37 +351,41 @@ void load_variables(void)
 	}
 	else
 	{
-		for (unsigned long i = 0; i < (unsigned long)GInfoFileTable::GetNoOfElementsInInfoFileTable(); i++)
-			loader->ReadVariableFile(GInfoFileTable::GetInfoFile() + i * GInfoFileTable::FILE_NAME_LENGTH);
+		for (unsigned long i = 0; i < GInfoFileTable::GetNoOfElementsInInfoFileTable(); i++)
+			loader->ReadVariableFile(GInfoFileTable::GetInfoFile() + i * INFO_FILE_NAME_LENGTH);
 		file.SetName(tmp_name);
 		file.Open(LH_FILE_MODE_READ_WRITE);
 	}
 	file.OpenSegment((char*)"Info");
 
-	LoadMagic((GMagicInfo*)NULL, loader, (char*)"DETAIL_MAGIC_GENERAL_INFO", 10, GMagicInfo::Infos, MAGIC_TYPE_NONE,
+	LoadMagic((GMagicInfo*)NULL, loader, (char*)"DETAIL_MAGIC_GENERAL_INFO", MAGIC_TYPE_HEAL - MAGIC_TYPE_NONE,
+	          GMagicInfo::Infos, MAGIC_TYPE_NONE, use_binary, &file);
+	LoadMagic((GMagicHealInfo*)NULL, loader, (char*)"DETAIL_MAGIC_HEAL_INFO", MAGIC_TYPE_TELEPORT - MAGIC_TYPE_HEAL,
+	          GMagicInfo::Infos, MAGIC_TYPE_HEAL, use_binary, &file);
+	LoadMagic((GMagicTeleportInfo*)NULL, loader, (char*)"DETAIL_MAGIC_TELEPORT_INFO",
+	          MAGIC_TYPE_FOREST - MAGIC_TYPE_TELEPORT, GMagicInfo::Infos, MAGIC_TYPE_TELEPORT, use_binary, &file);
+	LoadMagic((GMagicForestInfo*)NULL, loader, (char*)"DETAIL_MAGIC_FOREST_INFO", MAGIC_TYPE_FOOD - MAGIC_TYPE_FOREST,
+	          GMagicInfo::Infos, MAGIC_TYPE_FOREST, use_binary, &file);
+	LoadMagic((GMagicResourceInfo*)NULL, loader, (char*)"DETAIL_MAGIC_FOOD_INFO",
+	          MAGIC_TYPE_STORM_WIND_RAIN - MAGIC_TYPE_FOOD, GMagicInfo::Infos, MAGIC_TYPE_FOOD, use_binary, &file);
+	LoadMagic((GMagicStormAndTornadoInfo*)NULL, loader, (char*)"DETAIL_MAGIC_STORM_AND_TORNADO_INFO",
+	          MAGIC_TYPE_SHIELD - MAGIC_TYPE_STORM_WIND_RAIN, GMagicInfo::Infos, MAGIC_TYPE_STORM_WIND_RAIN, use_binary,
+	          &file);
+	LoadMagic((GMagicShieldInfo*)NULL, loader, (char*)"DETAIL_MAGIC_SHIELD_ONE_INFO",
+	          MAGIC_TYPE_WOOD - MAGIC_TYPE_SHIELD, GMagicInfo::Infos, MAGIC_TYPE_SHIELD, use_binary, &file);
+	LoadMagic((GMagicResourceInfo*)NULL, loader, (char*)"DETAIL_MAGIC_WOOD_INFO", MAGIC_TYPE_WATER - MAGIC_TYPE_WOOD,
+	          GMagicInfo::Infos, MAGIC_TYPE_WOOD, use_binary, &file);
+	LoadMagic((GMagicWaterInfo*)NULL, loader, (char*)"DETAIL_MAGIC_WATER_INFO",
+	          MAGIC_TYPE_FLOCK_FLYING - MAGIC_TYPE_WATER, GMagicInfo::Infos, MAGIC_TYPE_WATER, use_binary, &file);
+	LoadMagic((GMagicFlockFlyingInfo*)NULL, loader, (char*)"DETAIL_MAGIC_FLOCK_FLYING_INFO",
+	          MAGIC_TYPE_FLOCK_GROUND - MAGIC_TYPE_FLOCK_FLYING, GMagicInfo::Infos, MAGIC_TYPE_FLOCK_FLYING, use_binary,
+	          &file);
+	LoadMagic((GMagicFlockGroundInfo*)NULL, loader, (char*)"DETAIL_MAGIC_FLOCK_GROUND_INFO",
+	          MAGIC_TYPE_CREATURE_SPELL_FREEZE - MAGIC_TYPE_FLOCK_GROUND, GMagicInfo::Infos, MAGIC_TYPE_FLOCK_GROUND,
 	          use_binary, &file);
-	LoadMagic((GMagicHealInfo*)NULL, loader, (char*)"DETAIL_MAGIC_HEAL_INFO", 2, GMagicInfo::Infos, MAGIC_TYPE_HEAL,
+	LoadMagic((GMagicCreatureSpellInfo*)NULL, loader, (char*)"DETAIL_MAGIC_CREATURE_SPELL_INFO",
+	          MAGIC_TYPE_LAST - MAGIC_TYPE_CREATURE_SPELL_FREEZE, GMagicInfo::Infos, MAGIC_TYPE_CREATURE_SPELL_FREEZE,
 	          use_binary, &file);
-	LoadMagic((GMagicTeleportInfo*)NULL, loader, (char*)"DETAIL_MAGIC_TELEPORT_INFO", 1, GMagicInfo::Infos,
-	          MAGIC_TYPE_TELEPORT, use_binary, &file);
-	LoadMagic((GMagicForestInfo*)NULL, loader, (char*)"DETAIL_MAGIC_FOREST_INFO", 1, GMagicInfo::Infos,
-	          MAGIC_TYPE_FOREST, use_binary, &file);
-	LoadMagic((GMagicResourceInfo*)NULL, loader, (char*)"DETAIL_MAGIC_FOOD_INFO", 2, GMagicInfo::Infos, MAGIC_TYPE_FOOD,
-	          use_binary, &file);
-	LoadMagic((GMagicStormAndTornadoInfo*)NULL, loader, (char*)"DETAIL_MAGIC_STORM_AND_TORNADO_INFO", 3,
-	          GMagicInfo::Infos, MAGIC_TYPE_STORM_WIND_RAIN, use_binary, &file);
-	LoadMagic((GMagicShieldInfo*)NULL, loader, (char*)"DETAIL_MAGIC_SHIELD_ONE_INFO", 2, GMagicInfo::Infos,
-	          MAGIC_TYPE_SHIELD, use_binary, &file);
-	LoadMagic((GMagicResourceInfo*)NULL, loader, (char*)"DETAIL_MAGIC_WOOD_INFO", 1, GMagicInfo::Infos, MAGIC_TYPE_WOOD,
-	          use_binary, &file);
-	LoadMagic((GMagicWaterInfo*)NULL, loader, (char*)"DETAIL_MAGIC_WATER_INFO", 2, GMagicInfo::Infos, MAGIC_TYPE_WATER,
-	          use_binary, &file);
-	LoadMagic((GMagicFlockFlyingInfo*)NULL, loader, (char*)"DETAIL_MAGIC_FLOCK_FLYING_INFO", 1, GMagicInfo::Infos,
-	          MAGIC_TYPE_FLOCK_FLYING, use_binary, &file);
-	LoadMagic((GMagicFlockGroundInfo*)NULL, loader, (char*)"DETAIL_MAGIC_FLOCK_GROUND_INFO", 1, GMagicInfo::Infos,
-	          MAGIC_TYPE_FLOCK_GROUND, use_binary, &file);
-	LoadMagic((GMagicCreatureSpellInfo*)NULL, loader, (char*)"DETAIL_MAGIC_CREATURE_SPELL_INFO", 16, GMagicInfo::Infos,
-	          MAGIC_TYPE_CREATURE_SPELL_FREEZE, use_binary, &file);
 	if (loader->ErrorCount)
 		had_errors = true;
 
