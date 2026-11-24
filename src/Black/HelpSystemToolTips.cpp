@@ -36,9 +36,7 @@
 #define TOOLTIP_MAX_TIMES_SHOWN   80
 #define TOOLTIP_ICON_SIZE_DIVISOR 25
 #define TOOLTIP_ICON_ALPHA        0x80
-#define TOOLTIP_PERCENT           100
 #define TOOLTIP_BELIEF_SCALE      1000.0f
-#define TOOLTIP_MAX_DESIRE        1.0f
 
 const float ToolTipSpeed = 0.4f;
 
@@ -330,8 +328,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 			if (fixed != NULL)
 			{
 				float percent = !fixed->IsBuilt() ? fixed->GetPercentBuilt() : fixed->GetPercentRepaired();
-				UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId),
-				                percent * TOOLTIP_PERCENT);
+				UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), percent * 100);
 				return true;
 			}
 		}
@@ -357,8 +354,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 			if (fixed != NULL)
 			{
 				float percent = !fixed->IsBuilt() ? fixed->GetPercentBuilt() : fixed->GetPercentRepaired();
-				UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId),
-				                percent * TOOLTIP_PERCENT);
+				UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), percent * 100);
 				return true;
 			}
 		}
@@ -368,10 +364,9 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 		{
 			if (workshop->IsBuilt() && workshop->IsRepaired())
 			{
-				float percent =
-					(float)((int)(TOOLTIP_PERCENT - (float)(workshop->ProductionTimeLeft * TOOLTIP_PERCENT) /
+				float percent = (float)((int)(100 - (float)(workshop->ProductionTimeLeft * 100) /
 				                                        workshop->GetInfo()->TimeEachMobileObjectTakesToProduce) %
-				            TOOLTIP_PERCENT);
+				                        100);
 				UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), percent);
 				ToolTips::Forced = true;
 				return true;
@@ -383,10 +378,9 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 #else
 		if (workshop != NULL && workshop->IsBuilt() && workshop->IsRepaired())
 		{
-			float percent =
-				(float)((int)(TOOLTIP_PERCENT - (float)(workshop->ProductionTimeLeft * TOOLTIP_PERCENT) /
+			float percent = (float)((int)(100 - (float)(workshop->ProductionTimeLeft * 100) /
 			                                        workshop->GetInfo()->TimeEachMobileObjectTakesToProduce) %
-			            TOOLTIP_PERCENT);
+			                        100);
 			UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), percent);
 			ToolTips::Forced = true;
 			return true;
@@ -399,7 +393,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 			if (worshipIcon != NULL)
 			{
 				float chant = worshipIcon->ChantStore;
-				float percent = chant / worshipIcon->GetChantRequiredForSpellSeed() * TOOLTIP_PERCENT;
+				float percent = chant / worshipIcon->GetChantRequiredForSpellSeed() * 100;
 				if (percent != 0.0f)
 				{
 					swprintf(text, L"%s %3.0f%%", HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), percent);
@@ -415,7 +409,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 		if (textId == HELP_TEXT_TOOLTIP_TEMPLE_HEALTH)
 		{
 			ToolTips::Forced = true;
-			float life = object->GetLife() * TOOLTIP_PERCENT;
+			float life = object->GetLife() * 100;
 			UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), life);
 			return true;
 		}
@@ -442,7 +436,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 			ShowNeedsVisuals* visuals = dynamic_cast<ShowNeedsVisuals*>(object);
 			if (visuals != NULL)
 			{
-				float scale = visuals->ScaleZoomer.CurrentValue * TOOLTIP_PERCENT;
+				float scale = visuals->ScaleZoomer.CurrentValue * 100;
 				UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), scale);
 				return true;
 			}
@@ -471,9 +465,7 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 			if (object->IsTownDesireFlag() && (town = object->GetTown()) != NULL)
 			{
 				textId = ((TownDesireFlags*)object)->GetToolTipForFlagDesire();
-				float desire =
-					(min(town->GetRawDesire(((TownDesireFlags*)object)->GetDesireType()), TOOLTIP_MAX_DESIRE) *
-				     TOOLTIP_PERCENT);
+				float desire = (min(town->GetRawDesire(((TownDesireFlags*)object)->GetDesireType()), 1.0f) * 100);
 				UNICODE_sprintf(text, HelpTextDataBase::HelpTextDatabase.GetHelpText(textId), desire);
 				ToolTips::Forced = true;
 				return true;
