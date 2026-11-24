@@ -20,7 +20,7 @@ struct LH3DMatrixCamera
 	long                Size;     /* 0x0 */
 	unsigned long       Duration; /* 0x4 */
 	unsigned long       NumKeys;  /* 0x8 */
-	LH3DCameraMatrixKey Keys[1];  /* 0xc */
+	LH3DCameraMatrixKey Keys[];   /* 0xc */
 };
 
 LH3DCamera* LH3DCamera::Create(void* data, bool with_matrices)
