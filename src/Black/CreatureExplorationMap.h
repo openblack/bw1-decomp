@@ -87,7 +87,7 @@ static_assert(sizeof(CreatureGlobalExplorationMap) == 0x1c00c, "Data type is of 
 class CreatureExplorationMap : public Base
 {
 public:
-	uint32_t  field_0x8;
+	uint32_t  Unused;
 	MapCoords Pos;
 	uint8_t   KnownRegions[EXPLORATION_MAP_REGIONS][EXPLORATION_MAP_REGION_BYTES];
 	uint8_t   VisitedRegions[EXPLORATION_MAP_REGIONS][EXPLORATION_MAP_REGION_BYTES];

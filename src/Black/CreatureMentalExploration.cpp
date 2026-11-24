@@ -2,6 +2,11 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 #include "GameTimeConstants.h"
+
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1W120)
+class CreatureGlobalExplorationMap;
+#endif
+
 #include "CreatureExplorationMap.h"
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h>
@@ -52,7 +57,7 @@ CreatureExplorationMap::CreatureExplorationMap(const MapCoords& pos)
 		}
 	}
 	Pos = pos;
-	field_0x8 = 0;
+	Unused = 0;
 }
 
 uint16_t CreatureExplorationMap::GetNumGameTurnsCreatureHasStayedInRegion(const MapCoords& pos)

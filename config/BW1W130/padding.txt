@@ -883,6 +883,16 @@
 0x004E157B jmp_run 0x004E1543  # CreatureMentalDesireTests
 0x004E15D3 jmp_run 0x004E1579  # CreatureMentalEditor
 0x004E16D1 jmp_run 0x004E15D3  # CreatureMentalEditor
+0x004E173B jmp_run 0x004E16D1  # CreatureMentalExploration
+0x004E175B call_rel32 0x00403C49  # CreatureMentalExploration
+0x004E17B6 jmp_run 0x004E175B  # CreatureMentalExploration
+0x004E187A call_indirect 0x008AE8A8  # CreatureMentalExploration: __imp__timeGetTime@0
+0x004E1949 copy_run 0x004E187A  # CreatureMentalExploration
+0x004E19AA call_indirect 0x008AE998  # CreatureMentalExploration: __imp_?Initialise@Dialup@@QAEHXZ
+0x004E1C34 jmp_run 0x004E19AA  # CreatureMentalExploration
+0x004E1D95 jmp_run 0x004E1C34  # CreatureMentalExploration
+0x004E1ED6 jmp_run 0x004E1D95  # CreatureMentalExploration
+0x004E1FF4 jmp_run 0x004E1ED6  # CreatureMentalExploration
 0x004E25F3 jmp_run 0x004E1FF4  # CreatureMentalLearn
 0x004E261B call_rel32 0x00403C49  # CreatureMentalLearn
 0x004E2755 jmp_run 0x004E261B  # CreatureMentalLearn
