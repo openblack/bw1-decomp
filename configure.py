@@ -1661,7 +1661,7 @@ config.libs = [
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DTech.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DDivers.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DRender.cpp", pch=True),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DText.cpp", extra_cflags=["/GX"], pch=True),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DText.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/ValueSpinner.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DWeather.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DTexture.cpp", extra_cflags=["/GX"], pch=True),

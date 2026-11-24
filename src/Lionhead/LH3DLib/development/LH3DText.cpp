@@ -575,12 +575,12 @@ void CachePage::RenderChar(CacheEntry* entry)
 		texture->Lock(&Desc);
 	if (Desc.Surface)
 	{
-		int       pitch = Desc.Pitch / FONT_PIXEL_BYTES;
-		uint16_t* dest = (uint16_t*)Desc.Surface + entry->Line * pitch * FONT_CACHE_LINE_HEIGHT + entry->X;
-		int       skip = pitch - width / 2 - FONT_CHAR_BORDER_PIXELS;
-		int       row;
-		int       x;
+		uint16_t* dest =
+			(uint16_t*)Desc.Surface + entry->Line * (Desc.Pitch / FONT_PIXEL_BYTES) * FONT_CACHE_LINE_HEIGHT + entry->X;
 		bitmap = (uint8_t*)bitmapBuffer;
+		int skip = Desc.Pitch / FONT_PIXEL_BYTES - width / 2 - FONT_CHAR_BORDER_PIXELS;
+		int row;
+		int x;
 		for (row = 0; row < FONT_CHAR_ROWS; row++)
 		{
 			*dest++ = FONT_PIXEL_WHITE;
