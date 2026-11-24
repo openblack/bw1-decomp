@@ -285,14 +285,17 @@ Black/BWGameSpy.cpp:
 Black/BWLan.cpp:
 	.text       start:0x004387A0 end:0x00439550
 	.rdata      start:0x008061C0 end:0x00806208
+	.rdata$r    start:0x008DC8B8 end:0x008DC904
 	.CRT$XCU    start:0x008F6114 end:0x008F6120 align:4
-	.data       start:0x008FC420 end:0x008FC44C
+	.data       start:0x008FC420 end:0x008FC44B
+	.bss        start:0x00B7B3B8 end:0x00B7B3C6
 
 Black/Camera.cpp:
 	.text       start:0x00439550 end:0x0043B6B0
 	.rdata      start:0x00806208 end:0x00806740
 	.CRT$XCU    start:0x008F6120 end:0x008F6124 align:4
 	.data       start:0x008FC44C end:0x008FC518
+	.bss        start:0x00B7B3C8 end:0x00B7B454
 
 Black/CameraEditor.cpp:
 	.text       start:0x0043B6B0 end:0x0043C220

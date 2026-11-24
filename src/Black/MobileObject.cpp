@@ -63,7 +63,7 @@ MobileObject::~MobileObject()
 void MobileObject::ToBeDeleted(bool32_t delete_now)
 {
 	GGame::g_game->GameLists.MobileObjects.Remove(this);
-	if (GGame::g_game->GameLists.objects.Contains(this))
+	if (GGame::g_game->GameLists.objects.IsThisInList(this))
 	{
 		GGame::g_game->GameLists.objects.Remove(this);
 	}
@@ -284,7 +284,7 @@ void MobileObject::GetWorldMatrix(LHMatrix* matrix)
 
 bool32_t MobileObject::SetupMoveAlongPath(SCRIPT_PATH path, float start, float end, bool32_t reverse)
 {
-	if (!GGame::g_game->GameLists.objects.Contains(this))
+	if (!GGame::g_game->GameLists.objects.IsThisInList(this))
 	{
 		GGame::g_game->GameLists.objects.Add(this);
 	}

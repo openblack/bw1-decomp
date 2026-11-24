@@ -7,6 +7,11 @@
 
 #include <GameSpy/CEngine/goaceng.h> /* For GServer */
 
+#define MPFE_NEW_CHANNEL_NUM_TEAMS 3
+#if !defined(VERSION_BW1W100)
+#define MPFE_MAX_PLAYERS_UNKNOWN (-1)
+#endif
+
 class LHLocalLobbyInfo;
 
 struct MPFEChannelDetails

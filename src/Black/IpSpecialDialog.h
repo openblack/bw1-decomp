@@ -21,7 +21,7 @@ public:
 	SetupButton*            field_0x18;
 	SetupEdit*              field_0x1c;
 	SetupStaticText*        field_0x20;
-	bool                    field_0x24;
+	bool                    JoinedRoom;
 
 	// BW1W120 005dd460 BW1M119 01107f20
 	IPSpecialDialog();

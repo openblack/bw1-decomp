@@ -862,7 +862,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Bookmark.cpp"),
             GameCodeObject(NonMatching, "Black/BuildingSite.cpp"),
             GameCodeObject(NonMatching, "Black/BWGameSpy.cpp", pch=PCH_PENDING),
-            GameCodeObject(NonMatching, "Black/BWLan.cpp"),
+            GameCodeObject(Matching, "Black/BWLan.cpp"),
             GameCodeObject(NonMatching, "Black/Camera.cpp"),
             GameCodeObject(NonMatching, "Black/CameraEditor.cpp"),
             GameCodeObject(NonMatching, "Black/camerahelp.cpp"),

@@ -7,6 +7,13 @@
 
 #include "LayerCommunication.h" /* For struct LayerCommunication */
 
+#ifdef VERSION_BW1WCI
+#define BW_LAN_LISTENER_PORT 2614
+#else
+#define BW_LAN_LISTENER_PORT 2613
+#endif
+#define BW_LAN_ENTER_ROOM_TIMEOUT 5000
+
 // Forward Declares
 
 struct MPFEChannelDetails;
@@ -15,11 +22,9 @@ struct MPFEPlayerDetails;
 class BWLan : public LayerCommunication
 {
 public:
-	// Override methods
-
-	// BW1W120 004408e0 BW1M119 0118ab30
+	// BW1W120 00440840 BW1M119 0118ab30
 	virtual void SendMessageA(wchar_t* message, bool private_message, MPFEPlayerDetails* player);
-	// BW1W120 00440840 BW1M119 0118aa20
+	// BW1W120 004408e0 BW1M119 0118aa20
 	virtual void SendMessageA(const char* message, bool private_message, MPFEPlayerDetails* player);
 	// BW1W120 004409f0 BW1M119 0118a890
 	virtual void LeaveMainRoom();
@@ -55,10 +60,10 @@ public:
 	// BW1W120 00c59b24
 	static BWLan Instance;
 
-	// Non-virtual methods
-
 	// BW1W120 00440c20 BW1M119 011898e0
-	void Think();
+	static void Think();
+	// BW1W120 004413d0 BW1M119 01189670
+	static bool EnterGameRoom(bool host, wchar_t* name);
 };
 
 #endif /* BW1_DECOMP_BW_LAN_INCLUDED_H */

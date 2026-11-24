@@ -613,6 +613,17 @@
 0x00439353 jmp_run 0x00439217  # BigForest
 0x00439461 copy_run 0x00439353  # BigForest
 0x00439576 jmp_run 0x00439461  # BigForest
+0x004407CB call_rel32 0x00403C49  # BWLan
+0x004407F5 jmp_run 0x004407CB  # BWLan
+0x00440826 copy_run 0x004407F3  # BWLan
+0x004408D4 padding_bytes c3  # BWLan
+0x004408DA jmp_run 0x00440826  # BWLan
+0x0044092A call_indirect 0x008AE048  # BWLan: __imp__CreateFontIndirectA@4
+0x00440AB3 jmp_run 0x0044092A  # BWLan
+0x004413C3 copy_run 0x00440AB3  # BWLan
+0x004414AD copy_run 0x004413C3  # BWLan
+0x004415D3 jmp_run 0x004414A9  # BWLan
+0x004415FB jmp_run 0x004415D3  # BWLan
 0x0044B338 jmp_run 0x0044B2CB  # CameraModeDance
 0x0044B3A6 copy_run 0x0044B338  # CameraModeDance
 0x0044B3DA jmp_run 0x0044B3A6  # CameraModeDance

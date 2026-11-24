@@ -87,7 +87,7 @@ void MPFEStartGameReadyMessage::ProcessIncoming(wchar_t* message, MPFEPlayerDeta
 	{
 		return;
 	}
-	if (!MPFEData::Data.PlayersAwaitingStartReply.Contains(from))
+	if (!MPFEData::Data.PlayersAwaitingStartReply.IsThisInList(from))
 	{
 		return;
 	}

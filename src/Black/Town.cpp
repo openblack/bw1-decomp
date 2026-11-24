@@ -1353,7 +1353,7 @@ BuildingSite* Town::AddBuildingSite(MultiMapFixed* site)
 
 void Town::AddBuildingSite(BuildingSite* site)
 {
-	if (BuildingSiteList.Contains(site))
+	if (BuildingSiteList.IsThisInList(site))
 	{
 		return;
 	}
@@ -1368,7 +1368,7 @@ void Town::AddBuildingSite(BuildingSite* site)
 
 void Town::RemoveBuildingSite(BuildingSite* site)
 {
-	if (!BuildingSiteList.Contains(site))
+	if (!BuildingSiteList.IsThisInList(site))
 	{
 		return;
 	}
@@ -2679,7 +2679,7 @@ bool32_t Town::IsBuildingHappening()
 
 void Town::AddVillagerOnWayToWorshipSite(Villager* villager)
 {
-	if (!VillagersOnWayToWorshipSite.Contains(villager))
+	if (!VillagersOnWayToWorshipSite.IsThisInList(villager))
 	{
 		VillagersOnWayToWorshipSite.Add(villager);
 		NumVillagersOnWayToWorshipSite++;
@@ -2688,7 +2688,7 @@ void Town::AddVillagerOnWayToWorshipSite(Villager* villager)
 
 void Town::RemoveVillagerOnWayToWorshipSite(Villager* villager)
 {
-	if (VillagersOnWayToWorshipSite.Contains(villager))
+	if (VillagersOnWayToWorshipSite.IsThisInList(villager))
 	{
 		VillagersOnWayToWorshipSite.Remove(villager);
 		NumVillagersOnWayToWorshipSite--;
@@ -3639,7 +3639,7 @@ void Town::CheckAddWorshipSite()
 		if (player != NULL && player->type != PLAYER_TYPE_NEUTRAL && player->GetCitadel() != NULL)
 		{
 			WorshipSite* worshipSite = player->GetCitadel()->FindOrCreateWorshipSite(this);
-			if (worshipSite != NULL && !worshipSite->Towns.Contains(this))
+			if (worshipSite != NULL && !worshipSite->Towns.IsThisInList(this))
 			{
 				worshipSite->AddTown(this);
 			}
@@ -4146,7 +4146,7 @@ bool Town::GetHighestTownEffectMagicAndPhysical(float& highest, float& magic, fl
 
 void Town::RemoveForest(Forest* forest)
 {
-	if (forests.Contains(forest))
+	if (forests.IsThisInList(forest))
 	{
 		forests.Remove(forest);
 	}
@@ -4154,7 +4154,7 @@ void Town::RemoveForest(Forest* forest)
 
 void Town::AddForest(Forest* forest)
 {
-	if (!forests.Contains(forest))
+	if (!forests.IsThisInList(forest))
 	{
 		forests.Add(forest);
 	}
@@ -4280,15 +4280,27 @@ void Town::SaveTown(LHOSFile& file, const MapCoords& offset)
 	{
 		homeless->SaveObject(file, &offset);
 	}
-	for (LHLinkedNode<Field*>* fieldNode = FieldList.GetLastNode(); fieldNode != NULL;
-	     fieldNode = FieldList.GetPreviousNode(fieldNode))
+	LHLinkedNode<Field*>* fieldNode = FieldList.GetLastNode();
+	while (fieldNode != NULL)
 	{
 		fieldNode->payload->SaveObject(file, &offset);
+		LHLinkedNode<Field*>* previousField = FieldList.head.Get();
+		while (previousField != NULL && previousField->next.Get() != fieldNode)
+		{
+			previousField = previousField->next.Get();
+		}
+		fieldNode = previousField;
 	}
-	for (LHLinkedNode<FishFarm*>* fishFarmNode = FishFarms.GetLastNode(); fishFarmNode != NULL;
-	     fishFarmNode = FishFarms.GetPreviousNode(fishFarmNode))
+	LHLinkedNode<FishFarm*>* fishFarmNode = FishFarms.GetLastNode();
+	while (fishFarmNode != NULL)
 	{
 		fishFarmNode->payload->SaveObject(file, &offset);
+		LHLinkedNode<FishFarm*>* previousFishFarm = FishFarms.head.Get();
+		while (previousFishFarm != NULL && previousFishFarm->next.Get() != fishFarmNode)
+		{
+			previousFishFarm = previousFishFarm->next.Get();
+		}
+		fishFarmNode = previousFishFarm;
 	}
 	if (&offset != NULL)
 	{

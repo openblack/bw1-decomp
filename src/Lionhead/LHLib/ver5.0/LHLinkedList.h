@@ -50,6 +50,23 @@ public:
 		}
 		return false;
 	}
+	// BW1W120 inlined BW1M119 012c14d0
+	void InsertAfter(T val, LHLinkedNode<T>* after)
+	{
+		if (after == NULL)
+		{
+			Add(val);
+		}
+		else
+		{
+			LHLinkedNode<T>* node = new LHLinkedNode<T>(val, after->next.Get());
+			if (node)
+			{
+				after->next.Set(node);
+				++count;
+			}
+		}
+	}
 	// The flag stops after the first match; it never controls payload ownership.
 	inline void Remove(T val, bool only_first = false)
 	{
@@ -122,17 +139,6 @@ public:
 			}
 		}
 	}
-	inline bool Contains(T val)
-	{
-		for (LHLinkedNode<T>* node = head.Get(); node != NULL; node = node->next.Get())
-		{
-			if (node->payload == val)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
 	inline LHLinkedNode<T>* GetLastNode()
 	{
 		LHLinkedNode<T>* node = head.Get();
@@ -147,6 +153,13 @@ public:
 			return last;
 		}
 		return NULL;
+	}
+	// Inliner IL size: <= 40
+	// BW1W120 inlined BW1M119 010db250 (LHCombined Release)
+	T GetLast()
+	{
+		LHLinkedNode<T>* last = GetLastNode();
+		return last != NULL ? last->payload : NULL;
 	}
 
 	// BW1W120 inlined BW1M119 012aa9e0
@@ -168,17 +181,6 @@ public:
 	{
 		LHLinkedNode<T>* node = GetNodeAtPosition(position);
 		return node == NULL ? NULL : node->payload;
-	}
-
-	// BW1W120 inlined BW1M119 inlined
-	inline LHLinkedNode<T>* GetPreviousNode(LHLinkedNode<T>* node)
-	{
-		LHLinkedNode<T>* walker = head.Get();
-		while (walker != NULL && walker->next.Get() != node)
-		{
-			walker = walker->next.Get();
-		}
-		return walker;
 	}
 
 	// BW1W120 00595a80 BW1M119 01339810
