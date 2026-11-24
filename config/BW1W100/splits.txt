@@ -4125,7 +4125,7 @@ Lionhead/LH3DLib/development/LH3DMem.cpp:
 
 Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x0079A440 end:0x0079B040
-	.rdata      start:0x008D98F0 end:0x008D9914
+	.rdata      start:0x008D98F0 end:0x008D98F4
 	.CRT$XCU    start:0x008F74FC end:0x008F7500 align:4
 	.bss        start:0x00E153B4 end:0x00E153B8
 
@@ -4136,11 +4136,13 @@ Lionhead/LH3DLib/development/Font.cpp:
 
 Lionhead/LH3DLib/development/LHVideoPlayer.cpp:
 	.text       start:0x0079B5C0 end:0x0079C480
-	.data       start:0x00B5B234 end:0x00B5B2D4
+	.data       start:0x00B5B234 end:0x00B5B2BC
 
 Lionhead/LH3DLib/development/Blob.cpp:
 	.text       start:0x0079C480 end:0x0079CF90
+	.rdata      start:0x008D98F4 end:0x008D98F8
 	.CRT$XCU    start:0x008F7500 end:0x008F7508 align:4
+	.data       start:0x00B5B2BC end:0x00B5B2CC
 
 Lionhead/LH3DLib/development/LH3DHair.cpp:
 	.text       start:0x0079CF90 end:0x0079E570
@@ -4148,7 +4150,9 @@ Lionhead/LH3DLib/development/LH3DHair.cpp:
 
 Lionhead/LH3DLib/development/Leash.cpp:
 	.text       start:0x0079E570 end:0x0079FB70
-	.data       start:0x00B5B2D4 end:0x00B5B2E4
+	.rdata      start:0x008D98F8 end:0x008D9914
+	.data       start:0x00B5B2CC end:0x00B5B2E4
+	.bss        start:0x00E163A0 end:0x00E163A4
 
 Lionhead/LH3DLib/development/LH3DObjectCollide.cpp:
 	.text       start:0x0079FB70 end:0x007A04F0

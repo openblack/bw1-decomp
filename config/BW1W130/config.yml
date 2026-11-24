@@ -482,6 +482,10 @@ block_relocations:
   - source: 0x00843F8A
   - source: 0x00843FA6
   - source: 0x00843FE6
+# Leash::GetNodeColour's 0xffffff colour mask is an immediate, not an address in 1.30's larger image.
+  - source: 0x0084DE89
+# Leash::Draw's 0xff0000 is an immediate, not an address in 1.30's larger image.
+  - source: 0x0084E3DB
 # LH3DPrimitive::DrawLit's 0xff0000 is an immediate, not an address in 1.30's larger image.
   - source: 0x0085100A
   - source: 0x008510E1

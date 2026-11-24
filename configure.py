@@ -1685,7 +1685,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LHVideoPlayer.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Blob.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DHair.cpp"),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Leash.cpp"),
+            LH3DLibObject(Matching, "Lionhead/LH3DLib/development/Leash.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DObjectCollide.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPrimitive.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DVRAMTex.cpp"),
