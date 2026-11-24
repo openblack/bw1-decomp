@@ -815,12 +815,13 @@ Black/Creche.cpp:
 	.bss        start:0x00C9C974 end:0x00C9C978
 
 Black/CreditText.cpp:
-	.text       start:0x005090A0 end:0x005097C0
+	.text       start:0x005090A0 end:0x005097A0
 	.rdata      start:0x008C1FE0 end:0x008C1FE8
-	.bss        start:0x00C9C978 end:0x00C9C9A8
+	.CRT$XCU    start:0x009B64B8 end:0x009B64C4 align:4
+	.bss        start:0x00C9C978 end:0x00C9C9A4
 
 Black/Creed.cpp:
-	.text       start:0x005097C0 end:0x005099A0
+	.text       start:0x005097A0 end:0x005099A0
 	.rdata      start:0x008C1FE8 end:0x008C2848
 	.rdata$r    start:0x0099B3E8 end:0x0099B444
 	.data       start:0x00BD5DB0 end:0x00BD5DE8

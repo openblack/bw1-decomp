@@ -237,6 +237,7 @@
 0x00508D2B call_rel32 0x00401879  # CreatureSubActions
 0x0050AA4B call_rel32 0x00401879  # Creche
 0x0050AB3A call_indirect 0x008A9570  # Creche: __imp__db_free_data__YAXPAPAD_Z@4
+0x0050ABFB call_rel32 0x00401879  # CreditText
 0x005136AA call_indirect 0x008A903C  # DialogBoxMain: __imp__DirectXSetupGetVersion
 0x0052DB8B call_rel32 0x00401879  # Fixed
 0x0052E3FA call_indirect 0x008A901C  # Fixed: __imp__TrackMouseEvent@4
