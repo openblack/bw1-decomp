@@ -16,11 +16,18 @@ struct LH3DCameraView
 	LHPoint LookAtVector;
 };
 
+struct LH3DCameraKey
+{
+	LHPoint Position; /* 0x0 */
+	LHPoint Focus;    /* 0xc */
+};
+
 struct LH3DCamera
 {
 	long          Size;     /* 0x0 */
 	unsigned long Duration; /* 0x4 */
 	unsigned long NumKeys;  /* 0x8 */
+	LH3DCameraKey Keys[1];  /* 0xc */
 
 	// BW1W120 0086d4a0 BW1M119 011690a0 (LHCombined Release)
 	static LH3DCamera* Create(void* data, bool with_matrices);
