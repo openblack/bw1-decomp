@@ -517,6 +517,7 @@
 0x0066D69B call_rel32 0x004017F9  # Pot
 0x0066D9FB call_rel32 0x004017F9  # Pot
 0x0066E0FB call_rel32 0x004017F9  # Pot
+0x0067087B call_rel32 0x004017F9  # PrayerSite
 0x006975FB call_rel32 0x004017F9  # PSysLoad
 0x00697D5B call_rel32 0x004017F9  # PSysLoad
 0x006994AB call_rel32 0x004017F9  # PSysLoad

@@ -1180,7 +1180,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/PlaytimeDance.cpp"),
             GameCodeObject(Matching, "Black/Pot.cpp"),
             GameCodeObject(NonMatching, "Black/PowerSpin.cpp"),
-            GameCodeObject(MatchingFor("BW1W100"), "Black/PrayerSite.cpp"),
+            GameCodeObject(Matching, "Black/PrayerSite.cpp"),
             GameCodeObject(NonMatching, "Black/PSys3d.cpp"),
             GameCodeObject(NonMatching, "Black/PSysAtomCore.cpp"),
             GameCodeObject(NonMatching, "Black/PSysBase.cpp", pch=PCH_EXCEPT_NO_STRING),
