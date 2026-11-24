@@ -11,7 +11,7 @@
 #include "WinCondition.h"         /* For WIN_CONDITION_TYPE */
 #include "WinConditionSettings.h" /* For WinConditionSettings */
 
-std::pair<std::string, WIN_CONDITION_TYPE> WinConditionSettings::TypeNames[WC_LAST] = {
+std::pair<std::string, WIN_CONDITION_TYPE> WinConditionSettings::TypeNameTable[WC_LAST] = {
 	std::pair<std::string, WIN_CONDITION_TYPE>("WC_KILL_NUM_VILLAGERS", WC_KILL_NUM_VILLAGERS),                 //
 	std::pair<std::string, WIN_CONDITION_TYPE>("WC_CREATURE_KILL_VILLAGERS", WC_CREATURE_KILL_VILLAGERS),       //
 	std::pair<std::string, WIN_CONDITION_TYPE>("WC_VILLAGERS_BORN_IN_TOWN", WC_VILLAGERS_BORN_IN_TOWN),         //
@@ -29,22 +29,25 @@ std::pair<std::string, WIN_CONDITION_TYPE> WinConditionSettings::TypeNames[WC_LA
 	std::pair<std::string, WIN_CONDITION_TYPE>("WC_GROW_TREES", WC_GROW_TREES),                                 //
 };
 
-std::list<WinConditionTemplate*> WinConditionTemplate::Templates;
+std::list<WinConditionTemplate*> WinConditionTemplate::List;
+
+static float spare;
+static float unused;
 
 void WinConditionSettings::Parse(std::string text)
 {
 	size_t      colon = text.find(":");
-	std::string name(text, 0, colon);
+	std::string name = text.substr(0, colon);
 	int         type;
 	for (type = 0; type < WC_LAST; type++)
 	{
-		if (name.compare(TypeNames[type].first) == 0)
+		if (name.compare(TypeNameTable[type].first) == 0)
 		{
 			break;
 		}
 	}
 	Type = type;
-	std::stringstream values(std::string(text, colon + 1, std::string::npos));
+	std::stringstream values(text.substr(colon + 1, std::string::npos));
 	SmallStep = -1;
 	values >> Target;
 	values >> Min;
@@ -57,12 +60,12 @@ void LoadConditionTemplate(const char* file_name)
 {
 	std::ifstream         file(file_name);
 	WinConditionTemplate* current = NULL;
-	for (std::list<WinConditionTemplate*>::iterator it = WinConditionTemplate::Templates.begin();
-	     it != WinConditionTemplate::Templates.end(); it++)
+	for (std::list<WinConditionTemplate*>::iterator it = WinConditionTemplate::List.begin();
+	     it != WinConditionTemplate::List.end(); it++)
 	{
 		delete *it;
 	}
-	WinConditionTemplate::Templates.clear();
+	WinConditionTemplate::List.clear();
 	if (file.is_open())
 	{
 		while (!file.eof())
@@ -78,7 +81,7 @@ void LoadConditionTemplate(const char* file_name)
 			{
 				if (current != NULL)
 				{
-					WinConditionTemplate::Templates.push_back(current);
+					WinConditionTemplate::List.push_back(current);
 					current = NULL;
 				}
 				current = new WinConditionTemplate;
@@ -95,7 +98,7 @@ void LoadConditionTemplate(const char* file_name)
 		}
 		if (current != NULL)
 		{
-			WinConditionTemplate::Templates.push_back(current);
+			WinConditionTemplate::List.push_back(current);
 			current = NULL;
 		}
 	}

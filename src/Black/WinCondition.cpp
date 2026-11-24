@@ -78,8 +78,8 @@ void WinConditionSettings::ResetLimits()
 
 void SetupWinConditions(std::string file_name)
 {
-	for (std::list<WinConditionTemplate*>::iterator it = WinConditionTemplate::Templates.begin();
-	     it != WinConditionTemplate::Templates.end(); it++)
+	for (std::list<WinConditionTemplate*>::iterator it = WinConditionTemplate::List.begin();
+	     it != WinConditionTemplate::List.end(); it++)
 	{
 		if ((*it)->MapName.find(file_name) == std::string::npos)
 		{

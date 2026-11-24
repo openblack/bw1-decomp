@@ -3193,6 +3193,7 @@ Black/WinConditionTemplate.cpp:
 	.text       start:0x00775890 end:0x00778DD0
 	.text$x     start:0x008A65A0 end:0x008A65B0 align:16
 	.rdata      start:0x0099BAA4 end:0x0099BB0C
+	.rdata$r    start:0x009BA130 end:0x009BA23C
 	.xdata$x    start:0x009BC3A8 end:0x009BC400 align:4
 	.CRT$XCU    start:0x009C7AC4 end:0x009C7AD0 align:4
 	.data       start:0x00C24A78 end:0x00C24CA0
@@ -3411,7 +3412,7 @@ Lionhead/LH3DLib/development/LH3DP3.cpp:
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x007AD060 end:0x007AEBB0
-	.text$x     start:0x008A65B0 end:0x008A65C8 align:4
+	.text$x     start:0x008A65B0 end:0x008A65C8 align:16
 	.rdata      start:0x0099F014 end:0x0099F01C
 	.xdata$x    start:0x009BC400 end:0x009BC428 align:4
 	.CRT$XCU    start:0x009C7C80 end:0x009C7C88 align:4

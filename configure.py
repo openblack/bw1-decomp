@@ -1330,7 +1330,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/WeatherThing.cpp"),
             GameCodeObject(NonMatching, "Black/Whale.cpp"),
             GameCodeObject(MatchingFor("BW1W120", "BW1W130"), "Black/WinCondition.cpp"),
-            GameCodeObject(NonMatching, "Black/WinConditionTemplate.cpp", pch=False),
+            GameCodeObject(MatchingFor("BW1W120", "BW1W130"), "Black/WinConditionTemplate.cpp", pch=False),
             GameCodeObject(NonMatching, "Black/Wonder.cpp"),
             GameCodeObject(NonMatching, "Black/Workshop.cpp"),
             GameCodeObject(Matching, "Black/Worship.cpp"),
