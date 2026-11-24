@@ -62,9 +62,7 @@ public:
 	uint32_t        field_0x30;
 	uint32_t        field_0x34;
 	float           Life;
-	uint32_t        field_0x3c;
-	uint32_t        field_0x40;
-	uint32_t        field_0x44;
+	uint32_t        field_0x3c[0x3];
 	bool32_t        CreatureCasting;
 	uint32_t        field_0x4c;
 	float           field_0x50;
@@ -91,13 +89,10 @@ public:
 	SpellSeed*        SpellSeedLink;
 	uint32_t          field_0xb0;
 	MAGIC_TYPE        magic_type;
-	float             field_0xb8;
-	float             field_0xbc;
+	float             field_0xb8[0x2];
 	MapCoords         field_0xc0;
 	MapCoords         SpellCastPos;
-	uint32_t          field_0xd8;
-	uint32_t          field_0xdc;
-	uint32_t          field_0xe0;
+	uint32_t          field_0xd8[0x3];
 	float             StrengthMult;
 	LHListNode<Spell> next;
 

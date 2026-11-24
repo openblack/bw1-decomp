@@ -46,8 +46,7 @@ public:
 	LHLinkedList<Villager*> villagers;
 	FishFarm_field_0x88_t*  field_0x88;
 	LHPTR<Town>             town;
-	float                   field_0x90;
-	float                   field_0x94;
+	float                   field_0x90[0x2];
 
 	// Override methods
 

@@ -21,6 +21,7 @@ class GameThingWithPos;
 struct MapCoords;
 class Object;
 class Game3DObject;
+class Pot;
 class Scaffold;
 class ShowNeedsVisuals;
 class Villager;
@@ -36,7 +37,7 @@ public:
 	uint32_t                ProductionTimeLeft;
 	uint32_t                field_0xc8;
 	Game3DObject*           ScaffoldPreview;
-	uint32_t                field_0xd0;
+	Pot*                    WoodPile;
 	ShowNeedsVisuals*       NeedsVisuals;
 	LHListNode<Workshop>    next;
 	uint8_t                 ScaffoldSlots[0x4];
@@ -105,6 +106,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00779690 BW1M119 0116c070
+	MapCoords GetResourcePosAndYAngle(RESOURCE_TYPE type, unsigned long index, float* y_angle);
 	// BW1W120 00779af0 BW1M119 0116b890
 	int GetSpaceInStore();
 	// BW1W120 00779b60 BW1M119 0116b720
