@@ -130,22 +130,22 @@ struct LHMatrix
 		m[7] *= z;
 		m[8] *= z;
 	}
-	// Inliner IL size: 198
+	// Inliner IL size: 150
 	// BW1W120 0086da50 BW1M119 inlined
 	void __fastcall operator+=(const LHMatrix& r)
 	{
-		m[0] += r.m[0];
-		m[1] += r.m[1];
-		m[2] += r.m[2];
-		m[3] += r.m[3];
-		m[4] += r.m[4];
-		m[5] += r.m[5];
-		m[6] += r.m[6];
-		m[7] += r.m[7];
-		m[8] += r.m[8];
-		m[9] += r.m[9];
-		m[10] += r.m[10];
-		m[11] += r.m[11];
+		_11 += r._11;
+		_12 += r._12;
+		_13 += r._13;
+		_21 += r._21;
+		_22 += r._22;
+		_23 += r._23;
+		_31 += r._31;
+		_32 += r._32;
+		_33 += r._33;
+		_41 += r._41;
+		_42 += r._42;
+		_43 += r._43;
 	}
 	// Inliner IL size: 81, plus the nested SetIdentity
 	// BW1W120 inlined BW1M119 inlined
