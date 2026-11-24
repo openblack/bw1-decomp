@@ -24,7 +24,7 @@ LH_AudioBank::LH_AudioBank()
 
 LH_AudioBank::~LH_AudioBank()
 {
-	if (UsingHeap && File->Opened)
+	if (UsingHeap && File->OpenFlag)
 	{
 		File->Close();
 	}
@@ -74,7 +74,7 @@ LH_AudioBank* LH_AudioSystem::LHBankRegister(char* filename, unsigned char mode)
 	}
 
 	bank->File->SetName(filename);
-	if (bank->File->Open(LH_FILE_MODE_READ_ONLY))
+	if (bank->File->Open(LH_FILE_READ_ONLY))
 	{
 		LH_LOG_ERROR_CODE1(85, LH_AUDIO_ERROR_BANK_REGISTER_OPEN_BANK, filename);
 		delete bank;

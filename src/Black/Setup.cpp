@@ -1772,7 +1772,7 @@ bool32_t GSetup::SaveAllMap(char* file_name)
 	unsigned long    numPots = 0;
 	unsigned long    numMobileObjects = 0;
 	unsigned long    numBigForests = 0;
-	if (file.Open(file_name, LH_FILE_MODE_READ_WRITE) != LH_FILE_RESULT_OK)
+	if (file.Open(file_name, LH_FILE_NEW) != LH_FILE_RESULT_OK)
 	{
 		return false;
 	}
@@ -1985,7 +1985,7 @@ bool32_t GSetup::SaveMapRegion(char* file_name, const MapCoords& corner_a, const
 	char                  text[100];
 	LHLinkedList<Town*>   towns;
 	LHLinkedList<Object*> objects;
-	if (file.Open(file_name, LH_FILE_MODE_READ_WRITE) != LH_FILE_RESULT_OK)
+	if (file.Open(file_name, LH_FILE_NEW) != LH_FILE_RESULT_OK)
 	{
 		return false;
 	}
@@ -2055,7 +2055,7 @@ bool32_t GSetup::LoadMapFeaturesForPlayer(char* file_name, const MapCoords* offs
 bool32_t GSetup::SaveTownFile(char* file_name, Town* town)
 {
 	LHReleasedOSFile file;
-	if (town == NULL || file.Open(file_name, LH_FILE_MODE_READ_WRITE) != LH_FILE_RESULT_OK)
+	if (town == NULL || file.Open(file_name, LH_FILE_NEW) != LH_FILE_RESULT_OK)
 	{
 		return false;
 	}

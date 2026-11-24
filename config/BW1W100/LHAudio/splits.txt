@@ -125,9 +125,12 @@ Lionhead/LHAudio/ver7.0/Version.cpp:
 
 LHAudio/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x10015F50 end:0x1001A0B0
-	.text$x     start:0x1002F1E0 end:0x1002F200
+	.text$x     start:0x1002F1E0 end:0x1002F1F8
+	.rdata      start:0x10031EC8 end:0x10031ECC
 	.xdata$x    start:0x10033198 end:0x100331C0
 	.CRT$XCU    start:0x10037010 end:0x10037014 align:4
+	.data       start:0x1003C3D0 end:0x1003D567
+	.bss        start:0x10056618 end:0x10056620
 
 LHAudio/LHFile/ver3.0/LHOSFile.cpp:
 	.text       start:0x1001A0B0 end:0x1001B630

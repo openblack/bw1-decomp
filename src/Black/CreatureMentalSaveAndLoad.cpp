@@ -287,7 +287,7 @@ bool32_t Creature::Load(GameOSFile& file)
 		{
 			char path[MAX_PATH];
 			sprintf(path, CREATURE_MIND_FILE_PATH, playerInterface->player->UserFilename);
-			Archive  archive(path, LH_FILE_MODE_READ_ONLY);
+			Archive  archive(path, LH_FILE_READ_ONLY);
 			uint32_t length;
 			if (archive.IsOpen() && archive.File.Length(&length) == LH_FILE_RESULT_OK && length > 0)
 			{
@@ -396,7 +396,7 @@ void Creature::ResolveLoad()
 	{
 		sprintf(mindPath, SAVED_CREATURE_PATH, path, SavedCreatureIndex);
 	}
-	Archive archive(mindPath, LH_FILE_MODE_READ_ONLY);
+	Archive archive(mindPath, LH_FILE_READ_ONLY);
 	if (archive.IsOpen() && archive.File.Length(&length) == LH_FILE_RESULT_OK && length > 0)
 	{
 		unsigned long creatureType;
@@ -465,7 +465,7 @@ void CreatureMental::SaveMindToChosenFile()
 
 void Creature::Save3D(char* path)
 {
-	Archive archive(path, LH_FILE_MODE_READ_WRITE);
+	Archive archive(path, LH_FILE_NEW);
 	archive << (int)GetInfo()->CreatureType;
 	archive << physical->Creature3d->GetSize();
 	archive << physical->GetStrength();
@@ -490,7 +490,7 @@ LH3DCreature* Creature::Load3D(char* name)
 {
 	char path[248];
 	sprintf(path, CREATURE_PHYSIQUE_PATH, name);
-	Archive archive(path, LH_FILE_MODE_READ_ONLY);
+	Archive archive(path, LH_FILE_READ_ONLY);
 	if (archive.IsOpen())
 	{
 		unsigned long creatureType;
@@ -540,7 +540,7 @@ void CreatureMental::SaveMind(char* path)
 {
 	if (creature.Get()->RemoteCreature != true)
 	{
-		Archive archive(path, LH_FILE_MODE_READ_WRITE);
+		Archive archive(path, LH_FILE_NEW);
 		SaveMind(archive);
 	}
 }
@@ -700,7 +700,7 @@ void Creature::LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* 
 	Archive* archive;
 	if (data == NULL)
 	{
-		archive = NEW(882) Archive(path, LH_FILE_MODE_READ_ONLY);
+		archive = NEW(882) Archive(path, LH_FILE_READ_ONLY);
 	}
 	else
 	{

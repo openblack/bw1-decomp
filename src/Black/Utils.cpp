@@ -1175,9 +1175,9 @@ bool32_t GUtils::DuplicateFile(char* from, char* to)
 	bool32_t         result = false;
 	LHReleasedOSFile source;
 	LHReleasedOSFile destination;
-	if (source.Open(from, LH_FILE_MODE_READ_ONLY) == LH_FILE_RESULT_OK)
+	if (source.Open(from, LH_FILE_READ_ONLY) == LH_FILE_RESULT_OK)
 	{
-		if (destination.Open(to, LH_FILE_MODE_READ_WRITE) == LH_FILE_RESULT_OK)
+		if (destination.Open(to, LH_FILE_NEW) == LH_FILE_RESULT_OK)
 		{
 			char         buffer[1000];
 			unsigned int bytes;

@@ -418,11 +418,12 @@ if config.version == "BW1WCI":
         # ___threadhandle, mlock.obj's _lockerr_exit, winsig.obj's signal,
         # winxfltr.obj's _XcptFilter, a_loc.obj's and w_loc.obj's
         # ___crtGetLocaleInfo, and the math error handlers of fpexcept.obj and
-        # ldexp.obj, which are not linked
+        # ldexp.obj, which are not linked; and LHFile's AllocSegDataMem, the only
+        # user of LHLog's LH_LOG_NO_MEMORY_TEXT, which the DLL does not import
         *(f"/alternatename:{_name}=__imp__ExitProcess@4" for _name in (
             "__imp__CreateThread@24", "__imp__ResumeThread@4", "__imp__GetCurrentThread@0",
             "__imp__FatalAppExitA@8", "__imp__SetConsoleCtrlHandler@8", "__imp__UnhandledExceptionFilter@4",
-            "__imp__GetLocaleInfoA@16", "__imp__GetLocaleInfoW@16")),
+            "__imp__GetLocaleInfoA@16", "__imp__GetLocaleInfoW@16", "__imp_?LH_LOG_NO_MEMORY_TEXT@@3PADA")),
         *(f"/alternatename:{_name}=_abort" for _name in ("__except1", "__except2", "__handle_qnan1", "__handle_qnan2", "_ldexp")),
     ]
 # The links whose image link.exe built with /OPT:ICF: LHLog's in every version,
@@ -696,6 +697,10 @@ cflags_lhaudio = [
 def AudioObject(completed, name, pch=True, **options):
     return Object(completed, name, cflags=cflags_lhaudio, pch=lhaudio_pch if pch else None, **options)
 
+
+# The LHFile library objects runblack links: Lionhead's Gold configuration, with the exception
+# handling and defines LH3DP3's command line shows.
+cflags_lhfile_gold = ["/GX", "/D_GOLD", "/D_GOLD_"]
 
 # The LHFile library objects LHaudiodllR.dll links.
 cflags_lhfile_audio = [f for f in cflags_lhaudio if f != "/DLH_AUDIO_EXPORTS"]
@@ -1351,14 +1356,14 @@ config.libs = [
 
             Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp", progress_category="sdk", extra_cflags=cflags_lhdll),
 
-            Object(Matching, "Lionhead/LHFile/ver3.0/LHFile.cpp", progress_category="sdk", extra_cflags=["/GX"]),
-            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", progress_category="sdk", extra_cflags=["/GX"]),
+            Object(Matching, "Lionhead/LHFile/ver3.0/LHFile.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
+            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
 
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "zlib/compress.c", progress_category="sdk"),
             Object(Matching, "zlib/uncompr.c", progress_category="sdk"),
 
-            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHParseFile.cpp", progress_category="sdk"),
-            Object(Matching, "Lionhead/LHFile/ver3.0/Version.cpp", progress_category="sdk"),
+            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHParseFile.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
+            Object(Matching, "Lionhead/LHFile/ver3.0/Version.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
 
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "zlib/deflate.c", progress_category="sdk"),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "zlib/inflate.c", progress_category="sdk"),
@@ -1808,7 +1813,7 @@ config.libs = [
 
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "amaths", ".\\Release\\AMaths.obj", progress_category="sdk"),
 
-            Object(NonMatching, "Lionhead/LHFile/ver3.0/BitmapInfo.cpp", progress_category="sdk"),
+            Object(NonMatching, "Lionhead/LHFile/ver3.0/BitmapInfo.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
 
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\wcsdup.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\wcsicmp.obj", progress_category="sdk"),
@@ -1854,7 +1859,7 @@ config.libs = [
             AudioObject(Matching, "Lionhead/LHAudio/ver7.0/LHAudioWave.cpp"),
             AudioObject(Matching, "Lionhead/LHAudio/ver7.0/Version.cpp"),
             # LHFile ver3.0, built with asserts, linked from its static library.
-            Object(NonMatching, "LHAudio/LHFile/ver3.0/LHFile.cpp", source="Lionhead/LHFile/ver3.0/LHFile.cpp", cflags=cflags_lhfile_audio),
+            Object(Matching, "LHAudio/LHFile/ver3.0/LHFile.cpp", source="Lionhead/LHFile/ver3.0/LHFile.cpp", cflags=cflags_lhfile_audio),
             Object(NonMatching, "LHAudio/LHFile/ver3.0/LHOSFile.cpp", source="Lionhead/LHFile/ver3.0/LHOSFile.cpp", cflags=cflags_lhfile_audio),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/uncompr.c", source="zlib/uncompr.c", cflags=cflags_zlib_audio, progress_category="sdk"),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/inflate.c", source="zlib/inflate.c", cflags=cflags_zlib_audio, progress_category="sdk"),

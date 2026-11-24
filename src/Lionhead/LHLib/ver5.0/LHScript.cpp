@@ -378,7 +378,7 @@ template <class T> LH_RETURN LHScriptX<T>::LoadFile(char* file_name, long* param
 
 	lineNumber = 0;
 	ifLevel = -1;
-	if (!file.Open(file_name, LH_FILE_MODE_READ_ONLY))
+	if (!file.Open(file_name, LH_FILE_READ_ONLY))
 	{
 		PostFileOpenStuff(file);
 		while (LoadOneLine(file, line))

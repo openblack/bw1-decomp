@@ -118,7 +118,7 @@ void GData::LoadShape(const char* name, unsigned long shape)
 	char path[DANCE_SHAPE_PATH_LENGTH];
 	sprintf(path, ".\\data\\%s.dan", name);
 	LHReleasedOSFile file;
-	file.Open(path, LH_FILE_MODE_READ_ONLY);
+	file.Open(path, LH_FILE_READ_ONLY);
 	uint32_t numPoints;
 	file.Read(&numPoints, sizeof(numPoints), NULL);
 	for (uint32_t i = 0; i < numPoints; i++)

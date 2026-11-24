@@ -121,6 +121,15 @@ Lionhead/LHAudio/ver7.0/Version.cpp:
 	.data       start:0x10029238 end:0x100293CC
 	.bss        start:0x100425E0 end:0x10042780
 
+LHAudio/LHFile/ver3.0/LHFile.cpp:
+	.text       start:0x100105A0 end:0x10012E60
+	.text$x     start:0x1001F980 end:0x1001F998
+	.rdata      start:0x100204A8 end:0x100204AC
+	.xdata$x    start:0x10021038 end:0x10021060
+	.CRT$XCU    start:0x10024010 end:0x10024014 align:4
+	.data       start:0x100293D0 end:0x10029F1B
+	.bss        start:0x10042780 end:0x10042788
+
 LHAudio/lib/libcmt64/delete.obj:
 	.text       start:0x10013610 end:0x1001361B align:1
 
@@ -630,10 +639,6 @@ LHAudio/lib/libcmt64/mbschr.obj:
 
 LHAudio/lib/libcmt64/strdup.obj:
 	.text       start:0x1001F580 end:0x1001F5AB align:1
-
-LHAudio/LHFile/ver3.0/LHFile.cpp:
-	.text$x     start:0x1001F980 end:0x1001F9A0
-	.xdata$x    start:0x10021038 end:0x10021060
 
 LHAudio/LHFile/ver3.0/LHOSFile.cpp:
 	.text$x     start:0x1001F9A0 end:0x1001F9B5

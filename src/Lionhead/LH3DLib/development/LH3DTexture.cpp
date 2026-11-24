@@ -227,7 +227,7 @@ void LH3DTexture::SetPackedTexture()
 	{
 		TextureFormat format;
 		format.Type = LH3D_TEXTURE_FORMAT_555;
-		long* data = (long*)segment.buffer;
+		long* data = (long*)segment.Data;
 		g_count_pack = *data;
 		long* entry = data + 1;
 		g_pack = (LH3DTexture**)LH3DMem::AllocClear(g_count_pack * sizeof(LH3DTexture*));
@@ -837,7 +837,7 @@ void LH3DTexture::RequestAndUpdateCT()
 			return;
 #endif
 		}
-		LH3DCT::DataOnDisk* data = (LH3DCT::DataOnDisk*)(segment.buffer + LH3D_TEXTURE_CT_HEADER_SIZE);
+		LH3DCT::DataOnDisk* data = (LH3DCT::DataOnDisk*)(segment.Data + LH3D_TEXTURE_CT_HEADER_SIZE);
 		CT = LH3DCT::Create(data, false);
 		g_cached_tex_file.FreeLastSeg();
 	}
@@ -848,7 +848,7 @@ void __fastcall LH3DTexture::SavePack(void* textures, const char* filename)
 {
 	TexturePack*   pack = (TexturePack*)textures;
 	LHReleasedFile file(filename);
-	file.Open(LH_FILE_MODE_READ_WRITE);
+	file.Open(LH_FILE_NEW);
 	LHSegment segment;
 	char      name[0x20];
 	long*     header = (long*)malloc(LH3D_TEXTURE_PACK_HEADER_SIZE);
@@ -919,9 +919,9 @@ void __fastcall LH3DTexture::SavePack(void* textures, const char* filename)
 		data[1] = info[0] = entry->Id;
 		data[2] = info[1] = type;
 		sprintf(name, "%x", entry->Id);
-		strcpy((char*)segment.name, name);
-		segment.size = size;
-		segment.buffer = (uint8_t*)data;
+		strcpy((char*)segment.Name, name);
+		segment.Size = size;
+		segment.Data = (uint8_t*)data;
 		file.WriteSegment(&segment);
 		LH3DMem::Free(data);
 		ct->Release();
@@ -992,18 +992,18 @@ void __fastcall LH3DTexture::SavePack(void* textures, const char* filename)
 		data[1] = info[0] = entry->Id;
 		data[2] = info[1] = type;
 		sprintf(name, "LOW%x", entry->Id);
-		strcpy((char*)segment.name, name);
-		segment.size = size;
-		segment.buffer = (uint8_t*)data;
+		strcpy((char*)segment.Name, name);
+		segment.Size = size;
+		segment.Data = (uint8_t*)data;
 		file.WriteSegment(&segment);
 		LH3DMem::Free(data);
 		ct->Release();
 	}
 	g_b_use_low_res = false;
 #endif
-	strcpy((char*)segment.name, LH3D_TEXTURE_INFO_SEGMENT);
-	segment.size = LH3D_TEXTURE_PACK_HEADER_SIZE;
-	segment.buffer = (uint8_t*)header;
+	strcpy((char*)segment.Name, LH3D_TEXTURE_INFO_SEGMENT);
+	segment.Size = LH3D_TEXTURE_PACK_HEADER_SIZE;
+	segment.Data = (uint8_t*)header;
 	file.WriteSegment(&segment);
 	free(header);
 	file.Close();

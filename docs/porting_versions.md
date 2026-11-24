@@ -67,9 +67,11 @@ reproduces.
   identical functions share one body, which `symbols.txt` names with `alias` labels (the port
   reads them off the export table, vtables and callers) for the fold to resolve (this ICF link is still folded, see `config.icf_links`). Its link uses
   `/OPT:REF` too, with the DLL's exports as roots and the split's function sections plain
-  (`function_comdat: false`, which a re-emit keeps). The fold cannot merge a unit's static
-  functions onto another unit's copy, so the units with their own copy of `LHLogDebugBreak`
-  (Atmos, Bank, Music, Sample, System) do not link yet.
+  (`function_comdat: false`, which a re-emit keeps). The fold merges a unit's static function
+  onto another unit's copy only when `symbols.txt` gives that copy a global `alias` label of
+  the same name. Every unit's own `LHLogDebugBreak` went to the body at 0x10012FD0, which has
+  one, so LHFile links; Atmos, Bank, Music, Sample and System, which have their own copy too,
+  are not linked from source for Creature Isle yet.
 
 ## Where the port stands
 

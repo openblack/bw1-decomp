@@ -3110,7 +3110,7 @@ uint32_t LH3DIsland::Create()
 	}
 	CreateCommonPart();
 	LHReleasedFile file(g_name_mnt_to_load);
-	file.Open(LH_FILE_MODE_READ_ONLY);
+	file.Open(LH_FILE_READ_ONLY);
 	LHSegment segment;
 	uint8_t*  soundMap = NULL;
 	if (file.GetSegment("LH_FILE_NEW_COUNTRY_MASK_SEGMENT", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
@@ -3118,13 +3118,13 @@ uint32_t LH3DIsland::Create()
 		return false;
 	}
 	uint8_t* blockMask = (uint8_t*)LH3DMem::AllocClear(LAND_BLOCKS_SIDE * LAND_BLOCKS_SIDE);
-	memcpy(blockMask, segment.buffer, LAND_BLOCKS_SIDE * LAND_BLOCKS_SIDE);
+	memcpy(blockMask, segment.Data, LAND_BLOCKS_SIDE * LAND_BLOCKS_SIDE);
 	if (file.GetSegment("LH_FILE_NEW_HEIGHT_SEGMENT", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
 	{
 		return false;
 	}
 	uint8_t* heightMap = (uint8_t*)LH3DMem::AllocClear(LAND_MAP_POINTS);
-	memcpy(heightMap, segment.buffer, LAND_MAP_SIZE * LAND_MAP_SIZE);
+	memcpy(heightMap, segment.Data, LAND_MAP_SIZE * LAND_MAP_SIZE);
 	int      i;
 	uint8_t* mask = blockMask;
 	for (i = 0; i < LAND_BLOCKS_SIDE; i++)
@@ -3148,33 +3148,33 @@ uint32_t LH3DIsland::Create()
 		return false;
 	}
 	uint8_t* lightMap = (uint8_t*)LH3DMem::AllocClear(LAND_MAP_POINTS);
-	memcpy(lightMap, segment.buffer, LAND_MAP_SIZE * LAND_MAP_SIZE);
+	memcpy(lightMap, segment.Data, LAND_MAP_SIZE * LAND_MAP_SIZE);
 	if (file.GetSegment("LH_FILE_NEW_COUNTRY_SEGMENT", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
 	{
 		return false;
 	}
 	uint8_t* countryMap = (uint8_t*)LH3DMem::AllocClear(LAND_MAP_POINTS);
-	memcpy(countryMap, segment.buffer, LAND_MAP_SIZE * LAND_MAP_SIZE);
+	memcpy(countryMap, segment.Data, LAND_MAP_SIZE * LAND_MAP_SIZE);
 	if (file.GetSegment("LH_FILE_NOISE_BITMAP", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
 	{
 		return false;
 	}
-	LH3DLandscape::SetNoiseMaps(segment.buffer);
+	LH3DLandscape::SetNoiseMaps(segment.Data);
 	if (file.GetSegment("LH_FILE_COUNTRIES_MATERIALS_BLEN", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
 	{
 		return false;
 	}
-	LH3DLandscape::SetCountries(segment.buffer);
+	LH3DLandscape::SetCountries(segment.Data);
 	if (file.GetSegment("LH_FILE_MATERIALS_RAW", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
 	{
 		return false;
 	}
-	LH3DLandscape::SetMaterials(segment.buffer);
+	LH3DLandscape::SetMaterials(segment.Data);
 	if (file.GetSegment("LH_FILE_BUMP", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
 	{
 		return false;
 	}
-	LH3DLandscape::SetBump(segment.buffer);
+	LH3DLandscape::SetBump(segment.Data);
 	if (file.GetSegment("LH_FILE_FLAGS", &segment, true) == LH_FILE_RESULT_NOT_FOUND)
 	{
 		LH3DLandscape::g_town_index = 0;
@@ -3182,13 +3182,13 @@ uint32_t LH3DIsland::Create()
 	}
 	else
 	{
-		LH3DLandscape::g_filed_index = ((unsigned long*)segment.buffer)[0];
-		LH3DLandscape::g_town_index = ((unsigned long*)segment.buffer)[1];
+		LH3DLandscape::g_filed_index = ((unsigned long*)segment.Data)[0];
+		LH3DLandscape::g_town_index = ((unsigned long*)segment.Data)[1];
 	}
 	if (file.GetSegment("LH_FILE_SOUND_MAP", &segment, true) != LH_FILE_RESULT_NOT_FOUND)
 	{
 		soundMap = (uint8_t*)LH3DMem::AllocClear(LAND_MAP_POINTS);
-		memcpy(soundMap, segment.buffer, LAND_MAP_SIZE * LAND_MAP_SIZE);
+		memcpy(soundMap, segment.Data, LAND_MAP_SIZE * LAND_MAP_SIZE);
 	}
 	file.FreeLastSeg();
 	file.Close();

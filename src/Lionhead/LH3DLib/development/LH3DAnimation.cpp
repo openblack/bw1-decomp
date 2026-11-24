@@ -463,7 +463,7 @@ LH3DAnimFrame** LH3DAnim::GetListPtrFrames()
 void LH3DAnim::CreateCachedFile(void* data, char* filename)
 {
 	LHReleasedFile file(filename);
-	file.Open(LH_FILE_MODE_READ_WRITE);
+	file.Open(LH_FILE_NEW);
 	PackHeader* header = (PackHeader*)data;
 	long        size =
 		header->GetCount() * (sizeof(PackHeader::Entry) + LH3D_ANIM_CACHED_HEADER_SIZE) + offsetof(PackHeader, Entries);
@@ -482,15 +482,15 @@ void LH3DAnim::CreateCachedFile(void* data, char* filename)
 		anim += LH3D_ANIM_CACHED_HEADER_SIZE;
 		char name[32];
 		sprintf(name, LH3D_ANIM_SEGMENT_NAME, i);
-		strcpy((char*)segment.name, name);
-		segment.size = header->Entries[i].Size - LH3D_ANIM_CACHED_HEADER_SIZE;
-		segment.buffer = anim;
+		strcpy((char*)segment.Name, name);
+		segment.Size = header->Entries[i].Size - LH3D_ANIM_CACHED_HEADER_SIZE;
+		segment.Data = anim;
 		Report3D__FPCce("> %s\n", name);
 		file.WriteSegment(&segment);
 	}
-	strcpy((char*)segment.name, LH3D_ANIM_PACK_SEGMENT_NAME);
-	segment.size = size;
-	segment.buffer = buffer;
+	strcpy((char*)segment.Name, LH3D_ANIM_PACK_SEGMENT_NAME);
+	segment.Size = size;
+	segment.Data = buffer;
 	file.WriteSegment(&segment);
 	file.Close();
 	free(buffer);
@@ -507,10 +507,10 @@ void LH3DAnim::LoadFromCache()
 		sprintf(error, "Cannot load segment %s", name);
 		return;
 	}
-	LH3DAnimFrame** frames = (LH3DAnimFrame**)LH3DMem::Alloc(segment.size);
-	memcpy(frames, segment.buffer, segment.size);
-	CachedSize = segment.size;
-	g_total_cached_memories += segment.size;
+	LH3DAnimFrame** frames = (LH3DAnimFrame**)LH3DMem::Alloc(segment.Size);
+	memcpy(frames, segment.Data, segment.Size);
+	CachedSize = segment.Size;
+	g_total_cached_memories += segment.Size;
 	ProcessCache();
 	SetListPtrFrame(frames);
 	UpdatePartialPtr();
@@ -524,18 +524,18 @@ void LH3DAnim::CreatePack()
 		Report3D__FPCce("CreatePack Anim: ERROR already created.\n");
 		return;
 	}
-	g_cached_anim_file.Open(LH_FILE_MODE_READ_ONLY);
+	g_cached_anim_file.Open(LH_FILE_READ_ONLY);
 	LHSegment segment;
 	if (g_cached_anim_file.GetSegment(LH3D_ANIM_PACK_SEGMENT_NAME, &segment, true) == LH_FILE_RESULT_NOT_FOUND)
 	{
 		return;
 	}
-	PackHeader* header = (PackHeader*)segment.buffer;
-	g_pack = (LH3DAnimPack*)LH3DMem::Alloc(segment.size);
+	PackHeader* header = (PackHeader*)segment.Data;
+	g_pack = (LH3DAnimPack*)LH3DMem::Alloc(segment.Size);
 	g_pack->AnimCount = header->GetCount();
 	for (int i = 0; i < header->Count; i++)
 	{
-		uint8_t*  data = segment.buffer + header->Entries[i].Offset;
+		uint8_t*  data = segment.Data + header->Entries[i].Offset;
 		LH3DAnim* anim = (LH3DAnim*)LH3DMem::Alloc(sizeof(LH3DAnim));
 		g_pack->Anims[i] = anim;
 		memcpy(anim, data, LH3D_ANIM_CACHED_HEADER_SIZE);

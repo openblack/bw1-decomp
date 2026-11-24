@@ -621,7 +621,7 @@ bool32_t GFootpathLink::LoadAll(char* filename)
 {
 	GameOSFile file;
 	GameOSFile::ReadEnabled = true;
-	if (file.Open(filename, LH_FILE_MODE_READ_ONLY) != LH_FILE_RESULT_OK)
+	if (file.Open(filename, LH_FILE_READ_ONLY) != LH_FILE_RESULT_OK)
 	{
 		return false;
 	}

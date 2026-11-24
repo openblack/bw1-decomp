@@ -937,10 +937,10 @@ void GCameraEditor::CreateSegFile()
 		SegFile = NEW(839) LHReleasedFile(".\\Data\\camera.edt");
 		if (GetFileAttributes(".\\Data\\camera.edt") == INVALID_FILE_ATTRIBUTES)
 		{
-			SegFile->Open(LH_FILE_MODE_READ_WRITE);
+			SegFile->Open(LH_FILE_NEW);
 			SegFile->Close();
 		}
-		SegFile->Open(LH_FILE_MODE_READ_ONLY);
+		SegFile->Open(LH_FILE_READ_ONLY);
 	}
 }
 
@@ -1116,7 +1116,7 @@ void GCameraEditor::LoadScripts()
 	LHSegment segment;
 	if (SegFile->GetSegment("EDITOR", &segment, true) != LH_FILE_RESULT_NOT_FOUND)
 	{
-		int* header = (int*)segment.buffer;
+		int* header = (int*)segment.Data;
 		if (header[0] == CAMERA_EDITOR_FILE_VERSION)
 		{
 			char* record = (char*)(header + CAMERA_EDITOR_FILE_HEADER_SIZE / sizeof(int));
@@ -1722,16 +1722,16 @@ void ScriptedCamera::Release()
 void GCameraEditor::SaveSegments(void* data, int size)
 {
 	SegFile->Close();
-	if (SegFile->Open(LH_FILE_MODE_READ_WRITE))
+	if (SegFile->Open(LH_FILE_NEW))
 	{
 		char text[0x400];
 		sprintf(text, "Can't open %s, may be not check-out!", ".\\Data\\camera.edt");
 		return;
 	}
 	LHSegment segment;
-	strcpy((char*)segment.name, "EDITOR");
-	segment.size = size;
-	segment.buffer = (uint8_t*)data;
+	strcpy((char*)segment.Name, "EDITOR");
+	segment.Size = size;
+	segment.Data = (uint8_t*)data;
 	SegFile->WriteSegment(&segment);
 	LHSegment   cameraSegment;
 	int         index = 0;
@@ -1742,9 +1742,9 @@ void GCameraEditor::SaveSegments(void* data, int size)
 		{
 			char name[12];
 			sprintf(name, "Cam%d", index);
-			strcpy((char*)cameraSegment.name, name);
-			cameraSegment.buffer = (uint8_t*)&camera->Camera;
-			cameraSegment.size = sizeof(CameraBin);
+			strcpy((char*)cameraSegment.Name, name);
+			cameraSegment.Data = (uint8_t*)&camera->Camera;
+			cameraSegment.Size = sizeof(CameraBin);
 			SegFile->WriteSegment(&cameraSegment);
 			index++;
 		}
@@ -1760,16 +1760,16 @@ void GCameraEditor::SaveSegments(void* data, int size)
 			{
 				char name[12];
 				sprintf(name, "Track%d", trackIndex);
-				strcpy((char*)trackSegment.name, name);
+				strcpy((char*)trackSegment.Name, name);
 				track->PositionWay->Type = CAMERA_EDITOR_WAY_TYPE;
 				track->FocusWay->Type = CAMERA_EDITOR_WAY_TYPE;
 				int   trackSize = track->FocusWay->Size + track->PositionWay->Size + 4;
 				char* buffer = (char*)LH3DMem::AllocClear(trackSize);
-				trackSegment.size = trackSize;
+				trackSegment.Size = trackSize;
 				*(int*)buffer = script->Times[track->Id];
 				memcpy(buffer + 4, track->PositionWay, track->PositionWay->Size);
 				memcpy(buffer + 4 + track->PositionWay->Size, track->FocusWay, track->FocusWay->Size);
-				trackSegment.buffer = (uint8_t*)buffer;
+				trackSegment.Data = (uint8_t*)buffer;
 				SegFile->WriteSegment(&trackSegment);
 				trackIndex++;
 				LH3DMem::Free(buffer);
@@ -1777,7 +1777,7 @@ void GCameraEditor::SaveSegments(void* data, int size)
 		}
 	}
 	SegFile->Close();
-	SegFile->Open(LH_FILE_MODE_READ_ONLY);
+	SegFile->Open(LH_FILE_READ_ONLY);
 }
 
 void GCameraEditor::Save()
@@ -1857,7 +1857,7 @@ void GCameraEditor::LoadCameraFromHD(long index, CameraBin& bin)
 	LHSegment segment;
 	if (SegFile->GetSegment(name, &segment, true) != LH_FILE_RESULT_NOT_FOUND)
 	{
-		memcpy(&bin, segment.buffer, segment.size);
+		memcpy(&bin, segment.Data, segment.Size);
 	}
 }
 
@@ -1878,7 +1878,7 @@ ScriptedCamera* ScriptedCamera::Create(int path)
 		sprintf(text, "Cannot load track No %d", path);
 		return NULL;
 	}
-	uint32_t* header = (uint32_t*)segment.buffer;
+	uint32_t* header = (uint32_t*)segment.Data;
 	camera->Header = *header;
 	uint8_t* buffer = (uint8_t*)header;
 	buffer += 4;

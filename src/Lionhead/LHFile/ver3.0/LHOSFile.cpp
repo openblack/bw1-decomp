@@ -64,7 +64,7 @@ LH_FILE_RESULT LHFileLength(const char* path, uint32_t* out_length)
 scan_done:
 	if (LHOSFile::Exists(path) == 0)
 	{
-		if (file.Open(path, LH_FILE_MODE_READ_ONLY) == LH_FILE_RESULT_ERROR)
+		if (file.Open(path, LH_FILE_READ_ONLY) == LH_FILE_RESULT_ERROR)
 			return LH_FILE_RESULT_ERROR;
 		result = file.Length(&buffer);
 	}
@@ -75,7 +75,7 @@ scan_done:
 			*out_length = 0;
 			return LH_FILE_RESULT_NOT_FOUND;
 		}
-		if (file.Open(name, LH_FILE_MODE_READ_ONLY) == LH_FILE_RESULT_ERROR)
+		if (file.Open(name, LH_FILE_READ_ONLY) == LH_FILE_RESULT_ERROR)
 			return LH_FILE_RESULT_ERROR;
 		result = file.Read(&buffer, 4, 0);
 	}
@@ -94,7 +94,7 @@ LH_FILE_RESULT LHOSFile::Open(const char* path, LH_FILE_MODE mode)
 	DWORD creation_disposition = CREATE_ALWAYS;
 	if (Exists(path) == LH_FILE_RESULT_NOT_FOUND)
 	{
-		if (mode == LH_FILE_MODE_READ_ONLY || mode == LH_FILE_MODE_READ_WRITE_CREATE)
+		if (mode == LH_FILE_READ_ONLY || mode == LH_FILE_READ_WRITE)
 			return LH_FILE_RESULT_ERROR;
 	}
 	else
@@ -103,17 +103,17 @@ LH_FILE_RESULT LHOSFile::Open(const char* path, LH_FILE_MODE mode)
 	}
 
 	HANDLE file;
-	if (mode == LH_FILE_MODE_READ_WRITE)
+	if (mode == LH_FILE_NEW)
 	{
 		file = CreateFileA(path, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL,
 		                   creation_disposition, 0, NULL);
 	}
-	else if (mode == LH_FILE_MODE_READ_WRITE_CREATE)
+	else if (mode == LH_FILE_READ_WRITE)
 	{
 		file = CreateFileA(path, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0,
 		                   NULL);
 	}
-	else // LH_FILE_MODE_READ_ONLY
+	else
 	{
 		file = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
 	}
@@ -134,7 +134,7 @@ LH_FILE_RESULT LHReleasedOSFile::Open(const char* path, LH_FILE_MODE mode)
 	LH_FILE_RESULT result = LHOSFile::Open(path, mode);
 	if (result == LH_FILE_RESULT_OK)
 		return result;
-	if (mode == LH_FILE_MODE_READ_ONLY || mode == LH_FILE_MODE_READ_WRITE_CREATE)
+	if (mode == LH_FILE_READ_ONLY || mode == LH_FILE_READ_WRITE)
 	{
 		LHFilePath full(path);
 		return LHOSFile::Open(full, mode);

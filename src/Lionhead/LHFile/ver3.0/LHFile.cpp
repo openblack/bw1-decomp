@@ -1,3 +1,5 @@
+#include "LHTemplate.h"
+
 #include <Lionhead/LHFile/ver3.0/LHFile.h>
 
 #include <stdio.h>
@@ -43,26 +45,25 @@ static char*        LHLogLibraryName;
 
 LHSegmentDesc::LHSegmentDesc(char* name, int offset, int size)
 {
-	memset(this->name, 0, sizeof(this->name));
-	strncpy(this->name, name, LH_SEGMENT_NAME_LENGTH);
-	this->offset = offset;
-	this->size = size;
+	memset(Name, 0, sizeof(Name));
+	strncpy(Name, name, LH_SEGMENT_NAME_LENGTH);
+	Offset = offset;
+	Size = size;
 }
 
 uint32_t LHFile::SetName(const char* name)
 {
-	if (Opened)
-		return LH_ERROR;
-	bool32_t validName = name && strlen(name);
-	if (!validName)
-		return LH_ERROR;
-	FileName = (char*)malloc(strlen(name) + 4);
-	if (FileName)
+	LH_ASSERT_CORRECTIVE(42, !OpenFlag, "Tim: Call to LHFile::SetName on a file which was open", return LH_ERROR;);
+	LH_ASSERT_CORRECTIVE(43, name && strlen(name), "Tim: Call to LHFile::SetName with invalid or NULL name",
+	                     return LH_ERROR;);
+	Name = (char*)malloc(strlen(name) + 4);
+	if (Name)
 	{
-		strcpy(FileName, name);
+		strcpy(Name, name);
 		return LH_OK;
 	}
-	return LH_NO_MEMORY;
+	else
+		return LH_NO_MEMORY;
 }
 
 uint32_t LHFile::GetSegmentDataInChunks(char* segment_name, char* data, uint32_t total_size, uint32_t chunk_size,
@@ -85,8 +86,8 @@ uint32_t LHFile::GetSegmentDataInChunks(char* segment_name, char* data, uint32_t
 
 uint32_t LHFile::GetSegmentData(char* segment_name, void* data, uint32_t data_size, int offset)
 {
-	if (!Opened)
-		return LH_ERROR;
+	LH_ASSERT_CORRECTIVE(78, OpenFlag, "Tim: Call to LHFile::GetSegmentData on a file which was not open",
+	                     return LH_ERROR;);
 	if (SegmentOpenFlag)
 		CloseSegment();
 	if (OpenSegment(segment_name))
@@ -100,59 +101,70 @@ uint32_t LHFile::GetSegmentData(char* segment_name, void* data, uint32_t data_si
 
 uint32_t LHFile::Open(LH_FILE_MODE mode)
 {
-	if (Opened)
-		return LH_ERROR;
-	if (mode != LH_FILE_MODE_READ_ONLY && mode != LH_FILE_MODE_READ_WRITE && mode != LH_FILE_MODE_UPDATE)
-		return LH_ERROR;
-	bool32_t validName = FileName && strlen(FileName);
-	if (!validName)
-		return LH_ERROR;
-	if (mode == LH_FILE_MODE_UPDATE && CustomWriteFunction)
-		return LH_ERROR;
+	// clang-format off
+	LH_ASSERT_CORRECTIVE(94, !OpenFlag, "Tim: Call to LHFile::Open on a file which was already open", return LH_ERROR;);
+	LH_ASSERT_CORRECTIVE(95, mode==LH_FILE_READ_ONLY || mode==LH_FILE_NEW || mode==LH_FILE_APPEND,
+	                     "Tim: Invalid mode specified on LHFile::Open", return LH_ERROR;);
+	// clang-format on
+	LH_ASSERT_CORRECTIVE(96, Name && strlen(Name), "Tim: no name or null pointer on LHFile::Open", return LH_ERROR;);
+	if (mode == LH_FILE_APPEND)
+	{
+		LH_ASSERT_CORRECTIVE(98, !WriteFunc, "Tim: open not supported in this mode", return LH_ERROR;);
+	}
 	DWORD    creationDisposition = CREATE_ALWAYS;
-	bool32_t exists = GetFileAttributes(FileName) != INVALID_FILE_ATTRIBUTES;
-	if (!exists && (mode == LH_FILE_MODE_READ_ONLY || mode == LH_FILE_MODE_UPDATE))
+	bool32_t exists = GetFileAttributes(Name) != INVALID_FILE_ATTRIBUTES;
+	if (!exists && (mode == LH_FILE_READ_ONLY || mode == LH_FILE_APPEND))
+	{
+		LH_LOG_ERROR_CODE1(107, LH_FILE_ERROR_NOT_FOUND, Name);
 		return LH_FAIL;
+	}
 	if (exists)
 		creationDisposition = TRUNCATE_EXISTING;
-	if (exists && mode == LH_FILE_MODE_UPDATE)
+	if (exists && mode == LH_FILE_APPEND)
 		creationDisposition = OPEN_EXISTING;
-	if (!CustomWriteFunction && (mode == LH_FILE_MODE_READ_WRITE || mode == LH_FILE_MODE_UPDATE))
-		Handle = CreateFile(FileName, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL,
+	if (!WriteFunc && (mode == LH_FILE_NEW || mode == LH_FILE_APPEND))
+		Handle = CreateFile(Name, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL,
 		                    creationDisposition, 0, NULL);
-	if (!CustomReadFunction && mode == LH_FILE_MODE_READ_ONLY)
+	if (!ReadFunc && mode == LH_FILE_READ_ONLY)
 #ifdef VERSION_BW1WCI
-		Handle = CreateFile(FileName, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
+		Handle = CreateFile(Name, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
 #else
-		Handle = CreateFile(FileName, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL);
+		Handle = CreateFile(Name, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL);
 #endif
-	if (!CustomWriteFunction && Handle == INVALID_HANDLE_VALUE)
+	if (!WriteFunc && Handle == INVALID_HANDLE_VALUE)
+	{
+		LH_LOG_WIN32_ERROR(147);
 		return LH_ERROR;
+	}
 	char header[LH_FILE_HEADER_SIZE + 1];
-	Opened = true;
+	OpenFlag = true;
 	memset(header, 0, sizeof(header));
 	FileMode = mode;
-	if (mode == LH_FILE_MODE_READ_ONLY || mode == LH_FILE_MODE_UPDATE)
+	if (mode == LH_FILE_READ_ONLY || mode == LH_FILE_APPEND)
 	{
 		ReadData(header, LH_FILE_HEADER_SIZE);
 		if (strcmp(LHFileHeaderString, header))
 		{
 			Close();
+			LH_LOG_ERROR_CODE(161, LH_FILE_ERROR_NOT_LIONHEAD_FILE);
 			return LH_FAIL;
 		}
 		VerifyFile();
 	}
-	if (mode == LH_FILE_MODE_READ_WRITE)
+	if (mode == LH_FILE_NEW)
 	{
 		strcpy(header, LHFileHeaderString);
 		WriteData(header, LH_FILE_HEADER_SIZE);
 	}
 	CurrentFileOffset = LH_FILE_HEADER_SIZE;
-	if (mode == LH_FILE_MODE_UPDATE)
+	if (mode == LH_FILE_APPEND)
 	{
-		LHSegmentDesc* last = SegmentList.GetHead();
-		if (SetLHFilePointer(last->name, last->size))
+		LHSegmentDesc* last = SegmentList.GetNext(NULL);
+		if (SetLHFilePointer(last->Name, last->Size))
+		{
+			LH_LOG_ERROR(180, LH_LOG_CODE_ERROR, "Could not seek to end of file");
 			return LH_ERROR;
+		}
 	}
 	return LH_OK;
 }
@@ -162,12 +174,20 @@ uint32_t LHReleasedFile::Open(LH_FILE_MODE mode)
 	uint32_t result = LHFile::Open(mode);
 	if (result == LH_OK)
 		return result;
-	if (mode == LH_FILE_MODE_READ_ONLY)
+	if (mode == LH_FILE_READ_ONLY)
 	{
 		char path[256];
-		sprintf(path, GAME_DRIVE_PATH_FORMAT, g_GameDriveCharacter, FileName);
-		strcpy(FileName, path);
-		result = LHFile::Open(LH_FILE_MODE_READ_ONLY);
+		sprintf(path, GAME_DRIVE_PATH_FORMAT, g_GameDriveCharacter, Name);
+		strcpy(Name, path);
+		result = LHFile::Open(LH_FILE_READ_ONLY);
+		if (result == LH_OK)
+		{
+			LH_LOG_ERROR(202, LH_LOG_CODE_ERROR, "Loaded from CD");
+		}
+		else
+		{
+			LH_LOG_ERROR(206, LH_LOG_CODE_ERROR, "Could not be loaded from CD either!!!");
+		}
 		return result;
 	}
 	return LH_FAIL;
@@ -175,133 +195,147 @@ uint32_t LHReleasedFile::Open(LH_FILE_MODE mode)
 
 uint32_t LHFile::VerifyFile()
 {
-	LHSegment segment;
+	LHSegment seg;
 	for (;;)
 	{
-		uint32_t result = ReadData(segment.name, LH_SEGMENT_NAME_LENGTH);
+		uint32_t result = ReadData(seg.Name, LH_SEGMENT_NAME_LENGTH);
 		if (result == LH_FAIL)
 			break;
 		if (result)
 			return LH_ERROR;
-		if (ReadData(&segment.size, sizeof(segment.size)))
+		if (ReadData(&seg.Size, sizeof(seg.Size)))
 			return LH_FAIL;
-		if (CustomSetFilePointerFunction)
-			CustomSetFilePointerFunction(segment.size, FILE_CURRENT, CustomFunctionUserData);
+		if (FilePointerFunc)
+			FilePointerFunc(seg.Size, FILE_CURRENT, CustomFunctionUserData);
 		else
-			SetFilePointer(Handle, segment.size, NULL, FILE_CURRENT);
+			SetFilePointer(Handle, seg.Size, NULL, FILE_CURRENT);
 		uint32_t offset;
-		if (SegmentList.count)
+		if (SegmentList.Count)
 		{
-			LHSegmentDesc* last = SegmentList.GetHead();
-			offset = last->offset + last->size + LH_SEGMENT_HEADER_SIZE;
+			LHSegmentDesc* last = SegmentList.GetNext(NULL);
+			offset = last->Offset + last->Size + LH_SEGMENT_HEADER_SIZE;
 		}
 		else
 		{
 			offset = LH_FILE_HEADER_SIZE + LH_SEGMENT_HEADER_SIZE;
 		}
-		SegmentList.Add(new LHSegmentDesc(segment.name, offset, segment.size));
+		SegmentList.Add(new LHSegmentDesc(seg.Name, offset, seg.Size));
 	}
-	if (CustomSetFilePointerFunction)
-		CustomSetFilePointerFunction(LH_FILE_HEADER_SIZE, FILE_BEGIN, CustomFunctionUserData);
+	if (FilePointerFunc)
+		FilePointerFunc(LH_FILE_HEADER_SIZE, FILE_BEGIN, CustomFunctionUserData);
 	else
 		SetFilePointer(Handle, LH_FILE_HEADER_SIZE, NULL, FILE_BEGIN);
 	return LH_OK;
 }
 
-uint32_t LHFile::GetNextSegment(LHSegment* segment, bool32_t allocate_memory)
+uint32_t LHFile::GetNextSegment(LHSegment* seg, bool32_t allocate_memory)
 {
 	char name[LH_SEGMENT_NAME_LENGTH + 1];
 
-	if (!Opened)
-		return LH_ERROR;
-	if (FileMode != LH_FILE_MODE_READ_ONLY)
-		return LH_ERROR;
+	LH_ASSERT_CORRECTIVE(261, OpenFlag, "Tim: Call to LHFile::GetNextSegment on a file which was not open",
+	                     return LH_ERROR;);
+	// clang-format off
+	LH_ASSERT_CORRECTIVE(262, FileMode==LH_FILE_READ_ONLY, "Tim: Call to LHFile::GetNextSegment wrong file mode",
+	                     return LH_ERROR;);
+	// clang-format on
 	if (SegmentOpenFlag)
 		CloseSegment();
-	if (!allocate_memory && (!segment->buffer || !segment->size))
-		return LH_ERROR;
+	if (!allocate_memory)
+	{
+		LH_ASSERT_CORRECTIVE(267, seg->Data && seg->Size, "Tim: Null pointer passed or zero size specified",
+		                     return LH_ERROR;);
+	}
 	memset(name, 0, sizeof(name));
 	ReadData(name, LH_SEGMENT_NAME_LENGTH);
-	return GetSegment(name, segment, allocate_memory);
+	return GetSegment(name, seg, allocate_memory);
 }
 
-uint32_t LHFile::AllocSegDataMem(LHSegment* segment)
+uint32_t LHFile::AllocSegDataMem(LHSegment* seg)
 {
-	if (segment->size >= LH_SEGMENT_MAX_SIZE)
-		return LH_ERROR;
+	// clang-format off
+	LH_ASSERT_CORRECTIVE(277, seg->Size<LH_MAX_SEGMENT_SIZE, LHSPrintf("Tim: Segsize %lu appears too big", seg->Size),
+	                     return LH_ERROR;);
+	// clang-format on
 	FreeLastSeg();
-	segment->buffer = (uint8_t*)malloc(segment->size);
-	if (!segment->buffer)
+	seg->Data = (uint8_t*)malloc(seg->Size);
+	if (!seg->Data)
+	{
+		LH_LOG_ERROR(282, LH_LOG_CODE_NO_MEMORY, LH_LOG_NO_MEMORY_TEXT);
 		return LH_NO_MEMORY;
-	memcpy(&LastSegment, segment, sizeof(LastSegment));
+	}
+	memcpy(&LastSegment, seg, sizeof(LastSegment));
 	return LH_OK;
 }
 
 LHFile::~LHFile()
 {
-	free(FileName);
+	free(Name);
 	Close();
 }
 
 void LHFile::FreeLastSeg()
 {
-	if (LastSegment.buffer)
+	if (LastSegment.Data)
 	{
-		free(LastSegment.buffer);
-		LastSegment.buffer = NULL;
+		free(LastSegment.Data);
+		LastSegment.Data = NULL;
 	}
 }
 
-uint32_t LHFile::WriteSegment(LHSegment* segment)
+uint32_t LHFile::WriteSegment(LHSegment* seg)
 {
-	if (!Opened)
-		return LH_ERROR;
-	if (FileMode != LH_FILE_MODE_READ_WRITE && FileMode != LH_FILE_MODE_UPDATE)
-		return LH_ERROR;
+	LH_ASSERT_CORRECTIVE(307, OpenFlag, "Tim: Call to LHFile::WriteSegment on a file which was not open",
+	                     return LH_ERROR;);
+	// clang-format off
+	LH_ASSERT_CORRECTIVE(308, FileMode==LH_FILE_NEW || FileMode==LH_FILE_APPEND,
+	                     "Tim: Call to LHFile::WriteSegment wrong file mode", return LH_ERROR;);
+	// clang-format on
 	if (SegmentOpenFlag)
 		CloseSegment();
-	if (OpenSegment(segment->name))
+	if (OpenSegment(seg->Name))
 		return LH_ERROR;
-	if (WriteSegmentData(segment->buffer, segment->size))
+	if (WriteSegmentData(seg->Data, seg->Size))
 		return LH_ERROR;
 	if (CloseSegment())
 		return LH_ERROR;
 	return LH_OK;
 }
 
-uint32_t LHFile::WriteSegmentHeader(char* segment_name)
+uint32_t LHFile::WriteSegmentHeader(char* name)
 {
-	LHSegment segment;
-	if (!segment_name || !strlen(segment_name))
-		return LH_ERROR;
-	char name[LH_SEGMENT_NAME_LENGTH + 1];
-	memset(name, 0, sizeof(name));
-	strncpy(name, segment_name, LH_SEGMENT_NAME_LENGTH);
-	segment.size = 0;
-	if (WriteData(name, LH_SEGMENT_NAME_LENGTH) || WriteData(&segment.size, sizeof(segment.size)))
+	LHSegment seg;
+	LH_ASSERT_CORRECTIVE(324, name && strlen(name) > 0, "Tim: zero length or bad segment name", return LH_ERROR;);
+	char segmentName[LH_SEGMENT_NAME_LENGTH + 1];
+	memset(segmentName, 0, sizeof(segmentName));
+	strncpy(segmentName, name, LH_SEGMENT_NAME_LENGTH);
+	seg.Size = 0;
+	if (WriteData(segmentName, LH_SEGMENT_NAME_LENGTH) || WriteData(&seg.Size, sizeof(seg.Size)))
 		return LH_ERROR;
 	return LH_OK;
 }
 
 uint32_t LHFile::Close()
 {
-	if (!Opened)
+	if (!OpenFlag)
 		return LH_OK;
 	if (SegmentOpenFlag)
 		CloseSegment();
 	FreeLastSeg();
 	void* handle = Handle;
-	Opened = false;
+	OpenFlag = false;
 	if (handle && !CloseHandle(handle))
+	{
+		LH_LOG_WIN32_ERROR(344);
 		return LH_FAIL;
+	}
 	Handle = NULL;
 	while (1)
 	{
 		LHLinkedNode<LHSegmentDesc*>* node = SegmentList.GetStart();
 		if (!node)
 			break;
-		delete node->payload;
-		SegmentList.Remove(node->payload);
+		delete node->Data;
+		SegmentList.Remove(node->Data);
 	}
 	return LH_OK;
 }
@@ -309,12 +343,12 @@ uint32_t LHFile::Close()
 LHSegmentDesc* LHFile::Lookup(char* segment_name)
 {
 	LHLinkedNode<LHSegmentDesc*>* node;
-	for (node = SegmentList.GetStart(); node; node = node->next.Get())
+	for (node = SegmentList.GetStart(); node; node = node->Next.Get())
 	{
-		if (!strcmp(node->payload->name, segment_name))
+		if (!strcmp(node->Data->Name, segment_name))
 			break;
 	}
-	return node ? node->payload : NULL;
+	return node ? node->Data : NULL;
 }
 
 uint32_t LHFile::SetLHFilePointer(char* segment_name, int offset)
@@ -322,18 +356,22 @@ uint32_t LHFile::SetLHFilePointer(char* segment_name, int offset)
 	uint32_t base = 0;
 	if (segment_name)
 	{
-		if (!Opened || (FileMode != LH_FILE_MODE_READ_ONLY && FileMode != LH_FILE_MODE_UPDATE))
-			return LH_ERROR;
+		// clang-format off
+		LH_ASSERT_CORRECTIVE(376, OpenFlag && (FileMode==LH_FILE_READ_ONLY || FileMode==LH_FILE_APPEND),
+		                     "Tim: Wrong mode to seek", return LH_ERROR;);
+		// clang-format on
 		LHSegmentDesc* entry = Lookup(segment_name);
 		if (!entry)
 			return LH_FAIL;
-		base = entry->offset;
-		if (offset > (long)entry->size)
-			return LH_ERROR;
+		base = entry->Offset;
+		// clang-format off
+		LH_ASSERT_CORRECTIVE(381, (SLONG)offset<=(SLONG)entry->Size, "Tim: Attempt to seek past end of segment in a file",
+		                     return LH_ERROR;);
+		// clang-format on
 	}
-	if (CustomSetFilePointerFunction)
+	if (FilePointerFunc)
 	{
-		CurrentFileOffset = CustomSetFilePointerFunction(base + offset, FILE_BEGIN, CustomFunctionUserData);
+		CurrentFileOffset = FilePointerFunc(base + offset, FILE_BEGIN, CustomFunctionUserData);
 		if (CurrentFileOffset == INVALID_SET_FILE_POINTER)
 			return LH_ERROR;
 	}
@@ -341,7 +379,10 @@ uint32_t LHFile::SetLHFilePointer(char* segment_name, int offset)
 	{
 		CurrentFileOffset = SetFilePointer(Handle, base + offset, NULL, FILE_BEGIN);
 		if (CurrentFileOffset == INVALID_SET_FILE_POINTER)
+		{
+			LH_LOG_WIN32_ERROR(395);
 			return LH_ERROR;
+		}
 	}
 	return LH_OK;
 }
@@ -349,20 +390,22 @@ uint32_t LHFile::SetLHFilePointer(char* segment_name, int offset)
 uint32_t LHFile::GetSegmentSize(char* segment_name)
 {
 	LHLinkedNode<LHSegmentDesc*>* node;
-	for (node = SegmentList.GetStart(); node; node = node->next.Get())
+	for (node = SegmentList.GetStart(); node; node = node->Next.Get())
 	{
-		if (!strcmp(node->payload->name, segment_name))
+		if (!strcmp(node->Data->Name, segment_name))
 			break;
 	}
-	return node ? node->payload->size : -1;
+	return node ? node->Data->Size : -1;
 }
 
-uint32_t LHFile::GetSegment(char* name, LHSegment* segment, bool32_t allocate_memory)
+uint32_t LHFile::GetSegment(char* name, LHSegment* seg, bool32_t allocate_memory)
 {
-	if (!Opened)
-		return LH_ERROR;
-	if (FileMode != LH_FILE_MODE_READ_ONLY)
-		return LH_ERROR;
+	LH_ASSERT_CORRECTIVE(418, OpenFlag, "Tim: Call to LHFile::GetSegment on a file which was not open",
+	                     return LH_ERROR;);
+	// clang-format off
+	LH_ASSERT_CORRECTIVE(419, FileMode==LH_FILE_READ_ONLY, "Tim: Call to LHFile::GetSegment wrong file mode",
+	                     return LH_ERROR;);
+	// clang-format on
 	if (SegmentOpenFlag)
 		CloseSegment();
 	LHSegmentDesc* entry = Lookup(name);
@@ -370,38 +413,39 @@ uint32_t LHFile::GetSegment(char* name, LHSegment* segment, bool32_t allocate_me
 		return LH_FAIL;
 	if (SetLHFilePointer(name, 0))
 		return LH_FAIL;
-	strcpy(segment->name, name);
-	segment->size = entry->size;
+	strcpy(seg->Name, name);
+	seg->Size = entry->Size;
 	if (allocate_memory)
 	{
-		if (AllocSegDataMem(segment))
+		if (AllocSegDataMem(seg))
 			return LH_ERROR;
 	}
 	else
 	{
-		bool32_t valid = segment->buffer && segment->size == entry->size;
-		if (!valid)
-			return LH_ERROR;
+		// clang-format off
+		LH_ASSERT_CORRECTIVE(436, seg->Data && seg->Size==entry->Size, "Tim: Null pointer or incorrect memory size",
+		                     return LH_ERROR;);
+		// clang-format on
 	}
-	return ReadData(segment->buffer, entry->size);
+	return ReadData(seg->Data, entry->Size);
 }
 
 uint32_t LHFile::OpenSegment(char* name)
 {
-	if (!Opened)
-		return LH_ERROR;
+	LH_ASSERT_CORRECTIVE(444, OpenFlag, "Tim: Call to LHFile::OpenSegment on a file which was not open",
+	                     return LH_ERROR;);
 	if (SegmentOpenFlag)
 		CloseSegment();
 	SegmentOpenFlag = true;
 	SegmentSize = 0;
 	SegmentName = name;
-	if (FileMode == LH_FILE_MODE_READ_ONLY)
+	if (FileMode == LH_FILE_READ_ONLY)
 	{
 		LHSegmentDesc* entry = Lookup(name);
 		if (!entry)
 			return LH_FAIL;
-		SegmentSize = entry->size;
-		SegmentOffset = entry->offset;
+		SegmentSize = entry->Size;
+		SegmentOffset = entry->Offset;
 		return SetLHFilePointer(name, 0);
 	}
 	SegmentOffset = CurrentFileOffset + LH_SEGMENT_HEADER_SIZE;
@@ -412,11 +456,14 @@ uint32_t LHFile::CloseSegment()
 {
 	if (SegmentOpenFlag)
 	{
-		if (FileMode == LH_FILE_MODE_READ_WRITE || FileMode == LH_FILE_MODE_UPDATE)
+		if (FileMode == LH_FILE_NEW || FileMode == LH_FILE_APPEND)
 		{
 			int position = CurrentFileOffset;
 			if (SetLHFilePointer(NULL, SegmentOffset - sizeof(SegmentSize)))
+			{
+				LH_LOG_ERROR(476, LH_LOG_CODE_ERROR, "Could not set file pointer back to offset when closing segment");
 				return LH_ERROR;
+			}
 			WriteData(&SegmentSize, sizeof(SegmentSize));
 			SetLHFilePointer(NULL, position);
 		}
@@ -428,27 +475,34 @@ uint32_t LHFile::CloseSegment()
 
 uint32_t LHFile::WriteSegmentData(const void* data, uint32_t length)
 {
-	if (!SegmentOpenFlag)
-		return LH_ERROR;
-	if (FileMode != LH_FILE_MODE_READ_WRITE && FileMode != LH_FILE_MODE_UPDATE)
-		return LH_ERROR;
+	LH_ASSERT_CORRECTIVE(489, SegmentOpenFlag, "Tim: Call to LHFile::WriteSegmentData when segment was not open",
+	                     return LH_ERROR;);
+	// clang-format off
+	LH_ASSERT_CORRECTIVE(490, FileMode==LH_FILE_NEW || FileMode==LH_FILE_APPEND,
+	                     "Tim: Call to LHFile::WriteSegmentData wrong file mode", return LH_ERROR;);
+	// clang-format on
 	SegmentSize += length;
 	WriteData(data, length);
 	return LH_OK;
 }
 
-uint32_t LHFile::OverwriteSegment(LHSegment segment)
+uint32_t LHFile::OverwriteSegment(LHSegment seg)
 {
-	Lookup(segment.name);
-	SetLHFilePointer(segment.name, 0);
-	WriteData(segment.buffer, segment.size);
+	// clang-format off
+	LH_ASSERT(500, FileMode==LH_FILE_APPEND, "Paul - file mode is not correct to overwrite");
+	// clang-format on
+	LHSegmentDesc* segment_description = Lookup(seg.Name);
+	LH_ASSERT(503, segment_description, "Paul - trying to overwrite a segment that is not there.");
+	LH_ASSERT(504, segment_description->Size == seg.Size, "Paul - segment size mismatch.");
+	SetLHFilePointer(seg.Name, 0);
+	WriteData(seg.Data, seg.Size);
 	return LH_OK;
 }
 
 uint32_t LHFile::GetSegmentData(void* data, uint32_t data_size, int offset)
 {
-	if (!SegmentOpenFlag)
-		return LH_ERROR;
+	LH_ASSERT_CORRECTIVE(513, SegmentOpenFlag, "Tim: Call to LHFile::GetSegmentData when segment was not open",
+	                     return LH_ERROR;);
 	if (offset == -1 || !SetLHFilePointer(SegmentName, offset))
 		return ReadData(data, data_size);
 	return LH_ERROR;
@@ -456,74 +510,84 @@ uint32_t LHFile::GetSegmentData(void* data, uint32_t data_size, int offset)
 
 uint32_t LHFile::WriteData(const void* data, uint32_t length)
 {
-	if (!Opened)
-		return LH_ERROR;
-	if (FileMode != LH_FILE_MODE_READ_WRITE && FileMode != LH_FILE_MODE_UPDATE)
-		return LH_ERROR;
+	LH_ASSERT_CORRECTIVE(525, OpenFlag, "Tim: Call to LHFile::WriteData when file was not open", return LH_ERROR;);
+	// clang-format off
+	LH_ASSERT_CORRECTIVE(526, FileMode==LH_FILE_NEW || FileMode==LH_FILE_APPEND,
+	                     "Tim: Call to LHFile::WriteData wrong file mode", return LH_ERROR;);
+	// clang-format on
 	CurrentFileOffset += length;
-	if (CustomWriteFunction)
+	if (WriteFunc)
 	{
-		CustomWriteFunction(data, length, CustomFunctionUserData);
+		WriteFunc(data, length, CustomFunctionUserData);
 	}
 	else
 	{
 		DWORD written;
 		if (!WriteFile(Handle, data, length, &written, NULL))
+		{
+			LH_LOG_WIN32_ERROR(538);
 			return LH_ERROR;
+		}
 		if (written != length)
+		{
+			LH_LOG_ERROR_CODE(544, LH_FILE_ERROR_WRITING);
 			return LH_FAIL;
+		}
 	}
 	return LH_OK;
 }
 
 uint32_t LHFile::ReadData(void* data, uint32_t length)
 {
-	if (!Opened)
-		return LH_ERROR;
-	if (FileMode != LH_FILE_MODE_READ_ONLY && FileMode != LH_FILE_MODE_UPDATE)
-		return LH_ERROR;
+	LH_ASSERT_CORRECTIVE(554, OpenFlag, "Tim: Call to LHFile::ReadData when file was not open", return LH_ERROR;);
+	// clang-format off
+	LH_ASSERT_CORRECTIVE(555, FileMode==LH_FILE_READ_ONLY || FileMode==LH_FILE_APPEND,
+	                     "Tim: Call to LHFile::ReadData wrong file mode", return LH_ERROR;);
+	// clang-format on
 	CurrentFileOffset += length;
-	if (CustomReadFunction)
+	if (ReadFunc)
 	{
-		if (!CustomReadFunction(data, length, CustomFunctionUserData))
+		if (!ReadFunc(data, length, CustomFunctionUserData))
 			return LH_FAIL;
 	}
 	else
 	{
 		DWORD read;
 		if (!ReadFile(Handle, data, length, &read, NULL))
+		{
+			LH_LOG_WIN32_ERROR(570);
 			return LH_ERROR;
+		}
 		if (read != length)
 			return LH_FAIL;
 	}
 	return LH_OK;
 }
 
-void LHFile::SetFileFunctions(void* read_function, void* write_function, void* set_file_pointer_function,
-                              void* user_data)
+void LHFile::SetFileFunctions(void* rf, void* wf, void* fpf, void* user_data)
 {
-	if (!Opened && write_function && read_function && set_file_pointer_function)
-	{
-		CustomFunctionUserData = user_data;
-		CustomWriteFunction = (uint32_t (*)(const void*, uint32_t, void*))write_function;
-		CustomReadFunction = (uint32_t (*)(void*, uint32_t, void*))read_function;
-		CustomSetFilePointerFunction = (uint32_t (*)(uint32_t, uint32_t, void*))set_file_pointer_function;
-	}
+	LH_ASSERT_CORRECTIVE(584, !OpenFlag, "Tim: Call to SetWriteFunction on an open file", return;);
+	LH_ASSERT_CORRECTIVE(585, wf && rf && fpf, "Tim: must supply all three parameters", return;);
+	CustomFunctionUserData = user_data;
+	WriteFunc = (uint32_t (*)(const void*, uint32_t, void*))wf;
+	ReadFunc = (uint32_t (*)(void*, uint32_t, void*))rf;
+	FilePointerFunc = (uint32_t (*)(uint32_t, uint32_t, void*))fpf;
 }
 
 uint32_t LHFile::TruncateFromSegment(char* segment_name)
 {
-	if (Opened)
-		return LH_ERROR;
-	if (CustomWriteFunction)
-		return LH_ERROR;
-	if (Open(LH_FILE_MODE_UPDATE))
+	LH_ASSERT_CORRECTIVE(594, !OpenFlag, "Tim: cannot truncate file while open", return LH_ERROR;);
+	LH_ASSERT_CORRECTIVE(595, !WriteFunc, "Tim: Function not supported in this mode", return LH_ERROR;);
+	if (Open(LH_FILE_APPEND))
 		return LH_FAIL;
 	if (!Lookup(segment_name))
 		return LH_FAIL;
 	if (SetLHFilePointer(segment_name, -(int)LH_SEGMENT_HEADER_SIZE))
 		return LH_FAIL;
-	SetEndOfFile(Handle);
+	if (!SetEndOfFile(Handle))
+	{
+		LH_LOG_WIN32_ERROR(606);
+	}
 	Close();
 	return LH_OK;
 }

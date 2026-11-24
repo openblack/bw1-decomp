@@ -10,9 +10,9 @@
 
 struct LHSegment
 {
-	char     name[LH_SEGMENT_NAME_LENGTH + 1]; /* 0x0 */
-	uint32_t size;                             /* 0x24 */
-	uint8_t* buffer;
+	char     Name[LH_SEGMENT_NAME_LENGTH + 1]; /* 0x0 */
+	uint32_t Size;                             /* 0x24 */
+	uint8_t* Data;
 
 	// Constructors
 
@@ -20,9 +20,9 @@ struct LHSegment
 	// BW1W120 inlined BW1M119 010d1550
 	LHSegment()
 	{
-		size = 0;
-		buffer = NULL;
-		memset(name, 0, sizeof(name));
+		Size = 0;
+		Data = NULL;
+		memset(Name, 0, sizeof(Name));
 	}
 };
 

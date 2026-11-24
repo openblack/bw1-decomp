@@ -548,7 +548,7 @@ void GScript::SetCameraZone()
 	char path[MAX_PATH];
 	sprintf(path, ".\\Data\\Zones\\%s", name);
 	file.SetName(path);
-	if (file.Open(LH_FILE_MODE_READ_ONLY) == LH_FILE_RESULT_OK)
+	if (file.Open(LH_FILE_READ_ONLY) == LH_FILE_RESULT_OK)
 	{
 		CameraExclusion::LoadExclusionFile(&file, CAMERA_EXCLUSION_ID_SCRIPT);
 		CameraExclusion::UseExclusions = true;
