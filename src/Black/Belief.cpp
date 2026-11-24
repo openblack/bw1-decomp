@@ -186,7 +186,7 @@ void GBelief::ProcessOncePerTurn()
 		if (myBelief > BELIEF_SPINNER_MIN_TOTAL)
 		{
 			myBelief *= BELIEF_SPINNER_VALUE_SCALE;
-			ToolTips::ForceToolTips(HELP_TEXT_TOOLTIP_111, myBelief);
+			ToolTips::ForceToolTips(HELP_TEXT_TOOLTIP_GOT_BELIEF, myBelief);
 			ValueSpinner* spinner = NEW(173) ValueSpinner;
 			char          text[0x10];
 			sprintf(text, "%4.0f", myBelief);

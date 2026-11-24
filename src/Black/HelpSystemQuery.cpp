@@ -94,8 +94,8 @@ void HelpSystem::GetHelpQueryOnGameThingWithPos(GameThingWithPos* thing)
 			Town*            town = flag->GetTown();
 			if (town != NULL)
 			{
-				float      desire = town->GetRawDesire(flag->DesireType) < QUERY_DESIRE_MAX
-				                        ? town->GetRawDesire(flag->DesireType)
+				float      desire = town->GetRawDesire(flag->GetDesireType()) < QUERY_DESIRE_MAX
+				                        ? town->GetRawDesire(flag->GetDesireType())
 				                        : QUERY_DESIRE_MAX;
 				ScriptDLL* script = GScript::g_scriptDLL;
 				script->FLOAT_PUSH((float)flag->GetQueryStatEnumText());

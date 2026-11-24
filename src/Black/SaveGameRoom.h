@@ -21,6 +21,8 @@ class SaveGameRoom : public PictureRoomBase
 public:
 	// BW1W120 00e05fc0
 	static long CurrentSlot;
+	// BW1W120 00e05ef4
+	static wchar_t ToolTipSlotName[];
 
 	// Static methods
 

@@ -861,7 +861,7 @@ uint32_t PileResource::ProcessInInteract(GInterfaceStatus* status)
 			GInterface* statusInterface = status->GetInterface();
 			if (statusInterface == GGame::g_game->MyInterface())
 			{
-				ToolTips::ForceToolTips(HELP_TEXT_TOOLTIP_120, (float)pot->ResourceAmount);
+				ToolTips::ForceToolTips(HELP_TEXT_TOOLTIP_AMOUNT, (float)pot->ResourceAmount);
 			}
 			return true;
 		}
@@ -921,7 +921,7 @@ bool32_t PileResource::NetworkFriendlyEndLockedSelect(GInterfaceStatus* status)
 		Pot*    pot = dynamic_cast<Pot*>(object);
 		if (pot != NULL)
 		{
-			ToolTips::ForceToolTips(HELP_TEXT_TOOLTIP_120, (float)pot->ResourceAmount);
+			ToolTips::ForceToolTips(HELP_TEXT_TOOLTIP_AMOUNT, (float)pot->ResourceAmount);
 		}
 	}
 	return true;
@@ -1243,7 +1243,7 @@ SCRIPT_OBJECT_TYPE Pot::GetScriptObjectType()
 
 uint32_t Pot::GetOverwriteInteractableToolTip()
 {
-	return IsPileFood() ? HELP_TEXT_TOOLTIP_139 : HELP_TEXT_TOOLTIP_140;
+	return IsPileFood() ? HELP_TEXT_TOOLTIP_FOOD_AMOUNT : HELP_TEXT_TOOLTIP_WOOD_AMOUNT;
 }
 
 bool32_t Pot::IsResourceStore(RESOURCE_TYPE type)
