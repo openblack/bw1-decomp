@@ -44,10 +44,10 @@ void __fastcall LH3DCamera::GetCamera(LH3DObject* object, unsigned long time, LH
 	{
 		key -= key / NumKeys * NumKeys;
 	}
-	float         timePerKey = (float)Duration / (float)(NumKeys - 1);
+	float         timePerKey = Duration / (float)(NumKeys - 1);
 	unsigned long elapsedKeys = (unsigned long)(time / timePerKey);
 	unsigned long keyLength = (unsigned long)timePerKey;
-	float         blend = (float)(time - elapsedKeys * keyLength) / timePerKey;
+	float         blend = (time - elapsedKeys * keyLength) / timePerKey;
 	unsigned long next = key + 1;
 	if (next >= NumKeys)
 	{
@@ -82,10 +82,10 @@ void __fastcall LH3DCamera::GetCamera(LH3DObject* object, unsigned long time, LH
 	{
 		key -= key / NumKeys * NumKeys;
 	}
-	float         timePerKey = (float)Duration / (float)(NumKeys - 1);
+	float         timePerKey = Duration / (float)(NumKeys - 1);
 	unsigned long elapsedKeys = (unsigned long)(time / timePerKey);
 	unsigned long keyLength = (unsigned long)timePerKey;
-	float         blend = (float)(time - elapsedKeys * keyLength) / timePerKey;
+	float         blend = (time - elapsedKeys * keyLength) / timePerKey;
 	unsigned long next = key + 1;
 	if (next >= NumKeys)
 	{
@@ -126,10 +126,10 @@ void __fastcall LH3DCamera::SetTechCamera(LHMatrix* matrix, unsigned long time)
 	{
 		key -= key / NumKeys * NumKeys;
 	}
-	float         timePerKey = (float)Duration / (float)(NumKeys - 1);
+	float         timePerKey = Duration / (float)(NumKeys - 1);
 	unsigned long elapsedKeys = (unsigned long)(time / timePerKey);
 	unsigned long keyLength = (unsigned long)timePerKey;
-	float         blend = (float)(time - elapsedKeys * keyLength) / timePerKey;
+	float         blend = (time - elapsedKeys * keyLength) / timePerKey;
 	unsigned long next = key + 1;
 	if (next > NumKeys)
 	{
@@ -157,10 +157,10 @@ void __fastcall LH3DCamera::SetTechCamera(LH3DObject* object, unsigned long time
 	{
 		key -= key / NumKeys * NumKeys;
 	}
-	float         timePerKey = (float)Duration / (float)(NumKeys - 1);
+	float         timePerKey = Duration / (float)(NumKeys - 1);
 	unsigned long elapsedKeys = (unsigned long)(time / timePerKey);
 	unsigned long keyLength = (unsigned long)timePerKey;
-	float         blend = (float)(time - elapsedKeys * keyLength) / timePerKey;
+	float         blend = (time - elapsedKeys * keyLength) / timePerKey;
 	unsigned long next = key + 1;
 	if (next > NumKeys)
 	{

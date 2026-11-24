@@ -16,7 +16,6 @@ struct LH3DCameraView
 	LHPoint LookAtVector;
 };
 
-// A camera path loaded from a .cam file: the header is followed by NumKeys keys spread evenly over Duration.
 struct LH3DCamera
 {
 	long          Size;     /* 0x0 */

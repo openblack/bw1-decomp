@@ -6,7 +6,7 @@
 // These can't live in LHMatrix.h: Object.cpp sees that header ahead of its code, so declaring them there moves c2's
 // symbol numbering and takes Creature Isle's Object::SetUpPhysObAsATree out of its matching window.
 
-// Inliner IL size: 138
+// Inliner IL size: 134
 // BW1W120 0086dac0 BW1M119 inlined
 inline void __fastcall PostScale(LHMatrix& matrix, float scale)
 {
