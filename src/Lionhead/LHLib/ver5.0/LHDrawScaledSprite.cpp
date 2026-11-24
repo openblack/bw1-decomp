@@ -171,25 +171,31 @@ yClipped:
 LH_RETURN LHDraw::ScaledSprite24(long x, long y, unsigned long destWidth, unsigned long destHeight, LHSprite* sprite,
                                  unsigned long flags)
 {
-	long     height = destHeight;
-	long     width = destWidth;
-	uint32_t xAccum = 0;
-	uint32_t yAccum = 0;
-	LHRegion window = LHSys::GetScreen().GetGraphicsWindow();
-	LHCoord  start = window.start;
-	LHCoord  end = window.end;
-	LHColor* src = (LHColor*)sprite->PixelData;
-	long     right = x + width;
-	long     bottom = y + height;
+	unsigned long xAccumStart;
+	unsigned long width = destWidth;
+	unsigned long height = destHeight;
+	long          stepX;
+	long          dstSkip;
+	unsigned long xAccum = 0;
+	long          stepY;
+	unsigned long yAccum = 0;
+	LHRegion      window = LHSys::GetScreen().GetGraphicsWindow();
+	LHColor*      src = (LHColor*)sprite->PixelData;
+	long          right = x + destWidth;
+	LHCoord       start(window.start.X(), window.start.Y());
+	unsigned long yScale;
+	unsigned long xScale;
+	LHColor*      dst;
+	long          srcSkip;
+	long          bottom = y + destHeight;
+	LHCoord       end(window.end.X(), window.end.Y());
 
 	if (x > end.X() || right < start.X() || y > end.Y() || bottom < start.Y())
 		return LH_FAIL;
 
-	uint32_t xScale = (destWidth << 12) / sprite->Width + 1;
-	uint32_t yScale = (destHeight << 12) / sprite->Height + 1;
+	xScale = (destWidth << 12) / sprite->Width + 1;
+	yScale = (destHeight << 12) / sprite->Height + 1;
 
-	long stepX;
-	long stepY;
 	if (flags & LH_SPRITE_DRAW_FLIP_X)
 	{
 		if (flags & LH_SPRITE_DRAW_FLIP_Y)
@@ -225,11 +231,10 @@ LH_RETURN LHDraw::ScaledSprite24(long x, long y, unsigned long destWidth, unsign
 			xAccum += xScale;
 			if (xAccum >> 12)
 			{
-				for (uint32_t n = xAccum >> 12; n != 0; n--)
+				for (unsigned long n = xAccum >> 12; n != 0; n--)
 				{
 					xAccum -= LH_SPRITE_SCALE_ONE;
-					x++;
-					if (x >= start.X())
+					if (++x >= start.X())
 						goto xClipped;
 				}
 			}
@@ -247,11 +252,10 @@ xClipped:
 			yAccum += yScale;
 			if (yAccum >> 12)
 			{
-				for (uint32_t n = yAccum >> 12; n != 0; n--)
+				for (unsigned long n = yAccum >> 12; n != 0; n--)
 				{
 					yAccum -= LH_SPRITE_SCALE_ONE;
-					y++;
-					if (y >= start.Y())
+					if (++y >= start.Y())
 						goto yClipped;
 				}
 			}
@@ -262,31 +266,30 @@ yClipped:
 	if (bottom > end.Y())
 		height -= bottom - end.Y();
 
-	LHColor* dst = (LHColor*)LHSys::GetScreen().backAddress + x + y * LHSys::GetScreen().backPixelPitch;
-	long     dstSkip = LHSys::GetScreen().backPixelPitch - width;
-	long     srcSkip = sprite->Width * stepY;
-	uint32_t xAccumStart = xAccum;
-	long     rows = height;
+	dst = (LHColor*)LHSys::GetScreen().backAddress + x + y * LHSys::GetScreen().backPixelPitch;
+	dstSkip = LHSys::GetScreen().backPixelPitch - width;
+	srcSkip = sprite->Width * stepY;
+	destHeight = height;
+	xAccumStart = xAccum;
 
-	while (rows != 0)
+	while (destHeight != 0)
 	{
 		if (!(yAccum >> 12))
 			yAccum += yScale;
 		if (yAccum >> 12)
 		{
-			uint32_t rowRepeat = yAccum >> 12;
-			while (rowRepeat != 0 && rows != 0)
+			for (unsigned long rows = yAccum >> 12; rows != 0 && destHeight != 0; rows--, destHeight--)
 			{
 				xAccum = xAccumStart;
-				uint32_t w = width;
-				LHColor* rowSrc = src;
+				unsigned long w = width;
+				LHColor*      line = src;
 				while (w != 0)
 				{
 					if (!(xAccum >> 12))
 						xAccum += xScale;
 					if (xAccum >> 12)
 					{
-						uint32_t n = xAccum >> 12;
+						unsigned long n = xAccum >> 12;
 						if (w < n)
 						{
 							n = w;
@@ -294,8 +297,7 @@ yClipped:
 						}
 						else
 							w -= n;
-						LHColor* rowEnd = dst + n;
-						for (; dst < rowEnd; dst++)
+						for (LHColor* dstEnd = dst + n; dst < dstEnd; dst++)
 						{
 							if (!(*src == LHSprite::TransparentColor24))
 							{
@@ -345,10 +347,8 @@ yClipped:
 					}
 					src += stepX;
 				}
+				src = line;
 				dst += dstSkip;
-				src = rowSrc;
-				rowRepeat--;
-				rows--;
 			}
 			src += srcSkip;
 			yAccum &= LH_SPRITE_SCALE_FRACTION_MASK;
@@ -363,25 +363,28 @@ yClipped:
 LH_RETURN LHDraw::ScaledSprite24To16(long x, long y, unsigned long destWidth, unsigned long destHeight,
                                      LHSprite* sprite, unsigned long flags)
 {
-	long     width = destWidth;
-	uint32_t xAccum = 0;
-	uint32_t yAccum = 0;
-	long     height = destHeight;
-	LHRegion window = LHSys::GetScreen().GetGraphicsWindow();
-	LHCoord  start = window.start;
-	LHCoord  end = window.end;
-	long     right = x + width;
-	LHColor* src = (LHColor*)sprite->PixelData;
-	long     bottom = y + height;
+	unsigned long width = destWidth;
+	unsigned long height = destHeight;
+	long          stepX;
+	long          dstSkip;
+	unsigned long xAccum = 0;
+	long          stepY;
+	unsigned long yAccum = 0;
+	LHRegion      window = LHSys::GetScreen().GetGraphicsWindow();
+	LHColor*      src = (LHColor*)sprite->PixelData;
+	long          right = x + destWidth;
+	unsigned long yScale;
+	unsigned long xScale;
+	LHPixel16*    dst;
+	long          srcSkip;
+	long          bottom = y + destHeight;
 
-	if (x > end.X() || right < start.X() || y > end.Y() || bottom < start.Y())
+	if (x > window.end.X() || right < window.start.X() || y > window.end.Y() || bottom < window.start.Y())
 		return LH_FAIL;
 
-	uint32_t xScale = (destWidth << 12) / sprite->Width + 1;
-	uint32_t yScale = (destHeight << 12) / sprite->Height + 1;
+	xScale = (destWidth << 12) / sprite->Width + 1;
+	yScale = (destHeight << 12) / sprite->Height + 1;
 
-	long stepX;
-	long stepY;
 	if (flags & LH_SPRITE_DRAW_FLIP_X)
 	{
 		if (flags & LH_SPRITE_DRAW_FLIP_Y)
@@ -409,19 +412,18 @@ LH_RETURN LHDraw::ScaledSprite24To16(long x, long y, unsigned long destWidth, un
 		stepY = 1;
 	}
 
-	if (x < start.X())
+	if (x < window.start.X())
 	{
-		width -= start.X() - x;
-		while (x < start.X())
+		width -= window.start.X() - x;
+		while (x < window.start.X())
 		{
 			xAccum += xScale;
 			if (xAccum >> 12)
 			{
-				for (uint32_t n = xAccum >> 12; n != 0; n--)
+				for (unsigned long n = xAccum >> 12; n != 0; n--)
 				{
 					xAccum -= LH_SPRITE_SCALE_ONE;
-					x++;
-					if (x >= start.X())
+					if (++x >= window.start.X())
 						goto xClipped;
 				}
 			}
@@ -429,21 +431,20 @@ LH_RETURN LHDraw::ScaledSprite24To16(long x, long y, unsigned long destWidth, un
 		}
 	}
 xClipped:
-	if (right > end.X())
-		width -= right - end.X();
-	if (y < start.Y())
+	if (right > window.end.X())
+		width -= right - window.end.X();
+	if (y < window.start.Y())
 	{
-		height -= start.Y() - y;
-		while (y < start.Y())
+		height -= window.start.Y() - y;
+		while (y < window.start.Y())
 		{
 			yAccum += yScale;
 			if (yAccum >> 12)
 			{
-				for (uint32_t n = yAccum >> 12; n != 0; n--)
+				for (unsigned long n = yAccum >> 12; n != 0; n--)
 				{
 					yAccum -= LH_SPRITE_SCALE_ONE;
-					y++;
-					if (y >= start.Y())
+					if (++y >= window.start.Y())
 						goto yClipped;
 				}
 			}
@@ -451,34 +452,32 @@ xClipped:
 		}
 	}
 yClipped:
-	if (bottom > end.Y())
-		height -= bottom - end.Y();
+	if (bottom > window.end.Y())
+		height -= bottom - window.end.Y();
 
-	long       srcSkip = sprite->Width * stepY;
-	LHPixel16* dst = (LHPixel16*)LHSys::GetScreen().backAddress + x + y * LHSys::GetScreen().backPixelPitch;
-	long       rows = height;
-	long       dstSkip = LHSys::GetScreen().backPixelPitch - width;
-	uint32_t   xAccumStart = xAccum;
+	dst = (LHPixel16*)LHSys::GetScreen().backAddress + x + y * LHSys::GetScreen().backPixelPitch;
+	dstSkip = LHSys::GetScreen().backPixelPitch - width;
+	srcSkip = sprite->Width * stepY;
+	destHeight = height;
 
-	while (rows != 0)
+	while (destHeight != 0)
 	{
 		if (!(yAccum >> 12))
 			yAccum += yScale;
 		if (yAccum >> 12)
 		{
-			uint32_t rowRepeat = yAccum >> 12;
-			while (rowRepeat != 0 && rows != 0)
+			for (unsigned long rows = yAccum >> 12; rows != 0 && destHeight != 0; rows--)
 			{
-				xAccum = xAccumStart;
-				uint32_t w = width;
-				LHColor* rowSrc = src;
+				unsigned long fx = xAccum;
+				unsigned long w = width;
+				LHColor*      line = src;
 				while (w != 0)
 				{
-					if (!(xAccum >> 12))
-						xAccum += xScale;
-					if (xAccum >> 12)
+					if (!(fx >> 12))
+						fx += xScale;
+					if (fx >> 12)
 					{
-						uint32_t n = xAccum >> 12;
+						unsigned long n = fx >> 12;
 						if (w < n)
 						{
 							n = w;
@@ -486,8 +485,7 @@ yClipped:
 						}
 						else
 							w -= n;
-						LHPixel16* rowEnd = dst + n;
-						for (; dst < rowEnd; dst++)
+						for (LHPixel16* dstEnd = dst + n; dst < dstEnd; dst++)
 						{
 							if (!(*src == LHSprite::TransparentColor24))
 							{
@@ -503,14 +501,13 @@ yClipped:
 									*dst = LHPixel16(*src);
 							}
 						}
-						xAccum &= LH_SPRITE_SCALE_FRACTION_MASK;
+						fx &= LH_SPRITE_SCALE_FRACTION_MASK;
 					}
 					src += stepX;
 				}
+				src = line;
 				dst += dstSkip;
-				src = rowSrc;
-				rowRepeat--;
-				rows--;
+				destHeight--;
 			}
 			src += srcSkip;
 			yAccum &= LH_SPRITE_SCALE_FRACTION_MASK;
@@ -859,25 +856,30 @@ yClipped:
 LH_RETURN LHDraw::OneColorScaledSprite24(long x, long y, unsigned long destWidth, unsigned long destHeight,
                                          LHSprite* sprite, LHColor color, unsigned long flags)
 {
-	long     height = destHeight;
-	long     width = destWidth;
-	LHColor* src = (LHColor*)sprite->PixelData;
-	uint32_t xAccum = 0;
-	uint32_t yAccum = 0;
-	LHRegion window = LHSys::GetScreen().GetGraphicsWindow();
-	LHCoord  start = window.start;
-	LHCoord  end = window.end;
-	long     right = x + width;
-	long     bottom = y + height;
+	unsigned long width = destWidth;
+	unsigned long height = destHeight;
+	long          stepX;
+	LHColor*      src = (LHColor*)sprite->PixelData;
+	long          stepY;
+	unsigned long xAccum = 0;
+	unsigned long yAccum = 0;
+	LHRegion      window = LHSys::GetScreen().GetGraphicsWindow();
+	long          dstSkip;
+	long          right = x + destWidth;
+	LHCoord       start(window.start.X(), window.start.Y());
+	unsigned long yScale;
+	unsigned long xScale;
+	LHColor*      dst;
+	long          srcSkip;
+	long          bottom = y + destHeight;
+	LHCoord       end(window.end.X(), window.end.Y());
 
 	if (x > end.X() || right < start.X() || y > end.Y() || bottom < start.Y())
 		return LH_FAIL;
 
-	uint32_t xScale = (destWidth << 12) / sprite->Width + 1;
-	uint32_t yScale = (destHeight << 12) / sprite->Height + 1;
+	xScale = (destWidth << 12) / sprite->Width + 1;
+	yScale = (destHeight << 12) / sprite->Height + 1;
 
-	long stepX;
-	long stepY;
 	if (flags & LH_SPRITE_DRAW_FLIP_X)
 	{
 		if (flags & LH_SPRITE_DRAW_FLIP_Y)
@@ -913,11 +915,10 @@ LH_RETURN LHDraw::OneColorScaledSprite24(long x, long y, unsigned long destWidth
 			xAccum += xScale;
 			if (xAccum >> 12)
 			{
-				for (uint32_t n = xAccum >> 12; n != 0; n--)
+				for (unsigned long n = xAccum >> 12; n != 0; n--)
 				{
 					xAccum -= LH_SPRITE_SCALE_ONE;
-					x++;
-					if (x >= start.X())
+					if (++x >= start.X())
 						goto xClipped;
 				}
 			}
@@ -935,11 +936,10 @@ xClipped:
 			yAccum += yScale;
 			if (yAccum >> 12)
 			{
-				for (uint32_t n = yAccum >> 12; n != 0; n--)
+				for (unsigned long n = yAccum >> 12; n != 0; n--)
 				{
 					yAccum -= LH_SPRITE_SCALE_ONE;
-					y++;
-					if (y >= start.Y())
+					if (++y >= start.Y())
 						goto yClipped;
 				}
 			}
@@ -950,29 +950,28 @@ yClipped:
 	if (bottom > end.Y())
 		height -= bottom - end.Y();
 
-	LHColor* dst = (LHColor*)LHSys::GetScreen().backAddress + x + y * LHSys::GetScreen().backPixelPitch;
-	long     rows = height;
-	long     dstSkip = LHSys::GetScreen().backPixelPitch - width;
-	long     srcSkip = sprite->Width * stepY;
+	dst = (LHColor*)LHSys::GetScreen().backAddress + x + y * LHSys::GetScreen().backPixelPitch;
+	dstSkip = LHSys::GetScreen().backPixelPitch - width;
+	srcSkip = sprite->Width * stepY;
+	destHeight = height;
 
-	while (rows != 0)
+	while (destHeight != 0)
 	{
 		if (!(yAccum >> 12))
 			yAccum += yScale;
 		if (yAccum >> 12)
 		{
-			uint32_t rowRepeat = yAccum >> 12;
-			while (rowRepeat != 0 && rows != 0)
+			for (unsigned long rows = yAccum >> 12; rows != 0 && destHeight != 0; rows--, destHeight--)
 			{
-				uint32_t w = width;
-				LHColor* rowSrc = src;
+				unsigned long w = width;
+				LHColor*      line = src;
 				while (w != 0)
 				{
 					if (!(xAccum >> 12))
 						xAccum += xScale;
 					if (xAccum >> 12)
 					{
-						uint32_t n = xAccum >> 12;
+						unsigned long n = xAccum >> 12;
 						if (w < n)
 						{
 							n = w;
@@ -980,8 +979,7 @@ yClipped:
 						}
 						else
 							w -= n;
-						LHColor* rowEnd = dst + n;
-						for (; dst < rowEnd; dst++)
+						for (LHColor* dstEnd = dst + n; dst < dstEnd; dst++)
 						{
 							if (!(*src == LHSprite::TransparentColor24))
 							{
@@ -1017,22 +1015,22 @@ yClipped:
 								else if (flags & LH_DRAW_STYLE_TINT_ADD)
 								{
 									LHColor pixel = *src;
-									dst->Set(color.GetR() + pixel.GetR() < LHSys::GetScreen().GetMaxRed()
-									             ? color.GetR() + pixel.GetR()
+									dst->Set(color.GetR() + pixel.r < LHSys::GetScreen().GetMaxRed()
+									             ? color.GetR() + pixel.r
 									             : LHSys::GetScreen().GetMaxRed(),
-									         color.GetG() + pixel.GetG() < LHSys::GetScreen().GetMaxGreen()
-									             ? color.GetG() + pixel.GetG()
+									         color.GetG() + pixel.g < LHSys::GetScreen().GetMaxGreen()
+									             ? color.GetG() + pixel.g
 									             : LHSys::GetScreen().GetMaxGreen(),
-									         color.GetB() + pixel.GetB() < LHSys::GetScreen().GetMaxBlue()
-									             ? color.GetB() + pixel.GetB()
+									         color.GetB() + pixel.b < LHSys::GetScreen().GetMaxBlue()
+									             ? color.GetB() + pixel.b
 									             : LHSys::GetScreen().GetMaxBlue());
 								}
 								else if (flags & LH_DRAW_STYLE_TINT_SUBTRACT)
 								{
 									LHColor pixel = *src;
-									dst->Set(pixel.GetR() - color.GetR() > 0 ? pixel.GetR() - color.GetR() : 0,
-									         pixel.GetG() - color.GetG() > 0 ? pixel.GetG() - color.GetG() : 0,
-									         pixel.GetB() - color.GetB() > 0 ? pixel.GetB() - color.GetB() : 0);
+									dst->Set(pixel.r - color.GetR() > 0 ? pixel.r - color.GetR() : 0,
+									         pixel.g - color.GetG() > 0 ? pixel.g - color.GetG() : 0,
+									         pixel.b - color.GetB() > 0 ? pixel.b - color.GetB() : 0);
 								}
 								else
 								{
@@ -1046,10 +1044,8 @@ yClipped:
 					}
 					src += stepX;
 				}
+				src = line;
 				dst += dstSkip;
-				src = rowSrc;
-				rowRepeat--;
-				rows--;
 			}
 			src += srcSkip;
 			yAccum &= LH_SPRITE_SCALE_FRACTION_MASK;
