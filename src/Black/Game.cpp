@@ -326,7 +326,7 @@ bool32_t GGame::Init()
 	if (BWCheckFeatureIsEnabled("CreatureDanceLineIn") && CreatureDanceLineIn == NULL)
 	{
 		CreatureDanceLineIn = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1113) CreatureDanceLineInput;
-		CreatureDanceLineIn->fn_00437A40();
+		CreatureDanceLineIn->Open();
 		if (!CreatureDanceLineIn->Active)
 		{
 			delete CreatureDanceLineIn;
@@ -1279,8 +1279,8 @@ bool32_t GGame::Close()
 	CreatureDanceLineInput* lineInput = CreatureDanceLineIn;
 	if (lineInput != NULL)
 	{
-		lineInput->fn_00437C00();
-		lineInput->Analysis.fn_004373E0();
+		lineInput->Close();
+		lineInput->Analysis.Stop();
 		::operator delete(lineInput);
 	}
 	CreatureDanceLineIn = NULL;

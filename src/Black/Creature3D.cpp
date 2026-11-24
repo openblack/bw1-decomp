@@ -3620,63 +3620,58 @@ void LH3DCreature::StateAction()
 		// the beat detected on the sound card's line input. The line input's beat counter runs at the detected tempo
 		// (120 bpm without a recent beat) and the dance's beat counter is pulled towards it; the animation is then
 		// advanced so that its own beat catches up with the dance beat.
-		// TODO: CreatureDanceLineInput::field_0x3510/0x3514/0x3518 are floats (line-input beat, dance beat, tempo);
-		// drop the casts once its header types them. The first half may be an inline CreatureDanceLineInput method
-		// (it works on a local copy of the pointer, the second half reloads GGame::CreatureDanceLineIn each time).
 		CreatureDanceLineInput* lineIn = GGame::CreatureDanceLineIn;
 		if (lineIn && anim)
 		{
 			float dt = FloatTimeInc;
 			long  tempo;
-			if (lineIn->Analysis.field_0x34e4 > lineIn->Analysis.Threshold &&
-			    GetTickCount() - lineIn->Analysis.LastDetectionTick < 4000 && lineIn->Analysis.field_0x3028 < 50.0f)
+			if (lineIn->Analysis.PeakStrength > lineIn->Analysis.Threshold &&
+			    GetTickCount() - lineIn->Analysis.LastDetectionTick < LINE_INPUT_DETECTION_TIMEOUT &&
+			    lineIn->Analysis.Gain < LINE_INPUT_MAX_USABLE_GAIN)
 			{
 				tempo = lineIn->Analysis.Tempo;
 			}
 			else
 			{
-				tempo = 120;
+				tempo = LINE_INPUT_DEFAULT_TEMPO;
 			}
-			*(float*)&lineIn->field_0x3518 = tempo;
-			if (lineIn->Analysis.field_0x302c)
+			lineIn->BeatsPerMinute = tempo;
+			if (lineIn->Analysis.BeatSyncCount)
 			{
-				lineIn->Analysis.field_0x302c = 0;
-				*(float*)&lineIn->field_0x3510 = (long)(*(float*)&lineIn->field_0x3510 + 0.5f);
+				lineIn->Analysis.BeatSyncCount = 0;
+				lineIn->LineBeat = (long)(lineIn->LineBeat + 0.5f);
 			}
-			float beats = *(float*)&lineIn->field_0x3518 * dt / 60.0f;
-			*(float*)&lineIn->field_0x3510 += beats;
-			*(float*)&lineIn->field_0x3514 += beats;
-			float drift = *(float*)&lineIn->field_0x3510 - *(float*)&lineIn->field_0x3514;
+			float beats = lineIn->BeatsPerMinute * dt / LINE_INPUT_SECONDS_PER_MINUTE;
+			lineIn->LineBeat += beats;
+			lineIn->DanceBeat += beats;
+			float drift = lineIn->LineBeat - lineIn->DanceBeat;
 			if (fabs(drift) > 0.5)
 			{
-				*(float*)&lineIn->field_0x3514 +=
-					(long)(*(float*)&lineIn->field_0x3510 + 0.5f) - (long)(*(float*)&lineIn->field_0x3514 + 0.5f);
+				lineIn->DanceBeat += (long)(lineIn->LineBeat + 0.5f) - (long)(lineIn->DanceBeat + 0.5f);
 			}
 			float pull = dt * 10.0f;
 			pull = pull > -1.0f ? min(pull, 1.0f) : -1.0f;
-			*(float*)&lineIn->field_0x3514 += pull * drift;
+			lineIn->DanceBeat += pull * drift;
 			// The animation's own tempo, folded into 81..162 bpm.
 			float animTempo = 60000.0f / (long)anim->Duration;
 			CLAMP(animTempo, 0.1f, 10000.0f);
-			while (animTempo < 81.0f)
+			while (animTempo < LINE_INPUT_MIN_TEMPO)
 			{
 				animTempo *= 2.0f;
 			}
-			while (animTempo >= 163.0f)
+			while (animTempo >= LINE_INPUT_MAX_TEMPO)
 			{
 				animTempo *= 0.5f;
 			}
 			float animBeat = CycleTime[0] * animTempo / 60000.0f;
-			if (fabs(animBeat - *(float*)&GGame::CreatureDanceLineIn->field_0x3514) > 0.5)
+			if (fabs(animBeat - GGame::CreatureDanceLineIn->DanceBeat) > 0.5)
 			{
 				// More than half a beat out: jump both counters to the animation's whole beat.
 				long beat = (long)(animBeat + 0.5f);
-				*(float*)&GGame::CreatureDanceLineIn->field_0x3514 +=
-					beat - (long)(*(float*)&GGame::CreatureDanceLineIn->field_0x3514 + 0.5f);
-				*(float*)&GGame::CreatureDanceLineIn->field_0x3510 +=
-					beat - (long)(*(float*)&GGame::CreatureDanceLineIn->field_0x3510 + 0.5f);
+				GGame::CreatureDanceLineIn->DanceBeat += beat - (long)(GGame::CreatureDanceLineIn->DanceBeat + 0.5f);
+				GGame::CreatureDanceLineIn->LineBeat += beat - (long)(GGame::CreatureDanceLineIn->LineBeat + 0.5f);
 			}
-			inc = (long)((*(float*)&GGame::CreatureDanceLineIn->field_0x3514 - animBeat) * 60000.0f / animTempo);
+			inc = (long)((GGame::CreatureDanceLineIn->DanceBeat - animBeat) * 60000.0f / animTempo);
 			if (inc > 0)
 			{
 				inc = min(inc, IntTimeInc * 5);

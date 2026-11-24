@@ -23440,6 +23440,7 @@ __real@4@c0029cf5c30000000000 = .rdata:0x00804950; // type:object size:0x4 scope
 _CellSize = .rdata:0x00804954; // type:object size:0x4 scope:local
 _PI = .rdata:0x00804958; // type:object size:0x4 scope:local
 _MillisecondsPerSecond = .rdata:0x0080495C; // type:object size:0x4 scope:local
+_CellSize = .rdata:0x00804960; // type:object size:0x4 scope:local data:float
 _PI = .rdata:0x00804964; // type:object size:0x4 scope:local data:float
 _NumDaysInYear = .rdata:0x00804968; // type:object size:0x4 scope:local
 _SecondsInDay = .rdata:0x0080496C; // type:object size:0x4 scope:local
