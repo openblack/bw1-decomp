@@ -15,7 +15,7 @@ class CreatureActionKnownAboutEntry : public GBaseInfo
 {
 public:
 	char              Name[0x40];
-	uint32_t          field_0x50;
+	CREATURE_DESIRES  Desire;
 	uint32_t          field_0x54;
 	float             SecondsToLearn;
 	uint32_t          field_0x5c;

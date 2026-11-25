@@ -851,12 +851,18 @@ Black/CreatureSubActions.cpp:
 	.data       start:0x00C66B9C end:0x00C66E40
 	.bss        start:0x00D2EAD0 end:0x00D2EAEC
 
+Black/CreatureTests.cpp:
+	.text       start:0x0050B200 end:0x0050B350
+	.rdata      start:0x008D66A0 end:0x008D66AC
+	.CRT$XCU    start:0x00A46690 end:0x00A4669C align:4
+	.bss        start:0x00D2EAEC end:0x00D2EAF4
+
 Black/CreatureWhatToDoNext.cpp:
-	.text       start:0x0050B200 end:0x0050CCB0
-	.rdata      start:0x008D66A0 end:0x008D66C0
-	.CRT$XCU    start:0x00A46690 end:0x00A466A8 align:4
+	.text       start:0x0050B350 end:0x0050CCB0
+	.rdata      start:0x008D66AC end:0x008D66C0
+	.CRT$XCU    start:0x00A4669C end:0x00A466A8 align:4
 	.data       start:0x00C66E40 end:0x00C66E70
-	.bss        start:0x00D2EAEC end:0x00D2EAFC
+	.bss        start:0x00D2EAF4 end:0x00D2EAFC
 
 Black/Creche.cpp:
 	.text       start:0x0050CCB0 end:0x0050CF70
