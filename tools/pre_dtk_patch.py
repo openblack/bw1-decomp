@@ -152,14 +152,57 @@ def build_clean(data: bytes) -> bytes:
     return bytes(out)
 
 
+def restore_linker_padding(data: bytes, table: Path, start: int, end: int) -> bytes:
+    """Reverse witnessed post-link edits in the selected text range."""
+    import pefile
+    from post_link_patch import PADDING_ENCODERS, parse_padding_rows
+
+    pe = pefile.PE(data=data, fast_load=True)
+    image_base = pe.OPTIONAL_HEADER.ImageBase
+    section = pe.get_section_by_rva(start - image_base)
+    if (
+        section is None
+        or section.Name.rstrip(b"\x00") != b".text"
+        or not start < end <= image_base + section.VirtualAddress + section.SizeOfRawData
+    ):
+        raise SystemExit(f"padding range {start:#010x}–{end:#010x} is outside file-backed .text")
+
+    rows = parse_padding_rows(table.read_text(), str(table))
+    ranges = [(address, kind, args) for address, kind, args, _ in rows if start <= address < end]
+    if not ranges:
+        raise SystemExit(f"no padding rows for {start:#010x}–{end:#010x} in {table}")
+
+    out = bytearray(data)
+    previous_end = start
+    for address, kind, args in ranges:
+        shipped = PADDING_ENCODERS[kind](args)(pe, address)
+        if not shipped or address < previous_end or address + len(shipped) > end:
+            raise SystemExit(f"padding row {address:#010x} overlaps or leaves the range")
+        offset = section.PointerToRawData + address - image_base - section.VirtualAddress
+        found = data[offset:offset + len(shipped)]
+        if found != shipped:
+            raise SystemExit(f"{address:#010x}: found {found.hex()}, expected {shipped.hex()}")
+        out[offset:offset + len(shipped)] = b"\x90" * len(shipped)
+        previous_end = address + len(shipped)
+
+    return bytes(out)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("input", type=Path, help="decrypted runblack exe")
     ap.add_argument("output", type=Path, nargs="?", help="clean exe (default: in place)")
+    ap.add_argument(
+        "--padding-range", nargs=3, metavar=("TABLE", "START", "END"),
+        help="restore linker NOPs in a verified .text range using its post-link padding table",
+    )
     args = ap.parse_args()
 
     data = args.input.read_bytes()
     clean = build_clean(data)
+    if args.padding_range is not None:
+        table, start, end = args.padding_range
+        clean = restore_linker_padding(clean, Path(table), int(start, 0), int(end, 0))
     (args.output or args.input).write_bytes(clean)
     return 0
 

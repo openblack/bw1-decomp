@@ -2076,6 +2076,7 @@ Black/PowerSpin.cpp:
 Black/PrayerSite.cpp:
 	.text       start:0x00665DC0 end:0x006661E0
 	.rdata      start:0x009240E8 end:0x009252F8
+	.rdata$r    start:0x009A3278 end:0x009A33E8
 	.CRT$XCU    start:0x009B6D2C end:0x009B6D38 align:4
 	.data       start:0x00BF1250 end:0x00BF12CC
 	.bss        start:0x00D3CB50 end:0x00D3CD88

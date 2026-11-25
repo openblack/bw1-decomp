@@ -2042,6 +2042,14 @@
 0x00673F11 jmp_run 0x00673ED1  # Pot
 0x00673F82 copy_run 0x00673F11  # Pot
 0x00673FF2 jmp_run 0x00673F82  # Pot
+0x00674F23 copy_run 0x00674EAA  # PrayerSite
+0x00674FE3 copy_run 0x00674F23  # PrayerSite
+0x00675093 jmp_run 0x00674FE3  # PrayerSite
+0x006750E5 copy_run 0x00675093  # PrayerSite
+0x0067517B jmp_run 0x006750E5  # PrayerSite
+0x006751F3 jmp_run 0x0067517B  # PrayerSite
+0x0067524D copy_run 0x006751F3  # PrayerSite
+0x0067531A jmp_run 0x00675246  # PrayerSite
 0x00698CF3 jmp_run 0x00698C4B  # PSysLoad
 0x00698DA7 copy_run 0x00698CF3  # PSysLoad
 0x00698DC3 copy_run 0x00698DA7  # PSysLoad

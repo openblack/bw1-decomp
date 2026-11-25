@@ -449,10 +449,22 @@ _module_patched = [f"{_out}/{m}.dll" for m in _modules]
 # exe so dtk/lld see pristine linker output (see docs/transformations.md).
 _decrypted = f"orig/{config.version}/" + {"BW1WCI": "CreatureIsle-decrypted.exe"}.get(config.version, "runblack-decrypted.exe")
 _preprocessed = f"{_out}/runblack-preprocessed.exe"
+# Compare the source objects against linker output before the padding overlays.
+_padding_tables = sorted(p.as_posix() for p in Path("config").glob("*/padding.txt"))
+_prayersite_text = {
+    "BW1W120": (0x00670600, 0x00670A50),
+    "BW1W130": (0x00674F00, 0x00675350),
+}
+_predtk_args = ""
+_predtk_deps = ["tools/pre_dtk_patch.py"]
+if config.version in _prayersite_text:
+    _start, _end = _prayersite_text[config.version]
+    _predtk_args = f" --padding-range config/{config.version}/padding.txt {_start:#x} {_end:#x}"
+    _predtk_deps += ["tools/post_link_patch.py", *_padding_tables]
 config.custom_build_rules = [
     {
         "name": "predtk",
-        "command": f"$python tools/pre_dtk_patch.py $in $out",
+        "command": f"$python tools/pre_dtk_patch.py $in $out{_predtk_args}",
         "description": "PREDTK $out",
     },
     {
@@ -471,8 +483,6 @@ config.custom_build_rules = [
         "description": "PATCH $in",
     },
 ]
-# post_link_patch.py reads every version's padding table (config/<version>/padding.txt).
-_padding_tables = sorted(p.as_posix() for p in Path("config").glob("*/padding.txt"))
 _msvc_dir = f"{(config.compilers_path or Path('build/compilers')).as_posix()}/{config.linker_version}"
 _patch_stamp = f"{_out}/patched_compiler_headers"
 config.custom_build_steps = {
@@ -481,7 +491,7 @@ config.custom_build_steps = {
             "outputs": _preprocessed,
             "rule": "predtk",
             "inputs": _decrypted,
-            "implicit": ["tools/pre_dtk_patch.py"],
+            "implicit": _predtk_deps,
         },
     ],
     "pre-compile": [
@@ -1180,7 +1190,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/PlaytimeDance.cpp"),
             GameCodeObject(Matching, "Black/Pot.cpp"),
             GameCodeObject(NonMatching, "Black/PowerSpin.cpp"),
-            GameCodeObject(MatchingFor("BW1W100"), "Black/PrayerSite.cpp"),
+            GameCodeObject(Matching, "Black/PrayerSite.cpp"),
             GameCodeObject(NonMatching, "Black/PSys3d.cpp"),
             GameCodeObject(NonMatching, "Black/PSysAtomCore.cpp"),
             GameCodeObject(NonMatching, "Black/PSysBase.cpp", pch=PCH_EXCEPT_NO_STRING),

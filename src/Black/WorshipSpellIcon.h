@@ -23,6 +23,7 @@ class Base;
 class Citadel;
 class EffectValues;
 class GPlayer;
+class GPrayerIconInfo;
 class GSpellIconInfo;
 class GSpellSeedInfo;
 class GameOSFile;
@@ -73,7 +74,7 @@ public:
 	// BW1W120 0077f0a0 BW1M119 01575730
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 0077f0e0 BW1M119 015bb2c0
-	virtual float ApplyEffect(EffectValues& param_1, int param_2);
+	virtual float ApplyEffect(EffectValues& values, int);
 	// BW1W120 0077f390 BW1M119 015bd9f0
 	virtual uint32_t Process();
 	// BW1W120 0077f290 BW1M119 015bddc0
@@ -186,24 +187,54 @@ public:
 
 class PrayerIcon : public SingleMapFixed
 {
+	uint32_t field_0x5c;
+	uint8_t  field_0x60[4];
+
 public:
+#ifndef VERSION_BW1W100
+	PrayerIcon(const MapCoords& coords, const GPrayerIconInfo* info, const GSpellSeedInfo* unused, float y_angle,
+	           float scale);
+#endif
+
 	// Override methods
 	// BW1W120 00670980 BW1M119 inlined
+#ifdef VERSION_BW1W100
 	virtual void ToBeDeleted(bool32_t delete_now) {}
+#else
+	virtual void ToBeDeleted(bool32_t delete_now);
+#endif
 	// BW1W120 006709a0 BW1M119 inlined
+#ifdef VERSION_BW1W100
 	virtual GPlayer* GetPlayer() { return NULL; }
+#else
+	virtual GPlayer* GetPlayer();
+#endif
 	// BW1W120 006709b0 BW1M119 inlined
+#ifdef VERSION_BW1W100
 	virtual Town* GetTown() { return NULL; }
+#else
+	virtual Town* GetTown();
+#endif
 	// BW1W120 00670940 BW1M119 inlined
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 006709e0 BW1M119 inlined
+#ifdef VERSION_BW1W100
 	virtual Citadel* GetCitadel() { return NULL; }
+#else
+	virtual Citadel* GetCitadel();
+#endif
 	// BW1W120 006709d0 BW1M119 inlined
 	virtual uint32_t Process();
 	// BW1W120 00670950 BW1M119 inlined
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 006709f0 BW1M119 inlined
+#ifdef VERSION_BW1W100
 	virtual void Draw() {}
+#else
+	virtual void Draw();
+#endif
 };
+
+static_assert(sizeof(PrayerIcon) == 0x64, "PrayerIcon size is incorrect");
 
 #endif /* BW1_DECOMP_WORSHIP_SPELL_ICON_INCLUDED_H */
