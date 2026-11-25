@@ -22,6 +22,11 @@
 #include "SubArgument.h"
 #include "Town.h"
 
+#if defined(VERSION_BW1WCI)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + ((line) < 393 ? 0 : 5))
+#endif
+
 #define HIGH_MOVE_RADIUS_SCALE    4.0f
 #define DANCE_TO_MUSIC_MIN_LEVEL  8
 #define MIN_OBJECT_IN_HAND_DESIRE 0.1f
@@ -324,6 +329,9 @@ void Creature::ActOnObjectInHand(CreatureBelief* belief, long argument)
 			mind->ConsiderLearningAction(CREATURE_ACTION_LEARNING_TYPE_MAGIC, magicType);
 			ForceActivityAndForceAction(plan, true, true);
 			mind->agenda.CommandState.Commanded = true;
+#ifdef VERSION_BW1WCI
+			Fainted = true;
+#endif
 			return;
 		}
 	}
@@ -338,6 +346,9 @@ void Creature::ActOnObjectInHand(CreatureBelief* belief, long argument)
 			{
 				mind->agenda.PreviousPlan.ObjectToActOn = objectBelief;
 				ForceActivityAndForceAction(mind->agenda.PreviousPlan, true, true);
+#ifdef VERSION_BW1WCI
+				Fainted = true;
+#endif
 				return;
 			}
 			if (CreatureAgenda::ActionTable[action].NeedsObjectToUse &&
@@ -345,6 +356,9 @@ void Creature::ActOnObjectInHand(CreatureBelief* belief, long argument)
 			{
 				mind->agenda.PreviousPlan.ObjectToUse = objectBelief;
 				ForceActivityAndForceAction(mind->agenda.PreviousPlan, true, true);
+#ifdef VERSION_BW1WCI
+				Fainted = true;
+#endif
 				return;
 			}
 		}
@@ -385,6 +399,9 @@ void Creature::ActOnObjectInHand(CreatureBelief* belief, long argument)
 		else
 		{
 			ForceActOnObject(object);
+#ifdef VERSION_BW1WCI
+			Fainted = true;
+#endif
 			return;
 		}
 	}
@@ -392,6 +409,9 @@ void Creature::ActOnObjectInHand(CreatureBelief* belief, long argument)
 	                              CREATURE_STROKE_OBJECT_IN_HAND, CREATURE_THROW_OBJECT_IN_HAND};
 	CreatureBelief* activityObject = AddBeliefAboutAssociatedObject(objectBelief);
 	ForceActivityAndForceAction(desires[best], activityObject, actions[best], objectBelief, NULL, true, true);
+#ifdef VERSION_BW1WCI
+	Fainted = true;
+#endif
 }
 
 void Creature::GiveFoodToWorshippers(CreatureBelief* belief, long argument)
