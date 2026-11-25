@@ -4,7 +4,7 @@
 #include <math.h>     /* For fabs */
 
 #include "LH3DEnvMatInfo.h"       /* For LH3DEnvMatInfo */
-#include "LH3DMath.h"             /* For InverseSquareRoot */
+#include "LH3DMath.h"             /* For InverseSquareRoot, LH3D_WEIGHTED_BLEND */
 #include "LH3DMesh.h"             /* For LH3DMesh */
 #include "LH3DObject.h"           /* For class LH3DObject */
 #include "LH3DRender.h"           /* For LH3DRender */
@@ -62,9 +62,9 @@ static inline void RotatePointBy(LHPoint* out, const LHPoint& in, const LHMatrix
 
 static inline void TransformToClipping(Vertex3D* point, const LHPoint& position, const LHMatrix* matrix)
 {
-	point->x = matrix->m[0] * position.x + matrix->m[3] * position.y + matrix->m[6] * position.z + matrix->m[9];
-	point->y = matrix->m[1] * position.x + matrix->m[4] * position.y + matrix->m[7] * position.z + matrix->m[10];
-	point->rhw = matrix->m[2] * position.x + matrix->m[5] * position.y + matrix->m[8] * position.z + matrix->m[11];
+	point->x = position.x * matrix->m[0] + position.y * matrix->m[3] + position.z * matrix->m[6] + matrix->m[9];
+	point->y = position.x * matrix->m[1] + position.y * matrix->m[4] + position.z * matrix->m[7] + matrix->m[10];
+	point->rhw = position.x * matrix->m[2] + position.y * matrix->m[5] + position.z * matrix->m[8] + matrix->m[11];
 }
 
 static inline void ComputeClipFlags(Vertex3D* point, unsigned long* flags)
@@ -403,8 +403,8 @@ void LH3DPrimitive::ApplyVBlendsAndSetFlags(Vertex3D* points, unsigned long* fla
 			{
 				points->x = LH3DTech::g_max_screen[0];
 			}
-			points->y =
-				LH3DTech::g_info_transform.HalfRes.y - (points->rhw * points->y) * LH3DTech::g_info_transform.HalfRes.y;
+			points->y = LH3DTech::g_info_transform.HalfRes.y -
+			            ((points->rhw * points->y) * LH3DTech::g_info_transform.HalfRes.y);
 			if (points->y < 0.0f)
 			{
 				points->y = 0.0f;
@@ -414,7 +414,7 @@ void LH3DPrimitive::ApplyVBlendsAndSetFlags(Vertex3D* points, unsigned long* fla
 				points->y = LH3DTech::g_max_screen[1];
 			}
 			points->rhw = LH3DTech::g_info_transform.NearClip * points->rhw;
-			points->z = 1.0f - points->rhw;
+			points->z = (1.0f - points->rhw);
 		}
 	}
 }
@@ -470,8 +470,8 @@ void LH3DPrimitive::ApplyVBlendsAndSetFlagsMT(Vertex3DMT* points, unsigned long*
 			{
 				points->x = LH3DTech::g_max_screen[0];
 			}
-			points->y =
-				LH3DTech::g_info_transform.HalfRes.y - (points->rhw * points->y) * LH3DTech::g_info_transform.HalfRes.y;
+			points->y = LH3DTech::g_info_transform.HalfRes.y -
+			            ((points->rhw * points->y) * LH3DTech::g_info_transform.HalfRes.y);
 			if (points->y < 0.0f)
 			{
 				points->y = 0.0f;
@@ -481,7 +481,7 @@ void LH3DPrimitive::ApplyVBlendsAndSetFlagsMT(Vertex3DMT* points, unsigned long*
 				points->y = LH3DTech::g_max_screen[1];
 			}
 			points->rhw = LH3DTech::g_info_transform.NearClip * points->rhw;
-			points->z = 1.0f - points->rhw;
+			points->z = (1.0f - points->rhw);
 		}
 	}
 }
@@ -618,13 +618,13 @@ void LH3DPrimitive::DrawTextureShadow()
 	light.x += LH3DTech::g_local_to_clipping.m[9] - LH3DObject::g_current_object_in_draw->matrix.m[9];
 	light.z += LH3DTech::g_local_to_clipping.m[11] - LH3DObject::g_current_object_in_draw->matrix.m[11];
 	LH3DTShadow::g_bitmap = bitmap;
-	for (int i = 0; i < NumTriangles; i++)
+	for (int i = 0; i < NumTriangles; i++, indices += 3)
 	{
 		Vertex3D corners[3];
-		for (int k = 0; k < 3; k++, indices++)
+		for (int k = 0; k < 3; k++)
 		{
-			LH3DVertex* vertex = &Vertices[*indices];
 			Vertex3D*   corner = &corners[k];
+			LH3DVertex* vertex = &Vertices[indices[k]];
 			LHPoint     position = vertex->position;
 			LH3DTech::g_local_to_clipping.TransformPoint(position);
 			if (position.y < 0.0f)
@@ -2153,7 +2153,7 @@ void LH3DPrimitive::DrawCage(float scale)
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -2163,7 +2163,7 @@ void LH3DPrimitive::DrawCage(float scale)
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 		}
 	}
@@ -2195,7 +2195,7 @@ void LH3DPrimitive::DrawCage(float scale)
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -2205,7 +2205,7 @@ void LH3DPrimitive::DrawCage(float scale)
 						point->y = LH3DTech::g_max_screen[1];
 					}
 					point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-					point->z = 1.0f - point->rhw;
+					point->z = (1.0f - point->rhw);
 				}
 			}
 			start += group->vertex_count;
@@ -2400,21 +2400,26 @@ int __fastcall LH3DPrimitive::ComputeProjectedPoints(float* projected, TShadowIn
 void __fastcall LH3DPrimitive::DrawShadowPolys(uint8_t* buffer, long pitch, float* projected, TShadowInfo* shadow)
 {
 	LH3DTriangle* triangle = Triangles;
+	float*        a;
+	float*        b;
+	float*        c;
 	if (!GetMaterial()->IsDoubleSided() && !LH3DObject::g_current_object_in_draw->IsTemple())
 	{
 		for (int i = 0; i < NumTriangles; i++, triangle++)
 		{
-			int    color = shadow->Color;
-			float* b = &projected[triangle->B * 2];
-			int    yB = (int)b[1];
-			float  xB = b[0];
-			float* c = &projected[triangle->C * 2];
-			int    yC = (int)c[1];
-			float  xC = c[0];
-			float* a = &projected[triangle->A * 2];
-			int    yA = (int)a[1];
-			float  xA = a[0];
-			if (!((float)(yB - yC) * (xA - xC) > (float)(yA - yC) * (xB - xC)))
+			int color = shadow->Color;
+			b = &projected[triangle->B * 2];
+			int   yB = (int)b[1];
+			float xB = b[0];
+			c = &projected[triangle->C * 2];
+			int   yC = (int)c[1];
+			float xC = c[0];
+			a = &projected[triangle->A * 2];
+			int   yA = (int)a[1];
+			float xA = a[0];
+			float dyB = (float)(yB - yC);
+			float dyA = (float)(yA - yC);
+			if (!(dyB * (xA - xC) > dyA * (xB - xC)))
 			{
 				SoftTri::miny = SoftTri::CLIPY;
 				SoftTri::maxy = 0;
@@ -2427,19 +2432,21 @@ void __fastcall LH3DPrimitive::DrawShadowPolys(uint8_t* buffer, long pitch, floa
 	{
 		for (int i = 0; i < NumTriangles; i++, triangle++)
 		{
-			int    color = shadow->Color;
-			float* c = &projected[triangle->C * 2];
-			int    yC = (int)c[1];
-			float  xC = c[0];
-			float* b = &projected[triangle->B * 2];
-			int    yB = (int)b[1];
-			float  xB = b[0];
-			float* a = &projected[triangle->A * 2];
-			int    yA = (int)a[1];
-			float  xA = a[0];
+			int color = shadow->Color;
+			c = &projected[triangle->C * 2];
+			int   yC = (int)c[1];
+			float xC = c[0];
+			b = &projected[triangle->B * 2];
+			int   yB = (int)b[1];
+			float xB = b[0];
+			a = &projected[triangle->A * 2];
+			int   yA = (int)a[1];
+			float xA = a[0];
 			SoftTri::miny = SoftTri::CLIPY;
 			SoftTri::maxy = 0;
-			if ((float)(yC - yB) * (xA - xB) > (float)(yA - yB) * (xC - xB))
+			float dyC = (float)(yC - yB);
+			float dyA = (float)(yA - yB);
+			if (dyC * (xA - xB) > dyA * (xC - xB))
 			{
 				SoftTri::addedge_123(xA, yA, xC, yC, xC, yC, xB, yB, xB, yB, xA, yA);
 			}
@@ -2526,7 +2533,7 @@ void LH3DPrimitive::DrawWaterReflection()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -2536,7 +2543,7 @@ void LH3DPrimitive::DrawWaterReflection()
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 		}
 	}
@@ -2605,7 +2612,7 @@ void LH3DPrimitive::DrawWaterReflection()
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           point->rhw * (point->y * LH3DTech::g_info_transform.HalfRes.y);
+					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -2615,7 +2622,7 @@ void LH3DPrimitive::DrawWaterReflection()
 						point->y = LH3DTech::g_max_screen[1];
 					}
 					point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-					point->z = 1.0f - point->rhw;
+					point->z = (1.0f - point->rhw);
 				}
 			}
 			start += group->vertex_count;
@@ -3134,7 +3141,7 @@ void LH3DPrimitive::DrawEnvMapMT()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -3144,7 +3151,7 @@ void LH3DPrimitive::DrawEnvMapMT()
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 		}
 	}
@@ -3197,7 +3204,7 @@ void LH3DPrimitive::DrawEnvMapMT()
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -3207,7 +3214,7 @@ void LH3DPrimitive::DrawEnvMapMT()
 						point->y = LH3DTech::g_max_screen[1];
 					}
 					point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-					point->z = 1.0f - point->rhw;
+					point->z = (1.0f - point->rhw);
 				}
 			}
 			start += group->vertex_count;
@@ -3332,7 +3339,7 @@ void LH3DPrimitive::DrawEnvMapST()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -3342,7 +3349,7 @@ void LH3DPrimitive::DrawEnvMapST()
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 		}
 	}
@@ -3394,7 +3401,7 @@ void LH3DPrimitive::DrawEnvMapST()
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -3404,7 +3411,7 @@ void LH3DPrimitive::DrawEnvMapST()
 						point->y = LH3DTech::g_max_screen[1];
 					}
 					point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-					point->z = 1.0f - point->rhw;
+					point->z = (1.0f - point->rhw);
 				}
 			}
 			start += group->vertex_count;
@@ -3678,14 +3685,14 @@ void __fastcall LH3DPrimitive::Blend(LH3DPrimitive* from, LH3DPrimitive* to, flo
 	blend = 1.0f - blend;
 	for (int i = 0; i < NumVertices; vertex++, fromVertex++, toVertex++, i++)
 	{
-		vertex->position.x = blend * fromVertex->position.x + (1.0f - blend) * toVertex->position.x;
-		vertex->position.y = blend * fromVertex->position.y + (1.0f - blend) * toVertex->position.y;
-		vertex->position.z = blend * fromVertex->position.z + (1.0f - blend) * toVertex->position.z;
-		vertex->normal.x = blend * fromVertex->normal.x + (1.0f - blend) * toVertex->normal.x;
-		vertex->normal.y = blend * fromVertex->normal.y + (1.0f - blend) * toVertex->normal.y;
-		vertex->normal.z = blend * fromVertex->normal.z + (1.0f - blend) * toVertex->normal.z;
-		vertex->uv.x = blend * fromVertex->uv.x + (1.0f - blend) * toVertex->uv.x;
-		vertex->uv.y = blend * fromVertex->uv.y + (1.0f - blend) * toVertex->uv.y;
+		vertex->position.x = LH3D_WEIGHTED_BLEND(toVertex->position.x, fromVertex->position.x, blend);
+		vertex->position.y = LH3D_WEIGHTED_BLEND(toVertex->position.y, fromVertex->position.y, blend);
+		vertex->position.z = LH3D_WEIGHTED_BLEND(toVertex->position.z, fromVertex->position.z, blend);
+		vertex->normal.x = LH3D_WEIGHTED_BLEND(toVertex->normal.x, fromVertex->normal.x, blend);
+		vertex->normal.y = LH3D_WEIGHTED_BLEND(toVertex->normal.y, fromVertex->normal.y, blend);
+		vertex->normal.z = LH3D_WEIGHTED_BLEND(toVertex->normal.z, fromVertex->normal.z, blend);
+		vertex->uv.x = LH3D_WEIGHTED_BLEND(toVertex->uv.x, fromVertex->uv.x, blend);
+		vertex->uv.y = LH3D_WEIGHTED_BLEND(toVertex->uv.y, fromVertex->uv.y, blend);
 	}
 }
 
@@ -4421,7 +4428,7 @@ void LH3DPrimitive::Draw()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           point->rhw * (point->y * LH3DTech::g_info_transform.HalfRes.y);
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -4431,7 +4438,7 @@ void LH3DPrimitive::Draw()
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 		}
 	}
@@ -4462,7 +4469,7 @@ void LH3DPrimitive::Draw()
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -4472,7 +4479,7 @@ void LH3DPrimitive::Draw()
 						point->y = LH3DTech::g_max_screen[1];
 					}
 					point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-					point->z = 1.0f - point->rhw;
+					point->z = (1.0f - point->rhw);
 				}
 			}
 			start += group->vertex_count;
@@ -4585,7 +4592,7 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -4595,7 +4602,7 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 		}
 	}
@@ -4633,7 +4640,7 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           point->rhw * (point->y * LH3DTech::g_info_transform.HalfRes.y);
+					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -4643,7 +4650,7 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 						point->y = LH3DTech::g_max_screen[1];
 					}
 					point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-					point->z = 1.0f - point->rhw;
+					point->z = (1.0f - point->rhw);
 				}
 			}
 			start += group->vertex_count;
@@ -5307,53 +5314,12 @@ void LH3DPrimitive::DrawWithVerticalTranslation()
 			                 vertex->position.z + translate[2]);
 			TransformToClipping(point, position, LH3DTech::g_current_matrix);
 			point->specular = LH3DMesh::g_specular;
-			int light = GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
-			point->color = ScaleColor(LH3DMesh::g_color, light);
+			point->color =
+				ScaleColor(LH3DMesh::g_color, GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX)));
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
 			ComputeClipFlags(point, flags);
-			if (*flags == 0)
-			{
-				point->rhw = 1.0f / point->rhw;
-				point->x = (point->rhw * point->x + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
-				if (point->x < 0.0f)
-				{
-					point->x = 0.0f;
-				}
-				else if (point->x > LH3DTech::g_max_screen[0])
-				{
-					point->x = LH3DTech::g_max_screen[0];
-				}
-				point->y =
-					LH3DTech::g_info_transform.HalfRes.y - point->rhw * point->y * LH3DTech::g_info_transform.HalfRes.y;
-				if (point->y < 0.0f)
-				{
-					point->y = 0.0f;
-				}
-				else if (point->y > LH3DTech::g_max_screen[1])
-				{
-					point->y = LH3DTech::g_max_screen[1];
-				}
-				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
-			}
-		}
-		g_vertical_translate_vertices = translate;
-	}
-	else
-	{
-		for (i = 0; i < NumVertices; flags++, point++, vertex++, g_vertical_translate_vertices++, i++)
-		{
-			LHPoint position(vertex->position.x, vertex->position.y + *g_vertical_translate_vertices,
-			                 vertex->position.z);
-			TransformToClipping(point, position, LH3DTech::g_current_matrix);
-			point->specular = LH3DMesh::g_specular;
-			int light = GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
-			point->color = ScaleColor(LH3DMesh::g_color, light);
-			point->uv.x = vertex->uv.x;
-			point->uv.y = vertex->uv.y;
-			ComputeClipFlags(point, flags);
-			if (*flags == 0)
+			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
 				point->x = (point->x * point->rhw + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
@@ -5366,7 +5332,7 @@ void LH3DPrimitive::DrawWithVerticalTranslation()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -5376,7 +5342,48 @@ void LH3DPrimitive::DrawWithVerticalTranslation()
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
+			}
+		}
+		g_vertical_translate_vertices = translate;
+	}
+	else
+	{
+		for (i = 0; i < NumVertices; flags++, point++, vertex++, g_vertical_translate_vertices++, i++)
+		{
+			LHPoint position(vertex->position.x, vertex->position.y + *g_vertical_translate_vertices,
+			                 vertex->position.z);
+			TransformToClipping(point, position, LH3DTech::g_current_matrix);
+			point->specular = LH3DMesh::g_specular;
+			point->color =
+				ScaleColor(LH3DMesh::g_color, GetLightLevel((int)(g_vect_light * vertex->normal * LH3D_LIGHT_MAX)));
+			point->uv.x = vertex->uv.x;
+			point->uv.y = vertex->uv.y;
+			ComputeClipFlags(point, flags);
+			if (!*flags)
+			{
+				point->rhw = 1.0f / point->rhw;
+				point->x = (point->x * point->rhw + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
+				if (point->x < 0.0f)
+				{
+					point->x = 0.0f;
+				}
+				else if (point->x > LH3DTech::g_max_screen[0])
+				{
+					point->x = LH3DTech::g_max_screen[0];
+				}
+				point->y = LH3DTech::g_info_transform.HalfRes.y -
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
+				if (point->y < 0.0f)
+				{
+					point->y = 0.0f;
+				}
+				else if (point->y > LH3DTech::g_max_screen[1])
+				{
+					point->y = LH3DTech::g_max_screen[1];
+				}
+				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 		}
 	}
@@ -6074,7 +6081,7 @@ void LH3DPrimitive::DrawUnclipped()
 				point->x = LH3DTech::g_max_screen[0];
 			}
 			point->y =
-				LH3DTech::g_info_transform.HalfRes.y - (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				LH3DTech::g_info_transform.HalfRes.y - ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 			if (point->y < 0.0f)
 			{
 				point->y = 0.0f;
@@ -6084,7 +6091,7 @@ void LH3DPrimitive::DrawUnclipped()
 				point->y = LH3DTech::g_max_screen[1];
 			}
 			point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-			point->z = 1.0f - point->rhw;
+			point->z = (1.0f - point->rhw);
 		}
 	}
 	else
@@ -6111,7 +6118,7 @@ void LH3DPrimitive::DrawUnclipped()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -6121,7 +6128,7 @@ void LH3DPrimitive::DrawUnclipped()
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 			start += group->vertex_count;
 		}
@@ -6599,7 +6606,7 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -6609,7 +6616,7 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 		}
 	}
@@ -6653,7 +6660,7 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           point->rhw * (point->y * LH3DTech::g_info_transform.HalfRes.y);
+					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -6663,7 +6670,7 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 						point->y = LH3DTech::g_max_screen[1];
 					}
 					point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-					point->z = 1.0f - point->rhw;
+					point->z = (1.0f - point->rhw);
 				}
 			}
 			start += group->vertex_count;
