@@ -208,6 +208,9 @@ void WorshipSpellIcon::PlayFullyChargedSoundFX()
 	if (GetPlayer() == GGame::g_game->MyPlayer())
 	{
 		SPELL_DIALOGUE_SAMPLE sample;
+#ifdef VERSION_BW1WCI
+		bool32_t use_ci_dialogue = false;
+#endif
 		switch (GSpellSeedInfo::GetTypeFromInfo(seed_info.Get()))
 		{
 		case SPELL_SEED_TYPE_STORM:
@@ -270,6 +273,16 @@ void WorshipSpellIcon::PlayFullyChargedSoundFX()
 		case SPELL_SEED_TYPE_CREATURE_SPELL_ITCHY:
 			sample = SPELL_DIALOGUE_SAMPLE_CREATURE_SPELL_ITCHY;
 			break;
+#ifdef VERSION_BW1WCI
+		case SPELL_SEED_TYPE_CREATURE_SPELL_ANTI_SPELL:
+			sample = SPELL_DIALOGUE_SAMPLE_CREATURE_SPELL_ANTI;
+			use_ci_dialogue = true;
+			break;
+		case SPELL_SEED_TYPE_CREATURE_SPELL_FAST:
+			sample = SPELL_DIALOGUE_SAMPLE_CREATURE_SPELL_FAST;
+			use_ci_dialogue = true;
+			break;
+#endif
 		case SPELL_SEED_TYPE_TELEPORT:
 			sample = SPELL_DIALOGUE_SAMPLE_ANNOUNCER_VOICE_TELEPORT;
 			break;
@@ -281,7 +294,18 @@ void WorshipSpellIcon::PlayFullyChargedSoundFX()
 			sample = SPELL_DIALOGUE_SAMPLE_ANNOUNCER_VOICE_LIGHTNING;
 			break;
 		}
+#ifdef VERSION_BW1WCI
+		if (!use_ci_dialogue)
+		{
+			GGlobal::Global.audio->PlaySoundEffect(NULL, sample, 2, 0, 0, 0, AUDIO_SFX_BANK_TYPE_SPELL_DIALOG);
+		}
+		else
+		{
+			GGlobal::Global.audio->PlaySoundEffect(NULL, sample, 2, 0, 0, 0, AUDIO_SFX_BANK_TYPE_CI_SPELL_DIALOGUE);
+		}
+#else
 		GGlobal::Global.audio->PlaySoundEffect(NULL, sample, 2, 0, 0, 0, AUDIO_SFX_BANK_TYPE_SPELL_DIALOG);
+#endif
 	}
 }
 
