@@ -74,7 +74,7 @@ public:
 	// BW1W120 0077f0a0 BW1M119 01575730
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 0077f0e0 BW1M119 015bb2c0
-	virtual float ApplyEffect(EffectValues& param_1, int param_2);
+	virtual float ApplyEffect(EffectValues& values, int);
 	// BW1W120 0077f390 BW1M119 015bd9f0
 	virtual uint32_t Process();
 	// BW1W120 0077f290 BW1M119 015bddc0
