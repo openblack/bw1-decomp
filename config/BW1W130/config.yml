@@ -1,7 +1,7 @@
 object_base: orig/BW1W130
 name: runblack
 object: ../../build/BW1W130/runblack-preprocessed.exe
-hash: a6f1e30db83b2c1d9b01d1eca3de9e2ff2e829fe
+hash: 3c5be2813eb691f37e387ae4dc481665ffe851b0
 symbols: config/BW1W130/symbols.txt
 splits: config/BW1W130/splits.txt
 generate_imports: true
