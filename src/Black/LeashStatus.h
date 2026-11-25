@@ -26,7 +26,7 @@ public:
 	LEASH_TYPE        LeashType;
 	float             AppliedForce;
 	GameThingWithPos* ObjectAttachedTo;
-	uint32_t          field_0x28;
+	float             HalfLeashLength;
 	float             LeashLength;
 	uint8_t           player_number;
 	uint32_t          field_0x34;
@@ -55,6 +55,8 @@ public:
 	void CalculateLeashLengthFromCreature(Creature* creature);
 	// BW1W120 005e6f70 BW1M119 01383450
 	void SetOn(Creature* creature, bool32_t on);
+	// BW1W120 005e6ae0 BW1M119 01384170
+	void SetType(LEASH_TYPE type, GPlayer* player);
 	// BW1W120 005e6bd0 BW1M119 01383840
 	void SetOnObject(Creature* creature, GameThingWithPos* object);
 	// BW1W120 005e6ea0 BW1M119 013836f0

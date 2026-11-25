@@ -11,6 +11,7 @@ enum SAVE_GAME_ROOM_SLOT
 	SAVE_GAME_ROOM_LAST_NORMAL_SLOT = 14,
 	SAVE_GAME_ROOM_FIRST_CIRCLE_SLOT = 15,
 	SAVE_GAME_ROOM_LAST_CIRCLE_SLOT = 17,
+	SAVE_GAME_ROOM_INSTANT_SAVE_SLOT = 19,
 	SAVE_GAME_ROOM_AUTO_SAVE_SLOT = 20,
 };
 
@@ -28,6 +29,8 @@ public:
 
 	// BW1W120 00792fb0 BW1M119 014d38b0
 	static void InstantSaveGame(long slot);
+	// BW1W120 00793380 BW1M119 014d3580
+	static void InstantLoadGame(long slot);
 
 	// BW1W120 007923a0 BW1M119 014d4ca0
 	static bool32_t CreateSaveGameFiles(char* path);

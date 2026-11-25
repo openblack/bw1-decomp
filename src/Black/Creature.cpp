@@ -704,7 +704,7 @@ void Creature::SetToZero()
 	SpellReversion = true;
 	GameTurnOfLastFightImpact = 0;
 	IsShowingDevelopmentHelpScript = false;
-	field_0x3c8 = 0;
+	AlwaysCatch = false;
 	InCreatureHand = NULL;
 	TurnsBeforeConsideringDecision = 0;
 	field_0x10ec = 0;

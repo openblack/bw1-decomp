@@ -46,13 +46,6 @@ enum HAND_STATE_CREATURE_STROKE_BONE
 	HAND_STATE_CREATURE_STROKE_BONE_HAND_L
 };
 
-struct CreatureBruisePacketData
-{
-	MeshIntersect Intersect;
-	long          Type;
-	long          SubType;
-};
-
 static long StrokeActions[HAND_STATE_CREATURE_NUM_STROKE_BONES] = {
 	C_REWARD_HEAD,     //
 	C_REWARD_ARMPIT_R, //

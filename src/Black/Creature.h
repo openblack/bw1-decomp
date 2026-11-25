@@ -242,9 +242,9 @@ public:
 	// BW1W120 004e7310 BW1M119 0126e300
 	static LH3DCreature* Load3D(char* name);
 	// BW1W120 004e7ff0 BW1M119 0126d680
-	static void Load(char* name, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data);
+	static Creature* Load(char* name, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data);
 	// BW1W120 004e8040 BW1M119 0126d200
-	static void LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data);
+	static Creature* LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data);
 	// BW1W120 004e8330 BW1M119 0126d080
 	bool32_t CheckValidation(Archive& archive);
 	// BW1W120 0047d830 BW1M119 011d6c10
@@ -316,7 +316,7 @@ public:
 	bool32_t                     Fainted;
 	CreatureEmotionsForMusic     EmotionsForMusic;
 	bool32_t                     DevelopmentPhaseActionDone[DEVELOPMENT_PHASE_LAST];
-	uint32_t                     field_0x3c8;
+	bool32_t                     AlwaysCatch;
 	CREATURE_HAND_INTERACT_STATE BeforeHandInteractState;
 	LHLinkedList<Creature*>      Friends;
 	ClearAreaState               ClearArea;
@@ -1220,6 +1220,8 @@ public:
 #endif // VERSION_BW1WCI
 	// BW1W120 004c5ff0 BW1M119 01238e20
 	void ForceActOnObject(Object* object);
+	// BW1W120 004c6540 BW1M119 01237fc0
+	void ForceActOnMapCoord(const MapCoords& coords);
 	// BW1W120 004f0980 BW1M119 0127d7a0
 	CREATURE_DESIRES FindBestDesireForActivityObject(CreatureBelief* belief);
 	// BW1W120 0050a760 BW1M119 012a4d90
