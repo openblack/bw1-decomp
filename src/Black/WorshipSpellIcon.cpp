@@ -207,7 +207,7 @@ void WorshipSpellIcon::PlayFullyChargedSoundFX()
 {
 	if (GetPlayer() == GGame::g_game->MyPlayer())
 	{
-		uint32_t sample;
+		SPELL_DIALOGUE_SAMPLE sample;
 		switch (GSpellSeedInfo::GetTypeFromInfo(seed_info.Get()))
 		{
 		case SPELL_SEED_TYPE_STORM:

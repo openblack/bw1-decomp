@@ -34429,6 +34429,7 @@ lbl_00B47940 = .data:0x00B47940; // type:object size:0x19 data:string
 lbl_00B47981 = .data:0x00B47981; // type:object size:0x17
 ??_R0?AVGWorshipSiteUpgradeInfo@@@8 = .data:0x00B47998; // type:object size:0x26
 lbl_00B479BE = .data:0x00B479BE; // type:object size:0x2
+??_C@_0CC@LGMM@C?3?2dev?2black?2WorshipSpellIcon?4cp@ = .data:0x00B479D4; // type:object size:0x22 scope:global data:string comdat
 ??_C@_0O@HOLN@WorshipTotem?3?$AA@ = .data:0x00B479F8; // type:object size:0xE scope:global data:string
 ??_C@_0BO@OLFO@C?3?2dev?2black?2WorshipTotem?4cpp?$AA@ = .data:0x00B47A08; // type:object size:0x1E scope:global data:string
 ??_R0?AVPictureRoomBase@@@8 = .data:0x00B47A28; // type:object size:0x1E
