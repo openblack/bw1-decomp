@@ -5920,7 +5920,7 @@ void LH3DPrimitive::DrawInShadowTnL()
 			out->normal.y = vertex->normal.y;
 			out->normal.z = vertex->normal.z;
 			LHPoint position(&vertex->position);
-			TransformPointBy(&transformed, position, LH3DTech::g_current_matrix);
+			LHMATRIX_TRANSFORM_POINT(transformed, position, *LH3DTech::g_current_matrix);
 			LH3DMesh::g_current_shadow->CalcShadowUV_World(transformed, &out->uv.x, &out->uv.y, &depth);
 			u = out->uv.x;
 			v = out->uv.y;
@@ -5953,11 +5953,11 @@ void LH3DPrimitive::DrawInShadowTnL()
 		for (int i = 0; i < NumVertexGroups; i++)
 		{
 			LH3DVertexGroup* group = &VertexGroups[i];
-			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
+			int              bone = group->BoneIndex;
+			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[bone];
 			for (j = start; j < start + group->vertex_count; flags++, out++, vertex++, j++)
 			{
-				LHPoint* position = &vertex->position;
-				TransformPointBy(&point, *position, matrix);
+				TransformPointBy(&point, vertex->position, matrix);
 				out->position.x = point.x;
 				out->position.y = point.y;
 				out->position.z = point.z;
