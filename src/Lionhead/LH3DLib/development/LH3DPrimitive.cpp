@@ -4,7 +4,7 @@
 #include <math.h>     /* For fabs */
 
 #include "LH3DEnvMatInfo.h"       /* For LH3DEnvMatInfo */
-#include "LH3DMath.h"             /* For InverseSquareRoot */
+#include "LH3DMath.h"             /* For InverseSquareRoot, LH3D_WEIGHTED_BLEND */
 #include "LH3DMesh.h"             /* For LH3DMesh */
 #include "LH3DObject.h"           /* For class LH3DObject */
 #include "LH3DRender.h"           /* For LH3DRender */
@@ -52,8 +52,6 @@ LHMatrix       LH3DPrimitive::g_froz_wiggle_mat;
 
 float wiggle_speed = 2.0f;
 float wiggle_amp = 0.02f;
-
-#define BLEND(a, b, amount) (((a) * (amount)) + (b) * (1.0f - (amount)))
 
 static inline void RotatePointBy(LHPoint* out, const LHPoint& in, const LHMatrix* m)
 {
@@ -3687,14 +3685,14 @@ void __fastcall LH3DPrimitive::Blend(LH3DPrimitive* from, LH3DPrimitive* to, flo
 	blend = 1.0f - blend;
 	for (int i = 0; i < NumVertices; vertex++, fromVertex++, toVertex++, i++)
 	{
-		vertex->position.x = BLEND(fromVertex->position.x, toVertex->position.x, blend);
-		vertex->position.y = BLEND(fromVertex->position.y, toVertex->position.y, blend);
-		vertex->position.z = BLEND(fromVertex->position.z, toVertex->position.z, blend);
-		vertex->normal.x = BLEND(fromVertex->normal.x, toVertex->normal.x, blend);
-		vertex->normal.y = BLEND(fromVertex->normal.y, toVertex->normal.y, blend);
-		vertex->normal.z = BLEND(fromVertex->normal.z, toVertex->normal.z, blend);
-		vertex->uv.x = BLEND(fromVertex->uv.x, toVertex->uv.x, blend);
-		vertex->uv.y = BLEND(fromVertex->uv.y, toVertex->uv.y, blend);
+		vertex->position.x = LH3D_WEIGHTED_BLEND(toVertex->position.x, fromVertex->position.x, blend);
+		vertex->position.y = LH3D_WEIGHTED_BLEND(toVertex->position.y, fromVertex->position.y, blend);
+		vertex->position.z = LH3D_WEIGHTED_BLEND(toVertex->position.z, fromVertex->position.z, blend);
+		vertex->normal.x = LH3D_WEIGHTED_BLEND(toVertex->normal.x, fromVertex->normal.x, blend);
+		vertex->normal.y = LH3D_WEIGHTED_BLEND(toVertex->normal.y, fromVertex->normal.y, blend);
+		vertex->normal.z = LH3D_WEIGHTED_BLEND(toVertex->normal.z, fromVertex->normal.z, blend);
+		vertex->uv.x = LH3D_WEIGHTED_BLEND(toVertex->uv.x, fromVertex->uv.x, blend);
+		vertex->uv.y = LH3D_WEIGHTED_BLEND(toVertex->uv.y, fromVertex->uv.y, blend);
 	}
 }
 

@@ -9,6 +9,7 @@
 #define DEGREES_TO_RADIANS (PI_F / 180.0f)
 
 #define LH3D_BLEND(from, to, t)                 ((from) + ((to) - (from)) * (t))
+#define LH3D_WEIGHTED_BLEND(from, to, t)        ((from) * (1.0f - (t)) + ((to) * (t)))
 #define LH3D_BLEND2(from, to_b, to_c, t_b, t_c) ((from) + ((to_b) - (from)) * (t_b) + ((to_c) - (from)) * (t_c))
 
 #include <math.h>   /* For sqrt */
