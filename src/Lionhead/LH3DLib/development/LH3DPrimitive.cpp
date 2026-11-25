@@ -186,16 +186,18 @@ void LH3DPrimitive::CalcFogTable(float red, float green, float blue, float max_f
 void __fastcall LH3DPrimitive::DrawIntoSprite(void* sprite)
 {
 	g_current_primitive = this;
-	LH3DVertex* vertex = Vertices;
-	Vertex3D*   point = LH3DTech::g_cache_t_points;
+	LH3DMaterial* material = &Material;
+	Vertex3D*     point = LH3DTech::g_cache_t_points;
+	LH3DVertex*   vertex = Vertices;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
-		for (int i = 0; i < NumVertices; point++, vertex++, i++)
+		for (int i = 0; i < GetVerticesCount(); point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
 			point->color = LH3DMesh::g_color;
 			point->specular = LH3DMesh::g_specular;
-			point->uv = vertex->uv;
+			point->uv.x = vertex->uv.x;
+			point->uv.y = vertex->uv.y;
 		}
 	}
 	else
@@ -221,13 +223,13 @@ void __fastcall LH3DPrimitive::DrawIntoSprite(void* sprite)
 	LH3DTech::g_index_count = 0;
 	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
-	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
+	LH3DTech::g_clip_with_double_sided = material->IsDoubleSided();
 	unsigned long* clipFlags = LH3DTech::g_cache_flags;
 	int            j;
 	uint16_t       a;
 	uint16_t       b;
 	uint16_t       c;
-	if (Material.IsDoubleSided())
+	if (material->IsDoubleSided())
 	{
 		for (j = 0; j < NumTriangles; triangle++, j++)
 		{
@@ -276,7 +278,7 @@ void __fastcall LH3DPrimitive::DrawIntoSprite(void* sprite)
 	}
 	if (LH3DTech::g_index_count)
 	{
-		LH3DRender::SetMaterial(&Material, 0);
+		LH3DRender::SetMaterial(material, 0);
 		LH3DRender::g_draw_triangle_func(LH3DTech::g_cache_t_points, LH3DTech::g_points_count, LH3DTech::g_list_indices,
 		                                 LH3DTech::g_index_count);
 	}
@@ -1602,22 +1604,24 @@ void LH3DPrimitive::DrawInShadow()
 void __fastcall LH3DPrimitive::DrawVolLight(LHPoint* light, float intensity)
 {
 	g_current_primitive = this;
-	Vertex3D*   point = LH3DTech::g_cache_t_points;
-	LH3DVertex* vertex = Vertices;
+	Vertex3D*      point = LH3DTech::g_cache_t_points;
+	unsigned long* flags = LH3DTech::g_cache_flags;
+	LH3DVertex*    vertex = Vertices;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; point++, vertex++, i++)
 		{
+			unsigned long specular = LH3DMesh::g_specular;
+			unsigned long color = LH3DMesh::g_color;
 			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
 			LHMatrix* matrix = LH3DTech::g_current_matrix;
-			float     x = matrix->m[0] * vertex->position.x + matrix->m[3] * vertex->position.y +
-			              matrix->m[6] * vertex->position.z;
-			float     y = matrix->m[1] * vertex->position.x + matrix->m[4] * vertex->position.y +
-			              matrix->m[7] * vertex->position.z;
+			LHPoint&  position = vertex->position;
+			float     x = matrix->m[0] * position.x + matrix->m[3] * position.y + matrix->m[6] * position.z;
+			float     y = matrix->m[1] * position.x + matrix->m[4] * position.y + matrix->m[7] * position.z;
 			float     z =
 				matrix->m[2] * vertex->normal.x + matrix->m[5] * vertex->normal.y + matrix->m[8] * vertex->normal.z;
-			point->specular = LH3DMesh::g_specular;
-			point->color = LH3DMesh::g_color;
+			point->specular = specular;
+			point->color = color;
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
 			unsigned long alpha = (unsigned long)(fabs(z / (fabs(x) + fabs(y))) * LH3D_VOL_LIGHT_ALPHA_SCALE);
@@ -1627,7 +1631,7 @@ void __fastcall LH3DPrimitive::DrawVolLight(LHPoint* light, float intensity)
 			}
 			else if (alpha < LH3D_LIGHT_MAX)
 			{
-				point->color = ScaleColor(LH3DMesh::g_color, alpha);
+				point->color = ScaleColor(color, alpha);
 			}
 			else
 			{
@@ -1673,7 +1677,7 @@ void __fastcall LH3DPrimitive::DrawVolLight(LHPoint* light, float intensity)
 	}
 
 	point = LH3DTech::g_cache_t_points;
-	unsigned long* flags = LH3DTech::g_cache_flags;
+	flags = LH3DTech::g_cache_flags;
 	for (int i = 0; i < NumVertices * 2; point++, flags++, i++)
 	{
 		ComputeClipFlags(point, flags);
@@ -2195,7 +2199,7 @@ void LH3DPrimitive::DrawCage(float scale)
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
+					           point->rhw * point->y * LH3DTech::g_info_transform.HalfRes.y;
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -2205,15 +2209,16 @@ void LH3DPrimitive::DrawCage(float scale)
 						point->y = LH3DTech::g_max_screen[1];
 					}
 					point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-					point->z = (1.0f - point->rhw);
+					point->z = 1.0f - point->rhw;
 				}
 			}
 			start += group->vertex_count;
 		}
 	}
 
-	LH3DTech::g_points_count = NumVertices;
+	uint16_t pointsCount = NumVertices;
 	LH3DTech::g_index_count = 0;
+	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
 	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
 	unsigned long* clipFlags = LH3DTech::g_cache_flags;
@@ -2467,17 +2472,18 @@ void LH3DPrimitive::DrawWaterReflection()
 {
 	float scaleX = 1.0f / LH3DTech::g_info_transform.InvHalfTanFovY;
 	g_current_primitive = this;
-	LH3DVertex*    vertex = Vertices;
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
+	LH3DVertex*    vertex = Vertices;
+	LHPoint        world;
+	LHMatrix*      matrix = NULL;
 	float          scaleY = 1.0f / LH3DTech::g_info_transform.InvHalfTanFovX;
 	GetTickCount();
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
-		LHMatrix* matrix = &LH3DObject::g_current_object_in_draw->matrix;
+		matrix = &LH3DObject::g_current_object_in_draw->matrix;
 		for (int i = 0; i < NumVertices; point++, vertex++, flags++, i++)
 		{
-			LHPoint world;
 			TransformPointBy(&world, vertex->position, matrix);
 			point->x = LH3DTech::g_world_to_clipping.m[0] * world.x - LH3DTech::g_world_to_clipping.m[3] * world.y +
 			           LH3DTech::g_world_to_clipping.m[6] * world.z + LH3DTech::g_world_to_clipping.m[9];
@@ -2553,10 +2559,10 @@ void LH3DPrimitive::DrawWaterReflection()
 		for (int i = 0; i < NumVertexGroups; i++)
 		{
 			LH3DVertexGroup* group = &VertexGroups[i];
-			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
+			matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
 			for (int j = start; j < start + group->vertex_count; point++, vertex++, flags++, j++)
 			{
-				LHPoint world = *matrix * vertex->position;
+				TransformPointBy(&world, vertex->position, matrix);
 				point->x = LH3DTech::g_world_to_clipping.m[0] * world.x - LH3DTech::g_world_to_clipping.m[3] * world.y +
 				           LH3DTech::g_world_to_clipping.m[6] * world.z + LH3DTech::g_world_to_clipping.m[9];
 				point->y = LH3DTech::g_world_to_clipping.m[1] * world.x - LH3DTech::g_world_to_clipping.m[4] * world.y +
@@ -2612,7 +2618,7 @@ void LH3DPrimitive::DrawWaterReflection()
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
+					           point->rhw * point->y * LH3DTech::g_info_transform.HalfRes.y;
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -2667,8 +2673,8 @@ void LH3DPrimitive::DrawWaterReflection()
 		for (j = 0; j < NumTriangles; triangle++, j++)
 		{
 			a = triangle->A;
-			b = triangle->B;
-			c = triangle->C;
+			b = triangle->C;
+			c = triangle->B;
 			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
 			{
 				if (!(clipFlags[a] & clipFlags[b] & clipFlags[c]))
@@ -2676,8 +2682,8 @@ void LH3DPrimitive::DrawWaterReflection()
 					LH3DTech::ClipTriangleWithPlane(a, b, c);
 				}
 			}
-			else if ((points[c].y - points[a].y) * (points[b].x - points[a].x) -
-			             (points[b].y - points[a].y) * (points[c].x - points[a].x) >
+			else if ((points[b].x - points[a].x) * (points[c].y - points[a].y) -
+			             (points[c].x - points[a].x) * (points[b].y - points[a].y) >
 			         0.0f)
 			{
 				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
@@ -3495,15 +3501,17 @@ void LH3DPrimitive::DrawRefMapMT()
 		LH3DTech::g_world_to_local.TransformPoint(eye);
 		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
-			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
+			LHMatrix* matrix = LH3DTech::g_current_matrix;
+			TransformToClipping(point, vertex->position, matrix);
 			point->specular = LH3DMesh::g_specular;
 			point->color = ScaleColor(LH3DMesh::g_color,
 			                          GetLightLevel(FloatToInt(g_vect_light * vertex->normal * LH3D_LIGHT_MAX)));
-			point->uv = vertex->uv;
+			point->uv.x = vertex->uv.x;
+			point->uv.y = vertex->uv.y;
 			LHPoint reflection = eye - vertex->position;
 			float   norm = reflection.GetNorm();
 			reflection *= InverseSquareRoot(norm);
-			reflection += (vertex->normal * reflection.DotProduct(vertex->normal) - reflection) * 2.0f;
+			reflection += (vertex->normal * vertex->normal.DotProduct(reflection) - reflection) * 2.0f;
 			float v = 0.5f - (float)asin(reflection.y) * (1.0f / PI_F);
 			float u = (float)atan2(reflection.z, reflection.x) * (1.0f / TWO_PI) + 0.5f;
 			if (u > 1.0f)
@@ -3525,8 +3533,8 @@ void LH3DPrimitive::DrawRefMapMT()
 				{
 					point->x = LH3DTech::g_max_screen[0];
 				}
-				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				point->y =
+					LH3DTech::g_info_transform.HalfRes.y - point->rhw * point->y * LH3DTech::g_info_transform.HalfRes.y;
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -3550,8 +3558,13 @@ void LH3DPrimitive::DrawRefMapMT()
 			LHMatrix         inverse;
 			inverse.SetInverse(*matrix);
 			LHPoint light;
-			LHMATRIX_TRANSFORM_POINT(light, LH3DTech::GetSun(), inverse);
-			float norm = light.GetNorm();
+			light.x = (inverse.m[0] * LH3DTech::GetSun().x + inverse.m[3] * LH3DTech::GetSun().y +
+			           inverse.m[6] * LH3DTech::GetSun().z + inverse.m[9]);
+			light.y = (inverse.m[1] * LH3DTech::GetSun().x + inverse.m[4] * LH3DTech::GetSun().y +
+			           inverse.m[7] * LH3DTech::GetSun().z + inverse.m[10]);
+			light.z = (inverse.m[2] * LH3DTech::GetSun().x + inverse.m[5] * LH3DTech::GetSun().y +
+			           inverse.m[8] * LH3DTech::GetSun().z + inverse.m[11]);
+			float norm = (light.GetNorm());
 			light *= InverseSquareRoot(norm);
 			LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
 			LH3DTech::g_local_to_clipping.PreMultiply(*matrix);
@@ -3608,8 +3621,9 @@ void LH3DPrimitive::DrawRefMapMT()
 		}
 	}
 
-	LH3DTech::g_points_count = NumVertices;
+	uint16_t pointsCount = NumVertices;
 	LH3DTech::g_index_count = 0;
+	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
 	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
 	unsigned long* clipFlags = LH3DTech::g_cache_flags;
@@ -3708,19 +3722,20 @@ bool32_t LH3DPrimitive::CheckTriangleCollide()
 {
 	g_current_primitive = this;
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
-	unsigned long* flags = LH3DTech::g_cache_flags;
 	LHMatrix*      matrix = &LH3DTech::g_local_to_clipping;
 	LH3DVertex*    vertex = Vertices;
+	unsigned long* flags = LH3DTech::g_cache_flags;
+	int            i;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
-		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
+		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, matrix);
 			ComputeClipFlags(point, flags);
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
-				point->x = (point->x * point->rhw + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
+				point->x = ((point->x * point->rhw) + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
 				if (point->x < 0.0f)
 				{
 					point->x = 0.0f;
@@ -3730,7 +3745,7 @@ bool32_t LH3DPrimitive::CheckTriangleCollide()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           point->y * (point->rhw * LH3DTech::g_info_transform.HalfRes.y);
+				           (point->y * (point->rhw * LH3DTech::g_info_transform.HalfRes.y));
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -3746,27 +3761,28 @@ bool32_t LH3DPrimitive::CheckTriangleCollide()
 	else
 	{
 		int start = 0;
-		for (int i = 0; i < NumVertexGroups; i++)
+		for (i = 0; i < NumVertexGroups; i++)
 		{
 			LH3DVertexGroup* group = &VertexGroups[i];
+			LHMatrix*        groupMatrix;
 			if (LH3DObject::g_current_object_in_draw->IsComplex())
 			{
 				LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
 				LH3DTech::g_local_to_clipping.PreMultiply(LH3DMesh::g_current_matrix[group->BoneIndex]);
-				matrix = &LH3DTech::g_local_to_clipping;
+				groupMatrix = &LH3DTech::g_local_to_clipping;
 			}
 			else
 			{
-				matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
+				groupMatrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
 			}
 			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
 			{
-				TransformToClipping(point, vertex->position, matrix);
+				TransformToClipping(point, vertex->position, groupMatrix);
 				ComputeClipFlags(point, flags);
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
-					point->x = (point->x * point->rhw + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
+					point->x = ((point->x * point->rhw) + 1.0f) * LH3DTech::g_info_transform.HalfRes.x;
 					if (point->x < 0.0f)
 					{
 						point->x = 0.0f;
@@ -3776,7 +3792,7 @@ bool32_t LH3DPrimitive::CheckTriangleCollide()
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -4047,19 +4063,22 @@ bool32_t LH3DPrimitive::CheckTriangleCollideMorph()
 
 bool32_t LH3DPrimitive::CheckPixelCollide()
 {
+	LH3DSubMesh*   subMesh = LH3DSubMesh::g_current_sub_mesh;
+	unsigned long* clipFlags = LH3DTech::g_cache_flags;
+	Vertex3D*      points = LH3DTech::g_cache_t_points;
+	LH3DMaterial*  material = &Material;
 	g_current_primitive = this;
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	LHMatrix*      matrix = &LH3DTech::g_local_to_clipping;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
-	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
+	if (!subMesh->Skinned)
 	{
 		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, matrix);
 			ComputeClipFlags(point, flags);
-			point->uv.x = vertex->uv.x;
-			point->uv.y = vertex->uv.y;
+			point->uv = vertex->uv;
 			if (!*flags)
 			{
 				point->rhw = 1.0f / point->rhw;
@@ -4092,14 +4111,13 @@ bool32_t LH3DPrimitive::CheckPixelCollide()
 		for (int i = 0; i < NumVertexGroups; i++)
 		{
 			LH3DVertexGroup* group = &VertexGroups[i];
-			LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
-			LH3DTech::g_local_to_clipping.PreMultiply(LH3DMesh::g_current_matrix[group->BoneIndex]);
+			matrix->Set(LH3DTech::g_world_to_clipping);
+			matrix->PreMultiply(LH3DMesh::g_current_matrix[group->BoneIndex]);
 			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
 			{
 				TransformToClipping(point, vertex->position, matrix);
 				ComputeClipFlags(point, flags);
-				point->uv.x = vertex->uv.x;
-				point->uv.y = vertex->uv.y;
+				point->uv = vertex->uv;
 				if (!*flags)
 				{
 					point->rhw = 1.0f / point->rhw;
@@ -4113,7 +4131,7 @@ bool32_t LH3DPrimitive::CheckPixelCollide()
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+					           (point->y * point->rhw) * LH3DTech::g_info_transform.HalfRes.y;
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -4133,13 +4151,12 @@ bool32_t LH3DPrimitive::CheckPixelCollide()
 	LH3DTech::g_index_count = 0;
 	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
-	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
-	unsigned long* clipFlags = LH3DTech::g_cache_flags;
-	int            j;
-	uint16_t       a;
-	uint16_t       b;
-	uint16_t       c;
-	if (Material.IsDoubleSided())
+	LH3DTech::g_clip_with_double_sided = material->IsDoubleSided();
+	int      j;
+	uint16_t a;
+	uint16_t b;
+	uint16_t c;
+	if (material->IsDoubleSided())
 	{
 		for (j = 0; j < NumTriangles; triangle++, j++)
 		{
@@ -4163,7 +4180,6 @@ bool32_t LH3DPrimitive::CheckPixelCollide()
 	}
 	else
 	{
-		Vertex3D* points = LH3DTech::g_cache_t_points;
 		for (j = 0; j < NumTriangles; triangle++, j++)
 		{
 			a = triangle->A;
@@ -4428,7 +4444,7 @@ void LH3DPrimitive::Draw()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
+				           ((LH3DTech::g_info_transform.HalfRes.y * point->y) * point->rhw);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -4640,7 +4656,7 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
+					           point->rhw * point->y * LH3DTech::g_info_transform.HalfRes.y;
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -4661,11 +4677,11 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
 	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
-	unsigned long* clipFlags = LH3DTech::g_cache_flags;
-	int            j;
-	uint16_t       a;
-	uint16_t       b;
-	uint16_t       c;
+	flags = LH3DTech::g_cache_flags;
+	int      j;
+	uint16_t a;
+	uint16_t b;
+	uint16_t c;
 	if (Material.IsDoubleSided())
 	{
 		for (j = 0; j < NumTriangles; triangle++, j++)
@@ -4673,9 +4689,9 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 			a = triangle->A;
 			b = triangle->B;
 			c = triangle->C;
-			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
+			if (flags[a] | flags[b] | flags[c])
 			{
-				if (!(clipFlags[a] & clipFlags[b] & clipFlags[c]))
+				if (!(flags[a] & flags[b] & flags[c]))
 				{
 					LH3DTech::ClipTriangle(a, b, c, LH3DTech::CLIP_CODE_NEAR);
 				}
@@ -4696,9 +4712,9 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 			a = triangle->A;
 			b = triangle->B;
 			c = triangle->C;
-			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
+			if (flags[a] | flags[b] | flags[c])
 			{
-				if (!(clipFlags[a] & clipFlags[b] & clipFlags[c]))
+				if (!(flags[a] & flags[b] & flags[c]))
 				{
 					LH3DTech::ClipTriangle(a, b, c, LH3DTech::CLIP_CODE_NEAR);
 				}
@@ -4725,12 +4741,13 @@ void LH3DPrimitive::DrawUnlitWithUVRemap()
 void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t reverse_winding, bool check_mouse)
 {
 	g_current_primitive = this;
+	int            i;
 	Vertex3DMT*    point = (Vertex3DMT*)LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
-		for (int i = 0; i < NumVertices; flags++, point++, vertex++, i++)
+		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
 			float depth = point->rhw;
@@ -4809,9 +4826,9 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 	else
 	{
 		int start = 0;
-		for (int i = 0; i < NumVertexGroups; i++)
+		for (int g = 0; g < NumVertexGroups; g++)
 		{
-			LH3DVertexGroup* group = &VertexGroups[i];
+			LH3DVertexGroup* group = &VertexGroups[g];
 			LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
 			LH3DTech::g_local_to_clipping.PreMultiply(LH3DMesh::g_current_matrix[group->BoneIndex]);
 			for (int j = start; j < start + group->vertex_count; flags++, point++, vertex++, j++)
@@ -4837,7 +4854,7 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+					           point->rhw * point->y * LH3DTech::g_info_transform.HalfRes.y;
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -4854,15 +4871,16 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 		}
 	}
 
-	LH3DTech::g_points_count = NumVertices;
+	uint16_t pointsCount = NumVertices;
 	LH3DTech::g_index_count = 0;
+	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
 	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
-	unsigned long* clipFlags = LH3DTech::g_cache_flags;
-	int            k;
-	uint16_t       a;
-	uint16_t       b;
-	uint16_t       c;
+	int           k;
+	uint16_t      a;
+	uint16_t      b;
+	uint16_t      c;
+	unsigned long flagsA = 0, flagsC = 0, flagsB = 0;
 	if (Material.IsDoubleSided())
 	{
 		for (k = 0; k < NumTriangles; triangle++, k++)
@@ -4870,9 +4888,12 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 			a = triangle->A;
 			b = triangle->B;
 			c = triangle->C;
-			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
+			flagsC = LH3DTech::g_cache_flags[c];
+			flagsB = LH3DTech::g_cache_flags[b];
+			flagsA = LH3DTech::g_cache_flags[a];
+			if (flagsA | flagsB | flagsC)
 			{
-				if (!(clipFlags[a] & clipFlags[b] & clipFlags[c]))
+				if (!(flagsA & flagsB & flagsC))
 				{
 					LH3DTech::ClipTriangleMT(a, b, c, LH3DTech::CLIP_CODE_NEAR);
 				}
@@ -4893,9 +4914,12 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 			a = triangle->C;
 			b = triangle->B;
 			c = triangle->A;
-			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
+			flagsC = LH3DTech::g_cache_flags[c];
+			flagsB = LH3DTech::g_cache_flags[b];
+			flagsA = LH3DTech::g_cache_flags[a];
+			if (flagsA | flagsB | flagsC)
 			{
-				if (!(clipFlags[a] & clipFlags[b] & clipFlags[c]))
+				if (!(flagsA & flagsB & flagsC))
 				{
 					LH3DTech::ClipTriangleMT(a, b, c, LH3DTech::CLIP_CODE_NEAR);
 				}
@@ -4918,9 +4942,12 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 			a = triangle->A;
 			b = triangle->B;
 			c = triangle->C;
-			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
+			flagsC = LH3DTech::g_cache_flags[c];
+			flagsB = LH3DTech::g_cache_flags[b];
+			flagsA = LH3DTech::g_cache_flags[a];
+			if (flagsA | flagsB | flagsC)
 			{
-				if (!(clipFlags[a] & clipFlags[b] & clipFlags[c]))
+				if (!(flagsA & flagsB & flagsC))
 				{
 					LH3DTech::ClipTriangleMT(a, b, c, LH3DTech::CLIP_CODE_NEAR);
 				}
@@ -5992,17 +6019,18 @@ void LH3DPrimitive::DrawLitTnL()
 	if (LH3DMesh::g_current_vb && LH3DMesh::g_current_vb->VertexBuffer)
 	{
 		LH3DRender::SetMaterial(&Material, 0);
-		LH3DRender::D3DDevice->DrawIndexedPrimitiveVB(D3DPT_TRIANGLELIST, LH3DMesh::g_current_vb->VertexBuffer, 0,
-		                                              GetVerticesCount(), LH3DMesh::g_current_vb->Indices,
-		                                              NumTriangles * 3, 0);
+		LH3DRender::GetD3DDevice()->DrawIndexedPrimitiveVB(D3DPT_TRIANGLELIST, LH3DMesh::g_current_vb->VertexBuffer, 0,
+		                                                   GetVerticesCount(), LH3DMesh::g_current_vb->Indices,
+		                                                   NumTriangles * 3, 0);
 		LH3DMesh::g_current_vb++;
 		return;
 	}
 	LH3DVBVertex* out = (LH3DVBVertex*)LH3DVB::Lock(GetVerticesCount());
 	LH3DVertex*   vertex = GetListVertex();
+	int           i;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
-		for (int i = 0; i < NumVertices; out++, vertex++, i++)
+		for (i = 0; i < NumVertices; out++, vertex++, i++)
 		{
 			out->position.x = vertex->position.x;
 			out->position.y = vertex->position.y;
@@ -6017,9 +6045,9 @@ void LH3DPrimitive::DrawLitTnL()
 	else
 	{
 		int start = 0;
-		for (int i = 0; i < NumVertexGroups; i++)
+		for (int k = 0; k < NumVertexGroups; k++)
 		{
-			LH3DVertexGroup* group = &VertexGroups[i];
+			LH3DVertexGroup* group = &VertexGroups[k];
 			LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
 			for (int j = start; j < start + group->vertex_count; out++, vertex++, j++)
 			{
@@ -6042,7 +6070,7 @@ void LH3DPrimitive::DrawLitTnL()
 	LH3DTech::g_index_count = 0;
 	LH3DTech::g_points_count = 0;
 	LH3DTriangle* triangle = Triangles;
-	for (int k = 0; k < NumTriangles; triangle++, k++)
+	for (i = 0; i < NumTriangles; triangle++, i++)
 	{
 		uint16_t c = triangle->C;
 		uint16_t b = triangle->B;
@@ -6186,10 +6214,10 @@ void LH3DPrimitive::StartFrameIncFrozVars()
 	static LHPoint angles(0.0f, 0.0f, 0.0f);
 	float          speed = LH3DTech::GetGameTimeInc() * wiggle_speed * 0.001f;
 	angles += LHPoint(speed, speed * 1.1f, speed * 1.3f);
-	angles.x = fmod(angles.x, TWO_PI);
-	angles.y = fmod(angles.y, TWO_PI);
-	angles.z = fmod(angles.z, TWO_PI);
-	LHPoint wiggle(sin(angles.x), sin(angles.y), sin(angles.z));
+	angles.x = fmodf(angles.x, TWO_PI);
+	angles.y = fmodf(angles.y, TWO_PI);
+	angles.z = fmodf(angles.z, TWO_PI);
+	LHPoint wiggle(sinf(angles.x), sinf(angles.y), sinf(angles.z));
 	wiggle *= wiggle_amp;
 	g_froz_wiggle_mat.SetIdentity();
 	g_froz_wiggle_mat.SetZXYMatrixOnly(wiggle.z, wiggle.y, wiggle.x);
@@ -6579,16 +6607,24 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 	unsigned long* flags = LH3DTech::g_cache_flags;
 	LH3DVertex*    vertex = Vertices;
 	int            i;
-	float          height = LH3DObject::g_current_object_in_draw->GetMesh()->BoundingBox.size.y * 2.0f - 0.1f;
-	float          angle = -PI_F * LH3DTech::g_current_time / LH3D_SPECIAL_LIGHT_HALF_TURN_TIME;
-	float          cosAngle = cos(angle);
-	float          sinAngle = sin(angle);
+	LH3DMesh*      mesh = LH3DObject::g_current_object_in_draw->GetMesh();
+	float          height = mesh->BoundingBox.size.y * 2.0f - 0.1f;
+	float          cosAngle = cos(-PI_F * LH3DTech::g_current_time / LH3D_SPECIAL_LIGHT_HALF_TURN_TIME);
+	float          sinAngle = sin(-PI_F * LH3DTech::g_current_time / LH3D_SPECIAL_LIGHT_HALF_TURN_TIME);
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
-			point->color = vertex->position.y > height ? LH3DMesh::g_color & 0xffffff : LH3DMesh::g_color;
+			float y = vertex->position.y;
+			if (y > height)
+			{
+				point->color = LH3DMesh::g_color & 0xffffff;
+			}
+			else
+			{
+				point->color = LH3DMesh::g_color;
+			}
 			point->specular = LH3DMesh::g_specular;
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
@@ -6660,7 +6696,7 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 						point->x = LH3DTech::g_max_screen[0];
 					}
 					point->y = LH3DTech::g_info_transform.HalfRes.y -
-					           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
+					           LH3DTech::g_info_transform.HalfRes.y * point->rhw * point->y;
 					if (point->y < 0.0f)
 					{
 						point->y = 0.0f;
@@ -6682,11 +6718,11 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
 	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
-	unsigned long* clipFlags = LH3DTech::g_cache_flags;
-	int            j;
-	uint16_t       a;
-	uint16_t       b;
-	uint16_t       c;
+	flags = LH3DTech::g_cache_flags;
+	int      j;
+	uint16_t a;
+	uint16_t b;
+	uint16_t c;
 	if (Material.IsDoubleSided())
 	{
 		for (j = 0; j < NumTriangles; triangle++, j++)
@@ -6694,9 +6730,9 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 			a = triangle->A;
 			b = triangle->B;
 			c = triangle->C;
-			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
+			if (flags[a] | flags[b] | flags[c])
 			{
-				if (!(clipFlags[a] & clipFlags[b] & clipFlags[c]))
+				if (!(flags[a] & flags[b] & flags[c]))
 				{
 					LH3DTech::ClipTriangle(a, b, c, LH3DTech::CLIP_CODE_NEAR);
 				}
@@ -6717,9 +6753,9 @@ void LH3DPrimitive::DrawSpecialLight(float time)
 			a = triangle->A;
 			b = triangle->B;
 			c = triangle->C;
-			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
+			if (flags[a] | flags[b] | flags[c])
 			{
-				if (!(clipFlags[a] & clipFlags[b] & clipFlags[c]))
+				if (!(flags[a] & flags[b] & flags[c]))
 				{
 					LH3DTech::ClipTriangle(a, b, c, LH3DTech::CLIP_CODE_NEAR);
 				}
