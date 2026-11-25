@@ -265,6 +265,8 @@
 0x005084CA call_indirect 0x008A97D4  # CreatureSubActions
 0x00508C5B call_rel32 0x00401879  # CreatureSubActions
 0x00508D2B call_rel32 0x00401879  # CreatureSubActions
+0x00508EBB call_rel32 0x00401879  # CreatureTests
+0x0050900B call_rel32 0x00401879  # CreatureWhatToDoNext
 0x0050AA4B call_rel32 0x00401879  # Creche
 0x0050AB3A call_indirect 0x008A9570  # Creche: __imp__db_free_data__YAXPAPAD_Z@4
 0x0050ABFB call_rel32 0x00401879  # CreditText

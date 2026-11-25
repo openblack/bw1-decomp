@@ -436,6 +436,11 @@ add_relocations:
     type: x86_abs32
     target: '?Definitions@GContainerInfo@@2PAV1@A'
     addend: 0x50
+# Creature::TrappedInEnclosedSpace stores &Creature::GoToLastSpecifiedPos with a MOV EAX immediate:
+# without the relocation /OPT:REF drops the function.
+  - source: 0x004675B2
+    type: x86_abs32
+    target: '?GoToLastSpecifiedPos@Creature@@QAEXPAVCreatureBelief@@J@Z'
 # AttributeCreatureWhatHeIsCarrying::ValueName indexes GDebug::ObjectTypeNames by an immediate.
   - source: 0x004B73B8
     type: x86_abs32

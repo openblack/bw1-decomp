@@ -1224,12 +1224,40 @@ public:
 	void ForceActOnMapCoord(const MapCoords& coords);
 	// BW1W120 004f0980 BW1M119 0127d7a0
 	CREATURE_DESIRES FindBestDesireForActivityObject(CreatureBelief* belief);
+	// BW1W120 00508ec0 BW1M119 012a4bc0
+	bool32_t IsCreatureNotSelected();
+	// BW1W120 00508ed0 BW1M119 012a4b60
+	bool32_t DoesCreatureKnowHowToRun();
+	// BW1W120 00508ee0 BW1M119 012a4b30
+	bool32_t True();
+	// BW1W120 00508ef0 BW1M119 012a4af0
+	bool32_t IsCreatureSelected();
+	// BW1W120 00508f00 BW1M119 012a4a70
+	bool32_t DoesCreatureWantToBuildHisHome();
+	// BW1W120 00508f20 BW1M119 012a4a20
+	bool32_t DoesCreatureKnowHowToPickUp();
+	// BW1W120 00508f30 BW1M119 012a49c0
+	bool32_t IsCreatureHoldingSomething();
+	// BW1W120 00508f50 BW1M119 012a4950
+	bool32_t IsCreatureThirsty();
+	// BW1W120 00508f70 BW1M119 012a48e0
+	bool32_t DoesCreatureNeedAPoo();
+	// BW1W120 004f8590 BW1M119 0128ef30
+	void InitialUpdateSpellInfo(GameThingWithPos* target, const MapCoords& pos, MAGIC_TYPE type, PSysProcessInfo* info);
 	// BW1W120 0050a760 BW1M119 012a4d90
 	void GiveFoodToWorshippers(CreatureBelief* belief, long argument);
 	// BW1W120 0050a380 BW1M119 012a4ea0
 	void ActOnObjectInHand(CreatureBelief* belief, long argument);
 	// BW1W120 0050a7e0 BW1M119 012a4c00
 	void GoToLastSpecifiedPos(CreatureBelief* belief, long argument);
+	// BW1W120 0050a1d0 BW1M119 012a55b0
+	void MessUpCastSpellAtPoint(CreatureBelief* belief, long argument);
+	// BW1W120 0050a1b0 BW1M119 012a5620
+	void MessUpCastSpellOnObject(CreatureBelief* belief, long argument);
+	// BW1W120 0050a020 BW1M119 012a5690
+	void MessUpGenericWithHelpText(CreatureBelief* belief, long argument);
+	// BW1W120 00509ec0 BW1M119 012a5890
+	void MessUpGeneric(CreatureBelief* belief, long argument);
 	// BW1W120 0050a1f0 BW1M119 012a5390
 	void RepeatLastAction(CreatureBelief* belief, long argument);
 	// BW1W120 00509530 BW1M119 012a5a40

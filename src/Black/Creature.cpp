@@ -4531,7 +4531,7 @@ CREATURE_ACTION Creature::FindSuitableActionToRemoveObstacle(Object* object)
 		{
 			CREATURE_ACTION action = CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[i].MimickingAction;
 			if (action != NO_ACTION_SPECIFIED &&
-			    CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[i].field_0x50 == 2)
+			    CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[i].Desire == CREATURE_DESIRE_ANGER)
 			{
 				return action;
 			}
