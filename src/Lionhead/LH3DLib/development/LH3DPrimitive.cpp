@@ -5113,24 +5113,24 @@ void LH3DPrimitive::DrawCutByPlane()
 	float         toCameraX = 1.0f / LH3DTech::g_info_transform.InvHalfTanFovY;
 	float         toCameraY = 1.0f / LH3DTech::g_info_transform.InvHalfTanFovX;
 	g_current_primitive = this;
-	int            i;
-	LH3DVertex*    vertex = Vertices;
 	Vertex3D*      point = LH3DTech::g_cache_t_points;
 	unsigned long* flags = LH3DTech::g_cache_flags;
+	int            i = 0;
+	LH3DVertex*    vertex = Vertices;
 	if (!LH3DSubMesh::g_current_sub_mesh->Skinned)
 	{
 		for (i = 0; i < NumVertices; flags++, point++, vertex++, i++)
 		{
 			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
-			int   light = GetLightLevel(FloatToInt(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
-			float distance = g_clipping_plane_camera.Normal.x * point->x * toCameraX +
-			                 g_clipping_plane_camera.Normal.y * point->y * toCameraY +
-			                 g_clipping_plane_camera.Normal.z * point->rhw + g_clipping_plane_camera.Distance;
+			int light = GetLightLevel(FloatToInt(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
 			point->color = ScaleColor(color, light);
 			point->specular = LH3DMesh::g_specular;
 			point->uv.x = vertex->uv.x;
 			point->uv.y = vertex->uv.y;
-			if (distance < 0.0f)
+			if (g_clipping_plane_camera.Normal.x * point->x * toCameraX +
+			        g_clipping_plane_camera.Normal.y * point->y * toCameraY +
+			        g_clipping_plane_camera.Normal.z * point->rhw + g_clipping_plane_camera.Distance <
+			    0.0f)
 			{
 				*flags = LH3DTech::CLIP_CODE_PLANE;
 			}
@@ -5171,7 +5171,7 @@ void LH3DPrimitive::DrawCutByPlane()
 					point->x = LH3DTech::g_max_screen[0];
 				}
 				point->y = LH3DTech::g_info_transform.HalfRes.y -
-				           (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
+				           ((point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y);
 				if (point->y < 0.0f)
 				{
 					point->y = 0.0f;
@@ -5181,7 +5181,7 @@ void LH3DPrimitive::DrawCutByPlane()
 					point->y = LH3DTech::g_max_screen[1];
 				}
 				point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-				point->z = 1.0f - point->rhw;
+				point->z = (1.0f - point->rhw);
 			}
 		}
 	}
@@ -5197,15 +5197,15 @@ void LH3DPrimitive::DrawCutByPlane()
 			{
 				LHMatrix* clipping = &LH3DTech::g_local_to_clipping;
 				TransformToClipping(point, vertex->position, clipping);
-				int   light = GetLightLevel(FloatToInt(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
-				float distance = g_clipping_plane_camera.Normal.x * point->x * toCameraX +
-				                 g_clipping_plane_camera.Normal.y * point->y * toCameraY +
-				                 g_clipping_plane_camera.Normal.z * point->rhw + g_clipping_plane_camera.Distance;
+				int light = GetLightLevel(FloatToInt(g_vect_light * vertex->normal * LH3D_LIGHT_MAX));
 				point->color = ScaleColor(color, light);
 				point->specular = LH3DMesh::g_specular;
 				point->uv.x = vertex->uv.x;
 				point->uv.y = vertex->uv.y;
-				if (distance < 0.0f)
+				if (g_clipping_plane_camera.Normal.x * point->x * toCameraX +
+				        g_clipping_plane_camera.Normal.y * point->y * toCameraY +
+				        g_clipping_plane_camera.Normal.z * point->rhw + g_clipping_plane_camera.Distance <
+				    0.0f)
 				{
 					*flags = LH3DTech::CLIP_CODE_PLANE;
 				}
@@ -5256,23 +5256,24 @@ void LH3DPrimitive::DrawCutByPlane()
 						point->y = LH3DTech::g_max_screen[1];
 					}
 					point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
-					point->z = 1.0f - point->rhw;
+					point->z = (1.0f - point->rhw);
 				}
 			}
 			start += group->vertex_count;
 		}
 	}
 
-	LH3DTech::g_points_count = NumVertices;
+	uint16_t pointsCount = NumVertices;
 	LH3DTech::g_index_count = 0;
+	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
 	bool32_t      doubleSided = LH3DMaterial::g_b_force_double_sided ? true : Material.IsDoubleSided();
 	LH3DTech::g_clip_with_double_sided = doubleSided;
-	unsigned long* clipFlags = LH3DTech::g_cache_flags;
-	int            j;
-	uint16_t       a;
-	uint16_t       b;
-	uint16_t       c;
+	flags = LH3DTech::g_cache_flags;
+	int      j;
+	uint16_t a;
+	uint16_t b;
+	uint16_t c;
 	if (doubleSided)
 	{
 		for (j = 0; j < NumTriangles; triangle++, j++)
@@ -5280,7 +5281,7 @@ void LH3DPrimitive::DrawCutByPlane()
 			a = triangle->A;
 			b = triangle->B;
 			c = triangle->C;
-			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
+			if (flags[a] | flags[b] | flags[c])
 			{
 				LH3DTech::ClipTriangleWithPlane(a, b, c);
 			}
@@ -5294,21 +5295,21 @@ void LH3DPrimitive::DrawCutByPlane()
 	}
 	else
 	{
-		Vertex3D* points = LH3DTech::g_cache_t_points;
+		point = LH3DTech::g_cache_t_points;
 		for (j = 0; j < NumTriangles; triangle++, j++)
 		{
 			a = triangle->A;
 			b = triangle->B;
 			c = triangle->C;
-			if (clipFlags[a] | clipFlags[b] | clipFlags[c])
+			if (flags[a] | flags[b] | flags[c])
 			{
-				if (!(clipFlags[a] & clipFlags[b] & clipFlags[c]))
+				if (!(flags[a] & flags[b] & flags[c]))
 				{
 					LH3DTech::ClipTriangleWithPlane(a, b, c);
 				}
 			}
-			else if ((points[c].y - points[a].y) * (points[b].x - points[a].x) -
-			             (points[b].y - points[a].y) * (points[c].x - points[a].x) >
+			else if ((point[c].y - point[a].y) * (point[b].x - point[a].x) -
+			             (point[b].y - point[a].y) * (point[c].x - point[a].x) >
 			         0.0f)
 			{
 				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
