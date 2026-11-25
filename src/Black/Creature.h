@@ -1240,6 +1240,8 @@ public:
 	bool32_t IsCreatureThirsty();
 	// BW1W120 00508f70 BW1M119 012a48e0
 	bool32_t DoesCreatureNeedAPoo();
+	// BW1W120 004f8590 BW1M119 0128ef30
+	void InitialUpdateSpellInfo(GameThingWithPos* target, const MapCoords& pos, MAGIC_TYPE type, PSysProcessInfo* info);
 	// BW1W120 0050a760 BW1M119 012a4d90
 	void GiveFoodToWorshippers(CreatureBelief* belief, long argument);
 	// BW1W120 0050a380 BW1M119 012a4ea0
