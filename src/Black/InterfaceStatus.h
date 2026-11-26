@@ -126,6 +126,8 @@ public:
 	long GetMultiPickupTicks() { return MultiPickupTicks; }
 	// BW1W120 005dba00 BW1M119 01376eb0
 	void SetToZero(GInterface* param_1);
+	// BW1W120 005dbb40 BW1M119 01376d00
+	void SetCameraAndHandToPointToCitadel();
 	// BW1W120 005dc130 BW1M119 01077b40
 	Object* GetFirstObjectInCurrentHand();
 	// BW1W120 005dc2f0 BW1M119 0107d890

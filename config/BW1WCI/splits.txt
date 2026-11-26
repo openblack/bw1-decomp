@@ -405,27 +405,27 @@ Black/CameraModeTwoObjects.cpp:
 	.text       start:0x00469A60 end:0x0046C130
 	.rdata      start:0x008F3EA8 end:0x008F5204
 	.rdata$r    start:0x00A19398 end:0x00A193E4
-	.data       start:0x00A3E298 end:0x00A3E330
+	.data       start:0x00A3E298 end:0x00A3E378
 
 Black/CarriedObject.cpp:
 	.text       start:0x0046C130 end:0x0046C520
 	.bss        start:0x00CD46E4 end:0x00CD4724
 
 Black/Citadel.cpp:
-	.text       start:0x0046C520 end:0x0046DE90
+	.text       start:0x0046C520 end:0x0046DE60
 	.rdata      start:0x008F5204 end:0x008F5798
 	.rdata$r    start:0x00A194B0 end:0x00A19590
-	.CRT$XCU    start:0x00A361C4 end:0x00A361D4 align:4
-	.data       start:0x00A3E330 end:0x00A3E558
-	.bss        start:0x00CD4784 end:0x00CD47B4
+	.CRT$XCU    start:0x00A361C4 end:0x00A361CC align:4
+	.data       start:0x00A3E378 end:0x00A3E494
+	.bss        start:0x00CD4728 end:0x00CD4788
 
 Black/CitadelHeart.cpp:
-	.text       start:0x0046DE90 end:0x00472F50
+	.text       start:0x0046DE60 end:0x00472F50
 	.rdata      start:0x008F5798 end:0x008F8090
 	.rdata$r    start:0x00A19590 end:0x00A198B0
-	.CRT$XCU    start:0x00A361D4 end:0x00A361FC align:4
-	.data       start:0x00A3E558 end:0x00A3E6F0
-	.bss        start:0x00CD47B4 end:0x00CD4938
+	.CRT$XCU    start:0x00A361CC end:0x00A361FC align:4
+	.data       start:0x00A3E494 end:0x00A3E6F0
+	.bss        start:0x00CD4788 end:0x00CD4938
 
 Black/CitadelPart.cpp:
 	.text       start:0x00472F50 end:0x004734F0

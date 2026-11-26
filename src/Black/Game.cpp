@@ -633,7 +633,7 @@ void GGame::Update3DInfluence()
 				{
 					InfluenceCircle::Add(playerNumber, citadel->Pos.GetLHPoint(), influence);
 				}
-				citadel->field_0x78 = influence;
+				citadel->LastAddedInfluence = influence;
 			}
 			for (Town* town = player->towns.head; town != NULL; town = town->next)
 			{

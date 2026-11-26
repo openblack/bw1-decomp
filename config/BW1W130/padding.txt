@@ -700,6 +700,33 @@
 0x0046264B call_rel32 0x00403C49  # CameraModeScript
 0x00463399 jmp_run 0x00462FC1  # CarriedObject
 0x004633E4 copy_run 0x00463399  # CarriedObject
+0x00463413 jmp_run 0x004633E4  # Citadel
+0x004635A6 copy_run 0x00463413  # Citadel
+0x004635D3 jmp_run 0x004635A6  # Citadel
+0x0046365B call_rel32 0x00403C49  # Citadel
+0x00463783 copy_run 0x0046365B  # Citadel
+0x0046383A call_indirect 0x008AE7BC  # Citadel: __imp_??0CP5DLL@@QAE@XZ
+0x00463BB4 jmp_run 0x0046383A  # Citadel
+0x00463BFB call_rel32 0x00403C49  # Citadel
+0x00463C56 jmp_run 0x00463BFB  # Citadel
+0x00463C95 jmp_run 0x00463C56  # Citadel
+0x00463CE1 copy_run 0x00463C95  # Citadel
+0x00463DF8 jmp_run 0x00463CE1  # Citadel
+0x00463E14 jmp_run 0x00463DF8  # Citadel
+0x00463EB6 jmp_run 0x00463E14  # Citadel
+0x00463F74 jmp_run 0x00463EB6  # Citadel
+0x00464007 copy_run 0x00463F74  # Citadel
+0x004640D8 jmp_run 0x00464007  # Citadel
+0x00464134 jmp_run 0x004640D8  # Citadel
+0x004642A7 copy_run 0x00464134  # Citadel
+0x00464313 jmp_run 0x004642A7  # Citadel
+0x00464447 copy_run 0x00464313  # Citadel
+0x004644FA call_indirect 0x008AE034  # Citadel: __imp__DirectInputCreateA@4
+0x00464514 jmp_run 0x004644FA  # Citadel
+0x00464562 copy_run 0x00464514  # Citadel
+0x00464BB4 jmp_run 0x00464562  # Citadel
+0x00464C26 copy_run 0x00464BB4  # Citadel
+0x00464C96 jmp_run 0x00464C26  # Citadel
 0x0046C27B call_rel32 0x00403C49  # Container
 0x0046C2A5 copy_run 0x0046C27B  # Container
 0x0046C429 copy_run 0x0046C2A3  # Container
