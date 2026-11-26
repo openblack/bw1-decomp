@@ -63,7 +63,7 @@ public:
 	// Override methods
 
 	// BW1W120 0054bb60 BW1M119 01550d80
-	virtual ~GestureSystem();
+	virtual ~GestureSystem() {}
 
 	// Constructors
 

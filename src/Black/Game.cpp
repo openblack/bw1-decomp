@@ -273,381 +273,94 @@ struct LHPlayerPointer_less
 	}
 };
 
-// BW1W120 0054f3b0 BW1M119 014e1990
-// 0054f421 is a continuation in this same frame. Only the internet check is caught.
-// TODO: Nonmatching switch/local scheduling and std::map insertion inlining.
-bool32_t GGame::Init()
-{
-	InitStaticsValues();
-	SavingMap = false;
-	try
-	{
-		InternetAvailable = LHCheckForInternetConnection(CheckInternetConnectionOptions);
-	}
-	catch (...)
-	{
-		InternetAvailable = false;
-	}
-	RenderTime = 0;
-	RenderTimeInc = 0;
-	Initialising = true;
-	LoadingFrameEnabled = 1;
-	if (TipVideo == NULL)
-	{
-		StartTipOfTheDayText();
-		MakeTipVideo();
-	}
-	GameFlags &= ~(GAME_FLAG_ACTIVATE_CREATURE_DESIRES | GAME_FLAG_PAUSED);
-	field_0x59b0 = 0;
-	RenderLoadingFrame(true);
-	GGlobal::Global.audio->Reset();
-	GameOver = false;
-	field_0x599d = 0;
-	AttributeTest::CreateAttributeArray();
-	AttributeTest::CreateBeliefArray();
-	remove("physlog.txt");
-	InitialiseLiquidParticles();
-	DeadTree::Init();
-	GGameInfo::Info.MillisecondsPerGameTurn = 100;
-	data.InitialRandSeed = RAND_SEED;
-	data.RandSeed = RAND_SEED;
-	SetFPU();
-	RenderLoadingFrame("Setting up players...");
-	SetupPlayers();
-	RenderLoadingFrame("Setting up data tables...");
-	SetupDataTables();
-	LandNumber = 0;
-	help_profile = HelpProfile::Create();
-	help_system = HelpSystem::Create();
-	temple = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x10ff) Temple;
-	script->Reset(1);
-	FootballEnabled = BWCheckFeatureIsEnabled("football") != 0;
-	MusicMoodController::CreatureMusicMoodEnabled = BWCheckFeatureIsEnabled("CreatureMusicMood");
-	if (BWCheckFeatureIsEnabled("CreatureDanceLineIn") && CreatureDanceLineIn == NULL)
-	{
-		CreatureDanceLineIn = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1113) CreatureDanceLineInput;
-		CreatureDanceLineIn->Open();
-		if (!CreatureDanceLineIn->Active)
-		{
-			delete CreatureDanceLineIn;
-			CreatureDanceLineIn = NULL;
-		}
-	}
-	RenderLoadingFrame("Initialising map...");
-	if (map.Init(0x200, 0x200, 0) != 1)
-	{
-		LoadingFrameEnabled = 0;
-		Initialising = false;
-		return 0;
-	}
-	map.Initialised = true;
-	RenderLoadingFrame("Loading map script...");
-	PlayerInfluenceMultiplier = 1.0f;
-	TownInfluenceMultiplier = 1.0f;
-	camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x112a) GCamera(StartCameraCoords);
-	if (StartType == GAME_START_TYPE_AUTOSAVE && !GameOSFile::IsAutoSaveValid())
-		StartType = GAME_START_TYPE_NEW_GAME;
-	SkirmishGame = false;
-	GameOverStarted = false;
-	field_0x205a14 = 0;
-	switch (StartType)
-	{
-	case GAME_START_TYPE_AUTOSAVE:
-		RenderLoadingFrame(true);
-		if (GameOSFile::AutoLoad())
-		{
-			StartType = GAME_START_TYPE_AUTOSAVE;
-			break;
-		}
-		goto newGame;
-	case GAME_START_TYPE_LOAD_GAME:
-		if (GameOSFile::LoadAllGame(LoadGameFilename))
-		{
-			StartType = GAME_START_TYPE_LOAD_GAME;
-			break;
-		}
-		// Both failed loads use the complete new-game path.
-	case GAME_START_TYPE_NEW_GAME:
-	newGame:
-		StartType = GAME_START_TYPE_NEW_GAME;
-		delete camera;
-		camera = NULL;
-		setup.LoadMapScript();
-		OnNewGame();
-		break;
-	case GAME_START_TYPE_MULTIPLAYER: {
-		char* mapName = NULL;
-		GameFlags &= ~GAME_FLAG_ACTIVATE_CREATURE_DESIRES;
-		if (network.session->LobbyChannel->GetGameDataLength())
-			mapName = (char*)network.session->LobbyChannel->GetGameData();
-		if (mapName && strcmp(mapName, "oos") == 0)
-		{
-			GSetup::CreateMultiplayerCreatures = 0;
-			GSetup::LoadMapFeatures("oos.txt");
-			GSetup::CreateMultiplayerCreatures = 1;
-			g_game->SetUnusedCitadelComputerPlayers();
-		}
-		else
-		{
-			ServerLandscapeMap serverMap(NULL);
-			char               mapPath[MAX_PATH];
-			sprintf(mapPath, ".\\Online Maps\\%s.map", mapName ? mapName : "mpm_2p_1");
-			serverMap.LoadMap(mapPath);
-			serverMap.SaveLND(".");
-			serverMap.SaveMAP(".");
-			GSetup::CreateMultiplayerCreatures = 0;
-			GSetup::MPDebugLoadState = 0;
-			// LHOSFile reports success (zero) when the file exists.
-			if (LHOSFile::Exists(".\\Scripts\\MPDebug.txt") == 0)
-				GSetup::MPDebugLoadState = 1;
-			if (!GSetup::MPDebugLoadState)
-				GSetup::LoadMapFeatures(serverMap.GetMAPFilename("."));
-			else
-			{
-				LHSys::TheSystem.script.Load(".\\Scripts\\MPDebug.txt", GSetup::MapCommands, GSetup::MapCommandProcess,
-				                             NULL);
-				if (GSetup::MPDebugLoadState == 1)
-					GSetup::LoadMapFeatures(serverMap.GetMAPFilename("."));
-				GSetup::MPDebugLoadState = 0;
-			}
-			_unlink(serverMap.GetMAPFilename("."));
-			_unlink(serverMap.GetLNDFilename("."));
-			GSetup::CreateMultiplayerCreatures = 1;
-			g_game->SetUnusedCitadelComputerPlayers();
-		}
-		_unlink("oos.txt");
-		_unlink("oos.lnd");
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-		MultiplayerTimeLimit *= 600;
-		for (GPlayer* player = GetNextActivePlayer(NULL); player; player = GetNextActivePlayer(player))
-		{
-			for (int i = 0; i < WC_LAST; ++i)
-			{
-				if (MPFEData::Data.ActiveDialog->ConditionEnabled[i])
-					player->Conditions.insert(std::make_pair(i, MPFEData::Data.Conditions[i]));
-			}
-		}
+static_assert(offsetof(LHPlayer, PlayerId) == 0x174, "LHPlayer ID offset");
+static_assert(offsetof(LHPlayer, TeamMemberNumber) == 0x1f4, "LHPlayer member offset");
+static_assert(offsetof(LHPlayer, TeamNumber) == 0x1f8, "LHPlayer team offset");
+static_assert(offsetof(LHSession, Players) == 0x90, "LHSession player list offset");
+static_assert(offsetof(LHConnection, NetUser) == 0x88, "LHConnection user offset");
+static_assert(offsetof(GPlayerInfo, NetworkName) == 0x50, "GPlayerInfo network name offset");
+#if defined(VERSION_BW1W100)
+static_assert(offsetof(LHSys, MessageHook) == 0x6e4c, "LHWin message callback offset");
+#elif defined(VERSION_BW1W130)
+static_assert(offsetof(LHSys, MessageHook) == 0x70dc, "LHWin message callback offset");
+#else
+static_assert(offsetof(LHSys, MessageHook) == 0x70cc, "LHWin message callback offset");
 #endif
-		break;
-	}
-	case GAME_START_TYPE_SKIRMISH: {
-		char mapPath[MAX_PATH];
-		strcpy(mapPath, WCHAR2CHAR(FrontEnd::SkirmishDialog->MapPath));
-		g_game->StartPlaygroundGame(mapPath);
-		SkirmishGame = true;
-		break;
-	}
-	}
-	if (g_game->StartType == GAME_START_TYPE_SKIRMISH || g_game->StartType == GAME_START_TYPE_NEW_GAME ||
-	    g_game->StartType == GAME_START_TYPE_MULTIPLAYER)
-	{
-		delete camera;
-		camera = NULL;
-		Citadel* citadel = players[PlayerIndex].citadel.Get();
-		if (((StartCameraCoords.x == 0 && StartCameraCoords.z == 0 && StartCameraCoords.altitude == 0.0f) ||
-		     g_game->StartType == GAME_START_TYPE_MULTIPLAYER) &&
-		    citadel)
-		{
-			camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x11cc) GCamera(citadel->Pos);
-			CameraMode*     currentMode = camera->ModeCurrentIndex < 0 ? NULL : camera->modes[camera->ModeCurrentIndex];
-			CameraModeNew3* mode = dynamic_cast<CameraModeNew3*>(currentMode);
-			if (mode)
-			{
-				LHPoint point;
-				GLandscape::ConvertMapCoordToLandscapePoint(citadel->Pos, point);
-				mode->ZoomToCitadel(point.x, point.z, CameraModeNew3::CitadelDistance, CameraModeNew3::CitadelPitch, 0);
-			}
-		}
-		else
-			camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x11d7) GCamera(StartCameraCoords);
-	}
-	map.UpdateControlMap();
-	CreatureGlobalExplorationMap::GlobalMap.PrecalculateMap();
-	terrain_map.Init();
-	field_0x205ba0 = 1;
-	GSoundMap* soundMap = SoundMap;
-	soundMap->CalculateRadiusPointAndDistance();
-	soundMap->UpdateFromMap(MapCoords(soundMap->GetReceiverPos()));
-	map.CalculateMapInfluence();
-	field_0x205a2c = 0;
-	ViewMode = GAME_VIEW_MODE_WORLD;
-	RenderLoadingFrame(true);
-	CarriedObject::Init();
-	BMan_Zero();
-	GameTimeMilliseconds = 0;
-	field_0x2502bc = 0;
-	field_0x205e78 = 0;
-	FinishInitialisation();
-	MeshIntersect::InitialiseMeshIntersect();
-	Initialised = true;
-	field_0x205d60 = 0;
-	RenderLoadingFrame(true);
-	PlayerSymbol::CreateFinalTextureSymbols();
-	RenderLoadingFrame(true);
-	ReadRegistrySettings();
-	RenderLoadingFrame(true);
-	GSpookyVoices::GetPlayerName();
-	time(&field_0x59ac);
-	if ((SkirmishGame || IsMultiplayerGame()) && MyPlayer()->citadel.Get())
-	{
-		GInterfaceStatus* leader = players[PlayerIndex].GetLeaderInterfaceStatus();
-		if (MyInterfaceStatus() == leader)
-		{
-			SetPacket(PACKET_TYPE_LOAD_MY_CREATURE, MyPlayer()->GetCitadel()->GetCreatureHomePos().MapX(),
-			          MyPlayer()->GetCitadel()->GetCreatureHomePos().MapZ(), -1L);
-		}
-	}
-	FlushPacketBuffer();
-	RenderLoadingFrame(true);
-	wcscpy(FrontEnd::MultiplayerTab->label, L"");
-	if (g_game->IsMultiplayerGame())
-	{
-		swprintf(FrontEnd::MultiplayerTab->label, L"%s", HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(19));
-		Lobby = MPFEConnectionStatus::Status.IsInternetLobby() ? GAME_LOBBY_INTERNET : GAME_LOBBY_LAN;
-		for (GPlayer* player = GetNextPlayer(NULL); player; player = GetNextPlayer(player))
-		{
-			float alignment = player->StartGameData ? player->StartGameData->Alignment : 0.0f;
-			player->alignment->CrudeSet(alignment);
-			player->game_stats->Init(*player);
-		}
-	}
-	else
-	{
-		players[PlayerIndex].LoadPlayerAlignment();
-		players[PlayerIndex].game_stats->Init(players[PlayerIndex]);
-		Lobby = GAME_LOBBY_NONE;
-	}
-	RenderLoadingFrame(true);
-	LHInetWeather::Weather.InitForGame();
-	LoadingFrameEnabled = 0;
-	Initialising = false;
-	return 1;
-}
 
-// BW1W120 0054c190 BW1M119 010e7270
-void GGame::StartGame()
-{
-	g_game->GameMode = GAME_MODE_RUNNING;
-	if (Init() == true && !ARGS_CONVERT)
-	{
-		stop_draw_sprite_to_screen();
-		Plasma* plasma = FrontEnd::PlasmaBackground;
-		if (plasma != NULL)
-		{
-			// Inlined Plasma::Close(), followed by nonvirtual delete.
-			plasma->PinMaterial->texture = NULL;
-			plasma->PinTexture->Release();
-			delete plasma;
-		}
-		FrontEnd::PlasmaBackground = NULL;
+static_assert(sizeof(GPacket) == 0x110, "GPacket size is incorrect");
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+static_assert(offsetof(GGame, PacketBufferLength) == 0x5978, "Packet length offset is incorrect");
+#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
+static_assert(offsetof(GGame, PacketBufferLength) == 0x1a38, "Packet length offset is incorrect");
+#endif
+static_assert(sizeof(GNetwork) == 0x30, "GNetwork size is incorrect");
+static_assert(sizeof(GTerrainMap) == 0x4a130, "GTerrainMap size is incorrect");
+static_assert(sizeof(GSoundMap) == 0x110, "GSoundMap size is incorrect");
+static_assert(sizeof(GestureSystemDataList) == 0x10, "GestureSystemDataList size is incorrect");
+static_assert(sizeof(GestureSystemData) == 0x65c, "GestureSystemData size is incorrect");
+static_assert(sizeof(GestureSystem) == 0xc98, "GestureSystem size is incorrect");
+static_assert(sizeof(GestureSystemResult) == 0xc, "GestureSystemResult size is incorrect");
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(Settings) == 0x208, "Settings size is incorrect");
+#else
+static_assert(sizeof(Settings) == 0x104, "Settings size is incorrect");
+#endif
+static_assert(offsetof(CreatureDanceLineInput, Analysis) == 0x28, "Line-input prefix offset is incorrect");
+static_assert(offsetof(Dance, next) == 0xec, "Dance link offset is incorrect");
+static_assert(sizeof(Dance) == 0x12c, "Dance size is incorrect");
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+static_assert(offsetof(GGame, field_0x59ac) == 0x59ac, "Game start-time offset is incorrect");
+#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
+static_assert(offsetof(GGame, field_0x59ac) == 0x1a68, "Game start-time offset is incorrect");
+#endif
+static_assert(offsetof(GInterfaceMessage, Collide) == 0xc, "Message collision offset is incorrect");
+static_assert(offsetof(GInterfaceMessageBuffer, Messages) == 8, "Message array offset is incorrect");
+static_assert(sizeof(GInterfaceMessageBuffer) == 0x14, "Message buffer size is incorrect");
+static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, DrawCallback) == 0x1c8, "Mouse callback offset is incorrect");
+static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, CallbackArg1) == 0x314, "Mouse context offset is incorrect");
 
-		// Inlined timer.Reset(0); timer.Start(), as in ResetLocalGameTimer.
-		timer.TickCount = GetTickCount();
-		timer.ElapsedTime = 0;
-		if (timer.SpeedUpFactor != 0.0f)
-		{
-			timer.SpeedUpFactor2 = timer.SpeedUpFactor;
-			unsigned long ticks = GetTickCount() - timer.TickCount;
-			timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
-			timer.TickCount = GetTickCount();
-			timer.SpeedUpFactor = 0.0f;
-		}
-		timer.SpeedUpFactor = 0.00001f;
-		float         speed = timer.SpeedUpFactor2;
-		unsigned long ticks = GetTickCount() - timer.TickCount;
-		timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
-		timer.TickCount = GetTickCount();
-		timer.SpeedUpFactor = speed;
-		Loop();
-	}
-}
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(GGlobal) == 0x2d504, "GGlobal size is incorrect");
+static_assert(offsetof(GGlobal, EditorMode) == 0x2d2b0, "GGlobal editor mode offset is incorrect");
+static_assert(offsetof(GGlobal, Editor) == 0x2d2e8, "GGlobal editor pointer offset is incorrect");
+#else
+static_assert(sizeof(GGlobal) == 0x2d500, "GGlobal size is incorrect");
+static_assert(offsetof(GGlobal, EditorMode) == 0x2d2ac, "GGlobal editor mode offset is incorrect");
+static_assert(offsetof(GGlobal, Editor) == 0x2d2e4, "GGlobal editor pointer offset is incorrect");
+#endif
+static_assert(sizeof(Prss) == 0x10, "Prss size is incorrect");
+#ifdef VERSION_BW1WCI
+static_assert(offsetof(GDebug, CellBoxes) == 0x2d2a4, "GDebug CellBoxes offset is incorrect");
+static_assert(sizeof(GDebug) == 0x2d2ac, "GDebug size is incorrect");
+#else
+static_assert(offsetof(GDebug, CellBoxes) == 0x2d2a0, "GDebug CellBoxes offset is incorrect");
+static_assert(sizeof(GDebug) == 0x2d2a8, "GDebug size is incorrect");
+#endif
+static_assert(offsetof(GPlayer, interfaces) == 0x14, "GPlayer interfaces offset is incorrect");
+static_assert(offsetof(GGame, players) == 0x18, "GGame players offset is incorrect");
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+static_assert(sizeof(GPlayer) == 0xa60, "GPlayer stride is incorrect");
+static_assert(offsetof(GPlayer, type) == 0x8e0, "GPlayer type offset is incorrect");
+static_assert(offsetof(GPlayer, towns) == 0xa50, "GPlayer towns offset is incorrect");
+#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
+static_assert(sizeof(GPlayer) == 0x278, "GPlayer stride is incorrect");
+static_assert(offsetof(GPlayer, type) == 0xf8, "GPlayer type offset is incorrect");
+static_assert(offsetof(GPlayer, towns) == 0x268, "GPlayer towns offset is incorrect");
+#endif
+static_assert(offsetof(Town, ID) == 0x5b4, "Town ID offset is incorrect");
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+static_assert(offsetof(Town, next) == 0x75c, "Town next offset is incorrect");
+#elif defined(VERSION_BW1W110)
+static_assert(offsetof(Town, next) == 0x758, "Town next offset is incorrect");
+#elif defined(VERSION_BW1W100)
+static_assert(offsetof(Town, next) == 0x754, "Town next offset is incorrect");
+#endif
+static_assert(sizeof(CMouse) == 4, "CMouse size is incorrect");
+static_assert(offsetof(GCameraEditor, InputEnabled) == 0x10, "GCameraEditor flag offset is incorrect");
+static_assert(offsetof(Living, next) == 0xa4, "Living link offset is incorrect");
+static_assert(offsetof(Villager, mother) == 0x100, "Villager mother offset is incorrect");
 
-void GGame::LoadMap(char* map_path)
-{
-	if (map_path != NULL)
-	{
-		g_game->ClearMap();
-		LH3DLandscape::Release();
-		LH3DIsland::Release();
-		g_game->data.InteractDesire = 0.0f;
-		GSetup::LoadMapFeatures(map_path);
-		Town::AsssignTownFeature();
-	}
-}
-
-void GGame::StartPlaygroundGame(char* path)
-{
-	script->Reset(1);
-	LoadMap(path);
-}
-
-// BW1W120 005538e0 BW1M119 010e8430
-void GGame::OnNewGame()
-{
-	char path[MAX_PATH];
-	path_creator.CheckAndRecreateSaveGamePaths();
-	path_creator.GetCurrentGamePath(path);
-	ChallengeRoom::CreateChallengeFiles(path);
-	path_creator.GetSaveGamePicturesPath(path);
-	SaveGameRoom::CreateSaveGameFiles(path);
-
-	bool started = false;
-	if (g_game->script != NULL && GScript::ScriptsLoaded && g_game->LandNumber == 1)
-	{
-		if (g_game->script->StartScript("LandControlAll"))
-		{
-			started = true;
-		}
-	}
-	DoYesNoSkipTutorialRequestersIfNecessary();
-	if (started && !(g_game->GameFlags & GAME_FLAG_PAUSED))
-	{
-		g_game->script->SetupScreenFadeTo(0, 0, 0, 0);
-		Temple::FadeLevel = 0.0f;
-		Temple::FadeTarget = 0.0f;
-	}
-}
-
-// BW1W120 00555270 BW1M119 0151aec0
-void GGame::ForceNeedUpdateInfluence()
-{
-	field_0x250174 = 1;
-}
-
-// BW1W120 00555280 BW1M119 01091800
-void GGame::Update3DInfluence()
-{
-	if (field_0x250174 && data.GameTurn % 10 == 0)
-	{
-		InfluenceCircle::Reset();
-		GPlayer* player = NULL;
-		while ((player = GetNextPlayer(player)) != NULL)
-		{
-			long     playerNumber = GetRemapedPlayer(player->GetPlayerNumber());
-			float    influence;
-			Citadel* citadel = player->citadel.Get();
-			if (citadel != NULL)
-			{
-				influence = citadel->GetInfluence();
-				if (influence != 0.0f)
-				{
-					InfluenceCircle::Add(playerNumber, citadel->Pos.GetLHPoint(), influence);
-				}
-				citadel->LastAddedInfluence = influence;
-			}
-			for (Town* town = player->towns.head; town != NULL; town = town->next)
-			{
-				influence = town->influence;
-				if (influence != 0.0f)
-				{
-					InfluenceCircle::Add(playerNumber, town->Pos.GetLHPoint(), influence);
-				}
-				town->LastAddedInfluence = influence;
-			}
-		}
-		field_0x250174 = 0;
-	}
-}
+SetupBox* GGame::RequestorBox = NEW(1416) SetupBox(0, 0);
 
 // BW1W120 0054ae20 BW1M119 015a07b0
 void PauseGame(int pause)
@@ -682,33 +395,6 @@ void PauseGame(int pause)
 				timer.SpeedUpFactor = speed;
 			}
 		}
-	}
-}
-
-// BW1W120 005537f0 BW1M119 01367db0
-void GGame::SetSpeed(float speed)
-{
-	// As in PauseGame, unsigned source conversion produces signed FIADD with the original MSVC.
-	network.Speed = speed;
-	if (!network.session->IsSinglePlayer())
-	{
-		network.session->SetIdlePeriod((unsigned long)(100.0f / network.Speed));
-	}
-	else
-	{
-		float newSpeed = network.Speed;
-		if (timer.SpeedUpFactor != 0.0f)
-		{
-			unsigned long ticks = GetTickCount() - timer.TickCount;
-			timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
-			timer.TickCount = GetTickCount();
-			timer.SpeedUpFactor = newSpeed;
-		}
-		else
-		{
-			timer.SpeedUpFactor2 = newSpeed;
-		}
-		GGlobal::Global.debug.TimeSinceSpeedChange = 0;
 	}
 }
 
@@ -774,356 +460,6 @@ void CheckSquareFunction(int x, int z, RPHolder* holder)
 	}
 }
 
-// BW1W120 0054ef40 BW1M119 0117b9a0
-uint32_t GGame::InitOneTimeOnly()
-{
-	Report3D__FPCce("InitOneTimeOnly\n");
-#ifndef VERSION_BW1W100
-	settings->ParseConfigFile(NULL);
-#endif
-	RenderLoadingFrame(true);
-	key_buffer.Init(0x80);
-	Report3D__FPCce("LoadTextScript\n");
-	RenderLoadingFrame(true);
-	RenderLoadingFrame(true);
-#ifndef VERSION_BW1W100
-	MPFEData::CreatureFileChecksum = GetCreatureFileChecksum();
-#endif
-	Report3D__FPCce("LHNetUseProfile\n");
-	LHSys::TheSystem.MessageHook = camera_editor_callback;
-	g_water_drop_cb = water_drop_cb;
-	LHNetUseProfile(LHNetGetCurrentProfileNameFromRegistry());
-	Report3D__FPCce("ReinitLoadingScreen\n");
-	RenderLoadingFrame(true);
-	ReinitLoadingScreen();
-	Report3D__FPCce("EditorPhysics::Load\n");
-	RenderLoadingFrame(true);
-	EditorPhysics::Load();
-	LHResetFPU();
-	Report3D__FPCce("GSpookyVoices\n");
-	RenderLoadingFrame(true);
-	GSpookyVoices::Init();
-	Report3D__FPCce("GConfirmation\n");
-	RenderLoadingFrame(true);
-	GConfirmation::Init();
-	LHResetFPU();
-	Report3D__FPCce("StartupGameInfo\n");
-	RenderLoadingFrame(true);
-	GGameInfo::Info.CurrentYear = (uint32_t)(int)GGameInfo::Info.GetYear();
-	LHResetFPU();
-	RenderLoadingFrame(true);
-	GUtils::SetupUtils();
-	LHResetFPU();
-	RenderLoadingFrame(true);
-	if (LoadFiles() != 1)
-	{
-		return 0;
-	}
-	LHResetFPU();
-	RenderLoadingFrame("Loading variables...");
-	Report3D__FPCce("load_variables\n");
-	load_variables();
-	LHResetFPU();
-	LHResetFPU();
-	RenderLoadingFrame(true);
-	Report3D__FPCce("SetupStatics\n");
-	GInterface::SetupStatics();
-	RenderLoadingFrame("Initialising PSysGlobal...");
-	PSysGlobal::InitializeOneTimeOnly();
-	RenderLoadingFrame("...Finished PSysGlobal");
-	dialog_box_options = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1025) DialogBoxOptions;
-	dialog_box_options->Init(780, 500, DialogBoxOptions::ControlCallback);
-	dialog_box_options->setup_box->KeysPassThrough = true;
-	dialog_box_key_binding = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102a) DialogBoxKeyBinding;
-	dialog_box_key_binding->Init(780, 500, DialogBoxKeyBinding::ControlCallback);
-	dialog_box_save_message = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102e) DialogBoxSaveMessage;
-	dialog_box_save_message->Init(500, 250, DialogBoxSaveMessage::ControlCallback);
-	IPSpecialDialog::Instance = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1031) IPSpecialDialog;
-	IPSpecialDialog::Instance->Init(700, 250, IPSpecialDialog::ControlCallback);
-	control_map = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1034) ControlMap;
-	control_map->LoadDefaults();
-	if (PlayerProfile::GetNumberOfProfiles() != 0 && LHNetGetCurrentProfileNameFromRegistry() != NULL)
-	{
-		char16_t profile[256];
-		PlayerProfile::SetCurrentProfile((char16_t*)LHNetGetCurrentProfileNameFromRegistry());
-		PlayerProfile::GetCurrentProfile(profile);
-		PlayerProfile::GetProfileByName(profile, PlayerProfile::Profile);
-	}
-	PlayerSymbol::OpenOnce();
-	char internetOptions = 0;
-	if (ARGS_FORCEINETCONN)
-	{
-		internetOptions = 1;
-	}
-	if (ARGS_NOINETCONN)
-	{
-		internetOptions = 2;
-	}
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	MultiplayerTimeLimit = GAME_DEFAULT_MULTIPLAYER_TIME_LIMIT;
-#endif
-	Report3D__FPCce("LHCheckForInternetConnection\n");
-	InternetAvailable = LHCheckForInternetConnection(internetOptions);
-	Report3D__FPCce("GetNumberOfProfiles\n");
-	if (InternetAvailable == true && PlayerProfile::GetNumberOfProfiles() > 0)
-	{
-		char userPath[256];
-		memset(userPath, 0, sizeof(userPath));
-		path_creator.UpdateCurrentProfile();
-		path_creator.GetCurrentUserPath(userPath);
-		if (path_creator.field_0x21c != NULL && path_creator.field_0x21c[0] != '\0')
-		{
-			Mail = LHLoadInGameEmailSystem(LHSPrintf("%s\\addressbook.lhe", userPath).Text);
-		}
-		else
-		{
-			Mail = LHLoadInGameEmailSystem(NULL);
-		}
-		if (Mail != NULL && !Mail->InitDriver())
-		{
-			delete Mail;
-			Mail = NULL;
-		}
-	}
-	else
-	{
-		Mail = NULL;
-	}
-	SpecialVillager::InitOnStartup();
-	fn_0054B190();
-	GLandBalance::Init();
-	Base::ObjectHeapStore->Store();
-	return 1;
-}
-
-// BW1W120 0054ff80 BW1M119 010a2a00
-void GGame::KeyHandler(unsigned short message, LH_KEY key, unsigned short modifier, unsigned short param_4,
-                       void* context)
-{
-	if ((message == WM_KEYDOWN || message == WM_SYSKEYDOWN) && key != KB_NONE)
-	{
-		if (AssertionKeyCapture)
-		{
-			AssertionKey = key;
-		}
-		else if (g_game != NULL && g_game->IsAvailable())
-		{
-			g_game->key_buffer.AddKeyIfDifferentToPrevious(key, modifier);
-		}
-	}
-}
-
-// BW1W120 00550080 BW1M119 0149ac40
-void GGame::UnfinishInitialisation()
-{
-	GGlobal::Global.audio->ReleaseAtmosSoundBanks();
-	Windmill::Close();
-	LHSys::TheSystem.mouse.DrawCallback = NULL;
-	LHSys::TheSystem.mouse.CallbackArg1 = NULL;
-	LHSys::TheSystem.keyboard.Callback = NULL;
-	LHSys::TheSystem.keyboard.CallbackContext = NULL;
-	if (MyInterface() != NULL)
-	{
-		MyInterface()->MessageBuffers.FreeMsgBuffer();
-	}
-}
-
-// BW1W120 00550110 BW1M119 010d8f80
-void GGame::FinishInitialisation()
-{
-	if (MyInterface() != NULL)
-	{
-		GInterface* playerInterface = MyInterface();
-		playerInterface->MessageBuffers.Init(64);
-	}
-	LHSys::TheSystem.keyboard.Callback = KeyHandler;
-	LHSys::TheSystem.keyboard.CallbackContext = NULL;
-	LHSys::TheSystem.mouse.DrawCallback = MouseHandler;
-	LHSys::TheSystem.mouse.CallbackArg1 = NULL;
-	Windmill::Open();
-	GGlobal::Global.audio->InitAtmos();
-}
-
-void GGame::CreateMeshPack()
-{
-	LH3DMesh::CreatePack();
-}
-
-// BW1W120 00550390 BW1M119 01509420
-bool32_t GGame::LoadFiles()
-{
-	RenderLoadingFrame("loading animations");
-	LoadAllAnimations();
-	RenderLoadingFrame("loading meshes");
-	CreateMeshPack();
-	if (!gesture_system_data_list->Load(".\\Data\\Gestures.jty"))
-	{
-		return 0;
-	}
-	RenderLoadingFrame("loading interface files");
-	if (MyInterface()->LoadFiles() != 1)
-	{
-		return 0;
-	}
-	RenderLoadingFrame("initialising shapes");
-	data.InitialiseShapes();
-	return 1;
-}
-
-// BW1W120 00550820
-int GGame::MyPlayerID(unsigned long user_id)
-{
-	// TODO: MSVC assigns the user ID and player counter to opposite registers in the original.
-	for (unsigned long i = 0; i < 8; ++i)
-	{
-		for (GInterfaceStatus* status = players[i].GetNextInterfaceStatus(NULL); status != NULL;
-		     status = players[i].GetNextInterfaceStatus(status))
-		{
-			if (status->GetInterface()->player != NULL && status->GetInterface()->player->UserId.id == user_id)
-			{
-				return status->GetInterface()->player->PlayerId;
-			}
-		}
-	}
-	return -1;
-}
-
-// BW1W120 00550780 BW1M119 010c8970
-void GGame::Dump()
-{
-	for (unsigned int i = 0; i < 8; ++i)
-	{
-		GetPlayer(i)->Dump();
-	}
-	map.Dump();
-	GameLists.Dump();
-}
-
-// BW1W120 005507d0
-void GGame::LoopThroughPlayers()
-{
-	for (GPlayer* player = GetNextPlayer(NULL); player != NULL; player = GetNextPlayer(player))
-	{
-	}
-}
-
-// BW1W120 005509e0 BW1M119 0100e8b0
-GPlayer* GGame::GetPlayerFromReal(unsigned long player_id)
-{
-	if (player_id >= 8)
-	{
-		return NULL;
-	}
-	return &players[RealPlayerMap[player_id]];
-}
-
-// BW1W120 00550a10
-GInterface* GGame::GetPlayerInterfaceFromReal(unsigned long player_id)
-{
-	if (player_id >= 8)
-	{
-		return NULL;
-	}
-	return GetPlayerFromReal(player_id)->GetRealInterface(player_id);
-}
-
-// BW1W120 005557a0 BW1M119 010cc4c0
-void GGame::ResetState()
-{
-	data.Reset();
-	if (network.session != NULL)
-	{
-		network.session->EmptyEventQ();
-	}
-	GNetwork::ResetStateDebug();
-	fn_0054B180();
-	fn_0054B190();
-}
-
-// BW1W120 00550410 BW1M119 01567850
-void GGame::SetupPlayers()
-{
-	// TODO: FindNext still inlines here, and STL cleanup outlines more than the original.
-	LHPlayer* player = NULL;
-	if (network.Open(WCHAR2CHAR(player_info.NetworkName), NetworkApplication, NetworkChannel, NetworkPassword) ==
-	    LH_ERROR)
-	{
-		return;
-	}
-	NeutralPlayerIndex = PLAYER_NAME_NEUTRAL;
-	HelpTextDataBase& textDatabase = HelpTextDataBase::HelpTextDatabase;
-	players[PLAYER_NAME_NEUTRAL].Init(
-		PLAYER_TYPE_NEUTRAL, PLAYER_NAME_NEUTRAL,
-		(textDatabase.count <= 0x1a6c ? textDatabase.array : &textDatabase.array[0x1a6c])->Text, PLAYER_NAME_NEUTRAL);
-	field_0x205a5c = 0;
-	while ((player = network.session->Players.FindNext(player)) != NULL)
-	{
-		++field_0x205a5c;
-		if (!g_game->IsMultiplayerGame())
-		{
-			player->TeamNumber = player->PlayerId + 1;
-			player->TeamMemberNumber = 1;
-		}
-		if (player->UserId.id == network.session->NetUser->id.id)
-		{
-			g_game->field_0x205a5a = (uint8_t)player->PlayerId;
-			if (player->TeamNumber == 0)
-			{
-				g_game->PlayerIndex = PLAYER_NAME_PLAYER_SEVEN;
-			}
-			else
-			{
-				g_game->PlayerIndex = (uint8_t)(player->TeamNumber - 1);
-			}
-		}
-	}
-	player = NULL;
-	std::set<LHPlayer*, LHPlayerPointer_less> orderedPlayers;
-	while ((player = network.session->Players.FindNext(player)) != NULL)
-	{
-		orderedPlayers.insert(player);
-	}
-	for (std::set<LHPlayer*, LHPlayerPointer_less>::iterator it = orderedPlayers.begin(); it != orderedPlayers.end();
-	     it++)
-	{
-		player = *it;
-		if (player->TeamNumber == 0)
-		{
-			RealPlayerMap[player->PlayerId] = PLAYER_NAME_PLAYER_SEVEN;
-			players[PLAYER_NAME_PLAYER_SEVEN].InitReal(player, PLAYER_NAME_PLAYER_SEVEN);
-		}
-		else
-		{
-			RealPlayerMap[player->PlayerId] = (uint8_t)(player->TeamNumber - 1);
-			// Only the argument and map entry truncate; indexing uses the full team number.
-			players[player->TeamNumber - 1].InitReal(player, (uint8_t)(player->TeamNumber - 1));
-		}
-	}
-	for (unsigned int i = 0; i < 7; ++i)
-	{
-		char playerName[200];
-		sprintf(playerName, "Player[%d]", i + 1);
-		if (players[i].GetNextInterfaceStatus(NULL) == NULL)
-		{
-			players[i].Init(PLAYER_TYPE_0, (uint8_t)i, CHAR2WCHAR(playerName), (uint8_t)i);
-		}
-	}
-}
-
-static_assert(offsetof(LHPlayer, PlayerId) == 0x174, "LHPlayer ID offset");
-static_assert(offsetof(LHPlayer, TeamMemberNumber) == 0x1f4, "LHPlayer member offset");
-static_assert(offsetof(LHPlayer, TeamNumber) == 0x1f8, "LHPlayer team offset");
-static_assert(offsetof(LHSession, Players) == 0x90, "LHSession player list offset");
-static_assert(offsetof(LHConnection, NetUser) == 0x88, "LHConnection user offset");
-static_assert(offsetof(GPlayerInfo, NetworkName) == 0x50, "GPlayerInfo network name offset");
-#if defined(VERSION_BW1W100)
-static_assert(offsetof(LHSys, MessageHook) == 0x6e4c, "LHWin message callback offset");
-#elif defined(VERSION_BW1W130)
-static_assert(offsetof(LHSys, MessageHook) == 0x70dc, "LHWin message callback offset");
-#else
-static_assert(offsetof(LHSys, MessageHook) == 0x70cc, "LHWin message callback offset");
-#endif
-
 // BW1W120 0054b240 BW1M119 010ccb00
 GGame::GGame()
 {
@@ -1170,6 +506,24 @@ GGame::GGame()
 	climate = NULL;
 	field_0x59a4 = 1;
 	field_0x205d34 = 50;
+}
+
+// BW1W120 0054b9a0 BW1M119 0109ee50
+bool32_t GGame::IsAvailable()
+{
+	return (Flags & GAME_THING_FLAG_UNAVAILABLE) == 0;
+}
+
+// BW1W120 0054b9b0 BW1M119 01357d50
+uint32_t GGame::GetSaveType()
+{
+	return 0x6a;
+}
+
+// BW1W120 0054b9c0 BW1M119 0116e6c0
+char* GGame::GetDebugText()
+{
+	return "Game:";
 }
 
 // BW1W120 0054bf20 BW1M119 0111c2b0
@@ -1245,282 +599,48 @@ void GGame::ToBeDeleted(int delete_now)
 	}
 }
 
-// BW1W120 0054ec80 BW1M119 013bd6a0
-bool32_t GGame::Close()
-{
-	ClearMap();
-	climate = NULL;
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	MultiplayerTimeLimit = GAME_DEFAULT_MULTIPLAYER_TIME_LIMIT;
-#endif
-	GameThing::ProcessDeadList(1);
-	time_t currentTime;
-	time(&currentTime);
-	PlayerProfile::Profile.timestarted += currentTime - field_0x59ac;
-	PlayerProfile::WriteBackToRegistry(PlayerProfile::Profile);
-	GameThing::ProcessDeadList(1);
-	Initialised = false;
-	if (script != NULL)
-	{
-		script->Reset(1);
-	}
-	GameThing::ProcessDeadList(1);
-	delete temple;
-	temple = NULL;
-	MusicMoodController::Close();
-	DeadTree::Close();
-	GameThing::ProcessDeadList(1);
-	UnfinishInitialisation();
-	CarriedObject::Reset();
-	help_profile->ToBeDeleted(0);
-	help_system->ToBeDeleted(0);
-	help_system = NULL;
-	help_profile = NULL;
-	CreatureDanceLineInput* lineInput = CreatureDanceLineIn;
-	if (lineInput != NULL)
-	{
-		lineInput->Close();
-		lineInput->Analysis.Stop();
-		::operator delete(lineInput);
-	}
-	CreatureDanceLineIn = NULL;
-	MusicMoodController::CreatureMusicMoodEnabled = 0;
-	GameThing::ProcessDeadList(1);
-	SoundMap->Reset();
-	camera->ToBeDeleted(0);
-	camera = NULL;
-	GameThing::ProcessDeadList(1);
-	terrain_map.Clear();
-	DanceGroup::NextUntitledNumber = 1;
-	fn_0064D0F0();
-	for (GPlayer* player = GetNextPlayerAndNeutral(NULL); player != NULL; player = GetNextPlayerAndNeutral(player))
-	{
-		player->Uninit();
-		GameThing::ProcessDeadList(1);
-	}
-	UninitialiseLiquidParticles();
-	GameThing::ProcessDeadList(1);
-	landscape.Close();
-	GameThing::ProcessDeadList(1);
-	AttributeTest::DeleteAttributeArray();
-	AttributeTest::DeleteBeliefArray();
-	GameThing::ProcessDeadList(1);
-	PhysicsObject::DeleteAll();
-	while (PowerSpinRunner::First != NULL)
-	{
-		delete PowerSpinRunner::First;
-	}
-	for (int i = 0; i < 8; ++i)
-	{
-		players[i].SetToZero();
-		GAlignment* alignment = players[i].alignment;
-		alignment->ChangeThisTurn = 0.0f;
-		alignment->Value = 0.0f;
-	}
-	GameThing::ProcessDeadList(1);
-	Base::ObjectHeapStore->Restore();
-	return 1;
-}
-
-// BW1W120 00552bb0 BW1M119 01172c70
-void GGame::ClearMap()
-{
-	LHResetFPU();
-	g_game->GameFlags |= GAME_FLAG_CLEARING_MAP;
-	GameFlags &= ~(GAME_FLAG_SHOW_VILLAGER_NAMES | GAME_FLAG_SHOW_VILLAGER_INFO);
-	GameOverStarted = false;
-	field_0x205a14 = 0;
-	SuperVillager* superVillager = SuperVillager::g_first;
-	while (superVillager != NULL)
-	{
-		SuperVillager* current = superVillager;
-		superVillager = superVillager->Next;
-		current->Release();
-	}
-	SuperVillager::g_first = NULL;
-	g_game->GetCamera()->ClearCameraStack();
-	MPFEData::Data.Reset();
-	InfluenceCircle::Reset();
-	// The coordinate setters are inlined here, unlike the constructor's SetToZero call.
-	LH3DMapCoords& startCoords = (LH3DMapCoords&)StartCameraCoords;
-	startCoords.x = 0;
-	startCoords.z = 0;
-	startCoords.altitude = 0.0f;
-	if (players[PlayerIndex].creature.Get() != NULL && players[PlayerIndex].GetLeaderInterfaceStatus() != NULL &&
-	    players[PlayerIndex].creature->RemoteCreature == false)
-	{
-		char mindPath[256];
-		char physiquePath[256];
-		sprintf(mindPath, ".\\Scripts\\CreatureMind\\%s",
-		        players[PlayerIndex].GetLeaderInterfaceStatus()->GetInterface()->player->UserFilename);
-		players[PlayerIndex].creature->mind->SaveMind(mindPath);
-		sprintf(physiquePath, ".\\Scripts\\CreatureMind\\Physique%s",
-		        players[PlayerIndex].GetLeaderInterfaceStatus()->GetInterface()->player->UserFilename);
-		players[PlayerIndex].creature->Save3D(physiquePath);
-	}
-	CameraExclusion::RemoveAll();
-	CameraExclusion::ResetExclusionFile(CAMERA_EXCLUSION_ID_DEFAULT);
-	ResetCameraModeNew3();
-	PhysicsObject::DeleteAll();
-	GInterface& playerInterface = *g_game->MyInterface();
-	playerInterface.hand.Get()->OnClearMap();
-	GGlobal::Global.audio->ReleaseAllThingMusicInfo();
-	GGlobal::Global.audio->Reset();
-	g_game->script->ValidateScriptVariables();
-	GGlobal::Global.audio->Reset();
-	GameLists.ClearMap();
-	if (g_game->temple != NULL)
-	{
-		ChallengeRoom::ChallengeClear();
-	}
-	for (int i = 0; i < 8; ++i)
-	{
-		players[i].OnEndOfClearMap();
-	}
-	Bookmark::ClearAll();
-	ScriptHighlight::OnClearMap();
-	FireFly::OnClearMap();
-	PSysGlobal::OnClearMap();
-	g_game->script->ValidateScriptVariables();
-	g_game->MyInterface()->Validate();
-	GLandscape::DrawListRebuildCount = 1;
-	GBaseOnly::ReleaseAll();
-	Dance* dance = g_game->GameLists.dances.head;
-	while (dance != NULL)
-	{
-		Dance* next = dance->next;
-		dance->ToBeDeleted(0);
-		dance = next;
-	}
-	GameThing::ProcessDeadList(1);
-	ResetState();
-	GameStats::ClearAll();
-	CameraHelp::EnabledFeatures = 0x1bf;
-	CameraHelp::AutoPitchHeight = 75.0f;
-	CameraHelp::AutoPitch = 0.5235988f;
-	HelpProfile::AccumulatedTime = 0;
-	for (int j = 0; j < GLandscape::DrawObjectCount; ++j)
-	{
-		GLandscape::DrawObjects[j] = NULL;
-	}
-	GLandscape::DrawObjectCount = 0;
-	GLandscape::DrawListRebuildCount = 1;
-	ResetBlockersForClearMap();
-	climate = NULL;
-	SoundMap->Reset();
-	terrain_map.Clear();
-	PhysicsObject::DeleteAll();
-	while (PowerSpinRunner::First != NULL)
-	{
-		delete PowerSpinRunner::First;
-	}
-	GameThing::ProcessDeadList(1);
-	Forest::OnClearMap();
-	Creature::OnClearMap();
-	GSpecialVillagerInfo::OnClearMap();
-	g_game->GameFlags &= ~GAME_FLAG_CLEARING_MAP;
-	GLandBalance::Init();
-	InitStaticsValues();
-	GameBlock::Clean();
-	ClearAllStuff();
-	LHResetFPU();
-}
-
-static_assert(sizeof(GPacket) == 0x110, "GPacket size is incorrect");
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-static_assert(offsetof(GGame, PacketBufferLength) == 0x5978, "Packet length offset is incorrect");
-#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
-static_assert(offsetof(GGame, PacketBufferLength) == 0x1a38, "Packet length offset is incorrect");
-#endif
-static_assert(sizeof(GNetwork) == 0x30, "GNetwork size is incorrect");
-static_assert(sizeof(GTerrainMap) == 0x4a130, "GTerrainMap size is incorrect");
-static_assert(sizeof(GSoundMap) == 0x110, "GSoundMap size is incorrect");
-static_assert(sizeof(GestureSystemDataList) == 0x10, "GestureSystemDataList size is incorrect");
-static_assert(sizeof(GestureSystemData) == 0x65c, "GestureSystemData size is incorrect");
-static_assert(sizeof(GestureSystem) == 0xc98, "GestureSystem size is incorrect");
-static_assert(sizeof(GestureSystemResult) == 0xc, "GestureSystemResult size is incorrect");
-#ifdef VERSION_BW1WCI
-static_assert(sizeof(Settings) == 0x208, "Settings size is incorrect");
-#else
-static_assert(sizeof(Settings) == 0x104, "Settings size is incorrect");
-#endif
-static_assert(offsetof(CreatureDanceLineInput, Analysis) == 0x28, "Line-input prefix offset is incorrect");
-static_assert(offsetof(Dance, next) == 0xec, "Dance link offset is incorrect");
-static_assert(sizeof(Dance) == 0x12c, "Dance size is incorrect");
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-static_assert(offsetof(GGame, field_0x59ac) == 0x59ac, "Game start-time offset is incorrect");
-#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
-static_assert(offsetof(GGame, field_0x59ac) == 0x1a68, "Game start-time offset is incorrect");
-#endif
-static_assert(offsetof(GInterfaceMessage, Collide) == 0xc, "Message collision offset is incorrect");
-static_assert(offsetof(GInterfaceMessageBuffer, Messages) == 8, "Message array offset is incorrect");
-static_assert(sizeof(GInterfaceMessageBuffer) == 0x14, "Message buffer size is incorrect");
-static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, DrawCallback) == 0x1c8, "Mouse callback offset is incorrect");
-static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, CallbackArg1) == 0x314, "Mouse context offset is incorrect");
-
-#ifdef VERSION_BW1WCI
-static_assert(sizeof(GGlobal) == 0x2d504, "GGlobal size is incorrect");
-static_assert(offsetof(GGlobal, EditorMode) == 0x2d2b0, "GGlobal editor mode offset is incorrect");
-static_assert(offsetof(GGlobal, Editor) == 0x2d2e8, "GGlobal editor pointer offset is incorrect");
-#else
-static_assert(sizeof(GGlobal) == 0x2d500, "GGlobal size is incorrect");
-static_assert(offsetof(GGlobal, EditorMode) == 0x2d2ac, "GGlobal editor mode offset is incorrect");
-static_assert(offsetof(GGlobal, Editor) == 0x2d2e4, "GGlobal editor pointer offset is incorrect");
-#endif
-static_assert(sizeof(Prss) == 0x10, "Prss size is incorrect");
-#ifdef VERSION_BW1WCI
-static_assert(offsetof(GDebug, CellBoxes) == 0x2d2a4, "GDebug CellBoxes offset is incorrect");
-static_assert(sizeof(GDebug) == 0x2d2ac, "GDebug size is incorrect");
-#else
-static_assert(offsetof(GDebug, CellBoxes) == 0x2d2a0, "GDebug CellBoxes offset is incorrect");
-static_assert(sizeof(GDebug) == 0x2d2a8, "GDebug size is incorrect");
-#endif
-static_assert(offsetof(GPlayer, interfaces) == 0x14, "GPlayer interfaces offset is incorrect");
-static_assert(offsetof(GGame, players) == 0x18, "GGame players offset is incorrect");
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-static_assert(sizeof(GPlayer) == 0xa60, "GPlayer stride is incorrect");
-static_assert(offsetof(GPlayer, type) == 0x8e0, "GPlayer type offset is incorrect");
-static_assert(offsetof(GPlayer, towns) == 0xa50, "GPlayer towns offset is incorrect");
-#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)
-static_assert(sizeof(GPlayer) == 0x278, "GPlayer stride is incorrect");
-static_assert(offsetof(GPlayer, type) == 0xf8, "GPlayer type offset is incorrect");
-static_assert(offsetof(GPlayer, towns) == 0x268, "GPlayer towns offset is incorrect");
-#endif
-static_assert(offsetof(Town, ID) == 0x5b4, "Town ID offset is incorrect");
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-static_assert(offsetof(Town, next) == 0x75c, "Town next offset is incorrect");
-#elif defined(VERSION_BW1W110)
-static_assert(offsetof(Town, next) == 0x758, "Town next offset is incorrect");
-#elif defined(VERSION_BW1W100)
-static_assert(offsetof(Town, next) == 0x754, "Town next offset is incorrect");
-#endif
-static_assert(sizeof(CMouse) == 4, "CMouse size is incorrect");
-static_assert(offsetof(GCameraEditor, InputEnabled) == 0x10, "GCameraEditor flag offset is incorrect");
-static_assert(offsetof(Living, next) == 0xa4, "Living link offset is incorrect");
-static_assert(offsetof(Villager, mother) == 0x100, "Villager mother offset is incorrect");
-
-// BW1W120 0054b9a0 BW1M119 0109ee50
-bool32_t GGame::IsAvailable()
-{
-	return (Flags & GAME_THING_FLAG_UNAVAILABLE) == 0;
-}
-
-// BW1W120 0054b9b0 BW1M119 01357d50
-uint32_t GGame::GetSaveType()
-{
-	return 0x6a;
-}
-
-// BW1W120 0054b9c0 BW1M119 0116e6c0
-char* GGame::GetDebugText()
-{
-	return "Game:";
-}
-
 // BW1W120 0054c180 BW1M119 0103cd90
 GCamera* GGame::GetCamera()
 {
 	return camera;
+}
+
+// BW1W120 0054c190 BW1M119 010e7270
+void GGame::StartGame()
+{
+	g_game->GameMode = GAME_MODE_RUNNING;
+	if (Init() == true && !ARGS_CONVERT)
+	{
+		stop_draw_sprite_to_screen();
+		Plasma* plasma = FrontEnd::PlasmaBackground;
+		if (plasma != NULL)
+		{
+			// Inlined Plasma::Close(), followed by nonvirtual delete.
+			plasma->PinMaterial->texture = NULL;
+			plasma->PinTexture->Release();
+			delete plasma;
+		}
+		FrontEnd::PlasmaBackground = NULL;
+
+		// Inlined timer.Reset(0); timer.Start(), as in ResetLocalGameTimer.
+		timer.TickCount = GetTickCount();
+		timer.ElapsedTime = 0;
+		if (timer.SpeedUpFactor != 0.0f)
+		{
+			timer.SpeedUpFactor2 = timer.SpeedUpFactor;
+			unsigned long ticks = GetTickCount() - timer.TickCount;
+			timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+			timer.TickCount = GetTickCount();
+			timer.SpeedUpFactor = 0.0f;
+		}
+		timer.SpeedUpFactor = 0.00001f;
+		float         speed = timer.SpeedUpFactor2;
+		unsigned long ticks = GetTickCount() - timer.TickCount;
+		timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+		timer.TickCount = GetTickCount();
+		timer.SpeedUpFactor = speed;
+		Loop();
+	}
 }
 
 // BW1W120 0054c330 BW1M119 010e7580
@@ -1644,8 +764,6 @@ void ResetLocalGameTimer()
 		timer.SpeedUpFactor = speed;
 	}
 }
-
-SetupBox* GGame::RequestorBox = NEW(1416) SetupBox(0, 0);
 
 // BW1W120 0054cc30 BW1M119 0102be90
 void GGame::ProcessNetworkPackets()
@@ -1973,37 +1091,6 @@ void GGame::Loop()
 	}
 }
 
-// Original name unrecovered.
-// BW1W120 0054d7f0
-void GGame::fn_0054D7F0()
-{
-	++field_0x205d44;
-}
-
-// BW1W120 0054d800 BW1M119 010e5f60
-void GGame::FlipScreen()
-{
-	if (RenderLoopEnabled)
-	{
-		LHSys::GetScreen().Flip(1);
-	}
-}
-
-void GGame::FlushPacketBuffer()
-{
-	if (PacketBuffer[0] != 0)
-	{
-		network.SendPacket((GPacket*)PacketBuffer, PacketBufferLength);
-		PacketBufferLength = 1;
-		PacketBuffer[0] = 0;
-	}
-}
-
-void GGame::QuitGameAndGoIntoNetworkLobby()
-{
-	GameMode = GAME_MODE_ONLINE;
-}
-
 // BW1W120 0054d620 BW1M119 01020e60
 void GGame::ProcessOneGameTurn()
 {
@@ -2035,6 +1122,33 @@ void GGame::ProcessOneGameTurn()
 			}
 		}
 	}
+}
+
+// Original name unrecovered.
+// BW1W120 0054d7f0
+void GGame::fn_0054D7F0()
+{
+	++field_0x205d44;
+}
+
+// BW1W120 0054d800 BW1M119 010e5f60
+void GGame::FlipScreen()
+{
+	if (RenderLoopEnabled)
+	{
+		LHSys::GetScreen().Flip(1);
+	}
+}
+
+// BW1W120 0054d820 BW1M119 010861b0
+void GGame::ProcessGameCode()
+{
+	StartTurn();
+	if ((GameFlags & GAME_FLAG_PAUSED) == 0)
+	{
+		ProcessTurn();
+	}
+	EndTurn();
 }
 
 // BW1W120 0054d850 BW1M119 0107bf40
@@ -2336,17 +1450,6 @@ void GGame::Process3dEngine()
 	LHResetFPU();
 }
 
-// BW1W120 0054d820 BW1M119 010861b0
-void GGame::ProcessGameCode()
-{
-	StartTurn();
-	if ((GameFlags & GAME_FLAG_PAUSED) == 0)
-	{
-		ProcessTurn();
-	}
-	EndTurn();
-}
-
 // BW1W120 0054e4f0 BW1M119 01086050
 void GGame::StartTurn()
 {
@@ -2537,6 +1640,619 @@ void GGame::EndTurn()
 	}
 }
 
+// BW1W120 0054ec80 BW1M119 013bd6a0
+bool32_t GGame::Close()
+{
+	ClearMap();
+	climate = NULL;
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	MultiplayerTimeLimit = GAME_DEFAULT_MULTIPLAYER_TIME_LIMIT;
+#endif
+	GameThing::ProcessDeadList(1);
+	time_t currentTime;
+	time(&currentTime);
+	PlayerProfile::Profile.timestarted += currentTime - field_0x59ac;
+	PlayerProfile::WriteBackToRegistry(PlayerProfile::Profile);
+	GameThing::ProcessDeadList(1);
+	Initialised = false;
+	if (script != NULL)
+	{
+		script->Reset(1);
+	}
+	GameThing::ProcessDeadList(1);
+	delete temple;
+	temple = NULL;
+	MusicMoodController::Close();
+	DeadTree::Close();
+	GameThing::ProcessDeadList(1);
+	UnfinishInitialisation();
+	CarriedObject::Reset();
+	help_profile->ToBeDeleted(0);
+	help_system->ToBeDeleted(0);
+	help_system = NULL;
+	help_profile = NULL;
+	CreatureDanceLineInput* lineInput = CreatureDanceLineIn;
+	if (lineInput != NULL)
+	{
+		lineInput->Close();
+		lineInput->Analysis.Stop();
+		::operator delete(lineInput);
+	}
+	CreatureDanceLineIn = NULL;
+	MusicMoodController::CreatureMusicMoodEnabled = 0;
+	GameThing::ProcessDeadList(1);
+	SoundMap->Reset();
+	camera->ToBeDeleted(0);
+	camera = NULL;
+	GameThing::ProcessDeadList(1);
+	terrain_map.Clear();
+	DanceGroup::NextUntitledNumber = 1;
+	fn_0064D0F0();
+	for (GPlayer* player = GetNextPlayerAndNeutral(NULL); player != NULL; player = GetNextPlayerAndNeutral(player))
+	{
+		player->Uninit();
+		GameThing::ProcessDeadList(1);
+	}
+	UninitialiseLiquidParticles();
+	GameThing::ProcessDeadList(1);
+	landscape.Close();
+	GameThing::ProcessDeadList(1);
+	AttributeTest::DeleteAttributeArray();
+	AttributeTest::DeleteBeliefArray();
+	GameThing::ProcessDeadList(1);
+	PhysicsObject::DeleteAll();
+	while (PowerSpinRunner::First != NULL)
+	{
+		delete PowerSpinRunner::First;
+	}
+	for (int i = 0; i < 8; ++i)
+	{
+		players[i].SetToZero();
+		GAlignment* alignment = players[i].alignment;
+		alignment->ChangeThisTurn = 0.0f;
+		alignment->Value = 0.0f;
+	}
+	GameThing::ProcessDeadList(1);
+	Base::ObjectHeapStore->Restore();
+	return 1;
+}
+
+// BW1W120 0054ef40 BW1M119 0117b9a0
+uint32_t GGame::InitOneTimeOnly()
+{
+	Report3D__FPCce("InitOneTimeOnly\n");
+#ifndef VERSION_BW1W100
+	settings->ParseConfigFile(NULL);
+#endif
+	RenderLoadingFrame(true);
+	key_buffer.Init(0x80);
+	Report3D__FPCce("LoadTextScript\n");
+	RenderLoadingFrame(true);
+	RenderLoadingFrame(true);
+#ifndef VERSION_BW1W100
+	MPFEData::CreatureFileChecksum = GetCreatureFileChecksum();
+#endif
+	Report3D__FPCce("LHNetUseProfile\n");
+	LHSys::TheSystem.MessageHook = camera_editor_callback;
+	g_water_drop_cb = water_drop_cb;
+	LHNetUseProfile(LHNetGetCurrentProfileNameFromRegistry());
+	Report3D__FPCce("ReinitLoadingScreen\n");
+	RenderLoadingFrame(true);
+	ReinitLoadingScreen();
+	Report3D__FPCce("EditorPhysics::Load\n");
+	RenderLoadingFrame(true);
+	EditorPhysics::Load();
+	LHResetFPU();
+	Report3D__FPCce("GSpookyVoices\n");
+	RenderLoadingFrame(true);
+	GSpookyVoices::Init();
+	Report3D__FPCce("GConfirmation\n");
+	RenderLoadingFrame(true);
+	GConfirmation::Init();
+	LHResetFPU();
+	Report3D__FPCce("StartupGameInfo\n");
+	RenderLoadingFrame(true);
+	GGameInfo::Info.CurrentYear = (uint32_t)(int)GGameInfo::Info.GetYear();
+	LHResetFPU();
+	RenderLoadingFrame(true);
+	GUtils::SetupUtils();
+	LHResetFPU();
+	RenderLoadingFrame(true);
+	if (LoadFiles() != 1)
+	{
+		return 0;
+	}
+	LHResetFPU();
+	RenderLoadingFrame("Loading variables...");
+	Report3D__FPCce("load_variables\n");
+	load_variables();
+	LHResetFPU();
+	LHResetFPU();
+	RenderLoadingFrame(true);
+	Report3D__FPCce("SetupStatics\n");
+	GInterface::SetupStatics();
+	RenderLoadingFrame("Initialising PSysGlobal...");
+	PSysGlobal::InitializeOneTimeOnly();
+	RenderLoadingFrame("...Finished PSysGlobal");
+	dialog_box_options = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1025) DialogBoxOptions;
+	dialog_box_options->Init(780, 500, DialogBoxOptions::ControlCallback);
+	dialog_box_options->setup_box->KeysPassThrough = true;
+	dialog_box_key_binding = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102a) DialogBoxKeyBinding;
+	dialog_box_key_binding->Init(780, 500, DialogBoxKeyBinding::ControlCallback);
+	dialog_box_save_message = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102e) DialogBoxSaveMessage;
+	dialog_box_save_message->Init(500, 250, DialogBoxSaveMessage::ControlCallback);
+	IPSpecialDialog::Instance = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1031) IPSpecialDialog;
+	IPSpecialDialog::Instance->Init(700, 250, IPSpecialDialog::ControlCallback);
+	control_map = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1034) ControlMap;
+	control_map->LoadDefaults();
+	if (PlayerProfile::GetNumberOfProfiles() != 0 && LHNetGetCurrentProfileNameFromRegistry() != NULL)
+	{
+		char16_t profile[256];
+		PlayerProfile::SetCurrentProfile((char16_t*)LHNetGetCurrentProfileNameFromRegistry());
+		PlayerProfile::GetCurrentProfile(profile);
+		PlayerProfile::GetProfileByName(profile, PlayerProfile::Profile);
+	}
+	PlayerSymbol::OpenOnce();
+	char internetOptions = 0;
+	if (ARGS_FORCEINETCONN)
+	{
+		internetOptions = 1;
+	}
+	if (ARGS_NOINETCONN)
+	{
+		internetOptions = 2;
+	}
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	MultiplayerTimeLimit = GAME_DEFAULT_MULTIPLAYER_TIME_LIMIT;
+#endif
+	Report3D__FPCce("LHCheckForInternetConnection\n");
+	InternetAvailable = LHCheckForInternetConnection(internetOptions);
+	Report3D__FPCce("GetNumberOfProfiles\n");
+	if (InternetAvailable == true && PlayerProfile::GetNumberOfProfiles() > 0)
+	{
+		char userPath[256];
+		memset(userPath, 0, sizeof(userPath));
+		path_creator.UpdateCurrentProfile();
+		path_creator.GetCurrentUserPath(userPath);
+		if (path_creator.field_0x21c != NULL && path_creator.field_0x21c[0] != '\0')
+		{
+			Mail = LHLoadInGameEmailSystem(LHSPrintf("%s\\addressbook.lhe", userPath).Text);
+		}
+		else
+		{
+			Mail = LHLoadInGameEmailSystem(NULL);
+		}
+		if (Mail != NULL && !Mail->InitDriver())
+		{
+			delete Mail;
+			Mail = NULL;
+		}
+	}
+	else
+	{
+		Mail = NULL;
+	}
+	SpecialVillager::InitOnStartup();
+	fn_0054B190();
+	GLandBalance::Init();
+	Base::ObjectHeapStore->Store();
+	return 1;
+}
+
+// BW1W120 0054f3b0 BW1M119 014e1990
+// 0054f421 is a continuation in this same frame. Only the internet check is caught.
+// TODO: Nonmatching switch/local scheduling and std::map insertion inlining.
+bool32_t GGame::Init()
+{
+	InitStaticsValues();
+	SavingMap = false;
+	try
+	{
+		InternetAvailable = LHCheckForInternetConnection(CheckInternetConnectionOptions);
+	}
+	catch (...)
+	{
+		InternetAvailable = false;
+	}
+	RenderTime = 0;
+	RenderTimeInc = 0;
+	Initialising = true;
+	LoadingFrameEnabled = 1;
+	if (TipVideo == NULL)
+	{
+		StartTipOfTheDayText();
+		MakeTipVideo();
+	}
+	GameFlags &= ~(GAME_FLAG_ACTIVATE_CREATURE_DESIRES | GAME_FLAG_PAUSED);
+	field_0x59b0 = 0;
+	RenderLoadingFrame(true);
+	GGlobal::Global.audio->Reset();
+	GameOver = false;
+	field_0x599d = 0;
+	AttributeTest::CreateAttributeArray();
+	AttributeTest::CreateBeliefArray();
+	remove("physlog.txt");
+	InitialiseLiquidParticles();
+	DeadTree::Init();
+	GGameInfo::Info.MillisecondsPerGameTurn = 100;
+	data.InitialRandSeed = RAND_SEED;
+	data.RandSeed = RAND_SEED;
+	SetFPU();
+	RenderLoadingFrame("Setting up players...");
+	SetupPlayers();
+	RenderLoadingFrame("Setting up data tables...");
+	SetupDataTables();
+	LandNumber = 0;
+	help_profile = HelpProfile::Create();
+	help_system = HelpSystem::Create();
+	temple = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x10ff) Temple;
+	script->Reset(1);
+	FootballEnabled = BWCheckFeatureIsEnabled("football") != 0;
+	MusicMoodController::CreatureMusicMoodEnabled = BWCheckFeatureIsEnabled("CreatureMusicMood");
+	if (BWCheckFeatureIsEnabled("CreatureDanceLineIn") && CreatureDanceLineIn == NULL)
+	{
+		CreatureDanceLineIn = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1113) CreatureDanceLineInput;
+		CreatureDanceLineIn->Open();
+		if (!CreatureDanceLineIn->Active)
+		{
+			delete CreatureDanceLineIn;
+			CreatureDanceLineIn = NULL;
+		}
+	}
+	RenderLoadingFrame("Initialising map...");
+	if (map.Init(0x200, 0x200, 0) != 1)
+	{
+		LoadingFrameEnabled = 0;
+		Initialising = false;
+		return 0;
+	}
+	map.Initialised = true;
+	RenderLoadingFrame("Loading map script...");
+	PlayerInfluenceMultiplier = 1.0f;
+	TownInfluenceMultiplier = 1.0f;
+	camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x112a) GCamera(StartCameraCoords);
+	if (StartType == GAME_START_TYPE_AUTOSAVE && !GameOSFile::IsAutoSaveValid())
+		StartType = GAME_START_TYPE_NEW_GAME;
+	SkirmishGame = false;
+	GameOverStarted = false;
+	field_0x205a14 = 0;
+	switch (StartType)
+	{
+	case GAME_START_TYPE_AUTOSAVE:
+		RenderLoadingFrame(true);
+		if (GameOSFile::AutoLoad())
+		{
+			StartType = GAME_START_TYPE_AUTOSAVE;
+			break;
+		}
+		goto newGame;
+	case GAME_START_TYPE_LOAD_GAME:
+		if (GameOSFile::LoadAllGame(LoadGameFilename))
+		{
+			StartType = GAME_START_TYPE_LOAD_GAME;
+			break;
+		}
+		// Both failed loads use the complete new-game path.
+	case GAME_START_TYPE_NEW_GAME:
+	newGame:
+		StartType = GAME_START_TYPE_NEW_GAME;
+		delete camera;
+		camera = NULL;
+		setup.LoadMapScript();
+		OnNewGame();
+		break;
+	case GAME_START_TYPE_MULTIPLAYER: {
+		char* mapName = NULL;
+		GameFlags &= ~GAME_FLAG_ACTIVATE_CREATURE_DESIRES;
+		if (network.session->LobbyChannel->GetGameDataLength())
+			mapName = (char*)network.session->LobbyChannel->GetGameData();
+		if (mapName && strcmp(mapName, "oos") == 0)
+		{
+			GSetup::CreateMultiplayerCreatures = 0;
+			GSetup::LoadMapFeatures("oos.txt");
+			GSetup::CreateMultiplayerCreatures = 1;
+			g_game->SetUnusedCitadelComputerPlayers();
+		}
+		else
+		{
+			ServerLandscapeMap serverMap(NULL);
+			char               mapPath[MAX_PATH];
+			sprintf(mapPath, ".\\Online Maps\\%s.map", mapName ? mapName : "mpm_2p_1");
+			serverMap.LoadMap(mapPath);
+			serverMap.SaveLND(".");
+			serverMap.SaveMAP(".");
+			GSetup::CreateMultiplayerCreatures = 0;
+			GSetup::MPDebugLoadState = 0;
+			// LHOSFile reports success (zero) when the file exists.
+			if (LHOSFile::Exists(".\\Scripts\\MPDebug.txt") == 0)
+				GSetup::MPDebugLoadState = 1;
+			if (!GSetup::MPDebugLoadState)
+				GSetup::LoadMapFeatures(serverMap.GetMAPFilename("."));
+			else
+			{
+				LHSys::TheSystem.script.Load(".\\Scripts\\MPDebug.txt", GSetup::MapCommands, GSetup::MapCommandProcess,
+				                             NULL);
+				if (GSetup::MPDebugLoadState == 1)
+					GSetup::LoadMapFeatures(serverMap.GetMAPFilename("."));
+				GSetup::MPDebugLoadState = 0;
+			}
+			_unlink(serverMap.GetMAPFilename("."));
+			_unlink(serverMap.GetLNDFilename("."));
+			GSetup::CreateMultiplayerCreatures = 1;
+			g_game->SetUnusedCitadelComputerPlayers();
+		}
+		_unlink("oos.txt");
+		_unlink("oos.lnd");
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+		MultiplayerTimeLimit *= 600;
+		for (GPlayer* player = GetNextActivePlayer(NULL); player; player = GetNextActivePlayer(player))
+		{
+			for (int i = 0; i < WC_LAST; ++i)
+			{
+				if (MPFEData::Data.ActiveDialog->ConditionEnabled[i])
+					player->Conditions.insert(std::make_pair(i, MPFEData::Data.Conditions[i]));
+			}
+		}
+#endif
+		break;
+	}
+	case GAME_START_TYPE_SKIRMISH: {
+		char mapPath[MAX_PATH];
+		strcpy(mapPath, WCHAR2CHAR(FrontEnd::SkirmishDialog->MapPath));
+		g_game->StartPlaygroundGame(mapPath);
+		SkirmishGame = true;
+		break;
+	}
+	}
+	if (g_game->StartType == GAME_START_TYPE_SKIRMISH || g_game->StartType == GAME_START_TYPE_NEW_GAME ||
+	    g_game->StartType == GAME_START_TYPE_MULTIPLAYER)
+	{
+		delete camera;
+		camera = NULL;
+		Citadel* citadel = players[PlayerIndex].citadel.Get();
+		if (((StartCameraCoords.x == 0 && StartCameraCoords.z == 0 && StartCameraCoords.altitude == 0.0f) ||
+		     g_game->StartType == GAME_START_TYPE_MULTIPLAYER) &&
+		    citadel)
+		{
+			camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x11cc) GCamera(citadel->Pos);
+			CameraMode*     currentMode = camera->ModeCurrentIndex < 0 ? NULL : camera->modes[camera->ModeCurrentIndex];
+			CameraModeNew3* mode = dynamic_cast<CameraModeNew3*>(currentMode);
+			if (mode)
+			{
+				LHPoint point;
+				GLandscape::ConvertMapCoordToLandscapePoint(citadel->Pos, point);
+				mode->ZoomToCitadel(point.x, point.z, CameraModeNew3::CitadelDistance, CameraModeNew3::CitadelPitch, 0);
+			}
+		}
+		else
+			camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x11d7) GCamera(StartCameraCoords);
+	}
+	map.UpdateControlMap();
+	CreatureGlobalExplorationMap::GlobalMap.PrecalculateMap();
+	terrain_map.Init();
+	field_0x205ba0 = 1;
+	GSoundMap* soundMap = SoundMap;
+	soundMap->CalculateRadiusPointAndDistance();
+	soundMap->UpdateFromMap(MapCoords(soundMap->GetReceiverPos()));
+	map.CalculateMapInfluence();
+	field_0x205a2c = 0;
+	ViewMode = GAME_VIEW_MODE_WORLD;
+	RenderLoadingFrame(true);
+	CarriedObject::Init();
+	BMan_Zero();
+	GameTimeMilliseconds = 0;
+	field_0x2502bc = 0;
+	field_0x205e78 = 0;
+	FinishInitialisation();
+	MeshIntersect::InitialiseMeshIntersect();
+	Initialised = true;
+	field_0x205d60 = 0;
+	RenderLoadingFrame(true);
+	PlayerSymbol::CreateFinalTextureSymbols();
+	RenderLoadingFrame(true);
+	ReadRegistrySettings();
+	RenderLoadingFrame(true);
+	GSpookyVoices::GetPlayerName();
+	time(&field_0x59ac);
+	if ((SkirmishGame || IsMultiplayerGame()) && MyPlayer()->citadel.Get())
+	{
+		GInterfaceStatus* leader = players[PlayerIndex].GetLeaderInterfaceStatus();
+		if (MyInterfaceStatus() == leader)
+		{
+			SetPacket(PACKET_TYPE_LOAD_MY_CREATURE, MyPlayer()->GetCitadel()->GetCreatureHomePos().MapX(),
+			          MyPlayer()->GetCitadel()->GetCreatureHomePos().MapZ(), -1L);
+		}
+	}
+	FlushPacketBuffer();
+	RenderLoadingFrame(true);
+	wcscpy(FrontEnd::MultiplayerTab->label, L"");
+	if (g_game->IsMultiplayerGame())
+	{
+		swprintf(FrontEnd::MultiplayerTab->label, L"%s", HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(19));
+		Lobby = MPFEConnectionStatus::Status.IsInternetLobby() ? GAME_LOBBY_INTERNET : GAME_LOBBY_LAN;
+		for (GPlayer* player = GetNextPlayer(NULL); player; player = GetNextPlayer(player))
+		{
+			float alignment = player->StartGameData ? player->StartGameData->Alignment : 0.0f;
+			player->alignment->CrudeSet(alignment);
+			player->game_stats->Init(*player);
+		}
+	}
+	else
+	{
+		players[PlayerIndex].LoadPlayerAlignment();
+		players[PlayerIndex].game_stats->Init(players[PlayerIndex]);
+		Lobby = GAME_LOBBY_NONE;
+	}
+	RenderLoadingFrame(true);
+	LHInetWeather::Weather.InitForGame();
+	LoadingFrameEnabled = 0;
+	Initialising = false;
+	return 1;
+}
+
+// BW1W120 0054ff80 BW1M119 010a2a00
+void GGame::KeyHandler(unsigned short message, LH_KEY key, unsigned short modifier, unsigned short param_4,
+                       void* context)
+{
+	if ((message == WM_KEYDOWN || message == WM_SYSKEYDOWN) && key != KB_NONE)
+	{
+		if (AssertionKeyCapture)
+		{
+			AssertionKey = key;
+		}
+		else if (g_game != NULL && g_game->IsAvailable())
+		{
+			g_game->key_buffer.AddKeyIfDifferentToPrevious(key, modifier);
+		}
+	}
+}
+
+// BW1W120 00550080 BW1M119 0149ac40
+void GGame::UnfinishInitialisation()
+{
+	GGlobal::Global.audio->ReleaseAtmosSoundBanks();
+	Windmill::Close();
+	LHSys::TheSystem.mouse.DrawCallback = NULL;
+	LHSys::TheSystem.mouse.CallbackArg1 = NULL;
+	LHSys::TheSystem.keyboard.Callback = NULL;
+	LHSys::TheSystem.keyboard.CallbackContext = NULL;
+	if (MyInterface() != NULL)
+	{
+		MyInterface()->MessageBuffers.FreeMsgBuffer();
+	}
+}
+
+// BW1W120 00550110 BW1M119 010d8f80
+void GGame::FinishInitialisation()
+{
+	if (MyInterface() != NULL)
+	{
+		GInterface* playerInterface = MyInterface();
+		playerInterface->MessageBuffers.Init(64);
+	}
+	LHSys::TheSystem.keyboard.Callback = KeyHandler;
+	LHSys::TheSystem.keyboard.CallbackContext = NULL;
+	LHSys::TheSystem.mouse.DrawCallback = MouseHandler;
+	LHSys::TheSystem.mouse.CallbackArg1 = NULL;
+	Windmill::Open();
+	GGlobal::Global.audio->InitAtmos();
+}
+
+void GGame::CreateMeshPack()
+{
+	LH3DMesh::CreatePack();
+}
+
+// BW1W120 00550390 BW1M119 01509420
+bool32_t GGame::LoadFiles()
+{
+	RenderLoadingFrame("loading animations");
+	LoadAllAnimations();
+	RenderLoadingFrame("loading meshes");
+	CreateMeshPack();
+	if (!gesture_system_data_list->Load(".\\Data\\Gestures.jty"))
+	{
+		return 0;
+	}
+	RenderLoadingFrame("loading interface files");
+	if (MyInterface()->LoadFiles() != 1)
+	{
+		return 0;
+	}
+	RenderLoadingFrame("initialising shapes");
+	data.InitialiseShapes();
+	return 1;
+}
+
+// BW1W120 00550410 BW1M119 01567850
+void GGame::SetupPlayers()
+{
+	// TODO: FindNext still inlines here, and STL cleanup outlines more than the original.
+	LHPlayer* player = NULL;
+	if (network.Open(WCHAR2CHAR(player_info.NetworkName), NetworkApplication, NetworkChannel, NetworkPassword) ==
+	    LH_ERROR)
+	{
+		return;
+	}
+	NeutralPlayerIndex = PLAYER_NAME_NEUTRAL;
+	HelpTextDataBase& textDatabase = HelpTextDataBase::HelpTextDatabase;
+	players[PLAYER_NAME_NEUTRAL].Init(
+		PLAYER_TYPE_NEUTRAL, PLAYER_NAME_NEUTRAL,
+		(textDatabase.count <= 0x1a6c ? textDatabase.array : &textDatabase.array[0x1a6c])->Text, PLAYER_NAME_NEUTRAL);
+	field_0x205a5c = 0;
+	while ((player = network.session->Players.FindNext(player)) != NULL)
+	{
+		++field_0x205a5c;
+		if (!g_game->IsMultiplayerGame())
+		{
+			player->TeamNumber = player->PlayerId + 1;
+			player->TeamMemberNumber = 1;
+		}
+		if (player->UserId.id == network.session->NetUser->id.id)
+		{
+			g_game->field_0x205a5a = (uint8_t)player->PlayerId;
+			if (player->TeamNumber == 0)
+			{
+				g_game->PlayerIndex = PLAYER_NAME_PLAYER_SEVEN;
+			}
+			else
+			{
+				g_game->PlayerIndex = (uint8_t)(player->TeamNumber - 1);
+			}
+		}
+	}
+	player = NULL;
+	std::set<LHPlayer*, LHPlayerPointer_less> orderedPlayers;
+	while ((player = network.session->Players.FindNext(player)) != NULL)
+	{
+		orderedPlayers.insert(player);
+	}
+	for (std::set<LHPlayer*, LHPlayerPointer_less>::iterator it = orderedPlayers.begin(); it != orderedPlayers.end();
+	     it++)
+	{
+		player = *it;
+		if (player->TeamNumber == 0)
+		{
+			RealPlayerMap[player->PlayerId] = PLAYER_NAME_PLAYER_SEVEN;
+			players[PLAYER_NAME_PLAYER_SEVEN].InitReal(player, PLAYER_NAME_PLAYER_SEVEN);
+		}
+		else
+		{
+			RealPlayerMap[player->PlayerId] = (uint8_t)(player->TeamNumber - 1);
+			// Only the argument and map entry truncate; indexing uses the full team number.
+			players[player->TeamNumber - 1].InitReal(player, (uint8_t)(player->TeamNumber - 1));
+		}
+	}
+	for (unsigned int i = 0; i < 7; ++i)
+	{
+		char playerName[200];
+		sprintf(playerName, "Player[%d]", i + 1);
+		if (players[i].GetNextInterfaceStatus(NULL) == NULL)
+		{
+			players[i].Init(PLAYER_TYPE_0, (uint8_t)i, CHAR2WCHAR(playerName), (uint8_t)i);
+		}
+	}
+}
+
+// BW1W120 00550780 BW1M119 010c8970
+void GGame::Dump()
+{
+	for (unsigned int i = 0; i < 8; ++i)
+	{
+		GetPlayer(i)->Dump();
+	}
+	map.Dump();
+	GameLists.Dump();
+}
+
+// BW1W120 005507d0
+void GGame::LoopThroughPlayers()
+{
+	for (GPlayer* player = GetNextPlayer(NULL); player != NULL; player = GetNextPlayer(player))
+	{
+	}
+}
+
 // BW1W120 005507f0 BW1M119 010c8560
 void GGame::Birthday()
 {
@@ -2544,6 +2260,24 @@ void GGame::Birthday()
 	{
 		player->Birthday();
 	}
+}
+
+// BW1W120 00550820
+int GGame::MyPlayerID(unsigned long user_id)
+{
+	// TODO: MSVC assigns the user ID and player counter to opposite registers in the original.
+	for (unsigned long i = 0; i < 8; ++i)
+	{
+		for (GInterfaceStatus* status = players[i].GetNextInterfaceStatus(NULL); status != NULL;
+		     status = players[i].GetNextInterfaceStatus(status))
+		{
+			if (status->GetInterface()->player != NULL && status->GetInterface()->player->UserId.id == user_id)
+			{
+				return status->GetInterface()->player->PlayerId;
+			}
+		}
+	}
+	return -1;
 }
 
 // BW1W120 005508a0 BW1M119 01066be0
@@ -2621,6 +2355,26 @@ GPlayer* GGame::GetPlayer(uint32_t player_index)
 	return &players[player_index];
 }
 
+// BW1W120 005509e0 BW1M119 0100e8b0
+GPlayer* GGame::GetPlayerFromReal(unsigned long player_id)
+{
+	if (player_id >= 8)
+	{
+		return NULL;
+	}
+	return &players[RealPlayerMap[player_id]];
+}
+
+// BW1W120 00550a10
+GInterface* GGame::GetPlayerInterfaceFromReal(unsigned long player_id)
+{
+	if (player_id >= 8)
+	{
+		return NULL;
+	}
+	return GetPlayerFromReal(player_id)->GetRealInterface(player_id);
+}
+
 // BW1W120 00550a60 BW1M119 inlined
 GPlayer* GGame::GetPlayer(PLAYER_NAME player_name)
 {
@@ -2632,6 +2386,133 @@ void GGame::SetPacket(PACKET_TYPE type)
 {
 	Packet.Type = (uint8_t)type;
 	SendPacketCompressed(type, SETPACKET_FUNCTION_NUMBER_TYPE_ONLY);
+}
+
+void GGame::FlushPacketBuffer()
+{
+	if (PacketBuffer[0] != 0)
+	{
+		network.SendPacket((GPacket*)PacketBuffer, PacketBufferLength);
+		PacketBufferLength = 1;
+		PacketBuffer[0] = 0;
+	}
+}
+
+// BW1W120 00552bb0 BW1M119 01172c70
+void GGame::ClearMap()
+{
+	LHResetFPU();
+	g_game->GameFlags |= GAME_FLAG_CLEARING_MAP;
+	GameFlags &= ~(GAME_FLAG_SHOW_VILLAGER_NAMES | GAME_FLAG_SHOW_VILLAGER_INFO);
+	GameOverStarted = false;
+	field_0x205a14 = 0;
+	SuperVillager* superVillager = SuperVillager::g_first;
+	while (superVillager != NULL)
+	{
+		SuperVillager* current = superVillager;
+		superVillager = superVillager->Next;
+		current->Release();
+	}
+	SuperVillager::g_first = NULL;
+	g_game->GetCamera()->ClearCameraStack();
+	MPFEData::Data.Reset();
+	InfluenceCircle::Reset();
+	// The coordinate setters are inlined here, unlike the constructor's SetToZero call.
+	LH3DMapCoords& startCoords = (LH3DMapCoords&)StartCameraCoords;
+	startCoords.x = 0;
+	startCoords.z = 0;
+	startCoords.altitude = 0.0f;
+	if (players[PlayerIndex].creature.Get() != NULL && players[PlayerIndex].GetLeaderInterfaceStatus() != NULL &&
+	    players[PlayerIndex].creature->RemoteCreature == false)
+	{
+		char mindPath[256];
+		char physiquePath[256];
+		sprintf(mindPath, ".\\Scripts\\CreatureMind\\%s",
+		        players[PlayerIndex].GetLeaderInterfaceStatus()->GetInterface()->player->UserFilename);
+		players[PlayerIndex].creature->mind->SaveMind(mindPath);
+		sprintf(physiquePath, ".\\Scripts\\CreatureMind\\Physique%s",
+		        players[PlayerIndex].GetLeaderInterfaceStatus()->GetInterface()->player->UserFilename);
+		players[PlayerIndex].creature->Save3D(physiquePath);
+	}
+	CameraExclusion::RemoveAll();
+	CameraExclusion::ResetExclusionFile(CAMERA_EXCLUSION_ID_DEFAULT);
+	ResetCameraModeNew3();
+	PhysicsObject::DeleteAll();
+	GInterface& playerInterface = *g_game->MyInterface();
+	playerInterface.hand.Get()->OnClearMap();
+	GGlobal::Global.audio->ReleaseAllThingMusicInfo();
+	GGlobal::Global.audio->Reset();
+	g_game->script->ValidateScriptVariables();
+	GGlobal::Global.audio->Reset();
+	GameLists.ClearMap();
+	if (g_game->temple != NULL)
+	{
+		ChallengeRoom::ChallengeClear();
+	}
+	for (int i = 0; i < 8; ++i)
+	{
+		players[i].OnEndOfClearMap();
+	}
+	Bookmark::ClearAll();
+	ScriptHighlight::OnClearMap();
+	FireFly::OnClearMap();
+	PSysGlobal::OnClearMap();
+	g_game->script->ValidateScriptVariables();
+	g_game->MyInterface()->Validate();
+	GLandscape::DrawListRebuildCount = 1;
+	GBaseOnly::ReleaseAll();
+	Dance* dance = g_game->GameLists.dances.head;
+	while (dance != NULL)
+	{
+		Dance* next = dance->next;
+		dance->ToBeDeleted(0);
+		dance = next;
+	}
+	GameThing::ProcessDeadList(1);
+	ResetState();
+	GameStats::ClearAll();
+	CameraHelp::EnabledFeatures = 0x1bf;
+	CameraHelp::AutoPitchHeight = 75.0f;
+	CameraHelp::AutoPitch = 0.5235988f;
+	HelpProfile::AccumulatedTime = 0;
+	for (int j = 0; j < GLandscape::DrawObjectCount; ++j)
+	{
+		GLandscape::DrawObjects[j] = NULL;
+	}
+	GLandscape::DrawObjectCount = 0;
+	GLandscape::DrawListRebuildCount = 1;
+	ResetBlockersForClearMap();
+	climate = NULL;
+	SoundMap->Reset();
+	terrain_map.Clear();
+	PhysicsObject::DeleteAll();
+	while (PowerSpinRunner::First != NULL)
+	{
+		delete PowerSpinRunner::First;
+	}
+	GameThing::ProcessDeadList(1);
+	Forest::OnClearMap();
+	Creature::OnClearMap();
+	GSpecialVillagerInfo::OnClearMap();
+	g_game->GameFlags &= ~GAME_FLAG_CLEARING_MAP;
+	GLandBalance::Init();
+	InitStaticsValues();
+	GameBlock::Clean();
+	ClearAllStuff();
+	LHResetFPU();
+}
+
+void GGame::LoadMap(char* map_path)
+{
+	if (map_path != NULL)
+	{
+		g_game->ClearMap();
+		LH3DLandscape::Release();
+		LH3DIsland::Release();
+		g_game->data.InteractDesire = 0.0f;
+		GSetup::LoadMapFeatures(map_path);
+		Town::AsssignTownFeature();
+	}
 }
 
 // BW1W120 00552f80 BW1M119 01039330
@@ -2658,6 +2539,60 @@ Town* GGame::FindTownWithID(unsigned long id)
 		}
 	}
 	return NULL;
+}
+
+// BW1W120 005537f0 BW1M119 01367db0
+void GGame::SetSpeed(float speed)
+{
+	// As in PauseGame, unsigned source conversion produces signed FIADD with the original MSVC.
+	network.Speed = speed;
+	if (!network.session->IsSinglePlayer())
+	{
+		network.session->SetIdlePeriod((unsigned long)(100.0f / network.Speed));
+	}
+	else
+	{
+		float newSpeed = network.Speed;
+		if (timer.SpeedUpFactor != 0.0f)
+		{
+			unsigned long ticks = GetTickCount() - timer.TickCount;
+			timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+			timer.TickCount = GetTickCount();
+			timer.SpeedUpFactor = newSpeed;
+		}
+		else
+		{
+			timer.SpeedUpFactor2 = newSpeed;
+		}
+		GGlobal::Global.debug.TimeSinceSpeedChange = 0;
+	}
+}
+
+// BW1W120 005538e0 BW1M119 010e8430
+void GGame::OnNewGame()
+{
+	char path[MAX_PATH];
+	path_creator.CheckAndRecreateSaveGamePaths();
+	path_creator.GetCurrentGamePath(path);
+	ChallengeRoom::CreateChallengeFiles(path);
+	path_creator.GetSaveGamePicturesPath(path);
+	SaveGameRoom::CreateSaveGameFiles(path);
+
+	bool started = false;
+	if (g_game->script != NULL && GScript::ScriptsLoaded && g_game->LandNumber == 1)
+	{
+		if (g_game->script->StartScript("LandControlAll"))
+		{
+			started = true;
+		}
+	}
+	DoYesNoSkipTutorialRequestersIfNecessary();
+	if (started && !(g_game->GameFlags & GAME_FLAG_PAUSED))
+	{
+		g_game->script->SetupScreenFadeTo(0, 0, 0, 0);
+		Temple::FadeLevel = 0.0f;
+		Temple::FadeTarget = 0.0f;
+	}
 }
 
 // BW1W120 00554090 BW1M119 01366f90
@@ -2944,6 +2879,65 @@ void GGame::ResolveLoad()
 	help_system->ResolveLoad();
 }
 
+// BW1W120 00555270 BW1M119 0151aec0
+void GGame::ForceNeedUpdateInfluence()
+{
+	field_0x250174 = 1;
+}
+
+// BW1W120 00555280 BW1M119 01091800
+void GGame::Update3DInfluence()
+{
+	if (field_0x250174 && data.GameTurn % 10 == 0)
+	{
+		InfluenceCircle::Reset();
+		GPlayer* player = NULL;
+		while ((player = GetNextPlayer(player)) != NULL)
+		{
+			long     playerNumber = GetRemapedPlayer(player->GetPlayerNumber());
+			float    influence;
+			Citadel* citadel = player->citadel.Get();
+			if (citadel != NULL)
+			{
+				influence = citadel->GetInfluence();
+				if (influence != 0.0f)
+				{
+					InfluenceCircle::Add(playerNumber, citadel->Pos.GetLHPoint(), influence);
+				}
+				citadel->LastAddedInfluence = influence;
+			}
+			for (Town* town = player->towns.head; town != NULL; town = town->next)
+			{
+				influence = town->influence;
+				if (influence != 0.0f)
+				{
+					InfluenceCircle::Add(playerNumber, town->Pos.GetLHPoint(), influence);
+				}
+				town->LastAddedInfluence = influence;
+			}
+		}
+		field_0x250174 = 0;
+	}
+}
+
+void GGame::QuitGameAndGoIntoNetworkLobby()
+{
+	GameMode = GAME_MODE_ONLINE;
+}
+
+// BW1W120 005557a0 BW1M119 010cc4c0
+void GGame::ResetState()
+{
+	data.Reset();
+	if (network.session != NULL)
+	{
+		network.session->EmptyEventQ();
+	}
+	GNetwork::ResetStateDebug();
+	fn_0054B180();
+	fn_0054B190();
+}
+
 // BW1W120 00555850 BW1M119 01053ef0
 GInterface* GGame::MyInterface()
 {
@@ -2954,4 +2948,10 @@ GInterface* GGame::MyInterface()
 GInterfaceStatus* GGame::MyInterfaceStatus()
 {
 	return MyInterface()->status;
+}
+
+void GGame::StartPlaygroundGame(char* path)
+{
+	script->Reset(1);
+	LoadMap(path);
 }

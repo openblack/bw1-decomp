@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <re_common.h> /* For ARRAY_SIZE */
+
 #include "BaseInfo.h"           /* For struct GBaseInfo */
 #include "TerrainMapTypeInfo.h" /* For struct TerrainMapTypeInfo */
 
@@ -19,7 +21,11 @@ public:
 	// Override methods
 
 	// BW1W120 0054bd80 BW1M119 0136d370
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = ARRAY_SIZE(type_info);
+		return type_info;
+	}
 
 	// Constructors
 

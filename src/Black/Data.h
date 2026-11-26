@@ -26,11 +26,6 @@ public:
 	float    InteractDesire;
 	uint32_t WorldPopulation;
 
-	// Override methods
-
-	// BW1W120 00510610 BW1M119 01419130
-	virtual ~GData() {}
-
 	// Constructors
 
 	// BW1W120 00510500 BW1M119 010c3f70

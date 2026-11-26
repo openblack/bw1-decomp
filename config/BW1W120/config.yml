@@ -686,6 +686,11 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
     addend: 0x410
+# CheckSquareFunction's row pointer starts at LandAvoid[z - 1], one row before the array.
+  - source: 0x0054B045
+    type: x86_abs32
+    target: '?LandAvoid@@3PAY0CAA@EA'
+    addend: -0x200
 # CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
   - source: 0x0054CE1E
     type: x86_abs32

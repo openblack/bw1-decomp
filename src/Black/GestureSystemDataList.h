@@ -20,7 +20,7 @@ public:
 	// Override methods
 
 	// BW1W120 0054bac0 BW1M119 013dd2b0
-	virtual ~GestureSystemDataList();
+	virtual ~GestureSystemDataList() { Reset(); }
 
 	// Constructors
 
