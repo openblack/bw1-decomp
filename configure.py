@@ -848,7 +848,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/Abode.cpp"),
             GameCodeObject(Matching, "Black/alexmfc.cpp"),
             GameCodeObject(Matching, "Black/Alignment.cpp"),
-            GameCodeObject(NonMatching, "Black/Animal.cpp"),
+            GameCodeObject(Matching, "Black/Animal.cpp"),
             GameCodeObject(Matching, "Black/AnimalAnimation.cpp"),
             GameCodeObject(Matching, "Black/AnimalCow.cpp"),
             GameCodeObject(Matching, "Black/AnimalDove.cpp"),

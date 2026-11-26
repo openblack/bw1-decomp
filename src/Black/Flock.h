@@ -40,7 +40,7 @@ class Flock : public Container
 {
 public:
 	Living*                          Shepherd;
-	Town*                            town;
+	LHPTR<Town>                      town;
 	LHPTR<CitadelHeart>              citadel_heart;
 	SLL<Living, &Living::FlockOrder> Members;
 	uint32_t                         TurnsSinceLeaderReturned;
@@ -98,7 +98,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	Flock() : Shepherd(NULL), town(NULL), SavedThing(NULL) { SetToZero(); }
+	Flock() : Shepherd(NULL), SavedThing(NULL) { SetToZero(); }
 	// BW1W120 0052f780 BW1M119 010eb000
 	Flock(const MapCoords& coords, const GFlockInfo* info, GPlayer* player, uint32_t magic);
 	// BW1W120 0052f950 BW1M119 010ead80

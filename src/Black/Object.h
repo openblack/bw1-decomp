@@ -227,9 +227,16 @@ public:
 	// BW1W120 00636b20 BW1M119 null
 	void Create3DObjectAtPos();
 	// BW1W120 00418c90 BW1M119 01056a80
-	virtual Object* GetMapChild(const MapCell& cell);
+	virtual Object* GetMapChild(const MapCell& cell)
+	{
+		if (MapChild.Get() != NULL && dynamic_cast<Object*>(MapChild.Get()) == NULL)
+		{
+			return NULL;
+		}
+		return MapChild.Get();
+	}
 	// BW1W120 00418cc0 BW1M119 01056500
-	virtual void SetMapChild(Object* child, MapCell* cell);
+	virtual void SetMapChild(Object* child, MapCell* cell) { MapChild.Set(child); }
 	// BW1W120 00636740 BW1M119 0104d730
 	virtual void InsertMapObject();
 	// BW1W120 006367a0 BW1M119 0104d690
@@ -325,7 +332,7 @@ public:
 	// BW1W120 006378e0 BW1M119 013dea00
 	virtual uint32_t DestroyedByEffect(GPlayer* player, float damage);
 	// BW1W120 00418fc0 BW1M119 010ad670
-	virtual uint32_t Process();
+	virtual uint32_t Process() { return true; }
 	// BW1W120 00402650 BW1M119 01370d40
 	virtual uint32_t ProcessBySpell(Spell* spell) { return 1; }
 	// BW1W120 00637ff0 BW1M119 013dd790
@@ -403,7 +410,7 @@ public:
 	// BW1W120 0063a8e0 BW1M119 013d8650
 	virtual float ApplyWaterSpell(SpellWater* spell);
 	// BW1W120 004192d0 BW1M119 010ad6e0
-	virtual bool32_t IsResourceStore(RESOURCE_TYPE type);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE type) { return false; }
 	// BW1W120 0063a930 BW1M119 013d85b0
 	virtual bool32_t DeleteObjectAndTakeResource(Object* object, GInterfaceStatus* status);
 	// BW1W120 0063aad0 BW1M119 013d82a0
@@ -450,9 +457,9 @@ public:
 	// BW1W120 006399d0 BW1M119 01003b10
 	virtual float GetTribalPower(TRIBE_TYPE tribe);
 	// BW1W120 00419330 BW1M119 010b0950
-	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status);
+	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status) { return false; }
 	// BW1W120 004193d0 BW1M119 010b09b0
-	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* status);
+	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* status) { return true; }
 	// BW1W120 004027d0 BW1M119 0133e3c0
 	virtual bool32_t NetworkUnfriendlyStartLockedSelect() { return true; }
 	// BW1W120 004027e0 BW1M119 011ada60
@@ -518,9 +525,9 @@ public:
 	// BW1W120 00402930 BW1M119 010a2b90
 	virtual uint32_t ApplyOnlyAfterReleased() { return 0; }
 	// BW1W120 004196b0 BW1M119 010a8ba0
-	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status);
+	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status) { return false; }
 	// BW1W120 004196c0 BW1M119 010a8bf0
-	virtual uint32_t InterfaceTap(GInterfaceStatus* status);
+	virtual uint32_t InterfaceTap(GInterfaceStatus* status) { return true; }
 	// BW1W120 00402940 BW1M119 010a2650
 	virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* status, Object* param_2) { return 0; }
 	// BW1W120 00402950 BW1M119 010a2c30

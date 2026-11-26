@@ -135,8 +135,6 @@ public:
 	virtual bool32_t Get3DSoundPos(LHPoint* pos);
 	// BW1W120 00570350 BW1M119 01005470
 	virtual void UseFootpathIfNecessary(Living* living, const MapCoords& coords, uint8_t state);
-	// BW1W120 004178f0 BW1M119 011c6dc0
-	virtual char* GetDebugText();
 	// BW1W120 005704a0 BW1M119 0149aaf0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005703f0 BW1M119 013ec380
@@ -712,6 +710,8 @@ public:
 	virtual MapCoords GetSpellCastPos();
 	// BW1W120 004024e0 BW1M119 0151acf0
 	virtual void CleanUpBeforeReset() {}
+	// BW1W120 004178f0 BW1M119 011c6dc0
+	virtual char* GetDebugText() { return "GameThingWithPos:Unknown"; }
 
 	// Static methods
 
