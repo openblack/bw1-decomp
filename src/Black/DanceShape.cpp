@@ -4,7 +4,7 @@
 #include <stdio.h> /* For sprintf */
 
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For TWO_PI */
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
 
 #include "Data.h" /* For class GData */
 #include "Rand.h" /* For class GRand */

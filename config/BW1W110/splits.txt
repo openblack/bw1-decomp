@@ -3196,9 +3196,10 @@ lib/libcpmt/xstrcoll.obj:
 
 Lionhead/LHFile/ver3.0/LHOSFile.cpp:
 	.text       start:0x007AC470 end:0x007AD150
-	.text$x     start:0x0089776C end:0x008977D0 align:4
-	.rdata      start:0x0098F774 end:0x0098F780
-	.data       start:0x00C1A828 end:0x00C1A830
+	.text$x     start:0x00897770 end:0x008977D0 align:4
+	.rdata      start:0x0098F774 end:0x0098F77C
+	.xdata$x    start:0x009AE0E0 end:0x009AE158 align:4
+	.data       start:0x00C1A828 end:0x00C1A82F
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x007AD150 end:0x007AE0B0

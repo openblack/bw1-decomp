@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
 
 struct Config
 {

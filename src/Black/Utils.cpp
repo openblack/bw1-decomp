@@ -13,7 +13,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMath.h>
 #include <Lionhead/LH3DLib/development/LH3DMesh.h> /* For struct LH3DMesh */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>          /* For LHSys::TheSystem */
 
 #include "MapCoords.h"

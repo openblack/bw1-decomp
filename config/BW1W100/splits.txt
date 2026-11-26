@@ -3011,7 +3011,7 @@ lib/libcpmt/wiostrea.obj:
 	.text       start:0x0072A765 end:0x0072B5D8 align:1
 	.text$x     start:0x007E9734 end:0x007E9888 align:4
 	.rdata      start:0x008D55F4 end:0x008D568C
-	.data       start:0x00B4DDA4 end:0x00B4DEE0
+	.data       start:0x00B4DDA4 end:0x00B4DEDC
 
 lib/libcpmt/_tolower.obj:
 	.text       start:0x0072B5D8 end:0x0072B7E7 align:1
@@ -3028,9 +3028,10 @@ lib/libcpmt/fiopen.obj:
 
 Lionhead/LHFile/ver3.0/LHOSFile.cpp:
 	.text       start:0x0072BC10 end:0x0072C8A0 align:16
-	.text$x     start:0x007E9888 end:0x007E98F0 align:4
-	.rdata      start:0x008D5694 end:0x008D56A0
-	.data       start:0x00B4DEE0 end:0x00B4DEE8
+	.text$x     start:0x007E9890 end:0x007E98F0 align:4
+	.rdata      start:0x008D5694 end:0x008D569C
+	.xdata$x    start:0x008EEF28 end:0x008EEFA0 align:4
+	.data       start:0x00B4DEDC end:0x00B4DEE3
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x0072C8A0 end:0x0072D460

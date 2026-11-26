@@ -130,6 +130,14 @@ LHAudio/LHFile/ver3.0/LHFile.cpp:
 	.data       start:0x100293D0 end:0x10029F1B
 	.bss        start:0x10042780 end:0x10042788
 
+LHAudio/LHFile/ver3.0/LHOSFile.cpp:
+	.text       start:0x10012E60 end:0x100135C0
+	.text$x     start:0x1001F9A0 end:0x1001F9B5
+	.rdata      start:0x100204AC end:0x100204BC
+	.xdata$x    start:0x10021060 end:0x10021088
+	.data       start:0x10029F1C end:0x1002A043
+	.bss        start:0x10042788 end:0x1004278C
+
 LHAudio/lib/libcmt64/delete.obj:
 	.text       start:0x10013610 end:0x1001361B align:1
 
@@ -639,10 +647,6 @@ LHAudio/lib/libcmt64/mbschr.obj:
 
 LHAudio/lib/libcmt64/strdup.obj:
 	.text       start:0x1001F580 end:0x1001F5AB align:1
-
-LHAudio/LHFile/ver3.0/LHOSFile.cpp:
-	.text$x     start:0x1001F9A0 end:0x1001F9B5
-	.xdata$x    start:0x10021060 end:0x10021088
 
 LHAudio/lib/libcmt64/constpow.obj:
 	.data       start:0x1002E3F8 end:0x1002E6B4
