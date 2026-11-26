@@ -697,9 +697,6 @@ block_relocations:
   - source: 0x0087084B
   - source: 0x00871378
 add_relocations:
-  - source: 0x00A1D26C
-    type: x86_abs32
-    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
 # GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.
   - source: 0x00405AFC
     type: x86_abs32
@@ -2116,6 +2113,10 @@ add_relocations:
   - source: 0x008AB711
     type: x86_abs32
     target: '$T99795'
+# WorshipSpellIcon vtable entries.
+  - source: 0x00A1D26C
+    type: x86_abs32
+    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
 # The catch handler in the istream exception table is inside operator>>(unsigned long&).
   - source: 0x00A3C624
     type: x86_abs32

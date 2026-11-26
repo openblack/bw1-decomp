@@ -116,1044 +116,6 @@ block_relocations:
     end: 0x00B59D34
 
 add_relocations:
-  - source: 0x008D3B18
-    type: x86_abs32
-    target: '?Serialise@Base@@UAEXAAVArchive@@@Z'
-  - source: 0x008D3B1C
-    type: x86_abs32
-    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
-  - source: 0x008D3B2C
-    type: x86_abs32
-    target: '?CleanUpForSerialisation@Base@@UAEXXZ'
-  - source: 0x008D3B30
-    type: x86_abs32
-    target: '?Dump@Base@@UAEXXZ'
-  - source: 0x008D3B38
-    type: x86_abs32
-    target: '?SetPlayer@SpellIcon@@UAEXPAVGPlayer@@@Z'
-  - source: 0x008D3B40
-    type: x86_abs32
-    target: '?RemoveDance@GameThing@@UAEXXZ'
-  - source: 0x008D3B48
-    type: x86_abs32
-    target: '?IsCreature@GameThing@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3B4C
-    type: x86_abs32
-    target: '?IsCreature@GameThing@@UAEHXZ'
-  - source: 0x008D3B50
-    type: x86_abs32
-    target: '?IsCreatureNotTooNear@GameThing@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3B5C
-    type: x86_abs32
-    target: '?GetComputerSeen@GameThing@@UAEPAVGComputerSeen@@XZ'
-  - source: 0x008D3B60
-    type: x86_abs32
-    target: '?GetTown@MultiMapFixed@@UAEPAVTown@@XZ'
-  - source: 0x008D3B68
-    type: x86_abs32
-    target: '?SetVillagerActivity@GameThing@@UAEIPAVVillager@@@Z'
-  - source: 0x008D3B6C
-    type: x86_abs32
-    target: '?UpdateVillagerActivityEffect@GameThing@@UAEIPAVVillager@@@Z'
-  - source: 0x008D3B78
-    type: x86_abs32
-    target: '?GetRadius@Object@@UAEMXZ'
-  - source: 0x008D3B80
-    type: x86_abs32
-    target: '?GetPlayerWhoLastPickedMeUp@GameThing@@UAEPAVGPlayer@@XZ'
-  - source: 0x008D3B84
-    type: x86_abs32
-    target: '?GetPlayerWhoLastDroppedMe@GameThing@@UAEPAVGPlayer@@XZ'
-  - source: 0x008D3B88
-    type: x86_abs32
-    target: '?IsFootpathLink@MultiMapFixed@@UAEHXZ'
-  - source: 0x008D3B90
-    type: x86_abs32
-    target: '?AddFootpathLink@GameThing@@UAEIPAVGFootpath@@@Z'
-  - source: 0x008D3B94
-    type: x86_abs32
-    target: '?GetNearestPathTo@MultiMapFixed@@UAEIABUMapCoords@@MH@Z'
-  - source: 0x008D3B98
-    type: x86_abs32
-    target: '?UseFootpathIfNecessary@MultiMapFixed@@UAEXPAVLiving@@ABUMapCoords@@E@Z'
-  - source: 0x008D3BA8
-    type: x86_abs32
-    target: '?JustRemoveResource@GameThing@@UAEIW4RESOURCE_TYPE@@IPA_N@Z'
-  - source: 0x008D3BAC
-    type: x86_abs32
-    target: '?JustGetResource@GameThing@@UAEIW4RESOURCE_TYPE@@IPA_N@Z'
-  - source: 0x008D3BBC
-    type: x86_abs32
-    target: '?CastCreature@GameThing@@UAEPAVCreature@@XZ'
-  - source: 0x008D3BC0
-    type: x86_abs32
-    target: '?CastPlayer@GameThing@@UAEPAVGPlayer@@XZ'
-  - source: 0x008D3BC4
-    type: x86_abs32
-    target: '?CastOneOffSpellSeed@GameThing@@UAEPAVOneOffSpellSeed@@XZ'
-  - source: 0x008D3BC8
-    type: x86_abs32
-    target: '?CastAbode@GameThing@@UAEPAVAbode@@XZ'
-  - source: 0x008D3BCC
-    type: x86_abs32
-    target: '?CastMultiMapFixed@MultiMapFixed@@UAEPAV1@XZ'
-  - source: 0x008D3BD0
-    type: x86_abs32
-    target: '?CastSpellIcon@SpellIcon@@UAEPAV1@XZ'
-  - source: 0x008D3BD4
-    type: x86_abs32
-    target: '?CastTree@GameThing@@UAEPAVTree@@XZ'
-  - source: 0x008D3BD8
-    type: x86_abs32
-    target: '?IsDeletedOnNewMap@GameThing@@UAEHXZ'
-  - source: 0x008D3BF4
-    type: x86_abs32
-    target: '?GetSampleForAttack@GameThing@@UAEIXZ'
-  - source: 0x008D3BF8
-    type: x86_abs32
-    target: '?GetGuidanceResourceType@GameThing@@UAEIXZ'
-  - source: 0x008D3BFC
-    type: x86_abs32
-    target: '?GetShowNeedsPos@GameThing@@UAEIIPAUMapCoords@@@Z'
-  - source: 0x008D3C18
-    type: x86_abs32
-    target: '?GetPos@GameThingWithPos@@UAE?AUMapCoords@@XZ'
-  - source: 0x008D3C24
-    type: x86_abs32
-    target: '?GetCreatureBeliefType@SpellIcon@@UAEIXZ'
-  - source: 0x008D3C28
-    type: x86_abs32
-    target: '?GetCreatureBeliefListType@GameThingWithPos@@UAEIXZ'
-  - source: 0x008D3C2C
-    type: x86_abs32
-    target: '?GetCitadel@GameThingWithPos@@UAEPAVCitadel@@XZ'
-  - source: 0x008D3C30
-    type: x86_abs32
-    target: '?GetOrigin@GameThingWithPos@@UAEIXZ'
-  - source: 0x008D3C44
-    type: x86_abs32
-    target: '?GetPSysPower@GameThingWithPos@@UBEMXZ'
-  - source: 0x008D3C48
-    type: x86_abs32
-    target: '?GetSpeedInMetres@GameThingWithPos@@UBEMXZ'
-  - source: 0x008D3C4C
-    type: x86_abs32
-    target: '?SetSpeedInMetres@GameThingWithPos@@UAEXMH@Z'
-  - source: 0x008D3C50
-    type: x86_abs32
-    target: '?GetRunningSpeedInMetres@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D3C58
-    type: x86_abs32
-    target: '?GetDefaultSpeedInMetres@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D3C5C
-    type: x86_abs32
-    target: '?SetHeight@GameThingWithPos@@UAEXM@Z'
-  - source: 0x008D3C60
-    type: x86_abs32
-    target: '?SetMaxHeight@GameThingWithPos@@UAEXM@Z'
-  - source: 0x008D3C64
-    type: x86_abs32
-    target: '?GetMaxHeight@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D3C6C
-    type: x86_abs32
-    target: '?GetSpeedInMetresPerSecond@GameThingWithPos@@UBEMXZ'
-  - source: 0x008D3C70
-    type: x86_abs32
-    target: '?SetSpeedInMetresPerSecond@GameThingWithPos@@UAEXMH@Z'
-  - source: 0x008D3C74
-    type: x86_abs32
-    target: '?GetRunningSpeedInMetresPerSecond@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D3C78
-    type: x86_abs32
-    target: '?GetDefaultSpeedInMetresPerSecond@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D3C7C
-    type: x86_abs32
-    target: '?IsAnimate@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3C88
-    type: x86_abs32
-    target: '?GetInteractPos@GameThingWithPos@@UAE?AUMapCoords@@XZ'
-  - source: 0x008D3C90
-    type: x86_abs32
-    target: '?IsObjectInMap@MultiMapFixed@@UAEHXZ'
-  - source: 0x008D3C9C
-    type: x86_abs32
-    target: '?GetOverwritePickUpToolTip@GameThingWithPos@@UAEIXZ'
-  - source: 0x008D3CA0
-    type: x86_abs32
-    target: '?IsStompable@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3CAC
-    type: x86_abs32
-    target: '?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ'
-  - source: 0x008D3CB0
-    type: x86_abs32
-    target: '?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ'
-  - source: 0x008D3CB8
-    type: x86_abs32
-    target: '?IsCastShadowAtNight@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3CC0
-    type: x86_abs32
-    target: '?GetImpressiveType@GameThingWithPos@@UAE?AW4IMPRESSIVE_TYPE@@XZ'
-  - source: 0x008D3CC4
-    type: x86_abs32
-    target: '?GetImpressiveIntensity@GameThingWithPos@@UAEMW4IMPRESSIVE_TYPE@@@Z'
-  - source: 0x008D3CCC
-    type: x86_abs32
-    target: '?GetUpdateOfBoredomValue@Object@@UAEMPAVReaction@@PAVGameThingWithPos@@@Z'
-  - source: 0x008D3CD0
-    type: x86_abs32
-    target: '?IsTown@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3CD4
-    type: x86_abs32
-    target: '?IsTown@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3CD8
-    type: x86_abs32
-    target: '?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3CDC
-    type: x86_abs32
-    target: '?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3CE0
-    type: x86_abs32
-    target: '?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3CE4
-    type: x86_abs32
-    target: '?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3CE8
-    type: x86_abs32
-    target: '?TrueFunction@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3CEC
-    type: x86_abs32
-    target: '?FalseFunction@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3CF0
-    type: x86_abs32
-    target: '?IsNotLiving@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3CF4
-    type: x86_abs32
-    target: '?IsSuitableForCreatureActivity@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3CF8
-    type: x86_abs32
-    target: '?IsTownCentre@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3CFC
-    type: x86_abs32
-    target: '?IsTotemStatue@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D00
-    type: x86_abs32
-    target: '?IsTownDesireFlag@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D08
-    type: x86_abs32
-    target: '?IsRock@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D0C
-    type: x86_abs32
-    target: '?IsSpellDispenser@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D10
-    type: x86_abs32
-    target: '?IsMist@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D14
-    type: x86_abs32
-    target: '?IsQueryIcon@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D18
-    type: x86_abs32
-    target: '?IsStreetLight@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D1C
-    type: x86_abs32
-    target: '?IsStreetLantern@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D20
-    type: x86_abs32
-    target: '?IsAbode@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D24
-    type: x86_abs32
-    target: '?IsField@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D28
-    type: x86_abs32
-    target: '?IsField@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D30
-    type: x86_abs32
-    target: '?IsMagicFireBall@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D38
-    type: x86_abs32
-    target: '?IsCitadelHeart@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3D40
-    type: x86_abs32
-    target: '?CanBeHealedByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D44
-    type: x86_abs32
-    target: '?CanBeEatenByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D50
-    type: x86_abs32
-    target: '?CanBeFrighteningToCreature@SpellIcon@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D54
-    type: x86_abs32
-    target: '?CanBeHelpedByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D5C
-    type: x86_abs32
-    target: '?CanBeImpressedByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D60
-    type: x86_abs32
-    target: '?CanBeInspectedByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D64
-    type: x86_abs32
-    target: '?CanBePoodUponByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D68
-    type: x86_abs32
-    target: '?CanBeBefriendedByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D6C
-    type: x86_abs32
-    target: '?CanBeSleptNextToByCreature@Fixed@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D70
-    type: x86_abs32
-    target: '?CanBePickedUpByCreature@Fixed@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D74
-    type: x86_abs32
-    target: '?CanBeStrokedByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D78
-    type: x86_abs32
-    target: '?CanBeKissedByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D80
-    type: x86_abs32
-    target: '?CanBeStompedOnByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D84
-    type: x86_abs32
-    target: '?CanBeThrownByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D88
-    type: x86_abs32
-    target: '?CanBeGivenToVillager@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D8C
-    type: x86_abs32
-    target: '?CanBePutInAStoragePit@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D90
-    type: x86_abs32
-    target: '?CanBeDestroyedByStoning@Fixed@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D98
-    type: x86_abs32
-    target: '?CanBeExaminedByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3D9C
-    type: x86_abs32
-    target: '?CanBeFoughtByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DA0
-    type: x86_abs32
-    target: '?CanReceiveGifts@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DA4
-    type: x86_abs32
-    target: '?CanActAsAContainer@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DB8
-    type: x86_abs32
-    target: '?CanBeUsedForBuilding@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DBC
-    type: x86_abs32
-    target: '?IsMushroom@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DC0
-    type: x86_abs32
-    target: '?CanBeUsedForRepair@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DC4
-    type: x86_abs32
-    target: '?CanBeGivenToTown@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DC8
-    type: x86_abs32
-    target: '?CanBeUsedToHoldWater@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DD0
-    type: x86_abs32
-    target: '?CanBePutInWoodPile@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DD4
-    type: x86_abs32
-    target: '?CanHaveMagicFoodCastOnMe@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DD8
-    type: x86_abs32
-    target: '?CanHaveMagicWoodCastOnMe@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DE0
-    type: x86_abs32
-    target: '?IsVillager@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DE4
-    type: x86_abs32
-    target: '?IsVillagerFarFromHome@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DE8
-    type: x86_abs32
-    target: '?IsVillagerInTownWithoutManyBreeders@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DEC
-    type: x86_abs32
-    target: '?IsVillagerNotWorshipping@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DF0
-    type: x86_abs32
-    target: '?IsVillagerBelongingToOtherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DF4
-    type: x86_abs32
-    target: '?IsCow@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DF8
-    type: x86_abs32
-    target: '?CanBePoodOn@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3DFC
-    type: x86_abs32
-    target: '?IsVillagerWhoHasNotBeenImpressedRecently@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E00
-    type: x86_abs32
-    target: '?IsVillagerWhoHasNotBeenDancedWithRecently@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E04
-    type: x86_abs32
-    target: '?DoesVillagerBelongToATownWhichIsAlreadyImpressed@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E08
-    type: x86_abs32
-    target: '?DoesTotemBelongToATownWhichIsVeryImpressedIndeed@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E0C
-    type: x86_abs32
-    target: '?IsDominantCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E10
-    type: x86_abs32
-    target: '?CanBeDancedWith@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E14
-    type: x86_abs32
-    target: '?IsAggressive@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E18
-    type: x86_abs32
-    target: '?IsStoragePit@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E1C
-    type: x86_abs32
-    target: '?IsWorshipSite@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3E20
-    type: x86_abs32
-    target: '?IsWorshipSite@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E28
-    type: x86_abs32
-    target: '?IsWorkshop@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3E2C
-    type: x86_abs32
-    target: '?IsWorkshop@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E34
-    type: x86_abs32
-    target: '?IsStoragePitWithFoodInIt@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E38
-    type: x86_abs32
-    target: '?IsFieldWhichNeedsWatering@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E3C
-    type: x86_abs32
-    target: '?IsFieldWithFoodInIt@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E40
-    type: x86_abs32
-    target: '?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E44
-    type: x86_abs32
-    target: '?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E48
-    type: x86_abs32
-    target: '?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E4C
-    type: x86_abs32
-    target: '?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E50
-    type: x86_abs32
-    target: '?IsTree@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3E54
-    type: x86_abs32
-    target: '?IsTree@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E58
-    type: x86_abs32
-    target: '?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E5C
-    type: x86_abs32
-    target: '?IsTreeBigEnoughForCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E60
-    type: x86_abs32
-    target: '?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E64
-    type: x86_abs32
-    target: '?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E68
-    type: x86_abs32
-    target: '?IsDoingSomethingInteresting@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E74
-    type: x86_abs32
-    target: '?IsCitadelPart@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3E78
-    type: x86_abs32
-    target: '?IsCitadelPart@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E7C
-    type: x86_abs32
-    target: '?IsPlayingFootball@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E80
-    type: x86_abs32
-    target: '?IsPlayingFootballAndMySideHasJustScored@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E84
-    type: x86_abs32
-    target: '?IsPlayingFootballAndOtherSideHasJustScored@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E8C
-    type: x86_abs32
-    target: '?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E90
-    type: x86_abs32
-    target: '?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E94
-    type: x86_abs32
-    target: '?IsOneOffSpellAggressive@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E98
-    type: x86_abs32
-    target: '?IsOneOffSpellCompassionate@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3E9C
-    type: x86_abs32
-    target: '?IsOneOffSpellPlayful@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EA0
-    type: x86_abs32
-    target: '?IsOneOffSpellToRestoreHealth@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EA4
-    type: x86_abs32
-    target: '?CanBeKickedByCreature@Object@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EA8
-    type: x86_abs32
-    target: '?CanBeStolenByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EB0
-    type: x86_abs32
-    target: '?IsStealableSpell@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EB4
-    type: x86_abs32
-    target: '?IsStealableScaffold@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EB8
-    type: x86_abs32
-    target: '?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EBC
-    type: x86_abs32
-    target: '?IsTotemWithStealableSpell@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EC0
-    type: x86_abs32
-    target: '?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EC4
-    type: x86_abs32
-    target: '?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EC8
-    type: x86_abs32
-    target: '?IsToyAwayFromHome@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3ECC
-    type: x86_abs32
-    target: '?IsToy@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3ED0
-    type: x86_abs32
-    target: '?IsToyBall@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3ED4
-    type: x86_abs32
-    target: '?IsToyDie@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3ED8
-    type: x86_abs32
-    target: '?IsToyCuddly@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EDC
-    type: x86_abs32
-    target: '?IsLiving@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3EE4
-    type: x86_abs32
-    target: '?IsFence@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3EE8
-    type: x86_abs32
-    target: '?IsSpellIcon@SpellIcon@@UAEHXZ'
-  - source: 0x008D3EF0
-    type: x86_abs32
-    target: '?CanBeUsedForThrowingDamageByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EF4
-    type: x86_abs32
-    target: '?IsCreatureWhoSeemsFriendly@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3EF8
-    type: x86_abs32
-    target: '?CanBeThrownInTheSeaPlayfully@GameThingWithPos@@UAEHPAVCreature@@@Z'
-  - source: 0x008D3F04
-    type: x86_abs32
-    target: '?IsFlock@GameThingWithPos@@UBEHXZ'
-  - source: 0x008D3F08
-    type: x86_abs32
-    target: '?IsDance@GameThingWithPos@@UBEHXZ'
-  - source: 0x008D3F0C
-    type: x86_abs32
-    target: '?IsReward@GameThingWithPos@@UBEHXZ'
-  - source: 0x008D3F10
-    type: x86_abs32
-    target: '?IsScriptContainer@GameThingWithPos@@UBEHXZ'
-  - source: 0x008D3F14
-    type: x86_abs32
-    target: '?IsWeather@GameThingWithPos@@UBEHXZ'
-  - source: 0x008D3F18
-    type: x86_abs32
-    target: '?IsSpell@GameThingWithPos@@UBEHXZ'
-  - source: 0x008D3F1C
-    type: x86_abs32
-    target: '?IsDeletedWhenReleasedFromScript@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F20
-    type: x86_abs32
-    target: '?IsMobileWallHug@GameThingWithPos@@UBEHXZ'
-  - source: 0x008D3F24
-    type: x86_abs32
-    target: '?IsActive@GameThingWithPos@@UBEHXZ'
-  - source: 0x008D3F28
-    type: x86_abs32
-    target: '?IsObjectTurningTooFastForCameraToFollowSmoothly@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F30
-    type: x86_abs32
-    target: '?AttitudeToCreatureEating@GameThingWithPos@@UAEIXZ'
-  - source: 0x008D3F38
-    type: x86_abs32
-    target: '?CalculateDesireForFood@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D3F3C
-    type: x86_abs32
-    target: '?CalculateDesireForRest@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D3F40
-    type: x86_abs32
-    target: '?CalculatePeopleHidingIndicator@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D3F48
-    type: x86_abs32
-    target: '?IsReadyForNewScriptAction@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F4C
-    type: x86_abs32
-    target: '?ForDrawFXGetNumVertices@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F5C
-    type: x86_abs32
-    target: '?GetDeathReason@GameThingWithPos@@UAE?AW4DEATH_REASON@@XZ'
-  - source: 0x008D3F64
-    type: x86_abs32
-    target: '?IsMaleVillager@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F68
-    type: x86_abs32
-    target: '?IsFemaleVillager@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F6C
-    type: x86_abs32
-    target: '?IsAnimal@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F70
-    type: x86_abs32
-    target: '?IsAChild@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F74
-    type: x86_abs32
-    target: '?IsHouse@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F78
-    type: x86_abs32
-    target: '?IsObject@Object@@UBEHXZ'
-  - source: 0x008D3F7C
-    type: x86_abs32
-    target: '?IsFootball@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F80
-    type: x86_abs32
-    target: '?IsCitadel@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F84
-    type: x86_abs32
-    target: '?IsForest@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F88
-    type: x86_abs32
-    target: '?IsMobileObject@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F8C
-    type: x86_abs32
-    target: '?IsMobileStatic@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F90
-    type: x86_abs32
-    target: '?IsAnyKindOfTree@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F94
-    type: x86_abs32
-    target: '?IsDeadTree@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F98
-    type: x86_abs32
-    target: '?IsPileFood@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3F9C
-    type: x86_abs32
-    target: '?IsFeature@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FA0
-    type: x86_abs32
-    target: '?IsScriptMarker@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FA4
-    type: x86_abs32
-    target: '?IsScriptHighlight@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FA8
-    type: x86_abs32
-    target: '?IsWonder@MultiMapFixed@@UAEHXZ'
-  - source: 0x008D3FAC
-    type: x86_abs32
-    target: '?IsInfluenceRing@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FB0
-    type: x86_abs32
-    target: '?IsPuzzleGame@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FB4
-    type: x86_abs32
-    target: '?IsScaffold@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FB8
-    type: x86_abs32
-    target: '?IsSkeleton@GameThingWithPos@@UBEHXZ'
-  - source: 0x008D3FBC
-    type: x86_abs32
-    target: '?IsPoisoned@GameThingWithPos@@UAE_NXZ'
-  - source: 0x008D3FC0
-    type: x86_abs32
-    target: '?IsSpeedUp@GameThingWithPos@@UAE_NXZ'
-  - source: 0x008D3FC4
-    type: x86_abs32
-    target: '?IsParticleContainer@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FC8
-    type: x86_abs32
-    target: '?IsSacrificeAltar@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FCC
-    type: x86_abs32
-    target: '?IsPot@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FD0
-    type: x86_abs32
-    target: '?IsComputerPlayer@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D3FD8
-    type: x86_abs32
-    target: '?SetSkeleton@GameThingWithPos@@UAEXH@Z'
-  - source: 0x008D3FDC
-    type: x86_abs32
-    target: '?IsSpellSeed@GameThingWithPos@@UAEPAVSpellSeed@@XZ'
-  - source: 0x008D3FE0
-    type: x86_abs32
-    target: '?IsSpellShield@GameThingWithPos@@UAEPAVSpellShield@@XZ'
-  - source: 0x008D3FE4
-    type: x86_abs32
-    target: '?IsPileResource@GameThingWithPos@@UAEPAVPileResource@@XZ'
-  - source: 0x008D3FE8
-    type: x86_abs32
-    target: '?IsScriptTimer@GameThingWithPos@@UAEHXZ'
-  - source: 0x008D4000
-    type: x86_abs32
-    target: '?GetScriptObjectType@GameThingWithPos@@UAE?AW4SCRIPT_OBJECT_TYPE@@XZ'
-  - source: 0x008D4004
-    type: x86_abs32
-    target: '?GetFacingDirection@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D4008
-    type: x86_abs32
-    target: '?SetAffectedByWind@GameThingWithPos@@UAEXH@Z'
-  - source: 0x008D400C
-    type: x86_abs32
-    target: '?GetReactionPower@GameThingWithPos@@UAEMXZ'
-  - source: 0x008D4014
-    type: x86_abs32
-    target: '?CleanUpBeforeReset@GameThingWithPos@@UAEXXZ'
-  - source: 0x008D401C
-    type: x86_abs32
-    target: '?GetXAngle@Object@@UAEMXZ'
-  - source: 0x008D4024
-    type: x86_abs32
-    target: '?GetZAngle@Object@@UAEMXZ'
-  - source: 0x008D4040
-    type: x86_abs32
-    target: '?UpdateFrom3DPosition@Object@@UAEXXZ'
-  - source: 0x008D4044
-    type: x86_abs32
-    target: '?MoveAlongPath@Object@@UAEHXZ'
-  - source: 0x008D4048
-    type: x86_abs32
-    target: '?IsReachable@Object@@UAEHXZ'
-  - source: 0x008D404C
-    type: x86_abs32
-    target: '?BlocksTownClearArea@Object@@UBEHXZ'
-  - source: 0x008D4098
-    type: x86_abs32
-    target: '?GetPSysFireMaxFlames@Object@@UAEIXZ'
-  - source: 0x008D409C
-    type: x86_abs32
-    target: '?GetSpotEffectPower@Object@@UAEMXZ'
-  - source: 0x008D40A4
-    type: x86_abs32
-    target: '?GetHoldType@Object@@UAE?AW4HOLD_TYPE@@XZ'
-  - source: 0x008D40AC
-    type: x86_abs32
-    target: '?GetHoldLoweringMultiplier@Object@@UAEMXZ'
-  - source: 0x008D40B0
-    type: x86_abs32
-    target: '?GetHoldYRotate@Object@@UAEMXZ'
-  - source: 0x008D40B4
-    type: x86_abs32
-    target: '?HandShouldFeelWithMeshIntersect@Object@@UAEHXZ'
-  - source: 0x008D40B8
-    type: x86_abs32
-    target: '?SetSpecularColor@SpellIcon@@UAEXK@Z'
-  - source: 0x008D40BC
-    type: x86_abs32
-    target: '?GetSpecularColor@SpellIcon@@UAEKXZ'
-  - source: 0x008D40C0
-    type: x86_abs32
-    target: '?SetBeliefSprite@Object@@UAEXPAULH3DSprite@@@Z'
-  - source: 0x008D40C4
-    type: x86_abs32
-    target: '?GetBeliefSprite@Object@@UAEPAULH3DSprite@@XZ'
-  - source: 0x008D40F8
-    type: x86_abs32
-    target: '?ScaffoldMoved@Object@@UAEXPAVScaffold@@@Z'
-  - source: 0x008D4100
-    type: x86_abs32
-    target: '?GetFireGPHXDrawn@Object@@UAEXPA_N000@Z'
-  - source: 0x008D410C
-    type: x86_abs32
-    target: '?GetDefaultFireRadius@Object@@UAEMXZ'
-  - source: 0x008D4118
-    type: x86_abs32
-    target: '?ProcessBySpell@Object@@UAEIPAVSpell@@@Z'
-  - source: 0x008D4120
-    type: x86_abs32
-    target: '?GetMesh@SpellIcon@@UBE?AW4MESH_LIST@@XZ'
-  - source: 0x008D4134
-    type: x86_abs32
-    target: '?GetDrawRegion@Object@@UAEXPAULHRegion@@@Z'
-  - source: 0x008D4138
-    type: x86_abs32
-    target: '?ProcessState@Object@@UAEIXZ'
-  - source: 0x008D413C
-    type: x86_abs32
-    target: '?GetProjectileSpeed@Object@@UAEMXZ'
-  - source: 0x008D4140
-    type: x86_abs32
-    target: '?CanBePickedUp@Object@@UAEHXZ'
-  - source: 0x008D4144
-    type: x86_abs32
-    target: '?CanBeCrushed@Fixed@@UAEHXZ'
-  - source: 0x008D4188
-    type: x86_abs32
-    target: '?IsSpellSeedReturnPoint@SpellIcon@@UBEHXZ'
-  - source: 0x008D418C
-    type: x86_abs32
-    target: '?IsABeliever@Object@@UAEHXZ'
-  - source: 0x008D4190
-    type: x86_abs32
-    target: '?AsMultiMapFixed@MultiMapFixed@@UAEPAV1@XZ'
-  - source: 0x008D41AC
-    type: x86_abs32
-    target: '?GetDefaultResource@Object@@UAEHXZ'
-  - source: 0x008D41E0
-    type: x86_abs32
-    target: '?GetTribalPower@Object@@UAEMW4TRIBE_TYPE@@@Z'
-  - source: 0x008D41E4
-    type: x86_abs32
-    target: '?ValidForLockedSelectProcess@Fixed@@UAEHPAVGInterfaceStatus@@@Z'
-  - source: 0x008D41E8
-    type: x86_abs32
-    target: '?NetworkFriendlyStartLockedSelect@Fixed@@UAEHPAVGInterfaceStatus@@@Z'
-  - source: 0x008D41F0
-    type: x86_abs32
-    target: '?IsReadyForNetworkUnfriendlyLockedSelect@Object@@UAEHXZ'
-  - source: 0x008D41F8
-    type: x86_abs32
-    target: '?GetReadyForNetworkUnfriendlyEndLockedSelect@Object@@UAEHXZ'
-  - source: 0x008D41FC
-    type: x86_abs32
-    target: '?IsReadyForNetworkUnfriendlyEndLockedSelect@Object@@UAEHXZ'
-  - source: 0x008D4200
-    type: x86_abs32
-    target: '?NetworkUnfriendlyEndLockedSelect@Object@@UAEHXZ'
-  - source: 0x008D4204
-    type: x86_abs32
-    target: '?NetworkFriendlyEndLockedSelect@Object@@UAEHPAVGInterfaceStatus@@@Z'
-  - source: 0x008D4208
-    type: x86_abs32
-    target: '?ValidAsInterfaceTarget@Object@@UAEHXZ'
-  - source: 0x008D420C
-    type: x86_abs32
-    target: '?ValidAsInterfaceLeashTarget@SpellIcon@@UAEHXZ'
-  - source: 0x008D4210
-    type: x86_abs32
-    target: '?SelectOnlyAfterRecSystem@Object@@UAEHXZ'
-  - source: 0x008D4214
-    type: x86_abs32
-    target: '?ValidForPlaceInHand@Object@@UAEHPAVGInterfaceStatus@@@Z'
-  - source: 0x008D4220
-    type: x86_abs32
-    target: '?ValidToRemoveFromHand@Object@@UAEHPAVGInterfaceStatus@@ABUMapCoords@@@Z'
-  - source: 0x008D4228
-    type: x86_abs32
-    target: '?ValidToShakeFromHand@Object@@UAEHXZ'
-  - source: 0x008D422C
-    type: x86_abs32
-    target: '?InterfaceMustBeInInfluenceForInteraction@Object@@UAEHXZ'
-  - source: 0x008D4230
-    type: x86_abs32
-    target: '?IsTuggable@Object@@UAEHXZ'
-  - source: 0x008D4238
-    type: x86_abs32
-    target: '?ApplyThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@PAUGestureSystemPacketData@@@Z'
-  - source: 0x008D423C
-    type: x86_abs32
-    target: '?ValidToApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
-  - source: 0x008D4240
-    type: x86_abs32
-    target: '?ApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z'
-  - source: 0x008D4244
-    type: x86_abs32
-    target: '?ValidForLockedApplyProcess@Object@@UAEIPAVGInterfaceStatus@@@Z'
-  - source: 0x008D4248
-    type: x86_abs32
-    target: '?ApplyUnlockProcess@Object@@UAEIPAVGInterfaceStatus@@@Z'
-  - source: 0x008D424C
-    type: x86_abs32
-    target: '?IsInterfacePowerUpWhenInHand@Object@@UBEIXZ'
-  - source: 0x008D4250
-    type: x86_abs32
-    target: '?ApplyOnlyAfterRecSystem@Object@@UAEIXZ'
-  - source: 0x008D4254
-    type: x86_abs32
-    target: '?ApplyOnlyAfterReleased@Object@@UAEIXZ'
-  - source: 0x008D4260
-    type: x86_abs32
-    target: '?InterfaceValidToGiveObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z'
-  - source: 0x008D4268
-    type: x86_abs32
-    target: '?InterfaceValidToInteractAsMapCoordsObject@Object@@UAEIPAVGInterfaceStatus@@@Z'
-  - source: 0x008D426C
-    type: x86_abs32
-    target: '?InterfaceInteractAsMapCoordsObject@Object@@UAEIPAVGInterfaceStatus@@@Z'
-  - source: 0x008D4274
-    type: x86_abs32
-    target: '?ValidToSelectFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
-  - source: 0x008D4278
-    type: x86_abs32
-    target: '?ValidToApplyFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
-  - source: 0x008D4280
-    type: x86_abs32
-    target: '?ApplyFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
-  - source: 0x008D4284
-    type: x86_abs32
-    target: '?ValidToFightThisToObject@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
-  - source: 0x008D4288
-    type: x86_abs32
-    target: '?FightThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z'
-  - source: 0x008D428C
-    type: x86_abs32
-    target: '?IsEffectReceiver@WorshipSpellIcon@@UAEHPAVEffectValues@@@Z'
-  - source: 0x008D4294
-    type: x86_abs32
-    target: '?GetImportance@Object@@UAEMXZ'
-  - source: 0x008D42AC
-    type: x86_abs32
-    target: '?DropSfx@Object@@UAEIXZ'
-  - source: 0x008D42B4
-    type: x86_abs32
-    target: '?InteractsWithPhysicsObjects@SpellIcon@@UAE_NXZ'
-  - source: 0x008D42B8
-    type: x86_abs32
-    target: '?ChecksVerticesVObjects@Object@@UAE_NXZ'
-  - source: 0x008D42C0
-    type: x86_abs32
-    target: '?PhysicallyDestroysAbodes@Object@@UAE_NXZ'
-  - source: 0x008D42C4
-    type: x86_abs32
-    target: '?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z'
-  - source: 0x008D42C8
-    type: x86_abs32
-    target: '?CanBecomeAPhysicsObject@Object@@UAEHXZ'
-  - source: 0x008D42CC
-    type: x86_abs32
-    target: '?GetAlwaysRemainsInPhysicsInternalSystem@Object@@UAE_NXZ'
-  - source: 0x008D42D0
-    type: x86_abs32
-    target: '?HasSunk@Object@@UAEHXZ'
-  - source: 0x008D42E0
-    type: x86_abs32
-    target: '?VillagerMustAvoid@Fixed@@UAEHPAVVillager@@@Z'
-  - source: 0x008D42E4
-    type: x86_abs32
-    target: '?IsFireMan@Object@@UAEHXZ'
-  - source: 0x008D42E8
-    type: x86_abs32
-    target: '?IsARootedObject@Object@@UAEHXZ'
-  - source: 0x008D42F0
-    type: x86_abs32
-    target: '?IsSolidToNewAbode@MultiMapFixed@@UAEHXZ'
-  - source: 0x008D42F4
-    type: x86_abs32
-    target: '?RemoveFromGame@Object@@UAEIXZ'
-  - source: 0x008D4300
-    type: x86_abs32
-    target: '?GetTastiness@Object@@UAEIXZ'
-  - source: 0x008D4304
-    type: x86_abs32
-    target: '?IsScary@Object@@UAEHXZ'
-  - source: 0x008D430C
-    type: x86_abs32
-    target: '?DiscipleInHandNear@Object@@UAEXAAVVillager@@AAVGInterfaceStatus@@@Z'
-  - source: 0x008D4320
-    type: x86_abs32
-    target: '?ProcessInInteract@Object@@UAEIPAVGInterfaceStatus@@@Z'
-  - source: 0x008D4324
-    type: x86_abs32
-    target: '?GetObjectCollide@Object@@UAEIXZ'
-  - source: 0x008D432C
-    type: x86_abs32
-    target: '?IsPushable@Object@@UAEHXZ'
-  - source: 0x008D4338
-    type: x86_abs32
-    target: '?GetCarriedTreeType@Object@@UAEIXZ'
-  - source: 0x008D433C
-    type: x86_abs32
-    target: '?GetFacingPitch@Object@@UAEMXZ'
-  - source: 0x008D4344
-    type: x86_abs32
-    target: '?SaveObject@WorshipSpellIcon@@UAEIAAVLHOSFile@@PBUMapCoords@@@Z'
-  - source: 0x008D4348
-    type: x86_abs32
-    target: '?IsAPotFromABuildingSite@Object@@UAEHXZ'
-  - source: 0x008D4360
-    type: x86_abs32
-    target: '?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ'
-  - source: 0x008D4364
-    type: x86_abs32
-    target: '?ShouldFootpathsGoRound@Object@@UAEHXZ'
-  - source: 0x008D436C
-    type: x86_abs32
-    target: '?StandAnimation@Object@@UAEIXZ'
-  - source: 0x008D4374
-    type: x86_abs32
-    target: '?InsertMapObjectToCellAssumeFixed@Fixed@@UAEXPAUMapCell@@@Z'
-  - source: 0x008D4384
-    type: x86_abs32
-    target: '?IsPlaytimeStructure@MultiMapFixed@@UAEHXZ'
-  - source: 0x008D4388
-    type: x86_abs32
-    target: '?IsPlaytimeStarted@MultiMapFixed@@UAEHXZ'
-  - source: 0x008D438C
-    type: x86_abs32
-    target: '?AddPlaytimeVillager@MultiMapFixed@@UAEHPAVVillager@@@Z'
-  - source: 0x008D43A4
-    type: x86_abs32
-    target: '?IsRepaired@SpellIcon@@UAEHXZ'
-  - source: 0x008D43B4
-    type: x86_abs32
-    target: '?GetPercentAbodeFullWithAdults@MultiMapFixed@@UAEMXZ'
-  - source: 0x008D43B8
-    type: x86_abs32
-    target: '?GetPercentAbodeFullWithChildren@MultiMapFixed@@UAEMXZ'
-  - source: 0x008D43C8
-    type: x86_abs32
-    target: '?GetBuildingSiteWood@MultiMapFixed@@UAEIPAI@Z'
-  - source: 0x008D43CC
-    type: x86_abs32
-    target: '?GetDestructionMesh@MultiMapFixed@@UAEPAUFragMesh@@XZ'
-  - source: 0x008D43D0
-    type: x86_abs32
-    target: '?RemoveDamage@MultiMapFixed@@UAEMXZ'
-  - source: 0x008D43D8
-    type: x86_abs32
-    target: '?IsCivic@MultiMapFixed@@UAEHXZ'
-  - source: 0x008D43DC
-    type: x86_abs32
-    target: '?GetAbodeType@MultiMapFixed@@UAE?AW4ABODE_TYPE@@XZ'
-  - source: 0x008D43E0
-    type: x86_abs32
-    target: '?SetPower@MultiMapFixed@@UAEXM@Z'
-  - source: 0x008D43F4
-    type: x86_abs32
-    target: '?AddToPlayer@MultiMapFixed@@UAEXXZ'
-  - source: 0x008D43F8
-    type: x86_abs32
-    target: '?RemoveFromPlayer@MultiMapFixed@@UAEXXZ'
-  - source: 0x008D43FC
-    type: x86_abs32
-    target: '?DoResourceAdding@MultiMapFixed@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_NABUMapCoords@@H@Z'
-  - source: 0x008D4400
-    type: x86_abs32
-    target: '?DoResourceRemoving@MultiMapFixed@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@PA_N@Z'
-  - source: 0x008D4404
-    type: x86_abs32
-    target: '?CalulateAmountOverMaximum@MultiMapFixed@@UAEHW4RESOURCE_TYPE@@@Z'
-  - source: 0x008D4408
-    type: x86_abs32
-    target: '?SetTown@MultiMapFixed@@UAEXPAVTown@@@Z'
-  - source: 0x008D4410
-    type: x86_abs32
-    target: '?GetShouldNotBeAddedToPlanned@MultiMapFixed@@UAEHXZ'
-  - source: 0x008D4414
-    type: x86_abs32
-    target: '?SetShouldNotBeAddedToPlanned@MultiMapFixed@@UAEXH@Z'
-  - source: 0x008D441C
-    type: x86_abs32
-    target: '?ConvertToPlanned@MultiMapFixed@@UAEPAVPlannedMultiMapFixed@@XZ'
-  - source: 0x008D4424
-    type: x86_abs32
-    target: '?IsDrawSeedGraphic@SpellIcon@@UAE_NXZ'
-  - source: 0x008D442C
-    type: x86_abs32
-    target: '?GetWorshipSpellIcon@WorshipSpellIcon@@UAEPAV1@XZ'
 # GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.
   - source: 0x0040419C
     type: x86_abs32
@@ -3638,6 +2600,1045 @@ add_relocations:
   - source: 0x007E98F7
     type: x86_rel32
     target: '??1?$LHLinkedList@PAULHSegmentDesc@@@@QAE@XZ'
+# WorshipSpellIcon vtable entries.
+  - source: 0x008D3B18
+    type: x86_abs32
+    target: '?Serialise@Base@@UAEXAAVArchive@@@Z'
+  - source: 0x008D3B1C
+    type: x86_abs32
+    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
+  - source: 0x008D3B2C
+    type: x86_abs32
+    target: '?CleanUpForSerialisation@Base@@UAEXXZ'
+  - source: 0x008D3B30
+    type: x86_abs32
+    target: '?Dump@Base@@UAEXXZ'
+  - source: 0x008D3B38
+    type: x86_abs32
+    target: '?SetPlayer@SpellIcon@@UAEXPAVGPlayer@@@Z'
+  - source: 0x008D3B40
+    type: x86_abs32
+    target: '?RemoveDance@GameThing@@UAEXXZ'
+  - source: 0x008D3B48
+    type: x86_abs32
+    target: '?IsCreature@GameThing@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3B4C
+    type: x86_abs32
+    target: '?IsCreature@GameThing@@UAEHXZ'
+  - source: 0x008D3B50
+    type: x86_abs32
+    target: '?IsCreatureNotTooNear@GameThing@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3B5C
+    type: x86_abs32
+    target: '?GetComputerSeen@GameThing@@UAEPAVGComputerSeen@@XZ'
+  - source: 0x008D3B60
+    type: x86_abs32
+    target: '?GetTown@MultiMapFixed@@UAEPAVTown@@XZ'
+  - source: 0x008D3B68
+    type: x86_abs32
+    target: '?SetVillagerActivity@GameThing@@UAEIPAVVillager@@@Z'
+  - source: 0x008D3B6C
+    type: x86_abs32
+    target: '?UpdateVillagerActivityEffect@GameThing@@UAEIPAVVillager@@@Z'
+  - source: 0x008D3B78
+    type: x86_abs32
+    target: '?GetRadius@Object@@UAEMXZ'
+  - source: 0x008D3B80
+    type: x86_abs32
+    target: '?GetPlayerWhoLastPickedMeUp@GameThing@@UAEPAVGPlayer@@XZ'
+  - source: 0x008D3B84
+    type: x86_abs32
+    target: '?GetPlayerWhoLastDroppedMe@GameThing@@UAEPAVGPlayer@@XZ'
+  - source: 0x008D3B88
+    type: x86_abs32
+    target: '?IsFootpathLink@MultiMapFixed@@UAEHXZ'
+  - source: 0x008D3B90
+    type: x86_abs32
+    target: '?AddFootpathLink@GameThing@@UAEIPAVGFootpath@@@Z'
+  - source: 0x008D3B94
+    type: x86_abs32
+    target: '?GetNearestPathTo@MultiMapFixed@@UAEIABUMapCoords@@MH@Z'
+  - source: 0x008D3B98
+    type: x86_abs32
+    target: '?UseFootpathIfNecessary@MultiMapFixed@@UAEXPAVLiving@@ABUMapCoords@@E@Z'
+  - source: 0x008D3BA8
+    type: x86_abs32
+    target: '?JustRemoveResource@GameThing@@UAEIW4RESOURCE_TYPE@@IPA_N@Z'
+  - source: 0x008D3BAC
+    type: x86_abs32
+    target: '?JustGetResource@GameThing@@UAEIW4RESOURCE_TYPE@@IPA_N@Z'
+  - source: 0x008D3BBC
+    type: x86_abs32
+    target: '?CastCreature@GameThing@@UAEPAVCreature@@XZ'
+  - source: 0x008D3BC0
+    type: x86_abs32
+    target: '?CastPlayer@GameThing@@UAEPAVGPlayer@@XZ'
+  - source: 0x008D3BC4
+    type: x86_abs32
+    target: '?CastOneOffSpellSeed@GameThing@@UAEPAVOneOffSpellSeed@@XZ'
+  - source: 0x008D3BC8
+    type: x86_abs32
+    target: '?CastAbode@GameThing@@UAEPAVAbode@@XZ'
+  - source: 0x008D3BCC
+    type: x86_abs32
+    target: '?CastMultiMapFixed@MultiMapFixed@@UAEPAV1@XZ'
+  - source: 0x008D3BD0
+    type: x86_abs32
+    target: '?CastSpellIcon@SpellIcon@@UAEPAV1@XZ'
+  - source: 0x008D3BD4
+    type: x86_abs32
+    target: '?CastTree@GameThing@@UAEPAVTree@@XZ'
+  - source: 0x008D3BD8
+    type: x86_abs32
+    target: '?IsDeletedOnNewMap@GameThing@@UAEHXZ'
+  - source: 0x008D3BF4
+    type: x86_abs32
+    target: '?GetSampleForAttack@GameThing@@UAEIXZ'
+  - source: 0x008D3BF8
+    type: x86_abs32
+    target: '?GetGuidanceResourceType@GameThing@@UAEIXZ'
+  - source: 0x008D3BFC
+    type: x86_abs32
+    target: '?GetShowNeedsPos@GameThing@@UAEIIPAUMapCoords@@@Z'
+  - source: 0x008D3C18
+    type: x86_abs32
+    target: '?GetPos@GameThingWithPos@@UAE?AUMapCoords@@XZ'
+  - source: 0x008D3C24
+    type: x86_abs32
+    target: '?GetCreatureBeliefType@SpellIcon@@UAEIXZ'
+  - source: 0x008D3C28
+    type: x86_abs32
+    target: '?GetCreatureBeliefListType@GameThingWithPos@@UAEIXZ'
+  - source: 0x008D3C2C
+    type: x86_abs32
+    target: '?GetCitadel@GameThingWithPos@@UAEPAVCitadel@@XZ'
+  - source: 0x008D3C30
+    type: x86_abs32
+    target: '?GetOrigin@GameThingWithPos@@UAEIXZ'
+  - source: 0x008D3C44
+    type: x86_abs32
+    target: '?GetPSysPower@GameThingWithPos@@UBEMXZ'
+  - source: 0x008D3C48
+    type: x86_abs32
+    target: '?GetSpeedInMetres@GameThingWithPos@@UBEMXZ'
+  - source: 0x008D3C4C
+    type: x86_abs32
+    target: '?SetSpeedInMetres@GameThingWithPos@@UAEXMH@Z'
+  - source: 0x008D3C50
+    type: x86_abs32
+    target: '?GetRunningSpeedInMetres@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D3C58
+    type: x86_abs32
+    target: '?GetDefaultSpeedInMetres@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D3C5C
+    type: x86_abs32
+    target: '?SetHeight@GameThingWithPos@@UAEXM@Z'
+  - source: 0x008D3C60
+    type: x86_abs32
+    target: '?SetMaxHeight@GameThingWithPos@@UAEXM@Z'
+  - source: 0x008D3C64
+    type: x86_abs32
+    target: '?GetMaxHeight@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D3C6C
+    type: x86_abs32
+    target: '?GetSpeedInMetresPerSecond@GameThingWithPos@@UBEMXZ'
+  - source: 0x008D3C70
+    type: x86_abs32
+    target: '?SetSpeedInMetresPerSecond@GameThingWithPos@@UAEXMH@Z'
+  - source: 0x008D3C74
+    type: x86_abs32
+    target: '?GetRunningSpeedInMetresPerSecond@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D3C78
+    type: x86_abs32
+    target: '?GetDefaultSpeedInMetresPerSecond@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D3C7C
+    type: x86_abs32
+    target: '?IsAnimate@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3C88
+    type: x86_abs32
+    target: '?GetInteractPos@GameThingWithPos@@UAE?AUMapCoords@@XZ'
+  - source: 0x008D3C90
+    type: x86_abs32
+    target: '?IsObjectInMap@MultiMapFixed@@UAEHXZ'
+  - source: 0x008D3C9C
+    type: x86_abs32
+    target: '?GetOverwritePickUpToolTip@GameThingWithPos@@UAEIXZ'
+  - source: 0x008D3CA0
+    type: x86_abs32
+    target: '?IsStompable@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3CAC
+    type: x86_abs32
+    target: '?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ'
+  - source: 0x008D3CB0
+    type: x86_abs32
+    target: '?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ'
+  - source: 0x008D3CB8
+    type: x86_abs32
+    target: '?IsCastShadowAtNight@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3CC0
+    type: x86_abs32
+    target: '?GetImpressiveType@GameThingWithPos@@UAE?AW4IMPRESSIVE_TYPE@@XZ'
+  - source: 0x008D3CC4
+    type: x86_abs32
+    target: '?GetImpressiveIntensity@GameThingWithPos@@UAEMW4IMPRESSIVE_TYPE@@@Z'
+  - source: 0x008D3CCC
+    type: x86_abs32
+    target: '?GetUpdateOfBoredomValue@Object@@UAEMPAVReaction@@PAVGameThingWithPos@@@Z'
+  - source: 0x008D3CD0
+    type: x86_abs32
+    target: '?IsTown@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3CD4
+    type: x86_abs32
+    target: '?IsTown@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3CD8
+    type: x86_abs32
+    target: '?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3CDC
+    type: x86_abs32
+    target: '?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3CE0
+    type: x86_abs32
+    target: '?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3CE4
+    type: x86_abs32
+    target: '?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3CE8
+    type: x86_abs32
+    target: '?TrueFunction@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3CEC
+    type: x86_abs32
+    target: '?FalseFunction@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3CF0
+    type: x86_abs32
+    target: '?IsNotLiving@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3CF4
+    type: x86_abs32
+    target: '?IsSuitableForCreatureActivity@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3CF8
+    type: x86_abs32
+    target: '?IsTownCentre@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3CFC
+    type: x86_abs32
+    target: '?IsTotemStatue@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D00
+    type: x86_abs32
+    target: '?IsTownDesireFlag@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D08
+    type: x86_abs32
+    target: '?IsRock@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D0C
+    type: x86_abs32
+    target: '?IsSpellDispenser@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D10
+    type: x86_abs32
+    target: '?IsMist@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D14
+    type: x86_abs32
+    target: '?IsQueryIcon@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D18
+    type: x86_abs32
+    target: '?IsStreetLight@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D1C
+    type: x86_abs32
+    target: '?IsStreetLantern@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D20
+    type: x86_abs32
+    target: '?IsAbode@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D24
+    type: x86_abs32
+    target: '?IsField@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D28
+    type: x86_abs32
+    target: '?IsField@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D30
+    type: x86_abs32
+    target: '?IsMagicFireBall@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D38
+    type: x86_abs32
+    target: '?IsCitadelHeart@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3D40
+    type: x86_abs32
+    target: '?CanBeHealedByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D44
+    type: x86_abs32
+    target: '?CanBeEatenByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D50
+    type: x86_abs32
+    target: '?CanBeFrighteningToCreature@SpellIcon@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D54
+    type: x86_abs32
+    target: '?CanBeHelpedByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D5C
+    type: x86_abs32
+    target: '?CanBeImpressedByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D60
+    type: x86_abs32
+    target: '?CanBeInspectedByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D64
+    type: x86_abs32
+    target: '?CanBePoodUponByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D68
+    type: x86_abs32
+    target: '?CanBeBefriendedByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D6C
+    type: x86_abs32
+    target: '?CanBeSleptNextToByCreature@Fixed@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D70
+    type: x86_abs32
+    target: '?CanBePickedUpByCreature@Fixed@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D74
+    type: x86_abs32
+    target: '?CanBeStrokedByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D78
+    type: x86_abs32
+    target: '?CanBeKissedByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D80
+    type: x86_abs32
+    target: '?CanBeStompedOnByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D84
+    type: x86_abs32
+    target: '?CanBeThrownByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D88
+    type: x86_abs32
+    target: '?CanBeGivenToVillager@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D8C
+    type: x86_abs32
+    target: '?CanBePutInAStoragePit@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D90
+    type: x86_abs32
+    target: '?CanBeDestroyedByStoning@Fixed@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D98
+    type: x86_abs32
+    target: '?CanBeExaminedByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3D9C
+    type: x86_abs32
+    target: '?CanBeFoughtByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DA0
+    type: x86_abs32
+    target: '?CanReceiveGifts@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DA4
+    type: x86_abs32
+    target: '?CanActAsAContainer@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DB8
+    type: x86_abs32
+    target: '?CanBeUsedForBuilding@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DBC
+    type: x86_abs32
+    target: '?IsMushroom@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DC0
+    type: x86_abs32
+    target: '?CanBeUsedForRepair@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DC4
+    type: x86_abs32
+    target: '?CanBeGivenToTown@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DC8
+    type: x86_abs32
+    target: '?CanBeUsedToHoldWater@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DD0
+    type: x86_abs32
+    target: '?CanBePutInWoodPile@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DD4
+    type: x86_abs32
+    target: '?CanHaveMagicFoodCastOnMe@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DD8
+    type: x86_abs32
+    target: '?CanHaveMagicWoodCastOnMe@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DE0
+    type: x86_abs32
+    target: '?IsVillager@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DE4
+    type: x86_abs32
+    target: '?IsVillagerFarFromHome@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DE8
+    type: x86_abs32
+    target: '?IsVillagerInTownWithoutManyBreeders@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DEC
+    type: x86_abs32
+    target: '?IsVillagerNotWorshipping@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DF0
+    type: x86_abs32
+    target: '?IsVillagerBelongingToOtherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DF4
+    type: x86_abs32
+    target: '?IsCow@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DF8
+    type: x86_abs32
+    target: '?CanBePoodOn@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3DFC
+    type: x86_abs32
+    target: '?IsVillagerWhoHasNotBeenImpressedRecently@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E00
+    type: x86_abs32
+    target: '?IsVillagerWhoHasNotBeenDancedWithRecently@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E04
+    type: x86_abs32
+    target: '?DoesVillagerBelongToATownWhichIsAlreadyImpressed@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E08
+    type: x86_abs32
+    target: '?DoesTotemBelongToATownWhichIsVeryImpressedIndeed@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E0C
+    type: x86_abs32
+    target: '?IsDominantCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E10
+    type: x86_abs32
+    target: '?CanBeDancedWith@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E14
+    type: x86_abs32
+    target: '?IsAggressive@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E18
+    type: x86_abs32
+    target: '?IsStoragePit@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E1C
+    type: x86_abs32
+    target: '?IsWorshipSite@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3E20
+    type: x86_abs32
+    target: '?IsWorshipSite@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E28
+    type: x86_abs32
+    target: '?IsWorkshop@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3E2C
+    type: x86_abs32
+    target: '?IsWorkshop@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E34
+    type: x86_abs32
+    target: '?IsStoragePitWithFoodInIt@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E38
+    type: x86_abs32
+    target: '?IsFieldWhichNeedsWatering@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E3C
+    type: x86_abs32
+    target: '?IsFieldWithFoodInIt@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E40
+    type: x86_abs32
+    target: '?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E44
+    type: x86_abs32
+    target: '?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E48
+    type: x86_abs32
+    target: '?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E4C
+    type: x86_abs32
+    target: '?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E50
+    type: x86_abs32
+    target: '?IsTree@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3E54
+    type: x86_abs32
+    target: '?IsTree@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E58
+    type: x86_abs32
+    target: '?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E5C
+    type: x86_abs32
+    target: '?IsTreeBigEnoughForCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E60
+    type: x86_abs32
+    target: '?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E64
+    type: x86_abs32
+    target: '?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E68
+    type: x86_abs32
+    target: '?IsDoingSomethingInteresting@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E74
+    type: x86_abs32
+    target: '?IsCitadelPart@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3E78
+    type: x86_abs32
+    target: '?IsCitadelPart@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E7C
+    type: x86_abs32
+    target: '?IsPlayingFootball@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E80
+    type: x86_abs32
+    target: '?IsPlayingFootballAndMySideHasJustScored@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E84
+    type: x86_abs32
+    target: '?IsPlayingFootballAndOtherSideHasJustScored@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E8C
+    type: x86_abs32
+    target: '?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E90
+    type: x86_abs32
+    target: '?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E94
+    type: x86_abs32
+    target: '?IsOneOffSpellAggressive@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E98
+    type: x86_abs32
+    target: '?IsOneOffSpellCompassionate@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3E9C
+    type: x86_abs32
+    target: '?IsOneOffSpellPlayful@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EA0
+    type: x86_abs32
+    target: '?IsOneOffSpellToRestoreHealth@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EA4
+    type: x86_abs32
+    target: '?CanBeKickedByCreature@Object@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EA8
+    type: x86_abs32
+    target: '?CanBeStolenByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EB0
+    type: x86_abs32
+    target: '?IsStealableSpell@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EB4
+    type: x86_abs32
+    target: '?IsStealableScaffold@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EB8
+    type: x86_abs32
+    target: '?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EBC
+    type: x86_abs32
+    target: '?IsTotemWithStealableSpell@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EC0
+    type: x86_abs32
+    target: '?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EC4
+    type: x86_abs32
+    target: '?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EC8
+    type: x86_abs32
+    target: '?IsToyAwayFromHome@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3ECC
+    type: x86_abs32
+    target: '?IsToy@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3ED0
+    type: x86_abs32
+    target: '?IsToyBall@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3ED4
+    type: x86_abs32
+    target: '?IsToyDie@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3ED8
+    type: x86_abs32
+    target: '?IsToyCuddly@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EDC
+    type: x86_abs32
+    target: '?IsLiving@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3EE4
+    type: x86_abs32
+    target: '?IsFence@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3EE8
+    type: x86_abs32
+    target: '?IsSpellIcon@SpellIcon@@UAEHXZ'
+  - source: 0x008D3EF0
+    type: x86_abs32
+    target: '?CanBeUsedForThrowingDamageByCreature@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EF4
+    type: x86_abs32
+    target: '?IsCreatureWhoSeemsFriendly@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3EF8
+    type: x86_abs32
+    target: '?CanBeThrownInTheSeaPlayfully@GameThingWithPos@@UAEHPAVCreature@@@Z'
+  - source: 0x008D3F04
+    type: x86_abs32
+    target: '?IsFlock@GameThingWithPos@@UBEHXZ'
+  - source: 0x008D3F08
+    type: x86_abs32
+    target: '?IsDance@GameThingWithPos@@UBEHXZ'
+  - source: 0x008D3F0C
+    type: x86_abs32
+    target: '?IsReward@GameThingWithPos@@UBEHXZ'
+  - source: 0x008D3F10
+    type: x86_abs32
+    target: '?IsScriptContainer@GameThingWithPos@@UBEHXZ'
+  - source: 0x008D3F14
+    type: x86_abs32
+    target: '?IsWeather@GameThingWithPos@@UBEHXZ'
+  - source: 0x008D3F18
+    type: x86_abs32
+    target: '?IsSpell@GameThingWithPos@@UBEHXZ'
+  - source: 0x008D3F1C
+    type: x86_abs32
+    target: '?IsDeletedWhenReleasedFromScript@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F20
+    type: x86_abs32
+    target: '?IsMobileWallHug@GameThingWithPos@@UBEHXZ'
+  - source: 0x008D3F24
+    type: x86_abs32
+    target: '?IsActive@GameThingWithPos@@UBEHXZ'
+  - source: 0x008D3F28
+    type: x86_abs32
+    target: '?IsObjectTurningTooFastForCameraToFollowSmoothly@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F30
+    type: x86_abs32
+    target: '?AttitudeToCreatureEating@GameThingWithPos@@UAEIXZ'
+  - source: 0x008D3F38
+    type: x86_abs32
+    target: '?CalculateDesireForFood@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D3F3C
+    type: x86_abs32
+    target: '?CalculateDesireForRest@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D3F40
+    type: x86_abs32
+    target: '?CalculatePeopleHidingIndicator@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D3F48
+    type: x86_abs32
+    target: '?IsReadyForNewScriptAction@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F4C
+    type: x86_abs32
+    target: '?ForDrawFXGetNumVertices@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F5C
+    type: x86_abs32
+    target: '?GetDeathReason@GameThingWithPos@@UAE?AW4DEATH_REASON@@XZ'
+  - source: 0x008D3F64
+    type: x86_abs32
+    target: '?IsMaleVillager@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F68
+    type: x86_abs32
+    target: '?IsFemaleVillager@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F6C
+    type: x86_abs32
+    target: '?IsAnimal@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F70
+    type: x86_abs32
+    target: '?IsAChild@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F74
+    type: x86_abs32
+    target: '?IsHouse@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F78
+    type: x86_abs32
+    target: '?IsObject@Object@@UBEHXZ'
+  - source: 0x008D3F7C
+    type: x86_abs32
+    target: '?IsFootball@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F80
+    type: x86_abs32
+    target: '?IsCitadel@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F84
+    type: x86_abs32
+    target: '?IsForest@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F88
+    type: x86_abs32
+    target: '?IsMobileObject@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F8C
+    type: x86_abs32
+    target: '?IsMobileStatic@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F90
+    type: x86_abs32
+    target: '?IsAnyKindOfTree@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F94
+    type: x86_abs32
+    target: '?IsDeadTree@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F98
+    type: x86_abs32
+    target: '?IsPileFood@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3F9C
+    type: x86_abs32
+    target: '?IsFeature@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FA0
+    type: x86_abs32
+    target: '?IsScriptMarker@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FA4
+    type: x86_abs32
+    target: '?IsScriptHighlight@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FA8
+    type: x86_abs32
+    target: '?IsWonder@MultiMapFixed@@UAEHXZ'
+  - source: 0x008D3FAC
+    type: x86_abs32
+    target: '?IsInfluenceRing@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FB0
+    type: x86_abs32
+    target: '?IsPuzzleGame@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FB4
+    type: x86_abs32
+    target: '?IsScaffold@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FB8
+    type: x86_abs32
+    target: '?IsSkeleton@GameThingWithPos@@UBEHXZ'
+  - source: 0x008D3FBC
+    type: x86_abs32
+    target: '?IsPoisoned@GameThingWithPos@@UAE_NXZ'
+  - source: 0x008D3FC0
+    type: x86_abs32
+    target: '?IsSpeedUp@GameThingWithPos@@UAE_NXZ'
+  - source: 0x008D3FC4
+    type: x86_abs32
+    target: '?IsParticleContainer@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FC8
+    type: x86_abs32
+    target: '?IsSacrificeAltar@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FCC
+    type: x86_abs32
+    target: '?IsPot@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FD0
+    type: x86_abs32
+    target: '?IsComputerPlayer@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D3FD8
+    type: x86_abs32
+    target: '?SetSkeleton@GameThingWithPos@@UAEXH@Z'
+  - source: 0x008D3FDC
+    type: x86_abs32
+    target: '?IsSpellSeed@GameThingWithPos@@UAEPAVSpellSeed@@XZ'
+  - source: 0x008D3FE0
+    type: x86_abs32
+    target: '?IsSpellShield@GameThingWithPos@@UAEPAVSpellShield@@XZ'
+  - source: 0x008D3FE4
+    type: x86_abs32
+    target: '?IsPileResource@GameThingWithPos@@UAEPAVPileResource@@XZ'
+  - source: 0x008D3FE8
+    type: x86_abs32
+    target: '?IsScriptTimer@GameThingWithPos@@UAEHXZ'
+  - source: 0x008D4000
+    type: x86_abs32
+    target: '?GetScriptObjectType@GameThingWithPos@@UAE?AW4SCRIPT_OBJECT_TYPE@@XZ'
+  - source: 0x008D4004
+    type: x86_abs32
+    target: '?GetFacingDirection@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D4008
+    type: x86_abs32
+    target: '?SetAffectedByWind@GameThingWithPos@@UAEXH@Z'
+  - source: 0x008D400C
+    type: x86_abs32
+    target: '?GetReactionPower@GameThingWithPos@@UAEMXZ'
+  - source: 0x008D4014
+    type: x86_abs32
+    target: '?CleanUpBeforeReset@GameThingWithPos@@UAEXXZ'
+  - source: 0x008D401C
+    type: x86_abs32
+    target: '?GetXAngle@Object@@UAEMXZ'
+  - source: 0x008D4024
+    type: x86_abs32
+    target: '?GetZAngle@Object@@UAEMXZ'
+  - source: 0x008D4040
+    type: x86_abs32
+    target: '?UpdateFrom3DPosition@Object@@UAEXXZ'
+  - source: 0x008D4044
+    type: x86_abs32
+    target: '?MoveAlongPath@Object@@UAEHXZ'
+  - source: 0x008D4048
+    type: x86_abs32
+    target: '?IsReachable@Object@@UAEHXZ'
+  - source: 0x008D404C
+    type: x86_abs32
+    target: '?BlocksTownClearArea@Object@@UBEHXZ'
+  - source: 0x008D4098
+    type: x86_abs32
+    target: '?GetPSysFireMaxFlames@Object@@UAEIXZ'
+  - source: 0x008D409C
+    type: x86_abs32
+    target: '?GetSpotEffectPower@Object@@UAEMXZ'
+  - source: 0x008D40A4
+    type: x86_abs32
+    target: '?GetHoldType@Object@@UAE?AW4HOLD_TYPE@@XZ'
+  - source: 0x008D40AC
+    type: x86_abs32
+    target: '?GetHoldLoweringMultiplier@Object@@UAEMXZ'
+  - source: 0x008D40B0
+    type: x86_abs32
+    target: '?GetHoldYRotate@Object@@UAEMXZ'
+  - source: 0x008D40B4
+    type: x86_abs32
+    target: '?HandShouldFeelWithMeshIntersect@Object@@UAEHXZ'
+  - source: 0x008D40B8
+    type: x86_abs32
+    target: '?SetSpecularColor@SpellIcon@@UAEXK@Z'
+  - source: 0x008D40BC
+    type: x86_abs32
+    target: '?GetSpecularColor@SpellIcon@@UAEKXZ'
+  - source: 0x008D40C0
+    type: x86_abs32
+    target: '?SetBeliefSprite@Object@@UAEXPAULH3DSprite@@@Z'
+  - source: 0x008D40C4
+    type: x86_abs32
+    target: '?GetBeliefSprite@Object@@UAEPAULH3DSprite@@XZ'
+  - source: 0x008D40F8
+    type: x86_abs32
+    target: '?ScaffoldMoved@Object@@UAEXPAVScaffold@@@Z'
+  - source: 0x008D4100
+    type: x86_abs32
+    target: '?GetFireGPHXDrawn@Object@@UAEXPA_N000@Z'
+  - source: 0x008D410C
+    type: x86_abs32
+    target: '?GetDefaultFireRadius@Object@@UAEMXZ'
+  - source: 0x008D4118
+    type: x86_abs32
+    target: '?ProcessBySpell@Object@@UAEIPAVSpell@@@Z'
+  - source: 0x008D4120
+    type: x86_abs32
+    target: '?GetMesh@SpellIcon@@UBE?AW4MESH_LIST@@XZ'
+  - source: 0x008D4134
+    type: x86_abs32
+    target: '?GetDrawRegion@Object@@UAEXPAULHRegion@@@Z'
+  - source: 0x008D4138
+    type: x86_abs32
+    target: '?ProcessState@Object@@UAEIXZ'
+  - source: 0x008D413C
+    type: x86_abs32
+    target: '?GetProjectileSpeed@Object@@UAEMXZ'
+  - source: 0x008D4140
+    type: x86_abs32
+    target: '?CanBePickedUp@Object@@UAEHXZ'
+  - source: 0x008D4144
+    type: x86_abs32
+    target: '?CanBeCrushed@Fixed@@UAEHXZ'
+  - source: 0x008D4188
+    type: x86_abs32
+    target: '?IsSpellSeedReturnPoint@SpellIcon@@UBEHXZ'
+  - source: 0x008D418C
+    type: x86_abs32
+    target: '?IsABeliever@Object@@UAEHXZ'
+  - source: 0x008D4190
+    type: x86_abs32
+    target: '?AsMultiMapFixed@MultiMapFixed@@UAEPAV1@XZ'
+  - source: 0x008D41AC
+    type: x86_abs32
+    target: '?GetDefaultResource@Object@@UAEHXZ'
+  - source: 0x008D41E0
+    type: x86_abs32
+    target: '?GetTribalPower@Object@@UAEMW4TRIBE_TYPE@@@Z'
+  - source: 0x008D41E4
+    type: x86_abs32
+    target: '?ValidForLockedSelectProcess@Fixed@@UAEHPAVGInterfaceStatus@@@Z'
+  - source: 0x008D41E8
+    type: x86_abs32
+    target: '?NetworkFriendlyStartLockedSelect@Fixed@@UAEHPAVGInterfaceStatus@@@Z'
+  - source: 0x008D41F0
+    type: x86_abs32
+    target: '?IsReadyForNetworkUnfriendlyLockedSelect@Object@@UAEHXZ'
+  - source: 0x008D41F8
+    type: x86_abs32
+    target: '?GetReadyForNetworkUnfriendlyEndLockedSelect@Object@@UAEHXZ'
+  - source: 0x008D41FC
+    type: x86_abs32
+    target: '?IsReadyForNetworkUnfriendlyEndLockedSelect@Object@@UAEHXZ'
+  - source: 0x008D4200
+    type: x86_abs32
+    target: '?NetworkUnfriendlyEndLockedSelect@Object@@UAEHXZ'
+  - source: 0x008D4204
+    type: x86_abs32
+    target: '?NetworkFriendlyEndLockedSelect@Object@@UAEHPAVGInterfaceStatus@@@Z'
+  - source: 0x008D4208
+    type: x86_abs32
+    target: '?ValidAsInterfaceTarget@Object@@UAEHXZ'
+  - source: 0x008D420C
+    type: x86_abs32
+    target: '?ValidAsInterfaceLeashTarget@SpellIcon@@UAEHXZ'
+  - source: 0x008D4210
+    type: x86_abs32
+    target: '?SelectOnlyAfterRecSystem@Object@@UAEHXZ'
+  - source: 0x008D4214
+    type: x86_abs32
+    target: '?ValidForPlaceInHand@Object@@UAEHPAVGInterfaceStatus@@@Z'
+  - source: 0x008D4220
+    type: x86_abs32
+    target: '?ValidToRemoveFromHand@Object@@UAEHPAVGInterfaceStatus@@ABUMapCoords@@@Z'
+  - source: 0x008D4228
+    type: x86_abs32
+    target: '?ValidToShakeFromHand@Object@@UAEHXZ'
+  - source: 0x008D422C
+    type: x86_abs32
+    target: '?InterfaceMustBeInInfluenceForInteraction@Object@@UAEHXZ'
+  - source: 0x008D4230
+    type: x86_abs32
+    target: '?IsTuggable@Object@@UAEHXZ'
+  - source: 0x008D4238
+    type: x86_abs32
+    target: '?ApplyThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@PAUGestureSystemPacketData@@@Z'
+  - source: 0x008D423C
+    type: x86_abs32
+    target: '?ValidToApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
+  - source: 0x008D4240
+    type: x86_abs32
+    target: '?ApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z'
+  - source: 0x008D4244
+    type: x86_abs32
+    target: '?ValidForLockedApplyProcess@Object@@UAEIPAVGInterfaceStatus@@@Z'
+  - source: 0x008D4248
+    type: x86_abs32
+    target: '?ApplyUnlockProcess@Object@@UAEIPAVGInterfaceStatus@@@Z'
+  - source: 0x008D424C
+    type: x86_abs32
+    target: '?IsInterfacePowerUpWhenInHand@Object@@UBEIXZ'
+  - source: 0x008D4250
+    type: x86_abs32
+    target: '?ApplyOnlyAfterRecSystem@Object@@UAEIXZ'
+  - source: 0x008D4254
+    type: x86_abs32
+    target: '?ApplyOnlyAfterReleased@Object@@UAEIXZ'
+  - source: 0x008D4260
+    type: x86_abs32
+    target: '?InterfaceValidToGiveObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z'
+  - source: 0x008D4268
+    type: x86_abs32
+    target: '?InterfaceValidToInteractAsMapCoordsObject@Object@@UAEIPAVGInterfaceStatus@@@Z'
+  - source: 0x008D426C
+    type: x86_abs32
+    target: '?InterfaceInteractAsMapCoordsObject@Object@@UAEIPAVGInterfaceStatus@@@Z'
+  - source: 0x008D4274
+    type: x86_abs32
+    target: '?ValidToSelectFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
+  - source: 0x008D4278
+    type: x86_abs32
+    target: '?ValidToApplyFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
+  - source: 0x008D4280
+    type: x86_abs32
+    target: '?ApplyFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
+  - source: 0x008D4284
+    type: x86_abs32
+    target: '?ValidToFightThisToObject@Object@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z'
+  - source: 0x008D4288
+    type: x86_abs32
+    target: '?FightThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z'
+  - source: 0x008D428C
+    type: x86_abs32
+    target: '?IsEffectReceiver@WorshipSpellIcon@@UAEHPAVEffectValues@@@Z'
+  - source: 0x008D4294
+    type: x86_abs32
+    target: '?GetImportance@Object@@UAEMXZ'
+  - source: 0x008D42AC
+    type: x86_abs32
+    target: '?DropSfx@Object@@UAEIXZ'
+  - source: 0x008D42B4
+    type: x86_abs32
+    target: '?InteractsWithPhysicsObjects@SpellIcon@@UAE_NXZ'
+  - source: 0x008D42B8
+    type: x86_abs32
+    target: '?ChecksVerticesVObjects@Object@@UAE_NXZ'
+  - source: 0x008D42C0
+    type: x86_abs32
+    target: '?PhysicallyDestroysAbodes@Object@@UAE_NXZ'
+  - source: 0x008D42C4
+    type: x86_abs32
+    target: '?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z'
+  - source: 0x008D42C8
+    type: x86_abs32
+    target: '?CanBecomeAPhysicsObject@Object@@UAEHXZ'
+  - source: 0x008D42CC
+    type: x86_abs32
+    target: '?GetAlwaysRemainsInPhysicsInternalSystem@Object@@UAE_NXZ'
+  - source: 0x008D42D0
+    type: x86_abs32
+    target: '?HasSunk@Object@@UAEHXZ'
+  - source: 0x008D42E0
+    type: x86_abs32
+    target: '?VillagerMustAvoid@Fixed@@UAEHPAVVillager@@@Z'
+  - source: 0x008D42E4
+    type: x86_abs32
+    target: '?IsFireMan@Object@@UAEHXZ'
+  - source: 0x008D42E8
+    type: x86_abs32
+    target: '?IsARootedObject@Object@@UAEHXZ'
+  - source: 0x008D42F0
+    type: x86_abs32
+    target: '?IsSolidToNewAbode@MultiMapFixed@@UAEHXZ'
+  - source: 0x008D42F4
+    type: x86_abs32
+    target: '?RemoveFromGame@Object@@UAEIXZ'
+  - source: 0x008D4300
+    type: x86_abs32
+    target: '?GetTastiness@Object@@UAEIXZ'
+  - source: 0x008D4304
+    type: x86_abs32
+    target: '?IsScary@Object@@UAEHXZ'
+  - source: 0x008D430C
+    type: x86_abs32
+    target: '?DiscipleInHandNear@Object@@UAEXAAVVillager@@AAVGInterfaceStatus@@@Z'
+  - source: 0x008D4320
+    type: x86_abs32
+    target: '?ProcessInInteract@Object@@UAEIPAVGInterfaceStatus@@@Z'
+  - source: 0x008D4324
+    type: x86_abs32
+    target: '?GetObjectCollide@Object@@UAEIXZ'
+  - source: 0x008D432C
+    type: x86_abs32
+    target: '?IsPushable@Object@@UAEHXZ'
+  - source: 0x008D4338
+    type: x86_abs32
+    target: '?GetCarriedTreeType@Object@@UAEIXZ'
+  - source: 0x008D433C
+    type: x86_abs32
+    target: '?GetFacingPitch@Object@@UAEMXZ'
+  - source: 0x008D4344
+    type: x86_abs32
+    target: '?SaveObject@WorshipSpellIcon@@UAEIAAVLHOSFile@@PBUMapCoords@@@Z'
+  - source: 0x008D4348
+    type: x86_abs32
+    target: '?IsAPotFromABuildingSite@Object@@UAEHXZ'
+  - source: 0x008D4360
+    type: x86_abs32
+    target: '?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ'
+  - source: 0x008D4364
+    type: x86_abs32
+    target: '?ShouldFootpathsGoRound@Object@@UAEHXZ'
+  - source: 0x008D436C
+    type: x86_abs32
+    target: '?StandAnimation@Object@@UAEIXZ'
+  - source: 0x008D4374
+    type: x86_abs32
+    target: '?InsertMapObjectToCellAssumeFixed@Fixed@@UAEXPAUMapCell@@@Z'
+  - source: 0x008D4384
+    type: x86_abs32
+    target: '?IsPlaytimeStructure@MultiMapFixed@@UAEHXZ'
+  - source: 0x008D4388
+    type: x86_abs32
+    target: '?IsPlaytimeStarted@MultiMapFixed@@UAEHXZ'
+  - source: 0x008D438C
+    type: x86_abs32
+    target: '?AddPlaytimeVillager@MultiMapFixed@@UAEHPAVVillager@@@Z'
+  - source: 0x008D43A4
+    type: x86_abs32
+    target: '?IsRepaired@SpellIcon@@UAEHXZ'
+  - source: 0x008D43B4
+    type: x86_abs32
+    target: '?GetPercentAbodeFullWithAdults@MultiMapFixed@@UAEMXZ'
+  - source: 0x008D43B8
+    type: x86_abs32
+    target: '?GetPercentAbodeFullWithChildren@MultiMapFixed@@UAEMXZ'
+  - source: 0x008D43C8
+    type: x86_abs32
+    target: '?GetBuildingSiteWood@MultiMapFixed@@UAEIPAI@Z'
+  - source: 0x008D43CC
+    type: x86_abs32
+    target: '?GetDestructionMesh@MultiMapFixed@@UAEPAUFragMesh@@XZ'
+  - source: 0x008D43D0
+    type: x86_abs32
+    target: '?RemoveDamage@MultiMapFixed@@UAEMXZ'
+  - source: 0x008D43D8
+    type: x86_abs32
+    target: '?IsCivic@MultiMapFixed@@UAEHXZ'
+  - source: 0x008D43DC
+    type: x86_abs32
+    target: '?GetAbodeType@MultiMapFixed@@UAE?AW4ABODE_TYPE@@XZ'
+  - source: 0x008D43E0
+    type: x86_abs32
+    target: '?SetPower@MultiMapFixed@@UAEXM@Z'
+  - source: 0x008D43F4
+    type: x86_abs32
+    target: '?AddToPlayer@MultiMapFixed@@UAEXXZ'
+  - source: 0x008D43F8
+    type: x86_abs32
+    target: '?RemoveFromPlayer@MultiMapFixed@@UAEXXZ'
+  - source: 0x008D43FC
+    type: x86_abs32
+    target: '?DoResourceAdding@MultiMapFixed@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_NABUMapCoords@@H@Z'
+  - source: 0x008D4400
+    type: x86_abs32
+    target: '?DoResourceRemoving@MultiMapFixed@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@PA_N@Z'
+  - source: 0x008D4404
+    type: x86_abs32
+    target: '?CalulateAmountOverMaximum@MultiMapFixed@@UAEHW4RESOURCE_TYPE@@@Z'
+  - source: 0x008D4408
+    type: x86_abs32
+    target: '?SetTown@MultiMapFixed@@UAEXPAVTown@@@Z'
+  - source: 0x008D4410
+    type: x86_abs32
+    target: '?GetShouldNotBeAddedToPlanned@MultiMapFixed@@UAEHXZ'
+  - source: 0x008D4414
+    type: x86_abs32
+    target: '?SetShouldNotBeAddedToPlanned@MultiMapFixed@@UAEXH@Z'
+  - source: 0x008D441C
+    type: x86_abs32
+    target: '?ConvertToPlanned@MultiMapFixed@@UAEPAVPlannedMultiMapFixed@@XZ'
+  - source: 0x008D4424
+    type: x86_abs32
+    target: '?IsDrawSeedGraphic@SpellIcon@@UAE_NXZ'
+  - source: 0x008D442C
+    type: x86_abs32
+    target: '?GetWorshipSpellIcon@WorshipSpellIcon@@UAEPAV1@XZ'
 # adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x00B5261E
     type: x86_abs32

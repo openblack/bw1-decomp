@@ -348,9 +348,6 @@ block_relocations:
   - source: 0x00CACEBC
 
 add_relocations:
-  - source: 0x00A0D310
-    type: x86_abs32
-    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
 # GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.
   - source: 0x00405A9C
     type: x86_abs32
@@ -756,6 +753,7 @@ add_relocations:
     type: x86_abs32
     target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x70
+# WorshipSpellIcon::PutFullyChargedPowerUpSeedInHand calls PlaceObjectInMagicHand.
   - source: 0x00797FC0
     type: x86_rel32
     target: '?PlaceObjectInMagicHand@GInterface@@QAEXPAVObject@@@Z'
@@ -1679,6 +1677,10 @@ add_relocations:
   - source: 0x008D1621
     type: x86_abs32
     target: '$T99795'
+# WorshipSpellIcon vtable entries.
+  - source: 0x00A0D310
+    type: x86_abs32
+    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
 # The catch handler in the istream exception table is inside operator>>(unsigned long&).
   - source: 0x00A2CDD4
     type: x86_abs32
