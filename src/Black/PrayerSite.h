@@ -19,11 +19,8 @@ class PrayerSite : public MultiMapFixed
 {
 public:
 	// Override methods
-
-	// BW1W120 00670800 BW1M119 inlined
-	virtual ~PrayerSite();
 	// BW1W120 00670830 BW1M119 inlined
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 006708c0 BW1M119 inlined
 	virtual GPlayer* GetPlayer();
 	// BW1W120 006708e0 BW1M119 inlined
@@ -33,7 +30,7 @@ public:
 	// BW1W120 006707f0 BW1M119 inlined
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00670a10 BW1M119 inlined
-	virtual bool32_t CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* creature);
 };
 
 #endif /* BW1_DECOMP_PRAYER_SITE_INCLUDED_H */
