@@ -2609,13 +2609,10 @@ add_relocations:
   - source: 0x007E98F7
     type: x86_rel32
     target: '??1?$LHLinkedList@PAULHSegmentDesc@@@@QAE@XZ'
-# WorshipSpellIcon vtable entries.
+# Preserve the typed vtable targets where DTK picks a folded alias or leaves a raw pointer.
   - source: 0x008D3B18
     type: x86_abs32
     target: '?Serialise@Base@@UAEXAAVArchive@@@Z'
-  - source: 0x008D3B1C
-    type: x86_abs32
-    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
   - source: 0x008D3B2C
     type: x86_abs32
     target: '?CleanUpForSerialisation@Base@@UAEXXZ'
