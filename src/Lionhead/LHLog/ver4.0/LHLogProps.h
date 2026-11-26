@@ -28,8 +28,13 @@ public:
 	// BW1W120 10005c60 BW1M119 null
 	~LHLogPropsSet();
 
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	// BW1W120 10005c30 BW1M119 null
 	void Initialise();
+#else
+	// BW1W120 10005c30 BW1M119 null
+	Initialise();
+#endif
 	// BW1W120 10003d20 BW1M119 null
 	void ClearLogMessageBuffer();
 	// BW1W120 10005030 BW1M119 null

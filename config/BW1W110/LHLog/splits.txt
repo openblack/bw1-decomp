@@ -38,18 +38,18 @@ LHLog/lib/libcmt_lhlog/crt0init.obj:
 
 Lionhead/LHLog/ver4.0/ErrorCodes.cpp:
 	.text       start:0x10001000 end:0x10001220
-	.data       start:0x10019040 end:0x1001CA90
+	.data       start:0x10019040 end:0x1001CA8A
 
 Lionhead/LHLog/ver4.0/LHAssert.cpp:
 	.text       start:0x10001220 end:0x10002190
-	.data       start:0x1001CA90 end:0x1001CBD0
-	.bss        start:0x10020C80 end:0x10024CF0
+	.data       start:0x1001CA90 end:0x1001CBCF align:8
+	.bss        start:0x10020C80 end:0x10024CEC
 
 Lionhead/LHLog/ver4.0/LHDebugStack.cpp:
 	.text       start:0x10002190 end:0x10002680
 	.rdata      start:0x100151E8 end:0x100151F4
-	.data       start:0x1001CBD0 end:0x1001CBF8
-	.bss        start:0x10024CF0 end:0x100298B8
+	.data       start:0x1001CBD0 end:0x1001CBF6 align:4
+	.bss        start:0x10024CF0 end:0x100298B6 align:8
 
 Lionhead/LHLog/ver4.0/LHGenLog.cpp:
 	.text       start:0x10002680 end:0x10003D40
@@ -57,25 +57,25 @@ Lionhead/LHLog/ver4.0/LHGenLog.cpp:
 	.rdata      start:0x100151F4 end:0x100151F8
 	.xdata$x    start:0x100158F8 end:0x10015948
 	.CRT$XCU    start:0x10019004 end:0x10019008
-	.data       start:0x1001CBF8 end:0x1001CFB4
-	.bss        start:0x100298B8 end:0x1002A330
+	.data       start:0x1001CBF8 end:0x1001CFB2 align:8
+	.bss        start:0x100298B8 end:0x1002A32C align:8
 
 Lionhead/LHLog/ver4.0/LHLogProps.cpp:
 	.text       start:0x10003D40 end:0x100065C0
-	.data       start:0x1001CFB4 end:0x1001D1D8
-	.bss        start:0x1002A330 end:0x1002AAE8
+	.data       start:0x1001CFB4 end:0x1001D1D2 align:4
+	.bss        start:0x1002A330 end:0x1002AAE8 align:8
 
 Lionhead/LHLog/ver4.0/LHVersion.cpp:
 	.text       start:0x100065C0 end:0x100093B0
 	.text$x     start:0x10014200 end:0x10014218
 	.xdata$x    start:0x10015948 end:0x10015970
 	.CRT$XCU    start:0x10019008 end:0x1001900C
-	.data       start:0x1001D1D8 end:0x1001DB90
+	.data       start:0x1001D1D8 end:0x1001DB8F align:8
 	.bss        start:0x1002AAE8 end:0x1002ACB8
 
 Lionhead/LHLog/ver4.0/LogUtils.cpp:
 	.text       start:0x100093B0 end:0x10009BD0
-	.data       start:0x1001DB90 end:0x1001DCA0
+	.data       start:0x1001DB90 end:0x1001DC98 align:4
 	.bss        start:0x1002ACB8 end:0x1002ACC0
 
 LHLog/lib/libcmt_lhlog/new.obj:
@@ -107,7 +107,7 @@ LHLog/lib/libcmt_lhlog/splitpat.obj:
 
 LHLog/lib/libcmt_lhlog/exsup.obj:
 	.text       start:0x1000A024 end:0x1000A114 align:1
-	.data       start:0x1001DCA0 end:0x1001DCB0
+	.data       start:0x1001DCA0 end:0x1001DCB0 align:16
 
 LHLog/lib/libcmt_lhlog/exsup3.obj:
 	.text       start:0x1000A114 end:0x1000A200 align:1
@@ -521,7 +521,7 @@ LHLog/lib/libcmt_lhlog/stricmp.obj:
 LHLog/lib/libcmt_lhlog/strnicmp.obj:
 	.text       start:0x10014080 end:0x10014181 align:1
 
-LHLog/lib/libcmt_lhlog/mbsdup.obj:
+LHLog/lib/libcmt_lhlog/strdup.obj:
 	.text       start:0x10014181 end:0x100141AC align:1
 
 LHLog/lib/libcmt_lhlog/strftime.obj:

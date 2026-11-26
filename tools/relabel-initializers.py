@@ -50,6 +50,7 @@ from decomp_binary import Coff  # noqa: E402
 from decomp_common import ROOT, load_project, resolve_unit  # noqa: E402
 
 LABEL = re.compile(r"^_?\$[ES]\d+$")
+CODE_SECTIONS = (".text", ".text$yc", ".text$yd")
 # dtk's name for an unnamed address: a .CRT$XCU slot named so takes its compiled label.
 AUTO_SLOT = re.compile(r"^lbl_[0-9A-F]{8}$")
 # Names that only stand in for a label: the crt_xc_fn_<what>_<unit>_<address> placeholders given
@@ -96,7 +97,9 @@ class Initializers:
                 self.defined[sym.section].append(sym)
         self.functions = {}
         for sec in coff.sections:
-            if sec.name == ".text":
+            # MSVC 7.0 (LHLog's 1.20 and 1.30 units) puts the initializer stubs in .text$yc and
+            # the atexit thunks they register in .text$yd.
+            if sec.name in CODE_SECTIONS:
                 starts = sorted((sym for sym in self.defined[sec.index] if sym.type & 0x20), key=lambda sym: sym.value)
                 for index, sym in enumerate(starts):
                     end = starts[index + 1].value if index + 1 < len(starts) else sec.size
@@ -438,10 +441,15 @@ def slot_lines(lines, entries, xcu, slots):
             label = slots.get(a) or (name if mine else f"lbl_{a:08X}")
             new.append(slot_line(label, section, a))
         replaced[i] = new
+    previous = bisect.bisect_left([a for a, _, _ in entries], start) - 1
     for a in sorted(set(slots) - covered):
         before = [f for f in found if f[0] < a]
         if before:
             added[before[-1][2]].append(slot_line(slots[a], before[-1][4], a))
+        elif previous >= 0:
+            # No symbol of the range comes before the slot: it follows the last one before the range.
+            i = entries[previous][1]
+            added[i].append(slot_line(slots[a], SYMBOL.match(lines[i]).group(2), a))
     return replaced, added, kept
 
 

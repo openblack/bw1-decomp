@@ -47,21 +47,37 @@ static LHErrorCode LocalErrors[] = {
 	{0, NULL},
 };
 
+LHLogger LHSyslog;
+
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static bool LocalErrorReported[ARRAY_SIZE(LocalErrors)] = {false};
 
-unsigned long    LHLogger::TlsIndex = 0;
-bool32_t         LHLogger::InitFlag = false;
-LHTimer*         LHLogger::LogTime = NULL;
+unsigned long LHLogger::TlsIndex = 0;
+bool32_t      LHLogger::InitFlag = false;
+LHTimer*      LHLogger::LogTime = NULL;
+#else
+LHTimer*      LHLogger::LogTime;
+bool32_t      LHLogger::InitFlag;
+unsigned long LHLogger::TlsIndex;
+
+static bool LocalErrorReported[ARRAY_SIZE(LocalErrors)];
+#endif
+
 static LHLogger* MainLogger = NULL;
 LHLogPropsSet*   LHLogger::LogProps = NULL;
 void*            LHLogger::DLLHModule = NULL;
-
-LHLogger LHSyslog;
+static char*     LHLogLibraryName = NULL;
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
+static LHErrorCode* LHLogErrorCodes = NULL;
+#endif
 
 // BW1W120 10003a50 BW1M119 0116db90 (LHCombined Release)
 static void __special_debug_thread(void* data);
 
-char* LHTimer::GetTimeString()
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1W110) || defined(VERSION_BW1WCI)
+inline
+#endif
+	char* LHTimer::GetTimeString()
 {
 	unsigned long time = MSeconds();
 	bool32_t      running = Running();
@@ -114,10 +130,10 @@ int UNICODE_vsprintf(wchar_t* output, wchar_t* format, char* args)
 			char spec[LH_LOG_FORMAT_SPEC_SIZE];
 			char buffer[LH_LOG_FORMAT_BUFFER_SIZE];
 			format++;
-			bool foundType = false;
 			spec[0] = '%';
 			char* specEnd = &spec[1];
 			bool  isFloat = false;
+			bool  foundType = false;
 			while (*format != L'\0' && *format < 0x80 && *format != L'%')
 			{
 				if (isalpha(*format) && !foundType)
@@ -229,7 +245,58 @@ void LHSPrintfW::CopyString(wchar_t* text)
 	wcsncpy(Text, text, GetBufSize());
 }
 
+void LHLogger::Construct()
+{
+	Code = 0;
+	NewLine = true;
+	Level = LH_LOG_LEVEL_NONE;
+	if (!InitFlag)
+	{
+		InitFlag = false;
+		LogTime = NULL;
+		LogProps = NULL;
+		DLLHModule = NULL;
+		SetThreadDetails("_main_", GetCurrentThreadId());
+		MainLogger = this;
+		TlsIndex = TlsAlloc();
+		if (TlsIndex == TLS_OUT_OF_INDEXES)
+		{
+			SetLocalError("", 0, LH_LOG_LOCAL_ERROR_TLS);
+		}
+		else
+		{
+			TlsSetValue(TlsIndex, &LHSyslog);
+		}
+	}
+}
+
 LHLogger::~LHLogger() {}
+
+void LHLogger::Init()
+{
+	char version[8];
+	sprintf(version, "%3.1f", LH_LOG_VERSION);
+	if (!InitFlag)
+	{
+		LogTime = new LHTimer;
+		LogTime->Start();
+		if (LogProps == NULL)
+		{
+			LogProps = new LHLogPropsSet;
+			LogProps->Initialise();
+			LogProps->ReadFromRegistry();
+		}
+		if (LogProps->TruncateFlag)
+		{
+			TruncateLog();
+		}
+		if (LogProps->DisplayOnStartFlag)
+		{
+			ShowLogPropsDialog();
+		}
+		InitFlag = true;
+	}
+}
 
 LHLogger* LHLogger::FindLHLogger(char* name, unsigned long id)
 {
@@ -254,6 +321,103 @@ BOOL WINAPI DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved)
 {
 	LHLogger::SetDLLModule(instance);
 	return true;
+}
+
+void LHLogger::SetLocalError(char* file, unsigned long line, unsigned long error)
+{
+	static char text[LH_LOG_LOCAL_ERROR_TEXT_SIZE];
+	if (error <= ARRAY_SIZE(LocalErrors) - 1 && LocalErrorReported[error])
+	{
+		return;
+	}
+	LocalErrorReported[error] = true;
+
+	unsigned long i;
+	for (i = 0; LocalErrors[i].Code != error && LocalErrors[i].Text != NULL && i < LH_LOG_MAX_ERROR_CODES; i++)
+	{
+	}
+	char* description;
+	if (LocalErrors[i].Code == LH_LOG_LOCAL_ERROR_NONE || (description = LocalErrors[i].Text) == NULL ||
+	    i >= LH_LOG_MAX_ERROR_CODES)
+	{
+		description = "Unknown";
+	}
+
+	FILE* log = fopen("lh.log", "a");
+	sprintf(text,
+	        "******************************************************************************\n"
+	        "****LOGGING LIBRARY BAD USAGE: File %s Line %d\n"
+	        "%s\n"
+	        "******************************************************************************\n",
+	        GetFileName(file), line, description);
+	OutputDebugString(text);
+	fputs(text, log);
+	fflush(log);
+	fclose(log);
+	if (LogProps != NULL)
+	{
+		LogProps->InsertString(LHSPrintf("%s File %s Line %d\n", description, GetFileName(file), line), true);
+	}
+	LHAssertStatement(NULL, 0, "BAD USAGE OF LOG LIBRARY", GetFileName(file), line, description, true,
+	                  LH_ASSERT_PRIORITY_HIGH);
+}
+
+bool32_t LHLogger::LogErrorCodeS(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
+                                 ...)
+{
+	bool32_t result = false;
+	va_list  args;
+	va_start(args, code);
+	LHLogger* logger = FindLHLogger(file, line);
+	if (logger != NULL)
+	{
+		result = logger->LogErrorCodeT(library, file, line, codes, code, args);
+	}
+	return result;
+}
+
+bool32_t LHLogger::LogErrorCodeT(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
+                                 char* args)
+{
+	if (!InitFlag)
+	{
+		LH_LOG_SET_LOCAL_ERROR(327, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		return false;
+	}
+	if (codes == NULL)
+	{
+		LH_LOG_SET_LOCAL_ERROR(328, LH_LOG_LOCAL_ERROR_NO_LOOKUP_TABLE);
+		return false;
+	}
+	unsigned long i;
+	for (i = 0; codes[i].Code != code && codes[i].Text != NULL && i < LH_LOG_MAX_ERROR_CODES; i++)
+	{
+	}
+	char* text = codes[i].Text;
+	if (text == NULL || i >= LH_LOG_MAX_ERROR_CODES)
+	{
+		text = LHSPrintf("Error code %d supplied to error routines but not found in lookup table", code);
+	}
+	SetErrorStateT(i, LH_LOG_LEVEL_ERROR);
+	if (!VCreateLogText(NULL, library, file, line, text, args))
+	{
+		return false;
+	}
+	Text.AppendString("\n");
+	return true;
+}
+
+bool32_t LHLogger::CreateLogTextS(LHSPrintf* output, char* library, char* file, unsigned long line, char* format, ...)
+{
+	bool32_t result = false;
+	va_list  args;
+	va_start(args, format);
+	LHLogger* logger = FindLHLogger(file, line);
+	if (logger != NULL)
+	{
+		result = logger->VCreateLogText(output, library, file, line, format, args);
+	}
+	return result;
 }
 
 bool32_t LHLogger::CreateLogTextT(LHSPrintf* output, char* library, char* file, unsigned long line, char* format, ...)
@@ -282,9 +446,10 @@ char* GetFilterToken(char* token, char* filter)
 		filter++;
 		token++;
 	}
-	while (*--token == ' ')
+	do
 	{
-	}
+		token--;
+	} while (*token == ' ');
 	token[1] = '\0';
 	return *filter != '\0' ? filter + 1 : NULL;
 }
@@ -335,128 +500,6 @@ bool32_t PassesFilter(char* filter, bool32_t invert, char* string, ...)
 	return !invert;
 }
 
-void LHLogger::RawLogT(char* text)
-{
-	if (!InitFlag)
-	{
-		LH_LOG_SET_LOCAL_ERROR(517, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
-		return;
-	}
-	if (LogProps->Level == LH_LOG_PROPS_LEVEL_NONE)
-	{
-		return;
-	}
-	if (text == NULL)
-	{
-		text = Text;
-	}
-	if (*text == '\0')
-	{
-		return;
-	}
-	NewLine = text[strlen(text) - 1] == '\n';
-	if (LogProps->DebuggerFlag)
-	{
-		OutputDebugString(text);
-	}
-	if (LogProps->FileFlag && LogProps->LogFilename != NULL)
-	{
-		FILE* file = fopen(LogProps->LogFilename, "a");
-		if (file != NULL)
-		{
-			fprintf(file, text);
-			fflush(file);
-			fclose(file);
-		}
-		else
-		{
-			LH_LOG_SET_LOCAL_ERROR(543, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
-			return;
-		}
-	}
-	if (LogProps->WindowFlag)
-	{
-		LogProps->InsertString(text, true);
-	}
-}
-
-bool32_t LHLogger::LogWin32ErrorT(unsigned long error, char* library, char* file, unsigned long line)
-{
-	LHSPrintf message;
-	if (!InitFlag)
-	{
-		LH_LOG_SET_LOCAL_ERROR(590, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
-		return false;
-	}
-	SetErrorStateT(error, LH_LOG_LEVEL_ERROR);
-	FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, error, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message,
-	              message.GetBufSize(), NULL);
-	if (!CreateLogTextT(NULL, library, file, line, message))
-	{
-		return false;
-	}
-	Text.AppendString("\n");
-	return true;
-}
-
-void LHLogger::ShowLogPropsDialog()
-{
-	LogProps->ShowDialog();
-}
-
-LH_LOG_LEVEL LHLogger::GetLevel()
-{
-	LHLogger* logger = FindLHLogger("", 0);
-	if (logger != NULL)
-	{
-		return logger->Level;
-	}
-	return LH_LOG_LEVEL_ERROR;
-}
-
-char* LHLogger::GetText()
-{
-	LHLogger* logger = FindLHLogger("", 0);
-	if (logger != NULL)
-	{
-		return logger->ErrorText;
-	}
-	return LHSPrintf("");
-}
-
-unsigned long LHLogger::GetCode()
-{
-	LHLogger* logger = FindLHLogger("", 0);
-	if (logger != NULL)
-	{
-		return logger->Code;
-	}
-	return 0;
-}
-
-void LHLogger::ClearError()
-{
-	LHLogger* logger = FindLHLogger("", 0);
-	if (logger != NULL)
-	{
-		logger->Code = 0;
-		logger->Text.SetString("");
-		logger->Level = LH_LOG_LEVEL_NONE;
-	}
-}
-
-bool32_t LHLogger::LogWin32ErrorS(char* library, char* file, unsigned long line)
-{
-	bool32_t      result = false;
-	unsigned long error = GetLastError();
-	LHLogger*     logger = FindLHLogger(file, line);
-	if (logger != NULL)
-	{
-		result = logger->LogWin32ErrorT(error, library, file, line);
-	}
-	return result;
-}
-
 char* LHLogger::GetFileName(char* path)
 {
 	static char filename[MAX_PATH];
@@ -475,71 +518,6 @@ char* LHLogger::GetFileName(char* path)
 		i--;
 	}
 	return &path[i + (i != 0)];
-}
-
-void LHLogger::Init()
-{
-	char version[8];
-	sprintf(version, "%3.1f", LH_LOG_VERSION);
-	if (!InitFlag)
-	{
-		LogTime = new LHTimer;
-		LogTime->Start();
-		if (LogProps == NULL)
-		{
-			LogProps = new LHLogPropsSet;
-			LogProps->Initialise();
-			LogProps->ReadFromRegistry();
-		}
-		if (LogProps->TruncateFlag)
-		{
-			TruncateLog();
-		}
-		if (LogProps->DisplayOnStartFlag)
-		{
-			ShowLogPropsDialog();
-		}
-		InitFlag = true;
-	}
-}
-
-void LHLogger::SetLocalError(char* file, unsigned long line, unsigned long error)
-{
-	static char text[LH_LOG_LOCAL_ERROR_TEXT_SIZE];
-	if (error <= ARRAY_SIZE(LocalErrors) - 1 && LocalErrorReported[error])
-	{
-		return;
-	}
-	LocalErrorReported[error] = true;
-
-	unsigned long i;
-	for (i = 0; LocalErrors[i].Code != error && LocalErrors[i].Text != NULL && i < LH_LOG_MAX_ERROR_CODES; i++)
-	{
-	}
-	char* description;
-	if (LocalErrors[i].Code == LH_LOG_LOCAL_ERROR_NONE || (description = LocalErrors[i].Text) == NULL ||
-	    i >= LH_LOG_MAX_ERROR_CODES)
-	{
-		description = "Unknown";
-	}
-
-	FILE* log = fopen("lh.log", "a");
-	sprintf(text,
-	        "******************************************************************************\n"
-	        "****LOGGING LIBRARY BAD USAGE: File %s Line %d\n"
-	        "%s\n"
-	        "******************************************************************************\n",
-	        GetFileName(file), line, description);
-	OutputDebugString(text);
-	fputs(text, log);
-	fflush(log);
-	fclose(log);
-	if (LogProps != NULL)
-	{
-		LogProps->InsertString(LHSPrintf("%s File %s Line %d\n", description, GetFileName(file), line), true);
-	}
-	LHAssertStatement(NULL, 0, "BAD USAGE OF LOG LIBRARY", GetFileName(file), line, description, true,
-	                  LH_ASSERT_PRIORITY_HIGH);
 }
 
 bool32_t LHLogger::VCreateLogText(LHSPrintf* output, char* library, char* file, unsigned long line, char* format,
@@ -565,11 +543,10 @@ bool32_t LHLogger::VCreateLogText(LHSPrintf* output, char* library, char* file, 
 	output->SetString("");
 	if (!LogProps->DisableFilterFlag)
 	{
-		bool32_t passed = PassesFilter(LogProps->LogFilter, LogProps->InvertLogFilterFlag, format, GetFileName(file),
-		                               ThreadName, library, NULL);
-		if (!passed)
+		if (!PassesFilter(LogProps->LogFilter, LogProps->InvertLogFilterFlag, format, GetFileName(file), ThreadName,
+		                  library, NULL))
 		{
-			return passed;
+			return false;
 		}
 	}
 	if (NewLine)
@@ -619,85 +596,49 @@ bool32_t LHLogger::VCreateLogText(LHSPrintf* output, char* library, char* file, 
 	return true;
 }
 
-void LHLogger::LogT(char* library, char* file, unsigned long line, char* format, char* args)
+void LHLogger::RawLogT(char* text)
 {
-	if (LogProps->Level == LH_LOG_PROPS_LEVEL_ALL)
-	{
-		LHSPrintf text;
-		if (VCreateLogText(&text, library, file, line, format, args))
-		{
-			RawLogT(text);
-		}
-	}
-}
-
-void LHLogger::Construct()
-{
-	Code = 0;
-	NewLine = true;
-	Level = LH_LOG_LEVEL_NONE;
 	if (!InitFlag)
 	{
-		InitFlag = false;
-		LogTime = NULL;
-		LogProps = NULL;
-		DLLHModule = NULL;
-		SetThreadDetails("_main_", GetCurrentThreadId());
-		MainLogger = this;
-		TlsIndex = TlsAlloc();
-		if (TlsIndex == TLS_OUT_OF_INDEXES)
+		LH_LOG_SET_LOCAL_ERROR(517, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		return;
+	}
+	if (LogProps->Level == LH_LOG_PROPS_LEVEL_NONE)
+	{
+		return;
+	}
+	if (text == NULL)
+	{
+		text = Text;
+	}
+	if (*text == '\0')
+	{
+		return;
+	}
+	NewLine = text[strlen(text) - 1] == '\n';
+	if (LogProps->DebuggerFlag)
+	{
+		OutputDebugString(text);
+	}
+	if (LogProps->FileFlag && LogProps->LogFilename != NULL)
+	{
+		FILE* file = fopen(LogProps->LogFilename, "a");
+		if (file != NULL)
 		{
-			SetLocalError("", 0, LH_LOG_LOCAL_ERROR_TLS);
+			fprintf(file, text);
+			fflush(file);
+			fclose(file);
 		}
 		else
 		{
-			TlsSetValue(TlsIndex, &LHSyslog);
+			LH_LOG_SET_LOCAL_ERROR(543, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+			return;
 		}
 	}
-}
-
-bool32_t LHLogger::LogErrorCodeT(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
-                                 char* args)
-{
-	if (!InitFlag)
+	if (LogProps->WindowFlag)
 	{
-		LH_LOG_SET_LOCAL_ERROR(327, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
-		return false;
+		LogProps->InsertString(text, true);
 	}
-	if (codes == NULL)
-	{
-		LH_LOG_SET_LOCAL_ERROR(328, LH_LOG_LOCAL_ERROR_NO_LOOKUP_TABLE);
-		return false;
-	}
-	unsigned long i;
-	for (i = 0; codes[i].Code != code && codes[i].Text != NULL && i < LH_LOG_MAX_ERROR_CODES; i++)
-	{
-	}
-	char* text = codes[i].Text;
-	if (text == NULL || i >= LH_LOG_MAX_ERROR_CODES)
-	{
-		text = LHSPrintf("Error code %d supplied to error routines but not found in lookup table", code);
-	}
-	SetErrorStateT(i, LH_LOG_LEVEL_ERROR);
-	if (!VCreateLogText(NULL, library, file, line, text, args))
-	{
-		return false;
-	}
-	Text.AppendString("\n");
-	return true;
-}
-
-bool32_t LHLogger::CreateLogTextS(LHSPrintf* output, char* library, char* file, unsigned long line, char* format, ...)
-{
-	bool32_t result = false;
-	va_list  args;
-	va_start(args, format);
-	LHLogger* logger = FindLHLogger(file, line);
-	if (logger != NULL)
-	{
-		result = logger->VCreateLogText(output, library, file, line, format, args);
-	}
-	return result;
 }
 
 void LHLogger::LogS(char* library, char* file, unsigned long line, char* format, ...)
@@ -711,30 +652,93 @@ void LHLogger::LogS(char* library, char* file, unsigned long line, char* format,
 	}
 }
 
-bool32_t LHLogger::LogErrorCodeS(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
-                                 ...)
+void LHLogger::LogT(char* library, char* file, unsigned long line, char* format, char* args)
 {
-	bool32_t result = false;
-	va_list  args;
-	va_start(args, code);
-	LHLogger* logger = FindLHLogger(file, line);
+	if (LogProps->Level == LH_LOG_PROPS_LEVEL_ALL)
+	{
+		LHSPrintf text;
+		if (VCreateLogText(&text, library, file, line, format, args))
+		{
+			RawLogT(text);
+		}
+	}
+}
+
+bool32_t LHLogger::LogWin32ErrorS(char* library, char* file, unsigned long line)
+{
+	bool32_t      result = false;
+	unsigned long error = GetLastError();
+	LHLogger*     logger = FindLHLogger(file, line);
 	if (logger != NULL)
 	{
-		result = logger->LogErrorCodeT(library, file, line, codes, code, args);
+		result = logger->LogWin32ErrorT(error, library, file, line);
 	}
 	return result;
 }
 
-static void __special_debug_thread(void* data)
+bool32_t LHLogger::LogWin32ErrorT(unsigned long error, char* library, char* file, unsigned long line)
 {
-	LHThreadDetails* details = (LHThreadDetails*)data;
-	LHLogger*        logger = new LHLogger;
-	logger->SetThreadDetails(details->Name, GetCurrentThreadId());
-	TlsSetValue(LHLogger::TlsIndex, logger);
-	details->Proc(details->Argument);
-	delete logger;
-	free(details->Name);
-	free(details);
+	LHSPrintf message;
+	if (!InitFlag)
+	{
+		LH_LOG_SET_LOCAL_ERROR(590, LH_LOG_LOCAL_ERROR_NOT_INITIALISED);
+		return false;
+	}
+	SetErrorStateT(error, LH_LOG_LEVEL_ERROR);
+	FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, error, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message,
+	              message.GetBufSize(), NULL);
+	if (CreateLogTextT(NULL, library, file, line, message))
+	{
+		Text.AppendString("\n");
+		return true;
+	}
+	return false;
+}
+
+void LHLogger::ShowLogPropsDialog()
+{
+	LogProps->ShowDialog();
+}
+
+LH_LOG_LEVEL LHLogger::GetLevel()
+{
+	LHLogger* logger = FindLHLogger("", 0);
+	if (logger != NULL)
+	{
+		return logger->Level;
+	}
+	return LH_LOG_LEVEL_ERROR;
+}
+
+char* LHLogger::GetText()
+{
+	LHLogger* logger = FindLHLogger("", 0);
+	if (logger != NULL)
+	{
+		return logger->ErrorText;
+	}
+	return LHSPrintf("");
+}
+
+unsigned long LHLogger::GetCode()
+{
+	LHLogger* logger = FindLHLogger("", 0);
+	if (logger != NULL)
+	{
+		return logger->Code;
+	}
+	return 0;
+}
+
+void LHLogger::ClearError()
+{
+	LHLogger* logger = FindLHLogger("", 0);
+	if (logger != NULL)
+	{
+		logger->Code = 0;
+		logger->Text.SetString("");
+		logger->Level = LH_LOG_LEVEL_NONE;
+	}
 }
 
 unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), uint32_t stack_size, void* argument, long priority)
@@ -756,4 +760,16 @@ unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), uint32_t st
 		LH_LOG_WIN32_ERROR(678);
 	}
 	return thread;
+}
+
+static void __special_debug_thread(void* data)
+{
+	LHThreadDetails* details = (LHThreadDetails*)data;
+	LHLogger*        logger = new LHLogger;
+	logger->SetThreadDetails(details->Name, GetCurrentThreadId());
+	TlsSetValue(LHLogger::TlsIndex, logger);
+	details->Proc(details->Argument);
+	delete logger;
+	free(details->Name);
+	free(details);
 }

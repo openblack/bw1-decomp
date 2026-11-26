@@ -403,6 +403,12 @@ def pe_export_names(path):
     return [e.name.decode() for e in pe.DIRECTORY_ENTRY_EXPORT.symbols if e.name]
 
 
+# The same holds for LHLogR.dll's recompiled units, whose exports are all C++.
+_lhlog_dll = Path("orig") / config.version / ("lhlogr.dll" if config.version == "BW1W100" else "LHLogR.dll")
+config.module_ldflags["LHLog"] += [
+    f"/include:{_name}" for _name in (pe_export_names(_lhlog_dll) if _lhlog_dll.exists() else []) if _name.startswith("?")
+]
+
 if config.version == "BW1WCI":
     _lhaudio_dll = Path("orig") / config.version / "LHaudiodllR.dll"
     config.module_ldflags["LHAudio"] = [
@@ -819,6 +825,12 @@ lhdialog_pch = PrecompiledHeader("stdafx.h", "src/Lionhead/LHDialogLib/version_1
 # LHaudiodllR.dll's precompiled header: its units' function-local statics sit in .bss in
 # reverse order of first mention, as only /Yu lays them out.
 lhaudio_pch = PrecompiledHeader("LHAudioPCH.h", "src/Lionhead/LHAudio/ver7.0/LHAudioPCH.cpp")
+
+# LHLogR.dll's precompiled header: its units' uninitialised statics sit in .bss in reverse order
+# of first mention, as only /Yu lays them out, in the same order in 1.10 (MSVC 6) and 1.20
+# (MSVC 7.0), whose name hashes differ. MSVC 7.0's /Yc does not run under wibo, so the units
+# 1.20 and 1.30 build from within their directory (cl_dir) go without it.
+lhlog_pch = PrecompiledHeader("LHLogPCH.h", "src/Lionhead/LHLog/ver4.0/LHLogPCH.cpp") if lhlog_compiler_version != msvc70_version else None
 
 
 # An LH3DLib object, compiled with cflags_lh3dlib (Pentium Pro, /G6) and counted
@@ -2038,13 +2050,13 @@ config.libs = [
         "cflags": cflags_lhlog,
         "progress_category": "sdk",
         "objects": [
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/ErrorCodes.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHAssert.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHDebugStack.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHGenLog.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHLogProps.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHVersion.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LogUtils.cpp"),
+            Object(MatchingFor("BW1W110", "BW1W120"), "Lionhead/LHLog/ver4.0/ErrorCodes.cpp", pch=lhlog_pch),
+            Object(MatchingFor("BW1W110"), "Lionhead/LHLog/ver4.0/LHAssert.cpp", pch=lhlog_pch),
+            Object(MatchingFor("BW1W110", "BW1W120"), "Lionhead/LHLog/ver4.0/LHDebugStack.cpp", pch=lhlog_pch),
+            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHGenLog.cpp", pch=lhlog_pch),
+            Object(MatchingFor("BW1W110", "BW1W120"), "Lionhead/LHLog/ver4.0/LHLogProps.cpp", pch=lhlog_pch),
+            Object(MatchingFor("BW1W110"), "Lionhead/LHLog/ver4.0/LHVersion.cpp", pch=lhlog_pch),
+            Object(NonMatching, "Lionhead/LHLog/ver4.0/LogUtils.cpp", pch=lhlog_pch),
             # libcmt_lhlog: SP4's libcmt in 1.00 and 1.10, Visual Studio .NET 2002's in 1.20.
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\new.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\fclose.obj", module="LHLog", progress_category="sdk"),
@@ -2166,7 +2178,7 @@ config.libs = [
             LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\tenpow.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\stricmp.obj", module="LHLog", progress_category="sdk"),
             LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\strnicmp.obj", module="LHLog", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\mbsdup.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strdup.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\crt0init.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\ctype.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\nlsdata1.obj", module="LHLog", progress_category="sdk"),
@@ -2195,7 +2207,6 @@ config.libs = [
             LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\convrtcp.obj", module="LHLog", progress_category="sdk"),
             LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\_stricmp.obj", module="LHLog", progress_category="sdk"),
             LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\_strnicm.obj", module="LHLog", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\strdup.obj", module="LHLog", progress_category="sdk"),
             LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\seccook.obj", module="LHLog", progress_category="sdk"),
         ],
     },

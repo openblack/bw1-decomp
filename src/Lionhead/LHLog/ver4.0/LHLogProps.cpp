@@ -6,6 +6,11 @@
 #include "LHLogger.h"
 #include "LHLogMacros.h"
 
+#if defined(VERSION_BW1W110) || defined(VERSION_BW1WCI)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) + 1)
+#endif
+
 #define IDD_LOG_DIALOG                102
 #define IDC_CLOSE                     1000
 #define IDC_LOG_FILENAME              1001
@@ -60,11 +65,15 @@
 char* RegistryKey = "Software\\Lionhead Studios Ltd\\LHLog";
 char* DefaultLogFilename = "./lhlog.txt";
 
-static char             LineBuffer[LH_LOG_LINE_BUFFER_SIZE];
-static int              LineLength;
-static CRITICAL_SECTION MessageLock;
+static char             LineBuffer[LH_LOG_LINE_BUFFER_SIZE] = {0};
+static int              LineLength = 0;
+static CRITICAL_SECTION MessageLock = {0};
+static char*            LHLogLibraryName = NULL;
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
+static LHErrorCode* LHLogErrorCodes = NULL;
+#endif
 
-void* LHLogPropsSet::DialogHandle;
+void* LHLogPropsSet::DialogHandle = NULL;
 
 LHLogPropsSet::LHLogPropsSet()
 {
@@ -98,6 +107,31 @@ LHLogPropsSet::LHLogPropsSet()
 	strcpy(LogFilename, DefaultLogFilename);
 	Uninitialised = true;
 	HostIP[0] = '\0';
+}
+
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+void LHLogPropsSet::Initialise()
+#else
+LHLogPropsSet::Initialise()
+#endif
+{
+	InitializeCriticalSection(&MessageLock);
+	Uninitialised = false;
+	DialogClosedEvent = CreateEventA(NULL, false, false, NULL);
+	ReadFromRegistry();
+}
+
+LHLogPropsSet::~LHLogPropsSet()
+{
+	if (!Uninitialised)
+	{
+		ClearLogMessageBuffer();
+		if (IsWindow((HWND)DialogHandle))
+		{
+			SendMessageA((HWND)DialogHandle, WM_LH_LOG_CLOSE_DIALOG, 0, 0);
+			WaitForSingleObject(DialogClosedEvent, LH_LOG_DIALOG_CLOSE_TIMEOUT);
+		}
+	}
 }
 
 void LHLogPropsSet::ClearLogMessageBuffer()
@@ -253,6 +287,50 @@ bool32_t AddToLineBuffer(char* text)
 		LineLength = 0;
 	}
 	return complete;
+}
+
+void LHLogPropsSet::InsertString(char* text, bool32_t save)
+{
+	bool32_t first = true;
+	if (AddToLineBuffer(text))
+	{
+		if (save)
+		{
+			SaveText(LineBuffer);
+		}
+		if (IsWindow((HWND)DialogHandle) && text != NULL)
+		{
+			MessageCount++;
+			if (SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_ADDSTRING, 0, (LPARAM)LineBuffer) == LB_ERR)
+			{
+				int topIndex;
+				do
+				{
+					if (first)
+					{
+						topIndex = SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_GETTOPINDEX, 0, 0);
+						first = false;
+					}
+					SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_DELETESTRING, 0, 0);
+					MessageCount--;
+					topIndex--;
+				} while (SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_ADDSTRING, 0, (LPARAM)LineBuffer) ==
+				         LB_ERR);
+				if (!first && !AutoScrollFlag)
+				{
+					SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_SETTOPINDEX, topIndex, 0);
+				}
+			}
+			if (AutoScrollFlag)
+			{
+				if (MessageCount > LH_LOG_DIALOG_SCROLL_LINES)
+				{
+					SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_SETTOPINDEX, 0, 0);
+				}
+				SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_SETTOPINDEX, MessageCount - 1, 0);
+			}
+		}
+	}
 }
 
 void LHLogPropsSet::ClearMessages()
@@ -486,77 +564,12 @@ void LHLogPropsSet::ReadFromRegistry()
 	}
 }
 
-void LHLogPropsSet::Initialise()
-{
-	InitializeCriticalSection(&MessageLock);
-	Uninitialised = false;
-	DialogClosedEvent = CreateEventA(NULL, false, false, NULL);
-	ReadFromRegistry();
-}
-
-LHLogPropsSet::~LHLogPropsSet()
-{
-	if (!Uninitialised)
-	{
-		ClearLogMessageBuffer();
-		if (IsWindow((HWND)DialogHandle))
-		{
-			SendMessageA((HWND)DialogHandle, WM_LH_LOG_CLOSE_DIALOG, 0, 0);
-			WaitForSingleObject(DialogClosedEvent, LH_LOG_DIALOG_CLOSE_TIMEOUT);
-		}
-	}
-}
-
-void LHLogPropsSet::InsertString(char* text, bool32_t save)
-{
-	bool32_t first = true;
-	if (AddToLineBuffer(text))
-	{
-		if (save)
-		{
-			SaveText(LineBuffer);
-		}
-		if (IsWindow((HWND)DialogHandle) && text != NULL)
-		{
-			MessageCount++;
-			if (SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_ADDSTRING, 0, (LPARAM)LineBuffer) == LB_ERR)
-			{
-				int topIndex;
-				do
-				{
-					if (first)
-					{
-						topIndex = SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_GETTOPINDEX, 0, 0);
-						first = false;
-					}
-					SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_DELETESTRING, 0, 0);
-					MessageCount--;
-					topIndex--;
-				} while (SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_ADDSTRING, 0, (LPARAM)LineBuffer) ==
-				         LB_ERR);
-				if (!first && !AutoScrollFlag)
-				{
-					SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_SETTOPINDEX, topIndex, 0);
-				}
-			}
-			if (AutoScrollFlag)
-			{
-				if (MessageCount > LH_LOG_DIALOG_SCROLL_LINES)
-				{
-					SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_SETTOPINDEX, 0, 0);
-				}
-				SendDlgItemMessageA((HWND)DialogHandle, IDC_MESSAGES, LB_SETTOPINDEX, MessageCount - 1, 0);
-			}
-		}
-	}
-}
-
 // BW1W120 10005e10 BW1M119 null
 static BOOL CALLBACK LogDialogProc(HWND dialog, UINT message, WPARAM wparam, LPARAM lparam);
 
 BOOL CALLBACK LogDialogProc(HWND dialog, UINT message, WPARAM wparam, LPARAM lparam)
 {
-	static bool32_t       ready;
+	static bool32_t       ready = false;
 	static LHLogPropsSet* props;
 	static LHLogPropsSet  backup;
 
