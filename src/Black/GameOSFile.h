@@ -7,7 +7,7 @@
 #include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
 #include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint */
 #include <Lionhead/LHFile/ver3.0/LHFile.h>           /* For enum LH_FILE_MODE */
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>      /* For struct LHLinkedList */
 #include <Lionhead/LHLib/ver5.0/LHListHead.h>        /* For struct LHListHead */
 #include <Lionhead/LHLib/ver5.0/LHStack.h>           /* For class LHStack */

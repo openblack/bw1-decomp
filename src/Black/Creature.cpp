@@ -704,7 +704,7 @@ void Creature::SetToZero()
 	SpellReversion = true;
 	GameTurnOfLastFightImpact = 0;
 	IsShowingDevelopmentHelpScript = false;
-	field_0x3c8 = 0;
+	AlwaysCatch = false;
 	InCreatureHand = NULL;
 	TurnsBeforeConsideringDecision = 0;
 	field_0x10ec = 0;
@@ -4531,7 +4531,7 @@ CREATURE_ACTION Creature::FindSuitableActionToRemoveObstacle(Object* object)
 		{
 			CREATURE_ACTION action = CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[i].MimickingAction;
 			if (action != NO_ACTION_SPECIFIED &&
-			    CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[i].field_0x50 == 2)
+			    CreatureMagicActionKnownAboutEntry::MagicActionKnownAboutInfo[i].Desire == CREATURE_DESIRE_ANGER)
 			{
 				return action;
 			}

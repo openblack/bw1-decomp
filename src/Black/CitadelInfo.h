@@ -15,14 +15,20 @@ class GBaseInfo;
 class GCitadelInfo : public GContainerInfo
 {
 public:
-	uint8_t field_0x14[0x40];
+	uint8_t  field_0x14[0x2c];
+	uint16_t PrayerSiteAngle;
+	uint8_t  field_0x42[2];
+	float    PrayerSiteDistance;
+	uint8_t  field_0x48[0xc];
 
 	// Override methods
 
-	// BW1W120 004629d0 BW1M119 011c3650
-	virtual ~GCitadelInfo();
 	// BW1W120 00462980 BW1M119 011c36f0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count)
+	{
+		info_count = ARRAY_SIZE(Infos);
+		return Infos;
+	}
 
 	// Static data
 
@@ -36,7 +42,7 @@ public:
 
 	// TODO(#377): The original declared this class in Citadel.h.
 	// Out of line: LoadBinary at 0042ed50, Load at 0042ecf0.
-	INFO_DATA_BLOCK(field_0x14, field_0x14)
+	INFO_DATA_BLOCK(field_0x14, field_0x48)
 	INFO_DERIVED_LOADERS(45, "Citadel.h", GContainerInfo)
 };
 

@@ -16,14 +16,13 @@ class GObjectInfo;
 class GPrayerSiteInfo : public GMultiMapFixedInfo
 {
 public:
-	uint8_t field_0x120[0x8];
+	MESH_LIST Mesh;
+	float     Radius;
 
 	// Override methods
 
-	// BW1W120 006706c0 BW1M119 01127c80
-	virtual ~GPrayerSiteInfo();
 	// BW1W120 00670670 BW1M119 01127d60
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count);
 	// BW1W120 00670660 BW1M119 01127d20
 	virtual MESH_LIST GetMesh() const;
 
@@ -38,7 +37,7 @@ public:
 	static GPrayerSiteInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in Prayer.h.
-	INFO_DATA_BLOCK(field_0x120, field_0x120)
+	INFO_DATA_BLOCK(Mesh, Radius)
 	INFO_DERIVED_LOADERS(13, "Prayer.h", GMultiMapFixedInfo)
 };
 

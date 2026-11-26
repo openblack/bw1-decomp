@@ -41,45 +41,47 @@ LHLog/lib/libcmt_lhlog/crt0init.obj:
 
 Lionhead/LHLog/ver4.0/ErrorCodes.cpp:
 	.text       start:0x10001000 end:0x10001220
-	.rdata      start:0x100151F0 end:0x10017FAC
+	.rdata      start:0x100151F0 end:0x10017FAB
 	.data       start:0x1001D050 end:0x1001DCE0
 
 Lionhead/LHLog/ver4.0/LHAssert.cpp:
 	.text       start:0x10001220 end:0x10002110
-	.rdata      start:0x10017FAC end:0x100180A8
+	.rdata      start:0x10017FAC end:0x100180A6 align:4
 	.data       start:0x1001DCE0 end:0x1001DD00
 	.bss        start:0x1001ED80 end:0x10022DF0
 
 Lionhead/LHLog/ver4.0/LHDebugStack.cpp:
 	.text       start:0x10002110 end:0x10002690
-	.rdata      start:0x100180A8 end:0x100180E0
-	.data       start:0x1001DD00 end:0x1001DD04
-	.bss        start:0x10022DF0 end:0x100279B8
+	.rdata      start:0x100180A8 end:0x100180DD align:4
+	.data       start:0x1001DD00 end:0x1001DD01
+	.bss        start:0x10022DF0 end:0x10022DF2
+	.bss        start:0x10022DF8 end:0x100279B1 align:8
 
 Lionhead/LHLog/ver4.0/LHGenLog.cpp:
 	.text       start:0x10002690 end:0x10003C30
 	.text$x     start:0x10014050 end:0x10014090
 	.text$yc    start:0x100140B0 end:0x100140D0
 	.text$yd    start:0x100140F0 end:0x10014100
-	.rdata      start:0x100180E0 end:0x10018450
+	.rdata      start:0x100180E0 end:0x1001844E align:4
 	.xdata$x    start:0x10019FE4 end:0x1001A02C
 	.CRT$XCU    start:0x1001D008 end:0x1001D00C
 	.data       start:0x1001DD04 end:0x1001DD40
-	.bss        start:0x100279B8 end:0x10028430
+	.bss        start:0x100279B8 end:0x100282FC align:8
+	.bss        start:0x10028300 end:0x1002842C align:8
 
 Lionhead/LHLog/ver4.0/LHLogProps.cpp:
 	.text       start:0x10003C30 end:0x10006300
 	.text$yd    start:0x10014100 end:0x10014110
-	.rdata      start:0x10018450 end:0x10018644
+	.rdata      start:0x10018450 end:0x10018643 align:4
 	.data       start:0x1001DD40 end:0x1001DD48
-	.bss        start:0x10028430 end:0x10028BE0
+	.bss        start:0x10028430 end:0x10028BE0 align:16
 
 Lionhead/LHLog/ver4.0/LHVersion.cpp:
 	.text       start:0x10006300 end:0x10008D00
 	.text$x     start:0x10014090 end:0x100140B0
 	.text$yc    start:0x100140D0 end:0x100140F0
 	.text$yd    start:0x10014110 end:0x10014120
-	.rdata      start:0x10018644 end:0x10018E44
+	.rdata      start:0x10018644 end:0x10018E43 align:4
 	.xdata$x    start:0x1001A02C end:0x1001A050
 	.CRT$XCU    start:0x1001D00C end:0x1001D010
 	.data       start:0x1001DD48 end:0x1001DEE0
@@ -87,8 +89,8 @@ Lionhead/LHLog/ver4.0/LHVersion.cpp:
 
 Lionhead/LHLog/ver4.0/LogUtils.cpp:
 	.text       start:0x10008D00 end:0x100094A0
-	.rdata      start:0x10018E44 end:0x10018F2C
-	.data       start:0x1001DEE0 end:0x1001DEF0
+	.rdata      start:0x10018E44 end:0x10018F2C align:4
+	.data       start:0x1001DEE0 end:0x1001DEE4
 	.bss        start:0x10028DA8 end:0x10028DAC
 
 LHLog/lib/libcmt_lhlog/delete.obj:
@@ -124,7 +126,7 @@ LHLog/lib/libcmt_lhlog/splitpat.obj:
 
 LHLog/lib/libcmt_lhlog/exsup.obj:
 	.text       start:0x100099C0 end:0x10009AAE align:1
-	.data       start:0x1001DEF0 end:0x1001DF00
+	.data       start:0x1001DEF0 end:0x1001DF00 align:16
 
 LHLog/lib/libcmt_lhlog/exsup3.obj:
 	.text       start:0x10009AB0 end:0x10009B90 align:1

@@ -683,14 +683,14 @@ void CreatureMental::SaveMind(Archive& archive)
 #endif // VERSION_BW1W100
 }
 
-void Creature::Load(char* name, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data)
+Creature* Creature::Load(char* name, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data)
 {
 	char path[256];
 	sprintf(path, CREATURE_MIND_FILE_PATH, name);
-	LoadFullyQualified(path, coords, player, data);
+	return LoadFullyQualified(path, coords, player, data);
 }
 
-void Creature::LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data)
+Creature* Creature::LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* player, MPFEStartGameData* data)
 {
 	uint32_t length = 0;
 	if (LHFileLength(path, &length) != LH_FILE_RESULT_OK)
@@ -707,7 +707,7 @@ void Creature::LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* 
 		char* memory = data->CreatureData;
 		if (memory == NULL || data->CreatureLength == 0)
 		{
-			return;
+			return NULL;
 		}
 		archive = NEW(890) Archive(&memory, data->CreatureLength);
 	}
@@ -720,7 +720,7 @@ void Creature::LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* 
 			*archive >> creatureType;
 			if (creatureType >= CREATURE_TYPE_LAST)
 			{
-				return;
+				return NULL;
 			}
 			Creature* creature = CreateCreature(coords, &CreatureInfo::Infos[creatureType], player);
 			if (creature != NULL)
@@ -740,9 +740,12 @@ void Creature::LoadFullyQualified(char* path, const MapCoords& coords, GPlayer* 
 				}
 				creature->mind->LoadMind(*archive);
 			}
+			delete archive;
+			return creature;
 		}
 		delete archive;
 	}
+	return NULL;
 }
 
 bool32_t Creature::CheckValidation(Archive& archive)

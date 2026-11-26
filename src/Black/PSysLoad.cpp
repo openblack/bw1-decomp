@@ -746,28 +746,28 @@ bool32_t UR_Lightning_CollectionData::Load(GameOSFile& file)
 {
 	if (BaseCollectionModifierData::Load(file))
 	{
-		LoadSafe(file, field_0x20);
-		LoadSafe(file, field_0x24);
+		LoadSafe(file, (PSysBase*&)CommonHelper);
+		LoadSafe(file, (PSysBase*&)CommonHelped);
 		LoadIt(file, field_0x30);
 		LoadIt(file, field_0x3c);
 		LoadIt(file, field_0x48);
-		LoadIt(file, field_0x54);
-		LoadIt(file, field_0x58);
-		LoadIt(file, field_0x59);
+		LoadIt(file, Heading);
+		LoadIt(file, FirstUpdate);
+		LoadIt(file, CastingFromHand);
 		LoadIt(file, field_0x5a);
-		LoadIt(file, field_0x5c);
-		LoadIt(file, field_0x60);
-		file.ReadIt(field_0x64);
-		file.ReadIt(field_0x68);
-		file.ReadSafe(field_0x6c);
+		LoadIt(file, TimeSinceSearch);
+		LoadIt(file, TargetDistance);
+		file.ReadIt(NumTargets);
+		file.ReadIt(NumLightningObjects);
+		file.ReadSafe(Targets);
 		file.ReadSafe(field_0x80);
 		LoadIt(file, field_0x88);
-		file.ReadSafe(field_0x8c);
+		file.ReadSafe(Collections);
 		LoadIt(file, field_0xa0);
 		LoadSafe(file, field_0xa4);
-		LoadSafe(file, field_0xa8);
+		LoadSafe(file, ParentCollection);
 		LoadIt(file, field_0xac);
-		LoadIt(file, field_0xb0);
+		LoadIt(file, CreationTurn);
 		LoadIt(file, field_0xb4);
 		return true;
 	}

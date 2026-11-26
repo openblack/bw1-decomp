@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
+
 #include "CitadelPart.h" /* For struct CitadelPart */
 
 // Forward Declares
@@ -20,6 +22,9 @@ class PlannedMultiMapFixed;
 class CreaturePen : public CitadelPart
 {
 public:
+	LHListNode<CreaturePen> next;
+	uint8_t                 field_0x90[8];
+
 	// Override methods
 
 	// BW1W120 004eeed0 BW1M119 01278f50
@@ -33,5 +38,9 @@ public:
 	static CreaturePen* Create(const MapCoords& coords, const GCreaturePenInfo* info, Citadel* citadel, float y_angle,
 	                           float scale, float percent_built, bool32_t under_construction);
 };
+
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+static_assert(sizeof(CreaturePen) == 0x98, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_CREATURE_PEN_INCLUDED_H */

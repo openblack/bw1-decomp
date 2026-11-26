@@ -1271,11 +1271,12 @@ uint32_t Object::ThrowObjectFromHand(GInterfaceStatus* status, bool32_t dont_rep
 	{
 		GGame::g_game->help_profile->Trigger(HELP_EVENT_TYPE_4);
 	}
-	LHPoint angularVelocity = status->ThrowAngularVelocity;
-	LHPoint velocity = status->ThrowVelocity;
+	LHPoint angularVelocity = status->HandPhysics.ThrowAngularVelocity;
+	LHPoint velocity = status->HandPhysics.ThrowVelocity;
 	Flags &= ~GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE;
-	Game3dObject->matrix.SetYXZMatrixOnly(status->HandAngles.y, status->HandAngles.x, status->HandAngles.z);
-	Game3dObject->matrix.SetTranslateOnly(status->HandPos);
+	Game3dObject->matrix.SetYXZMatrixOnly(status->HandPhysics.HandAngles.y, status->HandPhysics.HandAngles.x,
+	                                      status->HandPhysics.HandAngles.z);
+	Game3dObject->matrix.SetTranslateOnly(status->HandPhysics.HandPos);
 	float scale = GetScale();
 	Game3dObject->matrix.PreScale(scale, scale, scale);
 	PhysicsObject* physicsObject = InitialisePhysicsFromHand(velocity, angularVelocity, status, NULL, dont_replant);

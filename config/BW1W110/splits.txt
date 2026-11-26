@@ -405,9 +405,10 @@ Black/CarriedObject.cpp:
 Black/Citadel.cpp:
 	.text       start:0x00461B60 end:0x004634A0
 	.rdata      start:0x008B7E0C end:0x008B8360
-	.rdata$r    start:0x00998CA8 end:0x00998D30
+	.rdata$r    start:0x00998C50 end:0x00998D30
+	.CRT$XCU    start:0x009B61B0 end:0x009B61B8 align:4
 	.data       start:0x009BDDE0 end:0x009BDEFC
-	.bss        start:0x00C4D074 end:0x00C4D078
+	.bss        start:0x00C4D018 end:0x00C4D078
 
 Black/CitadelHeart.cpp:
 	.text       start:0x004634A0 end:0x00468580
@@ -421,24 +422,27 @@ Black/CitadelPart.cpp:
 	.text       start:0x00468580 end:0x00468AF0
 	.rdata      start:0x008BAAE0 end:0x008BB91C
 	.CRT$XCU    start:0x009B61E8 end:0x009B61EC align:4
-	.data       start:0x009BE124 end:0x009BE158
-	.bss        start:0x00C4D224 end:0x00C4D2CC
+	.data       start:0x009BE124 end:0x009BE134
+	.bss        start:0x00C4D224 end:0x00C4D228
 
 Black/citadelpeople.cpp:
 	.text       start:0x00468AF0 end:0x004699A0
-	.data       start:0x009BE158 end:0x009BE178
+	.data       start:0x009BE134 end:0x009BE178
+	.bss        start:0x00C4D228 end:0x00C4D2CC
 
 Black/Collide.cpp:
 	.text       start:0x004699A0 end:0x00469FB0
+	.rdata      start:0x008BB91C end:0x008BB924
 	.CRT$XCU    start:0x009B61EC end:0x009B61F0 align:4
-	.data       start:0x009BE178 end:0x009BE19C
+	.data       start:0x009BE178 end:0x009BE194
+	.bss        start:0x00C4D2CC end:0x00C4D2D8
 
 Black/Config.cpp:
 	.text       start:0x00469FB0 end:0x0046A890
-	.rdata      start:0x008BB91C end:0x008BB934
-	.CRT$XCU    start:0x009B61F4 end:0x009B61FC align:4
-	.data       start:0x009BE19C end:0x009BE308
-	.bss        start:0x00C4D404 end:0x00C4D410
+	.rdata      start:0x008BB924 end:0x008BB934
+	.CRT$XCU    start:0x009B61F0 end:0x009B61FC align:4
+	.data       start:0x009BE194 end:0x009BE26C
+	.bss        start:0x00C4D2D8 end:0x00C4D410
 
 Black/Container.cpp:
 	.text       start:0x0046A890 end:0x0046AAA0
@@ -451,7 +455,7 @@ Black/ControlHand.cpp:
 	.text       start:0x0046AAA0 end:0x0046DE90
 	.rdata      start:0x008BBE70 end:0x008BBF20
 	.CRT$XCU    start:0x009B621C end:0x009B6224 align:4
-	.data       start:0x009BE308 end:0x009BE470
+	.data       start:0x009BE26C end:0x009BE470
 
 Black/ControlMap.cpp:
 	.text       start:0x0046DE90 end:0x00470AC0
@@ -803,10 +807,18 @@ Black/CreatureSubActions.cpp:
 	.rdata      start:0x008C1638 end:0x008C1688
 	.data       start:0x00BD5AB8 end:0x00BD5D50
 
+Black/CreatureTests.cpp:
+	.text       start:0x005073C0 end:0x005074E0
+	.rdata      start:0x008C1688 end:0x008C1694
+	.CRT$XCU    start:0x009B64A4 end:0x009B64AC align:4
+	.bss        start:0x00C9C964 end:0x00C9C96C
+
 Black/CreatureWhatToDoNext.cpp:
-	.text       start:0x005073C0 end:0x00508E10
-	.rdata      start:0x008C1688 end:0x008C16A8
+	.text       start:0x005074E0 end:0x00508E10
+	.rdata      start:0x008C1694 end:0x008C16A8
+	.CRT$XCU    start:0x009B64AC end:0x009B64B4 align:4
 	.data       start:0x00BD5D50 end:0x00BD5D78
+	.bss        start:0x00C9C96C end:0x00C9C974
 
 Black/Creche.cpp:
 	.text       start:0x00508E10 end:0x005090A0
@@ -1131,7 +1143,7 @@ Black/GenerateCreatureHTML.cpp:
 	.text       start:0x00573620 end:0x00574710
 	.rdata      start:0x008F00B0 end:0x008F00BC
 	.CRT$XCU    start:0x009B66D0 end:0x009B66DC align:4
-	.data       start:0x00BDE6AC end:0x00BDEAE0
+	.data       start:0x00BDE6AC end:0x00BDE79C
 	.bss        start:0x00CF527C end:0x00CF5290
 
 Black/GestureSystem.cpp:
@@ -1162,6 +1174,7 @@ Black/GestureSystemResult.cpp:
 	.text       start:0x00576A90 end:0x00577C60
 	.rdata      start:0x008F00E0 end:0x008F00E4
 	.CRT$XCU    start:0x009B6734 end:0x009B6748 align:4
+	.data       start:0x00BDE79C end:0x00BDE90C
 	.bss        start:0x00CF5304 end:0x00CF531C
 
 Black/GestureSystemSamples.cpp:
@@ -1175,7 +1188,7 @@ Black/GJBaseUtils.cpp:
 	.text$x     start:0x008962A0 end:0x008962B0 align:4
 	.rdata      start:0x008F00F4 end:0x008F0144
 	.CRT$XCU    start:0x009B675C end:0x009B6770 align:4
-	.data       start:0x00BDEAE0 end:0x00BDEB00
+	.data       start:0x00BDE90C end:0x00BDEB00
 	.bss        start:0x00CF5338 end:0x00CF53D8
 
 Black/GJPersistent.cpp:
@@ -1915,14 +1928,14 @@ Black/OOSDebug.cpp:
 	.text       start:0x00632C10 end:0x00633390
 	.rdata      start:0x0092129C end:0x009212A8
 	.CRT$XCU    start:0x009B6BE4 end:0x009B6BF4 align:4
-	.data       start:0x00BED0C8 end:0x00BED15C
-	.bss        start:0x00D3307C end:0x00D33138
+	.data       start:0x00BED0C8 end:0x00BED0EC
+	.bss        start:0x00D3307C end:0x00D330B4
 
 Black/Packet.cpp:
 	.text       start:0x00633390 end:0x00634FA0
 	.rdata      start:0x009212A8 end:0x009212B4
-	.data       start:0x00BED15C end:0x00BED196
-	.bss        start:0x00D33138 end:0x00D342F0
+	.data       start:0x00BED0EC end:0x00BED196
+	.bss        start:0x00D330B4 end:0x00D342F0
 
 Black/ParticleContainer.cpp:
 	.text       start:0x00634FA0 end:0x00635790
@@ -3190,9 +3203,10 @@ lib/libcpmt/xstrcoll.obj:
 
 Lionhead/LHFile/ver3.0/LHOSFile.cpp:
 	.text       start:0x007AC470 end:0x007AD150
-	.text$x     start:0x0089776C end:0x008977D0 align:4
-	.rdata      start:0x0098F774 end:0x0098F780
-	.data       start:0x00C1A828 end:0x00C1A830
+	.text$x     start:0x00897770 end:0x008977D0 align:4
+	.rdata      start:0x0098F774 end:0x0098F77C
+	.xdata$x    start:0x009AE0E0 end:0x009AE158 align:4
+	.data       start:0x00C1A828 end:0x00C1A82F
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x007AD150 end:0x007AE0B0

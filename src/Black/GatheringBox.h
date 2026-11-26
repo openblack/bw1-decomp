@@ -200,6 +200,7 @@ struct GBCategory
 		Players = NULL;
 	}
 };
+
 // A friend as it is stored in the player's profile.
 struct love_baby
 {
@@ -274,6 +275,8 @@ public:
 
 	// BW1W120 00d0643c
 	static GatheringBox* Instance;
+	// BW1W120 00d060ec
+	static GBCategory* CurrentPlayers;
 
 #ifndef VERSION_BW1W100
 	SetupList*            PlayList;

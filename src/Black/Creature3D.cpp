@@ -102,7 +102,7 @@ inline float GCamera::GetDistance(const LHPoint& point)
 	return pos.GetDistance(point);
 }
 
-float global_fight_speed = 1.1f;
+float LH3DCreature::FightSpeed = 1.1f;
 
 static int     NumObjectsEncountered;
 static Object* ObjectsEncountered[16];
@@ -111,9 +111,9 @@ float LH3DCreature::GetFightMul()
 {
 	if (CurrentAnim >= 0x89 && CurrentAnim <= 0x8c)
 	{
-		return global_fight_speed * 0.9f;
+		return FightSpeed * 0.9f;
 	}
-	return global_fight_speed * 0.6f;
+	return FightSpeed * 0.6f;
 }
 
 void LH3DCreature::FollowerCallbackFunction(int creature, int event)

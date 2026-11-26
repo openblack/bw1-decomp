@@ -745,28 +745,28 @@ bool32_t UR_Lightning_CollectionData::Save(GameOSFile& file)
 {
 	if (BaseCollectionModifierData::Save(file))
 	{
-		SaveSafe(file, field_0x20);
-		SaveSafe(file, field_0x24);
+		SaveSafe(file, (PSysBase*&)CommonHelper);
+		SaveSafe(file, (PSysBase*&)CommonHelped);
 		SaveIt(file, field_0x30);
 		SaveIt(file, field_0x3c);
 		SaveIt(file, field_0x48);
-		SaveIt(file, field_0x54);
-		SaveIt(file, field_0x58);
-		SaveIt(file, field_0x59);
+		SaveIt(file, Heading);
+		SaveIt(file, FirstUpdate);
+		SaveIt(file, CastingFromHand);
 		SaveIt(file, field_0x5a);
-		SaveIt(file, field_0x5c);
-		SaveIt(file, field_0x60);
-		SaveIt(file, field_0x64);
-		SaveIt(file, field_0x68);
-		file.WriteSafe(field_0x6c);
+		SaveIt(file, TimeSinceSearch);
+		SaveIt(file, TargetDistance);
+		SaveIt(file, NumTargets);
+		SaveIt(file, NumLightningObjects);
+		file.WriteSafe(Targets);
 		file.WriteSafe(field_0x80);
 		SaveIt(file, field_0x88);
-		file.WriteSafe(field_0x8c);
+		file.WriteSafe(Collections);
 		SaveIt(file, field_0xa0);
 		SaveSafe(file, field_0xa4);
-		SaveSafe(file, field_0xa8);
+		SaveSafe(file, ParentCollection);
 		SaveIt(file, field_0xac);
-		SaveIt(file, field_0xb0);
+		SaveIt(file, CreationTurn);
 		SaveIt(file, field_0xb4);
 		return true;
 	}

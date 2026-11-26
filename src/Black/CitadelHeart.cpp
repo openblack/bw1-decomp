@@ -142,7 +142,6 @@ const float CollideSphereScale = 1.4f;
 #define CITADEL_LANTERN_1_X                (-2.3f)
 #define CITADEL_LANTERN_1_Z                (-13.4f)
 #define CITADEL_BEAM_ALPHA_SCALE           55.0f
-#define CITADEL_CAMERA_EXCLUSION_RADIUS    15.0f
 #define CITADEL_MIN_BUILT_FOR_PHYSICS      0.1
 #define MAX_IMPACT_DAMAGE                  0.2f
 #define CITADEL_DOOR_X                     (-13.82f)

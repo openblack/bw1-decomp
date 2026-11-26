@@ -30,6 +30,10 @@ block_relocations:
   - source: 0x0040BFFD
   - source: 0x0040C08E
   - source: 0x0040CADB
+# Config::ProcessOneGameTurn's LH3DMapCoords(2193.0f, 2359.0f) folds to the 16.16 immediates 0xdb4ccc and 0xebe666,
+# not addresses.
+  - source: 0x0046A473
+  - source: 0x0046A47B
 # Bubble::UpdateAndDraw's 0x7f7f7f colour mask is an immediate, not a pointer into LH3DPrimitive's code.
   - source: 0x0057337D
 # MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.
@@ -1997,6 +2001,12 @@ modules:
   name: LHLog
   symbols: config/BW1W110/LHLog/symbols.txt
   splits: config/BW1W110/LHLog/splits.txt
+  add_relocations:
+  # SetLocalError stops its search at LocalErrors[LH_LOG_MAX_ERROR_CODES], far past the table.
+    - source: 0x10002E80
+      type: x86_abs32
+      target: _LocalErrors
+      addend: 0x1F40
 
 - object: LHMultiplayerR.dll
   hash: 184601784d2eb1a2f999f79cd032128cf3196b38

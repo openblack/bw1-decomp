@@ -16,11 +16,6 @@ public:
 
 	// BW1W120 007bc7e0 BW1M119 01165b70 (LHCombined Release)
 	virtual LH_FILE_RESULT Open(const char* path, LH_FILE_MODE mode);
-
-	// Constructors
-
-	// BW1W120 007e6d10 BW1M119 inlined
-	LHReleasedOSFile() {}
 };
 
 #endif /* BW1_DECOMP_LH_RELEASED_OS_FILE_INCLUDED_H */

@@ -441,7 +441,7 @@ Black/Citadel.cpp:
 	.rdata$r    start:0x009A8D50 end:0x009A8E30
 	.CRT$XCU    start:0x009C6290 end:0x009C629C align:4
 	.data       start:0x009CE7F0 end:0x009CE90C
-	.bss        start:0x00C5E23C end:0x00C5E240
+	.bss        start:0x00C5E1E0 end:0x00C5E240
 
 Black/CitadelHeart.cpp:
 	.text       start:0x00464290 end:0x004693C0
@@ -455,26 +455,28 @@ Black/CitadelPart.cpp:
 	.text       start:0x004693C0 end:0x00469960
 	.rdata      start:0x008CAAF0 end:0x008CB92C
 	.CRT$XCU    start:0x009C62D0 end:0x009C62D8 align:4
-	.data       start:0x009CEB34 end:0x009CEB68
-	.bss        start:0x00C5E3EC end:0x00C5E494
+	.data       start:0x009CEB34 end:0x009CEB44
+	.bss        start:0x00C5E3EC end:0x00C5E3F0
 
 Black/citadelpeople.cpp:
 	.text       start:0x00469960 end:0x0046A840
 	.CRT$XCU    start:0x009C62D8 end:0x009C62DC align:4
-	.data       start:0x009CEB68 end:0x009CEB8C
+	.data       start:0x009CEB44 end:0x009CEB8C
+	.bss        start:0x00C5E3F0 end:0x00C5E494
 
 Black/Collide.cpp:
 	.text       start:0x0046A840 end:0x0046AE80
+	.rdata      start:0x008CB92C end:0x008CB934
 	.CRT$XCU    start:0x009C62DC end:0x009C62E4 align:4
-	.data       start:0x009CEB8C end:0x009CEBB0
-	.bss        start:0x00C5E494 end:0x00C5E5CC
+	.data       start:0x009CEB8C end:0x009CEBA8
+	.bss        start:0x00C5E494 end:0x00C5E4A0
 
 Black/Config.cpp:
 	.text       start:0x0046AE80 end:0x0046B790
-	.rdata      start:0x008CB92C end:0x008CB944
+	.rdata      start:0x008CB934 end:0x008CB944
 	.CRT$XCU    start:0x009C62E4 end:0x009C62F4 align:4
-	.data       start:0x009CEBB0 end:0x009CED1C
-	.bss        start:0x00C5E5CC end:0x00C5E5D8
+	.data       start:0x009CEBA8 end:0x009CEC84
+	.bss        start:0x00C5E4A0 end:0x00C5E5D8
 
 Black/Container.cpp:
 	.text       start:0x0046B790 end:0x0046B9D0
@@ -487,7 +489,7 @@ Black/ControlHand.cpp:
 	.text       start:0x0046B9D0 end:0x0046EDF0
 	.rdata      start:0x008CBE80 end:0x008CBF30
 	.CRT$XCU    start:0x009C6304 end:0x009C6324 align:4
-	.data       start:0x009CED1C end:0x009CEE68
+	.data       start:0x009CEC84 end:0x009CEE68
 	.bss        start:0x00C5E638 end:0x00C5E8CC
 
 Black/ControlMap.cpp:
@@ -852,12 +854,18 @@ Black/CreatureSubActions.cpp:
 	.data       start:0x00BE652C end:0x00BE67C8
 	.bss        start:0x00CADB10 end:0x00CADB2C
 
+Black/CreatureTests.cpp:
+	.text       start:0x00508E70 end:0x00508FC0
+	.rdata      start:0x008D1698 end:0x008D16A4
+	.CRT$XCU    start:0x009C6688 end:0x009C6694 align:4
+	.bss        start:0x00CADB2C end:0x00CADB34
+
 Black/CreatureWhatToDoNext.cpp:
-	.text       start:0x00508E70 end:0x0050A920
-	.rdata      start:0x008D1698 end:0x008D16B8
-	.CRT$XCU    start:0x009C6688 end:0x009C66A0 align:4
+	.text       start:0x00508FC0 end:0x0050A920
+	.rdata      start:0x008D16A4 end:0x008D16B8
+	.CRT$XCU    start:0x009C6694 end:0x009C66A0 align:4
 	.data       start:0x00BE67C8 end:0x00BE67F8
-	.bss        start:0x00CADB2C end:0x00CADB3C
+	.bss        start:0x00CADB34 end:0x00CADB3C
 
 Black/Creche.cpp:
 	.text       start:0x0050A920 end:0x0050ABE0
@@ -2064,15 +2072,15 @@ Black/OOSDebug.cpp:
 	.text       start:0x0063BBD0 end:0x0063C380
 	.rdata      start:0x00931324 end:0x00931330
 	.CRT$XCU    start:0x009C70F4 end:0x009C7108 align:4
-	.data       start:0x00BFDF4C end:0x00BFDFE4
-	.bss        start:0x00D4439C end:0x00D44458
+	.data       start:0x00BFDF4C end:0x00BFDF74
+	.bss        start:0x00D4439C end:0x00D443D4
 
 Black/Packet.cpp:
 	.text       start:0x0063C380 end:0x0063DFE0
 	.rdata      start:0x00931330 end:0x0093133C
 	.CRT$XCU    start:0x009C7108 end:0x009C7114 align:4
-	.data       start:0x00BFDFE4 end:0x00BFE020
-	.bss        start:0x00D44458 end:0x00D45610
+	.data       start:0x00BFDF74 end:0x00BFE020
+	.bss        start:0x00D443D4 end:0x00D45610
 
 Black/ParticleContainer.cpp:
 	.text       start:0x0063DFE0 end:0x0063E800
@@ -3542,9 +3550,10 @@ lib/libcpmt/xstrcoll.obj:
 
 Lionhead/LHFile/ver3.0/LHOSFile.cpp:
 	.text       start:0x007BC650 end:0x007BD330
-	.text$x     start:0x008A78E8 end:0x008A7950 align:4
-	.rdata      start:0x0099F86C end:0x0099F878
-	.data       start:0x00C2B9E0 end:0x00C2B9E8
+	.text$x     start:0x008A78F0 end:0x008A7950 align:4
+	.rdata      start:0x0099F86C end:0x0099F874
+	.xdata$x    start:0x009BE390 end:0x009BE408 align:4
+	.data       start:0x00C2B9E0 end:0x00C2B9E7
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x007BD330 end:0x007BE290

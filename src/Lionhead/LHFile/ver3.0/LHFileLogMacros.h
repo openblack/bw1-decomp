@@ -10,6 +10,8 @@
 
 #define LH_ASSERT_AT(line, file, expr, text)
 #define LH_ASSERT(line, expr, text)
+#define LH_ASSERT_FORCED(line, expr, text)
+#define LH_ASSERT_FAIL(line, text)
 #define LH_ASSERT_CORRECTIVE(line, expr, text, action)                                                                 \
 	if (!(unsigned long)(expr))                                                                                        \
 	{                                                                                                                  \
@@ -114,6 +116,12 @@ static void LHLogDebugBreak()
 #define LH_ASSERT_CORRECTIVE(line, expr, text, action)                                                                 \
 	if (!(expr))                                                                                                       \
 	LH_ASSERT_REPORT_AT(ORIGINAL_LINE(line), __FILE__, expr, #expr, text, false, LH_ASSERT_PRIORITY_MEDIUM, action)
+
+#define LH_ASSERT_FORCED(line, expr, text)                                                                             \
+	if (!(expr))                                                                                                       \
+	LH_ASSERT_REPORT_AT(ORIGINAL_LINE(line), __FILE__, expr, #expr, text, true, LH_ASSERT_PRIORITY_HIGH, ;)
+
+#define LH_ASSERT_FAIL(line, text) LH_ASSERT(line, !(1), text)
 
 #endif
 

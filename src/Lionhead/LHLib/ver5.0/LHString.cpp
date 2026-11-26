@@ -5,7 +5,7 @@
 #include <re_common.h>
 
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h>
+#include <LHALL/Released/Headers/LHReleasedOSFile.h>
 #include <Lionhead/LHLib/ver5.0/LHScript.h>
 
 #define LH_STRING_CONVERT_BUFFER_SIZE 1024 // Used in 4 places so a define is okay here

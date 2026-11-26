@@ -62,12 +62,10 @@ public:
 		ThreadID = id;
 		ThreadName = name;
 	}
-	// BW1W120 100010c0 BW1M119 null
-	void SetErrorStateT(unsigned long code, LH_LOG_LEVEL level)
-	{
-		Code = code;
-		Level = level;
-	}
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	// BW1W120 10001150 BW1M119 null
+	static void SetErrorStateS(unsigned long code, LH_LOG_LEVEL level);
+#else
 	// BW1W120 10001150 BW1M119 null
 	static void SetErrorStateS(unsigned long code, LH_LOG_LEVEL level)
 	{
@@ -76,6 +74,13 @@ public:
 		{
 			logger->SetErrorStateT(code, level);
 		}
+	}
+#endif
+	// BW1W120 100010c0 BW1M119 null
+	void SetErrorStateT(unsigned long code, LH_LOG_LEVEL level)
+	{
+		Code = code;
+		Level = level;
 	}
 
 	// BW1W120 10002d80 BW1M119 null
@@ -161,6 +166,17 @@ private:
 };
 
 static_assert(sizeof(LHLogger) == 0x818, "LHLogger size is incorrect");
+
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+inline void LHLogger::SetErrorStateS(unsigned long code, LH_LOG_LEVEL level)
+{
+	LHLogger* logger = FindLHLogger("", 0);
+	if (logger != NULL)
+	{
+		logger->SetErrorStateT(code, level);
+	}
+}
+#endif
 
 // BW1W120 100279e0 BW1M119 0138951c (LHCombined Release)
 LH_LOG_API extern LHLogger LHSyslog;

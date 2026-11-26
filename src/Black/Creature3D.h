@@ -175,6 +175,9 @@ enum LH3D_CREATURE_EYE_STATE
 class LH3DCreature : public Morphable
 {
 public:
+	// BW1W120 009d06ec
+	static float FightSpeed;
+
 	Creature* creature;
 	float     CurrentSpeed;
 	float     RequiredSpeed;

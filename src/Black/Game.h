@@ -125,6 +125,7 @@ class GestureSystem;
 class GestureSystemData;
 class GestureSystemDataList;
 struct GestureSystemResult;
+struct HandPhysicsInfo;
 class HelpProfile;
 class HelpEditor;
 struct CreatureDanceLineInput;
@@ -548,6 +549,8 @@ public:
 	void SetPacket(PACKET_TYPE type, const MapCoords& coords);
 	// BW1W120 00550c50 BW1M119 010a7990
 	void SetPacket(PACKET_TYPE type, unsigned short first_value, unsigned short second_value);
+	// BW1W120 005514d0 BW1M119 01126590
+	void SetPacket(PACKET_TYPE type, unsigned long object_index, float value);
 	// BW1W120 00551530 BW1M119 01108490
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long player_number, float value);
 	// BW1W120 00551580 BW1M119 01566500
@@ -555,10 +558,21 @@ public:
 	// BW1W120 00550f80 BW1M119 01388940
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long first_value, unsigned long second_value,
 	               unsigned long third_value);
+	// BW1W120 00550cf0 BW1M119 0109a140
+	void SetPacket(PACKET_TYPE type, const MapCoords& coords, unsigned long value);
+	// BW1W120 00550d30 BW1M119 null
+	void SetPacket(PACKET_TYPE type, const MapCoords& start, const MapCoords& end);
+	// BW1W120 00550e40 BW1M119 010c3e30
+	void SetPacket(PACKET_TYPE type, unsigned long object_index, const MapCoords& coords);
+	// BW1W120 00551250 BW1M119 010217d0
+	void SetPacket(PACKET_TYPE type, const MapCoords& coords, LHPoint* first_point, LHPoint* second_point,
+	               LHPoint* third_point, unsigned char sequence);
+	// BW1W120 00551090 BW1M119 013e5950
+	void SetPacket(PACKET_TYPE type, const HandPhysicsInfo& hand_physics);
 	// BW1W120 0054da00 BW1M119 01497220
 	void CancelIntro();
-	// BW1W120 null BW1M119 01028140
-	bool32_t CheckNeedUpdateInfluence(float x, float z);
+	// BW1W120 00555240 BW1M119 01028140
+	void CheckNeedUpdateInfluence(float influence, float last_influence);
 	// BW1W120 null BW1M119 011a2940
 	void CloseOneTimeOnly();
 	// BW1W120 00551ee0 BW1M119 0100ce10
@@ -577,19 +591,19 @@ public:
 	GKeyBuffer* GetKeyBuffer();
 	// BW1W120 005553a0 BW1M119 013e1550
 	static LH_KEY GetKeyFromModifier(uint16_t modifier);
-	// BW1W120 null BW1M119 011193b0
-	GPlayer* OtherPlayer();
+	// BW1W120 inlined BW1M119 011193b0
+	GPlayer* OtherPlayer() { return &players[PlayerIndex == 0]; }
 	// BW1W120 null BW1M119 011ce750
 	void PlayIntro(char* video_path, char* sound_path);
-	// BW1W120 null BW1M119 01108720
+	// BW1W120 00555b90 BW1M119 01108720
 	void ProcessDebugGameDataPacket(void* data, int size, GPlayer* player);
 	// BW1W120 null BW1M119 0151a640
 	void RemoveAllPlayerSparkles();
 	// BW1W120 00551040 BW1M119 015634b0
 	void SetPacketWithData(PACKET_TYPE type, void* data, long size);
-	// BW1W120 null BW1M119 01583250
+	// BW1W120 00552a90 BW1M119 01583250
 	void ToggleHelpEditor();
-	// BW1W120 null BW1M119 011c6ac0
+	// BW1W120 00552a80 BW1M119 011c6ac0
 	void ToggleMapEditor();
 	// BW1W120 00551690 BW1M119 010086d0
 	void SendPacketCompressed(PACKET_TYPE type, SETPACKET_FUNCTION_NUMBER function_number);

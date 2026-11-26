@@ -403,6 +403,12 @@ def pe_export_names(path):
     return [e.name.decode() for e in pe.DIRECTORY_ENTRY_EXPORT.symbols if e.name]
 
 
+# The same holds for LHLogR.dll's recompiled units, whose exports are all C++.
+_lhlog_dll = Path("orig") / config.version / ("lhlogr.dll" if config.version == "BW1W100" else "LHLogR.dll")
+config.module_ldflags["LHLog"] += [
+    f"/include:{_name}" for _name in (pe_export_names(_lhlog_dll) if _lhlog_dll.exists() else []) if _name.startswith("?")
+]
+
 if config.version == "BW1WCI":
     _lhaudio_dll = Path("orig") / config.version / "LHaudiodllR.dll"
     config.module_ldflags["LHAudio"] = [
@@ -699,8 +705,12 @@ def AudioObject(completed, name, pch=True, **options):
 
 
 # The LHFile library objects runblack links: Lionhead's Gold configuration, with the exception
-# handling and defines LH3DP3's command line shows.
-cflags_lhfile_gold = ["/GX", "/D_GOLD", "/D_GOLD_"]
+# handling and defines LH3DP3's command line shows. Like LHDLL it was built without RTTI: the
+# LHOSFile vftable has no locator in front. 1.00's was built with /Gy too, like LHDLL's: its
+# link dropped the unreferenced LHOSFile::Position.
+cflags_lhfile_gold = ["/GX", "/GR-", "/D_GOLD", "/D_GOLD_"]
+if config.version == "BW1W100":
+    cflags_lhfile_gold.append("/Gy")
 
 # The LHFile library objects LHaudiodllR.dll links.
 cflags_lhfile_audio = [f for f in cflags_lhaudio if f != "/DLH_AUDIO_EXPORTS"]
@@ -816,6 +826,12 @@ lhdialog_pch = PrecompiledHeader("stdafx.h", "src/Lionhead/LHDialogLib/version_1
 # reverse order of first mention, as only /Yu lays them out.
 lhaudio_pch = PrecompiledHeader("LHAudioPCH.h", "src/Lionhead/LHAudio/ver7.0/LHAudioPCH.cpp")
 
+# LHLogR.dll's precompiled header: its units' uninitialised statics sit in .bss in reverse order
+# of first mention, as only /Yu lays them out, in the same order in 1.10 (MSVC 6) and 1.20
+# (MSVC 7.0), whose name hashes differ. MSVC 7.0's /Yc does not run under wibo, so the units
+# 1.20 and 1.30 build from within their directory (cl_dir) go without it.
+lhlog_pch = PrecompiledHeader("LHLogPCH.h", "src/Lionhead/LHLog/ver4.0/LHLogPCH.cpp") if lhlog_compiler_version != msvc70_version else None
+
 
 # An LH3DLib object, compiled with cflags_lh3dlib (Pentium Pro, /G6) and counted
 # in the "sdk" progress category. Built against lh3dlib_pch when `pch` is True.
@@ -901,12 +917,12 @@ config.libs = [
             GameCodeObject(Matching, "Black/CarriedObject.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/ChallengeRoom.cpp"),
             GameCodeObject(NonMatching, "Black/ChallengeRoomCamera.cpp"),
-            GameCodeObject(NonMatching, "Black/Citadel.cpp"),
+            GameCodeObject(Matching, "Black/Citadel.cpp"),
             GameCodeObject(NonMatching, "Black/CitadelHeart.cpp"),
             GameCodeObject(NonMatching, "Black/CitadelPart.cpp"),
             GameCodeObject(NonMatching, "Black/citadelpeople.cpp"),
             GameCodeObject(NonMatching, "Black/Collide.cpp"),
-            GameCodeObject(NonMatching, "Black/Config.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "Black/Config.cpp"),
             GameCodeObject(Matching, "Black/Container.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/ControlHand.cpp"),
             GameCodeObject(NonMatching, "Black/ControlMap.cpp"),
@@ -965,7 +981,8 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureSelect.cpp"),
             GameCodeObject(Matching, "Black/CreatureSubAction.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureSubActions.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureWhatToDoNext.cpp"),
+            GameCodeObject(Matching, "Black/CreatureTests.cpp"),
+            GameCodeObject(Matching, "Black/CreatureWhatToDoNext.cpp"),
             GameCodeObject(Matching, "Black/Creche.cpp"),
             GameCodeObject(NonMatching, "Black/CreditsRoom.cpp"),
             GameCodeObject(Matching, "Black/CreditsRoomCamera.cpp"),
@@ -1357,7 +1374,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp", progress_category="sdk", extra_cflags=cflags_lhdll),
 
             Object(Matching, "Lionhead/LHFile/ver3.0/LHFile.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
-            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
+            Object(Matching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
 
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "zlib/compress.c", progress_category="sdk"),
             Object(Matching, "zlib/uncompr.c", progress_category="sdk"),
@@ -1860,7 +1877,7 @@ config.libs = [
             AudioObject(Matching, "Lionhead/LHAudio/ver7.0/Version.cpp"),
             # LHFile ver3.0, built with asserts, linked from its static library.
             Object(Matching, "LHAudio/LHFile/ver3.0/LHFile.cpp", source="Lionhead/LHFile/ver3.0/LHFile.cpp", cflags=cflags_lhfile_audio),
-            Object(NonMatching, "LHAudio/LHFile/ver3.0/LHOSFile.cpp", source="Lionhead/LHFile/ver3.0/LHOSFile.cpp", cflags=cflags_lhfile_audio),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/LHFile/ver3.0/LHOSFile.cpp", source="Lionhead/LHFile/ver3.0/LHOSFile.cpp", cflags=cflags_lhfile_audio),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/uncompr.c", source="zlib/uncompr.c", cflags=cflags_zlib_audio, progress_category="sdk"),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/inflate.c", source="zlib/inflate.c", cflags=cflags_zlib_audio, progress_category="sdk"),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/infblock.c", source="zlib/infblock.c", cflags=cflags_zlib_audio, progress_category="sdk"),
@@ -2033,13 +2050,13 @@ config.libs = [
         "cflags": cflags_lhlog,
         "progress_category": "sdk",
         "objects": [
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/ErrorCodes.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHAssert.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHDebugStack.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHGenLog.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHLogProps.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHVersion.cpp"),
-            Object(NonMatching, "Lionhead/LHLog/ver4.0/LogUtils.cpp"),
+            Object(MatchingFor("BW1W110", "BW1W120"), "Lionhead/LHLog/ver4.0/ErrorCodes.cpp", pch=lhlog_pch),
+            Object(MatchingFor("BW1W110"), "Lionhead/LHLog/ver4.0/LHAssert.cpp", pch=lhlog_pch),
+            Object(MatchingFor("BW1W110", "BW1W120"), "Lionhead/LHLog/ver4.0/LHDebugStack.cpp", pch=lhlog_pch),
+            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHGenLog.cpp", pch=lhlog_pch),
+            Object(MatchingFor("BW1W110", "BW1W120"), "Lionhead/LHLog/ver4.0/LHLogProps.cpp", pch=lhlog_pch),
+            Object(MatchingFor("BW1W110"), "Lionhead/LHLog/ver4.0/LHVersion.cpp", pch=lhlog_pch),
+            Object(NonMatching, "Lionhead/LHLog/ver4.0/LogUtils.cpp", pch=lhlog_pch),
             # libcmt_lhlog: SP4's libcmt in 1.00 and 1.10, Visual Studio .NET 2002's in 1.20.
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\new.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\fclose.obj", module="LHLog", progress_category="sdk"),
@@ -2161,7 +2178,7 @@ config.libs = [
             LibObject(Matching, "libcmt_lhlog", "..\\build\\intel\\mt_obj\\tenpow.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\stricmp.obj", module="LHLog", progress_category="sdk"),
             LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\strnicmp.obj", module="LHLog", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W100", "BW1W110", "BW1WCI"), "libcmt_lhlog", "build\\intel\\mt_obj\\mbsdup.obj", module="LHLog", progress_category="sdk"),
+            LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\strdup.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\crt0init.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\ctype.obj", module="LHLog", progress_category="sdk"),
             LibObject(Matching, "libcmt_lhlog", "build\\intel\\mt_obj\\nlsdata1.obj", module="LHLog", progress_category="sdk"),
@@ -2190,7 +2207,6 @@ config.libs = [
             LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\convrtcp.obj", module="LHLog", progress_category="sdk"),
             LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\_stricmp.obj", module="LHLog", progress_category="sdk"),
             LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\_strnicm.obj", module="LHLog", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\strdup.obj", module="LHLog", progress_category="sdk"),
             LibObject(MatchingFor("BW1W120", "BW1W130"), "libcmt_lhlog", "build\\intel\\mt_obj\\seccook.obj", module="LHLog", progress_category="sdk"),
         ],
     },

@@ -8,7 +8,7 @@
 #include <Lionhead/LH3DLib/development/LHColor.h>
 #include <Lionhead/LH3DLib/development/LHIlib.h>
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h>
+#include <LHALL/Released/Headers/LHReleasedOSFile.h>
 #include <Lionhead/LHLib/ver5.0/LHConvert.h>
 #include <Lionhead/LHLib/ver5.0/LHDraw.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>

@@ -38,6 +38,10 @@ block_relocations:
   - source: 0x00410B14
 # CitadelHeart::DrawCreaturePen's sprite colour 0xc18119 is an immediate, not a pointer into g_scriptFunctionTable.
   - source: 0x00466A04
+# Config::ProcessOneGameTurn's LH3DMapCoords(2193.0f, 2359.0f) folds to the 16.16 immediates 0xdb4ccc and 0xebe666,
+# not pointers into GVillagerInfo::InfoList and g_list.
+  - source: 0x0046B343
+  - source: 0x0046B34B
 # GGame::Init's RAND_SEED 0x88f89f is an immediate, not a pointer into the GameSpy SDK's code.
   - source: 0x0054F4B0
 # GatheringInterface: player colour 0xafefff and special user IDs 9999998..10000015 are immediates.
