@@ -2,7 +2,7 @@
 
 #include <windows.h> /* For max */
 
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For LHReleasedOSFile */
 
 #include "GestureConstants.h"
 #include "CellSize.h"

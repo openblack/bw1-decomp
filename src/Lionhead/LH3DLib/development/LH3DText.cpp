@@ -16,7 +16,7 @@
 #include "LHCoord.h"    /* For LHCoord */
 #include "LHPoint.h"    /* For LHPoint */
 
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
 
 #define FONT_PAGE_SIZE            256
 #define FONT_CACHE_LINE_WIDTH     FONT_PAGE_SIZE

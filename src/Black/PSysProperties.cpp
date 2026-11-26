@@ -32,7 +32,7 @@ static void EmptyPSysProperties(int arg0, int arg1) {}
 #include "PSysRules.h"         /* For the concrete rules */
 
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>         /* For LHFileLength, LHLoadData */
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
 #include <chlasm/LHAction.h>
 #include <chlasm/ScriptEnums.h>
 

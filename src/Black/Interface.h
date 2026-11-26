@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <stddef.h>
 
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHFastPointer.h>
 #include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE */
 

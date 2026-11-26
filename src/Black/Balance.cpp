@@ -11,7 +11,7 @@
 #include <Lionhead/LHFile/ver3.0/LHDir.h>            /* For struct LHDir */
 #include <Lionhead/LHFile/ver3.0/LHFile.h>           /* For struct LHFile */
 #include <Lionhead/LHFile/ver3.0/LHReleasedFile.h>   /* For struct LHReleasedFile */
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>             /* For operator new(size_t, const char*, uint32_t) */
 
 #include "GameTimeConstants.h"

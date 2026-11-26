@@ -17,7 +17,7 @@
 #include <Lionhead/LH3DLib/development/LH3DRender.h> /* For RenderLoadingFrame */
 #include <Lionhead/LH3DLib/development/LH3DStorm.h>  /* For LH3DStorm::CreateStorm */
 #include <Lionhead/LH3DLib/development/LH3DText.h>   /* For CHAR2WCHAR */
-#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
+#include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>          /* For LHSys::TheSystem */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>             /* For LHKeyToAsciiTable, operator new */
 

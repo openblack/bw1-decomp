@@ -699,8 +699,12 @@ def AudioObject(completed, name, pch=True, **options):
 
 
 # The LHFile library objects runblack links: Lionhead's Gold configuration, with the exception
-# handling and defines LH3DP3's command line shows.
-cflags_lhfile_gold = ["/GX", "/D_GOLD", "/D_GOLD_"]
+# handling and defines LH3DP3's command line shows. Like LHDLL it was built without RTTI: the
+# LHOSFile vftable has no locator in front. 1.00's was built with /Gy too, like LHDLL's: its
+# link dropped the unreferenced LHOSFile::Position.
+cflags_lhfile_gold = ["/GX", "/GR-", "/D_GOLD", "/D_GOLD_"]
+if config.version == "BW1W100":
+    cflags_lhfile_gold.append("/Gy")
 
 # The LHFile library objects LHaudiodllR.dll links.
 cflags_lhfile_audio = [f for f in cflags_lhaudio if f != "/DLH_AUDIO_EXPORTS"]
@@ -1358,7 +1362,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp", progress_category="sdk", extra_cflags=cflags_lhdll),
 
             Object(Matching, "Lionhead/LHFile/ver3.0/LHFile.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
-            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
+            Object(Matching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", progress_category="sdk", extra_cflags=cflags_lhfile_gold),
 
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1WCI"), "zlib/compress.c", progress_category="sdk"),
             Object(Matching, "zlib/uncompr.c", progress_category="sdk"),
@@ -1861,7 +1865,7 @@ config.libs = [
             AudioObject(Matching, "Lionhead/LHAudio/ver7.0/Version.cpp"),
             # LHFile ver3.0, built with asserts, linked from its static library.
             Object(Matching, "LHAudio/LHFile/ver3.0/LHFile.cpp", source="Lionhead/LHFile/ver3.0/LHFile.cpp", cflags=cflags_lhfile_audio),
-            Object(NonMatching, "LHAudio/LHFile/ver3.0/LHOSFile.cpp", source="Lionhead/LHFile/ver3.0/LHOSFile.cpp", cflags=cflags_lhfile_audio),
+            Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/LHFile/ver3.0/LHOSFile.cpp", source="Lionhead/LHFile/ver3.0/LHOSFile.cpp", cflags=cflags_lhfile_audio),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/uncompr.c", source="zlib/uncompr.c", cflags=cflags_zlib_audio, progress_category="sdk"),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/inflate.c", source="zlib/inflate.c", cflags=cflags_zlib_audio, progress_category="sdk"),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130"), "LHAudio/zlib/infblock.c", source="zlib/infblock.c", cflags=cflags_zlib_audio, progress_category="sdk"),
