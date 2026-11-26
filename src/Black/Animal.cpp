@@ -50,6 +50,11 @@
 #include "Utils.h"
 #include "WorshipTotem.h"
 
+#ifdef VERSION_BW1WCI
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - ((line) < 558 ? 0 : (line) < 2696 ? 3 : 2))
+#endif
+
 GAnimalInfo GAnimalInfo::Infos[ANIMAL_INFO_LAST];
 
 GAnimalStateTableInfo GAnimalStateTableInfo::Infos[ANIMAL_STATE_LAST_STATE];
@@ -264,7 +269,12 @@ uint32_t Animal::ProcessState()
 {
 	action.TurnsSinceStateChange++;
 	Validate();
+#ifdef VERSION_BW1WCI
+	if (GAnimalStateTableInfo::GetInfo()[action.states[LIVING_ACTION_INDEX_TOP]].PerformsLivingChecks &&
+	    !IsControlledByScript())
+#else
 	if (GAnimalStateTableInfo::GetInfo()[action.states[LIVING_ACTION_INDEX_TOP]].PerformsLivingChecks)
+#endif
 	{
 		ProcessNeeds();
 		CheckGrownUp();
@@ -710,8 +720,8 @@ uint32_t Animal::HuntingMoveToPosAbaondon()
 
 bool32_t Animal::TargetPounce()
 {
-	float   travelled = ((GetSpeed() * ANIMAL_SPEED_TO_METRES_PER_SECOND) / MAP_COORDS_UNITS_PER_CELL) *
-	                    (GGameInfo::Info.MillisecondsPerGameTurn / ANIMAL_MILLISECONDS_PER_SECOND) *
+	float   metresPerSecond = (GetSpeed() * ANIMAL_SPEED_TO_METRES_PER_SECOND) / MAP_COORDS_UNITS_PER_CELL;
+	float   travelled = metresPerSecond * (GGameInfo::Info.MillisecondsPerGameTurn / ANIMAL_MILLISECONDS_PER_SECOND) *
 	                    action.TurnsSinceStateChange;
 	float   pounceDistance = Game3dObject->GetCurrentAnim()->Distance * GetScale();
 	Living* prey = (Living*)target.Get();
@@ -1073,12 +1083,12 @@ Animal* Animal::CreateFromType(const MapCoords& coords, const GAnimalInfo* info,
 		flock->AddLivingToFlock(animal);
 		if (!animal->IsOkToBeShepherd() && flock->GetTown() != NULL)
 		{
-			flock->GetTown()->FlockList.Remove(flock, false);
+			flock->GetTown()->RemoveFlock(flock);
 			flock->town = NULL;
 		}
-		if (flock->MaxMembers < flock->Members.GetSize())
+		if (flock->MaxMembers < flock->GetFlockMembers()->GetSize())
 		{
-			flock->MaxMembers = flock->Members.GetSize();
+			flock->MaxMembers = flock->GetFlockMembers()->GetSize();
 		}
 		animal->SleepPos.Init(flock->Pos);
 	}
@@ -1309,9 +1319,11 @@ void Animal::SetNewWander(const MapCoords* centre, long min_dist, long max_dist)
 		uint16_t angle = GameAngle;
 		uint32_t range = (uint16_t)GetInfo()->TurnAngle;
 		angle = (angle + GAME_RAND(1783, (uint16_t)range) - range / 2) & GAME_ANGLE_MASK;
+		long   x = GetXByAngle(angle);
+		long   z = GetZByAngle(angle);
 		JustXZ wander;
-		wander.x = GetXByAngle(angle);
-		wander.z = GetZByAngle(angle);
+		wander.x = x;
+		wander.z = z;
 		Accumulate(&movement, &wander);
 	}
 	step.Init(movement.x, movement.z, 0.0f);
@@ -1550,13 +1562,13 @@ bool32_t Animal::CalculateFlockingMovement(JustXZ* movement)
 {
 	long    nearestDistance = LONG_MAX;
 	Living* nearest = NULL;
+	long    count = 0;
 	JustXZ  offset;
 	offset.x = 0;
 	offset.z = 0;
 	JustXZ total;
 	total.x = 0;
 	total.z = 0;
-	long count = 0;
 	if (GetAccumulateRemaining(movement) <= 0)
 	{
 		return true;
@@ -1685,8 +1697,8 @@ SCRIPT_OBJECT_TYPE Animal::GetScriptObjectType()
 
 bool32_t Animal::IsPosValidForTurnAngle(const MapCoords& pos)
 {
-	float radius = GUtils::ConvertGameAngleTo3D(GetTurnAngle());
-	radius = 2.0f * speed / radius;
+	float turnAngle = GUtils::ConvertGameAngleTo3D(GetTurnAngle());
+	float radius = 2.0f * GetSpeed() / turnAngle;
 	radius = GUtils::ConvertWholeDistanceToMeters(radius);
 	MapCoords centre =
 		Pos + GUtils::GetPosFromAngle((uint16_t)((GetGameAngle() + GAME_ANGLE_QUARTER_TURN) & GAME_ANGLE_MASK), radius);

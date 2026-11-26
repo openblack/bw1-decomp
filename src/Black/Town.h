@@ -422,6 +422,8 @@ public:
 	void AddBuildingSite(BuildingSite* site);
 	// BW1W120 0073b990 BW1M119 0155d970
 	void RemoveBuildingSite(BuildingSite* site);
+	// BW1W120 inlined BW1M119 inlined
+	void RemoveFlock(Flock* flock) { FlockList.Remove(flock, false); }
 	// BW1W120 0073ba20 BW1M119 0155d8a0
 	uint32_t RemoveBuildingSite(MultiMapFixed* site);
 	// BW1W120 0073ba70 BW1M119 0155d7f0

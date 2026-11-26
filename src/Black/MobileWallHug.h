@@ -127,6 +127,10 @@ public:
 	virtual MapCoords* GetDestPos() { return &goal; }
 	// BW1W120 00416f80 BW1M119 0102efb0
 	virtual bool32_t IsMobileWallHug() const { return true; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI 00417a40 BW1MCI119 010073a0
+	virtual int GetSpeed() const { return speed; }
+#endif
 	// BW1W120 0060fc50 BW1M119 01086610
 	virtual void SetSpeed(int new_speed);
 	// BW1W120 00473e40 BW1M119 0107c070
@@ -162,10 +166,25 @@ public:
 	uint8_t GetMoveState() { return MoveState; }
 	// BW1W120 inlined BW1M119 010a0b30
 	void SetMoveState(uint8_t state) { MoveState = state; }
+#ifdef VERSION_BW1WCI
+	// BW1WCI inlined BW1MCI119 010a31c0
+	long GetXByAngle(uint16_t angle)
+	{
+		long cosine = LHSinTable[angle + 0x200];
+		return ((GetSpeed() >> 4) * cosine) >> 12;
+	}
+	// BW1WCI inlined BW1MCI119 010a2cc0
+	long GetZByAngle(uint16_t angle)
+	{
+		long sine = LHSinTable[angle];
+		return ((GetSpeed() >> 4) * sine) >> 12;
+	}
+#else
 	// BW1W120 inlined BW1M119 010a0a40
 	long GetXByAngle(uint16_t angle) { return ((speed >> 4) * LHSinTable[angle + 0x200]) >> 12; }
 	// BW1W120 inlined BW1M119 010a0790
 	long GetZByAngle(uint16_t angle) { return ((speed >> 4) * LHSinTable[angle]) >> 12; }
+#endif
 	// fabricated: the Mac inlines this into InitStepsXZ and InitStepsXZSetAngle
 	// BW1W120 00609d10 BW1M119 inlined
 	void RebuildMoveByStep() { step.Init(GetXByAngle(GameAngle), GetZByAngle(GameAngle), 0.0f); }

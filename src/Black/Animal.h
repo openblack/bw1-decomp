@@ -127,16 +127,14 @@ public:
 	// Override methods
 
 #ifdef VERSION_BW1WCI
-	// BW1WCI 00417a40 BW1MCI119 010073a0
-	virtual int GetSpeed() const;
 	// BW1WCI 00418030 BW1MCI119 0114aa10
-	virtual uint32_t GetScriptULData1();
+	virtual uint32_t GetScriptULData1() { return ScriptULData1; }
 	// BW1WCI 00418040 BW1MCI119 0114aa50
-	virtual void SetScriptULData1(unsigned long data);
+	virtual void SetScriptULData1(unsigned long data) { ScriptULData1 = data; }
 	// BW1WCI 00418050 BW1MCI119 0114aa90
-	virtual uint32_t GetScriptULData2();
+	virtual uint32_t GetScriptULData2() { return ScriptULData2; }
 	// BW1WCI 00418060 BW1MCI119 0114aad0
-	virtual void SetScriptULData2(unsigned long data);
+	virtual void SetScriptULData2(unsigned long data) { ScriptULData2 = data; }
 	// BW1WCI 0041c8f0 BW1MCI119 011826a0
 	virtual bool32_t IsStateEntryFunctionSameAs(unsigned long state, unsigned long other_state) const;
 #else
@@ -196,7 +194,7 @@ public:
 	// BW1W120 005f04e0 BW1M119 0138ccb0
 	virtual void SetUpPhysOb(PhysOb* phys_ob);
 	// BW1W120 005f0d80 BW1M119 0138c700
-	virtual Object* EndPhysics(PhysicsObject* physics_object, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map);
 	// BW1W120 0041bc10 BW1M119 0116d180
 	virtual void ReactToPhysicsImpact(PhysicsObject* physics_object, bool hit_ground);
 	// BW1W120 0041a130 BW1M119 011701c0

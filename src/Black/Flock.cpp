@@ -13,7 +13,7 @@ char* Flock::GetDebugText()
 
 Town* Flock::GetTown()
 {
-	return town;
+	return town.Get();
 }
 
 void Flock::ToBeDeleted(bool32_t delete_now)

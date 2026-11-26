@@ -164,6 +164,20 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GAnimalStateTableInfo@@2PAV1@A'
     addend: 0x2618
+# Animal.cpp's calls to GUtils::GetDistanceInMetres's reference overload and LHLinkedList<Flock*>::Remove, folded
+# into the pointer overload and LHLinkedList<Villager*>::Remove.
+  - source: 0x00414DC3
+    type: x86_rel32
+    target: '?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z'
+  - source: 0x004162CA
+    type: x86_rel32
+    target: '?Remove@?$LHLinkedList@PAVFlock@@@@QAEXPAVFlock@@_N@Z'
+  - source: 0x0041772B
+    type: x86_rel32
+    target: '?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z'
+  - source: 0x00417784
+    type: x86_rel32
+    target: '?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z'
 # Animal.cpp's CallSaveStateFunction and CallLoadStateFunction: the lea of the state's SaveState and LoadState
 # member pointers in Animal::StateTable (dtk leaves the displacement unrelocated).
   - source: 0x00417E5A
@@ -2605,6 +2619,14 @@ add_relocations:
   - source: 0x007E98F7
     type: x86_rel32
     target: '??1?$LHLinkedList@PAULHSegmentDesc@@@@QAE@XZ'
+# BuildingSite.cpp's BuildingSite and WorkshopBuildingSite vftables: BuildingSite::IsLinkedToThisBuildingSite,
+# folded into Animal::LookForFoodPos.
+  - source: 0x00805DA4
+    type: x86_abs32
+    target: '?IsLinkedToThisBuildingSite@BuildingSite@@UAEHPAVPot@@@Z'
+  - source: 0x0080615C
+    type: x86_abs32
+    target: '?IsLinkedToThisBuildingSite@BuildingSite@@UAEHPAVPot@@@Z'
 # adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x00B5261E
     type: x86_abs32

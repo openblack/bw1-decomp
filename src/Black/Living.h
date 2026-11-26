@@ -170,6 +170,10 @@ public:
 			uint16_t StatusDowned : 1;
 			uint16_t : 1;
 			uint16_t ShowInfo : 1;
+#ifdef VERSION_BW1WCI
+			uint16_t : 1;
+			uint16_t StatusImmuneToSpells : 1;
+#endif
 		};
 	};
 	LHPTR<Flock>            flock;
@@ -585,9 +589,9 @@ public:
 	virtual int MoveByTeleport(const MapCoords& pos);
 #ifdef VERSION_BW1WCI
 	// BW1WCI 00417b00 BW1MCI119 0114beb0
-	virtual bool IsImmuneToSpells();
+	virtual bool IsImmuneToSpells() { return StatusImmuneToSpells; }
 	// BW1WCI 00417b10 BW1MCI119 0114bf00
-	virtual void SetImmuneToSpells(bool immune);
+	virtual void SetImmuneToSpells(bool immune) { StatusImmuneToSpells = immune; }
 	// BW1WCI 0047e180 BW1MCI119 01202cb0
 	virtual bool32_t IsStateEntryFunctionSameAs(unsigned long state, unsigned long other_state) const { return false; }
 #endif
@@ -646,11 +650,11 @@ public:
 	// BW1W120 00417410 BW1M119 01139860
 	virtual bool32_t CanBePoodUponByCreature(Creature* creature) { return false; }
 	// BW1W120 00417420 BW1M119 011398b0
-	virtual bool32_t CanBeDestroyedByStoning(Creature* creature);
+	virtual bool32_t CanBeDestroyedByStoning(Creature* creature) { return !IsDead(); }
 	// BW1W120 00417430 BW1M119 01139930
-	virtual bool32_t CanBeStompedOnByCreature(Creature* creature);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* creature) { return !IsDead(); }
 	// BW1W120 00417440 BW1M119 011399b0
-	virtual bool32_t CanBeDancedWith(Creature* creature);
+	virtual bool32_t CanBeDancedWith(Creature* creature) { return !IsDead(); }
 	// BW1W120 00417450 BW1M119 01139a20
 	virtual bool32_t IsAggressive(Creature* creature) { return true; }
 	// BW1W120 00417460 BW1M119 01006820
