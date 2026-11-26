@@ -575,7 +575,7 @@ void Citadel::DeleteInsideVillagers()
 	{
 		while (People->People != NULL)
 		{
-			People->RemovePerson(People->People->living);
+			People->RemovePerson(People->People->LivingThing);
 		}
 		People->People = NULL;
 	}
