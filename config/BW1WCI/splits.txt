@@ -1158,6 +1158,7 @@ Black/GenerateCreatureHTML.cpp:
 	.rdata      start:0x00932660 end:0x0093266C
 	.CRT$XCU    start:0x00A36700 end:0x00A3670C align:4
 	.data       start:0x00C5FD58 end:0x00C5FE4C
+	.bss        start:0x00D8463C end:0x00D84650
 
 Black/GestureSystem.cpp:
 	.text       start:0x0058D230 end:0x0058D800

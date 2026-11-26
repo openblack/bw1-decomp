@@ -309,6 +309,10 @@
 0x005703CA call_indirect 0x008A96E4  # GameThing: __imp__LHSampleSetVolume...
 0x00575DBB call_rel32 0x004017F9  # GatheringText
 0x005766DA call_indirect 0x008A9034  # GatheringText: __imp__DirectInputCreateA@4
+0x0057743B call_rel32 0x004017F9  # GenerateCreatureHTML
+0x0057745B call_rel32 0x004017F9  # GenerateCreatureHTML
+0x0057795A call_indirect 0x008A90F0  # GenerateCreatureHTML: __imp___CreateEffect_CImmProject__QAEPAVCImmCompoundEffect__PBDPAVCImmDevice__K_Z@4
+0x0057805B call_rel32 0x004017F9  # GenerateCreatureHTML
 0x00578B0A call_indirect 0x008A903C  # GestureSystem: __imp__DirectXSetupGetVersion
 0x00578E1A call_indirect 0x008A97B8  # GestureSystemData
 0x00578E9A call_indirect 0x008A9490  # GestureSystemData

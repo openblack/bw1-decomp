@@ -1086,7 +1086,7 @@ Black/GenerateCreatureHTML.cpp:
 	.text       start:0x005442C0 end:0x00544E80
 	.rdata      start:0x0083DF08 end:0x0083DF14
 	.CRT$XCU    start:0x008F668C end:0x008F6698 align:4
-	.data       start:0x00B1C28C end:0x00B1C6B4
+	.data       start:0x00B1C28C end:0x00B1C37C
 	.bss        start:0x00C27580 end:0x00C27594
 
 Black/GestureSystem.cpp:
@@ -1116,6 +1116,7 @@ Black/GestureSystemResult.cpp:
 	.text       start:0x005466F0 end:0x005467C0
 	.rdata      start:0x0083DF38 end:0x0083DF3C
 	.CRT$XCU    start:0x008F66F0 end:0x008F6704 align:4
+	.data       start:0x00B1C37C end:0x00B1C4E0
 
 Black/GestureSystemSamples.cpp:
 	.text       start:0x005467C0 end:0x005474E0
@@ -1128,7 +1129,7 @@ Black/GJBaseUtils.cpp:
 	.text$x     start:0x007E9330 end:0x007E9340 align:4
 	.rdata      start:0x0083DF4C end:0x0083DF9C
 	.CRT$XCU    start:0x008F6718 end:0x008F672C align:4
-	.data       start:0x00B1C6B4 end:0x00B1C6F0
+	.data       start:0x00B1C4E0 end:0x00B1C6F0
 	.bss        start:0x00C2763C end:0x00C276E0
 
 Black/GJPersistent.cpp:

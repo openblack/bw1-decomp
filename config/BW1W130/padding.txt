@@ -1175,6 +1175,21 @@
 0x0057A455 jmp_run 0x00579D95  # GatheringText
 0x0057A4E9 copy_run 0x0057A455  # GatheringText
 0x0057A9B8 jmp_run 0x0057A4E9  # GatheringText
+0x0057AA0B call_rel32 0x00403C49  # GenerateCreatureHTML
+0x0057AA2B call_rel32 0x00403C49  # GenerateCreatureHTML
+0x0057AA53 jmp_run 0x0057AA2B  # GenerateCreatureHTML
+0x0057ABB1 jmp_run 0x0057AA53  # GenerateCreatureHTML
+0x0057AD77 jmp_run 0x0057ABB1  # GenerateCreatureHTML
+0x0057ADC4 copy_run 0x0057AD77  # GenerateCreatureHTML
+0x0057AE14 jmp_run 0x0057ADC4  # GenerateCreatureHTML
+0x0057AE64 copy_run 0x0057AE14  # GenerateCreatureHTML
+0x0057AF2A call_filler 0x004034F9 0x00  # GenerateCreatureHTML
+0x0057B165 copy_run 0x0057AF2A  # GenerateCreatureHTML
+0x0057B2D2 jmp_run 0x0057B165  # GenerateCreatureHTML
+0x0057B493 jmp_run 0x0057B2D2  # GenerateCreatureHTML
+0x0057B581 copy_run 0x0057B493  # GenerateCreatureHTML
+0x0057B62B call_rel32 0x00403C49  # GenerateCreatureHTML
+0x0057B8F9 jmp_run 0x0057B62B  # GenerateCreatureHTML
 0x0057BB39 jmp_run 0x0057B8F9  # GestureSystem
 0x0057BB89 copy_run 0x0057BB39  # GestureSystem
 0x0057BBB9 jmp_run 0x0057BB89  # GestureSystem
