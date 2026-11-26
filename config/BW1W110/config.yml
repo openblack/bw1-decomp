@@ -518,7 +518,7 @@ add_relocations:
     target: '__except_list'
   - source: 0x008963A1
     type: x86_abs32
-    target: '$T99293'
+    target: '$T104019'
   - source: 0x00927EEC
     type: x86_abs32
     target: '??_EParticlePointCreator@@UAEPAXI@Z'

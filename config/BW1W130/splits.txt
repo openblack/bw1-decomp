@@ -496,7 +496,7 @@ Black/ControlHand.cpp:
 Black/ControlMap.cpp:
 	.text       start:0x00470FD0 end:0x00473D90
 	.CRT$XCU    start:0x00A4632C end:0x00A46338 align:4
-	.data       start:0x00A4F27C end:0x00A4F410
+	.data       start:0x00A4F27C end:0x00A4F40B
 	.bss        start:0x00CDF660 end:0x00CDF89C
 
 Black/CPUCheck.cpp:

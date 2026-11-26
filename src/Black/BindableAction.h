@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
-#include <uchar.h>  /* For char16_t */
+#include <uchar.h>  /* For wchar_t */
 
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
 #include <re_common.h>         /* For bool32_t */
@@ -52,9 +52,10 @@ enum BINDABLE_ACTIONS
 	_BINDABLE_ACTIONS_COUNT
 };
 
-#define CONTROL_KEY_SCAN_CODE 0x7f
-#define CONTROL_KEY_EXTENDED  0x80
-#define CONTROL_KEY_DONT_CARE 0x100
+#define CONTROL_KEY_SCAN_CODE   0x7f
+#define CONTROL_KEY_EXTENDED    0x80
+#define CONTROL_KEY_DONT_CARE   0x100
+#define CONTROL_KEY_NAME_LENGTH 0x10
 
 #define CONTROL_KEY_NAME_DATA(key)                                                                                     \
 	(((((key) & CONTROL_KEY_EXTENDED) | CONTROL_KEY_DONT_CARE) << 1 | ((key) & CONTROL_KEY_SCAN_CODE)) << 16)
@@ -87,91 +88,152 @@ struct CMouse
 
 struct ControlKey
 {
-	LH_KEY   key; /* 0x0 */
-	char16_t KeyDisplayText[0x40];
-	LH_KEY   keymod; /* 0x84 */
-	char16_t KeymodDisplayText[0x40];
+	LH_KEY  key; /* 0x0 */
+	wchar_t KeyDisplayText[0x40];
+	LH_KEY  keymod; /* 0x84 */
+	wchar_t KeymodDisplayText[0x40];
 
 	// BW1W120 0046ee30 BW1M119 011d48e0
 	ControlKey();
+	// BW1W120 inlined BW1M119 inlined
+	ControlKey(LH_KEY key, LH_KEY keymod) { SetKey(key, keymod); }
 	// BW1W120 0046ee50 BW1M119 011d4870
 	~ControlKey();
 	// BW1W120 0046eed0 BW1M119 011d4550
 	void SetKey(LH_KEY key, LH_KEY keymod);
 	// BW1W120 0046efd0 BW1M119 011d4500
 	bool32_t IsAvailable();
-	// BW1W120 0046efe0 BW1M119 inlined
-	void GetDisplayText(char16_t* out_text);
+	// BW1W120 0046efe0 BW1M119 011d4460
+	void GetDisplayText(wchar_t* out_text);
 };
 
 struct ControlMouse
 {
 	enum MOUSE_CONTROL_BUTTON
 	{
-		MOUSE_CONTROL_BUTTON_NONE = 0
+		MOUSE_CONTROL_BUTTON_NONE = 0,
+		MOUSE_CONTROL_BUTTON_LEFT = 1,
+		MOUSE_CONTROL_BUTTON_MIDDLE = 2,
+		MOUSE_CONTROL_BUTTON_WHEEL_UP = 3,
+		MOUSE_CONTROL_BUTTON_WHEEL_DOWN = 4,
+		MOUSE_CONTROL_BUTTON_RIGHT = 5,
 	};
 
-	uint32_t code; /* 0x0 */
-	char16_t DisplayText[0x80];
+	MOUSE_CONTROL_BUTTON code; /* 0x0 */
+	wchar_t              DisplayText[0x80];
+
+	// BW1W120 0046f030 BW1M119 011d4420
+	ControlMouse();
+	// BW1W120 inlined BW1M119 inlined
+	ControlMouse(MOUSE_CONTROL_BUTTON button) { SetMouseButton(button); }
+	// BW1W120 0046f040 BW1M119 011d43b0
+	~ControlMouse();
 
 	// Non-virtual methods
 
 	// BW1W120 0046f050 BW1M119 011d4250
 	void SetMouseButton(MOUSE_CONTROL_BUTTON button);
+	// BW1W120 0046f170 BW1M119 null
+	bool32_t IsAvailable();
 	// BW1W120 0046f180 BW1M119 011d4130
-	void GetDisplayText(char16_t* out_text);
+	void GetDisplayText(wchar_t* out_text);
 };
 
 struct BindableAction
 {
-	char16_t     name[0x80]; /* 0x0 */
+	wchar_t      name[0x80]; /* 0x0 */
 	ControlKey   key;        /* 0x100 */
 	ControlMouse mouse;      /* 0x208 */
 
 	// Static methods
 
 	// BW1W120 0046f3c0 BW1M119 01092e60
-	static bool IsKeyDown(LH_KEY key);
+	static bool32_t IsKeyDown(LH_KEY key);
 
 	// Constructors
 
 	// BW1W120 0046f1a0 BW1M119 011d40a0
 	BindableAction();
+	// BW1W120 0046f1e0 BW1M119 011d4030
+	~BindableAction();
 
 	// Non-virtual methods
 
-	// BW1W120 0046f4c0 BW1M119 01092db0
-	bool IsKeyBeingPressed();
-	// BW1W120 0046f500 BW1M119 01092be0
-	bool32_t IsMouseBeingPressed();
-	// BW1W120 0046f360 BW1M119 011d3c30
-	static bool32_t CompareKeys(LH_KEY key, LH_KEY other_key);
+	// BW1W120 0046f200 BW1M119 inlined
+	void SetName(wchar_t* new_name);
 	// BW1W120 0046f220 BW1M119 011d3f90
 	void SetKey(const ControlKey& new_key);
+	// BW1W120 0046f240 BW1M119 inlined
+	void GetName(wchar_t* out_text);
 	// BW1W120 0046f260 BW1M119 011d3eb0
 	void GetKeyText(wchar_t* out_text);
 	// BW1W120 0046f2b0 BW1M119 011d3e30
 	void GetMouseText(wchar_t* out_text);
 	// BW1W120 0046f2f0 BW1M119 011d3da0
-	void GetRidOfKey(LH_KEY key, LH_KEY keymod);
+	bool32_t GetRidOfKey(LH_KEY key, LH_KEY keymod);
 	// BW1W120 0046f330 BW1M119 011d3d00
-	void GetRidOfMouse(ControlMouse::MOUSE_CONTROL_BUTTON button);
-#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
-	// BW1W120 inlined BW1M119 011d3730
-	bool IsKeyBeingPressed(LH_KEY key, LH_KEY keymod);
-	// BW1W120 inlined BW1M119 01092940
-	bool32_t IsMouseButtonClicked();
-	// BW1W120 inlined BW1M119 010933e0
-	bool32_t IsMouseButtonDoubleClicked();
-	// BW1W120 inlined BW1M119 010a0dc0
-	bool32_t IsMouseButtonReleased();
-	// BW1W120 inlined BW1M119 010a0e90
+	bool32_t GetRidOfMouse(ControlMouse::MOUSE_CONTROL_BUTTON button);
+	// BW1W120 0046f360 BW1M119 011d3c30
+	static bool32_t CompareKeys(LH_KEY key, LH_KEY other_key);
+	// BW1W120 0046f440 BW1M119 null
+	bool32_t IsKeyBeingUsed(LH_KEY key);
+	// BW1W120 0046f460 BW1M119 010a0e90
 	bool32_t IsMouseBeingUsed(ControlMouse::MOUSE_CONTROL_BUTTON button);
-	// BW1W120 inlined BW1M119 01094a90
-	ControlMouse::MOUSE_CONTROL_BUTTON GetMouseButton() const;
-#endif
+	// BW1W120 0046f480 BW1M119 011d3730
+	bool32_t IsKeyBeingPressed(LH_KEY key, LH_KEY keymod);
+	// BW1W120 0046f4c0 BW1M119 01092db0
+	bool32_t IsKeyBeingPressed();
+	// BW1W120 0046f500 BW1M119 01092be0
+	bool32_t IsMouseBeingPressed();
+	// BW1W120 0046f590 BW1M119 01092940
+	bool32_t IsMouseButtonClicked();
+	// BW1W120 0046f5f0 BW1M119 010933e0
+	bool32_t IsMouseButtonDoubleClicked();
+	// BW1W120 0046f660 BW1M119 010a0dc0
+	bool32_t IsMouseButtonReleased();
 	// BW1W120 inlined BW1M119 011a68f0
 	ControlKey GetPrimaryKey() const { return key; }
+	// BW1W120 inlined BW1M119 01094a90
+	ControlMouse GetMouseButton() const { return mouse; }
+};
+
+enum BINDABLE_ACTION_PADDING
+{
+	BINDABLE_ACTION_PADDING_0,
+	BINDABLE_ACTION_PADDING_1,
+	BINDABLE_ACTION_PADDING_2,
+	BINDABLE_ACTION_PADDING_3,
+	BINDABLE_ACTION_PADDING_4,
+	BINDABLE_ACTION_PADDING_5,
+	BINDABLE_ACTION_PADDING_6,
+	BINDABLE_ACTION_PADDING_7,
+	BINDABLE_ACTION_PADDING_8,
+	BINDABLE_ACTION_PADDING_9,
+	BINDABLE_ACTION_PADDING_10,
+	BINDABLE_ACTION_PADDING_11,
+	BINDABLE_ACTION_PADDING_12,
+	BINDABLE_ACTION_PADDING_13,
+	BINDABLE_ACTION_PADDING_14,
+	BINDABLE_ACTION_PADDING_15,
+	BINDABLE_ACTION_PADDING_16,
+	BINDABLE_ACTION_PADDING_17,
+	BINDABLE_ACTION_PADDING_18,
+	BINDABLE_ACTION_PADDING_19,
+	BINDABLE_ACTION_PADDING_20,
+	BINDABLE_ACTION_PADDING_21,
+	BINDABLE_ACTION_PADDING_22,
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
+	BINDABLE_ACTION_PADDING_23,
+	BINDABLE_ACTION_PADDING_24,
+	BINDABLE_ACTION_PADDING_25,
+	BINDABLE_ACTION_PADDING_26,
+	BINDABLE_ACTION_PADDING_27,
+	BINDABLE_ACTION_PADDING_28,
+	BINDABLE_ACTION_PADDING_29,
+	BINDABLE_ACTION_PADDING_30,
+	BINDABLE_ACTION_PADDING_31,
+	BINDABLE_ACTION_PADDING_32,
+#endif
 };
 
 #endif /* BW1_DECOMP_BINDABLE_ACTION_INCLUDED_H */

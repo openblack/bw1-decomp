@@ -1862,7 +1862,7 @@ add_relocations:
 # istream::operator>>(unsigned long&) EH funclet: mov eax, <its exception-state table>.
   - source: 0x008A6591
     type: x86_abs32
-    target: '$T99795'
+    target: '$T104020'
 # WorshipSpellIcon vtable entries.
   - source: 0x0099D87C
     type: x86_abs32

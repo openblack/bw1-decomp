@@ -1434,7 +1434,7 @@ add_relocations:
     addend: 0x1a2
   - source: 0x007E9431
     type: x86_abs32
-    target: '$T97681'
+    target: '$T102435'
   - source: 0x008EE814
     type: x86_abs32
     target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
