@@ -422,12 +422,13 @@ Black/CitadelPart.cpp:
 	.text       start:0x00468580 end:0x00468AF0
 	.rdata      start:0x008BAAE0 end:0x008BB91C
 	.CRT$XCU    start:0x009B61E8 end:0x009B61EC align:4
-	.data       start:0x009BE124 end:0x009BE158
-	.bss        start:0x00C4D224 end:0x00C4D2CC
+	.data       start:0x009BE124 end:0x009BE134
+	.bss        start:0x00C4D224 end:0x00C4D228
 
 Black/citadelpeople.cpp:
 	.text       start:0x00468AF0 end:0x004699A0
-	.data       start:0x009BE158 end:0x009BE178
+	.data       start:0x009BE134 end:0x009BE178
+	.bss        start:0x00C4D228 end:0x00C4D2CC
 
 Black/Collide.cpp:
 	.text       start:0x004699A0 end:0x00469FB0
