@@ -8,18 +8,20 @@
 
 // Forward Declares
 
+class AtomCore;
 class Base;
 class GameOSFile;
 class Persistent;
 struct Zoomer3d;
 
-#define PARTICLE_3D_ANIM_WITH_CAMERA_ZOOM_TIME 0.3f
+#define PARTICLE_3D_ANIM_WITH_CAMERA_ZOOM_TIME     0.3f
+#define PARTICLE_3D_ANIM_WITH_CAMERA_DEFAULT_PAUSE 4.0f
 
 class Particle3DAnimWithCamera : public Particle3DAnim
 {
 public:
 	Persistent* CameraCreator;
-	uint8_t     field_0x34;
+	bool        CameraEnabled;
 	bool        CameraActive;
 	bool        CameraPositioned;
 	float       PauseBeforePlay;
@@ -27,8 +29,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 006c8680 BW1M119 inlined
+	// BW1W120 006c8680 BW1M119 01484010
 	virtual ~Particle3DAnimWithCamera();
+	// BW1W120 006c8670 BW1M119 0142c3d0
+	virtual char* GetDebugText();
+	// BW1W120 006c8660 BW1M119 0142c380
+	virtual uint32_t GetSaveType();
+	// BW1W120 006c86f0 BW1M119 01483db0
+	virtual void GameUpdate(AtomCore* core);
 	// BW1W120 006954c0 BW1M119 01425600
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cc010 BW1M119 0148c360

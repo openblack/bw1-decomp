@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "PSysBase.h" /* For struct PSysBase */
+#include "GJBaseUtils.h" /* For GJDoubleLinkList */
+#include "PSysBase.h"    /* For struct PSysBase */
 
 // Forward Declares
 
@@ -13,6 +14,9 @@ class Base;
 class GameOSFile;
 class GameThing;
 struct LHPoint;
+
+#define DRAW_OFFSET_DECAY_DEFAULT_RATE            0.5f
+#define DRAW_OFFSET_DECAY_SECONDS_PER_MILLISECOND 0.001f
 
 class BaseAtomModifierData : public PSysBase
 {
@@ -71,9 +75,12 @@ class DrawOffset : public PSysBase
 public:
 	uint16_t ReferenceCount;
 
+	// BW1W120 inlined BW1M119 inlined
+	DrawOffset() : ReferenceCount(0) {}
+
 	// Override methods
 
-	// BW1W120 006c7550 BW1M119 01486480
+	// BW1W120 006c7520 BW1M119 01486480
 	virtual ~DrawOffset();
 	// BW1W120 006c7540 BW1M119 0142cac0
 	virtual char* GetDebugText();
@@ -109,7 +116,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 006c7820 BW1M119 01485f20
+	// BW1W120 006c78a0 BW1M119 01485f20
 	virtual ~DrawOffsetDecay();
 	// BW1W120 006c7810 BW1M119 0142c930
 	virtual char* GetDebugText();
@@ -126,8 +133,18 @@ public:
 	DrawOffsetDecay();
 	// BW1W120 006c7840 BW1M119 01485fd0
 	DrawOffsetDecay(const LHPoint& offset);
-	// BW1W120 0068f680 BW1M119 010178e0
+	// BW1W120 006c78e0 BW1M119 inlined
+	void Update();
+	// BW1W120 006c7980 BW1M119 01485e90
+	static void OnClearMap();
+	// BW1W120 006c7990 BW1M119 010178e0
 	static void ProcessList();
+
+	static GJDoubleLinkList<DrawOffsetDecay> List;
+
+private:
+	// BW1W120 006c7760 BW1M119 inlined
+	void Init();
 };
 static_assert(sizeof(DrawOffsetDecay) == 0x40, "Data type is of wrong size");
 
@@ -139,8 +156,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 006c75e0 BW1M119 0142c970
-	virtual ~DrawOffsetLT();
 	// BW1W120 006c75d0 BW1M119 0142ca40
 	virtual char* GetDebugText();
 	// BW1W120 00694df0 BW1M119 01425ce0

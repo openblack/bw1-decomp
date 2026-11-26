@@ -15,6 +15,9 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0069d580 BW1M119 0142e6c0
+	void Release();
+
 	// BW1W120 0069d690 BW1M119 01083370
 	void SetAlphaColor(uint32_t color);
 	// BW1W120 0069d730 BW1M119 01083310

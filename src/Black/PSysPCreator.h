@@ -19,23 +19,23 @@ class Base;
 class Creature;
 class GameOSFile;
 class GameThing;
-class GameThingWithPos;
 class GoldenShower;
+class GPlayer;
 class LH3DMist;
 class LH3DObject;
 struct LH3DMesh;
 class Object;
 class ParticleCreator;
 
+#define RENDER_PARTICLE_CREATURE_SURFACE_SCALE 0.29999998f
+
 class RenderParticleCreatureRef : public RenderParticle
 {
 public:
-	GTPointer<Creature> field_0x18;
+	GTPointer<Creature> TargetCreature;
 
 	// Override methods
 
-	// BW1W120 006c7ee0 BW1M119 0142c140
-	virtual ~RenderParticleCreatureRef();
 	// BW1W120 006c7ec0 BW1M119 0142c240
 	virtual char* GetDebugText();
 	// BW1W120 00695770 BW1M119 01425460
@@ -49,8 +49,13 @@ public:
 	// BW1W120 006c7f30 BW1M119 01484fd0
 	virtual void GetRandomSurfacePos(const LHMatrix& matrix, LHPoint* pos);
 
+	// BW1W120 006c7eb0 BW1M119 0142c1f0
+	virtual uint32_t GetSaveType();
+
 	// BW1W120 006c7f10 BW1M119 014851c0
 	RenderParticleCreatureRef();
+	// BW1W120 006c7e70 BW1M119 01485280
+	RenderParticleCreatureRef(Creature* creature);
 };
 
 class RenderParticleGJMesh : public RenderParticle
@@ -67,6 +72,9 @@ public:
 	virtual ~RenderParticleGJMesh();
 	// BW1W120 0067c150 BW1M119 013f5b00
 	virtual void DrawAt(const DrawData& data);
+
+	// BW1W120 006c8a90 BW1M119 01483740
+	RenderParticleGJMesh();
 };
 static_assert(sizeof(RenderParticleGJMesh) == 0x24, "Data type is of wrong size");
 
@@ -88,6 +96,11 @@ public:
 	virtual ~RenderParticleGJMeshRotatingUV();
 	// BW1W120 0067cba0 BW1M119 013f5980
 	virtual void DrawAt(const DrawData& data);
+	// BW1W120 006c8bc0 BW1M119 01483340
+	virtual void GameUpdate(AtomCore* core);
+
+	// BW1W120 006c8b60 BW1M119 014835a0
+	RenderParticleGJMeshRotatingUV();
 };
 static_assert(sizeof(RenderParticleGJMeshRotatingUV) == 0x44, "Data type is of wrong size");
 
@@ -95,9 +108,9 @@ class RenderParticleGameObject : public RenderParticle
 {
 public:
 	GTPointer<Object> GameObject;
-	GameThingWithPos* field_0x20;
-	LHMatrix          field_0x24;
-	uint8_t           field_0x54;
+	GPlayer*          Player;
+	LHMatrix          Matrix;
+	bool              KillLiving;
 
 	// Override methods
 
@@ -105,6 +118,8 @@ public:
 	virtual ~RenderParticleGameObject();
 	// BW1W120 006c9ec0 BW1M119 0142bf20
 	virtual char* GetDebugText();
+	// BW1W120 006c9eb0 BW1M119 0142bed0
+	virtual uint32_t GetSaveType();
 	// BW1W120 006958d0 BW1M119 014251b0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cc440 BW1M119 0148bf40
@@ -116,6 +131,13 @@ public:
 
 	// BW1W120 006c9e60 BW1M119 01482070
 	RenderParticleGameObject();
+
+	// BW1W120 006ca0e0 BW1M119 014816d0
+	void SetGameObject(AtomCore* core, Object* object);
+	// BW1W120 006c9ef0 BW1M119 01481e20
+	void StopFlying();
+	// BW1W120 006ca060 BW1M119 01481970
+	static bool32_t InitialisePSysFlying(Object* object);
 };
 
 class RenderParticleGameObjectRef : public RenderParticle
@@ -139,6 +161,8 @@ public:
 	virtual ~RenderParticleGameObjectRef();
 	// BW1W120 006c8120 BW1M119 0142c0f0
 	virtual char* GetDebugText();
+	// BW1W120 006c8110 BW1M119 0142c0a0
+	virtual uint32_t GetSaveType();
 	// BW1W120 006cc350 BW1M119 0148c120
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006957e0 BW1M119 014253a0
@@ -182,7 +206,7 @@ class RenderParticleMist : public RenderParticle
 {
 public:
 	ParticleCreator* Creator;
-	uint32_t         field_0x1c;
+	float            Ratio;
 	bool             TakeRatioFromMatrix;
 	PSysLightMap     LightMap;
 	LH3DMist*        Mist;
@@ -193,6 +217,8 @@ public:
 	virtual ~RenderParticleMist();
 	// BW1W120 006c9cb0 BW1M119 0142c6d0
 	virtual char* GetDebugText();
+	// BW1W120 006c9ca0 BW1M119 0142c690
+	virtual uint32_t GetSaveType();
 	// BW1W120 00695030 BW1M119 01425a40
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cbb50 BW1M119 0148c7a0
@@ -207,7 +233,9 @@ public:
 };
 static_assert(sizeof(RenderParticleMist) == 0x48, "Data type is of wrong size");
 
-#define VOL_BLEND_TEXTURE_SIZE 256
+#define VOL_BLEND_TEXTURE_SIZE       256
+#define VOL_BLEND_DEFAULT_FRAME_SIZE 64
+#define VOL_BLEND_AMOUNT_UNSET       -1.0f
 
 class RenderParticleVolBlendMesh : public RenderParticle
 {
@@ -227,6 +255,9 @@ public:
 	virtual ~RenderParticleVolBlendMesh();
 	// BW1W120 0067ccb0 BW1M119 013f52e0
 	virtual void DrawAt(const DrawData& data);
+
+	// BW1W120 006ca710 BW1M119 01480db0
+	RenderParticleVolBlendMesh();
 };
 static_assert(sizeof(RenderParticleVolBlendMesh) == 0x38, "Data type is of wrong size");
 

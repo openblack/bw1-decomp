@@ -16,6 +16,14 @@ public:
 
 	// Deliberately leaves the turn uninitialized (BW1M119 01305cc0 for GameThing).
 	GTPointer() : Pointer(0) {}
+	// BW1W120 inlined BW1M119 inlined
+	GTPointer(T* pointer) : Pointer(pointer)
+	{
+		if (Pointer)
+		{
+			SetGameTurnValidated();
+		}
+	}
 	// BW1W120 inlined BW1M119 0130d090
 	GTPointer operator=(T* pointer)
 	{

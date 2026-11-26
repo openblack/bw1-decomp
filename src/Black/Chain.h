@@ -11,6 +11,9 @@
 #define CHAIN_SECONDS_PER_MILLISECOND 0.001f
 #define CHAIN_AMBIENT_LIGHT           0.6f
 
+#define CHAIN_DEFAULT_FRAME_HEIGHT 64
+#define CHAIN_DEFAULT_FRAME_WIDTH  32
+
 #define CHAIN_POINTS_PER_SIDE     2
 #define CHAIN_POINTS_PER_SEGMENT  (2 * CHAIN_POINTS_PER_SIDE)
 #define CHAIN_COLOURS_PER_SIDE    (CHAIN_POINTS_PER_SIDE * 2)
@@ -28,14 +31,14 @@ class Chain : public PSysBase
 {
 public:
 	Persistent*         Creator;
-	long                field_0x18;
+	long                Reserved1;
 	long                FrameHeight;
-	float               field_0x20;
-	float               field_0x24;
-	float               field_0x28;
-	float               field_0x2c;
-	float               field_0x30;
-	float               field_0x34;
+	long                FrameWidth;
+	long                FrameOfHead;
+	long                FrameOfTail;
+	long                Reserved2;
+	long                NumTexturesForWholeChain;
+	long                FileOffset;
 	bool                UseDynamicLighting;
 	float               ScrollOffset;
 	bool                JointsUpdated;
@@ -57,6 +60,8 @@ public:
 
 	// BW1W120 006c87d0 BW1M119 01483d30
 	Chain();
+	// BW1W120 006c8830 BW1M119 01483ba0
+	Chain(unsigned long num_joints);
 
 	// Non-virtual methods
 

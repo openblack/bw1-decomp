@@ -7,6 +7,8 @@
 #include "PSysLightMap.h"       /* For class PSysLightMap */
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
+#define PARTICLE_LIGHT_MAP_DEFAULT_JITTER 5.0f
+
 // Forward Declares
 
 class Base;
@@ -20,16 +22,16 @@ public:
 	ParticleCreator* Creator;
 	float            RandJitter;
 	bool32_t         UseRandJitter;
-	uint32_t         field_0x24;
-	uint32_t         field_0x28;
+	float            ShiftX;
+	float            ShiftZ;
 	PSysLightMap     LightMap;
 
 	// Override methods
 
-	// BW1W120 006ca450 BW1M119 0142c560
-	virtual ~ParticleLightMap();
 	// BW1W120 006ca440 BW1M119 0142c650
 	virtual char* GetDebugText();
+	// BW1W120 006ca430 BW1M119 0142c610
+	virtual uint32_t GetSaveType();
 	// BW1W120 006cbcb0 BW1M119 0148c600
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00699da0 BW1M119 014206a0

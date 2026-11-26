@@ -6,7 +6,8 @@
 
 #include "Particle3DObj.h" /* For struct Particle3DObj */
 
-#define PARTICLE_ANIM_TEXTURE_SIZE 256
+#define PARTICLE_ANIM_TEXTURE_SIZE       256
+#define PARTICLE_ANIM_DEFAULT_FRAME_SIZE 64
 
 // Forward Declares
 
@@ -16,17 +17,21 @@ class GameOSFile;
 class Particle3DObjAnimTextured : public Particle3DObj
 {
 public:
-	long    TextureHeight;
-	long    TextureWidth;
-	bool    SlideU;
-	bool    SlideV;
-	uint8_t field_0x32;
-	long    NumFrames;
+	long TextureHeight;
+	long TextureWidth;
+	bool SlideU;
+	bool SlideV;
+	bool DrawMelted;
+	long NumFrames;
 
 	// Override methods
 
-	// BW1W120 006c7e40 BW1M119 inlined
+	// BW1W120 006c7e40 BW1M119 01485350
 	virtual ~Particle3DObjAnimTextured();
+	// BW1W120 006c7e30 BW1M119 0142c330
+	virtual char* GetDebugText();
+	// BW1W120 006c7e20 BW1M119 0142c2e0
+	virtual uint32_t GetSaveType();
 	// BW1W120 00695600 BW1M119 01425520
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cc160 BW1M119 0148c280

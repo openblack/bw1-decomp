@@ -33,10 +33,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 006c7a60 BW1M119 inlined
+	// BW1W120 006c7a60 BW1M119 01485a60
 	virtual ~Particle3DObj();
-	// BW1W120 006c7a50 BW1M119 inlined
+	// BW1W120 006c7a50 BW1M119 0142c520
 	virtual char* GetDebugText();
+	// BW1W120 006c7a40 BW1M119 0142c4e0
+	virtual uint32_t GetSaveType();
 	// BW1W120 00695340 BW1M119 01425800
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cbe80 BW1M119 0148c560
@@ -55,6 +57,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 006c7ad0 BW1M119 inlined
+	LH3DObject* GetObject3D();
 	// BW1W120 00679f20 BW1M119 013f9210
 	void DrawNow();
 	// BW1W120 00679f60 BW1M119 013f90e0

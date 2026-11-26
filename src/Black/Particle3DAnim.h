@@ -14,7 +14,9 @@ class GameThing;
 class LH3DObject;
 class ParticleCreator;
 
-#define PARTICLE_3D_ANIM_MIN_BLEND 0.0001f
+#define PARTICLE_3D_ANIM_MIN_BLEND                  0.0001f
+#define PARTICLE_3D_ANIM_DEFAULT_FRAME_TO_END_BLEND 1000.0f
+#define PARTICLE_3D_ANIM_FRAMES_PER_CYCLE           1000
 
 class Particle3DAnim : public RenderParticle
 {
@@ -28,10 +30,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 006c85a0 BW1M119 inlined
+	// BW1W120 006c85a0 BW1M119 014842b0
 	virtual ~Particle3DAnim();
-	// BW1W120 006c8580 BW1M119 inlined
+	// BW1W120 006c8580 BW1M119 0142c4a0
 	virtual char* GetDebugText();
+	// BW1W120 006c8570 BW1M119 0142c460
+	virtual uint32_t GetSaveType();
 	// BW1W120 006953b0 BW1M119 01425740
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cbef0 BW1M119 0148c4a0
@@ -48,6 +52,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 006c8620 BW1M119 inlined
+	LH3DObject* GetObject3D();
 	// BW1W120 006c85f0 BW1M119 01484210
 	long GetCycleTimeFromFrame(long frame);
 };
