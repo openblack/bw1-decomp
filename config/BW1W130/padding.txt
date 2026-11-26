@@ -727,6 +727,16 @@
 0x00464BB4 jmp_run 0x00464562  # Citadel
 0x00464C26 copy_run 0x00464BB4  # Citadel
 0x00464C96 jmp_run 0x00464C26  # Citadel
+0x0046B973 jmp_run 0x0046B917  # Config
+0x0046B99B call_rel32 0x00403C49  # Config
+0x0046BB75 jmp_run 0x0046B99B  # Config
+0x0046BCB6 jmp_run 0x0046BB71  # Config
+0x0046BD55 jmp_run 0x0046BCB6  # Config
+0x0046C0A1 copy_run 0x0046BD55  # Config
+0x0046C0FB jmp_run 0x0046C0A1  # Config
+0x0046C176 jmp_run 0x0046C0F2  # Config
+0x0046C1E4 copy_run 0x0046C1E4  # Config
+0x0046C214 jmp_run 0x0046C1E4  # Config
 0x0046C27B call_rel32 0x00403C49  # Container
 0x0046C2A5 copy_run 0x0046C27B  # Container
 0x0046C429 copy_run 0x0046C2A3  # Container

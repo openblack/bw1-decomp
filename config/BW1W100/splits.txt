@@ -409,15 +409,17 @@ Black/citadelpeople.cpp:
 
 Black/Collide.cpp:
 	.text       start:0x004558D0 end:0x00455EE0
+	.rdata      start:0x0080A7FC end:0x0080A804
 	.CRT$XCU    start:0x008F61A8 end:0x008F61AC align:4
-	.data       start:0x008FD230 end:0x008FD254
+	.data       start:0x008FD230 end:0x008FD24C
+	.bss        start:0x00B7FD1C end:0x00B7FD28
 
 Black/Config.cpp:
 	.text       start:0x00455EE0 end:0x00456760
-	.rdata      start:0x0080A7FC end:0x0080A814
-	.CRT$XCU    start:0x008F61B0 end:0x008F61B8 align:4
-	.data       start:0x008FD254 end:0x008FD3C0
-	.bss        start:0x00B7FE54 end:0x00B7FE60
+	.rdata      start:0x0080A804 end:0x0080A814
+	.CRT$XCU    start:0x008F61AC end:0x008F61B8 align:4
+	.data       start:0x008FD24C end:0x008FD324
+	.bss        start:0x00B7FD28 end:0x00B7FE60
 
 Black/Container.cpp:
 	.text       start:0x00456760 end:0x00456950
@@ -429,7 +431,7 @@ Black/ControlHand.cpp:
 	.text       start:0x00456950 end:0x00459B70
 	.rdata      start:0x0080AD50 end:0x0080AE00
 	.CRT$XCU    start:0x008F61D8 end:0x008F61E0 align:4
-	.data       start:0x008FD3C0 end:0x008FD528
+	.data       start:0x008FD324 end:0x008FD528
 
 Black/ControlMap.cpp:
 	.text       start:0x00459B70 end:0x0045C550
