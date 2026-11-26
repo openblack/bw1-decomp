@@ -69,7 +69,7 @@ public:
 	LiquidParticleGroup*   liquid_particle_group;
 	GInterfaceFlags        flags;
 	INTERFACE_ACTION_STATE ActionState;
-	uint32_t               field_0x48;
+	bool32_t               InInfluence;
 	uint32_t               field_0x4c;
 	LHReleasedOSFile       file;               /* 0x50 */
 	uint32_t               IsSpecificPlayback; /* 0x15c */
@@ -267,6 +267,9 @@ public:
 	CHand* GetRenderHand() { return hand.Get(); }
 	// BW1W120 inlined BW1M119 01079860
 	GInterfaceStatus* GetStatus() { return status; }
+	// Inliner IL size: <= 40
+	// BW1W120 inlined BW1M119 01018b30
+	bool32_t IsInInfluence() const { return InInfluence; }
 	// BW1W120 inlined BW1M119 014f3b00
 	HAND_STATE GetHandState() { return HandState.hand_state; }
 	// BW1W120 inlined BW1M119 01023a00

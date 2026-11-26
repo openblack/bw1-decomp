@@ -413,7 +413,7 @@ int LHMouse::SetSpriteFlags(unsigned long flags)
 	return result;
 }
 
-int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSurface)
+int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, bool32_t reallocSurface)
 {
 	// TODO(nonmatching)
 	EnterCriticalSection(&LHScreen::CriticalSection);

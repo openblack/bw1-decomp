@@ -219,14 +219,14 @@ void HandStateGrain::Update(float dt, LHMatrix* buffer)
 
 	HandStateHolding::Update(dt, buffer);
 
-	Hand->ThrowPos = Hand->GetPos();
+	Hand->HandPhysics.HandPos = Hand->GetPos();
 	LastHandPos = Hand->GetPos();
 	HandMovement = Hand->GetPos() - oldPos;
 
 	float   invDt = 1.0f / dt;
 	LHPoint velocity = (Hand->GetPos() - oldPos) * invDt;
 	HandVelocity.Update(dt, velocity);
-	Hand->ThrowVelocity = HandVelocity.GetValue();
+	Hand->HandPhysics.ThrowVelocity = HandVelocity.GetValue();
 
 	LHPoint sideways(oldMovement.z, 0.0f, -oldMovement.x);
 	float   lateral = 0.0f;
@@ -262,5 +262,5 @@ void HandStateGrain::Update(float dt, LHMatrix* buffer)
 	{
 		spin.y = 0.0f;
 	}
-	Hand->ThrowSpin = spin;
+	Hand->HandPhysics.ThrowAngularVelocity = spin;
 }

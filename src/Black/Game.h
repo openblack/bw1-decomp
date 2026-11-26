@@ -309,8 +309,8 @@ public:
 	uint32_t               field_0x205d44;
 	uint32_t               TimeInc;
 	uint32_t               field_0x205d4c;
-	uint32_t               field_0x205d50;
-	uint32_t               field_0x205d54;
+	bool32_t               MapEditorActive;
+	bool32_t               HelpEditorActive;
 	int                    field_0x205d58;
 	uint32_t               field_0x205d5c;
 	uint32_t               field_0x205d60;
@@ -555,6 +555,9 @@ public:
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long player_number, float value);
 	// BW1W120 00551580 BW1M119 01566500
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, MusicMoodPacket& packet);
+	// BW1W120 00550f10 BW1M119 0113d000
+	void SetPacket(PACKET_TYPE type, unsigned long object_index, LHPoint* first_point, LHPoint* second_point,
+	               float value);
 	// BW1W120 00550f80 BW1M119 01388940
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long first_value, unsigned long second_value,
 	               unsigned long third_value);
