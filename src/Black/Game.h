@@ -411,10 +411,6 @@ public:
 
 	// BW1W120 0054b240 BW1M119 010ccb00
 	GGame();
-	// (scalar deleting destructor)
-	// Allocated resources are owned by ToBeDeleted; only embedded members are destroyed here.
-	// BW1W120 0054bba0
-	virtual ~GGame() {}
 
 	// Non-virtual methods
 

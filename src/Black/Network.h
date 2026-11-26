@@ -60,7 +60,7 @@ struct GNetwork
 		ReloadDebugIndex = 0;
 	}
 	// BW1W120 inlined BW1M119 01390f00
-	~GNetwork();
+	~GNetwork() { Close(); }
 	// BW1W120 00635450 BW1M119 01098c40
 	LH_RETURN SendPacket(GPacket* packet, unsigned long size);
 	// BW1W120 00635470 BW1M119 null

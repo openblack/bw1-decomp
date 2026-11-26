@@ -140,8 +140,8 @@ public:
 
 	// Override methods
 
-	// BW1W120 0054b970 BW1M119 010d5300
-	virtual ~GlobalGameLists();
+	// BW1W120 0054bcb0 BW1M119 010d5300
+	virtual ~GlobalGameLists() { DeleteAll(); }
 	// BW1W120 005914d0 BW1M119 0133e730
 	virtual void Dump();
 

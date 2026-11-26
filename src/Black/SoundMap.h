@@ -56,8 +56,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 0054ba10 BW1M119 013d88d0
-	virtual ~GSoundMap();
 	// BW1W120 0071d990 BW1M119 0106aa90
 	virtual void Dump();
 
