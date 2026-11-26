@@ -753,6 +753,9 @@ add_relocations:
     type: x86_abs32
     target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x70
+  - source: 0x00797FC0
+    type: x86_rel32
+    target: '?PlaceObjectInMagicHand@GInterface@@QAEXPAVObject@@@Z'
 # UniverseRoom::~UniverseRoom's jump to PictureRoomBase::~PictureRoomBase (dtk leaves it unrelocated).
   - source: 0x007B5067
     type: x86_rel32
