@@ -14,6 +14,7 @@
 
 // Forward Declares
 
+class AtomCollection;
 class AtomCollectionModifier;
 class Base;
 class GameOSFile;
@@ -22,46 +23,47 @@ class GameThing;
 class UR_Lightning_CollectionData : public BaseCollectionModifierData
 {
 public:
-	PSysBase*                        field_0x20;
-	PSysBase*                        field_0x24;
-	uint8_t                          field_0x28[0x8];
+	// BW1W120 00d4ec60
+	static GJDoubleLinkList<UR_Lightning_CollectionData> List;
+
+	UR_Lightning_CollectionData*     CommonHelper;
+	UR_Lightning_CollectionData*     CommonHelped;
+	UR_Lightning_CollectionData*     Previous;
+	UR_Lightning_CollectionData*     Next;
 	LHPoint                          field_0x30;
 	LHPoint                          field_0x3c;
 	LHPoint                          field_0x48;
-	float                            field_0x54;
-	bool                             field_0x58;
-	bool                             field_0x59;
+	float                            Heading;
+	bool                             FirstUpdate;
+	bool                             CastingFromHand;
 	bool                             field_0x5a;
-	float                            field_0x5c;
-	float                            field_0x60;
-	long                             field_0x64;
-	uint32_t                         field_0x68;
-	GJVector<LightningObjectInfo>    field_0x6c;
+	float                            TimeSinceSearch;
+	float                            TargetDistance;
+	long                             NumTargets;
+	long                             NumLightningObjects;
+	GJVector<LightningObjectInfo>    Targets;
 	GJArray<GJVector<long> >         field_0x80;
 	long                             field_0x88;
-	GJVector<CollectionAndOwnership> field_0x8c;
+	GJVector<CollectionAndOwnership> Collections;
 	long                             field_0xa0;
 	PSysBase*                        field_0xa4;
-	PSysBase*                        field_0xa8;
+	AtomCollection*                  ParentCollection;
 	uint32_t                         field_0xac;
-	uint32_t                         field_0xb0;
+	uint32_t                         CreationTurn;
 	LHPoint                          field_0xb4;
 
 	// Override methods
 
-	// BW1W120 0068ff20 BW1M119 inlined
+	// BW1W120 0068ff00 BW1M119 01429420
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_LIGHTNING_COLLECTION_DATA; }
+	// BW1W120 0068ff10 BW1M119 01429470
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
+	// BW1W120 0068ff50 BW1M119 0141de80
 	virtual ~UR_Lightning_CollectionData();
-	// BW1W120 0068ff10 BW1M119 inlined
-	virtual char* GetDebugText();
-	// BW1W120 00697870 BW1M119 inlined
+	// BW1W120 00697870 BW1M119 01422a70
 	virtual bool32_t Load(GameOSFile& file);
-	// BW1W120 006ce3b0 BW1M119 inlined
+	// BW1W120 006ce3b0 BW1M119 01489b60
 	virtual bool32_t Save(GameOSFile& file);
-	// BW1W120 0068ff00 BW1M119 inlined
-	virtual uint32_t GetSaveType();
-
-	// BW1W120 0068fe20 BW1M119 inlined
-	UR_Lightning_CollectionData();
 
 	// BW1W120 0068fe20 BW1M119 0141e000
 	UR_Lightning_CollectionData(const AtomCollectionModifier* modifier);
@@ -70,7 +72,7 @@ public:
 
 	// BW1W120 inlined BW1M119 010910c0
 	void ValidateRefs();
-	// BW1W120 inlined BW1M119 0141ba90
+	// BW1W120 00691ad0 BW1M119 0141ba90
 	void SetCommonHelper(UR_Lightning_CollectionData* helper, long index);
 };
 

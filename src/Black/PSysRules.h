@@ -3903,8 +3903,8 @@ public:
 	float            SplitAngle;
 	float            RandomFrac;
 	float            ForkScale;
-	uint32_t         field_0x5c;
-	uint32_t         field_0x60;
+	float            field_0x5c;
+	float            CommonForkScale;
 	FloatProvider*   FP_ForkScale;
 	FloatProvider*   SearchRadius;
 	float            DefaultSearchRadius;
@@ -3922,6 +3922,10 @@ public:
 	void CreateForkStructure(AtomCollection* collection, UR_Lightning_CollectionData* data) const;
 	// BW1W120 00691bb0 BW1M119 0141b700
 	void UpdateForkStructure(AtomCollection* collection, UR_Lightning_CollectionData* data) const;
+	// BW1W120 00690090 BW1M119 inlined
+	bool IsValidTarget(GameThingWithPos* thing) const;
+	// BW1W120 006901d0 BW1M119 inlined
+	float GetSearchRadius() const;
 };
 static_assert(sizeof(UR_Lightning) == 0x98, "Data type is of wrong size");
 
