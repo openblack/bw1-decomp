@@ -1185,8 +1185,8 @@ void GGame::ClearVariables()
 	field_0x250094 = 0;
 	TotalObjects = 0;
 	camera = NULL;
-	field_0x205d50 = 0;
-	field_0x205d54 = 0;
+	MapEditorActive = false;
+	HelpEditorActive = false;
 	field_0x205d58 = 0;
 	PacketBufferLength = 1;
 	field_0x5979 = 0;

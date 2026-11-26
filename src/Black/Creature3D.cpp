@@ -419,7 +419,7 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	EyeLidLevel = 0.0f;
 	field_0x4ab0 = 0.0f;
 	field_0x4ab4 = 0;
-	field_0x8c = 1.0f;
+	MeshSize = 1.0f;
 	SetSize(1.0f);
 	SetRequiredSpeed(0.6f);
 	field_0x51bc = 0;
@@ -686,7 +686,7 @@ void LH3DCreature::SetSize(float size)
 	float a = 1.6f - half * 0.85f;
 	float b = half * 1.75f + 0.25f;
 	Size1 = size > 0.05f ? (min(size, 4.0f)) : 0.05f;
-	Size2 = GetStandingHeight() / field_0x8c;
+	Size2 = GetStandingHeight() / MeshSize;
 	WalkSpeed = b * 8.0f;
 	RunSpeed = b * 20.0f;
 	CurrentSpeed = min(RunSpeed, CurrentSpeed);

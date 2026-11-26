@@ -51,7 +51,7 @@ public:
 	uint8_t                   field_0x89;
 	uint8_t                   field_0x8a;
 	uint8_t                   field_0x8b;
-	float                     field_0x8c;
+	float                     MeshSize;
 	float                     Size1;
 	float                     Size2;
 	int                       CurrentMesh;

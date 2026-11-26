@@ -46,6 +46,11 @@ public:
 
 	// BW1W120 0076cca0 BW1M119 011628d0
 	GVirtualInfluence(GInterfaceStatus* status);
+
+	// Non-virtual methods
+
+	// BW1W120 0076d000 BW1M119 010761e0
+	void Draw();
 };
 
 #endif /* BW1_DECOMP_VIRTUAL_INFLUENCE_INCLUDED_H */

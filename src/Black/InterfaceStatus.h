@@ -8,6 +8,7 @@
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
+#include "HandPhysicsInfo.h"  /* For struct HandPhysicsInfo */
 #include "MagicHand.h"        /* For struct GMagicHand */
 
 #include <chlasm/Enum.h> /* For enum SPELL_SEED_TYPE */
@@ -27,14 +28,6 @@ class Object;
 struct PSysProcessInfo;
 class Spell;
 class SpellSeed;
-
-struct HandPhysicsInfo
-{
-	LHPoint ThrowVelocity;
-	LHPoint ThrowAngularVelocity;
-	LHPoint HandPos;
-	LHPoint HandAngles;
-};
 
 class GInterfaceStatus : public GameThingWithPos
 {

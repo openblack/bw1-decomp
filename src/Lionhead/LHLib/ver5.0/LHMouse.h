@@ -19,7 +19,7 @@ enum LH_MOUSE_IMAGE_TYPE
 	LH_MOUSE_IMAGE_TYPE_0x05 = 0x5,
 	LH_MOUSE_IMAGE_TYPE_0x06 = 0x6,
 	LH_MOUSE_IMAGE_TYPE_0x07 = 0x7,
-	LH_MOUSE_IMAGE_TYPE_0x08 = 0x8,
+	LH_MOUSE_IMAGE_TYPE_SURFACE = 0x8,
 	LH_MOUSE_IMAGE_TYPE_0x09 = 0x9,
 	LH_MOUSE_IMAGE_TYPE_0x0a = 0xa,
 	LH_MOUSE_IMAGE_TYPE_0x0b = 0xb,
@@ -222,7 +222,7 @@ struct LHMouse
 	// BW1W120 007e5330 BW1M119 011461d0 (LHCombined Release)
 	int SetSpriteFlags(unsigned long flags);
 	// BW1W120 007e53b0 BW1M119 01146000 (LHCombined Release)
-	int SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSurface);
+	int SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, bool32_t reallocSurface);
 	// BW1W120 007e5550 BW1M119 01145fa0 (LHCombined Release)
 	void PinImage(int16_t x, int16_t y);
 	// BW1W120 007e55c0 BW1M119 01145a30 (LHCombined Release)

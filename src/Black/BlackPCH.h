@@ -126,9 +126,7 @@ inline void BlackPCHCodeAfterObject(float* values)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
 #endif
 #endif
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
-#endif
 }
 
 #include <Lionhead/LH3DLib/development/LH3DMapCoordsInline.h>
@@ -308,7 +306,9 @@ inline void BlackPCHCodeAfterLH3DMapCoords(float* values)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+#endif
 }
 
 // Splitting the stand-in and defining LH3DMapCoords's constructor outside its class add declarations ahead of
