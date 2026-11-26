@@ -844,7 +844,7 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	{
 		return;
 	}
-	if (GGame::g_game->MyInterface()->GetRenderHand()->field_0x483c != 0)
+	if (GGame::g_game->MyInterface()->GetRenderHand()->CursorOn)
 	{
 		return;
 	}
@@ -1033,7 +1033,7 @@ void CameraModeNew3::DrawHandTricon()
 	if ((CameraHelp::EnabledFeatures & CAMERA_FEATURE_HELP) && playerInterface != NULL &&
 	    !playerInterface->IsPlayBack(0))
 	{
-		Fade.SetDestination(GGame::g_game->MyInterface()->field_0x48 ? 1.0f : 0.0f, 1.0f);
+		Fade.SetDestination(GGame::g_game->MyInterface()->IsInInfluence() ? 1.0f : 0.0f, 1.0f);
 	}
 	else
 	{
@@ -1825,7 +1825,7 @@ void CameraModeNew3::UpdateTricons()
 	{
 		ActiveTricons &= ~(CAMERA_TRICON_ZOOM | CAMERA_TRICON_ZOOM_DIM);
 	}
-	if ((GetCameraFeatures() & CAMERA_FEATURE_HELP) && GGame::g_game->MyInterface()->field_0x48 == 0)
+	if ((GetCameraFeatures() & CAMERA_FEATURE_HELP) && !GGame::g_game->MyInterface()->IsInInfluence())
 	{
 		ActiveTricons |= CAMERA_TRICON_HELP;
 	}

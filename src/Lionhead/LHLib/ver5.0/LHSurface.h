@@ -54,6 +54,12 @@ struct LHSurface
 
 	// Constructors
 
+	// Inliner IL size: 77
+	// BW1W120 inlined BW1M119 inlined
+	LHSurface(uint16_t width, uint16_t height)
+		: HasTransparentColor(0), Width(width), Height(height), Image(NULL), SpriteFlags(0), Next(NULL)
+	{
+	}
 	// BW1W120 007e6290 BW1M119 0115d950 (LHCombined Release)
 	LHSurface(LHSprite* sprite, unsigned long flags);
 	// BW1W120 007e62d0 BW1M119 0115d840 (LHCombined Release)

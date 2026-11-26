@@ -302,8 +302,8 @@ void HandStateHolding::Update(float dt, LHMatrix* buffer)
 
 	if (InThrow)
 	{
-		Hand->ThrowVelocity = ThrowVelocity;
-		Hand->ThrowSpin.SetNull();
+		Hand->HandPhysics.ThrowVelocity = ThrowVelocity;
+		Hand->HandPhysics.ThrowAngularVelocity.SetNull();
 	}
 
 	if (Hand->HeldObject == NULL)
@@ -410,8 +410,9 @@ void HandStateHolding::Update(float dt, LHMatrix* buffer)
 	}
 	}
 
-	Hand->ThrowPos = object3d->matrix.GetPos() + ThrowVelocity * 0.2f;
-	object3d->matrix.GetYXZ(&Hand->ThrowAngles.y, &Hand->ThrowAngles.x, &Hand->ThrowAngles.z);
+	Hand->HandPhysics.HandPos = object3d->matrix.GetPos() + ThrowVelocity * 0.2f;
+	object3d->matrix.GetYXZ(&Hand->HandPhysics.HandAngles.y, &Hand->HandPhysics.HandAngles.x,
+	                        &Hand->HandPhysics.HandAngles.z);
 
 	LHPoint  rootPos = Hand->GetPos();
 	LHMatrix root;

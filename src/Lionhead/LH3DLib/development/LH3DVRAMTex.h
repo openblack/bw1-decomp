@@ -12,6 +12,7 @@
 // Forward Declares
 
 struct LH3DTexture;
+struct LHSurface;
 
 #define LH3D_VRAM_TEX_PIXEL_FORMATS 3
 
@@ -32,6 +33,8 @@ struct LH3DVRAMTex
 	static long g_max_amount_vram_mem;
 	// BW1W120 00f05200 BW1M119 013422a4 (LHCombined Release)
 	static int g_count;
+	// BW1W120 00f05214 BW1M119 01342224 (LHCombined Release)
+	static LHSurface* g_surface_mouse;
 
 	IDirectDrawSurface7* Surface;
 	LH3DTexture*         Texture;

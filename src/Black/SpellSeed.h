@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h>        /* For enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE, enum POWER_UP_TYPE */
+#include <chlasm/Enum.h> /* For enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE, enum PARTICLE_TYPE, enum POWER_UP_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
@@ -167,6 +167,10 @@ public:
 
 	// BW1W120 007290f0 BW1M119 015327e0
 	GMagicInfo* GetMagicInfo() const;
+	// BW1W120 007285e0 BW1M119 01534330
+	PARTICLE_TYPE GetInHandParticleType() const;
+	// BW1W120 00728620 BW1M119 01534250
+	bool IsDrawAtGraspPos();
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_INCLUDED_H */
