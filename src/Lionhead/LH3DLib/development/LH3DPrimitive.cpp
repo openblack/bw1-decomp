@@ -1159,9 +1159,10 @@ void LH3DPrimitive::DrawComplexFroz()
 			normal.CrossProduct(pa - pb, pb - pc);
 			float norm = normal.GetNorm();
 			normal *= InverseSquareRoot(norm);
-			float u = (normal * axisX + 1.0f) * LH3D_ENV_MAP_UV_SCALE;
+			float u = (normal.x * axisX.x + normal.y * axisX.y + normal.z * axisX.z + 1.0f) * LH3D_ENV_MAP_UV_SCALE;
 			float v = (normal.x * axisY.x + normal.y * axisY.y + normal.z * axisY.z + 1.0f) * LH3D_ENV_MAP_UV_SCALE;
-			out[0].uv.x = out[1].uv.x = out[2].uv.x = u;
+			LH3DTech::g_cache_t_points[count * 3].uv.x = LH3DTech::g_cache_t_points[count * 3 + 1].uv.x =
+				LH3DTech::g_cache_t_points[count * 3 + 2].uv.x = u;
 			LH3DTech::g_cache_t_points[count * 3].uv.y = LH3DTech::g_cache_t_points[count * 3 + 1].uv.y =
 				LH3DTech::g_cache_t_points[count * 3 + 2].uv.y = v;
 			triangle++;
@@ -1867,13 +1868,13 @@ void LH3DPrimitive::DrawFroz()
 	LHPoint       axisY = matrix.GetVectorY();
 	LH3DTriangle* triangle = Triangles;
 	long          indices[LH3D_FROZ_BATCH_TRIANGLES * 3];
-	int           count;
-	for (count = 0; count < LH3D_FROZ_BATCH_TRIANGLES; count++)
+	for (int k = 0; k < LH3D_FROZ_BATCH_TRIANGLES; k++)
 	{
-		indices[count * 3] = count * 3;
-		indices[count * 3 + 1] = count * 3 + 1;
-		indices[count * 3 + 2] = count * 3 + 2;
+		indices[k * 3] = k * 3;
+		indices[k * 3 + 1] = k * 3 + 1;
+		indices[k * 3 + 2] = k * 3 + 2;
 	}
+	int count;
 	point = &LH3DTech::g_cache_t_points[LH3D_FROZ_FIRST_POINT];
 	while (triangle < Triangles + NumTriangles)
 	{
@@ -1893,11 +1894,11 @@ void LH3DPrimitive::DrawFroz()
 			normal.CrossProduct(pa - pb, pb - pc);
 			float norm = normal.GetNorm();
 			normal *= InverseSquareRoot(norm);
-			float u = (normal * axisX + 1.0f) * LH3D_ENV_MAP_UV_SCALE;
+			float u = (normal.x * axisX.x + normal.y * axisX.y + normal.z * axisX.z + 1.0f) * LH3D_ENV_MAP_UV_SCALE;
 			float v = (normal.x * axisY.x + normal.y * axisY.y + normal.z * axisY.z + 1.0f) * LH3D_ENV_MAP_UV_SCALE;
-			out[0].uv.x = out[1].uv.x = out[2].uv.x = u;
-			LH3DTech::g_cache_t_points[count * 3].uv.y = LH3DTech::g_cache_t_points[count * 3 + 1].uv.y =
-				LH3DTech::g_cache_t_points[count * 3 + 2].uv.y = v;
+			LH3DTech::g_cache_t_points[count * 3].uv.x = LH3DTech::g_cache_t_points[count * 3 + 1].uv.x =
+				LH3DTech::g_cache_t_points[count * 3 + 2].uv.x = u;
+			out[0].uv.y = out[1].uv.y = out[2].uv.y = v;
 			triangle++;
 		}
 		if (count > 0)
