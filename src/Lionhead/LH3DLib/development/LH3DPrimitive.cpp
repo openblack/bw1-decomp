@@ -1313,6 +1313,122 @@ void LH3DPrimitive::DrawComplexEnvMapMT()
 	LH3DRender::Set2ndTex(LH3D_2ND_TEX_MODE_OFF, NULL, false);
 }
 
+#ifdef VERSION_BW1WCI
+void LH3DPrimitive::DrawComplexEnvMapST()
+{
+	g_current_primitive = this;
+	Vertex3D*   point = LH3DTech::g_cache_t_points;
+	int         start = 0;
+	LH3DVertex* vertex = Vertices;
+	for (int i = 0; i < NumVertexGroups; i++)
+	{
+		LH3DVertexGroup* group = &VertexGroups[i];
+		LHMatrix*        matrix = &LH3DMesh::g_current_matrix[group->BoneIndex];
+		LHMatrix         inverse;
+		inverse.SetInverse(*matrix);
+		LHPoint light;
+		light.x = (inverse.m[0] * LH3DTech::GetSun().x + inverse.m[3] * LH3DTech::GetSun().y +
+		           inverse.m[6] * LH3DTech::GetSun().z + inverse.m[9]);
+		light.y = (inverse.m[1] * LH3DTech::GetSun().x + inverse.m[4] * LH3DTech::GetSun().y +
+		           inverse.m[7] * LH3DTech::GetSun().z + inverse.m[10]);
+		light.z = (inverse.m[2] * LH3DTech::GetSun().x + inverse.m[5] * LH3DTech::GetSun().y +
+		           inverse.m[8] * LH3DTech::GetSun().z + inverse.m[11]);
+		float norm = light.GetNorm();
+		light *= InverseSquareRoot(norm);
+		LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
+		LH3DTech::g_local_to_clipping.PreMultiply(*matrix);
+		LHMatrix envMatrix = LH3DTech::g_world_to_camera;
+		envMatrix.PreMultiply(*matrix);
+		envMatrix.NormaliseMatrixOnly();
+		envMatrix.m[9] = 0.0f;
+		envMatrix.m[10] = 0.0f;
+		envMatrix.m[11] = 0.0f;
+		LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
+		LH3DTech::g_local_to_clipping.PreMultiply(*matrix);
+		for (int j = start; j < start + group->vertex_count; point++, vertex++, j++)
+		{
+			TransformToClipping(point, vertex->position, LH3DTech::g_current_matrix);
+			point->specular = LH3DMesh::g_specular;
+			point->color = LH3DMesh::g_color;
+			float u = (envMatrix.m[0] * vertex->normal.x + envMatrix.m[3] * vertex->normal.y +
+			           envMatrix.m[6] * vertex->normal.z + 1.0f) *
+			          LH3D_ENV_MAP_UV_SCALE;
+			float v = (envMatrix.m[1] * vertex->normal.x + envMatrix.m[4] * vertex->normal.y +
+			           envMatrix.m[7] * vertex->normal.z + 1.0f) *
+			          LH3D_ENV_MAP_UV_SCALE;
+			point->uv.x = u * LH3DObject::g_cur_env_mat_info->ScaleU + LH3DObject::g_cur_env_mat_info->OffsetU;
+			point->uv.y = v * LH3DObject::g_cur_env_mat_info->ScaleV + LH3DObject::g_cur_env_mat_info->OffsetV;
+		}
+		start += group->vertex_count;
+	}
+	ApplyVBlendsAndSetFlags(LH3DTech::g_cache_t_points, LH3DTech::g_cache_flags);
+
+	uint16_t pointsCount = NumVertices;
+	LH3DTech::g_index_count = 0;
+	LH3DTech::g_points_count = pointsCount;
+	LH3DTriangle* triangle = Triangles;
+	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
+	int      k;
+	uint16_t a;
+	uint16_t b;
+	uint16_t c;
+	if (Material.Flags & LH3DMaterial::FLAG_DOUBLE_SIDED)
+	{
+		for (k = 0; k < NumTriangles; triangle++, k++)
+		{
+			a = triangle->A;
+			b = triangle->B;
+			c = triangle->C;
+			if (LH3DTech::g_cache_flags[a] | LH3DTech::g_cache_flags[b] | LH3DTech::g_cache_flags[c])
+			{
+				if (!(LH3DTech::g_cache_flags[a] & LH3DTech::g_cache_flags[b] & LH3DTech::g_cache_flags[c]))
+				{
+					LH3DTech::ClipTriangle(a, b, c, LH3DTech::CLIP_CODE_NEAR);
+				}
+			}
+			else
+			{
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
+			}
+		}
+	}
+	else
+	{
+		Vertex3D* points = LH3DTech::g_cache_t_points;
+		for (k = 0; k < NumTriangles; triangle++, k++)
+		{
+			a = triangle->A;
+			b = triangle->B;
+			c = triangle->C;
+			if (LH3DTech::g_cache_flags[a] | LH3DTech::g_cache_flags[b] | LH3DTech::g_cache_flags[c])
+			{
+				if (!(LH3DTech::g_cache_flags[a] & LH3DTech::g_cache_flags[b] & LH3DTech::g_cache_flags[c]))
+				{
+					LH3DTech::ClipTriangle(a, b, c, LH3DTech::CLIP_CODE_NEAR);
+				}
+			}
+			else if ((points[c].y - points[a].y) * (points[b].x - points[a].x) -
+			             (points[b].y - points[a].y) * (points[c].x - points[a].x) >
+			         0.0f)
+			{
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
+			}
+		}
+	}
+	if (LH3DTech::g_index_count)
+	{
+		LH3DRender::SetMaterial(&Material, 0);
+		LH3DRender::DrawTriangle(LH3DTech::g_cache_t_points, LH3DTech::g_points_count, LH3DTech::g_list_indices,
+		                         LH3DTech::g_index_count);
+	}
+	LH3DRender::Set2ndTex(LH3D_2ND_TEX_MODE_OFF, NULL, false);
+}
+#endif
+
 void LH3DPrimitive::DrawComplexRefMapMT()
 {
 	g_current_primitive = this;
