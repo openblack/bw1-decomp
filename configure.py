@@ -901,7 +901,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/CarriedObject.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/ChallengeRoom.cpp"),
             GameCodeObject(NonMatching, "Black/ChallengeRoomCamera.cpp"),
-            GameCodeObject(NonMatching, "Black/Citadel.cpp"),
+            GameCodeObject(Matching, "Black/Citadel.cpp"),
             GameCodeObject(NonMatching, "Black/CitadelHeart.cpp"),
             GameCodeObject(NonMatching, "Black/CitadelPart.cpp"),
             GameCodeObject(NonMatching, "Black/citadelpeople.cpp"),

@@ -569,8 +569,8 @@ public:
 	void SetPacket(PACKET_TYPE type, const HandPhysicsInfo& hand_physics);
 	// BW1W120 0054da00 BW1M119 01497220
 	void CancelIntro();
-	// BW1W120 null BW1M119 01028140
-	bool32_t CheckNeedUpdateInfluence(float x, float z);
+	// BW1W120 00555240 BW1M119 01028140
+	void CheckNeedUpdateInfluence(float influence, float last_influence);
 	// BW1W120 null BW1M119 011a2940
 	void CloseOneTimeOnly();
 	// BW1W120 00551ee0 BW1M119 0100ce10

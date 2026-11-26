@@ -440,16 +440,16 @@ Black/Citadel.cpp:
 	.rdata      start:0x008CCE1C end:0x008CD370
 	.rdata$r    start:0x00A28FD0 end:0x00A290B0
 	.CRT$XCU    start:0x00A46290 end:0x00A4629C align:4
-	.data       start:0x00A4EBE0 end:0x00A4EDC8
-	.bss        start:0x00CDF184 end:0x00CDF1B4
+	.data       start:0x00A4EBE0 end:0x00A4ED04
+	.bss        start:0x00CDF128 end:0x00CDF188
 
 Black/CitadelHeart.cpp:
 	.text       start:0x00464D60 end:0x00469E90
 	.rdata      start:0x008CD370 end:0x008CFAF0
 	.rdata$r    start:0x00A290B0 end:0x00A293D0
 	.CRT$XCU    start:0x00A4629C end:0x00A462D0 align:4
-	.data       start:0x00A4EDC8 end:0x00A4EF68
-	.bss        start:0x00CDF1B4 end:0x00CDF334
+	.data       start:0x00A4ED04 end:0x00A4EF68
+	.bss        start:0x00CDF188 end:0x00CDF334
 
 Black/CitadelPart.cpp:
 	.text       start:0x00469E90 end:0x0046A430

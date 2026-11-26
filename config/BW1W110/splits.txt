@@ -405,9 +405,10 @@ Black/CarriedObject.cpp:
 Black/Citadel.cpp:
 	.text       start:0x00461B60 end:0x004634A0
 	.rdata      start:0x008B7E0C end:0x008B8360
-	.rdata$r    start:0x00998CA8 end:0x00998D30
+	.rdata$r    start:0x00998C50 end:0x00998D30
+	.CRT$XCU    start:0x009B61B0 end:0x009B61B8 align:4
 	.data       start:0x009BDDE0 end:0x009BDEFC
-	.bss        start:0x00C4D074 end:0x00C4D078
+	.bss        start:0x00C4D018 end:0x00C4D078
 
 Black/CitadelHeart.cpp:
 	.text       start:0x004634A0 end:0x00468580
