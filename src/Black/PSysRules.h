@@ -1330,6 +1330,26 @@ public:
 	// BW1W120 006d18b0 BW1M119 01494eb0
 	virtual bool ModifyAtomCollection(AtomCollection* collection) const;
 
+	// BW1W120 006d1ad0 BW1M119 01494a70
+	void InitFlyingAtoms(AtomCollection* collection) const;
+	// BW1W120 006d1c40 BW1M119 inlined
+	void InitFlyingAtomData(AtomCore* core, FlyingAtomData* data) const;
+	// BW1W120 006d1c60 BW1M119 01494540
+	// BW1WCI 006e68f0 BW1MCI119 014c11a0
+	void UpdateBaseAndTopPoints() const;
+	// BW1W120 006d2790 BW1M119 inlined
+	float GetRadiusAtHeight(float height) const;
+	// BW1W120 006d2910 BW1M119 inlined
+	void GetCentrePointAtHeight(float height, LHPoint* point) const;
+	// BW1W120 006d2a40 BW1M119 inlined
+	void UpdateMeshAtoms(AtomCollection* collection) const;
+	// BW1W120 006d2af0 BW1M119 01493930
+	// BW1WCI 006e7780 BW1MCI119 014c0590
+	void UpdateDebrisAtoms(AtomCollection* collection) const;
+	// BW1W120 006d31f0 BW1M119 01492ad0
+	// BW1WCI 006e7e80 BW1MCI119 014bf730
+	void UpdateFlyingAtoms(AtomCollection* collection) const;
+
 	float            TopHeight;
 	long             WiggleCount;
 	float            WiggleAmplitude;
@@ -1342,8 +1362,8 @@ public:
 	float            BaseThetaDot;
 	float            TopThetaDot;
 	float            MeshThetaDot;
-	uint32_t         field_0x5c;
-	uint32_t         field_0x60;
+	float            HeightStiffnessState1;
+	float            HeightStiffnessState0;
 	float            ThetaBias;
 	float            FunnelBendParameter;
 	float            PauseBeforeAffectsGameObjects;
@@ -1392,12 +1412,6 @@ public:
 	ParticleCreator* PretendObjectCreatorLarge;
 	PSysSoundAction  SoundTornado;
 #ifdef VERSION_BW1WCI
-	// BW1WCI 006e68f0 BW1MCI119 014c11a0
-	void UpdateBaseAndTopPoints() const;
-	// BW1WCI 006e7780 BW1MCI119 014c0590
-	void UpdateDebrisAtoms(AtomCollection* collection) const;
-	// BW1WCI 006e7e80 BW1MCI119 014bf730
-	void UpdateFlyingAtoms(AtomCollection* collection) const;
 	// BW1WCI 006e7b00 BW1MCI119 014c00a0
 	void CreatePretendObjects(AtomCollection* collection) const;
 	// BW1WCI 006e6e40 BW1MCI119 014c09d0
