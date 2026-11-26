@@ -348,6 +348,9 @@ block_relocations:
   - source: 0x00CACEBC
 
 add_relocations:
+  - source: 0x00A0D310
+    type: x86_abs32
+    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
 # GAbodeInfo::GetInfoFromText compares against GTribeInfo::Infos one past its last entry.
   - source: 0x00405A9C
     type: x86_abs32

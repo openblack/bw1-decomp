@@ -121,6 +121,15 @@ block_relocations:
   - source: 0x0085C008
 
 add_relocations:
+  - source: 0x0098D784
+    type: x86_abs32
+    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
+  - source: 0x0098DB50
+    type: x86_abs32
+    target: '?IsSpellIcon@SpellIcon@@UAEHXZ'
+  - source: 0x0098DF1C
+    type: x86_abs32
+    target: '?InteractsWithPhysicsObjects@SpellIcon@@UAE_NXZ'
 # GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
   - source: 0x004059B1
     type: x86_abs32
