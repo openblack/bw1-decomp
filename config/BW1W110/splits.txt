@@ -2945,7 +2945,10 @@ Black/WorshipSpellIcon.cpp:
 	.text       start:0x0076EDC0 end:0x00770410
 	.rdata      start:0x0098D774 end:0x0098E09C
 	.CRT$XCU    start:0x009B7328 end:0x009B732C align:4
-	.data       start:0x00C13C20 end:0x00C13C58
+	.data       start:0x00C13C20 end:0x00C13C32 align:4
+	.data       start:0x00C13C32 end:0x00C13C34 skip
+	.data       start:0x00C13C34 end:0x00C13C56 align:4
+	.data       start:0x00C13C56 end:0x00C13C58 skip
 	.bss        start:0x00DBB490 end:0x00DBB49C
 
 Black/WorshipTotem.cpp:

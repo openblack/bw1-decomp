@@ -1758,6 +1758,16 @@ add_relocations:
     type: x86_abs32
     target: '_jinit_color_converter'
     addend: 0x19d
+# WorshipSpellIcon vtable entries.
+  - source: 0x0098D784
+    type: x86_abs32
+    target: '??_EWorshipSpellIcon@@UAEPAXI@Z'
+  - source: 0x0098DB50
+    type: x86_abs32
+    target: '?IsSpellIcon@SpellIcon@@UAEHXZ'
+  - source: 0x0098DF1C
+    type: x86_abs32
+    target: '?InteractsWithPhysicsObjects@SpellIcon@@UAE_NXZ'
 # adj_fdiv.obj: references the object relocates but dtk leaves unrelocated.
   - source: 0x00C1EF6E
     type: x86_abs32
