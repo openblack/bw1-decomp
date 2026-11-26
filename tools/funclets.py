@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """EH funclets ($L<n>, .text$x): every job the project does with them, in one tool.
 
-  relabel  Rename the target's funclet labels in symbols.txt after the compiled objects. A header
-           change renumbers the funclets of every /GX unit that includes it, and objdiff pairs
-           these local labels by name, so the reports drop while the hashes pass. Run it for the
-           configured version after ninja, then run ninja again.
+  relabel  Rename the target's funclet labels and EH tables in symbols.txt after the compiled
+           objects. A header change renumbers the funclets ($L<n>) and tables ($T<n>) of every /GX
+           unit that includes it, and objdiff pairs these local labels by name, so the reports drop
+           while the hashes pass. Run it for the configured version after ninja, then run ninja
+           again.
              python tools/funclets.py relabel            # list the renames
              python tools/funclets.py relabel --apply    # rewrite symbols.txt
              python tools/funclets.py relabel --check    # exit 1 if any label is out of date
@@ -21,7 +22,10 @@ relabel pairs funclets through each function's EH tables (tools/ehtables.py), no
 function both objects define, its handler stub leads to the FuncInfo, whose unwind map lists one
 action per state: the funclets, in state order. The handler is a $L label too. Handlers of the
 same function, and funclets of the same function and state, pair when their bytes are the same,
-relocated fields aside. The target names it renames are $L labels and dtk's fn_/lbl_<address>.
+relocated fields aside. So do the function's tables (the FuncInfo, its unwind map and its try-block
+map), in that order, and the tables a function's code points at that no FuncInfo lists (the scope
+table of an __except), by where the code refers to them. The target names it renames are $L and $T
+labels and dtk's fn_/lbl_<address>.
 A label already in the unit that a new name would duplicate moves to an unused number, and a
 renamed label is scope:local.
 
@@ -46,7 +50,10 @@ from decomp_common import ROOT, load_project, resolve_unit  # noqa: E402
 import ehtables  # noqa: E402
 
 LABEL = re.compile(r"^\$L\d+$")
+TABLE = re.compile(r"^\$T\d+$")
+NUMBERED = re.compile(r"^\$[LT]\d+$")
 RENAMEABLE = re.compile(r"^(\$L\d+|fn_[0-9A-F]{8}|lbl_[0-9A-F]{8})$")
+RENAMEABLE_TABLE = re.compile(r"^(\$T\d+|lbl_[0-9A-F]{8})$")
 STORAGE_STATIC = 3
 STORAGE_FUNCTION = 101  # /Zi's .bf/.lf/.ef markers, which sit inside a function
 SYMBOL = re.compile(r"^(\S+) = \.([\w$]+):0x([0-9A-Fa-f]+);(.*)$")
@@ -86,18 +93,17 @@ class Funclets:
                 return name
         return None
 
-    def code(self, section, value):
-        """A funclet's bytes with its relocated fields zeroed."""
-        end = self.end(section, value)
-        data = bytearray(self.coff.bytes(section, value, end - value))
+    def code(self, section, value, size=None):
+        """A funclet's bytes (or `size` bytes of a table) with its relocated fields zeroed."""
+        end = self.end(section, value) if size is None else value + size
+        data = bytearray(self.reader.code((section, value), end - value))
         for offset in self.relocs[section]:
             if value <= offset < end:
                 data[offset - value:offset - value + 4] = bytes(4)
         return bytes(data)
 
-    def of(self, function):
-        """[handler, then the action of each unwind state] as (section, offset, name) or None, or
-        None without EH tables."""
+    def funcinfo(self, function):
+        """(handler, FuncInfo) of `function`, or None without EH tables."""
         if function not in self.where:
             return None
         section, value = self.where[function]
@@ -109,21 +115,63 @@ class Funclets:
                 continue
             info = ehtables.stub_funcinfo(self.reader, handler)
             funcinfo = info and ehtables.read_funcinfo(self.reader, info, catches=False)
-            if not funcinfo:
-                continue
-            out = [(*handler, self.name_at(*handler))]
-            for action in funcinfo.actions:
-                out.append(action and (*action, self.name_at(*action)))
-            return out
+            if funcinfo:
+                return handler, funcinfo
         return None
+
+    def of(self, function):
+        """[handler, then the action of each unwind state] as (section, offset, name) or None, or
+        None without EH tables."""
+        found = self.funcinfo(function)
+        if not found:
+            return None
+        handler, funcinfo = found
+        out = [(*handler, self.name_at(*handler))]
+        for action in funcinfo.actions:
+            out.append(action and (*action, self.name_at(*action)))
+        return out
+
+    def tables(self, function):
+        """The FuncInfo, unwind map and try-block map of `function` as (section, offset, size,
+        name), or None without EH tables."""
+        found = self.funcinfo(function)
+        if not found:
+            return None
+        return [(*loc, size, self.name_at(*loc)) for loc, size in found[1].tables()]
+
+    def referenced_tables(self, function):
+        """The $T<n> tables `function`'s code points at (the scope table of an __except, which no
+        FuncInfo lists), as (offset in the function, section, offset, size, name), in code order."""
+        if function not in self.where:
+            return []
+        section, value = self.where[function]
+        starts = sorted(sym.value for sym in self.coff.symbols.values()
+                        if sym.section == section and sym.type & 0x20 and sym.value > value)
+        end = starts[0] if starts else self.coff.section(section).size
+        out = []
+        for offset in sorted(self.relocs[section]):
+            if not value <= offset < end:
+                continue
+            sym = self.coff.symbols[self.relocs[section][offset].symbol_index]
+            if sym.section > 0 and sym.storage == STORAGE_STATIC and RENAMEABLE_TABLE.match(sym.name):
+                size = self.end(sym.section, sym.value) - sym.value
+                out.append((offset - value, sym.section, sym.value, size, sym.name))
+        return out
 
 
 def renames(target, compiled):
-    """{target funclet name: compiled funclet name} for the pairs that agree."""
+    """{target funclet or table name: compiled name} for the pairs that agree."""
     found = collections.defaultdict(set)
     for function in target.where:
         if function.startswith(("$", ".")):
             continue
+        theirs = {c[0]: c for c in compiled.referenced_tables(function)}
+        for t in target.referenced_tables(function):
+            c = theirs.get(t[0])
+            if c is None or t[3] < c[3] or not TABLE.match(c[4]):
+                continue
+            if target.code(t[1], t[2], c[3]) == compiled.code(c[1], c[2], c[3]):
+                found[t[4]].add(c[4])
         ours, theirs = target.of(function), compiled.of(function)
         if not ours or not theirs or len(ours) != len(theirs):
             continue
@@ -134,6 +182,16 @@ def renames(target, compiled):
                 continue
             if target.code(t[0], t[1]) == compiled.code(c[0], c[1]):
                 found[t[2]].add(c[2])
+        ours, theirs = target.tables(function), compiled.tables(function)
+        if not ours or not theirs or len(ours) != len(theirs):
+            continue
+        for t, c in zip(ours, theirs):
+            if not t[3] or not c[3] or t[2] != c[2]:
+                continue
+            if not RENAMEABLE_TABLE.match(t[3]) or not TABLE.match(c[3]):
+                continue
+            if target.code(t[0], t[1], t[2]) == compiled.code(c[0], c[1], c[2]):
+                found[t[3]].add(c[3])
     pairs = {t: c.pop() for t, c in found.items() if len(c) == 1}
     if len(set(pairs.values())) != len(pairs):
         return None
@@ -165,6 +223,11 @@ def relabel(config, units, apply, verbose=True):
     new_name = {}
     for unit in units:
         split = unit["metadata"]["source_path"].removeprefix("src/")
+        if split not in ranges:
+            # A module can split a shared source under its own directory
+            # (LHAudio's LHAudio/LHFile/ver3.0/LHFile.cpp): name it after the target object.
+            parts = Path(unit["target_path"]).parts
+            split = "/".join(parts[parts.index("obj") + 1:])[: -len(".o")] + Path(split).suffix
         target_path, base_path = ROOT / unit["target_path"], ROOT / unit["base_path"]
         if split not in ranges or not target_path.is_file() or not base_path.is_file():
             continue
@@ -174,10 +237,10 @@ def relabel(config, units, apply, verbose=True):
                 lines_of[name].append(i)
         try:
             target, compiled = Funclets(target_path), Funclets(base_path)
+            pairs = renames(target, compiled)
         except BinaryError as exc:
             print(f"{split}: {exc}", file=sys.stderr)
             continue
-        pairs = renames(target, compiled)
         if pairs is None:
             print(f"{split}: two target funclets pair with one compiled funclet; skipped", file=sys.stderr)
             continue
@@ -189,12 +252,12 @@ def relabel(config, units, apply, verbose=True):
             continue
         # A label already in the unit that a new name would duplicate moves to an unused number.
         taken = set(pairs.values())
-        numbers = [int(n[2:]) for n in list(lines_of) + list(compiled.where) if LABEL.match(n)]
+        numbers = [int(n[2:]) for n in list(lines_of) + list(compiled.where) if NUMBERED.match(n)]
         fresh = max(numbers, default=0) + 1
         for name in sorted(lines_of, key=lambda n: lines_of[n][0]):
             if name in taken and name not in pairs:
                 for i in lines_of[name]:
-                    new_name[i] = f"$L{fresh}"
+                    new_name[i] = f"{name[:2]}{fresh}"
                     fresh += 1
         for t, c in pairs.items():
             new_name[lines_of[t][0]] = c

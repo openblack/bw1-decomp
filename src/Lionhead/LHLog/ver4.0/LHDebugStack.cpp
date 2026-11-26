@@ -14,11 +14,19 @@
 #define LH_DEBUG_STACK_STRING_SIZE    3000
 #define LH_DEBUG_STACK_DRIVE_SIZE     12
 
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 // BW1W120 10002110 BW1M119 null
 static bool IsWindowsXP();
 
 short LHDebugStack::BeenInitialisedCount;
+#else
+static char*        LHLogLibraryName = NULL;
+static LHErrorCode* LHLogErrorCodes = NULL;
 
+short LHDebugStack::BeenInitialisedCount = 0;
+#endif
+
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static bool IsWindowsXP()
 {
 	OSVERSIONINFOA info;
@@ -31,10 +39,13 @@ static bool IsWindowsXP()
 	}
 	return false;
 }
+#endif
 
 int LHDebugStack::Initialise()
 {
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (!IsWindowsXP())
+#endif
 	{
 		if (BeenInitialisedCount == 0)
 		{
@@ -48,29 +59,36 @@ int LHDebugStack::Initialise()
 			_splitpath(path, drive, dir, NULL, NULL);
 			sprintf(path, "%s%s", drive, dir);
 			lstrcatA(path, ";.;");
-			if (!SymInitialize(process, path, false))
+			if (SymInitialize(process, path, false))
 			{
-				return false;
+				GetModuleFileNameA(NULL, path, MAX_PATH);
+				if (!SymLoadModule(process, NULL, path, NULL, 0, 0))
+				{
+					SymCleanup(process);
+					return false;
+				}
 			}
-			GetModuleFileNameA(NULL, path, MAX_PATH);
-			if (!SymLoadModule(process, NULL, path, NULL, 0, 0))
+			else
 			{
-				SymCleanup(process);
 				return false;
 			}
 		}
 		BeenInitialisedCount++;
 		return true;
 	}
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	return false;
+#endif
 }
 
 void LHDebugStack::CloseDown()
 {
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (IsWindowsXP())
 	{
 		return;
 	}
+#endif
 
 	if (--BeenInitialisedCount <= 0)
 	{
@@ -78,58 +96,35 @@ void LHDebugStack::CloseDown()
 	}
 }
 
-int LHDebugStack::GetFunctionName(HINSTANCE__* instance, void* address, char* name)
+void LHDebugStack::UpdateStackInformation()
 {
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (IsWindowsXP())
 	{
-		return false;
+		return;
 	}
+#endif
 
-	DWORD   displacement = 0;
-	HANDLE  process = GetCurrentProcess();
-	uint8_t buffer[sizeof(IMAGEHLP_SYMBOL) + LH_DEBUG_STACK_FUNCTION_NAME_SIZE];
-	memset(buffer, 0, sizeof(buffer));
-	IMAGEHLP_SYMBOL* symbol = (IMAGEHLP_SYMBOL*)buffer;
-	symbol->SizeOfStruct = sizeof(buffer);
-	symbol->MaxNameLength = LH_DEBUG_STACK_FUNCTION_NAME_SIZE;
-	if (SymGetSymFromAddr(process, (DWORD)address, &displacement, symbol))
+	__try
 	{
-		strcat(strcpy(name, symbol->Name), "()");
-		return true;
+		RaiseException(0, 0, 0, NULL);
 	}
-	return false;
-}
-
-int LHDebugStack::GetFunctionNameThatCalledThisFunction(HINSTANCE__* instance, char* name)
-{
-	if (IsWindowsXP())
+	__except (UpdateStack(GetExceptionInformation()))
 	{
-		return false;
 	}
-
-	if (BeenInitialisedCount <= 0 && !Initialise())
-	{
-		return false;
-	}
-
-	void* address;
-	__asm
-	{
-		mov eax, [ebp]
-		mov ebx, [eax + 4]
-		mov address, ebx
-	}
-	return GetFunctionName(instance, address, name);
 }
 
 int LHDebugStack::UpdateStack(_EXCEPTION_POINTERS* exception)
 {
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	FunctionCount = 0;
 	if (IsWindowsXP())
 	{
 		return EXCEPTION_CONTINUE_SEARCH;
 	}
+#endif
 
+	bool32_t   walking = true;
 	STACKFRAME frame;
 	memset(&frame, 0, sizeof(frame));
 	frame.AddrPC.Mode = AddrModeFlat;
@@ -139,7 +134,6 @@ int LHDebugStack::UpdateStack(_EXCEPTION_POINTERS* exception)
 	frame.AddrFrame.Mode = AddrModeFlat;
 	frame.AddrFrame.Offset = exception->ContextRecord->Ebp;
 
-	bool32_t walking = true;
 	for (int i = 0; i < LH_DEBUG_STACK_SKIPPED_FRAMES && walking == true; i++)
 	{
 		walking = StackWalk(IMAGE_FILE_MACHINE_I386, GetCurrentProcess(), GetCurrentThread(), &frame,
@@ -160,20 +154,53 @@ int LHDebugStack::UpdateStack(_EXCEPTION_POINTERS* exception)
 	return EXCEPTION_CONTINUE_EXECUTION;
 }
 
-void LHDebugStack::UpdateStackInformation()
+int LHDebugStack::GetFunctionName(HINSTANCE__* instance, void* address, char* name)
 {
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (IsWindowsXP())
 	{
-		return;
+		return false;
+	}
+#endif
+
+	DWORD   displacement = 0;
+	HANDLE  process = GetCurrentProcess();
+	uint8_t buffer[sizeof(IMAGEHLP_SYMBOL) + LH_DEBUG_STACK_FUNCTION_NAME_SIZE];
+	memset(buffer, 0, sizeof(buffer));
+	IMAGEHLP_SYMBOL* symbol = (IMAGEHLP_SYMBOL*)buffer;
+	symbol->SizeOfStruct = sizeof(buffer);
+	symbol->MaxNameLength = LH_DEBUG_STACK_FUNCTION_NAME_SIZE;
+	if (SymGetSymFromAddr(process, (DWORD)address, &displacement, symbol))
+	{
+		strcpy(name, symbol->Name);
+		strcat(name, "()");
+		return true;
+	}
+	return false;
+}
+
+int LHDebugStack::GetFunctionNameThatCalledThisFunction(HINSTANCE__* instance, char* name)
+{
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	if (IsWindowsXP())
+	{
+		return false;
+	}
+#endif
+
+	if (BeenInitialisedCount <= 0 && !Initialise())
+	{
+		return false;
 	}
 
-	__try
+	void* address;
+	__asm
 	{
-		RaiseException(0, 0, 0, NULL);
+		mov eax, [ebp]
+		mov ebx, [eax + 4]
+		mov address, ebx
 	}
-	__except (UpdateStack(GetExceptionInformation()))
-	{
-	}
+	return GetFunctionName(instance, address, name);
 }
 
 char* GetCurrentStackString()
@@ -182,10 +209,12 @@ char* GetCurrentStackString()
 	static char         stackString[LH_DEBUG_STACK_STRING_SIZE];
 	static LHDebugStack debugStack;
 
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (IsWindowsXP())
 	{
 		return "Arse";
 	}
+#endif
 
 	bool retried = false;
 	for (;;)

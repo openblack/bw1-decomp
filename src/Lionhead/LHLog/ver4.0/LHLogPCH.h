@@ -1,0 +1,6 @@
+#ifndef BW1_DECOMP_LH_LOG_PCH_INCLUDED_H
+#define BW1_DECOMP_LH_LOG_PCH_INCLUDED_H
+
+#include <windows.h>
+
+#endif /* BW1_DECOMP_LH_LOG_PCH_INCLUDED_H */

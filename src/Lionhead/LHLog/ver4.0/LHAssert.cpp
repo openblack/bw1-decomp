@@ -87,30 +87,40 @@ static LHErrorCode LHAssertErrors[] = {
 };
 static LHErrorCode* LHAssertErrorCodes = LHAssertErrors;
 
-static bool32_t     Forced;
-bool32_t            LHAssertIgnoreAllAsserts;
-static bool32_t     IgnoreNonLibraryAsserts;
-static bool32_t     IgnoreLibraryAsserts;
-static bool32_t     ExitPressed;
-static bool32_t     DebugPressed;
 static LHDebugStack AssertDebugStack;
+static bool32_t     DebugPressed;
+static bool32_t     ExitPressed;
+static bool32_t     IgnoreLibraryAsserts;
+static bool32_t     IgnoreNonLibraryAsserts;
+bool32_t            LHAssertIgnoreAllAsserts;
+static bool32_t     Forced;
 
-LHAssertCustomDrawFunc LHAssertCustomDraw;
-LHAssertCallbackFunc   LHAssertAfterExitCallback;
-LHAssertCallbackFunc   LHAssertAfterForceCallback;
-LHAssertCallbackFunc   LHAssertBeforeForceCallback;
+LHAssertCustomDrawFunc LHAssertCustomDraw = NULL;
+LHAssertCallbackFunc   LHAssertAfterExitCallback = NULL;
+LHAssertCallbackFunc   LHAssertAfterForceCallback = NULL;
+LHAssertCallbackFunc   LHAssertBeforeForceCallback = NULL;
+static char*           LHLogLibraryName = NULL;
 
-bool                    InAssertDialog;
-static LHAssertInfo*    IgnoreList;
-static bool             IgnoreAllGreen;
-static HBITMAP          PriorityBitmap;
-static LHAssertInfo*    FileIgnoreInfo;
+bool                 InAssertDialog = false;
+static LHAssertInfo* IgnoreList = NULL;
+static bool          IgnoreAllGreen = false;
+static HBITMAP       PriorityBitmap = NULL;
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+static LHAssertInfo*    FileIgnoreInfo = NULL;
+static uint16_t         DialogY = 0;
+static uint16_t         DialogX = 0;
+static LHAssertInfo*    AssertIgnoreInfo = NULL;
+static LHAssertInfo*    CurrentAssertion = NULL;
+static CRITICAL_SECTION AssertLock = {0};
+#else
 static uint16_t         DialogY;
 static uint16_t         DialogX;
-static LHAssertInfo*    AssertIgnoreInfo;
 static LHAssertInfo*    CurrentAssertion;
+static LHAssertInfo*    AssertIgnoreInfo;
+static LHAssertInfo*    FileIgnoreInfo;
 static CRITICAL_SECTION AssertLock;
-static bool32_t         AssertLockInitialised;
+#endif
+static bool32_t AssertLockInitialised = false;
 
 static bool32_t IsAfter(LHAssertInfo* info, LHAssertInfo* node)
 {
@@ -139,19 +149,26 @@ static void AddAssertion(LHAssertInfo* info)
 	if (node != NULL)
 	{
 		info->Next = node;
+		if (previous != NULL)
+		{
+			previous->Next = info;
+		}
+		else
+		{
+			IgnoreList = info;
+		}
 	}
 	else
 	{
 		info->Next = NULL;
-	}
-
-	if (previous != NULL)
-	{
-		previous->Next = info;
-	}
-	else
-	{
-		IgnoreList = info;
+		if (previous != NULL)
+		{
+			previous->Next = info;
+		}
+		else
+		{
+			IgnoreList = info;
+		}
 	}
 }
 
@@ -363,12 +380,11 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 		case IDC_IGNORE_FILE:
 			if (IsDlgButtonChecked(dialog, IDC_IGNORE_FILE) && FileIgnoreInfo == NULL)
 			{
-				LHAssertInfo* info = new LHAssertInfo;
-				*info = *CurrentAssertion;
-				info->Line = 0;
-				FileIgnoreInfo = info;
-				strcpy(info->Code, "All assertions in this file");
-				AddAssertion(info);
+				FileIgnoreInfo = new LHAssertInfo;
+				*FileIgnoreInfo = *CurrentAssertion;
+				FileIgnoreInfo->Line = 0;
+				strcpy(FileIgnoreInfo->Code, "All assertions in this file");
+				AddAssertion(FileIgnoreInfo);
 				FillIgnoreList(dialog);
 			}
 			if (!IsDlgButtonChecked(dialog, IDC_IGNORE_FILE) && FileIgnoreInfo != NULL)

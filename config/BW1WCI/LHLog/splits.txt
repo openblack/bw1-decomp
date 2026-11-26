@@ -521,7 +521,7 @@ LHLog/lib/libcmt_lhlog/stricmp.obj:
 LHLog/lib/libcmt_lhlog/strnicmp.obj:
 	.text       start:0x10014080 end:0x10014181 align:1
 
-LHLog/lib/libcmt_lhlog/mbsdup.obj:
+LHLog/lib/libcmt_lhlog/strdup.obj:
 	.text       start:0x10014181 end:0x100141AC align:1
 
 LHLog/lib/libcmt_lhlog/strftime.obj:

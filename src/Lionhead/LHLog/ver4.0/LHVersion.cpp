@@ -51,22 +51,36 @@ enum LH_VERSION_LIST
 #define LH_VERSION_DATE_KEYWORD     "$Date: "
 #define LH_VERSION_KEYWORD_END      '$'
 
-int                       LHVersion::VersionDialogRunning;
-unsigned long             LHVersion::CurrentListState;
-LHLinkedList<LHVersion*>* LHVersion::VersionInfo;
-unsigned long             LHVersion::ModuleChecksum;
-char*                     LHVersion::ModuleChecksumString;
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+int                       LHVersion::VersionDialogRunning = false;
+unsigned long             LHVersion::CurrentListState = 0;
+LHLinkedList<LHVersion*>* LHVersion::VersionInfo = NULL;
+#endif
+unsigned long LHVersion::ModuleChecksum = 0;
+char*         LHVersion::ModuleChecksumString = NULL;
 
 LH_VERSION_INFO("LHLog", "4", "$Revision: 9 $", "$Author: Ddeptford $", "$Date: 1/16/01 7:39p $", "9/1/99",
                 "defaults to HK_LOCAL_MACHINE on registry changes");
 
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
+LHLinkedList<LHVersion*>* LHVersion::VersionInfo;
+unsigned long             LHVersion::CurrentListState;
+int                       LHVersion::VersionDialogRunning;
+#endif
+
 static char* RegistryPath = "Software\\Lionhead Studios Ltd\\Black & White\\LHVersion";
+static char* LHLogLibraryName = NULL;
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
+static LHErrorCode* LHLogErrorCodes = NULL;
+#endif
 
-static LHVersion* CopyrightVersion;
-static char       MajorMinorText[LH_VERSION_MAJOR_MINOR_TEXT_LENGTH];
-
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 // BW1W120 10006300 BW1M119 011707b0 (LHCombined Release)
 static bool32_t CheckForSameVersion(LHVersionBlock* block, LHVersionBlock* registry_block);
+#else
+// BW1W120 10006300 BW1M119 011707b0 (LHCombined Release)
+static bool32_t CheckForSameVersion(LHVersionBlock* registry_block, LHVersionBlock* block);
+#endif
 // BW1W120 100081b0 BW1M119 null
 static BOOL CALLBACK CopyrightDialogCallback(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 // BW1W120 10008c50 BW1M119 null
@@ -74,7 +88,11 @@ static BOOL CALLBACK VersionDialogCallback(HWND hwnd, UINT msg, WPARAM wparam, L
 // BW1W120 10008c70 BW1M119 null
 static void VersionDialogThread(void* argument);
 
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static bool32_t CheckForSameVersion(LHVersionBlock* block, LHVersionBlock* registry_block)
+#else
+static bool32_t CheckForSameVersion(LHVersionBlock* registry_block, LHVersionBlock* block)
+#endif
 {
 	char    name[LH_VERSION_REGISTRY_NAME_LENGTH];
 	uint8_t data[LH_VERSION_REGISTRY_DATA_LENGTH];
@@ -128,11 +146,7 @@ static bool32_t CheckForSameVersion(LHVersionBlock* block, LHVersionBlock* regis
 		dataSize = sizeof(data);
 	}
 
-	if (atol(registry_block->Major) == atol(block->Major) && atol(registry_block->Minor) == atol(block->Minor))
-	{
-		return true;
-	}
-	return false;
+	return atol(registry_block->Major) == atol(block->Major) && atol(registry_block->Minor) == atol(block->Minor);
 }
 
 bool32_t LHVersion::CheckForNewerVersion(LHVersionBlock* registry_block)
@@ -189,11 +203,8 @@ bool32_t LHVersion::CheckForNewerVersion(LHVersionBlock* registry_block)
 		dataSize = sizeof(data);
 	}
 
-	if (atol(registry_block->Major) == atol(Block->Major))
-	{
-		return atol(registry_block->Minor) < atol(Block->Minor);
-	}
-	return atol(registry_block->Major) < atol(Block->Major);
+	return atol(registry_block->Major) == atol(Block->Major) ? atol(registry_block->Minor) < atol(Block->Minor)
+	                                                         : atol(registry_block->Major) < atol(Block->Major);
 }
 
 LH_RETURN LHVersion::UpdateRegistry(LHVersionBlock* block)
@@ -225,38 +236,6 @@ LH_RETURN LHVersion::UpdateRegistry(LHVersionBlock* block)
 	return LH_OK;
 }
 
-unsigned long LHVersion::ChecksumBlock(uint8_t* block, uint16_t length)
-{
-	srand(LH_VERSION_CRYPT_SEED);
-	unsigned long checksum = 0;
-	for (uint16_t i = 0; i < length; i++)
-	{
-		checksum += block[i] + rand();
-		srand(checksum);
-	}
-	return checksum;
-}
-
-void LHVersion::DecryptBlock(uint8_t* block, uint16_t length)
-{
-	srand(LH_VERSION_CRYPT_SEED);
-	uint8_t* data = block;
-	for (uint16_t i = 0; i < length; i++)
-	{
-		*data++ -= rand();
-	}
-}
-
-void LHVersion::EncryptBlock(uint8_t* block, uint16_t length)
-{
-	srand(LH_VERSION_CRYPT_SEED);
-	uint8_t* data = block;
-	for (uint16_t i = 0; i < length; i++)
-	{
-		*data++ += rand();
-	}
-}
-
 LH_RETURN LHVersion::ProcessFields()
 {
 	char* text = Block->Author;
@@ -267,7 +246,7 @@ LH_RETURN LHVersion::ProcessFields()
 		{
 			*text = text[strlen(keyword)];
 		}
-		while (isspace(*--text) || *text == LH_VERSION_KEYWORD_END)
+		for (text--; isspace(*text) || *text == LH_VERSION_KEYWORD_END; text--)
 		{
 			*text = '\0';
 		}
@@ -281,7 +260,7 @@ LH_RETURN LHVersion::ProcessFields()
 		{
 			*text = text[strlen(keyword)];
 		}
-		while (isspace(*--text) || *text == LH_VERSION_KEYWORD_END)
+		for (text--; isspace(*text) || *text == LH_VERSION_KEYWORD_END; text--)
 		{
 			*text = '\0';
 		}
@@ -295,7 +274,7 @@ LH_RETURN LHVersion::ProcessFields()
 		{
 			*text = text[strlen(keyword)];
 		}
-		while (isspace(*--text) || *text == LH_VERSION_KEYWORD_END)
+		for (text--; isspace(*text) || *text == LH_VERSION_KEYWORD_END; text--)
 		{
 			*text = '\0';
 		}
@@ -373,7 +352,11 @@ LHVersion::LHVersion(LHVersionBlock* block)
 		isNewer = false;
 	}
 
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (CheckForSameVersion(Block, &RegistryBlock))
+#else
+	if (CheckForSameVersion(&RegistryBlock, Block))
+#endif
 	{
 		Block->Password[0] = '\0';
 	}
@@ -432,20 +415,23 @@ bool32_t LHVersion::CheckExpiry()
 
 	SYSTEMTIME time;
 	GetSystemTime(&time);
-	if (time.wYear > year)
-	{
-		return false;
-	}
 	if (time.wYear == year)
 	{
-		if (time.wMonth > month)
+		if (time.wMonth == month)
+		{
+			if (time.wDay > day)
+			{
+				return false;
+			}
+		}
+		else if (time.wMonth > month)
 		{
 			return false;
 		}
-		if (time.wMonth == month && time.wDay > day)
-		{
-			return false;
-		}
+	}
+	else if (time.wYear > year)
+	{
+		return false;
 	}
 	return true;
 }
@@ -535,6 +521,29 @@ void LHVersion::ComputeModuleChecksum()
 	}
 }
 
+static BOOL CALLBACK CopyrightDialogCallback(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
+{
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	static LHVersion* version = NULL;
+#else
+	static LHVersion* version;
+#endif
+	if (version == NULL)
+	{
+		version = (LHVersion*)lparam;
+	}
+	return version->CopyrightDialogProc(hwnd, msg, wparam, lparam);
+}
+
+void LHVersion::ShowCopyrightDialog()
+{
+	if (DialogBoxParam((HINSTANCE)LHLogger::DLLHModule, MAKEINTRESOURCE(IDD_COPYRIGHT), NULL, CopyrightDialogCallback,
+	                   (LPARAM)this) == -1)
+	{
+		LH_LOG_WIN32_ERROR(437);
+	}
+}
+
 int LHVersion::CopyrightDialogProc(HWND__* hwnd, uint32_t msg, uint32_t wparam, long lparam)
 {
 	switch (msg)
@@ -548,7 +557,7 @@ int LHVersion::CopyrightDialogProc(HWND__* hwnd, uint32_t msg, uint32_t wparam, 
 			ShowWindow(GetDlgItem(hwnd, IDC_PASSWORD_PROMPT), SW_HIDE);
 			ShowWindow(GetDlgItem(hwnd, IDC_PASSWORD_NAME), SW_HIDE);
 			SetDlgItemText(hwnd, IDC_RECIPIENT, "*** VERSION EXPIRED ***");
-			break;
+			return false;
 		}
 
 		if (strlen(Block->Password) == 0)
@@ -574,7 +583,7 @@ int LHVersion::CopyrightDialogProc(HWND__* hwnd, uint32_t msg, uint32_t wparam, 
 				SetDlgItemText(hwnd, IDC_RECIPIENT, Block->Recipient);
 			}
 		}
-		break;
+		return false;
 
 	case WM_COMMAND:
 		switch (LOWORD(wparam))
@@ -583,7 +592,12 @@ int LHVersion::CopyrightDialogProc(HWND__* hwnd, uint32_t msg, uint32_t wparam, 
 			return false;
 
 		case IDC_COPYRIGHT_OK:
-			if (strlen(Block->Password) != 0)
+			if (strlen(Block->Password) == 0)
+			{
+				Declined = false;
+				EndDialog(hwnd, true);
+			}
+			else
 			{
 				char password[LH_VERSION_PASSWORD_INPUT_LENGTH];
 				GetDlgItemText(hwnd, IDC_PASSWORD, password, sizeof(password));
@@ -592,9 +606,9 @@ int LHVersion::CopyrightDialogProc(HWND__* hwnd, uint32_t msg, uint32_t wparam, 
 					MessageBox(hwnd, "Please Re-enter Password", "Password", MB_OK);
 					return false;
 				}
+				Declined = false;
+				EndDialog(hwnd, true);
 			}
-			Declined = false;
-			EndDialog(hwnd, true);
 			break;
 
 		case IDC_COPYRIGHT_CANCEL:
@@ -607,22 +621,16 @@ int LHVersion::CopyrightDialogProc(HWND__* hwnd, uint32_t msg, uint32_t wparam, 
 	return false;
 }
 
-static BOOL CALLBACK CopyrightDialogCallback(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
+unsigned long LHVersion::ChecksumBlock(uint8_t* block, uint16_t length)
 {
-	if (CopyrightVersion == NULL)
+	srand(LH_VERSION_CRYPT_SEED);
+	unsigned long checksum = 0;
+	for (uint16_t i = 0; i < length; i++)
 	{
-		CopyrightVersion = (LHVersion*)lparam;
+		checksum += block[i] + rand();
+		srand(checksum);
 	}
-	return CopyrightVersion->CopyrightDialogProc(hwnd, msg, wparam, lparam);
-}
-
-void LHVersion::ShowCopyrightDialog()
-{
-	if (DialogBoxParam((HINSTANCE)LHLogger::DLLHModule, MAKEINTRESOURCE(IDD_COPYRIGHT), NULL, CopyrightDialogCallback,
-	                   (LPARAM)this) == -1)
-	{
-		LH_LOG_WIN32_ERROR(437);
-	}
+	return checksum;
 }
 
 LHVersion::VALIDATION LHVersion::ValidateBlock()
@@ -637,8 +645,10 @@ LHVersion::VALIDATION LHVersion::ValidateBlock()
 		validation = VALIDATION_ENCRYPTED;
 		DecryptBlock((uint8_t*)Block->Build, sizeof(LHVersionBlock) - sizeof(Block->StartTag));
 		strcpy(Block->StartTag, LH_VERSION_START_TAG);
-		unsigned long checksum = ChecksumBlock((uint8_t*)Block, offsetof(LHVersionBlock, Checksum));
-		if (*(unsigned long*)Block->Checksum != checksum)
+		unsigned long checksum = ChecksumBlock((uint8_t*)Block, Block->Checksum - Block->StartTag);
+		unsigned long stored;
+		memcpy(&stored, Block->Checksum, sizeof(stored));
+		if (stored != checksum)
 		{
 			validation = VALIDATION_INVALID;
 		}
@@ -650,22 +660,40 @@ LHVersion::VALIDATION LHVersion::ValidateBlock()
 
 	if (strcmp(LH_VERSION_END_TAG, Block->EndTag))
 	{
-		return VALIDATION_INVALID;
+		validation = VALIDATION_INVALID;
 	}
 	return validation;
+}
+
+void LHVersion::DecryptBlock(uint8_t* block, uint16_t length)
+{
+	srand(LH_VERSION_CRYPT_SEED);
+	uint8_t* data = block;
+	for (uint16_t i = 0; i < length; i++)
+	{
+		uint8_t key = rand();
+		*data++ -= key;
+	}
+}
+
+void LHVersion::EncryptBlock(uint8_t* block, uint16_t length)
+{
+	srand(LH_VERSION_CRYPT_SEED);
+	uint8_t* data = block;
+	for (uint16_t i = 0; i < length; i++)
+	{
+		uint8_t key = rand();
+		*data++ += key;
+	}
 }
 
 LHVersion::~LHVersion()
 {
 	if (VersionInfo)
 	{
-		for (int i = 0; i < LH_VERSION_LIST_COUNT; i++)
+		for (uint16_t i = 0; i < LH_VERSION_LIST_COUNT; i++)
 		{
-			LHLinkedList<LHVersion*>* list = &VersionInfo[i];
-			while (list->GetStart())
-			{
-				list->Remove(list->GetStart()->Data);
-			}
+			VersionInfo[i].RemoveAll();
 		}
 		delete[] VersionInfo;
 		VersionInfo = NULL;
@@ -689,6 +717,34 @@ LHVersion* LHVersion::FindKey(char* name)
 		}
 	}
 	return NULL;
+}
+
+static BOOL CALLBACK VersionDialogCallback(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
+{
+	return LHVersion::VersionDialogProc(hwnd, msg, wparam, lparam);
+}
+
+static void VersionDialogThread(void* argument)
+{
+	DialogBoxParam((HINSTANCE)LHLogger::DLLHModule, MAKEINTRESOURCE(IDD_VERSION), NULL, VersionDialogCallback, 0);
+	LHVersion::VersionDialogRunning = false;
+}
+
+void LHVersion::ShowVersionDialog(bool32_t show_all)
+{
+	if ((show_all || VersionInfo[LH_VERSION_LIST_CHANGES].Count) && !VersionDialogRunning)
+	{
+		VersionDialogRunning = true;
+		if (show_all)
+		{
+			CurrentListState = IDC_VERSION_ALL;
+			_beginthread(VersionDialogThread, 0, NULL);
+		}
+		else
+		{
+			VersionDialogThread(NULL);
+		}
+	}
 }
 
 void LHVersion::RepopulateList(HWND__* hwnd, unsigned long state)
@@ -803,6 +859,8 @@ LH_RETURN LHVersion::GetMajorMinor(char* module, unsigned long* major, unsigned 
 
 LH_RETURN LHVersion::GetMajorMinorText(char* module, char** text)
 {
+	static char majorMinorText[LH_VERSION_MAJOR_MINOR_TEXT_LENGTH];
+
 	char key[] = "Xbed6d040xTbW&N4xxls%1m9c$Rr~(Ff9>Z/Ptw]l{$S2ze39+bg^#t,*j6uKBMx";
 	for (uint32_t i = 0; i < strlen(key); i++)
 	{
@@ -815,8 +873,8 @@ LH_RETURN LHVersion::GetMajorMinorText(char* module, char** text)
 	{
 		return LH_FAIL;
 	}
-	sprintf(MajorMinorText, "%d.%d", major, minor);
-	*text = MajorMinorText;
+	sprintf(majorMinorText, "%d.%d", major, minor);
+	*text = majorMinorText;
 	return LH_OK;
 }
 
@@ -830,32 +888,4 @@ LH_RETURN LHVersion::GetMajorMinorULONG(char* module, unsigned long* version)
 	}
 	*version = (major << LH_VERSION_MAJOR_SHIFT) + minor;
 	return LH_OK;
-}
-
-static BOOL CALLBACK VersionDialogCallback(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
-{
-	return LHVersion::VersionDialogProc(hwnd, msg, wparam, lparam);
-}
-
-static void VersionDialogThread(void* argument)
-{
-	DialogBoxParam((HINSTANCE)LHLogger::DLLHModule, MAKEINTRESOURCE(IDD_VERSION), NULL, VersionDialogCallback, 0);
-	LHVersion::VersionDialogRunning = false;
-}
-
-void LHVersion::ShowVersionDialog(bool32_t show_all)
-{
-	if ((show_all || VersionInfo[LH_VERSION_LIST_CHANGES].Count) && !VersionDialogRunning)
-	{
-		VersionDialogRunning = true;
-		if (show_all)
-		{
-			CurrentListState = IDC_VERSION_ALL;
-			_beginthread(VersionDialogThread, 0, NULL);
-		}
-		else
-		{
-			VersionDialogThread(NULL);
-		}
-	}
 }

@@ -7,7 +7,11 @@
 
 #define LH_REGISTRY_VALUE_NAME_SIZE 128
 
-static HKEY CurrentKey = HKEY_CURRENT_USER;
+static HKEY  CurrentKey = HKEY_CURRENT_USER;
+static char* LHLogLibraryName = NULL;
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
+static LHErrorCode* LHLogErrorCodes = NULL;
+#endif
 
 void LHRegistrySetCurrentKey(LH_REG_KEY_TYPE key_type)
 {
@@ -104,14 +108,15 @@ LH_RETURN RegistryRetrieveVal(char* key, char* value, uint8_t* data, unsigned lo
 	char          name[LH_REGISTRY_VALUE_NAME_SIZE];
 	unsigned long nameSize;
 	unsigned long valueType;
-	for (unsigned long index = 0;; index++)
+	unsigned long index = 0;
+	while (true)
 	{
 		dataSize = bufferSize;
 		nameSize = sizeof(name);
 		LONG error = RegEnumValueA(hkey, index, name, &nameSize, NULL, &valueType, buffer, &dataSize);
 		if (error == ERROR_MORE_DATA)
 		{
-			uint8_t* largeBuffer = (uint8_t*)operator new(dataSize);
+			uint8_t* largeBuffer = new uint8_t[dataSize];
 			memset(largeBuffer, 0, dataSize);
 			error = RegEnumValueA(hkey, index, name, &nameSize, NULL, &valueType, largeBuffer, &dataSize);
 			if (error == ERROR_SUCCESS)
@@ -122,7 +127,7 @@ LH_RETURN RegistryRetrieveVal(char* key, char* value, uint8_t* data, unsigned lo
 					LH_LOG_ERROR(155, LH_LOG_CODE_ERROR, LHSPrintf("Registry value truncated %s %s\n", key, value));
 				}
 			}
-			operator delete(largeBuffer);
+			delete[] largeBuffer;
 			dataSize = bufferSize;
 		}
 
@@ -144,6 +149,7 @@ LH_RETURN RegistryRetrieveVal(char* key, char* value, uint8_t* data, unsigned lo
 				break;
 			}
 		}
+		index++;
 	}
 	RegCloseKey(hkey);
 

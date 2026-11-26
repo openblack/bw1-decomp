@@ -7,6 +7,11 @@
 
 #include "LHAssert.h"
 
+#if defined(VERSION_BW1W110) || defined(VERSION_BW1WCI)
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) ((line) - 1)
+#endif
+
 #define LH_TEMPLATE_FILEPATH RELEASED_HEADERS_DIRECTORY "LHTemplate.h"
 
 typedef long SLONG;
@@ -102,10 +107,10 @@ public:
 		LH_ASSERT_AT(796, LH_TEMPLATE_FILEPATH, Head.Get(), "Peter: Linked List No Head Error");
 
 		LHLinkedNode<T>* last_node = NULL;
-		LHLinkedNode<T>* node = Head.Get();
-		while (node)
+		LHLinkedNode<T>* next;
+		for (LHLinkedNode<T>* node = Head.Get(); node != NULL; node = next)
 		{
-			LHLinkedNode<T>* next = node->Next.Get();
+			next = node->Next.Get();
 			if (node->Data == data)
 			{
 				if (node == Head.Get())
@@ -130,13 +135,25 @@ public:
 			{
 				last_node = node;
 			}
-			node = next;
 		}
 		LH_ASSERT_AT(827, LH_TEMPLATE_FILEPATH, deleted_one == true, "Peter: Not Found in linked list");
+	}
+
+	// BW1W120 inlined BW1M119 inlined
+	void RemoveAll()
+	{
+		LHLinkedNode<T>* node;
+		while ((node = Head.Get()) != NULL)
+		{
+			Remove(node->Data);
+		}
 	}
 
 	LHFastPointer<LHLinkedNode<T> > Head;
 	unsigned long                   Count; /* 0x4 */
 };
+
+#undef ORIGINAL_LINE
+#define ORIGINAL_LINE(line) (line)
 
 #endif /* BW1_DECOMP_LH_TEMPLATE_INCLUDED_H */

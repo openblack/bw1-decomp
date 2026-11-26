@@ -1991,6 +1991,12 @@ modules:
   name: LHLog
   symbols: config/BW1W110/LHLog/symbols.txt
   splits: config/BW1W110/LHLog/splits.txt
+  add_relocations:
+  # SetLocalError stops its search at LocalErrors[LH_LOG_MAX_ERROR_CODES], far past the table.
+    - source: 0x10002E80
+      type: x86_abs32
+      target: _LocalErrors
+      addend: 0x1F40
 
 - object: LHMultiplayerR.dll
   hash: 184601784d2eb1a2f999f79cd032128cf3196b38
