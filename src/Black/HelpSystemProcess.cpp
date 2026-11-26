@@ -1,6 +1,6 @@
 #include "HelpSystem.h"
 
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 
 #include "Camera.h"
 #include "Game.h"

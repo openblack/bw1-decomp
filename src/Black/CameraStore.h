@@ -1,7 +1,7 @@
 #ifndef BW1_DECOMP_CAMERA_STORE_INCLUDED_H
 #define BW1_DECOMP_CAMERA_STORE_INCLUDED_H
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 struct CameraStore
 {

@@ -7,7 +7,7 @@
 
 #include <Lionhead/LH3DLib/development/LHCoord.h>  /* For struct LHCoord */
 #include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
-#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint, struct Point2D */
+#include <LHPoint.h>                               /* For struct LHPoint, struct Point2D */
 #include <Lionhead/LH3DLib/development/Zoomer.h>   /* For struct Zoomer, struct Zoomer3d */
 #include <re_common.h>                             /* For bool32_t */
 

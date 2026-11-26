@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 #define RAIN_CELL_LINES      128
 #define RAIN_CELL_LINE_SLOTS 256

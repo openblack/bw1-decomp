@@ -2,7 +2,7 @@
 #define BW1_DECOMP_LIGHTNING_OBJECT_INFO_INCLUDED_H
 
 #include <assert.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 
 #include "GTPointer.h"
 

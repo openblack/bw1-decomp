@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint */
+#include <LHPoint.h>                                /* For struct LHPoint */
 
 #include "GJBaseUtils.h" /* For class GJVector */
 

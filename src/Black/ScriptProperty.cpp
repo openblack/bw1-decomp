@@ -8,7 +8,7 @@
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
 #endif
 #include <Lionhead/LH3DLib/development/LH3DMath.h> /* For DEGREES_TO_RADIANS, TWO_PI */
-#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+#include <LHPoint.h>                               /* For struct LHPoint */
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>       /* For LHSPrintf */
 
 #include "Alignment.h"

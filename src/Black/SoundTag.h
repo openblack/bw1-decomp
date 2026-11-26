@@ -4,10 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t */
 
-#include <chlasm/AudioSFX.h>                      /* For enum AUDIO_SFX_BANK_TYPE */
-#include <chlasm/LHSample.h>                      /* For enum LH_SAMPLE */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
+#include <chlasm/AudioSFX.h>                  /* For enum AUDIO_SFX_BANK_TYPE */
+#include <chlasm/LHSample.h>                  /* For enum LH_SAMPLE */
+#include <LHPoint.h>                          /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "LocalBase.h" /* For struct LocalBase */
 #include "Terrain.h"   /* For enum ATMOS_TYPE */

@@ -4,10 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <Lionhead/LH3DLib/development/Zoomer.h>  /* For struct Zoomer3d */
-#include <Lionhead/LHLib/ver5.0/LHFastPointer.h>  /* For LHFastPointer */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>                             /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer3d */
+#include <Lionhead/LHLib/ver5.0/LHFastPointer.h> /* For LHFastPointer */
+#include <re_common.h>                           /* For bool32_t */
 
 #include "GJBaseUtils.h"          /* For GJLowPassFilterVariableStep */
 #include "HandStateHolding.h"     /* For struct HandStateHolding */

@@ -1,7 +1,7 @@
 #ifndef BW1_DECOMP_HOW_MANY_PEOPLE_INCLUDED_H
 #define BW1_DECOMP_HOW_MANY_PEOPLE_INCLUDED_H
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 // Forward Declares
 

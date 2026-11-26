@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 #include <chlasm/Enum.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 #include <re_common.h>
 

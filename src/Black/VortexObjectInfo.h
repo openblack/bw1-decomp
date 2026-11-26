@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
-#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+#include <LHPoint.h>                               /* For struct LHPoint */
 
 #include "PSysBase.h" /* For struct PSysBase */
 

@@ -13,7 +13,7 @@ inline GBaseInfo* GScriptOpposingCreature::GetBaseInfo(uint32_t& info_count)
 
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>         /* For LHSPrintf */
 #include <Lionhead/LHMultiplayer/ver4.0/LHSession.h> /* For LHSession */
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 
 #include "Arena.h"
 #include "Citadel.h"

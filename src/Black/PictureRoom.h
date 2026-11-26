@@ -7,7 +7,7 @@
 #include <re_common.h>                            /* For bool32_t */
 #include <chlasm/LHKeyBoard.h>                    /* For enum LH_KEY */
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h>                              /* For struct LHPoint */
 
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 #include "TempleRoom.h"       /* For struct TempleRoom */

@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 
 #include "LHMatrix.h" /* For struct LHMatrix */
-#include "LHPoint.h"  /* For struct LHPoint */
+#include <LHPoint.h>  /* For struct LHPoint */
 
 #include <re_common.h> /* For bool32_t */
 

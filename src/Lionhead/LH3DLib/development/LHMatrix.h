@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <math.h>   /* For cos, sin */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 // Transforms point by matrix into result; point is evaluated once for every term.
 #define LHMATRIX_TRANSFORM_POINT(result, point, matrix)                                                                \

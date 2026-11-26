@@ -5,7 +5,7 @@
 
 #include "LH3DColor.h" /* For struct LH3DColor */
 #include "LHMatrix.h"  /* For struct LHMatrix */
-#include "LHPoint.h"   /* For struct LHPoint, bool32_t */
+#include <LHPoint.h>   /* For struct LHPoint, bool32_t */
 
 struct LH3DMaterial;
 

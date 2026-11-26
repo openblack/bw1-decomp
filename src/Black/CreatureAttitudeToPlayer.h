@@ -6,10 +6,10 @@
 #include <stdint.h> /* For uint32_t */
 #include <stdio.h>  /* For FILE */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <chlasm/CreatureEnum.h>                  /* For enum DETECTED_PLAYER_ACTION */
-#include <chlasm/Enum.h> /* For enum CREATURE_DESIRES, enum MAGIC_TYPE, enum TOWN_DESIRE_INFO */
-#include <re_common.h>   /* For bool32_t */
+#include <LHPoint.h>             /* For struct LHPoint */
+#include <chlasm/CreatureEnum.h> /* For enum DETECTED_PLAYER_ACTION */
+#include <chlasm/Enum.h>         /* For enum CREATURE_DESIRES, enum MAGIC_TYPE, enum TOWN_DESIRE_INFO */
+#include <re_common.h>           /* For bool32_t */
 
 #include "Base.h"           /* For struct Base */
 #include "ForgetfulStack.h" /* For struct ForgetfulStack */

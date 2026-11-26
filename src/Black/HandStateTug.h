@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 
 #include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
-#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+#include <LHPoint.h>                               /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/Zoomer.h>   /* For struct Zoomer, struct Zoomer3d */
 #include <re_common.h>                             /* For bool32_t */
 

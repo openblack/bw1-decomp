@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 
 #include "LH3DColor.h" /* For struct LH3DColor */
-#include "LHPoint.h"   /* For struct LHPoint */
+#include <LHPoint.h>   /* For struct LHPoint */
 
 // Forward Declares
 

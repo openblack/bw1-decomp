@@ -4,9 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <chlasm/CreatureEnum.h>                  /* For enum CREATURE_TYPE */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>             /* For struct LHPoint */
+#include <chlasm/CreatureEnum.h> /* For enum CREATURE_TYPE */
+#include <re_common.h>           /* For bool32_t */
 
 #include "MapCoords.h" /* For struct MapCoords */
 

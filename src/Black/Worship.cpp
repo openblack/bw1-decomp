@@ -13,7 +13,7 @@
 
 #include <math.h> /* For cos, fmod, log */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 static LHPoint ZeroPoint(0.0f, 0.0f, 0.0f);
 

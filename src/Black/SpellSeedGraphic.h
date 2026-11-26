@@ -7,7 +7,7 @@
 
 #include <chlasm/Enum.h> /* For enum POWER_UP_TYPE, enum SPELL_SEED_TYPE */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 

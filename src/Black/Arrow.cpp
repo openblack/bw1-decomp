@@ -2,7 +2,7 @@
 #include "MobileObject.h"
 #include "ArrowInfo.h"
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 #include "GameThingWithPos.h"
 #include "Landscape.h"
 #include "MapCoords.h"

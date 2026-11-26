@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint16_t, uint8_t */
 
 #include "LHMatrix.h" /* For struct LHMatrix */
-#include "LHPoint.h"  /* For struct LHPoint */
+#include <LHPoint.h>  /* For struct LHPoint */
 
 #include <re_common.h> /* For bool32_t */
 

@@ -1,8 +1,8 @@
 #ifndef BW1_DECOMP_ROUTE_INCLUDED_H
 #define BW1_DECOMP_ROUTE_INCLUDED_H
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct Point2D */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>   /* For struct Point2D */
+#include <re_common.h> /* For bool32_t */
 
 struct RPAvoid;
 struct RPHolder;

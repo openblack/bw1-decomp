@@ -7,7 +7,7 @@
 
 #include "LH3DColor.h"    /* For struct LH3DColor */
 #include "LH3DMaterial.h" /* For struct LH3DMaterial */
-#include "LHPoint.h"      /* For struct LHPoint */
+#include <LHPoint.h>      /* For struct LHPoint */
 
 struct LH3DTexture;
 

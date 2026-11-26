@@ -1,7 +1,7 @@
 #include "RoutePlan.h"
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetCell, LH3DIsland::IsWater */
-#include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint */
+#include <LHPoint.h>                                 /* For struct LHPoint */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>             /* For NEW */
 
 #include <math.h> /* For sqrt */

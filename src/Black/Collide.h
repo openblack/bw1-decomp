@@ -6,7 +6,7 @@
 #include <stdint.h> /* For int16_t, uint32_t, uint8_t */
 
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>      /* For LHCollide */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For LHPoint */
+#include <LHPoint.h>                              /* For LHPoint */
 #include <Lionhead/LH3DLib/development/LH3DMem.h> /* For LH3DMem */
 #include <re_common.h>                            /* For bool32_t */
 

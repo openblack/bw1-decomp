@@ -5,7 +5,7 @@
 #include <stdint.h>    /* For uint32_t */
 #include <re_common.h> /* For bool32_t */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 // Forward Declares
 

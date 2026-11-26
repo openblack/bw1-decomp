@@ -13,10 +13,10 @@
 #include <chlasm/GStates.h>       /* For enum VILLAGER_STATES */
 #include <chlasm/HitRegions.h>    /* For enum FIGHT_CONTROL_AI */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <Lionhead/LHFile/ver3.0/LHFile.h>        /* For enum LH_FILE_RESULT */
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>   /* For struct LHLinkedList */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>              /* For struct LHPoint */
+#include <Lionhead/LHFile/ver3.0/LHFile.h>      /* For enum LH_FILE_RESULT */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+#include <re_common.h>                          /* For bool32_t */
 
 #include "ClearAreaState.h"    /* For struct ClearAreaState */
 #include "CreatureHelp.h"      /* For struct CreatureHelpStack, struct CreatureHelpState */

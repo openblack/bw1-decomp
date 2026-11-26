@@ -8,7 +8,7 @@
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_INTERFACE_LEVEL, enum SCRIPT_OBJECT_TYPE */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint */
+#include <LHPoint.h>                                /* For struct LHPoint */
 
 #include "Base.h"        /* For struct Base */
 #include "MapCoords.h"   /* For struct MapCoords */

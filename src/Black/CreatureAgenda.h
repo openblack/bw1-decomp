@@ -5,8 +5,8 @@
 #include <stddef.h> /* For offsetof */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>   /* For struct LHPoint */
+#include <re_common.h> /* For bool32_t */
 
 #include "Base.h"                     /* For struct Base */
 #include "CreatureAction.h"           /* For enum CREATURE_ACTION */

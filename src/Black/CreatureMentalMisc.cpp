@@ -5,8 +5,8 @@
 
 #include "ColourConstants.h" /* For White */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <windows.h>                              /* For min, max */
+#include <LHPoint.h> /* For struct LHPoint */
+#include <windows.h> /* For min, max */
 
 #include "CreatureInfo.h"
 #include "CreatureMental.h"

@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <stddef.h>
 
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 
 #include "GJBaseUtils.h" /* For GJVector */
 #include "GTPointer.h"

@@ -2,7 +2,7 @@
 #define BW1_DECOMP_LH3D_WET_FEET_INCLUDED_H
 
 #include "LH3DColor.h" /* For struct LH3DColor */
-#include "LHPoint.h"   /* For struct LHPoint */
+#include <LHPoint.h>   /* For struct LHPoint */
 
 // The wet footprints a creature leaves after walking through water.
 #define LH3D_WET_FEET_MAX               256

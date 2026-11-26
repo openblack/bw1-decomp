@@ -6,7 +6,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 #define LH3D_EYE_PART_COUNT 5
 #define LH3D_EYE_TYPE_COUNT 3

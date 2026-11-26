@@ -6,7 +6,7 @@
 #include <re_common.h> /* For bool32_t */
 
 #include "LH3DColor.h" /* For struct LH3DColor */
-#include "LHPoint.h"   /* For struct LHPoint */
+#include <LHPoint.h>   /* For struct LHPoint */
 
 #define INFLUENCE_CIRCLE_PLAYER_COUNT 8
 

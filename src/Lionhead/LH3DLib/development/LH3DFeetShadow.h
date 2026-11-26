@@ -2,7 +2,7 @@
 #define BW1_DECOMP_LH3D_FEET_SHADOW_INCLUDED_H
 
 #include "LH3DColor.h" /* For struct LH3DColor */
-#include "LHPoint.h"   /* For struct LHPoint */
+#include <LHPoint.h>   /* For struct LHPoint */
 
 // Forward Declares
 

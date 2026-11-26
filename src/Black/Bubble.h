@@ -10,7 +10,7 @@
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <Lionhead/LH3DLib/development/LHCoord.h>   /* For struct LHCoord */
 #include <Lionhead/LH3DLib/development/LHCoordF.h>  /* For struct LHCoordF */
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint */
+#include <LHPoint.h>                                /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/LHRegionF.h> /* For struct LHRegionF */
 
 // Forward Declares

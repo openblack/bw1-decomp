@@ -6,7 +6,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DMath.h> /* For atan360 */
 #include <Lionhead/LH3DLib/development/LHCoord.h>  /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+#include <LHPoint.h>                               /* For struct LHPoint */
 #include <re_common.h>                             /* For bool32_t */
 
 #include "CameraModeNew.h" /* For class CameraModeNew, struct CameraSmoother, struct CameraSmoother3d */

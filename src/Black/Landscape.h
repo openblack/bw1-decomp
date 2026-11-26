@@ -9,7 +9,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>    /* For LH3DIsland */
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
-#include <Lionhead/LH3DLib/development/LHPoint.h>       /* For struct LHPoint */
+#include <LHPoint.h>                                    /* For struct LHPoint */
 
 // Forward Declares
 

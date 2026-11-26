@@ -10,7 +10,7 @@
 
 #include "LH3DObject.h" /* For g_smoke_additif_mat */
 #include "LH3DSprite.h" /* For struct LH3DSprite */
-#include "LHPoint.h"    /* For struct LHPoint */
+#include <LHPoint.h>    /* For struct LHPoint */
 
 #define GWATER_MAX_CIRCLES   0x400
 #define GWATER_MAX_PLOUFS    30

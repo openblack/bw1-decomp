@@ -1,7 +1,7 @@
 #ifndef BW1_DECOMP_CANIM_INCLUDED_H
 #define BW1_DECOMP_CANIM_INCLUDED_H
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 #include <re_common.h> /* For bool32_t */
 

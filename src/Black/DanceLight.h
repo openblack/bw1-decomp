@@ -4,9 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>   /* For class LHLinkedList */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>                            /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
+#include <re_common.h>                          /* For bool32_t */
 
 #define DANCE_LIGHT_BITMAP_SIZE        (6 * 6 * 3)
 #define DANCE_LIGHT_BITMAP_NAME_LENGTH 256

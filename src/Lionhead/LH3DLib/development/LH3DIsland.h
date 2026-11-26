@@ -9,7 +9,7 @@
 #include "LH3DMapCoords.h"
 #include "LH3DMeshLodLevel.h" /* For LH3D_MESH_LOD_LEVEL */
 #include "LHMatrix.h"
-#include "LHPoint.h"
+#include <LHPoint.h>
 #include "DynamicLightAndShadow.h"
 
 // Forward Declares

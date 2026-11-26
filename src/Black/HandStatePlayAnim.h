@@ -3,8 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>   /* For struct LHPoint */
+#include <re_common.h> /* For bool32_t */
 
 #include "HandState.h" /* For struct HandState */
 

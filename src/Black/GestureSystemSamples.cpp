@@ -4,7 +4,7 @@
 #include <windows.h> /* For min, max */
 
 #include <Lionhead/LH3DLib/development/LHCoord.h>   /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint */
+#include <LHPoint.h>                                /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/LHRegionF.h> /* For struct LHRegionF */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>            /* For Atan2Positive */
 

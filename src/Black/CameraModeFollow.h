@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint16_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>   /* For struct LHPoint */
+#include <re_common.h> /* For bool32_t */
 
 #include "CameraMode.h"       /* For struct CameraMode */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */

@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LH3DTech.h>    /* For LH3DTech::g_camera */
-#include <Lionhead/LH3DLib/development/LHPoint.h>     /* For struct LHPoint */
+#include <LHPoint.h>                                  /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/Zoomer.h>      /* For struct Zoomer, struct Zoomer3d */
 #include <Lionhead/LH3DLib/development/WeatherInfo.h> /* For struct WeatherInfo */
 

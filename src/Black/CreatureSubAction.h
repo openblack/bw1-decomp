@@ -6,7 +6,7 @@
 #include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 #include "Base.h"           /* For struct Base */
 #include "CreatureAction.h" /* For enum CREATURE_SUB_STATE_ACTIONS */

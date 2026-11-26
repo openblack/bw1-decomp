@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include "MeshIntersect.h" /* For struct MeshIntersect */
-#include "LHPoint.h"       /* For struct LHPoint */
+#include <LHPoint.h>       /* For struct LHPoint */
 
 // Forward Declares
 

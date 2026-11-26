@@ -900,7 +900,7 @@ void LH3DPrimitive::DrawComplex()
 		           inverse.m[7] * LH3DTech::GetSun().z + inverse.m[10]);
 		light.z = (inverse.m[2] * LH3DTech::GetSun().x + inverse.m[5] * LH3DTech::GetSun().y +
 		           inverse.m[8] * LH3DTech::GetSun().z + inverse.m[11]);
-		float norm = (light.GetNorm());
+		float norm = light.GetNorm();
 		light *= InverseSquareRoot(norm);
 		LH3DTech::g_local_to_clipping.SetMatrixOnly(LH3DTech::g_world_to_clipping);
 		LH3DTech::g_local_to_clipping.SetTranslateOnly(LH3DTech::g_world_to_clipping.GetPos());
@@ -3573,7 +3573,7 @@ void LH3DPrimitive::DrawRefMapMT()
 			           inverse.m[7] * LH3DTech::GetSun().z + inverse.m[10]);
 			light.z = (inverse.m[2] * LH3DTech::GetSun().x + inverse.m[5] * LH3DTech::GetSun().y +
 			           inverse.m[8] * LH3DTech::GetSun().z + inverse.m[11]);
-			float norm = (light.GetNorm());
+			float norm = light.GetNorm();
 			light *= InverseSquareRoot(norm);
 			LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
 			LH3DTech::g_local_to_clipping.PreMultiply(*matrix);
@@ -3585,8 +3585,7 @@ void LH3DPrimitive::DrawRefMapMT()
 			envMatrix.m[11] = 0.0f;
 			for (i = start; i < start + group->vertex_count; flags++, point++, vertex++, i++)
 			{
-				LHMatrix* clipping = &LH3DTech::g_local_to_clipping;
-				TransformToClipping(point, vertex->position, clipping);
+				TransformToClipping(point, vertex->position, &LH3DTech::g_local_to_clipping);
 				point->specular = LH3DMesh::g_specular;
 				point->color =
 					ScaleColor(LH3DMesh::g_color, GetLightLevel(FloatToInt(light * vertex->normal * LH3D_LIGHT_MAX)));

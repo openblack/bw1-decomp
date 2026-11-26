@@ -8,7 +8,7 @@
 #include "LH3DTriangle.h" /* For struct LH3DTriangle */
 #include "LHMatrix.h"     /* For struct LHMatrix */
 #include "LHPlane.h"      /* For struct LHPlane */
-#include "LHPoint.h"      /* For struct LHPoint */
+#include <LHPoint.h>      /* For struct LHPoint */
 #include "LH3DVertex.h"   /* For struct LH3DVertex, struct LH3DVertexBlending, struct Vertex3D */
 
 #include <re_common.h> /* For bool32_t */

@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For offsetof */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 // Forward Declares
 

@@ -6,7 +6,7 @@
 #include <re_common.h> /* For bool32_t */
 
 #include "LH3DVertex.h" /* For struct LH3DVertex */
-#include "LHPoint.h"    /* For struct LHPoint */
+#include <LHPoint.h>    /* For struct LHPoint */
 
 struct LH3DMaterial;
 

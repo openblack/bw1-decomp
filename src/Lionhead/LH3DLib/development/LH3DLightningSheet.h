@@ -6,7 +6,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 #define LIGHTNING_SHEET_BMAP_SIZE     64
 #define LIGHTNING_SHEET_BMAP_CHANNELS 3

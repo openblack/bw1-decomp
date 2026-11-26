@@ -12,7 +12,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For SquareRoot */
-#include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint, struct Point2D */
+#include <LHPoint.h>                                 /* For struct LHPoint, struct Point2D */
 #include <Lionhead/LHLib/ver5.0/Route.h>             /* For struct Route, class RouteNode */
 
 #include "FootpathFinder.h"   /* For struct GFootpathFinder */

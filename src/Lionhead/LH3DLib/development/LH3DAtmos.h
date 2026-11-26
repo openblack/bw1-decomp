@@ -5,7 +5,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#include "LHPoint.h"     /* For struct LHPoint */
+#include <LHPoint.h>     /* For struct LHPoint */
 #include "WeatherInfo.h" /* For struct WeatherInfo */
 
 #define LH3D_ATMOS_MAP_SIZE          128

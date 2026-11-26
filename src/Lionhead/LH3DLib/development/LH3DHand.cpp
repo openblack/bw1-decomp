@@ -260,7 +260,7 @@ void LH3DPrimitive::DrawForMouse()
 		                    inverse._32 * LH3DTech::GetSun().z + inverse._42);
 		lightDirection.z = (inverse._13 * LH3DTech::GetSun().x + inverse._23 * LH3DTech::GetSun().y +
 		                    inverse._33 * LH3DTech::GetSun().z + inverse._43);
-		float norm = (lightDirection.GetNorm());
+		float norm = lightDirection.GetNorm();
 		lightDirection *= InverseSquareRoot(norm);
 		LH3DTech::g_local_to_clipping.Set(LH3DTech::g_world_to_clipping);
 		LH3DTech::g_local_to_clipping.PreMultiply(*matrix);

@@ -8,7 +8,7 @@
 #include "InfluenceCircle.h" /* For INFLUENCE_CIRCLE_PLAYER_COUNT */
 #include "LH3DColor.h"       /* For struct LH3DColor */
 #include "LHMatrix.h"        /* For struct LHMatrix */
-#include "LHPoint.h"         /* For struct LHPoint */
+#include <LHPoint.h>         /* For struct LHPoint */
 
 #define TOUCH_MY_EDGE_RINGS 7
 
