@@ -51,7 +51,8 @@ void PlayerProfile::SetCurrentProfile(wchar_t* name)
 			CHand* hand = GGame::g_game->MyInterface()->GetRenderHand();
 			if (hand != NULL && hand->HandOrientation == Profile.HAND_ORIENTATION)
 			{
-				GGame::g_game->SetPacket(PACKET_TYPE_HAND_ORIENTATION, 0UL, Profile.HAND_ORIENTATION == 0);
+				GGame::g_game->SetPacket(PACKET_TYPE_HAND_ORIENTATION, 0UL,
+				                         (unsigned long)(Profile.HAND_ORIENTATION == 0));
 			}
 		}
 	}
@@ -234,7 +235,7 @@ void PlayerProfile::WriteBackToRegistry(PlayerProfile& profile)
 		if (GGame::g_game->MyInterface() != NULL && GGame::g_game->MyInterface()->GetRenderHand() != NULL)
 		{
 			CHand* hand = GGame::g_game->MyInterface()->GetRenderHand();
-			GGame::g_game->SetPacket(PACKET_TYPE_HAND_ORIENTATION, 0UL, profile.HAND_ORIENTATION == 0);
+			GGame::g_game->SetPacket(PACKET_TYPE_HAND_ORIENTATION, 0UL, (unsigned long)(profile.HAND_ORIENTATION == 0));
 		}
 	}
 	if (GGame::g_game->Initialised && !GGame::g_game->IsMultiplayerGame())

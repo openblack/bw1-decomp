@@ -69,6 +69,10 @@ block_relocations:
 # CitadelHeart::DrawDestruction's 0xff0000 is an immediate, not an address in 1.30's larger image.
   - source: 0x00467B48
   - source: 0x00467B5E
+# Config::ProcessOneGameTurn's LH3DMapCoords(2193.0f, 2359.0f) folds to the 16.16 immediates 0xdb4ccc and 0xebe666,
+# not addresses in 1.30's larger image.
+  - source: 0x0046BE13
+  - source: 0x0046BE1B
 # LH3DCreature::AddEvilGoodSparkles's 0xff9090, 0xff90ff and 0xffff90 are immediates, not addresses in 1.30's larger image.
   - source: 0x004838C7
   - source: 0x004838DC

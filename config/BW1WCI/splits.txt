@@ -438,15 +438,17 @@ Black/citadelpeople.cpp:
 
 Black/Collide.cpp:
 	.text       start:0x00474370 end:0x00474980
+	.rdata      start:0x008F8F54 end:0x008F8F5C
 	.CRT$XCU    start:0x00A36200 end:0x00A36204 align:4
-	.data       start:0x00A3E710 end:0x00A3E730
-	.bss        start:0x00CD49E4 end:0x00CD4B1C
+	.data       start:0x00A3E710 end:0x00A3E72C
+	.bss        start:0x00CD49E4 end:0x00CD49F0
 
 Black/Config.cpp:
 	.text       start:0x00474980 end:0x00475260
-	.rdata      start:0x008F8F54 end:0x008F8F6C
-	.data       start:0x00A3E730 end:0x00A3E89C
-	.bss        start:0x00CD4B1C end:0x00CD4B28
+	.rdata      start:0x008F8F5C end:0x008F8F6C
+	.CRT$XCU    start:0x00A36204 end:0x00A36210 align:4
+	.data       start:0x00A3E72C end:0x00A3E804
+	.bss        start:0x00CD49F0 end:0x00CD4B28
 
 Black/Container.cpp:
 	.text       start:0x00475260 end:0x00475470
@@ -459,7 +461,7 @@ Black/ControlHand.cpp:
 	.text       start:0x00475470 end:0x004788B0
 	.rdata      start:0x008F94E8 end:0x008F9598
 	.CRT$XCU    start:0x00A3621C end:0x00A36238 align:4
-	.data       start:0x00A3E89C end:0x00A3E9E8
+	.data       start:0x00A3E804 end:0x00A3E9E8
 	.bss        start:0x00CD4B88 end:0x00CD4E1C
 
 Black/ControlMap.cpp:

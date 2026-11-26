@@ -12,6 +12,10 @@ block_relocations:
   - source: 0x00402344
 # SetupColourPicker's initial colour 0x00808080 is an immediate, not a pointer.
   - source: 0x0040EBC4
+# Config::ProcessOneGameTurn's LH3DMapCoords(2193.0f, 2359.0f) folds to the 16.16 immediates 0xdb4ccc and 0xebe666,
+# not addresses.
+  - source: 0x00456343
+  - source: 0x0045634B
 # Bubble::UpdateAndDraw's 0x7f7f7f colour mask is an immediate, not a pointer into Swallow's vftable.
   - source: 0x00544025
 # MapCoords::GetNearestTown's starting distance 10000000 is an immediate, not a pointer.

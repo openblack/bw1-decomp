@@ -549,6 +549,8 @@ public:
 	void SetPacket(PACKET_TYPE type, const MapCoords& coords);
 	// BW1W120 00550c50 BW1M119 010a7990
 	void SetPacket(PACKET_TYPE type, unsigned short first_value, unsigned short second_value);
+	// BW1W120 005514d0 BW1M119 01126590
+	void SetPacket(PACKET_TYPE type, unsigned long object_index, float value);
 	// BW1W120 00551530 BW1M119 01108490
 	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long player_number, float value);
 	// BW1W120 00551580 BW1M119 01566500

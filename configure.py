@@ -910,7 +910,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CitadelPart.cpp"),
             GameCodeObject(NonMatching, "Black/citadelpeople.cpp"),
             GameCodeObject(NonMatching, "Black/Collide.cpp"),
-            GameCodeObject(NonMatching, "Black/Config.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120", "BW1W130", "BW1WCI"), "Black/Config.cpp"),
             GameCodeObject(Matching, "Black/Container.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/ControlHand.cpp"),
             GameCodeObject(NonMatching, "Black/ControlMap.cpp"),
