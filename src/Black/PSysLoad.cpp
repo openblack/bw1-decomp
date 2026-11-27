@@ -201,7 +201,7 @@ bool32_t RenderParticleMist::Load(GameOSFile& file)
 	if (RenderParticle::Load(file))
 	{
 		LoadSafe(file, Creator);
-		LoadIt(file, field_0x1c);
+		LoadIt(file, Ratio);
 		LoadIt(file, TakeRatioFromMatrix);
 		LoadIt(file, LightMap.Frame);
 		LoadIt(file, LightMap.Position);
@@ -218,8 +218,8 @@ bool32_t ParticleLightMap::Load(GameOSFile& file)
 		LoadSafe(file, Creator);
 		LoadIt(file, RandJitter);
 		LoadIt(file, UseRandJitter);
-		LoadIt(file, field_0x24);
-		LoadIt(file, field_0x28);
+		LoadIt(file, ShiftX);
+		LoadIt(file, ShiftZ);
 		LoadIt(file, LightMap.Frame);
 		LoadIt(file, LightMap.Position);
 		LoadIt(file, LightMap.Intensity);
@@ -258,7 +258,7 @@ bool32_t Particle3DAnimWithCamera::Load(GameOSFile& file)
 	if (Particle3DAnim::Load(file))
 	{
 		LoadSafe(file, CameraCreator);
-		LoadIt(file, field_0x34);
+		LoadIt(file, CameraEnabled);
 		LoadIt(file, CameraActive);
 		LoadIt(file, CameraPositioned);
 		LoadIt(file, PauseBeforePlay);
@@ -276,7 +276,7 @@ bool32_t Particle3DObjAnimTextured::Load(GameOSFile& file)
 		LoadIt(file, TextureWidth);
 		LoadIt(file, SlideU);
 		LoadIt(file, SlideV);
-		LoadIt(file, field_0x32);
+		LoadIt(file, DrawMelted);
 		LoadIt(file, NumFrames);
 		return true;
 	}
@@ -287,7 +287,7 @@ bool32_t RenderParticleCreatureRef::Load(GameOSFile& file)
 {
 	if (RenderParticle::Load(file))
 	{
-		file.ReadSafe(field_0x18);
+		file.ReadSafe(TargetCreature);
 		return true;
 	}
 	return false;
@@ -312,7 +312,7 @@ bool32_t ParticlePlayerSymbol::Load(GameOSFile& file)
 {
 	if (RenderParticle::Load(file))
 	{
-		LoadIt(file, field_0x1c);
+		LoadIt(file, PlayerNumber);
 		return true;
 	}
 	return false;
@@ -323,9 +323,9 @@ bool32_t RenderParticleGameObject::Load(GameOSFile& file)
 	if (RenderParticle::Load(file))
 	{
 		file.ReadSafe(GameObject);
-		LoadSafe(file, field_0x20);
-		LoadIt(file, field_0x24);
-		LoadIt(file, field_0x54);
+		LoadSafe(file, Player);
+		LoadIt(file, Matrix);
+		LoadIt(file, KillLiving);
 		return true;
 	}
 	return false;
@@ -364,14 +364,14 @@ bool32_t Chain::Load(GameOSFile& file)
 	if (PSysBase::Load(file))
 	{
 		LoadSafe(file, Creator);
-		LoadIt(file, field_0x18);
+		LoadIt(file, Reserved1);
 		LoadIt(file, FrameHeight);
-		file.ReadIt(field_0x20);
-		LoadIt(file, field_0x24);
-		LoadIt(file, field_0x28);
-		LoadIt(file, field_0x2c);
-		LoadIt(file, field_0x30);
-		LoadIt(file, field_0x34);
+		file.ReadIt(FrameWidth);
+		LoadIt(file, FrameOfHead);
+		LoadIt(file, FrameOfTail);
+		LoadIt(file, Reserved2);
+		LoadIt(file, NumTexturesForWholeChain);
+		LoadIt(file, FileOffset);
 		LoadIt(file, UseDynamicLighting);
 		LoadIt(file, ScrollOffset);
 		file.ReadSafe(Joints);

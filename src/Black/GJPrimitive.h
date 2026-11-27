@@ -13,6 +13,7 @@
 
 struct LH3DMaterial;
 struct LH3DPrimitive;
+struct LHMatrix;
 
 struct UVCoord
 {
@@ -38,11 +39,28 @@ static_assert(sizeof(SLONGTriangle) == 0xc, "Data type is of wrong size");
 class GJPrimitive
 {
 public:
+	// BW1W120 0067ff20 BW1M119 014036d0
+	GJPrimitive()
+	{
+		LightMap = 0;
+		Material = NULL;
+	}
+
 	// BW1W120 0057d630 BW1M119 012c36d0
 	void AddPoly(LH3DPrimitive* primitive, long triangle);
+	// BW1W120 006c9000 BW1M119 01482e60
+	void ComputeNormalsFromTriangles();
+	// BW1W120 006c94a0 BW1M119 inlined
+	long GetNumVertices();
+	// BW1W120 006c9830 BW1M119 null
+	void SetLightMap(uint32_t light_map);
+	// BW1W120 006c98d0 BW1M119 inlined
+	void GetBoundingBox(LHPoint* minima, LHPoint* maxima);
+	// BW1W120 006c9b10 BW1M119 inlined
+	void TransformAllPoints(const LHMatrix& matrix);
 
 	LH3DMaterial*           Material;
-	uint32_t                field_0x4;
+	uint32_t                LightMap;
 	GJVector<LHPoint>       Positions; /* 0x8 */
 	GJVector<LH3DColor>     Colours;
 	GJVector<LH3DColor>     Speculars;

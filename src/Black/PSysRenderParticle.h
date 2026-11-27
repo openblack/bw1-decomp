@@ -62,7 +62,7 @@ public:
 	virtual void SendPotentialInterfaceObject() {}
 
 	// BW1W120 inlined BW1M119 0108ace0
-	RenderParticle() : Enabled(true) {}
+	RenderParticle() { Enabled = true; }
 };
 
 #endif /* BW1_DECOMP_P_SYS_RENDER_PARTICLE_INCLUDED_H */

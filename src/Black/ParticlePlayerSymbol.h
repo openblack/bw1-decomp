@@ -16,7 +16,7 @@ class ParticlePlayerSymbol : public RenderParticle
 {
 public:
 	PlayerSymbolSprite* Sprite;
-	uint32_t            field_0x1c;
+	uint32_t            PlayerNumber;
 
 	// Override methods
 
@@ -29,8 +29,20 @@ public:
 	// BW1W120 006cc3e0 BW1M119 0148c010
 	virtual bool32_t Save(GameOSFile& file);
 
+	// BW1W120 006c9d30 BW1M119 0142bf70
+	virtual uint32_t GetSaveType();
+	// BW1W120 006c9d40 BW1M119 0142bfb0
+	virtual char* GetDebugText();
+	// BW1W120 006c9da0 BW1M119 01482300
+	virtual void ResolveLoad();
+
 	// BW1W120 006c9d10 BW1M119 01482430
 	ParticlePlayerSymbol();
+	// BW1W120 006c9d70 BW1M119 01482370
+	ParticlePlayerSymbol(uint8_t player_number);
+
+	// BW1W120 006c9db0 BW1M119 inlined
+	void CreateSprite();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_PLAYER_SYMBOL_INCLUDED_H */

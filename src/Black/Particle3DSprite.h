@@ -55,6 +55,9 @@ public:
 	// BW1W120 00695ac0 BW1M119 inlined
 	virtual bool32_t Load(GameOSFile& file);
 
+	// BW1W120 006c9e30 BW1M119 null
+	LH3DSprite* GetSprite();
+
 	// BW1W120 0055f000 BW1M119 inlined
 	Particle3DSprite() : Alpha(0xff)
 	{

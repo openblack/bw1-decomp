@@ -2404,7 +2404,7 @@ Black/PSysRenderParticle.cpp:
 	.text       start:0x006CBD50 end:0x006CF820
 	.rdata      start:0x00966CCC end:0x00968040
 	.CRT$XCU    start:0x00A4750C end:0x00A47528 align:4
-	.data       start:0x00C8A0A0 end:0x00C8A360
+	.data       start:0x00C8A0A0 end:0x00C8A340
 	.bss        start:0x00DCFF60 end:0x00DCFFD0
 
 Black/PSysSave.cpp:
@@ -2417,7 +2417,7 @@ Black/PSysShield.cpp:
 	.text       start:0x006D5250 end:0x006D55A0
 	.rdata      start:0x00968048 end:0x00968158
 	.CRT$XCU    start:0x00A47540 end:0x00A47550 align:4
-	.data       start:0x00C8A360 end:0x00C8A404
+	.data       start:0x00C8A340 end:0x00C8A404
 	.bss        start:0x00DCFFF0 end:0x00DD0028
 
 Black/PSysSound.cpp:

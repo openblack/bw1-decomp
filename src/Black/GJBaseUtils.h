@@ -57,6 +57,12 @@ public:
 	void DecSizeTo(long size);
 	// BW1W120 inlined BW1M119 013fa200
 	T* GetMemBuffer();
+	// BW1W120 inlined BW1M119 01486c90 (PSysLightMap*)
+	long Find(const T& item, long start_index);
+	// BW1W120 inlined BW1M119 01487470 (PSysLightMap*)
+	void RemoveAt(long index);
+	// BW1W120 inlined BW1M119 014865c0 (long), 01486d30 (LHPoint)
+	void FillWith(const T& value);
 
 	// BW1W120 inlined BW1M119 010348b0
 	long GetSize() const;
@@ -167,6 +173,8 @@ public:
 	void InsertIntoList(T* item);
 	// BW1W120 inlined BW1M119 01014c70
 	void RemoveFromList(T* item);
+	// BW1W120 inlined BW1M119 01487040 (PSysShadow)
+	T* FindUsingAddress(const T* item) const;
 	// BW1W120 inlined BW1M119 01054460
 	T* Head() { return First; }
 	// BW1W120 inlined BW1M119 0108c1c0

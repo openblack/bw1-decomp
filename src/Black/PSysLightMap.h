@@ -13,8 +13,8 @@ class GJBitmap;
 class PSysLightMap
 {
 public:
-	uint32_t  field_0x0;
-	uint32_t  field_0x4;
+	uint32_t  Reserved1;
+	uint32_t  Reserved2;
 	uint16_t  Frame;
 	LHPoint   Position;
 	float     Intensity;
@@ -24,6 +24,9 @@ public:
 	PSysLightMap();
 	// BW1W120 006ca220 BW1M119 01481450
 	~PSysLightMap();
+
+	// BW1W120 006ca280 BW1M119 inlined
+	void AddLight();
 };
 static_assert(sizeof(PSysLightMap) == 0x20, "Data type is of wrong size");
 

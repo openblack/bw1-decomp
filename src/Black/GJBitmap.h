@@ -2,9 +2,11 @@
 #define BW1_DECOMP_GJ_BITMAP_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h>
 
-#define GJ_BITMAP_RGB_DEPTH 3
+#define GJ_BITMAP_GREY_DEPTH 1
+#define GJ_BITMAP_RGB_DEPTH  3
 
 class GJBitmap
 {
@@ -20,6 +22,19 @@ public:
 	void CopyFromOrigData();
 	// BW1W120 0057cc50 BW1M119 null
 	void SetColour(uint32_t colour);
+	// BW1W120 inlined BW1M119 inlined
+	uint8_t* GetFrameData(uint16_t frame)
+	{
+		if (Data == NULL)
+		{
+			return NULL;
+		}
+		if (frame >= Frames)
+		{
+			return NULL;
+		}
+		return Data + Depth * frame * Width * Width;
+	}
 
 	uint8_t  Depth; /* 0x0 */
 	uint8_t* Data;  /* 0x4 */

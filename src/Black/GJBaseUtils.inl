@@ -98,6 +98,15 @@ template <class T> inline GJVector<T>& GJVector<T>::operator=(const GJVector<T>&
 	return *this;
 }
 
+template <class T> inline void GJVector<T>::FillWith(const T& value)
+{
+	T* end = Data + Size;
+	for (T* entry = Data; entry < end; ++entry)
+	{
+		*entry = value;
+	}
+}
+
 template <class T> inline long GJVector<T>::GetSize() const
 {
 	return Size;
@@ -106,6 +115,29 @@ template <class T> inline long GJVector<T>::GetSize() const
 template <class T> inline T* GJVector<T>::GetMemBuffer()
 {
 	return Data;
+}
+
+template <class T> inline long GJVector<T>::Find(const T& item, long start_index)
+{
+	for (long i = start_index; i < Size; i++)
+	{
+		if (Data[i] == item)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+template <class T> inline void GJVector<T>::RemoveAt(long index)
+{
+	T* entry = Data + index;
+	T* end = Data + Size - 1;
+	for (; entry < end; ++entry)
+	{
+		*entry = *(entry + 1);
+	}
+	Size--;
 }
 
 template <class T> inline T& GJVector<T>::operator[](long index)
@@ -230,4 +262,16 @@ template <class T> inline void GJDoubleLinkList<T>::RemoveFromList(T* item)
 	Count--;
 	item->Next = NULL;
 	item->Previous = NULL;
+}
+
+template <class T> inline T* GJDoubleLinkList<T>::FindUsingAddress(const T* item) const
+{
+	for (T* entry = First; entry != NULL; entry = entry->Next)
+	{
+		if (item == entry)
+		{
+			return entry;
+		}
+	}
+	return NULL;
 }
