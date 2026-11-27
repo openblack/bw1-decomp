@@ -23,6 +23,7 @@
 #include <Lionhead/LH3DLib/development/LH3DSubMesh.h>       /* For LH3D_BONE_NONE */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>          /* For LH3DTech::g_delta_time */
 #include <Lionhead/LH3DLib/development/LHMatrix.h>          /* For struct LHMatrix */
+#include <Lionhead/LH3DLib/development/LHMatrixOperators.h> /* For PostScale */
 #include <Lionhead/LH3DLib/development/MeshIntersect.h>     /* For MeshIntersect::ReadBinary */
 #include <Lionhead/LH3DLib/development/SnowCover.h>         /* For SnowCover */
 #include <Lionhead/LHFile/ver3.0/LHReleasedFile.h>          /* For LHReleasedFile */
@@ -534,7 +535,7 @@ void LH3DCreature::GetPositionMatrix(LHMatrix* matrix)
 	slope._12 = slopeX;
 	slope._32 = slopeZ;
 	matrix->PostMultiply(slope);
-	matrix->PostScale(Size2);
+	PostScale(*matrix, Size2);
 	matrix->PostTranslation(position);
 }
 

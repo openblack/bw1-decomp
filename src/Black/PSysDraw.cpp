@@ -45,6 +45,7 @@
 #include <Lionhead/LH3DLib/development/LH3DPrimitive.h>
 #include <Lionhead/LH3DLib/development/LH3DSky.h>
 #include <Lionhead/LH3DLib/development/LH3DSprite.h>
+#include <Lionhead/LH3DLib/development/LHMatrixOperators.h> /* For PostScale */
 #include <Lionhead/LH3DLib/development/Zoomer.h>
 
 #include <math.h>
@@ -290,7 +291,7 @@ void Particle3DObj::DrawAt(const DrawData& data)
 			pos.Set(data.DrawPos->Transform.GetPos());
 			LHPoint toCamera = cameraPos - pos;
 			Object3D->matrix.SetIdentity();
-			Object3D->matrix.PostScale(data.DrawPos->Scale);
+			PostScale(Object3D->matrix, data.DrawPos->Scale);
 			float pitch =
 				HALF_PI_F - atan2f(toCamera.y, (float)sqrt(toCamera.x * toCamera.x + toCamera.z * toCamera.z));
 			Object3D->matrix.PostRotateZ(pitch);

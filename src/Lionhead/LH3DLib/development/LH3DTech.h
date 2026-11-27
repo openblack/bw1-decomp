@@ -5,7 +5,7 @@
 #include <math.h>   /* For tan */
 #include <stdint.h> /* For uint32_t */
 
-#include "LH3DCamera.h" /* For struct LH3DCamera */
+#include "LH3DCamera.h" /* For struct LH3DCameraView */
 #include "LH3DVertex.h" /* For struct Vertex3D, Vertex3DMT */
 #include "LHCoord.h"    /* For struct LHCoord */
 #include "LHPoint.h"    /* For struct Point2D */
@@ -100,7 +100,7 @@ public:
 	// BW1W120 00e839e0 BW1M119 013241a8 (LHCombined Release)
 	static InfoTransform g_info_transform;
 	// BW1W120 00ea1db8 BW1M119 012dbfc8 (LHCombined Release)
-	static LH3DCamera g_camera;
+	static LH3DCameraView g_camera;
 	// BW1W120 00c3812c BW1M119 011d1504 (LHCombined Release)
 	static float g_meter_width_screen_on_2;
 	// BW1W120 00c38130 BW1M119 011d1508 (LHCombined Release)

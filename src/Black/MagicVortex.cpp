@@ -36,18 +36,19 @@
 #include "VortexObjectInfo.h"
 #include "VortexSave.h"
 
-#include <Lionhead/LH3DLib/development/LH3DIsland.h>      /* For struct LandBlock */
-#include <Lionhead/LH3DLib/development/LH3DMaterial.h>    /* For struct LH3DMaterial */
-#include <Lionhead/LH3DLib/development/LH3DMesh.h>        /* For LH3DMesh::GetPackedMesh */
-#include <Lionhead/LH3DLib/development/LH3DPrimitive.h>   /* For struct LH3DPrimitive */
-#include <Lionhead/LH3DLib/development/LH3DSubMesh.h>     /* For struct LH3DSubMesh */
-#include <Lionhead/LH3DLib/development/LH3DMath.h>        /* For TWO_PI */
-#include <Lionhead/LH3DLib/development/LH3DObject.h>      /* For class LH3DObject */
-#include <Lionhead/LH3DLib/development/LH3DRender.h>      /* For LH3DRender::CreateMaterial */
-#include <Lionhead/LH3DLib/development/LH3DTech.h>        /* For LH3DTech */
-#include <Lionhead/LH3DLib/development/LH3DZSorter.h>     /* For LH3DZSorter */
-#include <Lionhead/LH3DLib/development/PhysOb.h>          /* For class PhysOb */
-#include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h> /* For LH_SAMPLE_LOOP_FOREVER, LH_SAMPLE_PLAY_TYPE_ONCE */
+#include <Lionhead/LH3DLib/development/LH3DIsland.h>        /* For struct LandBlock */
+#include <Lionhead/LH3DLib/development/LH3DMaterial.h>      /* For struct LH3DMaterial */
+#include <Lionhead/LH3DLib/development/LH3DMesh.h>          /* For LH3DMesh::GetPackedMesh */
+#include <Lionhead/LH3DLib/development/LH3DPrimitive.h>     /* For struct LH3DPrimitive */
+#include <Lionhead/LH3DLib/development/LH3DSubMesh.h>       /* For struct LH3DSubMesh */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>          /* For TWO_PI */
+#include <Lionhead/LH3DLib/development/LH3DObject.h>        /* For class LH3DObject */
+#include <Lionhead/LH3DLib/development/LH3DRender.h>        /* For LH3DRender::CreateMaterial */
+#include <Lionhead/LH3DLib/development/LH3DTech.h>          /* For LH3DTech */
+#include <Lionhead/LH3DLib/development/LH3DZSorter.h>       /* For LH3DZSorter */
+#include <Lionhead/LH3DLib/development/LHMatrixOperators.h> /* For PostScale */
+#include <Lionhead/LH3DLib/development/PhysOb.h>            /* For class PhysOb */
+#include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h>   /* For LH_SAMPLE_LOOP_FOREVER, LH_SAMPLE_PLAY_TYPE_ONCE */
 
 #include <math.h> /* For cos, sin */
 
@@ -1172,7 +1173,7 @@ void LandscapeVortex::CreateFootPrints()
 	offset *= FootPrintTextureScale;
 	matrix.Translation(offset);
 	float scale = 1.0f / GetVortexInfo()->BaseScale;
-	matrix.PostScale(scale);
+	PostScale(matrix, scale);
 	matrix.PostTranslation(LHPoint(FootPrintTextureOffset, 0.0f, FootPrintTextureOffset));
 	FootPrintBlock->DrawFlags = LAND_BLOCK_DRAW_FLAG_BEFORE | LAND_BLOCK_DRAW_FLAG_AFTER;
 	FootPrintBlock->BeforeMaterial = FootPrintAlphaMaterial;

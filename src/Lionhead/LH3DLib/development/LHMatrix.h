@@ -130,22 +130,22 @@ struct LHMatrix
 		m[7] *= z;
 		m[8] *= z;
 	}
-	// Inliner IL size: 138
-	// BW1W120 inlined BW1M119 inlined
-	void PostScale(float scale)
+	// Inliner IL size: 150
+	// BW1W120 0086da50 BW1M119 inlined
+	void __fastcall operator+=(const LHMatrix& r)
 	{
-		m[0] *= scale;
-		m[3] *= scale;
-		m[6] *= scale;
-		m[9] *= scale;
-		m[1] *= scale;
-		m[4] *= scale;
-		m[7] *= scale;
-		m[10] *= scale;
-		m[2] *= scale;
-		m[5] *= scale;
-		m[8] *= scale;
-		m[11] *= scale;
+		_11 += r._11;
+		_12 += r._12;
+		_13 += r._13;
+		_21 += r._21;
+		_22 += r._22;
+		_23 += r._23;
+		_31 += r._31;
+		_32 += r._32;
+		_33 += r._33;
+		_41 += r._41;
+		_42 += r._42;
+		_43 += r._43;
 	}
 	// Inliner IL size: 81, plus the nested SetIdentity
 	// BW1W120 inlined BW1M119 inlined

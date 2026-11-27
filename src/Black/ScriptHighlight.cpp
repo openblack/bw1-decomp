@@ -51,7 +51,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DOrientSprite.h>  /* For struct LH3DOrientSprite */
 #include <Lionhead/LH3DLib/development/LH3DRender.h>        /* For LH3DRender::CreateMaterial */
-#include <Lionhead/LH3DLib/development/LHMatrixOperators.h> /* For operator+=, operator*= on LHMatrix */
+#include <Lionhead/LH3DLib/development/LHMatrixOperators.h> /* For operator*= on LHMatrix */
 #include <Lionhead/LH3DLib/development/LH3DTexture.h>       /* For struct LH3DTexture */
 
 #include "ScriptHighlightScoreBoard.h" /* For ScriptHighlight::IsScoreBoard */
