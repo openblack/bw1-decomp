@@ -1,4 +1,4 @@
-#include "LHMatrix.h"
+#include <LHMatrix.h>
 
 #include <math.h> /* For atan, fabs */
 

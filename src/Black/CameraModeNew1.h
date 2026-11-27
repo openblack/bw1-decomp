@@ -4,10 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t, uint16_t, uint32_t */
 
-#include <Lionhead/LH3DLib/development/LHCoord.h>  /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
-#include <LHPoint.h>                               /* For struct LHPoint */
-#include <re_common.h>                             /* For bool32_t */
+#include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
+#include <LHMatrix.h>                             /* For struct LHMatrix */
+#include <LHPoint.h>                              /* For struct LHPoint */
+#include <re_common.h>                            /* For bool32_t */
 
 #include "CameraModeNew.h" /* For class CameraModeNew, struct CameraSmoother, struct CameraSmoother3d */
 

@@ -5,7 +5,7 @@
 
 #include <math.h> /* For acos */
 
-#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
+#include <LHMatrix.h> /* For struct LHMatrix */
 
 #include "ColourConstants.h"   /* For White */
 #include "HalfLifeConstants.h" /* For OneOverLogHalf */

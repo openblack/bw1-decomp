@@ -21,7 +21,7 @@
 #include <Lionhead/LH3DLib/development/LH3DTexture.h>
 #include <Lionhead/LH3DLib/development/LH3DTriangle.h>
 #include <Lionhead/LH3DLib/development/LH3DVertex.h>
-#include <Lionhead/LH3DLib/development/LHMatrix.h>
+#include <LHMatrix.h>
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>
 #include <Lionhead/LHLib/ver5.0/LHFastPointer.h>
 

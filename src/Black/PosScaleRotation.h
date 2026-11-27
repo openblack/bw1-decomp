@@ -3,7 +3,7 @@
 
 #include <assert.h>
 #include <stddef.h>
-#include <Lionhead/LH3DLib/development/LHMatrix.h>
+#include <LHMatrix.h>
 
 // fabricated class tag: the nonpolymorphic Mac symbols do not distinguish class/struct.
 class PosScaleRotation

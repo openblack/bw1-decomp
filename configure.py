@@ -524,7 +524,7 @@ if lhlog_compiler_version == msvc70_version:
 # The released Lionhead headers (Libs\LHALL\RELEASED\Headers): the game and the other libraries
 # included a library's headers from there, as that library had last released them. LH3DLib's own
 # units were built in its development directory and saw its development headers instead
-# (lh3dlib_includes): LHPoint.h differs between the two copies.
+# (lh3dlib_includes): LHPoint.h and LHMatrix.h differ between the two copies.
 released_headers_directory = "include/LHALL/RELEASED/Headers"
 lh3dlib_development_directory = "src/Lionhead/LH3DLib/development"
 includes_project = [

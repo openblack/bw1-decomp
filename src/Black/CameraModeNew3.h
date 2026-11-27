@@ -5,11 +5,11 @@
 #include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHCoord.h>  /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
-#include <LHPoint.h>                               /* For struct LHPoint, struct Point2D */
-#include <Lionhead/LH3DLib/development/Zoomer.h>   /* For struct Zoomer, struct Zoomer3d */
-#include <re_common.h>                             /* For bool32_t */
+#include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
+#include <LHMatrix.h>                             /* For struct LHMatrix */
+#include <LHPoint.h>                              /* For struct LHPoint, struct Point2D */
+#include <Lionhead/LH3DLib/development/Zoomer.h>  /* For struct Zoomer, struct Zoomer3d */
+#include <re_common.h>                            /* For bool32_t */
 
 #include "CameraMode.h"  /* For enum CAMERA_MODE_HAND_STATUS, enum CAMERA_MODE_MOUSE_STATUS, class CameraMode */
 #include "CameraStore.h" /* For struct CameraStore */

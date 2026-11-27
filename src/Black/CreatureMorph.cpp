@@ -22,7 +22,7 @@
 #include <Lionhead/LH3DLib/development/LH3DSky.h>           /* For LH3DSky::topcol */
 #include <Lionhead/LH3DLib/development/LH3DSubMesh.h>       /* For LH3D_BONE_NONE */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>          /* For LH3DTech::g_delta_time */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>          /* For struct LHMatrix */
+#include <LHMatrix.h>                                       /* For struct LHMatrix */
 #include <Lionhead/LH3DLib/development/MeshIntersect.h>     /* For MeshIntersect::ReadBinary */
 #include <Lionhead/LH3DLib/development/SnowCover.h>         /* For SnowCover */
 #include <Lionhead/LHFile/ver3.0/LHReleasedFile.h>          /* For LHReleasedFile */

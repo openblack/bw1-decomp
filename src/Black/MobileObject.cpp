@@ -5,7 +5,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>   /* For LH3DMesh::GetPackedMesh */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
+#include <LHMatrix.h>                                /* For struct LHMatrix */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>             /* For operator new(size_t, const char*, uint32_t) */
 
 #include "ColourConstants.h" /* For White */

@@ -8,7 +8,7 @@
 #include "LH3DMesh.h"    /* For LH3DMesh */
 #include "LH3DSubMesh.h" /* For LH3DSubMesh, LH3DBone */
 #include "LH3DTech.h"    /* For LH3DTech, Report3D__FPCce */
-#include "LHMatrix.h"    /* For LHMatrix */
+#include <LHMatrix.h>    /* For LHMatrix */
 
 #define LH3D_ANIM_CACHE_FILE_NAME   "Data\\AllAnims.anm"
 #define LH3D_ANIM_PACK_SEGMENT_NAME "Body"

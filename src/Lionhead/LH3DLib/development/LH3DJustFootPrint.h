@@ -6,7 +6,7 @@
 #include <re_common.h> /* For bool32_t */
 
 #include "LHCoordF.h" /* For struct LHCoordF */
-#include "LHMatrix.h" /* For struct LHMatrix */
+#include <LHMatrix.h> /* For struct LHMatrix */
 
 // Forward Declares
 

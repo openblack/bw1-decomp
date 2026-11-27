@@ -6,7 +6,7 @@
 #include <stdint.h>    /* For uint16_t, uint32_t */
 #include <re_common.h> /* For bool32_t */
 
-#include "LHMatrix.h"
+#include <LHMatrix.h>
 #include "LH3DMaterial.h" /* For LH3DMaterial */
 
 // Forward Declares

@@ -7,7 +7,7 @@
 #include <Lionhead/LH3DLib/development/CAnim.h>    /* For struct CAnim */
 #include <Lionhead/LH3DLib/development/LH3DAnim.h> /* For struct LH3DAnim */
 #include <Lionhead/LH3DLib/development/LH3DTech.h> /* For LH3DTech::g_delta_time */
-#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
+#include <LHMatrix.h>                              /* For struct LHMatrix */
 
 #include "Camera.h"          /* For GCamera */
 #include "camerahelp.h"      /* For CameraHelp */

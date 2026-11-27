@@ -10,7 +10,7 @@
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>    /* For LH3DIsland::GetAltitude */
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>      /* For PI_F */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>      /* For struct LHMatrix */
+#include <LHMatrix.h>                                   /* For struct LHMatrix */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>             /* For LHSys */
 
 #include "ControlHand.h"     /* For CHand */

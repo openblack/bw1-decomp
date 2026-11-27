@@ -26,7 +26,7 @@
 #include <Lionhead/LH3DLib/development/LH3DText.h>          /* For struct GatheringText */
 #include <Lionhead/LH3DLib/development/LH3DTexture.h>       /* For struct LH3DTexture */
 #include <Lionhead/LH3DLib/development/LH3DVRAMTex.h>       /* For struct LH3DVRAMTex */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>          /* For struct LHMatrix */
+#include <LHMatrix.h>                                       /* For struct LHMatrix */
 #include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h>   /* For struct LH_SamplePlayOptions */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>                    /* For operator new(size_t, const char*, uint32_t) */
 

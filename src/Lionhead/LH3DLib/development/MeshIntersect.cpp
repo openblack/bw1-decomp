@@ -12,7 +12,7 @@
 #include "LH3DSubMesh.h"     /* For LH3DSubMesh */
 #include "LH3DTexture.h"     /* For LH3DTexture, LH3DSurfDesc */
 #include "LH3DVertexGroup.h" /* For LH3DVertexGroup */
-#include "LHMatrix.h"        /* For LHMatrix */
+#include <LHMatrix.h>        /* For LHMatrix */
 
 // The scar image has a SCAR_TILE_SIZE square tile for each scar type (row) and sub type (column).
 #define SCAR_TEXTURE_SIZE 256

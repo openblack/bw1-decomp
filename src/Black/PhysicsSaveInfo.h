@@ -2,7 +2,7 @@
 #define BW1_DECOMP_PHYSICS_SAVE_INFO_INCLUDED_H
 
 #include <stdint.h>
-#include <Lionhead/LH3DLib/development/LHMatrix.h>
+#include <LHMatrix.h>
 
 class GameOSFile;
 

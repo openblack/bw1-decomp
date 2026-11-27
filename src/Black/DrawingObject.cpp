@@ -19,7 +19,7 @@ static const float UVTextureScale = 1.0f / 256.0f;
 
 #include <Lionhead/LH3DLib/development/LH3DAnim.h>   /* For struct LH3DAnim */
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetCell */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
+#include <LHMatrix.h>                                /* For struct LHMatrix */
 
 #include "Abode.h"
 #include "AnimalWolf.h"

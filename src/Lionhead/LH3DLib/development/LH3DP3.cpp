@@ -14,7 +14,7 @@
 #include "LH3DTech.h"        /* For LH3DTech */
 #include "LH3DVertex.h"      /* For LH3DVertex, Vertex3D */
 #include "LH3DVertexGroup.h" /* For LH3DVertexGroup */
-#include "LHMatrix.h"        /* For LHMatrix */
+#include <LHMatrix.h>        /* For LHMatrix */
 #include "MeshLodInfo.h"     /* For MeshLodInfo */
 
 #include <emmintrin.h>

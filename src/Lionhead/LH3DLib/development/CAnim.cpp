@@ -10,7 +10,7 @@
 #include "LH3DMem.h"     /* For LH3DMem */
 #include "LH3DMesh.h"    /* For LH3DMesh */
 #include "LH3DSubMesh.h" /* For LH3DSubMesh */
-#include "LHMatrix.h"    /* For LHMatrix */
+#include <LHMatrix.h>    /* For LHMatrix */
 
 #define CANIM_ANGLE_TOLERANCE    (PI_F / 180.0)
 #define CANIM_POSITION_TOLERANCE 0.005f

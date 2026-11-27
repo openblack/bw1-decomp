@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
-#include <LHPoint.h>                               /* For struct LHPoint */
+#include <LHMatrix.h> /* For struct LHMatrix */
+#include <LHPoint.h>  /* For struct LHPoint */
 
 #include <Lionhead/LH3DLib/development/PhysOb.h> /* For struct PhysOb */
 

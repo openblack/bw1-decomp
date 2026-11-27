@@ -59,7 +59,7 @@
 #include "LH3DWetFeet.h"        /* For class LH3DWetFeet */
 #include "LHIlib.h"             /* For class LHIlib */
 #include "Leash.h"              /* For class Leash */
-#include "LHMatrix.h"           /* For struct LHMatrix */
+#include <LHMatrix.h>           /* For struct LHMatrix */
 #include "LHRandom.h"           /* For Random */
 #include "LHTGA.h"              /* For struct LHTGA */
 #include "RootsPile.h"          /* For class RootsPile */

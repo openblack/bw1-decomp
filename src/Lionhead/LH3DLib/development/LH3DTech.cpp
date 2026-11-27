@@ -14,7 +14,7 @@
 #include "LH3DObject.h"        /* For LH3DObject */
 #include "LH3DP3.h"            /* For LH3DP3 */
 #include "LH3DPrimitive.h"     /* For LH3DPrimitive */
-#include "LHMatrix.h"          /* For LHMatrix */
+#include <LHMatrix.h>          /* For LHMatrix */
 #include "LHRandom.h"          /* For Random */
 
 #define LH3D_TECH_DEFAULT_FOV        1.2217305f
