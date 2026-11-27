@@ -2,86 +2,19 @@
 
 #include <re_common.h> /* For CLAMP */
 
-#include "LH3DMem.h"     /* For LH3DMem */
-#include "LH3DP3.h"      /* For LH3DP3 */
-#include "LH3DRender.h"  /* For LH3DRender */
-#include "LH3DTech.h"    /* For LH3DTech */
-#include "LH3DZSorter.h" /* For LH3DZSorter */
-#include "LHMatrix.h"    /* For LHMatrix */
+#include "LH3DMem.h"         /* For LH3DMem */
+#include "LH3DP3.h"          /* For LH3DP3 */
+#include "LH3DRender.h"      /* For LH3DRender */
+#include "LH3DTech.h"        /* For LH3DTech */
+#include "LH3DTechHelpers.h" /* For SetClipFlags, SetProjection, TransformToClipping */
+#include "LH3DZSorter.h"     /* For LH3DZSorter */
+#include "LHMatrix.h"        /* For LHMatrix */
+#include "LHMatrixHelpers.h" /* For SetRotationZ, TransformX, TransformY, TransformZ */
 
 float utex[LH3D_SPRITE_CORNER_COUNT] = {0.0f, 1.0f / LH3D_SPRITE_DEFAULT_FRAMES_PER_ROW,
                                         1.0f / LH3D_SPRITE_DEFAULT_FRAMES_PER_ROW, 0.0f};
 float vtex[LH3D_SPRITE_CORNER_COUNT] = {0.0f, 0.0f, 1.0f / LH3D_SPRITE_DEFAULT_FRAMES_PER_ROW,
                                         1.0f / LH3D_SPRITE_DEFAULT_FRAMES_PER_ROW};
-
-static inline void SetRotationZ(LHMatrix& matrix, float angle)
-{
-	matrix.SetIdentity();
-	matrix.m[0] = matrix.m[4] = cos(angle);
-	matrix.m[3] = sin(angle);
-	matrix.m[1] = -matrix.m[3];
-}
-
-static inline void SetClipFlags(unsigned long* flags, const Vertex3D* vertex)
-{
-	if (vertex->rhw < LH3DTech::g_info_transform.NearClip)
-	{
-		*flags = LH3DTech::CLIP_CODE_NEAR;
-	}
-	else
-	{
-		*flags = LH3DTech::CLIP_CODE_NONE;
-	}
-	if (vertex->x > vertex->rhw)
-	{
-		*flags |= LH3DTech::CLIP_CODE_RIGHT;
-	}
-	else if (-vertex->rhw > vertex->x)
-	{
-		*flags |= LH3DTech::CLIP_CODE_LEFT;
-	}
-	if (vertex->y > vertex->rhw)
-	{
-		*flags |= LH3DTech::CLIP_CODE_TOP;
-	}
-	else if (-vertex->rhw > vertex->y)
-	{
-		*flags |= LH3DTech::CLIP_CODE_BOTTOM;
-	}
-}
-
-static inline void TransformCorner(Vertex3D* out, const LHPoint* in, const LHMatrix* matrix)
-{
-	out->x = in->x * matrix->_11 + in->y * matrix->_21 + in->z * matrix->_31 + matrix->_41;
-	out->y = in->x * matrix->_12 + in->y * matrix->_22 + in->z * matrix->_32 + matrix->_42;
-	out->rhw = in->x * matrix->_13 + in->y * matrix->_23 + in->z * matrix->_33 + matrix->_43;
-}
-
-static inline float TransformX(const LHPoint& point, const LHMatrix& matrix)
-{
-	return point.x * matrix._11 + point.y * matrix._21 + point.z * matrix._31 + matrix._41;
-}
-
-static inline float TransformY(const LHPoint& point, const LHMatrix& matrix)
-{
-	return point.x * matrix._12 + point.y * matrix._22 + point.z * matrix._32 + matrix._42;
-}
-
-static inline float TransformZ(const LHPoint& point, const LHMatrix& matrix)
-{
-	return point.x * matrix._13 + point.y * matrix._23 + point.z * matrix._33 + matrix._43;
-}
-
-static inline void SetProjection(LHMatrix& matrix, const LHPoint& camera)
-{
-	matrix._11 *= LH3DTech::g_info_transform.InvHalfTanFovY;
-	matrix._21 *= LH3DTech::g_info_transform.InvHalfTanFovY;
-	matrix._41 = camera.x * LH3DTech::g_info_transform.InvHalfTanFovY;
-	matrix._12 *= LH3DTech::g_info_transform.InvHalfTanFovX;
-	matrix._22 *= LH3DTech::g_info_transform.InvHalfTanFovX;
-	matrix._42 = camera.y * LH3DTech::g_info_transform.InvHalfTanFovX;
-	matrix._43 = camera.z;
-}
 
 LH3DSprite* __fastcall LH3DSprite::Create(long count, bool32_t use_material)
 {
@@ -194,7 +127,7 @@ void LH3DSprite::Draw()
 	frameV *= frameSize;
 	for (uint32_t i = 0; i < LH3D_SPRITE_CORNER_COUNT; i++)
 	{
-		TransformCorner(vertex, corner, &LH3DTech::g_local_to_clipping);
+		TransformToClipping(vertex, corner, &LH3DTech::g_local_to_clipping);
 		SetClipFlags(clip, vertex);
 		if (*clip == LH3DTech::CLIP_CODE_NONE)
 		{
@@ -283,7 +216,7 @@ void LH3DSprite::DrawSpecial1(LHMatrix* matrix)
 	frameV *= frameSize;
 	for (uint32_t i = 0; i < LH3D_SPRITE_CORNER_COUNT; i++)
 	{
-		TransformCorner(vertex, corner, &local);
+		TransformToClipping(vertex, corner, &local);
 		SetClipFlags(clip, vertex);
 		if (*clip == LH3DTech::CLIP_CODE_NONE)
 		{
