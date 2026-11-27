@@ -127,6 +127,8 @@ inline void BlackPCHCodeAfterObject(float* values)
 #endif
 #endif
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
 }
 
 #include <Lionhead/LH3DLib/development/LH3DMapCoordsInline.h>
@@ -134,8 +136,6 @@ inline void BlackPCHCodeAfterObject(float* values)
 inline void BlackPCHCodeAfterLH3DMapCoords(float* values)
 {
 #ifndef VERSION_BW1WCI
-	BLACK_PCH_REPEAT_8(values[0] += values[1];)
-	BLACK_PCH_REPEAT_8(values[0] += values[1];)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
@@ -166,7 +166,16 @@ inline void BlackPCHCodeAfterLH3DMapCoords(float* values)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
 	BLACK_PCH_REPEAT_8(values[0] += values[1];)
 #endif
+#ifdef VERSION_BW1WCI
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+	BLACK_PCH_REPEAT_8(values[0] += values[1];)
+#else
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
+#endif
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
 	BLACK_PCH_REPEAT_64(values[0] += values[1];)
