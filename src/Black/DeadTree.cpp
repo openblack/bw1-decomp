@@ -200,7 +200,7 @@ bool32_t DeadTree::CreatureMustAvoid(Creature* creature)
 	{
 		return false;
 	}
-	bool notScripted = !creature->ControlledByScript;
+	bool notScripted = !creature->IsControlledByScript();
 	return notScripted && IsOnFire();
 }
 
