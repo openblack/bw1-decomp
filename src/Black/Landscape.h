@@ -11,6 +11,8 @@
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
 #include <Lionhead/LH3DLib/development/LHPoint.h>       /* For struct LHPoint */
 
+#define GLANDSCAPE_MAX_DRAW_OBJECTS 3000
+
 // Forward Declares
 
 struct LH3DMaterial;
@@ -25,14 +27,12 @@ struct GLandscape
 	// Set by Open; TODO: original global name unknown.
 	// BW1W120 00d99580
 	static char Filename[];
-	// Original names unrecovered. Paired draw arrays hold 3000 entries; insertion stops at 2999.
 	// BW1W120 00d1a3ac
-	static uint32_t DrawObjectActive[3000];
+	static uint32_t DrawObjectActive[GLANDSCAPE_MAX_DRAW_OBJECTS];
 	// BW1W120 00d1d28c
-	static Object* DrawObjects[3000];
+	static Object* DrawObjects[GLANDSCAPE_MAX_DRAW_OBJECTS];
 	// BW1W120 00d20198
 	static int DrawObjectCount;
-	// Descriptive name; decremented when rebuilding the draw list.
 	// BW1W120 00bf358c
 	static int DrawListRebuildCount;
 	// BW1W120 005e5280 BW1M119 01381d10
@@ -45,8 +45,6 @@ struct GLandscape
 
 	// Static methods
 
-	// BW1W120 005e5c90 BW1M119 null
-	static LHPoint* GetIslandCentre(LHPoint& centre);
 	// BW1W120 005e5bd0 BW1M119 013813c0
 	static void ConvertJustMapXZToLandscapePoint(const JustMapXZ& xz, LHPoint& point);
 	// BW1W120 006137f0 BW1M119 0101c4a0
@@ -96,16 +94,23 @@ struct GLandscape
 	// Non-virtual methods
 
 	// BW1W120 005e42e0 BW1M119 01050100
-	void Draw();
+	uint32_t Draw();
 	// BW1W120 005e52e0 BW1M119 01381950
 	void Open(char* path);
 	// BW1W120 005e5620 BW1M119 0102bc30
-	bool32_t __fastcall GetLHPointFromScreenCoord(LHCoord* coord, LHPoint* point, float* param_3);
+	bool32_t __fastcall GetLHPointFromScreenCoord(LHCoord* coord, LHPoint* point, float* depth);
+	// BW1W120 005e5740 BW1M119 01028e70
+	bool32_t __fastcall GetMapCoordFromScreenCoord(LHCoord* coord, MapCoords* coords, float* depth);
+	// BW1W120 005e57a0 BW1M119 01381640
+	static void __fastcall DrawSubPixel(uint16_t* dest, unsigned long pitch, unsigned long x, unsigned long z);
 };
 
 // Free functions
 
-void ClearLight(); // 005e57b0
+// BW1W120 005e57b0 BW1M119 01018ca0
+void ClearLight();
+// BW1W120 005e5c90 BW1M119 01381370
+void GetCenterWorld(LHPoint* point);
 
 // BW1W120 005e6540 BW1M119 01380c10
 void GoolooGooloo(Object* object);

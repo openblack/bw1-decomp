@@ -16,6 +16,7 @@
 // Forward Declares
 
 class Base;
+class EffectValues;
 class Creature;
 class GInterfaceStatus;
 class GMagicInfo;
@@ -56,6 +57,22 @@ public:
 	// BW1W120 inlined BW1M119 01505670
 	GameThing*  GetCreator() { return creator; }
 	static void DrawSpells(); // 007203f0
+	// BW1W120 null BW1M119 0108f120
+	static void ProcessMiniMap();
+	// BW1W120 null BW1M119 0151da60
+	void CreatureNoticesPlayerCastingSpell(const MapCoords& pos);
+	// BW1W120 null BW1M119 0151f290
+	void InitialiseDefaultEffectAndPayForIt(EffectValues* values);
+	// BW1W120 null BW1M119 0151f350
+	void InitialiseDefaultEffect(EffectValues* values);
+	// BW1W120 null BW1M119 015205f0
+	void SetInterfaceCasting(GInterfaceStatus* status);
+	// BW1W120 null BW1M119 01520890
+	void AddTarget(Object* target);
+	// BW1W120 null BW1M119 0151ff90
+	bool32_t IsCastRuleOKAtPos();
+	// BW1W120 null BW1M119 01520fb0
+	void SetToZero();
 
 	LHPTR<Reaction> SpellReaction;
 	float           field_0x2c;

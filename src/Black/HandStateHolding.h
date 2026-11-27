@@ -52,4 +52,7 @@ public:
 
 static_assert(sizeof(HandStateHolding) == 0x114, "Data type is of wrong size");
 
+// BW1W120 00d13f30 BW1M119 null
+extern LHPoint HandLandPos;
+
 #endif /* BW1_DECOMP_HAND_STATE_HOLDING_INCLUDED_H */

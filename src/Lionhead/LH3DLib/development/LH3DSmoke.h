@@ -54,4 +54,11 @@ struct LH3DSmoke
 	void Draw();
 };
 
+// BW1W120 00e9a100 BW1M119 012d35ec (LHCombined Release)
+extern LHPoint g_pos_hand;
+// BW1W120 00e9a110 BW1M119 012d35f8 (LHCombined Release)
+extern LHPoint g_wind_hand;
+// BW1W120 00e9a124 BW1M119 012d35e8 (LHCombined Release)
+extern float g_wind_hand_power;
+
 #endif /* BW1_DECOMP_LH3D_SMOKE_INCLUDED_H */

@@ -7,7 +7,9 @@
 
 #include "TattooInfo.h" /* For struct TattooInfo */
 
-#define FLYING_OBJECTS_LIST_SIZE 14
+#define FLYING_OBJECTS_LIST_SIZE      14
+#define FLYING_OBJECTS_INDEX_HELD     1
+#define FLYING_OBJECTS_INDEX_CREATURE 2
 
 // Forward Declares
 

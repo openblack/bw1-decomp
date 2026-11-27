@@ -1623,7 +1623,7 @@ Black/KeyBuffer.cpp:
 
 Black/LandAlignement.cpp:
 	.text       start:0x005E1C60 end:0x005E2870
-	.rdata      start:0x0092B284 end:0x0092B2D8
+	.rdata      start:0x0092B284 end:0x0092B2D0
 	.CRT$XCU    start:0x009C6D6C end:0x009C6D7C align:4
 	.data       start:0x00BF3378 end:0x00BF3528
 	.bss        start:0x00D1A250 end:0x00D1A2E0
@@ -1635,20 +1635,21 @@ Black/LandBalance.cpp:
 Black/LandFeature.cpp:
 	.text       start:0x005E2A60 end:0x005E3E80
 	.CRT$XCU    start:0x009C6D84 end:0x009C6D8C align:4
-	.data       start:0x00BF3528 end:0x00BF35DC
-	.bss        start:0x00D1A2E0 end:0x00D1A360
+	.data       start:0x00BF3528 end:0x00BF3578
+	.bss        start:0x00D1A2E0 end:0x00D1A340
 
 Black/Landscape.cpp:
 	.text       start:0x005E3E80 end:0x005E6730
-	.rdata      start:0x0092B2D8 end:0x0092B340
+	.rdata      start:0x0092B2D0 end:0x0092B340
 	.CRT$XCU    start:0x009C6D8C end:0x009C6DA4 align:4
-	.data       start:0x00BF35DC end:0x00BF3654
-	.bss        start:0x00D1A360 end:0x00D201A4
+	.data       start:0x00BF3578 end:0x00BF35FA
+	.bss        start:0x00D1A340 end:0x00D201A4
 
 Black/Language.cpp:
 	.text       start:0x005E6730 end:0x005E6820
 	.rdata      start:0x0092B340 end:0x0092B360
 	.CRT$XCU    start:0x009C6DA4 end:0x009C6DAC align:4
+	.data       start:0x00BF3600 end:0x00BF3638
 	.bss        start:0x00D201A4 end:0x00D201A8
 
 Black/LeashStatus.cpp:
@@ -1661,7 +1662,7 @@ Black/LevelOfDetail.cpp:
 	.text       start:0x005E76C0 end:0x005E79C0
 	.rdata      start:0x0092B384 end:0x0092B3A8
 	.CRT$XCU    start:0x009C6DCC end:0x009C6DD0 align:4
-	.data       start:0x00BF3654 end:0x00BF36A0
+	.data       start:0x00BF3638 end:0x00BF36A0
 
 Black/LHInetWeather.cpp:
 	.text       start:0x005E79C0 end:0x005EA4E0

@@ -202,5 +202,7 @@ public:
 
 // BW1W120 00fa76c0 BW1M119 01204fc4 (LHCombined Release)
 extern uint8_t* shadow_buffer;
+// BW1W120 00c397f4 BW1M119 011cf538 (LHCombined Release)
+extern void(__fastcall* FuncDrawSubPixel)(uint16_t* dest, unsigned long pitch, unsigned long x, unsigned long z);
 
 #endif /* BW1_DECOMP_LH3D_LANDSCAPE_INCLUDED_H */

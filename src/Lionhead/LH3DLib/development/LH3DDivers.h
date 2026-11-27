@@ -41,6 +41,8 @@ extern LHPoint g_right;
 extern float DEFAULT_TRANS_TO_ADD;
 // BW1W120 00eaa3c4 BW1M119 011f24a8 (LHCombined Release)
 extern float TRANS_TO_ADD;
+// BW1W120 00eb9948 BW1M119 011f38c0 (LHCombined Release)
+extern long g_bulb_index;
 
 class BackgroundBox
 {
