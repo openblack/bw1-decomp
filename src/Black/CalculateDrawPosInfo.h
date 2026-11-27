@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For LH3D_COLOR_OPAQUE */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>
+#include <LHMatrix.h>
 
 #include "GJUtils.h" /* For boundf, GJUtils::LinterpNoBoundsCheck */
 

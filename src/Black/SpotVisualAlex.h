@@ -7,7 +7,7 @@
 
 #ifdef VERSION_BW1WCI
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint */
+#include <LHPoint.h>                                /* For struct LHPoint */
 #include <Lionhead/LHFile/ver3.0/LHFile.h>          /* For class LHFile */
 
 #include "Game.h" /* For class GGame */

@@ -22,7 +22,7 @@
 #include "LH3DTexture.h"          /* For LH3DTexture */
 #include "LH3DTnLData.h"          /* For LH3DTnLData */
 #include "LH3DVertexGroup.h"      /* For LH3DVertexGroup */
-#include "LHMatrix.h"             /* For LHMatrix */
+#include <LHMatrix.h>             /* For LHMatrix */
 #include "SRTextured.h"           /* For SRTextured */
 #include "SoftTri.h"              /* For SoftTri */
 #include "SubCollideDataRender.h" /* For SubCollideDataRender */

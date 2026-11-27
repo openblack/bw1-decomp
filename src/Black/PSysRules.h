@@ -7,7 +7,7 @@
 
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST, enum ANIM_LIST */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For LHPoint */
+#include <LHPoint.h>                                /* For LHPoint */
 #include <Lionhead/LH3DLib/development/LHRegionF.h> /* For LHRegionF */
 
 #include "GTPointer.h"            /* For GTPointer */

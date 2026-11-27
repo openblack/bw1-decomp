@@ -4,7 +4,7 @@
 #include "Game3DObject.h"
 
 #include <Lionhead/LH3DLib/development/LH3DMesh.h> /* For LH3DMesh::GetPackedMesh */
-#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+#include <LHPoint.h>                               /* For struct LHPoint */
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>    /* For LH3DIsland::GetAltitude */
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */

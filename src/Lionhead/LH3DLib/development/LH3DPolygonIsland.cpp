@@ -7,7 +7,7 @@
 #include <windows.h> /* For DebugBreak */
 
 #include <Lionhead/LH3DLib/development/LH3DMath.h> /* For HALF_PI_F, TWO_PI, DEGREES_TO_RADIANS */
-#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For LHPoint */
+#include "LHPoint.h"                               /* For LHPoint */
 
 #define NAME_CHARACTERS_END '\xff'
 

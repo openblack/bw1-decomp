@@ -2,7 +2,7 @@
 
 #include <Lionhead/LH3DLib/development/Fish.h>
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 
 #include "ColourConstants.h" /* For White */
 #include "GameTimeConstants.h"

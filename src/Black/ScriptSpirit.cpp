@@ -3,7 +3,7 @@
 
 #include <windows.h>
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h>                              /* For struct LHPoint */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>       /* For LHSys::TheSystem */
 #include <chlasm/HelpDudeAnim.h>                  /* For enum ANIMLIST */
 

@@ -7,7 +7,7 @@
 #include <windows.h> /* For HRESULT */
 
 #include "LHCoordF.h" /* For struct LHCoordF */
-#include "LHPoint.h"  /* For struct LHPoint */
+#include <LHPoint.h>  /* For struct LHPoint */
 
 // A vertex of the dynamic vertex buffers, laid out as a D3DVERTEX: Direct3D transforms and lights it.
 struct LH3DVBVertex

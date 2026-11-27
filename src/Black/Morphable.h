@@ -5,7 +5,7 @@
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t, uintptr_t */
 
 #include <Lionhead/LH3DLib/development/LH3DAnim.h> /* For struct LH3DAnimSet */
-#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+#include <LHPoint.h>                               /* For struct LHPoint */
 #include <Lionhead/LHFile/ver3.0/LHReleasedFile.h> /* For struct LHReleasedFile */
 #include <re_common.h>                             /* For bool32_t */
 

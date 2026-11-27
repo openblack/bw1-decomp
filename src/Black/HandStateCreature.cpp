@@ -11,7 +11,7 @@
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>    /* For LH3DIsland */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>      /* For PI_F */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>      /* For LH3DTech */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>      /* For struct LHMatrix */
+#include <LHMatrix.h>                                   /* For struct LHMatrix */
 #include <Lionhead/LH3DLib/development/MeshIntersect.h> /* For struct MeshIntersect */
 #include <Lionhead/LHMultiplayer/ver4.0/LHSession.h>    /* For LHSession */
 

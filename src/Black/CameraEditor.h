@@ -7,7 +7,7 @@
 
 #include <chlasm/LHKeyBoard.h>                    /* For enum LH_KEY */
 #include <Lionhead/LH3DLib/development/LH3DWay.h> /* For class LH3DWay */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h>                              /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/Prss.h>    /* For struct Prss */
 
 #define CAMERA_EDITOR_NAME_LENGTH 0x21

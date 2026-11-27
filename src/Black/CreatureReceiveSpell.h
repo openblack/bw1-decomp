@@ -7,7 +7,7 @@
 
 #include <chlasm/Enum.h> /* For enum CREATURE_RECEIVE_SPELL_TYPE */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 #include "GJBaseUtils.h" /* For GJVector */
 

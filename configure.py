@@ -527,12 +527,26 @@ msvc70_version = "MSVC/7.0"
 lhlog_compiler_version = msvc70_version if config.version in ("BW1W120", "BW1W130") else config.linker_version
 if lhlog_compiler_version == msvc70_version:
     config.extra_compilers[msvc70_version] = ("compilers_msvc70", "release")
+# The released Lionhead headers (Libs\LHALL\RELEASED\Headers): the game and the other libraries
+# included a library's headers from there, as that library had last released them. LH3DLib's own
+# units were built in its development directory and saw its development headers instead
+# (lh3dlib_includes): LHPoint.h and LHMatrix.h differ between the two copies.
+released_headers_directory = "include/LHALL/RELEASED/Headers"
+lh3dlib_development_directory = "src/Lionhead/LH3DLib/development"
 includes_project = [
     "/I", "include",
     "/I", "orig/directx7.0/include",
     "/I", "src",
     f"/I", f"{_out}/include",
+    "/I", released_headers_directory,
 ]
+
+
+# `flags` with LH3DLib's development headers in place of the released ones.
+def lh3dlib_includes(flags):
+    return [lh3dlib_development_directory if flag == released_headers_directory else flag for flag in flags]
+
+
 cflags_base = [
     "/nologo",
     "/W0",
@@ -580,6 +594,7 @@ cflags_icc = [
     # register assignment follows.
     "/Qoption,c,-mP3OPT_pcg_post_sched=0",
 ]
+cflags_icc = lh3dlib_includes(cflags_icc)
 
 # The game code (Black/) was compiled for Pentium Pro (/G6); the static
 # libraries other than LH3DLib (LHLib, zlib, ...) were not. Black/ objects are
@@ -588,7 +603,7 @@ cflags_gamecode = [*cflags_base, "/G6"]
 # LH3DLib was also compiled for Pentium Pro, like LH3DP3.cpp's ICC banner says:
 # without /G6, LH3DMath::GetYAngle and the LH3DObjectCollide functions schedule
 # their integer instructions differently around the x87 code.
-cflags_lh3dlib = [*cflags_base, "/G6"]
+cflags_lh3dlib = lh3dlib_includes([*cflags_base, "/G6"])
 # 1.00 was built with function-level linking: every function is its own COMDAT,
 # so the link folds identical bodies (/OPT:ICF) and drops unreferenced ones
 # (/OPT:REF, lld's default without /debug).

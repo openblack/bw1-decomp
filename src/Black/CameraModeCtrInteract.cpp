@@ -4,8 +4,8 @@
 
 #include "ColourConstants.h" /* For White */
 
-#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
-#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+#include <LHMatrix.h> /* For struct LHMatrix */
+#include <LHPoint.h>  /* For struct LHPoint */
 
 #include "Camera.h"
 #include "Creature.h"

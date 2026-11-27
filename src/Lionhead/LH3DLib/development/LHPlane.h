@@ -1,7 +1,7 @@
 #ifndef BW1_DECOMP_LH_PLANE_INCLUDED_H
 #define BW1_DECOMP_LH_PLANE_INCLUDED_H
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 struct LHPlane
 {

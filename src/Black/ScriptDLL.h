@@ -5,9 +5,9 @@
 #include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 
-#include <Lionhead/LHDLL/ver1.0/LHDLL.h>          /* For struct LHDLL */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <Lionhead/LHLib/ver5.0/LHReturn.h>       /* For enum LH_RETURN */
+#include <Lionhead/LHDLL/ver1.0/LHDLL.h>    /* For struct LHDLL */
+#include <LHPoint.h>                        /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
 
 // Types of values on the script VM's stack.
 enum VMType

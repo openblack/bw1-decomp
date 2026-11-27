@@ -11,7 +11,7 @@
 #include "LH3DSubMesh.h"        /* For struct LH3DSubMesh */
 #include "LH3DTech.h"           /* For LH3DTech */
 #include "LH3DMath.h"           /* For HALF_PI_F */
-#include "LHMatrix.h"           /* For struct LHMatrix */
+#include <LHMatrix.h>           /* For struct LHMatrix */
 #include "LHRandom.h"           /* For Random */
 
 #define EYE_MESH_PATH              "Data\\MISC\\Eyes"

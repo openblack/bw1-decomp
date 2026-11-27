@@ -9,7 +9,7 @@
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>    /* For struct LH3DIsland */
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>      /* For LH3DTech::g_delta_time */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>      /* For struct LHMatrix */
+#include <LHMatrix.h>                                   /* For struct LHMatrix */
 
 #include "Camera.h"          /* For GCamera */
 #include "ColourConstants.h" /* For White */

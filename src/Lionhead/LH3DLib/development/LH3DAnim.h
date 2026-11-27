@@ -9,7 +9,7 @@
 #include <chlasm/AllMeshes.h> /* For MAX_COUNT_3D_ANIMS */
 
 #include "CAnim.h"   /* For struct CAnim */
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 // Forward Declares
 

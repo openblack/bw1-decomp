@@ -7,7 +7,7 @@
 #include <re_common.h> /* For bool32_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint, struct Point2D */
+#include <LHPoint.h>                                /* For struct LHPoint, struct Point2D */
 
 // Forward Declares
 

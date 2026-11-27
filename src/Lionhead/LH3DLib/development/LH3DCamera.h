@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 class LH3DObject;
 struct LHMatrix;

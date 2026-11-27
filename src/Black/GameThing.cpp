@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #include <Lionhead/LH3DLib/development/LH3DRender.h>
-#include "Lionhead/LH3DLib/development/LHPoint.h"
+#include <LHPoint.h>
 #include "re_common.h"
 
 #include "ColourConstants.h" /* For White */

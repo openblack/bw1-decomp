@@ -20,7 +20,7 @@
 #include "LH3DTech.h"              /* For struct LH3DTech */
 #include "LH3DTexture.h"           /* For struct LH3DTexture */
 #include "LH3DZSorter.h"           /* For class LH3DZSorter */
-#include "LHMatrix.h"              /* For struct LHMatrix */
+#include <LHMatrix.h>              /* For struct LHMatrix */
 #include "LHRandom.h"              /* For Random */
 #include "SnowCover.h"             /* For class SnowCover */
 

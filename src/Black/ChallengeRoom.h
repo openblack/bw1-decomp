@@ -5,7 +5,7 @@
 #include <stdint.h>    /* For uint8_t */
 #include <re_common.h> /* For bool32_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 #include "chlasm/ScriptChallengeEnums.h" /* For enum ScriptChallengeEnums */
 #include "PictureRoom.h"                 /* For struct PictureRoomBase */

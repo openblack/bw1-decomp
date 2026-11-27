@@ -2,7 +2,7 @@
 #define BW1_DECOMP_GESTURE_SAMPLE_INCLUDED_H
 
 #include <stdint.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 
 enum
 {

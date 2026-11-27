@@ -3,7 +3,7 @@
 
 #include <stdint.h> /* For uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 #include "TattooInfo.h" /* For struct TattooInfo */
 

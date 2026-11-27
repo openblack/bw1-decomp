@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <uchar.h>
-#include <Lionhead/LH3DLib/development/LHMatrix.h>
+#include <LHMatrix.h>
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 

@@ -5,7 +5,7 @@
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
+#include <LHPoint.h>                              /* For struct LHPoint, struct Point2D */
 #include <Lionhead/LH3DLib/development/Zoomer.h>  /* For struct Zoomer3d */
 
 // Forward Declares

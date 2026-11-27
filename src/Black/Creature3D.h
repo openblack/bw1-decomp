@@ -5,7 +5,7 @@
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/MeshIntersect.h> /* For struct TextureRef */
-#include <Lionhead/LH3DLib/development/LHPoint.h>       /* For struct LHPoint */
+#include <LHPoint.h>                                    /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/Zoomer.h>        /* For struct Zoomer3d */
 #include <chlasm/HitRegions.h>                          /* For enum FIGHT_CONTROL_AI */
 #include <chlasm/SoundAction.h>                         /* For enum LHSoundAction */

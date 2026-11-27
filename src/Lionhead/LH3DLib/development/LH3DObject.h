@@ -8,7 +8,7 @@
 #include <re_common.h> /* For bool32_t */
 
 #include "LH3DColor.h" /* For struct LH3DColor */
-#include "LHMatrix.h"  /* For struct LHMatrix */
+#include <LHMatrix.h>  /* For struct LHMatrix */
 
 // Forward Declares
 

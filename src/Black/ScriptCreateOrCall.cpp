@@ -7,7 +7,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For TWO_PI */
-#include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint */
+#include <LHPoint.h>                                 /* For struct LHPoint */
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>         /* For LHSPrintf */
 
 #include "AbodeInfo.h"

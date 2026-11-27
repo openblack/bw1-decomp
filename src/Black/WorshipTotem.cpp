@@ -15,7 +15,7 @@
 #include <Lionhead/LH3DLib/development/LH3DRender.h>   /* For LH3DRender::g_zsorter */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>     /* For LH3DTech::GetValueForZSorter */
 #include <Lionhead/LH3DLib/development/LH3DZSorter.h>  /* For LH3DZSorter */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>     /* For struct LHMatrix */
+#include <LHMatrix.h>                                  /* For struct LHMatrix */
 
 #include "ColourConstants.h" /* For White */
 #include "Dance.h"

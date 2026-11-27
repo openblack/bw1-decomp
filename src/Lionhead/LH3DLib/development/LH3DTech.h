@@ -8,7 +8,7 @@
 #include "LH3DCamera.h" /* For struct LH3DCamera */
 #include "LH3DVertex.h" /* For struct Vertex3D, Vertex3DMT */
 #include "LHCoord.h"    /* For struct LHCoord */
-#include "LHPoint.h"    /* For struct Point2D */
+#include <LHPoint.h>    /* For struct Point2D */
 
 // Forward Declares
 

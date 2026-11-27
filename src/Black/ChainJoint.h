@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <Lionhead/LH3DLib/development/LH3DColor.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 
 // ParticleChainJoint::DrawAt (BW1M119 013f92d0) sets all these fields, including
 // an explicit LH3DColor construction at +0x14. Constructor: BW1W120 00695f00.

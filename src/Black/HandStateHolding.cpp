@@ -13,7 +13,7 @@ const float MinHoldHeightSide = 1.9f;
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For PI_F, heading_from_direction_vector */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
+#include <LHMatrix.h>                                /* For struct LHMatrix */
 #include <Lionhead/LH3DLib/development/PhysOb.h>     /* For PhysOb::MaximumVelocity */
 
 #include "ColourConstants.h" /* For White */

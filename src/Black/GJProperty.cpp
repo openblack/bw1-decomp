@@ -4,7 +4,7 @@
 #include <iostream>
 #include "GameTimeConstants.h"
 
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 
 // The name is a guess, but not a free one. cl6 orders .bss by a hash of the symbol name, and the
 // target needs this point after SecondsPerYear and ahead of EighthScale; "ZeroPoint" sorts last.

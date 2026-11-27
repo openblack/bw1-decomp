@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "LH3DColor.h" /* For struct LH3DColor */
-#include "LHPoint.h"   /* For struct LHPoint */
+#include <LHPoint.h>   /* For struct LHPoint */
 
 class LH3DWay
 {

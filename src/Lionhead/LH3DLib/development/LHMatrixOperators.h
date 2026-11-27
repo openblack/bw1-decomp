@@ -1,7 +1,7 @@
 #ifndef BW1_DECOMP_LH_MATRIX_OPERATORS_INCLUDED_H
 #define BW1_DECOMP_LH_MATRIX_OPERATORS_INCLUDED_H
 
-#include "LHMatrix.h" /* For struct LHMatrix */
+#include <LHMatrix.h> /* For struct LHMatrix */
 
 // These can't live in LHMatrix.h: Object.cpp sees that header ahead of its code, so declaring them there moves c2's
 // symbol numbering and takes Creature Isle's Object::SetUpPhysObAsATree out of its matching window.

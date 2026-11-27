@@ -61,7 +61,7 @@
 #include "Object.h"
 #include "RoutePlan.h"
 #include <Lionhead/LH3DLib/development/LH3DText.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 #include <Lionhead/LHLib/ver5.0/RPFollow.h>
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>
 #include <Lionhead/LHMultiplayer/ver4.0/LHMail.h>

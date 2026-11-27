@@ -6,8 +6,8 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LH3DLib/development/LHCoord.h>         /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>        /* For struct LHMatrix */
-#include <Lionhead/LH3DLib/development/LHPoint.h>         /* For struct LHPoint */
+#include <LHMatrix.h>                                     /* For struct LHMatrix */
+#include <LHPoint.h>                                      /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/LHRandom.h>        /* For Random */
 #include <Lionhead/LH3DLib/development/Zoomer.h>          /* For struct Zoomer, struct Zoomer3d */
 #include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h> /* For struct LH_SamplePlayOptions */

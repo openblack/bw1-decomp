@@ -10,7 +10,7 @@
 #include "LH3DBoundingBox.h"  /* For struct LH3DBoundingBox */
 #include "LH3DColor.h"        /* For LH3D_BLEND_COLOR */
 #include "LH3DMeshLodLevel.h" /* For LH3D_MESH_LOD_LEVEL */
-#include "LHMatrix.h"         /* For struct LHMatrix */
+#include <LHMatrix.h>         /* For struct LHMatrix */
 
 #include <re_common.h> /* For bool32_t */
 

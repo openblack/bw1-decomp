@@ -11,7 +11,7 @@ class CreatureGlobalExplorationMap;
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h>
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
 
 #include "ClearAreaState.h"

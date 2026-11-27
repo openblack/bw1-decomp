@@ -7,7 +7,7 @@
 
 #include <math.h> /* For log */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 #include "Creed.h"
 
 static float OneOverLogHalf = 1.0f / (float)log(0.5);
@@ -19,7 +19,7 @@ static const float UVTextureScale = 1.0f / 256.0f;
 
 #include <Lionhead/LH3DLib/development/LH3DAnim.h>   /* For struct LH3DAnim */
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetCell */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
+#include <LHMatrix.h>                                /* For struct LHMatrix */
 
 #include "Abode.h"
 #include "AnimalWolf.h"

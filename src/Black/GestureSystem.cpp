@@ -4,7 +4,7 @@
 #include <windows.h> /* For min */
 
 #include <Lionhead/LH3DLib/development/LH3DMath.h>  /* For PI_F, HALF_PI_F, TWO_PI */
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint */
+#include <LHPoint.h>                                /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/LHRegionF.h> /* For struct LHRegionF */
 
 #include "MaxFloat.h" /* For MaxFloat */

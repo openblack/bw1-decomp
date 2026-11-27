@@ -7,10 +7,10 @@
 #include <chlasm/Enum.h>        /* For enum VORTEX_STATE_TYPE, VORTEX_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>   /* For class LHLinkedList */
-#include <Lionhead/LHLib/ver5.0/LHListHead.h>     /* For struct LHListHead */
-#include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
+#include <LHPoint.h>                            /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListHead.h>   /* For struct LHListHead */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>   /* For struct LHListNode */
 
 #include "GJBaseUtils.h"          /* For class GJArray */
 #include "KPSplineInterpolator.h" /* For class KPSplineInterpolator */

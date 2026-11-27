@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h>                              /* For struct LHPoint */
 
 #include "HandPhysicsInfo.h" /* For struct HandPhysicsInfo */
 #include "Morphable.h"       /* For struct Morphable */

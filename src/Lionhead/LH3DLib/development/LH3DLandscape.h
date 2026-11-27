@@ -5,7 +5,7 @@
 #include <stdint.h>    /* For uint16_t, uint8_t */
 #include <re_common.h> /* For bool32_t */
 
-#include "LHPoint.h" /* For LHPoint */
+#include <LHPoint.h> /* For LHPoint */
 
 class LH3DObject;
 

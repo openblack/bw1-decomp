@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include "LH3DLightningSheet.h" /* For class LH3DLightningSheet */
-#include "LHPoint.h"            /* For struct LHPoint */
+#include <LHPoint.h>            /* For struct LHPoint */
 #include "WeatherInfo.h"        /* For struct WeatherInfo */
 
 #define LH3D_STORM_SHADOW_SIZE 40

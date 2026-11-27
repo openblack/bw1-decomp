@@ -7,9 +7,9 @@
 
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <re_common.h>                            /* For bool32_t */
-#include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
+#include <LHPoint.h>                          /* For struct LHPoint */
+#include <re_common.h>                        /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "MapCoords.h"    /* For struct MapCoords */
 #include "LHPTR.h"        /* For LHPTR */

@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <math.h>   /* For cos, sin */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 // Transforms point by matrix into result; point is evaluated once for every term.
 #define LHMATRIX_TRANSFORM_POINT(result, point, matrix)                                                                \
@@ -402,6 +402,13 @@ struct LHMatrix
 		return LHPoint(point.x * m[0] + point.y * m[3] + point.z * m[6] + m[9],
 		               point.x * m[1] + point.y * m[4] + point.z * m[7] + m[10],
 		               point.x * m[2] + point.y * m[5] + point.z * m[8] + m[11]);
+	}
+	// BW1W120 004607d0 BW1M119 inlined
+	void __fastcall TransformPoint(LHPoint& result, const LHPoint& point) const
+	{
+		result.x = (point.x * m[0] + point.y * m[3] + point.z * m[6]) + m[9];
+		result.y = (point.x * m[1] + point.y * m[4] + point.z * m[7]) + m[10];
+		result.z = (point.x * m[2] + point.y * m[5] + point.z * m[8]) + m[11];
 	}
 	// Inliner IL size: 180
 	// BW1W120 00418a50 BW1M119 0102a970

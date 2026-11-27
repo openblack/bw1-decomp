@@ -13,7 +13,7 @@ const float CameraModeFlyAndClick::ClickDistance = 120.0f;
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>      /* For PI_F, EIGHTH_PI_F */
 #include <Lionhead/LH3DLib/development/LHCoord.h>       /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>      /* For struct LHMatrix */
+#include <LHMatrix.h>                                   /* For struct LHMatrix */
 
 #include "Camera.h"
 #include "CameraModeNew3.h"

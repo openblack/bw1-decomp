@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h>  /* For struct LH3DColor */
-#include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint */
+#include <LHPoint.h>                                 /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/LightSheet.h> /* For struct LightSheet */
 
 #define LIGHT_SHEET_COLOUR_MASK 0xffffff

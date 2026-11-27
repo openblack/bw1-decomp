@@ -2,7 +2,7 @@
 #define BW1_DECOMP_T_SPHERE_INCLUDED_H
 
 #include <assert.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 
 // GJUtils::PointIsInSphere (0057c9f0) compares distance from Center against Radius.
 class TSphere

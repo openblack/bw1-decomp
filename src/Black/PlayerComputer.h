@@ -7,10 +7,10 @@
 #include <stddef.h>              /* For NULL */
 #include <stdint.h>              /* For int8_t, uint32_t, uint8_t */
 
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>   /* For class LHLinkedList */
-#include <Lionhead/LHLib/ver5.0/LHListHead.h>     /* For struct LHListHead */
-#include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListHead.h>   /* For struct LHListHead */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>   /* For struct LHListNode */
+#include <LHPoint.h>                            /* For struct LHPoint */
 
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 

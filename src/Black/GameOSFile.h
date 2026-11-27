@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
-#include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint */
+#include <LHMatrix.h>                                /* For struct LHMatrix */
+#include <LHPoint.h>                                 /* For struct LHPoint */
 #include <Lionhead/LHFile/ver3.0/LHFile.h>           /* For enum LH_FILE_MODE */
 #include <LHALL/Released/Headers/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>      /* For struct LHLinkedList */

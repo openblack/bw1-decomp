@@ -8,7 +8,7 @@
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetNormal */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For SquareRoot */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech::GetCameraPosition */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
+#include <LHMatrix.h>                                /* For struct LHMatrix */
 
 #include "Camera.h"          /* For class GCamera */
 #include "ColourConstants.h" /* For White */

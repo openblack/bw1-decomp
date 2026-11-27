@@ -12,7 +12,7 @@
 #include "LH3DRender.h"        /* For LH3DRender */
 #include "LH3DTech.h"          /* For LH3DTech */
 #include "LHCoord.h"           /* For LHCoord */
-#include "LHMatrix.h"          /* For LHMatrix */
+#include <LHMatrix.h>          /* For LHMatrix */
 
 #define LH3D_WATER_WAVES             16
 #define LH3D_WATER_HORIZON_MIN       -12440.0f

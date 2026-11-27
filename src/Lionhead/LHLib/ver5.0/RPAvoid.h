@@ -1,8 +1,8 @@
 #ifndef BW1_DECOMP_RP_AVOID_INCLUDED_H
 #define BW1_DECOMP_RP_AVOID_INCLUDED_H
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For Point2D */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>   /* For Point2D */
+#include <re_common.h> /* For bool32_t */
 
 #define RPAVOID_MARGIN 0.001f
 

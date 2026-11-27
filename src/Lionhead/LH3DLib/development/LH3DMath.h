@@ -15,8 +15,8 @@
 #include <math.h>   /* For sqrt */
 #include <stdint.h> /* For uint8_t */
 
-#include "LHMatrix.h" /* For struct LHMatrix */
-#include "LHPoint.h"  /* For struct LHPoint */
+#include <LHMatrix.h> /* For struct LHMatrix */
+#include <LHPoint.h>  /* For struct LHPoint */
 
 #define LH_SIN_TABLE_ONE           65536.0f
 #define LH_SIN_TABLE_COSINE_OFFSET 0x200

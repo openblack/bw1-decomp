@@ -7,7 +7,7 @@
 
 #include <chlasm/LHKeyBoard.h>                    /* For enum LH_KEY */
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <LHPoint.h>                              /* For struct LHPoint */
 #include <re_common.h>
 
 #include "BindableAction.h"   /* For enum BINDABLE_ACTIONS */

@@ -24,7 +24,7 @@
 #include "LH3DTech.h"
 #include "LH3DTexture.h"
 #include "LH3DWater.h"
-#include "LHMatrix.h"
+#include <LHMatrix.h>
 #include "LHPoint.h"
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>
 

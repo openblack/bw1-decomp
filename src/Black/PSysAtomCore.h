@@ -6,8 +6,8 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>  /* For struct LHMatrix */
-#include <Lionhead/LH3DLib/development/LHPoint.h>   /* For struct LHPoint */
+#include <LHMatrix.h>                               /* For struct LHMatrix */
+#include <LHPoint.h>                                /* For struct LHPoint */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>     /* For class LHLinkedList */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>            /* For NEW */
 

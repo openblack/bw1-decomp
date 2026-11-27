@@ -11,7 +11,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For FloatToInt, PI_F */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech::g_current_matrix */
 #include <Lionhead/LH3DLib/development/LH3DVertex.h> /* For struct Vertex3D */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
+#include <LHMatrix.h>                                /* For struct LHMatrix */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>          /* For LHSys */
 
 #include "ControlHand.h"  /* For CHand */

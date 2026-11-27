@@ -5,8 +5,8 @@
 #include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct Point2D */
-#include <re_common.h>                            /* For bool32_t */
+#include <LHPoint.h>   /* For struct Point2D */
+#include <re_common.h> /* For bool32_t */
 
 struct RPHolder;
 struct Route;

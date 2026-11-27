@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include "LHMatrix.h" /* For struct LHMatrix */
+#include <LHMatrix.h> /* For struct LHMatrix */
 
 #define EXTRA_BONE_COUNT 16
 

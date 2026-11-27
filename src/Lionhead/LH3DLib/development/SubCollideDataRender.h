@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint16_t, uint8_t */
 #include <string.h> /* For memset */
 
-#include "LHPoint.h" /* For struct LHPoint */
+#include <LHPoint.h> /* For struct LHPoint */
 
 // The render target of a software rasteriser.
 struct SubCollideDataRender

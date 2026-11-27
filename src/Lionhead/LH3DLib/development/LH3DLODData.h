@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint16_t */
 
 #include "LHCoordF.h" /* For struct LHCoordF */
-#include "LHPoint.h"  /* For struct LHPoint */
+#include <LHPoint.h>  /* For struct LHPoint */
 
 struct LH3DMesh;
 

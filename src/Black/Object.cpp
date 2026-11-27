@@ -13,7 +13,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMath.h>
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
 #include "EditorPhysics.h"
-#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <LHPoint.h>
 #include <Lionhead/LH3DLib/development/PhysOb.h>
 #include <Lionhead/LH3DLib/development/SmokyStuff.h>
 #include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h>

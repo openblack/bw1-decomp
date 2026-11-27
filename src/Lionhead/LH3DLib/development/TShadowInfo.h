@@ -6,8 +6,8 @@
 #include <re_common.h> /* For bool32_t */
 
 #include "BBox2D.h"   /* For struct BBox2D */
-#include "LHMatrix.h" /* For struct LHMatrix */
-#include "LHPoint.h"  /* For struct LHPoint */
+#include <LHMatrix.h> /* For struct LHMatrix */
+#include <LHPoint.h>  /* For struct LHPoint */
 
 class LH3DObject;
 struct LH3DMaterial;
