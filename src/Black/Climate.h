@@ -45,10 +45,6 @@ struct TempInfo
 
 	// BW1W120 00773ec0 BW1M119 015aab40
 	TempInfo();
-	// BW1W120 inlined BW1M119 0107b1c0
-	float GetActualTemp() { return ActualTemp; }
-	// BW1W120 inlined BW1M119 0107af80
-	float GetGoalTemp() { return GoalTemp; }
 
 	// BW1W120 00773ed0 BW1M119 015aaa30
 	void Init(float min_temp, float max_temp);

@@ -583,6 +583,10 @@ extern LH3DTexture* g_burn_texture;
 extern int special_jc_x;
 // BW1W120 00ea1b14
 extern int special_jc_y;
+// BW1W120 00e9fe78 BW1M119 012b1aa8 (LHCombined Release)
+extern LHPoint special_jc_mouse_pos;
+// BW1W120 00ea1ab4 BW1M119 012b3718 (LHCombined Release)
+extern LH3DMaterial* g_cool_effect_mat;
 
 #include "LH3DObjectInline.h"
 

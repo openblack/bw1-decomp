@@ -24,6 +24,9 @@ public:
 	static void SetPosKiddos(LHPoint* pos);
 };
 
+// BW1W120 00d19c34 BW1M119 null
+extern bool32_t IntroActive;
+
 #ifdef VERSION_BW1WCI
 enum PETIT_NAVIRE_TYPE
 {
@@ -31,24 +34,32 @@ enum PETIT_NAVIRE_TYPE
 	PETIT_NAVIRE_TYPE_BOAT_CRASH = 12,
 	PETIT_NAVIRE_TYPE_BOAT_CRASH2 = 13,
 };
+#endif
 
 class PetitNavire
 {
 public:
+	// BW1W120 00d19cb4 BW1M119 null
 	// BW1WCI 00d97f4c BW1MCI119 null
 	static PetitNavire* Current;
 
+#ifdef VERSION_BW1WCI
 	uint8_t field_0x0[0x70];
 
 	// BW1WCI 005f68a0 BW1MCI119 0139c630
 	PetitNavire(long type);
 	// BW1WCI 005f6cc0 BW1MCI119 0139c460
 	~PetitNavire();
+#endif
+	// BW1W120 005dff20 BW1M119 01379010
 	// BW1WCI 005f53d0 BW1MCI119 0139e170
 	void PreDraw();
+	// BW1W120 005e03f0 BW1M119 01377e30
 	// BW1WCI 005f5ab0 BW1MCI119 0139ccf0
 	void PostDraw();
 };
+
+#ifdef VERSION_BW1WCI
 static_assert(sizeof(PetitNavire) == 0x70, "Data type is of wrong size");
 
 class AndyEye

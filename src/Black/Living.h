@@ -698,6 +698,20 @@ public:
 
 	// BW1W120 005ec030 BW1M119 0138b700
 	void SetToZero();
+	// BW1W120 null BW1M119 01078020
+	void PopFromAgenda();
+	// BW1W120 null BW1M119 013864e0
+	bool32_t IsAtMovePathDestination();
+	// BW1W120 null BW1M119 01386620
+	bool32_t IsAtLeastAt(float distance);
+	// BW1W120 null BW1M119 01388a00
+	bool32_t RemoveFromFlock();
+	// BW1W120 null BW1M119 0138a4f0
+	bool32_t CanSee(Object* object);
+	// BW1W120 null BW1M119 0138a6c0
+	void SpinAround();
+	// BW1W120 null BW1M119 0138c530
+	void AddToDanceGroup(DanceGroup* group);
 	// BW1W120 0051af00 BW1M119 0104b000
 	void PreDrawScale(float scale);
 	// BW1W120 0051b220 BW1M119 0104cc50

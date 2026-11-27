@@ -27,6 +27,12 @@ public:
 	static void OnClearMap();
 	// BW1W120 0052b7a0 BW1M119 0107fcb0
 	static void ProcessAll();
+	// BW1W120 null BW1M119 010dcc30
+	static void SendAllHome();
+	// BW1W120 null BW1M119 010dcf00
+	static void SendAllOut();
+	// BW1W120 null BW1M119 010dd200
+	static void SendAllOutOnce();
 
 	LHListNode<FireFly> next;
 	LH3DSprite*         sprite;
@@ -88,6 +94,10 @@ public:
 	static void SaveSpellRewardProbs(LHOSFile& file);
 	// BW1W120 0052a5d0 BW1M119 010de580
 	static void FindLightToMillAt(const MapCoords& pos, MapCoords* result);
+	// BW1W120 0052a670 BW1M119 010de360
+	static Object* FindRandomMillObjectForFly(const MapCoords& pos, float radius);
+	// BW1W120 0052a7a0 BW1M119 010de140
+	static Object* FindRandomHideObjectForFly(const MapCoords& pos, float radius);
 	// BW1W120 0052a8d0 BW1M119 010de070
 	static void FindPlaceToHide(const MapCoords& pos, MapCoords* result);
 
@@ -95,6 +105,14 @@ public:
 	void SetToZero();
 	// BW1W120 0052aa10 BW1M119 010ddec0
 	void GoHideAtPos(const MapCoords& pos);
+	// BW1W120 0052a950 BW1M119 010ddf80
+	void GoMillAtPos(const MapCoords& pos);
+	// BW1W120 null BW1M119 010dd590
+	void ProcessFly();
+	// BW1W120 null BW1M119 010dd940
+	void UpdateDrawPos();
+	// BW1W120 null BW1M119 010ddd20
+	void DrawFly();
 };
 
 #endif /* BW1_DECOMP_FIRE_FLY_INCLUDED_H */

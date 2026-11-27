@@ -15,7 +15,9 @@ public:
 	// BW1W120 0054bcd0
 	GTerrainMap() {}
 	// BW1W120 00735500 BW1M119 0154b430
-	void           Init();
+	void Init();
+	// BW1W120 00735570 BW1M119 0154b320
+	void           Init(unsigned long index);
 	TerrainMapInfo list[0x400]; /* 0x8 */
 	TerrainMapInfo MapInfo;     /* 0x4a008 */
 

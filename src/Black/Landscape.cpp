@@ -28,6 +28,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMaterial.h>          /* For struct LH3DMaterial */
 #include <Lionhead/LH3DLib/development/LH3DMem.h>               /* For LH3DMem */
 #include <Lionhead/LH3DLib/development/LH3DSky.h>               /* For LH3DSky */
+#include <Lionhead/LH3DLib/development/LH3DSmoke.h>             /* For g_pos_hand */
 #include <Lionhead/LH3DLib/development/LH3DStorm.h>             /* For LH3DStorm */
 #include <Lionhead/LH3DLib/development/LH3DTexture.h>           /* For struct LH3DTexture */
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>                    /* For LHFileLength */
@@ -92,43 +93,6 @@
 #include "Object.h"
 #include "PCInput.h"
 
-// BW1W120 00eb9948 BW1M119 011f38c0 (LHCombined Release)
-extern long g_bulb_index;
-// BW1W120 00e9a100 BW1M119 012d35ec (LHCombined Release)
-extern LHPoint g_pos_hand;
-// BW1W120 00e9a110 BW1M119 012d35f8 (LHCombined Release)
-extern LHPoint g_wind_hand;
-// BW1W120 00e9a124 BW1M119 012d35e8 (LHCombined Release)
-extern float g_wind_hand_power;
-// BW1W120 00e9fe78 BW1M119 012b1aa8 (LHCombined Release)
-extern LHPoint special_jc_mouse_pos;
-// BW1W120 00ec81bc BW1M119 012d1f4c (LHCombined Release)
-extern int g_caca_object_processed;
-// BW1W120 00ea1ab4 BW1M119 012b3718 (LHCombined Release)
-extern LH3DMaterial* g_cool_effect_mat;
-// BW1W120 00d13f30 BW1M119 null
-extern LHPoint HandLandPos;
-// BW1W120 00d189d8 BW1M119 null
-extern GameBlock* GameBlocks[LAND_BLOCKS_SIDE][LAND_BLOCKS_SIDE];
-// BW1W120 00d199e0 BW1M119 null
-extern GameBlock GameBlockEverywhere;
-// BW1W120 00d19c34 BW1M119 null
-extern bool32_t IntroActive;
-
-#ifndef VERSION_BW1WCI
-class PetitNavire
-{
-public:
-	// BW1W120 00d19cb4 BW1M119 null
-	static PetitNavire* Current;
-
-	// BW1W120 005dff20 BW1M119 01379010
-	void PreDraw();
-	// BW1W120 005e03f0 BW1M119 01377e30
-	void PostDraw();
-};
-#endif
-
 // BW1W120 005e3f50 BW1M119 null
 bool32_t IsNight();
 // BW1W120 005e3f70 BW1M119 013822a0
@@ -145,6 +109,9 @@ LH3DColor GetDebugColour();
 void ProcessAllObjectsOnCells();
 
 class Desintegration;
+
+#define SKY_TEXTURE_PATH        ".\\Data\\Textures\\sky.raw"
+#define LIGHT_HAND_TEXTURE_PATH ".\\Data\\Textures\\light_hand.raw"
 
 #define HAND_GLOW_SIZE                60.0f
 #define HAND_GLOW_MARGIN              10.0f
@@ -839,16 +806,15 @@ void GLandscape::Open(char* path)
 		}
 	}
 	CenterWorld.Set((maxX + minX) * 0.5f, 0.0f, (maxZ + minZ) * 0.5f);
-	texture =
-		LH3DTexture::Create(".\\Data\\Textures\\sky.raw", LH3D_TEXTURE_TYPE_FILE | LH3D_TEXTURE_FLAGS_ALPHA, 0, NULL);
+	texture = LH3DTexture::Create(SKY_TEXTURE_PATH, LH3D_TEXTURE_TYPE_FILE | LH3D_TEXTURE_FLAGS_ALPHA, 0, NULL);
 	material = LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA, texture);
 	material->Flags |= LH3DMaterial::FLAG_NEED_TILLING;
 	FuncDrawSubPixel = DrawSubPixel;
 	{
 		uint32_t length;
-		LHFileLength(".\\Data\\Textures\\light_hand.raw", &length);
+		LHFileLength(LIGHT_HAND_TEXTURE_PATH, &length);
 		LightHand = (uint8_t*)LH3DMem::Alloc(length);
-		LHLoadData(".\\Data\\Textures\\light_hand.raw", LightHand, length, NULL);
+		LHLoadData(LIGHT_HAND_TEXTURE_PATH, LightHand, length, NULL);
 		for (int i = 0; i < LightHandSize * LightHandSize; i++)
 		{
 			float light = LightHand[i] * LIGHT_HAND_LEVELS / 255.0f + 0.5f;

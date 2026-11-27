@@ -762,6 +762,8 @@ public:
 	void Draw();
 	// BW1W120 00747de0 BW1M119 01056220
 	void ProcessTownRepairs();
+	// BW1W120 null BW1M119 010579a0
+	void ProcessTownNeeds();
 	// BW1W120 00747ff0 BW1M119 01061f00
 	float CalculateDesireForWood();
 	// BW1W120 007487b0 BW1M119 01062e60

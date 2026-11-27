@@ -435,6 +435,8 @@ extern bool g_enable_callbacks;
 extern int g_frame_rate_stats;
 // BW1W120 00eca5f0 BW1M119 012d1f58 (LHCombined Release)
 extern bool32_t g_b_any_kyro;
+// BW1W120 00ec81bc BW1M119 012d1f4c (LHCombined Release)
+extern int g_caca_object_processed;
 
 // BW1W120 005f4e40 BW1M119 01109f80
 void __cdecl RenderLoadingFrame(bool flip);
