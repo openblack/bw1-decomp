@@ -96,6 +96,8 @@ public:
 	InfluenceRing(GameThingWithPos* thing, GPlayer* player, float radius, int anti);
 	// BW1W120 005cd900 BW1M119 01046830
 	float CalculateInfluence(const MapCoords& coords, GPlayer* player, int);
+	// BW1W120 inlined BW1M119 01105890
+	void UpdateInfluence(float influence) { Influence = influence; }
 
 	// BW1W120 005cda90 BW1M119 011058d0
 	void SaveObject(LHOSFile& file, const MapCoords& coords);

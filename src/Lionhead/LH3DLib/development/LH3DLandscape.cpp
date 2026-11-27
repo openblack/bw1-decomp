@@ -62,8 +62,8 @@ struct DrawTriangle
 
 static void __fastcall FuncDrawSubPixelNULL(uint16_t* dest, unsigned long pitch, unsigned long x, unsigned long z) {}
 
-static void(__fastcall* FuncDrawSubPixel)(uint16_t* dest, unsigned long pitch, unsigned long x,
-                                          unsigned long z) = FuncDrawSubPixelNULL;
+void(__fastcall* FuncDrawSubPixel)(uint16_t* dest, unsigned long pitch, unsigned long x,
+                                   unsigned long z) = FuncDrawSubPixelNULL;
 static uint8_t g_small_germe_3x3[3][3] = {{12, 17, 12}, {17, 25, 17}, {12, 17, 12}};
 static int     g_fp_opacity = 0xff;
 static int     g_cadre_max_slope = 10;

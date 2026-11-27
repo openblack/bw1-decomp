@@ -260,6 +260,8 @@ public:
 	float GetPercentageOfMalesInTheWorld();
 	// BW1W120 0064b870 BW1M119 01022090
 	unsigned long GetTotalWondersBuiltInWholeWorld();
+	// BW1W120 inlined BW1M119 0107caa0
+	float GetWonderValue(unsigned long tribe) { return MaxTribalPower[tribe]; }
 	// BW1W120 0064b890 BW1M119 0149bc90
 	unsigned long GetTotalNumberOfDisciples();
 	// BW1W120 0064b900 BW1M119 null

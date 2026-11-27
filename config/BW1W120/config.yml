@@ -772,6 +772,20 @@ add_relocations:
   - source: 0x0086AF0D
     type: x86_abs32
     target: '__real@4@bffc860a920000000000'
+# Landscape.cpp: GLandscape::Open clears LH3DIsland::g_index_block up to its end, and GLandscape::Draw's two loops
+# over GWater::g_circle stop at its end (the first one tests the Flags member of each entry).
+  - source: 0x005E5418
+    type: x86_abs32
+    target: '?g_index_block@LH3DIsland@@2PAY0CA@EA'
+    addend: 0x400
+  - source: 0x005E4CD8
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE00C
+  - source: 0x005E4ED7
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE000
 # MOV ESI is the end of GMobileObjectInfo::InfoList for its destructor loop, not g_MobileObjectCheckSum.
   - source: 0x00606DE7
     type: x86_abs32

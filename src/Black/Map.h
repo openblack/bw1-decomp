@@ -157,6 +157,8 @@ public:
 	{
 		return (unsigned long)x < CellExtentZx[1] && (unsigned long)z < CellExtentZx[0];
 	}
+	// BW1W120 inlined BW1M119 0104c500
+	long ToMapPos(long cell_x, long cell_z) const { return cell_x * CellExtentZx[0] + cell_z; }
 	// BW1W120 00612660 BW1M119 0150df10
 	MapCell* ToMap(long cell_x, long cell_z)
 	{

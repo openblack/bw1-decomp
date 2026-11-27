@@ -161,6 +161,8 @@ block_relocations:
 # HelpDude::Draw's evil smoke tint 0x7F1F1F is an immediate, not a pointer into LHDraw::ScaledSprite24.
   - source: 0x005C41F6
 
+# ProcessAllObjectsOnCells's colour mask 0xffffff is an immediate, not a pointer.
+  - source: 0x005E9D77
 # RunAlexFX's sky colour masks 0xff0000 and 0xffffff are immediates, not code pointers.
   - source: 0x005FCF8A
   - source: 0x005FD562
@@ -1368,6 +1370,20 @@ add_relocations:
     type: x86_abs32
     target: '_InterfaceMessageSets'
     addend: 0x38
+# Landscape.cpp: GLandscape::Open clears LH3DIsland::g_index_block up to its end, and GLandscape::Draw's two loops
+# over GWater::g_circle stop at its end (the first one tests the Flags member of each entry).
+  - source: 0x005E8EB8
+    type: x86_abs32
+    target: '?g_index_block@LH3DIsland@@2PAY0CA@EA'
+    addend: 0x400
+  - source: 0x005E877E
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE00C
+  - source: 0x005E897D
+    type: x86_abs32
+    target: '?g_circle@GWater@@2PAUCircle@1@A'
+    addend: 0xE000
 # MOV ESI is the end of GMobileObjectInfo::InfoList for its destructor loop, not g_MobileObjectCheckSum.
   - source: 0x0060A8F7
     type: x86_abs32

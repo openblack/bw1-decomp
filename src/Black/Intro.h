@@ -6,16 +6,22 @@
 
 #include <re_common.h> /* For bool32_t */
 
+struct LHPoint;
+
 class Intro
 {
 public:
 	// BW1W120 00d19c94
 	static bool32_t HandAnimFinished;
 
+	// BW1W120 005df640 BW1M119 01018e00
+	static void Process();
 	// BW1W120 005dfc40 BW1M119 013796a0
 	static void ReleaseAll();
 	// BW1W120 005df9c0 BW1M119 013797c0
 	static void Create(long type);
+	// BW1W120 005dfce0 BW1M119 01091e20
+	static void SetPosKiddos(LHPoint* pos);
 };
 
 #ifdef VERSION_BW1WCI
@@ -38,6 +44,10 @@ public:
 	PetitNavire(long type);
 	// BW1WCI 005f6cc0 BW1MCI119 0139c460
 	~PetitNavire();
+	// BW1WCI 005f53d0 BW1MCI119 0139e170
+	void PreDraw();
+	// BW1WCI 005f5ab0 BW1MCI119 0139ccf0
+	void PostDraw();
 };
 static_assert(sizeof(PetitNavire) == 0x70, "Data type is of wrong size");
 
