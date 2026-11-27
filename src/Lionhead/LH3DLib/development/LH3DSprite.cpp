@@ -57,6 +57,32 @@ static inline void TransformCorner(Vertex3D* out, const LHPoint* in, const LHMat
 	out->rhw = in->x * matrix->_13 + in->y * matrix->_23 + in->z * matrix->_33 + matrix->_43;
 }
 
+static inline float TransformX(const LHPoint& point, const LHMatrix& matrix)
+{
+	return point.x * matrix._11 + point.y * matrix._21 + point.z * matrix._31 + matrix._41;
+}
+
+static inline float TransformY(const LHPoint& point, const LHMatrix& matrix)
+{
+	return point.x * matrix._12 + point.y * matrix._22 + point.z * matrix._32 + matrix._42;
+}
+
+static inline float TransformZ(const LHPoint& point, const LHMatrix& matrix)
+{
+	return point.x * matrix._13 + point.y * matrix._23 + point.z * matrix._33 + matrix._43;
+}
+
+static inline void SetProjection(LHMatrix& matrix, const LHPoint& camera)
+{
+	matrix._11 *= LH3DTech::g_info_transform.InvHalfTanFovY;
+	matrix._21 *= LH3DTech::g_info_transform.InvHalfTanFovY;
+	matrix._41 = camera.x * LH3DTech::g_info_transform.InvHalfTanFovY;
+	matrix._12 *= LH3DTech::g_info_transform.InvHalfTanFovX;
+	matrix._22 *= LH3DTech::g_info_transform.InvHalfTanFovX;
+	matrix._42 = camera.y * LH3DTech::g_info_transform.InvHalfTanFovX;
+	matrix._43 = camera.z;
+}
+
 LH3DSprite* __fastcall LH3DSprite::Create(long count, bool32_t use_material)
 {
 	LH3DSprite* sprites = (LH3DSprite*)LH3DMem::Alloc(count * sizeof(LH3DSprite));
@@ -105,15 +131,13 @@ void LH3DSprite::Draw()
 	LHPoint camera;
 	if (!Horizontal)
 	{
-		const LHMatrix* matrix = &LH3DTech::g_world_to_camera;
-		const LHPoint&  position = pos;
-		camera.z = position.x * matrix->_13 + position.y * matrix->_23 + position.z * matrix->_33 + matrix->_43;
+		camera.z = TransformZ(pos, LH3DTech::g_world_to_camera);
 		if (camera.z <= LH3DTech::g_info_transform.NearClip)
 		{
 			return;
 		}
-		camera.x = position.x * matrix->_11 + position.y * matrix->_21 + position.z * matrix->_31 + matrix->_41;
-		camera.y = position.x * matrix->_12 + position.y * matrix->_22 + position.z * matrix->_32 + matrix->_42;
+		camera.x = TransformX(pos, LH3DTech::g_world_to_camera);
+		camera.y = TransformY(pos, LH3DTech::g_world_to_camera);
 	}
 
 	if (Horizontal)
@@ -139,13 +163,7 @@ void LH3DSprite::Draw()
 		{
 			LH3DTech::g_local_to_clipping.SetIdentity();
 		}
-		LH3DTech::g_local_to_clipping._11 *= LH3DTech::g_info_transform.InvHalfTanFovY;
-		LH3DTech::g_local_to_clipping._21 *= LH3DTech::g_info_transform.InvHalfTanFovY;
-		LH3DTech::g_local_to_clipping._41 = camera.x * LH3DTech::g_info_transform.InvHalfTanFovY;
-		LH3DTech::g_local_to_clipping._12 *= LH3DTech::g_info_transform.InvHalfTanFovX;
-		LH3DTech::g_local_to_clipping._22 *= LH3DTech::g_info_transform.InvHalfTanFovX;
-		LH3DTech::g_local_to_clipping._42 = camera.y * LH3DTech::g_info_transform.InvHalfTanFovX;
-		LH3DTech::g_local_to_clipping._43 = camera.z;
+		SetProjection(LH3DTech::g_local_to_clipping, camera);
 	}
 
 	float   height = Size * Aspect;
