@@ -887,24 +887,27 @@ Black/Data.cpp:
 	.text       start:0x00523400 end:0x00523690
 	.rdata      start:0x00904418 end:0x0090443C
 	.CRT$XCU    start:0x00A3651C end:0x00A36520 align:4
-	.bss        start:0x00D3DFE0 end:0x00D3DFE8
+	.bss        start:0x00D3DFE0 end:0x00D3DFE4
 
 Black/DeadTree.cpp:
 	.text       start:0x00523690 end:0x005249F0
-	.rdata      start:0x0090443C end:0x009056BC
+	.rdata      start:0x0090443C end:0x00905704
+	.rdata$r    start:0x00A1C068 end:0x00A1C140
 	.CRT$XCU    start:0x00A36520 end:0x00A36528 align:4
-	.data       start:0x00C594D8 end:0x00C596F4
-	.bss        start:0x00D3DFE8 end:0x00D3E10C
+	.data       start:0x00C594D8 end:0x00C59548
+	.bss        start:0x00D3DFE4 end:0x00D3DFF4
 
 Black/Debug.cpp:
 	.text       start:0x005249F0 end:0x00525150
-	.rdata      start:0x009056BC end:0x00906A54
+	.rdata      start:0x00905704 end:0x00906A54
 	.CRT$XCU    start:0x00A36528 end:0x00A36530 align:4
+	.data       start:0x00C59548 end:0x00C596B0
 	.bss        start:0x00D3E10C end:0x00D3E118
 
 Black/DialogBoxBase.cpp:
 	.text       start:0x00525150 end:0x00525620
 	.CRT$XCU    start:0x00A36530 end:0x00A36534 align:4
+	.data       start:0x00C596B0 end:0x00C596F4
 
 Black/DialogBoxKeyBinding.cpp:
 	.text       start:0x00525620 end:0x005261F0

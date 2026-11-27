@@ -994,7 +994,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/DanceLight.cpp"),
             GameCodeObject(NonMatching, "Black/DanceShape.cpp"),
             GameCodeObject(NonMatching, "Black/Data.cpp"),
-            GameCodeObject(NonMatching, "Black/DeadTree.cpp"),
+            GameCodeObject(Matching, "Black/DeadTree.cpp"),
             GameCodeObject(NonMatching, "Black/Debug.cpp", pch=PCH_EXCEPT_NO_STRING),
             GameCodeObject(NonMatching, "Black/DialogBoxBase.cpp"),
             GameCodeObject(NonMatching, "Black/DialogBoxKeyBinding.cpp", pch=PCH_EXCEPT_NO_STRING),

@@ -125,6 +125,8 @@ public:
 			uint16_t InPhysics : 1;
 			uint16_t : 1;
 			uint16_t InDrawList : 1;
+			uint16_t : 1;
+			uint16_t ControlledByScript : 1;
 		};
 	};
 	uint8_t field_0x26;

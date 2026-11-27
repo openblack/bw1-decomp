@@ -289,6 +289,15 @@
 0x0050AA4B call_rel32 0x00401879  # Creche
 0x0050AB3A call_indirect 0x008A9570  # Creche: __imp__db_free_data__YAXPAPAD_Z@4
 0x0050ABFB call_rel32 0x00401879  # CreditText
+0x005107EB call_rel32 0x00401879  # DeadTree
+0x00510A7B call_rel32 0x00401879  # DeadTree
+0x00510A8B call_rel32 0x00401879  # DeadTree
+0x00510BAB call_rel32 0x00401879  # DeadTree
+0x00510CDB call_rel32 0x00401879  # DeadTree
+0x0051104B call_rel32 0x00401879  # DeadTree
+0x0051116A call_indirect 0x008A9028  # DeadTree: __imp__DirectDrawEnumerateA@4
+0x0051126A call_indirect 0x008A9034  # DeadTree: __imp__DirectInputCreateA@4
+0x0051136B call_rel32 0x00401879  # DeadTree
 0x005136AA call_indirect 0x008A903C  # DialogBoxMain: __imp__DirectXSetupGetVersion
 0x0052DB8B call_rel32 0x00401879  # Fixed
 0x0052E3FA call_indirect 0x008A901C  # Fixed: __imp__TrackMouseEvent@4

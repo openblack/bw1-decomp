@@ -458,6 +458,10 @@ add_relocations:
     type: x86_abs32
     target: '?MagicActionKnownAboutInfo@CreatureMagicActionKnownAboutEntry@@2PAV1@A'
     addend: 0x1260
+# DeadTree::DeadTree's call to FireEffect::MoveFromObjectToObject (dtk leaves it unrelocated).
+  - source: 0x004EE033
+    type: x86_rel32
+    target: '?MoveFromObjectToObject@FireEffect@@SAXPAVObject@@0@Z'
 # MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
   - source: 0x00504097
     type: x86_abs32
