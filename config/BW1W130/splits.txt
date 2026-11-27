@@ -2077,15 +2077,15 @@ P5/P5Bend.cpp:
 	.data       start:0x00C7EA6C end:0x00C7EA78
 
 P5/P5Motion.cpp:
-	.text       start:0x006402A0 end:0x00640C10
+	.text       start:0x006402A0 end:0x00640C40
 	.rdata      start:0x0095F128 end:0x0095F144
-	.CRT$XCU    start:0x00A47114 end:0x00A47120 align:4
+	.CRT$XCU    start:0x00A47114 end:0x00A47124 align:4
 	.data       start:0x00C7EA78 end:0x00C7EA8C
 
 Black/Packet.cpp:
-	.text       start:0x00640C10 end:0x006428C0
+	.text       start:0x00640C40 end:0x006428C0
 	.rdata      start:0x0095F144 end:0x0095F150
-	.CRT$XCU    start:0x00A47120 end:0x00A47130 align:4
+	.CRT$XCU    start:0x00A47124 end:0x00A47130 align:4
 	.data       start:0x00C7EA8C end:0x00C7EB40
 
 Black/ParticleContainer.cpp:
