@@ -112,6 +112,22 @@ struct LHScreen
 	uint8_t GetGreenShift() { return GreenShift; }
 	// BW1W120 inlined BW1M119 01132ca0 (LHCombined Release)
 	uint8_t GetBlueShift() { return BlueShift; }
+	// BW1W120 inlined BW1M119 0113fb70 (LHCombined Release)
+	uint32_t GetRedMask() { return RedMask; }
+	// BW1W120 inlined BW1M119 0113fae0 (LHCombined Release)
+	uint32_t GetGreenMask() { return GreenMask; }
+	// BW1W120 inlined BW1M119 0113fc00 (LHCombined Release)
+	uint32_t GetBlueMask() { return BlueMask; }
+	// BW1W120 inlined BW1M119 0113fc90 (LHCombined Release)
+	uint32_t GetColorLSBMask() { return ColorLSBMask; }
+	// BW1W120 inlined BW1M119 0115bb00 (LHCombined Release)
+	uint32_t BackAddress() { return backAddress; }
+	// BW1W120 inlined BW1M119 0115bb40 (LHCombined Release)
+	int BackPixelPitch() { return backPixelPitch; }
+	// BW1W120 inlined BW1M119 01145880 (LHCombined Release)
+	IDirectDrawSurface7* GetPrimarySurface() { return PPrimarySurface; }
+	// BW1W120 inlined BW1M119 01145130 (LHCombined Release)
+	LHCoord GetMSWindowClientOffset() { return LHCoord(MsClientOffsetX, MsClientOffsetY); }
 
 	// BW1W120 007dd850 BW1M119 0114e510 (LHCombined Release)
 	// LHScreen::`vbase destructor'(void)
