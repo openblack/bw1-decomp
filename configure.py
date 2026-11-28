@@ -334,6 +334,13 @@ if config.version == "BW1W100":
         "?EmbossedBox16@LHDraw@@QAE?AW4LH_RETURN@@JJJJVLHPixel16@@0EEK@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
+    # camerahelp's CameraHelp::DrawStats has no callers in 1.00; /OPT:REF dropped it and
+    # CameraHelpAccumulator::Draw, with the LHDraw boxes only that draws.
+    for _dead_function in [
+        "?Box16@LHDraw@@QAE?AW4LH_RETURN@@JJJJVLHPixel16@@K@Z",
+        "?Box24@LHDraw@@QAE?AW4LH_RETURN@@JJJJULHColor@@K@Z",
+    ]:
+        config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
     # Network's UpdateLANPlayerList has no callers in any version; /OPT:REF dropped
     # it and its LHLobby::GetLANPlayers import.
     config.base_ldflags.append(

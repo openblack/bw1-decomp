@@ -51,6 +51,9 @@ block_relocations:
   - source: 0x00420492
 # GLightSheet::Draw's 0xffffff colour mask reads as an address inside NewCols.
   - source: 0x004258CD
+# CameraHelp::DrawKeyOrMouse's 0xffffff colour masks read as addresses inside NewCols.
+  - source: 0x0044E52F
+  - source: 0x0044E579
 # Config::ProcessOneGameTurn's LH3DMapCoords(2193.0f, 2359.0f) folds to the 16.16 immediates 0xdb4ccc and 0xebe666,
 # not addresses.
   - source: 0x00474E43

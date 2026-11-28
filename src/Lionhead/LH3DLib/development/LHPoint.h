@@ -302,7 +302,7 @@ struct LHPoint
 		}
 		return length;
 	}
-	// BW1W120 inlined BW1M119 inlined
+	// BW1W120 00449de0 BW1M119 inlined
 	float GetDistance(const LHPoint& other) const
 	{
 		float dx = x - other.x;

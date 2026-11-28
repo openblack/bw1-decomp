@@ -157,6 +157,10 @@
 0x00442AFA call_indirect 0x008A9034  # Camera: __imp__DirectInputCreateA@4
 0x0044306A call_indirect 0x008A9048  # Camera: __imp__TextOutA@20
 0x004430DA call_indirect 0x008A9328  # Camera: __imp__LHEditBox__YAHPBDKKKK0HPAD_Z@4
+0x0044732B call_rel32 0x00401879  # camerahelp
+0x0044790A call_indirect 0x008A97AC  # camerahelp: __imp__ShellExecuteA@4
+0x00448C3B call_rel32 0x00401879  # camerahelp
+0x0044909A call_indirect 0x008A998C  # camerahelp: __imp_?GetNoDialUpConnections@Dialup@@QAEKXZ
 0x0044ABCA call_indirect 0x008A9190  # CameraModeDance: __imp__RemoveDirectoryA@4
 0x0044AC8B call_rel32 0x00401879  # CameraModeDance
 0x0044ACCA call_indirect 0x008A96C4  # CameraModeDance: __imp__LHWaveGetQMixerDirectSoundObject...

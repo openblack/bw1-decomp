@@ -314,17 +314,17 @@ Black/CameraEditor.cpp:
 	.bss        start:0x00CCD8D4 end:0x00CCDA40
 
 Black/camerahelp.cpp:
-	.text       start:0x0044D490 end:0x00450470
+	.text       start:0x0044D490 end:0x00450300
 	.rdata      start:0x008F351C end:0x008F353C
 	.CRT$XCU    start:0x00A36178 end:0x00A3618C align:4
-	.data       start:0x00A3D804 end:0x00A3DB08
-	.bss        start:0x00CCDA40 end:0x00CCECC4
+	.data       start:0x00A3D804 end:0x00A3DAAE
+	.bss        start:0x00CCDA40 end:0x00CCED00
 
 Black/CameraModeCitadel.cpp:
-	.text       start:0x00450470 end:0x00451D20
+	.text       start:0x00450300 end:0x00451D20
 	.rdata      start:0x008F353C end:0x008F3604
 	.rdata$r    start:0x00A18EA0 end:0x00A18F34
-	.data       start:0x00A3DB08 end:0x00A3DB58
+	.data       start:0x00A3DAB0 end:0x00A3DB58
 
 Black/CameraModeCtrInteract.cpp:
 	.text       start:0x00451D20 end:0x00451F90
@@ -4494,11 +4494,11 @@ Lionhead/LH3DLib/development/LH3DWay.cpp:
 Lionhead/LH3DLib/development/Font.cpp:
 	.text       start:0x00861BA0 end:0x008621E0
 	.text$x     start:0x008D32D0 end:0x008D32F0 align:4
-	.data       start:0x00CAC720 end:0x00CAC780
+	.data       start:0x00CAC720 end:0x00CAC768
 
 Lionhead/LH3DLib/development/LHVideoPlayer.cpp:
 	.text       start:0x008621E0 end:0x00863510
-	.data       start:0x00CAC780 end:0x00CAC800
+	.data       start:0x00CAC768 end:0x00CAC800
 
 Lionhead/LH3DLib/development/Blob.cpp:
 	.text       start:0x00863510 end:0x00863FF0

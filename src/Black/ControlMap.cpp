@@ -969,17 +969,17 @@ int ControlMap::GetClickTypeForAction(BINDABLE_ACTIONS action)
 	switch (mouse.code)
 	{
 	case ControlMouse::MOUSE_CONTROL_BUTTON_LEFT:
-		return CH_CLICKTYPE_LEFT;
+		return MOUSE_CLICK_TYPE_LEFT;
 	case ControlMouse::MOUSE_CONTROL_BUTTON_RIGHT:
-		return CH_CLICKTYPE_RIGHT;
+		return MOUSE_CLICK_TYPE_RIGHT;
 	case ControlMouse::MOUSE_CONTROL_BUTTON_MIDDLE:
-		return CH_CLICKTYPE_MIDDLE;
+		return MOUSE_CLICK_TYPE_MIDDLE;
 	case ControlMouse::MOUSE_CONTROL_BUTTON_WHEEL_UP:
-		return CH_CLICKTYPE_WHEEL_UP;
+		return MOUSE_CLICK_TYPE_WHEEL_UP;
 	case ControlMouse::MOUSE_CONTROL_BUTTON_WHEEL_DOWN:
-		return CH_CLICKTYPE_WHEEL_DOWN;
+		return MOUSE_CLICK_TYPE_WHEEL_DOWN;
 	}
-	return CH_CLICKTYPE_NONE;
+	return MOUSE_CLICK_TYPE_NONE;
 }
 
 int ControlMap::IsApplyAndSelectOnPrimaryButtons()
@@ -987,12 +987,12 @@ int ControlMap::IsApplyAndSelectOnPrimaryButtons()
 	if (BindableActions[BINDABLE_ACTION_ACTION].GetMouseButton().code == ControlMouse::MOUSE_CONTROL_BUTTON_LEFT &&
 	    BindableActions[BINDABLE_ACTION_MOVE].GetMouseButton().code == ControlMouse::MOUSE_CONTROL_BUTTON_RIGHT)
 	{
-		return CH_CLICKTYPE_LEFT_RIGHT;
+		return MOUSE_CLICK_TYPE_LEFT_RIGHT;
 	}
 	bool swapped =
 		BindableActions[BINDABLE_ACTION_ACTION].GetMouseButton().code == ControlMouse::MOUSE_CONTROL_BUTTON_RIGHT &&
 		BindableActions[BINDABLE_ACTION_MOVE].GetMouseButton().code == ControlMouse::MOUSE_CONTROL_BUTTON_LEFT;
-	return swapped ? CH_CLICKTYPE_LEFT_RIGHT : CH_CLICKTYPE_NONE;
+	return swapped ? MOUSE_CLICK_TYPE_LEFT_RIGHT : MOUSE_CLICK_TYPE_NONE;
 }
 
 bool32_t ControlMap::IsKeyAssignedToAction(BINDABLE_ACTIONS action)
@@ -1037,7 +1037,7 @@ bool32_t ControlMap::IsMouseButtonAssignedToAction(BINDABLE_ACTIONS action)
 	{
 		if (BindableActions[action].GetMouseButton().code == ControlMouse::MOUSE_CONTROL_BUTTON_NONE)
 		{
-			if (GGame::g_game->control_map->IsApplyAndSelectOnPrimaryButtons() == CH_CLICKTYPE_NONE)
+			if (GGame::g_game->control_map->IsApplyAndSelectOnPrimaryButtons() == MOUSE_CLICK_TYPE_NONE)
 			{
 				return false;
 			}

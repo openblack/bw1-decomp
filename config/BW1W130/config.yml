@@ -57,6 +57,9 @@ block_relocations:
   - source: 0x0041F662
 # GLightSheet::Draw's 0xffffff is an immediate, not an address in 1.30's larger image.
   - source: 0x0042465D
+# CameraHelp::DrawKeyOrMouse's 0xffffff colour masks are immediates, not addresses in 1.30's larger image.
+  - source: 0x00448889
+  - source: 0x004488C9
 # CameraModeNew3::Initialise's 0x808080 is an immediate, not an address in 1.30's larger image.
   - source: 0x00457011
 # CameraModeNew3::TriconDraw's 0xffffff is an immediate, not an address in 1.30's larger image.

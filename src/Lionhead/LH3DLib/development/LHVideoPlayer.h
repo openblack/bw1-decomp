@@ -7,6 +7,7 @@
 
 #include "Bink.h"
 #include "LH3DColor.h"
+#include "LH3DVertex.h" /* For struct Vertex3D */
 
 struct LH3DMaterial;
 
@@ -38,6 +39,10 @@ public:
 	// Shared by the video lock/unlock routines.
 	// BW1W120 00ef74f8
 	static CRITICAL_SECTION CriticalSection;
+	// BW1W120 00c391b0 BW1M119 011d1734 (LHCombined Release)
+	static Vertex3D g_list_vertex[4];
+	// BW1W120 00c39230 BW1M119 011d17b4 (LHCombined Release)
+	static uint16_t g_index[6];
 	// BW1W120 00844e30 BW1M119 0100a470 (LHCombined Release)
 	static void __stdcall thedraw(void* context);
 	// BW1W120 00844e70 BW1M119 010cc480 (LHCombined Release)
