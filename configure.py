@@ -1704,7 +1704,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DGJAnimVolFX.cpp", extra_cflags=["/GX"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DZSorter.cpp", extra_cflags=["/Gy"] if config.version == "BW1W100" else [], pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DStorm.cpp"),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSprite.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSprite.cpp", pch=True),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMath.cpp"),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DMenu.cpp", extra_cflags=["/GR-"], pch=True),
             LH3DLibObject(Matching, "Lionhead/LH3DLib/development/LH3DVideo.cpp", pch=True),

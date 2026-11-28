@@ -35254,6 +35254,8 @@ _?build_table@?1??DrawChar2Texture@GatheringText@@QAEXPAUCacheEntry@@PAGHMMMM1@Z
 ?g_vol_fx_zoom@LH3DGJAnimVolFX@@2MA = .data:0x00B5B09C; // type:object size:0x4 scope:global
 ?g_vol_fx_go_by_norm@LH3DGJAnimVolFX@@2EA = .data:0x00B5B0A0; // type:object size:0x1 scope:global
 lbl_00B5B0A1 = .data:0x00B5B0A1; // type:object size:0x17
+?utex@@3PAMA = .data:0x00B5B0B8; // type:object size:0x10 scope:global
+?vtex@@3PAMA = .data:0x00B5B0C8; // type:object size:0x10 scope:global
 ?cloudheight@LH3DAtmos@@2MA = .data:0x00B5B0D8; // type:object size:0x4 scope:global data:float
 ?speed@LH3DAtmos@@2MA = .data:0x00B5B0DC; // type:object size:0x4 scope:global data:float
 ??_C@_0BJ@PHGB@data?2textures?2sstorm?4raw?$AA@ = .data:0x00B5B0E0; // type:object size:0x19 scope:global data:string
