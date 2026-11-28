@@ -200,7 +200,7 @@ bool32_t DeadTree::CreatureMustAvoid(Creature* creature)
 	{
 		return false;
 	}
-	bool notScripted = !creature->IsControlledByScript();
+	bool notScripted = ((uint16_t)~creature->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) != 0;
 	return notScripted && IsOnFire();
 }
 
