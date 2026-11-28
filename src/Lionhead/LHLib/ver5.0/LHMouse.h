@@ -202,6 +202,18 @@ struct LHMouse
 		AccumDelta.x = 0;
 		AccumDelta.y = 0;
 	}
+	// BW1W120 inlined BW1M119 01093b90
+	LHCoord DeltaPos()
+	{
+		UpdateDeltaPos();
+		return AccumDelta;
+	}
+	// BW1W120 inlined BW1M119 015e7b90
+	LHCoord* GetDeltaPos() { return &AccumDelta; }
+	// BW1W120 inlined BW1M119 01145180 (LHCombined Release)
+	void Lock() {}
+	// BW1W120 inlined BW1M119 01144f10 (LHCombined Release)
+	void Unlock() {}
 
 	// BW1W120 007e4810 BW1M119 011c9478 (LHCombined Release)
 	int UpdateDeltaPos();

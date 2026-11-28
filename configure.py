@@ -1176,6 +1176,8 @@ config.libs = [
             GameCodeObject(Matching, "Black/OnMapTrajectory.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/OOSDebug.cpp"),
             GameCodeObject(NonMatching, "Black/Packet.cpp"),
+            GameCodeObject(NonMatching, "P5/P5Bend.cpp"),
+            GameCodeObject(NonMatching, "P5/P5Motion.cpp"),
             GameCodeObject(NonMatching, "Black/ParticleContainer.cpp"),
             GameCodeObject(NonMatching, "Black/PathCreator.cpp"),
             GameCodeObject(NonMatching, "Black/PBall.cpp"),
@@ -2552,6 +2554,9 @@ def paths(layout, part, spelling=None, **spellings):
 
 
 ORIGINAL_SOURCE_DIRECTORIES = {
+    # No string names the P5 glove units' directory. 1.30 built them in the game project, with its
+    # precompiled header, so they get a directory of the game's tree.
+    "P5": OriginalDirectory(paths(lambda tree: tree + r"\P5", "game")),
     "Black": OriginalDirectory(
         paths(game, "game", BW1W100=r"C:\dev\black", BW1WCI=r"C:\dev\black"),
         headers=paths(released_headers, "game", str.lower, BW1W120=str.upper, BW1W130=None),

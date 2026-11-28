@@ -41,6 +41,20 @@ struct LHRegion
 	long Width() const { return X2() - X1() + 1; }
 	// BW1W120 inlined BW1M119 01344950
 	long Height() const { return Y2() - Y1() + 1; }
+	// BW1W120 inlined BW1M119 01144cd0 (LHCombined Release)
+	LHCoord* GetStartCoord() { return &start; }
+	// BW1W120 inlined BW1M119 012baf00
+	void SetWidth(unsigned long width) { end.x = start.x + width; }
+	// BW1W120 inlined BW1M119 012baec0
+	void SetHeight(unsigned long height) { end.y = start.y + height; }
+	// BW1W120 inlined BW1M119 010a55b0
+	void SetXYWH(long x, long y, unsigned long width, unsigned long height)
+	{
+		start.x = x;
+		start.y = y;
+		end.x = x + width - 1;
+		end.y = y + height - 1;
+	}
 	// BW1W120 inlined BW1M119 013e81c0
 	void Set(long x, long y, unsigned long width, unsigned long height)
 	{

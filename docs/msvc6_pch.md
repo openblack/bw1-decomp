@@ -218,9 +218,8 @@ the offsets of what follows them (§1).
   versions: 11264 statements in all, with `LH3DMapCoords`'s default constructor
   (`LH3DMapCoordsInline.h`) held back between them. `Camera` emits it after `??_GGCamera` and
   before `CantExitCurrentMode`, as the image has it, only with the right number of statements
-  ahead of it: in 1.20 and 1.30, 1392 and 1400 work and the 1384 used before #878 no longer does (1392
-  used); 2455 to 2468 in 1.10 (2464) and 2511 to 2525 in Creature Isle
-  (2520), where `Camera.cpp` also includes `HelpSystem.h` (without it the constructor comes out
+  ahead of it: 1456 in 1.20 and 1.30, 2536 in 1.10 and 2592 in Creature Isle (1392, 2464
+  and 2520 before the moves below), where `Camera.cpp` also includes `HelpSystem.h` (without it the constructor comes out
   after `GCamera::Save`). The rest follows it, so that nothing else moves. `LH3DObject::SetPosition` and
   `Point2D::Point2D` follow both functions (`AnimatedStatic`).
 - `BLACK_PCH_PADDING`: the split above and the out-of-class constructor add 5 declarations ahead of
@@ -234,8 +233,10 @@ inline code of every header `Camera.cpp` includes: `BigForest.h`'s virtual bodie
 `Game.h`, moved it up by about 117 statements in every version, and `GlobalGameLists.h` no longer
 including `MobileObject.h` and four other headers (#860) moved it down by 300 (285 in Creature Isle,
 where `Villager.h` gained four inline accessors in the same change), the inline code #854 added
-to headers it includes moved it up by 8, and `GGame::OtherPlayer()`'s inline body (#878, `Game.h`) moved it
-by 8 in 1.20 and 1.30. `tools/comdat-scan.py order --unit Abode` shows the
+to headers it includes moved it up by 8, `GGame::OtherPlayer()`'s inline body (#878, `Game.h`) moved it
+by 8 in 1.20 and 1.30, #903 moved it by 8 in 1.00, 1.10 and Creature Isle, `LHMouse::DeltaPos()` (`LHMouse.h`, for
+P5Motion) by 8 and the Mac-attested accessors added with it to `LHScreen.h`, `LHMouse.h` and `LHRegion.h` by 56, in
+every version but 1.00. `tools/comdat-scan.py order --unit Abode` shows the
 functions out of order; one `BLACK_PCH_REPEAT_64` line is 2.3 KB in the first function and 3.8 KB in
 the second.
 
