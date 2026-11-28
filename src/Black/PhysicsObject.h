@@ -80,7 +80,7 @@ public:
 	PhysicsObject*    WhoHitMe;
 	GInterfaceStatus* status;
 	PhysOb            Physics;
-	uint8_t           field_0x1a4[0x4];
+	uint32_t          field_0x1a4;
 	LHMatrix          Matrix;
 	uint32_t          Flags;
 

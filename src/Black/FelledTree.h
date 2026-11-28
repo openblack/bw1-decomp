@@ -10,6 +10,9 @@
 
 class Base;
 class GameThing;
+class GPlayer;
+class Object;
+class Tree;
 
 class FelledTree : public DeadTree
 {
@@ -24,17 +27,21 @@ public:
 	virtual void SetUpPhysOb(PhysOb* phys_ob);
 	// BW1W120 00511970 BW1M119 010c4920
 	virtual Object* EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map);
+
 	// BW1W120 005118b0 BW1M119 010c4240
-	virtual bool32_t IsARootedObject();
-	// BW1W120 005118e0 BW1M119 010c41a0
-	virtual ~FelledTree();
-	// BW1W120 005118d0 BW1M119 010c42c0
-	virtual char* GetDebugText();
+	virtual bool32_t IsARootedObject() { return false; }
 	// BW1W120 005118c0 BW1M119 010c4280
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_FELLED_TREE; }
+	// BW1W120 005118d0 BW1M119 010c42c0
+	virtual char* GetDebugText() { return "FelledTree:"; }
 
 	// BW1W120 inlined BW1M119 inlined
 	FelledTree() {}
+	// BW1W120 inlined BW1M119 inlined
+	FelledTree(Tree* tree, GPlayer* player) : DeadTree(tree, player) {}
+
+	// BW1W120 005116a0 BW1M119 010c4ad0
+	static FelledTree* Create(Tree* tree, Object* feller);
 };
 
 #endif /* BW1_DECOMP_FELLED_TREE_INCLUDED_H */
