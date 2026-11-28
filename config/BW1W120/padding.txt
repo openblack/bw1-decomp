@@ -143,6 +143,13 @@
 0x0043DB8B call_rel32 0x00401879  # BuildingSite
 0x0043DCAA call_indirect 0x008A9104  # BuildingSite: __imp__ImmGetProperty@4
 0x0043DD0A call_indirect 0x008A9074  # BuildingSite: __imp__DeleteDC@4
+0x0043DD5B call_rel32 0x00401879  # BWGameSpy
+0x0043DDAB call_rel32 0x00401879  # BWGameSpy
+0x0043EB6B call_rel32 0x00401879  # BWGameSpy
+0x0043EF2A call_indirect 0x008A9328  # BWGameSpy
+0x0043FA0B call_rel32 0x00401879  # BWGameSpy
+0x004401CA call_indirect 0x008A901C  # BWGameSpy
+0x0044059A call_indirect 0x008A97AC  # BWGameSpy
 0x004407CB call_rel32 0x00401879  # BWLan
 0x0044081B call_rel32 0x00401879  # BWLan
 0x0044092A call_indirect 0x008A9984  # BWLan: __imp_?GetDefaultEntryIndex@Dialup@@QAEHXZ

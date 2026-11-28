@@ -1015,6 +1015,10 @@ add_relocations:
     type: x86_abs32
     target: '?InfoList@GVillagerInfo@@2PAV1@A'
     addend: 0x133CC
+# BWGameSpy::ListGame calls the stack probe at the shared __chkstk / __alloca_probe entry.
+  - source: 0x0043F5E6
+    type: x86_rel32
+    target: '__chkstk'
 # CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
   - source: 0x004633BC
     type: x86_abs32

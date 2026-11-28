@@ -1,5 +1,17 @@
 #include "BWGameSpy.h"
 
+int LayerCommunication::NumPeopleInRoom;
+#ifndef VERSION_BW1W100
+bool BWGameSpy::Locked = false;
+#endif
+char BWGameSpy::ChatServer[CHAT_SERVER_SIZE] = {0};
+int  BWGameSpy::NumBans = 0;
+int  BWGameSpy::NumPlayersExpected;
+bool LayerCommunication::Connected;
+
+#include "ColourConstants.h" /* For White */
+#include "GameTimeConstants.h"
+
 #include <stdio.h> /* For sprintf, sscanf */
 // Only BW1W120's unit carries the std::ctype<unsigned short>::id guard of the STL headers.
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
@@ -16,9 +28,6 @@
 #include <Lionhead/LHLog/ver4.0/LHRegistry.h>      /* For RegistryRetrieveULong */
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>       /* For LHSPrintf, LHSPrintfW */
 #include <Lionhead/LHLog/ver4.0/LHVersion.h>       /* For LHVersion::GetModuleChecksum */
-
-#include "ColourConstants.h" /* For White */
-#include "GameTimeConstants.h"
 
 #include "alexmfc.h"                      /* For SetupBox */
 #include "DialogBoxBase.h"                /* For DialogBoxBase::Hide */
@@ -57,7 +66,7 @@
 #if defined(VERSION_BW1W100)
 #undef ORIGINAL_LINE
 #define ORIGINAL_LINE(line) ((line) - 19)
-#elif defined(VERSION_BW1W110)
+#elif defined(VERSION_BW1W110) || defined(VERSION_BW1WCI)
 #undef ORIGINAL_LINE
 #define ORIGINAL_LINE(line) ((line) - 7)
 #endif
@@ -72,11 +81,20 @@
 
 #define UNKNOWN_PLAYER_NAME "-1"
 
-#define THINK_INTERVAL      10u
-#define BAN_REMOVE_INTERVAL 400u
+#define THINK_INTERVAL_MS      10u
+#define BAN_REMOVE_INTERVAL_MS 400u
 
+GServer       BWGameSpy::CurrentServer;
+RoomType      BWGameSpy::CurrentRoom;
 BWGameSpy     BWGameSpy::Instance;
+int           BWGameSpy::NumPlayersEnumerated;
+CHAT          BWGameSpy::Chat;
 static DBInfo ChatServerQuery;
+#ifndef VERSION_BW1W100
+CHATChannelMode BWGameSpy::ChannelMode;
+#endif
+char BWGameSpy::Bans[MAX_BANS][BAN_NAME_SIZE];
+char BWGameSpy::BanChannel[CHANNEL_NAME_SIZE];
 
 PEERCallbacks BWGameSpy::Callbacks = {
 	BWGameSpy::DisconnectedCallback,      BWGameSpy::RoomMessageCallback,   BWGameSpy::RoomUTMCallback,
@@ -248,25 +266,6 @@ static SafeDiscMarker CreatureVersionMarker = {
 };
 #endif
 
-bool LayerCommunication::Connected;
-int  LayerCommunication::NumPeopleInRoom;
-
-CHAT     BWGameSpy::Chat;
-int      BWGameSpy::NumPlayersEnumerated;
-RoomType BWGameSpy::CurrentRoom;
-GServer  BWGameSpy::CurrentServer;
-int      BWGameSpy::NumPlayersExpected;
-#ifndef VERSION_BW1W100
-bool BWGameSpy::Locked;
-#endif
-char BWGameSpy::ChatServer[CHAT_SERVER_SIZE];
-char BWGameSpy::BanChannel[CHANNEL_NAME_SIZE];
-char BWGameSpy::Bans[MAX_BANS][BAN_NAME_SIZE];
-int  BWGameSpy::NumBans;
-#ifndef VERSION_BW1W100
-CHATChannelMode BWGameSpy::ChannelMode;
-#endif
-
 static bool GetLHUIDFromIRCNick(const char* nick, LH_USER_ID* id)
 {
 	if (_strnicmp(nick, IRC_NICK_PREFIX, IRC_NICK_PREFIX_LEN) != 0)
@@ -277,40 +276,33 @@ static bool GetLHUIDFromIRCNick(const char* nick, LH_USER_ID* id)
 	return true;
 }
 
-void BWGameSpy::SendMessageA(wchar_t* message, bool private_message, MPFEPlayerDetails* player)
+static inline void SendGameSpyMessage(const char* message, bool privateMessage, MPFEPlayerDetails* recipient)
 {
-	char text[0x200];
-	strcpy(text, LHSPrintf("%s", ENCODE_NAME(message)));
-	if (private_message)
+	if (privateMessage)
 	{
-		if (player != NULL)
+		if (recipient != NULL)
 		{
 			char nick[0x200];
-			sprintf(nick, IRC_NICK_FORMAT, player->DatabaseID.id);
-			peerMessagePlayer(LHNetBase::Instance.Peer, nick, text, NormalMessage);
-		}
-	}
-	else
-	{
-		peerMessageRoom(LHNetBase::Instance.Peer, CurrentRoom, text, NormalMessage);
-	}
-}
-
-void BWGameSpy::SendMessageA(const char* message, bool private_message, MPFEPlayerDetails* player)
-{
-	if (private_message)
-	{
-		if (player != NULL)
-		{
-			char nick[0x200];
-			sprintf(nick, IRC_NICK_FORMAT, player->DatabaseID.id);
+			sprintf(nick, IRC_NICK_FORMAT, recipient->DatabaseID.id);
 			peerMessagePlayer(LHNetBase::Instance.Peer, nick, message, NormalMessage);
 		}
 	}
 	else
 	{
-		peerMessageRoom(LHNetBase::Instance.Peer, CurrentRoom, message, NormalMessage);
+		peerMessageRoom(LHNetBase::Instance.Peer, BWGameSpy::CurrentRoom, message, NormalMessage);
 	}
+}
+
+void BWGameSpy::SendMessageA(wchar_t* message, bool privateMessage, MPFEPlayerDetails* recipient)
+{
+	char text[0x200];
+	strcpy(text, LHSPrintf("%s", ENCODE_NAME(message)));
+	SendGameSpyMessage(text, privateMessage, recipient);
+}
+
+void BWGameSpy::SendMessageA(const char* message, bool privateMessage, MPFEPlayerDetails* recipient)
+{
+	SendGameSpyMessage(message, privateMessage, recipient);
 }
 
 void BWGameSpy::LeaveGameChannel()
@@ -377,13 +369,35 @@ void BWGameSpy::RoomNameChangedCallback(PEER peer, RoomType roomType, void* para
 
 bool BWGameSpy::IsOOSChannel(MPFEChannelDetails* channel)
 {
-	char version[0x80];
-	strcpy(version, ServerGetStringValue(channel->Server, "oosversion", "0"));
-	if (version != NULL && strcmp(version, "") != 0 && strcmp(version, "0") != 0)
+	char advertisedVersion[0x80];
+	strcpy(advertisedVersion, ServerGetStringValue(channel->Server, "oosversion", "0"));
+	if (advertisedVersion != NULL && strcmp(advertisedVersion, "") != 0 && strcmp(advertisedVersion, "0") != 0)
 	{
 		return true;
 	}
 	return false;
+}
+
+static inline void SplitChatServerAddress(char* address, char*& portText)
+{
+	for (unsigned int i = 0; i < strlen(address); i++)
+	{
+		if (address[i] == ':')
+		{
+			portText = &address[i + 1];
+			address[i] = '\0';
+		}
+	}
+}
+
+static inline void ConnectGameSpyPeer(const char* portText)
+{
+	wcsncpy(MPFEData::Data.LocalPlayerName, LHNetBase::Instance.User->GetName(), MPFEData::PLAYER_NAME_SIZE - 1);
+	MPFEData::Data.LocalPlayerID = LHNetBase::Instance.User->GetID();
+	peerConnect(LHNetBase::Instance.Peer, LHSPrintf(IRC_NICK_FORMAT, MPFEData::Data.LocalPlayerID),
+	            LHSPrintf("%s", ENCODE_NAME(LHNetBase::Instance.User->GetName())), BWGameSpy::ChatServer,
+	            atoi(portText), LHNetBase::Instance.User->GetID(), BWGameSpy::NickErrorCallback,
+	            BWGameSpy::ConnectCallback, NULL, PEERFalse);
 }
 
 bool BWGameSpy::Connect()
@@ -408,49 +422,37 @@ bool BWGameSpy::Connect()
 	{
 		return false;
 	}
-	char* port;
-	bool  done = false;
-	while (!done)
+	char*    portText;
+	DBSTATUS status = DBSTATUS_PENDING;
+	while (status != DBSTATUS_COMPLETE)
 	{
-		DBSTATUS status = db_get_status_async(&ChatServerQuery);
+		status = db_get_status_async(&ChatServerQuery);
 		if (status == DBSTATUS_ERROR)
 		{
 			return false;
 		}
 		if (status == DBSTATUS_COMPLETE)
 		{
-			char**        result;
-			unsigned long numRows;
+			char**        queryFields;
 			unsigned long numColumns;
-			if (db_get_result(&ChatServerQuery, &numRows, &numColumns, &result) != LH_OK)
+			unsigned long numRows;
+			if (db_get_result(&ChatServerQuery, &numColumns, &numRows, &queryFields) != LH_OK)
 			{
 				return false;
 			}
-			if (result == NULL)
+			if (queryFields == NULL)
 			{
 				return false;
 			}
-			strcpy(ChatServer, result[0]);
-			for (unsigned int i = 0; i < strlen(ChatServer); i++)
-			{
-				if (ChatServer[i] == ':')
-				{
-					port = &ChatServer[i + 1];
-					ChatServer[i] = '\0';
-				}
-			}
-			done = true;
+			strcpy(ChatServer, queryFields[0]);
+			SplitChatServerAddress(ChatServer, portText);
 		}
 	}
 	MPFEData::InfoFileChecksum2 = GetInfoFileChecksum2();
 	MPFEData::InfoFileChecksum = GetInfoFileChecksum();
 	if (!peerIsConnected(LHNetBase::Instance.Peer))
 	{
-		wcsncpy(MPFEData::Data.LocalPlayerName, LHNetBase::Instance.User->GetName(), MPFEData::PLAYER_NAME_SIZE - 1);
-		MPFEData::Data.LocalPlayerID = LHNetBase::Instance.User->GetID();
-		peerConnect(LHNetBase::Instance.Peer, LHSPrintf(IRC_NICK_FORMAT, MPFEData::Data.LocalPlayerID),
-		            LHSPrintf("%s", ENCODE_NAME(LHNetBase::Instance.User->GetName())), ChatServer, atoi(port),
-		            LHNetBase::Instance.User->GetID(), NickErrorCallback, ConnectCallback, NULL, PEERFalse);
+		ConnectGameSpyPeer(portText);
 		return true;
 	}
 	if (InitialiseLobbyState())
@@ -472,7 +474,7 @@ void BWGameSpy::Think()
 		thinkTimer.Start();
 	}
 #ifdef VERSION_BW1W100
-	if (thinkTimer.MSeconds() > THINK_INTERVAL)
+	if (thinkTimer.MSeconds() > THINK_INTERVAL_MS)
 	{
 		if (LHNetBase::Instance.Peer != NULL)
 		{
@@ -481,7 +483,7 @@ void BWGameSpy::Think()
 		thinkTimer.Restart(0);
 	}
 #else
-	if (thinkTimer.MSeconds() > THINK_INTERVAL && LHNetBase::Instance.Peer != NULL)
+	if (thinkTimer.MSeconds() > THINK_INTERVAL_MS && LHNetBase::Instance.Peer != NULL)
 	{
 		peerThink(LHNetBase::Instance.Peer);
 		thinkTimer.Restart(0);
@@ -494,7 +496,7 @@ void BWGameSpy::Think()
 		{
 			banTimer.Start();
 		}
-		if (banTimer.MSeconds() > BAN_REMOVE_INTERVAL)
+		if (banTimer.MSeconds() > BAN_REMOVE_INTERVAL_MS)
 		{
 			if (NumBans != 0)
 			{
@@ -506,39 +508,39 @@ void BWGameSpy::Think()
 	}
 }
 
+static inline bool HasConnectedGameSpyPeer();
+
 bool BWGameSpy::InitialiseLobbyState()
 {
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-	if (LHNetBase::Instance.Peer != NULL && peerIsConnected(LHNetBase::Instance.Peer))
+	if (HasConnectedGameSpyPeer())
 	{
 		peerLeaveRoom(LHNetBase::Instance.Peer, StagingRoom);
 		peerThink(LHNetBase::Instance.Peer);
 		peerLeaveRoom(LHNetBase::Instance.Peer, TitleRoom);
 		peerThink(LHNetBase::Instance.Peer);
 	}
+#else
+	peerLeaveRoom(LHNetBase::Instance.Peer, StagingRoom);
+	if (HasConnectedGameSpyPeer())
+	{
+		peerThink(LHNetBase::Instance.Peer);
+	}
+	peerLeaveRoom(LHNetBase::Instance.Peer, TitleRoom);
+	if (HasConnectedGameSpyPeer())
+	{
+		peerThink(LHNetBase::Instance.Peer);
+	}
+#endif
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (!QuittingMultiplayerGame)
+#endif
 	{
 		DialogBoxBase::HideAll();
 		MPFEChannelSelector::Instance.Show();
 		MPFEChannelSelector::Instance.RemoveAllChannels();
 		peerStartListingGames(LHNetBase::Instance.Peer, ListingGamesCallback, NULL);
 	}
-#else
-	peerLeaveRoom(LHNetBase::Instance.Peer, StagingRoom);
-	if (LHNetBase::Instance.Peer != NULL && peerIsConnected(LHNetBase::Instance.Peer))
-	{
-		peerThink(LHNetBase::Instance.Peer);
-	}
-	peerLeaveRoom(LHNetBase::Instance.Peer, TitleRoom);
-	if (LHNetBase::Instance.Peer != NULL && peerIsConnected(LHNetBase::Instance.Peer))
-	{
-		peerThink(LHNetBase::Instance.Peer);
-	}
-	DialogBoxBase::HideAll();
-	MPFEChannelSelector::Instance.Show();
-	MPFEChannelSelector::Instance.RemoveAllChannels();
-	peerStartListingGames(LHNetBase::Instance.Peer, ListingGamesCallback, NULL);
-#endif
 	return true;
 }
 
@@ -567,6 +569,22 @@ void BWGameSpy::DisconnectedCallback(PEER peer, const char* reason, void* param)
 	}
 }
 
+static inline MPFEPlayerDetails* FindRemoteMessageSender(LH_USER_ID senderId);
+
+static inline wchar_t* AllocateDecodedMessage(const char* message, uint32_t originalLine);
+
+class DecodedGameSpyMessage
+{
+	wchar_t* Text;
+	DecodedGameSpyMessage(const DecodedGameSpyMessage&);
+	DecodedGameSpyMessage& operator=(const DecodedGameSpyMessage&);
+
+public:
+	inline DecodedGameSpyMessage(const char* message, uint32_t originalLine);
+	inline ~DecodedGameSpyMessage();
+	inline wchar_t* GetText() const;
+};
+
 void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* message, MessageType messageType,
                                       void* param)
 {
@@ -574,23 +592,18 @@ void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* m
 	{
 		return;
 	}
-	LH_USER_ID id;
-	if (!GetLHUIDFromIRCNick(nick, &id))
+	LH_USER_ID senderId;
+	if (!GetLHUIDFromIRCNick(nick, &senderId))
 	{
 		return;
 	}
-	MPFEPlayerDetails* player = MPFEData::Data.GetPlayerDetailsFromDatabaseID(id);
-	if (player == NULL || player == MPFEData::Data.GetLocalPlayer())
+	MPFEPlayerDetails* sender = FindRemoteMessageSender(senderId);
+	if (sender == NULL)
 	{
 		return;
 	}
-	wchar_t* text = NEW(393) wchar_t[strlen(message) + 1];
-	wcscpy(text, LHSPrintfW(L"%s", DECODE_NAME(message)));
-	MPFEMessageObject::ProcessIncomingMessage(text, player, LHSPrintfW(L"%s", DECODE_NAME(nick)));
-	if (text != NULL)
-	{
-		delete text;
-	}
+	DecodedGameSpyMessage decodedMessage(message, 393);
+	MPFEMessageObject::ProcessIncomingMessage(decodedMessage.GetText(), sender, LHSPrintfW(L"%s", DECODE_NAME(nick)));
 }
 
 void BWGameSpy::RoomMessageCallback(PEER peer, RoomType roomType, const char* nick, const char* message,
@@ -600,27 +613,57 @@ void BWGameSpy::RoomMessageCallback(PEER peer, RoomType roomType, const char* ni
 	{
 		return;
 	}
-	LH_USER_ID id;
-	if (!GetLHUIDFromIRCNick(nick, &id))
+	LH_USER_ID senderId;
+	if (!GetLHUIDFromIRCNick(nick, &senderId))
 	{
 		return;
 	}
-	if (id == MPFEData::Data.LocalPlayerID)
+	if (senderId == MPFEData::Data.LocalPlayerID)
 	{
 		return;
 	}
-	MPFEPlayerDetails* player = MPFEData::Data.GetPlayerDetailsFromDatabaseID(id);
-	if (player == NULL || player == MPFEData::Data.GetLocalPlayer())
+	MPFEPlayerDetails* sender = FindRemoteMessageSender(senderId);
+	if (sender == NULL)
 	{
 		return;
 	}
-	wchar_t* text = NEW(424) wchar_t[strlen(message) + 1];
-	wcscpy(text, LHSPrintfW(L"%s", DECODE_NAME(message)));
-	MPFEMessageObject::ProcessIncomingMessage(text, player, NULL);
-	if (text != NULL)
+	DecodedGameSpyMessage decodedMessage(message, 424);
+	MPFEMessageObject::ProcessIncomingMessage(decodedMessage.GetText(), sender, NULL);
+}
+
+static inline wchar_t* AllocateDecodedMessage(const char* message, uint32_t originalLine)
+{
+	wchar_t* decodedMessage = NEW(originalLine) wchar_t[strlen(message) + 1];
+	wcscpy(decodedMessage, LHSPrintfW(L"%s", DECODE_NAME(message)));
+	return decodedMessage;
+}
+
+static inline MPFEPlayerDetails* FindRemoteMessageSender(LH_USER_ID senderId)
+{
+	MPFEPlayerDetails* sender = MPFEData::Data.GetPlayerDetailsFromDatabaseID(senderId);
+	if (sender == NULL || sender == MPFEData::Data.GetLocalPlayer())
 	{
-		delete text;
+		return NULL;
 	}
+	return sender;
+}
+
+inline DecodedGameSpyMessage::DecodedGameSpyMessage(const char* message, uint32_t originalLine)
+	: Text(AllocateDecodedMessage(message, originalLine))
+{
+}
+
+inline DecodedGameSpyMessage::~DecodedGameSpyMessage()
+{
+	if (Text != NULL)
+	{
+		delete[] Text;
+	}
+}
+
+inline wchar_t* DecodedGameSpyMessage::GetText() const
+{
+	return Text;
 }
 
 void BWGameSpy::ReadyChangedCallback(PEER peer, const char* nick, PEERBool ready, void* param) {}
@@ -636,6 +679,11 @@ void BWGameSpy::PlayerJoinedCallback(PEER peer, RoomType roomType, const char* n
 			MPFEData::Data.D_PlayerJoined(JOINING_PLAYER_NAME, id);
 		}
 	}
+}
+
+static inline bool HasConnectedGameSpyPeer()
+{
+	return LHNetBase::Instance.Peer != NULL && peerIsConnected(LHNetBase::Instance.Peer);
 }
 
 void BWGameSpy::PlayerLeftCallback(PEER peer, RoomType roomType, const char* nick, void* param)
@@ -659,7 +707,7 @@ void BWGameSpy::PlayerLeftCallback(PEER peer, RoomType roomType, const char* nic
 	if (MPFEData::Data.IsHost)
 	{
 		peerStateChanged(LHNetBase::Instance.Peer);
-		if (LHNetBase::Instance.Peer != NULL && peerIsConnected(LHNetBase::Instance.Peer))
+		if (HasConnectedGameSpyPeer())
 		{
 			peerThink(LHNetBase::Instance.Peer);
 		}
@@ -716,40 +764,52 @@ void BWGameSpy::RoomJoined(RoomType roomType)
 	}
 }
 
+typedef char ChatUserInfoResult[0xff];
+
 void chatUserInfoCallback(CHAT chat, CHATBool success, const char* nick, const char* user, const char* name,
                           const char* address, int numChannels, const char** channels, void* param)
 {
+	ChatUserInfoResult& destination = *static_cast<ChatUserInfoResult*>(param);
 	if (!success)
 	{
-		strcpy((char*)param, UNKNOWN_PLAYER_NAME);
+		strcpy(destination, UNKNOWN_PLAYER_NAME);
 		return;
 	}
-	if (strcmp((char*)param, "") == 0)
+	if (strcmp(destination, "") == 0)
 	{
-		strcpy((char*)param, name);
+		strcpy(destination, name);
 		return;
 	}
-	strcpy((char*)param, address);
+	strcpy(destination, address);
 }
 
-void BWGameSpy::GetNameFromServerString(LH_USER_ID id, char* name)
+static inline bool ReadServerPlayerName(LH_USER_ID userId, char* name)
 {
-	if (id == MPFEData::Data.LocalPlayerID)
+	for (int player = 0; player < BWGameSpy::Instance.GetNumPeopleInRoom(); player++)
+	{
+		const LH_USER_ID listedUserId(ServerGetPlayerIntValue(BWGameSpy::CurrentServer, player, "lhuid", 0));
+		if (listedUserId.id != NO_PLAYER_ID && listedUserId.id != 0 && listedUserId.id == userId.id)
+		{
+			strcpy(name, ServerGetPlayerStringValue(BWGameSpy::CurrentServer, player, "player", "Cheater"));
+			return true;
+		}
+	}
+	return false;
+}
+
+void BWGameSpy::GetNameFromServerString(LH_USER_ID userId, char* name)
+{
+	if (userId == MPFEData::Data.LocalPlayerID)
 	{
 		strcpy(name, LHSPrintf("%s", ENCODE_NAME(MPFEData::Data.LocalPlayerName)));
 		return;
 	}
-	for (int player = 0; player < Instance.GetNumPeopleInRoom(); player++)
+	if (ReadServerPlayerName(userId, name))
 	{
-		int playerID = ServerGetPlayerIntValue(CurrentServer, player, "lhuid", 0);
-		if (playerID != (int)NO_PLAYER_ID && playerID != 0 && playerID == id)
-		{
-			strcpy(name, ServerGetPlayerStringValue(CurrentServer, player, "player", "Cheater"));
-			return;
-		}
+		return;
 	}
-	char buffer[0xff] = "";
-	chatGetUserInfo(Chat, LHSPrintf(IRC_NICK_FORMAT, id.id), chatUserInfoCallback, buffer, CHATTrue);
+	ChatUserInfoResult buffer = "";
+	chatGetUserInfo(Chat, LHSPrintf(IRC_NICK_FORMAT, userId.id), chatUserInfoCallback, &buffer, CHATTrue);
 	if (strcmp(buffer, UNKNOWN_PLAYER_NAME) != 0)
 	{
 		strcpy(name, buffer);
@@ -757,25 +817,25 @@ void BWGameSpy::GetNameFromServerString(LH_USER_ID id, char* name)
 }
 
 void BWGameSpy::EnumPlayersCB(PEER peer, PEERBool success, RoomType roomType, int index, const char* nick,
-                              PEERBool host, void* param)
+                              PEERBool host, void* hostFoundContext)
 {
 	if (!success || roomType != StagingRoom || index == -1)
 	{
 		return;
 	}
 	NumPeopleInRoom++;
-	LH_USER_ID id;
+	LH_USER_ID userId;
 	char       name[0x100];
-	if (!GetLHUIDFromIRCNick(nick, &id))
+	if (!GetLHUIDFromIRCNick(nick, &userId))
 	{
 		MPFEData::Data.A2D_LeaveGameChannel();
 	}
-	GetNameFromServerString(id, name);
-	if (host == PEERTrue && id != MPFEData::Data.LocalPlayerID)
+	GetNameFromServerString(userId, name);
+	if (host == PEERTrue && userId != MPFEData::Data.LocalPlayerID)
 	{
-		*(bool*)param = true;
+		*static_cast<bool*>(hostFoundContext) = true;
 	}
-	MPFEData::Data.D_EnumeratingPlayersAdd(name, host == PEERTrue, id);
+	MPFEData::Data.D_EnumeratingPlayersAdd(name, host == PEERTrue, userId);
 #ifdef VERSION_BW1W100
 	if (++NumPlayersEnumerated == NumPlayersExpected)
 	{
@@ -794,17 +854,13 @@ void BWGameSpy::PlayerListChanged(RoomType roomType)
 		NumPlayersExpected = Instance.GetNumPeopleInRoom() + 1;
 		bool hostFound = false;
 		peerEnumPlayers(LHNetBase::Instance.Peer, StagingRoom, EnumPlayersCB, &hostFound);
-#ifdef VERSION_BW1W100
-		if (!hostFound)
-		{
-			Instance.InitialiseLobbyState();
-		}
-#else
 		if (!hostFound)
 		{
 			Instance.InitialiseLobbyState();
 			return;
 		}
+
+#ifndef VERSION_BW1W100
 		MPFEData::Data.D_FinishedPlayerEnumeration(NumPlayersEnumerated);
 #endif
 	}
@@ -812,20 +868,17 @@ void BWGameSpy::PlayerListChanged(RoomType roomType)
 
 void BWGameSpy::JoinCallback(PEER peer, PEERBool success, RoomType roomType, void* param)
 {
-#ifdef VERSION_BW1W100
-	if (success)
+	if (success
+#ifndef VERSION_BW1W100
+	    && (roomType != StagingRoom || peerGetRoomChannel(LHNetBase::Instance.Peer, roomType) != NULL)
+#endif
+	)
 	{
 		RoomJoined(roomType);
 	}
 	else if (roomType == StagingRoom)
 	{
-#else
-	if (success && (roomType != StagingRoom || peerGetRoomChannel(LHNetBase::Instance.Peer, roomType) != NULL))
-	{
-		RoomJoined(roomType);
-	}
-	else if (roomType == StagingRoom)
-	{
+#ifndef VERSION_BW1W100
 		if (MPFEData::Data.CurrentChannel != NULL && MPFEData::Data.CurrentChannel->Server != NULL)
 		{
 			MPFEData::Data.CurrentChannel->NumPlayers =
@@ -833,7 +886,7 @@ void BWGameSpy::JoinCallback(PEER peer, PEERBool success, RoomType roomType, voi
 		}
 #endif
 		peerJoinTitleRoom(peer, JoinCallback, param, PEERFalse);
-		if (LHNetBase::Instance.Peer == NULL || !peerIsConnected(LHNetBase::Instance.Peer))
+		if (!HasConnectedGameSpyPeer())
 		{
 			MPFEConnectionStatus::Status.LeaveLobbyScreen();
 		}
@@ -847,21 +900,26 @@ void BWGameSpy::JoinCallback(PEER peer, PEERBool success, RoomType roomType, voi
 }
 
 void BWGameSpy::ListingGamesCallback(PEER peer, PEERBool success, const char* name, GServer server, PEERBool staging,
-                                     int msg, int progress, void* param)
+                                     int listEvent, int progress, void* param)
 {
 	if (success)
 	{
-		ListGame(server, staging, msg);
+		ListGame(server, staging, listEvent);
 	}
+}
+
+static inline bool HasAdvertisedChecksum(GServer server, char* property, unsigned __int64 checksum)
+{
+	char expected[0x64];
+	char version[0x64];
+	sprintf(expected, "%I64u", checksum);
+	strcpy(version, ServerGetStringValue(server, property, "0"));
+	return strcmp(expected, version) == 0;
 }
 
 bool IsSameInfoVersion(GServer server)
 {
-	char expected[0x64];
-	char version[0x64];
-	sprintf(expected, "%I64u", MPFEData::InfoFileChecksum2);
-	strcpy(version, ServerGetStringValue(server, "infoversion", "0"));
-	bool same = strcmp(expected, version) == 0;
+	bool same = HasAdvertisedChecksum(server, "infoversion", MPFEData::InfoFileChecksum2);
 	CHECK_PROTECTION_MARKER(InfoVersionMarker.Record);
 	return same;
 }
@@ -869,11 +927,7 @@ bool IsSameInfoVersion(GServer server)
 #ifndef VERSION_BW1W100
 bool IsSameCreatureVersion(GServer server)
 {
-	char expected[0x64];
-	char version[0x64];
-	sprintf(expected, "%I64u", MPFEData::CreatureFileChecksum);
-	strcpy(version, ServerGetStringValue(server, "creatureversion", "0"));
-	bool same = strcmp(expected, version) == 0;
+	bool same = HasAdvertisedChecksum(server, "creatureversion", MPFEData::CreatureFileChecksum);
 	CHECK_PROTECTION_MARKER(CreatureVersionMarker.Record);
 	return same;
 }
@@ -881,80 +935,69 @@ bool IsSameCreatureVersion(GServer server)
 
 static bool IsSameOOSVersion(GServer server);
 
-void BWGameSpy::ListGame(GServer server, PEERBool staging, int msg)
+static inline bool HasCompatibleVersion(GServer server)
 {
-	wchar_t       name[0x400];
+	if (ServerGetIntValue(server, "gamever", 0) != LHVersion::GetModuleChecksum())
+	{
+		return false;
+	}
+#ifdef VERSION_BW1W100
+	return IsSameInfoVersion(server) && IsSameOOSVersion(server);
+#else
+	return IsSameInfoVersion(server) && IsSameCreatureVersion(server) && IsSameOOSVersion(server);
+#endif
+}
+
+void BWGameSpy::ListGame(GServer server, PEERBool staging, int listEvent)
+{
 	unsigned long showAllGames = 0;
 	RegistryRetrieveULong(BW_SETUP_REGISTRY_KEY, "LeetLamer", &showAllGames);
-	switch (msg)
+	switch (listEvent)
 	{
 	case PEER_CLEAR:
 		MPFEChannelSelector::Instance.RemoveAllChannels();
 		CurrentServer = NULL;
 		break;
 	case PEER_ADD: {
-		if (ServerGetIntValue(server, "gamever", 0) != LHVersion::GetModuleChecksum())
+		if (!HasCompatibleVersion(server))
 		{
 			break;
 		}
-#ifdef VERSION_BW1W100
-		if (!IsSameInfoVersion(server) || !IsSameOOSVersion(server))
-#else
-		if (!IsSameInfoVersion(server) || !IsSameCreatureVersion(server) || !IsSameOOSVersion(server))
-#endif
-		{
-			break;
-		}
-#ifdef VERSION_BW1W100
-		int closed = strcmp(ServerGetStringValue(server, "gamemode", ""), "openstaging");
-		MPFEChannelSelector::Instance.AddChannel(
-			LHSPrintfW(L"%s", DECODE_NAME(ServerGetStringValue(server, "hostname", "(none)"))),
-			ServerGetIntValue(server, "numplayers", 0), closed != 0,
-			ServerGetIntValue(server, "gamever", LHVersion::GetModuleChecksum()),
-			ServerGetIntValue(server, "password", 0) == 1, server, NULL,
-			ServerGetStringValue(server, "chanhost", NULL));
-#else
+#ifndef VERSION_BW1W100
 		int maxPlayers = ServerGetIntValue(server, "maxplayers", -1);
+#endif
 		int closed = strcmp(ServerGetStringValue(server, "gamemode", ""), "openstaging");
 		MPFEChannelSelector::Instance.AddChannel(
 			LHSPrintfW(L"%s", DECODE_NAME(ServerGetStringValue(server, "hostname", "(none)"))),
 			ServerGetIntValue(server, "numplayers", 0), closed != 0,
 			ServerGetIntValue(server, "gamever", LHVersion::GetModuleChecksum()),
-			ServerGetIntValue(server, "password", 0) == 1, server, NULL, ServerGetStringValue(server, "chanhost", NULL),
-			maxPlayers);
+			ServerGetIntValue(server, "password", 0) == 1, server, NULL, ServerGetStringValue(server, "chanhost", NULL)
+#ifndef VERSION_BW1W100
+																			 ,
+			maxPlayers
 #endif
+		);
 		break;
 	}
 	case PEER_UPDATE: {
-		if (ServerGetIntValue(server, "gamever", 0) != LHVersion::GetModuleChecksum())
+		if (!HasCompatibleVersion(server))
 		{
 			break;
 		}
-#ifdef VERSION_BW1W100
-		if (!IsSameInfoVersion(server) || !IsSameOOSVersion(server))
-#else
-		if (!IsSameInfoVersion(server) || !IsSameCreatureVersion(server) || !IsSameOOSVersion(server))
-#endif
-		{
-			break;
-		}
-#ifdef VERSION_BW1W100
-		int closed = strcmp(ServerGetStringValue(server, "gamemode", ""), "openstaging");
-		MPFEChannelSelector::Instance.UpdateChannel(
-			LHSPrintfW(L"%s", DECODE_NAME(ServerGetStringValue(server, "hostname", "(none)"))),
-			ServerGetIntValue(server, "numplayers", 0), closed != 0,
-			ServerGetIntValue(server, "gamever", LHVersion::GetModuleChecksum()),
-			ServerGetIntValue(server, "password", 0) == 1, server, ServerGetStringValue(server, "chanhost", NULL));
-#else
+#ifndef VERSION_BW1W100
 		int maxPlayers = ServerGetIntValue(server, "maxplayers", -1);
+#endif
 		int closed = strcmp(ServerGetStringValue(server, "gamemode", ""), "openstaging");
 		MPFEChannelSelector::Instance.UpdateChannel(
 			LHSPrintfW(L"%s", DECODE_NAME(ServerGetStringValue(server, "hostname", "(none)"))),
 			ServerGetIntValue(server, "numplayers", 0), closed != 0,
 			ServerGetIntValue(server, "gamever", LHVersion::GetModuleChecksum()),
-			ServerGetIntValue(server, "password", 0) == 1, server, ServerGetStringValue(server, "chanhost", NULL),
-			maxPlayers);
+			ServerGetIntValue(server, "password", 0) == 1, server, ServerGetStringValue(server, "chanhost", NULL)
+#ifndef VERSION_BW1W100
+																	   ,
+			maxPlayers
 #endif
+		);
 		break;
 	}
 	case PEER_REMOVE:
@@ -969,11 +1012,11 @@ void BWGameSpy::ListGame(GServer server, PEERBool staging, int msg)
 
 static bool IsSameOOSVersion(GServer server)
 {
-	char             version[0x80];
-	unsigned __int64 checksum;
-	strcpy(version, ServerGetStringValue(server, "oosversion", "0"));
-	sscanf(version, "%I64u", &checksum);
-	if (checksum != 0 && checksum != MPFEData::OOSChecksum)
+	char             advertisedText[0x80];
+	unsigned __int64 advertisedChecksum;
+	strcpy(advertisedText, ServerGetStringValue(server, "oosversion", "0"));
+	sscanf(advertisedText, "%I64u", &advertisedChecksum);
+	if (advertisedChecksum != 0 && advertisedChecksum != MPFEData::OOSChecksum)
 	{
 		return false;
 	}
@@ -982,84 +1025,89 @@ static bool IsSameOOSVersion(GServer server)
 
 void BWGameSpy::GOABasicCallback(PEER peer, PEERBool playing, char* outbuf, int maxlen, void* param)
 {
-	char host[0x100];
-	strcpy(host, LHSPrintf("%s", ENCODE_NAME(MPFEData::Data.LocalPlayerName)));
+	char encodedHostName[0x100];
+	strcpy(encodedHostName, LHSPrintf("%s", ENCODE_NAME(MPFEData::Data.LocalPlayerName)));
 #ifdef VERSION_BW1W100
-	if (MPFEData::Data.IsOOSGame)
-	{
-		sprintf(outbuf, "\\gamever\\%u\\chanhost\\%s\\infoversion\\%I64u\\oosversion\\%I64u",
-		        LHVersion::GetModuleChecksum(), host, MPFEData::InfoFileChecksum2, MPFEData::OOSChecksum);
-	}
-	else
-	{
-		sprintf(outbuf, "\\gamever\\%u\\chanhost\\%s\\infoversion\\%I64u\\oosversion\\%I64u",
-		        LHVersion::GetModuleChecksum(), host, MPFEData::InfoFileChecksum2, (unsigned __int64)0);
-	}
+	const char* const basicInfoFormat = "\\gamever\\%u\\chanhost\\%s\\infoversion\\%I64u\\oosversion\\%I64u";
 #else
+	const char* const basicInfoFormat =
+		"\\gamever\\%u\\chanhost\\%s\\infoversion\\%I64u\\oosversion\\%I64u\\creatureversion\\%I64u";
+#endif
 	if (MPFEData::Data.IsOOSGame)
 	{
-		sprintf(outbuf, "\\gamever\\%u\\chanhost\\%s\\infoversion\\%I64u\\oosversion\\%I64u\\creatureversion\\%I64u",
-		        LHVersion::GetModuleChecksum(), host, MPFEData::InfoFileChecksum2, MPFEData::OOSChecksum,
-		        MPFEData::CreatureFileChecksum);
+		sprintf(outbuf, basicInfoFormat, static_cast<unsigned int>(LHVersion::GetModuleChecksum()), encodedHostName,
+		        MPFEData::InfoFileChecksum2, MPFEData::OOSChecksum
+#ifndef VERSION_BW1W100
+		        ,
+		        MPFEData::CreatureFileChecksum
+#endif
+		);
 	}
 	else
 	{
-		sprintf(outbuf, "\\gamever\\%u\\chanhost\\%s\\infoversion\\%I64u\\oosversion\\%I64u\\creatureversion\\%I64u",
-		        LHVersion::GetModuleChecksum(), host, MPFEData::InfoFileChecksum2, (unsigned __int64)0,
-		        MPFEData::CreatureFileChecksum);
+		sprintf(outbuf, basicInfoFormat, static_cast<unsigned int>(LHVersion::GetModuleChecksum()), encodedHostName,
+		        MPFEData::InfoFileChecksum2, static_cast<unsigned __int64>(0)
+#ifndef VERSION_BW1W100
+		                                         ,
+		        MPFEData::CreatureFileChecksum
+#endif
+		);
 	}
+}
+
+static inline void WriteGameSpyRoomInfo(char* outbuf, bool playing, const char* encodedRoomName)
+{
+#ifdef VERSION_BW1W100
+	// Staging rooms always held eight players and could not be locked in BW1W100.
+	const char* const stagingInfoFormat = "\\hostname\\%s\\numplayers\\%d\\maxplayers\\8";
+	const char* const playingInfoFormat = "\\hostname\\%s\\numplayers\\%d\\maxplayers\\8\\gamemode\\closedplaying";
+#else
+	const char* const stagingInfoFormat = "\\hostname\\%s\\numplayers\\%d\\maxplayers\\%d\\locked\\%u";
+	const char* const playingInfoFormat =
+		"\\hostname\\%s\\numplayers\\%d\\maxplayers\\%d\\locked\\%u\\gamemode\\closedplaying";
+#endif
+	const char* const format = playing ? playingInfoFormat : stagingInfoFormat;
+#ifdef VERSION_BW1W100
+	sprintf(outbuf, format, encodedRoomName,
+	        MPFEData::Data.CurrentChannel != NULL ? MPFEData::Data.CurrentChannel->NumPlayers : 0);
+#else
+	sprintf(outbuf, format, encodedRoomName,
+	        MPFEData::Data.CurrentChannel != NULL ? MPFEData::Data.CurrentChannel->NumPlayers : 0,
+	        MPFEData::Data.CurrentChannel->MaxPlayers, static_cast<unsigned int>(BWGameSpy::Locked == true));
 #endif
 }
 
 void BWGameSpy::GOAInfoCallback(PEER peer, PEERBool playing, char* outbuf, int maxlen, void* param)
 {
-	char hostName[0x100];
-	strcpy(hostName, LHSPrintf("%s", ENCODE_NAME((wchar_t*)MPFEData::Data.CurrentChannel)));
-#ifdef VERSION_BW1W100
-	// Staging rooms always held eight players and could not be locked in BW1W100.
+	char encodedRoomName[0x100];
+	strcpy(encodedRoomName, LHSPrintf("%s", ENCODE_NAME(MPFEData::Data.CurrentChannel->Name)));
 	if (!playing)
 	{
-		sprintf(outbuf, "\\hostname\\%s\\numplayers\\%d\\maxplayers\\8", hostName,
-		        MPFEData::Data.CurrentChannel != NULL ? MPFEData::Data.CurrentChannel->NumPlayers : 0);
+		WriteGameSpyRoomInfo(outbuf, false, encodedRoomName);
 	}
 	else
 	{
-		sprintf(outbuf, "\\hostname\\%s\\numplayers\\%d\\maxplayers\\8\\gamemode\\closedplaying", hostName,
-		        MPFEData::Data.CurrentChannel != NULL ? MPFEData::Data.CurrentChannel->NumPlayers : 0);
+		WriteGameSpyRoomInfo(outbuf, true, encodedRoomName);
 	}
-#else
-	if (!playing)
-	{
-		sprintf(outbuf, "\\hostname\\%s\\numplayers\\%d\\maxplayers\\%d\\locked\\%u", hostName,
-		        MPFEData::Data.CurrentChannel != NULL ? MPFEData::Data.CurrentChannel->NumPlayers : 0,
-		        MPFEData::Data.CurrentChannel->MaxPlayers, Locked == true);
-	}
-	else
-	{
-		sprintf(outbuf, "\\hostname\\%s\\numplayers\\%d\\maxplayers\\%d\\locked\\%u\\gamemode\\closedplaying", hostName,
-		        MPFEData::Data.CurrentChannel != NULL ? MPFEData::Data.CurrentChannel->NumPlayers : 0,
-		        MPFEData::Data.CurrentChannel->MaxPlayers, Locked == true);
-	}
-#endif
 }
 
 void BWGameSpy::GOARulesCallback(PEER peer, PEERBool playing, char* outbuf, int maxlen, void* param) {}
 
-void BWGameSpy::GOAPlayersCallback(PEER peer, PEERBool playing, char* outbuf, int maxlen, void* param)
+void BWGameSpy::GOAPlayersCallback(PEER peer, PEERBool playing, char* outbuf, int outputCapacity, void* param)
 {
 	if (MPFEData::Data.CurrentChannel == NULL || !MPFEData::Data.IsHost)
 	{
 		return;
 	}
-	int index = 0;
+	unsigned int playerSlot = 0;
 	for (int team = 0; team < MPFEData::MAX_TEAMS; team++)
 	{
 		for (OrderedNode<MPFEPlayerDetails>* node = MPFEData::Data.Teams[team].head; node != NULL; node = node->next)
 		{
-			strcat(outbuf,
-			       LHSPrintf(GOA_PLAYER_FORMAT, index, (char*)LHSPrintf("%s", ENCODE_NAME(node->GetData()->Name)),
-			                 index, node->GetData()->DatabaseID));
-			index++;
+			strcat(outbuf, LHSPrintf(GOA_PLAYER_FORMAT, playerSlot,
+			                         static_cast<char*>(LHSPrintf("%s", ENCODE_NAME(node->GetData()->Name))),
+			                         playerSlot, node->GetData()->DatabaseID.id));
+			playerSlot++;
 		}
 	}
 	for (LHLinkedNode<MPFEPlayerDetails*>* node = MPFEData::Data.UnassignedPlayers.GetStart(); node != NULL;
@@ -1069,8 +1117,9 @@ void BWGameSpy::GOAPlayersCallback(PEER peer, PEERBool playing, char* outbuf, in
 		if (player->DatabaseID.IsValid())
 		{
 			// The original passes outbuf as the format; the real format string becomes an argument.
-			strcat(outbuf, LHSPrintf(outbuf, GOA_PLAYER_FORMAT, index,
-			                         (char*)LHSPrintf("%s", ENCODE_NAME(player->Name)), index, player->DatabaseID));
+			strcat(outbuf, LHSPrintf(outbuf, GOA_PLAYER_FORMAT, playerSlot,
+			                         static_cast<char*>(LHSPrintf("%s", ENCODE_NAME(player->Name))), playerSlot,
+			                         player->DatabaseID.id));
 		}
 	}
 }
@@ -1127,6 +1176,14 @@ void BWGameSpy::GameStartedCallback(PEER peer, unsigned int IP, const char* mess
 
 void BWGameSpy::EnterTitleRoom() {}
 
+static inline void RejectRoomSelection(unsigned long helpTextIndex)
+{
+	MPFEChannelSelector::Instance.setup_box->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(helpTextIndex),
+	                                                     MSGBOXSTYLE_SINGLE_BUTTON, LOBBY_MESSAGE_BOX_NONE);
+	MPFEData::Data.CurrentChannel = NULL;
+	MPFEData::Data.IsHost = false;
+}
+
 void BWGameSpy::CreateOrJoinRoom(wchar_t* name, wchar_t* password, MPFEChannelDetails* channel)
 {
 	TextConversion nameText(name);
@@ -1143,11 +1200,7 @@ void BWGameSpy::CreateOrJoinRoom(wchar_t* name, wchar_t* password, MPFEChannelDe
 	{
 		if (channel->HasPassword && wcslen(password) == 0)
 		{
-			MPFEChannelSelector::Instance.setup_box->MessageBoxA(
-				HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ROOMPASSWORD),
-				MSGBOXSTYLE_SINGLE_BUTTON, LOBBY_MESSAGE_BOX_NONE);
-			MPFEData::Data.CurrentChannel = NULL;
-			MPFEData::Data.IsHost = false;
+			RejectRoomSelection(HELP_TEXT_DIALOG_ROOMPASSWORD);
 			return;
 		}
 		peerLeaveRoom(LHNetBase::Instance.Peer, TitleRoom);
@@ -1159,11 +1212,7 @@ void BWGameSpy::CreateOrJoinRoom(wchar_t* name, wchar_t* password, MPFEChannelDe
 	}
 	if (wcslen(name) == 0)
 	{
-		MPFEChannelSelector::Instance.setup_box->MessageBoxA(
-			HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_PLEASEENTERROOMNAME),
-			MSGBOXSTYLE_SINGLE_BUTTON, LOBBY_MESSAGE_BOX_NONE);
-		MPFEData::Data.CurrentChannel = NULL;
-		MPFEData::Data.IsHost = false;
+		RejectRoomSelection(HELP_TEXT_DIALOG_PLEASEENTERROOMNAME);
 		return;
 	}
 	for (unsigned int i = 0; i < wcslen(name); i++)
@@ -1219,68 +1268,75 @@ void ChannelModeCallback(CHAT chat, CHATBool success, const char* channel, CHATC
 {
 	if (param != NULL)
 	{
-		*(CHATChannelMode*)param = *mode;
+		*static_cast<CHATChannelMode*>(param) = *mode;
 	}
 }
 #endif
 
-void BWGameSpy::EnterGameRoom(bool host, wchar_t* name)
+static inline void CopyStagingChannelName(char (&channel)[0x100])
+{
+	strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
+}
+
+#ifndef VERSION_BW1W100
+static inline void FinishJoiningGameSpyRoom()
+{
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
+	const char* channelName = peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom);
+	if (channelName == NULL)
+	{
+		BWGameSpy::Instance.LeaveGameChannel();
+		return;
+	}
+	char channel[0x100];
+	strcpy(channel, channelName);
+	chatGetChannelMode(BWGameSpy::Chat, channel, ChannelModeCallback, NULL, CHATTrue);
+	MPFEHasCreature hasCreature;
+	hasCreature.Send(NULL);
+#else
+	char channel[0x100];
+	CopyStagingChannelName(channel);
+	chatGetChannelMode(BWGameSpy::Chat, channel, ChannelModeCallback, NULL, CHATTrue);
+#endif
+	MPFEDatabaseID databaseID;
+	databaseID.Send(NULL);
+	MPFEAskForTeamDetailsMessage askForTeamDetails;
+	askForTeamDetails.Send(NULL);
+}
+#endif
+
+void BWGameSpy::EnterGameRoom(bool isHost, wchar_t* roomName)
 {
 #ifdef VERSION_BW1W100
 	MPFEDatabaseID databaseID;
+#endif
 	peerStopListingGames(LHNetBase::Instance.Peer);
-	if (!host)
+#ifdef VERSION_BW1W100
+	if (!isHost)
 	{
 		peerMessageRoom(LHNetBase::Instance.Peer, StagingRoom, LHSPrintf("%s", ENCODE_NAME(databaseID.Message)),
 		                NormalMessage);
-		if (LHNetBase::Instance.Peer != NULL && peerIsConnected(LHNetBase::Instance.Peer))
+		if (HasConnectedGameSpyPeer())
 		{
 			peerThink(LHNetBase::Instance.Peer);
 		}
 	}
 	else
-	{
-		char channel[0x100];
-		strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
-		NumBans = 0;
-		chatEnumChannelBans(Chat, channel, EnumBanCallback, NULL, CHATFalse);
-	}
-	NumPeopleInRoom = CurrentServer == NULL;
-	MPFEData::Data.D_IJoinedRoom(name, host, LHNetBase::Instance.User->GetID());
 #else
-	peerStopListingGames(LHNetBase::Instance.Peer);
-	if (host)
-	{
-		char channel[0x100];
-		strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
-		NumBans = 0;
-		chatEnumChannelBans(Chat, channel, EnumBanCallback, NULL, CHATFalse);
-	}
-	NumPeopleInRoom = CurrentServer == NULL;
-	MPFEData::Data.D_IJoinedRoom(name, host, LHNetBase::Instance.User->GetID());
-	if (!host)
-	{
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-		const char* channelName = peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom);
-		if (channelName == NULL)
-		{
-			Instance.LeaveGameChannel();
-			return;
-		}
-		char channel[0x100];
-		strcpy(channel, channelName);
-		chatGetChannelMode(Chat, channel, ChannelModeCallback, NULL, CHATTrue);
-		MPFEHasCreature hasCreature;
-		hasCreature.Send(NULL);
-#else
-		char channel[0x100];
-		strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
-		chatGetChannelMode(Chat, channel, ChannelModeCallback, NULL, CHATTrue);
+	if (isHost)
 #endif
-		MPFEDatabaseID databaseID;
-		databaseID.Send(NULL);
-		MPFEAskForTeamDetailsMessage askForTeamDetails;
-		askForTeamDetails.Send(NULL);
+	{
+		char channel[0x100];
+		CopyStagingChannelName(channel);
+		NumBans = 0;
+		chatEnumChannelBans(Chat, channel, EnumBanCallback, NULL, CHATFalse);
+	}
+	NumPeopleInRoom = CurrentServer == NULL;
+	MPFEData::Data.D_IJoinedRoom(roomName, isHost, LHNetBase::Instance.User->GetID());
+#ifndef VERSION_BW1W100
+	if (!isHost)
+	{
+		FinishJoiningGameSpyRoom();
 	}
 #endif
 }
@@ -1288,12 +1344,12 @@ void BWGameSpy::EnterGameRoom(bool host, wchar_t* name)
 void BWGameSpy::PopulateChannelPlayers(MPFEChannelDetails* channel)
 {
 	GServer server = channel->Server;
-	char*   host = ServerGetStringValue(server, "chanhost", "");
-	for (int player = 0; player < ServerGetIntValue(server, "numplayers", -1); player++)
+	char*   hostName = ServerGetStringValue(server, "chanhost", "");
+	for (int playerIndex = 0; playerIndex < ServerGetIntValue(server, "numplayers", -1); playerIndex++)
 	{
-		char* playerName = ServerGetPlayerStringValue(server, player, "player", "");
+		char* playerName = ServerGetPlayerStringValue(server, playerIndex, "player", "");
 		MPFEChannelSelector::Instance.AddPlayerToMiniList(LHSPrintfW(L"%s", DECODE_NAME(playerName)),
-		                                                  strcmp(playerName, host) == 0);
+		                                                  strcmp(playerName, hostName) == 0);
 	}
 }
 
@@ -1314,7 +1370,7 @@ void BWGameSpy::KickPlayerFromChannel(MPFEPlayerDetails* player)
 	}
 	char channel[0x100];
 	char nick[0x100];
-	strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
+	CopyStagingChannelName(channel);
 #ifdef VERSION_BW1W100
 	strcpy(nick, LHSPrintf("%s", ENCODE_NAME(player->GetName())));
 #else
@@ -1333,28 +1389,31 @@ void BWGameSpy::BanPlayerInChannel(MPFEPlayerDetails* player)
 	}
 	char channel[0x100];
 	char nick[0x100];
-	strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
+	CopyStagingChannelName(channel);
 	strcpy(nick, LHSPrintf("%s", ENCODE_NAME(player->GetName())));
 	chatBanUser(Chat, channel, nick);
 }
 
 #ifndef VERSION_BW1W100
+static inline void PublishStagingRoomInvites(const char* channel, bool invite)
+{
+	BWGameSpy::ChannelMode.InviteOnly = (CHATBool)(invite == true);
+	chatSetChannelMode(BWGameSpy::Chat, channel, &BWGameSpy::ChannelMode);
+	peerStateChanged(LHNetBase::Instance.Peer);
+}
+
 void BWGameSpy::LockChannel(bool lock)
 {
 	char channel[0x100];
-	strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
+	CopyStagingChannelName(channel);
 	Locked = lock;
-	ChannelMode.InviteOnly = (CHATBool)(lock == true);
-	chatSetChannelMode(Chat, channel, &ChannelMode);
-	peerStateChanged(LHNetBase::Instance.Peer);
+	PublishStagingRoomInvites(channel, lock);
 }
 
 void BWGameSpy::SetInvite(bool invite)
 {
 	char channel[0x100];
-	strcpy(channel, peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom));
-	ChannelMode.InviteOnly = (CHATBool)(invite == true);
-	chatSetChannelMode(Chat, channel, &ChannelMode);
-	peerStateChanged(LHNetBase::Instance.Peer);
+	CopyStagingChannelName(channel);
+	PublishStagingRoomInvites(channel, invite);
 }
 #endif

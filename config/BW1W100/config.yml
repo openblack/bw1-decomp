@@ -430,6 +430,14 @@ add_relocations:
     target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x70
 
+# BWGameSpy::Think calls the chatRemoveChannelBan entry shared with chatAddChannelBan.
+  - source: 0x00436B6C
+    type: x86_rel32
+    target: '_chatRemoveChannelBan'
+# RoomJoined calls EnterTitleRoom, which shares the folded return at 0x004167E0.
+  - source: 0x00437389
+    type: x86_rel32
+    target: '?EnterTitleRoom@BWGameSpy@@SAXXZ'
 # CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
   - source: 0x0044E24C
     type: x86_abs32
