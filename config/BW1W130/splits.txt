@@ -2072,14 +2072,14 @@ Black/OOSDebug.cpp:
 	.data       start:0x00C7EA40 end:0x00C7EA6C
 
 P5/P5Bend.cpp:
-	.text       start:0x00640080 end:0x006402A0
-	.CRT$XCU    start:0x00A47110 end:0x00A47114 align:4
+	.text       start:0x00640080 end:0x006402D0
+	.CRT$XCU    start:0x00A47110 end:0x00A47118 align:4
 	.data       start:0x00C7EA6C end:0x00C7EA78
 
 P5/P5Motion.cpp:
-	.text       start:0x006402A0 end:0x00640C40
+	.text       start:0x006402D0 end:0x00640C40
 	.rdata      start:0x0095F128 end:0x0095F144
-	.CRT$XCU    start:0x00A47114 end:0x00A47124 align:4
+	.CRT$XCU    start:0x00A47118 end:0x00A47124 align:4
 	.data       start:0x00C7EA78 end:0x00C7EA8C
 
 Black/Packet.cpp:

@@ -1176,7 +1176,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/OnMapTrajectory.cpp", pch=PCH_PENDING),
             GameCodeObject(NonMatching, "Black/OOSDebug.cpp"),
             GameCodeObject(NonMatching, "Black/Packet.cpp"),
-            GameCodeObject(NonMatching, "P5/P5Bend.cpp", pch=False),
+            GameCodeObject(NonMatching, "P5/P5Bend.cpp"),
             GameCodeObject(NonMatching, "P5/P5Motion.cpp"),
             GameCodeObject(NonMatching, "Black/ParticleContainer.cpp"),
             GameCodeObject(NonMatching, "Black/PathCreator.cpp"),
