@@ -60,7 +60,7 @@ BINDABLE_ACTIONS ToolTips::Action = BINDABLE_ACTION_NONE;
 KEYALIGN         ToolTips::Align = KEYALIGN_ANCHOR_LEFT;
 CH_ANIMTYPE      ToolTips::AnimType = CH_ANIMTYPE_NONE;
 int              ToolTips::Key = 0;
-int              ToolTips::MouseType = CAMERA_HELP_MOUSE_TYPE_NONE;
+int              ToolTips::MouseType = CH_MOUSETYPE_NONE;
 bool32_t         ToolTips::CurrentToolTipSubmitted = false;
 
 static float    TimesBlocked[TOOLTIPS_TYPE_LAST];
@@ -299,12 +299,12 @@ bool32_t HelpSystem::GetToolTipTextAndAnim(wchar_t* text, unsigned long size, CH
 	if (action == BINDABLE_ACTION_NONE)
 	{
 		*anim_type = CH_ANIMTYPE_NONE;
-		*mouse_type = CAMERA_HELP_MOUSE_TYPE_NONE;
+		*mouse_type = CH_MOUSETYPE_NONE;
 	}
 	if (!ConvertActionToKMIcon(action, anim_type, key, mouse_type))
 	{
 		*key = 0;
-		*mouse_type = CAMERA_HELP_MOUSE_TYPE_NONE;
+		*mouse_type = CH_MOUSETYPE_NONE;
 		*anim_type = CH_ANIMTYPE_NONE;
 	}
 	if (textId == HELP_TEXT_TOOLTIP_ZOOM_IN_TO_SLOT)
